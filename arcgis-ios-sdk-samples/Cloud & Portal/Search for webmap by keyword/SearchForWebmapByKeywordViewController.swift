@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class SearchForWebmapByKeywordViewController: UICollectionViewController {
-    
     private var portal: AGSPortal?
     private var resultPortalItems: [AGSPortalItem] = [] {
         didSet {
@@ -50,7 +49,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
     }
     
     private func addSearchController() {
-        
         // create the search controller
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -78,7 +76,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
                 backgroundview.clipsToBounds = true
             }
         }
-        
     }
     
     let dateFormatter: DateFormatter = {
@@ -88,7 +85,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
     }()
  
     private func startWebMapSearch(query: String) {
-        
         // if the last search hasn't returned yet, cancel it
         lastQueryCancelable?.cancel()
         
@@ -161,11 +157,9 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         
         return cell
     }
-    
 }
 
 extension SearchForWebmapByKeywordViewController: UISearchResultsUpdating {
-    
     func updateSearchResults(for searchController: UISearchController) {
         if let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             !query.isEmpty {
@@ -175,13 +169,10 @@ extension SearchForWebmapByKeywordViewController: UISearchResultsUpdating {
             resultPortalItems = []
         }
     }
-    
 }
 
 extension SearchForWebmapByKeywordViewController: AGSAuthenticationManagerDelegate {
-    
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
-        
         // if a challenge is received, then the portal item is not fully public and cannot be displayed
         
         // don't present this challenge
@@ -198,5 +189,4 @@ extension SearchForWebmapByKeywordViewController: AGSAuthenticationManagerDelega
         // notify the user
         presentAlert(message: "Web map access denied")
     }
-    
 }

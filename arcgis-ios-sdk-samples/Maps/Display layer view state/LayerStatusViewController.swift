@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class LayerStatusViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var visualEffectView: UIVisualEffectView!
@@ -85,7 +84,6 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         
         //setup source code bar button item
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["LayerStatusViewController"]
-
     }
     
     //initialize status array to `Unknown`

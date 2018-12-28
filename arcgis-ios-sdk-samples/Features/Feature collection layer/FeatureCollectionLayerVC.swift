@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class FeatureCollectionLayerVC: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     override func viewDidLoad() {
@@ -56,7 +55,6 @@ class FeatureCollectionLayerVC: UIViewController {
     }
     
     private func pointsCollectionTable() -> AGSFeatureCollectionTable {
-        
         //create schema for points feature collection table
         var fields = [AGSField]()
         let placeField = AGSField(fieldType: .text, name: "Place", alias: "Place name", length: 40, domain: nil, editable: true, allowNull: false)
@@ -83,7 +81,6 @@ class FeatureCollectionLayerVC: UIViewController {
     }
     
     private func linesCollectionTable() -> AGSFeatureCollectionTable {
-        
         //create schema for points feature collection table
         var fields = [AGSField]()
         let boundaryField = AGSField(fieldType: .text, name: "Boundary", alias: "Boundary name", length: 40, domain: nil, editable: true, allowNull: false)
@@ -113,7 +110,6 @@ class FeatureCollectionLayerVC: UIViewController {
     }
     
     private func polygonsCollectionTable() -> AGSFeatureCollectionTable {
-        
         //create schema for points feature collection table
         var fields = [AGSField]()
         let areaField = AGSField(fieldType: .text, name: "Area", alias: "Area name", length: 40, domain: nil, editable: true, allowNull: false)

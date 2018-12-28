@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class WebMapViewController: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     var portalItem: AGSPortalItem?

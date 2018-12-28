@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -42,7 +41,6 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         //we will be using a method on the delegate to know 
         //when the user tapped on the map view
         self.mapView.touchDelegate = self
-        
     }
     
     func addGraphicsOverlay() {

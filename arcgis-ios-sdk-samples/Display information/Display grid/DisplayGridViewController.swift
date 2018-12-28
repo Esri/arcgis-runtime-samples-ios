@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class DisplayGridViewController: UIViewController {
-    
     @IBOutlet weak var mapView: AGSMapView!
     
     override func viewDidLoad() {
@@ -62,13 +61,10 @@ class DisplayGridViewController: UIViewController {
             navController.presentationController?.delegate = self
         }
     }
-    
 }
 
 extension DisplayGridViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

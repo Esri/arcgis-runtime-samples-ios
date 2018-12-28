@@ -17,12 +17,10 @@ import UIKit
 import ArcGIS
 
 protocol MapImageSublayersVCDelegate: AnyObject {
-    
     func mapImageSublayersVC(mapImageSublayersVC: MapImageSublayersVC, didCloseWith removedMapImageSublayers: [AGSArcGISMapImageSublayer])
 }
 
 class MapImageSublayersVC: UITableViewController {
-    
     var mapImageLayer: AGSArcGISMapImageLayer!
     var removedMapImageSublayers: [AGSArcGISMapImageSublayer]!
     
@@ -49,7 +47,6 @@ class MapImageSublayersVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MapImageSublayerCell", for: indexPath)
         
         if indexPath.section == 0 {
@@ -85,7 +82,6 @@ class MapImageSublayersVC: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            
             tableView.beginUpdates()
             
             //remove row from table view
@@ -106,7 +102,6 @@ class MapImageSublayersVC: UITableViewController {
             
             tableView.endUpdates()
         case .insert:
-            
             tableView.beginUpdates()
             
             //remove row from table view
@@ -134,7 +129,6 @@ class MapImageSublayersVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
         let sublayer = self.mapImageLayer.mapImageSublayers[sourceIndexPath.row]
         self.mapImageLayer.mapImageSublayers.removeObject(at: sourceIndexPath.row)
         self.mapImageLayer.mapImageSublayers.insert(sublayer, at: destinationIndexPath.row)
@@ -143,7 +137,6 @@ class MapImageSublayersVC: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        
         if sourceIndexPath.section != proposedDestinationIndexPath.section {
             return sourceIndexPath
         } else {
@@ -154,12 +147,10 @@ class MapImageSublayersVC: UITableViewController {
     // MARK: - Actions
     
     @IBAction private func doneAction() {
-        
         //dismiss view controller
         self.dismiss(animated: true, completion: nil)
         
         //update the removed sublayers array on the delegate
         self.delegate?.mapImageSublayersVC(mapImageSublayersVC: self, didCloseWith: self.removedMapImageSublayers)
     }
-
 }

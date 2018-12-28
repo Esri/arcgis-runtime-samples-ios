@@ -15,7 +15,6 @@
 import UIKit
 
 class ContentCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
     @IBOutlet private var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     /// The categories to display in the collection view.
@@ -27,7 +26,6 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     private func addSearchController() {
-        
         // create the view controller for displaying the search results
         let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         let allSamples = categories.flatMap { $0.samples }
@@ -59,7 +57,6 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
                 backgroundview.clipsToBounds = true
             }
         }
-        
     }
 
     // MARK: UICollectionViewDataSource
@@ -121,5 +118,4 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         }
         return CGSize(width: width, height: width)
     }
-    
 }

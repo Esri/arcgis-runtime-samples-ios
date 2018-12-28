@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class HillshadeRendererVC: UIViewController {
-    
     @IBOutlet var mapView: AGSMapView!
     
     private weak var rasterLayer: AGSRasterLayer?
@@ -67,21 +66,16 @@ class HillshadeRendererVC: UIViewController {
             controller.slopeType = renderer.slopeType
         }
     }
-
 }
 
 extension HillshadeRendererVC: HillshadeSettingsDelegate {
-    
     func hillshadeSettingsVC(_ hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType) {
         setRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType)
     }
-    
 }
 
 extension HillshadeRendererVC: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

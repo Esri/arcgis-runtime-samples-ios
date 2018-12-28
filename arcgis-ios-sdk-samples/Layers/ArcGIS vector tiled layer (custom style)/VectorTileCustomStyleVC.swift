@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate {
-    
     @IBOutlet var mapView: AGSMapView!
     
     private var itemIDs = ["1349bfa0ed08485d8a92c442a3850b06",
@@ -81,13 +80,10 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate {
         //show newly selected vector layer
         showSelectedItem(itemID)
     }
-    
 }
 
 extension VectorTileCustomStyleVC: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

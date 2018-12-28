@@ -33,13 +33,11 @@ private enum DemoTouchToken {
 // NOTE: This must not be made private or the swizzling will not work
 //
 extension UIApplication {
-    
     fileprivate class var isShowingTouches: Bool {
         return (DemoTouchToken.showToken != 0)
     }
     
     fileprivate class func showAllTouches() {
-        
         if UIApplication.isShowingTouches {
             return
         }
@@ -72,7 +70,6 @@ extension UIApplication {
     }
     
     fileprivate class func hideAllTouches() {
-        
         if !UIApplication.isShowingTouches {
             return
         }
@@ -106,9 +103,7 @@ extension UIApplication {
     
     @objc
     func sf_sendEvent(_ event: UIEvent) {
-        
         if let touches = event.allTouches {
-            
             let began: Set<UITouch> = touches.filter { $0.phase == .began }
             let moved: Set<UITouch> = touches.filter { $0.phase == .moved }
             let cancelled: Set<UITouch> = touches.filter { $0.phase == .cancelled }
@@ -135,7 +130,6 @@ extension UIApplication {
 }
 
 private class PingLayer: CAShapeLayer, CAAnimationDelegate {
-    
     var pingColor: UIColor! {
         didSet {
             strokeColor = pingColor.cgColor
@@ -167,7 +161,6 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
     fileprivate let center: CGPoint!
     
     fileprivate lazy var fromPath: CGPath! = {
-        
         var fromPath = UIBezierPath()
         fromPath.addArc(withCenter: self.center, radius: self.fromRadius, startAngle: CGFloat(0), endAngle: 2.0 * CGFloat.pi, clockwise: true)
         fromPath.close()
@@ -175,7 +168,6 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }()
     
     fileprivate lazy var toPath: CGPath! = {
-        
         var toPath = UIBezierPath()
         toPath.addArc(withCenter: self.center, radius: self.toRadius, startAngle: CGFloat(0), endAngle: 2 * CGFloat.pi, clockwise: true)
         toPath.close()
@@ -204,7 +196,6 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }()
     
     init(center: CGPoint, fromRadius: CGFloat, toRadius: CGFloat) {
-        
         self.center = center
         self.fromRadius = fromRadius
         self.toRadius = toRadius
@@ -241,7 +232,6 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
 // This is the object that should be used for showing/hiding touches
 //
 enum DemoTouchManager {
-    
     // MARK: Properties
     
     static var touchFillColor: UIColor {
@@ -305,7 +295,6 @@ enum DemoTouchManager {
 }
 
 private class TouchView: UIView {
-    
     // MARK: Properties
     
     // This computed property takes into account a tolerance
@@ -325,7 +314,6 @@ private class TouchView: UIView {
     // MARK: Initializers
     
     init(center: CGPoint, size: CGSize) {
-        
         originalCenter = center
         
         super.init(frame: CGRect(origin: .zero, size: size))
@@ -341,7 +329,6 @@ private class TouchView: UIView {
 }
 
 private class DemoTouchesView: UIView {
-    
     // MARK: Properties
     
     var touchFillColor = UIColor.blue
@@ -379,16 +366,13 @@ private class DemoTouchesView: UIView {
     }
     
     func updateTouches(_ touches: Set<NSObject>?) {
-        
         currentTouches = touches as? Set<UITouch>
         
         if let window = UIApplication.shared.keyWindow {
-            
             if DemoTouchesView.sharedInstance.window == nil {
                 DemoTouchesView.sharedInstance.frame = window.frame
                 window.addSubview(DemoTouchesView.sharedInstance)
             } else {
-
                 // Ensure our DemoTouch view is always at the front of it's window
                 //
                 DemoTouchesView.sharedInstance.window!.bringSubviewToFront(DemoTouchesView.sharedInstance)
@@ -432,7 +416,6 @@ private class DemoTouchesView: UIView {
     
     fileprivate func removeTouch(_ touch: UITouch, cancelled: Bool = false) {
         if let touchView = touchViewMap[touch] {
-
             let animations: (() -> Void) = {
                 touchView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
                 touchView.alpha = 0.0
@@ -457,9 +440,7 @@ private class DemoTouchesView: UIView {
     // This method is for future use if we want to show tap and hold
     //
     fileprivate func intensifyTouchView(_ touch: UITouch) {
-        
         if let touchView = touchViewMap[touch] {
-            
             if touchView.alpha < 1.0 {
                 touchView.alpha += CGFloat(0.05)
             }
@@ -471,7 +452,6 @@ private class DemoTouchesView: UIView {
     }
     
     fileprivate func showPingForTouches(_ touches: [UITouch]) {
-        
         for touch in touches {
             let pingLyr = pingLayerForTouch(touch)
             DemoTouchesView.sharedInstance.layer.addSublayer(pingLyr)
@@ -479,22 +459,18 @@ private class DemoTouchesView: UIView {
     }
     
     override fileprivate func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
         updateTouches(touches)
     }
     
     override fileprivate func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         updateTouches(touches)
     }
     
     override fileprivate func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         updateTouches(touches)
     }
     
     override fileprivate func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
-        
         updateTouches(touches)
     }
 }

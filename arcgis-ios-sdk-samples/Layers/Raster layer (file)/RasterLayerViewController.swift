@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class RasterLayerViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
 
     private var map: AGSMap!
@@ -48,7 +47,6 @@ class RasterLayerViewController: UIViewController {
         
         //set map view's viewpoint to the raster layer's full extent
         self.rasterLayer.load { [weak self] (error) in
-            
             if let error = error {
                self?.presentAlert(error: error)
             } else {

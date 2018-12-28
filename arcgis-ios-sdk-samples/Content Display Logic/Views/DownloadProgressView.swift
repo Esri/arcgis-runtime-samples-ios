@@ -21,7 +21,6 @@ protocol DownloadProgressViewDelegate: AnyObject {
 }
 
 class DownloadProgressView: UIView {
-
     @IBOutlet private var containerView: UIView!
     @IBOutlet private var progressLabel: UILabel!
     @IBOutlet private var statusLabel: UILabel!
@@ -57,7 +56,6 @@ class DownloadProgressView: UIView {
     }
     
     private func commonInit() {
-        
         self.backgroundColor = .clear
         
         self.nibView = self.loadViewFromNib()
@@ -81,7 +79,6 @@ class DownloadProgressView: UIView {
     }
     
     private func setupProgressView() {
-        
         self.containerView.layer.cornerRadius = 14
         
         self.bezierPath = UIBezierPath(arcCenter: CGPoint(x: self.radius, y: self.radius), radius: self.radius, startAngle: -CGFloat.pi / 2, endAngle: CGFloat.pi * 1.5, clockwise: true)
@@ -107,7 +104,6 @@ class DownloadProgressView: UIView {
     }
     
     func show(withStatus status: String, progress: CGFloat) {
-        
         self.statusLabel.text = status
         
         self.updateProgress(progress: progress, animated: false)
@@ -116,7 +112,6 @@ class DownloadProgressView: UIView {
     }
     
     private func show() {
-        
         self.frame = UIScreen.main.bounds
         
         if let newWindow = UIApplication.shared.keyWindow {
@@ -125,18 +120,15 @@ class DownloadProgressView: UIView {
     }
     
     func dismiss() {
-        
         self.removeFromSuperview()
     }
     
     @IBAction private func cancelAction() {
-        
         self.dismiss()
         self.delegate?.downloadProgressViewDidCancel(self)
     }
     
     func updateProgress(progress: CGFloat, animated: Bool) {
-        
         if progress > 1 {
            self.progress = 1
         } else if progress < 0 {
@@ -178,7 +170,6 @@ class DownloadProgressView: UIView {
     
     override func draw(_ rect: CGRect) {
         if let context = UIGraphicsGetCurrentContext() {
-            
             let locations: [CGFloat] = [0, 1]
             
             let colors: [CGColor] = [UIColor.black.withAlphaComponent(0).cgColor, UIColor.black.withAlphaComponent(0.75).cgColor]

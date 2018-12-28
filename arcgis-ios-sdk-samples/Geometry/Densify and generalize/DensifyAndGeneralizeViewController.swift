@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class DensifyAndGeneralizeViewController: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     /// The overlay for which to display the graphics.
@@ -44,7 +43,6 @@ class DensifyAndGeneralizeViewController: UIViewController {
     private var maxSegmentLength = 100.0
     
     required init?(coder aDecoder: NSCoder) {
-        
         let spatialReference = AGSSpatialReference(wkid: 32126)
         /// The base collection of points from which the original polyline and mulitpoint
         /// geometries are made.
@@ -152,11 +150,9 @@ class DensifyAndGeneralizeViewController: UIViewController {
             controller.preferredContentSize = CGSize(width: 300, height: 250)
         }
     }
-
 }
 
 extension DensifyAndGeneralizeViewController: GeneralizeSettingsViewControllerDelegate {
-    
     func generalizeSettingsViewControllerDidUpdate(_ generalizeSettingsViewController: GeneralizeSettingsViewController) {
         // update the model with the new values
         shouldDensify = generalizeSettingsViewController.shouldDensify
@@ -167,7 +163,6 @@ extension DensifyAndGeneralizeViewController: GeneralizeSettingsViewControllerDe
         // update the graphics for the new values
         updateGraphicsForDensifyAndGeneralize()
     }
-    
 }
 
 extension DensifyAndGeneralizeViewController: UIAdaptivePresentationControllerDelegate {

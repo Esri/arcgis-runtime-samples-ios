@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class SetMapsSRViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -38,5 +37,4 @@ class SetMapsSRViewController: UIViewController {
         //assing the map to the map view
         self.mapView.map = self.map
     }
-
 }

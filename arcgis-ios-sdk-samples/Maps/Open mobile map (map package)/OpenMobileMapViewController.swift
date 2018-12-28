@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class OpenMobileMapViewController: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     private var mapPackage: AGSMobileMapPackage!
@@ -34,7 +33,6 @@ class OpenMobileMapViewController: UIViewController {
         
         //load map package
         self.mapPackage.load { [weak self] (error: Error?) in
-            
             guard let self = self else {
                 return
             }
@@ -49,5 +47,4 @@ class OpenMobileMapViewController: UIViewController {
             }
         }
     }
-
 }

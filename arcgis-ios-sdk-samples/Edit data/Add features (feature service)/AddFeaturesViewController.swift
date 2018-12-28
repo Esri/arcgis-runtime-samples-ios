@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
-    
     @IBOutlet private var mapView: AGSMapView!
     
     private var featureTable: AGSServiceFeatureTable!
@@ -49,7 +48,6 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     func addFeature(at mappoint: AGSPoint) {
-       
         //disable interaction with map view
         mapView.isUserInteractionEnabled = false
         
@@ -66,7 +64,6 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //add the feature to the feature table
         featureTable.add(feature) { [weak self] (error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             if let error = error {

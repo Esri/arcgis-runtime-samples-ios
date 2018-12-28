@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class DisplayKMLNetworkLinksViewController: UIViewController {
-    
     @IBOutlet weak var sceneView: AGSSceneView!
     
     /// The controller shown in a popover after tapping "View Messages"
@@ -83,7 +82,6 @@ class DisplayKMLNetworkLinksViewController: UIViewController {
 }
 
 extension DisplayKMLNetworkLinksViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // show as this as a popover even on small displays
         return .none

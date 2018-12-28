@@ -15,7 +15,6 @@
 import UIKit
 
 class ListViewController: UITableViewController {
-    
     var list: [String]! 
     
     private var selectAction: ((Int) -> Void)!

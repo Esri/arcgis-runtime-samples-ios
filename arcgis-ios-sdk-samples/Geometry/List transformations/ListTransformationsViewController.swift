@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ListTransformationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var orderByMapExtent: UISwitch!

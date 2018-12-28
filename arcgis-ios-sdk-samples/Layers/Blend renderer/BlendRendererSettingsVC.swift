@@ -17,12 +17,10 @@ import UIKit
 import ArcGIS
 
 protocol BlendRendererSettingsVCDelegate: AnyObject {
-    
     func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType)
 }
 
 class BlendRendererSettingsVC: UITableViewController {
-
     @IBOutlet private weak var altitudeSlider: UISlider?
     @IBOutlet private weak var altitudeLabel: UILabel?
     @IBOutlet private weak var azimuthSlider: UISlider?

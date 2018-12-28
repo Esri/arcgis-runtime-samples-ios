@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class DirectionsViewController: UITableViewController {
-
     var directionManeuvers: [AGSDirectionManeuver]!
     
     // MARK: - UITableViewDataSource

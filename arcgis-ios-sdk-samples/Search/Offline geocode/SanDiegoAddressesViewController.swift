@@ -19,7 +19,6 @@ protocol SanDiegoAddressesVCDelegate: AnyObject {
 }
 
 class SanDiegoAddressesViewController: UITableViewController {
-    
     weak var delegate: SanDiegoAddressesVCDelegate?
     
     //prepopulated list of addresses
@@ -30,11 +29,6 @@ class SanDiegoAddressesViewController: UITableViewController {
         "868 4th Ave, San Diego, CA 92101",
         "750 A St, San Diego, CA 92101"
     ]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     
     // MARK: - Table view data source
     
@@ -59,5 +53,4 @@ class SanDiegoAddressesViewController: UITableViewController {
         let address = self.addresses[indexPath.row]
         self.delegate?.sanDiegoAddressesViewController(self, didSelectAddress: address)
     }
-    
 }

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class StatisticalQueryViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private var visualEffectView: UIVisualEffectView!
     @IBOutlet private var getStatisticsButton: UIButton!
@@ -105,5 +104,4 @@ class StatisticalQueryViewController: UIViewController {
             }
         })
     }
-    
 }

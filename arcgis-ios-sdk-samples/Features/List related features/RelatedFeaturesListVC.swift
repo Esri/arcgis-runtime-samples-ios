@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class RelatedFeaturesListVC: UITableViewController {
-    
     //results required for display
     var results: [AGSRelatedFeatureQueryResult]!
     
@@ -35,7 +34,6 @@ class RelatedFeaturesListVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         let result = self.results[section]
         if let tableName = result.relatedTable?.tableName {
             return "\(tableName)"
@@ -50,7 +48,6 @@ class RelatedFeaturesListVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let result = self.results[indexPath.section]
         let feature = result.featureEnumerator().allObjects[indexPath.row]
         
@@ -73,5 +70,4 @@ class RelatedFeaturesListVC: UITableViewController {
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
-    
 }

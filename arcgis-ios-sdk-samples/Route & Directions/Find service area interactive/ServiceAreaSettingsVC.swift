@@ -16,14 +16,11 @@
 import UIKit
 
 protocol ServiceAreaSettingsVCDelegate: AnyObject {
-    
     func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateFirstTimeBreak timeBreak: Int)
-    
     func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateSecondTimeBreak timeBreak: Int)
 }
 
 class ServiceAreaSettingsVC: UIViewController {
-
     @IBOutlet private var firstTimeBreakSlider: UISlider!
     @IBOutlet private var secondTimeBreakSlider: UISlider!
     @IBOutlet private var firstTimeBreakLabel: UILabel!
@@ -47,18 +44,14 @@ class ServiceAreaSettingsVC: UIViewController {
     // MARK: - Actions
     
     @IBAction private func sliderValueChanged(sender: UISlider) {
-        
         if sender == self.firstTimeBreakSlider {
-            
             self.firstTimeBreakLabel.text = "\(Int(sender.value))"
             
             self.delegate?.serviceAreaSettingsVC(self, didUpdateFirstTimeBreak: Int(sender.value))
         } else {
-            
             self.secondTimeBreakLabel.text = "\(Int(sender.value))"
             
             self.delegate?.serviceAreaSettingsVC(self, didUpdateSecondTimeBreak: Int(sender.value))
         }
     }
-
 }

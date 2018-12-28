@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ListKMLContentsSceneViewController: UIViewController {
-    
     @IBOutlet weak var sceneView: AGSSceneView? {
         didSet {
             sceneView?.scene = scene
@@ -24,7 +23,6 @@ class ListKMLContentsSceneViewController: UIViewController {
     }
     
     private let scene: AGSScene = {
-        
         // initialize scene with labeled imagery
         let scene = AGSScene(basemapType: .imageryWithLabels)
         
@@ -74,14 +72,12 @@ class ListKMLContentsSceneViewController: UIViewController {
     /// Sets the viewpoint of the scene based on the node, or hides the node
     /// if a viewpoint cannot be determined.
     private func setSceneViewpoint(for node: AGSKMLNode) {
-        
         dispatchQueue.async {
             // get the viewpoint asynchronously so not to block the main thread
             let nodeViewpoint = self.viewpoint(for: node)
             
             // run UI updates on the main thread
             DispatchQueue.main.async {
-                
                 // load the view before setting a viewpoint
                 self.loadViewIfNeeded()
                 
@@ -91,7 +87,6 @@ class ListKMLContentsSceneViewController: UIViewController {
                 
                 if let nodeViewpoint = nodeViewpoint,
                     !nodeViewpoint.targetGeometry.isEmpty {
-                    
                     // reveal the view in case it was previously hidden
                     sceneView.isHidden = false
                     
@@ -128,11 +123,8 @@ class ListKMLContentsSceneViewController: UIViewController {
     
     /// Returns the viewpoint showing the node, converting it from the node's AGSKMLViewPoint if possible.
     private func viewpoint(for node: AGSKMLNode) -> AGSViewpoint? {
-        
         if let kmlViewpoint = node.viewpoint {
-            
             return viewpointFromKMLViewpoint(kmlViewpoint)
-            
         } else if let extent = node.extent {
             // the node does not have a predefined viewpoint, so create a viewpoint based on its extent
             return viewpointFromKMLNodeExtent(extent)
@@ -144,7 +136,6 @@ class ListKMLContentsSceneViewController: UIViewController {
     // Converts the KML viewpoint to a viewpoint for the scene.
     // The KML viewpoint may not correspond to the node's geometry.
     private func viewpointFromKMLViewpoint(_ kmlViewpoint: AGSKMLViewpoint) -> AGSViewpoint? {
-        
         switch kmlViewpoint.type {
         case .lookAt:
             var lookAtPoint = kmlViewpoint.location
@@ -176,7 +167,6 @@ class ListKMLContentsSceneViewController: UIViewController {
     
     /// Creates a default viewpoint framing the node based on its extent.
     private func viewpointFromKMLNodeExtent(_ extent: AGSEnvelope) -> AGSViewpoint? {
-        
         // some nodes do not include a geometry, so check that the extent isn't empty
         guard !extent.isEmpty else {
             return nil
@@ -189,7 +179,6 @@ class ListKMLContentsSceneViewController: UIViewController {
         // It's possible for `isEmpty` to be false but for width/height to still be zero.
         if extent.width == 0,
             extent.height == 0 {
-            
             let lookAtPoint = AGSPoint(
                 x: extentCenter.x,
                 y: extentCenter.y,
@@ -215,5 +204,4 @@ class ListKMLContentsSceneViewController: UIViewController {
             return AGSViewpoint(targetExtent: bufferedExtent)
         }
     }
-    
 }

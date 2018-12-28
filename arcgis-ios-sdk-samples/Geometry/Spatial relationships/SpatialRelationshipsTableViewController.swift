@@ -16,7 +16,6 @@
 import UIKit
 
 class SpatialRelationshipsTableViewController: UITableViewController {
-    
     var sections: [SpatialRelationshipsViewController.RelationshipsSection] = []
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -36,5 +35,4 @@ class SpatialRelationshipsTableViewController: UITableViewController {
         cell.textLabel?.text = sections[indexPath.section].relationships[indexPath.row]
         return cell
     }
-    
 }

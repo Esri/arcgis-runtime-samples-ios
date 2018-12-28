@@ -17,12 +17,10 @@ import UIKit
 import ArcGIS
 
 protocol MapPackageCellDelegate: AnyObject {
-    
     func mapPackageCell(_ mapPackageCell: MapPackageCell, didSelectMap map: AGSMap)
 }
 
 class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
-
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     

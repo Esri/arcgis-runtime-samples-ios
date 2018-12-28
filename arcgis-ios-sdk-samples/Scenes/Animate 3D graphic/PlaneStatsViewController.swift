@@ -68,5 +68,4 @@ class PlaneStatsViewController: UITableViewController {
             rollLabel.text = ""
         }
     }
-    
 }

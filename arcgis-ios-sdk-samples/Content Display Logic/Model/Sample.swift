@@ -17,12 +17,10 @@
 import Foundation
 
 struct Sample: Hashable {
-    
     var name: String
     var description: String
     var storyboardName: String
     var dependencies: [String]
-    
 }
 
 extension Sample: Decodable {

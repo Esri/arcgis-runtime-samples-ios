@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class RelatedFeaturesViewController: UITableViewController {
-
     var originFeature: AGSArcGISFeature!
     var originFeatureTable: AGSServiceFeatureTable!
     
@@ -36,12 +35,10 @@ class RelatedFeaturesViewController: UITableViewController {
     }
     
     private func queryRelatedFeatures() {
-        
         //get relationship info
         //feature table's layer info has an array of relationshipInfos, one for each relationship
         //in this case there is only one describing the 1..M relationship between parks and species
         guard let relationshipInfo = self.originFeatureTable.layerInfo?.relationshipInfos.first else {
-            
             presentAlert(message: "Relationship info not found")
             return
         }
@@ -60,14 +57,12 @@ class RelatedFeaturesViewController: UITableViewController {
         
         //query for species related to the selected park
         self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
             if let error = error {
                 self?.presentAlert(error: error)
             } else if let result = results?.first {
-                
                 //save the related features to display in the table view
                 self?.relatedFeatures = result.featureEnumerator().allObjects
                 
@@ -78,7 +73,6 @@ class RelatedFeaturesViewController: UITableViewController {
     }
     
     private func addRelatedFeature() {
-        
         //get related table using relationshipInfo
         guard let relatedTable = originFeatureTable.relatedTables(with: relationshipInfo)?.first as? AGSServiceFeatureTable,
             //new feature
@@ -94,7 +88,6 @@ class RelatedFeaturesViewController: UITableViewController {
         
         //add new feature to related table
         relatedTable.add(feature) { [weak self] (error) in
-            
             SVProgressHUD.dismiss()
             
             if let error = error {
@@ -107,7 +100,6 @@ class RelatedFeaturesViewController: UITableViewController {
     }
     
     private func deleteRelatedFeature(_ feature: AGSFeature) {
-        
         //get related table using relationshipInfo
         guard let relatedTable = originFeatureTable.relatedTables(with: relationshipInfo)?.first as? AGSServiceFeatureTable else {
             return
@@ -118,7 +110,6 @@ class RelatedFeaturesViewController: UITableViewController {
         
         //delete feature from related table
         relatedTable.delete(feature) { [weak self] (error) in
-            
             SVProgressHUD.dismiss()
             
             if let error = error {
@@ -131,7 +122,6 @@ class RelatedFeaturesViewController: UITableViewController {
     }
     
     private func applyEdits() {
-        
         //get the related table using the relationshipInfo
         guard let relatedTable = originFeatureTable.relatedTables(with: relationshipInfo)?.first as? AGSServiceFeatureTable else {
             return
@@ -141,7 +131,6 @@ class RelatedFeaturesViewController: UITableViewController {
         SVProgressHUD.show(withStatus: "Applying edits")
         
         relatedTable.applyEdits { [weak self] (results: [AGSFeatureEditResult]?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             if let error = error {
@@ -161,7 +150,6 @@ class RelatedFeaturesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedFeatureCell", for: indexPath)
         
         let relatedFeature = self.relatedFeatures[indexPath.row]
@@ -179,9 +167,7 @@ class RelatedFeaturesViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
-            
             //delete related feature
             let relatedFeature = self.relatedFeatures[indexPath.row]
             self.deleteRelatedFeature(relatedFeature)
@@ -191,12 +177,10 @@ class RelatedFeaturesViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction private func addAction() {
-        
         self.addRelatedFeature()
     }
     
     @IBAction private func doneAction() {
-
         //dismiss view controller
         self.dismiss(animated: true, completion: nil)
     }

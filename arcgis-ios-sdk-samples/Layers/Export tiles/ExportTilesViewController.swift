@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class ExportTilesViewController: UIViewController {
-    
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var extentView: UIView!
     @IBOutlet var visualEffectView: UIVisualEffectView!
@@ -82,7 +81,6 @@ class ExportTilesViewController: UIViewController {
     }
     
     private func initiateDownload() {
-        
         //get the parameters by specifying the selected area,
         //mapview's current scale as the minScale and tiled layer's max scale as maxScale
         var minScale = mapView.mapScale
@@ -98,7 +96,6 @@ class ExportTilesViewController: UIViewController {
         //initialize the export task
         exportTask = AGSExportTileCacheTask(url: tiledLayer.url!)
         exportTask.exportTileCacheParameters(withAreaOfInterest: frameToExtent(), minScale: minScale, maxScale: maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: Error?) in
-            
             guard let self = self else {
                 return
             }
@@ -125,7 +122,6 @@ class ExportTilesViewController: UIViewController {
             //show job status
             SVProgressHUD.show(withStatus: status.statusString())
         }, completion: { [weak self] (result: AnyObject?, error: Error?) in
-            
             //hide progress view
             SVProgressHUD.dismiss()
             
@@ -158,7 +154,6 @@ class ExportTilesViewController: UIViewController {
     }
     
     private func deleteAllTpks() {
-        
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
             let files = try FileManager.default.contentsOfDirectory(atPath: documentDirectoryURL.path)
@@ -173,5 +168,4 @@ class ExportTilesViewController: UIViewController {
             print(error)
         }
     }
-
 }

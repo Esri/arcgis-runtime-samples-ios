@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class FeatureLayersViewController: UITableViewController {
-    
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     /// The layer infos to display in the table view.
@@ -81,7 +80,6 @@ class FeatureLayersViewController: UITableViewController {
     }
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
-        
         // get selected layer ids
         let selectedLayerIds = selectedLayerInfos.map { $0.id }
         

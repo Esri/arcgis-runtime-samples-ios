@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelegate {
-
     @IBOutlet private var mapView: AGSMapView!
     
     private var workspaceID = "MyDatabaseWorkspaceIDSSR2"
@@ -53,7 +52,6 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
     }
     
     private func createSublayers() {
-        
         //We will create 2 mapImageSublayers from tableSublayerSource with known workspaceID and dataSourceName
         //These sublayers are not yet part of the mapImageLayer's sublayers, so will be shown as part of the 
         //removed sublayers array at first
@@ -87,24 +85,20 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         //name for the sublayer
         mapImageSublayer2.name = "Lakes"
         self.removedMapImageSublayers.append(contentsOf: [mapImageSublayer1, mapImageSublayer2])
-        
     }
     
     // MARK: - MapImageSublayersVCDelegate
     
     func mapImageSublayersVC(mapImageSublayersVC: MapImageSublayersVC, didCloseWith removedMapImageSublayers: [AGSArcGISMapImageSublayer]) {
-        
         self.removedMapImageSublayers = removedMapImageSublayers
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "MapImageSublayersSegue",
             let navigationController = segue.destination as? UINavigationController,
             let controller = navigationController.viewControllers.first as? MapImageSublayersVC {
-            
             controller.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 300)
             controller.mapImageLayer = self.mapImageLayer

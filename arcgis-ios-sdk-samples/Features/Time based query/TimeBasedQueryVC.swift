@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class TimeBasedQueryVC: UIViewController {
-    
     @IBOutlet var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -54,7 +53,6 @@ class TimeBasedQueryVC: UIViewController {
     }
     
     func populateFeaturesWithQuery() {
-        
         //create query parameters
         let queryParams = AGSQueryParameters()
 
@@ -71,7 +69,6 @@ class TimeBasedQueryVC: UIViewController {
         
         //populate features based on query parameters
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
-            
             //check for error
             if let error = error {
                 self?.presentAlert(error: error)
@@ -82,5 +79,4 @@ class TimeBasedQueryVC: UIViewController {
             }
         }
     }
-    
 }

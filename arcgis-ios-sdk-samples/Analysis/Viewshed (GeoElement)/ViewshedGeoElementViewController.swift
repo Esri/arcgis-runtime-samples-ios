@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegate {
-
     @IBOutlet var sceneView: AGSSceneView!
     var tank = AGSGraphic()
     var waypoint: AGSPoint?
@@ -44,7 +43,6 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     private func makeScene() -> AGSScene {
-        
         // create the scene
         let scene = AGSScene(basemap: .imagery())
         
@@ -66,7 +64,6 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     private func makeGraphicsOverlay() -> AGSGraphicsOverlay {
-        
         // create a graphics overlay for the tank
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties = AGSLayerSceneProperties(surfacePlacement: .relative)
@@ -94,7 +91,6 @@ class ViewshedGeoElementViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     private func makeAnalysisOverlay() -> AGSAnalysisOverlay {
-        
         // create a viewshed to attach to the tank
         let geoElementViewshed = AGSGeoElementViewshed(
            geoElement: tank,

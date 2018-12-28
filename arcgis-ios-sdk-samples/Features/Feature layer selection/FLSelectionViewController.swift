@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var featureLayer: AGSFeatureLayer?
@@ -56,7 +55,6 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
         //cancel the active query if it hasn't been completed yet
         if let activeSelectionQuery = activeSelectionQuery {
             activeSelectionQuery.cancel()
@@ -83,7 +81,6 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //run the selection query
         activeSelectionQuery = featureLayer.selectFeatures(withQuery: queryParams, mode: .new) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
-            
             if let error = error {
                 self?.presentAlert(error: error)
             }
@@ -92,5 +89,4 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
             }
         }
     }
-    
 }

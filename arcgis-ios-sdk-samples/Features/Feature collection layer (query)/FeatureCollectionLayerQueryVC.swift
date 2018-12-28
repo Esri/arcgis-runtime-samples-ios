@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class FeatureCollectionLayerQueryVC: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     private var featureTable: AGSServiceFeatureTable!
@@ -48,7 +47,6 @@ class FeatureCollectionLayerQueryVC: UIViewController {
         
         //query feature from the table
         self.featureTable.queryFeatures(with: queryParams) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
-            
             //hide progress hud
             SVProgressHUD.dismiss()
             
@@ -70,5 +68,4 @@ class FeatureCollectionLayerQueryVC: UIViewController {
             }
         }
     }
-    
 }

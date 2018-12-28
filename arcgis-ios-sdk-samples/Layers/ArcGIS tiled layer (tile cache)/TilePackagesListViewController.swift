@@ -20,7 +20,6 @@ protocol TilePackagesListVCDelegate: AnyObject {
 }
 
 class TilePackagesListViewController: UITableViewController {
-    
     weak var delegate: TilePackagesListVCDelegate?
     
     private var bundleTPKPaths: [String]!

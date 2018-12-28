@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ChangeSublayerRendererVC: UIViewController {
-
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var resetBarButtonItem: UIBarButtonItem!
     @IBOutlet private var applyRendererBarButtonItem: UIBarButtonItem!
@@ -48,14 +47,12 @@ class ChangeSublayerRendererVC: UIViewController {
         
         //load map image layer to access sublayers
         self.mapImageLayer.load { [weak self] (error: Error?) in
-            
             guard let weakSelf = self else {
                 return
             }
             
             //get the counties sublayer
             if let sublayer = weakSelf.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer {
-                
                 //load the sublayer to get the original renderer
                 sublayer.load(completion: { (error) in
                     if error == nil {
@@ -72,7 +69,6 @@ class ChangeSublayerRendererVC: UIViewController {
     
     //returns a class break renderer
     private func classBreakRenderer() -> AGSClassBreaksRenderer {
-        
         //create a class breaks renderer for counties in US based on their population in 2007
         
         //outline symbol
@@ -101,19 +97,15 @@ class ChangeSublayerRendererVC: UIViewController {
     // MARK: - Actions
     
     @IBAction private func applyRenderer() {
-        
         //get the counties sublayer
         if let sublayer = self.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer {
-         
             //set the class breaks renderer on the counties sublayer
             sublayer.renderer = self.classBreakRenderer()
         }
     }
     
     @IBAction private func reset() {
-        
         if let renderer = self.originalRenderer, let sublayer = self.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer {
-                
             //set the class breaks renderer on the counties sublayer
             sublayer.renderer = renderer
         }

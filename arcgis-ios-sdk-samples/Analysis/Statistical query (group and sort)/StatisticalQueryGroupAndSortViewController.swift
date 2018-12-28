@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GroupByFieldsViewControllerDelegate, OrderByFieldsViewControllerDelegate, AddStatisticDefinitionsViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
-    
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var getStatisticsButton: UIBarButtonItem!
     @IBOutlet private weak var tableView: UITableView!
@@ -50,7 +49,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         
         // Load feature table
         serviceFeatureTable.load(completion: { [weak self] (error) in
-            
             guard let self = self else {
                 return
             }
@@ -116,7 +114,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         
         // Execute the statistical query with parameters
         serviceFeatureTable?.queryStatistics(with: statisticsQueryParameters, completion: { [weak self] (statisticsQueryResult, error) in
-            
             guard let self = self else {
                 return
             }
@@ -150,9 +147,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     
     @objc
     private func headerButtonAction(_ sender: UIButton) {
-        
         func setupAndPresent(viewController: UIViewController) {
-            
             // Popover presentation logic
             viewController.modalPresentationStyle = .popover
             viewController.preferredContentSize = CGSize(width: 350, height: 300)
@@ -201,7 +196,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         // Create the view
         let returnedView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 44))
         returnedView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -374,7 +368,6 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
 }
 
 class GroupSortQueryResultsViewController: UITableViewController {
-    
     var statisticsQueryResult: AGSStatisticsQueryResult? {
         didSet {
             statisticRecords = statisticsQueryResult?.statisticRecordEnumerator().allObjects ?? []
@@ -416,11 +409,9 @@ class GroupSortQueryResultsViewController: UITableViewController {
         cell.textLabel?.text = groupNames.joined(separator: ", ")
         return cell
     }
-
 }
 
 class GroupSortQueryResultsDetailViewController: UITableViewController {
-    
     var statisticRecord: AGSStatisticRecord? {
         didSet {
             statistics = statisticRecord?.statistics.sorted { $0.key < $1.key } ?? []
@@ -447,5 +438,4 @@ class GroupSortQueryResultsDetailViewController: UITableViewController {
         cell.detailTextLabel?.text = String(describing: statistic.value)
         return cell
     }
-
 }

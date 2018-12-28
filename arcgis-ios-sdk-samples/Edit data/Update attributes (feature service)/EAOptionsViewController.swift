@@ -19,7 +19,6 @@ protocol EAOptionsVCDelegate: AnyObject {
 }
 
 class EAOptionsViewController: UITableViewController {
-    
     var options: [String]!
     weak var delegate: EAOptionsVCDelegate!
     
@@ -53,5 +52,4 @@ class EAOptionsViewController: UITableViewController {
     @IBAction func cancelAction() {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }

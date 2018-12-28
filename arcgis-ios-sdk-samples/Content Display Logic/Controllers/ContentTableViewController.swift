@@ -15,7 +15,6 @@
 import UIKit
 
 class ContentTableViewController: UITableViewController {
-    
     /// The samples to display in the table. Searching adjusts this value
     var displayedSamples = [Sample]() {
         didSet {
@@ -75,14 +74,12 @@ class ContentTableViewController: UITableViewController {
         
         //download on demand resources
         if !sample.dependencies.isEmpty {
-        
             let bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
             self.bundleResourceRequest = bundleResourceRequest
             
             //conditionally begin accessing to know if we need to show download progress view or not
             bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
                 DispatchQueue.main.async {
-                    
                     //if resource is already available then simply show the sample
                     if isResourceAvailable {
                         self?.showSample(indexPath: indexPath, sample: sample)
@@ -109,7 +106,6 @@ class ContentTableViewController: UITableViewController {
     // MARK: - helpers
     
     private func downloadResource(for sample: Sample, at indexPath: IndexPath) {
-        
         guard let bundleResourceRequest = bundleResourceRequest else {
             return
         }
@@ -126,14 +122,12 @@ class ContentTableViewController: UITableViewController {
         
         //begin
         bundleResourceRequest.beginAccessingResources { [weak self] (error: Error?) in
-            
             guard let self = self else {
                 return
             }
             
             //in main thread
             DispatchQueue.main.async {
-                
                 //remove observation
                 self.downloadProgressObservation = nil
                 
@@ -148,9 +142,7 @@ class ContentTableViewController: UITableViewController {
                         self.presentAlert(message: "Failed to download raster resource :: \(error.localizedDescription)")
                     }
                 } else {
-                    
                     if self.bundleResourceRequest?.progress.isCancelled == false {
-                        
                         //show view controller
                         self.showSample(indexPath: indexPath, sample: sample)
                     }
@@ -160,7 +152,6 @@ class ContentTableViewController: UITableViewController {
     }
     
     private func showSample(indexPath: IndexPath, sample: Sample) {
-        
         let storyboard = UIStoryboard(name: sample.storyboardName, bundle: .main)
         let controller = storyboard.instantiateInitialViewController()!
         controller.title = sample.name
@@ -185,7 +176,6 @@ class ContentTableViewController: UITableViewController {
         infoBBI.readmeURL = sample.readmeURL
         infoBBI.navController = navController
         controller.navigationItem.rightBarButtonItem = infoBBI
-
     }
     
     private func toggleExpansion(at indexPath: IndexPath) {
@@ -198,7 +188,6 @@ class ContentTableViewController: UITableViewController {
         }
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
-
 }
 
 extension ContentTableViewController: DownloadProgressViewDelegate {
@@ -212,7 +201,6 @@ extension ContentTableViewController: DownloadProgressViewDelegate {
 }
 
 extension ContentTableViewController: UISearchResultsUpdating {
-    
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchEngine = searchEngine else {
             return
@@ -229,5 +217,4 @@ extension ContentTableViewController: UISearchResultsUpdating {
             displayedSamples = allSamples
         }
     }
-    
 }

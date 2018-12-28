@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate, DirectionsListVCDelegate {
-    
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var routeParametersBBI: UIBarButtonItem!
@@ -121,7 +120,6 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         SVProgressHUD.show(withStatus: "Routing")
         
         self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -132,7 +130,6 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
                 self.presentAlert(error: error)
             } else if let routeResult = routeResult,
                 let route = routeResult.routes.first {
-                
                 let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
                 self.routeGraphicsOverlay.graphics.add(routeGraphic)
                 self.generatedRoute = route
@@ -247,7 +244,6 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     //MARk: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-    
         return .none
     }
     

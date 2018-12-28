@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class Animate3DGraphicViewController: UIViewController {
-
     @IBOutlet private var sceneView: AGSSceneView!
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var playBBI: UIBarButtonItem!
@@ -143,7 +142,6 @@ class Animate3DGraphicViewController: UIViewController {
     }
     
     private func setupCamera() {
-        
         guard let planeModelGraphic = planeModelGraphic else {
             return
         }
@@ -166,17 +164,13 @@ class Animate3DGraphicViewController: UIViewController {
         
         //set the camera controller on scene view
         sceneView.cameraController = orbitGeoElementCameraController
-        
     }
     
     private func loadMissionData(_ name: String) {
-        
         //get the path of the specified file in the bundle
         if let path = Bundle.main.path(forResource: name, ofType: nil) {
-            
             //get content of the file
             if let content = try? String(contentsOfFile: path) {
-                
                 //split content into array of lines separated by new line character
                 //each line is one frame
                 let lines = content.components(separatedBy: CharacterSet.newlines)
@@ -204,7 +198,6 @@ class Animate3DGraphicViewController: UIViewController {
     }
     
     private func startAnimation() {
-        
         //invalidate timer to stop previous ongoing animation
         self.animationTimer?.invalidate()
         
@@ -220,7 +213,6 @@ class Animate3DGraphicViewController: UIViewController {
     }
     
     private func animate() {
-        
         //validations
         guard !frames.isEmpty,
             let planeModelGraphic = planeModelGraphic,
@@ -230,7 +222,6 @@ class Animate3DGraphicViewController: UIViewController {
         
         //if animation is complete
         if currentFrameIndex >= frames.count {
-            
             //invalidate timer
             animationTimer?.invalidate()
             
@@ -272,7 +263,6 @@ class Animate3DGraphicViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func changeMissionAction() {
-        
         //invalidate timer
         animationTimer?.invalidate()
         
@@ -299,7 +289,6 @@ class Animate3DGraphicViewController: UIViewController {
     }
     
     @IBAction func playAction(sender: UIBarButtonItem) {
-        
         if isAnimating {
             animationTimer?.invalidate()
         } else {
@@ -312,7 +301,6 @@ class Animate3DGraphicViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         // dismiss any shown view controllers
         dismiss(animated: false, completion: nil)
         
@@ -336,7 +324,6 @@ class Animate3DGraphicViewController: UIViewController {
             planeStatsViewController.presentationController?.delegate = self
         } else if let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? MissionSettingsViewController {
-            
             self.missionSettingsViewController = controller
             //initial values
             controller.missionFileNames = missionFileNames
@@ -350,19 +337,15 @@ class Animate3DGraphicViewController: UIViewController {
             controller.delegate = self
         }
     }
-    
 }
 
 extension Animate3DGraphicViewController: MissionSettingsVCDelegate {
-    
     func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didSelectMissionAtIndex index: Int) {
-        
         selectedMissionIndex = index
         changeMissionAction()
     }
     
     func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didChangeSpeed speed: Int) {
-        
         animationSpeed = speed
         
         if isAnimating {
@@ -370,7 +353,6 @@ extension Animate3DGraphicViewController: MissionSettingsVCDelegate {
             startAnimation()
         }
     }
-    
 }
 
 extension Animate3DGraphicViewController: UIAdaptivePresentationControllerDelegate {

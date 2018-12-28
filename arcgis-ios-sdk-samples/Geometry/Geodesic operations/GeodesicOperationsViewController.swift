@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegate {
-
     @IBOutlet private var mapView: AGSMapView!
     
     private let destinationGraphic: AGSGraphic
@@ -103,5 +102,4 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         mapView.callout.isAccessoryButtonHidden = true
         mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
     }
-
 }

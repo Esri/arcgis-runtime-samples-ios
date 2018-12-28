@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class OnInteractionNoCacheViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -50,5 +49,4 @@ class OnInteractionNoCacheViewController: UIViewController {
         
         self.mapView.map = self.map
     }
-    
 }

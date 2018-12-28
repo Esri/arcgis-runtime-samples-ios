@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class EditFeatureAttachmentsViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private let featureLayer: AGSFeatureLayer
@@ -25,7 +24,6 @@ class EditFeatureAttachmentsViewController: UIViewController {
     private var selectedFeature: AGSArcGISFeature?
     
     required init?(coder aDecoder: NSCoder) {
-        
         let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!
         let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
@@ -65,9 +63,7 @@ class EditFeatureAttachmentsViewController: UIViewController {
 }
 
 extension EditFeatureAttachmentsViewController: AGSGeoViewTouchDelegate {
-    
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
         if let lastQuery = lastQuery {
             lastQuery.cancel()
         }
@@ -76,7 +72,6 @@ extension EditFeatureAttachmentsViewController: AGSGeoViewTouchDelegate {
         mapView.callout.dismiss()
         
         lastQuery = mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
-            
             guard let self = self else {
                 return
             }
@@ -87,7 +82,6 @@ extension EditFeatureAttachmentsViewController: AGSGeoViewTouchDelegate {
                 let feature = features.first,
                 //show callout for the first feature
                 let title = feature.attributes["typdamage"] as? String {
-                
                 //fetch attachment
                 feature.fetchAttachments { (attachments: [AGSAttachment]?, error: Error?) in
                     if let error = error {
@@ -105,16 +99,13 @@ extension EditFeatureAttachmentsViewController: AGSGeoViewTouchDelegate {
             }
         }
     }
-    
 }
 
 extension EditFeatureAttachmentsViewController: AGSCalloutDelegate {
-    
     func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
         mapView.callout.dismiss()
         //show the attachments list vc
         performSegue(withIdentifier: "AttachmentsSegue", sender: self)
     }
-    
 }

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
-    
     @IBOutlet private var mapView: AGSMapView!
     
     private var featureTable: AGSServiceFeatureTable!

@@ -31,7 +31,6 @@ class FeatureTemplatePickerViewController: UITableViewController {
     private var infos = [FeatureTemplateInfo]()
     
     func addTemplatesFromLayer(_ featureLayer: AGSFeatureLayer) {
-                
         let featureTable = featureLayer.featureTable as! AGSServiceFeatureTable
         //if layer contains only templates (no feature types)
         if !featureTable.featureTemplates.isEmpty {

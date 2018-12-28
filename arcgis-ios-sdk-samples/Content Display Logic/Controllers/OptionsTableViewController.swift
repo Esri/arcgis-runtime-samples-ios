@@ -17,7 +17,6 @@ import UIKit
 /// A basic interface for selecting one options from a list,
 /// showing the checkmark accessory for the selected cell.
 class OptionsTableViewController: UITableViewController {
-    
     private let options: [Option]
     private var selectedIndex: Int
     private let onChange: (Int) -> Void
@@ -81,10 +80,8 @@ class OptionsTableViewController: UITableViewController {
         selectedIndex = indexPath.row
         onChange(indexPath.row)
     }
-    
 }
 private class OptionCell: UITableViewCell {
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         accessoryType = selected ? .checkmark : .none
     }

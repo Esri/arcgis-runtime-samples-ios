@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class GraphicDrawOrderViewController: UIViewController {
-    
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var buttons: [UIButton]!
     

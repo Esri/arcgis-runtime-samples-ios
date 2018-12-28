@@ -21,7 +21,6 @@ protocol GroupByFieldsViewControllerDelegate: AnyObject {
 }
 
 class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
     // Outlets
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var tableNavigationItem: UINavigationItem!
@@ -78,5 +77,4 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
             delegate?.setGrouping(with: selectedFieldNames)
         }
     }
-
 }

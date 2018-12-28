@@ -40,7 +40,6 @@ class SampleInfoViewController: UIViewController {
     }
     
     func markdownTextFromFile(at url: URL) -> String? {
-
         //read the content of the file
         if let content = try? String(contentsOf: url, encoding: .utf8) {
             //remove the images
@@ -80,7 +79,6 @@ class SampleInfoViewController: UIViewController {
 
         webView.loadHTMLString(string, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
     }
-    
 }
 
 extension SampleInfoViewController: WKNavigationDelegate {

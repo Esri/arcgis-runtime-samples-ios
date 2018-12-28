@@ -15,7 +15,6 @@
 import UIKit
 
 class SegmentedViewController: UIViewController {
-    
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var infoContainerView: UIView!
     @IBOutlet private weak var codeContainerView: UIView!
@@ -25,11 +24,6 @@ class SegmentedViewController: UIViewController {
     
     var filenames: [String]?
     var readmeURL: URL?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     
     // MARK: - Navigation
     
@@ -48,5 +42,4 @@ class SegmentedViewController: UIViewController {
     @IBAction func valueChanged(_ sender: UISegmentedControl) {
         self.infoContainerView.isHidden = (sender.selectedSegmentIndex == 1)
     }
-    
 }

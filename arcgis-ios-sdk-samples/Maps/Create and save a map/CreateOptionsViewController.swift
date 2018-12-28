@@ -20,7 +20,6 @@ protocol CreateOptionsVCDelegate: AnyObject {
 }
 
 class CreateOptionsViewController: UITableViewController {
-    
     private let basemaps: [AGSBasemap] = [.streets(), .imagery(), .topographic(), .oceans()]
     private let layers: [AGSLayer] = {
         let layerURLs = [
@@ -102,7 +101,6 @@ class CreateOptionsViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction private func doneAction() {
-
         //create a basemap with the selected basemap index
         let basemap = basemaps[selectedBasemapIndex].copy() as! AGSBasemap
         
@@ -111,5 +109,4 @@ class CreateOptionsViewController: UITableViewController {
         
         delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: selectedLayers)
     }
-
 }

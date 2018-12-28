@@ -16,12 +16,10 @@ import UIKit
 import ArcGIS
 
 protocol HillshadeSettingsDelegate: AnyObject {
-    
     func hillshadeSettingsVC(_ hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType)
 }
 
 class HillshadeSettingsVC: UITableViewController {
-    
     @IBOutlet weak var altitudeSlider: UISlider?
     @IBOutlet weak var azimuthSlider: UISlider?
     @IBOutlet weak var azimuthLabel: UILabel?
@@ -115,5 +113,4 @@ class HillshadeSettingsVC: UITableViewController {
         optionsViewController.title = "Slope Type"
         show(optionsViewController, sender: self)
     }
-    
 }

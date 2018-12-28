@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FeatureLayerURLViewController: UIViewController {
-
     @IBOutlet private weak var mapView: AGSMapView!
     
     override func viewDidLoad() {
@@ -43,5 +42,4 @@ class FeatureLayerURLViewController: UIViewController {
         //add the feature layer to the operational layers
         map.operationalLayers.add(featureLayer)
     }
-
 }

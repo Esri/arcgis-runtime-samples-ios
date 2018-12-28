@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ViewshedLocationViewController: UIViewController {
-
     @IBOutlet weak var sceneView: AGSSceneView!
     @IBOutlet weak var setObserverOnTapInstruction: UILabel!
     @IBOutlet weak var updateObserverOnDragInstruction: UILabel!
@@ -91,11 +90,9 @@ class ViewshedLocationViewController: UIViewController {
             navController.presentationController?.delegate = self
         }
     }
-    
 }
 
 extension ViewshedLocationViewController: AGSGeoViewTouchDelegate {
-    
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         canMoveViewshed = true
         // update the observer location from which the viewshed is calculated
@@ -105,7 +102,6 @@ extension ViewshedLocationViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTouchDownAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint, completion: @escaping (Bool) -> Void) {
         // tell the ArcGIS Runtime if we are going to handle interaction
         canMoveViewshed ? completion(true) : completion(false)
-        
     }
     
     func geoView(_ geoView: AGSGeoView, didTouchDragToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
@@ -115,7 +111,6 @@ extension ViewshedLocationViewController: AGSGeoViewTouchDelegate {
 }
 
 extension ViewshedLocationViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // for popover or non modal presentation
         return .none

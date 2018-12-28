@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FindRouteViewController: UIViewController {
-    
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var routeBBI: UIBarButtonItem!
     @IBOutlet var directionsListBBI: UIBarButtonItem!
@@ -86,7 +85,6 @@ class FindRouteViewController: UIViewController {
     
     //method to get the default parameters for the route task
     func getDefaultParameters() {
-        
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
             if let error = error {
                 print(error)

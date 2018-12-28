@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ClipGeometryViewController: UIViewController {
-    
     @IBOutlet weak var mapView: AGSMapView!
     
     /// The overlay for displaying the graphic of Colorado.
@@ -24,7 +23,6 @@ class ClipGeometryViewController: UIViewController {
     
     /// The overlay for displaying the other envelopes.
     private let envelopesOverlay: AGSGraphicsOverlay = {
-        
         /// An envelope outside Colorado.
         let outsideEnvelope = AGSEnvelope(
             xMin: -11858344.321294,
@@ -111,7 +109,6 @@ class ClipGeometryViewController: UIViewController {
     }
     
     @IBAction func clipGeometry(_ sender: UIBarButtonItem) {
-        
         // disable the clip button
         sender.isEnabled = false
         
@@ -127,13 +124,11 @@ class ClipGeometryViewController: UIViewController {
             if let envelope = envelopeGraphic.geometry as? AGSEnvelope,
                 // use the geometry engine to get a new geometry for the area of Colorado that overlaps the envelope
                 let clippedGeometry = AGSGeometryEngine.clipGeometry(coloradoGeometry, with: envelope) {
-                
                 // if there is an overlap, greate a graphic for it using the same symbol as Colorado
                 let clippedGraphic = AGSGraphic(geometry: clippedGeometry, symbol: coloradoSymbol)
                 // add the resultant graphic to the overlay
                 coloradoOverlay.graphics.add(clippedGraphic)
             }
         }
-
     }
 }

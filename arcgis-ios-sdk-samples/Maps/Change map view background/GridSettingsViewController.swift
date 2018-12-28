@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class GridSettingsViewController: UITableViewController {
-    
     @IBOutlet var colorSwatch: UIView?
     @IBOutlet var lineColorSwatch: UIView?
     
@@ -126,5 +125,4 @@ class GridSettingsViewController: UITableViewController {
             break
         }
     }
-    
 }

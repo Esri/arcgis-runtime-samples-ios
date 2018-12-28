@@ -19,15 +19,9 @@ protocol WorldAddressesVCDelegate: AnyObject {
 }
     
 class WorldAddressesViewController: UITableViewController {
-        
         weak var delegate: WorldAddressesVCDelegate?
         
         private var addresses = ["277 N Avenida Caballeros, Palm Springs, CA", "380 New York St, Redlands, CA 92373", "Београд", "Москва", "北京"]
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-        }
         
         // MARK: - Table view data source
         
@@ -52,5 +46,4 @@ class WorldAddressesViewController: UITableViewController {
             let address = self.addresses[indexPath.row]
             self.delegate?.worldAddressesViewController(self, didSelectAddress: address)
         }
-        
 }

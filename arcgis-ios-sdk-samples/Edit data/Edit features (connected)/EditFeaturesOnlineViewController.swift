@@ -81,24 +81,15 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         }
 
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
+            guard let self = self else { return }
             if let error = identifyLayerResult.error {
                 print(error)
-            } else if let weakSelf = self {
-                var popups = [AGSPopup]()
-                let geoElements = identifyLayerResult.geoElements
-                
-                for geoElement in geoElements {
-
-                    let popup = AGSPopup(geoElement: geoElement)
-                    popups.append(popup)
-                }
-                
-                if !popups.isEmpty {
-                    weakSelf.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
-                    weakSelf.popupsVC.modalPresentationStyle = .formSheet
-                    weakSelf.present(weakSelf.popupsVC, animated: true, completion: nil)
-                    weakSelf.popupsVC.delegate = weakSelf
-                }
+            } else if !identifyLayerResult.geoElements.isEmpty {
+                let popups = identifyLayerResult.geoElements.map(AGSPopup.init(geoElement:))
+                self.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
+                self.popupsVC.modalPresentationStyle = .formSheet
+                self.present(self.popupsVC, animated: true)
+                self.popupsVC.delegate = self
             }
         }
     }

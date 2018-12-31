@@ -38,20 +38,15 @@ class WMTSLayerViewController: UIViewController {
         
         //load the WMTS service to access the service information
         self.wmtsService.load { [weak self] (error) in
+            guard let self = self else { return }
             if let error = error {
-                self?.presentAlert(message: "Failed to load WMTS layer: \(error.localizedDescription)")
-            } else {
-                //get the service information or metadata about the WMTS service
-                if let weakSelf = self, let wmtsServiceInfo = weakSelf.wmtsService.serviceInfo,
-                    //get information about the layers available in the WMTS service
-                    let layerInfo = wmtsServiceInfo.layerInfos.first {
-                    
-                    //create a WMTS layer using the first element in the collection of WMTS layer info objects
-                    let wmtsLayer = AGSWMTSLayer(layerInfo: layerInfo)
-                    
-                    //set the basemap of the map with WMTS layer
-                    weakSelf.map.basemap = AGSBasemap(baseLayer: wmtsLayer)
-                }
+                self.presentAlert(message: "Failed to load WMTS layer: \(error.localizedDescription)")
+            } else if let layerInfo = self.wmtsService.serviceInfo?.layerInfos.first {
+                // Create a WMTS layer using the first element in the collection
+                // of WMTS layer info objects.
+                let wmtsLayer = AGSWMTSLayer(layerInfo: layerInfo)
+                // Set the basemap of the map with WMTS layer.
+                self.map.basemap = AGSBasemap(baseLayer: wmtsLayer)
             }
         }
         

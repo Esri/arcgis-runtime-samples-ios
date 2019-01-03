@@ -45,3 +45,40 @@ class Calculate3DDistanceViewControllerTests: XCTestCase {
         }
     }
 }
+
+class AbsoluteValueFunctionTests: XCTestCase {
+    func testApplyToX() {
+        let zeroFunction1 = AbsoluteValueFunction(a: 0, h: 0, k: 0)
+        
+        XCTAssertEqual(zeroFunction1.apply(to: -1), 0)
+        XCTAssertEqual(zeroFunction1.apply(to: 0), 0)
+        XCTAssertEqual(zeroFunction1.apply(to: 1), 0)
+        
+        let function2 = AbsoluteValueFunction(a: -2, h: 0, k: 0)
+        
+        XCTAssertEqual(function2.apply(to: -1), -2)
+        XCTAssertEqual(function2.apply(to: 0), 0)
+        XCTAssertEqual(function2.apply(to: 1), -2)
+        
+        let function3 = AbsoluteValueFunction(a: 1, h: 3, k: 0)
+        
+        XCTAssertEqual(function3.apply(to: -1), 4)
+        XCTAssertEqual(function3.apply(to: 0), 3)
+        XCTAssertEqual(function3.apply(to: 1), 2)
+        
+        let function4 = AbsoluteValueFunction(a: 1, h: 0, k: 7)
+        
+        XCTAssertEqual(function4.apply(to: -1), 8)
+        XCTAssertEqual(function4.apply(to: 0), 7)
+        XCTAssertEqual(function4.apply(to: 1), 8)
+    }
+    
+    func testInitWithVertexAndPoint() {
+        let vertex = Point(x: 0.1, y: -70)
+        let point = Point(x: 0, y: -120)
+        let function = AbsoluteValueFunction(vertex: vertex, point: point)
+        XCTAssertEqual(function.a, -500)
+        XCTAssertEqual(function.h, 0.1)
+        XCTAssertEqual(function.k, -70)
+    }
+}

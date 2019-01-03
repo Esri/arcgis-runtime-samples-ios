@@ -17,29 +17,25 @@ import UIKit
 /// A basic interface for selecting one options from a list,
 /// showing the checkmark accessory for the selected cell.
 class OptionsTableViewController: UITableViewController {
+    struct Option {
+        let label: String
+        let image: UIImage?
+        
+        init(label: String, image: UIImage? = nil) {
+            self.label = label
+            self.image = image
+        }
+    }
     
     private let options: [Option]
     private var selectedIndex: Int
     private let onChange: (Int) -> Void
     
-    struct Option {
-        let label: String
-        let image: UIImage?
-        
-        init(label: String, imageName: String? = nil) {
-            self.label = label
-            if let imageName = imageName {
-                self.image = UIImage(named: imageName)
-            } else {
-                self.image = nil
-            }
-        }
-    }
-    
     convenience init(labels: [String], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
         let options = labels.map { Option(label: $0) }
         self.init(options: options, selectedIndex: selectedIndex, onChange: onChange)
     }
+    
     init(options: [Option], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
         self.options = options
         self.selectedIndex = selectedIndex
@@ -81,10 +77,9 @@ class OptionsTableViewController: UITableViewController {
         selectedIndex = indexPath.row
         onChange(indexPath.row)
     }
-    
 }
+
 private class OptionCell: UITableViewCell {
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         accessoryType = selected ? .checkmark : .none
     }

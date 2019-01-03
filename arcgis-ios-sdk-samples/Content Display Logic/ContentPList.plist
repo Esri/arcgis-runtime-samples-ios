@@ -763,6 +763,14 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to display and work with coordinate system grids such as LatitudeLongitude, MGRS, UTM and USNG on a map view</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Graphics overlay (dictionary renderer) 3D</string>
+				<key>storyboardName</key>
+				<string>GraphicsOverlayDictionaryRenderer3D</string>
+				<key>descriptionText</key>
+				<string>Demonstrates how to display billboarded point graphics with military symbols.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

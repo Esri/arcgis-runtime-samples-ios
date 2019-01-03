@@ -156,7 +156,7 @@ class MapImageSublayersVC: UITableViewController {
     @IBAction private func doneAction() {
         
         //dismiss view controller
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
         
         //update the removed sublayers array on the delegate
         self.delegate?.mapImageSublayersVC(mapImageSublayersVC: self, didCloseWith: self.removedMapImageSublayers)

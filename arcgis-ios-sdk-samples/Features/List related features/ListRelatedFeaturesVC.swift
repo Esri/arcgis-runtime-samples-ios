@@ -166,6 +166,6 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
     
     //to hide popover controller on rotation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
 }

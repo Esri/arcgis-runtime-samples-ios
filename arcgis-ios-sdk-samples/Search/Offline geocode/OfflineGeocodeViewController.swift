@@ -105,7 +105,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                 //if a result was returned display the graphic on the map view
                 //using the first result, as it is the more relevant
                 if let result = results?.first {
-                    let graphic = self.graphicForPoint(result.displayLocation!, attributes: result.attributes as [String: AnyObject]?)
+                    let graphic = self.makeGraphic(point: result.displayLocation!, attributes: result.attributes)
                     self.graphicsOverlay.graphics.add(graphic)
                     
                     //zoom to the extent of the graphic
@@ -135,7 +135,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         }
         
         //create a graphic and add to the overlay
-        let graphic = self.graphicForPoint(normalizedPoint, attributes: [String: AnyObject]())
+        let graphic = self.makeGraphic(point: normalizedPoint)
         self.graphicsOverlay.graphics.add(graphic)
         
         //perform reverse geocode
@@ -170,13 +170,12 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     }
     
     //method returns a graphic object for the point and attributes provided
-    private func graphicForPoint(_ point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
-        let markerImage = UIImage(named: "RedMarker")!
+    private func makeGraphic(point: AGSPoint, attributes: [String: Any]? = nil) -> AGSGraphic {
+        let markerImage = #imageLiteral(resourceName: "RedMarker")
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
         symbol.leaderOffsetY = markerImage.size.height / 2
         symbol.offsetY = markerImage.size.height / 2
-        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: attributes)
-        return graphic
+        return AGSGraphic(geometry: point, symbol: symbol, attributes: attributes)
     }
     
     //method to show the callout for the provided graphic, with tap location details

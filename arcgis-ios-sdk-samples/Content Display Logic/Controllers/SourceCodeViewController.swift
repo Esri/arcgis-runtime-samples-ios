@@ -108,14 +108,13 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             
-            controller.setSelectAction({ [weak self] (index: Int) in
-                if let weakSelf = self {
-                    weakSelf.selectedFilenameIndex = index
-                    let filename = weakSelf.filenames[index]
-                    weakSelf.loadHTMLPage(filename: filename)
-                    weakSelf.dismiss(animated: true, completion: nil)
-                }
-            })
+            controller.setSelectAction { [weak self] (index: Int) in
+                guard let self = self else { return }
+                self.selectedFilenameIndex = index
+                let filename = self.filenames[index]
+                self.loadHTMLPage(filename: filename)
+                self.dismiss(animated: true)
+            }
         }
     }
     

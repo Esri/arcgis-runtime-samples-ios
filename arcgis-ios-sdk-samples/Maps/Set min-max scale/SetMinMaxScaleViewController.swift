@@ -28,7 +28,7 @@ class SetMinMaxScaleViewController: UIViewController {
         }
     }
     
-    /// Creates a map.
+    /// Creates a map with the min and max scale set.
     ///
     /// - Returns: A new `AGSMap` object.
     func makeMap() -> AGSMap {

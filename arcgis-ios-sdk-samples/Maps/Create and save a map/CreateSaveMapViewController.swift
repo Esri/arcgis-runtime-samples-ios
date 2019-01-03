@@ -75,7 +75,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         alertController.addAction(okAction)
         alertController.addAction(openAction)
         
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
     
     // MARK: - Actions

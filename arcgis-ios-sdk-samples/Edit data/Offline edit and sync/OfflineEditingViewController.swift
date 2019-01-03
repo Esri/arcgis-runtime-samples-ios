@@ -336,7 +336,7 @@ class OfflineEditingViewController: UIViewController {
             let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: .alert)
             alert.addAction(noAction)
             alert.addAction(yesAction)
-            self.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true)
         } else {
             switchToServiceMode()
         }
@@ -392,7 +392,7 @@ class OfflineEditingViewController: UIViewController {
         navigationItem.hidesBackButton = false
         navigationItem.rightBarButtonItem?.isEnabled = true
         if let popupsVC = popupsVC {
-             present(popupsVC, animated: true, completion: nil)
+             present(popupsVC, animated: true)
         }
         NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
@@ -442,7 +442,7 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
                     let popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
                     self.popupsVC = popupsVC
                     popupsVC.delegate = self
-                    self.present(popupsVC, animated: true, completion: nil)
+                    self.present(popupsVC, animated: true)
                 } else {
                     self.presentAlert(message: "No features selected")
                 }

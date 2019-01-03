@@ -161,7 +161,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             viewController.popoverPresentationController?.sourceRect = sender.bounds
             
             // Present view controller
-            present(viewController, animated: true, completion: nil)
+            present(viewController, animated: true)
         }
 
         // Check button by tag

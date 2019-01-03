@@ -96,7 +96,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
                 if !popups.isEmpty {
                     weakSelf.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
                     weakSelf.popupsVC.modalPresentationStyle = .formSheet
-                    weakSelf.present(weakSelf.popupsVC, animated: true, completion: nil)
+                    weakSelf.present(weakSelf.popupsVC, animated: true)
                     weakSelf.popupsVC.delegate = weakSelf
                 }
             }
@@ -189,7 +189,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         
         //present the popups view controller again
-        self.present(self.popupsVC, animated: true, completion: nil)
+        self.present(self.popupsVC, animated: true)
         
         //remove self as observer for notifications
         NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)

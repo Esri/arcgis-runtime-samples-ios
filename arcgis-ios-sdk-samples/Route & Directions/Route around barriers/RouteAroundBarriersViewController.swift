@@ -66,9 +66,6 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         
         //get default parameters
         self.getDefaultParameters()
-        
-//        //hide directions list
-//        self.setRouteDetailsVisibility(visible: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {

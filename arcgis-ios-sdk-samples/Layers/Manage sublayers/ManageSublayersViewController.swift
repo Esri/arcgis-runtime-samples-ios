@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelegate {
+class ManageSublayersViewController: UIViewController, MapImageSublayersViewControllerDelegate {
     @IBOutlet private var mapView: AGSMapView!
     
     private var workspaceID = "MyDatabaseWorkspaceIDSSR2"
@@ -27,7 +27,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController", "MapImageSublayersVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController", "MapImageSublayersViewController"]
         
         //instantiate map with basemap
         let map = AGSMap(basemap: .streets())
@@ -87,9 +87,9 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
         self.removedMapImageSublayers.append(contentsOf: [mapImageSublayer1, mapImageSublayer2])
     }
     
-    // MARK: - MapImageSublayersVCDelegate
+    // MARK: - MapImageSublayersViewControllerDelegate
     
-    func mapImageSublayersVC(mapImageSublayersVC: MapImageSublayersVC, didCloseWith removedMapImageSublayers: [AGSArcGISMapImageSublayer]) {
+    func mapImageSublayersViewController(_ controller: MapImageSublayersViewController, didCloseWith removedMapImageSublayers: [AGSArcGISMapImageSublayer]) {
         self.removedMapImageSublayers = removedMapImageSublayers
     }
     
@@ -98,7 +98,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersVCDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MapImageSublayersSegue",
             let navigationController = segue.destination as? UINavigationController,
-            let controller = navigationController.viewControllers.first as? MapImageSublayersVC {
+            let controller = navigationController.viewControllers.first as? MapImageSublayersViewController {
             controller.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 300)
             controller.mapImageLayer = self.mapImageLayer

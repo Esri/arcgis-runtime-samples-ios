@@ -16,15 +16,15 @@
 import UIKit
 import ArcGIS
 
-protocol MapImageSublayersVCDelegate: AnyObject {
-    func mapImageSublayersVC(mapImageSublayersVC: MapImageSublayersVC, didCloseWith removedMapImageSublayers: [AGSArcGISMapImageSublayer])
+protocol MapImageSublayersViewControllerDelegate: AnyObject {
+    func mapImageSublayersViewController(_ controller: MapImageSublayersViewController, didCloseWith removedMapImageSublayers: [AGSArcGISMapImageSublayer])
 }
 
-class MapImageSublayersVC: UITableViewController {
+class MapImageSublayersViewController: UITableViewController {
     var mapImageLayer: AGSArcGISMapImageLayer!
-    var removedMapImageSublayers: [AGSArcGISMapImageSublayer]!
+    var removedMapImageSublayers = [AGSArcGISMapImageSublayer]()
     
-    weak var delegate: MapImageSublayersVCDelegate?
+    weak var delegate: MapImageSublayersViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class MapImageSublayersVC: UITableViewController {
         if section == 0 {
             return self.mapImageLayer?.mapImageSublayers.count ?? 0
         } else {
-            return self.removedMapImageSublayers?.count ?? 0
+            return self.removedMapImageSublayers.count
         }
     }
     
@@ -151,6 +151,6 @@ class MapImageSublayersVC: UITableViewController {
         self.dismiss(animated: true)
         
         //update the removed sublayers array on the delegate
-        self.delegate?.mapImageSublayersVC(mapImageSublayersVC: self, didCloseWith: self.removedMapImageSublayers)
+        self.delegate?.mapImageSublayersViewController(self, didCloseWith: self.removedMapImageSublayers)
     }
 }

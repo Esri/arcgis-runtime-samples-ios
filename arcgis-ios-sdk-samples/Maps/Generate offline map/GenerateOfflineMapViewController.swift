@@ -240,7 +240,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         alertController.addAction(cancelAction)
         alertController.addAction(loginAction)
         alertController.preferredAction = loginAction
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
     
     private func extentViewFrameToEnvelope() -> AGSEnvelope {

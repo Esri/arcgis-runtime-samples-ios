@@ -47,7 +47,7 @@ class ListKMLContentsViewController: UITableViewController {
                 // display the error as an alert
                 let alertController = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true)
                 return
             }
             

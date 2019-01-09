@@ -51,7 +51,7 @@ class EAOptionsViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func cancelAction() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
     
 }

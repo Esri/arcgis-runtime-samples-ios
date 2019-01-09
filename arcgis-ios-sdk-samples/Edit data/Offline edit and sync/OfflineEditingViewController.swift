@@ -471,7 +471,7 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, readyToEditGeometryWith sketchEditor: AGSSketchEditor?, for popup: AGSPopup) {
         
         //Dismiss the popup view controller
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
         
         //Prepare the current view controller for sketch mode
         mapView.callout.isHidden = true
@@ -528,7 +528,7 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
     
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         //dismiss the popups view controller
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
         popupsVC = nil
     }
 }

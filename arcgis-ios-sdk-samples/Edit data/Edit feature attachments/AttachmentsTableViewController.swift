@@ -144,10 +144,10 @@ class AttachmentsTableViewController: UITableViewController {
                 if let error = error {
                     self.presentAlert(error: error)
                 }
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true)
             }
         } else {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }
     }
     

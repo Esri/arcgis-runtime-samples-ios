@@ -302,7 +302,7 @@ class Animate3DGraphicViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // dismiss any shown view controllers
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: false)
         
         if let controller = segue.destination as? CameraSettingsViewController {
             controller.orbitGeoElementCameraController = orbitGeoElementCameraController

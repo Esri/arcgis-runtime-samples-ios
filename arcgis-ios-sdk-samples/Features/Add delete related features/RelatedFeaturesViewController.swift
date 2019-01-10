@@ -182,6 +182,6 @@ class RelatedFeaturesViewController: UITableViewController {
     
     @IBAction private func doneAction() {
         //dismiss view controller
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
 }

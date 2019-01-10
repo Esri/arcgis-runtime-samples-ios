@@ -52,7 +52,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     private func dismissFeatureTemplatePickerVC() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
     
     func applyEdits() {
@@ -107,7 +107,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, readyToEditGeometryWith sketchEditor: AGSSketchEditor?, for popup: AGSPopup) {
         //Dismiss the popup view controller
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
         
         //Prepare the current view controller for sketch mode
         self.mapView.callout.isHidden = true
@@ -171,7 +171,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         
         //present the popups view controller again
-        self.present(self.popupsVC, animated: true, completion: nil)
+        self.present(self.popupsVC, animated: true)
         
         //remove self as observer for notifications
         NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
@@ -224,7 +224,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.popupsVC.modalPresentationStyle = .formSheet
 
         //First, dismiss the Feature Template Picker
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false)
 
         //Next, Present the popup view controller
         self.present(self.popupsVC, animated: true) { [weak self] in

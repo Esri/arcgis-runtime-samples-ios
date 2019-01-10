@@ -184,7 +184,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address: String) {
         self.searchBar.text = address
         self.geocodeSearchText(address)
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
         self.hideKeyboard()
     }
 }

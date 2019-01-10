@@ -276,6 +276,6 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     func sanDiegoAddressesViewController(_ sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address: String) {
         self.searchBar.text = address
         self.geocodeSearchText(address)
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
 }

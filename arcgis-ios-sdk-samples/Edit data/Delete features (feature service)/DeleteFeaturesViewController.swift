@@ -121,6 +121,6 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         alertController.addAction(cancelAlertAction)
         
         //present alert controller
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true)
     }
 }

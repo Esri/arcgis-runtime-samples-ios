@@ -72,6 +72,8 @@ opt_in_rules: # some rules are only opt-in
   - unused_private_declaration
   - untyped_error_in_catch
   - vertical_parameter_alignment_on_call
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
   - yoda_condition
 
 identifier_name:

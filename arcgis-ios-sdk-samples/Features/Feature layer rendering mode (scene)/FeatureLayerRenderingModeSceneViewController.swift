@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FeatureLayerRenderingModeSceneViewController: UIViewController {
-    
     @IBOutlet private weak var dynamicSceneView: AGSSceneView!
     @IBOutlet private weak var staticSceneView: AGSSceneView!
     
@@ -51,7 +50,6 @@ class FeatureLayerRenderingModeSceneViewController: UIViewController {
         
         // loop through all the tables in the order we want to add them, bottom to top
         for featureTable in [polygonTable, polylineTable, pointTable] {
-            
             // create a feature layer for the table
             let dynamicFeatureLayer = AGSFeatureLayer(featureTable: featureTable)
             // create a second, identical feature layer from the first
@@ -68,7 +66,6 @@ class FeatureLayerRenderingModeSceneViewController: UIViewController {
     }
     
     @IBAction func animateZoomAction(_ sender: UIBarButtonItem) {
-        
         // disable the button during the animation
         sender.isEnabled = false
 
@@ -91,5 +88,4 @@ class FeatureLayerRenderingModeSceneViewController: UIViewController {
             self?.zoomedIn.toggle()
         }
     }
-    
 }

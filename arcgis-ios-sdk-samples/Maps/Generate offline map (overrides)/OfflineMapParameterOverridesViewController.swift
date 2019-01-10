@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class OfflineMapParameterOverridesViewController: UITableViewController {
-    
     var parameterOverrides: AGSGenerateOfflineMapParameterOverrides?
     var map: AGSMap?
     
@@ -123,7 +122,6 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     
     /// Updates the `AGSGenerateOfflineMapParameterOverrides` object with the user-set values.
     private func setParameterOverridesFromUI() {
-        
         restrictBasemapScaleLevelRange()
         bufferBasemapAreaOfInterest()
         evaluateLayerVisiblity()
@@ -134,7 +132,6 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     // MARK: - Basemap adjustment
     
     private func restrictBasemapScaleLevelRange() {
-        
         /// The user-set min scale value
         let minScale = Int(minScaleLevelSlider.value)
         /// The user-set max scale value
@@ -153,7 +150,6 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     }
     
     private func bufferBasemapAreaOfInterest() {
-        
         guard let tileCacheParameters = getExportTileCacheParametersForBasemapLayer(),
             /// The area initially specified for download when the default parameters object was created
             let areaOfInterest = tileCacheParameters.areaOfInterest else {
@@ -172,7 +168,6 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     // MARK: - Layer adjustment
     
     private func addHydrantFilter() {
-        
         /// The user-set min flow rate value
         let minFlowRate = minHydrantFlowRateSlider.value
         
@@ -183,7 +178,6 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     }
     
     private func evaluateLayerVisiblity() {
-        
         func excludeLayerFromDownload(named name: String) {
             if let layer = operationalMapLayer(named: name),
                 let serviceLayerID = serviceLayerID(for: layer),
@@ -200,7 +194,6 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
         if !includeServiceConnectionsSwitch.isOn {
             excludeLayerFromDownload(named: "Service Connection")
         }
-        
     }
     
     private func evaluatePipeLayersExtentCropping() {

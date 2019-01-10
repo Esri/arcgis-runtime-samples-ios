@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 private extension UIImage {
-    
     func croppedImage(_ size: CGSize) -> UIImage {
         //calculate rect based on input size
         let originX = (size.width - size.width) / 2
@@ -34,7 +33,6 @@ private extension UIImage {
 }
 
 class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, SaveAsVCDelegate {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var portal: AGSPortal?
@@ -59,7 +57,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     }
     
     private func showSuccess() {
-        
         let alertController = UIAlertController(title: "Saved Successfully", message: nil, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: .cancel)
@@ -108,7 +105,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     // MARK: - CreateOptionsVCDelegate
     
     func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]) {
-        
         //create a map with the selected basemap
         let map = AGSMap(basemap: basemap)
         
@@ -124,14 +120,12 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
     // MARK: - SaveAsVCDelegate
     
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
-        
         SVProgressHUD.show(withStatus: "Saving")
         
         //set the initial viewpoint from map view
         mapView.map?.initialViewpoint = mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)
         
         mapView.exportImage { [weak self] (image: UIImage?, error: Error?) in
-            
             guard let self = self else {
                 return
             }
@@ -153,5 +147,4 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
             }
         }
     }
-
 }

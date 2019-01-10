@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class MILShowLegendViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var legendBBI: UIBarButtonItem!
     

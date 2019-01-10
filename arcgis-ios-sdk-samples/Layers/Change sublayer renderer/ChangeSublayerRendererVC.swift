@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ChangeSublayerRendererVC: UIViewController {
-
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var resetBarButtonItem: UIBarButtonItem!
     @IBOutlet private var applyRendererBarButtonItem: UIBarButtonItem!

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
-    
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var distanceLabel: UILabel!
@@ -203,10 +202,8 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     func route(with params: AGSRouteParameters, isLongPressed: Bool) {
-        
         //solve for route
         self.routeTaskOperation = self.routeTask.solveRoute(with: params) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
-            
             if let error = error {
                 if (error as NSError).code != NSUserCancelledError {
                     print(error)
@@ -228,7 +225,6 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
             
             self.routeGraphicsOverlay.graphics.remove(self.longPressedRouteGraphic)
             self.longPressedRouteGraphic = nil
-            
         }
         
         //if a route is returned, create a graphic for it

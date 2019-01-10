@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate, EAOptionsVCDelegate {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -60,7 +59,6 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         SVProgressHUD.show(withStatus: "Applying edits")
         
         featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -114,7 +112,6 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         if segue.identifier == self.optionsSegueName,
             let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? EAOptionsViewController {
-            
             controller.options = self.types
             controller.delegate = self
         }
@@ -127,7 +124,6 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         selectedFeature.attributes["typdamage"] = types[index]
         featureTable.update(selectedFeature) { [weak self] (error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             if let error = error {

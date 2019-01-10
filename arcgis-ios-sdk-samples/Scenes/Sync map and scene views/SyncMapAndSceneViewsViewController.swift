@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class SyncMapAndSceneViewsViewController: UIViewController {
-
     /// The map view to display the map.
     @IBOutlet private weak var mapView: AGSMapView!
     /// The scene view to display the scene.
@@ -52,7 +51,6 @@ class SyncMapAndSceneViewsViewController: UIViewController {
     
     /// Sets the viewpoint of all views to that of the sender.
     private func synchronizeViewpoints(to sender: AGSGeoView) {
-        
         // Check that the user is actively navigating this view, since viewpoint
         // change events are also called on `setViewpoint(_:)`. This check prevents
         // a feedback loop.
@@ -73,7 +71,5 @@ class SyncMapAndSceneViewsViewController: UIViewController {
                 geoView?.setViewpoint(senderViewpoint)
             }
         }
-        
     }
-
 }

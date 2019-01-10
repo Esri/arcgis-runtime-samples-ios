@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class OpenMapURLSettingsViewController: UITableViewController {
-    
     var mapModels: [OpenMapURLViewController.MapAtURL] = []
     var initialSelectedID: String?
     var onChange: ((URL) -> Void)?
@@ -66,5 +65,4 @@ class OpenMapURLSettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
-    
 }

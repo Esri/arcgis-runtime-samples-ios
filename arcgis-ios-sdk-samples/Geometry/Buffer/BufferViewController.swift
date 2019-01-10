@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class BufferViewController: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     /// The radius to pass into the buffer functions.
@@ -92,13 +91,10 @@ class BufferViewController: UIViewController {
             overlay.graphics.removeAllObjects()
         }
     }
-    
 }
 
 extension BufferViewController: AGSGeoViewTouchDelegate {
-    
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
         /// The buffer radius converted to meters.
         let bufferRadiusInMeters = bufferDistance.converted(to: .meters).value
        
@@ -134,17 +130,13 @@ extension BufferViewController: AGSGeoViewTouchDelegate {
 }
 
 extension BufferViewController: BufferOptionsViewControllerDelegate {
-    
     func bufferOptionsViewController(_ bufferOptionsViewController: BufferOptionsViewController, bufferDistanceChangedTo bufferDistance: Measurement<UnitLength>) {
         self.bufferDistance = bufferDistance
     }
-    
 }
 
 extension BufferViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

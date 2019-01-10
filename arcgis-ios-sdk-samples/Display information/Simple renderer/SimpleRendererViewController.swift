@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class SimpleRendererViewController: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     var graphicsOverlay = AGSGraphicsOverlay()
@@ -42,7 +41,6 @@ class SimpleRendererViewController: UIViewController {
     }
 
     private func addGraphics() {
-        
         //Create points to add graphics to the map to allow a renderer to style them
         //These are in WGS84 coordinates (Long, Lat)
         let oldFaithfulPoint = AGSPoint(x: -110.828140, y: 44.460458, spatialReference: .wgs84())
@@ -74,5 +72,4 @@ class SimpleRendererViewController: UIViewController {
         //assign the renderer to the graphics overlay
         self.graphicsOverlay.renderer = simpleRenderer
     }
-
 }

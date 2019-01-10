@@ -15,7 +15,6 @@
 import ArcGIS
 
 class FeatureLayerShapefileViewController: UIViewController {
-    
     @IBOutlet weak var mapView: AGSMapView!
 
     var map: AGSMap

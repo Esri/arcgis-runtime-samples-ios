@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ViewshedSettingsVC: UITableViewController {
-    
     weak var viewshed: AGSLocationViewshed? {
         didSet {
             if isViewLoaded {
@@ -82,7 +81,6 @@ class ViewshedSettingsVC: UITableViewController {
     }
     
     private func updateUIForViewshed() {
-        
         guard let viewshed = viewshed else {
             return
         }
@@ -128,7 +126,6 @@ class ViewshedSettingsVC: UITableViewController {
     }
     
     @IBAction private func sliderValueChanged(sender: UISlider) {
-        
         guard let viewshed = viewshed else {
             return
         }
@@ -184,5 +181,4 @@ class ViewshedSettingsVC: UITableViewController {
             break
         }
     }
-
 }

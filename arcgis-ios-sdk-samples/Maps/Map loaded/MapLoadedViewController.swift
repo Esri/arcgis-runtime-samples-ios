@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class MapLoadedViewController: UIViewController {
-    
     /// The map displayed in the map view.
     let map = AGSMap(basemap: .imageryWithLabels())
 

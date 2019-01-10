@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDelegate {
-
     @IBOutlet var mapView: AGSMapView!
     
     private var geoprocessingTask: AGSGeoprocessingTask!
@@ -65,7 +64,6 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
     }
     
     private func calculateViewshed(at point: AGSPoint) {
-        
         //remove previous graphics
         self.resultGraphicsOverlay.graphics.removeAllObjects()
         
@@ -90,7 +88,6 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         
         //add the new feature to the feature collection table
         featureCollectionTable.add(newFeature) { [weak self] (error: Error?) in
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
@@ -104,7 +101,6 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
     }
     
     private func performGeoprocessing(_ featureCollectionTable: AGSFeatureCollectionTable) {
-        
         //geoprocessing parameters
         let params = AGSGeoprocessingParameters(executionType: .synchronousExecute)
         params.processSpatialReference = featureCollectionTable.spatialReference
@@ -118,12 +114,9 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         
         //start the job
         geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
-            
             //show progress hud with job status
             SVProgressHUD.show(withStatus: status.statusString())
-            
         }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             

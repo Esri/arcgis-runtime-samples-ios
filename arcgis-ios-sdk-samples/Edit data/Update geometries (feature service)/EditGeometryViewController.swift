@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var toolbar: UIToolbar!
     @IBOutlet private var toolbarBottomConstraint: NSLayoutConstraint!
@@ -46,7 +45,6 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
 
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -91,7 +89,6 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
                 print(error)
             } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
                 let feature = features.first {
-               
                 //show callout for the first feature
                 let title = feature.attributes["typdamage"] as! String
                 self?.mapView.callout.title = title
@@ -129,7 +126,6 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     
     @IBAction func doneAction() {
         if let newGeometry = self.mapView.sketchEditor?.geometry {
-
             self.selectedFeature.geometry = newGeometry
             self.featureTable.update(self.selectedFeature, completion: { [weak self] (error: Error?) in
                 if let error = error {

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate {
-
     @IBOutlet var mapView: AGSMapView!
     
     /// Geoprocessing task with the url of the service
@@ -51,11 +50,9 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         
         //assign map to map view
         mapView.map = map
-        
     }
     
     private func analyzeHotspots(_ fromDate: Date, toDate: Date) {
-        
         //cancel previous job request
         self.geoprocessingJob?.progress.cancel()
         
@@ -79,9 +76,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
             //show progress hud with job status
             SVProgressHUD.show(withStatus: status.statusString())
-            
         }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
@@ -116,7 +111,6 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     // MARK: - HotspotSettingsVCDelegate
     
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: Date, toDate: Date) {
-        
         hotspotSettingsViewController.dismiss(animated: true)
         
         analyzeHotspots(fromDate, toDate: toDate)
@@ -130,5 +124,4 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
             controller.delegate = self
         }
     }
-    
 }

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class MapViewDrawStatusViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var activityIndicatorView: UIView!
     

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class OpenMapURLViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     /// The portal item ID of the map now shown in the map view.
@@ -82,13 +81,10 @@ class OpenMapURLViewController: UIViewController {
             controller.presentationController?.delegate = self
         }
     }
-
 }
 
 extension OpenMapURLViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

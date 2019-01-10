@@ -17,12 +17,10 @@ import UIKit
 import ArcGIS
 
 protocol RGBRendererSettingsVCDelegate: AnyObject {
-    
     func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
 }
 
 class RGBRendererSettingsVC: UITableViewController {
-    
     weak var delegate: RGBRendererSettingsVCDelegate?
     
     weak var stretchTypeCell: UITableViewCell?
@@ -133,7 +131,6 @@ class RGBRendererSettingsVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         //first row cell is always RGBRendererStretchTypeCell
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RGBRendererStretchTypeCell", for: indexPath)
@@ -208,5 +205,4 @@ class RGBRendererSettingsVC: UITableViewController {
         optionsViewController.title = "Stretch Type"
         show(optionsViewController, sender: self)
     }
-    
 }

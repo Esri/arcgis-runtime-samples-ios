@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class GPKGLayersViewController: UITableViewController {
-    
     var map: AGSMap?
     var allLayers: [AGSLayer] = [] {
         didSet {
@@ -122,7 +121,6 @@ class GPKGLayersViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         // Ensure we are able to get the AGSLayer from the row.
         guard let layer = layer(forTableView: tableView, andIndexPath: indexPath) else {
             print("Could not get layer for index path")
@@ -131,7 +129,6 @@ class GPKGLayersViewController: UITableViewController {
         
         switch editingStyle {
         case .delete:
-        
             tableView.beginUpdates()
             
             // Remove the layer from the map.
@@ -148,7 +145,6 @@ class GPKGLayersViewController: UITableViewController {
             
             tableView.endUpdates()
         case .insert:
-            
             tableView.beginUpdates()
             
             // Add it on top of any other layers.

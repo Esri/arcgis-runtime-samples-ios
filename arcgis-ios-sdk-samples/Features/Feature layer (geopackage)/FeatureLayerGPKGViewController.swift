@@ -15,7 +15,6 @@
 import ArcGIS
 
 class FeatureLayerGPKGViewController: UIViewController {
-    
     @IBOutlet weak var mapView: AGSMapView!
     
     var geoPackage: AGSGeoPackage?
@@ -49,5 +48,4 @@ class FeatureLayerGPKGViewController: UIViewController {
         // Display the map in the map view.
         mapView.map = map
     }
-    
 }

@@ -16,7 +16,5 @@
 import UIKit
 
 class StretchRendererInputCell: UITableViewCell {
-
     @IBOutlet var textField: UITextField!
-
 }

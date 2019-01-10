@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class MILLegendTableViewController: UITableViewController {
-
     var operationalLayers: NSMutableArray!
     var legendInfosDict = [String: [AGSLegendInfo]]()
     private var orderArray: [AGSLayerContent]!
@@ -29,16 +28,13 @@ class MILLegendTableViewController: UITableViewController {
     }
     
     func populateLegends(with layers: [AGSLayerContent]) {
-
         for layer in layers {
-
             if !layer.subLayerContents.isEmpty {
                 self.populateLegends(with: layer.subLayerContents)
             } else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
                 layer.fetchLegendInfos(completion: { [weak self] (legendInfos: [AGSLegendInfo]?, error: Error?) in
-
                     if let error = error {
                         print(error)
                     } else {

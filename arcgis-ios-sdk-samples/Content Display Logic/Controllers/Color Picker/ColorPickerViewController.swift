@@ -15,7 +15,6 @@
 import UIKit
 
 class ColorPickerViewController: UITableViewController {
-    
     @IBOutlet weak var hueSlider: UISlider!
     @IBOutlet weak var saturationSlider: UISlider!
     @IBOutlet weak var brightnessSlider: UISlider!
@@ -100,5 +99,4 @@ class ColorPickerViewController: UITableViewController {
         updateUIForAlpha()
         onUpdate?(color)
     }
-
 }

@@ -16,14 +16,12 @@ import UIKit
 import ArcGIS
 
 class GroupUserCell: UITableViewCell {
-
     @IBOutlet private var thumbnailImageView: UIImageView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
     
     var portalUser: AGSPortalUser! {
         didSet {
-            
             self.titleLabel.text = portalUser.fullName
             self.descriptionLabel.text = portalUser.userDescription
             self.thumbnailImageView.layer.cornerRadius = 40

@@ -15,7 +15,6 @@
 import Foundation
 
 class SampleSearchEngine {
-    
     private var displayNamesByReadmeWords: [String: [String]] = [:]
     private var isLoadingReadmeIndex = false
     
@@ -42,14 +41,12 @@ class SampleSearchEngine {
         let tagger = NSLinguisticTagger(tagSchemes: [.tokenType, .nameType, .lexicalClass], options: 0)
         
         func addToIndex(string: String, sampleDisplayName: String) {
-            
             tagger.string = string
             let range = NSRange(location: 0, length: string.count)
             tagger.enumerateTags(in: range,
                                  scheme: NSLinguisticTagScheme.lexicalClass,
                                  options: [.omitWhitespace, .omitPunctuation],
                                  using: { (tag: NSLinguisticTag?, tokenRange: NSRange, sentenceRange: NSRange, _) in
-                
                 guard let tag = tag else {
                     return
                 }
@@ -86,7 +83,6 @@ class SampleSearchEngine {
     }
     
     private func samplesWithReadmes(matching query: String) -> [Sample] {
-        
         // skip readmes if not yet loaded
         guard !isLoadingReadmeIndex else {
             return []
@@ -106,7 +102,6 @@ class SampleSearchEngine {
     }
     
     private func samplesWithMetadata(matching query: String) -> [Sample] {
-        
         // the normalized term to find
         let lowercasedQuery = query.lowercased()
         
@@ -165,7 +160,6 @@ class SampleSearchEngine {
     // MARK: - Public methods
     
     func sortedSamples(matching query: String) -> [Sample] {
-        
         // get nodes with titles or descriptions matching the query
         var matchingNodes = samplesWithMetadata(matching: query)
        
@@ -183,5 +177,4 @@ class SampleSearchEngine {
         
         return matchingNodes
     }
-
 }

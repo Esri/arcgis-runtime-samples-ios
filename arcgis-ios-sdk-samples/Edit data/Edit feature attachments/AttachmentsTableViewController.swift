@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class AttachmentsTableViewController: UITableViewController {
-    
     weak var feature: AGSArcGISFeature? {
         didSet {
             loadAttachments()
@@ -26,12 +25,10 @@ class AttachmentsTableViewController: UITableViewController {
     private var attachments: [AGSAttachment] = []
     
     private func loadAttachments() {
-        
         //show progress hud
         SVProgressHUD.show(withStatus: "Loading attachments")
         
         feature?.fetchAttachments { [weak self] (attachments: [AGSAttachment]?, error: Error?) in
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
@@ -67,11 +64,9 @@ class AttachmentsTableViewController: UITableViewController {
     }
     
     private func downloadImage(for attachment: AGSAttachment) {
-        
         SVProgressHUD.show(withStatus: "Downloading attachment")
         
         attachment.fetchData { [weak self] (data: Data?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -83,7 +78,6 @@ class AttachmentsTableViewController: UITableViewController {
             } else if let data = data,
                 let index = self.attachments.firstIndex(of: attachment),
                 let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
-
                 cell.imageView?.image = UIImage(data: data)
             }
         }
@@ -120,7 +114,6 @@ class AttachmentsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         downloadImage(for: attachments[indexPath.row])
         
         tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
@@ -136,14 +129,11 @@ class AttachmentsTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func doneAction() {
-        
         if let table = feature?.featureTable as? AGSServiceFeatureTable {
-            
             //show progress hud
             SVProgressHUD.show(withStatus: "Applying edits")
             
             table.applyEdits { [weak self] (result, error) in
-                
                 //dismiss progress hud
                 SVProgressHUD.dismiss()
                 
@@ -156,15 +146,12 @@ class AttachmentsTableViewController: UITableViewController {
                 }
                 self.dismiss(animated: true)
             }
-            
         } else {
             dismiss(animated: true)
         }
-        
     }
     
     @IBAction func addAction() {
-        
         guard let pngData = UIImage(named: "LocationDisplayOffIcon")?.pngData() else {
             return
         }
@@ -173,7 +160,6 @@ class AttachmentsTableViewController: UITableViewController {
         SVProgressHUD.show(withStatus: "Adding attachment")
         
         feature?.addAttachment(withName: "Attachment.png", contentType: "png", data: pngData) { [weak self] (attachment: AGSAttachment?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -192,5 +178,4 @@ class AttachmentsTableViewController: UITableViewController {
             }
         }
     }
-
 }

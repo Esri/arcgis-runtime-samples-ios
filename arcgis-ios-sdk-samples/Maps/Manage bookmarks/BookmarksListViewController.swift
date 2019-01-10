@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class BookmarksListViewController: UITableViewController {
-    
     //list of bookmarks
     var bookmarks: [AGSBookmark]!
     
@@ -57,5 +56,4 @@ class BookmarksListViewController: UITableViewController {
         selectAction?(bookmark.viewpoint!)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
 }

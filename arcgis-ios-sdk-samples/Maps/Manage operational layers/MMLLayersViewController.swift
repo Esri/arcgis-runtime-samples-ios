@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class MMLLayersViewController: UITableViewController {
-    
     /// The map for which to manage the operational layers.
     weak var map: AGSMap?
     
@@ -101,7 +100,6 @@ class MMLLayersViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        
         if Section(rawValue: sourceIndexPath.section) == .operational,
             Section(rawValue: proposedDestinationIndexPath.section) == .operational {
             // only allow reordering within the operational layers section
@@ -136,7 +134,6 @@ class MMLLayersViewController: UITableViewController {
                 // insert the new row
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             })
-            
         case .insert:
             // move the layer from the removed layers to the operational layers
             let layer = removedLayers[indexPath.row]
@@ -150,10 +147,8 @@ class MMLLayersViewController: UITableViewController {
                 // insert the new row
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             })
-            
         case .none:
             break
         }
     }
-
 }

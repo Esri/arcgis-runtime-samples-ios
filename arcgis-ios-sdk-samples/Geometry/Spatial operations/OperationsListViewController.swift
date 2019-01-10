@@ -15,12 +15,10 @@
 import UIKit
 
 protocol OperationsListVCDelegate: AnyObject {
-    
     func operationsListViewController(_ operationsListViewController: OperationsListViewController, didSelectOperation index: Int)
 }
 
 class OperationsListViewController: UITableViewController {
-    
     weak var delegate: OperationsListVCDelegate?
     
     var operations: [String]!

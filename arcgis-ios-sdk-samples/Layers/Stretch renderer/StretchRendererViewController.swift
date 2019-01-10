@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class StretchRendererViewController: UIViewController, StretchRendererSettingsVCDelegate {
-    
     @IBOutlet var mapView: AGSMapView!
     
     private weak var rasterLayer: AGSRasterLayer?
@@ -70,9 +69,7 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
 }
 
 extension StretchRendererViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

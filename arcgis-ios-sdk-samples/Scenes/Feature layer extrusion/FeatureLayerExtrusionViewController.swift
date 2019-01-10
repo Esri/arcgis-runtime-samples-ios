@@ -93,5 +93,4 @@ class FeatureLayerExtrusionViewController: UIViewController {
             assertionFailure("Selected segment does not correspond to a statistic")
         }
     }
-    
 }

@@ -18,7 +18,6 @@ import XCTest
 @testable import ArcGIS_Runtime_SDK_Samples
 
 class CategoryTests: XCTestCase {
-    
     private let sampleData = """
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

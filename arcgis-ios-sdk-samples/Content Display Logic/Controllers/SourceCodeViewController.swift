@@ -83,7 +83,6 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     }
     
     func setupToolbarTitle(_ filename: String, arrowPointingDown: Bool) {
-
         var titleString = filename
         if self.filenames.count > 1 {
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
@@ -122,7 +121,6 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        
         return UIModalPresentationStyle.none
     }
 }

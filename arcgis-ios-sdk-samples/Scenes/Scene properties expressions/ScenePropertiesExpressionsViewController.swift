@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class ScenePropertiesExpressionsViewController: UIViewController {
-
     @IBOutlet var sceneView: AGSSceneView!
     @IBOutlet var headingLabel: UILabel!
     @IBOutlet var pitchLabel: UILabel!

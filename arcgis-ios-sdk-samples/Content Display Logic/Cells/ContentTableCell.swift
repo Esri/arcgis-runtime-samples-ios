@@ -15,7 +15,6 @@
 import UIKit
 
 class ContentTableCell: UITableViewCell {
-
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var detailLabel: UILabel!
@@ -25,5 +24,4 @@ class ContentTableCell: UITableViewCell {
             detailLabel.isHidden = !isExpanded
         }
     }
-    
 }

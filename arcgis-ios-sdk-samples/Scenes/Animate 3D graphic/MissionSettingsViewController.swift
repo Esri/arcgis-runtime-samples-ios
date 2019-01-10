@@ -16,14 +16,11 @@
 import UIKit
 
 protocol MissionSettingsVCDelegate: AnyObject {
-    
     func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didSelectMissionAtIndex index: Int)
-    
     func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didChangeSpeed speed: Int)
 }
 
 class MissionSettingsViewController: UITableViewController {
-
     @IBOutlet private weak var missionCell: UITableViewCell?
     @IBOutlet private weak var speedSlider: UISlider?
     @IBOutlet private weak var progressView: UIProgressView?

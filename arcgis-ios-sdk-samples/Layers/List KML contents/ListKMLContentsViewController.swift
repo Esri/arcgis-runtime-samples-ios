@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ListKMLContentsViewController: UITableViewController {
-    
     private var kmlDataset: AGSKMLDataset?
     
     /// The full node tree flattened to an array of tuples that include each node's level.
@@ -38,7 +37,6 @@ class ListKMLContentsViewController: UITableViewController {
         
         // load the dataset asynchronously so we can list its contents
         kmlDataset.load { [weak self] (error) in
-            
             guard let self = self else {
                 return
             }
@@ -130,12 +128,10 @@ class ListKMLContentsViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // get the reusable view controller displaying the scene
         if let sceneViewController = sceneViewController,
             // if the view controller is not already presented
              sceneViewController.presentingViewController == nil {
-           
             /// The node for the selected row.
             let selectedNode = flattenedNodes[indexPath.row].node
             // tell the view controller to show the selected node
@@ -144,5 +140,4 @@ class ListKMLContentsViewController: UITableViewController {
             show(sceneViewController, sender: self)
         }
     }
-    
 }

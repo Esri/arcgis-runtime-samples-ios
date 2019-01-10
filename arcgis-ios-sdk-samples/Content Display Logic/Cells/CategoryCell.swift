@@ -17,7 +17,6 @@
 import UIKit
 
 class CategoryCell: UICollectionViewCell {
-    
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var iconBackgroundView: UIView!
     @IBOutlet var iconImageView: UIImageView!

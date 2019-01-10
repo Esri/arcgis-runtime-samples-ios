@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
-    
     @IBOutlet var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -78,7 +77,6 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         SVProgressHUD.show(withStatus: "Identifying")
         
         self.mapView.identifyLayers(atScreenPoint: screen, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
@@ -93,7 +91,6 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     // MARK: - Helper methods
     
     private func handleIdentifyResults(_ results: [AGSIdentifyLayerResult]) {
-        
         var messageString = ""
         var totalCount = 0
         for identifyLayerResult in results {
@@ -147,5 +144,4 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         return count
     }
-    
 }

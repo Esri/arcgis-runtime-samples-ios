@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class MapRotationViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var slider: UISlider!
     @IBOutlet private weak var rotationLabel: UILabel!

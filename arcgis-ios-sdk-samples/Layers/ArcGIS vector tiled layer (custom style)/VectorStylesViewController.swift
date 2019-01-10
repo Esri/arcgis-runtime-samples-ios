@@ -17,12 +17,10 @@
 import UIKit
 
 protocol VectorStylesVCDelegate: AnyObject {
-    
     func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String)
 }
 
 class VectorStylesViewController: UITableViewController {
-    
     var itemIDs: [String] = []
     var selectedItemID: String?
     
@@ -50,5 +48,4 @@ class VectorStylesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
-    
 }

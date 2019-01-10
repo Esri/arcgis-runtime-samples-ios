@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
-    
     @IBOutlet weak var mapView: AGSMapView!
     private var map: AGSMap!
     

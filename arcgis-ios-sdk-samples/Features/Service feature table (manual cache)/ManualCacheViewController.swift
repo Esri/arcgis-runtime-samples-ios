@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ManualCacheViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -66,5 +65,4 @@ class ManualCacheViewController: UIViewController {
             }
         }
     }
-    
 }

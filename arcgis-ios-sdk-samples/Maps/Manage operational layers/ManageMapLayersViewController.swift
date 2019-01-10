@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ManageMapLayersViewController: UIViewController {
-    
     @IBOutlet weak var mapView: AGSMapView!
     
     /// Every layer on the map or that could be added to the map.
@@ -65,13 +64,10 @@ class ManageMapLayersViewController: UIViewController {
             navController.presentationController?.delegate = self
         }
     }
-
 }
 
 extension ManageMapLayersViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

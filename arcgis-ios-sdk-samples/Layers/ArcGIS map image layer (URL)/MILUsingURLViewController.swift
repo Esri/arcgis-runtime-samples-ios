@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class MILUsingURLViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -36,5 +35,4 @@ class MILUsingURLViewController: UIViewController {
         
         self.mapView.map = self.map
     }
-    
 }

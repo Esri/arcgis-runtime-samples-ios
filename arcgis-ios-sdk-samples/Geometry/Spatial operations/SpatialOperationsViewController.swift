@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class SpatialOperationsViewController: UIViewController, OperationsListVCDelegate, UIAdaptivePresentationControllerDelegate {
-
     @IBOutlet var mapView: AGSMapView!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
@@ -51,7 +50,6 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
     }
 
     private func addPolygons() {
-        
         //polygon 1
         self.polygon1 = AGSPolygonBuilder(spatialReference: .webMercator())
         polygon1.addPointWith(x: -13960, y: 6709400)
@@ -101,7 +99,6 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         var resultGeometry: AGSGeometry
         
         switch index {
-            
         case 1: //Union
             resultGeometry = AGSGeometryEngine.union(ofGeometry1: self.polygon1.toGeometry(), geometry2: self.polygon2.toGeometry())!
             
@@ -144,7 +141,6 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
     // MARK: - OperationsListVCDelegate
     
     func operationsListViewController(_ operationsListViewController: OperationsListViewController, didSelectOperation index: Int) {
-        
         if index == 0 {
             if self.resultGraphic != nil {
                 self.graphicsOverlay.graphics.remove(self.resultGraphic)
@@ -158,7 +154,6 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
     // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        
         return UIModalPresentationStyle.none
     }
 }

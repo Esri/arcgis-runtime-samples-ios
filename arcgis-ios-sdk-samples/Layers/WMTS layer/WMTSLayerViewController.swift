@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class WMTSLayerViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -53,5 +52,4 @@ class WMTSLayerViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["WMTSLayerViewController"]
     }
-    
 }

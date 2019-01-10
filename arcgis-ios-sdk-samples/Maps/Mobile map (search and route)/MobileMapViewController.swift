@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
-
     @IBOutlet var mapView: AGSMapView!
     
     var map: AGSMap!
@@ -56,7 +55,6 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     private func symbolForStopGraphic(isIndexRequired: Bool, index: Int?) -> AGSSymbol {
-        
         let markerImage = UIImage(named: "BlueMarker")!
         let markerSymbol = AGSPictureMarkerSymbol(image: markerImage)
         markerSymbol.offsetY = markerImage.size.height / 2
@@ -176,7 +174,6 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     private func setupRouteTask() {
         //if map contains network data
         if let transportationNetwork = map.transportationNetworks.first {
-
             self.routeTask = AGSRouteTask(dataset: transportationNetwork)
             
             //get default parameters
@@ -251,9 +248,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
 
 //extension for extracting the right attributes if available
 private extension AGSGeocodeResult {
-    
     var formattedAddressString: String? {
-        
         if !label.isEmpty {
             return label
         }
@@ -291,5 +286,4 @@ private extension AGSGeocodeResult {
         }
         return nil
     }
-    
 }

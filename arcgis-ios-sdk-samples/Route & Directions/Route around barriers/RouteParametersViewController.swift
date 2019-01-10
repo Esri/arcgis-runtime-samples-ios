@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class RouteParametersViewController: UITableViewController {
-
     @IBOutlet var findBestSequenceSwitch: UISwitch?
     @IBOutlet var preserveFirstStopSwitch: UISwitch?
     @IBOutlet var preserveLastStopSwitch: UISwitch?
@@ -85,5 +84,4 @@ class RouteParametersViewController: UITableViewController {
         }
         return superCount
     }
-
 }

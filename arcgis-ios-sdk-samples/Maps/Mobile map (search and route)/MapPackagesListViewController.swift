@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class MapPackagesListViewController: UITableViewController, MapPackageCellDelegate {
-    
     private var mapPackagesInBundle: [AGSMobileMapPackage]!
     private var mapPackagesInDocumentsDir: [AGSMobileMapPackage]!
     
@@ -111,7 +110,6 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         //collapse previously expanded cell
         var indexPathsArray = [IndexPath]()
         indexPathsArray.append(indexPath)

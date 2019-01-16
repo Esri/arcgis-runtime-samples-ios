@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelegate {
-    
     @IBOutlet weak var sceneView: AGSSceneView!
     @IBOutlet weak var observerInstructionLabel: UILabel!
     @IBOutlet weak var targetInstructionLabel: UILabel!

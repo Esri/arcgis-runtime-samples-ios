@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ChangeAtmosphereEffectViewController: UIViewController {
-    
     /// The view for displaying the scene.
     @IBOutlet private weak var sceneView: AGSSceneView!
     
@@ -68,14 +67,12 @@ class ChangeAtmosphereEffectViewController: UIViewController {
     
     /// The action handler for the "Change Effect" bar button item.
     @IBAction func changeEffectAction(_ sender: UIBarButtonItem) {
-        
         // The raw values of the AGSAtmosphereEffect cases are 0 through 2, so we
         // can use `rawValue` as the selection index.
         let selectedIndex = sceneView.atmosphereEffect.rawValue
         
         /// A table view controller allowing selection between the provided options.
         let controller = OptionsTableViewController(labels: atmosphereEffectOptionLabels, selectedIndex: selectedIndex) { [weak self] (selectedIndex) in
-            
             /// The effect for the selected option.
             let selectedEffect = AGSAtmosphereEffect(rawValue: selectedIndex)!
             
@@ -93,14 +90,11 @@ class ChangeAtmosphereEffectViewController: UIViewController {
         // show the options controller
         present(controller, animated: true)
     }
-
 }
 
 extension ChangeAtmosphereEffectViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // return none to ensure the options controller is shown as a popover even on small displays
         return .none
     }
-    
 }

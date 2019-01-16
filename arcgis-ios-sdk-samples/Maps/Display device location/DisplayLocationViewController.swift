@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class DisplayLocationViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     override func viewDidLoad() {
@@ -36,7 +35,6 @@ class DisplayLocationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? DisplayLocationSettingsViewController {
-            
             controller.locationDisplay = mapView.locationDisplay
             
             controller.preferredContentSize = CGSize(width: 300, height: 150)
@@ -46,9 +44,7 @@ class DisplayLocationViewController: UIViewController {
 }
 
 extension DisplayLocationViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

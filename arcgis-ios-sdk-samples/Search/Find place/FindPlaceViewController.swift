@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FindPlaceViewController: UIViewController {
-    
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var preferredSearchLocationTextField: UITextField!
@@ -223,7 +222,6 @@ class FindPlaceViewController: UIViewController {
     }
     
     private func geocodeUsingSuggestResult(_ suggestResult: AGSSuggestResult, completion: @escaping () -> Void) {
-            
         //create geocode params
         let params = AGSGeocodeParameters()
         params.outputSpatialReference = self.mapView.spatialReference
@@ -273,7 +271,6 @@ class FindPlaceViewController: UIViewController {
     func handleGeocodeResultsForPOIs(_ geocodeResults: [AGSGeocodeResult]?, areExtentBased: Bool) {
         if let results = geocodeResults,
             !results.isEmpty {
-            
             //show the graphics on the map
             for result in results {
                 let graphic = self.graphicForPoint(result.displayLocation!, attributes: result.attributes as [String: AnyObject]?)
@@ -357,11 +354,9 @@ class FindPlaceViewController: UIViewController {
     func hideOverlayView() {
         self.overlayView.isHidden = true
     }
-    
 }
 
 extension FindPlaceViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -396,13 +391,10 @@ extension FindPlaceViewController: UITableViewDataSource {
         cell.imageView?.image = nil
         return cell
     }
-    
 }
 
 extension FindPlaceViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if self.selectedTextField == self.preferredSearchLocationTextField {
             if indexPath.row == 0 {
                 self.preferredSearchLocationTextField.text = self.currentLocationText
@@ -418,11 +410,9 @@ extension FindPlaceViewController: UITableViewDelegate {
         }
         self.animateTableView(expand: false)
     }
-    
 }
 
 extension FindPlaceViewController: AGSGeoViewTouchDelegate {
-
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //dismiss the callout if already visible
         self.mapView.callout.dismiss()
@@ -440,9 +430,7 @@ extension FindPlaceViewController: AGSGeoViewTouchDelegate {
 }
 
 extension FindPlaceViewController: UITextFieldDelegate {
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         
         if textField == self.preferredSearchLocationTextField {
@@ -482,5 +470,4 @@ extension FindPlaceViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.animateTableView(expand: false)
     }
-    
 }

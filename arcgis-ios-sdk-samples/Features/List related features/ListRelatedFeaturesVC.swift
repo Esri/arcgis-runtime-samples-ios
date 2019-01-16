@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
-
     @IBOutlet var mapView: AGSMapView!
     
     private var parksFeatureLayer: AGSFeatureLayer!
@@ -76,7 +75,6 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
         //unselect previously selected park
         if let previousSelection = self.selectedPark {
             self.parksFeatureLayer.unselectFeature(previousSelection)
@@ -87,18 +85,15 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
         
         //identify features at the tapped location
         self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyLayerResult) in
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
             if let error = result.error {
-                
                 //dismiss progress hud
                 self?.presentAlert(error: error)
             }
             //Check if a feature is identified
             else if let feature = result.geoElements.first as? AGSArcGISFeature {
-                
                 //store as selected park to use for querying
                 self?.selectedPark = feature
                 
@@ -116,13 +111,11 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
 
     //query for related features given the origin feature
     private func queryRelatedFeatures() {
-        
         //show progress hud
         SVProgressHUD.show(withStatus: "Querying related features")
         
         //query for related features
         self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
@@ -146,7 +139,6 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
     
     //show related features in a table view as popover
     private func showRelatedFeatures() {
-        
         //perform popover segue
         self.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
     }
@@ -154,11 +146,9 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "RelatedFeaturesSegue",
             let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? RelatedFeaturesListVC {
-            
             //set results from related features query
             controller.results = self.results
         }
@@ -166,6 +156,6 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
     
     //to hide popover controller on rotation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
 }

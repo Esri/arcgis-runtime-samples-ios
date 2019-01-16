@@ -18,10 +18,8 @@ import UIKit
 import ArcGIS
 
 class WebMapCell: UICollectionViewCell {
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
-
 }

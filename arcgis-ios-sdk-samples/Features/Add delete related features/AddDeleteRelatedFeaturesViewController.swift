@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
-
     @IBOutlet var mapView: AGSMapView!
     
     private var parksFeatureTable: AGSServiceFeatureTable!
@@ -69,13 +68,11 @@ class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchD
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
         //show progress hud for identify
         SVProgressHUD.show(withStatus: "Identifying feature")
         
         //identify features at tapped location
         self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result) in
-            
             //hide progress hud
             SVProgressHUD.dismiss()
             
@@ -83,7 +80,6 @@ class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchD
                 //show error to user
                 self?.presentAlert(error: error)
             } else if let feature = result.geoElements.first as? AGSFeature {
-                
                 //select the first feature
                 self?.selectedPark = feature
                 
@@ -96,11 +92,9 @@ class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchD
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "RelatedFeaturesSegue",
             let navigationController = segue.destination as? UINavigationController,
             let controller = navigationController.viewControllers.first as? RelatedFeaturesViewController {
-  
             //share selected park
             controller.originFeature = self.selectedPark as? AGSArcGISFeature
             

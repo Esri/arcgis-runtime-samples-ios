@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class DisplayLocationSettingsViewController: UITableViewController {
-    
     // MARK: - Outlets
     
     @IBOutlet weak var showSwitch: UISwitch?
@@ -45,16 +44,16 @@ class DisplayLocationSettingsViewController: UITableViewController {
         }
     }
     
-    private func iconImageName(for autoPanMode: AGSLocationDisplayAutoPanMode) -> String {
+    private func icon(for autoPanMode: AGSLocationDisplayAutoPanMode) -> UIImage {
         switch autoPanMode {
         case .off:
-            return "LocationDisplayOffIcon"
+            return #imageLiteral(resourceName: "LocationDisplayOffIcon")
         case .recenter:
-            return "LocationDisplayDefaultIcon"
+            return #imageLiteral(resourceName: "LocationDisplayDefaultIcon")
         case .navigation:
-            return "LocationDisplayNavigationIcon"
+            return #imageLiteral(resourceName: "LocationDisplayNavigationIcon")
         case .compassNavigation:
-            return "LocationDisplayHeadingIcon"
+            return #imageLiteral(resourceName: "LocationDisplayHeadingIcon")
         }
     }
     
@@ -88,7 +87,6 @@ class DisplayLocationSettingsViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func showLocationSwitchAction(_ sender: UISwitch) {
-        
         guard let locationDisplay = locationDisplay,
             // don't restart showing the location if it's already started
             locationDisplay.started != sender.isOn else {
@@ -96,7 +94,6 @@ class DisplayLocationSettingsViewController: UITableViewController {
         }
         
         if sender.isOn {
-            
             // To be able to request user permissions to get the device location,
             // make sure to add the location request field in the info.plist file
             
@@ -126,10 +123,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
         if cell == autoPanModeCell,
             let autoPanMode = locationDisplay?.autoPanMode,
             let selectedIndex = orderedAutoPanModes.firstIndex(of: autoPanMode) {
-            
-            let options = orderedAutoPanModes.map { (mode) -> OptionsTableViewController.Option in
-                OptionsTableViewController.Option(label: label(for: mode), imageName: iconImageName(for: mode))
-            }
+            let options = orderedAutoPanModes.map { OptionsTableViewController.Option(label: label(for: $0), image: icon(for: $0)) }
 
             let controller = OptionsTableViewController(options: options, selectedIndex: selectedIndex) { (index) in
                 // get the mode for the index

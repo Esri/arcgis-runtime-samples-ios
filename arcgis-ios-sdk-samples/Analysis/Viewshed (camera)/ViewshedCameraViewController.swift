@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ViewshedCameraViewController: UIViewController {
-
     @IBOutlet weak var sceneView: AGSSceneView!
     
     private var viewshed: AGSLocationViewshed!
@@ -66,5 +65,4 @@ class ViewshedCameraViewController: UIViewController {
         // update the viewshed with the current camera
         viewshed.update(from: sceneView.currentViewpointCamera())
     }
-    
 }

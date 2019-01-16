@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class GroupUsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
     @IBOutlet var tableView: UITableView!
     
     private var portal: AGSPortal!
@@ -41,7 +40,6 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     private func loadPortalGroup() {
-        
         //show progress hud
         SVProgressHUD.show(withStatus: "Loading Portal Group")
         
@@ -50,7 +48,6 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         
         //find groups with using query params
         self.portal.findGroups(with: queryParams) { [weak self] (resultSet: AGSPortalQueryResultSet?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -80,7 +77,6 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         
         //fetch users in group
         self.portalGroup.fetchUsers { [weak self] (users: [String]?, admins: [String]?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -91,7 +87,6 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
                 //show error
                 self.presentAlert(error: error)
             } else {
-                
                 //if there are users in the group
                 if let users = users,
                     !users.isEmpty {
@@ -118,7 +113,6 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         
         //load user data
         AGSLoadObjects(portalUsers) { [weak self] (success) in
-            
             //dismiss hud
             SVProgressHUD.dismiss()
             
@@ -138,7 +132,6 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupUserCell", for: indexPath) as! GroupUserCell
         
         let portalUser = self.portalUsers[indexPath.row]

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class CalloutViewController: UIViewController, AGSGeoViewTouchDelegate {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -52,5 +51,4 @@ class CalloutViewController: UIViewController, AGSGeoViewTouchDelegate {
             self.mapView.callout.dismiss()
         }
     }
-    
 }

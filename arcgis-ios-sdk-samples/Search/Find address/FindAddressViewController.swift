@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, WorldAddressesVCDelegate {
-    
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var button: UIButton!
     @IBOutlet private var searchBar: UISearchBar!
@@ -75,7 +74,6 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         
         //perform geocode with input text
         self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
-            
             guard let self = self else {
                 return
             }
@@ -178,7 +176,6 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-    
         return UIModalPresentationStyle.none
     }
     
@@ -187,7 +184,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address: String) {
         self.searchBar.text = address
         self.geocodeSearchText(address)
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
         self.hideKeyboard()
     }
 }

@@ -15,7 +15,6 @@
 import ArcGIS
 
 class ReadGeopackageViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-    
     @IBOutlet weak var mapView: AGSMapView!
     
     private var allLayers: [AGSLayer] = []
@@ -71,5 +70,4 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

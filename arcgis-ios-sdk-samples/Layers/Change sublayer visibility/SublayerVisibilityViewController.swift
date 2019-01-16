@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class SublayerVisibilityViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -42,7 +41,6 @@ class SublayerVisibilityViewController: UIViewController {
         
         //zoom to a custom viewpoint
         self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: .webMercator()), scale: 9e7)
-        
     }
     
     // MARK: - Navigation

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class SetInitialMapAreaViewController: UIViewController {
-
     @IBOutlet weak var mapView: AGSMapView!
     var map: AGSMap!
     
@@ -35,6 +34,5 @@ class SetInitialMapAreaViewController: UIViewController {
 
         //assign the map to the map view
         self.mapView.map = map
-        
     }
 }

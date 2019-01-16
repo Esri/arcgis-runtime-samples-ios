@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class SetViewpointViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
@@ -49,7 +48,6 @@ class SetViewpointViewController: UIViewController {
         self.mapView.graphicsOverlays.add(graphicsOverlay)
         
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SetViewpointViewController"]
-
     }
     
     private func geometryFromTextFile(filename: String) -> AGSGeometry? {
@@ -57,7 +55,6 @@ class SetViewpointViewController: UIViewController {
             let data = try? Data(contentsOf: fileURL),
             let jsonObject = try? JSONSerialization.jsonObject(with: data),
             let geometry = try? AGSGeometry.fromJSON(jsonObject) {
-            
             return geometry as? AGSGeometry
         }
         return nil
@@ -82,8 +79,6 @@ class SetViewpointViewController: UIViewController {
             }
         default:
             print("Never should get here")
-            
         }
-        
     }
 }

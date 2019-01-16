@@ -16,7 +16,6 @@
 import UIKit
 
 class AppInfoViewController: UIViewController {
-
     @IBOutlet var appNameLabel: UILabel!
     @IBOutlet var appVersionLabel: UILabel!
     
@@ -36,7 +35,6 @@ class AppInfoViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func closeAction() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
-
 }

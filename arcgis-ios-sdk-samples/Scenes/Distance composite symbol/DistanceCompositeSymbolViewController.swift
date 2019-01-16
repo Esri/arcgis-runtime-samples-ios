@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class DistanceCompositeSymbolViewController: UIViewController {
-    
     @IBOutlet var sceneView: AGSSceneView!
     
     override func viewDidLoad() {
@@ -77,5 +76,4 @@ class DistanceCompositeSymbolViewController: UIViewController {
             self?.sceneView.cameraController = cameraController
         })
     }
-
 }

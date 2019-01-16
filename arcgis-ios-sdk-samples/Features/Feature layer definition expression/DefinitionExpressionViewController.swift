@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class DefinitionExpressionViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -43,7 +42,6 @@ class DefinitionExpressionViewController: UIViewController {
         
         //add the feature layer to the map
         self.map.operationalLayers.add(self.featureLayer)
-        
     }
     
     @IBAction func applyDefinitionExpression() {

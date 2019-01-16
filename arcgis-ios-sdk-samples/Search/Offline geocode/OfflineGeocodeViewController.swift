@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, SanDiegoAddressesVCDelegate {
-    
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var button: UIButton!
     @IBOutlet private var searchBar: UISearchBar!
@@ -96,7 +95,6 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         
         //perform geocode with the input
         self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self]  (results: [AGSGeocodeResult]?, error: Error?) in
-            
             guard let self = self else {
                 return
             }
@@ -142,7 +140,6 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         
         //perform reverse geocode
         self.locatorTaskOperation = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
-
             if let error = error as NSError? {
                 if error.code != NSUserCancelledError {
                     //print error instead alerting to avoid disturbing the flow
@@ -166,7 +163,6 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
 
                 //dismiss the callout if already visible
                 self?.mapView.callout.dismiss()
-
             }
             //in case of error or no results, remove the graphics
             self?.graphicsOverlay.graphics.remove(graphic)
@@ -202,7 +198,6 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         
         //get the graphics at the tap location
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) in
-
             if let error = result.error {
                 self.presentAlert(error: error)
             } else if let graphic = result.graphics.first {
@@ -271,7 +266,6 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        
         return UIModalPresentationStyle.none
     }
     
@@ -282,7 +276,6 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     func sanDiegoAddressesViewController(_ sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address: String) {
         self.searchBar.text = address
         self.geocodeSearchText(address)
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
-    
 }

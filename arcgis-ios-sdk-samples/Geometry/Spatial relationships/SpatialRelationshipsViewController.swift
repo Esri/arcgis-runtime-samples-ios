@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDelegate {
-
     @IBOutlet weak var mapView: AGSMapView!
     private let graphicsOverlay = AGSGraphicsOverlay()
 
@@ -119,10 +118,8 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
     // MARK: GeoView Touch Delegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-
         // Identify graphics overlay
         geoView.identify(graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self]  (result) in
-            
             guard let self = self else {
                 return
             }
@@ -149,7 +146,6 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
     }
     
     private func showRelationships(for graphic: AGSGraphic, popoverPoint: CGPoint) {
-        
         guard let selectedGeometry = graphic.geometry,
             let tableSections = relationshipTableSections(for: selectedGeometry.geometryType),
             let controller = storyboard?.instantiateViewController(withIdentifier: "SpatialRelationshipsTableViewController") as? SpatialRelationshipsTableViewController else {
@@ -169,7 +165,6 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
     }
     
     private func relationshipTableSections(for geometryType: AGSGeometryType) -> [RelationshipsSection]? {
-        
         guard let pointGeometry = pointGraphic.geometry,
             let polylineGeometry = polylineGraphic.geometry,
             let polygonGeometry = polygonGraphic.geometry else {
@@ -247,11 +242,9 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         }
         return relationships
     }
-
 }
 
 extension SpatialRelationshipsViewController: UIPopoverPresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
@@ -260,5 +253,4 @@ extension SpatialRelationshipsViewController: UIPopoverPresentationControllerDel
         // Clear selection when popover is dismissed
         graphicsOverlay.clearSelection()
     }
-    
 }

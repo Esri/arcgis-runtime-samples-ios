@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, ServiceAreaSettingsVCDelegate, UIAdaptivePresentationControllerDelegate {
-
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var segmentedControl: UISegmentedControl!
     @IBOutlet private var serviceAreaBBI: UIBarButtonItem!
@@ -80,10 +79,8 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     }
     
     private func getDefaultParameters() {
-        
         //get default parameters
         self.serviceAreaTask.defaultServiceAreaParameters { [weak self] (parameters: AGSServiceAreaParameters?, error: Error?) in
-            
             guard error == nil else {
                 self?.presentAlert(message: "Error getting default parameters:: \(error!.localizedDescription)")
                 return
@@ -98,7 +95,6 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     }
     
     private func serviceAreaSymbol(for index: Int) -> AGSSymbol {
-        
         //fill symbol for service area
         var fillSymbol: AGSSimpleFillSymbol
         
@@ -116,7 +112,6 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     // MARK: - Actions
     
     @IBAction private func serviceArea() {
-        
         //remove previously added service areas
         serviceAreaGraphicsOverlay.graphics.removeAllObjects()
         
@@ -133,7 +128,6 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         
         //for each graphic in facilities graphicsOverlay add a facility to the parameters
         for graphic in facilitiesGraphics {
-            
             let point = graphic.geometry as! AGSPoint
             let facility = AGSServiceAreaFacility(point: point)
             facilities.append(facility)
@@ -145,7 +139,6 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         
         //for each graphic in barrier graphicsOverlay add a barrier to the parameters
         for graphic in barriersGraphicsOverlay.graphics as! [AGSGraphic] {
-            
             let polygon = graphic.geometry as! AGSPolygon
             let barrier = AGSPolygonBarrier(polygon: polygon)
             barriers.append(barrier)
@@ -162,7 +155,6 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         
         //solve for service area
         serviceAreaTask.solveServiceArea(with: serviceAreaParameters) { [weak self] (result: AGSServiceAreaResult?, error: Error?) in
-            
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
@@ -190,7 +182,6 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     }
     
     @IBAction private func clearAction() {
-        
         //remove all existing graphics in service area and facilities graphics overlays
         self.serviceAreaGraphicsOverlay.graphics.removeAllObjects()
         self.facilitiesGraphicsOverlay.graphics.removeAllObjects()
@@ -200,14 +191,11 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
         if segmentedControl.selectedSegmentIndex == 0 {
-            
             //facilities selected
             let graphic = AGSGraphic(geometry: mapPoint, symbol: nil, attributes: nil)
             self.facilitiesGraphicsOverlay.graphics.add(graphic)
         } else {
-            
             //barriers selected
             let bufferedGeometry = AGSGeometryEngine.bufferGeometry(mapPoint, byDistance: 500)
             let graphic = AGSGraphic(geometry: bufferedGeometry, symbol: nil, attributes: nil)
@@ -219,7 +207,6 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ServiceAreaSettingsSegue" {
-            
             let controller = segue.destination as! ServiceAreaSettingsVC
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
@@ -232,12 +219,10 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     // MARK: - ServiceAreaSettingsVCDelegate
     
     func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateFirstTimeBreak timeBreak: Int) {
-        
         self.firstTimeBreak = timeBreak
     }
     
     func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateSecondTimeBreak timeBreak: Int) {
-        
         self.secondTimeBreak = timeBreak
     }
     
@@ -246,5 +231,4 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-
 }

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FeatureLayerGDBViewController: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     private var geodatabase: AGSGeodatabase!
@@ -50,5 +49,4 @@ class FeatureLayerGDBViewController: UIViewController {
         //assign map to the map view
         self.mapView.map = map
     }
-
 }

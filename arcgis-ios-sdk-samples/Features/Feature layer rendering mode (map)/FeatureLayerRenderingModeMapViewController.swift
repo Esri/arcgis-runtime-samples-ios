@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FeatureLayerRenderingModeMapViewController: UIViewController {
-    
     @IBOutlet weak var dynamicMapView: AGSMapView!
     @IBOutlet weak var staticMapView: AGSMapView!
     
@@ -77,5 +76,4 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
         }
         zoomed.toggle()
     }
-    
 }

@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class VectorTileLayerViewController: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     /// The model array containing the layer options.
@@ -52,7 +51,6 @@ class VectorTileLayerViewController: UIViewController {
 
         // center on Miami, FL
         mapView.setViewpointCenter(AGSPoint(x: -80.18, y: 25.778135, spatialReference: .wgs84()), scale: 150000)
-
     }
     
     private func makeArcGISURL(itemID: String) -> URL {
@@ -62,7 +60,6 @@ class VectorTileLayerViewController: UIViewController {
     }
 
     @IBAction func changeVectorTiledLayer(_ sender: UIBarButtonItem) {
-        
         guard let layer = mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer,
             let selectedItemID = layer.item?.itemID,
             // get the index of the layer currently shown in the map
@@ -75,7 +72,6 @@ class VectorTileLayerViewController: UIViewController {
         
         /// A view controller allowing the user to select the layer to show.
         let controller = OptionsTableViewController(labels: layerLabels, selectedIndex: selectedIndex) { [weak self] (newIndex) in
-            
             guard let self = self else {
                 return
             }
@@ -100,14 +96,11 @@ class VectorTileLayerViewController: UIViewController {
         // show the popover
         present(controller, animated: true)
     }
-    
 }
 
 extension VectorTileLayerViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // show presented controller as popovers even on small displays
         return .none
     }
-    
 }

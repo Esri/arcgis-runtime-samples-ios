@@ -22,7 +22,6 @@ protocol DirectionsListVCDelegate: AnyObject {
 }
 
 class DirectionsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
     @IBOutlet var tableView: UITableView!
     @IBOutlet var milesLabel: UILabel!
     @IBOutlet var minutesLabel: UILabel!

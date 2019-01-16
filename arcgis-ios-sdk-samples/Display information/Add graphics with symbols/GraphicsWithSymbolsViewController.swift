@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class GraphicsWithSymbolsViewController: UIViewController {
-    
     @IBOutlet private var mapView: AGSMapView!
     
     private var graphicsOverlay: AGSGraphicsOverlay!
@@ -47,7 +46,6 @@ class GraphicsWithSymbolsViewController: UIViewController {
     }
     
     private func addBuoyPoints(to graphicsOverlay: AGSGraphicsOverlay) {
-        
         //define the buoy locations
         let buoy1Loc = AGSPoint(x: -2.712642647560347, y: 56.062812566811544, spatialReference: .wgs84())
         let buoy2Loc = AGSPoint(x: -2.6908416959572303, y: 56.06444173689877, spatialReference: .wgs84())
@@ -68,7 +66,6 @@ class GraphicsWithSymbolsViewController: UIViewController {
     }
     
     private func addText(to graphicsOverlay: AGSGraphicsOverlay) {
-        
         let bassLocation = AGSPoint(x: -2.640631, y: 56.078083, spatialReference: .wgs84())
         let craigleithLocation = AGSPoint(x: -2.720324, y: 56.073569, spatialReference: .wgs84())
         

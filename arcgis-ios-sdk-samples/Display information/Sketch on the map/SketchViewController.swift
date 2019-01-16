@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class SketchViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var geometrySegmentedControl: UISegmentedControl!
     @IBOutlet private weak var undoBBI: UIBarButtonItem!
@@ -50,7 +49,6 @@ class SketchViewController: UIViewController {
     
     @objc
     func respondToGeomChanged() {
-        
         //Enable/disable UI elements appropriately
         self.undoBBI.isEnabled = self.sketchEditor.undoManager.canUndo
         self.redoBBI.isEnabled = self.sketchEditor.undoManager.canRedo
@@ -60,9 +58,7 @@ class SketchViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func geometryValueChanged(_ segmentedControl: UISegmentedControl) {
-        
         switch segmentedControl.selectedSegmentIndex {
-        
         case 0://point
             self.sketchEditor.start(with: nil, creationMode: .point)
             

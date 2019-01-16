@@ -19,7 +19,6 @@ protocol SaveAsVCDelegate: AnyObject {
 }
 
 class SaveAsViewController: UITableViewController {
-    
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var tagsTextField: UITextField!
     @IBOutlet private weak var descriptionTextField: UITextField!
@@ -33,7 +32,6 @@ class SaveAsViewController: UITableViewController {
     }
     
     @IBAction private func saveAction() {
-        
         guard let title = titleTextField.text,
             !title.isEmpty else {
             //show error message
@@ -48,5 +46,4 @@ class SaveAsViewController: UITableViewController {
         let itemDescription = descriptionTextField.text ?? ""
         delegate?.saveAsViewController(self, didInitiateSaveWithTitle: title, tags: tags, itemDescription: itemDescription)
     }
-
 }

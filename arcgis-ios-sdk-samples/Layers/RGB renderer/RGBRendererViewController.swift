@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate {
-
     @IBOutlet var mapView: AGSMapView!
     
     private var rasterLayer: AGSRasterLayer?
@@ -44,7 +43,6 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
     // MARK: - RGBRendererSettingsVCDelegate
     
     func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
-        
         let renderer = AGSRGBRenderer(stretchParameters: parameters, bandIndexes: [], gammas: [], estimateStatistics: true)
         rasterLayer?.renderer = renderer
     }
@@ -74,9 +72,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
 }
 
 extension RGBRendererViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class LineOfSightGeoElementViewController: UIViewController {
-    
     @IBOutlet weak var sceneView: AGSSceneView!
 
     @IBOutlet weak var targetVisibilityLabel: UILabel!

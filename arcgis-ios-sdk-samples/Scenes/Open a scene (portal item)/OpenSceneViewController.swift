@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class OpenSceneViewController: UIViewController {
-  
     @IBOutlet weak var sceneView: AGSSceneView!
     
     private var portal: AGSPortal!

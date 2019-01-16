@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class RasterFunctionServiceViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     private var map: AGSMap?
     private var imageServiceRaster: AGSImageServiceRaster?
@@ -48,7 +47,6 @@ class RasterFunctionServiceViewController: UIViewController {
                 self?.applyRasterFunction()
             }
         }
-        
     }
     
     func applyRasterFunction() {

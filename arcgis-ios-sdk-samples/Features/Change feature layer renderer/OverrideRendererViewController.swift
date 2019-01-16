@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class OverrideRendererViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -41,7 +40,6 @@ class OverrideRendererViewController: UIViewController {
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         //add the feature layer to the operational layers on the map view
         self.map.operationalLayers.add(self.featureLayer)
-        
     }
     
     @IBAction private func overrideRenderer() {

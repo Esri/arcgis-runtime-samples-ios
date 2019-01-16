@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class WMSLayerUsingURLViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     override func viewDidLoad() {
@@ -48,5 +47,4 @@ class WMSLayerUsingURLViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["WMSLayerUsingURLViewController"]
     }
-    
 }

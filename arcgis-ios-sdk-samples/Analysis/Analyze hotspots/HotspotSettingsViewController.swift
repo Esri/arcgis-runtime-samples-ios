@@ -15,12 +15,10 @@
 import UIKit
 
 protocol HotspotSettingsVCDelegate: AnyObject {
-    
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: Date, toDate: Date)
 }
 
 class HotspotSettingsViewController: UITableViewController {
-    
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     
@@ -52,5 +50,4 @@ class HotspotSettingsViewController: UITableViewController {
     @IBAction func analyzeAction() {
         delegate?.hotspotSettingsViewController(self, didSelectDates: startDatePicker.date, toDate: endDatePicker.date)
     }
-    
 }

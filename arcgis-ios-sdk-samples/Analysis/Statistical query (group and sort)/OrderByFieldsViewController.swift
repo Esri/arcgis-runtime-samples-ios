@@ -21,7 +21,6 @@ protocol OrderByFieldsViewControllerDelegate: AnyObject {
 }
 
 class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
     // Outlets
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var tableNavigationItem: UINavigationItem!

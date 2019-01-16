@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ChangeMapViewBackgroundVC: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     override func viewDidLoad() {
@@ -49,7 +48,6 @@ class ChangeMapViewBackgroundVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? GridSettingsViewController {
-            
             controller.backgroundGrid = mapView.backgroundGrid
             
             navController.presentationController?.delegate = self
@@ -65,7 +63,6 @@ class ChangeMapViewBackgroundVC: UIViewController {
             }()
         }
     }
-
 }
 
 extension ChangeMapViewBackgroundVC: UIAdaptivePresentationControllerDelegate {

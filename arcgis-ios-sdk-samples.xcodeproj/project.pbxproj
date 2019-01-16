@@ -493,6 +493,10 @@
 		4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CECF8CA21DD5C2200A56161 /* Mil2525DMessages.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */; };
 		4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
+		4CECF89F21D57F0A00A56161 /* SetMinMaxScale.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CECF89E21D57F0A00A56161 /* SetMinMaxScale.storyboard */; };
+		4CECF8A121D57F4000A56161 /* SetMinMaxScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */; };
+		4CECF8A321D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF8A221D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift */; };
+		4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */; };
 		940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940A73F320E588C200A06C80 /* CutGeometry.storyboard */; };
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
@@ -833,6 +837,7 @@
 				4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */,
 				4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */,
 				4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */,
+				4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1194,6 +1199,9 @@
 		4CD2B55E2142EB2600767D87 /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
 		4CD2B5602142F09700767D87 /* CategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTests.swift; sourceTree = "<group>"; };
 		4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mil2525DMessages.xml; sourceTree = "<group>"; };
+		4CECF89E21D57F0A00A56161 /* SetMinMaxScale.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetMinMaxScale.storyboard; sourceTree = "<group>"; };
+		4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMinMaxScaleViewController.swift; sourceTree = "<group>"; };
+		4CECF8A221D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMinMaxScaleViewControllerTests.swift; sourceTree = "<group>"; };
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
@@ -2369,6 +2377,7 @@
 				3E5E09341EF2E8E200FF3454 /* Generate offline map */,
 				C7094780215D340C00BA0969 /* Generate offline map (overrides) */,
 				D9316A5C1FDB4ED90075AD92 /* Read a geopackage */,
+				4CECF89D21D57E9700A56161 /* Set min-max scale */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -2859,6 +2868,7 @@
 			children = (
 				4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */,
 				4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */,
+				4CECF8A221D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift */,
 			);
 			path = "Sample Tests";
 			sourceTree = "<group>";
@@ -2941,6 +2951,15 @@
 				4C0F27B521540B5F00496666 /* Sample Tests */,
 			);
 			path = "arcgis-ios-sdk-samplesTests";
+			sourceTree = "<group>";
+		};
+		4CECF89D21D57E9700A56161 /* Set min-max scale */ = {
+			isa = PBXGroup;
+			children = (
+				4CECF89E21D57F0A00A56161 /* SetMinMaxScale.storyboard */,
+				4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */,
+			);
+			path = "Set min-max scale";
 			sourceTree = "<group>";
 		};
 		940A73F220E5889B00A06C80 /* Cut geometry */ = {
@@ -3576,6 +3595,7 @@
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
+				4CECF89F21D57F0A00A56161 /* SetMinMaxScale.storyboard in Resources */,
 				3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */,
 				4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */,
 				4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */,
@@ -3745,6 +3765,7 @@
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,
 				3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */,
 				3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */,
+				4CECF8A121D57F4000A56161 /* SetMinMaxScaleViewController.swift in Sources */,
 				3EBA25631D3417B000AB0703 /* SimpleMarkerSymbolViewController.swift in Sources */,
 				3E81C1BB1D8A17B600470AA4 /* VectorStylesViewController.swift in Sources */,
 				3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */,
@@ -3874,6 +3895,7 @@
 				4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */,
 				4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */,
 				4C0F27B721540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift in Sources */,
+				4CECF8A321D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift in Sources */,
 				4CD2B5612142F09700767D87 /* CategoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

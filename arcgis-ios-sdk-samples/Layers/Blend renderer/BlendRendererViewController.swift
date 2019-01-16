@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDelegate {
-
     @IBOutlet var mapView: AGSMapView!
 
     let imageryBasemapLayer: AGSRasterLayer = {
@@ -54,7 +53,6 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
     }
     
     private func setBlendRenderer(altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
-        
         displayedColorRampType = colorRampType
         
         // create a colorRamp object from the type specified
@@ -102,7 +100,6 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
             let controller = navController.viewControllers.first as? BlendRendererSettingsVC,
             let rasterLayer = mapView.map?.basemap.baseLayers.firstObject as? AGSRasterLayer,
             let renderer = rasterLayer.renderer as? AGSBlendRenderer {
-           
             controller.preferredContentSize = {
                 let height: CGFloat
                 if traitCollection.horizontalSizeClass == .regular,
@@ -124,9 +121,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDele
 }
 
 extension BlendRendererViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

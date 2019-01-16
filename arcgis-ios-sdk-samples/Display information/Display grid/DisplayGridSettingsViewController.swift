@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class DisplayGridSettingsViewController: UITableViewController {
-    
     var mapView: AGSMapView? {
         didSet {
             if isViewLoaded {
@@ -65,7 +64,6 @@ class DisplayGridSettingsViewController: UITableViewController {
             case .usng: return "USNG"
             }
         }
-        
     }
     
     private func makeGrid(type: GridType) -> AGSGrid {
@@ -162,7 +160,6 @@ class DisplayGridSettingsViewController: UITableViewController {
     /// Creates a new grid object based on the type, applies the common configuration
     /// from the existing grid, and adds it to the map view.
     private func changeGrid(to newGridType: GridType) {
-        
         guard let displayedGrid = mapView?.grid,
             // don't replace the grid if it already has the target type
             GridType(grid: displayedGrid) != newGridType else {
@@ -344,5 +341,4 @@ class DisplayGridSettingsViewController: UITableViewController {
         controller.title = "Label Color"
         show(controller, sender: self)
     }
-    
 }

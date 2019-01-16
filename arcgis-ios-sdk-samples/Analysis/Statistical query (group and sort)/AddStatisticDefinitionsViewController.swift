@@ -21,7 +21,6 @@ protocol AddStatisticDefinitionsViewControllerDelegate: AnyObject {
 }
 
 class AddStatisticDefinitionsViewController: UITableViewController {
-
     @IBOutlet private weak var fieldNameCell: UITableViewCell!
     @IBOutlet private weak var statisticTypeCell: UITableViewCell!
     

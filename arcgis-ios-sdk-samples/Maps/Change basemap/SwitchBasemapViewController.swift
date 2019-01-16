@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class SwitchBasemapViewController: UIViewController {
-
     @IBOutlet private weak var mapView: AGSMapView!
     
     /// The basemap options plus labels.
@@ -58,7 +57,6 @@ class SwitchBasemapViewController: UIViewController {
     }
 
     @IBAction func changeBasemapAction(_ sender: UIBarButtonItem) {
-        
         guard let basemap = mapView.map?.basemap,
             // get the index of the basemap currently shown in the map
             let selectedIndex = basemapInfoArray.firstIndex(where: { $0.basemap == basemap }) else {
@@ -85,14 +83,11 @@ class SwitchBasemapViewController: UIViewController {
         // show the popover
         present(controller, animated: true)
     }
-    
 }
 
 extension SwitchBasemapViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // show presented controller as popovers even on small displays
         return .none
     }
-    
 }

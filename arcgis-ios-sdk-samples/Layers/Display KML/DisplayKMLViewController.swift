@@ -20,7 +20,6 @@ private enum KMLDataSource: Int {
 }
 
 class DisplayKMLViewController: UIViewController {
-    
     @IBOutlet weak var mapView: AGSMapView!
     
     /// The source currently loaded in the map.
@@ -62,7 +61,6 @@ class DisplayKMLViewController: UIViewController {
         
         // if we're opening the table of data sources
         if let sourceTableViewController = segue.destination as? DisplayKMLDataSourcesTableViewController {
-            
             // set the popover height
             sourceTableViewController.preferredContentSize.height = 135
             
@@ -86,7 +84,6 @@ class DisplayKMLViewController: UIViewController {
     // MARK: - KML Loading
     
     private func display(kmlLayer: AGSKMLLayer) {
-        
         // Clear the existing layers from the map
         mapView.map?.operationalLayers.removeAllObjects()
         // Add the KML layer to the map
@@ -98,7 +95,6 @@ class DisplayKMLViewController: UIViewController {
         // This load call is not required, but it allows for error
         // feedback and progress indication
         kmlLayer.load { [weak self] (error) in
-            
             // Close the progress indicator
             SVProgressHUD.dismiss()
 
@@ -106,7 +102,6 @@ class DisplayKMLViewController: UIViewController {
                 self?.presentAlert(error: error)
             }
         }
-        
     }
     
     private func changeSourceToURL() {
@@ -134,11 +129,9 @@ class DisplayKMLViewController: UIViewController {
         let kmlLayer = AGSKMLLayer(item: portalItem)
         display(kmlLayer: kmlLayer)
     }
-    
 }
 
 extension DisplayKMLViewController: UIPopoverPresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // prevent the popover from displaying fullscreen in narrow contexts
         return .none
@@ -146,7 +139,6 @@ extension DisplayKMLViewController: UIPopoverPresentationControllerDelegate {
 }
 
 class DisplayKMLDataSourcesTableViewController: UITableViewController {
-    
     fileprivate var initialSelectedIndex = 0
     fileprivate var selectionHandler: ((KMLDataSource) -> Void)?
     
@@ -160,7 +152,6 @@ class DisplayKMLDataSourcesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // get the newly selected cell
         guard let selectedCell = tableView.cellForRow(at: indexPath),
             let displayedSource = KMLDataSource(rawValue: indexPath.row) else {
@@ -178,5 +169,4 @@ class DisplayKMLDataSourcesTableViewController: UITableViewController {
         // remove the checkmark
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
-    
 }

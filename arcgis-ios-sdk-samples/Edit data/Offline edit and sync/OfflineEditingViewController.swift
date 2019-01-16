@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class OfflineEditingViewController: UIViewController {
-    
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var extentView: UIView!
     @IBOutlet var sketchToolbar: UIToolbar!
@@ -72,13 +71,11 @@ class OfflineEditingViewController: UIViewController {
         
         //add online feature layers
         addFeatureLayers()
-
     }
 
     // MARK: - Helper methods
     
     private func addFeatureLayers() {
-        
         //Iterate through the layers in the service
         syncTask?.load { [weak self] (error) in
             if let error = error {
@@ -131,7 +128,6 @@ class OfflineEditingViewController: UIViewController {
         var totalCount = 0
         
         for featureTable in generatedGeodatabase!.geodatabaseFeatureTables where featureTable.loadStatus == .loaded {
-                
             dispatchGroup.enter()
             featureTable.addedFeaturesCount(completion: { (count: Int, error: Error?) in
                 totalCount += count
@@ -219,7 +215,6 @@ class OfflineEditingViewController: UIViewController {
             return
         }
         generatedGeodatabase.load(completion: { [weak self] (error: Error?) in
-            
             guard let self = self else {
                 return
             }
@@ -227,7 +222,6 @@ class OfflineEditingViewController: UIViewController {
             if let error = error {
                 print(error)
             } else {
-                
                 self.liveMode = false
                 
                 self.mapView.map?.operationalLayers.removeAllObjects()
@@ -300,11 +294,8 @@ class OfflineEditingViewController: UIViewController {
         
         //start the job
         generateJob.start(statusHandler: { (status: AGSJobStatus) in
-        
             SVProgressHUD.show(withStatus: status.statusString())
-            
         }, completion: { [weak self] (object: AnyObject?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -336,7 +327,7 @@ class OfflineEditingViewController: UIViewController {
             let alert = UIAlertController(title: nil, message: "Would you like to sync the changes before switching?", preferredStyle: .alert)
             alert.addAction(noAction)
             alert.addAction(yesAction)
-            self.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true)
         } else {
             switchToServiceMode()
         }
@@ -347,7 +338,6 @@ class OfflineEditingViewController: UIViewController {
     }
     
     private func syncAction(_ completion: (() -> Void)?) {
-        
         guard let generatedGeodatabase = generatedGeodatabase,
             let syncTask = syncTask else {
             return
@@ -369,11 +359,8 @@ class OfflineEditingViewController: UIViewController {
         let syncJob = syncTask.syncJob(with: params, geodatabase: generatedGeodatabase)
         self.syncJob = syncJob
         syncJob.start(statusHandler: { (status: AGSJobStatus) in
-            
             SVProgressHUD.show(withStatus: status.statusString())
-            
         }, completion: { [weak self] (results: [AGSSyncLayerResult]?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             if let error = error {
@@ -385,14 +372,13 @@ class OfflineEditingViewController: UIViewController {
             //call completion
             completion?()
         })
-        
     }
     
     @IBAction func sketchDoneAction() {
         navigationItem.hidesBackButton = false
         navigationItem.rightBarButtonItem?.isEnabled = true
         if let popupsVC = popupsVC {
-             present(popupsVC, animated: true, completion: nil)
+             present(popupsVC, animated: true)
         }
         NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
@@ -412,17 +398,13 @@ class OfflineEditingViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
-    
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
         SVProgressHUD.show(withStatus: "Loading")
         
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -442,22 +424,18 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
                     let popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
                     self.popupsVC = popupsVC
                     popupsVC.delegate = self
-                    self.present(popupsVC, animated: true, completion: nil)
+                    self.present(popupsVC, animated: true)
                 } else {
                     self.presentAlert(message: "No features selected")
                 }
             }
         }
     }
-    
 }
 
 extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
-    
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, sketchEditorFor popup: AGSPopup) -> AGSSketchEditor? {
-        
         if let geometry = popup.geoElement.geometry {
-            
             //start sketch editor
             mapView.sketchEditor?.start(with: geometry)
             
@@ -469,9 +447,8 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, readyToEditGeometryWith sketchEditor: AGSSketchEditor?, for popup: AGSPopup) {
-        
         //Dismiss the popup view controller
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
         
         //Prepare the current view controller for sketch mode
         mapView.callout.isHidden = true
@@ -489,7 +466,6 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, didFinishEditingFor popup: AGSPopup) {
-        
         disableSketchEditor()
         
         let feature = popup.geoElement as! AGSFeature
@@ -501,12 +477,10 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
         
         //sync changes if in service mode
         if liveMode {
-            
             //Tell the user edits are being saved int the background
             SVProgressHUD.show(withStatus: "Saving feature details...")
             
             (feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (featureEditResult: [AGSFeatureEditResult]?, error: Error?) in
-                
                 SVProgressHUD.dismiss()
                 
                 if let error = error {
@@ -522,13 +496,12 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, didCancelEditingFor popup: AGSPopup) {
-        
         disableSketchEditor()
     }
     
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         //dismiss the popups view controller
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
         popupsVC = nil
     }
 }

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
-    
     @IBOutlet private var mapView: AGSMapView!
     
     private var featureTable: AGSServiceFeatureTable!
@@ -122,6 +121,6 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         alertController.addAction(cancelAlertAction)
         
         //present alert controller
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true)
     }
 }

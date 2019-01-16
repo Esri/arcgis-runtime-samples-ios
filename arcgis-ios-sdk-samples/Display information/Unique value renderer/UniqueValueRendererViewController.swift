@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class UniqueValueRendererViewController: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     
     private var featureLayer: AGSFeatureLayer!

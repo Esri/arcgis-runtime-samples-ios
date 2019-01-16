@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate, FeatureTemplatePickerDelegate {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var sketchToolbar: UIToolbar!
     @IBOutlet private weak var doneBBI: UIBarButtonItem!
@@ -53,16 +52,14 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     private func dismissFeatureTemplatePickerVC() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
     
     func applyEdits() {
-        
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")
         
         (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             if let error = error {
@@ -81,24 +78,15 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         }
 
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
+            guard let self = self else { return }
             if let error = identifyLayerResult.error {
                 print(error)
-            } else if let weakSelf = self {
-                var popups = [AGSPopup]()
-                let geoElements = identifyLayerResult.geoElements
-                
-                for geoElement in geoElements {
-
-                    let popup = AGSPopup(geoElement: geoElement)
-                    popups.append(popup)
-                }
-                
-                if !popups.isEmpty {
-                    weakSelf.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
-                    weakSelf.popupsVC.modalPresentationStyle = .formSheet
-                    weakSelf.present(weakSelf.popupsVC, animated: true, completion: nil)
-                    weakSelf.popupsVC.delegate = weakSelf
-                }
+            } else if !identifyLayerResult.geoElements.isEmpty {
+                let popups = identifyLayerResult.geoElements.map(AGSPopup.init(geoElement:))
+                self.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
+                self.popupsVC.modalPresentationStyle = .formSheet
+                self.present(self.popupsVC, animated: true)
+                self.popupsVC.delegate = self
             }
         }
     }
@@ -106,9 +94,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     // MARK: - AGSPopupsViewControllerDelegate methods
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, sketchEditorFor popup: AGSPopup) -> AGSSketchEditor? {
-        
         if let geometry = popup.geoElement.geometry {
-            
             //start sketch editing
             self.mapView.sketchEditor?.start(with: geometry)
             
@@ -120,9 +106,8 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, readyToEditGeometryWith sketchEditor: AGSSketchEditor?, for popup: AGSPopup) {
-    
         //Dismiss the popup view controller
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
         
         //Prepare the current view controller for sketch mode
         self.mapView.callout.isHidden = true
@@ -143,13 +128,11 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, didCancelEditingFor popup: AGSPopup) {
-        
         //stop sketch editor
         self.disableSketchEditor()
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, didFinishEditingFor popup: AGSPopup) {
-        
         //stop sketch editor
         self.disableSketchEditor()
         
@@ -167,7 +150,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
-        
         //dismiss the popups view controller
         self.dismiss(animated: true)
         
@@ -189,7 +171,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         
         //present the popups view controller again
-        self.present(self.popupsVC, animated: true, completion: nil)
+        self.present(self.popupsVC, animated: true)
         
         //remove self as observer for notifications
         NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
@@ -217,7 +199,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     // MARK: - FeatureTemplatePickerDelegate
     
     func featureTemplatePickerViewController(_ controller: FeatureTemplatePickerViewController, didSelectFeatureTemplate template: AGSFeatureTemplate, forFeatureLayer featureLayer: AGSFeatureLayer) {
-        
         let featureTable = self.featureLayer.featureTable as! AGSArcGISFeatureTable
         //create a new feature based on the template
         let newFeature = featureTable.createFeature(with: template)!
@@ -243,7 +224,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.popupsVC.modalPresentationStyle = .formSheet
 
         //First, dismiss the Feature Template Picker
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false)
 
         //Next, Present the popup view controller
         self.present(self.popupsVC, animated: true) { [weak self] in
@@ -254,5 +235,4 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     func featureTemplatePickerViewControllerWantsToDismiss(_ controller: FeatureTemplatePickerViewController) {
         self.dismissFeatureTemplatePickerVC()
     }
-    
 }

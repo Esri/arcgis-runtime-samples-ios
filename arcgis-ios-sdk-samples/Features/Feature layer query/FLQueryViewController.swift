@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FLQueryViewController: UIViewController, UISearchBarDelegate {
-    
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var featureTable: AGSServiceFeatureTable?
@@ -61,7 +60,6 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
     }
     
     func selectFeaturesForSearchTerm(_ searchTerm: String) {
-        
         guard let featureLayer = featureLayer,
             let featureTable = featureTable else {
                 return
@@ -77,7 +75,6 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         queryParams.whereClause = "upper(STATE_NAME) LIKE '%\(searchTerm.uppercased())%'"
         
         featureTable.queryFeatures(with: queryParams) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
-            
             guard let self = self else {
                 return
             }
@@ -92,7 +89,6 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
                     
                     // zoom to the selected feature
                     self.mapView.setViewpointGeometry(features.first!.geometry!, padding: 25)
-                    
                 } else {
                     if let fullExtent = featureLayer.fullExtent {
                         // no matches, zoom to show everything in the layer

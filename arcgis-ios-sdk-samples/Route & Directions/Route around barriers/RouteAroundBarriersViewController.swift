@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate, DirectionsListVCDelegate {
-    
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var routeParametersBBI: UIBarButtonItem!
@@ -39,7 +38,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         didSet {
             let flag = generatedRoute != nil
             self.directionsListBBI.isEnabled = flag
-            self.setRouteDetailsVisibility(visible: flag)
+            self.setRouteDetailsVisibility(visible: flag, animated: true)
             self.directionsListViewController.route = generatedRoute
         }
     }
@@ -66,9 +65,13 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         
         //get default parameters
         self.getDefaultParameters()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         //hide directions list
-        self.setRouteDetailsVisibility(visible: false)
+        self.setRouteDetailsVisibility(visible: generatedRoute != nil, animated: false)
     }
 
     // MARK: - Route logic
@@ -121,7 +124,6 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         SVProgressHUD.show(withStatus: "Routing")
         
         self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
-            
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -132,7 +134,6 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
                 self.presentAlert(error: error)
             } else if let routeResult = routeResult,
                 let route = routeResult.routes.first {
-                
                 let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
                 self.routeGraphicsOverlay.graphics.add(routeGraphic)
                 self.generatedRoute = route
@@ -216,10 +217,11 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         )
     }
     
-    func setRouteDetailsVisibility(visible: Bool) {
+    func setRouteDetailsVisibility(visible: Bool, animated: Bool) {
         self.directionsBottomConstraint.constant = visible ? -115 : -150
+        let duration: TimeInterval = animated ? 0.3 : 0
         UIView.animate(
-            withDuration: 0.3,
+            withDuration: duration,
             animations: { [weak self] in
                 self?.view.layoutIfNeeded()
             },
@@ -247,7 +249,6 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
     //MARk: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-    
         return .none
     }
     

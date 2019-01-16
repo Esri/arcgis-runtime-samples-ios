@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class GenerateGeodatabaseViewController: UIViewController {
-
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var downloadBBI: UIBarButtonItem!
     @IBOutlet var extentView: UIView!
@@ -48,14 +47,12 @@ class GenerateGeodatabaseViewController: UIViewController {
         //setup extent view
         extentView.layer.borderColor = UIColor.red.cgColor
         extentView.layer.borderWidth = 3
-
     }
     
     func addFeatureLayers() {
         syncTask.load { [weak self] (error) in
             if let error = error {
                 print("Could not load feature service \(error)")
-                
             } else {
                 guard let self = self,
                     let featureServiceInfo = self.syncTask.featureServiceInfo else {
@@ -90,12 +87,10 @@ class GenerateGeodatabaseViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func downloadAction() {
-        
         //generate default param to contain all layers in the service
         syncTask.defaultGenerateGeodatabaseParameters(withExtent: self.frameToExtent()) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: Error?) in
             if let params = params,
                 let self = self {
-                
                 //don't include attachments to minimze the geodatabae size
                 params.returnAttachments = false
                 
@@ -116,7 +111,6 @@ class GenerateGeodatabaseViewController: UIViewController {
                         SVProgressHUD.show(withStatus: status.statusString())
                     },
                     completion: { [weak self] (object: AnyObject?, error: Error?) in
-                        
                         SVProgressHUD.dismiss()
                         
                         if let error = error {
@@ -129,7 +123,6 @@ class GenerateGeodatabaseViewController: UIViewController {
                         self?.activeJob = nil
                     }
                 )
-                
             } else {
                 print("Could not generate default parameters: \(error!)")
             }
@@ -141,7 +134,6 @@ class GenerateGeodatabaseViewController: UIViewController {
             return
         }
         generatedGeodatabase.load { [weak self] (error: Error?) in
-            
             guard let self = self else {
                 return
             }
@@ -173,5 +165,4 @@ class GenerateGeodatabaseViewController: UIViewController {
             }
         }
     }
-
 }

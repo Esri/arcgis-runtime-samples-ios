@@ -17,12 +17,10 @@ import UIKit
 import ArcGIS
 
 protocol StretchRendererSettingsVCDelegate: AnyObject {
-    
     func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
 }
 
 class StretchRendererSettingsVC: UITableViewController {
-    
     weak var delegate: StretchRendererSettingsVCDelegate?
     
     weak var stretchTypeCell: UITableViewCell?
@@ -135,5 +133,4 @@ class StretchRendererSettingsVC: UITableViewController {
         optionsViewController.title = "Stretch Type"
         show(optionsViewController, sender: self)
     }
-    
 }

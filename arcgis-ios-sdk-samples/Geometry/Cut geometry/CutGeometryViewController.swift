@@ -16,13 +16,11 @@ import UIKit
 import ArcGIS
 
 class CutGeometryViewController: UIViewController {
-    
     @IBOutlet weak var mapView: AGSMapView!
     
     let graphicsOverlay = AGSGraphicsOverlay()
     
     var lakeSuperiorPolygonGraphic: AGSGraphic = {
-        
         // create an array of points that represents Lake Superior (polygon). Use the same spatial reference as the underlying base map
         let points = [
             AGSPoint(x: -10254374.668616, y: 5908345.076380, spatialReference: .webMercator()),
@@ -73,7 +71,6 @@ class CutGeometryViewController: UIViewController {
     }()
     
     var borderPolylineGraphic: AGSGraphic = {
-       
         // create an array of points that represents a cut line
         let points = [
             AGSPoint(x: -9981328.687124, y: 6111053.281447, spatialReference: .webMercator()),
@@ -120,7 +117,6 @@ class CutGeometryViewController: UIViewController {
     }
     
     @IBAction func cutGeometryWithPolyline(_ sender: Any) {
-        
         // disable the cut button
         (sender as? UIBarButtonItem)?.isEnabled = false
         

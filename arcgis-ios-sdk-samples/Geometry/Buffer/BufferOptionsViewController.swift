@@ -15,12 +15,10 @@
 import UIKit
 
 protocol BufferOptionsViewControllerDelegate: AnyObject {
-    
     func bufferOptionsViewController(_ bufferOptionsViewController: BufferOptionsViewController, bufferDistanceChangedTo bufferDistance: Measurement<UnitLength>)
 }
 
 class BufferOptionsViewController: UITableViewController {
-    
     @IBOutlet private weak var distanceSlider: UISlider?
     @IBOutlet private weak var distanceLabel: UILabel?
     
@@ -57,5 +55,4 @@ class BufferOptionsViewController: UITableViewController {
         // notify the delegate with the new value
         delegate?.bufferOptionsViewController(self, bufferDistanceChangedTo: bufferDistance)
     }
-    
 }

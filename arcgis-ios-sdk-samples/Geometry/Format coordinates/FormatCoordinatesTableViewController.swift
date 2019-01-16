@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FormatCoordinatesTableViewController: UITableViewController {
-    
     @IBOutlet private var latLongDDTextField: UITextField?
     @IBOutlet private var latLongDMSTextField: UITextField?
     @IBOutlet private var utmTextField: UITextField?
@@ -37,7 +36,6 @@ class FormatCoordinatesTableViewController: UITableViewController {
     
     //use AGSCoordinateFormatter to generate coordinate string for the given point
     private func updateCoordinateFieldsForPoint() {
-        
         guard let point = point else {
             return
         }
@@ -52,7 +50,6 @@ class FormatCoordinatesTableViewController: UITableViewController {
     }
     
     @IBAction func textFieldAction(_ sender: UITextField) {
-        
         guard let text = sender.text else {
             return
         }
@@ -78,12 +75,10 @@ class FormatCoordinatesTableViewController: UITableViewController {
             // invalid input, reset the fields
             updateCoordinateFieldsForPoint()
         }
-        
     }
 }
 
 extension FormatCoordinatesTableViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

@@ -15,12 +15,10 @@
 import UIKit
 
 protocol GeneralizeSettingsViewControllerDelegate: AnyObject {
-    
     func generalizeSettingsViewControllerDidUpdate(_ generalizeSettingsViewController: GeneralizeSettingsViewController)
 }
 
 class GeneralizeSettingsViewController: UITableViewController {
-
     @IBOutlet weak var generalizeSwitch: UISwitch!
     @IBOutlet weak var densifySwitch: UISwitch!
     @IBOutlet weak var maxDeviationSlider: UISlider!

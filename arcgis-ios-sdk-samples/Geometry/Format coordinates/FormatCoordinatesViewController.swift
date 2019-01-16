@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate {
-
     @IBOutlet private var mapView: AGSMapView!
     
     private weak var tableViewController: FormatCoordinatesTableViewController?
@@ -68,7 +67,6 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
     }
     
     private func displayGraphicAtPoint(_ point: AGSPoint) {
-        
         //remove previous graphic from graphics overlay
         graphicsOverlay.graphics.removeAllObjects()
         
@@ -84,5 +82,4 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
         // update the point with the tapped location
         point = mapPoint
     }
-
 }

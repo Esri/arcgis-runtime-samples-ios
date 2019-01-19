@@ -239,9 +239,9 @@ class Animate3DGraphicViewController: UIViewController {
         
         //update the properties on the model
         planeModelGraphic.geometry = frame.position
-        planeModelGraphic.attributes["HEADING"] = frame.heading
-        planeModelGraphic.attributes["PITCH"] = frame.pitch
-        planeModelGraphic.attributes["ROLL"] = frame.roll
+        planeModelGraphic.attributes["HEADING"] = frame.heading.value
+        planeModelGraphic.attributes["PITCH"] = frame.pitch.value
+        planeModelGraphic.attributes["ROLL"] = frame.roll.value
         
         //2D plane
         triangleGraphic.geometry = frame.position

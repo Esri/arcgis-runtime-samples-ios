@@ -45,7 +45,7 @@ class GraphicsOverlayDictionaryRenderer3DViewController: UIViewController {
         if let messagesURL = Bundle.main.url(forResource: "Mil2525DMessages", withExtension: "xml") {
             do {
                 let messagesData = try Data(contentsOf: messagesURL)
-                let messages = try Mil2525DMessageParser().parseMessages(from: messagesData)
+                let messages = try MessageParser().parseMessages(from: messagesData)
                 let graphics = messages.map { AGSGraphic(geometry: AGSMultipoint(points: $0.points), symbol: nil, attributes: $0.attributes) }
                 graphicsOverlay.graphics.addObjects(from: graphics)
             } catch {
@@ -68,12 +68,12 @@ class GraphicsOverlayDictionaryRenderer3DViewController: UIViewController {
     }
 }
 
-struct Mil2525DMessage {
+struct Message {
     var points: [AGSPoint]
     var attributes: [String: Any]
 }
 
-class Mil2525DMessageParser: NSObject {
+class MessageParser: NSObject {
     struct ControlPoint {
         var x: Double
         var y: Double
@@ -84,12 +84,12 @@ class Mil2525DMessageParser: NSObject {
     private var attributes = [String: Any]()
     private var contentsOfCurrentElement = ""
     
-    private var parsedMessages = [Mil2525DMessage]()
+    private var parsedMessages = [Message]()
     
     func didFinishParsingMessage() {
         let spatialReference = AGSSpatialReference(wkid: wkid!)
         let points = controlPoints.map { AGSPoint(x: $0.x, y: $0.y, spatialReference: spatialReference) }
-        let message = Mil2525DMessage(points: points, attributes: attributes)
+        let message = Message(points: points, attributes: attributes)
         parsedMessages.append(message)
         
         wkid = nil
@@ -97,7 +97,7 @@ class Mil2525DMessageParser: NSObject {
         attributes.removeAll()
     }
     
-    func parseMessages(from data: Data) throws -> [Mil2525DMessage] {
+    func parseMessages(from data: Data) throws -> [Message] {
         defer { parsedMessages.removeAll() }
         let parser = XMLParser(data: data)
         parser.delegate = self
@@ -112,7 +112,7 @@ class Mil2525DMessageParser: NSObject {
     }
 }
 
-extension Mil2525DMessageParser: XMLParserDelegate {
+extension MessageParser: XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
         contentsOfCurrentElement.removeAll()
     }

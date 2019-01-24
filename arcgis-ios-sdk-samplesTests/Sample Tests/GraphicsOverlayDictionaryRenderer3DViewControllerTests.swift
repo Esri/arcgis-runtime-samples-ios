@@ -42,11 +42,11 @@ class GraphicsOverlayDictionaryRenderer3DViewControllerTests: XCTestCase {
     }
 }
 
-class Mil2525DMessageParserTests: XCTestCase {
+class MessageParserTests: XCTestCase {
     let messagesURL = Bundle.main.url(forResource: "Mil2525DMessages", withExtension: "xml")!
     
     func testParseMessagesAtURL() {
-        let parser = Mil2525DMessageParser()
+        let parser = MessageParser()
         do {
             let messagesData = try Data(contentsOf: messagesURL)
             let messages = try parser.parseMessages(from: messagesData)

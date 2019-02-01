@@ -469,6 +469,10 @@
 		4C0F27B32152CA3500496666 /* IdentifyKMLFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */; };
 		4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */; };
 		4C0F27B721540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */; };
+		4C1A7C1F21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C1E21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard */; };
+		4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
+		4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */; };
+		4C1A7C2621D4083300E16E94 /* mil2525d.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2521D4082400E16E94 /* mil2525d.stylx */; };
 		4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4C41B2EE211A617700EEA81E /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C41B2ED211A617700EEA81E /* Sample.swift */; };
 		4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */; };
@@ -487,6 +491,8 @@
 		4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B55E2142EB2600767D87 /* SampleTests.swift */; };
 		4CD2B5612142F09700767D87 /* CategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B5602142F09700767D87 /* CategoryTests.swift */; };
 		4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
+		4CECF8CA21DD5C2200A56161 /* Mil2525DMessages.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */; };
+		4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		4CECF89F21D57F0A00A56161 /* SetMinMaxScale.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CECF89E21D57F0A00A56161 /* SetMinMaxScale.storyboard */; };
 		4CECF8A121D57F4000A56161 /* SetMinMaxScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */; };
 		4CECF8A321D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF8A221D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift */; };
@@ -830,6 +836,7 @@
 				940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */,
 				4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */,
 				4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */,
+				4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */,
 				4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1169,6 +1176,10 @@
 		4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyKMLFeatures.storyboard; sourceTree = "<group>"; };
 		4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyKMLFeaturesViewController.swift; sourceTree = "<group>"; };
 		4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyKMLFeaturesViewControllerTests.swift; sourceTree = "<group>"; };
+		4C1A7C1E21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphicsOverlayDictionaryRenderer3D.storyboard; sourceTree = "<group>"; };
+		4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsOverlayDictionaryRenderer3DViewController.swift; sourceTree = "<group>"; };
+		4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift; sourceTree = "<group>"; };
+		4C1A7C2521D4082400E16E94 /* mil2525d.stylx */ = {isa = PBXFileReference; lastKnownFileType = file; path = mil2525d.stylx; sourceTree = "<group>"; };
 		4C41B2ED211A617700EEA81E /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
 		4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryMapImageSublayerViewController.swift; sourceTree = "<group>"; };
@@ -1187,6 +1198,7 @@
 		4CD2B5582142EAF900767D87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD2B55E2142EB2600767D87 /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
 		4CD2B5602142F09700767D87 /* CategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTests.swift; sourceTree = "<group>"; };
+		4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mil2525DMessages.xml; sourceTree = "<group>"; };
 		4CECF89E21D57F0A00A56161 /* SetMinMaxScale.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetMinMaxScale.storyboard; sourceTree = "<group>"; };
 		4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMinMaxScaleViewController.swift; sourceTree = "<group>"; };
 		4CECF8A221D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMinMaxScaleViewControllerTests.swift; sourceTree = "<group>"; };
@@ -1678,6 +1690,8 @@
 				3EABC7951DB1787600C161C6 /* Rasters */,
 				C793B5E02166756A000A7A10 /* KML */,
 				3E1183D81ECF5A1000180152 /* Mission files */,
+				4C1A7C2421D4081000E16E94 /* Styles */,
+				4C1A7C2721D408E100E16E94 /* Military messages */,
 			);
 			path = "Shared resources";
 			sourceTree = "<group>";
@@ -2269,6 +2283,7 @@
 				3EBA25441D300A5A00AB0703 /* Simple renderer */,
 				3EBA253E1D2F101100AB0703 /* Unique value renderer */,
 				21E9CDE71EF9C5EA00BD4D7D /* Display grid */,
+				4C1A7C1D21D3FB3800E16E94 /* Graphics overlay (dictionary renderer) 3D */,
 			);
 			path = "Display information";
 			sourceTree = "<group>";
@@ -2852,9 +2867,35 @@
 			isa = PBXGroup;
 			children = (
 				4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */,
+				4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */,
 				4CECF8A221D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift */,
 			);
 			path = "Sample Tests";
+			sourceTree = "<group>";
+		};
+		4C1A7C1D21D3FB3800E16E94 /* Graphics overlay (dictionary renderer) 3D */ = {
+			isa = PBXGroup;
+			children = (
+				4C1A7C1E21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard */,
+				4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */,
+			);
+			path = "Graphics overlay (dictionary renderer) 3D";
+			sourceTree = "<group>";
+		};
+		4C1A7C2421D4081000E16E94 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				4C1A7C2521D4082400E16E94 /* mil2525d.stylx */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		4C1A7C2721D408E100E16E94 /* Military messages */ = {
+			isa = PBXGroup;
+			children = (
+				4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */,
+			);
+			path = "Military messages";
 			sourceTree = "<group>";
 		};
 		4C66AAF52107C4BB00EE6346 /* Query a map image sublayer */ = {
@@ -3437,6 +3478,7 @@
 				3ECDD9B11E8470E100E645AB /* DownloadProgressView.xib in Resources */,
 				3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */,
 				215E23D321024715001DE092 /* SpatialRelationships.storyboard in Resources */,
+				4C1A7C2621D4083300E16E94 /* mil2525d.stylx in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
 				D9EE378D20E2C03800BF8AD1 /* LineOfSightGeoElement.storyboard in Resources */,
@@ -3512,6 +3554,7 @@
 				3E8A05DE1ECE69840032231C /* Bristol.png in Resources */,
 				D9EE379920E2CC7700BF8AD1 /* dolmus.3ds in Resources */,
 				21E9CDEB1EF9C5EA00BD4D7D /* DisplayGrid.storyboard in Resources */,
+				4CECF8CA21DD5C2200A56161 /* Mil2525DMessages.xml in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				C7094783215D34BA00BA0969 /* GenerateOfflineMapOverrides.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
@@ -3531,6 +3574,7 @@
 				3E62940B1EAFAF4100084105 /* WebTiledLayer.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
+				4C1A7C1F21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard in Resources */,
 				C768170C2163E31700EC82F4 /* US_State_Capitals.kml in Resources */,
 				3EEA06131D21C44000E03774 /* SurfacePlacements.storyboard in Resources */,
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
@@ -3666,6 +3710,7 @@
 				C7FF07D621B9D258000D4055 /* FeatureLayerRenderingModeSceneViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
 				127D29F7200EC5FC00DD6CDC /* ViewshedLocationViewController.swift in Sources */,
+				4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */,
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
 				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
@@ -3847,6 +3892,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */,
 				4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */,
 				4C0F27B721540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift in Sources */,
 				4CECF8A321D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift in Sources */,

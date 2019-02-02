@@ -17,10 +17,10 @@ import ArcGIS
 
 class BookmarksListViewController: UITableViewController {
     //list of bookmarks
-    var bookmarks: [AGSBookmark]!
+    var bookmarks = [AGSBookmark]()
     
     //private property to store selection action for table cell
-    private var selectAction: ((AGSViewpoint) -> Void)!
+    private var selectAction: ((AGSViewpoint) -> Void)?
     
     //executed for tableview row selection
     func setSelectAction(_ action : @escaping ((AGSViewpoint) -> Void)) {
@@ -34,7 +34,7 @@ class BookmarksListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.bookmarks?.count ?? 0
+        return bookmarks.count
     }
     
     // MARK: - TableView delegates

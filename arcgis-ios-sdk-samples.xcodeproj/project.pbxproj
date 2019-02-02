@@ -2906,8 +2906,8 @@
 				4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */,
 			);
 			path = "Military messages";
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		4C1A7C2A21D4129600E16E94 /* Calculate 3D distance */ = {
 			isa = PBXGroup;
 			children = (

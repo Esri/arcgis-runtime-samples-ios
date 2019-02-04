@@ -15,15 +15,15 @@
 
 import UIKit
 
-protocol TilePackagesListVCDelegate: AnyObject {
-    func tilePackagesListViewController(_ tilePackagesListViewController: TilePackagesListViewController, didSelectTPKWithPath path: String)
+protocol TilePackagesListViewControllerDelegate: AnyObject {
+    func tilePackagesListViewController(_ tilePackagesListViewController: TilePackagesListViewController, didSelectTilePackageAt url: URL)
 }
 
 class TilePackagesListViewController: UITableViewController {
-    weak var delegate: TilePackagesListVCDelegate?
+    weak var delegate: TilePackagesListViewControllerDelegate?
     
-    private var bundleTPKPaths: [String]!
-    private var documentTPKPaths: [String]!
+    private var bundleTilePackageURLs = [URL]()
+    private var documentTilePacakgeURLs = [URL]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +33,23 @@ class TilePackagesListViewController: UITableViewController {
     }
     
     func fetchTilePackages() {
-        self.bundleTPKPaths = Bundle.main.paths(forResourcesOfType: "tpk", inDirectory: nil)
-        self.tableView.reloadData()
-        
-        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path)
-        
-        let predicate = NSPredicate(format: "SELF MATCHES %@", ".*tpk$")
-        let tpks = subpaths?.filter { (objc) -> Bool in
-            return predicate.evaluate(with: objc)
+        if let urls = Bundle.main.urls(forResourcesWithExtension: "tpk", subdirectory: nil) {
+            bundleTilePackageURLs = urls
         }
-        self.documentTPKPaths = tpks?.map { (name: String) -> String in
-            return documentDirectoryURL.appendingPathComponent(name).path
+        
+        if let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
+            let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path) {
+            let predicate = NSPredicate(format: "SELF MATCHES %@", ".*tpk$")
+            let tpks = subpaths.filter { predicate.evaluate(with: $0) }
+            documentTilePacakgeURLs = tpks.map { documentDirectoryURL.appendingPathComponent($0) }
+        }
+    }
+    
+    func urlForRow(at indexPath: IndexPath) -> URL {
+        if indexPath.section == 0 {
+            return bundleTilePackageURLs[indexPath.row]
+        } else {
+            return documentTilePacakgeURLs[indexPath.row]
         }
     }
     
@@ -56,21 +61,15 @@ class TilePackagesListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.bundleTPKPaths?.count ?? 0
+            return bundleTilePackageURLs.count
         } else {
-            return self.documentTPKPaths?.count ?? 0
+            return documentTilePacakgeURLs.count
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell", for: indexPath)
-        
-        if indexPath.section == 0 {
-            cell.textLabel?.text = self.extractName(fromPath: self.bundleTPKPaths[indexPath.row])
-        } else {
-            cell.textLabel?.text = self.extractName(fromPath: self.documentTPKPaths[indexPath.row])
-        }
-        
+        cell.textLabel?.text = urlForRow(at: indexPath).lastPathComponent
         return cell
     }
     
@@ -81,21 +80,7 @@ class TilePackagesListViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let path: String
-        if indexPath.section == 0 {
-            path = bundleTPKPaths[indexPath.row]
-        } else {
-            path = documentTPKPaths[indexPath.row]
-        }
-        delegate?.tilePackagesListViewController(self, didSelectTPKWithPath: path)
-    }
-    
-    func extractName(fromPath path: String) -> String {
-        guard var index = path.range(of: "/", options: .backwards, range: nil, locale: nil)?.lowerBound else {
-            return ""
-        }
-        index = path.index(after: index)
-        let name = path[index...]
-        return String(name)
+        let url = urlForRow(at: indexPath)
+        delegate?.tilePackagesListViewController(self, didSelectTilePackageAt: url)
     }
 }

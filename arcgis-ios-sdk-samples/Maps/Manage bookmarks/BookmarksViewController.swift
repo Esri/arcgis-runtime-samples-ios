@@ -129,7 +129,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             //assign the bookmarks to be shown
-            controller.bookmarks = self.map.bookmarks as? [AGSBookmark]
+            controller.bookmarks = self.map.bookmarks as! [AGSBookmark]
             //set the closure to be executed when the user selects a bookmark
             controller.setSelectAction { [weak self] (viewpoint: AGSViewpoint) in
                 self?.mapView.setViewpoint(viewpoint)

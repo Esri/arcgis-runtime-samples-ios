@@ -94,18 +94,7 @@ class ExportTilesViewController: UIViewController {
     }
     
     private func initiateDownload() {
-        
-        //get the parameters by specifying the selected area,
-        //mapview's current scale as the minScale and tiled layer's max scale as maxScale
-        let minScale = self.mapView.mapScale
-        let maxScale = self.self.tiledLayer.maxScale
-        
-        //TODO: Remove this code once design has been udpated
-        if minScale == maxScale {
-            presentAlert(message: "Min scale and max scale cannot be the same")
-            return
-        }
-        
+
         //set the state
         self.downloading = true
         
@@ -113,6 +102,8 @@ class ExportTilesViewController: UIViewController {
         self.deleteAllTpks()
         
         //initialize the export task
+        //get the parameters by specifying the selected area,
+        //mapview's current scale as the minScale and tiled layer's max scale as maxScale
         self.exportTask = AGSExportTileCacheTask(url: self.tiledLayer.url!)
         self.exportTask.exportTileCacheParameters(withAreaOfInterest: self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: Error?) in
             if let error = error {

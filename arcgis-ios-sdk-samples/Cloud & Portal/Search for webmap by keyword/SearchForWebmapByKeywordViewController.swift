@@ -84,9 +84,11 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         // if the last search hasn't returned yet, cancel it
         lastQueryCancelable?.cancel()
         
-        // webmaps authored prior to July 2nd, 2014 are not supported - so search only from that date to the current time
-        let date1 = dateFormatter.date(from: "July 2, 2014")!
-        let dateString = "uploaded:[000000\(Int(date1.timeIntervalSince1970)) TO 000000\(Int(Date().timeIntervalSince1970))]"
+        // webmaps authored prior to July 2nd, 2014 are not supported - so
+        // search only from that date to the current time
+        let dateRange = dateFormatter.date(from: "July 2, 2014")!...Date()
+        let uploadedRange = dateRange.lowerBound.millisecondsSince1970...dateRange.upperBound.millisecondsSince1970
+        let dateString = String(format: "uploaded:[%ld TO %ld]", uploadedRange.lowerBound, uploadedRange.upperBound)
         
         // create query parameters looking for items of type .webMap and
         // with our keyword and date string
@@ -184,5 +186,12 @@ extension SearchForWebmapByKeywordViewController: AGSAuthenticationManagerDelega
         
         // notify the user
         presentAlert(message: "Web map access denied")
+    }
+}
+
+private extension Date {
+    /// The milliseconds between the date value and 00:00:00 UTC on 1 January 1970.
+    var millisecondsSince1970: Int64 {
+        return Int64(timeIntervalSince1970 * 1_000)
     }
 }

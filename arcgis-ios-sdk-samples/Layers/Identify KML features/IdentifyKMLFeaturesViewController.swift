@@ -49,11 +49,11 @@ class IdentifyKMLFeaturesViewController: UIViewController {
         guard let data = placemark.balloonContent.data(using: .utf8) else { return }
         do {
             let attributedText = try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-            let textView = UITextView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 50)))
-            textView.isUserInteractionEnabled = false
+            let textView = UITextView()
             textView.attributedText = attributedText
             textView.backgroundColor = placemark.balloonBackgroundColor
-            textView.sizeToFit()
+            textView.isEditable = false
+            textView.isScrollEnabled = false
             mapView.callout.customView = textView
             mapView.callout.show(at: point, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
         } catch {

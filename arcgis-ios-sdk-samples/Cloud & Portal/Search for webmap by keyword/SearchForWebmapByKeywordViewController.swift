@@ -136,8 +136,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         cell.thumbnail.layer.borderWidth = 1
         
         // date label
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
         cell.timerLabel.text = dateFormatter.string(from: portalItem.modified!)
         
         if let image = portalItem.thumbnail?.image {

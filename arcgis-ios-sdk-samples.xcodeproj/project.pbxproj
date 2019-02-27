@@ -491,12 +491,12 @@
 		4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B55E2142EB2600767D87 /* SampleTests.swift */; };
 		4CD2B5612142F09700767D87 /* CategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B5602142F09700767D87 /* CategoryTests.swift */; };
 		4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
-		4CECF8CA21DD5C2200A56161 /* Mil2525DMessages.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */; };
-		4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		4CECF89F21D57F0A00A56161 /* SetMinMaxScale.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CECF89E21D57F0A00A56161 /* SetMinMaxScale.storyboard */; };
 		4CECF8A121D57F4000A56161 /* SetMinMaxScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */; };
 		4CECF8A321D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF8A221D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift */; };
 		4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */; };
+		4CECF8CA21DD5C2200A56161 /* Mil2525DMessages.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */; };
+		4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940A73F320E588C200A06C80 /* CutGeometry.storyboard */; };
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
@@ -1198,10 +1198,10 @@
 		4CD2B5582142EAF900767D87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD2B55E2142EB2600767D87 /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
 		4CD2B5602142F09700767D87 /* CategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTests.swift; sourceTree = "<group>"; };
-		4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mil2525DMessages.xml; sourceTree = "<group>"; };
 		4CECF89E21D57F0A00A56161 /* SetMinMaxScale.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetMinMaxScale.storyboard; sourceTree = "<group>"; };
 		4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMinMaxScaleViewController.swift; sourceTree = "<group>"; };
 		4CECF8A221D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMinMaxScaleViewControllerTests.swift; sourceTree = "<group>"; };
+		4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mil2525DMessages.xml; sourceTree = "<group>"; };
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };

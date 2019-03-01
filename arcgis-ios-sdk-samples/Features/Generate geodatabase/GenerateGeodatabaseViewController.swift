@@ -59,16 +59,16 @@ class GenerateGeodatabaseViewController: UIViewController {
                     return
                 }
                 
-                for index in featureServiceInfo.layerInfos.indices.reversed() {
-                    let layerInfo = featureServiceInfo.layerInfos[index]
-                    //For each layer in the serice, add a layer to the map
-                    let layerURL = self.syncTask.url!.appendingPathComponent(String(index))
+                // For each layer in the service, add a layer to the map.
+                let featureLayers = featureServiceInfo.layerInfos.enumerated().map { (offset, layerInfo) -> AGSFeatureLayer in
+                    let layerURL = self.syncTask.url!.appendingPathComponent(String(offset))
                     let featureTable = AGSServiceFeatureTable(url: layerURL)
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     featureLayer.name = layerInfo.name
                     featureLayer.opacity = 0.65
-                    self.mapView.map?.operationalLayers.add(featureLayer)
+                    return featureLayer
                 }
+                self.mapView.map?.operationalLayers.addObjects(from: featureLayers.reversed())
                 
                 //enable download
                 self.downloadBBI.isEnabled = true

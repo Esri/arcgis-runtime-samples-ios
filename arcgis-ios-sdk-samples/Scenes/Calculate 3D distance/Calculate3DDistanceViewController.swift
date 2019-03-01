@@ -22,9 +22,7 @@ private let rangeX = -120.05859621653715 ... -77.69531409620706
 /// The speed of the animation in coordinate values per second.
 private let animationSpeed = 1.0
 /// The duration of the animation (in one direction).
-private var animationDuration: TimeInterval {
-    return (rangeX.upperBound - rangeX.lowerBound) / animationSpeed
-}
+private let animationDuration: TimeInterval = (rangeX.upperBound - rangeX.lowerBound) / animationSpeed
 
 /// A view controller that manages the interface of the Calculate 3D Distance
 /// sample.
@@ -37,12 +35,10 @@ class Calculate3DDistanceViewController: UIViewController {
             sceneView.setViewpointCamera(AGSCamera(latitude: 39, longitude: -101, altitude: 10_000_000, heading: 10, pitch: 0, roll: 0))
         }
     }
+    /// The visual effect view that contains the distance label.
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
     /// The label that shows the distance between the two graphics.
-    @IBOutlet weak var distanceLabel: UILabel! {
-        didSet {
-            updateDistanceLabel()
-        }
-    }
+    @IBOutlet weak var distanceLabel: UILabel!
     /// The formatter for converting distance measurements to a string.
     let measurementFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
@@ -57,9 +53,8 @@ class Calculate3DDistanceViewController: UIViewController {
     
     /// A red triangle graphic.
     let redGraphic: AGSGraphic = {
-        let point = AGSPoint(x: rangeX.upperBound, y: 40.25390707699415, z: 900, spatialReference: .wgs84())
         let symbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 20)
-        return AGSGraphic(geometry: point, symbol: symbol)
+        return AGSGraphic(geometry: nil, symbol: symbol)
     }()
     /// The function that determines the x-coordinate of the location of the
     /// red graphic.
@@ -69,9 +64,8 @@ class Calculate3DDistanceViewController: UIViewController {
     )
     /// A green triangle graphic.
     let greenGraphic: AGSGraphic = {
-        let point = AGSPoint(x: rangeX.lowerBound, y: 38.847657048103514, z: 1_000, spatialReference: .wgs84())
         let symbol = AGSSimpleMarkerSymbol(style: .triangle, color: .green, size: 20)
-        return AGSGraphic(geometry: point, symbol: symbol)
+        return AGSGraphic(geometry: nil, symbol: symbol)
     }()
     /// The function that determines the x-coordinate of the location of the
     /// green graphic.
@@ -105,41 +99,70 @@ class Calculate3DDistanceViewController: UIViewController {
         return graphicsOverlay
     }
     
+    func makeDisplayLink() -> CADisplayLink {
+        let displayLink = CADisplayLink(target: self, selector: #selector(self.updateGraphics(_:)))
+        displayLink.preferredFramesPerSecond = 15
+        displayLink.add(to: .current, forMode: .common)
+        return displayLink
+    }
+    
     /// Starts animating the graphics. Animation will continue until
     /// `stopAnimatingGraphics()` is called.
     func startAnimatingGraphics() {
-        // Create the display link if it doesn't exist yet.
-        if displayLink == nil {
-            let displayLink = CADisplayLink(target: self, selector: #selector(self.updateGraphics(_:)))
-            displayLink.preferredFramesPerSecond = 15
-            displayLink.add(to: .current, forMode: .common)
-            self.displayLink = displayLink
-        }
-        displayLink?.isPaused = false
+        updateRedGraphic(for: 0)
+        redGraphic.isVisible = true
+        updateGreenGraphic(for: 0)
+        greenGraphic.isVisible = true
+        
+        updateDistanceLabel()
+        visualEffectView.isHidden = false
+        
+        displayLink = makeDisplayLink()
     }
     
     /// Stops animating the graphics.
     func stopAnimatingGraphics() {
-        displayLink?.isPaused = true
+        displayLink?.invalidate()
+        displayLink = nil
+        
+        visualEffectView.isHidden = true
+        
+        redGraphic.isVisible = false
+        greenGraphic.isVisible = false
+        
+        startTimestamp = nil
     }
+    
+    /// The time value associated with the first frame displayed.
+    var startTimestamp: CFTimeInterval?
     
     /// Updates the position of the graphics.
     ///
     /// - Parameter sender: The display link driving the animation.
     @objc
     func updateGraphics(_ sender: CADisplayLink) {
-        let duration = TimeInterval((rangeX.upperBound - rangeX.lowerBound) / animationSpeed)
-        let time = sender.timestamp.truncatingRemainder(dividingBy: duration * 2)
-        
-        let redPoint = redGraphic.geometry as! AGSPoint
-        redGraphic.geometry = AGSPoint(x: redPositionFunction.apply(to: time), y: redPoint.y, z: redPoint.z, spatialReference: redPoint.spatialReference)
-        (redGraphic.symbol as! AGSSimpleMarkerSymbol).angle = time >= duration ? 180 : 0
-        
-        let greenPoint = greenGraphic.geometry as! AGSPoint
-        greenGraphic.geometry = AGSPoint(x: greenPositionFunction.apply(to: time), y: greenPoint.y, z: greenPoint.z, spatialReference: greenPoint.spatialReference)
-        (greenGraphic.symbol as! AGSSimpleMarkerSymbol).angle = time >= duration ? 210 : 30
-        
-        updateDistanceLabel()
+        // Is this the first frame?
+        if let startTimestamp = startTimestamp {
+            let timestamp = sender.timestamp - startTimestamp
+            let time = timestamp.truncatingRemainder(dividingBy: animationDuration * 2)
+            
+            updateRedGraphic(for: time)
+            updateGreenGraphic(for: time)
+            
+            updateDistanceLabel()
+        } else {
+            startTimestamp = sender.timestamp
+        }
+    }
+    
+    func updateRedGraphic(for time: TimeInterval) {
+        redGraphic.geometry = AGSPoint(x: redPositionFunction.apply(to: time), y: 40.25390707699415, z: 900, spatialReference: .wgs84())
+        (redGraphic.symbol as! AGSSimpleMarkerSymbol).angle = time >= animationDuration ? 180 : 0
+    }
+    
+    func updateGreenGraphic(for time: TimeInterval) {
+        greenGraphic.geometry = AGSPoint(x: greenPositionFunction.apply(to: time), y: 38.847657048103514, z: 1_000, spatialReference: .wgs84())
+        (greenGraphic.symbol as! AGSSimpleMarkerSymbol).angle = time >= animationDuration ? 210 : 30
     }
     
     /// Updates the distance label.

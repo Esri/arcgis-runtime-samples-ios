@@ -16,11 +16,12 @@ import UIKit
 
 protocol EAOptionsVCDelegate: AnyObject {
     func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int)
+    func optionsViewControllerDidCancell(_ optionsViewController: EAOptionsViewController)
 }
 
 class EAOptionsViewController: UITableViewController {
     var options: [String]!
-    weak var delegate: EAOptionsVCDelegate!
+    weak var delegate: EAOptionsVCDelegate?
     
     // MARK: - Table view data source
     
@@ -43,13 +44,12 @@ class EAOptionsViewController: UITableViewController {
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate.optionsViewController(self, didSelectOptionAtIndex: indexPath.row)
-        self.cancelAction()
+        delegate?.optionsViewController(self, didSelectOptionAtIndex: indexPath.row)
     }
     
     // MARK: - Actions
     
-    @IBAction func cancelAction() {
-        self.dismiss(animated: true)
+    @IBAction func cancel() {
+        delegate?.optionsViewControllerDidCancell(self)
     }
 }

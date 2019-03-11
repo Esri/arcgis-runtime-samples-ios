@@ -251,10 +251,15 @@ protocol Function {
     func apply(to x: Double) -> Double
 }
 
-/// An absolute value function of the form y=a|x-h|+k.
+/// An absolute value function of the form `y=a|x-h|+k`. The vertex of the
+/// function is at `(h, k)`.
 struct AbsoluteValueFunction: Function {
+    /// The slope to the right of the vertex (`x > k`). To the left of the
+    /// vertex (`x < h`), the slope is `-a`.
     var a: Double
+    /// The x-coordinate of the vertex.
     var h: Double
+    /// The y-coordinate of the vertex.
     var k: Double
     
     func apply(to x: Double) -> Double {

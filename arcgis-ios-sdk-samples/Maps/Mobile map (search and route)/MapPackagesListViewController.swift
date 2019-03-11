@@ -17,8 +17,8 @@ import UIKit
 import ArcGIS
 
 class MapPackagesListViewController: UITableViewController, MapPackageCellDelegate {
-    private var mapPackagesInBundle: [AGSMobileMapPackage]!
-    private var mapPackagesInDocumentsDir: [AGSMobileMapPackage]!
+    private var mapPackagesInBundle = [AGSMobileMapPackage]()
+    private var mapPackagesInDocumentsDir = [AGSMobileMapPackage]()
     
     private var selectedRowIndexPath: IndexPath!
     private var selectedMap: AGSMap!
@@ -36,15 +36,10 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
     }
     
     func fetchMapPackages() {
-        //load map packages from the bundle
-        let bundleMMPKPaths = Bundle.main.paths(forResourcesOfType: "mmpk", inDirectory: nil)
-        
-        //create map packages from the paths
-        self.mapPackagesInBundle = [AGSMobileMapPackage]()
-        
-        for path in bundleMMPKPaths {
-            let mapPackage = AGSMobileMapPackage(fileURL: URL(fileURLWithPath: path))
-            self.mapPackagesInBundle.append(mapPackage)
+        // Load map packages from the bundle.
+        if let bundleMobileMapPackageURLs = Bundle.main.urls(forResourcesWithExtension: "mmpk", subdirectory: nil) {
+            // Create map packages from the URLs.
+            mapPackagesInBundle = bundleMobileMapPackageURLs.map(AGSMobileMapPackage.init(fileURL:))
         }
         
         //load map packages from the documents directory
@@ -53,20 +48,11 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path)!
         
         let predicate = NSPredicate(format: "SELF MATCHES %@", ".*mmpk$")
-        let mmpks = subpaths.filter({ (objc) -> Bool in
-            return predicate.evaluate(with: objc)
-        })
-        let documentMMPKPaths = mmpks.map({ (name: String) -> String in
-            return documentDirectoryURL.appendingPathComponent(name).path
-        })
+        let mmpks = subpaths.filter { predicate.evaluate(with: $0) }
+        let documentMobileMapPackageURLs = mmpks.map { documentDirectoryURL.appendingPathComponent($0) }
         
         //create map packages from the paths
-        self.mapPackagesInDocumentsDir = [AGSMobileMapPackage]()
-        
-        for path in documentMMPKPaths {
-            let mapPackage = AGSMobileMapPackage(fileURL: URL(fileURLWithPath: path))
-            self.mapPackagesInDocumentsDir.append(mapPackage)
-        }
+        mapPackagesInDocumentsDir = documentMobileMapPackageURLs.map(AGSMobileMapPackage.init(fileURL:))
         
         self.tableView.reloadData()
     }
@@ -79,21 +65,21 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.mapPackagesInBundle?.count ?? 0
+            return mapPackagesInBundle.count
         } else {
-            return self.mapPackagesInDocumentsDir?.count ?? 0
+            return mapPackagesInDocumentsDir.count
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MapPackageCell", for: indexPath) as! MapPackageCell
         
-        var mapPackage: AGSMobileMapPackage
+        let mapPackage: AGSMobileMapPackage
         
         if indexPath.section == 0 {
-            mapPackage = self.mapPackagesInBundle[indexPath.row]
+            mapPackage = mapPackagesInBundle[indexPath.row]
         } else {
-            mapPackage = self.mapPackagesInDocumentsDir[indexPath.row]
+            mapPackage = mapPackagesInDocumentsDir[indexPath.row]
         }
         
         cell.mapPackage = mapPackage

@@ -1,4 +1,4 @@
-ArcGIS Runtime SDK for iOS Samples [![](https://esri.box.com/shared/static/km0f6q9otadygg3mkszqd4mqn4k2yo6y.svg)](https://itunes.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771)
+ArcGIS Runtime SDK for iOS Samples [![](https://user-images.githubusercontent.com/2257493/54144188-6fe0fc00-43e8-11e9-8cf5-229af80f604a.png)](https://itunes.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771)
 ==========================
 
 This repository contains Swift sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/). The project that can be opened in Xcode and instantly run on a simulator or a device.

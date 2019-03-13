@@ -33,15 +33,18 @@ class TilePackagesListViewController: UITableViewController {
     }
     
     func fetchTilePackages() {
+        // Fetch URLs for tile packages in the main bundle.
         if let urls = Bundle.main.urls(forResourcesWithExtension: "tpk", subdirectory: nil) {
             bundleTilePackageURLs = urls
         }
         
-        if let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
-            let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path) {
+        // Fetch URLs for tile packages in the documents directory.
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        if let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path) {
             let predicate = NSPredicate(format: "SELF MATCHES %@", ".*tpk$")
-            let tpks = subpaths.filter { predicate.evaluate(with: $0) }
-            documentTilePacakgeURLs = tpks.map { documentDirectoryURL.appendingPathComponent($0) }
+            documentTilePacakgeURLs = subpaths.lazy
+                .filter { predicate.evaluate(with: $0) }
+                .map { documentDirectoryURL.appendingPathComponent($0) }
         }
     }
     

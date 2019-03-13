@@ -48,24 +48,40 @@ class TilePackagesListViewController: UITableViewController {
         }
     }
     
+    /// A section in the table view.
+    ///
+    /// - bundle: The section showing tile packages in the bundle.
+    /// - documentsDirectory: The section showing tile packages in the documents
+    /// directory.
+    enum Section: CaseIterable {
+        case bundle
+        case documentsDirectory
+    }
+    
+    /// Returns the `URL` corresponding to the row at the given index path.
+    ///
+    /// - Parameter indexPath: An index path.
+    /// - Returns: A `URL`.
     func urlForRow(at indexPath: IndexPath) -> URL {
-        if indexPath.section == 0 {
+        switch Section.allCases[indexPath.section] {
+        case .bundle:
             return bundleTilePackageURLs[indexPath.row]
-        } else {
+        case .documentsDirectory:
             return documentTilePacakgeURLs[indexPath.row]
         }
     }
-    
-    // MARK: - UITableViewDataSource
-    
+}
+
+extension TilePackagesListViewController /* UITableViewDataSource */ {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        switch Section.allCases[section] {
+        case .bundle:
             return bundleTilePackageURLs.count
-        } else {
+        case .documentsDirectory:
             return documentTilePacakgeURLs.count
         }
     }
@@ -77,11 +93,16 @@ class TilePackagesListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "From the bundle" : "From the documents directory"
+        switch Section.allCases[section] {
+        case .bundle:
+            return "From the bundle"
+        case .documentsDirectory:
+            return "From the documents directory"
+        }
     }
-    
-    // MARK: - UITableViewDelegate
-    
+}
+
+extension TilePackagesListViewController /* UITableViewDelegate */ {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let url = urlForRow(at: indexPath)
         delegate?.tilePackagesListViewController(self, didSelectTilePackageAt: url)

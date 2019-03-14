@@ -51,25 +51,28 @@ class Calculate3DDistanceViewController: UIViewController {
     /// The observation of the scene view's draw status.
     private var drawStatusObservation: NSKeyValueObservation?
     
+    /// The type of function used to calculate the x-coordinate of the graphics.
+    fileprivate typealias PositionFunction = AbsoluteValueFunction
+    
     /// A red triangle graphic.
-    let redGraphic: AGSGraphic = {
+    private let redGraphic: AGSGraphic = {
         let symbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 20)
         return AGSGraphic(geometry: nil, symbol: symbol)
     }()
     /// The function that determines the x-coordinate of the location of the
     /// red graphic.
-    let redPositionFunction = AbsoluteValueFunction(
+    private let redPositionFunction = PositionFunction(
         vertex: Point(x: animationDuration, y: rangeX.upperBound),
         point: Point(x: 0, y: rangeX.lowerBound)
     )
     /// A green triangle graphic.
-    let greenGraphic: AGSGraphic = {
+    private let greenGraphic: AGSGraphic = {
         let symbol = AGSSimpleMarkerSymbol(style: .triangle, color: .green, size: 20)
         return AGSGraphic(geometry: nil, symbol: symbol)
     }()
     /// The function that determines the x-coordinate of the location of the
     /// green graphic.
-    let greenPositionFunction = AbsoluteValueFunction(
+    private let greenPositionFunction = PositionFunction(
         vertex: Point(x: animationDuration, y: rangeX.lowerBound),
         point: Point(x: 0, y: rangeX.upperBound)
     )
@@ -156,12 +159,12 @@ class Calculate3DDistanceViewController: UIViewController {
     }
     
     func updateRedGraphic(for time: TimeInterval) {
-        redGraphic.geometry = AGSPoint(x: redPositionFunction.apply(to: time), y: 40.25390707699415, z: 900, spatialReference: .wgs84())
+        redGraphic.geometry = AGSPoint(x: redPositionFunction.position(atTime: time), y: 40.25390707699415, z: 900, spatialReference: .wgs84())
         (redGraphic.symbol as! AGSSimpleMarkerSymbol).angle = time >= animationDuration ? 180 : 0
     }
     
     func updateGreenGraphic(for time: TimeInterval) {
-        greenGraphic.geometry = AGSPoint(x: greenPositionFunction.apply(to: time), y: 38.847657048103514, z: 1_000, spatialReference: .wgs84())
+        greenGraphic.geometry = AGSPoint(x: greenPositionFunction.position(atTime: time), y: 38.847657048103514, z: 1_000, spatialReference: .wgs84())
         (greenGraphic.symbol as! AGSSimpleMarkerSymbol).angle = time >= animationDuration ? 210 : 30
     }
     
@@ -234,8 +237,14 @@ class Calculate3DDistanceViewController: UIViewController {
     }
 }
 
+extension Calculate3DDistanceViewController.PositionFunction {
+    func position(atTime time: TimeInterval) -> Double {
+        return apply(to: time)
+    }
+}
+
 /// A point in a two-dimensional coordinate system.
-struct Point: Equatable {
+private struct Point: Equatable {
     /// The x-coordinate of the point.
     var x: Double
     /// The y-coordinate of the point.
@@ -243,7 +252,7 @@ struct Point: Equatable {
 }
 
 /// A function of a single variable.
-protocol Function {
+private protocol Function {
     /// Applies the function to a given value.
     ///
     /// - Parameter x: A value.
@@ -253,7 +262,7 @@ protocol Function {
 
 /// An absolute value function of the form `y=a|x-h|+k`. The vertex of the
 /// function is at `(h, k)`.
-struct AbsoluteValueFunction: Function {
+private struct AbsoluteValueFunction: Function {
     /// The slope to the right of the vertex (`x > k`). To the left of the
     /// vertex (`x < h`), the slope is `-a`.
     var a: Double
@@ -267,7 +276,7 @@ struct AbsoluteValueFunction: Function {
     }
 }
 
-extension AbsoluteValueFunction {
+private extension AbsoluteValueFunction {
     /// Creates an absolute value function with the given vertex and a given
     /// point.
     ///

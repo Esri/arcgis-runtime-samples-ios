@@ -493,6 +493,10 @@
 		4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
 		4CCA30C1223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */; };
+		4CCA30D3223AEF2C009D2AEF /* IntegratedWindowsAuthenticationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1EF29A220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift */; };
+		4CCA30D4223AEF2C009D2AEF /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1EF29C220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift */; };
+		4CCA30D5223AEF2C009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */; };
+		4CCA30D6223AEF2C009D2AEF /* IntegratedWindowsAuthenticationMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1EF2D0221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift */; };
 		4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */; };
 		4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B55E2142EB2600767D87 /* SampleTests.swift */; };
@@ -845,6 +849,10 @@
 				4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */,
 				4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */,
 				4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */,
+				4CCA30D3223AEF2C009D2AEF /* IntegratedWindowsAuthenticationViewController.swift in CopyFiles */,
+				4CCA30D4223AEF2C009D2AEF /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in CopyFiles */,
+				4CCA30D5223AEF2C009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in CopyFiles */,
+				4CCA30D6223AEF2C009D2AEF /* IntegratedWindowsAuthenticationMapViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

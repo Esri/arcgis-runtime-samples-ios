@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="" id="skO-S3-2Ze">
+                            <tableViewSection headerTitle="" footerTitle="Search for maps on ArcGIS Online." id="skO-S3-2Ze">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="TfQ-if-fqs" style="IBUITableViewCellStyleDefault" id="jdP-XC-KG7" customClass="IntegratedWindowsAuthenticationSearchTableViewCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
@@ -39,10 +39,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="" id="3L7-4V-4EP">
+                            <tableViewSection headerTitle="" footerTitle="Search for maps on a secure portal." id="3L7-4V-4EP">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="mE1-TB-i3S">
-                                        <rect key="frame" x="0.0" y="115" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="127" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mE1-TB-i3S" id="oVz-uF-7oZ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -66,7 +66,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="DeK-zI-RR4" style="IBUITableViewCellStyleDefault" id="lEx-n0-ext" customClass="IntegratedWindowsAuthenticationSearchTableViewCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="159" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="171" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lEx-n0-ext" id="sSf-cN-bdG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

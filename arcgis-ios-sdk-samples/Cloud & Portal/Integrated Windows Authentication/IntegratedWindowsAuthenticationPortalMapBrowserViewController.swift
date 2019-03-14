@@ -54,6 +54,7 @@ class IntegratedWindowsAuthenticationPortalMapBrowserViewController: UITableView
     ///
     /// - Parameter portal: The portal that succeeded to load.
     func portalDidLoad() {
+        title = portal.portalInfo?.portalName
         let parameters = AGSPortalQueryParameters(forItemsOf: .webMap, inGroup: nil)
         portal.findItems(with: parameters) { [weak self] (resultSet, error) in
             guard let self = self else { return }
@@ -174,7 +175,7 @@ class IntegratedWindowsAuthenticationPortalMapBrowserViewController: UITableView
 
 extension IntegratedWindowsAuthenticationPortalMapBrowserViewController /* UITableViewDataSource */ {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return portal.loadStatus == .loaded ? 1 : 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -186,6 +187,10 @@ extension IntegratedWindowsAuthenticationPortalMapBrowserViewController /* UITab
         cell.textLabel?.text = mapPortalItems[indexPath.row].title
         cell.accessoryType = .disclosureIndicator
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Maps"
     }
 }
 

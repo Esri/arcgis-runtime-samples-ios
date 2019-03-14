@@ -22,24 +22,24 @@ import ArcGIS
 class IntegratedWindowsAuthenticationViewController: UITableViewController {
     /// The text field for inputting the secure portal URL.
     @IBOutlet weak var securePortalURLTextField: UITextField!
-    /// The cell that functions as the Search Private button.
-    @IBOutlet weak var searchPrivateCell: UITableViewCell!
+    /// The cell that functions as the Search Secure button.
+    @IBOutlet weak var searchSecureCell: UITableViewCell!
     
     /// The URL of the secure portal or `nil` if the user has not specified a
     /// valid URL.
     private var securePortalURL: URL? {
         didSet {
             guard securePortalURL != oldValue else { return }
-            updateSearchPrivateCellEnabledState()
+            updateSearchSecureCellEnabledState()
         }
     }
     
-    /// Updates the enabled state of the Search Private cell. The cell is
+    /// Updates the enabled state of the Search Secure cell. The cell is
     /// enabled if the user has specified a valid URL, otherwise it is disabled.
-    func updateSearchPrivateCellEnabledState() {
+    func updateSearchSecureCellEnabledState() {
         let isValidURL = securePortalURL != nil
-        searchPrivateCell.textLabel?.isEnabled = isValidURL
-        searchPrivateCell.selectionStyle = isValidURL ? .default : .none
+        searchSecureCell.textLabel?.isEnabled = isValidURL
+        searchSecureCell.selectionStyle = isValidURL ? .default : .none
     }
     
     // MARK: Portal Selection
@@ -72,7 +72,7 @@ class IntegratedWindowsAuthenticationViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updateSearchPrivateCellEnabledState()
+        updateSearchSecureCellEnabledState()
         textDidChangeObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: securePortalURLTextField, queue: nil) { [unowned self](_) in
             self.securePortalURL = self.securePortalURLTextField.text.flatMap { URL(string: $0) }
         }
@@ -89,8 +89,8 @@ class IntegratedWindowsAuthenticationViewController: UITableViewController {
 private extension IndexPath {
     /// The index path of the Search Public cell.
     static let searchPublic = IndexPath(row: 0, section: 0)
-    /// The index path of the Search Private cell.
-    static let searchPrivate = IndexPath(row: 1, section: 1)
+    /// The index path of the Search Secure cell.
+    static let searchSecure = IndexPath(row: 1, section: 1)
 }
 
 extension IntegratedWindowsAuthenticationViewController /* UITableViewDelegate */ {
@@ -98,7 +98,7 @@ extension IntegratedWindowsAuthenticationViewController /* UITableViewDelegate *
         switch indexPath {
         case .searchPublic:
             didSelectPortal(.arcGISOnline(withLoginRequired: false))
-        case .searchPrivate:
+        case .searchSecure:
             let portal = AGSPortal(url: securePortalURL!, loginRequired: true)
             didSelectPortal(portal)
         default:

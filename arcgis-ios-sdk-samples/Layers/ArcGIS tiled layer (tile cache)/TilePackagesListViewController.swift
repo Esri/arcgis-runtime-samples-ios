@@ -74,7 +74,7 @@ class TilePackagesListViewController: UITableViewController {
 
 extension TilePackagesListViewController /* UITableViewDataSource */ {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return Section.allCases.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -91,7 +91,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="searchPrivateCell" destination="lEx-n0-ext" id="lGi-Om-8b7"/>
+                        <outlet property="searchSecureCell" destination="lEx-n0-ext" id="PUC-TX-9Ct"/>
                         <outlet property="securePortalURLTextField" destination="4ja-DM-y21" id="W4E-cu-sMg"/>
                     </connections>
                 </tableViewController>

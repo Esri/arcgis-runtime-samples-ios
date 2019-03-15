@@ -490,6 +490,9 @@
 		4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
 		4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
+		4CCA30CF22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */; };
+		4CCA30D122399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */; };
+		4CCA30D22239B6DE009D2AEF /* AddIntegratedMeshLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */; };
 		4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */; };
 		4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B55E2142EB2600767D87 /* SampleTests.swift */; };
@@ -841,6 +844,7 @@
 				4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */,
 				4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */,
 				4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */,
+				4CCA30D22239B6DE009D2AEF /* AddIntegratedMeshLayerViewController.swift in CopyFiles */,
 				4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */,
 				4C1A7C3421D56F1A00E16E94 /* Calculate3DDistanceViewController.swift in CopyFiles */,
 			);
@@ -1200,6 +1204,8 @@
 		4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SceneLayerSelection.storyboard; sourceTree = "<group>"; };
 		4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleWebMapServiceLayerViewController.swift; sourceTree = "<group>"; };
 		4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StyleWebMapServiceLayer.storyboard; sourceTree = "<group>"; };
+		4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddIntegratedMeshLayer.storyboard; sourceTree = "<group>"; };
+		4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIntegratedMeshLayerViewController.swift; sourceTree = "<group>"; };
 		4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurementAnalysisViewController.swift; sourceTree = "<group>"; };
 		4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DistanceMeasurementAnalysis.storyboard; sourceTree = "<group>"; };
 		4CD2B5542142EAF900767D87 /* arcgis-ios-sdk-samplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "arcgis-ios-sdk-samplesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2736,6 +2742,7 @@
 				4C85044720F4236B00E37F43 /* Scene layer selection */,
 				C7AF466221B1DC500050CC49 /* Sync map and scene views */,
 				C7AF465C21B1C84A0050CC49 /* Change atmosphere effect */,
+				4CCA30CD22399A4A009D2AEF /* Add an integrated mesh layer */,
 				4C1A7C2A21D4129600E16E94 /* Calculate 3D distance */,
 			);
 			path = Scenes;
@@ -2950,6 +2957,15 @@
 				4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */,
 			);
 			path = "Style WMS layers";
+			sourceTree = "<group>";
+		};
+		4CCA30CD22399A4A009D2AEF /* Add an integrated mesh layer */ = {
+			isa = PBXGroup;
+			children = (
+				4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */,
+				4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */,
+			);
+			path = "Add an integrated mesh layer";
 			sourceTree = "<group>";
 		};
 		4CCE7BD420D2BCD5001238F5 /* Distance measurement analysis */ = {
@@ -3554,6 +3570,7 @@
 				4C1A7C2C21D412B800E16E94 /* Calculate3DDistance.storyboard in Resources */,
 				3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */,
 				F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */,
+				4CCA30CF22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
 				3ED75D031ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard in Resources */,
 				3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */,
@@ -3867,6 +3884,7 @@
 				21E9CDED1EF9C5EA00BD4D7D /* DisplayGridViewController.swift in Sources */,
 				09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */,
 				C74ECB4F21C17E9100129D6D /* GeneralizeSettingsViewController.swift in Sources */,
+				4CCA30D122399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift in Sources */,
 				21E914411FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift in Sources */,
 				4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,

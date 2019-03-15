@@ -80,7 +80,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select new damage type" id="ST8-os-WVQ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="wkb-gu-hjX"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="wkb-gu-hjX">
+                            <connections>
+                                <action selector="cancel" destination="l9u-LK-22c" id="mPW-mT-zTx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMc-yO-TKF" userLabel="First Responder" sceneMemberID="firstResponder"/>

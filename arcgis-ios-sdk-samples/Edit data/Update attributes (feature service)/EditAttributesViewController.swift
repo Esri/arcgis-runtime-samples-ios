@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate, EAOptionsVCDelegate {
+class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -116,10 +116,11 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
             controller.delegate = self
         }
     }
-    
-    // MARK: - EAOptionsVCDelegate
-    
+}
+
+extension EditAttributesViewController: EAOptionsVCDelegate {
     func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
+        self.dismiss(animated: true)
         SVProgressHUD.show(withStatus: "Updating")
         
         selectedFeature.attributes["typdamage"] = types[index]
@@ -132,5 +133,9 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 self?.applyEdits()
             }
         }
+    }
+    
+    func optionsViewControllerDidCancell(_ optionsViewController: EAOptionsViewController) {
+        dismiss(animated: true)
     }
 }

@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class LocalTiledLayerViewController: UIViewController, TilePackagesListVCDelegate {
+class LocalTiledLayerViewController: UIViewController, TilePackagesListViewControllerDelegate {
     @IBOutlet weak var mapView: AGSMapView!
     
     override func viewDidLoad() {
@@ -44,12 +44,12 @@ class LocalTiledLayerViewController: UIViewController, TilePackagesListVCDelegat
         }
     }
     
-    // MARK: - TilePackagesListVCDelegate
+    // MARK: - TilePackagesListViewControllerDelegate
     
     //called when a selection is made in the tile packages list
-    func tilePackagesListViewController(_ tilePackagesListViewController: TilePackagesListViewController, didSelectTPKWithPath path: String) {
+    func tilePackagesListViewController(_ tilePackagesListViewController: TilePackagesListViewController, didSelectTilePackageAt url: URL) {
         //create a new map with selected tile package as the basemap
-        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: URL(fileURLWithPath: path)))
+        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: url))
         let map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))
         self.mapView.map = map
         

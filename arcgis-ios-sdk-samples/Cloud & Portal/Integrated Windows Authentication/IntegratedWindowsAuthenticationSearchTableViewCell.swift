@@ -17,7 +17,12 @@
 import UIKit
 
 /// A table view cell whose text label text color matches its tint color.
-class IntegratedWindowsAuthenticationSearchTableViewCell: UITableViewCell {
+class IntegratedWindowsAuthenticationButtonTableViewCell: UITableViewCell {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        accessibilityTraits.insert(.button)
+    }
+    
     /// Updates the text color of the text label to match the tint color of the
     /// cell.
     private func updateTextLabelAppearance() {
@@ -25,6 +30,18 @@ class IntegratedWindowsAuthenticationSearchTableViewCell: UITableViewCell {
     }
     
     // MARK: UIView
+    
+    override var isUserInteractionEnabled: Bool {
+        didSet {
+            if isUserInteractionEnabled {
+                tintAdjustmentMode = .automatic
+                accessibilityTraits.remove(.notEnabled)
+            } else {
+                tintAdjustmentMode = .dimmed
+                accessibilityTraits.insert(.notEnabled)
+            }
+        }
+    }
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()

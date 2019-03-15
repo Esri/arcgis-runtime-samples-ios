@@ -37,9 +37,7 @@ class IntegratedWindowsAuthenticationViewController: UITableViewController {
     /// Updates the enabled state of the Search Secure cell. The cell is
     /// enabled if the user has specified a valid URL, otherwise it is disabled.
     func updateSearchSecureCellEnabledState() {
-        let isValidURL = securePortalURL != nil
-        searchSecureCell.textLabel?.isEnabled = isValidURL
-        searchSecureCell.selectionStyle = isValidURL ? .default : .none
+        searchSecureCell.isUserInteractionEnabled = securePortalURL != nil
     }
     
     // MARK: Portal Selection

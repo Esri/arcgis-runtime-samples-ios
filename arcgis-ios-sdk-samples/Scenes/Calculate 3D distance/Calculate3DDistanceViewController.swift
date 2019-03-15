@@ -244,7 +244,7 @@ extension Calculate3DDistanceViewController.PositionFunction {
 }
 
 /// A point in a two-dimensional coordinate system.
-private struct Point: Equatable {
+struct Point: Equatable {
     /// The x-coordinate of the point.
     var x: Double
     /// The y-coordinate of the point.
@@ -252,7 +252,7 @@ private struct Point: Equatable {
 }
 
 /// A function of a single variable.
-private protocol Function {
+protocol Function {
     /// Applies the function to a given value.
     ///
     /// - Parameter x: A value.
@@ -262,7 +262,7 @@ private protocol Function {
 
 /// An absolute value function of the form `y=a|x-h|+k`. The vertex of the
 /// function is at `(h, k)`.
-private struct AbsoluteValueFunction: Function {
+struct AbsoluteValueFunction: Function {
     /// The slope to the right of the vertex (`x > k`). To the left of the
     /// vertex (`x < h`), the slope is `-a`.
     var a: Double
@@ -276,7 +276,7 @@ private struct AbsoluteValueFunction: Function {
     }
 }
 
-private extension AbsoluteValueFunction {
+extension AbsoluteValueFunction {
     /// Creates an absolute value function with the given vertex and a given
     /// point.
     ///

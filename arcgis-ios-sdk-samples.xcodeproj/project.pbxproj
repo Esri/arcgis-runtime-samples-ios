@@ -39,9 +39,12 @@
 		12BF9E451FE9D77000B1E6C4 /* ViewshedCamera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */; };
 		12BF9E461FE9D77000B1E6C4 /* ViewshedCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
 		12BF9E471FE9D84E00B1E6C4 /* ViewshedCameraViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
+		165723CB223C70260097D6AA /* AddPointSceneLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */; };
 		166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */; };
 		166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */; };
 		166E8F9F1EE62E2400C57C46 /* RasterLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */; };
+		169CDBCA223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169CDBC9223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard */; };
+		169CDBCC223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */; };
 		215E23D321024715001DE092 /* SpatialRelationships.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 215E23CF21024715001DE092 /* SpatialRelationships.storyboard */; };
 		215E23D421024715001DE092 /* SpatialRelationshipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215E23D021024715001DE092 /* SpatialRelationshipsViewController.swift */; };
 		215E23D72102473E001DE092 /* SpatialRelationshipsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 215E23D021024715001DE092 /* SpatialRelationshipsViewController.swift */; };
@@ -650,6 +653,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				165723CB223C70260097D6AA /* AddPointSceneLayerViewController.swift in CopyFiles */,
 				C7BE9C50219F5052003A03D2 /* SpatialRelationshipsTableViewController.swift in CopyFiles */,
 				C7E5EB7121ADA34F004D48F7 /* FormatCoordinatesTableViewController.swift in CopyFiles */,
 				3ED0299F1B8E571700ACA70D /* AttachmentsTableViewController.swift in CopyFiles */,
@@ -882,6 +886,8 @@
 		12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedCameraViewController.swift; sourceTree = "<group>"; };
 		166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayer.storyboard; sourceTree = "<group>"; };
 		166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerViewController.swift; sourceTree = "<group>"; };
+		169CDBC9223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPointSceneLayer.storyboard; sourceTree = "<group>"; };
+		169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPointSceneLayerViewController.swift; sourceTree = "<group>"; };
 		215E23CF21024715001DE092 /* SpatialRelationships.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpatialRelationships.storyboard; sourceTree = "<group>"; };
 		215E23D021024715001DE092 /* SpatialRelationshipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialRelationshipsViewController.swift; sourceTree = "<group>"; };
 		2182C9801FDA01A0003E3A0F /* StatisticalQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StatisticalQuery.storyboard; sourceTree = "<group>"; };
@@ -1419,6 +1425,15 @@
 				166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */,
 			);
 			path = "Raster layer (file)";
+			sourceTree = "<group>";
+		};
+		169CDBC8223C6A3A00ABFF0A /* Add a point scene layer */ = {
+			isa = PBXGroup;
+			children = (
+				169CDBC9223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard */,
+				169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */,
+			);
+			path = "Add a point scene layer";
 			sourceTree = "<group>";
 		};
 		215E23CE21024715001DE092 /* Spatial relationships */ = {
@@ -2735,6 +2750,7 @@
 				C7AF466221B1DC500050CC49 /* Sync map and scene views */,
 				C7AF465C21B1C84A0050CC49 /* Change atmosphere effect */,
 				4CCA30CD22399A4A009D2AEF /* Add an integrated mesh layer */,
+				169CDBC8223C6A3A00ABFF0A /* Add a point scene layer */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -3524,6 +3540,7 @@
 				D97B7E5C1FD9BFE700E1239D /* Subdivisions.prj in Resources */,
 				C7AF465F21B1C8AC0050CC49 /* ChangeAtmosphereEffect.storyboard in Resources */,
 				C74ECB5121C17E9100129D6D /* DensifyAndGeneralize.storyboard in Resources */,
+				169CDBCA223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard in Resources */,
 				D9EE379720E2CC7700BF8AD1 /* dolmus_front.jpeg in Resources */,
 				3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */,
 				3EABC7B41DB181DD00C161C6 /* ShastaBW.tfw in Resources */,
@@ -3729,6 +3746,7 @@
 				127D29F7200EC5FC00DD6CDC /* ViewshedLocationViewController.swift in Sources */,
 				4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */,
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
+				169CDBCC223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift in Sources */,
 				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,

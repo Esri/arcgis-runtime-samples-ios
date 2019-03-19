@@ -1279,6 +1279,14 @@
 				<key>storyboardName</key>
 				<string>AddIntegratedMeshLayer</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>View content beneath the terrain surface</string>
+				<key>descriptionText</key>
+				<string>See through terrain in a scene and move the camera underground</string>
+				<key>storyboardName</key>
+				<string>viewContentBeneathTerrainSurface</string>
+			</dict>
 		</array>
 	</dict>
 </array>

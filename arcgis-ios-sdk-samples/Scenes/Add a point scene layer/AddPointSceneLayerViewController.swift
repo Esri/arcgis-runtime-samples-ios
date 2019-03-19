@@ -18,7 +18,6 @@ import UIKit
 import ArcGIS
 
 class AddPointSceneLayerViewController: UIViewController {
-
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
             sceneView.scene = makeScene()

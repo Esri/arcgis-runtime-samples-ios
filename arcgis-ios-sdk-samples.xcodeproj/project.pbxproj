@@ -886,8 +886,8 @@
 		12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedCameraViewController.swift; sourceTree = "<group>"; };
 		166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayer.storyboard; sourceTree = "<group>"; };
 		166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerViewController.swift; sourceTree = "<group>"; };
-		169CDBC9223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = AddPointSceneLayer.storyboard; path = "../Add a point scene layer/AddPointSceneLayer.storyboard"; sourceTree = "<group>"; };
-		169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddPointSceneLayerViewController.swift; path = "arcgis-ios-sdk-samples/Scenes/Add a point scene layer/AddPointSceneLayerViewController.swift"; sourceTree = SOURCE_ROOT; };
+		169CDBC9223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPointSceneLayer.storyboard; sourceTree = "<group>"; };
+		169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPointSceneLayerViewController.swift; sourceTree = "<group>"; };
 		215E23CF21024715001DE092 /* SpatialRelationships.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpatialRelationships.storyboard; sourceTree = "<group>"; };
 		215E23D021024715001DE092 /* SpatialRelationshipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialRelationshipsViewController.swift; sourceTree = "<group>"; };
 		2182C9801FDA01A0003E3A0F /* StatisticalQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StatisticalQuery.storyboard; sourceTree = "<group>"; };
@@ -1433,8 +1433,7 @@
 				169CDBC9223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard */,
 				169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */,
 			);
-			name = "Add a point scene layer";
-			path = "New Group";
+			path = "Add a point scene layer";
 			sourceTree = "<group>";
 		};
 		215E23CE21024715001DE092 /* Spatial relationships */ = {

@@ -62,7 +62,7 @@ class IntegratedWindowsAuthenticationViewController: UITableViewController {
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "IntegratedWindowsAuthenticationViewController",
             "IntegratedWindowsAuthenticationSearchTableViewCell",
-            "IntegratedWindowsAuthenticationMapBrowserViewController",
+            "IntegratedWindowsAuthenticationPortalMapBrowserViewController",
             "IntegratedWindowsAuthenticationMapViewController"
         ]
     }

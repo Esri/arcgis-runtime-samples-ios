@@ -487,6 +487,9 @@
 		4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
 		4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */; };
 		4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
+		4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */; };
+		4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
+		4CAC91DC2242AB6D00663A10 /* LoadWFSWithXMLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
 		4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
 		4CCA30CF22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */; };
@@ -846,6 +849,7 @@
 				4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */,
 				4CCA30D22239B6DE009D2AEF /* AddIntegratedMeshLayerViewController.swift in CopyFiles */,
 				4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */,
+				4CAC91DC2242AB6D00663A10 /* LoadWFSWithXMLQueryViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1200,6 +1204,8 @@
 		4C73C83421112B4300B0F9C7 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Dynamic/ArcGIS.framework; sourceTree = "<absolute>"; };
 		4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SceneLayerSelection.storyboard; sourceTree = "<group>"; };
+		4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadWFSWithXMLQuery.storyboard; sourceTree = "<group>"; };
+		4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWFSWithXMLQueryViewController.swift; sourceTree = "<group>"; };
 		4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleWebMapServiceLayerViewController.swift; sourceTree = "<group>"; };
 		4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StyleWebMapServiceLayer.storyboard; sourceTree = "<group>"; };
 		4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddIntegratedMeshLayer.storyboard; sourceTree = "<group>"; };
@@ -2367,6 +2373,7 @@
 				4C0F27AF2152C9CE00496666 /* Identify KML features */,
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
 				C793B5E62166BB06000A7A10 /* OpenStreetMap layer */,
+				4CAC91D72242AAB700663A10 /* Load WFS with XML query */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -2945,6 +2952,15 @@
 				4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */,
 			);
 			path = "Scene layer selection";
+			sourceTree = "<group>";
+		};
+		4CAC91D72242AAB700663A10 /* Load WFS with XML query */ = {
+			isa = PBXGroup;
+			children = (
+				4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */,
+				4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */,
+			);
+			path = "Load WFS with XML query";
 			sourceTree = "<group>";
 		};
 		4CC00F7220C1FAA8004244EF /* Style WMS layers */ = {
@@ -3643,6 +3659,7 @@
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
 				D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */,
 				4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */,
+				4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
 				D9E2E76420EEB8FF001D0AE0 /* Public_Art.shp in Resources */,
@@ -3789,6 +3806,7 @@
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				215E23D421024715001DE092 /* SpatialRelationshipsViewController.swift in Sources */,
 				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsVC.swift in Sources */,
+				4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */,
 				166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */,
 				C7432D3A2187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift in Sources */,
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,

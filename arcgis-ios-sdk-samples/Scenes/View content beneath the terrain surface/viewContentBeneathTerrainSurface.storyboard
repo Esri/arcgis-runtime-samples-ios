@@ -25,10 +25,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="30G-QP-LlT" firstAttribute="bottom" secondItem="r38-Hp-IzQ" secondAttribute="bottom" id="NYL-cI-Dc3"/>
-                            <constraint firstItem="30G-QP-LlT" firstAttribute="trailing" secondItem="r38-Hp-IzQ" secondAttribute="trailing" id="NmB-uN-FLh"/>
+                            <constraint firstItem="30G-QP-LlT" firstAttribute="bottom" secondItem="YpB-hG-LRB" secondAttribute="bottom" id="NYL-cI-Dc3"/>
+                            <constraint firstItem="30G-QP-LlT" firstAttribute="trailing" secondItem="YpB-hG-LRB" secondAttribute="trailing" id="NmB-uN-FLh"/>
                             <constraint firstItem="30G-QP-LlT" firstAttribute="top" secondItem="r38-Hp-IzQ" secondAttribute="top" id="PTk-Ow-rrs"/>
-                            <constraint firstItem="30G-QP-LlT" firstAttribute="leading" secondItem="r38-Hp-IzQ" secondAttribute="leading" id="fyb-Qk-5MB"/>
+                            <constraint firstItem="30G-QP-LlT" firstAttribute="leading" secondItem="YpB-hG-LRB" secondAttribute="leading" id="fyb-Qk-5MB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r38-Hp-IzQ"/>
                     </view>

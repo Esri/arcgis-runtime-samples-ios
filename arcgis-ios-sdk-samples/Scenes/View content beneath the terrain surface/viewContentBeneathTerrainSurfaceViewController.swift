@@ -16,11 +16,9 @@ import UIKit
 import ArcGIS
 
 class viewContentBeneathTerrainSurfaceViewController: UIViewController {
-
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
             sceneView.scene = makeScene()
-
         }
     }
     
@@ -28,7 +26,6 @@ class viewContentBeneathTerrainSurfaceViewController: UIViewController {
     ///
     /// - Returns: A new `AGSScene` object.
     func makeScene() -> AGSScene {
-        
         //initialize portal with AGOL
         let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         
@@ -50,5 +47,4 @@ class viewContentBeneathTerrainSurfaceViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["viewContentBeneathTerrainSurfaceViewController"]
     }
-
 }

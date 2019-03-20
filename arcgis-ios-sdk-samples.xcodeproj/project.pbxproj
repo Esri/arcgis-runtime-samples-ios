@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090061502242B32C002004D3 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0900614F2242B32C002004D3 /* DisplayWFS.storyboard */; };
+		090061542242BA9D002004D3 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090061532242BA9D002004D3 /* DisplayWFSViewController.swift */; };
+		090061552242E1E3002004D3 /* DisplayWFSViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 090061532242BA9D002004D3 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
 		09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */; };
 		09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
@@ -650,6 +653,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				090061552242E1E3002004D3 /* DisplayWFSViewController.swift in CopyFiles */,
 				C7BE9C50219F5052003A03D2 /* SpatialRelationshipsTableViewController.swift in CopyFiles */,
 				C7E5EB7121ADA34F004D48F7 /* FormatCoordinatesTableViewController.swift in CopyFiles */,
 				3ED0299F1B8E571700ACA70D /* AttachmentsTableViewController.swift in CopyFiles */,
@@ -859,6 +863,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0900614F2242B32C002004D3 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
+		090061532242BA9D002004D3 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
 		09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterLayerUsingService.storyboard; sourceTree = "<group>"; };
 		09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBasedQueryVC.swift; sourceTree = "<group>"; };
@@ -1321,6 +1327,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0900614E2242B1A7002004D3 /* Display WFS */ = {
+			isa = PBXGroup;
+			children = (
+				090061532242BA9D002004D3 /* DisplayWFSViewController.swift */,
+				0900614F2242B32C002004D3 /* DisplayWFS.storyboard */,
+			);
+			path = "Display WFS";
+			sourceTree = "<group>";
+		};
 		09607F7C1FDB60EC00FA43B6 /* Time based query */ = {
 			isa = PBXGroup;
 			children = (
@@ -2352,6 +2367,7 @@
 				4C0F27AF2152C9CE00496666 /* Identify KML features */,
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
 				C793B5E62166BB06000A7A10 /* OpenStreetMap layer */,
+				0900614E2242B1A7002004D3 /* Display WFS */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -3484,6 +3500,7 @@
 				C734B1F521C2DDE500E1BE76 /* ClipGeometry.storyboard in Resources */,
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
+				090061502242B32C002004D3 /* DisplayWFS.storyboard in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				D9E2E76020EEB8FF001D0AE0 /* Public_Art.dbf in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
@@ -3766,6 +3783,7 @@
 				3E3B2C241BBD9CD300A99C5E /* SampleSearchEngine.swift in Sources */,
 				3ED028B01B8E3A9800ACA70D /* MILUsingURLViewController.swift in Sources */,
 				3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */,
+				090061542242BA9D002004D3 /* DisplayWFSViewController.swift in Sources */,
 				3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */,
 				09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,

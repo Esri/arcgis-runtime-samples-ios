@@ -1287,6 +1287,14 @@
 				<key>storyboardName</key>
 				<string>AddIntegratedMeshLayer</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Add a point scene layer</string>
+				<key>storyboardName</key>
+				<string>AddPointSceneLayer</string>
+				<key>descriptionText</key>
+				<string>View a point scene layer from a scene service</string>
+			</dict>
 		</array>
 	</dict>
 </array>

@@ -22,7 +22,7 @@ class RelatedFeaturesViewController: UITableViewController {
     var originFeatureTable: AGSServiceFeatureTable!
     
     private var relationshipInfo: AGSRelationshipInfo!
-    private var relatedFeatures: [AGSFeature]!
+    private var relatedFeatures = [AGSFeature]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,13 +146,13 @@ class RelatedFeaturesViewController: UITableViewController {
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.relatedFeatures?.count ?? 0
+        return relatedFeatures.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedFeatureCell", for: indexPath)
         
-        let relatedFeature = self.relatedFeatures[indexPath.row]
+        let relatedFeature = relatedFeatures[indexPath.row]
         
         //display value for Scientific_Name field in the cell
         cell.textLabel?.text = relatedFeature.attributes["Scientific_Name"] as? String
@@ -169,7 +169,7 @@ class RelatedFeaturesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             //delete related feature
-            let relatedFeature = self.relatedFeatures[indexPath.row]
+            let relatedFeature = relatedFeatures[indexPath.row]
             self.deleteRelatedFeature(relatedFeature)
         }
     }

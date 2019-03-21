@@ -220,6 +220,14 @@
 				<key>descriptionText</key>
 				<string>Shows how to set the min and max scale on a map.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Map reference scale</string>
+				<key>descriptionText</key>
+				<string>Set the map&apos;s reference scale and which feature layers should honor the reference scale.</string>
+				<key>storyboardName</key>
+				<string>MapReferenceScale</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

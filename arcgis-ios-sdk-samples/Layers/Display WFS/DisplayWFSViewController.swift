@@ -16,9 +16,9 @@ import UIKit
 import ArcGIS
 
 class DisplayWFSViewController: UIViewController {
-
     @IBOutlet private weak var mapView: AGSMapView!
-    private var wfsFeatureTable : AGSWFSFeatureTable!
+    private var wfsFeatureTable: AGSWFSFeatureTable!
+    private var lastQuery: AGSCancelable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +70,10 @@ class DisplayWFSViewController: UIViewController {
     }
     
     private func populateFeaturesFromQuery() {
-        
+        // If there is an existing query request, cancel it
+        if let lastQuery = self.lastQuery{
+            lastQuery.cancel()
+        }
         // Create query parameters
         let params = AGSQueryParameters()
         params.geometry = self.mapView.visibleArea?.extent
@@ -80,19 +83,25 @@ class DisplayWFSViewController: UIViewController {
         SVProgressHUD.show(withStatus: "Querying")
     
         // Populate features based on query
-        self.wfsFeatureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
-            
-            // Hide Progress
-             SVProgressHUD.dismiss()
-            
-            // Check for error
-            if let error = error {
-                self?.presentAlert(error: error)
-            } else {
+        self.lastQuery = self.wfsFeatureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
+            // Check and get results
+            if let result = result {
                 // The resulting features should be displayed on the map
                 // Print the count of features
-                print("Populated \(result?.featureEnumerator().allObjects.count ?? 0) features.")
+                print("Populated \(result.featureEnumerator().allObjects.count) features.")
             }
+            // Check for error. If it's a user canceled error, do nothing.
+            // Otherwise, display an alert.
+            else if let error = error {
+                if error.localizedDescription.contains("User canceled error") {
+                    return
+                }
+                else {
+                    self?.presentAlert(error: error)
+                }
+            }
+            // Hide Progress
+            SVProgressHUD.dismiss()
         }
     }
 }

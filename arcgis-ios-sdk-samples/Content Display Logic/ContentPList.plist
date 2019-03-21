@@ -495,7 +495,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Display WFS</string>
+				<string>Display a WFS layer</string>
 				<key>storyboardName</key>
 				<string>DisplayWFS</string>
 				<key>descriptionText</key>

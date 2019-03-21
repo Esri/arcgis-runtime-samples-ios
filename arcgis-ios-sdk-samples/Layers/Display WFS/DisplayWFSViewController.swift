@@ -93,11 +93,11 @@ class DisplayWFSViewController: UIViewController {
             // Check for error. If it's a user canceled error, do nothing.
             // Otherwise, display an alert.
             else if let error = error {
-                if error.localizedDescription.contains("User canceled error") {
-                    return
+                if (error as NSError).code != NSUserCancelledError {
+                    self?.presentAlert(error: error)
                 }
                 else {
-                    self?.presentAlert(error: error)
+                    return
                 }
             }
             // Hide Progress

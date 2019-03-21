@@ -1327,13 +1327,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0900614E2242B1A7002004D3 /* Display WFS */ = {
+		0900614E2242B1A7002004D3 /* Display a WFS layer */ = {
 			isa = PBXGroup;
 			children = (
 				090061532242BA9D002004D3 /* DisplayWFSViewController.swift */,
 				0900614F2242B32C002004D3 /* DisplayWFS.storyboard */,
 			);
-			path = "Display WFS";
+			path = "Display a WFS layer";
 			sourceTree = "<group>";
 		};
 		09607F7C1FDB60EC00FA43B6 /* Time based query */ = {
@@ -2367,7 +2367,7 @@
 				4C0F27AF2152C9CE00496666 /* Identify KML features */,
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
 				C793B5E62166BB06000A7A10 /* OpenStreetMap layer */,
-				0900614E2242B1A7002004D3 /* Display WFS */,
+				0900614E2242B1A7002004D3 /* Display a WFS layer */,
 			);
 			path = Layers;
 			sourceTree = "<group>";

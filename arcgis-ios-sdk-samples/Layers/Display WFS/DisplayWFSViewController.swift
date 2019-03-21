@@ -71,7 +71,7 @@ class DisplayWFSViewController: UIViewController {
     
     private func populateFeaturesFromQuery() {
         // If there is an existing query request, cancel it
-        if let lastQuery = self.lastQuery{
+        if let lastQuery = self.lastQuery {
             lastQuery.cancel()
         }
         // Create query parameters
@@ -95,8 +95,7 @@ class DisplayWFSViewController: UIViewController {
             else if let error = error {
                 if (error as NSError).code != NSUserCancelledError {
                     self?.presentAlert(error: error)
-                }
-                else {
+                } else {
                     return
                 }
             }

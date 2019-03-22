@@ -501,6 +501,14 @@
 				<key>descriptionText</key>
 				<string>Display a map with an OpenStreetMap basemap.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display a WFS layer</string>
+				<key>storyboardName</key>
+				<string>DisplayWFS</string>
+				<key>descriptionText</key>
+				<string>Display a layer from a WFS service, requesting only features for the current extent.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

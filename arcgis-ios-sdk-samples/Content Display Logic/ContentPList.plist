@@ -220,6 +220,14 @@
 				<key>descriptionText</key>
 				<string>Shows how to set the min and max scale on a map.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Map reference scale</string>
+				<key>descriptionText</key>
+				<string>Set the map&apos;s reference scale and which feature layers should honor the reference scale.</string>
+				<key>storyboardName</key>
+				<string>MapReferenceScale</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1151,6 +1159,14 @@
 				<key>descriptionText</key>
 				<string>Shows how to search for webmaps within a portal using a keyword.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Integrated Windows Authentication</string>
+				<key>storyboardName</key>
+				<string>IntegratedWindowsAuthentication</string>
+				<key>descriptionText</key>
+				<string>Uses Windows credentials to access services hosted on a portal secured with Integrated Windows Authentication (IWA).</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1286,6 +1302,14 @@
 				<string>View an integrated mesh layer from a scene service.</string>
 				<key>storyboardName</key>
 				<string>AddIntegratedMeshLayer</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Add a point scene layer</string>
+				<key>storyboardName</key>
+				<string>AddPointSceneLayer</string>
+				<key>descriptionText</key>
+				<string>View a point scene layer from a scene service</string>
 			</dict>
 		</array>
 	</dict>

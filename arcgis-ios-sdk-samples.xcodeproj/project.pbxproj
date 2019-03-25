@@ -3499,7 +3499,7 @@
 			};
 			buildConfigurationList = 3E23A9DB1AFC28F6002E2214 /* Build configuration list for PBXProject "arcgis-ios-sdk-samples" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,

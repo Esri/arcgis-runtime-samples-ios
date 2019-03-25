@@ -17,24 +17,22 @@ import ArcGIS
 
 class RelatedFeaturesListVC: UITableViewController {
     //results required for display
-    var results: [AGSRelatedFeatureQueryResult]!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let result = results?.first {
-            title = result.feature?.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
+    var results = [AGSRelatedFeatureQueryResult]() {
+        didSet {
+            if let result = results.first {
+                title = result.feature?.attributes["UNIT_NAME"] as? String ?? "Origin Feature"
+            }
         }
     }
     
     // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.results?.count ?? 0
+        return results.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let result = self.results[section]
+        let result = results[section]
         if let tableName = result.relatedTable?.tableName {
             return "\(tableName)"
         } else {

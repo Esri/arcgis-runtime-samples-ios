@@ -41,7 +41,7 @@ class TilePackagesListViewController: UITableViewController {
         // Fetch URLs for tile packages in the documents directory.
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         if let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path) {
-            let predicate = NSPredicate(format: "SELF MATCHES %@", ".*tpk$")
+            let predicate = NSPredicate(format: "SELF MATCHES %@", ".*tpkx?$")
             documentTilePacakgeURLs = subpaths.lazy
                 .filter { predicate.evaluate(with: $0) }
                 .map { documentDirectoryURL.appendingPathComponent($0) }

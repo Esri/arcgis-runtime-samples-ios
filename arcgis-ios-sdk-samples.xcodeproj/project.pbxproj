@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
+		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
 		09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */; };
 		09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
 		09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
 		09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
 		09607F851FDB61DC00FA43B6 /* TimeBasedQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */; };
+		097426BF22456EE00067E9D1 /* DisplayWFSViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		104659AA1EF34F5200EFCB50 /* TerrainExaggerationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
 		10859BAB1FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10859BA71FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard */; };
 		10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */; };
@@ -476,8 +479,18 @@
 		4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */; };
 		4C1A7C2621D4083300E16E94 /* mil2525d.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2521D4082400E16E94 /* mil2525d.stylx */; };
+		4C1EF299220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1EF298220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard */; };
+		4C1EF29B220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1EF29A220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift */; };
+		4C1EF29D220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1EF29C220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift */; };
+		4C1EF2CD221208DD00F73EAE /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1EF2CC221208DD00F73EAE /* UINavigationController.swift */; };
+		4C1EF2D2221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1EF2D0221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift */; };
+		4C1EF2D3221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1EF2D1221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib */; };
 		4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4C41B2EE211A617700EEA81E /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C41B2ED211A617700EEA81E /* Sample.swift */; };
+		4C478E4A223C7485009F8CDF /* MapReferenceScale.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C478E49223C7485009F8CDF /* MapReferenceScale.storyboard */; };
+		4C478E4C223C7498009F8CDF /* MapReferenceScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
+		4C478E4E223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
+		4C478E5022402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */; };
 		4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */; };
 		4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
 		4C66AAFA2107CCE300EE6346 /* QueryMapImageSublayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
@@ -487,14 +500,22 @@
 		4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
 		4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */; };
 		4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
+		4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
+		4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
+		4CAC91D62242929500663A10 /* MapReferenceScaleLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */; };
 		4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */; };
 		4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
 		4CAC91DC2242AB6D00663A10 /* LoadWFSWithXMLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
 		4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
+		4CCA30C1223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */; };
 		4CCA30CF22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */; };
 		4CCA30D122399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */; };
 		4CCA30D22239B6DE009D2AEF /* AddIntegratedMeshLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */; };
+		4CCA30D3223AEF2C009D2AEF /* IntegratedWindowsAuthenticationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1EF29A220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift */; };
+		4CCA30D4223AEF2C009D2AEF /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1EF29C220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift */; };
+		4CCA30D5223AEF2C009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */; };
+		4CCA30D6223AEF2C009D2AEF /* IntegratedWindowsAuthenticationMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1EF2D0221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift */; };
 		4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */; };
 		4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B55E2142EB2600767D87 /* SampleTests.swift */; };
@@ -656,6 +677,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				097426BF22456EE00067E9D1 /* DisplayWFSViewController.swift in CopyFiles */,
 				165723CB223C70260097D6AA /* AddPointSceneLayerViewController.swift in CopyFiles */,
 				C7BE9C50219F5052003A03D2 /* SpatialRelationshipsTableViewController.swift in CopyFiles */,
 				C7E5EB7121ADA34F004D48F7 /* FormatCoordinatesTableViewController.swift in CopyFiles */,
@@ -850,6 +872,13 @@
 				4CCA30D22239B6DE009D2AEF /* AddIntegratedMeshLayerViewController.swift in CopyFiles */,
 				4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */,
 				4CAC91DC2242AB6D00663A10 /* LoadWFSWithXMLQueryViewController.swift in CopyFiles */,
+				4CCA30D3223AEF2C009D2AEF /* IntegratedWindowsAuthenticationViewController.swift in CopyFiles */,
+				4CCA30D4223AEF2C009D2AEF /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in CopyFiles */,
+				4CCA30D5223AEF2C009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in CopyFiles */,
+				4CCA30D6223AEF2C009D2AEF /* IntegratedWindowsAuthenticationMapViewController.swift in CopyFiles */,
+				4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */,
+				4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */,
+				4CAC91D62242929500663A10 /* MapReferenceScaleLayerSelectionViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,6 +896,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
+		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
 		09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterLayerUsingService.storyboard; sourceTree = "<group>"; };
 		09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBasedQueryVC.swift; sourceTree = "<group>"; };
@@ -1194,7 +1225,17 @@
 		4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsOverlayDictionaryRenderer3DViewController.swift; sourceTree = "<group>"; };
 		4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift; sourceTree = "<group>"; };
 		4C1A7C2521D4082400E16E94 /* mil2525d.stylx */ = {isa = PBXFileReference; lastKnownFileType = file; path = mil2525d.stylx; sourceTree = "<group>"; };
+		4C1EF298220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IntegratedWindowsAuthentication.storyboard; sourceTree = "<group>"; };
+		4C1EF29A220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegratedWindowsAuthenticationViewController.swift; sourceTree = "<group>"; };
+		4C1EF29C220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegratedWindowsAuthenticationSearchTableViewCell.swift; sourceTree = "<group>"; };
+		4C1EF2CC221208DD00F73EAE /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		4C1EF2D0221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegratedWindowsAuthenticationMapViewController.swift; sourceTree = "<group>"; };
+		4C1EF2D1221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntegratedWindowsAuthenticationMapViewController.xib; sourceTree = "<group>"; };
 		4C41B2ED211A617700EEA81E /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
+		4C478E49223C7485009F8CDF /* MapReferenceScale.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapReferenceScale.storyboard; sourceTree = "<group>"; };
+		4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleViewController.swift; sourceTree = "<group>"; };
+		4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleSettingsViewController.swift; sourceTree = "<group>"; };
+		4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
 		4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryMapImageSublayerViewController.swift; sourceTree = "<group>"; };
 		4C72116E20BF444C004A7DD9 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
@@ -1208,6 +1249,7 @@
 		4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWFSWithXMLQueryViewController.swift; sourceTree = "<group>"; };
 		4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleWebMapServiceLayerViewController.swift; sourceTree = "<group>"; };
 		4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StyleWebMapServiceLayer.storyboard; sourceTree = "<group>"; };
+		4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift; sourceTree = "<group>"; };
 		4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddIntegratedMeshLayer.storyboard; sourceTree = "<group>"; };
 		4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIntegratedMeshLayerViewController.swift; sourceTree = "<group>"; };
 		4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurementAnalysisViewController.swift; sourceTree = "<group>"; };
@@ -1333,6 +1375,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
+			isa = PBXGroup;
+			children = (
+				092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */,
+				092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */,
+			);
+			path = "Display a WFS layer";
+			sourceTree = "<group>";
+		};
 		09607F7C1FDB60EC00FA43B6 /* Time based query */ = {
 			isa = PBXGroup;
 			children = (
@@ -2373,6 +2424,7 @@
 				4C0F27AF2152C9CE00496666 /* Identify KML features */,
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
 				C793B5E62166BB06000A7A10 /* OpenStreetMap layer */,
+				092A1C2222456D9500C5F230 /* Display a WFS layer */,
 				4CAC91D72242AAB700663A10 /* Load WFS with XML query */,
 			);
 			path = Layers;
@@ -2406,6 +2458,7 @@
 				C7094780215D340C00BA0969 /* Generate offline map (overrides) */,
 				D9316A5C1FDB4ED90075AD92 /* Read a geopackage */,
 				4CECF89D21D57E9700A56161 /* Set min-max scale */,
+				4C478E48223C73F9009F8CDF /* Map reference scale */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -2813,6 +2866,7 @@
 			children = (
 				E459919A1EF3021D0089E9FD /* Search for webmap by keyword */,
 				3EEE1D681E4935FC003263FC /* List portal group users */,
+				4C1EF297220F5EC100F73EAE /* Integrated Windows Authentication */,
 			);
 			path = "Cloud & Portal";
 			sourceTree = "<group>";
@@ -2926,6 +2980,30 @@
 				4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */,
 			);
 			path = "Military messages";
+			sourceTree = "<group>";
+		};
+		4C1EF297220F5EC100F73EAE /* Integrated Windows Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4C1EF298220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard */,
+				4C1EF29A220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift */,
+				4C1EF29C220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift */,
+				4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */,
+				4C1EF2D0221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift */,
+				4C1EF2D1221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib */,
+			);
+			path = "Integrated Windows Authentication";
+			sourceTree = "<group>";
+		};
+		4C478E48223C73F9009F8CDF /* Map reference scale */ = {
+			isa = PBXGroup;
+			children = (
+				4C478E49223C7485009F8CDF /* MapReferenceScale.storyboard */,
+				4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */,
+				4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */,
+				4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */,
+			);
+			path = "Map reference scale";
 			sourceTree = "<group>";
 		};
 		4C66AAF52107C4BB00EE6346 /* Query a map image sublayer */ = {
@@ -3142,6 +3220,7 @@
 			isa = PBXGroup;
 			children = (
 				C7E86C9021751D1E001C65C3 /* UIViewController.swift */,
+				4C1EF2CC221208DD00F73EAE /* UINavigationController.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -3476,6 +3555,7 @@
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
 				D9E2E76320EEB8FF001D0AE0 /* Public_Art.sbn in Resources */,
 				D9E2E75320EEAC58001D0AE0 /* FeatureLayerShapefile.storyboard in Resources */,
+				092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */,
 				3EBA254A1D300FB500AB0703 /* SimpleRenderer.storyboard in Resources */,
 				D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
@@ -3506,6 +3586,7 @@
 				3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */,
 				123AC27D20E58CFA0026A7D6 /* GeodesicOperations.storyboard in Resources */,
 				940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */,
+				4C478E4A223C7485009F8CDF /* MapReferenceScale.storyboard in Resources */,
 				3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */,
 				3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */,
 				3EABC7B11DB17B2C00C161C6 /* Shasta.tif.ovr in Resources */,
@@ -3652,6 +3733,7 @@
 				1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */,
 				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
 				D9E2E75F20EEB8FF001D0AE0 /* Public_Art.prj in Resources */,
+				4C1EF299220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard in Resources */,
 				D9EE379A20E2CC7700BF8AD1 /* dolmus_side.jpeg in Resources */,
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
 				D9E2E76120EEB8FF001D0AE0 /* Public_Art.cpg in Resources */,
@@ -3671,6 +3753,7 @@
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
 				3ED028831B8E3A8500ACA70D /* MapRotation.storyboard in Resources */,
+				4C1EF2D3221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3783,6 +3866,7 @@
 				3E5E094E1EF850BA00FF3454 /* ManageSublayersViewController.swift in Sources */,
 				3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */,
 				3E8A05CC1ECE68E80032231C /* Animate3DGraphicViewController.swift in Sources */,
+				4C478E4C223C7498009F8CDF /* MapReferenceScaleViewController.swift in Sources */,
 				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
 				3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */,
 				E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */,
@@ -3801,6 +3885,7 @@
 				3E3B2C241BBD9CD300A99C5E /* SampleSearchEngine.swift in Sources */,
 				3ED028B01B8E3A9800ACA70D /* MILUsingURLViewController.swift in Sources */,
 				3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */,
+				4C478E5022402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift in Sources */,
 				3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */,
 				09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
@@ -3847,6 +3932,7 @@
 				C74ECB5021C17E9100129D6D /* DensifyAndGeneralizeViewController.swift in Sources */,
 				218409DF1FE9A1E00098BC40 /* AddStatisticDefinitionsViewController.swift in Sources */,
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
+				4C478E4E223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift in Sources */,
 				3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				C7E9D7C721C0500300E6C47E /* BufferOptionsViewController.swift in Sources */,
@@ -3854,12 +3940,15 @@
 				4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */,
 				C7237D0E2190F07500A72C76 /* DisplayLocationSettingsViewController.swift in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
+				4C1EF2D2221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift in Sources */,
 				C7760332217FAC9B0092D978 /* OptionsTableViewController.swift in Sources */,
+				4CCA30C1223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in Sources */,
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererVC.swift in Sources */,
 				C7D22F8C2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
 				E45991A41EF3021D0089E9FD /* WebMapViewController.swift in Sources */,
 				3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */,
+				4C1EF2CD221208DD00F73EAE /* UINavigationController.swift in Sources */,
 				3ED0287A1B8E3A8500ACA70D /* MMLLayersViewController.swift in Sources */,
 				3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */,
 				C7AF466021B1C8AC0050CC49 /* ChangeAtmosphereEffectViewController.swift in Sources */,
@@ -3867,6 +3956,7 @@
 				3EFDE0F61E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift in Sources */,
 				3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */,
 				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,
+				092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
 				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift in Sources */,
@@ -3926,6 +4016,7 @@
 				D9316A621FDB4F060075AD92 /* GPKGLayersViewController.swift in Sources */,
 				3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */,
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,
+				4C1EF29B220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift in Sources */,
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
@@ -3938,6 +4029,7 @@
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
 				3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in Sources */,
+				4C1EF29D220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

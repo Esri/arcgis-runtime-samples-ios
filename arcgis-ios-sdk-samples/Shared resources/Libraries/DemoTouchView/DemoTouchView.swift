@@ -30,12 +30,9 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }
     }
     
-    var pingWidth: CGFloat {
-        set {
-            lineWidth = newValue
-        }
-        get {
-            return lineWidth
+    var pingWidth: CGFloat = 1.0 {
+        didSet {
+            lineWidth = pingWidth
         }
     }
     
@@ -50,25 +47,25 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }
     }
     
-    let toRadius: CGFloat!
-    let fromRadius: CGFloat!
-    let center: CGPoint!
+    let center: CGPoint
+    let fromRadius: CGFloat
+    let toRadius: CGFloat
     
-    lazy var fromPath: CGPath = {
+    lazy var fromPath: CGPath = { [unowned self] in
         let fromPath = UIBezierPath()
-        fromPath.addArc(withCenter: self.center, radius: self.fromRadius, startAngle: CGFloat(0), endAngle: 2.0 * CGFloat.pi, clockwise: true)
+        fromPath.addArc(withCenter: self.center, radius: self.fromRadius, startAngle: 0, endAngle: 2.0 * .pi, clockwise: true)
         fromPath.close()
         return fromPath.cgPath
     }()
     
-    lazy var toPath: CGPath = {
+    lazy var toPath: CGPath = { [unowned self] in
         let toPath = UIBezierPath()
-        toPath.addArc(withCenter: self.center, radius: self.toRadius, startAngle: CGFloat(0), endAngle: 2 * CGFloat.pi, clockwise: true)
+        toPath.addArc(withCenter: self.center, radius: self.toRadius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
         toPath.close()
         return toPath.cgPath
     }()
     
-    lazy var pathAnimation: CABasicAnimation = {
+    lazy var pathAnimation: CABasicAnimation = { [unowned self] in
         let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
         animation.duration = 1.0
         animation.fromValue = fromPath
@@ -79,7 +76,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         return animation
     }()
     
-    lazy var opacityAnimation: CABasicAnimation = {
+    lazy var opacityAnimation: CABasicAnimation = { [unowned self] in
         let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.opacity))
         animation.duration = pingDuration
         animation.fromValue = 1.0
@@ -228,7 +225,6 @@ class DemoTouchManager {
     func handleEvent(_ event: UIEvent) {
         guard let touches = event.allTouches else { return }
         // Ensure our DemoTouch view is always at the front of its window.
-//        view.window?.bringSubviewToFront(view)
         if let window = view.window {
             window.bringSubviewToFront(view)
         } else {
@@ -250,9 +246,9 @@ private class TouchView: UIView {
         return distance > moveTolerance
     }
     
-    var moveTolerance: CGFloat = 5
+    let moveTolerance: CGFloat = 5
     
-    var originalCenter = CGPoint.zero
+    let originalCenter: CGPoint
     
     // MARK: Initializers
     
@@ -312,7 +308,7 @@ private class DemoTouchesView: UIView {
     }
     
     func updateTouches<S: Sequence>(_ touches: S) where S.Element == UITouch {
-        for touch in touches {
+        touches.forEach { (touch) in
             switch touch.phase {
             case .began:
                 addTouch(touch)
@@ -324,7 +320,7 @@ private class DemoTouchesView: UIView {
                 removeTouch(touch, cancelled: true)
             case .stationary:
                 // NOTE: I've never actually seen this state.
-                continue
+                break
             }
         }
     }
@@ -345,7 +341,9 @@ private class DemoTouchesView: UIView {
     
     func removeTouch(_ touch: UITouch, cancelled: Bool = false) {
         guard let touchView = touchViewMap[touch] else { return }
-        let animations: (() -> Void) = {
+        
+        // swiftlint:disable multiline_arguments
+        UIView.animate(withDuration: 0.25, animations: {
             touchView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             touchView.alpha = 0.0
             
@@ -354,10 +352,10 @@ private class DemoTouchesView: UIView {
             if !cancelled && !touchView.moved {
                 self.showPing(for: [touch])
             }
-        }
-        UIView.animate(withDuration: 0.25, animations: animations, completion: { (finished) in
+        }, completion: { _ in
             touchView.removeFromSuperview()
         })
+        // swiftlint:enable multiline_arguments
         
         // Stop tracking the touch.
         touchViewMap[touch] = nil
@@ -367,12 +365,12 @@ private class DemoTouchesView: UIView {
     func intensifyTouchView(_ touch: UITouch) {
         guard let touchView = touchViewMap[touch] else { return }
         if touchView.alpha < 1.0 {
-            touchView.alpha += CGFloat(0.05)
+            touchView.alpha += 0.05
         }
     }
 
     func showPing<S: Sequence>(for touches: S) where S.Element == UITouch {
-        for touch in touches {
+        touches.forEach { (touch) in
             let pingLayer = makePingLayer(touch: touch)
             layer.addSublayer(pingLayer)
         }

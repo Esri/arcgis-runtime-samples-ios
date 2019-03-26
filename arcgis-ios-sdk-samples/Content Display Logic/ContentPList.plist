@@ -33,11 +33,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Open an existing map</string>
+				<string>Open map (URL)</string>
 				<key>storyboardName</key>
-				<string>OpenExistingMap</string>
+				<string>OpenMapURL</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to open an existing map using its url</string>
+				<string>This sample shows you how to open a map using its url</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -194,6 +194,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Generate offline map (overrides)</string>
+				<key>storyboardName</key>
+				<string>GenerateOfflineMapOverrides</string>
+				<key>descriptionText</key>
+				<string>Override the default parameters when taking a map from ArcGIS Portal offline.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Read a geopackage</string>
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>
@@ -203,6 +211,22 @@
 				<array>
 					<string>AuroraCOGeopackage</string>
 				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Set min-max scale</string>
+				<key>storyboardName</key>
+				<string>SetMinMaxScale</string>
+				<key>descriptionText</key>
+				<string>Shows how to set the min and max scale on a map.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Map reference scale</string>
+				<key>descriptionText</key>
+				<string>Set the map&apos;s reference scale and which feature layers should honor the reference scale.</string>
+				<key>storyboardName</key>
+				<string>MapReferenceScale</string>
 			</dict>
 		</array>
 	</dict>
@@ -387,6 +411,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Show labels on layers</string>
+				<key>storyboardName</key>
+				<string>ShowLabelsOnLayers</string>
+				<key>descriptionText</key>
+				<string>Show labels on feature layers using JSON label definitions.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>WMTS layer</string>
 				<key>storyboardName</key>
 				<string>WMTSLayer</string>
@@ -411,6 +443,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Query a map image sublayer</string>
+				<key>storyboardName</key>
+				<string>QueryMapImageSublayer</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to execute an attribute and spatial query on the sublayers of an ArcGIS map image layer.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Symbolize shapefile</string>
 				<key>storyboardName</key>
 				<string>SymbolizeShapefile</string>
@@ -420,6 +460,54 @@
 				<array>
 					<string>SubdivisionsShapefile</string>
 				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display KML</string>
+				<key>storyboardName</key>
+				<string>DisplayKML</string>
+				<key>descriptionText</key>
+				<string>Show a KML file from a URL, local file, or portal item.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>List KML contents</string>
+				<key>storyboardName</key>
+				<string>ListKMLContents</string>
+				<key>descriptionText</key>
+				<string>List the contents of a KML file.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Identify KML features</string>
+				<key>storyboardName</key>
+				<string>IdentifyKMLFeatures</string>
+				<key>descriptionText</key>
+				<string>Show a balloon popup with formatted content for tapped KML features. KML supports defining HTML for popups.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display KML network links</string>
+				<key>storyboardName</key>
+				<string>DisplayKMLNetworkLinks</string>
+				<key>descriptionText</key>
+				<string>Display a KML file that loads content from a network resource.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>OpenStreetMap layer</string>
+				<key>storyboardName</key>
+				<string>OpenStreetMapLayer</string>
+				<key>descriptionText</key>
+				<string>Display a map with an OpenStreetMap basemap.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display a WFS layer</string>
+				<key>storyboardName</key>
+				<string>DisplayWFS</string>
+				<key>descriptionText</key>
+				<string>Display a layer from a WFS service, requesting only features for the current extent.</string>
 			</dict>
 		</array>
 	</dict>
@@ -435,6 +523,14 @@
 				<string>FeatureLayerRenderingModeMap</string>
 				<key>descriptionText</key>
 				<string>Control the rendering mode of feature layers.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Feature layer rendering mode (scene)</string>
+				<key>storyboardName</key>
+				<string>FeatureLayerRenderingModeScene</string>
+				<key>descriptionText</key>
+				<string>Control the rendering mode of feature layers in scenes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -691,6 +787,14 @@
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to display and work with coordinate system grids such as LatitudeLongitude, MGRS, UTM and USNG on a map view</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Graphics overlay (dictionary renderer) 3D</string>
+				<key>storyboardName</key>
+				<string>GraphicsOverlayDictionaryRenderer3D</string>
+				<key>descriptionText</key>
+				<string>Demonstrates how to display billboarded point graphics with military symbols.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -772,13 +876,13 @@
 				<key>storyboardName</key>
 				<string>EditGeometry</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to display a callout. To change the geomemtry of the selected feature tap on the info button. Tap on the new location on the map and tap Done to save</string>
+				<string>Tap on a feature to display a callout. To change the geometry of the selected feature tap on the info button. Tap on the new location on the map and tap Done to save</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Edit feature attachments</string>
 				<key>storyboardName</key>
-				<string>EditAttachment</string>
+				<string>EditFeatureAttachments</string>
 				<key>descriptionText</key>
 				<string>Tap on a feature to display a callout. The callout shows the number of attachments associated with that feature. Tap on the info button to open the list view. You can add, delete or download an attachment in this list</string>
 			</dict>
@@ -839,6 +943,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>List transformations</string>
+				<key>storyboardName</key>
+				<string>ListTransformations</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to use the transformation catalog to get a list of available datum transformations that can be used to project a geometry between two different spatial references, and how to use one of the transformations to perform the geometry engine&apos;s &quot;project&quot; operation.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Geodesic operations</string>
 				<key>storyboardName</key>
 				<string>GeodesicOperations</string>
@@ -852,6 +964,38 @@
 				<string>CutGeometry</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to cut a geometry with a polyline using the GeometryEngine. For example, you may want to subdivide a large parcel polygon into several smaller parcels.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Clip geometry</string>
+				<key>storyboardName</key>
+				<string>ClipGeometry</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to clip a geometry with an envelope using the geometry engine.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Spatial relationships</string>
+				<key>storyboardName</key>
+				<string>SpatialRelationships</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to use the AGSGeometryEngine to evaluate the spatial relationships between geometries.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Densify and generalize</string>
+				<key>storyboardName</key>
+				<string>DensifyAndGeneralize</string>
+				<key>descriptionText</key>
+				<string>Apply densify and generalize functions to polyline geometry.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Buffer</string>
+				<key>storyboardName</key>
+				<string>Buffer</string>
+				<key>descriptionText</key>
+				<string>Create buffers around the tap location with a given radius.</string>
 			</dict>
 		</array>
 	</dict>
@@ -1015,6 +1159,14 @@
 				<key>descriptionText</key>
 				<string>Shows how to search for webmaps within a portal using a keyword.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Integrated Windows Authentication</string>
+				<key>storyboardName</key>
+				<string>IntegratedWindowsAuthentication</string>
+				<key>descriptionText</key>
+				<string>Uses Windows credentials to access services hosted on a portal secured with Integrated Windows Authentication (IWA).</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1118,6 +1270,46 @@
 				<string>FeatureLayerExtrusion</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to apply extrusion to a renderer on a feature layer</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Scene layer selection</string>
+				<key>storyboardName</key>
+				<string>SceneLayerSelection</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to identify geoelements in a scene layer.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Sync map and scene views</string>
+				<key>storyboardName</key>
+				<string>SyncMapAndSceneViews</string>
+				<key>descriptionText</key>
+				<string>Demonstrates how to keep the viewpoints of two map or scene views in sync with each other.</string>
+			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Change the appearance of the atmosphere in a scene.</string>
+				<key>storyboardName</key>
+				<string>ChangeAtmosphereEffect</string>
+				<key>displayName</key>
+				<string>Change atmosphere effect</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Add an integrated mesh layer</string>
+				<key>descriptionText</key>
+				<string>View an integrated mesh layer from a scene service.</string>
+				<key>storyboardName</key>
+				<string>AddIntegratedMeshLayer</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Add a point scene layer</string>
+				<key>storyboardName</key>
+				<string>AddPointSceneLayer</string>
+				<key>descriptionText</key>
+				<string>View a point scene layer from a scene service</string>
 			</dict>
 		</array>
 	</dict>

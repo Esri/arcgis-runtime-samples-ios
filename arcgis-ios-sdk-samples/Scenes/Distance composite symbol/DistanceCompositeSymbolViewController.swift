@@ -18,8 +18,7 @@ import UIKit
 import ArcGIS
 
 class DistanceCompositeSymbolViewController: UIViewController {
-    
-    @IBOutlet var sceneView:AGSSceneView!
+    @IBOutlet var sceneView: AGSSceneView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +27,15 @@ class DistanceCompositeSymbolViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DistanceCompositeSymbolViewController"]
         
         //initialize scene with topographic basemap
-        let scene = AGSScene(basemap: AGSBasemap.imagery())
+        let scene = AGSScene(basemap: .imagery())
         //assign scene to the scene view
         self.sceneView.scene = scene
         
         // add base surface for elevation data
         let surface = AGSSurface()
-        let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
+        /// The url of the Terrain 3D ArcGIS REST Service.
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+        let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         
@@ -51,7 +52,7 @@ class DistanceCompositeSymbolViewController: UIViewController {
         let modelSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 100.0)
         modelSymbol.load(completion: { [weak self] (error) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self?.presentAlert(error: error)
                 return
             }
             
@@ -62,16 +63,17 @@ class DistanceCompositeSymbolViewController: UIViewController {
             compositeSymbol.ranges.append(AGSDistanceSymbolRange(symbol: circleSymbol, minDistance: 30001, maxDistance: 0))
             
             // create graphic
-            let aircraftPosition = AGSPoint(x: -2.708471, y: 56.096575, z: 5000, spatialReference: AGSSpatialReference.wgs84())
+            let aircraftPosition = AGSPoint(x: -2.708471, y: 56.096575, z: 5000, spatialReference: .wgs84())
             let aircraftGraphic = AGSGraphic(geometry: aircraftPosition, symbol: compositeSymbol, attributes: nil)
             
             // add graphic to graphics overlay
             graphicsOverlay.graphics.add(aircraftGraphic)
             
-            // add a camera and initial camera position
-            let camera = AGSCamera(lookAt: aircraftPosition, distance: 2000.0, heading: 0.0, pitch: 70.0, roll: 0.0)
-            self?.sceneView.setViewpointCamera(camera)
+            // add an orbit camera controller to lock the camera to the graphic
+            let cameraController = AGSOrbitGeoElementCameraController(targetGeoElement: aircraftGraphic, distance: 4000)
+            cameraController.cameraPitchOffset = 80
+            cameraController.cameraHeadingOffset = -30
+            self?.sceneView.cameraController = cameraController
         })
     }
-    
 }

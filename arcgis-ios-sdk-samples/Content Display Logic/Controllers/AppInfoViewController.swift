@@ -16,9 +16,8 @@
 import UIKit
 
 class AppInfoViewController: UIViewController {
-
-    @IBOutlet var appNameLabel:UILabel!
-    @IBOutlet var appVersionLabel:UILabel!
+    @IBOutlet var appNameLabel: UILabel!
+    @IBOutlet var appVersionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +32,9 @@ class AppInfoViewController: UIViewController {
         self.preferredContentSize = CGSize(width: 350, height: 350)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func closeAction() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
-
 }

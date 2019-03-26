@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lIr-n2-Lqu">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--DisplayKML Network Links View Controller-->
+        <scene sceneID="BhE-do-wJj">
+            <objects>
+                <viewController id="lIr-n2-Lqu" customClass="DisplayKMLNetworkLinksViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Mi-J9-K9g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3F-3f-v07" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBh-zU-wzz">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="bh9-5u-n7k"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ijv-dI-LoT"/>
+                                    <barButtonItem title="View Messages" id="R3H-6B-qwE">
+                                        <connections>
+                                            <segue destination="FYe-Pq-2mO" kind="popoverPresentation" popoverAnchorBarButtonItem="R3H-6B-qwE" id="6dE-E4-iyU">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                <popoverPassthroughViews>
+                                                    <view reference="Q3F-3f-v07"/>
+                                                </popoverPassthroughViews>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="B95-Am-TeS"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gBh-zU-wzz" firstAttribute="trailing" secondItem="dgt-RO-Loz" secondAttribute="trailing" id="7TN-DZ-8hV"/>
+                            <constraint firstItem="Q3F-3f-v07" firstAttribute="leading" secondItem="dgt-RO-Loz" secondAttribute="leading" id="DvS-1v-9FR"/>
+                            <constraint firstItem="gBh-zU-wzz" firstAttribute="leading" secondItem="dgt-RO-Loz" secondAttribute="leading" id="LeT-Xb-TDw"/>
+                            <constraint firstItem="gBh-zU-wzz" firstAttribute="top" secondItem="Q3F-3f-v07" secondAttribute="bottom" id="N5P-Gk-jtM"/>
+                            <constraint firstItem="Q3F-3f-v07" firstAttribute="trailing" secondItem="dgt-RO-Loz" secondAttribute="trailing" id="YJj-D2-rjn"/>
+                            <constraint firstItem="Q3F-3f-v07" firstAttribute="top" secondItem="dgt-RO-Loz" secondAttribute="top" id="b3u-FM-zr0"/>
+                            <constraint firstItem="gBh-zU-wzz" firstAttribute="bottom" secondItem="dgt-RO-Loz" secondAttribute="bottom" id="ciZ-px-xWM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dgt-RO-Loz"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="Q3F-3f-v07" id="nDc-90-AX7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OTA-cA-k3s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244" y="442.12893553223392"/>
+        </scene>
+        <!--Network Messages View Controller-->
+        <scene sceneID="gcp-1n-uVB">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tCL-Kc-PQH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="FYe-Pq-2mO" customClass="KMLNetworkMessagesViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FlA-pk-Inl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Messages" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NI2-S9-K1T">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NI2-S9-K1T" firstAttribute="top" secondItem="EcT-u3-xyf" secondAttribute="top" id="Vr2-cJ-A36"/>
+                            <constraint firstItem="EcT-u3-xyf" firstAttribute="bottom" secondItem="NI2-S9-K1T" secondAttribute="bottom" id="iDn-9R-Ztw"/>
+                            <constraint firstItem="NI2-S9-K1T" firstAttribute="leading" secondItem="EcT-u3-xyf" secondAttribute="leading" id="v6k-Rx-MbN"/>
+                            <constraint firstItem="NI2-S9-K1T" firstAttribute="trailing" secondItem="EcT-u3-xyf" secondAttribute="trailing" id="xY1-ME-tUY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EcT-u3-xyf"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="NI2-S9-K1T" id="Xhw-82-X9h"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="964" y="442"/>
+        </scene>
+    </scenes>
+</document>

@@ -16,18 +16,17 @@ import UIKit
 import ArcGIS
 
 class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var toolbar: UIToolbar!
+    @IBOutlet private var toolbarBottomConstraint: NSLayoutConstraint!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var toolbar:UIToolbar!
-    @IBOutlet private var toolbarBottomConstraint:NSLayoutConstraint!
+    private var map: AGSMap!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
     
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
-    
-    private var selectedFeature:AGSArcGISFeature!
-    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private var selectedFeature: AGSArcGISFeature!
+    private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,71 +34,61 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditGeometryViewController"]
         
-        self.map = AGSMap(basemap: AGSBasemap.oceans())
+        self.map = AGSMap(basemap: .oceans())
         //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: .webMercator()), scale: 2e6)
         
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.add(self.featureLayer)
 
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         //default state for toolbar is off
-        self.toggleToolbar(false)
+        self.setToolbarVisibility(visible: false)
     }
     
-    func toggleToolbar(_ on:Bool) {
+    func setToolbarVisibility(visible: Bool) {
+        toolbarBottomConstraint.constant = visible ? 0 : -44 - view.safeAreaInsets.bottom
         
-        if #available(iOS 11.0, *) {
-            self.toolbarBottomConstraint.constant = on ? 0 : -44-view.safeAreaInsets.bottom
-            print(view.safeAreaInsets.bottom)
-        }
-        else {
-            self.toolbarBottomConstraint.constant = on ? 0 : -44
-        }
-        
-        UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.view.layoutIfNeeded()
         }) 
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
+        self.featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
-            }
-            else {
-                SVProgressHUD.showSuccess(withStatus: "Saved successfully!")
+                self?.presentAlert(error: error)
+            } else {
+                self?.presentAlert(message: "Saved successfully!")
             }
             //un hide the feature
             self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
         })
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let lastQuery = self.lastQuery{
+        if let lastQuery = self.lastQuery {
             lastQuery.cancel()
         }
         
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
             if let error = identifyLayerResult.error {
                 print(error)
-            }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] , features.count > 0 {
-                let feature = features[0]
+            } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+                let feature = features.first {
                 //show callout for the first feature
                 let title = feature.attributes["typdamage"] as! String
                 self?.mapView.callout.title = title
@@ -111,7 +100,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         }
     }
     
-    //MARK: - AGSCalloutDelegate
+    // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
@@ -127,26 +116,24 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.mapView.sketchEditor?.start(with: point)
         
         //show the toolbar
-        self.toggleToolbar(true)
+        self.setToolbarVisibility(visible: true)
         
         //hide the feature for time being
         self.featureLayer.setFeature(self.selectedFeature, visible: false)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func doneAction() {
         if let newGeometry = self.mapView.sketchEditor?.geometry {
-
             self.selectedFeature.geometry = newGeometry
-            self.featureTable.update(self.selectedFeature, completion: { [weak self] (error:Error?) -> Void in
+            self.featureTable.update(self.selectedFeature, completion: { [weak self] (error: Error?) in
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self?.presentAlert(error: error)
                     
                     //un hide the feature
                     self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
-                }
-                else {
+                } else {
                     //apply edits
                     self?.applyEdits()
                 }
@@ -154,7 +141,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         }
         
         //hide toolbar
-        self.toggleToolbar(false)
+        self.setToolbarVisibility(visible: false)
         
         //disable sketch editor
         self.mapView.sketchEditor?.stop()

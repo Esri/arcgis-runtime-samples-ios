@@ -16,21 +16,18 @@
 import UIKit
 import ArcGIS
 
-protocol MapPackageCellDelegate:class {
-    
-    func mapPackageCell(_ mapPackageCell:MapPackageCell, didSelectMap map:AGSMap)
+protocol MapPackageCellDelegate: AnyObject {
+    func mapPackageCell(_ mapPackageCell: MapPackageCell, didSelectMap map: AGSMap)
 }
 
-
 class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
-
-    @IBOutlet var titleLabel:UILabel!
-    @IBOutlet var collectionView:UICollectionView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var collectionView: UICollectionView!
     
-    @IBOutlet var collectionViewHeightConstraint:NSLayoutConstraint!
-    @IBOutlet var collectionViewTopConstraint:NSLayoutConstraint!
+    @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var collectionViewTopConstraint: NSLayoutConstraint!
     
-    weak var delegate:MapPackageCellDelegate?
+    weak var delegate: MapPackageCellDelegate?
     
     var isCollapsed = true {
         didSet {
@@ -38,19 +35,17 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         }
     }
     
-    var mapPackage:AGSMobileMapPackage! {
+    var mapPackage: AGSMobileMapPackage! {
         didSet {
             self.loadMapPackage()
         }
     }
     
     func loadMapPackage() {
-        self.mapPackage.load { [weak self] (error:Error?) in
+        self.mapPackage.load { [weak self] (error: Error?) in
             if let error = error {
-                //error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
-            }
-            else {
+                print(error.localizedDescription)
+            } else {
                 //update title label
                 self?.titleLabel.text = self?.mapPackage.item?.title
                 
@@ -69,7 +64,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         self.collectionViewHeightConstraint.constant = 0
     }
 
-    //MARK: - UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.mapPackage?.maps.count ?? 0
@@ -80,7 +75,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         
         //label
         let label = cell.viewWithTag(11) as! UILabel
-        label.text = "Map \(indexPath.item+1)"
+        label.text = "Map \(indexPath.item + 1)"
         
         //border
         cell.layer.borderColor = UIColor.black.cgColor
@@ -93,7 +88,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         let map = self.mapPackage.maps[indexPath.item]
         //route image view
         let routeImageView = cell.viewWithTag(13) as! UIImageView
-        routeImageView.isHidden = (map.transportationNetworks.count == 0)
+        routeImageView.isHidden = map.transportationNetworks.isEmpty
         
         //thumbnail
         let imageView = cell.viewWithTag(14) as! UIImageView
@@ -104,7 +99,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         return cell
     }
     
-    //MARK: - UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.delegate?.mapPackageCell(self, didSelectMap: self.mapPackage.maps[indexPath.item])

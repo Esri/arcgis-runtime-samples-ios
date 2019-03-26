@@ -15,18 +15,14 @@
 import UIKit
 import ArcGIS
 
-class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
-
+class ChangeMapViewBackgroundVC: UIViewController {
     @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var settingsContainerView: UIView!
-    
-    private var gridSettingsViewController:GridSettingsViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeMapViewBackgroundVC", "GridSettingsViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeMapViewBackgroundVC", "GridSettingsViewController", "ColorPickerViewController"]
         
         //initialize tiled layer
         let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
@@ -35,42 +31,43 @@ class ChangeMapViewBackgroundVC: UIViewController, GridSettingsVCDelegate {
         let map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayer))
         
         //set initial viewpoint
-        let center = AGSPoint(x: 3224786.498918, y: 2661231.326777, spatialReference: AGSSpatialReference(wkid: 3857))
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 236663484.12225574)
-        
+        let center = AGSPoint(x: 3224786, y: 2661231, spatialReference: .webMercator())
+        map.initialViewpoint = AGSViewpoint(center: center, scale: 236663484)
+
         //assign map to the map view
-        self.mapView.map = map
-    }
-    
-    //MARK: - GridSettingsVCDelegate
-    
-    func gridSettingsViewController(_ gridSettingsViewController: GridSettingsViewController, didUpdateBackgroundGrid grid: AGSBackgroundGrid) {
+        mapView.map = map
         
-        //update background grid on the map view
-        self.mapView.backgroundGrid = grid
+        // create a background grid with default values
+        let backgroundGrid = AGSBackgroundGrid(color: .black, gridLineColor: .white, gridLineWidth: 2, gridSize: 32)
+        // assign the background grid to the map view
+        mapView.backgroundGrid = backgroundGrid
     }
     
-    func gridSettingsViewControllerWantsToClose(_ gridSettingsViewController: GridSettingsViewController) {
-        self.settingsContainerView.isHidden = true
-    }
-    
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "EmbedSegue" {
-            self.gridSettingsViewController = segue.destination as! GridSettingsViewController
-            self.gridSettingsViewController.delegate = self
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? GridSettingsViewController {
+            controller.backgroundGrid = mapView.backgroundGrid
+            
+            navController.presentationController?.delegate = self
+            controller.preferredContentSize = {
+                let height: CGFloat
+                if traitCollection.horizontalSizeClass == .regular,
+                    traitCollection.verticalSizeClass == .regular {
+                    height = 200
+                } else {
+                    height = 150
+                }
+                return CGSize(width: 375, height: height)
+            }()
         }
     }
-    
-    //MARK: - Actions
-    
-    @IBAction private func changeBackgroundAction() {
-        //default color
-        self.gridSettingsViewController.colorButton.backgroundColor = self.mapView.backgroundGrid?.color
-        self.gridSettingsViewController.lineColorButton.backgroundColor = self.mapView.backgroundGrid?.gridLineColor
-        
-        self.settingsContainerView.isHidden = false
+}
+
+extension ChangeMapViewBackgroundVC: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // ensure that the settings are show in a popover even on small displays
+        return .none
     }
 }

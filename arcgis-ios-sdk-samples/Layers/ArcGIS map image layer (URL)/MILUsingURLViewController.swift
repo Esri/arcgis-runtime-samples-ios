@@ -16,10 +16,9 @@ import UIKit
 import ArcGIS
 
 class MILUsingURLViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    
-    private var map:AGSMap!
+    private var map: AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,5 +35,4 @@ class MILUsingURLViewController: UIViewController {
         
         self.mapView.map = self.map
     }
-    
 }

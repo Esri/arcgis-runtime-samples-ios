@@ -17,10 +17,9 @@ import UIKit
 import ArcGIS
 
 class UniqueValueRendererViewController: UIViewController {
-
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var featureLayer:AGSFeatureLayer!
+    private var featureLayer: AGSFeatureLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +28,7 @@ class UniqueValueRendererViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["UniqueValueRendererViewController"]
 
         //instantiate map with basemap
-        let map = AGSMap(basemap: AGSBasemap.topographic())
+        let map = AGSMap(basemap: .topographic())
         
         //create feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)
@@ -42,7 +41,7 @@ class UniqueValueRendererViewController: UIViewController {
         self.mapView.map = map
         
         //set initial viewpoint
-        let center = AGSPoint(x: -12966000.5, y: 4441498.5, spatialReference: AGSSpatialReference.webMercator())
+        let center = AGSPoint(x: -12966000.5, y: 4441498.5, spatialReference: .webMercator())
         self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 4e7))
         
         //add unique value renderer

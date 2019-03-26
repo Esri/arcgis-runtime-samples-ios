@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QqC-8h-4uR">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Point Scene Layer View Controller-->
+        <scene sceneID="i0f-CX-ZXN">
+            <objects>
+                <viewController id="QqC-8h-4uR" customClass="AddPointSceneLayerViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rl5-tq-Yyk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4F-p8-iOE" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="O4F-p8-iOE" firstAttribute="bottom" secondItem="Rl5-tq-Yyk" secondAttribute="bottom" id="bVL-4n-p33"/>
+                            <constraint firstItem="O4F-p8-iOE" firstAttribute="trailing" secondItem="Rl5-tq-Yyk" secondAttribute="trailing" id="dRo-uj-6dj"/>
+                            <constraint firstItem="O4F-p8-iOE" firstAttribute="leading" secondItem="Rl5-tq-Yyk" secondAttribute="leading" id="soh-GV-zJi"/>
+                            <constraint firstItem="O4F-p8-iOE" firstAttribute="top" secondItem="sNx-8h-g47" secondAttribute="top" id="uaw-Z5-Wj9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sNx-8h-g47"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="O4F-p8-iOE" id="tyy-Ee-DH4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pp5-i6-g9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93.599999999999994" y="80.50974512743629"/>
+        </scene>
+    </scenes>
+</document>

@@ -16,13 +16,12 @@ import UIKit
 import ArcGIS
 
 class MapRotationViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var slider: UISlider!
+    @IBOutlet private weak var rotationLabel: UILabel!
+    @IBOutlet private weak var compassButton: UIButton!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var slider:UISlider!
-    @IBOutlet private weak var rotationLabel:UILabel!
-    @IBOutlet private weak var compassButton:UIButton!
-    
-    private var map:AGSMap!
+    private var map: AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,20 +30,20 @@ class MapRotationViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapRotationViewController"]
         
         //instantiate map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.streets())
+        self.map = AGSMap(basemap: .streets())
         
         //assign map to the map view
         self.mapView.map = self.map
         
         //update the slider value when the user rotates by pinching
-        self.mapView.viewpointChangedHandler = { [weak self] () in
+        self.mapView.viewpointChangedHandler = { [weak self] in 
             DispatchQueue.main.async {
                 self?.mapViewpointDidChange()
             }
         }
 
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -13044000, yMin: 3855000, xMax: -13040000, yMax: 3858000, spatialReference: AGSSpatialReference.webMercator()))
+        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -13044000, yMin: 3855000, xMax: -13040000, yMax: 3858000, spatialReference: .webMercator()))
     }
     
     func mapViewpointDidChange() {
@@ -53,10 +52,10 @@ class MapRotationViewController: UIViewController {
         compassButton.transform = CGAffineTransform(rotationAngle: CGFloat(-mapView.rotation * Double.pi / 180))
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     //rotate the map view based on the value of the slider
-    @IBAction private func sliderValueChanged(_ slider:UISlider) {
+    @IBAction private func sliderValueChanged(_ slider: UISlider) {
         if let viewpoint = self.mapView.currentViewpoint(with: AGSViewpointType.centerAndScale) {
             let rotatedViewpoint = AGSViewpoint(center: viewpoint.targetGeometry as! AGSPoint, scale: viewpoint.targetScale, rotation: Double(slider.value))
             self.mapView.setViewpoint(rotatedViewpoint)

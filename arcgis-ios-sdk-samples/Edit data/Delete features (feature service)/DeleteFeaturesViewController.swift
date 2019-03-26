@@ -16,13 +16,12 @@ import UIKit
 import ArcGIS
 
 class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
+    @IBOutlet private var mapView: AGSMapView!
     
-    @IBOutlet private var mapView:AGSMapView!
-    
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
-    private var selectedFeature:AGSFeature!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
+    private var selectedFeature: AGSFeature!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +30,9 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DeleteFeaturesViewController"]
         
         //instantiate map with a basemap
-        let map = AGSMap(basemap: AGSBasemap.streets())
+        let map = AGSMap(basemap: .streets())
         //set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
+        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
         
         //assign the map to the map view
         self.mapView.map = map
@@ -49,7 +48,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         map.operationalLayers.add(featureLayer)
     }
     
-    func showCallout(for feature:AGSFeature,at tapLocation:AGSPoint) {
+    func showCallout(for feature: AGSFeature, at tapLocation: AGSPoint) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
@@ -57,63 +56,62 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
     }
     
-    func deleteFeature(_ feature:AGSFeature) {
-        self.featureTable.delete(feature) { [weak self] (error: Error?) -> Void in
+    func deleteFeature(_ feature: AGSFeature) {
+        self.featureTable.delete(feature) { [weak self] (error: Error?) in
             if let error = error {
                 print("Error while deleting feature : \(error.localizedDescription)")
-            }
-            else {
+            } else {
                 self?.applyEdits()
             }
         }
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) -> Void in
+        self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: "Error while applying edits :: \(error.localizedDescription)")
-            }
-            else {
-                if let featureEditResults = featureEditResults , featureEditResults.count > 0 && featureEditResults[0].completedWithErrors == false {
-                    SVProgressHUD.showSuccess(withStatus: "Edits applied successfully")
+                self.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
+            } else {
+                if let featureEditResults = featureEditResults,
+                    featureEditResults.first?.completedWithErrors == false {
+                    self.presentAlert(message: "Edits applied successfully")
                 }
             }
         }
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let lastQuery = self.lastQuery{
+        if let lastQuery = self.lastQuery {
             lastQuery.cancel()
         }
         
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
             if let error = identifyLayerResult.error {
                 print(error)
-            }
-            else if let features = identifyLayerResult.geoElements as? [AGSFeature] , features.count > 0 {
+            } else if let features = identifyLayerResult.geoElements as? [AGSFeature],
+                let feature = features.first {
                 //show callout for the first feature
-                self?.showCallout(for: features[0], at: mapPoint)
+                self?.showCallout(for: feature, at: mapPoint)
                 //update selected feature
-                self?.selectedFeature = features[0]
+                self?.selectedFeature = feature
             }
         }
     }
     
-    //MARK: - AGSCalloutDelegate
+    // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
         self.mapView.callout.dismiss()
         
         //confirmation
-        let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: .alert)
         //action for Yes
-        let alertAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { [weak self] (action:UIAlertAction!) -> Void in
+        let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action: UIAlertAction!) in
             self?.deleteFeature(self!.selectedFeature)
         }
         alertController.addAction(alertAction)
@@ -123,6 +121,6 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         alertController.addAction(cancelAlertAction)
         
         //present alert controller
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true)
     }
 }

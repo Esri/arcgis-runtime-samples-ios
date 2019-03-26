@@ -13,116 +13,172 @@
 // limitations under the License.
 
 import UIKit
+import ArcGIS
 
-protocol ViewshedSettingsVCDelegate:class {
+class ViewshedSettingsVC: UITableViewController {
+    weak var viewshed: AGSLocationViewshed? {
+        didSet {
+            if isViewLoaded {
+                updateUIForViewshed()
+            }
+        }
+    }
     
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateAnalysisOverlayVisibility analysisOverlayVisibility:Bool)
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateFrustumOutlineVisibility frustumOutlineVisibility:Bool)
-   
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateObstructedAreaColor obstructedAreaColor:UIColor)
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateVisibleAreaColor visibleAreaColor:UIColor)
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateFrustumOutlineColor frustumOutlineColor:UIColor)
+    @IBOutlet weak var headingSlider: UISlider?
+    @IBOutlet weak var headingLabel: UILabel?
     
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateHeading heading:Double)
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdatePitch pitch:Double)
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateHorizontalAngle horizontalAngle:Double)
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateVerticalAngle verticalAngle:Double)
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateMinDistance minDistance:Double)
-    func viewshedSettingsVC(_ viewshedSettingsVC:ViewshedSettingsVC, didUpdateMaxDistance maxDistance:Double)
+    @IBOutlet weak var pitchSlider: UISlider?
+    @IBOutlet weak var pitchLabel: UILabel?
     
-}
-
-class ViewshedSettingsVC: UIViewController, HorizontalColorPickerDelegate {
+    @IBOutlet weak var horizontalAngleSlider: UISlider?
+    @IBOutlet weak var horizontalAngleLabel: UILabel?
     
-    @IBOutlet weak var headingSlider: UISlider!
-    @IBOutlet weak var headingLabel: UILabel!
+    @IBOutlet weak var verticalAngleSlider: UISlider?
+    @IBOutlet weak var verticalAngleLabel: UILabel?
     
-    @IBOutlet weak var pitchSlider: UISlider!
-    @IBOutlet weak var pitchLabel: UILabel!
+    @IBOutlet weak var minDistanceSlider: UISlider?
+    @IBOutlet weak var minDistanceLabel: UILabel?
     
-    @IBOutlet weak var horizontalAngleSlider: UISlider!
-    @IBOutlet weak var horizontalAngleLabel: UILabel!
+    @IBOutlet weak var maxDistanceSlider: UISlider?
+    @IBOutlet weak var maxDistanceLabel: UILabel?
     
-    @IBOutlet weak var verticalAngleSlider: UISlider!
-    @IBOutlet weak var verticalAngleLabel: UILabel!
+    @IBOutlet weak var visibleAreaColorSwatch: UIView?
+    @IBOutlet weak var obstructedAreaColorSwatch: UIView?
+    @IBOutlet weak var frustumOutlineColorSwatch: UIView?
     
-    @IBOutlet weak var minDistanceSlider: UISlider!
-    @IBOutlet weak var minDistanceLabel: UILabel!
+    @IBOutlet weak var visibleAreaColorCell: UITableViewCell?
+    @IBOutlet weak var obstructedAreaColorCell: UITableViewCell?
+    @IBOutlet weak var frustumOutlineColorCell: UITableViewCell?
     
-    @IBOutlet weak var maxDistanceSlider: UISlider!
-    @IBOutlet weak var maxDistanceLabel: UILabel!
+    @IBOutlet weak var frustumOutlineVisibilitySwitch: UISwitch?
+    @IBOutlet weak var analysisOverlayVisibilitySwitch: UISwitch?
     
-    @IBOutlet weak var visibleAreaColorPicker: HorizontalColorPicker!
-    @IBOutlet weak var obstructedAreaColorPicker: HorizontalColorPicker!
-    @IBOutlet weak var frustumOutlineColorPicker: HorizontalColorPicker!
-    
-    @IBOutlet weak var frustumOutlineVisibilitySwitch: UISwitch!
-    @IBOutlet weak var analysisOverlayVisibilitySwitch: UISwitch!
-    
-    weak var delegate:ViewshedSettingsVCDelegate?
+    private let measurementFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.numberFormatter.maximumFractionDigits = 0
+        formatter.unitOptions = .providedUnit
+        return formatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // set picker delegates
-        visibleAreaColorPicker.delegate = self
-        obstructedAreaColorPicker.delegate = self
-        frustumOutlineColorPicker.delegate = self
+        // set corner radius and border for color swatches
+        for swatch in [visibleAreaColorSwatch,
+                       obstructedAreaColorSwatch,
+                       frustumOutlineColorSwatch] {
+            swatch?.layer.cornerRadius = 5
+            swatch?.layer.borderColor = UIColor(hue: 0, saturation: 0, brightness: 0.9, alpha: 1).cgColor
+            swatch?.layer.borderWidth = 1
+        }
+        
+        updateUIForViewshed()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // set the colors redundantly to avoid a visual glitch when closing the color picker
+        updateColorUIForViewshed()
+    }
+    
+    private func updateUIForViewshed() {
+        guard let viewshed = viewshed else {
+            return
+        }
+        
+        analysisOverlayVisibilitySwitch?.isOn = viewshed.isVisible
+        frustumOutlineVisibilitySwitch?.isOn = viewshed.isFrustumOutlineVisible
+        
+        measurementFormatter.unitStyle = .short
+        
+        headingLabel?.text = measurementFormatter.string(from: Measurement(value: viewshed.heading, unit: UnitAngle.degrees))
+        headingSlider?.value = Float(viewshed.heading)
+        pitchLabel?.text = measurementFormatter.string(from: Measurement(value: viewshed.pitch, unit: UnitAngle.degrees))
+        pitchSlider?.value = Float(viewshed.pitch)
+        horizontalAngleLabel?.text = measurementFormatter.string(from: Measurement(value: viewshed.horizontalAngle, unit: UnitAngle.degrees))
+        horizontalAngleSlider?.value = Float(viewshed.horizontalAngle)
+        verticalAngleLabel?.text = measurementFormatter.string(from: Measurement(value: viewshed.verticalAngle, unit: UnitAngle.degrees))
+        verticalAngleSlider?.value = Float(viewshed.verticalAngle)
+        
+        measurementFormatter.unitStyle = .medium
+        
+        minDistanceLabel?.text = measurementFormatter.string(from: Measurement(value: viewshed.minDistance, unit: UnitLength.meters))
+        minDistanceSlider?.value = Float(viewshed.minDistance)
+        maxDistanceLabel?.text = measurementFormatter.string(from: Measurement(value: viewshed.maxDistance, unit: UnitLength.meters))
+        maxDistanceSlider?.value = Float(viewshed.maxDistance)
+        
+        updateColorUIForViewshed()
+    }
+    
+    private func updateColorUIForViewshed() {
+        visibleAreaColorSwatch?.backgroundColor = AGSViewshed.visibleColor()
+        obstructedAreaColorSwatch?.backgroundColor = AGSViewshed.obstructedColor()
+        frustumOutlineColorSwatch?.backgroundColor = AGSViewshed.frustumOutlineColor()
     }
     
     // MARK: - Actions
     
-    @IBAction func closeAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func analysisOverlayVisibilityAction(_ sender: UISwitch) {
+        viewshed?.isVisible = sender.isOn
     }
     
-    @IBAction func analysisOverlayVisibilityAction(_ sender: Any) {
-        delegate?.viewshedSettingsVC(self, didUpdateAnalysisOverlayVisibility: analysisOverlayVisibilitySwitch.isOn)
+    @IBAction func frustumOutlineVisibilityAction(_ sender: UISwitch) {
+        viewshed?.isFrustumOutlineVisible = sender.isOn
     }
     
-    @IBAction func frustumOutlineVisibilityAction(_ sender: Any) {
-        delegate?.viewshedSettingsVC(self, didUpdateFrustumOutlineVisibility: frustumOutlineVisibilitySwitch.isOn)
+    @IBAction private func sliderValueChanged(sender: UISlider) {
+        guard let viewshed = viewshed else {
+            return
+        }
+        
+        let value = Double(sender.value)
+        switch sender {
+        case headingSlider:
+            viewshed.heading = value
+        case pitchSlider:
+            viewshed.pitch = value
+        case horizontalAngleSlider:
+            viewshed.horizontalAngle = value
+        case verticalAngleSlider:
+            viewshed.verticalAngle = value
+        case minDistanceSlider:
+            viewshed.minDistance = value
+        case maxDistanceSlider:
+            viewshed.maxDistance = value
+        default:
+            break
+        }
+        
+        updateUIForViewshed()
     }
     
-    @IBAction private func sliderValueChanged(sender:UISlider) {
-        if sender == headingSlider {
-            headingLabel.text = "\(Int(sender.value))"
-            delegate?.viewshedSettingsVC(self, didUpdateHeading: Double(sender.value))
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
         }
-        else if sender == pitchSlider {
-            pitchLabel.text = "\(Int(sender.value))"
-            delegate?.viewshedSettingsVC(self, didUpdatePitch: Double(sender.value))
-        }
-        else if sender == horizontalAngleSlider {
-            horizontalAngleLabel.text = "\(Int(sender.value))"
-            delegate?.viewshedSettingsVC(self, didUpdateHorizontalAngle: Double(sender.value))
-        }
-        else if sender == verticalAngleSlider {
-            verticalAngleLabel.text = "\(Int(sender.value))"
-            delegate?.viewshedSettingsVC(self, didUpdateVerticalAngle: Double(sender.value))
-        }
-        else if sender == minDistanceSlider {
-            minDistanceLabel.text = "\(Int(sender.value))"
-            delegate?.viewshedSettingsVC(self, didUpdateMinDistance: Double(sender.value))
-        }
-        else if sender == maxDistanceSlider {
-            maxDistanceLabel.text = "\(Int(sender.value))"
-            delegate?.viewshedSettingsVC(self, didUpdateMaxDistance: Double(sender.value))
-        }
-    }
-    
-    // MARK: - HorizontalColorPickerDelegate
-    
-    func horizontalColorPicker(_ horizontalColorPicker: HorizontalColorPicker, didUpdateSelectedColor selectedColor: UIColor) {
-        if horizontalColorPicker == visibleAreaColorPicker {
-            delegate?.viewshedSettingsVC(self, didUpdateVisibleAreaColor: selectedColor)
-        }
-        else if horizontalColorPicker == obstructedAreaColorPicker {
-            delegate?.viewshedSettingsVC(self, didUpdateObstructedAreaColor: selectedColor)
-        }
-        else if horizontalColorPicker == frustumOutlineColorPicker {
-            delegate?.viewshedSettingsVC(self, didUpdateFrustumOutlineColor: selectedColor)
+        switch cell {
+        case visibleAreaColorCell:
+            let controller = ColorPickerViewController.instantiateWith(color: AGSViewshed.visibleColor()) { (color) in
+                AGSViewshed.setVisibleColor(color)
+                self.updateColorUIForViewshed()
+            }
+            controller.title = "Visible Color"
+            show(controller, sender: self)
+        case obstructedAreaColorCell:
+            let controller = ColorPickerViewController.instantiateWith(color: AGSViewshed.obstructedColor()) { (color) in
+                AGSViewshed.setObstructedColor(color)
+                self.updateColorUIForViewshed()
+            }
+            controller.title = "Obstructed Color"
+            show(controller, sender: self)
+        case frustumOutlineColorCell:
+            let controller = ColorPickerViewController.instantiateWith(color: AGSViewshed.frustumOutlineColor()) { (color) in
+                AGSViewshed.setFrustumOutlineColor(color)
+                self.updateColorUIForViewshed()
+            }
+            controller.title = "Frustum Color"
+            show(controller, sender: self)
+        default:
+            break
         }
     }
-    
 }

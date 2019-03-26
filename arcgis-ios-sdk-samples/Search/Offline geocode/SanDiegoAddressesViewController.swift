@@ -14,25 +14,21 @@
 
 import UIKit
 
-protocol SanDiegoAddressesVCDelegate:class {
-    func sanDiegoAddressesViewController(_ sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address:String)
+protocol SanDiegoAddressesVCDelegate: AnyObject {
+    func sanDiegoAddressesViewController(_ sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address: String)
 }
 
 class SanDiegoAddressesViewController: UITableViewController {
-    
-    weak var delegate:SanDiegoAddressesVCDelegate?
+    weak var delegate: SanDiegoAddressesVCDelegate?
     
     //prepopulated list of addresses
-    private var addresses = ["910 N Harbor Dr, San Diego, CA 92101",
+    private var addresses = [
+        "910 N Harbor Dr, San Diego, CA 92101",
         "2920 Zoo Dr, San Diego, CA 92101",
         "111 W Harbor Dr, San Diego, CA 92101",
         "868 4th Ave, San Diego, CA 92101",
-        "750 A St, San Diego, CA 92101"]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+        "750 A St, San Diego, CA 92101"
+    ]
     
     // MARK: - Table view data source
     
@@ -43,7 +39,6 @@ class SanDiegoAddressesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.addresses.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath)
@@ -58,5 +53,4 @@ class SanDiegoAddressesViewController: UITableViewController {
         let address = self.addresses[indexPath.row]
         self.delegate?.sanDiegoAddressesViewController(self, didSelectAddress: address)
     }
-    
 }

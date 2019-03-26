@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j79-3f-oae">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sync Map And Scene Views View Controller-->
+        <scene sceneID="1vW-2W-peL">
+            <objects>
+                <viewController id="j79-3f-oae" customClass="SyncMapAndSceneViewsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g1T-lt-QYv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JVr-Qh-fl9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYs-rD-OF9" customClass="AGSMapView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AuT-rQ-Koa" customClass="AGSSceneView">
+                                        <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <variation key="heightClass=regular-widthClass=compact" axis="vertical"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JVr-Qh-fl9" firstAttribute="leading" secondItem="g1T-lt-QYv" secondAttribute="leading" id="MjT-vI-QKn"/>
+                            <constraint firstAttribute="bottom" secondItem="JVr-Qh-fl9" secondAttribute="bottom" id="s3w-SG-FK7"/>
+                            <constraint firstItem="JVr-Qh-fl9" firstAttribute="top" secondItem="g1T-lt-QYv" secondAttribute="top" id="sUD-CI-52j"/>
+                            <constraint firstAttribute="trailing" secondItem="JVr-Qh-fl9" secondAttribute="trailing" id="ukf-y9-WwZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cHM-3w-ryY"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="AYs-rD-OF9" id="BFV-kG-19N"/>
+                        <outlet property="sceneView" destination="AuT-rQ-Koa" id="CQ5-Ve-uj6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="coZ-7k-3QB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="409"/>
+        </scene>
+    </scenes>
+</document>

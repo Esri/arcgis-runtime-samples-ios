@@ -16,22 +16,25 @@
 import UIKit
 import ArcGIS
 
-class DisplayGridViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
-
+class DisplayGridViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
-    private var gridSettingsViewController:DisplayGridSettingsViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayGridViewController", "DisplayGridSettingsViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "DisplayGridViewController",
+            "DisplayGridSettingsViewController",
+            "OptionsTableViewController",
+            "ColorPickerViewController"
+        ]
 
         // Initialize map with imagery basemap
-        let map = AGSMap(basemap: AGSBasemap.imagery())
+        let map = AGSMap(basemap: .imagery())
         
         // Set initial viewpoint
-        let center = AGSPoint(x: -7702852.905619, y: 6217972.345771, spatialReference: AGSSpatialReference(wkid: 3857))
+        let center = AGSPoint(x: -7702852.905619, y: 6217972.345771, spatialReference: .webMercator())
         map.initialViewpoint = AGSViewpoint(center: center, scale: 23227)
         
         // Assign map to the map view
@@ -41,34 +44,27 @@ class DisplayGridViewController: UIViewController, UIAdaptivePresentationControl
         mapView.grid = AGSLatitudeLongitudeGrid()
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        //
-        // For popover or non modal presentation
-        return UIModalPresentationStyle.none
-    }
-    
-    //MARK: - Navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DisplayGridSettingsSegue" {
-            //
-            // Set grid settings view controller
-            gridSettingsViewController = segue.destination as! DisplayGridSettingsViewController
-            gridSettingsViewController.mapView = self.mapView
-
-            // Pop over settings
-            gridSettingsViewController.presentationController?.delegate = self
-            gridSettingsViewController.popoverPresentationController?.passthroughViews = [self.mapView]
-            
-            // Preferred content size
-            if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
-                gridSettingsViewController.preferredContentSize = CGSize(width: 375, height: 350)
-            }
-            else {
-                gridSettingsViewController.preferredContentSize = CGSize(width: 375, height: 250)
-            }
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? DisplayGridSettingsViewController {
+            controller.mapView = mapView
+            controller.preferredContentSize = {
+                let height: CGFloat
+                if traitCollection.horizontalSizeClass == .regular,
+                    traitCollection.verticalSizeClass == .regular {
+                    height = 350
+                } else {
+                    height = 250
+                }
+                return CGSize(width: 375, height: height)
+            }()
+            navController.presentationController?.delegate = self
         }
+    }
+}
+
+extension DisplayGridViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
 }

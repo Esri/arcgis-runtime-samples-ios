@@ -1,35 +1,41 @@
 //
-//  DownloadProgressView.swift
-//  MapViewDemo-Swift
+// Copyright © 2017 Esri.
 //
-//  Created by Gagandeep Singh on 3/23/17.
-//  Copyright © 2017 Esri. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 //
 
 import UIKit
 
-@objc protocol DownloadProgressViewDelegate:class {
-    
-    @objc optional func downloadProgressViewDidCancel(downloadProgressView:DownloadProgressView)
+protocol DownloadProgressViewDelegate: AnyObject {
+    func downloadProgressViewDidCancel(_ downloadProgressView: DownloadProgressView)
 }
 
 class DownloadProgressView: UIView {
-
-    @IBOutlet private var containerView:UIView!
-    @IBOutlet private var progressLabel:UILabel!
-    @IBOutlet private var statusLabel:UILabel!
+    @IBOutlet private var containerView: UIView!
+    @IBOutlet private var progressLabel: UILabel!
+    @IBOutlet private var statusLabel: UILabel!
     
-    private var newWindow:UIWindow!
-    private var transparentShapeLayer:CAShapeLayer!
-    private var shapeLayer:CAShapeLayer!
-    private var bezierPath:UIBezierPath!
-    private var radius:CGFloat = 30
+    private var newWindow: UIWindow!
+    private var transparentShapeLayer: CAShapeLayer!
+    private var shapeLayer: CAShapeLayer!
+    private var bezierPath: UIBezierPath!
+    private var radius: CGFloat = 30
     
-    private var progress:CGFloat = 0.0
+    private var progress: CGFloat = 0.0
     
-    weak var delegate:DownloadProgressViewDelegate?
+    weak var delegate: DownloadProgressViewDelegate?
     
-    private var nibView:UIView!
+    private var nibView: UIView!
     
     init() {
         super.init(frame: UIScreen.main.bounds)
@@ -50,13 +56,12 @@ class DownloadProgressView: UIView {
     }
     
     private func commonInit() {
-        
         self.backgroundColor = .clear
         
         self.nibView = self.loadViewFromNib()
         
         self.nibView.frame = self.bounds
-        nibView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, .flexibleWidth]
+        nibView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         self.addSubview(self.nibView)
         
@@ -68,13 +73,12 @@ class DownloadProgressView: UIView {
     private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "DownloadProgressView", bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
         
         return view
     }
     
     private func setupProgressView() {
-        
         self.containerView.layer.cornerRadius = 14
         
         self.bezierPath = UIBezierPath(arcCenter: CGPoint(x: self.radius, y: self.radius), radius: self.radius, startAngle: -CGFloat.pi / 2, endAngle: CGFloat.pi * 1.5, clockwise: true)
@@ -99,9 +103,7 @@ class DownloadProgressView: UIView {
         self.progressLabel.layer.addSublayer(self.shapeLayer)
     }
     
-    
-    func show(withStatus status:String, progress:CGFloat) {
-        
+    func show(withStatus status: String, progress: CGFloat) {
         self.statusLabel.text = status
         
         self.updateProgress(progress: progress, animated: false)
@@ -110,7 +112,6 @@ class DownloadProgressView: UIView {
     }
     
     private func show() {
-        
         self.frame = UIScreen.main.bounds
         
         if let newWindow = UIApplication.shared.keyWindow {
@@ -119,26 +120,20 @@ class DownloadProgressView: UIView {
     }
     
     func dismiss() {
-        
         self.removeFromSuperview()
     }
     
-    
     @IBAction private func cancelAction() {
-        
         self.dismiss()
-        self.delegate?.downloadProgressViewDidCancel?(downloadProgressView: self)
+        self.delegate?.downloadProgressViewDidCancel(self)
     }
     
     func updateProgress(progress: CGFloat, animated: Bool) {
-        
         if progress > 1 {
            self.progress = 1
-        }
-        else if progress < 0 {
+        } else if progress < 0 {
             self.progress = 0
-        }
-        else {
+        } else {
             self.progress = progress
         }
         
@@ -146,7 +141,7 @@ class DownloadProgressView: UIView {
         
         if animated {
             //create animation
-            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
             animation.duration = 0.2
             animation.fromValue = self.shapeLayer.strokeEnd
             animation.toValue = self.progress
@@ -154,8 +149,7 @@ class DownloadProgressView: UIView {
             self.shapeLayer.strokeEnd = self.progress
             
             self.shapeLayer.add(animation, forKey: "strokeEnd")
-        }
-        else {
+        } else {
             self.shapeLayer.strokeEnd = self.progress
         }
         
@@ -176,10 +170,9 @@ class DownloadProgressView: UIView {
     
     override func draw(_ rect: CGRect) {
         if let context = UIGraphicsGetCurrentContext() {
+            let locations: [CGFloat] = [0, 1]
             
-            let locations:[CGFloat] = [0, 1]
-            
-            let colors:[CGColor] = [UIColor.black.withAlphaComponent(0).cgColor, UIColor.black.withAlphaComponent(0.75).cgColor]
+            let colors: [CGColor] = [UIColor.black.withAlphaComponent(0).cgColor, UIColor.black.withAlphaComponent(0.75).cgColor]
             
             let colorSpace = CGColorSpaceCreateDeviceRGB()
             let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: locations)!

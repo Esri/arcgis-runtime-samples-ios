@@ -16,11 +16,10 @@ import UIKit
 import ArcGIS
 
 class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    
-    private var map:AGSMap!
-    private var graphicsOverlay:AGSGraphicsOverlay!
+    private var map: AGSMap!
+    private var graphicsOverlay: AGSGraphicsOverlay!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +28,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GOIdentifyViewController"]
         
         //initialize the map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         
         //call the method to add a graphics to the map view
         //will be using this graphic to test identify
@@ -42,12 +41,11 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         //we will be using a method on the delegate to know 
         //when the user tapped on the map view
         self.mapView.touchDelegate = self
-        
     }
     
     func addGraphicsOverlay() {
         //polygon graphic
-        let polygonGeometry = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
+        let polygonGeometry = AGSPolygonBuilder(spatialReference: .webMercator())
         polygonGeometry.addPointWith(x: -20e5, y: 20e5)
         polygonGeometry.addPointWith(x: 20e5, y: 20e5)
         polygonGeometry.addPointWith(x: 20e5, y: -20e5)
@@ -65,22 +63,21 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //use the following method to identify graphics in a specific graphics overlay
         //otherwise if you need to identify on all the graphics overlay present in the map view
         //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
-        let tolerance:Double = 12
+        let tolerance: Double = 12
         
-        self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, returnPopupsOnly: false, maximumResults: 10) { (result: AGSIdentifyGraphicsOverlayResult) -> Void in
+        self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, returnPopupsOnly: false, maximumResults: 10) { [weak self] (result: AGSIdentifyGraphicsOverlayResult) in
             if let error = result.error {
                 print("error while identifying :: \(error.localizedDescription)")
-            }
-            else {
+            } else {
                 //if a graphics is found then show an alert
-                if result.graphics.count > 0 {
-                    SVProgressHUD.showInfo(withStatus: "Tapped on graphic")
+                if !result.graphics.isEmpty {
+                    self?.presentAlert(message: "Tapped on graphic")
                 }
             }
         }

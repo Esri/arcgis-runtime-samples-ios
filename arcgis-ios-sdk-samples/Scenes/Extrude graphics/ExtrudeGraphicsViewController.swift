@@ -18,14 +18,13 @@ import UIKit
 import ArcGIS
 
 class ExtrudeGraphicsViewController: UIViewController {
-
-    @IBOutlet var sceneView:AGSSceneView!
+    @IBOutlet var sceneView: AGSSceneView!
     
     private var graphicsOverlay: AGSGraphicsOverlay!
     
-    private let cameraStartingPoint = AGSPoint(x: 83, y: 28.4, z: 20000, spatialReference: AGSSpatialReference.wgs84())
-    private let squareSize:Double = 0.01
-    private let spacing:Double = 0.01
+    private let cameraStartingPoint = AGSPoint(x: 83, y: 28.4, z: 20000, spatialReference: .wgs84())
+    private let squareSize: Double = 0.01
+    private let spacing: Double = 0.01
     private let maxHeight = 10000
     
     override func viewDidLoad() {
@@ -35,7 +34,7 @@ class ExtrudeGraphicsViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExtrudeGraphicsViewController"]
         
         //initialize scene with topographic basemap
-        let scene = AGSScene(basemap: AGSBasemap.topographic())
+        let scene = AGSScene(basemap: .topographic())
         //assign scene to the scene view
         self.sceneView.scene = scene
         
@@ -58,7 +57,9 @@ class ExtrudeGraphicsViewController: UIViewController {
         
         // add base surface for elevation data
         let surface = AGSSurface()
-        let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
+        /// The url of the Terrain 3D ArcGIS REST Service.
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+        let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         
@@ -68,37 +69,38 @@ class ExtrudeGraphicsViewController: UIViewController {
     
     private func addGraphics() {
         //starting point
-        let x = self.cameraStartingPoint.x - 0.01
-        let y = self.cameraStartingPoint.y + 0.25
+        let x = cameraStartingPoint.x - 0.01
+        let y = cameraStartingPoint.y + 0.25
         
         //creating a grid of polygon graphics
-        for i in 0...6 {
-            for j in 0...4 {
-                let polygon = self.polygonForStartingPoint(AGSPoint(x: x + Double(i) * (squareSize + spacing), y: y + Double(j) * (squareSize + spacing), spatialReference: nil))
-                self.addGraphicForPolygon(polygon)
+        for column in stride(from: 0.0, through: 6.0, by: 1.0) {
+            for row in stride(from: 0.0, through: 4.0, by: 1.0) {
+                let startingX = x + column * (squareSize + spacing)
+                let startingY = y + row * (squareSize + spacing)
+                let startingPoint = AGSPoint(x: startingX, y: startingY, spatialReference: nil)
+                let polygon = polygonForStartingPoint(startingPoint)
+                addGraphicForPolygon(polygon)
             }
         }
     }
     
     //the function returns a polygon starting at the given point
     //with size equal to squareSize
-    private func polygonForStartingPoint(_ point:AGSPoint) -> AGSPolygon {
-        let polygon = AGSPolygonBuilder(spatialReference: AGSSpatialReference.wgs84())
+    private func polygonForStartingPoint(_ point: AGSPoint) -> AGSPolygon {
+        let polygon = AGSPolygonBuilder(spatialReference: .wgs84())
         polygon.addPointWith(x: point.x, y: point.y)
-        polygon.addPointWith(x: point.x, y: point.y+squareSize)
+        polygon.addPointWith(x: point.x, y: point.y + squareSize)
         polygon.addPointWith(x: point.x + squareSize, y: point.y + squareSize)
         polygon.addPointWith(x: point.x + squareSize, y: point.y)
         return polygon.toGeometry()
     }
     
     //add a graphic to the graphics overlay for the given polygon
-    private func addGraphicForPolygon(_ polygon:AGSPolygon) {
-        
-        let rand = arc4random_uniform(UInt32(self.maxHeight))
+    private func addGraphicForPolygon(_ polygon: AGSPolygon) {
+        let rand = Int.random(in: 0...maxHeight)
         
         let graphic = AGSGraphic(geometry: polygon, symbol: nil, attributes: nil)
         graphic.attributes.setValue(rand, forKey: "height")
         self.graphicsOverlay.graphics.add(graphic)
     }
-
 }

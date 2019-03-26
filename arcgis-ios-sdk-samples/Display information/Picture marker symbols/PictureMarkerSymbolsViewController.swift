@@ -16,8 +16,7 @@ import UIKit
 import ArcGIS
 
 class PictureMarkerSymbolsViewController: UIViewController {
-
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
     
@@ -28,10 +27,10 @@ class PictureMarkerSymbolsViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["PictureMarkerSymbolsViewController"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.topographic())
+        let map = AGSMap(basemap: .topographic())
         
         //initial envelope
-        let center = AGSPoint(x: -225166.5, y: 6551249, spatialReference: AGSSpatialReference.webMercator())
+        let center = AGSPoint(x: -225166.5, y: 6551249, spatialReference: .webMercator())
         map.initialViewpoint = AGSViewpoint(center: center, scale: 1e5)
         
         //assign the map to the map view
@@ -57,7 +56,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
         campsiteSymbol.height = 24
         
         //location for camp site
-        let campsitePoint = AGSPoint(x: -223560, y: 6552021, spatialReference: AGSSpatialReference.webMercator())
+        let campsitePoint = AGSPoint(x: -223560, y: 6552021, spatialReference: .webMercator())
         
         //graphic for camp site
         let graphic = AGSGraphic(geometry: campsitePoint, symbol: campsiteSymbol, attributes: nil)
@@ -74,10 +73,10 @@ class PictureMarkerSymbolsViewController: UIViewController {
         let pinSymbol = AGSPictureMarkerSymbol(image: UIImage(named: imageName)!)
         
         //change offsets, so the symbol aligns properly to the point
-        pinSymbol.offsetY = pinSymbol.image!.size.height/2
+        pinSymbol.offsetY = pinSymbol.image!.size.height / 2
         
         //location for pin
-        let pinPoint = AGSPoint(x: -226773, y: 6550477, spatialReference: AGSSpatialReference.webMercator())
+        let pinPoint = AGSPoint(x: -226773, y: 6550477, spatialReference: .webMercator())
         
         //graphic for pin
         let graphic = AGSGraphic(geometry: pinPoint, symbol: pinSymbol, attributes: nil)

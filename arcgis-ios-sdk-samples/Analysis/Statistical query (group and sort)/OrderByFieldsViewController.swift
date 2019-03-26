@@ -16,52 +16,40 @@
 import UIKit
 import ArcGIS
 
-protocol OrderByFieldsViewControllerDelegate: class {
+protocol OrderByFieldsViewControllerDelegate: AnyObject {
     func setOrdering(with orderByFields: [AGSOrderBy])
 }
 
 class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    //
     // Outlets
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var tableNavigationItem: UINavigationItem!
     
     // List of fields and selected fields
-    public var orderByFields = [AGSOrderBy]()
-    public var selectedOrderByFields = [AGSOrderBy]()
+    var orderByFields = [AGSOrderBy]()
+    var selectedOrderByFields = [AGSOrderBy]()
     
     // Delegate
     weak var delegate: OrderByFieldsViewControllerDelegate?
-    
-    // MARK: - View Methods
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: - TableView data source
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if orderByFields.count > 0 {
+        if !orderByFields.isEmpty {
             tableView.backgroundView = nil
             return orderByFields.count
         } else {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
             messageLabel.text = "Only selected Group By Fields are valid for Order By Fields so please select Group By Fields first."
-            messageLabel.numberOfLines = 0;
-            messageLabel.textAlignment = .center;
-            messageLabel.font = UIFont(name: "HelveticaNeue", size: 20.0)!
+            messageLabel.numberOfLines = 0
+            messageLabel.textAlignment = .center
+            messageLabel.font = UIFont.systemFont(ofSize: 20)
             messageLabel.sizeToFit()
             tableView.backgroundView?.backgroundColor = .white
-            tableView.backgroundView = messageLabel;
+            tableView.backgroundView = messageLabel
         }
         return orderByFields.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderByFieldsCell", for: indexPath)
@@ -76,8 +64,8 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         cell.imageView?.image = imageFor(sortOrder: orderByField.sortOrder)
         
         // Make image tappable
-        cell.imageView?.isUserInteractionEnabled = true;
-        cell.imageView?.tag = indexPath.row;
+        cell.imageView?.isUserInteractionEnabled = true
+        cell.imageView?.tag = indexPath.row
         let imageViewTapGesture = UITapGestureRecognizer()
         imageViewTapGesture.addTarget(self, action: #selector(imageViewWasTouched(_:)))
         cell.imageView?.addGestureRecognizer(imageViewTapGesture)
@@ -85,8 +73,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         // Set accessory type
         if selectedOrderByFields.contains(where: { $0.fieldName == orderByField.fieldName }) {
             cell.accessoryType = .checkmark
-        }
-        else {
+        } else {
             cell.accessoryType = .none
         }
         
@@ -97,27 +84,22 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         return true
     }
     
-    // MARK: - TableView delegates
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
         // Deselect row
         tableView.deselectRow(at: indexPath, animated: false)
         
-        //
         // Get the cell
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .none {
-                //
                 // Set the accessory type to checkmark
                 cell.accessoryType = .checkmark
                 
                 // Add field to selected order by fields
                 let orderByField = orderByFields[indexPath.row]
                 selectedOrderByFields.append(orderByField)
-            }
-            else {
-                //
+            } else {
                 // Set the accessory type to none
                 cell.accessoryType = .none
                 
@@ -125,23 +107,16 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 let index = selectedOrderByFields.index(of: orderByFields[indexPath.row])
                 selectedOrderByFields.remove(at: index!)
             }
+            
+            // Fire delegate
+            delegate?.setOrdering(with: selectedOrderByFields)
         }
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction private func doneAction() {
-        //
-        // Fire delegate
-        delegate?.setOrdering(with: selectedOrderByFields)
-        
-        // Dismiss view controller
-        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Gesture Recognizer
     
-    @objc func imageViewWasTouched(_ sender: UITapGestureRecognizer) {
+    @objc
+    func imageViewWasTouched(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let indexPath = IndexPath(row: imageView.tag, section: 0)
         let cell = tableView.cellForRow(at: indexPath)
@@ -152,8 +127,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
             let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)
             let text = "\(orderByField.fieldName) (\(sortOrderString))"
             cell?.textLabel?.text = text
-        }
-        else {
+        } else {
             orderByField.sortOrder = .ascending
             cell?.imageView?.image = imageFor(sortOrder: orderByField.sortOrder)
             let sortOrderString = stringFor(sortOrder: orderByField.sortOrder)

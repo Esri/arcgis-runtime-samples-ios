@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class GroupUsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
     @IBOutlet var tableView: UITableView!
     
     private var portal: AGSPortal!
@@ -30,7 +29,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GroupUsersViewController", "GroupUserCell"]
 
         //automatic cell sizing for table view
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 104
         
         //initialize portal with AGOL
@@ -41,7 +40,6 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     private func loadPortalGroup() {
-        
         //show progress hud
         SVProgressHUD.show(withStatus: "Loading Portal Group")
         
@@ -50,21 +48,24 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         
         //find groups with using query params
         self.portal.findGroups(with: queryParams) { [weak self] (resultSet: AGSPortalQueryResultSet?, error: Error?) in
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
+            }
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
-            }
-            else {
-                
+                self.presentAlert(error: error)
+            } else {
                 //fetch users for the resulting group
-                if let groups = resultSet?.results as? [AGSPortalGroup] , groups.count > 0 {
-                    self?.portalGroup = groups[0]
-                    self?.fetchGroupUsers()
-                }
-                else {
+                if let groups = resultSet?.results as? [AGSPortalGroup],
+                    let group = groups.first {
+                    self.portalGroup = group
+                    self.fetchGroupUsers()
+                } else {
                     //show error that no groups found
-                    SVProgressHUD.showError(withStatus: "No groups found")
+                    self.presentAlert(message: "No groups found")
                 }
             }
         }
@@ -76,28 +77,31 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         
         //fetch users in group
         self.portalGroup.fetchUsers { [weak self] (users: [String]?, admins: [String]?, error: Error?) in
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
+            }
             
             if let error = error {
                 //show error
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
-            }
-            else {
-                
+                self.presentAlert(error: error)
+            } else {
                 //if there are users in the group
-                if let users = users , users.count > 0 {
-                    self?.portalUsers = [AGSPortalUser]()
+                if let users = users,
+                    !users.isEmpty {
+                    self.portalUsers = [AGSPortalUser]()
                     
                     //initialize AGSPortalUser objects with user names
                     for user in users {
-                        let portalUser = AGSPortalUser(portal: self!.portal, username: user)
-                        self?.portalUsers.append(portalUser)
+                        let portalUser = AGSPortalUser(portal: self.portal, username: user)
+                        self.portalUsers.append(portalUser)
                     }
                     
                     //load all users before populating into table view
-                    self?.loadAllUsers()
-                }
-                else {
-                    SVProgressHUD.showError(withStatus: "No users found")
+                    self.loadAllUsers()
+                } else {
+                    self.presentAlert(message: "No users found")
                 }
             }
         }
@@ -108,28 +112,26 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         SVProgressHUD.show(withStatus: "Loading User Data")
         
         //load user data
-        AGSLoadObjects(self.portalUsers) { [weak self] (success) in
+        AGSLoadObjects(portalUsers) { [weak self] (success) in
+            //dismiss hud
+            SVProgressHUD.dismiss()
+            
             if success {
-                //dismiss hud
-                SVProgressHUD.dismiss()
-                
                 //reload table view
                 self?.tableView.reloadData()
-            }
-            else {
-                SVProgressHUD.showError(withStatus: "Error while loading users data")
+            } else {
+                self?.presentAlert(message: "Error while loading users data")
             }
         }
     }
 
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.portalUsers?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupUserCell", for: indexPath) as! GroupUserCell
         
         let portalUser = self.portalUsers[indexPath.row]

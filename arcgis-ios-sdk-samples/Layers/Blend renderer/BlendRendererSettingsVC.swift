@@ -16,68 +16,115 @@
 import UIKit
 import ArcGIS
 
-protocol BlendRendererSettingsVCDelegate: class {
-    
+protocol BlendRendererSettingsVCDelegate: AnyObject {
     func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType)
 }
 
-class BlendRendererSettingsVC: UIViewController {
-
-    @IBOutlet var altitudeSlider:UISlider!
-    @IBOutlet var altitudeLabel:UILabel!
-    @IBOutlet var azimuthSlider:UISlider!
-    @IBOutlet var azimuthLabel:UILabel!
-    @IBOutlet var slopeTypePicker:HorizontalPicker!
-    @IBOutlet var colorRampPicker:HorizontalPicker!
+class BlendRendererSettingsVC: UITableViewController {
+    @IBOutlet private weak var altitudeSlider: UISlider?
+    @IBOutlet private weak var altitudeLabel: UILabel?
+    @IBOutlet private weak var azimuthSlider: UISlider?
+    @IBOutlet private weak var azimuthLabel: UILabel?
+    @IBOutlet private weak var slopeTypeCell: UITableViewCell?
+    @IBOutlet private weak var colorRampTypeCell: UITableViewCell?
     
-    weak var delegate:BlendRendererSettingsVCDelegate?
+    weak var delegate: BlendRendererSettingsVCDelegate?
+    
+    private let numberFormatter = NumberFormatter()
+    
+    var azimuth: Double = 0 {
+        didSet {
+           updateAzimuthControls()
+        }
+    }
+    
+    private func updateAzimuthControls() {
+        azimuthSlider?.value = Float(azimuth)
+        azimuthLabel?.text = numberFormatter.string(from: azimuth as NSNumber)
+    }
+    
+    var altitude: Double = 0 {
+        didSet {
+            updateAltitudeControls()
+        }
+    }
+    
+    private func updateAltitudeControls() {
+        altitudeSlider?.value = Float(altitude)
+        altitudeLabel?.text = numberFormatter.string(from: altitude as NSNumber)
+    }
+
+    private let slopeTypeLabels = ["None", "Degree", "Percent Rise", "Scaled"]
+    var slopeType: AGSSlopeType = .none {
+        didSet {
+            guard slopeType != oldValue else {
+                return
+            }
+            updateSlopeTypeControls()
+        }
+    }
+    
+    private func updateSlopeTypeControls() {
+        slopeTypeCell?.detailTextLabel?.text = slopeTypeLabels[slopeType.rawValue + 1]
+    }
+    
+    private let colorRampLabels = ["None", "Elevation", "DEMScreen", "DEMLight"]
+    var colorRampType: AGSPresetColorRampType = .none {
+        didSet {
+            guard colorRampType != oldValue else {
+                return
+            }
+            updateColorRampTypeControls()
+        }
+    }
+    
+    private func updateColorRampTypeControls() {
+        colorRampTypeCell?.detailTextLabel?.text = colorRampLabels[colorRampType.rawValue + 1]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.slopeTypePicker.options = ["None", "Degree", "Percent Rise", "Scaled"]
-        self.colorRampPicker.options = ["None", "Elevation", "DEMLight", "DEMScreen"]
-        self.view.layer.cornerRadius = 10
-    }
-
-    func selectedSlope() -> AGSSlopeType {
-        switch self.slopeTypePicker.selectedIndex {
-        case 0:
-            return .none
-        case 1:
-            return .degree
-        case 2:
-            return .percentRise
-        default:
-            return .scaled
-        }
+        updateAltitudeControls()
+        updateAzimuthControls()
+        updateSlopeTypeControls()
+        updateColorRampTypeControls()
     }
     
-    func selectedColorRamp() -> AGSPresetColorRampType {
-        switch self.colorRampPicker.selectedIndex {
-        case 0:
-            return .none
-        case 1:
-            return .elevation
-        case 2:
-            return .demLight
-        default:
-            return .demScreen
-        }
-    }
-    
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func azimuthSliderValueChanged(_ slider: UISlider) {
-        self.azimuthLabel.text = "\(Int(slider.value))"
+        azimuth = Double(slider.value)
+        blendRendererParametersChanged()
     }
     
     @IBAction func altitudeSliderValueChanged(_ slider: UISlider) {
-        self.altitudeLabel.text = "\(Int(slider.value))"
+        altitude = Double(slider.value)
+        blendRendererParametersChanged()
     }
     
-    @IBAction func rendererAction() {
-        
-        self.delegate?.blendRendererSettingsVC(self, selectedAltitude: Double(self.altitudeSlider.value), azimuth: Double(self.azimuthSlider.value), slopeType: self.selectedSlope(), colorRampType: self.selectedColorRamp())
+    private func blendRendererParametersChanged() {
+        delegate?.blendRendererSettingsVC(self, selectedAltitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
+    }
+    
+    // UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell == slopeTypeCell {
+            let optionsViewController = OptionsTableViewController(labels: slopeTypeLabels, selectedIndex: slopeType.rawValue + 1) { (newIndex) in
+                self.slopeType = AGSSlopeType(rawValue: newIndex - 1)!
+                self.blendRendererParametersChanged()
+            }
+            optionsViewController.title = "Slope Type"
+            show(optionsViewController, sender: self)
+        } else if cell == colorRampTypeCell {
+            let optionsViewController = OptionsTableViewController(labels: colorRampLabels, selectedIndex: colorRampType.rawValue + 1) { (newIndex) in
+                self.colorRampType = AGSPresetColorRampType(rawValue: newIndex - 1)!
+                self.blendRendererParametersChanged()
+            }
+            optionsViewController.title = "Color Ramp Type"
+            show(optionsViewController, sender: self)
+        }
     }
 }

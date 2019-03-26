@@ -13,30 +13,37 @@
 // limitations under the License.
 
 import UIKit
+import WebKit
 
-class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptivePresentationControllerDelegate {
+class SourceCodeViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
+    /// The view to which the web view is added.
+    @IBOutlet private weak var contentView: UIView!
+    /// The web view that displays the source code.
+    @IBOutlet private weak var webView: WKWebView!
+    @IBOutlet private weak var toolbarTitleButton: UIBarButtonItem!
     
-    @IBOutlet private weak var webView:UIWebView!
-    @IBOutlet private weak var toolbarTitleButton:UIBarButtonItem!
-    
-    private var listViewController:ListViewController!
+    private var listViewController: ListViewController!
     private var selectedFilenameIndex = 0
-    var filenames:[String]!
-    
-    private var isListViewContainerVisible = false
-    private var isListViewContainerAnimating = false
+    var filenames: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.webView.delegate = self
         
-        if self.filenames != nil && self.filenames.count > 0 {
-            self.loadHTMLPage(filename: self.filenames[0])
+        // We must construct the web view in code as long as we support iOS 10.
+        // Prior to iOS 11, there was a bug in WKWebView.init(coder:) that
+        // caused a crash.
+        let webView = WKWebView(frame: contentView.bounds)
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        webView.scrollView.alwaysBounceHorizontal = true
+        contentView.addSubview(webView)
+        self.webView = webView
+        
+        if let filename = filenames.first {
+            loadHTMLPage(filename: filename)
         }
     }
     
-    func loadHTMLPage(filename:String) {
+    func loadHTMLPage(filename: String) {
         if let content = self.contentOfFile(filename) {
             self.setupToolbarTitle(filename, arrowPointingDown: true)
             let htmlString = self.htmlStringForContent(content)
@@ -44,7 +51,7 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
         }
     }
     
-    func contentOfFile(_ name:String) -> String? {
+    func contentOfFile(_ name: String) -> String? {
         //find the path of the file
         if let path = Bundle.main.path(forResource: name, ofType: ".swift") {
             //read the content of the file
@@ -55,44 +62,37 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
         return nil
     }
     
-    func htmlStringForContent(_ content:String) -> String {
+    func htmlStringForContent(_ content: String) -> String {
         let cssPath = Bundle.main.path(forResource: "xcode", ofType: "css") ?? ""
         let jsPath = Bundle.main.path(forResource: "highlight.pack", ofType: "js") ?? ""
-        let scale  = UIDevice.current.userInterfaceIdiom == .phone ? "0.5" : "1.0"
-        let stringForHTML = "<html> <head>" +
-            "<meta name='viewport' content='width=device-width, initial-scale='\(scale)'/> " +
-            "<link rel=\"stylesheet\" href=\"\(cssPath)\">" +
-            "<script src=\"\(jsPath)\"></script>" +
-            "<script>hljs.initHighlightingOnLoad();</script> </head> <body>" +
-            "<pre><code class=\"Swift\">\(content)</code></pre>" +
-            "</body> </html>"
-//        println(stringForHTML)
-        // style=\"white-space:initial;\"
+        let scale = UIDevice.current.userInterfaceIdiom == .phone ? "0.5" : "1.0"
+        let stringForHTML = """
+            <html>
+            <head>
+                <meta name='viewport' content='width=device-width, initial-scale='\(scale)'/>
+                <link rel="stylesheet" href="\(cssPath)">
+                <script src="\(jsPath)"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+            </head>
+            <body>
+                <pre><code class="Swift">\(content)</code></pre>
+            </body>
+            </html>
+            """
         return stringForHTML
     }
     
-    func setupToolbarTitle(_ filename:String, arrowPointingDown:Bool) {
-
+    func setupToolbarTitle(_ filename: String, arrowPointingDown: Bool) {
         var titleString = filename
         if self.filenames.count > 1 {
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
-        }
-        else {
-            self.toolbarTitleButton.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.black], for: UIControlState())
+        } else {
+            self.toolbarTitleButton.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
         }
         self.toolbarTitleButton.title = titleString
     }
     
-    //MARK: - web view delegate
-    
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        return true
-    }
-    
-    //MARK: - Actions
-    
-    
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if self.filenames.count > 1 {
@@ -108,21 +108,19 @@ class SourceCodeViewController: UIViewController, UIWebViewDelegate, UIAdaptiveP
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             
-            controller.setSelectAction({ [weak self] (index:Int) -> Void in
-                if let weakSelf = self {
-                    weakSelf.selectedFilenameIndex = index
-                    let filename = weakSelf.filenames[index]
-                    weakSelf.loadHTMLPage(filename: filename)
-                    weakSelf.dismiss(animated: true, completion: nil)
-                }
-            })
+            controller.setSelectAction { [weak self] (index: Int) in
+                guard let self = self else { return }
+                self.selectedFilenameIndex = index
+                let filename = self.filenames[index]
+                self.loadHTMLPage(filename: filename)
+                self.dismiss(animated: true)
+            }
         }
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        
         return UIModalPresentationStyle.none
     }
 }

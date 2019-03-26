@@ -16,59 +16,76 @@
 import UIKit
 import ArcGIS
 
-class FeatureLayersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet var tableView:UITableView!
+class FeatureLayersViewController: UITableViewController {
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
-    var featureLayerInfos:[AGSIDInfo]! {
+    /// The layer infos to display in the table view.
+    var featureLayerInfos = [AGSIDInfo]() {
         didSet {
-            self.tableView?.reloadData()
+            guard isViewLoaded else { return }
+            tableView.reloadData()
         }
     }
-    var selectedLayerIds = [Int]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
+    /// The layer infos selected in the table view.
+    var selectedLayerInfos: [AGSIDInfo] {
+        if let indexPaths = tableView.indexPathsForSelectedRows {
+            return indexPaths.map { featureLayerInfos[$0.row] }
+        } else {
+            return []
+        }
     }
     
-    //MARK: - UITableViewDataSource
+    var onCompletion: (([Int]) -> Void)?
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.featureLayerInfos?.count ?? 0
+    private func updateDoneButtonEnabledState() {
+        doneButton?.isEnabled = !selectedLayerInfos.isEmpty
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    // MARK: - UITableViewDataSource
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return featureLayerInfos.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureLayerCell", for: indexPath)
         
-        let layerInfo = self.featureLayerInfos[indexPath.row]
+        let layerInfo = featureLayerInfos[indexPath.row]
         cell.textLabel?.text = layerInfo.name
-        
-        //accessory view
-        if self.selectedLayerIds.contains(layerInfo.id) {
+        if let indexPaths = tableView.indexPathsForSelectedRows, indexPaths.contains(indexPath) {
             cell.accessoryType = .checkmark
-        }
-        else {
+        } else {
             cell.accessoryType = .none
         }
         
-        cell.backgroundColor = .clear
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let layerInfo = self.featureLayerInfos[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        updateDoneButtonEnabledState()
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        updateDoneButtonEnabledState()
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
+    @IBAction func doneAction(_ sender: UIBarButtonItem) {
+        // get selected layer ids
+        let selectedLayerIds = selectedLayerInfos.map { $0.id }
         
-        if let index = self.selectedLayerIds.index(of: layerInfo.id) {
-            self.selectedLayerIds.remove(at: index)
-        }
-        else {
-            self.selectedLayerIds.append(layerInfo.id)
-        }
+        // run the completion handler
+        onCompletion?(selectedLayerIds)
         
-        tableView.reloadRows(at: [indexPath], with: .none)
+        dismiss(animated: true)
     }
 }

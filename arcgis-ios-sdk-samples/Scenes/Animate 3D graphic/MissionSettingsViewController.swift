@@ -15,56 +15,65 @@
 
 import UIKit
 
-protocol MissionSettingsVCDelegate:class {
-    
-    func missionSettingsViewController(_ missionSettingsViewController:MissionSettingsViewController, didSelectMissionAtIndex index:Int)
-    
-    func missionSettingsViewController(_ missionSettingsViewController:MissionSettingsViewController, didChangeSpeed speed:Int)
+protocol MissionSettingsVCDelegate: AnyObject {
+    func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didSelectMissionAtIndex index: Int)
+    func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didChangeSpeed speed: Int)
 }
 
-class MissionSettingsViewController: UIViewController, HorizontalPickerDelegate {
-
-    @IBOutlet private var horizontalPicker:HorizontalPicker!
-    @IBOutlet private var speedSlider:UISlider!
-    @IBOutlet private var progressView:UIProgressView!
+class MissionSettingsViewController: UITableViewController {
+    @IBOutlet private weak var missionCell: UITableViewCell?
+    @IBOutlet private weak var speedSlider: UISlider?
+    @IBOutlet private weak var progressView: UIProgressView?
     
-    var missionFileNames:[String]!
-    var selectedMissionIndex:Int = 0
-    var animationSpeed = 50
-    var progress:Float = 0 {
+    weak var delegate: MissionSettingsVCDelegate?
+    
+    var missionFileNames: [String] = []
+    var selectedMissionIndex: Int = 0 {
         didSet {
-            self.progressView?.progress = progress
+            updateMissionCell()
+        }
+    }
+    var animationSpeed = 50
+    var progress: Float = 0 {
+        didSet {
+            updateProgressViewForProgress()
         }
     }
     
-    weak var delegate:MissionSettingsVCDelegate?
+    private func updateProgressViewForProgress() {
+        progressView?.progress = progress
+    }
+    
+    private func updateMissionCell() {
+        if selectedMissionIndex < missionFileNames.count {
+            missionCell?.detailTextLabel?.text = missionFileNames[selectedMissionIndex]
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //preferred content size
-        self.preferredContentSize = CGSize(width: 300, height: 200)
         
-        self.horizontalPicker.options = self.missionFileNames
-        self.horizontalPicker.selectedIndex = self.selectedMissionIndex
-        self.horizontalPicker.delegate = self
+        updateMissionCell()
         
-        self.speedSlider.value = Float(self.animationSpeed)
-        self.progressView.progress = self.progress
+        speedSlider?.value = Float(animationSpeed)
+        updateProgressViewForProgress()
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func speedValueChanged(_ sender: UISlider) {
-        
-        self.delegate?.missionSettingsViewController(self, didChangeSpeed: Int(sender.value))
+        animationSpeed = Int(sender.value)
+        delegate?.missionSettingsViewController(self, didChangeSpeed: Int(sender.value))
     }
     
-    //MARK: - HorizontalPickerDelegate
-    
-    func horizontalPicker(_ horizontalPicker: HorizontalPicker, didUpdateSelectedIndex index: Int) {
-        
-        self.delegate?.missionSettingsViewController(self, didSelectMissionAtIndex: index)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.cellForRow(at: indexPath) == missionCell {
+            let controller = OptionsTableViewController(labels: missionFileNames, selectedIndex: selectedMissionIndex) { (newIndex) in
+                self.selectedMissionIndex = newIndex
+                self.delegate?.missionSettingsViewController(self, didSelectMissionAtIndex: newIndex)
+            }
+            controller.title = "Mission"
+            show(controller, sender: self)
+        }
     }
-
 }

@@ -18,10 +18,9 @@ import UIKit
 import ArcGIS
 
 class RasterLayerViewController: UIViewController {
-    
     @IBOutlet private weak var mapView: AGSMapView!
 
-    private var map:AGSMap!
+    private var map: AGSMap!
     
     private var rasterLayer: AGSRasterLayer!
     
@@ -38,7 +37,7 @@ class RasterLayerViewController: UIViewController {
         self.rasterLayer = AGSRasterLayer(raster: raster)
         
         //initialize map with raster layer as the basemap
-        self.map = AGSMap(basemap: AGSBasemap.imagery())
+        self.map = AGSMap(basemap: .imagery())
         
         //assign map to the map view
         self.mapView.map = map
@@ -48,14 +47,12 @@ class RasterLayerViewController: UIViewController {
         
         //set map view's viewpoint to the raster layer's full extent
         self.rasterLayer.load { [weak self] (error) in
-            
-            guard error == nil else {
-                SVProgressHUD.show(withStatus: error!.localizedDescription)
-                return
-            }
-            
-            if let center = self?.rasterLayer.fullExtent?.center {
-                self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 80000))
+            if let error = error {
+               self?.presentAlert(error: error)
+            } else {
+                if let center = self?.rasterLayer.fullExtent?.center {
+                    self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 80000))
+                }
             }
         }
     }

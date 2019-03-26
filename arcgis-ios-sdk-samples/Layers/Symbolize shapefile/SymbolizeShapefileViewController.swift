@@ -15,16 +15,15 @@
 import ArcGIS
 
 class SymbolizeShapefileViewController: UIViewController {
-    
     @IBOutlet weak var mapView: AGSMapView!
     
-    var featureLayer:AGSFeatureLayer?
+    var featureLayer: AGSFeatureLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Instantiate a map using a basemap.
-        let map = AGSMap(basemap: AGSBasemap.streetsVector())
+        let map = AGSMap(basemap: .streetsVector())
         
         // Create a shapefile feature table from a named bundle resource.
         let shapefileTable = AGSShapefileFeatureTable(name: "Subdivisions")
@@ -48,7 +47,7 @@ class SymbolizeShapefileViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SymbolizeShapefileViewController"]
     }
     
-    func zoom(mapView:AGSMapView, to featureLayer:AGSFeatureLayer) {
+    func zoom(mapView: AGSMapView, to featureLayer: AGSFeatureLayer) {
         // Ensure the feature layer's metadata is loaded.
         featureLayer.load { error in
             guard error == nil else {
@@ -73,5 +72,4 @@ class SymbolizeShapefileViewController: UIViewController {
             layer.renderer = AGSSimpleRenderer(symbol: fillSymbol)
         }
     }
-    
 }

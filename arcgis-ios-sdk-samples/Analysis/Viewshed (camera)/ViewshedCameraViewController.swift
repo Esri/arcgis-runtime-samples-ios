@@ -16,13 +16,9 @@ import UIKit
 import ArcGIS
 
 class ViewshedCameraViewController: UIViewController {
-
     @IBOutlet weak var sceneView: AGSSceneView!
     
     private var viewshed: AGSLocationViewshed!
-    
-    private let ELEVATION_SERVICE_URL = URL(string: "https://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!
-    private let SCENE_LAYER_URL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,23 +27,27 @@ class ViewshedCameraViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewshedCameraViewController"]
         
         // initialize the scene with an imagery basemap
-        let scene = AGSScene(basemap: AGSBasemap.imagery())
+        let scene = AGSScene(basemap: .imagery())
         
         // assign the scene to the scene view
         sceneView.scene = scene
         
         // initialize the camera and set the viewpoint specified by the camera position
-        let camera = AGSCamera(location: AGSPoint(x: -4.49492, y: 48.3808, z: 48.2511, spatialReference: AGSSpatialReference.wgs84()), heading: 344.488, pitch: 74.1212, roll: 0)
+        let camera = AGSCamera(location: AGSPoint(x: -4.49492, y: 48.3808, z: 48.2511, spatialReference: .wgs84()), heading: 344.488, pitch: 74.1212, roll: 0)
         sceneView.setViewpointCamera(camera)
         
+        /// The url of the image service for elevation in Brest, France.
+        let brestElevationServiceURL = URL(string: "https://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!
         // initialize the elevation source with the elevation service URL
-        let elevationSrc = AGSArcGISTiledElevationSource(url: ELEVATION_SERVICE_URL)
+        let elevationSrc = AGSArcGISTiledElevationSource(url: brestElevationServiceURL)
         
         // add the elevation source to the base surface of the scene
         scene.baseSurface?.elevationSources.append(elevationSrc)
         
+        /// The url of the scene service for buildings in Brest, France.
+        let brestBuildingsServiceURL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
         // initialize the scene layer with the scene layer URL and add it to the scene
-        let buildings = AGSArcGISSceneLayer(url: SCENE_LAYER_URL)
+        let buildings = AGSArcGISSceneLayer(url: brestBuildingsServiceURL)
         scene.operationalLayers.add(buildings)
         
         // create a viewshed from the camera with minimum and maximum distance (in meters) from the observer (camera) at which visibility will be evaluated
@@ -65,5 +65,4 @@ class ViewshedCameraViewController: UIViewController {
         // update the viewshed with the current camera
         viewshed.update(from: sceneView.currentViewpointCamera())
     }
-    
 }

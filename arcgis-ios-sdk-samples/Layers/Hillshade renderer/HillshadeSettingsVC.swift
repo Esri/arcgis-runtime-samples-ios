@@ -15,53 +15,102 @@
 import UIKit
 import ArcGIS
 
-protocol HillshadeSettingsDelegate: class {
-    
+protocol HillshadeSettingsDelegate: AnyObject {
     func hillshadeSettingsVC(_ hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType)
 }
 
-class HillshadeSettingsVC: UIViewController {
-    
-    @IBOutlet var altitudeSlider: UISlider!
-    @IBOutlet var azimuthSlider: UISlider!
-    @IBOutlet var azimuthLabel: UILabel!
-    @IBOutlet var altitudeLabel: UILabel!
-    @IBOutlet var horizontalPicker: HorizontalPicker!
+class HillshadeSettingsVC: UITableViewController {
+    @IBOutlet weak var altitudeSlider: UISlider?
+    @IBOutlet weak var azimuthSlider: UISlider?
+    @IBOutlet weak var azimuthLabel: UILabel?
+    @IBOutlet weak var altitudeLabel: UILabel?
+    @IBOutlet weak var slopeTypeCell: UITableViewCell?
     
     weak var delegate: HillshadeSettingsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.horizontalPicker.options = ["None", "Degree", "Percent Rise", "Scaled"]
-        self.view.layer.cornerRadius = 10
+        updateSlopeTypeUI()
+        updateAltitudeUI()
+        updateAzimuthUI()
     }
     
-    func selectedSlope() -> AGSSlopeType {
-        switch self.horizontalPicker.selectedIndex {
-        case 0:
-            return AGSSlopeType.none
-        case 1:
-            return AGSSlopeType.degree
-        case 2:
-            return AGSSlopeType.percentRise
-        default:
-            return AGSSlopeType.scaled
+    private var slopeTypeOptions: [AGSSlopeType] = [.none, .degree, .percentRise, .scaled]
+    
+    private let numberFormatter = NumberFormatter()
+    
+    private func labelForSlopeType(_ slopeType: AGSSlopeType) -> String {
+        switch slopeType {
+        case .none: return "None"
+        case .degree: return "Degree"
+        case .percentRise: return "Percent Rise"
+        case .scaled: return "Scaled"
         }
     }
     
-    //MARK: - Actions
+    var slopeType: AGSSlopeType = .none {
+        didSet {
+            updateSlopeTypeUI()
+        }
+    }
+    
+    private func updateSlopeTypeUI() {
+        slopeTypeCell?.detailTextLabel?.text = labelForSlopeType(slopeType)
+    }
+    
+    var altitude: Double = 0 {
+        didSet {
+            updateAltitudeUI()
+        }
+    }
+    
+    private func updateAltitudeUI() {
+        altitudeLabel?.text = numberFormatter.string(from: altitude as NSNumber)
+        altitudeSlider?.value = Float(altitude)
+    }
+    
+    var azimuth: Double = 0 {
+        didSet {
+            updateAzimuthUI()
+        }
+    }
+    
+    private func updateAzimuthUI() {
+        azimuthLabel?.text = numberFormatter.string(from: azimuth as NSNumber)
+        azimuthSlider?.value = Float(azimuth)
+    }
+    
+    private func hillshadeParametersChanged() {
+        delegate?.hillshadeSettingsVC(self, selectedAltitude: altitude, azimuth: azimuth, slopeType: slopeType)
+    }
+    
+    // MARK: - Actions
     
     @IBAction func azimuthSliderValueChanged(_ slider: UISlider) {
-        self.azimuthLabel.text = "\(Int(slider.value))"
+        azimuth = Double(slider.value)
+        hillshadeParametersChanged()
     }
     
     @IBAction func altitudeSliderValueChanged(_ slider: UISlider) {
-        self.altitudeLabel.text = "\(Int(slider.value))"
+        altitude = Double(slider.value)
+        hillshadeParametersChanged()
     }
     
-    @IBAction func rendererAction() {
-        
-        self.delegate?.hillshadeSettingsVC(self, selectedAltitude: Double(self.altitudeSlider.value), azimuth: Double(self.azimuthSlider.value), slopeType: self.selectedSlope())
+    // UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView.cellForRow(at: indexPath) == slopeTypeCell else {
+            return
+        }
+        let labels = slopeTypeOptions.map { (slopeType) -> String in
+            return labelForSlopeType(slopeType)
+        }
+        let selectedIndex = slopeTypeOptions.firstIndex(of: slopeType)!
+        let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
+            self.slopeType = self.slopeTypeOptions[newIndex]
+            self.hillshadeParametersChanged()
+        }
+        optionsViewController.title = "Slope Type"
+        show(optionsViewController, sender: self)
     }
 }

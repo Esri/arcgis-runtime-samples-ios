@@ -16,16 +16,15 @@ import UIKit
 import ArcGIS
 
 class ShowMagnifierViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    
-    private var map:AGSMap!
+    private var map: AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //instantiate map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.imagery())
+        self.map = AGSMap(basemap: .imagery())
         
         //asssign map to the map view
         self.mapView.map = self.map
@@ -34,11 +33,10 @@ class ShowMagnifierViewController: UIViewController {
         self.mapView.interactionOptions.isMagnifierEnabled = true
         
         //zoom to custom viewpoint
-        let viewpoint = AGSViewpoint(center: AGSPoint(x: -110.8258 , y: 32.1545089, spatialReference: AGSSpatialReference.wgs84()), scale: 2e4)
+        let viewpoint = AGSViewpoint(center: AGSPoint(x: -110.8258, y: 32.1545089, spatialReference: .wgs84()), scale: 2e4)
         self.mapView.setViewpoint(viewpoint)
         
         //setup source code BBI
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ShowMagnifierViewController"]
     }
-    
 }

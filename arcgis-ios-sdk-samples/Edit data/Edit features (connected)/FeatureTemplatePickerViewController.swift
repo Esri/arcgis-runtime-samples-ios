@@ -15,13 +15,13 @@
 import UIKit
 import ArcGIS
 
-protocol FeatureTemplatePickerDelegate:class {
-    func featureTemplatePickerViewControllerWantsToDismiss(_ controller:FeatureTemplatePickerViewController)
-    func featureTemplatePickerViewController(_ controller:FeatureTemplatePickerViewController, didSelectFeatureTemplate template:AGSFeatureTemplate, forFeatureLayer featureLayer:AGSFeatureLayer)
+protocol FeatureTemplatePickerDelegate: AnyObject {
+    func featureTemplatePickerViewControllerWantsToDismiss(_ controller: FeatureTemplatePickerViewController)
+    func featureTemplatePickerViewController(_ controller: FeatureTemplatePickerViewController, didSelectFeatureTemplate template: AGSFeatureTemplate, forFeatureLayer featureLayer: AGSFeatureLayer)
 }
 
 class FeatureTemplatePickerViewController: UITableViewController {
-    weak var delegate:FeatureTemplatePickerDelegate?
+    weak var delegate: FeatureTemplatePickerDelegate?
     
     private struct FeatureTemplateInfo {
         var featureLayer: AGSFeatureLayer!
@@ -30,8 +30,7 @@ class FeatureTemplatePickerViewController: UITableViewController {
     
     private var infos = [FeatureTemplateInfo]()
     
-    func addTemplatesFromLayer(_ featureLayer:AGSFeatureLayer) {
-                
+    func addTemplatesFromLayer(_ featureLayer: AGSFeatureLayer) {
         let featureTable = featureLayer.featureTable as! AGSServiceFeatureTable
         //if layer contains only templates (no feature types)
         if !featureTable.featureTemplates.isEmpty {
@@ -46,7 +45,7 @@ class FeatureTemplatePickerViewController: UITableViewController {
             }
         }
             //otherwise if layer contains feature types
-        else  {
+        else {
             //for each type
             for type in featureTable.featureTypes {
                 //for each temple in type
@@ -67,7 +66,7 @@ class FeatureTemplatePickerViewController: UITableViewController {
         self.delegate?.featureTemplatePickerViewControllerWantsToDismiss(self)
     }
     
-    //MARK: - table view data source
+    // MARK: - table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -88,7 +87,7 @@ class FeatureTemplatePickerViewController: UITableViewController {
         return cell
     }
     
-    //MARK: - table view delegate
+    // MARK: - table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Notify the delegate that the user picked a feature template

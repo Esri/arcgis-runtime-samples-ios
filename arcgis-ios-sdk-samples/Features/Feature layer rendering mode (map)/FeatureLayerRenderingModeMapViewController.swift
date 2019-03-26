@@ -16,13 +16,12 @@ import UIKit
 import ArcGIS
 
 class FeatureLayerRenderingModeMapViewController: UIViewController {
-    
     @IBOutlet weak var dynamicMapView: AGSMapView!
     @IBOutlet weak var staticMapView: AGSMapView!
     
-    var _zoomed = false
-    var zoomedInViewpoint : AGSViewpoint!
-    var zoomedOutViewpoint : AGSViewpoint!
+    private var zoomed = false
+    var zoomedInViewpoint: AGSViewpoint!
+    var zoomedOutViewpoint: AGSViewpoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +30,8 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerRenderingModeMapViewController"]
         
         //points for zoomed in and zoomed out
-        let zoomedInPoint = AGSPoint(x: -118.37, y: 34.46, spatialReference: AGSSpatialReference.wgs84())
-        let zoomedOutPoint = AGSPoint(x: -118.45, y: 34.395, spatialReference: AGSSpatialReference.wgs84())
+        let zoomedInPoint = AGSPoint(x: -118.37, y: 34.46, spatialReference: .wgs84())
+        let zoomedOutPoint = AGSPoint(x: -118.45, y: 34.395, spatialReference: .wgs84())
         zoomedInViewpoint = AGSViewpoint(center: zoomedInPoint, scale: 650000, rotation: 0)
         zoomedOutViewpoint = AGSViewpoint(center: zoomedOutPoint, scale: 50000, rotation: 90)
         
@@ -68,14 +67,13 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
     }
 
     @IBAction func animateZoom(_ sender: Any) {
-        if _zoomed {
+        if zoomed {
             self.dynamicMapView.setViewpoint(zoomedOutViewpoint, duration: 5, completion: nil)
             self.staticMapView.setViewpoint(zoomedOutViewpoint, duration: 5, completion: nil)
         } else {
             self.dynamicMapView.setViewpoint(zoomedInViewpoint, duration: 5, completion: nil)
             self.staticMapView.setViewpoint(zoomedInViewpoint, duration: 5, completion: nil)
         }
-        _zoomed = !_zoomed
+        zoomed.toggle()
     }
-    
 }

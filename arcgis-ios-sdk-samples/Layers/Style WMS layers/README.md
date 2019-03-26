@@ -19,6 +19,10 @@ This sample examines the WMS layer's sublayers and checks the sublayer info for 
 * `AGSWMSLayerInfo.styles`
 * `AGSWMSSublayer.currentStyle`
 
+## About the data
+
+This sample uses a public service managed by the State of Minnesota and provides composite imagery for the state and the surrounding areas.
+
 ## Tags
 
 WMS, styles, imagery

@@ -15,18 +15,15 @@
 
 import UIKit
 
-protocol TilePackagesListVCDelegate:class {
-    func tilePackagesListViewController(_ tilePackagesListViewController:TilePackagesListViewController, didSelectTPKWithPath path:String)
+protocol TilePackagesListViewControllerDelegate: AnyObject {
+    func tilePackagesListViewController(_ tilePackagesListViewController: TilePackagesListViewController, didSelectTilePackageAt url: URL)
 }
 
-class TilePackagesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TilePackagesListViewController: UITableViewController {
+    weak var delegate: TilePackagesListViewControllerDelegate?
     
-    @IBOutlet var tableView:UITableView!
-    
-    weak var delegate:TilePackagesListVCDelegate?
-    
-    private var bundleTPKPaths:[String]!
-    private var documentTPKPaths:[String]!
+    private var bundleTilePackageURLs = [URL]()
+    private var documentTilePacakgeURLs = [URL]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,73 +33,78 @@ class TilePackagesListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func fetchTilePackages() {
-        self.bundleTPKPaths = Bundle.main.paths(forResourcesOfType: "tpk", inDirectory: nil)
-        self.tableView.reloadData()
-        
-        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-        let subpaths = FileManager.default.subpaths(atPath: path[0])
-        
-        let predicate = NSPredicate(format: "SELF MATCHES %@", ".*tpk$")
-        let tpks = subpaths?.filter { (objc) -> Bool in
-            return predicate.evaluate(with: objc)
-        }
-        self.documentTPKPaths = tpks?.map { (name:String) -> String in
-            return "\(path[0])/\(name)"
-        }
-    }
-    
-    //MARK : - UITableViewDataSource
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return self.bundleTPKPaths?.count ?? 0
-        }
-        else {
-            return self.documentTPKPaths?.count ?? 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell", for: indexPath)
-        
-        if indexPath.section == 0 {
-            cell.textLabel?.text = self.extractName(fromPath: self.bundleTPKPaths[indexPath.row])
-        }
-        else {
-            cell.textLabel?.text = self.extractName(fromPath: self.documentTPKPaths[indexPath.row])
+        // Fetch URLs for tile packages in the main bundle.
+        if let urls = Bundle.main.urls(forResourcesWithExtension: "tpk", subdirectory: nil) {
+            bundleTilePackageURLs = urls
         }
         
-        return cell
+        // Fetch URLs for tile packages in the documents directory.
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        if let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path) {
+            let predicate = NSPredicate(format: "SELF MATCHES %@", ".*tpkx?$")
+            documentTilePacakgeURLs = subpaths.lazy
+                .filter { predicate.evaluate(with: $0) }
+                .map { documentDirectoryURL.appendingPathComponent($0) }
+        }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "From the bundle" : "From the documents directory"
+    /// A section in the table view.
+    ///
+    /// - bundle: The section showing tile packages in the bundle.
+    /// - documentsDirectory: The section showing tile packages in the documents
+    /// directory.
+    enum Section: CaseIterable {
+        case bundle
+        case documentsDirectory
     }
     
-    //MARK: - UITableViewDelegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var path = ""
-        if (indexPath as NSIndexPath).section == 0 {
-            path = self.bundleTPKPaths[indexPath.row]
+    /// Returns the `URL` corresponding to the row at the given index path.
+    ///
+    /// - Parameter indexPath: An index path.
+    /// - Returns: A `URL`.
+    func urlForRow(at indexPath: IndexPath) -> URL {
+        switch Section.allCases[indexPath.section] {
+        case .bundle:
+            return bundleTilePackageURLs[indexPath.row]
+        case .documentsDirectory:
+            return documentTilePacakgeURLs[indexPath.row]
         }
-        else {
-            path = self.documentTPKPaths[indexPath.row]
-        }
-        self.delegate?.tilePackagesListViewController(self, didSelectTPKWithPath: path)
-    }
-    
-    func extractName(fromPath path:String) -> String {
-        guard var index = path.range(of: "/", options: .backwards, range: nil, locale: nil)?.lowerBound else {
-            return ""
-        }
-        index = path.index(after: index)
-        let name = path[index...]
-        return String(name)
     }
 }
 
+extension TilePackagesListViewController /* UITableViewDataSource */ {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return Section.allCases.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch Section.allCases[section] {
+        case .bundle:
+            return bundleTilePackageURLs.count
+        case .documentsDirectory:
+            return documentTilePacakgeURLs.count
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TilePackageCell", for: indexPath)
+        cell.textLabel?.text = urlForRow(at: indexPath).lastPathComponent
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch Section.allCases[section] {
+        case .bundle:
+            return "From the bundle"
+        case .documentsDirectory:
+            return "From the documents directory"
+        }
+    }
+}
+
+extension TilePackagesListViewController /* UITableViewDelegate */ {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let url = urlForRow(at: indexPath)
+        delegate?.tilePackagesListViewController(self, didSelectTilePackageAt: url)
+    }
+}

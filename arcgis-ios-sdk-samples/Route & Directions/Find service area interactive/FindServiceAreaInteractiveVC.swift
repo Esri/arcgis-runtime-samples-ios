@@ -17,20 +17,19 @@ import UIKit
 import ArcGIS
 
 class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, ServiceAreaSettingsVCDelegate, UIAdaptivePresentationControllerDelegate {
-
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var segmentedControl:UISegmentedControl!
-    @IBOutlet private var serviceAreaBBI:UIBarButtonItem!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var segmentedControl: UISegmentedControl!
+    @IBOutlet private var serviceAreaBBI: UIBarButtonItem!
     
     private var facilitiesGraphicsOverlay = AGSGraphicsOverlay()
     private var barriersGraphicsOverlay = AGSGraphicsOverlay()
     private var serviceAreaGraphicsOverlay = AGSGraphicsOverlay()
-    private var barrierGraphic:AGSGraphic!
-    private var serviceAreaTask:AGSServiceAreaTask!
-    private var serviceAreaParameters:AGSServiceAreaParameters!
+    private var barrierGraphic: AGSGraphic!
+    private var serviceAreaTask: AGSServiceAreaTask!
+    private var serviceAreaParameters: AGSServiceAreaParameters!
     
-    var firstTimeBreak:Int = 3
-    var secondTimeBreak:Int = 8
+    var firstTimeBreak: Int = 3
+    var secondTimeBreak: Int = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +38,10 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveVC", "ServiceAreaSettingsVC"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.terrainWithLabels())
+        let map = AGSMap(basemap: .terrainWithLabels())
         
         //center for initial viewpoint
-        let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: AGSSpatialReference.webMercator())
+        let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: .webMercator())
         
         //initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: center, scale: 1e5)
@@ -80,12 +79,10 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
     }
     
     private func getDefaultParameters() {
-        
         //get default parameters
         self.serviceAreaTask.defaultServiceAreaParameters { [weak self] (parameters: AGSServiceAreaParameters?, error: Error?) in
-            
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error getting default parameters:: \(error!.localizedDescription)")
+                self?.presentAlert(message: "Error getting default parameters:: \(error!.localizedDescription)")
                 return
             }
             
@@ -97,16 +94,14 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         }
     }
     
-    private func serviceAreaSymbol(for index:Int) -> AGSSymbol {
-        
+    private func serviceAreaSymbol(for index: Int) -> AGSSymbol {
         //fill symbol for service area
-        var fillSymbol:AGSSimpleFillSymbol
+        var fillSymbol: AGSSimpleFillSymbol
         
         if index == 0 {
             let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0.4, green: 0.4, blue: 0, alpha: 0.3), width: 2)
             fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0.8, green: 0.8, blue: 0, alpha: 0.3), outline: lineSymbol)
-        }
-        else {
+        } else {
             let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 0, green: 0.4, blue: 0, alpha: 0.3), width: 2)
             fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 0, green: 0.8, blue: 0, alpha: 0.3), outline: lineSymbol)
         }
@@ -114,104 +109,93 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         return fillSymbol
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func serviceArea() {
-        
         //remove previously added service areas
-        self.serviceAreaGraphicsOverlay.graphics.removeAllObjects()
+        serviceAreaGraphicsOverlay.graphics.removeAllObjects()
+        
+        let facilitiesGraphics = facilitiesGraphicsOverlay.graphics as! [AGSGraphic]
         
         //check if at least a single facility is added
-        if self.facilitiesGraphicsOverlay.graphics.count == 0 {
-            
-            SVProgressHUD.showInfo(withStatus: "At least one facility is required")
-            
+        guard !facilitiesGraphics.isEmpty else {
+            presentAlert(message: "At least one facility is required")
             return
         }
-        
-        //show progress hud
-        SVProgressHUD.show(withStatus: "Loading")
         
         //add facilities
         var facilities = [AGSServiceAreaFacility]()
         
         //for each graphic in facilities graphicsOverlay add a facility to the parameters
-        for graphic in self.facilitiesGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
-            
+        for graphic in facilitiesGraphics {
             let point = graphic.geometry as! AGSPoint
             let facility = AGSServiceAreaFacility(point: point)
             facilities.append(facility)
         }
         self.serviceAreaParameters.setFacilities(facilities)
         
-        
         //add barriers
         var barriers = [AGSPolygonBarrier]()
         
         //for each graphic in barrier graphicsOverlay add a barrier to the parameters
-        for graphic in self.barriersGraphicsOverlay.graphics as AnyObject as! [AGSGraphic] {
-            
+        for graphic in barriersGraphicsOverlay.graphics as! [AGSGraphic] {
             let polygon = graphic.geometry as! AGSPolygon
             let barrier = AGSPolygonBarrier(polygon: polygon)
             barriers.append(barrier)
         }
-        self.serviceAreaParameters.setPolygonBarriers(barriers)
+        serviceAreaParameters.setPolygonBarriers(barriers)
         
         //set time breaks
-        self.serviceAreaParameters.defaultImpedanceCutoffs = [NSNumber(value: self.firstTimeBreak), NSNumber(value: self.secondTimeBreak)]
+        serviceAreaParameters.defaultImpedanceCutoffs = [NSNumber(value: firstTimeBreak), NSNumber(value: secondTimeBreak)]
         
-        self.serviceAreaParameters.geometryAtOverlap = .dissolve
+        serviceAreaParameters.geometryAtOverlap = .dissolve
+        
+        //show progress hud
+        SVProgressHUD.show(withStatus: "Loading")
         
         //solve for service area
-        self.serviceAreaTask.solveServiceArea(with: self.serviceAreaParameters) { [weak self] (result: AGSServiceAreaResult?, error: Error?) in
-            
-            guard let weakSelf = self else {
-                return
-            }
-            
-            guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error solving service area:: \(error!.localizedDescription)")
-                return
-            }
-            
+        serviceAreaTask.solveServiceArea(with: serviceAreaParameters) { [weak self] (result: AGSServiceAreaResult?, error: Error?) in
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
-            //add resulting polygons as graphics to the overlay
-            //since we are using `geometryAtOVerlap` as `dissolve` and the cutoff values
-            //are the same across facilities, we only need to draw the resultPolygons at
-            //facility index 0. It will contain either merged or multipart polygons
-            if let polygons = result?.resultPolygons(atFacilityIndex: 0) {
-                for j in 0...polygons.count-1 {
-                    let polygon = polygons[j]
-                    let fillSymbol = weakSelf.serviceAreaSymbol(for: j)
-                    let graphic = AGSGraphic(geometry: polygon.geometry, symbol: fillSymbol, attributes: nil)
-                    weakSelf.serviceAreaGraphicsOverlay.graphics.add(graphic)
+            guard let self = self else {
+                return
+            }
+            
+            if let error = error {
+                self.presentAlert(message: "Error solving service area: \(error.localizedDescription)")
+            } else {
+                //add resulting polygons as graphics to the overlay
+                //since we are using `geometryAtOVerlap` as `dissolve` and the cutoff values
+                //are the same across facilities, we only need to draw the resultPolygons at
+                //facility index 0. It will contain either merged or multipart polygons
+                if let polygons = result?.resultPolygons(atFacilityIndex: 0) {
+                    for index in polygons.indices {
+                        let polygon = polygons[index]
+                        let fillSymbol = self.serviceAreaSymbol(for: index)
+                        let graphic = AGSGraphic(geometry: polygon.geometry, symbol: fillSymbol, attributes: nil)
+                        self.serviceAreaGraphicsOverlay.graphics.add(graphic)
+                    }
                 }
             }
         }
     }
     
     @IBAction private func clearAction() {
-        
         //remove all existing graphics in service area and facilities graphics overlays
         self.serviceAreaGraphicsOverlay.graphics.removeAllObjects()
         self.facilitiesGraphicsOverlay.graphics.removeAllObjects()
         self.barriersGraphicsOverlay.graphics.removeAllObjects()
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
         if segmentedControl.selectedSegmentIndex == 0 {
-            
             //facilities selected
             let graphic = AGSGraphic(geometry: mapPoint, symbol: nil, attributes: nil)
             self.facilitiesGraphicsOverlay.graphics.add(graphic)
-        }
-        else {
-            
+        } else {
             //barriers selected
             let bufferedGeometry = AGSGeometryEngine.bufferGeometry(mapPoint, byDistance: 500)
             let graphic = AGSGraphic(geometry: bufferedGeometry, symbol: nil, attributes: nil)
@@ -219,11 +203,10 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         }
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ServiceAreaSettingsSegue" {
-            
             let controller = segue.destination as! ServiceAreaSettingsVC
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
@@ -233,22 +216,19 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         }
     }
     
-    //MARK: - ServiceAreaSettingsVCDelegate
+    // MARK: - ServiceAreaSettingsVCDelegate
     
     func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateFirstTimeBreak timeBreak: Int) {
-        
         self.firstTimeBreak = timeBreak
     }
     
     func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateSecondTimeBreak timeBreak: Int) {
-        
         self.secondTimeBreak = timeBreak
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-
 }

@@ -16,60 +16,56 @@ import UIKit
 import ArcGIS
 
 class MapLoadedViewController: UIViewController {
+    /// The map displayed in the map view.
+    let map = AGSMap(basemap: .imageryWithLabels())
 
-    @IBOutlet var mapView:AGSMapView!
-    @IBOutlet var bannerLabel:UILabel!
+    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var bannerLabel: UILabel!
     
-    private var map:AGSMap?
+    private var mapLoadStatusObservation: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //setup source code bar button item
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapLoadedViewController"]
-        
-        //initialize map with basemap
-        self.map = AGSMap(basemap: AGSBasemap.imageryWithLabels())
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapLoadedViewController"]
         
         //assign map to map view
-        self.mapView.map = self.map
+        mapView.map = map
         
-        //register as an observer for loadStatus property on map
-        self.map?.addObserver(self, forKeyPath: "loadStatus", options: .new, context: nil)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        //update the banner label on main thread
-        DispatchQueue.main.async { [weak self] in
-            
-            //get the string for load status
-            if let strongSelf = self, let loadStatus = strongSelf.map?.loadStatus {
-                
-                let loadStatusString = strongSelf.loadStatusString(loadStatus)
-                
-                //set it on the banner label
-                strongSelf.bannerLabel.text = "Load status : \(loadStatusString)"
+        mapLoadStatusObservation = map.observe(\.loadStatus, options: .initial) { [weak self] (map, change) in
+            //update the banner label on main thread
+            DispatchQueue.main.async { [weak self] in
+                self?.updateLoadStatusLabel()
             }
         }
     }
     
-    private func loadStatusString(_ status: AGSLoadStatus) -> String {
-        switch status {
-        case .failedToLoad:
-            return "Failed_To_Load"
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateLoadStatusLabel()
+    }
+    
+    private func updateLoadStatusLabel() {
+        bannerLabel.text = "Load status: \(map.loadStatus.title)"
+    }
+}
+
+private extension AGSLoadStatus {
+    /// The human readable name of the load status.
+    var title: String {
+        switch self {
         case .loaded:
             return "Loaded"
         case .loading:
             return "Loading"
+        case .failedToLoad:
+            return "Failed to Load"
         case .notLoaded:
-            return "Not_Loaded"
-        default:
+            return "Not Loaded"
+        case .unknown:
             return "Unknown"
         }
-    }
-
-    deinit {
-        self.map?.removeObserver(self, forKeyPath: "loadStatus")
     }
 }

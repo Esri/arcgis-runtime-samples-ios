@@ -16,79 +16,74 @@
 import UIKit
 import ArcGIS
 
-class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate, UIGestureRecognizerDelegate {
-    
+class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate {
     @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var visualEffectView: UIVisualEffectView!
+    
+    private var itemIDs = ["1349bfa0ed08485d8a92c442a3850b06",
+                           "bd8ac41667014d98b933e97713ba8377",
+                           "02f85ec376084c508b9c8e5a311724fa",
+                           "1bf0cc4a4380468fbbff107e100f65a5"]
+    private var shownItemID: String? {
+        return ((mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer)?.item as? AGSPortalItem)?.itemID
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileCustomStyleVC", "VectorStylesViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileCustomStyleVC", "VectorStylesViewController"]
         
-        //default vector tiled layer
-        let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=1349bfa0ed08485d8a92c442a3850b06")!)
-        
-        //initialize map with vector tiled layer as the basemap
-        let map = AGSMap(basemap: AGSBasemap(baseLayer: vectorTiledLayer))
-        
+        //initialize map
+        let map = AGSMap()
+
         //initial viewpoint
-        let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: AGSSpatialReference(wkid: 3857))
+        let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator())
         map.initialViewpoint = AGSViewpoint(center: centerPoint, scale: 88659253.829259947)
         
         //assign map to map view
-        self.mapView.map = map
+        mapView.map = map
         
-        //Add tap gesture on visual effect view to cancel
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideVisualEffectView))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        tapGestureRecognizer.numberOfTouchesRequired = 1
-        tapGestureRecognizer.delegate = self
-        self.visualEffectView.addGestureRecognizer(tapGestureRecognizer)
+        //show the default vector tiled layer
+        showSelectedItem(itemIDs.first!)
     }
     
     private func showSelectedItem(_ itemID: String) {
-        let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!)
-        self.mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
+        let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
+        let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: vectorTiledLayerURL)
+        mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EmbedSegue" {
-            let controller = segue.destination as! VectorStylesViewController
+        if let controller = segue.destination as? VectorStylesViewController {
             controller.delegate = self
+            controller.itemIDs = itemIDs
+            controller.selectedItemID = shownItemID
+            controller.presentationController?.delegate = self
+            controller.preferredContentSize = {
+                let height: CGFloat
+                if traitCollection.horizontalSizeClass == .regular,
+                    traitCollection.verticalSizeClass == .regular {
+                    height = 200
+                } else {
+                    height = 150
+                }
+                return CGSize(width: 375, height: height)
+            }()
         }
     }
     
-    //MARK: - VectorStylesVCDelegate
+    // MARK: - VectorStylesVCDelegate
     
     func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String) {
         //show newly selected vector layer
-        self.showSelectedItem(itemID)
-        
-        //hide visual effect view
-        self.visualEffectView.isHidden = true
+        showSelectedItem(itemID)
     }
-    
-    //MARK: - UIGestureRecognizerDelegate
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        //should receive touch only if tapped outside container view
-        if let view = touch.view , view.isDescendant(of: self.visualEffectView.contentView.subviews[0]) {
-            return false
-        }
-        return true
-    }
-    
-    //MARK: - Actions
-    
-    @IBAction func changeStyleAction() {
-        self.visualEffectView.isHidden = false
-    }
-    
-    @objc func hideVisualEffectView() {
-        self.visualEffectView.isHidden = true
+}
+
+extension VectorTileCustomStyleVC: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
 }

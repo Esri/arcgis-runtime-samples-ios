@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class SpatialOperationsViewController: UIViewController, OperationsListVCDelegate, UIAdaptivePresentationControllerDelegate {
-
     @IBOutlet var mapView: AGSMapView!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
@@ -34,7 +33,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SpatialOperationsViewController", "OperationsListViewController"]
 
         //initialize map with basemap
-        let map = AGSMap(basemap: AGSBasemap.topographic())
+        let map = AGSMap(basemap: .topographic())
         
         //assign map to map view
         self.mapView.map = map
@@ -43,7 +42,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         //initial viewpoint
-        let center = AGSPoint(x: -13453, y: 6710127, spatialReference: AGSSpatialReference.webMercator())
+        let center = AGSPoint(x: -13453, y: 6710127, spatialReference: .webMercator())
         self.mapView.setViewpointCenter(center, scale: 30000, completion: nil)
         
         //add two polygons to be used in the operations
@@ -51,9 +50,8 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
     }
 
     private func addPolygons() {
-        
         //polygon 1
-        self.polygon1 = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
+        self.polygon1 = AGSPolygonBuilder(spatialReference: .webMercator())
         polygon1.addPointWith(x: -13960, y: 6709400)
         polygon1.addPointWith(x: -14660, y: 6710000)
         polygon1.addPointWith(x: -13760, y: 6710730)
@@ -68,7 +66,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         
         // create green polygon
         // outer ring
-        let outerRing = AGSMutablePart(spatialReference: AGSSpatialReference.webMercator())
+        let outerRing = AGSMutablePart(spatialReference: .webMercator())
         outerRing.addPointWith(x: -13060, y: 6711030)
         outerRing.addPointWith(x: -12160, y: 6710730)
         outerRing.addPointWith(x: -13160, y: 6709700)
@@ -76,14 +74,14 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         outerRing.addPointWith(x: -13060, y: 6711030)
         
         // inner ring
-        let innerRing = AGSMutablePart(spatialReference: AGSSpatialReference.webMercator())
+        let innerRing = AGSMutablePart(spatialReference: .webMercator())
         innerRing.addPointWith(x: -13060, y: 6710910)
         innerRing.addPointWith(x: -14160, y: 6710630)
         innerRing.addPointWith(x: -13160, y: 6709900)
         innerRing.addPointWith(x: -12450, y: 6710660)
         innerRing.addPointWith(x: -13060, y: 6710910)
         
-        self.polygon2 = AGSPolygonBuilder(spatialReference: AGSSpatialReference.webMercator())
+        self.polygon2 = AGSPolygonBuilder(spatialReference: .webMercator())
         polygon2.parts.add(outerRing)
         polygon2.parts.add(innerRing)
         
@@ -101,7 +99,6 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         var resultGeometry: AGSGeometry
         
         switch index {
-            
         case 1: //Union
             resultGeometry = AGSGeometryEngine.union(ofGeometry1: self.polygon1.toGeometry(), geometry2: self.polygon2.toGeometry())!
             
@@ -129,7 +126,7 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         }
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "OperationsListSegue" {
@@ -141,25 +138,22 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         }
     }
     
-    //MARK: - OperationsListVCDelegate
+    // MARK: - OperationsListVCDelegate
     
     func operationsListViewController(_ operationsListViewController: OperationsListViewController, didSelectOperation index: Int) {
-        
         if index == 0 {
             if self.resultGraphic != nil {
                 self.graphicsOverlay.graphics.remove(self.resultGraphic)
                 self.resultGraphic = nil
             }
-        }
-        else {
+        } else {
             self.performOperation(index)
         }
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        
         return UIModalPresentationStyle.none
     }
 }

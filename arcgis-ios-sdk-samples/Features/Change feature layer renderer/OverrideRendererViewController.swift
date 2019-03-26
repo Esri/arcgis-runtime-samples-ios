@@ -16,11 +16,10 @@ import UIKit
 import ArcGIS
 
 class OverrideRendererViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    
-    private var map:AGSMap!
-    private var featureLayer:AGSFeatureLayer!
+    private var map: AGSMap!
+    private var featureLayer: AGSFeatureLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +28,9 @@ class OverrideRendererViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OverrideRendererViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1.30758164047166E7, yMin: 4014771.46954516, xMax: -1.30730056797177E7
-            , yMax: 4016869.78617381, spatialReference: AGSSpatialReference.webMercator()))
+        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1.30758164047166E7, yMin: 4014771.46954516, xMax: -1.30730056797177E7, yMax: 4016869.78617381, spatialReference: .webMercator()))
         //assign map to the map view's map
         self.mapView.map = self.map
         
@@ -42,7 +40,6 @@ class OverrideRendererViewController: UIViewController {
         self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
         //add the feature layer to the operational layers on the map view
         self.map.operationalLayers.add(self.featureLayer)
-        
     }
     
     @IBAction private func overrideRenderer() {

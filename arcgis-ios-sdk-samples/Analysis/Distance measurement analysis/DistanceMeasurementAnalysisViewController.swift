@@ -35,17 +35,24 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
         // Create the scene.
         scene = AGSScene(basemap: .imagery())
         
+        /// The url of the Terrain 3D ArcGIS REST Service.
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+        /// The url of the image service for elevation in Brest, France.
+        let brestElevationServiceURL = URL(string: "https://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!
+        
         // Create the surface and set it as the base surface of the scene.
         let elevationSources = [
-            AGSArcGISTiledElevationSource(url: .worldElevationService),
-            AGSArcGISTiledElevationSource(url: .brestElevationService)
+            AGSArcGISTiledElevationSource(url: worldElevationServiceURL),
+            AGSArcGISTiledElevationSource(url: brestElevationServiceURL)
         ]
         let surface = AGSSurface()
         surface.elevationSources.append(contentsOf: elevationSources)
         scene.baseSurface = surface
         
+        /// The url of the scene service for buildings in Brest, France.
+        let brestBuildingsServiceURL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
         // Create the building layer and add it to the scene.
-        let buildingsLayer = AGSArcGISSceneLayer(url: .brestBuildingsService)
+        let buildingsLayer = AGSArcGISSceneLayer(url: brestBuildingsServiceURL)
         scene.operationalLayers.add(buildingsLayer)
         
         // Create the location distance measurement.

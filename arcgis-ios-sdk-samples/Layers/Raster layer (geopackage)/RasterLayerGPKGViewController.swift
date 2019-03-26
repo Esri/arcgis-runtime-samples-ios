@@ -15,10 +15,9 @@
 import ArcGIS
 
 class RasterLayerGPKGViewController: UIViewController {
-    
     @IBOutlet weak var mapView: AGSMapView!
     
-    var geoPackage:AGSGeoPackage?
+    var geoPackage: AGSGeoPackage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class RasterLayerGPKGViewController: UIViewController {
         // Load the geopackage.
         geoPackage?.load { [weak self] error in
             guard error == nil else {
-                SVProgressHUD.showError(withStatus: "Error opening Geopackage: \(error!.localizedDescription)")
+                self?.presentAlert(message: "Error opening Geopackage: \(error!.localizedDescription)")
                 return
             }
             
@@ -51,5 +50,4 @@ class RasterLayerGPKGViewController: UIViewController {
         // Display the map in the map view.
         mapView.map = map
     }
-    
 }

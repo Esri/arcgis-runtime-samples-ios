@@ -16,14 +16,13 @@ import UIKit
 import ArcGIS
 
 class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
-    
     @IBOutlet weak var mapView: AGSMapView!
-    private var map:AGSMap!
+    private var map: AGSMap!
     
-    private var locatorTask:AGSLocatorTask!
-    private var reverseGeocodeParameters:AGSReverseGeocodeParameters!
+    private var locatorTask: AGSLocatorTask!
+    private var reverseGeocodeParameters: AGSReverseGeocodeParameters!
     private var graphicsOverlay = AGSGraphicsOverlay()
-    private var cancelable:AGSCancelable!
+    private var cancelable: AGSCancelable!
     
     private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
@@ -34,7 +33,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ReverseGeocodeViewController"]
         
         //create an instance of a map with ESRI topographic basemap
-        self.map = AGSMap(basemap: AGSBasemap.topographic())
+        self.map = AGSMap(basemap: .topographic())
         
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
@@ -43,7 +42,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         //zoom to a specific extent
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -117.195, y: 34.058, spatialReference: AGSSpatialReference.wgs84()), scale: 5e4))
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -117.195, y: 34.058, spatialReference: .wgs84()), scale: 5e4))
         
         //initialize locator task
         self.locatorTask = AGSLocatorTask(url: URL(string: self.locatorURL)!)
@@ -53,7 +52,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.reverseGeocodeParameters.maxResults = 1
     }
     
-    private func reverseGeocode(_ point:AGSPoint) {
+    private func reverseGeocode(_ point: AGSPoint) {
         //cancel previous request
         if self.cancelable != nil {
             self.cancelable.cancel()
@@ -72,21 +71,17 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.graphicsOverlay.graphics.add(graphic)
             
         //reverse geocode
-        self.cancelable = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) -> Void in
+        self.cancelable = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
             if let error = error as NSError? {
                 if error.code != NSUserCancelledError { //user canceled error
-                    self?.showAlert(error.localizedDescription)
+                    self?.presentAlert(error: error)
                 }
-            }
-            else {
-                if let results = results , results.count > 0 {
-                    graphic.attributes.addEntries(from: results.first!.attributes!)
-                    self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint)
-                    return
-                }
-                else {
-                    self?.showAlert("No address found")
-                }
+            } else if let result = results?.first {
+                graphic.attributes.addEntries(from: result.attributes!)
+                self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint)
+                return
+            } else {
+                self?.presentAlert(message: "No address found")
             }
             self?.graphicsOverlay.graphics.remove(graphic)
         }
@@ -96,16 +91,16 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
     private func graphicForPoint(_ point: AGSPoint) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
-        symbol.leaderOffsetY = markerImage.size.height/2
-        symbol.offsetY = markerImage.size.height/2
-        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: [String:AnyObject]())
+        symbol.leaderOffsetY = markerImage.size.height / 2
+        symbol.offsetY = markerImage.size.height / 2
+        let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: [String: AnyObject]())
         return graphic
     }
     
     //method to show callout for the graphic
     //it gets the attributes from the graphic and populates the title
     //and detail for the callout
-    private func showCalloutForGraphic(_ graphic:AGSGraphic, tapLocation:AGSPoint) {
+    private func showCalloutForGraphic(_ graphic: AGSGraphic, tapLocation: AGSPoint) {
         let cityString = graphic.attributes["City"] as? String ?? ""
         let addressString = graphic.attributes["Address"] as? String ?? ""
         let stateString = graphic.attributes["State"] as? String ?? ""
@@ -114,16 +109,10 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.callout.isAccessoryButtonHidden = true
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
-    
-    private func showAlert(_ message:String) {
-        SVProgressHUD.showError(withStatus: message)
-    }
-    
-    //MARK: - AGSGeoViewTouchDelegate
+
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         self.reverseGeocode(mapPoint)
     }
 }
-
-

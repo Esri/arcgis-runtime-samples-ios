@@ -14,21 +14,14 @@
 
 import UIKit
 
-
-protocol WorldAddressesVCDelegate:class {
-    func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address:String)
+protocol WorldAddressesVCDelegate: AnyObject {
+    func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address: String)
 }
     
 class WorldAddressesViewController: UITableViewController {
-        
-        weak var delegate:WorldAddressesVCDelegate?
+        weak var delegate: WorldAddressesVCDelegate?
         
         private var addresses = ["277 N Avenida Caballeros, Palm Springs, CA", "380 New York St, Redlands, CA 92373", "Београд", "Москва", "北京"]
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-        }
         
         // MARK: - Table view data source
         
@@ -39,7 +32,6 @@ class WorldAddressesViewController: UITableViewController {
         override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return self.addresses.count
         }
-        
         
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath)
@@ -54,5 +46,4 @@ class WorldAddressesViewController: UITableViewController {
             let address = self.addresses[indexPath.row]
             self.delegate?.worldAddressesViewController(self, didSelectAddress: address)
         }
-        
 }

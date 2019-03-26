@@ -2,11 +2,11 @@
 
 This sample demonstrates how to set the rendering mode for feature layers. There are two rendering modes, static and dynamic.
 
+![](image1.png)
+
 ## How to use the sample
 
-The sample shows two `AGSMapView`s, each showing the same set of feature layers. The feature layers in the top view are in dynamic mode, and the layers in the bottom view are in static mode. Tap 'Animated Zoom' to see the two views zoom in and out. Observe the differences in how the layers are rendered in each view. 
-
-![](image.png)
+The sample shows two `AGSMapView`s, each showing the same set of feature layers. The feature layers in the top view are in dynamic mode, and the layers in the bottom view are in static mode. Tap 'Animated Zoom' to see the two views zoom in and out. Observe the differences in how the layers are rendered in each view.
 
 ## How it works
 

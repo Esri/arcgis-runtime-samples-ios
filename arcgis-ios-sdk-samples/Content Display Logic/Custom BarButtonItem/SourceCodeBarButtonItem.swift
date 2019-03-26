@@ -15,10 +15,9 @@
 import UIKit
 
 class SourceCodeBarButtonItem: UIBarButtonItem {
-   
-    var filenames:[String]!
-    weak var navController:UINavigationController?
-    var folderName:String!
+    var filenames: [String]?
+    weak var navController: UINavigationController?
+    var readmeURL: URL?
     
     override init() {
         super.init()
@@ -27,17 +26,17 @@ class SourceCodeBarButtonItem: UIBarButtonItem {
         self.action = #selector(SourceCodeBarButtonItem.showSegmentedVC)
     }
 
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func showSegmentedVC() {
+    @objc
+    func showSegmentedVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let controller = storyboard.instantiateViewController(withIdentifier: "SegmentedViewController") as! SegmentedViewController
         controller.filenames = filenames
-        controller.folderName = self.folderName
+        controller.readmeURL = readmeURL
         self.navController?.show(controller, sender: self)
     }
-    
-    
 }

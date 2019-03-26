@@ -1,0 +1,81 @@
+custom_rules:
+  spatial_reference_web_mercator:
+    name: Web Mercator Spatial Reference
+    regex: AGSSpatialReference\(wkid:\s*(3857|102100)\)
+    message: "Use AGSSpatialReference.webMercator() instead."
+  spatial_reference_wgs84:
+    name: WGS84 Spatial Reference
+    regex: AGSSpatialReference\(wkid:\s*(4326)\)
+    message: "Use AGSSpatialReference.wgs84() instead."
+  simple_closure:
+    name: Simple Closure
+    regex: (-> Void in)|(\(\) in)
+    message: "Void return and empty arguments should be avoided in closures."
+  closure_opening_space:
+    name: Closure Opening Space
+    regex: \{\[|\{\s{2,}\[
+    message: "Use one space between the brace and bracket."
+
+disabled_rules: # rule identifiers to exclude from running
+  - file_length
+  - for_where
+  - force_cast
+  - line_length
+  - notification_center_detachment
+  - trailing_whitespace
+  - type_body_length
+  - type_name
+  - unused_closure_parameter
+
+opt_in_rules: # some rules are only opt-in
+  - anyobject_protocol
+  - array_init
+  - attributes
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - contains_over_first_not_nil
+  - convenience_type
+  - discouraged_direct_init
+  - discouraged_optional_boolean
+  - empty_count
+  - empty_string
+  - empty_xctest_method
+  - explicit_init
+  - extension_access_modifier
+  - fallthrough
+  - fatal_error_message
+  - first_where
+  - function_default_parameter_at_end
+  - identical_operands
+  - joined_default_parameter
+  - legacy_random
+  - let_var_whitespace
+  - literal_expression_end_indentation
+  - lower_acl_than_parent
+  - missing_docs
+  - modifier_order
+  - multiline_arguments
+  - multiline_function_chains
+  - multiline_parameters
+  - operator_usage_whitespace
+  - operator_whitespace
+  - overridden_super_call
+  - override_in_extension
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - sorted_first_last
+  - static_operator
+  - toggle_bool
+  - unused_import
+  - unused_private_declaration
+  - untyped_error_in_catch
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - yoda_condition
+
+identifier_name:
+  min_length:
+    warning: 0 # do not flag short identifiers

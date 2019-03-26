@@ -50,25 +50,25 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }
     }
     
-    fileprivate let toRadius: CGFloat!
-    fileprivate let fromRadius: CGFloat!
-    fileprivate let center: CGPoint!
+    let toRadius: CGFloat!
+    let fromRadius: CGFloat!
+    let center: CGPoint!
     
-    fileprivate lazy var fromPath: CGPath = {
+    lazy var fromPath: CGPath = {
         let fromPath = UIBezierPath()
         fromPath.addArc(withCenter: self.center, radius: self.fromRadius, startAngle: CGFloat(0), endAngle: 2.0 * CGFloat.pi, clockwise: true)
         fromPath.close()
         return fromPath.cgPath
     }()
     
-    fileprivate lazy var toPath: CGPath = {
+    lazy var toPath: CGPath = {
         let toPath = UIBezierPath()
         toPath.addArc(withCenter: self.center, radius: self.toRadius, startAngle: CGFloat(0), endAngle: 2 * CGFloat.pi, clockwise: true)
         toPath.close()
         return toPath.cgPath
     }()
     
-    fileprivate lazy var pathAnimation: CABasicAnimation = {
+    lazy var pathAnimation: CABasicAnimation = {
         let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
         animation.duration = 1.0
         animation.fromValue = fromPath
@@ -79,7 +79,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         return animation
     }()
     
-    fileprivate lazy var opacityAnimation: CABasicAnimation = {
+    lazy var opacityAnimation: CABasicAnimation = {
         let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.opacity))
         animation.duration = pingDuration
         animation.fromValue = 1.0
@@ -115,7 +115,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
     // MARK: CALayer delegate
     
     @objc
-    fileprivate func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {        
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         pathAnimation.delegate = nil
         
         removeAllAnimations()
@@ -329,7 +329,7 @@ private class DemoTouchesView: UIView {
         }
     }
     
-    fileprivate func addTouch(_ touch: UITouch) {
+    func addTouch(_ touch: UITouch) {
         let touchLocation = touch.location(in: self)
         let newTouchView = makeTouchView(point: touchLocation)
         
@@ -337,13 +337,13 @@ private class DemoTouchesView: UIView {
         touchViewMap[touch] = newTouchView
     }
     
-    fileprivate func moveTouch(_ touch: UITouch) {
+    func moveTouch(_ touch: UITouch) {
         guard let touchView = touchViewMap[touch] else { return }
         let touchLocation = touch.location(in: self)
         touchView.center = touchLocation
     }
     
-    fileprivate func removeTouch(_ touch: UITouch, cancelled: Bool = false) {
+    func removeTouch(_ touch: UITouch, cancelled: Bool = false) {
         guard let touchView = touchViewMap[touch] else { return }
         let animations: (() -> Void) = {
             touchView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
@@ -371,7 +371,7 @@ private class DemoTouchesView: UIView {
         }
     }
 
-    fileprivate func showPing<S: Sequence>(for touches: S) where S.Element == UITouch {
+    func showPing<S: Sequence>(for touches: S) where S.Element == UITouch {
         for touch in touches {
             let pingLayer = makePingLayer(touch: touch)
             layer.addSublayer(pingLayer)

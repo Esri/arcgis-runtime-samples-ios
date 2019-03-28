@@ -23,21 +23,14 @@ class ViewPointCloudDataOfflineViewController: UIViewController {
     /// The scene view managed by the view controller.
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
-            sceneView.scene = makeScene { [weak self] (layer) in
-                guard let viewpoint = layer.fullExtent.map(AGSViewpoint.init(targetExtent:)) else {
-                    return
-                }
-                self?.sceneView.setViewpoint(viewpoint)
-            }
+            sceneView.scene = makeScene()
         }
     }
     
     /// Creates a scene with a point cloud layer.
     ///
-    /// - Parameter pointCloudLayerLoadCompletionHandler: A closure called with
-    /// the point cloud layer when that layer's load operation finishes.
     /// - Returns: A new `AGSScene` object.
-    func makeScene(pointCloudLayerLoadCompletionHandler: @escaping (AGSPointCloudLayer) -> Void) -> AGSScene {
+    func makeScene() -> AGSScene {
         let scene = AGSScene(basemapType: .imagery)
         
         // Create the elevation source.
@@ -52,10 +45,24 @@ class ViewPointCloudDataOfflineViewController: UIViewController {
         // Create the point cloud layer and add it to the scene.
         if let sceneLayerPackageURL = Bundle.main.url(forResource: "sandiego-north-balboa-pointcloud", withExtension: "slpk") {
             let pointCloudLayer = AGSPointCloudLayer(url: sceneLayerPackageURL)
-            pointCloudLayer.load { [unowned layer = pointCloudLayer] _ in pointCloudLayerLoadCompletionHandler(layer) }
+            pointCloudLayer.load { [weak self, unowned layer = pointCloudLayer] _ in
+                self?.pointCloudLayerDidLoad(layer)
+            }
             scene.operationalLayers.add(pointCloudLayer)
         }
         
         return scene
+    }
+    
+    /// Called in response to the point cloud layer load operation completing.
+    ///
+    /// - Parameter layer: The point cloud layer that finished loading.
+    func pointCloudLayerDidLoad(_ layer: AGSPointCloudLayer) {
+        if let error = layer.loadError {
+            presentAlert(error: error)
+        } else if let extent = layer.fullExtent {
+            let viewpoint = AGSViewpoint(targetExtent: extent)
+            sceneView.setViewpoint(viewpoint)
+        }
     }
 }

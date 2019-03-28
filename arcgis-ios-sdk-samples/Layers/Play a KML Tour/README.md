@@ -10,13 +10,13 @@ KML, the file format used by Google Earth, supports creating tours, which can co
 
 ## How to use the sample
 
-The sample will load the KMZ file automatically. When a tour is found, the Play button will be enabled. Use the Play and Pause buttons to control the tour. When you're ready to show the tour, use the reset button to return the tour to the unplayed state.
+The sample will load the KMZ file from ArcGIS Online. When a tour is found, the Play button will be enabled. Use the Play and Pause buttons to control the tour. When you're ready to show the tour, use the reset button to return the tour to the unplayed state.
 
 ## How it works
 
 1. Load the KML dataset and add it to a layer.
 2. Create the KML tour controller. Wire up the buttons to the `play()`, `pause()`, and `rewind()` methods.
-3. Use a method to explore the tree of KML content and find a KML tour. Once a tour is found, provide it to the KML tour controller.
+3. Explore the tree of KML content and find a KML tour. Once a tour is found, provide it to the KML tour controller.
 4. Enable the buttons to allow the user to play, pause, and reset the tour.
 
 ## Relevant API
@@ -31,7 +31,7 @@ The sample will load the KMZ file automatically. When a tour is found, the Play 
 
 ## Offline data
 
-Data will be downloaded by the sample viewer automatically.
+Data will be downloaded from ArcGIS Online by the sample viewer automatically.
 
 * [Esri_tour.kmz](https://arcgisruntime.maps.arcgis.com/home/item.html?id=f10b1d37fdd645c9bc9b189fb546307c)
 

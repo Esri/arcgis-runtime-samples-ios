@@ -65,4 +65,13 @@ class ViewPointCloudDataOfflineViewController: UIViewController {
             sceneView.setViewpoint(viewpoint)
         }
     }
+    
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //add the source code button item to the right of navigation bar
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewPointCloudDataOfflineViewController"]
+    }
 }

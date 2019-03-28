@@ -1143,14 +1143,6 @@
 				<key>descriptionText</key>
 				<string>Shows how to search for webmaps within a portal using a keyword.</string>
 			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Integrated Windows Authentication</string>
-				<key>storyboardName</key>
-				<string>IntegratedWindowsAuthentication</string>
-				<key>descriptionText</key>
-				<string>Uses Windows credentials to access services hosted on a portal secured with Integrated Windows Authentication (IWA).</string>
-			</dict>
 		</array>
 	</dict>
 	<dict>

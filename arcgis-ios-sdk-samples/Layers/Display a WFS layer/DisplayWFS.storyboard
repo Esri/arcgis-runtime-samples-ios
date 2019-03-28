@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WJ0-oM-BES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--DisplayWFS View Controller-->
+        <scene sceneID="A89-fG-FDB">
+            <objects>
+                <viewController id="WJ0-oM-BES" customClass="DisplayWFSViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zup-VN-E5c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FpX-H6-pSj" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FpX-H6-pSj" firstAttribute="bottom" secondItem="zup-VN-E5c" secondAttribute="bottom" id="19p-ax-SVc"/>
+                            <constraint firstItem="FpX-H6-pSj" firstAttribute="leading" secondItem="zup-VN-E5c" secondAttribute="leading" id="Bbn-Za-JKv"/>
+                            <constraint firstItem="FpX-H6-pSj" firstAttribute="trailing" secondItem="zup-VN-E5c" secondAttribute="trailing" id="Y3Q-Hb-Dh4"/>
+                            <constraint firstItem="FpX-H6-pSj" firstAttribute="top" secondItem="ejz-Xj-SLi" secondAttribute="top" id="gQG-S5-qfz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ejz-Xj-SLi"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="FpX-H6-pSj" id="rbP-ph-NKj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="reP-a5-OaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-140" y="-18"/>
+        </scene>
+    </scenes>
+</document>

@@ -10,14 +10,14 @@ By default, a scene's terrain is fully opaque and the camera cannot go undergrou
 
 ## How it works
 
-1. Display an `ArcGISScene` in a `SceneView` which contains layers with underground features.
+1. Display an `AGSScene` in an `AGSSceneView` which contains layers with underground features.
 2. To see underground, get the scene's base surface and set its opacity to a value between 0 and 1.
-2. To allow the camera to go underground, set the surface's navigation constraint to `NONE`.
+2. To allow the camera to go underground, set the surface's navigation constraint to `none`.
 
 ## Relevant API
 
-- `Surface`
-- `Surface.NavigationConstraint`
+- `AGSSurface`
+- `AGSSurface.navigationConstraint`
 
 ## Tags
 

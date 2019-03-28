@@ -13,7 +13,7 @@
         <!--View Content Beneath Terrain Surface View Controller-->
         <scene sceneID="aNB-G5-cYr">
             <objects>
-                <viewController id="gTU-Ti-FAh" customClass="viewContentBeneathTerrainSurfaceViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gTU-Ti-FAh" customClass="ViewContentBeneathTerrainSurfaceViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YpB-hG-LRB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                         <viewLayoutGuide key="safeArea" id="r38-Hp-IzQ"/>
                     </view>
                     <connections>
-                        <outlet property="sceneView" destination="30G-QP-LlT" id="752-1C-IFB"/>
+                        <outlet property="sceneView" destination="30G-QP-LlT" id="mE9-7f-72U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imG-4F-vuG" userLabel="First Responder" sceneMemberID="firstResponder"/>

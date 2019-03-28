@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class viewContentBeneathTerrainSurfaceViewController: UIViewController {
+class ViewContentBeneathTerrainSurfaceViewController: UIViewController {
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
             sceneView.scene = makeScene()
@@ -45,6 +45,6 @@ class viewContentBeneathTerrainSurfaceViewController: UIViewController {
         super.viewDidLoad()
 
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["viewContentBeneathTerrainSurfaceViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewContentBeneathTerrainSurfaceViewController"]
     }
 }

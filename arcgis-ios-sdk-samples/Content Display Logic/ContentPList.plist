@@ -517,6 +517,14 @@
 				<key>storyboardName</key>
 				<string>LoadWFSWithXMLQuery</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Browse WFS layers</string>
+				<key>descriptionText</key>
+				<string>Browse a WFS service for layers and add them to the map.</string>
+				<key>storyboardName</key>
+				<string>BrowseWFSLayers</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

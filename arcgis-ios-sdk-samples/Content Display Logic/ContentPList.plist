@@ -1327,6 +1327,18 @@
 				<key>descriptionText</key>
 				<string>View a point scene layer from a scene service</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>View point cloud data offline</string>
+				<key>descriptionText</key>
+				<string>Display local 3D point cloud data.</string>
+				<key>storyboardName</key>
+				<string>ViewPointCloudDataOffline</string>
+				<key>dependency</key>
+				<array>
+					<string>sandiego-north-balboa-pointcloud</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 </array>

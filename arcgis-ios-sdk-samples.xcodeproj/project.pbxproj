@@ -503,15 +503,20 @@
 		4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
 		4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */; };
 		4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
+		4CA72CF4224D103E00F8DCE1 /* PortalItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */; };
+		4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */; };
 		4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
 		4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
 		4CAC91D62242929500663A10 /* MapReferenceScaleLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */; };
 		4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */; };
 		4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
 		4CAC91DC2242AB6D00663A10 /* LoadWFSWithXMLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
+		4CB506D7224C3975006A3471 /* sandiego-north-balboa-pointcloud.slpk in Resources */ = {isa = PBXBuildFile; fileRef = 4CB506D6224C3945006A3471 /* sandiego-north-balboa-pointcloud.slpk */; settings = {ASSET_TAGS = ("sandiego-north-balboa-pointcloud", ); }; };
 		4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
 		4CCA30C1223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */; };
+		4CCA30C622386413009D2AEF /* ViewPointCloudDataOffline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCA30C522386413009D2AEF /* ViewPointCloudDataOffline.storyboard */; };
+		4CCA30C822386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */; };
 		4CCA30CF22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */; };
 		4CCA30D122399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */; };
 		4CCA30D22239B6DE009D2AEF /* AddIntegratedMeshLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */; };
@@ -883,6 +888,7 @@
 				4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */,
 				4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */,
 				4CAC91D62242929500663A10 /* MapReferenceScaleLayerSelectionViewController.swift in CopyFiles */,
+				4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1251,11 +1257,16 @@
 		4C73C83421112B4300B0F9C7 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Dynamic/ArcGIS.framework; sourceTree = "<absolute>"; };
 		4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SceneLayerSelection.storyboard; sourceTree = "<group>"; };
+		4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PortalItems.plist; sourceTree = "<group>"; };
 		4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadWFSWithXMLQuery.storyboard; sourceTree = "<group>"; };
 		4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWFSWithXMLQueryViewController.swift; sourceTree = "<group>"; };
+		4CB506D4224C2DF1006A3471 /* download-portal-item-data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "download-portal-item-data.swift"; sourceTree = "<group>"; };
+		4CB506D6224C3945006A3471 /* sandiego-north-balboa-pointcloud.slpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sandiego-north-balboa-pointcloud.slpk"; sourceTree = "<group>"; };
 		4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleWebMapServiceLayerViewController.swift; sourceTree = "<group>"; };
 		4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StyleWebMapServiceLayer.storyboard; sourceTree = "<group>"; };
 		4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift; sourceTree = "<group>"; };
+		4CCA30C522386413009D2AEF /* ViewPointCloudDataOffline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewPointCloudDataOffline.storyboard; sourceTree = "<group>"; };
+		4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPointCloudDataOfflineViewController.swift; sourceTree = "<group>"; };
 		4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddIntegratedMeshLayer.storyboard; sourceTree = "<group>"; };
 		4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIntegratedMeshLayerViewController.swift; sourceTree = "<group>"; };
 		4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurementAnalysisViewController.swift; sourceTree = "<group>"; };
@@ -1651,6 +1662,8 @@
 				3E23A9EE1AFC28F6002E2214 /* Images.xcassets */,
 				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
 				4CD2B5552142EAF900767D87 /* arcgis-ios-sdk-samplesTests */,
+				4CB506D3224C2DBC006A3471 /* Portal Data */,
+				4CB506D2224C2DA5006A3471 /* Scripts */,
 				4C73C83321112AFF00B0F9C7 /* Frameworks */,
 				3E23A9E11AFC28F6002E2214 /* Products */,
 			);
@@ -1693,6 +1706,7 @@
 			isa = PBXGroup;
 			children = (
 				3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */,
+				4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */,
 				3E4A64AF1D8B37DA00CF930C /* Settings.bundle */,
 				3E676DEF1B1D0B6000D4029A /* Audio Files */,
 				3E3B2C201BBCADB300A99C5E /* Cells */,
@@ -2827,6 +2841,7 @@
 				4CCA30CD22399A4A009D2AEF /* Add an integrated mesh layer */,
 				1682CAEA22404EFD0039C3E1 /* View content beneath the terrain surface */,
 				169CDBC8223C6A3A00ABFF0A /* Add a point scene layer */,
+				4CCA30C4223863EC009D2AEF /* View point cloud data offline */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -3048,6 +3063,14 @@
 			path = "Scene layer selection";
 			sourceTree = "<group>";
 		};
+		4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */ = {
+			isa = PBXGroup;
+			children = (
+				4CB506D6224C3945006A3471 /* sandiego-north-balboa-pointcloud.slpk */,
+			);
+			path = "Scene Layer Packages";
+			sourceTree = "<group>";
+		};
 		4CAC91D72242AAB700663A10 /* Load WFS with XML query */ = {
 			isa = PBXGroup;
 			children = (
@@ -3057,6 +3080,22 @@
 			path = "Load WFS with XML query";
 			sourceTree = "<group>";
 		};
+		4CB506D2224C2DA5006A3471 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				4CB506D4224C2DF1006A3471 /* download-portal-item-data.swift */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
+			isa = PBXGroup;
+			children = (
+				4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */,
+			);
+			path = "Portal Data";
+			sourceTree = "<group>";
+		};
 		4CC00F7220C1FAA8004244EF /* Style WMS layers */ = {
 			isa = PBXGroup;
 			children = (
@@ -3064,6 +3103,15 @@
 				4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */,
 			);
 			path = "Style WMS layers";
+			sourceTree = "<group>";
+		};
+		4CCA30C4223863EC009D2AEF /* View point cloud data offline */ = {
+			isa = PBXGroup;
+			children = (
+				4CCA30C522386413009D2AEF /* ViewPointCloudDataOffline.storyboard */,
+				4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */,
+			);
+			path = "View point cloud data offline";
 			sourceTree = "<group>";
 		};
 		4CCA30CD22399A4A009D2AEF /* Add an integrated mesh layer */ = {
@@ -3449,6 +3497,7 @@
 			buildPhases = (
 				3E23A9DC1AFC28F6002E2214 /* Sources */,
 				3E23A9DD1AFC28F6002E2214 /* Frameworks */,
+				4CB506D1224C2C20006A3471 /* Download Portal Item Data */,
 				3E23A9DE1AFC28F6002E2214 /* Resources */,
 				3E03F0951B056DC40078EB36 /* CopyFiles */,
 				3ED029A21B8E5D4D00ACA70D /* ShellScript */,
@@ -3510,6 +3559,7 @@
 					SubdivisionsShapefile,
 					TilePackages,
 					YellowstoneMMPK,
+					"sandiego-north-balboa-pointcloud",
 				);
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0940;
@@ -3612,10 +3662,12 @@
 				3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */,
 				C734B1F521C2DDE500E1BE76 /* ClipGeometry.storyboard in Resources */,
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
+				4CB506D7224C3975006A3471 /* sandiego-north-balboa-pointcloud.slpk in Resources */,
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				D9E2E76020EEB8FF001D0AE0 /* Public_Art.dbf in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
+				4CCA30C622386413009D2AEF /* ViewPointCloudDataOffline.storyboard in Resources */,
 				3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */,
 				D9316A631FDB4F060075AD92 /* ReadGeopackage.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
@@ -3739,6 +3791,7 @@
 				D9E2E76620EEB8FF001D0AE0 /* Public_Art.shp.xml in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
+				4CA72CF4224D103E00F8DCE1 /* PortalItems.plist in Resources */,
 				C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
@@ -3795,7 +3848,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "echo $BUILT_PRODUCTS_DIR\n#readme for the project to skip\nDEFAULT_README=$SRCROOT/README.md\n#find all README.md files in the project\nfind ${SRCROOT} -name \"README.md\" | while read file\ndo\n    #skip if its the default readme for project\n    if [ \"$file\" = \"$DEFAULT_README\" ]\n    then\n        echo $BUILT_PRODUCTS_DIR\n        continue\n    fi\n    #extract the folder name from the path\n    FILE_PATH=$(dirname \"$file\")\n    FOLDER_NAME=$(basename \"$FILE_PATH\")\n    #path of the folder to be created for each readme\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/${FOLDER_NAME}\n\n    #for legacy setting the build folder is also within the SRCROOT folder\n    #check if source path is equal to destination then skip\n    if [ \"$file\" != \"${BUILD_APP_DIR}/README.md\" ]\n    then\n        mkdir -p \"${BUILD_APP_DIR}\"\n        cp \"${file}\" \"${BUILD_APP_DIR}/README.md\"\n    fi\ndone";
+			shellScript = "echo $BUILT_PRODUCTS_DIR\n#readme for the project to skip\nDEFAULT_README=$SRCROOT/README.md\n#find all README.md files in the project\nfind ${SRCROOT} -name \"README.md\" | while read file\ndo\n    #skip if its the default readme for project\n    if [ \"$file\" = \"$DEFAULT_README\" ]\n    then\n        echo $BUILT_PRODUCTS_DIR\n        continue\n    fi\n    #extract the folder name from the path\n    FILE_PATH=$(dirname \"$file\")\n    FOLDER_NAME=$(basename \"$FILE_PATH\")\n    #path of the folder to be created for each readme\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/${FOLDER_NAME}\n\n    #for legacy setting the build folder is also within the SRCROOT folder\n    #check if source path is equal to destination then skip\n    if [ \"$file\" != \"${BUILD_APP_DIR}/README.md\" ]\n    then\n        mkdir -p \"${BUILD_APP_DIR}\"\n        cp \"${file}\" \"${BUILD_APP_DIR}/README.md\"\n    fi\ndone\n";
+		};
+		4CB506D1224C2C20006A3471 /* Download Portal Item Data */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/arcgis-ios-sdk-samples/Content Display Logic/PortalItems.plist",
+			);
+			name = "Download Portal Item Data";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PORTAL_ITEMS=$SCRIPT_INPUT_FILE_0\nDOWNLOAD_DIRECTORY=\"${SRCROOT}/Portal Data\"\nxcrun --sdk macosx swift \"${SRCROOT}/Scripts/download-portal-item-data.swift\" \"$PORTAL_ITEMS\" \"$DOWNLOAD_DIRECTORY\"\n";
 		};
 		4CBDB3192190E88F006E5D39 /* Lint Code */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3823,6 +3895,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E86C9121751D1E001C65C3 /* UIViewController.swift in Sources */,
+				4CCA30C822386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift in Sources */,
 				3EABC7921DB1772000C161C6 /* RGBRendererSettingsVC.swift in Sources */,
 				4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */,
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,

@@ -1313,6 +1313,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>View content beneath the terrain surface</string>
+				<key>descriptionText</key>
+				<string>See through terrain in a scene and move the camera underground.</string>
+				<key>storyboardName</key>
+				<string>ViewContentBeneathTerrainSurface</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Add a point scene layer</string>
 				<key>storyboardName</key>
 				<string>AddPointSceneLayer</string>

@@ -21,18 +21,18 @@ protocol OperationsListVCDelegate: AnyObject {
 class OperationsListViewController: UITableViewController {
     weak var delegate: OperationsListVCDelegate?
     
-    var operations: [String]!
+    var operations = [String]()
     
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.operations.count
+        return operations.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OperationCell", for: indexPath)
         
-        cell.textLabel?.text = self.operations[indexPath.row]
+        cell.textLabel?.text = operations[indexPath.row]
         
         return cell
     }

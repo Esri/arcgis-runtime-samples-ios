@@ -505,6 +505,9 @@
 		4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
 		4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
 		4CAC91D62242929500663A10 /* MapReferenceScaleLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */; };
+		4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */; };
+		4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
+		4CAC91DC2242AB6D00663A10 /* LoadWFSWithXMLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
 		4CB506D7224C3975006A3471 /* sandiego-north-balboa-pointcloud.slpk in Resources */ = {isa = PBXBuildFile; fileRef = 4CB506D6224C3945006A3471 /* sandiego-north-balboa-pointcloud.slpk */; settings = {ASSET_TAGS = ("sandiego-north-balboa-pointcloud", ); }; };
 		4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
@@ -873,6 +876,7 @@
 				4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */,
 				4CCA30D22239B6DE009D2AEF /* AddIntegratedMeshLayerViewController.swift in CopyFiles */,
 				4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */,
+				4CAC91DC2242AB6D00663A10 /* LoadWFSWithXMLQueryViewController.swift in CopyFiles */,
 				4CCA30D3223AEF2C009D2AEF /* IntegratedWindowsAuthenticationViewController.swift in CopyFiles */,
 				4CCA30D4223AEF2C009D2AEF /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in CopyFiles */,
 				4CCA30D5223AEF2C009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in CopyFiles */,
@@ -1248,6 +1252,8 @@
 		4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SceneLayerSelection.storyboard; sourceTree = "<group>"; };
 		4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PortalItems.plist; sourceTree = "<group>"; };
+		4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadWFSWithXMLQuery.storyboard; sourceTree = "<group>"; };
+		4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWFSWithXMLQueryViewController.swift; sourceTree = "<group>"; };
 		4CB506D4224C2DF1006A3471 /* download-portal-item-data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "download-portal-item-data.swift"; sourceTree = "<group>"; };
 		4CB506D6224C3945006A3471 /* sandiego-north-balboa-pointcloud.slpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sandiego-north-balboa-pointcloud.slpk"; sourceTree = "<group>"; };
 		4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleWebMapServiceLayerViewController.swift; sourceTree = "<group>"; };
@@ -2433,6 +2439,7 @@
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
 				C793B5E62166BB06000A7A10 /* OpenStreetMap layer */,
 				092A1C2222456D9500C5F230 /* Display a WFS layer */,
+				4CAC91D72242AAB700663A10 /* Load WFS with XML query */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -3046,6 +3053,15 @@
 				4CB506D6224C3945006A3471 /* sandiego-north-balboa-pointcloud.slpk */,
 			);
 			path = "Scene Layer Packages";
+			sourceTree = "<group>";
+		};
+		4CAC91D72242AAB700663A10 /* Load WFS with XML query */ = {
+			isa = PBXGroup;
+			children = (
+				4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */,
+				4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */,
+			);
+			path = "Load WFS with XML query";
 			sourceTree = "<group>";
 		};
 		4CB506D2224C2DA5006A3471 /* Scripts */ = {
@@ -3778,6 +3794,7 @@
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
 				D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */,
 				4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */,
+				4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
 				D9E2E76420EEB8FF001D0AE0 /* Public_Art.shp in Resources */,
@@ -3947,6 +3964,7 @@
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				215E23D421024715001DE092 /* SpatialRelationshipsViewController.swift in Sources */,
 				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsVC.swift in Sources */,
+				4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */,
 				166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */,
 				C7432D3A2187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift in Sources */,
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,

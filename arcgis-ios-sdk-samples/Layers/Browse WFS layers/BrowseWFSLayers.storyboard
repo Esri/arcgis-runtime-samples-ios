@@ -95,22 +95,23 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oo0-DJ-aZi">
-                                            <rect key="frame" x="16" y="11.5" width="42" height="20.5"/>
+                                            <rect key="frame" x="16" y="11" width="42" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="n0O-Fe-0GS">
-                                            <rect key="frame" x="310" y="6.5" width="51" height="31"/>
+                                            <rect key="frame" x="310" y="11" width="51" height="22"/>
                                         </switch>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="n0O-Fe-0GS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oo0-DJ-aZi" secondAttribute="trailing" constant="150" id="DYn-vV-8um"/>
                                         <constraint firstItem="oo0-DJ-aZi" firstAttribute="leading" secondItem="0eh-SC-W3k" secondAttribute="leadingMargin" id="ITM-f7-reN"/>
                                         <constraint firstItem="n0O-Fe-0GS" firstAttribute="trailing" secondItem="0eh-SC-W3k" secondAttribute="trailingMargin" id="LGO-hj-lV3"/>
-                                        <constraint firstAttribute="bottom" secondItem="oo0-DJ-aZi" secondAttribute="bottom" constant="11.5" id="Uii-5w-0dx"/>
-                                        <constraint firstItem="oo0-DJ-aZi" firstAttribute="top" secondItem="0eh-SC-W3k" secondAttribute="top" constant="11.5" id="shb-6j-B0c"/>
-                                        <constraint firstItem="n0O-Fe-0GS" firstAttribute="centerY" secondItem="0eh-SC-W3k" secondAttribute="centerY" id="sqy-9D-fS3"/>
+                                        <constraint firstItem="oo0-DJ-aZi" firstAttribute="bottom" secondItem="0eh-SC-W3k" secondAttribute="bottomMargin" id="Uii-5w-0dx"/>
+                                        <constraint firstItem="n0O-Fe-0GS" firstAttribute="bottom" secondItem="0eh-SC-W3k" secondAttribute="bottomMargin" id="WNC-oZ-yur"/>
+                                        <constraint firstItem="n0O-Fe-0GS" firstAttribute="top" secondItem="0eh-SC-W3k" secondAttribute="topMargin" id="f1n-5V-qKp"/>
+                                        <constraint firstItem="oo0-DJ-aZi" firstAttribute="top" secondItem="0eh-SC-W3k" secondAttribute="topMargin" id="shb-6j-B0c"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

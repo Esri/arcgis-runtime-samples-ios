@@ -22,12 +22,19 @@ class WFSLayersTableViewController: UITableViewController {
     // MapView to display the map with WFS features
     var mapView: AGSMapView?
     
+    // Layer Info for the layer that is currently drawn on map view
+    var selectedLayerInfo: AGSWFSLayerInfo?
+    
     private var shouldSwapCoordinateOrder = false
-    private var selectedLayerInfo: AGSWFSLayerInfo?
     private var lastQuery: AGSCancelable?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selectedLayerInfo = selectedLayerInfo, let selectedRow = allLayerInfos.firstIndex(of: selectedLayerInfo) {
+            let selectedIndexPath = IndexPath(row: selectedRow, section: 0)
+            tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .middle)
+            tableView.cellForRow(at: selectedIndexPath)?.accessoryType = .checkmark
+        }
     }
     
     // A convenience type for the table view sections.
@@ -83,8 +90,10 @@ class WFSLayersTableViewController: UITableViewController {
         
         // Check if there is a layer selected
         if tableView.indexPathForSelectedRow != nil {
-            // Query for features taking into account the updated swap order, and display the layer
-            displaySelectedLayer()
+            DispatchQueue.main.async {
+                // Query for features taking into account the updated swap order, and display the layer
+                self.displaySelectedLayer()
+            }
         }
     }
     
@@ -98,12 +107,14 @@ class WFSLayersTableViewController: UITableViewController {
         // add a checkmark to the selected cell
         selectedCell.accessoryType = .checkmark
         
-        if !(self.selectedLayerInfo == allLayerInfos[indexPath.row]) {
+        if self.selectedLayerInfo != allLayerInfos[indexPath.row] {
             // Get the selected layer info.
             self.selectedLayerInfo = allLayerInfos[indexPath.row]
             
-            // Query for features and display the selected layer
-            displaySelectedLayer()
+            DispatchQueue.main.async {
+                // Query for features and display the selected layer
+                self.displaySelectedLayer()
+            }
         }
     }
     
@@ -144,8 +155,10 @@ class WFSLayersTableViewController: UITableViewController {
         
         // Populate features based on query
         self.lastQuery = wfsFeatureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
+            guard let self = self else { return }
+            
             // Check and get results
-            if let result = result {
+            if let result = result, let mapView = self.mapView {
                 // The resulting features should be displayed on the map
                 // Print the count of features
                 print("Populated \(result.featureEnumerator().allObjects.count) features.")
@@ -154,22 +167,19 @@ class WFSLayersTableViewController: UITableViewController {
                 let wfsFeatureLayer = AGSFeatureLayer(featureTable: wfsFeatureTable)
                 
                 // Choose a renderer for the layer
-                wfsFeatureLayer.renderer = AGSRenderer.getRandomRendererForTable(wfsFeatureTable)
+                wfsFeatureLayer.renderer = AGSSimpleRenderer.random(wfsFeatureTable)
                 
-                // Remove current operational layers from map, if any
-                self?.mapView?.map?.operationalLayers.removeAllObjects()
-                
-                // Add the requested layer to map
-                self?.mapView?.map?.operationalLayers.add(wfsFeatureLayer)
+                // Replace map's operational layer
+                mapView.map?.operationalLayers.setArray([wfsFeatureLayer])
                 
                 // Zoom to the extent of the layer
-                self?.mapView?.setViewpointGeometry(selectedLayerInfo.extent!, padding: 50.0, completion: nil)
+                mapView.setViewpointGeometry(selectedLayerInfo.extent!, padding: 50.0)
             }
                 // Check for error. If it's a user canceled error, do nothing.
                 // Otherwise, display an alert.
             else if let error = error {
                 if (error as NSError).code != NSUserCancelledError {
-                    self?.presentAlert(error: error)
+                    self.presentAlert(error: error)
                 } else {
                     return
                 }
@@ -180,10 +190,12 @@ class WFSLayersTableViewController: UITableViewController {
     }
 }
 
-private extension AGSRenderer {
-    // Creates a renderer appropriate for the geometry type of the table,
-    // and symbolizes the renderer with a random color
-    static func getRandomRendererForTable(_ table: AGSFeatureTable) -> AGSRenderer? {
+private extension AGSSimpleRenderer {
+    /// Creates a renderer appropriate for the geometry type of the table,
+    /// and symbolizes the renderer with a random color
+    ///
+    /// - Returns: A new `AGSSimpleRenderer` object.
+    static func random(_ table: AGSFeatureTable) -> AGSSimpleRenderer? {
         switch table.geometryType {
         case .point, .multipoint:
             let simpleMarkerSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .random(), size: 4.0)

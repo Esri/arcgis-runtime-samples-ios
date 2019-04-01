@@ -12,10 +12,8 @@
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
 		09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */; };
 		09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
-		095BA9D8224E81F3008D2BF2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 095BA9D3224E81F3008D2BF2 /* README.md */; };
 		095BA9D9224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BA9D4224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift */; };
 		095BA9DA224E81F3008D2BF2 /* WFSLayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BA9D5224E81F3008D2BF2 /* WFSLayersTableViewController.swift */; };
-		095BA9DB224E81F3008D2BF2 /* image1.png in Resources */ = {isa = PBXBuildFile; fileRef = 095BA9D6224E81F3008D2BF2 /* image1.png */; };
 		095BA9DC224E81F3008D2BF2 /* BrowseWFSLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095BA9D7224E81F3008D2BF2 /* BrowseWFSLayers.storyboard */; };
 		095BA9DD224E8245008D2BF2 /* BrowseWFSLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 095BA9D4224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift */; };
 		095BA9DE224E8259008D2BF2 /* WFSLayersTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 095BA9D5224E81F3008D2BF2 /* WFSLayersTableViewController.swift */; };
@@ -909,10 +907,8 @@
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
 		09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterLayerUsingService.storyboard; sourceTree = "<group>"; };
-		095BA9D3224E81F3008D2BF2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		095BA9D4224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseWFSLayersViewController.swift; sourceTree = "<group>"; };
 		095BA9D5224E81F3008D2BF2 /* WFSLayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WFSLayersTableViewController.swift; sourceTree = "<group>"; };
-		095BA9D6224E81F3008D2BF2 /* image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image1.png; sourceTree = "<group>"; };
 		095BA9D7224E81F3008D2BF2 /* BrowseWFSLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BrowseWFSLayers.storyboard; sourceTree = "<group>"; };
 		09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBasedQueryVC.swift; sourceTree = "<group>"; };
 		09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeBasedQuery.storyboard; sourceTree = "<group>"; };
@@ -1401,15 +1397,12 @@
 		095BA9D2224E81F3008D2BF2 /* Browse WFS layers */ = {
 			isa = PBXGroup;
 			children = (
-				095BA9D3224E81F3008D2BF2 /* README.md */,
 				095BA9D4224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift */,
 				095BA9D5224E81F3008D2BF2 /* WFSLayersTableViewController.swift */,
-				095BA9D6224E81F3008D2BF2 /* image1.png */,
 				095BA9D7224E81F3008D2BF2 /* BrowseWFSLayers.storyboard */,
 			);
-			name = "Browse WFS layers";
-			path = "arcgis-ios-sdk-samples/Layers/Browse WFS layers";
-			sourceTree = SOURCE_ROOT;
+			path = "Browse WFS layers";
+			sourceTree = "<group>";
 		};
 		09607F7C1FDB60EC00FA43B6 /* Time based query */ = {
 			isa = PBXGroup;
@@ -3607,7 +3600,6 @@
 				3E5E094D1EF850BA00FF3454 /* ManageSublayers.storyboard in Resources */,
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
 				21EBBBFD1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard in Resources */,
-				095BA9DB224E81F3008D2BF2 /* image1.png in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
 				3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */,
@@ -3618,7 +3610,6 @@
 				4C478E4A223C7485009F8CDF /* MapReferenceScale.storyboard in Resources */,
 				3E6AE3F11C6D1B2E0026E59C /* san-diego in Resources */,
 				3E4BF44E1C5AF0AD00D85919 /* FindPlace.storyboard in Resources */,
-				095BA9D8224E81F3008D2BF2 /* README.md in Resources */,
 				3EABC7B11DB17B2C00C161C6 /* Shasta.tif.ovr in Resources */,
 				3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */,
 				3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */,

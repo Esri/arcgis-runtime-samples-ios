@@ -14,13 +14,13 @@ Some WFS services return coordinates in X,Y order, while others return coordinat
 
 ## How it works
 
-1. Create an instance of `AGSWFSService` with a URL to a WFS feature service. 
-2. Obtain a list of `AGSWFSLayerInfo` objects from `AGSWFSService.serviceInfo`
-3. When a layer is selected, create an instance of `AGSWFSFeatureTable` from the `AGSWFSLayerInfo` object.
-    3.1 Set the axis order if necessary.
-4. Create a feature layer from the feature table. 
-5. Add the feature layer to the map.
-    5.1 The sample uses randomly-generated symbology, similar to the behavior in ArcGIS Pro.
+* Create an instance of `AGSWFSService` with a URL to a WFS feature service. 
+* Obtain a list of `AGSWFSLayerInfo` objects from `AGSWFSService.serviceInfo`
+* When a layer is selected, create an instance of `AGSWFSFeatureTable` from the `AGSWFSLayerInfo` object.  
+    * Set the axis order if necessary.
+* Create a feature layer from the feature table. 
+* Add the feature layer to the map.  
+    * The sample uses randomly-generated symbology, similar to the behavior in ArcGIS Pro.
 
 ## Relevant API
 

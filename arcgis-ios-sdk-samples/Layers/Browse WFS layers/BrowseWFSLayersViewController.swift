@@ -21,6 +21,12 @@ class BrowseWFSLayersViewController: UIViewController {
     private var wfsService: AGSWFSService!
     private var wfsServiceInfo: AGSWFSServiceInfo?
     
+    // Layer Info for the layer that is currently drawn on map view.
+    private var displayedLayerInfo: AGSWFSLayerInfo? {
+        let selectedLayerInfo = ((mapView?.map?.operationalLayers.firstObject as? AGSFeatureLayer)?.featureTable as? AGSWFSFeatureTable)?.layerInfo
+        return selectedLayerInfo
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,7 +64,7 @@ class BrowseWFSLayersViewController: UIViewController {
             let controller = navController.viewControllers.first as? WFSLayersTableViewController {
             controller.mapView = mapView
             controller.allLayerInfos = (self.wfsServiceInfo?.layerInfos)!
-            
+            controller.selectedLayerInfo = displayedLayerInfo
             navController.presentationController?.delegate = self
             controller.preferredContentSize = {
                 let height: CGFloat

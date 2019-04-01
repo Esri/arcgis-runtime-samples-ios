@@ -63,14 +63,14 @@ class SceneSymbolsViewController: UIViewController {
         let diamondSymbol = AGSSimpleMarkerSceneSymbol(style: .diamond, color: .random(), height: 200, width: 200, depth: 200, anchorPosition: .center)
         let sphereSymbol = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .random(), height: 200, width: 200, depth: 200, anchorPosition: .center)
         let tetrahedronSymbol = AGSSimpleMarkerSceneSymbol(style: .tetrahedron, color: .random(), height: 200, width: 200, depth: 200, anchorPosition: .center)
-        
+
         // Create graphics for each symbol.
         let symbols = [coneSymbol, cubeSymbol, cylinderSymbol, diamondSymbol, sphereSymbol, tetrahedronSymbol]
         let graphics = symbols.enumerated().map { (offset, symbol) -> AGSGraphic in
             let point = AGSPoint(x: x + 0.01 * Double(offset), y: y, z: z, spatialReference: .wgs84())
             return AGSGraphic(geometry: point, symbol: symbol)
         }
-        
+
         return graphics
     }
 }

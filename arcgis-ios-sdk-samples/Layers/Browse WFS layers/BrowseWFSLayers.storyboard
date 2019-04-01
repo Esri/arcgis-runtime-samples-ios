@@ -101,14 +101,15 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="n0O-Fe-0GS">
-                                            <rect key="frame" x="312" y="6.5" width="51" height="31"/>
+                                            <rect key="frame" x="310" y="6.5" width="51" height="31"/>
                                         </switch>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="n0O-Fe-0GS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oo0-DJ-aZi" secondAttribute="trailing" constant="150" id="DYn-vV-8um"/>
-                                        <constraint firstItem="oo0-DJ-aZi" firstAttribute="leading" secondItem="0eh-SC-W3k" secondAttribute="leading" constant="16" id="ITM-f7-reN"/>
-                                        <constraint firstAttribute="trailing" secondItem="n0O-Fe-0GS" secondAttribute="trailing" constant="14" id="LGO-hj-lV3"/>
-                                        <constraint firstItem="oo0-DJ-aZi" firstAttribute="centerY" secondItem="0eh-SC-W3k" secondAttribute="centerY" id="gB5-n8-mdn"/>
+                                        <constraint firstItem="oo0-DJ-aZi" firstAttribute="leading" secondItem="0eh-SC-W3k" secondAttribute="leadingMargin" id="ITM-f7-reN"/>
+                                        <constraint firstItem="n0O-Fe-0GS" firstAttribute="trailing" secondItem="0eh-SC-W3k" secondAttribute="trailingMargin" id="LGO-hj-lV3"/>
+                                        <constraint firstAttribute="bottom" secondItem="oo0-DJ-aZi" secondAttribute="bottom" constant="11.5" id="Uii-5w-0dx"/>
+                                        <constraint firstItem="oo0-DJ-aZi" firstAttribute="top" secondItem="0eh-SC-W3k" secondAttribute="top" constant="11.5" id="shb-6j-B0c"/>
                                         <constraint firstItem="n0O-Fe-0GS" firstAttribute="centerY" secondItem="0eh-SC-W3k" secondAttribute="centerY" id="sqy-9D-fS3"/>
                                     </constraints>
                                 </tableViewCellContentView>

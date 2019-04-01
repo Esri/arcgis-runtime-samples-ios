@@ -90,10 +90,8 @@ class WFSLayersTableViewController: UITableViewController {
         
         // Check if there is a layer selected
         if tableView.indexPathForSelectedRow != nil {
-            DispatchQueue.main.async {
                 // Query for features taking into account the updated swap order, and display the layer
-                self.displaySelectedLayer()
-            }
+                displaySelectedLayer()
         }
     }
     
@@ -110,11 +108,9 @@ class WFSLayersTableViewController: UITableViewController {
         if self.selectedLayerInfo != allLayerInfos[indexPath.row] {
             // Get the selected layer info.
             self.selectedLayerInfo = allLayerInfos[indexPath.row]
-            
-            DispatchQueue.main.async {
-                // Query for features and display the selected layer
-                self.displaySelectedLayer()
-            }
+    
+            // Query for features and display the selected layer
+            displaySelectedLayer()
         }
     }
     

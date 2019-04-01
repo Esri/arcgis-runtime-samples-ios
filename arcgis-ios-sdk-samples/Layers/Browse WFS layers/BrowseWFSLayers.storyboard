@@ -96,9 +96,6 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oo0-DJ-aZi">
                                             <rect key="frame" x="16" y="11.5" width="42" height="20.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="2gH-eN-RTP"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -108,6 +105,7 @@
                                         </switch>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="n0O-Fe-0GS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oo0-DJ-aZi" secondAttribute="trailing" constant="150" id="DYn-vV-8um"/>
                                         <constraint firstItem="oo0-DJ-aZi" firstAttribute="leading" secondItem="0eh-SC-W3k" secondAttribute="leading" constant="16" id="ITM-f7-reN"/>
                                         <constraint firstAttribute="trailing" secondItem="n0O-Fe-0GS" secondAttribute="trailing" constant="14" id="LGO-hj-lV3"/>
                                         <constraint firstItem="oo0-DJ-aZi" firstAttribute="centerY" secondItem="0eh-SC-W3k" secondAttribute="centerY" id="gB5-n8-mdn"/>

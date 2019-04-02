@@ -1321,11 +1321,31 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>View content beneath the terrain surface</string>
+				<key>descriptionText</key>
+				<string>See through terrain in a scene and move the camera underground.</string>
+				<key>storyboardName</key>
+				<string>ViewContentBeneathTerrainSurface</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Add a point scene layer</string>
 				<key>storyboardName</key>
 				<string>AddPointSceneLayer</string>
 				<key>descriptionText</key>
 				<string>View a point scene layer from a scene service</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>View point cloud data offline</string>
+				<key>descriptionText</key>
+				<string>Display local 3D point cloud data.</string>
+				<key>storyboardName</key>
+				<string>ViewPointCloudDataOffline</string>
+				<key>dependency</key>
+				<array>
+					<string>sandiego-north-balboa-pointcloud</string>
+				</array>
 			</dict>
 		</array>
 	</dict>

@@ -12,11 +12,6 @@
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
 		09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */; };
 		09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
-		095BA9D9224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BA9D4224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift */; };
-		095BA9DA224E81F3008D2BF2 /* WFSLayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BA9D5224E81F3008D2BF2 /* WFSLayersTableViewController.swift */; };
-		095BA9DC224E81F3008D2BF2 /* BrowseWFSLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095BA9D7224E81F3008D2BF2 /* BrowseWFSLayers.storyboard */; };
-		095BA9DD224E8245008D2BF2 /* BrowseWFSLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 095BA9D4224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift */; };
-		095BA9DE224E8259008D2BF2 /* WFSLayersTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 095BA9D5224E81F3008D2BF2 /* WFSLayersTableViewController.swift */; };
 		09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
 		09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
 		09607F851FDB61DC00FA43B6 /* TimeBasedQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */; };
@@ -51,6 +46,9 @@
 		166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */; };
 		166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */; };
 		166E8F9F1EE62E2400C57C46 /* RasterLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */; };
+		1682CAEC22404F330039C3E1 /* ViewContentBeneathTerrainSurface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1682CAEB22404F330039C3E1 /* ViewContentBeneathTerrainSurface.storyboard */; };
+		1682CAEE22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682CAED22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift */; };
+		1682CAF1224056430039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1682CAED22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift */; };
 		169CDBCA223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169CDBC9223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard */; };
 		169CDBCC223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */; };
 		215E23D321024715001DE092 /* SpatialRelationships.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 215E23CF21024715001DE092 /* SpatialRelationships.storyboard */; };
@@ -505,15 +503,20 @@
 		4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
 		4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */; };
 		4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
+		4CA72CF4224D103E00F8DCE1 /* PortalItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */; };
+		4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */; };
 		4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
 		4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
 		4CAC91D62242929500663A10 /* MapReferenceScaleLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */; };
 		4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */; };
 		4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
 		4CAC91DC2242AB6D00663A10 /* LoadWFSWithXMLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
+		4CB506D7224C3975006A3471 /* sandiego-north-balboa-pointcloud.slpk in Resources */ = {isa = PBXBuildFile; fileRef = 4CB506D6224C3945006A3471 /* sandiego-north-balboa-pointcloud.slpk */; settings = {ASSET_TAGS = ("sandiego-north-balboa-pointcloud", ); }; };
 		4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
 		4CCA30C1223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */; };
+		4CCA30C622386413009D2AEF /* ViewPointCloudDataOffline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCA30C522386413009D2AEF /* ViewPointCloudDataOffline.storyboard */; };
+		4CCA30C822386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */; };
 		4CCA30CF22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */; };
 		4CCA30D122399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */; };
 		4CCA30D22239B6DE009D2AEF /* AddIntegratedMeshLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */; };
@@ -682,8 +685,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				095BA9DE224E8259008D2BF2 /* WFSLayersTableViewController.swift in CopyFiles */,
-				095BA9DD224E8245008D2BF2 /* BrowseWFSLayersViewController.swift in CopyFiles */,
+				1682CAF1224056430039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in CopyFiles */,
 				097426BF22456EE00067E9D1 /* DisplayWFSViewController.swift in CopyFiles */,
 				165723CB223C70260097D6AA /* AddPointSceneLayerViewController.swift in CopyFiles */,
 				C7BE9C50219F5052003A03D2 /* SpatialRelationshipsTableViewController.swift in CopyFiles */,
@@ -886,6 +888,7 @@
 				4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */,
 				4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */,
 				4CAC91D62242929500663A10 /* MapReferenceScaleLayerSelectionViewController.swift in CopyFiles */,
+				4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,9 +910,6 @@
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
 		09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterLayerUsingService.storyboard; sourceTree = "<group>"; };
-		095BA9D4224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseWFSLayersViewController.swift; sourceTree = "<group>"; };
-		095BA9D5224E81F3008D2BF2 /* WFSLayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WFSLayersTableViewController.swift; sourceTree = "<group>"; };
-		095BA9D7224E81F3008D2BF2 /* BrowseWFSLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BrowseWFSLayers.storyboard; sourceTree = "<group>"; };
 		09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBasedQueryVC.swift; sourceTree = "<group>"; };
 		09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeBasedQuery.storyboard; sourceTree = "<group>"; };
 		10859BA71FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerExtrusion.storyboard; sourceTree = "<group>"; };
@@ -931,6 +931,8 @@
 		12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedCameraViewController.swift; sourceTree = "<group>"; };
 		166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayer.storyboard; sourceTree = "<group>"; };
 		166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerViewController.swift; sourceTree = "<group>"; };
+		1682CAEB22404F330039C3E1 /* ViewContentBeneathTerrainSurface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewContentBeneathTerrainSurface.storyboard; sourceTree = "<group>"; };
+		1682CAED22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContentBeneathTerrainSurfaceViewController.swift; sourceTree = "<group>"; };
 		169CDBC9223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPointSceneLayer.storyboard; sourceTree = "<group>"; };
 		169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPointSceneLayerViewController.swift; sourceTree = "<group>"; };
 		215E23CF21024715001DE092 /* SpatialRelationships.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpatialRelationships.storyboard; sourceTree = "<group>"; };
@@ -1255,11 +1257,16 @@
 		4C73C83421112B4300B0F9C7 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Dynamic/ArcGIS.framework; sourceTree = "<absolute>"; };
 		4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SceneLayerSelection.storyboard; sourceTree = "<group>"; };
+		4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PortalItems.plist; sourceTree = "<group>"; };
 		4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadWFSWithXMLQuery.storyboard; sourceTree = "<group>"; };
 		4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWFSWithXMLQueryViewController.swift; sourceTree = "<group>"; };
+		4CB506D4224C2DF1006A3471 /* download-portal-item-data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "download-portal-item-data.swift"; sourceTree = "<group>"; };
+		4CB506D6224C3945006A3471 /* sandiego-north-balboa-pointcloud.slpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sandiego-north-balboa-pointcloud.slpk"; sourceTree = "<group>"; };
 		4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleWebMapServiceLayerViewController.swift; sourceTree = "<group>"; };
 		4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StyleWebMapServiceLayer.storyboard; sourceTree = "<group>"; };
 		4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift; sourceTree = "<group>"; };
+		4CCA30C522386413009D2AEF /* ViewPointCloudDataOffline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewPointCloudDataOffline.storyboard; sourceTree = "<group>"; };
+		4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPointCloudDataOfflineViewController.swift; sourceTree = "<group>"; };
 		4CCA30CE22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddIntegratedMeshLayer.storyboard; sourceTree = "<group>"; };
 		4CCA30D022399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIntegratedMeshLayerViewController.swift; sourceTree = "<group>"; };
 		4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurementAnalysisViewController.swift; sourceTree = "<group>"; };
@@ -1394,16 +1401,6 @@
 			path = "Display a WFS layer";
 			sourceTree = "<group>";
 		};
-		095BA9D2224E81F3008D2BF2 /* Browse WFS layers */ = {
-			isa = PBXGroup;
-			children = (
-				095BA9D4224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift */,
-				095BA9D5224E81F3008D2BF2 /* WFSLayersTableViewController.swift */,
-				095BA9D7224E81F3008D2BF2 /* BrowseWFSLayers.storyboard */,
-			);
-			path = "Browse WFS layers";
-			sourceTree = "<group>";
-		};
 		09607F7C1FDB60EC00FA43B6 /* Time based query */ = {
 			isa = PBXGroup;
 			children = (
@@ -1502,6 +1499,15 @@
 				166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */,
 			);
 			path = "Raster layer (file)";
+			sourceTree = "<group>";
+		};
+		1682CAEA22404EFD0039C3E1 /* View content beneath the terrain surface */ = {
+			isa = PBXGroup;
+			children = (
+				1682CAEB22404F330039C3E1 /* ViewContentBeneathTerrainSurface.storyboard */,
+				1682CAED22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift */,
+			);
+			path = "View content beneath the terrain surface";
 			sourceTree = "<group>";
 		};
 		169CDBC8223C6A3A00ABFF0A /* Add a point scene layer */ = {
@@ -1656,6 +1662,8 @@
 				3E23A9EE1AFC28F6002E2214 /* Images.xcassets */,
 				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
 				4CD2B5552142EAF900767D87 /* arcgis-ios-sdk-samplesTests */,
+				4CB506D3224C2DBC006A3471 /* Portal Data */,
+				4CB506D2224C2DA5006A3471 /* Scripts */,
 				4C73C83321112AFF00B0F9C7 /* Frameworks */,
 				3E23A9E11AFC28F6002E2214 /* Products */,
 			);
@@ -1698,6 +1706,7 @@
 			isa = PBXGroup;
 			children = (
 				3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */,
+				4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */,
 				3E4A64AF1D8B37DA00CF930C /* Settings.bundle */,
 				3E676DEF1B1D0B6000D4029A /* Audio Files */,
 				3E3B2C201BBCADB300A99C5E /* Cells */,
@@ -2445,7 +2454,6 @@
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
 				C793B5E62166BB06000A7A10 /* OpenStreetMap layer */,
 				092A1C2222456D9500C5F230 /* Display a WFS layer */,
-				095BA9D2224E81F3008D2BF2 /* Browse WFS layers */,
 				4CAC91D72242AAB700663A10 /* Load WFS with XML query */,
 			);
 			path = Layers;
@@ -2831,7 +2839,9 @@
 				C7AF466221B1DC500050CC49 /* Sync map and scene views */,
 				C7AF465C21B1C84A0050CC49 /* Change atmosphere effect */,
 				4CCA30CD22399A4A009D2AEF /* Add an integrated mesh layer */,
+				1682CAEA22404EFD0039C3E1 /* View content beneath the terrain surface */,
 				169CDBC8223C6A3A00ABFF0A /* Add a point scene layer */,
+				4CCA30C4223863EC009D2AEF /* View point cloud data offline */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -3053,6 +3063,14 @@
 			path = "Scene layer selection";
 			sourceTree = "<group>";
 		};
+		4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */ = {
+			isa = PBXGroup;
+			children = (
+				4CB506D6224C3945006A3471 /* sandiego-north-balboa-pointcloud.slpk */,
+			);
+			path = "Scene Layer Packages";
+			sourceTree = "<group>";
+		};
 		4CAC91D72242AAB700663A10 /* Load WFS with XML query */ = {
 			isa = PBXGroup;
 			children = (
@@ -3062,6 +3080,22 @@
 			path = "Load WFS with XML query";
 			sourceTree = "<group>";
 		};
+		4CB506D2224C2DA5006A3471 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				4CB506D4224C2DF1006A3471 /* download-portal-item-data.swift */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
+			isa = PBXGroup;
+			children = (
+				4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */,
+			);
+			path = "Portal Data";
+			sourceTree = "<group>";
+		};
 		4CC00F7220C1FAA8004244EF /* Style WMS layers */ = {
 			isa = PBXGroup;
 			children = (
@@ -3069,6 +3103,15 @@
 				4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */,
 			);
 			path = "Style WMS layers";
+			sourceTree = "<group>";
+		};
+		4CCA30C4223863EC009D2AEF /* View point cloud data offline */ = {
+			isa = PBXGroup;
+			children = (
+				4CCA30C522386413009D2AEF /* ViewPointCloudDataOffline.storyboard */,
+				4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */,
+			);
+			path = "View point cloud data offline";
 			sourceTree = "<group>";
 		};
 		4CCA30CD22399A4A009D2AEF /* Add an integrated mesh layer */ = {
@@ -3454,6 +3497,7 @@
 			buildPhases = (
 				3E23A9DC1AFC28F6002E2214 /* Sources */,
 				3E23A9DD1AFC28F6002E2214 /* Frameworks */,
+				4CB506D1224C2C20006A3471 /* Download Portal Item Data */,
 				3E23A9DE1AFC28F6002E2214 /* Resources */,
 				3E03F0951B056DC40078EB36 /* CopyFiles */,
 				3ED029A21B8E5D4D00ACA70D /* ShellScript */,
@@ -3515,6 +3559,7 @@
 					SubdivisionsShapefile,
 					TilePackages,
 					YellowstoneMMPK,
+					"sandiego-north-balboa-pointcloud",
 				);
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0940;
@@ -3617,10 +3662,12 @@
 				3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */,
 				C734B1F521C2DDE500E1BE76 /* ClipGeometry.storyboard in Resources */,
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
+				4CB506D7224C3975006A3471 /* sandiego-north-balboa-pointcloud.slpk in Resources */,
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				D9E2E76020EEB8FF001D0AE0 /* Public_Art.dbf in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
+				4CCA30C622386413009D2AEF /* ViewPointCloudDataOffline.storyboard in Resources */,
 				3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */,
 				D9316A631FDB4F060075AD92 /* ReadGeopackage.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
@@ -3702,6 +3749,7 @@
 				12BF9E451FE9D77000B1E6C4 /* ViewshedCamera.storyboard in Resources */,
 				10961CA61EF2FFD4008A7CEC /* TerrainExaggeration.storyboard in Resources */,
 				3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */,
+				1682CAEC22404F330039C3E1 /* ViewContentBeneathTerrainSurface.storyboard in Resources */,
 				3E4BF4481C5AEF3D00D85919 /* ReverseGeocode.storyboard in Resources */,
 				3E8A05DE1ECE69840032231C /* Bristol.png in Resources */,
 				D9EE379920E2CC7700BF8AD1 /* dolmus.3ds in Resources */,
@@ -3743,6 +3791,7 @@
 				D9E2E76620EEB8FF001D0AE0 /* Public_Art.shp.xml in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
+				4CA72CF4224D103E00F8DCE1 /* PortalItems.plist in Resources */,
 				C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
@@ -3767,7 +3816,6 @@
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
 				D9E2E76420EEB8FF001D0AE0 /* Public_Art.shp in Resources */,
 				127D29F8200EC5FC00DD6CDC /* ViewshedLocation.storyboard in Resources */,
-				095BA9DC224E81F3008D2BF2 /* BrowseWFSLayers.storyboard in Resources */,
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
 				D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */,
 				E4B2E26B1FE31EEA00E610FF /* ViewshedGeoElement.storyboard in Resources */,
@@ -3800,7 +3848,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "echo $BUILT_PRODUCTS_DIR\n#readme for the project to skip\nDEFAULT_README=$SRCROOT/README.md\n#find all README.md files in the project\nfind ${SRCROOT} -name \"README.md\" | while read file\ndo\n    #skip if its the default readme for project\n    if [ \"$file\" = \"$DEFAULT_README\" ]\n    then\n        echo $BUILT_PRODUCTS_DIR\n        continue\n    fi\n    #extract the folder name from the path\n    FILE_PATH=$(dirname \"$file\")\n    FOLDER_NAME=$(basename \"$FILE_PATH\")\n    #path of the folder to be created for each readme\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/${FOLDER_NAME}\n\n    #for legacy setting the build folder is also within the SRCROOT folder\n    #check if source path is equal to destination then skip\n    if [ \"$file\" != \"${BUILD_APP_DIR}/README.md\" ]\n    then\n        mkdir -p \"${BUILD_APP_DIR}\"\n        cp \"${file}\" \"${BUILD_APP_DIR}/README.md\"\n    fi\ndone";
+			shellScript = "echo $BUILT_PRODUCTS_DIR\n#readme for the project to skip\nDEFAULT_README=$SRCROOT/README.md\n#find all README.md files in the project\nfind ${SRCROOT} -name \"README.md\" | while read file\ndo\n    #skip if its the default readme for project\n    if [ \"$file\" = \"$DEFAULT_README\" ]\n    then\n        echo $BUILT_PRODUCTS_DIR\n        continue\n    fi\n    #extract the folder name from the path\n    FILE_PATH=$(dirname \"$file\")\n    FOLDER_NAME=$(basename \"$FILE_PATH\")\n    #path of the folder to be created for each readme\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/${FOLDER_NAME}\n\n    #for legacy setting the build folder is also within the SRCROOT folder\n    #check if source path is equal to destination then skip\n    if [ \"$file\" != \"${BUILD_APP_DIR}/README.md\" ]\n    then\n        mkdir -p \"${BUILD_APP_DIR}\"\n        cp \"${file}\" \"${BUILD_APP_DIR}/README.md\"\n    fi\ndone\n";
+		};
+		4CB506D1224C2C20006A3471 /* Download Portal Item Data */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/arcgis-ios-sdk-samples/Content Display Logic/PortalItems.plist",
+			);
+			name = "Download Portal Item Data";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PORTAL_ITEMS=$SCRIPT_INPUT_FILE_0\nDOWNLOAD_DIRECTORY=\"${SRCROOT}/Portal Data\"\nxcrun --sdk macosx swift \"${SRCROOT}/Scripts/download-portal-item-data.swift\" \"$PORTAL_ITEMS\" \"$DOWNLOAD_DIRECTORY\"\n";
 		};
 		4CBDB3192190E88F006E5D39 /* Lint Code */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3828,11 +3895,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E86C9121751D1E001C65C3 /* UIViewController.swift in Sources */,
+				4CCA30C822386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift in Sources */,
 				3EABC7921DB1772000C161C6 /* RGBRendererSettingsVC.swift in Sources */,
 				4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */,
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,
 				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
-				095BA9D9224E81F3008D2BF2 /* BrowseWFSLayersViewController.swift in Sources */,
 				C7094786215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift in Sources */,
 				3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */,
 				E4B2E2691FE31ED500E610FF /* ViewshedGeoElementViewController.swift in Sources */,
@@ -3871,7 +3938,6 @@
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
 				169CDBCC223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift in Sources */,
 				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,
-				095BA9DA224E81F3008D2BF2 /* WFSLayersTableViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
 				3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */,
@@ -3879,6 +3945,7 @@
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
 				C7E9D7C621C0500300E6C47E /* BufferViewController.swift in Sources */,
 				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
+				1682CAEE22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,

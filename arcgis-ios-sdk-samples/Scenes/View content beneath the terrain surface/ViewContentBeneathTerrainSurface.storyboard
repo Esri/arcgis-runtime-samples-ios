@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gTU-Ti-FAh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Content Beneath Terrain Surface View Controller-->
+        <scene sceneID="aNB-G5-cYr">
+            <objects>
+                <viewController id="gTU-Ti-FAh" customClass="ViewContentBeneathTerrainSurfaceViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YpB-hG-LRB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30G-QP-LlT" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="30G-QP-LlT" firstAttribute="bottom" secondItem="YpB-hG-LRB" secondAttribute="bottom" id="NYL-cI-Dc3"/>
+                            <constraint firstItem="30G-QP-LlT" firstAttribute="trailing" secondItem="YpB-hG-LRB" secondAttribute="trailing" id="NmB-uN-FLh"/>
+                            <constraint firstItem="30G-QP-LlT" firstAttribute="top" secondItem="r38-Hp-IzQ" secondAttribute="top" id="PTk-Ow-rrs"/>
+                            <constraint firstItem="30G-QP-LlT" firstAttribute="leading" secondItem="YpB-hG-LRB" secondAttribute="leading" id="fyb-Qk-5MB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="r38-Hp-IzQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="30G-QP-LlT" id="mE9-7f-72U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="imG-4F-vuG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-151.19999999999999" y="11.244377811094454"/>
+        </scene>
+    </scenes>
+</document>

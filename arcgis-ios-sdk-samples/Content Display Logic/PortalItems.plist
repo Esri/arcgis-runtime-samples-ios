@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>https://arcgisruntime.maps.arcgis.com</key>
+	<array>
+		<dict>
+			<key>identifier</key>
+			<string>34da965ca51d4c68aa9b3a38edb29e00</string>
+			<key>filename</key>
+			<string>sandiego-north-balboa-pointcloud.slpk</string>
+		</dict>
+	</array>
+</dict>
+</plist>

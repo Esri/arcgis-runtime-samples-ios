@@ -70,7 +70,7 @@ class SceneSymbolsViewController: UIViewController {
             let point = AGSPoint(x: x + 0.01 * Double(offset), y: y, z: z, spatialReference: .wgs84())
             return AGSGraphic(geometry: point, symbol: symbol)
         }
-
+        
         return graphics
     }
 }

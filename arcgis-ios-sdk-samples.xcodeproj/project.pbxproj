@@ -3098,8 +3098,8 @@
 				4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */,
 			);
 			path = "Play a KML Tour";
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */ = {
 			isa = PBXGroup;
 			children = (

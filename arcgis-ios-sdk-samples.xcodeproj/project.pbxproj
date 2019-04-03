@@ -508,6 +508,9 @@
 		4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
 		4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */; };
 		4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
+		4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */; };
+		4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
+		4C99123D2249318100CCBC2A /* PlayKMLTourViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
 		4CA72CF4224D103E00F8DCE1 /* PortalItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */; };
 		4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */; };
 		4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
@@ -895,6 +898,7 @@
 				4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */,
 				4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */,
 				4CAC91D62242929500663A10 /* MapReferenceScaleLayerSelectionViewController.swift in CopyFiles */,
+				4C99123D2249318100CCBC2A /* PlayKMLTourViewController.swift in CopyFiles */,
 				4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1267,6 +1271,8 @@
 		4C73C83421112B4300B0F9C7 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Dynamic/ArcGIS.framework; sourceTree = "<absolute>"; };
 		4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SceneLayerSelection.storyboard; sourceTree = "<group>"; };
+		4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayKMLTour.storyboard; sourceTree = "<group>"; };
+		4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayKMLTourViewController.swift; sourceTree = "<group>"; };
 		4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PortalItems.plist; sourceTree = "<group>"; };
 		4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadWFSWithXMLQuery.storyboard; sourceTree = "<group>"; };
 		4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWFSWithXMLQueryViewController.swift; sourceTree = "<group>"; };
@@ -2472,6 +2478,7 @@
 				C793B5DB21666EB3000A7A10 /* List KML contents */,
 				4C0F27AF2152C9CE00496666 /* Identify KML features */,
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
+				4C991236224550E700CCBC2A /* Play a KML Tour */,
 				C793B5E62166BB06000A7A10 /* OpenStreetMap layer */,
 				092A1C2222456D9500C5F230 /* Display a WFS layer */,
 				098049A12253FC3F009C685D /* Browse WFS layers */,
@@ -3084,6 +3091,15 @@
 			path = "Scene layer selection";
 			sourceTree = "<group>";
 		};
+		4C991236224550E700CCBC2A /* Play a KML Tour */ = {
+			isa = PBXGroup;
+			children = (
+				4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */,
+				4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */,
+			);
+			path = "Play a KML Tour";
+            sourceTree = "<group>";
+        };
 		4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -3831,6 +3847,7 @@
 				D9E2E76120EEB8FF001D0AE0 /* Public_Art.cpg in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
+				4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */,
 				D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */,
 				4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */,
 				4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */,
@@ -4012,6 +4029,7 @@
 				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
 				940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */,
 				3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */,
+				4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */,
 				3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */,
 				3EF024E91ECBC10600166EC5 /* FormatCoordinatesViewController.swift in Sources */,
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,

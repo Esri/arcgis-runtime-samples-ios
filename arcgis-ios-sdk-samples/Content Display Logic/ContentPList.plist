@@ -495,6 +495,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Play a KML Tour</string>
+				<key>descriptionText</key>
+				<string>Play tours in KML files.</string>
+				<key>storyboardName</key>
+				<string>PlayKMLTour</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>OpenStreetMap layer</string>
 				<key>storyboardName</key>
 				<string>OpenStreetMapLayer</string>

@@ -75,6 +75,7 @@ class WFSLayersTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LayerCell", for: indexPath)
             let layerInfo = allLayerInfos[indexPath.row]
             cell.textLabel?.text = layerInfo.title
+            cell.accessoryType = (tableView.indexPathForSelectedRow == indexPath) ? .checkmark : .none
             return cell
         case .swapCoordinateOrder:
             let cell: SettingsTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as? SettingsTableViewCell)!

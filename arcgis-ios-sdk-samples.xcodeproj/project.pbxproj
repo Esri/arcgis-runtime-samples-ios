@@ -44,6 +44,11 @@
 		127E11D71FD0C3F8002CBD12 /* WMTSLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */; };
 		127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */; };
 		127E11D91FD0C457002CBD12 /* WMTSLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */; };
+		12B736422256A978007F93C6 /* GroupLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B7363D2256A978007F93C6 /* GroupLayersViewController.swift */; };
+		12B736442256A978007F93C6 /* GroupLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B7363F2256A978007F93C6 /* GroupLayers.storyboard */; };
+		12B736452256A978007F93C6 /* LayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B736402256A978007F93C6 /* LayersTableViewController.swift */; };
+		12B736472256ADB0007F93C6 /* GroupLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12B7363D2256A978007F93C6 /* GroupLayersViewController.swift */; };
+		12B736482256ADB0007F93C6 /* LayersTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12B736402256A978007F93C6 /* LayersTableViewController.swift */; };
 		12BF9E451FE9D77000B1E6C4 /* ViewshedCamera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */; };
 		12BF9E461FE9D77000B1E6C4 /* ViewshedCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
 		12BF9E471FE9D84E00B1E6C4 /* ViewshedCameraViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
@@ -515,7 +520,6 @@
 		4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */; };
 		4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
 		4C99123D2249318100CCBC2A /* PlayKMLTourViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
-		4CA72CF4224D103E00F8DCE1 /* PortalItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */; };
 		4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */; };
 		4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
 		4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
@@ -697,6 +701,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				12B736472256ADB0007F93C6 /* GroupLayersViewController.swift in CopyFiles */,
+				12B736482256ADB0007F93C6 /* LayersTableViewController.swift in CopyFiles */,
 				098049AC2253FC7B009C685D /* BrowseWFSLayersViewController.swift in CopyFiles */,
 				098049AD2253FC7B009C685D /* WFSLayersTableViewController.swift in CopyFiles */,
 				1682CAF1224056430039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in CopyFiles */,
@@ -946,6 +952,9 @@
 		127D29F5200EC5FC00DD6CDC /* ViewshedLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedLocation.storyboard; sourceTree = "<group>"; };
 		127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMTSLayer.storyboard; sourceTree = "<group>"; };
 		127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMTSLayerViewController.swift; sourceTree = "<group>"; };
+		12B7363D2256A978007F93C6 /* GroupLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLayersViewController.swift; sourceTree = "<group>"; };
+		12B7363F2256A978007F93C6 /* GroupLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroupLayers.storyboard; sourceTree = "<group>"; };
+		12B736402256A978007F93C6 /* LayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayersTableViewController.swift; sourceTree = "<group>"; };
 		12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedCamera.storyboard; sourceTree = "<group>"; };
 		12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedCameraViewController.swift; sourceTree = "<group>"; };
 		166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayer.storyboard; sourceTree = "<group>"; };
@@ -1515,6 +1524,16 @@
 				127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */,
 			);
 			path = "WMTS layer";
+			sourceTree = "<group>";
+		};
+		12B7363C2256A92E007F93C6 /* Group layers */ = {
+			isa = PBXGroup;
+			children = (
+				12B7363F2256A978007F93C6 /* GroupLayers.storyboard */,
+				12B7363D2256A978007F93C6 /* GroupLayersViewController.swift */,
+				12B736402256A978007F93C6 /* LayersTableViewController.swift */,
+			);
+			path = "Group layers";
 			sourceTree = "<group>";
 		};
 		12BF9E421FE9D77000B1E6C4 /* Viewshed (camera) */ = {
@@ -2491,6 +2510,7 @@
 				092A1C2222456D9500C5F230 /* Display a WFS layer */,
 				098049A12253FC3F009C685D /* Browse WFS layers */,
 				4CAC91D72242AAB700663A10 /* Load WFS with XML query */,
+				12B7363C2256A92E007F93C6 /* Group layers */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -3684,6 +3704,7 @@
 				C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */,
 				C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
+				12B736442256A978007F93C6 /* GroupLayers.storyboard in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
 				D9E2E76320EEB8FF001D0AE0 /* Public_Art.sbn in Resources */,
 				D9E2E75320EEAC58001D0AE0 /* FeatureLayerShapefile.storyboard in Resources */,
@@ -4047,6 +4068,7 @@
 				3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */,
 				4C478E5022402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift in Sources */,
 				3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */,
+				12B736422256A978007F93C6 /* GroupLayersViewController.swift in Sources */,
 				09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				215E23D421024715001DE092 /* SpatialRelationshipsViewController.swift in Sources */,
@@ -4120,6 +4142,7 @@
 				3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */,
 				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,
 				092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */,
+				12B736452256A978007F93C6 /* LayersTableViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
 				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift in Sources */,

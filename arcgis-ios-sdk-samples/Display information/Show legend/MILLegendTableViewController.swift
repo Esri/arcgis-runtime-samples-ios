@@ -18,13 +18,12 @@ import ArcGIS
 class MILLegendTableViewController: UITableViewController {
     var operationalLayers: NSMutableArray!
     var legendInfosDict = [String: [AGSLegendInfo]]()
-    private var orderArray: [AGSLayerContent]!
+    private var orderArray = [AGSLayerContent]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.orderArray = [AGSLayerContent]()
-        self.populateLegends(with: self.operationalLayers as AnyObject as! [AGSLayerContent])
+        self.populateLegends(with: self.operationalLayers as! [AGSLayerContent])
     }
     
     func populateLegends(with layers: [AGSLayerContent]) {
@@ -52,7 +51,7 @@ class MILLegendTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // Return the number of sections.
-        return self.orderArray?.count ?? 0
+        return orderArray.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

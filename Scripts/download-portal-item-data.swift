@@ -45,7 +45,8 @@ func makeDataURL(portalURL: URL, itemIdentifier: String) -> URL {
 /// - Returns: A new URL.
 func makeDownloadURL(downloadDirectoryURL: URL, filename: String) -> URL {
     let subdirectories = [
-        "slpk": "Scene Layer Packages"
+        "slpk": "Scene Layer Packages",
+        "mspk": "Mobile Scene Packages"
     ]
     var downloadURL = downloadDirectoryURL
     if let subdirectory = subdirectories[(filename as NSString).pathExtension] {

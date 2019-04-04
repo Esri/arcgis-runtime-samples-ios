@@ -1355,6 +1355,18 @@
 					<string>sandiego-north-balboa-pointcloud</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Open mobile scene (scene package)</string>
+				<key>descriptionText</key>
+				<string>Opens and displays a scene from a Mobile Scene Package (.mspk).</string>
+				<key>storyboardName</key>
+				<string>OpenMobileScene</string>
+				<key>dependency</key>
+				<array>
+					<string>philadelphia</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 </array>

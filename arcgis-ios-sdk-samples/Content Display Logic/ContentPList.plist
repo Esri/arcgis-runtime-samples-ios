@@ -495,6 +495,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Play a KML Tour</string>
+				<key>descriptionText</key>
+				<string>Play tours in KML files.</string>
+				<key>storyboardName</key>
+				<string>PlayKMLTour</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>OpenStreetMap layer</string>
 				<key>storyboardName</key>
 				<string>OpenStreetMapLayer</string>
@@ -516,6 +524,14 @@
 				<string>Load a WFS feature table using an XML query.</string>
 				<key>storyboardName</key>
 				<string>LoadWFSWithXMLQuery</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Browse WFS layers</string>
+				<key>descriptionText</key>
+				<string>Browse a WFS service for layers and add them to the map.</string>
+				<key>storyboardName</key>
+				<string>BrowseWFSLayers</string>
 			</dict>
 		</array>
 	</dict>

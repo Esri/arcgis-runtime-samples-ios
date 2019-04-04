@@ -16,6 +16,11 @@
 		09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
 		09607F851FDB61DC00FA43B6 /* TimeBasedQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */; };
 		097426BF22456EE00067E9D1 /* DisplayWFSViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
+		098049A82253FC3F009C685D /* BrowseWFSLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098049A32253FC3F009C685D /* BrowseWFSLayersViewController.swift */; };
+		098049A92253FC3F009C685D /* WFSLayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098049A42253FC3F009C685D /* WFSLayersTableViewController.swift */; };
+		098049AB2253FC3F009C685D /* BrowseWFSLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 098049A62253FC3F009C685D /* BrowseWFSLayers.storyboard */; };
+		098049AC2253FC7B009C685D /* BrowseWFSLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 098049A32253FC3F009C685D /* BrowseWFSLayersViewController.swift */; };
+		098049AD2253FC7B009C685D /* WFSLayersTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 098049A42253FC3F009C685D /* WFSLayersTableViewController.swift */; };
 		104659AA1EF34F5200EFCB50 /* TerrainExaggerationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
 		10859BAB1FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10859BA71FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard */; };
 		10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */; };
@@ -507,6 +512,10 @@
 		4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
 		4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */; };
 		4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
+		4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */; };
+		4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
+		4C99123D2249318100CCBC2A /* PlayKMLTourViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
+		4CA72CF4224D103E00F8DCE1 /* PortalItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */; };
 		4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */; };
 		4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
 		4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
@@ -688,6 +697,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				098049AC2253FC7B009C685D /* BrowseWFSLayersViewController.swift in CopyFiles */,
+				098049AD2253FC7B009C685D /* WFSLayersTableViewController.swift in CopyFiles */,
 				1682CAF1224056430039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in CopyFiles */,
 				097426BF22456EE00067E9D1 /* DisplayWFSViewController.swift in CopyFiles */,
 				165723CB223C70260097D6AA /* AddPointSceneLayerViewController.swift in CopyFiles */,
@@ -891,6 +902,7 @@
 				4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */,
 				4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */,
 				4CAC91D62242929500663A10 /* MapReferenceScaleLayerSelectionViewController.swift in CopyFiles */,
+				4C99123D2249318100CCBC2A /* PlayKMLTourViewController.swift in CopyFiles */,
 				4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */,
 				4C783F3F2252D80B00609B9C /* OpenMobileSceneViewController.swift in CopyFiles */,
 			);
@@ -916,6 +928,9 @@
 		09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterLayerUsingService.storyboard; sourceTree = "<group>"; };
 		09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBasedQueryVC.swift; sourceTree = "<group>"; };
 		09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeBasedQuery.storyboard; sourceTree = "<group>"; };
+		098049A32253FC3F009C685D /* BrowseWFSLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseWFSLayersViewController.swift; sourceTree = "<group>"; };
+		098049A42253FC3F009C685D /* WFSLayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WFSLayersTableViewController.swift; sourceTree = "<group>"; };
+		098049A62253FC3F009C685D /* BrowseWFSLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BrowseWFSLayers.storyboard; sourceTree = "<group>"; };
 		10859BA71FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerExtrusion.storyboard; sourceTree = "<group>"; };
 		10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerExtrusionViewController.swift; sourceTree = "<group>"; };
 		10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TerrainExaggeration.storyboard; sourceTree = "<group>"; };
@@ -1264,6 +1279,8 @@
 		4C783F412252DBAC00609B9C /* philadelphia.mspk */ = {isa = PBXFileReference; lastKnownFileType = file; path = philadelphia.mspk; sourceTree = "<group>"; };
 		4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SceneLayerSelection.storyboard; sourceTree = "<group>"; };
+		4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayKMLTour.storyboard; sourceTree = "<group>"; };
+		4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayKMLTourViewController.swift; sourceTree = "<group>"; };
 		4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PortalItems.plist; sourceTree = "<group>"; };
 		4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadWFSWithXMLQuery.storyboard; sourceTree = "<group>"; };
 		4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWFSWithXMLQueryViewController.swift; sourceTree = "<group>"; };
@@ -1424,6 +1441,16 @@
 				09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */,
 			);
 			path = "Raster layer (service)";
+			sourceTree = "<group>";
+		};
+		098049A12253FC3F009C685D /* Browse WFS layers */ = {
+			isa = PBXGroup;
+			children = (
+				098049A32253FC3F009C685D /* BrowseWFSLayersViewController.swift */,
+				098049A42253FC3F009C685D /* WFSLayersTableViewController.swift */,
+				098049A62253FC3F009C685D /* BrowseWFSLayers.storyboard */,
+			);
+			path = "Browse WFS layers";
 			sourceTree = "<group>";
 		};
 		10859BA61FE0AAE400F6E552 /* Feature layer extrusion */ = {
@@ -2459,8 +2486,10 @@
 				C793B5DB21666EB3000A7A10 /* List KML contents */,
 				4C0F27AF2152C9CE00496666 /* Identify KML features */,
 				C7D0EED7215EA56E00ECDD2C /* Display KML network links */,
+				4C991236224550E700CCBC2A /* Play a KML Tour */,
 				C793B5E62166BB06000A7A10 /* OpenStreetMap layer */,
 				092A1C2222456D9500C5F230 /* Display a WFS layer */,
+				098049A12253FC3F009C685D /* Browse WFS layers */,
 				4CAC91D72242AAB700663A10 /* Load WFS with XML query */,
 			);
 			path = Layers;
@@ -3088,6 +3117,15 @@
 			path = "Scene layer selection";
 			sourceTree = "<group>";
 		};
+		4C991236224550E700CCBC2A /* Play a KML Tour */ = {
+			isa = PBXGroup;
+			children = (
+				4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */,
+				4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */,
+			);
+			path = "Play a KML Tour";
+			sourceTree = "<group>";
+		};
 		4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -3633,6 +3671,7 @@
 				3E8526371B90D92700690EBD /* Bookmarks.storyboard in Resources */,
 				3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */,
 				3ED028991B8E3A8500ACA70D /* ShowMagnifier.storyboard in Resources */,
+				098049AB2253FC3F009C685D /* BrowseWFSLayers.storyboard in Resources */,
 				D97B7E681FD9BFE700E1239D /* Subdivisions.shp in Resources */,
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,
 				3EA15C751ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard in Resources */,
@@ -3837,6 +3876,7 @@
 				D9E2E76120EEB8FF001D0AE0 /* Public_Art.cpg in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
+				4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */,
 				D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */,
 				4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */,
 				4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */,
@@ -3976,6 +4016,7 @@
 				1682CAEE22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,
+				098049A92253FC3F009C685D /* WFSLayersTableViewController.swift in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,
 				3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */,
 				3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */,
@@ -4017,6 +4058,7 @@
 				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
 				940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */,
 				3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */,
+				4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */,
 				3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */,
 				3EF024E91ECBC10600166EC5 /* FormatCoordinatesViewController.swift in Sources */,
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,
@@ -4030,6 +4072,7 @@
 				3ED028921B8E3A8500ACA70D /* SetInitialMapLocationViewController.swift in Sources */,
 				3ED029661B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift in Sources */,
 				3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */,
+				098049A82253FC3F009C685D /* BrowseWFSLayersViewController.swift in Sources */,
 				3ED028B31B8E3A9800ACA70D /* TLUsingURLViewController.swift in Sources */,
 				1230046C1FE2F70300303AC2 /* LineOfSightLocationViewController.swift in Sources */,
 				3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */,

@@ -75,6 +75,7 @@ class ContentTableViewController: UITableViewController {
         //download on demand resources
         if !sample.dependencies.isEmpty {
             let bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
+            bundleResourceRequest.loadingPriority = NSBundleResourceRequestLoadingPriorityUrgent
             self.bundleResourceRequest = bundleResourceRequest
             
             //conditionally begin accessing to know if we need to show download progress view or not

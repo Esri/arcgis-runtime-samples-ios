@@ -1,4 +1,4 @@
-# Open Mobile Scene Package
+# Open mobile scene (scene package)
 
 Opens and displays a scene from a Mobile Scene Package (.mspk).
 
@@ -11,7 +11,7 @@ A mobile scene package can also be unpacked to a directory to allow read support
 
 When the sample opens, it will automatically display the Scene in the Mobile Map Package.
 
-# How it works
+## How it works
 
 This sample takes a Mobile Scene Package that was created in ArcGIS Pro, and displays an `AGSScene` from within the package in an `AGSSceneView`. 
 

@@ -27,6 +27,7 @@
 		10859BAF1FE0AC8100F6E552 /* FeatureLayerExtrusionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */; };
 		10961CA61EF2FFD4008A7CEC /* TerrainExaggeration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */; };
 		10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
+		121D935422572E82006C2D95 /* ChooseCameraControllerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12B736502256D618007F93C6 /* ChooseCameraControllerViewController.swift */; };
 		1230046B1FE2F70300303AC2 /* LineOfSightLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 123004691FE2F70300303AC2 /* LineOfSightLocation.storyboard */; };
 		1230046C1FE2F70300303AC2 /* LineOfSightLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230046A1FE2F70300303AC2 /* LineOfSightLocationViewController.swift */; };
 		1230046D1FE2F77F00303AC2 /* LineOfSightLocationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1230046A1FE2F70300303AC2 /* LineOfSightLocationViewController.swift */; };
@@ -44,6 +45,8 @@
 		127E11D71FD0C3F8002CBD12 /* WMTSLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */; };
 		127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */; };
 		127E11D91FD0C457002CBD12 /* WMTSLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */; };
+		12B736512256D618007F93C6 /* ChooseCameraController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B7364F2256D618007F93C6 /* ChooseCameraController.storyboard */; };
+		12B736522256D618007F93C6 /* ChooseCameraControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B736502256D618007F93C6 /* ChooseCameraControllerViewController.swift */; };
 		12BF9E451FE9D77000B1E6C4 /* ViewshedCamera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */; };
 		12BF9E461FE9D77000B1E6C4 /* ViewshedCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
 		12BF9E471FE9D84E00B1E6C4 /* ViewshedCameraViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
@@ -515,7 +518,6 @@
 		4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */; };
 		4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
 		4C99123D2249318100CCBC2A /* PlayKMLTourViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
-		4CA72CF4224D103E00F8DCE1 /* PortalItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */; };
 		4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */; };
 		4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
 		4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
@@ -697,6 +699,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				121D935422572E82006C2D95 /* ChooseCameraControllerViewController.swift in CopyFiles */,
 				098049AC2253FC7B009C685D /* BrowseWFSLayersViewController.swift in CopyFiles */,
 				098049AD2253FC7B009C685D /* WFSLayersTableViewController.swift in CopyFiles */,
 				1682CAF1224056430039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in CopyFiles */,
@@ -946,6 +949,8 @@
 		127D29F5200EC5FC00DD6CDC /* ViewshedLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedLocation.storyboard; sourceTree = "<group>"; };
 		127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMTSLayer.storyboard; sourceTree = "<group>"; };
 		127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMTSLayerViewController.swift; sourceTree = "<group>"; };
+		12B7364F2256D618007F93C6 /* ChooseCameraController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChooseCameraController.storyboard; sourceTree = "<group>"; };
+		12B736502256D618007F93C6 /* ChooseCameraControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCameraControllerViewController.swift; sourceTree = "<group>"; };
 		12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedCamera.storyboard; sourceTree = "<group>"; };
 		12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedCameraViewController.swift; sourceTree = "<group>"; };
 		166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayer.storyboard; sourceTree = "<group>"; };
@@ -1515,6 +1520,15 @@
 				127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */,
 			);
 			path = "WMTS layer";
+			sourceTree = "<group>";
+		};
+		12B7364A2256CCD0007F93C6 /* Choose camera controller */ = {
+			isa = PBXGroup;
+			children = (
+				12B7364F2256D618007F93C6 /* ChooseCameraController.storyboard */,
+				12B736502256D618007F93C6 /* ChooseCameraControllerViewController.swift */,
+			);
+			path = "Choose camera controller";
 			sourceTree = "<group>";
 		};
 		12BF9E421FE9D77000B1E6C4 /* Viewshed (camera) */ = {
@@ -2879,6 +2893,7 @@
 				169CDBC8223C6A3A00ABFF0A /* Add a point scene layer */,
 				4CCA30C4223863EC009D2AEF /* View point cloud data offline */,
 				4C783F3A2252D55900609B9C /* Open mobile scene (scene package) */,
+				12B7364A2256CCD0007F93C6 /* Choose camera controller */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -3794,6 +3809,7 @@
 				3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */,
 				1230046B1FE2F70300303AC2 /* LineOfSightLocation.storyboard in Resources */,
 				4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */,
+				12B736512256D618007F93C6 /* ChooseCameraController.storyboard in Resources */,
 				3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */,
 				3EEA06111D21C44000E03774 /* ExtrudeGraphics.storyboard in Resources */,
 				3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */,
@@ -4181,6 +4197,7 @@
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,
 				4C1EF29B220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift in Sources */,
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
+				12B736522256D618007F93C6 /* ChooseCameraControllerViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
 				3E62940C1EAFAF4100084105 /* WebTiledLayerViewController.swift in Sources */,

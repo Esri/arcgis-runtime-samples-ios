@@ -12,7 +12,7 @@ In a land development project, you might group layers according to the phase of 
 
 ## How it works
 
-1. Create an empty `GroupLayer`.
+1. Create a new `AGSGroupLayer` object.
 2. Add a child layer to the group layer's layers collection.
 3. To toggle the visibility of the group, simply change the group layer's `isVisible` property.
 

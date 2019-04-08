@@ -16,12 +16,10 @@ import UIKit
 import ArcGIS
 
 class LayersTableViewController: UITableViewController {
-    
     var layers = [AGSLayer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
     }
     
     // MARK: - Table view data source
@@ -31,22 +29,20 @@ class LayersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return layers.getItem(at: section)?.name
+        return layers[section].name
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        guard let groupLayer = layers.getItem(at: section) as? AGSGroupLayer else { return 0 }
+        guard let groupLayer = getLayer(from: layers, at: section) as? AGSGroupLayer else { return 0 }
         return groupLayer.layers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "layerCell", for: indexPath)
         configure(cell)
         
         // Set label.
-        guard let groupLayer = layers.getItem(at: indexPath.section) as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer], let childLayer = childLayers.getItem(at: indexPath.row) else { return cell }
+        guard let groupLayer = getLayer(from: layers, at: indexPath.section) as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer], let childLayer = getLayer(from: childLayers, at: indexPath.row) else { return cell }
         cell.textLabel?.text = formattedValue(of: childLayer.name)
         
         // Set accessory view.
@@ -59,11 +55,12 @@ class LayersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "layerCell")
         let cell = UITableViewCell(style: .default, reuseIdentifier: "layerCell")
         configure(cell, asHeaderView: true)
         
         // Set label.
-        guard let layer = layers.getItem(at: section) else { return cell }
+        guard let layer = getLayer(from: layers, at: section) else { return cell }
         cell.textLabel?.text = formattedValue(of: layer.name)
         
         // Set accessory view.
@@ -74,20 +71,17 @@ class LayersTableViewController: UITableViewController {
     
     // MARK: - Action
     
-    @objc func switchChanged(_ sender: CustomSwitch) {
-        
-        guard let section = sender.section, let layer = layers.getItem(at: section) else { return }
+    @objc
+    func switchChanged(_ sender: CustomSwitch) {
+        guard let section = sender.section, let layer = getLayer(from: layers, at: section) else { return }
         let isSwitchOn = sender.isOn
         
-        if let row = sender.row, let groupLayer = layers.getItem(at: section) as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer], let childLayer = childLayers.getItem(at: row) {
-            
+        if let row = sender.row, let groupLayer = getLayer(from: layers, at: row) as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer], let childLayer = getLayer(from: childLayers, at: row) {
             childLayer.isVisible = isSwitchOn
-        }
-        else if layer is AGSGroupLayer {
+        } else if layer is AGSGroupLayer {
             layer.isVisible = isSwitchOn
             updateSwitchForRows(in: section, enabled: isSwitchOn)
-        }
-        else {
+        } else {
             layer.isVisible = isSwitchOn
         }
     }
@@ -101,18 +95,16 @@ class LayersTableViewController: UITableViewController {
     ///     - row: Row number of the table view section.
     /// - Returns: A custom UISwitch.
     func makeAccessoryView(section: Int, row: Int? = nil) -> CustomSwitch? {
-        
         // Create a switch.
         let visibilitySwitch = CustomSwitch(frame: .zero)
         visibilitySwitch.section = section
         visibilitySwitch.addTarget(self, action: #selector(LayersTableViewController.switchChanged(_:)), for: .valueChanged)
         
         // Set the switch to on or off.
-        guard let layer = layers.getItem(at: section) else { return nil }
+        guard let layer = getLayer(from: layers, at: section) else { return nil }
         visibilitySwitch.isOn = layer.isVisible
         
-        if let row = row, let groupLayer = layer as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer], let childLayer = childLayers.getItem(at: row) {
-            
+        if let row = row, let groupLayer = layer as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer], let childLayer = getLayer(from: childLayers, at: row) {
             visibilitySwitch.row = row
             visibilitySwitch.isOn = childLayer.isVisible
         }
@@ -131,8 +123,7 @@ class LayersTableViewController: UITableViewController {
     ///     - section: Section number of the table view.
     ///     - enabled: Indicates if the switch should be enabled or disabled.
     func updateSwitchForRows(in section: Int, enabled: Bool) {
-        
-        guard let groupLayer = layers.getItem(at: section) as? AGSGroupLayer else { return }
+        guard let groupLayer = getLayer(from: layers, at: section) as? AGSGroupLayer else { return }
         
         for index in 0..<groupLayer.layers.count {
             let cell = tableView.cellForRow(at: IndexPath(row: index, section: section))
@@ -143,32 +134,18 @@ class LayersTableViewController: UITableViewController {
         }
     }
     
-    /// Configures table view.
-    func configureTableView() {
-        
-        tableView.sectionHeaderHeight = UITableView.automaticDimension
-        tableView.estimatedSectionHeaderHeight = 25;
-        
-        tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 25
-        
-        tableView.isEditing = false
-    }
-    
     /// Configures table view cell.
     ///
     /// - Parameters:
     ///     - cell: Table view cell to configure.
     ///     - asHeaderView: Indicates if the cell should be configured for table view section.
     func configure(_ cell: UITableViewCell, asHeaderView: Bool = false) {
-        
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = .byWordWrapping
         
         if asHeaderView {
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        }
-        else {
+        } else {
             cell.selectionStyle = .none
             cell.separatorInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 0)
         }
@@ -179,7 +156,6 @@ class LayersTableViewController: UITableViewController {
     /// - Parameter name: Original name of the layer.
     /// - Returns: A modified name or the original name of the layer.
     func formattedValue(of name: String) -> String {
-        
         switch name {
         case "DevA_Trees":
             return "Dev A: Trees"
@@ -195,22 +171,20 @@ class LayersTableViewController: UITableViewController {
             return name
         }
     }
+    
+    func getLayer(from layers: [AGSLayer], at section: Int) -> AGSLayer? {
+        if section >= layers.count { return nil }
+        return layers[section]
+    }
 }
 
-
 class CustomSwitch: UISwitch {
-    
     var section: Int?
     var row: Int?
 }
 
-
-extension Array {
-    
-    func getItem(at index: Int) -> Element? {
-        
-        guard index > -1, index < count else { return nil }
-        return self[index]
-    }
+class ToggleSwitch: UITableViewCell {
+    @IBOutlet var toggleSwitch: UISwitch!
 }
+
 

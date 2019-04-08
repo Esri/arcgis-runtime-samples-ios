@@ -16,15 +16,13 @@ import UIKit
 import ArcGIS
 
 class GroupLayersViewController: UIViewController {
-    
     @IBOutlet var sceneView: AGSSceneView!
-    @IBOutlet var layersBBI: UIBarButtonItem!
+    @IBOutlet var layersBarButtonItem: UIBarButtonItem!
     
     let scene: AGSScene
     let groupLayerName = "Dev A"
     
     required init?(coder aDecoder: NSCoder) {
-        
         // Initialize a scene with imagery basemap.
         scene = AGSScene(basemap: .imagery())
         
@@ -43,8 +41,6 @@ class GroupLayersViewController: UIViewController {
         
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GroupLayersViewController", "LayersTableViewController"]
         
-        self.layersBBI.isEnabled = false
-        
         // Assign the scene to the sceneView.
         sceneView.scene = scene
     
@@ -54,21 +50,17 @@ class GroupLayersViewController: UIViewController {
     
     /// Zooms to the extent of the Group Layer when its child layers are loaded.
     func zoomToGroupLayer() {
-        
-        let dispatchGroup = DispatchGroup()
-        
-        guard let groupLayer = (scene.operationalLayers as? [AGSLayer])?.filter({$0.name == groupLayerName}).first as? AGSGroupLayer else { return }
-        
-        for layer in groupLayer.layers as? [AGSLayer] ?? [] {
-            dispatchGroup.enter()
-            layer.load(completion: { (error) in
-                dispatchGroup.leave()
-            })
+        guard let groupLayer = (scene.operationalLayers as! [AGSLayer]).first(where: { $0.name == groupLayerName }) as? AGSGroupLayer else {
+            return
         }
         
-        dispatchGroup.notify(queue: .main) { [weak self] in
-            guard let groupLayer = (self?.scene.operationalLayers as? [AGSLayer])?.filter({$0.name == self?.groupLayerName}).first as? AGSGroupLayer else { return }
-            
+        guard let childLayers = groupLayer.layers as? [AGSLayer] else { return }
+        
+        AGSLoadObjects(childLayers) { [weak self] (success) in
+            guard success == true else {
+                print("Error loading layers")
+                return
+            }
             if let extent = groupLayer.fullExtent {
                 let camera = AGSCamera(lookAt: extent.center, distance: 700, heading: 0, pitch: 60, roll: 0)
                 
@@ -77,7 +69,7 @@ class GroupLayersViewController: UIViewController {
                     DispatchQueue.main.async {
                         // Enable the bar button item to display
                         // the Table of Contents of operational layers.
-                        self?.layersBBI.isEnabled = true
+                        self?.layersBarButtonItem.isEnabled = true
                     }
                 })
             }
@@ -86,7 +78,6 @@ class GroupLayersViewController: UIViewController {
     
     /// Adds a group layer and other layers to the scene as operational layers.
     func addOperationalLayers() {
-        
         let sceneLayer = AGSArcGISSceneLayer(url: URL(string: "https://scenesampleserverdev.arcgis.com/arcgis/rest/services/Hosted/PlannedDemo_BuildingShell/SceneServer/layers/0")!)
         
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/DevelopmentProjectArea/FeatureServer/0")!)
@@ -97,7 +88,6 @@ class GroupLayersViewController: UIViewController {
     
     /// Returns a group layer.
     func makeGroupLayer() -> AGSGroupLayer {
-
         // Create a group layer and set its name.
         let groupLayer = AGSGroupLayer()
         groupLayer.name = groupLayerName
@@ -120,12 +110,10 @@ class GroupLayersViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "LayersPopover" {
             guard let controller = segue.destination as? LayersTableViewController else { return }
             
             if let layers = scene.operationalLayers as? [AGSLayer] {
-                controller.layers.removeAll()
                 controller.layers.append(contentsOf: layers)
             }
             
@@ -136,13 +124,9 @@ class GroupLayersViewController: UIViewController {
     }
 }
 
-
 extension GroupLayersViewController: UIAdaptivePresentationControllerDelegate {
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        
         // For popover or non modal presentation.
         return .none
     }
 }
-

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ChooseCameraControllerViewController: UIViewController {
-    
     @IBOutlet private var sceneView: AGSSceneView!
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var visualEffectView: UIVisualEffectView!
@@ -24,9 +23,9 @@ class ChooseCameraControllerViewController: UIViewController {
     var cameraControllers = [AGSCameraController]()
     let longitude = -109.937516, latitude = 38.456714
     
-    lazy var planeSymbol: AGSModelSceneSymbol = {[unowned self] in
+    lazy var planeSymbol: AGSModelSceneSymbol = { [unowned self] in
         let planeSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 100.0)
-        planeSymbol.load{ _ in
+        planeSymbol.load { _ in
             DispatchQueue.main.async {
                 self.planeSymbolDidLoad()
             }
@@ -66,8 +65,7 @@ class ChooseCameraControllerViewController: UIViewController {
     func planeSymbolDidLoad() {
         if let error = planeSymbol.loadError {
             presentAlert(error: error)
-        }
-        else {
+        } else {
             planeSymbol.heading = 45
         }
     }
@@ -115,9 +113,7 @@ class ChooseCameraControllerViewController: UIViewController {
     }
 }
 
-
 extension ChooseCameraControllerViewController: UITableViewDataSource {
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -127,7 +123,6 @@ extension ChooseCameraControllerViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.backgroundColor = .clear
         
@@ -141,8 +136,7 @@ extension ChooseCameraControllerViewController: UITableViewDataSource {
             // Select global camera controller by default.
             tableView.selectRow(at: IndexPath(row: 2, section: 0), animated: false, scrollPosition: .none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
-        }
-        else {
+        } else {
             cell.accessoryType = .none
         }
         
@@ -156,29 +150,23 @@ extension ChooseCameraControllerViewController: UITableViewDataSource {
     func getDescription(of cameraController: AGSCameraController) -> String {
         if cameraController is AGSOrbitGeoElementCameraController {
             return "Orbit camera around plane"
-        }
-        else if cameraController is AGSOrbitLocationCameraController {
+        } else if cameraController is AGSOrbitLocationCameraController {
             return "Orbit camera around crater"
-        }
-        else {
+        } else {
             return "Free pan round the globe"
         }
     }
 }
 
-
 extension ChooseCameraControllerViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell = tableView.cellForRow(at: indexPath)
-        
         selectedCell?.accessoryType = .checkmark
         sceneView.cameraController = cameraControllers[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let unselectedCell = tableView.cellForRow(at: indexPath)
-
         unselectedCell?.accessoryType = .none
     }
 }

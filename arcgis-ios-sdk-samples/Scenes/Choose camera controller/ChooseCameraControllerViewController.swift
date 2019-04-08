@@ -51,7 +51,7 @@ class ChooseCameraControllerViewController: UIViewController {
         sceneView.scene = makeScene()
     
         // Zoom scene view to the viewpoint specified by the camera position.
-        let point = AGSPoint(x: longitude, y: latitude, spatialReference: AGSSpatialReference.wgs84())
+        let point = AGSPoint(x: longitude, y: latitude, spatialReference: .wgs84())
         let camera = AGSCamera(lookAt: point, distance: 5500, heading: 150, pitch: 20, roll: 0)
         sceneView.setViewpointCamera(camera)
         

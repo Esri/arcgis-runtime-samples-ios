@@ -34,7 +34,7 @@ class ChooseCameraControllerViewController: UIViewController {
     }()
     
     lazy var planeGraphic: AGSGraphic = {
-        let planePosition = AGSPoint(x: longitude, y: latitude, z: 5000, spatialReference: AGSSpatialReference.wgs84())
+        let planePosition = AGSPoint(x: longitude, y: latitude, z: 5000, spatialReference: .wgs84())
         let planeGraphic = AGSGraphic(geometry: planePosition, symbol: planeSymbol, attributes: nil)
         return planeGraphic
     }()

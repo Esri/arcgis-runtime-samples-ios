@@ -18,7 +18,7 @@ import ArcGIS
 class ChooseCameraControllerViewController: UIViewController {
     @IBOutlet private var sceneView: AGSSceneView!
     @IBOutlet var cameraControllersBarButtonItem: UIBarButtonItem!
-    
+
     lazy var planeSymbol: AGSModelSceneSymbol = { [unowned self] in
         let planeSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 100.0)
         planeSymbol.load { _ in
@@ -28,24 +28,24 @@ class ChooseCameraControllerViewController: UIViewController {
         }
         return planeSymbol
     }()
-    
+
     lazy var planeGraphic: AGSGraphic = {
         let planePosition = AGSPoint(x: -109.937516, y: 38.456714, z: 5000, spatialReference: .wgs84())
         let planeGraphic = AGSGraphic(geometry: planePosition, symbol: planeSymbol, attributes: nil)
         return planeGraphic
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChooseCameraControllerViewController"]
-        
+
         // Assign the scene to the scene view.
         sceneView.scene = makeScene()
-        
+
         // Set global camera controller to the scene view.
         sceneView.cameraController = AGSGlobeCameraController()
-    
+
         // Zoom scene view to the viewpoint specified by the camera position.
         let point = AGSPoint(x: -109.937516, y: 38.456714, spatialReference: .wgs84())
         let camera = AGSCamera(lookAt: point, distance: 5500, heading: 150, pitch: 20, roll: 0)
@@ -54,11 +54,11 @@ class ChooseCameraControllerViewController: UIViewController {
                 self?.cameraControllersBarButtonItem.isEnabled = true
             }
         }
-        
+
         // Add graphics overlay to the scene
         sceneView.graphicsOverlays.add(makeGraphicsOverlay())
     }
-    
+
     /// Called when the plane model scene symbol loads successfully or fails to load.
     func planeSymbolDidLoad() {
         if let error = planeSymbol.loadError {
@@ -67,21 +67,21 @@ class ChooseCameraControllerViewController: UIViewController {
             planeSymbol.heading = 45
         }
     }
-    
+
     /// Returns a scene with imagery basemap and elevation data.
     func makeScene() -> AGSScene {
         let scene = AGSScene(basemap: .imagery())
-        
+
         // Add base surface to the scene for elevation data.
         let surface = AGSSurface()
         let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
         let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
-        
+
         return scene
     }
-    
+
     /// Returns a graphics overlay containing the plane graphic.
     func makeGraphicsOverlay() -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
@@ -89,7 +89,7 @@ class ChooseCameraControllerViewController: UIViewController {
         graphicsOverlay.graphics.add(planeGraphic)
         return graphicsOverlay
     }
-    
+
     /// Returns a controller that allows a scene view's camera to orbit the Upheaval Dome crater structure.
     func makeOrbitLocationCameraController() -> AGSOrbitLocationCameraController {
         let targetLocation = AGSPoint(x: -109.929589, y: 38.437304, z: 1700, spatialReference: AGSSpatialReference.wgs84())
@@ -98,7 +98,7 @@ class ChooseCameraControllerViewController: UIViewController {
         cameraController.cameraHeadingOffset = 150
         return cameraController
     }
-    
+
     /// Returns a controller that allows a scene view's camera to orbit the plane.
     func makeOrbitGeoElementCameraController() -> AGSOrbitGeoElementCameraController {
         let cameraController = AGSOrbitGeoElementCameraController(targetGeoElement: planeGraphic, distance: 5000)
@@ -106,21 +106,21 @@ class ChooseCameraControllerViewController: UIViewController {
         cameraController.cameraHeadingOffset = 150
         return cameraController
     }
-    
+
     // MARK: - Navigation
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CameraControllersPopover" {
             guard let controller = segue.destination as? CameraControllerTableViewController else { return }
             controller.cameraControllerDelegate = self
-            
+
             let cameraControllers = [makeOrbitLocationCameraController(), makeOrbitGeoElementCameraController(), AGSGlobeCameraController()]
             controller.cameraControllers = cameraControllers
-            
+
             if let currentCameraController = sceneView.cameraController, let selectedCameraController = cameraControllers.first(where: { String(describing: type(of: $0)) == String(describing: type(of: currentCameraController)) }) {
                 controller.selectedRow = cameraControllers.firstIndex(of: selectedCameraController)
             }
-            
+
             // Popover presentation logic.
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 130)

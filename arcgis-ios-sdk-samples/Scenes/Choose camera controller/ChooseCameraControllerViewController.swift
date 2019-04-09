@@ -112,12 +112,14 @@ class ChooseCameraControllerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CameraControllersPopover" {
             guard let controller = segue.destination as? CameraControllerTableViewController else { return }
+            controller.cameraControllerDelegate = self
+            
             let cameraControllers = [makeOrbitLocationCameraController(), makeOrbitGeoElementCameraController(), AGSGlobeCameraController()]
             controller.cameraControllers = cameraControllers
+            
             if let currentCameraController = sceneView.cameraController, let selectedCameraController = cameraControllers.first(where: { String(describing: type(of: $0)) == String(describing: type(of: currentCameraController)) }) {
                 controller.selectedRow = cameraControllers.firstIndex(of: selectedCameraController)
             }
-            controller.cameraControllerDelegate = self
             
             // Popover presentation logic.
             controller.presentationController?.delegate = self

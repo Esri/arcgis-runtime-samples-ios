@@ -49,11 +49,7 @@ class ChooseCameraControllerViewController: UIViewController {
         // Zoom scene view to the viewpoint specified by the camera position.
         let point = AGSPoint(x: -109.937516, y: 38.456714, spatialReference: .wgs84())
         let camera = AGSCamera(lookAt: point, distance: 5500, heading: 150, pitch: 20, roll: 0)
-        sceneView.setViewpointCamera(camera) { [weak self](success) in
-            if success {
-                self?.cameraControllersBarButtonItem.isEnabled = true
-            }
-        }
+        sceneView.setViewpointCamera(camera) 
 
         // Add graphics overlay to the scene view.
         sceneView.graphicsOverlays.add(makeGraphicsOverlay())
@@ -65,6 +61,7 @@ class ChooseCameraControllerViewController: UIViewController {
             presentAlert(error: error)
         } else {
             planeSymbol.heading = 45
+            cameraControllersBarButtonItem.isEnabled = true
         }
     }
 

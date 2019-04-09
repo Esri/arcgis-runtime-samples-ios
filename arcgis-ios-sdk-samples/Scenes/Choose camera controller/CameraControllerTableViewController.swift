@@ -40,6 +40,14 @@ class CameraControllerTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        cameraControllerDelegate.selectedCameraController(cameraControllers[indexPath.row])
+    }
+    
+    // MARK: - Helper method
+    
     /// Gets description for a specified camera controller.
     ///
     /// - Parameter cameraController: Camera controller of scene view.
@@ -52,11 +60,5 @@ class CameraControllerTableViewController: UITableViewController {
         } else {
             return "Free pan round the globe"
         }
-    }
-    
-    // MARK: - UITableViewDelegate
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        cameraControllerDelegate.selectedCameraController(cameraControllers[indexPath.row])
     }
 }

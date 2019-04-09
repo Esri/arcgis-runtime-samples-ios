@@ -92,7 +92,7 @@ class ChooseCameraControllerViewController: UIViewController {
 
     /// Returns a controller that allows a scene view's camera to orbit the Upheaval Dome crater structure.
     func makeOrbitLocationCameraController() -> AGSOrbitLocationCameraController {
-        let targetLocation = AGSPoint(x: -109.929589, y: 38.437304, z: 1700, spatialReference: AGSSpatialReference.wgs84())
+        let targetLocation = AGSPoint(x: -109.929589, y: 38.437304, z: 1700, spatialReference: .wgs84())
         let cameraController = AGSOrbitLocationCameraController(targetLocation: targetLocation, distance: 5000)
         cameraController.cameraPitchOffset = 3
         cameraController.cameraHeadingOffset = 150

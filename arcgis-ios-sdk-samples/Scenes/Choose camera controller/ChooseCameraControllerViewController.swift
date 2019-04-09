@@ -40,7 +40,7 @@ class ChooseCameraControllerViewController: UIViewController {
 
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChooseCameraControllerViewController"]
 
-        // Assign the scene to the scene view.
+        // Set the scene to be displayed by the sceneview.
         sceneView.scene = makeScene()
 
         // Set global camera controller to the scene view.
@@ -55,7 +55,7 @@ class ChooseCameraControllerViewController: UIViewController {
             }
         }
 
-        // Add graphics overlay to the scene
+        // Add graphics overlay to the scene view.
         sceneView.graphicsOverlays.add(makeGraphicsOverlay())
     }
 

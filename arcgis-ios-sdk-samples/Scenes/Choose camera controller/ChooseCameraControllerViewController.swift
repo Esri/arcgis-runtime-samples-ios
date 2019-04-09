@@ -17,11 +17,7 @@ import ArcGIS
 
 class ChooseCameraControllerViewController: UIViewController {
     @IBOutlet private var sceneView: AGSSceneView!
-    @IBOutlet private var tableView: UITableView!
-    @IBOutlet private var visualEffectView: UIVisualEffectView!
-    
-    var cameraControllers = [AGSCameraController]()
-    let longitude = -109.937516, latitude = 38.456714
+    @IBOutlet var cameraControllersBarButtonItem: UIBarButtonItem!
     
     lazy var planeSymbol: AGSModelSceneSymbol = { [unowned self] in
         let planeSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 100.0)
@@ -34,7 +30,7 @@ class ChooseCameraControllerViewController: UIViewController {
     }()
     
     lazy var planeGraphic: AGSGraphic = {
-        let planePosition = AGSPoint(x: longitude, y: latitude, z: 5000, spatialReference: AGSSpatialReference.wgs84())
+        let planePosition = AGSPoint(x: -109.937516, y: 38.456714, z: 5000, spatialReference: .wgs84())
         let planeGraphic = AGSGraphic(geometry: planePosition, symbol: planeSymbol, attributes: nil)
         return planeGraphic
     }()
@@ -44,21 +40,23 @@ class ChooseCameraControllerViewController: UIViewController {
         
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChooseCameraControllerViewController"]
         
-        // Constraint visual effect view to the scene view's attribution label.
-        visualEffectView.bottomAnchor.constraint(equalTo: sceneView.attributionTopAnchor, constant: -10).isActive = true
-        
         // Assign the scene to the scene view.
         sceneView.scene = makeScene()
+        
+        // Set global camera controller to the scene view.
+        sceneView.cameraController = AGSGlobeCameraController()
     
         // Zoom scene view to the viewpoint specified by the camera position.
-        let point = AGSPoint(x: longitude, y: latitude, spatialReference: AGSSpatialReference.wgs84())
+        let point = AGSPoint(x: -109.937516, y: 38.456714, spatialReference: .wgs84())
         let camera = AGSCamera(lookAt: point, distance: 5500, heading: 150, pitch: 20, roll: 0)
-        sceneView.setViewpointCamera(camera)
+        sceneView.setViewpointCamera(camera) { [weak self](success) in
+            if success {
+                self?.cameraControllersBarButtonItem.isEnabled = true
+            }
+        }
         
         // Add graphics overlay to the scene
         sceneView.graphicsOverlays.add(makeGraphicsOverlay())
-        
-        cameraControllers.append(contentsOf: [makeOrbitLocationCameraController(), makeOrbitGeoElementCameraController(), AGSGlobeCameraController()])
     }
     
     /// Called when the plane model scene symbol loads successfully or fails to load.
@@ -92,14 +90,12 @@ class ChooseCameraControllerViewController: UIViewController {
         return graphicsOverlay
     }
     
-    /// Returns a controller that allows a scene view's camera to orbit
-    /// the Upheaval Dome crater structure.
+    /// Returns a controller that allows a scene view's camera to orbit the Upheaval Dome crater structure.
     func makeOrbitLocationCameraController() -> AGSOrbitLocationCameraController {
         let targetLocation = AGSPoint(x: -109.929589, y: 38.437304, z: 1700, spatialReference: AGSSpatialReference.wgs84())
         let cameraController = AGSOrbitLocationCameraController(targetLocation: targetLocation, distance: 5000)
         cameraController.cameraPitchOffset = 3
         cameraController.cameraHeadingOffset = 150
-        
         return cameraController
     }
     
@@ -108,65 +104,37 @@ class ChooseCameraControllerViewController: UIViewController {
         let cameraController = AGSOrbitGeoElementCameraController(targetGeoElement: planeGraphic, distance: 5000)
         cameraController.cameraPitchOffset = 30
         cameraController.cameraHeadingOffset = 150
-        
         return cameraController
     }
-}
-
-extension ChooseCameraControllerViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cameraControllers.count
-    }
+    // MARK: - Navigation
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .clear
-        
-        // Set label.
-        cell.textLabel?.text = getDescription(of: cameraControllers[indexPath.row])
-        
-        // Set accessory type.
-        if indexPath.row == 2 {
-            cell.accessoryType = .checkmark
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CameraControllersPopover" {
+            guard let controller = segue.destination as? CameraControllerTableViewController else { return }
+            let cameraControllers = [makeOrbitLocationCameraController(), makeOrbitGeoElementCameraController(), AGSGlobeCameraController()]
+            controller.cameraControllers = cameraControllers
+            if let currentCameraController = sceneView.cameraController, let selectedCameraController = cameraControllers.first(where: { String(describing: type(of: $0)) == String(describing: type(of: currentCameraController)) }) {
+                controller.selectedRow = cameraControllers.firstIndex(of: selectedCameraController)
+            }
+            controller.cameraControllerDelegate = self
             
-            // Select global camera controller by default.
-            tableView.selectRow(at: IndexPath(row: 2, section: 0), animated: false, scrollPosition: .none)
-            tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
-        } else {
-            cell.accessoryType = .none
-        }
-        
-        return cell
-    }
-    
-    /// Gets description for a specified camera controller.
-    ///
-    /// - Parameter cameraController: Camera controller of scene view.
-    /// - Returns: A text description of the camera controller.
-    func getDescription(of cameraController: AGSCameraController) -> String {
-        if cameraController is AGSOrbitGeoElementCameraController {
-            return "Orbit camera around plane"
-        } else if cameraController is AGSOrbitLocationCameraController {
-            return "Orbit camera around crater"
-        } else {
-            return "Free pan round the globe"
+            // Popover presentation logic.
+            controller.presentationController?.delegate = self
+            controller.preferredContentSize = CGSize(width: 300, height: 130)
         }
     }
 }
 
-extension ChooseCameraControllerViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell = tableView.cellForRow(at: indexPath)
-        selectedCell?.accessoryType = .checkmark
-        sceneView.cameraController = cameraControllers[indexPath.row]
+extension ChooseCameraControllerViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // For popover or non modal presentation.
+        return .none
     }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let unselectedCell = tableView.cellForRow(at: indexPath)
-        unselectedCell?.accessoryType = .none
+}
+
+extension ChooseCameraControllerViewController: CameraControllerTableViewControllerDelagate {
+    func selectedCamera(type: AGSCameraController) {
+        sceneView.cameraController = type
     }
 }

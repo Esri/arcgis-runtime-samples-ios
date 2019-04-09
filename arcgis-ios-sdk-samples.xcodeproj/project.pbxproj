@@ -27,6 +27,8 @@
 		10859BAF1FE0AC8100F6E552 /* FeatureLayerExtrusionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */; };
 		10961CA61EF2FFD4008A7CEC /* TerrainExaggeration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */; };
 		10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */; };
+		1218C843225C063F0027F3E2 /* ChooseCameraController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1218C842225C063F0027F3E2 /* ChooseCameraController.storyboard */; };
+		1218C845225C06AF0027F3E2 /* CameraControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1218C844225C06AF0027F3E2 /* CameraControllerTableViewController.swift */; };
 		121D935422572E82006C2D95 /* ChooseCameraControllerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12B736502256D618007F93C6 /* ChooseCameraControllerViewController.swift */; };
 		1230046B1FE2F70300303AC2 /* LineOfSightLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 123004691FE2F70300303AC2 /* LineOfSightLocation.storyboard */; };
 		1230046C1FE2F70300303AC2 /* LineOfSightLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230046A1FE2F70300303AC2 /* LineOfSightLocationViewController.swift */; };
@@ -45,7 +47,6 @@
 		127E11D71FD0C3F8002CBD12 /* WMTSLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */; };
 		127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */; };
 		127E11D91FD0C457002CBD12 /* WMTSLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */; };
-		12B736512256D618007F93C6 /* ChooseCameraController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B7364F2256D618007F93C6 /* ChooseCameraController.storyboard */; };
 		12B736522256D618007F93C6 /* ChooseCameraControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B736502256D618007F93C6 /* ChooseCameraControllerViewController.swift */; };
 		12BF9E451FE9D77000B1E6C4 /* ViewshedCamera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */; };
 		12BF9E461FE9D77000B1E6C4 /* ViewshedCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
@@ -938,6 +939,8 @@
 		10859BA81FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerExtrusionViewController.swift; sourceTree = "<group>"; };
 		10961CA41EF2FFD4008A7CEC /* TerrainExaggeration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TerrainExaggeration.storyboard; sourceTree = "<group>"; };
 		10961CA51EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerrainExaggerationViewController.swift; sourceTree = "<group>"; };
+		1218C842225C063F0027F3E2 /* ChooseCameraController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChooseCameraController.storyboard; sourceTree = "<group>"; };
+		1218C844225C06AF0027F3E2 /* CameraControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControllerTableViewController.swift; sourceTree = "<group>"; };
 		123004691FE2F70300303AC2 /* LineOfSightLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LineOfSightLocation.storyboard; sourceTree = "<group>"; };
 		1230046A1FE2F70300303AC2 /* LineOfSightLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineOfSightLocationViewController.swift; sourceTree = "<group>"; };
 		123AC27B20E58CFA0026A7D6 /* GeodesicOperations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GeodesicOperations.storyboard; sourceTree = "<group>"; };
@@ -949,7 +952,6 @@
 		127D29F5200EC5FC00DD6CDC /* ViewshedLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedLocation.storyboard; sourceTree = "<group>"; };
 		127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMTSLayer.storyboard; sourceTree = "<group>"; };
 		127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMTSLayerViewController.swift; sourceTree = "<group>"; };
-		12B7364F2256D618007F93C6 /* ChooseCameraController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChooseCameraController.storyboard; sourceTree = "<group>"; };
 		12B736502256D618007F93C6 /* ChooseCameraControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCameraControllerViewController.swift; sourceTree = "<group>"; };
 		12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedCamera.storyboard; sourceTree = "<group>"; };
 		12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedCameraViewController.swift; sourceTree = "<group>"; };
@@ -1525,8 +1527,9 @@
 		12B7364A2256CCD0007F93C6 /* Choose camera controller */ = {
 			isa = PBXGroup;
 			children = (
-				12B7364F2256D618007F93C6 /* ChooseCameraController.storyboard */,
+				1218C842225C063F0027F3E2 /* ChooseCameraController.storyboard */,
 				12B736502256D618007F93C6 /* ChooseCameraControllerViewController.swift */,
+				1218C844225C06AF0027F3E2 /* CameraControllerTableViewController.swift */,
 			);
 			path = "Choose camera controller";
 			sourceTree = "<group>";
@@ -3809,7 +3812,7 @@
 				3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */,
 				1230046B1FE2F70300303AC2 /* LineOfSightLocation.storyboard in Resources */,
 				4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */,
-				12B736512256D618007F93C6 /* ChooseCameraController.storyboard in Resources */,
+				1218C843225C063F0027F3E2 /* ChooseCameraController.storyboard in Resources */,
 				3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */,
 				3EEA06111D21C44000E03774 /* ExtrudeGraphics.storyboard in Resources */,
 				3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */,
@@ -4096,6 +4099,7 @@
 				3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */,
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
+				1218C845225C06AF0027F3E2 /* CameraControllerTableViewController.swift in Sources */,
 				4C783F3E2252D65A00609B9C /* OpenMobileSceneViewController.swift in Sources */,
 				2182C9831FDA01A0003E3A0F /* StatisticalQueryViewController.swift in Sources */,
 				3E81C1B91D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift in Sources */,

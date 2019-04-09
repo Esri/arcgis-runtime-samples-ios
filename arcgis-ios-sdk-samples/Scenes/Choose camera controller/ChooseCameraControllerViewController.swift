@@ -82,7 +82,7 @@ class ChooseCameraControllerViewController: UIViewController {
         return scene
     }
     
-    /// Returns a graphics overlay that contains a graphic.
+    /// Returns a graphics overlay containing the plane graphic.
     func makeGraphicsOverlay() -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
@@ -136,7 +136,7 @@ extension ChooseCameraControllerViewController: UIAdaptivePresentationController
 }
 
 extension ChooseCameraControllerViewController: CameraControllerTableViewControllerDelagate {
-    func selectedCamera(type: AGSCameraController) {
-        sceneView.cameraController = type
+    func selectedCameraController(_ cameraController: AGSCameraController) {
+        sceneView.cameraController = cameraController
     }
 }

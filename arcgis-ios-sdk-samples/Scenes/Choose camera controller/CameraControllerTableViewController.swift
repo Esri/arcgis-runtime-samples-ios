@@ -10,7 +10,7 @@ import UIKit
 import ArcGIS
 
 protocol CameraControllerTableViewControllerDelagate: AnyObject {
-    func selectedCamera(type: AGSCameraController)
+    func selectedCameraController(_ cameraController: AGSCameraController)
 }
 
 class CameraControllerTableViewController: UITableViewController {
@@ -57,6 +57,6 @@ class CameraControllerTableViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        cameraControllerDelegate.selectedCamera(type: cameraControllers[indexPath.row])
+        cameraControllerDelegate.selectedCameraController(cameraControllers[indexPath.row])
     }
 }

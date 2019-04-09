@@ -22,12 +22,23 @@ The ```master``` branch of this repository contains samples configured for the l
 
 ## Requirements
 
-* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.4.0 (or higher).
-* Xcode 10.1 (or higher)
-* iOS 12.1 SDK (or higher)
+* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.5.0 (or newer).
+* Xcode 10.1 (or newer)
 
-1. Fork and then clone the repo. Don't know how? [Get started here.](http://htmlpreview.github.com/?https://github.com/Esri/esri.github.com/blob/master/help/esri-getting-to-know-github.html)
-2. Build and run the project to create a single app containing all of the samples.
+The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *11.0*, meaning that it can run on devices with *iOS 11.0* or newer.
+
+## Installation
+
+The latest version of *ArcGIS Runtime SDK Samples* can be cloned with
+
+```
+git clone https://github.com/Esri/arcgis-runtime-samples-ios.git
+```
+
+## Building
+
+Build the *ArcGIS Runtime SDK Samples app* by opening `arcgis-ios-sdk-samples.xcodeproj` and running the `arcgis-ios-sdk-samples`
+app target.
 
 ## Sample Data
 

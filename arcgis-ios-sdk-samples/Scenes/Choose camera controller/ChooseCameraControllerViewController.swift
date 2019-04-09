@@ -16,7 +16,16 @@ import UIKit
 import ArcGIS
 
 class ChooseCameraControllerViewController: UIViewController {
-    @IBOutlet private var sceneView: AGSSceneView!
+    @IBOutlet private var sceneView: AGSSceneView! {
+        didSet {
+            sceneView.scene = makeScene()
+            
+            let point = AGSPoint(x: -109.937516, y: 38.456714, spatialReference: .wgs84())
+            let camera = AGSCamera(lookAt: point, distance: 5500, heading: 150, pitch: 20, roll: 0)
+            sceneView.setViewpointCamera(camera)
+        }
+    }
+    
     @IBOutlet var cameraControllersBarButtonItem: UIBarButtonItem!
 
     lazy var planeSymbol: AGSModelSceneSymbol = { [unowned self] in
@@ -39,17 +48,6 @@ class ChooseCameraControllerViewController: UIViewController {
         super.viewDidLoad()
 
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChooseCameraControllerViewController"]
-
-        // Set the scene to be displayed by the sceneview.
-        sceneView.scene = makeScene()
-
-        // Set global camera controller to the scene view.
-        sceneView.cameraController = AGSGlobeCameraController()
-
-        // Zoom scene view to the viewpoint specified by the camera position.
-        let point = AGSPoint(x: -109.937516, y: 38.456714, spatialReference: .wgs84())
-        let camera = AGSCamera(lookAt: point, distance: 5500, heading: 150, pitch: 20, roll: 0)
-        sceneView.setViewpointCamera(camera) 
 
         // Add graphics overlay to the scene view.
         sceneView.graphicsOverlays.add(makeGraphicsOverlay())

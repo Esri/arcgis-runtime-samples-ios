@@ -16,8 +16,7 @@ import UIKit
 import ArcGIS
 
 class OpenStreetMapLayerViewController: UIViewController {
-    
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,5 +29,4 @@ class OpenStreetMapLayerViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenStreetMapLayerViewController"]
     }
-    
 }

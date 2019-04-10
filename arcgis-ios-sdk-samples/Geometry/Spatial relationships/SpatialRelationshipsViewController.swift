@@ -16,8 +16,7 @@
 import UIKit
 import ArcGIS
 
-class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDelegate, UIPopoverPresentationControllerDelegate {
-
+class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet weak var mapView: AGSMapView!
     private let graphicsOverlay = AGSGraphicsOverlay()
 
@@ -90,7 +89,10 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SpatialRelationshipsViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "SpatialRelationshipsViewController",
+            "SpatialRelationshipsTableViewController"
+        ]
         
         // Set the touch delegate
         mapView.touchDelegate = self
@@ -116,98 +118,97 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
     // MARK: GeoView Touch Delegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        //
         // Identify graphics overlay
         geoView.identify(graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self]  (result) in
-            //
-            // Make sure self is around
-            guard let strongSelf = self else {
+            guard let self = self else {
                 return
             }
             
             // Clear selection
-            strongSelf.graphicsOverlay.clearSelection()
+            self.graphicsOverlay.clearSelection()
             
-            // Make sure there is no error
-            guard result.error == nil else {
-                strongSelf.presentAlert(error: result.error!)
-                return
+            // Present the error if present
+            if let error = result.error {
+                self.presentAlert(error: error)
+            } else if let identifiedGraphic = result.graphics.first {
+                // Select identified graphic
+                identifiedGraphic.isSelected = true
+                self.showRelationships(for: identifiedGraphic, popoverPoint: screenPoint)
             }
-            
-            // Return if there is no graphic identified or geometry is not available
-            guard let identifiedGraphic = result.graphics.first, let selectedGeometry = identifiedGraphic.geometry else {
-                return
-            }
-            
-            // Select identified graphic
-            identifiedGraphic.isSelected = true
-            
-            // Setup result view controller
-            let storyboard = UIStoryboard(name: "ExpandableTableViewController", bundle: nil)
-            let expandableTableViewController = storyboard.instantiateViewController(withIdentifier: "ExpandableTableViewController") as! ExpandableTableViewController
-            
-            // Check the geometry type and find it's
-            // relationship with other geometries
-            if let polylineGeometry = strongSelf.polylineGraphic.geometry, let polygonGeometry = strongSelf.polygonGraphic.geometry, selectedGeometry.geometryType == .point {
-                //
-                // Get the relationships with polyline and polygon
-                let polylineRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: polylineGeometry)
-                let polygonRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: polygonGeometry)
-                
-                // Add section for polyline relationships and it's items
-                expandableTableViewController.sectionHeaderTitles.append("Relationship With Polyline")
-                let polylineSectionItems = polylineRelationships.map { ($0, "") }
-                expandableTableViewController.sectionItems.append(polylineSectionItems)
-                
-                // Add section for polygon relationships and it's items
-                expandableTableViewController.sectionHeaderTitles.append("Relationship With Polygon")
-                let polygonSectionItems = polygonRelationships.map { ($0, "") }
-                expandableTableViewController.sectionItems.append(polygonSectionItems)
-            }
-            else if let pointGeometry = strongSelf.pointGraphic.geometry, let polygonGeometry = strongSelf.polygonGraphic.geometry, selectedGeometry.geometryType == .polyline {
-                //
-                // Get the relationships with point and polygon
-                let pointRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: pointGeometry)
-                let polygonRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: polygonGeometry)
-                
-                // Add section for point relationships and it's items
-                expandableTableViewController.sectionHeaderTitles.append("Relationship With Point")
-                let pointSectionItems = pointRelationships.map { ($0, "") }
-                expandableTableViewController.sectionItems.append(pointSectionItems)
-                
-                // Add section for polygon relationships and it's items
-                expandableTableViewController.sectionHeaderTitles.append("Relationship With Polygon")
-                let polygonSectionItems = polygonRelationships.map { ($0, "") }
-                expandableTableViewController.sectionItems.append(polygonSectionItems)
-            }
-            else if let pointGeometry = strongSelf.pointGraphic.geometry, let polylineGeometry = strongSelf.polylineGraphic.geometry, selectedGeometry.geometryType == .polygon {
-                //
-                // Get the relationships with point and polyline
-                let pointRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: pointGeometry)
-                let polylineRelationships = strongSelf.getSpatialRelationships(geometry1: selectedGeometry, geometry2: polylineGeometry)
-                
-                // Add section for point relationships and it's items
-                expandableTableViewController.sectionHeaderTitles.append("Relationship With Point")
-                let pointSectionItems = pointRelationships.map { ($0, "") }
-                expandableTableViewController.sectionItems.append(pointSectionItems)
-                
-                // Add section for polyline relationships and it's items
-                expandableTableViewController.sectionHeaderTitles.append("Relationship With Polyline")
-                let polylineSectionItems = polylineRelationships.map { ($0, "") }
-                expandableTableViewController.sectionItems.append(polylineSectionItems)
-            }
-            
-            // Show the results
-            expandableTableViewController.modalPresentationStyle = .popover
-            expandableTableViewController.presentationController?.delegate = self
-            expandableTableViewController.popoverPresentationController?.sourceView = strongSelf.mapView
-            expandableTableViewController.popoverPresentationController?.sourceRect = CGRect(origin: screenPoint, size: .zero)
-            expandableTableViewController.preferredContentSize = CGSize(width: 300, height: 200)
-            strongSelf.present(expandableTableViewController, animated: true)
         }
     }
     
     // MARK: Helper Function
+    
+    struct RelationshipsSection {
+        let relationships: [String]
+        let title: String
+    }
+    
+    private func showRelationships(for graphic: AGSGraphic, popoverPoint: CGPoint) {
+        guard let selectedGeometry = graphic.geometry,
+            let tableSections = relationshipTableSections(for: selectedGeometry.geometryType),
+            let controller = storyboard?.instantiateViewController(withIdentifier: "SpatialRelationshipsTableViewController") as? SpatialRelationshipsTableViewController else {
+            return
+        }
+        
+        controller.sections = tableSections
+        
+        controller.modalPresentationStyle = .popover
+        controller.presentationController?.delegate = self
+        controller.popoverPresentationController?.sourceView = mapView
+        controller.popoverPresentationController?.sourceRect = CGRect(origin: popoverPoint, size: .zero)
+        controller.preferredContentSize = CGSize(width: 300, height: 200)
+        
+        // Show the results
+        present(controller, animated: true)
+    }
+    
+    private func relationshipTableSections(for geometryType: AGSGeometryType) -> [RelationshipsSection]? {
+        guard let pointGeometry = pointGraphic.geometry,
+            let polylineGeometry = polylineGraphic.geometry,
+            let polygonGeometry = polygonGraphic.geometry else {
+                return nil
+        }
+        
+        switch geometryType {
+        case .point:
+            return [
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: pointGeometry, with: polylineGeometry),
+                    title: "Relationship With Polyline"
+                ),
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: pointGeometry, with: polygonGeometry),
+                    title: "Relationship With Polygon"
+                )
+            ]
+        case .polyline:
+            return [
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: polylineGeometry, with: pointGeometry),
+                    title: "Relationship With Point"
+                ),
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: polylineGeometry, with: polygonGeometry),
+                    title: "Relationship With Polygon"
+                )
+            ]
+        case .polygon:
+            return [
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: polygonGeometry, with: pointGeometry),
+                    title: "Relationship With Point"
+                ),
+                RelationshipsSection(
+                    relationships: getSpatialRelationships(of: polygonGeometry, with: polylineGeometry),
+                    title: "Relationship With Polyline"
+                )
+            ]
+        default:
+            return nil
+        }
+    }
     
     /// This function checks the different relationships between
     /// two geometries and returns result as an array of strings
@@ -216,26 +217,39 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
     ///   - geometry1: The input geometry to be compared
     ///   - geometry2: The input geometry to be compared
     /// - Returns: An array of strings representing relationship
-    private func getSpatialRelationships(geometry1: AGSGeometry, geometry2: AGSGeometry) -> [String] {
+    private func getSpatialRelationships(of geometry1: AGSGeometry, with geometry2: AGSGeometry) -> [String] {
         var relationships = [String]()
-        if AGSGeometryEngine.geometry(geometry1, crossesGeometry: geometry2) { relationships.append("Crosses") }
-        if AGSGeometryEngine.geometry(geometry1, contains: geometry2) { relationships.append("Contains") }
-        if AGSGeometryEngine.geometry(geometry1, disjointTo: geometry2) { relationships.append("Disjoint") }
-        if AGSGeometryEngine.geometry(geometry1, intersects: geometry2) { relationships.append("Intersects") }
-        if AGSGeometryEngine.geometry(geometry1, overlapsGeometry: geometry2) { relationships.append("Overlaps") }
-        if AGSGeometryEngine.geometry(geometry1, touchesGeometry: geometry2)  { relationships.append("Touches") }
-        if AGSGeometryEngine.geometry(geometry1, within: geometry2) { relationships.append("Within") }
+        if AGSGeometryEngine.geometry(geometry1, crossesGeometry: geometry2) {
+            relationships.append("Crosses")
+        }
+        if AGSGeometryEngine.geometry(geometry1, contains: geometry2) {
+            relationships.append("Contains")
+        }
+        if AGSGeometryEngine.geometry(geometry1, disjointTo: geometry2) {
+            relationships.append("Disjoint")
+        }
+        if AGSGeometryEngine.geometry(geometry1, intersects: geometry2) {
+            relationships.append("Intersects")
+        }
+        if AGSGeometryEngine.geometry(geometry1, overlapsGeometry: geometry2) {
+            relationships.append("Overlaps")
+        }
+        if AGSGeometryEngine.geometry(geometry1, touchesGeometry: geometry2) {
+            relationships.append("Touches")
+        }
+        if AGSGeometryEngine.geometry(geometry1, within: geometry2) {
+            relationships.append("Within")
+        }
         return relationships
     }
-    
-    // MARK: UIPopoverPresentationControllerDelegate
+}
 
+extension SpatialRelationshipsViewController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        //
         // Clear selection when popover is dismissed
         graphicsOverlay.clearSelection()
     }

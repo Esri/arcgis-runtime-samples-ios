@@ -15,11 +15,8 @@
 import UIKit
 import ArcGIS
 
-let viewshedURLString = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Elevation/ESRI_Elevation_World/GPServer/Viewshed"
-
 class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDelegate {
-
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
     private var geoprocessingTask: AGSGeoprocessingTask!
     private var geoprocessingJob: AGSGeoprocessingJob!
@@ -44,14 +41,15 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         let renderer = AGSSimpleRenderer(symbol: pointSymbol)
         self.inputGraphicsOverlay.renderer = renderer
         
-        let fillColor = UIColor(red: 226/255.0, green: 119/255.0, blue: 40/255.0, alpha: 120/255.0)
+        let fillColor = UIColor(red: 226 / 255.0, green: 119 / 255.0, blue: 40 / 255.0, alpha: 120 / 255.0)
         let fillSymbol = AGSSimpleFillSymbol(style: .solid, color: fillColor, outline: nil)
         self.resultGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: fillSymbol)
         
         //add graphics overlays to the map view
         self.mapView.graphicsOverlays.addObjects(from: [self.resultGraphicsOverlay, self.inputGraphicsOverlay])
         
-        self.geoprocessingTask = AGSGeoprocessingTask(url: URL(string: viewshedURLString)!)
+        let viewshedURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Elevation/ESRI_Elevation_World/GPServer/Viewshed")!
+        self.geoprocessingTask = AGSGeoprocessingTask(url: viewshedURL)
     }
     
     private func addGraphicForPoint(_ point: AGSPoint) {
@@ -66,7 +64,6 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
     }
     
     private func calculateViewshed(at point: AGSPoint) {
-        
         //remove previous graphics
         self.resultGraphicsOverlay.graphics.removeAllObjects()
         
@@ -91,22 +88,19 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         
         //add the new feature to the feature collection table
         featureCollectionTable.add(newFeature) { [weak self] (error: Error?) in
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
             
             if let error = error {
                 //show error
                 self?.presentAlert(error: error)
-            }
-            else {
-                //dismiss progress hud
-                SVProgressHUD.dismiss()
-                
+            } else {
                 self?.performGeoprocessing(featureCollectionTable)
             }
         }
     }
     
     private func performGeoprocessing(_ featureCollectionTable: AGSFeatureCollectionTable) {
-        
         //geoprocessing parameters
         let params = AGSGeoprocessingParameters(executionType: .synchronousExecute)
         params.processSpatialReference = featureCollectionTable.spatialReference
@@ -116,39 +110,40 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         params.inputs["Input_Observation_Point"] = AGSGeoprocessingFeatures(featureSet: featureCollectionTable)
         
         //initialize job from geoprocessing task
-        self.geoprocessingJob = self.geoprocessingTask.geoprocessingJob(with: params)
+        geoprocessingJob = geoprocessingTask.geoprocessingJob(with: params)
         
         //start the job
-        self.geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
-            
+        geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
             //show progress hud with job status
             SVProgressHUD.show(withStatus: status.statusString())
-            
         }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
+            }
             
             if let error = error {
                 if (error as NSError).code != NSUserCancelledError { //if not cancelled
-                    self?.presentAlert(error: error)
+                    self.presentAlert(error: error)
                 }
-            }
-            else {
-                //dismiss progress hud
-                SVProgressHUD.dismiss()
-                
+            } else {
                 //The service returns result in form of AGSGeoprocessingFeatures
                 //Cast the results and add the features from featureSet to graphics overlay
                 //in form of graphics
-                if let resultFeatures = result?.outputs["Viewshed_Result"] as? AGSGeoprocessingFeatures, let featureSet = resultFeatures.features {
+                if let resultFeatures = result?.outputs["Viewshed_Result"] as? AGSGeoprocessingFeatures,
+                    let featureSet = resultFeatures.features {
                     for feature in featureSet.featureEnumerator().allObjects {
                         let graphic = AGSGraphic(geometry: feature.geometry, symbol: nil, attributes: nil)
-                        self?.resultGraphicsOverlay.graphics.add(graphic)
+                        self.resultGraphicsOverlay.graphics.add(graphic)
                     }
                 }
             }
         })
     }
 
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add a graphic in graphics overlay for the tapped point

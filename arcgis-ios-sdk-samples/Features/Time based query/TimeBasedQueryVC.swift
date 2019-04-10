@@ -18,12 +18,11 @@ import UIKit
 import ArcGIS
 
 class TimeBasedQueryVC: UIViewController {
-    
     @IBOutlet var mapView: AGSMapView!
     
-    private var map:AGSMap!
+    private var map: AGSMap!
     
-    private var featureTable:AGSServiceFeatureTable!
+    private var featureTable: AGSServiceFeatureTable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +52,7 @@ class TimeBasedQueryVC: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TimeBasedQueryVC"]
     }
     
-    func populateFeaturesWithQuery(){
-        
+    func populateFeaturesWithQuery() {
         //create query parameters
         let queryParams = AGSQueryParameters()
 
@@ -70,18 +68,15 @@ class TimeBasedQueryVC: UIViewController {
         queryParams.timeExtent = timeExtent
         
         //populate features based on query parameters
-        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) {[weak self] (result:AGSFeatureQueryResult?, error:Error?) -> Void in
-            
+        self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
             //check for error
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
                 print("Hurriance features during the time interval: \(result?.featureEnumerator().allObjects.count ?? 0)")
             }
         }
     }
-    
 }

@@ -16,51 +16,34 @@ import UIKit
 
 protocol SaveAsVCDelegate: AnyObject {
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String)
-    func saveAsViewControllerDidCancel(_ saveAsViewController:SaveAsViewController)
 }
 
-class SaveAsViewController: UIViewController {
+class SaveAsViewController: UITableViewController {
+    @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet private weak var tagsTextField: UITextField!
+    @IBOutlet private weak var descriptionTextField: UITextField!
     
-    @IBOutlet  weak var titleTextField:UITextField!
-    @IBOutlet private weak var tagsTextField:UITextField!
-    @IBOutlet private weak var descriptionTextView:UITextView!
+    weak var delegate: SaveAsVCDelegate?
     
-    weak var delegate:SaveAsVCDelegate?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //stylize description textView
-        self.descriptionTextView.layer.cornerRadius = 5
-        self.descriptionTextView.layer.borderColor = UIColor(white: 193.0/255.0, alpha: 1.0).cgColor
-        self.descriptionTextView.layer.borderWidth = 0.5
-    }
-    
-    func resetInputFields() {
-        self.titleTextField.text = ""
-        self.tagsTextField.text = ""
-        self.descriptionTextView.text = ""
-    }
-    
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func cancelAction() {
-        self.delegate?.saveAsViewControllerDidCancel(self)
+        dismiss(animated: true)
     }
     
     @IBAction private func saveAction() {
-        //Validations
-        guard let title = self.titleTextField.text, let tagsText = self.tagsTextField.text else {
+        guard let title = titleTextField.text,
+            !title.isEmpty else {
             //show error message
-            presentAlert(message: "Title and tags are required fields")
+            presentAlert(message: "Please enter a title.")
             return
         }
         
-        let tags = tagsText
+        let tags = tagsTextField.text?
             .components(separatedBy: ",")
-            .map { $0.trimmingCharacters(in: .whitespaces) }
-        let itemDescription = descriptionTextView.text ?? ""
-        self.delegate?.saveAsViewController(self, didInitiateSaveWithTitle: title, tags: tags, itemDescription: itemDescription)
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) } ?? []
+        
+        let itemDescription = descriptionTextField.text ?? ""
+        delegate?.saveAsViewController(self, didInitiateSaveWithTitle: title, tags: tags, itemDescription: itemDescription)
     }
-
 }

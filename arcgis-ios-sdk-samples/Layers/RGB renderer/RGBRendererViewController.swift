@@ -17,65 +17,62 @@ import UIKit
 import ArcGIS
 
 class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate {
-
     @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var containerView: UIView!
-    @IBOutlet var visualEffectView: UIVisualEffectView!
     
-    private var raster: AGSRaster!
-    private var rasterLayer: AGSRasterLayer!
+    private var rasterLayer: AGSRasterLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RGBRendererViewController", "RGBRendererSettingsVC", "RGBRendererTypeCell", "RGBRenderer3InputCell", "RGBRendererInputCell"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RGBRendererViewController", "RGBRendererSettingsVC", "RGB Renderer Cells", "OptionsTableViewController"]
 
         //create raster
-        self.raster = AGSRaster(name: "Shasta", extension: "tif")
+        let raster = AGSRaster(name: "Shasta", extension: "tif")
         
         //create raster layer using the raster
-        self.rasterLayer = AGSRasterLayer(raster: self.raster)
+        let rasterLayer = AGSRasterLayer(raster: raster)
+        self.rasterLayer = rasterLayer
         
         //initialize a map with raster layer as the basemap
-        let map = AGSMap(basemap: AGSBasemap(baseLayer: self.rasterLayer))
-        
+        let map = AGSMap(basemap: AGSBasemap(baseLayer: rasterLayer))
         //assign map to the map view
-        self.mapView.map = map
-        
-        //styling
-        self.containerView.layer.cornerRadius = 5
+        mapView.map = map
     }
     
-    //MARK: - RGBRendererSettingsVCDelegate
+    // MARK: - RGBRendererSettingsVCDelegate
     
     func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
-        
-        self.toggleSettingsView(on: false)
-        
         let renderer = AGSRGBRenderer(stretchParameters: parameters, bandIndexes: [], gammas: [], estimateStatistics: true)
-        self.rasterLayer.renderer = renderer
+        rasterLayer?.renderer = renderer
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "RGBRendererSettingsVCSegue" {
-            let controller = segue.destination as! RGBRendererSettingsVC
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? RGBRendererSettingsVC {
+            controller.preferredContentSize = {
+                let height: CGFloat
+                if traitCollection.horizontalSizeClass == .regular,
+                    traitCollection.verticalSizeClass == .regular {
+                    height = 200
+                } else {
+                    height = 150
+                }
+                return CGSize(width: 375, height: height)
+            }()
             controller.delegate = self
-            controller.view.translatesAutoresizingMaskIntoConstraints = false
+            if let parameters = (rasterLayer?.renderer as? AGSRGBRenderer)?.stretchParameters {
+                controller.setupForParameters(parameters)
+            }
+            navController.presentationController?.delegate = self
         }
     }
-    
-    //MARK: - Actions
-    
-    @IBAction func editRendererAction() {
-        self.toggleSettingsView(on: true)
-    }
-    
-    //MARK: - Show/hide settings view
-    
-    private func toggleSettingsView(on: Bool) {
-        self.visualEffectView.isHidden = !on
+}
+
+extension RGBRendererViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
 }

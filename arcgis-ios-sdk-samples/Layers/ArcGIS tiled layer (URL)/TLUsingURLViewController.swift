@@ -16,10 +16,9 @@ import UIKit
 import ArcGIS
 
 class TLUsingURLViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    
-    private var map:AGSMap!
+    private var map: AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,5 +36,4 @@ class TLUsingURLViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TLUsingURLViewController"]
     }
-    
 }

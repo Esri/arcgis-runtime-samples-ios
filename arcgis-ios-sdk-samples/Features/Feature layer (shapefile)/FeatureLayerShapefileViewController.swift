@@ -15,11 +15,10 @@
 import ArcGIS
 
 class FeatureLayerShapefileViewController: UIViewController {
-    
     @IBOutlet weak var mapView: AGSMapView!
 
-    var map:AGSMap
-    var featureLayer:AGSFeatureLayer
+    var map: AGSMap
+    var featureLayer: AGSFeatureLayer
 
     required init?(coder aDecoder: NSCoder) {
         // Instantiate a map using a basemap.
@@ -50,7 +49,7 @@ class FeatureLayerShapefileViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerShapefileViewController"]
     }
     
-    func zoom(mapView:AGSMapView, to featureLayer:AGSFeatureLayer) {
+    func zoom(mapView: AGSMapView, to featureLayer: AGSFeatureLayer) {
         // Ensure the feature layer's metadata is loaded.
         featureLayer.load { error in
             guard error == nil else {

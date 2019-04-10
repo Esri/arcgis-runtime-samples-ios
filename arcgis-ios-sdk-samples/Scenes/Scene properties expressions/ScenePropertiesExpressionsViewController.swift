@@ -17,7 +17,6 @@ import UIKit
 import ArcGIS
 
 class ScenePropertiesExpressionsViewController: UIViewController {
-
     @IBOutlet var sceneView: AGSSceneView!
     @IBOutlet var headingLabel: UILabel!
     @IBOutlet var pitchLabel: UILabel!
@@ -36,7 +35,7 @@ class ScenePropertiesExpressionsViewController: UIViewController {
         self.sceneView.scene = scene
         
         //set the viewpoint camera
-        let point = AGSPoint(x: 83.9, y: 28.4, z: 5200, spatialReference: AGSSpatialReference.wgs84())
+        let point = AGSPoint(x: 83.9, y: 28.4, z: 5200, spatialReference: .wgs84())
         let camera = AGSCamera(lookAt: point, distance: 1000, heading: 0, pitch: 50, roll: 0)
         self.sceneView.setViewpointCamera(camera)
         
@@ -56,7 +55,7 @@ class ScenePropertiesExpressionsViewController: UIViewController {
         //create a red cone graphic
         let coneSymbol = AGSSimpleMarkerSceneSymbol(style: .cone, color: .red, height: 200, width: 100, depth: 100, anchorPosition: .center)
         coneSymbol.pitch = -90  //correct symbol's default pitch
-        let conePoint = AGSPoint(x: 83.9, y: 28.404, z: 5000, spatialReference: AGSSpatialReference.wgs84())
+        let conePoint = AGSPoint(x: 83.9, y: 28.404, z: 5000, spatialReference: .wgs84())
         let coneAttributes = ["HEADING": 0, "PITCH": 0]
         self.coneGraphic = AGSGraphic(geometry: conePoint, symbol: coneSymbol, attributes: coneAttributes)
         graphicsOverlay.graphics.add(self.coneGraphic)

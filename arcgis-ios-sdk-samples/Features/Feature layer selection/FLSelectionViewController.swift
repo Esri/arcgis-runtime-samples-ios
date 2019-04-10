@@ -16,12 +16,11 @@ import UIKit
 import ArcGIS
 
 class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    
-    private var featureLayer:AGSFeatureLayer?
+    private var featureLayer: AGSFeatureLayer?
     // the query is retained internally by the SDK so use a weak reference
-    private weak var activeSelectionQuery:AGSCancelable?
+    private weak var activeSelectionQuery: AGSCancelable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +31,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         //initialize map with topographic basemap
         let map = AGSMap(basemap: .streets())
         //initial viewpoint
-        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -180, yMin: -90, xMax: 180, yMax: 90, spatialReference: AGSSpatialReference.wgs84()))
+        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -180, yMin: -90, xMax: 180, yMax: 90, spatialReference: .wgs84()))
         
         //assign map to the map view
         mapView.map = map
@@ -53,17 +52,16 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         mapView.selectionProperties.color = .cyan
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
         //cancel the active query if it hasn't been completed yet
-        if let activeSelectionQuery = activeSelectionQuery{
+        if let activeSelectionQuery = activeSelectionQuery {
             activeSelectionQuery.cancel()
         }
         
         guard let map = mapView.map,
-            let featureLayer = featureLayer else{
+            let featureLayer = featureLayer else {
                 return
         }
         
@@ -82,8 +80,7 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
         queryParams.geometry = envelope
         
         //run the selection query
-        activeSelectionQuery = featureLayer.selectFeatures(withQuery: queryParams, mode: .new) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) -> Void in
-            
+        activeSelectionQuery = featureLayer.selectFeatures(withQuery: queryParams, mode: .new) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
             }
@@ -92,5 +89,4 @@ class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
             }
         }
     }
-    
 }

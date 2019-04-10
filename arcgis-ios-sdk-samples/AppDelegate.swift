@@ -17,7 +17,6 @@ import ArcGIS
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
-
     var window: UIWindow?
     
     var splitViewController: UISplitViewController {
@@ -27,19 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return (splitViewController.viewControllers.first as! UINavigationController).viewControllers.first as! ContentCollectionViewController
     }
  
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         if url.absoluteString.range(of: "auth", options: [], range: nil, locale: nil) != nil {
             AGSApplicationDelegate.shared().application(app, open: url, options: options)
         }
         return true
     }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.presentsWithGesture = false
         splitViewController.preferredDisplayMode = .allVisible
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+        let navigationController = splitViewController.viewControllers.last as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         navigationController.topViewController!.navigationItem.leftItemsSupplementBackButton = true
         splitViewController.delegate = self
@@ -84,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    //MARK: - Touch settings
+    // MARK: - Touch settings
     
     func setTouchPref() {
         //enable/disable touches based on settings
@@ -92,23 +91,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         if bool {
             DemoTouchManager.showTouches()
             DemoTouchManager.touchBorderColor = .lightGray
-            DemoTouchManager.touchFillColor = UIColor(white: 231/255.0, alpha: 1)
-        }
-        else {
+            DemoTouchManager.touchFillColor = UIColor(white: 231 / 255.0, alpha: 1)
+        } else {
             DemoTouchManager.hideTouches()
         }
     }
     
-    
     // MARK: - Appearance modification
     
     func modifyAppearance() {
-        if #available(iOS 11.0, *) {
-            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        }
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().barTintColor = .primaryBlue
-        UINavigationBar.appearance().tintColor = .white
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationBarAppearance.barTintColor = .primaryBlue
+        navigationBarAppearance.tintColor = .white
         
         UIToolbar.appearance().barTintColor = .backgroundGray
         UIToolbar.appearance().tintColor = .primaryBlue
@@ -119,11 +115,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     // MARK: - Split view
 
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         if secondaryViewController.restorationIdentifier == "DetailNavigationController" {
             return true
-        }
-        else {
+        } else {
             return false
         }
     }
@@ -131,7 +126,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
         if let navigationController = primaryViewController as? UINavigationController {
             if navigationController.topViewController! is ContentCollectionViewController || navigationController.topViewController is ContentTableViewController {
-                
                 let controller = splitViewController.storyboard!.instantiateViewController(withIdentifier: "DetailNavigationController") as! UINavigationController
                 controller.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
                 controller.topViewController!.navigationItem.leftItemsSupplementBackButton = true
@@ -160,7 +154,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             fatalError("Error decoding categories at \(url): \(error)")
         }
     }
-    
 }
 
 extension UIColor {
@@ -170,4 +163,3 @@ extension UIColor {
     class var primaryTextColor: UIColor { return #colorLiteral(red: 0.196, green: 0.196, blue: 0.196, alpha: 1) }
     class var secondaryTextColor: UIColor { return #colorLiteral(red: 0.349, green: 0.349, blue: 0.349, alpha: 1) }
 }
-

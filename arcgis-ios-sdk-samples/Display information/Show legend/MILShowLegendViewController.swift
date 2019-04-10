@@ -16,13 +16,11 @@ import UIKit
 import ArcGIS
 
 class MILShowLegendViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var legendBBI: UIBarButtonItem!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var legendBBI:UIBarButtonItem!
-    
-    private var map:AGSMap!
-    private var mapImageLayer:AGSArcGISMapImageLayer!
-    private var popover:UIPopoverPresentationController!
+    private var map: AGSMap!
+    private var mapImageLayer: AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +47,7 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         //add feature layer to the map
         self.map.operationalLayers.add(featureLayer)
         
-        self.map.load { [weak self] (error:Error?) -> Void in
+        self.map.load { [weak self] (error: Error?) in
             if error == nil {
                 self?.legendBBI.isEnabled = true
             }
@@ -58,10 +56,10 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         self.mapView.map = self.map
         
         //zoom to a custom viewpoint
-        self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: AGSSpatialReference.webMercator()), scale: 9e7, completion: nil)
+        self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: .webMercator()), scale: 9e7)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LegendTableSegue" {
@@ -72,7 +70,7 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         }
     }
     
-    //MARK: - UIAdaptivePresentationControllerDelegate
+    // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none

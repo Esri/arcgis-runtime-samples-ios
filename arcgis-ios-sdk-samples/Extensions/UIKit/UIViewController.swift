@@ -15,9 +15,8 @@
 import UIKit
 
 extension UIViewController {
-    
     /// Shows an alert with the given title, message, and an OK button.
-    func presentAlert(title: String? = nil, message: String) {
+    func presentAlert(title: String? = nil, message: String? = nil) {
         let okAction = UIAlertAction(title: "OK", style: .default)
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert, actions: [okAction])
         present(alertController, animated: true)
@@ -28,14 +27,12 @@ extension UIViewController {
     func presentAlert(error: Error) {
         presentAlert(title: "Error", message: error.localizedDescription)
     }
-    
 }
 
-extension UIAlertController {
-    
+private extension UIAlertController {
     /// Initializes the alert controller with the given parameters, adding the
     /// actions successively and setting the first action as preferred.
-    fileprivate convenience init(title: String? = nil, message: String? = nil, preferredStyle: UIAlertController.Style = .alert, actions: [UIAlertAction] = []) {
+    convenience init(title: String? = nil, message: String? = nil, preferredStyle: UIAlertController.Style = .alert, actions: [UIAlertAction] = []) {
         self.init(title: title, message: message, preferredStyle: preferredStyle)
         for action in actions {
             addAction(action)

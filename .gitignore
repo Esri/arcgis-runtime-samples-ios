@@ -24,3 +24,6 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+
+## Portal Item Data
+/Portal\ Data

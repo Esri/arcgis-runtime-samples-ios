@@ -16,204 +16,113 @@
 import UIKit
 import ArcGIS
 
-enum ColorPickerToggle: String {
-    case On = "On"
-    case Off = "Off"
-}
+class GridSettingsViewController: UITableViewController {
+    @IBOutlet var colorSwatch: UIView?
+    @IBOutlet var lineColorSwatch: UIView?
+    
+    @IBOutlet var lineWidthSlider: UISlider?
+    @IBOutlet var gridSizeSlider: UISlider?
+    @IBOutlet var lineWidthLabel: UILabel?
+    @IBOutlet var gridSizeLabel: UILabel?
+    
+    @IBOutlet weak var colorCell: UITableViewCell!
+    @IBOutlet weak var gridLineColorCell: UITableViewCell!
+    
+    weak var backgroundGrid: AGSBackgroundGrid? {
+        didSet {
+            updateUIForBackgroundGrid()
+        }
+    }
 
-enum AnimationDirection: String {
-    case Forward = "Forward"
-    case Backward = "Backward"
-}
-
-protocol GridSettingsVCDelegate: AnyObject {
-    
-    func gridSettingsViewController(_ gridSettingsViewController: GridSettingsViewController, didUpdateBackgroundGrid grid: AGSBackgroundGrid)
-    
-    func gridSettingsViewControllerWantsToClose(_ gridSettingsViewController: GridSettingsViewController)
-}
-
-class GridSettingsViewController: UIViewController {
-    
-    @IBOutlet var settingsView: UIView!
-    @IBOutlet var settingsTopContraint: NSLayoutConstraint!
-    @IBOutlet var colorButton: UIButton!
-    @IBOutlet var lineColorButton: UIButton!
-    @IBOutlet var lineWidthSlider: UISlider!
-    @IBOutlet var gridSizeSlider: UISlider!
-    @IBOutlet var lineWidthLabel: UILabel!
-    @IBOutlet var gridSizeLabel: UILabel!
-    
-    @IBOutlet var colorPickerView: UIView!
-    @IBOutlet var colorView: UIView!
-    @IBOutlet var hueSlider: UISlider!
-    @IBOutlet var saturationSlider: UISlider!
-    @IBOutlet var brightnessSlider: UISlider!
-    @IBOutlet var hueLabel: UILabel!
-    @IBOutlet var saturationLabel: UILabel!
-    @IBOutlet var brightnessLabel: UILabel!
-    
-    private var selectedColorButton: UIButton!
-    
-    weak var delegate: GridSettingsVCDelegate?
+    private let numberFormatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.toggleColorPicker(.Off, animated: false, animationDirection: .Forward)
+        // set corner radius and border for color swatches
+        for swatch in [colorSwatch, lineColorSwatch] {
+            swatch?.layer.cornerRadius = 5
+            swatch?.layer.borderColor = UIColor(hue: 0, saturation: 0, brightness: 0.9, alpha: 1).cgColor
+            swatch?.layer.borderWidth = 1
+        }
         
-        self.stylizeUI()
+        updateUIForBackgroundGrid()
     }
     
-    private func stylizeUI() {
-        let buttonColor = UIColor(red: 0, green: 122.0/255.0, blue: 1, alpha: 1)
-        
-        //corner radius and border for color buttons and view
-        self.colorButton.layer.cornerRadius = 5
-        self.colorButton.layer.borderColor = buttonColor.cgColor
-        self.colorButton.layer.borderWidth = 1
-        
-        self.lineColorButton.layer.cornerRadius = 5
-        self.lineColorButton.layer.borderColor = buttonColor.cgColor
-        self.lineColorButton.layer.borderWidth = 1
-        
-        self.colorView.layer.cornerRadius = 5
-        self.colorView.layer.borderColor = UIColor.lightGray.cgColor
-        self.colorView.layer.borderWidth = 1
-        
-        //corner radius for parent views
-        self.settingsView.layer.cornerRadius = 10
-        self.colorPickerView.layer.cornerRadius = 10
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // set the colors redundantly to avoid a visual glitch when closing the color picker
+        updateUIForGridColor()
+        updateUIForGridLineColor()
     }
     
-    //MARK: - Actions
-    
-    @IBAction private func colorButtonsAction(_ sender: UIButton) {
-        //keep a reference to selected button to later update the color
-        self.selectedColorButton = sender.tag == 0 ? self.colorButton : self.lineColorButton
-        
-        //get the current color of the button tapped
-        var h: CGFloat = 0.0
-        var s: CGFloat = 0.0
-        var b: CGFloat = 0.0
-        sender.backgroundColor?.getHue(&h, saturation: &s, brightness: &b, alpha: nil)
-        
-        //set the color on color view
-        self.colorView.backgroundColor = sender.backgroundColor
-        
-        //update the sliders
-        self.hueSlider.value = Float(h) * 255.0
-        self.saturationSlider.value = Float(s) * 255.0
-        self.brightnessSlider.value = Float(b) * 255.0
-        
-        //update slider labels
-        self.hueLabel.text = "\(Int(self.hueSlider.value))"
-        self.saturationLabel.text = "\(Int(self.saturationSlider.value))"
-        self.brightnessLabel.text = "\(Int(self.brightnessSlider.value))"
-        
-        //show color picker view
-        self.toggleColorPicker(.On, animated: true, animationDirection: .Forward)
+    private func updateUIForBackgroundGrid() {
+        updateUIForGridColor()
+        updateUIForGridLineColor()
+        updateUIForGridLineWidth()
+        updateUIForGridSize()
     }
+    
+    private func updateUIForGridColor() {
+        colorSwatch?.backgroundColor = backgroundGrid?.color
+    }
+    private func updateUIForGridLineColor() {
+        lineColorSwatch?.backgroundColor = backgroundGrid?.gridLineColor
+    }
+    private func updateUIForGridLineWidth() {
+        guard let value = backgroundGrid?.gridLineWidth else {
+            return
+        }
+        lineWidthLabel?.text = numberFormatter.string(from: value as NSNumber)
+        lineWidthSlider?.value = Float(value)
+    }
+    private func updateUIForGridSize() {
+        guard let value = backgroundGrid?.gridSize else {
+            return
+        }
+        gridSizeLabel?.text = numberFormatter.string(from: value as NSNumber)
+        gridSizeSlider?.value = Float(value)
+    }
+    
+    // MARK: - Actions
     
     @IBAction private func lineWidthSliderChanged(_ sender: UISlider) {
-        //update label
-        self.lineWidthLabel.text = "\(Int(sender.value))"
-        
-        //update map view
-        self.updateMapView()
+        backgroundGrid?.gridLineWidth = Double(sender.value)
+        updateUIForGridLineWidth()
     }
     
     @IBAction private func gridSizeSliderChanged(_ sender: UISlider) {
-        //update label
-        self.gridSizeLabel.text = "\(Int(sender.value))"
-        
-        //update map view
-        self.updateMapView()
+        backgroundGrid?.gridSize = Double(sender.value)
+        updateUIForGridSize()
     }
     
-    @IBAction private func HSBSlidersChanged(_ slider: UISlider) {
-        switch slider.tag {
-        case 0:
-            self.hueLabel.text = "\(Int(slider.value))"
-        case 1:
-            self.saturationLabel.text = "\(Int(slider.value))"
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        switch cell {
+        case colorCell:
+            guard let color = backgroundGrid?.color else {
+                return
+            }
+            let controller = ColorPickerViewController.instantiateWith(color: color) { (color) in
+                self.backgroundGrid?.color = color
+                self.updateUIForGridColor()
+            }
+            controller.title = "Color"
+            show(controller, sender: self)
+        case gridLineColorCell:
+            guard let color = backgroundGrid?.gridLineColor else {
+                return
+            }
+            let controller = ColorPickerViewController.instantiateWith(color: color) { (color) in
+                self.backgroundGrid?.gridLineColor = color
+                self.updateUIForGridLineColor()
+            }
+            controller.title = "Line Color"
+            show(controller, sender: self)
         default:
-            self.brightnessLabel.text = "\(Int(slider.value))"
-        }
-        
-        //update color view background color
-        let h = CGFloat(self.hueSlider.value) / 255.0
-        let s = CGFloat(self.saturationSlider.value) / 255.0
-        let b = CGFloat(self.brightnessSlider.value) / 255.0
-        
-        let newColor = UIColor(hue: h, saturation: s, brightness: b, alpha: 1)
-        self.colorView.backgroundColor = newColor
-    }
-    
-    @IBAction private func doneAction() {
-        //assign color to the button
-        self.selectedColorButton.backgroundColor = self.colorView.backgroundColor
-        
-        //hide color picker view
-        self.toggleColorPicker(.Off, animated: true, animationDirection: .Backward)
-        
-        //update map view
-        self.updateMapView()
-    }
-    
-    @IBAction private func closeAction() {
-        self.delegate?.gridSettingsViewControllerWantsToClose(self)
-    }
-    
-    //TODO: Remove this work around once able to change properties on grid
-    private func updateMapView() {
-        
-        let backgroundGrid = AGSBackgroundGrid(color: self.colorButton.backgroundColor!, gridLineColor: self.lineColorButton.backgroundColor!, gridLineWidth: Double(self.lineWidthSlider.value), gridSize: Double(self.gridSizeSlider.value))
-        
-        //notify delegate
-        self.delegate?.gridSettingsViewController(self, didUpdateBackgroundGrid: backgroundGrid)
-    }
-    
-    //MARK: - Color picker show/hide
-    
-    private func toggleColorPicker(_ toggle: ColorPickerToggle, animated: Bool, animationDirection: AnimationDirection) {
-        
-        //update the layout constraint to bring the required view on screen
-        self.settingsTopContraint.constant = toggle == .On ? -190 : 5
-        
-        if !animated {
-            self.view.layoutIfNeeded()
-        }
-        else {
-            //frames for starting and finishing animation
-            let buttonFrame = self.selectedColorButton.frame.offsetBy(dx: 5, dy: 5)
-            let colorViewFrame = self.colorView.frame.offsetBy(dx: 5, dy: 5)
-            
-            //create a temporary view for animation
-            let animatingView = UIView(frame: animationDirection == .Forward ? buttonFrame : colorViewFrame)
-            animatingView.backgroundColor = animationDirection == .Forward ? self.selectedColorButton.backgroundColor : self.colorView.backgroundColor
-            animatingView.layer.cornerRadius = 5
-            self.view.addSubview(animatingView)
-            
-            //hide the button and the view during animation
-            self.selectedColorButton.isHidden = true
-            self.colorView.isHidden = true
-            
-            //animate the frames over time
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-                
-                animatingView.frame = animationDirection == .Forward ? colorViewFrame : buttonFrame
-                self?.view.layoutIfNeeded()
-                
-                }, completion: { [weak self] (finished) in
-                    
-                    //On completion unhide the original views
-                    self?.selectedColorButton.isHidden = false
-                    self?.colorView.isHidden = false
-                    
-                    //remove the animating view from the view hierarchy
-                    animatingView.removeFromSuperview()
-                })
+            break
         }
     }
 }

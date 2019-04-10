@@ -16,8 +16,7 @@ import UIKit
 import ArcGIS
 
 class WMSLayerUsingURLViewController: UIViewController {
-    
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +35,7 @@ class WMSLayerUsingURLViewController: UIViewController {
         let wmsLayer = AGSWMSLayer(url: wmsServiceURL, layerNames: wmsServiceLayerNames)
         
         //load the WMS layer
-        wmsLayer.load {[weak self] (error) in
+        wmsLayer.load { [weak self] (error) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else if wmsLayer.loadStatus == .loaded {
@@ -48,5 +47,4 @@ class WMSLayerUsingURLViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["WMSLayerUsingURLViewController"]
     }
-    
 }

@@ -15,35 +15,25 @@
 import UIKit
 
 protocol EAOptionsVCDelegate: AnyObject {
-    func optionsViewController(_ optionsViewController:EAOptionsViewController, didSelectOptionAtIndex index:Int)
+    func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int)
+    func optionsViewControllerDidCancell(_ optionsViewController: EAOptionsViewController)
 }
 
-class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarPositioningDelegate {
+class EAOptionsViewController: UITableViewController {
+    var options: [String]!
+    weak var delegate: EAOptionsVCDelegate?
     
-    @IBOutlet private weak var tableView:UITableView!
+    // MARK: - Table view data source
     
-    var options:[String]!
-    weak var delegate:EAOptionsVCDelegate!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    //MARK:- Table view data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.options?.count ?? 0
     }
     
-    //MARK: - Table view delegate
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EAOptionsCell", for: indexPath)
         
         cell.textLabel?.text = self.options[indexPath.row]
@@ -51,20 +41,15 @@ class EAOptionsViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate.optionsViewController(self, didSelectOptionAtIndex: indexPath.row)
-        self.cancelAction()
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.optionsViewController(self, didSelectOptionAtIndex: indexPath.row)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
-    @IBAction func cancelAction() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    //MARK: - UIBarPositioningDelegate
-    
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
+    @IBAction func cancel() {
+        delegate?.optionsViewControllerDidCancell(self)
     }
 }

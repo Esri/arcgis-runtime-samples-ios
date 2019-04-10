@@ -15,45 +15,17 @@
 import UIKit
 
 class ContentCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
-    @IBOutlet private var collectionViewFlowLayout:UICollectionViewFlowLayout!
+    @IBOutlet private var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     /// The categories to display in the collection view.
-    var categories:[Category] = []{
-        didSet{
+    var categories: [Category] = [] {
+        didSet {
             // add search only after setting categories to ensure that the samples are available
             addSearchController()
         }
     }
     
-    // strong reference needed for iOS 10
-    var searchController:UISearchController?
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if #available(iOS 11.0, *) {
-            // no need to change definesPresentationContext here after iOS 10
-        } else {
-            // required in iOS 10 for the filter field to be interactable in the samples table
-            definesPresentationContext = false
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if #available(iOS 11.0, *) {
-            // no change to reset
-        } else {
-            // reset the change made in viewWillDisappear
-            definesPresentationContext = true
-        }
-    }
-    
-    private func addSearchController(){
-        
-        // ensure that the search results appear beneath the navigation bar
-        definesPresentationContext = true
-        
+    private func addSearchController() {
         // create the view controller for displaying the search results
         let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         let allSamples = categories.flatMap { $0.samples }
@@ -61,39 +33,30 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         searchResultsController.searchEngine = SampleSearchEngine(samples: allSamples)
         
         // create the search controller
-        let searchController = UISearchController(searchResultsController:searchResultsController)
+        let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.obscuresBackgroundDuringPresentation = true
         searchController.hidesNavigationBarDuringPresentation = false
         // send search query updates to the results controller
         searchController.searchResultsUpdater = searchResultsController
-        // retain a strong reference for iOS 10
-        self.searchController = searchController
         
         let searchBar = searchController.searchBar
         searchBar.autocapitalizationType = .none
         // set the color of "Cancel" text
         searchBar.tintColor = .white
         
-        if #available(iOS 11.0, *) {
-            // embed the search bar under the title in the navigation bar
-            navigationItem.searchController = searchController
-            
-            // find the text field to customize its appearance
-            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-                // set the color of the insertion cursor
-                textfield.tintColor = UIColor.darkText
-                if let backgroundview = textfield.subviews.first {
-                    backgroundview.backgroundColor = UIColor.white
-                    backgroundview.layer.cornerRadius = 12
-                    backgroundview.clipsToBounds = true
-                }
-            }
-            
-        } else {
-            // embed the search bar in the title area of the navigation bar
-            navigationItem.titleView = searchController.searchBar
-        }
+        // embed the search bar under the title in the navigation bar
+        navigationItem.searchController = searchController
         
+        // find the text field to customize its appearance
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            // set the color of the insertion cursor
+            textfield.tintColor = UIColor.darkText
+            if let backgroundview = textfield.subviews.first {
+                backgroundview.backgroundColor = UIColor.white
+                backgroundview.layer.cornerRadius = 12
+                backgroundview.clipsToBounds = true
+            }
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -128,7 +91,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         return cell
     }
     
-    //MARK: - UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //hide keyboard if visible
@@ -141,25 +104,18 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         show(controller, sender: self)
     }
     
-    //MARK: - UICollectionViewDelegateFlowLayout
+    // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewSize: CGSize
-        if #available(iOS 11.0, *) {
-            //account for the safe area when determining the item size
-            collectionViewSize = collectionView.bounds.inset(by: collectionView.safeAreaInsets).size
-        } else {
-            collectionViewSize = collectionView.bounds.size
-        }
+        let collectionViewSize = collectionView.bounds.inset(by: collectionView.safeAreaInsets).size
         
         let spacing: CGFloat = 10
         //first try for 3 items in a row
-        var width = (collectionViewSize.width - 4*spacing)/3
+        var width = (collectionViewSize.width - 4 * spacing) / 3
         if width < 150 {
             //if too small then go for 2 in a row
-            width = (collectionViewSize.width - 3*spacing)/2
+            width = (collectionViewSize.width - 3 * spacing) / 2
         }
         return CGSize(width: width, height: width)
     }
-    
 }

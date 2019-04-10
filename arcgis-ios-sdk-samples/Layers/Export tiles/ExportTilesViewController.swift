@@ -17,19 +17,18 @@ import UIKit
 import ArcGIS
 
 class ExportTilesViewController: UIViewController {
-    
-    @IBOutlet var mapView:AGSMapView!
-    @IBOutlet var extentView:UIView!
-    @IBOutlet var visualEffectView:UIVisualEffectView!
-    @IBOutlet var previewMapView:AGSMapView!
-    @IBOutlet var barButtonItem:UIBarButtonItem!
+    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var extentView: UIView!
+    @IBOutlet var visualEffectView: UIVisualEffectView!
+    @IBOutlet var previewMapView: AGSMapView!
+    @IBOutlet var barButtonItem: UIBarButtonItem!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
-    private var extentGraphic:AGSGraphic!
+    private var extentGraphic: AGSGraphic!
     
-    private var tiledLayer:AGSArcGISTiledLayer!
-    private var job:AGSExportTileCacheJob!
-    private var exportTask:AGSExportTileCacheTask!
+    private var tiledLayer: AGSArcGISTiledLayer!
+    private var job: AGSExportTileCacheJob!
+    private var exportTask: AGSExportTileCacheTask!
     
     private var downloading = false {
         didSet {
@@ -66,7 +65,7 @@ class ExportTilesViewController: UIViewController {
         let frame = self.mapView.convert(self.extentView.frame, from: self.view)
         
         let minPoint = self.mapView.screen(toLocation: frame.origin)
-        let maxPoint = self.mapView.screen(toLocation: CGPoint(x: frame.origin.x+frame.width, y: frame.origin.y+frame.height))
+        let maxPoint = self.mapView.screen(toLocation: CGPoint(x: frame.origin.x + frame.width, y: frame.origin.y + frame.height))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
     }
@@ -74,84 +73,77 @@ class ExportTilesViewController: UIViewController {
     @IBAction func barButtonItemAction() {
         if downloading {
             //cancel download
-            self.cancelDownload()
-        }
-        else {
+            job?.progress.cancel()
+        } else {
             //download
-            self.initiateDownload()
-        }
-    }
-    
-    private func cancelDownload() {
-        if self.job != nil {
-            SVProgressHUD.dismiss()
-            //TODO: Cancel the job when the API is available
-            //self.job.cancel
-            self.job = nil
-            self.downloading = false
-            self.visualEffectView.isHidden = true
+            initiateDownload()
         }
     }
     
     private func initiateDownload() {
-        
         //get the parameters by specifying the selected area,
         //mapview's current scale as the minScale and tiled layer's max scale as maxScale
-        let minScale = self.mapView.mapScale
-        let maxScale = self.self.tiledLayer.maxScale
+        var minScale = mapView.mapScale
+        let maxScale = tiledLayer.maxScale
         
-        //TODO: Remove this code once design has been udpated
-        if minScale == maxScale {
-            presentAlert(message: "Min scale and max scale cannot be the same")
-            return
+        if minScale < maxScale {
+            minScale = maxScale
         }
         
-        //set the state
-        self.downloading = true
-        
         //delete previous existing tpks
-        self.deleteAllTpks()
+        deleteAllTpks()
         
         //initialize the export task
-        self.exportTask = AGSExportTileCacheTask(url: self.tiledLayer.url!)
-        self.exportTask.exportTileCacheParameters(withAreaOfInterest: self.frameToExtent(), minScale: self.mapView.mapScale, maxScale: self.tiledLayer.maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: Error?) in
-            if let error = error {
-                self?.presentAlert(error: error)
+        exportTask = AGSExportTileCacheTask(url: tiledLayer.url!)
+        exportTask.exportTileCacheParameters(withAreaOfInterest: frameToExtent(), minScale: minScale, maxScale: maxScale) { [weak self] (params: AGSExportTileCacheParameters?, error: Error?) in
+            guard let self = self else {
+                return
             }
-            else {
-                self?.exportTilesUsingParameters(params!)
+            
+            if let error = error {
+                self.presentAlert(error: error)
+            } else if let params = params {
+                self.exportTilesUsingParameters(params)
             }
         }
     }
     
     private func exportTilesUsingParameters(_ params: AGSExportTileCacheParameters) {
         //destination path for the tpk, including name
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let destinationPath = "\(path)/myTileCache.tpk"
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let downloadFileURL = documentDirectoryURL.appendingPathComponent("myTileCache.tpk")
+        
+        downloading = true
         
         //get the job
-        self.job = self.exportTask.exportTileCacheJob(with: params, downloadFileURL: URL(string: destinationPath)!)
+        job = exportTask.exportTileCacheJob(with: params, downloadFileURL: downloadFileURL)
         //run the job
-        self.job.start(statusHandler: { (status: AGSJobStatus) -> Void in
+        job.start(statusHandler: { (status: AGSJobStatus) in
             //show job status
             SVProgressHUD.show(withStatus: status.statusString())
-        }) { [weak self] (result: AnyObject?, error: Error?) -> Void in
-            self?.downloading = false
+        }, completion: { [weak self] (result: AnyObject?, error: Error?) in
+            //hide progress view
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
+            }
+
+            self.job = nil
+            self.downloading = false
             
             if let error = error {
-                self?.presentAlert(error: error)
-            }
-            else {
-                
-                //hide progress view
-                SVProgressHUD.dismiss()
-                self?.visualEffectView.isHidden = false
+                if (error as NSError).code != NSUserCancelledError {
+                    self.presentAlert(error: error)
+                }
+            } else {
+                self.visualEffectView.isHidden = false
                 
                 let tileCache = result as! AGSTileCache
                 let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
-                self?.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
+                self.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
             }
-        }
+        })
     }
     
     @IBAction func closeAction() {
@@ -162,20 +154,18 @@ class ExportTilesViewController: UIViewController {
     }
     
     private func deleteAllTpks() {
-        
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
-            let files = try FileManager.default.contentsOfDirectory(atPath: path)
+            let files = try FileManager.default.contentsOfDirectory(atPath: documentDirectoryURL.path)
             for file in files {
                 if file.hasSuffix(".tpk") {
-                    try FileManager.default.removeItem(atPath: (path as NSString).appendingPathComponent(file))
+                    let url = documentDirectoryURL.appendingPathComponent(file)
+                    try FileManager.default.removeItem(at: url)
                 }
             }
             print("deleted all local data")
-        }
-        catch {
+        } catch {
             print(error)
         }
     }
-
 }

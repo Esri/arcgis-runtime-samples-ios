@@ -16,15 +16,21 @@ import UIKit
 import ArcGIS
 
 class DisplayKMLNetworkLinksViewController: UIViewController {
-    
     @IBOutlet weak var sceneView: AGSSceneView!
-    @IBOutlet weak var textView: UITextView!
+    
+    /// The controller shown in a popover after tapping "View Messages"
+    private weak var messageViewController: KMLNetworkMessagesViewController?
+    private var messageText = "Network Link Messages:\n\n" {
+        didSet {
+            updatePopoverForMessage()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayKMLNetworkLinksViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayKMLNetworkLinksViewController"]
         
         // instantiate a scene using labeled imagery
         let scene = AGSScene(basemapType: .imageryWithLabels)
@@ -35,19 +41,17 @@ class DisplayKMLNetworkLinksViewController: UIViewController {
         let viewpoint = AGSViewpoint(center: AGSPoint(x: 8.150526, y: 50.472421, spatialReference: .wgs84()), scale: 10000000)
         sceneView.setViewpoint(viewpoint)
         
-        // set the initial text
-        textView.text = "Network Link Messages:\n\n"
-        
         /// The URL of a KML file with network links
         let datasetURL = URL(string: "https://www.arcgis.com/sharing/rest/content/items/600748d4464442288f6db8a4ba27dc95/data")!
         /// The KML dataset with network links
         let kmlDataset = AGSKMLDataset(url: datasetURL)
         
         // register to receive the network link messages
-        kmlDataset.networkLinkMessageHandler = {[weak self] (_, message) in
+        kmlDataset.networkLinkMessageHandler = { [weak self] (_, message) in
             // run UI updates on the main thread
             DispatchQueue.main.async {
-                 self?.textView.text += "\(message)\n\n"
+                // append the message to the prior messages
+                self?.messageText += "\(message)\n\n"
             }
         }
         
@@ -57,4 +61,33 @@ class DisplayKMLNetworkLinksViewController: UIViewController {
         scene.operationalLayers.add(kmlLayer)
     }
     
+    private func updatePopoverForMessage() {
+        // updates the text shown in the text view with the message text
+        messageViewController?.textView?.text = messageText
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // The popovover segue is triggered via storyboard connections, so set it up here.
+        if let controller = segue.destination as? KMLNetworkMessagesViewController {
+            controller.presentationController?.delegate = self
+            controller.preferredContentSize = CGSize(width: 300, height: 300)
+            // load the view so the text view can be accessed now
+            controller.loadViewIfNeeded()
+            // retain a reference to the controller so the text view can be updated from `updatePopoverForMessage()`
+            messageViewController = controller
+            // set the initial message
+            updatePopoverForMessage()
+        }
+    }
+}
+
+extension DisplayKMLNetworkLinksViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // show as this as a popover even on small displays
+        return .none
+    }
+}
+
+class KMLNetworkMessagesViewController: UIViewController {
+    @IBOutlet var textView: UITextView!
 }

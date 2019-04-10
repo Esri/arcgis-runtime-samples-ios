@@ -15,18 +15,17 @@
 import UIKit
 import ArcGIS
 
-class SublayerVisibilityViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
+class SublayerVisibilityViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    
-    private var map:AGSMap!
-    private var mapImageLayer:AGSArcGISMapImageLayer!
+    private var map: AGSMap!
+    private var mapImageLayer: AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SublayerVisibilityViewController","SublayersTableViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SublayerVisibilityViewController", "SublayersTableViewController"]
         
         //initialize map with topographic basemap
         self.map = AGSMap(basemap: .topographic())
@@ -41,28 +40,25 @@ class SublayerVisibilityViewController: UIViewController, UIAdaptivePresentation
         self.mapView.map = self.map
         
         //zoom to a custom viewpoint
-        self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: AGSSpatialReference.webMercator()), scale: 9e7, completion: nil)
-        
+        self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: .webMercator()), scale: 9e7)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SublayersPopover" {
             //get the destination view controller as BookmarksListViewController
             let controller = segue.destination as! SublayersTableViewController
-            controller.sublayers = self.mapImageLayer.mapImageSublayers
-            
-            //popover presentation logic
+            if let sublayers = mapImageLayer.mapImageSublayers as? [AGSArcGISMapImageSublayer] {
+                controller.sublayers = sublayers
+            }
             controller.presentationController?.delegate = self
-            controller.preferredContentSize = CGSize(width: 300, height: 200)
         }
     }
-    
-    //MARK: - UIAdaptivePresentationControllerDelegate
-    
+}
+
+extension SublayerVisibilityViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        //for popover or non modal presentation
-        return UIModalPresentationStyle.none
+        return .none
     }
 }

@@ -16,10 +16,9 @@ import UIKit
 import ArcGIS
 
 class FeatureLayerGDBViewController: UIViewController {
-
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var geodatabase:AGSGeodatabase!
+    private var geodatabase: AGSGeodatabase!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +30,7 @@ class FeatureLayerGDBViewController: UIViewController {
         let map = AGSMap(basemap: .imageryWithLabels())
         
         //set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 35e4)
+        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4)
         
         //instantiate geodatabase with name
         self.geodatabase = AGSGeodatabase(name: "LA_Trails")
@@ -40,8 +39,7 @@ class FeatureLayerGDBViewController: UIViewController {
         self.geodatabase.load { [weak self] (error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 let featureTable = self!.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                 self?.mapView.map?.operationalLayers.add(featureLayer)
@@ -51,5 +49,4 @@ class FeatureLayerGDBViewController: UIViewController {
         //assign map to the map view
         self.mapView.map = map
     }
-
 }

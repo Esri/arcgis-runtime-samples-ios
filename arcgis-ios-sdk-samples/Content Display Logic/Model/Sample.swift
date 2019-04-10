@@ -17,12 +17,10 @@
 import Foundation
 
 struct Sample: Hashable {
-    
     var name: String
     var description: String
     var storyboardName: String
     var dependencies: [String]
-    
 }
 
 extension Sample: Decodable {
@@ -43,7 +41,7 @@ extension Sample: Decodable {
 }
 
 extension Sample {
-    var readmeURL:URL?{
+    var readmeURL: URL? {
         return Bundle.main.url(forResource: "README", withExtension: "md", subdirectory: name)
     }
 }

@@ -16,13 +16,26 @@ import UIKit
 import ArcGIS
 
 class SublayersTableViewController: UITableViewController {
-
-    //list of sublayers
-    var sublayers:NSMutableArray!
+    /// The sublayers to be displayed in the table view.
+    var sublayers = [AGSArcGISMapImageSublayer]() {
+        didSet {
+            guard isViewLoaded else { return }
+            tableView.reloadData()
+        }
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    private var tableViewContentSizeObservation: NSKeyValueObservation?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableViewContentSizeObservation = tableView.observe(\.contentSize) { [unowned self] (tableView, _) in
+            self.preferredContentSize = CGSize(width: self.preferredContentSize.width, height: tableView.contentSize.height)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableViewContentSizeObservation = nil
     }
 
     // MARK: - Table view data source
@@ -32,19 +45,15 @@ class SublayersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sublayers?.count ?? 0
+        return sublayers.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let sublayer = sublayers[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "SublayerCell", for: indexPath)
-        cell.backgroundColor = .clear
-        
-        let sublayer = self.sublayers[indexPath.row] as! AGSArcGISMapImageSublayer
         cell.textLabel?.text = sublayer.name
-        
         //accessory switch
-        let visibilitySwitch = UISwitch(frame: CGRect.zero)
+        let visibilitySwitch = UISwitch(frame: .zero)
         visibilitySwitch.tag = indexPath.row
         visibilitySwitch.isOn = sublayer.isVisible
         visibilitySwitch.addTarget(self, action: #selector(SublayersTableViewController.switchChanged(_:)), for: .valueChanged)
@@ -52,10 +61,11 @@ class SublayersTableViewController: UITableViewController {
         return cell
     }
     
-    @objc func switchChanged(_ sender:UISwitch) {
+    @objc
+    func switchChanged(_ sender: UISwitch) {
         let index = sender.tag
         //change the visiblity
-        let sublayer = self.sublayers[index] as! AGSArcGISMapImageSublayer
+        let sublayer = self.sublayers[index]
         sublayer.isVisible = sender.isOn
     }
 }

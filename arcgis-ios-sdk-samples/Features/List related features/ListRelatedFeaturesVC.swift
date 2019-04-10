@@ -15,18 +15,17 @@
 import UIKit
 import ArcGIS
 
-class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopoverPresentationControllerDelegate {
-
-    @IBOutlet var mapView:AGSMapView!
+class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
+    @IBOutlet var mapView: AGSMapView!
     
-    private var parksFeatureLayer:AGSFeatureLayer!
-    private var parksFeatureTable:AGSServiceFeatureTable!
-    private var preservesFeatureTable:AGSServiceFeatureTable!
-    private var speciesFeatureTable:AGSServiceFeatureTable!
-    private var selectedPark:AGSArcGISFeature!
-    private var screenPoint:CGPoint!
+    private var parksFeatureLayer: AGSFeatureLayer!
+    private var parksFeatureTable: AGSServiceFeatureTable!
+    private var preservesFeatureTable: AGSServiceFeatureTable!
+    private var speciesFeatureTable: AGSServiceFeatureTable!
+    private var selectedPark: AGSArcGISFeature!
+    private var screenPoint: CGPoint!
     
-    private var results:[AGSRelatedFeatureQueryResult]!
+    private var results: [AGSRelatedFeatureQueryResult]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +37,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         let map = AGSMap(basemap: .nationalGeographic())
         
         //initial viewpoint
-        let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: AGSSpatialReference(wkid: 3857))
+        let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: .webMercator())
         //set initial viewpoint on map
         map.initialViewpoint = AGSViewpoint(center: point, scale: 36764077)
         
@@ -73,10 +72,9 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         mapView.selectionProperties.color = .yellow
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
         //unselect previously selected park
         if let previousSelection = self.selectedPark {
             self.parksFeatureLayer.unselectFeature(previousSelection)
@@ -87,66 +85,52 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
         
         //identify features at the tapped location
         self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyLayerResult) in
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
             
             if let error = result.error {
-                
                 //dismiss progress hud
                 self?.presentAlert(error: error)
             }
-            else {
+            //Check if a feature is identified
+            else if let feature = result.geoElements.first as? AGSArcGISFeature {
+                //store as selected park to use for querying
+                self?.selectedPark = feature
                 
-                //dismiss progress hud
-                SVProgressHUD.dismiss()
+                //select feature on layer
+                self?.parksFeatureLayer.select(feature)
                 
-                //Check if a feature is identified
-                if result.geoElements.count > 0 {
-                    
-                    //select the first feature
-                    let feature = result.geoElements[0] as! AGSArcGISFeature
-                    
-                    //store as selected park to use for querying
-                    self?.selectedPark = feature
-                    
-                    //select feature on layer
-                    self?.parksFeatureLayer.select(feature)
-                    
-                    //store the screen point for the tapped location to show popover at that location
-                    self?.screenPoint = screenPoint
-                    
-                    //query for related features
-                    self?.queryRelatedFeatures()
-                }
+                //store the screen point for the tapped location to show popover at that location
+                self?.screenPoint = screenPoint
+                
+                //query for related features
+                self?.queryRelatedFeatures()
             }
         }
     }
 
     //query for related features given the origin feature
     private func queryRelatedFeatures() {
-        
         //show progress hud
         SVProgressHUD.show(withStatus: "Querying related features")
         
         //query for related features
-        self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results:[AGSRelatedFeatureQueryResult]?, error:Error?) in
+        self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
             
             if let error = error {
-                
                 //display error
                 self?.presentAlert(error: error)
-            }
-            else {
-                
-                //dismiss progress hud
-                SVProgressHUD.dismiss()
-                
+            } else {
                 //Show the related features found in popover
-                if let results = results, results.count > 0 {
+                if let results = results,
+                    !results.isEmpty {
                     self?.results = results
                     
                     //self?.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
                     self?.showRelatedFeatures()
-                }
-                else {  //else notify user
+                } else {  //else notify user
                     self?.presentAlert(message: "No related features found")
                 }
             }
@@ -155,38 +139,23 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate, UIPopove
     
     //show related features in a table view as popover
     private func showRelatedFeatures() {
-        
         //perform popover segue
         self.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "RelatedFeaturesSegue" {
-            
-            let controller = segue.destination as! RelatedFeaturesListVC
-            
+        if segue.identifier == "RelatedFeaturesSegue",
+            let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? RelatedFeaturesListVC {
             //set results from related features query
             controller.results = self.results
-
-            //other settings for popover
-            controller.popoverPresentationController?.sourceView = self.mapView
-            controller.popoverPresentationController?.sourceRect = CGRect(origin: self.screenPoint, size: CGSize.zero)
-            controller.popoverPresentationController?.delegate = self
         }
      }
     
-    //MARK: - UIPopoverPresentationControllerDelegate
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        
-        return UIModalPresentationStyle.none
-    }
-    
     //to hide popover controller on rotation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
 }

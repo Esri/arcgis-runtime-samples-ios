@@ -16,8 +16,7 @@ import UIKit
 import ArcGIS
 
 class CreateGeometriesViewController: UIViewController {
-
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
     
@@ -53,19 +52,19 @@ class CreateGeometriesViewController: UIViewController {
     
     private func createEnvelope() -> AGSEnvelope {
         //create an envelope using minimum and maximum x,y coordinates and a spatial reference
-        let envelope = AGSEnvelope(xMin: -123.0, yMin: 33.5, xMax: -101.0, yMax: 48.0, spatialReference: AGSSpatialReference.wgs84())
+        let envelope = AGSEnvelope(xMin: -123.0, yMin: 33.5, xMax: -101.0, yMax: 48.0, spatialReference: .wgs84())
         return envelope
     }
     
     private func createPoint() -> AGSPoint {
         // create a point using x,y coordinates and a spatial reference
-        let point = AGSPoint(x: 34.056295, y: -117.195800, spatialReference: AGSSpatialReference.wgs84())
+        let point = AGSPoint(x: 34.056295, y: -117.195800, spatialReference: .wgs84())
         return point
     }
     
     private func createMultipoint() -> AGSMultipoint {
         // create a multi point geometry
-        let multipointBuilder = AGSMultipointBuilder(spatialReference: AGSSpatialReference.wgs84())
+        let multipointBuilder = AGSMultipointBuilder(spatialReference: .wgs84())
         multipointBuilder.points.addPointWith(x: -121.491014, y: 38.579065) // Sacramento, CA
         multipointBuilder.points.addPointWith(x: -122.891366, y: 47.039231) // Olympia, WA
         multipointBuilder.points.addPointWith(x: -123.043814, y: 44.93326) // Salem, OR
@@ -76,7 +75,7 @@ class CreateGeometriesViewController: UIViewController {
     
     private func createPolyline() -> AGSPolyline {
         //create a polyline
-        let polylineBuilder = AGSPolylineBuilder(spatialReference: AGSSpatialReference.wgs84())
+        let polylineBuilder = AGSPolylineBuilder(spatialReference: .wgs84())
         polylineBuilder.addPointWith(x: -119.992, y: 41.989)
         polylineBuilder.addPointWith(x: -119.994, y: 38.994)
         polylineBuilder.addPointWith(x: -114.620, y: 35.0)
@@ -86,7 +85,7 @@ class CreateGeometriesViewController: UIViewController {
     
     private func createPolygon() -> AGSPolygon {
         // create a polygon
-        let polygonBuilder = AGSPolygonBuilder(spatialReference: AGSSpatialReference.wgs84())
+        let polygonBuilder = AGSPolygonBuilder(spatialReference: .wgs84())
         polygonBuilder.addPointWith(x: -109.048, y: 40.998)
         polygonBuilder.addPointWith(x: -102.047, y: 40.998)
         polygonBuilder.addPointWith(x: -102.037, y: 36.989)

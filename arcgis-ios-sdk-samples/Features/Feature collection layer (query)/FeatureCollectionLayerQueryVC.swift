@@ -17,10 +17,9 @@ import UIKit
 import ArcGIS
 
 class FeatureCollectionLayerQueryVC: UIViewController {
-
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var featureTable:AGSServiceFeatureTable!
+    private var featureTable: AGSServiceFeatureTable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class FeatureCollectionLayerQueryVC: UIViewController {
         self.mapView.map = map
         
         //initialize service feature table to be queried
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/0")!)
         
         //create query parameters
         let queryParams = AGSQueryParameters()
@@ -48,15 +47,13 @@ class FeatureCollectionLayerQueryVC: UIViewController {
         
         //query feature from the table
         self.featureTable.queryFeatures(with: queryParams) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
+            //hide progress hud
+            SVProgressHUD.dismiss()
             
             if let error = error {
                 //show error
-                SVProgressHUD.show(withStatus: error.localizedDescription)
-            }
-            else {
-                //hide progress hud
-                SVProgressHUD.dismiss()
-                
+                self?.presentAlert(error: error)
+            } else {
                 //create a feature collection table fromt the query results
                 let featureCollectionTable = AGSFeatureCollectionTable(featureSet: queryResult!)
                 
@@ -71,5 +68,4 @@ class FeatureCollectionLayerQueryVC: UIViewController {
             }
         }
     }
-    
 }

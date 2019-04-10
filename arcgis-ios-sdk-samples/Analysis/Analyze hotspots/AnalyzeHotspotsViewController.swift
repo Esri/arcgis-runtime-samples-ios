@@ -16,41 +16,48 @@ import UIKit
 import ArcGIS
 
 class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate {
-
     @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var containerView: UIView!
     
-    
-    private var geoprocessingTask: AGSGeoprocessingTask!
-    private var geoprocessingJob: AGSGeoprocessingJob!
+    /// Geoprocessing task with the url of the service
+    private let geoprocessingTask = AGSGeoprocessingTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/911CallsHotspot/GPServer/911%20Calls%20Hotspot")!)
     private var graphicsOverlay = AGSGraphicsOverlay()
+    
+    private var geoprocessingJob: AGSGeoprocessingJob?
+    
+    private let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AnalyzeHotspotsViewController", "HotspotSettingsViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "AnalyzeHotspotsViewController",
+            "HotspotSettingsViewController"
+        ]
 
         //initialize map with basemap
         let map = AGSMap(basemap: .topographic())
         
         //center for initial viewpoint
-        let center = AGSPoint(x: -13671170.647485, y: 5693633.356735, spatialReference: AGSSpatialReference(wkid: 3857))
+        let center = AGSPoint(x: -13671170.647485, y: 5693633.356735, spatialReference: .webMercator())
         
         //set initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: center, scale: 57779)
         
         //assign map to map view
-        self.mapView.map = map
-        
-        //initilaize geoprocessing task with the url of the service
-        self.geoprocessingTask = AGSGeoprocessingTask(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/911CallsHotspot/GPServer/911%20Calls%20Hotspot")!)
+        mapView.map = map
     }
     
-    private func analyzeHotspots(_ fromDate: String, toDate: String) {
-        
+    private func analyzeHotspots(_ fromDate: Date, toDate: Date) {
         //cancel previous job request
         self.geoprocessingJob?.progress.cancel()
+        
+        let fromDateString = dateFormatter.string(from: fromDate)
+        let toDateString = dateFormatter.string(from: toDate)
         
         //parameters
         let params = AGSGeoprocessingParameters(executionType: .asynchronousSubmit)
@@ -58,73 +65,63 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         params.outputSpatialReference = self.mapView.map?.spatialReference
         
         //query string
-        let queryString = "(\"DATE\" > date '\(fromDate) 00:00:00' AND \"DATE\" < date '\(toDate) 00:00:00')"
+        let queryString = "(\"DATE\" > date '\(fromDateString) 00:00:00' AND \"DATE\" < date '\(toDateString) 00:00:00')"
         params.inputs["Query"] = AGSGeoprocessingString(value: queryString)
         
         //job
-        self.geoprocessingJob = self.geoprocessingTask.geoprocessingJob(with: params)
+        let geoprocessingJob = geoprocessingTask.geoprocessingJob(with: params)
+        self.geoprocessingJob = geoprocessingJob
         
         //start job
-        self.geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
+        geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
             //show progress hud with job status
             SVProgressHUD.show(withStatus: status.statusString())
+        }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
+            //dismiss progress hud
+            SVProgressHUD.dismiss()
             
-        }) { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
+            guard let self = self else {
+                return
+            }
+            
             if let error = error {
                 //show error
-                self?.presentAlert(error: error)
-            }
-            else {
-                //dismiss progress hud
-                SVProgressHUD.dismiss()
-                
+                self.presentAlert(error: error)
+            } else {
                 //a map image layer is generated as a result
                 //remove any layer previously added to the map
-                self?.mapView.map?.operationalLayers.removeAllObjects()
+                self.mapView.map?.operationalLayers.removeAllObjects()
                 
                 //add the new layer to the map
-                self?.mapView.map?.operationalLayers.add(result!.mapImageLayer!)
+                self.mapView.map?.operationalLayers.add(result!.mapImageLayer!)
                 
                 //set map view's viewpoint to the new layer's full extent
-                (self?.mapView.map?.operationalLayers.firstObject as! AGSLayer).load { (error: Error?) in
+                (self.mapView.map?.operationalLayers.firstObject as! AGSLayer).load { (error: Error?) in
                     if error == nil {
-                        
                         //set viewpoint as the extent of the mapImageLayer
                         if let extent = result?.mapImageLayer?.fullExtent {
-                            self?.mapView.setViewpointGeometry(extent, completion: nil)
+                            self.mapView.setViewpointGeometry(extent, completion: nil)
                         }
                     }
                 }
             }
-        }
+        })
     }
     
-    //MARK: - HotspotSettingsVCDelegate
+    // MARK: - HotspotSettingsVCDelegate
     
-    func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: String, toDate: String) {
+    func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: Date, toDate: Date) {
+        hotspotSettingsViewController.dismiss(animated: true)
         
-        self.analyzeHotspots(fromDate, toDate: toDate)
-        self.toggleSettingsView(on: false)
+        analyzeHotspots(fromDate, toDate: toDate)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SettingsSegue" {
-            let controller = segue.destination as! HotspotSettingsViewController
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? HotspotSettingsViewController {
             controller.delegate = self
         }
-    }
-    
-    //MARK: - Toggle settings view
-    
-    private func toggleSettingsView(on: Bool) {
-        self.containerView.isHidden = !on
-    }
-    
-    //MARK: - Actions
-    
-    @IBAction func changeDatesAction() {
-        self.toggleSettingsView(on: true)
     }
 }

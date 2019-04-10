@@ -16,21 +16,20 @@ import UIKit
 import ArcGIS
 
 class FindRouteViewController: UIViewController {
+    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var routeBBI: UIBarButtonItem!
+    @IBOutlet var directionsListBBI: UIBarButtonItem!
     
-    @IBOutlet var mapView:AGSMapView!
-    @IBOutlet var routeBBI:UIBarButtonItem!
-    @IBOutlet var directionsListBBI:UIBarButtonItem!
-    
-    var routeTask:AGSRouteTask!
-    var routeParameters:AGSRouteParameters!
+    var routeTask: AGSRouteTask!
+    var routeParameters: AGSRouteParameters!
     
     var stopGraphicsOverlay = AGSGraphicsOverlay()
     var routeGraphicsOverlay = AGSGraphicsOverlay()
     
-    var stop1Geometry:AGSPoint!
-    var stop2Geometry:AGSPoint!
+    var stop1Geometry: AGSPoint!
+    var stop2Geometry: AGSPoint!
     
-    var generatedRoute:AGSRoute! {
+    var generatedRoute: AGSRoute! {
         didSet {
             let flag = generatedRoute != nil
             self.directionsListBBI.isEnabled = flag
@@ -51,7 +50,7 @@ class FindRouteViewController: UIViewController {
         self.mapView.graphicsOverlays.addObjects(from: [routeGraphicsOverlay, stopGraphicsOverlay])
         
         //zoom to viewpoint
-        self.mapView.setViewpointCenter(AGSPoint(x: -13041154.715252, y: 3858170.236806, spatialReference: AGSSpatialReference(wkid: 3857)), scale: 1e5, completion: nil)
+        self.mapView.setViewpointCenter(AGSPoint(x: -13041154.715252, y: 3858170.236806, spatialReference: .webMercator()), scale: 1e5)
         
         //initialize route task
         self.routeTask = AGSRouteTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
@@ -62,8 +61,8 @@ class FindRouteViewController: UIViewController {
     
     //add hard coded stops to the map view
     func addStops() {
-        self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: AGSSpatialReference(wkid: 3857))
-        self.stop2Geometry = AGSPoint(x: -13041693.562570, y: 3856006.859684, spatialReference: AGSSpatialReference(wkid: 3857))
+        self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: .webMercator())
+        self.stop2Geometry = AGSPoint(x: -13041693.562570, y: 3856006.859684, spatialReference: .webMercator())
         
         let startStopGraphic = AGSGraphic(geometry: self.stop1Geometry, symbol: self.stopSymbol(withName: "Origin", textColor: .blue), attributes: nil)
         let endStopGraphic = AGSGraphic(geometry: self.stop2Geometry, symbol: self.stopSymbol(withName: "Destination", textColor: .red), attributes: nil)
@@ -72,7 +71,7 @@ class FindRouteViewController: UIViewController {
     }
     
     //method provides a text symbol for stop with specified parameters
-    func stopSymbol(withName name:String, textColor:UIColor) -> AGSTextSymbol {
+    func stopSymbol(withName name: String, textColor: UIColor) -> AGSTextSymbol {
         return AGSTextSymbol(text: name, color: textColor, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
     }
     
@@ -82,16 +81,14 @@ class FindRouteViewController: UIViewController {
         return symbol
     }
     
-    //MARK: - Route logic
+    // MARK: - Route logic
     
     //method to get the default parameters for the route task
     func getDefaultParameters() {
-        
-        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) -> Void in
+        self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
             if let error = error {
                 print(error)
-            }
-            else {
+            } else {
                 //on completion store the parameters
                 self?.routeParameters = params
                 //add stops
@@ -124,26 +121,24 @@ class FindRouteViewController: UIViewController {
         stop2.name = "Destination"
         self.routeParameters.setStops([stop1, stop2])
         
-        self.routeTask.solveRoute(with: self.routeParameters) { (routeResult: AGSRouteResult?, error: Error?) -> Void in
+        self.routeTask.solveRoute(with: self.routeParameters) { (routeResult: AGSRouteResult?, error: Error?) in
             if let error = error {
                 print(error)
-            }
-            else {
+            } else if let route = routeResult?.routes.first {
                 //show the resulting route on the map
                 //also save a reference to the route object
                 //in order to access directions
-                self.generatedRoute = routeResult!.routes[0]
+                self.generatedRoute = route
                 let routeGraphic = AGSGraphic(geometry: self.generatedRoute.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
                 self.routeGraphicsOverlay.graphics.add(routeGraphic)
             }
         }
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DirectionsSegue" {
-            let controller = segue.destination as! DirectionsViewController
+        if let controller = segue.destination as? DirectionsViewController {
             controller.directionManeuvers = self.generatedRoute.directionManeuvers
         }
     }

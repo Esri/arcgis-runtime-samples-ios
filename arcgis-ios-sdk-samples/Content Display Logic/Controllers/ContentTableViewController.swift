@@ -15,25 +15,24 @@
 import UIKit
 
 class ContentTableViewController: UITableViewController {
-    
     /// The samples to display in the table. Searching adjusts this value
-    var displayedSamples = [Sample](){
-        didSet{
+    var displayedSamples = [Sample]() {
+        didSet {
             guard isViewLoaded else { return }
             tableView.reloadData()
         }
     }
     
     /// All samples that could be displayed in the table
-    var allSamples = [Sample](){
-        didSet{
+    var allSamples = [Sample]() {
+        didSet {
             displayedSamples = allSamples
         }
     }
 
     var searchEngine: SampleSearchEngine?
     
-    private var expandedRowIndex: Int = -1
+    private var expandedRowIndexPaths: Set<IndexPath> = []
     
     private var bundleResourceRequest: NSBundleResourceRequest?
     private var downloadProgressView: DownloadProgressView?
@@ -49,37 +48,23 @@ class ContentTableViewController: UITableViewController {
         self.downloadProgressView = downloadProgressView
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedSamples.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reuseIdentifier = "ContentTableCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ContentTableCell
-
         let sample = displayedSamples[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableCell", for: indexPath) as! ContentTableCell
         cell.titleLabel.text = sample.name
-        
-        if self.expandedRowIndex == indexPath.row {
-            cell.detailLabel.text = sample.description
-        }
-        else {
-            cell.detailLabel.text = nil
-        }
-        
-        cell.infoButton.addTarget(self, action: #selector(ContentTableViewController.expandCell(_:)), for: .touchUpInside)
-        cell.infoButton.tag = indexPath.row
-
-        cell.backgroundColor = .clear
-        
+        cell.detailLabel.text = sample.description
+        cell.isExpanded = expandedRowIndexPaths.contains(indexPath)
         return cell
     }
+    
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //hide keyboard if visible
@@ -89,14 +74,13 @@ class ContentTableViewController: UITableViewController {
         
         //download on demand resources
         if !sample.dependencies.isEmpty {
-        
             let bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
+            bundleResourceRequest.loadingPriority = NSBundleResourceRequestLoadingPriorityUrgent
             self.bundleResourceRequest = bundleResourceRequest
             
             //conditionally begin accessing to know if we need to show download progress view or not
             bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
                 DispatchQueue.main.async {
-                    
                     //if resource is already available then simply show the sample
                     if isResourceAvailable {
                         self?.showSample(indexPath: indexPath, sample: sample)
@@ -107,8 +91,7 @@ class ContentTableViewController: UITableViewController {
                     }
                 }
             }
-        }
-        else {
+        } else {
             //clear bundleResourceRequest
             bundleResourceRequest?.endAccessingResources()
             
@@ -117,8 +100,13 @@ class ContentTableViewController: UITableViewController {
         }
     }
     
-    func downloadResource(for sample: Sample, at indexPath:IndexPath) {
-        
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        toggleExpansion(at: indexPath)
+    }
+    
+    // MARK: - helpers
+    
+    private func downloadResource(for sample: Sample, at indexPath: IndexPath) {
         guard let bundleResourceRequest = bundleResourceRequest else {
             return
         }
@@ -127,29 +115,20 @@ class ContentTableViewController: UITableViewController {
         downloadProgressView?.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
         
         //add an observer to update the progress in download progress view
-        downloadProgressObservation = bundleResourceRequest.progress.observe(\.fractionCompleted, changeHandler: {[weak self] (progress, change) in
-            
-            guard let self = self else {
-                return
-            }
-            
+        downloadProgressObservation = bundleResourceRequest.progress.observe(\.fractionCompleted) { [weak self] (progress, _) in
             DispatchQueue.main.async {
-                if let progressFraction = self.bundleResourceRequest?.progress.fractionCompleted {
-                    self.downloadProgressView?.updateProgress(progress: CGFloat(progressFraction), animated: true)
-                }
+                self?.downloadProgressView?.updateProgress(progress: CGFloat(progress.fractionCompleted), animated: true)
             }
-        })
+        }
         
         //begin
         bundleResourceRequest.beginAccessingResources { [weak self] (error: Error?) in
-            
             guard let self = self else {
                 return
             }
             
             //in main thread
             DispatchQueue.main.async {
-                
                 //remove observation
                 self.downloadProgressObservation = nil
                 
@@ -163,11 +142,8 @@ class ContentTableViewController: UITableViewController {
                     if (error as NSError).code != NSUserCancelledError {
                         self.presentAlert(message: "Failed to download raster resource :: \(error.localizedDescription)")
                     }
-                }
-                else {
-                    
+                } else {
                     if self.bundleResourceRequest?.progress.isCancelled == false {
-                        
                         //show view controller
                         self.showSample(indexPath: indexPath, sample: sample)
                     }
@@ -177,10 +153,6 @@ class ContentTableViewController: UITableViewController {
     }
     
     private func showSample(indexPath: IndexPath, sample: Sample) {
-        
-        //expand the selected cell
-        updateExpandedRow(indexPath, collapseIfSelected: false)
-        
         let storyboard = UIStoryboard(name: sample.storyboardName, bundle: .main)
         let controller = storyboard.instantiateInitialViewController()!
         controller.title = sample.name
@@ -189,10 +161,9 @@ class ContentTableViewController: UITableViewController {
         let presentingController: UIViewController? = searchEngine != nil ? presentingViewController : self
             
         let navController = UINavigationController(rootViewController: controller)
-        if #available(iOS 11.0, *) {
-            //don't use large titles on samples
-            controller.navigationItem.largeTitleDisplayMode = .never
-        }
+        
+        //don't use large titles on samples
+        controller.navigationItem.largeTitleDisplayMode = .never
         
         //add the button on the left on the detail view controller
         controller.navigationItem.leftBarButtonItem = presentingController?.splitViewController?.displayModeButtonItem
@@ -206,62 +177,45 @@ class ContentTableViewController: UITableViewController {
         infoBBI.readmeURL = sample.readmeURL
         infoBBI.navController = navController
         controller.navigationItem.rightBarButtonItem = infoBBI
-
     }
     
-    @objc func expandCell(_ sender:UIButton) {
-        updateExpandedRow(IndexPath(row: sender.tag, section: 0), collapseIfSelected: true)
-    }
-    
-    private func updateExpandedRow(_ indexPath:IndexPath, collapseIfSelected:Bool) {
+    private func toggleExpansion(at indexPath: IndexPath) {
         //if same row selected then hide the detail view
-        if indexPath.row == expandedRowIndex {
-            if collapseIfSelected {
-                expandedRowIndex = -1
-                tableView.reloadRows(at: [indexPath], with: .fade)
-            }
-            else {
-                return
-            }
-        }
-        else {
+        if expandedRowIndexPaths.contains(indexPath) {
+            expandedRowIndexPaths.remove(indexPath)
+        } else {
             //get the two cells and update
-            let previouslyExpandedIndexPath = IndexPath(row: expandedRowIndex, section: 0)
-            expandedRowIndex = indexPath.row
-            tableView.reloadRows(at: [previouslyExpandedIndexPath, indexPath], with: .fade)
+            expandedRowIndexPaths.update(with: indexPath)
         }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
-
 }
 
-//MARK: - DownloadProgressViewDelegate
 extension ContentTableViewController: DownloadProgressViewDelegate {
-
-    func downloadProgressViewDidCancel(downloadProgressView: DownloadProgressView) {
+    func downloadProgressViewDidCancel(_ downloadProgressView: DownloadProgressView) {
         guard let bundleResourceRequest = bundleResourceRequest else {
             return
         }
         bundleResourceRequest.progress.cancel()
         bundleResourceRequest.endAccessingResources()
     }
-
 }
 
 extension ContentTableViewController: UISearchResultsUpdating {
-    
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchEngine = searchEngine else {
             return
         }
         
+        // do not preserve cell expansion when loading new results
+        expandedRowIndexPaths.removeAll()
+        
         if searchController.isActive,
             let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            !query.isEmpty{
+            !query.isEmpty {
             displayedSamples = searchEngine.sortedSamples(matching: query)
-        }
-        else{
+        } else {
             displayedSamples = allSamples
         }
     }
-    
 }

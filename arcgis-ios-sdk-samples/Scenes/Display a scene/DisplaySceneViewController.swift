@@ -18,8 +18,7 @@ import UIKit
 import ArcGIS
 
 class DisplaySceneViewController: UIViewController {
-
-    @IBOutlet var sceneView:AGSSceneView!
+    @IBOutlet var sceneView: AGSSceneView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,5 +43,4 @@ class DisplaySceneViewController: UIViewController {
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
     }
-
 }

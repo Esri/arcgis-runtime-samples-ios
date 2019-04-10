@@ -16,11 +16,10 @@ import UIKit
 import ArcGIS
 
 class ManualCacheViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    
-    private var map:AGSMap!
-    var featureTable:AGSServiceFeatureTable!
+    private var map: AGSMap!
+    var featureTable: AGSServiceFeatureTable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +30,7 @@ class ManualCacheViewController: UIViewController {
         //initialize map with topographic basemap
         self.map = AGSMap(basemap: .topographic())
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: AGSSpatialReference.webMercator()), scale: 500000)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: .webMercator()), scale: 500000)
         
         //assign map to the map view
         self.mapView.map = self.map
@@ -46,7 +45,7 @@ class ManualCacheViewController: UIViewController {
         self.map.operationalLayers.add(featureLayer)
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func populateAction(_ sender: AnyObject) {
         //set query parameters
@@ -55,17 +54,15 @@ class ManualCacheViewController: UIViewController {
         params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
         
         //populate features based on query
-        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) {[weak self] (result:AGSFeatureQueryResult?, error:Error?) -> Void in
+        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
             //check for error
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 //the resulting features should be displayed on the map
                 //you can print the count of features
                 print("Populated \(result?.featureEnumerator().allObjects.count ?? 0) features.")
             }
         }
     }
-    
 }

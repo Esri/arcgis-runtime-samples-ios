@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ag4-mC-hla">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ag4-mC-hla">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Manage Sublayers View Controller-->
         <scene sceneID="chH-Sy-Wgx">
             <objects>
-                <viewController id="ag4-mC-hla" customClass="ManageSublayersViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ag4-mC-hla" customClass="ManageSublayersViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FIL-M6-Mkv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="J9K-Vc-wO5"/>
-                                    <barButtonItem title="Sublayers" id="CmR-Ri-JIK">
+                                    <barButtonItem title="Manage Sublayers" id="CmR-Ri-JIK">
                                         <connections>
                                             <segue destination="cg1-iZ-LA9" kind="presentation" identifier="MapImageSublayersSegue" modalPresentationStyle="formSheet" id="MXS-1S-AVQ"/>
                                         </connections>
@@ -60,72 +60,57 @@
             <point key="canvasLocation" x="1039.2" y="160.56971514242881"/>
         </scene>
         <!--Sublayers-->
-        <scene sceneID="CRF-ji-nlo">
+        <scene sceneID="hgS-yY-ZCr">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="JeC-e0-SwS" customClass="MapImageSublayersVC" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ank-tO-olW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tableViewController id="Cix-X6-4BY" customClass="MapImageSublayersViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="7uH-wp-jAp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sRv-jc-101">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapImageSublayerCell" id="tRt-wA-mP0">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tRt-wA-mP0" id="rzu-yR-jQz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="JeC-e0-SwS" id="3Ix-gy-d6x"/>
-                                    <outlet property="delegate" destination="JeC-e0-SwS" id="pp6-m0-EUd"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="sRv-jc-101" firstAttribute="leading" secondItem="ank-tO-olW" secondAttribute="leading" id="Bsk-d2-xeU"/>
-                            <constraint firstItem="sRv-jc-101" firstAttribute="bottom" secondItem="ank-tO-olW" secondAttribute="bottom" id="uZi-Y6-lEX"/>
-                            <constraint firstItem="sRv-jc-101" firstAttribute="trailing" secondItem="ank-tO-olW" secondAttribute="trailing" id="ya4-sn-wwl"/>
-                            <constraint firstItem="sRv-jc-101" firstAttribute="top" secondItem="AZz-pa-rmy" secondAttribute="top" id="zbt-hl-fJW"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="AZz-pa-rmy"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Sublayers" id="3rf-Y3-URg">
-                        <barButtonItem key="leftBarButtonItem" title="Done" id="qHl-xW-Goh">
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapImageSublayerCell" id="tRt-wA-mP0">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tRt-wA-mP0" id="rzu-yR-jQz">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Cix-X6-4BY" id="0kw-gg-o3l"/>
+                            <outlet property="delegate" destination="Cix-X6-4BY" id="LHe-ZN-MCm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Sublayers" id="lal-wS-YQH">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="UNA-nO-PjC">
                             <connections>
-                                <action selector="doneAction" destination="JeC-e0-SwS" id="lHR-S8-BLX"/>
+                                <action selector="doneAction" destination="Cix-X6-4BY" id="lr0-gT-sRa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="sRv-jc-101" id="J8q-xE-ElL"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v1C-kc-qEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yLK-Eu-ucp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2912.8000000000002" y="160.56971514242881"/>
+            <point key="canvasLocation" x="2670" y="161"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hai-YO-Xlr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cg1-iZ-LA9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Spm-dV-8a1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Spm-dV-8a1">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="JeC-e0-SwS" kind="relationship" relationship="rootViewController" id="4VV-7r-d8W"/>
+                        <segue destination="Cix-X6-4BY" kind="relationship" relationship="rootViewController" id="tEO-qk-azb"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DsS-C0-KWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1973.5999999999999" y="160.56971514242881"/>
+            <point key="canvasLocation" x="1906" y="161"/>
         </scene>
     </scenes>
 </document>

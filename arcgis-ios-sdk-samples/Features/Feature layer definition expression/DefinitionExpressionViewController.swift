@@ -16,11 +16,10 @@ import UIKit
 import ArcGIS
 
 class DefinitionExpressionViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    
-    private var map:AGSMap!
-    private var featureLayer:AGSFeatureLayer!
+    private var map: AGSMap!
+    private var featureLayer: AGSFeatureLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +30,7 @@ class DefinitionExpressionViewController: UIViewController {
         //initialize map using topographic basemap
         self.map = AGSMap(basemap: .topographic())
         //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: AGSSpatialReference.webMercator()), scale: 90000)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: .webMercator()), scale: 90000)
         
         //assign map to the map view's map
         self.mapView.map = self.map
@@ -43,7 +42,6 @@ class DefinitionExpressionViewController: UIViewController {
         
         //add the feature layer to the map
         self.map.operationalLayers.add(self.featureLayer)
-        
     }
     
     @IBAction func applyDefinitionExpression() {

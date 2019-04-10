@@ -16,35 +16,27 @@ import UIKit
 import ArcGIS
 
 class MILLegendTableViewController: UITableViewController {
-
-    var operationalLayers:NSMutableArray!
-    var legendInfosDict = [String:[AGSLegendInfo]]()
-    private var orderArray:[AGSLayerContent]!
+    var operationalLayers: NSMutableArray!
+    var legendInfosDict = [String: [AGSLegendInfo]]()
+    private var orderArray = [AGSLayerContent]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.orderArray = [AGSLayerContent]()
-        self.populateLegends(with: self.operationalLayers as AnyObject as! [AGSLayerContent])
+        self.populateLegends(with: self.operationalLayers as! [AGSLayerContent])
     }
     
-    func populateLegends(with layers:[AGSLayerContent]) {
-
-        for i in 0...layers.count-1 {
-            let layer = layers[i]
-
-            if layer.subLayerContents.count > 0 {
+    func populateLegends(with layers: [AGSLayerContent]) {
+        for layer in layers {
+            if !layer.subLayerContents.isEmpty {
                 self.populateLegends(with: layer.subLayerContents)
-            }
-            else {
+            } else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
-                layer.fetchLegendInfos(completion: { [weak self] (legendInfos:[AGSLegendInfo]?, error:Error?) -> Void in
-
+                layer.fetchLegendInfos(completion: { [weak self] (legendInfos: [AGSLegendInfo]?, error: Error?) in
                     if let error = error {
                         print(error)
-                    }
-                    else {
+                    } else {
                         if let legendInfos = legendInfos {
                             self?.legendInfosDict[self!.hashString(for: layer)] = legendInfos
                             self?.tableView.reloadData()
@@ -59,7 +51,7 @@ class MILLegendTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // Return the number of sections.
-        return self.orderArray?.count ?? 0
+        return orderArray.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,7 +74,7 @@ class MILLegendTableViewController: UITableViewController {
         let legendInfo = legendInfos[indexPath.row]
 
         cell.textLabel?.text = legendInfo.name
-        legendInfo.symbol?.createSwatch(completion: { (image: UIImage?, error: Error?) -> Void in
+        legendInfo.symbol?.createSwatch(completion: { (image: UIImage?, error: Error?) in
             if let updateCell = tableView.cellForRow(at: indexPath) {
                 updateCell.imageView?.image = image
                 updateCell.setNeedsLayout()
@@ -94,29 +86,26 @@ class MILLegendTableViewController: UITableViewController {
         return cell
     }
     
-    func geometryTypeForSymbol(_ symbol:AGSSymbol) -> AGSGeometryType {
+    func geometryTypeForSymbol(_ symbol: AGSSymbol) -> AGSGeometryType {
         if symbol is AGSFillSymbol {
             return AGSGeometryType.polygon
-        }
-        else if symbol is AGSLineSymbol {
+        } else if symbol is AGSLineSymbol {
             return .polyline
-        }
-        else {
+        } else {
             return .point
         }
     }
 
-    //MARK: - Helper functions
+    // MARK: - Helper functions
     
     func hashString (for obj: AnyObject) -> String {
         return String(UInt(bitPattern: ObjectIdentifier(obj)))
     }
 
-    func nameForLayerContent(_ layerContent:AGSLayerContent) -> String {
+    func nameForLayerContent(_ layerContent: AGSLayerContent) -> String {
         if let layer = layerContent as? AGSLayer {
             return layer.name
-        }
-        else {
+        } else {
             return (layerContent as! AGSArcGISSublayer).name
         }
     }

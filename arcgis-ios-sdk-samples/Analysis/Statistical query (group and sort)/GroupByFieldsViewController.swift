@@ -21,30 +21,19 @@ protocol GroupByFieldsViewControllerDelegate: AnyObject {
 }
 
 class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
     // Outlets
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var tableNavigationItem: UINavigationItem!
     
     // List of fields and selected fields
-    public var fieldNames = [String]()
-    public var selectedFieldNames = [String]()
+    var fieldNames = [String]()
+    var selectedFieldNames = [String]()
     
     // Delegate
     weak var delegate: GroupByFieldsViewControllerDelegate?
     
-    // MARK: - View Methods
+    // MARK: - TableView data source
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    //MARK: - TableView data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fieldNames.count
     }
@@ -55,14 +44,13 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
         cell.textLabel?.text = fieldName
         if selectedFieldNames.contains(fieldName) {
             cell.accessoryType = .checkmark
-        }
-        else {
+        } else {
             cell.accessoryType = .none
         }
         return cell
     }
     
-    //MARK: - TableView delegates
+    // MARK: - TableView delegates
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect row
@@ -77,8 +65,7 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 // Add field name to selected group by fields
                 let fieldName = fieldNames[indexPath.row]
                 selectedFieldNames.append(fieldName)
-            }
-            else {
+            } else {
                 // Set the accessory type to none
                 cell.accessoryType = .none
                 
@@ -86,16 +73,8 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 let index = selectedFieldNames.index(of: fieldNames[indexPath.row])
                 selectedFieldNames.remove(at: index!)
             }
+            
+            delegate?.setGrouping(with: selectedFieldNames)
         }
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction private func doneAction() {
-        // Fire delegate
-        delegate?.setGrouping(with: selectedFieldNames)
-        
-        // Dismiss view controller
-        dismiss(animated: true, completion: nil)
     }
 }

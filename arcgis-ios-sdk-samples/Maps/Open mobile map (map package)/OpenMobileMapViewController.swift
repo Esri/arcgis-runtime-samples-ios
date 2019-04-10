@@ -18,10 +18,9 @@ import UIKit
 import ArcGIS
 
 class OpenMobileMapViewController: UIViewController {
-
-    @IBOutlet var mapView:AGSMapView!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var mapPackage:AGSMobileMapPackage!
+    private var mapPackage: AGSMobileMapPackage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,21 +33,18 @@ class OpenMobileMapViewController: UIViewController {
         
         //load map package
         self.mapPackage.load { [weak self] (error: Error?) in
-            if let error = error {
-                self?.presentAlert(error: error)
+            guard let self = self else {
+                return
             }
-            else {
-                if let weakSelf = self {
-                    if weakSelf.mapPackage.maps.count > 0 {
-                        //assign the first map from the map package to the map view
-                        weakSelf.mapView.map = weakSelf.mapPackage.maps[0]
-                    }
-                    else {
-                        weakSelf.presentAlert(message: "No mobile maps found in the map package")
-                    }
-                }
+            
+            if let error = error {
+                self.presentAlert(error: error)
+            } else if let map = self.mapPackage.maps.first {
+                //assign the first map from the map package to the map view
+                self.mapView.map = map
+            } else {
+                self.presentAlert(message: "No mobile maps found in the map package")
             }
         }
     }
-
 }

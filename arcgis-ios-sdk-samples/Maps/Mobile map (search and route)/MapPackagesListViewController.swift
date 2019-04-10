@@ -17,12 +17,11 @@ import UIKit
 import ArcGIS
 
 class MapPackagesListViewController: UITableViewController, MapPackageCellDelegate {
+    private var mapPackagesInBundle = [AGSMobileMapPackage]()
+    private var mapPackagesInDocumentsDir = [AGSMobileMapPackage]()
     
-    private var mapPackagesInBundle:[AGSMobileMapPackage]!
-    private var mapPackagesInDocumentsDir:[AGSMobileMapPackage]!
-    
-    private var selectedRowIndexPath:IndexPath!
-    private var selectedMap:AGSMap!
+    private var selectedRowIndexPath: IndexPath!
+    private var selectedMap: AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,42 +36,28 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
     }
     
     func fetchMapPackages() {
-        //load map packages from the bundle
-        let bundleMMPKPaths = Bundle.main.paths(forResourcesOfType: "mmpk", inDirectory: nil)
-        
-        //create map packages from the paths
-        self.mapPackagesInBundle = [AGSMobileMapPackage]()
-        
-        for path in bundleMMPKPaths {
-            let mapPackage = AGSMobileMapPackage(fileURL: URL(fileURLWithPath: path))
-            self.mapPackagesInBundle.append(mapPackage)
+        // Load map packages from the bundle.
+        if let bundleMobileMapPackageURLs = Bundle.main.urls(forResourcesWithExtension: "mmpk", subdirectory: nil) {
+            // Create map packages from the URLs.
+            mapPackagesInBundle = bundleMobileMapPackageURLs.map(AGSMobileMapPackage.init(fileURL:))
         }
         
         //load map packages from the documents directory
         //added using iTunes
-        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-        let subpaths = FileManager.default.subpaths(atPath: path[0])!
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path)!
         
         let predicate = NSPredicate(format: "SELF MATCHES %@", ".*mmpk$")
-        let mmpks = subpaths.filter({ (objc) -> Bool in
-            return predicate.evaluate(with: objc)
-        })
-        let documentMMPKPaths = mmpks.map({ (name:String) -> String in
-            return "\(path[0])/\(name)"
-        })
+        let mmpks = subpaths.filter { predicate.evaluate(with: $0) }
+        let documentMobileMapPackageURLs = mmpks.map { documentDirectoryURL.appendingPathComponent($0) }
         
         //create map packages from the paths
-        self.mapPackagesInDocumentsDir = [AGSMobileMapPackage]()
-        
-        for path in documentMMPKPaths {
-            let mapPackage = AGSMobileMapPackage(fileURL: URL(fileURLWithPath: path))
-            self.mapPackagesInDocumentsDir.append(mapPackage)
-        }
+        mapPackagesInDocumentsDir = documentMobileMapPackageURLs.map(AGSMobileMapPackage.init(fileURL:))
         
         self.tableView.reloadData()
     }
     
-    //MARK : - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -80,23 +65,21 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.mapPackagesInBundle?.count ?? 0
-        }
-        else {
-            return self.mapPackagesInDocumentsDir?.count ?? 0
+            return mapPackagesInBundle.count
+        } else {
+            return mapPackagesInDocumentsDir.count
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MapPackageCell", for: indexPath) as! MapPackageCell
         
-        var mapPackage:AGSMobileMapPackage
+        let mapPackage: AGSMobileMapPackage
         
         if indexPath.section == 0 {
-            mapPackage = self.mapPackagesInBundle[indexPath.row]
-        }
-        else {
-            mapPackage = self.mapPackagesInDocumentsDir[indexPath.row]
+            mapPackage = mapPackagesInBundle[indexPath.row]
+        } else {
+            mapPackage = mapPackagesInDocumentsDir[indexPath.row]
         }
         
         cell.mapPackage = mapPackage
@@ -110,10 +93,9 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         return section == 0 ? "From the bundle" : "From the documents directory"
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         //collapse previously expanded cell
         var indexPathsArray = [IndexPath]()
         indexPathsArray.append(indexPath)
@@ -122,39 +104,36 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
             if self.selectedRowIndexPath == indexPath {
                 //collapse
                 self.selectedRowIndexPath = nil
-            }
-            else {
+            } else {
                 indexPathsArray.append(self.selectedRowIndexPath)
                 self.selectedRowIndexPath = indexPath
             }
-        }
-        else {
+        } else {
             self.selectedRowIndexPath = indexPath
         }
         
         tableView.reloadRows(at: indexPathsArray, with: .automatic)
     }
     
-    //MARK: - MapPackageCellDelegate
+    // MARK: - MapPackageCellDelegate
     
     func mapPackageCell(_ mapPackageCell: MapPackageCell, didSelectMap map: AGSMap) {
         self.selectedMap = map
         self.performSegue(withIdentifier: "MobileMapVCSegue", sender: self)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MobileMapVCSegue" {
             let controller = segue.destination as! MobileMapViewController
             controller.map = self.selectedMap
             
-            var mapPackage:AGSMobileMapPackage!
+            var mapPackage: AGSMobileMapPackage!
             
             if self.selectedRowIndexPath.section == 0 {
                 mapPackage = self.mapPackagesInBundle[self.selectedRowIndexPath.row]
-            }
-            else {
+            } else {
                 mapPackage = self.mapPackagesInDocumentsDir[self.selectedRowIndexPath.row]
             }
             

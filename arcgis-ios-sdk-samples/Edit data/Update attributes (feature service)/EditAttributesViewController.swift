@@ -15,20 +15,19 @@
 import UIKit
 import ArcGIS
 
-class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate, EAOptionsVCDelegate {
+class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
+    @IBOutlet private weak var mapView: AGSMapView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    
-    private var map:AGSMap!
-    private var featureTable:AGSServiceFeatureTable!
-    private var featureLayer:AGSFeatureLayer!
-    private var lastQuery:AGSCancelable!
+    private var map: AGSMap!
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
     
     private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
-    private var selectedFeature:AGSArcGISFeature!
+    private var selectedFeature: AGSArcGISFeature!
     private let optionsSegueName = "OptionsSegue"
     
-    private let FEATURE_SERVICE_URL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +37,9 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         
         self.map = AGSMap(basemap: .oceans())
         //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: AGSSpatialReference.webMercator()), scale: 2e6)
+        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
         
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: FEATURE_SERVICE_URL)!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
         self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.add(self.featureLayer)
@@ -49,7 +48,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.mapView.touchDelegate = self
     }
     
-    func showCallout(_ feature:AGSFeature, tapLocation:AGSPoint?) {
+    func showCallout(_ feature: AGSFeature, tapLocation: AGSPoint?) {
         let title = feature.attributes["typdamage"] as! String
         self.mapView.callout.title = title
         self.mapView.callout.delegate = self
@@ -59,42 +58,46 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func applyEdits() {
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        self.featureTable.applyEdits(completion: { [weak self] (result:[AGSFeatureEditResult]?, error:Error?) -> Void in
-            if let error = error {
-                self?.presentAlert(error: error)
+        featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
+            SVProgressHUD.dismiss()
+            
+            guard let self = self else {
+                return
             }
-            else {
-                self?.presentAlert(message: "Edits applied successfully")
-                self?.showCallout(self!.selectedFeature, tapLocation: nil)
+            
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                self.presentAlert(message: "Edits applied successfully")
+                self.showCallout(self.selectedFeature, tapLocation: nil)
             }
         })
     }
     
-    //MARK: - AGSGeoViewTouchDelegate
+    // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let lastQuery = self.lastQuery{
+        if let lastQuery = self.lastQuery {
             lastQuery.cancel()
         }
         
         //hide the callout
         self.mapView.callout.dismiss()
         
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) -> Void in
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
             if let error = identifyLayerResult.error {
                 print(error)
-            }
-            else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature] , features.count > 0 {
+            } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+                let feature = features.first {
                 //show callout for the first feature
-                self?.showCallout(features[0], tapLocation: mapPoint)
+                self?.showCallout(feature, tapLocation: mapPoint)
                 //update selected feature
-                self?.selectedFeature = features[0]
+                self?.selectedFeature = feature
             }
         }
     }
     
-    
-    //MARK: - AGSCalloutDelegate
+    // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
         //hide the callout
@@ -103,29 +106,36 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.performSegue(withIdentifier: self.optionsSegueName, sender: self)
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == self.optionsSegueName {
-            let controller = segue.destination as! EAOptionsViewController
+        if segue.identifier == self.optionsSegueName,
+            let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? EAOptionsViewController {
             controller.options = self.types
             controller.delegate = self
         }
     }
-    
-    //MARK: - EAOptionsVCDelegate
-    
+}
+
+extension EditAttributesViewController: EAOptionsVCDelegate {
     func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
+        self.dismiss(animated: true)
         SVProgressHUD.show(withStatus: "Updating")
         
-        self.selectedFeature.attributes["typdamage"] = self.types[index]
-        self.featureTable.update(self.selectedFeature) { [weak self] (error: Error?) -> Void in
+        selectedFeature.attributes["typdamage"] = types[index]
+        featureTable.update(selectedFeature) { [weak self] (error: Error?) in
+            SVProgressHUD.dismiss()
+            
             if let error = error {
                 self?.presentAlert(error: error)
-            }
-            else {
+            } else {
                 self?.applyEdits()
             }
         }
+    }
+    
+    func optionsViewControllerDidCancell(_ optionsViewController: EAOptionsViewController) {
+        dismiss(animated: true)
     }
 }

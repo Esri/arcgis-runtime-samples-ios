@@ -17,93 +17,111 @@ import UIKit
 import ArcGIS
 
 class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDelegate {
-
     @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var visualEffectView: UIVisualEffectView!
-    
-    private var map:AGSMap!
-    
-    private var rasterLayer: AGSRasterLayer!
+
+    let imageryBasemapLayer: AGSRasterLayer = {
+        let raster = AGSRaster(name: "Shasta", extension: "tif")
+        return AGSRasterLayer(raster: raster)
+    }()
+    let elevationBasemapLayer: AGSRasterLayer = {
+        let raster = AGSRaster(name: "Shasta_Elevation", extension: "tif")
+        return AGSRasterLayer(raster: raster)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BlendRendererViewController", "BlendRendererSettingsVC"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BlendRendererViewController", "BlendRendererSettingsVC", "OptionsTableViewController"]
         
-        //create a raster
-        let raster = AGSRaster(name: "Shasta", extension: "tif")
-        
-        //create raster layer using raster
-        self.rasterLayer = AGSRasterLayer(raster: raster)
-        
-        //initialize map with raster layer as the basemap
-        self.map = AGSMap(basemap: AGSBasemap(baseLayer: self.rasterLayer))
-        
+        //initialize map
+        let map = AGSMap()
         //assign map to the map view
-        self.mapView.map = self.map
+        mapView.map = map
+        
+        // set the initial blend renderer
+        setBlendRenderer(altitude: 0, azimuth: 0, slopeType: .none, colorRampType: .none)
     }
     
-    private func generateBlendRenderer(altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) -> AGSBlendRenderer {
-        
-        //create the raster to be used as elevation raster
-        let raster = AGSRaster(name: "Shasta_Elevation", extension: "tif")
-        
-        //create a colorRamp object from the type specified
-        let colorRmp = AGSColorRamp(type: colorRampType, size: 800)
-        
-        //create a blend renderer
-        let renderer = AGSBlendRenderer(elevationRaster: raster, outputMinValues: [9], outputMaxValues: [255], sourceMinValues: [], sourceMaxValues: [], noDataValues: [], gammas: [], colorRamp: colorRmp, altitude: altitude, azimuth: azimuth, zFactor: 1, slopeType: slopeType, pixelSizeFactor: 1, pixelSizePower: 1, outputBitDepth: 8)
-        
-        return renderer
-    }
+    /// The color ramp type that was used to create the currently applied blend renderer.
+    private var displayedColorRampType: AGSPresetColorRampType = .none
 
-    //MARK: - BlendRendererSettingsVCDelegate
+    // MARK: - BlendRendererSettingsVCDelegate
     
     func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
+        setBlendRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
+    }
+    
+    private func setBlendRenderer(altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
+        displayedColorRampType = colorRampType
         
-        //get the blend render for the specified settings
-        let blendRenderer = self.generateBlendRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
+        // create a colorRamp object from the type specified
+        let colorRamp = colorRampType != .none ? AGSColorRamp(type: colorRampType, size: 800) : nil
         
-        //if the colorRamp type is None, then use the Shasta.tif for blending.
-        //else use the elevation raster with color ramp
-        var baseRaster:AGSRaster
-        if colorRampType == .none {
-            baseRaster = AGSRaster(name: "Shasta", extension: "tif")
-        }
-        else {
-            baseRaster = AGSRaster(name: "Shasta_Elevation", extension: "tif")
-        }
+        // the raster to use for blending
+        let elevationRaster = AGSRaster(name: "Shasta_Elevation", extension: "tif")
         
-        //create a raster layer with the new raster
-        self.rasterLayer = AGSRasterLayer(raster: baseRaster)
+        // create a blend renderer
+        let blendRenderer = AGSBlendRenderer(
+            elevationRaster: elevationRaster,
+            outputMinValues: [9],
+            outputMaxValues: [255],
+            sourceMinValues: [],
+            sourceMaxValues: [],
+            noDataValues: [],
+            gammas: [],
+            colorRamp: colorRamp,
+            altitude: altitude,
+            azimuth: azimuth,
+            zFactor: 1,
+            slopeType: slopeType,
+            pixelSizeFactor: 1,
+            pixelSizePower: 1,
+            outputBitDepth: 8)
         
-        //add the raster layer as the basemap
-        self.mapView.map?.basemap = AGSBasemap(baseLayer: self.rasterLayer)
+        // remove the exisiting layers
+        mapView.map?.basemap.baseLayers.removeAllObjects()
+        
+        // if the colorRamp type is .none, then use the imagery for blending.
+        // else use the elevation
+        let rasterLayer = colorRampType == .none ? imageryBasemapLayer : elevationBasemapLayer
+        
+        // apply the blend renderer on this new raster layer
+        rasterLayer.renderer = blendRenderer
 
-        //apply the blend renderer on this new raster layer
-        self.rasterLayer.renderer = blendRenderer
-        
-        self.hideVisualEffectView()
+        // add the raster layer to the basemap
+        mapView.map?.basemap.baseLayers.add(rasterLayer)
     }
-    
-    //MARK: - Actions
-    
-    func hideVisualEffectView() {
-        self.visualEffectView.isHidden = true
-    }
-    
-    @IBAction func editRendererAction() {
-        //show visual effect view
-        self.visualEffectView.isHidden = false
-    }
-    
-    //MARK: - Navigation
+
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SettingsEmbedSegue" {
-            let controller = segue.destination as! BlendRendererSettingsVC
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.viewControllers.first as? BlendRendererSettingsVC,
+            let rasterLayer = mapView.map?.basemap.baseLayers.firstObject as? AGSRasterLayer,
+            let renderer = rasterLayer.renderer as? AGSBlendRenderer {
+            controller.preferredContentSize = {
+                let height: CGFloat
+                if traitCollection.horizontalSizeClass == .regular,
+                    traitCollection.verticalSizeClass == .regular {
+                    height = 250
+                } else {
+                    height = 200
+                }
+                return CGSize(width: 375, height: height)
+            }()
+            navController.presentationController?.delegate = self
             controller.delegate = self
+            controller.altitude = renderer.altitude
+            controller.azimuth = renderer.azimuth
+            controller.slopeType = renderer.slopeType
+            controller.colorRampType = displayedColorRampType
         }
+    }
+}
+
+extension BlendRendererViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
 }

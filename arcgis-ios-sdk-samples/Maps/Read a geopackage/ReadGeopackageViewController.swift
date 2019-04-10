@@ -15,11 +15,9 @@
 import ArcGIS
 
 class ReadGeopackageViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+    @IBOutlet weak var mapView: AGSMapView!
     
-    @IBOutlet weak var mapView:AGSMapView!
-    
-    private var geoPackage:AGSGeoPackage?
-    private var allLayers:[AGSLayer] = []
+    private var allLayers: [AGSLayer] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,27 +26,25 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
         mapView.map = AGSMap(basemapType: .streets, latitude: 39.7294, longitude: -104.8319, levelOfDetail: 11)
         
         // Create a geopackage from a named bundle resource.
-        geoPackage = AGSGeoPackage(name: "AuroraCO")
+        let geoPackage = AGSGeoPackage(name: "AuroraCO")
         
         // Load the geopackage.
-        geoPackage?.load { [weak self] error in
+        geoPackage.load { [weak self] error in
             guard error == nil else {
                 self?.presentAlert(message: "Error opening Geopackage: \(error!.localizedDescription)")
                 return
             }
 
             // Create feature layers for each feature table in the geopackage.
-            let featureLayers = self?.geoPackage?.geoPackageFeatureTables.map({ featureTable -> AGSLayer in
-                return AGSFeatureLayer(featureTable: featureTable)
-            }) ?? []
+            let featureLayers = geoPackage.geoPackageFeatureTables.map { AGSFeatureLayer(featureTable: $0) }
             
             // Create raster layers for each raster in the geopackage.
-            let rasterLayers = self?.geoPackage?.geoPackageRasters.map({ raster -> AGSLayer in
+            let rasterLayers = geoPackage.geoPackageRasters.map({ raster -> AGSLayer in
                 let rasterLayer = AGSRasterLayer(raster: raster)
                 //make it semi-transparent so it doesn't obscure the contents under it
                 rasterLayer.opacity = 0.55
                 return rasterLayer
-            }) ?? []
+            })
 
             // Keep an array of all the feature layers and raster layers in this geopackage.
             self?.allLayers.append(contentsOf: rasterLayers)
@@ -56,14 +52,13 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
         }
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ReadGeopackageViewController", "GPKGLayersViewController","GPKGLayerTableCell"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ReadGeopackageViewController", "GPKGLayersViewController", "GPKGLayerTableCell"]
     }
     
-    //MARK: - Segue to and from the Layer Control viewcontroller.
+    // MARK: - Segue to and from the Layer Control viewcontroller.
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LayersSegue",
-            let gpkgLayersVC = segue.destination as? GPKGLayersViewController {
+        if let gpkgLayersVC = segue.destination as? GPKGLayersViewController {
             // Provide the map and all layers to the layer controller UI.
             gpkgLayersVC.map = mapView.map
             gpkgLayersVC.allLayers = allLayers
@@ -75,5 +70,4 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

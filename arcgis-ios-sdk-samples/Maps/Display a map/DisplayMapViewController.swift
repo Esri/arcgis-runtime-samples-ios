@@ -16,8 +16,7 @@ import UIKit
 import ArcGIS
 
 class DisplayMapViewController: UIViewController {
-    
-    @IBOutlet private weak var mapView:AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,5 +30,4 @@ class DisplayMapViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayMapViewController"]
     }
-    
 }

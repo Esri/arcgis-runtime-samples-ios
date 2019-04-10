@@ -17,8 +17,7 @@
 import UIKit
 import ArcGIS
 
-class RasterLayerUsingServiceVC : UIViewController {
-    
+class RasterLayerUsingServiceVC: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
     
     override func viewDidLoad() {

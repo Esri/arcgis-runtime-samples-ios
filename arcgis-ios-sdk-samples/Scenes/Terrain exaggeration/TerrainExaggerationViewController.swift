@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class TerrainExaggerationViewController: UIViewController {
-
     @IBOutlet weak var exaggerationValue: UILabel!
     @IBOutlet weak var exaggerationSlider: UISlider!
     @IBOutlet weak var sceneView: AGSSceneView!
@@ -62,6 +61,4 @@ class TerrainExaggerationViewController: UIViewController {
         //display current exaggeration value
         exaggerationValue.text = String(format: "%.1fx", sender.value)
     }
-
 }
-

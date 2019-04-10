@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MN0-H7-X1d">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--PlayKML Tour View Controller-->
+        <scene sceneID="uJV-oi-FOT">
+            <objects>
+                <viewController id="MN0-H7-X1d" customClass="PlayKMLTourViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lIf-Dr-daq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54V-yK-DRl" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qB-0o-WRE">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="flexibleSpace" id="DNb-KV-3Xq"/>
+                                    <barButtonItem enabled="NO" systemItem="rewind" id="AcB-u8-aoW">
+                                        <connections>
+                                            <action selector="rewind" destination="MN0-H7-X1d" id="BhN-mp-aqz"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="ow0-jw-r9c"/>
+                                    <barButtonItem enabled="NO" systemItem="play" id="QHd-mW-ZWa">
+                                        <connections>
+                                            <action selector="play" destination="MN0-H7-X1d" id="udh-KJ-pV5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="5Id-ux-AMI"/>
+                                    <barButtonItem enabled="NO" systemItem="fastForward" id="bJ4-fY-iqi">
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="HEN-q8-oHR"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8qB-0o-WRE" firstAttribute="bottom" secondItem="r9y-cv-iT5" secondAttribute="bottom" id="6MK-mB-VP6"/>
+                            <constraint firstItem="8qB-0o-WRE" firstAttribute="trailing" secondItem="lIf-Dr-daq" secondAttribute="trailing" id="a8K-qW-lWD"/>
+                            <constraint firstItem="8qB-0o-WRE" firstAttribute="leading" secondItem="lIf-Dr-daq" secondAttribute="leading" id="dNa-e5-7UO"/>
+                            <constraint firstItem="8qB-0o-WRE" firstAttribute="top" secondItem="54V-yK-DRl" secondAttribute="bottom" id="hse-mi-i0m"/>
+                            <constraint firstItem="54V-yK-DRl" firstAttribute="top" secondItem="r9y-cv-iT5" secondAttribute="top" id="jug-gc-Po7"/>
+                            <constraint firstAttribute="trailing" secondItem="54V-yK-DRl" secondAttribute="trailing" id="nkR-ok-UuL"/>
+                            <constraint firstItem="54V-yK-DRl" firstAttribute="leading" secondItem="lIf-Dr-daq" secondAttribute="leading" id="zkY-aP-2PZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="r9y-cv-iT5"/>
+                    </view>
+                    <connections>
+                        <outlet property="pauseButtonItem" destination="pO0-vy-2Sf" id="LdU-bx-RIw"/>
+                        <outlet property="playButtonItem" destination="QHd-mW-ZWa" id="9rn-lT-OhW"/>
+                        <outlet property="rewindButtonItem" destination="AcB-u8-aoW" id="bTl-UT-MO1"/>
+                        <outlet property="sceneView" destination="54V-yK-DRl" id="dw0-Wa-let"/>
+                        <outlet property="toolbar" destination="8qB-0o-WRE" id="oQr-54-Dfg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ycw-id-Uad" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="pause" id="pO0-vy-2Sf">
+                    <connections>
+                        <action selector="pause" destination="MN0-H7-X1d" id="dW3-fu-DvS"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="56.799999999999997" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+</document>

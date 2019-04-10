@@ -16,16 +16,15 @@ import UIKit
 import ArcGIS
 
 class MapViewScreenshotViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var overlayParentView: UIView!
+    @IBOutlet private weak var overlayImageView: UIImageView!
     
-    @IBOutlet private weak var mapView:AGSMapView!
-    @IBOutlet private weak var overlayParentView:UIView!
-    @IBOutlet private weak var overlayImageView:UIImageView!
+    var map: AGSMap!
     
-    var map:AGSMap!
+    var tapGestureRecognizer: UITapGestureRecognizer!
     
-    var tapGestureRecognizer:UITapGestureRecognizer!
-    
-    var shutterSound:SystemSoundID = 0
+    var shutterSound: SystemSoundID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +47,11 @@ class MapViewScreenshotViewController: UIViewController {
         self.overlayImageView.layer.borderWidth = 2
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     //hide the screenshot overlay view
-    @objc func hideOverlayParentView() {
+    @objc
+    func hideOverlayParentView() {
         self.overlayParentView.isHidden = true
     }
     
@@ -66,7 +66,7 @@ class MapViewScreenshotViewController: UIViewController {
         self.hideOverlayParentView()
         
         //the method on map view we can use to get the screenshot image
-        self.mapView.exportImage { [weak self] (image:UIImage?, error:Error?) -> Void in
+        self.mapView.exportImage { [weak self] (image: UIImage?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
             }
@@ -78,23 +78,26 @@ class MapViewScreenshotViewController: UIViewController {
     }
     
     //imitate the white flash screen when the user taps on the screenshot button
-    private func imitateFlashAndPreviewImage(_ image:UIImage) {
-        
+    private func imitateFlashAndPreviewImage(_ image: UIImage) {
         let flashView = UIView(frame: self.mapView.bounds)
         flashView.backgroundColor = .white
         self.mapView.addSubview(flashView)
         
         //animate the white flash view on and off to show the flash effect
-        UIView.animate(withDuration: 0.3, animations: { () -> Void in
-            flashView.alpha = 0
-        }, completion: { [weak self] (finished) -> Void in
-            //On completion play the shutter sound
-            self?.playShutterSound()
-            flashView.removeFromSuperview()
-            //show the screenshot on screen
-            self?.overlayImageView.image = image
-            self?.showOverlayParentView()
-        })
+        UIView.animate(
+            withDuration: 0.3,
+            animations: {
+                flashView.alpha = 0
+            },
+            completion: { [weak self] (finished) in
+                //On completion play the shutter sound
+                self?.playShutterSound()
+                flashView.removeFromSuperview()
+                //show the screenshot on screen
+                self?.overlayImageView.image = image
+                self?.showOverlayParentView()
+            }
+        )
     }
     
     //to play the shutter sound once the screenshot is taken

@@ -16,10 +16,9 @@ import UIKit
 import ArcGIS
 
 class GraphicsWithSymbolsViewController: UIViewController {
+    @IBOutlet private var mapView: AGSMapView!
     
-    @IBOutlet private var mapView:AGSMapView!
-    
-    private var graphicsOverlay:AGSGraphicsOverlay!
+    private var graphicsOverlay: AGSGraphicsOverlay!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,19 +45,15 @@ class GraphicsWithSymbolsViewController: UIViewController {
         addText(to: graphicsOverlay)
     }
     
-    private func addBuoyPoints(to graphicsOverlay:AGSGraphicsOverlay) {
-        
+    private func addBuoyPoints(to graphicsOverlay: AGSGraphicsOverlay) {
         //define the buoy locations
-        let wgs84 = AGSSpatialReference.wgs84()
-        let buoy1Loc = AGSPoint(x: -2.712642647560347, y: 56.062812566811544, spatialReference: wgs84)
-        let buoy2Loc = AGSPoint(x: -2.6908416959572303, y: 56.06444173689877, spatialReference: wgs84)
-        let buoy3Loc = AGSPoint(x: -2.6697273884990937, y: 56.064250073402874, spatialReference: wgs84)
-        let buoy4Loc = AGSPoint(x: -2.6395150461199726, y: 56.06127916736989, spatialReference: wgs84)
-        
+        let buoy1Loc = AGSPoint(x: -2.712642647560347, y: 56.062812566811544, spatialReference: .wgs84())
+        let buoy2Loc = AGSPoint(x: -2.6908416959572303, y: 56.06444173689877, spatialReference: .wgs84())
+        let buoy3Loc = AGSPoint(x: -2.6697273884990937, y: 56.064250073402874, spatialReference: .wgs84())
+        let buoy4Loc = AGSPoint(x: -2.6395150461199726, y: 56.06127916736989, spatialReference: .wgs84())
         
         //create a marker symbol
         let buoyMarker = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
-
         
         //create graphics
         let buoyGraphic1 = AGSGraphic(geometry: buoy1Loc, symbol: buoyMarker, attributes: nil)
@@ -70,16 +65,14 @@ class GraphicsWithSymbolsViewController: UIViewController {
         graphicsOverlay.graphics.addObjects(from: [buoyGraphic1, buoyGraphic2, buoyGraphic3, buoyGraphic4])
     }
     
-    private func addText(to graphicsOverlay:AGSGraphicsOverlay) {
-        
-        let wgs84 = AGSSpatialReference.wgs84()
-        let bassLocation = AGSPoint(x: -2.640631, y: 56.078083, spatialReference: wgs84)
-        let craigleithLocation = AGSPoint(x: -2.720324, y: 56.073569, spatialReference: wgs84)
+    private func addText(to graphicsOverlay: AGSGraphicsOverlay) {
+        let bassLocation = AGSPoint(x: -2.640631, y: 56.078083, spatialReference: .wgs84())
+        let craigleithLocation = AGSPoint(x: -2.720324, y: 56.073569, spatialReference: .wgs84())
         
         //create text symbols
-        let bassRockSymbol = AGSTextSymbol(text: "Bass Rock", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1), size: 10, horizontalAlignment: AGSHorizontalAlignment.left, verticalAlignment: AGSVerticalAlignment.bottom)
+        let bassRockSymbol = AGSTextSymbol(text: "Bass Rock", color: UIColor(red: 0, green: 0, blue: 230 / 255.0, alpha: 1), size: 10, horizontalAlignment: AGSHorizontalAlignment.left, verticalAlignment: AGSVerticalAlignment.bottom)
         
-        let craigleithSymbol = AGSTextSymbol(text: "Craigleith", color: UIColor(red: 0, green: 0, blue: 230/255.0, alpha: 1), size: 10, horizontalAlignment: AGSHorizontalAlignment.right, verticalAlignment: AGSVerticalAlignment.top)
+        let craigleithSymbol = AGSTextSymbol(text: "Craigleith", color: UIColor(red: 0, green: 0, blue: 230 / 255.0, alpha: 1), size: 10, horizontalAlignment: AGSHorizontalAlignment.right, verticalAlignment: AGSVerticalAlignment.top)
         
         //define a graphic from the geometry and symbol
         let bassRockGraphic = AGSGraphic(geometry: bassLocation, symbol: bassRockSymbol, attributes: nil)
@@ -90,12 +83,13 @@ class GraphicsWithSymbolsViewController: UIViewController {
         graphicsOverlay.graphics.add(craigleithGraphic)
     }
     
-    private func addBoatTrip(to graphicsOverlay:AGSGraphicsOverlay) {
+    private func addBoatTrip(to graphicsOverlay: AGSGraphicsOverlay) {
         //boat trip geometry
-        let boatRoute = self.boatTripGeometry()
+        let boatRoute = boatTripGeometry
         
         //define a line symbol
-        let lineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.dash,
+        let lineSymbol = AGSSimpleLineSymbol(
+            style: .dash,
             color: UIColor(red: 0.5, green: 0, blue: 0.5, alpha: 1),
             width: 4)
         
@@ -106,16 +100,19 @@ class GraphicsWithSymbolsViewController: UIViewController {
         graphicsOverlay.graphics.add(boatTripGraphic)
     }
     
-    private func addNestingGround(to graphicsOverlay:AGSGraphicsOverlay) {
+    private func addNestingGround(to graphicsOverlay: AGSGraphicsOverlay) {
         //nesting ground geometry
-        let nestingGround = self.nestingGroundGeometry()
+        let nestingGround = nestingGroundGeometry
         
         //define the fill symbol and outline
-        let outlineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.dash,
+        let outlineSymbol = AGSSimpleLineSymbol(
+            style: .dash,
             color: UIColor(red: 0, green: 0, blue: 0.5, alpha: 1),
             width: 1)
-        let fillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.diagonalCross,
-            color: UIColor(red: 0, green: 80/255.0, blue: 0, alpha: 1), outline: outlineSymbol)
+        let fillSymbol = AGSSimpleFillSymbol(
+            style: .diagonalCross,
+            color: UIColor(red: 0, green: 80 / 255.0, blue: 0, alpha: 1),
+            outline: outlineSymbol)
         
         //nesting graphic
         let nestingGraphic = AGSGraphic(geometry: nestingGround, symbol: fillSymbol, attributes: nil)
@@ -124,9 +121,9 @@ class GraphicsWithSymbolsViewController: UIViewController {
         graphicsOverlay.graphics.add(nestingGraphic)
     }
     
-    private func boatTripGeometry() -> AGSPolyline {
+    private let boatTripGeometry: AGSPolyline = {
         //create a polyline
-        let boatRoute = AGSPolylineBuilder(spatialReference: AGSSpatialReference.wgs84())
+        let boatRoute = AGSPolylineBuilder(spatialReference: .wgs84())
         
         //add positions to the point collection
         boatRoute.addPointWith(x: -2.7184791227926772, y: 56.06147084563517)
@@ -189,11 +186,11 @@ class GraphicsWithSymbolsViewController: UIViewController {
         boatRoute.addPointWith(x: -2.718307461756433, y: 56.06147084563517)
         
         return boatRoute.toGeometry()
-    }
+    }()
     
-    private func nestingGroundGeometry() -> AGSPolygon {
+    private let nestingGroundGeometry: AGSPolygon = {
         //create a polygon
-        let nestingGround = AGSPolygonBuilder(spatialReference: AGSSpatialReference.wgs84())
+        let nestingGround = AGSPolygonBuilder(spatialReference: .wgs84())
         
         //add points to the point collection
         nestingGround.addPointWith(x: -2.643077012566659, y: 56.077125346044475)
@@ -223,5 +220,5 @@ class GraphicsWithSymbolsViewController: UIViewController {
         nestingGround.addPointWith(x: -2.643077012566659, y: 56.077125346044475)
         
         return nestingGround.toGeometry()
-    }
+    }()
 }

@@ -1,4 +1,4 @@
-ArcGIS Runtime SDK for iOS Samples [![](https://esri.box.com/shared/static/km0f6q9otadygg3mkszqd4mqn4k2yo6y.svg)](https://itunes.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771)
+ArcGIS Runtime SDK for iOS Samples [![](https://user-images.githubusercontent.com/2257493/54144188-6fe0fc00-43e8-11e9-8cf5-229af80f604a.png)](https://itunes.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771)
 ==========================
 
 This repository contains Swift sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/). The project that can be opened in Xcode and instantly run on a simulator or a device.
@@ -22,12 +22,27 @@ The ```master``` branch of this repository contains samples configured for the l
 
 ## Requirements
 
-* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.4.0 (or higher).
-* Xcode 10.0 (or higher)
-* iOS 12 SDK (or higher)
+* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.5.0 (or newer).
+* Xcode 10.1 (or newer)
 
-1. Fork and then clone the repo. Don't know how? [Get started here.](http://htmlpreview.github.com/?https://github.com/Esri/esri.github.com/blob/master/help/esri-getting-to-know-github.html)
-2. Build and run the project to create a single app containing all of the samples.
+The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *11.0*, meaning that it can run on devices with *iOS 11.0* or newer.
+
+## Installation
+
+The latest version of *ArcGIS Runtime SDK Samples* can be cloned with
+
+```
+git clone https://github.com/Esri/arcgis-runtime-samples-ios.git
+```
+
+## Building
+
+Build the *ArcGIS Runtime SDK Samples app* by opening `arcgis-ios-sdk-samples.xcodeproj` and running the `arcgis-ios-sdk-samples`
+app target.
+
+## Sample Data
+
+Some sample data is too large to store in the repository, so it is automatically downloaded at build time. The first time the app is built, a build script downloads the necessary data to `Portal Data`. The script only downloads data files that do not already exist, so subsequent builds will take significantly less time.
 
 ## Additional Resources
 

@@ -16,137 +16,121 @@
 import UIKit
 import ArcGIS
 
-enum StretchType: String {
-    case MinMax = "MinMax"
-    case PercentClip = "PercentClip"
-    case StandardDeviation = "StdDeviation"
-    
-    static let allValues = [MinMax.rawValue, PercentClip.rawValue, StandardDeviation.rawValue]
-    
-    init?(id: Int) {
-        switch id {
-        case 0:
-            self = .MinMax
-        case 1:
-            self = .PercentClip
-        case 2:
-            self = .StandardDeviation
-        default:
-            return nil
-        }
-    }
-}
-
 protocol StretchRendererSettingsVCDelegate: AnyObject {
-    
     func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
 }
 
-class StretchRendererSettingsVC: UIViewController, UITableViewDataSource, StretchRendererTypeCellDelegate {
-    
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
-    
-    private var stretchType:StretchType = .MinMax
-    
+class StretchRendererSettingsVC: UITableViewController {
     weak var delegate: StretchRendererSettingsVCDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    weak var stretchTypeCell: UITableViewCell?
+    
+    private enum StretchType: Int, CaseIterable {
+        case minMax, percentClip, standardDeviation
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        tapGestureRecognizer.numberOfTouchesRequired = 1
-        self.view.addGestureRecognizer(tapGestureRecognizer)
+        var label: String {
+            switch self {
+            case .minMax: return "MinMax"
+            case .percentClip: return "PercentClip"
+            case .standardDeviation: return "StdDeviation"
+            }
+        }
     }
     
-    //MARK: - UITableViewDataSource
+    private var stretchType: StretchType = .minMax {
+        didSet {
+            updateStretchTypeLabel()
+        }
+    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch self.stretchType {
-        case .MinMax, .PercentClip:
+    private func updateStretchTypeLabel() {
+        stretchTypeCell?.detailTextLabel?.text = stretchType.label
+    }
+    
+    private func makeStretchParameters() -> AGSStretchParameters {
+        switch stretchType {
+        case .minMax:
+            var minValue = 0, maxValue = 255
+            if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? StretchRendererInputCell {
+                minValue = Int(cell.textField.text!) ?? 0
+            }
+            if let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? StretchRendererInputCell {
+                maxValue = Int(cell.textField.text!) ?? 255
+            }
+            return AGSMinMaxStretchParameters(minValues: [minValue as NSNumber], maxValues: [maxValue as NSNumber])
+        case .percentClip:
+            var min = 0.0, max = 0.0
+            if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? StretchRendererInputCell {
+                min = Double(cell.textField.text!) ?? 0
+            }
+            if let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? StretchRendererInputCell {
+                max = Double(cell.textField.text!) ?? 0
+            }
+            return AGSPercentClipStretchParameters(min: min, max: max)
+        case .standardDeviation:
+            var factor = 1.0
+            if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? StretchRendererInputCell {
+                factor = Double(cell.textField.text!) ?? 1
+            }
+            return AGSStandardDeviationStretchParameters(factor: factor)
+        }
+    }
+    
+    private func rendererParametersChanged() {
+        delegate?.stretchRendererSettingsVC(self, didSelectStretchParameters: makeStretchParameters())
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func textFieldAction(_ sender: UITextField) {
+        rendererParametersChanged()
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch stretchType {
+        case .minMax, .percentClip:
             return 3
-        case .StandardDeviation:
+        case .standardDeviation:
             return 2
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Row0", for: indexPath) as! StretchRendererTypeCell
-            cell.delegate = self
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StretchRendererStretchTypeCell", for: indexPath)
+            stretchTypeCell = cell
+            updateStretchTypeLabel()
             return cell
-        }
-        else {
-            if self.stretchType == .MinMax {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)", for: indexPath)
-                return cell
-            }
-            else if self.stretchType == .PercentClip {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\(indexPath.row)", for: indexPath)
-                return cell
-            }
-            else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1", for: indexPath)
-                return cell
+        } else {
+            switch stretchType {
+            case .minMax:
+                return tableView.dequeueReusableCell(withIdentifier: "MinMaxRow\(indexPath.row)", for: indexPath)
+            case .percentClip:
+                return tableView.dequeueReusableCell(withIdentifier: "PercentClipRow\(indexPath.row)", for: indexPath)
+            case .standardDeviation:
+                return tableView.dequeueReusableCell(withIdentifier: "StandardDeviationRow1", for: indexPath)
             }
         }
     }
     
-    //MARK: - Actions
+    // MARK: - UITableViewDelegate
     
-    @IBAction func renderAction() {
-        var stretchParameters:AGSStretchParameters
-        
-        if self.stretchType == .MinMax {
-            var minValue = 0, maxValue = 255
-            if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? StretchRendererInputCell {
-                minValue = Int(cell.textField.text!) ?? 0
-            }
-            if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? StretchRendererInputCell {
-                maxValue = Int(cell.textField.text!) ?? 255
-            }
-            stretchParameters = AGSMinMaxStretchParameters(minValues: [NSNumber(value: minValue)], maxValues: [NSNumber(value: maxValue)])
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView.cellForRow(at: indexPath) == stretchTypeCell else {
+            return
         }
-        else if self.stretchType == .PercentClip {
-            var min = 0.0, max = 0.0
-            if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? StretchRendererInputCell {
-                min = Double(cell.textField.text!) ?? 0
-            }
-            if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? StretchRendererInputCell {
-                max = Double(cell.textField.text!) ?? 0
-            }
-            stretchParameters = AGSPercentClipStretchParameters(min: min, max: max)
+        let labels = StretchType.allCases.map({ (type) -> String in
+            return type.label
+        })
+        let selectedIndex = stretchType.rawValue
+        let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
+            self.stretchType = StretchType(rawValue: newIndex)!
+            self.tableView.reloadData()
+            self.rendererParametersChanged()
         }
-        else {
-            var factor = 1.0
-            if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? StretchRendererInputCell {
-                factor = Double(cell.textField.text!) ?? 1
-            }
-            stretchParameters = AGSStandardDeviationStretchParameters(factor: factor)
-        }
-        //hide keyboard
-        self.hideKeyboard()
-        
-        self.delegate?.stretchRendererSettingsVC(self, didSelectStretchParameters: stretchParameters)
-    }
-    
-    @objc func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-    
-    //MARK: - StretchRendererTypeCellDelegate
-    
-    func stretchRendererTypeCell(_ stretchRendererTypeCell: StretchRendererTypeCell, didUpdateType type: StretchType) {
-        self.stretchType = type
-        self.tableView.reloadData()
-        
-        let rows = self.tableView.numberOfRows(inSection: 0)
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
-            self?.tableViewHeightConstraint.constant = CGFloat(rows * 44)
-            self?.view.layoutIfNeeded()
-            self?.view.superview?.superview?.layoutIfNeeded()
-            }, completion: nil)
+        optionsViewController.title = "Stretch Type"
+        show(optionsViewController, sender: self)
     }
 }

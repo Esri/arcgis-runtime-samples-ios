@@ -15,11 +15,7 @@
 import UIKit
 import ArcGIS
 
-fileprivate let observerZMin = 20.0
-fileprivate let observerZMax = 1500.0
-
 class LineOfSightGeoElementViewController: UIViewController {
-    
     @IBOutlet weak var sceneView: AGSSceneView!
 
     @IBOutlet weak var targetVisibilityLabel: UILabel!
@@ -35,10 +31,13 @@ class LineOfSightGeoElementViewController: UIViewController {
     private let taxiGraphic: AGSGraphic
     private let observerGraphic: AGSGraphic
     private let lineOfSight: AGSGeoElementLineOfSight
+    
+    private let observerZMin = 20.0
+    private let observerZMax = 1500.0
+    
+    private let observerPoint: AGSPoint
 
     // locations used in the sample
-    private let observerPoint = AGSPoint(x: -73.984988, y: 40.748131, z: observerZMin, spatialReference: .wgs84())
-
     private let streetIntersectionLocations = [
         AGSPoint(x: -73.985068, y: 40.747786, spatialReference: .wgs84()),
         AGSPoint(x: -73.983452, y: 40.747091, spatialReference: .wgs84()),
@@ -47,7 +46,7 @@ class LineOfSightGeoElementViewController: UIViewController {
     ]
 
     // handle onto any line of sight KVO observer
-    private var losObserver:NSKeyValueObservation?
+    private var losObserver: NSKeyValueObservation?
 
     private var initialViewpointCenter: AGSPoint {
         // If possible, find the middle of the block that the taxi will drive around, or else focus on the observer
@@ -58,6 +57,8 @@ class LineOfSightGeoElementViewController: UIViewController {
         // ====================================
         // set up the scene, layers and overlay
         // ====================================
+        
+        observerPoint = AGSPoint(x: -73.984988, y: 40.748131, z: observerZMin, spatialReference: .wgs84())
 
         // initialize the scene with an imagery basemap
         scene = AGSScene(basemap: .imageryWithLabels())
@@ -78,7 +79,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         overlay = AGSGraphicsOverlay()
         overlay.sceneProperties = AGSLayerSceneProperties(surfacePlacement: .relative)
 
-
         // =====================================================
         // initialize two graphics for both display and analysis
         // =====================================================
@@ -91,7 +91,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         // initialize the observer graphic
         let observerSymbol = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 10, width: 10, depth: 10, anchorPosition: .center)
         observerGraphic = AGSGraphic(geometry: observerPoint, symbol: observerSymbol, attributes: nil)
-
 
         // ================
         // use the graphics
@@ -168,8 +167,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         losObserver?.invalidate()
     }
 
-
-
     // start and stop animation
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -189,8 +186,6 @@ class LineOfSightGeoElementViewController: UIViewController {
 
         animationTimer?.invalidate()
     }
-
-    
 
     // current line of sight status
     private func updateLineOfSightVisibilityLabel(visibility: AGSLineOfSightTargetVisibility) {
@@ -216,11 +211,9 @@ class LineOfSightGeoElementViewController: UIViewController {
         }()
     }
 
-
-
     // Track animation progress
     private var animationProgess = (frameIndex: 0, pointIndex: 0)
-    private var animationTimer:Timer?
+    private var animationTimer: Timer?
     private let framesPerSegment = 150
 
     private func startAnimation() {
@@ -255,8 +248,6 @@ class LineOfSightGeoElementViewController: UIViewController {
         taxiGraphic.geometry = animationPoint
         (taxiGraphic.symbol as? AGSModelSceneSymbol)?.heading = heading
     }
-
-    
     
     // Formatting z values for locale
     private let zValuesFormatter: MeasurementFormatter = {
@@ -267,17 +258,19 @@ class LineOfSightGeoElementViewController: UIViewController {
         return formatter
     }()
     
-    private func getFormattedString(z value:Double) -> String {
+    private func getFormattedString(z value: Double) -> String {
         return zValuesFormatter.string(from: Measurement<UnitLength>(value: value, unit: .meters))
     }
 }
 
-fileprivate func interpolatedPoint(firstPoint: AGSPoint, secondPoint:AGSPoint, progress:Double) -> (AGSPoint, Double) {
+private func interpolatedPoint(firstPoint: AGSPoint, secondPoint: AGSPoint, progress: Double) -> (AGSPoint, Double) {
     // Use the geometry engine to calculate the heading between point 1 and 2
-    let geResult = AGSGeometryEngine.geodeticDistanceBetweenPoint1(firstPoint, point2: secondPoint,
-                                                                   distanceUnit: .meters(),
-                                                                   azimuthUnit: .degrees(),
-                                                                   curveType: .geodesic)
+    let geResult = AGSGeometryEngine.geodeticDistanceBetweenPoint1(
+        firstPoint,
+        point2: secondPoint,
+        distanceUnit: .meters(),
+        azimuthUnit: .degrees(),
+        curveType: .geodesic)
     let heading = geResult?.azimuth1 ?? 0
 
     // calculate the point representing progress towards the next point (cartesian calculation works fine at this scale)

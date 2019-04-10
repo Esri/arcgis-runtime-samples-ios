@@ -17,7 +17,7 @@ import UIKit
 
 // Used to keep track of whether we are currently showing touches
 //
-private struct DemoTouchToken {
+private enum DemoTouchToken {
     static var showToken: Int = 0
     static var hideToken: Int = 0
     
@@ -33,13 +33,11 @@ private struct DemoTouchToken {
 // NOTE: This must not be made private or the swizzling will not work
 //
 extension UIApplication {
-    
     fileprivate class var isShowingTouches: Bool {
         return (DemoTouchToken.showToken != 0)
     }
     
     fileprivate class func showAllTouches() {
-        
         if UIApplication.isShowingTouches {
             return
         }
@@ -66,13 +64,12 @@ extension UIApplication {
             if didAddMethod {
                 class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
             } else {
-                method_exchangeImplementations(originalMethod, swizzledMethod);
+                method_exchangeImplementations(originalMethod, swizzledMethod)
             }
         }
     }
     
     fileprivate class func hideAllTouches() {
-        
         if !UIApplication.isShowingTouches {
             return
         }
@@ -94,7 +91,7 @@ extension UIApplication {
             
             // put the default implementation back
             //
-            method_exchangeImplementations(originalMethod, swizzledMethod);
+            method_exchangeImplementations(originalMethod, swizzledMethod)
         }
         
         // remove our view
@@ -104,68 +101,35 @@ extension UIApplication {
     
     // MARK: - Method Swizzling
     
-    @objc func sf_sendEvent(_ event: UIEvent) {
-        
+    @objc
+    func sf_sendEvent(_ event: UIEvent) {
         if let touches = event.allTouches {
-            
-            var began: Set<UITouch>?
-            var moved: Set<UITouch>?
-            var cancelled: Set<UITouch>?
-            var ended: Set<UITouch>?
-            
-            for touch in touches {
-                switch touch.phase {
-                case .began:
-                    if began == nil {
-                        began = Set<UITouch>()
-                    }
-                    began!.insert(touch)
-                case .moved:
-                    if moved == nil {
-                        moved = Set<UITouch>()
-                    }
-                    moved!.insert(touch)
-                case .cancelled:
-                    if cancelled == nil {
-                        cancelled = Set<UITouch>()
-                    }
-                    cancelled!.insert(touch)
-                case .ended:
-                    if ended == nil {
-                        ended = Set<UITouch>()
-                    }
-                    ended!.insert(touch)
-                case .stationary:
-                    // NOTE: I've never actually seen this state.
-                    //
-                    continue
-                }
-            }
+            let began: Set<UITouch> = touches.filter { $0.phase == .began }
+            let moved: Set<UITouch> = touches.filter { $0.phase == .moved }
+            let cancelled: Set<UITouch> = touches.filter { $0.phase == .cancelled }
+            let ended: Set<UITouch> = touches.filter { $0.phase == .ended }
             
             // dispatch touches to our view
-            //
-            if let b = began {
-                DemoTouchesView.sharedInstance.touchesBegan(b, with: event)
+            if !began.isEmpty {
+                DemoTouchesView.sharedInstance.touchesBegan(began, with: event)
             }
-            if let m = moved {
-                DemoTouchesView.sharedInstance.touchesMoved(m, with: event)
+            if !moved.isEmpty {
+                DemoTouchesView.sharedInstance.touchesMoved(moved, with: event)
             }
-            if let e = ended {
-                DemoTouchesView.sharedInstance.touchesEnded(e, with: event)
+            if !ended.isEmpty {
+                DemoTouchesView.sharedInstance.touchesEnded(ended, with: event)
             }
-            if let c = cancelled {
-                DemoTouchesView.sharedInstance.touchesCancelled(c, with: event)
+            if !cancelled.isEmpty {
+                DemoTouchesView.sharedInstance.touchesCancelled(cancelled, with: event)
             }
         }
         
         // call original method
-        //
         self.sf_sendEvent(event)
     }
 }
 
 private class PingLayer: CAShapeLayer, CAAnimationDelegate {
-    
     var pingColor: UIColor! {
         didSet {
             strokeColor = pingColor.cgColor
@@ -197,7 +161,6 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
     fileprivate let center: CGPoint!
     
     fileprivate lazy var fromPath: CGPath! = {
-        
         var fromPath = UIBezierPath()
         fromPath.addArc(withCenter: self.center, radius: self.fromRadius, startAngle: CGFloat(0), endAngle: 2.0 * CGFloat.pi, clockwise: true)
         fromPath.close()
@@ -205,7 +168,6 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }()
     
     fileprivate lazy var toPath: CGPath! = {
-        
         var toPath = UIBezierPath()
         toPath.addArc(withCenter: self.center, radius: self.toRadius, startAngle: CGFloat(0), endAngle: 2 * CGFloat.pi, clockwise: true)
         toPath.close()
@@ -234,7 +196,6 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         }()
     
     init(center: CGPoint, fromRadius: CGFloat, toRadius: CGFloat) {
-        
         self.center = center
         self.fromRadius = fromRadius
         self.toRadius = toRadius
@@ -252,14 +213,15 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         add(opacityAnimation, forKey: "opacityAnimation")
     }
     
-    
+    @available(*, unavailable)
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: CALayer delegate
     
-    @objc fileprivate func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {        
+    @objc
+    fileprivate func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {        
         pathAnimation.delegate = nil
         
         self.removeAllAnimations()
@@ -269,11 +231,10 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
 
 // This is the object that should be used for showing/hiding touches
 //
-open class DemoTouchManager {
-    
+enum DemoTouchManager {
     // MARK: Properties
     
-    open class var touchFillColor: UIColor {
+    static var touchFillColor: UIColor {
         set {
             DemoTouchesView.sharedInstance.touchFillColor = newValue
         }
@@ -282,7 +243,7 @@ open class DemoTouchManager {
         }
     }
     
-    open class var touchSize: CGFloat {
+    static var touchSize: CGFloat {
         set {
             DemoTouchesView.sharedInstance.touchSize = newValue
         }
@@ -291,7 +252,7 @@ open class DemoTouchManager {
         }
     }
     
-    open class var touchBorderColor: UIColor {
+    static var touchBorderColor: UIColor {
         set {
             DemoTouchesView.sharedInstance.touchBorderColor = newValue
         }
@@ -300,7 +261,7 @@ open class DemoTouchManager {
         }
     }
     
-    open class var touchBorderWidth: CGFloat {
+    static var touchBorderWidth: CGFloat {
         set {
             DemoTouchesView.sharedInstance.touchBorderWidth = newValue
         }
@@ -309,7 +270,7 @@ open class DemoTouchManager {
         }
     }
     
-    open class var pingWidth: CGFloat {
+    static var pingWidth: CGFloat {
         set {
             DemoTouchesView.sharedInstance.pingWidth = newValue
         }
@@ -320,22 +281,20 @@ open class DemoTouchManager {
     
     // MARK: Methods
     
-    public static func isShowingTouches() -> Bool {
+    static func isShowingTouches() -> Bool {
         return UIApplication.isShowingTouches
     }
     
-    public static func showTouches() {
+    static func showTouches() {
         UIApplication.showAllTouches()
     }
     
-    public static func hideTouches() {
+    static func hideTouches() {
         UIApplication.hideAllTouches()
     }
 }
 
-
 private class TouchView: UIView {
-    
     // MARK: Properties
     
     // This computed property takes into account a tolerance
@@ -355,22 +314,21 @@ private class TouchView: UIView {
     // MARK: Initializers
     
     init(center: CGPoint, size: CGSize) {
-        
         originalCenter = center
         
-        super.init(frame: CGRect(origin: CGPoint.zero, size:size))
+        super.init(frame: CGRect(origin: .zero, size: size))
         
         self.center = center
         layer.cornerRadius = size.width / 2.0
     }
 
+    @available(*, unavailable)
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 private class DemoTouchesView: UIView {
-    
     // MARK: Properties
     
     var touchFillColor = UIColor.blue
@@ -380,7 +338,7 @@ private class DemoTouchesView: UIView {
     var pingWidth: CGFloat = 2.0
 
     var currentTouches: Set<UITouch>?
-    var touchViewMap: [UITouch:TouchView] = [:]
+    var touchViewMap: [UITouch: TouchView] = [:]
     
     static let sharedInstance: DemoTouchesView = {
         var dtv = DemoTouchesView()
@@ -392,32 +350,29 @@ private class DemoTouchesView: UIView {
     
     // MARK: Methods
     
-    func touchViewForPoint(_ pt: CGPoint) -> TouchView {
-        let tv = TouchView(center: pt, size: CGSize(width: touchSize, height: touchSize))
-        tv.backgroundColor = touchFillColor
-        tv.layer.borderWidth = touchBorderWidth
-        tv.layer.borderColor = touchBorderColor.cgColor
-        return tv
+    func touchViewForPoint(_ point: CGPoint) -> TouchView {
+        let touchView = TouchView(center: point, size: CGSize(width: touchSize, height: touchSize))
+        touchView.backgroundColor = touchFillColor
+        touchView.layer.borderWidth = touchBorderWidth
+        touchView.layer.borderColor = touchBorderColor.cgColor
+        return touchView
     }
     
     func pingLayerForTouch(_ touch: UITouch) -> PingLayer {
-        let pl = PingLayer(center: touch.location(in: self), fromRadius: 0, toRadius: touchSize)
-        pl.pingWidth = pingWidth
-        pl.pingColor = touchFillColor
-        return pl
+        let pingLayer = PingLayer(center: touch.location(in: self), fromRadius: 0, toRadius: touchSize)
+        pingLayer.pingWidth = pingWidth
+        pingLayer.pingColor = touchFillColor
+        return pingLayer
     }
     
     func updateTouches(_ touches: Set<NSObject>?) {
-        
         currentTouches = touches as? Set<UITouch>
         
-        if let w = UIApplication.shared.keyWindow {
-            
+        if let window = UIApplication.shared.keyWindow {
             if DemoTouchesView.sharedInstance.window == nil {
-                DemoTouchesView.sharedInstance.frame = w.frame
-                w.addSubview(DemoTouchesView.sharedInstance)
+                DemoTouchesView.sharedInstance.frame = window.frame
+                window.addSubview(DemoTouchesView.sharedInstance)
             } else {
-
                 // Ensure our DemoTouch view is always at the front of it's window
                 //
                 DemoTouchesView.sharedInstance.window!.bringSubviewToFront(DemoTouchesView.sharedInstance)
@@ -445,36 +400,35 @@ private class DemoTouchesView: UIView {
     }
     
     fileprivate func addTouch(_ touch: UITouch) {
-        let pt = touch.location(in: self)
-        let newTV = touchViewForPoint(pt)
+        let touchLocation = touch.location(in: self)
+        let newTouchView = touchViewForPoint(touchLocation)
         
-        DemoTouchesView.sharedInstance.addSubview(newTV)
-        touchViewMap[touch] = newTV
+        DemoTouchesView.sharedInstance.addSubview(newTouchView)
+        touchViewMap[touch] = newTouchView
     }
     
     fileprivate func moveTouch(_ touch: UITouch) {
-        if let tv = touchViewMap[touch] {
-            let pt = touch.location(in: self)
-            tv.center = pt
+        if let touchView = touchViewMap[touch] {
+            let touchLocation = touch.location(in: self)
+            touchView.center = touchLocation
         }
     }
     
     fileprivate func removeTouch(_ touch: UITouch, cancelled: Bool = false) {
-        if let tv = touchViewMap[touch] {
-
-            let animations: (()->Void) = {
-                tv.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-                tv.alpha = 0.0
+        if let touchView = touchViewMap[touch] {
+            let animations: (() -> Void) = {
+                touchView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                touchView.alpha = 0.0
                 
                 // only show the ping for a non-cancelled touch that hasn't moved (a touch that actually ended)
                 // basically, a single tap
                 //
-                if !cancelled && !tv.moved {
+                if !cancelled && !touchView.moved {
                     self.showPingForTouch(touch)
                 }
             }
             UIView.animate(withDuration: 0.25, animations: animations, completion: { (finished) in
-                tv.removeFromSuperview()
+                touchView.removeFromSuperview()
             }) 
             
             // stop tracking the touch
@@ -486,11 +440,9 @@ private class DemoTouchesView: UIView {
     // This method is for future use if we want to show tap and hold
     //
     fileprivate func intensifyTouchView(_ touch: UITouch) {
-        
-        if let tv = touchViewMap[touch] {
-            
-            if tv.alpha < 1.0 {
-                tv.alpha += CGFloat(0.05)
+        if let touchView = touchViewMap[touch] {
+            if touchView.alpha < 1.0 {
+                touchView.alpha += CGFloat(0.05)
             }
         }
     }
@@ -500,30 +452,25 @@ private class DemoTouchesView: UIView {
     }
     
     fileprivate func showPingForTouches(_ touches: [UITouch]) {
-        
         for touch in touches {
             let pingLyr = pingLayerForTouch(touch)
             DemoTouchesView.sharedInstance.layer.addSublayer(pingLyr)
         }
     }
     
-    fileprivate override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+    override fileprivate func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         updateTouches(touches)
     }
     
-    fileprivate override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+    override fileprivate func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         updateTouches(touches)
     }
     
-    fileprivate override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+    override fileprivate func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         updateTouches(touches)
     }
     
-    fileprivate override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
-        
+    override fileprivate func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
         updateTouches(touches)
     }
 }

@@ -18,61 +18,89 @@ import UIKit
 import ArcGIS
 
 class VectorTileLayerViewController: UIViewController {
-
-    @IBOutlet var mapView:AGSMapView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet var mapView: AGSMapView!
     
-    private var midCenturyURLString = "https://www.arcgis.com/home/item.html?id=7675d44bb1e4428aa2c30a9b68f97822"
-    private var coloredPencilURLString = "https://www.arcgis.com/home/item.html?id=4cf7e1fb9f254dcda9c8fbadb15cf0f8"
-    private var newsPaperURLString = "https://www.arcgis.com/home/item.html?id=dfb04de5f3144a80bc3f9f336228d24a"
-    private var novaURLString = "https://www.arcgis.com/home/item.html?id=75f4dfdff19e445395653121a95a85db"
-    private var nightURLString = "https://www.arcgis.com/home/item.html?id=86f556a2d1fd468181855a35e344567f"
+    /// The model array containing the layer options.
+    private let vectorTiledLayerItems: [(label: String, itemID: String)] = [
+        ("Mid-Century", "7675d44bb1e4428aa2c30a9b68f97822"),
+        ("Colored Pencil", "4cf7e1fb9f254dcda9c8fbadb15cf0f8"),
+        ("Newspaper", "dfb04de5f3144a80bc3f9f336228d24a"),
+        ("Nova", "75f4dfdff19e445395653121a95a85db"),
+        ("Night", "86f556a2d1fd468181855a35e344567f")
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileLayerViewController"]
+        // add the source code button item to the right of navigation bar
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "VectorTileLayerViewController",
+            "OptionsTableViewController"
+        ]
         
-        //change width of the segmented control based on the device
-        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
-            self.segmentedControl.frame = self.segmentedControl.frame.insetBy(dx: -50, dy: 0)
-        }
+        /// The URL of the initial layer to display.
+        let url = makeArcGISURL(itemID: vectorTiledLayerItems.first!.itemID)
         
-        //Change text size of the segmented control to fit the names of maps
-        segmentedControl.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 10)], for: .normal)
-        
-        //create a vector tiled layer
-        let vectorTileLayer = AGSArcGISVectorTiledLayer(url: URL(string: midCenturyURLString)!)
-        //create a map and set the vector tiled layer as the basemap
+        // create a vector tiled layer
+        let vectorTileLayer = AGSArcGISVectorTiledLayer(url: url)
+        // create a map and set the vector tiled layer as the basemap
         let map = AGSMap(basemap: AGSBasemap(baseLayer: vectorTileLayer))
         
-        //assign the map to the map view
-        self.mapView.map = map
+        // assign the map to the map view
+        mapView.map = map
 
-        //center on Miami, Fl
-        self.mapView.setViewpointCenter(AGSPoint(x: -80.18, y: 25.778135, spatialReference: AGSSpatialReference.wgs84()), scale: 150000, completion: nil)
-
+        // center on Miami, FL
+        mapView.setViewpointCenter(AGSPoint(x: -80.18, y: 25.778135, spatialReference: .wgs84()), scale: 150000)
     }
     
-    @IBAction func segmentedControlChanged(_ sender:UISegmentedControl) {
-        var urlString:String
-        switch sender.selectedSegmentIndex {
-        case 0:
-            urlString = midCenturyURLString
-        case 1:
-            urlString = coloredPencilURLString
-        case 2:
-            urlString = newsPaperURLString
-        case 3:
-            urlString = novaURLString
-        default:
-            urlString = nightURLString
+    private func makeArcGISURL(itemID: String) -> URL {
+        var urlComponents = URLComponents(string: "https://www.arcgis.com/home/item.html")!
+        urlComponents.queryItems = [URLQueryItem(name: "id", value: itemID)]
+        return urlComponents.url!
+    }
+
+    @IBAction func changeVectorTiledLayer(_ sender: UIBarButtonItem) {
+        guard let layer = mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer,
+            let selectedItemID = layer.item?.itemID,
+            // get the index of the layer currently shown in the map
+            let selectedIndex = vectorTiledLayerItems.firstIndex(where: { $0.itemID == selectedItemID }) else {
+            return
         }
         
-        //create the new vector tiled layer using the url
-        let vectorTileLayer = AGSArcGISVectorTiledLayer(url: URL(string: urlString)!)
-        //change the basemap to the new layer
-        self.mapView.map?.basemap = AGSBasemap(baseLayer: vectorTileLayer)
+        /// The labels for the layer options
+        let layerLabels = vectorTiledLayerItems.map { $0.label }
+        
+        /// A view controller allowing the user to select the layer to show.
+        let controller = OptionsTableViewController(labels: layerLabels, selectedIndex: selectedIndex) { [weak self] (newIndex) in
+            guard let self = self else {
+                return
+            }
+            
+            // get the layer ID for the index
+            let itemID = self.vectorTiledLayerItems[newIndex].itemID
+            // get the url for the layer ID
+            let url = self.makeArcGISURL(itemID: itemID)
+            // create the new vector tiled layer using the url
+            let vectorTileLayer = AGSArcGISVectorTiledLayer(url: url)
+            // change the basemap to the new layer
+            self.mapView.map?.basemap = AGSBasemap(baseLayer: vectorTileLayer)
+        }
+        
+        // configure the options controller as a popover
+        controller.modalPresentationStyle = .popover
+        controller.presentationController?.delegate = self
+        controller.preferredContentSize = CGSize(width: 300, height: 220)
+        controller.popoverPresentationController?.barButtonItem = sender
+        controller.popoverPresentationController?.passthroughViews?.append(mapView)
+        
+        // show the popover
+        present(controller, animated: true)
+    }
+}
+
+extension VectorTileLayerViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // show presented controller as popovers even on small displays
+        return .none
     }
 }

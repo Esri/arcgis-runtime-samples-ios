@@ -16,14 +16,15 @@ import UIKit
 import ArcGIS
 
 class ChangeSublayerRendererVC: UIViewController {
-
-    @IBOutlet private var mapView:AGSMapView!
-    @IBOutlet private var resetBarButtonItem:UIBarButtonItem!
-    @IBOutlet private var applyRendererBarButtonItem:UIBarButtonItem!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var resetBarButtonItem: UIBarButtonItem!
+    @IBOutlet private var applyRendererBarButtonItem: UIBarButtonItem!
     
     //map image layer
-    private var mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
-    private var originalRenderer:AGSRenderer?
+    private let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+    /// The counties sublayer of the map image layer.
+    private var countiesSublayer: AGSArcGISMapImageSublayer?
+    private var originalRenderer: AGSRenderer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class ChangeSublayerRendererVC: UIViewController {
         map.operationalLayers.add(self.mapImageLayer)
         
         //initial viewpoint
-        let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference:AGSSpatialReference.webMercator())
+        let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference: .webMercator())
         
         //set initial viewpoint on map
         map.initialViewpoint = AGSViewpoint(targetExtent: envelope)
@@ -48,33 +49,49 @@ class ChangeSublayerRendererVC: UIViewController {
         
         //load map image layer to access sublayers
         self.mapImageLayer.load { [weak self] (error: Error?) in
-            
-            guard let weakSelf = self else {
-                return
-            }
-            
-            //get the counties sublayer
-            if let sublayer = weakSelf.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer {
-                
-                //load the sublayer to get the original renderer
-                sublayer.load(completion: { (error) in
-                    if error == nil {
-                        weakSelf.originalRenderer = sublayer.renderer
-                        
-                        //enable bar button items
-                        self?.applyRendererBarButtonItem.isEnabled = true
-                        self?.resetBarButtonItem.isEnabled = true
-                    }
-                })
+            guard let self = self else { return }
+            if let error = error {
+                print("Error loading map image layer: \(error)")
+            } else {
+                self.mapImageLayerDidLoad()
             }
         }
     }
     
-    //returns a class break renderer
-    private func classBreakRenderer() -> AGSClassBreaksRenderer {
+    /// Called in response to the map image layer loading successfully.
+    func mapImageLayerDidLoad() {
+        //get the counties sublayer
+        let mapImageSublayers = mapImageLayer.mapImageSublayers
+        guard mapImageSublayers.count >= 3,
+            let sublayer = mapImageSublayers[2] as? AGSArcGISMapImageSublayer else {
+                return
+        }
+        countiesSublayer = sublayer
+        //load the sublayer to get the original renderer
+        sublayer.load { [weak self] (error) in
+            guard let self = self else { return }
+            if let error = error {
+                print("Error loading map image sublayer: \(error)")
+            } else {
+                self.countiesSublayerDidLoad()
+            }
+        }
+    }
+    
+    /// Called in response to the counties sublayer loading successfully.
+    func countiesSublayerDidLoad() {
+        originalRenderer = countiesSublayer?.renderer
         
-        //create a class breaks renderer for counties in US based on their population in 2007
-        
+        //enable bar button items
+        applyRendererBarButtonItem.isEnabled = true
+        resetBarButtonItem.isEnabled = true
+    }
+    
+    /// Creates a class breaks renderer for counties in the US based on their
+    /// population in 2007.
+    ///
+    /// - Returns: An `AGSClassBreaksRenderer` object.
+    private func makeClassBreakRenderer() -> AGSClassBreaksRenderer {
         //outline symbol
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor(white: 0.6, alpha: 1), width: 0.5)
         
@@ -98,24 +115,13 @@ class ChangeSublayerRendererVC: UIViewController {
         return classBreakRenderer
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction private func applyRenderer() {
-        
-        //get the counties sublayer
-        if let sublayer = self.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer {
-         
-            //set the class breaks renderer on the counties sublayer
-            sublayer.renderer = self.classBreakRenderer()
-        }
+        countiesSublayer?.renderer = makeClassBreakRenderer()
     }
     
     @IBAction private func reset() {
-        
-        if let renderer = self.originalRenderer, let sublayer = self.mapImageLayer.mapImageSublayers[2] as? AGSArcGISMapImageSublayer  {
-                
-            //set the class breaks renderer on the counties sublayer
-            sublayer.renderer = renderer
-        }
+        countiesSublayer?.renderer = originalRenderer
     }
 }

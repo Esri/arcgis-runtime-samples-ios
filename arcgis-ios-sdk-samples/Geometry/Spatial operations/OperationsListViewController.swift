@@ -15,36 +15,31 @@
 import UIKit
 
 protocol OperationsListVCDelegate: AnyObject {
-    
     func operationsListViewController(_ operationsListViewController: OperationsListViewController, didSelectOperation index: Int)
 }
 
-class OperationsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet var tableView: UITableView!
-    
+class OperationsListViewController: UITableViewController {
     weak var delegate: OperationsListVCDelegate?
     
-    var operations: [String]!
+    var operations = [String]()
     
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.operations.count
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return operations.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OperationCell", for: indexPath)
         
-        cell.textLabel?.text = self.operations[indexPath.row]
-        cell.backgroundColor = .clear
+        cell.textLabel?.text = operations[indexPath.row]
         
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.delegate?.operationsListViewController(self, didSelectOperation: indexPath.row)
     }
 }

@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class ListKMLContentsViewController: UITableViewController {
-    
     private var kmlDataset: AGSKMLDataset?
     
     /// The full node tree flattened to an array of tuples that include each node's level.
@@ -37,27 +36,26 @@ class ListKMLContentsViewController: UITableViewController {
         self.kmlDataset = kmlDataset
         
         // load the dataset asynchronously so we can list its contents
-        kmlDataset.load {[weak self] (error) in
-            
-            guard let self = self else{
+        kmlDataset.load { [weak self] (error) in
+            guard let self = self else {
                 return
             }
             
-            guard error == nil else{
+            guard error == nil else {
                 // display the error as an alert
                 let alertController = UIAlertController(title: nil, message: error?.localizedDescription, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true)
                 return
             }
             
             self.flattenedNodes = []
-            func addNodes(_ nodes: [AGSKMLNode], level: Int){
-                for node in nodes{
+            func addNodes(_ nodes: [AGSKMLNode], level: Int) {
+                for node in nodes {
                     // some nodes are hidden by default, so set all to visible
                     node.isVisible = true
                     self.flattenedNodes.append((node, level))
-                    addNodes(self.childNodes(of: node), level: level+1)
+                    addNodes(self.childNodes(of: node), level: level + 1)
                 }
             }
             // recurse through the nodes and add them all to a flat array to use as a data source
@@ -66,7 +64,6 @@ class ListKMLContentsViewController: UITableViewController {
             // populate the outline view now that the data is loaded
             self.tableView.reloadData()
         }
-        
         
         // create the view controller to display the scene throught the sample
         let sceneViewController = storyboard!.instantiateViewController(withIdentifier: "ListKMLContentsSceneViewController") as! ListKMLContentsSceneViewController
@@ -78,14 +75,39 @@ class ListKMLContentsViewController: UITableViewController {
     private func childNodes(of node: AGSKMLNode) -> [AGSKMLNode] {
         if let container = node as? AGSKMLContainer {
             return container.childNodes
-        }
-        else if let networkLink = node as? AGSKMLNetworkLink {
+        } else if let networkLink = node as? AGSKMLNetworkLink {
             return networkLink.childNodes
         }
         return []
     }
     
-    //MARK: - UITableViewDataSource
+    /// Returns a label `String` based on the `class` of the `node`.
+    private func typeLabel(for node: AGSKMLNode) -> String {
+        switch node {
+        case is AGSKMLDocument:
+            return "Document"
+        case is AGSKMLFolder:
+            return "Folder"
+        case is AGSKMLContainer:
+            return "Container"
+        case is AGSKMLGroundOverlay:
+            return "Ground Overlay"
+        case is AGSKMLNetworkLink:
+            return "Network Link"
+        case is AGSKMLPhotoOverlay:
+            return "Photo Overlay"
+        case is AGSKMLPlacemark:
+            return "Placemark"
+        case is AGSKMLScreenOverlay:
+            return "Screen Overlay"
+        case is AGSKMLTour:
+            return "Tour"
+        default:
+            return "Node"
+        }
+    }
+    
+    // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flattenedNodes.count
@@ -97,21 +119,19 @@ class ListKMLContentsViewController: UITableViewController {
         let flattenedNodeInfo = flattenedNodes[indexPath.row]
         let node = flattenedNodeInfo.node
         cell.textLabel?.text = node.name
-        cell.detailTextLabel?.text = "\(type(of:node))"
+        cell.detailTextLabel?.text = typeLabel(for: node)
         // set the indentation based on the node hierarchy
         cell.indentationLevel = flattenedNodeInfo.level
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // get the reusable view controller displaying the scene
         if let sceneViewController = sceneViewController,
             // if the view controller is not already presented
-             sceneViewController.presentingViewController == nil{
-           
+             sceneViewController.presentingViewController == nil {
             /// The node for the selected row.
             let selectedNode = flattenedNodes[indexPath.row].node
             // tell the view controller to show the selected node
@@ -120,5 +140,4 @@ class ListKMLContentsViewController: UITableViewController {
             show(sceneViewController, sender: self)
         }
     }
-    
 }

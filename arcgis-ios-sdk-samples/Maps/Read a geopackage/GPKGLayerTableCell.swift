@@ -15,10 +15,9 @@
 import ArcGIS
 
 class GPKGLayerTableCell: UITableViewCell {
-    var agsLayer:AGSLayer? {
+    var agsLayer: AGSLayer? {
         didSet {
             textLabel?.text = agsLayer?.name ?? ""
         }
     }
 }
-

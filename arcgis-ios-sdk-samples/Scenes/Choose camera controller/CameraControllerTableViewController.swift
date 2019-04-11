@@ -39,7 +39,7 @@ class CameraControllerTableViewController: UITableViewController {
         cell.textLabel?.text = getDescription(of: cameraControllers[indexPath.row])
         
         if indexPath.row == selectedRow {
-            tableView.selectRow(at: IndexPath(row: selectedRow, section: 0), animated: false, scrollPosition: .none)
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
         }
         

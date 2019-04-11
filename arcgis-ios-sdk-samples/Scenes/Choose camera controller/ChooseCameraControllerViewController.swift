@@ -112,7 +112,7 @@ class ChooseCameraControllerViewController: UIViewController {
             let cameraControllers = [makeOrbitLocationCameraController(), makeOrbitGeoElementCameraController(), AGSGlobeCameraController()]
             controller.cameraControllers = cameraControllers
 
-            if let currentCameraController = sceneView.cameraController, let selectedCameraController = cameraControllers.first(where: { String(describing: type(of: $0)) == String(describing: type(of: currentCameraController)) }) {
+            if let currentCameraController = sceneView.cameraController, let selectedCameraController = cameraControllers.first(where: { type(of: $0) == type(of: currentCameraController) }) {
                 controller.selectedRow = cameraControllers.firstIndex(of: selectedCameraController)
             }
 

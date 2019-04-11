@@ -38,7 +38,7 @@ class CameraControllerTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = getDescription(of: cameraControllers[indexPath.row])
         
-        if let selectedRow = selectedRow, indexPath.row == selectedRow {
+        if indexPath.row == selectedRow {
             tableView.selectRow(at: IndexPath(row: selectedRow, section: 0), animated: false, scrollPosition: .none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
         }

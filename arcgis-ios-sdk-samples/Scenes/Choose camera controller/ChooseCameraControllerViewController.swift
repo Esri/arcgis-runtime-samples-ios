@@ -111,10 +111,7 @@ class ChooseCameraControllerViewController: UIViewController {
 
             let cameraControllers = [makeOrbitLocationCameraController(), makeOrbitGeoElementCameraController(), AGSGlobeCameraController()]
             controller.cameraControllers = cameraControllers
-
-            if let currentCameraController = sceneView.cameraController, let selectedCameraController = cameraControllers.first(where: { type(of: $0) == type(of: currentCameraController) }) {
-                controller.selectedRow = cameraControllers.firstIndex(of: selectedCameraController)
-            }
+            controller.selectedCameraController = sceneView.cameraController
 
             // Popover presentation logic.
             controller.presentationController?.delegate = self
@@ -131,7 +128,7 @@ extension ChooseCameraControllerViewController: UIAdaptivePresentationController
 }
 
 extension ChooseCameraControllerViewController: CameraControllerTableViewControllerDelagate {
-    func selectedCameraController(_ tableviewController: CameraControllerTableViewController, cameraController: AGSCameraController) {
-        sceneView.cameraController = cameraController
+    func selectedCameraControllerChanged(_ tableViewController: CameraControllerTableViewController) {
+        sceneView.cameraController = tableViewController.selectedCameraController
     }
 }

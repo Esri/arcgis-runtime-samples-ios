@@ -16,18 +16,18 @@ import UIKit
 import ArcGIS
 
 protocol CameraControllerTableViewControllerDelagate: AnyObject {
-    func selectedCameraController(_ tableviewController: CameraControllerTableViewController, cameraController: AGSCameraController)
+    func selectedCameraControllerChanged(_ tableViewController: CameraControllerTableViewController)
 }
 
 class CameraControllerTableViewController: UITableViewController {
     weak var delegate: CameraControllerTableViewControllerDelagate!
     var cameraControllers = [AGSCameraController]()
-    var selectedRow: Int?
+    var selectedCameraController: AGSCameraController?
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let indexPath = selectedRow.map({ IndexPath(row: $0, section: 0) }) {
-            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        super.viewDidAppear(animated)
+        if let selectedCameraController = selectedCameraController, let selectedRow = cameraControllers.firstIndex(where: { String(describing: type(of: $0)) == String(describing: type(of: selectedCameraController)) }) {
+            tableView.selectRow(at: IndexPath(row: selectedRow, section: 0), animated: false, scrollPosition: .none)
         }
     }
     
@@ -50,7 +50,8 @@ class CameraControllerTableViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate.selectedCameraController(self, cameraController: cameraControllers[indexPath.row])
+        selectedCameraController = cameraControllers[indexPath.row]
+        delegate.selectedCameraControllerChanged(self)
     }
     
     // MARK: - Helper method

@@ -1367,6 +1367,14 @@
 					<string>philadelphia</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Choose camera controller</string>
+				<key>storyboardName</key>
+				<string>ChooseCameraController</string>
+				<key>descriptionText</key>
+				<string>Control the behavior of the camera in a scene.</string>
+			</dict>
 		</array>
 	</dict>
 </array>

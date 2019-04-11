@@ -44,6 +44,8 @@
 		127E11D71FD0C3F8002CBD12 /* WMTSLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */; };
 		127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */; };
 		127E11D91FD0C457002CBD12 /* WMTSLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */; };
+		128091C1225E5E3A007789C8 /* GroupLayersSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128091C0225E5E3A007789C8 /* GroupLayersSectionView.xib */; };
+		128091C3225E5E56007789C8 /* GroupLayersSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128091C2225E5E56007789C8 /* GroupLayersSectionView.swift */; };
 		12B736422256A978007F93C6 /* GroupLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B7363D2256A978007F93C6 /* GroupLayersViewController.swift */; };
 		12B736442256A978007F93C6 /* GroupLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B7363F2256A978007F93C6 /* GroupLayers.storyboard */; };
 		12B736452256A978007F93C6 /* LayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B736402256A978007F93C6 /* LayersTableViewController.swift */; };
@@ -952,6 +954,8 @@
 		127D29F5200EC5FC00DD6CDC /* ViewshedLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedLocation.storyboard; sourceTree = "<group>"; };
 		127E11D51FD0C3F8002CBD12 /* WMTSLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WMTSLayer.storyboard; sourceTree = "<group>"; };
 		127E11D61FD0C3F8002CBD12 /* WMTSLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMTSLayerViewController.swift; sourceTree = "<group>"; };
+		128091C0225E5E3A007789C8 /* GroupLayersSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupLayersSectionView.xib; sourceTree = "<group>"; };
+		128091C2225E5E56007789C8 /* GroupLayersSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupLayersSectionView.swift; sourceTree = "<group>"; };
 		12B7363D2256A978007F93C6 /* GroupLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLayersViewController.swift; sourceTree = "<group>"; };
 		12B7363F2256A978007F93C6 /* GroupLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroupLayers.storyboard; sourceTree = "<group>"; };
 		12B736402256A978007F93C6 /* LayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayersTableViewController.swift; sourceTree = "<group>"; };
@@ -1964,6 +1968,8 @@
 			children = (
 				3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */,
 				3ECDD9AF1E8470E100E645AB /* DownloadProgressView.xib */,
+				128091C0225E5E3A007789C8 /* GroupLayersSectionView.xib */,
+				128091C2225E5E56007789C8 /* GroupLayersSectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3801,6 +3807,7 @@
 				3E1183DE1ECF5A1000180152 /* Hawaii.csv in Resources */,
 				3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */,
 				3EFDE0F51E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard in Resources */,
+				128091C1225E5E3A007789C8 /* GroupLayersSectionView.xib in Resources */,
 				3E1E5EED1D9F0B5600F4913C /* srtm.tiff in Resources */,
 				3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */,
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
@@ -4150,6 +4157,7 @@
 				4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
 				C7094784215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift in Sources */,
+				128091C3225E5E56007789C8 /* GroupLayersSectionView.swift in Sources */,
 				C734B1F421C2DDE500E1BE76 /* ClipGeometryViewController.swift in Sources */,
 				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,
 				3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */,

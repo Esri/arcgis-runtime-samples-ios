@@ -19,30 +19,15 @@ class GroupLayersViewController: UIViewController {
     @IBOutlet var sceneView: AGSSceneView!
     @IBOutlet var layersBarButtonItem: UIBarButtonItem!
     
-    let scene: AGSScene
     let groupLayerName = "Dev A"
-    
-    required init?(coder aDecoder: NSCoder) {
-        // Initialize a scene with imagery basemap.
-        scene = AGSScene(basemap: .imagery())
-        
-        // Add base surface to the scene for elevation data.
-        let surface = AGSSurface()
-        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
-        let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
-        surface.elevationSources.append(elevationSource)
-        scene.baseSurface = surface
-        
-        super.init(coder: aDecoder)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GroupLayersViewController", "LayersTableViewController"]
         
-        // Assign the scene to the sceneView.
-        sceneView.scene = scene
+        // Assign scene to the scene view.
+        sceneView.scene = makeScene()
     
         addOperationalLayers()
         zoomToGroupLayer()
@@ -50,7 +35,7 @@ class GroupLayersViewController: UIViewController {
     
     /// Zooms to the extent of the Group Layer when its child layers are loaded.
     func zoomToGroupLayer() {
-        guard let groupLayer = (scene.operationalLayers as! [AGSLayer]).first(where: { $0.name == groupLayerName }) as? AGSGroupLayer else {
+        guard let groupLayer = (sceneView.scene?.operationalLayers as! [AGSLayer]).first(where: { $0.name == groupLayerName }) as? AGSGroupLayer else {
             return
         }
         
@@ -83,7 +68,7 @@ class GroupLayersViewController: UIViewController {
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/DevelopmentProjectArea/FeatureServer/0")!)
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
-        scene.operationalLayers.addObjects(from: [makeGroupLayer(), sceneLayer, featureLayer])
+        sceneView.scene?.operationalLayers.addObjects(from: [makeGroupLayer(), sceneLayer, featureLayer])
     }
     
     /// Returns a group layer.
@@ -100,11 +85,22 @@ class GroupLayersViewController: UIViewController {
         let buildings = AGSArcGISSceneLayer(url: URL(string: "https://scenesampleserverdev.arcgis.com/arcgis/rest/services/Hosted/DevA_BuildingShell_Textured/SceneServer/layers/0")!)
         
         // Add the scene layers and feature layer as children of the group layer.
-        groupLayer.layers.add(trees)
-        groupLayer.layers.add(pathways)
-        groupLayer.layers.add(buildings)
-        
+        groupLayer.layers.addObjects(from: [trees, pathways, buildings])
         return groupLayer
+    }
+    
+    /// Returns a scene with imagery basemap and elevation data.
+    func makeScene() -> AGSScene {
+        let scene = AGSScene(basemap: .imagery())
+        
+        // Add base surface to the scene for elevation data.
+        let surface = AGSSurface()
+        let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+        let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
+        surface.elevationSources.append(elevationSource)
+        scene.baseSurface = surface
+        
+        return scene
     }
     
     // MARK: - Navigation
@@ -113,9 +109,8 @@ class GroupLayersViewController: UIViewController {
         if segue.identifier == "LayersPopover" {
             guard let controller = segue.destination as? LayersTableViewController else { return }
             
-            if let layers = scene.operationalLayers as? [AGSLayer] {
-                controller.layers.append(contentsOf: layers)
-            }
+            let operationalLayers = sceneView.scene?.operationalLayers as! [AGSLayer]
+            controller.layers.append(contentsOf: operationalLayers)
             
             // Popover presentation logic.
             controller.presentationController?.delegate = self

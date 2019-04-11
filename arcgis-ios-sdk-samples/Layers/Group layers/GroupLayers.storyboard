@@ -62,25 +62,35 @@
         <scene sceneID="bdN-Yf-eF7">
             <objects>
                 <tableViewController id="d5y-jZ-L6I" customClass="LayersTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" id="kKq-xn-4Vk">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" id="kKq-xn-4Vk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="layerCell" id="02I-9A-1TG" customClass="GroupLayersTableViewCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="02I-9A-1TG" customClass="GroupLayersCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="02I-9A-1TG" id="Dbh-M7-uK4">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wr8-Sl-5XR">
-                                            <rect key="frame" x="310" y="7" width="49" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vZA-h6-bVN">
+                                            <rect key="frame" x="321" y="5" width="51" height="33.5"/>
+                                            <connections>
+                                                <action selector="switchDidChange:" destination="02I-9A-1TG" eventType="valueChanged" id="5Lq-wt-3x6"/>
+                                            </connections>
                                         </switch>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="vZA-h6-bVN" firstAttribute="top" secondItem="Dbh-M7-uK4" secondAttribute="top" constant="5" id="5vV-Vw-X9D"/>
+                                        <constraint firstAttribute="trailing" secondItem="vZA-h6-bVN" secondAttribute="trailing" constant="5" id="Esi-cC-nSE"/>
+                                        <constraint firstAttribute="bottom" secondItem="vZA-h6-bVN" secondAttribute="bottom" constant="5" id="fWL-cm-pky"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="layerVisibilitySwitch" destination="vZA-h6-bVN" id="wVi-Px-zhf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

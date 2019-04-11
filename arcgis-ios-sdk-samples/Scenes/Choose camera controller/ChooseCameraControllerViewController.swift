@@ -108,9 +108,7 @@ class ChooseCameraControllerViewController: UIViewController {
         if segue.identifier == "CameraControllersPopover" {
             guard let controller = segue.destination as? CameraControllerTableViewController else { return }
             controller.delegate = self
-
-            let cameraControllers = [makeOrbitLocationCameraController(), makeOrbitGeoElementCameraController(), AGSGlobeCameraController()]
-            controller.cameraControllers = cameraControllers
+            controller.cameraControllers = [makeOrbitLocationCameraController(), makeOrbitGeoElementCameraController(), AGSGlobeCameraController()]
             controller.selectedCameraController = sceneView.cameraController
 
             // Popover presentation logic.

@@ -114,7 +114,7 @@ class GroupLayersViewController: UIViewController {
             
             // Popover presentation logic.
             controller.presentationController?.delegate = self
-            controller.preferredContentSize = CGSize(width: 300, height: 200)
+            controller.preferredContentSize = CGSize(width: 300, height: 180)
         }
     }
 }

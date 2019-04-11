@@ -20,7 +20,7 @@ protocol CameraControllerTableViewControllerDelagate: AnyObject {
 }
 
 class CameraControllerTableViewController: UITableViewController {
-    weak var delegate: CameraControllerTableViewControllerDelagate!
+    weak var delegate: CameraControllerTableViewControllerDelagate?
     var cameraControllers = [AGSCameraController]()
     var selectedCameraController: AGSCameraController?
     
@@ -51,7 +51,7 @@ class CameraControllerTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCameraController = cameraControllers[indexPath.row]
-        delegate.selectedCameraControllerChanged(self)
+        delegate?.selectedCameraControllerChanged(self)
     }
     
     // MARK: - Helper method

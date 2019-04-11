@@ -26,7 +26,7 @@ class CameraControllerTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let selectedCameraController = selectedCameraController, let selectedRow = cameraControllers.firstIndex(where: { String(describing: type(of: $0)) == String(describing: type(of: selectedCameraController)) }) {
+        if let selectedCameraController = selectedCameraController, let selectedRow = cameraControllers.firstIndex(where: { type(of: $0) == type(of: selectedCameraController) }) {
             tableView.selectRow(at: IndexPath(row: selectedRow, section: 0), animated: false, scrollPosition: .none)
         }
     }

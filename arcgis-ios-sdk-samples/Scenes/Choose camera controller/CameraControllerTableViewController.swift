@@ -16,13 +16,20 @@ import UIKit
 import ArcGIS
 
 protocol CameraControllerTableViewControllerDelagate: AnyObject {
-    func selectedCameraController(_ cameraController: AGSCameraController)
+    func selectedCameraController(_ tableviewController: CameraControllerTableViewController, cameraController: AGSCameraController)
 }
 
 class CameraControllerTableViewController: UITableViewController {
-    weak var cameraControllerDelegate: CameraControllerTableViewControllerDelagate!
+    weak var delegate: CameraControllerTableViewControllerDelagate!
     var cameraControllers = [AGSCameraController]()
     var selectedRow: Int?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let indexPath = selectedRow.map({ IndexPath(row: $0, section: 0) }) {
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        }
+    }
     
     // MARK: - UITableViewDataSource
     
@@ -37,24 +44,18 @@ class CameraControllerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = getDescription(of: cameraControllers[indexPath.row])
-        
-        if indexPath.row == selectedRow {
-            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-            tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
-        }
-        
         return cell
     }
     
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        cameraControllerDelegate.selectedCameraController(cameraControllers[indexPath.row])
+        delegate.selectedCameraController(self, cameraController: cameraControllers[indexPath.row])
     }
     
     // MARK: - Helper method
     
-    /// Gets description for a specified camera controller.
+    /// Gets description of the specified camera controller.
     ///
     /// - Parameter cameraController: Camera controller of scene view.
     /// - Returns: A text description of the camera controller.

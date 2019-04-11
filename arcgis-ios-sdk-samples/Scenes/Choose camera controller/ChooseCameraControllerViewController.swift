@@ -107,7 +107,7 @@ class ChooseCameraControllerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CameraControllersPopover" {
             guard let controller = segue.destination as? CameraControllerTableViewController else { return }
-            controller.cameraControllerDelegate = self
+            controller.delegate = self
 
             let cameraControllers = [makeOrbitLocationCameraController(), makeOrbitGeoElementCameraController(), AGSGlobeCameraController()]
             controller.cameraControllers = cameraControllers
@@ -131,7 +131,7 @@ extension ChooseCameraControllerViewController: UIAdaptivePresentationController
 }
 
 extension ChooseCameraControllerViewController: CameraControllerTableViewControllerDelagate {
-    func selectedCameraController(_ cameraController: AGSCameraController) {
+    func selectedCameraController(_ tableviewController: CameraControllerTableViewController, cameraController: AGSCameraController) {
         sceneView.cameraController = cameraController
     }
 }

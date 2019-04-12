@@ -42,7 +42,7 @@ class GroupLayersViewController: UIViewController {
         guard let childLayers = groupLayer.layers as? [AGSLayer] else { return }
         
         AGSLoadObjects(childLayers) { [weak self] (success) in
-            guard success == true else {
+            guard success else {
                 print("Error loading layers")
                 return
             }

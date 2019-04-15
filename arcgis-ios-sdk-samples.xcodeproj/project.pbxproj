@@ -483,6 +483,8 @@
 		3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
+		4C060E632260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */; };
+		4C060E672261195C0070C787 /* naperville_imagery.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 4C060E662261195C0070C787 /* naperville_imagery.tpk */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
 		4C0F27B12152CA2400496666 /* IdentifyKMLFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */; };
 		4C0F27B32152CA3500496666 /* IdentifyKMLFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */; };
 		4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */; };
@@ -503,6 +505,7 @@
 		4C478E4C223C7498009F8CDF /* MapReferenceScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
 		4C478E4E223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
 		4C478E5022402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */; };
+		4C4DCA42225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4DCA41225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard */; };
 		4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */; };
 		4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
 		4C66AAFA2107CCE300EE6346 /* QueryMapImageSublayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
@@ -550,6 +553,7 @@
 		4CECF8A621D5930400A56161 /* SetMinMaxScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */; };
 		4CECF8CA21DD5C2200A56161 /* Mil2525DMessages.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */; };
 		4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
+		4CF22FCF22650D5A00300161 /* GenerateOfflineMapBasemapByReferenceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */; };
 		940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940A73F320E588C200A06C80 /* CutGeometry.storyboard */; };
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
@@ -909,6 +913,7 @@
 				4C99123D2249318100CCBC2A /* PlayKMLTourViewController.swift in CopyFiles */,
 				4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */,
 				4C783F3F2252D80B00609B9C /* OpenMobileSceneViewController.swift in CopyFiles */,
+				4CF22FCF22650D5A00300161 /* GenerateOfflineMapBasemapByReferenceViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1256,6 +1261,8 @@
 		3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerVC.swift; sourceTree = "<group>"; };
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
+		4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapBasemapByReferenceViewController.swift; sourceTree = "<group>"; };
+		4C060E662261195C0070C787 /* naperville_imagery.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpk; sourceTree = "<group>"; };
 		4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyKMLFeatures.storyboard; sourceTree = "<group>"; };
 		4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyKMLFeaturesViewController.swift; sourceTree = "<group>"; };
 		4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyKMLFeaturesViewControllerTests.swift; sourceTree = "<group>"; };
@@ -1274,6 +1281,7 @@
 		4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleViewController.swift; sourceTree = "<group>"; };
 		4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleSettingsViewController.swift; sourceTree = "<group>"; };
 		4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleLayerSelectionViewController.swift; sourceTree = "<group>"; };
+		4C4DCA41225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenerateOfflineMapBasemapByReference.storyboard; sourceTree = "<group>"; };
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
 		4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryMapImageSublayerViewController.swift; sourceTree = "<group>"; };
 		4C72116E20BF444C004A7DD9 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
@@ -2538,6 +2546,7 @@
 				3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */,
 				3E5E09341EF2E8E200FF3454 /* Generate offline map */,
 				C7094780215D340C00BA0969 /* Generate offline map (overrides) */,
+				4C4DCA40225EAAED00832FC5 /* Generate offline map (basemap by reference) */,
 				D9316A5C1FDB4ED90075AD92 /* Read a geopackage */,
 				4CECF89D21D57E9700A56161 /* Set min-max scale */,
 				4C478E48223C73F9009F8CDF /* Map reference scale */,
@@ -3024,6 +3033,14 @@
 			path = "Feature collection layer (query)";
 			sourceTree = "<group>";
 		};
+		4C060E652261195C0070C787 /* Tile Packages */ = {
+			isa = PBXGroup;
+			children = (
+				4C060E662261195C0070C787 /* naperville_imagery.tpk */,
+			);
+			path = "Tile Packages";
+			sourceTree = "<group>";
+		};
 		4C0F27AF2152C9CE00496666 /* Identify KML features */ = {
 			isa = PBXGroup;
 			children = (
@@ -3090,6 +3107,15 @@
 				4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */,
 			);
 			path = "Map reference scale";
+			sourceTree = "<group>";
+		};
+		4C4DCA40225EAAED00832FC5 /* Generate offline map (basemap by reference) */ = {
+			isa = PBXGroup;
+			children = (
+				4C4DCA41225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard */,
+				4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */,
+			);
+			path = "Generate offline map (basemap by reference)";
 			sourceTree = "<group>";
 		};
 		4C66AAF52107C4BB00EE6346 /* Query a map image sublayer */ = {
@@ -3174,6 +3200,7 @@
 			children = (
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
 				4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */,
+				4C060E652261195C0070C787 /* Tile Packages */,
 			);
 			path = "Portal Data";
 			sourceTree = "<group>";
@@ -3641,6 +3668,7 @@
 					SubdivisionsShapefile,
 					TilePackages,
 					YellowstoneMMPK,
+					naperville_imagery,
 					philadelphia,
 					"sandiego-north-balboa-pointcloud",
 				);
@@ -3769,6 +3797,7 @@
 				E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */,
 				3EF024E81ECBC10600166EC5 /* FormatCoordinates.storyboard in Resources */,
 				3E1183DD1ECF5A1000180152 /* GrandCanyon.csv in Resources */,
+				4C4DCA42225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
 				D9E2E76220EEB8FF001D0AE0 /* Public_Art.sbx in Resources */,
 				3E8A05DD1ECE69840032231C /* Bristol.dae in Resources */,
@@ -3905,6 +3934,7 @@
 				127D29F8200EC5FC00DD6CDC /* ViewshedLocation.storyboard in Resources */,
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
 				D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */,
+				4C060E672261195C0070C787 /* naperville_imagery.tpk in Resources */,
 				E4B2E26B1FE31EEA00E610FF /* ViewshedGeoElement.storyboard in Resources */,
 				4C0F27B12152CA2400496666 /* IdentifyKMLFeatures.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
@@ -4191,6 +4221,7 @@
 				3E4B05F71B39EF250072E514 /* SVIndefiniteAnimatedView.m in Sources */,
 				3ED028741B8E3A8500ACA70D /* MapViewDrawStatusViewController.swift in Sources */,
 				D90407941FD8608A00BFE07B /* RasterLayerGPKGViewController.swift in Sources */,
+				4C060E632260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift in Sources */,
 				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,
 				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Category.swift in Sources */,

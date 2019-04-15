@@ -202,6 +202,18 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Generate offline map (basemap by reference)</string>
+				<key>descriptionText</key>
+				<string>Take a web map offline, but instead of downloading an online basemap, use one which is already on the device.</string>
+				<key>storyboardName</key>
+				<string>GenerateOfflineMapBasemapByReference</string>
+				<key>dependency</key>
+				<array>
+					<string>naperville_imagery</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Read a geopackage</string>
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>

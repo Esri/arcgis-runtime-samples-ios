@@ -16,6 +16,12 @@
 			<key>filename</key>
 			<string>philadelphia.mspk</string>
 		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>628e8e3521cf45e9a28a12fe10c02c4d</string>
+			<key>filename</key>
+			<string>naperville_imagery.tpk</string>
+		</dict>
 	</array>
 </dict>
 </plist>

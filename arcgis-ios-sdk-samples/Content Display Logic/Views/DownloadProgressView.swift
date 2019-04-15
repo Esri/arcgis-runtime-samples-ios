@@ -34,6 +34,21 @@ class DownloadProgressView: UIView {
     private var progress: CGFloat = 0.0
     
     weak var delegate: DownloadProgressViewDelegate?
+    /// The progress object to use for updating the download progress view.
+    var observedProgress: Progress? {
+        willSet {
+            fractionCompletedObservation = nil
+        }
+        didSet {
+            fractionCompletedObservation = observedProgress?.observe(\.fractionCompleted) { [weak self] (progress, _) in
+                DispatchQueue.main.async {
+                    self?.updateProgress(progress: CGFloat(progress.fractionCompleted), animated: false)
+                }
+            }
+        }
+    }
+    
+    private var fractionCompletedObservation: NSKeyValueObservation?
     
     private var nibView: UIView!
     

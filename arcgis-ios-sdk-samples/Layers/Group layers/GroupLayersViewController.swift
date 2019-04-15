@@ -24,7 +24,7 @@ class GroupLayersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GroupLayersViewController", "LayersTableViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GroupLayersViewController", "LayersTableViewController", "GroupLayersSectionView"]
         
         // Assign scene to the scene view.
         sceneView.scene = makeScene()

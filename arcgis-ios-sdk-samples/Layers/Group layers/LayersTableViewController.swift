@@ -30,21 +30,23 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let groupLayer = getLayer(from: layers, at: section) as? AGSGroupLayer else { return 0 }
+        guard let groupLayer = layers[section] as? AGSGroupLayer else { return 0 }
         return groupLayer.layers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? GroupLayersCell else {
-            return UITableViewCell(style: .default, reuseIdentifier: "cell")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GroupLayersCell
         
-        guard let groupLayer = getLayer(from: layers, at: indexPath.section) as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer], let childLayer = getLayer(from: childLayers, at: indexPath.row) else { return cell }
+        guard let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
+        
+        let childLayer = childLayers[indexPath.row]
+        
         // Set label.
-        cell.textLabel?.text = formattedValue(of: childLayer.name)
+        cell.layerNameLabel.text = formattedValue(of: childLayer.name)
         
-        // Set the switch to on or off.
+        // Set state of the switch.
         cell.layerVisibilitySwitch.isOn = childLayer.isVisible
+        cell.layerVisibilitySwitch.isEnabled = groupLayer.isVisible
         
         // To update the visibility of operational layers on switch toggle.
         cell.delegate = self
@@ -57,7 +59,8 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: GroupLayersSectionView.reuseIdentifier) as? GroupLayersSectionView else { return nil }
         
-        guard let layer = getLayer(from: layers, at: section) else { return nil }
+        let layer = layers[section]
+        
         // Set label.
         headerView.layerNameLabel.text = formattedValue(of: layer.name)
         
@@ -69,7 +72,6 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         }
         
         // To update the visibility of operational layers on switch toggle.
-        headerView.layerVisibilitySwitch?.tag = section
         headerView.delegate = self
         
         return headerView
@@ -79,16 +81,16 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     
     func didToggleSwitch(_ cell: GroupLayersCell, isOn: Bool) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        if let groupLayer = getLayer(from: layers, at: indexPath.section) as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer], let childLayer = getLayer(from: childLayers, at: indexPath.row) {
-            childLayer.isVisible = isOn
+        if let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] {
+            childLayers[indexPath.row].isVisible = isOn
         }
     }
     
     // MARK: - GroupLayersSectionViewDelegate
     
-    func didToggleSwitch(_ sectionView: GroupLayersSectionView, section: Int, isOn: Bool) {
-        let layer = getLayer(from: layers, at: section)
-        layer?.isVisible = isOn
+    func didToggleSwitch(_ sectionView: GroupLayersSectionView, isOn: Bool) {
+        guard let section = tableView.section(forHeaderView: sectionView) else { return }
+        layers[section].isVisible = isOn
         updateSwitchForRows(in: section, isEnabled: isOn)
     }
     
@@ -103,7 +105,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         guard let visibleRows = tableView.indexPathsForVisibleRows else { return }
         let visibleRowsForSection = visibleRows.filter { $0.section == section }
         for indexPath in visibleRowsForSection {
-            if indexPath.section == section, let cell = tableView.cellForRow(at: indexPath) as? GroupLayersCell {
+            if let cell = tableView.cellForRow(at: indexPath) as? GroupLayersCell {
                 cell.layerVisibilitySwitch.isEnabled = isEnabled
             }
         }
@@ -129,20 +131,10 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
             return name
         }
     }
-    
-    /// To get layer from a list.
-    ///
-    /// - Parameters:
-    ///     - layers: List of layers.
-    ///     - section: Position of layer on the layers list.
-    /// - Returns: A layer if it exists else it returns nil.
-    func getLayer(from layers: [AGSLayer], at section: Int) -> AGSLayer? {
-        if section >= layers.count { return nil }
-        return layers[section]
-    }
 }
 
 class GroupLayersCell: UITableViewCell {
+    @IBOutlet var layerNameLabel: UILabel!
     @IBOutlet var layerVisibilitySwitch: UISwitch!
     weak var delegate: GroupLayersCellDelegate?
     
@@ -153,4 +145,10 @@ class GroupLayersCell: UITableViewCell {
 
 protocol GroupLayersCellDelegate: AnyObject {
     func didToggleSwitch(_ cell: GroupLayersCell, isOn: Bool)
+}
+
+extension UITableView {
+    func section(forHeaderView headerView: UITableViewHeaderFooterView) -> Int? {
+        return (0..<numberOfSections).first { self.headerView(forSection: $0) == headerView }
+    }
 }

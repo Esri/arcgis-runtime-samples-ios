@@ -26,10 +26,10 @@ final class GroupLayersSectionView: UITableViewHeaderFooterView {
     }
 
     @IBAction func toggleSwitch(_ sender: UISwitch) {
-        delegate?.didToggleSwitch(self, section: sender.tag, isOn: sender.isOn)
+        delegate?.didToggleSwitch(self, isOn: sender.isOn)
     }
 }
 
 protocol GroupLayersSectionViewDelegate: AnyObject {
-    func didToggleSwitch(_ sectionView: GroupLayersSectionView, section: Int, isOn: Bool)
+    func didToggleSwitch(_ sectionView: GroupLayersSectionView, isOn: Bool)
 }

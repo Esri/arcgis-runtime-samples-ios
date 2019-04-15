@@ -75,21 +75,32 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC3-n6-YJE">
+                                            <rect key="frame" x="16" y="5" width="312" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vZA-h6-bVN">
-                                            <rect key="frame" x="321" y="5" width="51" height="33.5"/>
+                                            <rect key="frame" x="323" y="5" width="51" height="33.5"/>
                                             <connections>
-                                                <action selector="switchDidChange:" destination="02I-9A-1TG" eventType="valueChanged" id="5Lq-wt-3x6"/>
+                                                <action selector="switchDidChange:" destination="02I-9A-1TG" eventType="valueChanged" id="yYw-01-iPA"/>
                                             </connections>
                                         </switch>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="vZA-h6-bVN" firstAttribute="top" secondItem="Dbh-M7-uK4" secondAttribute="top" constant="5" id="5vV-Vw-X9D"/>
-                                        <constraint firstAttribute="trailing" secondItem="vZA-h6-bVN" secondAttribute="trailing" constant="5" id="Esi-cC-nSE"/>
-                                        <constraint firstAttribute="bottom" secondItem="vZA-h6-bVN" secondAttribute="bottom" constant="5" id="fWL-cm-pky"/>
+                                        <constraint firstItem="XC3-n6-YJE" firstAttribute="top" secondItem="Dbh-M7-uK4" secondAttribute="top" constant="5" id="33G-uF-a6G"/>
+                                        <constraint firstItem="vZA-h6-bVN" firstAttribute="trailingMargin" secondItem="Dbh-M7-uK4" secondAttribute="trailingMargin" constant="5" id="4Ot-qf-fXK"/>
+                                        <constraint firstItem="XC3-n6-YJE" firstAttribute="trailing" secondItem="vZA-h6-bVN" secondAttribute="leading" constant="5" id="CZp-f3-Q1Z"/>
+                                        <constraint firstAttribute="bottom" secondItem="vZA-h6-bVN" secondAttribute="bottom" constant="5" id="MCo-L4-2OO"/>
+                                        <constraint firstAttribute="bottom" secondItem="XC3-n6-YJE" secondAttribute="bottom" constant="5" id="VXi-la-Et3"/>
+                                        <constraint firstItem="XC3-n6-YJE" firstAttribute="leading" secondItem="Dbh-M7-uK4" secondAttribute="leadingMargin" id="p4f-xG-si3"/>
+                                        <constraint firstItem="vZA-h6-bVN" firstAttribute="top" secondItem="Dbh-M7-uK4" secondAttribute="top" constant="5" id="qar-tr-6HW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="layerVisibilitySwitch" destination="vZA-h6-bVN" id="wVi-Px-zhf"/>
+                                    <outlet property="layerNameLabel" destination="XC3-n6-YJE" id="k6V-LM-0f7"/>
+                                    <outlet property="layerVisibilitySwitch" destination="vZA-h6-bVN" id="AwN-0r-2WZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

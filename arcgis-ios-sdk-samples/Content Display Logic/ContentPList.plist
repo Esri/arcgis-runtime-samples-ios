@@ -533,14 +533,14 @@
 				<key>storyboardName</key>
 				<string>BrowseWFSLayers</string>
 			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Group layers</string>
-				<key>descriptionText</key>
-				<string>Add layers to a group layer and toggle their visibility as a group.</string>
-				<key>storyboardName</key>
-				<string>GroupLayers</string>
-			</dict>
+            <dict>
+                <key>displayName</key>
+                <string>Group layers</string>
+                <key>descriptionText</key>
+                <string>Add layers to a group layer and toggle their visibility as a group.</string>
+                <key>storyboardName</key>
+                <string>GroupLayers</string>
+            </dict>
 		</array>
 	</dict>
 	<dict>
@@ -1374,6 +1374,14 @@
 				<array>
 					<string>philadelphia</string>
 				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Choose camera controller</string>
+				<key>storyboardName</key>
+				<string>ChooseCameraController</string>
+				<key>descriptionText</key>
+				<string>Control the behavior of the camera in a scene.</string>
 			</dict>
 		</array>
 	</dict>

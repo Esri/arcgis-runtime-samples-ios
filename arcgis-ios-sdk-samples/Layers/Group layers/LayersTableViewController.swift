@@ -66,11 +66,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         
         // Set the switch to on or off.
         headerView.layerVisibilitySwitch?.isOn = layer.isVisible
-        if !layer.isVisible {
-            // Disable switch of child layers if the parent is not visible.
-            updateSwitchForRows(in: section, isEnabled: false)
-        }
-        
+    
         // To update the visibility of operational layers on switch toggle.
         headerView.delegate = self
         
@@ -99,12 +95,12 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     /// Ensures we cannot toggle visibility of child layers when the parent is turned off.
     ///
     /// - Parameters:
-    ///     - section: Section number of the table view.
+    ///     - section: Section of the table view.
     ///     - enabled: Indicates if the switch should be enabled or disabled.
     func updateSwitchForRows(in section: Int, isEnabled: Bool) {
         guard let visibleRows = tableView.indexPathsForVisibleRows else { return }
-        let visibleRowsForSection = visibleRows.filter { $0.section == section }
-        for indexPath in visibleRowsForSection {
+        
+        visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
             if let cell = tableView.cellForRow(at: indexPath) as? GroupLayersCell {
                 cell.layerVisibilitySwitch.isEnabled = isEnabled
             }

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,29 +16,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10R-ek-huY">
-                    <rect key="frame" x="16" y="5" width="300" height="34"/>
+                    <rect key="frame" x="16" y="12" width="44.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ku-4w-xzb">
-                    <rect key="frame" x="321" y="5" width="51" height="34"/>
+                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
                     <connections>
                         <action selector="toggleSwitch:" destination="-2" eventType="valueChanged" id="ndi-hb-abW"/>
                     </connections>
                 </switch>
             </subviews>
             <constraints>
-                <constraint firstItem="10R-ek-huY" firstAttribute="top" secondItem="XjP-9q-BD7" secondAttribute="top" constant="5" id="1AJ-iz-MjX"/>
-                <constraint firstItem="9ku-4w-xzb" firstAttribute="leading" secondItem="10R-ek-huY" secondAttribute="trailing" constant="5" id="Lt2-qq-1br"/>
-                <constraint firstItem="10R-ek-huY" firstAttribute="leading" secondItem="XjP-9q-BD7" secondAttribute="leading" constant="16" id="NKS-xX-JVd"/>
-                <constraint firstAttribute="bottom" secondItem="9ku-4w-xzb" secondAttribute="bottom" constant="5" id="QuA-ha-W9X"/>
-                <constraint firstAttribute="bottom" secondItem="10R-ek-huY" secondAttribute="bottom" constant="5" id="inj-lU-HBo"/>
-                <constraint firstItem="9ku-4w-xzb" firstAttribute="trailing" secondItem="XjP-9q-BD7" secondAttribute="trailing" constant="-5" id="w8s-53-RrP"/>
-                <constraint firstItem="9ku-4w-xzb" firstAttribute="top" secondItem="XjP-9q-BD7" secondAttribute="top" constant="5" id="wZZ-lx-ewD"/>
+                <constraint firstItem="10R-ek-huY" firstAttribute="centerY" secondItem="XjP-9q-BD7" secondAttribute="centerY" id="La6-4l-n1K"/>
+                <constraint firstItem="9ku-4w-xzb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="10R-ek-huY" secondAttribute="trailing" id="Lt2-qq-1br"/>
+                <constraint firstItem="10R-ek-huY" firstAttribute="leading" secondItem="XjP-9q-BD7" secondAttribute="leadingMargin" id="NKS-xX-JVd"/>
+                <constraint firstItem="9ku-4w-xzb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XjP-9q-BD7" secondAttribute="top" constant="5" id="b3a-G9-6Ff"/>
+                <constraint firstItem="9ku-4w-xzb" firstAttribute="centerY" secondItem="XjP-9q-BD7" secondAttribute="centerY" id="gCf-26-EBq"/>
+                <constraint firstItem="10R-ek-huY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XjP-9q-BD7" secondAttribute="top" constant="5" id="kNg-g8-C2k"/>
+                <constraint firstItem="9ku-4w-xzb" firstAttribute="trailing" secondItem="XjP-9q-BD7" secondAttribute="trailingMargin" id="w8s-53-RrP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="6HA-iB-rGG"/>
             <connections>
                 <outlet property="layerNameLabel" destination="10R-ek-huY" id="lVW-qI-IVk"/>
                 <outlet property="layerVisibilitySwitch" destination="9ku-4w-xzb" id="5ef-4S-Buj"/>

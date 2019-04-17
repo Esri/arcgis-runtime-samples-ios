@@ -1,4 +1,4 @@
-# Generate offline map with local basemap
+# Generate offline map (basemap by reference)
 
 Use the `AGSOfflineMapTask` to take a web map offline, but instead of downloading an online basemap, use one which is already on the device.
 

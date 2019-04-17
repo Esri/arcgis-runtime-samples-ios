@@ -1568,8 +1568,7 @@
 				12D6602F226697320005DE8A /* GroupLayersViewController.swift */,
 				12D66031226697320005DE8A /* LayersTableViewController.swift */,
 			);
-			name = "Group layers";
-			path = "New Group";
+			path = "Group layers";
 			sourceTree = "<group>";
 		};
 		166E8F951EE4DF6C00C57C46 /* Raster layer (file) */ = {

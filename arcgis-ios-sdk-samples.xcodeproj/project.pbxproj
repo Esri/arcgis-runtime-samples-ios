@@ -51,14 +51,14 @@
 		12BF9E451FE9D77000B1E6C4 /* ViewshedCamera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */; };
 		12BF9E461FE9D77000B1E6C4 /* ViewshedCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
 		12BF9E471FE9D84E00B1E6C4 /* ViewshedCameraViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
+		12CB156722678E9900014927 /* GroupLayersSectionView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D66032226697320005DE8A /* GroupLayersSectionView.swift */; };
+		12CB156822678E9900014927 /* GroupLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D6602F226697320005DE8A /* GroupLayersViewController.swift */; };
+		12CB156922678E9900014927 /* LayersTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D66031226697320005DE8A /* LayersTableViewController.swift */; };
 		12D66033226697320005DE8A /* GroupLayersSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D6602C226697320005DE8A /* GroupLayersSectionView.xib */; };
 		12D66035226697320005DE8A /* GroupLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D6602E226697320005DE8A /* GroupLayers.storyboard */; };
 		12D66036226697320005DE8A /* GroupLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D6602F226697320005DE8A /* GroupLayersViewController.swift */; };
 		12D66038226697320005DE8A /* LayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D66031226697320005DE8A /* LayersTableViewController.swift */; };
 		12D66039226697320005DE8A /* GroupLayersSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D66032226697320005DE8A /* GroupLayersSectionView.swift */; };
-		12D6603A2266975E0005DE8A /* GroupLayersSectionView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D66032226697320005DE8A /* GroupLayersSectionView.swift */; };
-		12D6603B2266975E0005DE8A /* GroupLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D6602F226697320005DE8A /* GroupLayersViewController.swift */; };
-		12D6603C2266975E0005DE8A /* LayersTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D66031226697320005DE8A /* LayersTableViewController.swift */; };
 		165723CB223C70260097D6AA /* AddPointSceneLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */; };
 		166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */; };
 		166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */; };
@@ -708,9 +708,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				12D6603A2266975E0005DE8A /* GroupLayersSectionView.swift in CopyFiles */,
-				12D6603B2266975E0005DE8A /* GroupLayersViewController.swift in CopyFiles */,
-				12D6603C2266975E0005DE8A /* LayersTableViewController.swift in CopyFiles */,
+				12CB156722678E9900014927 /* GroupLayersSectionView.swift in CopyFiles */,
+				12CB156822678E9900014927 /* GroupLayersViewController.swift in CopyFiles */,
+				12CB156922678E9900014927 /* LayersTableViewController.swift in CopyFiles */,
 				121D935422572E82006C2D95 /* ChooseCameraControllerViewController.swift in CopyFiles */,
 				098049AC2253FC7B009C685D /* BrowseWFSLayersViewController.swift in CopyFiles */,
 				098049AD2253FC7B009C685D /* WFSLayersTableViewController.swift in CopyFiles */,
@@ -966,11 +966,11 @@
 		12B736502256D618007F93C6 /* ChooseCameraControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCameraControllerViewController.swift; sourceTree = "<group>"; };
 		12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedCamera.storyboard; sourceTree = "<group>"; };
 		12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedCameraViewController.swift; sourceTree = "<group>"; };
-		12D6602C226697320005DE8A /* GroupLayersSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupLayersSectionView.xib; path = "../../../../../Downloads/arcgis-runtime-samples-ios/arcgis-ios-sdk-samples/Layers/Group layers/GroupLayersSectionView.xib"; sourceTree = "<group>"; };
-		12D6602E226697320005DE8A /* GroupLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GroupLayers.storyboard; path = "../../../../../Downloads/arcgis-runtime-samples-ios/arcgis-ios-sdk-samples/Layers/Group layers/GroupLayers.storyboard"; sourceTree = "<group>"; };
-		12D6602F226697320005DE8A /* GroupLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupLayersViewController.swift; path = "../../../../../Downloads/arcgis-runtime-samples-ios/arcgis-ios-sdk-samples/Layers/Group layers/GroupLayersViewController.swift"; sourceTree = "<group>"; };
-		12D66031226697320005DE8A /* LayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayersTableViewController.swift; path = "../../../../../Downloads/arcgis-runtime-samples-ios/arcgis-ios-sdk-samples/Layers/Group layers/LayersTableViewController.swift"; sourceTree = "<group>"; };
-		12D66032226697320005DE8A /* GroupLayersSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupLayersSectionView.swift; path = "../../../../../Downloads/arcgis-runtime-samples-ios/arcgis-ios-sdk-samples/Layers/Group layers/GroupLayersSectionView.swift"; sourceTree = "<group>"; };
+		12D6602C226697320005DE8A /* GroupLayersSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupLayersSectionView.xib; sourceTree = "<group>"; };
+		12D6602E226697320005DE8A /* GroupLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroupLayers.storyboard; sourceTree = "<group>"; };
+		12D6602F226697320005DE8A /* GroupLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLayersViewController.swift; sourceTree = "<group>"; };
+		12D66031226697320005DE8A /* LayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayersTableViewController.swift; sourceTree = "<group>"; };
+		12D66032226697320005DE8A /* GroupLayersSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLayersSectionView.swift; sourceTree = "<group>"; };
 		166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayer.storyboard; sourceTree = "<group>"; };
 		166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerViewController.swift; sourceTree = "<group>"; };
 		1682CAEB22404F330039C3E1 /* ViewContentBeneathTerrainSurface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewContentBeneathTerrainSurface.storyboard; sourceTree = "<group>"; };

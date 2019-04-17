@@ -51,6 +51,14 @@
 		12BF9E451FE9D77000B1E6C4 /* ViewshedCamera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */; };
 		12BF9E461FE9D77000B1E6C4 /* ViewshedCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
 		12BF9E471FE9D84E00B1E6C4 /* ViewshedCameraViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */; };
+		12CB156722678E9900014927 /* GroupLayersSectionView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D66032226697320005DE8A /* GroupLayersSectionView.swift */; };
+		12CB156822678E9900014927 /* GroupLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D6602F226697320005DE8A /* GroupLayersViewController.swift */; };
+		12CB156922678E9900014927 /* LayersTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D66031226697320005DE8A /* LayersTableViewController.swift */; };
+		12D66033226697320005DE8A /* GroupLayersSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D6602C226697320005DE8A /* GroupLayersSectionView.xib */; };
+		12D66035226697320005DE8A /* GroupLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D6602E226697320005DE8A /* GroupLayers.storyboard */; };
+		12D66036226697320005DE8A /* GroupLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D6602F226697320005DE8A /* GroupLayersViewController.swift */; };
+		12D66038226697320005DE8A /* LayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D66031226697320005DE8A /* LayersTableViewController.swift */; };
+		12D66039226697320005DE8A /* GroupLayersSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D66032226697320005DE8A /* GroupLayersSectionView.swift */; };
 		165723CB223C70260097D6AA /* AddPointSceneLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169CDBCB223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift */; };
 		166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */; };
 		166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */; };
@@ -700,6 +708,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				12CB156722678E9900014927 /* GroupLayersSectionView.swift in CopyFiles */,
+				12CB156822678E9900014927 /* GroupLayersViewController.swift in CopyFiles */,
+				12CB156922678E9900014927 /* LayersTableViewController.swift in CopyFiles */,
 				121D935422572E82006C2D95 /* ChooseCameraControllerViewController.swift in CopyFiles */,
 				098049AC2253FC7B009C685D /* BrowseWFSLayersViewController.swift in CopyFiles */,
 				098049AD2253FC7B009C685D /* WFSLayersTableViewController.swift in CopyFiles */,
@@ -955,6 +966,11 @@
 		12B736502256D618007F93C6 /* ChooseCameraControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCameraControllerViewController.swift; sourceTree = "<group>"; };
 		12BF9E431FE9D77000B1E6C4 /* ViewshedCamera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedCamera.storyboard; sourceTree = "<group>"; };
 		12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedCameraViewController.swift; sourceTree = "<group>"; };
+		12D6602C226697320005DE8A /* GroupLayersSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupLayersSectionView.xib; sourceTree = "<group>"; };
+		12D6602E226697320005DE8A /* GroupLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroupLayers.storyboard; sourceTree = "<group>"; };
+		12D6602F226697320005DE8A /* GroupLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLayersViewController.swift; sourceTree = "<group>"; };
+		12D66031226697320005DE8A /* LayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayersTableViewController.swift; sourceTree = "<group>"; };
+		12D66032226697320005DE8A /* GroupLayersSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLayersSectionView.swift; sourceTree = "<group>"; };
 		166E8F9B1EE62E0E00C57C46 /* RasterLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RasterLayer.storyboard; sourceTree = "<group>"; };
 		166E8F9C1EE62E0E00C57C46 /* RasterLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterLayerViewController.swift; sourceTree = "<group>"; };
 		1682CAEB22404F330039C3E1 /* ViewContentBeneathTerrainSurface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewContentBeneathTerrainSurface.storyboard; sourceTree = "<group>"; };
@@ -1541,6 +1557,18 @@
 				12BF9E441FE9D77000B1E6C4 /* ViewshedCameraViewController.swift */,
 			);
 			path = "Viewshed (camera)";
+			sourceTree = "<group>";
+		};
+		12D6602B226697040005DE8A /* Group layers */ = {
+			isa = PBXGroup;
+			children = (
+				12D6602E226697320005DE8A /* GroupLayers.storyboard */,
+				12D66032226697320005DE8A /* GroupLayersSectionView.swift */,
+				12D6602C226697320005DE8A /* GroupLayersSectionView.xib */,
+				12D6602F226697320005DE8A /* GroupLayersViewController.swift */,
+				12D66031226697320005DE8A /* LayersTableViewController.swift */,
+			);
+			path = "Group layers";
 			sourceTree = "<group>";
 		};
 		166E8F951EE4DF6C00C57C46 /* Raster layer (file) */ = {
@@ -2508,6 +2536,7 @@
 				092A1C2222456D9500C5F230 /* Display a WFS layer */,
 				098049A12253FC3F009C685D /* Browse WFS layers */,
 				4CAC91D72242AAB700663A10 /* Load WFS with XML query */,
+				12D6602B226697040005DE8A /* Group layers */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -3826,6 +3855,8 @@
 				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
 				D9EE379820E2CC7700BF8AD1 /* tire_tread.jpeg in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
+				12D66033226697320005DE8A /* GroupLayersSectionView.xib in Resources */,
+				12D66035226697320005DE8A /* GroupLayers.storyboard in Resources */,
 				E4477CC020EC0CE0004E14F9 /* ListTransformations.storyboard in Resources */,
 				3E3425BD1E7B4CB10024270B /* srtm.tiff.ovr in Resources */,
 				3ED788901D26E2F700E5F311 /* LocalTiledLayer.storyboard in Resources */,
@@ -3990,6 +4021,7 @@
 				C7094786215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift in Sources */,
 				3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */,
 				E4B2E2691FE31ED500E610FF /* ViewshedGeoElementViewController.swift in Sources */,
+				12D66038226697320005DE8A /* LayersTableViewController.swift in Sources */,
 				3ED7888E1D26E28500E5F311 /* TilePackagesListViewController.swift in Sources */,
 				3ED029381B8E3AB300ACA70D /* MILLegendTableViewController.swift in Sources */,
 				4C0F27B32152CA3500496666 /* IdentifyKMLFeaturesViewController.swift in Sources */,
@@ -4178,6 +4210,7 @@
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3E5E094F1EF850BA00FF3454 /* MapImageSublayersViewController.swift in Sources */,
 				10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */,
+				12D66039226697320005DE8A /* GroupLayersSectionView.swift in Sources */,
 				3E1E5EE71D9F095A00F4913C /* HillshadeSettingsVC.swift in Sources */,
 				2196CAF91FD868EA00512693 /* RasterFunctionServiceViewController.swift in Sources */,
 				3EBA25421D2F106600AB0703 /* UniqueValueRendererViewController.swift in Sources */,
@@ -4198,6 +4231,7 @@
 				E4477CBE20EC0CCD004E14F9 /* ListTransformationsViewController.swift in Sources */,
 				D9316A621FDB4F060075AD92 /* GPKGLayersViewController.swift in Sources */,
 				3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */,
+				12D66036226697320005DE8A /* GroupLayersViewController.swift in Sources */,
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,
 				4C1EF29B220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift in Sources */,
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,

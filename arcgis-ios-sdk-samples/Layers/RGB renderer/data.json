@@ -1,0 +1,18 @@
+{
+    "category": "Layers",
+    "current_slug": "rgb-renderer.htm",
+    "description": "This sample demonstrates how to use rgb renderer on a raster layer",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "rgb-renderer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "RGBRendererSettingsVC.swift",
+        "RGB Renderer Cells.swift",
+        "RGBRendererViewController.swift"
+    ],
+    "title": "RGB renderer"
+}

@@ -1,0 +1,15 @@
+{
+    "category": "Edit data",
+    "current_slug": "add-features-feature-service-.htm",
+    "description": "This sample demonstrates how to add features to the feature layer using a feature service",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "add-features-feature-service.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "AddFeaturesViewController.swift"
+    ],
+    "title": "Add features (feature service)"
+}

@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "arcgis-vector-tiled-layer-url-.htm",
+    "description": "This sample demonstrates how to create a vector tile layer from a URL",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "arcgis-vector-tiled-layer-url.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "VectorTileLayerViewController.swift"
+    ],
+    "title": "ArcGIS vector tiled layer (URL)"
+}

@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "show-magnifier.htm",
+    "description": "This sample demonstrates how you can tap and hold on a map to get the magnifier",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "show-magnifier.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ShowMagnifierViewController.swift"
+    ],
+    "title": "Show magnifier"
+}

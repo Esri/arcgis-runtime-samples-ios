@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "display-layer-view-state.htm",
+    "description": "This sample demonstrates how to get view status for layers in a map",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "display-layer-view-state.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "LayerStatusViewController.swift"
+    ],
+    "title": "Display layer view state"
+}

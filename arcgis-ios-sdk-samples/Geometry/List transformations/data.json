@@ -1,0 +1,26 @@
+{
+    "category": "Geometry",
+    "current_slug": "list-transformations-by-suitability.htm",
+    "description": "Transformations (sometimes known as datum or geographic transformations) are used when projecting data from one spatial reference to another, when there is a difference in the underlying datum of the spatial references",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Edit",
+        "and",
+        "Manage",
+        "Data"
+    ],
+    "new_slug": "list-transformations-by-suitability.htm",
+    "relevant_apis": [
+        "AGSTransformationCatalog",
+        "AGSDatumTransformation",
+        "AGSGeographicTransformation",
+        "AGSGeographicTransformationStep",
+        "AGSGeometryEngine.project"
+    ],
+    "snippets": [
+        "ListTransformationsViewController.swift"
+    ],
+    "title": "List transformations by suitability"
+}

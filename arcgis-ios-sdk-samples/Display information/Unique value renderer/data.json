@@ -1,0 +1,15 @@
+{
+    "category": "Display information",
+    "current_slug": "unique-value-renderer.htm",
+    "description": "This sample demonstrate how to use a unique value renderer to style different features in a feature layer with different symbols",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "unique-value-renderer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "UniqueValueRendererViewController.swift"
+    ],
+    "title": "Unique value renderer"
+}

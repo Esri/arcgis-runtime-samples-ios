@@ -1,0 +1,16 @@
+{
+    "category": "Search",
+    "current_slug": "offline-geocode.htm",
+    "description": "This sample demonstrates how you can geocode addresses to locations and reverse geocode locations to addresses when the device does not have network connectivity",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "offline-geocode.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "SanDiegoAddressesViewController.swift",
+        "OfflineGeocodeViewController.swift"
+    ],
+    "title": "Offline geocode"
+}

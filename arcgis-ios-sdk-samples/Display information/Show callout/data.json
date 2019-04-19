@@ -1,0 +1,15 @@
+{
+    "category": "Display information",
+    "current_slug": "show-callout.htm",
+    "description": "This sample demonstrates how to show location coordinates on a map using a callout",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "show-callout.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "CalloutViewController.swift"
+    ],
+    "title": "Show callout"
+}

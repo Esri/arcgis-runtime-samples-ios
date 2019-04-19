@@ -1,0 +1,15 @@
+{
+    "category": "Features",
+    "current_slug": "feature-layer-shapefile-.htm",
+    "description": "This sample demonstrates how to display a FeatureLayer from a shapefile",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "feature-layer-shapefile.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "FeatureLayerShapefileViewController.swift"
+    ],
+    "title": "Feature Layer (Shapefile)"
+}

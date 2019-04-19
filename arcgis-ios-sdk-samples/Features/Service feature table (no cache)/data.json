@@ -1,0 +1,15 @@
+{
+    "category": "Features",
+    "current_slug": "service-feature-table-no-cache-.htm",
+    "description": "This sample demonstrates how to use a feature service in on interaction no cache mode",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "service-feature-table-no-cache.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "OnInteractionNoCacheViewController.swift"
+    ],
+    "title": "Service feature table (no cache)"
+}

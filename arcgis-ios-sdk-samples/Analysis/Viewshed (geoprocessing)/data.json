@@ -1,0 +1,15 @@
+{
+    "category": "Analysis",
+    "current_slug": "viewshed-geoprocessing-.htm",
+    "description": "This sample demonstrates how to calculate a viewshed using a geoprocessing service",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "viewshed-geoprocessing.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ViewshedGeoprocessingViewController.swift"
+    ],
+    "title": "Viewshed (Geoprocessing)"
+}

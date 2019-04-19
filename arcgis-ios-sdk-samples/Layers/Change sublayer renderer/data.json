@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "change-sublayer-renderer.htm",
+    "description": "This sample demonstrates how you to change renderer of a sublayer in map image layer",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "change-sublayer-renderer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ChangeSublayerRendererVC.swift"
+    ],
+    "title": "Change sublayer renderer"
+}

@@ -1,0 +1,26 @@
+{
+    "category": "Maps",
+    "current_slug": "generate-offline-map-overrides-.htm",
+    "description": "",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Offline"
+    ],
+    "new_slug": "generate-offline-map-overrides.htm",
+    "relevant_apis": [
+        "AGSOfflineMapTask",
+        "AGSGenerateGeodatabaseParameters",
+        "AGSGenerateOfflineMapParameters",
+        "AGSGenerateOfflineMapParameterOverrides",
+        "AGSGenerateOfflineMapJob",
+        "AGSGenerateOfflineMapResult",
+        "AGSExportTileCacheParameters"
+    ],
+    "snippets": [
+        "GenerateOfflineMapOverridesViewController.swift",
+        "OfflineMapParameterOverridesViewController.swift"
+    ],
+    "title": "Generate Offline Map (Overrides)"
+}

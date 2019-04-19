@@ -1,0 +1,20 @@
+{
+    "category": "Maps",
+    "current_slug": "create-and-save-a-map.htm",
+    "description": "This sample demonstrates how to create a map and save it to your portal",
+    "images": [
+        "image4.png",
+        "image1.png",
+        "image2.png",
+        "image3.png"
+    ],
+    "keywords": [],
+    "new_slug": "create-and-save-a-map.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "SaveAsViewController.swift",
+        "CreateSaveMapViewController.swift",
+        "CreateOptionsViewController.swift"
+    ],
+    "title": "Create and save a map"
+}

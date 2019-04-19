@@ -1,0 +1,16 @@
+{
+    "category": "Analysis",
+    "current_slug": "viewshed-location-.htm",
+    "description": "This sample demonstrates how to interactively edit a viewshed analysis in a scene and see updates on-the-fly",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "viewshed-location.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ViewshedSettingsVC.swift",
+        "ViewshedLocationViewController.swift"
+    ],
+    "title": "Viewshed (location)"
+}

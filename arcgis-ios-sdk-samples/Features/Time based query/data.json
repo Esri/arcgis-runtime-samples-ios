@@ -1,0 +1,15 @@
+{
+    "category": "Features",
+    "current_slug": "time-based-query.htm",
+    "description": "This sample demonstrates how to apply a time-based parameter to a feature layer query",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "time-based-query.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "TimeBasedQueryVC.swift"
+    ],
+    "title": "Time based query"
+}

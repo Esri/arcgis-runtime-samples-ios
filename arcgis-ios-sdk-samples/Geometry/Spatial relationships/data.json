@@ -1,0 +1,36 @@
+{
+    "category": "Geometry",
+    "current_slug": "spatial-relationships.htm",
+    "description": "This sample demonstrates how to use the AGSGeometryEngine to evaluate the spatial relationships between geometries",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "geometry,",
+        "spatial",
+        "relationship,",
+        "crosses,",
+        "contains,",
+        "disjoint,",
+        "intersects,",
+        "overlaps,",
+        "touches,",
+        "within"
+    ],
+    "new_slug": "spatial-relationships.htm",
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSGeometryEngine.geometry(_:crossesGeometry:)",
+        "AGSGeometryEngine.geometry(_:contains:)",
+        "AGSGeometryEngine.geometry(_:disjointTo:)",
+        "AGSGeometryEngine.geometry(_:intersects:)",
+        "AGSGeometryEngine.geometry(_:overlapsGeometry:)",
+        "AGSGeometryEngine.geometry(_:touchesGeometry:)",
+        "AGSGeometryEngine.geometry(_:within:)"
+    ],
+    "snippets": [
+        "SpatialRelationshipsTableViewController.swift",
+        "SpatialRelationshipsViewController.swift"
+    ],
+    "title": "Spatial relationships"
+}

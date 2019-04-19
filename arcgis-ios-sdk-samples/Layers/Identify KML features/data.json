@@ -1,0 +1,29 @@
+{
+    "category": "Layers",
+    "current_slug": "identify-kml-features.htm",
+    "description": "Show a balloon popup with formatted content for tapped KML features",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Weather,",
+        "NOAA,",
+        "NWS,",
+        "KML,",
+        "KMZ,",
+        "OGC,",
+        "Keyhole"
+    ],
+    "new_slug": "identify-kml-features.htm",
+    "relevant_apis": [
+        "AGSKMLLayer",
+        "AGSKMLPlacemark",
+        "AGSKMLPlacemark.balloonContent",
+        "AGSIdentifyLayerResult",
+        "AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)"
+    ],
+    "snippets": [
+        "IdentifyKMLFeaturesViewController.swift"
+    ],
+    "title": "Identify KML features"
+}

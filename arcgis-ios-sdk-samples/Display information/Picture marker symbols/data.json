@@ -1,0 +1,15 @@
+{
+    "category": "Display information",
+    "current_slug": "picture-marker-symbols.htm",
+    "description": "This sample demonstrates how to create picture marker symbols using a remote image and an image in assets",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "picture-marker-symbols.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "PictureMarkerSymbolsViewController.swift"
+    ],
+    "title": "Picture marker symbols"
+}

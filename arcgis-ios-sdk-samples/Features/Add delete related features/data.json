@@ -1,0 +1,17 @@
+{
+    "category": "Features",
+    "current_slug": "add-delete-related-features.htm",
+    "description": "This sample demonstrates how to add or delete related features on an origin feature",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "add-delete-related-features.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "RelatedFeaturesViewController.swift",
+        "AddDeleteRelatedFeaturesViewController.swift"
+    ],
+    "title": "Add delete related features"
+}

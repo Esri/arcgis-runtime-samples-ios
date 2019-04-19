@@ -1,0 +1,16 @@
+{
+    "category": "Maps",
+    "current_slug": "change-viewpoint.htm",
+    "description": "This sample demonstrates different ways in which you can change the viewpoint or visible area of a map",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "change-viewpoint.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "SetViewpointViewController.swift"
+    ],
+    "title": "Change viewpoint"
+}

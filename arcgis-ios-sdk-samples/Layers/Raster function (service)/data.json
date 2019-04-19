@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "raster-function-service-.htm",
+    "description": "Raster functions are operations performed on a raster to apply on-the-fly processing",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "raster-function-service.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "RasterFunctionServiceViewController.swift"
+    ],
+    "title": "Raster function (service)"
+}

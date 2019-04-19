@@ -1,0 +1,15 @@
+{
+    "category": "Analysis",
+    "current_slug": "viewshed-geoelement-.htm",
+    "description": "A viewshed shows the visible and obstructed areas from an observer\u2019s vantage point",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "viewshed-geoelement.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ViewshedGeoElementViewController.swift"
+    ],
+    "title": "Viewshed (GeoElement)"
+}

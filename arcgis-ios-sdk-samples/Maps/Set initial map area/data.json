@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "set-initial-map-area.htm",
+    "description": "This sample displays a map at a specific viewpoint",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "set-initial-map-area.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "SetInitialMapAreaViewController.swift"
+    ],
+    "title": "Set initial map area"
+}

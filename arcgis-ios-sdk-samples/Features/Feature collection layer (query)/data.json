@@ -1,0 +1,15 @@
+{
+    "category": "Features",
+    "current_slug": "feature-collection-layer-query-.htm",
+    "description": "This sample demonstrates how to create a feature collection layer to show a query result from a service feature table",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "feature-collection-layer-query.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "FeatureCollectionLayerQueryVC.swift"
+    ],
+    "title": "Feature collection layer (query)"
+}

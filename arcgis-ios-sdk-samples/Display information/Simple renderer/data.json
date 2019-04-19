@@ -1,0 +1,15 @@
+{
+    "category": "Display information",
+    "current_slug": "simple-renderer.htm",
+    "description": "This sample demonstrates how to create a simple renderer and add it to a graphics overlay",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "simple-renderer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "SimpleRendererViewController.swift"
+    ],
+    "title": "Simple renderer"
+}

@@ -1,0 +1,15 @@
+{
+    "category": "Display information",
+    "current_slug": "identify-graphics.htm",
+    "description": "This sample demonstrates how to identify graphics in a graphics overlay",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "identify-graphics.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "GOIdentifyViewController.swift"
+    ],
+    "title": "Identify graphics"
+}

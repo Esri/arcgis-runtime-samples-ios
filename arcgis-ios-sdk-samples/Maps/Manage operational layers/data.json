@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "current_slug": "manage-operational-layers.htm",
+    "description": "This sample demonstrates how to add, remove or reorder operational layers in a map",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "manage-operational-layers.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ManageMapLayersViewController.swift",
+        "MMLLayersViewController.swift"
+    ],
+    "title": "Manage operational layers"
+}

@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "raster-layer-service-.htm",
+    "description": "This sample demonstrates how to create and use a raster layer from an ArcGIS Image service",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "raster-layer-service.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "RasterLayerUsingServiceVC.swift"
+    ],
+    "title": "Raster layer (service)"
+}

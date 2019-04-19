@@ -1,0 +1,21 @@
+{
+    "category": "Scenes",
+    "current_slug": "open-mobile-scene-scene-package-.htm",
+    "description": "Opens and displays a scene from a Mobile Scene Package (",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Offline,",
+        "Scene"
+    ],
+    "new_slug": "open-mobile-scene-scene-package.htm",
+    "relevant_apis": [
+        "AGSMobileScenePackage",
+        "AGSSceneView"
+    ],
+    "snippets": [
+        "OpenMobileSceneViewController.swift"
+    ],
+    "title": "Open mobile scene (scene package)"
+}

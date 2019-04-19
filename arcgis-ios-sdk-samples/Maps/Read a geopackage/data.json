@@ -1,0 +1,18 @@
+{
+    "category": "Maps",
+    "current_slug": "read-a-geopackage.htm",
+    "description": "This sample demonstrates how to add, remove or reorder operational layers in a map using a geopackage",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "read-a-geopackage.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "GPKGLayersViewController.swift",
+        "ReadGeopackageViewController.swift",
+        "GPKGLayerTableCell.swift"
+    ],
+    "title": "Read a geopackage"
+}

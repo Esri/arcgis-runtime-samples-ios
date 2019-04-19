@@ -1,0 +1,17 @@
+{
+    "category": "Layers",
+    "current_slug": "hillshade-renderer.htm",
+    "description": "This sample demonstrates how to use hillshade renderer on a raster",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "hillshade-renderer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "HillshadeSettingsVC.swift",
+        "HillshadeRendererVC.swift"
+    ],
+    "title": "Hillshade renderer"
+}

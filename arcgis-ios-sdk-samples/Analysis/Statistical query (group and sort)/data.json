@@ -1,0 +1,19 @@
+{
+    "category": "Analysis",
+    "current_slug": "statistical-query-group-and-sort-.htm",
+    "description": "This sample demonstrates how to query a feature table to get statistics for one or more specified fields",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "statistical-query-group-and-sort.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "OrderByFieldsViewController.swift",
+        "AddStatisticDefinitionsViewController.swift",
+        "StatisticalQueryGroupAndSortViewController.swift",
+        "GroupByFieldsViewController.swift"
+    ],
+    "title": "Statistical query (group and sort)"
+}

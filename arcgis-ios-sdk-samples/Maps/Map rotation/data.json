@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "map-rotation.htm",
+    "description": "This sample demonstrates how to rotate a map on your iOS device",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "map-rotation.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "MapRotationViewController.swift"
+    ],
+    "title": "Map rotation"
+}

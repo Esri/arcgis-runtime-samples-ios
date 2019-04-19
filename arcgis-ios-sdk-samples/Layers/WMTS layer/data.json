@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "wmts-layer.htm",
+    "description": "This sample demonstrates how to display a WMTS layer as a basemap layer",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "wmts-layer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "WMTSLayerViewController.swift"
+    ],
+    "title": "WMTS layer"
+}

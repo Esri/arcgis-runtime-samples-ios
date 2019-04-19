@@ -1,0 +1,16 @@
+{
+    "category": "Search",
+    "current_slug": "find-place.htm",
+    "description": "This sample demonstrates how to use geocode functionality to search for points of interest, around a location or within an extent",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "find-place.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "FindPlaceViewController.swift"
+    ],
+    "title": "Find place"
+}

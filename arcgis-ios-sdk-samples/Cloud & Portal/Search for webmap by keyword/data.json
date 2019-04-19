@@ -1,0 +1,17 @@
+{
+    "category": "Cloud &  Portal",
+    "current_slug": "search-for-webmap-by-keyword.htm",
+    "description": "Shows how to search for webmaps within a portal using a keyword",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "search-for-webmap-by-keyword.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "WebMapViewController.swift",
+        "SearchForWebmapByKeywordViewController.swift",
+        "WebMapCell.swift"
+    ],
+    "title": "Search for webmap by keyword"
+}

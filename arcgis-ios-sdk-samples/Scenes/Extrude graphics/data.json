@@ -1,0 +1,15 @@
+{
+    "category": "Scenes",
+    "current_slug": "extrude-graphics.htm",
+    "description": "This sample demonstrates how to render graphics extruded in the z direction",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "extrude-graphics.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ExtrudeGraphicsViewController.swift"
+    ],
+    "title": "Extrude Graphics"
+}

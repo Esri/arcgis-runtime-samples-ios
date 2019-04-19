@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "take-screenshot.htm",
+    "description": "This sample demonstrates how you can take screenshot of a map",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "take-screenshot.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "MapViewScreenshotViewController.swift"
+    ],
+    "title": "Take screenshot"
+}

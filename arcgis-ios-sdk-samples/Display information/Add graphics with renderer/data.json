@@ -1,0 +1,15 @@
+{
+    "category": "Display information",
+    "current_slug": "add-graphics-with-renderer.htm",
+    "description": "This sample demonstrates how to add graphics and set renderer on graphic overlays",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "add-graphics-with-renderer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "GORenderersViewController.swift"
+    ],
+    "title": "Add graphics with renderer"
+}

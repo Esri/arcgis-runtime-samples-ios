@@ -1,0 +1,17 @@
+{
+    "category": "Layers",
+    "current_slug": "arcgis-vector-tiled-layer-custom-style-.htm",
+    "description": "This sample demonstrates to use custom styled vector tiled layers",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "arcgis-vector-tiled-layer-custom-style.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "VectorTileCustomStyleVC.swift",
+        "VectorStylesViewController.swift"
+    ],
+    "title": "ArcGIS vector tiled layer (custom style)"
+}

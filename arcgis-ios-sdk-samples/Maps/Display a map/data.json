@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "display-a-map.htm",
+    "description": "This samples demonstrates how to display a map with a basemap",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "display-a-map.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "DisplayMapViewController.swift"
+    ],
+    "title": "Display a map"
+}

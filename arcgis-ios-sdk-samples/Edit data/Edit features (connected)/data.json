@@ -1,0 +1,18 @@
+{
+    "category": "Edit data",
+    "current_slug": "edit-features-connected-.htm",
+    "description": "This sample demonstrates how you can use popups to edit features in a feature layer",
+    "images": [
+        "image1.png",
+        "image2.png",
+        "image3.png"
+    ],
+    "keywords": [],
+    "new_slug": "edit-features-connected.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "EditFeaturesOnlineViewController.swift",
+        "FeatureTemplatePickerViewController.swift"
+    ],
+    "title": "Edit features (connected)"
+}

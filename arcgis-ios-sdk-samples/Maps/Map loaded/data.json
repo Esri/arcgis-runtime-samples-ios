@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "map-loaded.htm",
+    "description": "This sample shows you the map\u2019s load status",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "map-loaded.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "MapLoadedViewController.swift"
+    ],
+    "title": "Map loaded"
+}

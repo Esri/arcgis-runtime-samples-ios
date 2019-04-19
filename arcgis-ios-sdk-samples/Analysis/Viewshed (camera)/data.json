@@ -1,0 +1,15 @@
+{
+    "category": "Analysis",
+    "current_slug": "viewshed-camera-.htm",
+    "description": "This sample demonstrates how to create a location viewshed from a camera",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "viewshed-camera.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ViewshedCameraViewController.swift"
+    ],
+    "title": "Viewshed (camera)"
+}

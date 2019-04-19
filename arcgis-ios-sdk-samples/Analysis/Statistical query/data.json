@@ -1,0 +1,15 @@
+{
+    "category": "Analysis",
+    "current_slug": "statistical-query.htm",
+    "description": "This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "statistical-query.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "StatisticalQueryViewController.swift"
+    ],
+    "title": "Statistical query"
+}

@@ -1,0 +1,17 @@
+{
+    "category": "Layers",
+    "current_slug": "manage-sublayers.htm",
+    "description": "This sample demonstrates how to add table sublayer source as map image sublayers; how to remove a sublayer and rearrange existing sublayers in a map image layer",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "manage-sublayers.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "MapImageSublayersViewController.swift",
+        "ManageSublayersViewController.swift"
+    ],
+    "title": "Manage sublayers"
+}

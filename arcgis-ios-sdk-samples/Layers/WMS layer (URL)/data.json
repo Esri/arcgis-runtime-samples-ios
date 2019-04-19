@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "wms-layer-url-.htm",
+    "description": "This sample demonstrates how to open a WMS layer from a URL and display it in a map",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "wms-layer-url.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "WMSLayerUsingURLViewController.swift"
+    ],
+    "title": "WMS layer (URL)"
+}

@@ -1,0 +1,16 @@
+{
+    "category": "Layers",
+    "current_slug": "export-tiles.htm",
+    "description": "This sample demonstrates how to export tiles from a map server",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "export-tiles.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ExportTilesViewController.swift"
+    ],
+    "title": "Export tiles"
+}

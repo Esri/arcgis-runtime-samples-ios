@@ -1,0 +1,15 @@
+{
+    "category": "Features",
+    "current_slug": "generate-geodatabase.htm",
+    "description": "This sample demonstrates how to take a feature service offline by generating a geodatabase",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "generate-geodatabase.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "GenerateGeodatabaseViewController.swift"
+    ],
+    "title": "Generate geodatabase"
+}

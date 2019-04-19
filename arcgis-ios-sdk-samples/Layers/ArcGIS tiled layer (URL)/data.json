@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "arcgis-tiled-layer-url-.htm",
+    "description": "This sample demonstrates how to create a tiled layer from a URL",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "arcgis-tiled-layer-url.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "TLUsingURLViewController.swift"
+    ],
+    "title": "ArcGIS tiled layer (URL)"
+}

@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "set-map-spatial-reference.htm",
+    "description": "This sample demonstrates how you can set the spatial reference on a AGSMap and all the operational layers would project accordingly",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "set-map-spatial-reference.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "SetMapsSRViewController.swift"
+    ],
+    "title": "Set map spatial reference"
+}

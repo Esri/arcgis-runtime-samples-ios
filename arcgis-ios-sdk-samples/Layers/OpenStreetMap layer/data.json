@@ -1,0 +1,22 @@
+{
+    "category": "Layers",
+    "current_slug": "openstreetmap-layer.htm",
+    "description": "This samples demonstrates how to display a map with an OpenStreetMap basemap",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Basemaps,",
+        "Layers"
+    ],
+    "new_slug": "openstreetmap-layer.htm",
+    "relevant_apis": [
+        "AGSMap",
+        "AGSBasemapType",
+        "AGSMapView"
+    ],
+    "snippets": [
+        "OpenStreetMapLayerViewController.swift"
+    ],
+    "title": "OpenStreetMap Layer"
+}

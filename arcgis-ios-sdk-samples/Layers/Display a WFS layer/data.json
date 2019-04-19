@@ -1,0 +1,31 @@
+{
+    "category": "Layers",
+    "current_slug": "display-a-wfs-layer.htm",
+    "description": "This sample demonstrates how to display a layer from a WFS service, requesting only features for the current extent",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "OGC,",
+        "WFS,",
+        "feature,",
+        "web,",
+        "service,",
+        "layers,",
+        "browse,",
+        "catalog,",
+        "interaction",
+        "cache"
+    ],
+    "new_slug": "display-a-wfs-layer.htm",
+    "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSWFSFeatureTable",
+        "AGSWFSFeatureTable.populateFromService(with:clearCache:outFields:completion:)",
+        "AGSGeoView.viewpointChangeHandler"
+    ],
+    "snippets": [
+        "DisplayWFSViewController.swift"
+    ],
+    "title": "Display a WFS layer"
+}

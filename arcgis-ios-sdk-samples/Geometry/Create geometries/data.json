@@ -1,0 +1,15 @@
+{
+    "category": "Geometry",
+    "current_slug": "create-geometries.htm",
+    "description": "This sample demonstrates simple ways to create different types of geometries",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "create-geometries.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "CreateGeometriesViewController.swift"
+    ],
+    "title": "Create geometries"
+}

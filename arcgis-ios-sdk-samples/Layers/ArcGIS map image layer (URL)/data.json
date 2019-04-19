@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "arcgis-map-image-layer-url-.htm",
+    "description": "This sample demonstrates how to create a map image layer from a URL",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "arcgis-map-image-layer-url.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "MILUsingURLViewController.swift"
+    ],
+    "title": "ArcGIS map image layer (URL)"
+}

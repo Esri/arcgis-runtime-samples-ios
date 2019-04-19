@@ -1,0 +1,18 @@
+{
+    "category": "Edit data",
+    "current_slug": "offline-edit-and-sync.htm",
+    "description": "This sample demonstrates how you can take feature service data offline by creating a geodatabase, make edits and sync changes",
+    "images": [
+        "image1.png",
+        "image2.png",
+        "image3.png"
+    ],
+    "keywords": [],
+    "new_slug": "offline-edit-and-sync.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "FeatureLayersViewController.swift",
+        "OfflineEditingViewController.swift"
+    ],
+    "title": "Offline edit and sync"
+}

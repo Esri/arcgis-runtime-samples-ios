@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "raster-layer-geopackage-.htm",
+    "description": "This sample demonstrates how to show a raster layer on a map using a geopackage",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "raster-layer-geopackage.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "RasterLayerGPKGViewController.swift"
+    ],
+    "title": "Raster layer (geopackage)"
+}

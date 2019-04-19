@@ -1,0 +1,25 @@
+{
+    "category": "Layers",
+    "current_slug": "list-kml-contents.htm",
+    "description": "List the contents of a KML file",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "KML,",
+        "KMZ,",
+        "OGC,",
+        "Keyhole"
+    ],
+    "new_slug": "list-kml-contents.htm",
+    "relevant_apis": [
+        "AGSKMLDataset",
+        "AGSKMLNode",
+        "AGSKMLLayer"
+    ],
+    "snippets": [
+        "ListKMLContentsViewController.swift",
+        "ListKMLContentsSceneViewController.swift"
+    ],
+    "title": "List KML contents"
+}

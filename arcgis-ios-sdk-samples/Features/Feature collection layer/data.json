@@ -1,0 +1,15 @@
+{
+    "category": "Features",
+    "current_slug": "feature-collection-layer.htm",
+    "description": "This sample demonstrates how to create a new feature collection with three feature collection tables (containing points, lines, and polygons)",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "feature-collection-layer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "FeatureCollectionLayerVC.swift"
+    ],
+    "title": "Feature collection layer"
+}

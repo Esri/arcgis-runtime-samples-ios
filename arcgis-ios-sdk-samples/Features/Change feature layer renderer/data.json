@@ -1,0 +1,16 @@
+{
+    "category": "Features",
+    "current_slug": "change-feature-layer-renderer.htm",
+    "description": "This sample demonstrates how to override and reset a renderer of a feature layer",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "change-feature-layer-renderer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "OverrideRendererViewController.swift"
+    ],
+    "title": "Change feature layer renderer"
+}

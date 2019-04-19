@@ -1,0 +1,13 @@
+{
+    "category": "Layers",
+    "current_slug": "raster-layer-file-.htm",
+    "description": "This sample demonstrates how to create and use a raster layer made from a local raster file",
+    "images": [],
+    "keywords": [],
+    "new_slug": "raster-layer-file.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "RasterLayerViewController.swift"
+    ],
+    "title": "Raster layer (file)"
+}

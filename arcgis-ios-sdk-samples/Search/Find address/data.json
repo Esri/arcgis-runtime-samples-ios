@@ -1,0 +1,16 @@
+{
+    "category": "Search",
+    "current_slug": "find-address.htm",
+    "description": "This sample demonstrates how to geocode an address and show it on the map view",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "find-address.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "FindAddressViewController.swift",
+        "WorldAddressesViewController.swift"
+    ],
+    "title": "Find address"
+}

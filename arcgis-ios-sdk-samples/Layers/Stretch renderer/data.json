@@ -1,0 +1,18 @@
+{
+    "category": "Layers",
+    "current_slug": "stretch-renderer.htm",
+    "description": "This sample demonstrates how to use stretch renderer on a raster layer",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "stretch-renderer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "StretchRendererInputCell.swift",
+        "StretchRendererSettingsVC.swift",
+        "StretchRendererViewController.swift"
+    ],
+    "title": "Stretch renderer"
+}

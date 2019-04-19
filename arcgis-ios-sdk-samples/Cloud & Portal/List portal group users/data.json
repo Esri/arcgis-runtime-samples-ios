@@ -1,0 +1,16 @@
+{
+    "category": "Cloud &  Portal",
+    "current_slug": "list-portal-group-users.htm",
+    "description": "This sample demonstrates how to show the users in a portal group",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "list-portal-group-users.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "GroupUserCell.swift",
+        "GroupUsersViewController.swift"
+    ],
+    "title": "List portal group users"
+}

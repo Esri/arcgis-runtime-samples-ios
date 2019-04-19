@@ -1,0 +1,16 @@
+{
+    "category": "Features",
+    "current_slug": "feature-layer-definition-expression.htm",
+    "description": "This sample demonstrates how you can limit which features to display on the map",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "feature-layer-definition-expression.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "DefinitionExpressionViewController.swift"
+    ],
+    "title": "Feature layer definition expression"
+}

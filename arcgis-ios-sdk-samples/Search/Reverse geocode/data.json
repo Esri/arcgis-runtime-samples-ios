@@ -1,0 +1,15 @@
+{
+    "category": "Search",
+    "current_slug": "reverse-geocode.htm",
+    "description": "This sample demonstrates how to get the address for a point on the map",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "reverse-geocode.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ReverseGeocodeViewController.swift"
+    ],
+    "title": "Reverse geocode"
+}

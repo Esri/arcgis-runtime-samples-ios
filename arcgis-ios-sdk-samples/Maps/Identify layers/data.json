@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "identify-layers.htm",
+    "description": "This sample demonstrates how to identify features on a map",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "identify-layers.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "IdentifyLayersViewController.swift"
+    ],
+    "title": "Identify layers"
+}

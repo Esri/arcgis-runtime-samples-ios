@@ -1,0 +1,22 @@
+{
+    "category": "Geometry",
+    "current_slug": "cut-geometry.htm",
+    "description": "This sample demonstrates how to cut a geometry with a polyline using the AGSGeometryEngine",
+    "images": [
+        "CutGeometry.png"
+    ],
+    "keywords": [
+        "geometry,",
+        "cut,",
+        "split"
+    ],
+    "new_slug": "cut-geometry.htm",
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSGeometryEngine.cut(_:withCutter:)"
+    ],
+    "snippets": [
+        "CutGeometryViewController.swift"
+    ],
+    "title": "Cut geometry"
+}

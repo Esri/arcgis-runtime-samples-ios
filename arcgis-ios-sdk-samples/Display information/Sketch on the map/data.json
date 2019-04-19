@@ -1,0 +1,16 @@
+{
+    "category": "Display information",
+    "current_slug": "sketch-on-the-map.htm",
+    "description": "This sample demonstrates how you can use the sketch editor to draw point or line or polygon geometry",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "sketch-on-the-map.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "SketchViewController.swift"
+    ],
+    "title": "Sketch on the map"
+}

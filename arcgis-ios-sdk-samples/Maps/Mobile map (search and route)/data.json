@@ -1,0 +1,18 @@
+{
+    "category": "Maps",
+    "current_slug": "mobile-map-search-and-route-.htm",
+    "description": "This sample demonstrates how to search and route using data in a map package",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "mobile-map-search-and-route.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "MobileMapViewController.swift",
+        "MapPackagesListViewController.swift",
+        "MapPackageCell.swift"
+    ],
+    "title": "Mobile map (search and route)"
+}

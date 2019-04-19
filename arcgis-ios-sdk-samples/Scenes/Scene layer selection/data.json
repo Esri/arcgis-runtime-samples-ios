@@ -1,0 +1,23 @@
+{
+    "category": "Scenes",
+    "current_slug": "scene-layer-selection.htm",
+    "description": "This sample demonstrates how to identify geoelements in a scene layer",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Search",
+        "and",
+        "Query"
+    ],
+    "new_slug": "scene-layer-selection.htm",
+    "relevant_apis": [
+        "AGSScene",
+        "AGSArcGISSceneLayer",
+        "AGSSceneView"
+    ],
+    "snippets": [
+        "SceneLayerSelectionViewController.swift"
+    ],
+    "title": "Scene Layer Selection"
+}

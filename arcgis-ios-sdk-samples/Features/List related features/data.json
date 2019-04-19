@@ -1,0 +1,16 @@
+{
+    "category": "Features",
+    "current_slug": "list-related-features.htm",
+    "description": "This sample demonstrates how to query related features for a given feature",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "list-related-features.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ListRelatedFeaturesVC.swift",
+        "RelatedFeaturesListVC.swift"
+    ],
+    "title": "List related features"
+}

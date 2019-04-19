@@ -1,0 +1,19 @@
+{
+    "category": "Edit data",
+    "current_slug": "update-attributes-feature-service-.htm",
+    "description": "This sample demonstrates how to edit attributes of feature in a feature layer",
+    "images": [
+        "image4.png",
+        "image1.png",
+        "image2.png",
+        "image3.png"
+    ],
+    "keywords": [],
+    "new_slug": "update-attributes-feature-service.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "EAOptionsViewController.swift",
+        "EditAttributesViewController.swift"
+    ],
+    "title": "Update attributes (feature service)"
+}

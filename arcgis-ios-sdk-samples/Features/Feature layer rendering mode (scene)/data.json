@@ -1,0 +1,15 @@
+{
+    "category": "Features",
+    "current_slug": "feature-layer-rendering-mode-scene-.htm",
+    "description": "This sample demonstrates how to set the rendering mode for feature layers in a scene",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "feature-layer-rendering-mode-scene.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "FeatureLayerRenderingModeSceneViewController.swift"
+    ],
+    "title": "Feature layer rendering mode (scene)"
+}

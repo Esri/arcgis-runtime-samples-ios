@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "symbolize-shapefile.htm",
+    "description": "This sample demonstrates how to override the default renderer of a shapefile when displaying with a FeatureLayer",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "symbolize-shapefile.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "SymbolizeShapefileViewController.swift"
+    ],
+    "title": "Symbolize Shapefile"
+}

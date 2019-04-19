@@ -1,0 +1,15 @@
+{
+    "category": "Features",
+    "current_slug": "service-feature-table-manual-cache-.htm",
+    "description": "This sample demonstrates how to use a feature service in manual cache mode",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "service-feature-table-manual-cache.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ManualCacheViewController.swift"
+    ],
+    "title": "Service feature table (manual cache)"
+}

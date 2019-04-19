@@ -1,0 +1,16 @@
+{
+    "category": "Features",
+    "current_slug": "feature-layer-query.htm",
+    "description": "This sample demonstrates how to query a feature layer via feature table",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "feature-layer-query.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "FLQueryViewController.swift"
+    ],
+    "title": "Feature layer query"
+}

@@ -1,0 +1,23 @@
+{
+    "category": "Scenes",
+    "current_slug": "open-a-scene-portal-item-.htm",
+    "description": "This sample demonstrates how to open a scene from a Portal item",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Scenes,",
+        "Web",
+        "Scene,",
+        "Portal"
+    ],
+    "new_slug": "open-a-scene-portal-item.htm",
+    "relevant_apis": [
+        "AGSPortalItem.init(portal:)",
+        "AGSScene(item:)"
+    ],
+    "snippets": [
+        "OpenSceneViewController.swift"
+    ],
+    "title": "Open a scene (Portal item)"
+}

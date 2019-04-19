@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "open-mobile-map-map-package-.htm",
+    "description": "This sample demonstrates how to open a mobile map from a map package",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "open-mobile-map-map-package.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "OpenMobileMapViewController.swift"
+    ],
+    "title": "Open mobile map (map package)"
+}

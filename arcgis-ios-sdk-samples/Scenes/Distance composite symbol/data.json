@@ -1,0 +1,13 @@
+{
+    "category": "Scenes",
+    "current_slug": "distance-composite-symbol.htm",
+    "description": "Demonstrates how to create a graphic using a distance composite scene symbol",
+    "images": [],
+    "keywords": [],
+    "new_slug": "distance-composite-symbol.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "DistanceCompositeSymbolViewController.swift"
+    ],
+    "title": "Distance composite symbol"
+}

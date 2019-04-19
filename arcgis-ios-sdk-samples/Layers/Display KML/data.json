@@ -1,0 +1,25 @@
+{
+    "category": "Layers",
+    "current_slug": "display-kml.htm",
+    "description": "Load and display KML files from various sources, including URLs, local files, and Portal items",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "KML,",
+        "KMZ,",
+        "OGC,",
+        "Keyhole"
+    ],
+    "new_slug": "display-kml.htm",
+    "relevant_apis": [
+        "AGSKMLDataset(url: URL)",
+        "AGSKMLDataset(name: String)",
+        "AGSKMLLayer(kmlDataset: AGSKMLDataset)",
+        "AGSKMLLayer(item: AGSItem)"
+    ],
+    "snippets": [
+        "DisplayKMLViewController.swift"
+    ],
+    "title": "Display KML"
+}

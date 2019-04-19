@@ -1,0 +1,15 @@
+{
+    "category": "Maps",
+    "current_slug": "change-basemap.htm",
+    "description": "This sample demonstrates how to change the basemap of a map",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "change-basemap.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "SwitchBasemapViewController.swift"
+    ],
+    "title": "Change basemap"
+}

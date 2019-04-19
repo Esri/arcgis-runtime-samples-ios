@@ -1,0 +1,18 @@
+{
+    "category": "Layers",
+    "current_slug": "blend-renderer.htm",
+    "description": "This sample demonstrates how to use blend renderer on a raster layer",
+    "images": [
+        "image1.png",
+        "image2.png",
+        "image3.png"
+    ],
+    "keywords": [],
+    "new_slug": "blend-renderer.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "BlendRendererViewController.swift",
+        "BlendRendererSettingsVC.swift"
+    ],
+    "title": "Blend renderer"
+}

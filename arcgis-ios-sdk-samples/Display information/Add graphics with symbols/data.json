@@ -1,0 +1,15 @@
+{
+    "category": "Display information",
+    "current_slug": "add-graphics-with-symbols.htm",
+    "description": "This sample demonstrates how to add graphics with symbols to a graphics overlay",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "add-graphics-with-symbols.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "GraphicsWithSymbolsViewController.swift"
+    ],
+    "title": "Add graphics with symbols"
+}

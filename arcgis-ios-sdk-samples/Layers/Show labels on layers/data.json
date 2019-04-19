@@ -1,0 +1,15 @@
+{
+    "category": "Layers",
+    "current_slug": "show-labels-on-layers.htm",
+    "description": "This sample demonstrates how to show labels on feature layers",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "show-labels-on-layers.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "ShowLabelsOnLayersViewController.swift"
+    ],
+    "title": "Show labels on layers"
+}

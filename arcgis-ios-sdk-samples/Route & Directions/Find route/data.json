@@ -1,0 +1,17 @@
+{
+    "category": "Route &  Directions",
+    "current_slug": "find-route.htm",
+    "description": "This sample demonstrates how to get a route between two locations",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "find-route.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "FindRouteViewController.swift",
+        "DirectionsViewController.swift"
+    ],
+    "title": "Find route"
+}

@@ -1,0 +1,24 @@
+{
+    "category": "Geometry",
+    "current_slug": "buffer.htm",
+    "description": "This sample demonstrates how to use AGSGeometryEngine to create polygons from a map location and linear distance (radius)",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Analysis",
+        "Buffer",
+        "GeometryEngine"
+    ],
+    "new_slug": "buffer.htm",
+    "relevant_apis": [
+        "class AGSGeometryEngine.bufferGeometry(_:byDistance:)",
+        "class AGSGeometryEngine.geodeticBufferGeometry(_:distance:distanceUnit:maxDeviation:curveType:)",
+        "AGSGraphicsOverlay"
+    ],
+    "snippets": [
+        "BufferViewController.swift",
+        "BufferOptionsViewController.swift"
+    ],
+    "title": "Buffer"
+}

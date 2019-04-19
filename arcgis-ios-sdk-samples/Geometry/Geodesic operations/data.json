@@ -1,0 +1,26 @@
+{
+    "category": "Geometry",
+    "current_slug": "geodesic-operations.htm",
+    "description": "This sample demonstrates how to use AGSGeometryEngine to calculate a geodesic path between two points and measure its distance",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "GeometryEngine,",
+        "Densify,",
+        "Distance,",
+        "Geodetic,",
+        "Geodesic"
+    ],
+    "new_slug": "geodesic-operations.htm",
+    "relevant_apis": [
+        "AGSGeometry",
+        "AGSGeometryEngine",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
+    ],
+    "snippets": [
+        "GeodesicOperationsViewController.swift"
+    ],
+    "title": "Geodesic operations"
+}

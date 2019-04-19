@@ -1,0 +1,16 @@
+{
+    "category": "Route &  Directions",
+    "current_slug": "offline-routing.htm",
+    "description": "This sample demonstrates how to route using a local San Diego streets network dataset loaded into the app",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [],
+    "new_slug": "offline-routing.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "OfflineRoutingViewController.swift"
+    ],
+    "title": "Offline routing"
+}

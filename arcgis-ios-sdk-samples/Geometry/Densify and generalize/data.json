@@ -1,0 +1,34 @@
+{
+    "category": "Geometry",
+    "current_slug": "densify-and-generalize.htm",
+    "description": "Demonstrates how to densify or generalize a polyline geometry",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Edit",
+        "and",
+        "Manage",
+        "Data"
+    ],
+    "new_slug": "densify-and-generalize.htm",
+    "relevant_apis": [
+        "AGSMap",
+        "AGSBasemap",
+        "AGSGeometryEngine",
+        "AGSGraphic",
+        "AGsGraphicsOverlay",
+        "AGSMapView",
+        "AGSMultipoint",
+        "AGSPointCollection",
+        "AGSPolyline",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSSpatialReference"
+    ],
+    "snippets": [
+        "DensifyAndGeneralizeViewController.swift",
+        "GeneralizeSettingsViewController.swift"
+    ],
+    "title": "Densify and generalize"
+}

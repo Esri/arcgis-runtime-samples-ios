@@ -1,0 +1,20 @@
+{
+    "category": "Scenes",
+    "current_slug": "feature-layer-extrusion.htm",
+    "description": "This sample demonstrates how to apply extrusion to a renderer on a feature layer",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "feature-layer-extrusion.htm",
+    "relevant_apis": [
+        "FeatureLayer",
+        "SceneProperties",
+        "ServiceFeatureTable",
+        "FeatureLayer"
+    ],
+    "snippets": [
+        "FeatureLayerExtrusionViewController.swift"
+    ],
+    "title": "Feature layer extrusion"
+}

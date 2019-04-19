@@ -1,0 +1,21 @@
+{
+    "category": "Layers",
+    "current_slug": "arcgis-tiled-layer-tile-cache-.htm",
+    "description": "This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline",
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "layers,",
+        "tile,",
+        "ArcGISTiledLayer"
+    ],
+    "new_slug": "arcgis-tiled-layer-tile-cache.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "TilePackagesListViewController.swift",
+        "LocalTiledLayerViewController.swift"
+    ],
+    "title": "ArcGIS tiled layer (tile cache)"
+}

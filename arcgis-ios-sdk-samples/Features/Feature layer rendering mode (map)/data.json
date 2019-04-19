@@ -1,0 +1,15 @@
+{
+    "category": "Features",
+    "current_slug": "feature-layer-rendering-mode-map-.htm",
+    "description": "This sample demonstrates how to set the rendering mode for feature layers",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "feature-layer-rendering-mode-map.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "FeatureLayerRenderingModeMapViewController.swift"
+    ],
+    "title": "Feature layer rendering mode (map)"
+}

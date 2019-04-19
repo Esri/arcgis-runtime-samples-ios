@@ -1,0 +1,15 @@
+{
+    "category": "Display information",
+    "current_slug": "simple-marker-symbol.htm",
+    "description": "This sample demonstrates how to create a graphic with simple marker symbol",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [],
+    "new_slug": "simple-marker-symbol.htm",
+    "relevant_apis": [],
+    "snippets": [
+        "SimpleMarkerSymbolViewController.swift"
+    ],
+    "title": "Simple marker symbol"
+}

@@ -15,12 +15,12 @@
 import UIKit
 
 class ListViewController: UITableViewController {
-    var list: [String]! 
+    var list = [String]()
     
-    private var selectAction: ((Int) -> Void)!
+    private var selectAction: ((Int) -> Void)?
     
     func setSelectAction(_ action: @escaping (Int) -> Void) {
-        self.selectAction = action
+        selectAction = action
     }
     
     // MARK: tableview data source
@@ -30,7 +30,7 @@ class ListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list?.count ?? 0
+        return list.count
     }
     
     // MARK: tableview delegate
@@ -38,14 +38,12 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
         
-        cell.textLabel?.text = self.list[indexPath.row]
+        cell.textLabel?.text = list[indexPath.row]
         cell.backgroundColor = .clear
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.selectAction != nil {
-            self.selectAction(indexPath.row)
-        }
+        selectAction?(indexPath.row)
     }
 }

@@ -497,6 +497,11 @@
 		4C0F27B32152CA3500496666 /* IdentifyKMLFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */; };
 		4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */; };
 		4C0F27B721540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */; };
+		4C0FD7C8226522210042DE31 /* emoji-mobile.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 4C0FD7C7226522210042DE31 /* emoji-mobile.stylx */; };
+		4C0FD7CB226528740042DE31 /* ReadSymbolsFromMobileStyle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0FD7CA226528740042DE31 /* ReadSymbolsFromMobileStyle.storyboard */; };
+		4C0FD7CD226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7CC226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift */; };
+		4C0FD7CF22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7CE22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift */; };
+		4C0FD7D1226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7D0226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift */; };
 		4C1A7C1F21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C1E21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard */; };
 		4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */; };
@@ -537,6 +542,9 @@
 		4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */; };
 		4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
 		4CAC91DC2242AB6D00663A10 /* LoadWFSWithXMLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */; };
+		4CB505992269306E00165152 /* ReadSymbolsFromMobileStyleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C0FD7CC226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift */; };
+		4CB5059A2269306E00165152 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C0FD7CE22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift */; };
+		4CB5059B2269306E00165152 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C0FD7D0226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift */; };
 		4CB506D7224C3975006A3471 /* sandiego-north-balboa-pointcloud.slpk in Resources */ = {isa = PBXBuildFile; fileRef = 4CB506D6224C3945006A3471 /* sandiego-north-balboa-pointcloud.slpk */; settings = {ASSET_TAGS = ("sandiego-north-balboa-pointcloud", ); }; };
 		4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC00F7420C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard */; };
@@ -925,6 +933,9 @@
 				4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */,
 				4C783F3F2252D80B00609B9C /* OpenMobileSceneViewController.swift in CopyFiles */,
 				4CF22FCF22650D5A00300161 /* GenerateOfflineMapBasemapByReferenceViewController.swift in CopyFiles */,
+				4CB505992269306E00165152 /* ReadSymbolsFromMobileStyleViewController.swift in CopyFiles */,
+				4CB5059A2269306E00165152 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in CopyFiles */,
+				4CB5059B2269306E00165152 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1282,6 +1293,11 @@
 		4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyKMLFeatures.storyboard; sourceTree = "<group>"; };
 		4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyKMLFeaturesViewController.swift; sourceTree = "<group>"; };
 		4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyKMLFeaturesViewControllerTests.swift; sourceTree = "<group>"; };
+		4C0FD7C7226522210042DE31 /* emoji-mobile.stylx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "emoji-mobile.stylx"; sourceTree = "<group>"; };
+		4C0FD7CA226528740042DE31 /* ReadSymbolsFromMobileStyle.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReadSymbolsFromMobileStyle.storyboard; sourceTree = "<group>"; };
+		4C0FD7CC226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSymbolsFromMobileStyleViewController.swift; sourceTree = "<group>"; };
+		4C0FD7CE22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSymbolsFromMobileStyleSymbolViewController.swift; sourceTree = "<group>"; };
+		4C0FD7D0226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift; sourceTree = "<group>"; };
 		4C1A7C1E21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphicsOverlayDictionaryRenderer3D.storyboard; sourceTree = "<group>"; };
 		4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsOverlayDictionaryRenderer3DViewController.swift; sourceTree = "<group>"; };
 		4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift; sourceTree = "<group>"; };
@@ -2478,6 +2494,7 @@
 				3EBA253E1D2F101100AB0703 /* Unique value renderer */,
 				21E9CDE71EF9C5EA00BD4D7D /* Display grid */,
 				4C1A7C1D21D3FB3800E16E94 /* Graphics overlay (dictionary renderer) 3D */,
+				4C0FD7C9226528340042DE31 /* Read symbols from a mobile style */,
 			);
 			path = "Display information";
 			sourceTree = "<group>";
@@ -3089,6 +3106,17 @@
 			path = "Sample Tests";
 			sourceTree = "<group>";
 		};
+		4C0FD7C9226528340042DE31 /* Read symbols from a mobile style */ = {
+			isa = PBXGroup;
+			children = (
+				4C0FD7CA226528740042DE31 /* ReadSymbolsFromMobileStyle.storyboard */,
+				4C0FD7CC226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift */,
+				4C0FD7CE22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift */,
+				4C0FD7D0226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift */,
+			);
+			path = "Read symbols from a mobile style";
+			sourceTree = "<group>";
+		};
 		4C1A7C1D21D3FB3800E16E94 /* Graphics overlay (dictionary renderer) 3D */ = {
 			isa = PBXGroup;
 			children = (
@@ -3101,6 +3129,7 @@
 		4C1A7C2421D4081000E16E94 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				4C0FD7C7226522210042DE31 /* emoji-mobile.stylx */,
 				4C1A7C2521D4082400E16E94 /* mil2525d.stylx */,
 			);
 			path = Styles;
@@ -3852,6 +3881,7 @@
 				3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */,
 				3EABC7B41DB181DD00C161C6 /* ShastaBW.tfw in Resources */,
 				3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */,
+				4C0FD7CB226528740042DE31 /* ReadSymbolsFromMobileStyle.storyboard in Resources */,
 				C7D0EEDB215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard in Resources */,
 				3E1183DE1ECF5A1000180152 /* Hawaii.csv in Resources */,
 				3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */,
@@ -3869,6 +3899,7 @@
 				3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */,
 				3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */,
 				1230046B1FE2F70300303AC2 /* LineOfSightLocation.storyboard in Resources */,
+				4C0FD7C8226522210042DE31 /* emoji-mobile.stylx in Resources */,
 				4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */,
 				1218C843225C063F0027F3E2 /* ChooseCameraController.storyboard in Resources */,
 				3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */,
@@ -4049,6 +4080,7 @@
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,
 				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
 				C7094786215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift in Sources */,
+				4C0FD7CD226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift in Sources */,
 				3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */,
 				E4B2E2691FE31ED500E610FF /* ViewshedGeoElementViewController.swift in Sources */,
 				12D66038226697320005DE8A /* LayersTableViewController.swift in Sources */,
@@ -4079,6 +4111,7 @@
 				D97B7E3C1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift in Sources */,
 				C7D0EEDA215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift in Sources */,
 				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
+				4C0FD7CF22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in Sources */,
 				10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */,
 				C7FF07D621B9D258000D4055 /* FeatureLayerRenderingModeSceneViewController.swift in Sources */,
 				3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */,
@@ -4221,6 +4254,7 @@
 				D9316A611FDB4F060075AD92 /* GPKGLayerTableCell.swift in Sources */,
 				3EFCE1C31CF374C600E02F67 /* MapPackageCell.swift in Sources */,
 				3ED028631B8E3A8500ACA70D /* SwitchBasemapViewController.swift in Sources */,
+				4C0FD7D1226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift in Sources */,
 				E45991A21EF3021D0089E9FD /* WebMapCell.swift in Sources */,
 				C76817082163DB7C00EC82F4 /* DisplayKMLViewController.swift in Sources */,
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,

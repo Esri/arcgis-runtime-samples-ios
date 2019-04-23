@@ -268,10 +268,10 @@
 		3EABC7C31DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7BF1DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml */; settings = {ASSET_TAGS = (ShastaElevationRaster, ); }; };
 		3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7C01DB191BC00C161C6 /* Shasta_Elevation.tif.ovr */; settings = {ASSET_TAGS = (ShastaElevationRaster, ); }; };
 		3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7C61DB1947500C161C6 /* BlendRenderer.storyboard */; };
-		3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */; };
+		3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC7C71DB1947500C161C6 /* BlendRendererSettingsViewController.swift */; };
 		3EABC7CB1DB1947500C161C6 /* BlendRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC7C81DB1947500C161C6 /* BlendRendererViewController.swift */; };
 		3EABC7CC1DB197BF00C161C6 /* BlendRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC7C81DB1947500C161C6 /* BlendRendererViewController.swift */; };
-		3EABC7CD1DB197BF00C161C6 /* BlendRendererSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */; };
+		3EABC7CD1DB197BF00C161C6 /* BlendRendererSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC7C71DB1947500C161C6 /* BlendRendererSettingsViewController.swift */; };
 		3EABC7CE1DB197BF00C161C6 /* RGBRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */; };
 		3EABC7CF1DB197BF00C161C6 /* RGBRendererSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78C1DB1772000C161C6 /* RGBRendererSettingsVC.swift */; };
 		3EABC7D11DB197BF00C161C6 /* RGB Renderer Cells.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78A1DB1772000C161C6 /* RGB Renderer Cells.swift */; };
@@ -825,7 +825,7 @@
 				3E1E5EF21D9F0E6F00F4913C /* HillshadeRendererVC.swift in CopyFiles */,
 				3E1E5EF31D9F0E6F00F4913C /* HillshadeSettingsVC.swift in CopyFiles */,
 				3EABC7CC1DB197BF00C161C6 /* BlendRendererViewController.swift in CopyFiles */,
-				3EABC7CD1DB197BF00C161C6 /* BlendRendererSettingsVC.swift in CopyFiles */,
+				3EABC7CD1DB197BF00C161C6 /* BlendRendererSettingsViewController.swift in CopyFiles */,
 				3EABC7CE1DB197BF00C161C6 /* RGBRendererViewController.swift in CopyFiles */,
 				3EABC7CF1DB197BF00C161C6 /* RGBRendererSettingsVC.swift in CopyFiles */,
 				3EABC7D11DB197BF00C161C6 /* RGB Renderer Cells.swift in CopyFiles */,
@@ -1143,7 +1143,7 @@
 		3EABC7BF1DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Shasta_Elevation.tif.aux.xml; sourceTree = "<group>"; };
 		3EABC7C01DB191BC00C161C6 /* Shasta_Elevation.tif.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = Shasta_Elevation.tif.ovr; sourceTree = "<group>"; };
 		3EABC7C61DB1947500C161C6 /* BlendRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BlendRenderer.storyboard; sourceTree = "<group>"; };
-		3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlendRendererSettingsVC.swift; sourceTree = "<group>"; };
+		3EABC7C71DB1947500C161C6 /* BlendRendererSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlendRendererSettingsViewController.swift; sourceTree = "<group>"; };
 		3EABC7C81DB1947500C161C6 /* BlendRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlendRendererViewController.swift; sourceTree = "<group>"; };
 		3EAF09441D7108DC00F8538F /* ChangeMapViewBackgroundVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeMapViewBackgroundVC.swift; sourceTree = "<group>"; };
 		3EAF09461D71093D00F8538F /* GridSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSettingsViewController.swift; sourceTree = "<group>"; };
@@ -2323,7 +2323,7 @@
 			children = (
 				3EABC7C61DB1947500C161C6 /* BlendRenderer.storyboard */,
 				3EABC7C81DB1947500C161C6 /* BlendRendererViewController.swift */,
-				3EABC7C71DB1947500C161C6 /* BlendRendererSettingsVC.swift */,
+				3EABC7C71DB1947500C161C6 /* BlendRendererSettingsViewController.swift */,
 			);
 			path = "Blend renderer";
 			sourceTree = "<group>";
@@ -4154,7 +4154,7 @@
 				218409DD1FE89D840098BC40 /* OrderByFieldsViewController.swift in Sources */,
 				C793B5E92166BB71000A7A10 /* OpenStreetMapLayerViewController.swift in Sources */,
 				3E8A05BC1ECD08240032231C /* SceneLayerURLViewController.swift in Sources */,
-				3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsVC.swift in Sources */,
+				3EABC7CA1DB1947500C161C6 /* BlendRendererSettingsViewController.swift in Sources */,
 				F4E5CD7D20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in Sources */,
 				3E3B2C241BBD9CD300A99C5E /* SampleSearchEngine.swift in Sources */,
 				3ED028B01B8E3A9800ACA70D /* MILUsingURLViewController.swift in Sources */,

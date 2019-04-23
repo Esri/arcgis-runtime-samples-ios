@@ -3670,6 +3670,7 @@
 				3ED029A21B8E5D4D00ACA70D /* ShellScript */,
 				4C73C838211130E000B0F9C7 /* Embed Frameworks */,
 				4CBDB3192190E88F006E5D39 /* Lint Code */,
+				4CDAB076226F93D400DD983C /* Strip Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4065,6 +4066,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		4CDAB076226F93D400DD983C /* Strip Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/ArcGIS.framework/strip-frameworks.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

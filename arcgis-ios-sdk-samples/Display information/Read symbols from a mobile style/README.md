@@ -34,7 +34,7 @@ Multilayer symbols provide the ability to create much more complex and interesti
 
 ## Offline Data
 
-A [mobile style file](https://www.arcgis.com/home/item.html?id=ca1ff69e9c5f48d8990395b4286a3d1b) (created using ArcGIS Pro) provides the symbols used by the sample.
+A [mobile style file](https://www.arcgis.com/home/item.html?id=1bd036f221f54a99abc9e46ff3511cbf) (created using ArcGIS Pro) provides the symbols used by the sample.
 
 
 ## Tags

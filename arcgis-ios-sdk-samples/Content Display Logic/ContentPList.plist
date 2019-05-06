@@ -202,6 +202,18 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Generate offline map (basemap by reference)</string>
+				<key>descriptionText</key>
+				<string>Take a web map offline, but instead of downloading an online basemap, use one which is already on the device.</string>
+				<key>storyboardName</key>
+				<string>GenerateOfflineMapBasemapByReference</string>
+				<key>dependency</key>
+				<array>
+					<string>naperville_imagery</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Read a geopackage</string>
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>
@@ -533,6 +545,14 @@
 				<key>storyboardName</key>
 				<string>BrowseWFSLayers</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Group layers</string>
+				<key>descriptionText</key>
+				<string>Add layers to a group layer and toggle their visibility as a group.</string>
+				<key>storyboardName</key>
+				<string>GroupLayers</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -818,6 +838,14 @@
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
 				<string>Demonstrates how to display billboarded point graphics with military symbols.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Read symbols from a mobile style</string>
+				<key>descriptionText</key>
+				<string>Open a mobile style (.stylx) and read its contents. Combine several symbols from the style into a single multilayer point symbol, then use it to display graphics in the map view.</string>
+				<key>storyboardName</key>
+				<string>ReadSymbolsFromMobileStyle</string>
 			</dict>
 		</array>
 	</dict>
@@ -1366,6 +1394,14 @@
 				<array>
 					<string>philadelphia</string>
 				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Choose camera controller</string>
+				<key>storyboardName</key>
+				<string>ChooseCameraController</string>
+				<key>descriptionText</key>
+				<string>Control the behavior of the camera in a scene.</string>
 			</dict>
 		</array>
 	</dict>

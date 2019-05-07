@@ -1219,6 +1219,14 @@
 				<key>descriptionText</key>
 				<string>Uses Windows credentials to access services hosted on a portal secured with Integrated Windows Authentication (IWA).</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Authenticate with OAuth</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers). Accessing secured items requires a login on the portal that hosts them (an ArcGIS Online account, for example).</string>
+				<key>storyboardName</key>
+				<string>AuthenticateWithOAuth</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

@@ -20,7 +20,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
     @IBOutlet private var mapView: AGSMapView!
     
     private var workspaceID = "MyDatabaseWorkspaceIDSSR2"
-    private var removedMapImageSublayers: [AGSArcGISMapImageSublayer]!
+    private var removedMapImageSublayers = [AGSArcGISMapImageSublayer]()
     private var mapImageLayer: AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
@@ -56,9 +56,6 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         //These sublayers are not yet part of the mapImageLayer's sublayers, so will be shown as part of the 
         //removed sublayers array at first
         
-        //array
-        self.removedMapImageSublayers = [AGSArcGISMapImageSublayer]()
-        
         //create tableSublayerSource from workspaceID and dataSourceName
         let tableSublayerSource1 = AGSTableSublayerSource(workspaceID: self.workspaceID, dataSourceName: "ss6.gdb.rivers")
         
@@ -84,7 +81,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         
         //name for the sublayer
         mapImageSublayer2.name = "Lakes"
-        self.removedMapImageSublayers.append(contentsOf: [mapImageSublayer1, mapImageSublayer2])
+        removedMapImageSublayers.append(contentsOf: [mapImageSublayer1, mapImageSublayer2])
     }
     
     // MARK: - MapImageSublayersViewControllerDelegate

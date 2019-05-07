@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-protocol CreateOptionsVCDelegate: AnyObject {
+protocol CreateOptionsViewControllerDelegate: AnyObject {
     func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer])
 }
 
@@ -32,7 +32,7 @@ class CreateOptionsViewController: UITableViewController {
     private var selectedBasemapIndex: Int = 0
     private var selectedLayerIndices: IndexSet = []
     
-    weak var delegate: CreateOptionsVCDelegate?
+    weak var delegate: CreateOptionsViewControllerDelegate?
 
     // MARK: - UITableViewDataSource
     

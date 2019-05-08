@@ -27,7 +27,7 @@ private let portalItemID = "e5039444ef3c48b8a8fdc9227f9be7c1"
 private let clientID = "lgAdHkYZYlwwfAhC"
 /// The URL for redirecting after a successful authorization (this must be
 /// configured in the Info plist).
-private let redirectURL = URL(string: "my-ags-app://auth")!
+private let redirectURLString = "my-ags-app://auth"
 
 /// A view controller that manages the interface of the Authenticate with OAuth
 /// sample.
@@ -49,7 +49,7 @@ class AuthenticateWithOAuthViewController: UIViewController {
     }
     
     /// The OAuth configuration provided to the authentication manager.
-    let oAuthConfiguration = AGSOAuthConfiguration(portalURL: portalURL, clientID: clientID, redirectURL: redirectURL.absoluteString)
+    let oAuthConfiguration = AGSOAuthConfiguration(portalURL: portalURL, clientID: clientID, redirectURL: redirectURLString)
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

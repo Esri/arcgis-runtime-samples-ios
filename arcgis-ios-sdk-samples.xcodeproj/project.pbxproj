@@ -519,6 +519,8 @@
 		4C478E4E223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
 		4C478E5022402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */; };
 		4C4DCA42225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4DCA41225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard */; };
+		4C5F98BF2280A4EB00414343 /* AuthenticateWithOAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F98BE2280A4EB00414343 /* AuthenticateWithOAuth.storyboard */; };
+		4C5F98C12280A57500414343 /* AuthenticateWithOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */; };
 		4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */; };
 		4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
 		4C66AAFA2107CCE300EE6346 /* QueryMapImageSublayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
@@ -532,6 +534,7 @@
 		4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
 		4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */; };
 		4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
+		4C9240192280F7F40045A86B /* AuthenticateWithOAuthViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */; };
 		4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */; };
 		4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
 		4C99123D2249318100CCBC2A /* PlayKMLTourViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
@@ -936,6 +939,7 @@
 				4CB505992269306E00165152 /* ReadSymbolsFromMobileStyleViewController.swift in CopyFiles */,
 				4CB5059A2269306E00165152 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in CopyFiles */,
 				4CB5059B2269306E00165152 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift in CopyFiles */,
+				4C9240192280F7F40045A86B /* AuthenticateWithOAuthViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1314,6 +1318,8 @@
 		4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleSettingsViewController.swift; sourceTree = "<group>"; };
 		4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C4DCA41225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenerateOfflineMapBasemapByReference.storyboard; sourceTree = "<group>"; };
+		4C5F98BE2280A4EB00414343 /* AuthenticateWithOAuth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthenticateWithOAuth.storyboard; sourceTree = "<group>"; };
+		4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateWithOAuthViewController.swift; sourceTree = "<group>"; };
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
 		4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryMapImageSublayerViewController.swift; sourceTree = "<group>"; };
 		4C72116E20BF444C004A7DD9 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
@@ -3008,6 +3014,7 @@
 				E459919A1EF3021D0089E9FD /* Search for webmap by keyword */,
 				3EEE1D681E4935FC003263FC /* List portal group users */,
 				4C1EF297220F5EC100F73EAE /* Integrated Windows Authentication */,
+				4C5F98BD2280A4A000414343 /* Authenticate with OAuth */,
 			);
 			path = "Cloud & Portal";
 			sourceTree = "<group>";
@@ -3174,6 +3181,15 @@
 				4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */,
 			);
 			path = "Generate offline map (basemap by reference)";
+			sourceTree = "<group>";
+		};
+		4C5F98BD2280A4A000414343 /* Authenticate with OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				4C5F98BE2280A4EB00414343 /* AuthenticateWithOAuth.storyboard */,
+				4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */,
+			);
+			path = "Authenticate with OAuth";
 			sourceTree = "<group>";
 		};
 		4C66AAF52107C4BB00EE6346 /* Query a map image sublayer */ = {
@@ -3835,6 +3851,7 @@
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
 				4CB506D7224C3975006A3471 /* sandiego-north-balboa-pointcloud.slpk in Resources */,
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
+				4C5F98BF2280A4EB00414343 /* AuthenticateWithOAuth.storyboard in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				D9E2E76020EEB8FF001D0AE0 /* Public_Art.dbf in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
@@ -4225,6 +4242,7 @@
 				3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */,
 				3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */,
 				D9EE378C20E2C03100BF8AD1 /* LineOfSightGeoElementViewController.swift in Sources */,
+				4C5F98C12280A57500414343 /* AuthenticateWithOAuthViewController.swift in Sources */,
 				3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */,
 				C74ECB5021C17E9100129D6D /* DensifyAndGeneralizeViewController.swift in Sources */,
 				218409DF1FE9A1E00098BC40 /* AddStatisticDefinitionsViewController.swift in Sources */,

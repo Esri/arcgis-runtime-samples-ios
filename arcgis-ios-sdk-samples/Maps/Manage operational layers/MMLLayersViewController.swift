@@ -37,7 +37,7 @@ class MMLLayersViewController: UITableViewController {
     }
     
     /// A convenience type for the table view sections.
-    private enum Section: Int {
+    private enum Section: Int, CaseIterable {
         case operational, removed
         
         var label: String {
@@ -53,7 +53,7 @@ class MMLLayersViewController: UITableViewController {
     // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return Section.allCases.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

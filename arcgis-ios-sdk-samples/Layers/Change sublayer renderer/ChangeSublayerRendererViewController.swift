@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class ChangeSublayerRendererVC: UIViewController {
+class ChangeSublayerRendererViewController: UIViewController {
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var resetBarButtonItem: UIBarButtonItem!
     @IBOutlet private var applyRendererBarButtonItem: UIBarButtonItem!
@@ -30,7 +30,7 @@ class ChangeSublayerRendererVC: UIViewController {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeSublayerRendererVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeSublayerRendererViewController"]
         
         //initialize map with basemap
         let map = AGSMap(basemap: .streets())

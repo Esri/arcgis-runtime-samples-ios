@@ -37,7 +37,7 @@ class MMLLayersViewController: UITableViewController {
     }
     
     /// A convenience type for the table view sections.
-    private enum Section: Int, CaseIterable {
+    private enum Section: CaseIterable {
         case operational, removed
         
         var label: String {

@@ -1410,6 +1410,10 @@
 				<string>ChooseCameraController</string>
 				<key>descriptionText</key>
 				<string>Control the behavior of the camera in a scene.</string>
+				<key>dependency</key>
+				<array>
+					<string>Bristol3DModel</string>
+				</array>
 			</dict>
 		</array>
 	</dict>

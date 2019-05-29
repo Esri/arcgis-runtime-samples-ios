@@ -32,7 +32,7 @@ private extension UIImage {
     }
 }
 
-class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, SaveAsVCDelegate {
+class CreateSaveMapViewController: UIViewController, CreateOptionsViewControllerDelegate, SaveAsVCDelegate {
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var portal: AGSPortal?
@@ -102,7 +102,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsVCDelegate, Sa
         }
     }
     
-    // MARK: - CreateOptionsVCDelegate
+    // MARK: - CreateOptionsViewControllerDelegate
     
     func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]) {
         //create a map with the selected basemap

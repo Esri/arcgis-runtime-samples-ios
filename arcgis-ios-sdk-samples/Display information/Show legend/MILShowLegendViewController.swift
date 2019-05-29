@@ -21,7 +21,6 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
     
     private var map: AGSMap!
     private var mapImageLayer: AGSArcGISMapImageLayer!
-    private var popover: UIPopoverPresentationController!
     
     override func viewDidLoad() {
         super.viewDidLoad()

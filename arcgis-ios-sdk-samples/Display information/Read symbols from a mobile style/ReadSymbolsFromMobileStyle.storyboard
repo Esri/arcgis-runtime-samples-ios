@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1ar-Hf-dS6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Read Symbols From Mobile Style View Controller-->
+        <scene sceneID="Lem-f3-xya">
+            <objects>
+                <viewController id="1ar-Hf-dS6" customClass="ReadSymbolsFromMobileStyleViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DTF-Nu-Xm1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V0D-Un-tnh" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y20-7A-Wxq">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Symbol" id="R43-JQ-6kU">
+                                        <connections>
+                                            <action selector="showSymbol" destination="1ar-Hf-dS6" id="dXg-Wn-tvE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="U5E-CO-Aba"/>
+                                    <barButtonItem title="Clear" id="cEi-XD-Kru">
+                                        <connections>
+                                            <action selector="removeAllGraphics" destination="1ar-Hf-dS6" id="kjl-gd-r0v"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="y20-7A-Wxq" firstAttribute="bottom" secondItem="3MO-Uc-5vK" secondAttribute="bottom" id="4JP-Iq-OsH"/>
+                            <constraint firstAttribute="trailing" secondItem="V0D-Un-tnh" secondAttribute="trailing" id="7Dx-5a-HTh"/>
+                            <constraint firstItem="y20-7A-Wxq" firstAttribute="top" secondItem="V0D-Un-tnh" secondAttribute="bottom" id="ERw-d9-eT3"/>
+                            <constraint firstAttribute="trailing" secondItem="y20-7A-Wxq" secondAttribute="trailing" id="Fb5-le-DP7"/>
+                            <constraint firstItem="y20-7A-Wxq" firstAttribute="leading" secondItem="DTF-Nu-Xm1" secondAttribute="leading" id="Sw7-1L-lCB"/>
+                            <constraint firstItem="V0D-Un-tnh" firstAttribute="top" secondItem="3MO-Uc-5vK" secondAttribute="top" id="TTr-bz-ThU"/>
+                            <constraint firstItem="V0D-Un-tnh" firstAttribute="leading" secondItem="DTF-Nu-Xm1" secondAttribute="leading" id="mcK-LM-sUb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3MO-Uc-5vK"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="V0D-Un-tnh" id="1Qj-RN-6l9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E5N-hH-2De" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1026" y="161"/>
+        </scene>
+        <!--Symbol-->
+        <scene sceneID="JTY-QE-WSC">
+            <objects>
+                <viewController storyboardIdentifier="SymbolViewController" id="snD-xX-7pd" customClass="ReadSymbolsFromMobileStyleSymbolViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MxG-Lb-GNy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ascending" translatesAutoresizingMaskIntoConstraints="NO" id="z6M-rl-0w8">
+                                <rect key="frame" x="157.5" y="36" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="EJ6-yv-X5C"/>
+                                    <constraint firstAttribute="width" secondItem="z6M-rl-0w8" secondAttribute="height" multiplier="1:1" id="SWo-TI-OnZ"/>
+                                </constraints>
+                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqe-vl-61K">
+                                <rect key="frame" x="0.0" y="112" width="375" height="555"/>
+                                <connections>
+                                    <segue destination="ngI-1F-5ur" kind="embed" id="QzG-Qf-Jc7"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceo-Xw-h0n" userLabel="Divider View">
+                                <rect key="frame" x="0.0" y="112" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Dju-EC-SCx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="z6M-rl-0w8" firstAttribute="top" secondItem="HvU-RR-YXI" secondAttribute="top" constant="16" id="1cX-sD-Umj"/>
+                            <constraint firstAttribute="bottom" secondItem="Aqe-vl-61K" secondAttribute="bottom" id="Gyq-Ac-FQ5"/>
+                            <constraint firstItem="ceo-Xw-h0n" firstAttribute="top" secondItem="Aqe-vl-61K" secondAttribute="top" id="HgM-21-oHc"/>
+                            <constraint firstAttribute="trailing" secondItem="Aqe-vl-61K" secondAttribute="trailing" id="KGa-o3-xnh"/>
+                            <constraint firstAttribute="trailing" secondItem="ceo-Xw-h0n" secondAttribute="trailing" id="dFR-dI-NPb"/>
+                            <constraint firstItem="Aqe-vl-61K" firstAttribute="top" secondItem="z6M-rl-0w8" secondAttribute="bottom" constant="16" id="fAV-KG-j5F"/>
+                            <constraint firstItem="Aqe-vl-61K" firstAttribute="leading" secondItem="MxG-Lb-GNy" secondAttribute="leading" id="hMT-QC-WnB"/>
+                            <constraint firstItem="ceo-Xw-h0n" firstAttribute="leading" secondItem="MxG-Lb-GNy" secondAttribute="leading" id="hZL-Ma-dsN"/>
+                            <constraint firstItem="z6M-rl-0w8" firstAttribute="centerX" secondItem="HvU-RR-YXI" secondAttribute="centerX" id="wkX-xG-ZSN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HvU-RR-YXI"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Symbol" id="NUd-Fb-N46">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="U2B-cT-FXJ">
+                            <connections>
+                                <action selector="done" destination="snD-xX-7pd" id="pQ9-VL-t41"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="previewImageView" destination="z6M-rl-0w8" id="pW2-aM-lON"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G68-Tt-X2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1861.5999999999999" y="160.56971514242881"/>
+        </scene>
+        <!--Read Symbols From Mobile Style Symbol Settings View Controller-->
+        <scene sceneID="PiN-Op-kMT">
+            <objects>
+                <tableViewController id="ngI-1F-5ur" customClass="ReadSymbolsFromMobileStyleSymbolSettingsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="bSz-yW-de6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="basic" textLabel="8nl-uB-zcf" style="IBUITableViewCellStyleDefault" id="YcG-BJ-EIu">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YcG-BJ-EIu" id="cKE-cC-xCR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8nl-uB-zcf">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="color" id="Faj-cE-bwj" customClass="ReadSymbolsFromMobileStyleSymbolSettingsColorCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Faj-cE-bwj" id="bLf-ch-oIh">
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DJd-cL-VzY">
+                                            <rect key="frame" x="16" y="12" width="41.5" height="19.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdV-Z0-or5">
+                                            <rect key="frame" x="273" y="7" width="60" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="tgu-Gn-Aos"/>
+                                                <constraint firstAttribute="width" constant="60" id="ueN-ie-fcd"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="rdV-Z0-or5" secondAttribute="trailing" constant="8" id="4e4-IL-hkp"/>
+                                        <constraint firstItem="DJd-cL-VzY" firstAttribute="top" secondItem="bLf-ch-oIh" secondAttribute="top" constant="12" id="8lL-6K-SPj"/>
+                                        <constraint firstItem="rdV-Z0-or5" firstAttribute="centerY" secondItem="DJd-cL-VzY" secondAttribute="centerY" id="Cad-W5-9y0"/>
+                                        <constraint firstItem="DJd-cL-VzY" firstAttribute="leading" secondItem="bLf-ch-oIh" secondAttribute="leadingMargin" id="F5x-by-vd3"/>
+                                        <constraint firstAttribute="bottom" secondItem="DJd-cL-VzY" secondAttribute="bottom" constant="12" id="Ggh-m9-Rp9"/>
+                                        <constraint firstItem="rdV-Z0-or5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DJd-cL-VzY" secondAttribute="trailing" constant="8" id="mcg-ua-Lss"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="colorView" destination="rdV-Z0-or5" id="fmt-Zy-byJ"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="size" id="p0q-gF-VZY" customClass="ReadSymbolsFromMobileStyleSymbolSettingsSizeCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p0q-gF-VZY" id="kUY-ek-RAM">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlE-KS-rs1">
+                                            <rect key="frame" x="16" y="11.5" width="32.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="r4Y-8R-gA8">
+                                            <rect key="frame" x="169.5" y="11" width="191.5" height="22.5"/>
+                                            <connections>
+                                                <action selector="updateSize" destination="p0q-gF-VZY" eventType="valueChanged" id="J4d-PY-4tN"/>
+                                            </connections>
+                                        </slider>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="QlE-KS-rs1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kUY-ek-RAM" secondAttribute="topMargin" id="6Ba-aU-m2T"/>
+                                        <constraint firstItem="r4Y-8R-gA8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kUY-ek-RAM" secondAttribute="topMargin" id="AGd-8W-HxL"/>
+                                        <constraint firstItem="QlE-KS-rs1" firstAttribute="centerY" secondItem="kUY-ek-RAM" secondAttribute="centerY" id="dXl-XP-WQe"/>
+                                        <constraint firstItem="r4Y-8R-gA8" firstAttribute="width" secondItem="kUY-ek-RAM" secondAttribute="width" multiplier="0.5" id="fR6-p7-KqD"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="r4Y-8R-gA8" secondAttribute="trailing" id="fxv-KA-rI2"/>
+                                        <constraint firstItem="QlE-KS-rs1" firstAttribute="leading" secondItem="kUY-ek-RAM" secondAttribute="leadingMargin" id="kvC-cO-09h"/>
+                                        <constraint firstItem="r4Y-8R-gA8" firstAttribute="centerY" secondItem="kUY-ek-RAM" secondAttribute="centerY" id="ulV-zf-xOd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="slider" destination="r4Y-8R-gA8" id="7fp-J2-wam"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ngI-1F-5ur" id="gaZ-fy-LMt"/>
+                            <outlet property="delegate" destination="ngI-1F-5ur" id="BA5-IV-THY"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F10-EZ-RbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2703" y="211"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Ascending" width="30" height="30"/>
+    </resources>
+</document>

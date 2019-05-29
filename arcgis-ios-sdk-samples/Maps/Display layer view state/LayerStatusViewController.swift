@@ -22,8 +22,6 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
     
     private var map: AGSMap!
     
-    private var viewStatusArray = [String]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,8 +55,6 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         //add it to the map
         self.map.operationalLayers.add(featurelayer)
         
-        //initialize the view status array to `Unknown`
-        self.populateViewStatusArray()
         //reload table
         self.tableView.reloadData()
         //assign map to the map view
@@ -70,14 +66,13 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         //assign a closure for layerViewStateChangedHandler, in order to receive layer view status changes
         self.mapView.layerViewStateChangedHandler = { [weak self] (layer: AGSLayer, state: AGSLayerViewState) in
             DispatchQueue.main.async {
-                guard let strongSelf = self else { return }
+                guard let self = self else { return }
                 //find the index of layer in operational layers list
                 //and update its status
-                let index = strongSelf.map.operationalLayers.index(of: layer)
+                let index = self.map.operationalLayers.index(of: layer)
                 if index != NSNotFound {
-                    strongSelf.viewStatusArray[index] = strongSelf.viewStatusString(state.status)
-                    
-                    strongSelf.tableView.reloadData()
+                    let indexPath = IndexPath(row: index, section: 0)
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                 }
             }
         }
@@ -85,28 +80,28 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         //setup source code bar button item
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["LayerStatusViewController"]
     }
-    
-    //initialize status array to `Unknown`
-    func populateViewStatusArray() {
-        for _ in 0..<map.operationalLayers.count {
-            self.viewStatusArray.append("Unknown")
-        }
-    }
 
     //return string for current status name
     func viewStatusString(_ status: AGSLayerViewStatus) -> String {
-        switch status {
-        case AGSLayerViewStatus.active:
-            return "Active"
-        case AGSLayerViewStatus.notVisible:
-            return "Not Visible"
-        case AGSLayerViewStatus.outOfScale:
-            return "Out of Scale"
-        case AGSLayerViewStatus.loading:
-            return "Loading"
-        case AGSLayerViewStatus.error:
-            return "Error"
-        default:
+        var statuses = [String]()
+        if status.contains(.active) {
+            statuses.append("Active")
+        }
+        if status.contains(.notVisible) {
+            statuses.append("Not Visible")
+        }
+        if status.contains(.outOfScale) {
+            statuses.append("Out of Scale")
+        }
+        if status.contains(.loading) {
+            statuses.append("Loading")
+        }
+        if status.contains(.error) {
+            statuses.append("Error")
+        }
+        if !statuses.isEmpty {
+            return statuses.joined(separator: ", ")
+        } else {
             return "Unknown"
         }
     }
@@ -136,7 +131,11 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
             cell.textLabel?.text = "Layer \(indexPath.row)"
         }
         
-        cell.detailTextLabel?.text = self.viewStatusArray[indexPath.row]
+        if let layerViewState = mapView.layerViewState(for: layer) {
+            cell.detailTextLabel?.text = viewStatusString(layerViewState.status)
+        } else {
+            cell.detailTextLabel?.text = "Unknown"
+        }
         
         return cell
     }

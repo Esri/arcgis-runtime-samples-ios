@@ -202,6 +202,18 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Generate offline map (basemap by reference)</string>
+				<key>descriptionText</key>
+				<string>Take a web map offline, but instead of downloading an online basemap, use one which is already on the device.</string>
+				<key>storyboardName</key>
+				<string>GenerateOfflineMapBasemapByReference</string>
+				<key>dependency</key>
+				<array>
+					<string>naperville_imagery</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Read a geopackage</string>
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>
@@ -495,6 +507,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Play a KML Tour</string>
+				<key>descriptionText</key>
+				<string>Play tours in KML files.</string>
+				<key>storyboardName</key>
+				<string>PlayKMLTour</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>OpenStreetMap layer</string>
 				<key>storyboardName</key>
 				<string>OpenStreetMapLayer</string>
@@ -508,6 +528,30 @@
 				<string>DisplayWFS</string>
 				<key>descriptionText</key>
 				<string>Display a layer from a WFS service, requesting only features for the current extent.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Load WFS with XML query</string>
+				<key>descriptionText</key>
+				<string>Load a WFS feature table using an XML query.</string>
+				<key>storyboardName</key>
+				<string>LoadWFSWithXMLQuery</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Browse WFS layers</string>
+				<key>descriptionText</key>
+				<string>Browse a WFS service for layers and add them to the map.</string>
+				<key>storyboardName</key>
+				<string>BrowseWFSLayers</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Group layers</string>
+				<key>descriptionText</key>
+				<string>Add layers to a group layer and toggle their visibility as a group.</string>
+				<key>storyboardName</key>
+				<string>GroupLayers</string>
 			</dict>
 		</array>
 	</dict>
@@ -794,6 +838,14 @@
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
 				<string>Demonstrates how to display billboarded point graphics with military symbols.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Read symbols from a mobile style</string>
+				<key>descriptionText</key>
+				<string>Open a mobile style (.stylx) and read its contents. Combine several symbols from the style into a single multilayer point symbol, then use it to display graphics in the map view.</string>
+				<key>storyboardName</key>
+				<string>ReadSymbolsFromMobileStyle</string>
 			</dict>
 		</array>
 	</dict>
@@ -1167,6 +1219,14 @@
 				<key>descriptionText</key>
 				<string>Uses Windows credentials to access services hosted on a portal secured with Integrated Windows Authentication (IWA).</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Authenticate with OAuth</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers). Accessing secured items requires a login on the portal that hosts them (an ArcGIS Online account, for example).</string>
+				<key>storyboardName</key>
+				<string>AuthenticateWithOAuth</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1305,11 +1365,51 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>View content beneath the terrain surface</string>
+				<key>descriptionText</key>
+				<string>See through terrain in a scene and move the camera underground.</string>
+				<key>storyboardName</key>
+				<string>ViewContentBeneathTerrainSurface</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Add a point scene layer</string>
 				<key>storyboardName</key>
 				<string>AddPointSceneLayer</string>
 				<key>descriptionText</key>
 				<string>View a point scene layer from a scene service</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>View point cloud data offline</string>
+				<key>descriptionText</key>
+				<string>Display local 3D point cloud data.</string>
+				<key>storyboardName</key>
+				<string>ViewPointCloudDataOffline</string>
+				<key>dependency</key>
+				<array>
+					<string>sandiego-north-balboa-pointcloud</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Open mobile scene (scene package)</string>
+				<key>descriptionText</key>
+				<string>Opens and displays a scene from a Mobile Scene Package (.mspk).</string>
+				<key>storyboardName</key>
+				<string>OpenMobileScene</string>
+				<key>dependency</key>
+				<array>
+					<string>philadelphia</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Choose camera controller</string>
+				<key>storyboardName</key>
+				<string>ChooseCameraController</string>
+				<key>descriptionText</key>
+				<string>Control the behavior of the camera in a scene.</string>
 			</dict>
 		</array>
 	</dict>

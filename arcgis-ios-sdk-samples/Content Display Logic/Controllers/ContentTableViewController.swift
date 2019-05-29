@@ -75,6 +75,7 @@ class ContentTableViewController: UITableViewController {
         //download on demand resources
         if !sample.dependencies.isEmpty {
             let bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
+            bundleResourceRequest.loadingPriority = NSBundleResourceRequestLoadingPriorityUrgent
             self.bundleResourceRequest = bundleResourceRequest
             
             //conditionally begin accessing to know if we need to show download progress view or not
@@ -82,7 +83,7 @@ class ContentTableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     //if resource is already available then simply show the sample
                     if isResourceAvailable {
-                        self?.showSample(indexPath: indexPath, sample: sample)
+                        self?.showSample(sample)
                     }
                     //else download the resource
                     else {
@@ -95,7 +96,7 @@ class ContentTableViewController: UITableViewController {
             bundleResourceRequest?.endAccessingResources()
             
             //show view controller
-            showSample(indexPath: indexPath, sample: sample)
+            showSample(sample)
         }
     }
     
@@ -144,14 +145,14 @@ class ContentTableViewController: UITableViewController {
                 } else {
                     if self.bundleResourceRequest?.progress.isCancelled == false {
                         //show view controller
-                        self.showSample(indexPath: indexPath, sample: sample)
+                        self.showSample(sample)
                     }
                 }
             }
         }
     }
     
-    private func showSample(indexPath: IndexPath, sample: Sample) {
+    private func showSample(_ sample: Sample) {
         let storyboard = UIStoryboard(name: sample.storyboardName, bundle: .main)
         let controller = storyboard.instantiateInitialViewController()!
         controller.title = sample.name

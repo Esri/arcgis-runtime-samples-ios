@@ -245,8 +245,8 @@
 		3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */; };
 		3E8D54FD1D53FCD500E628D9 /* ScenePropertiesExpressionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */; };
 		3EA15C751ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA15C731ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard */; };
-		3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */; };
-		3EA15C771ED8A52300B1F816 /* ChangeSublayerRendererVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */; };
+		3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift */; };
+		3EA15C771ED8A52300B1F816 /* ChangeSublayerRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift */; };
 		3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7891DB1772000C161C6 /* RGBRenderer.storyboard */; };
 		3EABC7901DB1772000C161C6 /* RGB Renderer Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78A1DB1772000C161C6 /* RGB Renderer Cells.swift */; };
 		3EABC7921DB1772000C161C6 /* RGBRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78C1DB1772000C161C6 /* RGBRendererSettingsVC.swift */; };
@@ -789,7 +789,7 @@
 				3E5E09391EF2F5ED00FF3454 /* GenerateOfflineMapViewController.swift in CopyFiles */,
 				3E5E09411EF470DB00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in CopyFiles */,
 				3E5E09421EF470DB00FF3454 /* RelatedFeaturesViewController.swift in CopyFiles */,
-				3EA15C771ED8A52300B1F816 /* ChangeSublayerRendererVC.swift in CopyFiles */,
+				3EA15C771ED8A52300B1F816 /* ChangeSublayerRendererViewController.swift in CopyFiles */,
 				3E5E09501EF8528600FF3454 /* ManageSublayersViewController.swift in CopyFiles */,
 				3E5E09511EF8528600FF3454 /* MapImageSublayersViewController.swift in CopyFiles */,
 				E45991A51EF31DE40089E9FD /* SearchForWebmapByKeywordViewController.swift in CopyFiles */,
@@ -1124,7 +1124,7 @@
 		3E8D54F91D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScenePropertiesExpressions.storyboard; sourceTree = "<group>"; };
 		3E8D54FA1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenePropertiesExpressionsViewController.swift; sourceTree = "<group>"; };
 		3EA15C731ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChangeSublayerRenderer.storyboard; sourceTree = "<group>"; };
-		3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSublayerRendererVC.swift; sourceTree = "<group>"; };
+		3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSublayerRendererViewController.swift; sourceTree = "<group>"; };
 		3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Samples-Bridging-Header.h"; path = "Content Display Logic/Samples-Bridging-Header.h"; sourceTree = "<group>"; };
 		3EABC7891DB1772000C161C6 /* RGBRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RGBRenderer.storyboard; sourceTree = "<group>"; };
 		3EABC78A1DB1772000C161C6 /* RGB Renderer Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RGB Renderer Cells.swift"; sourceTree = "<group>"; };
@@ -2252,7 +2252,7 @@
 			isa = PBXGroup;
 			children = (
 				3EA15C731ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard */,
-				3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift */,
+				3EA15C741ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift */,
 			);
 			path = "Change sublayer renderer";
 			sourceTree = "<group>";
@@ -4274,7 +4274,7 @@
 				092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
-				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererVC.swift in Sources */,
+				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,

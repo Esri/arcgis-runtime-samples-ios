@@ -513,6 +513,8 @@
 		4C1EF2D2221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1EF2D0221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift */; };
 		4C1EF2D3221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1EF2D1221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib */; };
 		4C2B52D720D2C3180071EBB6 /* DistanceMeasurementAnalysisViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
+		4C2F90712289C1BE00357824 /* TokenAuthentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F90702289C1BD00357824 /* TokenAuthentication.storyboard */; };
+		4C2F90732289C23500357824 /* TokenAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2F90722289C23500357824 /* TokenAuthenticationViewController.swift */; };
 		4C41B2EE211A617700EEA81E /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C41B2ED211A617700EEA81E /* Sample.swift */; };
 		4C478E4A223C7485009F8CDF /* MapReferenceScale.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C478E49223C7485009F8CDF /* MapReferenceScale.storyboard */; };
 		4C478E4C223C7498009F8CDF /* MapReferenceScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
@@ -534,6 +536,7 @@
 		4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
 		4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */; };
 		4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
+		4C8965B422B14D2600D09F60 /* TokenAuthenticationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C2F90722289C23500357824 /* TokenAuthenticationViewController.swift */; };
 		4C9240192280F7F40045A86B /* AuthenticateWithOAuthViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */; };
 		4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */; };
 		4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
@@ -940,6 +943,7 @@
 				4CB5059A2269306E00165152 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in CopyFiles */,
 				4CB5059B2269306E00165152 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift in CopyFiles */,
 				4C9240192280F7F40045A86B /* AuthenticateWithOAuthViewController.swift in CopyFiles */,
+				4C8965B422B14D2600D09F60 /* TokenAuthenticationViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1312,6 +1316,8 @@
 		4C1EF2CC221208DD00F73EAE /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		4C1EF2D0221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegratedWindowsAuthenticationMapViewController.swift; sourceTree = "<group>"; };
 		4C1EF2D1221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntegratedWindowsAuthenticationMapViewController.xib; sourceTree = "<group>"; };
+		4C2F90702289C1BD00357824 /* TokenAuthentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TokenAuthentication.storyboard; sourceTree = "<group>"; };
+		4C2F90722289C23500357824 /* TokenAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAuthenticationViewController.swift; sourceTree = "<group>"; };
 		4C41B2ED211A617700EEA81E /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		4C478E49223C7485009F8CDF /* MapReferenceScale.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapReferenceScale.storyboard; sourceTree = "<group>"; };
 		4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleViewController.swift; sourceTree = "<group>"; };
@@ -3015,6 +3021,7 @@
 				3EEE1D681E4935FC003263FC /* List portal group users */,
 				4C1EF297220F5EC100F73EAE /* Integrated Windows Authentication */,
 				4C5F98BD2280A4A000414343 /* Authenticate with OAuth */,
+				4C2F906F2289C18400357824 /* Token authentication */,
 			);
 			path = "Cloud & Portal";
 			sourceTree = "<group>";
@@ -3161,6 +3168,15 @@
 				4C1EF2D1221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib */,
 			);
 			path = "Integrated Windows Authentication";
+			sourceTree = "<group>";
+		};
+		4C2F906F2289C18400357824 /* Token authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4C2F90702289C1BD00357824 /* TokenAuthentication.storyboard */,
+				4C2F90722289C23500357824 /* TokenAuthenticationViewController.swift */,
+			);
+			path = "Token authentication";
 			sourceTree = "<group>";
 		};
 		4C478E48223C73F9009F8CDF /* Map reference scale */ = {
@@ -3921,6 +3937,7 @@
 				4C85044B20F423F600E37F43 /* SceneLayerSelection.storyboard in Resources */,
 				1218C843225C063F0027F3E2 /* ChooseCameraController.storyboard in Resources */,
 				3E4BF47E1C5BDDCA00D85919 /* san-diego-locator.locb in Resources */,
+				4C2F90712289C1BE00357824 /* TokenAuthentication.storyboard in Resources */,
 				3EEA06111D21C44000E03774 /* ExtrudeGraphics.storyboard in Resources */,
 				3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */,
 				4C783F422252DBAC00609B9C /* philadelphia.mspk in Resources */,
@@ -4114,6 +4131,7 @@
 				3EABC7921DB1772000C161C6 /* RGBRendererSettingsVC.swift in Sources */,
 				4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */,
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,
+				4C2F90732289C23500357824 /* TokenAuthenticationViewController.swift in Sources */,
 				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
 				C7094786215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift in Sources */,
 				4C0FD7CD226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift in Sources */,

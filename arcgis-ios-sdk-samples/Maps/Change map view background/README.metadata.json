@@ -1,0 +1,21 @@
+{
+    "category": "Maps",
+    "description": "@@TODO: This sample demonstrates how to customize map view's background grid",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/change-map-view-background.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "ChangeMapViewBackgroundVC.swift",
+        "GridSettingsViewController.swift"
+    ],
+    "title": "@@TODO: Change map view background"
+}

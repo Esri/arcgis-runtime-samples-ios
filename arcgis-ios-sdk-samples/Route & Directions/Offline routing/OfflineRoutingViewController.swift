@@ -128,8 +128,9 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //add the graphic at that point
         //keep a reference to that graphic to update the geometry if moved
-        self.longPressedGraphic = self.graphicForLocation(mapPoint)
-        self.stopGraphicsOverlay.graphics.add(self.longPressedGraphic)
+        let graphic = graphicForLocation(mapPoint)
+        self.longPressedGraphic = graphic
+        self.stopGraphicsOverlay.graphics.add(graphic)
         //clear the route graphic
         self.longPressedRouteGraphic = nil
         //route
@@ -218,12 +219,12 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
     func displayRoutesOnMap(_ routes: [AGSRoute]?, isLongPressedResult: Bool) {
         //if a route graphic for previous request (in case of long press)
         //exists then remove it
-        if self.longPressedRouteGraphic != nil {
+        if let longPressedRouteGraphic = longPressedRouteGraphic {
             //update distance and time
             self.totalTime -= Double(truncating: self.longPressedGraphic.attributes["routeTime"] as! NSNumber)
             self.totalDistance -= Double(truncating: self.longPressedGraphic.attributes["routeLength"] as! NSNumber)
             
-            self.routeGraphicsOverlay.graphics.remove(self.longPressedRouteGraphic)
+            self.routeGraphicsOverlay.graphics.remove(longPressedRouteGraphic)
             self.longPressedRouteGraphic = nil
         }
         

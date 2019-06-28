@@ -86,6 +86,7 @@ private extension AGSSurfacePlacement {
         case .absolute: return "Absolute"
         case .relative: return "Relative"
         case .relativeToScene: return "Relative to Scene"
+        @unknown default: return "Unknown"
         }
     }
 }

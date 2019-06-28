@@ -19,7 +19,6 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet private var mapView: AGSMapView!
     
     private var featureTable: AGSServiceFeatureTable!
-    private var featureLayer: AGSFeatureLayer!
     private var lastQuery: AGSCancelable!
     
     override func viewDidLoad() {
@@ -41,7 +40,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         //instantiate service feature table using the url to the service
         self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
-        self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         //add the feature layer to the operational layers on map
         map.operationalLayers.add(featureLayer)

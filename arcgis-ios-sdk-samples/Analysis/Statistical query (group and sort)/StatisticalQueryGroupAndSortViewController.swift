@@ -363,6 +363,8 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             return "Ascending"
         case .descending:
             return "Descending"
+        @unknown default:
+            return "Unknown"
         }
     }
 }

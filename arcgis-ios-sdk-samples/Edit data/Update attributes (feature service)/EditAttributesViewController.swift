@@ -40,9 +40,10 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
-        self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
+        self.featureLayer = featureLayer
         
-        self.map.operationalLayers.add(self.featureLayer)
+        self.map.operationalLayers.add(featureLayer)
         
         self.mapView.map = self.map
         self.mapView.touchDelegate = self

@@ -20,7 +20,7 @@ import ArcGIS
 class ExtrudeGraphicsViewController: UIViewController {
     @IBOutlet var sceneView: AGSSceneView!
     
-    private var graphicsOverlay: AGSGraphicsOverlay!
+    private let graphicsOverlay = AGSGraphicsOverlay()
     
     private let cameraStartingPoint = AGSPoint(x: 83, y: 28.4, z: 20000, spatialReference: .wgs84())
     private let squareSize: Double = 0.01
@@ -43,9 +43,8 @@ class ExtrudeGraphicsViewController: UIViewController {
         self.sceneView.setViewpointCamera(camera)
         
         //add graphics overlay
-        self.graphicsOverlay = AGSGraphicsOverlay()
-        self.graphicsOverlay.sceneProperties?.surfacePlacement = .draped
-        self.sceneView.graphicsOverlays.add(self.graphicsOverlay)
+        graphicsOverlay.sceneProperties?.surfacePlacement = .draped
+        self.sceneView.graphicsOverlays.add(graphicsOverlay)
         
         //simple renderer with extrusion property
         let renderer = AGSSimpleRenderer()

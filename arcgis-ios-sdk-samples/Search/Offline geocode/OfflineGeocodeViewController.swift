@@ -23,7 +23,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     private var locatorTask: AGSLocatorTask!
     private var geocodeParameters: AGSGeocodeParameters!
     private var reverseGeocodeParameters: AGSReverseGeocodeParameters!
-    private var graphicsOverlay: AGSGraphicsOverlay!
+    private let graphicsOverlay = AGSGraphicsOverlay()
     private var locatorTaskOperation: AGSCancelable!
     private var magnifierOffset: CGPoint!
     private var longPressedAndMoving = false
@@ -48,9 +48,8 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         //will need that to show callout
         self.mapView.touchDelegate = self
         
-        //initialize the graphics overlay and add to the map view
+        //add the graphics overlay to the map view
         //will add the resulting graphics to this overlay
-        self.graphicsOverlay = AGSGraphicsOverlay()
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         //initialize locator task

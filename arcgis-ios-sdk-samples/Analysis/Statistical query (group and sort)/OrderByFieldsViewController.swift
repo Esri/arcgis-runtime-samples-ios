@@ -104,7 +104,7 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 cell.accessoryType = .none
                 
                 // Remove field from the selected order by fields
-                let index = selectedOrderByFields.index(of: orderByFields[indexPath.row])
+                let index = selectedOrderByFields.firstIndex(of: orderByFields[indexPath.row])
                 selectedOrderByFields.remove(at: index!)
             }
             
@@ -147,15 +147,19 @@ class OrderByFieldsViewController: UIViewController, UITableViewDataSource, UITa
             return "Ascending"
         case .descending:
             return "Descending"
+        @unknown default:
+            return "Unknown"
         }
     }
     
-    private func imageFor(sortOrder: AGSSortOrder) -> UIImage {
+    private func imageFor(sortOrder: AGSSortOrder) -> UIImage? {
         switch sortOrder {
         case .ascending:
             return UIImage(named: "Ascending")!
         case .descending:
             return UIImage(named: "Descending")!
+        @unknown default:
+            return nil
         }
     }
 }

@@ -160,6 +160,8 @@ class ListKMLContentsSceneViewController: UIViewController {
             // only the camera parameter is used by the scene
             return AGSViewpoint(center: kmlViewpoint.location, scale: 1, camera: camera)
         case .unknown:
+            fallthrough
+        @unknown default:
             print("Unexpected AGSKMLViewpointType \(kmlViewpoint.type)")
             return nil
         }

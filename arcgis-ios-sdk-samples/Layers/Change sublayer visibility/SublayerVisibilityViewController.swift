@@ -31,10 +31,11 @@ class SublayerVisibilityViewController: UIViewController {
         self.map = AGSMap(basemap: .topographic())
         
         //initialize the map image layer using a url
-        self.mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
+        let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
+        self.mapImageLayer = mapImageLayer
         
         //add the image layer to the map
-        self.map.operationalLayers.add(self.mapImageLayer)
+        self.map.operationalLayers.add(mapImageLayer)
         
         //assign the map to the map view
         self.mapView.map = self.map

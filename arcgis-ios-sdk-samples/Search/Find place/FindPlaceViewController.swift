@@ -27,7 +27,7 @@ class FindPlaceViewController: UIViewController {
     private var textFieldLocationButton: UIButton!
     
     private var map: AGSMap!
-    private var graphicsOverlay: AGSGraphicsOverlay!
+    private let graphicsOverlay = AGSGraphicsOverlay()
     
     private var locatorTask: AGSLocatorTask!
     private var suggestResults: [AGSSuggestResult]!
@@ -82,9 +82,8 @@ class FindPlaceViewController: UIViewController {
             }
         }
         
-        //instantiate the graphicsOverlay and add to the map view
-        self.graphicsOverlay = AGSGraphicsOverlay()
-        self.mapView.graphicsOverlays.add(self.graphicsOverlay)
+        //add the graphicsOverlay to the map view
+        self.mapView.graphicsOverlays.add(graphicsOverlay)
         
         //initialize locator task
         self.locatorTask = AGSLocatorTask(url: URL(string: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)

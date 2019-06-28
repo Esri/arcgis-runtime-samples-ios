@@ -41,10 +41,12 @@ class DisplayLocationSettingsViewController: UITableViewController {
             return "Navigation"
         case .compassNavigation:
             return "Compass Navigation"
+        @unknown default:
+            return "Unknown"
         }
     }
     
-    private func icon(for autoPanMode: AGSLocationDisplayAutoPanMode) -> UIImage {
+    private func icon(for autoPanMode: AGSLocationDisplayAutoPanMode) -> UIImage? {
         switch autoPanMode {
         case .off:
             return #imageLiteral(resourceName: "LocationDisplayOffIcon")
@@ -54,6 +56,8 @@ class DisplayLocationSettingsViewController: UITableViewController {
             return #imageLiteral(resourceName: "LocationDisplayNavigationIcon")
         case .compassNavigation:
             return #imageLiteral(resourceName: "LocationDisplayHeadingIcon")
+        @unknown default:
+            return nil
         }
     }
     

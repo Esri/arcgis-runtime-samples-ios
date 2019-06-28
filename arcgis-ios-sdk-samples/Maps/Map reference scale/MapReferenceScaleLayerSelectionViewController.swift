@@ -53,7 +53,7 @@ class MapReferenceScaleLayerSelectionViewController: UITableViewController {
     ///
     /// - Parameter layer: A layer.
     func selectLayer(_ layer: AGSLayer) {
-        guard let row = layers.index(of: layer) else { return }
+        guard let row = layers.firstIndex(of: layer) else { return }
         let indexPath = IndexPath(row: row, section: 0)
         indexPathsForSelectedRows.insert(indexPath)
     }

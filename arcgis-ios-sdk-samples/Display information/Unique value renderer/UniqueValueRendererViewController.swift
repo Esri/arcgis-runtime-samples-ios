@@ -32,10 +32,11 @@ class UniqueValueRendererViewController: UIViewController {
         
         //create feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)
-        self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        self.featureLayer = featureLayer
         
         //add the layer to the map as operational layer
-        map.operationalLayers.add(self.featureLayer)
+        map.operationalLayers.add(featureLayer)
         
         //assign map to the map view
         self.mapView.map = map

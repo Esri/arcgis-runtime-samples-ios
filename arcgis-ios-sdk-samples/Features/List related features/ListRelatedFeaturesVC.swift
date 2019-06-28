@@ -20,8 +20,6 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
     
     private var parksFeatureLayer: AGSFeatureLayer!
     private var parksFeatureTable: AGSServiceFeatureTable!
-    private var preservesFeatureTable: AGSServiceFeatureTable!
-    private var speciesFeatureTable: AGSServiceFeatureTable!
     private var selectedPark: AGSArcGISFeature!
     private var screenPoint: CGPoint!
     
@@ -49,16 +47,17 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
         self.parksFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/AlaskaNationalParksPreservesSpecies_List/FeatureServer/1")!)
         
         //feature layer for parks
-        self.parksFeatureLayer = AGSFeatureLayer(featureTable: self.parksFeatureTable)
+        let parksFeatureLayer = AGSFeatureLayer(featureTable: self.parksFeatureTable)
+        self.parksFeatureLayer = parksFeatureLayer
         
         //add parks feature layer to the map
-        map.operationalLayers.add(self.parksFeatureLayer)
+        map.operationalLayers.add(parksFeatureLayer)
         
         //Feature table for related Preserves layer
-        self.preservesFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/AlaskaNationalParksPreservesSpecies_List/FeatureServer/0")!)
+        let preservesFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/AlaskaNationalParksPreservesSpecies_List/FeatureServer/0")!)
         
         //Feature table for related Species layer
-        self.speciesFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/AlaskaNationalParksPreservesSpecies_List/FeatureServer/2")!)
+        let speciesFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/AlaskaNationalParksPreservesSpecies_List/FeatureServer/2")!)
         
         //add these to the tables on the map
         //to query related features in a layer, the layer must either be added as a feature

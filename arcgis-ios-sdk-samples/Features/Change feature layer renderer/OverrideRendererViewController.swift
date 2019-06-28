@@ -37,9 +37,10 @@ class OverrideRendererViewController: UIViewController {
         //initialize feature table using a url to feature server url
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0")!)
         //initialize feature layer with feature table
-        self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        self.featureLayer = featureLayer
         //add the feature layer to the operational layers on the map view
-        self.map.operationalLayers.add(self.featureLayer)
+        self.map.operationalLayers.add(featureLayer)
     }
     
     @IBAction private func overrideRenderer() {

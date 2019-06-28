@@ -20,7 +20,6 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
     @IBOutlet private weak var legendBBI: UIBarButtonItem!
     
     private var map: AGSMap!
-    private var mapImageLayer: AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +35,9 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         self.map.operationalLayers.add(tiledLayer)
         
         //create a map image layer using a url
-        self.mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
+        let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
         //add the image layer to the map
-        self.map.operationalLayers.add(self.mapImageLayer)
+        self.map.operationalLayers.add(mapImageLayer)
         
         //create feature table using a url
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)

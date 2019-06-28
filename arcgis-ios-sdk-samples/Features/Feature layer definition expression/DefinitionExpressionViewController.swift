@@ -38,10 +38,11 @@ class DefinitionExpressionViewController: UIViewController {
         //create feature table using a url to feature server's layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
         //create feature layer using this feature table
-        self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        self.featureLayer = featureLayer
         
         //add the feature layer to the map
-        self.map.operationalLayers.add(self.featureLayer)
+        self.map.operationalLayers.add(featureLayer)
     }
     
     @IBAction func applyDefinitionExpression() {

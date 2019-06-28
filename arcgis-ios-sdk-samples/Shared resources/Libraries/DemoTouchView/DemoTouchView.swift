@@ -321,6 +321,8 @@ private class DemoTouchesView: UIView {
             case .stationary:
                 // NOTE: I've never actually seen this state.
                 break
+            @unknown default:
+                break
             }
         }
     }

@@ -1,0 +1,2 @@
+#Project
+Being able to project between spatial references is fundamental to a GIS. An example of when you would need to re-project data is if you had data in two different spatial references, but wanted to perform an intersect analysis with the GeometryEngine::intersect function. This function takes two geometries as parameters, and both geometries must be in the same spatial reference. If they are not, you could first use GeometryEngine::project to convert the geometries so they match.

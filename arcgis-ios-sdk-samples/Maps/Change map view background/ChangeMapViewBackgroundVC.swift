@@ -15,14 +15,14 @@
 import UIKit
 import ArcGIS
 
-class ChangeMapViewBackgroundViewController: UIViewController {
+class ChangeMapViewBackgroundVC: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeMapViewBackgroundViewController", "GridSettingsViewController", "ColorPickerViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeMapViewBackgroundVC", "GridSettingsViewController", "ColorPickerViewController"]
         
         //initialize tiled layer
         let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
@@ -65,7 +65,7 @@ class ChangeMapViewBackgroundViewController: UIViewController {
     }
 }
 
-extension ChangeMapViewBackgroundViewController: UIAdaptivePresentationControllerDelegate {
+extension ChangeMapViewBackgroundVC: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // ensure that the settings are show in a popover even on small displays
         return .none

@@ -16,11 +16,11 @@
 import UIKit
 import ArcGIS
 
-protocol BlendRendererSettingsViewControllerDelegate: AnyObject {
-    func blendRendererSettingsViewController(_ blendRendererSettingsViewController: BlendRendererSettingsViewController, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType)
+protocol BlendRendererSettingsVCDelegate: AnyObject {
+    func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType)
 }
 
-class BlendRendererSettingsViewController: UITableViewController {
+class BlendRendererSettingsVC: UITableViewController {
     @IBOutlet private weak var altitudeSlider: UISlider?
     @IBOutlet private weak var altitudeLabel: UILabel?
     @IBOutlet private weak var azimuthSlider: UISlider?
@@ -28,7 +28,7 @@ class BlendRendererSettingsViewController: UITableViewController {
     @IBOutlet private weak var slopeTypeCell: UITableViewCell?
     @IBOutlet private weak var colorRampTypeCell: UITableViewCell?
     
-    weak var delegate: BlendRendererSettingsViewControllerDelegate?
+    weak var delegate: BlendRendererSettingsVCDelegate?
     
     private let numberFormatter = NumberFormatter()
     
@@ -104,7 +104,7 @@ class BlendRendererSettingsViewController: UITableViewController {
     }
     
     private func blendRendererParametersChanged() {
-        delegate?.blendRendererSettingsViewController(self, selectedAltitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
+        delegate?.blendRendererSettingsVC(self, selectedAltitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
     }
     
     // UITableViewDelegate

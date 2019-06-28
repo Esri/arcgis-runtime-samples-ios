@@ -83,9 +83,8 @@ private extension AGSSurfacePlacement {
     var title: String {
         switch self {
         case .draped: return "Draped"
-        case .absolute: return "Absolute"
         case .relative: return "Relative"
-        case .relativeToScene: return "Relative to Scene"
+        case .absolute: return "Absolute"
         }
     }
 }

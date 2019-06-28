@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class BlendRendererViewController: UIViewController, BlendRendererSettingsViewControllerDelegate {
+class BlendRendererViewController: UIViewController, BlendRendererSettingsVCDelegate {
     @IBOutlet var mapView: AGSMapView!
 
     let imageryBasemapLayer: AGSRasterLayer = {
@@ -32,7 +32,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsViewCo
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BlendRendererViewController", "BlendRendererSettingsViewController", "OptionsTableViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BlendRendererViewController", "BlendRendererSettingsVC", "OptionsTableViewController"]
         
         //initialize map
         let map = AGSMap()
@@ -46,9 +46,9 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsViewCo
     /// The color ramp type that was used to create the currently applied blend renderer.
     private var displayedColorRampType: AGSPresetColorRampType = .none
 
-    // MARK: - BlendRendererSettingsViewControllerDelegate
+    // MARK: - BlendRendererSettingsVCDelegate
     
-    func blendRendererSettingsViewController(_ blendRendererSettingsVC: BlendRendererSettingsViewController, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
+    func blendRendererSettingsVC(_ blendRendererSettingsVC: BlendRendererSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
         setBlendRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
     }
     
@@ -97,7 +97,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsViewCo
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? BlendRendererSettingsViewController,
+            let controller = navController.viewControllers.first as? BlendRendererSettingsVC,
             let rasterLayer = mapView.map?.basemap.baseLayers.firstObject as? AGSRasterLayer,
             let renderer = rasterLayer.renderer as? AGSBlendRenderer {
             controller.preferredContentSize = {

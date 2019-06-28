@@ -16,18 +16,18 @@ import UIKit
 import ArcGIS
 
 class DirectionsViewController: UITableViewController {
-    var directionManeuvers = [AGSDirectionManeuver]()
+    var directionManeuvers: [AGSDirectionManeuver]!
     
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return directionManeuvers.count
+        return self.directionManeuvers?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell", for: indexPath)
         
-        cell.textLabel?.text = directionManeuvers[indexPath.row].directionText
+        cell.textLabel?.text = self.directionManeuvers[indexPath.row].directionText
         
         return cell
     }

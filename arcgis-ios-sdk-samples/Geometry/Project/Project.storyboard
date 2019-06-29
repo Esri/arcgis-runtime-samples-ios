@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,10 +33,44 @@
                         <viewLayoutGuide key="safeArea" id="88d-OY-B86"/>
                     </view>
                     <connections>
+                        <outlet property="customView" destination="xZX-wv-fPH" id="nL7-80-Lwy"/>
                         <outlet property="mapView" destination="3l0-3p-UVN" id="jkl-nc-jnF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5H-yI-c7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view hidden="YES" contentMode="scaleToFill" id="xZX-wv-fPH" userLabel="customView">
+                    <rect key="frame" x="0.0" y="0.0" width="311" height="105"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Coordinates:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0R0-nO-Uzj">
+                            <rect key="frame" x="16" y="15" width="0.0" height="0.0"/>
+                            <accessibility key="accessibilityConfiguration" label="Title"/>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOS-xg-vRr">
+                            <rect key="frame" x="16" y="44" width="0.0" height="0.0"/>
+                            <accessibility key="accessibilityConfiguration" label="mapPoint"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dw-F9-UVI">
+                            <rect key="frame" x="16" y="73" width="0.0" height="0.0"/>
+                            <accessibility key="accessibilityConfiguration" label="projectedPoint"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="XOS-xg-vRr" firstAttribute="centerY" secondItem="0R0-nO-Uzj" secondAttribute="centerY" id="AdU-wL-0tv"/>
+                        <constraint firstItem="8dw-F9-UVI" firstAttribute="centerY" secondItem="0R0-nO-Uzj" secondAttribute="centerY" id="X1F-sK-h6v"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="g13-Ij-sGc"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="160.86956521739131" y="-113.16964285714285"/>
         </scene>

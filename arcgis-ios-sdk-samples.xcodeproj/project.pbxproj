@@ -698,7 +698,7 @@
 		F12B174F22C6BA1000FDBB02 /* ProjectViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F12B52B522C43CE700E31F3F /* ProjectViewController.swift */; };
 		F12B175022C6C2A400FDBB02 /* Project.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12B52B322C43B7A00E31F3F /* Project.storyboard */; };
 		F12B52B622C43CE700E31F3F /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B52B522C43CE700E31F3F /* ProjectViewController.swift */; };
-		F15DFBF422C58C5100B1FEF1 /* customView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15DFBF322C58C5100B1FEF1 /* customView.swift */; };
+		F160469A22CACA7A0047F822 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F160469922CACA7A0047F822 /* StackView.swift */; };
 		F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */; };
 		F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6E20925AAE0016E53D /* OpenScene.storyboard */; };
 		F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4159C7020925B710016E53D /* OpenSceneViewController.swift */; };
@@ -1460,7 +1460,7 @@
 		F12B174022C6AFDF00FDBB02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F12B52B322C43B7A00E31F3F /* Project.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
 		F12B52B522C43CE700E31F3F /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
-		F15DFBF322C58C5100B1FEF1 /* customView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customView.swift; sourceTree = "<group>"; };
+		F160469922CACA7A0047F822 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeMap.storyboard; sourceTree = "<group>"; };
 		F4159C6E20925AAE0016E53D /* OpenScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenScene.storyboard; sourceTree = "<group>"; };
 		F4159C7020925B710016E53D /* OpenSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSceneViewController.swift; sourceTree = "<group>"; };
@@ -3677,7 +3677,7 @@
 			children = (
 				F12B52B322C43B7A00E31F3F /* Project.storyboard */,
 				F12B52B522C43CE700E31F3F /* ProjectViewController.swift */,
-				F15DFBF322C58C5100B1FEF1 /* customView.swift */,
+				F160469922CACA7A0047F822 /* StackView.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -4194,6 +4194,7 @@
 				C7E9D7C621C0500300E6C47E /* BufferViewController.swift in Sources */,
 				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
 				1682CAEE22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in Sources */,
+				F160469A22CACA7A0047F822 /* StackView.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,
 				098049A92253FC3F009C685D /* WFSLayersTableViewController.swift in Sources */,
@@ -4241,7 +4242,6 @@
 				4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */,
 				3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */,
 				3EF024E91ECBC10600166EC5 /* FormatCoordinatesViewController.swift in Sources */,
-				F15DFBF422C58C5100B1FEF1 /* customView.swift in Sources */,
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,
 				3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */,
 				3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */,

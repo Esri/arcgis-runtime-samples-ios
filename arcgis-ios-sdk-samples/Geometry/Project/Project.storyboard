@@ -33,44 +33,42 @@
                         <viewLayoutGuide key="safeArea" id="88d-OY-B86"/>
                     </view>
                     <connections>
-                        <outlet property="customView" destination="xZX-wv-fPH" id="nL7-80-Lwy"/>
+                        <outlet property="StackView" destination="RxA-QT-HUI" id="MVm-Bp-2fu"/>
                         <outlet property="mapView" destination="3l0-3p-UVN" id="jkl-nc-jnF"/>
+                        <outlet property="stackView" destination="RxA-QT-HUI" id="qQC-TP-T6x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5H-yI-c7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view hidden="YES" contentMode="scaleToFill" id="xZX-wv-fPH" userLabel="customView">
-                    <rect key="frame" x="0.0" y="0.0" width="311" height="105"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" id="RxA-QT-HUI" customClass="StackView" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Coordinates:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0R0-nO-Uzj">
-                            <rect key="frame" x="16" y="15" width="0.0" height="0.0"/>
-                            <accessibility key="accessibilityConfiguration" label="Title"/>
-                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubE-Tf-FbZ" userLabel="Title">
+                            <rect key="frame" x="0.0" y="0.0" width="110" height="66.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOS-xg-vRr">
-                            <rect key="frame" x="16" y="44" width="0.0" height="0.0"/>
-                            <accessibility key="accessibilityConfiguration" label="mapPoint"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLu-og-yAc" userLabel="Original">
+                            <rect key="frame" x="0.0" y="66.5" width="110" height="67"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dw-F9-UVI">
-                            <rect key="frame" x="16" y="73" width="0.0" height="0.0"/>
-                            <accessibility key="accessibilityConfiguration" label="projectedPoint"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVP-T2-KSB" userLabel="Projected">
+                            <rect key="frame" x="0.0" y="133.5" width="110" height="66.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="XOS-xg-vRr" firstAttribute="centerY" secondItem="0R0-nO-Uzj" secondAttribute="centerY" id="AdU-wL-0tv"/>
-                        <constraint firstItem="8dw-F9-UVI" firstAttribute="centerY" secondItem="0R0-nO-Uzj" secondAttribute="centerY" id="X1F-sK-h6v"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="g13-Ij-sGc"/>
-                </view>
+                    <viewLayoutGuide key="safeArea" id="gD3-eJ-zuU"/>
+                    <connections>
+                        <outlet property="original" destination="yLu-og-yAc" id="8G3-cg-RFd"/>
+                        <outlet property="projected" destination="rVP-T2-KSB" id="IQo-Ih-OmB"/>
+                        <outlet property="title" destination="ubE-Tf-FbZ" id="o5e-F3-7sj"/>
+                    </connections>
+                </stackView>
             </objects>
             <point key="canvasLocation" x="160.86956521739131" y="-113.16964285714285"/>
         </scene>

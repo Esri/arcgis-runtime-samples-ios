@@ -10,8 +10,9 @@ import UIKit
 import ArcGIS
 
 class ProjectViewController: UIViewController, AGSGeoViewTouchDelegate {
+    
     @IBOutlet private weak var mapView: AGSMapView!
-    @IBOutlet private weak var customView: UIView!
+    @IBOutlet private weak var stackView: StackView!
     private var graphicsOverlay:AGSGraphicsOverlay!
     private var map: AGSMap!
     override func viewDidLoad() {
@@ -43,15 +44,15 @@ class ProjectViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if self.mapView.callout.isHidden {
-            print("entered if")
-            customView = self.mapView.callout.customView
-//            self.mapView.callout.title = "Coordinates"
-//            let outputSpatialReference = AGSSpatialReference(wkid: 4236)!
-//            let projectedPoint = AGSGeometryEngine.projectGeometry(mapPoint, to: outputSpatialReference) as! AGSPoint
-//            self.mapView.callout.detail = String(format: "Original: %.5f, %.5f", mapPoint.x, mapPoint.y) + "\n" + String(format: "Projected: %.5f, %.5f ", projectedPoint.x, projectedPoint.y)
-//            self.mapView.callout.detail = String(format: "Projected: %.5f, %.5f ", projectedPoint.x, projectedPoint.y)
-//            self.mapView.callout.isAccessoryButtonHidden = true
-//            self.mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
+            let customCallout = stackView!
+            let outputSpatialReference = AGSSpatialReference(wkid: 4236)!
+            let projectedPoint = AGSGeometryEngine.projectGeometry(mapPoint, to: outputSpatialReference) as! AGSPoint
+            customCallout.title.text = "Coordinates"
+            customCallout.original.text = String(format: "Original: %.5f, %.5f", mapPoint.x, mapPoint.y)
+            customCallout.projected.text = String(format: "Projected: %.5f, %.5f", projectedPoint.x, projectedPoint.y)
+            self.mapView.callout.customView = customCallout
+            self.mapView.callout.isAccessoryButtonHidden = true
+            self.mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
             self.createGraphics(coord: mapPoint)
         } else {  //hide the callout
             graphicsOverlay.graphics.removeAllObjects()

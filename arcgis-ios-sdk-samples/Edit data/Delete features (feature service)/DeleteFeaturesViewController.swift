@@ -43,10 +43,12 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
         let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
-        self.featureLayer = featureLayer
         
         //add the feature layer to the operational layers on map
         map.operationalLayers.add(featureLayer)
+        
+        //store the feature layer for later use
+        self.featureLayer = featureLayer
     }
     
     func showCallout(for feature: AGSFeature, at tapLocation: AGSPoint) {

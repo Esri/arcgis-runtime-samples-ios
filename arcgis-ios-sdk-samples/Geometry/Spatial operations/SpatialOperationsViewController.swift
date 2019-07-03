@@ -118,8 +118,8 @@ class SpatialOperationsViewController: UIViewController, OperationsListVCDelegat
         //create result graphic if not present
         if self.resultGraphic == nil {
             let graphic = AGSGraphic(geometry: resultGeometry, symbol: symbol, attributes: nil)
-            self.resultGraphic = graphic
             self.graphicsOverlay.graphics.add(graphic)
+            self.resultGraphic = graphic
         }
             //update the geometry if already present
         else {

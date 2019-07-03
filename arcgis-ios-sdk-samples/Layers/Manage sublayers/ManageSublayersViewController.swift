@@ -34,7 +34,6 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         
         //initialize map image layer
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)
-        self.mapImageLayer = mapImageLayer
         
         //add layer to map
         map.operationalLayers.add(mapImageLayer)
@@ -50,6 +49,9 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         
         //create sublayers from tableSublayerSource
         self.createSublayers()
+        
+        //store the map image layer for later use
+        self.mapImageLayer = mapImageLayer
     }
     
     private func createSublayers() {

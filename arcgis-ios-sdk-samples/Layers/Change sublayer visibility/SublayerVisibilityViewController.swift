@@ -32,7 +32,6 @@ class SublayerVisibilityViewController: UIViewController {
         
         //initialize the map image layer using a url
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
-        self.mapImageLayer = mapImageLayer
         
         //add the image layer to the map
         self.map.operationalLayers.add(mapImageLayer)
@@ -42,6 +41,9 @@ class SublayerVisibilityViewController: UIViewController {
         
         //zoom to a custom viewpoint
         self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: .webMercator()), scale: 9e7)
+        
+        //store the map image layer for later use
+        self.mapImageLayer = mapImageLayer
     }
     
     // MARK: - Navigation

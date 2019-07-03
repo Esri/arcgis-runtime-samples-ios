@@ -52,12 +52,14 @@ class ViewshedCameraViewController: UIViewController {
         
         // create a viewshed from the camera with minimum and maximum distance (in meters) from the observer (camera) at which visibility will be evaluated
         let viewshed = AGSLocationViewshed(camera: camera, minDistance: 1.0, maxDistance: 500.0)
-        self.viewshed = viewshed
         
         // create an analysis overlay for the viewshed and to add it to the scene view
         let analysisOverlay = AGSAnalysisOverlay()
         analysisOverlay.analyses.add(viewshed)
         sceneView.analysisOverlays.add(analysisOverlay)
+        
+        // store the viewshed for later use
+        self.viewshed = viewshed
     }
     
     // MARK: - Actions

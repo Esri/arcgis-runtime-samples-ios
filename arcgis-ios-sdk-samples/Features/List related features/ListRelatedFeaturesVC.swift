@@ -48,7 +48,6 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
         
         //feature layer for parks
         let parksFeatureLayer = AGSFeatureLayer(featureTable: self.parksFeatureTable)
-        self.parksFeatureLayer = parksFeatureLayer
         
         //add parks feature layer to the map
         map.operationalLayers.add(parksFeatureLayer)
@@ -69,6 +68,9 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
         
         //set selection color
         mapView.selectionProperties.color = .yellow
+        
+        //store the feature layer for later use
+        self.parksFeatureLayer = parksFeatureLayer
     }
     
     // MARK: - AGSGeoViewTouchDelegate

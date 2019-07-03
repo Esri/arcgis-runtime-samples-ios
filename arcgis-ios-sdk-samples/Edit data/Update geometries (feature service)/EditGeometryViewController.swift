@@ -40,12 +40,14 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
         let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
-        self.featureLayer = featureLayer
         
         self.map.operationalLayers.add(featureLayer)
 
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
+        
+        //store the feature layer for later use
+        self.featureLayer = featureLayer
     }
     
     override func viewDidAppear(_ animated: Bool) {

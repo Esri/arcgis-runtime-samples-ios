@@ -33,7 +33,6 @@ class UniqueValueRendererViewController: UIViewController {
         //create feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        self.featureLayer = featureLayer
         
         //add the layer to the map as operational layer
         map.operationalLayers.add(featureLayer)
@@ -47,6 +46,9 @@ class UniqueValueRendererViewController: UIViewController {
         
         //add unique value renderer
         self.addUniqueValueRenderer()
+        
+        //store the feature layer for later use
+        self.featureLayer = featureLayer
     }
 
     private func addUniqueValueRenderer() {

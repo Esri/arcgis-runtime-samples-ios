@@ -45,7 +45,6 @@ class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchD
         
         //parks feature layer
         let parksFeatureLayer = AGSFeatureLayer(featureTable: self.parksFeatureTable)
-        self.parksFeatureLayer = parksFeatureLayer
         
         //add feature layer to the map
         map.operationalLayers.add(parksFeatureLayer)
@@ -63,6 +62,9 @@ class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchD
         
         //set touch delegate
         self.mapView.touchDelegate = self
+        
+        //store the feature layer for later use
+        self.parksFeatureLayer = parksFeatureLayer
     }
     
     // MARK: - AGSGeoViewTouchDelegate

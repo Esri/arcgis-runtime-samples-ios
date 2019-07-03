@@ -129,8 +129,8 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         //add the graphic at that point
         //keep a reference to that graphic to update the geometry if moved
         let graphic = graphicForLocation(mapPoint)
-        self.longPressedGraphic = graphic
         self.stopGraphicsOverlay.graphics.add(graphic)
+        self.longPressedGraphic = graphic
         //clear the route graphic
         self.longPressedRouteGraphic = nil
         //route

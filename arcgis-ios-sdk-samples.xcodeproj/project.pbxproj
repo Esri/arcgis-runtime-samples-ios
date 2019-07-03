@@ -699,6 +699,10 @@
 		F12B175022C6C2A400FDBB02 /* Project.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12B52B322C43B7A00E31F3F /* Project.storyboard */; };
 		F12B52B622C43CE700E31F3F /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B52B522C43CE700E31F3F /* ProjectViewController.swift */; };
 		F160469A22CACA7A0047F822 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F160469922CACA7A0047F822 /* StackView.swift */; };
+		F1E07BAA22CBD55A0037E6C6 /* StackView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F160469922CACA7A0047F822 /* StackView.swift */; };
+		F1E07BAD22CC00800037E6C6 /* CreateTerrainSurfaceFromLocalTilePackage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E07BAC22CC00800037E6C6 /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */; };
+		F1E07BAF22CC096E0037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E07BAE22CC096E0037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
+		F1E07BB022CC10190037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E07BAE22CC096E0037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */; };
 		F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6E20925AAE0016E53D /* OpenScene.storyboard */; };
 		F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4159C7020925B710016E53D /* OpenSceneViewController.swift */; };
@@ -724,6 +728,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1E07BB022CC10190037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */,
+				F1E07BAA22CBD55A0037E6C6 /* StackView.swift in CopyFiles */,
 				F12B174F22C6BA1000FDBB02 /* ProjectViewController.swift in CopyFiles */,
 				12CB156722678E9900014927 /* GroupLayersSectionView.swift in CopyFiles */,
 				12CB156822678E9900014927 /* GroupLayersViewController.swift in CopyFiles */,
@@ -1461,6 +1467,8 @@
 		F12B52B322C43B7A00E31F3F /* Project.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
 		F12B52B522C43CE700E31F3F /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		F160469922CACA7A0047F822 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		F1E07BAC22CC00800037E6C6 /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalTilePackage.storyboard; sourceTree = "<group>"; };
+		F1E07BAE22CC096E0037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalTilePackageViewController.swift; sourceTree = "<group>"; };
 		F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeMap.storyboard; sourceTree = "<group>"; };
 		F4159C6E20925AAE0016E53D /* OpenScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenScene.storyboard; sourceTree = "<group>"; };
 		F4159C7020925B710016E53D /* OpenSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSceneViewController.swift; sourceTree = "<group>"; };
@@ -2956,6 +2964,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F1E07BAB22CBDD9F0037E6C6 /* Create terrain surface from local tile package */,
 				F4159C6D20925A8D0016E53D /* Open a scene (portal item) */,
 				10859BA61FE0AAE400F6E552 /* Feature layer extrusion */,
 				3E8A05B81ECD07B00032231C /* Scene layer (URL) */,
@@ -3682,6 +3691,15 @@
 			path = Project;
 			sourceTree = "<group>";
 		};
+		F1E07BAB22CBDD9F0037E6C6 /* Create terrain surface from local tile package */ = {
+			isa = PBXGroup;
+			children = (
+				F1E07BAC22CC00800037E6C6 /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */,
+				F1E07BAE22CC096E0037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */,
+			);
+			path = "Create terrain surface from local tile package";
+			sourceTree = "<group>";
+		};
 		F4159C6D20925A8D0016E53D /* Open a scene (portal item) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3784,6 +3802,7 @@
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = P8HGHS7JQ8;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
@@ -3941,6 +3960,7 @@
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
 				3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */,
 				3E8A25911D36B97A00D14F08 /* MapLoaded.storyboard in Resources */,
+				F1E07BAD22CC00800037E6C6 /* CreateTerrainSurfaceFromLocalTilePackage.storyboard in Resources */,
 				C7E9D7C821C0500300E6C47E /* Buffer.storyboard in Resources */,
 				3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */,
 				E4B2E2651FE31E5200E610FF /* bradle.3ds in Resources */,
@@ -4236,6 +4256,7 @@
 				166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */,
 				C7432D3A2187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift in Sources */,
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,
+				F1E07BAF22CC096E0037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in Sources */,
 				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
 				940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */,
 				3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */,
@@ -4541,7 +4562,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P8HGHS7JQ8;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4552,7 +4573,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samplesVivian";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4571,7 +4592,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P8HGHS7JQ8;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4582,7 +4603,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samplesVivian";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

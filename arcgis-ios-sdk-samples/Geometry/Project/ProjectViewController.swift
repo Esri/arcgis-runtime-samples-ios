@@ -18,7 +18,7 @@ class ProjectViewController: UIViewController, AGSGeoViewTouchDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ProjectViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ProjectViewController", "StackView"]
         
         self.map = AGSMap(basemap: .nationalGeographic())
         self.mapView.map = self.map

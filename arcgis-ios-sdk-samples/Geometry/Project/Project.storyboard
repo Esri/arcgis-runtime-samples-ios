@@ -33,7 +33,6 @@
                         <viewLayoutGuide key="safeArea" id="88d-OY-B86"/>
                     </view>
                     <connections>
-                        <outlet property="StackView" destination="RxA-QT-HUI" id="MVm-Bp-2fu"/>
                         <outlet property="mapView" destination="3l0-3p-UVN" id="jkl-nc-jnF"/>
                         <outlet property="stackView" destination="RxA-QT-HUI" id="qQC-TP-T6x"/>
                     </connections>

@@ -107,7 +107,7 @@ class MapReferenceScaleSettingsViewController: UITableViewController {
             }
         })
         
-        if let row = possibleReferenceScales.index(of: Int(map.referenceScale.rounded(.toNearestOrAwayFromZero))) {
+        if let row = possibleReferenceScales.firstIndex(of: Int(map.referenceScale.rounded(.toNearestOrAwayFromZero))) {
             referenceScalePickerView.selectRow(row, inComponent: 0, animated: false)
         }
         

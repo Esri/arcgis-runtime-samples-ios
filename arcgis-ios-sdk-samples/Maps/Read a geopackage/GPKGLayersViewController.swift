@@ -138,7 +138,7 @@ class GPKGLayersViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
             // Insert the removed row back in the section for layers not in the map.
-            if let index = layersNotInMap.index(of: layer) {
+            if let index = layersNotInMap.firstIndex(of: layer) {
                 let newIndexPath = IndexPath(row: index, section: 1)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }

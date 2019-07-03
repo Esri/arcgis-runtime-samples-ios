@@ -65,6 +65,8 @@ private extension AGSLoadStatus {
         case .notLoaded:
             return "Not Loaded"
         case .unknown:
+            fallthrough
+        @unknown default:
             return "Unknown"
         }
     }

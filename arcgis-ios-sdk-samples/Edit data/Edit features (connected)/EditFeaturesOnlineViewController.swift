@@ -40,7 +40,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.mapView.touchDelegate = self
         
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
-        self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         self.map.operationalLayers.add(featureLayer)
         
         //initialize sketch editor and assign to map view
@@ -49,6 +49,9 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
                 
         //hide the sketchToolbar initially
         self.sketchToolbar.isHidden = true
+        
+        //store the feature layer for later use
+        self.featureLayer = featureLayer
     }
     
     private func dismissFeatureTemplatePickerVC() {

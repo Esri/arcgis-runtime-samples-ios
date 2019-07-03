@@ -19,7 +19,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
-    private var graphicsOverlay: AGSGraphicsOverlay!
+    private let graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +53,6 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.solid, color: .yellow, outline: nil)
         let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry(), symbol: nil, attributes: nil)
         
-        //initialize the graphics overlay
-        self.graphicsOverlay = AGSGraphicsOverlay()
         //assign the renderer
         self.graphicsOverlay.renderer = AGSSimpleRenderer(symbol: polygonSymbol)
         //add the polygon graphic

@@ -20,9 +20,6 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private var map: AGSMap!
     
-    private var featureLayer: AGSFeatureLayer!
-    private var mapImageLayer: AGSArcGISMapImageLayer!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,25 +30,25 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.map = AGSMap(basemap: .topographic())
         
         //map image layer
-        self.mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
+        let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
         //hide Continent and World layers
-        self.mapImageLayer.load { [weak self] (error: Error?) in
+        mapImageLayer.load { [weak mapImageLayer] (error: Error?) in
             if error == nil {
-                self?.mapImageLayer.subLayerContents[1].isVisible = false
-                self?.mapImageLayer.subLayerContents[2].isVisible = false
+                mapImageLayer?.subLayerContents[1].isVisible = false
+                mapImageLayer?.subLayerContents[2].isVisible = false
             }
         }
-        self.map.operationalLayers.add(self.mapImageLayer)
+        self.map.operationalLayers.add(mapImageLayer)
         
         //feature table
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
     
         //feature layer
-        self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
         //add feature layer add to the operational layers
-        self.map.operationalLayers.add(self.featureLayer)
+        self.map.operationalLayers.add(featureLayer)
         
         //set initial viewpoint to a specific region
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -10977012.785807, y: 4514257.550369, spatialReference: .webMercator()), scale: 68015210)

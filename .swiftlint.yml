@@ -43,7 +43,6 @@ opt_in_rules: # some rules are only opt-in
   - empty_xctest_method
   - explicit_init
   - extension_access_modifier
-  - fallthrough
   - fatal_error_message
   - first_where
   - function_default_parameter_at_end

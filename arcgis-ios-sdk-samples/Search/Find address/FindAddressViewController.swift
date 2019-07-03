@@ -22,7 +22,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     
     private var locatorTask: AGSLocatorTask!
     private var geocodeParameters: AGSGeocodeParameters!
-    private var graphicsOverlay: AGSGraphicsOverlay!
+    private let graphicsOverlay = AGSGraphicsOverlay()
     
     private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
@@ -37,8 +37,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.map = map
         self.mapView.touchDelegate = self
         
-        //initialize the graphics overlay and add to the map view
-        self.graphicsOverlay = AGSGraphicsOverlay()
+        //add the graphics overlay to the map view
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         //initialize locator task

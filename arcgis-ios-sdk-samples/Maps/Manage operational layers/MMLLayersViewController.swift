@@ -149,6 +149,8 @@ class MMLLayersViewController: UITableViewController {
             })
         case .none:
             break
+        @unknown default:
+            break
         }
     }
 }

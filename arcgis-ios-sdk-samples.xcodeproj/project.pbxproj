@@ -701,6 +701,11 @@
 		E4B2E26C1FE3321500E610FF /* ViewshedGeoElementViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4B2E2681FE31ED500E610FF /* ViewshedGeoElementViewController.swift */; };
 		E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */; };
 		E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
+		F1034F9C22D3EE8900B021DA /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1034F9922D3EE8900B021DA /* StackView.swift */; };
+		F1034F9D22D3EE8900B021DA /* Project.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1034F9A22D3EE8900B021DA /* Project.storyboard */; };
+		F1034F9E22D3EE8900B021DA /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */; };
+		F1034F9F22D3F24700B021DA /* ProjectViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */; };
+		F1034FA022D3F24700B021DA /* StackView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034F9922D3EE8900B021DA /* StackView.swift */; };
 		F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */; };
 		F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6E20925AAE0016E53D /* OpenScene.storyboard */; };
 		F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4159C7020925B710016E53D /* OpenSceneViewController.swift */; };
@@ -726,6 +731,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1034F9F22D3F24700B021DA /* ProjectViewController.swift in CopyFiles */,
+				F1034FA022D3F24700B021DA /* StackView.swift in CopyFiles */,
 				12CB156722678E9900014927 /* GroupLayersSectionView.swift in CopyFiles */,
 				12CB156822678E9900014927 /* GroupLayersViewController.swift in CopyFiles */,
 				12CB156922678E9900014927 /* LayersTableViewController.swift in CopyFiles */,
@@ -1451,6 +1458,9 @@
 		E4B2E26A1FE31EEA00E610FF /* ViewshedGeoElement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewshedGeoElement.storyboard; sourceTree = "<group>"; };
 		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DistanceCompositeSymbol.storyboard; sourceTree = "<group>"; };
 		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCompositeSymbolViewController.swift; sourceTree = "<group>"; };
+		F1034F9922D3EE8900B021DA /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		F1034F9A22D3EE8900B021DA /* Project.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
+		F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeMap.storyboard; sourceTree = "<group>"; };
 		F4159C6E20925AAE0016E53D /* OpenScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenScene.storyboard; sourceTree = "<group>"; };
 		F4159C7020925B710016E53D /* OpenSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSceneViewController.swift; sourceTree = "<group>"; };
@@ -2389,6 +2399,7 @@
 		3EBA25711D34509500AB0703 /* Geometry */ = {
 			isa = PBXGroup;
 			children = (
+				F1034F9822D3EDFE00B021DA /* Project */,
 				3EBA25721D3450B800AB0703 /* Create geometries */,
 				3E0B58551E36D8D300951767 /* Spatial operations */,
 				3EF024E51ECBC10600166EC5 /* Format coordinates */,
@@ -3669,6 +3680,16 @@
 			path = "Distance composite symbol";
 			sourceTree = "<group>";
 		};
+		F1034F9822D3EDFE00B021DA /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				F1034F9A22D3EE8900B021DA /* Project.storyboard */,
+				F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */,
+				F1034F9922D3EE8900B021DA /* StackView.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
 		F4159C6D20925A8D0016E53D /* Open a scene (portal item) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3849,6 +3870,7 @@
 				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
 				21EBBBFD1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
+				F1034F9D22D3EE8900B021DA /* Project.storyboard in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
 				3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */,
 				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
@@ -4181,6 +4203,7 @@
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
 				C7E9D7C621C0500300E6C47E /* BufferViewController.swift in Sources */,
 				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
+				F1034F9C22D3EE8900B021DA /* StackView.swift in Sources */,
 				1682CAEE22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,
@@ -4235,6 +4258,7 @@
 				4CECF8A121D57F4000A56161 /* SetMinMaxScaleViewController.swift in Sources */,
 				3EBA25631D3417B000AB0703 /* SimpleMarkerSymbolViewController.swift in Sources */,
 				3E81C1BB1D8A17B600470AA4 /* VectorStylesViewController.swift in Sources */,
+				F1034F9E22D3EE8900B021DA /* ProjectViewController.swift in Sources */,
 				3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */,
 				D9316A641FDB4F060075AD92 /* ReadGeopackageViewController.swift in Sources */,
 				3ED028921B8E3A8500ACA70D /* SetInitialMapLocationViewController.swift in Sources */,

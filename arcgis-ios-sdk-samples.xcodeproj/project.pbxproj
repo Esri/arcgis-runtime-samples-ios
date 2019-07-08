@@ -699,6 +699,7 @@
 		F12B175022C6C2A400FDBB02 /* Project.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12B52B322C43B7A00E31F3F /* Project.storyboard */; };
 		F12B52B622C43CE700E31F3F /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B52B522C43CE700E31F3F /* ProjectViewController.swift */; };
 		F160469A22CACA7A0047F822 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F160469922CACA7A0047F822 /* StackView.swift */; };
+		F17D486A22CD51C000831538 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F17D486922CD51BF00831538 /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (monterey_elevation, ); }; };
 		F1E07BAA22CBD55A0037E6C6 /* StackView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F160469922CACA7A0047F822 /* StackView.swift */; };
 		F1E07BAD22CC00800037E6C6 /* CreateTerrainSurfaceFromLocalTilePackage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E07BAC22CC00800037E6C6 /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */; };
 		F1E07BAF22CC096E0037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E07BAE22CC096E0037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
@@ -1467,6 +1468,7 @@
 		F12B52B322C43B7A00E31F3F /* Project.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
 		F12B52B522C43CE700E31F3F /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		F160469922CACA7A0047F822 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		F17D486922CD51BF00831538 /* MontereyElevation.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpk; sourceTree = "<group>"; };
 		F1E07BAC22CC00800037E6C6 /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalTilePackage.storyboard; sourceTree = "<group>"; };
 		F1E07BAE22CC096E0037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalTilePackageViewController.swift; sourceTree = "<group>"; };
 		F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeMap.storyboard; sourceTree = "<group>"; };
@@ -2964,7 +2966,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				F1E07BAB22CBDD9F0037E6C6 /* Create terrain surface from local tile package */,
+				F1E07BAB22CBDD9F0037E6C6 /* Create terrain surface from a local tile package */,
 				F4159C6D20925A8D0016E53D /* Open a scene (portal item) */,
 				10859BA61FE0AAE400F6E552 /* Feature layer extrusion */,
 				3E8A05B81ECD07B00032231C /* Scene layer (URL) */,
@@ -3115,6 +3117,7 @@
 		4C060E652261195C0070C787 /* Tile Packages */ = {
 			isa = PBXGroup;
 			children = (
+				F17D486922CD51BF00831538 /* MontereyElevation.tpk */,
 				4C060E662261195C0070C787 /* naperville_imagery.tpk */,
 			);
 			path = "Tile Packages";
@@ -3691,13 +3694,13 @@
 			path = Project;
 			sourceTree = "<group>";
 		};
-		F1E07BAB22CBDD9F0037E6C6 /* Create terrain surface from local tile package */ = {
+		F1E07BAB22CBDD9F0037E6C6 /* Create terrain surface from a local tile package */ = {
 			isa = PBXGroup;
 			children = (
 				F1E07BAC22CC00800037E6C6 /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */,
 				F1E07BAE22CC096E0037E6C6 /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */,
 			);
-			path = "Create terrain surface from local tile package";
+			path = "Create terrain surface from a local tile package";
 			sourceTree = "<group>";
 		};
 		F4159C6D20925A8D0016E53D /* Open a scene (portal item) */ = {
@@ -3791,6 +3794,7 @@
 					SubdivisionsShapefile,
 					TilePackages,
 					YellowstoneMMPK,
+					monterey_elevation,
 					naperville_imagery,
 					philadelphia,
 					"sandiego-north-balboa-pointcloud",
@@ -3906,6 +3910,7 @@
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				4CCA30C622386413009D2AEF /* ViewPointCloudDataOffline.storyboard in Resources */,
 				3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */,
+				F17D486A22CD51C000831538 /* MontereyElevation.tpk in Resources */,
 				D9316A631FDB4F060075AD92 /* ReadGeopackage.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
 				3E8A258A1D36B89400D14F08 /* LA_Trails.geodatabase in Resources */,

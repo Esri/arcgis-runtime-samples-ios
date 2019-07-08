@@ -1241,6 +1241,10 @@
                 <string>CreateTerrainSurfaceFromLocalTilePackage</string>
                 <key>displayName</key>
                 <string>Create terrain surface from a local tile package</string>
+                <key>dependency</key>
+                <array>
+                    <string>monterey_elevation</string>
+                </array>
             </dict>
 			<dict>
 				<key>descriptionText</key>

@@ -36,9 +36,16 @@ This terrain data comes from Monterey, California.
 
 `adb push MontereyElevation.tpk /sdcard/ArcGIS/Samples/TileCache/MontereyElevation.tpk`
 
-| Link | Local Location |
-| --------- | ------- |
-| [MontereyElevation Tile Package](https://www.arcgis.com/home/item.html?id=cce37043eb0440c7a5c109cf8aad5500) |  `<userhome>`/ArcGIS/Runtime/Data/tpk/MontereyElevation.tpk |
+<table>
+    <tr>
+        <th> Link </th>
+        <th>Local Location</th>
+    </tr>
+    <tr>
+        <td><a href="https://www.arcgis.com/home/item.html?id=cce37043eb0440c7a5c109cf8aad5500">MontereyElevation Tile Package</a></td>
+        <td><xmp><userhome>/ArcGIS/Runtime/Data/tpk/MontereyElevation.tpk </xmp></td>
+    </tr>
+</table>
 
 #### Tags
 Maps & Scenes 3D Tile Cache Elevation Surface

@@ -19,8 +19,6 @@ import ArcGIS
 class UniqueValueRendererViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
-    private var featureLayer: AGSFeatureLayer!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +32,9 @@ class UniqueValueRendererViewController: UIViewController {
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
+        //make unique value renderer and assign it to the feature layer
+        featureLayer.renderer = makeUniqueValueRenderer()
+        
         //add the layer to the map as operational layer
         map.operationalLayers.add(featureLayer)
         
@@ -43,15 +44,9 @@ class UniqueValueRendererViewController: UIViewController {
         //set initial viewpoint
         let center = AGSPoint(x: -12966000.5, y: 4441498.5, spatialReference: .webMercator())
         self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 4e7))
-        
-        //add unique value renderer
-        self.addUniqueValueRenderer()
-        
-        //store the feature layer for later use
-        self.featureLayer = featureLayer
     }
-
-    private func addUniqueValueRenderer() {
+    
+    func makeUniqueValueRenderer() -> AGSUniqueValueRenderer {
         //instantiate a new unique value renderer
         let renderer = AGSUniqueValueRenderer()
         
@@ -77,7 +72,6 @@ class UniqueValueRendererViewController: UIViewController {
         //add the values to the renderer
         renderer.uniqueValues.append(contentsOf: [californiaValue, arizonaValue, nevadaValue])
         
-        //assign the renderer to the feature layer
-        self.featureLayer.renderer = renderer
+        return renderer
     }
 }

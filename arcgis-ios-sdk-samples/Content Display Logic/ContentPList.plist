@@ -1234,6 +1234,11 @@
 				<string>This sample demonstrates how to access a map service that is secured with ArcGIS token-based authentication.</string>
 				<key>storyboardName</key>
 				<string>TokenAuthentication</string>
+                <key>dependency</key>
+                <array>
+                    <string>ShastaElevationRaster</string>
+                    <string>ShastaRaster</string>
+                </array>
 			</dict>
 		</array>
 	</dict>
@@ -1242,6 +1247,14 @@
 		<string>Scenes</string>
 		<key>children</key>
 		<array>
+            <dict>
+                <key>descriptionText</key>
+                <string>This sample shows you how to set the terrain surface with elevation described by a raster file.</string>
+                <key>storyboardName</key>
+                <string>CreateTerrainSurfaceFromLocalRaster</string>
+                <key>displayName</key>
+                <string>Create terrain surface from a local raster</string>
+            </dict>
 			<dict>
 				<key>descriptionText</key>
 				<string>This sample shows you how to open a web scene from a portal item.</string>

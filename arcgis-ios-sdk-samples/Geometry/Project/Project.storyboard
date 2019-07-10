@@ -38,7 +38,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5H-yI-c7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" id="RxA-QT-HUI" customClass="StackView" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" id="RxA-QT-HUI" customClass="ProjectStackView" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>

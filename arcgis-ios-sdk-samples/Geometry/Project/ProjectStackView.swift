@@ -16,11 +16,8 @@ import Foundation
 import UIKit
 import ArcGIS
 
-class StackView: UIStackView {
-
+class ProjectStackView: UIStackView {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var original: UILabel!
     @IBOutlet weak var projected: UILabel!
-    
-
 }

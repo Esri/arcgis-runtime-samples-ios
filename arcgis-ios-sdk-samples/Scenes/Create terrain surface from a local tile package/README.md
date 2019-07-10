@@ -20,8 +20,8 @@ scene.baseSurface = surface```.
 
 ## Relevant API
 
-- ArcGISTiledElevationSource
-- Surface
+* ArcGISTiledElevationSource
+* Surface
 
 ## About the data
 
@@ -47,5 +47,5 @@ This terrain data comes from Monterey, California.
     </tr>
 </table>
 
-#### Tags
-Maps & Scenes 3D Tile Cache Elevation Surface
+## Tags
+3D, tile cache, elevation, surface

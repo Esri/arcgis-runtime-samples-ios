@@ -17,8 +17,8 @@ import UIKit
 import ArcGIS
 
 class CreateTerrainSurfaceFromLocalTilePackageViewController: UIViewController {
-    
     @IBOutlet weak var sceneView: AGSSceneView!
+    
         private func setupScene() {
         let scene = AGSScene(basemapType: .imageryWithLabels)
         sceneView.scene = scene
@@ -27,7 +27,7 @@ class CreateTerrainSurfaceFromLocalTilePackageViewController: UIViewController {
         sceneView.setViewpointCamera(camera)
         
         let surface = AGSSurface()
-        let tpkURL = Bundle.main.url(forResource:"MontereyElevation", withExtension:".tpk")!
+        let tpkURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".tpk")!
         let elevationSource = AGSArcGISTiledElevationSource(url: tpkURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
@@ -37,5 +37,4 @@ class CreateTerrainSurfaceFromLocalTilePackageViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CreateTerrainSurfaceFromLocalTilePackageViewController"]
         setupScene()
     }
-
 }

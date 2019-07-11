@@ -42,7 +42,7 @@ This terrain data comes from Monterey, California.
     </tr>
     <tr>
         <td><a href="https://www.arcgis.com/home/item.html?id=cce37043eb0440c7a5c109cf8aad5500">MontereyElevation Tile Package</a></td>
-        <td><xmp><userhome>/ArcGIS/Runtime/Data/tpk/MontereyElevation.tpk </xmp></td>
+        <td><code><userhome>/ArcGIS/Runtime/Data/tpk/MontereyElevation.tpk </code></td>
     </tr>
 </table>
 

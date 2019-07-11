@@ -701,6 +701,8 @@
 		E4B2E26C1FE3321500E610FF /* ViewshedGeoElementViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4B2E2681FE31ED500E610FF /* ViewshedGeoElementViewController.swift */; };
 		E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */; };
 		E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
+		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
+		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
 		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */; };
@@ -728,6 +730,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */,
 				12CB156722678E9900014927 /* GroupLayersSectionView.swift in CopyFiles */,
 				12CB156822678E9900014927 /* GroupLayersViewController.swift in CopyFiles */,
 				12CB156922678E9900014927 /* LayersTableViewController.swift in CopyFiles */,
@@ -1453,6 +1456,7 @@
 		E4B2E26A1FE31EEA00E610FF /* ViewshedGeoElement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewshedGeoElement.storyboard; sourceTree = "<group>"; };
 		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DistanceCompositeSymbol.storyboard; sourceTree = "<group>"; };
 		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCompositeSymbolViewController.swift; sourceTree = "<group>"; };
+		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "arcgis-ios-sdk-samples/Scenes/Create terrain surface from a local raster/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
 		F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalRaster.storyboard; sourceTree = "<group>"; };
 		F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalRasterViewController.swift; sourceTree = "<group>"; };
 		F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeMap.storyboard; sourceTree = "<group>"; };
@@ -2281,6 +2285,7 @@
 		3EABC7951DB1787600C161C6 /* Rasters */ = {
 			isa = PBXGroup;
 			children = (
+				F151AB8A22D7B07800055E45 /* Monterey_Elevation */,
 				3E1E5EEC1D9F0B5600F4913C /* srtm.tiff */,
 				3EE385511DD4FDE600B13E3C /* srtm.tiff.ovr */,
 				3EABC7BC1DB1919E00C161C6 /* Shasta_Elevation */,
@@ -3674,6 +3679,14 @@
 			path = "Distance composite symbol";
 			sourceTree = "<group>";
 		};
+		F151AB8A22D7B07800055E45 /* Monterey_Elevation */ = {
+			isa = PBXGroup;
+			children = (
+				F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */,
+			);
+			path = Monterey_Elevation;
+			sourceTree = "<group>";
+		};
 		F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */ = {
 			isa = PBXGroup;
 			children = (
@@ -3760,6 +3773,7 @@
 					LATrailsGeodatabase,
 					MissionFiles,
 					MobileMapPackages,
+					MontereyElevationRaster,
 					PublicArtShapefile,
 					SRTMRaster,
 					SanDiegoLocator,
@@ -4039,6 +4053,7 @@
 				4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */,
 				D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */,
 				4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */,
+				F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */,
 				4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
@@ -4536,7 +4551,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P8HGHS7JQ8;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4550,7 +4565,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples-Viv";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4568,7 +4583,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P8HGHS7JQ8;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4582,7 +4597,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples-Viv";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

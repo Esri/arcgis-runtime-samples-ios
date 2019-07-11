@@ -1,4 +1,4 @@
-// Copyright 2018 Esri.
+// Copyright 2019 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,13 +17,13 @@ import ArcGIS
 
 class CreateTerrainSurfaceFromLocalRasterViewController: UIViewController {
     @IBOutlet weak var sceneView: AGSSceneView!
-    
+
     private func setupScene() {
         let scene = AGSScene(basemapType: .imageryWithLabels)
         sceneView.scene = scene
         let camera = AGSCamera(latitude: 36.525, longitude: -121.80, altitude: 300.0, heading: 180, pitch: 80, roll: 0)
         sceneView.setViewpointCamera(camera)
-        
+
         let surface = AGSSurface()
         let rasterURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".dt2")!
         print("Got URL:", rasterURL)

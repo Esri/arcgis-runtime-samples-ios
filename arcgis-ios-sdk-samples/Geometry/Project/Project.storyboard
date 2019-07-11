@@ -63,9 +63,9 @@
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="gD3-eJ-zuU"/>
                     <connections>
-                        <outlet property="original" destination="yLu-og-yAc" id="8G3-cg-RFd"/>
-                        <outlet property="projected" destination="rVP-T2-KSB" id="IQo-Ih-OmB"/>
-                        <outlet property="title" destination="ubE-Tf-FbZ" id="o5e-F3-7sj"/>
+                        <outlet property="originalLabel" destination="yLu-og-yAc" id="qHo-JO-SQT"/>
+                        <outlet property="projectedLabel" destination="rVP-T2-KSB" id="fGn-79-881"/>
+                        <outlet property="titleLabel" destination="ubE-Tf-FbZ" id="irE-Or-5fR"/>
                     </connections>
                 </stackView>
             </objects>

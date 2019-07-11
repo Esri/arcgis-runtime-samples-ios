@@ -24,46 +24,42 @@ class ProjectViewController: UIViewController, AGSGeoViewTouchDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ProjectViewController", "ProjectStackView"]
+        //initialize the map
+        mapView.map = AGSMap(basemap: .nationalGeographic())
+        mapView.touchDelegate = self
+        mapView.setViewpointCenter(AGSPoint(x: -1.2e7, y: 5e6, spatialReference: .webMercator()), scale: 4e7)
         
-        self.map = AGSMap(basemap: .nationalGeographic())
-        self.mapView.map = self.map
-        self.mapView.touchDelegate = self
-        self.mapView.setViewpointCenter(AGSPoint(x: -1.2e7, y: 5e6, spatialReference: .webMercator()), scale: 4e7)
+        //initialize the graphic overlay
+        let graphicsOverlay = AGSGraphicsOverlay()
+        mapView.graphicsOverlays.add(graphicsOverlay)
+        self.graphicsOverlay = graphicsOverlay
+        
+        //add the source code button item to the right of navigation bar
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ProjectViewController", "ProjectStackView"]
     }
     
-    private func createGraphics(coord: AGSPoint) {
-        createGraphicsOverlay()
-        createPointGraphics(point: coord)
-    }
-    
-    private func createGraphicsOverlay() {
-        graphicsOverlay = AGSGraphicsOverlay()
-        self.mapView.graphicsOverlays.add(graphicsOverlay as Any)
-    }
-    private func createPointGraphics (point: AGSPoint) {
+    //make graphics
+    private func makeGraphics(coord: AGSPoint) {
         let pointSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 5.0)
         pointSymbol.outline = AGSSimpleLineSymbol(style: .solid, color: .red, width: 2.0)
-        let pointGraphic = AGSGraphic(geometry: point, symbol: pointSymbol, attributes: nil)
+        let pointGraphic = AGSGraphic(geometry: coord, symbol: pointSymbol, attributes: nil)
         graphicsOverlay.graphics.add(pointGraphic)
     }
     
     // MARK: - AGSGeoViewTouchDelegate
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if self.mapView.callout.isHidden {
+        if mapView.callout.isHidden {
             let customCallout = stackView!
-            let outputSpatialReference = AGSSpatialReference(wkid: 4236)!
-            let projectedPoint = AGSGeometryEngine.projectGeometry(mapPoint, to: outputSpatialReference) as! AGSPoint
-            customCallout.title.text = "Coordinates"
-            customCallout.original.text = String(format: "Original: %.5f, %.5f", mapPoint.x, mapPoint.y)
-            customCallout.projected.text = String(format: "Projected: %.5f, %.5f", projectedPoint.x, projectedPoint.y)
-            self.mapView.callout.customView = customCallout
-            self.mapView.callout.isAccessoryButtonHidden = true
-            self.mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
-            self.createGraphics(coord: mapPoint)
+            let projectedPoint = AGSGeometryEngine.projectGeometry(mapPoint, to: .wgs84()) as! AGSPoint
+            customCallout.titleLabel.text = "Coordinates"
+            customCallout.originalLabel.text = String(format: "Original: %.5f, %.5f", mapPoint.x, mapPoint.y)
+            customCallout.projectedLabel.text = String(format: "Projected: %.5f, %.5f", projectedPoint.x, projectedPoint.y)
+            mapView.callout.customView = customCallout
+            mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
+            makeGraphics(coord: mapPoint)
         } else {  //hide the callout
             graphicsOverlay.graphics.removeAllObjects()
-            self.mapView.callout.dismiss()
+            mapView.callout.dismiss()
         }
     }
 }

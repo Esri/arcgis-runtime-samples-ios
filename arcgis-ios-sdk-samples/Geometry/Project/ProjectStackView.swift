@@ -12,12 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
 import UIKit
-import ArcGIS
 
 class ProjectStackView: UIStackView {
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var original: UILabel!
-    @IBOutlet weak var projected: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var originalLabel: UILabel!
+    @IBOutlet weak var projectedLabel: UILabel!
 }

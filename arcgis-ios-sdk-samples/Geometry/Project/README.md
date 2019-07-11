@@ -2,7 +2,7 @@
 
 Project a point to another spatial reference.
 
-Being able to project between spatial references is fundamental to a GIS. An example of when you would need to re-project data is if you had data in two different spatial references, but wanted to perform an intersect analysis with the `AGSGeometryEngine.Intersection` method. This method takes two geometries as parameters, and both geometries must be in the same spatial reference. If they are not, you could first use `AGSGeometryEngine.project` to convert the geometries so they match.
+Being able to project between spatial references is fundamental to a GIS. An example of when you would need to re-project data is if you had data in two different spatial references, but wanted to perform an intersect analysis with the `class AGSGeometryEngine.intersection(ofGeometry1:geometry2:)` method. This method takes two geometries as parameters, and both geometries must be in the same spatial reference. If they are not, you could first use `class AGSGeometryEngine.projectGeometry(_:to:)` to convert the geometries so they match.
 
 ![Project App](project.png)
 
@@ -12,7 +12,8 @@ Tap anywhere on the map. A callout will display the tapped location's coordinate
 
 ## How it works
 
-To project a geometry to another spatial reference: Use the `AGSGeometryEngine.projectGeometry` method, passing in the chosen coordinates to find the spatial reference coordinates. 
+1. Call the  static method, `class AGSGeometryEngine.projectGeometry(_:to:)` passing in the original `Geometry` and a `SpatialReference` to which it should be projected.
+
 
 ## Relevant API
 
@@ -20,6 +21,10 @@ To project a geometry to another spatial reference: Use the `AGSGeometryEngine.p
 * AGSPoint
 * AGSSpatialReference
 
+## Additional information
+
+In cases where the the output spatial reference uses a different geographic coordinate system than that of the input spatial reference, see the GeometryEngine.project method that additionally takes in a DatumTransformation parameter.
+
 ## Tags
 
-AGSGeometryEngine, AGSSpatialReference
+AGSGeometryEngine, projection, spatial reference, Web Mercator, WGS 84, latitude, longitude, projected coordinate system, geographic coordinate system

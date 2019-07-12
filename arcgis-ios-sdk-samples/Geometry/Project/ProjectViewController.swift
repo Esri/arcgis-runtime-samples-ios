@@ -15,38 +15,40 @@
 import UIKit
 import ArcGIS
 
-class ProjectViewController: UIViewController, AGSGeoViewTouchDelegate {
-    @IBOutlet private weak var mapView: AGSMapView!
+class ProjectViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView! {
+        didSet {
+            //initialize the map
+            mapView.map = AGSMap(basemap: .nationalGeographic())
+            mapView.touchDelegate = self
+            mapView.setViewpointCenter(AGSPoint(x: -1.2e7, y: 5e6, spatialReference: .webMercator()), scale: 4e7)
+            
+            //initialize the graphic overlay
+            mapView.graphicsOverlays.add(graphicsOverlay)
+//            self.graphicsOverlay = graphicsOverlay
+        }
+    }
+    
     @IBOutlet private weak var stackView: ProjectStackView!
-    private var graphicsOverlay: AGSGraphicsOverlay!
-    private var map: AGSMap!
+    
+    private let graphicsOverlay = AGSGraphicsOverlay()
+    
+    //make graphics
+    private func makeGraphics(geometry: AGSGeometry) -> AGSGraphic {
+        let pointSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 5.0)
+        pointSymbol.outline = AGSSimpleLineSymbol(style: .solid, color: .red, width: 2.0)
+        return AGSGraphic(geometry: geometry, symbol: pointSymbol)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //initialize the map
-        mapView.map = AGSMap(basemap: .nationalGeographic())
-        mapView.touchDelegate = self
-        mapView.setViewpointCenter(AGSPoint(x: -1.2e7, y: 5e6, spatialReference: .webMercator()), scale: 4e7)
-        
-        //initialize the graphic overlay
-        let graphicsOverlay = AGSGraphicsOverlay()
-        mapView.graphicsOverlays.add(graphicsOverlay)
-        self.graphicsOverlay = graphicsOverlay
-        
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ProjectViewController", "ProjectStackView"]
     }
+}
     
-    //make graphics
-    private func makeGraphics(coord: AGSPoint) {
-        let pointSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 5.0)
-        pointSymbol.outline = AGSSimpleLineSymbol(style: .solid, color: .red, width: 2.0)
-        let pointGraphic = AGSGraphic(geometry: coord, symbol: pointSymbol, attributes: nil)
-        graphicsOverlay.graphics.add(pointGraphic)
-    }
-    
-    // MARK: - AGSGeoViewTouchDelegate
+// MARK: - AGSGeoViewTouchDelegate
+extension ProjectViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if mapView.callout.isHidden {
             let customCallout = stackView!
@@ -56,7 +58,7 @@ class ProjectViewController: UIViewController, AGSGeoViewTouchDelegate {
             customCallout.projectedLabel.text = String(format: "Projected: %.5f, %.5f", projectedPoint.x, projectedPoint.y)
             mapView.callout.customView = customCallout
             mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
-            makeGraphics(coord: mapPoint)
+            graphicsOverlay.graphics.add(makeGraphics(geometry: mapPoint))
         } else {  //hide the callout
             graphicsOverlay.graphics.removeAllObjects()
             mapView.callout.dismiss()

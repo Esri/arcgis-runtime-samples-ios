@@ -2285,7 +2285,6 @@
 		3EABC7951DB1787600C161C6 /* Rasters */ = {
 			isa = PBXGroup;
 			children = (
-				F151AB8A22D7B07800055E45 /* Monterey_Elevation */,
 				3E1E5EEC1D9F0B5600F4913C /* srtm.tiff */,
 				3EE385511DD4FDE600B13E3C /* srtm.tiff.ovr */,
 				3EABC7BC1DB1919E00C161C6 /* Shasta_Elevation */,
@@ -3298,6 +3297,7 @@
 		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
 			isa = PBXGroup;
 			children = (
+				F1679F0422D93FA900E5320A /* Rasters */,
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
 				4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */,
 				4C060E652261195C0070C787 /* Tile Packages */,
@@ -3685,6 +3685,14 @@
 				F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */,
 			);
 			path = Monterey_Elevation;
+			sourceTree = "<group>";
+		};
+		F1679F0422D93FA900E5320A /* Rasters */ = {
+			isa = PBXGroup;
+			children = (
+				F151AB8A22D7B07800055E45 /* Monterey_Elevation */,
+			);
+			path = Rasters;
 			sourceTree = "<group>";
 		};
 		F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */ = {
@@ -4565,7 +4573,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples-Viv";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4597,7 +4605,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples-Viv";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -40,10 +40,10 @@ This raster data comes from Monterey, California.
 ## Offline data
 
 1. Download the data from [ArcGIS Online](https://arcgisruntime.maps.arcgis.com/home/item.html?id=98092369c4ae4d549bbbd45dba993ebc).
-1. Extract the contents of the downloaded zip file to disk.
-1. Add the contents into your Xcode project in argis-ios-sdk-samples/Shared resources/Rasters.
-1. Select the imported files and create tags in under On Demand Resource Tags in the File Inspector.
-1. Include the new tags in the array of Dependencies in ContentPList.plist.
+2. Extract the contents of the downloaded zip file to disk.
+3. Add the contents into your Xcode project in argis-ios-sdk-samples/Shared resources/Rasters.
+4. Select the imported files and create tags in under On Demand Resource Tags in the File Inspector.
+5. Include the new tags in the array of Dependencies in ContentPList.plist.
 
 <table>
 <tr>
@@ -52,7 +52,7 @@ This raster data comes from Monterey, California.
 </tr>
 <tr>
 <td><a href="https://arcgisruntime.maps.arcgis.com/home/item.html?id=98092369c4ae4d549bbbd45dba993ebc">Monterey Elevation Raster</a></td>
-<td><xmp><userhome>/ArcGIS/Raster/dt2/MontereyElevation.dt2 </xmp></td>
+<td><code><userhome>/ArcGIS/Raster/dt2/MontereyElevation.dt2 </code></td>
 </tr>
 </table>
 

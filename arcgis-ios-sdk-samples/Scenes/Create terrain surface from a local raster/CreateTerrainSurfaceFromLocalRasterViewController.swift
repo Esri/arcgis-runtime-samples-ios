@@ -16,24 +16,27 @@ import Foundation
 import ArcGIS
 
 class CreateTerrainSurfaceFromLocalRasterViewController: UIViewController {
-    @IBOutlet weak var sceneView: AGSSceneView!
-
-    private func setupScene() {
-        let scene = AGSScene(basemapType: .imageryWithLabels)
-        sceneView.scene = scene
-        let camera = AGSCamera(latitude: 36.525, longitude: -121.80, altitude: 300.0, heading: 180, pitch: 80, roll: 0)
-        sceneView.setViewpointCamera(camera)
-
-        let surface = AGSSurface()
-        let rasterURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".dt2")!
-        print("Got URL:", rasterURL)
-        let rasterElevationSource = AGSRasterElevationSource(fileURLs: [rasterURL])
-        surface.elevationSources.append(rasterElevationSource)
-        scene.baseSurface = surface
+    @IBOutlet weak var sceneView: AGSSceneView! {
+        didSet {
+            //initialize scene
+            let scene = AGSScene(basemapType: .imageryWithLabels)
+            sceneView.scene = scene
+            let camera = AGSCamera(latitude: 36.525, longitude: -121.80, altitude: 300.0, heading: 180, pitch: 80, roll: 0)
+            sceneView.setViewpointCamera(camera)
+            
+            //add a raster to the surface
+            let surface = AGSSurface()
+            let rasterURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".dt2")!
+            print("Got URL:", rasterURL)
+            let rasterElevationSource = AGSRasterElevationSource(fileURLs: [rasterURL])
+            surface.elevationSources.append(rasterElevationSource)
+            scene.baseSurface = surface
+        }
     }
+    
+    //add the source code button item to the right of navigation bar
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CreateTerrainSurfaceFromLocalRasterViewController"]
-        setupScene()
     }
 }

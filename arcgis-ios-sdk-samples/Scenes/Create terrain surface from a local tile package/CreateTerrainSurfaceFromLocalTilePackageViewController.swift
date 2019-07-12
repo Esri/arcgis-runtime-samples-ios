@@ -17,23 +17,23 @@ import UIKit
 import ArcGIS
 
 class CreateTerrainSurfaceFromLocalTilePackageViewController: UIViewController {
-    @IBOutlet weak var sceneView: AGSSceneView!
-    
-    private func setupScene() {
-        //initialize the map with imagery basemap
-        let scene = AGSScene(basemapType: .imageryWithLabels)
-        sceneView.scene = scene
-        
-        //set initial map area
-        let camera = AGSCamera(latitude: 36.525, longitude: -121.80, altitude: 300.0, heading: 180, pitch: 80, roll: 0)
-        sceneView.setViewpointCamera(camera)
-        
-        // load the tile package and add it as an elevation source
-        let surface = AGSSurface()
-        let tpkURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".tpk")!
-        let elevationSource = AGSArcGISTiledElevationSource(url: tpkURL)
-        surface.elevationSources.append(elevationSource)
-        scene.baseSurface = surface
+    @IBOutlet weak var sceneView: AGSSceneView! {
+        didSet {
+            //initialize the map with imagery basemap
+            let scene = AGSScene(basemapType: .imageryWithLabels)
+            sceneView.scene = scene
+            
+            //set initial map area
+            let camera = AGSCamera(latitude: 36.525, longitude: -121.80, altitude: 300.0, heading: 180, pitch: 80, roll: 0)
+            sceneView.setViewpointCamera(camera)
+            
+            // load the tile package and add it as an elevation source
+            let surface = AGSSurface()
+            let tpkURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".tpk")!
+            let elevationSource = AGSArcGISTiledElevationSource(url: tpkURL)
+            surface.elevationSources.append(elevationSource)
+            scene.baseSurface = surface
+        }
     }
     
     override func viewDidLoad() {
@@ -41,6 +41,5 @@ class CreateTerrainSurfaceFromLocalTilePackageViewController: UIViewController {
         
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CreateTerrainSurfaceFromLocalTilePackageViewController"]
-        setupScene()
     }
 }

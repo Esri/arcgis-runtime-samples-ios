@@ -24,14 +24,14 @@ The terrain surface is what the basemap, operational layers, and graphics are dr
 
 ## How it works
 
-1. Create an `ArcGISScene` and add it to a `SceneView`.
-1. Create a `RasterElevationSource` with a list of raster file paths.
-1. Add this source to the scene's base surface: `ArcGISScene.baseSurface.elevationSources.add(RasterElevationSource)`.
+1. Create an `AGSScene` and add it to a `SceneView`.
+1. Create a `AGSRasterElevationSource` with a list of raster file paths.
+1. Add this source to the scene's base surface: `elevationSources.append(rasterElevationSource)`.
 
 ## Relevant API
 
-* RasterElevationSource
-* Surface
+* AGSRasterElevationSource
+* AGSSurface
 
 ## About the data
 

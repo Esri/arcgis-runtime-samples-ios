@@ -10,11 +10,11 @@ Being able to project between spatial references is fundamental to a GIS. An exa
 
 ## How to use the sample
 
-Tap anywhere on the map. A callout will display the tapped location's coordinate in the original (basemap's) spatial reference and in the projected spatial reference.
+Tap anywhere on the map. A callout will display the tapped location's coordinate in the original (basemap's) spatial reference (wgs84) and in the projected spatial reference.
 
 ## How it works
 
-1. Call the  static method, `class AGSGeometryEngine.projectGeometry(_:to:)` passing in the original geometry and a spatial reference to which it should be projected.
+1. Call the static method, `class AGSGeometryEngine.projectGeometry(_:to:)` passing in the original geometry and a spatial reference to which it should be projected.
 
 ## Relevant API
 

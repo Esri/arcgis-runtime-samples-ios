@@ -25,8 +25,8 @@ The terrain surface is what the basemap, operational layers, and graphics are dr
 ## How it works
 
 1. Create an `AGSScene` and add it to a `SceneView`.
-1. Create a `AGSRasterElevationSource` with a list of raster file paths.
-1. Add this source to the scene's base surface: `elevationSources.append(rasterElevationSource)`.
+2. Create a `AGSRasterElevationSource` with a list of raster file paths.
+3. Add this source to the scene's base surface: `elevationSources.append(rasterElevationSource)`.
 
 ## Relevant API
 
@@ -52,7 +52,7 @@ This raster data comes from Monterey, California.
 </tr>
 <tr>
 <td><a href="https://arcgisruntime.maps.arcgis.com/home/item.html?id=98092369c4ae4d549bbbd45dba993ebc">Monterey Elevation Raster</a></td>
-<td><code><userhome>/ArcGIS/Raster/dt2/MontereyElevation.dt2 </code></td>
+<td><code><userhome>/ArcGIS/Raster/dt2/MontereyElevation.dt2</code></td>
 </tr>
 </table>
 

@@ -1249,7 +1249,7 @@
 		<array>
 			<dict>
 				<key>descriptionText</key>
-				<string>This sample shows you how to set the terrain surface with elevation described by a raster file.</string>
+				<string>Set the terrain surface with elevation described by a raster file.</string>
 				<key>storyboardName</key>
 				<string>CreateTerrainSurfaceFromLocalRaster</string>
 				<key>displayName</key>

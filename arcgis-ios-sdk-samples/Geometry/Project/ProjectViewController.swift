@@ -25,7 +25,6 @@ class ProjectViewController: UIViewController {
             
             //initialize the graphic overlay
             mapView.graphicsOverlays.add(graphicsOverlay)
-//            self.graphicsOverlay = graphicsOverlay
         }
     }
     

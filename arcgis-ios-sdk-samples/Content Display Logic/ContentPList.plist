@@ -975,7 +975,7 @@
 				<key>storyboardName</key>
 				<string>Project</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to project a point from decimal degrees (latitude and longitude values) to the spatial reference of the map</string>
+				<string>Project a point to another spatial reference.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

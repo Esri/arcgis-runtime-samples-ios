@@ -13,13 +13,28 @@
         <!--Colormap Renderer View Controller-->
         <scene sceneID="DkB-CB-v5v">
             <objects>
-                <viewController id="0MV-mn-hyK" userLabel="Colormap Renderer View Controller" sceneMemberID="viewController">
+                <viewController id="0MV-mn-hyK" userLabel="Colormap Renderer View Controller" customClass="ColormapRendererViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jBA-1E-6aB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTL-Iv-OQV" userLabel="Map View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QTL-Iv-OQV" firstAttribute="leading" secondItem="jBA-1E-6aB" secondAttribute="leading" id="Qot-SS-5Fu"/>
+                            <constraint firstAttribute="bottom" secondItem="QTL-Iv-OQV" secondAttribute="bottom" id="Qvu-kT-cuu"/>
+                            <constraint firstAttribute="trailing" secondItem="QTL-Iv-OQV" secondAttribute="trailing" id="UAt-Dv-NRy"/>
+                            <constraint firstItem="QTL-Iv-OQV" firstAttribute="top" secondItem="jBA-1E-6aB" secondAttribute="top" id="vIF-6k-dfF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="OoE-IR-CoX"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="QTL-Iv-OQV" id="H8A-DE-MDp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7h-d2-WuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

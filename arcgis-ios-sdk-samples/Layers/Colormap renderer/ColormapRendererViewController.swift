@@ -16,4 +16,53 @@
 import UIKit
 import ArcGIS
 
-
+class ColormapRendererViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView! {
+        didSet {
+            print("Inside mapView")
+            //assign map to the map view
+            mapView.map = AGSMap(basemap: .imagery())
+        }
+    }
+    
+    private var map: AGSMap! {
+        didSet {
+            print("Inside map")
+            //initialize map with raster layer as the basemap
+            map = AGSMap(basemap: .imagery())
+        }
+    }
+    
+    private var rasterLayer: AGSRasterLayer! {
+        didSet {
+            print("Inside rasterLayer")
+            //create raster
+            let raster = AGSRaster(name: "ShastaBW", extension: "tif")
+            
+            //create raster layer using raster
+            rasterLayer = AGSRasterLayer(raster: raster)
+            
+            //add the raster layer to the operational layers of the map
+            mapView.map?.operationalLayers.add(rasterLayer!)
+            
+            //set map view's viewpoint to the raster layer's full extent
+            rasterLayer.load { [weak self] (error) in
+                if let error = error {
+                    self?.presentAlert(error: error)
+                } else {
+                    if let center = self?.rasterLayer.fullExtent?.center {
+                        self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 80000))
+                    }
+                }
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print("Inside viewDidLoad")
+        //add the source code button item to the right of navigation bar
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ColormapRendererViewController"]
+    }
+}

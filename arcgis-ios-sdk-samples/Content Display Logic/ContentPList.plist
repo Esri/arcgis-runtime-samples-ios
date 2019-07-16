@@ -248,6 +248,18 @@
 		<key>children</key>
 		<array>
 			<dict>
+				<key>dependency</key>
+				<array>
+					<string>ShastaBWRaster</string>
+				</array>
+				<key>displayName</key>
+				<string>Colormap Renderer</string>
+				<key>storyboardName</key>
+				<string>ColormapRenderer</string>
+				<key>descriptionText</key>
+				<string>Apply a colormap renderer to a raster.</string>
+			</dict>
+			<dict>
 				<key>displayName</key>
 				<string>ArcGIS tiled layer (URL)</string>
 				<key>storyboardName</key>

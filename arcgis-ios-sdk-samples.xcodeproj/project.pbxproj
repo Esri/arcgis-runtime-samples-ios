@@ -703,6 +703,7 @@
 		E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
 		F1E4B10F22D6AF28005FDB4D /* ColormapRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10E22D6AF28005FDB4D /* ColormapRenderer.storyboard */; };
 		F1E4B11122D6AF5D005FDB4D /* ColormapRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B11022D6AF5D005FDB4D /* ColormapRendererViewController.swift */; };
+		F1FA9DED22DE74C600234601 /* ColormapRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B11022D6AF5D005FDB4D /* ColormapRendererViewController.swift */; };
 		F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */; };
 		F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6E20925AAE0016E53D /* OpenScene.storyboard */; };
 		F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4159C7020925B710016E53D /* OpenSceneViewController.swift */; };
@@ -728,6 +729,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1FA9DED22DE74C600234601 /* ColormapRendererViewController.swift in CopyFiles */,
 				12CB156722678E9900014927 /* GroupLayersSectionView.swift in CopyFiles */,
 				12CB156822678E9900014927 /* GroupLayersViewController.swift in CopyFiles */,
 				12CB156922678E9900014927 /* LayersTableViewController.swift in CopyFiles */,

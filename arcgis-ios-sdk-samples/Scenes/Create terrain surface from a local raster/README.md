@@ -22,6 +22,10 @@ The terrain surface is what the basemap, operational layers, and graphics are dr
 * RPF
 * SRTM1, 2
 
+## How to use the sample
+
+When launched, this sample displays a scene that was rendered using a local raster file. Pan and zoom to explore the scene.
+
 ## How it works
 
 1. Create an `AGSScene` and add it to a `AGSSceneView`.

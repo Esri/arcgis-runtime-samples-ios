@@ -21,14 +21,15 @@ class CreateTerrainSurfaceFromLocalRasterViewController: UIViewController {
             //initialize scene
             let scene = AGSScene(basemapType: .imageryWithLabels)
             sceneView.scene = scene
+            //set scene's viewpoint
             let camera = AGSCamera(latitude: 36.525, longitude: -121.80, altitude: 300.0, heading: 180, pitch: 80, roll: 0)
             sceneView.setViewpointCamera(camera)
             
-            //add a raster to the surface
             let surface = AGSSurface()
+            //create raster elevation source
             let rasterURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".dt2")!
-            print("Got URL:", rasterURL)
             let rasterElevationSource = AGSRasterElevationSource(fileURLs: [rasterURL])
+            //add a raster source to the surface
             surface.elevationSources.append(rasterElevationSource)
             scene.baseSurface = surface
         }

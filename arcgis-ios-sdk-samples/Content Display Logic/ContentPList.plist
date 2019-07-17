@@ -1234,11 +1234,6 @@
 				<string>This sample demonstrates how to access a map service that is secured with ArcGIS token-based authentication.</string>
 				<key>storyboardName</key>
 				<string>TokenAuthentication</string>
-				<key>dependency</key>
-				<array>
-					<string>ShastaElevationRaster</string>
-					<string>ShastaRaster</string>
-				</array>
 			</dict>
 		</array>
 	</dict>

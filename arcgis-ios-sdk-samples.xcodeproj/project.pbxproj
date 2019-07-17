@@ -526,6 +526,7 @@
 		4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */; };
 		4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
 		4C66AAFA2107CCE300EE6346 /* QueryMapImageSublayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
+		4C68A28B22DE9D3E0009F43C /* FileTypes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C68A28A22DE9D3E0009F43C /* FileTypes.plist */; };
 		4C72117020BF444C004A7DD9 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72116E20BF444C004A7DD9 /* SVProgressAnimatedView.m */; };
 		4C72117320BF4457004A7DD9 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72117220BF4457004A7DD9 /* SVRadialGradientLayer.m */; };
 		4C73C837211130E000B0F9C7 /* ArcGIS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C73C83421112B4300B0F9C7 /* ArcGIS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1335,6 +1336,7 @@
 		4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateWithOAuthViewController.swift; sourceTree = "<group>"; };
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
 		4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryMapImageSublayerViewController.swift; sourceTree = "<group>"; };
+		4C68A28A22DE9D3E0009F43C /* FileTypes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FileTypes.plist; sourceTree = "<group>"; };
 		4C72116E20BF444C004A7DD9 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
 		4C72116F20BF444C004A7DD9 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		4C72117120BF4456004A7DD9 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
@@ -1832,6 +1834,7 @@
 			children = (
 				3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */,
 				4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */,
+				4C68A28A22DE9D3E0009F43C /* FileTypes.plist */,
 				3E4A64AF1D8B37DA00CF930C /* Settings.bundle */,
 				3E676DEF1B1D0B6000D4029A /* Audio Files */,
 				3E3B2C201BBCADB300A99C5E /* Cells */,
@@ -4018,6 +4021,7 @@
 				C793B5DE21667194000A7A10 /* ListKMLContents.storyboard in Resources */,
 				4C783F3C2252D61200609B9C /* OpenMobileScene.storyboard in Resources */,
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
+				4C68A28B22DE9D3E0009F43C /* FileTypes.plist in Resources */,
 				3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */,
 				3E1183E01ECF5A1000180152 /* Snowdon.csv in Resources */,
 				2196CAFA1FD868EA00512693 /* RasterFunctionService.storyboard in Resources */,
@@ -4095,6 +4099,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/arcgis-ios-sdk-samples/Content Display Logic/PortalItems.plist",
+				"$(SRCROOT)/arcgis-ios-sdk-samples/Content Display Logic/FileTypes.plist",
 			);
 			name = "Download Portal Item Data";
 			outputFileListPaths = (
@@ -4103,7 +4108,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PORTAL_ITEMS=$SCRIPT_INPUT_FILE_0\nDOWNLOAD_DIRECTORY=\"${SRCROOT}/Portal Data\"\nxcrun --sdk macosx swift \"${SRCROOT}/Scripts/download-portal-item-data.swift\" \"$PORTAL_ITEMS\" \"$DOWNLOAD_DIRECTORY\"\n";
+			shellScript = "PORTAL_ITEMS=$SCRIPT_INPUT_FILE_0\nFILE_TYPES=$SCRIPT_INPUT_FILE_1\nDOWNLOAD_DIRECTORY=\"${SRCROOT}/Portal Data\"\nxcrun --sdk macosx swift \"${SRCROOT}/Scripts/download-portal-item-data.swift\" \"$PORTAL_ITEMS\" \"$FILE_TYPES\" \"$DOWNLOAD_DIRECTORY\"\n";
 		};
 		4CBDB3192190E88F006E5D39 /* Lint Code */ = {
 			isa = PBXShellScriptBuildPhase;

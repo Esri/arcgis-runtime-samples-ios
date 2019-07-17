@@ -19,25 +19,25 @@ import ArcGIS
 class ColormapRendererViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
-            print("Inside mapView")
             //assign map to the map view
             mapView.map = AGSMap(basemap: .imagery())
+            print("Inside mapView")
         }
     }
     
     private var map: AGSMap! {
         didSet {
-            print("Inside map")
             //initialize map with raster layer as the basemap
             map = AGSMap(basemap: .imagery())
+            print("Inside map")
         }
     }
     
     private var rasterLayer: AGSRasterLayer! {
         didSet {
-            print("Inside rasterLayer")
             //create raster
             let raster = AGSRaster(name: "ShastaBW", extension: "tif")
+            print("Inside rasterLayer")
             
             //create raster layer using raster
             rasterLayer = AGSRasterLayer(raster: raster)

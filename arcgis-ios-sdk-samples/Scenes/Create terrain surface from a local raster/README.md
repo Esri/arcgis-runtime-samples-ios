@@ -39,11 +39,8 @@ This raster data comes from Monterey, California.
 
 ## Offline data
 
-1. 
-2. Extract the contents of the downloaded zip file to disk.
-3. Add the contents into your Xcode project in argis-ios-sdk-samples/Shared resources/Rasters.
-4. Select the imported files and create tags in under On Demand Resource Tags in the File Inspector.
-5. Include the new tags in the array of Dependencies in ContentPList.plist.
+1. Form a URL with a `Portal` item pointing to the raster file.
+2.  Pass the URL into `AGSRasterElevationSource` to create an elevation source.
 
 <table>
 <tr>

@@ -14,9 +14,7 @@ Terrain can be loaded offline from tile packages (.tpk).
 
 1. Create an `AGScene` and add it to a `AGSSceneView`.
 2. Create an `AGSArcGISTiledElevationSource` with the path to the local tile package.
-3. Add this source to the scene's base surface: ```
-surface.elevationSources.append(elevationSource)
-scene.baseSurface = surface```.
+3. Add this source to the scene's base surface.
 
 ## Relevant API
 
@@ -29,8 +27,8 @@ This terrain data comes from Monterey, California.
 
 ## Offline data
 
-1. Form a URL with a `Portal` item pointing to the tile package.
-2. Create an elevation source with `AGSArcGISTiledElevationSource`, passing in the URL.
+This sample uses the [MontereyElevation](https://arcgisruntime.maps.arcgis.com/home/item.html?id=cce37043eb0440c7a5c109cf8aad5500) tile package. It is downloaded from ArcGIS Online automatically.
 
 ## Tags
+
 3D, tile cache, elevation, surface

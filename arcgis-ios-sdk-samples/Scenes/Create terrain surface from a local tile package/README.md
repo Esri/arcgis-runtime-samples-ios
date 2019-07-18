@@ -27,7 +27,7 @@ This terrain data comes from Monterey, California.
 
 ## Offline data
 
-This sample uses the [MontereyElevation](https://arcgisruntime.maps.arcgis.com/home/item.html?id=cce37043eb0440c7a5c109cf8aad5500) tile package. It is downloaded from ArcGIS Online automatically.
+This sample uses the [Monterey Elevation](https://arcgisruntime.maps.arcgis.com/home/item.html?id=cce37043eb0440c7a5c109cf8aad5500) tile package. It is downloaded from ArcGIS Online automatically.
 
 ## Tags
 

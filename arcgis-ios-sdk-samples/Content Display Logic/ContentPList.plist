@@ -1251,7 +1251,7 @@
 				<string>Create terrain surface from a local tile package</string>
 				<key>dependency</key>
 				<array>
-					<string>monterey_elevation</string>
+					<string>MontereyElevation</string>
 				</array>
 			</dict>
 			<dict>

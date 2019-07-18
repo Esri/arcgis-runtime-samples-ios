@@ -12,32 +12,40 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
+import UIKit
 import ArcGIS
 
 class CreateTerrainSurfaceFromLocalRasterViewController: UIViewController {
     @IBOutlet weak var sceneView: AGSSceneView! {
         didSet {
-            //initialize scene
-            let scene = AGSScene(basemapType: .imageryWithLabels)
-            sceneView.scene = scene
-            //set scene's viewpoint
+            // Initialize a scene.
+            sceneView.scene = makeScene()
+            
+            // Set scene's viewpoint.
             let camera = AGSCamera(latitude: 36.525, longitude: -121.80, altitude: 300.0, heading: 180, pitch: 80, roll: 0)
             sceneView.setViewpointCamera(camera)
-            
-            let surface = AGSSurface()
-            //create raster elevation source
-            let rasterURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".dt2")!
-            let rasterElevationSource = AGSRasterElevationSource(fileURLs: [rasterURL])
-            //add a raster source to the surface
-            surface.elevationSources.append(rasterElevationSource)
-            scene.baseSurface = surface
         }
+    }
+    
+    func makeScene() -> AGSScene {
+        let scene = AGSScene(basemapType: .imageryWithLabels)
+        
+        let surface = AGSSurface()
+        // Create raster elevation source.
+        let rasterURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".dt2")!
+        let rasterElevationSource = AGSRasterElevationSource(fileURLs: [rasterURL])
+        
+        // Add a raster source to the surface.
+        surface.elevationSources.append(rasterElevationSource)
+        scene.baseSurface = surface
+        
+        return scene
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //add the source code button item to the right of navigation bar
+        
+        // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CreateTerrainSurfaceFromLocalRasterViewController"]
     }
 }

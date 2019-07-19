@@ -3700,6 +3700,8 @@
 				F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */,
 			);
 			path = "Create terrain surface from a local tile package";
+			sourceTree = "<group>";
+		};
 		F1034F9822D3EDFE00B021DA /* Project */ = {
 			isa = PBXGroup;
 			children = (

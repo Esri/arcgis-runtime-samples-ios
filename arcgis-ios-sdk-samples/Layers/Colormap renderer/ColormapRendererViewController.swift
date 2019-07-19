@@ -23,16 +23,19 @@ class ColormapRendererViewController: UIViewController {
             mapView.map = AGSMap(basemap: .imagery())
             
             //add the raster layer to the operational layers of the map
-            mapView.map?.operationalLayers.add(makeLayer())
+            mapView.map?.operationalLayers.add(makeRasterLayer())
         }
     }
     
-    private func makeLayer() -> AGSRasterLayer {
+    private func makeRasterLayer() -> AGSRasterLayer {
         let raster = AGSRaster(name: "ShastaBW", extension: "tif")
         print("Inside rasterLayer")
         
         //create raster layer using raster
         let rasterLayer = AGSRasterLayer(raster: raster)
+        //make two arrays with repeating initializer then appened them to get one array and add it to colormaprenderer
+        
+        let colors = Array(repeating: 10, count: 150)
         
         //set map view's viewpoint to the raster layer's full extent
         rasterLayer.load { [weak self] (error) in

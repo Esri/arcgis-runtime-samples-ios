@@ -32,7 +32,7 @@ class CreateTerrainSurfaceFromLocalRasterViewController: UIViewController {
         
         let surface = AGSSurface()
         // Create raster elevation source.
-        let rasterURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".dt2")!
+        let rasterURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: "dt2")!
         let rasterElevationSource = AGSRasterElevationSource(fileURLs: [rasterURL])
         
         // Add a raster source to the surface.

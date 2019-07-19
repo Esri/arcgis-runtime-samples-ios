@@ -19,27 +19,28 @@ import ArcGIS
 class ColormapRendererViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
-            //assign map to the map view
+            // Assign map to the map view.
             mapView.map = AGSMap(basemap: .imagery())
             
-            //add the raster layer to the operational layers of the map
+            // Create and add the raster layer to the operational layers of the map.
             mapView.map?.operationalLayers.add(makeRasterLayer())
         }
     }
     
     private func makeRasterLayer() -> AGSRasterLayer {
         let raster = AGSRaster(name: "ShastaBW", extension: "tif")
-        print("Inside rasterLayer")
         
-        //create raster layer using raster
+        // Create raster layer using raster.
         let rasterLayer = AGSRasterLayer(raster: raster)
         
-        //make two arrays with repeating initializer then appened them to get one array and add it to colormaprenderer
+        // Make two arrays to represent two different colors then appened them together.
         let colors = Array(repeating: UIColor.red, count: 150) + Array(repeating: UIColor.yellow, count: 151)
+        
+        // Render the colormap using the array of colors.
         let colormapRenderer = AGSColormapRenderer(colors: colors)
         rasterLayer.renderer = colormapRenderer
         
-        //set map view's viewpoint to the raster layer's full extent
+        // Set map view's viewpoint to the raster layer's full extent.
         rasterLayer.load { [weak self] (error) in
             if let error = error {
                 self?.presentAlert(error: error)
@@ -55,7 +56,7 @@ class ColormapRendererViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ColormapRendererViewController"]
     }
 }

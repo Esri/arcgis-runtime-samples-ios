@@ -33,9 +33,11 @@ class ColormapRendererViewController: UIViewController {
         
         //create raster layer using raster
         let rasterLayer = AGSRasterLayer(raster: raster)
-        //make two arrays with repeating initializer then appened them to get one array and add it to colormaprenderer
         
-        let colors = Array(repeating: 10, count: 150)
+        //make two arrays with repeating initializer then appened them to get one array and add it to colormaprenderer
+        let colors = Array(repeating: UIColor.red, count: 150) + Array(repeating: UIColor.yellow, count: 151)
+        let colormapRenderer = AGSColormapRenderer(colors: colors)
+        rasterLayer.renderer = colormapRenderer
         
         //set map view's viewpoint to the raster layer's full extent
         rasterLayer.load { [weak self] (error) in
@@ -53,7 +55,6 @@ class ColormapRendererViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Inside viewDidLoad")
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ColormapRendererViewController"]
     }

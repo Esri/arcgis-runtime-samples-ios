@@ -1456,7 +1456,7 @@
 		E4B2E26A1FE31EEA00E610FF /* ViewshedGeoElement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewshedGeoElement.storyboard; sourceTree = "<group>"; };
 		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DistanceCompositeSymbol.storyboard; sourceTree = "<group>"; };
 		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCompositeSymbolViewController.swift; sourceTree = "<group>"; };
-		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "arcgis-ios-sdk-samples/Scenes/Create terrain surface from a local raster/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
+		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
 		F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalRaster.storyboard; sourceTree = "<group>"; };
 		F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalRasterViewController.swift; sourceTree = "<group>"; };
 		F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeMap.storyboard; sourceTree = "<group>"; };
@@ -3679,18 +3679,10 @@
 			path = "Distance composite symbol";
 			sourceTree = "<group>";
 		};
-		F151AB8A22D7B07800055E45 /* Monterey_Elevation */ = {
-			isa = PBXGroup;
-			children = (
-				F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */,
-			);
-			path = Monterey_Elevation;
-			sourceTree = "<group>";
-		};
 		F1679F0422D93FA900E5320A /* Rasters */ = {
 			isa = PBXGroup;
 			children = (
-				F151AB8A22D7B07800055E45 /* Monterey_Elevation */,
+				F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */,
 			);
 			path = Rasters;
 			sourceTree = "<group>";

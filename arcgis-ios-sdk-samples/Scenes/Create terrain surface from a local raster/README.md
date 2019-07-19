@@ -29,7 +29,7 @@ When launched, this sample displays a scene that was rendered using a local rast
 ## How it works
 
 1. Create an `AGSScene` and add it to a `AGSSceneView`.
-2. Create a `AGSRasterElevationSource` with a list of raster file paths.
+2. Create a `AGSRasterElevationSource` with an array of raster file URLs.
 3. Add this source to the scene's base surface.
 
 ## Relevant API
@@ -43,7 +43,7 @@ This raster data comes from Monterey, California.
 
 ## Offline data
 
-This sample uses the [Monterey Elevation](https://arcgisruntime.maps.arcgis.com/home/item.html?id=98092369c4ae4d549bbbd45dba993ebc) raster. It is downloaded from ArcGIS Online automatically.
+This sample uses the [MontereyElevation](https://arcgisruntime.maps.arcgis.com/home/item.html?id=98092369c4ae4d549bbbd45dba993ebc) raster. It is downloaded from ArcGIS Online automatically.
 
 ## Tags
 

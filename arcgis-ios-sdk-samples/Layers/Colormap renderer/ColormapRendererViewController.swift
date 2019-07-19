@@ -24,40 +24,27 @@ class ColormapRendererViewController: UIViewController {
             
             //add the raster layer to the operational layers of the map
             mapView.map?.operationalLayers.add(makeLayer())
-            
-//            mapView.setViewpoint(rasterLayer.fullExtent)
-            print("Inside mapView")
         }
     }
-    
-//    private var map: AGSMap! {
-//        didSet {
-//            //initialize map with raster layer as the basemap
-//            map = AGSMap(basemap: .imagery())
-//            print("Inside map")
-//        }
-//    }
     
     private func makeLayer() -> AGSRasterLayer {
         let raster = AGSRaster(name: "ShastaBW", extension: "tif")
         print("Inside rasterLayer")
         
         //create raster layer using raster
-        var rasterLayer: AGSRasterLayer!
-        rasterLayer = AGSRasterLayer(raster: raster)
-        
+        let rasterLayer = AGSRasterLayer(raster: raster)
         
         //set map view's viewpoint to the raster layer's full extent
         rasterLayer.load { [weak self] (error) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
-                if let center = self?.rasterLayer.fullExtent?.center {
+                if let center = rasterLayer.fullExtent?.center {
                     self?.mapView.setViewpoint(AGSViewpoint(center: center, scale: 80000))
                 }
             }
         }
-        return AGSRasterLayer
+        return rasterLayer
     }
     
     override func viewDidLoad() {

@@ -3321,8 +3321,8 @@
 		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
 			isa = PBXGroup;
 			children = (
-				F1679F0422D93FA900E5320A /* Rasters */,
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
+				F1679F0422D93FA900E5320A /* Rasters */,
 				4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */,
 				4C060E652261195C0070C787 /* Tile Packages */,
 			);

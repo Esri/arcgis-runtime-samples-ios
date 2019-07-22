@@ -249,6 +249,16 @@
 		<array>
 			<dict>
 				<key>displayName</key>
+				<string>Dictionary renderer with feature layer</string>
+				<key>storyboardName</key>
+				<string>DictionaryRenderer</string>
+				<key>descriptionText</key>
+				<string>Convert features into graphics to show them with mil2525d symbols.</string>
+				<key>dependency</key>
+				<array>
+					<string>militaryoverlay</string>
+				</array>
+			</dict>
 				<string>ArcGIS tiled layer (URL)</string>
 				<key>storyboardName</key>
 				<string>TLUsingURL</string>

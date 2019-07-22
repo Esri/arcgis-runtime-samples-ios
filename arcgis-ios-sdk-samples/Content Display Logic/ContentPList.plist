@@ -249,7 +249,7 @@
 		<array>
 			<dict>
 				<key>displayName</key>
-				<string>Colormap Renderer</string>
+				<string>Colormap renderer</string>
 				<key>storyboardName</key>
 				<string>ColormapRenderer</string>
 				<key>descriptionText</key>

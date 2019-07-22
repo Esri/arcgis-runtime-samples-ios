@@ -17,7 +17,7 @@ import UIKit
 import ArcGIS
 
 class ColormapRendererViewController: UIViewController {
-    @IBOutlet private weak var mapView: AGSMapView! {
+    @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Assign map to the map view.
             mapView.map = AGSMap(basemap: .imagery())

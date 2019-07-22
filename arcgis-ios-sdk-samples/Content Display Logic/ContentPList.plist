@@ -971,6 +971,14 @@
 		<array>
 			<dict>
 				<key>displayName</key>
+				<string>Project</string>
+				<key>storyboardName</key>
+				<string>Project</string>
+				<key>descriptionText</key>
+				<string>Project a point to another spatial reference.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Create geometries</string>
 				<key>storyboardName</key>
 				<string>CreateGeometries</string>
@@ -1252,6 +1260,14 @@
 				<key>dependency</key>
 				<array>
 					<string>MontereyElevationRaster</string>
+				<string>Set the terrain surface with elevation described by a local tile package.</string>
+				<key>storyboardName</key>
+				<string>CreateTerrainSurfaceFromLocalTilePackage</string>
+				<key>displayName</key>
+				<string>Create terrain surface from a local tile package</string>
+				<key>dependency</key>
+				<array>
+					<string>MontereyElevation</string>
 				</array>
 			</dict>
 			<dict>

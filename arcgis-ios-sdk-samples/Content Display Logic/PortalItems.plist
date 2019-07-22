@@ -22,6 +22,12 @@
 			<key>filename</key>
 			<string>naperville_imagery.tpk</string>
 		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>cce37043eb0440c7a5c109cf8aad5500</string>
+			<key>filename</key>
+			<string>MontereyElevation.tpk</string>
+		</dict>
 	</array>
 </dict>
 </plist>

@@ -259,6 +259,8 @@
 					<string>militaryoverlay</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>ArcGIS tiled layer (URL)</string>
 				<key>storyboardName</key>
 				<string>TLUsingURL</string>

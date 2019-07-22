@@ -21,11 +21,45 @@ class DictionaryRendererViewController: UIViewController {
             // Initialize the map.
             mapView.map = AGSMap(basemap: .topographic())
             
-            let geodatabaseURL = Bundle.main.url(forResource: "militaryoverlay", withExtension: ".geodatabase")!
-            let geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
+            //let geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
         }
     }
     
+    func displayLayersFromGeodatabase() {
+        let geodatabaseURL = Bundle.main.url(forResource: "militaryoverlay", withExtension: ".geodatabase")!
+        let generatedGeodatabase = AGSGeodatabase(fileURL: geodatabaseURL) 
+        generatedGeodatabase.load { [weak self] (error: Error?) in
+            guard let self = self else {
+                return
+            }
+            
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                self.mapView.map?.operationalLayers.removeAllObjects()
+                
+                AGSLoadObjects(generatedGeodatabase.geodatabaseFeatureTables) { (success: Bool) in
+                    if success {
+                        for featureTable in generatedGeodatabase.geodatabaseFeatureTables.reversed() {
+                            //check if featureTable has geometry
+                            if featureTable.hasGeometry {
+                                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                                self.mapView.map?.operationalLayers.add(featureLayer)
+                            }
+                        }
+                        self.presentAlert(message: "Now showing data from geodatabase")
+                        
+                        // hide the extent view
+                        self.extentView.isHidden = true
+                        // disable the download button
+                        self.downloadBBI.isEnabled = false
+                    }
+                    // unregister geodatabase as the sample wont be editing or syncing features
+                    self.syncTask.unregisterGeodatabase(generatedGeodatabase)
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

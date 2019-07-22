@@ -36,30 +36,13 @@ class DictionaryRendererViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                self.mapView.map?.operationalLayers.removeAllObjects()
-                
-                AGSLoadObjects(generatedGeodatabase.geodatabaseFeatureTables) { (success: Bool) in
-                    if success {
-                        for featureTable in generatedGeodatabase.geodatabaseFeatureTables.reversed() {
-                            //check if featureTable has geometry
-                            if featureTable.hasGeometry {
-                                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                                self.mapView.map?.operationalLayers.add(featureLayer)
-                            }
-                        }
-                        self.presentAlert(message: "Now showing data from geodatabase")
-                        
-                        // hide the extent view
-                        self.extentView.isHidden = true
-                        // disable the download button
-                        self.downloadBBI.isEnabled = false
+                let dictionarySymbol = AGSDictionarySymbolStyle(name: "mil2525d")
+                let renderedDictionarySymbol = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbol)
                     }
                     // unregister geodatabase as the sample wont be editing or syncing features
                     self.syncTask.unregisterGeodatabase(generatedGeodatabase)
                 }
             }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

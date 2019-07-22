@@ -1260,6 +1260,10 @@
 				<key>dependency</key>
 				<array>
 					<string>MontereyElevationRaster</string>
+				</array>
+			</dict>
+			<dict>
+				<key>descriptionText</key>
 				<string>Set the terrain surface with elevation described by a local tile package.</string>
 				<key>storyboardName</key>
 				<string>CreateTerrainSurfaceFromLocalTilePackage</string>

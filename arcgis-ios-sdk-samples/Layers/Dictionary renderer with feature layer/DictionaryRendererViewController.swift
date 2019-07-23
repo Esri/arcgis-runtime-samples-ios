@@ -16,33 +16,51 @@ import UIKit
 import ArcGIS
 
 class DictionaryRendererViewController: UIViewController {
-    @IBOutlet private weak var mapView: AGSMapView! {
+    @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Initialize the map.
             mapView.map = AGSMap(basemap: .topographic())
             
-            //let geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
+            // Initiate geodatabase.
+            displayLayersFromGeodatabase()
         }
     }
     
     func displayLayersFromGeodatabase() {
+        // Load geodatabase from shared resources.
         let geodatabaseURL = Bundle.main.url(forResource: "militaryoverlay", withExtension: ".geodatabase")!
-        let generatedGeodatabase = AGSGeodatabase(fileURL: geodatabaseURL) 
-        generatedGeodatabase.load { [weak self] (error: Error?) in
-            guard let self = self else {
-                return
-            }
-            
+        let generatedGeodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
+        // Instantiate and load a symbol dictionary.
+        let dictionarySymbol = AGSDictionarySymbolStyle(name: "mil2525d")
+        dictionarySymbol.load { [weak self] (error: Error?) in
             if let error = error {
-                self.presentAlert(error: error)
+                self?.presentAlert(error: error)
             } else {
-                let dictionarySymbol = AGSDictionarySymbolStyle(name: "mil2525d")
-                let renderedDictionarySymbol = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbol)
+                print("Success")
+            }
+        }
+        
+        // Once geodatabase is done loading, load feature layers.
+        generatedGeodatabase.load { [weak self] (error: Error?) in
+            if let error = error {
+                self?.presentAlert(error: error)
+            } else {
+                for featureTable in generatedGeodatabase.geodatabaseFeatureTables {
+                    let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                    featureLayer.minScale = 1000000
+                    self!.mapView.map?.operationalLayers.add(featureLayer)
+                    featureLayer.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbol)
+                    featureLayer.load { [weak self] (error: Error?) in
+                        if let error = error {
+                            self?.presentAlert(error: error)
+                        } else {
+                            self?.mapView.setViewpointGeometry(featureLayer.fullExtent!)
+                        }
                     }
-                    // unregister geodatabase as the sample wont be editing or syncing features
-                    self.syncTask.unregisterGeodatabase(generatedGeodatabase)
                 }
             }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

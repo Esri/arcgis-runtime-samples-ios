@@ -249,6 +249,18 @@
 		<array>
 			<dict>
 				<key>displayName</key>
+				<string>Colormap renderer</string>
+				<key>storyboardName</key>
+				<string>ColormapRenderer</string>
+				<key>descriptionText</key>
+				<string>Apply a colormap renderer to a raster.</string>
+				<key>dependency</key>
+				<array>
+					<string>ShastaBWRaster</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>ArcGIS tiled layer (URL)</string>
 				<key>storyboardName</key>
 				<string>TLUsingURL</string>

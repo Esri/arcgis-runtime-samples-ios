@@ -36,7 +36,7 @@ class DictionaryRendererViewController: UIViewController {
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
-                print("Success")
+                return
             }
         }
         
@@ -47,16 +47,18 @@ class DictionaryRendererViewController: UIViewController {
             } else {
                 for featureTable in generatedGeodatabase.geodatabaseFeatureTables {
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                    featureLayer.minScale = 1000000
-                    self!.mapView.map?.operationalLayers.add(featureLayer)
-                    featureLayer.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbol)
                     featureLayer.load { [weak self] (error: Error?) in
                         if let error = error {
                             self?.presentAlert(error: error)
                         } else {
-                            self?.mapView.setViewpointGeometry(featureLayer.fullExtent!)
+                            let envelopeBuilder = AGSEnvelopeBuilder(envelope: featureLayer.fullExtent)
+                            envelopeBuilder.union(with: featureLayer.fullExtent!)
+                            self?.mapView.setViewpointGeometry(envelopeBuilder.toGeometry())
                         }
                     }
+                    featureLayer.minScale = 1000000
+                    self!.mapView.map?.operationalLayers.add(featureLayer)
+                    featureLayer.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbol)
                 }
             }
         }

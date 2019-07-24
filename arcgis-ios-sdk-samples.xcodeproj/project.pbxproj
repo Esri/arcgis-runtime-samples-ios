@@ -713,6 +713,9 @@
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
+		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
+		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
 		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F1E4B10F22D6AF28005FDB4D /* ColormapRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10E22D6AF28005FDB4D /* ColormapRenderer.storyboard */; };
@@ -743,6 +746,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */,
 				F1FA9DED22DE74C600234601 /* ColormapRendererViewController.swift in CopyFiles */,
 				F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */,
 				F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */,
@@ -1481,6 +1485,8 @@
 		F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalTilePackageViewController.swift; sourceTree = "<group>"; };
 		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpk; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
+		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
+		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
 		F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalRaster.storyboard; sourceTree = "<group>"; };
 		F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalRasterViewController.swift; sourceTree = "<group>"; };
 		F1E4B10E22D6AF28005FDB4D /* ColormapRenderer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColormapRenderer.storyboard; sourceTree = "<group>"; };
@@ -2515,6 +2521,7 @@
 		3ED027FC1B8E38F400ACA70D /* Edit data */ = {
 			isa = PBXGroup;
 			children = (
+				F164997722E9249B0088CA93 /* Edit and sync features */,
 				3E41DD6D1B9A1EA800DA11CC /* Add features (feature service) */,
 				3E41DD751B9F5AC800DA11CC /* Delete features (feature service) */,
 				3ED029521B8E3ACD00ACA70D /* Update attributes (feature service) */,
@@ -3729,6 +3736,15 @@
 			path = "Create terrain surface from a local tile package";
 			sourceTree = "<group>";
 		};
+		F164997722E9249B0088CA93 /* Edit and sync features */ = {
+			isa = PBXGroup;
+			children = (
+				F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */,
+				F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */,
+			);
+			path = "Edit and sync features";
+			sourceTree = "<group>";
+		};
 		F1679F0422D93FA900E5320A /* Rasters */ = {
 			isa = PBXGroup;
 			children = (
@@ -3921,6 +3937,7 @@
 				3ED028781B8E3A8500ACA70D /* ManageMapLayers.storyboard in Resources */,
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
 				C7AF466621B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard in Resources */,
+				F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */,
 				3E1E5EEF1D9F0BAB00F4913C /* HillshadeRenderer.storyboard in Resources */,
 				3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */,
 				3E0B58501E36BCCD00951767 /* ViewshedGeoprocessing.storyboard in Resources */,
@@ -4301,6 +4318,7 @@
 				127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
+				F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
 				218409DD1FE89D840098BC40 /* OrderByFieldsViewController.swift in Sources */,
 				C793B5E92166BB71000A7A10 /* OpenStreetMapLayerViewController.swift in Sources */,

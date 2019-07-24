@@ -714,6 +714,14 @@
 		F1034F9E22D3EE8900B021DA /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */; };
 		F1034F9F22D3F24700B021DA /* ProjectViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */; };
 		F1034FA022D3F24700B021DA /* ProjectStackView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034F9922D3EE8900B021DA /* ProjectStackView.swift */; };
+		F1034FA622D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1034FA222D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */; };
+		F1034FA922D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
+		F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
+		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
+		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
+		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
+		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
+		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */; };
 		F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6E20925AAE0016E53D /* OpenScene.storyboard */; };
 		F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4159C7020925B710016E53D /* OpenSceneViewController.swift */; };
@@ -740,6 +748,7 @@
 			dstSubfolderSpec = 7;
 			files = (
 				F1FA9DED22DE74C600234601 /* ColormapRendererViewController.swift in CopyFiles */,
+				F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */,
 				F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */,
 				F1034F9F22D3F24700B021DA /* ProjectViewController.swift in CopyFiles */,
 				F1034FA022D3F24700B021DA /* ProjectStackView.swift in CopyFiles */,
@@ -1477,6 +1486,12 @@
 		F1034F9922D3EE8900B021DA /* ProjectStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectStackView.swift; sourceTree = "<group>"; };
 		F1034F9A22D3EE8900B021DA /* Project.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
 		F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		F1034FA222D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalTilePackage.storyboard; sourceTree = "<group>"; };
+		F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalTilePackageViewController.swift; sourceTree = "<group>"; };
+		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpk; sourceTree = "<group>"; };
+		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
+		F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalRaster.storyboard; sourceTree = "<group>"; };
+		F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalRasterViewController.swift; sourceTree = "<group>"; };
 		F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeMap.storyboard; sourceTree = "<group>"; };
 		F4159C6E20925AAE0016E53D /* OpenScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenScene.storyboard; sourceTree = "<group>"; };
 		F4159C7020925B710016E53D /* OpenSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSceneViewController.swift; sourceTree = "<group>"; };
@@ -2973,6 +2988,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */,
 				F1034FA122D3F5DA00B021DA /* Create terrain surface from a local tile package */,
 				F4159C6D20925A8D0016E53D /* Open a scene (portal item) */,
 				10859BA61FE0AAE400F6E552 /* Feature layer extrusion */,
@@ -3320,6 +3336,7 @@
 			isa = PBXGroup;
 			children = (
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
+				F1679F0422D93FA900E5320A /* Rasters */,
 				4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */,
 				4C060E652261195C0070C787 /* Tile Packages */,
 			);
@@ -3709,6 +3726,16 @@
 			path = "Colormap renderer";
 			sourceTree = "<group>";
 		};
+		F1034F9822D3EDFE00B021DA /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				F1034F9A22D3EE8900B021DA /* Project.storyboard */,
+				F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */,
+				F1034F9922D3EE8900B021DA /* ProjectStackView.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
 		F1034FA122D3F5DA00B021DA /* Create terrain surface from a local tile package */ = {
 			isa = PBXGroup;
 			children = (
@@ -3718,14 +3745,21 @@
 			path = "Create terrain surface from a local tile package";
 			sourceTree = "<group>";
 		};
-		F1034F9822D3EDFE00B021DA /* Project */ = {
+		F1679F0422D93FA900E5320A /* Rasters */ = {
 			isa = PBXGroup;
 			children = (
-				F1034F9A22D3EE8900B021DA /* Project.storyboard */,
-				F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */,
-				F1034F9922D3EE8900B021DA /* ProjectStackView.swift */,
+				F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */,
 			);
-			path = Project;
+			path = Rasters;
+			sourceTree = "<group>";
+		};
+		F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */ = {
+			isa = PBXGroup;
+			children = (
+				F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */,
+				F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */,
+			);
+			path = "Create terrain surface from a local raster";
 			sourceTree = "<group>";
 		};
 		F4159C6D20925A8D0016E53D /* Open a scene (portal item) */ = {
@@ -3806,6 +3840,7 @@
 					MissionFiles,
 					MobileMapPackages,
 					MontereyElevation,
+					MontereyElevationRaster,
 					PublicArtShapefile,
 					SRTMRaster,
 					SanDiegoLocator,
@@ -3956,6 +3991,7 @@
 				D9E2E76220EEB8FF001D0AE0 /* Public_Art.sbx in Resources */,
 				3E8A05DD1ECE69840032231C /* Bristol.dae in Resources */,
 				3E8D54FB1D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard in Resources */,
+				F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */,
 				3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */,
 				D97B7E6E1FD9BFE700E1239D /* Subdivisions.sbx in Resources */,
 				C76F757421827C9C00938D8D /* ColorPicker.storyboard in Resources */,
@@ -4089,6 +4125,7 @@
 				4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */,
 				D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */,
 				4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */,
+				F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */,
 				4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
@@ -4402,6 +4439,7 @@
 				3E1E5EE71D9F095A00F4913C /* HillshadeSettingsVC.swift in Sources */,
 				2196CAF91FD868EA00512693 /* RasterFunctionServiceViewController.swift in Sources */,
 				3EBA25421D2F106600AB0703 /* UniqueValueRendererViewController.swift in Sources */,
+				F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */,
 				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
 				3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */,
 				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,

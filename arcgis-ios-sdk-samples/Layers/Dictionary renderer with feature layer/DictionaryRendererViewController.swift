@@ -21,7 +21,7 @@ class DictionaryRendererViewController: UIViewController {
             // Initialize the map.
             mapView.map = AGSMap(basemap: .topographic())
             
-            // Initiate geodatabase.
+            // Display symbology using a geodatabase.
             displayLayersFromGeodatabase()
         }
     }
@@ -30,8 +30,10 @@ class DictionaryRendererViewController: UIViewController {
         // Load geodatabase from shared resources.
         let geodatabaseURL = Bundle.main.url(forResource: "militaryoverlay", withExtension: ".geodatabase")!
         let generatedGeodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
-        // Instantiate and load a symbol dictionary.
-        let dictionarySymbol = AGSDictionarySymbolStyle(name: "mil2525d")
+        
+        // Instantiate and load symbol dictionary from shared resources.
+        let styleURL = Bundle.main.url(forResource: "mil2525d", withExtension: "stylx")
+        let dictionarySymbol = AGSDictionarySymbolStyle(url: styleURL!)
         dictionarySymbol.load { [weak self] (error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
@@ -40,25 +42,28 @@ class DictionaryRendererViewController: UIViewController {
             }
         }
         
-        // Once geodatabase is done loading, load feature layers.
+        // Once geodatabase is done loading, create feature layers from each feature table.
         generatedGeodatabase.load { [weak self] (error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
-                let envelopeBuilder = AGSEnvelopeBuilder(envelope: AGSFeatureLayer(featureTable: generatedGeodatabase.geodatabaseFeatureTables.first!).fullExtent)
                 for featureTable in generatedGeodatabase.geodatabaseFeatureTables {
+                    // Create a feature layer from the feature table.
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                    // Set the minimum visibility scale.
                     featureLayer.minScale = 1000000
-                    self!.mapView.map?.operationalLayers.add(featureLayer)
-                    featureLayer.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbol)
                     featureLayer.load { [weak self] (error: Error?) in
                         if let error = error {
                             self?.presentAlert(error: error)
                         } else {
-                            envelopeBuilder.union(with: featureLayer.fullExtent!)
-                            self?.mapView.setViewpointGeometry(envelopeBuilder.toGeometry())
+                            // Set the viewpoint to the full extent of all layers.
+                            self?.mapView.setViewpointGeometry(featureLayer.fullExtent!)
                         }
                     }
+                    // Add each layer to the map.
+                    self!.mapView.map?.operationalLayers.add(featureLayer)
+                    // Display features from the layer using mil2525d symbols.
+                    featureLayer.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbol)
                 }
             }
         }

@@ -6,6 +6,12 @@
 	<array>
 		<dict>
 			<key>identifier</key>
+			<string>98092369c4ae4d549bbbd45dba993ebc</string>
+			<key>filename</key>
+			<string>MontereyElevation.dt2</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
 			<string>34da965ca51d4c68aa9b3a38edb29e00</string>
 			<key>filename</key>
 			<string>sandiego-north-balboa-pointcloud.slpk</string>

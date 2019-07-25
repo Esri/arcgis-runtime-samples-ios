@@ -257,6 +257,14 @@
 				<key>dependency</key>
 				<array>
 					<string>militaryoverlay</string>
+				<string>Colormap renderer</string>
+				<key>storyboardName</key>
+				<string>ColormapRenderer</string>
+				<key>descriptionText</key>
+				<string>Apply a colormap renderer to a raster.</string>
+				<key>dependency</key>
+				<array>
+					<string>ShastaBWRaster</string>
 				</array>
 			</dict>
 			<dict>
@@ -850,6 +858,10 @@
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
 				<string>Demonstrates how to display billboarded point graphics with military symbols.</string>
+				<key>dependency</key>
+				<array>
+					<string>mil2525d</string>
+				</array>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1262,6 +1274,18 @@
 		<string>Scenes</string>
 		<key>children</key>
 		<array>
+			<dict>
+				<key>descriptionText</key>
+				<string>Set the terrain surface with elevation described by a raster file.</string>
+				<key>storyboardName</key>
+				<string>CreateTerrainSurfaceFromLocalRaster</string>
+				<key>displayName</key>
+				<string>Create terrain surface from a local raster</string>
+				<key>dependency</key>
+				<array>
+					<string>MontereyElevationRaster</string>
+				</array>
+			</dict>
 			<dict>
 				<key>descriptionText</key>
 				<string>Set the terrain surface with elevation described by a local tile package.</string>

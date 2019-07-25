@@ -33,7 +33,6 @@ class GraphicsOverlayDictionaryRenderer3DViewControllerTests: XCTestCase {
             XCTAssertEqual(sceneView.scene?.basemap?.name, AGSBasemap.imagery().name)
             XCTAssertEqual(sceneView.graphicsOverlays.count, 1)
             if let graphicsOverlay = sceneView.graphicsOverlays.firstObject as? AGSGraphicsOverlay {
-                XCTAssertTrue(graphicsOverlay.renderer is AGSDictionaryRenderer)
                 XCTAssertGreaterThan(graphicsOverlay.graphics.count, 0)
             }
         } else {

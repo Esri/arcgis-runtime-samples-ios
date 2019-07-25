@@ -256,6 +256,7 @@
 				<string>Convert features into graphics to show them with mil2525d symbols.</string>
 				<key>dependency</key>
 				<array>
+					<string>mil2525d</string>
 					<string>militaryoverlay</string>
 				</array>
 			</dict>

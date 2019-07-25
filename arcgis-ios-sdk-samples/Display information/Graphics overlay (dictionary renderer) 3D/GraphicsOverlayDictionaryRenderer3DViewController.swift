@@ -24,10 +24,7 @@ class GraphicsOverlayDictionaryRenderer3DViewController: UIViewController {
     @IBOutlet weak var sceneView: AGSSceneView! {
         didSet {
             sceneView.scene = AGSScene(basemapType: .imagery)
-            
-            let graphicsOverlay = makeGraphicsOverlay()
-            sceneView.graphicsOverlays.add(graphicsOverlay)
-            sceneView.setViewpointCamera(AGSCamera(lookAt: graphicsOverlay.extent.center, distance: 15_000, heading: 0, pitch: 70, roll: 0))
+            sceneView.graphicsOverlays.add(makeGraphicsOverlay())
         }
     }
     
@@ -38,8 +35,21 @@ class GraphicsOverlayDictionaryRenderer3DViewController: UIViewController {
     func makeGraphicsOverlay() -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
         
-        let dictionarySymbolStyle = AGSDictionarySymbolStyle(specificationType: "mil2525d")
-        graphicsOverlay.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbolStyle)
+        if let styleURL = Bundle.main.url(forResource: "mil2525d", withExtension: "stylx") {
+            let dictionarySymbolStyle = AGSDictionarySymbolStyle(url: styleURL)
+            dictionarySymbolStyle.load { [weak self, weak graphicsOverlay] error in
+                guard let self = self, let graphicsOverlay = graphicsOverlay else {
+                    return
+                }
+                if let error = error {
+                    print("Error loading dictionary symbol style: \(error)")
+                } else {
+                    let camera = AGSCamera(lookAt: graphicsOverlay.extent.center, distance: 15_000, heading: 0, pitch: 70, roll: 0)
+                    self.sceneView.setViewpointCamera(camera)
+                }
+            }
+            graphicsOverlay.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbolStyle)
+        }
         
         // Read the messages and add a graphic to the overlay for each messages.
         if let messagesURL = Bundle.main.url(forResource: "Mil2525DMessages", withExtension: "xml") {

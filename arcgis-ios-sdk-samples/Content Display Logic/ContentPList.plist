@@ -850,6 +850,10 @@
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
 				<string>Demonstrates how to display billboarded point graphics with military symbols.</string>
+				<key>dependency</key>
+				<array>
+					<string>mil2525d</string>
+				</array>
 			</dict>
 			<dict>
 				<key>displayName</key>

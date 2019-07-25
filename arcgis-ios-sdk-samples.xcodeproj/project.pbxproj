@@ -505,7 +505,6 @@
 		4C1A7C1F21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C1E21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard */; };
 		4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */; };
-		4C1A7C2621D4083300E16E94 /* mil2525d.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2521D4082400E16E94 /* mil2525d.stylx */; };
 		4C1EF299220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1EF298220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard */; };
 		4C1EF29B220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1EF29A220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift */; };
 		4C1EF29D220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1EF29C220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift */; };
@@ -542,6 +541,7 @@
 		4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */; };
 		4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
 		4C99123D2249318100CCBC2A /* PlayKMLTourViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
+		4CA6F6CF22C6C671004F0F4F /* mil2525d.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 4CA6F6CE22C6C671004F0F4F /* mil2525d.stylx */; settings = {ASSET_TAGS = (mil2525d, ); }; };
 		4CA72CF6224D619E00F8DCE1 /* ViewPointCloudDataOfflineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30C722386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift */; };
 		4CAC91D42242929500663A10 /* MapReferenceScaleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */; };
 		4CAC91D52242929500663A10 /* MapReferenceScaleSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
@@ -1331,7 +1331,6 @@
 		4C1A7C1E21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphicsOverlayDictionaryRenderer3D.storyboard; sourceTree = "<group>"; };
 		4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsOverlayDictionaryRenderer3DViewController.swift; sourceTree = "<group>"; };
 		4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift; sourceTree = "<group>"; };
-		4C1A7C2521D4082400E16E94 /* mil2525d.stylx */ = {isa = PBXFileReference; lastKnownFileType = file; path = mil2525d.stylx; sourceTree = "<group>"; };
 		4C1EF298220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IntegratedWindowsAuthentication.storyboard; sourceTree = "<group>"; };
 		4C1EF29A220FE7AE00F73EAE /* IntegratedWindowsAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegratedWindowsAuthenticationViewController.swift; sourceTree = "<group>"; };
 		4C1EF29C220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegratedWindowsAuthenticationSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -1363,6 +1362,7 @@
 		4C85044A20F423F600E37F43 /* SceneLayerSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SceneLayerSelection.storyboard; sourceTree = "<group>"; };
 		4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayKMLTour.storyboard; sourceTree = "<group>"; };
 		4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayKMLTourViewController.swift; sourceTree = "<group>"; };
+		4CA6F6CE22C6C671004F0F4F /* mil2525d.stylx */ = {isa = PBXFileReference; lastKnownFileType = file; path = mil2525d.stylx; sourceTree = "<group>"; };
 		4CA72CF3224D103E00F8DCE1 /* PortalItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PortalItems.plist; sourceTree = "<group>"; };
 		4CAC91D82242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadWFSWithXMLQuery.storyboard; sourceTree = "<group>"; };
 		4CAC91DA2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWFSWithXMLQueryViewController.swift; sourceTree = "<group>"; };
@@ -3184,7 +3184,6 @@
 			isa = PBXGroup;
 			children = (
 				4C0FD7C7226522210042DE31 /* emoji-mobile.stylx */,
-				4C1A7C2521D4082400E16E94 /* mil2525d.stylx */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -3300,6 +3299,14 @@
 			path = "Play a KML Tour";
 			sourceTree = "<group>";
 		};
+		4CA6F6CD22C6C671004F0F4F /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				4CA6F6CE22C6C671004F0F4F /* mil2525d.stylx */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -3331,6 +3338,7 @@
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
 				F1679F0422D93FA900E5320A /* Rasters */,
 				4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */,
+				4CA6F6CD22C6C671004F0F4F /* Styles */,
 				4C060E652261195C0070C787 /* Tile Packages */,
 			);
 			path = "Portal Data";
@@ -3847,6 +3855,7 @@
 					SubdivisionsShapefile,
 					TilePackages,
 					YellowstoneMMPK,
+					mil2525d,
 					naperville_imagery,
 					philadelphia,
 					"sandiego-north-balboa-pointcloud",
@@ -3969,7 +3978,6 @@
 				3ECDD9B11E8470E100E645AB /* DownloadProgressView.xib in Resources */,
 				3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */,
 				215E23D321024715001DE092 /* SpatialRelationships.storyboard in Resources */,
-				4C1A7C2621D4083300E16E94 /* mil2525d.stylx in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
 				D9EE378D20E2C03800BF8AD1 /* LineOfSightGeoElement.storyboard in Resources */,
@@ -4018,6 +4026,7 @@
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
 				3E4BF47F1C5BDDCA00D85919 /* san-diego-locator.lox in Resources */,
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
+				4CA6F6CF22C6C671004F0F4F /* mil2525d.stylx in Resources */,
 				3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */,
 				3E8A25911D36B97A00D14F08 /* MapLoaded.storyboard in Resources */,
 				C7E9D7C821C0500300E6C47E /* Buffer.storyboard in Resources */,

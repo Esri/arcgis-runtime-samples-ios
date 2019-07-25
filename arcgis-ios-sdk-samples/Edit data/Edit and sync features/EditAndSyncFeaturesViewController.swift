@@ -20,10 +20,12 @@ import ArcGIS
 class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
-            //initialize map with a basemap
-            let map = AGSMap(basemap: .imagery())
+            // Initialize map with a basemap.
+            let tileCache = AGSTileCache(name: "SanFrancisco")
+            let tiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
+            let map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayer))
             
-            //assign the map to the map view
+            // Assign the map to the map view.
             mapView.map = map
         }
     }

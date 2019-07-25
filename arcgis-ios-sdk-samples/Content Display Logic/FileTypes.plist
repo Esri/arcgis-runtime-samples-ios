@@ -14,6 +14,10 @@
 	<array>
 		<string>slpk</string>
 	</array>
+	<key>Styles</key>
+	<array>
+		<string>stylx</string>
+	</array>
 	<key>Tile Packages</key>
 	<array>
 		<string>tpk</string>

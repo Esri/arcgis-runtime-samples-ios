@@ -257,6 +257,10 @@
 				<key>dependency</key>
 				<array>
 					<string>militaryoverlay</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Colormap renderer</string>
 				<key>storyboardName</key>
 				<string>ColormapRenderer</string>

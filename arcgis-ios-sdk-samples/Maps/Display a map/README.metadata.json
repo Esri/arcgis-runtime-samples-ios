@@ -1,0 +1,20 @@
+{
+    "category": "Maps",
+    "description": "@@TODO: This samples demonstrates how to display a map with a basemap",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/display-a-map.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "DisplayMapViewController.swift"
+    ],
+    "title": "@@TODO: Display a map"
+}

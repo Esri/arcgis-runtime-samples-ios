@@ -711,16 +711,16 @@
 		F1034FA922D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
-		F164997622E90F150088CA93 /* DictionaryRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1F62C4122E6560C00EFD599 /* DictionaryRendererViewController.swift */; };
-		F1F62C4022E64FFF00EFD599 /* DictionaryRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1F62C3F22E64FFF00EFD599 /* DictionaryRenderer.storyboard */; };
-		F1F62C4222E6560C00EFD599 /* DictionaryRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F62C4122E6560C00EFD599 /* DictionaryRendererViewController.swift */; };
-		F1F62C4422E65E0900EFD599 /* militaryoverlay.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F1F62C4322E65E0900EFD599 /* militaryoverlay.geodatabase */; settings = {ASSET_TAGS = (militaryoverlay, ); }; };
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
+		F164997622E90F150088CA93 /* DictionaryRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1F62C4122E6560C00EFD599 /* DictionaryRendererViewController.swift */; };
 		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
 		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F1E4B10F22D6AF28005FDB4D /* ColormapRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10E22D6AF28005FDB4D /* ColormapRenderer.storyboard */; };
 		F1E4B11122D6AF5D005FDB4D /* ColormapRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B11022D6AF5D005FDB4D /* ColormapRendererViewController.swift */; };
+		F1F62C4022E64FFF00EFD599 /* DictionaryRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1F62C3F22E64FFF00EFD599 /* DictionaryRenderer.storyboard */; };
+		F1F62C4222E6560C00EFD599 /* DictionaryRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F62C4122E6560C00EFD599 /* DictionaryRendererViewController.swift */; };
+		F1F62C4422E65E0900EFD599 /* militaryoverlay.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F1F62C4322E65E0900EFD599 /* militaryoverlay.geodatabase */; settings = {ASSET_TAGS = (militaryoverlay, ); }; };
 		F1FA9DED22DE74C600234601 /* ColormapRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B11022D6AF5D005FDB4D /* ColormapRendererViewController.swift */; };
 		F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */; };
 		F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4159C6E20925AAE0016E53D /* OpenScene.storyboard */; };
@@ -1485,14 +1485,14 @@
 		F1034FA222D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalTilePackage.storyboard; sourceTree = "<group>"; };
 		F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalTilePackageViewController.swift; sourceTree = "<group>"; };
 		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpk; sourceTree = "<group>"; };
-		F1F62C3F22E64FFF00EFD599 /* DictionaryRenderer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryRenderer.storyboard; sourceTree = "<group>"; };
-		F1F62C4122E6560C00EFD599 /* DictionaryRendererViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryRendererViewController.swift; sourceTree = "<group>"; };
-		F1F62C4322E65E0900EFD599 /* militaryoverlay.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = militaryoverlay.geodatabase; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
 		F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalRaster.storyboard; sourceTree = "<group>"; };
 		F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalRasterViewController.swift; sourceTree = "<group>"; };
 		F1E4B10E22D6AF28005FDB4D /* ColormapRenderer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColormapRenderer.storyboard; sourceTree = "<group>"; };
 		F1E4B11022D6AF5D005FDB4D /* ColormapRendererViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColormapRendererViewController.swift; sourceTree = "<group>"; };
+		F1F62C3F22E64FFF00EFD599 /* DictionaryRenderer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryRenderer.storyboard; sourceTree = "<group>"; };
+		F1F62C4122E6560C00EFD599 /* DictionaryRendererViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryRendererViewController.swift; sourceTree = "<group>"; };
+		F1F62C4322E65E0900EFD599 /* militaryoverlay.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = militaryoverlay.geodatabase; sourceTree = "<group>"; };
 		F4159C6A209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerRenderingModeMap.storyboard; sourceTree = "<group>"; };
 		F4159C6E20925AAE0016E53D /* OpenScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenScene.storyboard; sourceTree = "<group>"; };
 		F4159C7020925B710016E53D /* OpenSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSceneViewController.swift; sourceTree = "<group>"; };
@@ -3747,15 +3747,6 @@
 			path = "Create terrain surface from a local tile package";
 			sourceTree = "<group>";
 		};
-		F1F62C3E22E6401500EFD599 /* Dictionary renderer with feature layer */ = {
-			isa = PBXGroup;
-			children = (
-				F1F62C3F22E64FFF00EFD599 /* DictionaryRenderer.storyboard */,
-				F1F62C4122E6560C00EFD599 /* DictionaryRendererViewController.swift */,
-			);
-			path = "Dictionary renderer with feature layer";
-			sourceTree = "<group>";
-		};
 		F1679F0422D93FA900E5320A /* Rasters */ = {
 			isa = PBXGroup;
 			children = (
@@ -3780,6 +3771,15 @@
 				F1E4B11022D6AF5D005FDB4D /* ColormapRendererViewController.swift */,
 			);
 			path = "Colormap renderer";
+			sourceTree = "<group>";
+		};
+		F1F62C3E22E6401500EFD599 /* Dictionary renderer with feature layer */ = {
+			isa = PBXGroup;
+			children = (
+				F1F62C3F22E64FFF00EFD599 /* DictionaryRenderer.storyboard */,
+				F1F62C4122E6560C00EFD599 /* DictionaryRendererViewController.swift */,
+			);
+			path = "Dictionary renderer with feature layer";
 			sourceTree = "<group>";
 		};
 		F4159C6D20925A8D0016E53D /* Open a scene (portal item) */ = {
@@ -3874,8 +3874,8 @@
 					SubdivisionsShapefile,
 					TilePackages,
 					YellowstoneMMPK,
-					militaryoverlay,
 					mil2525d,
+					militaryoverlay,
 					naperville_imagery,
 					philadelphia,
 					"sandiego-north-balboa-pointcloud",

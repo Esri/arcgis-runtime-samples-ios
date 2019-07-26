@@ -27,7 +27,16 @@ class EditAndSyncFeaturesViewController: UIViewController {
             
             // Assign the map to the map view.
             mapView.map = map
+            
+            // Display graphics overlay of the download area.
+            displayDownloadArea()
         }
+    }
+    
+    func displayDownloadArea() {
+        let graphicsOverlay: AGSGraphicsOverlay
+        
+        mapView.graphicsOverlays.add(graphicsOverlay)
     }
     
     override func viewDidLoad() {

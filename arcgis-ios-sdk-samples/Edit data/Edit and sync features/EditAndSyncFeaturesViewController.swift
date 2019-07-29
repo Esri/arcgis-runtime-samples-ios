@@ -18,7 +18,7 @@ import UIKit
 import ArcGIS
 
 class EditAndSyncFeaturesViewController: UIViewController {
-    @IBOutlet private weak var mapView: AGSMapView! {
+    @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Initialize map with a basemap.
             let tileCache = AGSTileCache(name: "SanFrancisco")
@@ -27,17 +27,41 @@ class EditAndSyncFeaturesViewController: UIViewController {
             
             // Assign the map to the map view.
             mapView.map = map
-            
+            mapView.setViewpoint(AGSViewpoint(targetExtent: tileCache.fullExtent!))
+
             // Display graphics overlay of the download area.
-            displayDownloadArea()
+//            displayGraphics()
         }
     }
     
-    func displayDownloadArea() {
-        let graphicsOverlay: AGSGraphicsOverlay
-        
-        mapView.graphicsOverlays.add(graphicsOverlay)
+    private var graphicsOverlay: AGSGraphicsOverlay!
+    
+//    func displayGraphics() {
+//        graphicsOverlay = AGSGraphicsOverlay()
+//        graphicsOverlay.renderer = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: .red, width: 2))
+//        self.mapView.graphicsOverlays.add(graphicsOverlay)
+//    }
+    @IBOutlet var extentView: UIView! {
+        didSet {
+            //setup extent view
+            extentView.layer.borderColor = UIColor.red.cgColor
+            extentView.layer.borderWidth = 3
+        }
     }
+    @IBOutlet private var generateButton: UIButton!
+    @IBOutlet private var syncButton: UIButton!
+    @IBOutlet private var progressBar: UIProgressView!
+    
+    private var downloadAreaGraphic: AGSGraphic! {
+        didSet {
+    
+        }
+    }
+    
+    private var geodatabaseSyncTask: AGSGeodatabaseSyncTask!
+    private var geodatabase: AGSGeodatabase!
+    private var viewpointChangedListener: UITableViewDropCoordinator!
+    private var selectedFeature: AGSFeature!
     
     override func viewDidLoad() {
         super.viewDidLoad()

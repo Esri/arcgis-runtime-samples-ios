@@ -22,23 +22,41 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5p-5s-jhB" userLabel="Extent View">
+                                <rect key="frame" x="72.5" y="157" width="269" height="582"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dk-KY-0b1" userLabel="Generate Button">
+                                <rect key="frame" x="127.5" y="789" width="159" height="30"/>
+                                <color key="backgroundColor" red="0.80479327282929791" green="0.80479327282929791" blue="0.80479327282929791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Generate Geodatabase"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="3Dk-KY-0b1" firstAttribute="top" secondItem="r5p-5s-jhB" secondAttribute="bottom" constant="50" id="3kf-Ew-H5C"/>
                             <constraint firstItem="0sH-Kk-wWr" firstAttribute="top" secondItem="0sk-IR-n2v" secondAttribute="top" id="677-Pm-PlF"/>
                             <constraint firstAttribute="bottom" secondItem="0sH-Kk-wWr" secondAttribute="bottom" id="Asu-nB-CGz"/>
+                            <constraint firstItem="r5p-5s-jhB" firstAttribute="height" secondItem="0sH-Kk-wWr" secondAttribute="height" multiplier="0.65" id="B2J-ST-hgt"/>
+                            <constraint firstItem="r5p-5s-jhB" firstAttribute="width" secondItem="0sH-Kk-wWr" secondAttribute="width" multiplier="0.65" id="Jcj-X0-chN"/>
+                            <constraint firstItem="r5p-5s-jhB" firstAttribute="centerX" secondItem="0sH-Kk-wWr" secondAttribute="centerX" id="LcW-A9-kea"/>
+                            <constraint firstItem="3Dk-KY-0b1" firstAttribute="centerX" secondItem="r5p-5s-jhB" secondAttribute="centerX" id="XbY-L3-EVx"/>
+                            <constraint firstItem="r5p-5s-jhB" firstAttribute="centerY" secondItem="0sH-Kk-wWr" secondAttribute="centerY" id="hLT-Kv-KkV"/>
                             <constraint firstItem="0sH-Kk-wWr" firstAttribute="leading" secondItem="0sk-IR-n2v" secondAttribute="leading" id="jaa-mn-BjH"/>
                             <constraint firstAttribute="trailing" secondItem="0sH-Kk-wWr" secondAttribute="trailing" id="tkI-cu-QEx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gGt-4y-cpB"/>
                     </view>
                     <connections>
+                        <outlet property="extentView" destination="r5p-5s-jhB" id="Jpf-uw-Cte"/>
+                        <outlet property="generateButton" destination="3Dk-KY-0b1" id="L1A-Si-2eq"/>
                         <outlet property="mapView" destination="0sH-Kk-wWr" id="39U-ww-1Lh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05V-VB-iTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="148"/>
+            <point key="canvasLocation" x="63.768115942028992" y="147.99107142857142"/>
         </scene>
     </scenes>
 </document>

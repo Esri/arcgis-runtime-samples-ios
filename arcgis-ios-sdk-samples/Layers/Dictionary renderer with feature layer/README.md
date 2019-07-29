@@ -10,7 +10,7 @@ A dictionary renderer uses a style file along with a rule engine to display adva
 
 ## How to use the sample
 
-When launched, the sample will display military symbology. Pan and zoom to explore.
+This sample displays military symbology. Pan and zoom to explore the map.
 
 ## How it works
 

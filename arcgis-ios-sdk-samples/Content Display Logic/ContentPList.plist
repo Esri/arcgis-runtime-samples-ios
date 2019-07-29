@@ -251,7 +251,7 @@
 				<key>displayName</key>
 				<string>Dictionary renderer with feature layer</string>
 				<key>storyboardName</key>
-				<string>DictionaryRenderer</string>
+				<string>FeatureLayerDictionaryRenderer</string>
 				<key>descriptionText</key>
 				<string>Convert features into graphics to show them with mil2525d symbols.</string>
 				<key>dependency</key>

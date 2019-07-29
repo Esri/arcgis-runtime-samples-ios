@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class DictionaryRendererViewController: UIViewController {
+class FeatureLayerDictionaryRendererViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Initialize the map.
@@ -72,6 +72,6 @@ class DictionaryRendererViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DictionaryRendererViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerDictionaryRendererViewController"]
     }
 }

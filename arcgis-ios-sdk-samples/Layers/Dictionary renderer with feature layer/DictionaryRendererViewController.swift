@@ -52,7 +52,7 @@ class DictionaryRendererViewController: UIViewController {
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     // Set the minimum visibility scale.
                     featureLayer.minScale = 1000000
-                    featureLayer.load { [weak self] (error: Error?) in
+                    featureLayer.load { (error: Error?) in
                         if let error = error {
                             self?.presentAlert(error: error)
                         } else {

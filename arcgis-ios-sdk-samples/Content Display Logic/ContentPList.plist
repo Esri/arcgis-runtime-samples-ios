@@ -249,6 +249,19 @@
 		<array>
 			<dict>
 				<key>displayName</key>
+				<string>Dictionary renderer with feature layer</string>
+				<key>storyboardName</key>
+				<string>FeatureLayerDictionaryRenderer</string>
+				<key>descriptionText</key>
+				<string>Convert features into graphics to show them with mil2525d symbols.</string>
+				<key>dependency</key>
+				<array>
+					<string>mil2525d</string>
+					<string>militaryoverlay</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Colormap renderer</string>
 				<key>storyboardName</key>
 				<string>ColormapRenderer</string>

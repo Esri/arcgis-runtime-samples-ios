@@ -1,0 +1,20 @@
+{
+    "category": "Features",
+    "description": "@@TODO: This sample demonstrates how to set the rendering mode for feature layers in a scene. There are two rendering modes, static and dynamic.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/feature-layer-rendering-mode-scene-.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "FeatureLayerRenderingModeSceneViewController.swift"
+    ],
+    "title": "@@TODO: Feature layer rendering mode (scene)"
+}

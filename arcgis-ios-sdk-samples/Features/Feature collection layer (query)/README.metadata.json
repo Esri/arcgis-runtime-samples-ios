@@ -1,0 +1,20 @@
+{
+    "category": "Features",
+    "description": "@@TODO: This sample demonstrates how to create a feature collection layer to show a query result from a service feature table. The feature collection is then displayed on the map with a fe",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/feature-collection-layer-query-.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "FeatureCollectionLayerQueryVC.swift"
+    ],
+    "title": "@@TODO: Feature collection layer (query)"
+}

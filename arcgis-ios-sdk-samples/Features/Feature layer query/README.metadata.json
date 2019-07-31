@@ -1,0 +1,21 @@
+{
+    "category": "Features",
+    "description": "@@TODO: This sample demonstrates how to query a feature layer via feature table.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-query.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "FLQueryViewController.swift"
+    ],
+    "title": "@@TODO: Feature layer query"
+}

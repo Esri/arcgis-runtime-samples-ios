@@ -186,6 +186,18 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Honor mobile map package expiration date</string>
+				<key>descriptionText</key>
+				<string>Access the expiration information of an expired mobile map package.</string>
+				<key>storyboardName</key>
+				<string>HonorMobileMapPackageExpirationDate</string>
+				<key>dependency</key>
+				<array>
+					<string>LothianRiversAnnoMMPK</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Generate offline map</string>
 				<key>storyboardName</key>
 				<string>GenerateOfflineMap</string>

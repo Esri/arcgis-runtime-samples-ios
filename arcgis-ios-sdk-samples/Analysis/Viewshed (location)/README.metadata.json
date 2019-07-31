@@ -1,0 +1,21 @@
+{
+    "category": "Analysis",
+    "description": "@@TODO: This sample demonstrates how to interactively edit a viewshed analysis in a scene and see updates on-the-fly.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/viewshed-location-.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "ViewshedSettingsVC.swift",
+        "ViewshedLocationViewController.swift"
+    ],
+    "title": "@@TODO: Viewshed (location)"
+}

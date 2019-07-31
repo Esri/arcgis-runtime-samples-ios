@@ -1,0 +1,24 @@
+{
+    "category": "Analysis",
+    "description": "@@TODO: This sample demonstrates measuring 3D distances between two points in a scene.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Analysis",
+        "3D",
+        "AGSAnalysisOverlay",
+        "AGSLocationDistanceMeasurement"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/distance-measurement-analysis.htm",
+    "relevant_apis": [
+        "AGSAnalysisOverlay",
+        "AGSLocationDistanceMeasurement"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "DistanceMeasurementAnalysisViewController.swift"
+    ],
+    "title": "@@TODO: Distance Measurement Analysis"
+}

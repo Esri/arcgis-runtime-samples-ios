@@ -1,0 +1,27 @@
+{
+    "category": "Scenes",
+    "description": "@@TODO: This sample demonstrates how to apply extrusion to a renderer on a feature layer.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***",
+        "FeatureLayer",
+        "SceneProperties",
+        "ServiceFeatureTable",
+        "FeatureLayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-extrusion.htm",
+    "relevant_apis": [
+        "FeatureLayer",
+        "SceneProperties",
+        "ServiceFeatureTable",
+        "FeatureLayer"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "FeatureLayerExtrusionViewController.swift"
+    ],
+    "title": "@@TODO: Feature layer extrusion"
+}

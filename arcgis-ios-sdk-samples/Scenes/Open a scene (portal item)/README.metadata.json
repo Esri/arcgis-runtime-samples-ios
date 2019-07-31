@@ -1,0 +1,25 @@
+{
+    "category": "Scenes",
+    "description": "@@TODO: This sample demonstrates how to open a scene from a Portal item. Just like web maps are the ArcGIS format for maps, web scenes are the ArcGIS format for scenes. These scenes can be",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Scenes",
+        "Web Scene",
+        "Portal",
+        "AGSPortalItem.init(portal:)",
+        "AGSScene(item:)"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/open-a-scene-portal-item-.htm",
+    "relevant_apis": [
+        "AGSPortalItem.init(portal:)",
+        "AGSScene(item:)"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "OpenSceneViewController.swift"
+    ],
+    "title": "@@TODO: Open a scene (Portal item)"
+}

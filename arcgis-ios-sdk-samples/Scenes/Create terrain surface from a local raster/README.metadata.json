@@ -1,0 +1,26 @@
+{
+    "category": "Scenes",
+    "description": "@@TODO: Set the terrain surface with elevation described by a raster file.",
+    "ignore": false,
+    "images": [
+        "create-terrain-from-a-local-raster.png"
+    ],
+    "keywords": [
+        "3D",
+        "raster",
+        "elevation",
+        "surface",
+        "AGSRasterElevationSource",
+        "AGSSurface"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/create-terrain-from-a-local-raster.htm",
+    "relevant_apis": [
+        "AGSRasterElevationSource",
+        "AGSSurface"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "CreateTerrainSurfaceFromLocalRasterViewController.swift"
+    ],
+    "title": "@@TODO: Create terrain from a local raster"
+}

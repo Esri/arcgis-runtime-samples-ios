@@ -1,0 +1,23 @@
+{
+    "category": "Scenes",
+    "description": "@@TODO: View a point scene layer from a scene service",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "3D",
+        "point scene layer",
+        "layers",
+        "AGSArcGISSceneLayer"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/add-a-point-scene-layer.htm",
+    "relevant_apis": [
+        "AGSArcGISSceneLayer"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "AddPointSceneLayerViewController.swift"
+    ],
+    "title": "@@TODO: Add a point scene layer"
+}

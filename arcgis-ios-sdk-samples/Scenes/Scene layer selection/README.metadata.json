@@ -1,0 +1,25 @@
+{
+    "category": "Scenes",
+    "description": "@@TODO: This sample demonstrates how to identify geoelements in a scene layer.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Search and Query",
+        "AGSScene",
+        "AGSArcGISSceneLayer",
+        "AGSSceneView"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/scene-layer-selection.htm",
+    "relevant_apis": [
+        "AGSScene",
+        "AGSArcGISSceneLayer",
+        "AGSSceneView"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "SceneLayerSelectionViewController.swift"
+    ],
+    "title": "@@TODO: Scene Layer Selection"
+}

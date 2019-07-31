@@ -1,0 +1,26 @@
+{
+    "category": "Scenes",
+    "description": "@@TODO: See through terrain in a scene and move the camera underground.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "3D",
+        "subsurface",
+        "underground",
+        "utilities",
+        "AGSSurface",
+        "AGSSurface.navigationConstraint"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/view-content-beneath-the-terrain-surface.htm",
+    "relevant_apis": [
+        "AGSSurface",
+        "AGSSurface.navigationConstraint"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "ViewContentBeneathTerrainSurfaceViewController.swift"
+    ],
+    "title": "@@TODO: View content beneath the terrain surface"
+}

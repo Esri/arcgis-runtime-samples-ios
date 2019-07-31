@@ -1,0 +1,22 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: This sample demonstrates how to use hillshade renderer on a raster",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/hillshade-renderer.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "HillshadeSettingsVC.swift",
+        "HillshadeRendererVC.swift"
+    ],
+    "title": "@@TODO: Hillshade renderer"
+}

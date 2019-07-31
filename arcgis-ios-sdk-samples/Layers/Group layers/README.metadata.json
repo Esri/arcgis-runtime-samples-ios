@@ -1,0 +1,24 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: Group a collection of layers together and toggle their visibility as a group.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Layers",
+        "Group Layer",
+        "AGSGroupLayer"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/group-layers.htm",
+    "relevant_apis": [
+        "AGSGroupLayer"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "GroupLayersSectionView.swift",
+        "GroupLayersViewController.swift",
+        "LayersTableViewController.swift"
+    ],
+    "title": "@@TODO: Group layers"
+}

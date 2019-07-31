@@ -1,0 +1,26 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: This samples demonstrates how to display a map with an OpenStreetMap basemap.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Basemaps",
+        "Layers",
+        "AGSMap",
+        "AGSBasemapType",
+        "AGSMapView"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/openstreetmap-layer.htm",
+    "relevant_apis": [
+        "AGSMap",
+        "AGSBasemapType",
+        "AGSMapView"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "OpenStreetMapLayerViewController.swift"
+    ],
+    "title": "@@TODO: OpenStreetMap Layer"
+}

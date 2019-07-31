@@ -1,0 +1,18 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: This sample demonstrates how to create and use a raster layer made from a local raster file.",
+    "ignore": false,
+    "images": [],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/raster-layer-file-.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "RasterLayerViewController.swift"
+    ],
+    "title": "@@TODO: Raster layer (file)"
+}

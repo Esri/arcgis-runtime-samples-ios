@@ -1,0 +1,29 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: This sample demonstrates how to discover available styles and apply them to WMS sublayers.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "WMS",
+        "styles",
+        "imagery",
+        "AGSWMSLayerInfo",
+        "AGSWMSLayer.sublayers",
+        "AGSWMSLayerInfo.styles",
+        "AGSWMSSublayer.currentStyle"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/style-wms-layers.htm",
+    "relevant_apis": [
+        "AGSWMSLayerInfo",
+        "AGSWMSLayer.sublayers",
+        "AGSWMSLayerInfo.styles",
+        "AGSWMSSublayer.currentStyle"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "StyleWebMapServiceLayerViewController.swift"
+    ],
+    "title": "@@TODO: Style WMS layers"
+}

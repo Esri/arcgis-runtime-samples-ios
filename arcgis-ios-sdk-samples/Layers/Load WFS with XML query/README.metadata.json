@@ -1,0 +1,33 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: Load a WFS feature table using an XML query.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "OGC",
+        "WFS",
+        "feature",
+        "web",
+        "service",
+        "XML",
+        "query",
+        "AGSFeatureLayer",
+        "AGSWFSFeatureTable",
+        "AGSWFSFeatureTable.axisOrder",
+        "AGSWFSFeatureTable.populateFromService(withRequestXML:clearCache:completion:)"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/load-wfs-with-xml-query.htm",
+    "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSWFSFeatureTable",
+        "AGSWFSFeatureTable.axisOrder",
+        "AGSWFSFeatureTable.populateFromService(withRequestXML:clearCache:completion:)"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "LoadWFSWithXMLQueryViewController.swift"
+    ],
+    "title": "@@TODO: Load WFS with XML query"
+}

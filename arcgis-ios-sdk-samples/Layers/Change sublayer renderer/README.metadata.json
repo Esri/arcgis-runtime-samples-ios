@@ -1,0 +1,20 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: This sample demonstrates how you to change renderer of a sublayer in map image layer",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/change-sublayer-renderer.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "ChangeSublayerRendererViewController.swift"
+    ],
+    "title": "@@TODO: Change sublayer renderer"
+}

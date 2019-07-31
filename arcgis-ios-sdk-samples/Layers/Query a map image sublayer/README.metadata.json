@@ -1,0 +1,32 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: This sample demonstrates how to execute an attribute and spatial query on the sublayers of an ArcGIS map image layer.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Query",
+        "Sublayer",
+        "MapServer",
+        "Table",
+        "AGSServiceFeatureTable",
+        "AGSArcGISMapImageLayer",
+        "AGSArcGISMapImageSublayer.load(completion:)",
+        "AGSArcGISMapImageSublayer",
+        "AGSArcGISMapImageSublayer.table"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/query-a-map-image-sublayer.htm",
+    "relevant_apis": [
+        "AGSServiceFeatureTable",
+        "AGSArcGISMapImageLayer",
+        "AGSArcGISMapImageSublayer.load(completion:)",
+        "AGSArcGISMapImageSublayer",
+        "AGSArcGISMapImageSublayer.table"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "QueryMapImageSublayerViewController.swift"
+    ],
+    "title": "@@TODO: Query a map image sublayer"
+}

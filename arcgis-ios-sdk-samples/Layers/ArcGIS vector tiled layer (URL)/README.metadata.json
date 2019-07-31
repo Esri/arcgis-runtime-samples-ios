@@ -1,0 +1,20 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: This sample demonstrates how to create a vector tile layer from a URL",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/arcgis-vector-tiled-layer-url-.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "VectorTileLayerViewController.swift"
+    ],
+    "title": "@@TODO: ArcGIS vector tiled layer (URL)"
+}

@@ -1,0 +1,30 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: Load and display KML files from various sources, including URLs, local files, and Portal items.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "KML",
+        "KMZ",
+        "OGC",
+        "Keyhole",
+        "AGSKMLDataset(url: URL)",
+        "AGSKMLDataset(name: String)",
+        "AGSKMLLayer(kmlDataset: AGSKMLDataset)",
+        "AGSKMLLayer(item: AGSItem)"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/display-kml.htm",
+    "relevant_apis": [
+        "AGSKMLDataset(url: URL)",
+        "AGSKMLDataset(name: String)",
+        "AGSKMLLayer(kmlDataset: AGSKMLDataset)",
+        "AGSKMLLayer(item: AGSItem)"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "DisplayKMLViewController.swift"
+    ],
+    "title": "@@TODO: Display KML"
+}

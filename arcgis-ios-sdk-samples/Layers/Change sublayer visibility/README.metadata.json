@@ -1,0 +1,22 @@
+{
+    "category": "Layers",
+    "description": "@@TODO: This sample demonstrates how you can hide or show sublayers of a map image layer",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/change-sublayer-visibility.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "SublayersTableViewController.swift",
+        "SublayerVisibilityViewController.swift"
+    ],
+    "title": "@@TODO: Change sublayer visibility"
+}

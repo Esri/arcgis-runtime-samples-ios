@@ -1,4 +1,4 @@
-# Find connected features in a utility network
+# Find connected features in utility networks
 
 Find all features connected to a set of starting points in a utility network.
 

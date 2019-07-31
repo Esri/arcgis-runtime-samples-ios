@@ -1,0 +1,21 @@
+{
+    "category": "Search",
+    "description": "@@TODO: This sample demonstrates how to use geocode functionality to search for points of interest, around a location or within an extent",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/find-place.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "FindPlaceViewController.swift"
+    ],
+    "title": "@@TODO: Find place"
+}

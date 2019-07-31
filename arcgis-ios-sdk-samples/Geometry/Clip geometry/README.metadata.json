@@ -1,0 +1,35 @@
+{
+    "category": "Geometry",
+    "description": "@@TODO: This sample demonstrates how to clip a geometry with an envelope using AGSGeometryEngine.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Geometry",
+        "Clip",
+        "Geometry Engine",
+        "class AGSGeometryEngine.clipGeometry(_:with:)",
+        "AGSGraphicsOverlay",
+        "AGSGraphic",
+        "AGSGeometry",
+        "AGSEnvelope",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleFillSymbol"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/clip-geometry.htm",
+    "relevant_apis": [
+        "class AGSGeometryEngine.clipGeometry(_:with:)",
+        "AGSGraphicsOverlay",
+        "AGSGraphic",
+        "AGSGeometry",
+        "AGSEnvelope",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleFillSymbol"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "ClipGeometryViewController.swift"
+    ],
+    "title": "@@TODO: Clip Geometry"
+}

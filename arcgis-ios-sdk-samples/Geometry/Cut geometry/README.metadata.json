@@ -1,0 +1,25 @@
+{
+    "category": "Geometry",
+    "description": "@@TODO: This sample demonstrates how to cut a geometry with a polyline using the AGSGeometryEngine. For example, you may want to subdivide a large parcel polygon into several smaller parce",
+    "ignore": false,
+    "images": [
+        "CutGeometry.png"
+    ],
+    "keywords": [
+        "geometry",
+        "cut",
+        "split",
+        "AGSGeometryEngine",
+        "AGSGeometryEngine.cut(_:withCutter:)"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/cut-geometry.htm",
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSGeometryEngine.cut(_:withCutter:)"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "CutGeometryViewController.swift"
+    ],
+    "title": "@@TODO: Cut geometry"
+}

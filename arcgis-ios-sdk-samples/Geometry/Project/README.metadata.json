@@ -1,0 +1,34 @@
+{
+    "category": "Geometry",
+    "description": "@@TODO: Project a point to another spatial reference.",
+    "ignore": false,
+    "images": [
+        "project.png"
+    ],
+    "keywords": [
+        "AGSGeometryEngine",
+        "projection",
+        "spatial reference",
+        "Web Mercator",
+        "WGS 84",
+        "latitude",
+        "longitude",
+        "projected coordinate system",
+        "geographic coordinate system",
+        "AGSGeometryEngine",
+        "AGSPoint",
+        "AGSSpatialReference"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/project.htm",
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSPoint",
+        "AGSSpatialReference"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "ProjectStackView.swift",
+        "ProjectViewController.swift"
+    ],
+    "title": "@@TODO: Project"
+}

@@ -1,0 +1,21 @@
+{
+    "category": "Geometry",
+    "description": "@@TODO: This sample demonstrates how to perform geometry operations between overlapping polygons.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/spatial-operations.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "SpatialOperationsViewController.swift",
+        "OperationsListViewController.swift"
+    ],
+    "title": "@@TODO: Spatial operations"
+}

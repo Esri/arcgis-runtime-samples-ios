@@ -30,22 +30,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
 
             // Display graphics overlay of the download area.
 //            displayGraphics()
-        }
-    }
-    
-    private var graphicsOverlay: AGSGraphicsOverlay!
-    
-//    func displayGraphics() {
-//        graphicsOverlay = AGSGraphicsOverlay()
-//        graphicsOverlay.renderer = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: .red, width: 2))
-//        self.mapView.graphicsOverlays.add(graphicsOverlay)
-//    }
-    @IBOutlet var extentView: UIView! {
-        didSet {
-            //setup extent view
-            extentView.layer.borderColor = UIColor.red.cgColor
-            extentView.layer.borderWidth = 3
-            
             // Create a geodatabase sync task using the feature service URL.
             let featureServiceString = "https://sampleserver6.arcgisonline" + ".com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
             let featureServiceURL = URL(string: featureServiceString)
@@ -73,10 +57,26 @@ class EditAndSyncFeaturesViewController: UIViewController {
             }
         }
     }
+    
+    private var graphicsOverlay: AGSGraphicsOverlay!
+    
+//    func displayGraphics() {
+//        graphicsOverlay = AGSGraphicsOverlay()
+//        graphicsOverlay.renderer = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: .red, width: 2))
+//        self.mapView.graphicsOverlays.add(graphicsOverlay)
+//    }
+    @IBOutlet var extentView: UIView! {
+        didSet {
+            //setup extent view
+            extentView.layer.borderColor = UIColor.red.cgColor
+            extentView.layer.borderWidth = 3
+        }
+    }
     @IBOutlet private var generateButton: UIButton!
     @IBOutlet private var syncButton: UIButton!
     @IBOutlet private var progressBar: UIProgressView!
     
+    private var activeJob: AGSJob?
     private var downloadAreaGraphic: AGSGraphic!
     private var geodatabaseSyncTask: AGSGeodatabaseSyncTask!
     private var geodatabase: AGSGeodatabase!
@@ -96,28 +96,82 @@ class EditAndSyncFeaturesViewController: UIViewController {
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
-    func initialize() {
-       
-    }
-    
-    @IBAction func generateOfflineMapAction() {
+    @IBAction func generateGeodatabase() {
         // Hide the unnecessary items.
         generateButton.isEnabled = false
         extentView.isHidden = true
         
         // Get the area outlined by the extent view.
-        let areaOfInterest = extentViewFrameToEnvelope()
+        let areaOfInterest = self.extentViewFrameToEnvelope()
         
         /////////add a progress or loading view//////////////////!!!!!!!!!!!!!!!!!///////////////////!!!!!!!!!!!!!!!!//////////////////
-        let fileManager = FileManager.default
+//        let fileManager = FileManager.default
 //        let currentDirectory = Bundle.main.resourcePath
-        let temporaryFile = FileManager.createFile(fileManager)
+//        let temporaryFile = FileManager.createFile(fileManager)
+        
         // DON'T FORGET TO DELETE FILE ONCE DONE!!!!!!!!//////////////!!!!!!!!!!!!!!!!//////////////!!!!!!!!!!!!!!!!!
 //        let geodatabaseParameters = geodatabaseSyncTask.AGSGenerateGeodatabaseParameters()
 //        let generateGeodatabaseJob = geodatabaseSyncTask.generateJob(with: <#T##AGSGenerateGeodatabaseParameters#>, downloadFileURL: <#T##URL#>)
-    }
-    
-    
+        
+        geodatabaseSyncTask.defaultGenerateGeodatabaseParameters(withExtent: areaOfInterest) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: Error?) in
+            if let params = params,
+                let self = self {
+                //don't include attachments to minimze the geodatabae size
+                params.returnAttachments = false
+                
+                // Create a temporary file for the geodatabase.
+                let tempFile = "temporaryFile"
+                
+                let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                let downloadFileURL = documentDirectoryURL
+                    .appendingPathComponent(tempFile)
+                    .appendingPathExtension("geodatabase")
+                
+                //request a job to generate the geodatabase
+                let generateGeodatabaseJob = self.geodatabaseSyncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
+                self.activeJob = generateGeodatabaseJob
+                //kick off the job
+                generateGeodatabaseJob.start(
+                    statusHandler: { (status: AGSJobStatus) in
+                        SVProgressHUD.show(withStatus: status.statusString())},
+                    completion: { (object: AnyObject?, error: Error?) in
+                        SVProgressHUD.dismiss()
+                        
+                        if let error = error {
+                            self.presentAlert(error: error)
+                        } else {
+//                            self?.generatedGeodatabase = object as? AGSGeodatabase
+//                            self?.displayLayersFromGeodatabase()
+                            self.geodatabase = generateGeodatabaseJob.result
+                            self.geodatabase.load { (error: Error?) in
+                                if let error = error {
+                                    self.presentAlert(error: error)
+                                    //don't forget to add an error display message here////////////////////!!!!!!!!!!!!!!!!!!//////////////!!!!!!!!!!!!!
+                                } else {
+                                    self.mapView.map?.operationalLayers.removeAllObjects()
+                                    for geodatabaseFeatureTable in self.geodatabase.geodatabaseFeatureTables {
+                                        geodatabaseFeatureTable.load { (error: Error?) in
+                                            if let error = error {
+                                                self.presentAlert(error: error)
+                                            } else {
+                                                let featureLayer = AGSFeatureLayer(featureTable: geodatabaseFeatureTable)
+                                                self.mapView.map?.operationalLayers.add(featureLayer)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        self.activeJob = nil
+                        self.generateButton.isEnabled = false
+                        //ALLOW EDITING HERE/////////////////////////////////////////////////////////////////////////////////////
+                    }
+                )
+            } else {
+                print("Could not generate default parameters: \(error!)")
+            }
+        } // end of syncTask
+    } //end of function
     
     override func viewDidLoad() {
         super.viewDidLoad()

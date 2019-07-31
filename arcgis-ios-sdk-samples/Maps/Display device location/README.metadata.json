@@ -1,0 +1,22 @@
+{
+    "category": "Maps",
+    "description": "@@TODO: This sample demonstrates how you can enable location services and switch between different types of auto pan modes.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/display-device-location.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "DisplayLocationViewController.swift",
+        "DisplayLocationSettingsViewController.swift"
+    ],
+    "title": "@@TODO: Display device location"
+}

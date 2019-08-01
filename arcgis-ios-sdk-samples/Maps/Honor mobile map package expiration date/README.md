@@ -29,7 +29,7 @@ Load the app. The author of the MMPK used in this sample chose to set the MMPK's
 
 ## Offline Data
 
-This sample uses the [LothianRiversAnno - Expired](https://arcgisruntime.maps.arcgis.com/home/item.html?id=628e8e3521cf45e9a28a12fe10c02c4d) Mobile Map Package. It is downloaded from ArcGIS Online automatically.
+This sample uses the [LothianRiversAnno - Expired](https://arcgisruntime.maps.arcgis.com/home/item.html?id=174150279af74a2ba6f8b87a567f480b) Mobile Map Package. It is downloaded from ArcGIS Online automatically.
 
 ## Tags
 

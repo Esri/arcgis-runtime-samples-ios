@@ -204,11 +204,15 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                 print("Cannot move feature outside downloaded area.")
             }
         } else { // Identify which feature was clicked and select it.
-            let identifyLayersFeature = mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5.0, returnPopupsOnly: false, maximumResultsPerLayer: 1) { (error: Error?) in
+            mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5.0, returnPopupsOnly: false, maximumResultsPerLayer: 1) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
                 if let error = error {
-                    
+                    self.presentAlert(error: error)
                 } else {
-                    
+                    let identifyLayerResults = results
+                    if (identifyLayerResults!.isEmpty != true) {
+                        let firstResult = identifyLayerResults!.first
+                        let layerContent = firstResult?.layerContent
+                    }
                 }
             }
         }

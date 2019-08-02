@@ -75,6 +75,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet private var generateButton: UIButton!
     @IBOutlet private var syncButton: UIButton!
     @IBOutlet private var progressBar: UIProgressView!
+    @IBOutlet private var tapFeatureLabel: UILabel!
     
     private var activeJob: AGSJob?
     private var downloadAreaGraphic: AGSGraphic!
@@ -82,6 +83,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private var geodatabase: AGSGeodatabase!
     private var viewpointChangedListener: UITableViewDropCoordinator!
     private var selectedFeature: AGSFeature!
+    private var areaOfInterest: AGSEnvelope!
     
     func extentViewFrameToEnvelope() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)
@@ -102,7 +104,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         extentView.isHidden = true
         
         // Get the area outlined by the extent view.
-        let areaOfInterest = self.extentViewFrameToEnvelope()
+        areaOfInterest = self.extentViewFrameToEnvelope()
         
         /////////add a progress or loading view//////////////////!!!!!!!!!!!!!!!!!///////////////////!!!!!!!!!!!!!!!!//////////////////
 //        let fileManager = FileManager.default
@@ -133,8 +135,11 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 //kick off the job
                 generateGeodatabaseJob.start(
                     statusHandler: { (status: AGSJobStatus) in
-                        SVProgressHUD.show(withStatus: status.statusString())},
+                        SVProgressHUD.show(withStatus: status.statusString())
+                                    },
                     completion: { (object: AnyObject?, error: Error?) in
+                        
+                        print(Thread.current)
                         SVProgressHUD.dismiss()
                         
                         if let error = error {
@@ -164,7 +169,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                         }
                         self.activeJob = nil
                         self.generateButton.isEnabled = false
-                        //ALLOW EDITING HERE/////////////////////////////////////////////////////////////////////////////////////
+//                        self.allowEditing()
                     }
                 )
             } else {
@@ -173,10 +178,46 @@ class EditAndSyncFeaturesViewController: UIViewController {
         } // end of syncTask
     } //end of function
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditAndSyncFeaturesViewController"]
+    }
+}
+
+extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        if selectedFeature != nil {
+            let point = AGSPoint(clLocationCoordinate2D: mapView.screen(toLocation: screenPoint))
+            if AGSGeometryEngine.intersection(ofGeometry1: point, geometry2: areaOfInterest) {
+                selectedFeature.geometry = point
+                selectedFeature.featureTable?.update(selectedFeature) { [weak self] (error: Error?) in
+                    if let error = error {
+                        self!.presentAlert(error: error)
+                    } else {
+                        self!.syncButton.isEnabled = true
+                    }
+                }
+            } else {
+                print("Cannot move feature outside downloaded area.")
+            }
+        } else { // Identify which feature was clicked and select it.
+            let identifyLayersFeature = mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5.0, returnPopupsOnly: false, maximumResultsPerLayer: 1) { (error: Error?) in
+                if let error = error {
+                    
+                } else {
+                    
+                }
+            }
+        }
+        
+//    func allowEditing() {
+//        // Hide the generate button.
+//        self.generateButton.isHidden = true
+//        // Show instructions.
+//        self.tapFeatureLabel.isHidden = false
+//    }
     }
 }

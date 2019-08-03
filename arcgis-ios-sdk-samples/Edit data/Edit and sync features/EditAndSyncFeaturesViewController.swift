@@ -138,8 +138,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
                         SVProgressHUD.show(withStatus: status.statusString())
                                     },
                     completion: { (object: AnyObject?, error: Error?) in
-                        
-                        print(Thread.current)
                         SVProgressHUD.dismiss()
                         
                         if let error = error {
@@ -190,8 +188,8 @@ class EditAndSyncFeaturesViewController: UIViewController {
 extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if selectedFeature != nil {
-            let point = AGSPoint(clLocationCoordinate2D: mapView.screen(toLocation: screenPoint))
-            if AGSGeometryEngine.intersection(ofGeometry1: point, geometry2: areaOfInterest) {
+            let point = mapView.screen(toLocation: screenPoint)
+            if AGSGeometryEngine.geometry(point, intersects: areaOfInterest) {
                 selectedFeature.geometry = point
                 selectedFeature.featureTable?.update(selectedFeature) { [weak self] (error: Error?) in
                     if let error = error {
@@ -209,9 +207,21 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                     self.presentAlert(error: error)
                 } else {
                     let identifyLayerResults = results
-                    if (identifyLayerResults!.isEmpty != true) {
+                    if (identifyLayerResults?.isEmpty != true) {
                         let firstResult = identifyLayerResults!.first
                         let layerContent = firstResult?.layerContent
+                        
+                        // Check that the result is a feature layer and has elements.
+                        ////////////////////////if there's a problem, check here... inconsistencies with sublayers etc/////////////////////
+                        if layerContent!.isKind(of: AGSFeatureLayer) && firstResult != nil {
+                            let featureLayer = layerContent as? AGSFeatureLayer
+                            let identifiedElement = firstResult?.sublayerResults.first
+                            if identifiedElement!.isKind(of: AGSFeature) {
+                                let feature = identifiedElement as? AGSFeature
+                                featureLayer?.select(feature!)
+                                let selectedFeature = feature
+                            }
+                        }
                     }
                 }
             }

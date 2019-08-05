@@ -27,6 +27,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             
             // Assign the map to the map view.
             mapView.map = map
+            mapView.touchDelegate = self
 
             // Display graphics overlay of the download area.
 //            displayGraphics()
@@ -58,13 +59,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
         }
     }
     
-    private var graphicsOverlay: AGSGraphicsOverlay!
-    
-//    func displayGraphics() {
-//        graphicsOverlay = AGSGraphicsOverlay()
-//        graphicsOverlay.renderer = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: .red, width: 2))
-//        self.mapView.graphicsOverlays.add(graphicsOverlay)
-//    }
     @IBOutlet var extentView: UIView! {
         didSet {
             //setup extent view
@@ -74,7 +68,8 @@ class EditAndSyncFeaturesViewController: UIViewController {
     }
     @IBOutlet private var generateButton: UIButton!
     @IBOutlet private var syncButton: UIButton!
-    @IBOutlet private var progressBar: UIProgressView!
+    @IBOutlet private var tapSyncLabel: UILabel!
+    @IBOutlet private var moveFeatureLabel: UILabel!
     @IBOutlet private var tapFeatureLabel: UILabel!
     
     private var activeJob: AGSJob?
@@ -98,6 +93,16 @@ class EditAndSyncFeaturesViewController: UIViewController {
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
+    private func clearSelection() {
+        for layer in mapView.map!.operationalLayers {
+            let layer = layer as AnyObject?
+            if layer!.isKind(of: AGSFeatureLayer.self) {
+                let featureLayer = layer as? AGSFeatureLayer
+                featureLayer?.clearSelection()
+            }
+        }
+    }
+    
     @IBAction func generateGeodatabase() {
         // Hide the unnecessary items.
         generateButton.isEnabled = false
@@ -105,15 +110,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
         
         // Get the area outlined by the extent view.
         areaOfInterest = self.extentViewFrameToEnvelope()
-        
-        /////////add a progress or loading view//////////////////!!!!!!!!!!!!!!!!!///////////////////!!!!!!!!!!!!!!!!//////////////////
-//        let fileManager = FileManager.default
-//        let currentDirectory = Bundle.main.resourcePath
-//        let temporaryFile = FileManager.createFile(fileManager)
-        
-        // DON'T FORGET TO DELETE FILE ONCE DONE!!!!!!!!//////////////!!!!!!!!!!!!!!!!//////////////!!!!!!!!!!!!!!!!!
-//        let geodatabaseParameters = geodatabaseSyncTask.AGSGenerateGeodatabaseParameters()
-//        let generateGeodatabaseJob = geodatabaseSyncTask.generateJob(with: <#T##AGSGenerateGeodatabaseParameters#>, downloadFileURL: <#T##URL#>)
         
         geodatabaseSyncTask.defaultGenerateGeodatabaseParameters(withExtent: areaOfInterest) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: Error?) in
             if let params = params,
@@ -176,6 +172,35 @@ class EditAndSyncFeaturesViewController: UIViewController {
         } // end of syncTask
     } //end of function
     
+    @IBAction func syncGeodatabase() {
+        clearSelection()
+        syncButton.isEnabled = false
+        selectedFeature = nil
+        
+        let syncGeodatabaseParameters = AGSSyncGeodatabaseParameters()
+        syncGeodatabaseParameters.geodatabaseSyncDirection = AGSSyncDirection.bidirectional
+        syncGeodatabaseParameters.rollbackOnFailure = false
+        
+        for geodatabaseFeatureTable in geodatabase.geodatabaseFeatureTables {
+            let serviceLayerId = geodatabaseFeatureTable.serviceLayerID
+            let syncLayerOption = AGSSyncLayerOption(layerID: serviceLayerId)
+            syncGeodatabaseParameters.layerOptions.append(syncLayerOption)
+        }
+        let syncGeodatabaseJob = geodatabaseSyncTask.syncJob(with: syncGeodatabaseParameters, geodatabase: geodatabase)
+        syncGeodatabaseJob.start(statusHandler: { (status: AGSJobStatus) in
+            SVProgressHUD.show(withStatus: status.statusString())
+        },
+                                 
+                                 completion: { (result: [AGSSyncLayerResult]?, error: Error?) in
+                                    SVProgressHUD.dismiss()
+                                    
+                                    if let error = error {
+                                        self.presentAlert(error: error)
+                                    } else {
+                                        self.presentAlert(title: "Geodatabase sync sucessful")
+                                    }
+        })
+    } // End of func
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -190,12 +215,19 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
         if selectedFeature != nil {
             let point = mapView.screen(toLocation: screenPoint)
             if AGSGeometryEngine.geometry(point, intersects: areaOfInterest) {
+                self.tapFeatureLabel.isHidden = true
+                self.moveFeatureLabel.isHidden = false
+                self.tapSyncLabel.isHidden = true
                 selectedFeature.geometry = point
                 selectedFeature.featureTable?.update(selectedFeature) { [weak self] (error: Error?) in
                     if let error = error {
                         self!.presentAlert(error: error)
                     } else {
+                        self!.syncButton.isHidden = false
                         self!.syncButton.isEnabled = true
+                        self!.tapFeatureLabel.isHidden = true
+                        self!.moveFeatureLabel.isHidden = true
+                        self!.tapSyncLabel.isHidden = false
                     }
                 }
             } else {
@@ -206,17 +238,20 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {
+                    self.tapFeatureLabel.isHidden = false
+                    self.moveFeatureLabel.isHidden = true
+                    self.tapSyncLabel.isHidden = true
                     let identifyLayerResults = results
-                    if (identifyLayerResults?.isEmpty != true) {
+                    if identifyLayerResults?.isEmpty != true {
                         let firstResult = identifyLayerResults!.first
                         let layerContent = firstResult?.layerContent
                         
                         // Check that the result is a feature layer and has elements.
                         ////////////////////////if there's a problem, check here... inconsistencies with sublayers etc/////////////////////
-                        if layerContent!.isKind(of: AGSFeatureLayer) && firstResult != nil {
+                        if layerContent!.isKind(of: AGSFeatureLayer.self) && firstResult != nil {
                             let featureLayer = layerContent as? AGSFeatureLayer
-                            let identifiedElement = firstResult?.sublayerResults.first
-                            if identifiedElement!.isKind(of: AGSFeature) {
+                            let identifiedElement = firstResult?.geoElements.first //SOMETHING WRONG WITH IDENTIFIED ELEMENT
+                            if identifiedElement!.isKind(of: AGSFeature.self) {
                                 let feature = identifiedElement as? AGSFeature
                                 featureLayer?.select(feature!)
                                 let selectedFeature = feature
@@ -226,12 +261,5 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                 }
             }
         }
-        
-//    func allowEditing() {
-//        // Hide the generate button.
-//        self.generateButton.isHidden = true
-//        // Show instructions.
-//        self.tapFeatureLabel.isHidden = false
-//    }
     }
 }

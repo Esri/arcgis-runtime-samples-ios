@@ -45,19 +45,52 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the sync button" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcO-gi-Dd8" userLabel="Tap to Sync Label">
+                                <rect key="frame" x="0.0" y="44" width="414" height="21"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap onn map to move the feature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAS-35-7ik" userLabel="Tap to Move Label">
+                                <rect key="frame" x="0.0" y="44" width="414" height="21"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvk-82-DQP" userLabel="Sync Button">
+                                <rect key="frame" x="142" y="789" width="130" height="30"/>
+                                <color key="backgroundColor" red="0.80479327280000001" green="0.80479327280000001" blue="0.80479327280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Sync Geodatabase"/>
+                                <connections>
+                                    <action selector="generateGeodatabase" destination="x5g-SP-gLy" eventType="touchUpInside" id="7qP-Pn-4JE"/>
+                                    <action selector="syncGeodatabase" destination="x5g-SP-gLy" eventType="touchUpInside" id="oXS-FK-94y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3Dk-KY-0b1" firstAttribute="top" secondItem="r5p-5s-jhB" secondAttribute="bottom" constant="50" id="3kf-Ew-H5C"/>
                             <constraint firstItem="Ukm-A2-tL3" firstAttribute="top" secondItem="gGt-4y-cpB" secondAttribute="top" id="5aB-w3-fxE"/>
+                            <constraint firstItem="r5p-5s-jhB" firstAttribute="centerX" secondItem="0sk-IR-n2v" secondAttribute="centerX" id="5es-lz-FM6"/>
                             <constraint firstItem="0sH-Kk-wWr" firstAttribute="top" secondItem="0sk-IR-n2v" secondAttribute="top" id="677-Pm-PlF"/>
                             <constraint firstAttribute="bottom" secondItem="0sH-Kk-wWr" secondAttribute="bottom" id="Asu-nB-CGz"/>
                             <constraint firstItem="r5p-5s-jhB" firstAttribute="height" secondItem="0sH-Kk-wWr" secondAttribute="height" multiplier="0.65" id="B2J-ST-hgt"/>
+                            <constraint firstItem="rvk-82-DQP" firstAttribute="centerX" secondItem="r5p-5s-jhB" secondAttribute="centerX" id="CI6-kn-z2s"/>
                             <constraint firstItem="Ukm-A2-tL3" firstAttribute="leading" secondItem="0sk-IR-n2v" secondAttribute="leading" id="DA4-W1-0O0"/>
+                            <constraint firstItem="HcO-gi-Dd8" firstAttribute="leading" secondItem="gGt-4y-cpB" secondAttribute="leading" id="Gdd-Ue-2mA"/>
+                            <constraint firstItem="rvk-82-DQP" firstAttribute="top" secondItem="r5p-5s-jhB" secondAttribute="bottom" constant="50" id="J3Y-wc-zIa"/>
+                            <constraint firstItem="BAS-35-7ik" firstAttribute="top" secondItem="gGt-4y-cpB" secondAttribute="top" id="J94-Ig-ncT"/>
                             <constraint firstItem="r5p-5s-jhB" firstAttribute="width" secondItem="0sH-Kk-wWr" secondAttribute="width" multiplier="0.65" id="Jcj-X0-chN"/>
                             <constraint firstItem="r5p-5s-jhB" firstAttribute="centerX" secondItem="0sH-Kk-wWr" secondAttribute="centerX" id="LcW-A9-kea"/>
+                            <constraint firstItem="HcO-gi-Dd8" firstAttribute="trailing" secondItem="gGt-4y-cpB" secondAttribute="trailing" id="PDo-qq-hk5"/>
+                            <constraint firstItem="HcO-gi-Dd8" firstAttribute="top" secondItem="gGt-4y-cpB" secondAttribute="top" id="Rr0-Jf-L6N"/>
+                            <constraint firstItem="BAS-35-7ik" firstAttribute="leading" secondItem="gGt-4y-cpB" secondAttribute="leading" id="XXk-G7-hjT"/>
                             <constraint firstItem="3Dk-KY-0b1" firstAttribute="centerX" secondItem="r5p-5s-jhB" secondAttribute="centerX" id="XbY-L3-EVx"/>
                             <constraint firstItem="r5p-5s-jhB" firstAttribute="centerY" secondItem="0sH-Kk-wWr" secondAttribute="centerY" id="hLT-Kv-KkV"/>
+                            <constraint firstItem="BAS-35-7ik" firstAttribute="trailing" secondItem="gGt-4y-cpB" secondAttribute="trailing" id="hMz-ge-Kg4"/>
                             <constraint firstItem="0sH-Kk-wWr" firstAttribute="leading" secondItem="0sk-IR-n2v" secondAttribute="leading" id="jaa-mn-BjH"/>
                             <constraint firstAttribute="trailing" secondItem="Ukm-A2-tL3" secondAttribute="trailing" id="q63-mj-W7i"/>
                             <constraint firstAttribute="trailing" secondItem="0sH-Kk-wWr" secondAttribute="trailing" id="tkI-cu-QEx"/>
@@ -68,7 +101,10 @@
                         <outlet property="extentView" destination="r5p-5s-jhB" id="Jpf-uw-Cte"/>
                         <outlet property="generateButton" destination="3Dk-KY-0b1" id="L1A-Si-2eq"/>
                         <outlet property="mapView" destination="0sH-Kk-wWr" id="39U-ww-1Lh"/>
+                        <outlet property="moveFeatureLabel" destination="BAS-35-7ik" id="ZOv-4j-OwR"/>
+                        <outlet property="syncButton" destination="rvk-82-DQP" id="b5Q-Yb-Ji3"/>
                         <outlet property="tapFeatureLabel" destination="Ukm-A2-tL3" id="bhD-aQ-9Dg"/>
+                        <outlet property="tapSyncLabel" destination="HcO-gi-Dd8" id="EPi-lH-fNq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05V-VB-iTD" userLabel="First Responder" sceneMemberID="firstResponder"/>

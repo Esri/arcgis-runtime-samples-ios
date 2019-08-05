@@ -46,6 +46,12 @@
 			<key>filename</key>
 			<string>LothianRiversAnno.mmpk</string>
 		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>b87307dcfb26411eb2e92e1627cb615b</string>
+			<key>filename</key>
+			<string>GasDeviceAnno.mmpk</string>
+		</dict>
 	</array>
 </dict>
 </plist>

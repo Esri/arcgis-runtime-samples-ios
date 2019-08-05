@@ -590,6 +590,18 @@
 				<key>storyboardName</key>
 				<string>GroupLayers</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Control annotation sublayer visibility</string>
+				<key>descriptionText</key>
+				<string>Use annotation sublayers to gain finer control of annotation layer subtypes.</string>
+				<key>storyboardName</key>
+				<string>ControlAnnotationSublayerVisibility</string>
+				<key>dependency</key>
+				<array>
+					<string>GasDeviceAnnoMMPK</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>

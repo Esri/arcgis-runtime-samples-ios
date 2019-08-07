@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XSN-kQ-PdY">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Control Annotation Sublayer Visibility View Controller-->
+        <scene sceneID="QT2-bY-c5f">
+            <objects>
+                <viewController id="XSN-kQ-PdY" customClass="ControlAnnotationSublayerVisibilityViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xFG-Bk-hY3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4zf-NM-Giq" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UY1-Im-AuE">
+                                <rect key="frame" x="110" y="60" width="194" height="37"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jdj-62-aIU">
+                                    <rect key="frame" x="0.0" y="0.0" width="194" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YoD-T8-86h">
+                                            <rect key="frame" x="0.0" y="0.0" width="194.5" height="36.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Map Scale" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HU5-RL-XJ3">
+                                                    <rect key="frame" x="8" y="8" width="142.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qzd-EZ-F7o">
+                                                    <rect key="frame" x="166.5" y="8" width="20" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YoD-T8-86h" firstAttribute="leading" secondItem="Jdj-62-aIU" secondAttribute="leading" id="7ak-bU-reC"/>
+                                        <constraint firstItem="YoD-T8-86h" firstAttribute="top" secondItem="Jdj-62-aIU" secondAttribute="top" id="GIn-lW-UxJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="YoD-T8-86h" secondAttribute="trailing" id="Lkv-7G-wMf"/>
+                                        <constraint firstAttribute="bottom" secondItem="YoD-T8-86h" secondAttribute="bottom" id="xtT-YG-Q0i"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="prominent"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cja-0R-4rW">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="GfI-Dq-Wj7"/>
+                                    <barButtonItem enabled="NO" title="Sublayers" id="wnF-Dg-fs9">
+                                        <connections>
+                                            <segue destination="hX1-q3-NYJ" kind="popoverPresentation" popoverAnchorBarButtonItem="wnF-Dg-fs9" id="cAa-Z7-4FF">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="fcc-o6-Xf9"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Cja-0R-4rW" firstAttribute="leading" secondItem="xFG-Bk-hY3" secondAttribute="leading" id="M4i-6c-4tu"/>
+                            <constraint firstItem="4zf-NM-Giq" firstAttribute="leading" secondItem="xFG-Bk-hY3" secondAttribute="leading" id="NIZ-GO-kBq"/>
+                            <constraint firstItem="bjr-rP-nEc" firstAttribute="bottom" secondItem="Cja-0R-4rW" secondAttribute="bottom" id="Oze-i6-bvY"/>
+                            <constraint firstItem="4zf-NM-Giq" firstAttribute="top" secondItem="bjr-rP-nEc" secondAttribute="top" id="Qql-HI-2SK"/>
+                            <constraint firstAttribute="trailing" secondItem="Cja-0R-4rW" secondAttribute="trailing" id="S9Q-LM-0xr"/>
+                            <constraint firstItem="UY1-Im-AuE" firstAttribute="centerX" secondItem="bjr-rP-nEc" secondAttribute="centerX" id="iGk-gC-xyC"/>
+                            <constraint firstAttribute="trailing" secondItem="4zf-NM-Giq" secondAttribute="trailing" id="qy3-Dt-z6E"/>
+                            <constraint firstItem="UY1-Im-AuE" firstAttribute="top" secondItem="bjr-rP-nEc" secondAttribute="top" constant="16" id="rdT-jh-bIj"/>
+                            <constraint firstItem="Cja-0R-4rW" firstAttribute="top" secondItem="4zf-NM-Giq" secondAttribute="bottom" id="y5F-C0-Byl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bjr-rP-nEc"/>
+                    </view>
+                    <connections>
+                        <outlet property="currentMapScaleLabel" destination="Qzd-EZ-F7o" id="UO7-D2-kyr"/>
+                        <outlet property="mapView" destination="4zf-NM-Giq" id="HHd-td-w3f"/>
+                        <outlet property="sublayersButtonItem" destination="wnF-Dg-fs9" id="Ogk-28-VYM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vyy-jm-MWk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86.956521739130437" y="115.84821428571428"/>
+        </scene>
+        <!--Control Annotation Sublayer Visibility Sublayers View Controller-->
+        <scene sceneID="EbR-nw-jtY">
+            <objects>
+                <tableViewController id="hX1-q3-NYJ" customClass="ControlAnnotationSublayerVisibilitySublayersViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UDb-gY-G2s">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SublayerCell" textLabel="xth-iC-NsM" style="IBUITableViewCellStyleDefault" id="4fJ-EN-p2Z" customClass="ControlAnnotationSublayerVisibilitySublayerCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4fJ-EN-p2Z" id="Bue-Nj-6pq">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sublayer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xth-iC-NsM">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hX1-q3-NYJ" id="wz0-UF-b53"/>
+                            <outlet property="delegate" destination="hX1-q3-NYJ" id="nVd-Tw-uuE"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uaV-S2-n7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="116"/>
+        </scene>
+    </scenes>
+</document>

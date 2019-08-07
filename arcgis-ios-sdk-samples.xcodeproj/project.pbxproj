@@ -520,12 +520,16 @@
 		4C478E4E223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */; };
 		4C478E5022402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */; };
 		4C4DCA42225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4DCA41225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard */; };
+		4C54BF2D22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C54BF2C22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift */; };
 		4C5F98BF2280A4EB00414343 /* AuthenticateWithOAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F98BE2280A4EB00414343 /* AuthenticateWithOAuth.storyboard */; };
 		4C5F98C12280A57500414343 /* AuthenticateWithOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */; };
 		4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */; };
 		4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
 		4C66AAFA2107CCE300EE6346 /* QueryMapImageSublayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */; };
 		4C68A28B22DE9D3E0009F43C /* FileTypes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C68A28A22DE9D3E0009F43C /* FileTypes.plist */; };
+		4C6FAE1A22F8A37D00BE2D0B /* ControlAnnotationSublayerVisibilityViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CE15D4B22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift */; };
+		4C6FAE1B22F8A38300BE2D0B /* ControlAnnotationSublayerVisibilitySublayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CE15D5222F380FB005F2968 /* ControlAnnotationSublayerVisibilitySublayersViewController.swift */; };
+		4C6FAE1C22F8A38700BE2D0B /* ControlAnnotationSublayerVisibilitySublayerCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C54BF2C22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift */; };
 		4C72117020BF444C004A7DD9 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72116E20BF444C004A7DD9 /* SVProgressAnimatedView.m */; };
 		4C72117320BF4457004A7DD9 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72117220BF4457004A7DD9 /* SVRadialGradientLayer.m */; };
 		4C73C837211130E000B0F9C7 /* ArcGIS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C73C83421112B4300B0F9C7 /* ArcGIS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -569,6 +573,10 @@
 		4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */; };
 		4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B55E2142EB2600767D87 /* SampleTests.swift */; };
 		4CD2B5612142F09700767D87 /* CategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B5602142F09700767D87 /* CategoryTests.swift */; };
+		4CE15D4A22F37A0C005F2968 /* ControlAnnotationSublayerVisibility.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CE15D4922F37A0C005F2968 /* ControlAnnotationSublayerVisibility.storyboard */; };
+		4CE15D4C22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE15D4B22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift */; };
+		4CE15D5022F37E8D005F2968 /* GasDeviceAnno.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 4CE15D4E22F37E8D005F2968 /* GasDeviceAnno.mmpk */; settings = {ASSET_TAGS = (GasDeviceAnnoMMPK, ); }; };
+		4CE15D5322F380FB005F2968 /* ControlAnnotationSublayerVisibilitySublayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE15D5222F380FB005F2968 /* ControlAnnotationSublayerVisibilitySublayersViewController.swift */; };
 		4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CC00F7320C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift */; };
 		4CECF89F21D57F0A00A56161 /* SetMinMaxScale.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CECF89E21D57F0A00A56161 /* SetMinMaxScale.storyboard */; };
 		4CECF8A121D57F4000A56161 /* SetMinMaxScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */; };
@@ -577,6 +585,10 @@
 		4CECF8CA21DD5C2200A56161 /* Mil2525DMessages.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */; };
 		4CECF8CD21DD86D400A56161 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		4CF22FCF22650D5A00300161 /* GenerateOfflineMapBasemapByReferenceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */; };
+		4CF6DF1922F2055D00A3092A /* HonorMobileMapPackageExpirationDate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6DF1822F2055D00A3092A /* HonorMobileMapPackageExpirationDate.storyboard */; };
+		4CF6DF1B22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */; };
+		4CF6DF1F22F2094F00A3092A /* LothianRiversAnno.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6DF1E22F2094F00A3092A /* LothianRiversAnno.mmpk */; settings = {ASSET_TAGS = (LothianRiversAnnoMMPK, ); }; };
+		4CF6DF2022F2338D00A3092A /* HonorMobileMapPackageExpirationDateViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */; };
 		940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940A73F320E588C200A06C80 /* CutGeometry.storyboard */; };
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
@@ -971,6 +983,10 @@
 				4CB5059B2269306E00165152 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift in CopyFiles */,
 				4C9240192280F7F40045A86B /* AuthenticateWithOAuthViewController.swift in CopyFiles */,
 				4C8965B422B14D2600D09F60 /* TokenAuthenticationViewController.swift in CopyFiles */,
+				4CF6DF2022F2338D00A3092A /* HonorMobileMapPackageExpirationDateViewController.swift in CopyFiles */,
+				4C6FAE1A22F8A37D00BE2D0B /* ControlAnnotationSublayerVisibilityViewController.swift in CopyFiles */,
+				4C6FAE1B22F8A38300BE2D0B /* ControlAnnotationSublayerVisibilitySublayersViewController.swift in CopyFiles */,
+				4C6FAE1C22F8A38700BE2D0B /* ControlAnnotationSublayerVisibilitySublayerCell.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1350,6 +1366,7 @@
 		4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleSettingsViewController.swift; sourceTree = "<group>"; };
 		4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C4DCA41225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenerateOfflineMapBasemapByReference.storyboard; sourceTree = "<group>"; };
+		4C54BF2C22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlAnnotationSublayerVisibilitySublayerCell.swift; sourceTree = "<group>"; };
 		4C5F98BE2280A4EB00414343 /* AuthenticateWithOAuth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthenticateWithOAuth.storyboard; sourceTree = "<group>"; };
 		4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateWithOAuthViewController.swift; sourceTree = "<group>"; };
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
@@ -1386,10 +1403,17 @@
 		4CD2B5582142EAF900767D87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD2B55E2142EB2600767D87 /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
 		4CD2B5602142F09700767D87 /* CategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTests.swift; sourceTree = "<group>"; };
+		4CE15D4922F37A0C005F2968 /* ControlAnnotationSublayerVisibility.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ControlAnnotationSublayerVisibility.storyboard; sourceTree = "<group>"; };
+		4CE15D4B22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlAnnotationSublayerVisibilityViewController.swift; sourceTree = "<group>"; };
+		4CE15D4E22F37E8D005F2968 /* GasDeviceAnno.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = GasDeviceAnno.mmpk; sourceTree = "<group>"; };
+		4CE15D5222F380FB005F2968 /* ControlAnnotationSublayerVisibilitySublayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlAnnotationSublayerVisibilitySublayersViewController.swift; sourceTree = "<group>"; };
 		4CECF89E21D57F0A00A56161 /* SetMinMaxScale.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetMinMaxScale.storyboard; sourceTree = "<group>"; };
 		4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMinMaxScaleViewController.swift; sourceTree = "<group>"; };
 		4CECF8A221D5802E00A56161 /* SetMinMaxScaleViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMinMaxScaleViewControllerTests.swift; sourceTree = "<group>"; };
 		4CECF8C921DD5C2200A56161 /* Mil2525DMessages.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Mil2525DMessages.xml; sourceTree = "<group>"; };
+		4CF6DF1822F2055D00A3092A /* HonorMobileMapPackageExpirationDate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HonorMobileMapPackageExpirationDate.storyboard; sourceTree = "<group>"; };
+		4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonorMobileMapPackageExpirationDateViewController.swift; sourceTree = "<group>"; };
+		4CF6DF1E22F2094F00A3092A /* LothianRiversAnno.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = LothianRiversAnno.mmpk; sourceTree = "<group>"; };
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
@@ -2621,6 +2645,7 @@
 				098049A12253FC3F009C685D /* Browse WFS layers */,
 				4CAC91D72242AAB700663A10 /* Load WFS with XML query */,
 				12D6602B226697040005DE8A /* Group layers */,
+				4CE15D4822F37968005F2968 /* Control annotation sublayer visibility */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -2649,6 +2674,7 @@
 				3E6C77141CCFC33100E89873 /* Identify layers */,
 				3EFCE1AF1CEFD5B900E02F67 /* Open mobile map (map package) */,
 				3EFCE1BE1CF36FFC00E02F67 /* Mobile map (search and route) */,
+				4CF6DF1722F204FF00A3092A /* Honor mobile map package expiration date */,
 				3E5E09341EF2E8E200FF3454 /* Generate offline map */,
 				C7094780215D340C00BA0969 /* Generate offline map (overrides) */,
 				4C4DCA40225EAAED00832FC5 /* Generate offline map (basemap by reference) */,
@@ -3345,6 +3371,7 @@
 		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
 			isa = PBXGroup;
 			children = (
+				4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */,
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
 				F1679F0422D93FA900E5320A /* Rasters */,
 				4CA72CF5224D2F4400F8DCE1 /* Scene Layer Packages */,
@@ -3401,6 +3428,17 @@
 			path = "arcgis-ios-sdk-samplesTests";
 			sourceTree = "<group>";
 		};
+		4CE15D4822F37968005F2968 /* Control annotation sublayer visibility */ = {
+			isa = PBXGroup;
+			children = (
+				4CE15D4922F37A0C005F2968 /* ControlAnnotationSublayerVisibility.storyboard */,
+				4CE15D4B22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift */,
+				4CE15D5222F380FB005F2968 /* ControlAnnotationSublayerVisibilitySublayersViewController.swift */,
+				4C54BF2C22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift */,
+			);
+			path = "Control annotation sublayer visibility";
+			sourceTree = "<group>";
+		};
 		4CECF89D21D57E9700A56161 /* Set min-max scale */ = {
 			isa = PBXGroup;
 			children = (
@@ -3408,6 +3446,24 @@
 				4CECF8A021D57F4000A56161 /* SetMinMaxScaleViewController.swift */,
 			);
 			path = "Set min-max scale";
+			sourceTree = "<group>";
+		};
+		4CF6DF1722F204FF00A3092A /* Honor mobile map package expiration date */ = {
+			isa = PBXGroup;
+			children = (
+				4CF6DF1822F2055D00A3092A /* HonorMobileMapPackageExpirationDate.storyboard */,
+				4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */,
+			);
+			path = "Honor mobile map package expiration date";
+			sourceTree = "<group>";
+		};
+		4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */ = {
+			isa = PBXGroup;
+			children = (
+				4CE15D4E22F37E8D005F2968 /* GasDeviceAnno.mmpk */,
+				4CF6DF1E22F2094F00A3092A /* LothianRiversAnno.mmpk */,
+			);
+			path = "Mobile Map Packages";
 			sourceTree = "<group>";
 		};
 		940A73F220E5889B00A06C80 /* Cut geometry */ = {
@@ -3856,7 +3912,9 @@
 					Bristol,
 					Bristol3DModel,
 					Dolmus3DModel,
+					GasDeviceAnnoMMPK,
 					LATrailsGeodatabase,
+					LothianRiversAnnoMMPK,
 					MissionFiles,
 					MobileMapPackages,
 					MontereyElevation,
@@ -3986,6 +4044,7 @@
 				C734B1F521C2DDE500E1BE76 /* ClipGeometry.storyboard in Resources */,
 				3E4BF47C1C5BDDCA00D85919 /* san-diego-locator.loc in Resources */,
 				4CB506D7224C3975006A3471 /* sandiego-north-balboa-pointcloud.slpk in Resources */,
+				4CF6DF1922F2055D00A3092A /* HonorMobileMapPackageExpirationDate.storyboard in Resources */,
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
 				4C5F98BF2280A4EB00414343 /* AuthenticateWithOAuth.storyboard in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
@@ -3993,6 +4052,7 @@
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				4CCA30C622386413009D2AEF /* ViewPointCloudDataOffline.storyboard in Resources */,
 				3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */,
+				4CE15D4A22F37A0C005F2968 /* ControlAnnotationSublayerVisibility.storyboard in Resources */,
 				D9316A631FDB4F060075AD92 /* ReadGeopackage.storyboard in Resources */,
 				3ED028AF1B8E3A9800ACA70D /* MILUsingURL.storyboard in Resources */,
 				3E8A258A1D36B89400D14F08 /* LA_Trails.geodatabase in Resources */,
@@ -4120,6 +4180,7 @@
 				C793B5DE21667194000A7A10 /* ListKMLContents.storyboard in Resources */,
 				4C783F3C2252D61200609B9C /* OpenMobileScene.storyboard in Resources */,
 				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
+				4CF6DF1F22F2094F00A3092A /* LothianRiversAnno.mmpk in Resources */,
 				4C68A28B22DE9D3E0009F43C /* FileTypes.plist in Resources */,
 				3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */,
 				3E1183E01ECF5A1000180152 /* Snowdon.csv in Resources */,
@@ -4157,6 +4218,7 @@
 				127D29F8200EC5FC00DD6CDC /* ViewshedLocation.storyboard in Resources */,
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
 				D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */,
+				4CE15D5022F37E8D005F2968 /* GasDeviceAnno.mmpk in Resources */,
 				4C060E672261195C0070C787 /* naperville_imagery.tpk in Resources */,
 				E4B2E26B1FE31EEA00E610FF /* ViewshedGeoElement.storyboard in Resources */,
 				4C0F27B12152CA2400496666 /* IdentifyKMLFeatures.storyboard in Resources */,
@@ -4303,6 +4365,7 @@
 				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
+				4CE15D5322F380FB005F2968 /* ControlAnnotationSublayerVisibilitySublayersViewController.swift in Sources */,
 				3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */,
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
@@ -4331,6 +4394,7 @@
 				3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */,
 				4C72117020BF444C004A7DD9 /* SVProgressAnimatedView.m in Sources */,
 				127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */,
+				4CE15D4C22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
@@ -4430,6 +4494,7 @@
 				C7094784215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift in Sources */,
 				C734B1F421C2DDE500E1BE76 /* ClipGeometryViewController.swift in Sources */,
 				3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */,
+				4C54BF2D22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift in Sources */,
 				3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */,
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
 				3E0B58591E36D8D300951767 /* OperationsListViewController.swift in Sources */,
@@ -4469,6 +4534,7 @@
 				3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */,
 				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,
 				3EEB2B981EB9695F00B52513 /* ListRelatedFeaturesVC.swift in Sources */,
+				4CF6DF1B22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift in Sources */,
 				C7B29EBE218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift in Sources */,
 				3ECDD9B01E8470E100E645AB /* DownloadProgressView.swift in Sources */,
 				3EABC7901DB1772000C161C6 /* RGB Renderer Cells.swift in Sources */,

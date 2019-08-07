@@ -15,8 +15,8 @@
     ],
     "snippets": [
         "CreateSaveMapViewController.swift",
-        "CreateOptionsViewController.swift"
-        "SaveAsViewController.swift",
+        "CreateOptionsViewController.swift",
+        "SaveAsViewController.swift"
     ],
     "title": "Create and save a map"
 }

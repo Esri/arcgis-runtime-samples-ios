@@ -185,7 +185,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             let syncLayerOption = AGSSyncLayerOption(layerID: serviceLayerId)
             syncGeodatabaseParameters.layerOptions.append(syncLayerOption)
         }
-        // Create a sync job wiht the parameters and start it.
+        // Create a sync job with the parameters and start it.
         let syncGeodatabaseJob = geodatabaseSyncTask.syncJob(with: syncGeodatabaseParameters, geodatabase: geodatabase)
         syncGeodatabaseJob.start(statusHandler: { (status: AGSJobStatus) in
             SVProgressHUD.show(withStatus: status.statusString())
@@ -198,6 +198,9 @@ class EditAndSyncFeaturesViewController: UIViewController {
                                         self.presentAlert(title: "Geodatabase sync sucessful")
                                     }
         })
+        syncButton.isEnabled = false
+        syncButton.isHidden = true
+        self.mapView.touchDelegate = self
     }
     
     override func viewDidLoad() {
@@ -232,7 +235,7 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                 self.presentAlert(title: "Cannot move feature outside downloaded area")
             }
         } else { // Identify which feature was tapped and select it.
-            mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5.0, returnPopupsOnly: false, maximumResultsPerLayer: 1) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
+            mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 22.0, returnPopupsOnly: false, maximumResultsPerLayer: 1) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {

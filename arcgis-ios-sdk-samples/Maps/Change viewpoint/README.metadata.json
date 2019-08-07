@@ -1,21 +1,18 @@
 {
     "category": "Maps",
-    "description": "@@TODO: This sample demonstrates different ways in which you can change the viewpoint or visible area of a map.",
+    "description": "This sample demonstrates different ways in which you can change the viewpoint or visible area of a map.",
     "ignore": false,
     "images": [
         "image1.png",
         "image2.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/change-viewpoint.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "SetViewpointViewController.swift"
     ],
-    "title": "@@TODO: Change viewpoint"
+    "title": "Change viewpoint"
 }

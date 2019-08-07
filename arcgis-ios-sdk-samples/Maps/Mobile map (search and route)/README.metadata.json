@@ -1,23 +1,20 @@
 {
     "category": "Maps",
-    "description": "@@TODO: This sample demonstrates how to search and route using data in a map package.",
+    "description": "This sample demonstrates how to search and route using data in a map package.",
     "ignore": false,
     "images": [
         "image1.png",
         "image2.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/mobile-map-search-and-route-.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
-        "MobileMapViewController.swift",
         "MapPackagesListViewController.swift",
-        "MapPackageCell.swift"
+        "MapPackageCell.swift",
+        "MobileMapViewController.swift"
     ],
-    "title": "@@TODO: Mobile map (search and route)"
+    "title": "Mobile map (search and route)"
 }

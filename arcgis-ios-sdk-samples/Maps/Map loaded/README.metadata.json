@@ -1,20 +1,17 @@
 {
     "category": "Maps",
-    "description": "@@TODO: This sample shows you the map's load status. The LoadStatus is considered loaded when any of the following are true:",
+    "description": "This sample shows you the map's load status.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/map-loaded.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "MapLoadedViewController.swift"
     ],
-    "title": "@@TODO: Map loaded"
+    "title": "Map loaded"
 }

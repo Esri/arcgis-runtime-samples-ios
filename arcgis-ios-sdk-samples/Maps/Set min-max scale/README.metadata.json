@@ -1,6 +1,6 @@
 {
     "category": "Maps",
-    "description": "@@TODO: This sample demonstrates how to set the minimum and maximum scale of a map.",
+    "description": "This sample demonstrates how to set the minimum and maximum scale of a map.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -15,14 +15,14 @@
         "AGSMap.minScale",
         "AGSMap.maxScale"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/set-min/max-scale.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSMap.minScale",
         "AGSMap.maxScale"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "SetMinMaxScaleViewController.swift"
     ],
-    "title": "@@TODO: Set min/max scale"
+    "title": "Set min/max scale"
 }

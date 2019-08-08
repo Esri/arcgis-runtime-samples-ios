@@ -1,0 +1,33 @@
+{
+    "category": "Maps",
+    "description": "Use the AGSOfflineMapTask, with the overrides, to take a webmap offline.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Offline",
+        "AGSOfflineMapTask",
+        "AGSGenerateGeodatabaseParameters",
+        "AGSGenerateOfflineMapParameters",
+        "AGSGenerateOfflineMapParameterOverrides",
+        "AGSGenerateOfflineMapJob",
+        "AGSGenerateOfflineMapResult",
+        "AGSExportTileCacheParameters"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/generate-offline-map-overrides-.htm",
+    "relevant_apis": [
+        "AGSOfflineMapTask",
+        "AGSGenerateGeodatabaseParameters",
+        "AGSGenerateOfflineMapParameters",
+        "AGSGenerateOfflineMapParameterOverrides",
+        "AGSGenerateOfflineMapJob",
+        "AGSGenerateOfflineMapResult",
+        "AGSExportTileCacheParameters"
+    ],
+    "snippets": [
+        "GenerateOfflineMapOverridesViewController.swift",
+        "OfflineMapParameterOverridesViewController.swift"
+    ],
+    "title": "Generate Offline Map (Overrides)"
+}

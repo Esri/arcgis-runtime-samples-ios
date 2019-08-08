@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "description": "This sample demonstrates how to change the basemap of a map.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/change-basemap.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "SwitchBasemapViewController.swift"
+    ],
+    "title": "Change basemap"
+}

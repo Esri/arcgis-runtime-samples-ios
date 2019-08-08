@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "description": "This sample demonstrates how you can take screenshot of a map.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/take-screenshot.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "MapViewScreenshotViewController.swift"
+    ],
+    "title": "Take screenshot"
+}

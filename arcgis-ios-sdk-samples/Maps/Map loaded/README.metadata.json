@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "description": "This sample shows you the map's load status.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/map-loaded.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "MapLoadedViewController.swift"
+    ],
+    "title": "Map loaded"
+}

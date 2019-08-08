@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "description": "This sample demonstrates how you can tap and hold on a map to get the magnifier. You can also pan while tapping and holding to move the magnifier across the map.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/show-magnifier.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "ShowMagnifierViewController.swift"
+    ],
+    "title": "Show magnifier"
+}

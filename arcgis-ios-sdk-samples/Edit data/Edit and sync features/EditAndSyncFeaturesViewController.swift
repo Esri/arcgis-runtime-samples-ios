@@ -200,7 +200,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
         })
         syncButton.isEnabled = false
         syncButton.isHidden = true
-        self.mapView.touchDelegate = self
     }
     
     override func viewDidLoad() {

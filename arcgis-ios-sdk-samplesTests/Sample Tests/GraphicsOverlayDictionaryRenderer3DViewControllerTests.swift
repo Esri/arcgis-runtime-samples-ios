@@ -67,11 +67,11 @@ class MessageParserTests: XCTestCase {
         XCTAssertNotNil(firstMessage)
         
         let expectedPointCount = 36
-        let actualFirstMessagePointCount = firstMessage!.points.count
+        let actualFirstMessagePointCount = firstMessage?.points.count ?? 0
         XCTAssertEqual(actualFirstMessagePointCount, expectedPointCount)
-        
+
         let expectedMinimumAttributeCount = 7
-        let actualFirstMessageAttributeCount = firstMessage!.attributes.count
-        XCTAssertTrue(actualFirstMessageAttributeCount >= expectedMinimumAttributeCount)
+        let actualFirstMessageAttributeCount = firstMessage?.attributes.count ?? 0
+        XCTAssertGreaterThanOrEqual(actualFirstMessageAttributeCount, expectedMinimumAttributeCount)
     }
 }

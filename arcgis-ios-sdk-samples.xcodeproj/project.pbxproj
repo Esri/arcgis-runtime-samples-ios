@@ -2677,6 +2677,7 @@
 				D9316A5C1FDB4ED90075AD92 /* Read a geopackage */,
 				4CECF89D21D57E9700A56161 /* Set min-max scale */,
 				4C478E48223C73F9009F8CDF /* Map reference scale */,
+				9D4BA6C822FCAFAD0086D5D3 /* Show location history */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -3469,6 +3470,13 @@
 				940A73F320E588C200A06C80 /* CutGeometry.storyboard */,
 			);
 			path = "Cut geometry";
+			sourceTree = "<group>";
+		};
+		9D4BA6C822FCAFAD0086D5D3 /* Show location history */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Show location history";
 			sourceTree = "<group>";
 		};
 		C7094780215D340C00BA0969 /* Generate offline map (overrides) */ = {

@@ -42,18 +42,36 @@ class GraphicsOverlayDictionaryRenderer3DViewControllerTests: XCTestCase {
 }
 
 class MessageParserTests: XCTestCase {
-    let messagesURL = Bundle.main.url(forResource: "Mil2525DMessages", withExtension: "xml")!
-    
     func testParseMessagesAtURL() {
-        let parser = MessageParser()
-        do {
-            let messagesData = try Data(contentsOf: messagesURL)
-            let messages = try parser.parseMessages(from: messagesData)
-            XCTAssertEqual(messages.count, 33)
-            XCTAssertEqual(messages.first?.points.count, 36)
-            XCTAssertEqual(messages.first?.attributes.count, 8)
-        } catch {
-            fatalError("Error parsing messages: \(error)")
+        let messagesURL = Bundle.main.url(forResource: "Mil2525DMessages", withExtension: "xml")!
+        
+        guard let messagesData = try? Data(contentsOf: messagesURL) else {
+            XCTFail("Error loading data from URL + \(messagesURL)")
+            return
         }
+        
+        let messages: [Message]
+        do {
+            let parser = MessageParser()
+            messages = try parser.parseMessages(from: messagesData)
+        } catch {
+            XCTFail("Error parsing messages: \(error)")
+            return
+        }
+        
+        let expectedMessageCount = 33
+        let actualMessageCount = messages.count
+        XCTAssertEqual(actualMessageCount, expectedMessageCount)
+
+        let firstMessage = messages.first
+        XCTAssertNotNil(firstMessage)
+        
+        let expectedPointCount = 36
+        let actualFirstMessagePointCount = firstMessage?.points.count ?? 0
+        XCTAssertEqual(actualFirstMessagePointCount, expectedPointCount)
+
+        let expectedMinimumAttributeCount = 7
+        let actualFirstMessageAttributeCount = firstMessage?.attributes.count ?? 0
+        XCTAssertGreaterThanOrEqual(actualFirstMessageAttributeCount, expectedMinimumAttributeCount)
     }
 }

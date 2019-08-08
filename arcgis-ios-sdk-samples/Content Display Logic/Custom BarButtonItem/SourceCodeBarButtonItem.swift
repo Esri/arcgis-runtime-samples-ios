@@ -15,7 +15,7 @@
 import UIKit
 
 class SourceCodeBarButtonItem: UIBarButtonItem {
-    var filenames: [String]?
+    var filenames = [String]()
     weak var navController: UINavigationController?
     var readmeURL: URL?
     

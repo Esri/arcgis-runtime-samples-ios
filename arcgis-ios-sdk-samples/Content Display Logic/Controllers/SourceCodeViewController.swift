@@ -24,7 +24,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     
     private var listViewController: ListViewController!
     private var selectedFilenameIndex = 0
-    var filenames: [String]!
+    var filenames = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +84,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     
     func setupToolbarTitle(_ filename: String, arrowPointingDown: Bool) {
         var titleString = filename
-        if self.filenames.count > 1 {
+        if filenames.count > 1 {
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
         } else {
             self.toolbarTitleButton.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
@@ -95,16 +95,13 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     // MARK: - Navigation
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if self.filenames.count > 1 {
-            return true
-        }
-        return false
+        return filenames.count > 1
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FilenamesPopoverSegue" {
             let controller = segue.destination as! ListViewController
-            controller.list = self.filenames
+            controller.list = filenames
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             

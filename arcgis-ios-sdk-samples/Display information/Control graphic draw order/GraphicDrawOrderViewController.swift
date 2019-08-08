@@ -23,7 +23,7 @@ class GraphicDrawOrderViewController: UIViewController {
     var map: AGSMap!
     
     private var graphicsOverlay = AGSGraphicsOverlay()
-    private var graphics: [AGSGraphic]!
+    private var graphics = [AGSGraphic]()
     
     private var drawIndex: Int = 0
     
@@ -62,35 +62,32 @@ class GraphicDrawOrderViewController: UIViewController {
         //distance between the graphics
         let delta: Double = 100
         
-        //graphics array for reference when a button is tapped
-        self.graphics = [AGSGraphic]()
-        
         //blue marker
         var geometry = AGSPoint(x: x, y: y, spatialReference: .webMercator())
         var symbol = AGSPictureMarkerSymbol(image: UIImage(named: "BlueMarker")!)
         var graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
-        self.graphics.append(graphic)
+        graphics.append(graphic)
         
         //red marker
         geometry = AGSPoint(x: x + delta, y: y, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "RedMarker2")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
-        self.graphics.append(graphic)
+        graphics.append(graphic)
         
         //green marker
         geometry = AGSPoint(x: x, y: y + delta, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "GreenMarker")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
-        self.graphics.append(graphic)
+        graphics.append(graphic)
         
         //Violet marker
         geometry = AGSPoint(x: x + delta, y: y + delta, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "VioletMarker")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
-        self.graphics.append(graphic)
+        graphics.append(graphic)
         
         //add the graphics to the overlay
-        self.graphicsOverlay.graphics.addObjects(from: self.graphics)
+        self.graphicsOverlay.graphics.addObjects(from: graphics)
     }
     
     // MARK: - Actions
@@ -101,6 +98,6 @@ class GraphicDrawOrderViewController: UIViewController {
         
         //the button's tag value specifies which graphic to re-index
         //for example, a button tag value of 1 will move self.graphics[1] - the red marker
-        self.graphics[sender.tag].zIndex = self.drawIndex
+        graphics[sender.tag].zIndex = self.drawIndex
     }
 }

@@ -1,6 +1,6 @@
 {
     "category": "Analysis",
-    "description": "@@TODO: This sample demonstrates measuring 3D distances between two points in a scene.",
+    "description": "This sample demonstrates measuring 3D distances between two points in a scene.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -17,8 +17,7 @@
         "AGSLocationDistanceMeasurement"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "DistanceMeasurementAnalysisViewController.swift"
     ],
-    "title": "@@TODO: Distance Measurement Analysis"
+    "title": "Distance measurement analysis"
 }

@@ -1,24 +1,21 @@
 {
     "category": "Analysis",
-    "description": "@@TODO: This sample demonstrates how to query a feature table to get statistics for one or more specified fields. The sample queries a service feature table of U.S. county diabetes data to",
+    "description": "This sample demonstrates how to query a feature table to get statistics for one or more specified fields.",
     "ignore": false,
     "images": [
         "image1.png",
         "image2.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/statistical-query-group-and-sort-.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
-        "OrderByFieldsViewController.swift",
-        "AddStatisticDefinitionsViewController.swift",
         "StatisticalQueryGroupAndSortViewController.swift",
-        "GroupByFieldsViewController.swift"
+        "AddStatisticDefinitionsViewController.swift",
+        "GroupByFieldsViewController.swift",
+        "OrderByFieldsViewController.swift"
     ],
-    "title": "@@TODO: Statistical query (group and sort)"
+    "title": "Statistical query (group and sort)"
 }

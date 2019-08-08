@@ -1,20 +1,17 @@
 {
     "category": "Analysis",
-    "description": "@@TODO: A viewshed shows the visible and obstructed areas from an observer's vantage point. This sample demonstrates how to attach a viewshed to a moving GeoElement.",
+    "description": "This sample demonstrates how to attach a viewshed to a moving GeoElement.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/viewshed-geoelement-.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "ViewshedGeoElementViewController.swift"
     ],
-    "title": "@@TODO: Viewshed (GeoElement)"
+    "title": "Viewshed (GeoElement)"
 }

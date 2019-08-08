@@ -297,7 +297,7 @@
 		3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */; };
 		3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EBA25751D34510F00AB0703 /* CreateGeometries.storyboard */; };
 		3EBA25771D34672100AB0703 /* CreateGeometriesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */; };
-		3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC398BE1D8B45AD0084612D /* DemoTouchView.swift */; };
+		3EC398BF1D8B45AD0084612D /* DemoTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC398BE1D8B45AD0084612D /* DemoTouchManager.swift */; };
 		3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */; };
 		3EC39C1E1C9A59B9003F6459 /* DirectionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */; };
 		3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */; };
@@ -1209,7 +1209,7 @@
 		3EBA25621D3417B000AB0703 /* SimpleMarkerSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleMarkerSymbolViewController.swift; sourceTree = "<group>"; };
 		3EBA25731D3450F600AB0703 /* CreateGeometriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGeometriesViewController.swift; sourceTree = "<group>"; };
 		3EBA25751D34510F00AB0703 /* CreateGeometries.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateGeometries.storyboard; sourceTree = "<group>"; };
-		3EC398BE1D8B45AD0084612D /* DemoTouchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTouchView.swift; sourceTree = "<group>"; };
+		3EC398BE1D8B45AD0084612D /* DemoTouchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTouchManager.swift; sourceTree = "<group>"; };
 		3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteAroundBarriersViewController.swift; sourceTree = "<group>"; };
 		3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsListViewController.swift; sourceTree = "<group>"; };
 		3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteParametersViewController.swift; sourceTree = "<group>"; };
@@ -1989,7 +1989,7 @@
 			isa = PBXGroup;
 			children = (
 				3E4B05E71B39EF250072E514 /* SVProgressHUD */,
-				3EC398BD1D8B45AD0084612D /* DemoTouchView */,
+				3EC398BD1D8B45AD0084612D /* DemoTouchManager */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -2481,12 +2481,12 @@
 			path = "Create geometries";
 			sourceTree = "<group>";
 		};
-		3EC398BD1D8B45AD0084612D /* DemoTouchView */ = {
+		3EC398BD1D8B45AD0084612D /* DemoTouchManager */ = {
 			isa = PBXGroup;
 			children = (
-				3EC398BE1D8B45AD0084612D /* DemoTouchView.swift */,
+				3EC398BE1D8B45AD0084612D /* DemoTouchManager.swift */,
 			);
-			path = DemoTouchView;
+			path = DemoTouchManager;
 			sourceTree = "<group>";
 		};
 		3EC39C191C9A5770003F6459 /* Route around barriers */ = {
@@ -4419,7 +4419,7 @@
 				F1034FA922D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in Sources */,
 				3EEA06121D21C44000E03774 /* ExtrudeGraphicsViewController.swift in Sources */,
 				940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */,
-				3EC398BF1D8B45AD0084612D /* DemoTouchView.swift in Sources */,
+				3EC398BF1D8B45AD0084612D /* DemoTouchManager.swift in Sources */,
 				4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */,
 				3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */,
 				3EF024E91ECBC10600166EC5 /* FormatCoordinatesViewController.swift in Sources */,

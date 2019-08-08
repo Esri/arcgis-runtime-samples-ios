@@ -44,6 +44,18 @@ class GPKGLayersViewController: UITableViewController {
             return !layersInMap.contains(layer)
         })
     }
+    
+    /// Returns the layer for the row at the given index path.
+    ///
+    /// - Parameter indexPath: An index path of a row in the table view.
+    /// - Returns: The layer corresponding to the row.
+    func layerForRow(at indexPath: IndexPath) -> AGSLayer {
+        if indexPath.section == 0 {
+            return layersInMap[indexPath.row]
+        } else {
+            return layersNotInMap[indexPath.row]
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,15 +78,9 @@ class GPKGLayersViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let layerCell = tableView.dequeueReusableCell(withIdentifier: "GPKGLayersCell", for: indexPath) as! GPKGLayerTableCell
-        if indexPath.section == 0 {
-            // Set up the cell for a layer that is on the map.
-            layerCell.agsLayer = layersInMap[indexPath.row]
-        } else {
-            // Set up the cell for a layer that is NOT on the map.
-            layerCell.agsLayer = layersNotInMap[indexPath.row]
-        }
-        return layerCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GPKGLayersCell", for: indexPath)
+        cell.textLabel?.text = layerForRow(at: indexPath).name
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -90,8 +96,8 @@ class GPKGLayersViewController: UITableViewController {
         // Update the map's layers to reflect the change in order.
         
         // Get the layer that was dragged.
-        if let layer = layer(forTableView: tableView, andIndexPath: sourceIndexPath),
-            let layers = map?.operationalLayers {
+        let layer = layerForRow(at: sourceIndexPath)
+        if let layers = map?.operationalLayers {
             // Remove the layer from the map.
             layers.remove(layer)
             
@@ -121,11 +127,7 @@ class GPKGLayersViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // Ensure we are able to get the AGSLayer from the row.
-        guard let layer = layer(forTableView: tableView, andIndexPath: indexPath) else {
-            print("Could not get layer for index path")
-            return
-        }
+        let layer = layerForRow(at: indexPath)
         
         switch editingStyle {
         case .delete:
@@ -169,9 +171,5 @@ class GPKGLayersViewController: UITableViewController {
         } else {
             return proposedDestinationIndexPath
         }
-    }
-    
-    private func layer(forTableView tableView: UITableView, andIndexPath indexPath: IndexPath) -> AGSLayer? {
-        return (tableView.cellForRow(at: indexPath) as? GPKGLayerTableCell)?.agsLayer
     }
 }

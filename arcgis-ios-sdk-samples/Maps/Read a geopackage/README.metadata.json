@@ -13,8 +13,7 @@
     ],
     "snippets": [
         "ReadGeopackageViewController.swift",
-        "GPKGLayersViewController.swift",
-        "GPKGLayerTableCell.swift"
+        "GPKGLayersViewController.swift"
     ],
     "title": "Read a geopackage"
 }

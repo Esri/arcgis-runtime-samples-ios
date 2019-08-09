@@ -114,7 +114,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 params.returnAttachments = false
                 
                 // Create a temporary file for the geodatabase.
-                let tempFile = "temporaryFile"
+                let tempFile = "generatedGeodatabase"
                 
                 let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
                 let downloadFileURL = documentDirectoryURL
@@ -182,7 +182,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         // Specify the layer IDs of the feature tables to sync.
         for geodatabaseFeatureTable in geodatabase.geodatabaseFeatureTables {
             let serviceLayerId = geodatabaseFeatureTable.serviceLayerID
-            let syncLayerOption = AGSSyncLayerOption(layerID: serviceLayerId)
+            let syncLayerOption = AGSSyncLayerOption(layerID: serviceLayerId, syncDirection: .bidirectional)
             syncGeodatabaseParameters.layerOptions.append(syncLayerOption)
         }
         // Create a sync job with the parameters and start it.

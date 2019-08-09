@@ -1309,7 +1309,7 @@
 				<key>displayName</key>
 				<string>Get elevation at a point</string>
 				<key>storyboardName</key>
-				<string>GetElevationPoint.storyboard</string>
+				<string>GetElevationPoint</string>
 			</dict>
 			<dict>
 				<key>descriptionText</key>

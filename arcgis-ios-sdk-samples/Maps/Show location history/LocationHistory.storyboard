@@ -17,12 +17,36 @@
                     <view key="view" contentMode="scaleToFill" id="Rrh-e4-eVJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="I9F-p8-8dY" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="I9F-p8-8dY" firstAttribute="leading" secondItem="lWK-Hm-p2V" secondAttribute="leading" id="N9b-Lc-mFA"/>
+                            <constraint firstItem="I9F-p8-8dY" firstAttribute="bottom" secondItem="lWK-Hm-p2V" secondAttribute="bottom" id="Tme-sQ-1Ms"/>
+                            <constraint firstItem="I9F-p8-8dY" firstAttribute="trailing" secondItem="lWK-Hm-p2V" secondAttribute="trailing" id="rtk-3Z-0js"/>
+                            <constraint firstItem="I9F-p8-8dY" firstAttribute="top" secondItem="lWK-Hm-p2V" secondAttribute="top" id="zRp-1k-Lih"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lWK-Hm-p2V"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Placeholder" style="plain" id="Mke-Dm-VGm">
+                            <connections>
+                                <action selector="trackingTapped:" destination="dP2-3h-Tih" id="dIg-2w-Mt7"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="I9F-p8-8dY" id="Tqz-xF-fjl"/>
+                        <outlet property="trackingBarButtonItem" destination="Mke-Dm-VGm" id="eWh-rO-5hk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uXt-pv-J7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>

@@ -252,6 +252,14 @@
 				<key>storyboardName</key>
 				<string>MapReferenceScale</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Show location history</string>
+				<key>descriptionText</key>
+				<string>This sample shows you how to display your location history on the map.</string>
+				<key>storyboardName</key>
+				<string>LocationHistory</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

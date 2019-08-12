@@ -52,7 +52,10 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
         }
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ReadGeopackageViewController", "GPKGLayersViewController", "GPKGLayerTableCell"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "ReadGeopackageViewController",
+            "GPKGLayersViewController"
+        ]
     }
     
     // MARK: - Segue to and from the Layer Control viewcontroller.

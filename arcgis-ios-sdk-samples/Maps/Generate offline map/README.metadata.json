@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "description": "This sample demonstrates how to generate an offline map for a web map in ArcGIS Portal.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/generate-offline-map.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "GenerateOfflineMapViewController.swift"
+    ],
+    "title": "Generate offline map"
+}

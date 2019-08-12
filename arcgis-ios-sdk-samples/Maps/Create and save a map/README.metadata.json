@@ -1,0 +1,22 @@
+{
+    "category": "Maps",
+    "description": "This sample demonstrates how to create a map and save it to your portal",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png",
+        "image3.png",
+        "image4.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/create-and-save-a-map.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "CreateSaveMapViewController.swift",
+        "CreateOptionsViewController.swift",
+        "SaveAsViewController.swift"
+    ],
+    "title": "Create and save a map"
+}

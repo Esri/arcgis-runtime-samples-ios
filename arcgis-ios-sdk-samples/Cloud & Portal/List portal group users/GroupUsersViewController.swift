@@ -20,7 +20,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     
     private var portal: AGSPortal!
     private var portalGroup: AGSPortalGroup!
-    private var portalUsers: [AGSPortalUser]!
+    private var portalUsers = [AGSPortalUser]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +76,7 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
         SVProgressHUD.show(withStatus: "Fetching Users")
         
         //fetch users in group
-        self.portalGroup.fetchUsers { [weak self] (users: [String]?, admins: [String]?, error: Error?) in
+        self.portalGroup.fetchUsers { [weak self] (users, _, error) in
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -86,18 +86,11 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             if let error = error {
                 //show error
                 self.presentAlert(error: error)
-            } else {
+            } else if let users = users {
                 //if there are users in the group
-                if let users = users,
-                    !users.isEmpty {
-                    self.portalUsers = [AGSPortalUser]()
-                    
+                if !users.isEmpty {
                     //initialize AGSPortalUser objects with user names
-                    for user in users {
-                        let portalUser = AGSPortalUser(portal: self.portal, username: user)
-                        self.portalUsers.append(portalUser)
-                    }
-                    
+                    self.portalUsers = users.map { AGSPortalUser(portal: self.portal, username: $0) }
                     //load all users before populating into table view
                     self.loadAllUsers()
                 } else {
@@ -128,15 +121,12 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.portalUsers?.count ?? 0
+        return portalUsers.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupUserCell", for: indexPath) as! GroupUserCell
-        
-        let portalUser = self.portalUsers[indexPath.row]
-        cell.portalUser = portalUser
-        
+        cell.portalUser = portalUsers[indexPath.row]
         return cell
     }
     

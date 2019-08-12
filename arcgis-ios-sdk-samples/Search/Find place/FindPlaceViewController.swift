@@ -30,7 +30,11 @@ class FindPlaceViewController: UIViewController {
     private let graphicsOverlay = AGSGraphicsOverlay()
     
     private var locatorTask: AGSLocatorTask!
-    private var suggestResults: [AGSSuggestResult]!
+    private var suggestResults = [AGSSuggestResult]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     private var suggestRequestOperation: AGSCancelable!
     private var selectedSuggestResult: AGSSuggestResult!
     private var preferredSearchLocation: AGSPoint!
@@ -207,15 +211,15 @@ class FindPlaceViewController: UIViewController {
         suggestParameters.preferredSearchLocation = flag ? nil : self.mapView.locationDisplay.mapLocation
         
         //get suggestions
-        self.suggestRequestOperation = self.locatorTask.suggest(withSearchText: string, parameters: suggestParameters) { (result: [AGSSuggestResult]?, error: Error?) in
-            if string == textField.text { //check if the search string has not changed in the meanwhile
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    //update the suggest results and reload the table
-                    self.suggestResults = result
-                    self.tableView.reloadData()
-                }
+        self.suggestRequestOperation = self.locatorTask.suggest(withSearchText: string, parameters: suggestParameters) { [weak self] (suggestResults, error) in
+            //check if the search string has not changed in the meanwhile
+            guard string == textField.text else { return }
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let suggestResults = suggestResults {
+                //update the suggest results and reload the table
+                self?.suggestResults = suggestResults
             }
         }
     }
@@ -361,15 +365,11 @@ extension FindPlaceViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rows = 0
-        if let count = self.suggestResults?.count {
-            if self.selectedTextField == self.preferredSearchLocationTextField {
-                rows = count + 1
-            } else {
-                rows = count
-            }
+        var rows = suggestResults.count
+        if selectedTextField == preferredSearchLocationTextField {
+            rows += 1
         }
-        self.animateTableView(expand: rows > 0)
+        animateTableView(expand: rows > 0)
         return rows
     }
     

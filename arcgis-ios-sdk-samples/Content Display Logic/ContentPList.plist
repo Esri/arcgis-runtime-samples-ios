@@ -186,6 +186,18 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Honor mobile map package expiration date</string>
+				<key>descriptionText</key>
+				<string>Access the expiration information of an expired mobile map package.</string>
+				<key>storyboardName</key>
+				<string>HonorMobileMapPackageExpirationDate</string>
+				<key>dependency</key>
+				<array>
+					<string>LothianRiversAnnoMMPK</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Generate offline map</string>
 				<key>storyboardName</key>
 				<string>GenerateOfflineMap</string>
@@ -247,6 +259,19 @@
 		<string>Layers</string>
 		<key>children</key>
 		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Dictionary renderer with feature layer</string>
+				<key>storyboardName</key>
+				<string>FeatureLayerDictionaryRenderer</string>
+				<key>descriptionText</key>
+				<string>Convert features into graphics to show them with mil2525d symbols.</string>
+				<key>dependency</key>
+				<array>
+					<string>mil2525d</string>
+					<string>militaryoverlay</string>
+				</array>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Colormap renderer</string>
@@ -564,6 +589,18 @@
 				<string>Add layers to a group layer and toggle their visibility as a group.</string>
 				<key>storyboardName</key>
 				<string>GroupLayers</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Control annotation sublayer visibility</string>
+				<key>descriptionText</key>
+				<string>Use annotation sublayers to gain finer control of annotation layer subtypes.</string>
+				<key>storyboardName</key>
+				<string>ControlAnnotationSublayerVisibility</string>
+				<key>dependency</key>
+				<array>
+					<string>GasDeviceAnnoMMPK</string>
+				</array>
 			</dict>
 		</array>
 	</dict>

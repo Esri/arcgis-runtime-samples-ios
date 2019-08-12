@@ -23,7 +23,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
     private var selectedPark: AGSArcGISFeature!
     private var screenPoint: CGPoint!
     
-    private var results: [AGSRelatedFeatureQueryResult]!
+    private var results = [AGSRelatedFeatureQueryResult]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,19 +120,18 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
             //dismiss progress hud
             SVProgressHUD.dismiss()
             
+            guard let self = self else { return }
+            
             if let error = error {
                 //display error
-                self?.presentAlert(error: error)
-            } else {
+                self.presentAlert(error: error)
+            } else if let results = results {
                 //Show the related features found in popover
-                if let results = results,
-                    !results.isEmpty {
-                    self?.results = results
-                    
-                    //self?.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
-                    self?.showRelatedFeatures()
+                if !results.isEmpty {
+                    self.results = results
+                    self.showRelatedFeatures()
                 } else {  //else notify user
-                    self?.presentAlert(message: "No related features found")
+                    self.presentAlert(message: "No related features found")
                 }
             }
         }
@@ -151,7 +150,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
             let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? RelatedFeaturesListVC {
             //set results from related features query
-            controller.results = self.results
+            controller.results = results
         }
      }
     

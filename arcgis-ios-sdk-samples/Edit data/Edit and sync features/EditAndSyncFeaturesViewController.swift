@@ -37,14 +37,14 @@ class EditAndSyncFeaturesViewController: UIViewController {
                     self?.presentAlert(error: error)
                 } else {
                     for layerInfo in self!.geodatabaseSyncTask.featureServiceInfo!.layerInfos {
-                        let featureLayerURL = URL(string: featureServiceString + "/" + String(layerInfo.id))
+                        let featureLayerURL = featureServiceURL?.appendingPathComponent(String(layerInfo.id))
                         let onlineFeatureTable = AGSServiceFeatureTable(url: featureLayerURL!)
                         
                         onlineFeatureTable.load { (error: Error?) in
                             if let error = error {
                                 self?.presentAlert(error: error)
                             } else {
-                                if onlineFeatureTable.geometryType == AGSGeometryType.point {
+                                if onlineFeatureTable.geometryType == .point {
                                     self?.mapView.map?.operationalLayers.add(AGSFeatureLayer(featureTable: onlineFeatureTable))
                                 }
                             }
@@ -92,10 +92,8 @@ class EditAndSyncFeaturesViewController: UIViewController {
     // Clears selection in all layers of the map.
     private func clearSelection() {
         for layer in mapView.map!.operationalLayers {
-            let layer = layer as AnyObject?
-            if layer!.isKind(of: AGSFeatureLayer.self) {
-                let featureLayer = layer as? AGSFeatureLayer
-                featureLayer?.clearSelection()
+            if let layer = layer as? AGSFeatureLayer {
+                layer.clearSelection()
             }
         }
     }
@@ -111,7 +109,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         geodatabaseSyncTask.defaultGenerateGeodatabaseParameters(withExtent: areaOfInterest) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: Error?) in
             if let params = params,
                 let self = self {
-                // Don't include attachments to minimze the geodatabae size.
+                // Don't include attachments to minimize the geodatabase size.
                 params.returnAttachments = false
                 
                 // Create a temporary file for the geodatabase.
@@ -127,38 +125,34 @@ class EditAndSyncFeaturesViewController: UIViewController {
                     statusHandler: { (status: AGSJobStatus) in
                         SVProgressHUD.show(withStatus: status.statusString()) //Show job status.
                     },
-                    completion: { (object: AnyObject?, error: Error?) in
+                    completion: { [weak self] (_, error: Error?) in
                         SVProgressHUD.dismiss()
                         
                         if let error = error {
-                            self.presentAlert(error: error)
+                            self?.presentAlert(error: error)
                         } else {
                             // Load the geodatabase when the job is done.
-                            self.geodatabase = generateGeodatabaseJob.result
-                            self.geodatabase.load { (error: Error?) in
+                            self?.geodatabase = generateGeodatabaseJob.result
+                            self?.geodatabase.load { (error: Error?) in
                                 if let error = error {
-                                    self.presentAlert(error: error)
+                                    self?.presentAlert(error: error)
                                 } else {
-                                    // Iterate throught the feature tables in the geodatabgase and add new layers to the map.
-                                    self.mapView.map?.operationalLayers.removeAllObjects()
-                                    for geodatabaseFeatureTable in self.geodatabase.geodatabaseFeatureTables {
-                                        geodatabaseFeatureTable.load { (error: Error?) in
-                                            if let error = error {
-                                                self.presentAlert(error: error)
-                                            } else {
-                                                // Create a new feature layer from the table and add it to the map.
-                                                let featureLayer = AGSFeatureLayer(featureTable: geodatabaseFeatureTable)
-                                                self.mapView.map?.operationalLayers.add(featureLayer)
-                                            }
+                                    let geodatabaseFeatureTables = self!.geodatabase.geodatabaseFeatureTables
+                                    AGSLoadObjects(geodatabaseFeatureTables) { (finishedWithoutErrors) in
+                                        if finishedWithoutErrors {
+                                            let layers = geodatabaseFeatureTables.map(AGSFeatureLayer.init)
+                                            self?.mapView.map?.operationalLayers.addObjects(from: layers)
+                                        } else {
+                                            print("Error(s) loading the geodatabase's feature tables: \(geodatabaseFeatureTables.compactMap { $0.loadError })")
                                         }
                                     }
                                 }
                             }
                         }
-                        self.generateJob = nil
-                        self.generateButton.isEnabled = false
-                        self.tapFeatureLabel.isHidden = false
-                        self.mapView.touchDelegate = self
+                        self?.generateJob = nil
+                        self?.generateButton.isEnabled = false
+                        self?.tapFeatureLabel.isHidden = false
+                        self?.mapView.touchDelegate = self
                     }
                 )
             } else {
@@ -175,7 +169,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         
         // Create parameters for the sync task.
         let syncGeodatabaseParameters = AGSSyncGeodatabaseParameters()
-        syncGeodatabaseParameters.geodatabaseSyncDirection = AGSSyncDirection.bidirectional
+        syncGeodatabaseParameters.geodatabaseSyncDirection = .bidirectional
         syncGeodatabaseParameters.rollbackOnFailure = false
         
         // Specify the layer IDs of the feature tables to sync.
@@ -189,19 +183,17 @@ class EditAndSyncFeaturesViewController: UIViewController {
         self.syncJob = syncGeodatabaseJob
         syncGeodatabaseJob.start(statusHandler: { (status: AGSJobStatus) in
             SVProgressHUD.show(withStatus: status.statusString())
-        },
-                                 completion: { (result: [AGSSyncLayerResult]?, error: Error?) in
-                                    SVProgressHUD.dismiss()
-                                    if let error = error {
-                                        self.presentAlert(error: error)
-                                    } else {
-                                            self.presentAlert(title: "Geodatabase sync sucessful")
-                                            self.syncButton.isEnabled = false
-                                            self.syncButton.isHidden = true
-                                            self.tapFeatureLabel.isHidden = false
-                                        }
-                                    }
-        )
+        }, completion: { (result: [AGSSyncLayerResult]?, error: Error?) in
+            SVProgressHUD.dismiss()
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                self.presentAlert(title: "Geodatabase sync sucessful")
+                self.syncButton.isEnabled = false
+                self.syncButton.isHidden = true
+                self.tapFeatureLabel.isHidden = false
+            }
+        })
     }
     
     override func viewDidLoad() {
@@ -243,14 +235,13 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                     self.tapFeatureLabel.isHidden = true
                     self.moveFeatureLabel.isHidden = false
                     self.tapSyncLabel.isHidden = true
-                    if results!.isEmpty == false {
-                        let firstResult = results!.first
-                        let layerContent = firstResult!.layerContent
+                    if let firstResult = results?.first {
+                        let layerContent = firstResult.layerContent
                         
                         // Check that the result is a feature layer and has elements.
-                        if layerContent.isKind(of: AGSFeatureLayer.self) && firstResult!.geoElements.isEmpty == false {
+                        if layerContent.isKind(of: AGSFeatureLayer.self) && firstResult.geoElements.isEmpty == false {
                             let featureLayer = layerContent as? AGSFeatureLayer
-                            let identifiedElement = firstResult?.geoElements.first
+                            let identifiedElement = firstResult.geoElements.first
                             if identifiedElement!.isKind(of: AGSFeature.self) {
                                 let feature = identifiedElement as? AGSFeature
                                 featureLayer!.select(feature!)

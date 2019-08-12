@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 class GetElevationPointViewController: UIViewController {
-    @IBOutlet weak var sceneView: AGSSceneView! {
+    @IBOutlet var sceneView: AGSSceneView! {
         didSet {
             // Initialize a scene.
             sceneView.scene = makeScene()
@@ -26,6 +26,12 @@ class GetElevationPointViewController: UIViewController {
             sceneView.setViewpointCamera(camera)
             
             makeGraphics()
+        }
+    }
+    
+    @IBOutlet var elevationPointLabel: UILabel? {
+        didSet {
+            self.elevationPointLabel!.isHidden = true
         }
     }
     
@@ -47,8 +53,11 @@ class GetElevationPointViewController: UIViewController {
     private let graphicsOverlay = AGSGraphicsOverlay()
     
     let elevationLineSymbol = AGSSimpleLineSymbol(style: .solid, color: .red, width: 3.0)
-    let polylineGraphic = AGSGraphic()
-    polylineGraphic.symbol = elevationLineSymbol
+    var polylineGraphic = AGSGraphic()
+//    polylineGraphic.symbol = self.elevationLineSymbol
+    
+    let elevationTextGraphic = AGSGraphic()
+    
     
     //make graphics
     private func makeGraphics() {
@@ -68,7 +77,7 @@ class GetElevationPointViewController: UIViewController {
 extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         let relativeSurfacePoint = sceneView.screen(toBaseSurface: screenPoint)
-        if relativeSurfacePoint != nil {
+        if !relativeSurfacePoint.isEmpty {
             graphicsOverlay.clearSelection()
             let polylineBuilder = AGSPolylineBuilder(spatialReference: relativeSurfacePoint.spatialReference)
             let baseOfPolyline = AGSPoint(x: relativeSurfacePoint.x, y: relativeSurfacePoint.y, spatialReference: AGSSpatialReference(wkid: 0))
@@ -80,16 +89,17 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
             graphicsOverlay.graphics.add(polylineGraphic)
             
             // Get the surface elevation at the surface point.
-            self.sceneView.scene?.baseSurface!.elevation(for: relativeSurfacePoint) { (double: Double, error: Error?) in
+            self.sceneView.scene?.baseSurface!.elevation(for: relativeSurfacePoint) { (results: Double, error: Error?) in
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {
-                    let elevation = double
-                    
-                    
+                    let elevation = results
+                    self.elevationPointLabel?.isHidden = false
+                    self.elevationPointLabel!.text = String("Elevation at tapped point: ") + String(elevation.rounded()) + String("m")
+                    self.polylineGraphic.geometry = topOfPolyline
+                    self.graphicsOverlay.graphics.add(self.elevationTextGraphic)
                 }
             }
         }
-        
     }
 }

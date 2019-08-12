@@ -493,6 +493,8 @@
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
 		4C060E632260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */; };
 		4C060E672261195C0070C787 /* naperville_imagery.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 4C060E662261195C0070C787 /* naperville_imagery.tpk */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
+		4C0CBFFD22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0CBFFC22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard */; };
+		4C0CBFFF22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0CBFFE22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift */; };
 		4C0F27B12152CA2400496666 /* IdentifyKMLFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */; };
 		4C0F27B32152CA3500496666 /* IdentifyKMLFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */; };
 		4C0F27B42152CB1200496666 /* IdentifyKMLFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */; };
@@ -542,6 +544,7 @@
 		4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C85044820F4239600E37F43 /* SceneLayerSelectionViewController.swift */; };
 		4C8965B422B14D2600D09F60 /* TokenAuthenticationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C2F90722289C23500357824 /* TokenAuthenticationViewController.swift */; };
 		4C9240192280F7F40045A86B /* AuthenticateWithOAuthViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */; };
+		4C990092230208A300226785 /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C0CBFFE22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift */; };
 		4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9912372245534100CCBC2A /* PlayKMLTour.storyboard */; };
 		4C99123A2245536C00CCBC2A /* PlayKMLTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
 		4C99123D2249318100CCBC2A /* PlayKMLTourViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C9912392245536C00CCBC2A /* PlayKMLTourViewController.swift */; };
@@ -757,6 +760,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				4C990092230208A300226785 /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in CopyFiles */,
 				F164997622E90F150088CA93 /* FeatureLayerDictionaryRendererViewController.swift in CopyFiles */,
 				F1FA9DED22DE74C600234601 /* ColormapRendererViewController.swift in CopyFiles */,
 				F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */,
@@ -1338,6 +1342,8 @@
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
 		4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapBasemapByReferenceViewController.swift; sourceTree = "<group>"; };
 		4C060E662261195C0070C787 /* naperville_imagery.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpk; sourceTree = "<group>"; };
+		4C0CBFFC22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityMultipleIncidentsService.storyboard; sourceTree = "<group>"; };
+		4C0CBFFE22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityMultipleIncidentsServiceViewController.swift; sourceTree = "<group>"; };
 		4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyKMLFeatures.storyboard; sourceTree = "<group>"; };
 		4C0F27B22152CA3500496666 /* IdentifyKMLFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyKMLFeaturesViewController.swift; sourceTree = "<group>"; };
 		4C0F27B621540B7000496666 /* IdentifyKMLFeaturesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyKMLFeaturesViewControllerTests.swift; sourceTree = "<group>"; };
@@ -2164,6 +2170,7 @@
 				3EC39C191C9A5770003F6459 /* Route around barriers */,
 				3E6AE3EA1C6D10F70026E59C /* Offline routing */,
 				3ED75D001ED39EDF009B1F75 /* Find service area interactive */,
+				4C0CBFFB22F9D2FB00D3F1DB /* Find closest facility to multiple incidents (service) */,
 			);
 			path = "Route & Directions";
 			sourceTree = "<group>";
@@ -3173,6 +3180,15 @@
 			path = "Tile Packages";
 			sourceTree = "<group>";
 		};
+		4C0CBFFB22F9D2FB00D3F1DB /* Find closest facility to multiple incidents (service) */ = {
+			isa = PBXGroup;
+			children = (
+				4C0CBFFC22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard */,
+				4C0CBFFE22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift */,
+			);
+			path = "Find closest facility to multiple incidents (service)";
+			sourceTree = "<group>";
+		};
 		4C0F27AF2152C9CE00496666 /* Identify KML features */ = {
 			isa = PBXGroup;
 			children = (
@@ -3986,6 +4002,7 @@
 				3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */,
 				3ED028881B8E3A8500ACA70D /* OpenMapURL.storyboard in Resources */,
 				09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */,
+				4C0CBFFD22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard in Resources */,
 				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
@@ -4367,6 +4384,7 @@
 				C7E9D7C621C0500300E6C47E /* BufferViewController.swift in Sources */,
 				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
 				F1034F9C22D3EE8900B021DA /* ProjectStackView.swift in Sources */,
+				4C0CBFFF22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in Sources */,
 				1682CAEE22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,

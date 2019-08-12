@@ -65,7 +65,6 @@
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Sync Geodatabase"/>
                                 <connections>
-                                    <action selector="generateGeodatabase" destination="x5g-SP-gLy" eventType="touchUpInside" id="7qP-Pn-4JE"/>
                                     <action selector="syncGeodatabase" destination="x5g-SP-gLy" eventType="touchUpInside" id="oXS-FK-94y"/>
                                 </connections>
                             </button>

@@ -69,7 +69,8 @@ class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet private var moveFeatureLabel: UILabel!
     @IBOutlet private var tapFeatureLabel: UILabel!
     
-    private var activeJob: AGSJob?
+    private var generateJob: AGSGenerateGeodatabaseJob?
+    private var syncJob: AGSSyncGeodatabaseJob?
     private var geodatabaseSyncTask: AGSGeodatabaseSyncTask!
     private var geodatabase: AGSGeodatabase!
     private var selectedFeature: AGSFeature!
@@ -123,7 +124,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 
                 // Request a job to generate the geodatabase.
                 let generateGeodatabaseJob = self.geodatabaseSyncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
-                self.activeJob = generateGeodatabaseJob
+                self.generateJob = generateGeodatabaseJob
                 generateGeodatabaseJob.start(
                     statusHandler: { (status: AGSJobStatus) in
                         SVProgressHUD.show(withStatus: status.statusString()) //Show job status.
@@ -156,7 +157,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                                 }
                             }
                         }
-                        self.activeJob = nil
+                        self.generateJob = nil
                         self.generateButton.isEnabled = false
                         self.tapFeatureLabel.isHidden = false
                         self.mapView.touchDelegate = self
@@ -172,7 +173,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         clearSelection()
         syncButton.isEnabled = false
         selectedFeature = nil
-        self.tapSyncLabel.isHidden = true
+        tapSyncLabel.isHidden = true
         
         // Create parameters for the sync task.
         let syncGeodatabaseParameters = AGSSyncGeodatabaseParameters()
@@ -187,6 +188,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         }
         // Create a sync job with the parameters and start it.
         let syncGeodatabaseJob = geodatabaseSyncTask.syncJob(with: syncGeodatabaseParameters, geodatabase: geodatabase)
+        self.syncJob = syncGeodatabaseJob
         syncGeodatabaseJob.start(statusHandler: { (status: AGSJobStatus) in
             SVProgressHUD.show(withStatus: status.statusString())
         },
@@ -195,11 +197,13 @@ class EditAndSyncFeaturesViewController: UIViewController {
                                     if let error = error {
                                         self.presentAlert(error: error)
                                     } else {
-                                        self.presentAlert(title: "Geodatabase sync sucessful")
+                                            self.presentAlert(title: "Geodatabase sync sucessful")
+                                            self.syncButton.isEnabled = false
+                                            self.syncButton.isHidden = true
+                                            self.tapFeatureLabel.isHidden = false
+                                        }
                                     }
-        })
-        syncButton.isEnabled = false
-        syncButton.isHidden = true
+        )
     }
     
     override func viewDidLoad() {

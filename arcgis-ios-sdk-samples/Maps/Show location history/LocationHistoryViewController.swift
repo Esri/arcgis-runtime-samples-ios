@@ -17,44 +17,56 @@
 import UIKit
 import ArcGIS
 
-// MARK: - Constants
-
-private enum Constants {
-    static let initialLatitude: Double = 34.056295
-    static let initialLongitude: Double = -117.195800
-    static let levelOfDetail: Int = 18
-}
-
 // MARK: - LocationHistoryViewController
 
 class LocationHistoryViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
     @IBOutlet weak var trackingBarButtonItem: UIBarButtonItem!
     
-    private let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: Constants.initialLatitude, longitude: Constants.initialLongitude, levelOfDetail: Constants.levelOfDetail)
+    private var locationTracker: LocationTracker?
     
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupLocationTracking()
         setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.isToolbarHidden = false
+
+        navigationController?.setToolbarHidden(false, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        navigationController?.setToolbarHidden(true, animated: animated)
     }
     
     // MARK: IBActions
     
-    @IBAction private func trackingTapped(_ sender: UIBarButtonItem) {}
+    @IBAction private func trackingTapped(_ sender: UIBarButtonItem) {
+        locationTracker?.toggleTrackingStatus()
+    }
     
     // MARK: Private behavior
     
-    private func setupMapView() {
-        mapView.map = map
+    private func setupLocationTracking() {
+        locationTracker = LocationTracker(mapView: mapView, historyView: self)
+    }
+    
+    private func setupNavigationBar() {
+        guard let sourceBarButtonItem = navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem else {
+            return
+        }
+        
+        sourceBarButtonItem.filenames = [
+            "LocationHistoryViewController",
+            "LocationTracking"
+        ]
     }
     
     private func setupToolbar() {
@@ -69,8 +81,16 @@ class LocationHistoryViewController: UIViewController {
     }
     
     private func setupView() {
-        setupMapView()
+        setupNavigationBar()
         
         setupToolbar()
+    }
+}
+
+// MARK: - LocationHistoryView
+
+extension LocationHistoryViewController: LocationHistoryView {
+    func setTrackingButtonText(value: String) {
+        trackingBarButtonItem.title = value
     }
 }

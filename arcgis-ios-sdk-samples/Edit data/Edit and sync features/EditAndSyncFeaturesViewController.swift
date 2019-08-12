@@ -76,7 +76,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private var selectedFeature: AGSFeature!
     private var areaOfInterest: AGSEnvelope!
     
-    func extentViewFrameToEnvelope() -> AGSEnvelope {
+    private func extentViewFrameToEnvelope() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)
         
         // Set the lower-left coner.
@@ -118,9 +118,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 let tempFile = "generatedGeodatabase"
                 
                 let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let downloadFileURL = documentDirectoryURL
-                    .appendingPathComponent(tempFile)
-                    .appendingPathExtension("geodatabase")
+                let downloadFileURL = documentDirectoryURL.appendingPathComponent(tempFile).appendingPathExtension("geodatabase")
                 
                 // Request a job to generate the geodatabase.
                 let generateGeodatabaseJob = self.geodatabaseSyncTask.generateJob(with: params, downloadFileURL: downloadFileURL)

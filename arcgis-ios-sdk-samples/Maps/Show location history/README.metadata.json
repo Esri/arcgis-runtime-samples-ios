@@ -1,0 +1,18 @@
+{
+    "category": "Maps",
+    "description": "This sample shows you how to display your location history on the map.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/show-location-history.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "LocationHistoryViewController.swift",
+        "LocationTracking.swift"
+    ],
+    "title": "Show location history"
+}

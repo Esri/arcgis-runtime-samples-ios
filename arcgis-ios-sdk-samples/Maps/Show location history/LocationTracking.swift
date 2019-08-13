@@ -168,8 +168,8 @@ class LocationTracker {
     private func setupMapView(_ mapView: AGSMapView) {
         mapView.map = map
         
-        map.load(completion: { [weak self, loadedMap = self.map] (error) in
-            self?.trackBuilder = AGSPolylineBuilder(spatialReference: loadedMap.spatialReference)
+        map.load(completion: { [weak self, unowned map] (error) in
+            self?.trackBuilder = AGSPolylineBuilder(spatialReference: map.spatialReference)
         })
         
         mapView.graphicsOverlays.addObjects(from: [trackOverlay, locationsOverlay])

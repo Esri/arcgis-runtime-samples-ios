@@ -115,6 +115,10 @@ class EditAndSyncFeaturesViewController: UIViewController {
                     }
                 }
             }
+            self.generateJob = nil
+            self.generateButton.isEnabled = false
+            self.instructionsLabel.text = String("Tap on a feature")
+            self.mapView.touchDelegate = self
         }
     }
     
@@ -153,14 +157,10 @@ class EditAndSyncFeaturesViewController: UIViewController {
                         } else {
                             // Load the geodatabase when the job is done.
                             self?.geodatabase = generateGeodatabaseJob.result
-                            self?.geodatabase.load { (error: Error?) in
+                            self?.geodatabase.load { [weak self] (error: Error?) in
                                 self?.geodatabaseDidLoad()
                             }
                         }
-                        self?.generateJob = nil
-                        self?.generateButton.isEnabled = false
-                        self?.instructionsLabel.text = String("Tap on a feature")
-                        self?.mapView.touchDelegate = self
                     }
                 )
             } else {
@@ -218,14 +218,14 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
             let point = mapView.screen(toLocation: screenPoint)
             if AGSGeometryEngine.geometry(point, intersects: areaOfInterest) {
                 selectedFeature.geometry = point
-                selectedFeature.featureTable?.update(selectedFeature) { [weak self] (error: Error?) in
+                selectedFeature.featureTable?.update(selectedFeature) { (error: Error?) in
                     if let error = error {
-                        self!.presentAlert(error: error)
+                        self.presentAlert(error: error)
                     } else {
-                        self!.syncButton.isEnabled = true
-                        self!.generateToolBar.isHidden = true
-                        self!.syncToolBar.isHidden = false
-                        self!.instructionsLabel.text = String("Tap the sync button")
+                        self.syncButton.isEnabled = true
+                        self.generateToolBar.isHidden = true
+                        self.syncToolBar.isHidden = false
+                        self.instructionsLabel.text = String("Tap the sync button")
                     }
                 }
             } else {

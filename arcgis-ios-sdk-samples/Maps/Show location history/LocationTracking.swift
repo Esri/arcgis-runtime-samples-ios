@@ -126,13 +126,13 @@ class LocationTracker {
     private func processLocationUpdate() {
         guard currentStatus == .inProgress, let position = mapView?.locationDisplay.mapLocation, position.x != 0, position.y != 0 else { return }
 
-        let locationGraphic = AGSGraphic(geometry: position, symbol: nil, attributes: nil)
+        let locationGraphic = AGSGraphic(geometry: position, symbol: nil)
         locationsOverlay.graphics.add(locationGraphic)
 
         guard let trackBuilder = trackBuilder else { return }
 
         trackBuilder.add(position)
-        let trackGraphic = AGSGraphic(geometry: trackBuilder.toGeometry(), symbol: nil, attributes: nil)
+        let trackGraphic = AGSGraphic(geometry: trackBuilder.toGeometry(), symbol: nil)
         trackOverlay.graphics.add(trackGraphic)
     }
     

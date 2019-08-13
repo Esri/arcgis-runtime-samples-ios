@@ -67,7 +67,7 @@ class LocationTracker {
         }
     }
     
-    private let map = AGSMap(basemap: AGSBasemap.lightGrayCanvasVector())
+    private let map = AGSMap(basemap: .lightGrayCanvasVector())
     
     private let locationsOverlay: AGSGraphicsOverlay = {
         let overlay = AGSGraphicsOverlay()

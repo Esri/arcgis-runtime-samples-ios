@@ -63,11 +63,11 @@ class EditAndSyncFeaturesViewController: UIViewController {
         }
     }
     
-    @IBOutlet private var generateButton: UIButton!
-    @IBOutlet private var syncButton: UIButton!
-    @IBOutlet private var tapSyncLabel: UILabel!
-    @IBOutlet private var moveFeatureLabel: UILabel!
-    @IBOutlet private var tapFeatureLabel: UILabel!
+    @IBOutlet private var generateToolBar: UIToolbar!
+    @IBOutlet private var syncToolBar: UIToolbar!
+    @IBOutlet private var generateButton: UIBarButtonItem!
+    @IBOutlet private var syncButton: UIBarButtonItem!
+    @IBOutlet private var instructionsLabel: UILabel!
     
     private var generateJob: AGSGenerateGeodatabaseJob?
     private var syncJob: AGSSyncGeodatabaseJob?
@@ -94,6 +94,26 @@ class EditAndSyncFeaturesViewController: UIViewController {
         for layer in mapView.map!.operationalLayers {
             if let layer = layer as? AGSFeatureLayer {
                 layer.clearSelection()
+            }
+        }
+    }
+    
+    func geodatabaseDidLoad() {
+        if let error = geodatabase.loadError {
+            self.presentAlert(error: error)
+        } else {
+            // Iterate through the feature tables in the geodatabase and add new layers to the map.
+            self.mapView.map?.operationalLayers.removeAllObjects()
+            for geodatabaseFeatureTable in self.geodatabase.geodatabaseFeatureTables {
+                geodatabaseFeatureTable.load { (error: Error?) in
+                    if let error = error {
+                        self.presentAlert(error: error)
+                    } else {
+                        // Create a new feature layer from the table and add it to the map.
+                        let featureLayer = AGSFeatureLayer(featureTable: geodatabaseFeatureTable)
+                        self.mapView.map?.operationalLayers.add(featureLayer)
+                    }
+                }
             }
         }
     }
@@ -134,24 +154,12 @@ class EditAndSyncFeaturesViewController: UIViewController {
                             // Load the geodatabase when the job is done.
                             self?.geodatabase = generateGeodatabaseJob.result
                             self?.geodatabase.load { (error: Error?) in
-                                if let error = error {
-                                    self?.presentAlert(error: error)
-                                } else {
-                                    let geodatabaseFeatureTables = self!.geodatabase.geodatabaseFeatureTables
-                                    AGSLoadObjects(geodatabaseFeatureTables) { (finishedWithoutErrors) in
-                                        if finishedWithoutErrors {
-                                            let layers = geodatabaseFeatureTables.map(AGSFeatureLayer.init)
-                                            self?.mapView.map?.operationalLayers.addObjects(from: layers)
-                                        } else {
-                                            print("Error(s) loading the geodatabase's feature tables: \(geodatabaseFeatureTables.compactMap { $0.loadError })")
-                                        }
-                                    }
-                                }
+                                self?.geodatabaseDidLoad()
                             }
                         }
                         self?.generateJob = nil
                         self?.generateButton.isEnabled = false
-                        self?.tapFeatureLabel.isHidden = false
+                        self?.instructionsLabel.text = String("Tap on a feature")
                         self?.mapView.touchDelegate = self
                     }
                 )
@@ -165,7 +173,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
         clearSelection()
         syncButton.isEnabled = false
         selectedFeature = nil
-        tapSyncLabel.isHidden = true
         
         // Create parameters for the sync task.
         let syncGeodatabaseParameters = AGSSyncGeodatabaseParameters()
@@ -190,8 +197,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             } else {
                 self.presentAlert(title: "Geodatabase sync sucessful")
                 self.syncButton.isEnabled = false
-                self.syncButton.isHidden = true
-                self.tapFeatureLabel.isHidden = false
+                self.instructionsLabel.text = String("Tap on a feature")
             }
         })
     }
@@ -216,12 +222,10 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                     if let error = error {
                         self!.presentAlert(error: error)
                     } else {
-                        self!.syncButton.isHidden = false
                         self!.syncButton.isEnabled = true
-                        self!.tapFeatureLabel.isHidden = true
-                        self!.moveFeatureLabel.isHidden = true
-                        self!.generateButton.isHidden = true
-                        self!.tapSyncLabel.isHidden = false
+                        self!.generateToolBar.isHidden = true
+                        self!.syncToolBar.isHidden = false
+                        self!.instructionsLabel.text = String("Tap the sync button")
                     }
                 }
             } else {
@@ -231,11 +235,9 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
             mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 22.0, returnPopupsOnly: false, maximumResultsPerLayer: 1) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
                 if let error = error {
                     self.presentAlert(error: error)
-                } else {
-                    self.tapFeatureLabel.isHidden = true
-                    self.moveFeatureLabel.isHidden = false
-                    self.tapSyncLabel.isHidden = true
-                    if let firstResult = results?.first {
+                } else if let results = results {
+                    self.instructionsLabel.text = String("Tap on the map to move the feature")
+                    if let firstResult = results.first {
                         let layerContent = firstResult.layerContent
                         
                         // Check that the result is a feature layer and has elements.

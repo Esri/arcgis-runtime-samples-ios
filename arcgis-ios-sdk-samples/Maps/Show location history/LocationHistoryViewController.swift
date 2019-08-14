@@ -20,8 +20,8 @@ import ArcGIS
 // MARK: - LocationHistoryViewController
 
 class LocationHistoryViewController: UIViewController {
-    @IBOutlet weak var mapView: AGSMapView!
-    @IBOutlet weak var trackingBarButtonItem: UIBarButtonItem!
+    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var trackingBarButtonItem: UIBarButtonItem!
     
     private var locationTracker: LocationTracker?
     

@@ -50,8 +50,6 @@ class LocationHistoryViewController: UIViewController {
         }
     }
     
-    private let map = AGSMap(basemap: .lightGrayCanvasVector())
-
     private let locationsOverlay: AGSGraphicsOverlay = {
         let overlay = AGSGraphicsOverlay()
 
@@ -126,6 +124,7 @@ class LocationHistoryViewController: UIViewController {
     }
     
     private func setupMapView() {
+        let map = AGSMap(basemap: .lightGrayCanvasVector())
         mapView.map = map
 
         map.load(completion: { [weak self, unowned map] (error) in

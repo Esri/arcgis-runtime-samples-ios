@@ -31,20 +31,13 @@ private enum Constants {
     static let initialZoomScale: Double = 10000
 }
 
-// MARK: - LocationTrackingStatus
-
-private enum LocationTrackingStatus {
-    case paused
-    case inProgress
-}
-
 // MARK: - LocationHistoryViewController
 
 class LocationHistoryViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var trackingBarButtonItem: UIBarButtonItem!
     
-    private var currentStatus: LocationTrackingStatus = .paused {
+    private var isTracking: Bool = false {
         didSet {
             handleLocationStatusChange()
         }
@@ -84,24 +77,23 @@ class LocationHistoryViewController: UIViewController {
     // MARK: IBActions
     
     @IBAction private func trackingTapped(_ sender: UIBarButtonItem) {
-        toggleTrackingStatus()
+        isTracking.toggle()
     }
     
     // MARK: Private behavior
     
     private func handleLocationStatusChange() {
-        switch currentStatus {
-        case .paused:
-            stopProcessingLocationChanges()
-        case .inProgress:
+        if isTracking {
             startProcessingLocationChanges()
+        } else {
+            stopProcessingLocationChanges()
         }
-        
-        updateView(status: currentStatus)
+
+        updateView()
     }
     
     private func processLocationUpdate() {
-        guard currentStatus == .inProgress, let position = mapView.locationDisplay.mapLocation, position.x != 0, position.y != 0 else { return }
+        guard isTracking, let position = mapView.locationDisplay.mapLocation, position.x != 0, position.y != 0 else { return }
         
         let locationGraphic = AGSGraphic(geometry: position, symbol: nil)
         locationsOverlay.graphics.add(locationGraphic)
@@ -136,7 +128,7 @@ class LocationHistoryViewController: UIViewController {
 
         setupLocationDisplay(mapView.locationDisplay)
 
-        updateView(status: currentStatus)
+        updateView()
     }
     
     private func setupNavigationBar() {
@@ -161,23 +153,13 @@ class LocationHistoryViewController: UIViewController {
         mapView.locationDisplay.locationChangedHandler = nil
     }
     
-    private func toggleTrackingStatus() {
-        switch currentStatus {
-        case .paused:
-            currentStatus = .inProgress
-        case .inProgress:
-            currentStatus = .paused
-        }
-    }
-    
-    private func updateView(status: LocationTrackingStatus) {
+    private func updateView() {
         let buttonText: String
 
-        switch currentStatus {
-        case .paused:
-            buttonText = "Start tracking"
-        case .inProgress:
+        if isTracking {
             buttonText = "Stop tracking"
+        } else {
+            buttonText = "Start tracking"
         }
 
         trackingBarButtonItem.title = buttonText

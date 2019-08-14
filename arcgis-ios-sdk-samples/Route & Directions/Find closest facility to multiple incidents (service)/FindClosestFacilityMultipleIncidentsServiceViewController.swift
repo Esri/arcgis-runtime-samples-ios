@@ -153,11 +153,12 @@ class FindClosestFacilityMultipleIncidentsServiceViewController: UIViewControlle
     @IBAction func solveRoutes() {
         solveRoutesButtonItem.isEnabled = false
         closestFacilityTask.defaultClosestFacilityParameters { [weak self] (parameters, error) in
+            guard let self = self else { return }
             if let parameters = parameters {
-                self?.didGetClosestFacilityParameters(parameters)
+                self.didGetClosestFacilityParameters(parameters)
             } else if let error = error {
-                print("Error getting default closest facility parameters: \(error)")
-                self?.solveRoutesButtonItem.isEnabled = true
+                self.presentAlert(error: error)
+                self.solveRoutesButtonItem.isEnabled = true
             }
         }
     }
@@ -176,11 +177,12 @@ class FindClosestFacilityMultipleIncidentsServiceViewController: UIViewControlle
             .map(AGSIncident.init(point:))
         parameters.setIncidents(Array(incidents))
         self.closestFacilityTask.solveClosestFacility(with: parameters) { [weak self] (result, error) in
+            guard let self = self else { return }
             if let result = result {
-                self?.didSolveClosestFacility(with: result)
+                self.didSolveClosestFacility(with: result)
             } else if let error = error {
-                print("Error solving closest facility: \(error)")
-                self?.solveRoutesButtonItem.isEnabled = true
+                self.presentAlert(error: error)
+                self.solveRoutesButtonItem.isEnabled = true
             }
         }
     }

@@ -34,18 +34,6 @@ class LocationHistoryViewController: UIViewController {
         setupView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        navigationController?.setToolbarHidden(false, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        navigationController?.setToolbarHidden(true, animated: animated)
-    }
-    
     // MARK: IBActions
     
     @IBAction private func trackingTapped(_ sender: UIBarButtonItem) {
@@ -69,21 +57,8 @@ class LocationHistoryViewController: UIViewController {
         ]
     }
     
-    private func setupToolbar() {
-        let leadingSpaceToolbarItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let trailingSpaceToolbarItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        toolbarItems = [
-            leadingSpaceToolbarItem,
-            trackingBarButtonItem,
-            trailingSpaceToolbarItem
-        ]
-    }
-    
     private func setupView() {
         setupNavigationBar()
-        
-        setupToolbar()
     }
 }
 

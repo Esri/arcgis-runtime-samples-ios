@@ -18,29 +18,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="I9F-p8-8dY" customClass="AGSMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LvU-Vp-EI1" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </mapView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="OnH-Xq-h1b"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cby-Ub-HOP">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ga4-ja-HQk"/>
+                                    <barButtonItem title="Placeholder" style="plain" id="Mke-Dm-VGm">
+                                        <connections>
+                                            <action selector="trackingTapped:" destination="dP2-3h-Tih" id="dIg-2w-Mt7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cgY-Uo-xav"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="I9F-p8-8dY" firstAttribute="leading" secondItem="lWK-Hm-p2V" secondAttribute="leading" id="N9b-Lc-mFA"/>
-                            <constraint firstItem="I9F-p8-8dY" firstAttribute="bottom" secondItem="lWK-Hm-p2V" secondAttribute="bottom" id="Tme-sQ-1Ms"/>
-                            <constraint firstItem="I9F-p8-8dY" firstAttribute="trailing" secondItem="lWK-Hm-p2V" secondAttribute="trailing" id="rtk-3Z-0js"/>
-                            <constraint firstItem="I9F-p8-8dY" firstAttribute="top" secondItem="lWK-Hm-p2V" secondAttribute="top" id="zRp-1k-Lih"/>
+                            <constraint firstItem="Cby-Ub-HOP" firstAttribute="trailing" secondItem="Rrh-e4-eVJ" secondAttribute="trailing" id="89e-wR-Yfc"/>
+                            <constraint firstItem="LvU-Vp-EI1" firstAttribute="top" secondItem="Rrh-e4-eVJ" secondAttribute="top" id="IjL-WC-4Jn"/>
+                            <constraint firstItem="Cby-Ub-HOP" firstAttribute="bottom" secondItem="lWK-Hm-p2V" secondAttribute="bottom" id="MqI-TL-5hy"/>
+                            <constraint firstItem="LvU-Vp-EI1" firstAttribute="leading" secondItem="Rrh-e4-eVJ" secondAttribute="leading" id="ORq-dw-w2H"/>
+                            <constraint firstItem="Cby-Ub-HOP" firstAttribute="leading" secondItem="Rrh-e4-eVJ" secondAttribute="leading" id="V0K-vm-ovy"/>
+                            <constraint firstItem="LvU-Vp-EI1" firstAttribute="trailing" secondItem="Rrh-e4-eVJ" secondAttribute="trailing" id="mZd-3e-kTs"/>
+                            <constraint firstItem="LvU-Vp-EI1" firstAttribute="bottom" secondItem="Rrh-e4-eVJ" secondAttribute="bottom" id="vIx-pw-Cci"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lWK-Hm-p2V"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Placeholder" style="plain" id="Mke-Dm-VGm">
-                            <connections>
-                                <action selector="trackingTapped:" destination="dP2-3h-Tih" id="dIg-2w-Mt7"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <toolbarItems/>
                     <connections>
-                        <outlet property="mapView" destination="I9F-p8-8dY" id="Tqz-xF-fjl"/>
+                        <outlet property="mapView" destination="LvU-Vp-EI1" id="fHv-uM-kO4"/>
                         <outlet property="trackingBarButtonItem" destination="Mke-Dm-VGm" id="eWh-rO-5hk"/>
                     </connections>
                 </viewController>

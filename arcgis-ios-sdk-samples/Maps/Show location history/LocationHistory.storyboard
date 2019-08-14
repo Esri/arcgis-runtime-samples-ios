@@ -24,10 +24,10 @@
                                 <viewLayoutGuide key="safeArea" id="OnH-Xq-h1b"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cby-Ub-HOP">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ga4-ja-HQk"/>
-                                    <barButtonItem title="Placeholder" style="plain" id="Mke-Dm-VGm">
+                                    <barButtonItem title="Start tracking" style="plain" id="Mke-Dm-VGm">
                                         <connections>
                                             <action selector="trackingTapped:" destination="dP2-3h-Tih" id="dIg-2w-Mt7"/>
                                         </connections>

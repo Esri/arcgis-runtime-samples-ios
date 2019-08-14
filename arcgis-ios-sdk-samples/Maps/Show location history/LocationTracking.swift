@@ -44,16 +44,6 @@ private enum LocationTrackingStatus {
     case inProgress
 }
 
-extension LocationTrackingStatus {
-    /// Describes the user action available for a given status
-    var buttonDisplayText: String {
-        switch self {
-        case .paused        : return NSLocalizedString("Start Tracking", comment: "This value represents that the next action is to start tracking.")
-        case .inProgress    : return NSLocalizedString("Stop Tracking", comment: "This value represents that the next action is to stop tracking.")
-        }
-    }
-}
-
 // MARK: - LocationTracker
 
 class LocationTracker {
@@ -180,6 +170,15 @@ class LocationTracker {
     }
     
     private func updateView(status: LocationTrackingStatus) {
-        historyView?.setTrackingButtonText(value: status.buttonDisplayText)
+        let buttonText: String
+        
+        switch currentStatus {
+        case .paused:
+            buttonText = "Start tracking"
+        case .inProgress:
+            buttonText = "Stop tracking"
+        }
+        
+        historyView?.setTrackingButtonText(value: buttonText)
     }
 }

@@ -596,6 +596,9 @@
 		9D57A46722FDDE4400C750F4 /* LocationHistoryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DE9FE3222FDB7CA00142DE1 /* LocationHistoryViewController.swift */; };
 		9DE9FE3422FDB7CA00142DE1 /* LocationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE9FE3222FDB7CA00142DE1 /* LocationHistoryViewController.swift */; };
 		9DE9FE3722FDB7FC00142DE1 /* LocationHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DE9FE3622FDB7FC00142DE1 /* LocationHistory.storyboard */; };
+		9DF04DC02304C7F50014C1EE /* DownloadPreplannedMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF04DBB2304C7F50014C1EE /* DownloadPreplannedMap.storyboard */; };
+		9DF04DC22304C7F50014C1EE /* DownloadPreplannedMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF04DBD2304C7F50014C1EE /* DownloadPreplannedMapViewController.swift */; };
+		9DF04DC52304C81D0014C1EE /* DownloadPreplannedMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DF04DBD2304C7F50014C1EE /* DownloadPreplannedMapViewController.swift */; };
 		C7094783215D34BA00BA0969 /* GenerateOfflineMapOverrides.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7094781215D34BA00BA0969 /* GenerateOfflineMapOverrides.storyboard */; };
 		C7094784215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7094782215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift */; };
 		C7094786215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7094785215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift */; };
@@ -988,6 +991,7 @@
 				4C6FAE1B22F8A38300BE2D0B /* ControlAnnotationSublayerVisibilitySublayersViewController.swift in CopyFiles */,
 				4C6FAE1C22F8A38700BE2D0B /* ControlAnnotationSublayerVisibilitySublayerCell.swift in CopyFiles */,
 				9D57A46722FDDE4400C750F4 /* LocationHistoryViewController.swift in CopyFiles */,
+				9DF04DC52304C81D0014C1EE /* DownloadPreplannedMapViewController.swift in CopyFiles */,                
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1420,6 +1424,8 @@
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 		9DE9FE3222FDB7CA00142DE1 /* LocationHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHistoryViewController.swift; sourceTree = "<group>"; };
 		9DE9FE3622FDB7FC00142DE1 /* LocationHistory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationHistory.storyboard; sourceTree = "<group>"; };
+		9DF04DBB2304C7F50014C1EE /* DownloadPreplannedMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DownloadPreplannedMap.storyboard; sourceTree = "<group>"; };
+		9DF04DBD2304C7F50014C1EE /* DownloadPreplannedMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadPreplannedMapViewController.swift; sourceTree = "<group>"; };
 		C7094781215D34BA00BA0969 /* GenerateOfflineMapOverrides.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateOfflineMapOverrides.storyboard; sourceTree = "<group>"; };
 		C7094782215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapOverridesViewController.swift; sourceTree = "<group>"; };
 		C7094785215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineMapParameterOverridesViewController.swift; sourceTree = "<group>"; };
@@ -2684,6 +2690,7 @@
 				4CECF89D21D57E9700A56161 /* Set min-max scale */,
 				4C478E48223C73F9009F8CDF /* Map reference scale */,
 				9D4BA6C822FCAFAD0086D5D3 /* Show location history */,
+				9DF04DBA2304C7F50014C1EE /* Download preplanned map */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -3487,6 +3494,15 @@
 			path = "Show location history";
 			sourceTree = "<group>";
 		};
+		9DF04DBA2304C7F50014C1EE /* Download preplanned map */ = {
+			isa = PBXGroup;
+			children = (
+				9DF04DBB2304C7F50014C1EE /* DownloadPreplannedMap.storyboard */,
+				9DF04DBD2304C7F50014C1EE /* DownloadPreplannedMapViewController.swift */,
+			);
+			path = "Download preplanned map";
+			sourceTree = "<group>";
+		};
 		C7094780215D340C00BA0969 /* Generate offline map (overrides) */ = {
 			isa = PBXGroup;
 			children = (
@@ -4091,6 +4107,7 @@
 				D97B7E621FD9BFE700E1239D /* Subdivisions.sbn in Resources */,
 				3ED028691B8E3A8500ACA70D /* SetViewpoint.storyboard in Resources */,
 				3EFCE1BD1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard in Resources */,
+				9DF04DC02304C7F50014C1EE /* DownloadPreplannedMap.storyboard in Resources */,
 				166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */,
 				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
 				C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */,
@@ -4391,6 +4408,7 @@
 				098049A92253FC3F009C685D /* WFSLayersTableViewController.swift in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,
 				3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */,
+				9DF04DC22304C7F50014C1EE /* DownloadPreplannedMapViewController.swift in Sources */,
 				3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */,
 				3ED028B71B8E3A9800ACA70D /* SublayersTableViewController.swift in Sources */,
 				4C72117320BF4457004A7DD9 /* SVRadialGradientLayer.m in Sources */,

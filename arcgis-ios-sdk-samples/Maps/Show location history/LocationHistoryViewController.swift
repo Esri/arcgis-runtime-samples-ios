@@ -77,7 +77,8 @@ class LocationHistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupView()
+        setupNavigationBar()
+        setupMapView()
     }
     
     // MARK: IBActions
@@ -144,12 +145,6 @@ class LocationHistoryViewController: UIViewController {
         }
 
         sourceBarButtonItem.filenames = ["LocationHistoryViewController"]
-    }
-    
-    private func setupView() {
-        setupNavigationBar()
-
-        setupMapView()
     }
     
     private func startProcessingLocationChanges() {

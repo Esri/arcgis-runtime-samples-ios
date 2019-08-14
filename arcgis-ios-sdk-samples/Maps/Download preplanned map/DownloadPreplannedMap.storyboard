@@ -17,9 +17,33 @@
                     <view key="view" contentMode="scaleToFill" id="nE8-T5-4kh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfV-1x-ZGz" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txe-YL-hFN">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items/>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pfV-1x-ZGz" firstAttribute="bottom" secondItem="nE8-T5-4kh" secondAttribute="bottom" id="71E-cF-jot"/>
+                            <constraint firstAttribute="top" secondItem="pfV-1x-ZGz" secondAttribute="top" id="BTy-bL-9G1"/>
+                            <constraint firstItem="pfV-1x-ZGz" firstAttribute="width" secondItem="nE8-T5-4kh" secondAttribute="width" id="NCx-To-iaT"/>
+                            <constraint firstItem="YcI-mI-KS9" firstAttribute="bottom" secondItem="txe-YL-hFN" secondAttribute="bottom" id="PbN-I1-5ca"/>
+                            <constraint firstAttribute="trailing" secondItem="pfV-1x-ZGz" secondAttribute="trailing" id="UOu-yd-DVv"/>
+                            <constraint firstItem="pfV-1x-ZGz" firstAttribute="height" secondItem="nE8-T5-4kh" secondAttribute="height" id="WrG-ZC-BiK"/>
+                            <constraint firstAttribute="trailing" secondItem="txe-YL-hFN" secondAttribute="trailing" id="YfO-RW-86T"/>
+                            <constraint firstItem="pfV-1x-ZGz" firstAttribute="leading" secondItem="nE8-T5-4kh" secondAttribute="leading" id="nKZ-Ye-Jkg"/>
+                            <constraint firstItem="txe-YL-hFN" firstAttribute="leading" secondItem="nE8-T5-4kh" secondAttribute="leading" id="pzh-up-HIi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YcI-mI-KS9"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="pfV-1x-ZGz" id="2FY-Mn-I2I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTH-Oj-W7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

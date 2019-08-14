@@ -20,6 +20,8 @@ import ArcGIS
 // MARK: - DownloadPreplannedMapViewController
 
 class DownloadPreplannedMapViewController: UIViewController {
+    @IBOutlet private weak var mapView: AGSMapView!
+
     // MARK: UIViewController
 
     override func viewDidLoad() {

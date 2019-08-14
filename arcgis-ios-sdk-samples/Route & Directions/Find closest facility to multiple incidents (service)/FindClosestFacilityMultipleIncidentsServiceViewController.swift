@@ -93,7 +93,6 @@ class FindClosestFacilityMultipleIncidentsServiceViewController: UIViewControlle
         
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
-        dispatchGroup.enter()
         queryAllFeatures(from: facilitiesLayer.featureTable!) { [weak self] (result) in
             switch result {
             case .success(let features):
@@ -103,6 +102,7 @@ class FindClosestFacilityMultipleIncidentsServiceViewController: UIViewControlle
             }
             dispatchGroup.leave()
         }
+        dispatchGroup.enter()
         queryAllFeatures(from: incidentsLayer.featureTable!) { [weak self] (result) in
             switch result {
             case .success(let features):

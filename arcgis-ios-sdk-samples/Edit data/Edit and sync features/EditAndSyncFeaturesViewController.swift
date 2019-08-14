@@ -98,6 +98,12 @@ class EditAndSyncFeaturesViewController: UIViewController {
         }
     }
     
+    func geodatabaseDidSync() {
+        self.presentAlert(title: "Geodatabase sync sucessful")
+        self.syncButton.isEnabled = false
+        self.instructionsLabel.text = String("Tap on a feature")
+    }
+    
     func geodatabaseDidLoad() {
         if let error = geodatabase.loadError {
             self.presentAlert(error: error)
@@ -105,13 +111,13 @@ class EditAndSyncFeaturesViewController: UIViewController {
             // Iterate through the feature tables in the geodatabase and add new layers to the map.
             self.mapView.map?.operationalLayers.removeAllObjects()
             for geodatabaseFeatureTable in self.geodatabase.geodatabaseFeatureTables {
-                geodatabaseFeatureTable.load { (error: Error?) in
+                geodatabaseFeatureTable.load { [weak self, unowned geodatabaseFeatureTable] (error: Error?) in
                     if let error = error {
-                        self.presentAlert(error: error)
+                        self?.presentAlert(error: error)
                     } else {
                         // Create a new feature layer from the table and add it to the map.
                         let featureLayer = AGSFeatureLayer(featureTable: geodatabaseFeatureTable)
-                        self.mapView.map?.operationalLayers.add(featureLayer)
+                        self?.mapView.map?.operationalLayers.add(featureLayer)
                     }
                 }
             }
@@ -190,14 +196,12 @@ class EditAndSyncFeaturesViewController: UIViewController {
         self.syncJob = syncGeodatabaseJob
         syncGeodatabaseJob.start(statusHandler: { (status: AGSJobStatus) in
             SVProgressHUD.show(withStatus: status.statusString())
-        }, completion: { (result: [AGSSyncLayerResult]?, error: Error?) in
+        }, completion: { [weak self] (result: [AGSSyncLayerResult]?, error: Error?) in
             SVProgressHUD.dismiss()
             if let error = error {
-                self.presentAlert(error: error)
+                self?.presentAlert(error: error)
             } else {
-                self.presentAlert(title: "Geodatabase sync sucessful")
-                self.syncButton.isEnabled = false
-                self.instructionsLabel.text = String("Tap on a feature")
+                self?.geodatabaseDidSync()
             }
         })
     }
@@ -214,41 +218,36 @@ class EditAndSyncFeaturesViewController: UIViewController {
 extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // Move the selected feature to the tapped location and update it in the feature table.
-        if self.selectedFeature != nil {
+        if let feature = self.selectedFeature {
             let point = mapView.screen(toLocation: screenPoint)
             if AGSGeometryEngine.geometry(point, intersects: areaOfInterest) {
-                selectedFeature.geometry = point
-                selectedFeature.featureTable?.update(selectedFeature) { (error: Error?) in
+                feature.geometry = point
+                feature.featureTable?.update(feature) { [weak self] ( error: Error?) in
                     if let error = error {
-                        self.presentAlert(error: error)
+                        self?.presentAlert(error: error)
                     } else {
-                        self.syncButton.isEnabled = true
-                        self.generateToolBar.isHidden = true
-                        self.syncToolBar.isHidden = false
-                        self.instructionsLabel.text = String("Tap the sync button")
+                        self?.syncButton.isEnabled = true
+                        self?.generateToolBar.isHidden = true
+                        self?.syncToolBar.isHidden = false
+                        self?.instructionsLabel.text = String("Tap the sync button")
                     }
                 }
             } else {
                 self.presentAlert(title: "Cannot move feature outside downloaded area")
             }
         } else { // Identify which feature was tapped and select it.
-            mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 22.0, returnPopupsOnly: false, maximumResultsPerLayer: 1) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
+            mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 22.0, returnPopupsOnly: false, maximumResultsPerLayer: 1) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
                 if let error = error {
-                    self.presentAlert(error: error)
+                    self?.presentAlert(error: error)
                 } else if let results = results {
-                    self.instructionsLabel.text = String("Tap on the map to move the feature")
+                    self?.instructionsLabel.text = String("Tap on the map to move the feature")
                     if let firstResult = results.first {
                         let layerContent = firstResult.layerContent
                         
                         // Check that the result is a feature layer and has elements.
-                        if layerContent.isKind(of: AGSFeatureLayer.self) && firstResult.geoElements.isEmpty == false {
-                            let featureLayer = layerContent as? AGSFeatureLayer
-                            let identifiedElement = firstResult.geoElements.first
-                            if identifiedElement!.isKind(of: AGSFeature.self) {
-                                let feature = identifiedElement as? AGSFeature
-                                featureLayer!.select(feature!)
-                                self.selectedFeature = feature
-                            }
+                        if let featureLayer = layerContent as? AGSFeatureLayer, let feature = firstResult.geoElements.first as? AGSFeature {
+                            featureLayer.select(feature)
+                            self?.selectedFeature = feature
                         }
                     }
                 }

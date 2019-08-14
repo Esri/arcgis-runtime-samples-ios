@@ -40,7 +40,7 @@ class GetElevationPointViewController: UIViewController {
         
         let surface = AGSSurface()
         // Create raster elevation source.
-        let elevationURL = URL(string: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")
+        let elevationURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationURL!)
         
         // Add a raster source to the surface.

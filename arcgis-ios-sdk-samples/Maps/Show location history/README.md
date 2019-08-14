@@ -16,7 +16,7 @@ Tap 'Start tracking' to start tracking your location, which will appear as point
 
 1. If necessary, request location permission from the operating system.
 2. Create a graphics overlay to show each point and another graphics overlay for displaying the route line.
-3. Create a `AGSCLLocationDataSource` and start it to begin receiving location updates.
+3. Create an instance of `AGSCLLocationDataSource`, and start receiving location updates.
 4. Specify a `locationChangedHandler` on `AGSLocationDisplay` to handle location updates.
 5. Every time the location updates, store that location, display a point on the map, and re-create the route line.
 

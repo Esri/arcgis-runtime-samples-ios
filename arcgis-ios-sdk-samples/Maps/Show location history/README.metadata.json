@@ -6,35 +6,34 @@
         "image1.png"
     ],
     "keywords": [
-		"GPS", 
-		"bread crumb", 
-		"breadcrumb", 
-		"history", 
-		"movement", 
-		"navigation", 
-		"real-time", 
-		"trace", 
-		"track", 
-		"trail"
+        "GPS", 
+        "bread crumb", 
+        "breadcrumb", 
+        "history", 
+        "movement", 
+        "navigation", 
+        "real-time", 
+        "trace", 
+        "track", 
+        "trail"
     ],
     "redirect_from": [
     ],
     "relevant_apis": [
-		"AGSCLLocationDataSource",
-		"AGSGraphic",
-		"AGSGraphicsOverlay",
-		"AGSLocationDataSource",
-		"AGSLocationDisplay",
-		"AGSMap",
-		"AGSMapView",
-		"AGSPolylineBuilder",
-		"AGSSimpleLineSymbol",
-		"AGSSimpleMarkerSymbol",
-		"AGSSimpleRenderer"
+        "AGSCLLocationDataSource",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSLocationDataSource",
+        "AGSLocationDisplay",
+        "AGSMap",
+        "AGSMapView",
+        "AGSPolylineBuilder",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSSimpleRenderer"
     ],
     "snippets": [
-        "LocationHistoryViewController.swift",
-        "LocationTracking.swift"
+        "LocationHistoryViewController.swift"
     ],
     "title": "Show location history"
 }

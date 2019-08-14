@@ -42,7 +42,7 @@ class FindClosestFacilityMultipleIncidentsServiceViewController: UIViewControlle
     /// The task used to find the closest facilities.
     let closestFacilityTask: AGSClosestFacilityTask = {
         let url = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/ClosestFacility")!
-       return AGSClosestFacilityTask(url: url)
+        return AGSClosestFacilityTask(url: url)
     }()
     
     /// Creates a feature layer with the facilities. It is configured to render

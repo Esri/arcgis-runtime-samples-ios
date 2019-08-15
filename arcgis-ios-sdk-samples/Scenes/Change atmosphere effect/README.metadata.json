@@ -1,6 +1,6 @@
 {
     "category": "Scenes",
-    "description": "@@TODO: Changes the appearance of the atmosphere in a scene.",
+    "description": "Changes the appearance of the atmosphere in a scene.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -16,7 +16,8 @@
         "AGSSceneView",
         "AGSAtmosphereEffect"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/change-atmosphere-effect.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSScene",
         "AGSSurface",
@@ -26,8 +27,7 @@
         "AGSAtmosphereEffect"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "ChangeAtmosphereEffectViewController.swift"
     ],
-    "title": "@@TODO: Change atmosphere effect"
+    "title": "Change atmosphere effect"
 }

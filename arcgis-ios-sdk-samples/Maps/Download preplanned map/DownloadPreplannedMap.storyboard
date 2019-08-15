@@ -24,7 +24,27 @@
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txe-YL-hFN">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                                <items/>
+                                <items>
+                                    <barButtonItem title="Item" style="plain" id="MRq-RD-4Yt">
+                                        <activityIndicatorView key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="9e3-Rl-Roi">
+                                            <rect key="frame" x="20" y="17" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </activityIndicatorView>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ONj-3x-aZn"/>
+                                    <barButtonItem enabled="NO" title="Select Map" id="T6C-dm-3bb">
+                                        <connections>
+                                            <action selector="selectMapTapped:" destination="eym-3Z-3ck" id="uow-Xf-9L0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ITk-QV-Mwr"/>
+                                    <barButtonItem enabled="NO" systemItem="trash" id="acg-XN-HC2">
+                                        <connections>
+                                            <action selector="removeDownloadsTapped:" destination="eym-3Z-3ck" id="pdB-1P-gPh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,7 +62,10 @@
                         <viewLayoutGuide key="safeArea" id="YcI-mI-KS9"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="9e3-Rl-Roi" id="sij-xr-JNO"/>
                         <outlet property="mapView" destination="pfV-1x-ZGz" id="2FY-Mn-I2I"/>
+                        <outlet property="removeDownloadsBarButtonItem" destination="acg-XN-HC2" id="cj8-MC-ybC"/>
+                        <outlet property="selectMapBarButtonItem" destination="T6C-dm-3bb" id="xJb-4I-ml6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTH-Oj-W7H" userLabel="First Responder" sceneMemberID="firstResponder"/>

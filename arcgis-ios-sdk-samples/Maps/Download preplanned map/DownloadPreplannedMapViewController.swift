@@ -17,10 +17,19 @@
 import UIKit
 import ArcGIS
 
+// MARK: - Constants
+
+private enum Constants {
+    static let activityIndicatorColor = UIColor.primaryBlue
+}
+
 // MARK: - DownloadPreplannedMapViewController
 
 class DownloadPreplannedMapViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var selectMapBarButtonItem: UIBarButtonItem!
+    @IBOutlet private weak var removeDownloadsBarButtonItem: UIBarButtonItem!
 
     // MARK: UIViewController
 
@@ -28,7 +37,14 @@ class DownloadPreplannedMapViewController: UIViewController {
         super.viewDidLoad()
 
         setupNavigationBar()
+        setupToolbar()
     }
+
+    // MARK: IBActions
+
+    @IBAction private func selectMapTapped(_ sender: UIBarButtonItem) {}
+
+    @IBAction private func removeDownloadsTapped(_ sender: UIBarButtonItem) {}
 
     // MARK: Private behavior
 
@@ -38,5 +54,9 @@ class DownloadPreplannedMapViewController: UIViewController {
         }
 
         sourceBarButtonItem.filenames = ["DownloadPreplannedMapViewController"]
+    }
+
+    private func setupToolbar() {
+        activityIndicatorView.color = Constants.activityIndicatorColor
     }
 }

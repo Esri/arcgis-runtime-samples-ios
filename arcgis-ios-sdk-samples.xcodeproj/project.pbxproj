@@ -594,6 +594,10 @@
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
 		9D57A46722FDDE4400C750F4 /* LocationHistoryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DE9FE3222FDB7CA00142DE1 /* LocationHistoryViewController.swift */; };
+		9D5EDFE3230741670019C46A /* PreplannedMapAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5EDFE2230741670019C46A /* PreplannedMapAreaTableViewCell.swift */; };
+		9DA3CD8C23060687007CB1F3 /* MapSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA3CD8B23060687007CB1F3 /* MapSelectionTableViewController.swift */; };
+		9DA3CD8D23060835007CB1F3 /* MapSelectionTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DA3CD8B23060687007CB1F3 /* MapSelectionTableViewController.swift */; };
+		9DE83D59230B14E5000CB37A /* PreplannedMapAreaTableViewCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D5EDFE2230741670019C46A /* PreplannedMapAreaTableViewCell.swift */; };
 		9DE9FE3422FDB7CA00142DE1 /* LocationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE9FE3222FDB7CA00142DE1 /* LocationHistoryViewController.swift */; };
 		9DE9FE3722FDB7FC00142DE1 /* LocationHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DE9FE3622FDB7FC00142DE1 /* LocationHistory.storyboard */; };
 		9DF04DC02304C7F50014C1EE /* DownloadPreplannedMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF04DBB2304C7F50014C1EE /* DownloadPreplannedMap.storyboard */; };
@@ -991,7 +995,9 @@
 				4C6FAE1B22F8A38300BE2D0B /* ControlAnnotationSublayerVisibilitySublayersViewController.swift in CopyFiles */,
 				4C6FAE1C22F8A38700BE2D0B /* ControlAnnotationSublayerVisibilitySublayerCell.swift in CopyFiles */,
 				9D57A46722FDDE4400C750F4 /* LocationHistoryViewController.swift in CopyFiles */,
-				9DF04DC52304C81D0014C1EE /* DownloadPreplannedMapViewController.swift in CopyFiles */,                
+				9DF04DC52304C81D0014C1EE /* DownloadPreplannedMapViewController.swift in CopyFiles */,
+				9DA3CD8D23060835007CB1F3 /* MapSelectionTableViewController.swift in CopyFiles */,
+				9DE83D59230B14E5000CB37A /* PreplannedMapAreaTableViewCell.swift in CopyFiles */,                
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1422,6 +1428,8 @@
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		9D5EDFE2230741670019C46A /* PreplannedMapAreaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreplannedMapAreaTableViewCell.swift; sourceTree = "<group>"; };
+		9DA3CD8B23060687007CB1F3 /* MapSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSelectionTableViewController.swift; sourceTree = "<group>"; };
 		9DE9FE3222FDB7CA00142DE1 /* LocationHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHistoryViewController.swift; sourceTree = "<group>"; };
 		9DE9FE3622FDB7FC00142DE1 /* LocationHistory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationHistory.storyboard; sourceTree = "<group>"; };
 		9DF04DBB2304C7F50014C1EE /* DownloadPreplannedMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DownloadPreplannedMap.storyboard; sourceTree = "<group>"; };
@@ -3499,6 +3507,8 @@
 			children = (
 				9DF04DBB2304C7F50014C1EE /* DownloadPreplannedMap.storyboard */,
 				9DF04DBD2304C7F50014C1EE /* DownloadPreplannedMapViewController.swift */,
+				9DA3CD8B23060687007CB1F3 /* MapSelectionTableViewController.swift */,
+				9D5EDFE2230741670019C46A /* PreplannedMapAreaTableViewCell.swift */,
 			);
 			path = "Download preplanned map";
 			sourceTree = "<group>";
@@ -4410,6 +4420,7 @@
 				3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */,
 				9DF04DC22304C7F50014C1EE /* DownloadPreplannedMapViewController.swift in Sources */,
 				3ED5EB731B7404D0009F9B75 /* SampleInfoViewController.swift in Sources */,
+				9D5EDFE3230741670019C46A /* PreplannedMapAreaTableViewCell.swift in Sources */,
 				3ED028B71B8E3A9800ACA70D /* SublayersTableViewController.swift in Sources */,
 				4C72117320BF4457004A7DD9 /* SVRadialGradientLayer.m in Sources */,
 				3EEB2B991EB9695F00B52513 /* RelatedFeaturesListVC.swift in Sources */,
@@ -4594,6 +4605,7 @@
 				D9E2E75420EEAC5C001D0AE0 /* FeatureLayerShapefileViewController.swift in Sources */,
 				3E8A05CD1ECE68E80032231C /* CameraSettingsViewController.swift in Sources */,
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
+				9DA3CD8C23060687007CB1F3 /* MapSelectionTableViewController.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
 				3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in Sources */,
 				4C1EF29D220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in Sources */,

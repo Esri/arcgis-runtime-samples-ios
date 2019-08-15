@@ -24,7 +24,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
             let tileCache = AGSTileCache(name: "SanFrancisco")
             let tiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
             let map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayer))
-            
             // Assign the map to the map view.
             mapView.map = map
             
@@ -63,10 +62,8 @@ class EditAndSyncFeaturesViewController: UIViewController {
         }
     }
     
-    @IBOutlet private var generateToolBar: UIToolbar!
-    @IBOutlet private var syncToolBar: UIToolbar!
-    @IBOutlet private var generateButton: UIBarButtonItem!
-    @IBOutlet private var syncButton: UIBarButtonItem!
+    @IBOutlet private var toolBar: UIToolbar!
+    @IBOutlet private var barButtonItem: UIBarButtonItem!
     @IBOutlet private var instructionsLabel: UILabel!
     
     private var generateJob: AGSGenerateGeodatabaseJob?
@@ -116,7 +113,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 }
             }
             self.generateJob = nil
-            self.generateButton.isEnabled = false
+            self.barButtonItem.isEnabled = false
             self.instructionsLabel.text = String("Tap on a feature")
             self.mapView.touchDelegate = self
         }
@@ -124,13 +121,13 @@ class EditAndSyncFeaturesViewController: UIViewController {
     
     func geodatabaseDidSync() {
         self.presentAlert(title: "Geodatabase sync sucessful")
-        self.syncButton.isEnabled = false
+        self.barButtonItem.isEnabled = false
         self.instructionsLabel.text = String("Tap on a feature")
     }
     
-    @IBAction func generateGeodatabase() {
+    func generateGeodatabase() {
         // Hide the unnecessary items.
-        generateButton.isEnabled = false
+        barButtonItem.isEnabled = false
         extentView.isHidden = true
         
         // Get the area outlined by the extent view.
@@ -175,9 +172,9 @@ class EditAndSyncFeaturesViewController: UIViewController {
         }
     }
     
-    @IBAction func syncGeodatabase() {
+    func syncGeodatabase() {
         clearSelection()
-        syncButton.isEnabled = false
+        barButtonItem.isEnabled = false
         selectedFeature = nil
         
         // Create parameters for the sync task.
@@ -206,6 +203,14 @@ class EditAndSyncFeaturesViewController: UIViewController {
         })
     }
     
+    @IBAction func generateOrSync() {
+        if barButtonItem.title == "Sync geodatabase" {
+            syncGeodatabase()
+        } else {
+            generateGeodatabase()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -226,9 +231,8 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                     if let error = error {
                         self?.presentAlert(error: error)
                     } else {
-                        self?.syncButton.isEnabled = true
-                        self?.generateToolBar.isHidden = true
-                        self?.syncToolBar.isHidden = false
+                        self?.barButtonItem.isEnabled = true
+                        self?.barButtonItem.title = "Sync geodatabase"
                         self?.instructionsLabel.text = String("Tap the sync button")
                     }
                 }

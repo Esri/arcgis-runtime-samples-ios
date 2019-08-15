@@ -98,12 +98,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
         }
     }
     
-    func geodatabaseDidSync() {
-        self.presentAlert(title: "Geodatabase sync sucessful")
-        self.syncButton.isEnabled = false
-        self.instructionsLabel.text = String("Tap on a feature")
-    }
-    
     func geodatabaseDidLoad() {
         if let error = geodatabase.loadError {
             self.presentAlert(error: error)
@@ -126,6 +120,12 @@ class EditAndSyncFeaturesViewController: UIViewController {
             self.instructionsLabel.text = String("Tap on a feature")
             self.mapView.touchDelegate = self
         }
+    }
+    
+    func geodatabaseDidSync() {
+        self.presentAlert(title: "Geodatabase sync sucessful")
+        self.syncButton.isEnabled = false
+        self.instructionsLabel.text = String("Tap on a feature")
     }
     
     @IBAction func generateGeodatabase() {

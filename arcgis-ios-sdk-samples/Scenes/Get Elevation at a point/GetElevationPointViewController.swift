@@ -21,6 +21,8 @@ class GetElevationPointViewController: UIViewController {
             // Initialize a scene.
             sceneView.scene = makeScene()
             
+            self.sceneView.touchDelegate = self
+            
             // Set scene's viewpoint.
             let camera = AGSCamera(latitude: 28.42, longitude: 83.9, altitude: 10000.0, heading: 10.0, pitch: 80.0, roll: 0.0)
             sceneView.setViewpointCamera(camera)
@@ -31,44 +33,39 @@ class GetElevationPointViewController: UIViewController {
     
     @IBOutlet var elevationPointLabel: UILabel? {
         didSet {
-            self.elevationPointLabel!.isHidden = true
+            self.elevationPointLabel?.isHidden = true
+            self.elevationPointLabel?.layer.cornerRadius = 10
         }
     }
     
-    func makeScene() -> AGSScene {
+    private let graphicsOverlay = AGSGraphicsOverlay()
+    
+    // Create graphics overlay and add it to scene view.
+    private func makeGraphics() {
+        graphicsOverlay.renderingMode = AGSGraphicsRenderingMode.dynamic
+        graphicsOverlay.sceneProperties?.surfacePlacement = AGSSurfacePlacement.relative
+        sceneView.graphicsOverlays.add(graphicsOverlay)
+    }
+    
+    private func makeScene() -> AGSScene {
         let scene = AGSScene(basemapType: .imageryWithLabels)
         
         let surface = AGSSurface()
-        // Create raster elevation source.
+        // Create an elevation source.
         let elevationURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationURL!)
         
-        // Add a raster source to the surface.
+        // Add the elevation source to the surface.
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         
         return scene
     }
     
-    private let graphicsOverlay = AGSGraphicsOverlay()
-    
-    let elevationLineSymbol = AGSSimpleLineSymbol(style: .solid, color: .red, width: 3.0)
-    var polylineGraphic = AGSGraphic()
-//    polylineGraphic.symbol = self.elevationLineSymbol
-    
-    let elevationTextGraphic = AGSGraphic()
-    
-    
-    //make graphics
-    private func makeGraphics() {
-        graphicsOverlay.renderingMode = AGSGraphicsRenderingMode.dynamic
-//        graphicsOverlay.sceneProperties?.surfacePlacement = AGSLayerSceneProperties(surfacePlacement: .relative)
-        sceneView.graphicsOverlays.add(graphicsOverlay)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //add the source code button item to the right of navigation bar
+        
+        // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GetElevationPointViewController"]
     }
 }
@@ -76,17 +73,13 @@ class GetElevationPointViewController: UIViewController {
 // MARK: - AGSGeoViewTouchDelegate
 extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        let relativeSurfacePoint = sceneView.screen(toBaseSurface: screenPoint)
-        if !relativeSurfacePoint.isEmpty {
-            graphicsOverlay.clearSelection()
-            let polylineBuilder = AGSPolylineBuilder(spatialReference: relativeSurfacePoint.spatialReference)
-            let baseOfPolyline = AGSPoint(x: relativeSurfacePoint.x, y: relativeSurfacePoint.y, spatialReference: AGSSpatialReference(wkid: 0))
-            polylineBuilder.add(baseOfPolyline)
-            let topOfPolyline = AGSPoint(x: baseOfPolyline.x, y: baseOfPolyline.y, spatialReference: AGSSpatialReference(wkid: 750))
-            polylineBuilder.add(topOfPolyline)
-            let markerPolyline = polylineBuilder.toGeometry()
-            polylineGraphic.geometry = markerPolyline
-            graphicsOverlay.graphics.add(polylineGraphic)
+        if let relativeSurfacePoint = sceneView?.screen(toBaseSurface: screenPoint) {
+            graphicsOverlay.graphics.removeAllObjects()
+            
+            // Create the symbol at the tapped point.
+            let marker = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 100, width: 100, depth: 200, anchorPosition: .center)
+            let point = AGSPoint(x: relativeSurfacePoint.x, y: relativeSurfacePoint.y, spatialReference: .wgs84())
+            self.graphicsOverlay.graphics.add(AGSGraphic(geometry: point, symbol: marker))
             
             // Get the surface elevation at the surface point.
             self.sceneView.scene?.baseSurface!.elevation(for: relativeSurfacePoint) { (results: Double, error: Error?) in
@@ -95,9 +88,7 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
                 } else {
                     let elevation = results
                     self.elevationPointLabel?.isHidden = false
-                    self.elevationPointLabel!.text = String("Elevation at tapped point: ") + String(elevation.rounded()) + String("m")
-                    self.polylineGraphic.geometry = topOfPolyline
-                    self.graphicsOverlay.graphics.add(self.elevationTextGraphic)
+                    self.elevationPointLabel?.text = String(" Elevation at tapped point: ") + String(elevation.rounded()) + String("m" )
                 }
             }
         }

@@ -1,6 +1,6 @@
 {
     "category": "Scenes",
-    "description": "@@TODO: Opens and displays a scene from a Mobile Scene Package (.mspk).",
+    "description": "Opens and displays a scene from a Mobile Scene Package (.mspk).",
     "ignore": false,
     "images": [
         "image1.png"
@@ -11,14 +11,14 @@
         "AGSMobileScenePackage",
         "AGSSceneView"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/open-mobile-scene-scene-package-.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSMobileScenePackage",
         "AGSSceneView"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "OpenMobileSceneViewController.swift"
     ],
-    "title": "@@TODO: Open mobile scene (scene package)"
+    "title": "Open mobile scene (scene package)"
 }

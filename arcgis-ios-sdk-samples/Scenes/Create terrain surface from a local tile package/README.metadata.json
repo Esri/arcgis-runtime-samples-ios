@@ -1,0 +1,26 @@
+{
+    "category": "Scenes",
+    "description": "Set the terrain surface with elevation described by a local tile package.",
+    "ignore": false,
+    "images": [
+        "create-terrain-from-a-local-tile-package.png"
+    ],
+    "keywords": [
+        "3D",
+        "tile cache",
+        "elevation",
+        "surface",
+        "AGSArcGISTiledElevationSource",
+        "AGSSurface"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSArcGISTiledElevationSource",
+        "AGSSurface"
+    ],
+    "snippets": [
+        "CreateTerrainSurfaceFromLocalTilePackageViewController.swift"
+    ],
+    "title": "Create terrain from a local tile package"
+}

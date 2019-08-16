@@ -1,0 +1,17 @@
+{
+    "category": "Scenes",
+    "description": "The sample shows how to use a scene layer in a scene.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/scene-layer-url-.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "SceneLayerURLViewController.swift"
+    ],
+    "title": "Scene layer (URL)"
+}

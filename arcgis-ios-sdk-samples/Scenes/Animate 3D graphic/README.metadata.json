@@ -1,0 +1,20 @@
+{
+    "category": "Scenes",
+    "description": "This sample demonstrates how to animate a graphic's position and rotation and have the camera follow it.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/animate-3d-graphic.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "Animate3DGraphicViewController.swift",
+        "MissionSettingsViewController.swift",
+        "CameraSettingsViewController.swift",
+        "PlaneStatsViewController.swift"
+    ],
+    "title": "Animate 3D graphic"
+}

@@ -1,0 +1,17 @@
+{
+    "category": "Scenes",
+    "description": "This sample demonstrates how to position graphics using different surface placements",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/surface-placements.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "SurfacePlacementsViewController.swift"
+    ],
+    "title": "Surface placements"
+}

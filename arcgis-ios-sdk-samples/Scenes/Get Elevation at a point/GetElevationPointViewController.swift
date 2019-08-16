@@ -38,6 +38,7 @@ class GetElevationPointViewController: UIViewController {
         }
     }
     
+    private let controller = ElevationViewController()
     private let graphicsOverlay = AGSGraphicsOverlay()
     
     // Create graphics overlay and add it to scene view.
@@ -66,7 +67,7 @@ class GetElevationPointViewController: UIViewController {
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GetElevationPointViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GetElevationPointViewController", "ElevationViewController"]
     }
 }
 
@@ -87,8 +88,16 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
                     self.presentAlert(error: error)
                 } else {
                     let elevation = results
-                    self.elevationPointLabel?.isHidden = false
-                    self.elevationPointLabel?.text = String(" Elevation at tapped point: ") + String(elevation.rounded()) + String("m" )
+//                    self.elevationPointLabel?.isHidden = false
+//                    self.elevationPointLabel?.text = String(" Elevation at tapped point: ") + String(elevation.rounded()) + String("m" )
+                    
+                    // setup the controller to display as a popover
+                    self.controller.elevationLabel.text = String(" Elevation at tapped point: ") + String(elevation.rounded()) + String("m" )
+                    self.controller.modalPresentationStyle = .popover
+                    self.controller.presentationController?.delegate = self
+                    self.controller.preferredContentSize = CGSize(width: 300, height: 250)
+                    self.controller.popoverPresentationController?.sourceRect = CGRect(origin: screenPoint, size: .zero)
+                    self.present(self.controller, animated: true)
                 }
             }
         }

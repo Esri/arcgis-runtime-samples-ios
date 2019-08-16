@@ -94,3 +94,9 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
         }
     }
 }
+
+extension GetElevationPointViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+}

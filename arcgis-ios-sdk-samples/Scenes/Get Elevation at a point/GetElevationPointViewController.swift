@@ -38,7 +38,7 @@ class GetElevationPointViewController: UIViewController {
         }
     }
     
-    private let controller = ElevationViewController()
+//    @IBOutlet private var controller: ElevationViewController!
     private let graphicsOverlay = AGSGraphicsOverlay()
     
     // Create graphics overlay and add it to scene view.
@@ -87,21 +87,29 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {
-                    let elevation = results
+                    self.showPopover(elevation: results, popoverPoint: screenPoint)
 //                    self.elevationPointLabel?.isHidden = false
 //                    self.elevationPointLabel?.text = String(" Elevation at tapped point: ") + String(elevation.rounded()) + String("m" )
                     
-                    // setup the controller to display as a popover
-                    self.controller.elevationLabel.text = String(" Elevation at tapped point: ") + String(elevation.rounded()) + String("m" )
-                    self.controller.modalPresentationStyle = .popover
-                    self.controller.presentationController?.delegate = self
-                    self.controller.preferredContentSize = CGSize(width: 300, height: 250)
-                    self.controller.popoverPresentationController?.sourceRect = CGRect(origin: screenPoint, size: .zero)
-                    self.present(self.controller, animated: true)
                 }
             }
         }
     }
+    
+    private func showPopover(elevation: Double, popoverPoint: CGPoint) {
+        guard let controller = storyboard?.instantiateViewController(withIdentifier: "ElevationViewController") as? ElevationViewController else {
+                return
+        }
+        
+        // setup the controller to display as a popover
+        controller.elevationLabel.text = String("Elevation at tapped point: ") + String(elevation.rounded()) + String("m")
+        controller.modalPresentationStyle = .popover
+        controller.presentationController?.delegate = self
+        controller.preferredContentSize = CGSize(width: 300, height: 250)
+        controller.popoverPresentationController?.sourceRect = CGRect(origin: screenPoint, size: .zero)
+        present(self.controller, animated: true)
+    }
+
 }
 
 extension GetElevationPointViewController: UIAdaptivePresentationControllerDelegate {

@@ -1,20 +1,17 @@
 {
     "category": "Features",
-    "description": "@@TODO: This sample demonstrates how to create a new feature collection with three feature collection tables (containing points, lines, and polygons). Features are added programmatically a",
+    "description": "This sample demonstrates how to create a new feature collection with three feature collection tables (containing points, lines, and polygons). Features are added programmatically and the collection is displayed in the map as a feature collection layer.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/feature-collection-layer.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "FeatureCollectionLayerVC.swift"
     ],
-    "title": "@@TODO: Feature collection layer"
+    "title": "Feature collection layer"
 }

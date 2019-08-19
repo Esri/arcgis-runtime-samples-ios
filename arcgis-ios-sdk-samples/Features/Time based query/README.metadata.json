@@ -1,0 +1,17 @@
+{
+    "category": "Features",
+    "description": "This sample demonstrates how to apply a time-based parameter to a feature layer query",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/timebased-query.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "TimeBasedQueryVC.swift"
+    ],
+    "title": "Time based query"
+}

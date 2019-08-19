@@ -1,0 +1,18 @@
+{
+    "category": "Features",
+    "description": "This sample demonstrates how to select features in a feature layer",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-selection.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "FLSelectionViewController.swift"
+    ],
+    "title": "Feature layer selection"
+}

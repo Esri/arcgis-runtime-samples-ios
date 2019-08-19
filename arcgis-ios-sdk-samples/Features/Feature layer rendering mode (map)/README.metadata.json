@@ -1,20 +1,17 @@
 {
     "category": "Features",
-    "description": "@@TODO: This sample demonstrates how to set the rendering mode for feature layers. There are two rendering modes, static and dynamic.",
+    "description": "This sample demonstrates how to set the rendering mode for feature layers. There are two rendering modes, static and dynamic.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/feature-layer-rendering-mode-map-.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-rendering-mode.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "FeatureLayerRenderingModeMapViewController.swift"
     ],
-    "title": "@@TODO: Feature layer rendering mode (map)"
+    "title": "Feature layer rendering mode (map)"
 }

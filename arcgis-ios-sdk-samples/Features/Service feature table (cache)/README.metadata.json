@@ -1,20 +1,17 @@
 {
     "category": "Features",
-    "description": "@@TODO: This sample demonstrates how to use a feature service in on interaction cache mode.",
+    "description": "This sample demonstrates how to use a feature service in on interaction cache mode.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/service-feature-table-cache-.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "OnInteractionCacheViewController.swift"
     ],
-    "title": "@@TODO: Service feature table (cache)"
+    "title": "Service feature table (cache)"
 }

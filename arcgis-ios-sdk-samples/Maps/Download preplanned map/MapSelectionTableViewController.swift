@@ -22,9 +22,7 @@ import ArcGIS
 private extension AGSPreplannedMapArea {
     var mapPackageURL: URL {
         let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
-        let mapPackageURL = documentsDirectoryURL.appendingPathComponent(portalItemIdentifier).appendingPathExtension("mmpk")
-        return mapPackageURL
+        return documentsDirectoryURL.appendingPathComponent(portalItemIdentifier).appendingPathExtension("mmpk")
     }
 
     var portalItemIdentifier: String {
@@ -38,6 +36,7 @@ private enum Constants {
     static let onlineMapCellReuseIdentifier = "OnlineMapCell"
     static let preplannedMapAreaCellReuseIdentifier = "PreplannedMapAreaCell"
 
+    static let webMapRowCount = 1
     static let webMapRowIndex = 0
 }
 
@@ -125,7 +124,7 @@ class MapSelectionTableViewController: UITableViewController {
 
         switch section {
         case .webMaps:
-            return 1
+            return Constants.webMapRowCount
         case .preplannedMapAreas:
             return availablePreplannedMapAreas.count
         }
@@ -189,7 +188,7 @@ class MapSelectionTableViewController: UITableViewController {
     }
 
     private func downloadPreplannedMapArea(_ area: AGSPreplannedMapArea, forCell cell: UITableViewCell?) {
-        guard currentJobs[area] == nil else { return }  // download in progress
+        guard currentJobs[area] == nil else { return }
 
         if offlineTask == nil {
             offlineTask = AGSOfflineMapTask(onlineMap: onlineMap)
@@ -231,6 +230,8 @@ class MapSelectionTableViewController: UITableViewController {
             self?.mapSelectionDelegate?.didSelectMap(map: map)
 
             cell?.accessoryType = .checkmark
+
+            self?.currentJobs[area] = nil
         }
     }
 

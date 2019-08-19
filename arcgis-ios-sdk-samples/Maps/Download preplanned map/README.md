@@ -18,10 +18,9 @@ Select a map area to take offline, then use the button to take it offline. Click
 3. Call `AGSOfflineMapTask.downloadPreplannedOfflineMapJob(with:downloadDirectory:)` to find the preplanned areas, then load each one by calling `AGSPreplannedMapArea.load(completion:)`.
 4. Display the areas in the UI.
 5. When the user selects a map area, start the download.
-    1. Create a `AGSDownloadPreplannedOfflineMapParameters` using the selected `AGSPreplannedMapArea`.
-    2. Create a `AGSDownloadPreplannedOfflineMapJob` using `downloadPreplannedOfflineMapJob(with:downloadDirectory:)`, passing in the parameters.
-    3. Wait for the job to complete with `AGSDownloadPreplannedOfflineMapJob.start(statusHandler:completion:)`.
-    4. Once the offline download completes successfully, show the offline map in the `AGSMapView`. Otherwise display any errors to the user.
+    1. Create a `AGSDownloadPreplannedOfflineMapJob` using `downloadPreplannedOfflineMapJob(with:downloadDirectory:)`, passing in the parameters.
+    2. Wait for the job to complete with `AGSDownloadPreplannedOfflineMapJob.start(statusHandler:completion:)`.
+    3. Once the offline download completes successfully, show the offline map in the `AGSMapView`.
 
 ## Relevant API
 
@@ -29,6 +28,7 @@ Select a map area to take offline, then use the button to take it offline. Click
 - `AGSDownloadPreplannedOfflineMapJob`
 - `AGSMap`
 - `AGSMapView`
+- `AGSMobileMapPackage`
 - `AGSOfflineMapTask`
 - `AGSPortal`
 - `AGSPortalItem`

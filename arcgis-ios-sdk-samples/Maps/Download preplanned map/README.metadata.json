@@ -18,13 +18,16 @@
         "AGSDownloadPreplannedOfflineMapJob",
         "AGSMap",
         "AGSMapView",
+        "AGSMobileMapPackage",
         "AGSOfflineMapTask",
         "AGSPortal",
         "AGSPortalItem",
         "AGSPreplannedMapArea"
     ],
     "snippets": [
-        "DownloadPreplannedMapViewController.swift"
+        "DownloadPreplannedMapViewController.swift",
+        "MapSelectionTableViewController.swift",
+        "PreplannedMapAreaTableViewCell.swift"
     ],
     "title": "Download preplanned map"
 }

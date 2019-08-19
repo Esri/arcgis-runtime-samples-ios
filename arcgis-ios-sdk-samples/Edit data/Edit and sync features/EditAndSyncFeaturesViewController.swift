@@ -28,7 +28,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             mapView.map = map
             
             // Create a geodatabase sync task using the feature service URL.
-            let featureServiceString = "https://sampleserver6.arcgisonline" + ".com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
+            let featureServiceString = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
             let featureServiceURL = URL(string: featureServiceString)
             geodatabaseSyncTask = AGSGeodatabaseSyncTask(url: featureServiceURL!)
             geodatabaseSyncTask.load { [weak self] (error: Error?) in

@@ -127,12 +127,14 @@ class DownloadPreplannedMapViewController: UIViewController {
         activityIndicatorView.startAnimating()
 
         onlineMap.load { [weak self] (error) in
-            self?.activityIndicatorView.stopAnimating()
+            guard let self = self else { return }
+
+            self.activityIndicatorView.stopAnimating()
 
             if let error = error {
                 print("Error encountered loading the map : \(error.localizedDescription)")
             } else {
-                self?.loadPreplannedMapAreas()
+                self.loadPreplannedMapAreas()
             }
         }
         self.onlineMap = onlineMap
@@ -147,15 +149,16 @@ class DownloadPreplannedMapViewController: UIViewController {
         activityIndicatorView.startAnimating()
 
         portal.load { [weak self] (error) in
-            self?.activityIndicatorView.stopAnimating()
+            guard let self = self else { return }
+
+            self.activityIndicatorView.stopAnimating()
 
             if let error = error {
                 print("Error encountered loading the portal : \(error.localizedDescription)")
-                return
+            } else {
+                self.loadOnlineMap()
+                self.retrieveAvailablePreplannedMapAreas()
             }
-
-            self?.loadOnlineMap()
-            self?.retrieveAvailablePreplannedMapAreas()
         }
     }
 
@@ -164,14 +167,15 @@ class DownloadPreplannedMapViewController: UIViewController {
             activityIndicatorView.startAnimating()
 
             area.load { [weak self, unowned area] (error) in
-                self?.activityIndicatorView.stopAnimating()
+                guard let self = self else { return }
+
+                self.activityIndicatorView.stopAnimating()
 
                 if let error = error {
                     print("Error encountered loading the area : \(error.localizedDescription)")
-                    return
+                } else {
+                    self.remoteLoadedPreplannedMapAreas.append(area)
                 }
-
-                self?.remoteLoadedPreplannedMapAreas.append(area)
             }
         }
     }

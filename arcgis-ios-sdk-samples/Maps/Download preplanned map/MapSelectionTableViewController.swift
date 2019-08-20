@@ -216,7 +216,9 @@ class MapSelectionTableViewController: UITableViewController {
         jobProgressObservations.insert(observation)
 
         job.start(statusHandler: nil) { [weak self, unowned observation] (result, error) in
-            self?.jobProgressObservations.remove(observation)
+            guard let self = self else { return }
+
+            self.jobProgressObservations.remove(observation)
 
             if let error = error {
                 print("Error downloading the preplanned map : \(error.localizedDescription)")
@@ -226,15 +228,15 @@ class MapSelectionTableViewController: UITableViewController {
             guard let result = result else { return }
 
             let localMapPackage = result.mobileMapPackage
-            self?.localMapPackages.append(localMapPackage)
-            self?.delegate?.didDownloadMapPackageForPreplannedMapArea(localMapPackage)
+            self.localMapPackages.append(localMapPackage)
+            self.delegate?.didDownloadMapPackageForPreplannedMapArea(localMapPackage)
 
             let map = result.offlineMap
-            self?.delegate?.didSelectMap(map: map)
+            self.delegate?.didSelectMap(map: map)
 
             cell?.accessoryType = .checkmark
 
-            self?.currentJobs[area] = nil
+            self.currentJobs[area] = nil
         }
     }
 

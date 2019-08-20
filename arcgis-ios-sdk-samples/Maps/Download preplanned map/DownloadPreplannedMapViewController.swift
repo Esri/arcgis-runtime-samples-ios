@@ -194,15 +194,16 @@ class DownloadPreplannedMapViewController: UIViewController {
         offlineTask = AGSOfflineMapTask(portalItem: portalItem)
 
         cancelable = offlineTask?.getPreplannedMapAreas { [weak self] (preplannedAreas, error) in
-            self?.activityIndicatorView.stopAnimating()
+            guard let self = self else { return }
+
+            self.activityIndicatorView.stopAnimating()
 
             if let error = error {
                 print("Error encountered loading preplanned map areas : \(error.localizedDescription)")
-                return
+            } else if let preplannedAreas = preplannedAreas {
+                self.remoteAvailablePreplannedMapAreas = preplannedAreas
+                self.loadPreplannedMapAreas()
             }
-
-            self?.remoteAvailablePreplannedMapAreas = preplannedAreas ?? []
-            self?.loadPreplannedMapAreas()
         }
     }
 

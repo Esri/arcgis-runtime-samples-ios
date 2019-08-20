@@ -27,10 +27,10 @@ private enum Constants {
 
 class PreplannedMapAreaTableViewCell: UITableViewCell {
     @IBOutlet private(set) weak var progressView: UIProgressView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
         progressView.progressTintColor = Constants.progressTintColor
         progressView.trackTintColor = Constants.trackTintColor
     }

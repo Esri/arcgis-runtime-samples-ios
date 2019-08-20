@@ -21,9 +21,9 @@ import ArcGIS
 
 private enum Constants {
     static let activityIndicatorColor = UIColor.primaryBlue
-
+    
     static let portalItemIdentifier = "acc027394bc84c2fb04d1ed317aac674"
-
+    
     static let popoverPreferredWidth: CGFloat = 375
     static let popoverPreferredCompactHeight: CGFloat = 280
     static let popoverPreferredRegularHeight: CGFloat = 360
@@ -36,35 +36,35 @@ class DownloadPreplannedMapViewController: UIViewController {
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet private weak var selectMapBarButtonItem: UIBarButtonItem!
     @IBOutlet private weak var removeDownloadsBarButtonItem: UIBarButtonItem!
-
+    
     private let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
     private var portalItem: AGSPortalItem?
     private var onlineMap: AGSMap?
-
+    
     private var offlineTask: AGSOfflineMapTask?
     private var cancelable: AGSCancelable?
-
+    
     private var remoteAvailablePreplannedMapAreas = [AGSPreplannedMapArea]()
-
+    
     private var remoteLoadedPreplannedMapAreas = [AGSPreplannedMapArea]() {
         didSet {
             updateView()
         }
     }
-
+    
     private var uniqueLocalMapPackages = Set<AGSMobileMapPackage>() {
         didSet {
             updateView()
         }
     }
-
+    
     // MARK: UIViewController
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navigationController = segue.destination as? UINavigationController,
             let viewController = navigationController.viewControllers.first as? MapSelectionTableViewController {
             navigationController.presentationController?.delegate = self
-
+            
             let height: CGFloat
             if traitCollection.horizontalSizeClass == .regular, traitCollection.verticalSizeClass == .regular {
                 height = Constants.popoverPreferredRegularHeight
@@ -73,7 +73,7 @@ class DownloadPreplannedMapViewController: UIViewController {
             }
             let contentSize = CGSize(width: Constants.popoverPreferredWidth, height: height)
             viewController.preferredContentSize = contentSize
-
+            
             viewController.delegate = self
             viewController.currentlySelectedMap = mapView.map
             viewController.onlineMap = onlineMap
@@ -81,56 +81,56 @@ class DownloadPreplannedMapViewController: UIViewController {
             viewController.localMapPackages = Array(uniqueLocalMapPackages)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         guard let sourceBarButtonItem = navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem else {
             return
         }
         sourceBarButtonItem.filenames = ["DownloadPreplannedMapViewController", "MapSelectionTableViewController", "PreplannedMapAreaTableViewCell"]
-
+        
         activityIndicatorView.color = Constants.activityIndicatorColor
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         loadPortal()
     }
-
+    
     // MARK: IBActions
-
+    
     @IBAction private func removeDownloadsTapped(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Delete offline areas?", message: nil, preferredStyle: .actionSheet)
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
-
+        
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             self.removeDownloadedMapPackages()
         }
         alertController.addAction(deleteAction)
         alertController.preferredAction = deleteAction
-
+        
         present(alertController, animated: true)
     }
-
+    
     // MARK: Private behavior
-
+    
     private func loadOnlineMap() {
         guard let portalItem = portalItem else { return }
-
+        
         let onlineMap = AGSMap(item: portalItem)
         mapView.map = onlineMap
-
+        
         activityIndicatorView.startAnimating()
-
+        
         onlineMap.load { [weak self] (error) in
             guard let self = self else { return }
-
+            
             self.activityIndicatorView.stopAnimating()
-
+            
             if let error = error {
                 print("Error encountered loading the map : \(error.localizedDescription)")
             } else {
@@ -139,20 +139,20 @@ class DownloadPreplannedMapViewController: UIViewController {
         }
         self.onlineMap = onlineMap
     }
-
+    
     private func loadPortal() {
         guard portal.loadStatus != .loaded else { return }
-
+        
         let portalItem = AGSPortalItem(portal: portal, itemID: Constants.portalItemIdentifier)
         self.portalItem = portalItem
-
+        
         activityIndicatorView.startAnimating()
-
+        
         portal.load { [weak self] (error) in
             guard let self = self else { return }
-
+            
             self.activityIndicatorView.stopAnimating()
-
+            
             if let error = error {
                 print("Error encountered loading the portal : \(error.localizedDescription)")
             } else {
@@ -161,16 +161,16 @@ class DownloadPreplannedMapViewController: UIViewController {
             }
         }
     }
-
+    
     private func loadPreplannedMapAreas() {
         remoteAvailablePreplannedMapAreas.forEach { area in
             activityIndicatorView.startAnimating()
-
+            
             area.load { [weak self, unowned area] (error) in
                 guard let self = self else { return }
-
+                
                 self.activityIndicatorView.stopAnimating()
-
+                
                 if let error = error {
                     print("Error encountered loading the area : \(error.localizedDescription)")
                 } else {
@@ -179,29 +179,29 @@ class DownloadPreplannedMapViewController: UIViewController {
             }
         }
     }
-
+    
     private func removeDownloadedMapPackages() {
         mapView.map = onlineMap
-
+        
         uniqueLocalMapPackages.forEach { package in
             try? FileManager.default.removeItem(at: package.fileURL)
         }
         uniqueLocalMapPackages.removeAll()
     }
-
+    
     private func retrieveAvailablePreplannedMapAreas() {
         guard let portalItem = portalItem else { return }
-
+        
         activityIndicatorView.startAnimating()
-
+        
         cancelable?.cancel()
         offlineTask = AGSOfflineMapTask(portalItem: portalItem)
-
+        
         cancelable = offlineTask?.getPreplannedMapAreas { [weak self] (preplannedAreas, error) in
             guard let self = self else { return }
-
+            
             self.activityIndicatorView.stopAnimating()
-
+            
             if let error = error {
                 print("Error encountered loading preplanned map areas : \(error.localizedDescription)")
             } else if let preplannedAreas = preplannedAreas {
@@ -210,7 +210,7 @@ class DownloadPreplannedMapViewController: UIViewController {
             }
         }
     }
-
+    
     private func updateView() {
         selectMapBarButtonItem.isEnabled = !remoteLoadedPreplannedMapAreas.isEmpty
         removeDownloadsBarButtonItem.isEnabled = !uniqueLocalMapPackages.isEmpty
@@ -223,7 +223,7 @@ extension DownloadPreplannedMapViewController: MapSelectionDelegate {
     func didDownloadMapPackageForPreplannedMapArea(_ mapPackage: AGSMobileMapPackage) {
         uniqueLocalMapPackages.insert(mapPackage)
     }
-
+    
     func didSelectMap(map: AGSMap) {
         mapView.map = map
     }

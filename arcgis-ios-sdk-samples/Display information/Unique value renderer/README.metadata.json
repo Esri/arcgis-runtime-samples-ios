@@ -1,0 +1,20 @@
+{
+    "category": "Display  Information",
+    "description": "@@TODO: This sample demonstrate how to use a unique value renderer to style different features in a feature layer with different symbols. Features do not have a symbol property for you to ",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/unique-value-renderer.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "UniqueValueRendererViewController.swift"
+    ],
+    "title": "@@TODO: Unique value renderer"
+}

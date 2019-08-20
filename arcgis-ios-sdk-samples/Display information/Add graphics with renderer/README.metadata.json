@@ -1,0 +1,20 @@
+{
+    "category": "Display  Information",
+    "description": "@@TODO: This sample demonstrates how to add graphics and set renderer on graphic overlays",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/add-graphics-with-renderer.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "GORenderersViewController.swift"
+    ],
+    "title": "@@TODO: Add graphics with renderer"
+}

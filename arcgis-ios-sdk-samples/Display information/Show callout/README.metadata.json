@@ -1,0 +1,20 @@
+{
+    "category": "Display  Information",
+    "description": "@@TODO: This sample demonstrates how to show location coordinates on a map using a callout.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/show-callout.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "CalloutViewController.swift"
+    ],
+    "title": "@@TODO: Show callout"
+}

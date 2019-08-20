@@ -1,0 +1,21 @@
+{
+    "category": "Display  Information",
+    "description": "@@TODO: This sample demonstrates how to display and work with coordinate system grids such as LatitudeLongitude, MGRS, UTM and USNG on a map view. This includes toggling visibility, config",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/display-grid.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "DisplayGridSettingsViewController.swift",
+        "DisplayGridViewController.swift"
+    ],
+    "title": "@@TODO: Display grid"
+}

@@ -1,0 +1,21 @@
+{
+    "category": "Display  Information",
+    "description": "@@TODO: This sample demonstrates how to change the drawing order for a graphic",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/control-graphic-draw-order.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "GraphicDrawOrderViewController.swift"
+    ],
+    "title": "@@TODO: Control graphic draw order"
+}

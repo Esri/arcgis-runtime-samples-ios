@@ -1,0 +1,21 @@
+{
+    "category": "Display  Information",
+    "description": "@@TODO: This sample demonstrates how you can use the sketch editor to draw point or line or polygon geometry. Sketch editor now also supports freehand polyline and polygon drawing.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/sketch-on-the-map.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "SketchViewController.swift"
+    ],
+    "title": "@@TODO: Sketch on the map"
+}

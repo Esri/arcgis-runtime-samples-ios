@@ -1,0 +1,20 @@
+{
+    "category": "Display  Information",
+    "description": "@@TODO: This sample demonstrates how to create a simple renderer and add it to a graphics overlay. Renderers define the symbology for all graphics in a graphics overlay (unless they are ov",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/simple-renderer.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "SimpleRendererViewController.swift"
+    ],
+    "title": "@@TODO: Simple renderer"
+}

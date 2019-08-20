@@ -210,23 +210,37 @@ class MapSelectionTableViewController: UITableViewController {
             
             self.jobProgressObservations.remove(observation)
             
-            if let error = error {
-                print("Error downloading the preplanned map : \(error.localizedDescription)")
-                return
+            if let result = result {
+                self.downloadPreplannedOfflineMapJob(job, didFinishWith: .success(result))
+            } else if let error = error {
+                self.downloadPreplannedOfflineMapJob(job, didFinishWith: .failure(error))
             }
             
-            guard let result = result else { return }
-            
-            let localMapPackage = result.mobileMapPackage
-            self.localMapPackages.append(localMapPackage)
-            self.delegate?.didDownloadMapPackageForPreplannedMapArea(localMapPackage)
-            
-            let map = result.offlineMap
-            self.delegate?.didSelectMap(map: map)
-            
-            cell?.accessoryType = .checkmark
-            
             self.currentJobs[area] = nil
+        }
+    }
+    
+    func downloadPreplannedOfflineMapJob(_ job: AGSDownloadPreplannedOfflineMapJob, didFinishWith result: Result<AGSDownloadPreplannedOfflineMapResult, Error>) {
+        switch result {
+        case .success(let result):
+            let localMapPackage = result.mobileMapPackage
+            localMapPackages.append(localMapPackage)
+            delegate?.didDownloadMapPackageForPreplannedMapArea(localMapPackage)
+            
+            delegate?.didSelectMap(map: result.offlineMap)
+            
+            if let areaIndexPath = indexPath(for: job.preplannedMapArea) {
+                let cell = tableView.cellForRow(at: areaIndexPath)
+                cell?.accessoryType = .checkmark
+            }
+        case .failure(let error):
+            print("Error downloading the preplanned map : \(error.localizedDescription)")
+        }
+    }
+    
+    private func indexPath(for area: AGSPreplannedMapArea) -> IndexPath? {
+        return availablePreplannedMapAreas.firstIndex(of: area).map {
+            IndexPath(row: $0, section: MapSelectionTableViewSection.preplannedMapAreas.rawValue)
         }
     }
     

@@ -60,22 +60,6 @@ private enum MapSelectionTableViewSection: Int, CaseIterable {
     case preplannedMapAreas
 }
 
-extension MapSelectionTableViewSection {
-    var headerTitle: String? {
-        switch self {
-        case .webMaps:              return nil
-        case .preplannedMapAreas:   return "Preplanned Map Areas"
-        }
-    }
-
-    var footererTitle: String? {
-        switch self {
-        case .webMaps:              return nil
-        case .preplannedMapAreas:   return "Tap to download a preplanned map area for offline use. Once downloaded, the map area will be selected."
-        }
-    }
-}
-
 // MARK: - MapSelectionTableViewController
 
 class MapSelectionTableViewController: UITableViewController {
@@ -106,9 +90,7 @@ class MapSelectionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = MapSelectionTableViewSection(rawValue: indexPath.section) else {
-            fatalError("Section index (\(indexPath.section)) not found!") // This is a programmer error.
-        }
+        let section = MapSelectionTableViewSection.allCases[indexPath.section]
 
         let cell: UITableViewCell
 
@@ -124,9 +106,7 @@ class MapSelectionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let section = MapSelectionTableViewSection(rawValue: section) else {
-            return 0
-        }
+        let section = MapSelectionTableViewSection.allCases[section]
 
         switch section {
         case .webMaps:
@@ -143,9 +123,7 @@ class MapSelectionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let section = MapSelectionTableViewSection(rawValue: indexPath.section) else {
-            return
-        }
+        let section = MapSelectionTableViewSection.allCases[indexPath.section]
 
         let rowIndex = indexPath.row
 
@@ -169,11 +147,27 @@ class MapSelectionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return MapSelectionTableViewSection(rawValue: section)?.footererTitle
+        let section = MapSelectionTableViewSection.allCases[section]
+
+        let title: String?
+        switch section {
+        case .webMaps:              title = nil
+        case .preplannedMapAreas:   title = "Tap to download a preplanned map area for offline use. Once downloaded, the map area will be selected."
+        }
+
+        return title
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return MapSelectionTableViewSection(rawValue: section)?.headerTitle
+        let section = MapSelectionTableViewSection.allCases[section]
+
+        let title: String?
+        switch section {
+        case .webMaps:              title = nil
+        case .preplannedMapAreas:   title = "Preplanned Map Areas"
+        }
+
+        return title
     }
 
     // MARK: Private behavior

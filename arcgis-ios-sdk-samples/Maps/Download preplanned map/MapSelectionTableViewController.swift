@@ -134,7 +134,7 @@ class MapSelectionTableViewController: UITableViewController {
         case .preplannedMapAreas:
             let area = availablePreplannedMapAreas[rowIndex]
             
-            if let mapPackage = localMapPackages.first(where: { return $0.fileURL.path.contains(area.portalItemIdentifier) }), let offlineMap = mapPackage.maps.first {
+            if let mapPackage = localMapPackages.first(where: { $0.fileURL.path.contains(area.portalItemIdentifier) }), let offlineMap = mapPackage.maps.first {
                 tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
                 delegate?.didSelectMap(map: offlineMap)
             } else {
@@ -176,7 +176,7 @@ class MapSelectionTableViewController: UITableViewController {
         let area = availablePreplannedMapAreas[rowIndex]
         cell.textLabel?.text = area.title
         
-        if localMapPackages.contains(where: { return $0.fileURL.path.contains(area.portalItemIdentifier) }) {
+        if localMapPackages.contains(where: { $0.fileURL.path.contains(area.portalItemIdentifier) }) {
             let areaCell = cell as? PreplannedMapAreaTableViewCell
             areaCell?.progressView.progress = 100
         }
@@ -233,8 +233,8 @@ class MapSelectionTableViewController: UITableViewController {
         let initialIndexPath: IndexPath?
         if currentlySelectedMap == onlineMap {
             initialIndexPath = IndexPath(row: Constants.webMapRowIndex, section: MapSelectionTableViewSection.webMaps.rawValue)
-        } else if let package = localMapPackages.first(where: { return currentlySelectedMap == $0.maps.first }),
-            let areaIndex = availablePreplannedMapAreas.firstIndex(where: { return package.fileURL.path.contains($0.portalItemIdentifier) }) {
+        } else if let package = localMapPackages.first(where: { currentlySelectedMap == $0.maps.first }),
+            let areaIndex = availablePreplannedMapAreas.firstIndex(where: { package.fileURL.path.contains($0.portalItemIdentifier) }) {
             initialIndexPath = IndexPath(row: areaIndex, section: MapSelectionTableViewSection.preplannedMapAreas.rawValue)
         } else {
             initialIndexPath = nil

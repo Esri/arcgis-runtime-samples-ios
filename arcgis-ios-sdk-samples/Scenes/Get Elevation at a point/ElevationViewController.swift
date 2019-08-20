@@ -14,6 +14,6 @@
 
 import UIKit
 
-class ElevationViewController: UIAdaptivePresentationControllerDelegate {
-    @IBOutlet var elevationLabel: UILabel!
+class ElevationViewController: UIViewController {
+    @IBOutlet var elevationLabel: UILabel?
 }

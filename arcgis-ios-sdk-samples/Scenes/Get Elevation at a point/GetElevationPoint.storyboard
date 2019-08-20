@@ -53,30 +53,18 @@
         <!--Elevation View Controller-->
         <scene sceneID="mbo-WU-56s">
             <objects>
-                <viewController id="0rn-Ar-HUQ" userLabel="Elevation View Controller" customClass="ElevationViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CDS-tF-TiQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLd-XR-Krf" userLabel="Elevation Label">
-                                <rect key="frame" x="0.0" y="-15" width="414" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="xl8-Fk-tgE" firstAttribute="bottom" secondItem="fLd-XR-Krf" secondAttribute="bottom" id="9IM-fx-2bT"/>
-                            <constraint firstAttribute="trailing" secondItem="fLd-XR-Krf" secondAttribute="trailing" id="Xgx-mL-VMn"/>
-                            <constraint firstItem="fLd-XR-Krf" firstAttribute="centerX" secondItem="CDS-tF-TiQ" secondAttribute="centerX" id="qK8-Uh-PQc"/>
-                            <constraint firstItem="fLd-XR-Krf" firstAttribute="leading" secondItem="CDS-tF-TiQ" secondAttribute="leading" id="w3T-zT-mcK"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="xl8-Fk-tgE"/>
-                    </view>
-                    <size key="freeformSize" width="414" height="40"/>
+                <viewController storyboardIdentifier="ElevationViewController" id="0rn-Ar-HUQ" userLabel="Elevation View Controller" customClass="ElevationViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elevation at tapped point: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Iu-g0-tpU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <size key="freeformSize" width="414" height="20"/>
                     <connections>
-                        <outlet property="elevationLabel" destination="fLd-XR-Krf" id="DoG-kC-gxY"/>
+                        <outlet property="elevationLabel" destination="6Iu-g0-tpU" id="Pk5-VI-NeV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8s-7U-Pmq" userLabel="First Responder" sceneMemberID="firstResponder"/>

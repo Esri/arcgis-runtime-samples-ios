@@ -76,6 +76,7 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let relativeSurfacePoint = sceneView?.screen(toBaseSurface: screenPoint) {
             graphicsOverlay.graphics.removeAllObjects()
+            dismiss(animated: true)
             
             // Create the symbol at the tapped point.
             let marker = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 100, width: 100, depth: 200, anchorPosition: .center)
@@ -88,28 +89,26 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
                     self.presentAlert(error: error)
                 } else {
                     self.showPopover(elevation: results, popoverPoint: screenPoint)
-//                    self.elevationPointLabel?.isHidden = false
-//                    self.elevationPointLabel?.text = String(" Elevation at tapped point: ") + String(elevation.rounded()) + String("m" )
-                    
                 }
             }
         }
     }
-    
+
     private func showPopover(elevation: Double, popoverPoint: CGPoint) {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "ElevationViewController") as? ElevationViewController else {
                 return
         }
-        
         // setup the controller to display as a popover
-        controller.elevationLabel.text = String("Elevation at tapped point: ") + String(elevation.rounded()) + String("m")
+        _ = self.view
+        controller.elevationLabel?.text?.append(String(elevation.rounded()) + String("m"))
         controller.modalPresentationStyle = .popover
         controller.presentationController?.delegate = self
-        controller.preferredContentSize = CGSize(width: 300, height: 250)
-        controller.popoverPresentationController?.sourceRect = CGRect(origin: screenPoint, size: .zero)
-        present(self.controller, animated: true)
+        controller.preferredContentSize = CGSize(width: 414, height: 40)
+        controller.popoverPresentationController?.passthroughViews = [sceneView]
+        controller.popoverPresentationController?.sourceRect = CGRect(origin: popoverPoint, size: .zero)
+        controller.popoverPresentationController?.sourceView = sceneView
+        present(controller, animated: true)
     }
-
 }
 
 extension GetElevationPointViewController: UIAdaptivePresentationControllerDelegate {

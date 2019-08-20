@@ -132,8 +132,6 @@ class MapSelectionTableViewController: UITableViewController {
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             delegate?.didSelectMap(map: onlineMap)
         case .preplannedMapAreas:
-            guard rowIndex < availablePreplannedMapAreas.count else { return }
-            
             let area = availablePreplannedMapAreas[rowIndex]
             
             if let mapPackage = localMapPackages.first(where: { return $0.fileURL.path.contains(area.portalItemIdentifier) }), let offlineMap = mapPackage.maps.first {
@@ -174,9 +172,6 @@ class MapSelectionTableViewController: UITableViewController {
     
     private func configurePreplannedMapAreaCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
         let rowIndex = indexPath.row
-        guard rowIndex < availablePreplannedMapAreas.count else {
-            return
-        }
         
         let area = availablePreplannedMapAreas[rowIndex]
         cell.textLabel?.text = area.title

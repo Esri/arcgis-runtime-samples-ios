@@ -1,4 +1,5 @@
 # Download preplanned map
+
 Take a map offline using a preplanned map area.
 
 ![](image1.png)
@@ -9,7 +10,7 @@ When a map is taken offline, a package containing basemap tiles, feature data, a
 
 ## How to use the sample
 
-Select a map area to take offline, then use the button to take it offline. Click 'Delete offline areas' to remove any downloaded map areas.
+Select a preplanned map area by tapping the 'Select Map' bar button item & selecting one of the showing available areas. Tapping a cell initiates a download, and shows download progress in the interim. Once downloaded, the preplanned map is displayed in the map view. If a preplanned map is reselected later, the locally cached data is loaded immediately.
 
 ## How it works
 

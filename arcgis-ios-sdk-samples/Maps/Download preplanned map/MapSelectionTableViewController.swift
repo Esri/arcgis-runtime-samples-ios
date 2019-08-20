@@ -202,10 +202,7 @@ class MapSelectionTableViewController: UITableViewController {
 
         guard let task = offlineTask else { return }
 
-        let existingAreaContents = area.mapPackageURL.path
-        if FileManager.default.fileExists(atPath: existingAreaContents) {
-            try? FileManager.default.removeItem(atPath: existingAreaContents)
-        }
+        try? FileManager.default.removeItem(at: area.mapPackageURL)
 
         let job = task.downloadPreplannedOfflineMapJob(with: area, downloadDirectory: area.mapPackageURL)
         currentJobs[area] = job

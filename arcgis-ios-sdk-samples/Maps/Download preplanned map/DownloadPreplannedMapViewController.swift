@@ -179,19 +179,10 @@ class DownloadPreplannedMapViewController: UIViewController {
     private func removeDownloadedMapPackages() {
         mapView.map = onlineMap
 
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.uniqueLocalMapPackages.forEach { package in
-                let path = package.fileURL.path
-                if FileManager.default.fileExists(atPath: path) {
-                    try? FileManager.default.removeItem(atPath: path)
-                }
-            }
-            self?.uniqueLocalMapPackages.removeAll()
-
-            DispatchQueue.main.async {
-                self?.updateView()
-            }
+        uniqueLocalMapPackages.forEach { package in
+            try? FileManager.default.removeItem(at: package.fileURL)
         }
+        uniqueLocalMapPackages.removeAll()
     }
 
     private func retrieveAvailablePreplannedMapAreas() {

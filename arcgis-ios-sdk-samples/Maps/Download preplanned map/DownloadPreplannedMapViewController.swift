@@ -107,8 +107,8 @@ class DownloadPreplannedMapViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
 
-        let deleteAction = UIAlertAction(title: "Yes, Delete", style: .default) { [weak self] (action) in
-            self?.removeDownloadedMapPackages()
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            self.removeDownloadedMapPackages()
         }
         alertController.addAction(deleteAction)
         alertController.preferredAction = deleteAction

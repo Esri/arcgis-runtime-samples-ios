@@ -99,7 +99,9 @@ class MapSelectionTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: Constants.onlineMapCellReuseIdentifier, for: indexPath)
         case .preplannedMapAreas:
             cell = tableView.dequeueReusableCell(withIdentifier: Constants.preplannedMapAreaCellReuseIdentifier, for: indexPath)
-            configurePreplannedMapAreaCell(cell, at: indexPath)
+            if let areaCell = cell as? PreplannedMapAreaTableViewCell {
+                configurePreplannedMapAreaCell(areaCell, at: indexPath)
+            }
         }
         
         return cell
@@ -170,15 +172,14 @@ class MapSelectionTableViewController: UITableViewController {
     
     // MARK: Private behavior
     
-    private func configurePreplannedMapAreaCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
+    private func configurePreplannedMapAreaCell(_ cell: PreplannedMapAreaTableViewCell, at indexPath: IndexPath) {
         let rowIndex = indexPath.row
         
         let area = availablePreplannedMapAreas[rowIndex]
         cell.textLabel?.text = area.title
         
         if localMapPackages.contains(where: { $0.fileURL.path.contains(area.portalItemIdentifier) }) {
-            let areaCell = cell as? PreplannedMapAreaTableViewCell
-            areaCell?.progressView.progress = 100
+            cell.progressView.progress = 100
         }
     }
     

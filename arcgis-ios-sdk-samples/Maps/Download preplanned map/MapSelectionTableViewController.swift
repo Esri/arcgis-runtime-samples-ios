@@ -79,7 +79,7 @@ extension MapSelectionTableViewSection {
 // MARK: - MapSelectionTableViewController
 
 class MapSelectionTableViewController: UITableViewController {
-    weak var mapSelectionDelegate: MapSelectionDelegate?
+    weak var delegate: MapSelectionDelegate?
 
     var currentlySelectedMap: AGSMap!
     var onlineMap: AGSMap!
@@ -152,7 +152,7 @@ class MapSelectionTableViewController: UITableViewController {
         switch section {
         case .webMaps:
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            mapSelectionDelegate?.didSelectMap(map: onlineMap)
+            delegate?.didSelectMap(map: onlineMap)
         case .preplannedMapAreas:
             guard rowIndex < availablePreplannedMapAreas.count else { return }
 
@@ -160,7 +160,7 @@ class MapSelectionTableViewController: UITableViewController {
 
             if let mapPackage = localMapPackages.first(where: { return $0.fileURL.path.contains(area.portalItemIdentifier) }), let offlineMap = mapPackage.maps.first {
                 tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-                mapSelectionDelegate?.didSelectMap(map: offlineMap)
+                delegate?.didSelectMap(map: offlineMap)
             } else {
                 let selectedCell = tableView.cellForRow(at: indexPath)
                 downloadPreplannedMapArea(area, forCell: selectedCell)
@@ -227,10 +227,10 @@ class MapSelectionTableViewController: UITableViewController {
 
             let localMapPackage = result.mobileMapPackage
             self?.localMapPackages.append(localMapPackage)
-            self?.mapSelectionDelegate?.didDownloadMapPackageForPreplannedMapArea(localMapPackage)
+            self?.delegate?.didDownloadMapPackageForPreplannedMapArea(localMapPackage)
 
             let map = result.offlineMap
-            self?.mapSelectionDelegate?.didSelectMap(map: map)
+            self?.delegate?.didSelectMap(map: map)
 
             cell?.accessoryType = .checkmark
 

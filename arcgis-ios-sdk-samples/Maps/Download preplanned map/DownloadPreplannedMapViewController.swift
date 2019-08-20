@@ -74,7 +74,7 @@ class DownloadPreplannedMapViewController: UIViewController {
             let contentSize = CGSize(width: Constants.popoverPreferredWidth, height: height)
             viewController.preferredContentSize = contentSize
 
-            viewController.mapSelectionDelegate = self
+            viewController.delegate = self
             viewController.currentlySelectedMap = mapView.map
             viewController.onlineMap = onlineMap
             viewController.availablePreplannedMapAreas = remoteLoadedPreplannedMapAreas.sorted { $0.title < $1.title }

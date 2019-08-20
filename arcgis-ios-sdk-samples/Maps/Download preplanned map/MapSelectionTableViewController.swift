@@ -99,7 +99,7 @@ class MapSelectionTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: Constants.onlineMapCellReuseIdentifier, for: indexPath)
         case .preplannedMapAreas:
             cell = tableView.dequeueReusableCell(withIdentifier: Constants.preplannedMapAreaCellReuseIdentifier, for: indexPath)
-            configurePreplannedMapAreaCell(cell, atIndexPath: indexPath)
+            configurePreplannedMapAreaCell(cell, at: indexPath)
         }
         
         return cell
@@ -170,7 +170,7 @@ class MapSelectionTableViewController: UITableViewController {
     
     // MARK: Private behavior
     
-    private func configurePreplannedMapAreaCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
+    private func configurePreplannedMapAreaCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         let rowIndex = indexPath.row
         
         let area = availablePreplannedMapAreas[rowIndex]

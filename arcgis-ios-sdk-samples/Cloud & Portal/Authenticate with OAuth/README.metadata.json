@@ -1,0 +1,28 @@
+{
+    "category": "Cloud and  Portal",
+    "description": "@@TODO: This sample demonstrates how to authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers). Accessing secure",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "Authentication",
+        "Security",
+        "OAuth",
+        "AGSOAuthConfiguration",
+        "AGSAuthenticationManager",
+        "AGSPortal"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/authenticate-with-oauth.htm",
+    "relevant_apis": [
+        "AGSOAuthConfiguration",
+        "AGSAuthenticationManager",
+        "AGSPortal"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "AuthenticateWithOAuthViewController.swift"
+    ],
+    "title": "@@TODO: Authenticate with OAuth"
+}

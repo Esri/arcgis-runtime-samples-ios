@@ -1,0 +1,23 @@
+{
+    "category": "Route and  Directions",
+    "description": "@@TODO: This sample demonstrates how to generate a route among multiple stops taking into account different barriers.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/route-around-barriers.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "RouteParametersViewController.swift",
+        "DirectionsListViewController.swift",
+        "RouteAroundBarriersViewController.swift"
+    ],
+    "title": "@@TODO: Route around barriers"
+}

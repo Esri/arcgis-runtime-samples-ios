@@ -1,0 +1,23 @@
+{
+    "category": "Edit data",
+    "description": "@@TODO: The sample demonstrates how to update geometry of a feature in a feature layer.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png",
+        "image3.png",
+        "image4.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/update-geometries-feature-service-.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "EditGeometryViewController.swift"
+    ],
+    "title": "@@TODO: Update geometries (feature service)"
+}

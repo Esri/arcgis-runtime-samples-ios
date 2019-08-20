@@ -1,0 +1,28 @@
+{
+    "category": "Cloud and  Portal",
+    "description": "@@TODO: Uses Windows credentials to access services hosted on a portal secured with Integrated Windows Authentication (IWA).",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Cloud and Portal",
+        "AGSAuthenticationManager",
+        "AGSPortal",
+        "AGSCredential"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/integrated-windows-authentication.htm",
+    "relevant_apis": [
+        "AGSAuthenticationManager",
+        "AGSPortal",
+        "AGSCredential"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "IntegratedWindowsAuthenticationSearchTableViewCell.swift",
+        "IntegratedWindowsAuthenticationMapViewController.swift",
+        "IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift",
+        "IntegratedWindowsAuthenticationViewController.swift"
+    ],
+    "title": "@@TODO: Integrated Windows Authentication"
+}

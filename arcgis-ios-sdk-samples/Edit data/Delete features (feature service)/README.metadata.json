@@ -1,0 +1,21 @@
+{
+    "category": "Edit data",
+    "description": "@@TODO: This sample demonstrates how to delete features from a feature layer that uses a feature service.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/delete-features-feature-service-.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "DeleteFeaturesViewController.swift"
+    ],
+    "title": "@@TODO: Delete features (feature service)"
+}

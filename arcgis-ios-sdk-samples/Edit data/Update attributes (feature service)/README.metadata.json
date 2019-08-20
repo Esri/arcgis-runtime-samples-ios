@@ -1,0 +1,24 @@
+{
+    "category": "Edit data",
+    "description": "@@TODO: This sample demonstrates how to edit attributes of feature in a feature layer.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png",
+        "image3.png",
+        "image4.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/update-attributes-feature-service-.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "EAOptionsViewController.swift",
+        "EditAttributesViewController.swift"
+    ],
+    "title": "@@TODO: Update attributes (feature service)"
+}

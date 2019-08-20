@@ -1,0 +1,20 @@
+{
+    "category": "Edit data",
+    "description": "@@TODO: This sample demonstrates how to add features to the feature layer using a feature service.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/add-features-feature-service-.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "AddFeaturesViewController.swift"
+    ],
+    "title": "@@TODO: Add features (feature service)"
+}

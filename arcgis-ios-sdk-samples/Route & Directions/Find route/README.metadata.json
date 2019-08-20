@@ -1,0 +1,22 @@
+{
+    "category": "Route and  Directions",
+    "description": "@@TODO: This sample demonstrates how to get a route between two locations",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/find-route.htm",
+    "relevant_apis": [
+        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+    ],
+    "snippets": [
+        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "FindRouteViewController.swift",
+        "DirectionsViewController.swift"
+    ],
+    "title": "@@TODO: Find route"
+}

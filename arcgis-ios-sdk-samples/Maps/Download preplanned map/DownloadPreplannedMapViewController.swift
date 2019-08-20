@@ -77,7 +77,7 @@ class DownloadPreplannedMapViewController: UIViewController {
             viewController.mapSelectionDelegate = self
             viewController.currentlySelectedMap = mapView.map
             viewController.onlineMap = onlineMap
-            viewController.availablePreplannedMapAreas = remoteLoadedPreplannedMapAreas
+            viewController.availablePreplannedMapAreas = remoteLoadedPreplannedMapAreas.sorted { $0.title < $1.title }
             viewController.localMapPackages = Array(uniqueLocalMapPackages)
         }
     }

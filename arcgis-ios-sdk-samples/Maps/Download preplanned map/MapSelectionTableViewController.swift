@@ -19,6 +19,12 @@ import ArcGIS
 
 // MARK: - AGSPreplannedMapArea
 
+extension AGSPreplannedMapArea {
+    var title: String {
+        return portalItem?.title ?? ""
+    }
+}
+
 private extension AGSPreplannedMapArea {
     var mapPackageURL: URL {
         let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -179,7 +185,7 @@ class MapSelectionTableViewController: UITableViewController {
         }
 
         let area = availablePreplannedMapAreas[rowIndex]
-        cell.textLabel?.text = area.portalItem?.title ?? ""
+        cell.textLabel?.text = area.title
 
         if localMapPackages.contains(where: { return $0.fileURL.path.contains(area.portalItemIdentifier) }) {
             let areaCell = cell as? PreplannedMapAreaTableViewCell

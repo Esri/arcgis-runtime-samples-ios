@@ -126,16 +126,15 @@ class DownloadPreplannedMapViewController: UIViewController {
 
         activityIndicatorView.startAnimating()
 
-        onlineMap.load(completion: { [weak self] (error) in
+        onlineMap.load { [weak self] (error) in
             self?.activityIndicatorView.stopAnimating()
 
             if let error = error {
                 print("Error encountered loading the map : \(error.localizedDescription)")
-                return
+            } else {
+                self?.loadPreplannedMapAreas()
             }
-
-            self?.loadPreplannedMapAreas()
-        })
+        }
         self.onlineMap = onlineMap
     }
 

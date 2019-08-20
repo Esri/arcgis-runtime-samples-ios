@@ -140,8 +140,7 @@ class MapSelectionTableViewController: UITableViewController {
                 tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
                 delegate?.didSelectMap(map: offlineMap)
             } else {
-                let selectedCell = tableView.cellForRow(at: indexPath)
-                downloadPreplannedMapArea(area, forCell: selectedCell)
+                downloadPreplannedMapArea(area, at: indexPath)
             }
         }
     }
@@ -183,7 +182,7 @@ class MapSelectionTableViewController: UITableViewController {
         }
     }
     
-    private func downloadPreplannedMapArea(_ area: AGSPreplannedMapArea, forCell cell: UITableViewCell?) {
+    private func downloadPreplannedMapArea(_ area: AGSPreplannedMapArea, at indexPath: IndexPath) {
         guard currentJobs[area] == nil else { return }
         
         if offlineTask == nil {
@@ -197,10 +196,11 @@ class MapSelectionTableViewController: UITableViewController {
         let job = task.downloadPreplannedOfflineMapJob(with: area, downloadDirectory: area.mapPackageURL)
         currentJobs[area] = job
         
+        let cell = tableView.cellForRow(at: indexPath) as? PreplannedMapAreaTableViewCell
+        
         let observation = job.progress.observe(\.fractionCompleted, options: .new) { (progress, change) in
             DispatchQueue.main.async {
-                let downloadCell = cell as? PreplannedMapAreaTableViewCell
-                downloadCell?.progressView.progress = Float(progress.fractionCompleted)
+                cell?.progressView.progress = Float(progress.fractionCompleted)
             }
         }
         jobProgressObservations.insert(observation)

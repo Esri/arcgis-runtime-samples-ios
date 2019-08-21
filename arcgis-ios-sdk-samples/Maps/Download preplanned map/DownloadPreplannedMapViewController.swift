@@ -115,6 +115,8 @@ class DownloadPreplannedMapViewController: UIViewController {
         alertController.addAction(deleteAction)
         alertController.preferredAction = deleteAction
         
+        alertController.popoverPresentationController?.barButtonItem = sender
+        
         present(alertController, animated: true)
     }
     

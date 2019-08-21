@@ -74,6 +74,8 @@ class MapSelectionTableViewController: UITableViewController {
     private var offlineTask: AGSOfflineMapTask?
     private var currentJobs = [AGSPreplannedMapArea: AGSDownloadPreplannedOfflineMapJob]()
     
+    private var lastSelectedIndexPath: IndexPath?
+    
     // MARK: UIViewController
     
     override func viewWillAppear(_ animated: Bool) {
@@ -126,24 +128,17 @@ class MapSelectionTableViewController: UITableViewController {
     
     // MARK: UITableViewDelegate
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .none
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        handleCellSelection(at: indexPath)
         let section = MapSelectionTableViewSection.allCases[indexPath.section]
-        
-        let rowIndex = indexPath.row
         
         switch section {
         case .webMaps:
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             delegate?.didSelectMap(map: onlineMap)
         case .preplannedMapAreas:
-            let area = availablePreplannedMapAreas[rowIndex]
+            let area = availablePreplannedMapAreas[indexPath.row]
             
             if let mapPackage = localMapPackages.first(where: { $0.fileURL.path.contains(area.portalItemIdentifier) }), let offlineMap = mapPackage.maps.first {
-                tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
                 delegate?.didSelectMap(map: offlineMap)
             } else {
                 downloadPreplannedMapArea(area, at: indexPath)
@@ -224,14 +219,22 @@ class MapSelectionTableViewController: UITableViewController {
             delegate?.didDownloadMapPackageForPreplannedMapArea(localMapPackage)
             
             delegate?.didSelectMap(map: result.offlineMap)
-            
-            if let areaIndexPath = indexPath(for: job.preplannedMapArea) {
-                let cell = tableView.cellForRow(at: areaIndexPath)
-                cell?.accessoryType = .checkmark
-            }
         case .failure(let error):
             print("Error downloading the preplanned map : \(error.localizedDescription)")
         }
+    }
+    
+    private func handleCellSelection(at indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let priorIndexPath = lastSelectedIndexPath {
+            tableView.cellForRow(at: priorIndexPath)?.accessoryType = .none
+        }
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        
+        lastSelectedIndexPath = indexPath
     }
     
     private func indexPath(for area: AGSPreplannedMapArea) -> IndexPath? {
@@ -252,8 +255,8 @@ class MapSelectionTableViewController: UITableViewController {
         }
         
         if let indexPath = initialIndexPath {
-            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            lastSelectedIndexPath = indexPath
         }
     }
 }

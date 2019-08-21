@@ -151,8 +151,10 @@ class MapSelectionTableViewController: UITableViewController {
         
         let title: String?
         switch section {
-        case .webMaps:              title = nil
-        case .preplannedMapAreas:   title = "Tap to download a preplanned map area for offline use. Once downloaded, the map area will be selected."
+        case .webMaps:
+            title = nil
+        case .preplannedMapAreas:
+            title = "Tap to download a preplanned map area for offline use. Once downloaded, the map area will be selected."
         }
         
         return title
@@ -163,8 +165,10 @@ class MapSelectionTableViewController: UITableViewController {
         
         let title: String?
         switch section {
-        case .webMaps:              title = nil
-        case .preplannedMapAreas:   title = "Preplanned Map Areas"
+        case .webMaps:
+            title = nil
+        case .preplannedMapAreas:
+            title = "Preplanned Map Areas"
         }
         
         return title

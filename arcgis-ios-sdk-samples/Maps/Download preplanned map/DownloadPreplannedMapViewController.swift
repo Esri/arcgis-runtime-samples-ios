@@ -102,6 +102,8 @@ class DownloadPreplannedMapViewController: UIViewController {
     // MARK: IBActions
     
     @IBAction private func removeDownloadsTapped(_ sender: UIBarButtonItem) {
+        guard presentedViewController == nil else { return }
+        
         let alertController = UIAlertController(title: "Delete offline areas?", message: nil, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)

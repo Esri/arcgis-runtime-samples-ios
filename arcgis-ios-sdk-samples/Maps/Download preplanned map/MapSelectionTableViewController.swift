@@ -183,7 +183,7 @@ class MapSelectionTableViewController: UITableViewController {
         cell.textLabel?.text = area.title
         
         if localMapPackages.contains(where: { $0.fileURL.path.contains(area.portalItemIdentifier) }) {
-            cell.progressView.progress = 100
+            cell.progressView.progress = 1
         }
     }
     

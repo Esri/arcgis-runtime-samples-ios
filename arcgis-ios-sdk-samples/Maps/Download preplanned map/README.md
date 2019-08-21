@@ -27,6 +27,7 @@ Select a preplanned map area by tapping the 'Select Map' bar button item & selec
 
 - `AGSCancelable`
 - `AGSDownloadPreplannedOfflineMapJob`
+- `AGSLoadObjects`
 - `AGSMap`
 - `AGSMapView`
 - `AGSMobileMapPackage`

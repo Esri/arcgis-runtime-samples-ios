@@ -44,9 +44,9 @@ class DownloadPreplannedMapViewController: UIViewController {
     private var offlineTask: AGSOfflineMapTask?
     private var cancelable: AGSCancelable?
     
-    private var remoteAvailablePreplannedMapAreas = [AGSPreplannedMapArea]()
+    private var remoteAvailablePreplannedMapAreas = Set<AGSPreplannedMapArea>()
     
-    private var remoteLoadedPreplannedMapAreas = [AGSPreplannedMapArea]() {
+    private var remoteLoadedPreplannedMapAreas = Set<AGSPreplannedMapArea>() {
         didSet {
             updateView()
         }
@@ -165,19 +165,17 @@ class DownloadPreplannedMapViewController: UIViewController {
     }
     
     private func loadPreplannedMapAreas() {
-        remoteAvailablePreplannedMapAreas.forEach { area in
-            activityIndicatorView.startAnimating()
+        activityIndicatorView.startAnimating()
+        
+        let remoteAreas = Array(remoteAvailablePreplannedMapAreas)
+        AGSLoadObjects(remoteAreas) { [weak self] (success) in
+            guard let self = self else { return }
             
-            area.load { [weak self, unowned area] (error) in
-                guard let self = self else { return }
-                
+            if !success {
+                print("Error encountered loading areas...")
+            } else {
                 self.activityIndicatorView.stopAnimating()
-                
-                if let error = error {
-                    print("Error encountered loading the area : \(error.localizedDescription)")
-                } else {
-                    self.remoteLoadedPreplannedMapAreas.append(area)
-                }
+                self.remoteLoadedPreplannedMapAreas.formUnion(remoteAreas)
             }
         }
     }
@@ -207,7 +205,7 @@ class DownloadPreplannedMapViewController: UIViewController {
             if let error = error {
                 print("Error encountered loading preplanned map areas : \(error.localizedDescription)")
             } else if let preplannedAreas = preplannedAreas {
-                self.remoteAvailablePreplannedMapAreas = preplannedAreas
+                self.remoteAvailablePreplannedMapAreas.formUnion(preplannedAreas)
                 self.loadPreplannedMapAreas()
             }
         }

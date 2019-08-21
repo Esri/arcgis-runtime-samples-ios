@@ -16,6 +16,7 @@
     "relevant_apis": [
         "AGSCancelable",
         "AGSDownloadPreplannedOfflineMapJob",
+        "AGSLoadObjects",
         "AGSMap",
         "AGSMapView",
         "AGSMobileMapPackage",

@@ -73,7 +73,6 @@ class MapSelectionTableViewController: UITableViewController {
     
     private var offlineTask: AGSOfflineMapTask?
     private var currentJobs = [AGSPreplannedMapArea: AGSDownloadPreplannedOfflineMapJob]()
-    private var jobProgressObservations = Set<NSKeyValueObservation>()
     
     // MARK: UIViewController
     
@@ -204,18 +203,10 @@ class MapSelectionTableViewController: UITableViewController {
         currentJobs[area] = job
         
         let cell = tableView.cellForRow(at: indexPath) as? PreplannedMapAreaTableViewCell
+        cell?.progressView.observedProgress = job.progress
         
-        let observation = job.progress.observe(\.fractionCompleted, options: .new) { (progress, change) in
-            DispatchQueue.main.async {
-                cell?.progressView.progress = Float(progress.fractionCompleted)
-            }
-        }
-        jobProgressObservations.insert(observation)
-        
-        job.start(statusHandler: nil) { [weak self, unowned observation] (result, error) in
+        job.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else { return }
-            
-            self.jobProgressObservations.remove(observation)
             
             if let result = result {
                 self.downloadPreplannedOfflineMapJob(job, didFinishWith: .success(result))

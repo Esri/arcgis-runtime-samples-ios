@@ -83,6 +83,13 @@ class MapSelectionTableViewController: UITableViewController {
         setupView()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        currentJobs.values.forEach { $0.progress.cancel() }
+        currentJobs.removeAll()
+    }
+    
     // MARK: UITableViewDataSource
     
     override func numberOfSections(in: UITableView) -> Int {
@@ -215,8 +222,6 @@ class MapSelectionTableViewController: UITableViewController {
             } else if let error = error {
                 self.downloadPreplannedOfflineMapJob(job, didFinishWith: .failure(error))
             }
-            
-            self.currentJobs[area] = nil
         }
     }
     

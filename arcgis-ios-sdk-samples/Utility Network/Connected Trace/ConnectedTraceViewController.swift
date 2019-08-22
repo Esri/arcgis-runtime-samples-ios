@@ -26,8 +26,18 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet weak var modeControl: UISegmentedControl!
     @IBOutlet weak var statusLabel: UILabel!
     
-    private let featureServiceURL = URL(string: "")!
-    private let layerIds = [4, 3, 5, 0]
+    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    private var layers: [AGSFeatureLayer] {
+        return [115, 100].map({
+            let featureTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("\($0)"))
+            let layer = AGSFeatureLayer(featureTable: featureTable)
+            if $0 == 115 {
+                let lineColor = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
+                layer.renderer = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: lineColor, width: 3))
+            }
+            return layer
+        })
+    }
 
     private let map: AGSMap
     private let utilityNetwork: AGSUtilityNetwork
@@ -62,12 +72,9 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
 
         super.init(coder: aDecoder)
-
+        
         // Add the utility network feature layers to the map for display.
-        map.operationalLayers.addObjects(from: layerIds.map({
-            let featureTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("\($0)"))
-            return AGSFeatureLayer(featureTable: featureTable)
-        }))
+        map.operationalLayers.addObjects(from: layers)
     }
     
     // MARK: Initialize user interface
@@ -126,10 +133,11 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
             switch networkSource.sourceType {
             case .junction:
                 // If the user tapped on a junction, get the asset's terminal(s).
-                let assetGroupFieldName = !featureTable.subtypeField.isEmpty ? featureTable.subtypeField : "ASSETGROUP"
-                if let assetGroupCode = feature.attributes[assetGroupFieldName] as? Int,
+                if let assetGroupField = featureTable.field(forName: featureTable.subtypeField),
+                    let assetGroupCode = feature.attributes[assetGroupField.name] as? Int,
                     let assetGroup = networkSource.assetGroups.first(where: { $0.code == assetGroupCode }),
-                    let assetTypeCode = feature.attributes["ASSETTYPE"] as? Int,
+                    let assetTypeField = featureTable.field(forName: "ASSETTYPE"),
+                    let assetTypeCode = feature.attributes[assetTypeField.name] as? Int,
                     let assetType = assetGroup.assetTypes.first(where: { $0.code == assetTypeCode }),
                     let terminals = assetType.terminalConfiguration?.terminals {
                     self.selectTerminal(from: terminals) { [feature] terminal in

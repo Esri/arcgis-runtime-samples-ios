@@ -1,0 +1,17 @@
+{
+    "category": "Scenes",
+    "description": "This sample demonstrates how to render graphics extruded in the z direction.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/extrude-graphics.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "ExtrudeGraphicsViewController.swift"
+    ],
+    "title": "Extrude Graphics"
+}

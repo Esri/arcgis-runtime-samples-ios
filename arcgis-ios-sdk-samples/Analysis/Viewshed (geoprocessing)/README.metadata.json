@@ -1,0 +1,17 @@
+{
+    "category": "Analysis",
+    "description": "This sample demonstrates how to calculate a viewshed using a geoprocessing service.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/viewshed-geoprocessing-.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "ViewshedGeoprocessingViewController.swift"
+    ],
+    "title": "Viewshed (Geoprocessing)"
+}

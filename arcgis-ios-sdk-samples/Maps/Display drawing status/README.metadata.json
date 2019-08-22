@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "description": "This sample display the current drawing status of the map in the toolbar.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/display-drawing-status.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "MapViewDrawStatusViewController.swift"
+    ],
+    "title": "Display drawing status"
+}

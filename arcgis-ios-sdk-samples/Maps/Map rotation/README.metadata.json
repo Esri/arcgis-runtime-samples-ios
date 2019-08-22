@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "description": "This sample demonstrates how to rotate a map on your iOS device.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/map-rotation.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "MapRotationViewController.swift"
+    ],
+    "title": "Map rotation"
+}

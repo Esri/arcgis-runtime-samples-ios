@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-protocol DirectionsListVCDelegate: AnyObject {
+protocol DirectionsListViewControllerDelegate: AnyObject {
     func directionsListViewController(_ directionsListViewController: DirectionsListViewController, didSelectDirectionManuever directionManeuver: AGSDirectionManeuver)
     func directionsListViewControllerDidDeleteRoute(_ directionsListViewController: DirectionsListViewController)
 }
@@ -26,7 +26,7 @@ class DirectionsListViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet var milesLabel: UILabel!
     @IBOutlet var minutesLabel: UILabel!
     
-    weak var delegate: DirectionsListVCDelegate?
+    weak var delegate: DirectionsListViewControllerDelegate?
     
     var route: AGSRoute! {
         didSet {

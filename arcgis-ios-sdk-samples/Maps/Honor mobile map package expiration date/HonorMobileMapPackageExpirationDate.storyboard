@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HJc-ia-gdz">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Honor Mobile Map Package Expiration Date View Controller-->
+        <scene sceneID="nuf-Tl-CU3">
+            <objects>
+                <viewController id="HJc-ia-gdz" customClass="HonorMobileMapPackageExpirationDateViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qoq-Sq-2ST">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6d-CB-JFv" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <visualEffectView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWm-CJ-sgL">
+                                <rect key="frame" x="0.0" y="426.5" width="414" height="53"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8q1-rt-KTV">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="xb0-rF-EJT">
+                                            <rect key="frame" x="8" y="0.0" width="398" height="52.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Expiration Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulk-GF-bmI">
+                                                    <rect key="frame" x="124.5" y="16" width="149.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Time to Expiration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YE-JI-5Br">
+                                                    <rect key="frame" x="130" y="0.0" width="138" height="0.0"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <directionalEdgeInsets key="directionalLayoutMargins" top="16" leading="8" bottom="16" trailing="8"/>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="xb0-rF-EJT" firstAttribute="leading" secondItem="8q1-rt-KTV" secondAttribute="leadingMargin" id="KEn-wA-gIu"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xb0-rF-EJT" secondAttribute="trailing" id="Uum-bG-lqy"/>
+                                        <constraint firstItem="xb0-rF-EJT" firstAttribute="top" secondItem="8q1-rt-KTV" secondAttribute="top" id="tpm-Kg-XaW"/>
+                                        <constraint firstAttribute="bottom" secondItem="xb0-rF-EJT" secondAttribute="bottom" id="wag-iY-J8L"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w6d-CB-JFv" firstAttribute="leading" secondItem="Qoq-Sq-2ST" secondAttribute="leading" id="09K-Ed-Swb"/>
+                            <constraint firstItem="w6d-CB-JFv" firstAttribute="top" secondItem="Qoq-Sq-2ST" secondAttribute="top" id="0Dk-bL-qzo"/>
+                            <constraint firstItem="zWm-CJ-sgL" firstAttribute="centerY" secondItem="OfE-CO-85a" secondAttribute="centerY" id="Iu0-2C-dcH"/>
+                            <constraint firstAttribute="bottom" secondItem="w6d-CB-JFv" secondAttribute="bottom" id="KWf-K3-NtK"/>
+                            <constraint firstItem="zWm-CJ-sgL" firstAttribute="leading" secondItem="Qoq-Sq-2ST" secondAttribute="leading" id="ZQu-Ru-T8S"/>
+                            <constraint firstAttribute="trailing" secondItem="w6d-CB-JFv" secondAttribute="trailing" id="bqV-qA-pM9"/>
+                            <constraint firstAttribute="trailing" secondItem="zWm-CJ-sgL" secondAttribute="trailing" id="pGh-WT-AmI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OfE-CO-85a"/>
+                    </view>
+                    <connections>
+                        <outlet property="expirationMessageLabel" destination="ulk-GF-bmI" id="rHb-ze-D4Z"/>
+                        <outlet property="expirationView" destination="zWm-CJ-sgL" id="0GT-0C-voZ"/>
+                        <outlet property="mapView" destination="w6d-CB-JFv" id="lyi-Sc-aHA"/>
+                        <outlet property="timeToExpirationLabel" destination="8YE-JI-5Br" id="t7J-wX-Pqp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nep-Dd-hJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="156"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "description": "This sample demonstrates how to get view status for layers in a map. The layer's view status could be Active, Not Visible, Out of Scale, Loading, or Error.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/display-layer-view-state.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "LayerStatusViewController.swift"
+    ],
+    "title": "Display layer view state"
+}

@@ -1,6 +1,6 @@
 {
     "category": "Layers",
-    "description": "@@TODO: Show a balloon popup with formatted content for tapped KML features. KML supports defining HTML for popups.",
+    "description": "Show a balloon popup with formatted text for a KML feature.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -28,8 +28,7 @@
         "AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "IdentifyKMLFeaturesViewController.swift"
     ],
-    "title": "@@TODO: Identify KML features"
+    "title": "Identify KML features"
 }

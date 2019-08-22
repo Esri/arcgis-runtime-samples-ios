@@ -1,20 +1,25 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates how to open a WMS layer from a URL and display it in a map.",
+    "description": "Display a WMS layer using a WMS service URL.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "OGC",
+        "web map service",
+        "WMS",
+        "WMS layer",
+        "AGSWMSLayer",
+        "AGSMap"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/wms-layer-url-.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSWMSLayer",
+        "AGSMap"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "WMSLayerUsingURLViewController.swift"
     ],
-    "title": "@@TODO: WMS layer (URL)"
+    "title": "WMS layer (URL)"
 }

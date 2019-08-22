@@ -1,6 +1,6 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This samples demonstrates how to display a map with an OpenStreetMap basemap.",
+    "description": "Add OpenStreetMap as a basemap layer.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -10,17 +10,18 @@
         "Layers",
         "AGSMap",
         "AGSBasemapType",
-        "AGSMapView"
+        "AGSMapView",
+        "AGSOpenStreetMapLayer"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/openstreetmap-layer.htm",
     "relevant_apis": [
         "AGSMap",
         "AGSBasemapType",
-        "AGSMapView"
+        "AGSMapView",
+        "AGSOpenStreetMapLayer"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "OpenStreetMapLayerViewController.swift"
     ],
-    "title": "@@TODO: OpenStreetMap Layer"
+    "title": "OpenStreetMap Layer"
 }

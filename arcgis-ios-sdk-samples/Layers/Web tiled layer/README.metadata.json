@@ -1,20 +1,22 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates how to display map tiles from an online resource",
+    "description": "Display a web tiled layer.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "web tiled layer",
+        "AGSWebTiledLayer",
+        "AGSBasemap"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/web-tiled-layer.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSWebTiledLayer",
+        "AGSBasemap"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "WebTiledLayerViewController.swift"
     ],
-    "title": "@@TODO: Web tiled layer"
+    "title": "Web tiled layer"
 }

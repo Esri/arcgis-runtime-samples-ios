@@ -1,6 +1,6 @@
 {
     "category": "Layers",
-    "description": "@@TODO: List the contents of a KML file. KML files can contain a hierarchy of features, including network links to other KML content.",
+    "description": "List the contents of a KML file. KML files can contain a hierarchy of features, including network links to other KML content.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -21,9 +21,8 @@
         "AGSKMLLayer"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "ListKMLContentsViewController.swift",
         "ListKMLContentsSceneViewController.swift"
     ],
-    "title": "@@TODO: List KML contents"
+    "title": "List KML contents"
 }

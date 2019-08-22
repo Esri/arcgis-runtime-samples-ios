@@ -1,6 +1,6 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates how to execute an attribute and spatial query on the sublayers of an ArcGIS map image layer.",
+    "description": "Find features in a sublayer based on attributes and location.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -10,6 +10,7 @@
         "Sublayer",
         "MapServer",
         "Table",
+        "ArcGIS map image sublayer",
         "AGSServiceFeatureTable",
         "AGSArcGISMapImageLayer",
         "AGSArcGISMapImageSublayer.load(completion:)",
@@ -25,8 +26,7 @@
         "AGSArcGISMapImageSublayer.table"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "QueryMapImageSublayerViewController.swift"
     ],
-    "title": "@@TODO: Query a map image sublayer"
+    "title": "Query a map image sublayer"
 }

@@ -1,6 +1,6 @@
 {
     "category": "Layers",
-    "description": "@@TODO: Load and display KML files from various sources, including URLs, local files, and Portal items.",
+    "description": "Load and display KML files from various sources, including URLs, local files, and Portal items.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -23,8 +23,7 @@
         "AGSKMLLayer(item: AGSItem)"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "DisplayKMLViewController.swift"
     ],
-    "title": "@@TODO: Display KML"
+    "title": "Display KML"
 }

@@ -140,11 +140,14 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 params.returnAttachments = false
                 
                 // Create a temporary file for the geodatabase.
-                let tempFile = "generatedGeodatabase"
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                 
                 let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let downloadFileURL = documentDirectoryURL.appendingPathComponent(tempFile).appendingPathExtension("geodatabase")
-                
+                let downloadFileURL = documentDirectoryURL
+                    .appendingPathComponent(dateFormatter.string(from: Date()))
+                    .appendingPathExtension("geodatabase")
+               
                 // Request a job to generate the geodatabase.
                 let generateGeodatabaseJob = self.geodatabaseSyncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
                 self.generateJob = generateGeodatabaseJob

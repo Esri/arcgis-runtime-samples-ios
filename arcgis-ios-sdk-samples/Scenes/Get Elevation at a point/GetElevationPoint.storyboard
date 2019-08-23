@@ -54,17 +54,30 @@
         <scene sceneID="mbo-WU-56s">
             <objects>
                 <viewController storyboardIdentifier="ElevationViewController" id="0rn-Ar-HUQ" userLabel="Elevation View Controller" customClass="ElevationViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elevation at tapped point: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Iu-g0-tpU">
+                    <view key="view" contentMode="scaleToFill" id="c9Z-Hn-Ppo" userLabel="Label View">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elevation at tapped point: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNi-uF-fm7" userLabel="Elevation Label">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jNi-uF-fm7" firstAttribute="leading" secondItem="c9Z-Hn-Ppo" secondAttribute="leading" id="0fe-n1-NVX"/>
+                            <constraint firstAttribute="trailing" secondItem="jNi-uF-fm7" secondAttribute="trailing" id="DkU-xN-yd0"/>
+                            <constraint firstItem="jNi-uF-fm7" firstAttribute="top" secondItem="c9Z-Hn-Ppo" secondAttribute="top" id="cVR-7J-vnV"/>
+                            <constraint firstAttribute="bottom" secondItem="jNi-uF-fm7" secondAttribute="bottom" id="mcY-fZ-2KH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lS6-6U-DxF"/>
+                    </view>
                     <size key="freeformSize" width="414" height="20"/>
                     <connections>
-                        <outlet property="elevationLabel" destination="6Iu-g0-tpU" id="Pk5-VI-NeV"/>
+                        <outlet property="elevationLabel" destination="jNi-uF-fm7" id="ire-5O-2rC"/>
+                        <outlet property="labelView" destination="c9Z-Hn-Ppo" id="xSU-9h-tUz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8s-7U-Pmq" userLabel="First Responder" sceneMemberID="firstResponder"/>

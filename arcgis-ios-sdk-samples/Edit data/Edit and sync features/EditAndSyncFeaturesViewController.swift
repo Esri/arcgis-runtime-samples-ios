@@ -82,7 +82,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         // Set the upper-right corner.
         let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.maxX, y: frame.maxY))
         
-        //return the envenlope covering the entire extent frame
+        // Return the envenlope covering the entire extent frame.
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     

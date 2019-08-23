@@ -1,0 +1,17 @@
+{
+    "category": "Analysis",
+    "description": "This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/statistical-query.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "StatisticalQueryViewController.swift"
+    ],
+    "title": "Statistical query"
+}

@@ -1,0 +1,17 @@
+{
+    "category": "Analysis",
+    "description": "This sample demonstrates how to create a location viewshed from a camera.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/viewshed-camera-.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "ViewshedCameraViewController.swift"
+    ],
+    "title": "Viewshed (camera)"
+}

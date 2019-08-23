@@ -1,0 +1,17 @@
+{
+    "category": "Analysis",
+    "description": "This sample demonstrates how to attach a viewshed to a moving GeoElement.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/viewshed-geoelement-.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "ViewshedGeoElementViewController.swift"
+    ],
+    "title": "Viewshed (GeoElement)"
+}

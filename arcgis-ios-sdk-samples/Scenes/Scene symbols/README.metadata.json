@@ -1,0 +1,17 @@
+{
+    "category": "Scenes",
+    "description": "This sample demonstrates how to create 3D symbols with different shapes.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/scene-symbols.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "SceneSymbolsViewController.swift"
+    ],
+    "title": "Scene symbols"
+}

@@ -1,0 +1,33 @@
+{
+    "category": "Scenes",
+    "description": "Changes the appearance of the atmosphere in a scene.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "3D",
+        "Atmosphere Effect",
+        "Scene",
+        "AGSScene",
+        "AGSSurface",
+        "AGSArcGISTiledElevationSource",
+        "AGSCamera",
+        "AGSSceneView",
+        "AGSAtmosphereEffect"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSScene",
+        "AGSSurface",
+        "AGSArcGISTiledElevationSource",
+        "AGSCamera",
+        "AGSSceneView",
+        "AGSAtmosphereEffect"
+    ],
+    "snippets": [
+        "ChangeAtmosphereEffectViewController.swift"
+    ],
+    "title": "Change atmosphere effect"
+}

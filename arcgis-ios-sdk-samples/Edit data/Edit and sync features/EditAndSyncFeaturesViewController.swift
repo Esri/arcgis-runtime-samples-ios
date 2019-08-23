@@ -234,6 +234,7 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                     if let error = error {
                         self?.presentAlert(error: error)
                     } else {
+                        self?.selectedFeature = nil
                         self?.barButtonItem.isEnabled = true
                         self?.barButtonItem.title = "Sync geodatabase"
                         self?.instructionsLabel.text = String("Tap the sync button")
@@ -253,6 +254,7 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                         
                         // Check that the result is a feature layer and has elements.
                         if let featureLayer = layerContent as? AGSFeatureLayer, let feature = firstResult.geoElements.first as? AGSFeature {
+                            featureLayer.clearSelection()
                             featureLayer.select(feature)
                             self?.selectedFeature = feature
                         }

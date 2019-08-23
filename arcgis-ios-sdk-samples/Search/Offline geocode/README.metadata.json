@@ -1,21 +1,38 @@
 {
     "category": "Search",
-    "description": "@@TODO: This sample demonstrates how you can geocode addresses to locations and reverse geocode locations to addresses when the device does not have network connectivity",
+    "description": "Geocode addresses to locations and reverse geocode locations to addresses offline.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "offline",
+        "geocode",
+        "search",
+        "locator file",
+        "tile package",
+        "AGSLocatorTask",
+        "AGSGeocodeParameters",
+        "AGSReverseGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSIdentifyGraphicsOverlayResult",
+        "AGSGeoViewTouchDelegate",
+        "AGSGraphicsOverlay"
+
     ],
     "redirect_from": "/ios/latest/swift/sample-code/offline-geocode.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSLocatorTask",
+        "AGSGeocodeParameters",
+        "AGSReverseGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSIdentifyGraphicsOverlayResult",
+        "AGSGeoViewTouchDelegate",
+        "AGSGraphicsOverlay"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
-        "SanDiegoAddressesViewController.swift",
-        "OfflineGeocodeViewController.swift"
+        "OfflineGeocodeViewController.swift",
+        "SanDiegoAddressesViewController.swift"
     ],
-    "title": "@@TODO: Offline geocode"
+    "title": "Offline geocode"
 }

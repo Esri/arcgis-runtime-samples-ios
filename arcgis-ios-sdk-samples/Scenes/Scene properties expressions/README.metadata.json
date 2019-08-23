@@ -1,0 +1,17 @@
+{
+    "category": "Scenes",
+    "description": "This sample demonstrates how to update the orientation of graphics in graphics overlay using expressions on scene properties.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/scene-properties-expressions.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "ScenePropertiesExpressionsViewController.swift"
+    ],
+    "title": "Scene properties expressions"
+}

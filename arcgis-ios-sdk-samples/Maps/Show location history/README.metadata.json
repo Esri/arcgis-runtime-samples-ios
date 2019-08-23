@@ -1,0 +1,39 @@
+{
+    "category": "Maps",
+    "description": "Display your location history on the map.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "GPS", 
+        "bread crumb", 
+        "breadcrumb", 
+        "history", 
+        "movement", 
+        "navigation", 
+        "real-time", 
+        "trace", 
+        "track", 
+        "trail"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSCLLocationDataSource",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSLocationDataSource",
+        "AGSLocationDisplay",
+        "AGSMap",
+        "AGSMapView",
+        "AGSPolylineBuilder",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSSimpleRenderer"
+    ],
+    "snippets": [
+        "LocationHistoryViewController.swift"
+    ],
+    "title": "Show location history"
+}

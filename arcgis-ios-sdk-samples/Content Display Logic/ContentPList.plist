@@ -252,6 +252,14 @@
 				<key>storyboardName</key>
 				<string>MapReferenceScale</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Show location history</string>
+				<key>descriptionText</key>
+				<string>Display your location history on the map.</string>
+				<key>storyboardName</key>
+				<string>LocationHistory</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1161,6 +1169,14 @@
 				<string>FindServiceAreaInteractive</string>
 				<key>descriptionText</key>
 				<string>This samples shows how to find service areas around a point</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Find closest facility to multiple incidents (service)</string>
+				<key>descriptionText</key>
+				<string>Find routes from several locations to the respective closest facility.</string>
+				<key>storyboardName</key>
+				<string>FindClosestFacilityMultipleIncidentsService</string>
 			</dict>
 		</array>
 	</dict>

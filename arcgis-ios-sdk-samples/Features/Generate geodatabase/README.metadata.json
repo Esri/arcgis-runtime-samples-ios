@@ -1,0 +1,17 @@
+{
+    "category": "Features",
+    "description": "This sample demonstrates how to take a feature service offline by generating a geodatabase",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/generate-geodatabase.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "GenerateGeodatabaseViewController.swift"
+    ],
+    "title": "Generate geodatabase"
+}

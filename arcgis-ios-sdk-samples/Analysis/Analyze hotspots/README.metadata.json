@@ -1,0 +1,19 @@
+{
+    "category": "Analysis",
+    "description": "This sample demonstrates how to execute a geoprocessing task to calculate a hotspot analysis based on the frequency of 911 calls.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/analyze-hotspots.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "AnalyzeHotspotsViewController.swift",
+        "HotspotSettingsViewController.swift"
+    ],
+    "title": "Analyze hotspots"
+}

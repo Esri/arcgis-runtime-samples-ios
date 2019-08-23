@@ -1,0 +1,17 @@
+{
+    "category": "Analysis",
+    "description": "This sample demonstrates how to interactively place a line of sight between two locations.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/line-of-sight-location-.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "LineOfSightLocationViewController.swift"
+    ],
+    "title": "Line of sight (location)"
+}

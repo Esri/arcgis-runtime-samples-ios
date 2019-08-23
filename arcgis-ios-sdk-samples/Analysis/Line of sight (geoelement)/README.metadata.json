@@ -1,0 +1,17 @@
+{
+    "category": "Analysis",
+    "description": "This sample demonstrates how to perform a dynamic line of sight analysis between two moving GeoElements (an observer whose height above ground can be modified interactively, and a ",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/line-of-sight-geoelement-.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "LineOfSightGeoElementViewController.swift"
+    ],
+    "title": "Line of sight (geoelement)"
+}

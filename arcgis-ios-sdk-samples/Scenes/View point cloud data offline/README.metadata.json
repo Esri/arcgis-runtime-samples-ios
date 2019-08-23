@@ -1,0 +1,22 @@
+{
+    "category": "Scenes",
+    "description": "Display local 3D point cloud data.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "3D",
+        "point cloud",
+        "lidar",
+        "AGSPointCloudLayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/view-point-cloud-data-offline.htm",
+    "relevant_apis": [
+        "AGSPointCloudLayer"
+    ],
+    "snippets": [
+        "ViewPointCloudDataOfflineViewController.swift"
+    ],
+    "title": "View point cloud data offline"
+}

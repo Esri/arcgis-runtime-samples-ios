@@ -1,0 +1,24 @@
+{
+    "category": "Scenes",
+    "description": "Opens and displays a scene from a Mobile Scene Package (.mspk).",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Offline",
+        "Scene",
+        "AGSMobileScenePackage",
+        "AGSSceneView"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSMobileScenePackage",
+        "AGSSceneView"
+    ],
+    "snippets": [
+        "OpenMobileSceneViewController.swift"
+    ],
+    "title": "Open mobile scene (scene package)"
+}

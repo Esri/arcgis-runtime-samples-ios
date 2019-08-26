@@ -140,7 +140,7 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
                     let assetTypeCode = feature.attributes[assetTypeField.name] as? Int,
                     let assetType = assetGroup.assetTypes.first(where: { $0.code == assetTypeCode }),
                     let terminals = assetType.terminalConfiguration?.terminals {
-                    self.selectTerminal(from: terminals) { [feature] terminal in
+                    self.selectTerminal(from: terminals, at: feature.geometry as? AGSPoint ?? mapPoint) { [feature] terminal in
                         guard let element = utilityNetwork.createElement(with: feature, terminal: terminal),
                             let location = feature.geometry as? AGSPoint else { return }
 
@@ -242,7 +242,7 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     // MARK: Terminal Selection UI
-    private func selectTerminal(from terminals: [AGSUtilityTerminal], completion: @escaping (AGSUtilityTerminal) -> Void) {
+    private func selectTerminal(from terminals: [AGSUtilityTerminal], at mapPoint: AGSPoint, completion: @escaping (AGSUtilityTerminal) -> Void) {
         if terminals.count > 1 {
             // Show a terminal picker
             let terminalPicker = UIAlertController(title: "Select a terminal", message: nil, preferredStyle: .actionSheet)
@@ -255,9 +255,15 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
                 terminalPicker.addAction(action)
             }
             
-            if !terminalPicker.actions.isEmpty {
-                terminalPicker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                self.present(terminalPicker, animated: true, completion: nil)
+            terminalPicker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(terminalPicker, animated: true, completion: nil)
+            
+            if let popoverController = terminalPicker.popoverPresentationController {
+                // If we're presenting in a split view controller (e.g. on an iPad),
+                // provide positioning information for the alert view.
+                popoverController.sourceView = mapView
+                let tapPoint = mapView.location(toScreen: mapPoint)
+                popoverController.sourceRect = CGRect(origin: tapPoint, size: .zero)
             }
         } else if let terminal = terminals.first {
             completion(terminal)

@@ -140,8 +140,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 params.returnAttachments = false
                 
                 // Create a temporary file for the geodatabase.
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                let dateFormatter = ISO8601DateFormatter ()
                 
                 let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
                 let downloadFileURL = documentDirectoryURL

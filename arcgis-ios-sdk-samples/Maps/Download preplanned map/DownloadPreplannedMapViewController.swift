@@ -109,7 +109,7 @@ class DownloadPreplannedMapViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             self.removeDownloadedMapPackages()
         }
         alertController.addAction(deleteAction)

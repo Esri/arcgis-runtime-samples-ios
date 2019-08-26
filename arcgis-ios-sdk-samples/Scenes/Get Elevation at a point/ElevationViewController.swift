@@ -16,5 +16,5 @@ import UIKit
 
 class ElevationViewController: UIViewController {
     @IBOutlet var labelView: UIView!
-    @IBOutlet var elevationLabel: UILabel? 
+    @IBOutlet var elevationLabel: UILabel!
 }

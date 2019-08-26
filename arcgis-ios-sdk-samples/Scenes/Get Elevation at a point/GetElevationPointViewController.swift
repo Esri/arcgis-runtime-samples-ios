@@ -101,9 +101,11 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
         // setup the controller to display as a popover
 //        controller.elevationLabel?.text?.append(String(elevation.rounded()) + String("m"))
         controller.modalPresentationStyle = .popover
+        controller.loadViewIfNeeded()
+//        Measurement(value: elevation.rounded(), unit: UnitLength.meters)
         controller.elevationLabel?.text? = "Elevation at tapped point: " + (String(elevation.rounded()) + String("m"))
         controller.presentationController?.delegate = self
-        controller.preferredContentSize = CGSize(width: 414, height: 40)
+        controller.preferredContentSize = CGSize(width: 280, height: 40)
         controller.popoverPresentationController?.passthroughViews = [sceneView, navigationController?.navigationBar] as? [UIView]
         controller.popoverPresentationController?.sourceRect = CGRect(origin: popoverPoint, size: .zero)
         controller.popoverPresentationController?.sourceView = sceneView

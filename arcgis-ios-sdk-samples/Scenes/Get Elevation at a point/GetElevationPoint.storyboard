@@ -53,28 +53,28 @@
         <!--Elevation View Controller-->
         <scene sceneID="mbo-WU-56s">
             <objects>
-                <viewController storyboardIdentifier="ElevationViewController" id="0rn-Ar-HUQ" userLabel="Elevation View Controller" customClass="ElevationViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="c9Z-Hn-Ppo" userLabel="Label View">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                <viewController storyboardIdentifier="ElevationViewController" automaticallyAdjustsScrollViewInsets="NO" id="0rn-Ar-HUQ" userLabel="Elevation View Controller" customClass="ElevationViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="c9Z-Hn-Ppo" userLabel="Label View">
+                        <rect key="frame" x="0.0" y="0.0" width="310" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elevation at tapped point: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNi-uF-fm7" userLabel="Elevation Label">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNi-uF-fm7" userLabel="Elevation Label">
+                                <rect key="frame" x="5" y="5" width="310" height="10"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jNi-uF-fm7" firstAttribute="leading" secondItem="c9Z-Hn-Ppo" secondAttribute="leading" id="0fe-n1-NVX"/>
-                            <constraint firstAttribute="trailing" secondItem="jNi-uF-fm7" secondAttribute="trailing" id="DkU-xN-yd0"/>
-                            <constraint firstItem="jNi-uF-fm7" firstAttribute="top" secondItem="c9Z-Hn-Ppo" secondAttribute="top" id="cVR-7J-vnV"/>
-                            <constraint firstAttribute="bottom" secondItem="jNi-uF-fm7" secondAttribute="bottom" id="mcY-fZ-2KH"/>
+                            <constraint firstItem="jNi-uF-fm7" firstAttribute="leading" secondItem="lS6-6U-DxF" secondAttribute="leading" constant="5" id="87s-kw-gKe"/>
+                            <constraint firstItem="jNi-uF-fm7" firstAttribute="trailing" secondItem="lS6-6U-DxF" secondAttribute="trailing" constant="5" id="MJm-DY-nPz"/>
+                            <constraint firstItem="jNi-uF-fm7" firstAttribute="top" secondItem="c9Z-Hn-Ppo" secondAttribute="top" constant="5" id="T8Z-zB-Q7S"/>
+                            <constraint firstAttribute="bottom" secondItem="jNi-uF-fm7" secondAttribute="bottom" constant="5" id="UXs-k1-Y3c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lS6-6U-DxF"/>
                     </view>
-                    <size key="freeformSize" width="414" height="20"/>
+                    <size key="freeformSize" width="310" height="20"/>
                     <connections>
                         <outlet property="elevationLabel" destination="jNi-uF-fm7" id="ire-5O-2rC"/>
                         <outlet property="labelView" destination="c9Z-Hn-Ppo" id="xSU-9h-tUz"/>

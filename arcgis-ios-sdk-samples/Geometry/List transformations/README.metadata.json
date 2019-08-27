@@ -16,7 +16,7 @@
         "AGSGeographicTransformationStep",
         "AGSGeometryEngine"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/list-transformations-by-suitability.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/list-transformations.htm",
     "relevant_apis": [
         "AGSTransformationCatalog",
         "AGSDatumTransformation",

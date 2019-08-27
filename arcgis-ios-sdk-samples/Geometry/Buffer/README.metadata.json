@@ -14,7 +14,8 @@
         "AGSGraphicsOverlay",
         "AGSGeoViewTouchDelegate"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/buffer.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSGeometryEngine",
         "AGSGraphicsOverlay",

@@ -1,44 +1,34 @@
 {
     "category": "Geometry",
-    "description": "@@TODO: Demonstrates how to densify or generalize a polyline geometry. In this example, points representing a ship's location are shown at irregular intervals. One can densify the polyline",
+    "description": "A multipart geometry can be densified by adding interpolated points at regular intervals.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
         "Edit and Manage Data",
-        "AGSMap",
-        "AGSBasemap",
+        "simplify",
+        "densify",
+        "generalize",
         "AGSGeometryEngine",
         "AGSGraphic",
-        "AGsGraphicsOverlay",
-        "AGSMapView",
+        "AGSGraphicsOverlay",
         "AGSMultipoint",
         "AGSPointCollection",
-        "AGSPolyline",
-        "AGSSimpleLineSymbol",
-        "AGSSimpleMarkerSymbol",
-        "AGSSpatialReference"
+        "AGSPolyline"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/densify-and-generalize.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/densify-and-generalize.htm",
     "relevant_apis": [
-        "AGSMap",
-        "AGSBasemap",
         "AGSGeometryEngine",
         "AGSGraphic",
-        "AGsGraphicsOverlay",
-        "AGSMapView",
+        "AGSGraphicsOverlay",
         "AGSMultipoint",
         "AGSPointCollection",
-        "AGSPolyline",
-        "AGSSimpleLineSymbol",
-        "AGSSimpleMarkerSymbol",
-        "AGSSpatialReference"
+        "AGSPolyline"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "DensifyAndGeneralizeViewController.swift",
         "GeneralizeSettingsViewController.swift"
     ],
-    "title": "@@TODO: Densify and generalize"
+    "title": "Densify and generalize"
 }

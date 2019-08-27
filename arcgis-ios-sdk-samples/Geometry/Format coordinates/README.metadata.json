@@ -1,21 +1,30 @@
 {
     "category": "Geometry",
-    "description": "@@TODO: Coordinates can be written and formatted in different ways, for example latitude, longitude coordinates can be formatted as decimal degrees, or degrees, minutes, and seconds. This ",
+    "description": "Format coordinates in a variety of common notations.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "coordinate",
+        "UTM",
+        "decimal degrees",
+        "degree minutes seconds",
+        "latitude",
+        "longitude",
+        "AGSCoordinateFormatter",
+        "AGSGeoViewTouchDelegate",
+        "AGSGraphic"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/format-coordinates.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSCoordinateFormatter",
+        "AGSGeoViewTouchDelegate",
+        "AGSGraphic"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "FormatCoordinatesViewController.swift",
         "FormatCoordinatesTableViewController.swift"
     ],
-    "title": "@@TODO: Format coordinates"
+    "title": "Format coordinates"
 }

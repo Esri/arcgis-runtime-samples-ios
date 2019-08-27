@@ -1,16 +1,16 @@
 {
     "category": "Geometry",
-    "description": "@@TODO: This sample demonstrates how to use AGSGeometryEngine to calculate a geodesic path between two points and measure its distance. Geodesic calculations take into account the curvatur",
+    "description": "Perform geodesic operations using the GeometryEngine. Geodesic calculations take into account the curvature of the Earth. Planar calculations are based on a 2D Cartesian plane.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "GeometryEngine",
-        "Densify",
-        "Distance",
-        "Geodetic",
-        "Geodesic",
+        "geometry engine",
+        "densify",
+        "distance",
+        "geodetic",
+        "geodesic",
         "AGSGeometry",
         "AGSGeometryEngine",
         "AGSGraphic",
@@ -24,8 +24,7 @@
         "AGSGraphicsOverlay"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "GeodesicOperationsViewController.swift"
     ],
-    "title": "@@TODO: Geodesic operations"
+    "title": "Geodesic operations"
 }

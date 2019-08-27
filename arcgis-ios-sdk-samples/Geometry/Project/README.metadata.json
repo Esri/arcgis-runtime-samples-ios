@@ -20,7 +20,8 @@
         "AGSSpatialReference",
         "AGSGeoViewTouchDelegate"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/project.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSGeometryEngine",
         "AGSPoint",

@@ -16,7 +16,8 @@
         "AGSSimpleLineSymbol",
         "AGSSimpleFillSymbol"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/clip-geometry.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSGraphicsOverlay",
         "AGSGraphic",

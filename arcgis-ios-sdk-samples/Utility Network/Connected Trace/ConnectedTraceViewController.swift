@@ -98,13 +98,12 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
             if let error = error {
                 self?.setStatus(message: "Loading Utility Network Failed")
                 self?.presentAlert(error: error)
-                return
+            } else {
+                // Update the UI to allow network traces to be run.
+                self?.setUIState()
+                
+                self?.setInstructionMessage()
             }
-            
-            // Update the UI to allow network traces to be run.
-            self?.setUIState()
-            
-            self?.setInstructionMessage()
         }
     }
     
@@ -117,7 +116,7 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
 
         setStatus(message: "Identifying trace locations…")
-        identifyAction = mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10, returnPopupsOnly: false) { [utilityNetwork, currentMode, weak self] (result, error) in
+        identifyAction = mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10, returnPopupsOnly: false) { [weak self] (result, error) in
             if let error = error {
                 self?.setStatus(message: "Error identifying trace locations.")
                 self?.presentAlert(error: error)
@@ -126,48 +125,53 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
             
             guard let self = self else { return }
             
-            guard let feature = result?.first?.geoElements.first as? AGSArcGISFeature,
-                let featureTable = feature.featureTable as? AGSArcGISFeatureTable,
-                let networkSource = utilityNetwork.definition.networkSource(withName: featureTable.tableName) else {
-                self.setStatus(message: "Could not identify location.")
-                return
-            }
-            
-            switch networkSource.sourceType {
-            case .junction:
-                // If the user tapped on a junction, get the asset's terminal(s).
-                if let assetGroupField = featureTable.field(forName: featureTable.subtypeField),
-                    let assetGroupCode = feature.attributes[assetGroupField.name] as? Int,
-                    let assetGroup = networkSource.assetGroups.first(where: { $0.code == assetGroupCode }),
-                    let assetTypeField = featureTable.field(forName: "ASSETTYPE"),
-                    let assetTypeCode = feature.attributes[assetTypeField.name] as? Int,
-                    let assetType = assetGroup.assetTypes.first(where: { $0.code == assetTypeCode }),
-                    let terminals = assetType.terminalConfiguration?.terminals {
-                    self.selectTerminal(from: terminals, at: feature.geometry as? AGSPoint ?? mapPoint) { [feature, weak self] terminal in
-                        guard let self = self,
-                            let element = utilityNetwork.createElement(with: feature, terminal: terminal),
-                            let location = feature.geometry as? AGSPoint else { return }
+            guard let feature = result?.first?.geoElements.first as? AGSArcGISFeature else { return }
 
-                        self.add(element: element, for: location, mode: currentMode)
-                        self.setStatus(message: "terminal: \(terminal.name)")
-                    }
-                }
-            case .edge:
-                // If the user tapped on an edge, determine how far along that edge.
-                if let geometry = feature.geometry,
-                    let line = AGSGeometryEngine.geometryByRemovingZ(from: geometry) as? AGSPolyline,
-                    let element = utilityNetwork.createElement(with: feature, terminal: nil) {
-                    element.fractionAlongEdge = AGSGeometryEngine.fraction(alongLine: line, to: mapPoint, tolerance: -1)
-                    
-                    self.add(element: element, for: mapPoint, mode: currentMode)
-                    self.setStatus(message: "fractionAlongEdge: \(element.fractionAlongEdge)")
-                }
-            @unknown default:
-                self.presentAlert(message: "Unexpected Network Source Type!")
-            }
+            self.addStartElementOrBarrier(for: feature, at: mapPoint)
         }
     }
 
+    private func addStartElementOrBarrier(for feature: AGSArcGISFeature, at location: AGSPoint) {
+        guard let featureTable = feature.featureTable as? AGSArcGISFeatureTable,
+            let networkSource = utilityNetwork.definition.networkSource(withName: featureTable.tableName) else {
+                self.setStatus(message: "Could not identify location.")
+                return
+        }
+        
+        switch networkSource.sourceType {
+        case .junction:
+            // If the user tapped on a junction, get the asset's terminal(s).
+            if let assetGroupField = featureTable.field(forName: featureTable.subtypeField),
+                let assetGroupCode = feature.attributes[assetGroupField.name] as? Int,
+                let assetGroup = networkSource.assetGroups.first(where: { $0.code == assetGroupCode }),
+                let assetTypeField = featureTable.field(forName: "ASSETTYPE"),
+                let assetTypeCode = feature.attributes[assetTypeField.name] as? Int,
+                let assetType = assetGroup.assetTypes.first(where: { $0.code == assetTypeCode }),
+                let terminals = assetType.terminalConfiguration?.terminals {
+                selectTerminal(from: terminals, at: feature.geometry as? AGSPoint ?? location) { [weak self, currentMode] terminal in
+                    guard let self = self,
+                        let element = self.utilityNetwork.createElement(with: feature, terminal: terminal),
+                        let location = feature.geometry as? AGSPoint else { return }
+                    
+                    self.add(element: element, for: location, mode: currentMode)
+                    self.setStatus(message: "terminal: \(terminal.name)")
+                }
+            }
+        case .edge:
+            // If the user tapped on an edge, determine how far along that edge.
+            if let geometry = feature.geometry,
+                let line = AGSGeometryEngine.geometryByRemovingZ(from: geometry) as? AGSPolyline,
+                let element = utilityNetwork.createElement(with: feature, terminal: nil) {
+                element.fractionAlongEdge = AGSGeometryEngine.fraction(alongLine: line, to: location, tolerance: -1)
+                
+                add(element: element, for: location, mode: currentMode)
+                setStatus(message: "fractionAlongEdge: \(element.fractionAlongEdge)")
+            }
+        @unknown default:
+            presentAlert(message: "Unexpected Network Source Type!")
+        }
+    }
+    
     private func add(element: AGSUtilityElement, for location: AGSPoint, mode: InteractionMode) {
         switch mode {
         case .addingStartLocation:

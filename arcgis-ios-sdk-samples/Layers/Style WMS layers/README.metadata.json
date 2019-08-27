@@ -1,6 +1,6 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates how to discover available styles and apply them to WMS sublayers.",
+    "description": "This sample demonstrates how to discover available styles and apply them to WMS sublayers.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -22,8 +22,7 @@
         "AGSWMSSublayer.currentStyle"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "StyleWebMapServiceLayerViewController.swift"
     ],
-    "title": "@@TODO: Style WMS layers"
+    "title": "Style WMS layers"
 }

@@ -1,20 +1,22 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates how to create a tiled layer from a URL",
+    "description": "Load an ArcGIS tiled layer from a URL.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "AGSArcGISTiledLayer",
+        "ArcGIS tiled layer",
+        "tiled layer"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/arcgis-tiled-layer-url-.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSArcGISTiledLayer",
+        "AGSMap"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "TLUsingURLViewController.swift"
     ],
-    "title": "@@TODO: ArcGIS tiled layer (URL)"
+    "title": "ArcGIS tiled layer URL"
 }

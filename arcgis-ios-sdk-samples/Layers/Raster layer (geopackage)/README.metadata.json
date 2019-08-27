@@ -1,20 +1,24 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates how to show a raster layer on a map using a geopackage.",
+    "description": "Display a raster contained in a GeoPackage file.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "OGC",
+        "GeoPackage",
+        "raster",
+        "AGSGeoPackage",
+        "AGSRasterLayer"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/raster-layer-geopackage-.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSGeoPackage",
+        "AGSRasterLayer"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "RasterLayerGPKGViewController.swift"
     ],
-    "title": "@@TODO: Raster layer (geopackage)"
+    "title": "Raster layer (geopackage)"
 }

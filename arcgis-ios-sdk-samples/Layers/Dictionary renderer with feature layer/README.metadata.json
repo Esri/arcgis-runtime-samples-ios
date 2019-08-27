@@ -1,6 +1,6 @@
 {
     "category": "Layers",
-    "description": "@@TODO: Convert features into graphics to show them with mil2525d symbols.",
+    "description": "Convert features into graphics to show them with mil2525d symbols.",
     "ignore": false,
     "images": [
         "dictionary-renderer-with-feature-layer.png"
@@ -14,15 +14,14 @@
         "AGSDictionarySymbolStyle",
         "AGSGeodatabase"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/dictionary-renderer-with-feature-layer.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/dictionary-renderer-with-feature-layer.htm",
     "relevant_apis": [
         "AGSDictionaryRenderer",
         "AGSDictionarySymbolStyle",
         "AGSGeodatabase"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "FeatureLayerDictionaryRendererViewController.swift"
     ],
-    "title": "@@TODO: Dictionary renderer with feature layer"
+    "title": "Dictionary renderer with feature layer"
 }

@@ -1,22 +1,22 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates to use custom styled vector tiled layers",
+    "description": "This sample demonstrates how to load custom styled vector tiled layers",
     "ignore": false,
     "images": [
         "image1.png",
         "image2.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "AGSArcGISVectorTiledLayer",
+        "ArcGIS vector tiled layer"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/arcgis-vector-tiled-layer-custom-style-.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSArcGISVectorTiledLayer"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "VectorTileCustomStyleVC.swift",
         "VectorStylesViewController.swift"
     ],
-    "title": "@@TODO: ArcGIS vector tiled layer (custom style)"
+    "title": "ArcGIS vector tiled layer with custom style"
 }

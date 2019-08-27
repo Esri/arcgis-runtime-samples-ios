@@ -1,19 +1,25 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates how to display a WMTS layer as a basemap layer.",
+    "description": "Display a layer from a Web Map Tile Service.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "OGS",
+        "WMTS",
+        "Web map tiled service",
+        "AGSWMTSService",
+        "AGSWMTSLayer",
+        "AGSBasemap"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/wmts-layer.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSWMTSService",
+        "AGSWMTSLayer",
+        "AGSBasemap"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "WMTSLayerViewController.swift"
     ],
     "title": "@@TODO: WMTS layer"

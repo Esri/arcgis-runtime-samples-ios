@@ -1,20 +1,23 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates how to create and use a raster layer from an ArcGIS Image service.",
+    "description": "Create a raster layer from a raster image service.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "Image service raster",
+        "raster layer",
+        "AGSImageServiceRaster",
+        "AGSRasterLayer"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/raster-layer-service-.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSImageServiceRaster",
+        "AGSRasterLayer"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "RasterLayerUsingServiceVC.swift"
     ],
-    "title": "@@TODO: Raster layer (service)"
+    "title": "Raster layer (service)"
 }

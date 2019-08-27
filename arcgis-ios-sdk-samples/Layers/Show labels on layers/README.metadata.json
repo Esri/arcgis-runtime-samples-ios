@@ -1,20 +1,27 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates how to show labels on feature layers.",
+    "description": "Display custom labels on a feature layer.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "labels",
+        "feature layer",
+        "AGSLabelDefinition",
+        "AGSTextSymbol",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/show-labels-on-layers.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/show-labels-on-layers.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSLabelDefinition",
+        "AGSTextSymbol",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "ShowLabelsOnLayersViewController.swift"
     ],
-    "title": "@@TODO: Show labels on layers"
+    "title": "Show labels on layers"
 }

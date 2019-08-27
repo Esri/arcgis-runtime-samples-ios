@@ -1,6 +1,6 @@
 {
     "category": "Layers",
-    "description": "@@TODO: This sample demonstrates how to display a layer from a WFS service, requesting only features for the current extent.",
+    "description": "Display a layer from a WFS service, requesting only features for the current extent.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -20,7 +20,7 @@
         "AGSWFSFeatureTable.populateFromService(with:clearCache:outFields:completion:)",
         "AGSGeoView.viewpointChangeHandler"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/display-a-wfs-layer.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/display-a-wfs-layer.htm",
     "relevant_apis": [
         "AGSFeatureLayer",
         "AGSWFSFeatureTable",
@@ -28,8 +28,7 @@
         "AGSGeoView.viewpointChangeHandler"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "DisplayWFSViewController.swift"
     ],
-    "title": "@@TODO: Display a WFS layer"
+    "title": "Display a WFS layer"
 }

@@ -38,7 +38,7 @@
         "AGSSyncGeodatabaseJob",
         "AGSSyncGeodatabaseParameters",
         "AGSSyncLayerOption",
-        "AGSSyncLayerResult"
+        "AGSSyncLayerResult",
         "AGSServiceFeatureTable",
         "AGSPopupsViewController",
         "AGSLoadObjects",

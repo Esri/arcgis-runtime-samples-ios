@@ -13,17 +13,18 @@
         "AGSPortal",
         "AGSCredential"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/integrated-windows-authentication.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSAuthenticationManager",
         "AGSPortal",
         "AGSCredential"
     ],
     "snippets": [
-        "IntegratedWindowsAuthenticationMapViewController.swift",
-        "IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift",
+        "IntegratedWindowsAuthenticationViewController.swift",
         "IntegratedWindowsAuthenticationSearchTableViewCell.swift",
-        "IntegratedWindowsAuthenticationViewController.swift"
+        "IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift",
+        "IntegratedWindowsAuthenticationMapViewController.swift"
     ],
     "title": "Integrated Windows Authentication"
 }

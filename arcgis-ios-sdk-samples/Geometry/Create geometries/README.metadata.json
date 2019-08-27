@@ -1,20 +1,37 @@
 {
     "category": "Geometry",
-    "description": "@@TODO: This sample demonstrates simple ways to create different types of geometries.",
+    "description": "Create simple geometry types.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "point",
+        "point collection",
+        "polyline",
+        "multipoint",
+        "polygon",
+        "envelope",
+        "geometry",
+        "graphic",
+        "AGSGraphicsOverlay",
+        "AGSGraphic",
+        "AGSEnvelope",
+        "AGSMultipointBuilder",
+        "AGSPolylineBuilder",
+        "AGSPolygonBuilder"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/create-geometries.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSGraphicsOverlay",
+        "AGSGraphic",
+        "AGSEnvelope",
+        "AGSMultipointBuilder",
+        "AGSPolylineBuilder",
+        "AGSPolygonBuilder"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "CreateGeometriesViewController.swift"
     ],
-    "title": "@@TODO: Create geometries"
+    "title": "Create geometries"
 }

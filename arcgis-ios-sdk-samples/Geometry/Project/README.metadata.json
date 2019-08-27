@@ -1,12 +1,12 @@
 {
     "category": "Geometry",
-    "description": "@@TODO: Project a point to another spatial reference.",
+    "description": "Project a point from one spatial reference to another.",
     "ignore": false,
     "images": [
         "project.png"
     ],
     "keywords": [
-        "AGSGeometryEngine",
+        "geometry engine",
         "projection",
         "spatial reference",
         "Web Mercator",
@@ -17,18 +17,19 @@
         "geographic coordinate system",
         "AGSGeometryEngine",
         "AGSPoint",
-        "AGSSpatialReference"
+        "AGSSpatialReference",
+        "AGSGeoViewTouchDelegate"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/project.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/project.htm",
     "relevant_apis": [
         "AGSGeometryEngine",
         "AGSPoint",
-        "AGSSpatialReference"
+        "AGSSpatialReference",
+        "AGSGeoViewTouchDelegate"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
-        "ProjectStackView.swift",
-        "ProjectViewController.swift"
+        "ProjectViewController.swift",
+        "ProjectStackView.swift"
     ],
-    "title": "@@TODO: Project"
+    "title": "Project"
 }

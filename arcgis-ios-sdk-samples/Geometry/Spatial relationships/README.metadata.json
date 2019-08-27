@@ -1,6 +1,6 @@
 {
     "category": "Geometry",
-    "description": "@@TODO: This sample demonstrates how to use the AGSGeometryEngine to evaluate the spatial relationships between geometries.",
+    "description": "Determine spatial relationships between two geometries.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -16,29 +16,22 @@
         "touches",
         "within",
         "AGSGeometryEngine",
-        "AGSGeometryEngine.geometry(_:crossesGeometry:)",
-        "AGSGeometryEngine.geometry(_:contains:)",
-        "AGSGeometryEngine.geometry(_:disjointTo:)",
-        "AGSGeometryEngine.geometry(_:intersects:)",
-        "AGSGeometryEngine.geometry(_:overlapsGeometry:)",
-        "AGSGeometryEngine.geometry(_:touchesGeometry:)",
-        "AGSGeometryEngine.geometry(_:within:)"
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSGeoView",
+        "AGSGeoViewTouchDelegate"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/spatial-relationships.htm",
     "relevant_apis": [
         "AGSGeometryEngine",
-        "AGSGeometryEngine.geometry(_:crossesGeometry:)",
-        "AGSGeometryEngine.geometry(_:contains:)",
-        "AGSGeometryEngine.geometry(_:disjointTo:)",
-        "AGSGeometryEngine.geometry(_:intersects:)",
-        "AGSGeometryEngine.geometry(_:overlapsGeometry:)",
-        "AGSGeometryEngine.geometry(_:touchesGeometry:)",
-        "AGSGeometryEngine.geometry(_:within:)"
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSGeoView",
+        "AGSGeoViewTouchDelegate"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
-        "SpatialRelationshipsTableViewController.swift",
-        "SpatialRelationshipsViewController.swift"
+        "SpatialRelationshipsViewController.swift",
+        "SpatialRelationshipsTableViewController.swift"
     ],
-    "title": "@@TODO: Spatial relationships"
+    "title": "Spatial relationships"
 }

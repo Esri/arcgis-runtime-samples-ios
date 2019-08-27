@@ -143,8 +143,9 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
                     let assetTypeCode = feature.attributes[assetTypeField.name] as? Int,
                     let assetType = assetGroup.assetTypes.first(where: { $0.code == assetTypeCode }),
                     let terminals = assetType.terminalConfiguration?.terminals {
-                    self.selectTerminal(from: terminals, at: feature.geometry as? AGSPoint ?? mapPoint) { [feature] terminal in
-                        guard let element = utilityNetwork.createElement(with: feature, terminal: terminal),
+                    self.selectTerminal(from: terminals, at: feature.geometry as? AGSPoint ?? mapPoint) { [feature, weak self] terminal in
+                        guard let self = self,
+                            let element = utilityNetwork.createElement(with: feature, terminal: terminal),
                             let location = feature.geometry as? AGSPoint else { return }
 
                         self.add(element: element, for: location, mode: currentMode)
@@ -178,7 +179,7 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
         setUIState()
         
         let traceLocationGraphic = AGSGraphic(geometry: location, symbol: nil, attributes: ["TraceLocationType": mode.traceLocationType])
-        self.parametersOverlay.graphics.add(traceLocationGraphic)
+        parametersOverlay.graphics.add(traceLocationGraphic)
     }
     
     // MARK: Perform Trace
@@ -233,8 +234,8 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
                 })
             }
             
-            selectionGroup.notify(queue: .main, execute: {
-                self.setStatus(message: "Trace completed.")
+            selectionGroup.notify(queue: .main, execute: { [weak self] in
+                self?.setStatus(message: "Trace completed.")
                 SVProgressHUD.dismiss()
             })
         }
@@ -258,8 +259,8 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
                 terminalPicker.addAction(action)
             }
             
-            terminalPicker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(terminalPicker, animated: true, completion: nil)
+            terminalPicker.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            present(terminalPicker, animated: true, completion: nil)
             
             if let popoverController = terminalPicker.popoverPresentationController {
                 // If we're presenting in a split view controller (e.g. on an iPad),

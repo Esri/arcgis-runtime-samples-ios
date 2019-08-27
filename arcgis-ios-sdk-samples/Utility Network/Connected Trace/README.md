@@ -10,7 +10,7 @@ This is useful to visualize and validate the network topology of a utility netwo
 
 ## How to use the sample
 
-To add a starting point, select 'Start' and tap on one or more features. To add a barrier, select 'Barrier' and tap on one or more features. Depending on the type of feature, you may be prompted to select a terminal or the distance from the tapped location will be computed. Click 'Trace' to highlight all features connected to the specified starting locations and not positioned beyond the barriers. Click 'Reset' to clear parameters and start over.
+To add a starting point, select 'Start' and tap on one or more features. To add a barrier, select 'Barrier' and tap on one or more features. Depending on the type of feature, you may be prompted to select a terminal or the distance from the tapped location will be computed. Tap 'Trace' to highlight all features connected to the specified starting locations and not positioned beyond the barriers. Tap 'Reset' to clear parameters and start over.
 
 ## How it works
 

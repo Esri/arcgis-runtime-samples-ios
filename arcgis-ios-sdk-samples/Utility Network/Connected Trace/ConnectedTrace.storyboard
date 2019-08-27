@@ -60,18 +60,18 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyi-Nk-SFh">
-                                        <rect key="frame" x="174.5" y="12" width="0.0" height="30"/>
+                                        <rect key="frame" x="174.5" y="12" width="73.5" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRW-E4-TvR">
-                                        <rect key="frame" x="182.5" y="12" width="106" height="30"/>
+                                        <rect key="frame" x="256" y="12" width="69" height="30"/>
                                         <state key="normal" title="Reset"/>
                                         <connections>
                                             <action selector="reset:" destination="cvY-7M-ZXh" eventType="touchUpInside" id="aQ9-gB-ZJx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03b-u0-sHi">
-                                        <rect key="frame" x="296.5" y="12" width="105.5" height="30"/>
+                                        <rect key="frame" x="333" y="12" width="69" height="30"/>
                                         <state key="normal" title="Trace"/>
                                         <connections>
                                             <action selector="traceNetwork:" destination="cvY-7M-ZXh" eventType="touchUpInside" id="5WJ-vK-XRE"/>
@@ -89,13 +89,13 @@
                             <constraint firstItem="pzi-IO-kfE" firstAttribute="top" secondItem="tAH-tt-W9l" secondAttribute="bottom" id="0Mj-Fl-txx"/>
                             <constraint firstItem="tAH-tt-W9l" firstAttribute="top" secondItem="NjT-hr-oyQ" secondAttribute="top" id="5pH-bI-rIv"/>
                             <constraint firstItem="b14-dj-c7u" firstAttribute="top" secondItem="pzi-IO-kfE" secondAttribute="bottom" id="Oh4-xd-J6w"/>
-                            <constraint firstItem="b14-dj-c7u" firstAttribute="leading" secondItem="NjT-hr-oyQ" secondAttribute="leading" id="PFI-pk-qw7"/>
+                            <constraint firstItem="b14-dj-c7u" firstAttribute="leading" secondItem="BT5-Ci-f7L" secondAttribute="leading" id="PFI-pk-qw7"/>
                             <constraint firstItem="NjT-hr-oyQ" firstAttribute="bottom" secondItem="b14-dj-c7u" secondAttribute="bottom" id="S89-ea-ekl"/>
-                            <constraint firstItem="NjT-hr-oyQ" firstAttribute="trailing" secondItem="b14-dj-c7u" secondAttribute="trailing" id="ZtN-ZB-1TU"/>
-                            <constraint firstItem="NjT-hr-oyQ" firstAttribute="trailing" secondItem="pzi-IO-kfE" secondAttribute="trailing" id="drC-u3-Sru"/>
-                            <constraint firstItem="tAH-tt-W9l" firstAttribute="trailing" secondItem="NjT-hr-oyQ" secondAttribute="trailing" id="oHd-sy-Pdn"/>
-                            <constraint firstItem="tAH-tt-W9l" firstAttribute="leading" secondItem="NjT-hr-oyQ" secondAttribute="leading" id="rnW-Rp-hTk"/>
-                            <constraint firstItem="pzi-IO-kfE" firstAttribute="leading" secondItem="NjT-hr-oyQ" secondAttribute="leading" id="tBH-Ll-mm1"/>
+                            <constraint firstAttribute="trailing" secondItem="b14-dj-c7u" secondAttribute="trailing" id="ZtN-ZB-1TU"/>
+                            <constraint firstAttribute="trailing" secondItem="pzi-IO-kfE" secondAttribute="trailing" id="drC-u3-Sru"/>
+                            <constraint firstItem="tAH-tt-W9l" firstAttribute="trailing" secondItem="BT5-Ci-f7L" secondAttribute="trailing" id="oHd-sy-Pdn"/>
+                            <constraint firstItem="tAH-tt-W9l" firstAttribute="leading" secondItem="BT5-Ci-f7L" secondAttribute="leading" id="rnW-Rp-hTk"/>
+                            <constraint firstItem="pzi-IO-kfE" firstAttribute="leading" secondItem="BT5-Ci-f7L" secondAttribute="leading" id="tBH-Ll-mm1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NjT-hr-oyQ"/>
                     </view>

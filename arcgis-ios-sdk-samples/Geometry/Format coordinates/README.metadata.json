@@ -1,0 +1,30 @@
+{
+    "category": "Geometry",
+    "description": "Format coordinates in a variety of common notations.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "coordinate",
+        "UTM",
+        "decimal degrees",
+        "degree minutes seconds",
+        "latitude",
+        "longitude",
+        "AGSCoordinateFormatter",
+        "AGSGeoViewTouchDelegate",
+        "AGSGraphic"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/format-coordinates.htm",
+    "relevant_apis": [
+        "AGSCoordinateFormatter",
+        "AGSGeoViewTouchDelegate",
+        "AGSGraphic"
+    ],
+    "snippets": [
+        "FormatCoordinatesViewController.swift",
+        "FormatCoordinatesTableViewController.swift"
+    ],
+    "title": "Format coordinates"
+}

@@ -1,0 +1,31 @@
+{
+    "category": "Geometry",
+    "description": "Cut a geometry along a polyline.",
+    "ignore": false,
+    "images": [
+        "CutGeometry.png"
+    ],
+    "keywords": [
+        "geometry",
+        "cut",
+        "split",
+        "geometry engine",
+        "AGSGeometryEngine",
+        "AGSPolygon",
+        "AGSPolyline",
+        "AGSGraphicsOverlay",
+        "AGSGraphic"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/cut-geometry.htm",
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSPolygon",
+        "AGSPolyline",
+        "AGSGraphicsOverlay",
+        "AGSGraphic"
+    ],
+    "snippets": [
+        "CutGeometryViewController.swift"
+    ],
+    "title": "Cut geometry"
+}

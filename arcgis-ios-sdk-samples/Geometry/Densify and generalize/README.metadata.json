@@ -1,0 +1,35 @@
+{
+    "category": "Geometry",
+    "description": "A multipart geometry can be densified by adding interpolated points at regular intervals.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Edit and Manage Data",
+        "simplify",
+        "densify",
+        "generalize",
+        "AGSGeometryEngine",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSMultipoint",
+        "AGSPointCollection",
+        "AGSPolyline"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSMultipoint",
+        "AGSPointCollection",
+        "AGSPolyline"
+    ],
+    "snippets": [
+        "DensifyAndGeneralizeViewController.swift",
+        "GeneralizeSettingsViewController.swift"
+    ],
+    "title": "Densify and generalize"
+}

@@ -1,0 +1,29 @@
+{
+    "category": "Geometry",
+    "description": "Create a buffer around a map point and display the results as a Graphic.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "buffer",
+        "geometry engine",
+        "Euclidean",
+        "Geodesic",
+        "AGSGeometryEngine",
+        "AGSGraphicsOverlay",
+        "AGSGeoViewTouchDelegate"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSGraphicsOverlay",
+        "AGSGeoViewTouchDelegate"
+    ],
+    "snippets": [
+        "BufferViewController.swift",
+        "BufferOptionsViewController.swift"
+    ],
+    "title": "Buffer"
+}

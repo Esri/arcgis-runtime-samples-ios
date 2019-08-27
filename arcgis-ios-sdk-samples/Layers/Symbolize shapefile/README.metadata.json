@@ -8,7 +8,7 @@
     "keywords": [
         "shapefile",
         "offline",
-        "renderer"
+        "renderer",
         "AGSShapefileFeatureTable",
         "AGSFeatureLayer",
         "AGSSimpleLineSymbol",

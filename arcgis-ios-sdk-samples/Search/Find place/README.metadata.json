@@ -1,21 +1,38 @@
 {
     "category": "Search",
-    "description": "@@TODO: This sample demonstrates how to use geocode functionality to search for points of interest, around a location or within an extent",
+    "description": "Find places of interest near a location or within a specific area.",
     "ignore": false,
     "images": [
         "image1.png",
         "image2.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "search",
+        "geocode",
+        "suggestions",
+        "places of interest",
+        "locator",
+        "POI",
+        "points of interest",
+        "world locator service",
+        "AGSLocatorTask",
+        "AGSGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSSuggestParameters",
+        "AGSSuggestResult",
+        "AGSGraphicsOverlay"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/find-place.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSLocatorTask",
+        "AGSGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSSuggestParameters",
+        "AGSSuggestResult",
+        "AGSGraphicsOverlay"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "FindPlaceViewController.swift"
     ],
-    "title": "@@TODO: Find place"
+    "title": "Find place"
 }

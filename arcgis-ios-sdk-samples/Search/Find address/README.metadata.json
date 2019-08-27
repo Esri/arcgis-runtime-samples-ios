@@ -1,21 +1,32 @@
 {
     "category": "Search",
-    "description": "@@TODO: This sample demonstrates how to geocode an address and show it on the map view",
+    "description": "Find the location for an address.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "geocode",
+        "search",
+        "address",
+        "locator",
+        "AGSLocatorTask",
+        "AGSGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSGraphicsOverlay",
+        "AGSIdentifyGraphicsOverlayResult"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/find-address.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSLocatorTask",
+        "AGSGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSGraphicsOverlay",
+        "AGSIdentifyGraphicsOverlayResult"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "FindAddressViewController.swift",
         "WorldAddressesViewController.swift"
     ],
-    "title": "@@TODO: Find address"
+    "title": "Find address"
 }

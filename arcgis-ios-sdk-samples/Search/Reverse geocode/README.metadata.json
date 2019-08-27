@@ -1,20 +1,30 @@
 {
     "category": "Search",
-    "description": "@@TODO: This sample demonstrates how to get the address for a point on the map",
+    "description": "Use an online service to find the address for a tapped point.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "locate",
+        "reverse geocode",
+        "search",
+        "AGSLocatorTask",
+        "AGSReverseGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSGraphicsOverlay",
+        "AGSGeoViewTouchDelegate"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/reverse-geocode.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSLocatorTask",
+        "AGSReverseGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSGraphicsOverlay",
+        "AGSGeoViewTouchDelegate"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "ReverseGeocodeViewController.swift"
     ],
-    "title": "@@TODO: Reverse geocode"
+    "title": "Reverse geocode"
 }

@@ -1,20 +1,30 @@
 {
     "category": "Display  Information",
-    "description": "@@TODO: This sample demonstrate how to use a unique value renderer to style different features in a feature layer with different symbols. Features do not have a symbol property for you to ",
+    "description": "Render features in a layer using a distinct symbol for each unique attribute value.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "unique value renderer",
+        "symbol",
+        "feature layer",
+        "AGSUniqueValue",
+        "AGSUniqueValueRenderer",
+        "AGSSimpleFillSymbol",
+        "AGSSimpleLineSymbol",
+        "AGSFeatureLayer"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/unique-value-renderer.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/unique-value-renderer.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSUniqueValue",
+        "AGSUniqueValueRenderer",
+        "AGSSimpleFillSymbol",
+        "AGSSimpleLineSymbol",
+        "AGSFeatureLayer"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "UniqueValueRendererViewController.swift"
     ],
-    "title": "@@TODO: Unique value renderer"
+    "title": "Unique value renderer"
 }

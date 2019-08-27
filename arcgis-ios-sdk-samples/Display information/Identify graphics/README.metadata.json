@@ -1,20 +1,27 @@
 {
     "category": "Display  Information",
-    "description": "@@TODO: This sample demonstrates how to identify graphics in a graphics overlay",
+    "description": "Identify graphics in a graphics overlay.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "identify",
+        "graphics",
+        "AGSMapView",
+        "AGSIdentifyGraphicsOverlayResult",
+        "AGSGraphicsOverlay",
+        "AGSGeoViewTouchDelegate"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/identify-graphics.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSMapView",
+        "AGSIdentifyGraphicsOverlayResult",
+        "AGSGraphicsOverlay",
+        "AGSGeoViewTouchDelegate"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "GOIdentifyViewController.swift"
     ],
-    "title": "@@TODO: Identify graphics"
+    "title": "Identify graphics"
 }

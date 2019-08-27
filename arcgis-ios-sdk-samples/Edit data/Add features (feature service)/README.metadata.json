@@ -1,20 +1,26 @@
 {
     "category": "Edit data",
-    "description": "@@TODO: This sample demonstrates how to add features to the feature layer using a feature service.",
+    "description": "Add features to the feature layer of a feature service.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "edit",
+        "feature",
+        "AGSServiceFeatureTable",
+        "AGSFeatureLayer",
+        "AGSFeatureEditResult"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/add-features-feature-service-.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/add-features-feature-service-.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSServiceFeatureTable",
+        "AGSFeatureLayer",
+        "AGSFeatureEditResult"
+
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "AddFeaturesViewController.swift"
     ],
-    "title": "@@TODO: Add features (feature service)"
+    "title": "Add features (feature service)"
 }

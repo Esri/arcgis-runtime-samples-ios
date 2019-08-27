@@ -1,23 +1,40 @@
 {
-    "category": "Route and  Directions",
-    "description": "@@TODO: This sample demonstrates how to generate a route among multiple stops taking into account different barriers.",
+    "category": "Route and Directions",
+    "description": "Find a route that reaches all stops without crossing any barriers.",
     "ignore": false,
     "images": [
         "image1.png",
         "image2.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "network",
+        "routing",
+        "barriers",
+        "stops",
+        "directions",
+        "maneuver",
+        "AGSRouteTask",
+        "AGSRouteParameters",
+        "AGSStop",
+        "AGSRouteResult",
+        "AGSRoute",
+        "AGSDirectionManeuver",
+        "AGSPolygonBarrier"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/route-around-barriers.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSRouteTask",
+        "AGSRouteParameters",
+        "AGSStop",
+        "AGSRouteResult",
+        "AGSRoute",
+        "AGSDirectionManeuver",
+        "AGSPolygonBarrier"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
+        "RouteAroundBarriersViewController.swift",
         "RouteParametersViewController.swift",
         "DirectionsListViewController.swift",
-        "RouteAroundBarriersViewController.swift"
     ],
-    "title": "@@TODO: Route around barriers"
+    "title": "Route around barriers"
 }

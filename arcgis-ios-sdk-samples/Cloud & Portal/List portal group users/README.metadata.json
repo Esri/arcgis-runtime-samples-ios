@@ -1,21 +1,27 @@
 {
-    "category": "Cloud and  Portal",
-    "description": "@@TODO: This sample demonstrates how to show the users in a portal group.",
+    "category": "Cloud and Portal",
+    "description": "Retrieve the users in a portal group.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "portal group",
+        "portal user",
+        "portal",
+        "AGSPortal",
+        "AGSPortalGroup",
+        "AGSPortalUser"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/list-portal-group-users.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSPortal",
+        "AGSPortalGroup",
+        "AGSPortalUser"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
-        "GroupUserCell.swift",
-        "GroupUsersViewController.swift"
+        "GroupUsersViewController.swift",
+        "GroupUserCell.swift"
     ],
-    "title": "@@TODO: List portal group users"
+    "title": "List portal group users"
 }

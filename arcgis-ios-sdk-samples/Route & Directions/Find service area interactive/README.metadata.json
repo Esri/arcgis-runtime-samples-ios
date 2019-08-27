@@ -1,21 +1,33 @@
 {
-    "category": "Route and  Directions",
-    "description": "@@TODO: This sample demonstrates how to find services areas around a point. A service area shows locations that can be reached from a facility based off a certain impedance [such as travel",
+    "category": "Route and Directions",
+    "description": "Find the service area within a network from a given point.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "routing",
+        "logistics",
+        "facilities",
+        "barriers",
+        "impedance",
+        "AGSServiceAreaTask",
+        "AGSServiceAreaParameters",
+        "AGSServiceAreaFacility",
+        "AGSPolygonBarrier",
+        "AGSServiceAreaResult"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/find-service-area-interactive.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSServiceAreaTask",
+        "AGSServiceAreaParameters",
+        "AGSServiceAreaFacility",
+        "AGSPolygonBarrier",
+        "AGSServiceAreaResult"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "ServiceAreaSettingsVC.swift",
         "FindServiceAreaInteractiveVC.swift"
     ],
-    "title": "@@TODO: Find service area interactive"
+    "title": "Find service area"
 }

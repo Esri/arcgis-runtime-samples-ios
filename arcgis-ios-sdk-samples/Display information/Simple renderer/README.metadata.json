@@ -1,20 +1,28 @@
 {
-    "category": "Display  Information",
-    "description": "@@TODO: This sample demonstrates how to create a simple renderer and add it to a graphics overlay. Renderers define the symbology for all graphics in a graphics overlay (unless they are ov",
+    "category": "Display Information",
+    "description": "Display common symbols for all graphics in a graphics overlay with a renderer.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "symbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSSimpleRenderer",
+        "AGSPoint",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/simple-renderer.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/simple-renderer.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSSimpleMarkerSymbol",
+        "AGSSimpleRenderer",
+        "AGSPoint",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "SimpleRendererViewController.swift"
     ],
-    "title": "@@TODO: Simple renderer"
+    "title": "Simple renderer"
 }

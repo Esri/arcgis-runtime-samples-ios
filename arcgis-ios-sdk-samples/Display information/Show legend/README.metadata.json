@@ -1,6 +1,6 @@
 {
     "category": "Display  Information",
-    "description": "@@TODO: This sample demonstrates how to show a legend for all the operational layers in the map",
+    "description": "Build a legend for all the operational layers in the map.",
     "ignore": false,
     "images": [
         "image1.png",
@@ -8,16 +8,26 @@
         "image3.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "legend",
+        "swatch",
+        "legend info",
+        "AGSLegendInfo",
+        "AGSLayerContent",
+        "AGSSymbol",
+        "AGSLayer",
+        "AGSArcGISSublayer"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/show-legend.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSLegendInfo",
+        "AGSLayerContent",
+        "AGSSymbol",
+        "AGSLayer",
+        "AGSArcGISSublayer"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "MILShowLegendViewController.swift",
         "MILLegendTableViewController.swift"
     ],
-    "title": "@@TODO: Show legend"
+    "title": "Show legend"
 }

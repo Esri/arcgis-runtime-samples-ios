@@ -1,20 +1,27 @@
 {
-    "category": "Display  Information",
-    "description": "@@TODO: This sample demonstrates how to create a graphic with simple marker symbol",
+    "category": "Display Information",
+    "description": "Show a simple marker symbol on a map.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "simple marker symbol",
+        "symbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSPoint",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/simple-marker-symbol.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/simple-marker-symbol.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSSimpleMarkerSymbol",
+        "AGSPoint",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "SimpleMarkerSymbolViewController.swift"
     ],
-    "title": "@@TODO: Simple marker symbol"
+    "title": "Simple marker symbol"
 }

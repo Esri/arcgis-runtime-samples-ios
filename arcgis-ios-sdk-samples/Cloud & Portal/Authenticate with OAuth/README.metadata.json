@@ -15,7 +15,8 @@
         "AGSPortal",
         "AGSPortalItem"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/authenticate-with-oauth.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSOAuthConfiguration",
         "AGSAuthenticationManager",

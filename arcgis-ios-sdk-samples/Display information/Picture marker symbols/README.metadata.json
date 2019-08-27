@@ -1,20 +1,27 @@
 {
     "category": "Display  Information",
-    "description": "@@TODO: This sample demonstrates how to create picture marker symbols using a remote image and an image in assets.",
+    "description": "Use pictures for markers.",
     "ignore": false,
     "images": [
         "image1.png"
     ],
     "keywords": [
-        "@@TODO: *** PLEASE ADD ADDITIONAL KEYWORDS ***"
+        "picture",
+        "marker",
+        "symbol",
+        "graphics",
+        "AGSPictureMarkerSymbol",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/picture-marker-symbols.htm",
     "relevant_apis": [
-        "@@TODO: *** PLEASE ADD RELEVANT APIS ***"
+        "AGSPictureMarkerSymbol",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "PictureMarkerSymbolsViewController.swift"
     ],
-    "title": "@@TODO: Picture marker symbols"
+    "title": "Picture marker symbols"
 }

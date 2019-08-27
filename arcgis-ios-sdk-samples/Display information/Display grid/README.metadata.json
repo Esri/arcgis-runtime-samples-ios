@@ -26,8 +26,8 @@
         "AGSUSNGGrid"
     ],
     "snippets": [
-        "DisplayGridSettingsViewController.swift",
-        "DisplayGridViewController.swift"
+        "DisplayGridViewController.swift",
+        "DisplayGridSettingsViewController.swift"
     ],
     "title": "Display grid"
 }

@@ -14,7 +14,8 @@
         "AGSDictionarySymbolStyle",
         "AGSGeodatabase"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/dictionary-renderer-with-feature-layer.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSDictionaryRenderer",
         "AGSDictionarySymbolStyle",

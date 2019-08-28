@@ -17,7 +17,8 @@
         "AGSWFSFeatureTable.axisOrder",
         "AGSWFSFeatureTable.populateFromService(withRequestXML:clearCache:completion:)"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/load-wfs-with-xml-query.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSFeatureLayer",
         "AGSWFSFeatureTable",

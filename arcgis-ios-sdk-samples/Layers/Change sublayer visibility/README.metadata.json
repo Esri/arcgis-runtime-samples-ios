@@ -18,8 +18,8 @@
         "AGSArcGISMapImageSublayer"
     ],
     "snippets": [
-        "SublayersTableViewController.swift",
-        "SublayerVisibilityViewController.swift"
+        "SublayerVisibilityViewController.swift",
+        "SublayersTableViewController.swift"
     ],
     "title": "Change sublayer visibility"
 }

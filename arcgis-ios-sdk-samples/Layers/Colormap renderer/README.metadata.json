@@ -15,7 +15,8 @@
         "AGSRaster",
         "AGSRasterLayer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/colormap-renderer.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSColormapRenderer",
         "AGSRaster",

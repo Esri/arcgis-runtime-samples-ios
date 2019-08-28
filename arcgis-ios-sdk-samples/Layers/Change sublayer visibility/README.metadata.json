@@ -1,0 +1,25 @@
+{
+    "category": "Layers",
+    "description": "Change the visibility of the sublayers of an ArcGIS map image layer.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "sublayer",
+        "ArcGIS map image layer",
+        "AGSArcGISMapImageLayer",
+        "AGSArcGISMapImageSublayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/change-sublayer-visibility.htm",
+    "relevant_apis": [
+        "AGSArcGISMapImageLayer",
+        "AGSArcGISMapImageSublayer"
+    ],
+    "snippets": [
+        "SublayerVisibilityViewController.swift",
+        "SublayersTableViewController.swift"
+    ],
+    "title": "Change sublayer visibility"
+}

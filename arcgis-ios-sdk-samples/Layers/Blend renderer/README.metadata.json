@@ -1,0 +1,28 @@
+{
+    "category": "Layers",
+    "description": "Blend a hillshade with a raster by specifying the elevation data. The resulting raster shows terrain shading to emphasize areas of high and low elevation.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png",
+        "image3.png"
+    ],
+    "keywords": [
+        "blend renderer",
+        "raster layer",
+        "AGSBlendRenderer",
+        "AGSColorRamp",
+        "AGSRasterLayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/blend-renderer.htm",
+    "relevant_apis": [
+        "AGSBlendRenderer",
+        "AGSColorRamp",
+        "AGSRasterLayer"
+    ],
+    "snippets": [
+        "BlendRendererViewController.swift",
+        "BlendRendererSettingsViewController.swift"
+    ],
+    "title": "Blend renderer"
+}

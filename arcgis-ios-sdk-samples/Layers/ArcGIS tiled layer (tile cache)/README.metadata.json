@@ -1,0 +1,26 @@
+{
+    "category": "Layers",
+    "description": "This sample shows how to load a tile package (an offline copy of a tiled map service) so that the application can work offline.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "layers",
+        "tile",
+        "ArcGISTiledLayer",
+        "tile package"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/arcgis-tiled-layer-tile-cache-.htm",
+    "relevant_apis": [
+        "AGSTileCache",
+        "AGSArcGISTiledLayer",
+        "AGSBasemap"
+    ],
+    "snippets": [
+        "LocalTiledLayerViewController.swift",
+        "TilePackagesListViewController.swift"
+    ],
+    "title": "ArcGIS tiled layer (tile cache)"
+}

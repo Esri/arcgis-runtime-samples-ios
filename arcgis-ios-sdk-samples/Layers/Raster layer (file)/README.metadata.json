@@ -1,0 +1,21 @@
+{
+    "category": "Layers",
+    "description": "Create and use a raster layer made from a local raster file.",
+    "ignore": false,
+    "images": [],
+    "keywords": [
+        "raster layer",
+        "offline",
+        "AGSRasterLayer",
+        "AGSRaster"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/raster-layer-file-.htm",
+    "relevant_apis": [
+        "AGSRasterLayer",
+        "AGSRaster"
+    ],
+    "snippets": [
+        "RasterLayerViewController.swift"
+    ],
+    "title": "Raster layer (file)"
+}

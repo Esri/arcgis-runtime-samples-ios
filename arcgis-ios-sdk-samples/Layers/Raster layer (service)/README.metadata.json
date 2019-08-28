@@ -1,0 +1,23 @@
+{
+    "category": "Layers",
+    "description": "Create a raster layer from a raster image service.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Image service raster",
+        "raster layer",
+        "AGSImageServiceRaster",
+        "AGSRasterLayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/raster-layer-service-.htm",
+    "relevant_apis": [
+        "AGSImageServiceRaster",
+        "AGSRasterLayer"
+    ],
+    "snippets": [
+        "RasterLayerUsingServiceVC.swift"
+    ],
+    "title": "Raster layer (service)"
+}

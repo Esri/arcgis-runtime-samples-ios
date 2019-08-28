@@ -1,0 +1,29 @@
+{
+    "category": "Layers",
+    "description": "Apply a renderer to a sublayer of a map image layer.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "ArcGIS map image layer",
+        "sublayer",
+        "renderer",
+        "class breaks",
+        "AGSArcGISMapImageLayer",
+        "AGSArcGISMapImageSublayer",
+        "AGSRenderer",
+        "AGSClassBreaksRenderer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/change-sublayer-renderer.htm",
+    "relevant_apis": [
+        "AGSArcGISMapImageLayer",
+        "AGSArcGISMapImageSublayer",
+        "AGSRenderer",
+        "AGSClassBreaksRenderer"
+    ],
+    "snippets": [
+        "ChangeSublayerRendererViewController.swift"
+    ],
+    "title": "Change sublayer renderer"
+}

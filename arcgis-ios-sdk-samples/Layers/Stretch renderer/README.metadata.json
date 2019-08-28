@@ -29,8 +29,8 @@
     ],
     "snippets": [
         "StretchRendererViewController.swift",
-        "StretchRendererInputCell.swift",
-        "StretchRendererSettingsVC.swift"
+        "StretchRendererSettingsVC.swift",
+        "StretchRendererInputCell.swift"
     ],
     "title": "Stretch renderer"
 }

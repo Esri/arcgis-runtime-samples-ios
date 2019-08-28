@@ -10,7 +10,7 @@
         "ArcGIS vector tiled layer",
         "vector tiles"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/arcgis-vector-tiled-layer-url-.htm",
+    "redirect_from": "/ios/latest/swift/sample-code/arcgis-vector-tile-layer-url-.htm",
     "relevant_apis": [
         "AGSArcGISVectorTiledLayer",
         "AGSBasemap"

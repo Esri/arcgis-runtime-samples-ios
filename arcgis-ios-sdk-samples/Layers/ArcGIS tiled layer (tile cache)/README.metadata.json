@@ -19,8 +19,8 @@
         "AGSBasemap"
     ],
     "snippets": [
-        "TilePackagesListViewController.swift",
-        "LocalTiledLayerViewController.swift"
+        "LocalTiledLayerViewController.swift",
+        "TilePackagesListViewController.swift"
     ],
     "title": "ArcGIS tiled layer (tile cache)"
 }

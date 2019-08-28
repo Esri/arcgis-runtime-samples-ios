@@ -21,7 +21,8 @@
         "AGSKMLTour",
         "AGSKMLTour.tourStatus"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/play-a-kml-tour.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSKMLTourController",
         "AGSKMLTourController.tour",

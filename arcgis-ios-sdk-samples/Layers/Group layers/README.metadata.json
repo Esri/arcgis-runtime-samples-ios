@@ -10,7 +10,8 @@
         "Group layer",
         "AGSGroupLayer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/group-layers.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSGroupLayer"
     ],

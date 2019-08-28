@@ -13,7 +13,8 @@
         "AGSFeatureLayer",
         "AGSServiceFeatureTable"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/show-labels-on-layers.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSLabelDefinition",
         "AGSTextSymbol",

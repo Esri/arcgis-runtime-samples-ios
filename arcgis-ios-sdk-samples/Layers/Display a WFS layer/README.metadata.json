@@ -20,7 +20,8 @@
         "AGSWFSFeatureTable.populateFromService(with:clearCache:outFields:completion:)",
         "AGSGeoView.viewpointChangeHandler"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/display-a-wfs-layer.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSFeatureLayer",
         "AGSWFSFeatureTable",

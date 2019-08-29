@@ -31,26 +31,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             let featureServiceString = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
             let featureServiceURL = URL(string: featureServiceString)
             geodatabaseSyncTask = AGSGeodatabaseSyncTask(url: featureServiceURL!)
-            geodatabaseSyncTask.load { [weak self] (error: Error?) in
-                if let error = error {
-                    self?.presentAlert(error: error)
-                } else {
-                    for layerInfo in self!.geodatabaseSyncTask.featureServiceInfo!.layerInfos {
-                        let featureLayerURL = featureServiceURL?.appendingPathComponent(String(layerInfo.id))
-                        let onlineFeatureTable = AGSServiceFeatureTable(url: featureLayerURL!)
-                        
-                        onlineFeatureTable.load { (error: Error?) in
-                            if let error = error {
-                                self?.presentAlert(error: error)
-                            } else {
-                                if onlineFeatureTable.geometryType == .point {
-                                    self?.mapView.map?.operationalLayers.add(AGSFeatureLayer(featureTable: onlineFeatureTable))
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            self.addFeatureLayers()
         }
     }
     
@@ -72,6 +53,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private var geodatabase: AGSGeodatabase!
     private var selectedFeature: AGSFeature!
     private var areaOfInterest: AGSEnvelope!
+    private var selectedFeatureLayer: AGSFeatureLayer!
     
     private func extentViewFrameToEnvelope() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)
@@ -86,6 +68,32 @@ class EditAndSyncFeaturesViewController: UIViewController {
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
+    private func addFeatureLayers() {
+        // Iterate through the layers in the service.
+        let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")
+        geodatabaseSyncTask?.load { [weak self] (error) in
+            if let error = error {
+                print("Could not load feature service \(error)")
+            } else {
+                guard let self = self else {
+                    return
+                }
+                if let featureServiceInfo = self.geodatabaseSyncTask?.featureServiceInfo,
+                    let map = self.mapView.map {
+                    for index in featureServiceInfo.layerInfos.indices.reversed() {
+                        let layerInfo = featureServiceInfo.layerInfos[index]
+                        // For each layer in the serice, add a layer to the map.
+                        let layerURL = featureServiceURL?.appendingPathComponent(String(index))
+                        let featureTable = AGSServiceFeatureTable(url: layerURL!)
+                        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                        featureLayer.name = layerInfo.name
+                        map.operationalLayers.add(featureLayer)
+                    }
+                }
+            }
+        }
+    }
+    
     // Clears selection in all layers of the map.
     private func clearSelection() {
         for layer in mapView.map!.operationalLayers {
@@ -93,6 +101,14 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 layer.clearSelection()
             }
         }
+    }
+    
+    private func didMove() {
+        self.selectedFeature = nil
+        self.barButtonItem.isEnabled = true
+        self.barButtonItem.title = "Sync geodatabase"
+        self.instructionsLabel.text = String("Tap the sync button")
+        self.selectedFeatureLayer.clearSelection()
     }
     
     func geodatabaseDidLoad() {
@@ -140,7 +156,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 params.returnAttachments = false
                 
                 // Create a temporary file for the geodatabase.
-                let dateFormatter = ISO8601DateFormatter ()
+                let dateFormatter = ISO8601DateFormatter()
                 
                 let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
                 let downloadFileURL = documentDirectoryURL
@@ -230,13 +246,12 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
             if AGSGeometryEngine.geometry(point, intersects: areaOfInterest) {
                 feature.geometry = point
                 feature.featureTable?.update(feature) { [weak self] ( error: Error?) in
-                    if let error = error {
+                    if let error = error, let featureLayer = self?.selectedFeatureLayer{
                         self?.presentAlert(error: error)
-                    } else {
                         self?.selectedFeature = nil
-                        self?.barButtonItem.isEnabled = true
-                        self?.barButtonItem.title = "Sync geodatabase"
-                        self?.instructionsLabel.text = String("Tap the sync button")
+                        featureLayer.clearSelection()
+                    } else {
+                        self?.didMove()
                     }
                 }
             } else {
@@ -253,8 +268,8 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                         
                         // Check that the result is a feature layer and has elements.
                         if let featureLayer = layerContent as? AGSFeatureLayer, let feature = firstResult.geoElements.first as? AGSFeature {
-                            featureLayer.clearSelection()
                             featureLayer.select(feature)
+                            self?.selectedFeatureLayer = featureLayer
                             self?.selectedFeature = feature
                         }
                     }

@@ -45,7 +45,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet private var barButtonItem: UIBarButtonItem!
     @IBOutlet private var instructionsLabel: UILabel!
     
-    
     private let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")
     private var generateJob: AGSGenerateGeodatabaseJob?
     private var syncJob: AGSSyncGeodatabaseJob?

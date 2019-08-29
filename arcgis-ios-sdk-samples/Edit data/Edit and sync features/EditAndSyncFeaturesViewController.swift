@@ -53,7 +53,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private var geodatabase: AGSGeodatabase!
     private var selectedFeature: AGSFeature!
     private var areaOfInterest: AGSEnvelope!
-    private var selectedFeatureLayer: AGSFeatureLayer!
+//    private var selectedFeatureLayer: AGSFeatureLayer!
     
     private func extentViewFrameToEnvelope() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)
@@ -108,7 +108,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         self.barButtonItem.isEnabled = true
         self.barButtonItem.title = "Sync geodatabase"
         self.instructionsLabel.text = String("Tap the sync button")
-        self.selectedFeatureLayer.clearSelection()
+        self.clearSelection()
     }
     
     func geodatabaseDidLoad() {
@@ -200,12 +200,13 @@ class EditAndSyncFeaturesViewController: UIViewController {
         syncGeodatabaseParameters.geodatabaseSyncDirection = .bidirectional
         syncGeodatabaseParameters.rollbackOnFailure = false
         
-        // Specify the layer IDs of the feature tables to sync.
+//        // Specify the layer IDs of the feature tables to sync.
         for geodatabaseFeatureTable in geodatabase.geodatabaseFeatureTables {
             let serviceLayerId = geodatabaseFeatureTable.serviceLayerID
             let syncLayerOption = AGSSyncLayerOption(layerID: serviceLayerId, syncDirection: .bidirectional)
             syncGeodatabaseParameters.layerOptions.append(syncLayerOption)
         }
+        
         // Create a sync job with the parameters and start it.
         let syncGeodatabaseJob = geodatabaseSyncTask.syncJob(with: syncGeodatabaseParameters, geodatabase: geodatabase)
         self.syncJob = syncGeodatabaseJob
@@ -246,10 +247,10 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
             if AGSGeometryEngine.geometry(point, intersects: areaOfInterest) {
                 feature.geometry = point
                 feature.featureTable?.update(feature) { [weak self] ( error: Error?) in
-                    if let error = error, let featureLayer = self?.selectedFeatureLayer{
+                    if let error = error {
                         self?.presentAlert(error: error)
                         self?.selectedFeature = nil
-                        featureLayer.clearSelection()
+                        self?.clearSelection()
                     } else {
                         self?.didMove()
                     }
@@ -269,7 +270,7 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                         // Check that the result is a feature layer and has elements.
                         if let featureLayer = layerContent as? AGSFeatureLayer, let feature = firstResult.geoElements.first as? AGSFeature {
                             featureLayer.select(feature)
-                            self?.selectedFeatureLayer = featureLayer
+//                            self?.selectedFeatureLayer = featureLayer
                             self?.selectedFeature = feature
                         }
                     }

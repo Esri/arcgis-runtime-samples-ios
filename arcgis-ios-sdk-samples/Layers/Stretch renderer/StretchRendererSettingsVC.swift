@@ -121,9 +121,7 @@ class StretchRendererSettingsVC: UITableViewController {
         guard tableView.cellForRow(at: indexPath) == stretchTypeCell else {
             return
         }
-        let labels = StretchType.allCases.map({ (type) -> String in
-            return type.label
-        })
+        let labels = StretchType.allCases.map { return $0.label }
         let selectedIndex = stretchType.rawValue
         let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
             self.stretchType = StretchType(rawValue: newIndex)!

@@ -40,9 +40,7 @@ class GPKGLayersViewController: UITableViewController {
             return allLayers
         }
         
-        return allLayers.filter({ layer -> Bool in
-            return !layersInMap.contains(layer)
-        })
+        return allLayers.filter { !layersInMap.contains($0) }
     }
     
     /// Returns the layer for the row at the given index path.

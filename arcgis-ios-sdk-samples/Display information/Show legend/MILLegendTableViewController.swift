@@ -33,7 +33,7 @@ class MILLegendTableViewController: UITableViewController {
             } else {
                 //else if no sublayers fetch legend info
                 self.orderArray.append(layer)
-                layer.fetchLegendInfos(completion: { [weak self] (legendInfos: [AGSLegendInfo]?, error: Error?) in
+                layer.fetchLegendInfos { [weak self] (legendInfos, error) in
                     if let error = error {
                         print(error)
                     } else {
@@ -42,7 +42,7 @@ class MILLegendTableViewController: UITableViewController {
                             self?.tableView.reloadData()
                         }
                     }
-                })
+                }
             }
         }
     }
@@ -74,12 +74,12 @@ class MILLegendTableViewController: UITableViewController {
         let legendInfo = legendInfos[indexPath.row]
 
         cell.textLabel?.text = legendInfo.name
-        legendInfo.symbol?.createSwatch(completion: { (image: UIImage?, error: Error?) in
+        legendInfo.symbol?.createSwatch { (image, error) in
             if let updateCell = tableView.cellForRow(at: indexPath) {
                 updateCell.imageView?.image = image
                 updateCell.setNeedsLayout()
             }
-        })
+        }
         
         cell.backgroundColor = .clear
         

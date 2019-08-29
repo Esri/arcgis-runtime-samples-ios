@@ -45,30 +45,29 @@ class SampleSearchEngine {
             let range = NSRange(location: 0, length: string.count)
             tagger.enumerateTags(in: range,
                                  scheme: NSLinguisticTagScheme.lexicalClass,
-                                 options: [.omitWhitespace, .omitPunctuation],
-                                 using: { (tag: NSLinguisticTag?, tokenRange: NSRange, sentenceRange: NSRange, _) in
-                guard let tag = tag else {
-                    return
-                }
-               
-                if  [NSLinguisticTag.noun, .verb, .adjective, .otherWord].contains(tag) {
-                    let word = ((string as NSString).substring(with: tokenRange) as String).lowercased()
-                    
-                    //trivial comparisons
-                    if word != "`." && word != "```" && word != "`" {
-                        //if word already exists in the dictionary
-                        if var samples = displayNamesByReadmeWords[word] {
-                            //add the sample display name to the list if not already present
-                            if !samples.contains(sampleDisplayName) {
-                                samples.append(sampleDisplayName)
-                                displayNamesByReadmeWords[word] = samples
-                            }
-                        } else {
-                            displayNamesByReadmeWords[word] = [sampleDisplayName]
-                        }
-                    }
-                }
-            })
+                                 options: [.omitWhitespace, .omitPunctuation]) { (tag: NSLinguisticTag?, tokenRange: NSRange, sentenceRange: NSRange, _) in
+                                    guard let tag = tag else {
+                                        return
+                                    }
+                                    
+                                    if  [NSLinguisticTag.noun, .verb, .adjective, .otherWord].contains(tag) {
+                                        let word = ((string as NSString).substring(with: tokenRange) as String).lowercased()
+                                        
+                                        //trivial comparisons
+                                        if word != "`." && word != "```" && word != "`" {
+                                            //if word already exists in the dictionary
+                                            if var samples = displayNamesByReadmeWords[word] {
+                                                //add the sample display name to the list if not already present
+                                                if !samples.contains(sampleDisplayName) {
+                                                    samples.append(sampleDisplayName)
+                                                    displayNamesByReadmeWords[word] = samples
+                                                }
+                                            } else {
+                                                displayNamesByReadmeWords[word] = [sampleDisplayName]
+                                            }
+                                        }
+                                    }
+            }
         }
         
         // index all nodes

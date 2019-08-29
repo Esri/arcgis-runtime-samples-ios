@@ -321,10 +321,10 @@ class FindPlaceViewController: UIViewController {
             //if no, then goecode the suggestion
             //else use the geocoded location, to find the POIs
             if self.preferredSearchLocation == nil {
-                self.geocodeUsingSuggestResult(self.selectedSuggestResult, completion: { [weak self] in
+                self.geocodeUsingSuggestResult(self.selectedSuggestResult) { [weak self] in
                     //find the POIs wrt location
                     self?.geocodePOIs(poi, location: self!.preferredSearchLocation, extent: nil)
-                })
+                }
             } else {
                 self.geocodePOIs(poi, location: self.preferredSearchLocation, extent: nil)
             }

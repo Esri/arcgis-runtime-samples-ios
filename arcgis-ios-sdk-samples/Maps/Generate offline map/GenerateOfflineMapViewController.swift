@@ -107,20 +107,20 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         self.generateOfflineMapJob = generateOfflineMapJob
         
         //observe the job's progress
-        jobProgressObservation = generateOfflineMapJob.progress.observe(\.fractionCompleted, options: .new, changeHandler: { [weak self] (progress, change) in
+        jobProgressObservation = generateOfflineMapJob.progress.observe(\.fractionCompleted, options: .new) { [weak self] (progress, change) in
             DispatchQueue.main.async { [weak self] in
                 //update progress label
                 self?.progressLabel.text = progress.localizedDescription
                 //update progress view
                 self?.progressView.progress = Float(progress.fractionCompleted)
             }
-        })
+        }
         
         //unhide the progress parent view
         progressParentView.isHidden = false
         
         //start the job
-        generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result: AGSGenerateOfflineMapResult?, error: Error?) in
+        generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else {
                 return
             }

@@ -93,7 +93,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.graphicsOverlay.graphics.removeAllObjects()
         
         //perform geocode with the input
-        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self]  (results: [AGSGeocodeResult]?, error: Error?) in
+        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters) { [weak self]  (results: [AGSGeocodeResult]?, error: Error?) in
             guard let self = self else {
                 return
             }
@@ -114,7 +114,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                     self.presentAlert(message: "No results found")
                 }
             }
-        })
+        }
     }
     
     private func reverseGeocode(point: AGSPoint) {

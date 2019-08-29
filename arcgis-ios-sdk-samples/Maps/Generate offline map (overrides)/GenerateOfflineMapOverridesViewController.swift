@@ -135,7 +135,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         progressParentView.isHidden = false
         
         //start the job
-        generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result: AGSGenerateOfflineMapResult?, error: Error?) in
+        generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else {
                 return
             }
@@ -251,7 +251,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             self.parameters = parameters
             
             //build the parameter overrides object to be configured by the user
-            offlineMapTask.generateOfflineMapParameterOverrides(with: parameters, completion: { [weak self] (parameterOverrides, error) in
+            offlineMapTask.generateOfflineMapParameterOverrides(with: parameters) { [weak self] (parameterOverrides, error) in
                 guard let self = self else {
                     return
                 }
@@ -268,7 +268,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
                 
                 //now that we have the override object, show the overrides UI
                 self.openParameterOverridesViewController()
-            })
+            }
         }
     }
     

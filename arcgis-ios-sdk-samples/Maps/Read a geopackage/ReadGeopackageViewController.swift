@@ -39,12 +39,12 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
             let featureLayers = geoPackage.geoPackageFeatureTables.map { AGSFeatureLayer(featureTable: $0) }
             
             // Create raster layers for each raster in the geopackage.
-            let rasterLayers = geoPackage.geoPackageRasters.map({ raster -> AGSLayer in
+            let rasterLayers = geoPackage.geoPackageRasters.map { raster -> AGSLayer in
                 let rasterLayer = AGSRasterLayer(raster: raster)
                 //make it semi-transparent so it doesn't obscure the contents under it
                 rasterLayer.opacity = 0.55
                 return rasterLayer
-            })
+            }
 
             // Keep an array of all the feature layers and raster layers in this geopackage.
             self?.allLayers.append(contentsOf: rasterLayers)

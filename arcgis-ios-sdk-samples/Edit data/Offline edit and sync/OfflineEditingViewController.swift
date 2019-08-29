@@ -129,22 +129,22 @@ class OfflineEditingViewController: UIViewController {
         
         for featureTable in generatedGeodatabase!.geodatabaseFeatureTables where featureTable.loadStatus == .loaded {
             dispatchGroup.enter()
-            featureTable.addedFeaturesCount(completion: { (count: Int, error: Error?) in
+            featureTable.addedFeaturesCount { (count: Int, error: Error?) in
                 totalCount += count
                 dispatchGroup.leave()
-            })
+            }
             
             dispatchGroup.enter()
-            featureTable.updatedFeaturesCount(completion: { (count: Int, error: Error?) in
+            featureTable.updatedFeaturesCount { (count: Int, error: Error?) in
                 totalCount += count
                 dispatchGroup.leave()
-            })
+            }
             
             dispatchGroup.enter()
-            featureTable.deletedFeaturesCount(completion: { (count: Int, error: Error?) in
+            featureTable.deletedFeaturesCount { (count: Int, error: Error?) in
                 totalCount += count
                 dispatchGroup.leave()
-            })
+            }
         }
         
         dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
@@ -214,7 +214,7 @@ class OfflineEditingViewController: UIViewController {
         guard let generatedGeodatabase = generatedGeodatabase else {
             return
         }
-        generatedGeodatabase.load(completion: { [weak self] (error: Error?) in
+        generatedGeodatabase.load { [weak self] (error) in
             guard let self = self else {
                 return
             }
@@ -226,7 +226,7 @@ class OfflineEditingViewController: UIViewController {
                 
                 self.mapView.map?.operationalLayers.removeAllObjects()
                 
-                AGSLoadObjects(generatedGeodatabase.geodatabaseFeatureTables, { (success: Bool) in
+                AGSLoadObjects(generatedGeodatabase.geodatabaseFeatureTables) { (success) in
                     if success {
                         for featureTable in generatedGeodatabase.geodatabaseFeatureTables.reversed() {
                             //check if feature table has geometry
@@ -237,9 +237,9 @@ class OfflineEditingViewController: UIViewController {
                         }
                         self.presentAlert(message: "Now showing layers from the geodatabase")
                     }
-                })
+                }
             }
-        })
+        }
     }
     
     // MARK: - Actions
@@ -293,9 +293,9 @@ class OfflineEditingViewController: UIViewController {
         self.generateJob = generateJob
         
         //start the job
-        generateJob.start(statusHandler: { (status: AGSJobStatus) in
+        generateJob.start(statusHandler: { (status) in
             SVProgressHUD.show(withStatus: status.statusString())
-        }, completion: { [weak self] (object: AnyObject?, error: Error?) in
+        }, completion: { [weak self] (object, error) in
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -304,7 +304,7 @@ class OfflineEditingViewController: UIViewController {
             
             if let error = error {
                 self.presentAlert(error: error)
-            } else if let geodatabase = object as? AGSGeodatabase {
+            } else if let geodatabase = object {
                 //save a reference to the geodatabase
                 self.generatedGeodatabase = geodatabase
                 //add the layers from geodatabase
@@ -358,9 +358,9 @@ class OfflineEditingViewController: UIViewController {
         
         let syncJob = syncTask.syncJob(with: params, geodatabase: generatedGeodatabase)
         self.syncJob = syncJob
-        syncJob.start(statusHandler: { (status: AGSJobStatus) in
+        syncJob.start(statusHandler: { (status) in
             SVProgressHUD.show(withStatus: status.statusString())
-        }, completion: { [weak self] (results: [AGSSyncLayerResult]?, error: Error?) in
+        }, completion: { [weak self] (results, error) in
             SVProgressHUD.dismiss()
             
             if let error = error {

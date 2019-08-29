@@ -28,8 +28,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
             mapView.map = map
             
             // Create a geodatabase sync task using the feature service URL.
-            let featureServiceString = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer"
-            let featureServiceURL = URL(string: featureServiceString)
             geodatabaseSyncTask = AGSGeodatabaseSyncTask(url: featureServiceURL!)
             self.addFeatureLayers()
         }
@@ -47,6 +45,8 @@ class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet private var barButtonItem: UIBarButtonItem!
     @IBOutlet private var instructionsLabel: UILabel!
     
+    
+    private let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")
     private var generateJob: AGSGenerateGeodatabaseJob?
     private var syncJob: AGSSyncGeodatabaseJob?
     private var geodatabaseSyncTask: AGSGeodatabaseSyncTask!
@@ -69,7 +69,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
     
     private func addFeatureLayers() {
         // Iterate through the layers in the service.
-        let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")
         geodatabaseSyncTask?.load { [weak self] (error) in
             if let error = error {
                 print("Could not load feature service \(error)")
@@ -82,7 +81,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                     for index in featureServiceInfo.layerInfos.indices.reversed() {
                         let layerInfo = featureServiceInfo.layerInfos[index]
                         // For each layer in the serice, add a layer to the map.
-                        let layerURL = featureServiceURL?.appendingPathComponent(String(index))
+                        let layerURL = self.featureServiceURL?.appendingPathComponent(String(index))
                         let featureTable = AGSServiceFeatureTable(url: layerURL!)
                         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                         featureLayer.name = layerInfo.name

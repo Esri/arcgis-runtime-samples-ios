@@ -53,7 +53,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private var geodatabase: AGSGeodatabase!
     private var selectedFeature: AGSFeature!
     private var areaOfInterest: AGSEnvelope!
-//    private var selectedFeatureLayer: AGSFeatureLayer!
     
     private func extentViewFrameToEnvelope() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)
@@ -200,7 +199,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         syncGeodatabaseParameters.geodatabaseSyncDirection = .bidirectional
         syncGeodatabaseParameters.rollbackOnFailure = false
         
-//        // Specify the layer IDs of the feature tables to sync.
+        // Specify the layer IDs of the feature tables to sync.
         for geodatabaseFeatureTable in geodatabase.geodatabaseFeatureTables {
             let serviceLayerId = geodatabaseFeatureTable.serviceLayerID
             let syncLayerOption = AGSSyncLayerOption(layerID: serviceLayerId, syncDirection: .bidirectional)
@@ -270,7 +269,6 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                         // Check that the result is a feature layer and has elements.
                         if let featureLayer = layerContent as? AGSFeatureLayer, let feature = firstResult.geoElements.first as? AGSFeature {
                             featureLayer.select(feature)
-//                            self?.selectedFeatureLayer = featureLayer
                             self?.selectedFeature = feature
                         }
                     }

@@ -137,7 +137,7 @@ class FindPlaceViewController: UIViewController {
                 animations: { [weak self] in
                     self?.view.layoutIfNeeded()
                 },
-                completion: { [weak self] (finished) in
+                completion: { [weak self] (_) in
                     self?.isTableViewAnimating = false
                     self?.isTableViewVisible = expand
                 }
@@ -185,7 +185,7 @@ class FindPlaceViewController: UIViewController {
             for graphic in graphics {
                 multipoint.points.add(graphic.geometry as! AGSPoint)
             }
-            self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent)) { [weak self] (finished: Bool) in
+            self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent)) { [weak self] (_) in
                 self?.canDoExtentSearch = true
             }
         }

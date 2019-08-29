@@ -120,7 +120,7 @@ class LocationHistoryViewController: UIViewController {
         let map = AGSMap(basemap: .lightGrayCanvasVector())
         mapView.map = map
 
-        map.load { [weak self, unowned map] (error) in
+        map.load { [weak self, unowned map] (_) in
             self?.trackBuilder = AGSPolylineBuilder(spatialReference: map.spatialReference)
         }
 

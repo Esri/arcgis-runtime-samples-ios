@@ -62,7 +62,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
+        (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (_, error) in
             SVProgressHUD.dismiss()
             
             if let error = error {

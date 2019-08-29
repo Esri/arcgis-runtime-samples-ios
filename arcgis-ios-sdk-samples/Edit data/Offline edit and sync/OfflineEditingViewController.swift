@@ -129,19 +129,19 @@ class OfflineEditingViewController: UIViewController {
         
         for featureTable in generatedGeodatabase!.geodatabaseFeatureTables where featureTable.loadStatus == .loaded {
             dispatchGroup.enter()
-            featureTable.addedFeaturesCount { (count: Int, error: Error?) in
+            featureTable.addedFeaturesCount { (count, _) in
                 totalCount += count
                 dispatchGroup.leave()
             }
             
             dispatchGroup.enter()
-            featureTable.updatedFeaturesCount { (count: Int, error: Error?) in
+            featureTable.updatedFeaturesCount { (count, _) in
                 totalCount += count
                 dispatchGroup.leave()
             }
             
             dispatchGroup.enter()
-            featureTable.deletedFeaturesCount { (count: Int, error: Error?) in
+            featureTable.deletedFeaturesCount { (count, _) in
                 totalCount += count
                 dispatchGroup.leave()
             }
@@ -360,7 +360,7 @@ class OfflineEditingViewController: UIViewController {
         self.syncJob = syncJob
         syncJob.start(statusHandler: { (status) in
             SVProgressHUD.show(withStatus: status.statusString())
-        }, completion: { [weak self] (results, error) in
+        }, completion: { [weak self] (_, error) in
             SVProgressHUD.dismiss()
             
             if let error = error {
@@ -480,7 +480,7 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
             //Tell the user edits are being saved int the background
             SVProgressHUD.show(withStatus: "Saving feature details...")
             
-            (feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (featureEditResult: [AGSFeatureEditResult]?, error: Error?) in
+            (feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (_, error) in
                 SVProgressHUD.dismiss()
                 
                 if let error = error {

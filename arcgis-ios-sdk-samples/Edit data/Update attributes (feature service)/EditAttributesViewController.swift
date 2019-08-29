@@ -61,7 +61,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func applyEdits() {
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        featureTable.applyEdits { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
+        featureTable.applyEdits { [weak self] (_, error) in
             SVProgressHUD.dismiss()
             
             guard let self = self else {

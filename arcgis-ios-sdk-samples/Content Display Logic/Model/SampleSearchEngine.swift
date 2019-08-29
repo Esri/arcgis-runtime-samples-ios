@@ -45,7 +45,7 @@ class SampleSearchEngine {
             let range = NSRange(location: 0, length: string.count)
             tagger.enumerateTags(in: range,
                                  scheme: NSLinguisticTagScheme.lexicalClass,
-                                 options: [.omitWhitespace, .omitPunctuation]) { (tag: NSLinguisticTag?, tokenRange: NSRange, sentenceRange: NSRange, _) in
+                                 options: [.omitWhitespace, .omitPunctuation]) { (tag, tokenRange, _, _) in
                                     guard let tag = tag else {
                                         return
                                     }

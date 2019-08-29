@@ -95,7 +95,7 @@ class AttachmentsTableViewController: UITableViewController {
         cell.textLabel?.text = attachment.name
         cell.imageView?.contentMode = .scaleAspectFit
         if attachment.hasFetchedData {
-            attachment.fetchData { (data: Data?, error: Error?) in
+            attachment.fetchData { (data, _) in
                 if let data = data {
                     cell.imageView?.image = UIImage(data: data)
                 }
@@ -133,7 +133,7 @@ class AttachmentsTableViewController: UITableViewController {
             //show progress hud
             SVProgressHUD.show(withStatus: "Applying edits")
             
-            table.applyEdits { [weak self] (result, error) in
+            table.applyEdits { [weak self] (_, error) in
                 //dismiss progress hud
                 SVProgressHUD.dismiss()
                 

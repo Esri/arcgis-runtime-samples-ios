@@ -246,7 +246,9 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
     }
     
     func clearSelection() {
-        map.operationalLayers.lazy.compactMap { $0 as? AGSFeatureLayer }.forEach { $0.clearSelection() }
+        map.operationalLayers.lazy
+            .compactMap { $0 as? AGSFeatureLayer }
+            .forEach { $0.clearSelection() }
     }
     
     // MARK: Terminal Selection UI

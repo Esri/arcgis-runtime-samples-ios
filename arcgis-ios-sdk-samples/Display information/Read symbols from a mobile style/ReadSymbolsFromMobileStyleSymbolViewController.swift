@@ -98,9 +98,9 @@ class ReadSymbolsFromMobileStyleSymbolViewController: UIViewController {
         
         symbolStyle.load { [weak self] error in
             guard error == nil else { return }
-            self?.symbolStyle.defaultSearchParameters { (searchParameters, error) in
+            self?.symbolStyle.defaultSearchParameters { (searchParameters, _) in
                 guard let searchParameters = searchParameters else { return }
-                self?.symbolStyle.searchSymbols(with: searchParameters) { (searchResults, error) in
+                self?.symbolStyle.searchSymbols(with: searchParameters) { (searchResults, _) in
                     guard let searchResults = searchResults else { return }
                     self?.symbolStyleSearchResults = searchResults
                 }

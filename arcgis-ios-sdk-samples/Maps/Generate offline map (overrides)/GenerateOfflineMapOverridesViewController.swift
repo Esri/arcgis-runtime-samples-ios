@@ -283,7 +283,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
     
     private func showLoginQueryAlert() {
         let alertController = UIAlertController(title: nil, message: "This sample requires you to login in order to take the map's basemap offline. Would you like to continue?", preferredStyle: .alert)
-        let loginAction = UIAlertAction(title: "Login", style: .default) { [weak self] (action) in
+        let loginAction = UIAlertAction(title: "Login", style: .default) { [weak self] (_) in
             self?.addMap()
         }
         

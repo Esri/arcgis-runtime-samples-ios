@@ -74,7 +74,7 @@ class MILLegendTableViewController: UITableViewController {
         let legendInfo = legendInfos[indexPath.row]
 
         cell.textLabel?.text = legendInfo.name
-        legendInfo.symbol?.createSwatch { (image, error) in
+        legendInfo.symbol?.createSwatch { (image, _) in
             if let updateCell = tableView.cellForRow(at: indexPath) {
                 updateCell.imageView?.image = image
                 updateCell.setNeedsLayout()

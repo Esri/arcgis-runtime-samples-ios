@@ -66,7 +66,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits { [weak self] (result, error) in
+        self.featureTable.applyEdits { [weak self] (_, error) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else {

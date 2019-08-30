@@ -137,7 +137,7 @@ class FindPlaceViewController: UIViewController {
                 animations: { [weak self] in
                     self?.view.layoutIfNeeded()
                 },
-                completion: { [weak self] (finished) in
+                completion: { [weak self] (_) in
                     self?.isTableViewAnimating = false
                     self?.isTableViewVisible = expand
                 }
@@ -185,7 +185,7 @@ class FindPlaceViewController: UIViewController {
             for graphic in graphics {
                 multipoint.points.add(graphic.geometry as! AGSPoint)
             }
-            self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent)) { [weak self] (finished: Bool) in
+            self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent)) { [weak self] (_) in
                 self?.canDoExtentSearch = true
             }
         }
@@ -321,10 +321,10 @@ class FindPlaceViewController: UIViewController {
             //if no, then goecode the suggestion
             //else use the geocoded location, to find the POIs
             if self.preferredSearchLocation == nil {
-                self.geocodeUsingSuggestResult(self.selectedSuggestResult, completion: { [weak self] in
+                self.geocodeUsingSuggestResult(self.selectedSuggestResult) { [weak self] in
                     //find the POIs wrt location
                     self?.geocodePOIs(poi, location: self!.preferredSearchLocation, extent: nil)
-                })
+                }
             } else {
                 self.geocodePOIs(poi, location: self.preferredSearchLocation, extent: nil)
             }

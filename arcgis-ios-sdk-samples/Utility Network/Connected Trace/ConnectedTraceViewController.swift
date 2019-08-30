@@ -28,7 +28,7 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     private var layers: [AGSFeatureLayer] {
-        return [115, 100].map({
+        return [115, 100].map {
             let featureTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("\($0)"))
             let layer = AGSFeatureLayer(featureTable: featureTable)
             if $0 == 115 {
@@ -36,7 +36,7 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
                 layer.renderer = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: lineColor, width: 3))
             }
             return layer
-        })
+        }
     }
 
     private let map: AGSMap
@@ -212,7 +212,7 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
 
             SVProgressHUD.show(withStatus: "Trace Completed. Selecting features…")
 
-            let groupedElements = Dictionary(grouping: elementTraceResult.elements, by: { $0.networkSource.name })
+            let groupedElements = Dictionary(grouping: elementTraceResult.elements) { $0.networkSource.name }
             
             let selectionGroup = DispatchGroup()
 
@@ -221,7 +221,7 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
 
                 selectionGroup.enter()
                 print("Requesting features for \(networkName)")
-                self.utilityNetwork.features(for: elements, completion: { [layer, networkName] (features, error) in
+                self.utilityNetwork.features(for: elements) { [layer, networkName] (features, error) in
                     defer {
                         print("Result From: \(networkName)")
                         selectionGroup.leave()
@@ -235,18 +235,20 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
                     guard let features = features else { return }
                     
                     layer.select(features)
-                })
+                }
             }
             
-            selectionGroup.notify(queue: .main, execute: { [weak self] in
+            selectionGroup.notify(queue: .main) { [weak self] in
                 self?.setStatus(message: "Trace completed.")
                 SVProgressHUD.dismiss()
-            })
+            }
         }
     }
     
     func clearSelection() {
-        map.operationalLayers.lazy.compactMap({ $0 as? AGSFeatureLayer }).forEach({ $0.clearSelection() })
+        map.operationalLayers.lazy
+            .compactMap { $0 as? AGSFeatureLayer }
+            .forEach { $0.clearSelection() }
     }
     
     // MARK: Terminal Selection UI
@@ -256,9 +258,9 @@ class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
             let terminalPicker = UIAlertController(title: "Select a terminal", message: nil, preferredStyle: .actionSheet)
             
             for terminal in terminals {
-                let action = UIAlertAction(title: terminal.name, style: .default, handler: { [terminal] _ in
+                let action = UIAlertAction(title: terminal.name, style: .default) { [terminal] _ in
                     completion(terminal)
-                })
+                }
                 
                 terminalPicker.addAction(action)
             }

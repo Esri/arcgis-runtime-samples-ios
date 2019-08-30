@@ -110,12 +110,12 @@ class ListKMLContentsSceneViewController: UIViewController {
         let group = DispatchGroup()
         group.enter()
         // we want to return the elevation synchronously, so run the task in the background and wait
-        surface.elevation(for: point, completion: { (elevation, error) in
+        surface.elevation(for: point) { (elevation, error) in
             if error == nil {
                 surfaceElevation = elevation
             }
             group.leave()
-        })
+        }
         // wait, but not longer than three seconds
         _ = group.wait(timeout: .now() + 3)
         return surfaceElevation

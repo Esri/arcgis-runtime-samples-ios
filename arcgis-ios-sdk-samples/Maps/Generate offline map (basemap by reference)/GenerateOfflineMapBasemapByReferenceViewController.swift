@@ -129,14 +129,14 @@ class GenerateOfflineMapBasemapByReferenceViewController: UIViewController {
             return
         }
         let job = offlineMapTask.generateOfflineMapJob(with: parameters, downloadDirectory: downloadDirectoryURL)
-        job.start(statusHandler: nil, completion: { [weak self] (result, error) in
+        job.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else { return }
             if let result = result {
                 self.offlineMapGenerationDidSucceed(with: result)
             } else if let error = error {
                 self.offlineMapGenerationDidFail(with: error)
             }
-        })
+        }
         self.generateOfflineMapJob = job
         let downloadProgressView = DownloadProgressView()
         downloadProgressView.delegate = self

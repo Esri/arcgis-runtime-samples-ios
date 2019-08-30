@@ -27,7 +27,7 @@ class ReadSymbolsFromMobileStyleSymbolViewController: UIViewController {
     var symbolStyleSearchResults = [AGSSymbolStyleSearchResult]() {
         didSet {
             loadViewIfNeeded()
-            let searchResultsByCategory = Dictionary(grouping: symbolStyleSearchResults, by: { $0.category })
+            let searchResultsByCategory = Dictionary(grouping: symbolStyleSearchResults) { $0.category }
             settingsViewController.eyes = searchResultsByCategory["Eyes"] ?? []
             settingsViewController.mouths = searchResultsByCategory["Mouth"] ?? []
             settingsViewController.hats = searchResultsByCategory["Hat"] ?? []
@@ -98,13 +98,13 @@ class ReadSymbolsFromMobileStyleSymbolViewController: UIViewController {
         
         symbolStyle.load { [weak self] error in
             guard error == nil else { return }
-            self?.symbolStyle.defaultSearchParameters(completion: { (searchParameters, error) in
+            self?.symbolStyle.defaultSearchParameters { (searchParameters, _) in
                 guard let searchParameters = searchParameters else { return }
-                self?.symbolStyle.searchSymbols(with: searchParameters, completion: { (searchResults, error) in
+                self?.symbolStyle.searchSymbols(with: searchParameters) { (searchResults, _) in
                     guard let searchResults = searchResults else { return }
                     self?.symbolStyleSearchResults = searchResults
-                })
-            })
+                }
+            }
         }
     }
     

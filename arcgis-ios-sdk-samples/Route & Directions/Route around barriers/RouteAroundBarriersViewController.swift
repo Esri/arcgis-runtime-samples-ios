@@ -211,7 +211,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             animations: { [weak self] in
                 self?.view.layoutIfNeeded()
             },
-            completion: { [weak self] (finished) in
+            completion: { [weak self] (_) in
                 self?.isDirectionsListVisible.toggle()
             }
         )
@@ -225,7 +225,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             animations: { [weak self] in
                 self?.view.layoutIfNeeded()
             },
-            completion: { [weak self] (finished) in
+            completion: { [weak self] (_) in
                 if !visible {
                     self?.isDirectionsListVisible = false
                 }

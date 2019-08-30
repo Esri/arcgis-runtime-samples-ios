@@ -101,11 +101,11 @@ class MapReferenceScaleSettingsViewController: UITableViewController {
         
         // Update Reference Scale section.
         
-        referenceScaleObserver = map.observe(\.referenceScale, options: .initial, changeHandler: { [unowned self] (_, _) in
+        referenceScaleObserver = map.observe(\.referenceScale, options: .initial) { [unowned self] (_, _) in
             DispatchQueue.main.async {
                 self.referenceScaleLabel.text = self.string(fromScale: self.map.referenceScale)
             }
-        })
+        }
         
         if let row = possibleReferenceScales.firstIndex(of: Int(map.referenceScale.rounded(.toNearestOrAwayFromZero))) {
             referenceScalePickerView.selectRow(row, inComponent: 0, animated: false)

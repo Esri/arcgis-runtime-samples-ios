@@ -50,7 +50,7 @@ class DistanceCompositeSymbolViewController: UIViewController {
         coneSymbol.pitch = -90.0
         
         let modelSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 100.0)
-        modelSymbol.load(completion: { [weak self] (error) in
+        modelSymbol.load { [weak self] (error) in
             if let error = error {
                 self?.presentAlert(error: error)
                 return
@@ -74,6 +74,6 @@ class DistanceCompositeSymbolViewController: UIViewController {
             cameraController.cameraPitchOffset = 80
             cameraController.cameraHeadingOffset = -30
             self?.sceneView.cameraController = cameraController
-        })
+        }
     }
 }

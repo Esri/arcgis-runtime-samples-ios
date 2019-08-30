@@ -118,10 +118,10 @@ class ExportTilesViewController: UIViewController {
         //get the job
         job = exportTask.exportTileCacheJob(with: params, downloadFileURL: downloadFileURL)
         //run the job
-        job.start(statusHandler: { (status: AGSJobStatus) in
+        job.start(statusHandler: { (status) in
             //show job status
             SVProgressHUD.show(withStatus: status.statusString())
-        }, completion: { [weak self] (result: AnyObject?, error: Error?) in
+        }, completion: { [weak self] (result, error) in
             //hide progress view
             SVProgressHUD.dismiss()
             
@@ -136,10 +136,9 @@ class ExportTilesViewController: UIViewController {
                 if (error as NSError).code != NSUserCancelledError {
                     self.presentAlert(error: error)
                 }
-            } else {
+            } else if let tileCache = result {
                 self.visualEffectView.isHidden = false
                 
-                let tileCache = result as! AGSTileCache
                 let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
                 self.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
             }

@@ -1,5 +1,5 @@
 {
-    "category": "Display  Information",
+    "category": "Display information",
     "description": "Show a callout with the latitude and longitude of user-tapped points.",
     "ignore": false,
     "images": [

@@ -1,0 +1,38 @@
+{
+    "category": "Route and Directions",
+    "description": "Solve a route on-the-fly using offline data.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "route",
+        "offline",
+        "turn-by-turn",
+        "navigation",
+        "fastest",
+        "shortest",
+        "AGSRouteTask",
+        "AGSRouteParameters",
+        "AGSRouteTaskInfo",
+        "AGSTravelMode",
+        "AGSStop",
+        "AGSRouteResult",
+        "AGSCancelable"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/offline-routing.htm",
+    "relevant_apis": [
+        "AGSRouteTask",
+        "AGSRouteParameters",
+        "AGSRouteTaskInfo",
+        "AGSTravelMode",
+        "AGSStop",
+        "AGSRouteResult",
+        "AGSCancelable"
+    ],
+    "snippets": [
+        "OfflineRoutingViewController.swift"
+    ],
+    "title": "Offline routing"
+}

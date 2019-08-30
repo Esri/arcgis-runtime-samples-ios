@@ -1,0 +1,33 @@
+{
+    "category": "Route and Directions",
+    "description": "Find the service area within a network from a given point.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "routing",
+        "logistics",
+        "facilities",
+        "barriers",
+        "impedance",
+        "AGSServiceAreaTask",
+        "AGSServiceAreaParameters",
+        "AGSServiceAreaFacility",
+        "AGSPolygonBarrier",
+        "AGSServiceAreaResult"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/find-service-area-interactive.htm",
+    "relevant_apis": [
+        "AGSServiceAreaTask",
+        "AGSServiceAreaParameters",
+        "AGSServiceAreaFacility",
+        "AGSPolygonBarrier",
+        "AGSServiceAreaResult"
+    ],
+    "snippets": [
+        "ServiceAreaSettingsVC.swift",
+        "FindServiceAreaInteractiveVC.swift"
+    ],
+    "title": "Find service area"
+}

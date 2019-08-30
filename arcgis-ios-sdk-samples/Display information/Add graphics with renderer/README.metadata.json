@@ -1,0 +1,35 @@
+{
+    "category": "Display information",
+    "description": "Add graphics and set renderer on the graphic overlays",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "graphic",
+        "graphics overlay",
+        "renderer",
+        "symbol",
+        "AGSGraphicsOverlay",
+        "AGSSimpleRenderer",
+        "AGSPoint",
+        "AGSSimpleMarkerSymbol",
+        "AGSPolylineBuilder",
+        "AGSSimpleLineSymbol",
+        "AGSGraphic"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/add-graphics-with-renderer.htm",
+    "relevant_apis": [
+        "AGSGraphicsOverlay",
+        "AGSSimpleRenderer",
+        "AGSPoint",
+        "AGSSimpleMarkerSymbol",
+        "AGSPolylineBuilder",
+        "AGSSimpleLineSymbol",
+        "AGSGraphic"
+    ],
+    "snippets": [
+        "GORenderersViewController.swift"
+    ],
+    "title": "Add graphics with renderer"
+}

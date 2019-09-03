@@ -38,7 +38,6 @@ class GetElevationPointViewController: UIViewController {
         }
     }
     
-//    @IBOutlet private var controller: ElevationViewController!
     private let graphicsOverlay = AGSGraphicsOverlay()
     
     // Create graphics overlay and add it to scene view.
@@ -75,7 +74,7 @@ class GetElevationPointViewController: UIViewController {
 extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let relativeSurfacePoint = sceneView?.screen(toBaseSurface: screenPoint) {
-            graphicsOverlay.graphics.removeAllObjects()
+//            graphicsOverlay.graphics.removeAllObjects()
             dismiss(animated: true)
             
             // Create the symbol at the tapped point.
@@ -98,13 +97,11 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "ElevationViewController") as? ElevationViewController else {
                 return
         }
-        // setup the controller to display as a popover
-//        controller.elevationLabel?.text?.append(String(elevation.rounded()) + String("m"))
+        // Setup the controller to display as a popover.
         controller.modalPresentationStyle = .popover
         controller.loadViewIfNeeded()
-//        Measurement(value: elevation.rounded(), unit: UnitLength.meters)
         controller.elevationLabel?.text? = "Elevation at tapped point: " + (String(elevation.rounded()) + String("m"))
-        controller.presentationController?.delegate = self
+        controller.popoverPresentationController?.delegate = self
         controller.preferredContentSize = CGSize(width: 280, height: 40)
         controller.popoverPresentationController?.passthroughViews = [sceneView as Any, navigationController?.viewControllers as Any] as? [UIView]
         controller.popoverPresentationController?.sourceRect = CGRect(origin: popoverPoint, size: .zero)
@@ -113,8 +110,13 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
     }
 }
 
-extension GetElevationPointViewController: UIAdaptivePresentationControllerDelegate {
+extension GetElevationPointViewController: UIAdaptivePresentationControllerDelegate, UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        // Clear selection when popover is dismissed.
+        graphicsOverlay.graphics.removeAllObjects()
     }
 }

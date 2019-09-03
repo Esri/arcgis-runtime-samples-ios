@@ -100,12 +100,12 @@ class EditAndSyncFeaturesViewController: UIViewController {
         }
     }
     
-    private func didMove() {
-        self.selectedFeature = nil
-        self.barButtonItem.isEnabled = true
-        self.barButtonItem.title = "Sync geodatabase"
-        self.instructionsLabel.text = String("Tap the sync button")
-        self.clearSelection()
+    private func resetUI() {
+        selectedFeature = nil
+        barButtonItem.isEnabled = true
+        barButtonItem.title = "Sync geodatabase"
+        instructionsLabel.text = "Tap the sync button"
+        clearSelection()
     }
     
     func geodatabaseDidLoad() {
@@ -127,7 +127,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             }
             self.generateJob = nil
             self.barButtonItem.isEnabled = false
-            self.instructionsLabel.text = String("Tap on a feature")
+            self.instructionsLabel.text = "Tap on a feature"
             self.mapView.touchDelegate = self
         }
     }
@@ -135,7 +135,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     func geodatabaseDidSync() {
         self.presentAlert(title: "Geodatabase sync sucessful")
         self.barButtonItem.isEnabled = false
-        self.instructionsLabel.text = String("Tap on a feature")
+        self.instructionsLabel.text = "Tap on a feature"
     }
     
     func generateGeodatabase() {
@@ -249,7 +249,7 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                         self?.selectedFeature = nil
                         self?.clearSelection()
                     } else {
-                        self?.didMove()
+                        self?.resetUI()
                     }
                 }
             } else {
@@ -260,7 +260,7 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                 if let error = error {
                     self?.presentAlert(error: error)
                 } else if let results = results {
-                    self?.instructionsLabel.text = String("Tap on the map to move the feature")
+                    self?.instructionsLabel.text = "Tap on the map to move the feature"
                     if let firstResult = results.first {
                         let layerContent = firstResult.layerContent
                         

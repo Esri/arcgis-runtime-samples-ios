@@ -1,0 +1,17 @@
+{
+    "category": "Scenes",
+    "description": "This sample demonstrates how to display an scene with elevation data.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/display-a-scene.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "DisplaySceneViewController.swift"
+    ],
+    "title": "Display a scene"
+}

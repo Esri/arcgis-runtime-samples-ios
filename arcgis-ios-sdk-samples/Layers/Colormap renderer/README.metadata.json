@@ -1,0 +1,29 @@
+{
+    "category": "Layers",
+    "description": "Apply a colormap renderer to a raster.",
+    "ignore": false,
+    "images": [
+        "colormap-renderer.png"
+    ],
+    "keywords": [
+        "data",
+        "colormap",
+        "raster",
+        "renderer",
+        "visualization",
+        "AGSColormapRenderer",
+        "AGSRaster",
+        "AGSRasterLayer"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSColormapRenderer",
+        "AGSRaster",
+        "AGSRasterLayer"
+    ],
+    "snippets": [
+        "ColormapRendererViewController.swift"
+    ],
+    "title": "Colormap Renderer"
+}

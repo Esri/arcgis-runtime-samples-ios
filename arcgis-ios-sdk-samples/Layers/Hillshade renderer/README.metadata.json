@@ -1,0 +1,27 @@
+{
+    "category": "Layers",
+    "description": "Apply a hillshade renderer to a raster.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "ArcGIS raster layer",
+        "hillshade renderer",
+        "AGSRasterLayer",
+        "AGSHillshadeRenderer",
+        "AGSSlopeType"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/hillshade-renderer.htm",
+    "relevant_apis": [
+        "AGSRasterLayer",
+        "AGSHillshadeRenderer",
+        "AGSSlopeType"
+    ],
+    "snippets": [
+        "HillshadeRendererVC.swift",
+        "HillshadeSettingsVC.swift"
+    ],
+    "title": "Hillshade renderer"
+}

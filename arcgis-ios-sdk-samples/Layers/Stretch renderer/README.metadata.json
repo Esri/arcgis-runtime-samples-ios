@@ -1,0 +1,36 @@
+{
+    "category": "Layers",
+    "description": "Use a stretch renderer to enhance the visual contrast of raster data for analysis.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "stretch renderer",
+        "raster layer",
+        "AGSStretchRenderer",
+        "AGSStretchParameters",
+        "AGSMinMaxStretchParameters",
+        "AGSPercentClipStretchParameters",
+        "AGSStandardDeviationStretchParameters",
+        "AGSRaster",
+        "AGSRasterLayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/stretch-renderer.htm",
+    "relevant_apis": [
+        "AGSStretchRenderer",
+        "AGSStretchParameters",
+        "AGSMinMaxStretchParameters",
+        "AGSPercentClipStretchParameters",
+        "AGSStandardDeviationStretchParameters",
+        "AGSRaster",
+        "AGSRasterLayer"
+    ],
+    "snippets": [
+        "StretchRendererViewController.swift",
+        "StretchRendererSettingsVC.swift",
+        "StretchRendererInputCell.swift"
+    ],
+    "title": "Stretch renderer"
+}

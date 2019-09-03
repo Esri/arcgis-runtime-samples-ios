@@ -1,0 +1,34 @@
+{
+    "category": "Edit data",
+    "description": "Update feature attributes in an online feature service.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png",
+        "image3.png",
+        "image4.png"
+    ],
+    "keywords": [
+        "edit",
+        "attribute",
+        "coded value",
+        "coded value domain",
+        "update",
+        "AGSServiceFeatureTable",
+        "AGSFeatureLayer",
+        "AGSArcGISFeature",
+        "AGSFeatureEditResult"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/update-attributes-feature-service-.htm",
+    "relevant_apis": [
+        "AGSServiceFeatureTable",
+        "AGSFeatureLayer",
+        "AGSArcGISFeature",
+        "AGSFeatureEditResult"
+    ],
+    "snippets": [
+        "EAOptionsViewController.swift",
+        "EditAttributesViewController.swift"
+    ],
+    "title": "Update attributes (feature service)"
+}

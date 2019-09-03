@@ -1,0 +1,31 @@
+{
+    "category": "Geometry",
+    "description": "Get a list of suitable transformations for projecting a geometry between two spatial references with different horizontal datums.",
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "projection",
+        "transformation",
+        "datum",
+        "geodesy",
+        "spatial reference",
+        "AGSTransformationCatalog",
+        "AGSDatumTransformation",
+        "AGSGeographicTransformation",
+        "AGSGeographicTransformationStep",
+        "AGSGeometryEngine"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/list-transformations.htm",
+    "relevant_apis": [
+        "AGSTransformationCatalog",
+        "AGSDatumTransformation",
+        "AGSGeographicTransformation",
+        "AGSGeographicTransformationStep",
+        "AGSGeometryEngine"
+    ],
+    "snippets": [
+        "ListTransformationsViewController.swift"
+    ],
+    "title": "List transformations by suitability"
+}

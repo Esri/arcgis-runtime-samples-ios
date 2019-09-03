@@ -1,0 +1,29 @@
+{
+    "category": "Layers",
+    "description": "Export tiles from a map server to a local tile cache file",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "ArcGIS tiled layer",
+        "export tile cache",
+        "offline",
+        "AGSArcGISTiledLayer",
+        "AGSExportTileCacheTask",
+        "AGSExportTileCacheJob",
+        "AGSExportTileCacheParameters"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/export-tiles.htm",
+    "relevant_apis": [
+        "AGSArcGISTiledLayer",
+        "AGSExportTileCacheTask",
+        "AGSExportTileCacheJob",
+        "AGSExportTileCacheParameters"
+    ],
+    "snippets": [
+        "ExportTilesViewController.swift"
+    ],
+    "title": "Export tiles"
+}

@@ -1,0 +1,25 @@
+{
+    "category": "Layers",
+    "description": "Load a raster from a service, then apply a function to it.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "raster function",
+        "image service raster",
+        "AGSRasterFunction",
+        "AGSImageServiceRaster",
+        "AGSRasterLayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/raster-function-service-.htm",
+    "relevant_apis": [
+        "AGSRasterFunction",
+        "AGSImageServiceRaster",
+        "AGSRasterLayer"
+    ],
+    "snippets": [
+        "RasterFunctionServiceViewController.swift"
+    ],
+    "title": "ArcGIS raster function (service)"
+}

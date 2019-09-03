@@ -252,6 +252,22 @@
 				<key>storyboardName</key>
 				<string>MapReferenceScale</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Show location history</string>
+				<key>descriptionText</key>
+				<string>Display your location history on the map.</string>
+				<key>storyboardName</key>
+				<string>LocationHistory</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Download preplanned map</string>
+				<key>descriptionText</key>
+				<string>Take a map offline using a preplanned map area.</string>
+				<key>storyboardName</key>
+				<string>DownloadPreplannedMap</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1154,6 +1170,14 @@
 				<key>descriptionText</key>
 				<string>This samples shows how to find service areas around a point</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Find closest facility to multiple incidents (service)</string>
+				<key>descriptionText</key>
+				<string>Find routes from several locations to the respective closest facility.</string>
+				<key>storyboardName</key>
+				<string>FindClosestFacilityMultipleIncidentsService</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1515,6 +1539,21 @@
 				<array>
 					<string>Bristol3DModel</string>
 				</array>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>displayName</key>
+		<string>Utility Network</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>descriptionText</key>
+				<string>Perform a connected trace against an electric Utility Network.</string>
+				<key>storyboardName</key>
+				<string>ConnectedTrace</string>
+				<key>displayName</key>
+				<string>Connected Trace</string>
 			</dict>
 		</array>
 	</dict>

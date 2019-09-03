@@ -1,0 +1,31 @@
+{
+    "category": "Geometry",
+    "description": "Find the union, intersection, or difference of two geometries.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "geometry",
+        "intersection",
+        "merge",
+        "difference",
+        "union",
+        "AGSGeometryEngine",
+        "AGSPolygonBuilder",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/spatial-operations.htm",
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSPolygonBuilder",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
+    ],
+    "snippets": [
+        "SpatialOperationsViewController.swift",
+        "OperationsListViewController.swift"
+    ],
+    "title": "Perform spatial operations"
+}

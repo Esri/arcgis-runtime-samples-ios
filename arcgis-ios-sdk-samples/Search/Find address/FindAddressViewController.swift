@@ -72,7 +72,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.callout.dismiss()
         
         //perform geocode with input text
-        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
+        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
             guard let self = self else {
                 return
             }
@@ -91,7 +91,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
                 //provide feedback in case of failure
                 self.presentAlert(message: "No results found")
             }
-        })
+        }
     }
     
     // MARK: - Callout

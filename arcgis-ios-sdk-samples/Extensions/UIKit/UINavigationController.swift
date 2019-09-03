@@ -22,9 +22,9 @@ extension UINavigationController {
         print(type(of: self), #function, separator: ".")
         let poppedViewControllers = popToViewController(viewController, animated: animated)
         if animated {
-            transitionCoordinator?.animate(alongsideTransition: nil, completion: { (_) in
+            transitionCoordinator?.animate(alongsideTransition: nil) { (_) in
                 completion()
-            })
+            }
         } else {
             completion()
         }

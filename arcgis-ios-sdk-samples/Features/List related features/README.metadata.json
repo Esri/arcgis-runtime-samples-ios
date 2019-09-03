@@ -1,0 +1,18 @@
+{
+    "category": "Features",
+    "description": "This sample demonstrates how to query related features for a given feature.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/list-related-features.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "ListRelatedFeaturesVC.swift",
+        "RelatedFeaturesListVC.swift"
+    ],
+    "title": "List related features"
+}

@@ -1,0 +1,53 @@
+{
+    "category": "Edit data",
+    "description": "Synchronize offline edits with a feature service.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png",
+        "image3.png"
+    ],
+    "keywords": [
+        "offline",
+        "generate geodatabase",
+        "synchronize",
+        "edit",
+        "unregister geodatabase",
+        "AGSGeodatabaseSyncTask",
+        "AGSGenerateGeodatabaseJob",
+        "AGSGenerateGeodatabaseParameters",
+        "AGSGenerateLayerOption",
+        "AGSGeodatabase",
+        "AGSSyncGeodatabaseJob",
+        "AGSSyncGeodatabaseParameters",
+        "AGSSyncLayerOption",
+        "AGSSyncLayerResult",
+        "AGSServiceFeatureTable",
+        "AGSPopupsViewController",
+        "AGSLoadObjects",
+        "AGSJobStatus",
+        "AGSSketchEditor"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/offline-edit-and-sync.htm",
+    "relevant_apis": [
+        "AGSGeodatabaseSyncTask",
+        "AGSGenerateGeodatabaseJob",
+        "AGSGenerateGeodatabaseParameters",
+        "AGSGenerateLayerOption",
+        "AGSGeodatabase",
+        "AGSSyncGeodatabaseJob",
+        "AGSSyncGeodatabaseParameters",
+        "AGSSyncLayerOption",
+        "AGSSyncLayerResult",
+        "AGSServiceFeatureTable",
+        "AGSPopupsViewController",
+        "AGSLoadObjects",
+        "AGSJobStatus",
+        "AGSSketchEditor"
+    ],
+    "snippets": [
+        "FeatureLayersViewController.swift",
+        "OfflineEditingViewController.swift"
+    ],
+    "title": "Edit and sync features"
+}

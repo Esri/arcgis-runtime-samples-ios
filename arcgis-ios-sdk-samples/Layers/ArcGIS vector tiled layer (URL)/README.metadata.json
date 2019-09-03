@@ -1,0 +1,22 @@
+{
+    "category": "Layers",
+    "description": "Load an ArcGIS vector tile layer from a URL.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "AGSArcGISVectorTiledLayer",
+        "ArcGIS vector tiled layer",
+        "vector tiles"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/arcgis-vector-tile-layer-url-.htm",
+    "relevant_apis": [
+        "AGSArcGISVectorTiledLayer",
+        "AGSBasemap"
+    ],
+    "snippets": [
+        "VectorTileLayerViewController.swift"
+    ],
+    "title": "ArcGIS vector tiled layer URL"
+}

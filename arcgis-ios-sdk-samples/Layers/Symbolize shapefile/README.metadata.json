@@ -1,0 +1,29 @@
+{
+    "category": "Layers",
+    "description": "Display a shapefile with custom symbology.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "shapefile",
+        "offline",
+        "renderer",
+        "AGSShapefileFeatureTable",
+        "AGSFeatureLayer",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleRenderer"
+
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/symbolize-shapefile.htm",
+    "relevant_apis": [
+        "AGSShapefileFeatureTable",
+        "AGSFeatureLayer",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleRenderer"
+    ],
+    "snippets": [
+        "SymbolizeShapefileViewController.swift"
+    ],
+    "title": "Symbolize Shapefile"
+}

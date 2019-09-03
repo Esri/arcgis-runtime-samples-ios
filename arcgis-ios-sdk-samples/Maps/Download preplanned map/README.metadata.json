@@ -1,0 +1,34 @@
+{
+    "category": "Maps",
+    "description": "Take a map offline using a preplanned map area.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Offline", 
+        "preplanned", 
+        "pre-planned", 
+        "map area"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSCancelable",
+        "AGSDownloadPreplannedOfflineMapJob",
+        "AGSLoadObjects",
+        "AGSMap",
+        "AGSMapView",
+        "AGSMobileMapPackage",
+        "AGSOfflineMapTask",
+        "AGSPortal",
+        "AGSPortalItem",
+        "AGSPreplannedMapArea"
+    ],
+    "snippets": [
+        "DownloadPreplannedMapViewController.swift",
+        "MapSelectionTableViewController.swift",
+        "PreplannedMapAreaTableViewCell.swift"
+    ],
+    "title": "Download preplanned map"
+}

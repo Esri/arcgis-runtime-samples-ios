@@ -34,7 +34,7 @@
     "snippets": [
         "RouteAroundBarriersViewController.swift",
         "RouteParametersViewController.swift",
-        "DirectionsListViewController.swift",
+        "DirectionsListViewController.swift"
     ],
     "title": "Route around barriers"
 }

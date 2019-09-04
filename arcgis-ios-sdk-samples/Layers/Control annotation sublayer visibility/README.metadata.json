@@ -1,6 +1,6 @@
 {
     "category": "Layers",
-    "description": "@@TODO: Use annotation sublayers to gain finer control of annotation layer subtypes.",
+    "description": "Use annotation sublayers to gain finer control of annotation layer subtypes.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -15,17 +15,17 @@
         "AGSAnnotationSublayer",
         "AGSLayerContent"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/control-annotation-sublayer-visibility.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSAnnotationLayer",
         "AGSAnnotationSublayer",
         "AGSLayerContent"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "ControlAnnotationSublayerVisibilityViewController.swift",
-        "ControlAnnotationSublayerVisibilitySublayerCell.swift",
-        "ControlAnnotationSublayerVisibilitySublayersViewController.swift"
+        "ControlAnnotationSublayerVisibilitySublayersViewController.swift",
+        "ControlAnnotationSublayerVisibilitySublayerCell.swift"
     ],
-    "title": "@@TODO: Control annotation sublayer visibility"
+    "title": "Control annotation sublayer visibility"
 }

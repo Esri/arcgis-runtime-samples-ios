@@ -17,6 +17,8 @@
 import UIKit
 import ArcGIS
 
+private let kBarButtonTitle = "Sync geodatabase"
+
 class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
@@ -103,7 +105,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private func resetUI() {
         selectedFeature = nil
         barButtonItem.isEnabled = true
-        barButtonItem.title = "Sync geodatabase"
+        barButtonItem.title = kBarButtonTitle
         instructionsLabel.text = "Tap the sync button"
         clearSelection()
     }
@@ -220,7 +222,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     }
     
     @IBAction func generateOrSync() {
-        if barButtonItem.title == "Sync geodatabase" {
+        if barButtonItem.title == kBarButtonTitle {
             syncGeodatabase()
         } else {
             generateGeodatabase()

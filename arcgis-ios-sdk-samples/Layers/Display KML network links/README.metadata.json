@@ -1,0 +1,27 @@
+{
+    "category": "Layers",
+    "description": "KML files can reference other KML files on the network and refresh content automatically. Display a file with a network link along with network control messages at launch.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "KML",
+        "KMZ",
+        "OGC",
+        "Keyhole",
+        "Network Link",
+        "Network Link Control",
+        "AGSKMLDataset",
+        "AGSKMLLayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/display-kml-network-links.htm",
+    "relevant_apis": [
+        "AGSKMLDataset",
+        "AGSKMLLayer"
+    ],
+    "snippets": [
+        "DisplayKMLNetworkLinksViewController.swift"
+    ],
+    "title": "Display KML network links"
+}

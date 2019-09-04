@@ -1,0 +1,36 @@
+{
+    "category": "Geometry",
+    "description": "Project a point from one spatial reference to another.",
+    "ignore": false,
+    "images": [
+        "project.png"
+    ],
+    "keywords": [
+        "geometry engine",
+        "projection",
+        "spatial reference",
+        "Web Mercator",
+        "WGS 84",
+        "latitude",
+        "longitude",
+        "projected coordinate system",
+        "geographic coordinate system",
+        "AGSGeometryEngine",
+        "AGSPoint",
+        "AGSSpatialReference",
+        "AGSGeoViewTouchDelegate"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSPoint",
+        "AGSSpatialReference",
+        "AGSGeoViewTouchDelegate"
+    ],
+    "snippets": [
+        "ProjectViewController.swift",
+        "ProjectStackView.swift"
+    ],
+    "title": "Project"
+}

@@ -107,20 +107,20 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         self.generateOfflineMapJob = generateOfflineMapJob
         
         //observe the job's progress
-        jobProgressObservation = generateOfflineMapJob.progress.observe(\.fractionCompleted, options: .new, changeHandler: { [weak self] (progress, change) in
+        jobProgressObservation = generateOfflineMapJob.progress.observe(\.fractionCompleted, options: .new) { [weak self] (progress, _) in
             DispatchQueue.main.async { [weak self] in
                 //update progress label
                 self?.progressLabel.text = progress.localizedDescription
                 //update progress view
                 self?.progressView.progress = Float(progress.fractionCompleted)
             }
-        })
+        }
         
         //unhide the progress parent view
         progressParentView.isHidden = false
         
         //start the job
-        generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result: AGSGenerateOfflineMapResult?, error: Error?) in
+        generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else {
                 return
             }
@@ -218,7 +218,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     
     private func showLoginQueryAlert() {
         let alertController = UIAlertController(title: nil, message: "This sample requires you to login in order to take the map's basemap offline. Would you like to continue?", preferredStyle: .alert)
-        let loginAction = UIAlertAction(title: "Login", style: .default) { [weak self] (action) in
+        let loginAction = UIAlertAction(title: "Login", style: .default) { [weak self] (_) in
             self?.addMap()
         }
         

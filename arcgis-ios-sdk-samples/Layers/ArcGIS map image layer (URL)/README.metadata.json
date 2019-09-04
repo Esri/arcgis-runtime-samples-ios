@@ -1,0 +1,21 @@
+{
+    "category": "Layers",
+    "description": "This sample demonstrates how to create a map image layer from a URL",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "ArcGIS map image layer",
+        "map image layer",
+        "AGSArcGISMapImageLayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/arcgis-map-image-layer-url-.htm",
+    "relevant_apis": [
+        "AGSArcGISMapImageLayer"
+    ],
+    "snippets": [
+        "MILUsingURLViewController.swift"
+    ],
+    "title": "ArcGIS map image layer (URL)"
+}

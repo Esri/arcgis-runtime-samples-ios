@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eym-3Z-3ck">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Download Preplanned Map View Controller-->
+        <scene sceneID="CdB-nc-N5o">
+            <objects>
+                <viewController id="eym-3Z-3ck" customClass="DownloadPreplannedMapViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nE8-T5-4kh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfV-1x-ZGz" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txe-YL-hFN">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Item" style="plain" id="MRq-RD-4Yt">
+                                        <activityIndicatorView key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="9e3-Rl-Roi">
+                                            <rect key="frame" x="20" y="17" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </activityIndicatorView>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ONj-3x-aZn"/>
+                                    <barButtonItem enabled="NO" title="Select Map" id="T6C-dm-3bb">
+                                        <connections>
+                                            <segue destination="Mtd-Rb-acK" kind="popoverPresentation" popoverAnchorBarButtonItem="T6C-dm-3bb" id="fVA-cM-WRO">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ITk-QV-Mwr"/>
+                                    <barButtonItem enabled="NO" systemItem="trash" id="acg-XN-HC2">
+                                        <connections>
+                                            <action selector="removeDownloadsTapped:" destination="eym-3Z-3ck" id="pdB-1P-gPh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pfV-1x-ZGz" firstAttribute="bottom" secondItem="nE8-T5-4kh" secondAttribute="bottom" id="71E-cF-jot"/>
+                            <constraint firstAttribute="top" secondItem="pfV-1x-ZGz" secondAttribute="top" id="BTy-bL-9G1"/>
+                            <constraint firstItem="YcI-mI-KS9" firstAttribute="bottom" secondItem="txe-YL-hFN" secondAttribute="bottom" id="PbN-I1-5ca"/>
+                            <constraint firstAttribute="trailing" secondItem="pfV-1x-ZGz" secondAttribute="trailing" id="UOu-yd-DVv"/>
+                            <constraint firstAttribute="trailing" secondItem="txe-YL-hFN" secondAttribute="trailing" id="YfO-RW-86T"/>
+                            <constraint firstItem="pfV-1x-ZGz" firstAttribute="leading" secondItem="nE8-T5-4kh" secondAttribute="leading" id="nKZ-Ye-Jkg"/>
+                            <constraint firstItem="txe-YL-hFN" firstAttribute="leading" secondItem="nE8-T5-4kh" secondAttribute="leading" id="pzh-up-HIi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YcI-mI-KS9"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="9e3-Rl-Roi" id="sij-xr-JNO"/>
+                        <outlet property="mapView" destination="pfV-1x-ZGz" id="2FY-Mn-I2I"/>
+                        <outlet property="removeDownloadsBarButtonItem" destination="acg-XN-HC2" id="cj8-MC-ybC"/>
+                        <outlet property="selectMapBarButtonItem" destination="T6C-dm-3bb" id="xJb-4I-ml6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZTH-Oj-W7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="39" y="21"/>
+        </scene>
+        <!--Select Map-->
+        <scene sceneID="ZnK-Kg-0rN">
+            <objects>
+                <tableViewController id="bfd-3L-KJe" customClass="MapSelectionTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="h1N-TW-eBm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OnlineMapCell" textLabel="qgc-D9-kGY" style="IBUITableViewCellStyleDefault" id="mkd-v0-GDf">
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mkd-v0-GDf" id="kip-7f-aXq">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Web Map (Online)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qgc-D9-kGY">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PreplannedMapAreaCell" textLabel="uxQ-9t-3gv" style="IBUITableViewCellStyleDefault" id="n2M-d9-GMN" customClass="PreplannedMapAreaTableViewCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n2M-d9-GMN" id="SZi-4t-izK">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Preplanned Area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uxQ-9t-3gv">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="lSk-Pe-aUi">
+                                            <rect key="frame" x="0.0" y="42" width="414" height="2"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        </progressView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="progressView" destination="lSk-Pe-aUi" id="4CX-ka-aCy"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="bfd-3L-KJe" id="EmT-Rw-jNF"/>
+                            <outlet property="delegate" destination="bfd-3L-KJe" id="4xd-6A-mX8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select Map" id="w7g-GP-zIu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGA-ju-jMO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1680" y="21"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pcX-B9-Q9Y">
+            <objects>
+                <navigationController id="Mtd-Rb-acK" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cnz-Nc-tHt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bfd-3L-KJe" kind="relationship" relationship="rootViewController" id="2b3-8V-x7C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lI0-nJ-4HH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="851" y="21"/>
+        </scene>
+    </scenes>
+</document>

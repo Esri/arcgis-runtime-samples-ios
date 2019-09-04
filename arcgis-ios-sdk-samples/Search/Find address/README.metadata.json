@@ -1,0 +1,32 @@
+{
+    "category": "Search",
+    "description": "Find the location for an address.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "geocode",
+        "search",
+        "address",
+        "locator",
+        "AGSLocatorTask",
+        "AGSGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSGraphicsOverlay",
+        "AGSIdentifyGraphicsOverlayResult"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/find-address.htm",
+    "relevant_apis": [
+        "AGSLocatorTask",
+        "AGSGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSGraphicsOverlay",
+        "AGSIdentifyGraphicsOverlayResult"
+    ],
+    "snippets": [
+        "FindAddressViewController.swift",
+        "WorldAddressesViewController.swift"
+    ],
+    "title": "Find address"
+}

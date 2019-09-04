@@ -1,0 +1,26 @@
+{
+    "category": "Display information",
+    "description": "Display MIL-STD-2525D military symbology in 3D.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Graphics",
+        "Symbology",
+        "3D",
+        "AGSGraphicsOverlay",
+        "AGSDictionaryRenderer",
+        "AGSDictionarySymbolStyle"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/graphics-overlay-dictionary-renderer-3d.htm",
+    "relevant_apis": [
+        "AGSGraphicsOverlay",
+        "AGSDictionaryRenderer",
+        "AGSDictionarySymbolStyle"
+    ],
+    "snippets": [
+        "GraphicsOverlayDictionaryRenderer3DViewController.swift"
+    ],
+    "title": "Graphics overlay (dictionary renderer) 3D"
+}

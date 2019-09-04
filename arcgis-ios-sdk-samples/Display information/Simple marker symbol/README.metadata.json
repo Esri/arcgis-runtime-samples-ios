@@ -1,0 +1,27 @@
+{
+    "category": "Display information",
+    "description": "Show a simple marker symbol on a map.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "simple marker symbol",
+        "symbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSPoint",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/simple-marker-symbol.htm",
+    "relevant_apis": [
+        "AGSSimpleMarkerSymbol",
+        "AGSPoint",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
+    ],
+    "snippets": [
+        "SimpleMarkerSymbolViewController.swift"
+    ],
+    "title": "Simple marker symbol"
+}

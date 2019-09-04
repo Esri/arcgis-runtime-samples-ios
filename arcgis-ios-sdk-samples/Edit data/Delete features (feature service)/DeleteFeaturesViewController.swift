@@ -114,7 +114,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         //confirmation
         let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: .alert)
         //action for Yes
-        let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (action: UIAlertAction!) in
+        let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (_) in
             self?.deleteFeature(self!.selectedFeature)
         }
         alertController.addAction(alertAction)

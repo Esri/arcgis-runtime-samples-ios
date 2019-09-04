@@ -1,0 +1,27 @@
+{
+    "category": "Display information",
+    "description": "Use pictures for markers.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "picture",
+        "marker",
+        "symbol",
+        "graphics",
+        "AGSPictureMarkerSymbol",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/picture-marker-symbols.htm",
+    "relevant_apis": [
+        "AGSPictureMarkerSymbol",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
+    ],
+    "snippets": [
+        "PictureMarkerSymbolsViewController.swift"
+    ],
+    "title": "Picture marker symbols"
+}

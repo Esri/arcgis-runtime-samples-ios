@@ -1,0 +1,28 @@
+{
+    "category": "Layers",
+    "description": "Convert features into graphics to show them with mil2525d symbols.",
+    "ignore": false,
+    "images": [
+        "dictionary-renderer-with-feature-layer.png"
+    ],
+    "keywords": [
+        "dictionaryrenderer",
+        "dictionarysymbolstyle",
+        "military",
+        "symbol",
+        "AGSDictionaryRenderer",
+        "AGSDictionarySymbolStyle",
+        "AGSGeodatabase"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSDictionaryRenderer",
+        "AGSDictionarySymbolStyle",
+        "AGSGeodatabase"
+    ],
+    "snippets": [
+        "FeatureLayerDictionaryRendererViewController.swift"
+    ],
+    "title": "Dictionary renderer with feature layer"
+}

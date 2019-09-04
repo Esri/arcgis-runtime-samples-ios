@@ -60,13 +60,13 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     func setToolbarVisibility(visible: Bool) {
         toolbarBottomConstraint.constant = visible ? 0 : -44 - view.safeAreaInsets.bottom
         
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             self?.view.layoutIfNeeded()
-        }) 
+        }
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
+        self.featureTable.applyEdits { [weak self] (_, error) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
@@ -74,7 +74,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
             }
             //un hide the feature
             self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
-        })
+        }
     }
     
     // MARK: - AGSGeoViewTouchDelegate
@@ -130,7 +130,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     @IBAction func doneAction() {
         if let newGeometry = self.mapView.sketchEditor?.geometry {
             self.selectedFeature.geometry = newGeometry
-            self.featureTable.update(self.selectedFeature, completion: { [weak self] (error: Error?) in
+            self.featureTable.update(self.selectedFeature) { [weak self] (error) in
                 if let error = error {
                     self?.presentAlert(error: error)
                     
@@ -140,7 +140,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
                     //apply edits
                     self?.applyEdits()
                 }
-            })
+            }
         }
         
         //hide toolbar

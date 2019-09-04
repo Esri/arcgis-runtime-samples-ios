@@ -1,0 +1,22 @@
+{
+    "category": "Layers",
+    "description": "Display a web tiled layer.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "web tiled layer",
+        "AGSWebTiledLayer",
+        "AGSBasemap"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/web-tiled-layer.htm",
+    "relevant_apis": [
+        "AGSWebTiledLayer",
+        "AGSBasemap"
+    ],
+    "snippets": [
+        "WebTiledLayerViewController.swift"
+    ],
+    "title": "Web tiled layer"
+}

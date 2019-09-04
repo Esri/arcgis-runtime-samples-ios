@@ -1,0 +1,24 @@
+{
+    "category": "Layers",
+    "description": "Display a raster contained in a GeoPackage file.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "OGC",
+        "GeoPackage",
+        "raster",
+        "AGSGeoPackage",
+        "AGSRasterLayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/raster-layer-geopackage-.htm",
+    "relevant_apis": [
+        "AGSGeoPackage",
+        "AGSRasterLayer"
+    ],
+    "snippets": [
+        "RasterLayerGPKGViewController.swift"
+    ],
+    "title": "Raster layer (geopackage)"
+}

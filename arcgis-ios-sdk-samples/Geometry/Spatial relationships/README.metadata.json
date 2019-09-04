@@ -1,0 +1,37 @@
+{
+    "category": "Geometry",
+    "description": "Determine spatial relationships between two geometries.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "geometry",
+        "spatial relationship",
+        "crosses",
+        "contains",
+        "disjoint",
+        "intersects",
+        "overlaps",
+        "touches",
+        "within",
+        "AGSGeometryEngine",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSGeoView",
+        "AGSGeoViewTouchDelegate"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/spatial-relationships.htm",
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSGeoView",
+        "AGSGeoViewTouchDelegate"
+    ],
+    "snippets": [
+        "SpatialRelationshipsViewController.swift",
+        "SpatialRelationshipsTableViewController.swift"
+    ],
+    "title": "Spatial relationships"
+}

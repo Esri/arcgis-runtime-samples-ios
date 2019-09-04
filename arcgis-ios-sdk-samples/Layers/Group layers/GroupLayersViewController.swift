@@ -50,13 +50,13 @@ class GroupLayersViewController: UIViewController {
                 let camera = AGSCamera(lookAt: extent.center, distance: 700, heading: 0, pitch: 60, roll: 0)
                 
                 // Zoom to the viewpoint specified by the camera position.
-                self?.sceneView.setViewpointCamera(camera, completion: { (_) in
+                self?.sceneView.setViewpointCamera(camera) { (_) in
                     DispatchQueue.main.async {
                         // Enable the bar button item to display
                         // the Table of Contents of operational layers.
                         self?.layersBarButtonItem.isEnabled = true
                     }
-                })
+                }
             }
         }
     }

@@ -142,13 +142,13 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
             cell.thumbnail.image = image
         } else {
             cell.thumbnail.image = UIImage(named: "Placeholder")
-            portalItem.thumbnail?.load(completion: { [weak self] (error: Error?) in
+            portalItem.thumbnail?.load { [weak self] (error: Error?) in
                 if let error = error {
                     print("Error downloading thumbnail :: \(error.localizedDescription)")
                 } else {
                     self?.collectionView.reloadItems(at: [indexPath])
                 }
-            })
+            }
         }
         
         return cell

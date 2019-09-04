@@ -1,0 +1,26 @@
+{
+    "category": "Edit data",
+    "description": "Add features to the feature layer of a feature service.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "edit",
+        "feature",
+        "AGSServiceFeatureTable",
+        "AGSFeatureLayer",
+        "AGSFeatureEditResult"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/add-features-feature-service-.htm",
+    "relevant_apis": [
+        "AGSServiceFeatureTable",
+        "AGSFeatureLayer",
+        "AGSFeatureEditResult"
+
+    ],
+    "snippets": [
+        "AddFeaturesViewController.swift"
+    ],
+    "title": "Add features (feature service)"
+}

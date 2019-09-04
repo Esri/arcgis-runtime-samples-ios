@@ -147,7 +147,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
             self.locatorTaskCancelable.cancel()
         }
         
-        self.locatorTaskCancelable = self.locatorTask?.reverseGeocode(withLocation: point, parameters: self.reverseGeocodeParameters, completion: { [weak self](results: [AGSGeocodeResult]?, error: Error?) in
+        self.locatorTaskCancelable = self.locatorTask?.reverseGeocode(withLocation: point, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
@@ -166,7 +166,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                     self?.mapView.callout.dismiss()
                 }
             }
-        })
+        }
     }
     
     // MARK: - Route

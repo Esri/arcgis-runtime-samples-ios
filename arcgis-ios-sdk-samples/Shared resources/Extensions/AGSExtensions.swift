@@ -29,6 +29,8 @@ extension AGSJobStatus {
             return "Succeeded"
         case .failed:
             return "Failed"
+        @unknown default:
+            return "Unknown"
         }
     }
 }

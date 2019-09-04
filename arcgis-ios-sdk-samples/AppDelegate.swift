@@ -89,11 +89,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         //enable/disable touches based on settings
         let bool = UserDefaults.standard.bool(forKey: "showTouch")
         if bool {
-            DemoTouchManager.showTouches()
-            DemoTouchManager.touchBorderColor = .lightGray
-            DemoTouchManager.touchFillColor = UIColor(white: 231 / 255.0, alpha: 1)
+            DemoTouchManager.shared.showTouches()
+            DemoTouchManager.shared.touchBorderColor = .lightGray
+            DemoTouchManager.shared.touchFillColor = UIColor(white: 231 / 255.0, alpha: 1)
         } else {
-            DemoTouchManager.hideTouches()
+            DemoTouchManager.shared.hideTouches()
         }
     }
     

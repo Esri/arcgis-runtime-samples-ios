@@ -37,7 +37,7 @@ class MMLLayersViewController: UITableViewController {
     }
     
     /// A convenience type for the table view sections.
-    private enum Section: Int {
+    private enum Section: CaseIterable {
         case operational, removed
         
         var label: String {
@@ -53,11 +53,11 @@ class MMLLayersViewController: UITableViewController {
     // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return Section.allCases.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch Section(rawValue: section)! {
+        switch Section.allCases[section] {
         case .operational:
             return map?.operationalLayers.count ?? 0
         case .removed:
@@ -66,14 +66,14 @@ class MMLLayersViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Section(rawValue: section)?.label
+        return Section.allCases[section].label
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LayerCell", for: indexPath)
         
         let layerForIndexPath: AGSLayer? = {
-            switch Section(rawValue: indexPath.section)! {
+            switch Section.allCases[indexPath.section] {
             case .operational:
                 return map?.operationalLayers.object(at: indexPath.row) as? AGSLayer
             case .removed:
@@ -87,7 +87,7 @@ class MMLLayersViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        switch Section(rawValue: indexPath.section)! {
+        switch Section.allCases[indexPath.section] {
         case .operational:
             return .delete
         case .removed:
@@ -96,12 +96,12 @@ class MMLLayersViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return Section(rawValue: indexPath.section) == .operational
+        return Section.allCases[indexPath.section] == .operational
     }
     
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        if Section(rawValue: sourceIndexPath.section) == .operational,
-            Section(rawValue: proposedDestinationIndexPath.section) == .operational {
+        if Section.allCases[sourceIndexPath.section] == .operational,
+            Section.allCases[proposedDestinationIndexPath.section] == .operational {
             // only allow reordering within the operational layers section
             return proposedDestinationIndexPath
         }
@@ -148,6 +148,8 @@ class MMLLayersViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             })
         case .none:
+            break
+        @unknown default:
             break
         }
     }

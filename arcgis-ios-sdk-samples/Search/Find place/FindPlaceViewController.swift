@@ -27,10 +27,14 @@ class FindPlaceViewController: UIViewController {
     private var textFieldLocationButton: UIButton!
     
     private var map: AGSMap!
-    private var graphicsOverlay: AGSGraphicsOverlay!
+    private let graphicsOverlay = AGSGraphicsOverlay()
     
     private var locatorTask: AGSLocatorTask!
-    private var suggestResults: [AGSSuggestResult]!
+    private var suggestResults = [AGSSuggestResult]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     private var suggestRequestOperation: AGSCancelable!
     private var selectedSuggestResult: AGSSuggestResult!
     private var preferredSearchLocation: AGSPoint!
@@ -82,9 +86,8 @@ class FindPlaceViewController: UIViewController {
             }
         }
         
-        //instantiate the graphicsOverlay and add to the map view
-        self.graphicsOverlay = AGSGraphicsOverlay()
-        self.mapView.graphicsOverlays.add(self.graphicsOverlay)
+        //add the graphicsOverlay to the map view
+        self.mapView.graphicsOverlays.add(graphicsOverlay)
         
         //initialize locator task
         self.locatorTask = AGSLocatorTask(url: URL(string: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
@@ -134,7 +137,7 @@ class FindPlaceViewController: UIViewController {
                 animations: { [weak self] in
                     self?.view.layoutIfNeeded()
                 },
-                completion: { [weak self] (finished) in
+                completion: { [weak self] (_) in
                     self?.isTableViewAnimating = false
                     self?.isTableViewVisible = expand
                 }
@@ -182,7 +185,7 @@ class FindPlaceViewController: UIViewController {
             for graphic in graphics {
                 multipoint.points.add(graphic.geometry as! AGSPoint)
             }
-            self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent)) { [weak self] (finished: Bool) in
+            self.mapView.setViewpoint(AGSViewpoint(targetExtent: multipoint.extent)) { [weak self] (_) in
                 self?.canDoExtentSearch = true
             }
         }
@@ -208,15 +211,15 @@ class FindPlaceViewController: UIViewController {
         suggestParameters.preferredSearchLocation = flag ? nil : self.mapView.locationDisplay.mapLocation
         
         //get suggestions
-        self.suggestRequestOperation = self.locatorTask.suggest(withSearchText: string, parameters: suggestParameters) { (result: [AGSSuggestResult]?, error: Error?) in
-            if string == textField.text { //check if the search string has not changed in the meanwhile
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    //update the suggest results and reload the table
-                    self.suggestResults = result
-                    self.tableView.reloadData()
-                }
+        self.suggestRequestOperation = self.locatorTask.suggest(withSearchText: string, parameters: suggestParameters) { [weak self] (suggestResults, error) in
+            //check if the search string has not changed in the meanwhile
+            guard string == textField.text else { return }
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let suggestResults = suggestResults {
+                //update the suggest results and reload the table
+                self?.suggestResults = suggestResults
             }
         }
     }
@@ -318,10 +321,10 @@ class FindPlaceViewController: UIViewController {
             //if no, then goecode the suggestion
             //else use the geocoded location, to find the POIs
             if self.preferredSearchLocation == nil {
-                self.geocodeUsingSuggestResult(self.selectedSuggestResult, completion: { [weak self] in
+                self.geocodeUsingSuggestResult(self.selectedSuggestResult) { [weak self] in
                     //find the POIs wrt location
                     self?.geocodePOIs(poi, location: self!.preferredSearchLocation, extent: nil)
-                })
+                }
             } else {
                 self.geocodePOIs(poi, location: self.preferredSearchLocation, extent: nil)
             }
@@ -362,15 +365,11 @@ extension FindPlaceViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rows = 0
-        if let count = self.suggestResults?.count {
-            if self.selectedTextField == self.preferredSearchLocationTextField {
-                rows = count + 1
-            } else {
-                rows = count
-            }
+        var rows = suggestResults.count
+        if selectedTextField == preferredSearchLocationTextField {
+            rows += 1
         }
-        self.animateTableView(expand: rows > 0)
+        animateTableView(expand: rows > 0)
         return rows
     }
     

@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate, DirectionsListVCDelegate {
+class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate, DirectionsListViewControllerDelegate {
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var routeParametersBBI: UIBarButtonItem!
@@ -211,7 +211,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             animations: { [weak self] in
                 self?.view.layoutIfNeeded()
             },
-            completion: { [weak self] (finished) in
+            completion: { [weak self] (_) in
                 self?.isDirectionsListVisible.toggle()
             }
         )
@@ -225,7 +225,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             animations: { [weak self] in
                 self?.view.layoutIfNeeded()
             },
-            completion: { [weak self] (finished) in
+            completion: { [weak self] (_) in
                 if !visible {
                     self?.isDirectionsListVisible = false
                 }
@@ -252,7 +252,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         return .none
     }
     
-    // MARK: - DirectionsListVCDelegate
+    // MARK: - DirectionsListViewControllerDelegate
     
     func directionsListViewControllerDidDeleteRoute(_ directionsListViewController: DirectionsListViewController) {
         self.generatedRoute = nil

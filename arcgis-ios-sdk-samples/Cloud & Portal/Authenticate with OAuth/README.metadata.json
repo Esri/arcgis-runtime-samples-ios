@@ -1,0 +1,30 @@
+{
+    "category": "Cloud and Portal",
+    "description": "Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers).",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "Authentication",
+        "Security",
+        "OAuth",
+        "AGSOAuthConfiguration",
+        "AGSAuthenticationManager",
+        "AGSPortal",
+        "AGSPortalItem"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSOAuthConfiguration",
+        "AGSAuthenticationManager",
+        "AGSPortal",
+        "AGSPortalItem"
+    ],
+    "snippets": [
+        "AuthenticateWithOAuthViewController.swift"
+    ],
+    "title": "Authenticate with OAuth"
+}

@@ -1,0 +1,30 @@
+{
+    "category": "Geometry",
+    "description": "Perform geodesic operations using the GeometryEngine. Geodesic calculations take into account the curvature of the Earth. Planar calculations are based on a 2D Cartesian plane.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "geometry engine",
+        "densify",
+        "distance",
+        "geodetic",
+        "geodesic",
+        "AGSGeometry",
+        "AGSGeometryEngine",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/geodesic-operations.htm",
+    "relevant_apis": [
+        "AGSGeometry",
+        "AGSGeometryEngine",
+        "AGSGraphic",
+        "AGSGraphicsOverlay"
+    ],
+    "snippets": [
+        "GeodesicOperationsViewController.swift"
+    ],
+    "title": "Geodesic operations"
+}

@@ -22,7 +22,7 @@ class SegmentedViewController: UIViewController {
     private var sourceCodeVC: SourceCodeViewController!
     private var sampleInfoVC: SampleInfoViewController!
     
-    var filenames: [String]?
+    var filenames = [String]()
     var readmeURL: URL?
     
     // MARK: - Navigation

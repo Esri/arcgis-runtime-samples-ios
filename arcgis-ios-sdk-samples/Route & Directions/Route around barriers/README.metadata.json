@@ -1,0 +1,40 @@
+{
+    "category": "Route and Directions",
+    "description": "Find a route that reaches all stops without crossing any barriers.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "network",
+        "routing",
+        "barriers",
+        "stops",
+        "directions",
+        "maneuver",
+        "AGSRouteTask",
+        "AGSRouteParameters",
+        "AGSStop",
+        "AGSRouteResult",
+        "AGSRoute",
+        "AGSDirectionManeuver",
+        "AGSPolygonBarrier"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/route-around-barriers.htm",
+    "relevant_apis": [
+        "AGSRouteTask",
+        "AGSRouteParameters",
+        "AGSStop",
+        "AGSRouteResult",
+        "AGSRoute",
+        "AGSDirectionManeuver",
+        "AGSPolygonBarrier"
+    ],
+    "snippets": [
+        "RouteAroundBarriersViewController.swift",
+        "RouteParametersViewController.swift",
+        "DirectionsListViewController.swift"
+    ],
+    "title": "Route around barriers"
+}

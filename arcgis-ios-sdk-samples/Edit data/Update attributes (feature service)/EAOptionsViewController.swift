@@ -20,7 +20,7 @@ protocol EAOptionsVCDelegate: AnyObject {
 }
 
 class EAOptionsViewController: UITableViewController {
-    var options: [String]!
+    var options = [String]()
     weak var delegate: EAOptionsVCDelegate?
     
     // MARK: - Table view data source
@@ -30,13 +30,13 @@ class EAOptionsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.options?.count ?? 0
+        return options.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EAOptionsCell", for: indexPath)
         
-        cell.textLabel?.text = self.options[indexPath.row]
+        cell.textLabel?.text = options[indexPath.row]
         
         return cell
     }

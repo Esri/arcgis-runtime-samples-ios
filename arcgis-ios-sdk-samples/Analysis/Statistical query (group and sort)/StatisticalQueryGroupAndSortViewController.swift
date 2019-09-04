@@ -48,7 +48,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         self.serviceFeatureTable = serviceFeatureTable
         
         // Load feature table
-        serviceFeatureTable.load(completion: { [weak self] (error) in
+        serviceFeatureTable.load { [weak self] (error) in
             guard let self = self else {
                 return
             }
@@ -62,7 +62,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             // Set title
             let tableName = serviceFeatureTable.tableName
             self.titleLabel.text = "Statistics: \(tableName)"
-
+            
             // Get field names
             self.fieldNames = serviceFeatureTable.fields.compactMap { (field) -> String? in
                 if field.type != .OID && field.type != .globalID {
@@ -79,7 +79,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                 }
                 return nil
             }
-        })
+        }
         
         // Setup UI Controls
         setupUI()
@@ -113,7 +113,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         statisticsQueryParameters.orderByFields = selectedOrderByFields
         
         // Execute the statistical query with parameters
-        serviceFeatureTable?.queryStatistics(with: statisticsQueryParameters, completion: { [weak self] (statisticsQueryResult, error) in
+        serviceFeatureTable?.queryStatistics(with: statisticsQueryParameters) { [weak self] (statisticsQueryResult, error) in
             guard let self = self else {
                 return
             }
@@ -126,7 +126,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
                 self.statisticsQueryResult = statisticsQueryResult
                 self.performSegue(withIdentifier: "ShowResultsSegue", sender: self)
             }
-        })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -363,6 +363,8 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
             return "Ascending"
         case .descending:
             return "Descending"
+        @unknown default:
+            return "Unknown"
         }
     }
 }

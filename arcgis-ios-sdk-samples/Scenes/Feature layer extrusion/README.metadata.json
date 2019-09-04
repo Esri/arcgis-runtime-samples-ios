@@ -1,0 +1,17 @@
+{
+    "category": "Scenes",
+    "description": "This sample demonstrates how to apply extrusion to a renderer on a feature layer.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-extrusion.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "FeatureLayerExtrusionViewController.swift"
+    ],
+    "title": "Feature layer extrusion"
+}

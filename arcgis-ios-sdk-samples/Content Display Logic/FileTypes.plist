@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Mobile Map Packages</key>
+	<array>
+		<string>mmpk</string>
+	</array>
+	<key>Mobile Scene Packages</key>
+	<array>
+		<string>mspk</string>
+	</array>
+	<key>Rasters</key>
+	<array>
+		<string>dt2</string>
+	</array>
+	<key>Scene Layer Packages</key>
+	<array>
+		<string>slpk</string>
+	</array>
+	<key>Styles</key>
+	<array>
+		<string>stylx</string>
+	</array>
+	<key>Tile Packages</key>
+	<array>
+		<string>tpk</string>
+	</array>
+</dict>
+</plist>

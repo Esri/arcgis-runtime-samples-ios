@@ -1,0 +1,32 @@
+{
+    "category": "Layers",
+    "description": "Find features in a sublayer based on attributes and location.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "Query",
+        "Sublayer",
+        "MapServer",
+        "Table",
+        "ArcGIS map image sublayer",
+        "AGSServiceFeatureTable",
+        "AGSArcGISMapImageLayer",
+        "AGSArcGISMapImageSublayer.load(completion:)",
+        "AGSArcGISMapImageSublayer",
+        "AGSArcGISMapImageSublayer.table"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/query-a-map-image-sublayer.htm",
+    "relevant_apis": [
+        "AGSServiceFeatureTable",
+        "AGSArcGISMapImageLayer",
+        "AGSArcGISMapImageSublayer.load(completion:)",
+        "AGSArcGISMapImageSublayer",
+        "AGSArcGISMapImageSublayer.table"
+    ],
+    "snippets": [
+        "QueryMapImageSublayerViewController.swift"
+    ],
+    "title": "Query a map image sublayer"
+}

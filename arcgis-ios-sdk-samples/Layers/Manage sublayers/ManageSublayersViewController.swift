@@ -20,7 +20,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
     @IBOutlet private var mapView: AGSMapView!
     
     private var workspaceID = "MyDatabaseWorkspaceIDSSR2"
-    private var removedMapImageSublayers: [AGSArcGISMapImageSublayer]!
+    private var removedMapImageSublayers = [AGSArcGISMapImageSublayer]()
     private var mapImageLayer: AGSArcGISMapImageLayer!
     
     override func viewDidLoad() {
@@ -33,10 +33,10 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         let map = AGSMap(basemap: .streets())
         
         //initialize map image layer
-        self.mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)
+        let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)
         
         //add layer to map
-        map.operationalLayers.add(self.mapImageLayer)
+        map.operationalLayers.add(mapImageLayer)
         
         //initial viewpoint
         let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference: .webMercator())
@@ -49,15 +49,15 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         
         //create sublayers from tableSublayerSource
         self.createSublayers()
+        
+        //store the map image layer for later use
+        self.mapImageLayer = mapImageLayer
     }
     
     private func createSublayers() {
         //We will create 2 mapImageSublayers from tableSublayerSource with known workspaceID and dataSourceName
         //These sublayers are not yet part of the mapImageLayer's sublayers, so will be shown as part of the 
         //removed sublayers array at first
-        
-        //array
-        self.removedMapImageSublayers = [AGSArcGISMapImageSublayer]()
         
         //create tableSublayerSource from workspaceID and dataSourceName
         let tableSublayerSource1 = AGSTableSublayerSource(workspaceID: self.workspaceID, dataSourceName: "ss6.gdb.rivers")
@@ -84,7 +84,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         
         //name for the sublayer
         mapImageSublayer2.name = "Lakes"
-        self.removedMapImageSublayers.append(contentsOf: [mapImageSublayer1, mapImageSublayer2])
+        removedMapImageSublayers.append(contentsOf: [mapImageSublayer1, mapImageSublayer2])
     }
     
     // MARK: - MapImageSublayersViewControllerDelegate

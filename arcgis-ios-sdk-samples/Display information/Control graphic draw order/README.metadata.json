@@ -1,0 +1,24 @@
+{
+    "category": "Display information",
+    "description": "Change the drawing order of a graphic.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "draw order",
+        "graphic",
+        "AGSGraphicsOverlay",
+        "AGSGraphic"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/control-graphic-draw-order.htm",
+    "relevant_apis": [
+        "AGSGraphicsOverlay",
+        "AGSGraphic"
+    ],
+    "snippets": [
+        "GraphicDrawOrderViewController.swift"
+    ],
+    "title": "Control graphic draw order"
+}

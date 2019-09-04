@@ -225,7 +225,7 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     /// Retrieves the operational layer in the map with the given name, if it exists.
     private func operationalMapLayer(named name: String) -> AGSLayer? {
         let layers = map?.operationalLayers as? [AGSLayer]
-        return layers?.first(where: { $0.name == name })
+        return layers?.first { $0.name == name }
     }
     
     /// The service ID retrived from the layer's `AGSArcGISFeatureLayerInfo`, if it is a feature layer.

@@ -1,0 +1,27 @@
+{
+    "category": "Layers",
+    "description": "Add table sublayer source as map image sublayers. Remove and rearrange existing sublayers in a map image layer.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "ArcGIS map image layer",
+        "sublayer",
+        "AGSTableSublayerSource",
+        "AGSArcGISMapImagelayer",
+        "AGSArcGISMapImageSublayer"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/manage-sublayers.htm",
+    "relevant_apis": [
+        "AGSTableSublayerSource",
+        "AGSArcGISMapImagelayer",
+        "AGSArcGISMapImageSublayer"
+    ],
+    "snippets": [
+        "ManageSublayersViewController.swift",
+        "MapImageSublayersViewController.swift"
+    ],
+    "title": "Manage sublayers"
+}

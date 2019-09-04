@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "description": "This sample creates a map with a standard ESRI Imagery with Labels basemap that is centered on a latitude and longitude location and zoomed into a specific level of detail.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/set-initial-map-location.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "SetInitialMapLocationViewController.swift"
+    ],
+    "title": "Set initial map location"
+}

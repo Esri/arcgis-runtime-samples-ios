@@ -1,0 +1,32 @@
+{
+    "category": "Scenes",
+    "description": "This sample demonstrates how to keep the viewpoints of multiple map or scene views in sync, so that navigating one view immediately updates the others.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "maps",
+        "scenes",
+        "viewpoints",
+        "synchronization",
+        "AGSGeoView",
+        "AGSGeoView.viewpointChangeHandler",
+        "AGSGeoView.isNavigating",
+        "AGSGeoView.currentViewpoint(with:)",
+        "AGSGeoView.setViewpoint(_:)"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSGeoView",
+        "AGSGeoView.viewpointChangeHandler",
+        "AGSGeoView.isNavigating",
+        "AGSGeoView.currentViewpoint(with:)",
+        "AGSGeoView.setViewpoint(_:)"
+    ],
+    "snippets": [
+        "SyncMapAndSceneViewsViewController.swift"
+    ],
+    "title": "Sync map and scene views"
+}

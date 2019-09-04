@@ -1,0 +1,27 @@
+{
+    "category": "Display information",
+    "description": "Identify graphics in a graphics overlay.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "identify",
+        "graphics",
+        "AGSMapView",
+        "AGSIdentifyGraphicsOverlayResult",
+        "AGSGraphicsOverlay",
+        "AGSGeoViewTouchDelegate"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/identify-graphics.htm",
+    "relevant_apis": [
+        "AGSMapView",
+        "AGSIdentifyGraphicsOverlayResult",
+        "AGSGraphicsOverlay",
+        "AGSGeoViewTouchDelegate"
+    ],
+    "snippets": [
+        "GOIdentifyViewController.swift"
+    ],
+    "title": "Identify graphics"
+}

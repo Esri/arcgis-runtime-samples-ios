@@ -1,0 +1,26 @@
+{
+    "category": "Maps",
+    "description": "Set the map's reference scale and which feature layers should honor the reference scale.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "Maps and Scenes",
+        "AGSMap",
+        "AGSFeatureLayer"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSMap",
+        "AGSFeatureLayer"
+    ],
+    "snippets": [
+        "MapReferenceScaleViewController.swift",
+        "MapReferenceScaleSettingsViewController.swift",
+        "MapReferenceScaleLayerSelectionViewController.swift"
+    ],
+    "title": "Map reference scale"
+}

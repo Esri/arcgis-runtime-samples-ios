@@ -79,7 +79,7 @@ class StatisticalQueryViewController: UIViewController {
         }
         
         // Execute the statistical query with parameters
-        serviceFeatureTable?.queryStatistics(with: statisticsQueryParameters, completion: { [weak self] (statisticsQueryResult, error) in
+        serviceFeatureTable?.queryStatistics(with: statisticsQueryParameters) { [weak self] (statisticsQueryResult, error) in
             //
             // If there an error, display it
             guard error == nil else {
@@ -102,6 +102,6 @@ class StatisticalQueryViewController: UIViewController {
                 // Show result
                 self?.presentAlert(title: "Statistical Query Results", message: resultMessage)
             }
-        })
+        }
     }
 }

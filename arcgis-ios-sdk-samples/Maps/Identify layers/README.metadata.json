@@ -1,0 +1,17 @@
+{
+    "category": "Maps",
+    "description": "This sample demonstrates how to identify features on a map. These features could be from different layers present in the map.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/identify-layers.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "IdentifyLayersViewController.swift"
+    ],
+    "title": "Identify layers"
+}

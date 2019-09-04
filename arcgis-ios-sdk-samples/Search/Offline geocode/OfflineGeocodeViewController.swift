@@ -23,7 +23,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     private var locatorTask: AGSLocatorTask!
     private var geocodeParameters: AGSGeocodeParameters!
     private var reverseGeocodeParameters: AGSReverseGeocodeParameters!
-    private var graphicsOverlay: AGSGraphicsOverlay!
+    private let graphicsOverlay = AGSGraphicsOverlay()
     private var locatorTaskOperation: AGSCancelable!
     private var magnifierOffset: CGPoint!
     private var longPressedAndMoving = false
@@ -48,9 +48,8 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         //will need that to show callout
         self.mapView.touchDelegate = self
         
-        //initialize the graphics overlay and add to the map view
+        //add the graphics overlay to the map view
         //will add the resulting graphics to this overlay
-        self.graphicsOverlay = AGSGraphicsOverlay()
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         //initialize locator task
@@ -94,7 +93,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.graphicsOverlay.graphics.removeAllObjects()
         
         //perform geocode with the input
-        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self]  (results: [AGSGeocodeResult]?, error: Error?) in
+        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters) { [weak self]  (results: [AGSGeocodeResult]?, error: Error?) in
             guard let self = self else {
                 return
             }
@@ -115,7 +114,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                     self.presentAlert(message: "No results found")
                 }
             }
-        })
+        }
     }
     
     private func reverseGeocode(point: AGSPoint) {

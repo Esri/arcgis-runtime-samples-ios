@@ -89,7 +89,7 @@ class MapViewScreenshotViewController: UIViewController {
             animations: {
                 flashView.alpha = 0
             },
-            completion: { [weak self] (finished) in
+            completion: { [weak self] (_) in
                 //On completion play the shutter sound
                 self?.playShutterSound()
                 flashView.removeFromSuperview()

@@ -1,0 +1,17 @@
+{
+    "category": "Features",
+    "description": "This sample demonstrates how to show a feature layer on a map using a geodatabase",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-geodatabase-.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "FeatureLayerGDBViewController.swift"
+    ],
+    "title": "Feature layer (geodatabase)"
+}

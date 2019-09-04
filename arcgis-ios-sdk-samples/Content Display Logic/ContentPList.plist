@@ -186,6 +186,18 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Honor mobile map package expiration date</string>
+				<key>descriptionText</key>
+				<string>Access the expiration information of an expired mobile map package.</string>
+				<key>storyboardName</key>
+				<string>HonorMobileMapPackageExpirationDate</string>
+				<key>dependency</key>
+				<array>
+					<string>LothianRiversAnnoMMPK</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Generate offline map</string>
 				<key>storyboardName</key>
 				<string>GenerateOfflineMap</string>
@@ -240,6 +252,22 @@
 				<key>storyboardName</key>
 				<string>MapReferenceScale</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Show location history</string>
+				<key>descriptionText</key>
+				<string>Display your location history on the map.</string>
+				<key>storyboardName</key>
+				<string>LocationHistory</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Download preplanned map</string>
+				<key>descriptionText</key>
+				<string>Take a map offline using a preplanned map area.</string>
+				<key>storyboardName</key>
+				<string>DownloadPreplannedMap</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -247,6 +275,31 @@
 		<string>Layers</string>
 		<key>children</key>
 		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Dictionary renderer with feature layer</string>
+				<key>storyboardName</key>
+				<string>FeatureLayerDictionaryRenderer</string>
+				<key>descriptionText</key>
+				<string>Convert features into graphics to show them with mil2525d symbols.</string>
+				<key>dependency</key>
+				<array>
+					<string>mil2525d</string>
+					<string>militaryoverlay</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Colormap renderer</string>
+				<key>storyboardName</key>
+				<string>ColormapRenderer</string>
+				<key>descriptionText</key>
+				<string>Apply a colormap renderer to a raster.</string>
+				<key>dependency</key>
+				<array>
+					<string>ShastaBWRaster</string>
+				</array>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>ArcGIS tiled layer (URL)</string>
@@ -553,6 +606,18 @@
 				<key>storyboardName</key>
 				<string>GroupLayers</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Control annotation sublayer visibility</string>
+				<key>descriptionText</key>
+				<string>Use annotation sublayers to gain finer control of annotation layer subtypes.</string>
+				<key>storyboardName</key>
+				<string>ControlAnnotationSublayerVisibility</string>
+				<key>dependency</key>
+				<array>
+					<string>GasDeviceAnnoMMPK</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -838,6 +903,10 @@
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
 				<string>Demonstrates how to display billboarded point graphics with military symbols.</string>
+				<key>dependency</key>
+				<array>
+					<string>mil2525d</string>
+				</array>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -971,6 +1040,14 @@
 		<array>
 			<dict>
 				<key>displayName</key>
+				<string>Project</string>
+				<key>storyboardName</key>
+				<string>Project</string>
+				<key>descriptionText</key>
+				<string>Project a point to another spatial reference.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Create geometries</string>
 				<key>storyboardName</key>
 				<string>CreateGeometries</string>
@@ -1092,6 +1169,14 @@
 				<string>FindServiceAreaInteractive</string>
 				<key>descriptionText</key>
 				<string>This samples shows how to find service areas around a point</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Find closest facility to multiple incidents (service)</string>
+				<key>descriptionText</key>
+				<string>Find routes from several locations to the respective closest facility.</string>
+				<key>storyboardName</key>
+				<string>FindClosestFacilityMultipleIncidentsService</string>
 			</dict>
 		</array>
 	</dict>
@@ -1219,6 +1304,22 @@
 				<key>descriptionText</key>
 				<string>Uses Windows credentials to access services hosted on a portal secured with Integrated Windows Authentication (IWA).</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Authenticate with OAuth</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers). Accessing secured items requires a login on the portal that hosts them (an ArcGIS Online account, for example).</string>
+				<key>storyboardName</key>
+				<string>AuthenticateWithOAuth</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Token authentication</string>
+				<key>descriptionText</key>
+				<string>This sample demonstrates how to access a map service that is secured with ArcGIS token-based authentication.</string>
+				<key>storyboardName</key>
+				<string>TokenAuthentication</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1226,6 +1327,30 @@
 		<string>Scenes</string>
 		<key>children</key>
 		<array>
+			<dict>
+				<key>descriptionText</key>
+				<string>Set the terrain surface with elevation described by a raster file.</string>
+				<key>storyboardName</key>
+				<string>CreateTerrainSurfaceFromLocalRaster</string>
+				<key>displayName</key>
+				<string>Create terrain surface from a local raster</string>
+				<key>dependency</key>
+				<array>
+					<string>MontereyElevationRaster</string>
+				</array>
+			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Set the terrain surface with elevation described by a local tile package.</string>
+				<key>storyboardName</key>
+				<string>CreateTerrainSurfaceFromLocalTilePackage</string>
+				<key>displayName</key>
+				<string>Create terrain surface from a local tile package</string>
+				<key>dependency</key>
+				<array>
+					<string>MontereyElevation</string>
+				</array>
+			</dict>
 			<dict>
 				<key>descriptionText</key>
 				<string>This sample shows you how to open a web scene from a portal item.</string>
@@ -1402,6 +1527,25 @@
 				<string>ChooseCameraController</string>
 				<key>descriptionText</key>
 				<string>Control the behavior of the camera in a scene.</string>
+				<key>dependency</key>
+				<array>
+					<string>Bristol3DModel</string>
+				</array>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>displayName</key>
+		<string>Utility Network</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>descriptionText</key>
+				<string>Perform a connected trace against an electric Utility Network.</string>
+				<key>storyboardName</key>
+				<string>ConnectedTrace</string>
+				<key>displayName</key>
+				<string>Connected Trace</string>
 			</dict>
 		</array>
 	</dict>

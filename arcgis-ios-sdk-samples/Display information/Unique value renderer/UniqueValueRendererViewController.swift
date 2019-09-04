@@ -16,39 +16,47 @@
 import UIKit
 import ArcGIS
 
+/// A view controller that manages the interface of the Unique Value Renderer
+/// sample.
 class UniqueValueRendererViewController: UIViewController {
-    @IBOutlet var mapView: AGSMapView!
+    /// The map view managed by the view controller.
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            //assign map to the map view
+            mapView.map = makeMap()
+            
+            //set initial viewpoint
+            let center = AGSPoint(x: -12966000.5, y: 4441498.5, spatialReference: .webMercator())
+            mapView.setViewpoint(AGSViewpoint(center: center, scale: 4e7))
+        }
+    }
     
-    private var featureLayer: AGSFeatureLayer!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["UniqueValueRendererViewController"]
-
+    /// Creates a map with a feature layer configured with a unique value
+    /// renderer.
+    ///
+    /// - Returns: A new `AGSMap` object.
+    func makeMap() -> AGSMap {
         //instantiate map with basemap
         let map = AGSMap(basemap: .topographic())
         
         //create feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)
-        self.featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        
+        //make unique value renderer and assign it to the feature layer
+        featureLayer.renderer = makeUniqueValueRenderer()
         
         //add the layer to the map as operational layer
-        map.operationalLayers.add(self.featureLayer)
+        map.operationalLayers.add(featureLayer)
         
-        //assign map to the map view
-        self.mapView.map = map
-        
-        //set initial viewpoint
-        let center = AGSPoint(x: -12966000.5, y: 4441498.5, spatialReference: .webMercator())
-        self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 4e7))
-        
-        //add unique value renderer
-        self.addUniqueValueRenderer()
+        return map
     }
-
-    private func addUniqueValueRenderer() {
+    
+    /// Creates a unique value renderer configured to render California as red,
+    /// Arizona as green, and Nevada as blue.
+    ///
+    /// - Returns: A new `AGSUniqueValueRenderer` object.
+    func makeUniqueValueRenderer() -> AGSUniqueValueRenderer {
         //instantiate a new unique value renderer
         let renderer = AGSUniqueValueRenderer()
         
@@ -74,7 +82,15 @@ class UniqueValueRendererViewController: UIViewController {
         //add the values to the renderer
         renderer.uniqueValues.append(contentsOf: [californiaValue, arizonaValue, nevadaValue])
         
-        //assign the renderer to the feature layer
-        self.featureLayer.renderer = renderer
+        return renderer
+    }
+    
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //add the source code button item to the right of navigation bar
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["UniqueValueRendererViewController"]
     }
 }

@@ -1,0 +1,19 @@
+{
+    "category": "Maps",
+    "description": "This samples demonstrates how to access and add bookmarks to a map",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/manage-bookmarks.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "BookmarksViewController.swift",
+        "BookmarksListViewController.swift"
+    ],
+    "title": "Manage bookmarks"
+}

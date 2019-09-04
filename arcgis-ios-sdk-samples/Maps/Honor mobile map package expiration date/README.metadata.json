@@ -1,0 +1,24 @@
+{
+    "category": "Maps",
+    "description": "Access the expiration information of an expired mobile map package.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "expiration",
+        "mmpk",
+        "AGSExpiration",
+        "AGSMobileMapPackage"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSExpiration",
+        "AGSMobileMapPackage"
+    ],
+    "snippets": [
+        "HonorMobileMapPackageExpirationDateViewController.swift"
+    ],
+    "title": "Honor mobile map package expiration date"
+}

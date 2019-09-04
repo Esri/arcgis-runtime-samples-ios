@@ -22,7 +22,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     
     private var locatorTask: AGSLocatorTask!
     private var geocodeParameters: AGSGeocodeParameters!
-    private var graphicsOverlay: AGSGraphicsOverlay!
+    private let graphicsOverlay = AGSGraphicsOverlay()
     
     private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
@@ -37,8 +37,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.map = map
         self.mapView.touchDelegate = self
         
-        //initialize the graphics overlay and add to the map view
-        self.graphicsOverlay = AGSGraphicsOverlay()
+        //add the graphics overlay to the map view
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         //initialize locator task
@@ -73,7 +72,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         self.mapView.callout.dismiss()
         
         //perform geocode with input text
-        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters, completion: { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
+        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
             guard let self = self else {
                 return
             }
@@ -92,7 +91,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
                 //provide feedback in case of failure
                 self.presentAlert(message: "No results found")
             }
-        })
+        }
     }
     
     // MARK: - Callout

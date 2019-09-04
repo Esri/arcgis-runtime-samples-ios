@@ -130,7 +130,7 @@ class RelatedFeaturesViewController: UITableViewController {
         //show progress hud
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        relatedTable.applyEdits { [weak self] (results: [AGSFeatureEditResult]?, error: Error?) in
+        relatedTable.applyEdits { [weak self] (_, error) in
             SVProgressHUD.dismiss()
             
             if let error = error {

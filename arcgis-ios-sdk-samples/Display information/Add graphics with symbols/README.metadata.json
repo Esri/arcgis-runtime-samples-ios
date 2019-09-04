@@ -1,0 +1,41 @@
+{
+    "category": "Display information",
+    "description": "Use a symbol style to display a graphic on a graphics overlay.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "symbol style",
+        "graphic",
+        "AGSGraphicsOverlay",
+        "AGSGraphic",
+        "AGSPoint",
+        "AGSPolyline",
+        "AGSPolygon",
+        "AGSSimpleMarkerSymbol",
+        "AGSTextSymbol",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleFillSymbol",
+        "AGSPolylineBuilder",
+        "AGSPolygonBuilder"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/add-graphics-with-symbols.htm",
+    "relevant_apis": [
+        "AGSGraphicsOverlay",
+        "AGSGraphic",
+        "AGSPoint",
+        "AGSPolyline",
+        "AGSPolygon",
+        "AGSSimpleMarkerSymbol",
+        "AGSTextSymbol",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleFillSymbol",
+        "AGSPolylineBuilder",
+        "AGSPolygonBuilder"
+    ],
+    "snippets": [
+        "GraphicsWithSymbolsViewController.swift"
+    ],
+    "title": "Add graphics with symbols"
+}

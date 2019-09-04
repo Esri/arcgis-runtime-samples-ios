@@ -1,0 +1,19 @@
+{
+    "category": "Maps",
+    "description": "This sample demonstrates how to open a web map from a URL on your iOS device.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/open-map-url-.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "OpenMapURLViewController.swift",
+        "OpenMapURLSettingsViewController.swift"
+    ],
+    "title": "Open map (URL)"
+}

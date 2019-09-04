@@ -1,0 +1,38 @@
+{
+    "category": "Search",
+    "description": "Geocode addresses to locations and reverse geocode locations to addresses offline.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "offline",
+        "geocode",
+        "search",
+        "locator file",
+        "tile package",
+        "AGSLocatorTask",
+        "AGSGeocodeParameters",
+        "AGSReverseGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSIdentifyGraphicsOverlayResult",
+        "AGSGeoViewTouchDelegate",
+        "AGSGraphicsOverlay"
+
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/offline-geocode.htm",
+    "relevant_apis": [
+        "AGSLocatorTask",
+        "AGSGeocodeParameters",
+        "AGSReverseGeocodeParameters",
+        "AGSGeocodeResult",
+        "AGSIdentifyGraphicsOverlayResult",
+        "AGSGeoViewTouchDelegate",
+        "AGSGraphicsOverlay"
+    ],
+    "snippets": [
+        "OfflineGeocodeViewController.swift",
+        "SanDiegoAddressesViewController.swift"
+    ],
+    "title": "Offline geocode"
+}

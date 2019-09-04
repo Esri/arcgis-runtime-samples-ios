@@ -1,0 +1,33 @@
+{
+    "category": "Geometry",
+    "description": "Clip a geometry with another geometry.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "geometry",
+        "clip",
+        "geometry engine",
+        "AGSGraphicsOverlay",
+        "AGSGraphic",
+        "AGSGeometry",
+        "AGSEnvelope",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleFillSymbol"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSGraphicsOverlay",
+        "AGSGraphic",
+        "AGSGeometry",
+        "AGSEnvelope",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleFillSymbol"
+    ],
+    "snippets": [
+        "ClipGeometryViewController.swift"
+    ],
+    "title": "Clip Geometry"
+}

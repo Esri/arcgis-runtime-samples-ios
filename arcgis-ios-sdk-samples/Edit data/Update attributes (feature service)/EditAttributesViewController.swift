@@ -40,12 +40,15 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
-        self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
-        self.map.operationalLayers.add(self.featureLayer)
+        self.map.operationalLayers.add(featureLayer)
         
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
+        
+        //store the feature layer for later use
+        self.featureLayer = featureLayer
     }
     
     func showCallout(_ feature: AGSFeature, tapLocation: AGSPoint?) {
@@ -58,7 +61,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func applyEdits() {
         SVProgressHUD.show(withStatus: "Applying edits")
         
-        featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
+        featureTable.applyEdits { [weak self] (_, error) in
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -71,7 +74,7 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
                 self.presentAlert(message: "Edits applied successfully")
                 self.showCallout(self.selectedFeature, tapLocation: nil)
             }
-        })
+        }
     }
     
     // MARK: - AGSGeoViewTouchDelegate

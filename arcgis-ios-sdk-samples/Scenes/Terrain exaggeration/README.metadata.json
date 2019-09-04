@@ -1,0 +1,17 @@
+{
+    "category": "Scenes",
+    "description": "This sample demonstrates how to use terrain exaggeration on a surface in a scene.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/terrain-exaggeration.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "TerrainExaggerationViewController.swift"
+    ],
+    "title": "Terrain exaggeration"
+}

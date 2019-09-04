@@ -39,12 +39,15 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: .webMercator()), scale: 2e6)
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
-        self.featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
-        self.map.operationalLayers.add(self.featureLayer)
+        self.map.operationalLayers.add(featureLayer)
 
         self.mapView.map = self.map
         self.mapView.touchDelegate = self
+        
+        //store the feature layer for later use
+        self.featureLayer = featureLayer
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,13 +60,13 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     func setToolbarVisibility(visible: Bool) {
         toolbarBottomConstraint.constant = visible ? 0 : -44 - view.safeAreaInsets.bottom
         
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             self?.view.layoutIfNeeded()
-        }) 
+        }
     }
     
     func applyEdits() {
-        self.featureTable.applyEdits(completion: { [weak self] (result: [AGSFeatureEditResult]?, error: Error?) in
+        self.featureTable.applyEdits { [weak self] (_, error) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
@@ -71,7 +74,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
             }
             //un hide the feature
             self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
-        })
+        }
     }
     
     // MARK: - AGSGeoViewTouchDelegate
@@ -127,7 +130,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     @IBAction func doneAction() {
         if let newGeometry = self.mapView.sketchEditor?.geometry {
             self.selectedFeature.geometry = newGeometry
-            self.featureTable.update(self.selectedFeature, completion: { [weak self] (error: Error?) in
+            self.featureTable.update(self.selectedFeature) { [weak self] (error) in
                 if let error = error {
                     self?.presentAlert(error: error)
                     
@@ -137,7 +140,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
                     //apply edits
                     self?.applyEdits()
                 }
-            })
+            }
         }
         
         //hide toolbar

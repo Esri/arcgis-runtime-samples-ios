@@ -1,0 +1,35 @@
+{
+    "category": "Edit data",
+    "description": "Add, delete or fetch attachments for features from a feature service.",
+    "ignore": false,
+    "images": [
+        "image1.png",
+        "image2.png"
+    ],
+    "keywords": [
+        "attachment",
+        "image",
+        "JPEG",
+        "PNG",
+        "PDF",
+        "TXT",
+        "AGSAttachment",
+        "AGSArcGISFeature",
+        "AGSServiceFeatureTable",
+        "AGSFeatureLayer",
+        "AGSIdentifyLayerResult"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/edit-feature-attachments.htm",
+    "relevant_apis": [
+        "AGSAttachment",
+        "AGSArcGISFeature",
+        "AGSServiceFeatureTable",
+        "AGSFeatureLayer",
+        "AGSIdentifyLayerResult"
+    ],
+    "snippets": [
+        "EditFeatureAttachmentsViewController.swift",
+        "AttachmentsTableViewController.swift"
+    ],
+    "title": "Edit feature attachments"
+}

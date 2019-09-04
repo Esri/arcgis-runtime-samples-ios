@@ -1,0 +1,17 @@
+{
+    "category": "Features",
+    "description": "This sample demonstrates how to show a feature layer on a map using a geopackage.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-geopackage-.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "FeatureLayerGPKGViewController.swift"
+    ],
+    "title": "Feature layer (geopackage)"
+}

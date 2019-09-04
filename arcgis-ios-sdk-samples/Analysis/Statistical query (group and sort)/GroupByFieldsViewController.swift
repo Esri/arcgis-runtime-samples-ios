@@ -70,7 +70,7 @@ class GroupByFieldsViewController: UIViewController, UITableViewDataSource, UITa
                 cell.accessoryType = .none
                 
                 // Remove field from the group by fields
-                let index = selectedFieldNames.index(of: fieldNames[indexPath.row])
+                let index = selectedFieldNames.firstIndex(of: fieldNames[indexPath.row])
                 selectedFieldNames.remove(at: index!)
             }
             

@@ -14,11 +14,34 @@
 // limitations under the License.
 //
 
-// This scripts downloads data for portal items. It takes two arguments. The
+// This scripts downloads data for portal items. It takes three arguments. The
 // first is a path to a plist file defining the portal items to download. The
-// second is a path to the download directory.
+// is a path to a plist file defining how various file types should be
+// organized. The third is a path to the download directory.
+//
+// A mapping of item identifiers to relative paths is maintained inside the
+// download directory. This mapping affords efficiently checking whether an
+// item has already been downloaded.
 
 import Foundation
+
+protocol URLProvider {
+    func makeURL(filename: String) -> URL
+}
+
+struct DestinationURLProvider: URLProvider {
+    let downloadDirectory: URL
+    let fileTypes: [String: [String]]
+    
+    func makeURL(filename: String) -> URL {
+        var url = downloadDirectory
+        if let subdirectory = fileTypes.first(where: { $0.value.contains((filename as NSString).pathExtension) })?.key {
+            url.appendPathComponent(subdirectory, isDirectory: true)
+        }
+        url.appendPathComponent(filename, isDirectory: false)
+        return url
+    }
+}
 
 /// Creates a URL for the given item in the given portal.
 ///
@@ -36,55 +59,70 @@ func makeDataURL(portalURL: URL, itemIdentifier: String) -> URL {
         .appendingPathComponent("data")
 }
 
-/// Creates a URL for a file with the given filename in the given directory.
+/// Returns the name of the file in the ZIP archive at the given url.
 ///
-/// - Parameters:
-///   - downloadDirectoryURL: The directory in which the file will be
-///   downloaded.
-///   - filename: The name of the downloaded file.
-/// - Returns: A new URL.
-func makeDownloadURL(downloadDirectoryURL: URL, filename: String) -> URL {
-    let subdirectories = [
-        "slpk": "Scene Layer Packages",
-        "mspk": "Mobile Scene Packages",
-        "tpk": "Tile Packages"
-    ]
-    var downloadURL = downloadDirectoryURL
-    if let subdirectory = subdirectories[(filename as NSString).pathExtension] {
-        downloadURL.appendPathComponent(subdirectory)
-    }
-    downloadURL.appendPathComponent(filename)
-    return downloadURL
+/// - Parameter url: The url of a ZIP archive.
+/// - Returns: The file name.
+func nameOfFileInArchive(at url: URL) throws -> String {
+    let outputPipe = Pipe()
+    let process = Process()
+    process.executableURL = URL(fileURLWithPath: "/usr/bin/zipinfo", isDirectory: false)
+    process.arguments = ["-1", url.path]
+    process.standardOutput = outputPipe
+    try process.run()
+    process.waitUntilExit()
+    
+    let filenameData = outputPipe.fileHandleForReading.readDataToEndOfFile()
+    return String(data: filenameData, encoding: .utf8)!.trimmingCharacters(in: .whitespacesAndNewlines)
 }
 
-extension FileManager {
-    /// Indicates whether a file or directory exists at the given URL.
-    ///
-    /// - Parameter url: A URL.
-    /// - Returns: `true` if a file or directory at the given path exists,
-    /// otherwise `false`.
-    func fileExists(at url: URL) -> Bool {
-        return fileExists(atPath: url.path)
-    }
-}
-
-/// Downloads the file at the given URL to the given URL.
+/// Uncompresses the data in the archive at the source URL into the destination
+/// URL.
 ///
 /// - Parameters:
-///   - sourceURL: The URL of the file to download.
-///   - destinationURL: The URL to which the file should be downloaded.
-func downloadFile(at sourceURL: URL, to destinationURL: URL, completion: @escaping (Error?) -> Void) {
-    let downloadTask = URLSession.shared.downloadTask(with: sourceURL) { (urlOrNil, responseOrNil, errorOrNil) in
-        if let fileURL = urlOrNil {
+///   - sourceURL: The URL of a ZIP archive.
+///   - destinationURL: The URL at which to uncompress the archive.
+func uncompressArchive(at sourceURL: URL, to destinationURL: URL) throws {
+    FileManager.default.createFile(atPath: destinationURL.path, contents: nil)
+    let fileHandle = try FileHandle(forWritingTo: destinationURL)
+    let process = Process()
+    process.executableURL = URL(fileURLWithPath: "/usr/bin/unzip", isDirectory: false)
+    process.arguments = ["-p", sourceURL.path]
+    process.standardOutput = fileHandle
+    try process.run()
+    process.waitUntilExit()
+}
+
+func downloadFile(at sourceURL: URL, destinationURLProvider: URLProvider, completion: @escaping (Result<URL, Error>) -> Void) {
+    let downloadTask = URLSession.shared.downloadTask(with: sourceURL) { (temporaryURL, response, error) in
+        if let temporaryURL = temporaryURL, let response = response {
             do {
-                try FileManager.default.createDirectory(at: destinationURL.deletingLastPathComponent(), withIntermediateDirectories: true)
-                try FileManager.default.moveItem(at: fileURL, to: destinationURL)
-                completion(nil)
+                let suggestedFilename = response.suggestedFilename!
+                let downloadFilename: String
+                let isArchive = (suggestedFilename as NSString).pathExtension == "zip"
+                if !isArchive {
+                    downloadFilename = suggestedFilename
+                } else {
+                    downloadFilename = try nameOfFileInArchive(at: temporaryURL)
+                }
+                
+                let downloadURL = destinationURLProvider.makeURL(filename: downloadFilename)
+                try FileManager.default.createDirectory(at: downloadURL.deletingLastPathComponent(), withIntermediateDirectories: true)
+                
+                if FileManager.default.fileExists(atPath: downloadURL.path) {
+                    try FileManager.default.removeItem(at: downloadURL)
+                }
+                if isArchive {
+                    try uncompressArchive(at: temporaryURL, to: downloadURL)
+                } else {
+                    try FileManager.default.moveItem(at: temporaryURL, to: downloadURL)
+                }
+                completion(.success(downloadURL))
             } catch {
-                completion(error)
+                completion(.failure(error))
             }
-        } else if let error = errorOrNil {
-            completion(error)
+        } else if let error = error {
+            completion(.failure(error))
         }
     }
     downloadTask.resume()
@@ -100,49 +138,104 @@ struct PortalItem: Decodable {
 
 let arguments = CommandLine.arguments
 
-guard arguments.count == 3 else {
+guard arguments.count == 4 else {
     print("Invalid number of arguments")
     exit(1)
 }
 
 let portalItemsURL = URL(fileURLWithPath: arguments[1], isDirectory: false)
-let downloadDirectoryURL = URL(fileURLWithPath: arguments[2], isDirectory: true)
+let fileTypesURL = URL(fileURLWithPath: arguments[2], isDirectory: false)
+let downloadDirectoryURL = URL(fileURLWithPath: arguments[3], isDirectory: true)
 
-let portalItems: [String: [PortalItem]]
-
-do {
-    let data = try Data(contentsOf: portalItemsURL)
-    portalItems = try PropertyListDecoder().decode([String: [PortalItem]].self, from: data)
-} catch {
-    print("Error decoding portal items: \(error)")
-    exit(1)
+if !FileManager.default.fileExists(atPath: downloadDirectoryURL.path) {
+    do {
+        try FileManager.default.createDirectory(at: downloadDirectoryURL, withIntermediateDirectories: false)
+    } catch {
+        print("Error creating download directory: \(error)")
+        exit(1)
+    }
 }
+
+let portalItems: [String: [PortalItem]] = {
+    do {
+        let data = try Data(contentsOf: portalItemsURL)
+        return try PropertyListDecoder().decode([String: [PortalItem]].self, from: data)
+    } catch {
+        print("Error decoding portal items: \(error)")
+        exit(1)
+    }
+}()
+
+let fileTypes: [String: [String]] = {
+    do {
+        let data = try Data(contentsOf: fileTypesURL)
+        return try PropertyListDecoder().decode([String: [String]].self, from: data)
+    } catch {
+        print("Error decoding file types: \(error)")
+        exit(1)
+    }
+}()
+let destinationURLProvider = DestinationURLProvider(downloadDirectory: downloadDirectoryURL, fileTypes: fileTypes)
+
+typealias Identifier = String
+typealias Filename = String
+typealias DownloadedItems = [Identifier: Filename]
+
+let downloadedItemsURL = downloadDirectoryURL.appendingPathComponent(".downloaded_items", isDirectory: false)
+let previousDownloadedItems: DownloadedItems = {
+    do {
+        let data = try Data(contentsOf: downloadedItemsURL)
+        let decoder = PropertyListDecoder()
+        return try decoder.decode(DownloadedItems.self, from: data)
+    } catch {
+        return [:]
+    }
+}()
+var downloadedItems = previousDownloadedItems
 
 let dispatchGroup = DispatchGroup()
 
 portalItems.forEach { (portalURLString, portalItems) in
     let portalURL = URL(string: portalURLString)!
     portalItems.forEach { (portalItem) in
-        let destinationURL = makeDownloadURL(downloadDirectoryURL: downloadDirectoryURL, filename: portalItem.filename)
-        guard !FileManager.default.fileExists(at: destinationURL) else {
-            return
-        }
-        
-        dispatchGroup.enter()
-        
-        print("Downloading \(portalItem.filename)")
-        fflush(stdout)
-        let sourceURL = makeDataURL(portalURL: portalURL, itemIdentifier: portalItem.identifier)
-        downloadFile(at: sourceURL, to: destinationURL) { (error) in
-            if let error = error {
-                print("Error downloading \(portalItem.filename): \(error)")
-                URLSession.shared.invalidateAndCancel()
-                exit(1)
-            } else {
-                dispatchGroup.leave()
+        // Have we already downloaded the item?
+        let filename = downloadedItems[portalItem.identifier] ?? portalItem.filename
+        if FileManager.default.fileExists(atPath: destinationURLProvider.makeURL(filename: filename).path) {
+            print("Item \(portalItem.identifier) has already been downloaded")
+            // This is a temporary measure for users who currently don't have a
+            // downloaded items file.
+            downloadedItems[portalItem.identifier] = filename
+        } else {
+            print("Downloading item \(portalItem.identifier)")
+            fflush(stdout)
+            
+            dispatchGroup.enter()
+            let sourceURL = makeDataURL(portalURL: portalURL, itemIdentifier: portalItem.identifier)
+            downloadFile(at: sourceURL, destinationURLProvider: destinationURLProvider) { (result) in
+                switch result {
+                case .success(let url):
+                    // ' + 1' removes the leading path separator.
+                    downloadedItems[portalItem.identifier] = url.lastPathComponent
+                    dispatchGroup.leave()
+                case .failure(let error):
+                    print("warning: Error downloading item \(portalItem.identifier): \(error)")
+                    URLSession.shared.invalidateAndCancel()
+                    exit(1)
+                }
             }
         }
     }
 }
 
 dispatchGroup.wait()
+
+// Update the downloaded items file if needed.
+if downloadedItems != previousDownloadedItems {
+    do {
+        let encoder = PropertyListEncoder()
+        let data = try encoder.encode(downloadedItems)
+        try data.write(to: downloadedItemsURL)
+    } catch {
+        print("warning: Error recording downloaded items: \(error)")
+    }
+}

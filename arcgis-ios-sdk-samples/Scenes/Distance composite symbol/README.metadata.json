@@ -1,0 +1,17 @@
+{
+    "category": "Scenes",
+    "description": "Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.",
+    "ignore": false,
+    "images": [
+        "DistanceCompositeSymbol.gif"
+    ],
+    "keywords": [
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/distance-composite-symbol.htm",
+    "relevant_apis": [
+    ],
+    "snippets": [
+        "DistanceCompositeSymbolViewController.swift"
+    ],
+    "title": "Distance composite symbol"
+}

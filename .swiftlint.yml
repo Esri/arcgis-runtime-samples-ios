@@ -25,7 +25,6 @@ disabled_rules: # rule identifiers to exclude from running
   - trailing_whitespace
   - type_body_length
   - type_name
-  - unused_closure_parameter
 
 opt_in_rules: # some rules are only opt-in
   - anyobject_protocol
@@ -43,7 +42,6 @@ opt_in_rules: # some rules are only opt-in
   - empty_xctest_method
   - explicit_init
   - extension_access_modifier
-  - fallthrough
   - fatal_error_message
   - first_where
   - function_default_parameter_at_end
@@ -68,8 +66,7 @@ opt_in_rules: # some rules are only opt-in
   - sorted_first_last
   - static_operator
   - toggle_bool
-  - unused_import
-  - unused_private_declaration
+  - trailing_closure
   - untyped_error_in_catch
   - vertical_parameter_alignment_on_call
   - vertical_whitespace_closing_braces

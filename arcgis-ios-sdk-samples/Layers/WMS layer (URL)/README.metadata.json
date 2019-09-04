@@ -1,0 +1,25 @@
+{
+    "category": "Layers",
+    "description": "Display a WMS layer using a WMS service URL.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "OGC",
+        "web map service",
+        "WMS",
+        "WMS layer",
+        "AGSWMSLayer",
+        "AGSMap"
+    ],
+    "redirect_from": "/ios/latest/swift/sample-code/wms-layer-url-.htm",
+    "relevant_apis": [
+        "AGSWMSLayer",
+        "AGSMap"
+    ],
+    "snippets": [
+        "WMSLayerUsingURLViewController.swift"
+    ],
+    "title": "WMS layer (URL)"
+}

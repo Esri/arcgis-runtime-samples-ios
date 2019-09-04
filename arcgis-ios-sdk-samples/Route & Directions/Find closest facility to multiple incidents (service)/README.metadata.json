@@ -1,0 +1,38 @@
+{
+    "category": "Route and Directions",
+    "description": "Find routes from several locations to the respective closest facility.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "incident",
+        "network analysis",
+        "route",
+        "search",
+        "AGSClosestFacilityParameters",
+        "AGSClosestFacilityResult",
+        "AGSClosestFacilityRoute",
+        "AGSClosestFacilityTask",
+        "AGSFacility",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSIncident"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSClosestFacilityParameters",
+        "AGSClosestFacilityResult",
+        "AGSClosestFacilityRoute",
+        "AGSClosestFacilityTask",
+        "AGSFacility",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSIncident"
+    ],
+    "snippets": [
+        "FindClosestFacilityMultipleIncidentsServiceViewController.swift"
+    ],
+    "title": "Find closest facility to multiple incidents (service)"
+}

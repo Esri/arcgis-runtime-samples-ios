@@ -1,6 +1,6 @@
 {
-    "category": "Route and  Directions",
-    "description": "@@TODO: Find routes from several locations to the respective closest facility.",
+    "category": "Route and Directions",
+    "description": "Find routes from several locations to the respective closest facility.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -19,7 +19,8 @@
         "AGSGraphicsOverlay",
         "AGSIncident"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/find-closest-facility-to-multiple-incidents-service-.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSClosestFacilityParameters",
         "AGSClosestFacilityResult",
@@ -31,8 +32,7 @@
         "AGSIncident"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "FindClosestFacilityMultipleIncidentsServiceViewController.swift"
     ],
-    "title": "@@TODO: Find closest facility to multiple incidents (service)"
+    "title": "Find closest facility to multiple incidents (service)"
 }

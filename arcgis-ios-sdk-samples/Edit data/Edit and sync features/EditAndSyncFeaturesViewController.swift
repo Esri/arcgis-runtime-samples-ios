@@ -17,6 +17,8 @@
 import UIKit
 import ArcGIS
 
+private let kBarButtonTitle = "Sync geodatabase"
+
 class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
@@ -50,9 +52,20 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private var syncJob: AGSSyncGeodatabaseJob?
     private var geodatabaseSyncTask: AGSGeodatabaseSyncTask!
     private var geodatabase: AGSGeodatabase!
-    private var selectedFeature: AGSFeature!
     private var areaOfInterest: AGSEnvelope!
-    
+
+    private var selectedFeature: AGSFeature? {
+        didSet {
+            if let feature = selectedFeature {
+                if let featureLayer = feature.featureTable?.featureLayer {
+                    featureLayer.select(feature)
+                }
+            } else {
+                clearSelection()
+            }
+        }
+    }
+
     private func extentViewFrameToEnvelope() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)
         
@@ -103,9 +116,8 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private func resetUI() {
         selectedFeature = nil
         barButtonItem.isEnabled = true
-        barButtonItem.title = "Sync geodatabase"
+        barButtonItem.title = kBarButtonTitle
         instructionsLabel.text = "Tap the sync button"
-        clearSelection()
     }
     
     func geodatabaseDidLoad() {
@@ -188,7 +200,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
     }
     
     func syncGeodatabase() {
-        clearSelection()
         barButtonItem.isEnabled = false
         selectedFeature = nil
         
@@ -220,7 +231,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     }
     
     @IBAction func generateOrSync() {
-        if barButtonItem.title == "Sync geodatabase" {
+        if barButtonItem.title == kBarButtonTitle {
             syncGeodatabase()
         } else {
             generateGeodatabase()
@@ -247,7 +258,6 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                     if let error = error {
                         self?.presentAlert(error: error)
                         self?.selectedFeature = nil
-                        self?.clearSelection()
                     } else {
                         self?.resetUI()
                     }
@@ -261,14 +271,8 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
                     self?.presentAlert(error: error)
                 } else if let results = results {
                     self?.instructionsLabel.text = "Tap on the map to move the feature"
-                    if let firstResult = results.first {
-                        let layerContent = firstResult.layerContent
-                        
-                        // Check that the result is a feature layer and has elements.
-                        if let featureLayer = layerContent as? AGSFeatureLayer, let feature = firstResult.geoElements.first as? AGSFeature {
-                            featureLayer.select(feature)
-                            self?.selectedFeature = feature
-                        }
+                    if let feature = results.first?.geoElements.first as? AGSFeature {
+                        self?.selectedFeature = feature
                     }
                 }
             }

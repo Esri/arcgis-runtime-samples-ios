@@ -1,6 +1,6 @@
 {
-    "category": "Utility  Network",
-    "description": "@@TODO: Find all features connected to a set of starting points in a utility network.",
+    "category": "Utility Network",
+    "description": "Find all features connected to a set of starting points in a utility network.",
     "ignore": false,
     "images": [
         "image1.png"
@@ -20,7 +20,8 @@
         "AGSUtilityElement",
         "AGSGeometryEngine.fractionAlongLine()"
     ],
-    "redirect_from": "@@TODO: /ios/latest/swift/sample-code/find-connected-features-in-utility-networks.htm",
+    "redirect_from": [
+    ],
     "relevant_apis": [
         "AGSUtilityNetwork",
         "AGSUtilityTraceParameters",
@@ -34,8 +35,7 @@
         "AGSGeometryEngine.fractionAlongLine()"
     ],
     "snippets": [
-        "@@TODO: *** PLEASE VERIFY THE INCLUSION OF THESE SNIPPETS ***",
         "ConnectedTraceViewController.swift"
     ],
-    "title": "@@TODO: Find connected features in utility networks"
+    "title": "Find connected features in utility networks"
 }

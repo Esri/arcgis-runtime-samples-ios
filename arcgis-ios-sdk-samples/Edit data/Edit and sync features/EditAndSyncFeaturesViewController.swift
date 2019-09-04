@@ -17,8 +17,6 @@
 import UIKit
 import ArcGIS
 
-private let kBarButtonTitle = "Sync geodatabase"
-
 class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
@@ -48,6 +46,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet private var instructionsLabel: UILabel!
     
     private let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")
+    private let syncGeodatabaseTitle = "Sync geodatabase"
     private var generateJob: AGSGenerateGeodatabaseJob?
     private var syncJob: AGSSyncGeodatabaseJob?
     private var geodatabaseSyncTask: AGSGeodatabaseSyncTask!
@@ -116,7 +115,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private func resetUI() {
         selectedFeature = nil
         barButtonItem.isEnabled = true
-        barButtonItem.title = kBarButtonTitle
+        barButtonItem.title = syncGeodatabaseTitle
         instructionsLabel.text = "Tap the sync button"
     }
     
@@ -231,7 +230,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     }
     
     @IBAction func generateOrSync() {
-        if barButtonItem.title == kBarButtonTitle {
+        if barButtonItem.title == syncGeodatabaseTitle {
             syncGeodatabase()
         } else {
             generateGeodatabase()

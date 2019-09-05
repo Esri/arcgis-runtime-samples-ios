@@ -106,7 +106,7 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
         controller.popoverPresentationController?.passthroughViews = [sceneView, navigationController?.navigationBar] as? [UIView]
         controller.popoverPresentationController?.sourceRect = CGRect(origin: popoverPoint, size: .zero)
         controller.popoverPresentationController?.sourceView = sceneView
-        controller.popoverPresentationController(viewWillTransition(to: .zero, with: UIViewController))
+//        controller.popoverPresentationController(viewWillTransition(to: .zero, with: UIViewController))
         present(controller, animated: false)
     }
 }

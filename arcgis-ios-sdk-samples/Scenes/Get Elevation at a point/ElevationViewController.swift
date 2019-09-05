@@ -15,6 +15,19 @@
 import UIKit
 
 class ElevationViewController: UIViewController {
-    @IBOutlet var labelView: UIView!
     @IBOutlet var elevationLabel: UILabel!
+    
+    override var preferredContentSize: CGSize {
+        get {
+            let labelSize = elevationLabel.intrinsicContentSize
+            let layoutMargins = view.layoutMargins
+            return CGSize(
+                width: labelSize.width + layoutMargins.left + layoutMargins.right,
+                height: labelSize.height + layoutMargins.top + layoutMargins.bottom
+            )
+        }
+        set {
+            super.preferredContentSize = newValue
+        }
+    }
 }

@@ -21,7 +21,7 @@ class GetElevationPointViewController: UIViewController {
             // Initialize a scene.
             sceneView.scene = makeScene()
             
-            self.sceneView.touchDelegate = self
+            sceneView.touchDelegate = self
             
             // Set scene's viewpoint.
             let camera = AGSCamera(latitude: 28.42, longitude: 83.9, altitude: 10000.0, heading: 10.0, pitch: 80.0, roll: 0.0)
@@ -31,19 +31,12 @@ class GetElevationPointViewController: UIViewController {
         }
     }
     
-    @IBOutlet var elevationPointLabel: UILabel? {
-        didSet {
-            self.elevationPointLabel?.isHidden = true
-            self.elevationPointLabel?.layer.cornerRadius = 10
-        }
-    }
-    
     private let graphicsOverlay = AGSGraphicsOverlay()
     
     // Create graphics overlay and add it to scene view.
     private func makeGraphics() {
-        graphicsOverlay.renderingMode = AGSGraphicsRenderingMode.dynamic
-        graphicsOverlay.sceneProperties?.surfacePlacement = AGSSurfacePlacement.relative
+        graphicsOverlay.renderingMode = .dynamic
+        graphicsOverlay.sceneProperties?.surfacePlacement = .relative
         sceneView.graphicsOverlays.add(graphicsOverlay)
     }
     
@@ -74,13 +67,19 @@ class GetElevationPointViewController: UIViewController {
 extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let relativeSurfacePoint = sceneView?.screen(toBaseSurface: screenPoint) {
-//            graphicsOverlay.graphics.removeAllObjects()
-            dismiss(animated: true)
+            dismiss(animated: false)
             
-            // Create the symbol at the tapped point.
-            let marker = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 100, width: 100, depth: 200, anchorPosition: .center)
+            // Get the tapped point
             let point = AGSPoint(x: relativeSurfacePoint.x, y: relativeSurfacePoint.y, spatialReference: .wgs84())
-            self.graphicsOverlay.graphics.add(AGSGraphic(geometry: point, symbol: marker))
+            if let graphic = graphicsOverlay.graphics.firstObject as? AGSGraphic {
+                // Move the symbol to the tapped point.
+                graphic.geometry = point
+            } else {
+                // Create the symbol at the tapped point.
+                let marker = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 100, width: 100, depth: 200, anchorPosition: .center)
+                let graphic = AGSGraphic(geometry: point, symbol: marker)
+                graphicsOverlay.graphics.add(graphic)
+            }
             
             // Get the surface elevation at the surface point.
             self.sceneView.scene?.baseSurface!.elevation(for: relativeSurfacePoint) { (results: Double, error: Error?) in
@@ -100,13 +99,15 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
         // Setup the controller to display as a popover.
         controller.modalPresentationStyle = .popover
         controller.loadViewIfNeeded()
-        controller.elevationLabel?.text? = "Elevation at tapped point: " + (String(elevation.rounded()) + String("m"))
+        let elevationMeasurement = Measurement(value: elevation, unit: UnitLength.meters)
+        controller.elevationLabel?.text? = " Elevation at tapped point: " + MeasurementFormatter().string(from: elevationMeasurement)
         controller.popoverPresentationController?.delegate = self
-        controller.preferredContentSize = CGSize(width: 280, height: 40)
-        controller.popoverPresentationController?.passthroughViews = [sceneView as Any, navigationController?.viewControllers as Any] as? [UIView]
+        controller.popoverPresentationController?.backgroundColor = .lightGray
+        controller.popoverPresentationController?.passthroughViews = [sceneView, navigationController?.navigationBar] as? [UIView]
         controller.popoverPresentationController?.sourceRect = CGRect(origin: popoverPoint, size: .zero)
         controller.popoverPresentationController?.sourceView = sceneView
-        present(controller, animated: true)
+        controller.popoverPresentationController(viewWillTransition(to: .zero, with: UIViewController))
+        present(controller, animated: false)
     }
 }
 

@@ -163,7 +163,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         geodatabaseSyncTask.defaultGenerateGeodatabaseParameters(withExtent: areaOfInterest) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: Error?) in
             guard let self = self else { return }
             
-            guard let params = params else { return }
+            guard let params = params else { return self.presentAlert(title: "Could not generate default parameters: \(error!)") }
             // Don't include attachments to minimize the geodatabase size.
             params.returnAttachments = false
             

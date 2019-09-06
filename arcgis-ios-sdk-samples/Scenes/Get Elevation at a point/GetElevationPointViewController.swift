@@ -90,6 +90,12 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
                 }
             }
         }
+        
+        sceneView.viewpointChangedHandler = { [weak self] in
+            DispatchQueue.main.async {
+                return
+            }
+        }
     }
 
     private func showPopover(elevation: Double, popoverPoint: CGPoint) {

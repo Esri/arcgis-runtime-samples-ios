@@ -10,7 +10,7 @@ A survey worker who works in an area without an internet connection could take a
 
 ## How to use the sample
 
-Pan and zoom to position the red rectangle around the area to be taken offline. Tap "Generate geodatabase" to take the area offline. To edit features, tap to select a feature, and tap again anywhere else on the map to move the selected feature to the clicked location. To sync the edits with the feature service, tap the "Sync geodatabase" button.
+Pan and zoom to position the red rectangle around the area to be taken offline. Tap "Generate geodatabase" to take the area offline. To edit features, tap to select a feature, and tap again anywhere else on the map to move the selected feature to the tapped location. To sync the edits with the feature service, tap the "Sync geodatabase" button.
 
 ## How it works
 
@@ -18,8 +18,8 @@ Pan and zoom to position the red rectangle around the area to be taken offline. 
 2. Generate the geodatabase sync task to create geodatabase parameters by passing in an envelope extent as the parameter.
 3. Create a geodatabase job, passing in the parameters and a path to where the geodatabase should be downloaded locally.
 4. Start the job and get a geodatabase as a result.
-5. Load the geodatabase and get its feature tables. Create feature layers from the feature tables and add them to the map's operational layers collection.
-6. Set the sync direction.
+5. Set the sync direction.
+6. To enable editing, load the geodatabase and get its feature tables. Create feature layers from the feature tables and add them to the map's operational layers collection.
 7. Create geodatabase job passing in the parameters and geodatabase as arguments.
 8. Start the sync job to synchronize the edits.
 

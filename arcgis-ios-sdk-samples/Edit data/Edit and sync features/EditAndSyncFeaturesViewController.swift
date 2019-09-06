@@ -92,11 +92,12 @@ class EditAndSyncFeaturesViewController: UIViewController {
                     for index in featureServiceInfo.layerInfos.indices.reversed() {
                         let layerInfo = featureServiceInfo.layerInfos[index]
                         // For each layer in the serice, add a layer to the map.
-                        let layerURL = self.featureServiceURL?.appendingPathComponent(String(index))
-                        let featureTable = AGSServiceFeatureTable(url: layerURL!)
-                        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                        featureLayer.name = layerInfo.name
-                        map.operationalLayers.add(featureLayer)
+                        if let layerURL = self.featureServiceURL?.appendingPathComponent(String(index)) {
+                            let featureTable = AGSServiceFeatureTable(url: layerURL)
+                            let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                            featureLayer.name = layerInfo.name
+                            map.operationalLayers.add(featureLayer)
+                        }
                     }
                 }
             }
@@ -105,9 +106,11 @@ class EditAndSyncFeaturesViewController: UIViewController {
     
     // Clears selection in all layers of the map.
     private func clearSelection() {
-        for layer in mapView.map!.operationalLayers {
-            if let layer = layer as? AGSFeatureLayer {
-                layer.clearSelection()
+        if let operationalLayers = mapView.map?.operationalLayers {
+            for layer in operationalLayers {
+                if let layer = layer as? AGSFeatureLayer {
+                    layer.clearSelection()
+                }
             }
         }
     }
@@ -158,43 +161,40 @@ class EditAndSyncFeaturesViewController: UIViewController {
         areaOfInterest = self.extentViewFrameToEnvelope()
         
         geodatabaseSyncTask.defaultGenerateGeodatabaseParameters(withExtent: areaOfInterest) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: Error?) in
-            if let params = params,
-                let self = self {
-                // Don't include attachments to minimize the geodatabase size.
-                params.returnAttachments = false
-                
-                // Create a temporary file for the geodatabase.
-                let dateFormatter = ISO8601DateFormatter()
-                
-                let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let downloadFileURL = documentDirectoryURL
-                    .appendingPathComponent(dateFormatter.string(from: Date()))
-                    .appendingPathExtension("geodatabase")
-               
-                // Request a job to generate the geodatabase.
-                let generateGeodatabaseJob = self.geodatabaseSyncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
-                self.generateJob = generateGeodatabaseJob
-                generateGeodatabaseJob.start(
-                    statusHandler: { (status: AGSJobStatus) in
-                        SVProgressHUD.show(withStatus: status.statusString()) //Show job status.
-                    },
-                    completion: { [weak self] (_, error: Error?) in
-                        SVProgressHUD.dismiss()
-                        
-                        if let error = error {
-                            self?.presentAlert(error: error)
-                        } else {
-                            // Load the geodatabase when the job is done.
-                            self?.geodatabase = generateGeodatabaseJob.result
-                            self?.geodatabase.load { [weak self] (error: Error?) in
-                                self?.geodatabaseDidLoad()
-                            }
+            guard let self = self else { return }
+            
+            guard let params = params else { return }
+            // Don't include attachments to minimize the geodatabase size.
+            params.returnAttachments = false
+            
+            // Create a temporary file for the geodatabase.
+            let dateFormatter = ISO8601DateFormatter()
+            
+            let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let downloadFileURL = documentDirectoryURL
+                .appendingPathComponent(dateFormatter.string(from: Date()))
+                .appendingPathExtension("geodatabase")
+           
+            // Request a job to generate the geodatabase.
+            let generateGeodatabaseJob = self.geodatabaseSyncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
+            self.generateJob = generateGeodatabaseJob
+            generateGeodatabaseJob.start(
+                statusHandler: { (status: AGSJobStatus) in
+                    SVProgressHUD.show(withStatus: status.statusString()) //Show job status.
+                },
+                completion: { [weak self] (_, error: Error?) in
+                    SVProgressHUD.dismiss()
+                    if let error = error {
+                        self?.presentAlert(error: error)
+                    } else {
+                        // Load the geodatabase when the job is done.
+                        self?.geodatabase = generateGeodatabaseJob.result
+                        self?.geodatabase.load { [weak self] (_: Error?) in
+                            self?.geodatabaseDidLoad()
                         }
                     }
-                )
-            } else {
-                self!.presentAlert(title: "Could not generate default parameters: \(error!)")
-            }
+                }
+            )
         }
     }
     
@@ -219,7 +219,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         self.syncJob = syncGeodatabaseJob
         syncGeodatabaseJob.start(statusHandler: { (status: AGSJobStatus) in
             SVProgressHUD.show(withStatus: status.statusString())
-        }, completion: { [weak self] (result: [AGSSyncLayerResult]?, error: Error?) in
+        }, completion: { [weak self] (_: [AGSSyncLayerResult]?, error: Error?) in
             SVProgressHUD.dismiss()
             if let error = error {
                 self?.presentAlert(error: error)

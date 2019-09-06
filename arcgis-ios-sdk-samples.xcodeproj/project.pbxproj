@@ -3059,7 +3059,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				F1C81C4322FCEBD100229CAA /* Get Elevation at a point */,
+				F1C81C4322FCEBD100229CAA /* Get elevation at a point */,
 				F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */,
 				F1034FA122D3F5DA00B021DA /* Create terrain surface from a local tile package */,
 				F4159C6D20925A8D0016E53D /* Open a scene (portal item) */,
@@ -3899,14 +3899,14 @@
 			path = Rasters;
 			sourceTree = "<group>";
 		};
-		F1C81C4322FCEBD100229CAA /* Get Elevation at a point */ = {
+		F1C81C4322FCEBD100229CAA /* Get elevation at a point */ = {
 			isa = PBXGroup;
 			children = (
 				F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */,
 				F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */,
 				F1D7508E230730360018B812 /* ElevationViewController.swift */,
 			);
-			path = "Get Elevation at a point";
+			path = "Get elevation at a point";
 			sourceTree = "<group>";
 		};
 		F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */ = {
@@ -4829,7 +4829,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 75Z67E6SV2;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4861,7 +4861,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 75Z67E6SV2;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (

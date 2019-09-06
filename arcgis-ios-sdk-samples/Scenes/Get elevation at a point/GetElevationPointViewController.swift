@@ -55,6 +55,11 @@ class GetElevationPointViewController: UIViewController {
         return scene
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        dismiss(animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,10 +95,9 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
                 }
             }
         }
-        
         sceneView.viewpointChangedHandler = { [weak self] in
             DispatchQueue.main.async {
-                return
+                self?.dismiss(animated: false)
             }
         }
     }
@@ -112,7 +116,6 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
         controller.popoverPresentationController?.passthroughViews = [sceneView, navigationController?.navigationBar] as? [UIView]
         controller.popoverPresentationController?.sourceRect = CGRect(origin: popoverPoint, size: .zero)
         controller.popoverPresentationController?.sourceView = sceneView
-//        controller.popoverPresentationController(viewWillTransition(to: .zero, with: UIViewController))
         present(controller, animated: false)
     }
 }

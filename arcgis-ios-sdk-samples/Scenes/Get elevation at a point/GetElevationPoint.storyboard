@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gI1-ae-TH7" userLabel="Scene View" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gI1-ae-TH7" secondAttribute="trailing" id="1Bz-ok-tRv"/>
-                            <constraint firstItem="gI1-ae-TH7" firstAttribute="top" secondItem="Yv5-8d-hM0" secondAttribute="top" id="LCg-to-Qb6"/>
+                            <constraint firstItem="gI1-ae-TH7" firstAttribute="top" secondItem="p32-Us-wmg" secondAttribute="top" id="LCg-to-Qb6"/>
                             <constraint firstItem="gI1-ae-TH7" firstAttribute="leading" secondItem="Yv5-8d-hM0" secondAttribute="leading" id="iO8-Dk-ha9"/>
                             <constraint firstAttribute="bottom" secondItem="gI1-ae-TH7" secondAttribute="bottom" id="kLx-6e-wy0"/>
                         </constraints>

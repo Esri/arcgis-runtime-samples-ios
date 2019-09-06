@@ -81,7 +81,7 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
                 graphic.geometry = point
             } else {
                 // Create the symbol at the tapped point.
-                let marker = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 100, width: 100, depth: 200, anchorPosition: .center)
+                let marker = AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 100, width: 100, depth: 100, anchorPosition: .center)
                 let graphic = AGSGraphic(geometry: point, symbol: marker)
                 graphicsOverlay.graphics.add(graphic)
             }

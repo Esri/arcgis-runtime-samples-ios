@@ -30,7 +30,7 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *11.0*, meani
 
 ## Building samples using installed SDK
 1. Fork or clone the repository
-1. Install the ArcGIS Runtime SDK for iOS on your mac as described [here](https://developers.arcgis.com/ios/latest/swift/guide/install.htm#ESRI_SECTION1_D57435A2BEBC4D29AFA3A4CAA722506A)  
+1. Install the ArcGIS Runtime SDK for iOS to a central location on your mac as described [here](https://developers.arcgis.com/ios/latest/swift/guide/install.htm#ESRI_SECTION1_D57435A2BEBC4D29AFA3A4CAA722506A)  
 1. Open the `arcgis-ios-sdk-samples.xcodeproj` **project** file
 1. Run the `arcgis-ios-sdk-samples` app target
 

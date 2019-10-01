@@ -720,6 +720,12 @@
 		E45991A61EF31DE40089E9FD /* WebMapCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
 		E45991A81EF31DE40089E9FD /* WebMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919F1EF3021D0089E9FD /* WebMapViewController.swift */; };
 		E476AB0120F69FCA00BCE59F /* ListTransformationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4477CBD20EC0CCD004E14F9 /* ListTransformationsViewController.swift */; };
+		E47ED0A62343C4FE0032440E /* ExploreScenesInFlyoverAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ED09F2343C4FE0032440E /* ExploreScenesInFlyoverAR.swift */; };
+		E47ED0A72343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47ED0A02343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard */; };
+		E47ED0A82343C4FE0032440E /* CollectDataAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47ED0A22343C4FE0032440E /* CollectDataAR.storyboard */; };
+		E47ED0B12343C87E0032440E /* DisplayScenesInTabletopAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */; };
+		E47ED0B22343C87E0032440E /* DisplayScenesInTabletopAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */; };
+		E47ED0B42343EC670032440E /* CollectDataAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ED0A32343C4FE0032440E /* CollectDataAR.swift */; };
 		E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
 		E4B2E2651FE31E5200E610FF /* bradle.3ds in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E2631FE31E5100E610FF /* bradle.3ds */; settings = {ASSET_TAGS = (Bradley3DModel, ); }; };
 		E4B2E2661FE31E5200E610FF /* tank1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E2641FE31E5100E610FF /* tank1.jpg */; settings = {ASSET_TAGS = (Bradley3DModel, ); }; };
@@ -1525,6 +1531,12 @@
 		E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchForWebmapByKeywordViewController.swift; sourceTree = "<group>"; };
 		E459919D1EF3021D0089E9FD /* WebMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapCell.swift; sourceTree = "<group>"; };
 		E459919F1EF3021D0089E9FD /* WebMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapViewController.swift; sourceTree = "<group>"; };
+		E47ED09F2343C4FE0032440E /* ExploreScenesInFlyoverAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreScenesInFlyoverAR.swift; sourceTree = "<group>"; };
+		E47ED0A02343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExploreScenesInFlyoverAR.storyboard; sourceTree = "<group>"; };
+		E47ED0A22343C4FE0032440E /* CollectDataAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CollectDataAR.storyboard; sourceTree = "<group>"; };
+		E47ED0A32343C4FE0032440E /* CollectDataAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectDataAR.swift; sourceTree = "<group>"; };
+		E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DisplayScenesInTabletopAR.storyboard; path = "arcgis-ios-sdk-samples/Augmented reality/Display scenes in tabletop AR/DisplayScenesInTabletopAR.storyboard"; sourceTree = SOURCE_ROOT; };
+		E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayScenesInTabletopAR.swift; path = "arcgis-ios-sdk-samples/Augmented reality/Display scenes in tabletop AR/DisplayScenesInTabletopAR.swift"; sourceTree = SOURCE_ROOT; };
 		E4B2E2631FE31E5100E610FF /* bradle.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = bradle.3ds; sourceTree = "<group>"; };
 		E4B2E2641FE31E5100E610FF /* tank1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tank1.jpg; sourceTree = "<group>"; };
 		E4B2E2681FE31ED500E610FF /* ViewshedGeoElementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewshedGeoElementViewController.swift; sourceTree = "<group>"; };
@@ -1890,6 +1902,7 @@
 		3E23A9E21AFC28F6002E2214 /* arcgis-ios-sdk-samples */ = {
 			isa = PBXGroup;
 			children = (
+				E47ED0882343C1400032440E /* Augmented reality */,
 				3ED028001B8E39FF00ACA70D /* Maps */,
 				3ED027FF1B8E39EE00ACA70D /* Layers */,
 				3ED027FE1B8E39DD00ACA70D /* Features */,
@@ -3834,6 +3847,44 @@
 			path = "Search for webmap by keyword";
 			sourceTree = "<group>";
 		};
+		E47ED0882343C1400032440E /* Augmented reality */ = {
+			isa = PBXGroup;
+			children = (
+				E47ED0A12343C4FE0032440E /* Collect data in AR */,
+				E47ED0AA2343C5E00032440E /* Display scenes in tabletop AR */,
+				E47ED09E2343C4FE0032440E /* Explore scenes in flyover AR */,
+			);
+			path = "Augmented reality";
+			sourceTree = "<group>";
+		};
+		E47ED09E2343C4FE0032440E /* Explore scenes in flyover AR */ = {
+			isa = PBXGroup;
+			children = (
+				E47ED09F2343C4FE0032440E /* ExploreScenesInFlyoverAR.swift */,
+				E47ED0A02343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard */,
+			);
+			path = "Explore scenes in flyover AR";
+			sourceTree = "<group>";
+		};
+		E47ED0A12343C4FE0032440E /* Collect data in AR */ = {
+			isa = PBXGroup;
+			children = (
+				E47ED0A32343C4FE0032440E /* CollectDataAR.swift */,
+				E47ED0A22343C4FE0032440E /* CollectDataAR.storyboard */,
+			);
+			path = "Collect data in AR";
+			sourceTree = "<group>";
+		};
+		E47ED0AA2343C5E00032440E /* Display scenes in tabletop AR */ = {
+			isa = PBXGroup;
+			children = (
+				E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */,
+				E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */,
+			);
+			name = "Display scenes in tabletop AR";
+			path = "arcgis-ios-sdk-samples/Augmented Reality/Display scenes in tabletop AR";
+			sourceTree = SOURCE_ROOT;
+		};
 		E4B2E2621FE31E5100E610FF /* bradley_low_3ds */ = {
 			isa = PBXGroup;
 			children = (
@@ -4213,6 +4264,7 @@
 				F1F62C4022E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard in Resources */,
 				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
 				D9EE379820E2CC7700BF8AD1 /* tire_tread.jpeg in Resources */,
+				E47ED0B12343C87E0032440E /* DisplayScenesInTabletopAR.storyboard in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
 				12D66033226697320005DE8A /* GroupLayersSectionView.xib in Resources */,
 				12D66035226697320005DE8A /* GroupLayers.storyboard in Resources */,
@@ -4249,6 +4301,7 @@
 				3EFDE0F71E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard in Resources */,
 				3E81C1BD1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard in Resources */,
 				3E62940B1EAFAF4100084105 /* WebTiledLayer.storyboard in Resources */,
+				E47ED0A72343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
 				4C1A7C1F21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard in Resources */,
@@ -4277,6 +4330,7 @@
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
 				4CECF89F21D57F0A00A56161 /* SetMinMaxScale.storyboard in Resources */,
 				3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */,
+				E47ED0A82343C4FE0032440E /* CollectDataAR.storyboard in Resources */,
 				4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */,
 				4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */,
 				1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */,
@@ -4654,6 +4708,9 @@
 				3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in Sources */,
 				4C1EF29D220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
+				E47ED0B42343EC670032440E /* CollectDataAR.swift in Sources */,
+				E47ED0B22343C87E0032440E /* DisplayScenesInTabletopAR.swift in Sources */,
+				E47ED0A62343C4FE0032440E /* ExploreScenesInFlyoverAR.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

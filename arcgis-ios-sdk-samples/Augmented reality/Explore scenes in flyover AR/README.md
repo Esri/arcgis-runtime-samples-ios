@@ -18,7 +18,7 @@ When you open the sample, you'll be viewing the scene from above. You can walk a
 2. Listen for ARKit tracking state updates using `arView.arSCNViewDelegate` and provide guidance to the user as necessary.
 3. Create the scene, add content, then display it.
 4. When the content you want to view loads, get its center point and use that to create the origin camera for the AR view. Note that the altitude should be set so that all scene content is visible. For a city, a good value might be a bit higher than the tallest building. The sample uses 600 meters in the absence of tall buildings in the sample data.
-5. Set the translation factor so that you can move through the scene easily. With a translation factor of 800, you will move 800 feet in the scene for every foot you move the physical device.
+5. Set the translation factor so that you can move through the scene easily. With a translation factor of 1000, you will move 1000 feet in the scene for every foot you move the physical device.
 6. Set the space effect to `stars` and atmosphere effect to `realistic` to create an immersive experience.
 
 ## Relevant API
@@ -38,7 +38,7 @@ This sample requires a device that is compatible with ARKit 1 on iOS or ARCore 1
 
 **Flyover AR** is one of three main patterns for working with geographic information in augmented reality. See the [guide doc]() for more information.
 
-This sample uses the ArcGIS Runtime Toolkit. See [Agumented reality]() in the guide to learn about the toolkit and how to add it to your app.
+This sample uses the ArcGIS Runtime Toolkit. See [Augmented reality]() in the guide to learn about the toolkit and how to add it to your app.
 
 ## Tags
 

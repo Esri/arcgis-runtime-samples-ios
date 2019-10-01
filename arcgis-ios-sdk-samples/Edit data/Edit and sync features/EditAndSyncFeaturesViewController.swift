@@ -81,12 +81,10 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private func addFeatureLayers() {
         // Iterate through the layers in the service.
         geodatabaseSyncTask?.load { [weak self] (error) in
+            guard let self = self else { return }
             if let error = error {
-                print("Could not load feature service \(error)")
+                self.presentAlert(error: error)
             } else {
-                guard let self = self else {
-                    return
-                }
                 if let featureServiceInfo = self.geodatabaseSyncTask?.featureServiceInfo,
                     let map = self.mapView.map {
                     for index in featureServiceInfo.layerInfos.indices.reversed() {

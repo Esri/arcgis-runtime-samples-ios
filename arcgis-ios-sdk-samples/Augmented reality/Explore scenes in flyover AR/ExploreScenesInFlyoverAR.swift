@@ -35,7 +35,7 @@ class ExploreScenesInFlyoverAR: UIViewController {
 
         // Create an integrated mesh layer
         let meshLayer = AGSIntegratedMeshLayer(url:
-            URL(string: "https://www.arcgis.com/home/item.html?id=d4fb271d1cb747e696bb80adca8487fa")!)
+            URL(string: "https://www.arcgis.com/home/item.html?id=dbc72b3ebb024c848d89a42fe6387a1b")!)
         
         // Add the mesh layer to our scene
         scene.operationalLayers.add(meshLayer)

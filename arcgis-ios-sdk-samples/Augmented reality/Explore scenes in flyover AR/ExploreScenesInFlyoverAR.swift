@@ -21,7 +21,7 @@ class ExploreScenesInFlyoverAR: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        arView.startTracking()
+        arView.startTracking(.ignore)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -62,21 +62,6 @@ class ExploreScenesInFlyoverAR: UIViewController {
         // Turn the space and atmosphere effects on for an immersive experience
         arView.sceneView.spaceEffect = .stars
         arView.sceneView.atmosphereEffect = .realistic
-    }
-}
-
-// MARK: - alerts & message display
-extension ExploreScenesInFlyoverAR {
-    private func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true)
-    }
-
-    private func presentAlert(error: Error) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true)
     }
 }
 

@@ -70,7 +70,7 @@ class CollectDataAR: UIViewController {
         toolbar.bottomAnchor.constraint(equalTo: arView.sceneView.attributionTopAnchor).isActive = true
 
         // Create and prep the calibration view controller
-        calibrationVC = CollectDataARCalibrationViewController(cameraController: arView.cameraController)
+        calibrationVC = CollectDataARCalibrationViewController(arView)
         calibrationVC?.preferredContentSize = CGSize(width: 250, height: 100)
         calibrationVC?.setIsUsingContinuousPositioning(true)
 
@@ -115,7 +115,7 @@ class CollectDataAR: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Start AR tracking; if we're local, only use the data source to get the initial position
-        arView.startTracking(useLocationDataSourceOnce: realScaleModePicker.selectedSegmentIndex == 1, completion: nil)
+        arView.startTracking(realScaleModePicker.selectedSegmentIndex == 1 ? .initial : .continuous, completion: nil)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -170,13 +170,13 @@ class CollectDataAR: UIViewController {
         if sender.selectedSegmentIndex == 0 {
             // Roaming - continuous update
             arView.stopTracking()
-            arView.startTracking(useLocationDataSourceOnce: false, completion: nil)
+            arView.startTracking(.continuous)
             helpLabel.text = "Using CoreLocation + ARKit"
             calibrationVC?.setIsUsingContinuousPositioning(true)
         } else {
             // Local - only update once, then manually calibrate
             arView.stopTracking()
-            arView.startTracking(useLocationDataSourceOnce: true, completion: nil)
+            arView.startTracking(.initial)
             helpLabel.text = "Using ARKit only"
             calibrationVC?.setIsUsingContinuousPositioning(false)
         }
@@ -330,7 +330,7 @@ extension CollectDataAR: UIPopoverPresentationControllerDelegate {
 // MARK: - Calibration view controller
 class CollectDataARCalibrationViewController: UIViewController {
     /// The camera controller used to adjust user interactions.
-    private let cameraController: AGSTransformationMatrixCameraController
+    private let arcgisARView: ArcGISARView
     
     /// The UISlider used to adjust elevation.
     private let elevationSlider: UISlider = {
@@ -357,9 +357,9 @@ class CollectDataARCalibrationViewController: UIViewController {
     /// Initialized a new calibration view with the given scene view and camera controller.
     ///
     /// - Parameters:
-    ///   - cameraController: The camera controller used to adjust user interactions.
-    init(cameraController: AGSTransformationMatrixCameraController) {
-        self.cameraController = cameraController
+    ///   - arcgisARView: The ArcGISARView we are calibrating..
+    init(_ arcgisARView: ArcGISARView) {
+        self.arcgisARView = arcgisARView
         super.init(nibName: nil, bundle: nil)
 
         // Add the heading label and slider.
@@ -475,17 +475,17 @@ class CollectDataARCalibrationViewController: UIViewController {
     ///
     /// - Parameter deltaHeading: The amount to rotate the camera.
     private func rotate(_ deltaHeading: Double) {
-        let camera = cameraController.originCamera
+        let camera = arcgisARView.originCamera
         let newHeading = camera.heading + deltaHeading
-        cameraController.originCamera = camera.rotate(toHeading: newHeading, pitch: camera.pitch, roll: camera.roll)
+        arcgisARView.originCamera = camera.rotate(toHeading: newHeading, pitch: camera.pitch, roll: camera.roll)
     }
     
     /// Change the cameras altitude by `deltaAltitude`.
     ///
     /// - Parameter deltaAltitude: The amount to elevate the camera.
     private func elevate(_ deltaAltitude: Double) {
-        let camera = cameraController.originCamera
-        cameraController.originCamera = camera.elevate(withDeltaAltitude: deltaAltitude)
+        let camera = arcgisARView.originCamera
+        arcgisARView.originCamera = camera.elevate(withDeltaAltitude: deltaAltitude)
     }
     
     /// Calculates the elevation delta amount based on the elevation slider value.
@@ -518,21 +518,6 @@ class CollectDataARCalibrationViewController: UIViewController {
             elevationSlider.addTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
             elevationSlider.addTarget(self, action: #selector(touchUpElevation(_:)), for: [.touchUpInside, .touchUpOutside])
         }
-    }
-}
-
-// MARK: - Utilities for showing errors and messages
-extension CollectDataAR {
-    private func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true)
-    }
-    
-    private func presentAlert(error: Error) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true)
     }
 }
 

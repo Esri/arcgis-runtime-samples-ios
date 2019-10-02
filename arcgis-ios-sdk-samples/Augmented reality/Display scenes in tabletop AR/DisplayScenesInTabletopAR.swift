@@ -37,7 +37,7 @@ class DisplayScenesInTabletopAR: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        arView.startTracking()
+        arView.startTracking(.ignore)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -119,21 +119,6 @@ extension DisplayScenesInTabletopAR: AGSGeoViewTouchDelegate {
             // Wait for the user to tap to place the scene
             self.arView.sceneView.touchDelegate = self
         }
-    }
-}
-
-// MARK: - alerts & message display
-extension DisplayScenesInTabletopAR {
-    private func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true)
-    }
-
-    private func presentAlert(error: Error) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true)
     }
 }
 

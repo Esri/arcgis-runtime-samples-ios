@@ -50,8 +50,12 @@ class ExploreScenesInFlyoverAR: UIViewController {
             if let error = err {
                 self.presentAlert(error: error)
             } else if let envelope = meshLayer.fullExtent {
-                let camera = AGSCamera(latitude: envelope.center.y, longitude: envelope.center.x,
-                                       altitude: 600, heading: 0, pitch: 90, roll: 0)
+                let camera = AGSCamera(latitude: envelope.center.y,
+                                       longitude: envelope.center.x,
+                                       altitude: 600,
+                                       heading: 0,
+                                       pitch: 90,
+                                       roll: 0)
                 self.arView.originCamera = camera
             }
         }
@@ -88,6 +92,8 @@ extension ExploreScenesInFlyoverAR: ARSCNViewDelegate {
                 arKitStatusLabel.isHidden = false
             case .relocalizing:
                 // this won't happen as this sample doesn't use relocalization
+                break
+            @unknown default:
                 break
             }
         }

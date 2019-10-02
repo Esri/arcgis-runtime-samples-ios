@@ -63,6 +63,7 @@ class CollectDataAR: UIViewController {
                                                                width: 0.5,
                                                                depth: 0.5,
                                                                anchorPosition: .center)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -128,7 +129,7 @@ class CollectDataAR: UIViewController {
             if realScaleModePicker.selectedSegmentIndex == 0 { // Roaming
                 isCalibrating = true
             } else { // Local
-                isCalibrating = !isCalibrating
+                isCalibrating.toggle()
             }
 
             if isCalibrating {
@@ -213,7 +214,8 @@ extension CollectDataAR {
     private func getTreeHealthValue(with completion: @escaping (_ healthValue: Int16) -> Void) {
         // Display an alert allowing users to select tree health
         let healthStatusMenu = UIAlertController(title: "Take picture and add tree",
-                                                 message: "How healthy is this tree?", preferredStyle: .actionSheet)
+                                                 message: "How healthy is this tree?",
+                                                 preferredStyle: .actionSheet)
 
         let deadAction = UIAlertAction(title: "Dead", style: .default) { (_) in
             completion(0)
@@ -233,6 +235,8 @@ extension CollectDataAR {
         healthStatusMenu.addAction(distressedAction)
         healthStatusMenu.addAction(deadAction)
         healthStatusMenu.addAction(cancelAction)
+
+        healthStatusMenu.popoverPresentationController?.barButtonItem = addBBI
 
         self.present(healthStatusMenu, animated: true, completion: nil)
     }
@@ -270,7 +274,7 @@ extension CollectDataAR {
                 if let error = error {
                     self.presentAlert(message: "Error while adding feature: \(error.localizedDescription)")
                 } else {
-                    self.featureTable.applyEdits(completion: { [weak self] (_: [AGSFeatureEditResult]?, err: Error?) in
+                    self.featureTable.applyEdits { [weak self] (_: [AGSFeatureEditResult]?, err: Error?) in
                         guard let self = self else { return }
                         
                         if let error = err {
@@ -280,15 +284,14 @@ extension CollectDataAR {
                         
                         newFeature.refresh()
                         if let data = capturedImage.jpegData(compressionQuality: 1) {
-                            newFeature.addAttachment(withName: "ARCapture.jpg", contentType: "jpg", data: data,
-                                                     completion: { (_: AGSAttachment?, err: Error?) in
-                                                        if err != nil {
-                                                            self.presentAlert(error: err!)
-                                                        }
-                                                        self.featureTable.applyEdits(completion: nil)
-                            })
+                            newFeature.addAttachment(withName: "ARCapture.jpg", contentType: "jpg", data: data) { (_: AGSAttachment?, err: Error?) in
+                                if err != nil {
+                                    self.presentAlert(error: err!)
+                                }
+                                self.featureTable.applyEdits(completion: nil)
+                            }
                         }
-                    })
+                    }
                 }
             }
             
@@ -305,11 +308,12 @@ extension CollectDataAR {
 // MARK: - Calibration view management
 extension CollectDataAR {
     private func showPopup(_ controller: UIViewController, sourceButton: UIBarButtonItem) {
-        if let presentationController = AlwaysPresentAsPopover.configurePresentation(forController: controller) {
+        controller.modalPresentationStyle = .popover
+        if let presentationController = controller.presentationController as? UIPopoverPresentationController {
             presentationController.delegate = self
             presentationController.barButtonItem = sourceButton
             presentationController.permittedArrowDirections = [.down, .up]
-            self.present(controller, animated: true)
+            present(controller, animated: true)
         } else {
             presentAlert(message: "Error showing calibration view")
         }
@@ -324,6 +328,13 @@ extension CollectDataAR: UIPopoverPresentationControllerDelegate {
             isCalibrating = false
             helpLabel.text = "Tap to record a feature"
         }
+    }
+}
+
+extension CollectDataAR: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // show presented controller as popovers even on small displays
+        return .none
     }
 }
 
@@ -371,7 +382,7 @@ class CollectDataARCalibrationViewController: UIViewController {
         NSLayoutConstraint.activate([
             headingLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             headingLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
-            ])
+        ])
         
         view.addSubview(headingSlider)
         headingSlider.translatesAutoresizingMaskIntoConstraints = false
@@ -379,7 +390,7 @@ class CollectDataARCalibrationViewController: UIViewController {
             headingSlider.leadingAnchor.constraint(equalTo: headingLabel.trailingAnchor, constant: 16),
             headingSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             headingSlider.centerYAnchor.constraint(equalTo: headingLabel.centerYAnchor)
-            ])
+        ])
         
         // Add the elevation label and slider.
         let elevationLabel = UILabel(frame: .zero)
@@ -390,7 +401,7 @@ class CollectDataARCalibrationViewController: UIViewController {
         NSLayoutConstraint.activate([
             elevationLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             elevationLabel.bottomAnchor.constraint(equalTo: headingLabel.topAnchor, constant: -24)
-            ])
+        ])
         
         view.addSubview(elevationSlider)
         elevationSlider.translatesAutoresizingMaskIntoConstraints = false
@@ -398,7 +409,7 @@ class CollectDataARCalibrationViewController: UIViewController {
             elevationSlider.leadingAnchor.constraint(equalTo: elevationLabel.trailingAnchor, constant: 16),
             elevationSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             elevationSlider.centerYAnchor.constraint(equalTo: elevationLabel.centerYAnchor)
-            ])
+        ])
         
         // Setup actions for the two sliders. The sliders operate as "joysticks",
         // where moving the slider thumb will start a timer
@@ -420,14 +431,15 @@ class CollectDataARCalibrationViewController: UIViewController {
     /// Handle an elevation slider value-changed event.
     ///
     /// - Parameter sender: The slider tapped on.
-    @objc func elevationChanged(_ sender: UISlider) {
+    @objc
+    func elevationChanged(_ sender: UISlider) {
         if elevationTimer == nil {
             // Create a timer which elevates the camera when fired.
-            elevationTimer = Timer(timeInterval: 0.25, repeats: true, block: { [weak self] (_) in
+            elevationTimer = Timer(timeInterval: 0.25, repeats: true) { [weak self] (_) in
                 let delta = self?.joystickElevation() ?? 0.0
                 //                print("elevate delta = \(delta)")
                 self?.elevate(delta)
-            })
+            }
             
             // Add the timer to the main run loop.
             guard let timer = elevationTimer else { return }
@@ -438,14 +450,15 @@ class CollectDataARCalibrationViewController: UIViewController {
     /// Handle an heading slider value-changed event.
     ///
     /// - Parameter sender: The slider tapped on.
-    @objc func headingChanged(_ sender: UISlider) {
+    @objc
+    func headingChanged(_ sender: UISlider) {
         if headingTimer == nil {
             // Create a timer which rotates the camera when fired.
-            headingTimer = Timer(timeInterval: 0.1, repeats: true, block: { [weak self] (_) in
+            headingTimer = Timer(timeInterval: 0.1, repeats: true) { [weak self] (_) in
                 let delta = self?.joystickHeading() ?? 0.0
                 //                print("rotate delta = \(delta)")
                 self?.rotate(delta)
-            })
+            }
             
             // Add the timer to the main run loop.
             guard let timer = headingTimer else { return }
@@ -456,7 +469,8 @@ class CollectDataARCalibrationViewController: UIViewController {
     /// Handle an elevation slider touchUp event.  This will stop the timer.
     ///
     /// - Parameter sender: The slider tapped on.
-    @objc func touchUpElevation(_ sender: UISlider) {
+    @objc
+    func touchUpElevation(_ sender: UISlider) {
         elevationTimer?.invalidate()
         elevationTimer = nil
         sender.value = 0.0
@@ -465,7 +479,8 @@ class CollectDataARCalibrationViewController: UIViewController {
     /// Handle a heading slider touchUp event.  This will stop the timer.
     ///
     /// - Parameter sender: The slider tapped on.
-    @objc func touchUpHeading(_ sender: UISlider) {
+    @objc
+    func touchUpHeading(_ sender: UISlider) {
         headingTimer?.invalidate()
         headingTimer = nil
         sender.value = 0.0
@@ -506,7 +521,7 @@ class CollectDataARCalibrationViewController: UIViewController {
     
     /// Set whether continuous positioning is in use
     /// Showing a heading slider is only appropriate when using local positioning
-    public func setIsUsingContinuousPositioning(_ isContinuous: Bool) {
+    func setIsUsingContinuousPositioning(_ isContinuous: Bool) {
         if isContinuous {
             elevationSlider.isEnabled = false
             elevationSlider.removeTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
@@ -518,37 +533,6 @@ class CollectDataARCalibrationViewController: UIViewController {
             elevationSlider.addTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
             elevationSlider.addTarget(self, action: #selector(touchUpElevation(_:)), for: [.touchUpInside, .touchUpOutside])
         }
-    }
-}
-
-// MARK: - Infrastructure for showing popovers
-class CollectDataARAlwaysPresentAsPopover: NSObject, UIPopoverPresentationControllerDelegate {
-    // Copyright 2018, Ralf Ebert
-    // License   https://opensource.org/licenses/MIT
-    // License   https://creativecommons.org/publicdomain/zero/1.0/
-    // Source    https://www.ralfebert.de/ios-examples/uikit/choicepopover/
-    // `sharedInstance` because the delegate property is weak - the delegate instance needs to be retained.
-    private static let sharedInstance = CollectDataARAlwaysPresentAsPopover()
-    private override init() {
-        super.init()
-    }
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
-    static func configurePresentation(forController controller: UIViewController) -> UIPopoverPresentationController? {
-        controller.modalPresentationStyle = .popover
-        if let presentationController = controller.presentationController as? UIPopoverPresentationController {
-            presentationController.delegate = CollectDataARAlwaysPresentAsPopover.sharedInstance
-            return presentationController
-        }
-        return nil
-    }
-}
-
-extension CollectDataAR: UIAdaptivePresentationControllerDelegate {
-    func adaptivePresentationStyle(for controller: UIPresentationController,
-                                   traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
     }
 }
 
@@ -582,8 +566,9 @@ extension CollectDataAR: ARSCNViewDelegate {
             case .relocalizing:
                 // this won't happen as this sample doesn't use relocalization
                 break
+            @unknown default:
+                break
             }
         }
     }
 }
-

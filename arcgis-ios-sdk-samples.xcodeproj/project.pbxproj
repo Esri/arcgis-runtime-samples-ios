@@ -721,6 +721,9 @@
 		E45991A51EF31DE40089E9FD /* SearchForWebmapByKeywordViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */; };
 		E45991A61EF31DE40089E9FD /* WebMapCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
 		E45991A81EF31DE40089E9FD /* WebMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919F1EF3021D0089E9FD /* WebMapViewController.swift */; };
+		E463241B23454A2600AE91C3 /* CollectDataAR.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E47ED0A32343C4FE0032440E /* CollectDataAR.swift */; };
+		E463241C23454A2600AE91C3 /* DisplayScenesInTabletopAR.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */; };
+		E463241D23454A2600AE91C3 /* ExploreScenesInFlyoverAR.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E47ED09F2343C4FE0032440E /* ExploreScenesInFlyoverAR.swift */; };
 		E476AB0120F69FCA00BCE59F /* ListTransformationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4477CBD20EC0CCD004E14F9 /* ListTransformationsViewController.swift */; };
 		E47ED0A62343C4FE0032440E /* ExploreScenesInFlyoverAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ED09F2343C4FE0032440E /* ExploreScenesInFlyoverAR.swift */; };
 		E47ED0A72343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47ED0A02343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard */; };
@@ -1028,6 +1031,9 @@
 				9DF04DC52304C81D0014C1EE /* DownloadPreplannedMapViewController.swift in CopyFiles */,
 				9DA3CD8D23060835007CB1F3 /* MapSelectionTableViewController.swift in CopyFiles */,
 				9DE83D59230B14E5000CB37A /* PreplannedMapAreaTableViewCell.swift in CopyFiles */,
+				E463241B23454A2600AE91C3 /* CollectDataAR.swift in CopyFiles */,
+				E463241C23454A2600AE91C3 /* DisplayScenesInTabletopAR.swift in CopyFiles */,
+				E463241D23454A2600AE91C3 /* ExploreScenesInFlyoverAR.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1922,7 +1928,6 @@
 		3E23A9E21AFC28F6002E2214 /* arcgis-ios-sdk-samples */ = {
 			isa = PBXGroup;
 			children = (
-				E47ED0882343C1400032440E /* Augmented reality */,
 				3ED028001B8E39FF00ACA70D /* Maps */,
 				3ED027FF1B8E39EE00ACA70D /* Layers */,
 				3ED027FE1B8E39DD00ACA70D /* Features */,
@@ -1935,6 +1940,7 @@
 				3EEE1D671E4935FC003263FC /* Cloud & Portal */,
 				3EEA06001D21C3E800E03774 /* Scenes */,
 				D98CC08F22E25D8200618682 /* Utility Network */,
+				E47ED0882343C1400032440E /* Augmented reality */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				C7E86C8E21751CFE001C65C3 /* Extensions */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,

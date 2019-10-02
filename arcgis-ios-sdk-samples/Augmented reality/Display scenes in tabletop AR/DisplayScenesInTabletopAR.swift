@@ -47,7 +47,7 @@ class DisplayScenesInTabletopAR: UIViewController {
 
     private func configureSceneForAR() {
         // Load the package
-        package.load {[weak self] (err: Error?) in
+        package.load { [weak self] (err: Error?) in
             guard let self = self else { return }
 
             if let error = err {
@@ -76,7 +76,9 @@ class DisplayScenesInTabletopAR: UIViewController {
         let newCam = AGSCamera(latitude: 39.95787000283599,
                                longitude: -75.16996728256345,
                                altitude: 8.813445091247559,
-                               heading: 0, pitch: 90, roll: 0)
+                               heading: 0,
+                               pitch: 90,
+                               roll: 0)
 
         // Set the origin camera
         self.arView.originCamera = newCam
@@ -149,13 +151,15 @@ extension DisplayScenesInTabletopAR: ARSCNViewDelegate {
             case .relocalizing:
                 // this won't happen as this sample doesn't use relocalization
                 break
+            @unknown default:
+               break
             }
         }
     }
 
     // MARK: - Wait for plane before enabling scene
     public func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard let _ = anchor as? ARPlaneAnchor else { return }
+        guard anchor as? ARPlaneAnchor != nil else { return }
 
         // If we haven't placed a scene yet, enable tapping to place a scene and draw the ARKit plane found
         if !hasPlacedScene {

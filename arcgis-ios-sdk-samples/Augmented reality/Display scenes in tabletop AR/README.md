@@ -41,7 +41,7 @@ This sample uses the [Philadelphia Mobile Scene Package](https://www.arcgis.com/
 
 This sample requires a device that is compatible with ARKit 1.0 on iOS.
 
-**Tabletop AR** is one of three main patterns for working with geographic information in augmented reality. See [Display scenes in augmented reality](https://developers.arcgis.com/ios/swift/latest/guide/display-scenes-in-augmented-reality.htm) in the guide for more information.
+**Tabletop AR** is one of three main patterns for working with geographic information in augmented reality. See [Display scenes in augmented reality](https://developers.arcgis.com/ios/latest/swift/guide/display-scenes-in-augmented-reality.htm) in the guide for more information.
 
 This sample uses the ArcGIS Runtime Toolkit. See [Augmented reality]() in the guide to learn about the toolkit and how to add it to your app.
 

@@ -169,7 +169,7 @@ extension DisplayScenesInTabletopAR: ARSCNViewDelegate {
         }
     }
 
-    // MARK: - Optional plane visualization
+    // MARK: - Plane visualization
     private func visualizePlane(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         // Create a custom object to visualize the plane geometry and extent.
         if #available(iOS 11.3, *) {

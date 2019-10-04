@@ -77,7 +77,7 @@ class CollectDataAR: UIViewController {
 
         // Set delegates and configure arView
         arView.sceneView.touchDelegate = self
-        arView.arSCNView.debugOptions = [.showFeaturePoints]
+        arView.arSCNView.debugOptions = .showFeaturePoints
         arView.arSCNViewDelegate = self
         arView.locationDataSource = AGSCLLocationDataSource()
         configureSceneForAR()

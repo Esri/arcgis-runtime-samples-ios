@@ -152,7 +152,7 @@ class CollectDataAR: UIViewController {
             var coreImage = CIImage(cvImageBuffer: coreVideoBuffer)
             let transform = coreImage.orientationTransform(for: .right)
             coreImage = coreImage.transformed(by: transform)
-            let ciContext = CIContext(options: nil)
+            let ciContext = CIContext()
             let imageHeight = CVPixelBufferGetHeight(coreVideoBuffer)
             let imageWidth = CVPixelBufferGetWidth(coreVideoBuffer)
             let imageRef = ciContext.createCGImage(coreImage,

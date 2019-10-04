@@ -116,7 +116,7 @@ class CollectDataAR: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Start AR tracking; if we're local, only use the data source to get the initial position
-        arView.startTracking(realScaleModePicker.selectedSegmentIndex == 1 ? .initial : .continuous, completion: nil)
+        arView.startTracking(realScaleModePicker.selectedSegmentIndex == 1 ? .initial : .continuous)
     }
 
     override func viewDidDisappear(_ animated: Bool) {

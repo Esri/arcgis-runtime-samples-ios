@@ -343,7 +343,7 @@ class CollectDataARCalibrationViewController: UIViewController {
     /// The camera controller used to adjust user interactions.
     private let arcgisARView: ArcGISARView
     
-    /// The UISlider used to adjust elevation.
+    /// The `UISlider` used to adjust elevation.
     private let elevationSlider: UISlider = {
         let slider = UISlider(frame: .zero)
         slider.minimumValue = -50.0

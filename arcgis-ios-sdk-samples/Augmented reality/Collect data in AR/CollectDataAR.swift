@@ -309,7 +309,7 @@ extension CollectDataAR {
 extension CollectDataAR {
     private func showPopup(_ controller: UIViewController, sourceButton: UIBarButtonItem) {
         controller.modalPresentationStyle = .popover
-        if let presentationController = controller.presentationController as? UIPopoverPresentationController {
+        if let presentationController = controller.popoverPresentationController {
             presentationController.delegate = self
             presentationController.barButtonItem = sourceButton
             presentationController.permittedArrowDirections = [.down, .up]

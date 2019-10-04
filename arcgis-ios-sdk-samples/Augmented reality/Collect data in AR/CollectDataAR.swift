@@ -67,7 +67,7 @@ class CollectDataAR: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Constraint toolbar to the scene view's attribution label
+        // Constrain toolbar to the scene view's attribution label
         toolbar.bottomAnchor.constraint(equalTo: arView.sceneView.attributionTopAnchor).isActive = true
 
         // Create and prep the calibration view controller

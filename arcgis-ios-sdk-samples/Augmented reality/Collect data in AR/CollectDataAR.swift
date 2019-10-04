@@ -288,7 +288,7 @@ extension CollectDataAR {
                                 if err != nil {
                                     self.presentAlert(error: err!)
                                 }
-                                self.featureTable.applyEdits(completion: nil)
+                                self.featureTable.applyEdits()
                             }
                         }
                     }

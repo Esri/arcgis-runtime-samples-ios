@@ -284,7 +284,7 @@ extension CollectDataAR {
                         
                         newFeature.refresh()
                         if let data = capturedImage.jpegData(compressionQuality: 1) {
-                            newFeature.addAttachment(withName: "ARCapture.jpg", contentType: "jpg", data: data) { (_: AGSAttachment?, err: Error?) in
+                            newFeature.addAttachment(withName: "ARCapture.jpg", contentType: "jpg", data: data) { (_, err) in
                                 if err != nil {
                                     self.presentAlert(error: err!)
                                 }

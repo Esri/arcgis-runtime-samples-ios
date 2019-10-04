@@ -87,7 +87,7 @@ class CollectDataAR: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Constraint toolbar to the scene view's attribution label
+        // Constrain toolbar to the scene view's attribution label
         toolbar.bottomAnchor.constraint(equalTo: arView.sceneView.attributionTopAnchor).isActive = true
 
         // Create and prep the calibration view controller
@@ -97,7 +97,7 @@ class CollectDataAR: UIViewController {
 
         // Set delegates and configure arView
         arView.sceneView.touchDelegate = self
-        arView.arSCNView.debugOptions = [.showFeaturePoints]
+        arView.arSCNView.debugOptions = .showFeaturePoints
         arView.arSCNViewDelegate = self
         arView.locationDataSource = AGSCLLocationDataSource()
         configureSceneForAR()
@@ -136,7 +136,7 @@ class CollectDataAR: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Start AR tracking; if we're local, only use the data source to get the initial position
-        arView.startTracking(realScaleModePicker.selectedSegmentIndex == 1 ? .initial : .continuous, completion: nil)
+        arView.startTracking(realScaleModePicker.selectedSegmentIndex == 1 ? .initial : .continuous)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -167,7 +167,7 @@ class CollectDataAR: UIViewController {
             var coreImage = CIImage(cvImageBuffer: coreVideoBuffer)
             let transform = coreImage.orientationTransform(for: .right)
             coreImage = coreImage.transformed(by: transform)
-            let ciContext = CIContext(options: nil)
+            let ciContext = CIContext()
             let imageHeight = CVPixelBufferGetHeight(coreVideoBuffer)
             let imageWidth = CVPixelBufferGetWidth(coreVideoBuffer)
             let imageRef = ciContext.createCGImage(coreImage,
@@ -210,7 +210,7 @@ extension CollectDataAR: AGSGeoViewTouchDelegate {
         // Try to get the real-world position of that tapped AR plane
         if let planeLocation = arView.arScreenToLocation(screenPoint: screenPoint) {
             // If a plane was found, use that
-            let graphic = AGSGraphic(geometry: planeLocation, symbol: nil, attributes: nil)
+            let graphic = AGSGraphic(geometry: planeLocation, symbol: nil)
             graphicsOverlay.graphics.add(graphic)
             addBBI.isEnabled = true
             helpLabel.text = "Placed relative to ARKit plane"
@@ -268,7 +268,7 @@ extension CollectDataAR {
         helpLabel.text = "Adding feature"
         
         // Create attributes for the new feature
-        let featureAttributes = ["Health": healthValue, "Height": 3.2, "Diameter": 1.2] as ([String: Any])
+        let featureAttributes = ["Health": healthValue, "Height": 3.2, "Diameter": 1.2] as [String: Any]
         
         if let newFeature = featureTable.createFeature(attributes: featureAttributes, geometry: featurePoint) as? AGSArcGISFeature {
             lastEditedFeature = newFeature
@@ -279,7 +279,7 @@ extension CollectDataAR {
                 if let error = error {
                     self.presentAlert(message: "Error while adding feature: \(error.localizedDescription)")
                 } else {
-                    self.featureTable.applyEdits { [weak self] (_: [AGSFeatureEditResult]?, err: Error?) in
+                    self.featureTable.applyEdits { [weak self] (_, err) in
                         guard let self = self else { return }
                         
                         if let error = err {
@@ -289,11 +289,11 @@ extension CollectDataAR {
                         
                         newFeature.refresh()
                         if let data = capturedImage.jpegData(compressionQuality: 1) {
-                            newFeature.addAttachment(withName: "ARCapture.jpg", contentType: "jpg", data: data) { (_: AGSAttachment?, err: Error?) in
+                            newFeature.addAttachment(withName: "ARCapture.jpg", contentType: "jpg", data: data) { (_, err) in
                                 if let error = err {
                                     self.presentAlert(error: error)
                                 }
-                                self.featureTable.applyEdits(completion: nil)
+                                self.featureTable.applyEdits()
                             }
                         }
                     }
@@ -314,7 +314,7 @@ extension CollectDataAR {
 extension CollectDataAR {
     private func showPopup(_ controller: UIViewController, sourceButton: UIBarButtonItem) {
         controller.modalPresentationStyle = .popover
-        if let presentationController = controller.presentationController as? UIPopoverPresentationController {
+        if let presentationController = controller.popoverPresentationController {
             presentationController.delegate = self
             presentationController.barButtonItem = sourceButton
             presentationController.permittedArrowDirections = [.down, .up]
@@ -346,7 +346,7 @@ class CollectDataARCalibrationViewController: UIViewController {
     /// The camera controller used to adjust user interactions.
     private let arcgisARView: ArcGISARView
     
-    /// The UISlider used to adjust elevation.
+    /// The `UISlider` used to adjust elevation.
     private let elevationSlider: UISlider = {
         let slider = UISlider(frame: .zero)
         slider.minimumValue = -50.0
@@ -444,8 +444,8 @@ class CollectDataARCalibrationViewController: UIViewController {
         // which roates or elevates the current camera when the timer fires.  The elevation and heading delta
         // values increase the further you move away from center.  Moving and holding the thumb a little bit from center
         // will roate/elevate just a little bit, but get progressively more the further from center the thumb is moved.
-        headingSlider.addTarget(self, action: #selector(headingChanged(_:)), for: .valueChanged)
-        headingSlider.addTarget(self, action: #selector(touchUpHeading(_:)), for: [.touchUpInside, .touchUpOutside])
+        headingSlider.addTarget(self, action: #selector(headingChanged(_:)), for: .touchDown)
+        headingSlider.addTarget(self, action: #selector(touchUpHeading(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
     }
     
     required init?(coder aDecoder: NSCoder) {

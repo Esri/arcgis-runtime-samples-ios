@@ -417,7 +417,7 @@ class CollectDataARCalibrationViewController: UIViewController {
         // values increase the further you move away from center.  Moving and holding the thumb a little bit from center
         // will roate/elevate just a little bit, but get progressively more the further from center the thumb is moved.
         headingSlider.addTarget(self, action: #selector(headingChanged(_:)), for: .touchDown)
-        headingSlider.addTarget(self, action: #selector(touchUpHeading(_:)), for: [.touchUpInside, .touchUpOutside])
+        headingSlider.addTarget(self, action: #selector(touchUpHeading(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
     }
     
     required init?(coder aDecoder: NSCoder) {

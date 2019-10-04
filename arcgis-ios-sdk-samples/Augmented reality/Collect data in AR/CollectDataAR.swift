@@ -17,6 +17,28 @@ import ARKit
 import ArcGISToolkit
 import ArcGIS
 
+/// The health of a tree.
+enum TreeHealth: Int16, CaseIterable {
+    /// The tree is dead.
+    case dead = 0
+    /// The tree is distressed.
+    case distressed = 5
+    /// The tree is healthy.
+    case healthy = 10
+    
+    /// The human readable name of the tree's health.
+    var title: String {
+        switch self {
+        case .dead:
+            return "Dead"
+        case .distressed:
+            return "Distressed"
+        case .healthy:
+            return "Healthy"
+        }
+    }
+}
+
 class CollectDataAR: UIViewController {
     // UI controls and state
     @IBOutlet var addBBI: UIBarButtonItem!
@@ -35,12 +57,10 @@ class CollectDataAR: UIViewController {
                 arView.sceneView.scene?.baseSurface?.opacity = 0.5
                 if realScaleModePicker.selectedSegmentIndex == 1 {
                     helpLabel.text = "Pan the map to finish calibrating"
-                    calibrationBBI.title = "Finish calibrating"
                 }
             } else {
                 arView.sceneView.scene?.baseSurface?.opacity = 0
-                calibrationBBI.title = "Calibrate"
-                
+
                 // Dismiss popover
                 if let calibrationVC = calibrationVC {
                     calibrationVC.dismiss(animated: true)
@@ -71,9 +91,9 @@ class CollectDataAR: UIViewController {
         toolbar.bottomAnchor.constraint(equalTo: arView.sceneView.attributionTopAnchor).isActive = true
 
         // Create and prep the calibration view controller
-        calibrationVC = CollectDataARCalibrationViewController(arView)
+        calibrationVC = CollectDataARCalibrationViewController(arcgisARView: arView)
         calibrationVC?.preferredContentSize = CGSize(width: 250, height: 100)
-        calibrationVC?.setIsUsingContinuousPositioning(true)
+        calibrationVC?.useContinuousPositioning = true
 
         // Set delegates and configure arView
         arView.sceneView.touchDelegate = self
@@ -141,11 +161,6 @@ class CollectDataAR: UIViewController {
     }
 
     @IBAction func addFeature(_ sender: UIBarButtonItem) {
-        if graphicsOverlay.graphics.count < 1 {
-            presentAlert(message: "You need to tap an object before you can save.")
-            return
-        }
-
         if let coreVideoBuffer = arView.arSCNView.session.currentFrame?.capturedImage {
             // Get image as useful object
             // NOTE: everything here assumes photo is taken in portrait layout (not landscape)
@@ -159,8 +174,8 @@ class CollectDataAR: UIViewController {
                                                    from: CGRect(x: 0, y: 0, width: imageHeight, height: imageWidth))
             let rotatedImage = UIImage(cgImage: imageRef!)
 
-            getTreeHealthValue { [weak self] (healthValue: Int16) in
-                self?.createFeatureWith(rotatedImage, healthState: healthValue)
+            askUserForTreeHealth { [weak self] (healthValue: Int16) in
+                self?.createFeature(wtih: rotatedImage, healthState: healthValue)
             }
         } else {
             presentAlert(message: "Didn't get image for tap")
@@ -168,18 +183,17 @@ class CollectDataAR: UIViewController {
     }
 
     @IBAction func setRealScaleMode(_ sender: UISegmentedControl) {
+        arView.stopTracking()
         if sender.selectedSegmentIndex == 0 {
             // Roaming - continuous update
-            arView.stopTracking()
             arView.startTracking(.continuous)
             helpLabel.text = "Using CoreLocation + ARKit"
-            calibrationVC?.setIsUsingContinuousPositioning(true)
+            calibrationVC?.useContinuousPositioning = true
         } else {
             // Local - only update once, then manually calibrate
-            arView.stopTracking()
             arView.startTracking(.initial)
             helpLabel.text = "Using ARKit only"
-            calibrationVC?.setIsUsingContinuousPositioning(false)
+            calibrationVC?.useContinuousPositioning = false
         }
         
         // Turn off calibration when switching modes
@@ -211,29 +225,21 @@ extension CollectDataAR: AGSGeoViewTouchDelegate {
 
 // MARK: - Feature management
 extension CollectDataAR {
-    private func getTreeHealthValue(with completion: @escaping (_ healthValue: Int16) -> Void) {
+    private func askUserForTreeHealth(with completion: @escaping (_ healthValue: Int16) -> Void) {
         // Display an alert allowing users to select tree health
         let healthStatusMenu = UIAlertController(title: "Take picture and add tree",
                                                  message: "How healthy is this tree?",
                                                  preferredStyle: .actionSheet)
 
-        let deadAction = UIAlertAction(title: "Dead", style: .default) { (_) in
-            completion(0)
+        TreeHealth.allCases.forEach { (treeHealth) in
+            let alertAction = UIAlertAction(title: treeHealth.title, style: .default) { (_) in
+                completion(treeHealth.rawValue)
+            }
+            healthStatusMenu.addAction(alertAction)
         }
 
-        let distressedAction = UIAlertAction(title: "Distressed", style: .default) { (_) in
-            completion(5)
-        }
-
-        let healthyAction = UIAlertAction(title: "Healthy", style: .default) { (_) in
-            completion(10)
-        }
-
+        // Add "cancel" item.
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
-        healthStatusMenu.addAction(healthyAction)
-        healthStatusMenu.addAction(distressedAction)
-        healthStatusMenu.addAction(deadAction)
         healthStatusMenu.addAction(cancelAction)
 
         healthStatusMenu.popoverPresentationController?.barButtonItem = addBBI
@@ -254,7 +260,7 @@ extension CollectDataAR {
         }
     }
 
-    private func createFeatureWith(_ capturedImage: UIImage, healthState healthValue: Int16) {
+    private func createFeature(wtih capturedImage: UIImage, healthState healthValue: Int16) {
         guard let featureGraphic = graphicsOverlay.graphics.firstObject as? AGSGraphic,
             let featurePoint = featureGraphic.geometry as? AGSPoint else { return }
         
@@ -264,8 +270,7 @@ extension CollectDataAR {
         // Create attributes for the new feature
         let featureAttributes = ["Health": healthValue, "Height": 3.2, "Diameter": 1.2] as ([String: Any])
         
-        if let newFeature =
-            featureTable.createFeature(attributes: featureAttributes, geometry: featurePoint) as? AGSArcGISFeature {
+        if let newFeature = featureTable.createFeature(attributes: featureAttributes, geometry: featurePoint) as? AGSArcGISFeature {
             lastEditedFeature = newFeature
             //add the feature to the feature table
             featureTable.add(newFeature) { [weak self] (error: Error?) in
@@ -285,8 +290,8 @@ extension CollectDataAR {
                         newFeature.refresh()
                         if let data = capturedImage.jpegData(compressionQuality: 1) {
                             newFeature.addAttachment(withName: "ARCapture.jpg", contentType: "jpg", data: data) { (_: AGSAttachment?, err: Error?) in
-                                if err != nil {
-                                    self.presentAlert(error: err!)
+                                if let error = err {
+                                    self.presentAlert(error: error)
                                 }
                                 self.featureTable.applyEdits(completion: nil)
                             }
@@ -313,10 +318,8 @@ extension CollectDataAR {
             presentationController.delegate = self
             presentationController.barButtonItem = sourceButton
             presentationController.permittedArrowDirections = [.down, .up]
-            present(controller, animated: true)
-        } else {
-            presentAlert(message: "Error showing calibration view")
         }
+        present(controller, animated: true)
     }
 }
 
@@ -348,6 +351,7 @@ class CollectDataARCalibrationViewController: UIViewController {
         let slider = UISlider(frame: .zero)
         slider.minimumValue = -50.0
         slider.maximumValue = 50.0
+        slider.isEnabled = false
         return slider
     }()
     
@@ -359,24 +363,48 @@ class CollectDataARCalibrationViewController: UIViewController {
         return slider
     }()
     
-    /// The last elevation slider value.
-    var lastElevationValue: Float = 0
+    /// Determines whether continuous positioning is in use
+    /// Showing the elevation slider is only appropriate when using local positioning
+    var useContinuousPositioning: Bool = true {
+        didSet {
+            if useContinuousPositioning {
+                elevationSlider.isEnabled = false
+                elevationSlider.removeTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
+                elevationSlider.removeTarget(self, action: #selector(touchUpElevation(_:)), for: [.touchUpInside, .touchUpOutside])
+            } else {
+                elevationSlider.isEnabled = true
+                
+                // Set up events for the heading slider
+                elevationSlider.addTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
+                elevationSlider.addTarget(self, action: #selector(touchUpElevation(_:)), for: [.touchUpInside, .touchUpOutside])
+            }
+        }
+    }
     
-    // The last heading slider value.
-    var lastHeadingValue: Float = 0
+    /// The elevation delta amount based on the elevation slider value.
+    private var joystickElevation: Double {
+        let deltaElevation = Double(elevationSlider.value)
+        return pow(deltaElevation, 2) / 50.0 * (deltaElevation < 0 ? -1.0 : 1.0)
+    }
     
+    ///  The heading delta amount based on the heading slider value.
+    private var joystickHeading: Double {
+        let deltaHeading = Double(headingSlider.value)
+        return pow(deltaHeading, 2) / 25.0 * (deltaHeading < 0 ? -1.0 : 1.0)
+    }
+
     /// Initialized a new calibration view with the given scene view and camera controller.
     ///
     /// - Parameters:
     ///   - arcgisARView: The ArcGISARView we are calibrating..
-    init(_ arcgisARView: ArcGISARView) {
+    init(arcgisARView: ArcGISARView) {
         self.arcgisARView = arcgisARView
         super.init(nibName: nil, bundle: nil)
 
         // Add the heading label and slider.
         let headingLabel = UILabel(frame: .zero)
         headingLabel.text = "Heading:"
-        headingLabel.textColor = view.tintColor
+        headingLabel.textColor = .yellow
         view.addSubview(headingLabel)
         headingLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -395,7 +423,7 @@ class CollectDataARCalibrationViewController: UIViewController {
         // Add the elevation label and slider.
         let elevationLabel = UILabel(frame: .zero)
         elevationLabel.text = "Elevation:"
-        elevationLabel.textColor = view.tintColor
+        elevationLabel.textColor = .yellow
         view.addSubview(elevationLabel)
         elevationLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -435,15 +463,14 @@ class CollectDataARCalibrationViewController: UIViewController {
     func elevationChanged(_ sender: UISlider) {
         if elevationTimer == nil {
             // Create a timer which elevates the camera when fired.
-            elevationTimer = Timer(timeInterval: 0.25, repeats: true) { [weak self] (_) in
-                let delta = self?.joystickElevation() ?? 0.0
-                //                print("elevate delta = \(delta)")
+            let timer = Timer(timeInterval: 0.25, repeats: true) { [weak self] (_) in
+                let delta = self?.joystickElevation ?? 0.0
                 self?.elevate(delta)
             }
             
             // Add the timer to the main run loop.
-            guard let timer = elevationTimer else { return }
             RunLoop.main.add(timer, forMode: .default)
+            elevationTimer = timer
         }
     }
     
@@ -454,15 +481,14 @@ class CollectDataARCalibrationViewController: UIViewController {
     func headingChanged(_ sender: UISlider) {
         if headingTimer == nil {
             // Create a timer which rotates the camera when fired.
-            headingTimer = Timer(timeInterval: 0.1, repeats: true) { [weak self] (_) in
-                let delta = self?.joystickHeading() ?? 0.0
-                //                print("rotate delta = \(delta)")
+            let timer = Timer(timeInterval: 0.1, repeats: true) { [weak self] (_) in
+                let delta = self?.joystickHeading ?? 0.0
                 self?.rotate(delta)
             }
             
             // Add the timer to the main run loop.
-            guard let timer = headingTimer else { return }
             RunLoop.main.add(timer, forMode: .default)
+            headingTimer = timer
         }
     }
     
@@ -501,38 +527,6 @@ class CollectDataARCalibrationViewController: UIViewController {
     private func elevate(_ deltaAltitude: Double) {
         let camera = arcgisARView.originCamera
         arcgisARView.originCamera = camera.elevate(withDeltaAltitude: deltaAltitude)
-    }
-    
-    /// Calculates the elevation delta amount based on the elevation slider value.
-    ///
-    /// - Returns: The elevation delta.
-    private func joystickElevation() -> Double {
-        let deltaElevation = Double(elevationSlider.value)
-        return pow(deltaElevation, 2) / 50.0 * (deltaElevation < 0 ? -1.0 : 1.0)
-    }
-    
-    /// Calculates the heading delta amount based on the heading slider value.
-    ///
-    /// - Returns: The heading delta.
-    private func joystickHeading() -> Double {
-        let deltaHeading = Double(headingSlider.value)
-        return pow(deltaHeading, 2) / 25.0 * (deltaHeading < 0 ? -1.0 : 1.0)
-    }
-    
-    /// Set whether continuous positioning is in use
-    /// Showing a heading slider is only appropriate when using local positioning
-    func setIsUsingContinuousPositioning(_ isContinuous: Bool) {
-        if isContinuous {
-            elevationSlider.isEnabled = false
-            elevationSlider.removeTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
-            elevationSlider.removeTarget(self, action: #selector(touchUpElevation(_:)), for: [.touchUpInside, .touchUpOutside])
-        } else {
-            elevationSlider.isEnabled = true
-            
-            // Set up events for the heading slider
-            elevationSlider.addTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
-            elevationSlider.addTarget(self, action: #selector(touchUpElevation(_:)), for: [.touchUpInside, .touchUpOutside])
-        }
     }
 }
 

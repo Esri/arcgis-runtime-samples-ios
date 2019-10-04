@@ -22,8 +22,8 @@ The ```master``` branch of this repository contains samples configured for the l
 
 ## Requirements
 
-* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.6.0 (or newer).
-* [ArcGIS Runtime Toolkit for iOS ](https://github.com/Esri/arcgis-runtime-toolkit-ios) 100.6.0 (or newer)
+* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.6.0 (or newer)
+* [ArcGIS Runtime Toolkit for iOS](https://github.com/Esri/arcgis-runtime-toolkit-ios) 100.6.0 (or newer)
 * Xcode 11.0 (or newer)
 
 The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *11.0*, meaning that it can run on devices with *iOS 11.0* or newer.

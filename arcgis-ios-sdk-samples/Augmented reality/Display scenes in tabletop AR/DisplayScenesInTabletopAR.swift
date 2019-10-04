@@ -94,19 +94,16 @@ class DisplayScenesInTabletopAR: UIViewController {
                                roll: 0)
 
         // Set the origin camera
-        self.arView.originCamera = newCam
+        arView.originCamera = newCam
 
         // Scene width is about 800m
         let geographicContentWidth = 800.0
 
         // Physical width of the table area the scene will be placed on in meters
-        let tableContainerWidth = 5.0
+        let tableContainerWidth = 1.0
 
         // Set the translation factor based on scene content width and desired physical size
-        self.arView.translationFactor = geographicContentWidth / tableContainerWidth
-
-        // Set the origin camera
-        self.arView.originCamera = newCam
+        arView.translationFactor = geographicContentWidth / tableContainerWidth
     }
 }
 

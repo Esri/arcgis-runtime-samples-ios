@@ -416,7 +416,7 @@ class CollectDataARCalibrationViewController: UIViewController {
         // which roates or elevates the current camera when the timer fires.  The elevation and heading delta
         // values increase the further you move away from center.  Moving and holding the thumb a little bit from center
         // will roate/elevate just a little bit, but get progressively more the further from center the thumb is moved.
-        headingSlider.addTarget(self, action: #selector(headingChanged(_:)), for: .valueChanged)
+        headingSlider.addTarget(self, action: #selector(headingChanged(_:)), for: .touchDown)
         headingSlider.addTarget(self, action: #selector(touchUpHeading(_:)), for: [.touchUpInside, .touchUpOutside])
     }
     

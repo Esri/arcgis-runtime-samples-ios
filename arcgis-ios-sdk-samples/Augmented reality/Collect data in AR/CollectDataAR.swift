@@ -274,7 +274,7 @@ extension CollectDataAR {
                 if let error = error {
                     self.presentAlert(message: "Error while adding feature: \(error.localizedDescription)")
                 } else {
-                    self.featureTable.applyEdits { [weak self] (_: [AGSFeatureEditResult]?, err: Error?) in
+                    self.featureTable.applyEdits { [weak self] (_, err) in
                         guard let self = self else { return }
                         
                         if let error = err {

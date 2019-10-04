@@ -262,7 +262,7 @@ extension CollectDataAR {
         helpLabel.text = "Adding feature"
         
         // Create attributes for the new feature
-        let featureAttributes = ["Health": healthValue, "Height": 3.2, "Diameter": 1.2] as ([String: Any])
+        let featureAttributes = ["Health": healthValue, "Height": 3.2, "Diameter": 1.2] as [String: Any]
         
         if let newFeature =
             featureTable.createFeature(attributes: featureAttributes, geometry: featurePoint) as? AGSArcGISFeature {

@@ -196,7 +196,7 @@ extension CollectDataAR: AGSGeoViewTouchDelegate {
         // Try to get the real-world position of that tapped AR plane
         if let planeLocation = arView.arScreenToLocation(screenPoint: screenPoint) {
             // If a plane was found, use that
-            let graphic = AGSGraphic(geometry: planeLocation, symbol: nil, attributes: nil)
+            let graphic = AGSGraphic(geometry: planeLocation, symbol: nil)
             graphicsOverlay.graphics.add(graphic)
             addBBI.isEnabled = true
             helpLabel.text = "Placed relative to ARKit plane"

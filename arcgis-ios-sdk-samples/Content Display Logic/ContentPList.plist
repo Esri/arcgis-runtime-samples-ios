@@ -1568,7 +1568,7 @@
 				<key>storyboardName</key>
 				<string>DisplayScenesInTabletopAR</string>
 				<key>descriptionText</key>
-				<string>Use augmented reality (AR) to pin a scene to a table or desk for easy exploration</string>
+				<string>Use augmented reality (AR) to pin a scene to a table or desk for easy exploration.</string>
 				<key>dependency</key>
 				<array>
 					<string>philadelphia</string>

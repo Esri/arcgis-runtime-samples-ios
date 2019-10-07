@@ -1580,7 +1580,7 @@
 				<key>storyboardName</key>
 				<string>ExploreScenesInFlyoverAR</string>
 				<key>descriptionText</key>
-				<string>Use augmented reality (AR) to quickly explore a scene more naturally than you could with a touch or mouse interface</string>
+				<string>Use augmented reality (AR) to quickly explore a scene more naturally than you could with a touch or mouse interface.</string>
 			</dict>
 		</array>
 	</dict>

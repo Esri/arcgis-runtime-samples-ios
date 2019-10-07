@@ -1560,7 +1560,7 @@
 				<key>storyboardName</key>
 				<string>CollectDataAR</string>
 				<key>descriptionText</key>
-				<string>Tap on real-world objects to collect data</string>
+				<string>Tap on real-world objects to collect data.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -18,7 +18,7 @@ import ArcGISToolkit
 import ArcGIS
 
 /// The health of a tree.
-enum TreeHealth: Int16, CaseIterable {
+private enum TreeHealth: Int16, CaseIterable {
     /// The tree is dead.
     case dead = 0
     /// The tree is distressed.

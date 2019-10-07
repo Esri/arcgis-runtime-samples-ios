@@ -111,9 +111,8 @@ class DisplayScenesInTabletopAR: UIViewController {
 extension DisplayScenesInTabletopAR: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // Only let the user place the scene once
-        guard !hasPlacedScene else {
-            return
-        }
+        guard !hasPlacedScene else { return }
+        
         // Use a screen point to set the initial transformation on the view.
         if self.arView.setInitialTransformation(using: screenPoint) {
             configureSceneForAR()

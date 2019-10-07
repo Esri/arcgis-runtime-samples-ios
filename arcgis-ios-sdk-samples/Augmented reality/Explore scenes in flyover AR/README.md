@@ -10,7 +10,7 @@ You can use AR to drop into an area and visualize information, like a proposed d
 
 ## How to use the sample
 
-When you open the sample, you'll be viewing the scene from above. You can walk around, using your device as a window into the scene. Try moving vertically to get closer to the ground. Touch gestures which 
+When you open the sample, you'll be viewing the scene from above. You can walk around, using your device as a window into the scene. Try moving vertically to get closer to the ground.
 
 ## How it works
 

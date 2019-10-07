@@ -109,7 +109,7 @@ class DisplayScenesInTabletopAR: UIViewController {
 
 // MARK: - position the scene on touch
 extension DisplayScenesInTabletopAR: AGSGeoViewTouchDelegate {
-    public func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // Only let the user place the scene once
         if hasPlacedScene {
             return

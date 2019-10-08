@@ -1,0 +1,33 @@
+{
+    "category": "Augmented reality",
+    "description": "Tap on real-world objects to collect data.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "attachment",
+        "augmented reality",
+        "capture",
+        "collection",
+        "collector",
+        "data",
+        "field",
+        "field worker",
+        "full-scale",
+        "mixed reality",
+        "survey",
+        "world-scale"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "ArcGISARView",
+        "AGSGraphicsOverlay",
+        "AGSSceneView"
+    ],
+    "snippets": [
+        "CollectDataAR.swift"
+    ],
+    "title": "Collect data in AR"
+}

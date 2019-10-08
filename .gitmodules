@@ -1,0 +1,3 @@
+[submodule "arcgis-runtime-toolkit-ios"]
+	path = arcgis-runtime-toolkit-ios
+	url = https://github.com/Esri/arcgis-runtime-toolkit-ios

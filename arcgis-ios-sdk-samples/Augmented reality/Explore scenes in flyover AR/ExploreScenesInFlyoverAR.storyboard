@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wbC-YQ-IFf">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Explore Scenes In FlyoverAR-->
+        <scene sceneID="xzO-rm-lbY">
+            <objects>
+                <viewController id="wbC-YQ-IFf" customClass="ExploreScenesInFlyoverAR" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MDC-IB-9ba">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="arp-qo-cpt" customClass="ArcGISARView" customModule="ArcGISToolkit">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting up ARKit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvw-so-ZTT">
+                                <rect key="frame" x="0.0" y="44" width="414" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hvw-so-ZTT" firstAttribute="top" secondItem="Jsj-Q3-6Gy" secondAttribute="top" id="COM-6c-ceI"/>
+                            <constraint firstAttribute="trailing" secondItem="arp-qo-cpt" secondAttribute="trailing" id="HkV-3l-y1E"/>
+                            <constraint firstItem="Hvw-so-ZTT" firstAttribute="leading" secondItem="Jsj-Q3-6Gy" secondAttribute="leading" id="PmF-n7-C70"/>
+                            <constraint firstItem="arp-qo-cpt" firstAttribute="leading" secondItem="MDC-IB-9ba" secondAttribute="leading" id="Wfe-cL-GI6"/>
+                            <constraint firstAttribute="bottom" secondItem="arp-qo-cpt" secondAttribute="bottom" id="nMd-qD-U6I"/>
+                            <constraint firstItem="arp-qo-cpt" firstAttribute="top" secondItem="MDC-IB-9ba" secondAttribute="top" id="xfq-QR-o6j"/>
+                            <constraint firstItem="Jsj-Q3-6Gy" firstAttribute="trailing" secondItem="Hvw-so-ZTT" secondAttribute="trailing" id="y9g-tD-vwY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Jsj-Q3-6Gy"/>
+                    </view>
+                    <connections>
+                        <outlet property="arKitStatusLabel" destination="Hvw-so-ZTT" id="Zx9-wO-jBa"/>
+                        <outlet property="arView" destination="arp-qo-cpt" id="r7q-a9-tUY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvD-Ft-50u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

@@ -76,3 +76,7 @@ opt_in_rules: # some rules are only opt-in
 identifier_name:
   min_length:
     warning: 0 # do not flag short identifiers
+
+excluded:
+- Pods
+- arcgis-runtime-toolkit-ios

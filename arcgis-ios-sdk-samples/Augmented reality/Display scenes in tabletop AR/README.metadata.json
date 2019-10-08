@@ -1,0 +1,28 @@
+{
+    "category": "Augmented reality",
+    "description": "Use augmented reality (AR) to pin a scene to a table or desk for easy exploration.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "augmented reality",
+        "drop",
+        "mixed reality",
+        "model",
+        "pin",
+        "place",
+        "table-top",
+        "tabletop"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "ArcGISARView",
+        "AGSSceneView"
+    ],
+    "snippets": [
+        "DisplayScenesInTabletopAR.swift"
+    ],
+    "title": "Display scenes in tabletop AR"
+}

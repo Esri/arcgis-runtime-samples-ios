@@ -504,6 +504,7 @@
 		4C0FD7CD226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7CC226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift */; };
 		4C0FD7CF22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7CE22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift */; };
 		4C0FD7D1226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7D0226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift */; };
+		4C11DBA2234D05C00040EC1C /* ArcGISToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 97466015234265F6008EF35A /* ArcGISToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C1A7C1F21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C1E21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard */; };
 		4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */; };
@@ -595,6 +596,7 @@
 		940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940A73F320E588C200A06C80 /* CutGeometry.storyboard */; };
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
+		9746601B234266A3008EF35A /* ArcGISToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97466015234265F6008EF35A /* ArcGISToolkit.framework */; };
 		97DD84671B2B869300184B41 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = 97DD84661B2B869300184B41 /* xcode.css */; };
 		9D57A46722FDDE4400C750F4 /* LocationHistoryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DE9FE3222FDB7CA00142DE1 /* LocationHistoryViewController.swift */; };
 		9D5EDFE3230741670019C46A /* PreplannedMapAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5EDFE2230741670019C46A /* PreplannedMapAreaTableViewCell.swift */; };
@@ -719,7 +721,16 @@
 		E45991A51EF31DE40089E9FD /* SearchForWebmapByKeywordViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */; };
 		E45991A61EF31DE40089E9FD /* WebMapCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919D1EF3021D0089E9FD /* WebMapCell.swift */; };
 		E45991A81EF31DE40089E9FD /* WebMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E459919F1EF3021D0089E9FD /* WebMapViewController.swift */; };
+		E463241B23454A2600AE91C3 /* CollectDataAR.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E47ED0A32343C4FE0032440E /* CollectDataAR.swift */; };
+		E463241C23454A2600AE91C3 /* DisplayScenesInTabletopAR.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */; };
+		E463241D23454A2600AE91C3 /* ExploreScenesInFlyoverAR.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E47ED09F2343C4FE0032440E /* ExploreScenesInFlyoverAR.swift */; };
 		E476AB0120F69FCA00BCE59F /* ListTransformationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4477CBD20EC0CCD004E14F9 /* ListTransformationsViewController.swift */; };
+		E47ED0A62343C4FE0032440E /* ExploreScenesInFlyoverAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ED09F2343C4FE0032440E /* ExploreScenesInFlyoverAR.swift */; };
+		E47ED0A72343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47ED0A02343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard */; };
+		E47ED0A82343C4FE0032440E /* CollectDataAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47ED0A22343C4FE0032440E /* CollectDataAR.storyboard */; };
+		E47ED0B12343C87E0032440E /* DisplayScenesInTabletopAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */; };
+		E47ED0B22343C87E0032440E /* DisplayScenesInTabletopAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */; };
+		E47ED0B42343EC670032440E /* CollectDataAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ED0A32343C4FE0032440E /* CollectDataAR.swift */; };
 		E4A0BD8B1EE9E5D300CDE436 /* DistanceCompositeSymbolViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
 		E4B2E2651FE31E5200E610FF /* bradle.3ds in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E2631FE31E5100E610FF /* bradle.3ds */; settings = {ASSET_TAGS = (Bradley3DModel, ); }; };
 		E4B2E2661FE31E5200E610FF /* tank1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4B2E2641FE31E5100E610FF /* tank1.jpg */; settings = {ASSET_TAGS = (Bradley3DModel, ); }; };
@@ -741,6 +752,9 @@
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F164997622E90F150088CA93 /* FeatureLayerDictionaryRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1F62C4122E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift */; };
+		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
+		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */; };
 		F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
 		F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
@@ -769,6 +783,20 @@
 			remoteGlobalIDString = 3E23A9DF1AFC28F6002E2214;
 			remoteInfo = "arcgis-ios-sdk-samples";
 		};
+		97466014234265F6008EF35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97466010234265F6008EF35A /* ArcGISToolkit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 881233701DF601A700B2EA8E;
+			remoteInfo = ArcGISToolkit;
+		};
+		9746601D234266A3008EF35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97466010234265F6008EF35A /* ArcGISToolkit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8812336F1DF601A700B2EA8E;
+			remoteInfo = ArcGISToolkit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -780,6 +808,7 @@
 			files = (
 				F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */,
 				F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */,
+				F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */,
 				D970859923147C800075AFF2 /* ConnectedTraceViewController.swift in CopyFiles */,
 				4C990092230208A300226785 /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in CopyFiles */,
 				F164997622E90F150088CA93 /* FeatureLayerDictionaryRendererViewController.swift in CopyFiles */,
@@ -1013,6 +1042,9 @@
 				9DF04DC52304C81D0014C1EE /* DownloadPreplannedMapViewController.swift in CopyFiles */,
 				9DA3CD8D23060835007CB1F3 /* MapSelectionTableViewController.swift in CopyFiles */,
 				9DE83D59230B14E5000CB37A /* PreplannedMapAreaTableViewCell.swift in CopyFiles */,
+				E463241B23454A2600AE91C3 /* CollectDataAR.swift in CopyFiles */,
+				E463241C23454A2600AE91C3 /* DisplayScenesInTabletopAR.swift in CopyFiles */,
+				E463241D23454A2600AE91C3 /* ExploreScenesInFlyoverAR.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,6 +1054,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4C11DBA2234D05C00040EC1C /* ArcGISToolkit.framework in Embed Frameworks */,
 				4C73C837211130E000B0F9C7 /* ArcGIS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -1444,6 +1477,7 @@
 		4CF6DF1E22F2094F00A3092A /* LothianRiversAnno.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = LothianRiversAnno.mmpk; sourceTree = "<group>"; };
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
+		97466010234265F6008EF35A /* ArcGISToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ArcGISToolkit.xcodeproj; path = "arcgis-runtime-toolkit-ios/Toolkit/ArcGISToolkit.xcodeproj"; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 		9D5EDFE2230741670019C46A /* PreplannedMapAreaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreplannedMapAreaTableViewCell.swift; sourceTree = "<group>"; };
 		9DA3CD8B23060687007CB1F3 /* MapSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSelectionTableViewController.swift; sourceTree = "<group>"; };
@@ -1532,6 +1566,12 @@
 		E459919C1EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchForWebmapByKeywordViewController.swift; sourceTree = "<group>"; };
 		E459919D1EF3021D0089E9FD /* WebMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapCell.swift; sourceTree = "<group>"; };
 		E459919F1EF3021D0089E9FD /* WebMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebMapViewController.swift; sourceTree = "<group>"; };
+		E47ED09F2343C4FE0032440E /* ExploreScenesInFlyoverAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreScenesInFlyoverAR.swift; sourceTree = "<group>"; };
+		E47ED0A02343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExploreScenesInFlyoverAR.storyboard; sourceTree = "<group>"; };
+		E47ED0A22343C4FE0032440E /* CollectDataAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CollectDataAR.storyboard; sourceTree = "<group>"; };
+		E47ED0A32343C4FE0032440E /* CollectDataAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectDataAR.swift; sourceTree = "<group>"; };
+		E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DisplayScenesInTabletopAR.storyboard; path = "arcgis-ios-sdk-samples/Augmented reality/Display scenes in tabletop AR/DisplayScenesInTabletopAR.storyboard"; sourceTree = SOURCE_ROOT; };
+		E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayScenesInTabletopAR.swift; path = "arcgis-ios-sdk-samples/Augmented reality/Display scenes in tabletop AR/DisplayScenesInTabletopAR.swift"; sourceTree = SOURCE_ROOT; };
 		E4B2E2631FE31E5100E610FF /* bradle.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = bradle.3ds; sourceTree = "<group>"; };
 		E4B2E2641FE31E5100E610FF /* tank1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tank1.jpg; sourceTree = "<group>"; };
 		E4B2E2681FE31ED500E610FF /* ViewshedGeoElementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewshedGeoElementViewController.swift; sourceTree = "<group>"; };
@@ -1545,6 +1585,8 @@
 		F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalTilePackageViewController.swift; sourceTree = "<group>"; };
 		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpk; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
+		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
+		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
 		F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetElevationPoint.storyboard; sourceTree = "<group>"; };
 		F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetElevationPointViewController.swift; sourceTree = "<group>"; };
 		F1D7508E230730360018B812 /* ElevationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationViewController.swift; sourceTree = "<group>"; };
@@ -1566,6 +1608,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9746601B234266A3008EF35A /* ArcGISToolkit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1885,6 +1928,7 @@
 				4CB506D2224C2DA5006A3471 /* Scripts */,
 				4C73C83321112AFF00B0F9C7 /* Frameworks */,
 				3E23A9E11AFC28F6002E2214 /* Products */,
+				97466010234265F6008EF35A /* ArcGISToolkit.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1912,6 +1956,7 @@
 				3EEE1D671E4935FC003263FC /* Cloud & Portal */,
 				3EEA06001D21C3E800E03774 /* Scenes */,
 				D98CC08F22E25D8200618682 /* Utility Network */,
+				E47ED0882343C1400032440E /* Augmented reality */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				C7E86C8E21751CFE001C65C3 /* Extensions */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
@@ -2588,6 +2633,7 @@
 		3ED027FC1B8E38F400ACA70D /* Edit data */ = {
 			isa = PBXGroup;
 			children = (
+				F164997722E9249B0088CA93 /* Edit and sync features */,
 				3E41DD6D1B9A1EA800DA11CC /* Add features (feature service) */,
 				3E41DD751B9F5AC800DA11CC /* Delete features (feature service) */,
 				3ED029521B8E3ACD00ACA70D /* Update attributes (feature service) */,
@@ -3527,6 +3573,14 @@
 			path = "Cut geometry";
 			sourceTree = "<group>";
 		};
+		97466011234265F6008EF35A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				97466015234265F6008EF35A /* ArcGISToolkit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9D4BA6C822FCAFAD0086D5D3 /* Show location history */ = {
 			isa = PBXGroup;
 			children = (
@@ -3845,6 +3899,44 @@
 			path = "Search for webmap by keyword";
 			sourceTree = "<group>";
 		};
+		E47ED0882343C1400032440E /* Augmented reality */ = {
+			isa = PBXGroup;
+			children = (
+				E47ED0A12343C4FE0032440E /* Collect data in AR */,
+				E47ED0AA2343C5E00032440E /* Display scenes in tabletop AR */,
+				E47ED09E2343C4FE0032440E /* Explore scenes in flyover AR */,
+			);
+			path = "Augmented reality";
+			sourceTree = "<group>";
+		};
+		E47ED09E2343C4FE0032440E /* Explore scenes in flyover AR */ = {
+			isa = PBXGroup;
+			children = (
+				E47ED09F2343C4FE0032440E /* ExploreScenesInFlyoverAR.swift */,
+				E47ED0A02343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard */,
+			);
+			path = "Explore scenes in flyover AR";
+			sourceTree = "<group>";
+		};
+		E47ED0A12343C4FE0032440E /* Collect data in AR */ = {
+			isa = PBXGroup;
+			children = (
+				E47ED0A32343C4FE0032440E /* CollectDataAR.swift */,
+				E47ED0A22343C4FE0032440E /* CollectDataAR.storyboard */,
+			);
+			path = "Collect data in AR";
+			sourceTree = "<group>";
+		};
+		E47ED0AA2343C5E00032440E /* Display scenes in tabletop AR */ = {
+			isa = PBXGroup;
+			children = (
+				E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */,
+				E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */,
+			);
+			name = "Display scenes in tabletop AR";
+			path = "arcgis-ios-sdk-samples/Augmented Reality/Display scenes in tabletop AR";
+			sourceTree = SOURCE_ROOT;
+		};
 		E4B2E2621FE31E5100E610FF /* bradley_low_3ds */ = {
 			isa = PBXGroup;
 			children = (
@@ -3889,6 +3981,15 @@
 				F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */,
 			);
 			path = "Create terrain surface from a local tile package";
+			sourceTree = "<group>";
+		};
+		F164997722E9249B0088CA93 /* Edit and sync features */ = {
+			isa = PBXGroup;
+			children = (
+				F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */,
+				F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */,
+			);
+			path = "Edit and sync features";
 			sourceTree = "<group>";
 		};
 		F1679F0422D93FA900E5320A /* Rasters */ = {
@@ -3974,6 +4075,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9746601E234266A3008EF35A /* PBXTargetDependency */,
 			);
 			name = "ArcGIS Runtime SDK Samples";
 			productName = "arcgis-ios-sdk-samples";
@@ -4065,6 +4167,12 @@
 			mainGroup = 3E23A9D71AFC28F6002E2214;
 			productRefGroup = 3E23A9E11AFC28F6002E2214 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 97466011234265F6008EF35A /* Products */;
+					ProjectRef = 97466010234265F6008EF35A /* ArcGISToolkit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3E23A9DF1AFC28F6002E2214 /* ArcGIS Runtime SDK Samples */,
@@ -4072,6 +4180,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		97466015234265F6008EF35A /* ArcGISToolkit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ArcGISToolkit.framework;
+			remoteRef = 97466014234265F6008EF35A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3E23A9DE1AFC28F6002E2214 /* Resources */ = {
@@ -4108,6 +4226,7 @@
 				3ED028781B8E3A8500ACA70D /* ManageMapLayers.storyboard in Resources */,
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
 				C7AF466621B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard in Resources */,
+				F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */,
 				3E1E5EEF1D9F0BAB00F4913C /* HillshadeRenderer.storyboard in Resources */,
 				3ED028571B8E3A8500ACA70D /* CreateSaveMap.storyboard in Resources */,
 				3E0B58501E36BCCD00951767 /* ViewshedGeoprocessing.storyboard in Resources */,
@@ -4234,6 +4353,7 @@
 				F1F62C4022E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard in Resources */,
 				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
 				D9EE379820E2CC7700BF8AD1 /* tire_tread.jpeg in Resources */,
+				E47ED0B12343C87E0032440E /* DisplayScenesInTabletopAR.storyboard in Resources */,
 				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
 				12D66033226697320005DE8A /* GroupLayersSectionView.xib in Resources */,
 				12D66035226697320005DE8A /* GroupLayers.storyboard in Resources */,
@@ -4271,6 +4391,7 @@
 				3EFDE0F71E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard in Resources */,
 				3E81C1BD1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard in Resources */,
 				3E62940B1EAFAF4100084105 /* WebTiledLayer.storyboard in Resources */,
+				E47ED0A72343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,
 				3ED0289C1B8E3A8500ACA70D /* MapViewScreenshot.storyboard in Resources */,
 				4C1A7C1F21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard in Resources */,
@@ -4299,6 +4420,7 @@
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
 				4CECF89F21D57F0A00A56161 /* SetMinMaxScale.storyboard in Resources */,
 				3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */,
+				E47ED0A82343C4FE0032440E /* CollectDataAR.storyboard in Resources */,
 				4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */,
 				4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */,
 				1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */,
@@ -4505,6 +4627,7 @@
 				4CE15D4C22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
+				F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
 				218409DD1FE89D840098BC40 /* OrderByFieldsViewController.swift in Sources */,
 				C793B5E92166BB71000A7A10 /* OpenStreetMapLayerViewController.swift in Sources */,
@@ -4678,6 +4801,9 @@
 				3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in Sources */,
 				4C1EF29D220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
+				E47ED0B42343EC670032440E /* CollectDataAR.swift in Sources */,
+				E47ED0B22343C87E0032440E /* DisplayScenesInTabletopAR.swift in Sources */,
+				E47ED0A62343C4FE0032440E /* ExploreScenesInFlyoverAR.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4700,6 +4826,11 @@
 			isa = PBXTargetDependency;
 			target = 3E23A9DF1AFC28F6002E2214 /* ArcGIS Runtime SDK Samples */;
 			targetProxy = 4CD2B5592142EAF900767D87 /* PBXContainerItemProxy */;
+		};
+		9746601E234266A3008EF35A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ArcGISToolkit;
+			targetProxy = 9746601D234266A3008EF35A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4824,6 +4955,7 @@
 		3E23AA021AFC28F6002E2214 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4842,7 +4974,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4855,6 +4987,7 @@
 		3E23AA031AFC28F6002E2214 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSET_PACK_MANIFEST_URL_PREFIX = "";
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
@@ -4874,7 +5007,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

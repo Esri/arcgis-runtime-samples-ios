@@ -1,0 +1,41 @@
+{
+    "category": "Utility Network",
+    "description": "Find all features connected to a set of starting points in a utility network.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "connected trace",
+        "utility network",
+        "network analysis",
+        "AGSUtilityNetwork",
+        "AGSUtilityTraceParameters",
+        "AGSUtilityTraceResult",
+        "AGSUtilityElementTraceResult",
+        "AGSUtilityNetworkDefinition",
+        "AGSUtilityNetworkSource",
+        "AGSUtilityAssetType",
+        "AGSUtilityTerminal",
+        "AGSUtilityElement",
+        "AGSGeometryEngine.fractionAlongLine()"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSUtilityNetwork",
+        "AGSUtilityTraceParameters",
+        "AGSUtilityTraceResult",
+        "AGSUtilityElementTraceResult",
+        "AGSUtilityNetworkDefinition",
+        "AGSUtilityNetworkSource",
+        "AGSUtilityAssetType",
+        "AGSUtilityTerminal",
+        "AGSUtilityElement",
+        "AGSGeometryEngine.fractionAlongLine()"
+    ],
+    "snippets": [
+        "ConnectedTraceViewController.swift"
+    ],
+    "title": "Find connected features in utility networks"
+}

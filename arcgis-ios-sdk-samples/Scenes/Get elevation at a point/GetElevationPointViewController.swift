@@ -120,19 +120,19 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
     }
 
     private func showPopover(elevation: Double, popoverPoint: CGPoint) {
-        guard let controller = storyboard?.instantiateViewController(withIdentifier: "ElevationViewController") as? ElevationViewController else {
+        guard let elevationViewController = storyboard?.instantiateViewController(withIdentifier: "ElevationViewController") as? ElevationViewController else {
                 return
         }
         // Setup the controller to display as a popover.
-        controller.modalPresentationStyle = .popover
-        controller.elevation = Measurement(value: elevation, unit: UnitLength.meters)
-        if let popoverPresentationController = controller.popoverPresentationController {
+        elevationViewController.modalPresentationStyle = .popover
+        elevationViewController.elevation = Measurement(value: elevation, unit: UnitLength.meters)
+        if let popoverPresentationController = elevationViewController.popoverPresentationController {
             popoverPresentationController.delegate = self
             popoverPresentationController.passthroughViews = [sceneView]
             popoverPresentationController.sourceRect = CGRect(origin: popoverPoint, size: .zero)
             popoverPresentationController.sourceView = sceneView
         }
-        present(controller, animated: false)
+        present(elevationViewController, animated: false)
     }
 }
 

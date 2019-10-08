@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pwy-4F-G4n">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pwy-4F-G4n">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,35 +43,47 @@
         <scene sceneID="mbo-WU-56s">
             <objects>
                 <viewController storyboardIdentifier="ElevationViewController" automaticallyAdjustsScrollViewInsets="NO" id="0rn-Ar-HUQ" userLabel="Elevation View Controller" customClass="ElevationViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="c9Z-Hn-Ppo" userLabel="Label View">
-                        <rect key="frame" x="0.0" y="0.0" width="310" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9Z-Hn-Ppo">
+                        <rect key="frame" x="0.0" y="0.0" width="310" height="60"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNi-uF-fm7" userLabel="Elevation Label">
-                                <rect key="frame" x="0.0" y="0.0" width="310" height="20"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UfE-g0-aPk">
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Elevation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEW-Jb-HK8">
+                                        <rect key="frame" x="8" y="52" width="180.5" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="750" text="Measurement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNi-uF-fm7">
+                                        <rect key="frame" x="196.5" y="52" width="105.5" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layoutMarginsRelativeArrangement" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jNi-uF-fm7" firstAttribute="top" secondItem="c9Z-Hn-Ppo" secondAttribute="top" id="3xa-hh-HEz"/>
-                            <constraint firstItem="jNi-uF-fm7" firstAttribute="leading" secondItem="c9Z-Hn-Ppo" secondAttribute="leading" id="4lI-cj-kK2"/>
-                            <constraint firstAttribute="bottom" secondItem="jNi-uF-fm7" secondAttribute="bottom" id="EA3-hG-IkD"/>
-                            <constraint firstAttribute="trailing" secondItem="jNi-uF-fm7" secondAttribute="trailing" id="XsX-eZ-6Si"/>
+                            <constraint firstItem="UfE-g0-aPk" firstAttribute="top" secondItem="c9Z-Hn-Ppo" secondAttribute="top" id="8lS-oE-clM"/>
+                            <constraint firstAttribute="bottom" secondItem="UfE-g0-aPk" secondAttribute="bottom" priority="999" id="Ecw-3d-yam"/>
+                            <constraint firstAttribute="trailing" secondItem="UfE-g0-aPk" secondAttribute="trailing" id="QnX-SE-h4G"/>
+                            <constraint firstItem="UfE-g0-aPk" firstAttribute="leading" secondItem="c9Z-Hn-Ppo" secondAttribute="leading" id="x1T-1W-zrl"/>
                         </constraints>
-                        <edgeInsets key="layoutMargins" top="0.0" left="5" bottom="0.0" right="5"/>
                         <viewLayoutGuide key="safeArea" id="lS6-6U-DxF"/>
                     </view>
-                    <size key="freeformSize" width="310" height="20"/>
+                    <size key="freeformSize" width="310" height="60"/>
                     <connections>
                         <outlet property="elevationLabel" destination="jNi-uF-fm7" id="ire-5O-2rC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8s-7U-Pmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="125" y="338"/>
         </scene>
     </scenes>
 </document>

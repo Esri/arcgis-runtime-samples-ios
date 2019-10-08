@@ -15,7 +15,10 @@
 import UIKit
 import ArcGIS
 
+/// A view controller that manages the interface of the Get Elevation at a Point
+/// sample.
 class GetElevationPointViewController: UIViewController {
+    /// The scene view managed by the view controller.
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
             // Initialize a scene.
@@ -26,20 +29,22 @@ class GetElevationPointViewController: UIViewController {
             // Set scene's viewpoint.
             let camera = AGSCamera(latitude: 28.42, longitude: 83.9, altitude: 10000.0, heading: 10.0, pitch: 80.0, roll: 0.0)
             sceneView.setViewpointCamera(camera)
-            
-            makeGraphics()
+            sceneView.graphicsOverlays.add(graphicsOverlay)
         }
     }
     
-    private let graphicsOverlay = AGSGraphicsOverlay()
-    
-    // Create graphics overlay and add it to scene view.
-    private func makeGraphics() {
+    /// The graphics overlay used to show a graphic at the tapped point.
+    private let graphicsOverlay: AGSGraphicsOverlay = {
+        let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.renderingMode = .dynamic
         graphicsOverlay.sceneProperties?.surfacePlacement = .relative
-        sceneView.graphicsOverlays.add(graphicsOverlay)
-    }
+        return graphicsOverlay
+    }()
     
+    /// Creates a scene.
+    ///
+    /// - Returns: A new `AGSScene` object with a base surface configured with
+    /// an elevation source.
     private func makeScene() -> AGSScene {
         let scene = AGSScene(basemapType: .imageryWithLabels)
         
@@ -55,16 +60,26 @@ class GetElevationPointViewController: UIViewController {
         return scene
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
+    /// Dismisses the elevation popover and removes the associated graphic.
+    func dismissElevationPopover() {
+        guard presentedViewController != nil else { return }
         dismiss(animated: false)
+        sceneView.viewpointChangedHandler = nil
+        graphicsOverlay.graphics.removeAllObjects()
     }
+    
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GetElevationPointViewController", "ElevationViewController"]
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        dismissElevationPopover()
     }
 }
 
@@ -95,9 +110,11 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
                 }
             }
         }
+        // Dismiss the elevation popover and hid the graphic when the user
+        // interacts with the scene.
         sceneView.viewpointChangedHandler = { [weak self] in
             DispatchQueue.main.async {
-                self?.dismiss(animated: false)
+                self?.dismissElevationPopover()
             }
         }
     }
@@ -108,14 +125,13 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
         }
         // Setup the controller to display as a popover.
         controller.modalPresentationStyle = .popover
-        controller.loadViewIfNeeded()
-        let elevationMeasurement = Measurement(value: elevation, unit: UnitLength.meters)
-        controller.elevationLabel?.text? = " Elevation at tapped point: " + MeasurementFormatter().string(from: elevationMeasurement)
-        controller.popoverPresentationController?.delegate = self
-        controller.popoverPresentationController?.backgroundColor = .lightGray
-        controller.popoverPresentationController?.passthroughViews = [sceneView, navigationController?.navigationBar] as? [UIView]
-        controller.popoverPresentationController?.sourceRect = CGRect(origin: popoverPoint, size: .zero)
-        controller.popoverPresentationController?.sourceView = sceneView
+        controller.elevation = Measurement(value: elevation, unit: UnitLength.meters)
+        if let popoverPresentationController = controller.popoverPresentationController {
+            popoverPresentationController.delegate = self
+            popoverPresentationController.passthroughViews = [sceneView]
+            popoverPresentationController.sourceRect = CGRect(origin: popoverPoint, size: .zero)
+            popoverPresentationController.sourceView = sceneView
+        }
         present(controller, animated: false)
     }
 }

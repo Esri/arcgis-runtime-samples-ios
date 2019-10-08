@@ -15,19 +15,15 @@
 import UIKit
 
 class ElevationViewController: UIViewController {
-    @IBOutlet var elevationLabel: UILabel!
-    
-    override var preferredContentSize: CGSize {
-        get {
-            let labelSize = elevationLabel.intrinsicContentSize
-            let layoutMargins = view.layoutMargins
-            return CGSize(
-                width: labelSize.width + layoutMargins.left + layoutMargins.right,
-                height: labelSize.height + layoutMargins.top + layoutMargins.bottom
-            )
-        }
-        set {
-            super.preferredContentSize = newValue
+    var elevation = Measurement(value: 0, unit: UnitLength.meters) {
+        didSet {
+            loadViewIfNeeded()
+            elevationLabel.text = elevationFormatter.string(from: elevation)
+            preferredContentSize = view.systemLayoutSizeFitting(UIView.layoutFittingExpandedSize)
         }
     }
+    
+    @IBOutlet private var elevationLabel: UILabel!
+    
+    private let elevationFormatter = MeasurementFormatter()
 }

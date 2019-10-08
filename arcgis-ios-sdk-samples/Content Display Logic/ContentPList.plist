@@ -1557,5 +1557,40 @@
 			</dict>
 		</array>
 	</dict>
+	<dict>
+		<key>displayName</key>
+		<string>Augmented reality</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Collect data in AR</string>
+				<key>storyboardName</key>
+				<string>CollectDataAR</string>
+				<key>descriptionText</key>
+				<string>Tap on real-world objects to collect data.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display scenes in tabletop AR</string>
+				<key>storyboardName</key>
+				<string>DisplayScenesInTabletopAR</string>
+				<key>descriptionText</key>
+				<string>Use augmented reality (AR) to pin a scene to a table or desk for easy exploration.</string>
+				<key>dependency</key>
+				<array>
+					<string>philadelphia</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Explore scenes in flyover AR</string>
+				<key>storyboardName</key>
+				<string>ExploreScenesInFlyoverAR</string>
+				<key>descriptionText</key>
+				<string>Use augmented reality (AR) to quickly explore a scene more naturally than you could with a touch or mouse interface.</string>
+			</dict>
+		</array>
+	</dict>
 </array>
 </plist>

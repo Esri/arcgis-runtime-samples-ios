@@ -7,7 +7,7 @@
     ],
     "keywords": [
         "elevation",
-	"scene",
+        "scene",
         "point",
         "AGSPoint",
         "AGSScene",
@@ -26,7 +26,7 @@
     ],
     "snippets": [
         "GetElevationPointViewController.swift",
-	"ElevationViewController.swift"
+        "ElevationViewController.swift"
     ],
     "title": "Get Elevation at a Point"
 }

@@ -100,11 +100,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Appearance modification
     
     func modifyAppearance() {
-        let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationBarAppearance.barTintColor = .primaryBlue
-        navigationBarAppearance.tintColor = .white
+        let navigationBarAppearanceProxy = UINavigationBar.appearance()
+        if #available(iOS 13.0, *) {
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithTransparentBackground()
+            navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationBarAppearance.backgroundColor = .primaryBlue
+            
+            navigationBarAppearanceProxy.standardAppearance = navigationBarAppearance
+            navigationBarAppearanceProxy.compactAppearance = navigationBarAppearance
+            navigationBarAppearanceProxy.scrollEdgeAppearance = navigationBarAppearance
+        } else {
+            navigationBarAppearanceProxy.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationBarAppearanceProxy.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationBarAppearanceProxy.barTintColor = .primaryBlue
+        }
+        navigationBarAppearanceProxy.tintColor = .white
         
         UIToolbar.appearance().barTintColor = .backgroundGray
         UIToolbar.appearance().tintColor = .primaryBlue

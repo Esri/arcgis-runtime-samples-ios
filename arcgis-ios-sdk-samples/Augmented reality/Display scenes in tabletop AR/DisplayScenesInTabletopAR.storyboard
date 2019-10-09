@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9jd-tI-OWR">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Display Scenes In TabletopAR-->
+        <scene sceneID="5ZS-KN-77B">
+            <objects>
+                <viewController id="9jd-tI-OWR" customClass="DisplayScenesInTabletopAR" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UlC-uU-6kg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5S-t5-nxA" customClass="ArcGISARView" customModule="ArcGISToolkit">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Move the phone slowly to begin tracking." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LI-jX-nbZ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
+                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="C5S-t5-nxA" firstAttribute="top" secondItem="UlC-uU-6kg" secondAttribute="top" id="V9t-Oo-Wba"/>
+                            <constraint firstItem="3LI-jX-nbZ" firstAttribute="leading" secondItem="1At-b3-BXl" secondAttribute="leading" id="YXg-op-B0O"/>
+                            <constraint firstItem="3LI-jX-nbZ" firstAttribute="top" secondItem="1At-b3-BXl" secondAttribute="top" id="c0V-kc-B2k"/>
+                            <constraint firstAttribute="bottom" secondItem="C5S-t5-nxA" secondAttribute="bottom" id="e6d-eP-Jg1"/>
+                            <constraint firstAttribute="trailing" secondItem="C5S-t5-nxA" secondAttribute="trailing" id="jJ7-KT-4WU"/>
+                            <constraint firstItem="C5S-t5-nxA" firstAttribute="leading" secondItem="UlC-uU-6kg" secondAttribute="leading" id="vGK-ZX-fHi"/>
+                            <constraint firstItem="3LI-jX-nbZ" firstAttribute="trailing" secondItem="1At-b3-BXl" secondAttribute="trailing" id="zgu-r4-5DN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1At-b3-BXl"/>
+                    </view>
+                    <connections>
+                        <outlet property="arView" destination="C5S-t5-nxA" id="wdM-nm-EN9"/>
+                        <outlet property="helpLabel" destination="3LI-jX-nbZ" id="9vf-8j-9Zz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2HS-rM-lx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-271" y="129"/>
+        </scene>
+    </scenes>
+</document>

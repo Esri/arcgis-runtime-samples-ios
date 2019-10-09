@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x5g-SP-gLy">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit And Sync Features View Controller-->
+        <scene sceneID="GoB-4p-WPU">
+            <objects>
+                <viewController id="x5g-SP-gLy" userLabel="Edit And Sync Features View Controller" customClass="EditAndSyncFeaturesViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0sk-IR-n2v">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sH-Kk-wWr" userLabel="Map View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5p-5s-jhB" userLabel="Extent View">
+                                <rect key="frame" x="72.5" y="157" width="269" height="582"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcO-gi-Dd8" userLabel="Instructions Label">
+                                <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IcZ-Ht-3Pq" userLabel="Tool Bar">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RT5-mr-U1C"/>
+                                    <barButtonItem title="Generate Geodatabase" id="1os-c0-2Eg" userLabel="Bar Button Item">
+                                        <connections>
+                                            <action selector="generateOrSync" destination="x5g-SP-gLy" id="5Ky-fq-dYu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Sb4-0b-W7L"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IcZ-Ht-3Pq" firstAttribute="trailing" secondItem="0sk-IR-n2v" secondAttribute="trailing" id="2tl-ha-oBi"/>
+                            <constraint firstItem="r5p-5s-jhB" firstAttribute="centerX" secondItem="0sk-IR-n2v" secondAttribute="centerX" id="5es-lz-FM6"/>
+                            <constraint firstItem="0sH-Kk-wWr" firstAttribute="top" secondItem="0sk-IR-n2v" secondAttribute="top" id="677-Pm-PlF"/>
+                            <constraint firstAttribute="bottom" secondItem="0sH-Kk-wWr" secondAttribute="bottom" id="Asu-nB-CGz"/>
+                            <constraint firstItem="r5p-5s-jhB" firstAttribute="height" secondItem="0sH-Kk-wWr" secondAttribute="height" multiplier="0.65" id="B2J-ST-hgt"/>
+                            <constraint firstItem="IcZ-Ht-3Pq" firstAttribute="bottom" secondItem="gGt-4y-cpB" secondAttribute="bottom" id="GOZ-qk-Hc3"/>
+                            <constraint firstItem="HcO-gi-Dd8" firstAttribute="leading" secondItem="0sk-IR-n2v" secondAttribute="leading" id="Gdd-Ue-2mA"/>
+                            <constraint firstItem="r5p-5s-jhB" firstAttribute="width" secondItem="0sH-Kk-wWr" secondAttribute="width" multiplier="0.65" id="Jcj-X0-chN"/>
+                            <constraint firstItem="r5p-5s-jhB" firstAttribute="centerX" secondItem="0sH-Kk-wWr" secondAttribute="centerX" id="LcW-A9-kea"/>
+                            <constraint firstItem="HcO-gi-Dd8" firstAttribute="trailing" secondItem="0sk-IR-n2v" secondAttribute="trailing" id="PDo-qq-hk5"/>
+                            <constraint firstItem="HcO-gi-Dd8" firstAttribute="top" secondItem="gGt-4y-cpB" secondAttribute="top" id="Rr0-Jf-L6N"/>
+                            <constraint firstItem="IcZ-Ht-3Pq" firstAttribute="centerX" secondItem="gGt-4y-cpB" secondAttribute="centerX" id="ZG1-hN-5S2"/>
+                            <constraint firstItem="IcZ-Ht-3Pq" firstAttribute="leading" secondItem="0sk-IR-n2v" secondAttribute="leading" id="dQL-iy-Hw1"/>
+                            <constraint firstItem="r5p-5s-jhB" firstAttribute="centerY" secondItem="0sH-Kk-wWr" secondAttribute="centerY" id="hLT-Kv-KkV"/>
+                            <constraint firstItem="0sH-Kk-wWr" firstAttribute="leading" secondItem="0sk-IR-n2v" secondAttribute="leading" id="jaa-mn-BjH"/>
+                            <constraint firstAttribute="trailing" secondItem="0sH-Kk-wWr" secondAttribute="trailing" id="tkI-cu-QEx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gGt-4y-cpB"/>
+                    </view>
+                    <connections>
+                        <outlet property="barButtonItem" destination="1os-c0-2Eg" id="hVb-bI-4az"/>
+                        <outlet property="extentView" destination="r5p-5s-jhB" id="Jpf-uw-Cte"/>
+                        <outlet property="instructionsLabel" destination="HcO-gi-Dd8" id="kRJ-PE-Pcc"/>
+                        <outlet property="mapView" destination="0sH-Kk-wWr" id="39U-ww-1Lh"/>
+                        <outlet property="toolBar" destination="IcZ-Ht-3Pq" id="TuF-KQ-RXm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="05V-VB-iTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="63.768115942028992" y="147.99107142857142"/>
+        </scene>
+    </scenes>
+</document>

@@ -35,28 +35,41 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         // create the search controller
         let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.obscuresBackgroundDuringPresentation = true
-        searchController.hidesNavigationBarDuringPresentation = false
+        // Setting hidesNavigationBarDuringPresentation to false causes issues on iOS 13 - 13.1.2,
+        // so we hide the navigation bar during search.
+        searchController.hidesNavigationBarDuringPresentation = true
         // send search query updates to the results controller
         searchController.searchResultsUpdater = searchResultsController
         
         let searchBar = searchController.searchBar
         searchBar.autocapitalizationType = .none
-        // set the color of "Cancel" text
-        searchBar.tintColor = .white
+        
+        if #available(iOS 13, *) {
+            // Do nothing, on iOS 13 the settings below have no effect.
+        } else {
+            // This code is required to make the search bar look decent on iOS 12
+            // This does not work on iOS 13, where the search bar looks different.
+            // Different meaning - not as good as iOS 12 looks like with this fix,
+            // but at least acceptable and a bit better than what it would look like
+            // on 12 without this fix.
+            
+            // set the color of "Cancel" text
+            searchBar.tintColor = .white
+            
+            // find the text field to customize its appearance
+            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+                // set the color of the insertion cursor
+                textfield.tintColor = UIColor.darkText
+                if let backgroundview = textfield.subviews.first {
+                    backgroundview.backgroundColor = UIColor.white
+                    backgroundview.layer.cornerRadius = 12
+                    backgroundview.clipsToBounds = true
+                }
+            }
+        }
         
         // embed the search bar under the title in the navigation bar
         navigationItem.searchController = searchController
-        
-        // find the text field to customize its appearance
-        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-            // set the color of the insertion cursor
-            textfield.tintColor = UIColor.darkText
-            if let backgroundview = textfield.subviews.first {
-                backgroundview.backgroundColor = UIColor.white
-                backgroundview.layer.cornerRadius = 12
-                backgroundview.clipsToBounds = true
-            }
-        }
     }
 
     // MARK: UICollectionViewDataSource

@@ -32,11 +32,18 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         
         // register to be notified about authentication challenges
         AGSAuthenticationManager.shared().delegate = self
-
+        
         // create the portal
         portal = AGSPortal(url: URL(string: "https://arcgis.com")!, loginRequired: false)
-    
+        
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SearchForWebmapByKeywordViewController", "WebMapCell", "WebMapViewController"]
+        
+        if #available(iOS 13, *) {
+            // for iOS 13 this must be added in viewDidLoad
+            // for iOS 12, it gets added in viewDidAppear, because for iOS 12 it doesn't
+            // show up if added here.
+            addSearchController()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,28 +57,41 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         // create the search controller
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
+        // Setting hidesNavigationBarDuringPresentation to false causes issues on iOS 13 - 13.1.2,
+        // so we hide the navigation bar during search.
+        searchController.hidesNavigationBarDuringPresentation = true
         // send search query updates to the results controller
         searchController.searchResultsUpdater = self
         
         let searchBar = searchController.searchBar
         searchBar.autocapitalizationType = .none
-        // set the color of "Cancel" text
-        searchBar.tintColor = .white
+        
+        if #available(iOS 13, *) {
+            // Do nothing, on iOS 13 the settings below have no effect.
+        } else {
+            // This code is required to make the search bar look decent on iOS 12
+            // This does not work on iOS 13, where the search bar looks different.
+            // Different meaning - not as good as iOS 12 looks like with this fix,
+            // but at least acceptable and a bit better than what it would look like
+            // on 12 without this fix.
+            // set the color of "Cancel" text
+            searchBar.tintColor = .white
+            
+            // find the text field to customize its appearance
+            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+                // set the color of the insertion cursor
+                textfield.tintColor = UIColor.darkText
+                if let backgroundview = textfield.subviews.first {
+                    backgroundview.backgroundColor = UIColor.white
+                    backgroundview.layer.cornerRadius = 12
+                    backgroundview.clipsToBounds = true
+                }
+            }
+        }
         
         // embed the search bar under the title in the navigation bar
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        // find the text field to customize its appearance
-        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-            // set the color of the insertion cursor
-            textfield.tintColor = UIColor.darkText
-            if let backgroundview = textfield.subviews.first {
-                backgroundview.backgroundColor = UIColor.white
-                backgroundview.layer.cornerRadius = 12
-                backgroundview.clipsToBounds = true
-            }
-        }
     }
     
     let dateFormatter: DateFormatter = {
@@ -79,7 +99,7 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         formatter.dateStyle = .medium
         return formatter
     }()
- 
+    
     private func startWebMapSearch(query: String) {
         // if the last search hasn't returned yet, cancel it
         lastQueryCancelable?.cancel()
@@ -108,7 +128,7 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
             }
         }
     }
-
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

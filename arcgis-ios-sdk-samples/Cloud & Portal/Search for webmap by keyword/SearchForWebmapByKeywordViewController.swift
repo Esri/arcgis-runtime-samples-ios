@@ -37,8 +37,20 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         portal = AGSPortal(url: URL(string: "https://arcgis.com")!, loginRequired: false)
         
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SearchForWebmapByKeywordViewController", "WebMapCell", "WebMapViewController"]
-
-        addSearchController()
+        
+        if #available(iOS 13, *) {
+            // for iOS 13 this must be added in viewDidLoad
+            // for iOS 12, it gets added in viewDidAppear, because for iOS 12 it doesn't
+            // show up if added here.
+            addSearchController()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if navigationItem.searchController == nil {
+            addSearchController()
+        }
     }
     
     private func addSearchController() {

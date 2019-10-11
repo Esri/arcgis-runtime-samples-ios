@@ -37,13 +37,8 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         portal = AGSPortal(url: URL(string: "https://arcgis.com")!, loginRequired: false)
         
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SearchForWebmapByKeywordViewController", "WebMapCell", "WebMapViewController"]
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if navigationItem.searchController == nil {
-            addSearchController()
-        }
+
+        addSearchController()
     }
     
     private func addSearchController() {

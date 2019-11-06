@@ -573,6 +573,7 @@
 		4CCA30D4223AEF2C009D2AEF /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1EF29C220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift */; };
 		4CCA30D5223AEF2C009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CCA30BF223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift */; };
 		4CCA30D6223AEF2C009D2AEF /* IntegratedWindowsAuthenticationMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C1EF2D0221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift */; };
+		4CCC0877234E78BB00AD5F9A /* ArcGISToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 97466015234265F6008EF35A /* ArcGISToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD520D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift */; };
 		4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE7BD720D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard */; };
 		4CD2B55F2142EB2600767D87 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B55E2142EB2600767D87 /* SampleTests.swift */; };
@@ -1054,7 +1055,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4C11DBA2234D05C00040EC1C /* ArcGISToolkit.framework in Embed Frameworks */,
+				4CCC0877234E78BB00AD5F9A /* ArcGISToolkit.framework in Embed Frameworks */,
 				4C73C837211130E000B0F9C7 /* ArcGIS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";

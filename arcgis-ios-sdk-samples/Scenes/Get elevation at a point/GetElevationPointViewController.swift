@@ -110,7 +110,7 @@ extension GetElevationPointViewController: AGSGeoViewTouchDelegate {
                 }
             }
         }
-        // Dismiss the elevation popover and hid the graphic when the user
+        // Dismiss the elevation popover and hide the graphic when the user
         // interacts with the scene.
         sceneView.viewpointChangedHandler = { [weak self] in
             DispatchQueue.main.async {

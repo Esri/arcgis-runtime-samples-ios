@@ -56,7 +56,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private var selectedFeature: AGSFeature? {
         didSet {
             if let feature = selectedFeature {
-                if let featureLayer = feature.featureTable?.featureLayer {
+                if let featureLayer = feature.featureTable?.layer as? AGSFeatureLayer {
                     featureLayer.select(feature)
                 }
             } else {

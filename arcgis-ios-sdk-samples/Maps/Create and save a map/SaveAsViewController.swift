@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol SaveAsVCDelegate: AnyObject {
+protocol SaveAsViewControllerDelegate: AnyObject {
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String)
 }
 
@@ -23,7 +23,7 @@ class SaveAsViewController: UITableViewController {
     @IBOutlet private weak var tagsTextField: UITextField!
     @IBOutlet private weak var descriptionTextField: UITextField!
     
-    weak var delegate: SaveAsVCDelegate?
+    weak var delegate: SaveAsViewControllerDelegate?
     
     // MARK: - Actions
     

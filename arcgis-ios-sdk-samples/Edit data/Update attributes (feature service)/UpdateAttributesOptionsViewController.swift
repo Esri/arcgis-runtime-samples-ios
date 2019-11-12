@@ -14,14 +14,14 @@
 
 import UIKit
 
-protocol EAOptionsVCDelegate: AnyObject {
-    func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int)
-    func optionsViewControllerDidCancell(_ optionsViewController: EAOptionsViewController)
+protocol UpdateAttributesOptionsViewControllerDelegate: AnyObject {
+    func optionsViewController(_ optionsViewController: UpdateAttributesOptionsViewController, didSelectOptionAtIndex index: Int)
+    func optionsViewControllerDidCancell(_ optionsViewController: UpdateAttributesOptionsViewController)
 }
 
-class EAOptionsViewController: UITableViewController {
+class UpdateAttributesOptionsViewController: UITableViewController {
     var options = [String]()
-    weak var delegate: EAOptionsVCDelegate?
+    weak var delegate: UpdateAttributesOptionsViewControllerDelegate?
     
     // MARK: - Table view data source
     

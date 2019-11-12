@@ -20,43 +20,20 @@ import ArcGIS
 /// A view controller that manages the interface of the Open Mobile Scene (Scene
 /// Package) sample.
 class OpenMobileSceneViewController: UIViewController {
+    /// The mobile scene package used by the view controller.
+    let mobileScenePackage: AGSMobileScenePackage = {
+        let mobileScenePackageURL = Bundle.main.url(forResource: "philadelphia", withExtension: "mspk")!
+        return AGSMobileScenePackage(fileURL: mobileScenePackageURL)
+    }()
+    
     /// The scene view managed by the view controller.
     @IBOutlet weak var sceneView: AGSSceneView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        guard let mobileScenePackageURL = Bundle.main.url(forResource: "philadelphia", withExtension: "mspk") else {
-            assertionFailure("Could not find mobile scene package")
-            return
-        }
-        
-        AGSMobileScenePackage.checkDirectReadSupportForMobileScenePackage(atFileURL: mobileScenePackageURL) { [weak self] (isDirectReadSupported, error) in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else if isDirectReadSupported {
-                self.mobileScenePackage = AGSMobileScenePackage(fileURL: mobileScenePackageURL)
-            } else if let temporaryURL = try? FileManager.default.url(for: .itemReplacementDirectory, in: .userDomainMask, appropriateFor: mobileScenePackageURL, create: true) {
-                let unpackedURL = temporaryURL.appendingPathComponent((mobileScenePackageURL.lastPathComponent as NSString).deletingPathExtension, isDirectory: true)
-                AGSMobileScenePackage.unpack(atFileURL: mobileScenePackageURL, outputDirectory: unpackedURL, completion: { [weak self] (error) in
-                    guard let self = self else { return }
-                    if let error = error {
-                        self.presentAlert(error: error)
-                    } else {
-                        self.mobileScenePackage = AGSMobileScenePackage(fileURL: unpackedURL)
-                    }
-                })
-            }
-        }
-    }
-    
-    /// The mobile scene package used by the view controller.
-    var mobileScenePackage: AGSMobileScenePackage! {
-        didSet {
-            mobileScenePackage?.load { [weak self] _ in
-                self?.mobileScenePackageDidLoad()
-            }
+        mobileScenePackage.load { [weak self] _ in
+            self?.mobileScenePackageDidLoad()
         }
     }
     

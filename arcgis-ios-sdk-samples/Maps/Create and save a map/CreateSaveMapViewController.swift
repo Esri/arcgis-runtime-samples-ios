@@ -32,7 +32,7 @@ private extension UIImage {
     }
 }
 
-class CreateSaveMapViewController: UIViewController, CreateOptionsViewControllerDelegate, SaveAsVCDelegate {
+class CreateSaveMapViewController: UIViewController, CreateOptionsViewControllerDelegate, SaveAsViewControllerDelegate {
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var portal: AGSPortal?
@@ -117,7 +117,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
         createOptionsViewController.dismiss(animated: true)
     }
     
-    // MARK: - SaveAsVCDelegate
+    // MARK: - SaveAsViewControllerDelegate
     
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
         SVProgressHUD.show(withStatus: "Saving")

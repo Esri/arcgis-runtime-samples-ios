@@ -504,6 +504,7 @@
 		4C0FD7CD226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7CC226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift */; };
 		4C0FD7CF22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7CE22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift */; };
 		4C0FD7D1226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7D0226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift */; };
+		4C11DBA2234D05C00040EC1C /* ArcGISToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 97466015234265F6008EF35A /* ArcGISToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C1A7C1F21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C1E21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard */; };
 		4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */; };
@@ -747,6 +748,7 @@
 		F1034FA622D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1034FA222D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */; };
 		F1034FA922D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
+		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
@@ -754,6 +756,10 @@
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */; };
+		F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
+		F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
+		F1D7508F230730360018B812 /* ElevationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
 		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F1E4B10F22D6AF28005FDB4D /* ColormapRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10E22D6AF28005FDB4D /* ColormapRenderer.storyboard */; };
@@ -801,6 +807,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */,
+				F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */,
 				F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */,
 				D970859923147C800075AFF2 /* ConnectedTraceViewController.swift in CopyFiles */,
 				4C990092230208A300226785 /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in CopyFiles */,
@@ -1580,6 +1588,9 @@
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
 		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
+		F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetElevationPoint.storyboard; sourceTree = "<group>"; };
+		F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetElevationPointViewController.swift; sourceTree = "<group>"; };
+		F1D7508E230730360018B812 /* ElevationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationViewController.swift; sourceTree = "<group>"; };
 		F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalRaster.storyboard; sourceTree = "<group>"; };
 		F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalRasterViewController.swift; sourceTree = "<group>"; };
 		F1E4B10E22D6AF28005FDB4D /* ColormapRenderer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColormapRenderer.storyboard; sourceTree = "<group>"; };
@@ -3095,6 +3106,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F1C81C4322FCEBD100229CAA /* Get elevation at a point */,
 				F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */,
 				F1034FA122D3F5DA00B021DA /* Create terrain surface from a local tile package */,
 				F4159C6D20925A8D0016E53D /* Open a scene (portal item) */,
@@ -3989,6 +4001,16 @@
 			path = Rasters;
 			sourceTree = "<group>";
 		};
+		F1C81C4322FCEBD100229CAA /* Get elevation at a point */ = {
+			isa = PBXGroup;
+			children = (
+				F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */,
+				F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */,
+				F1D7508E230730360018B812 /* ElevationViewController.swift */,
+			);
+			path = "Get elevation at a point";
+			sourceTree = "<group>";
+		};
 		F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */ = {
 			isa = PBXGroup;
 			children = (
@@ -4356,6 +4378,7 @@
 				C7094783215D34BA00BA0969 /* GenerateOfflineMapOverrides.storyboard in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
+				F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */,
 				F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */,
 				D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */,
 				D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */,
@@ -4567,6 +4590,7 @@
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
 				169CDBCC223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift in Sources */,
 				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,
+				F1D7508F230730360018B812 /* ElevationViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
 				4CE15D5322F380FB005F2968 /* ControlAnnotationSublayerVisibilitySublayersViewController.swift in Sources */,
@@ -4723,6 +4747,7 @@
 				3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */,
 				C7AF466521B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift in Sources */,
+				F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				21E9CDED1EF9C5EA00BD4D7D /* DisplayGridViewController.swift in Sources */,
 				09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */,

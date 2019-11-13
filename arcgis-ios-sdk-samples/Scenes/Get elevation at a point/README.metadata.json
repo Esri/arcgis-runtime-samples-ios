@@ -1,0 +1,32 @@
+{
+    "category": "Scenes",
+    "description": "Get the elevation for a given point on a surface in a scene.",
+    "ignore": false,
+    "images": [
+        "get-elevation-at-point.png"
+    ],
+    "keywords": [
+        "elevation",
+        "scene",
+        "point",
+        "AGSPoint",
+        "AGSScene",
+        "AGSSceneView",
+        "AGSSurface",
+        "AGSElevationSource"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSPoint",
+        "AGSScene",
+        "AGSSceneView",
+        "AGSSurface",
+        "AGSElevationSource"
+    ],
+    "snippets": [
+        "GetElevationPointViewController.swift",
+        "ElevationViewController.swift"
+    ],
+    "title": "Get Elevation at a Point"
+}

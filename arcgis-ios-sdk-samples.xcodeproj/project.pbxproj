@@ -504,6 +504,7 @@
 		4C0FD7CD226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7CC226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift */; };
 		4C0FD7CF22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7CE22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift */; };
 		4C0FD7D1226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0FD7D0226670810042DE31 /* ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift */; };
+		4C11DBA2234D05C00040EC1C /* ArcGISToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 97466015234265F6008EF35A /* ArcGISToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C1A7C1F21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A7C1E21D3FB7800E16E94 /* GraphicsOverlayDictionaryRenderer3D.storyboard */; };
 		4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2021D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift */; };
 		4C1A7C2321D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A7C2221D3FC0700E16E94 /* GraphicsOverlayDictionaryRenderer3DViewControllerTests.swift */; };

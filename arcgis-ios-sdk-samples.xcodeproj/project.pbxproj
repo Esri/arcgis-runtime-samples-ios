@@ -488,9 +488,9 @@
 		3EFDE0F51E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F01E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard */; };
 		3EFDE0F61E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift */; };
 		3EFDE0F71E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */; };
-		3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
+		3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift */; };
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift */; };
-		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */; };
+		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift */; };
 		4C060E632260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */; };
 		4C060E672261195C0070C787 /* naperville_imagery.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 4C060E662261195C0070C787 /* naperville_imagery.tpk */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
 		4C0CBFFD22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0CBFFC22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard */; };
@@ -913,7 +913,7 @@
 				3E0B58541E36D54800951767 /* ViewshedGeoprocessingViewController.swift in CopyFiles */,
 				C7E9D7C921C0560600E6C47E /* BufferViewController.swift in CopyFiles */,
 				3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerViewController.swift in CopyFiles */,
-				3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryVC.swift in CopyFiles */,
+				3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryViewController.swift in CopyFiles */,
 				3EE179991DE37199005E0759 /* GridSettingsViewController.swift in CopyFiles */,
 				3EE1799A1DE37199005E0759 /* SketchViewController.swift in CopyFiles */,
 				3EE1799B1DE37199005E0759 /* EditGeometryViewController.swift in CopyFiles */,
@@ -1398,7 +1398,7 @@
 		3EFDE0F01E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayer.storyboard; sourceTree = "<group>"; };
 		3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerViewController.swift; sourceTree = "<group>"; };
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
-		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryVC.swift; sourceTree = "<group>"; };
+		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryViewController.swift; sourceTree = "<group>"; };
 		4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapBasemapByReferenceViewController.swift; sourceTree = "<group>"; };
 		4C060E662261195C0070C787 /* naperville_imagery.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpk; sourceTree = "<group>"; };
 		4C0CBFFC22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityMultipleIncidentsService.storyboard; sourceTree = "<group>"; };
@@ -3253,7 +3253,7 @@
 			isa = PBXGroup;
 			children = (
 				3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */,
-				3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift */,
+				3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift */,
 			);
 			path = "Feature collection layer (query)";
 			sourceTree = "<group>";
@@ -4569,7 +4569,7 @@
 				C7BE9C4F219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift in Sources */,
 				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
 				3E8A05CF1ECE68E80032231C /* PlaneStatsViewController.swift in Sources */,
-				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryVC.swift in Sources */,
+				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift in Sources */,
 				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
 				C76F75722182729700938D8D /* ColorPickerViewController.swift in Sources */,

@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class FeatureCollectionLayerQueryVC: UIViewController {
+class FeatureCollectionLayerQueryViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
     private var featureTable: AGSServiceFeatureTable!
@@ -25,7 +25,7 @@ class FeatureCollectionLayerQueryVC: UIViewController {
         super.viewDidLoad()
 
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureCollectionLayerQueryVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureCollectionLayerQueryViewController"]
         
         //initialize map with basemap
         let map = AGSMap(basemap: .oceans())

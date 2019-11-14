@@ -16,14 +16,14 @@
 import UIKit
 import ArcGIS
 
-class FeatureCollectionLayerVC: UIViewController {
+class FeatureCollectionLayerViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureCollectionLayerVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureCollectionLayerViewController"]
         
         //initialize map with basemap
         let map = AGSMap(basemap: .oceans())

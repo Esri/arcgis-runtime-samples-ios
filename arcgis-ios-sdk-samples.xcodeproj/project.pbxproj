@@ -387,9 +387,9 @@
 		3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0294E1B8E3ACD00ACA70D /* AttachmentsTableViewController.swift */; };
 		3ED029651B8E3ACD00ACA70D /* EditFeatureAttachments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0294F1B8E3ACD00ACA70D /* EditFeatureAttachments.storyboard */; };
 		3ED029661B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029501B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift */; };
-		3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029531B8E3ACD00ACA70D /* EAOptionsViewController.swift */; };
-		3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029541B8E3ACD00ACA70D /* EditAttributes.storyboard */; };
-		3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029551B8E3ACD00ACA70D /* EditAttributesViewController.swift */; };
+		3ED029681B8E3ACD00ACA70D /* UpdateAttributesOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029531B8E3ACD00ACA70D /* UpdateAttributesOptionsViewController.swift */; };
+		3ED029691B8E3ACD00ACA70D /* UpdateAttributes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029541B8E3ACD00ACA70D /* UpdateAttributes.storyboard */; };
+		3ED0296A1B8E3ACD00ACA70D /* UpdateAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029551B8E3ACD00ACA70D /* UpdateAttributesViewController.swift */; };
 		3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED0295C1B8E3ACD00ACA70D /* EditGeometry.storyboard */; };
 		3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0295D1B8E3ACD00ACA70D /* EditGeometryViewController.swift */; };
 		3ED029781B8E571700ACA70D /* OpenMapURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0283C1B8E3A8500ACA70D /* OpenMapURLViewController.swift */; };
@@ -424,8 +424,8 @@
 		3ED029991B8E571700ACA70D /* CalloutViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0290A1B8E3AB300ACA70D /* CalloutViewController.swift */; };
 		3ED0299A1B8E571700ACA70D /* MILLegendTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029111B8E3AB300ACA70D /* MILLegendTableViewController.swift */; };
 		3ED0299B1B8E571700ACA70D /* MILShowLegendViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029131B8E3AB300ACA70D /* MILShowLegendViewController.swift */; };
-		3ED0299C1B8E571700ACA70D /* EAOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029531B8E3ACD00ACA70D /* EAOptionsViewController.swift */; };
-		3ED0299D1B8E571700ACA70D /* EditAttributesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029551B8E3ACD00ACA70D /* EditAttributesViewController.swift */; };
+		3ED0299C1B8E571700ACA70D /* UpdateAttributesOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029531B8E3ACD00ACA70D /* UpdateAttributesOptionsViewController.swift */; };
+		3ED0299D1B8E571700ACA70D /* UpdateAttributesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029551B8E3ACD00ACA70D /* UpdateAttributesViewController.swift */; };
 		3ED0299F1B8E571700ACA70D /* AttachmentsTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0294E1B8E3ACD00ACA70D /* AttachmentsTableViewController.swift */; };
 		3ED029A01B8E571700ACA70D /* EditFeatureAttachmentsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029501B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift */; };
 		3ED5D36F1C75985C0091D621 /* FindRouteViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E6AE3F81C73B5480026E59C /* FindRouteViewController.swift */; };
@@ -1009,8 +1009,8 @@
 				3ED029991B8E571700ACA70D /* CalloutViewController.swift in CopyFiles */,
 				3ED0299A1B8E571700ACA70D /* MILLegendTableViewController.swift in CopyFiles */,
 				3ED0299B1B8E571700ACA70D /* MILShowLegendViewController.swift in CopyFiles */,
-				3ED0299C1B8E571700ACA70D /* EAOptionsViewController.swift in CopyFiles */,
-				3ED0299D1B8E571700ACA70D /* EditAttributesViewController.swift in CopyFiles */,
+				3ED0299C1B8E571700ACA70D /* UpdateAttributesOptionsViewController.swift in CopyFiles */,
+				3ED0299D1B8E571700ACA70D /* UpdateAttributesViewController.swift in CopyFiles */,
 				3ED029A01B8E571700ACA70D /* EditFeatureAttachmentsViewController.swift in CopyFiles */,
 				940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */,
 				4C85044C20F4252500E37F43 /* SceneLayerSelectionViewController.swift in CopyFiles */,
@@ -1353,9 +1353,9 @@
 		3ED0294E1B8E3ACD00ACA70D /* AttachmentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentsTableViewController.swift; sourceTree = "<group>"; };
 		3ED0294F1B8E3ACD00ACA70D /* EditFeatureAttachments.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditFeatureAttachments.storyboard; sourceTree = "<group>"; };
 		3ED029501B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFeatureAttachmentsViewController.swift; sourceTree = "<group>"; };
-		3ED029531B8E3ACD00ACA70D /* EAOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EAOptionsViewController.swift; sourceTree = "<group>"; };
-		3ED029541B8E3ACD00ACA70D /* EditAttributes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditAttributes.storyboard; sourceTree = "<group>"; };
-		3ED029551B8E3ACD00ACA70D /* EditAttributesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAttributesViewController.swift; sourceTree = "<group>"; };
+		3ED029531B8E3ACD00ACA70D /* UpdateAttributesOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAttributesOptionsViewController.swift; sourceTree = "<group>"; };
+		3ED029541B8E3ACD00ACA70D /* UpdateAttributes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UpdateAttributes.storyboard; sourceTree = "<group>"; };
+		3ED029551B8E3ACD00ACA70D /* UpdateAttributesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAttributesViewController.swift; sourceTree = "<group>"; };
 		3ED0295C1B8E3ACD00ACA70D /* EditGeometry.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditGeometry.storyboard; sourceTree = "<group>"; };
 		3ED0295D1B8E3ACD00ACA70D /* EditGeometryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGeometryViewController.swift; sourceTree = "<group>"; };
 		3ED5EB721B7404D0009F9B75 /* SampleInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleInfoViewController.swift; sourceTree = "<group>"; };
@@ -3048,9 +3048,9 @@
 		3ED029521B8E3ACD00ACA70D /* Update attributes (feature service) */ = {
 			isa = PBXGroup;
 			children = (
-				3ED029531B8E3ACD00ACA70D /* EAOptionsViewController.swift */,
-				3ED029541B8E3ACD00ACA70D /* EditAttributes.storyboard */,
-				3ED029551B8E3ACD00ACA70D /* EditAttributesViewController.swift */,
+				3ED029541B8E3ACD00ACA70D /* UpdateAttributes.storyboard */,
+				3ED029551B8E3ACD00ACA70D /* UpdateAttributesViewController.swift */,
+				3ED029531B8E3ACD00ACA70D /* UpdateAttributesOptionsViewController.swift */,
 			);
 			path = "Update attributes (feature service)";
 			sourceTree = "<group>";
@@ -4448,7 +4448,7 @@
 				4C060E672261195C0070C787 /* naperville_imagery.tpk in Resources */,
 				E4B2E26B1FE31EEA00E610FF /* ViewshedGeoElement.storyboard in Resources */,
 				4C0F27B12152CA2400496666 /* IdentifyKMLFeatures.storyboard in Resources */,
-				3ED029691B8E3ACD00ACA70D /* EditAttributes.storyboard in Resources */,
+				3ED029691B8E3ACD00ACA70D /* UpdateAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
 				3ED028831B8E3A8500ACA70D /* MapRotation.storyboard in Resources */,
 				4C1EF2D3221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib in Resources */,
@@ -4656,7 +4656,7 @@
 				3E5E09381EF2E8E200FF3454 /* GenerateOfflineMapViewController.swift in Sources */,
 				3EF024E91ECBC10600166EC5 /* FormatCoordinatesViewController.swift in Sources */,
 				3E85263D1B90DE2C00690EBD /* DisplayMapViewController.swift in Sources */,
-				3ED029681B8E3ACD00ACA70D /* EAOptionsViewController.swift in Sources */,
+				3ED029681B8E3ACD00ACA70D /* UpdateAttributesOptionsViewController.swift in Sources */,
 				3E4B05F91B39EF250072E514 /* SVProgressHUD.m in Sources */,
 				4CECF8A121D57F4000A56161 /* SetMinMaxScaleViewController.swift in Sources */,
 				3EBA25631D3417B000AB0703 /* SimpleMarkerSymbolViewController.swift in Sources */,
@@ -4763,7 +4763,7 @@
 				2196CAF91FD868EA00512693 /* RasterFunctionServiceViewController.swift in Sources */,
 				3EBA25421D2F106600AB0703 /* UniqueValueRendererViewController.swift in Sources */,
 				F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */,
-				3ED0296A1B8E3ACD00ACA70D /* EditAttributesViewController.swift in Sources */,
+				3ED0296A1B8E3ACD00ACA70D /* UpdateAttributesViewController.swift in Sources */,
 				3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */,
 				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,
 				3EEB2B981EB9695F00B52513 /* ListRelatedFeaturesVC.swift in Sources */,

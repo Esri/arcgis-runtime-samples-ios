@@ -271,19 +271,4 @@ private extension AGSGeocodeResult {
         
         return addr
     }
-    
-    func attributeValueAs<T>(_ key: String) -> T? {
-        return attributes![key] as? T
-    }
-    
-    func attributeAsStringForKey(_ key: String) -> String? {
-        return attributeValueAs(key)
-    }
-    
-    func attributeAsNonEmptyStringForKey(_ key: String) -> String? {
-        if let value = attributeAsStringForKey(key) {
-            return value.isEmpty ? nil : value
-        }
-        return nil
-    }
 }

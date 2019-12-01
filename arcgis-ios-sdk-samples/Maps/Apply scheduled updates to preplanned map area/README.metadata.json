@@ -1,0 +1,29 @@
+{
+    "category": "Maps",
+    "description": "Apply scheduled updates to a downloaded preplanned map area.",
+    "ignore": false,
+    "images": [
+        "ApplyScheduledUpdatesToPreplannedMapArea.png"
+    ],
+    "keywords": [
+        "offline",
+        "preplanned",
+        "pre-planned",
+        "synchronize",
+        "update"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSMobileMapPackage",
+        "AGSOfflineMapSyncJob",
+        "AGSOfflineMapSyncParameters",
+        "AGSOfflineMapSyncResult",
+        "AGSOfflineMapSyncTask",
+        "AGSOfflineMapUpdatesInfo"
+    ],
+    "snippets": [
+        "ApplyScheduledUpdatesToPreplannedMapAreaViewController.swift"
+    ],
+    "title": "Apply scheduled updates to preplanned map area"
+}

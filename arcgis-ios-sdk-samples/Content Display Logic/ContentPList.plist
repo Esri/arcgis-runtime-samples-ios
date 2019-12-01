@@ -268,6 +268,18 @@
 				<key>storyboardName</key>
 				<string>DownloadPreplannedMap</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Apply scheduled updates to preplanned map area</string>
+				<key>descriptionText</key>
+				<string>Apply scheduled updates to a downloaded preplanned map area.</string>
+				<key>storyboardName</key>
+				<string>ApplyScheduledUpdatesToPreplannedMapArea</string>
+				<key>dependency</key>
+				<array>
+					<string>canyonlands</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>

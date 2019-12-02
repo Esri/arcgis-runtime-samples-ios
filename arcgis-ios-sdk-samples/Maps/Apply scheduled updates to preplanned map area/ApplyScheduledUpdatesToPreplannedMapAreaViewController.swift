@@ -73,8 +73,8 @@ class ApplyScheduledUpdatesToPreplannedMapAreaViewController: UIViewController {
         switch result {
         case .success:
             let map = self.mobileMapPackage.maps.first!
-            self.loadViewIfNeeded()
-            self.mapView.map = map
+            loadViewIfNeeded()
+            mapView.map = map
             let offlineMapSyncTask = AGSOfflineMapSyncTask(map: map)
             offlineMapSyncTask.checkForUpdates { [weak self] (updatesInfo, error) in
                 if let updatesInfo = updatesInfo {

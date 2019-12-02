@@ -523,6 +523,10 @@
 		4C478E5022402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */; };
 		4C4DCA42225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4DCA41225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard */; };
 		4C54BF2D22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C54BF2C22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift */; };
+		4C59D130238DCFA800824924 /* ApplyScheduledUpdatesToPreplannedMapAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C59D12F238DCFA800824924 /* ApplyScheduledUpdatesToPreplannedMapAreaViewController.swift */; };
+		4C59D132238DCFB500824924 /* ApplyScheduledUpdatesToPreplannedMapArea.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C59D131238DCFB500824924 /* ApplyScheduledUpdatesToPreplannedMapArea.storyboard */; };
+		4C59D133238DD09B00824924 /* ApplyScheduledUpdatesToPreplannedMapAreaViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C59D12F238DCFA800824924 /* ApplyScheduledUpdatesToPreplannedMapAreaViewController.swift */; };
+		4C59D141238DF23E00824924 /* canyonlands in Resources */ = {isa = PBXBuildFile; fileRef = 4C59D140238DF23E00824924 /* canyonlands */; settings = {ASSET_TAGS = (canyonlands, ); }; };
 		4C5F98BF2280A4EB00414343 /* AuthenticateWithOAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F98BE2280A4EB00414343 /* AuthenticateWithOAuth.storyboard */; };
 		4C5F98C12280A57500414343 /* AuthenticateWithOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */; };
 		4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */; };
@@ -1045,6 +1049,7 @@
 				E463241B23454A2600AE91C3 /* CollectDataAR.swift in CopyFiles */,
 				E463241C23454A2600AE91C3 /* DisplayScenesInTabletopAR.swift in CopyFiles */,
 				E463241D23454A2600AE91C3 /* ExploreScenesInFlyoverAR.swift in CopyFiles */,
+				4C59D133238DD09B00824924 /* ApplyScheduledUpdatesToPreplannedMapAreaViewController.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1428,6 +1433,9 @@
 		4C478E4F22402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		4C4DCA41225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenerateOfflineMapBasemapByReference.storyboard; sourceTree = "<group>"; };
 		4C54BF2C22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlAnnotationSublayerVisibilitySublayerCell.swift; sourceTree = "<group>"; };
+		4C59D12F238DCFA800824924 /* ApplyScheduledUpdatesToPreplannedMapAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyScheduledUpdatesToPreplannedMapAreaViewController.swift; sourceTree = "<group>"; };
+		4C59D131238DCFB500824924 /* ApplyScheduledUpdatesToPreplannedMapArea.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApplyScheduledUpdatesToPreplannedMapArea.storyboard; sourceTree = "<group>"; };
+		4C59D140238DF23E00824924 /* canyonlands */ = {isa = PBXFileReference; lastKnownFileType = folder; path = canyonlands; sourceTree = "<group>"; };
 		4C5F98BE2280A4EB00414343 /* AuthenticateWithOAuth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthenticateWithOAuth.storyboard; sourceTree = "<group>"; };
 		4C5F98C02280A57500414343 /* AuthenticateWithOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateWithOAuthViewController.swift; sourceTree = "<group>"; };
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
@@ -2769,6 +2777,7 @@
 				4C478E48223C73F9009F8CDF /* Map reference scale */,
 				9D4BA6C822FCAFAD0086D5D3 /* Show location history */,
 				9DF04DBA2304C7F50014C1EE /* Download preplanned map */,
+				4C59D12E238DCF5B00824924 /* Apply scheduled updates to preplanned map area */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -3222,6 +3231,7 @@
 		3EFCE1B31CF369A800E02F67 /* Mobile map packages */ = {
 			isa = PBXGroup;
 			children = (
+				4C59D140238DF23E00824924 /* canyonlands */,
 				3EFCE1C71CF38A9C00E02F67 /* SanFrancisco.mmpk */,
 				3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */,
 			);
@@ -3370,6 +3380,15 @@
 				4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */,
 			);
 			path = "Generate offline map (basemap by reference)";
+			sourceTree = "<group>";
+		};
+		4C59D12E238DCF5B00824924 /* Apply scheduled updates to preplanned map area */ = {
+			isa = PBXGroup;
+			children = (
+				4C59D131238DCFB500824924 /* ApplyScheduledUpdatesToPreplannedMapArea.storyboard */,
+				4C59D12F238DCFA800824924 /* ApplyScheduledUpdatesToPreplannedMapAreaViewController.swift */,
+			);
+			path = "Apply scheduled updates to preplanned map area";
 			sourceTree = "<group>";
 		};
 		4C5F98BD2280A4A000414343 /* Authenticate with OAuth */ = {
@@ -4132,6 +4151,7 @@
 					SubdivisionsShapefile,
 					TilePackages,
 					YellowstoneMMPK,
+					canyonlands,
 					mil2525d,
 					militaryoverlay,
 					naperville_imagery,
@@ -4318,6 +4338,7 @@
 				3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */,
 				4C0FD7CB226528740042DE31 /* ReadSymbolsFromMobileStyle.storyboard in Resources */,
 				F1034FA622D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard in Resources */,
+				4C59D132238DCFB500824924 /* ApplyScheduledUpdatesToPreplannedMapArea.storyboard in Resources */,
 				C7D0EEDB215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard in Resources */,
 				3E1183DE1ECF5A1000180152 /* Hawaii.csv in Resources */,
 				3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */,
@@ -4375,6 +4396,7 @@
 				4CECF8CA21DD5C2200A56161 /* Mil2525DMessages.xml in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				C7094783215D34BA00BA0969 /* GenerateOfflineMapOverrides.storyboard in Resources */,
+				4C59D141238DF23E00824924 /* canyonlands in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
 				F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */,
@@ -4559,6 +4581,7 @@
 				3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */,
 				3ED029321B8E3AB300ACA70D /* CalloutViewController.swift in Sources */,
 				3ED028841B8E3A8500ACA70D /* MapRotationViewController.swift in Sources */,
+				4C59D130238DCFA800824924 /* ApplyScheduledUpdatesToPreplannedMapAreaViewController.swift in Sources */,
 				3EFCE1B11CF368D500E02F67 /* OpenMobileMapViewController.swift in Sources */,
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
 				3EBA255B1D33FF1400AB0703 /* PictureMarkerSymbolsViewController.swift in Sources */,

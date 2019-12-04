@@ -113,6 +113,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         let category = categories[indexPath.item]
         let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         controller.allSamples = category.samples
+            .sorted { $0.name < $1.name }
         controller.title = category.name
         show(controller, sender: self)
     }

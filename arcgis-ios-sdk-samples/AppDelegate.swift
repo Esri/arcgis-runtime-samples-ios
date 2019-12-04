@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         // Decode and populate Categories.
         categoryBrowserViewController.categories = decodeCategories(at: contentPlistURL)
+            .sorted { $0.name < $1.name }
         
         self.modifyAppearance()
         

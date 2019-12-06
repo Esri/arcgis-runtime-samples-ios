@@ -42,6 +42,6 @@ extension Sample: Decodable {
 
 extension Sample {
     var readmeURL: URL? {
-        return Bundle.main.url(forResource: "README", withExtension: "md", subdirectory: name)
+        return Bundle.main.url(forResource: name, withExtension: "md", subdirectory: "READMEs")
     }
 }

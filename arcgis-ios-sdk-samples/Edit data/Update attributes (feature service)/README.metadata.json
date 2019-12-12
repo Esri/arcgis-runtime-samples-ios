@@ -27,8 +27,8 @@
         "AGSFeatureEditResult"
     ],
     "snippets": [
-        "EAOptionsViewController.swift",
-        "EditAttributesViewController.swift"
+        "UpdateAttributesViewController.swift",
+        "UpdateAttributesOptionsViewController.swift"
     ],
     "title": "Update attributes (feature service)"
 }

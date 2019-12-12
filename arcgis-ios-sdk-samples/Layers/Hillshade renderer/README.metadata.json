@@ -20,8 +20,8 @@
         "AGSSlopeType"
     ],
     "snippets": [
-        "HillshadeRendererVC.swift",
-        "HillshadeSettingsVC.swift"
+        "HillshadeRendererViewController.swift",
+        "HillshadeSettingsViewController.swift"
     ],
     "title": "Hillshade renderer"
 }

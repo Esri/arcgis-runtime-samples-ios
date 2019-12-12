@@ -15,18 +15,18 @@
 import UIKit
 import ArcGIS
 
-protocol HillshadeSettingsDelegate: AnyObject {
-    func hillshadeSettingsVC(_ hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType)
+protocol HillshadeSettingsViewControllerDelegate: AnyObject {
+    func hillshadeSettingsViewController(_ controller: HillshadeSettingsViewController, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType)
 }
 
-class HillshadeSettingsVC: UITableViewController {
+class HillshadeSettingsViewController: UITableViewController {
     @IBOutlet weak var altitudeSlider: UISlider?
     @IBOutlet weak var azimuthSlider: UISlider?
     @IBOutlet weak var azimuthLabel: UILabel?
     @IBOutlet weak var altitudeLabel: UILabel?
     @IBOutlet weak var slopeTypeCell: UITableViewCell?
     
-    weak var delegate: HillshadeSettingsDelegate?
+    weak var delegate: HillshadeSettingsViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +82,7 @@ class HillshadeSettingsVC: UITableViewController {
     }
     
     private func hillshadeParametersChanged() {
-        delegate?.hillshadeSettingsVC(self, selectedAltitude: altitude, azimuth: azimuth, slopeType: slopeType)
+        delegate?.hillshadeSettingsViewController(self, selectedAltitude: altitude, azimuth: azimuth, slopeType: slopeType)
     }
     
     // MARK: - Actions

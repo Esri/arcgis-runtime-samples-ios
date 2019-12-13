@@ -49,7 +49,7 @@ class SurfacePlacementsViewController: UIViewController {
         self.sceneView.setViewpointCamera(camera)
         
         let graphicsOverlays = [
-            makeGraphicsOverlay(surfacePlacement: .draped),
+            makeGraphicsOverlay(surfacePlacement: .drapedBillboarded),
             makeGraphicsOverlay(surfacePlacement: .relative),
             makeGraphicsOverlay(surfacePlacement: .absolute)
         ]
@@ -82,10 +82,11 @@ private extension AGSSurfacePlacement {
     /// The human readable name of the surface placement.
     var title: String {
         switch self {
-        case .draped: return "Draped"
+        case .drapedBillboarded: return "Draped Billboarded"
         case .absolute: return "Absolute"
         case .relative: return "Relative"
         case .relativeToScene: return "Relative to Scene"
+        case .drapedFlat: return "Draped Flat"
         @unknown default: return "Unknown"
         }
     }

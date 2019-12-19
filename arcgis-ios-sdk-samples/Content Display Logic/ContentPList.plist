@@ -268,6 +268,18 @@
 				<key>storyboardName</key>
 				<string>DownloadPreplannedMap</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Apply scheduled updates to preplanned map area</string>
+				<key>descriptionText</key>
+				<string>Apply scheduled updates to a downloaded preplanned map area.</string>
+				<key>storyboardName</key>
+				<string>ApplyScheduledUpdatesToPreplannedMapArea</string>
+				<key>dependency</key>
+				<array>
+					<string>canyonlands</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -995,7 +1007,7 @@
 				<key>displayName</key>
 				<string>Update attributes (feature service)</string>
 				<key>storyboardName</key>
-				<string>EditAttributes</string>
+				<string>UpdateAttributes</string>
 				<key>descriptionText</key>
 				<string>Tap on a feature to display a callout. The callout shows the damage type for that feature and an info button. To change the damage type tap on the info button and select a new on from the list shown</string>
 			</dict>
@@ -1335,6 +1347,14 @@
 		<string>Scenes</string>
 		<key>children</key>
 		<array>
+			<dict>
+				<key>descriptionText</key>
+				<string>Get the elevation for a given point on a surface in a scene.</string>
+				<key>displayName</key>
+				<string>Get elevation at a point</string>
+				<key>storyboardName</key>
+				<string>GetElevationPoint</string>
+			</dict>
 			<dict>
 				<key>descriptionText</key>
 				<string>Set the terrain surface with elevation described by a raster file.</string>

@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
+class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -33,7 +33,10 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditAttributesViewController", "EAOptionsViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "UpdateAttributesViewController",
+            "UpdateAttributesOptionsViewController"
+        ]
         
         self.map = AGSMap(basemap: .oceans())
         //set initial viewpoint
@@ -114,15 +117,15 @@ class EditAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.optionsSegueName,
             let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? EAOptionsViewController {
+            let controller = navController.viewControllers.first as? UpdateAttributesOptionsViewController {
             controller.options = self.types
             controller.delegate = self
         }
     }
 }
 
-extension EditAttributesViewController: EAOptionsVCDelegate {
-    func optionsViewController(_ optionsViewController: EAOptionsViewController, didSelectOptionAtIndex index: Int) {
+extension UpdateAttributesViewController: UpdateAttributesOptionsViewControllerDelegate {
+    func optionsViewController(_ optionsViewController: UpdateAttributesOptionsViewController, didSelectOptionAtIndex index: Int) {
         self.dismiss(animated: true)
         SVProgressHUD.show(withStatus: "Updating")
         
@@ -138,7 +141,7 @@ extension EditAttributesViewController: EAOptionsVCDelegate {
         }
     }
     
-    func optionsViewControllerDidCancell(_ optionsViewController: EAOptionsViewController) {
+    func optionsViewControllerDidCancell(_ optionsViewController: UpdateAttributesOptionsViewController) {
         dismiss(animated: true)
     }
 }

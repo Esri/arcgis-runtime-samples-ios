@@ -1,0 +1,22 @@
+{
+	"areaPortalItemID": "c674b0d2b0f24fa78d70f0bb783dbcf4",
+	"packageRefreshSchedule": "26 56 10 ? * FRI",
+	"packages": [
+		{
+			"itemType": "SQLite Geodatabase",
+			"currentServerGen": 443368,
+			"originalReplicaID": "29737dce-3016-4fbf-a388-0bc510a9686f",
+			"originalServiceUrl": "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/canyonlands_roads_trails/FeatureServer",
+			"packagePortalItemID": "03c583279c98436fa348aa36c05aba21",
+			"path": "file:./3b1fef0d-2cb0-4b6f-b526-9fe0a1ca3f69.geodatabase",
+			"preplannedUpdateMode": "downloadScheduledUpdates"
+		},
+		{
+			"itemType": "Tile Package",
+			"originalServiceUrl": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+			"packagePortalItemID": "dc2929b0a0084611a06d136a633d47a1",
+			"path": "file:./07a691d9-dbdf-4fa2-bda1-021481fdbe8d.tpk"
+		}
+	],
+	"portalUrl": "https://www.arcgis.com"
+}

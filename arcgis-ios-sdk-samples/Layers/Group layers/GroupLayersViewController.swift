@@ -63,7 +63,7 @@ class GroupLayersViewController: UIViewController {
     
     /// Adds a group layer and other layers to the scene as operational layers.
     func addOperationalLayers() {
-        let sceneLayer = AGSArcGISSceneLayer(url: URL(string: "https://scenesampleserverdev.arcgis.com/arcgis/rest/services/Hosted/PlannedDemo_BuildingShell/SceneServer/layers/0")!)
+        let sceneLayer = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_BuildingShells/SceneServer")!)
         
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/DevelopmentProjectArea/FeatureServer/0")!)
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
@@ -78,11 +78,14 @@ class GroupLayersViewController: UIViewController {
         groupLayer.name = groupLayerName
         
         // Create two scene layers.
-        let trees = AGSArcGISSceneLayer(url: URL(string: "https://scenesampleserverdev.arcgis.com/arcgis/rest/services/Hosted/DevA_Trees/SceneServer/layers/0")!)
-        let pathways = AGSArcGISSceneLayer(url: URL(string: "https://scenesampleserverdev.arcgis.com/arcgis/rest/services/Hosted/DevA_Pathways/SceneServer/layers/0")!)
+        let trees = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_Trees/SceneServer")!)
+        let buildings = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevB_BuildingShells/SceneServer")!)
         
         // Create a feature layer.
-        let buildings = AGSArcGISSceneLayer(url: URL(string: "https://scenesampleserverdev.arcgis.com/arcgis/rest/services/Hosted/DevA_BuildingShell_Textured/SceneServer/layers/0")!)
+        let pathwaysTable = AGSServiceFeatureTable(url: URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_Pathways/FeatureServer/1")!)
+        let pathways = AGSFeatureLayer(featureTable: pathwaysTable)
+        pathways.sceneProperties?.altitudeOffset = 1
+        pathways.sceneProperties?.surfacePlacement = .relative
         
         // Add the scene layers and feature layer as children of the group layer.
         groupLayer.layers.addObjects(from: [trees, pathways, buildings])

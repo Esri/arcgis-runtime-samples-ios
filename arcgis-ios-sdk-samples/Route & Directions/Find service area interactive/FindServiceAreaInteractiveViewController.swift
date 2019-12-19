@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, ServiceAreaSettingsVCDelegate, UIAdaptivePresentationControllerDelegate {
+class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouchDelegate, ServiceAreaSettingsVCDelegate, UIAdaptivePresentationControllerDelegate {
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var segmentedControl: UISegmentedControl!
     @IBOutlet private var serviceAreaBBI: UIBarButtonItem!
@@ -35,7 +35,7 @@ class FindServiceAreaInteractiveVC: UIViewController, AGSGeoViewTouchDelegate, S
         super.viewDidLoad()
 
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveVC", "ServiceAreaSettingsVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveViewController", "ServiceAreaSettingsVC"]
         
         //initialize map with basemap
         let map = AGSMap(basemap: .terrainWithLabels())

@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class HillshadeRendererVC: UIViewController {
+class HillshadeRendererViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
     private weak var rasterLayer: AGSRasterLayer?
@@ -24,7 +24,11 @@ class HillshadeRendererVC: UIViewController {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["HillshadeRendererVC", "HillshadeSettingsVC", "OptionsTableViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "HillshadeRendererViewController",
+            "HillshadeSettingsViewController",
+            "OptionsTableViewController"
+        ]
         
         let raster = AGSRaster(name: "srtm", extension: "tiff")
         let rasterLayer = AGSRasterLayer(raster: raster)
@@ -47,7 +51,7 @@ class HillshadeRendererVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? HillshadeSettingsVC,
+            let controller = navController.viewControllers.first as? HillshadeSettingsViewController,
             let renderer = rasterLayer?.renderer as? AGSHillshadeRenderer {
             controller.preferredContentSize = {
                 let height: CGFloat
@@ -68,13 +72,13 @@ class HillshadeRendererVC: UIViewController {
     }
 }
 
-extension HillshadeRendererVC: HillshadeSettingsDelegate {
-    func hillshadeSettingsVC(_ hillshadeSettingsVC: HillshadeSettingsVC, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType) {
+extension HillshadeRendererViewController: HillshadeSettingsViewControllerDelegate {
+    func hillshadeSettingsViewController(_ controller: HillshadeSettingsViewController, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType) {
         setRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType)
     }
 }
 
-extension HillshadeRendererVC: UIAdaptivePresentationControllerDelegate {
+extension HillshadeRendererViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }

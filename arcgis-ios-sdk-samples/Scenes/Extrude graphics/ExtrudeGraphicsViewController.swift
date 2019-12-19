@@ -43,7 +43,7 @@ class ExtrudeGraphicsViewController: UIViewController {
         self.sceneView.setViewpointCamera(camera)
         
         //add graphics overlay
-        graphicsOverlay.sceneProperties?.surfacePlacement = .draped
+        graphicsOverlay.sceneProperties?.surfacePlacement = .drapedBillboarded
         self.sceneView.graphicsOverlays.add(graphicsOverlay)
         
         //simple renderer with extrusion property

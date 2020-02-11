@@ -753,6 +753,9 @@
 		F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
+		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
+		F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */; };
+		F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F164997622E90F150088CA93 /* FeatureLayerDictionaryRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1F62C4122E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift */; };
@@ -817,6 +820,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */,
 				F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */,
 				F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */,
 				F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */,
@@ -1599,6 +1603,8 @@
 		F1034FA222D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalTilePackage.storyboard; sourceTree = "<group>"; };
 		F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalTilePackageViewController.swift; sourceTree = "<group>"; };
 		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpk; sourceTree = "<group>"; };
+		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
+		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
 		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
@@ -2710,6 +2716,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				F140E1E823F35E61008AC44E /* Display annotation */,
 				F1F62C3E22E6401500EFD599 /* Dictionary renderer with feature layer */,
 				F1E4B10D22D6AEC4005FDB4D /* Colormap renderer */,
 				3ED028A41B8E3A9800ACA70D /* ArcGIS tiled layer (URL) */,
@@ -4010,6 +4017,15 @@
 			path = "Create terrain surface from a local tile package";
 			sourceTree = "<group>";
 		};
+		F140E1E823F35E61008AC44E /* Display annotation */ = {
+			isa = PBXGroup;
+			children = (
+				F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */,
+				F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */,
+			);
+			path = "Display annotation";
+			sourceTree = "<group>";
+		};
 		F164997722E9249B0088CA93 /* Edit and sync features */ = {
 			isa = PBXGroup;
 			children = (
@@ -4370,6 +4386,7 @@
 				3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */,
 				E4B2E2651FE31E5200E610FF /* bradle.3ds in Resources */,
 				3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */,
+				F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */,
 				3ED029391B8E3AB300ACA70D /* MILShowLegend.storyboard in Resources */,
 				1230046B1FE2F70300303AC2 /* LineOfSightLocation.storyboard in Resources */,
 				4C0FD7C8226522210042DE31 /* emoji-mobile.stylx in Resources */,
@@ -4641,6 +4658,7 @@
 				1682CAEE22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,
+				F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */,
 				098049A92253FC3F009C685D /* WFSLayersTableViewController.swift in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,
 				3EC39C1F1C9A59B9003F6459 /* RouteParametersViewController.swift in Sources */,

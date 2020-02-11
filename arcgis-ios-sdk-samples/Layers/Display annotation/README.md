@@ -14,10 +14,10 @@ Pan and zoom to see names of waters and burns in a small region of Scotland.
 
 ## How it works
 
-1. Create a `Map` with a light gray canvas and a viewpoint near the data.
-2. Create a `AGSFeatureLayer` from a feature service URL.
+1. Create an `AGSMap` with a light gray canvas and a viewpoint near the data.
+2. Create an `AGSFeatureLayer` from a feature service URL.
 3. Create an `AGSAnnotationLayer` from a feature layer URL.
-4. Add both layers to the operational layers of the map and add it to a `MapView`.
+4. Add both layers to the operational layers of the map and add it to an `AGSMapView`.
 
 ## Relevant API
 

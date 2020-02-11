@@ -20,10 +20,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jcp-Sk-bVa">
+                                <rect key="frame" x="0.0" y="847" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="OtO-Lk-i54"/>
+                                    <barButtonItem title="Settings" id="Qe7-1R-wDr">
+                                        <connections>
+                                            <segue destination="HLD-kJ-COl" kind="popoverPresentation" popoverAnchorBarButtonItem="Qe7-1R-wDr" id="7Hv-Qm-4Pg">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Oxd-KQ-o9a"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Jcp-Sk-bVa" firstAttribute="bottom" secondItem="sLt-8I-td0" secondAttribute="bottom" id="GFw-At-N9o"/>
+                            <constraint firstItem="Jcp-Sk-bVa" firstAttribute="trailing" secondItem="WUM-OG-Ph5" secondAttribute="trailing" id="JJJ-d3-yxB"/>
                             <constraint firstAttribute="bottom" secondItem="sLt-8I-td0" secondAttribute="bottom" id="XPD-lB-MWL"/>
+                            <constraint firstItem="Jcp-Sk-bVa" firstAttribute="leading" secondItem="WUM-OG-Ph5" secondAttribute="leading" id="aTW-kJ-Mzl"/>
                             <constraint firstAttribute="trailing" secondItem="sLt-8I-td0" secondAttribute="trailing" id="eWh-OS-b13"/>
                             <constraint firstItem="sLt-8I-td0" firstAttribute="leading" secondItem="SeK-4v-nM4" secondAttribute="leading" id="swG-Bl-R7I"/>
                             <constraint firstItem="sLt-8I-td0" firstAttribute="top" secondItem="SeK-4v-nM4" secondAttribute="top" id="t8J-0M-lp5"/>
@@ -37,6 +54,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gz6-oB-bRZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-178" y="139"/>
+        </scene>
+        <!--Sublayer Settings Table View Controller-->
+        <scene sceneID="FTb-7I-L1L">
+            <objects>
+                <tableViewController id="HLD-kJ-COl" userLabel="Sublayer Settings Table View Controller" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qNL-t2-rfT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="W8b-M6-uI6">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W8b-M6-uI6" id="ykl-Mb-VuT">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dur-ke-5CL">
+                                            <rect key="frame" x="182" y="6" width="49" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <accessibility key="accessibilityConfiguration" label="Show sublayer"/>
+                                        </switch>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HLD-kJ-COl" id="Hav-UT-ZPR"/>
+                            <outlet property="delegate" destination="HLD-kJ-COl" id="wQT-lS-RPJ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xg7-Jc-e2O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="717" y="139"/>
         </scene>
     </scenes>
 </document>

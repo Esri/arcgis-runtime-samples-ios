@@ -20,9 +20,11 @@ import ArcGIS
 class FindClosestFacilityInteractiveViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
+            // Initialize the map.
             mapView.map = AGSMap(basemapType: .streets, latitude: 32.727, longitude: -117.1750, levelOfDetail: 12)
             mapView.touchDelegate = self
             
+            // Create symbols and graphics to add to the graphic overlays.
             createFacilitiesAndGraphics()
             mapView.graphicsOverlays.add(facilityGraphicsOverlay)
             mapView.graphicsOverlays.add(incidentGraphicsOverlay)
@@ -30,16 +32,23 @@ class FindClosestFacilityInteractiveViewController: UIViewController {
     }
     
     private let facilityURL = URL(string: "https://static.arcgis.com/images/Symbols/SafetyHealth/Hospital.png")!
+    
+    // Add graphic overlays to the map.
     private var facilityGraphicsOverlay = AGSGraphicsOverlay()
     private var incidentGraphicsOverlay = AGSGraphicsOverlay()
-    let closestFacilityTask: AGSClosestFacilityTask = {
+    
+    // Create a closest facility task from the network service URL.
+    private let closestFacilityTask: AGSClosestFacilityTask = {
         let networkServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/ClosestFacility")!
         return AGSClosestFacilityTask(url: networkServiceURL)
     }()
+    
+    // Create an array of facilities in the area.
     private var facilities = [AGSFacility]()
-    let routeSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 2.0)
+    // Create graphics to represent the route.
+    private let routeSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 2.0)
     
-    
+    // Add the facilities and create graphics.
     private func createFacilitiesAndGraphics() {
         facilities = [
             AGSFacility(point: AGSPoint(x: -1.3042129900625112E7, y: 3860127.9479775648, spatialReference: .webMercator())),
@@ -69,13 +78,17 @@ class FindClosestFacilityInteractiveViewController: UIViewController {
 // MARK: - AGSGeoViewTouchDelegate
 extension FindClosestFacilityInteractiveViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        // Find the closest facilities with the default parameters.
         closestFacilityTask.defaultClosestFacilityParameters { [weak self] (parameters, error) in
             guard let self = self else { return }
             if let parameters = parameters {
                 parameters.setFacilities(self.facilities)
                 let incidentSymbol = AGSSimpleMarkerSymbol(style: .cross, color: .black, size: 20)
                 
+                // Remove previous graphics.
                 self.incidentGraphicsOverlay.graphics.removeAllObjects()
+                
+                // Create point and graphics of the incident.
                 let incidentPoint = AGSPoint(x: mapPoint.x, y: mapPoint.y, spatialReference: .webMercator())
                 let graphic = AGSGraphic(geometry: incidentPoint, symbol: incidentSymbol, attributes: .none)
                 self.incidentGraphicsOverlay.graphics.add(graphic)

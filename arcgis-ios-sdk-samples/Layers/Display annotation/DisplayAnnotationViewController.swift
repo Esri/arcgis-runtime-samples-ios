@@ -20,14 +20,15 @@ class DisplayAnnotationViewController: UIViewController {
         didSet {
             mapView.map = AGSMap(basemapType: .lightGrayCanvas, latitude: 55.882436, longitude: -2.725610, levelOfDetail: 13)
             
-            // create a feature layer
+            // Create a feature layer.
             let featureServiceURL = "https://services1.arcgis.com/6677msI40mnLuuLr/arcgis/rest/services/East_Lothian_Rivers/FeatureServer/0"
             let featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
             let riverFeatureLayer = AGSFeatureLayer(featureTable: featureTable)
-            // add the feature layer to the operational layers
+            
+            // Add the feature layer to the operational layers.
             mapView.map?.operationalLayers.add(riverFeatureLayer)
             
-            // create an annotation layer
+            // Create an annotation layer.
             let riverFeatureLayerURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/RiversAnnotation/FeatureServer/0"
             let annotationLayer = AGSAnnotationLayer(url: URL(string: riverFeatureLayerURL)!)
             mapView.map?.operationalLayers.add(annotationLayer)
@@ -37,7 +38,7 @@ class DisplayAnnotationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayAnnotationViewController"]
     }
 }

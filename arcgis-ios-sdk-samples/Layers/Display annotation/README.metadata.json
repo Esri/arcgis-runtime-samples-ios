@@ -6,13 +6,13 @@
         "DisplayAnnotation.png"
     ],
     "keywords": [
-        "Annotation",
-        "Cartography",
-        "Labels",
-        "Placement",
-        "Reference scale",
-        "Text",
-        "Utility"
+        "annotation",
+        "cartography",
+        "labels",
+        "placement",
+        "reference scale",
+        "text",
+        "utility"
     ],
     "redirect_from": [],
     "relevant_apis": [
@@ -22,5 +22,5 @@
     "snippets": [
         "DisplayAnnotationViewController.swift"
     ],
-    "title": "Display Annotation"
+    "title": "Display annotation"
 }

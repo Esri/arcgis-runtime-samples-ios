@@ -18,21 +18,28 @@ import ArcGIS
 class DisplayAnnotationViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemapType: .lightGrayCanvas, latitude: 55.882436, longitude: -2.725610, levelOfDetail: 13)
-            
-            // Create a feature layer.
-            let featureServiceURL = "https://services1.arcgis.com/6677msI40mnLuuLr/arcgis/rest/services/East_Lothian_Rivers/FeatureServer/0"
-            let featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
-            let riverFeatureLayer = AGSFeatureLayer(featureTable: featureTable)
-            
-            // Add the feature layer to the operational layers.
-            mapView.map?.operationalLayers.add(riverFeatureLayer)
-            
-            // Create an annotation layer.
-            let riverFeatureLayerURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/RiversAnnotation/FeatureServer/0"
-            let annotationLayer = AGSAnnotationLayer(url: URL(string: riverFeatureLayerURL)!)
-            mapView.map?.operationalLayers.add(annotationLayer)
+            // Assign the map to the map view.
+            mapView.map = makeMap()
         }
+    }
+    
+    func makeMap() -> AGSMap {
+        let map = AGSMap(basemapType: .lightGrayCanvas, latitude: 55.882436, longitude: -2.725610, levelOfDetail: 13)
+        
+        // Create a feature layer.
+        let featureServiceURL = URL(string: "https://services1.arcgis.com/6677msI40mnLuuLr/arcgis/rest/services/East_Lothian_Rivers/FeatureServer/0")!
+        let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
+        let riverFeatureLayer = AGSFeatureLayer(featureTable: featureTable)
+
+        // Create an annotation layer.
+        let riverFeatureLayerURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/RiversAnnotation/FeatureServer/0")!
+        let annotationLayer = AGSAnnotationLayer(url: riverFeatureLayerURL)
+        
+        // Add both layers to the operational layers.
+        map.operationalLayers.add(riverFeatureLayer)
+        map.operationalLayers.add(annotationLayer)
+        
+        return map
     }
     
     override func viewDidLoad() {

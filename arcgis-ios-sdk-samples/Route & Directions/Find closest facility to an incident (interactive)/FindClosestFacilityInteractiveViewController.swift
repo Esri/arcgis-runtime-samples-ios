@@ -33,20 +33,21 @@ class FindClosestFacilityInteractiveViewController: UIViewController {
     
     private let facilityURL = URL(string: "https://static.arcgis.com/images/Symbols/SafetyHealth/Hospital.png")!
     
-    // Add graphic overlays to the map.
-    private var facilityGraphicsOverlay = AGSGraphicsOverlay()
-    private var incidentGraphicsOverlay = AGSGraphicsOverlay()
-    
     // Create a closest facility task from the network service URL.
     private let closestFacilityTask: AGSClosestFacilityTask = {
         let networkServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/ClosestFacility")!
         return AGSClosestFacilityTask(url: networkServiceURL)
     }()
     
-    // Create an array of facilities in the area.
-    private var facilities = [AGSFacility]()
+    // Create graphic overlays to the map.
+    private var facilityGraphicsOverlay = AGSGraphicsOverlay()
+    private var incidentGraphicsOverlay = AGSGraphicsOverlay()
+    
     // Create graphics to represent the route.
     private let routeSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 2.0)
+    
+    // Create an array of facilities in the area.
+    private var facilities = [AGSFacility]()
     
     // Add the facilities and create graphics.
     private func createFacilitiesAndGraphics() {
@@ -83,23 +84,34 @@ extension FindClosestFacilityInteractiveViewController: AGSGeoViewTouchDelegate 
             guard let self = self else { return }
             if let parameters = parameters {
                 parameters.setFacilities(self.facilities)
+                
+                // Create a symbol for the incident.
                 let incidentSymbol = AGSSimpleMarkerSymbol(style: .cross, color: .black, size: 20)
                 
                 // Remove previous graphics.
                 self.incidentGraphicsOverlay.graphics.removeAllObjects()
                 
-                // Create point and graphics of the incident.
+                // Create a point and graphics for the incident.
                 let incidentPoint = AGSPoint(x: mapPoint.x, y: mapPoint.y, spatialReference: .webMercator())
                 let graphic = AGSGraphic(geometry: incidentPoint, symbol: incidentSymbol, attributes: .none)
                 self.incidentGraphicsOverlay.graphics.add(graphic)
                 
+                // Set the incident for the parameters.
                 parameters.setIncidents([AGSIncident(point: incidentPoint)])
                 self.closestFacilityTask.solveClosestFacility(with: parameters) { [weak self] (result, error) in
                     guard let self = self else { return }
                     if let result = result {
+                        
+                        // Get the ranked list of colsest facilities.
                         let rankedList = result.rankedFacilityIndexes(forIncidentIndex: 0)
+                        
+                        // Get the facility closest to the incident.
                         let closestFacility = Int(truncating: (rankedList?[0])!)
+                        
+                        // Calculate the route based on the closest facility and chosen incident.
                         let route = result.route(forFacilityIndex: closestFacility, incidentIndex: 0)
+                        
+                        // Display the route graphics.
                         self.incidentGraphicsOverlay.graphics.add(AGSGraphic(geometry: route?.routeGeometry, symbol: self.routeSymbol, attributes: .none))
                     } else if let error = error {
                         self.presentAlert(error: error)

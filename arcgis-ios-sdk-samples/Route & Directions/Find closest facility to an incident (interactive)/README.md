@@ -22,7 +22,7 @@ Click near any of the hospitals and a route will be displayed from that clicked 
 1.  Get the indexed list of closet facilities to the incident.
 1.  Get the index of the closest facility.
 1.  Get closest facility route from the facility result.
-1.  Display the route on the `MapView` as an `AGSGraphic` on an `AGSGraphicsOverlay`.
+1.  Display the route on the `AGSMapView` as an `AGSGraphic` on an `AGSGraphicsOverlay`.
 
 ## Relevant API
 

@@ -762,6 +762,7 @@
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */; };
 		F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
 		F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
@@ -1608,6 +1609,7 @@
 		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
 		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
+		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
 		F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetElevationPoint.storyboard; sourceTree = "<group>"; };
 		F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetElevationPointViewController.swift; sourceTree = "<group>"; };
 		F1D7508E230730360018B812 /* ElevationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationViewController.swift; sourceTree = "<group>"; };
@@ -4022,6 +4024,7 @@
 			children = (
 				F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */,
 				F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */,
+				F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */,
 			);
 			path = "Display subtype feature layer";
 			sourceTree = "<group>";
@@ -4643,6 +4646,7 @@
 				3E8A05CF1ECE68E80032231C /* PlaneStatsViewController.swift in Sources */,
 				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift in Sources */,
 				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */,
+				F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
 				C76F75722182729700938D8D /* ColorPickerViewController.swift in Sources */,
 				3ED75D041ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift in Sources */,

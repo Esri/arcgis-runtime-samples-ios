@@ -1,23 +1,18 @@
 {
-    "category": "Routing and Logistics",
+    "category": "Routing & Directions",
     "description": "Find a route to the closest facility from a location.",
     "ignore": false,
     "images": [
         "find-closest-facility-to-an-incident-interactive.png"
     ],
     "keywords": [
-        "analysis",
+        "network analysis",
         "routing and logistics",
         "incident",
-        "network",
         "route",
-        "search",
-        "facility",
-        "graphic",
-        "graphics overlay",
-        "incident"
+        "search"
     ],
-    "redirect_from": "/android/latest/sample-code/find-closest-facility-to-an-incident-interactive.htm",
+    "redirect_from": [],
     "relevant_apis": [
         "AGSClosestFacilityParameters",
         "AGSClosestFacilityResult",
@@ -27,9 +22,6 @@
         "AGSGraphic",
         "AGSGraphicsOverlay",
         "AGSIncident"
-    ],
-    "snippets": [
-        "src/main/java/com/esri/arcgisruntime/sample/findclosestfacilitytoanincidentinteractive/MainActivity.java"
     ],
     "title": "Find closest facility to an incident (interactive)"
 }

@@ -15,4 +15,15 @@
 import UIKit
 import ArcGIS
 
+class DisplaySubtypeSettingsViewController: UITableViewController {
+    /// The map whose settings should be adjusted.
+    var map: AGSMap!
+    /// The scale of the map. The default it `0`.
+    var mapScale = 0.0
+    /// The delegate of the view controller.
+    weak var delegate: MapReferenceScaleSettingsViewControllerDelegate?
 
+    
+    @IBOutlet weak var referenceScaleLabel: UILabel!
+    @IBOutlet weak var referenceScalePickerView: UIPickerView!
+}

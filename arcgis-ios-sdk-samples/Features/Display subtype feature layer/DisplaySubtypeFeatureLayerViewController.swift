@@ -17,7 +17,23 @@ import ArcGIS
 
 class DisplaySubtypeFeatureLayerViewController: UIViewController {
     
-//    @IBAction private weak var sublayerSwitch: UISwitch!
+    @IBOutlet private weak var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+        }
+    }
+    
+    func makeMap() -> AGSMap {
+        let map = AGSMap(basemap: .streetsNightVector())
+        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -9812691.11079696, yMin: 5128687.20710657, xMax: -9812377.9447607, yMax: 5128865.36767282, spatialReference: .webMercator()))
+
+        // Create a subtype feature layer from a service feature table.
+        let featureServiceURL = URL(string:"https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/100")
+        let featureTable = AGSServiceFeatureTable(url: featureServiceURL!)
+        subtypeFeatureLayer = AGSSubtypeFeatureLayer(featureTable: featureTable)
+        map.operationalLayers.add(subtypeFeatureLayer!)
+        return map
+    }
     
     var subtypeFeatureLayer: AGSSubtypeFeatureLayer? {
         didSet {
@@ -46,22 +62,6 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         }
     }
     
-    @IBOutlet private weak var mapView: AGSMapView! {
-        didSet {
-            // initialize the map
-            mapView.map = AGSMap(basemap: .streetsNightVector())
-            mapView.map?.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -9812691.11079696, yMin: 5128687.20710657, xMax: -9812377.9447607, yMax: 5128865.36767282, spatialReference: .webMercator()))
-            
-            // on any navigation on the map view
-
-            // create a subtype feature layer from a service feature table
-            let featureServiceURL = URL(string:"https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/100")
-            let featureTable = AGSServiceFeatureTable(url: featureServiceURL!)
-            subtypeFeatureLayer = AGSSubtypeFeatureLayer(featureTable: featureTable)
-            mapView.map?.operationalLayers.add(subtypeFeatureLayer as Any)
-            
-        }
-    }
     
     
     
@@ -69,7 +69,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     override func viewDidLoad() {
            super.viewDidLoad()
            //add the source code button item to the right of navigation bar
-           (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplaySubtypeFeatureLayer"]
+           (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplaySubtypeFeatureLayer", "DisplaySubtypeSettingsViewController"]
    }
 }
 

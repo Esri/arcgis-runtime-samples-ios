@@ -29,17 +29,14 @@ class FindClosestFacilityInteractiveViewController: UIViewController {
             mapView.graphicsOverlays.add(incidentGraphicsOverlay)
         }
     }
-    
-    private let facilitySymbolURL = URL(string: "https://static.arcgis.com/images/Symbols/SafetyHealth/Hospital.png")!
-    
+
     // Create a closest facility task from the network service URL.
     private let closestFacilityTask: AGSClosestFacilityTask = {
         let networkServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/ClosestFacility")!
         return AGSClosestFacilityTask(url: networkServiceURL)
     }()
     
-    // Create graphic overlays to the map.
-    private var facilityGraphicsOverlay = AGSGraphicsOverlay()
+    // Create a graphic overlay to the map.
     private var incidentGraphicsOverlay = AGSGraphicsOverlay()
     
     // Create graphics to represent the route.
@@ -57,11 +54,12 @@ class FindClosestFacilityInteractiveViewController: UIViewController {
     ]
     
     // Create the graphics and add them to the graphics overlay
-    private func makeFacilitiesOverlay() -> AGSGraphicsOverlay {
+    func makeFacilitiesOverlay() -> AGSGraphicsOverlay {
+        let facilitySymbolURL = URL(string: "https://static.arcgis.com/images/Symbols/SafetyHealth/Hospital.png")!
         let facilitySymbol = AGSPictureMarkerSymbol(url: facilitySymbolURL)
         facilitySymbol.height = 30
         facilitySymbol.width = 30
-        
+
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.graphics.addObjects(from: facilities.map { AGSGraphic(geometry: $0.geometry, symbol: facilitySymbol) })
         return graphicsOverlay

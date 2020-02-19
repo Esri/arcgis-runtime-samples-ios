@@ -23,5 +23,6 @@
         "AGSGraphicsOverlay",
         "AGSIncident"
     ],
+    "snippets": [],
     "title": "Find closest facility to an incident (interactive)"
 }

@@ -17,13 +17,76 @@ import ArcGIS
 
 class DisplaySubtypeSettingsViewController: UITableViewController {
     /// The map whose settings should be adjusted.
-    var map: AGSMap!
+    var map: AGSMap! //maybe not working bc haven't assigned map to anything?
     /// The scale of the map. The default it `0`.
     var mapScale = 0.0
     /// The delegate of the view controller.
     weak var delegate: MapReferenceScaleSettingsViewControllerDelegate?
 
+    @IBOutlet weak var sublayerSwitch: UISwitch!
+    @IBOutlet weak var rendererSwitch: UISwitch!
+    @IBOutlet weak var scaleLabel: UILabel!
+    @IBOutlet weak var setCurrentToMinScale: UITableViewCell!
     
-    @IBOutlet weak var referenceScaleLabel: UILabel!
-    @IBOutlet weak var referenceScalePickerView: UIPickerView!
+    /// The formatter used to generate strings from scale values.
+    private let scaleFormatter: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 0
+        return numberFormatter
+    }()
+    
+    /// Returns a string containing the formatted value of the provided scale.
+    ///
+    /// - Parameter scale: A scale value.
+    /// - Returns: A string.
+    func string(fromScale scale: Double) -> String {
+        return String(format: "1:%@", scaleFormatter.string(from: scale as NSNumber)!)
+    }
+    
+    /// The observer of the scale of the map.
+    private var scaleObserver: NSObjectProtocol?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+//        precondition(map != nil)
+        
+        // Update Map Scale section.
+        
+        scaleLabel.text = string(fromScale: mapScale)
+        setCurrentToMinScale.textLabel?.textColor = view.tintColor
+    }
+    
+    @IBAction func sublayerSwitchAction(_ sender: UISwitch) {
+        if let layers = map.operationalLayers as? [AGSSubtypeFeatureLayer] {
+            let subtypeSublayer = layers.first?.sublayer(withName: "Street Light")
+            if sender.isOn {
+                subtypeSublayer?.isVisible = true
+            } else {
+                subtypeSublayer?.isVisible = false
+            }
+        }
+    }
+    
+    @IBAction func rendererSwitchAction(_ sender: UISwitch) {
+        if let layers = map.operationalLayers as? [AGSSubtypeFeatureLayer] {
+            let subtypeSublayer = layers.first?.sublayer(withName: "Street Light")
+            if sender.isOn {
+                // do nothing
+                //possibly not working bc i set the default switch to off
+            } else {
+                let symbol = AGSSimpleMarkerSymbol(style: .diamond, color: .systemPink, size: 20)
+                let alternativeRenderer = AGSSimpleRenderer(symbol: symbol)
+                subtypeSublayer?.renderer = alternativeRenderer
+            }
+        }
+    }
+}
+
+extension DisplaySubtypeSettingsViewController /* UITableViewDelegate */ {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            mapScale = map.referenceScale
+            scaleLabel.text = string(fromScale: mapScale)
+    }
 }

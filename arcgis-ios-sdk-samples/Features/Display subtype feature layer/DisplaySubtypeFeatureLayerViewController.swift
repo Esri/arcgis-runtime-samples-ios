@@ -56,19 +56,10 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? DisplaySubtypeSettingsViewController {
-            //controller.backgroundGrid = mapView.backgroundGrid
             
+            controller.map = mapView?.map
+            controller.preferredContentSize = CGSize(width: 300, height: 200)
             navController.presentationController?.delegate = self
-            controller.preferredContentSize = {
-                let height: CGFloat
-                if traitCollection.horizontalSizeClass == .regular,
-                    traitCollection.verticalSizeClass == .regular {
-                    height = 200
-                } else {
-                    height = 150
-                }
-                return CGSize(width: 375, height: height)
-            }()
         }
     }
 }

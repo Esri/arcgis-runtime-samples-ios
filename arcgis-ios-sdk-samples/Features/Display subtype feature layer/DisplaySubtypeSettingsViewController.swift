@@ -50,8 +50,6 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-//        precondition(map != nil)
-        
         // Update Map Scale section.
         
         scaleLabel.text = string(fromScale: mapScale)
@@ -73,12 +71,10 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
         if let layers = map.operationalLayers as? [AGSSubtypeFeatureLayer] {
             let subtypeSublayer = layers.first?.sublayer(withName: "Street Light")
             if sender.isOn {
-                // do nothing
-                //possibly not working bc i set the default switch to off
-            } else {
                 let symbol = AGSSimpleMarkerSymbol(style: .diamond, color: .systemPink, size: 20)
                 let alternativeRenderer = AGSSimpleRenderer(symbol: symbol)
                 subtypeSublayer?.renderer = alternativeRenderer
+            } else {
             }
         }
     }

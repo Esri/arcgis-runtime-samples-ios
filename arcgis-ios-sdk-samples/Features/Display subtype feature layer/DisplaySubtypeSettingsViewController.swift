@@ -15,17 +15,29 @@
 import UIKit
 import ArcGIS
 
+protocol DisplaySubtypeSettingsViewControllerDelegate: AnyObject {
+    /// Tells the delegate that the user changed the map scale.
+    ///
+    /// - Parameter controller: The controller sending the message.
+    func displaySubtypeSettingsViewControllerDidChangeMapScale(_ controller: DisplaySubtypeSettingsViewController)
+    /// Tells the delegate that the user finished changing settings.
+    ///
+    /// - Parameter controller: The controller sending the message.
+    func displaySubtypeSettingsViewControllerDidFinish(_ controller: DisplaySubtypeSettingsViewController)
+}
+
 class DisplaySubtypeSettingsViewController: UITableViewController {
     /// The map whose settings should be adjusted.
-    var map: AGSMap! //maybe not working bc haven't assigned map to anything?
+    var map: AGSMap!
     /// The scale of the map. The default it `0`.
-    var mapScale = 0.0
-    /// The delegate of the view controller.
-    weak var delegate: MapReferenceScaleSettingsViewControllerDelegate?
+    var mapScale: Double!
 
+    weak var delegate: DisplaySubtypeSettingsViewControllerDelegate?
+    
     @IBOutlet weak var sublayerSwitch: UISwitch!
     @IBOutlet weak var rendererSwitch: UISwitch!
     @IBOutlet weak var scaleLabel: UILabel!
+    @IBOutlet weak var minScaleLabel: UILabel!
     @IBOutlet weak var setCurrentToMinScale: UITableViewCell!
     
     /// The formatter used to generate strings from scale values.
@@ -46,43 +58,56 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
     
     /// The observer of the scale of the map.
     private var scaleObserver: NSObjectProtocol?
+    private var originalRenderer: AGSRenderer!
+    private var alternativeRenderer: AGSSimpleRenderer!
+    private var subtypeSublayer: AGSSubtypeSublayer!
+    private var minScale: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         // Update Map Scale section.
-        
+        makeSubtype()
+        makeRenderers()
         scaleLabel.text = string(fromScale: mapScale)
-        setCurrentToMinScale.textLabel?.textColor = view.tintColor
+        if minScale != nil {
+            minScaleLabel.text = string(fromScale: minScale)
+        } else {
+            minScaleLabel.text = "None"
+        }
+        
+        delegate?.displaySubtypeSettingsViewControllerDidChangeMapScale(self)
+    }
+    
+    private func makeSubtype() {
+        let layers = map.operationalLayers as? [AGSSubtypeFeatureLayer]
+        subtypeSublayer = (layers?.first?.sublayer(withName: "Street Light"))!
+    }
+    
+    private func makeRenderers() {
+        originalRenderer = subtypeSublayer.renderer!
+        let symbol = AGSSimpleMarkerSymbol(style: .diamond, color: .systemPink, size: 20)
+        alternativeRenderer = AGSSimpleRenderer(symbol: symbol)
     }
     
     @IBAction func sublayerSwitchAction(_ sender: UISwitch) {
-        if let layers = map.operationalLayers as? [AGSSubtypeFeatureLayer] {
-            let subtypeSublayer = layers.first?.sublayer(withName: "Street Light")
-            if sender.isOn {
-                subtypeSublayer?.isVisible = true
-            } else {
-                subtypeSublayer?.isVisible = false
-            }
+        if sender.isOn {
+            subtypeSublayer.isVisible = true
+        } else {
+            subtypeSublayer.isVisible = false
         }
     }
     
     @IBAction func rendererSwitchAction(_ sender: UISwitch) {
-        if let layers = map.operationalLayers as? [AGSSubtypeFeatureLayer] {
-            let subtypeSublayer = layers.first?.sublayer(withName: "Street Light")
-            if sender.isOn {
-                let symbol = AGSSimpleMarkerSymbol(style: .diamond, color: .systemPink, size: 20)
-                let alternativeRenderer = AGSSimpleRenderer(symbol: symbol)
-                subtypeSublayer?.renderer = alternativeRenderer
-            } else {
-            }
+        if sender.isOn {
+            subtypeSublayer.renderer = originalRenderer
+        } else {
+            subtypeSublayer.renderer = alternativeRenderer
         }
     }
-}
-
-extension DisplaySubtypeSettingsViewController /* UITableViewDelegate */ {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            mapScale = map.referenceScale
-            scaleLabel.text = string(fromScale: mapScale)
+    
+    @IBAction func currentToMinAction() {
+        minScaleLabel.text = string(fromScale: mapScale)
+        map.minScale = mapScale
     }
 }

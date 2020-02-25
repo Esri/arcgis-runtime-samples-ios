@@ -30,6 +30,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/100")
         let featureTable = AGSServiceFeatureTable(url: featureServiceURL!)
         subtypeFeatureLayer = AGSSubtypeFeatureLayer(featureTable: featureTable)
+        subtypeFeatureLayer?.scaleSymbols = false
         map.operationalLayers.add(subtypeFeatureLayer!)
         return map
     }
@@ -40,8 +41,36 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
                 subtype.load(completion: { [ weak self ] (_: Error?) in
                     let subtypeSublayer = subtype.sublayer(withName: "Street Light")
                     subtypeSublayer?.labelsEnabled = true
-                    // subtypeSublayer?.labelDefinitions.
-                    // still have to get labels?
+//                    subtypeSublayer?.labelDefinitions.
+//                    let labelJSONObject: [String: Any]
+//                    subtypeSublayer?.labelDefinitions.append(AGSLabelDefinition.fromJSON(labelJSONObject))
+
+                    let labelJSONObject: [String: Any] = [
+                        "labelExpression": "[nominalvoltage]",
+                        "labelPlacement": "esriServerPointLabelPlacementAboveRight",
+                        "useCodedValues": "true",
+                        "symbol": {
+                            "angle": 0,
+                            "backgroundColor": [0,0,0,0],
+                            "borderLineColor": [0,0,0,0],
+                            "borderLineSize": 0,
+                            "color": [0,0,255,255],
+                            "font": {
+                                "decoration": "none",
+                                "size": 10.5,
+                                "style": "normal",
+                                "weight": "normal"
+                            },
+                            "haloColor": [255,255,255,255],
+                            "haloSize": 2,
+                            "horizontalAlignment": "center",
+                            "kerning": "false",
+                            "type": "esriTS",
+                            "verticalAlignment": "middle",
+                            "xoffset": 0,
+                            "yoffset": 0
+                        }
+                    ]
                 })
             }
         }
@@ -54,13 +83,24 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? DisplaySubtypeSettingsViewController {
-            
-            controller.map = mapView?.map
+            let controller = navController.topViewController as? DisplaySubtypeSettingsViewController {
             controller.preferredContentSize = CGSize(width: 300, height: 200)
-            navController.presentationController?.delegate = self
+            controller.map = mapView?.map
+            controller.mapScale = mapView.mapScale
+            controller.presentationController?.delegate = self
         }
+    }
+}
+
+extension DisplaySubtypeFeatureLayerViewController: DisplaySubtypeSettingsViewControllerDelegate {
+    func displaySubtypeSettingsViewControllerDidChangeMapScale(_ controller: DisplaySubtypeSettingsViewController) {
+        mapView.setViewpointScale(controller.mapScale)
+    }
+    
+    func displaySubtypeSettingsViewControllerDidFinish(_ controller: DisplaySubtypeSettingsViewController) {
+        dismiss(animated: true)
     }
 }
 

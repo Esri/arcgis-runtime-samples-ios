@@ -21,7 +21,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jcp-Sk-bVa">
-                                <rect key="frame" x="0.0" y="852" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="847" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="OtO-Lk-i54"/>
                                     <barButtonItem title="Settings" id="Qe7-1R-wDr">
@@ -79,7 +79,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3j9-MM-mYX" userLabel="Show Sublayer Switch">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3j9-MM-mYX" userLabel="Show Sublayer Switch">
                                                     <rect key="frame" x="349" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="sublayerSwitchAction:" destination="HLD-kJ-COl" eventType="valueChanged" id="cGt-6o-L0Q"/>
@@ -101,13 +101,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show alternative renderer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RT5-P8-WU4" userLabel="Show Alternative Renderer">
-                                                    <rect key="frame" x="16" y="11.5" width="196.5" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show original renderer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RT5-P8-WU4" userLabel="Show Original Renderer">
+                                                    <rect key="frame" x="16" y="11.5" width="172.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q2g-ka-lq7" userLabel="Toggle Renderer Switch">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2g-ka-lq7" userLabel="Toggle Renderer Switch">
                                                     <rect key="frame" x="349" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="rendererSwitchAction:" destination="HLD-kJ-COl" eventType="valueChanged" id="X4z-lq-rhm"/>
@@ -167,7 +167,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2e-5b-JFp" userLabel="Scale Label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2e-5b-JFp" userLabel="Min Scale Label">
                                                     <rect key="frame" x="356" y="11.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -189,12 +189,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="812-2f-bbg" userLabel="Set Current to Minimum Scale">
-                                                    <rect key="frame" x="105" y="6.5" width="205" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="812-2f-bbg" userLabel="Set Current to Minimum Scale">
+                                                    <rect key="frame" x="104.5" y="7" width="205" height="30"/>
                                                     <state key="normal" title="Set Current to Minimum Scale"/>
+                                                    <connections>
+                                                        <action selector="currentToMinAction" destination="HLD-kJ-COl" eventType="primaryActionTriggered" id="yFd-tO-ccK"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="812-2f-bbg" firstAttribute="centerX" secondItem="aQS-mQ-eB7" secondAttribute="centerX" id="2Ye-gl-Qjl"/>
+                                                <constraint firstItem="812-2f-bbg" firstAttribute="centerY" secondItem="aQS-mQ-eB7" secondAttribute="centerY" id="lgK-pb-Uf8"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -207,6 +213,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="qtK-ok-6Js"/>
                     <connections>
+                        <outlet property="minScaleLabel" destination="j2e-5b-JFp" id="Ayk-uR-R2D"/>
                         <outlet property="rendererSwitch" destination="Q2g-ka-lq7" id="xPC-lV-hb9"/>
                         <outlet property="scaleLabel" destination="Tob-TX-g6s" id="x31-A0-UWy"/>
                         <outlet property="setCurrentToMinScale" destination="GPz-x9-7U7" id="TiB-tX-8qE"/>

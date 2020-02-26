@@ -108,6 +108,7 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
     
     @IBAction func currentToMinAction() {
         minScaleLabel.text = string(fromScale: mapScale)
-        map.minScale = mapScale
+        subtypeSublayer.minScale = mapScale
+//        map.minScale = mapScale
     }
 }

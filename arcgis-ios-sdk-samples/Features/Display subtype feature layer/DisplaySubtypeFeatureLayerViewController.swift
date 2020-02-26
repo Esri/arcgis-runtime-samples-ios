@@ -41,41 +41,54 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
                 subtype.load(completion: { [ weak self ] (_: Error?) in
                     let subtypeSublayer = subtype.sublayer(withName: "Street Light")
                     subtypeSublayer?.labelsEnabled = true
-//                    subtypeSublayer?.labelDefinitions.
-//                    let labelJSONObject: [String: Any]
-//                    subtypeSublayer?.labelDefinitions.append(AGSLabelDefinition.fromJSON(labelJSONObject))
-
-                    let labelJSONObject: [String: Any] = [
-                        "labelExpression": "[nominalvoltage]",
-                        "labelPlacement": "esriServerPointLabelPlacementAboveRight",
-                        "useCodedValues": "true",
-                        "symbol": {
-                            "angle": 0,
-                            "backgroundColor": [0,0,0,0],
-                            "borderLineColor": [0,0,0,0],
-                            "borderLineSize": 0,
-                            "color": [0,0,255,255],
-                            "font": {
-                                "decoration": "none",
-                                "size": 10.5,
-                                "style": "normal",
-                                "weight": "normal"
-                            },
-                            "haloColor": [255,255,255,255],
-                            "haloSize": 2,
-                            "horizontalAlignment": "center",
-                            "kerning": "false",
-                            "type": "esriTS",
-                            "verticalAlignment": "middle",
-                            "xoffset": 0,
-                            "yoffset": 0
-                        }
-                    ]
+                    do {
+                        let label = try self?.makeLabelDefinition()
+                        subtypeSublayer?.labelDefinitions.append(label!)
+                    } catch {
+                        self?.presentAlert(error: error)
+                    }
                 })
             }
         }
     }
     
+    private func makeLabelDefinition() throws -> AGSLabelDefinition {
+        let textSymbol = AGSTextSymbol()
+        textSymbol.angle = 0
+        textSymbol.backgroundColor = .clear
+        textSymbol.outlineColor = .white
+        textSymbol.color = .blue
+        textSymbol.haloColor = .white
+        textSymbol.haloWidth = 2
+        textSymbol.horizontalAlignment = .center
+        textSymbol.verticalAlignment = .middle
+        textSymbol.isKerningEnabled = false
+        textSymbol.offsetX = 0
+        textSymbol.offsetY = 0
+        textSymbol.fontDecoration = .none
+        textSymbol.size = 10.5
+        textSymbol.fontStyle = .normal
+        textSymbol.fontWeight = .normal
+        let textSymbolJSON = try textSymbol.toJSON()
+
+        let labelJSONObject: [String: Any] = [
+            "labelExpression": "[nominalvoltage]",
+            "labelPlacement": "esriServerPointLabelPlacementAboveRight",
+            "useCodedValues": true,
+            "symbol": textSymbolJSON
+        ]
+        let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
+        if let definition = result as? AGSLabelDefinition {
+            return definition
+        } else {
+            throw ShowLabelsOnLayersError.withDescription("The JSON could not be read as a label definition.")
+        }
+    }
+    
+    private enum ShowLabelsOnLayersError: Error {
+        case withDescription(String)
+    }
+
     override func viewDidLoad() {
            super.viewDidLoad()
            //add the source code button item to the right of navigation bar

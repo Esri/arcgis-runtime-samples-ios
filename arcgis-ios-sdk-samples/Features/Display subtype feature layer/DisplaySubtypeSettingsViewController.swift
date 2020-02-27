@@ -15,24 +15,13 @@
 import UIKit
 import ArcGIS
 
-protocol DisplaySubtypeSettingsViewControllerDelegate: AnyObject {
-    /// Tells the delegate that the user changed the map scale.
-    ///
-    /// - Parameter controller: The controller sending the message.
-    func displaySubtypeSettingsViewControllerDidChangeMapScale(_ controller: DisplaySubtypeSettingsViewController)
-    /// Tells the delegate that the user finished changing settings.
-    ///
-    /// - Parameter controller: The controller sending the message.
-    func displaySubtypeSettingsViewControllerDidFinish(_ controller: DisplaySubtypeSettingsViewController)
-}
-
 class DisplaySubtypeSettingsViewController: UITableViewController {
-    /// The map whose settings should be adjusted.
+    // The map whose settings should be adjusted.
     var map: AGSMap!
-    /// The scale of the map. The default it `0`.
     var mapScale: Double!
-
-    weak var delegate: DisplaySubtypeSettingsViewControllerDelegate?
+    var minScale: Double!
+    var originalRenderer: AGSRenderer!
+    var subtypeSublayer: AGSSubtypeSublayer!
     
     @IBOutlet weak var sublayerSwitch: UISwitch!
     @IBOutlet weak var rendererSwitch: UISwitch!
@@ -40,56 +29,7 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
     @IBOutlet weak var minScaleLabel: UILabel!
     @IBOutlet weak var setCurrentToMinScale: UITableViewCell!
     
-    /// The formatter used to generate strings from scale values.
-    private let scaleFormatter: NumberFormatter = {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.maximumFractionDigits = 0
-        return numberFormatter
-    }()
-    
-    /// Returns a string containing the formatted value of the provided scale.
-    ///
-    /// - Parameter scale: A scale value.
-    /// - Returns: A string.
-    func string(fromScale scale: Double) -> String {
-        return String(format: "1:%@", scaleFormatter.string(from: scale as NSNumber)!)
-    }
-    
-    /// The observer of the scale of the map.
-    private var scaleObserver: NSObjectProtocol?
-    private var originalRenderer: AGSRenderer!
-    private var alternativeRenderer: AGSSimpleRenderer!
-    private var subtypeSublayer: AGSSubtypeSublayer!
-    private var minScale: Double!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        // Update Map Scale section.
-        makeSubtype()
-        makeRenderers()
-        scaleLabel.text = string(fromScale: mapScale)
-        if minScale != nil {
-            minScaleLabel.text = string(fromScale: minScale)
-        } else {
-            minScaleLabel.text = "None"
-        }
-        
-        delegate?.displaySubtypeSettingsViewControllerDidChangeMapScale(self)
-    }
-    
-    private func makeSubtype() {
-        let layers = map.operationalLayers as? [AGSSubtypeFeatureLayer]
-        subtypeSublayer = (layers?.first?.sublayer(withName: "Street Light"))!
-    }
-    
-    private func makeRenderers() {
-        originalRenderer = subtypeSublayer.renderer!
-        let symbol = AGSSimpleMarkerSymbol(style: .diamond, color: .systemPink, size: 20)
-        alternativeRenderer = AGSSimpleRenderer(symbol: symbol)
-    }
-    
+    // Change the visibility of the sublayer.
     @IBAction func sublayerSwitchAction(_ sender: UISwitch) {
         if sender.isOn {
             subtypeSublayer.isVisible = true
@@ -98,17 +38,57 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
         }
     }
     
+    // Toggle the type of renderer
     @IBAction func rendererSwitchAction(_ sender: UISwitch) {
         if sender.isOn {
             subtypeSublayer.renderer = originalRenderer
         } else {
+            let symbol = AGSSimpleMarkerSymbol(style: .diamond, color: .systemPink, size: 20)
+            let alternativeRenderer = AGSSimpleRenderer(symbol: symbol)
             subtypeSublayer.renderer = alternativeRenderer
         }
     }
     
+    // Change the minimum scale.
     @IBAction func currentToMinAction() {
         minScaleLabel.text = string(fromScale: mapScale)
         subtypeSublayer.minScale = mapScale
-//        map.minScale = mapScale
+    }
+    
+    // The formatter used to generate strings from scale values.
+    private let scaleFormatter: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 0
+        return numberFormatter
+    }()
+    
+    // Returns a string containing the formatted value of the provided scale.
+    private func string(fromScale scale: Double) -> String {
+        return String(format: "1:%@", scaleFormatter.string(from: scale as NSNumber)!)
+    }
+    
+    // Preserve the states of the switches
+    private func preserveSwitchStates() {
+        if subtypeSublayer.isVisible == true {
+            sublayerSwitch.isOn = true
+        } else {
+            sublayerSwitch.isOn = false
+        }
+        if subtypeSublayer.renderer == originalRenderer {
+            rendererSwitch.isOn = true
+        } else {
+            rendererSwitch.isOn = false
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        preserveSwitchStates()
+        scaleLabel.text = string(fromScale: mapScale)
+        if minScale != nil {
+            minScaleLabel.text = string(fromScale: minScale)
+        }
     }
 }

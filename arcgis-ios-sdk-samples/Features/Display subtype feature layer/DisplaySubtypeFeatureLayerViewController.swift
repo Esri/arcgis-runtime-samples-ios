@@ -16,9 +16,31 @@ import UIKit
 import ArcGIS
 
 class DisplaySubtypeFeatureLayerViewController: UIViewController {
+    // The map view managed by the view controller.
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
+        }
+    }
+    
+    var subtypeSublayer: AGSSubtypeSublayer!
+    var originalRenderer: AGSRenderer!
+    
+    var subtypeFeatureLayer: AGSSubtypeFeatureLayer? {
+        didSet {
+            if let subtype = subtypeFeatureLayer {
+                subtype.load { [weak self] (_) in 
+                    self?.subtypeSublayer = subtype.sublayer(withName: "Street Light")
+                    self?.originalRenderer = self?.subtypeSublayer?.renderer
+                    self?.subtypeSublayer?.labelsEnabled = true
+                    do {
+                        let label = try self?.makeLabelDefinition()
+                        self?.subtypeSublayer?.labelDefinitions.append(label!)
+                    } catch {
+                        self?.presentAlert(error: error)
+                    }
+                }
+            }
         }
     }
     
@@ -35,24 +57,8 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         return map
     }
     
-    var subtypeFeatureLayer: AGSSubtypeFeatureLayer? {
-        didSet {
-            if let subtype = subtypeFeatureLayer {
-                subtype.load(completion: { [ weak self ] (_: Error?) in
-                    let subtypeSublayer = subtype.sublayer(withName: "Street Light")
-                    subtypeSublayer?.labelsEnabled = true
-                    do {
-                        let label = try self?.makeLabelDefinition()
-                        subtypeSublayer?.labelDefinitions.append(label!)
-                    } catch {
-                        self?.presentAlert(error: error)
-                    }
-                })
-            }
-        }
-    }
-    
     private func makeLabelDefinition() throws -> AGSLabelDefinition {
+        // Make and stylize the text symbol.
         let textSymbol = AGSTextSymbol()
         textSymbol.angle = 0
         textSymbol.backgroundColor = .clear
@@ -71,12 +77,14 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         textSymbol.fontWeight = .normal
         let textSymbolJSON = try textSymbol.toJSON()
 
+        // Make a JSON object.
         let labelJSONObject: [String: Any] = [
             "labelExpression": "[nominalvoltage]",
             "labelPlacement": "esriServerPointLabelPlacementAboveRight",
             "useCodedValues": true,
             "symbol": textSymbolJSON
         ]
+        
         let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
         if let definition = result as? AGSLabelDefinition {
             return definition
@@ -88,13 +96,14 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     private enum ShowLabelsOnLayersError: Error {
         case withDescription(String)
     }
-
-    override func viewDidLoad() {
-           super.viewDidLoad()
-           //add the source code button item to the right of navigation bar
-           (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplaySubtypeFeatureLayer", "DisplaySubtypeSettingsViewController"]
-   }
     
+     override func viewDidLoad() {
+            super.viewDidLoad()
+            // Add the source code button item to the right of navigation bar.
+            (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplaySubtypeFeatureLayerViewController", "DisplaySubtypeSettingsViewController"]
+    }
+    
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if let navController = segue.destination as? UINavigationController,
@@ -102,23 +111,18 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             controller.map = mapView?.map
             controller.mapScale = mapView.mapScale
-            controller.presentationController?.delegate = self
+            controller.minScale = subtypeSublayer.minScale
+            controller.subtypeSublayer = subtypeSublayer
+            controller.originalRenderer = self.originalRenderer
+            navController.presentationController?.delegate = self
         }
     }
 }
 
-extension DisplaySubtypeFeatureLayerViewController: DisplaySubtypeSettingsViewControllerDelegate {
-    func displaySubtypeSettingsViewControllerDidChangeMapScale(_ controller: DisplaySubtypeSettingsViewController) {
-        mapView.setViewpointScale(controller.mapScale)
-    }
-    
-    func displaySubtypeSettingsViewControllerDidFinish(_ controller: DisplaySubtypeSettingsViewController) {
-        dismiss(animated: true)
-    }
-}
-
+// MARK: - UIAdaptivePresentationControllerDelegate
 extension DisplaySubtypeFeatureLayerViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // Ensure that the settings show in a popover even on small displays.
         return .none
     }
 }

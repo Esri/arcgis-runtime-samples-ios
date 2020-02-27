@@ -21,7 +21,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jcp-Sk-bVa">
-                                <rect key="frame" x="0.0" y="847" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="OtO-Lk-i54"/>
                                     <barButtonItem title="Settings" id="Qe7-1R-wDr">
@@ -37,7 +37,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Jcp-Sk-bVa" firstAttribute="bottom" secondItem="sLt-8I-td0" secondAttribute="bottom" id="GFw-At-N9o"/>
+                            <constraint firstItem="Jcp-Sk-bVa" firstAttribute="bottom" secondItem="WUM-OG-Ph5" secondAttribute="bottom" id="GFw-At-N9o"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="trailing" secondItem="WUM-OG-Ph5" secondAttribute="trailing" id="JJJ-d3-yxB"/>
                             <constraint firstAttribute="bottom" secondItem="sLt-8I-td0" secondAttribute="bottom" id="XPD-lB-MWL"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="leading" secondItem="WUM-OG-Ph5" secondAttribute="leading" id="aTW-kJ-Mzl"/>
@@ -167,8 +167,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2e-5b-JFp" userLabel="Min Scale Label">
-                                                    <rect key="frame" x="356" y="11.5" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2e-5b-JFp" userLabel="Min Scale Label">
+                                                    <rect key="frame" x="357" y="11.5" width="41" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

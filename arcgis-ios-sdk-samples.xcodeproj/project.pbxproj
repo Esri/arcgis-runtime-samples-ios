@@ -765,6 +765,8 @@
 		F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */; };
 		F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
 		F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
+		F1D1E2C12409AB8A006B2801 /* CreateAndSaveKML.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1D1E2C02409AB8A006B2801 /* CreateAndSaveKML.storyboard */; };
+		F1D1E2C32409AB9F006B2801 /* CreateAndSaveKMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
 		F1D7508F230730360018B812 /* ElevationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
 		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
@@ -1610,6 +1612,8 @@
 		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
 		F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetElevationPoint.storyboard; sourceTree = "<group>"; };
 		F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetElevationPointViewController.swift; sourceTree = "<group>"; };
+		F1D1E2C02409AB8A006B2801 /* CreateAndSaveKML.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAndSaveKML.storyboard; sourceTree = "<group>"; };
+		F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndSaveKMLViewController.swift; sourceTree = "<group>"; };
 		F1D7508E230730360018B812 /* ElevationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationViewController.swift; sourceTree = "<group>"; };
 		F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalRaster.storyboard; sourceTree = "<group>"; };
 		F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalRasterViewController.swift; sourceTree = "<group>"; };
@@ -2654,6 +2658,7 @@
 		3ED027FC1B8E38F400ACA70D /* Edit data */ = {
 			isa = PBXGroup;
 			children = (
+				F1D1E2BE2409AA8D006B2801 /* Create and save KML file */,
 				F164997722E9249B0088CA93 /* Edit and sync features */,
 				3E41DD6D1B9A1EA800DA11CC /* Add features (feature service) */,
 				3E41DD751B9F5AC800DA11CC /* Delete features (feature service) */,
@@ -4053,6 +4058,15 @@
 			path = "Get elevation at a point";
 			sourceTree = "<group>";
 		};
+		F1D1E2BE2409AA8D006B2801 /* Create and save KML file */ = {
+			isa = PBXGroup;
+			children = (
+				F1D1E2C02409AB8A006B2801 /* CreateAndSaveKML.storyboard */,
+				F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */,
+			);
+			path = "Create and save KML file";
+			sourceTree = "<group>";
+		};
 		F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */ = {
 			isa = PBXGroup;
 			children = (
@@ -4453,6 +4467,7 @@
 				3EEA06131D21C44000E03774 /* SurfacePlacements.storyboard in Resources */,
 				3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */,
 				D9ED2DA51FD758910043BFE1 /* FeatureLayerGPKG.storyboard in Resources */,
+				F1D1E2C12409AB8A006B2801 /* CreateAndSaveKML.storyboard in Resources */,
 				3E5E09371EF2E8E200FF3454 /* GenerateOfflineMap.storyboard in Resources */,
 				3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */,
 				C793B5DE21667194000A7A10 /* ListKMLContents.storyboard in Resources */,
@@ -4674,6 +4689,7 @@
 				F1F62C4222E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift in Sources */,
 				4C478E4C223C7498009F8CDF /* MapReferenceScaleViewController.swift in Sources */,
 				3EC39C3C1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift in Sources */,
+				F1D1E2C32409AB9F006B2801 /* CreateAndSaveKMLViewController.swift in Sources */,
 				3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */,
 				E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */,
 				3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */,

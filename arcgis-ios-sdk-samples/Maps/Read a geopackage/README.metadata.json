@@ -1,19 +1,30 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how to add, remove or reorder operational layers in a map using a geopackage.",
+    "description": "Add rasters and feature tables from a GeoPackage to a map.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "read-a-geopackage.png"
     ],
     "keywords": [
+            "container",
+            "GeoPackage",
+            "layer",
+            "map",
+            "OGC",
+            "package",
+            "raster",
+            "table"
     ],
     "redirect_from": "/ios/latest/swift/sample-code/read-a-geopackage.htm",
     "relevant_apis": [
+        "AGSGeoPackage",
+        "AGSGeoPackage.GeoPackageFeatureTables",
+        "AGSGeoPackage.GeoPackageRasters",
+        "AGSGeoPackageFeatureTable",
+        "AGSGeoPackageRaster"
     ],
     "snippets": [
-        "ReadGeopackageViewController.swift",
-        "GPKGLayersViewController.swift"
+        "ReadGeopackageViewController.swift"
     ],
     "title": "Read a geopackage"
 }

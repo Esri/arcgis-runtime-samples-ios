@@ -15,15 +15,17 @@
 import ArcGIS
 
 class ReadGeopackageViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-    @IBOutlet weak var mapView: AGSMapView!
+    @IBOutlet weak var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+        }
+    }
     
     private var allLayers: [AGSLayer] = []
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func makeMap() -> AGSMap {
         // Instantiate and display a map using a basemap, location, and zoom level.
-        mapView.map = AGSMap(basemapType: .streets, latitude: 39.7294, longitude: -104.8319, levelOfDetail: 11)
+        let map = AGSMap(basemapType: .streets, latitude: 39.7294, longitude: -104.8319, levelOfDetail: 11)
         
         // Create a geopackage from a named bundle resource.
         let geoPackage = AGSGeoPackage(name: "AuroraCO")
@@ -45,32 +47,18 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
                 rasterLayer.opacity = 0.55
                 return rasterLayer
             }
-
-            // Keep an array of all the feature layers and raster layers in this geopackage.
-            self?.allLayers.append(contentsOf: rasterLayers)
-            self?.allLayers.append(contentsOf: featureLayers)
+            
+            // Add the arrays of feature and reaster layers to the map.
+            map.operationalLayers.addObjects(from: rasterLayers)
+            map.operationalLayers.addObjects(from: featureLayers)
         }
+        return map
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
-            "ReadGeopackageViewController",
-            "GPKGLayersViewController"
-        ]
-    }
-    
-    // MARK: - Segue to and from the Layer Control viewcontroller.
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let gpkgLayersVC = segue.destination as? GPKGLayersViewController {
-            // Provide the map and all layers to the layer controller UI.
-            gpkgLayersVC.map = mapView.map
-            gpkgLayersVC.allLayers = allLayers
-
-            gpkgLayersVC.popoverPresentationController?.delegate = self
-        }
-    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
+        // Add the source code button item to the right of navigation bar.
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ReadGeopackageViewController"]
     }
 }

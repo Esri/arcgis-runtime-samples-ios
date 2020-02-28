@@ -230,7 +230,7 @@
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to add layers to a map from a geopackage.</string>
+				<string>Add rasters and feature tables from a GeoPackage to a map.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>

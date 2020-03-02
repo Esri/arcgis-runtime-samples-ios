@@ -1163,6 +1163,14 @@
 		<array>
 			<dict>
 				<key>displayName</key>
+				<string>Find closest facility to an incident (interactive)</string>
+				<key>storyboardName</key>
+				<string>FindClosestFacilityInteractive</string>
+				<key>descriptionText</key>
+				<string>Find a route to the closest facility from a location.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Find route</string>
 				<key>storyboardName</key>
 				<string>FindRoute</string>

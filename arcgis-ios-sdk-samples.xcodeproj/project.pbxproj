@@ -762,6 +762,9 @@
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
+		F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
+		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
 		F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */; };
 		F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
 		F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
@@ -820,6 +823,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */,
 				F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */,
 				F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */,
 				F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */,
@@ -1608,6 +1612,8 @@
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
 		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
+		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
+		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetElevationPoint.storyboard; sourceTree = "<group>"; };
 		F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetElevationPointViewController.swift; sourceTree = "<group>"; };
 		F1D7508E230730360018B812 /* ElevationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationViewController.swift; sourceTree = "<group>"; };
@@ -2269,6 +2275,7 @@
 		3E6AE3E91C6D10DA0026E59C /* Route & Directions */ = {
 			isa = PBXGroup;
 			children = (
+				F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */,
 				3E6AE3F31C6D1C920026E59C /* Find route */,
 				3EC39C191C9A5770003F6459 /* Route around barriers */,
 				3E6AE3EA1C6D10F70026E59C /* Offline routing */,
@@ -4043,6 +4050,15 @@
 			path = Rasters;
 			sourceTree = "<group>";
 		};
+		F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */ = {
+			isa = PBXGroup;
+			children = (
+				F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */,
+				F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */,
+			);
+			path = "Find closest facility to an incident (interactive)";
+			sourceTree = "<group>";
+		};
 		F1C81C4322FCEBD100229CAA /* Get elevation at a point */ = {
 			isa = PBXGroup;
 			children = (
@@ -4372,6 +4388,7 @@
 				4C59D132238DCFB500824924 /* ApplyScheduledUpdatesToPreplannedMapArea.storyboard in Resources */,
 				C7D0EEDB215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard in Resources */,
 				3E1183DE1ECF5A1000180152 /* Hawaii.csv in Resources */,
+				F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */,
 				3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */,
 				3EFDE0F51E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard in Resources */,
 				3E1E5EED1D9F0B5600F4913C /* srtm.tiff in Resources */,
@@ -4760,6 +4777,7 @@
 				4CCA30C1223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in Sources */,
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererViewController.swift in Sources */,
 				C7D22F8C2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift in Sources */,
+				F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
 				E45991A41EF3021D0089E9FD /* WebMapViewController.swift in Sources */,
 				3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */,

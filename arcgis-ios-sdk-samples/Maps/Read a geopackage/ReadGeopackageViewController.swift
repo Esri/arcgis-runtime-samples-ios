@@ -20,8 +20,6 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
             mapView.map = makeMap()
         }
     }
-    
-    private var allLayers: [AGSLayer] = []
 
     func makeMap() -> AGSMap {
         // Instantiate and display a map using a basemap, location, and zoom level.

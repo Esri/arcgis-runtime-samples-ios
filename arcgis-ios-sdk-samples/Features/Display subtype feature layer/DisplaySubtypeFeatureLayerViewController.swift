@@ -23,22 +23,27 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         }
     }
     
+    @IBOutlet var settingsButton: UIBarButtonItem!
     var subtypeSublayer: AGSSubtypeSublayer!
     var originalRenderer: AGSRenderer!
     
     var subtypeFeatureLayer: AGSSubtypeFeatureLayer? {
         didSet {
-            if let subtype = subtypeFeatureLayer {
-                subtype.load { [weak self] (_) in 
-                    self?.subtypeSublayer = subtype.sublayer(withName: "Street Light")
-                    self?.originalRenderer = self?.subtypeSublayer?.renderer
-                    self?.subtypeSublayer?.labelsEnabled = true
+            subtypeFeatureLayer?.load { [weak self] (error) in
+                guard let self = self else { return }
+                if let subtype = self.subtypeFeatureLayer {
+                    self.subtypeSublayer = subtype.sublayer(withName: "Street Light")
+                    self.originalRenderer = self.subtypeSublayer?.renderer
+                    self.subtypeSublayer?.labelsEnabled = true
+                    self.settingsButton.isEnabled = true
                     do {
-                        let label = try self?.makeLabelDefinition()
-                        self?.subtypeSublayer?.labelDefinitions.append(label!)
+                        let label = try self.makeLabelDefinition()
+                        self.subtypeSublayer?.labelDefinitions.append(label)
                     } catch {
-                        self?.presentAlert(error: error)
+                        self.presentAlert(error: error)
                     }
+                } else {
+                    self.presentAlert(error: error!)
                 }
             }
         }
@@ -86,21 +91,13 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         ]
         
         let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
-        if let definition = result as? AGSLabelDefinition {
-            return definition
-        } else {
-            throw ShowLabelsOnLayersError.withDescription("The JSON could not be read as a label definition.")
-        }
-    }
-    
-    private enum ShowLabelsOnLayersError: Error {
-        case withDescription(String)
+        return result as! AGSLabelDefinition
     }
     
      override func viewDidLoad() {
-            super.viewDidLoad()
-            // Add the source code button item to the right of navigation bar.
-            (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplaySubtypeFeatureLayerViewController", "DisplaySubtypeSettingsViewController"]
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplaySubtypeFeatureLayerViewController", "DisplaySubtypeSettingsViewController"]
     }
     
     // MARK: - Navigation

@@ -29,13 +29,10 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
     @IBOutlet weak var minScaleLabel: UILabel!
     @IBOutlet weak var setCurrentToMinScale: UITableViewCell!
     
+    
     // Change the visibility of the sublayer.
     @IBAction func sublayerSwitchAction(_ sender: UISwitch) {
-        if sender.isOn {
-            subtypeSublayer.isVisible = true
-        } else {
-            subtypeSublayer.isVisible = false
-        }
+        subtypeSublayer.isVisible = sender.isOn
     }
     
     // Toggle the type of renderer
@@ -70,16 +67,8 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
     
     // Preserve the states of the switches
     private func preserveSwitchStates() {
-        if subtypeSublayer.isVisible == true {
-            sublayerSwitch.isOn = true
-        } else {
-            sublayerSwitch.isOn = false
-        }
-        if subtypeSublayer.renderer == originalRenderer {
-            rendererSwitch.isOn = true
-        } else {
-            rendererSwitch.isOn = false
-        }
+        sublayerSwitch.isOn = subtypeSublayer.isVisible
+        rendererSwitch.isOn = subtypeSublayer.renderer == originalRenderer
     }
     
     override func viewDidLoad() {
@@ -87,8 +76,11 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
         
         preserveSwitchStates()
         scaleLabel.text = string(fromScale: mapScale)
-        if minScale != nil {
+        let minScale = subtypeSublayer.minScale
+        if !minScale.isNaN {
             minScaleLabel.text = string(fromScale: minScale)
+        } else {
+            minScaleLabel.text = "Not set"
         }
     }
 }

@@ -4119,7 +4119,6 @@
 				4C73C838211130E000B0F9C7 /* Embed Frameworks */,
 				4CBDB3192190E88F006E5D39 /* Lint Code */,
 				4CDAB076226F93D400DD983C /* Strip Frameworks */,
-				F15CF0C423EE26040038F052 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -4585,23 +4584,6 @@
 			inputPaths = (
 			);
 			name = "Strip Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/ArcGIS.framework/strip-frameworks.sh\"\n";
-		};
-		F15CF0C423EE26040038F052 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			outputFileListPaths = (
 			);
 			outputPaths = (

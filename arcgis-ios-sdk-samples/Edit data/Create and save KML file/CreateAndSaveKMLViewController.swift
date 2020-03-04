@@ -33,7 +33,9 @@ class CreateAndSaveKMLViewController: UIViewController {
     var sketchCreationModeComboBox: AGSSketchCreationMode!
     let kmlDocument = AGSKMLDocument()
     let spatialRef = AGSSpatialReference(wkid: 4326)!
-    
+    func makePoints() {
+        point = AGSPoint(x: -117.195800, y: 34.056295, spatialReference: self.spatialRef)
+    }
     let point = AGSPoint(x: -117.195800, y: 34.056295, spatialReference: self.spatialRef)
         let polylinePoints = [
             AGSPoint(x: -119.992, y: 41.989, spatialReference: spatialRef),

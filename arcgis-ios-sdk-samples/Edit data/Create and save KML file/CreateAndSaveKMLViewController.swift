@@ -21,7 +21,7 @@ class CreateAndSaveKMLViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
-            mapView.sketchEditor = makeSketchEditor()
+            mapView.sketchEditor = sketchEditor
         }
     }
     
@@ -30,6 +30,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         return map
     }
     
+    var sketchEditor = AGSSketchEditor()
     var sketchCreationModeComboBox: AGSSketchCreationMode!
     let kmlDocument = AGSKMLDocument()
     let spatialRef = AGSSpatialReference(wkid: 4326)!
@@ -90,11 +91,5 @@ class CreateAndSaveKMLViewController: UIViewController {
         let placemark = AGSKMLPlacemark(geometry: kmlGeometry)
         placemark.style = kmlStyle
         kmlDocument.addChildNode(placemark)
-    }
-    
-    func makeSketchEditor() -> AGSSketchEditor {
-        var sketchEditor = AGSSketchEditor()
-//        sketchCreationModeComboBox.
-        return sketchEditor
     }
 }

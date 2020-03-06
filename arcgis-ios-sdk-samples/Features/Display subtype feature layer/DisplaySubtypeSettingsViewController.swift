@@ -25,10 +25,8 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
     
     @IBOutlet weak var sublayerSwitch: UISwitch!
     @IBOutlet weak var rendererSwitch: UISwitch!
-    @IBOutlet weak var scaleLabel: UILabel!
     @IBOutlet weak var minScaleLabel: UILabel!
     @IBOutlet weak var setCurrentToMinScale: UITableViewCell!
-    
     
     // Change the visibility of the sublayer.
     @IBAction func sublayerSwitchAction(_ sender: UISwitch) {
@@ -75,7 +73,6 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         preserveSwitchStates()
-        scaleLabel.text = string(fromScale: mapScale)
         let minScale = subtypeSublayer.minScale
         if !minScale.isNaN {
             minScaleLabel.text = string(fromScale: minScale)
@@ -83,4 +80,23 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
             minScaleLabel.text = "Not set"
         }
     }
+}
+
+extension DisplaySubtypeSettingsViewController /* UITableViewDelegate */ {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath {
+        case .minimumScale:
+            tableView.deselectRow(at: indexPath, animated: true)
+        case .setCurrentToMinButton:
+            tableView.deselectRow(at: indexPath, animated: true)
+            mapScale = map.referenceScale
+        default:
+            break
+        }
+    }
+}
+
+private extension IndexPath {
+    static let minimumScale = IndexPath(row: 0, section: 1)
+    static let setCurrentToMinButton = IndexPath(row: 1, section: 1)
 }

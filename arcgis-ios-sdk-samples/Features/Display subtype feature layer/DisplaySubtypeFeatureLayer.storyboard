@@ -20,6 +20,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current scale: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePb-TA-1Gk" userLabel="Current Scale Label">
+                                <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jcp-Sk-bVa">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
@@ -40,9 +47,12 @@
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="bottom" secondItem="WUM-OG-Ph5" secondAttribute="bottom" id="GFw-At-N9o"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="leading" secondItem="WUM-OG-Ph5" secondAttribute="leading" id="J0T-hh-RbX"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="trailing" secondItem="WUM-OG-Ph5" secondAttribute="trailing" id="JJJ-d3-yxB"/>
+                            <constraint firstItem="WUM-OG-Ph5" firstAttribute="trailing" secondItem="ePb-TA-1Gk" secondAttribute="trailing" constant="20" symbolic="YES" id="L6a-dU-8ml"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="trailing" secondItem="WUM-OG-Ph5" secondAttribute="trailing" id="NOt-Ph-jZi"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="leading" secondItem="WUM-OG-Ph5" secondAttribute="leading" id="aTW-kJ-Mzl"/>
                             <constraint firstAttribute="trailing" secondItem="sLt-8I-td0" secondAttribute="trailing" id="eWh-OS-b13"/>
+                            <constraint firstItem="ePb-TA-1Gk" firstAttribute="top" secondItem="WUM-OG-Ph5" secondAttribute="top" id="fQX-LL-D9q"/>
+                            <constraint firstItem="ePb-TA-1Gk" firstAttribute="leading" secondItem="WUM-OG-Ph5" secondAttribute="leading" constant="20" symbolic="YES" id="rPF-mF-Dt5"/>
                             <constraint firstItem="sLt-8I-td0" firstAttribute="leading" secondItem="SeK-4v-nM4" secondAttribute="leading" id="swG-Bl-R7I"/>
                             <constraint firstItem="sLt-8I-td0" firstAttribute="top" secondItem="SeK-4v-nM4" secondAttribute="top" id="t8J-0M-lp5"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="bottom" secondItem="sLt-8I-td0" secondAttribute="bottom" id="zVz-4X-qja"/>
@@ -50,6 +60,7 @@
                         <viewLayoutGuide key="safeArea" id="WUM-OG-Ph5"/>
                     </view>
                     <connections>
+                        <outlet property="currentScaleLabel" destination="ePb-TA-1Gk" id="HQq-WQ-TFx"/>
                         <outlet property="mapView" destination="sLt-8I-td0" id="K8b-6V-CjF"/>
                         <outlet property="settingsButton" destination="Qe7-1R-wDr" id="aDw-vK-Qhx"/>
                     </connections>
@@ -113,32 +124,8 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Sublayer Minimum Scale" id="Pgz-VK-Ihy" userLabel="Sublayer Minimum Scale">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="tpE-Gu-dtM" detailTextLabel="157-4i-Ezh" style="IBUITableViewCellStyleValue1" id="xal-8G-oUO">
-                                        <rect key="frame" x="0.0" y="171" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xal-8G-oUO" id="Mlq-Qj-yo6">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Current Scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tpE-Gu-dtM" userLabel="Current Scale">
-                                                    <rect key="frame" x="20" y="12" width="104.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="157-4i-Ezh" userLabel="Scale Label">
-                                                    <rect key="frame" x="350" y="12" width="44" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="Gx4-D2-ygS" detailTextLabel="tCD-AY-jgr" style="IBUITableViewCellStyleValue1" id="pdS-Uj-YDE">
-                                        <rect key="frame" x="0.0" y="214.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="171" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pdS-Uj-YDE" id="Huy-9l-O7f">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -162,7 +149,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="b2o-ei-ovl" style="IBUITableViewCellStyleDefault" id="GPz-x9-7U7" userLabel="Set Current To Min Scale Button">
-                                        <rect key="frame" x="0.0" y="258" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="214.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GPz-x9-7U7" id="aQS-mQ-eB7">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -190,7 +177,6 @@
                     <connections>
                         <outlet property="minScaleLabel" destination="tCD-AY-jgr" id="Zhf-YS-CbV"/>
                         <outlet property="rendererSwitch" destination="3u2-5P-gj9" id="z4d-UX-DUn"/>
-                        <outlet property="scaleLabel" destination="157-4i-Ezh" id="wTa-lj-DLp"/>
                         <outlet property="setCurrentToMinScale" destination="GPz-x9-7U7" id="3we-50-Bjw"/>
                         <outlet property="sublayerSwitch" destination="Ps0-Jp-1uQ" id="apT-Gj-a3D"/>
                     </connections>

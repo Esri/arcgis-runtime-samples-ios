@@ -24,8 +24,11 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     }
     
     @IBOutlet var settingsButton: UIBarButtonItem!
+    @IBOutlet var currentScaleLabel: UILabel!
     var subtypeSublayer: AGSSubtypeSublayer!
     var originalRenderer: AGSRenderer!
+    // The observation of the map view's map scale.
+    var mapScaleObservation: NSKeyValueObservation?
     
     var subtypeFeatureLayer: AGSSubtypeFeatureLayer? {
         didSet {
@@ -94,8 +97,29 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         return result as! AGSLabelDefinition
     }
     
+    // The formatter used to generate strings from scale values.
+    private let scaleFormatter: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 0
+        return numberFormatter
+    }()
+    
+    // Called in response to the map view's map scale changing.
+    func mapScaleDidChange() {
+        // Update the text of the Current Map Scale label.
+        let mapScale = mapView.mapScale
+        let updatedText = String(format: "1:%@", scaleFormatter.string(from: mapScale as NSNumber)!)
+        currentScaleLabel.text = "Current scale: " + updatedText
+    }
+    
      override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapScaleObservation = mapView.observe(\.mapScale, options: .initial) { [weak self] (_, _) in
+            DispatchQueue.main.async { self?.mapScaleDidChange() }
+        }
+        
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplaySubtypeFeatureLayerViewController", "DisplaySubtypeSettingsViewController"]
     }

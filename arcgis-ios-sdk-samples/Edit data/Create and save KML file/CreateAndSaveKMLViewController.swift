@@ -34,24 +34,24 @@ class CreateAndSaveKMLViewController: UIViewController {
     var sketchCreationModeComboBox: AGSSketchCreationMode!
     let kmlDocument = AGSKMLDocument()
     let spatialRef = AGSSpatialReference(wkid: 4326)!
-    func makePoints() {
-        point = AGSPoint(x: -117.195800, y: 34.056295, spatialReference: self.spatialRef)
-    }
-    let point = AGSPoint(x: -117.195800, y: 34.056295, spatialReference: self.spatialRef)
-        let polylinePoints = [
-            AGSPoint(x: -119.992, y: 41.989, spatialReference: spatialRef),
-            AGSPoint(x: -119.994, y: 38.994, spatialReference: spatialRef),
-            AGSPoint(x: -114.620, y: 35.0, spatialReference: spatialRef)
-        ]
-        let polygonPoints = [
-            AGSPoint(x: -109.048, y: 40.998, spatialReference: spatialRef),
-            AGSPoint(x: -102.047, y: 40.998, spatialReference: spatialRef),
-            AGSPoint(x: -102.037, y: 36.989, spatialReference: spatialRef),
-            AGSPoint(x: -109.048, y: 36.998, spatialReference: spatialRef)
-        ]
-        let polyline = AGSPolyline(points: polylinePoints)
-        let polygon = AGSPolygon(points: polygonPoints)
-        let envelope = AGSEnvelope(xMin: -123.0, yMin: 33.5, xMax: -101.0, yMax: 42.0, spatialReference: spatialRef)
+//    func makePoints() {
+//        point = AGSPoint(x: -117.195800, y: 34.056295, spatialReference: self.spatialRef)
+//    }
+//    let point = AGSPoint(x: -117.195800, y: 34.056295, spatialReference: self.spatialRef)
+//        let polylinePoints = [
+//            AGSPoint(x: -119.992, y: 41.989, spatialReference: spatialRef),
+//            AGSPoint(x: -119.994, y: 38.994, spatialReference: spatialRef),
+//            AGSPoint(x: -114.620, y: 35.0, spatialReference: spatialRef)
+//        ]
+//        let polygonPoints = [
+//            AGSPoint(x: -109.048, y: 40.998, spatialReference: spatialRef),
+//            AGSPoint(x: -102.047, y: 40.998, spatialReference: spatialRef),
+//            AGSPoint(x: -102.037, y: 36.989, spatialReference: spatialRef),
+//            AGSPoint(x: -109.048, y: 36.998, spatialReference: spatialRef)
+//        ]
+//        let polyline = AGSPolyline(points: polylinePoints)
+//        let polygon = AGSPolygon(points: polygonPoints)
+//        let envelope = AGSEnvelope(xMin: -123.0, yMin: 33.5, xMax: -101.0, yMax: 42.0, spatialReference: spatialRef)
     
     
     func makeKMLStyleWithPointStyle() -> AGSKMLStyle {
@@ -78,12 +78,12 @@ class CreateAndSaveKMLViewController: UIViewController {
         return kmlStyle
     }
  
-    func addGraphics() {
-        addToKMLDocument(geometry: point, kmlStyle: makeKMLStyleWithPointStyle())
-        addToKMLDocument(geometry: polyline, kmlStyle: makeKMLStyleWithLineStyle())
-        addToKMLDocument(geometry: polygon, kmlStyle: makeKMLStyleWithPolygonStyle())
-        mapView.map?.operationalLayers.add(AGSKMLLayer)
-    }
+//    func addGraphics() {
+//        addToKMLDocument(geometry: point, kmlStyle: makeKMLStyleWithPointStyle())
+//        addToKMLDocument(geometry: polyline, kmlStyle: makeKMLStyleWithLineStyle())
+//        addToKMLDocument(geometry: polygon, kmlStyle: makeKMLStyleWithPolygonStyle())
+//        mapView.map?.operationalLayers.add(AGSKMLLayer)
+//    }
     
     func addToKMLDocument(geometry: AGSGeometry, kmlStyle: AGSKMLStyle) {
         let temp = AGSKMLAltitudeMode(rawValue: 6)!

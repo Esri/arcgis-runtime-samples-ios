@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLt-8I-td0" userLabel="Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current scale: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePb-TA-1Gk" userLabel="Current Scale Label">
@@ -55,7 +55,7 @@
                             <constraint firstItem="ePb-TA-1Gk" firstAttribute="leading" secondItem="WUM-OG-Ph5" secondAttribute="leading" constant="20" symbolic="YES" id="rPF-mF-Dt5"/>
                             <constraint firstItem="sLt-8I-td0" firstAttribute="leading" secondItem="SeK-4v-nM4" secondAttribute="leading" id="swG-Bl-R7I"/>
                             <constraint firstItem="sLt-8I-td0" firstAttribute="top" secondItem="SeK-4v-nM4" secondAttribute="top" id="t8J-0M-lp5"/>
-                            <constraint firstItem="Jcp-Sk-bVa" firstAttribute="bottom" secondItem="sLt-8I-td0" secondAttribute="bottom" id="zVz-4X-qja"/>
+                            <constraint firstItem="Jcp-Sk-bVa" firstAttribute="top" secondItem="sLt-8I-td0" secondAttribute="bottom" id="zVz-4X-qja"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WUM-OG-Ph5"/>
                     </view>
@@ -177,7 +177,6 @@
                     <connections>
                         <outlet property="minScaleLabel" destination="tCD-AY-jgr" id="Zhf-YS-CbV"/>
                         <outlet property="rendererSwitch" destination="3u2-5P-gj9" id="z4d-UX-DUn"/>
-                        <outlet property="setCurrentToMinScale" destination="GPz-x9-7U7" id="3we-50-Bjw"/>
                         <outlet property="sublayerSwitch" destination="Ps0-Jp-1uQ" id="apT-Gj-a3D"/>
                     </connections>
                 </tableViewController>

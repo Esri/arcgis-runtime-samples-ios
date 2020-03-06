@@ -28,13 +28,16 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     var subtypeSublayer: AGSSubtypeSublayer!
     var originalRenderer: AGSRenderer!
     // The observation of the map view's map scale.
-    var mapScaleObservation: NSKeyValueObservation?
+    private var mapScaleObservation: NSKeyValueObservation?
     
     var subtypeFeatureLayer: AGSSubtypeFeatureLayer? {
         didSet {
             subtypeFeatureLayer?.load { [weak self] (error) in
+                if let error = error {
+                    self?.presentAlert(error: error)
+                } else {
                 guard let self = self else { return }
-                if let subtype = self.subtypeFeatureLayer {
+                guard let subtype = self.subtypeFeatureLayer else { return }
                     self.subtypeSublayer = subtype.sublayer(withName: "Street Light")
                     self.originalRenderer = self.subtypeSublayer?.renderer
                     self.subtypeSublayer?.labelsEnabled = true
@@ -45,8 +48,6 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
                     } catch {
                         self.presentAlert(error: error)
                     }
-                } else {
-                    self.presentAlert(error: error!)
                 }
             }
         }
@@ -129,7 +130,6 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         if let navController = segue.destination as? UINavigationController,
             let controller = navController.topViewController as? DisplaySubtypeSettingsViewController {
-            controller.preferredContentSize = CGSize(width: 300, height: 200)
             controller.map = mapView?.map
             controller.mapScale = mapView.mapScale
             controller.minScale = subtypeSublayer.minScale

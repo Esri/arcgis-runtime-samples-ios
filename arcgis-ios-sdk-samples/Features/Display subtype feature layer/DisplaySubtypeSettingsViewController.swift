@@ -22,11 +22,12 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
     var minScale: Double!
     var originalRenderer: AGSRenderer!
     var subtypeSublayer: AGSSubtypeSublayer!
+    let currentToMinButtonPath = IndexPath(row: 1, section: 1)
+    private var tableViewContentSizeObservation: NSKeyValueObservation?
     
     @IBOutlet weak var sublayerSwitch: UISwitch!
     @IBOutlet weak var rendererSwitch: UISwitch!
     @IBOutlet weak var minScaleLabel: UILabel!
-    @IBOutlet weak var setCurrentToMinScale: UITableViewCell!
     
     // Change the visibility of the sublayer.
     @IBAction func sublayerSwitchAction(_ sender: UISwitch) {
@@ -42,12 +43,6 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
             let alternativeRenderer = AGSSimpleRenderer(symbol: symbol)
             subtypeSublayer.renderer = alternativeRenderer
         }
-    }
-    
-    // Change the minimum scale.
-    @IBAction func currentToMinAction() {
-        minScaleLabel.text = string(fromScale: mapScale)
-        subtypeSublayer.minScale = mapScale
     }
     
     // The formatter used to generate strings from scale values.
@@ -69,6 +64,19 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
         rendererSwitch.isOn = subtypeSublayer.renderer == originalRenderer
     }
     
+    // Adjust the size of the table view according to its contents.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableViewContentSizeObservation = tableView.observe(\.contentSize) { [unowned self] (tableView, _) in
+            self.preferredContentSize = CGSize(width: self.preferredContentSize.width, height: tableView.contentSize.height)
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableViewContentSizeObservation = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,21 +90,13 @@ class DisplaySubtypeSettingsViewController: UITableViewController {
     }
 }
 
+// Enable actions when the table view cell is selected.
 extension DisplaySubtypeSettingsViewController /* UITableViewDelegate */ {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath {
-        case .minimumScale:
+        if indexPath == currentToMinButtonPath {
             tableView.deselectRow(at: indexPath, animated: true)
-        case .setCurrentToMinButton:
-            tableView.deselectRow(at: indexPath, animated: true)
-            mapScale = map.referenceScale
-        default:
-            break
+            minScaleLabel.text = string(fromScale: mapScale)
+            subtypeSublayer.minScale = mapScale
         }
     }
-}
-
-private extension IndexPath {
-    static let minimumScale = IndexPath(row: 0, section: 1)
-    static let setCurrentToMinButton = IndexPath(row: 1, section: 1)
 }

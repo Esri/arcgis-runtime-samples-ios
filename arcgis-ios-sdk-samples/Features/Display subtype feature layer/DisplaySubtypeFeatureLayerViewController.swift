@@ -33,7 +33,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     var subtypeFeatureLayer: AGSSubtypeFeatureLayer? {
         didSet {
             subtypeFeatureLayer?.load { [weak self] (error) in
-            guard let self = self else { return }
+                guard let self = self else { return }
                 if let error = error {
                     self.presentAlert(error: error)
                 } else if let layer = self.subtypeFeatureLayer {

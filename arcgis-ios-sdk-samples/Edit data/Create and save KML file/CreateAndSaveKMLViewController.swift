@@ -64,14 +64,14 @@ class CreateAndSaveKMLViewController: UIViewController {
         return kmlStyle
     }
     
-    func makeKMLStyleWithLineStyle() -> AGSKMLStyle{
+    func makeKMLStyleWithLineStyle() -> AGSKMLStyle {
         let lineStyle = AGSKMLLineStyle(color: .red, width: 2.0)
         let kmlStyle = AGSKMLStyle()
         kmlStyle.lineStyle = lineStyle
         return kmlStyle
     }
     
-    func makeKMLStyleWithPolygonStyle() -> AGSKMLStyle{
+    func makeKMLStyleWithPolygonStyle() -> AGSKMLStyle {
         let polygonStyle = AGSKMLPolygonStyle(color: .yellow)
         let kmlStyle = AGSKMLStyle()
         kmlStyle.polygonStyle = polygonStyle

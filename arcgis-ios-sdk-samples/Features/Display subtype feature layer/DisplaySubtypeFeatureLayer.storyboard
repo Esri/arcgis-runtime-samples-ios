@@ -47,12 +47,12 @@
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="bottom" secondItem="WUM-OG-Ph5" secondAttribute="bottom" id="GFw-At-N9o"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="leading" secondItem="WUM-OG-Ph5" secondAttribute="leading" id="J0T-hh-RbX"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="trailing" secondItem="WUM-OG-Ph5" secondAttribute="trailing" id="JJJ-d3-yxB"/>
-                            <constraint firstItem="WUM-OG-Ph5" firstAttribute="trailing" secondItem="ePb-TA-1Gk" secondAttribute="trailing" constant="20" symbolic="YES" id="L6a-dU-8ml"/>
+                            <constraint firstAttribute="trailing" secondItem="ePb-TA-1Gk" secondAttribute="trailing" id="L6a-dU-8ml"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="trailing" secondItem="WUM-OG-Ph5" secondAttribute="trailing" id="NOt-Ph-jZi"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="leading" secondItem="WUM-OG-Ph5" secondAttribute="leading" id="aTW-kJ-Mzl"/>
                             <constraint firstAttribute="trailing" secondItem="sLt-8I-td0" secondAttribute="trailing" id="eWh-OS-b13"/>
                             <constraint firstItem="ePb-TA-1Gk" firstAttribute="top" secondItem="WUM-OG-Ph5" secondAttribute="top" id="fQX-LL-D9q"/>
-                            <constraint firstItem="ePb-TA-1Gk" firstAttribute="leading" secondItem="WUM-OG-Ph5" secondAttribute="leading" constant="20" symbolic="YES" id="rPF-mF-Dt5"/>
+                            <constraint firstItem="ePb-TA-1Gk" firstAttribute="leading" secondItem="SeK-4v-nM4" secondAttribute="leading" id="rPF-mF-Dt5"/>
                             <constraint firstItem="sLt-8I-td0" firstAttribute="leading" secondItem="SeK-4v-nM4" secondAttribute="leading" id="swG-Bl-R7I"/>
                             <constraint firstItem="sLt-8I-td0" firstAttribute="top" secondItem="SeK-4v-nM4" secondAttribute="top" id="t8J-0M-lp5"/>
                             <constraint firstItem="Jcp-Sk-bVa" firstAttribute="top" secondItem="sLt-8I-td0" secondAttribute="bottom" id="zVz-4X-qja"/>

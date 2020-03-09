@@ -33,12 +33,11 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     var subtypeFeatureLayer: AGSSubtypeFeatureLayer? {
         didSet {
             subtypeFeatureLayer?.load { [weak self] (error) in
+            guard let self = self else { return }
                 if let error = error {
-                    self?.presentAlert(error: error)
-                } else {
-                guard let self = self else { return }
-                guard let subtype = self.subtypeFeatureLayer else { return }
-                    self.subtypeSublayer = subtype.sublayer(withName: "Street Light")
+                    self.presentAlert(error: error)
+                } else if let layer = self.subtypeFeatureLayer {
+                    self.subtypeSublayer = layer.sublayer(withName: "Street Light")
                     self.originalRenderer = self.subtypeSublayer?.renderer
                     self.subtypeSublayer?.labelsEnabled = true
                     self.settingsButton.isEnabled = true

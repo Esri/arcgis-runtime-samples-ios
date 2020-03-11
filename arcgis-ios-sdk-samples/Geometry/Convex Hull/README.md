@@ -4,11 +4,11 @@
 	3. implementaion details
 -->
 
-# Convex Hull
+# Convex hull
 
 Create a convex hull for a given set of points. The convex hull is a polygon with shortest perimeter that encloses a set of points. As a visual analogy, consider a set of points as nails in a board. The convex hull of the points would be like a rubber band stretched around the outermost nails.
 
-![screenshot](ConvexHull.jpg)
+![Create a convex hull](image1.png)
 
 ## Use case
 
@@ -21,12 +21,14 @@ Tap on the map to add points. Tap the "Create" button to generate the convex hul
 ## How it works
 
 1. Create an input geometry such as a `Multipoint` object.
-2. Use `GeometryEngine.ConvexHull(inputGeometry)`to create a new `Geometry` object representing the convex hull of the input points. The returned geometry will either be a `Point`, `Polyline`, or `Polygon` based on the number of input points.
+2. Use `AGSGeometryEngine.convexHull(inputGeometry)`to create a new `AGSGeometry` object representing the convex hull of the input points. The returned geometry will either be a `point`, `polyline`, or `polygon` based on the number of input points.
 
 ## Relevant API
 
 * AGSGeometry
 * AGSGeometryEngine
+* AGSGraphic
+* AGSGraphicsOverlay
 
 ## Tags
 

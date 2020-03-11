@@ -45,11 +45,11 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         searchBar.autocapitalizationType = .none
         
         if #available(iOS 13, *) {
-            // Change the backgroundColor to cope with #1517 and #1326
+            // Change the backgroundColor to differentiate from nav bar color.
             searchBar.searchTextField.backgroundColor = .white
             // Set the color of "Cancel" text, to mimic the settings on iOS 12. On iOS 13 it is default to white.
             searchBar.tintColor = .white
-            // Set the color of the insertion cursor as well as the text. The text is default to black color whereas the cursor is white
+            // Set the color of the insertion cursor as well as the text. The text is default to black color whereas the cursor is white.
             searchBar.searchTextField.tintColor = .darkText
         } else {
             // This code is required to make the search bar look decent on iOS 12

@@ -6,9 +6,9 @@
         "image1.png"
     ],
     "keywords": [
-        "ConvexHull",
-        "Geometry",
-        "GeometryEngine",
+        "convex hull",
+        "geometry",
+        "geometry engine",
         "spatial analysis",
         "AGSGeometry",
         "AGSGeometryEngine"

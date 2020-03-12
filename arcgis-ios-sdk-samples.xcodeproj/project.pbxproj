@@ -1649,13 +1649,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00D4E8B924195B8C002689DB /* Convex Hull */ = {
+		00D4E8B924195B8C002689DB /* Convex hull */ = {
 			isa = PBXGroup;
 			children = (
 				00D4E8BE24195BA6002689DB /* ConvexHullViewController.swift */,
 				00D4E8C2241962EE002689DB /* ConvexHull.storyboard */,
 			);
-			path = "Convex Hull";
+			path = "Convex hull";
 			sourceTree = "<group>";
 		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
@@ -2579,7 +2579,7 @@
 		3EBA25711D34509500AB0703 /* Geometry */ = {
 			isa = PBXGroup;
 			children = (
-				00D4E8B924195B8C002689DB /* Convex Hull */,
+				00D4E8B924195B8C002689DB /* Convex hull */,
 				F1034F9822D3EDFE00B021DA /* Project */,
 				3EBA25721D3450B800AB0703 /* Create geometries */,
 				3E0B58551E36D8D300951767 /* Spatial operations */,

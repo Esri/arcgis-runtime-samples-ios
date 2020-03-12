@@ -92,6 +92,25 @@ class CreateAndSaveKMLViewController: UIViewController {
         mapView.sketchEditor?.start(with: sketchCreationMode)
     }
     
+    func makeKMLStyleWithPointStyle(icon: AGSKMLIcon, color: UIColor) -> AGSKMLStyle {
+        let iconStyle = AGSKMLIconStyle(icon: icon, scale: 1.0)
+        let kmlStyle = AGSKMLStyle()
+        kmlStyle.iconStyle = iconStyle
+        return kmlStyle
+    }
+    
+    func makeKMLStyleWithLineStyle(color: UIColor) -> AGSKMLStyle {
+        let kmlStyle = AGSKMLStyle()
+        kmlStyle.lineStyle = AGSKMLLineStyle(color: color, width: 2.0)
+        return kmlStyle
+    }
+    
+    func makeKMLStyleWithPolygonStyle(color: UIColor) -> AGSKMLStyle {
+        let kmlStyle = AGSKMLStyle()
+        kmlStyle.polygonStyle = AGSKMLPolygonStyle(color: color)
+        return kmlStyle
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if let navigationController = segue.destination as? UINavigationController,
@@ -106,18 +125,25 @@ class CreateAndSaveKMLViewController: UIViewController {
 // MARK: - AGSGeoViewTouchDelegate
 extension CreateAndSaveKMLViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        addToKMLDocument(geometry: mapPoint, kmlStyle: kmlStyle)
         
     }
 }
 
 extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewControllerDelegate {
-    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, icon: AGSKMLIcon, color: UIColor) {
-        print(color)
+    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, feature: String, icon: AGSKMLIcon?, color: UIColor) {
+        switch feature {
+        case "point":
+            guard let icon = icon else { return }
+            kmlStyle = makeKMLStyleWithPointStyle(icon: icon, color: color)
+        case "polyline":
+            kmlStyle = makeKMLStyleWithLineStyle(color: color)
+        case "polygon":
+            kmlStyle = makeKMLStyleWithPolygonStyle(color: color)
+        default:
+            print("default statement to replace with something")
+        }
     }
-    
-//    func CreateAndSaveKMLSettingsViewControllerDidChangeMapScale(_ controller: MapReferenceScaleSettingsViewController) {
-//        mapView.setViewpointScale(controller.mapScale)
-//    }
     
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController) {
         dismiss(animated: true)

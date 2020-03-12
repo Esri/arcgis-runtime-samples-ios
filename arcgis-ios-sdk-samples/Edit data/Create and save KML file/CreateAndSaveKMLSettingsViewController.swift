@@ -19,15 +19,11 @@ import ArcGIS
 
 /// The delegate of a `MapReferenceScaleSettingsViewController`.
 protocol CreateAndSaveKMLSettingsViewControllerDelegate: AnyObject {
-    /// Tells the delegate that the user changed the map scale.
+    ///
+    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, feature: String, icon: AGSKMLIcon?, color: UIColor)
     ///
     /// - Parameter controller: The controller sending the message.
-//    func mapReferenceScaleSettingsViewControllerDidChangeMapScale(_ controller: MapReferenceScaleSettingsViewController)
     /// Tells the delegate that the user finished changing settings.
-    ///
-    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, icon: AGSKMLIcon, color: UIColor)
-    ///
-    /// - Parameter controller: The controller sending the message.
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController)
 }
 
@@ -35,6 +31,7 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     weak var delegate: CreateAndSaveKMLSettingsViewControllerDelegate?
     var icon: AGSKMLIcon!
     var color: UIColor!
+    var feature: String!
     @IBOutlet var pointLabel: UITableViewCell!
     @IBOutlet var iconLabel: UILabel!
     @IBOutlet var colorLabel: UILabel!
@@ -42,7 +39,7 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     @IBAction func done() {
         delegate?.createAndSaveKMLSettingsViewControllerDidFinish(self)
         
-        delegate?.createAndSaveKMLSettingsViewController(self, icon: icon, color: color)
+        delegate?.createAndSaveKMLSettingsViewController(self, feature: feature, icon: icon, color: color)
     }
     
     var kmlStyle = AGSKMLStyle()
@@ -97,27 +94,6 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
             colorPickerHidden = true
         }
         }, completion: nil)
-    }
-    
-    func makeKMLStyleWithPointStyle(url: URL) -> AGSKMLStyle {
-        let icon = AGSKMLIcon(url: url)
-        let iconStyle = AGSKMLIconStyle(icon: icon, scale: 1.0)
-        
-        let kmlStyle = AGSKMLStyle()
-        kmlStyle.iconStyle = iconStyle
-        return kmlStyle
-    }
-    
-    func makeKMLStyleWithLineStyle() -> AGSKMLStyle {
-        let kmlStyle = AGSKMLStyle()
-        kmlStyle.lineStyle = AGSKMLLineStyle(color: .red, width: 2.0)
-        return kmlStyle
-    }
-    
-    func makeKMLStyleWithPolygonStyle() -> AGSKMLStyle {
-        let kmlStyle = AGSKMLStyle()
-        kmlStyle.polygonStyle = AGSKMLPolygonStyle(color: .yellow)
-        return kmlStyle
     }
 }
 
@@ -198,7 +174,7 @@ extension CreateAndSaveKMLSettingsViewController: UIPickerViewDelegate {
             let iconKey = possibleIcons[row]
             let iconURL = iconDictionary[iconKey]
             icon = AGSKMLIcon(url: iconURL!)
-            return kmlStyle = makeKMLStyleWithPointStyle(url: iconURL!)
+            return feature = "point "
         case .colorPicker:
             let colorKey = possibleColors[row]
             return color = colorDictionary[colorKey] //returns UIColor
@@ -214,9 +190,9 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDelegate */ {
             // change text of right detail
             toggleIconPickerVisibility()
         case .polylineLabel:
-            kmlStyle = makeKMLStyleWithLineStyle()
+            return feature = "polyline"
         case .polygonLabel:
-            kmlStyle = makeKMLStyleWithPolygonStyle()
+            return feature = "polygon"
         case .colorLabel:
             tableView.deselectRow(at: indexPath, animated: true)
             // change text of right detail

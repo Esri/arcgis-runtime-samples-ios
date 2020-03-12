@@ -9,15 +9,17 @@
         "ConvexHull",
         "Geometry",
         "GeometryEngine",
-        "spatial analysis"
+        "spatial analysis",
+        "AGSGeometry",
+        "AGSGeometryEngine"
     ],
     "redirect_from": [],
     "relevant_apis": [
-        "Geometry",
+        "AGSGeometry",
         "AGSGeometryEngine"
     ],
     "snippets": [
         "ConvexHullViewController.swift"
     ],
-    "title": "Convex Hull"
+    "title": "Convex hull"
 }

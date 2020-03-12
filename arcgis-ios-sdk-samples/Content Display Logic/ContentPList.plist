@@ -1156,7 +1156,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Convex Hull</string>
+				<string>Convex hull</string>
 				<key>storyboardName</key>
 				<string>ConvexHull</string>
 				<key>descriptionText</key>

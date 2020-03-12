@@ -25,22 +25,27 @@ protocol CreateAndSaveKMLSettingsViewControllerDelegate: AnyObject {
 //    func mapReferenceScaleSettingsViewControllerDidChangeMapScale(_ controller: MapReferenceScaleSettingsViewController)
     /// Tells the delegate that the user finished changing settings.
     ///
+    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, icon: AGSKMLIcon, color: UIColor)
+    ///
     /// - Parameter controller: The controller sending the message.
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController)
 }
 
 class CreateAndSaveKMLSettingsViewController: UITableViewController {
+    weak var delegate: CreateAndSaveKMLSettingsViewControllerDelegate?
     var icon: AGSKMLIcon!
     var color: UIColor!
-    weak var delegate: CreateAndSaveKMLSettingsViewControllerDelegate?
     @IBOutlet var pointLabel: UITableViewCell!
     @IBOutlet var iconLabel: UILabel!
     @IBOutlet var colorLabel: UILabel!
     
     @IBAction func done() {
         delegate?.createAndSaveKMLSettingsViewControllerDidFinish(self)
-}
+        
+        delegate?.createAndSaveKMLSettingsViewController(self, icon: icon, color: color)
+    }
     
+    var kmlStyle = AGSKMLStyle()
     private var iconPickerHidden = true
     private var colorPickerHidden = true
     private let possibleIcons = ["Star", "Diamond", "Circle", "Square", "Round Pin", "Square Pin"]
@@ -93,11 +98,34 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
         }
         }, completion: nil)
     }
+    
+    func makeKMLStyleWithPointStyle(url: URL) -> AGSKMLStyle {
+        let icon = AGSKMLIcon(url: url)
+        let iconStyle = AGSKMLIconStyle(icon: icon, scale: 1.0)
+        
+        let kmlStyle = AGSKMLStyle()
+        kmlStyle.iconStyle = iconStyle
+        return kmlStyle
+    }
+    
+    func makeKMLStyleWithLineStyle() -> AGSKMLStyle {
+        let kmlStyle = AGSKMLStyle()
+        kmlStyle.lineStyle = AGSKMLLineStyle(color: .red, width: 2.0)
+        return kmlStyle
+    }
+    
+    func makeKMLStyleWithPolygonStyle() -> AGSKMLStyle {
+        let kmlStyle = AGSKMLStyle()
+        kmlStyle.polygonStyle = AGSKMLPolygonStyle(color: .yellow)
+        return kmlStyle
+    }
 }
 
 private extension IndexPath {
     static let pointLabel = IndexPath(row: 0, section: 0)
     static let iconPicker = IndexPath(row: 1, section: 0)
+    static let polylineLabel = IndexPath(row: 2, section: 0)
+    static let polygonLabel = IndexPath(row: 3, section: 0)
     static let colorLabel = IndexPath(row: 0, section: 1)
     static let colorPicker = IndexPath(row: 1, section: 1)
 }
@@ -163,12 +191,14 @@ extension CreateAndSaveKMLSettingsViewController: UIPickerViewDelegate {
         }
     }
     
+    // Select the type of icon and color.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch Section.allCases[pickerView.tag] {
         case .iconPicker:
             let iconKey = possibleIcons[row]
             let iconURL = iconDictionary[iconKey]
-            return icon = AGSKMLIcon(url: iconURL!)
+            icon = AGSKMLIcon(url: iconURL!)
+            return kmlStyle = makeKMLStyleWithPointStyle(url: iconURL!)
         case .colorPicker:
             let colorKey = possibleColors[row]
             return color = colorDictionary[colorKey] //returns UIColor
@@ -183,6 +213,10 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDelegate */ {
             tableView.deselectRow(at: indexPath, animated: true)
             // change text of right detail
             toggleIconPickerVisibility()
+        case .polylineLabel:
+            kmlStyle = makeKMLStyleWithLineStyle()
+        case .polygonLabel:
+            kmlStyle = makeKMLStyleWithPolygonStyle()
         case .colorLabel:
             tableView.deselectRow(at: indexPath, animated: true)
             // change text of right detail

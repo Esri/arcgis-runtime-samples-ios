@@ -21,19 +21,24 @@ class CreateAndSaveKMLViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
+            let sketchEditor = AGSSketchEditor()
             mapView.sketchEditor = sketchEditor
         }
     }
     
     func makeMap() -> AGSMap {
         let map = AGSMap(basemap: .darkGrayCanvasVector())
+        let kmlDataset = AGSKMLDataset(rootNode: kmlDocument)
+        map.operationalLayers.add(AGSKMLLayer(kmlDataset: kmlDataset))
         return map
     }
-    
-    var sketchEditor = AGSSketchEditor()
+
+    var color: UIColor!
+    let sketchStyle = AGSSketchStyle()
     var sketchCreationModeComboBox: AGSSketchCreationMode!
     let kmlDocument = AGSKMLDocument()
-    let spatialRef = AGSSpatialReference(wkid: 4326)!
+    let spatialRef = AGSSpatialReference.wgs84()
+    var kmlStyle = AGSKMLStyle()
 //    func makePoints() {
 //        point = AGSPoint(x: -117.195800, y: 34.056295, spatialReference: self.spatialRef)
 //    }
@@ -53,30 +58,19 @@ class CreateAndSaveKMLViewController: UIViewController {
 //        let polygon = AGSPolygon(points: polygonPoints)
 //        let envelope = AGSEnvelope(xMin: -123.0, yMin: 33.5, xMax: -101.0, yMax: 42.0, spatialReference: spatialRef)
     
-    
-    func makeKMLStyleWithPointStyle() -> AGSKMLStyle {
-        let iconURL = URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueStarLargeB.png")!
-        let icon = AGSKMLIcon(url: iconURL)
-        let iconStyle = AGSKMLIconStyle(icon: icon, scale: 1.0)
-        
-        let kmlStyle = AGSKMLStyle()
-        kmlStyle.iconStyle = iconStyle
-        return kmlStyle
+    func addKMLPlaceMark(view: UIView) {
+        guard let sketchEditor = mapView.sketchEditor else { return }
+        if sketchEditor.isSketchValid {
+            var sketchGeometry = sketchEditor.geometry!
+            var projectedGeometry = AGSGeometryEngine.projectGeometry(sketchGeometry, to: spatialRef)
+            sketchEditor.stop()
+            
+//            let currentKMLPlacemark = AGSKMLPlacemark(geometry: projectedGeometry)
+        }
     }
     
-    func makeKMLStyleWithLineStyle() -> AGSKMLStyle {
-        let lineStyle = AGSKMLLineStyle(color: .red, width: 2.0)
-        let kmlStyle = AGSKMLStyle()
-        kmlStyle.lineStyle = lineStyle
-        return kmlStyle
-    }
     
-    func makeKMLStyleWithPolygonStyle() -> AGSKMLStyle {
-        let polygonStyle = AGSKMLPolygonStyle(color: .yellow)
-        let kmlStyle = AGSKMLStyle()
-        kmlStyle.polygonStyle = polygonStyle
-        return kmlStyle
-    }
+    
  
 //    func addGraphics() {
 //        addToKMLDocument(geometry: point, kmlStyle: makeKMLStyleWithPointStyle())
@@ -91,5 +85,41 @@ class CreateAndSaveKMLViewController: UIViewController {
         let placemark = AGSKMLPlacemark(geometry: kmlGeometry)
         placemark.style = kmlStyle
         kmlDocument.addChildNode(placemark)
+    }
+    
+    private func startSketch(sketchCreationMode: AGSSketchCreationMode) {
+        mapView.sketchEditor?.stop()
+        mapView.sketchEditor?.start(with: sketchCreationMode)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let navigationController = segue.destination as? UINavigationController,
+            let settingsViewController = navigationController.topViewController as? CreateAndSaveKMLSettingsViewController {
+            color = settingsViewController.color
+            settingsViewController.kmlStyle = kmlStyle
+            settingsViewController.delegate = self
+        }
+    }
+}
+
+// MARK: - AGSGeoViewTouchDelegate
+extension CreateAndSaveKMLViewController: AGSGeoViewTouchDelegate {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        
+    }
+}
+
+extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewControllerDelegate {
+    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, icon: AGSKMLIcon, color: UIColor) {
+        print(color)
+    }
+    
+//    func CreateAndSaveKMLSettingsViewControllerDidChangeMapScale(_ controller: MapReferenceScaleSettingsViewController) {
+//        mapView.setViewpointScale(controller.mapScale)
+//    }
+    
+    func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController) {
+        dismiss(animated: true)
     }
 }

@@ -1,0 +1,29 @@
+{
+    "category": "Geometry",
+    "description": "Find the closest vertex and coordinate of a geometry to a point.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "analysis",
+        "coordinate",
+        "geometry",
+        "nearest",
+        "proximity",
+        "vertex",
+        "AGSGeometry",
+        "AGSGeometryEngine",
+        "AGSSimpleFillSymbol"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSGeometry",
+        "AGSGeometryEngine",
+        "AGSSimpleFillSymbol"
+    ],
+    "snippets": [
+        "NearestVertexViewController.swift"
+    ],
+    "title": "Nearest vertex"
+}

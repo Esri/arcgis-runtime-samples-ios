@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00D4E8BF24195BA6002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8BE24195BA6002689DB /* ConvexHullViewController.swift */; };
-		00D4E8C3241962EE002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8C2241962EE002689DB /* ConvexHull.storyboard */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
@@ -1082,8 +1080,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00D4E8BE24195BA6002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
-		00D4E8C2241962EE002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
@@ -1649,15 +1645,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00D4E8B924195B8C002689DB /* Convex hull */ = {
-			isa = PBXGroup;
-			children = (
-				00D4E8BE24195BA6002689DB /* ConvexHullViewController.swift */,
-				00D4E8C2241962EE002689DB /* ConvexHull.storyboard */,
-			);
-			path = "Convex hull";
-			sourceTree = "<group>";
-		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -2579,7 +2566,6 @@
 		3EBA25711D34509500AB0703 /* Geometry */ = {
 			isa = PBXGroup;
 			children = (
-				00D4E8B924195B8C002689DB /* Convex hull */,
 				F1034F9822D3EDFE00B021DA /* Project */,
 				3EBA25721D3450B800AB0703 /* Create geometries */,
 				3E0B58551E36D8D300951767 /* Spatial operations */,
@@ -4424,7 +4410,6 @@
 				3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */,
 				4C783F422252DBAC00609B9C /* philadelphia.mspk in Resources */,
 				F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */,
-				00D4E8C3241962EE002689DB /* ConvexHull.storyboard in Resources */,
 				4CCA30CF22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
 				3ED75D031ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard in Resources */,
@@ -4675,7 +4660,6 @@
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,
 				4CE15D5322F380FB005F2968 /* ControlAnnotationSublayerVisibilitySublayersViewController.swift in Sources */,
-				00D4E8BF24195BA6002689DB /* ConvexHullViewController.swift in Sources */,
 				3E0B584F1E36BCCD00951767 /* AnalyzeHotspotsViewController.swift in Sources */,
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,

@@ -17,16 +17,25 @@ import ArcGIS
 
 class NearestVertexViewController: UIViewController {
     /// Create the graphics and symbology for the tapped point, the nearest vertex and the nearest coordinate.
-    static let tappedLocationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .orange, size: 15)
-    static let nearestCoordinateSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .red, size: 10)
-    static let nearestVertexSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 15)
+    let tappedLocationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .orange, size: 15)
+    let nearestCoordinateSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .red, size: 10)
+    let nearestVertexSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 15)
+    
+    /// The graphics overlay for the polygon and points..
+    let graphicsOverlay = AGSGraphicsOverlay()
 
     /// The symbology for the example polygon area.
-    static let polygonOutlineSymbol = AGSSimpleLineSymbol(style: .solid, color: .green, width: 2)
-    static let polygonFillSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .green, outline: polygonOutlineSymbol)
+    let polygonOutlineSymbol = AGSSimpleLineSymbol(style: .solid, color: .green, width: 2)
+    lazy var polygonFillSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .green, outline: polygonOutlineSymbol)
+    
+    /// The graphic for the polygon, tapped point, nearest coordinate point and nearest vertext point.
+    lazy var polygonGraphic = AGSGraphic(geometry: createdPolygon, symbol: polygonFillSymbol)
+    lazy var tappedLocationGraphic = AGSGraphic(geometry: nil, symbol: tappedLocationSymbol)
+    lazy var nearestCoordinateGraphic = AGSGraphic(geometry: nil, symbol: nearestCoordinateSymbol)
+    lazy var nearestVertexGraphic = AGSGraphic(geometry: nil, symbol: nearestVertexSymbol)
     
     /// Create the point collection that defines the polygon with a computed variable.
-    static var createdPolygon: AGSPolygon {
+    let createdPolygon: AGSPolygon = {
         let polygonBuilder = AGSPolygonBuilder(spatialReference: .webMercator())
         polygonBuilder.addPointWith(x: -5991501.677830, y: 5599295.131468)
         polygonBuilder.addPointWith(x: -6928550.398185, y: 2087936.739807)
@@ -34,16 +43,7 @@ class NearestVertexViewController: UIViewController {
         polygonBuilder.addPointWith(x: -1563689.043184, y: 3714900.452072)
         polygonBuilder.addPointWith(x: -3180355.516764, y: 5619889.608838)
         return polygonBuilder.toGeometry()
-    }
-    
-    /// The graphics overlay for the polygon and points..
-    let graphicsOverlay = AGSGraphicsOverlay()
-    
-    /// The graphic for the polygon, tapped point, nearest coordinate point and nearest vertext point.
-    let polygonGraphic = AGSGraphic(geometry: createdPolygon, symbol: polygonFillSymbol)
-    let tappedLocationGraphic = AGSGraphic(geometry: nil, symbol: tappedLocationSymbol)
-    let nearestCoordinateGraphic = AGSGraphic(geometry: nil, symbol: nearestCoordinateSymbol)
-    let nearestVertexGraphic = AGSGraphic(geometry: nil, symbol: nearestVertexSymbol)
+    }()
     
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
@@ -84,31 +84,29 @@ class NearestVertexViewController: UIViewController {
 extension NearestVertexViewController: AGSGeoViewTouchDelegate {
     // MARK: - AGSGeoViewTouchDelegate
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // If the callout is not shown, show the callout with the coordinates of the tapped location.
         if mapView.callout.isHidden {
-            guard
-                let nearestVertexResult = AGSGeometryEngine.nearestVertex(in: polygonGraphic.geometry!, to: mapPoint),
-                let nearestCoordinateResult = AGSGeometryEngine.nearestCoordinate(in: polygonGraphic.geometry!, to: mapPoint)
-            else {
+            // If the callout is not shown, show the callout with the coordinates of the tapped location.
+            if let nearestVertexResult = AGSGeometryEngine.nearestVertex(in: polygonGraphic.geometry!, to: mapPoint),
+                let nearestCoordinateResult = AGSGeometryEngine.nearestCoordinate(in: polygonGraphic.geometry!, to: mapPoint) {
+                // Set the geometry for the tapped point, nearest coordinate point and nearest vertext point.
+                tappedLocationGraphic.geometry = mapPoint
+                nearestVertexGraphic.geometry = nearestVertexResult.point
+                nearestCoordinateGraphic.geometry = nearestCoordinateResult.point
+                // Get the distance in km to the nearest vertex in the polygon.
+                let distanceVertex = nearestVertexResult.distance / 1000
+                // Get the distance in km to the nearest coordinate in the polygon.
+                let distanceCoordinate = nearestCoordinateResult.distance / 1000
+                // Display the results on a callout of the tapped point.
+                mapView.callout.title = "Proximity result"
+                mapView.callout.detail = String(format: "Vertex dist: %.2f km. Point dist: %.2f km", distanceVertex, distanceCoordinate)
+                mapView.callout.isAccessoryButtonHidden = true
+                mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
+            } else {
                 // Display the error as an alert if there is a problem with nearestVertex and nearestCoordinate operation.
                 let alertController = UIAlertController(title: nil, message: "Geometry Engine Failed!", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default))
                 present(alertController, animated: true)
-                return
             }
-            // Set the geometry for the tapped point, nearest coordinate point and nearest vertext point.
-            tappedLocationGraphic.geometry = mapPoint
-            nearestVertexGraphic.geometry = nearestVertexResult.point
-            nearestCoordinateGraphic.geometry = nearestCoordinateResult.point
-            // Get the distance in km to the nearest vertex in the polygon.
-            let distanceVertex = nearestVertexResult.distance / 1000
-            // Get the distance in km to the nearest coordinate in the polygon.
-            let distanceCoordinate = nearestCoordinateResult.distance / 1000
-            // Display the results on a callout of the tapped point.
-            mapView.callout.title = "Proximity result"
-            mapView.callout.detail = String(format: "Vertex dist: %.2f km. Point dist: %.2f km", distanceVertex, distanceCoordinate)
-            mapView.callout.isAccessoryButtonHidden = true
-            mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
         } else {
             // Dismiss the callout and reset all graphics.
             mapView.callout.dismiss()

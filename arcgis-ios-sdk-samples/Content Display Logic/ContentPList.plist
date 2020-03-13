@@ -293,7 +293,8 @@
 				<key>storyboardName</key>
 				<string>DisplaySubtypeFeatureLayer</string>
 				<key>descriptionText</key>
-        <string>Display a composite layer of all the subtype values in a feature class.</string>
+        			<string>Display a composite layer of all the subtype values in a feature class.</string>
+			<dict>
 				<string>Display annotation</string>
 				<key>storyboardName</key>
 				<string>DisplayAnnotation</string>

@@ -36,7 +36,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         return map
     }
 
-    var color: UIColor!
+    var color: UIColor?
     let sketchStyle = AGSSketchStyle()
     var sketchCreationMode: AGSSketchCreationMode!
     let kmlDocument = AGSKMLDocument()
@@ -135,7 +135,6 @@ class CreateAndSaveKMLViewController: UIViewController {
 // MARK: - AGSGeoViewTouchDelegate
 extension CreateAndSaveKMLViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        addToKMLDocument(geometry: mapPoint, kmlStyle: kmlStyle)
         
     }
 }

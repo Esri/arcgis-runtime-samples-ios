@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lQr-0X-gJw">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -13,14 +13,14 @@
             <objects>
                 <viewController id="lQr-0X-gJw" customClass="ConvexHullViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jum-nO-Jw7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MpB-iY-wSy" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Og-nO-uja">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem enabled="NO" title="Create" id="seG-ll-Wuw">
                                         <connections>
@@ -49,7 +49,7 @@
                         <viewLayoutGuide key="safeArea" id="vpj-2E-1tA"/>
                     </view>
                     <connections>
-                        <outlet property="creatConvexHullButtonItem" destination="seG-ll-Wuw" id="5G5-V9-2jU"/>
+                        <outlet property="creatButtonItem" destination="seG-ll-Wuw" id="QCE-bQ-pDq"/>
                         <outlet property="mapView" destination="MpB-iY-wSy" id="0iA-fC-4J6"/>
                         <outlet property="resetButtonItem" destination="pOd-Uy-lES" id="Zvi-zj-Vmw"/>
                     </connections>

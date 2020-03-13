@@ -289,6 +289,14 @@
 		<array>
 			<dict>
 				<key>displayName</key>
+				<string>Display subtype feature layer</string>
+				<key>storyboardName</key>
+				<string>DisplaySubtypeFeatureLayer</string>
+				<key>descriptionText</key>
+				<string>Display a composite layer of all the subtype values in a feature class.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Dictionary renderer with feature layer</string>
 				<key>storyboardName</key>
 				<string>FeatureLayerDictionaryRenderer</string>
@@ -637,14 +645,6 @@
 		<string>Features</string>
 		<key>children</key>
 		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Display subtype feature layer</string>
-				<key>storyboardName</key>
-				<string>DisplaySubtypeFeatureLayer</string>
-				<key>descriptionText</key>
-				<string>Display a composite layer of all the subtype values in a feature class.</string>
-			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Feature layer rendering mode (map)</string>

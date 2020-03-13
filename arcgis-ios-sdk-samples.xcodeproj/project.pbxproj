@@ -2694,7 +2694,6 @@
 		3ED027FE1B8E39DD00ACA70D /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				F15CF0C723EE26CB0038F052 /* Display subtype feature layer */,
 				F4E5CD7720704369000A6D35 /* Feature layer rendering mode (map) */,
 				C7FF07D321B9D227000D4055 /* Feature layer rendering mode (scene) */,
 				3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */,
@@ -2721,6 +2720,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				F15CF0C723EE26CB0038F052 /* Display subtype feature layer */,
 				F1F62C3E22E6401500EFD599 /* Dictionary renderer with feature layer */,
 				F1E4B10D22D6AEC4005FDB4D /* Colormap renderer */,
 				3ED028A41B8E3A9800ACA70D /* ArcGIS tiled layer (URL) */,

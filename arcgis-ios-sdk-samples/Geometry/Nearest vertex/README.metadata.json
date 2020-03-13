@@ -14,13 +14,13 @@
         "vertex",
         "AGSGeometry",
         "AGSGeometryEngine",
-        "AGSSimpleFillSymbol"
+        "AGSProximityResult"
     ],
     "redirect_from": [],
     "relevant_apis": [
         "AGSGeometry",
         "AGSGeometryEngine",
-        "AGSSimpleFillSymbol"
+        "AGSProximityResult"
     ],
     "snippets": [
         "NearestVertexViewController.swift"

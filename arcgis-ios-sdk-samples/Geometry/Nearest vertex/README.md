@@ -14,17 +14,17 @@ Tap anywhere on the map. An orange cross will show at that location. A blue circ
 
 ## How it works
 
-1. Get a `Geometry` and a `Point` to check the nearest vertex against.
-2. Call `GeometryEngine.nearestVertex(inputGeometry, point)`.
-3. Use the returned `ProximityResult` to get the `Point` representing the polygon vertex, and to determine the distance between that vertex and the tapped point.
-4. Call `GeometryEngine.nearestCoordinate(inputGeometry, point)`.
-5. Use the returned `ProximityResult` to get the `Point` representing the coordinate on the polygon, and to determine the distance between that coordinate and the tapped point.
+1. Get a `AGSGeometry` and a `AGSPoint` to check the nearest vertex against.
+2. Call `AGSGeometryEngine.nearestVertex(in: inputGeometry, to: mapPoint)`.
+3. Use the returned `AGSProximityResult` to get the `AGSPoint` representing the polygon vertex, and to determine the distance between that vertex and the tapped point.
+4. Call `AGSGeometryEngine.nearestCoordinate(in: inputGeometry, to: mapPoint)`.
+5. Use the returned `AGSProximityResult` to get the `AGSPoint` representing the coordinate on the polygon, and to determine the distance between that coordinate and the tapped point.
 
 ## Relevant API
 
 * AGSGeometry
 * AGSGeometryEngine
-* ProximityResult
+* AGSProximityResult
 
 ## Tags
 

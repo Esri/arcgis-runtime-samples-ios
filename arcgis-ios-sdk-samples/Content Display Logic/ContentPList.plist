@@ -295,6 +295,7 @@
 				<key>descriptionText</key>
         			<string>Display a composite layer of all the subtype values in a feature class.</string>
 			<dict>
+				<key>displayName</key>
 				<string>Display annotation</string>
 				<key>storyboardName</key>
 				<string>DisplayAnnotation</string>

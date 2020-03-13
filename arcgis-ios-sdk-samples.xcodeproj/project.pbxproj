@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
@@ -823,6 +824,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */,
 				F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */,
 				F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */,
 				F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */,

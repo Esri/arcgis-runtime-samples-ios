@@ -4038,6 +4038,8 @@
 				F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */,
 			);
 			path = "Display subtype feature layer";
+			sourceTree = "<group>";
+		};
 		F140E1E823F35E61008AC44E /* Display annotation */ = {
 			isa = PBXGroup;
 			children = (

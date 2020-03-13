@@ -28,6 +28,9 @@ class ConvexHullViewController: UIViewController {
     /// A simple fill symbol for the convex hull graphic(s) - a hollow polygon with a thick red outline.
     lazy var fillSymbol = AGSSimpleFillSymbol(style: .null, color: .red, outline: lineSymbol)
     
+    /// The graphic for the convex hull.
+    weak var convexHullGraphic: AGSGraphic?
+    
     /// List of geometry values (MapPoints in this case) that will be used by the AGSGeometryEngine.convexHull operation.
     var inputPoints: [AGSPoint] = []
     
@@ -57,12 +60,6 @@ class ConvexHullViewController: UIViewController {
     /// Called in response to the Create convex hull button being tapped.
     @IBAction func createConvexHull() {
         if let convexHullGeometry = AGSGeometryEngine.convexHull(for: AGSMultipoint(points: inputPoints)) {
-            // Remove any existing convex hull graphics from the overlay.
-            for g in graphicsOverlay.graphics.reversed() {
-                if (g as! AGSGraphic).attributes["Type"] as! String == "Hull" {
-                    graphicsOverlay.graphics.remove(g)
-                }
-            }
             // Change the symbol depending on the returned geometry type of the convex hull.
             let symbol: AGSSymbol
             switch convexHullGeometry.geometryType {
@@ -73,9 +70,13 @@ class ConvexHullViewController: UIViewController {
             default:
                 symbol = fillSymbol
             }
-            // Create the graphic for the convex hull and add it to the graphics overlay.
-            let convexHullGraphic = AGSGraphic(geometry: convexHullGeometry, symbol: symbol, attributes: ["Type": "Hull"])
-            graphicsOverlay.graphics.add(convexHullGraphic)
+            // remove the existing graphic for convex hull if there is one
+            if let existingGraphic = convexHullGraphic {
+                graphicsOverlay.graphics.remove(existingGraphic)
+            }
+            let graphic = AGSGraphic(geometry: convexHullGeometry, symbol: symbol)
+            convexHullGraphic = graphic
+            graphicsOverlay.graphics.add(convexHullGraphic!)
             creatButtonItem.isEnabled = false
         } else {
             // Display the error as an alert if there is a problem with AGSGeometryEngine.convexHull operation.
@@ -114,7 +115,7 @@ extension ConvexHullViewController: AGSGeoViewTouchDelegate {
             creatButtonItem.isEnabled = true
         }
         // Create a new graphic for the spot where the user tapped on the map using the simple marker symbol.
-        let userTappedGraphic = AGSGraphic(geometry: mapPoint, symbol: markerSymbol, attributes: ["Type": "Point"])
+        let userTappedGraphic = AGSGraphic(geometry: mapPoint, symbol: markerSymbol)
         graphicsOverlay.graphics.add(userTappedGraphic)
     }
 }

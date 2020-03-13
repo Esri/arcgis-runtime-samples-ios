@@ -23,6 +23,9 @@ class CreateAndSaveKMLViewController: UIViewController {
             mapView.map = makeMap()
             let sketchEditor = AGSSketchEditor()
             mapView.sketchEditor = sketchEditor
+            let sketch = mapView.sketchEditor
+            let point = AGSPoint(x: 44.00, y: 22.00, spatialReference: .wgs84())
+            sketch?.start(with: point)
         }
     }
     
@@ -35,7 +38,7 @@ class CreateAndSaveKMLViewController: UIViewController {
 
     var color: UIColor!
     let sketchStyle = AGSSketchStyle()
-    var sketchCreationModeComboBox: AGSSketchCreationMode!
+    var sketchCreationMode: AGSSketchCreationMode!
     let kmlDocument = AGSKMLDocument()
     let spatialRef = AGSSpatialReference.wgs84()
     var kmlStyle = AGSKMLStyle()
@@ -68,9 +71,6 @@ class CreateAndSaveKMLViewController: UIViewController {
 //            let currentKMLPlacemark = AGSKMLPlacemark(geometry: projectedGeometry)
         }
     }
-    
-    
-    
  
 //    func addGraphics() {
 //        addToKMLDocument(geometry: point, kmlStyle: makeKMLStyleWithPointStyle())
@@ -119,6 +119,16 @@ class CreateAndSaveKMLViewController: UIViewController {
             settingsViewController.kmlStyle = kmlStyle
             settingsViewController.delegate = self
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
+            "CreateAndSaveKMLViewController",
+            "CreateAndSaveKMLSettingsViewController"
+        ]
     }
 }
 

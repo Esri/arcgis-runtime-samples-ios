@@ -29,23 +29,23 @@ protocol CreateAndSaveKMLSettingsViewControllerDelegate: AnyObject {
 
 class CreateAndSaveKMLSettingsViewController: UITableViewController {
     weak var delegate: CreateAndSaveKMLSettingsViewControllerDelegate?
-    var icon: AGSKMLIcon!
-    var color: UIColor!
-    var feature: String!
-    @IBOutlet var pointLabel: UITableViewCell!
-    @IBOutlet var iconLabel: UILabel!
-    @IBOutlet var colorLabel: UILabel!
+    var icon: AGSKMLIcon?
+    var color: UIColor?
+    var feature: String?
+    @IBOutlet var pointLabel: UITableViewCell?
+    @IBOutlet var iconLabel: UILabel?
+    @IBOutlet var colorLabel: UILabel?
     
     @IBAction func done() {
         delegate?.createAndSaveKMLSettingsViewControllerDidFinish(self)
         
-        delegate?.createAndSaveKMLSettingsViewController(self, feature: feature, icon: icon, color: color)
+        delegate?.createAndSaveKMLSettingsViewController(self, feature: feature!, icon: icon, color: color!)
     }
     
     var kmlStyle = AGSKMLStyle()
     private var iconPickerHidden = true
     private var colorPickerHidden = true
-    private let possibleIcons = ["Star", "Diamond", "Circle", "Square", "Round Pin", "Square Pin"]
+    private let possibleIcons = ["Star", "Diamond", "Circle", "Square", "Round pin", "Square pin"]
     private let possibleColors = ["Red", "Yellow", "White", "Purple", "Orange", "Magenta", "Light gray", "Gray", "Dark gray", "Green", "Cyan", "Brown", "Blue", "Black"]
     private let iconDictionary = [
         "Star": URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueStarLargeB.png")!,
@@ -64,18 +64,18 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     func toggleIconPickerVisibility() {
         tableView.performBatchUpdates({
         if iconPickerHidden {
-            iconLabel.textColor = view.tintColor
+            iconLabel?.textColor = view.tintColor
             tableView.insertRows(at: [.iconPicker], with: .fade)
             iconPickerHidden = false
         } else if colorPickerHidden {
-            colorLabel.textColor = view.tintColor
+            colorLabel?.textColor = view.tintColor
             tableView.insertRows(at: [.colorPicker], with: .fade)
             colorPickerHidden = false
         } else {
-            iconLabel.textColor = nil
+            iconLabel?.textColor = nil
             tableView.deleteRows(at: [.iconPicker], with: .fade)
             iconPickerHidden = true
-            colorLabel.textColor = nil
+            colorLabel?.textColor = nil
             tableView.deleteRows(at: [.colorPicker], with: .fade)
             colorPickerHidden = true
         }
@@ -85,11 +85,11 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     func toggleColorPickerVisibility() {
         tableView.performBatchUpdates({
         if colorPickerHidden {
-            colorLabel.textColor = view.tintColor
+            colorLabel?.textColor = view.tintColor
             tableView.insertRows(at: [.colorPicker], with: .fade)
             colorPickerHidden = false
         } else {
-            colorLabel.textColor = nil
+            colorLabel?.textColor = nil
             tableView.deleteRows(at: [.colorPicker], with: .fade)
             colorPickerHidden = true
         }

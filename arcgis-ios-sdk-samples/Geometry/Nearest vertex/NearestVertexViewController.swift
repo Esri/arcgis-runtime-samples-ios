@@ -21,20 +21,13 @@ class NearestVertexViewController: UIViewController {
     let nearestCoordinateSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .red, size: 10)
     let nearestVertexSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 15)
     
+    /// The symbology for the example polygon area.
+    let polygonFillSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .green, outline: AGSSimpleLineSymbol(style: .solid, color: .green, width: 2))
+    
     /// The graphics overlay for the polygon and points..
     let graphicsOverlay = AGSGraphicsOverlay()
-
-    /// The symbology for the example polygon area.
-    let polygonOutlineSymbol = AGSSimpleLineSymbol(style: .solid, color: .green, width: 2)
-    lazy var polygonFillSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .green, outline: polygonOutlineSymbol)
     
-    /// The graphic for the polygon, tapped point, nearest coordinate point and nearest vertext point.
-    lazy var polygonGraphic = AGSGraphic(geometry: createdPolygon, symbol: polygonFillSymbol)
-    lazy var tappedLocationGraphic = AGSGraphic(geometry: nil, symbol: tappedLocationSymbol)
-    lazy var nearestCoordinateGraphic = AGSGraphic(geometry: nil, symbol: nearestCoordinateSymbol)
-    lazy var nearestVertexGraphic = AGSGraphic(geometry: nil, symbol: nearestVertexSymbol)
-    
-    /// Create the point collection that defines the polygon with a computed variable.
+    /// Create the point collection that defines the polygon.
     let createdPolygon: AGSPolygon = {
         let polygonBuilder = AGSPolygonBuilder(spatialReference: .webMercator())
         polygonBuilder.addPointWith(x: -5991501.677830, y: 5599295.131468)
@@ -44,6 +37,12 @@ class NearestVertexViewController: UIViewController {
         polygonBuilder.addPointWith(x: -3180355.516764, y: 5619889.608838)
         return polygonBuilder.toGeometry()
     }()
+    
+    /// The graphic for the polygon, tapped point, nearest coordinate point and nearest vertext point.
+    lazy var polygonGraphic = AGSGraphic(geometry: createdPolygon, symbol: polygonFillSymbol)
+    lazy var tappedLocationGraphic = AGSGraphic(geometry: nil, symbol: tappedLocationSymbol)
+    lazy var nearestCoordinateGraphic = AGSGraphic(geometry: nil, symbol: nearestCoordinateSymbol)
+    lazy var nearestVertexGraphic = AGSGraphic(geometry: nil, symbol: nearestVertexSymbol)
     
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
@@ -108,7 +107,7 @@ extension NearestVertexViewController: AGSGeoViewTouchDelegate {
                 present(alertController, animated: true)
             }
         } else {
-            // Dismiss the callout and reset all graphics.
+            // Dismiss the callout and reset geometry for all simple marker graphics.
             mapView.callout.dismiss()
             tappedLocationGraphic.geometry = nil
             nearestVertexGraphic.geometry = nil

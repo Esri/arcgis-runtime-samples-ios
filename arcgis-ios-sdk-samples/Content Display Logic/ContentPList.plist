@@ -230,7 +230,7 @@
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to add layers to a map from a geopackage.</string>
+				<string>Add rasters and feature tables from a GeoPackage to a map.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>
@@ -293,7 +293,12 @@
 				<key>storyboardName</key>
 				<string>DisplaySubtypeFeatureLayer</string>
 				<key>descriptionText</key>
-				<string>Display a composite layer of all the subtype values in a feature class.</string>
+        <string>Display a composite layer of all the subtype values in a feature class.</string>
+				<string>Display annotation</string>
+				<key>storyboardName</key>
+				<string>DisplayAnnotation</string>
+				<key>descriptionText</key>
+				<string>Display annotation from a feature service URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1161,6 +1166,14 @@
 		<string>Route &amp; Directions</string>
 		<key>children</key>
 		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Find closest facility to an incident (interactive)</string>
+				<key>storyboardName</key>
+				<string>FindClosestFacilityInteractive</string>
+				<key>descriptionText</key>
+				<string>Find a route to the closest facility from a location.</string>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Find route</string>

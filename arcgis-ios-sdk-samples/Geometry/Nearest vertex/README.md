@@ -15,9 +15,9 @@ Tap anywhere on the map. An orange cross will show at that location. A blue circ
 ## How it works
 
 1. Get an `AGSGeometry` and an `AGSPoint` to check the nearest vertex against.
-2. Call `class AGSGeometryEngine.nearestVertex(in:, to:)`.
+2. Call `class AGSGeometryEngine.nearestVertex(in:to:)`.
 3. Use the returned `AGSProximityResult` to get the `AGSPoint` representing the polygon vertex, and to determine the distance between that vertex and the tapped point.
-4. Call `class AGSGeometryEngine.nearestCoordinate(in:, to:)`.
+4. Call `class AGSGeometryEngine.nearestCoordinate(in:to:)`.
 5. Use the returned `AGSProximityResult` to get the `AGSPoint` representing the coordinate on the polygon, and to determine the distance between that coordinate and the tapped point.
 
 ## Relevant API

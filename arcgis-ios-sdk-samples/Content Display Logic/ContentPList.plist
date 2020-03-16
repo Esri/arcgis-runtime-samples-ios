@@ -1154,14 +1154,6 @@
 				<key>descriptionText</key>
 				<string>Create buffers around the tap location with a given radius.</string>
 			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Nearest vertex</string>
-				<key>storyboardName</key>
-				<string>NearestVertex</string>
-				<key>descriptionText</key>
-				<string>Find the closest vertex and coordinate of a geometry to a point.</string>
-			</dict>
 		</array>
 	</dict>
 	<dict>

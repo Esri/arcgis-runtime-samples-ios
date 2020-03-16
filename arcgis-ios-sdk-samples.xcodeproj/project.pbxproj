@@ -754,15 +754,20 @@
 		F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
+		F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */; };
 		F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
+		F15CF0C923EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */; };
+		F15CF0CB23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */; };
+		F15CF0CC23EE31A70038F052 /* DisplaySubtypeFeatureLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */; };
 		F164997622E90F150088CA93 /* FeatureLayerDictionaryRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1F62C4122E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift */; };
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
@@ -824,6 +829,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */,
+				F15CF0CC23EE31A70038F052 /* DisplaySubtypeFeatureLayerViewController.swift in CopyFiles */,
 				00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */,
 				F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */,
 				F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */,
@@ -1612,8 +1619,11 @@
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
+		F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeFeatureLayerViewController.swift; sourceTree = "<group>"; };
+		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
 		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
+		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetElevationPoint.storyboard; sourceTree = "<group>"; };
@@ -2735,6 +2745,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				F15CF0C723EE26CB0038F052 /* Display subtype feature layer */,
 				F140E1E823F35E61008AC44E /* Display annotation */,
 				F1F62C3E22E6401500EFD599 /* Dictionary renderer with feature layer */,
 				F1E4B10D22D6AEC4005FDB4D /* Colormap renderer */,
@@ -4035,6 +4046,16 @@
 			path = "Create terrain surface from a local tile package";
 			sourceTree = "<group>";
 		};
+		F15CF0C723EE26CB0038F052 /* Display subtype feature layer */ = {
+			isa = PBXGroup;
+			children = (
+				F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */,
+				F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */,
+				F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */,
+			);
+			path = "Display subtype feature layer";
+			sourceTree = "<group>";
+		};
 		F140E1E823F35E61008AC44E /* Display annotation */ = {
 			isa = PBXGroup;
 			children = (
@@ -4356,6 +4377,7 @@
 				3ECDD9B11E8470E100E645AB /* DownloadProgressView.xib in Resources */,
 				3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */,
 				215E23D321024715001DE092 /* SpatialRelationships.storyboard in Resources */,
+				F15CF0CB23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
 				D9EE378D20E2C03800BF8AD1 /* LineOfSightGeoElement.storyboard in Resources */,
@@ -4654,6 +4676,7 @@
 				3E8A05CF1ECE68E80032231C /* PlaneStatsViewController.swift in Sources */,
 				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift in Sources */,
 				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */,
+				F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
 				C76F75722182729700938D8D /* ColorPickerViewController.swift in Sources */,
 				3ED75D041ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift in Sources */,
@@ -4688,6 +4711,7 @@
 				1682CAEE22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,
+				F15CF0C923EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift in Sources */,
 				F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */,
 				098049A92253FC3F009C685D /* WFSLayersTableViewController.swift in Sources */,
 				3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */,

@@ -38,7 +38,7 @@ class NearestVertexViewController: UIViewController {
         return polygonBuilder.toGeometry()
     }()
     
-    /// The graphic for the polygon, tapped point, nearest coordinate point and nearest vertext point.
+    /// The graphic for the polygon, tapped point, nearest coordinate point and nearest vertex point.
     lazy var polygonGraphic = AGSGraphic(geometry: createdPolygon, symbol: polygonFillSymbol)
     lazy var tappedLocationGraphic = AGSGraphic(geometry: nil, symbol: tappedLocationSymbol)
     lazy var nearestCoordinateGraphic = AGSGraphic(geometry: nil, symbol: nearestCoordinateSymbol)
@@ -87,7 +87,7 @@ extension NearestVertexViewController: AGSGeoViewTouchDelegate {
             // If the callout is not shown, show the callout with the coordinates of the tapped location.
             if let nearestVertexResult = AGSGeometryEngine.nearestVertex(in: polygonGraphic.geometry!, to: mapPoint),
                 let nearestCoordinateResult = AGSGeometryEngine.nearestCoordinate(in: polygonGraphic.geometry!, to: mapPoint) {
-                // Set the geometry for the tapped point, nearest coordinate point and nearest vertext point.
+                // Set the geometry for the tapped point, nearest coordinate point and nearest vertex point.
                 tappedLocationGraphic.geometry = mapPoint
                 nearestVertexGraphic.geometry = nearestVertexResult.point
                 nearestCoordinateGraphic.geometry = nearestCoordinateResult.point

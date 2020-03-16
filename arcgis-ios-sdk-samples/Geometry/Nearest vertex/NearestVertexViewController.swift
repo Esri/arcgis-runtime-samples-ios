@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 class NearestVertexViewController: UIViewController {
-    /// Create the graphics and symbology for the tapped point, the nearest vertex and the nearest coordinate.
+    /// The graphics and symbology for the tapped point, the nearest vertex and the nearest coordinate.
     let tappedLocationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .orange, size: 15)
     let nearestCoordinateSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .red, size: 10)
     let nearestVertexSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 15)
@@ -27,7 +27,15 @@ class NearestVertexViewController: UIViewController {
     /// The graphics overlay for the polygon and points..
     let graphicsOverlay = AGSGraphicsOverlay()
     
-    /// Create the point collection that defines the polygon.
+    /// A  formatter to convert units for distance.
+    let distanceFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.numberFormatter.maximumFractionDigits = 1
+        formatter.numberFormatter.minimumFractionDigits = 1
+        return formatter
+    }()
+    
+    /// The point collection that defines the polygon.
     let createdPolygon: AGSPolygon = {
         let polygonBuilder = AGSPolygonBuilder(spatialReference: .webMercator())
         polygonBuilder.addPointWith(x: -5991501.677830, y: 5599295.131468)
@@ -62,12 +70,14 @@ class NearestVertexViewController: UIViewController {
         return map
     }
     
-    /// Add the graphics to the graphics overlay.
+    /// Adds the graphics to the graphics overlay.
     func addGraphicsToOverlay() {
-        graphicsOverlay.graphics.add(polygonGraphic)
-        graphicsOverlay.graphics.add(nearestCoordinateGraphic)
-        graphicsOverlay.graphics.add(tappedLocationGraphic)
-        graphicsOverlay.graphics.add(nearestVertexGraphic)
+        graphicsOverlay.graphics.addObjects(from: [
+            polygonGraphic,
+            nearestCoordinateGraphic,
+            tappedLocationGraphic,
+            nearestVertexGraphic
+        ])
     }
     
     // MARK: UIViewController
@@ -91,15 +101,15 @@ extension NearestVertexViewController: AGSGeoViewTouchDelegate {
                 tappedLocationGraphic.geometry = mapPoint
                 nearestVertexGraphic.geometry = nearestVertexResult.point
                 nearestCoordinateGraphic.geometry = nearestCoordinateResult.point
-                // Get the distance in km to the nearest vertex in the polygon.
-                let distanceVertex = nearestVertexResult.distance / 1000
-                // Get the distance in km to the nearest coordinate in the polygon.
-                let distanceCoordinate = nearestCoordinateResult.distance / 1000
+                // Get the distance to the nearest vertex in the polygon.
+                let distanceVertex = Measurement(value: nearestVertexResult.distance, unit: UnitLength.meters)
+                // Get the distance to the nearest coordinate in the polygon.
+                let distanceCoordinate = Measurement(value: nearestCoordinateResult.distance, unit: UnitLength.meters)
                 // Display the results on a callout of the tapped point.
                 mapView.callout.title = "Proximity result"
-                mapView.callout.detail = String(format: "Vertex dist: %.2f km. Point dist: %.2f km", distanceVertex, distanceCoordinate)
+                mapView.callout.detail = String(format: "Vertex dist: %@; Point dist: %@", distanceFormatter.string(from: distanceVertex), distanceFormatter.string(from: distanceCoordinate))
                 mapView.callout.isAccessoryButtonHidden = true
-                mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
+                mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
             } else {
                 // Display the error as an alert if there is a problem with nearestVertex and nearestCoordinate operation.
                 let alertController = UIAlertController(title: nil, message: "Geometry Engine Failed!", preferredStyle: .alert)

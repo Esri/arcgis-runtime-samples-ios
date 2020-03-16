@@ -1,0 +1,26 @@
+{
+  "category": "Features",
+  "description": "Display a composite layer of all the subtype values in a feature class.",
+  "ignore": false,
+  "images": [
+    "Display-subtype-feature-laer.png"
+  ],
+  "keywords": [
+    "asset group",
+    "feature layer",
+    "labeling",
+    "sublayer",
+    "subtype",
+    "symbology",
+    "utility network",
+    "visible scale range"
+  ],
+  "relevant_apis": [
+    "AGSLabelDefinition",
+    "AGSServiceFeatureTable",
+    "AGSSubtypeFeatureLayer",
+    "AGSSubtypeSublayer"
+  ],
+  "snippets": [],
+  "title": "Display subtype feature layer"
+}

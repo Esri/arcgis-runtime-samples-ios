@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00D4E8EB241AD4B7002689DB /* NearestVertexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8EA241AD4B7002689DB /* NearestVertexViewController.swift */; };
+		00D4E8ED241AD4CF002689DB /* NearestVertex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8EC241AD4CF002689DB /* NearestVertex.storyboard */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
@@ -1080,6 +1082,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00D4E8EA241AD4B7002689DB /* NearestVertexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestVertexViewController.swift; sourceTree = "<group>"; };
+		00D4E8EC241AD4CF002689DB /* NearestVertex.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
@@ -1645,6 +1649,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00D4E8E8241AD263002689DB /* Nearest vertex */ = {
+			isa = PBXGroup;
+			children = (
+				00D4E8EA241AD4B7002689DB /* NearestVertexViewController.swift */,
+				00D4E8EC241AD4CF002689DB /* NearestVertex.storyboard */,
+			);
+			path = "Nearest vertex";
+			sourceTree = "<group>";
+		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -2566,6 +2579,7 @@
 		3EBA25711D34509500AB0703 /* Geometry */ = {
 			isa = PBXGroup;
 			children = (
+				00D4E8E8241AD263002689DB /* Nearest vertex */,
 				F1034F9822D3EDFE00B021DA /* Project */,
 				3EBA25721D3450B800AB0703 /* Create geometries */,
 				3E0B58551E36D8D300951767 /* Spatial operations */,
@@ -4341,6 +4355,7 @@
 				3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */,
 				215E23D321024715001DE092 /* SpatialRelationships.storyboard in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
+				00D4E8ED241AD4CF002689DB /* NearestVertex.storyboard in Resources */,
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,
 				D9EE378D20E2C03800BF8AD1 /* LineOfSightGeoElement.storyboard in Resources */,
 				3ED029651B8E3ACD00ACA70D /* EditFeatureAttachments.storyboard in Resources */,
@@ -4710,6 +4725,7 @@
 				09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				215E23D421024715001DE092 /* SpatialRelationshipsViewController.swift in Sources */,
+				00D4E8EB241AD4B7002689DB /* NearestVertexViewController.swift in Sources */,
 				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsVC.swift in Sources */,
 				4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */,
 				166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */,

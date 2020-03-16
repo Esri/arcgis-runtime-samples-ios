@@ -15,7 +15,7 @@ Tap on the map to add points. Tap the "Create" button to generate the convex hul
 ## How it works
 
 1. Create an input geometry such as an `AGSMultipoint` object.
-2. 2. Use `class AGSGeometryEngine.convexHull(for:)` to create a new `AGSGeometry` object representing the convex hull of the input points. The returned geometry will either be a `AGSPoint`, `AGSPolyline`, or `AGSPolygon` based on the number of input points.
+2. Use `class AGSGeometryEngine.convexHull(for:)` to create a new `AGSGeometry` object representing the convex hull of the input points. The returned geometry will either be a `AGSPoint`, `AGSPolyline`, or `AGSPolygon` based on the number of input points.
 
 ## Relevant API
 

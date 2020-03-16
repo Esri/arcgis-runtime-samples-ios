@@ -76,7 +76,7 @@ class NearestVertexViewController: UIViewController {
         super.viewDidLoad()
         addGraphicsToOverlay()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ConvexHullViewController"]
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["NearestVertexViewController"]
     }
 }
 

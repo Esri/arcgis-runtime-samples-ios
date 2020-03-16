@@ -38,10 +38,11 @@ class CreateAndSaveKMLViewController: UIViewController {
 
     var color: UIColor?
     let sketchStyle = AGSSketchStyle()
-    var sketchCreationMode: AGSSketchCreationMode!
+    var sketchCreationMode: AGSSketchCreationMode?
     let kmlDocument = AGSKMLDocument()
     let spatialRef = AGSSpatialReference.wgs84()
     var kmlStyle = AGSKMLStyle()
+    var geometry: AGSGeometry?
 //    func makePoints() {
 //        point = AGSPoint(x: -117.195800, y: 34.056295, spatialReference: self.spatialRef)
 //    }
@@ -144,10 +145,13 @@ extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewController
         switch feature {
         case "point":
             guard let icon = icon else { return }
+            sketchCreationMode = AGSSketchCreationMode.point
             kmlStyle = makeKMLStyleWithPointStyle(icon: icon, color: color)
         case "polyline":
+            sketchCreationMode = AGSSketchCreationMode.polyline
             kmlStyle = makeKMLStyleWithLineStyle(color: color)
         case "polygon":
+            sketchCreationMode = AGSSketchCreationMode.polygon
             kmlStyle = makeKMLStyleWithPolygonStyle(color: color)
         default:
             print("default statement to replace with something")
@@ -156,5 +160,7 @@ extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewController
     
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController) {
         dismiss(animated: true)
+        mapView.sketchEditor?.start(with: sketchCreationMode!)
+        geometry = mapView.sketchEditor?.geometry
     }
 }

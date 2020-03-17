@@ -10,7 +10,7 @@
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
-		00DAE5D824213D5B00D51281 /* Restaurant.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5D624213D5B00D51281 /* Restaurant.stylx */; };
+		00DAE5D824213D5B00D51281 /* Restaurant.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5D624213D5B00D51281 /* Restaurant.stylx */; settings = {ASSET_TAGS = (Resturant, ); }; };
 		00DAE5E024213D6B00D51281 /* CustomDictionaryStyle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5DB24213D6B00D51281 /* CustomDictionaryStyle.storyboard */; };
 		00DAE5E224213D6B00D51281 /* CustomDictionaryStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */; };
 		00DAE5E424213D9A00D51281 /* CustomDictionaryStyleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */; };
@@ -4230,6 +4230,7 @@
 					MontereyElevation,
 					MontereyElevationRaster,
 					PublicArtShapefile,
+					Resturant,
 					SRTMRaster,
 					SanDiegoLocator,
 					SanDiegoNetworkData,

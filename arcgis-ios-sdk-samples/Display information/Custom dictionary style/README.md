@@ -14,7 +14,7 @@ Pan and zoom the map to see the symbology from the custom dictionary style.
 
 ## How it works
 
-1. Create a new `AGSDictionarySymbolStyle` by passing in the path to the custom style file (.stylx).
+1. Create a new `AGSDictionarySymbolStyle` by passing in the URL to the custom style file (.stylx).
 2. Create a new `AGSDictionaryRenderer`, providing the dictionary symbol style.
 3. Apply the dictionary renderer to a feature layer.
 
@@ -29,7 +29,7 @@ The data used in this sample is from a feature layer showing a subset of [restau
 
 ## Additional information
 
-To learn more about how styles in dictionary renderers work, see the topic [Display symbols from a style with a dictionary renderer](https://developers.arcgis.com/java/latest/guide/display-military-symbols-with-a-dictionary-renderer.htm) in the *ArcGIS Runtime SDK for Java* guide. For information about creating your own custom dictionary style, see the open source [dictionary renderer toolkit](https://esriurl.com/DictionaryToolkit) on *GitHub*.
+To learn more about how styles in dictionary renderers work, see the topic [Display symbols from a style with a dictionary renderer](https://developers.arcgis.com/ios/latest/swift/guide/display-military-symbols-with-a-dictionary-renderer.htm) in the *ArcGIS Runtime SDK for Java* guide. For information about creating your own custom dictionary style, see the open source [dictionary renderer toolkit](https://esriurl.com/DictionaryToolkit) on *GitHub*.
 
 ## Tags
 

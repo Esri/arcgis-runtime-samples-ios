@@ -1,0 +1,38 @@
+{
+    "category": "Route and Directions",
+    "description": "Use a routing service to navigate between two points.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "directions",
+        "maneuver",
+        "navigation",
+        "route",
+        "turn-by-turn",
+        "voice",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSRouteTask",
+        "AGSRouteParameters",
+        "AGSStop",
+        "AGSRouteResult",
+        "AGSRoute",
+        "AGSDirectionManeuver",
+        "AGSPolygonBarrier"
+    ],
+    "snippets": [
+        "NavigateRouteViewController.swift",
+        ".swift"
+    ],
+    "title": "Navigate route"
+}

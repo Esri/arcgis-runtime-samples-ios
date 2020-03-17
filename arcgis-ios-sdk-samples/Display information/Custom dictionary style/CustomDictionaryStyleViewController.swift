@@ -59,7 +59,6 @@ class CustomDictionaryStyleViewController: UIViewController {
             }
         }
         return featureLayer
-        
     }
     
     // MARK: UIViewController

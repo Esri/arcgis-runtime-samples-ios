@@ -27,7 +27,7 @@ class NearestVertexViewController: UIViewController {
     /// The graphics overlay for the polygon and points..
     let graphicsOverlay = AGSGraphicsOverlay()
     
-    /// A  formatter to convert units for distance.
+    /// A formatter to convert units for distance.
     let distanceFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
         formatter.numberFormatter.maximumFractionDigits = 1

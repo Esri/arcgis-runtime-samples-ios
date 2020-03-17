@@ -4231,7 +4231,6 @@
 					MontereyElevationRaster,
 					PublicArtShapefile,
 					Restaurant,
-					Resturant,
 					SRTMRaster,
 					SanDiegoLocator,
 					SanDiegoNetworkData,

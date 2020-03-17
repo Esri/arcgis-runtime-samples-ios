@@ -10,6 +10,9 @@
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		00DAE5ED24214C9800D51281 /* NavigateRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5EC24214C9800D51281 /* NavigateRouteViewController.swift */; };
+		00DAE5EF24214CD300D51281 /* NavigateRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5EE24214CD300D51281 /* NavigateRoute.storyboard */; };
+		00DAE5F124214E0500D51281 /* SimulatedLocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5F024214E0500D51281 /* SimulatedLocationDataSource.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
@@ -1093,6 +1096,9 @@
 /* Begin PBXFileReference section */
 		00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
+		00DAE5EC24214C9800D51281 /* NavigateRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateRouteViewController.swift; sourceTree = "<group>"; };
+		00DAE5EE24214CD300D51281 /* NavigateRoute.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavigateRoute.storyboard; sourceTree = "<group>"; };
+		00DAE5F024214E0500D51281 /* SimulatedLocationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatedLocationDataSource.swift; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
@@ -1668,6 +1674,16 @@
 				00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */,
 			);
 			path = "Convex hull";
+			sourceTree = "<group>";
+		};
+		00DAE5EA24214ABB00D51281 /* Navigate route */ = {
+			isa = PBXGroup;
+			children = (
+				00DAE5EC24214C9800D51281 /* NavigateRouteViewController.swift */,
+				00DAE5EE24214CD300D51281 /* NavigateRoute.storyboard */,
+				00DAE5F024214E0500D51281 /* SimulatedLocationDataSource.swift */,
+			);
+			path = "Navigate route";
 			sourceTree = "<group>";
 		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
@@ -2296,6 +2312,7 @@
 		3E6AE3E91C6D10DA0026E59C /* Route & Directions */ = {
 			isa = PBXGroup;
 			children = (
+				00DAE5EA24214ABB00D51281 /* Navigate route */,
 				F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */,
 				3E6AE3F31C6D1C920026E59C /* Find route */,
 				3EC39C191C9A5770003F6459 /* Route around barriers */,
@@ -4530,6 +4547,7 @@
 				4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */,
 				1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */,
 				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
+				00DAE5EF24214CD300D51281 /* NavigateRoute.storyboard in Resources */,
 				D9E2E75F20EEB8FF001D0AE0 /* Public_Art.prj in Resources */,
 				4C1EF299220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard in Resources */,
 				D9EE379A20E2CC7700BF8AD1 /* dolmus_side.jpeg in Resources */,
@@ -4748,6 +4766,7 @@
 				3ED028B01B8E3A9800ACA70D /* MILUsingURLViewController.swift in Sources */,
 				3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */,
 				4C478E5022402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift in Sources */,
+				00DAE5ED24214C9800D51281 /* NavigateRouteViewController.swift in Sources */,
 				3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */,
 				09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
@@ -4914,6 +4933,7 @@
 				E47ED0B42343EC670032440E /* CollectDataAR.swift in Sources */,
 				E47ED0B22343C87E0032440E /* DisplayScenesInTabletopAR.swift in Sources */,
 				E47ED0A62343C4FE0032440E /* ExploreScenesInFlyoverAR.swift in Sources */,
+				00DAE5F124214E0500D51281 /* SimulatedLocationDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

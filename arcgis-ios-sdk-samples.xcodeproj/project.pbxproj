@@ -12,6 +12,7 @@
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		00DAE5B82421321300D51281 /* NearestVertex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5B22421321300D51281 /* NearestVertex.storyboard */; };
 		00DAE5B92421321300D51281 /* NearestVertexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
+		00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
@@ -831,6 +832,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */,
 				F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */,
 				F15CF0CC23EE31A70038F052 /* DisplaySubtypeFeatureLayerViewController.swift in CopyFiles */,
 				00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */,

@@ -16,33 +16,23 @@ import UIKit
 import ArcGIS
 
 class CustomDictionaryStyleViewController: UIViewController {
-    /// Create the restaurants feature table from the feature service.
-    let restaurantFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Redlands_Restaurants/FeatureServer/0")!)
+    /// The URL to the restaurants feature table.
+    let restaurantFeatureTableURL = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Redlands_Restaurants/FeatureServer/0")!
+    /// The URL to the symbol style dictionary from shared resources.
+    let restaurantStyleURL = Bundle.main.url(forResource: "Restaurant", withExtension: "stylx")!
     
-    /// Load style symbol dictionary from shared resources.
-    let styleURL = Bundle.main.url(forResource: "Restaurant", withExtension: "stylx")!
-    
-    /// The map view managed by the view controller.
-    @IBOutlet weak var mapView: AGSMapView! {
-        didSet {
-            mapView.map = makeMap()
-            // Display symbology using a geodatabase.
-            displayFeatureLayer()
-        }
-    }
-    
-    /// Creates a map.
-    ///
-    /// - Returns: A new `AGSMap` object.
-    func makeMap() -> AGSMap {
-        let map = AGSMap(basemap: .streetsVector())
-        return map
-    }
-    
-    func displayFeatureLayer() {
+    /// A feature layer that contains custom symbol style.
+    lazy var featureLayer: AGSFeatureLayer = {
+        // Create restaurants feature table from the feature service URL.
+        let restaurantFeatureTable = AGSServiceFeatureTable(url: restaurantFeatureTableURL)
+        // Create the restaurants layer.
         let featureLayer = AGSFeatureLayer(featureTable: restaurantFeatureTable)
-        // Display features from the layer using Restaurant style symbols.
-        featureLayer.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: AGSDictionarySymbolStyle(url: styleURL))
+        // Open the custom style file.
+        let restaurantStyle = AGSDictionarySymbolStyle(url: restaurantStyleURL)
+        // Create the dictionary renderer from the style file.
+        let dictRenderer = AGSDictionaryRenderer(dictionarySymbolStyle: restaurantStyle)
+        // Apply the dictionary renderer to a feature layer.
+        featureLayer.renderer = dictRenderer
         featureLayer.load { (error: Error?) in
             if let error = error {
                 self.presentAlert(error: error)
@@ -51,8 +41,24 @@ class CustomDictionaryStyleViewController: UIViewController {
                 self.mapView.setViewpointGeometry(featureLayer.fullExtent!)
             }
         }
-        // Add each layer to the map.
-        mapView.map?.operationalLayers.add(featureLayer)
+        return featureLayer
+    }()
+    
+    /// The map view managed by the view controller.
+    @IBOutlet weak var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+            // Add the feature layer to the map.
+            mapView.map?.operationalLayers.add(featureLayer)
+        }
+    }
+    
+    /// Creates a map.
+    ///
+    /// - Returns: A new `AGSMap` object.
+    func makeMap() -> AGSMap {
+        let map = AGSMap(basemap: .streets())
+        return map
     }
     
     // MARK: UIViewController

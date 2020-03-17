@@ -1,0 +1,27 @@
+{
+    "category": "Display information",
+    "description": "Use a custom dictionary style (.stylx) to symbolize features using a variety of attribute values.",
+    "ignore": false,
+    "images": [
+        "image1.png"
+    ],
+    "keywords": [
+        "dictionary",
+        "military",
+        "renderer",
+        "style",
+        "unique value",
+        "visualization",
+        "AGSDictionaryRenderer",
+        "AGSDictionarySymbolStyle"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSDictionaryRenderer",
+        "AGSDictionarySymbolStyle"
+    ],
+    "snippets": [
+        "CustomDictionaryStyleViewController.swift"
+    ],
+    "title": "Custom dictionary style"
+}

@@ -29,7 +29,7 @@ class CustomDictionaryStyleViewController: UIViewController {
     func makeMap() -> AGSMap {
         let map = AGSMap(basemap: .streets())
         // Add the feature layer to the map.
-        mapView.map?.operationalLayers.add(makeFeatureLayer())
+        map.operationalLayers.add(makeFeatureLayer())
         return map
     }
     

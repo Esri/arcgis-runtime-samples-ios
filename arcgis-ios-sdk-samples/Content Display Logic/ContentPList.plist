@@ -289,6 +289,14 @@
 		<array>
 			<dict>
 				<key>displayName</key>
+				<string>Display subtype feature layer</string>
+				<key>storyboardName</key>
+				<string>DisplaySubtypeFeatureLayer</string>
+				<key>descriptionText</key>
+				<string>Display a composite layer of all the subtype values in a feature class.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Display annotation</string>
 				<key>storyboardName</key>
 				<string>DisplayAnnotation</string>
@@ -1153,6 +1161,14 @@
 				<string>Buffer</string>
 				<key>descriptionText</key>
 				<string>Create buffers around the tap location with a given radius.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Convex hull</string>
+				<key>storyboardName</key>
+				<string>ConvexHull</string>
+				<key>descriptionText</key>
+				<string>Create a convex hull for a given set of points.</string>
 			</dict>
 		</array>
 	</dict>

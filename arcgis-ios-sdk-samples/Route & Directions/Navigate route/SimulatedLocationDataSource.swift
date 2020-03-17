@@ -14,3 +14,7 @@
 
 import Foundation
 import ArcGIS
+
+class SimulatedLocationDataSource: AGSLocationDataSource {
+    
+}

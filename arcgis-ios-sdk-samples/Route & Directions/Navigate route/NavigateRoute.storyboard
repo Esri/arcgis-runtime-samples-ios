@@ -15,9 +15,36 @@
                     <view key="view" contentMode="scaleToFill" id="YVM-3B-TME">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC7-F9-vN9" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSf-vt-cp3">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem enabled="NO" title="Navigate" id="Pj1-2W-66g"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="nyt-vH-6dO"/>
+                                    <barButtonItem enabled="NO" title="Reset" id="W0g-he-t8F"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="EC7-F9-vN9" firstAttribute="top" secondItem="YVM-3B-TME" secondAttribute="top" id="2Vh-u4-Cba"/>
+                            <constraint firstItem="EC7-F9-vN9" firstAttribute="trailing" secondItem="YVM-3B-TME" secondAttribute="trailing" id="UTA-4p-JY6"/>
+                            <constraint firstItem="iSf-vt-cp3" firstAttribute="bottom" secondItem="YVM-3B-TME" secondAttribute="bottom" id="WFX-dc-2vL"/>
+                            <constraint firstItem="iSf-vt-cp3" firstAttribute="top" secondItem="EC7-F9-vN9" secondAttribute="bottom" symbolic="YES" id="YbN-M3-XGM"/>
+                            <constraint firstItem="iSf-vt-cp3" firstAttribute="leading" secondItem="YVM-3B-TME" secondAttribute="leading" id="fzC-6y-fFV"/>
+                            <constraint firstItem="iSf-vt-cp3" firstAttribute="trailing" secondItem="YVM-3B-TME" secondAttribute="trailing" id="mNt-7z-iVa"/>
+                            <constraint firstItem="EC7-F9-vN9" firstAttribute="leading" secondItem="YVM-3B-TME" secondAttribute="leading" id="yhJ-yl-82k"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="FzH-kw-6eq"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="EC7-F9-vN9" id="Rz7-I3-sa6"/>
+                        <outlet property="navigateButtonItem" destination="Pj1-2W-66g" id="dcJ-7Q-mn6"/>
+                        <outlet property="resetButtonItem" destination="W0g-he-t8F" id="fg3-jR-qIN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4z-SX-tC5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,6 +16,13 @@ import UIKit
 import ArcGIS
 
 class NavigateRouteViewController: UIViewController {
+    
+    /// The bar button item that initiates the create convex hull operation.
+    @IBOutlet weak var navigateButtonItem: UIBarButtonItem!
+    
+    /// The bar button item that removes the convex hull as well as the MapPoints.
+    @IBOutlet weak var resetButtonItem: UIBarButtonItem!
+    
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {

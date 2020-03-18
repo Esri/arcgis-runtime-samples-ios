@@ -16,7 +16,6 @@ import UIKit
 import ArcGIS
 
 class NavigateRouteViewController: UIViewController {
-    
     /// The bar button item that initiates the create convex hull operation.
     @IBOutlet weak var navigateButtonItem: UIBarButtonItem!
     

@@ -22,9 +22,23 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSf-vt-cp3">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem enabled="NO" title="Navigate" id="Pj1-2W-66g"/>
+                                    <barButtonItem enabled="NO" title="Navigate" id="Pj1-2W-66g">
+                                        <connections>
+                                            <action selector="startNavigation" destination="JxV-EA-CYk" id="tmV-vR-qVK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1EW-wh-IEu"/>
+                                    <barButtonItem enabled="NO" title="Recenter" id="yMb-Zf-aou">
+                                        <connections>
+                                            <action selector="recenter" destination="JxV-EA-CYk" id="klD-Z0-Uhp"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nyt-vH-6dO"/>
-                                    <barButtonItem enabled="NO" title="Reset" id="W0g-he-t8F"/>
+                                    <barButtonItem enabled="NO" title="Reset" id="W0g-he-t8F">
+                                        <connections>
+                                            <action selector="reset" destination="JxV-EA-CYk" id="6P0-Qg-upN"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -43,6 +57,7 @@
                     <connections>
                         <outlet property="mapView" destination="EC7-F9-vN9" id="Rz7-I3-sa6"/>
                         <outlet property="navigateButtonItem" destination="Pj1-2W-66g" id="dcJ-7Q-mn6"/>
+                        <outlet property="recenterButtonItem" destination="yMb-Zf-aou" id="XO6-9r-Qaf"/>
                         <outlet property="resetButtonItem" destination="W0g-he-t8F" id="fg3-jR-qIN"/>
                     </connections>
                 </viewController>

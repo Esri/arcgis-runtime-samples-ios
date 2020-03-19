@@ -10,6 +10,9 @@
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		00DAE5B82421321300D51281 /* NearestVertex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5B22421321300D51281 /* NearestVertex.storyboard */; };
+		00DAE5B92421321300D51281 /* NearestVertexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
+		00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
@@ -829,6 +832,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */,
 				F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */,
 				F15CF0CC23EE31A70038F052 /* DisplaySubtypeFeatureLayerViewController.swift in CopyFiles */,
 				00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */,
@@ -1093,6 +1097,8 @@
 /* Begin PBXFileReference section */
 		00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
+		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
+		00DAE5B32421321300D51281 /* NearestVertexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestVertexViewController.swift; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
@@ -1668,6 +1674,15 @@
 				00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */,
 			);
 			path = "Convex hull";
+			sourceTree = "<group>";
+		};
+		00DAE5B12421321300D51281 /* Nearest vertex */ = {
+			isa = PBXGroup;
+			children = (
+				00DAE5B22421321300D51281 /* NearestVertex.storyboard */,
+				00DAE5B32421321300D51281 /* NearestVertexViewController.swift */,
+			);
+			path = "Nearest vertex";
 			sourceTree = "<group>";
 		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
@@ -2591,6 +2606,7 @@
 		3EBA25711D34509500AB0703 /* Geometry */ = {
 			isa = PBXGroup;
 			children = (
+				00DAE5B12421321300D51281 /* Nearest vertex */,
 				00D4E8D8241AA18E002689DB /* Convex hull */,
 				F1034F9822D3EDFE00B021DA /* Project */,
 				3EBA25721D3450B800AB0703 /* Create geometries */,
@@ -4408,6 +4424,7 @@
 				3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */,
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
 				D97B7E5C1FD9BFE700E1239D /* Subdivisions.prj in Resources */,
+				00DAE5B82421321300D51281 /* NearestVertex.storyboard in Resources */,
 				C7AF465F21B1C8AC0050CC49 /* ChangeAtmosphereEffect.storyboard in Resources */,
 				C74ECB5121C17E9100129D6D /* DensifyAndGeneralize.storyboard in Resources */,
 				169CDBCA223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard in Resources */,
@@ -4782,6 +4799,7 @@
 				3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */,
 				C793B5DF21667194000A7A10 /* ListKMLContentsViewController.swift in Sources */,
 				3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */,
+				00DAE5B92421321300D51281 /* NearestVertexViewController.swift in Sources */,
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
 				1218C845225C06AF0027F3E2 /* CameraControllerTableViewController.swift in Sources */,

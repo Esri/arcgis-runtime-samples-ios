@@ -44,24 +44,26 @@ class FeatureLayerDictionaryRendererViewController: UIViewController {
         
         // Once geodatabase is done loading, create feature layers from each feature table.
         generatedGeodatabase.load { [weak self] (error: Error?) in
+            guard let self = self else { return }
             if let error = error {
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
             } else {
                 for featureTable in generatedGeodatabase.geodatabaseFeatureTables {
                     // Create a feature layer from the feature table.
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     // Set the minimum visibility scale.
                     featureLayer.minScale = 1000000
-                    featureLayer.load { (error: Error?) in
+                    featureLayer.load { [weak self] (error: Error?) in
+                        guard let self = self else { return }
                         if let error = error {
-                            self?.presentAlert(error: error)
+                            self.presentAlert(error: error)
                         } else {
                             // Set the viewpoint to the full extent of all layers.
-                            self?.mapView.setViewpointGeometry(featureLayer.fullExtent!)
+                            self.mapView.setViewpointGeometry(featureLayer.fullExtent!)
                         }
                     }
                     // Add each layer to the map.
-                    self!.mapView.map?.operationalLayers.add(featureLayer)
+                    self.mapView.map?.operationalLayers.add(featureLayer)
                     // Display features from the layer using mil2525d symbols.
                     featureLayer.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbol)
                 }

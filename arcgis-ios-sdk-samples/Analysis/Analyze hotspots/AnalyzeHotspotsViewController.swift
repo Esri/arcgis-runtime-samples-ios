@@ -79,11 +79,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             //dismiss progress hud
             SVProgressHUD.dismiss()
-            
-            guard let self = self else {
-                return
-            }
-            
+            guard let self = self else { return }
             if let error = error {
                 //show error
                 self.presentAlert(error: error)
@@ -96,11 +92,14 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
                 self.mapView.map?.operationalLayers.add(result!.mapImageLayer!)
                 
                 //set map view's viewpoint to the new layer's full extent
-                (self.mapView.map?.operationalLayers.firstObject as! AGSLayer).load { (error: Error?) in
-                    if error == nil {
+                (self.mapView.map?.operationalLayers.firstObject as! AGSLayer).load { [weak self] (error: Error?) in
+                    guard let self = self else { return }
+                    if let error = error {
+                        self.presentAlert(error: error)
+                    } else {
                         //set viewpoint as the extent of the mapImageLayer
                         if let extent = result?.mapImageLayer?.fullExtent {
-                            self.mapView.setViewpointGeometry(extent, completion: nil)
+                            self.mapView.setViewpointGeometry(extent)
                         }
                     }
                 }
@@ -112,7 +111,6 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
     
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: Date, toDate: Date) {
         hotspotSettingsViewController.dismiss(animated: true)
-        
         analyzeHotspots(fromDate, toDate: toDate)
     }
     

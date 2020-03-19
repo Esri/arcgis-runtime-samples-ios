@@ -18,6 +18,19 @@
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC7-F9-vN9" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhO-bQ-arF">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="trailing" secondItem="EC7-F9-vN9" secondAttribute="trailing" id="J7J-89-tpk"/>
+                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="top" secondItem="EC7-F9-vN9" secondAttribute="top" id="VKc-7o-qzt"/>
+                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="leading" secondItem="EC7-F9-vN9" secondAttribute="leading" id="uHQ-IH-XK6"/>
+                                </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSf-vt-cp3">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -59,6 +72,7 @@
                         <outlet property="navigateButtonItem" destination="Pj1-2W-66g" id="dcJ-7Q-mn6"/>
                         <outlet property="recenterButtonItem" destination="yMb-Zf-aou" id="XO6-9r-Qaf"/>
                         <outlet property="resetButtonItem" destination="W0g-he-t8F" id="fg3-jR-qIN"/>
+                        <outlet property="statusLabel" destination="IhO-bQ-arF" id="2T9-GI-6me"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4z-SX-tC5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

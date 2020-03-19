@@ -14,6 +14,7 @@
 
 import UIKit
 import ArcGIS
+import AVFoundation
 
 class NavigateRouteViewController: UIViewController {
     let routeStops: [AGSStop] = {[
@@ -26,10 +27,19 @@ class NavigateRouteViewController: UIViewController {
         ]}()
     
     var routeTask: AGSRouteTask!
+    var routeTracker: AGSRouteTracker!
     var routeResult: AGSRouteResult?
+    
+    var directionsList: [AGSDirectionManeuver] = []
     
     /// The graphics overlay for the polygon and points..
     let graphicsOverlay = AGSGraphicsOverlay()
+    
+    /// An AVSpeechSynthesizer for text to speech.
+    let speechSynthesizer = AVSpeechSynthesizer()
+    
+    let routeAheadGraphic = AGSGraphic(geometry: nil, symbol: AGSSimpleLineSymbol(style: .dash, color: .systemPurple, width: 5), attributes: nil)
+    let routeTraveledGraphic = AGSGraphic(geometry: nil, symbol: AGSSimpleLineSymbol(style: .solid, color: .systemBlue, width: 3), attributes: nil)
     
     /// The bar button item that initiates the create convex hull operation.
     @IBOutlet weak var navigateButtonItem: UIBarButtonItem!
@@ -38,6 +48,8 @@ class NavigateRouteViewController: UIViewController {
     @IBOutlet weak var resetButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var recenterButtonItem: UIBarButtonItem!
+    
+    @IBOutlet weak var statusLabel: UILabel!
     
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
@@ -87,11 +99,11 @@ class NavigateRouteViewController: UIViewController {
             } else if let routeResult = routeResult, let route = routeResult.routes.first {
                 self.routeResult = routeResult
                 // Show the resulting route on the map and save a reference to the route.
-                let routeAheadGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: AGSSimpleLineSymbol(style: .dash, color: .systemPurple, width: 5), attributes: nil)
-                let routeTraveledGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: AGSSimpleLineSymbol(style: .solid, color: .systemBlue, width: 3), attributes: nil)
+                self.routeAheadGraphic.geometry = route.routeGeometry
+                self.routeTraveledGraphic.geometry = nil
                 self.graphicsOverlay.graphics.addObjects(from: [
-                    routeAheadGraphic,
-                    routeTraveledGraphic
+                    self.routeAheadGraphic,
+                    self.routeTraveledGraphic
                 ])
                 #warning("probably buggy dispatch sequence")
                 if let routeGeometry = route.routeGeometry {
@@ -107,13 +119,18 @@ class NavigateRouteViewController: UIViewController {
     @IBAction func startNavigation() {
         navigateButtonItem.isEnabled = false
         if let routeResult = routeResult, let route = routeResult.routes.first {
-            let directionsList = route.directionManeuvers
-            let tracker = AGSRouteTracker(routeResult: routeResult, routeIndex: 0)
-            tracker?.delegate = self
+            directionsList = route.directionManeuvers
+            routeTracker = AGSRouteTracker(routeResult: routeResult, routeIndex: 0)
+            routeTracker?.delegate = self
+            let mockDataSource = SimulatedLocationDataSource(route: route.routeGeometry!)
+            mockDataSource.locationChangeHandlerDelegate = self
+            mapView.locationDisplay.dataSource = mockDataSource
         }
-        
+        mapView.locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.navigation
         // If the user navigates the map view away from the location display, activate the recenter button.
         mapView.locationDisplay.autoPanModeChangedHandler = { _ in self.recenterButtonItem.isEnabled = true }
+        // Start the location data source and location display.
+        mapView.locationDisplay.start(completion: nil)
     }
     
     /// Called in response to the Reset button being tapped.
@@ -126,6 +143,7 @@ class NavigateRouteViewController: UIViewController {
     @IBAction func recenter() {
         recenterButtonItem.isEnabled = false
         mapView.locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.navigation
+        
     }
     
     // MARK: UIViewController
@@ -140,20 +158,52 @@ class NavigateRouteViewController: UIViewController {
 
 extension NavigateRouteViewController: AGSRouteTrackerDelegate {
     func routeTracker(_ routeTracker: AGSRouteTracker, didGenerateNewVoiceGuidance voiceGuidance: AGSVoiceGuidance) {
-        <#code#>
+        setSpeakDirection(voiceGuidance.text)
     }
     
     func routeTracker(_ routeTracker: AGSRouteTracker, didUpdate trackingStatus: AGSTrackingStatus) {
-        <#code#>
+        // Call the base method for LocationDataSource to update the location with the tracked (snapped to route) location.
+        let location = trackingStatus.displayLocation
+        // What is this part doing?
     }
     
-    func speakDirections() {
-        
+    func setSpeakDirection(_ text: String?) {
+        speechSynthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
+        if let text = text {
+            let speechUtterance = AVSpeechUtterance(string: text)
+            speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 5.0
+            speechSynthesizer.speak(speechUtterance)
+        }
     }
     
-    func updateTrackingStatus() {
-        
+    func updateTrackingStatus(_ status: AGSTrackingStatus) {
+        let distanceRemaining: String
+        let timeRemaining: String
+        let nextDirection: String
+        switch status.destinationStatus {
+        case .notReached, .approaching:
+            distanceRemaining = status.routeProgress.remainingDistance.displayText + status.routeProgress.remainingDistance.displayTextUnits.pluralDisplayName
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.unitsStyle = .full
+            timeRemaining = formatter.string(from: TimeInterval(status.routeProgress.remainingTime / 60))!
+            if status.currentManeuverIndex < directionsList.count {
+                nextDirection = directionsList[status.currentManeuverIndex + 1].directionText
+            }
+            routeAheadGraphic.geometry = status.routeProgress.remainingGeometry
+            routeTraveledGraphic.geometry = status.routeProgress.traversedGeometry
+        case .reached:
+            <#code#>
+        default:
+            return
+        }
+        let statusText = ""
     }
 }
 
-// will use AVSpeechSynthesizer to text to speech
+extension NavigateRouteViewController: AGSLocationChangeHandlerDelegate {
+    func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
+        // Update the tracker location with the new location from the source (simulation or GPS).
+        self.routeTracker.trackLocation(location, completion: nil)
+    }
+}

@@ -12,7 +12,6 @@
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		00DAE5ED24214C9800D51281 /* NavigateRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5EC24214C9800D51281 /* NavigateRouteViewController.swift */; };
 		00DAE5EF24214CD300D51281 /* NavigateRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5EE24214CD300D51281 /* NavigateRoute.storyboard */; };
-		00DAE5F124214E0500D51281 /* SimulatedLocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5F024214E0500D51281 /* SimulatedLocationDataSource.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };

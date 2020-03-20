@@ -213,6 +213,7 @@ class NavigateRouteViewController: UIViewController {
         print("deinit")
         speechSynthesizer = nil
         routeTracker = nil
+        // will test more
     }
 }
 

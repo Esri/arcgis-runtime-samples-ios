@@ -944,6 +944,18 @@
 				<key>storyboardName</key>
 				<string>ReadSymbolsFromMobileStyle</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Custom dictionary style</string>
+				<key>descriptionText</key>
+				<string>Use a custom dictionary style (.stylx) to symbolize features using a variety of attribute values.</string>
+				<key>storyboardName</key>
+				<string>CustomDictionaryStyle</string>
+				<key>dependency</key>
+				<array>
+					<string>Restaurant</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1170,6 +1182,14 @@
 				<key>descriptionText</key>
 				<string>Create a convex hull for a given set of points.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Nearest vertex</string>
+				<key>storyboardName</key>
+				<string>NearestVertex</string>
+				<key>descriptionText</key>
+				<string>Find the closest vertex and coordinate of a geometry to a point.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1229,14 +1249,6 @@
 				<string>Find routes from several locations to the respective closest facility.</string>
 				<key>storyboardName</key>
 				<string>FindClosestFacilityMultipleIncidentsService</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Navigate route</string>
-				<key>descriptionText</key>
-				<string>Use a routing service to navigate between two points.</string>
-				<key>storyboardName</key>
-				<string>NavigateRoute</string>
 			</dict>
 		</array>
 	</dict>

@@ -23,10 +23,37 @@ class CreateAndSaveKMLViewController: UIViewController {
             mapView.map = makeMap()
             let sketchEditor = AGSSketchEditor()
             mapView.sketchEditor = sketchEditor
-            let sketch = mapView.sketchEditor
-            let point = AGSPoint(x: 44.00, y: 22.00, spatialReference: .wgs84())
-            sketch?.start(with: point)
         }
+    }
+    
+    @IBOutlet var addButton: UIBarButtonItem?
+    @IBOutlet var sketchDoneButton: UIBarButtonItem?
+    @IBOutlet var toolbar: UIToolbar?
+    @IBOutlet var saveButton: UIBarButtonItem?
+    
+    @IBAction func saveKMZ() {
+        let activityViewController = UIActivityViewController(activityItems: [kmlDocument], applicationActivities: nil)
+        present(activityViewController, animated: true)
+    }
+
+    @IBAction func completeSketch() {
+        geometry = mapView.sketchEditor?.geometry
+        projectedGeometry = AGSGeometryEngine.projectGeometry(geometry!, to: spatialRef)
+        kmlGeometry = AGSKMLGeometry(geometry: projectedGeometry!, altitudeMode: .clampToGround)
+        currentPlacemark = AGSKMLPlacemark(geometry: kmlGeometry!)
+        currentPlacemark!.style = kmlStyle
+        kmlDocument.addChildNode(currentPlacemark!)
+        mapView.sketchEditor?.stop()
+        changeButton()
+    }
+    
+    @IBAction func resetKML() {
+        mapView.map?.operationalLayers.removeAllObjects()
+        currentPlacemark = nil
+        kmlDocument = AGSKMLDocument()
+        kmlDataset = AGSKMLDataset(rootNode: kmlDocument)
+        kmlLayer = AGSKMLLayer(kmlDataset: kmlDataset!)
+        mapView.map?.operationalLayers.add(kmlLayer!)
     }
     
     func makeMap() -> AGSMap {
@@ -36,31 +63,17 @@ class CreateAndSaveKMLViewController: UIViewController {
         return map
     }
 
-    var color: UIColor?
     let sketchStyle = AGSSketchStyle()
     var sketchCreationMode: AGSSketchCreationMode?
-    let kmlDocument = AGSKMLDocument()
+    var kmlDocument = AGSKMLDocument()
     let spatialRef = AGSSpatialReference.wgs84()
     var kmlStyle = AGSKMLStyle()
     var geometry: AGSGeometry?
-//    func makePoints() {
-//        point = AGSPoint(x: -117.195800, y: 34.056295, spatialReference: self.spatialRef)
-//    }
-//    let point = AGSPoint(x: -117.195800, y: 34.056295, spatialReference: self.spatialRef)
-//        let polylinePoints = [
-//            AGSPoint(x: -119.992, y: 41.989, spatialReference: spatialRef),
-//            AGSPoint(x: -119.994, y: 38.994, spatialReference: spatialRef),
-//            AGSPoint(x: -114.620, y: 35.0, spatialReference: spatialRef)
-//        ]
-//        let polygonPoints = [
-//            AGSPoint(x: -109.048, y: 40.998, spatialReference: spatialRef),
-//            AGSPoint(x: -102.047, y: 40.998, spatialReference: spatialRef),
-//            AGSPoint(x: -102.037, y: 36.989, spatialReference: spatialRef),
-//            AGSPoint(x: -109.048, y: 36.998, spatialReference: spatialRef)
-//        ]
-//        let polyline = AGSPolyline(points: polylinePoints)
-//        let polygon = AGSPolygon(points: polygonPoints)
-//        let envelope = AGSEnvelope(xMin: -123.0, yMin: 33.5, xMax: -101.0, yMax: 42.0, spatialReference: spatialRef)
+    var projectedGeometry: AGSGeometry?
+    var kmlGeometry: AGSKMLGeometry?
+    var currentPlacemark: AGSKMLPlacemark?
+    var kmlDataset: AGSKMLDataset?
+    var kmlLayer: AGSKMLLayer?
     
     func addKMLPlaceMark(view: UIView) {
         guard let sketchEditor = mapView.sketchEditor else { return }
@@ -88,9 +101,9 @@ class CreateAndSaveKMLViewController: UIViewController {
         kmlDocument.addChildNode(placemark)
     }
     
-    private func startSketch(sketchCreationMode: AGSSketchCreationMode) {
+    func startSketch() {
         mapView.sketchEditor?.stop()
-        mapView.sketchEditor?.start(with: sketchCreationMode)
+        mapView.sketchEditor?.start(with: sketchCreationMode!)
     }
     
     func makeKMLStyleWithPointStyle(icon: AGSKMLIcon, color: UIColor) -> AGSKMLStyle {
@@ -112,11 +125,20 @@ class CreateAndSaveKMLViewController: UIViewController {
         return kmlStyle
     }
     
+    func changeButton() {
+        if (toolbar?.items?.contains(addButton!))! {
+            toolbar?.items?.remove(at: 2)
+            toolbar?.items?.insert(sketchDoneButton!, at: 2)
+        } else {
+            toolbar?.items?.remove(at: 2)
+            toolbar?.items?.insert(addButton!, at: 2)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if let navigationController = segue.destination as? UINavigationController,
             let settingsViewController = navigationController.topViewController as? CreateAndSaveKMLSettingsViewController {
-            color = settingsViewController.color
             settingsViewController.kmlStyle = kmlStyle
             settingsViewController.delegate = self
         }
@@ -124,7 +146,8 @@ class CreateAndSaveKMLViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        toolbar?.items?.remove(at: 3)
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "CreateAndSaveKMLViewController",
@@ -144,23 +167,24 @@ extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewController
     func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, feature: String, icon: AGSKMLIcon?, color: UIColor) {
         switch feature {
         case "point":
-            guard let icon = icon else { return }
             sketchCreationMode = AGSSketchCreationMode.point
-            kmlStyle = makeKMLStyleWithPointStyle(icon: icon, color: color)
+            kmlStyle = makeKMLStyleWithPointStyle(icon: icon!, color: color)
         case "polyline":
             sketchCreationMode = AGSSketchCreationMode.polyline
             kmlStyle = makeKMLStyleWithLineStyle(color: color)
         case "polygon":
             sketchCreationMode = AGSSketchCreationMode.polygon
             kmlStyle = makeKMLStyleWithPolygonStyle(color: color)
+            kmlStyle.polygonStyle?.isFilled = true
+            kmlStyle.polygonStyle?.isOutlined = false
         default:
-            print("default statement to replace with something")
+            break
         }
     }
     
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController) {
         dismiss(animated: true)
+        changeButton()
         mapView.sketchEditor?.start(with: sketchCreationMode!)
-        geometry = mapView.sketchEditor?.geometry
     }
 }

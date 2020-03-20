@@ -29,17 +29,16 @@ protocol CreateAndSaveKMLSettingsViewControllerDelegate: AnyObject {
 
 class CreateAndSaveKMLSettingsViewController: UITableViewController {
     weak var delegate: CreateAndSaveKMLSettingsViewControllerDelegate?
-    var icon: AGSKMLIcon?
-    var color: UIColor?
-    var feature: String?
+    var icon = AGSKMLIcon(url: URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueSquareLargeB.png")!)
+    var color = UIColor.red
+    var feature = "point"
     @IBOutlet var pointLabel: UITableViewCell?
     @IBOutlet var iconLabel: UILabel?
     @IBOutlet var colorLabel: UILabel?
     
     @IBAction func done() {
+        delegate?.createAndSaveKMLSettingsViewController(self, feature: feature, icon: icon, color: color)
         delegate?.createAndSaveKMLSettingsViewControllerDidFinish(self)
-        
-        delegate?.createAndSaveKMLSettingsViewController(self, feature: feature!, icon: icon, color: color!)
     }
     
     var kmlStyle = AGSKMLStyle()
@@ -174,19 +173,19 @@ extension CreateAndSaveKMLSettingsViewController: UIPickerViewDelegate {
             let iconKey = possibleIcons[row]
             let iconURL = iconDictionary[iconKey]
             icon = AGSKMLIcon(url: iconURL!)
-            return feature = "point "
+            return feature = "point"
         case .colorPicker:
             let colorKey = possibleColors[row]
-            return color = colorDictionary[colorKey] //returns UIColor
+            return color = colorDictionary[colorKey]! //returns UIColor
         }
     }
 }
 
 extension CreateAndSaveKMLSettingsViewController /* UITableViewDelegate */ {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath {
+        switch adjustedIndexPath(indexPath) {
         case .pointLabel:
-            tableView.deselectRow(at: indexPath, animated: true)
+            tableView.deselectRow(at: adjustedIndexPath(indexPath), animated: true)
             // change text of right detail
             toggleIconPickerVisibility()
         case .polylineLabel:
@@ -194,7 +193,7 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDelegate */ {
         case .polygonLabel:
             return feature = "polygon"
         case .colorLabel:
-            tableView.deselectRow(at: indexPath, animated: true)
+            tableView.deselectRow(at: adjustedIndexPath(indexPath), animated: true)
             // change text of right detail
             toggleColorPickerVisibility()
         default:

@@ -12,27 +12,34 @@
         "route",
         "turn-by-turn",
         "voice",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "AGSDestinationStatus",
+        "AGSDirectionManeuver",
+        "AGSLocation",
+        "AGSLocationDataSource",
+        "AGSRoute",
+        "AGSRouteParameters",
+        "AGSRouteTask",
+        "AGSRouteTracker",
+        "AGSSimulatedLocationDataSource",
+        "AGSStop",
+        "AGSVoiceGuidance"
     ],
     "redirect_from": [],
     "relevant_apis": [
-        "AGSRouteTask",
-        "AGSRouteParameters",
-        "AGSStop",
-        "AGSRouteResult",
-        "AGSRoute",
+        "AGSDestinationStatus",
         "AGSDirectionManeuver",
-        "AGSPolygonBarrier"
+        "AGSLocation",
+        "AGSLocationDataSource",
+        "AGSRoute",
+        "AGSRouteParameters",
+        "AGSRouteTask",
+        "AGSRouteTracker",
+        "AGSSimulatedLocationDataSource",
+        "AGSStop",
+        "AGSVoiceGuidance"
     ],
     "snippets": [
-        "NavigateRouteViewController.swift",
-        ".swift"
+        "NavigateRouteViewController.swift"
     ],
     "title": "Navigate route"
 }

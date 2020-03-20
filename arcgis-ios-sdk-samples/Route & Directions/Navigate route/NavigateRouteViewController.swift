@@ -176,6 +176,12 @@ class NavigateRouteViewController: UIViewController {
         }
     }
     
+    /// Resets to the starting location for location display.
+    func resetToStartingLocation() {
+        guard let initialLocation = mockDataSource?.locations?[0] else { return }
+        mockDataSource?.didUpdate(initialLocation)
+    }
+    
     /// Called in response to the Navigate button being tapped.
     @IBAction func startNavigation() {
         navigateButtonItem.isEnabled = false
@@ -192,6 +198,7 @@ class NavigateRouteViewController: UIViewController {
         // Stop the speech, if there is any.
         speechSynthesizer?.stopSpeaking(at: .immediate)
         speechSynthesizer = nil
+        resetToStartingLocation()
         // Stop the datasource generation, if there is any.
         mapView.locationDisplay.stop()
         mapView.locationDisplay.autoPanMode = .off
@@ -289,11 +296,3 @@ extension NavigateRouteViewController: AGSLocationChangeHandlerDelegate {
         self.routeTracker?.trackLocation(location, completion: nil)
     }
 }
-
-// questions
-// 1. reset button
-// 2. too fast in location changes for simulated timer 1s per location, 58 in total - control by densify
-// 3. label blend with dev text
-// 4. u-turn voice - magical
-// avoid the reset animation of origin
-// label is not wide enough

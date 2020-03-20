@@ -17,7 +17,7 @@ Tap 'Navigate' to simulate traveling and to receive directions from a preset sta
 1. Create an `AGSRouteTask` using a URL to an online route service.
 2. Generate default `AGSRouteParameters` using `defaultRouteParameters(completion:)`.
 3. Set `returnRoutes`, `returnStops` and `returnDirections` on the parameters to true.
-4. Add `AGSStop`s to the parameters `stops` collection for each destination.
+?4. Add `AGSStop`s to the parameters `stops` collection for each destination.
 5. Solve the route using `solveRoute(with:completion:)` to get an `AGSRouteResult`.
 6. Create an `AGSRouteTracker` using the route result, and the index of the desired route to take.
 ~~7. Use `.trackLocationAsync(LocationDataSource.Location)` to track the location of the device and update the route tracking status.~~

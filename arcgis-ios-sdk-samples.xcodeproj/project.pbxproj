@@ -10,6 +10,10 @@
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		00DAE5D824213D5B00D51281 /* Restaurant.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5D624213D5B00D51281 /* Restaurant.stylx */; settings = {ASSET_TAGS = (Restaurant, ); }; };
+		00DAE5E024213D6B00D51281 /* CustomDictionaryStyle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5DB24213D6B00D51281 /* CustomDictionaryStyle.storyboard */; };
+		00DAE5E224213D6B00D51281 /* CustomDictionaryStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */; };
+		00DAE5E424213D9A00D51281 /* CustomDictionaryStyleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */; };
 		00DAE5B82421321300D51281 /* NearestVertex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5B22421321300D51281 /* NearestVertex.storyboard */; };
 		00DAE5B92421321300D51281 /* NearestVertexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
 		00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
@@ -832,6 +836,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00DAE5E424213D9A00D51281 /* CustomDictionaryStyleViewController.swift in CopyFiles */,
 				00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */,
 				F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */,
 				F15CF0CC23EE31A70038F052 /* DisplaySubtypeFeatureLayerViewController.swift in CopyFiles */,
@@ -1097,6 +1102,9 @@
 /* Begin PBXFileReference section */
 		00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
+		00DAE5D624213D5B00D51281 /* Restaurant.stylx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Restaurant.stylx; sourceTree = "<group>"; };
+		00DAE5DB24213D6B00D51281 /* CustomDictionaryStyle.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomDictionaryStyle.storyboard; sourceTree = "<group>"; };
+		00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDictionaryStyleViewController.swift; sourceTree = "<group>"; };
 		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
 		00DAE5B32421321300D51281 /* NearestVertexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestVertexViewController.swift; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
@@ -1674,6 +1682,15 @@
 				00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */,
 			);
 			path = "Convex hull";
+			sourceTree = "<group>";
+		};
+		00DAE5D924213D6B00D51281 /* Custom dictionary style */ = {
+			isa = PBXGroup;
+			children = (
+				00DAE5DB24213D6B00D51281 /* CustomDictionaryStyle.storyboard */,
+				00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */,
+			);
+			path = "Custom dictionary style";
 			sourceTree = "<group>";
 		};
 		00DAE5B12421321300D51281 /* Nearest vertex */ = {
@@ -2714,6 +2731,7 @@
 		3ED027FD1B8E392500ACA70D /* Display information */ = {
 			isa = PBXGroup;
 			children = (
+				00DAE5D924213D6B00D51281 /* Custom dictionary style */,
 				3ED028FD1B8E3AB300ACA70D /* Add graphics with renderer */,
 				3E71621D1BA0D7C2008DE398 /* Add graphics with symbols */,
 				3ED029021B8E3AB300ACA70D /* Identify graphics */,
@@ -3515,6 +3533,7 @@
 		4CA6F6CD22C6C671004F0F4F /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				00DAE5D624213D5B00D51281 /* Restaurant.stylx */,
 				4CA6F6CE22C6C671004F0F4F /* mil2525d.stylx */,
 			);
 			path = Styles;
@@ -4227,6 +4246,7 @@
 					MontereyElevation,
 					MontereyElevationRaster,
 					PublicArtShapefile,
+					Restaurant,
 					SRTMRaster,
 					SanDiegoLocator,
 					SanDiegoNetworkData,
@@ -4535,6 +4555,7 @@
 				3EFCE1C61CF374C600E02F67 /* MobileMapSearchRoute.storyboard in Resources */,
 				D9E2E76620EEB8FF001D0AE0 /* Public_Art.shp.xml in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
+				00DAE5D824213D5B00D51281 /* Restaurant.stylx in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
@@ -4560,6 +4581,7 @@
 				F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */,
 				4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
+				00DAE5E024213D6B00D51281 /* CustomDictionaryStyle.storyboard in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
 				D9E2E76420EEB8FF001D0AE0 /* Public_Art.shp in Resources */,
 				127D29F8200EC5FC00DD6CDC /* ViewshedLocation.storyboard in Resources */,
@@ -4713,6 +4735,7 @@
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
 				169CDBCC223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift in Sources */,
 				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,
+				00DAE5E224213D6B00D51281 /* CustomDictionaryStyleViewController.swift in Sources */,
 				F1D7508F230730360018B812 /* ElevationViewController.swift in Sources */,
 				3ED0286A1B8E3A8500ACA70D /* SetViewpointViewController.swift in Sources */,
 				3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */,

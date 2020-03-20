@@ -944,6 +944,18 @@
 				<key>storyboardName</key>
 				<string>ReadSymbolsFromMobileStyle</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Custom dictionary style</string>
+				<key>descriptionText</key>
+				<string>Use a custom dictionary style (.stylx) to symbolize features using a variety of attribute values.</string>
+				<key>storyboardName</key>
+				<string>CustomDictionaryStyle</string>
+				<key>dependency</key>
+				<array>
+					<string>Restaurant</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>

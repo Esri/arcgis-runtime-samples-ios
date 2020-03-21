@@ -17,6 +17,8 @@
 		00DAE5B82421321300D51281 /* NearestVertex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5B22421321300D51281 /* NearestVertex.storyboard */; };
 		00DAE5B92421321300D51281 /* NearestVertexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
 		00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
+		00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E276272425A205000DBEDD /* NavigateRoute.storyboard */; };
+		00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
@@ -1107,6 +1109,8 @@
 		00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDictionaryStyleViewController.swift; sourceTree = "<group>"; };
 		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
 		00DAE5B32421321300D51281 /* NearestVertexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestVertexViewController.swift; sourceTree = "<group>"; };
+		00E276272425A205000DBEDD /* NavigateRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NavigateRoute.storyboard; sourceTree = "<group>"; };
+		00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateRouteViewController.swift; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };

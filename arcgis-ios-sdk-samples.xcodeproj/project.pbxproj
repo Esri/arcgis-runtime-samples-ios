@@ -1702,6 +1702,15 @@
 			path = "Nearest vertex";
 			sourceTree = "<group>";
 		};
+		00E276252425A205000DBEDD /* Navigate route */ = {
+			isa = PBXGroup;
+			children = (
+				00E276272425A205000DBEDD /* NavigateRoute.storyboard */,
+				00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */,
+			);
+			path = "Navigate route";
+			sourceTree = "<group>";
+		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -2328,6 +2337,7 @@
 		3E6AE3E91C6D10DA0026E59C /* Route & Directions */ = {
 			isa = PBXGroup;
 			children = (
+				00E276252425A205000DBEDD /* Navigate route */,
 				F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */,
 				3E6AE3F31C6D1C920026E59C /* Find route */,
 				3EC39C191C9A5770003F6459 /* Route around barriers */,
@@ -4439,6 +4449,7 @@
 				166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */,
 				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
 				C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */,
+				00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
 				3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */,
@@ -4871,6 +4882,7 @@
 				D930E01122EA47F7006C09A1 /* ConnectedTraceViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
+				00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */,
 				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */,

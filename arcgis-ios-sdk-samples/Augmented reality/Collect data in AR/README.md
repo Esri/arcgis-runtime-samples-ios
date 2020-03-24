@@ -22,20 +22,21 @@ When you tap, an orange diamond will appear at the tapped location. You can move
 2. Load the feature service and display it with a feature layer.
 3. Create and add the elevation surface to the scene.
 4. Create a graphics overlay for planning the location of features to add. Configure the graphics overlay with a renderer and add the graphics overlay to the scene view.
-5. When the user taps the screen, use `arcGISARView.arScreenToLocation` to find the real-world location of the tapped object using ARKit plane detection.
+5. When the user taps the screen, use `arcGISARView.arScreenToLocation(screenPoint:)` to find the real-world location of the tapped object using ARKit plane detection.
 6. Add a graphic to the graphics overlay preview where the feature will be placed and allow the user to visually verify the placement.
 7. When the user presses the button, take the current AR frame from the `arView.arSCNView.session`. Rotate the image appropriately and convert it to a JPEG for efficient storage.
-8. Prompt the user for a tree health value, then create the feature. Upon successful creation of the feature, use `feature.addAttachment` to add the image.
+8. Prompt the user for a tree health value, then create the feature. Upon successful creation of the feature, use `feature.addAttachment(withName:contentType:data:completion:)` to add the image.
 
 ## Relevant API
 
 * ArcGISARView
 * AGSGraphicsOverlay
 * AGSSceneView
+* AGSSurface
 
 ## About the data
 
-The sample uses a publicly-editable sample [tree survey feature service](https://arcgisruntime.maps.arcgis.com/home/item.html?id=8feb9ea6a27f48b58b3faf04e0e303ed). You can use AR to quickly record the location and health of a tree while seamlessly capturing a photo.
+The sample uses a publicly-editable sample tree survey feature service hosted on ArcGIS Online called [AR Tree Survey](https://arcgisruntime.maps.arcgis.com/home/item.html?id=8feb9ea6a27f48b58b3faf04e0e303ed). You can use AR to quickly record the location and health of a tree while seamlessly capturing a photo.
 
 ## Additional information
 
@@ -50,7 +51,7 @@ This sample only uses the `arScreenToLocation` approach, as it is the only way t
 
 Note that unlike other scene samples, a basemap isn't shown most of the time, because the real world provides the context. Only while calibrating is the basemap displayed at 50% opacity, to give the user a visual reference to compare to.
 
-**Real-scale AR** is one of three main patterns for working with geographic information in augmented reality. See [Display scenes in augmented reality](https://developers.arcgis.com/ios/latest/swift/guide/display-scenes-in-augmented-reality.htm) in the guide for more information.
+**Real-scale AR** is one of three main patterns for working with geographic information in augmented reality. See [Augmented reality](https://developers.arcgis.com/ios/latest/swift/guide/display-scenes-in-augmented-reality.htm) in the guide for more information.
 
 See the 'Edit feature attachments' sample for more specific information about the attachment editing workflow.
 

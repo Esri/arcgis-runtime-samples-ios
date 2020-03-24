@@ -17,7 +17,7 @@ You'll see a feed from the camera when you open the sample. Tap on any flat, hor
 1. Create an `ArcGISARView` and add it to the view.
     * Note: this sample uses content in the WGS 84 geographic tiling scheme, rather than the web mercator tiling scheme. Once a scene has been displayed, the scene view cannot display another scene with a non-matching tiling scheme. To avoid that, the sample starts by showing a blank scene with an invisible base surface. Touch events will not be raised for the scene view unless a scene is displayed.
 2. Listen for ARKit tracking state updates with `arView.arSCNViewDelegate` and provide feedback to the user as necessary.
-3. When tracking is ready, wait for the user to tap, then use `arView.setInitialTransformation(using: screenPoint)` to set the initial transformation, which allows you to place the scene. This method uses ARKit's built-in plane detection.
+3. When tracking is ready, wait for the user to tap, then use `arView.setInitialTransformation(using:)` to set the initial transformation, which allows you to place the scene. This method uses ARKit's built-in plane detection.
 4. Create and display the scene. To allow you to look at the content from below, set the base surface navigation constraint to `none`.
 5. Set the clipping distance property of the `ArcGISARView`. This will clip the scene to the area you want to show.
 6. For tabletop mapping, the arView's `originCamera` must be set such that the altitude of the camera matches the altitude of the lowest point in the scene. Otherwise, scene content will float above or below the targeted anchor position identified by the user. For this sample, the origin camera's latitude and longitude are set to the center of the scene for best results. This will give the impression that the scene is centered on the location the user tapped.
@@ -28,6 +28,7 @@ You'll see a feed from the camera when you open the sample. Tap on any flat, hor
 
 * ArcGISARView
 * AGSSceneView
+* AGSSurface
 
 ## Offline data
 
@@ -43,7 +44,7 @@ This sample requires a device that is compatible with ARKit 1.0 on iOS.
 
 **Tabletop AR** is one of three main patterns for working with geographic information in augmented reality. See [Display scenes in augmented reality](https://developers.arcgis.com/ios/latest/swift/guide/display-scenes-in-augmented-reality.htm) in the guide for more information.
 
-This sample uses the ArcGIS Runtime Toolkit. See [Augmented reality]() in the guide to learn about the toolkit and how to add it to your app.
+This sample uses the ArcGIS Runtime Toolkit. See [Augmented reality](https://developers.arcgis.com/ios/latest/swift/guide/display-scenes-in-augmented-reality.htm) in the guide to learn about the toolkit and how to add it to your app.
 
 ## Tags
 

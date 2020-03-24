@@ -18,7 +18,7 @@ When you tap, an orange diamond will appear at the tapped location. You can move
 
 ## How it works
 
-1. Create an `ArcGISARView`. Set the atmosphere effect to `none` and the space effect to `transparent`. Create and show a scene in the scene view.
+1. Create an `ArcGISARView`. Set the atmosphere effect to `none` and the space effect to `transparent`. Create and show a scene in the scene view. 
 2. Load the feature service and display it with a feature layer.
 3. Create and add the elevation surface to the scene.
 4. Create a graphics overlay for planning the location of features to add. Configure the graphics overlay with a renderer and add the graphics overlay to the scene view.

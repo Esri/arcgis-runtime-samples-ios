@@ -318,8 +318,12 @@ private class DemoTouchesView: UIView {
                 removeTouch(touch)
             case .cancelled:
                 removeTouch(touch, cancelled: true)
-            case .stationary, .regionEntered, .regionMoved, .regionExited:
-                fallthrough
+            case .stationary:
+                break
+            #if compiler(>=5.2)
+            case .regionEntered, .regionMoved, .regionExited:
+                break
+            #endif
             @unknown default:
                 break
             }

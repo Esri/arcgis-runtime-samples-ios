@@ -1,8 +1,8 @@
 # List portal group users
 
-This sample demonstrates how to show the users in a portal group.
+Shows the users in a portal group.
 
-![](image1.png)
+![List Portal Group Users](list-portal-group-users.png)
 
 ## How it works
 

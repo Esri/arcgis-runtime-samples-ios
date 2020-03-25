@@ -144,7 +144,7 @@ private class KMZProvider: UIActivityItemProvider {
         if document.name.isEmpty {
             document.name = "Untitled"
         }
-        super.init(placeholderItem: URL(string: "\(document.name).kmz")!)
+        super.init(placeholderItem: URL(fileURLWithPath: "\(document.name).kmz"))
     }
 
     override var item: Any {

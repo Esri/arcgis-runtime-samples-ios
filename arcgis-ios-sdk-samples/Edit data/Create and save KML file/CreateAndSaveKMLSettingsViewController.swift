@@ -29,7 +29,7 @@ protocol CreateAndSaveKMLSettingsViewControllerDelegate: AnyObject {
 
 class CreateAndSaveKMLSettingsViewController: UITableViewController {
     weak var delegate: CreateAndSaveKMLSettingsViewControllerDelegate?
-    var icon = AGSKMLIcon(url: URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueSquareLargeB.png")!)
+    var icon = AGSKMLIcon(url: URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueStarLargeB.png")!)
     var color = UIColor.red
     var feature = "point"
     @IBOutlet var pointLabel: UILabel?
@@ -119,14 +119,11 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
         switch indexPath.section {
         case 0:
             var adjustedRow = indexPath.row
-            if indexPath.row == 1 && iconPickerHidden {
+            if indexPath.row >= 1 && iconPickerHidden {
                 adjustedRow += 1
-            }
-            if indexPath.row == 2 && polylinePickerHidden {
+            } else if indexPath.row >= 2 && polylinePickerHidden {
                 adjustedRow += 1
-            }
-            if indexPath.row == 2 && polygonPickerHidden {
-                print("gets to last if")
+            } else if indexPath.row >= 3 && polygonPickerHidden {
                 adjustedRow += 1
             }
             return IndexPath(row: adjustedRow, section: indexPath.section)
@@ -150,6 +147,8 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("reg: \(indexPath)")
+        print("adjusted: \(adjustedIndexPath(indexPath))")
         return super.tableView(tableView, cellForRowAt: adjustedIndexPath(indexPath))
     }
 }

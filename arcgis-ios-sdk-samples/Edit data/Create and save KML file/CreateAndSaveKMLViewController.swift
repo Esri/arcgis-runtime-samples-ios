@@ -32,8 +32,12 @@ class CreateAndSaveKMLViewController: UIViewController {
     @IBOutlet var saveButton: UIBarButtonItem?
     
     @IBAction func saveKMZ() {
-        let activityViewController = UIActivityViewController(activityItems: [kmlDocument], applicationActivities: nil)
+        let kmzProvider = KMZProvider(document: kmlDocument)
+        let activityViewController = UIActivityViewController(activityItems: [kmzProvider], applicationActivities: nil)
         present(activityViewController, animated: true)
+        activityViewController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
+            kmzProvider.deleteKMZ()
+        }
     }
 
     @IBAction func completeSketch() {
@@ -74,32 +78,6 @@ class CreateAndSaveKMLViewController: UIViewController {
     var currentPlacemark: AGSKMLPlacemark?
     var kmlDataset: AGSKMLDataset?
     var kmlLayer: AGSKMLLayer?
-    
-    func addKMLPlaceMark(view: UIView) {
-        guard let sketchEditor = mapView.sketchEditor else { return }
-        if sketchEditor.isSketchValid {
-            var sketchGeometry = sketchEditor.geometry!
-            var projectedGeometry = AGSGeometryEngine.projectGeometry(sketchGeometry, to: spatialRef)
-            sketchEditor.stop()
-            
-//            let currentKMLPlacemark = AGSKMLPlacemark(geometry: projectedGeometry)
-        }
-    }
- 
-//    func addGraphics() {
-//        addToKMLDocument(geometry: point, kmlStyle: makeKMLStyleWithPointStyle())
-//        addToKMLDocument(geometry: polyline, kmlStyle: makeKMLStyleWithLineStyle())
-//        addToKMLDocument(geometry: polygon, kmlStyle: makeKMLStyleWithPolygonStyle())
-//        mapView.map?.operationalLayers.add(AGSKMLLayer)
-//    }
-    
-    func addToKMLDocument(geometry: AGSGeometry, kmlStyle: AGSKMLStyle) {
-        let temp = AGSKMLAltitudeMode(rawValue: 6)!
-        let kmlGeometry = AGSKMLGeometry(geometry: geometry, altitudeMode: temp)!
-        let placemark = AGSKMLPlacemark(geometry: kmlGeometry)
-        placemark.style = kmlStyle
-        kmlDocument.addChildNode(placemark)
-    }
     
     func startSketch() {
         mapView.sketchEditor?.stop()
@@ -156,10 +134,38 @@ class CreateAndSaveKMLViewController: UIViewController {
     }
 }
 
-// MARK: - AGSGeoViewTouchDelegate
-extension CreateAndSaveKMLViewController: AGSGeoViewTouchDelegate {
-    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
+private class KMZProvider: UIActivityItemProvider {
+    private let document: AGSKMLDocument
+    private var documentURL: URL?
+    private var temporaryDirectoryURL: URL?
+    
+    init(document: AGSKMLDocument) {
+        self.document = document
+        if document.name.isEmpty {
+            document.name = "Untitled"
+        }
+        super.init(placeholderItem: URL(string: "\(document.name).kmz")!)
+    }
+
+    override var item: Any {
+        temporaryDirectoryURL = try? FileManager.default.url(
+            for: .itemReplacementDirectory,
+            in: .userDomainMask,
+            appropriateFor: Bundle.main.bundleURL,
+            create: true
+        )
+        documentURL = temporaryDirectoryURL?.appendingPathComponent("\(document.name).kmz")
+        let semaphore = DispatchSemaphore(value: 0)
+        document.save(toFileURL: documentURL!) { _ in
+            semaphore.signal()
+        }
+        semaphore.wait()
+        return documentURL!
+    }
+    
+    func deleteKMZ() {
+        guard let url = temporaryDirectoryURL else { return }
+        try? FileManager.default.removeItem(at: url)
     }
 }
 

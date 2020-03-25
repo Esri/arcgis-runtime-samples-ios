@@ -319,8 +319,11 @@ private class DemoTouchesView: UIView {
             case .cancelled:
                 removeTouch(touch, cancelled: true)
             case .stationary:
-                // NOTE: I've never actually seen this state.
                 break
+            #if compiler(>=5.2)
+            case .regionEntered, .regionMoved, .regionExited:
+                break
+            #endif
             @unknown default:
                 break
             }

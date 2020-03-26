@@ -2,7 +2,7 @@
 
 Access a web map that is secured with ArcGIS token-based authentication.
 
-![Screenshot of Token Authentication sample](image1.png)
+![Token Authentication sample](token-authentication.png)
 
 ## Use Case
 
@@ -10,7 +10,7 @@ Allows you to access a secure service with the convenience and security of ArcGI
 
 ## How to use the sample
 
-Once you open the sample, you will be challenged for an ArcGIS Online login to view the protected map service. Enter a user name and password for an ArcGIS Online named user account (such as your ArcGIS for Developers account). If you authenticate successfully, the protected map service will display in the map.
+Once you launch the app, you will be challenged for an ArcGIS Online login to view the protected map service. Enter a user name and password for an ArcGIS Online named user account (such as your ArcGIS for Developers account). If you authenticate successfully, the protected map service will display in the map.
 
 ## How it works
 
@@ -21,10 +21,10 @@ Once you open the sample, you will be challenged for an ArcGIS Online login to v
 
 ## Relevant API
 
-- `AGSMap`
-- `AGSMapView`
-- `AGSPortal`
-- `AGSPortalItem`
+* AGSMap
+* AGSMapView
+* AGSPortal
+* AGSPortalItem
 
 ## About the data
 

@@ -1374,7 +1374,7 @@
 				<key>storyboardName</key>
 				<string>GroupUsers</string>
 				<key>descriptionText</key>
-				<string>The sample demonstrates how to show the users in a group</string>
+				<string>Shows a list of users in a portal group.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1390,13 +1390,13 @@
 				<key>storyboardName</key>
 				<string>IntegratedWindowsAuthentication</string>
 				<key>descriptionText</key>
-				<string>Uses Windows credentials to access services hosted on a portal secured with Integrated Windows Authentication (IWA).</string>
+				<string>Connect to an IWA secured Portal and search for maps.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Authenticate with OAuth</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers). Accessing secured items requires a login on the portal that hosts them (an ArcGIS Online account, for example).</string>
+				<string>Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers).</string>
 				<key>storyboardName</key>
 				<string>AuthenticateWithOAuth</string>
 			</dict>

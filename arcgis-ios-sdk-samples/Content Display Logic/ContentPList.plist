@@ -949,7 +949,7 @@
 				<key>storyboardName</key>
 				<string>ReverseGeocode</string>
 				<key>descriptionText</key>
-				<string>Tap on a location on the map to find the closest address</string>
+				<string>Use an online service to find the address for a tapped point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -957,7 +957,7 @@
 				<key>storyboardName</key>
 				<string>FindPlace</string>
 				<key>descriptionText</key>
-				<string>Search for a point of interest either nearby, near a particular location or across the world</string>
+				<string>Find places of interest near a location or within a specific area.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

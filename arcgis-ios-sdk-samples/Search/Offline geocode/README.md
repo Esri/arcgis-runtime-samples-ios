@@ -1,15 +1,38 @@
 # Offline geocode
 
-This sample demonstrates how you can geocode addresses to locations and reverse geocode locations to addresses when the device does not have network connectivity 
+Geocode addresses to locations and reverse geocode locations to addresses offline.
+
+![Offline geocode sample](offline-geocode.png)
+
+## Use case
+
+You can use an address locator file to geocode addresses and locations. For example, you could provide offline geocoding capabilities to field workers repairing critical infrastructure in a disaster when network availability is limited.
 
 ## How to use the sample
 
-To locate an address either type in or choose from the list of addresses. To find an address for a point or location on the map tap and hold on the map. You can also tap, hold and move to update location to get instant results
-
-![](image1.png)
+Type the address in the Search menu option or select from the list to geocode the address and view the result on the map. Tap the location you want to reverse geocode. Tap-hold and drag the pin on the map to get real-time geocoding.
 
 ## How it works
 
-The sample contains an address locator dataset (*.loc and associated files) that contains address information for downtown San Diego. Geocoding and Reverse geocoding operations use this data. The sample displays basemap tiles using a tile package (.tpk file) so that the basemap is visible even when the device is offline.
+1. Create an `AGSLocatorTask` object. 
+2. Set up `AGSGeocodeParameters` and call `AGSGeocodeAsync` to get geocode results.
 
+## Relevant API
 
+* AGSGeocodeParameters
+* AGSGeocodeResult
+* AGSLocatorTask
+* AGSReverseGeocodeParameters
+
+## Offline data
+
+The sample viewer will download offline data automatically before loading the sample.
+
+Link     |
+---------|
+|[San Diego Streets Tile Package](http://www.arcgis.com/home/item.html?id=1330ab96ac9c40a49e59650557f2cd63)|
+|[San Diego Offline Locator](http://www.arcgis.com/home/item.html?id=344e3b12368543ef84045ef9aa3c32ba)|
+
+## Tags
+
+geocode, geocoder, locator, offline, package, query, search

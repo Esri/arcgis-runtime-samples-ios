@@ -969,7 +969,7 @@
 				<key>storyboardName</key>
 				<string>FindAddress</string>
 				<key>descriptionText</key>
-				<string>Type in or select a prepopulated address to show its location on the map</string>
+				<string>Find the location for an address.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -993,7 +993,7 @@
 				<key>storyboardName</key>
 				<string>OfflineGeocode</string>
 				<key>descriptionText</key>
-				<string>Type in or select a prepopulated address to show its location on the map. Or tap and hold to get address for a point on the map. Tap, hold and move to get instant results from the locator file</string>
+				<string>Geocode addresses to locations and reverse geocode locations to addresses offline.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanDiegoLocator</string>

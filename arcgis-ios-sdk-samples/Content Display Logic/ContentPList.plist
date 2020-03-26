@@ -1404,7 +1404,7 @@
 				<key>displayName</key>
 				<string>Token authentication</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to access a map service that is secured with ArcGIS token-based authentication.</string>
+				<string>Access a web map that is secured with ArcGIS token-based authentication.</string>
 				<key>storyboardName</key>
 				<string>TokenAuthentication</string>
 			</dict>

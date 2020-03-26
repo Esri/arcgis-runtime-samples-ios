@@ -1,19 +1,31 @@
 # Find address
 
-This sample demonstrates how to geocode an address and show it on the map view
+Find the location for an address.
 
+## Use case
+
+A user can input a raw address into your app's search bar and zoom to the address location.
 
 ## How to use the sample
 
-You can either type in an address or choose an address from the list to show it on the map view. The address location is marked with a pin. You can tap on the pin to show the address in a callout.
+For simplicity, the sample comes loaded with a set of suggested addresses. Choose an address from the suggestions or submit your own address to show its location on the map in a callout. Tap the pin to display the address on the map
 
-
-![](image1.png)
-
+![Find address sample](find-address.png)
 
 ## How it works
 
-The sample uses the `geocode(withSearchText:parameters:completion:)` method on the `AGSLocatorTask` to geocode an address. It returns an array of `AGSGeocodeResult` objects in case of success. The first result is displayed on the map view using `AGSGraphicsOverlay`. The attributes returned in the `AGSGeocodeResult` object are used as `title` and `detail` fields for the callout.  To show the callout the sample uses the `show(for:tapLocation:animated:)` method on `AGSCallout`.
+1. Create an `AGSLocatorTask` using the URL to a locator service.
+2. Set the `AGSGeocodeParameters` for the locator task and specify the geocode's attributes.
+3. Get the matching results from the `AGSGeocodeResult` using `AGSLocatorTask.geocode(with:parameters:completion)`.
+4. Create an `AGSGraphic` with the geocode result's location and store the geocode result's attributes in the graphic's attributes.
+5. Show the graphic in an `AGSGraphicsOverlay`.
 
+## Relevant API
 
+* AGSGeocodeParameters
+* AGSGeocodeResult
+* AGSLocatorTask
 
+## Tags
+
+address, geocode, locator, search

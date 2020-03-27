@@ -12,7 +12,6 @@ Geometries are used to represent real world features as vector GIS data. Points 
 
 Pan and zoom freely to see the different types of geometries placed onto the map.
 
-
 ## How it works
 
 1. Use the constructors for the various simple `AGSGeometry` types including `AGSPoint`, `AGSPolyline`, `AGSMultipoint`, `AGSPolygon`, and `AGSEnvelope`.

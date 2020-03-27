@@ -18,6 +18,7 @@ Enter search terms into the search bar. Once the search is complete, a list is p
 3. Use `findItems(with:completion:)` to get the first set of matching items.
 
 ## Relevant API
+
 * AGSPortal
 * AGSPortalItem
 * AGSPortalQueryParameters

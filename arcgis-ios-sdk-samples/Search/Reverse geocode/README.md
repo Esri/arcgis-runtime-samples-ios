@@ -16,7 +16,7 @@ Tap the map to see the nearest address displayed in a callout.
 
 1. Create an `AGSLocatorTask` object using a URL to a geocoder service.
 2. Set the `AGSGeocodeParameters` for the `AGSLocatorTask` and specify the geocoder's attributes.
-3. Get the matching results from the `AGSGeocodeResult` using  `AGSLocatorTask.reverseGeocodeAsync`.
+3. Get the matching results from the `AGSGeocodeResult` using  `AGSLocatorTask.reverseGeocode(withLocation:parameters:completion:)`.
 4. Show the results using a `AGSPictureMarkerSymbol` and add the symbol to a `AGSGraphic` in the `AGSGraphicsOverlay`.
 
 ## Relevant API

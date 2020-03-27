@@ -29,7 +29,7 @@ Choose a type of place in the first field and an area to search within in the se
 4. Use one of the suggestions or a user-written query to find the locations of POIs:
     * Create `AGSGeocodeParameters`.
     * Set the parameters' `searchArea` to `AGSGeometry` of the area you want to search.
-    * Call `AGSLocatorTask.geocodeA(withSearchText:parameters:completion)` to get a list of `GeocodeResult`s.
+    * Call `AGSLocatorTask.geocode(withSearchText:parameters:completion)` to get a list of `GeocodeResult`s.
     * Display the places of interest using the results' `AGSGeocodeResult.displayLocation`s.
 
 ## About the data  

@@ -15,7 +15,7 @@ When launched, this sample displays a list of users in the Runtime Group portal.
 ## How it works
 
 1. Initialize an `AGSPortal` object.
-2. Retrieve a group from this portal using `findGroups(with:completion:)` which  returns an array of user names.
+2. Retrieve a group from this portal using `findGroups(with:completion:)`, which returns an array of user names.
 3. Obtain all the users in this group by using `fetchUsers(completion:)`.
 4. Create an `AGSPortalUser` object for each user name using `init(portal:username:)`.
 

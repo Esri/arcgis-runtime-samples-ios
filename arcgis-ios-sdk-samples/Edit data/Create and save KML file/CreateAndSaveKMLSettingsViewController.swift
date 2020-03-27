@@ -149,6 +149,7 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("reg: \(indexPath)")
         print("adjusted: \(adjustedIndexPath(indexPath))")
+        // Add "no style" to options on point polyline polygon
         return super.tableView(tableView, cellForRowAt: adjustedIndexPath(indexPath))
     }
 }

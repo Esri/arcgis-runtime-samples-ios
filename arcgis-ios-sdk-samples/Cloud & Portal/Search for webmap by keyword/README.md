@@ -10,7 +10,7 @@ Portals can contain many portal items and, at times, you may wish to query the p
 
 ## How to use the sample
 
-Enter search terms into the search bar. Once the search is complete, a list is populated with the resultant webmaps. Tap on a webmap to set it to the map view. Scrolling to the bottom of the webmap recycler view will get more results.
+Enter search terms into the search bar. Once the search is complete, a list is populated with the resultant webmaps. Tap on a webmap to set it to the map view..
 
 ## How it works
 

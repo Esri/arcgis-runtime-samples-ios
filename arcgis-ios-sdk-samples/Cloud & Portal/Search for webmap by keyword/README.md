@@ -5,7 +5,8 @@ Find webmap portal items by using a search term.
 ![Search for Webmap by Keyword](search-for-webmap-by-keyword.png)
 
 ## Use case
-Portals can contain many portal items and at times, you may wish to query the portal to find what you're looking for. In this example, we search for webmap portal items using a text search.
+
+Portals can contain many portal items and, at times, you may wish to query the portal to find what you're looking for. In this example, we search for webmap portal items using a text search.
 
 ## How to use the sample
 

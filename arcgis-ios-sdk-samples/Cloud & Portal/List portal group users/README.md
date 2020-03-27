@@ -5,6 +5,7 @@ Shows a list of users in a portal group.
 ![List Portal Group Users](list-portal-group-users.png)
 
 ## Use case
+
 This portal information can be used to provide a customized UI experience for the user. For example, you can show a thumbnail next to their username in the header of an application to indicate that they are currently logged in. Additionally, apps such as Collector and Explorer use this functionality to integrate with Portal.
 
 ## How to use the sample

@@ -20,6 +20,7 @@ When launched, this sample displays a list of users in the Runtime Group portal.
 4. Create an `AGSPortalUser` object for each user name using `init(portal:username:)`.
 
 ## Relevant API
+
 * AGSPortal
 * AGSPortalGroup
 * AGSPortalUser

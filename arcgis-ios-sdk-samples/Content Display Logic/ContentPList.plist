@@ -1396,7 +1396,7 @@
 				<key>displayName</key>
 				<string>Authenticate with OAuth</string>
 				<key>descriptionText</key>
-				<string>Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers).</string>
+				<string>Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources, such as private web maps or layers.</string>
 				<key>storyboardName</key>
 				<string>AuthenticateWithOAuth</string>
 			</dict>

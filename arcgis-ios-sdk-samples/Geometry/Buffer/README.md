@@ -13,7 +13,7 @@ Creating buffers is a core concept in GIS proximity analysis that allows you to 
 1. Tap the map.
 2. A planar buffer (brown) and geodesic buffer (green) will be created at the tap location using the distance (miles) in the text box specified by the slider.
 3. Continue tapping to create additional buffers. Notice that buffers closer to the equator appear similar in size. As you move north or south from the equator, however, the geodesic polygons become much larger. Geodesic polygons are in fact a better representation of the true shape and size of the buffer.
-4. Tap `Clear All` to remove all buffers and start again.
+4. Tap "Clear All" to remove all buffers and start again.
 
 ## How it works
 

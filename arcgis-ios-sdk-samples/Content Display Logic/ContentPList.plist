@@ -1390,7 +1390,7 @@
 				<key>storyboardName</key>
 				<string>IntegratedWindowsAuthentication</string>
 				<key>descriptionText</key>
-				<string>Connect to an IWA secured Portal and search for maps.</string>
+				<string>Connect to an IWA secured portal and search for maps.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -15,7 +15,7 @@ Type the address in the Search menu option or select from the list to geocode th
 ## How it works
 
 1. Create an `AGSLocatorTask` object. 
-2. Set up `AGSGeocodeParameters` and call `AGSGeocodeAsync` to get geocode results.
+2. Set up `AGSGeocodeParameters` and call `AGSGeocode(withSearchText:parameters:completion:)` to get geocode results.
 
 ## Relevant API
 

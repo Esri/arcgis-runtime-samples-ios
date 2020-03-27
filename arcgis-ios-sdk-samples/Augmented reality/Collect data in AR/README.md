@@ -18,11 +18,11 @@ When you tap, an orange diamond will appear at the tapped location. You can move
 
 ## How it works
 
-1. Create an `ArcGISARView`. Set the atmosphere effect to `none` and the space effect to `transparent`. Create and show a scene in the scene view. 
+1. Create an `ArcGISARView`. Create and show a scene in the scene view.
 2. Load the feature service and display it with a feature layer.
 3. Create and add the elevation surface to the scene.
 4. Create a graphics overlay for planning the location of features to add. Configure the graphics overlay with a renderer and add the graphics overlay to the scene view.
-5. When the user taps the screen, use `arcGISARView.arScreenToLocation(screenPoint:)` to find the real-world location of the tapped object using ARKit plane detection.
+5. When the user taps the screen, use `ArcGISARView.arScreenToLocation(screenPoint:)` to find the real-world location of the tapped object using ARKit plane detection.
 6. Add a graphic to the graphics overlay preview where the feature will be placed and allow the user to visually verify the placement.
 7. When the user presses the button, take the current AR frame from the `arView.arSCNView.session`. Rotate the image appropriately and convert it to a JPEG for efficient storage.
 8. Prompt the user for a tree health value, then create the feature. Upon successful creation of the feature, use `feature.addAttachment(withName:contentType:data:completion:)` to add the image.

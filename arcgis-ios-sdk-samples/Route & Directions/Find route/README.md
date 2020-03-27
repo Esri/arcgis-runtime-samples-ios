@@ -1,20 +1,33 @@
 # Find route
 
-This sample demonstrates how to get a route between two locations
+Display directions for a route between two points.
 
+## Use case
+
+Find routes with driving directions between any number of locations. You might use the ArcGIS platform to create a custom network for routing on a private roads.
 
 ## How to use the sample
 
-For simplicity, the sample comes loaded with a start and end stop. You can tap on the route button to get a route between these stops. Once the route is generated, the directions button gets enabled. Tap on the button to see the step by step directions for the route.
-
-
-![](image1.png)
-![](image2.png)
-
+For simplicity, the sample comes loaded with a start and end stop. You can click on the Find Route button to display a route between these stops. Once the route is generated, tap the directions icon for turn-by-turn directions shown in a list.
 
 ## How it works
 
-The sample uses the `defaultRouteParameters(completion:)` method on `AGSRouteTask` to get the default parameters from the service. Sets the stops in those parameters and the `returnDirections` to true. Then uses the `solveRoute(with:completion:)` method to solve for the route. Once the route is in, the sample displays the list of directions using the `directionManeuvers` property on the `AGSRoute` returned in the `AGSRouteResult`
+1. Create a `AGSRouteTask` using a URL to an online route service.
+2. Generate default `AGSRouteParameters` using `_.getDefaultParameters`.
+3. Set `_.returnDirections` on the parameters to true.
+4. Add `AGSStop`s to the parameters `stops` collection for each destination.
+5. Solve the route using `routeTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
+6. Iterate through the result's `AGSRoute`s. To display the route, create a graphic using the geometry from `_routeGeometry`. To display directions, use `route.getDirectionManeuvers()`, and for each `DirectionManeuver`, display `_directionManeuvers`.
 
+## Relevant API
 
+*   AGSDirectionManeuver
+*   AGSRoute
+*   AGSRouteParameters
+*   AGSRouteResult
+*   AGSRouteTask
+*   AGSStop
 
+## Tags
+
+directions, driving, navigation, network, network analysis, route, routing, shortest path, turn-by-turn

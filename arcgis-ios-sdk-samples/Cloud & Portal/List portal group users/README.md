@@ -30,4 +30,5 @@ When launched, this sample displays a list of users in the Runtime Group portal.
 This sample displays users who are a part of the Runtime Group portal.
 
 ## Tags
+
 account, cloud and portal, description, profile, user, username

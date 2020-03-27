@@ -17,6 +17,7 @@ Your organization might use Integrated Windows Authentication (IWA) to secure Ar
 5. Tap a web map item to display it in a map view.
 
 ## Relevant API
+
 * AGSPortal
 
 ## How it works

@@ -29,14 +29,12 @@ class NavigateRouteViewController: UIViewController {
     let routeTraveledGraphic = AGSGraphic(geometry: nil, symbol: AGSSimpleLineSymbol(style: .solid, color: .systemBlue, width: 3), attributes: nil)
     /// A list to keep track of directions solved by the route task.
     var directionsList: [AGSDirectionManeuver]?
-    /// The route tracker for navigation.
+    /// The route tracker for navigation. Use delegate methods to update tracking status.
     var routeTracker: AGSRouteTracker?
-    /// The mock data source to demo the navigation.
+    /// The mock data source to demo the navigation. Use delegate methods to update locations for the tracker.
     var mockDataSource: AGSSimulatedLocationDataSource?
     /// An AVSpeechSynthesizer for text to speech.
     var speechSynthesizer: AVSpeechSynthesizer?
-    /// The route task to solve the route between stops, using the online routing service.
-    var routeTask: AGSRouteTask!
     
     /// The bar button item that initiates the create convex hull operation.
     @IBOutlet weak var navigateButtonItem: UIBarButtonItem!
@@ -60,8 +58,8 @@ class NavigateRouteViewController: UIViewController {
     func makeMap() -> AGSMap {
         let map = AGSMap(basemap: .navigationVector())
         // Solve the route as map loads.
-        self.getDefaultParameters { [weak self] (params: AGSRouteParameters) in
-            self?.solveRoute(params)
+        self.getDefaultParameters { [weak self] (task: AGSRouteTask, params: AGSRouteParameters) in
+            self?.solveRoute(in: task, with: params)
         }
         return map
     }
@@ -81,9 +79,9 @@ class NavigateRouteViewController: UIViewController {
     
     /// Gets the default parameters for the route task and invoke solve route.
     /// - Parameter completion: block that is invoked when the operation completes, solve route in this case. The route parameters are pass to the block.
-    func getDefaultParameters(completion: @escaping (AGSRouteParameters) -> Void) {
-        let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!
-        routeTask = AGSRouteTask(url: featureServiceURL)
+    func getDefaultParameters(completion: @escaping (AGSRouteTask, AGSRouteParameters) -> Void) {
+        // The route task to solve the route between stops, using the online routing service.
+        let routeTask = AGSRouteTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
         routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
             guard let self = self else { return }
             if let error = error {
@@ -97,15 +95,15 @@ class NavigateRouteViewController: UIViewController {
                 params.returnRoutes = true
                 params.outputSpatialReference = .wgs84()
                 params.setStops(self.makeStops())
-                completion(params)
+                completion(routeTask, params)
             }
         }
     }
     
     /// A wrapper function to compute the routes.
     /// - Parameter params: based on which routes should be computed.
-    func solveRoute(_ params: AGSRouteParameters) {
-        routeTask!.solveRoute(with: params) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
+    func solveRoute(in routeTask: AGSRouteTask, with params: AGSRouteParameters) {
+        routeTask.solveRoute(with: params) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
@@ -117,6 +115,7 @@ class NavigateRouteViewController: UIViewController {
                 self.setSpeechSynthesizer()
                 // Enable bar button item.
                 self.navigateButtonItem.isEnabled = true
+                _ = routeTask
             }
         }
     }
@@ -282,10 +281,9 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
         default:
             return
         }
-        // Update route graphics.
+        // Update route graphics and label text.
         routeAheadGraphic.geometry = status.routeProgress.remainingGeometry
         routeTraveledGraphic.geometry = status.routeProgress.traversedGeometry
-        // Update label text.
         statusLabel.text = statusText
     }
 }

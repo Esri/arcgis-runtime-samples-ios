@@ -24,9 +24,9 @@ Creating buffers is a core concept in GIS proximity analysis that allows you to 
 
 ## Relevant API
 
-* `class AGSGeometryEngine.bufferGeometry(_:byDistance:)`
-* `class AGSGeometryEngine.geodeticBufferGeometry(_:distance:distanceUnit:maxDeviation:curveType:)`
-* `AGSGraphicsOverlay`
+* class AGSGeometryEngine.bufferGeometry(_:byDistance:)
+* class AGSGeometryEngine.geodeticBufferGeometry(_:distance:distanceUnit:maxDeviation:curveType:)
+* AGSGraphicsOverlay
 
 ## Additional information
 

@@ -1,18 +1,28 @@
 # Cut geometry
 
-This sample demonstrates how to cut a geometry with a polyline using the `AGSGeometryEngine`. For example, you may want to subdivide a large parcel polygon into several smaller parcels.
+Cut a geometry along a polyline.
 
-![](CutGeometry.png)
+![Image of cut geometry](CutGeometry.png)
+
+## Use case
+
+You might cut a polygon representing a large parcel to subdivide it into smaller parcels.
 
 ## How to use the sample
-Press the `Cut` button, and the solid blue polygon will be cut into two polygons - a yellow and a green polygon with a diagonal pattern.
+
+Tap the button to cut the polygon with the polyline and see the resulting parts (shaded in different colors).
 
 ## How it works
-The `AGSGeometryEngine.cut(_:withCutter:)` method is executed with the polygon as the first parameter and the cutting line as the second parameter. This returns a list of geometries. Each geometry is added as a new `AGSGraphic` with differing fill symbols to visualize the results.
+
+1. Pass the geometry and polyline to `class AGSGeometryEngine.cut(_:withCutter:)` to cut the geometry along the polyline.
+2. Loop through the returned list of part geometries. Some of these geometries may be multi-part.
 
 ## Relevant API
- - `AGSGeometryEngine`
- - `AGSGeometryEngine.cut(_:withCutter:)`
+
+* class AGSGeometryEngine.cut(_:withCutter:)
+* AGSPolygon
+* AGSPolyline
 
 ## Tags
-geometry, cut, split
+
+cut, geometry, split

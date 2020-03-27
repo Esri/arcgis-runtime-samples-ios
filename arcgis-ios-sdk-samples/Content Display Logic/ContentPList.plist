@@ -1156,7 +1156,7 @@
 				<key>storyboardName</key>
 				<string>ClipGeometry</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to clip a geometry with an envelope using the geometry engine.</string>
+				<string>Clip a geometry with another geometry.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

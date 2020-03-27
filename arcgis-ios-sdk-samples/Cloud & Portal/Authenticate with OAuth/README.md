@@ -5,6 +5,7 @@ Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secu
 ![Login screen](authenticate-with-oauth1.png) ![Map view after authentication](authenticate-with-oauth2.png)
 
 ## Use case
+
 Your app may need to access items that are only shared with authorized users. For example, your organization may host private data layers or feature services that are only accessible by verified users. You may also need to take advantage of premium ArcGIS Online services, such as geocoding or routing, that require a named user login.
 
 ## How to use the sample

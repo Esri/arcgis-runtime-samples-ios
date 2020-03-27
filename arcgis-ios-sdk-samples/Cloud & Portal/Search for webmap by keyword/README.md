@@ -25,4 +25,5 @@ Enter search terms into the search bar. Once the search is complete, a list is p
 * AGSPortalQueryResultSet
 
 ## Tags
+
 keyword, query, search, webmap

@@ -2371,7 +2371,7 @@
 				3E6AE3F31C6D1C920026E59C /* Find route */,
 				3EC39C191C9A5770003F6459 /* Route around barriers */,
 				3E6AE3EA1C6D10F70026E59C /* Offline routing */,
-				3ED75D001ED39EDF009B1F75 /* Find service area interactive */,
+				3ED75D001ED39EDF009B1F75 /* Find service area (interactive) */,
 				4C0CBFFB22F9D2FB00D3F1DB /* Find closest facility to multiple incidents (service) */,
 			);
 			path = "Route & Directions";
@@ -3190,14 +3190,14 @@
 			path = "Update geometries (feature service)";
 			sourceTree = "<group>";
 		};
-		3ED75D001ED39EDF009B1F75 /* Find service area interactive */ = {
+		3ED75D001ED39EDF009B1F75 /* Find service area (interactive) */ = {
 			isa = PBXGroup;
 			children = (
 				3ED75D011ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard */,
 				3ED75D021ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift */,
 				3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsVC.swift */,
 			);
-			path = "Find service area interactive";
+			path = "Find service area (interactive)";
 			sourceTree = "<group>";
 		};
 		3ED7888A1D26E1E600E5F311 /* ArcGIS tiled layer (tile cache) */ = {

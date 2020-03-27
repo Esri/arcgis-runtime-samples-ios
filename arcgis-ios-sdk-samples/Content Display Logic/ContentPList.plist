@@ -1167,7 +1167,7 @@
 				<key>storyboardName</key>
 				<string>RouteAroundBarriers</string>
 				<key>descriptionText</key>
-				<string>Add stops and barriers to the map, set the route parameters and tap route. A route will be shown connecting the stops with a list of directions</string>
+				<string>Find a route that reaches all stops without crossing any barriers.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

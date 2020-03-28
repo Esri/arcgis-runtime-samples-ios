@@ -20,39 +20,39 @@ Tap 'Add stop' to add stops to the route. Tap 'Add barrier' to add areas that ca
 1. Create the route task by calling `AGSRouteTask(url:)` with the URL to a Network Analysis route service.
 2. Get the default route parameters for the service by calling `AGSRouteTask.getDefaultParameters`.
 3. When the user adds a stop, add it to the route parameters.
-    1. Normalize the geometry; otherwise the route job would fail if the user included any stops over the 180th degree meridian.
-    2. Get the name of the stop by counting the existing stops - `.stopGraphicsOverlay.graphics.index(of:) + 1`.
-    3. Create a composite symbol for the stop. This sample uses a blue marker and a text symbol.
-    4. Create the graphic from the geometry and the symbol.
-    5. Add the graphic to the stops graphics overlay.
+    i. Normalize the geometry; otherwise the route job would fail if the user included any stops over the 180th degree meridian.
+    ii. Get the name of the stop by counting the existing stops - `.stopGraphicsOverlay.graphics.index(of:) + 1`.
+    iii. Create a composite symbol for the stop. This sample uses a blue marker and a text symbol.
+    iv. Create the graphic from the geometry and the symbol.
+    v. Add the graphic to the stops graphics overlay.
 4. When the user adds a barrier, create a polygon barrier and add it to the route parameters.
-    1. Normalize the geometry (see **3i** above).
-    2. Buffer the geometry to create a larger barrier from the tapped point by calling `AGSGeometryEngine.bufferGeometry(geometry:byDistance:)`.
-    3. Create the graphic from the geometry and the symbol.
-    4. Add the graphic to the barriers overlay.
+    i. Normalize the geometry (see **3i** above).
+    ii. Buffer the geometry to create a larger barrier from the tapped point by calling `AGSGeometryEngine.bufferGeometry(geometry:byDistance:)`.
+    iii. Create the graphic from the geometry and the symbol.
+    iv. Add the graphic to the barriers overlay.
 5. When ready to find the route, configure the route parameters.
-    1. Set the `ReturnStops` and `ReturnDirections` to `true`.
-    2. Create an `AGSStop` for each graphic in the stops graphics overlay. Add that stop to a list, then call `_routeParameters.setStops(stops:)`.
-    3. Create a `AGSPolygonBarrier` for each graphic in the barriers graphics overlay. Add that barrier to a list, then call `_routeParameters.setPolygonBarriers(polygonBarriers:)`.
-    4. If the user will accept routes with the stops in any order, set `FindBestSequence` to `true` to find the most optimal route.
-    5. If the user has a definite start point, set `AGSRouteParameters.preserveFirstStop` to `true`.
-    6. If the user has a definite final destination, set `AGSRouteParameters.preserveLastStop` to `true`.
+    i. Set the `ReturnStops` and `ReturnDirections` to `true`.
+    ii. Create an `AGSStop` for each graphic in the stops graphics overlay. Add that stop to a list, then call `_routeParameters.setStops(stops:)`.
+    iii. Create a `AGSPolygonBarrier` for each graphic in the barriers graphics overlay. Add that barrier to a list, then call `_routeParameters.setPolygonBarriers(polygonBarriers:)`.
+    iv. If the user will accept routes with the stops in any order, set `FindBestSequence` to `true` to find the most optimal route.
+    v. If the user has a definite start point, set `AGSRouteParameters.preserveFirstStop` to `true`.
+    vi. If the user has a definite final destination, set `AGSRouteParameters.preserveLastStop` to `true`.
 6. Calculate and display the route.
-1. Call `_routeTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
-2. Get the first returned route by calling `AGSRouteResult.routes.first()`.
-    3. Get the geometry from the route as a polyline by accessing the `_.routeGeometry` property.
-    4. Create a graphic from the polyline and a simple line symbol.
-    5. Display the steps on the route, available from `_.directionManeuvers`.
+    i. Call `_routeTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
+    ii. Get the first returned route by calling `AGSRouteResult.routes.first()`.
+    iii. Get the geometry from the route as a polyline by accessing the `_.routeGeometry` property.
+    iv. Create a graphic from the polyline and a simple line symbol.
+    v. Display the steps on the route, available from `_.directionManeuvers`.
 
 ## Relevant API
 
 * AGSDirectionManeuver
 * AGSPolygonBarrier
 * AGSRoute
-* AGSRoute.directionManeuver
+* AGSRoute.directionManeuvers
 * AGSRoute.routeGeometry
 * AGSRouteParameters.clearPolygonBarriers
-* AGSRouteParameters.FindBestSequence
+* AGSRouteParameters.findBestSequence
 * AGSRouteParameters.preserveFirstStop
 * AGSRouteParameters.preserveLastStop
 * AGSRouteParameters.returnDirections

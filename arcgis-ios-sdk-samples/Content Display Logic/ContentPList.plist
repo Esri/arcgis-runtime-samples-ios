@@ -1172,7 +1172,7 @@
 				<key>storyboardName</key>
 				<string>DensifyAndGeneralize</string>
 				<key>descriptionText</key>
-				<string>Apply densify and generalize functions to polyline geometry.</string>
+				<string>Apply densify and generalize functions to multipart geometry.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -2,7 +2,7 @@
 
 Find routes from several locations to the respective closest facility.
 
-![Screenshot of Find Closest Facility to Multiple Incidents Service sample](image1.png)
+![Screenshot of Find Closest Facility to Multiple Incidents Service sample](find-closest-facility-service.png)
 
 ## Use case
 
@@ -24,7 +24,7 @@ Tap the Solve Routes button to solve and display the route from each incident (f
 5. Add the array of all incidents to the task parameters.
 6. Get an `AGSClosestFacilityResult` by solving the task with the provided parameters.
 7. Find the closest facility for each incident by iterating over the array of incidents.
-8. Display the route as an `AGSGraphic`.
+8. Display the route as an `AGSGraphic(geometry:symbol:)`.
 
 ## Relevant API
 

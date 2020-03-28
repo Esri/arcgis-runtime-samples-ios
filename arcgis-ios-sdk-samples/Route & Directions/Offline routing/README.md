@@ -2,6 +2,9 @@
 
 Solve a route on-the-fly using offline data.
 
+![Fastest route](offline-routing-1.png)
+![Shortest route](offline-routing-2.png)
+
 ## Use case
 
 You can use an offline network to enable routing in disconnected scenarios. For example, you could provide offline location capabilities to field workers repairing critical infrastructure in a disaster when network availability is limited.

@@ -1188,7 +1188,7 @@
 				<key>storyboardName</key>
 				<string>FindServiceAreaInteractive</string>
 				<key>descriptionText</key>
-				<string>Find a route to the closest facility from a location.</string>
+				<string>Find the service area within a network from a given point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

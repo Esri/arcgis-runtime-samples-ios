@@ -1,48 +1,42 @@
 # Find service area interactive
 
-Find a route to the closest facility from a location.
+Find the service area within a network from a given point.
 
 ![Find service area interactive sample](find-service-area-interactive.png)
 
 ## Use case
 
-Quickly and accurately determining the most efficient route between a location and a facility is a frequently encountered task. For example, a paramedic may need to know which hospital in the vicinity offers the possibility of getting an ambulance patient critical medical care in the shortest amount of time. Solving for the closest hospital to the ambulance's location using an impedance of "travel time" would provide this information.
+A service area shows locations that can be reached from a facility based off a certain impedance, such as travel time or distance. Barriers can increase impedance by either adding to the time it takes to pass through the barrier or by altogether preventing passage.
+
+You might calculate the region around a hospital in which ambulances can service in 30 min or less.
 
 ## How to use the sample
 
-Tap near any of the hospitals and a route will be displayed from that clicked location to the nearest hospital.
+In order to find any service areas at least one facility needs to be added to the map view.
+* To add a facility, tap the facility button, then tap anywhere on the map.
+* To add a barrier, tap the barrier button, and tap multiple locations on map. Tap the barrier button again to finish drawing barrier. Tapping any other button will also stop the barrier from drawing.
+* To show service areas around facilities that were added, tap show service areas button. 
+* The reset button clears all graphics and resets the service area task.
 
 ## How it works
 
-1.  Create an `AGSClosestFacilityTask` using a Url from an online network analysis service.
-2.  Get `AGSClosestFacilityParameters` from task, `task.createDefaultParametersAsync().get()`
-3.  Add facilities to parameters, `closestFacilityParameters.setFacilities().addAll(facilities)`.
-4.  Add the incident to parameters, `closestFacilityParameters.setIncidents(Collections.singletonList(new Incident(incidentPoint)))`.
-5.  Get `ClosestFacilityResult` from solving task with parameters, `task.solveClosestFacilityAsync(facilityParameters).get()`
-6.  Get index list of closet facilities to incident, `facilityResult.getRankedFacilities(0)`
-7.  Get index of closest facility, `rankedFacilitiesList.get(0)`
-8.  Find closest facility route, `facilityResult.getRoute(closestFacilityIndex, IncidentIndex)`
-9.  Display route to `MapView`:
-    *   Create `Graphic` from route geometry, `new Graphic(route.getRouteGeometry())`
-    *   Add graphic to `GraphicsOverlay` which is attached to the mapview
+1. Create a new `AGSServiceAreaTask` from a network service.
+2. Create default `AGSServiceAreaParameters` from the service area task.
+3. Set the `AGSPolygonBarrier` to `polygon`.
+4. Add a `AGSServiceAreaFacility` to the parameters.
+5. Get the `AGSServiceAreaResult` by solving the service area task using the parameters.
+6. Get any `AGSServiceAreaPolygon`s that were returned by using _.resultPolygons(atFacilityIndex:).
+7. Display the service area polygons as graphics in an `AGSGraphicsOverlay` on the `MapView`.
 
 ## Relevant API
 
-*   ClosestFacilityParameters
-*   ClosestFacilityResult
-*   ClosestFacilityRoute
-*   ClosestFacilityTask
-*   Facility
-*   Graphic
-*   GraphicsOverlay
-*   Incident
-*   MapView
+* AGSPolygonBarrier
+* AGSServiceAreaFacility
+* AGSServiceAreaParameters
+* AGSServiceAreaPolygon
+* AGSServiceAreaResult
+* AGSServiceAreaTask
 
 ## Tags
 
-incident, network analysis, route, search
-
-
-
-
-
+barriers, facilities, impedance, logistics, routing

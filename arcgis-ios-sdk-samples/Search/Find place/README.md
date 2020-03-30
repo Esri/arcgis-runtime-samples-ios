@@ -29,12 +29,12 @@ Choose a type of place in the first field and an area to search within in the se
 4. Use one of the suggestions or a user-written query to find the locations of POIs:
     * Create `AGSGeocodeParameters`.
     * Set the parameters' `searchArea` to `AGSGeometry` of the area you want to search.
-    * Call `AGSLocatorTask.geocode(withSearchText:parameters:completion)` to get a list of `GeocodeResult`s.
+    * Call `AGSLocatorTask.geocode(withSearchText:parameters:completion)` to get a list of `AGSGeocodeResult`s.
     * Display the places of interest using the results' `AGSGeocodeResult.displayLocation`s.
 
 ## About the data  
 
-This sample uses the world locator service "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer".
+This sample uses the [world locator service](https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer).
 
 ## Relevant API
 
@@ -47,5 +47,3 @@ This sample uses the world locator service "https://geocode.arcgis.com/arcgis/re
 ## Tags
 
 businesses, geocode, locations, locator, places of interest, POI, point of interest, search, suggestions
-
-

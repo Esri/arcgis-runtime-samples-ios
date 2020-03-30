@@ -15,9 +15,9 @@ Tap the map to see the nearest address displayed in a callout.
 ## How it works
 
 1. Create an `AGSLocatorTask` object using a URL to a geocoder service.
-2. Set the `AGSGeocodeParameters` for the `AGSLocatorTask` and specify the geocoder's attributes.
-3. Get the matching results from the `AGSGeocodeResult` using  `AGSLocatorTask.reverseGeocode(withLocation:parameters:completion:)`.
-4. Show the results using a `AGSPictureMarkerSymbol` and add the symbol to a `AGSGraphic` in the `AGSGraphicsOverlay`.
+2. Inititialize `AGSReverseGeocodeParameters` and set `AGSReverseGeocodeParameters.maxResults` to 1.
+3. Pass `AGSReverseGeocodeParameters` into `AGSLocatorTask.reverseGeocode(withLocation:parameters:completion:)` and get the matching results from the `AGSGeocodeResult`.
+4. Show the results using an `AGSPictureMarkerSymbol` and add the symbol to an `AGSGraphic` in the `AGSGraphicsOverlay`.
 
 ## Relevant API
 
@@ -28,7 +28,3 @@ Tap the map to see the nearest address displayed in a callout.
 ## Tags
 
 address, geocode, locate, reverse geocode, search
-
-
-
-

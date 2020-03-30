@@ -19,7 +19,7 @@ Choose a type of place in the first field and an area to search within in the se
 2. Find the location for an address (or city name) to search within:
     * Create `AGSGeocodeParameters`.
     * Add return fields to the parameters' `AGSGeocodeParameters.resultAttributeNames` collection. Only add a single "\*" option to return all fields.
-    * Call `AGSLocatorTask.geocode(withSearchText:parameters:completion)` to get a list of `AGSGeocodeResult`s.
+    * Call `AGSLocatorTask.geocode(withSearchText:parameters:completion:)` to get a list of `AGSGeocodeResult`s.
     * Use `AGSGeocodeResult.displayLocation` from one of the results to search within.
 3. Get place of interest (POI) suggestions based on a place name query:
     * Create `AGSSuggestParameters`.
@@ -29,7 +29,7 @@ Choose a type of place in the first field and an area to search within in the se
 4. Use one of the suggestions or a user-written query to find the locations of POIs:
     * Create `AGSGeocodeParameters`.
     * Set the parameters' `searchArea` to `AGSGeometry` of the area you want to search.
-    * Call `AGSLocatorTask.geocode(withSearchText:parameters:completion)` to get a list of `AGSGeocodeResult`s.
+    * Call `AGSLocatorTask.geocode(withSearchText:parameters:completion:)` to get a list of `AGSGeocodeResult`s.
     * Display the places of interest using the results' `AGSGeocodeResult.displayLocation`s.
 
 ## About the data  

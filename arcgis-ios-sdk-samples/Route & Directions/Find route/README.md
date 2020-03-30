@@ -19,7 +19,7 @@ For simplicity, the sample comes loaded with a start and end stop. You can click
 2. Generate default `AGSRouteParameters` using `_.getDefaultParameters`.
 3. Set `_.returnDirections` on the parameters to true.
 4. Add `AGSStop`s to the parameters `stops` collection for each destination.
-5. Solve the route using `routeTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
+5. Solve the route using `AGSRouteTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
 6. Iterate through the result's `AGSRoute`s. To display the route, create a graphic using the geometry from `_routeGeometry`. To display directions, use `route.getDirectionManeuvers()`, and for each `DirectionManeuver`, display `_.directionManeuvers`.
 
 ## Relevant API

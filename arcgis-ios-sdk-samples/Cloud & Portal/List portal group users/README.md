@@ -1,13 +1,34 @@
 # List portal group users
 
-This sample demonstrates how to show the users in a portal group.
+Shows a list of users in a portal group.
 
-![](image1.png)
+![List Portal Group Users](list-portal-group-users.png)
+
+## Use case
+
+This portal information can be used to provide a customized UI experience for the user. For example, you can show a thumbnail next to their username in the header of an application to indicate that they are currently logged in. Additionally, apps such as Collector and Explorer use this functionality to integrate with Portal.
+
+## How to use the sample
+
+When launched, this sample displays a list of users in the Runtime Group portal. Notice that along with displaying each user's name and picture, their description is displayed as well. 
 
 ## How it works
 
-The sample initializes an `AGSPortal` object. A group on this portal is retrieved using the `findGroups(with:completion:)` method. From this group, all users are fetched using the `fetchUsers(completion:)` method. The method returns an array of user names. An `AGSPortalUser` object is created for each user name using the `init(portal:username:)` initializer. Each of these portalUser object is loaded and the user information is shown in a table view.
+1. Initialize an `AGSPortal` object.
+2. Retrieve a group from this portal using `findGroups(with:completion:)`, which returns an array of user names.
+3. Obtain all the users in this group by using `fetchUsers(completion:)`.
+4. Create an `AGSPortalUser` object for each user name using `init(portal:username:)`.
 
+## Relevant API
 
+* AGSPortal
+* AGSPortalGroup
+* AGSPortalUser
 
+## About the data
 
+This sample displays users who are a part of the Runtime Group portal.
+
+## Tags
+
+account, cloud and portal, description, profile, user, username

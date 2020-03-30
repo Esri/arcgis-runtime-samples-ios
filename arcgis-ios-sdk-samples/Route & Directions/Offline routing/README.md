@@ -19,7 +19,7 @@ Tap near a road to start adding a stop to the route, tap again to place it on th
 2. Create an `AGSRouteTask` with an offline locator geodatabase.
 3. Get the `AGSRouteParameters` using `_.getDefaultParameters()`.
 4. Create `AGSStop`s and add them to the route task's parameters.
-5. Solve the route using `routeTask.solveRoute(with:completion:)`.
+5. Solve the route using `AGSRouteTask.solveRoute(with:completion:)`.
 6. Create a graphic with the route's geometry and a `AGSSimpleLineSymbol` and display it on another `AGSGraphicsOverlay`.
 
 ## Offline data

@@ -11,7 +11,7 @@ When getting directions or looking for nearby places, users may only know what t
 
 ## How to use the sample
 
-Choose a type of place in the first field and an area to search within in the second field. Tap the Search button to show the results of the query on the map. Tap on a result pin to show its name and address. If you pan away from the result area, a "Redo search in this area" button will appear. tap it to query again for the currently viewed area on the map.
+Choose a type of place in the first field and an area to search within in the second field. Tap the Search button to show the results of the query on the map. Tap on a result pin to show its name and address. If you pan away from the result area, a "Redo search in this area" button will appear. Tap it to query again for the currently viewed area on the map.
 
 ## How it works
 

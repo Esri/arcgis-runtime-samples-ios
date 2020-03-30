@@ -16,7 +16,7 @@ For simplicity, the sample comes loaded with a set of suggested addresses. Choos
 
 1. Create an `AGSLocatorTask` using the URL to a locator service.
 2. Initialize `AGSGeocodeParameters` and specify the `AGSGeocodeParameters.resultAttributeNames`.
-3. Pass the `AGSGeocodeParameters` into `AGSLocatorTask.geocode(withSearchText:parameters:completion)` and get the matching results from the `AGSGeocodeResult`.
+3. Pass the `AGSGeocodeParameters` into `AGSLocatorTask.geocode(withSearchText:parameters:completion:)` and get the matching results from the `AGSGeocodeResult`.
 4. Create an `AGSGraphic` with the geocode result's location and store the geocode result's attributes in the graphic's attributes.
 5. Show the graphic in an `AGSGraphicsOverlay`.
 

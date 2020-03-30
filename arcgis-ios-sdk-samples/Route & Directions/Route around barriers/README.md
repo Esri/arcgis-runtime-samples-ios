@@ -38,7 +38,7 @@ Tap 'Add stop' to add stops to the route. Tap 'Add barrier' to add areas that ca
     v. If the user has a definite start point, set `AGSRouteParameters.preserveFirstStop` to `true`.
     vi. If the user has a definite final destination, set `AGSRouteParameters.preserveLastStop` to `true`.
 6. Calculate and display the route.
-    i. Call `_routeTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
+    i. Call `AGSRouteTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
     ii. Get the first returned route by calling `AGSRouteResult.routes.first()`.
     iii. Get the geometry from the route as a polyline by accessing the `_.routeGeometry` property.
     iv. Create a graphic from the polyline and a simple line symbol.

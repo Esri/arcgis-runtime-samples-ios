@@ -27,7 +27,7 @@ Tap 'Add stop' to add stops to the route. Tap 'Add barrier' to add areas that ca
     v. Add the graphic to the stops graphics overlay.
 4. When the user adds a barrier, create a polygon barrier and add it to the route parameters.
     i. Normalize the geometry (see **3i** above).
-    ii. Buffer the geometry to create a larger barrier from the tapped point by calling `AGSGeometryEngine.bufferGeometry(geometry:byDistance:)`.
+    ii. Buffer the geometry to create a larger barrier from the tapped point by calling `class AGSGeometryEngine.bufferGeometry(geometry:byDistance:)`.
     iii. Create the graphic from the geometry and the symbol.
     iv. Add the graphic to the barriers overlay.
 5. When ready to find the route, configure the route parameters.

@@ -18,6 +18,7 @@ import UIKit
 import ArcGIS
 
 class CreateAndSaveKMLViewController: UIViewController {
+    // Set the map.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
@@ -31,6 +32,7 @@ class CreateAndSaveKMLViewController: UIViewController {
     @IBOutlet var toolbar: UIToolbar?
     @IBOutlet var saveButton: UIBarButtonItem?
     
+    // Prompt options to allow the user to save the KMZ file.
     @IBAction func saveKMZ() {
         let kmzProvider = KMZProvider(document: kmlDocument)
         let activityViewController = UIActivityViewController(activityItems: [kmzProvider], applicationActivities: nil)
@@ -40,6 +42,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         }
     }
 
+    // Complete the current sketch and add it to the KML document.
     @IBAction func completeSketch() {
         geometry = mapView.sketchEditor?.geometry
         projectedGeometry = AGSGeometryEngine.projectGeometry(geometry!, to: spatialRef)
@@ -51,6 +54,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         changeButton()
     }
     
+    // Reset the KML.
     @IBAction func resetKML() {
         mapView.map?.operationalLayers.removeAllObjects()
         currentPlacemark = nil
@@ -60,14 +64,6 @@ class CreateAndSaveKMLViewController: UIViewController {
         mapView.map?.operationalLayers.add(kmlLayer!)
     }
     
-    func makeMap() -> AGSMap {
-        let map = AGSMap(basemap: .darkGrayCanvasVector())
-        let kmlDataset = AGSKMLDataset(rootNode: kmlDocument)
-        map.operationalLayers.add(AGSKMLLayer(kmlDataset: kmlDataset))
-        return map
-    }
-
-    let sketchStyle = AGSSketchStyle()
     var sketchCreationMode: AGSSketchCreationMode?
     var kmlDocument = AGSKMLDocument()
     let spatialRef = AGSSpatialReference.wgs84()
@@ -79,11 +75,15 @@ class CreateAndSaveKMLViewController: UIViewController {
     var kmlDataset: AGSKMLDataset?
     var kmlLayer: AGSKMLLayer?
     
-    func startSketch() {
-        mapView.sketchEditor?.stop()
-        mapView.sketchEditor?.start(with: sketchCreationMode!)
+    // Set the basemap and add a KML layer.
+    func makeMap() -> AGSMap {
+        let map = AGSMap(basemap: .darkGrayCanvasVector())
+        let kmlDataset = AGSKMLDataset(rootNode: kmlDocument)
+        map.operationalLayers.add(AGSKMLLayer(kmlDataset: kmlDataset))
+        return map
     }
     
+    // Make KML with a point style.
     func makeKMLStyleWithPointStyle(icon: AGSKMLIcon, color: UIColor) -> AGSKMLStyle {
         let iconStyle = AGSKMLIconStyle(icon: icon, scale: 1.0)
         let kmlStyle = AGSKMLStyle()
@@ -91,18 +91,21 @@ class CreateAndSaveKMLViewController: UIViewController {
         return kmlStyle
     }
     
+    // Make KML with a line style.
     func makeKMLStyleWithLineStyle(color: UIColor) -> AGSKMLStyle {
         let kmlStyle = AGSKMLStyle()
         kmlStyle.lineStyle = AGSKMLLineStyle(color: color, width: 2.0)
         return kmlStyle
     }
     
+    // Make KML with a polygon style.
     func makeKMLStyleWithPolygonStyle(color: UIColor) -> AGSKMLStyle {
         let kmlStyle = AGSKMLStyle()
         kmlStyle.polygonStyle = AGSKMLPolygonStyle(color: color)
         return kmlStyle
     }
     
+    // Change the bottom toolbar button.
     func changeButton() {
         if (toolbar?.items?.contains(addButton!))! {
             toolbar?.items?.remove(at: 2)
@@ -110,15 +113,6 @@ class CreateAndSaveKMLViewController: UIViewController {
         } else {
             toolbar?.items?.remove(at: 2)
             toolbar?.items?.insert(addButton!, at: 2)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        if let navigationController = segue.destination as? UINavigationController,
-            let settingsViewController = navigationController.topViewController as? CreateAndSaveKMLSettingsViewController {
-            settingsViewController.kmlStyle = kmlStyle
-            settingsViewController.delegate = self
         }
     }
     
@@ -132,8 +126,19 @@ class CreateAndSaveKMLViewController: UIViewController {
             "CreateAndSaveKMLSettingsViewController"
         ]
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let navigationController = segue.destination as? UINavigationController,
+            let settingsViewController = navigationController.topViewController as? CreateAndSaveKMLSettingsViewController {
+            settingsViewController.kmlStyle = kmlStyle
+            settingsViewController.delegate = self
+        }
+    }
 }
 
+// Handles saving a KMZ file.
 private class KMZProvider: UIActivityItemProvider {
     private let document: AGSKMLDocument
     private var documentURL: URL?
@@ -169,6 +174,7 @@ private class KMZProvider: UIActivityItemProvider {
     }
 }
 
+// Set KML style depending on which feature has been chosen.
 extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewControllerDelegate {
     func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, feature: String, icon: AGSKMLIcon?, color: UIColor) {
         switch feature {
@@ -188,9 +194,11 @@ extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewController
         }
     }
     
+    // Begins sketch editor after attributes were chosen. 
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController) {
         dismiss(animated: true)
         changeButton()
+        mapView.sketchEditor?.stop()
         mapView.sketchEditor?.start(with: sketchCreationMode!)
     }
 }

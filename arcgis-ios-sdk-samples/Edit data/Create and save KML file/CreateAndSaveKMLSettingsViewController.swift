@@ -37,6 +37,7 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     @IBOutlet var polygonLabel: UILabel?
     @IBOutlet var iconLabel: UILabel?
     
+    // Complete settings changes and go back to the main page.
     @IBAction func done() {
         delegate?.createAndSaveKMLSettingsViewController(self, feature: feature, icon: icon, color: color)
         delegate?.createAndSaveKMLSettingsViewControllerDidFinish(self)
@@ -62,6 +63,7 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
         case iconPicker, polylinePicker, polygonPicker
     }
     
+    // Prompt the icon picker to either appear or disappear.
     func toggleIconPickerVisibility() {
         tableView.performBatchUpdates({
         if iconPickerHidden {
@@ -76,6 +78,7 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
         }, completion: nil)
     }
     
+    // Prompt the polyline picker to either appear or disappear.
     func togglePolylinePickerVisibility() {
         tableView.performBatchUpdates({
         if polylinePickerHidden {
@@ -90,6 +93,7 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
         }, completion: nil)
     }
     
+    // Prompt the polygon picker to either appear or disappear.
     func togglePolygonPickerVisibility() {
         tableView.performBatchUpdates({
         if polygonPickerHidden {
@@ -105,6 +109,7 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     }
 }
 
+// Set an index path for each table view cell.
 private extension IndexPath {
     static let pointLabel = IndexPath(row: 0, section: 0)
     static let iconPicker = IndexPath(row: 1, section: 0)
@@ -114,6 +119,7 @@ private extension IndexPath {
     static let polygonPicker = IndexPath(row: 5, section: 0)
 }
 
+// Adjust the index path according to which pickers are hidden.
 extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
     func adjustedIndexPath(_ indexPath: IndexPath) -> IndexPath {
         switch indexPath.section {
@@ -154,6 +160,7 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
     }
 }
 
+// Make the picker views with the appropriate number of columns and rows.
 extension CreateAndSaveKMLSettingsViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -172,6 +179,7 @@ extension CreateAndSaveKMLSettingsViewController: UIPickerViewDataSource {
 }
 
 extension CreateAndSaveKMLSettingsViewController: UIPickerViewDelegate {
+    // Fill the picker views with the appropriate data. 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch Section.allCases[pickerView.tag] {
         case .iconPicker:
@@ -205,6 +213,7 @@ extension CreateAndSaveKMLSettingsViewController: UIPickerViewDelegate {
 }
 
 extension CreateAndSaveKMLSettingsViewController /* UITableViewDelegate */ {
+    // Deselect the row and return the selected feature.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch adjustedIndexPath(indexPath) {
         case .pointLabel:

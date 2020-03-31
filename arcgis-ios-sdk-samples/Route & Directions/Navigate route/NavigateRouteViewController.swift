@@ -31,8 +31,8 @@ class NavigateRouteViewController: UIViewController {
     var routeTracker: AGSRouteTracker!
     /// The route task to solve the route between stops, using the online routing service.
     var routeTask: AGSRouteTask!
-    /// The mock data source to demo the navigation. Use delegate methods to update locations for the tracker.
-    var mockDataSource: AGSSimulatedLocationDataSource!
+    /// The initial location for the solved route.
+    var initialLocation: AGSLocation!
     /// An AVSpeechSynthesizer for text to speech.
     lazy var speechSynthesizer = AVSpeechSynthesizer()
     
@@ -52,7 +52,26 @@ class NavigateRouteViewController: UIViewController {
         }
     }
     
-    /// Creates the stops for the navigation.
+    /// A wrapper function for operations after the route is solved by an AGSRouteTask.
+    ///
+    /// - Parameters:
+    ///   - routeResult: the result from AGSRouteTask.solveRoute(with:completion:)
+    ///   - error: the error from AGSRouteTask.solveRoute(with:completion:)
+    func solveRouteCompletion(with routeResult: AGSRouteResult?, error: Error?) {
+        if let error = error {
+            self.presentAlert(error: error)
+        } else if let result = routeResult, let firstRoute = result.routes.first {
+            self.routeResult = result
+            self.mapView.locationDisplay.dataSource = self.makeDataSource(firstRoute)
+            self.routeTracker = self.makeRouteTracker(result)
+            self.updateRouteGraphics(remaining: firstRoute.routeGeometry!, traversed: nil)
+            self.updateViewpoint(result)
+            // Enable bar button item.
+            self.navigateButtonItem.isEnabled = true
+        }
+    }
+    
+    /// Create the stops for the navigation.
     ///
     /// - Returns: An array of `AGSStop` object.
     func makeStops() -> [AGSStop] {
@@ -65,79 +84,34 @@ class NavigateRouteViewController: UIViewController {
         return [stop1, stop2, stop3]
     }
     
-    /// Gets the default parameters for the route task and invoke solve route.
-    /// - Parameter completion: A clousure that is invoked when the operation completes, solve route in this case. The route parameters are pass to the clousure.
-    func getDefaultParameters(completion: @escaping (AGSRouteTask, AGSRouteParameters) -> Void) {
-        routeTask = AGSRouteTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
-        routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else if let params = params {
-                // Explicitly set values for parameters.
-                params.returnDirections = true
-                params.returnStops = true
-                params.returnRoutes = true
-                params.outputSpatialReference = .wgs84()
-                params.setStops(self.makeStops())
-                completion(self.routeTask, params)
-            }
-        }
-    }
-    
-    /// A wrapper function to compute the routes.
-    /// - Parameter params: based on which routes should be computed.
-    func solveRoute(in routeTask: AGSRouteTask, with params: AGSRouteParameters) {
-        routeTask.solveRoute(with: params) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else if let result = routeResult, let firstRoute = result.routes.first {
-                self.routeResult = result
-                self.routeTracker = self.makeRouteTracker(result)
-                self.mapView.locationDisplay.dataSource = self.makeDataSource(firstRoute)
-                self.updateViewpoint(result)
-                self.updateRouteGraphics(remaining: firstRoute.routeGeometry!, traversed: nil)
-                // Enable bar button item.
-                self.navigateButtonItem.isEnabled = true
-            }
-        }
-    }
-    
-    /// Sets the simulated data source for this demo.
+    /// Make the simulated data source for this demo.
+    ///
     /// - Parameter result: solved route from the route task.
+    /// - Returns: An `AGSSimulatedLocationDataSource` object.
     func makeDataSource(_ route: AGSRoute) -> AGSSimulatedLocationDataSource {
         directionsList = route.directionManeuvers
         let densifiedRoute = AGSGeometryEngine.geodeticDensifyGeometry(route.routeGeometry!, maxSegmentLength: 50.0, lengthUnit: .meters(), curveType: .geodesic) as! AGSPolyline
-        mockDataSource = AGSSimulatedLocationDataSource()
-        mockDataSource!.setLocationsWith(densifiedRoute)
-        mockDataSource!.locationChangeHandlerDelegate = self
-        return mockDataSource!
+        // The mock data source to demo the navigation. Use delegate methods to update locations for the tracker.
+        let mockDataSource = AGSSimulatedLocationDataSource()
+        mockDataSource.setLocationsWith(densifiedRoute)
+        mockDataSource.locationChangeHandlerDelegate = self
+        initialLocation = mockDataSource.locations?.first
+        return mockDataSource
     }
     
-    /// Sets the route tracker to provide navigation information.
+    /// Make a route tracker to provide navigation information.
+    ///
     /// - Parameter result: solved route from the route task.
+    /// - Returns: An `AGSRouteTracker` object.
     func makeRouteTracker(_ result: AGSRouteResult) -> AGSRouteTracker {
         let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0)!
         tracker.delegate = self
         return tracker
     }
     
-    /// Sets the graphics.
-    /// - Parameter result: solved route from the route task.
-    func updateViewpoint(_ result: AGSRouteResult) {
-        // Show the resulting route on the map and save a reference to the route.
-        if let viewPoint = defaultViewPoint {
-            // Reset to initial view point with animation.
-            mapView.setViewpoint(viewPoint, completion: nil)
-        } else if let geometry = result.routes.first?.routeGeometry {
-            mapView.setViewpointGeometry(geometry) { [weak self] _ in
-                // Get the initial zoomed view point.
-                self?.defaultViewPoint = self?.mapView.currentViewpoint(with: .centerAndScale)
-            }
-        }
-    }
-    
+    /// Make a graphic overlay and add graphics to it.
+    ///
+    /// - Returns: An `AGSGraphicsOverlay` object.
     func makeRouteOverlay() -> AGSGraphicsOverlay {
         // The graphics overlay for the polygon and points.
         let graphicsOverlay = AGSGraphicsOverlay()
@@ -151,6 +125,22 @@ class NavigateRouteViewController: UIViewController {
             routeTraveledGraphic!
         ])
         return graphicsOverlay
+    }
+    
+    /// Update the viewpoint so that it reflects the original viewpoint when the example is loaded.
+    ///
+    /// - Parameter result: solved route from the route task.
+    func updateViewpoint(_ result: AGSRouteResult) {
+        // Show the resulting route on the map and save a reference to the route.
+        if let viewPoint = defaultViewPoint {
+            // Reset to initial view point with animation.
+            mapView.setViewpoint(viewPoint, completion: nil)
+        } else if let geometry = result.routes.first?.routeGeometry {
+            mapView.setViewpointGeometry(geometry) { [weak self] _ in
+                // Get the initial zoomed view point.
+                self?.defaultViewPoint = self?.mapView.currentViewpoint(with: .centerAndScale)
+            }
+        }
     }
     
     /// Called in response to the Navigate button being tapped.
@@ -168,14 +158,13 @@ class NavigateRouteViewController: UIViewController {
     @IBAction func reset() {
         // Stop the speech, if there is any.
         speechSynthesizer.stopSpeaking(at: .immediate)
-        // Resets to the starting location for location display.
-        if let dataSource = mockDataSource, let initialLocation = mockDataSource.locations?.first {
-            dataSource.didUpdate(initialLocation)
-        }
-        // Stop the datasource generation, if there is any.
+        // Reset to the starting location for location display.
+        mapView.locationDisplay.dataSource.didUpdate(initialLocation)
+        // Stop the location display as well as datasource generation, if reset before the end is reached.
         mapView.locationDisplay.stop()
         mapView.locationDisplay.autoPanMode = .off
         directionsList.removeAll()
+        statusLabel.text = "Directions are shown here."
         // Reset the navigation.
         mapView.locationDisplay.dataSource = makeDataSource(routeResult.routes.first!)
         routeTracker = makeRouteTracker(routeResult)
@@ -198,8 +187,20 @@ class NavigateRouteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Solve the route as map loads.
-        getDefaultParameters { [weak self] (task: AGSRouteTask, params: AGSRouteParameters) in
-            self?.solveRoute(in: task, with: params)
+        routeTask = AGSRouteTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
+        routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else if let params = params {
+                // Explicitly set values for parameters.
+                params.returnDirections = true
+                params.returnStops = true
+                params.returnRoutes = true
+                params.outputSpatialReference = .wgs84()
+                params.setStops(self.makeStops())
+                self.routeTask.solveRoute(with: params, completion: self.solveRouteCompletion(with:error:))
+            }
         }
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["NavigateRouteViewController"]
@@ -250,6 +251,7 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
                 routeTracker?.switchToNextDestination(completion: nil)
             } else {
                 statusText = "Final destination reached."
+
                 mapView.locationDisplay.stop()
             }
         default:

@@ -1,20 +1,45 @@
 # Offline edit and sync
 
-This sample demonstrates how you can take feature service data offline by creating a geodatabase, make edits and sync changes
+Synchronize offline edits with a feature service.
+
+![Map with features](offline-edit-sync-1.png)
+![Select feature layers](offline-edit-sync-2.png)
+![Edit features](offline-edit-sync-3.png)
+
+## Use case
+
+A survey worker who works in an area without an internet connection could take a geodatabase of survey features offline at their office, make edits and add new features to the offline geodatabase in the field, and sync the updates with the online feature service after returning to the office.
 
 ## How to use the sample
 
-At start the sample is showing features from the service. When you tap on the `Generate geodatabase` button in the bottom toolbar, you are asked to choose the extent for the geodatbase and the layers you would like to include. Once the geodatabase is downloaded, all its layers are shown in the map view. You can tap on a feature to get the popup view. Inside which you can make edits. The label on the top should specify the number of edits. You can sync the changes by tapping on the `Sync` button. Once the changes are synced you can switch back to the service and verify the changes.
-
-![](image1.png)
-![](image2.png)
-![](image3.png)
+Pan and zoom to position the red rectangle around the area to be taken offline. Tap "Generate geodatabase" to take the area offline. To edit features, tap to select a feature, and tap again anywhere else on the map to move the selected feature to the tapped location. To sync the edits with the feature service, tap the "Sync geodatabase" button.
 
 ## How it works
 
-The sample uses the `generateJob(with:downloadFileURL:)` method on  `AGSGeodatabaseSyncTask` to create an `AGSJob`. The `start(statusHandler:completion:)` method on the job, starts the generation process, provides status updates and the geodatabase on successful completion. The sample also uses the `AGSPopupsViewController` to display the view controller and `AGSPopup` objects to populate the controller. The map view controller conforms to the `AGSPopupsViewControllerDelegate` for events like interaction or editing or deletion. 
+1. Create a geodatabase sync task from a URL to a feature service.
+2. Generate the geodatabase sync task to create geodatabase parameters by passing in an envelope extent as the parameter.
+3. Create a generate job, passing in the parameters and a path to where the geodatabase should be downloaded locally.
+4. Start the job and get a geodatabase as a result.
+5. Set the sync direction.
+6. To enable editing, load the geodatabase and get its feature tables. Create feature layers from the feature tables and add them to the map's operational layers collection.
+7. Create a sync job passing in the parameters and geodatabase as arguments.
+8. Start the sync job to synchronize the edits.
 
+## Relevant API
 
+* AGSFeatureLayer
+* AGSFeatureTable
+* AGSGenerateGeodatabaseJob
+* AGSGenerateGeodatabaseParameters
+* AGSGeodatabaseSyncTask
+* AGSSyncGeodatabaseJob
+* AGSSyncGeodatabaseParameters
+* AGSSyncLayerOption
 
+## About the data
 
+The basemap uses an offline tile package of San Francisco. The online feature service has features with wildfire information.
 
+## Tags
+
+feature service, geodatabase, offline, synchronize

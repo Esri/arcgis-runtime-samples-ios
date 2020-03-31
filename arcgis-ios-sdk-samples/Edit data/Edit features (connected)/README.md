@@ -1,6 +1,6 @@
 # Edit features (connected)
 
-This sample demonstrates how you can use popups to edit features in a feature layer
+This sample demonstrates how you can use popups to edit features in a feature layer.
 
 ## How to use the sample
 

@@ -10,9 +10,9 @@ Tap on a feature to display the popup. The popup may contain information about a
 Add feature:
 Tap on the `Add new feature` in the bottom toolbar to initiate adding a feature. You would be shown a list of feature templates, already available. Picking one would open the popup for the new feature in the editing mode. You can use the geometry button the on bottom left to specify the location for the new feature. Once you are finished updating the attributes or attachments you can tap on the `Done` button to save the feature or on `Cancel` button to discard.
 
-![](image1.png)
-![](image2.png)
-![](image3.png)
+![Map with features](edit-features-connected-1.png)
+![List of templates](edit-features-connected-2.png)
+![Editable information list](edit-features-connected-3.png)
 
 ## How it works
 

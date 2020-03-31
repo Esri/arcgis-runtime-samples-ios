@@ -1029,7 +1029,7 @@
 				<key>storyboardName</key>
 				<string>AddFeatures</string>
 				<key>descriptionText</key>
-				<string>Tap on a location on the map to add a new feature at that location</string>
+				<string>Add features to a feature layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1037,7 +1037,7 @@
 				<key>storyboardName</key>
 				<string>DeleteFeatures</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to select it and then tap on the info button to delete the feature</string>
+				<string>Delete features from an online feature service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1045,7 +1045,7 @@
 				<key>storyboardName</key>
 				<string>UpdateAttributes</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to display a callout. The callout shows the damage type for that feature and an info button. To change the damage type tap on the info button and select a new on from the list shown</string>
+				<string>Update feature attributes in an online feature service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1053,7 +1053,7 @@
 				<key>storyboardName</key>
 				<string>EditGeometry</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to display a callout. To change the geometry of the selected feature tap on the info button. Tap on the new location on the map and tap Done to save</string>
+				<string>Update a feature&apos;s location in an online feature service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1061,7 +1061,7 @@
 				<key>storyboardName</key>
 				<string>EditFeatureAttachments</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to display a callout. The callout shows the number of attachments associated with that feature. Tap on the info button to open the list view. You can add, delete or download an attachment in this list</string>
+				<string>Add, delete, and download attachments for features from a service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1081,7 +1081,7 @@
 				<key>storyboardName</key>
 				<string>OfflineEditing</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to take features offline, make changes and sync them back to the service</string>
+				<string>Synchronize offline edits with a feature service.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanFranciscoTilePackage</string>

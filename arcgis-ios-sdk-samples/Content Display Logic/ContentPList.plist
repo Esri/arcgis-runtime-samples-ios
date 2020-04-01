@@ -941,7 +941,7 @@
 				<key>storyboardName</key>
 				<string>FindAddress</string>
 				<key>descriptionText</key>
-				<string>Type in or select a prepopulated address to show its location on the map</string>
+				<string>Find the location for an address.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -949,7 +949,7 @@
 				<key>storyboardName</key>
 				<string>ReverseGeocode</string>
 				<key>descriptionText</key>
-				<string>Tap on a location on the map to find the closest address</string>
+				<string>Use an online service to find the address for a tapped point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -957,7 +957,7 @@
 				<key>storyboardName</key>
 				<string>FindPlace</string>
 				<key>descriptionText</key>
-				<string>Search for a point of interest either nearby, near a particular location or across the world</string>
+				<string>Find places of interest near a location or within a specific area.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -965,7 +965,7 @@
 				<key>storyboardName</key>
 				<string>OfflineGeocode</string>
 				<key>descriptionText</key>
-				<string>Type in or select a prepopulated address to show its location on the map. Or tap and hold to get address for a point on the map. Tap, hold and move to get instant results from the locator file</string>
+				<string>Geocode addresses to locations and reverse geocode locations to addresses offline.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanDiegoLocator</string>

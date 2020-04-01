@@ -33,6 +33,13 @@ class NavigateRouteViewController: UIViewController {
     var routeTask: AGSRouteTask!
     /// The initial location for the solved route.
     var initialLocation: AGSLocation!
+    /// A formatter to format a time value into human readable string.
+    lazy var timeFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .full
+        return formatter
+    }()
     /// An AVSpeechSynthesizer for text to speech.
     lazy var speechSynthesizer = AVSpeechSynthesizer()
     
@@ -55,8 +62,8 @@ class NavigateRouteViewController: UIViewController {
     /// A wrapper function for operations after the route is solved by an AGSRouteTask.
     ///
     /// - Parameters:
-    ///   - routeResult: the result from AGSRouteTask.solveRoute(with:completion:)
-    ///   - error: the error from AGSRouteTask.solveRoute(with:completion:)
+    ///   - routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.
+    ///   - error: The error from `AGSRouteTask.solveRoute(with:completion:)`.
     func solveRouteCompletion(with routeResult: AGSRouteResult?, error: Error?) {
         if let error = error {
             self.presentAlert(error: error)
@@ -64,7 +71,7 @@ class NavigateRouteViewController: UIViewController {
             self.routeResult = result
             self.mapView.locationDisplay.dataSource = self.makeDataSource(firstRoute)
             self.routeTracker = self.makeRouteTracker(result)
-            self.updateRouteGraphics(remaining: firstRoute.routeGeometry!, traversed: nil)
+            self.updateRouteGraphics(remaining: firstRoute.routeGeometry!)
             self.updateViewpoint(result)
             // Enable bar button item.
             self.navigateButtonItem.isEnabled = true
@@ -73,7 +80,7 @@ class NavigateRouteViewController: UIViewController {
     
     /// Create the stops for the navigation.
     ///
-    /// - Returns: An array of `AGSStop` object.
+    /// - Returns: An array of `AGSStop` objects.
     func makeStops() -> [AGSStop] {
         let stop1 = AGSStop(point: AGSPoint(x: -117.160386727, y: 32.706608, spatialReference: .wgs84()))
         stop1.name = "San Diego Convention Center"
@@ -86,7 +93,7 @@ class NavigateRouteViewController: UIViewController {
     
     /// Make the simulated data source for this demo.
     ///
-    /// - Parameter result: solved route from the route task.
+    /// - Parameter result: The solved route from the route task.
     /// - Returns: An `AGSSimulatedLocationDataSource` object.
     func makeDataSource(_ route: AGSRoute) -> AGSSimulatedLocationDataSource {
         directionsList = route.directionManeuvers
@@ -168,7 +175,7 @@ class NavigateRouteViewController: UIViewController {
         // Reset the navigation.
         mapView.locationDisplay.dataSource = makeDataSource(routeResult.routes.first!)
         routeTracker = makeRouteTracker(routeResult)
-        updateRouteGraphics(remaining: (routeResult.routes.first?.routeGeometry)!, traversed: nil)
+        updateRouteGraphics(remaining: (routeResult.routes.first?.routeGeometry)!)
         updateViewpoint(routeResult)
         // Reset buttons state.
         recenterButtonItem.isEnabled = false
@@ -199,7 +206,9 @@ class NavigateRouteViewController: UIViewController {
                 params.returnRoutes = true
                 params.outputSpatialReference = .wgs84()
                 params.setStops(self.makeStops())
-                self.routeTask.solveRoute(with: params, completion: self.solveRouteCompletion(with:error:))
+                self.routeTask.solveRoute(with: params) { [weak self] in
+                    self?.solveRouteCompletion(with: $0, error: $1)
+                }
             }
         }
         // Add the source code button item to the right of navigation bar.
@@ -210,6 +219,7 @@ class NavigateRouteViewController: UIViewController {
         super.viewWillDisappear(animated)
         // Stop the speech immediately.
         speechSynthesizer.stopSpeaking(at: .immediate)
+        reset()
     }
 }
 
@@ -235,15 +245,16 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
         var statusText: String
         switch status.destinationStatus {
         case .notReached, .approaching:
-            let formatter = DateComponentsFormatter()
-            formatter.allowedUnits = [.hour, .minute, .second]
-            formatter.unitsStyle = .full
+            
             let distanceRemaining = status.routeProgress.remainingDistance.displayText + " " + status.routeProgress.remainingDistance.displayTextUnits.pluralDisplayName
-            let timeRemaining = formatter.string(from: TimeInterval(status.routeProgress.remainingTime * 60))!
-            statusText = "Distance remaining: \(distanceRemaining)\nTime remaining: \(timeRemaining)\n"
+            let timeRemaining = timeFormatter.string(from: TimeInterval(status.routeProgress.remainingTime * 60))!
+            statusText = """
+            Distance remaining: \(distanceRemaining)
+            Time remaining: \(timeRemaining)
+            """
             if status.currentManeuverIndex + 1 < directionsList.count {
                 let nextDirection = directionsList[status.currentManeuverIndex + 1].directionText
-                statusText.append("Next direction: \(nextDirection)")
+                statusText.append("\nNext direction: \(nextDirection)")
             }
         case .reached:
             if status.remainingDestinationCount > 1 {
@@ -260,7 +271,7 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
         statusLabel.text = statusText
     }
     
-    func updateRouteGraphics(remaining: AGSGeometry?, traversed: AGSGeometry?) {
+    func updateRouteGraphics(remaining: AGSGeometry?, traversed: AGSGeometry? = nil) {
         routeAheadGraphic.geometry = remaining
         routeTraveledGraphic.geometry = traversed
     }
@@ -269,6 +280,6 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
 extension NavigateRouteViewController: AGSLocationChangeHandlerDelegate {
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         // Update the tracker location with the new location from the simulated data source.
-        self.routeTracker?.trackLocation(location, completion: nil)
+        self.routeTracker?.trackLocation(location)
     }
 }

@@ -3,7 +3,7 @@
     "description": "Use a routing service to navigate between two points.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "navigate-route.png"
     ],
     "keywords": [
         "directions",

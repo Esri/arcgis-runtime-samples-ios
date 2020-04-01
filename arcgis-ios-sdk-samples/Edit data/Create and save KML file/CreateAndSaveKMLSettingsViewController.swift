@@ -66,7 +66,7 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     // Prompt the icon picker to either appear or disappear.
     func toggleIconPickerVisibility() {
         tableView.performBatchUpdates({
-        if iconPickerHidden {
+        if iconPickerHidden && polylinePickerHidden && polygonPickerHidden {
             pointLabel?.textColor = view.tintColor
             tableView.insertRows(at: [.iconPicker], with: .fade)
             iconPickerHidden = false
@@ -81,7 +81,7 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     // Prompt the polyline picker to either appear or disappear.
     func togglePolylinePickerVisibility() {
         tableView.performBatchUpdates({
-        if polylinePickerHidden {
+        if iconPickerHidden && polylinePickerHidden && polygonPickerHidden {
             polylineLabel?.textColor = view.tintColor
             tableView.insertRows(at: [.polylinePicker], with: .fade)
             polylinePickerHidden = false
@@ -96,7 +96,7 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     // Prompt the polygon picker to either appear or disappear.
     func togglePolygonPickerVisibility() {
         tableView.performBatchUpdates({
-        if polygonPickerHidden {
+        if iconPickerHidden && polylinePickerHidden && polygonPickerHidden {
             polygonLabel?.textColor = view.tintColor
             tableView.insertRows(at: [.polygonPicker], with: .fade)
             polygonPickerHidden = false
@@ -122,18 +122,48 @@ private extension IndexPath {
 // Adjust the index path according to which pickers are hidden.
 extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
     func adjustedIndexPath(_ indexPath: IndexPath) -> IndexPath {
-        switch indexPath.section {
-        case 0:
-            var adjustedRow = indexPath.row
-            if indexPath.row >= 1 && iconPickerHidden {
-                adjustedRow += 1
-            } else if indexPath.row >= 2 && polylinePickerHidden {
-                adjustedRow += 1
-            } else if indexPath.row >= 3 && polygonPickerHidden {
+//        switch indexPath.section {
+//        case 0:
+//            var adjustedRow = indexPath.row
+//            if indexPath.row >= 1 && iconPickerHidden {
+//                adjustedRow += 1
+//            } else if indexPath.row >= 2 && polylinePickerHidden {
+//                adjustedRow += 1
+//            } else if indexPath.row >= 3 && polygonPickerHidden {
+//                adjustedRow += 1
+//            }
+//            print("reg: \(indexPath.row)")
+//            print("adjusted: \(adjustedRow)")
+//            return IndexPath(row: adjustedRow, section: indexPath.section)
+//        default:
+//            return indexPath
+//        }
+        var adjustedRow = indexPath.row
+        if indexPath.row > 0 && iconPickerHidden && polylinePickerHidden && polygonPickerHidden {
+            if indexPath.row >= 2 {
+                adjustedRow += 2
+            } else {
                 adjustedRow += 1
             }
             return IndexPath(row: adjustedRow, section: indexPath.section)
-        default:
+        } else if indexPath.row > 1 && !iconPickerHidden && polylinePickerHidden && polygonPickerHidden {
+            if indexPath.row == 3 {
+                adjustedRow += 1
+            } else {
+                adjustedRow += 2
+            }
+            return IndexPath(row: adjustedRow, section: indexPath.section)
+        } else if indexPath.row == 1 && iconPickerHidden && !polylinePickerHidden && polygonPickerHidden {
+            adjustedRow += 1
+            return IndexPath(row: adjustedRow, section: indexPath.section)
+        } else if indexPath.row > 0 && iconPickerHidden && polylinePickerHidden && !polygonPickerHidden {
+            if indexPath.row >= 2 {
+                adjustedRow += 2
+            } else {
+                adjustedRow += 1
+            }
+            return IndexPath(row: adjustedRow, section: indexPath.section)
+        } else {
             return indexPath
         }
     }
@@ -153,8 +183,6 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("reg: \(indexPath)")
-        print("adjusted: \(adjustedIndexPath(indexPath))")
         // Add "no style" to options on point polyline polygon
         return super.tableView(tableView, cellForRowAt: adjustedIndexPath(indexPath))
     }
@@ -219,13 +247,19 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDelegate */ {
         case .pointLabel:
         tableView.deselectRow(at: adjustedIndexPath(indexPath), animated: true)
             // change text of right detail
+            togglePolylinePickerVisibility()
+            togglePolygonPickerVisibility()
             toggleIconPickerVisibility()
         case .polylineLabel:
             tableView.deselectRow(at: indexPath, animated: true)
+            togglePolygonPickerVisibility()
+            toggleIconPickerVisibility()
             togglePolylinePickerVisibility()
             return feature = "polyline"
         case .polygonLabel:
             tableView.deselectRow(at: indexPath, animated: true)
+            toggleIconPickerVisibility()
+            togglePolylinePickerVisibility()
             togglePolygonPickerVisibility()
             return feature = "polygon"
         default:

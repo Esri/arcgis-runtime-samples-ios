@@ -251,7 +251,6 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
                 routeTracker?.switchToNextDestination(completion: nil)
             } else {
                 statusText = "Final destination reached."
-
                 mapView.locationDisplay.stop()
             }
         default:

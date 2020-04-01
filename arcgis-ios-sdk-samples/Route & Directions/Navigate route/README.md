@@ -10,7 +10,7 @@ Navigation is often used by field workers while traveling between two points to 
 
 ## How to use the sample
 
-Tap 'Navigate' to simulate traveling and to receive directions from a preset starting point to a preset destination. Tap 'Reset' to start the simulation from the beginning.
+Tap "Navigate" to simulate traveling and to receive directions from a preset starting point to a preset destination. Tap "Reset" to start the simulation from the beginning.
 
 ## How it works
 

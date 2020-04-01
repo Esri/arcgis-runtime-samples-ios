@@ -2,7 +2,7 @@
 
 Tap on real-world objects to collect data.
 
-![screenshot showing a feature being recorded, with a prompt to specify feature attributes](image1.png)
+![Image showing a feature being recorded, with a prompt to specify feature attributes](Collect-Data-AR.png)
 
 ## Use case
 

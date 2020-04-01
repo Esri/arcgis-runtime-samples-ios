@@ -2,7 +2,7 @@
 
 Use augmented reality (AR) to quickly explore a scene more naturally than you could with a touch or mouse interface.
 
-![Scene shown in an app](image1.png)
+![Scene shown in an app](Explore-Scenes-In-Flyover-AR.png)
 
 ## Use case
 

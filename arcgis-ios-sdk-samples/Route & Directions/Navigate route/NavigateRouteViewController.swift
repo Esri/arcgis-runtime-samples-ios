@@ -245,7 +245,6 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
         var statusText: String
         switch status.destinationStatus {
         case .notReached, .approaching:
-            
             let distanceRemaining = status.routeProgress.remainingDistance.displayText + " " + status.routeProgress.remainingDistance.displayTextUnits.pluralDisplayName
             let timeRemaining = timeFormatter.string(from: TimeInterval(status.routeProgress.remainingTime * 60))!
             statusText = """

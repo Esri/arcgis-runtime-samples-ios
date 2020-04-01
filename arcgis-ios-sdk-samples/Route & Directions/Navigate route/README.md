@@ -23,12 +23,15 @@ Tap 'Navigate' to simulate traveling and to receive directions from a preset sta
 7. ~~Use `.trackLocationAsync(LocationDataSource.Location)` to track the location of the device and update the route tracking status.~~
 
 Edit: Listen for `AGSLocation` updates using `AGSLocationChangeHandlerDelegate` to track the location of the device and update the route tracking status.
+
 8. ~~Add a listener to capture `TrackingStatusChangedEvent`s, and then get the `TrackingStatus` and use it to display updated route information. Tracking status includes a variety of information on the route progress, such as the remaining distance, remaining geometry or traversed geometry (represented by a `Polyline`), or the remaining time (`Double`), amongst others.~~
 
 Edit: Listen for `AGSTrackingStatus` updates using `AGSRouteTrackerDelegate` and use it to display updated route information.
+
 9. ~~Add a `NewVoiceGuidanceListener` to get the `VoiceGuidance` whenever new instructions are available. From the voice guidance, get the `String` representing the directions and use a text-to-speech engine to output the maneuver directions.~~
 
 Edit: Listen for `AGSVoiceGuidance` updates using `AGSRouteTrackerDelegate`. From the voice guidance, get the `AGSVoiceGuidance.text` representing the directions and use a text-to-speech engine to output the maneuver directions.
+
 10. You can also query the tracking status for the current `AGSDirectionManeuver` index, retrieve that maneuver from the `AGSRoute` and get it's direction text to display in the GUI.
 11. To establish whether the destination has been reached, get the `destinationStatus` from the tracking status. If the destination status is `.reached`, and the `remainingDestinationCount` is 1, we have arrived at the destination and can stop routing. If there are several destinations in your route, and the remaining destination count is greater than 1, switch the route tracker to the next destination.
 

@@ -33,4 +33,3 @@ To change the feature's damage property, tap the feature to select it, tap the i
 ## Tags
 
 amend, attribute, details, edit, editing, information, value
-

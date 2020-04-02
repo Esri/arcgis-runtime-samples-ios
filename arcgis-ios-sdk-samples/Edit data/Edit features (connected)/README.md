@@ -1,24 +1,32 @@
 # Edit features (connected)
 
-This sample demonstrates how you can use popups to edit features in a feature layer.
-
-## How to use the sample
-
-Browse feature:
-Tap on a feature to display the popup. The popup may contain information about a number of features depending on the density of features at the tapped location. It lists the attributes and attachments for each feature. You can enable the editing mode by tapping on the `Edit` button. In this mode you can edit attribute values, change geometry, add or view or delete attachments or delete the feature. To exit the editing mode you can either tap on `Cancel`, which would ignore all the changes, or tap on `Done`, which would save all the changes you made during the edit session.
-
-Add feature:
-Tap on the `Add new feature` in the bottom toolbar to initiate adding a feature. You would be shown a list of feature templates, already available. Picking one would open the popup for the new feature in the editing mode. You can use the geometry button the on bottom left to specify the location for the new feature. Once you are finished updating the attributes or attachments you can tap on the `Done` button to save the feature or on `Cancel` button to discard.
+View, edit, or add features using a popup.  
 
 ![Map with features](edit-features-connected-1.png)
 ![List of templates](edit-features-connected-2.png)
 ![Editable information list](edit-features-connected-3.png)
 
+## Use case 
+An end-user performing a survey may want to view, edit, or add features on a map using a popup during the course of their work. 
+
+## How to use the sample
+
+Pan and zoom to explore various features. Tap on an existing feature to view or edit its data. Tap the "Add new feature" button to add a new feature to the map. 
+
 ## How it works
 
-The sample uses the `AGSPopupsViewController` to display the container view controller and `AGSPopup` objects to populate the container. The map view controller conforms to the `AGSPopupsViewControllerDelegate` for events like interaction or editing or deletion. For feature templates or feature types it uses the `featureTemplates` and `featureTypes` property on the `AGSServiceFeatureTable` associated with the feature layer. To create a feature from selected template it uses the `createFeature(with:)`, `add(_:completion:)`, `applyEdits(completion:)` methods, again on the service feature table.
+1. Create an `AGSServiceFeatureTable` object from a URL.
+2. Create an `AGSFeatureLayer` object from the `AGSServiceFeatureTable`.
+3. Select features using `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)` and `AGSIdentifyLayerResult`.
+4. Create an `AGSPopup` to display data and allow editing.
+5. Create a new feature with a specific template using `AGSArcGISFeatureTable.createFeature(with:)`.
+6. Apply the changes with `AGSServiceFeatureTable.applyEdits(completion:)`.
 
+## Relevant API
+* AGSFeatureLayer
+* AGSFeatureTemplate
+* AGSPopup
+* AGSServiceFeatureTable
 
-
-
-
+## Tags
+details, edit, editing, feature, information, popup, template, value

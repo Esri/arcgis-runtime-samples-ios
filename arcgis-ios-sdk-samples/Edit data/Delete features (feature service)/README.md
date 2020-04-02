@@ -17,7 +17,7 @@ Tap on a feature to display a callout. Tap on the trash can icon in the callout 
 
 1. Create an `AGSServiceFeatureTable` object from a URL.
 2. Create an `AGSFeatureLayer` object from the `AGSServiceFeatureTable`.
-3. Identify the selected feature by using `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)`
+3. Identify the selected feature by using `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)`.
 4. Remove the selected features from the `AGSServiceFeatureTable` using `AGSFeatureTable.delete(_:completion:)`.
 5. Update the table on the server using `AGSServiceFeatureTable.applyEdits(completion:)`.
 

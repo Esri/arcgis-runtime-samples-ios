@@ -1069,7 +1069,7 @@
 				<key>storyboardName</key>
 				<string>EditFeaturesOnline</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to add or edit features in an online feature layer using popups. The new popups provide inline editing for fast editing experience</string>
+				<string>View, edit, or add features using a popup.  </string>
 				<key>dependency</key>
 				<array>
 					<string>SanDiegoTilePackage</string>
@@ -1081,7 +1081,7 @@
 				<key>storyboardName</key>
 				<string>OfflineEditing</string>
 				<key>descriptionText</key>
-				<string>Synchronize offline edits with a feature service.</string>
+				<string>Synchronize offline edits with a feature service using a popup.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanFranciscoTilePackage</string>

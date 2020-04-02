@@ -63,52 +63,116 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
         case iconPicker, polylinePicker, polygonPicker
     }
     
-    // Prompt the icon picker to either appear or disappear.
-    func toggleIconPickerVisibility() {
+    func showPicker(picker: String) {
         tableView.performBatchUpdates({
-        if iconPickerHidden && polylinePickerHidden && polygonPickerHidden {
+        switch picker {
+        case "point":
             pointLabel?.textColor = view.tintColor
             tableView.insertRows(at: [.iconPicker], with: .fade)
-            iconPickerHidden = false
-        } else {
-            iconLabel?.textColor = nil
-            tableView.deleteRows(at: [.iconPicker], with: .fade)
-            iconPickerHidden = true
-        }
-        }, completion: nil)
-    }
-    
-    // Prompt the polyline picker to either appear or disappear.
-    func togglePolylinePickerVisibility() {
-        tableView.performBatchUpdates({
-        if iconPickerHidden && polylinePickerHidden && polygonPickerHidden {
+        case "polyline":
             polylineLabel?.textColor = view.tintColor
             tableView.insertRows(at: [.polylinePicker], with: .fade)
-            polylinePickerHidden = false
-        } else {
-            polylineLabel?.textColor = nil
-            tableView.deleteRows(at: [.polylinePicker], with: .fade)
-            polylinePickerHidden = true
+        case "polygon":
+            polygonLabel?.textColor = view.tintColor
+            tableView.insertRows(at: [.polygonPicker], with: .fade)
+        default:
+            break
         }
         }, completion: nil)
     }
-    
-    // Prompt the polygon picker to either appear or disappear.
-    func togglePolygonPickerVisibility() {
+        
+    func hidePicker(picker: String) {
+        print("called hidePicker")
         tableView.performBatchUpdates({
-        if iconPickerHidden && polylinePickerHidden && polygonPickerHidden {
-            polygonLabel?.textColor = view.tintColor
-            tableView.insertRows(at: [.polygonPicker], with: .fade)
-            polygonPickerHidden = false
-        } else {
-            polygonLabel?.textColor = nil
-            tableView.deleteRows(at: [.polygonPicker], with: .fade)
-            polygonPickerHidden = true
+        switch picker {
+        case "point":
+            if !polylinePickerHidden {
+                polylineLabel?.textColor = nil
+                tableView.deleteRows(at: [.polylinePicker], with: .fade)
+                polylinePickerHidden = true
+            } else if !polygonPickerHidden {
+                polygonLabel?.textColor = nil
+                tableView.deleteRows(at: [.polygonPicker], with: .fade)
+                polygonPickerHidden = true
+            }
+        case "polyline":
+            if !iconPickerHidden {
+                iconLabel?.textColor = nil
+                tableView.deleteRows(at: [.iconPicker], with: .fade)
+               iconPickerHidden = true
+            } else if !polygonPickerHidden {
+                polygonLabel?.textColor = nil
+                tableView.deleteRows(at: [.polygonPicker], with: .fade)
+                polygonPickerHidden = true
+            }
+        case "polylgon":
+            if !iconPickerHidden {
+                iconLabel?.textColor = nil
+                tableView.deleteRows(at: [.iconPicker], with: .fade)
+                iconPickerHidden = true
+            } else if !polylinePickerHidden {
+                polylineLabel?.textColor = nil
+                tableView.deleteRows(at: [.polylinePicker], with: .fade)
+                polylinePickerHidden = true
+            }
+        default:
+            break
         }
         }, completion: nil)
     }
 }
-
+    
+//    // Prompt the icon picker to either appear or disappear.
+//    func toggleIconPickerVisibility() {
+//        print("called icon picker")
+//        tableView.performBatchUpdates({
+//        if !iconPickerHidden {
+//            pointLabel?.textColor = view.tintColor
+//            tableView.insertRows(at: [.iconPicker], with: .fade)
+//            iconPickerHidden = false
+//            print("set iconPickerHidden to false")
+//        } else {
+//            iconLabel?.textColor = nil
+//            tableView.deleteRows(at: [.iconPicker], with: .fade)
+//            iconPickerHidden = true
+//        }
+//        }, completion: nil)
+//    }
+//
+//    // Prompt the polyline picker to either appear or disappear.
+//    func togglePolylinePickerVisibility() {
+//        print("called polyline picker")
+//        tableView.performBatchUpdates({
+//        if !polylinePickerHidden {
+//            polylineLabel?.textColor = view.tintColor
+//            tableView.insertRows(at: [.polylinePicker], with: .fade)
+//            polylinePickerHidden = false
+//            print("set polinePickerHidden to false")
+//        } else {
+//            polylineLabel?.textColor = nil
+//            tableView.deleteRows(at: [.polylinePicker], with: .fade)
+//            polylinePickerHidden = true
+//        }
+//        }, completion: nil)
+//    }
+//
+//    // Prompt the polygon picker to either appear or disappear.
+//    func togglePolygonPickerVisibility() {
+//        print("called polygon picker")
+//        tableView.performBatchUpdates({
+//        if !polygonPickerHidden {
+//            polygonLabel?.textColor = view.tintColor
+//            tableView.insertRows(at: [.polygonPicker], with: .fade)
+//            polygonPickerHidden = false
+//            print("set polygonPickerHidden to false")
+//        } else {
+//            polygonLabel?.textColor = nil
+//            tableView.deleteRows(at: [.polygonPicker], with: .fade)
+//            polygonPickerHidden = true
+//        }
+//        }, completion: nil)
+//    }
+    
 // Set an index path for each table view cell.
 private extension IndexPath {
     static let pointLabel = IndexPath(row: 0, section: 0)
@@ -245,22 +309,21 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDelegate */ {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch adjustedIndexPath(indexPath) {
         case .pointLabel:
-        tableView.deselectRow(at: adjustedIndexPath(indexPath), animated: true)
+            tableView.deselectRow(at: adjustedIndexPath(indexPath), animated: true)
             // change text of right detail
-            togglePolylinePickerVisibility()
-            togglePolygonPickerVisibility()
-            toggleIconPickerVisibility()
+            showPicker(picker: "point")
+            hidePicker(picker: "point")
+            return feature = "point"
         case .polylineLabel:
             tableView.deselectRow(at: indexPath, animated: true)
-            togglePolygonPickerVisibility()
-            toggleIconPickerVisibility()
-            togglePolylinePickerVisibility()
+            showPicker(picker: "polyline")
+            hidePicker(picker: "polyline")
             return feature = "polyline"
         case .polygonLabel:
             tableView.deselectRow(at: indexPath, animated: true)
-            toggleIconPickerVisibility()
-            togglePolylinePickerVisibility()
-            togglePolygonPickerVisibility()
+            polygonPickerHidden = false
+            showPicker(picker: "polygon")
+            hidePicker(picker: "polygon")
             return feature = "polygon"
         default:
             break

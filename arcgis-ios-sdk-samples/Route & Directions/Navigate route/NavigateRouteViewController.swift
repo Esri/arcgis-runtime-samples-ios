@@ -125,8 +125,8 @@ class NavigateRouteViewController: UIViewController {
         // Add stops graphics to the graphic overlay.
         let stopSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .orange, size: 20)
         graphicsOverlay.graphics.addObjects(from: makeStops().map { AGSGraphic(geometry: $0.geometry, symbol: stopSymbol) })
-        routeAheadGraphic = AGSGraphic(geometry: nil, symbol: AGSSimpleLineSymbol(style: .dash, color: .systemPurple, width: 5), attributes: nil)
-        routeTraveledGraphic = AGSGraphic(geometry: nil, symbol: AGSSimpleLineSymbol(style: .solid, color: .systemBlue, width: 3), attributes: nil)
+        routeAheadGraphic = AGSGraphic(geometry: nil, symbol: AGSSimpleLineSymbol(style: .dash, color: .systemPurple, width: 5))
+        routeTraveledGraphic = AGSGraphic(geometry: nil, symbol: AGSSimpleLineSymbol(style: .solid, color: .systemBlue, width: 3))
         graphicsOverlay.graphics.addObjects(from: [
             routeAheadGraphic!,
             routeTraveledGraphic!
@@ -256,7 +256,7 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
         case .reached:
             if status.remainingDestinationCount > 1 {
                 statusText = "Intermediate stop reached, continue to next stop."
-                routeTracker?.switchToNextDestination(completion: nil)
+                routeTracker?.switchToNextDestination()
             } else {
                 statusText = "Final destination reached."
                 mapView.locationDisplay.stop()

@@ -217,7 +217,10 @@ class NavigateRouteViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        reset()
+        // Only reset when the route is successfully solved.
+        if routeResult != nil {
+            reset()
+        }
     }
 }
 

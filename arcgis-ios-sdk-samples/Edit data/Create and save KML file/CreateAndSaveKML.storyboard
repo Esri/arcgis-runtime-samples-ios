@@ -116,7 +116,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label hidden="YES" opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pv8-kb-nfX" userLabel="Icon Label">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pv8-kb-nfX" userLabel="Icon Label">
                                                     <rect key="frame" x="315" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -173,7 +173,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6W-oF-vtV">
+                                                <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6W-oF-vtV" userLabel="Polyline Picker View">
                                                     <rect key="frame" x="20" y="20" width="335" height="4"/>
                                                     <connections>
                                                         <outlet property="dataSource" destination="imN-ge-Xru" id="Jme-fj-8Hh"/>
@@ -213,11 +213,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgv-ki-arb">
+                                                <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgv-ki-arb" userLabel="Polygon Picker View">
                                                     <rect key="frame" x="20" y="20" width="335" height="4"/>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="imN-ge-Xru" id="E2I-PH-a25"/>
-                                                        <outlet property="delegate" destination="imN-ge-Xru" id="BuR-xs-TXs"/>
+                                                        <outlet property="dataSource" destination="imN-ge-Xru" id="Vcy-Xq-VkC"/>
+                                                        <outlet property="delegate" destination="imN-ge-Xru" id="wNb-Dh-4wO"/>
                                                     </connections>
                                                 </pickerView>
                                             </subviews>

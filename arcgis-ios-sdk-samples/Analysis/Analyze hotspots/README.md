@@ -1,18 +1,34 @@
 # Analyze hotspots
 
-This sample demonstrates how to execute a geoprocessing task to calculate a hotspot analysis based on the frequency of 911 calls. It calculates the frequency of these calls within a given study area during a specified constrained time period set between 1/1/1998 and 5/31/1998.
+Use a geoprocessing service and a set of features to identify statistically significant hot spots and cold spots.
+
+![Analysis date picker](analyze-hotspots-1.png)
+![Analysis results](analyze-hotspots-2.png)
+
+## Use case
+
+This tool identifies statistically significant spatial clusters of high values (hot spots) and low values (cold spots). For example, a hotspot analysis based on the frequency of 911 calls within a set region.
 
 ## How to use the sample
 
-To select a date range for analysis, tap on `Analyze` in the bottom toolbar. Pick `From` and `To` date and tap on `Done` button to start analysis (Tap anywhere on screen to hide the date picker). The results will be shown on the map on successful completion.
-
-![](image1.png)
-![](image2.png)
+Select a date range (between 1998-01-01 and 1998-05-31) from the dialog and tap on Analyze. The results will be shown on the map upon successful completion of the `GeoprocessingJob`.
 
 ## How it works
 
-An `AGSGeoprocessingTask` is created by setting the URL to the REST endpoint of a geoprocessing service. `AGSGeoprocessingParameters` are created and the execution type is set to `AsynchronousSubmit`. Once the date ranges are selected, a query string is created with the to and from dates. A key/value parameter input is created, where the key is the string `Query` and the value is an `AGSGeoprocessingString` that contains the query string. These parameter inputs are then added to the `AGSGeoprocessingParameters`. An `AGSGeoprocessingJob` is obtained by calling the `geoprocessingJob(with:)` method of the `AGSGeoprocessingTask`. The job is started, and once it is complete, the `AGSArcGISMapImageLayer` is obtained from the result, and added to the `AGSMap`.
+1. Create a `AGSGeoprocessingTask` with the URL set to the endpoint of a geoprocessing service.
+2. Create a query string with the date range as an input of `GeoprocessingParameters`.
+3. Use the `AGSGeoprocessingTask` to create a `GeoprocessingJob` with the `AGSGeoprocessingParameters` instance.
+4. Start the `AGSGeoprocessingJob` and wait for it to complete and return a `GeoprocessingResult`.
+5. Get the resulting `AGSArcGISMapImageLayer` using `AGSGeoprocessingResult.getMapImageLayer`.
+6. Add the layer to the map's operational layers.
 
+## Relevant API
 
+* AGSGeoprocessingJob
+* AGSGeoprocessingParameters
+* AGSGeoprocessingResult
+* AGSGeoprocessingTask
 
+## Tags
 
+analysis, density, geoprocessing, hot spots, hotspots

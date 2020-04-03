@@ -27,7 +27,7 @@ Tap a feature on the map to open a callout displaying the number of attachments.
 
 ## Additional information
 
-Attachments can only be added to and accessed on service feature tables when their hasAttachments property is true.
+Attachments can only be added to and accessed on a service feature table when its `hasAttachments` property is true.
 
 ## Relevant API
 

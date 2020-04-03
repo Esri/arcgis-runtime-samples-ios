@@ -30,4 +30,5 @@ Pan and zoom to explore various features. Tap on an existing feature to view or 
 * AGSServiceFeatureTable
 
 ## Tags
+
 details, edit, editing, feature, information, popup, template, value

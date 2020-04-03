@@ -6,7 +6,8 @@ View, edit, or add features using a popup.
 ![List of templates](edit-features-connected-2.png)
 ![Editable information list](edit-features-connected-3.png)
 
-## Use case 
+## Use case
+
 An end-user performing a survey may want to view, edit, or add features on a map using a popup during the course of their work. 
 
 ## How to use the sample

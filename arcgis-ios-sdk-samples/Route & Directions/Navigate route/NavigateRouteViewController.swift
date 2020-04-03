@@ -64,7 +64,7 @@ class NavigateRouteViewController: UIViewController {
     /// - Parameters:
     ///   - routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.
     ///   - error: The error from `AGSRouteTask.solveRoute(with:completion:)`.
-    func solveRouteCompletion(with routeResult: AGSRouteResult?, error: Error?) {
+    func didSolveRoute(with routeResult: AGSRouteResult?, error: Error?) {
         if let error = error {
             self.presentAlert(error: error)
         } else if let result = routeResult, let firstRoute = result.routes.first {
@@ -158,7 +158,7 @@ class NavigateRouteViewController: UIViewController {
         // If the user navigates the map view away from the location display, activate the recenter button.
         mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] _ in self?.recenterButtonItem.isEnabled = true }
         // Start the location data source and location display.
-        mapView.locationDisplay.start(completion: nil)
+        mapView.locationDisplay.start()
     }
     
     /// Called in response to the Reset button being tapped.
@@ -207,7 +207,7 @@ class NavigateRouteViewController: UIViewController {
                 params.outputSpatialReference = .wgs84()
                 params.setStops(self.makeStops())
                 self.routeTask.solveRoute(with: params) { [weak self] in
-                    self?.solveRouteCompletion(with: $0, error: $1)
+                    self?.didSolveRoute(with: $0, error: $1)
                 }
             }
         }
@@ -217,8 +217,6 @@ class NavigateRouteViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // Stop the speech immediately.
-        speechSynthesizer.stopSpeaking(at: .immediate)
         reset()
     }
 }

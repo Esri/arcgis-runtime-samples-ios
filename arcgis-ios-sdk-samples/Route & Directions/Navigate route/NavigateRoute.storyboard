@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JxV-EA-CYk">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -13,21 +13,34 @@
             <objects>
                 <viewController id="JxV-EA-CYk" customClass="NavigateRouteViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YVM-3B-TME">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC7-F9-vN9" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions are shown here." lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhO-bQ-arF">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAu-7I-JM1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="20.333333333333329"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions are shown here." lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhO-bQ-arF">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.333333333333332"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <constraints>
+                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="leading" secondItem="UbJ-c8-Wwv" secondAttribute="leading" id="3PX-fr-3Id"/>
+                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="top" secondItem="kAu-7I-JM1" secondAttribute="top" id="94a-pS-CSb"/>
+                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="trailing" secondItem="UbJ-c8-Wwv" secondAttribute="trailing" id="hcc-fV-s1G"/>
+                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="bottom" secondItem="kAu-7I-JM1" secondAttribute="bottom" id="pCW-0c-623"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="UbJ-c8-Wwv"/>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSf-vt-cp3">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem enabled="NO" title="Navigate" id="Pj1-2W-66g">
                                         <connections>
@@ -51,14 +64,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="EC7-F9-vN9" firstAttribute="top" secondItem="YVM-3B-TME" secondAttribute="top" id="2Vh-u4-Cba"/>
-                            <constraint firstItem="IhO-bQ-arF" firstAttribute="leading" secondItem="YVM-3B-TME" secondAttribute="leading" id="Kxc-Jh-jye"/>
+                            <constraint firstItem="kAu-7I-JM1" firstAttribute="trailing" secondItem="YVM-3B-TME" secondAttribute="trailing" id="6Qa-YR-jLm"/>
                             <constraint firstItem="EC7-F9-vN9" firstAttribute="trailing" secondItem="YVM-3B-TME" secondAttribute="trailing" id="UTA-4p-JY6"/>
-                            <constraint firstItem="IhO-bQ-arF" firstAttribute="trailing" secondItem="YVM-3B-TME" secondAttribute="trailing" id="VdF-HL-y0A"/>
                             <constraint firstItem="iSf-vt-cp3" firstAttribute="bottom" secondItem="FzH-kw-6eq" secondAttribute="bottom" id="WFX-dc-2vL"/>
+                            <constraint firstItem="EC7-F9-vN9" firstAttribute="top" secondItem="FzH-kw-6eq" secondAttribute="top" id="XMZ-II-sfb"/>
                             <constraint firstItem="iSf-vt-cp3" firstAttribute="top" secondItem="EC7-F9-vN9" secondAttribute="bottom" symbolic="YES" id="YbN-M3-XGM"/>
-                            <constraint firstItem="IhO-bQ-arF" firstAttribute="top" secondItem="FzH-kw-6eq" secondAttribute="top" id="btn-Aa-eWo"/>
+                            <constraint firstItem="kAu-7I-JM1" firstAttribute="top" secondItem="EC7-F9-vN9" secondAttribute="top" id="Zfm-Ls-0XS"/>
                             <constraint firstItem="iSf-vt-cp3" firstAttribute="leading" secondItem="YVM-3B-TME" secondAttribute="leading" id="fzC-6y-fFV"/>
+                            <constraint firstItem="kAu-7I-JM1" firstAttribute="leading" secondItem="YVM-3B-TME" secondAttribute="leading" id="hPe-sp-A7p"/>
                             <constraint firstItem="iSf-vt-cp3" firstAttribute="trailing" secondItem="YVM-3B-TME" secondAttribute="trailing" id="mNt-7z-iVa"/>
                             <constraint firstItem="EC7-F9-vN9" firstAttribute="leading" secondItem="YVM-3B-TME" secondAttribute="leading" id="yhJ-yl-82k"/>
                         </constraints>
@@ -74,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4z-SX-tC5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159" y="-163"/>
+            <point key="canvasLocation" x="155.07246376811597" y="-164.0625"/>
         </scene>
     </scenes>
 </document>

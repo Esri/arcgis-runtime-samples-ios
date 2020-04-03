@@ -19,7 +19,7 @@ Tap a feature on the map to open a callout displaying the number of attachments.
 
 1. Create an `AGSServiceFeatureTable` from a URL.
 2. Create an `AGSFeatureLayer` object from the service feature table.
-3. Find the layer of the selected feature using  `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)`. Which returns an `AGSIdentifyLayerResult` used to get the selected feature. 
+3. Find the layer of the selected feature using  `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)`, which provides an `AGSIdentifyLayerResult` used to get the selected feature. 
 4. To fetch the feature's attachments, use `AGSArcGISFeature.fetchAttachments(completion:)`.
 5. To add an attachment to the selected ArcGISFeature, create an attachment and use `AGSArcGISFeature.addAttachment(withName:contentType:data:completion:)`.
 6. To delete an attachment from the selected ArcGISFeature, use the `AGSArcGISFeature.delete(_:completion:)`.
@@ -41,6 +41,5 @@ Attachments can only be added to and accessed on service feature tables when the
 ## Tags
 
 Edit and Manage Data, image, picture, JPEG, PNG, PDF, TXT
-
 
 

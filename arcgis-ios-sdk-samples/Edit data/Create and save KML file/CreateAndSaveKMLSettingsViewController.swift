@@ -223,7 +223,6 @@ extension CreateAndSaveKMLSettingsViewController: UIPickerViewDelegate {
     // Select the type of icon and color.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         hideAllPickers()
-        print("didSelectRow picker view tag is \(pickerView.tag)")
         switch Section.allCases[pickerView.tag] {
         case .iconPicker:
             let iconKey = possibleIcons[row]

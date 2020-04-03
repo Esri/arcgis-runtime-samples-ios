@@ -20,7 +20,7 @@ Pan and zoom to position the red rectangle around the area to be taken offline. 
 4. Start the job and get a geodatabase as a result.
 5. Set the sync direction to `.bidirectional`.
 6. To enable editing, load the geodatabase and get its feature tables. Create feature layers from the feature tables and add them to the map's operational layers collection.
-7. Create an `AGSGeodatabaseSyncTask.syncJob(with:geodatabase:)` passing in the parameters and geodatabase as arguments.
+7. Create an `AGSSyncGeodatabaseJob` object using `AGSGeodatabaseSyncTask.syncJob(with:geodatabase:)`, passing in the parameters and geodatabase as arguments.
 8. Start the sync job to synchronize the edits.
 
 ## Relevant API

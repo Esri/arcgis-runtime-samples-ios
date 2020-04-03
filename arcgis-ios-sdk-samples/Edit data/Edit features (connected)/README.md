@@ -23,6 +23,7 @@ Pan and zoom to explore various features. Tap on an existing feature to view or 
 6. Apply the changes with `AGSServiceFeatureTable.applyEdits(completion:)`.
 
 ## Relevant API
+
 * AGSFeatureLayer
 * AGSFeatureTemplate
 * AGSPopup

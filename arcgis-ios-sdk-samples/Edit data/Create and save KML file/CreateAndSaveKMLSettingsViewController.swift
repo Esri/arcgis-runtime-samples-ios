@@ -135,6 +135,8 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
                 adjustedRow = 2
             } else if indexPath.row == 2 && iconPickerHidden && polylinePickerHidden {
                 adjustedRow = 4
+            } else if indexPath.row == 2 && polylinePickerHidden {
+                adjustedRow = 2
             } else if indexPath.row == 3 && polygonPickerHidden {
                 adjustedRow = 4
             }

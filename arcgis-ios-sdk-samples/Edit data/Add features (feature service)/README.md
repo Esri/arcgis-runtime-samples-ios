@@ -20,7 +20,7 @@ An `AGSFeature` instance is added to an `AGSServiceFeatureTable` which then push
 2. Create an `AGSFeatureLayer` derived from the `AGSServiceFeatureTable` instance.
 3. Create an `AGSFeature` with attributes and a location using the `AGSServiceFeatureTable`.
 4. Add the `AGSFeature` to the `AGSServiceFeatureTable`.
-5. Use `AGSServiceFeatureTable.applyEdits(completion:)` to to apply edits to the `AGSServiceFeatureTable` which will upload the new feature to the online service.
+5. Use `AGSServiceFeatureTable.applyEdits(completion:)` to apply edits to the `AGSServiceFeatureTable`, which will upload the new feature to the online service.
 
 ## Relevant API
 

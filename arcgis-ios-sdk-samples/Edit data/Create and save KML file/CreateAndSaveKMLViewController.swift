@@ -116,6 +116,12 @@ class CreateAndSaveKMLViewController: UIViewController {
         }
     }
     
+    func startSketch() {
+        changeButton()
+        mapView.sketchEditor?.stop()
+        mapView.sketchEditor?.start(with: sketchCreationMode!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -176,29 +182,29 @@ private class KMZProvider: UIActivityItemProvider {
 
 // Set KML style depending on which feature has been chosen.
 extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewControllerDelegate {
-    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, feature: String, icon: AGSKMLIcon?, color: UIColor) {
+    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, feature: String?, icon: AGSKMLIcon?, color: UIColor) {
         switch feature {
         case "point":
             sketchCreationMode = AGSSketchCreationMode.point
             kmlStyle = makeKMLStyleWithPointStyle(icon: icon!, color: color)
+            startSketch()
         case "polyline":
             sketchCreationMode = AGSSketchCreationMode.polyline
             kmlStyle = makeKMLStyleWithLineStyle(color: color)
+            startSketch()
         case "polygon":
             sketchCreationMode = AGSSketchCreationMode.polygon
             kmlStyle = makeKMLStyleWithPolygonStyle(color: color)
             kmlStyle.polygonStyle?.isFilled = true
             kmlStyle.polygonStyle?.isOutlined = false
+            startSketch()
         default:
             break
         }
     }
     
-    // Begins sketch editor after attributes were chosen. 
+    // Dismisses the popover.
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController) {
         dismiss(animated: true)
-        changeButton()
-        mapView.sketchEditor?.stop()
-        mapView.sketchEditor?.start(with: sketchCreationMode!)
     }
 }

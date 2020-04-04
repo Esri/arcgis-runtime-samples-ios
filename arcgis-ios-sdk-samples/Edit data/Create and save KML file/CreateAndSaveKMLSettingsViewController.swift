@@ -1,4 +1,3 @@
-//
 // Copyright © 2020 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +19,7 @@ import ArcGIS
 /// The delegate of a `MapReferenceScaleSettingsViewController`.
 protocol CreateAndSaveKMLSettingsViewControllerDelegate: AnyObject {
     ///
-    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, feature: String, icon: AGSKMLIcon?, color: UIColor)
+    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, feature: String?, icon: AGSKMLIcon?, color: UIColor)
     ///
     /// - Parameter controller: The controller sending the message.
     /// Tells the delegate that the user finished changing settings.
@@ -29,13 +28,15 @@ protocol CreateAndSaveKMLSettingsViewControllerDelegate: AnyObject {
 
 class CreateAndSaveKMLSettingsViewController: UITableViewController {
     weak var delegate: CreateAndSaveKMLSettingsViewControllerDelegate?
-    var icon = AGSKMLIcon(url: URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueStarLargeB.png")!)
+    var icon = AGSKMLIcon(url: URL(string: "http://resources.esri.com/help/900/arcgisexplorer/sdk/doc/bitmaps/148cca9a-87a8-42bd-9da4-5fe427b6fb7b127.png")!)
     var color = UIColor.red
-    var feature = "point"
+    var feature: String?
     @IBOutlet var pointLabel: UILabel?
     @IBOutlet var polylineLabel: UILabel?
     @IBOutlet var polygonLabel: UILabel?
     @IBOutlet var iconLabel: UILabel?
+    @IBOutlet var polylineColorLabel: UILabel?
+    @IBOutlet var polygonColorLabel: UILabel?
     
     // Complete settings changes and go back to the main page.
     @IBAction func done() {
@@ -47,9 +48,10 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     private var iconPickerHidden = true
     private var polylinePickerHidden = true
     private var polygonPickerHidden = true
-    private let possibleIcons = ["Star", "Diamond", "Circle", "Square", "Round pin", "Square pin"]
+    private let possibleIcons = ["No style", "Star", "Diamond", "Circle", "Square", "Round pin", "Square pin"]
     private let possibleColors = ["Red", "Yellow", "White", "Purple", "Orange", "Magenta", "Light gray", "Gray", "Dark gray", "Green", "Cyan", "Brown", "Blue", "Black"]
     private let iconDictionary = [
+        "No style": URL(string: "http://resources.esri.com/help/900/arcgisexplorer/sdk/doc/bitmaps/148cca9a-87a8-42bd-9da4-5fe427b6fb7b127.png")!,
         "Star": URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueStarLargeB.png")!,
         "Diamond": URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueDiamondLargeB.png")!,
         "Circle": URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueCircleLargeB.png")!,
@@ -125,7 +127,6 @@ private extension IndexPath {
 
 // Adjust the index path according to which pickers are hidden.
 extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
-    #warning("This function can be improved. Just list all the states and find a easier way to handle each state.")
     func adjustedIndexPath(_ indexPath: IndexPath) -> IndexPath {
         var adjustedRow = -1
         if indexPath.section == 0 {
@@ -224,24 +225,24 @@ extension CreateAndSaveKMLSettingsViewController: UIPickerViewDelegate {
     
     // Select the type of icon and color.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        hideAllPickers()
+//        hideAllPickers()
         switch Section.allCases[pickerView.tag] {
         case .iconPicker:
             let iconKey = possibleIcons[row]
             let iconURL = iconDictionary[iconKey]
             icon = AGSKMLIcon(url: iconURL!)
             iconLabel?.text = iconKey
-        //            return feature = "point"
+            return feature = "point"
         case .polylinePicker:
             let colorKey = possibleColors[row]
-            //            colorLabel!.text = colorKey
-            polylineLabel?.backgroundColor = colorDictionary[colorKey]!
-        //            return color = colorDictionary[colorKey]! //returns UIColor
+            polylineColorLabel!.text = colorKey
+            feature = "polyline"
+            return color = colorDictionary[colorKey]! //returns UIColor
         case .polygonPicker:
             let colorKey = possibleColors[row]
-            polygonLabel?.backgroundColor = colorDictionary[colorKey]!
-            //            colorLabel!.text = colorKey
-            //            return color = colorDictionary[colorKey]! //returns UIColor
+            polygonColorLabel!.text = colorKey
+            feature = "polygon"
+            return color = colorDictionary[colorKey]! //returns UIColor
         }
     }
 }

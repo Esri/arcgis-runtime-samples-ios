@@ -1,4 +1,3 @@
-//
 // Copyright © 2020 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -116,6 +115,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         }
     }
     
+    // Start a new sketch mode.
     func startSketch() {
         changeButton()
         mapView.sketchEditor?.stop()
@@ -174,6 +174,7 @@ private class KMZProvider: UIActivityItemProvider {
         return documentURL!
     }
     
+    // Deletes the temporary directory.
     func deleteKMZ() {
         guard let url = temporaryDirectoryURL else { return }
         try? FileManager.default.removeItem(at: url)
@@ -203,7 +204,7 @@ extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewController
         }
     }
     
-    // Dismisses the popover.
+    // Dismiss the popover.
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController) {
         dismiss(animated: true)
     }

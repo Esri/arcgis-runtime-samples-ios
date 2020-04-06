@@ -18,19 +18,15 @@ import ArcGIS
 
 /// The delegate of a `MapReferenceScaleSettingsViewController`.
 protocol CreateAndSaveKMLSettingsViewControllerDelegate: AnyObject {
-    ///
+    /// Sends the values back to the main view controller.
     func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, feature: String?, icon: AGSKMLIcon?, color: UIColor)
-    ///
+
     /// - Parameter controller: The controller sending the message.
     /// Tells the delegate that the user finished changing settings.
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController)
 }
 
 class CreateAndSaveKMLSettingsViewController: UITableViewController {
-    weak var delegate: CreateAndSaveKMLSettingsViewControllerDelegate?
-    var icon = AGSKMLIcon(url: URL(string: "http://resources.esri.com/help/900/arcgisexplorer/sdk/doc/bitmaps/148cca9a-87a8-42bd-9da4-5fe427b6fb7b127.png")!)
-    var color = UIColor.red
-    var feature: String?
     @IBOutlet var pointLabel: UILabel?
     @IBOutlet var polylineLabel: UILabel?
     @IBOutlet var polygonLabel: UILabel?
@@ -44,7 +40,11 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
         delegate?.createAndSaveKMLSettingsViewControllerDidFinish(self)
     }
     
-    var kmlStyle = AGSKMLStyle()
+    weak var delegate: CreateAndSaveKMLSettingsViewControllerDelegate?
+    var icon = AGSKMLIcon(url: URL(string: "http://resources.esri.com/help/900/arcgisexplorer/sdk/doc/bitmaps/148cca9a-87a8-42bd-9da4-5fe427b6fb7b127.png")!)
+    var color = UIColor.red
+    var feature: String?
+    var kmlStyle: AGSKMLStyle?
     private var iconPickerHidden = true
     private var polylinePickerHidden = true
     private var polygonPickerHidden = true
@@ -61,10 +61,12 @@ class CreateAndSaveKMLSettingsViewController: UITableViewController {
     ]
     private let colorDictionary = ["Red": UIColor.red, "Yellow": UIColor.yellow, "White": UIColor.white, "Purple": UIColor.purple, "Orange": UIColor.orange, "Magenta": UIColor.magenta, "Light gray": UIColor.lightGray, "Gray": UIColor.gray, "Dark gray": UIColor.darkGray, "Green": UIColor.green, "Cyan": UIColor.cyan, "Brown": UIColor.brown, "Blue": UIColor.blue, "Black": UIColor.black]
     
+    // Lists all the possible picker views.
     private enum Section: CaseIterable {
         case iconPicker, polylinePicker, polygonPicker
     }
     
+    // Hide all pickers.
     func hideAllPickers() {
         tableView.performBatchUpdates({
             if !iconPickerHidden {
@@ -125,8 +127,8 @@ private extension IndexPath {
     static let polygonPickerPath = IndexPath(row: 3, section: 0)
 }
 
-// Adjust the index path according to which pickers are hidden.
 extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
+    // Adjust the index path according to which pickers are hidden.
     func adjustedIndexPath(_ indexPath: IndexPath) -> IndexPath {
         var adjustedRow = -1
         if indexPath.section == 0 {
@@ -159,6 +161,7 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
         return IndexPath(row: adjustedRow, section: 0)
     }
     
+    // Set the number of rows in the table view.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var numberOfRows = super.tableView(tableView, numberOfRowsInSection: section)
         if iconPickerHidden && polylinePickerHidden && polygonPickerHidden {
@@ -170,7 +173,6 @@ extension CreateAndSaveKMLSettingsViewController /* UITableViewDataSource */ {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Add "no style" to options on point polyline polygon
         return super.tableView(tableView, cellForRowAt: loadCellPath(indexPath))
     }
     
@@ -225,7 +227,7 @@ extension CreateAndSaveKMLSettingsViewController: UIPickerViewDelegate {
     
     // Select the type of icon and color.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        hideAllPickers()
+        hideAllPickers()
         switch Section.allCases[pickerView.tag] {
         case .iconPicker:
             let iconKey = possibleIcons[row]

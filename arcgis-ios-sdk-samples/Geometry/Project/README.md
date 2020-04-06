@@ -24,7 +24,7 @@ Tap anywhere on the map. A callout will display the tapped location's coordinate
 
 ## Additional information
 
-In cases where the the output spatial reference uses a different geographic coordinate system than that of the input spatial reference, see the `class AGSGeometryEngine.projectGeometry(_:to:datumTransformation:)` method that additionally takes in a `AGSDatumTransformation` parameter.
+In cases where the the output spatial reference uses a different geographic coordinate system than that of the input spatial reference, see the `class AGSGeometryEngine.projectGeometry(_:to:datumTransformation:)` method that additionally takes in an `AGSDatumTransformation` parameter.
 
 ## Tags
 

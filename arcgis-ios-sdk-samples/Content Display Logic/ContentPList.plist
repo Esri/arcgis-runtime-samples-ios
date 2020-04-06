@@ -1132,7 +1132,7 @@
 				<key>storyboardName</key>
 				<string>ListTransformations</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to use the transformation catalog to get a list of available datum transformations that can be used to project a geometry between two different spatial references, and how to use one of the transformations to perform the geometry engine&apos;s &quot;project&quot; operation.</string>
+				<string>Get a list of suitable transformations for projecting a geometry between two spatial references with different horizontal datums.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -16,13 +16,13 @@ Tap on the map to see a callout with the tapped location's coordinate formatted 
 
 1. Get or create a map point `AGSPoint` with a spatial reference.
 2. To get the formatted string, use one of the static methods below.
-* `class AGSCoordinateFormatter.latitudeLongitudeString(from:format:decimalPlaces:)`
-* `class AGSCoordinateFormatter.utmString(from:conversionMode:addSpaces:)`
-* `class AGSCoordinateFormatter.usngString(from:precision:addSpaces:)`
+    * `class AGSCoordinateFormatter.latitudeLongitudeString(from:format:decimalPlaces:)`
+    * `class AGSCoordinateFormatter.utmString(from:conversionMode:addSpaces:)`
+    * `class AGSCoordinateFormatter.usngString(from:precision:addSpaces:)`
 3. To get an `AGSPoint` from a formatted string, use one of the static methods below.
-* `class AGSCoordinateFormatter.point(fromLatitudeLongitudeString:spatialReference:)`
-* `class AGSCoordinateFormatter.point(fromUTMString:spatialReference:conversionMode:)`
-* `class AGSCoordinateFormatter.point(fromUSNGString:spatialReference:)`
+    * `class AGSCoordinateFormatter.point(fromLatitudeLongitudeString:spatialReference:)`
+    * `class AGSCoordinateFormatter.point(fromUTMString:spatialReference:conversionMode:)`
+    * `class AGSCoordinateFormatter.point(fromUSNGString:spatialReference:)`
 
 ## Relevant API
 

@@ -15,7 +15,7 @@ Tap on the middle button in the bottom toolbar to add a new KML. Select a type o
 
 ## How it works
 
-1. Create an `AGSKmlDocument`
+1. Create an `AGSKmlDocument`.
 2. Create an `AGSKmlDataset` using the `AGSKmlDocument`.
 3. Create an `AGSKmlLayer` using the `AGSKmlDataset` and add it to `AGSMap.operationalLayers`.
 4. Create `AGSGeometry` using `AGSSketchEditor`.

@@ -989,7 +989,7 @@
 		<array>
 			<dict>
 				<key>displayName</key>
-				<string>Create and save KML</string>
+				<string>Create and save KML file</string>
 				<key>storyboardName</key>
 				<string>CreateAndSaveKML</string>
 				<key>descriptionText</key>

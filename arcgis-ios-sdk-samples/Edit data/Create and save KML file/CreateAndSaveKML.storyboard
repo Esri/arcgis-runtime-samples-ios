@@ -31,9 +31,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uYO-iU-ujY"/>
                                     <barButtonItem systemItem="add" id="V8L-U8-tQY">
                                         <connections>
-                                            <segue destination="uXT-nb-Mwb" kind="popoverPresentation" popoverAnchorBarButtonItem="V8L-U8-tQY" id="bT8-U6-Scm">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="uXT-nb-Mwb" kind="presentation" id="9kE-PU-Rti"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="done" id="4d8-3n-68D">

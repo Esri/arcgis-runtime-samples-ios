@@ -2,7 +2,7 @@
 
 Create a buffer around a map point and display the results as an `AGSGraphic`.
 
-![Image of Buffer](image1.png)
+![Image of Buffer](buffer.png)
 
 ## Use case
 

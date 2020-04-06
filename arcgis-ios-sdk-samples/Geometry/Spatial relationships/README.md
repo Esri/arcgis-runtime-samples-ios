@@ -1,24 +1,39 @@
 # Spatial relationships
 
-This sample demonstrates how to use the `AGSGeometryEngine` to evaluate the spatial relationships between geometries.
+Determine spatial relationships between two geometries.
 
-![](image1.png)
+![Image of spatial relationships](spatial-relationships.png)
+
+## Use case
+
+In case of a natural disaster, emergency services can represent the affected areas using polygons. By determining the spatial relationships between these and any other existing features such as populated areas, infrastructure, or natural resources, it is possible to quickly determine which of the existing features might be affected or is in further danger, helping to assess risk and define further action.
 
 ## How to use the sample
-Tap on the map to select the graphic and its geometry will be used to check the spatial relationships with other graphics geometries. The result will be displayed in the popover.
+
+Tap on the map to select one of the three graphics, and its geometry will be used to check the spatial relationships with other graphics geometries. The result will be displayed in the popover.
 
 ## How it works
-The `AGSGeometryEngine`'s `geometry(_:crossesGeometry:)`, `geometry(_:contains:)`, `geometry(_:disjointTo:)`, `geometry(_:intersects:)`, `geometry(_:overlapsGeometry:)`, `geometry(_:touchesGeometry:)` and `geometry(_:within:)` methods are executed with selected graphic's geometry and other non-selected graphics geometries. If the method returns `true`, the relationship exists.
+
+1. Get the geometry from two different graphics. In this example the geometry of the selected graphic is compared to the geometry of each unselected graphic.
+2. Use the methods in `AGSGeometryEngine` - `geometry(_:crossesGeometry:)`, `geometry(_:contains:)`, `geometry(_:disjointTo:)`, `geometry(_:intersects:)`, `geometry(_:overlapsGeometry:)`, `geometry(_:touchesGeometry:)` and `geometry(_:within:)`, to check the relationship between the geometries, e.g. `contains`, `disjoint`, `intersects`, etc. If the method returns `true`, the relationship exists.
 
 ## Relevant API
-- `AGSGeometryEngine`
-- `AGSGeometryEngine.geometry(_:crossesGeometry:)`
-- `AGSGeometryEngine.geometry(_:contains:)`
-- `AGSGeometryEngine.geometry(_:disjointTo:)`
-- `AGSGeometryEngine.geometry(_:intersects:)`
-- `AGSGeometryEngine.geometry(_:overlapsGeometry:)`
-- `AGSGeometryEngine.geometry(_:touchesGeometry:)`
-- `AGSGeometryEngine.geometry(_:within:)`
+
+* class AGSGeometryEngine.geometry(_:contains:)
+* class AGSGeometryEngine.geometry(_:crossesGeometry:)
+* class AGSGeometryEngine.geometry(_:disjointTo:)
+* class AGSGeometryEngine.geometry(_:intersects:)
+* class AGSGeometryEngine.geometry(_:overlapsGeometry:)
+* class AGSGeometryEngine.geometry(_:touchesGeometry:)
+* class AGSGeometryEngine.geometry(_:within:)
+* AGSGeometry
+* AGSGeometryEngine
+* AGSGeometryType
+* AGSGraphic
+* AGSPoint
+* AGSPolygon
+* AGSPolyline
 
 ## Tags
-geometry, spatial relationship, crosses, contains, disjoint, intersects, overlaps, touches, within
+
+geometries, relationship, spatial analysis

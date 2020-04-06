@@ -2,7 +2,8 @@
 
 Construct a KML document and save it as a KMZ file.
 
-![Image of create and save KML file](CreateAndSaveKmlFile.png)
+![KML style settings](create-save-kml-1.png)
+![Sketching a KML](create-save-kml-2.png)
 
 ## Use case
 
@@ -10,32 +11,32 @@ If you need to create and save data on the fly, you can use KML to create points
 
 ## How to use the sample
 
-Click on one of the buttons in the middle row to start adding a geometry. Click on the map view to place vertices. Click the "Complete Sketch" button to add the geometry to the KML document as a new KML placemark. Use the style interface to edit the style of the placemark. If you do not wish to set a style, click the "Don't Apply Style" button. When you are finished adding KML nodes, click on the "Save KMZ file" button to save the active KML document as a .kmz file on your system. Use the "Reset" button to clear the current KML document and start a new one.
+Tap on the middle button in the bottom toolbar to add a new KML. Select a type of feature and choose its color or icon. Tap on the map to sketch the KML. Tap the bottom middle button to complete the sketch. Tap the button on the right to save the KMZ file. Tap the left button to clear the current KML document.
 
 ## How it works
 
-1. Create a `KmlDocument`
-2. Create a `KmlDataset` using the `KmlDocument`.
-3. Create a `KmlLayer` using the `KmlDataset` and add it to `Map.OperationalLayers`.
-4. Create `Geometry` using `SketchEditor`.
-5. Project that `Geometry` to WGS84 using `GeometryEngine.Project`.
-6. Create a `KmlGeometry` object using that projected `Geometry`.
-7. Create a `KmlPlacemark` using the `KmlGeometry`.
-8. Add the `KmlPlacemark` to the `KmlDocument`.
-9. Set the `KmlStyle` for the `KmlPlacemark`.
-10. When finished with adding `KmlPlacemark` nodes to the `KmlDocument`, save the `KmlDocument` to a file using the `SaveAsAsync` method.
+1. Create an `AGSKmlDocument`
+2. Create an `AGSKmlDataset` using the `AGSKmlDocument`.
+3. Create an `AGSKmlLayer` using the `AGSKmlDataset` and add it to `AGSMap.operationalLayers`.
+4. Create `AGSGeometry` using `AGSSketchEditor`.
+5. Project that `AGSGeometry` to WGS84 using `AGSGeometryEngine.projectGeometry(_:to:)`.
+6. Create an `AGSKmlGeometry` object using that projected `AGSGeometry`.
+7. Create an `AGSKmlPlacemark` using the `AGSKmlGeometry`.
+8. Add the `AGSKmlPlacemark` to the `AGSKmlDocument`.
+9. Set the `AGSKmlStyle` for the `AGSKmlPlacemark`.
+10. When finished with adding `AGSKmlPlacemark` nodes to the `AGSKmlDocument`, save the `AGSKmlDocument` to a file using the `AGSKMLNode.save(toFileURL:completion:)` method.
 
 ## Relevant API
 
-* GeometryEngine.Project
-* KmlDataset
-* KmlDocument
-* KmlGeometry
-* KmlLayer
-* KmlNode.SaveAsASync
-* KmlPlacemark
-* KmlStyle
-* SketchEditor
+* AGSGeometryEngine.projectGeometry
+* AGSKmlDataset
+* AGSKmlDocument
+* AGSKmlGeometry
+* AGSKmlLayer
+* AGSKMLNode.save
+* AGSKmlPlacemark
+* AGSKmlStyle
+* AGSSketchEditor
 
 ## Tags
 

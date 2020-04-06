@@ -1116,7 +1116,7 @@
 				<key>storyboardName</key>
 				<string>SpatialOperations</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to perform geometry operations between overlapping polygons</string>
+				<string>Find the union, intersection, or difference of two geometries.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

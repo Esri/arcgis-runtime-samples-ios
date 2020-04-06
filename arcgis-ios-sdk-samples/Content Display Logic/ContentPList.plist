@@ -1088,7 +1088,7 @@
 				<key>storyboardName</key>
 				<string>FormatCoordinates</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to convert a map location Point to a number of different coordinate notations. Tap on the map or edit the values in textfields</string>
+				<string>Format coordinates in a variety of common notations.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

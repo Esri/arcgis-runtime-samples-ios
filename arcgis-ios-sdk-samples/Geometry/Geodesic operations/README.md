@@ -1,31 +1,34 @@
 # Geodesic operations
 
-This sample demonstrates how to use `AGSGeometryEngine` to calculate a geodesic path between two points and measure its distance. Geodesic calculations take into account the curvature of the Earth, while planar calculations are based on a 2D Cartesian plane.
+Calculate a geodesic path between two points and measure its distance.
 
-Visualizing flight paths between cities is a common example of a geodesic operation.
+![Image of geodesic operations](geodesic-operations.png)
 
-![](image1.png)
+## Use case
+
+A geodesic distance provides an accurate, real-world distance between two points. Visualizing flight paths between cities is a common example of a geodesic operation since the flight path between two airports takes into account the curvature of the earth, rather than following the planar path between those points, which appears as a straight line on a projected map.
 
 ## How to use the sample
 
-1. Tap on the map to select destination of a path from the origin JFK Airport, NY.
-2. A line graphic will display the geodesic path between origin and destination.
-3. The geodesic distance of the path will display in map view's callout.
+Tap anywhere on the map. A line graphic will display the geodesic line between the two points. In addition, text that indicates the geodesic distance between the two points will be updated. Tap elsewhere and a new line will be created.
 
 ## How it works
 
-1. Create an instance of `AGSPolyline` using two points.
-2. Densify the Polyline using the `geodeticDensifyGeometry(_:maxSegmentLength:lengthUnit:curveType:)` method on `AGSGeometryEngine`. This method will return a geodetically densified geometry.
-3. Set this geometry to a Graphic to display the geodesic path between two points in a Graphics Overlay.
-4. Get the geodetic distance of the path using the `geodeticLength(of:lengthUnit:curveType:)` method on `AGSGeometryEngine`.
+1. Create an `AGSPoint` in New York City and display it as an `AGSGraphic`.
+2. Obtain a new point when a tap occurs on the `AGSMapView` and add this point as a graphic.
+3. Create an `AGSPolyline` from the two points.
+4. Execute `class AGSGeometryEngine.geodeticDensifyGeometry(_:maxSegmentLength:lengthUnit:curveType:)` by passing in the created polyline, then create a graphic from the returned `AGSGeometry`.
+5. Execute `class AGSGeometryEngine.geodeticLength(of:lengthUnit:curveType:)` by passing in the two points and display the returned length on the screen.
 
 ## Relevant API
 
-- AGSGeometry
-- AGSGeometryEngine
-- AGSGraphic
-- AGSGraphicsOverlay
+* class AGSGeometryEngine.geodeticDensifyGeometry(_:maxSegmentLength:lengthUnit:curveType:)
+* class AGSGeometryEngine.geodeticLength(of:lengthUnit:curveType:)
+
+## About the data
+
+The Imagery basemap provides the global context for the displayed geodesic line.
 
 ## Tags
 
-GeometryEngine, Densify, Distance, Geodetic, Geodesic
+densify, distance, geodesic, geodetic

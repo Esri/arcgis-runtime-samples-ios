@@ -1128,7 +1128,7 @@
 				<key>storyboardName</key>
 				<string>SpatialRelationships</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to use the AGSGeometryEngine to evaluate the spatial relationships between geometries.</string>
+				<string>Determine spatial relationships between two geometries.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

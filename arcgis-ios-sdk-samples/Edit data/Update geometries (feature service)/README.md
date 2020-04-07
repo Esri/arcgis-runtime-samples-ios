@@ -1,21 +1,35 @@
 # Update geometries (feature service)
 
-The sample demonstrates how to update geometry of a feature in a feature layer.
+Update a feature's location in an online feature service.
+
+![Map with features](update-geometries-1.png)
+![Selected feature ](update-geometries-2.png)
+![Feature in edit mode](update-geometries-3.png)
+![Updated map](update-geometries-4.png)
+
+## Use case
+
+Sometimes users may want to edit features in an online feature service by moving them.
 
 ## How to use the sample
 
-Tapping on a feature on the map displays the callout. Tapping on the info button in the callout lets you edit geometry for that feature. The current geometry of the feature is depicted using a circular marker symbol. You can tap on a new location and tap `Done`, in order to save the new geometry.
-
-![](image1.png)
-![](image2.png)
-![](image3.png)
-![](image4.png)
-![](image5.png)
+Tap a feature to select it. Tap the icon in the callout to begin updating the geometry. Tap the feature to select it, then tap on the map to update the geometry. Tap the "Done" button to complete the changes. An alert will be shown confirming success or failure.
 
 ## How it works
 
-When you tap on the info button in the callout, the app gets the geometry for the selected feature using the `geometry` property on `AGSFeature`. It hides the feature from the feature layer and add the geometry to a sketch layer (with red marker symbol). The sketch layer allows you to select a new geometry. When you tap `Done`, assigns the new geometry to the `geometry` property on the feature. And in order to apply edits to the service, calls `applyEdits(completion:)` on the service feature table.
+1. Create an `AGSServiceFeatureTable` object from a URL.
+2. Create an `AGSFeatureLayer` object from the `AGSServiceFeatureTable`.
+3. Find the layer of the selected feature using  `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)`, which returns an `AGSIdentifyLayerResult` used to get the selected feature. 
+4. Load the selected feature.
+5. Change the selected feature's `AGSFeature.geometry` to change its location.
+6. After the change, update the table on the server using `AGSServiceFeatureTable.applyEdits(completion:)`.
 
+## Relevant API
 
+* AGSFeature
+* AGSFeatureLayer
+* AGSServiceFeatureTable
 
+## Tags
 
+editing, feature layer, feature table, moving, service, updating

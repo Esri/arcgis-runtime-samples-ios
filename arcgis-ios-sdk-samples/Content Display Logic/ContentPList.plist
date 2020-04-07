@@ -826,7 +826,7 @@
 				<key>storyboardName</key>
 				<string>GraphicsWithSymbols</string>
 				<key>descriptionText</key>
-				<string>You can add graphics to a map using the new Graphics Overlay and specify symbol for each graphic</string>
+				<string>Use a symbol style to display a graphic on a graphics overlay.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

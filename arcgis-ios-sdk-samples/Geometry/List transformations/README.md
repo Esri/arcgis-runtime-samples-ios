@@ -12,7 +12,7 @@ Transformations (sometimes known as datum or geographic transformations) are use
 
 Select a transformation from the list to see the result of projecting the point from EPSG:27700 to EPSG:3857 using that transformation. The result is shown as a red cross; you can visually compare the original blue point with the projected red cross.
 
-Select "Order by suitability for map extent" to sort the transformations in an order that is appropriate for the current extent.
+Toggle "Order by suitability for map extent" on to sort the transformations in an order that is appropriate for the current extent.
 
 If the selected transformation is not usable (has missing grid files) then an error is displayed in the items details.
 

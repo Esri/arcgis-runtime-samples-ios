@@ -1180,7 +1180,7 @@
 				<key>storyboardName</key>
 				<string>Buffer</string>
 				<key>descriptionText</key>
-				<string>Create a buffer around a map point and display the results as an AGSGraphic.</string>
+				<string>Create a buffer around a map point and display the results as a graphic.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

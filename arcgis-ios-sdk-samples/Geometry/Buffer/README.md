@@ -1,6 +1,6 @@
 # Buffer
 
-Create a buffer around a map point and display the results as an `AGSGraphic`.
+Create a buffer around a map point and display the results as a graphic.
 
 ![Image of Buffer](buffer.png)
 

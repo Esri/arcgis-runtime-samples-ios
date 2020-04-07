@@ -32,9 +32,11 @@ class CreateAndSaveKMLViewController: UIViewController {
     @IBOutlet var saveButton: UIBarButtonItem?
     
     // Prompt options to allow the user to save the KMZ file.
-    @IBAction func saveKMZ() {
+    @IBAction func saveKMZ(_ sender: UIBarButtonItem) {
         let kmzProvider = KMZProvider(document: kmlDocument)
         let activityViewController = UIActivityViewController(activityItems: [kmzProvider], applicationActivities: nil)
+//        activityViewController.modalPresentationStyle = .popover
+        activityViewController.popoverPresentationController?.barButtonItem = popoverPresentationController?.sourceView = self.view
         present(activityViewController, animated: true)
         activityViewController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
             kmzProvider.deleteKMZ()
@@ -51,6 +53,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         kmlDocument.addChildNode(currentPlacemark!)
         mapView.sketchEditor?.stop()
         changeButton()
+        saveButton?.isEnabled = true
     }
     
     // Reset the KML.
@@ -207,5 +210,13 @@ extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewController
     // Dismiss the popover.
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController) {
         dismiss(animated: true)
+    }
+}
+
+// MARK: - UIAdaptivePresentationControllerDelegate
+extension CreateAndSaveKMLViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // return none to ensure the options controller is shown as a popover even on small displays
+        return .none
     }
 }

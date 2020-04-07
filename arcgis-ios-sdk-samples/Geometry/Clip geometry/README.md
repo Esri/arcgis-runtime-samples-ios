@@ -2,7 +2,7 @@
 
 Clip a geometry with another geometry.
 
-![Image of clip geometry](clip-geometry.png.png)
+![Image of clip geometry](clip-geometry.png)
 
 ## Use case
 

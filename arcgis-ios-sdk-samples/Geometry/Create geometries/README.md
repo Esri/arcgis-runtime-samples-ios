@@ -10,7 +10,7 @@ Geometries are used to represent real world features as vector GIS data. Points 
 
 ## How to use the sample
 
-Pan and zoom freely to see the different types of geometries placed onto the map.
+Pan and zoom freely to see the different types of geometries placed on the map.
 
 ## How it works
 

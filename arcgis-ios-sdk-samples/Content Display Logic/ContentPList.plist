@@ -858,7 +858,7 @@
 				<key>storyboardName</key>
 				<string>GraphicDrawOrder</string>
 				<key>descriptionText</key>
-				<string>You can change the drawing order of graphics in graphics overlay using the z index</string>
+				<string>Change the drawing order for a graphic.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

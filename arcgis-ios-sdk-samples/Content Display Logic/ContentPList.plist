@@ -818,7 +818,7 @@
 				<key>storyboardName</key>
 				<string>GORenderers</string>
 				<key>descriptionText</key>
-				<string>You can add graphics to a map using the new Graphics Overlay</string>
+				<string>Add graphics with renderer to a map to change the style of all graphics in a graphics overlay.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

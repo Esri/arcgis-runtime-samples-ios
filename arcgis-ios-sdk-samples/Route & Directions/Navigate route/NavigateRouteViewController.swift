@@ -193,6 +193,8 @@ class NavigateRouteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Avoid the overlap between the label and the map content.
+        mapView.contentInset.top = CGFloat(statusLabel.numberOfLines) * statusLabel.font.lineHeight
         // Solve the route as map loads.
         routeTask = AGSRouteTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
         routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in

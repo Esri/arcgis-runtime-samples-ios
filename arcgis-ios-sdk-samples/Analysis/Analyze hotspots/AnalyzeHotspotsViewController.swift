@@ -52,10 +52,6 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         mapView.map = map
     }
     
-    fileprivate func extractedFunc() -> AGSGeoprocessingParameters {
-        return AGSGeoprocessingParameters(executionType: .asynchronousSubmit)
-    }
-    
     private func analyzeHotspots(_ fromDate: Date, toDate: Date) {
         //cancel previous job request
         self.geoprocessingJob?.progress.cancel()
@@ -64,7 +60,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         let toDateString = dateFormatter.string(from: toDate)
         
         //parameters
-        let params = extractedFunc()
+        let params = AGSGeoprocessingParameters(executionType: .asynchronousSubmit)
         params.processSpatialReference = self.mapView.map?.spatialReference
         params.outputSpatialReference = self.mapView.map?.spatialReference
         

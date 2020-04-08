@@ -17,6 +17,9 @@
 		00DAE5B82421321300D51281 /* NearestVertex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5B22421321300D51281 /* NearestVertex.storyboard */; };
 		00DAE5B92421321300D51281 /* NearestVertexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
 		00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
+		00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E276272425A205000DBEDD /* NavigateRoute.storyboard */; };
+		00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */; };
+		00E276352425A3A7000DBEDD /* NavigateRouteViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
@@ -836,6 +839,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00E276352425A3A7000DBEDD /* NavigateRouteViewController.swift in CopyFiles */,
 				00DAE5E424213D9A00D51281 /* CustomDictionaryStyleViewController.swift in CopyFiles */,
 				00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */,
 				F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */,
@@ -1107,6 +1111,8 @@
 		00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDictionaryStyleViewController.swift; sourceTree = "<group>"; };
 		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
 		00DAE5B32421321300D51281 /* NearestVertexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestVertexViewController.swift; sourceTree = "<group>"; };
+		00E276272425A205000DBEDD /* NavigateRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NavigateRoute.storyboard; sourceTree = "<group>"; };
+		00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateRouteViewController.swift; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
@@ -1700,6 +1706,15 @@
 				00DAE5B32421321300D51281 /* NearestVertexViewController.swift */,
 			);
 			path = "Nearest vertex";
+			sourceTree = "<group>";
+		};
+		00E276252425A205000DBEDD /* Navigate route */ = {
+			isa = PBXGroup;
+			children = (
+				00E276272425A205000DBEDD /* NavigateRoute.storyboard */,
+				00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */,
+			);
+			path = "Navigate route";
 			sourceTree = "<group>";
 		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
@@ -2328,6 +2343,7 @@
 		3E6AE3E91C6D10DA0026E59C /* Route & Directions */ = {
 			isa = PBXGroup;
 			children = (
+				00E276252425A205000DBEDD /* Navigate route */,
 				F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */,
 				3E6AE3F31C6D1C920026E59C /* Find route */,
 				3EC39C191C9A5770003F6459 /* Route around barriers */,
@@ -4439,6 +4455,7 @@
 				166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */,
 				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
 				C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */,
+				00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
 				3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */,
@@ -4871,6 +4888,7 @@
 				D930E01122EA47F7006C09A1 /* ConnectedTraceViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
+				00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */,
 				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */,

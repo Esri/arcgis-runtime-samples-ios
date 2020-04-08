@@ -1250,6 +1250,14 @@
 				<key>storyboardName</key>
 				<string>FindClosestFacilityMultipleIncidentsService</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Navigate route</string>
+				<key>descriptionText</key>
+				<string>Use a routing service to navigate between two points.</string>
+				<key>storyboardName</key>
+				<string>NavigateRoute</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

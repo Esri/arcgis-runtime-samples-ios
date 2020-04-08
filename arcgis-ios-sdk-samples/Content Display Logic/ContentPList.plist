@@ -906,7 +906,7 @@
 				<key>storyboardName</key>
 				<string>DisplayGrid</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to display and work with coordinate system grids such as LatitudeLongitude, MGRS, UTM and USNG on a map view</string>
+				<string>Display coordinate system grids including Latitude/Longitude, MGRS, UTM and USNG on a map view.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -7,7 +7,7 @@ Change the drawing order for a graphic.
 
 ## Use case
 
-Allows you to customize a graphic by assigning a unique symbol. For example, you may wish to bring a certain graphic to front.
+Allows you to change the order of overlapping graphics in the map. For example, you may wish to bring a certain graphic to front so that it is not obscured by the other graphics.
 
 ## How to use the sample
 
@@ -15,9 +15,9 @@ The sample has four overlapping graphics. Tap on the respective graphic button i
 
 ## How it works
 
-1. Create an `AGSGraphicsOverlay` and add it to the `MapView`.
+1. Create an `AGSGraphicsOverlay` and add it to the `AGSMapView`.
 2. Create and add multiple `AGSGraphic` to the `AGSGraphicsOverlay`.
-3. When the graphic button is tapped, it is given a zIndex bigger than all the other graphic’s `AGSGraphic.zIndex`. Hence it is redrawn atop all other graphics.
+3. When the graphic button is tapped, it is given an `AGSGraphic.zIndex` bigger than all the other graphics. Hence it is redrawn atop all other graphics.
 
 ## Relevant API
 

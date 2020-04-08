@@ -1,6 +1,6 @@
 # Statistical query (group and sort)
 
-This sample demonstrates how to query a feature table to get statistics for one or more specified fields.  The sample queries a service feature table of U.S. county diabetes data to get the selected statistics. The results can be grouped and sorted using one or more fields in the table.
+Query a feature table for statistics, grouping and sorting by different fields.
 
 ## How to use the sample
 
@@ -9,12 +9,42 @@ This sample demonstrates how to query a feature table to get statistics for one 
 - (Optional) Choose one or more fields to order results by. Only those fields selected for grouping are valid choices for ordering results.
 - Execute the query. Results will be displayed in a hierarchical view that is grouped and sorted according to the chosen fields.
 
-![](image1.png) ![](image2.png)
+![Query formsheet](statistical-group-sort-1.png) 
+![Query results](statistical-group-sort-2.png)
+
+## Use case
+
+You can use statistical queries, grouping and sorting to process large amounts of data saved in feature tables. This is helpful for identifying trends and relationships within the data, which can be used to support further interpretations and decisions. For example, a health agency can use information on medical conditions occurring throughout a country to identify at-risk areas or demographics, and decide on further action and preventive measures.
+
+## How to use the sample
+
+Select a combination of fields and statistic types to include in the query. Choose one or more fields by which to group the results. For example, selecting "State" will calculate the results by state. Choose one or more fields to order results by. Only those fields selected for grouping are valid choices for ordering results. Swipe left to delete any selection. Tap the "Get Statistics" button to execute the query. Results will be displayed in a hierarchical view that is grouped and sorted according to the chosen fields. Tap "Reset" to clear the query.
 
 ## How it works
 
-An `AGSServiceFeatureTable` is created with a URL to the REST endpoint of a feature service. `AGSStatisticsQueryParameters` are created, and several `AGSStatisticDefinition` objects are created and added to the parameters. These definitions defines the various statistics that we would like to compute, such as average, minimum and maximum of a given field. One or more Group By and/or Order By fields are added to the parameters. When the button is clicked, `queryStatistics` is executed on the `AGSServiceFeatureTable`. Depending on the state of two switches, additional paramters are set. This process runs asynchronously, and once completed, returns `AGSStatisticsQueryResult`, which contains key/value pairs as the result.
+1. Create an `AGSServiceFeatureTable` using the URL of a feature service and load the table.
+2. Create `AGSStatisticDefinition` objects and add them to the `AGSStatisticsQueryParameters`.
+3. To have the results grouped by fields, add the field names to the query parameters' `groupByFieldNames` collection.
+4. To have the results ordered by fields, create `AGSOrderBy`s, specifying the field name and `AGSSortOrder`. Pass these `AGSOrderBy`s to the parameters' `orderByFields` collection.
+5. To execute the query, call `AGSFeatureTable.queryStatistics(with:completion:)`.
+6. Get the `AGSStatisticQueryResult`. From this, you can use `AGSStatisticsQueryResult.statisticRecordEnumerator()` to loop through and display.
 
+## About the data
 
+This sample uses a [Diabetes, Obesity, and Inactivity by US County](https://www.arcgis.com/home/item.html?id=392420848e634079bc7d0648586e818f) feature layer hosted on ArcGIS Online.
 
+## Relevant API
 
+* AGSField
+* AGSOrderBy
+* AGSQueryParameters
+* AGSServiceFeatureTable
+* AGSStatisticDefinition
+* AGSStatisticRecord
+* AGSStatisticsQueryParameters
+* AGSStatisticsQueryResult
+* AGSStatisticType
+
+## Tags
+
+correlation, data, fields, filter, group, sort, statistics, table

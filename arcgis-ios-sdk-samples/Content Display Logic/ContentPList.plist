@@ -1227,7 +1227,7 @@
 				<key>storyboardName</key>
 				<string>StatisticalQueryGroupAndSort</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to query a feature table to get statistics for one or more specified fields. The results can be grouped and sorted using one or more fields in the table.</string>
+				<string>Query a feature table for statistics, grouping and sorting by different fields.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

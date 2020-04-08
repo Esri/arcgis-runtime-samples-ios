@@ -42,7 +42,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZXj-oh-FBG"/>
                                     <barButtonItem enabled="NO" systemItem="action" id="MuI-Qf-AEu">
                                         <connections>
-                                            <action selector="saveKMZ" destination="XDb-RM-FgI" id="3zy-RL-4h3"/>
+                                            <action selector="saveKMZ:" destination="XDb-RM-FgI" id="U0V-fV-qEc"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

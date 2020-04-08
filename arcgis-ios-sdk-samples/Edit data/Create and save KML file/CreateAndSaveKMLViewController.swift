@@ -35,8 +35,7 @@ class CreateAndSaveKMLViewController: UIViewController {
     @IBAction func saveKMZ(_ sender: UIBarButtonItem) {
         let kmzProvider = KMZProvider(document: kmlDocument)
         let activityViewController = UIActivityViewController(activityItems: [kmzProvider], applicationActivities: nil)
-//        activityViewController.modalPresentationStyle = .popover
-        activityViewController.popoverPresentationController?.barButtonItem = popoverPresentationController?.sourceView = self.view
+        activityViewController.popoverPresentationController?.barButtonItem = sender
         present(activityViewController, animated: true)
         activityViewController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
             kmzProvider.deleteKMZ()
@@ -210,13 +209,5 @@ extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewController
     // Dismiss the popover.
     func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController) {
         dismiss(animated: true)
-    }
-}
-
-// MARK: - UIAdaptivePresentationControllerDelegate
-extension CreateAndSaveKMLViewController: UIAdaptivePresentationControllerDelegate {
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // return none to ensure the options controller is shown as a popover even on small displays
-        return .none
     }
 }

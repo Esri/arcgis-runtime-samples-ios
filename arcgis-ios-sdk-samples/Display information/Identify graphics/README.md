@@ -1,18 +1,30 @@
 # Identify graphics
 
-This sample demonstrates how to identify graphics in a graphics overlay
+Display an alert message when a graphic is clicked.
+
+![Image of identify graphics](identify-graphics.png)
+
+## Use case
+
+A user may wish to select a graphic on a map to view relevant information about it.
 
 ## How to use the sample
 
-When you tap on a graphic on the map, you should see an alert
-
-![](image1.png)
+Tap on a graphic to identify it. You will see an alert message displayed.
 
 ## How it works
 
-It requires the `geoView(_:didTapAtScreenPoint:mapPoint:)` method on `AGSGeoViewTouchDelegate` to know when a user tapped on the map. The method provides a property `mapPoint` which specifies the corresponding touch location in the map. The app then uses the `identify(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)` method on `AGSMapView` to identify graphics at that particular touch location.
+1. Create an `AGSGraphicsOverlay` and add it to the `AGSMapView`.
+2. Add an `AGSGraphic` along with an `AGSSimpleFillSymbol` to the graphics overlay.
+3. Use `AGSGeoViewTouchDelegate.geoView(_:didTapAtScreenPoint:mapPoint:)` to get the `mapPoint` where a user tapped on the map.
+4. Identify the graphic tapped on the map view with `AGSMapView.identify(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)`.
 
-Related: `identifyGraphicsOverlays(atScreenPoint:tolerance:returnPopupsOnly:maximumResultsPerOverlay:completion:)`
+## Relevant API
 
+* AGSGraphic
+* AGSGraphicsOverlay
+* AGSMapView
 
+## Tags
 
+graphics, identify

@@ -898,7 +898,7 @@
 				<key>storyboardName</key>
 				<string>PictureMarkerSymbols</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to create picture marker symbols from a remote image and an image in assets</string>
+				<string>Use pictures for markers.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

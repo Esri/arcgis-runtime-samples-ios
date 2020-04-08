@@ -12,7 +12,7 @@
         "KMZ",
         "OGC"
     ],
-    "redirect_from": "/android/latest/sample-code/create-terrain-from-a-local-raster.htm",
+    "redirect_from": [],
     "relevant_apis": [
         "AGSGeometryEngine.projectGeometry",
         "AGSKmlDataset",

@@ -1,22 +1,35 @@
 # Format coordinates
 
-Coordinates can be written and formatted in different ways, for example latitude, longitude coordinates can be formatted as decimal degrees, or degrees, minutes, and seconds. This sample demonstrates how to convert a map location Point in WGS 1984 spatial reference to a number of different coordinate notations (decimal degrees; degrees, minutes, seconds; Universal Transverse Mercator (UTM), and United States National Grid (USNG)), by using CoordinateFormatter. Additionally, coodinate notation strings can be converted to a Point and shown in the map by tapping on the notation values shown and entering a coordinate in the appropriate notation.
+Format coordinates in a variety of common notations.
 
-The CoordinateFormatter also supports Military Grid Reference System (MGRS), Global Area Reference System (GARS), and World Geographic Reference System (GEOREF) notations, using similar methods to those shown in this sample app.
+![Image of format coordinates](format-coordinates.png)
+
+## Use case
+
+The coordinate formatter can format a map location in WGS84 in a number of common coordinate notations. Parsing one of these formats to a location is also supported. Formats include decimal degrees; degrees, minutes, seconds; Universal Transverse Mercator (UTM), and United States National Grid (USNG).
 
 ## How to use the sample
 
-Tap on the map to get coordinates for the tapped location. You can also edit the text in one of the textfields and hit return to update the graphic on map and get the other coordinate notations.
-
-![](image1.png)
+Tap on the map to see a callout with the tapped location's coordinate formatted in 4 different ways. You can also put a coordinate string in any of these formats in the text field. Hit return and the coordinate string will be parsed to a map location which the callout will move to.
 
 ## How it works
 
-The sample uses the `AGSCoordinateFormatter` class to create coordinate notations for provided location and vice versa. Following are the methods being used in the sample.
+1. Get or create a map point `AGSPoint` with a spatial reference.
+2. To get the formatted string, use one of the static methods below.
+    * `class AGSCoordinateFormatter.latitudeLongitudeString(from:format:decimalPlaces:)`
+    * `class AGSCoordinateFormatter.utmString(from:conversionMode:addSpaces:)`
+    * `class AGSCoordinateFormatter.usngString(from:precision:addSpaces:)`
+3. To get an `AGSPoint` from a formatted string, use one of the static methods below.
+    * `class AGSCoordinateFormatter.point(fromLatitudeLongitudeString:spatialReference:)`
+    * `class AGSCoordinateFormatter.point(fromUTMString:spatialReference:conversionMode:)`
+    * `class AGSCoordinateFormatter.point(fromUSNGString:spatialReference:)`
 
-* `latitudeLongitudeString(from:format:decimalPlaces:)`
-* `utmString(from:conversionMode:addSpaces:)`
-* `usngString(from:precision:addSpaces:)`
-* `point(fromLatitudeLongitudeString:spatialReference:)`
-* `point(fromUTMString:spatialReference:conversionMode:)`
-* `point(fromUSNGString:spatialReference:)`
+## Relevant API
+
+* AGSCoordinateFormatter
+* AGSLatitudeLongitudeFormat
+* AGSUTMConversionMode
+
+## Tags
+
+convert, coordinate, decimal degrees, degree minutes seconds, format, latitude, longitude, USNG, UTM

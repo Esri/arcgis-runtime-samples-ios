@@ -1,15 +1,31 @@
 # Create geometries
 
-This sample demonstrates simple ways to create different types of geometries.
+Create simple geometry types.
 
-![](image1.png)
+![Image of create geometries](create-geometries.png)
+
+## Use case
+
+Geometries are used to represent real world features as vector GIS data. Points are used to mark specific XY locations, such as landmarks and other points of interest. Polylines are made up of 2 or more XY vertices and can be used to mark roads, flight paths, or boundaries. Polygons are made up of 3 or more XY vertices and can be used to represent a lake, country, or a park. Geometries can be stored as features in a database, displayed as graphics in a map, or used for performing spatial analysis with `AGSGeometryEngine` or an `AGSGeoprocessingTask`.
+
+## How to use the sample
+
+Pan and zoom freely to see the different types of geometries placed on the map.
 
 ## How it works
 
-The geometries are added as `AGSGraphic` objects to a graphics overlay and displayed in a map view. The geometries are created using geometry builders. Geometry builders (or builders, for short) create or change geometry. A geometry builder contains the same things a geometry contains—vertices, segments, and parts—allowing its state to be changed as needed. You may create new geometries at any point from the builder’s current state. A builder is available for each type of geometry. Each builder exposes the appropriate methods for modifying a specific type of geometry. In the case of `AGSPolylineBuilder` and `AGSPolygonBuilder` that share many members, both inherit from `AGSMultipartBuilder`, which in turn inherits from `AGSGeometryBuilder`. Other builders inherit directly from `AGSGeometryBuilder`.
+1. Use the constructors for the various simple `AGSGeometry` types including `AGSPoint`, `AGSPolyline`, `AGSMultipoint`, `AGSPolygon`, and `AGSEnvelope`.
+2. To display the geometry, create an `AGSGraphic` passing in the geometry, and an `AGSSymbol` appropriate for the geometry type.
+3. Add the graphic to an `AGSGraphicsOverlay` and add the overlay to an `AGSMapView`.
 
+## Relevant API
 
+* AGSEnvelope
+* AGSMultipoint
+* AGSPoint
+* AGSPolygon
+* AGSPolyline
 
+## Tags
 
-
-
+area, boundary, line, marker, path, shape

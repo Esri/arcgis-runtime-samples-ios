@@ -850,7 +850,7 @@
 				<key>storyboardName</key>
 				<string>GOIdentify</string>
 				<key>descriptionText</key>
-				<string>You can use the identify method on map view to get the graphics at a location. It could be the location, user interacted with, via tap gesture or simply some custom location</string>
+				<string>Display an alert message when a graphic is clicked.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

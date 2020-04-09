@@ -2,13 +2,6 @@
 
 Query a feature table for statistics, grouping and sorting by different fields.
 
-## How to use the sample
-
-- Select a combination of fields and statistic types to include in the query.
-- Choose one or more fields by which to group the results. For example, selecting "State" will calculate the results by state.
-- (Optional) Choose one or more fields to order results by. Only those fields selected for grouping are valid choices for ordering results.
-- Execute the query. Results will be displayed in a hierarchical view that is grouped and sorted according to the chosen fields.
-
 ![Query formsheet](statistical-group-sort-1.png) 
 ![Query results](statistical-group-sort-2.png)
 

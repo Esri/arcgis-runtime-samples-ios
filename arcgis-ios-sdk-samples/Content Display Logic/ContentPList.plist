@@ -866,7 +866,7 @@
 				<key>storyboardName</key>
 				<string>MILShowLegend</string>
 				<key>descriptionText</key>
-				<string>Tap on the button in the toolbar to display legends for the layers on the map</string>
+				<string>Show a legend for all the operational layers in the map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

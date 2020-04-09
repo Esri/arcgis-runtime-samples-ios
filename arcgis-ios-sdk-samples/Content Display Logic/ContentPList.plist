@@ -940,7 +940,7 @@
 				<key>displayName</key>
 				<string>Read symbols from a mobile style</string>
 				<key>descriptionText</key>
-				<string>Open a mobile style (.stylx) and read its contents. Combine several symbols from the style into a single multilayer point symbol, then use it to display graphics in the map view.</string>
+				<string>Combine multiple symbols from a mobile style file into a single symbol.</string>
 				<key>storyboardName</key>
 				<string>ReadSymbolsFromMobileStyle</string>
 			</dict>

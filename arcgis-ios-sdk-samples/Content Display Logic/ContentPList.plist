@@ -1271,7 +1271,7 @@
 				<key>storyboardName</key>
 				<string>LineOfSightLocation</string>
 				<key>descriptionText</key>
-				<string>Place a line of sight between two locations.</string>
+				<string>Perform a line of sight analysis between two points in real time.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

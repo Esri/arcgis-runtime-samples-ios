@@ -25,7 +25,7 @@ In order to find any service areas at least one facility needs to be added to th
 3. Set the `AGSPolygonBarrier` to `polygon`.
 4. Add a `AGSServiceAreaFacility` to the parameters.
 5. Get the `AGSServiceAreaResult` by solving the service area task using the parameters.
-6. Get any `AGSServiceAreaPolygon`s that were returned by using `_.resultPolygons(atFacilityIndex:)`.
+6. Get any `AGSServiceAreaPolygon`s that were returned by using `AGSServiceAreaResult.resultPolygons(atFacilityIndex:)`.
 7. Display the service area polygons as graphics in an `AGSGraphicsOverlay` on the `mapView`.
 
 ## Relevant API

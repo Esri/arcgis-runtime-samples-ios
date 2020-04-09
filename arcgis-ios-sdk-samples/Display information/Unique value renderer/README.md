@@ -6,7 +6,7 @@ Render features in a layer using a distinct symbol for each unique attribute val
 
 ## Use case
 
-A unique value renderer allows you to symbolize features in a layer based on one or more matching attributes. This is typically done by using unique colors, fill styles, or images to represent features with equal values in a string field. A unique value renderer could be used to show different types of trees on a vegetation map by using a symbols corresponding to matching name attributes.
+A unique value renderer allows you to symbolize features in a layer based on one or more matching attributes. This is typically done by using unique colors, fill styles, or images to represent features with equal values in a string field. A unique value renderer could be used to show different types of trees on a vegetation map by using symbols corresponding to matching name attributes.
 
 ## How to use the sample
 

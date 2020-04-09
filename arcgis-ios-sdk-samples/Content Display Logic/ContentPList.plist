@@ -834,7 +834,7 @@
 				<key>storyboardName</key>
 				<string>GOIdentify</string>
 				<key>descriptionText</key>
-				<string>Display an alert message when a graphic is clicked.</string>
+				<string>Display an alert message when a graphic is tapped.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

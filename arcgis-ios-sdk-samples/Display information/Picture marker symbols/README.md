@@ -19,7 +19,7 @@ When launched, this sample displays a map with two picture marker symbols. Pan a
 
 ## Relevant API
 
-* PictureMarkerSymbol
+* AGSPictureMarkerSymbol
 
 ## About the data
 

@@ -1,14 +1,39 @@
 # Unique value renderer
 
-This sample demonstrate how to use a unique value renderer to style different features in a feature layer with different symbols. Features do not have a symbol property for you to set, renderers should be used to define the symbol for features in feature layers. The unique value renderer allows for separate symbols to be used for features that have specific attribute values in a defined field.
+Render features in a layer using a distinct symbol for each unique attribute value.
 
-![](image1.png)
+![Image of unique value renderer](unique-value-renderer.jpg)
+
+## Use case
+
+A unique value renderer allows you to symbolize features in a layer based on one or more matching attributes. This is typically done by using unique colors, fill styles, or images to represent features with equal values in a string field. A unique value renderer could be used to show different types of trees on a vegetation map by using a symbols corresponding to matching name attributes.
+
+## How to use the sample
+
+The map with the symbolized feature layer will be shown automatically when the sample loads.
 
 ## How it works
 
-The sample instantiates an `AGSFeatureLayer` object and creates a custom unique value renderer for it using `AGSUniqueValueRenderer` class. It defines the field names from the feature layer to be used for unique values using the `fieldNames` property on unique value renderer. It then defines an `AGSSimpleFillSymbol` symbol as the defaultSymbol. Creates a unique value for California, Arizona and Nevada with different symbols. Then adds these unique values to the renderer and assigns the render to the feature layer.
+Using the `AGSUniqueValueRenderer`, separate symbols can be used to display features that have a specific value for a given field. In this case, the field is subregions of the USA. While multiple fields can be used, this sample only uses one.
 
+1. An `AGSSimpleFillSymbol` is defined for each type of feature.
+2. `AGSSimpleFillSymbol` can be applied to polygon features, which is the type of feature contained by this `AGSServiceFeatureTable`.
+3. Separate `AGSUniqueValue` objects are created which define the values in the renderer field and the symbol used to render matching features.
+4. A default symbol is created to render all features that do not match any of the `AGSUniqueValue` objects defined.
 
+## Relevant API
 
+* AGSFeatureLayer
+* AGSServiceFeatureTable
+* AGSSimpleFillSymbol
+* AGSSimpleLineSymbol
+* AGSUniqueValue
+* AGSUniqueValueRenderer
 
+## About the data
 
+The map shows U.S. states symbolized by subregion. Symbols are defined for *Pacific*, *Mountain*, and *West South Central* states. All other features are symbolized with the default symbol.
+
+## Tags
+
+draw, renderer, symbol, symbology, values

@@ -2,7 +2,7 @@
 
 Use augmented reality (AR) to quickly explore a scene more naturally than you could with a touch or mouse interface.
 
-![Scene shown in an app](image1.png)
+![Scene shown in an app](Explore-Scenes-In-Flyover-AR.png)
 
 ## Use case
 
@@ -15,7 +15,7 @@ When you open the sample, you'll be viewing the scene from above. You can walk a
 ## How it works
 
 1. Create the `ArcGISARView` and add it to the view.
-2. Listen for ARKit tracking state updates using `arView.arSCNViewDelegate` and provide guidance to the user as necessary.
+2. Listen for ARKit tracking state updates using `ArcGISARView.arSCNViewDelegate` and provide guidance to the user as necessary.
 3. Create the scene, add content, then display it.
 4. When the content you want to view loads, get its center point and use that to create the origin camera for the AR view. Note that the altitude should be set so that all scene content is visible. For a city, a good value might be a bit higher than the tallest building. The sample uses 600 meters in the absence of tall buildings in the sample data.
 5. Set the translation factor so that you can move through the scene easily. With a translation factor of 1000, you will move 1000 feet in the scene for every foot you move the physical device.
@@ -36,9 +36,9 @@ The [world elevation service](https://elevation3d.arcgis.com/arcgis/rest/service
 
 This sample requires a device that is compatible with ARKit 1.0 on iOS.
 
-**Flyover AR** is one of three main patterns for working with geographic information in augmented reality. See the [guide doc]() for more information.
+**Flyover AR** is one of three main patterns for working with geographic information in augmented reality. See the topic [Display scenes in augmented reality](https://developers.arcgis.com/ios/latest/swift/guide/display-scenes-in-augmented-reality.htm) in the iOS Guide for more information.
 
-This sample uses the ArcGIS Runtime Toolkit. See [Display scenes in augmented reality](https://developers.arcgis.com/ios/latest/swift/guide/display-scenes-in-augmented-reality.htm) in the guide to learn about the toolkit and how to add it to your app.
+This sample uses the ArcGIS Runtime Toolkit. See the section [Enable your app for AR using AR Toolkit](https://developers.arcgis.com/ios/latest/swift/guide/display-scenes-in-augmented-reality.htm) in the iOS Guide to learn about the toolkit and how to add it to your app.
 
 ## Tags
 

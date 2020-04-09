@@ -1259,7 +1259,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedGeoElement</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to construct a viewshed so that it updates automatically relative to a moving GeoElement.</string>
+				<string>Analyze the viewshed for an object (GeoElement) in a scene.</string>
 				<key>dependency</key>
 				<array>
 					<string>Bradley3DModel</string>

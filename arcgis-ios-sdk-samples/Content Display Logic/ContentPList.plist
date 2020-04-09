@@ -846,11 +846,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Sketch on the map</string>
+				<string>Sketch on map</string>
 				<key>storyboardName</key>
 				<string>Sketch</string>
 				<key>descriptionText</key>
-				<string>You can use the sketch editor for sketching on your map</string>
+				<string>Use the Sketch Editor to edit or sketch a new point, line, or polygon geometry on a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

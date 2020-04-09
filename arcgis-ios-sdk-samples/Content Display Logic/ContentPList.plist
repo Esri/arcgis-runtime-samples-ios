@@ -890,7 +890,7 @@
 				<key>storyboardName</key>
 				<string>SimpleRenderer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to create a simple renderer and add it to a graphics overlay</string>
+				<string>Display common symbols for all graphics in a graphics overlay with a renderer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

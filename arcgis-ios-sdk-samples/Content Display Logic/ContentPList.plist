@@ -1319,7 +1319,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedLocation</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to interactively edit a viewshed analysis in a scene and see updates on-the-fly.</string>
+				<string>Perform a viewshed analysis from a defined vantage point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

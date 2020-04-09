@@ -1291,7 +1291,7 @@
 				<key>storyboardName</key>
 				<string>DistanceMeasurementAnalysis</string>
 				<key>descriptionText</key>
-				<string>Demonstrates measuring 3D distances between two points in a scene.</string>
+				<string>Measure distances between two points in 3D.</string>
 			</dict>
 		</array>
 	</dict>

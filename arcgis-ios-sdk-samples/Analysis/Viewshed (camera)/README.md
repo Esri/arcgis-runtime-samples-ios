@@ -1,13 +1,37 @@
 # Viewshed (camera)
 
-This sample demonstrates how to create a location viewshed from a camera.
+Analyze the viewshed for a camera. A viewshed shows the visible and obstructed areas from an observer's vantage point. 
 
-![](image1.png)
+![Viewshed analysis from a camera](viewshed-camera.png)
+
+## Use case
+
+A viewshed analysis is a type of visual analysis you can perform on a scene. The viewshed aims to answer the question 'What can I see from a given location?'. The output is an overlay with two different colors - one representing the visible areas (green) and the other representing the obstructed areas (red).
+
+## How to use the sample
+
+The sample will start with a viewshed created from the initial camera location, so only the visible (green) portion of the viewshed will be visible. Move around the scene to see the obstructed (red) portions. Tap the 'Update from camera' button to update the viewshed to the current camera position.
 
 ## How it works
 
-The viewshed analysis object is created using the initializer of the `AGSLocationViewshed` called `init(camera:minDistance:maxDistance)`. The sample starts with a viewshed created from the initial camera location.
+1. Create an `AGSLocationViewshed`, passing in an `AGSCamera` object and a min/max distance.
+2. Get the current camera from the scene with `AGSSceneViewCommon.currentViewpointCamera()`.
+3. Update the viewshed from a camera with `AGSLocationViewshed.update(from:)`.
 
-The output is displayed in an overlay representing the visible areas in green color and non-visible areas in red color. This is achieved by creating an `AGSAnalysisOverlay` for the viewshed and adding that overlay to a collection of analysis overlays in `AGSSceneView`.
+## Relevant API
 
-When user taps the `Update from camera` button, the viewshed is updated with the current camera by calling the `update(from:)` method on `AGSLocationViewshed`. The current camera position is retrieved from the `currentViewpointCamera()` method on `AGSSceneView`.
+* AGSAnalysisOverlay
+* AGSArcGISSceneLayer
+* AGSArcGISTiledElevationSource
+* AGSCamera
+* AGSLocationViewshed
+* AGSScene
+* AGSSceneView
+
+## About the data
+
+The scene shows a [buildings layer in Brest, France](https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0) with a [local elevation source image service](https://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer) both hosted on ArcGIS Online.
+
+## Tags
+
+3D, Scene, viewshed, visibility analysis

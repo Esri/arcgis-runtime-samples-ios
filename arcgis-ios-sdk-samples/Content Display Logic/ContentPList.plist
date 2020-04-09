@@ -1287,7 +1287,7 @@
 				<key>storyboardName</key>
 				<string>StatisticalQuery</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.</string>
+				<string>Query a table to get aggregated statistics back for a specific field.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1303,7 +1303,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedGeoprocessing</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
+				<string>Calculate a viewshed using a geoprocessing service, in this case showing what parts of a landscape are visible from points on mountainous terrain.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

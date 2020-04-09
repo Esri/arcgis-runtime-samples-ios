@@ -890,7 +890,7 @@
 				<key>storyboardName</key>
 				<string>SimpleMarkerSymbol</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to create a graphic with simple marker symbol</string>
+				<string>Show a simple marker symbol on a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

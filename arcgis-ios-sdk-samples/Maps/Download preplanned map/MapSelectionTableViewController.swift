@@ -196,7 +196,6 @@ class MapSelectionTableViewController: UITableViewController {
         
         let task = offlineTask!
         try? FileManager.default.removeItem(at: area.mapPackageURL)
-        let cell = self.tableView.cellForRow(at: indexPath) as? PreplannedMapAreaTableViewCell
         // Create download parameters with default values.
         task.defaultDownloadPreplannedOfflineMapParameters(with: area) { [weak self] (params, error) in
             guard let self = self else { return }
@@ -208,6 +207,7 @@ class MapSelectionTableViewController: UITableViewController {
                 // Create a download offline map job with fetched parameters.
                 let job = task.downloadPreplannedOfflineMapJob(with: params, downloadDirectory: area.mapPackageURL)
                 self.currentJobs[area] = job
+                let cell = self.tableView.cellForRow(at: indexPath) as? PreplannedMapAreaTableViewCell
                 cell?.progressView.observedProgress = job.progress
                 
                 job.start(statusHandler: nil) { [weak self] (result, error) in

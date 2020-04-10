@@ -31,7 +31,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uYO-iU-ujY"/>
                                     <barButtonItem systemItem="add" id="V8L-U8-tQY">
                                         <connections>
-                                            <segue destination="uXT-nb-Mwb" kind="presentation" id="9kE-PU-Rti"/>
+                                            <action selector="addFeature" destination="XDb-RM-FgI" id="Xyb-6T-rhz"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="done" id="4d8-3n-68D">
@@ -78,7 +78,7 @@
             <objects>
                 <navigationController id="uXT-nb-Mwb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KN6-br-DoD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -94,7 +94,7 @@
             <objects>
                 <tableViewController id="imN-ge-Xru" userLabel="Feature Selection Table View Controller" customClass="CreateAndSaveKMLSettingsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="mDS-GB-OVA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>

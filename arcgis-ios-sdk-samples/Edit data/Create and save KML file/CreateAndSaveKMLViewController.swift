@@ -31,6 +31,29 @@ class CreateAndSaveKMLViewController: UIViewController {
     @IBOutlet var toolbar: UIToolbar?
     @IBOutlet var saveButton: UIBarButtonItem?
     
+    @IBAction func addFeature() {
+        let alertController = UIAlertController(title: "Select Feature", message: nil, preferredStyle: .actionSheet)
+        let pointAction = UIAlertAction(title: "Point", style: .default) { (_) in
+            self.addPoint()
+        }
+        alertController.addAction(pointAction)
+        let polylineAction = UIAlertAction(title: "Polyline", style: .default) { (_) in
+            self.addPolyline()
+        }
+        alertController.addAction(polylineAction)
+        let polygonAction = UIAlertAction(title: "Polygon", style: .default) { (_) in
+            self.addPolygon()
+        }
+        alertController.addAction(polygonAction)
+        
+        // Add "cancel" item.
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        alertController.popoverPresentationController?.barButtonItem = addButton
+        present(alertController, animated:true, completion: nil)
+    }
+    
     // Prompt options to allow the user to save the KMZ file.
     @IBAction func saveKMZ(_ sender: UIBarButtonItem) {
         let kmzProvider = KMZProvider(document: kmlDocument)
@@ -84,8 +107,100 @@ class CreateAndSaveKMLViewController: UIViewController {
         return map
     }
     
+    func addPoint() {
+        let alertController = UIAlertController(title: "Select Icon", message: "This icon will be used for the new feature", preferredStyle: .actionSheet)
+        let icons: [(String, URL)] = [
+            ("No style", URL(string: "http://resources.esri.com/help/900/arcgisexplorer/sdk/doc/bitmaps/148cca9a-87a8-42bd-9da4-5fe427b6fb7b127.png")!),
+            ("Star", URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueStarLargeB.png")!),
+            ("Diamond", URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueDiamondLargeB.png")!),
+            ("Circle", URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueCircleLargeB.png")!),
+            ("Square", URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BlueSquareLargeB.png")!),
+            ("Round pin", URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BluePin1LargeB.png")!),
+            ("Square pin", URL(string: "https://static.arcgis.com/images/Symbols/Shapes/BluePin2LargeB.png")!)
+        ]
+        icons.forEach { (title, url) in
+            let pointAction = UIAlertAction(title: title, style: .default) { (_) in
+                self.kmlStyle = self.makeKMLStyleWithPointStyle(iconURL: url)
+                self.startSketch(creationMode: .point)
+            }
+            alertController.addAction(pointAction)
+        }
+        // Add "cancel" item.
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        alertController.popoverPresentationController?.barButtonItem = addButton
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func addPolyline() {
+        let alertController = UIAlertController(title: "Select Color", message: "This color will be used for the polyline", preferredStyle: .actionSheet)
+        let colors: [String: UIColor] = [
+            "Red": .red,
+            "Yellow": .yellow,
+            "White": .white,
+            "Purple": .purple,
+            "Orange": .orange,
+            "Magenta": .magenta,
+            "Light gray": .lightGray,
+            "Gray": .gray,
+            "Dark gray": .darkGray,
+            "Green": .green,
+            "Cyan": .cyan,
+            "Brown": .brown,
+            "Blue": .blue,
+            "Black": .black
+        ]
+        colors.forEach { color in
+            let colorAction = UIAlertAction(title: color.key, style: .default) { (_) in
+                self.kmlStyle = self.makeKMLStyleWithLineStyle(color: color.value)
+                self.startSketch(creationMode: .polyline)
+            }
+            alertController.addAction(colorAction)
+        }
+        // Add "cancel" item.
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        alertController.popoverPresentationController?.barButtonItem = addButton
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func addPolygon() {
+        let alertController = UIAlertController(title: "Select Color", message: "This color will be used to fill the polygon", preferredStyle: .actionSheet)
+        let colors: [String: UIColor] = [
+            "Red": .red,
+            "Yellow": .yellow,
+            "White": .white,
+            "Purple": .purple,
+            "Orange": .orange,
+            "Magenta": .magenta,
+            "Light gray": .lightGray,
+            "Gray": .gray,
+            "Dark gray": .darkGray,
+            "Green": .green,
+            "Cyan": .cyan,
+            "Brown": .brown,
+            "Blue": .blue,
+            "Black": .black
+        ]
+        colors.forEach { color in
+            let colorAction = UIAlertAction(title: color.key, style: .default) { (_) in
+                self.kmlStyle = self.makeKMLStyleWithLineStyle(color: color.value)
+                self.startSketch(creationMode: .polygon)
+            }
+            alertController.addAction(colorAction)
+        }
+        // Add "cancel" item.
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        alertController.popoverPresentationController?.barButtonItem = addButton
+        present(alertController, animated: true, completion: nil)
+    }
+    
     // Make KML with a point style.
-    func makeKMLStyleWithPointStyle(icon: AGSKMLIcon, color: UIColor) -> AGSKMLStyle {
+    func makeKMLStyleWithPointStyle(iconURL: url) -> AGSKMLStyle {
         let iconStyle = AGSKMLIconStyle(icon: icon, scale: 1.0)
         let kmlStyle = AGSKMLStyle()
         kmlStyle.iconStyle = iconStyle
@@ -136,14 +251,14 @@ class CreateAndSaveKMLViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        if let navigationController = segue.destination as? UINavigationController,
-            let settingsViewController = navigationController.topViewController as? CreateAndSaveKMLSettingsViewController {
-            settingsViewController.kmlStyle = kmlStyle
-            settingsViewController.delegate = self
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        super.prepare(for: segue, sender: sender)
+//        if let navigationController = segue.destination as? UINavigationController,
+//            let settingsViewController = navigationController.topViewController as? CreateAndSaveKMLSettingsViewController {
+//            settingsViewController.kmlStyle = kmlStyle
+//            settingsViewController.delegate = self
+//        }
+//    }
 }
 
 // Handles saving a KMZ file.

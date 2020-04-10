@@ -20,7 +20,7 @@ For simplicity, the sample comes loaded with a start and end stop. You can click
 3. Set `returnDirections` on the parameters to `true`.
 4. Create an `ASGStop` object for each destination and assign the stops to the parameters using `AGSRouteParameters.setStops(_:)`.
 5. Solve the route using `AGSRouteTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
-6. Iterate through the result's `AGSRoute`s. To display the route, create a graphic using the geometry from `_routeGeometry`. To display directions, use `route.getDirectionManeuvers()`, and for each `DirectionManeuver`, display `_.directionManeuvers`.
+6. Iterate through the result's `AGSRoute`s. To display the route, create a graphic using the geometry from the route's `routeGeometry`. To display directions, get the direction maneuvers from the route's `directionManeuvers` property, and, for each maneuver, display the maneuver's `directionText`.
 
 ## Relevant API
 

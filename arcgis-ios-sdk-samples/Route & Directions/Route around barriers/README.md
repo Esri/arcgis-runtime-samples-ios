@@ -31,7 +31,7 @@ Tap 'Add stop' to add stops to the route. Tap 'Add barrier' to add areas that ca
     iii. Create the graphic from the geometry and the symbol.
     iv. Add the graphic to the barriers overlay.
 5. When ready to find the route, configure the route parameters.
-    i. Set the `ReturnStops` and `ReturnDirections` to `true`.
+    i. Set the `returnStops` and `returnDirections` to `true`.
     ii. Create an `AGSStop` for each graphic in the stops graphics overlay. Add that stop to a list, then call `AGSRouteParameters.setStops(_:)`.
     iii. Create a `AGSPolygonBarrier` for each graphic in the barriers graphics overlay. Add that barrier to a list, then call `AGSRouteParameters.setPolygonBarriers(_:)`.
     iv. If the user will accept routes with the stops in any order, set `findBestSequence` to `true` to find the most optimal route.

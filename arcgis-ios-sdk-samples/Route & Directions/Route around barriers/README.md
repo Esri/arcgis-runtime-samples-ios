@@ -18,7 +18,7 @@ Tap 'Add stop' to add stops to the route. Tap 'Add barrier' to add areas that ca
 ## How it works
 
 1. Create the route task using `AGSRouteTask.init(url:)` with the URL to a Network Analysis route service.
-2. Get the default route parameters for the service by calling `AGSRouteTask.getDefaultParameters`.
+2. Get the default route parameters for the service by using `AGSRouteTask.defaultRouteParameters(completion:)`.
 3. When the user adds a stop, add it to the route parameters.
     i. Normalize the geometry; otherwise the route job would fail if the user included any stops over the 180th degree meridian.
     ii. Get the name of the stop by counting the existing stops - `stopGraphicsOverlay.graphics.index(of:) + 1`.

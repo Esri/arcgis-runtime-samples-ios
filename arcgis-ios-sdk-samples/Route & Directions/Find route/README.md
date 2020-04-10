@@ -16,7 +16,7 @@ For simplicity, the sample comes loaded with a start and end stop. You can click
 ## How it works
 
 1. Create a `AGSRouteTask` using a URL to an online route service.
-2. Generate default `AGSRouteParameters` using `FindRouteViewController.getDefaultParameters()`.
+2. Generate default `AGSRouteParameters` using `AGSRouteTask.defaultRouteParameters(completion:)`.
 3. Set `_.returnDirections` on the parameters to true.
 4. Add `AGSStop`s to the parameters `stops` collection for each destination.
 5. Solve the route using `AGSRouteTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.

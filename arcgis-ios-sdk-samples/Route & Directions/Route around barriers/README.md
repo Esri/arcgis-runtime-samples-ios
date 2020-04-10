@@ -40,7 +40,7 @@ Tap 'Add stop' to add stops to the route. Tap 'Add barrier' to add areas that ca
 6. Calculate and display the route.
     i. Call `AGSRouteTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
     ii. Get the first returned route by calling `AGSRouteResult.routes.first()`.
-    iii. Get the geometry from the route as a polyline by accessing the `_.routeGeometry` property.
+    iii. Get the geometry from the route as a polyline by accessing the `routeGeometry` property.
     iv. Create a graphic from the polyline and a simple line symbol.
     v. Display the steps on the route, available from `directionManeuvers`.
 

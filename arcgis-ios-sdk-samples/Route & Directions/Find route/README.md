@@ -7,7 +7,7 @@ Display directions for a route between two points.
 
 ## Use case
 
-Find routes with driving directions between any number of locations. You might use the ArcGIS platform to create a custom network for routing on a private roads.
+Find routes with driving directions between any number of locations. You might use the ArcGIS platform to create a custom network for routing on private roads.
 
 ## How to use the sample
 

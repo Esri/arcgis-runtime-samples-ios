@@ -21,7 +21,7 @@ Tap 'Add stop' to add stops to the route. Tap 'Add barrier' to add areas that ca
 2. Get the default route parameters for the service by calling `AGSRouteTask.getDefaultParameters`.
 3. When the user adds a stop, add it to the route parameters.
     i. Normalize the geometry; otherwise the route job would fail if the user included any stops over the 180th degree meridian.
-    ii. Get the name of the stop by counting the existing stops - `.stopGraphicsOverlay.graphics.index(of:) + 1`.
+    ii. Get the name of the stop by counting the existing stops - `stopGraphicsOverlay.graphics.index(of:) + 1`.
     iii. Create a composite symbol for the stop. This sample uses a blue marker and a text symbol.
     iv. Create the graphic from the geometry and the symbol.
     v. Add the graphic to the stops graphics overlay.

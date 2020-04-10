@@ -17,9 +17,9 @@ Tap near a road to start adding a stop to the route, tap again to place it on th
 
 1. Create the map's `AGSBasemap` from a local tile package using an `AGSTileCache` and `AGSArcGISTiledLayer`.
 2. Create an `AGSRouteTask` with an offline locator geodatabase.
-3. Get the `AGSRouteParameters` using `OfflineRoutingViewController.getDefaultParameters()`.
-4. Create `AGSStop`s and add them to the route task's parameters.
-5. Solve the route using `AGSRouteTask.solveRoute(with:completion:)`.
+3. Generate default `AGSRouteParameters` using `AGSRouteTask.defaultRouteParameters(completion:)`.
+4. Create an `ASGStop` object for each destination and assign the stops to the parameters using `AGSRouteParameters.setStops(_:)`.
+5. Solve the route using `AGSRouteTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
 6. Create a graphic with the route's geometry and a `AGSSimpleLineSymbol` and display it on another `AGSGraphicsOverlay`.
 
 ## Offline data

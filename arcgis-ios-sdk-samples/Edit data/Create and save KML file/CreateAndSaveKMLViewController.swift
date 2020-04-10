@@ -51,7 +51,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         alertController.popoverPresentationController?.barButtonItem = addButton
-        present(alertController, animated:true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     // Prompt options to allow the user to save the KMZ file.
@@ -152,10 +152,10 @@ class CreateAndSaveKMLViewController: UIViewController {
             "Black": .black
         ]
         colors.forEach { color in
-            let colorAction = UIAlertAction(title: color.key, style: .default) { (_) in
+                let colorAction = UIAlertAction(title: color.key, style: .default) { (_) in
                 self.kmlStyle = self.makeKMLStyleWithLineStyle(color: color.value)
                 self.startSketch(creationMode: .polyline)
-            }
+                }
             alertController.addAction(colorAction)
         }
         // Add "cancel" item.
@@ -185,10 +185,10 @@ class CreateAndSaveKMLViewController: UIViewController {
             "Black": .black
         ]
         colors.forEach { color in
-            let colorAction = UIAlertAction(title: color.key, style: .default) { (_) in
-                self.kmlStyle = self.makeKMLStyleWithLineStyle(color: color.value)
+                let colorAction = UIAlertAction(title: color.key, style: .default) { (_) in
+                self.kmlStyle = self.makeKMLStyleWithPolygonStyle(color: color.value)
                 self.startSketch(creationMode: .polygon)
-            }
+                }
             alertController.addAction(colorAction)
         }
         // Add "cancel" item.
@@ -200,24 +200,24 @@ class CreateAndSaveKMLViewController: UIViewController {
     }
     
     // Make KML with a point style.
-    func makeKMLStyleWithPointStyle(iconURL: url) -> AGSKMLStyle {
+    func makeKMLStyleWithPointStyle(iconURL: URL) -> AGSKMLStyle {
+        let icon = AGSKMLIcon(url: iconURL)
         let iconStyle = AGSKMLIconStyle(icon: icon, scale: 1.0)
-        let kmlStyle = AGSKMLStyle()
         kmlStyle.iconStyle = iconStyle
         return kmlStyle
     }
     
     // Make KML with a line style.
     func makeKMLStyleWithLineStyle(color: UIColor) -> AGSKMLStyle {
-        let kmlStyle = AGSKMLStyle()
         kmlStyle.lineStyle = AGSKMLLineStyle(color: color, width: 2.0)
         return kmlStyle
     }
     
     // Make KML with a polygon style.
     func makeKMLStyleWithPolygonStyle(color: UIColor) -> AGSKMLStyle {
-        let kmlStyle = AGSKMLStyle()
         kmlStyle.polygonStyle = AGSKMLPolygonStyle(color: color)
+        kmlStyle.polygonStyle?.isFilled = true
+        kmlStyle.polygonStyle?.isOutlined = false
         return kmlStyle
     }
     
@@ -233,10 +233,10 @@ class CreateAndSaveKMLViewController: UIViewController {
     }
     
     // Start a new sketch mode.
-    func startSketch() {
+    func startSketch(creationMode: AGSSketchCreationMode) {
         changeButton()
         mapView.sketchEditor?.stop()
-        mapView.sketchEditor?.start(with: sketchCreationMode!)
+        mapView.sketchEditor?.start(with: creationMode)
     }
     
     override func viewDidLoad() {
@@ -249,16 +249,6 @@ class CreateAndSaveKMLViewController: UIViewController {
             "CreateAndSaveKMLSettingsViewController"
         ]
     }
-    
-    // MARK: - Navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        super.prepare(for: segue, sender: sender)
-//        if let navigationController = segue.destination as? UINavigationController,
-//            let settingsViewController = navigationController.topViewController as? CreateAndSaveKMLSettingsViewController {
-//            settingsViewController.kmlStyle = kmlStyle
-//            settingsViewController.delegate = self
-//        }
-//    }
 }
 
 // Handles saving a KMZ file.
@@ -295,34 +285,5 @@ private class KMZProvider: UIActivityItemProvider {
     func deleteKMZ() {
         guard let url = temporaryDirectoryURL else { return }
         try? FileManager.default.removeItem(at: url)
-    }
-}
-
-// Set KML style depending on which feature has been chosen.
-extension CreateAndSaveKMLViewController: CreateAndSaveKMLSettingsViewControllerDelegate {
-    func createAndSaveKMLSettingsViewController(_ createAndSaveKMLSettingsViewController: CreateAndSaveKMLSettingsViewController, feature: String?, icon: AGSKMLIcon?, color: UIColor) {
-        switch feature {
-        case "point":
-            sketchCreationMode = AGSSketchCreationMode.point
-            kmlStyle = makeKMLStyleWithPointStyle(icon: icon!, color: color)
-            startSketch()
-        case "polyline":
-            sketchCreationMode = AGSSketchCreationMode.polyline
-            kmlStyle = makeKMLStyleWithLineStyle(color: color)
-            startSketch()
-        case "polygon":
-            sketchCreationMode = AGSSketchCreationMode.polygon
-            kmlStyle = makeKMLStyleWithPolygonStyle(color: color)
-            kmlStyle.polygonStyle?.isFilled = true
-            kmlStyle.polygonStyle?.isOutlined = false
-            startSketch()
-        default:
-            break
-        }
-    }
-    
-    // Dismiss the popover.
-    func createAndSaveKMLSettingsViewControllerDidFinish(_ controller: CreateAndSaveKMLSettingsViewController) {
-        dismiss(animated: true)
     }
 }

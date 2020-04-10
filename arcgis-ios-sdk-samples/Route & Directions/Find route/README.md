@@ -18,7 +18,7 @@ For simplicity, the sample comes loaded with a start and end stop. You can click
 1. Create a `AGSRouteTask` using a URL to an online route service.
 2. Generate default `AGSRouteParameters` using `AGSRouteTask.defaultRouteParameters(completion:)`.
 3. Set `returnDirections` on the parameters to `true`.
-4. Add `AGSStop`s to the parameters `stops` collection for each destination.
+4. Create an `ASGStop` object for each destination and assign the stops to the parameters using `AGSRouteParameters.setStops(_:)`.
 5. Solve the route using `AGSRouteTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
 6. Iterate through the result's `AGSRoute`s. To display the route, create a graphic using the geometry from `_routeGeometry`. To display directions, use `route.getDirectionManeuvers()`, and for each `DirectionManeuver`, display `_.directionManeuvers`.
 

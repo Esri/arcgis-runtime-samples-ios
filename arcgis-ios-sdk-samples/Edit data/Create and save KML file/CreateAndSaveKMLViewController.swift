@@ -20,17 +20,19 @@ class CreateAndSaveKMLViewController: UIViewController {
     // Set the map.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = makeMap()
+            mapView.map = AGSMap(basemap: .darkGrayCanvasVector())
+            resetKML()
             let sketchEditor = AGSSketchEditor()
             mapView.sketchEditor = sketchEditor
         }
     }
     
-    @IBOutlet var addButton: UIBarButtonItem?
-    @IBOutlet var sketchDoneButton: UIBarButtonItem?
-    @IBOutlet var toolbar: UIToolbar?
-    @IBOutlet var saveButton: UIBarButtonItem?
+    @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet var sketchDoneButton: UIBarButtonItem!
+    @IBOutlet var toolbar: UIToolbar!
+    @IBOutlet var actionButtonItem: UIBarButtonItem!
     
+    // Prompt feature selection action sheet.
     @IBAction func addFeature() {
         let alertController = UIAlertController(title: "Select Feature", message: nil, preferredStyle: .actionSheet)
         let pointAction = UIAlertAction(title: "Point", style: .default) { (_) in
@@ -67,15 +69,15 @@ class CreateAndSaveKMLViewController: UIViewController {
 
     // Complete the current sketch and add it to the KML document.
     @IBAction func completeSketch() {
-        geometry = mapView.sketchEditor?.geometry
-        projectedGeometry = AGSGeometryEngine.projectGeometry(geometry!, to: spatialRef)
-        kmlGeometry = AGSKMLGeometry(geometry: projectedGeometry!, altitudeMode: .clampToGround)
+        let geometry = mapView.sketchEditor?.geometry
+        let projectedGeometry = AGSGeometryEngine.projectGeometry(geometry!, to: spatialRef)
+        let kmlGeometry = AGSKMLGeometry(geometry: projectedGeometry!, altitudeMode: .clampToGround)
         currentPlacemark = AGSKMLPlacemark(geometry: kmlGeometry!)
         currentPlacemark!.style = kmlStyle
         kmlDocument.addChildNode(currentPlacemark!)
         mapView.sketchEditor?.stop()
         changeButton()
-        saveButton?.isEnabled = true
+        actionButtonItem?.isEnabled = true
     }
     
     // Reset the KML.
@@ -83,8 +85,8 @@ class CreateAndSaveKMLViewController: UIViewController {
         mapView.map?.operationalLayers.removeAllObjects()
         currentPlacemark = nil
         kmlDocument = AGSKMLDocument()
-        kmlDataset = AGSKMLDataset(rootNode: kmlDocument)
-        kmlLayer = AGSKMLLayer(kmlDataset: kmlDataset!)
+        let kmlDataset = AGSKMLDataset(rootNode: kmlDocument)
+        kmlLayer = AGSKMLLayer(kmlDataset: kmlDataset)
         mapView.map?.operationalLayers.add(kmlLayer!)
     }
     
@@ -92,21 +94,10 @@ class CreateAndSaveKMLViewController: UIViewController {
     var kmlDocument = AGSKMLDocument()
     let spatialRef = AGSSpatialReference.wgs84()
     var kmlStyle = AGSKMLStyle()
-    var geometry: AGSGeometry?
-    var projectedGeometry: AGSGeometry?
-    var kmlGeometry: AGSKMLGeometry?
     var currentPlacemark: AGSKMLPlacemark?
-    var kmlDataset: AGSKMLDataset?
     var kmlLayer: AGSKMLLayer?
     
-    // Set the basemap and add a KML layer.
-    func makeMap() -> AGSMap {
-        let map = AGSMap(basemap: .darkGrayCanvasVector())
-        let kmlDataset = AGSKMLDataset(rootNode: kmlDocument)
-        map.operationalLayers.add(AGSKMLLayer(kmlDataset: kmlDataset))
-        return map
-    }
-    
+    // Prompt icon selection action sheet.
     func addPoint() {
         let alertController = UIAlertController(title: "Select Icon", message: "This icon will be used for the new feature", preferredStyle: .actionSheet)
         let icons: [(String, URL)] = [
@@ -133,6 +124,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    // Prompt color selection action sheet for polyline feature.
     func addPolyline() {
         let alertController = UIAlertController(title: "Select Color", message: "This color will be used for the polyline", preferredStyle: .actionSheet)
         let colors: [String: UIColor] = [
@@ -166,6 +158,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    // Prompt color selection action sheet for polygon feature.
     func addPolygon() {
         let alertController = UIAlertController(title: "Select Color", message: "This color will be used to fill the polygon", preferredStyle: .actionSheet)
         let colors: [String: UIColor] = [
@@ -254,7 +247,7 @@ class CreateAndSaveKMLViewController: UIViewController {
 // Handles saving a KMZ file.
 private class KMZProvider: UIActivityItemProvider {
     private let document: AGSKMLDocument
-    private var documentURL: URL?
+    private let documentURL: URL?
     private var temporaryDirectoryURL: URL?
     
     init(document: AGSKMLDocument) {

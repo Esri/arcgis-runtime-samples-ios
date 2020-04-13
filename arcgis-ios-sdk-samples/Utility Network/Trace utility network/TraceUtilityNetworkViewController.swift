@@ -17,7 +17,7 @@ import ArcGIS
 
 private let barrierAttributeValue = "barrier"
 
-class ConnectedTraceViewController: UIViewController, AGSGeoViewTouchDelegate {
+class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet weak var mapView: AGSMapView!
 
     @IBOutlet weak var traceNetworkButton: UIButton!

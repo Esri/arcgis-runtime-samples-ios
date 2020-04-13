@@ -751,7 +751,7 @@
 				<key>storyboardName</key>
 				<string>OverrideRenderer</string>
 				<key>descriptionText</key>
-				<string>The feature layer comes with a default renderer but you can also override this renderer using your custom renderer</string>
+				<string>Change the appearance of a feature layer with a renderer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

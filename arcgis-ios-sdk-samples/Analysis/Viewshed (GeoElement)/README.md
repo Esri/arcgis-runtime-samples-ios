@@ -1,6 +1,6 @@
 # Viewshed (GeoElement)
 
-Analyze the viewshed for an object (GeoElement) in a scene.
+Analyze the viewshed for an object (geo element) in a scene.
 
 ![Viewshed (GeoElement)](viewshed-geoelement.png)
 

@@ -23,7 +23,7 @@ Tap to set a destination for the vehicle (an  `AGSGeoElement`). The vehicle will
 
 ## Offline data
 
-[Model Marker Symbol Data](https://www.arcgis.com/home/item.html?id=07d62a792ab6496d9b772a24efea45d0) will be downloaded by the sample viewer automatically. Its local location is `<userhome>`/ArcGIS/Runtime/Data/3D/bradley_low_3ds/bradle.3ds
+[Model Marker Symbol Data](https://www.arcgis.com/home/item.html?id=07d62a792ab6496d9b772a24efea45d0) will be downloaded by the sample viewer automatically.
 
 ## About the data
 

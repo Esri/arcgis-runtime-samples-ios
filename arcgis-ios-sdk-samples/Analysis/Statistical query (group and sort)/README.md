@@ -17,7 +17,7 @@ Select a combination of fields and statistic types to include in the query. Choo
 
 1. Create an `AGSServiceFeatureTable` using the URL of a feature service and load the table.
 2. Create `AGSStatisticDefinition` objects and add them to the `AGSStatisticsQueryParameters`.
-3. To have the results grouped by fields, add the field names to the query parameters' `groupByFieldNames` collection.
+3. To have the results grouped by fields, add the field names to the query parameters' `groupByFieldNames` array.
 4. To have the results ordered by fields, create `AGSOrderBy`s, specifying the field name and `AGSSortOrder`. Pass these `AGSOrderBy`s to the parameters' `orderByFields` collection.
 5. To execute the query, call `AGSFeatureTable.queryStatistics(with:completion:)`.
 6. Get the `AGSStatisticQueryResult`. From this, you can use `AGSStatisticsQueryResult.statisticRecordEnumerator()` to loop through and display.

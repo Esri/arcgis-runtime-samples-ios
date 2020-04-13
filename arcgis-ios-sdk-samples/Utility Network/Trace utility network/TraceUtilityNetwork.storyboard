@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cvY-7M-ZXh">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cvY-7M-ZXh">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Connected Trace View Controller-->
+        <!--Trace Utility Network View Controller-->
         <scene sceneID="56O-sh-gd9">
             <objects>
-                <viewController id="cvY-7M-ZXh" customClass="ConnectedTraceViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cvY-7M-ZXh" customClass="TraceUtilityNetworkViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BT5-Ci-f7L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,7 +37,7 @@
                                 <rect key="frame" x="0.0" y="808" width="414" height="54"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BaP-DJ-keO" userLabel="Add Stack View">
-                                        <rect key="frame" x="12" y="12" width="154.5" height="30"/>
+                                        <rect key="frame" x="12" y="12" width="166.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Add:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xI1-bF-iGA">
                                                 <rect key="frame" x="0.0" y="0.0" width="35.5" height="30"/>
@@ -48,7 +46,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LFh-CD-mpZ">
-                                                <rect key="frame" x="43.5" y="0.0" width="111" height="31"/>
+                                                <rect key="frame" x="43.5" y="0.0" width="123" height="31"/>
                                                 <segments>
                                                     <segment title="Start"/>
                                                     <segment title="Barrier"/>
@@ -60,18 +58,18 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyi-Nk-SFh">
-                                        <rect key="frame" x="174.5" y="12" width="73.5" height="30"/>
+                                        <rect key="frame" x="186.5" y="12" width="70.5" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRW-E4-TvR">
-                                        <rect key="frame" x="256" y="12" width="69" height="30"/>
+                                        <rect key="frame" x="265" y="12" width="64.5" height="30"/>
                                         <state key="normal" title="Reset"/>
                                         <connections>
                                             <action selector="reset:" destination="cvY-7M-ZXh" eventType="touchUpInside" id="aQ9-gB-ZJx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03b-u0-sHi">
-                                        <rect key="frame" x="333" y="12" width="69" height="30"/>
+                                        <rect key="frame" x="337.5" y="12" width="64.5" height="30"/>
                                         <state key="normal" title="Trace"/>
                                         <connections>
                                             <action selector="traceNetwork:" destination="cvY-7M-ZXh" eventType="touchUpInside" id="5WJ-vK-XRE"/>

@@ -18,7 +18,7 @@ The taxi will be highlighted when it is visible. You can change the observer hei
 ## How it works
 
 1. Instantiate an `AGSAnalysisOverlay` and add it to the `AGSSceneView`'s analysis overlays collection.
-2. Instantiate an `AGSGeoElementLineOfSight`, passing in observer and target `AGSGeoElement`s (features or graphics). Add the line of sight to the analysis overlay's analyses collection.
+2. Instantiate an `AGSGeoElementLineOfSight`, passing in an `AGSGeoElement` (feature or graphic) for both the observer and the target. Add the line of sight to the analysis overlay's `analyses` array.
 3. To get the target visibility when it changes, observe the target visibility changing on the `AGSGeoElementLineOfSight` instance.
 
 ## Relevant API

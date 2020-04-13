@@ -62,9 +62,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="bEb-3H-NMg"/>
                     <connections>
+                        <outlet property="actionButtonItem" destination="MuI-Qf-AEu" id="VPL-fJ-nAg"/>
                         <outlet property="addButton" destination="V8L-U8-tQY" id="qNU-S6-lGg"/>
                         <outlet property="mapView" destination="akX-0L-bf0" id="TP0-P6-GWa"/>
-                        <outlet property="saveButton" destination="MuI-Qf-AEu" id="tuI-h7-wR2"/>
+                        <outlet property="resetButtonItem" destination="VbR-tF-dZd" id="JZg-do-fiK"/>
                         <outlet property="sketchDoneButton" destination="4d8-3n-68D" id="NeE-0V-sP9"/>
                         <outlet property="toolbar" destination="WEi-Qs-afR" id="fUy-QB-yVq"/>
                     </connections>

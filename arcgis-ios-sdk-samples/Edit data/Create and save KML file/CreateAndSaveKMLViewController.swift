@@ -31,6 +31,7 @@ class CreateAndSaveKMLViewController: UIViewController {
     @IBOutlet var sketchDoneButton: UIBarButtonItem!
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var actionButtonItem: UIBarButtonItem!
+    @IBOutlet var resetButtonItem: UIBarButtonItem!
     
     // Prompt feature selection action sheet.
     @IBAction func addFeature() {
@@ -76,7 +77,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         currentPlacemark!.style = kmlStyle
         kmlDocument.addChildNode(currentPlacemark!)
         mapView.sketchEditor?.stop()
-        changeButton()
+        updateToolbarItems()
         actionButtonItem?.isEnabled = true
     }
     
@@ -214,28 +215,32 @@ class CreateAndSaveKMLViewController: UIViewController {
         return kmlStyle
     }
     
-    // Change the bottom toolbar button.
-    func changeButton() {
-        if (toolbar?.items?.contains(addButton!))! {
-            toolbar?.items?.remove(at: 2)
-            toolbar?.items?.insert(sketchDoneButton!, at: 2)
-        } else {
-            toolbar?.items?.remove(at: 2)
-            toolbar?.items?.insert(addButton!, at: 2)
+    // Update the bottom toolbar button.
+    func updateToolbarItems() {
+        guard let sketchEditor = mapView.sketchEditor else {
+            return
         }
+        let middleButtonItem: UIBarButtonItem
+        if sketchEditor.isStarted {
+            middleButtonItem = sketchDoneButton
+        } else {
+            middleButtonItem = addButton
+        }
+        let flexibleSpace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let flexibleSpace2 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.items = [resetButtonItem, flexibleSpace1, middleButtonItem, flexibleSpace2, actionButtonItem]
     }
     
     // Start a new sketch mode.
     func startSketch(creationMode: AGSSketchCreationMode) {
-        changeButton()
-        mapView.sketchEditor?.stop()
         mapView.sketchEditor?.start(with: creationMode)
+        updateToolbarItems()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        toolbar?.items?.remove(at: 3)
+        updateToolbarItems()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "CreateAndSaveKMLViewController",
@@ -247,7 +252,6 @@ class CreateAndSaveKMLViewController: UIViewController {
 // Handles saving a KMZ file.
 private class KMZProvider: UIActivityItemProvider {
     private let document: AGSKMLDocument
-    private let documentURL: URL?
     private var temporaryDirectoryURL: URL?
     
     init(document: AGSKMLDocument) {
@@ -265,7 +269,7 @@ private class KMZProvider: UIActivityItemProvider {
             appropriateFor: Bundle.main.bundleURL,
             create: true
         )
-        documentURL = temporaryDirectoryURL?.appendingPathComponent("\(document.name).kmz")
+        let documentURL = temporaryDirectoryURL?.appendingPathComponent("\(document.name).kmz")
         let semaphore = DispatchSemaphore(value: 0)
         document.save(toFileURL: documentURL!) { _ in
             semaphore.signal()

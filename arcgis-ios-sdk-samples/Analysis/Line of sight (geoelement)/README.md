@@ -27,7 +27,7 @@ The taxi will be highlighted when it is visible. You can change the observer hei
 
 * AGSAnalysisOverlay
 * AGSGeoElementLineOfSight
-* AGSLineOfSight.TargetVisibility
+* AGSLineOfSight.targetVisibility
 
 ## Offline data
 

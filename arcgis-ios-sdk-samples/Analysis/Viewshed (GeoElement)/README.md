@@ -34,7 +34,7 @@ This sample shows a [Johannesburg, South Africa Scene](https://www.arcgis.com/ho
 * AGSAnalysisOverlay
 * AGSGeodeticDistanceResult 
 * AGSGeoElementViewshed
-* AGSGeometryEngine.DistanceGeodetic (used to animate the vehicle)
+* class AGSGeometryEngine.geodeticDistanceBetweenPoint1(_:point2:distanceUnit:azimuthUnit:curveType:) (used to animate the vehicle)
 * AGSModelSceneSymbol
 * AGSOrbitGeoElementCameraController
 

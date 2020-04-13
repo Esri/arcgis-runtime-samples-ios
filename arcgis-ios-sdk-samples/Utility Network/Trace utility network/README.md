@@ -1,48 +1,57 @@
-# Find connected features in utility networks
+# Trace utility network
 
-Find all features connected to a set of starting points in a utility network.
+Discover connected features in a utility network using connected, subnetwork, upstream, and downstream traces.
 
-![](image1.png)
+![Image of trace utility network](trace-utility-network.jpg)
 
 ## Use case
 
-This is useful to visualize and validate the network topology of a utility network for quality assurance. 
+You can use a trace to visualize and validate the network topology of a utility network for quality assurance. Subnetwork traces are used for validating whether subnetworks, such as circuits or zones, are defined or edited appropriately.
 
 ## How to use the sample
 
-To add a starting point, select 'Start' and tap on one or more features. To add a barrier, select 'Barrier' and tap on one or more features. Depending on the type of feature, you may be prompted to select a terminal or the distance from the tapped location will be computed. Tap 'Trace' to highlight all features connected to the specified starting locations and not positioned beyond the barriers. Tap 'Reset' to clear parameters and start over.
+Tap on one or more features while "Start" or "Barrier" is selected. When a junction feature is identified, you may be prompted to select a terminal. When an edge feature is identified, the distance from the tapped location to the beginning of the edge feature will be computed. Tap "Type" to select the type of trace using the action sheet. Tap "Trace" to initiate a trace on the network. Tap "Reset" to clear the trace parameters and start over.
 
 ## How it works
 
 1. Create an `AGSMapView` and listen for `didTap` events on the `AGSGeoViewTouchDelegate`.
 2. Create an `AGSMap` that contains `AGSFeatureLayer`(s) that are part of a utility network.
 3. Create and load an `AGSUtilityNetwork` with the same feature service URL and map.
-4. Add an `AGSGraphicsOverlay` with symbology that distinguishes starting points from barriers.
-5. Identify tapped features on the map and add an `AGSGraphic` that represents its purpose (starting point or barrier) at the location of each identified feature.
-6. Determine the type of the identified feature using `AGSUtilityNetwork.definition.networkSource` passing its table name.
-7. If the type is a junction, display a terminal picker when more than one terminal is found and create an `AGSUtilityElement` using the selected terminal, or the single terminal if there is only one.
-8. If the type is an edge, create a `AGSUtilityElement` from the identified feature and compute how far along the edge the user tapped using `AGSGeometryEngine.fractionAlongLine()`.
-9. Run `AGSUtilityNetwork.trace()` with the specified starting points and (optionally) barriers.
-10. Group the `AGSUtilityElementTraceResult.elements` by their `networkSource.name`.
-11. For every `AGSFeatureLayer` in this map with trace result elements, select features by converting `AGSUtilityElement`(s) to `AGSArcGISFeature`(s) using `AGSUtilityNetwork.featuresForElements()`
+4. Add an `AGSGraphicsOverlay` with symbology that distinguishes starting locations from barriers.
+5. Identify tapped features on the map and add an `AGSGraphic` that represents its purpose (starting point or barrier) at the tapped location.
+6. Create an `AGSUtilityElement` for the identified feature.
+7. Determine the type of the identified feature using `AGSUtilityNetwork.definition.networkSource.sourceType` passing its table name.
+8. If the type is a junction, display a terminal picker when more than one terminal is found and create an `AGSUtilityElement` using the selected terminal, or the single terminal if there is only one.
+9. If the type is an edge, create an `AGSUtilityElement` from the identified feature and compute how far along the edge the user tapped using `class AGSGeometryEngine.fraction(alongLine:to:tolerance:)`.
+10. Add this `AGSUtilityElement` to a collection of starting locations or barriers.
+11. Create `AGSUtilityTraceParameters` with the selected trace type along with the collected starting locations and barriers (if applicable).
+12. Set the `AGSUtilityTraceConfiguration` with the utility tier's `traceConfiguration` property.
+13. Run `AGSUtilityNetwork.trace(with:completion:)` with the specified starting points and (optionally) barriers.
+14. Group the `AGSUtilityElementTraceResult.elements` by their `networkSource.name`.
+15. For every `AGSFeatureLayer` in this map with trace result elements, select features by converting `AGSUtilityElement`(s) to `AGSArcGISFeature`(s) using `AGSUtilityNetwork.features(for:completion:)`
 
 ## Relevant API
 
-* AGSUtilityNetwork
-* AGSUtilityTraceParameters
-* AGSUtilityTraceResult
+* class AGSGeometryEngine.fraction(alongLine:to:tolerance:)
+* AGSUtilityAssetType
+* UtilityDomainNetwork
+* AGSUtilityElement
 * AGSUtilityElementTraceResult
+* AGSUtilityNetwork
 * AGSUtilityNetworkDefinition
 * AGSUtilityNetworkSource
-* AGSUtilityAssetType
 * AGSUtilityTerminal
-* AGSUtilityElement
-* AGSGeometryEngine.fractionAlongLine()
+* UtilityTier
+* UtilityTraceConfiguration
+* AGSUtilityTraceParameters
+* AGSUtilityTraceResult
+* UtilityTraceType
+* UtilityTraversability
 
 ## About the data
 
-The sample uses a dark vector basemap. It includes a subset of feature layers from a feature service that contains the same utility network used to run the connected trace.
+The [Naperville electrical](https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer) network feature service, hosted on ArcGIS Online, contains a utility network used to run the subnetwork-based trace shown in this sample.
 
 ## Tags
 
-connected trace, utility network, network analysis
+condition barriers, downstream trace, network analysis, subnetwork trace, trace configuration, traversability, upstream trace, utility network, validate consistency

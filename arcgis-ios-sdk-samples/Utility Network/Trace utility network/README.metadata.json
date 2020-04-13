@@ -1,9 +1,9 @@
 {
     "category": "Utility Network",
-    "description": "Find all features connected to a set of starting points in a utility network.",
+    "description": "Discover connected features in a utility network using connected, subnetwork, upstream, and downstream traces.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "trace-utility-network.png"
     ],
     "keywords": [
         "connected trace",
@@ -20,8 +20,7 @@
         "AGSUtilityElement",
         "AGSGeometryEngine.fractionAlongLine()"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSUtilityNetwork",
         "AGSUtilityTraceParameters",
@@ -35,7 +34,7 @@
         "AGSGeometryEngine.fractionAlongLine()"
     ],
     "snippets": [
-        "ConnectedTraceViewController.swift"
+        "TraceUtilityNetworkViewController.swift"
     ],
-    "title": "Find connected features in utility networks"
+    "title": "Trace utility network"
 }

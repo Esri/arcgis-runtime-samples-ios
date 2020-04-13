@@ -20,8 +20,8 @@ private let barrierAttributeValue = "barrier"
 class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet weak var mapView: AGSMapView!
 
-    @IBOutlet weak var traceNetworkButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var traceNetworkButton: UIBarButtonItem!
+    @IBOutlet weak var resetButton: UIBarButtonItem!
     @IBOutlet weak var modeLabel: UILabel!
     @IBOutlet weak var modeControl: UISegmentedControl!
     @IBOutlet weak var statusLabel: UILabel!

@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,68 +29,69 @@
                                 <edgeInsets key="layoutMargins" top="12" left="10" bottom="12" right="10"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzi-IO-kfE" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="88.5" width="414" height="719.5"/>
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="724.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b14-dj-c7u">
-                                <rect key="frame" x="0.0" y="808" width="414" height="54"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BaP-DJ-keO" userLabel="Add Stack View">
-                                        <rect key="frame" x="12" y="12" width="166.5" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Add:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xI1-bF-iGA">
-                                                <rect key="frame" x="0.0" y="0.0" width="35.5" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LFh-CD-mpZ">
-                                                <rect key="frame" x="43.5" y="0.0" width="123" height="31"/>
-                                                <segments>
-                                                    <segment title="Start"/>
-                                                    <segment title="Barrier"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="setMode:" destination="cvY-7M-ZXh" eventType="valueChanged" id="NrV-rc-Fb3"/>
-                                                </connections>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyi-Nk-SFh">
-                                        <rect key="frame" x="186.5" y="12" width="70.5" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRW-E4-TvR">
-                                        <rect key="frame" x="265" y="12" width="64.5" height="30"/>
-                                        <state key="normal" title="Reset"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egb-ry-ghj">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" id="qxH-5I-OBU">
+                                        <view key="customView" contentMode="scaleToFill" id="3Vv-66-5Uw">
+                                            <rect key="frame" x="20" y="10.5" width="65" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRF-CT-JpN">
+                                                    <rect key="frame" x="8" y="6" width="36" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="K2b-gz-Fzl"/>
+                                    <barButtonItem style="plain" id="O6M-wC-IcN">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="7eW-p7-t3C">
+                                            <rect key="frame" x="89" y="10.5" width="123" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Start"/>
+                                                <segment title="Barrier"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="setMode:" destination="cvY-7M-ZXh" eventType="valueChanged" id="vMB-UY-qFz"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9Cx-xp-lIZ"/>
+                                    <barButtonItem title="Type" id="eUz-FR-T3h"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Qg8-II-na4"/>
+                                    <barButtonItem title="Reset" id="gUk-vy-Tzv">
                                         <connections>
-                                            <action selector="reset:" destination="cvY-7M-ZXh" eventType="touchUpInside" id="aQ9-gB-ZJx"/>
+                                            <action selector="reset:" destination="cvY-7M-ZXh" id="gJx-qS-aDx"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03b-u0-sHi">
-                                        <rect key="frame" x="337.5" y="12" width="64.5" height="30"/>
-                                        <state key="normal" title="Trace"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="pRS-te-grJ"/>
+                                    <barButtonItem title="Trace" id="hPE-6q-RS2">
                                         <connections>
-                                            <action selector="traceNetwork:" destination="cvY-7M-ZXh" eventType="touchUpInside" id="5WJ-vK-XRE"/>
+                                            <action selector="traceNetwork:" destination="cvY-7M-ZXh" id="Kt0-Kv-8Os"/>
                                         </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="03b-u0-sHi" firstAttribute="width" secondItem="cRW-E4-TvR" secondAttribute="width" id="1Oa-le-5IG"/>
-                                </constraints>
-                                <edgeInsets key="layoutMargins" top="12" left="12" bottom="12" right="12"/>
-                            </stackView>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pzi-IO-kfE" firstAttribute="top" secondItem="tAH-tt-W9l" secondAttribute="bottom" id="0Mj-Fl-txx"/>
                             <constraint firstItem="tAH-tt-W9l" firstAttribute="top" secondItem="NjT-hr-oyQ" secondAttribute="top" id="5pH-bI-rIv"/>
-                            <constraint firstItem="b14-dj-c7u" firstAttribute="top" secondItem="pzi-IO-kfE" secondAttribute="bottom" id="Oh4-xd-J6w"/>
-                            <constraint firstItem="b14-dj-c7u" firstAttribute="leading" secondItem="BT5-Ci-f7L" secondAttribute="leading" id="PFI-pk-qw7"/>
-                            <constraint firstItem="NjT-hr-oyQ" firstAttribute="bottom" secondItem="b14-dj-c7u" secondAttribute="bottom" id="S89-ea-ekl"/>
-                            <constraint firstAttribute="trailing" secondItem="b14-dj-c7u" secondAttribute="trailing" id="ZtN-ZB-1TU"/>
+                            <constraint firstItem="Egb-ry-ghj" firstAttribute="leading" secondItem="BT5-Ci-f7L" secondAttribute="leading" id="KDi-UL-ezP"/>
+                            <constraint firstItem="Egb-ry-ghj" firstAttribute="bottom" secondItem="NjT-hr-oyQ" secondAttribute="bottom" id="VaC-k1-529"/>
+                            <constraint firstItem="Egb-ry-ghj" firstAttribute="top" secondItem="pzi-IO-kfE" secondAttribute="bottom" id="YSt-dH-pq8"/>
                             <constraint firstAttribute="trailing" secondItem="pzi-IO-kfE" secondAttribute="trailing" id="drC-u3-Sru"/>
                             <constraint firstItem="tAH-tt-W9l" firstAttribute="trailing" secondItem="BT5-Ci-f7L" secondAttribute="trailing" id="oHd-sy-Pdn"/>
+                            <constraint firstItem="Egb-ry-ghj" firstAttribute="trailing" secondItem="BT5-Ci-f7L" secondAttribute="trailing" id="pPC-Mr-Mfs"/>
                             <constraint firstItem="tAH-tt-W9l" firstAttribute="leading" secondItem="BT5-Ci-f7L" secondAttribute="leading" id="rnW-Rp-hTk"/>
                             <constraint firstItem="pzi-IO-kfE" firstAttribute="leading" secondItem="BT5-Ci-f7L" secondAttribute="leading" id="tBH-Ll-mm1"/>
                         </constraints>
@@ -99,11 +99,11 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="pzi-IO-kfE" id="3PV-ce-qwm"/>
-                        <outlet property="modeControl" destination="LFh-CD-mpZ" id="oWj-wb-2yh"/>
-                        <outlet property="modeLabel" destination="xI1-bF-iGA" id="niW-OL-of6"/>
-                        <outlet property="resetButton" destination="cRW-E4-TvR" id="qXa-FR-GVe"/>
-                        <outlet property="statusLabel" destination="0tx-3F-CSy" id="ZFg-mS-t1E"/>
-                        <outlet property="traceNetworkButton" destination="03b-u0-sHi" id="2mO-CQ-uPZ"/>
+                        <outlet property="modeControl" destination="7eW-p7-t3C" id="YOB-NK-wlX"/>
+                        <outlet property="modeLabel" destination="nRF-CT-JpN" id="s9O-OD-Og2"/>
+                        <outlet property="resetButton" destination="gUk-vy-Tzv" id="b1t-9u-0sk"/>
+                        <outlet property="statusLabel" destination="0tx-3F-CSy" id="Hgr-HW-mVI"/>
+                        <outlet property="traceNetworkButton" destination="hPE-6q-RS2" id="4Lz-pE-T03"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBC-qj-a7U" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -795,7 +795,7 @@
 				<key>storyboardName</key>
 				<string>AddDeleteRelatedFeatures</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to add or delete related features to an origin feature</string>
+				<string>Add or delete related features on an origin feature.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

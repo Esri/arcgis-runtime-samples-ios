@@ -1159,7 +1159,7 @@
 				<key>storyboardName</key>
 				<string>FindRoute</string>
 				<key>descriptionText</key>
-				<string>The sample comes loaded with start and end stops. Tap on the Route button to solve for route between these stops. On completion the route is displayed on the map and the directions button is enabled. Tap on the button to see the list of directions</string>
+				<string>Display directions for a route between two points.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1167,7 +1167,7 @@
 				<key>storyboardName</key>
 				<string>RouteAroundBarriers</string>
 				<key>descriptionText</key>
-				<string>Add stops and barriers to the map, set the route parameters and tap route. A route will be shown connecting the stops with a list of directions</string>
+				<string>Find a route that reaches all stops without crossing any barriers.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1175,7 +1175,7 @@
 				<key>storyboardName</key>
 				<string>OfflineRouting</string>
 				<key>descriptionText</key>
-				<string>Tap on the map to add the first stop. Add additional stops to display the route. To route &apos;on the fly&apos; tap, hold and move to show the route dynamically.</string>
+				<string>Solve a route on-the-fly using offline data.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanDiegoNetworkData</string>
@@ -1184,11 +1184,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Find service area interactive</string>
+				<string>Find service area (interactive)</string>
 				<key>storyboardName</key>
 				<string>FindServiceAreaInteractive</string>
 				<key>descriptionText</key>
-				<string>This samples shows how to find service areas around a point</string>
+				<string>Find the service area within a network from a given point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

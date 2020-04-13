@@ -1,19 +1,42 @@
 # Find service area interactive
 
-This sample demonstrates how to find services areas around a point. A service area shows locations that can be reached from a facility based off a certain impedance [such as travel time]. Barriers can also be added which can affect the impedance by not letting traffic through or adding the time is takes to pass that barrier.
+Find the service area within a network from a given point.
+
+![Find service area interactive sample](find-service-area-interactive.png)
+
+## Use case
+
+A service area shows locations that can be reached from a facility based off a certain impedance, such as travel time or distance. Barriers can increase impedance by either adding to the time it takes to pass through the barrier or by altogether preventing passage.
+
+You might calculate the region around a hospital in which ambulances can service in 30 min or less.
 
 ## How to use the sample
 
-Use the segmented control in the toolbar to switch between `Facilities` and `Barriers`. To add a facility tap on a location on map and a marker will be added. For barrier, tap on the map to draw buffered polygon. Tap on the settings button item to change time breaks. Hit the `Service Area` button to get the service area for added facilities. Tap on the clear button to start over.
-
-![](image1.png)
+In order to find any service areas at least one facility needs to be added to the map view.
+* To add a facility, tap the facility button, then tap anywhere on the map.
+* To add a barrier, tap the barrier button, and tap multiple locations on map. Tap the barrier button again to finish drawing barrier. Tapping any other button will also stop the barrier from drawing.
+* To show service areas around facilities that were added, tap show service areas button. 
+* The reset button clears all graphics and resets the service area task.
 
 ## How it works
 
-The sample uses the `defaultRouteParameters(completion:)` method on `AGSServiceAreaTask` to get the default parameters from the service. Barriers are created using the initializer `init(polygon:)` on `AGSPolygonBarrier`. Sets the facilities and barriers in the parameters. Then uses the `solveServiceArea(with:completion:)` method to solve for the route. Once the result is in, the sample displays the service areas for individual facilities using `resultPolygons(atFacilityIndex:)` method on `AGSServiceAreaResult`.
+1. Create a new `AGSServiceAreaTask` from a network service.
+2. Create default `AGSServiceAreaParameters` from the service area task.
+3. Set the `AGSPolygonBarrier` to `polygon`.
+4. Add a `AGSServiceAreaFacility` to the parameters.
+5. Get the `AGSServiceAreaResult` by solving the service area task using the parameters.
+6. Get any `AGSServiceAreaPolygon`s that were returned by using `AGSServiceAreaResult.resultPolygons(atFacilityIndex:)`.
+7. Display the service area polygons as graphics in an `AGSGraphicsOverlay` on the `mapView`.
 
+## Relevant API
 
+* AGSPolygonBarrier
+* AGSServiceAreaFacility
+* AGSServiceAreaParameters
+* AGSServiceAreaPolygon
+* AGSServiceAreaResult
+* AGSServiceAreaTask
 
+## Tags
 
-
-
+barriers, facilities, impedance, logistics, routing

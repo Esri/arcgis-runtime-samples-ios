@@ -2,7 +2,7 @@
 
 Find routes from several locations to the respective closest facility.
 
-![Screenshot of Find Closest Facility to Multiple Incidents Service sample](image1.png)
+![Screenshot of Find Closest Facility to Multiple Incidents Service sample](find-closest-facility-service.png)
 
 ## Use case
 

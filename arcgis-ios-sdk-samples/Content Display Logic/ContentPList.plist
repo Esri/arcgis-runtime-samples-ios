@@ -1259,7 +1259,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedGeoElement</string>
 				<key>descriptionText</key>
-				<string>Analyze the viewshed for an object (GeoElement) in a scene.</string>
+				<string>Analyze the viewshed for an object (geo element) in a scene.</string>
 				<key>dependency</key>
 				<array>
 					<string>Bradley3DModel</string>

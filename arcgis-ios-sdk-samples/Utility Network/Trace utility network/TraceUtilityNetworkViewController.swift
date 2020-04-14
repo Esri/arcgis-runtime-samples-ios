@@ -22,18 +22,33 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
 
     @IBOutlet weak var traceNetworkButton: UIBarButtonItem!
     @IBOutlet weak var resetButton: UIBarButtonItem!
+    @IBOutlet weak var typeButton: UIBarButtonItem!
     @IBOutlet weak var modeLabel: UILabel!
     @IBOutlet weak var modeControl: UISegmentedControl!
     @IBOutlet weak var statusLabel: UILabel!
     
     private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    
+    // Create electrical distribution line layer ./115 and electrical device layer ./100.
     private var layers: [AGSFeatureLayer] {
         return [115, 100].map {
             let featureTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("\($0)"))
             let layer = AGSFeatureLayer(featureTable: featureTable)
             if $0 == 115 {
-                let lineColor = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
-                layer.renderer = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: lineColor, width: 3))
+                // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
+                let mediumVoltageValue = AGSUniqueValue(description: "N/A",
+                                                        label: "Medium voltage",
+                                                        symbol: AGSSimpleLineSymbol(style: .solid, color: .cyan, width: 3),
+                                                        values: [5])
+                let lowVoltageValue = AGSUniqueValue(description: "N/A",
+                                                     label: "Low voltage",
+                                                     symbol: AGSSimpleLineSymbol(style: .dash, color: UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1), width: 3),
+                                                     values: [3])
+                layer.renderer = AGSUniqueValueRenderer(fieldNames: ["ASSETGROUP"],
+                                                        uniqueValues: [mediumVoltageValue, lowVoltageValue],
+                                                        defaultLabel: "",
+                                                        defaultSymbol: AGSSimpleLineSymbol()
+                )
             }
             return layer
         }
@@ -41,6 +56,8 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
 
     private let map: AGSMap
     private let utilityNetwork: AGSUtilityNetwork
+    private let utilityTier: AGSUtilityTier?
+    private var traceType = AGSUtilityTraceType.connected
     private var traceParameters = AGSUtilityTraceParameters(traceType: .connected, startingLocations: [])
 
     private let parametersOverlay: AGSGraphicsOverlay = {
@@ -70,6 +87,11 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
 
         // Create the utility network, referencing the map.
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
+        
+        // Get the utility tier used for traces in this network.
+        // For this data set, the "Medium Voltage Radial" tier from the "ElectricDistribution" domain network is used.
+        let domainNetwork = utilityNetwork.definition.domainNetwork(withDomainNetworkName: "ElectricDistribution")
+        utilityTier = domainNetwork?.tier(withName: "Medium Voltage Radial")
 
         super.init(coder: aDecoder)
         
@@ -82,7 +104,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ConnectedTraceViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TraceUtilityNetworkViewController"]
         
         // Initialize the UI
         setUIState()
@@ -91,18 +113,21 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         mapView.map = map
         mapView.graphicsOverlays.add(parametersOverlay)
         mapView.touchDelegate = self
+        // Set the selection color for features in the map view.
+        mapView.selectionProperties = AGSSelectionProperties(color: .yellow)
         
         // Load the Utility Network to be ready for us to run a trace against it.
         setStatus(message: "Loading Utility Network…")
         utilityNetwork.load { [weak self] error in
+            guard let self = self else { return }
             if let error = error {
-                self?.setStatus(message: "Loading Utility Network Failed")
-                self?.presentAlert(error: error)
+                self.setStatus(message: "Loading Utility Network failed")
+                self.presentAlert(error: error)
             } else {
                 // Update the UI to allow network traces to be run.
-                self?.setUIState()
+                self.setUIState()
                 
-                self?.setInstructionMessage()
+                self.setInstructionMessage()
             }
         }
     }
@@ -117,20 +142,26 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
 
         setStatus(message: "Identifying trace locations…")
         identifyAction = mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10, returnPopupsOnly: false) { [weak self] (result, error) in
+            guard let self = self else { return }
             if let error = error {
-                self?.setStatus(message: "Error identifying trace locations.")
-                self?.presentAlert(error: error)
+                self.setStatus(message: "Error identifying trace locations.")
+                self.presentAlert(error: error)
                 return
             }
-            
-            guard let self = self else { return }
             
             guard let feature = result?.first?.geoElements.first as? AGSArcGISFeature else { return }
 
             self.addStartElementOrBarrier(for: feature, at: mapPoint)
         }
     }
-
+    
+    
+    /// Based on the selection mode, the tapped utility element is added either to the starting locations or barriers for the trace parameters.
+    /// An appropriate graphic is created at the tapped location to mark the element as either a starting location or barrier.
+    ///
+    /// - Parameters:
+    ///   - feature: The geoelement retrieved as an AGSArcGISFeature.
+    ///   - location: The AGSPoint used to identify utility elements in the utility network.
     private func addStartElementOrBarrier(for feature: AGSArcGISFeature, at location: AGSPoint) {
         guard let featureTable = feature.featureTable as? AGSArcGISFeatureTable,
             let networkSource = utilityNetwork.definition.networkSource(withName: featureTable.tableName) else {
@@ -165,10 +196,10 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
                 element.fractionAlongEdge = AGSGeometryEngine.fraction(alongLine: line, to: location, tolerance: -1)
                 
                 add(element: element, for: location, mode: currentMode)
-                setStatus(message: "fractionAlongEdge: \(element.fractionAlongEdge)")
+                setStatus(message: String(format: "fractionAlongEdge: %.3f", element.fractionAlongEdge))
             }
         @unknown default:
-            presentAlert(message: "Unexpected Network Source Type!")
+            presentAlert(message: "Unexpected Network Source type!")
         }
     }
     
@@ -189,7 +220,12 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     // MARK: Perform Trace
     @IBAction func traceNetwork(_ sender: Any) {
         SVProgressHUD.show(withStatus: "Running connected trace…")
-        let parameters = traceParameters
+        let parameters = AGSUtilityTraceParameters(traceType: traceType, startingLocations: traceParameters.startingLocations)
+        traceParameters.barriers.forEach { barrier in
+            parameters.barriers.append(barrier)
+        }
+        // Set the trace configuration using the tier from the utility domain network.
+        parameters.traceConfiguration = utilityTier?.traceConfiguration
         
         utilityNetwork.trace(with: parameters) { [weak self] (traceResult, error) in
             if let error = error {
@@ -210,7 +246,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             
             self.clearSelection()
 
-            SVProgressHUD.show(withStatus: "Trace Completed. Selecting features…")
+            SVProgressHUD.show(withStatus: "Trace completed. Selecting features…")
 
             let groupedElements = Dictionary(grouping: elementTraceResult.elements) { $0.networkSource.name }
             
@@ -290,7 +326,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             case .addingStartLocation:
                 return "starting point"
             case .addingBarriers:
-                return barrierAttributeValue
+                return "barrier"
             }
         }
         
@@ -314,6 +350,29 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         if let mode = InteractionMode(rawValue: modePickerControl.selectedSegmentIndex) {
             currentMode = mode
         }
+    }
+    
+    // MARK: Set trace type
+    @IBAction func setTraceType(_ sender: Any) {
+        let alertController = UIAlertController(title: "Select trace type", message: nil, preferredStyle: .actionSheet)
+        let types = [
+            ("Connected", AGSUtilityTraceType.connected),
+            ("Downstream", AGSUtilityTraceType.downstream),
+            ("Upstream", AGSUtilityTraceType.upstream),
+            ("Isolation", AGSUtilityTraceType.isolation),
+            ("Subnetwork", AGSUtilityTraceType.subnetwork)
+        ]
+        types.forEach { type in
+            let action = UIAlertAction(title: type.0, style: .default) { [unowned self] _ in
+                self.traceType = type.1
+                self.setStatus(message: "Trace type \(type.0) selected.")
+            }
+            alertController.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.popoverPresentationController?.barButtonItem = typeButton
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: Reset trace

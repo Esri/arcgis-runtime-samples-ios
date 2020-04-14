@@ -19,7 +19,7 @@ Run the sample and view the military symbols on the map.
 3. Create an instance of `AGSGraphicsOverlay`.
 4. Set the dictionary renderer to the graphics overlay.
 5. Parse through the local XML file creating a map of key/value pairs for each block of attributes.
-6. Create a `AGSGraphic` for each attribute.
+6. Create an instance of `AGSGraphic` for each attribute.
 7. Use the `_wkid` key to get the geometry's spatial reference.
 8. Use the `_control_points` key to get the geometry's shape.
 9. Add the graphic to the graphics overlay.

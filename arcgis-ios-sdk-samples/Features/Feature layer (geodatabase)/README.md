@@ -28,8 +28,6 @@ Pan and zoom around the map. View the data loaded from the geodatabase.
 
 ## Offline data
 
-Read more about how to set up the sample's offline data [here](http://links.esri.com/ArcGISRuntimeQtSamples).
-
 This sample uses the [Los Angeles Vector Tile Package](https://www.arcgis.com/home/item.html?id=d9f8ce6f6ac84b90a665a861d71a5d0a) and [Los Angeles Trailheads geodatabase](https://www.arcgis.com/home/item.html?id=2b0f9e17105847809dfeb04e3cad69e0). Both are downloaded from ArcGIS Online automatically.
 
 ## About the data

@@ -194,23 +194,30 @@ class MapSelectionTableViewController: UITableViewController {
             offlineTask = AGSOfflineMapTask(onlineMap: onlineMap)
         }
         
-        guard let task = offlineTask else { return }
-        
+        let task = offlineTask!
         try? FileManager.default.removeItem(at: area.mapPackageURL)
-        
-        let job = task.downloadPreplannedOfflineMapJob(with: area, downloadDirectory: area.mapPackageURL)
-        currentJobs[area] = job
-        
-        let cell = tableView.cellForRow(at: indexPath) as? PreplannedMapAreaTableViewCell
-        cell?.progressView.observedProgress = job.progress
-        
-        job.start(statusHandler: nil) { [weak self] (result, error) in
+        // Create download parameters with default values.
+        task.defaultDownloadPreplannedOfflineMapParameters(with: area) { [weak self] (params, error) in
             guard let self = self else { return }
-            
-            if let result = result {
-                self.downloadPreplannedOfflineMapJob(job, didFinishWith: .success(result))
-            } else if let error = error {
-                self.downloadPreplannedOfflineMapJob(job, didFinishWith: .failure(error))
+            if let error = error {
+                print("Error fetching default parameters for the preplanned map : \(error.localizedDescription)")
+            } else if let params = params {
+                // Set update mode to no updates as the offline map is display-only.
+                params.updateMode = .noUpdates
+                // Create a download offline map job with fetched parameters.
+                let job = task.downloadPreplannedOfflineMapJob(with: params, downloadDirectory: area.mapPackageURL)
+                self.currentJobs[area] = job
+                let cell = self.tableView.cellForRow(at: indexPath) as? PreplannedMapAreaTableViewCell
+                cell?.progressView.observedProgress = job.progress
+                
+                job.start(statusHandler: nil) { [weak self] (result, error) in
+                    guard let self = self else { return }
+                    if let result = result {
+                        self.downloadPreplannedOfflineMapJob(job, didFinishWith: .success(result))
+                    } else if let error = error {
+                        self.downloadPreplannedOfflineMapJob(job, didFinishWith: .failure(error))
+                    }
+                }
             }
         }
     }

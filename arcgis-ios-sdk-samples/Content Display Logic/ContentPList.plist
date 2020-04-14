@@ -735,7 +735,7 @@
 				<key>storyboardName</key>
 				<string>FLQuery</string>
 				<key>descriptionText</key>
-				<string>You can query features in feature layer via service feature table. In this sample you can query for States in USA</string>
+				<string>Find features in a feature table which match an SQL query.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

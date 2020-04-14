@@ -1,20 +1,36 @@
 # Feature layer query
 
-This sample demonstrates how to query a feature layer via feature table.
+Find features in a feature table which match an SQL query.
+
+![Feature layer query options](feature-layer-query-1.png)
+![Feature layer query results](feature-layer-query-2.png)
+
+## Use case
+
+Query expressions can be used in ArcGIS to select a subset of features from a feature table. This is most useful in large or complicated data sets. A possible use case might be on a feature table marking the location of street furniture through a city. A user may wish to query by a TYPE column to return "benches". In this sample, we query a U.S. state by STATE_NAME from a feature table containing all U.S. states.
 
 ## How to use the sample
 
-The sample provides a search bar on the top, where you can input the name of a US State. When you hit search the app performs a query on the feature table and based on the result either highlights the state geometry or provides an error.
-
-Note: The search is case sensitive.
-
-![](image1.png)
-![](image2.png)
+Input the name of a U.S. state into the text field. A query is performed and the matching features are highlighted or an error is returned.
 
 ## How it works
 
-When you hit the search button, the sample creates an `AGSQueryParameter` object and specifies the `whereClause` on it, using the text you provided. It then fires the query on the feature table using the `queryFeatures(with:completion:)` method. In the completion block it gets back an `AGSFeatureQueryResult`. Checking the enumerator, if it finds a feature then it highlights the geometry by using `selectFeatures` method on feature layer.
+1. Create an `AGSServiceFeatureTable` using the URL of a feature service.
+2. Create `AGSQueryParameters` with a `whereClause` specified.
+3. Perform the query using `AGSFeatureTable.queryFeatures(with:completion:)` on the service feature table.
+4. When complete, the query will return an `AGSFeatureQueryResult` which can be iterated over to get the matching features.
 
+## About the data
 
+This sample uses U.S. State polygon features from the [USA 2016 Daytime Population](https://www.arcgis.com/home/item.html?id=f01f0eda766344e29f42031e7bfb7d04) feature service.
 
+## Relevant API
 
+* AGSFeatureLayer
+* AGSFeatureQueryResult
+* AGSQueryParameters
+* AGSServiceFeatureTable
+
+## Tags
+
+Search and Query

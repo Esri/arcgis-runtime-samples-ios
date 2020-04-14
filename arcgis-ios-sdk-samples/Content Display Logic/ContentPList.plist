@@ -691,7 +691,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerShapefile</string>
 				<key>descriptionText</key>
-				<string>Display a feature layer on a map using a shapefile</string>
+				<string>Open a shapefile stored on the device and display it as a feature layer with default symbology.</string>
 				<key>dependency</key>
 				<array>
 					<string>PublicArtShapefile</string>
@@ -743,7 +743,7 @@
 				<key>storyboardName</key>
 				<string>DefinitionExpression</string>
 				<key>descriptionText</key>
-				<string>You can set the definition expression on the feature layer to load specific features</string>
+				<string>Limit the features displayed on a map with a definition expression.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

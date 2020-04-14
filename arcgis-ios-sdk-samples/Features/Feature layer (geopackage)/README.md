@@ -29,8 +29,6 @@ Pan and zoom around the map. View the data loaded from the geopackage.
 
 ## Offline data
 
-Read more about how to set up the sample's offline data [here](https://github.com/Esri/arcgis-runtime-samples-qt#use-offline-data-in-the-samples).
-
 This sample uses the [Aurora, Colorado GeoPackage](https://www.arcgis.com/home/item.html?id=68ec42517cdd439e81b036210483e8e7). It is downloaded from ArcGIS Online automatically.
 
 ## About the data

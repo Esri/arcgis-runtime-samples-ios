@@ -787,7 +787,7 @@
 				<key>storyboardName</key>
 				<string>FeatureCollectionLayer</string>
 				<key>descriptionText</key>
-				<string>Show a feature collection layer using a URL to the service</string>
+				<string>Create a Feature Collection Layer from a Feature Collection Table, and add it to a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

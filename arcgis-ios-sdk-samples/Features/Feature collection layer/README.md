@@ -1,14 +1,38 @@
 # Feature collection layer
 
-This sample demonstrates how to create a new feature collection with three feature collection tables (containing points, lines, and polygons). Features are added programmatically and the collection is displayed in the map as a feature collection layer.
+Create a Feature Collection Layer from a Feature Collection Table, and add it to a map.
 
-![](image1.png)
+![Feature collection layer](feature-collection-layer.png)
+
+## Use case
+
+A Feature Collection allows easily importing external data (such as CSV files), as well as creating custom schema for data that is in non-standardized format. This data can then be used to populate a Feature Collection Table, and displayed in a Feature Collection Layer using the attributes and geometries provided in the external data source. For example, an electricity supplier could use this functionality to visualize existing location data of coverage areas (polygons), power stations (points), transmission lines (polylines), and others.
+
+## How to use the sample
+
+When launched, this sample displays an `AGSFeatureCollectionLayer` with an `AGSPoint`, `AGSPolyline` and `AGSolygon` geometry. Pan and zoom to explore the scene.
 
 ## How it works
 
-A point `AGSFeatureCollectionTable`, a polyline `AGSFeatureCollectionTable`, and a polygon `AGSFeatureCollectionTable` are created, and their schemas and renderers are defined. Next, features are added to each table, and each table is then added to the `AGSFeatureCollection`. Then, an `AGSFeatureCollectionLayer` is created from an `AGSFeatureCollection` and is added to the map's operational layers. 
+1. Create an `AGSFeatureCollectionTable` for each of the geometry types `AGSPoint`, `AGSPolyline`, and `AGSPolygon` using `AGSFeatureCollectionTable(fields:geometryType:spatialReference:)`.
+    i. Create the schema for each feature collection table by creating an array of `AGSField`s.
+    ii. Create an `AGSFeatureCollectionTable` with the fields created.
+    iii. Create an `AGSSimpleRenderer` from an `AGSSimpleMarkerSymbol`.
+    iv. Create a new point feature using `AGSFeatureTable.createFeature()`.
+    v. Add the feature to the `AGSFeatureCollectionTable`.
+2. Create an `AGSFeatureCollection` from the `AGSFeatureCollectionTable`s.
+3. Create an `AGSFeatureCollectionLayer` using the  `AGSFeatureCollection`.
+4. Add the feature collection layer to the map's, `operationalLayers`.
 
-In this case, hardcoded features are added to the tables for display on the map. However, a common use case is to read a CSV or some other data source, and to populate the table with the attributes and geometry provided in the external data source.
+## Relevant API
 
+* AGSFeature
+* AGSFeatureCollection
+* AGSFeatureCollectionLayer
+* AGSFeatureCollectionTable
+* AGSField
+* AGSSimpleRenderer
 
+## Tags
 
+collection, feature, layers, table

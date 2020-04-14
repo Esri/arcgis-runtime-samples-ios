@@ -1,17 +1,34 @@
 # Feature layer definition expression
 
-This sample demonstrates how you can limit which features to display on the map.
+Limit the features displayed on a map with a definition expression. 
+
+![Map with features](feature-layer-expression-1.png)
+![Map after applied expression](feature-layer-expression-1.png)
+
+## Use case
+
+Set a definition expression to filter out the features to be displayed. You might filter a dataset of tree quality selecting for only those trees which require maintenance or are damaged.
 
 ## How to use the sample
 
-Use the buttons in the bottom toolbar to apply or reset definition expression.
-
-![](image1.png)
-![](image2.png)
+Tap the 'Apply expression' button to limit the features requested from the feature layer to those specified by the SQL query definition expression. Tap the 'Reset' button to remove the definition expression on the feature layer, which returns all the records.
 
 ## How it works
 
-You can achieve this by setting the `definitionExpression` property on an `AGSFeatureLayer`. It is the syntax of a SQL where clause by which to limit which features are displayed on the map.
+1. Create an `AGSServiceFeatureTable` from a URL.
+2. Create an `AGSFeatureLayer` from the service feature table.
+3. Add an `AGSDefinitionExpression` to show specific features only.
 
+## Relevant API
 
+* AGSDefinitionExpression
+* AGSFeatureLayer
+* AGSServiceFeatureTable
 
+## About the data
+
+This map displays point features related to crime incidents that have been reported by city residents.
+
+## Tags
+
+definition expression, filter, limit data, query, restrict data, SQL, where clause

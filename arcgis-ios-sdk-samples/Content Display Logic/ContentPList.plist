@@ -659,7 +659,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerURL</string>
 				<key>descriptionText</key>
-				<string>Show a feature layer on map using the url to the service</string>
+				<string>Show features from an online feature service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -667,7 +667,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerGDB</string>
 				<key>descriptionText</key>
-				<string>Show a feature layer on map using a geodatabase</string>
+				<string>Display features from a local geodatabase.</string>
 				<key>dependency</key>
 				<array>
 					<string>LATrailsGeodatabase</string>
@@ -679,7 +679,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerGPKG</string>
 				<key>descriptionText</key>
-				<string>Show a feature layer on a map using a geopackage</string>
+				<string>Display features from a local GeoPackage.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>
@@ -779,7 +779,7 @@
 				<key>storyboardName</key>
 				<string>FeatureCollectionLayerQuery</string>
 				<key>descriptionText</key>
-				<string>Use a feature collection layer to show query results from a service feature table</string>
+				<string>Create a feature collection layer to show a query result from a service feature table.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

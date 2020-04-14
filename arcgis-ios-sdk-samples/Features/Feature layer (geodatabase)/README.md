@@ -14,7 +14,7 @@ Pan and zoom around the map. View the data loaded from the geodatabase.
 
 ## How it works
 
-1. Create an `AGSGeodatabase` using the provided local resource, `LA_Trails`, .
+1. Create an `AGSGeodatabase` using the provided local resource, `LA_Trails`.
 2. Use `AGSGeodatabase.load(completion:)` to load the geodatabase. 
 3. Get the  `AGSGeodatabaseFeatureTable` with the name `Trailheads` from the geodatabase, `AGSGeodatabase.geodatabaseFeatureTable(withName:)`.
 4. Create an `AGSFeatureLayer` using the table from above.

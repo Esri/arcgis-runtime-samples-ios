@@ -14,9 +14,9 @@ The sample loads with a predefined simple marker symbol, set as a red circle.
 
 ## How it works
 
-1.  Create an instance of `AGSSimpleMarkerSymbol`.
-2.  Create an `AGSGraphic` passing in an `AGSPoint` and the simple marker symbol as parameters. 
-3.  Add the graphic to the `AGSGraphicsOverlay`.
+1. Create an instance of `AGSSimpleMarkerSymbol`.
+2. Create an `AGSGraphic` passing in an `AGSPoint` and the simple marker symbol as parameters. 
+3. Add the graphic to the `AGSGraphicsOverlay`.
 
 ## Relevant API
 

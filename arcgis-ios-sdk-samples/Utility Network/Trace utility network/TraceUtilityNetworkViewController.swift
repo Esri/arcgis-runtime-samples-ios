@@ -24,8 +24,8 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     @IBOutlet weak var resetButton: UIBarButtonItem!
     @IBOutlet weak var typeButton: UIBarButtonItem!
     @IBOutlet weak var modeLabel: UILabel!
-    @IBOutlet weak var modeControl: UISegmentedControl!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var modeControl: UISegmentedControl!
     
     private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     
@@ -35,7 +35,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             let featureTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("\($0)"))
             let layer = AGSFeatureLayer(featureTable: featureTable)
             if $0 == 115 {
-                // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
+                // Define a cyan solid line for medium voltage lines and a dark-cyan dashed line for low voltage lines.
                 let mediumVoltageValue = AGSUniqueValue(description: "N/A",
                                                         label: "Medium voltage",
                                                         symbol: AGSSimpleLineSymbol(style: .solid, color: .cyan, width: 3),
@@ -154,7 +154,6 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             self.addStartElementOrBarrier(for: feature, at: mapPoint)
         }
     }
-    
     
     /// Based on the selection mode, the tapped utility element is added either to the starting locations or barriers for the trace parameters.
     /// An appropriate graphic is created at the tapped location to mark the element as either a starting location or barrier.
@@ -381,6 +380,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         traceParameters.startingLocations.removeAll()
         traceParameters.barriers.removeAll()
         parametersOverlay.graphics.removeAllObjects()
+        traceType = .connected
         setInstructionMessage()
     }
 

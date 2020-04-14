@@ -37,24 +37,28 @@
                                 <items>
                                     <barButtonItem style="plain" id="qxH-5I-OBU">
                                         <view key="customView" contentMode="scaleToFill" id="3Vv-66-5Uw">
-                                            <rect key="frame" x="20" y="10.5" width="65" height="33"/>
+                                            <rect key="frame" x="20" y="10.5" width="44" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRF-CT-JpN">
-                                                    <rect key="frame" x="8" y="6" width="36" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRF-CT-JpN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="33"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="nRF-CT-JpN" firstAttribute="top" secondItem="3Vv-66-5Uw" secondAttribute="top" id="BQB-4P-peK"/>
+                                                <constraint firstItem="nRF-CT-JpN" firstAttribute="leading" secondItem="3Vv-66-5Uw" secondAttribute="leading" id="OY5-Zo-6W6"/>
+                                                <constraint firstAttribute="bottom" secondItem="nRF-CT-JpN" secondAttribute="bottom" id="P9u-zs-U3I"/>
+                                                <constraint firstAttribute="trailing" secondItem="nRF-CT-JpN" secondAttribute="trailing" id="Pz4-fo-dFH"/>
+                                            </constraints>
                                         </view>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="K2b-gz-Fzl"/>
                                     <barButtonItem style="plain" id="O6M-wC-IcN">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="7eW-p7-t3C">
-                                            <rect key="frame" x="89" y="10.5" width="123" height="33"/>
+                                            <rect key="frame" x="64" y="10.5" width="123" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Start"/>
@@ -66,7 +70,11 @@
                                         </segmentedControl>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="9Cx-xp-lIZ"/>
-                                    <barButtonItem title="Type" id="eUz-FR-T3h"/>
+                                    <barButtonItem title="Type" id="eUz-FR-T3h">
+                                        <connections>
+                                            <action selector="setTraceType:" destination="cvY-7M-ZXh" id="WqP-8A-zLt"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Qg8-II-na4"/>
                                     <barButtonItem title="Reset" id="gUk-vy-Tzv">
                                         <connections>
@@ -104,6 +112,7 @@
                         <outlet property="resetButton" destination="gUk-vy-Tzv" id="b1t-9u-0sk"/>
                         <outlet property="statusLabel" destination="0tx-3F-CSy" id="Hgr-HW-mVI"/>
                         <outlet property="traceNetworkButton" destination="hPE-6q-RS2" id="4Lz-pE-T03"/>
+                        <outlet property="typeButton" destination="eUz-FR-T3h" id="KdR-LY-4Gg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBC-qj-a7U" userLabel="First Responder" sceneMemberID="firstResponder"/>

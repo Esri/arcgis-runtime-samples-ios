@@ -35,14 +35,15 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             let featureTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("\($0)"))
             let layer = AGSFeatureLayer(featureTable: featureTable)
             if $0 == 115 {
-                // Define a cyan solid line for medium voltage lines and a dark-cyan dashed line for low voltage lines.
+                // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
+                let darkCyan = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
                 let mediumVoltageValue = AGSUniqueValue(description: "N/A",
                                                         label: "Medium voltage",
-                                                        symbol: AGSSimpleLineSymbol(style: .solid, color: .cyan, width: 3),
+                                                        symbol: AGSSimpleLineSymbol(style: .solid, color: darkCyan, width: 3),
                                                         values: [5])
                 let lowVoltageValue = AGSUniqueValue(description: "N/A",
                                                      label: "Low voltage",
-                                                     symbol: AGSSimpleLineSymbol(style: .dash, color: UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1), width: 3),
+                                                     symbol: AGSSimpleLineSymbol(style: .dash, color: darkCyan, width: 3),
                                                      values: [3])
                 layer.renderer = AGSUniqueValueRenderer(fieldNames: ["ASSETGROUP"],
                                                         uniqueValues: [mediumVoltageValue, lowVoltageValue],
@@ -56,8 +57,8 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
 
     private let map: AGSMap
     private let utilityNetwork: AGSUtilityNetwork
-    private let utilityTier: AGSUtilityTier?
-    private var traceType = AGSUtilityTraceType.connected
+    private var utilityTier: AGSUtilityTier?
+    private var traceType = ("Connected", AGSUtilityTraceType.connected)
     private var traceParameters = AGSUtilityTraceParameters(traceType: .connected, startingLocations: [])
 
     private let parametersOverlay: AGSGraphicsOverlay = {
@@ -87,11 +88,6 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
 
         // Create the utility network, referencing the map.
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
-        
-        // Get the utility tier used for traces in this network.
-        // For this data set, the "Medium Voltage Radial" tier from the "ElectricDistribution" domain network is used.
-        let domainNetwork = utilityNetwork.definition.domainNetwork(withDomainNetworkName: "ElectricDistribution")
-        utilityTier = domainNetwork?.tier(withName: "Medium Voltage Radial")
 
         super.init(coder: aDecoder)
         
@@ -126,8 +122,11 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             } else {
                 // Update the UI to allow network traces to be run.
                 self.setUIState()
-                
                 self.setInstructionMessage()
+                // Get the utility tier used for traces in this network.
+                // For this data set, the "Medium Voltage Radial" tier from the "ElectricDistribution" domain network is used.
+                let domainNetwork = self.utilityNetwork.definition.domainNetwork(withDomainNetworkName: "ElectricDistribution")
+                self.utilityTier = domainNetwork?.tier(withName: "Medium Voltage Radial")
             }
         }
     }
@@ -218,8 +217,8 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     
     // MARK: Perform Trace
     @IBAction func traceNetwork(_ sender: Any) {
-        SVProgressHUD.show(withStatus: "Running connected trace…")
-        let parameters = AGSUtilityTraceParameters(traceType: traceType, startingLocations: traceParameters.startingLocations)
+        SVProgressHUD.show(withStatus: "Running \(traceType.0) trace…")
+        let parameters = AGSUtilityTraceParameters(traceType: traceType.1, startingLocations: traceParameters.startingLocations)
         traceParameters.barriers.forEach { barrier in
             parameters.barriers.append(barrier)
         }
@@ -356,14 +355,13 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         let alertController = UIAlertController(title: "Select trace type", message: nil, preferredStyle: .actionSheet)
         let types = [
             ("Connected", AGSUtilityTraceType.connected),
-            ("Downstream", AGSUtilityTraceType.downstream),
+            ("Subnetwork", AGSUtilityTraceType.subnetwork),
             ("Upstream", AGSUtilityTraceType.upstream),
-            ("Isolation", AGSUtilityTraceType.isolation),
-            ("Subnetwork", AGSUtilityTraceType.subnetwork)
+            ("Downstream", AGSUtilityTraceType.downstream)
         ]
         types.forEach { type in
             let action = UIAlertAction(title: type.0, style: .default) { [unowned self] _ in
-                self.traceType = type.1
+                self.traceType = type
                 self.setStatus(message: "Trace type \(type.0) selected.")
             }
             alertController.addAction(action)
@@ -380,7 +378,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         traceParameters.startingLocations.removeAll()
         traceParameters.barriers.removeAll()
         parametersOverlay.graphics.removeAllObjects()
-        traceType = .connected
+        traceType = ("Connected", .connected)
         setInstructionMessage()
     }
 

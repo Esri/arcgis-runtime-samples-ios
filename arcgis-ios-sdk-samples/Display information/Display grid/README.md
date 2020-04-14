@@ -10,7 +10,7 @@ Grids are often used on printed maps, but can also be helpful on digital maps, t
 
 ## How to use the sample
 
-Tap on the `Change Grid` button in the toolbar to open the settings view. You can select type of grid from `Grid Type` (LatLong, MGRS, UTM and USNG) and modify it's properties like grid visibility, grid color, label visibility, label color, label position, label format and label unit.
+Tap on the "Change Grid" button in the toolbar to open the settings view. You can select type of grid from "Grid Type" (LatLong, MGRS, UTM and USNG) and modify its properties like grid visibility, grid color, label visibility, label color, label position, label format and label unit.
 
 ## How it works
 
@@ -18,7 +18,7 @@ Tap on the `Change Grid` button in the toolbar to open the settings view. You ca
 2. Grid lines and labels can be styled per grid level with `AGSGrid.setLineSymbol(_:forLevel:)` and `AGSGrid.setTextSymbol(_:forLevel:)` methods on the grid.
 3. The label position, format, unit and visibility can be specified with `labelPosition`, `labelFormat`, `labelUnit` and `isVisible` on the `AGSGrid`.
 4. For the `AGSLatitudeLongitudeGrid` type, you can specify a label format of `AGSLatitudeLongitudeGridLabelFormat.decimalDegrees` or `AGSLatitudeLongitudeGridLabelFormat.degreesMinutesSeconds`.
-5. To set the grid, specify the `AGSMapView.grid` for the map view.
+5. To set the grid, assign it to the map view's `grid` property.
 
 ## Relevant API
 

@@ -17,7 +17,7 @@ Run the sample and view graphics for points, lines, and polygons, which are styl
 * Create an `AGSGraphicsOverlay` and add it to the `AGSMapView`.
 * Create an `AGSGraphic`, specifying only an `AGSGeometry`.
 * Create a single `AGSSymbol` such as an `AGSSimpleMarkerSymbol`.
-* Create a renderer with `AGSSimpleRenderer(symbol:)` by passing in an `AGSSymbol`.
+* Create a renderer with `AGSSimpleRenderer(symbol:)`, passing in an `AGSSymbol`.
 * Set the renderer for the `AGSGraphicsOverlay`.
 
 ## Relevant API

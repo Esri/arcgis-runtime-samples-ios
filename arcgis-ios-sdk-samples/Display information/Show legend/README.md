@@ -17,8 +17,8 @@ Legends are used to describe what each symbol on a map represents. A common form
 
 ## How it works
 
-1. Layers implement the `AGSLayerContent` interface, which contain a list of `AGSLegendInfo`. `AGSLegendInfo` contains an `AGSSymbol` and a name string. `AGSLayerContent.fetchLegendInfos(completion:)` must be called on each `AGSLayerContent` instance to fetch the info from the data.
-2. For each symbol in the `AGSLegendInfo` list, `AGSSymbol.createSwatch(completion:)` must be called so that an image of the `AGSSymbol` is returned.
+1. Layers implement the `AGSLayerContent` interface, which provides an API for getting `AGSLegendInfo` objects. `AGSLegendInfo` contains an `AGSSymbol` and a name string. `AGSLayerContent.fetchLegendInfos(completion:)` must be called on each `AGSLayerContent` instance to fetch the info from the data.
+2. For each symbol in the `AGSLegendInfo` array, `AGSSymbol.createSwatch(completion:)` must be called so that an image of the `AGSSymbol` is returned.
 3. The names and images are then displayed next to each other in a list.
 
 ## Relevant API

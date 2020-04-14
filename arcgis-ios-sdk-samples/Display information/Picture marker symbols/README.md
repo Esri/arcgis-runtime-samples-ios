@@ -14,7 +14,7 @@ When launched, this sample displays a map with two picture marker symbols. Pan a
 
 ## How it works
 
-1. Create an `AGSPictureMarkerSymbol` using the URI to an online or local image.
+1. Create an `AGSPictureMarkerSymbol` using the URL to an online or local image.
 2. Create an `AGSGraphic` and set its symbol to the picture marker symbol.
 
 ## Relevant API
@@ -25,7 +25,7 @@ When launched, this sample displays a map with two picture marker symbols. Pan a
 
 The picture marker symbols in this sample are all constructed from different types of resources:
 
-- [Campsite symbol constructed from a URL](http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0/images/e82f744ebb069bb35b234b3fea46deae).
+- [Campsite symbol constructed from a URL](https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0/images/e82f744ebb069bb35b234b3fea46deae).
 - Blue pin with a star stored in the resource folder that comes with the application.
 
 ## Tags

@@ -15,8 +15,6 @@
 import UIKit
 import ArcGIS
 
-private let barrierAttributeValue = "barrier"
-
 class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet weak var mapView: AGSMapView!
 
@@ -64,14 +62,13 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     private let parametersOverlay: AGSGraphicsOverlay = {
         let barrierPointSymbol = AGSSimpleMarkerSymbol(style: .X, color: .red, size: 20)
         let barrierUniqueValue = AGSUniqueValue(description: "Barriers",
-                                                label: "Barrier",
+                                                label: InteractionMode.addingBarriers.toString(),
                                                 symbol: barrierPointSymbol,
-                                                values: [barrierAttributeValue])
-
+                                                values: [InteractionMode.addingBarriers.traceLocationType])
         let startingPointSymbol = AGSSimpleMarkerSymbol(style: .cross, color: .green, size: 20)
         let renderer = AGSUniqueValueRenderer(fieldNames: ["TraceLocationType"],
                                               uniqueValues: [barrierUniqueValue],
-                                              defaultLabel: "Starting Point",
+                                              defaultLabel: InteractionMode.addingStartLocation.toString(),
                                               defaultSymbol: startingPointSymbol)
 
         let overlay = AGSGraphicsOverlay()

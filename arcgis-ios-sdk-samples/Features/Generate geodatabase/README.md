@@ -1,18 +1,33 @@
 # Generate geodatabase
 
-This sample demonstrates how to take a feature service offline by generating a geodatabase
+Generate a local geodatabase from an online feature service.
+
+![Generate geodatabase sample](generate-geodatabase.png)
+
+## Use case
+
+Generating geodatabases is the first step toward taking a feature service offline. It allows you to save features locally for offline display.
 
 ## How to use the sample
 
-Pan and zoom to the area you want to download features for. Make sure the area is within the red block. Tap on the generate button and it should start the process. Once finished the map view will show the features from the geodatabase. And since this sample won’t be editing and syncing changes back to the service, it unregisters the geodatabase as a good practice.
-
-![](image1.png)
+Zoom to any extent. Then tap the generate button to generate a geodatabase of features from a feature service filtered to the current extent. A red outline will show the extent used. When complete, the map will reload with only the layers in the geodatabase, clipped to the extent.
 
 ## How it works
 
-The sample uses the `generateJob(with:downloadFileURL:)` method on  `AGSGeodatabaseSyncTask` to create an `AGSJob`. The `start(statusHandler:completion:)` method on the job, starts the generation process, provides status updates and the geodatabase on successful completion. The sample also uses the `unregisterGeodatabase(_:completion:)` method on sync task to unregister the geodatabase.
+1. Create an `AGSGeodatabaseSyncTask` with the URL of the feature service and load it.
+2. Use `AGSGeodatabaseSyncTask.defaultGenerateGeodatabaseParameters(withExtent:completion:)` to generate default parameters and specify the extent.
+3. Request a job to generate the geodatabase using `AGSGeodatabaseSyncTask.generateJob(with:downloadFileURL:)`.
+4. Start the job with `AGSGenerateGeodatabaseJob.start(statusHandler:completion:)`.
+5. When the job is done, add all the `AGSFeatureLayer`s from the geodatabase's `geodatabaseFeatureTables` to the map's `operationalLayers`.
+6. Lastly, unregister the geodtabase with `AGSGeodatabaseSyncTask.unregisterGeodatabase(_:completion:)`.
 
+## Relevant API
 
+* AGSGenerateGeodatabaseJob
+* AGSGenerateGeodatabaseParameters
+* AGSGeodatabase
+* AGSGeodatabaseSyncTask
 
+## Tags
 
-
+disconnected, local geodatabase, offline, sync

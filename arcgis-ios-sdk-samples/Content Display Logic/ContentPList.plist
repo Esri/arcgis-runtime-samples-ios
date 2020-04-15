@@ -759,7 +759,7 @@
 				<key>storyboardName</key>
 				<string>GenerateGeodatabase</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to take features offline</string>
+				<string>Generate a local geodatabase from an online feature service.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanFranciscoTilePackage</string>

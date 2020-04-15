@@ -803,7 +803,7 @@
 				<key>storyboardName</key>
 				<string>ListRelatedFeatures</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to query related features for a given feature. Tap on a feature on the map to see its related features</string>
+				<string>List features related to the selected feature.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

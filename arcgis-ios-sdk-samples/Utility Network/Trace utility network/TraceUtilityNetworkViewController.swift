@@ -286,6 +286,12 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     }
     
     // MARK: Terminal Selection UI
+    /// Popup an action sheet to select one from multiple terminals, or return if there is only one.
+    ///
+    /// - Parameters:
+    ///   - terminals: A list of terminals.
+    ///   - mapPoint: The location tapped on the map.
+    ///   - completion: Completion clousre to pass the selected terminal.
     private func selectTerminal(from terminals: [AGSUtilityTerminal], at mapPoint: AGSPoint, completion: @escaping (AGSUtilityTerminal) -> Void) {
         if terminals.count > 1 {
             // Show a terminal picker

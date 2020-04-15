@@ -1,19 +1,29 @@
 # Show callout
 
-This sample demonstrates how to show location coordinates on a map using a callout.
+Show a callout with the latitude and longitude of user-tapped points.
+
+![Image of show callout](show-callout.png)
+
+## Use case
+
+Callouts are used to display temporary detail content on a map. You can display text and arbitrary UI controls in callouts.
 
 ## How to use the sample
 
-Tap on the map to get the coordinates for the location in a callout. Tap again to hide it.
-
-![](image1.png)
+Tap anywhere on the map. A callout showing the WGS84 coordinates for the tapped point will appear. Tap again to hide it.
 
 ## How it works
 
-When the user taps on the map view the `geoView(_:didTapAtScreenPoint:mapPoint:)` method on the `AGSGeoViewTouchDelegate` is fired. Inside this method, we have the logic to either show or hide the callout. In order to show, we setup the `callout` object on the `mapView`, by setting the `title` property as "Location" and `detail` property as a string composed using `mapPoint`.
+1. Use `AGSGeoViewTouchDelegate.geoView(_:didTapAtScreenPoint:mapPoint:)` to get the `mapPoint` where a user tapped on the map.
+4. Create a string to display the coordinates; note that latitude and longitude in WGS84 map to the Y and X coordinates.
+5. Create a new callout definition using a title string as `title` and the coordinate string as `detail`.
+6. Display the callout by calling `AGSCallout.show(at:screenOffset:rotateOffsetWithMap:animated:)` on the map view with the location and the callout definition.
 
+## Relevant API
 
+* AGSCallout
+* AGSGeoViewTouchDelegate
 
+## Tags
 
-
-
+balloon, bubble, callout, flyout, flyover, info window, popup, tap

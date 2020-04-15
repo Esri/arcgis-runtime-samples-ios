@@ -1,12 +1,30 @@
 # Simple marker symbol
 
-This sample demonstrates how to create a graphic with simple marker symbol
+Show a simple marker symbol on a map.
 
-![](image1.png)
+![Image of simple marker symbol](simple-marker-symbol.png)
+
+## Use case
+
+Customize the appearance of a point suitable for the data. For example, a point on the map styled with a circle could represent a drilled borehole location, whereas a cross could represent the location of an old coal mine shaft.
+
+## How to use the sample
+
+The sample loads with a predefined simple marker symbol, set as a red circle.
 
 ## How it works
 
-The sample creates a `AGSSimpleMarkerSymbol` object using the `init(style:color:size:)` initializer. It uses a predefined point and the symbol created to initialize an `AGSGraphic` object. The graphic is then added to a graphics overlay on the map view.
+1. Create an instance of `AGSSimpleMarkerSymbol`.
+2. Create an `AGSGraphic` passing in an `AGSPoint` and the simple marker symbol as parameters. 
+3. Add the graphic to the `AGSGraphicsOverlay`.
 
+## Relevant API
 
+* AGSGraphic
+* AGSGraphicsOverlay
+* AGSPoint
+* AGSSimpleMarkerSymbol
 
+## Tags
+
+AGSSimpleMarkerSymbol, symbol

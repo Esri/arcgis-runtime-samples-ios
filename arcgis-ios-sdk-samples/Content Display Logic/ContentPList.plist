@@ -818,7 +818,7 @@
 				<key>storyboardName</key>
 				<string>GORenderers</string>
 				<key>descriptionText</key>
-				<string>You can add graphics to a map using the new Graphics Overlay</string>
+				<string>Add graphics with renderer to a map to change the style of all graphics in a graphics overlay by referencing a single symbol style.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -826,7 +826,7 @@
 				<key>storyboardName</key>
 				<string>GraphicsWithSymbols</string>
 				<key>descriptionText</key>
-				<string>You can add graphics to a map using the new Graphics Overlay and specify symbol for each graphic</string>
+				<string>Use a symbol style to display a graphic on a graphics overlay.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -834,7 +834,7 @@
 				<key>storyboardName</key>
 				<string>GOIdentify</string>
 				<key>descriptionText</key>
-				<string>You can use the identify method on map view to get the graphics at a location. It could be the location, user interacted with, via tap gesture or simply some custom location</string>
+				<string>Display an alert message when a graphic is tapped.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -842,15 +842,15 @@
 				<key>storyboardName</key>
 				<string>GraphicDrawOrder</string>
 				<key>descriptionText</key>
-				<string>You can change the drawing order of graphics in graphics overlay using the z index</string>
+				<string>Change the drawing order for a graphic.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Sketch on the map</string>
+				<string>Sketch on map</string>
 				<key>storyboardName</key>
 				<string>Sketch</string>
 				<key>descriptionText</key>
-				<string>You can use the sketch editor for sketching on your map</string>
+				<string>Use the Sketch Editor to edit or sketch a new point, line, or polygon geometry on a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -858,7 +858,7 @@
 				<key>storyboardName</key>
 				<string>Callout</string>
 				<key>descriptionText</key>
-				<string>Tap on the map to get the coordinates for the location in a callout. Tap again to hide it.</string>
+				<string>Show a callout with the latitude and longitude of user-tapped points.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -866,7 +866,7 @@
 				<key>storyboardName</key>
 				<string>MILShowLegend</string>
 				<key>descriptionText</key>
-				<string>Tap on the button in the toolbar to display legends for the layers on the map</string>
+				<string>Show a legend for all the operational layers in the map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -874,7 +874,7 @@
 				<key>storyboardName</key>
 				<string>SimpleMarkerSymbol</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to create a graphic with simple marker symbol</string>
+				<string>Show a simple marker symbol on a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -882,7 +882,7 @@
 				<key>storyboardName</key>
 				<string>PictureMarkerSymbols</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to create picture marker symbols from a remote image and an image in assets</string>
+				<string>Use pictures for markers.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -890,7 +890,7 @@
 				<key>storyboardName</key>
 				<string>SimpleRenderer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to create a simple renderer and add it to a graphics overlay</string>
+				<string>Display common symbols for all graphics in a graphics overlay with a renderer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -898,7 +898,7 @@
 				<key>storyboardName</key>
 				<string>UniqueValueRenderer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrate how to use a unique value renderer to style different features in a feature layer with different symbols</string>
+				<string>Render features in a layer using a distinct symbol for each unique attribute value.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -906,7 +906,7 @@
 				<key>storyboardName</key>
 				<string>DisplayGrid</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to display and work with coordinate system grids such as LatitudeLongitude, MGRS, UTM and USNG on a map view</string>
+				<string>Display coordinate system grids including Latitude/Longitude, MGRS, UTM and USNG on a map view.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -914,7 +914,7 @@
 				<key>storyboardName</key>
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to display billboarded point graphics with military symbols.</string>
+				<string>Create graphics using a local mil2525d style file and an XML file with key/value pairs for each graphic, and display the military symbols in 3D.</string>
 				<key>dependency</key>
 				<array>
 					<string>mil2525d</string>
@@ -924,7 +924,7 @@
 				<key>displayName</key>
 				<string>Read symbols from a mobile style</string>
 				<key>descriptionText</key>
-				<string>Open a mobile style (.stylx) and read its contents. Combine several symbols from the style into a single multilayer point symbol, then use it to display graphics in the map view.</string>
+				<string>Combine multiple symbols from a mobile style file into a single symbol.</string>
 				<key>storyboardName</key>
 				<string>ReadSymbolsFromMobileStyle</string>
 			</dict>

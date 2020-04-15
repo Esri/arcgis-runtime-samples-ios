@@ -97,6 +97,22 @@ class CreateAndSaveKMLViewController: UIViewController {
     var kmlStyle = AGSKMLStyle()
     var currentPlacemark: AGSKMLPlacemark?
     var kmlLayer: AGSKMLLayer?
+    let colors: [(String, UIColor)] = [
+        ("Red", .red),
+        ("Yellow", .yellow),
+        ("White", .white),
+        ("Purple", .purple),
+        ("Orange", .orange),
+        ("Magenta", .magenta),
+        ("Light gray", .lightGray),
+        ("Gray", .gray),
+        ("Dark gray", .darkGray),
+        ("Green", .green),
+        ("Cyan", .cyan),
+        ("Brown", .brown),
+        ("Blue", .blue),
+        ("Black", .black)
+    ]
     
     // Prompt icon selection action sheet.
     func addPoint() {
@@ -128,25 +144,9 @@ class CreateAndSaveKMLViewController: UIViewController {
     // Prompt color selection action sheet for polyline feature.
     func addPolyline() {
         let alertController = UIAlertController(title: "Select Color", message: "This color will be used for the polyline", preferredStyle: .actionSheet)
-        let colors: [String: UIColor] = [
-            "Red": .red,
-            "Yellow": .yellow,
-            "White": .white,
-            "Purple": .purple,
-            "Orange": .orange,
-            "Magenta": .magenta,
-            "Light gray": .lightGray,
-            "Gray": .gray,
-            "Dark gray": .darkGray,
-            "Green": .green,
-            "Cyan": .cyan,
-            "Brown": .brown,
-            "Blue": .blue,
-            "Black": .black
-        ]
-        colors.forEach { color in
-                let colorAction = UIAlertAction(title: color.key, style: .default) { (_) in
-                self.kmlStyle = self.makeKMLStyleWithLineStyle(color: color.value)
+        colors.forEach { (colorTitle, colorValue) in
+                let colorAction = UIAlertAction(title: colorTitle, style: .default) { (_) in
+                self.kmlStyle = self.makeKMLStyleWithLineStyle(color: colorValue)
                 self.startSketch(creationMode: .polyline)
                 }
             alertController.addAction(colorAction)
@@ -162,25 +162,9 @@ class CreateAndSaveKMLViewController: UIViewController {
     // Prompt color selection action sheet for polygon feature.
     func addPolygon() {
         let alertController = UIAlertController(title: "Select Color", message: "This color will be used to fill the polygon", preferredStyle: .actionSheet)
-        let colors: [String: UIColor] = [
-            "Red": .red,
-            "Yellow": .yellow,
-            "White": .white,
-            "Purple": .purple,
-            "Orange": .orange,
-            "Magenta": .magenta,
-            "Light gray": .lightGray,
-            "Gray": .gray,
-            "Dark gray": .darkGray,
-            "Green": .green,
-            "Cyan": .cyan,
-            "Brown": .brown,
-            "Blue": .blue,
-            "Black": .black
-        ]
-        colors.forEach { color in
-                let colorAction = UIAlertAction(title: color.key, style: .default) { (_) in
-                self.kmlStyle = self.makeKMLStyleWithPolygonStyle(color: color.value)
+        colors.forEach { (colorTitle, colorValue) in
+                let colorAction = UIAlertAction(title: colorTitle, style: .default) { (_) in
+                self.kmlStyle = self.makeKMLStyleWithPolygonStyle(color: colorValue)
                 self.startSketch(creationMode: .polygon)
                 }
             alertController.addAction(colorAction)

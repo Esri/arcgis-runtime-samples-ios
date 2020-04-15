@@ -803,7 +803,7 @@
 				<key>storyboardName</key>
 				<string>TimeBasedQuery</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to apply a time-based parameter to a feature layer query</string>
+				<string>Query data using a time extent. </string>
 			</dict>
 		</array>
 	</dict>

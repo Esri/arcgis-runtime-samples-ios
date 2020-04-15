@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		00DAE5D824213D5B00D51281 /* Restaurant.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5D624213D5B00D51281 /* Restaurant.stylx */; settings = {ASSET_TAGS = (Restaurant, ); }; };
@@ -839,6 +840,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */,
 				00E276352425A3A7000DBEDD /* NavigateRouteViewController.swift in CopyFiles */,
 				00DAE5E424213D9A00D51281 /* CustomDictionaryStyleViewController.swift in CopyFiles */,
 				00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */,

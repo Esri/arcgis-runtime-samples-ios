@@ -254,10 +254,8 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
                 guard let layer = self.map.operationalLayers.first(where: { ($0 as? AGSFeatureLayer)?.featureTable?.tableName == networkName }) as? AGSFeatureLayer else { continue }
 
                 selectionGroup.enter()
-                print("Requesting features for \(networkName)")
-                self.utilityNetwork.features(for: elements) { [layer, networkName] (features, error) in
+                self.utilityNetwork.features(for: elements) { [layer] (features, error) in
                     defer {
-                        print("Result From: \(networkName)")
                         selectionGroup.leave()
                     }
                     

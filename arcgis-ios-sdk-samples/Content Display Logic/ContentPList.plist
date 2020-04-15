@@ -727,7 +727,7 @@
 				<key>storyboardName</key>
 				<string>OnInteractionNoCache</string>
 				<key>descriptionText</key>
-				<string>There are different request modes you can load your feature layer in. This sample uses the &quot;On Interaction No Cache Mode&quot;.</string>
+				<string>Display a feature layer from a service using the no cache feature request mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

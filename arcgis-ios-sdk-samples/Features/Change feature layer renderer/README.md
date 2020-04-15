@@ -26,8 +26,7 @@ Tap the bottom right button in the toolbar to change the renderer on the feature
 5. Update the feature layer's `AGSRenderer`.
 
 ## Relevant API
-
-* AGSFeatureLayer.resetRenderer()
+* AGSFeatureLayer.resetRenderer
 * AGSServiceFeatureTable
 * AGSSimpleRenderer
 

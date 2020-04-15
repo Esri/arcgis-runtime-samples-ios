@@ -2,7 +2,7 @@
 
 Discover connected features in a utility network using connected, subnetwork, upstream, and downstream traces.
 
-![Image of trace utility network](trace-utility-network.jpg)
+![Image of trace utility network](trace-utility-network.png)
 
 ## Use case
 

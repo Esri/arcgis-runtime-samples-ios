@@ -743,7 +743,7 @@
 				<key>storyboardName</key>
 				<string>FLSelection</string>
 				<key>descriptionText</key>
-				<string>You can tap on the map to select or unselect features in a feature layer</string>
+				<string>Select features in a feature layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

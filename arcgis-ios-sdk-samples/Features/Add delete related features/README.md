@@ -11,7 +11,7 @@ Adding or deleting related features is a helpful workflow when you have two feat
 
 ## How to use the sample
 
-Tap on a park in the map view. A list of species as related features will be shown. Tap on the top right button to add a new species to the park. Drag a row from right to left to delete a species from the park.
+Tap on a park in the map view. A list of species as related features will be shown. Tap on the top left button to add a new species to the park. Drag a row from right to left to delete a species from the park.
 
 ## How it works
 

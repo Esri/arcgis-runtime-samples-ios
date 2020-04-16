@@ -15,7 +15,7 @@ Run the sample, and a subset of records will be displayed on the map. Pan and zo
 ## How it works
 
 1. An instance of `AGSServiceFeatureTable` is created by passing a URL to the REST endpoint of a time-enabled service. Time-enabled services will have TimeInfo defined in the service description. This information is specified in ArcMap or ArcGIS Pro prior to publishing the service.
-2. The `featureRequestMode` of the `ServiceFeatureTable` is set to `manualCache`, so that the developer can control how and when the feature table is populated with data.
+2. The `featureRequestMode` of the `AGSServiceFeatureTable` is set to `manualCache`, so that the developer can control how and when the feature table is populated with data.
 3. An `AGSFeatureLayer` is created by passing in the instance of the `AGSServiceFeatureTable`.
 4. An `AGSTimeExtent` object is created by specifying start and end date/time objects.
 5. Apply the `AGSTimeExtent` to an `AGSQueryParmaters` object.

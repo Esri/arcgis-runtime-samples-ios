@@ -14,8 +14,8 @@ Pan and zoom around the map. View the data loaded from the geopackage.
 
 ## How it works
 
-1. Create an `AGSGeoPackage` using the provided local resource, `AuroraCO`
-2. Load the `AGSGeoPackage` with `AGSGeoPackage.load(completion:)`
+1. Create an `AGSGeoPackage` using the provided local resource, `AuroraCO`.
+2. Load the `AGSGeoPackage` with `AGSGeoPackage.load(completion:)`.
 3. When it's done loading, get the first feature layer from the `AGSGeoPackage`s array of `AGSGeoPackageFeatureTables`.
 4. Create an `AGSFeatureLayer` for the first `AGSFeatureTable`. 
 5. Add it to the map's array of `operationalLayers`.

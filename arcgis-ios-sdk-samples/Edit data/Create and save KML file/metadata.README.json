@@ -14,19 +14,18 @@
     ],
     "redirect_from": [],
     "relevant_apis": [
-        "AGSGeometryEngine.projectGeometry",
-        "AGSKmlDataset",
-        "AGSKmlDocument",
-        "AGSKmlGeometry",
-        "AGSKmlLayer",
-        "AGSKMLNode.save",
-        "AGSKmlPlacemark",
-        "AGSKmlStyle",
+        "AGSGeometryEngine",
+        "AGSKMLDataset",
+        "AGSKMLDocument",
+        "AGSKMLGeometry",
+        "AGSKMLLayer",
+        "AGSKMLNode",
+        "AGSKMLPlacemark",
+        "AGSKMLStyle",
         "AGSSketchEditor"
     ],
     "snippets": [
-        "CreateAndSaveKMLViewController.swift",
-        "CreateAndSaveKMLSettingsViewController.swift"
+        "CreateAndSaveKMLViewController.swift"
     ],
     "title": "Create and save KML file"
 }

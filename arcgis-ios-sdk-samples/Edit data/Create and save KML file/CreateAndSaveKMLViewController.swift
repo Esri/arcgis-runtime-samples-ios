@@ -21,8 +21,6 @@ class CreateAndSaveKMLViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemap: .darkGrayCanvasVector())
-            resetKML()
-            let sketchEditor = AGSSketchEditor()
             mapView.sketchEditor = sketchEditor
         }
     }
@@ -54,7 +52,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         alertController.popoverPresentationController?.barButtonItem = addButton
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
     
     // Prompt options to allow the user to save the KMZ file.
@@ -63,7 +61,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: [kmzProvider], applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = sender
         present(activityViewController, animated: true)
-        activityViewController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, arrayReturnedItems: [Any]?, error: Error?) in
+        activityViewController.completionWithItemsHandler = { (_, _, _, _) in
             kmzProvider.deleteKMZ()
         }
     }
@@ -71,11 +69,11 @@ class CreateAndSaveKMLViewController: UIViewController {
     // Complete the current sketch and add it to the KML document.
     @IBAction func completeSketch() {
         let geometry = mapView.sketchEditor?.geometry
-        let projectedGeometry = AGSGeometryEngine.projectGeometry(geometry!, to: spatialRef)
+        let projectedGeometry = AGSGeometryEngine.projectGeometry(geometry!, to: .wgs84())
         let kmlGeometry = AGSKMLGeometry(geometry: projectedGeometry!, altitudeMode: .clampToGround)
-        currentPlacemark = AGSKMLPlacemark(geometry: kmlGeometry!)
-        currentPlacemark!.style = kmlStyle
-        kmlDocument.addChildNode(currentPlacemark!)
+        let currentPlacemark = AGSKMLPlacemark(geometry: kmlGeometry!)
+        currentPlacemark.style = kmlStyle
+        kmlDocument.addChildNode(currentPlacemark)
         mapView.sketchEditor?.stop()
         updateToolbarItems()
         actionButtonItem?.isEnabled = true
@@ -84,19 +82,15 @@ class CreateAndSaveKMLViewController: UIViewController {
     // Reset the KML.
     @IBAction func resetKML() {
         mapView.map?.operationalLayers.removeAllObjects()
-        currentPlacemark = nil
         kmlDocument = AGSKMLDocument()
         let kmlDataset = AGSKMLDataset(rootNode: kmlDocument)
-        kmlLayer = AGSKMLLayer(kmlDataset: kmlDataset)
-        mapView.map?.operationalLayers.add(kmlLayer!)
+        let kmlLayer = AGSKMLLayer(kmlDataset: kmlDataset)
+        mapView.map?.operationalLayers.add(kmlLayer)
     }
     
-    var sketchCreationMode: AGSSketchCreationMode?
+    var sketchEditor = AGSSketchEditor()
     var kmlDocument = AGSKMLDocument()
-    let spatialRef = AGSSpatialReference.wgs84()
     var kmlStyle = AGSKMLStyle()
-    var currentPlacemark: AGSKMLPlacemark?
-    var kmlLayer: AGSKMLLayer?
     let colors: [(String, UIColor)] = [
         ("Red", .red),
         ("Yellow", .yellow),
@@ -138,17 +132,17 @@ class CreateAndSaveKMLViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         alertController.popoverPresentationController?.barButtonItem = addButton
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
     
     // Prompt color selection action sheet for polyline feature.
     func addPolyline() {
         let alertController = UIAlertController(title: "Select Color", message: "This color will be used for the polyline", preferredStyle: .actionSheet)
         colors.forEach { (colorTitle, colorValue) in
-                let colorAction = UIAlertAction(title: colorTitle, style: .default) { (_) in
-                self.kmlStyle = self.makeKMLStyleWithLineStyle(color: colorValue)
-                self.startSketch(creationMode: .polyline)
-                }
+            let colorAction = UIAlertAction(title: colorTitle, style: .default) { (_) in
+            self.kmlStyle = self.makeKMLStyleWithLineStyle(color: colorValue)
+            self.startSketch(creationMode: .polyline)
+            }
             alertController.addAction(colorAction)
         }
         // Add "cancel" item.
@@ -156,17 +150,17 @@ class CreateAndSaveKMLViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         alertController.popoverPresentationController?.barButtonItem = addButton
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
     
     // Prompt color selection action sheet for polygon feature.
     func addPolygon() {
         let alertController = UIAlertController(title: "Select Color", message: "This color will be used to fill the polygon", preferredStyle: .actionSheet)
         colors.forEach { (colorTitle, colorValue) in
-                let colorAction = UIAlertAction(title: colorTitle, style: .default) { (_) in
-                self.kmlStyle = self.makeKMLStyleWithPolygonStyle(color: colorValue)
-                self.startSketch(creationMode: .polygon)
-                }
+            let colorAction = UIAlertAction(title: colorTitle, style: .default) { (_) in
+            self.kmlStyle = self.makeKMLStyleWithPolygonStyle(color: colorValue)
+            self.startSketch(creationMode: .polygon)
+            }
             alertController.addAction(colorAction)
         }
         // Add "cancel" item.
@@ -174,7 +168,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         alertController.popoverPresentationController?.barButtonItem = addButton
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
     
     // Make KML with a point style.
@@ -206,8 +200,10 @@ class CreateAndSaveKMLViewController: UIViewController {
         }
         let middleButtonItem: UIBarButtonItem
         if sketchEditor.isStarted {
+            resetButtonItem.isEnabled = false
             middleButtonItem = sketchDoneButton
         } else {
+            resetButtonItem.isEnabled = true
             middleButtonItem = addButton
         }
         let flexibleSpace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -224,11 +220,11 @@ class CreateAndSaveKMLViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        resetKML()
         updateToolbarItems()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
-            "CreateAndSaveKMLViewController",
-            "CreateAndSaveKMLSettingsViewController"
+            "CreateAndSaveKMLViewController"
         ]
     }
 }

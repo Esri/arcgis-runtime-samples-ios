@@ -15,27 +15,27 @@ Tap on the middle button in the bottom toolbar to add a new KML. Select a type o
 
 ## How it works
 
-1. Create an `AGSKmlDocument`.
-2. Create an `AGSKmlDataset` using the `AGSKmlDocument`.
-3. Create an `AGSKmlLayer` using the `AGSKmlDataset` and add it to `AGSMap.operationalLayers`.
+1. Create an `AGSKMLDocument`.
+2. Create an `AGSKMLDataset` using the `AGSKMLDocument`.
+3. Create an `AGSKMLLayer` using the `AGSKMLDataset` and add it to the map's `operationalLayers` array.
 4. Create `AGSGeometry` using `AGSSketchEditor`.
-5. Project that `AGSGeometry` to WGS84 using `AGSGeometryEngine.projectGeometry(_:to:)`.
-6. Create an `AGSKmlGeometry` object using that projected `AGSGeometry`.
-7. Create an `AGSKmlPlacemark` using the `AGSKmlGeometry`.
-8. Add the `AGSKmlPlacemark` to the `AGSKmlDocument`.
-9. Set the `AGSKmlStyle` for the `AGSKmlPlacemark`.
-10. When finished with adding `AGSKmlPlacemark` nodes to the `AGSKmlDocument`, save the `AGSKmlDocument` to a file using the `AGSKMLNode.save(toFileURL:completion:)` method.
+5. Project that `AGSGeometry` to WGS84 using `class AGSGeometryEngine.projectGeometry(_:to:)`.
+6. Create an `AGSKMLGeometry` object using that projected `AGSGeometry`.
+7. Create an `AGSKMLPlacemark` using the `AGSKMLGeometry`.
+8. Add the `AGSKMLPlacemark` to the `AGSKMLDocument`.
+9. Set the `AGSKMLStyle` for the `AGSKMLPlacemark`.
+10. When finished with adding `AGSKMLPlacemark` nodes to the `AGSKMLDocument`, save the `AGSKMLDocument` to a file using the `AGSKMLNode.save(toFileURL:completion:)` method.
 
 ## Relevant API
 
-* AGSGeometryEngine.projectGeometry
-* AGSKmlDataset
-* AGSKmlDocument
-* AGSKmlGeometry
-* AGSKmlLayer
-* AGSKMLNode.save
-* AGSKmlPlacemark
-* AGSKmlStyle
+* AGSGeometryEngine
+* AGSKMLDataset
+* AGSKMLDocument
+* AGSKMLGeometry
+* AGSKMLLayer
+* AGSKMLNode
+* AGSKMLPlacemark
+* AGSKMLStyle
 * AGSSketchEditor
 
 ## Tags

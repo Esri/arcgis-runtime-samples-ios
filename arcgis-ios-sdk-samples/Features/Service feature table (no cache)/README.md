@@ -15,7 +15,7 @@ Run the sample and pan and zoom around the map. With each interaction, new featu
 ## How it works
 
 1. Set the `featureRequestMode` property of the `AGSServiceFeatureTable` to `AGSFeatureRequestMode.onInteractionNoCache` before the table is loaded.
-2. Add the table to the map using a `AGSFeatureLayer`; features will be requested for the visible extent as the user pans and zooms.
+2. Add the table to the map using an `AGSFeatureLayer`; features will be requested for the visible extent as the user pans and zooms.
 
 ## Relevant API
 

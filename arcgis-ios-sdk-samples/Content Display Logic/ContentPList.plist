@@ -318,7 +318,7 @@
 				<key>storyboardName</key>
 				<string>TLUsingURL</string>
 				<key>descriptionText</key>
-				<string>You can create a tiled layer using the url to the service</string>
+				<string>Load an ArcGIS Vector Tiled Layer from a URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -326,7 +326,7 @@
 				<key>storyboardName</key>
 				<string>LocalTiledLayer</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline</string>
+				<string>Load an offline copy of a tiled map service as a basemap.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanFranciscoTilePackage</string>
@@ -339,7 +339,7 @@
 				<key>storyboardName</key>
 				<string>ExportTiles</string>
 				<key>descriptionText</key>
-				<string>You can create a tpk from a map service</string>
+				<string>Download tiles to a local tile cache file stored on the device.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

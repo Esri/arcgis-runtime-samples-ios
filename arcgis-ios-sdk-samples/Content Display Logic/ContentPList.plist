@@ -363,7 +363,7 @@
 				<key>storyboardName</key>
 				<string>MILUsingURL</string>
 				<key>descriptionText</key>
-				<string>You can use the url to a map server to create a map image layer</string>
+				<string>Display a layer from an ArcGIS map image layer service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

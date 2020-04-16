@@ -371,7 +371,7 @@
 				<key>storyboardName</key>
 				<string>ChangeSublayerRenderer</string>
 				<key>descriptionText</key>
-				<string>You can change the renderer of a sublayer in a map image layer</string>
+				<string>Apply a renderer to a sublayer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

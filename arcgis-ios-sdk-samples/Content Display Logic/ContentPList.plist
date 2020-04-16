@@ -819,7 +819,7 @@
 				<key>storyboardName</key>
 				<string>TimeBasedQuery</string>
 				<key>descriptionText</key>
-				<string>Query data using a time extent. </string>
+				<string>Query data using a time extent.</string>
 			</dict>
 		</array>
 	</dict>

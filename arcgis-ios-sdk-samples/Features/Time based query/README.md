@@ -34,4 +34,4 @@ This sample uses Atlantic hurricane data from the year 2000. The data is from th
 
 ## Tags
 
-query, time, time Extent
+query, time, time extent

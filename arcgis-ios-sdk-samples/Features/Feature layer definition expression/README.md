@@ -11,7 +11,7 @@ Set a definition expression to filter out the features to be displayed. You migh
 
 ## How to use the sample
 
-Tap the 'Apply expression' button to limit the features requested from the feature layer to those specified by the SQL query definition expression. Tap the 'Reset' button to remove the definition expression on the feature layer, which returns all the records.
+Tap the "Apply expression" button to limit the features requested from the feature layer to those specified by the SQL query definition expression. Tap the "Reset" button to remove the definition expression on the feature layer, which returns all the records.
 
 ## How it works
 

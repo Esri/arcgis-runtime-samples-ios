@@ -1,4 +1,4 @@
-# Display a map
+# Display map
 
 Display a map with an imagery basemap.
 

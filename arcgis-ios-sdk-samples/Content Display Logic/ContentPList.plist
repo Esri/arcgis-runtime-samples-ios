@@ -9,7 +9,7 @@
 		<array>
 			<dict>
 				<key>displayName</key>
-				<string>Display a map</string>
+				<string>Display map</string>
 				<key>storyboardName</key>
 				<string>DisplayMap</string>
 				<key>descriptionText</key>

@@ -19,7 +19,7 @@ Pan and zoom to explore the vector tile basemap.
 
 ## Relevant API
 
-* ArcGISVectorTiledLayer
+* AGSArcGISVectorTiledLayer
 * AGSMap
 
 ## Tags

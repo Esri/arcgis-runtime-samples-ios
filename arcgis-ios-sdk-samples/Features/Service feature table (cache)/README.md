@@ -26,7 +26,7 @@ Run the sample and pan and zoom around the map. With each interaction, features 
 
 ## About the data
 
-This sample displays a feature layer in Riverside, California, displaying which parcels do not have pool permits. 
+This sample displays a [Pool permit](https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0) feature layer in Riverside, California, displaying which parcels do not have pool permits. 
 
 ## Additional information
 

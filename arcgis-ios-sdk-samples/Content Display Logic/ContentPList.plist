@@ -13,7 +13,7 @@
 				<key>storyboardName</key>
 				<string>DisplayMap</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to display a map with imagery basemap</string>
+				<string>Display a map with an imagery basemap.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

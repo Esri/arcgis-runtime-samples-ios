@@ -1,17 +1,39 @@
 # ArcGIS tiled layer (tile cache)
 
-This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline
+Load an offline copy of a tiled map service as a basemap.
 
-## How to use the sample
+![Tiled map of San Francisco](tiled-layer-tile-cache-1.png)
+![List of tile packages](tiled-layer-tile-cache-2.png)
 
-The sample opens with a local tiled layer already added as the basemap layer. You can tap on the `Tile packages` button in the bottom toolbar to get a list of tile packages available. The sample searches for tile packages (.tpk and .tpkx) in both the bundle and the document directory. So you can side load a tile package onto to the device using iTunes and open it inside the sample.
+## Use case
 
-![](image1.png)
-![](image2.png)
+Constructing an `ArcGISTiledLayer` from a local tile package (.tpk & .tpkx), allows you to use that basemap tiled service when the application is offline. Dividing a raster into tiles allows the map to provide relevant tiles and level of detail to the user when panning and zooming. For example, when working in an environment that has no connectivity, this could provide access to a map for navigating your surroundings.
+
+## How to use the sample    
+
+Launch the app to view the "San Francisco offline tile package" as the basemap. Tap the bottom button to  get a list of tile packages available
 
 ## How it works
 
-The sample instantiates an `AGSTileCache` object using either name or path of the tile package. It then creates an `AGSArcGISTiledLayer` object using that tile cache and assign it as a basemap to the map. It repeats these steps when the user selects a new tile package.
+1. Create an `AGSTileCache`, specifying the path to the local tile package.
+2. Create an `AGSArcGISTiledLayer` with the tile cache.
+3. Create an `AGSBasemap` with the tiled layer.
+4. Create an `AGSMap` with the basemap and set it to an `AGSMapView`.
+
+## Relevant API
+
+* AGSMap
+* AGSArcGISTiledLayer
+* AGSBasemap
+* AGSTileCache
+
+## Offline data
+
+This sample uses the [San Francisco offline tile package](https://www.arcgis.com/home/item.html?id=72e703cd01654e7796eb1ae75af1cb53). It is downloaded from ArcGIS Online automatically.
+
+## About the data
+
+The map opens to a view of the city of San Francisco, CA. In a disconnected environment, this basemap tile service would be fully accessible to zoom and pan as if you were connected to a online service.
 
 ## Additional information
 
@@ -19,8 +41,4 @@ The sample instantiates an `AGSTileCache` object using either name or path of th
 
 ## Tags
 
-layers, tile, ArcGISTiledLayer
-
-
-
-
+cache, layers, offline, tile

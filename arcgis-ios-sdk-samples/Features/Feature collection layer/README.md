@@ -10,7 +10,7 @@ A Feature Collection allows easily importing external data (such as CSV files), 
 
 ## How to use the sample
 
-When launched, this sample displays an `AGSFeatureCollectionLayer` with an `AGSPoint`, `AGSPolyline` and `AGSolygon` geometry. Pan and zoom to explore the scene.
+When launched, this sample displays an `AGSFeatureCollectionLayer` with an `AGSPoint`, `AGSPolyline` and `AGSPolygon` geometry. Pan and zoom to explore the scene.
 
 ## How it works
 

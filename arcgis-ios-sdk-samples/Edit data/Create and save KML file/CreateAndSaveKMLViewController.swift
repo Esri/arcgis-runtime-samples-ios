@@ -75,6 +75,7 @@ class CreateAndSaveKMLViewController: UIViewController {
         currentPlacemark.style = kmlStyle
         kmlDocument.addChildNode(currentPlacemark)
         mapView.sketchEditor?.stop()
+        kmlStyle = nil
         updateToolbarItems()
         actionButtonItem?.isEnabled = true
     }
@@ -90,7 +91,7 @@ class CreateAndSaveKMLViewController: UIViewController {
     
     var sketchEditor = AGSSketchEditor()
     var kmlDocument = AGSKMLDocument()
-    var kmlStyle = AGSKMLStyle()
+    var kmlStyle: AGSKMLStyle?
     let colors: [(String, UIColor)] = [
         ("Red", .red),
         ("Yellow", .yellow),
@@ -175,18 +176,21 @@ class CreateAndSaveKMLViewController: UIViewController {
     func makeKMLStyleWithPointStyle(iconURL: URL) -> AGSKMLStyle {
         let icon = AGSKMLIcon(url: iconURL)
         let iconStyle = AGSKMLIconStyle(icon: icon, scale: 1.0)
+        let kmlStyle = AGSKMLStyle()
         kmlStyle.iconStyle = iconStyle
         return kmlStyle
     }
     
     // Make KML with a line style.
     func makeKMLStyleWithLineStyle(color: UIColor) -> AGSKMLStyle {
+        let kmlStyle = AGSKMLStyle()
         kmlStyle.lineStyle = AGSKMLLineStyle(color: color, width: 2.0)
         return kmlStyle
     }
     
     // Make KML with a polygon style.
     func makeKMLStyleWithPolygonStyle(color: UIColor) -> AGSKMLStyle {
+        let kmlStyle = AGSKMLStyle()
         kmlStyle.polygonStyle = AGSKMLPolygonStyle(color: color)
         kmlStyle.polygonStyle?.isFilled = true
         kmlStyle.polygonStyle?.isOutlined = false

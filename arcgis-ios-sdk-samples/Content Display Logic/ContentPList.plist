@@ -109,7 +109,7 @@
 				<key>storyboardName</key>
 				<string>SetViewpoint</string>
 				<key>descriptionText</key>
-				<string>You can change the viewpoint of a map view and there are different ways you can do this. You can use a geometry or a point, etc. with or without animation</string>
+				<string>Set the map view to a new viewpoint.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

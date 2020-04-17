@@ -19,7 +19,7 @@ Zoom to any extent. Then tap the generate button to generate a geodatabase of fe
 3. Request a job to generate the geodatabase using `AGSGeodatabaseSyncTask.generateJob(with:downloadFileURL:)`.
 4. Start the job with `AGSGenerateGeodatabaseJob.start(statusHandler:completion:)`.
 5. When the job is done, add all the `AGSFeatureLayer`s from the geodatabase's `geodatabaseFeatureTables` to the map's `operationalLayers`.
-6. Lastly, unregister the geodtabase with `AGSGeodatabaseSyncTask.unregisterGeodatabase(_:completion:)`.
+6. Lastly, unregister the geoddatabase with `AGSGeodatabaseSyncTask.unregisterGeodatabase(_:completion:)`.
 
 ## Relevant API
 

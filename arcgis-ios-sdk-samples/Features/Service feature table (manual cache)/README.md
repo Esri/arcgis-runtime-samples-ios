@@ -33,7 +33,7 @@ This sample uses the [Incidents in San Francisco](https://sampleserver6.arcgison
 
 ## Additional information
 
-In **manual cache** AGSmode, features are never automatically populated from the service. All features are loaded manually using the `AGSServiceFeatureTable.populateFromService` method.
+In **manual cache** mode, features are never automatically populated from the service. All features are loaded manually using the `AGSServiceFeatureTable.populateFromService` method.
 
 ## Tags
 

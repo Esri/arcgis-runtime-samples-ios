@@ -10,7 +10,7 @@ A viewshed analysis is a type of visual analysis you can perform on a scene. The
 
 ## How to use the sample
 
-Tap to set a destination for the vehicle (an  `AGSGeoElement`). The vehicle will 'drive' towards the tapped location. The viewshed analysis will update as the vehicle moves.
+Tap to set a destination for the vehicle (an `AGSGeoElement`). The vehicle will 'drive' towards the tapped location. The viewshed analysis will update as the vehicle moves.
 
 ## How it works
 

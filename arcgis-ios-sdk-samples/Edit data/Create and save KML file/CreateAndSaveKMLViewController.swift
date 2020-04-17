@@ -190,10 +190,11 @@ class CreateAndSaveKMLViewController: UIViewController {
     
     // Make KML with a polygon style.
     func makeKMLStyleWithPolygonStyle(color: UIColor) -> AGSKMLStyle {
+        let polygonStyle = AGSKMLPolygonStyle(color: color)
+        polygonStyle.isFilled = true
+        polygonStyle.isOutlined = false
         let kmlStyle = AGSKMLStyle()
-        kmlStyle.polygonStyle = AGSKMLPolygonStyle(color: color)
-        kmlStyle.polygonStyle?.isFilled = true
-        kmlStyle.polygonStyle?.isOutlined = false
+        kmlStyle.polygonStyle = polygonStyle
         return kmlStyle
     }
     

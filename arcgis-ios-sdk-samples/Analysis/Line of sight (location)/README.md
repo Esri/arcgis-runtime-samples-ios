@@ -15,7 +15,7 @@ Tap on the map to set the observer location. Tap and hold to drag the line of si
 ## How it works
 
 1. Create an `AGSAnalysisOverlay` and add it to the scene view.
-2. Track the screen taps using the  `AGSGeoViewTouchDelegate`. 
+2. Track the screen taps using the `AGSGeoViewTouchDelegate`. 
 3. Create an `AGSLocationLineOfSight` with the map points.
 4. Update the target location when needed.
 

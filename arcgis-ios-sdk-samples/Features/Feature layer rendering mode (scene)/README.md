@@ -12,7 +12,7 @@ In static rendering mode, features and graphics are rendered only when needed (f
 
 ## How to use the sample
 
-Use the "Zoom In" button to trigger the same zoom animation on both static and dynamicly rendered scenes.
+Use the "Zoom In" button to trigger the same zoom animation on both static and dynamically rendered scenes.
 
 ## How it works
 

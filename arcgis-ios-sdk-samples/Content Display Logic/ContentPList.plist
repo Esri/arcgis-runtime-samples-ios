@@ -89,7 +89,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Display drawing status</string>
+				<string>Display draw status</string>
 				<key>storyboardName</key>
 				<string>MapViewDrawStatus</string>
 				<key>descriptionText</key>

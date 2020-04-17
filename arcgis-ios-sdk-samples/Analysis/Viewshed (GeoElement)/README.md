@@ -31,10 +31,10 @@ This sample shows a [Johannesburg, South Africa Scene](https://www.arcgis.com/ho
 
 ## Relevant API
 
+* class AGSGeometryEngine.geodeticDistanceBetweenPoint1(_:point2:distanceUnit:azimuthUnit:curveType:) (used to animate the vehicle)
 * AGSAnalysisOverlay
 * AGSGeodeticDistanceResult 
 * AGSGeoElementViewshed
-* class AGSGeometryEngine.geodeticDistanceBetweenPoint1(_:point2:distanceUnit:azimuthUnit:curveType:) (used to animate the vehicle)
 * AGSModelSceneSymbol
 * AGSOrbitGeoElementCameraController
 

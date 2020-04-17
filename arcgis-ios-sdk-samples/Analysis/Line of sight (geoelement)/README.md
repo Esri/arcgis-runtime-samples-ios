@@ -6,7 +6,9 @@ Show a line of sight between two moving objects.
 
 ## Use case
 
-A line of sight between `AGSGeoElement`s (i.e. observer and target) will not remain constant whilst one or both are on the move. An `AGSGeoElementLineOfSight` is therefore useful in cases where visibility between two `AGSGeoElement`s requires monitoring over a period of time in a partially obstructed field of view (such as buildings in a city).
+A line of sight between `AGSGeoElement`s (i.e. observer and target) will not remain constant whilst one or both are on the move. 
+
+An `AGSGeoElementLineOfSight` is therefore useful in cases where visibility between two `AGSGeoElement`s requires monitoring over a period of time in a partially obstructed field of view (such as buildings in a city).
 
 ## How to use the sample
 

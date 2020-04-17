@@ -16,7 +16,7 @@ Pan and zoom to define the extent for the query. Use the "Cities in current exte
 
 1. Create an `AGSServiceFeatureTable` with a URL to the feature service.
 2. Create `AGSStatisticsQueryParameters` using an array of `AGSStatisticDefinition` objects.
-3. Pass in the parameters into `AGSFeatureTable.queryStatistics(with:completion:)` . Depending on the state of the two checkboxes, additional parameters are set.
+3. Pass in the parameters into `AGSFeatureTable.queryStatistics(with:completion:)`. Depending on the state of the two checkboxes, additional parameters are set.
 4. Use `AGSStatisticsQueryResult.statisticRecordEnumerator()` on the first returned `AGSStatisticsQueryResult` to display each `AGSStatisticRecord`.
 
 ## Relevant API

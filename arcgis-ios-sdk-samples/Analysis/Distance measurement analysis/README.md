@@ -19,7 +19,7 @@ Choose a unit system for the measurement in the segmented control. Long press an
 3. Add the location distance measurement analysis to the analysis overlay.
 4. The `measurementChangedHandler` callback will fire if the distances change. You can get the new values for the `directDistance`, `horizontalDistance`, and `verticalDistance` from the parameters provided by the callback. The distance objects contain both the scalar value and unit of measurement.
 
-## Relevant API  
+## Relevant API
 
 * AGSAnalysisOverlay
 * AGSLocationDistanceMeasurement

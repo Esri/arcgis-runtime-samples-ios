@@ -379,7 +379,7 @@
 				<key>storyboardName</key>
 				<string>VectorTileLayer</string>
 				<key>descriptionText</key>
-				<string>You can now add vector tile layers</string>
+				<string>Load an ArcGIS Vector Tiled Layer from a URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

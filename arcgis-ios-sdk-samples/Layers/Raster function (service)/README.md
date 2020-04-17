@@ -2,7 +2,7 @@
 
 Raster functions are operations performed on a raster to apply on-the-fly processing. This sample demonstrates how to create an image service raster and apply a Hillshade raster function to it.
 
-![](image1.png)
+![Raster function (service) sample](raster-function-service.png)
 
 ## How it works
 

@@ -149,7 +149,7 @@
 				<key>storyboardName</key>
 				<string>CreateSaveMap</string>
 				<key>descriptionText</key>
-				<string>With the new APIs you get to author a map on you mobile device. You can create a map by adding a basemap and one or more operational layers and save it to your portal</string>
+				<string>Create and save a map as an portal item (i.e. web map).</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

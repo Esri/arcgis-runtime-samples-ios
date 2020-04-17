@@ -93,7 +93,7 @@
 				<key>storyboardName</key>
 				<string>MapViewDrawStatus</string>
 				<key>descriptionText</key>
-				<string>Every time the map is drawing you get an update using the callbacks</string>
+				<string>Get the draw status of your map view or scene view to know when all layers in the map or scene have finished drawing.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -387,7 +387,7 @@
 				<key>storyboardName</key>
 				<string>ManageSublayers</string>
 				<key>descriptionText</key>
-				<string>This sample shows to add or remove map image sublayers and how to re-arrange existing sublayers in a map image layer</string>
+				<string>Add, remove, or rearrange existing sublayers in a map image layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

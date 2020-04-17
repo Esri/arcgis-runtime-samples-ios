@@ -427,7 +427,7 @@
 				<key>storyboardName</key>
 				<string>RasterLayer</string>
 				<key>descriptionText</key>
-				<string>You can create a raster layer from a file</string>
+				<string>Create and use a raster layer made from a local raster file.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaRaster</string>
@@ -439,7 +439,7 @@
 				<key>storyboardName</key>
 				<string>RasterLayerGPKG</string>
 				<key>descriptionText</key>
-				<string>Show a raster layer on a map using a geopackage</string>
+				<string>Display a raster contained in a GeoPackage.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>

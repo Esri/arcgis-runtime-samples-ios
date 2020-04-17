@@ -363,7 +363,7 @@
 				<key>storyboardName</key>
 				<string>SublayerVisibility</string>
 				<key>descriptionText</key>
-				<string>You can show or hide individual sublayers in a map image layer</string>
+				<string>Change the visibility of sublayers.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

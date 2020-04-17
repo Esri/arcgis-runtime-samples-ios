@@ -1311,7 +1311,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedCamera</string>
 				<key>descriptionText</key>
-				<string>Analyze the viewshed for a camera. A viewshed shows the visible and obstructed areas from an observer&apos;s vantage point. </string>
+				<string>Analyze the viewshed for a camera. A viewshed shows the visible and obstructed areas from an observer&apos;s vantage point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -21,7 +21,7 @@ class CreateAndSaveKMLViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemap: .darkGrayCanvasVector())
-            mapView.sketchEditor = sketchEditor
+            mapView.sketchEditor = AGSSketchEditor()
         }
     }
     
@@ -141,8 +141,8 @@ class CreateAndSaveKMLViewController: UIViewController {
         let alertController = UIAlertController(title: "Select Color", message: "This color will be used for the polyline", preferredStyle: .actionSheet)
         colors.forEach { (colorTitle, colorValue) in
             let colorAction = UIAlertAction(title: colorTitle, style: .default) { (_) in
-            self.kmlStyle = self.makeKMLStyleWithLineStyle(color: colorValue)
-            self.startSketch(creationMode: .polyline)
+                self.kmlStyle = self.makeKMLStyleWithLineStyle(color: colorValue)
+                self.startSketch(creationMode: .polyline)
             }
             alertController.addAction(colorAction)
         }
@@ -159,8 +159,8 @@ class CreateAndSaveKMLViewController: UIViewController {
         let alertController = UIAlertController(title: "Select Color", message: "This color will be used to fill the polygon", preferredStyle: .actionSheet)
         colors.forEach { (colorTitle, colorValue) in
             let colorAction = UIAlertAction(title: colorTitle, style: .default) { (_) in
-            self.kmlStyle = self.makeKMLStyleWithPolygonStyle(color: colorValue)
-            self.startSketch(creationMode: .polygon)
+                self.kmlStyle = self.makeKMLStyleWithPolygonStyle(color: colorValue)
+                self.startSketch(creationMode: .polygon)
             }
             alertController.addAction(colorAction)
         }

@@ -133,7 +133,7 @@
 				<key>storyboardName</key>
 				<string>DisplayLocation</string>
 				<key>descriptionText</key>
-				<string>You can start the location display on the map view to get current location updates. There are different auto pan modes you can switch between, namely, re-center mode, navigation mode or compass mode</string>
+				<string>Display your current position on the map, as well as switch between different types of auto pan modes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

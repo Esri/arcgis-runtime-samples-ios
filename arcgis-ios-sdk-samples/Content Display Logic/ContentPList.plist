@@ -45,7 +45,7 @@
 				<key>storyboardName</key>
 				<string>SwitchBasemap</string>
 				<key>descriptionText</key>
-				<string>Changing the basemap is too easy. This sample shows you how it can be done</string>
+				<string>Change a map&apos;s basemap.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

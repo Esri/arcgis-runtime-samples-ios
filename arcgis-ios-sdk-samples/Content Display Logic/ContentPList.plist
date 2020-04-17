@@ -145,7 +145,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Create and save a map</string>
+				<string>Create and save map</string>
 				<key>storyboardName</key>
 				<string>CreateSaveMap</string>
 				<key>descriptionText</key>

@@ -25,11 +25,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Map loaded</string>
+				<string>Map load status</string>
 				<key>storyboardName</key>
 				<string>MapLoaded</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to tell what the map&apos;s load status is</string>
+				<string>Determine the map&apos;s load status.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -1,6 +1,6 @@
 # Display device location
 
-Display your current position on the map, as well as switch between different types of auto pan modes.
+Display your current position on the map, as well as switch between different types of auto-pan modes.
 
 ![Image of display device location 1](display-device-location-1.png)
 ![Image of display device location 2](display-device-location-2.png)

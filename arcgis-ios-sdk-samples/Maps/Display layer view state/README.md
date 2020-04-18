@@ -12,14 +12,12 @@ The view state includes information on the loading state of layers and whether l
 
 Pan and zoom around in the map. Each layer's view status is displayed. Notice that some layers configured with a min and max scale change to `.outOfScale` at certain scales.
 
-
 ## How it works
 
 1. Create an `AGSMap` with some operational layers.
 2. Set the map on an `AGSMapView`.
 3. Listen to `layerViewStateChangedHandler` of the map view, which get executed every time a layer's view status changes.
 4. Get the `layer` of type `AGSLayer` and the current view `state` of type `AGSLayerViewState` defining the new state.
-
 
 ## Relevant API
 

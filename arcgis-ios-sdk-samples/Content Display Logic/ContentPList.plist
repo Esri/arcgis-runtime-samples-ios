@@ -459,7 +459,7 @@
 				<key>storyboardName</key>
 				<string>HillshadeRenderer</string>
 				<key>descriptionText</key>
-				<string>You can apply hill shade renderer to a raster</string>
+				<string>Apply a hillshade renderer to a raster.</string>
 				<key>dependency</key>
 				<array>
 					<string>SRTMRaster</string>
@@ -471,7 +471,7 @@
 				<key>storyboardName</key>
 				<string>BlendRenderer</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to use blend renderer with raster layer</string>
+				<string>Blend a hillshade with a raster by specifying the elevation data.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaElevationRaster</string>

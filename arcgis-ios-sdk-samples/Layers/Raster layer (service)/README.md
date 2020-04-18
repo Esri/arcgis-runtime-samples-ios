@@ -1,12 +1,32 @@
 # Raster layer (service)
 
-This sample demonstrates how to create and use a raster layer from an ArcGIS Image service.
+Create a raster layer from a raster image service.
 
-![](image1.png)
+![Raster layer (service) sample](raster-layer-service.png)
+
+## Use case
+
+Accessing a raster image from an online service can be useful for analysing the most up-to-date data available for an area. For example, retrieving recent results of bathymetry surveys within a shipping channel monitored for its sediment build-up would allow planners to assess dredging needs.
+
+## How to use the sample
+
+Simply launch the sample to see a raster from an image service being used on a map.
 
 ## How it works
 
-Create an instance of `AGSImageServiceRaster` from a URL to an ArcGIS Image Service using the initializer `init(url:)`. Then create an instance of  `AGSRasterLayer` with the initializer `init(raster:)`. Finally, add this raster layer to the operational layers of the map.
+1. Create an `AGSImageServiceRaster` using the service's URL.
+2. Create an `AGSRasterLayer` from the image service raster.
+3. Add the raster layer the the map.
 
+## About the data
 
+This sample uses a [NOAA raster image service](https://gis.ngdc.noaa.gov/arcgis/rest/services/bag_hillshades/ImageServer). The service computes a hillshade image from the depth (in meters) of U.S. coastal waters.
 
+## Relevant API
+
+*  AGSmageServiceRaster
+*  AGSRasterLayer
+
+## Tags
+
+image service, raster

@@ -435,7 +435,7 @@
 				<key>storyboardName</key>
 				<string>RasterLayerUsingService</string>
 				<key>descriptionText</key>
-				<string>You can create a raster layer from an ArcGIS Image service</string>
+				<string>Create a raster layer from a raster image service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

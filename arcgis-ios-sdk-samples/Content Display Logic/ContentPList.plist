@@ -262,7 +262,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Download preplanned map</string>
+				<string>Download preplanned map area</string>
 				<key>descriptionText</key>
 				<string>Take a map offline using a preplanned map area.</string>
 				<key>storyboardName</key>

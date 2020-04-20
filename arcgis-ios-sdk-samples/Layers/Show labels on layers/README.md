@@ -1,34 +1,43 @@
 # Show labels on layers
 
-This sample demonstrates how to show labels on feature layers.
+Display custom labels on a feature layer.
 
-![](image1.png)
+![Show labels on layers sample](show-labels.png)
+
+## Use case
+
+Labeling features is useful to visually display a key piece of information or attribute of a feature on a map. For example, you may want to label rivers or street with their names. 
 
 ## How to use the sample
 
-Open the sample and wait for the layer to load. Scale and pan the map to view the labels.
+Pan and zoom around the United States. Labels for congressional districts will be shown in red for Republican districts and blue for Democrat districts. Notice how labels pop into view as you zoom in.
 
 ## How it works
 
-1. An `AGSServiceFeatureTable` object is created using a URL to an online feature service.
-2. An `AGSFeatureLayer` object is created from the feature table.
-3. For each group of features we want to label:
+1. Create an `AGSServiceFeatureTable` using a feature service URL.
+2. Create an `AGSFeatureLayer` from the service feature table.
+3. Create an `AGSTextSymbol` to use for displaying the label text.
+4. Create a JSON string for the label definition.
+    * Set the "LabelExpressionInfo.expression" key to express what the text the label should display. You can use fields of the feature by using `$feature.Name` in the expression.
+    * To use the text symbol, set the "symbol" key to the symbol's JSON representation using `AGSTextSymbol.toJson()`.
+5. Create a label definition from the JSON using `AGSLabelDefinition.fromJson()`.
+6. Add the definition to the feature layer's `labelDefinitions` array .
+7. Lastly, enable labels on the layer by setting its `labelsEnabled` property to true.
 
-    1. An `AGSTextSymbol` object is created and configured with the desired color and style.
-    2. A SQL WHERE statement `String` is created specifying what features should be labeled with this style.
-    3. An expression `String` is created specifying the content of the label using the table's attributes.
-    4. A dictionary representing the label as a JSON object is created from the text symbol, WHERE statement, and expression.
-    5. An `AGSLabelDefinition` object is created from the JSON object.
-    6. The label definition is added to the `labelDefinitions` array of the `AGSFeatureLayer`.
-  
-4. Labels are enabled for the layer by setting `labelsEnabled` to `true` on the `AGSFeatureLayer` object.
+## Relevant API
 
-##Relevant API
+* AGSFeatureLayer
+* AGSLabelDefinition
+* AGSTextSymbol
 
-- `AGSFeatureLayer`
-    - `labelDefinitions`
-    - `labelsEnabled`
-- `AGSLabelDefinition`
-    - `fromJSON(_:)`
-- `AGSTextSymbol`
-    - `toJSON()`
+## About the data
+
+This sample uses the [USA 116th Congressional Districts](https://www.arcgis.com/home/item.html?id=cc6a869374434bee9fefad45e291b779) feature layer hosted on ArcGIS Online.
+
+## Additional information
+
+Help regarding the JSON syntax for defining the `LabelDefinition.FromJson` syntax can be found in [labeling info](https://developers.arcgis.com/web-map-specification/objects/labelingInfo/) in the *Web map specification*.
+
+## Tags
+
+attribute, deconfliction, label, labeling, string, symbol, text, visualization

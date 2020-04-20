@@ -403,7 +403,7 @@
 				<key>storyboardName</key>
 				<string>VectorTileCustomStyle</string>
 				<key>descriptionText</key>
-				<string>You can define different styles for same vector tiled layer using custom stylesheets</string>
+				<string>Load ArcGIS vector tiled layers using custom styles.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -484,7 +484,7 @@
 				<key>storyboardName</key>
 				<string>RGBRenderer</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to use rgb renderer with raster layer</string>
+				<string>Apply an RGB renderer to a raster layer to enhance feature visibility.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaRaster</string>

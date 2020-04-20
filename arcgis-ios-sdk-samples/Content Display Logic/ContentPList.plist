@@ -202,7 +202,7 @@
 				<key>storyboardName</key>
 				<string>GenerateOfflineMap</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to generate an offline map for web map in ArcGIS Portal. The sample requires login to take AGOL Basemap offline.</string>
+				<string>Take a web map offline.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

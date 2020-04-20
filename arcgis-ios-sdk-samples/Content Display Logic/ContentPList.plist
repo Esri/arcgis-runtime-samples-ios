@@ -492,7 +492,7 @@
 				<key>storyboardName</key>
 				<string>ShowLabelsOnLayers</string>
 				<key>descriptionText</key>
-				<string>Show labels on feature layers using JSON label definitions.</string>
+				<string>Display custom labels on a feature layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

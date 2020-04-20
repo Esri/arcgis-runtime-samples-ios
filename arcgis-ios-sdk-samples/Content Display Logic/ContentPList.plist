@@ -480,7 +480,7 @@
 				<key>storyboardName</key>
 				<string>StretchRenderer</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to use stretch renderer with raster layer</string>
+				<string>Use a stretch renderer to enhance the visual contrast of raster data for analysis.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaBWRaster</string>

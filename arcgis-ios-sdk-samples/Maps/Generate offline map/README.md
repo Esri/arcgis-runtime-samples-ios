@@ -35,8 +35,7 @@ The map used in this sample shows the [Naperville water network](https://arcgisr
 
 ## Additional information
 
-The creation of the offline map can be fine-tuned using "Generate offline map (overrides)" sample, or by using "Generate offline map (basemap by reference)
-" sample to achieve more customized results.
+The creation of the offline map can be fine-tuned using "Generate offline map (overrides)" sample, or by using "Generate offline map (basemap by reference)" sample to achieve more customized results.
 
 ## Tags
 

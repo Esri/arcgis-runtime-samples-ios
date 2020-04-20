@@ -12,7 +12,7 @@ An archeology team could define preplanned map areas for dig sites which can be 
 
 ## How to use the sample
 
-Select a preplanned map area by tapping the 'Select Map' bar button item & selecting one of the showing available areas. Tapping a cell initiates a download, and shows download progress in the interim. Once downloaded, the preplanned map is displayed in the map view. If a preplanned map is reselected later, the locally cached data is loaded immediately.
+Select a preplanned map area by tapping the "Select Map" bar button item & selecting one of the showing available areas. Tapping a cell initiates a download, and shows download progress in the interim. Once downloaded, the preplanned map is displayed in the map view. If a preplanned map is reselected later, the locally cached data is loaded immediately.
 
 ## How it works
 

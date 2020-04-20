@@ -500,7 +500,7 @@
 				<key>storyboardName</key>
 				<string>WMTSLayer</string>
 				<key>descriptionText</key>
-				<string>Display a WMTS layer as a basemap layer</string>
+				<string>Display a layer from a Web Map Tile Service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -89,7 +89,6 @@ class CreateAndSaveKMLViewController: UIViewController {
         mapView.map?.operationalLayers.add(kmlLayer)
     }
     
-    var sketchEditor = AGSSketchEditor()
     var kmlDocument = AGSKMLDocument()
     var kmlStyle: AGSKMLStyle?
     let colors: [(String, UIColor)] = [

@@ -77,7 +77,7 @@
 				<key>storyboardName</key>
 				<string>ManageMapLayers</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to manage layers in a map. You can reorder them, delete an existing layer or insert a new layer</string>
+				<string>Add, remove, and reorder operational layers in a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

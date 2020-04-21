@@ -1009,6 +1009,14 @@
 		<array>
 			<dict>
 				<key>displayName</key>
+				<string>Create and save KML file</string>
+				<key>storyboardName</key>
+				<string>CreateAndSaveKML</string>
+				<key>descriptionText</key>
+				<string>Construct a KML document and save it as a KMZ file.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Edit and sync features</string>
 				<key>storyboardName</key>
 				<string>EditAndSyncFeatures</string>

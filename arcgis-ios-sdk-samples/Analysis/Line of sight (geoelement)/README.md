@@ -1,18 +1,37 @@
 # Line of sight (geoelement)
 
-This sample demonstrates how to perform a dynamic line of sight analysis between two moving GeoElements (an observer whose height above ground can be modified interactively, and a moving taxi).
+Show a line of sight between two moving objects.
 
-![](image1.png)
+![Line of sight (geoelement)](line-of-sight-geoelement.png)
+
+## Use case
+
+A line of sight between `AGSGeoElement`s (i.e. observer and target) will not remain constant whilst one or both are on the move. 
+
+An `AGSGeoElementLineOfSight` is therefore useful in cases where visibility between two `AGSGeoElement`s requires monitoring over a period of time in a partially obstructed field of view (such as buildings in a city).
 
 ## How to use the sample
 
-Use the slider to adjust the height of the observer.
+A line of sight will display between a point on the Empire State Building (observer) and a taxi (target).
+The taxi will drive around a block and the line of sight should automatically update.
+The taxi will be highlighted when it is visible. You can change the observer height with the slider to see how it affects the target's visibility.
 
 ## How it works
 
-An `AGSGeoElementLineOfSight` is created using the `init(observerLocation:targetLocation:)` initializer that takes observer and target geo-elements (in this case, `AGSGraphic` objects in an `AGSGraphicsOverlay` that's added to the scene view). As a result of the analysis, a line is rendered between the observer and target with green color representing visible segment and red color representing obstructed segment. An analysis overlay is used to render the results of visual analysis on the scene view.
+1. Instantiate an `AGSAnalysisOverlay` and add it to the `AGSSceneView`'s analysis overlays collection.
+2. Instantiate an `AGSGeoElementLineOfSight`, passing in an `AGSGeoElement` (feature or graphic) for both the observer and the target. Add the line of sight to the analysis overlay's `analyses` array.
+3. To get the target visibility when it changes, observe the target visibility changing on the `AGSGeoElementLineOfSight` instance.
 
-The line width used to render analysis results is set using the `setLineWidth()` method on the base class for the line of sight analysis called `AGSLineOfSight`. This setting is applied to all line of sight analyses in the view.
+## Relevant API
 
-The height of the observer above the ground is modified using a `UISlider` and the taxi's location is modified on a `Timer`. As the observer and taxi graphics are moved, the line of sight analysis automatically updates to reflect their positions.
+* AGSAnalysisOverlay
+* AGSGeoElementLineOfSight
+* AGSLineOfSight.targetVisibility
 
+## Offline data
+
+This sample uses the [Taxi](https://www.arcgis.com/home/item.html?id=3af5cfec0fd24dac8d88aea679027cb9) CAD Drawing. It is downloaded from ArcGIS Online automatically.
+
+## Tags
+
+3D, line of sight, visibility, visibility analysis

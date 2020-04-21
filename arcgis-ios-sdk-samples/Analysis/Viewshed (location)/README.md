@@ -1,13 +1,34 @@
 # Viewshed (location)
 
-This sample demonstrates how to interactively edit a viewshed analysis in a scene and see updates on-the-fly.
+Perform a viewshed analysis from a defined vantage point. 
 
-![](image1.png)
+![Viewshed location sample](viewshed-location.png)
+
+## Use case
+
+A 3D viewshed analysis is a type of visual analysis you can perform on a scene. The viewshed shows what can be seen from a given location. The output is an overlay with two different colors - one representing the visible areas (green) and the other representing the obstructed areas (red). Viewshed analysis is a form of "exploratory analysis", which means the results are calculated on the current scale of the data, and the results are generated very quickly. If more "conclusive" results are required, consider using an `AGSGeoprocessingTask` to perform a viewshed instead.
+
+## How to use the sample
+
+Tap on the map to add an observer location. Tap the gear icon to view the settings. Use the sliders to change the properties (heading, pitch, etc.), of the viewshed and see them updated in real time. To move the viewshed, touch and drag your finger across the screen. Lift your finger to stop moving the viewshed.
 
 ## How it works
 
-`AGSLocationViewshed` is initialized using the `init(location:heading:pitch:horizontalAngle:verticalAngle:minDistance:maxDistance)` method, which takes the observer location, heading, pitch, view angles, and distance range (in meters).
+1. Create an `AGSLocationViewshed` passing in the observer location, heading, pitch, horizontal/vertical angles, and min/max distances.
+2. Set the property values on the viewshed instance for location, direction, range, and visibility properties. 
 
-`AGSGeoViewTouchDelegate` is used for capturing user's interaction on map and updating the observer location. The observer location is set on the `geoView(_:didTapAtScreenPoint:mapPoint:)` method when user taps on map and on the  `geoView(_:didTouchDragToScreenPoint:mapPoint)` method when user performs touch and drag interaction on map. The touch and drag event is only raised if the `geoView:(_:didTouchDownAtScreenPoint:mapPoint:completion)` method has passed `true` to the completion block parameter.
+## Relevant API
 
-The sample also provides a UI control from which user can update the values of direction and field of view properties. The heading, pitch, view angles, and distances are modified using the properties of the viewshed instance. On the other hand, the visible area color, obstructed area color, and frustum outline color are set using the static properties on the base class `AGSViewshed`. This setting is applied to all viewshed analyses in the view.
+* AGSAnalysisOverlay
+* AGSArcGISSceneLayer
+* AGSArcGISTiledElevationSource
+* AGSLocationViewshed
+* AGSViewshed
+
+## About the data
+
+The scene shows a [buildings layer in Brest, France](https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0) hosted on ArcGIS Online.
+
+## Tags
+
+3D, frustum, LocationViewshed, Scene, viewshed, visibility analysis

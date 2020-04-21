@@ -1,13 +1,30 @@
 # Line of sight (location)
 
-This sample demonstrates how to interactively place a line of sight between two locations.
+Perform a line of sight analysis between two points in real time.
 
-![](image1.png)
+![Line of sight (location)](line-of-sight-location.png)
+
+## Use case
+
+A line of sight analysis can be used to assess whether a view is obstructed between an observer and a target. Obstructing features could either be natural, like topography, or man-made, like buildings. Consider an events planning company wanting to commemorate a national event by lighting sequential beacons across hill summits or roof tops. To guarantee a successful event, ensuring an unobstructed line of sight between neighboring beacons would allow each beacon to be activated as intended.
+
+## How to use the sample
+
+Tap on the map to set the observer location. Tap and hold to drag the line of sight target. A red segment on the line means the view between observer and target is obstructed, whereas green means the view is unobstructed. 
 
 ## How it works
 
-`AGSLocationLineOfSight` is created using the `init(observerLocation:targetLocation:)` initializer that takes observer and target locations. As a result of the analysis, a line is rendered between the observer and target with green color representing visible segment and red color representing obstructed segment. Analysis overlay is used to render the results of visual analysis on the scene view.
+1. Create an `AGSAnalysisOverlay` and add it to the scene view.
+2. Track the screen taps using the `AGSGeoViewTouchDelegate`. 
+3. Create an `AGSLocationLineOfSight` with the map points.
+4. Update the target location when needed.
 
-The line width used to render analysis results is set using the `setLineWidth()` method on the base class for the line of sight analysis called `AGSLineOfSight`. This setting is applied to all line of sight analyses in the view.
+## Relevant API
 
-`AGSGeoViewTouchDelegate` is used for capturing user's interaction on map and updating the `observerLocation` and `targetLocation`. The observer location is set in the `geoView(_:didTapAtScreenPoint:mapPoint:)` method when user taps on the map. The target location is updated in the `geoView(_:didLongPressAtScreenPoint:mapPoint:)` method when user performs long-pressed gesture at a specified location and in the `geoView(_:didMoveLongPressToScreenPoint:mapPoint:)` method when user drags the target location during a long press interaction.
+* AGSAnalysisOverlay
+* AGSLocationLineOfSight
+* AGSSceneView
+
+## Tags
+
+3D, line of sight, visibility, visibility analysis

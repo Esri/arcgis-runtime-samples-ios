@@ -1211,7 +1211,7 @@
 				<key>storyboardName</key>
 				<string>AnalyzeHotspots</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to execute a geoprocessing task to calculate a hotspot analysis based on the frequency of 911 calls.</string>
+				<string>Use a geoprocessing service and a set of features to identify statistically significant hot spots and cold spots.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1219,7 +1219,7 @@
 				<key>storyboardName</key>
 				<string>StatisticalQuery</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.</string>
+				<string>Query a table to get aggregated statistics back for a specific field.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1227,7 +1227,7 @@
 				<key>storyboardName</key>
 				<string>StatisticalQueryGroupAndSort</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to query a feature table to get statistics for one or more specified fields. The results can be grouped and sorted using one or more fields in the table.</string>
+				<string>Query a feature table for statistics, grouping and sorting by different fields.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1235,7 +1235,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedGeoprocessing</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
+				<string>Calculate a viewshed using a geoprocessing service, in this case showing what parts of a landscape are visible from points on mountainous terrain.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1243,7 +1243,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedCamera</string>
 				<key>descriptionText</key>
-				<string>Shows how to create a location viewshed from a camera.</string>
+				<string>Analyze the viewshed for a camera. A viewshed shows the visible and obstructed areas from an observer&apos;s vantage point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1251,7 +1251,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedLocation</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to interactively edit a viewshed analysis in a scene and see updates on-the-fly.</string>
+				<string>Perform a viewshed analysis from a defined vantage point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1259,7 +1259,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedGeoElement</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to construct a viewshed so that it updates automatically relative to a moving GeoElement.</string>
+				<string>Analyze the viewshed for an object (geo element) in a scene.</string>
 				<key>dependency</key>
 				<array>
 					<string>Bradley3DModel</string>
@@ -1271,7 +1271,7 @@
 				<key>storyboardName</key>
 				<string>LineOfSightLocation</string>
 				<key>descriptionText</key>
-				<string>Place a line of sight between two locations.</string>
+				<string>Perform a line of sight analysis between two points in real time.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1279,7 +1279,7 @@
 				<key>storyboardName</key>
 				<string>LineOfSightGeoElement</string>
 				<key>descriptionText</key>
-				<string>Line of sight between an observer and a moving GeoElement</string>
+				<string>Show a line of sight between two moving objects.</string>
 				<key>dependency</key>
 				<array>
 					<string>Dolmus3DModel</string>
@@ -1291,7 +1291,7 @@
 				<key>storyboardName</key>
 				<string>DistanceMeasurementAnalysis</string>
 				<key>descriptionText</key>
-				<string>Demonstrates measuring 3D distances between two points in a scene.</string>
+				<string>Measure distances between two points in 3D.</string>
 			</dict>
 		</array>
 	</dict>

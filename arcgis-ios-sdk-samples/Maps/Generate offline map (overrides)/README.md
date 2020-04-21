@@ -1,67 +1,63 @@
-# Generate Offline Map (Overrides)
+# Generate offline map (overrides)
 
-## Description
-Use the `AGSOfflineMapTask`, with the overrides, to take a webmap offline. The overrides workflow allows you to adjust the settings used for taking each layer in the map offline. For a simple example of how you take a map offline, please consult the "Generate Offline Map" sample.
+Take a web map offline with additional options for each layer.
 
-For applications where you just need to take all layers offline, use the standard workflow (using only `AGSGenerateOfflineMapParameters`). For more fine-grained control over the data you are taking offline, use overrides to adjust the settings for each layer (`AGSGenerateOfflineMapParameters` in conjunction with `AGSGenerateOfflineMapParameterOverrides`). Some example use cases for the overrides approach could be when you need to:
+![Image of generate offline map overrides](generate-offline-map-overrides.png)
 
-- adjust the extent for one or more layers to be different to the rest of the map.
-- reduce the amount of data (for example tile data) downloaded for one or more layers in the map.
-- filter features to be taken offline.
-- take features with no geometry offline - for example, features whose attributes have been populated in the office, but which need a site survey for their geometry.
+## Use case
 
-
-As the web map that is being taken offline contains an Esri basemap, this sample requires that you sign in with an ArcGIS Online organizational account.
-
-
-![](image1.png)
+When taking a web map offline, you may adjust the data (such as layers or tiles) that is downloaded by using custom parameter overrides. This can be used to reduce the extent of the map or the download size of the offline map. It can also be used to highlight specific data by removing irrelevant data. Additionally, this workflow allows you to take features offline that don't have a geometry - for example, features whose attributes have been populated in the office, but still need a site survey for their geometry.
 
 ## How to use the sample
-1. Follow the prompts to sign into arcgis.com.
-2. Tap the "Generate Offline Map (Overrides)" button.
-3. Use the sliders to adjust the minimum and maximum scale levels of the Streets basemap to be taken offline.
-4. Use the slider to set the buffer radius for the Streets basemap. 
-5. Turn off the switches to skip the System Valves and Service Connections layers.
-6. Use the slider to set the minimum flow rate for the features from the Hydrant layer.
-7. Turn off the switch to skip the geometry filter for the water pipes features.
-8. Click "Start Job"
-9. Watch the progress bar as the task completes.
-10. If you changed all the settings, notice the following in the generated map:
-    - The basemap does not allow you to zoom past a certain range.
-    - The basemap is padded around the original area of interest.
-    - The pipe layers extends beyond the target area.
-    - The System Valves and Service Connections are omitted.
-    - The Hydrants layer contains a subset of the original features.
 
-# How it works
-The sample creates a `AGSPortalItem` object using a web map’s ID. This portal item is also used to initialize a map and an `AGSOfflineMapTask` object. When the button is clicked, the sample requests the default parameters for the task, with the selected extent, by calling `defaultGenerateOfflineMapParameters` on the `AGSOfflineMapTask`. Once the parameters are retrieved, they are used to create a set of `AGSGenerateOfflineMapParameterOverrides` by calling `generateOfflineMapParameterOverrides` on the same `AGSOfflineMapTask`. The overrides are then adjusted so that specific layers will be taken offline using custom settings.
+Sign in with an ArcGIS Online account when prompted for credentials (taking web maps offline requires an account) and modify the overrides parameters:
 
-### Streets Basemap (adjust scale range)
-In order to minimize the download size for offline map, this sample reduces the scale range for the "World Streets Basemap" layer by adjusting the relevant `AGSExportTileCacheParameters` in the `AGSGenerateOfflineMapParameterOverrides`. The basemap layer is used to contsruct an `AGSOfflineMapParametersKey`object. The key is then used to retrieve the specific `AGSExportTileCacheParameters` for the basemap and the `levelIDs` are updated to skip unwanted levels of detail (based on the values selected in the UI). Note that the original "Streets" basemap is swapped for the "for export" [version of the service](https://www.arcgis.com/home/item.html?id=e384f5aa4eb1433c92afff09500b073d).
+* Use the sliders to adjust the the minimum and maximum scale levels and buffer radius to be taken offline for the streets basemap.
+* Toggle the switches for the feature operational layers you want to include in the offline map.
+* Use the min hydrant flow rate slider to only download features with a flow rate higher than this value.
+* Turn on the "Water Pipes" switch if you want to crop the water pipe features to the extent of the map.
 
-### Streets Basemap (buffer extent)
-To provide context beyond the study area, the extent for streets basemap is padded. Again, the key for the basemap layer is used to obtain the key and the default extent `AGSGeometry` is retrieved. This extent is then padded (by the distance specified in the UI) using the `class AGSGeometryEngine.bufferGeometry(_:byDistance:)` function and applied to the `AGSExportTileCacheParameters` object.
+After you have set up the overrides to your liking, tap "Start" to start the download. A progress bar will display. Tap "Cancel" if you want to stop the download. When the download is complete, the view will display the offline map. Pan around to see that it is cropped to the download area's extent.
 
-### System Valves and Service Connections (skip layers)
-In this example, the survey is primarily concerned with the Hydrants layer, so other information is not taken offline: this keeps the download smaller and reduces clutter in the offline map. The two layers "System Valves" and "Service Connections" are retrieved from the operational layers list of the map. They are then used to construct an `AGSOfflineMapParametersKey`. This key is used to obtain the relevant `AGSGenerateGeodatabaseParameters` from the `generateGeodatabaseParameters` property of `AGSGenerateOfflineMapParameterOverrides `. The `AGSGenerateLayerOption` for each of the layers is removed from the geodatabse parameters's `layerOptions` by checking the `serviceLayerID`. Note, that you could also choose to download only the schema for these layers by setting the `queryOption` to `.none`.   
+## How it works
 
-### Hydrant Layer (filter features)
-Next, the hydrant layer is filtered to exclude certain features. This approach could be taken if the offline map is intended for use with only certain data—for example, where a re-survey is required. To achieve this, a `whereClause` (for example, "FLOW >= 500") needs to be applied to the hydrant's `AGSGenerateLayerOption` in the `AGSGenerateGeodatabaseParameters`. The minimum flow rate value is obtained from the UI setting. The sample constructs a key object from the hydrant layer as in the previous step, and iterates over the available `AGSGenerateGeodatabaseParameters` until the correct one is found and the `AGSGenerateLayerOption` can be updated.
-
-### Water Pipes Dataset (skip geometry filter)
-Lastly, the water network dataset is adjusted so that the features are downloaded for the entire dataset, rather than clipped to the area of interest. Again, the key for the layer is constructed using the layer and the relevant `AGSGenerateGeodatabaseParameters` are obtained from the overrides dictionary. The layer options are then adjusted to set `useGeometry` to false.
-
-### Running the job
-Having adjusted the `AGSGenerateOfflineMapParameterOverrides` to reflect the custom requirements for the offline map, the original parameters and the custom overrides are used to create a `AGSGenerateOfflineMapJob` object from the offline map task. This job is then started. To provide feedback to the user, the `progress` property of `AGSGenerateOfflineMapJob` is displayed in a sheet. Upon successful completion, the map view is updated with the offline map. 
+1. Load a web map from an `AGSPortalItem`. Authenticate with the portal if required.
+2. Create an `AGSOfflineMapTask` with the map.
+3. Generate default task parameters using the extent area you want to download with `AGSOfflineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest:completion:)` method.
+4. Generate additional "override" parameters using the default parameters with `AGSOfflineMapTask.generateOfflineMapParameterOverrides(with:completion:)` method.
+5. For the basemap:
+    * Get the parameters `AGSOfflineMapParametersKey` for the basemap layer.
+    * Get the `AGSExportTileCacheParameters` for the basemap layer from `AGSGenerateOfflineMapParameterOverrides exportTileCacheParameters[key]` with the key above.
+    * Set the level IDs you want to download by setting the `levelIDs` property of `AGSExportTileCacheParameters`.
+    * To buffer the extent, set a buffered geometry to the `areaOfInterest` property of `AGSExportTileCacheParameters`, where the buffered geometry can be calculated with the `AGSGeometryEngine`.
+6. To remove operational layers from the download:
+    * Create an `AGSOfflineMapParametersKey` with the operational layer.
+    * Use the key to obtain the relevant `AGSGenerateGeodatabaseParameters` from the `generateGeodatabaseParameters` property of `AGSGenerateOfflineMapParameterOverrides`.
+    * Loop through each `AGSGenerateLayerOption` and remove it from the geodatabase parameters' `layerOptions` if the layer option's ID matches the `serviceLayerID`.
+7. To filter the features downloaded in an operational layer:
+    * Get the layer options for the operational layer using the directions in step 6.
+    * Loop through the layer options. If the option layerID matches the layer's ID, set the filter's `whereClause` property.
+8. To not crop a layer's features to the extent of the offline map (default is true):
+    * Set `useGeometry` property of `AGSGenerateLayerOption` to false.
+9. Create an `AGSGenerateOfflineMapJob` with `AGSOfflineMapTask.generateOfflineMapJob(with:parameterOverrides:downloadDirectory:)`. Start the job with `AGSGenerateOfflineMapJob.start(statusHandler:completion:)`.
+10. When the job is done, get a reference to the offline map with `AGSGenerateOfflineMapResult.offlineMap`.
 
 ## Relevant API
-- `AGSOfflineMapTask`
-- `AGSGenerateGeodatabaseParameters`
-- `AGSGenerateOfflineMapParameters`
-- `AGSGenerateOfflineMapParameterOverrides`
-- `AGSGenerateOfflineMapJob`
-- `AGSGenerateOfflineMapResult`
-- `AGSExportTileCacheParameters`
+
+* AGSExportTileCacheParameters
+* AGSGenerateGeodatabaseParameters
+* AGSGenerateLayerOption
+* AGSGenerateOfflineMapJob
+* AGSGenerateOfflineMapParameterOverrides
+* AGSGenerateOfflineMapParameters
+* AGSGenerateOfflineMapResult
+* AGSOfflineMapParametersKey
+* AGSOfflineMapTask
+
+## Additional information
+
+For applications where you just need to take all layers offline, use the standard workflow (using only `AGSGenerateOfflineMapParameters`). For a simple example of how you take a map offline, please consult the "Generate offline map" sample.
 
 ## Tags
-Offline
+
+adjust, download, extent, filter, LOD, offline, override, parameters, reduce, scale range, setting

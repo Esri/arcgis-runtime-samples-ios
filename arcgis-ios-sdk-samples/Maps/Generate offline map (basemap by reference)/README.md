@@ -1,8 +1,8 @@
-# Generate offline map (basemap by reference)
+# Generate offline map with local basemap
 
-Use the `AGSOfflineMapTask` to take a web map offline, but instead of downloading an online basemap, use one which is already on the device.
+Take a web map offline, but instead of downloading an online basemap, use one which is already on the device.
 
-![Screenshot](image1.png)
+![Image of generate offline map with local basemap](generate-offline-map-with-local-basemap.png)
 
 ## Use case
 
@@ -20,8 +20,8 @@ The author of a web map can support the use of basemaps which are already on a d
 
 ## How to use the sample
 
-1. Click on Generate Offline Map.
-2. You will be prompted to choose whether you wish to download the online basemap or use the basemap which is already on the device.
+1. Tap on "Generate Offline Map".
+2. You will be prompted to choose whether you wish to download the online basemap or use the "naperville_imagery.tpk" basemap which is already on the device.
 3. If you choose to download the online basemap, the offline map will be generated with the same (topographic) basemap as the online web map.
 4. To download the Esri basemap, you may be prompted to sign in to ArcGIS.com.
 5. If you choose to use the basemap from the device, the offline map will be generated with the local imagery basemap. The download will be quicker since no tiles are exported or downloaded.
@@ -29,7 +29,7 @@ The author of a web map can support the use of basemaps which are already on a d
 
 ## How it works
 
-The sample creates an `AGSPortalItem` object using a web map's ID. This portal item is used to initialize an `AGSOfflineMapTask` object. When the button is clicked, the sample requests the default parameters for the task, with the selected extent, by calling `AGSOfflineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest:completion:)`. 
+The sample creates an `AGSPortalItem` object using a web map's ID. This portal item is used to initialize an `AGSOfflineMapTask` object. When the button is tapped, the sample requests the default parameters for the task, with the selected extent, by calling `AGSOfflineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest:completion:)`. 
 
 Once the parameters are created, the application checks the `AGSGenerateOfflineMapParameters.referenceBasemapFilename` property. The author of an online web map can configure this setting to indicate the name of a suitable basemap. In this example, the application checks the app bundle for the suggested "naperville_imagery.tpk" file - and if found, asks the user whether they wish to use this instead of downloading.
 
@@ -41,10 +41,10 @@ When the `AGSGenerateOfflineMapJob` is started it will check whether `AGSGenerat
 
 ## Relevant API
 
-* `AGSOfflineMapTask`
-* `AGSGenerateOfflineMapParameters`
-* `AGSGenerateOfflineMapJob`
-* `AGSGenerateOfflineMapResult`
+* AGSOfflineMapTask
+* AGSGenerateOfflineMapParameters
+* AGSGenerateOfflineMapJob
+* AGSGenerateOfflineMapResult
 
 ## Offline data
 
@@ -52,4 +52,4 @@ This sample uses [naperville_imagery.tpk](https://arcgisruntime.maps.arcgis.com/
 
 ## Tags
 
-Offline
+basemap, download, local, offline, save, web map

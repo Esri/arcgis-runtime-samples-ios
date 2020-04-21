@@ -210,7 +210,7 @@
 				<key>storyboardName</key>
 				<string>GenerateOfflineMapOverrides</string>
 				<key>descriptionText</key>
-				<string>Override the default parameters when taking a map from ArcGIS Portal offline.</string>
+				<string>Take a web map offline with additional options for each layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -540,7 +540,7 @@
 				<key>storyboardName</key>
 				<string>QueryMapImageSublayer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to execute an attribute and spatial query on the sublayers of an ArcGIS map image layer.</string>
+				<string>Find features in a sublayer based on attributes and location.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -548,7 +548,7 @@
 				<key>storyboardName</key>
 				<string>SymbolizeShapefile</string>
 				<key>descriptionText</key>
-				<string>Symbolize a feature layer on a map using a shapefile</string>
+				<string>Display a shapefile with custom symbology.</string>
 				<key>dependency</key>
 				<array>
 					<string>SubdivisionsShapefile</string>

@@ -157,7 +157,7 @@
 				<key>storyboardName</key>
 				<string>IdentifyLayers</string>
 				<key>descriptionText</key>
-				<string>You can tap on map and get all the elements present at that location from different layers</string>
+				<string>Identify features in all layers in a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

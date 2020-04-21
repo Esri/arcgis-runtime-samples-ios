@@ -177,7 +177,7 @@
 				<key>storyboardName</key>
 				<string>MobileMapSearchRoute</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to search and route using data in a map package</string>
+				<string>Display maps and use locators to enable search and routing offline using a mobile map package.</string>
 				<key>dependency</key>
 				<array>
 					<string>YellowstoneMMPK</string>

@@ -214,7 +214,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Generate offline map (basemap by reference)</string>
+				<string>Generate offline map with local basemap</string>
 				<key>descriptionText</key>
 				<string>Take a web map offline, but instead of downloading an online basemap, use one which is already on the device.</string>
 				<key>storyboardName</key>

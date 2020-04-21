@@ -16,7 +16,7 @@ Use the slider or pinch to rotate the map. If the map is not pointed north, the 
 
 1. Instantiate an `AGSMap` object.
 2. Set the map to an `AGSMapView` object.
-3. Use `AGSMapViewCommon.setViewpointRotation(_:completion:)` method to change the rotation angle.
+3. Use `AGSMapView.setViewpointRotation(_:completion:)` method to change the rotation angle.
 
 ## Relevant API
 

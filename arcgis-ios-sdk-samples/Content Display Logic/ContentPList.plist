@@ -117,7 +117,7 @@
 				<key>storyboardName</key>
 				<string>MapRotation</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to rotate a map view. You can pinch to rotate or do it programmatically.</string>
+				<string>Rotate a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

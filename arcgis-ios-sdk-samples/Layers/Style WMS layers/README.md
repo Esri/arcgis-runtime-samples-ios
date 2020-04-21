@@ -1,23 +1,28 @@
 # Style WMS layers
 
-This sample demonstrates how to discover available styles and apply them to WMS sublayers.
+Change the style of a Web Map Service (WMS) layer.
 
-![image](image1.png)
+![Style WMS layers sample](style-wms-layers.png)
+
+## Use case
+
+Layers hosted on WMS may have different pre-set styles available to apply to them. Swapping between these styles can help during visual examination of the data. For example, increasing the contrast of satellite images can help in identifying urban and agricultural areas within forested areas.
 
 ## How to use the sample
 
-Use the buttons to switch between styles.
+Once the layer loads, tap the bottom two buttons to select a type of style.
 
 ## How it works
 
-This sample examines the WMS layer's sublayers and checks the sublayer info for a list of available styles. The `currentStyle` is then set on the WMS sublayer.
+1. Create an `AGSWMSLayer` specifying the URL of the service and the layer names you want.
+2. When the layer is done loading, get its array of `AGSWMSSublayer`s.
+3. Change the current style of the `AGSWMSSublayer` to one of the styles from its `styles` array..
 
 ## Relevant API
 
-* `AGSWMSLayerInfo`
-* `AGSWMSLayer.sublayers`
-* `AGSWMSLayerInfo.styles`
-* `AGSWMSSublayer.currentStyle`
+* AGSWMSLayer
+* AGSWMSSublayer
+* AGSWMSSublayerInfo
 
 ## About the data
 
@@ -25,4 +30,4 @@ This sample uses a public service managed by the State of Minnesota and provides
 
 ## Tags
 
-WMS, styles, imagery
+imagery, styles, visualization, WMS

@@ -516,7 +516,7 @@
 				<key>storyboardName</key>
 				<string>StyleWebMapServiceLayer</string>
 				<key>descriptionText</key>
-				<string>Shows how to change the style of a WMS layer.</string>
+				<string>Change the style of a Web Map Service (WMS) layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

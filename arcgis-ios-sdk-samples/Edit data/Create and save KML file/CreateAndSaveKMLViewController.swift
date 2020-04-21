@@ -82,6 +82,7 @@ class CreateAndSaveKMLViewController: UIViewController {
     
     // Reset the KML.
     @IBAction func resetKML() {
+        actionButtonItem.isEnabled = false
         mapView.map?.operationalLayers.removeAllObjects()
         kmlDocument = AGSKMLDocument()
         let kmlDataset = AGSKMLDataset(rootNode: kmlDocument)
@@ -225,7 +226,6 @@ class CreateAndSaveKMLViewController: UIViewController {
         super.viewDidLoad()
 
         resetKML()
-        actionButtonItem.isEnabled = false
         updateToolbarItems()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [

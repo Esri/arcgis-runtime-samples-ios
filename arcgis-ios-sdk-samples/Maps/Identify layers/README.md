@@ -1,16 +1,34 @@
 # Identify layers
 
-This sample demonstrates how to identify features on a map. These features could be from different layers present in the map.
+Identify features in all layers in a map. 
+
+![Image of identify layers](identify-layers.png)
+
+## Use case
+
+Identify layers allows users to tap on a map, returning features at that location across multiple layers. Because some layer types have sublayers, the sample recursively counts results for sublayers within each layer.
 
 ## How to use the sample
 
-Tap on map to get features at that location. The features are returned from different layers in the map.
-
-![](image1.png)
+Tap to identify features. An alert will show all layers with features under the cursor, as well as a layer count.
 
 ## How it works
 
-`AGSMapView` has a `identifyLayers(atScreenPoint:tolerance:returnPopupsOnly:maximumResultsPerLayer:completion:)` method that is being used in the sample. This method takes the tap location, a tolerance and maximum results per layer and in the completion block provides an array of `AGSIdentifyLayerResult` objects. For a feature layer, the result object might have the `geoElements` property populated, if any elements are present at that location. For a map image layer, the result object might have sublayer result objects populated with geoElements or they might in turn have sublayer result objects.
+1. The tapped position is passed to `AGSGeoView.identifyLayers(atScreenPoint:tolerance:returnPopupsOnly:maximumResultsPerLayer:completion:)` method.
+2. For each `AGSIdentifyLayerResult` in the results, features are counted. 
+    * Note: there is one identify result per layer with matching features; if the feature count is 0, that means a sublayer contains the matching features.
 
+## Relevant API
 
+* AGSGeoView.identifyLayers(atScreenPoint:tolerance:returnPopupsOnly:maximumResultsPerLayer:completion:)
+* AGSIdentifyLayerResult
+* AGSIdentifyLayerResult.layerContent.name
+* AGSIdentifyLayerResult.sublayerResults
 
+## Additional information
+
+The GeoView supports two methods of identify: `identifyLayer`, which identifies features within a specific layer and `identifyLayers`, which identifies features for all layers in the current view.
+
+## Tags
+
+identify, recursion, recursive, sublayers

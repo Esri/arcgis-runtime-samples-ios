@@ -1,43 +1,37 @@
 # Query a map image sublayer
 
-This sample demonstrates how to execute an attribute and spatial query on the sublayers of an ArcGIS map image layer.    
+Find features in a sublayer based on attributes and location.
 
-Sublayers of an `AGSArcGISMapImageLayer` may expose a `AGSServiceFeatureTable` through a `table` property. This allows you to perform the same queries available when working with a table from a `AGSFeatureLayer`: attribute query, spatial query, statistics query, query for related features, and so on.
+![Query a map image sublayer sample](query-map-image.png)
 
-![Image](image1.png)
+## Use case
+
+Sublayers of an `AGSArcGISMapImageLayer` may expose an `AGSServiceFeatureTable` through a n `AGStable` property. This allows you to perform the same queries available when working with a table from a n `AGSFeatureLayer`: attribute query, spatial query, statistics query, query for related features, etc. An image layer with a sublayer of counties can be queried by population to only show those above a minimum population.
 
 ## How to use the sample
 
- 1. Launch the sample, the map displays at an extent where individual states, counties, and cities can be seen clearly.
- 2. Provide a numeric value for the population query (values under 1810000 will produce a selection in all layers).
- 3. Click the `Query in Extent` button to find all features in the current map extent that have a population greater than the value entered.
-   - Any current selection is cleared from the map.
-   - If a non-numeric value was entered, an error message is displayed.
- 4. All features (cities, counties, or states) meeting the query criteria are selected in the map.
-   - If no features meet the query criteria, a message displays stating zero features were selected.
- 5. Experiment with different map extents and population values and see the results.
+Specify a minimum population in the input field (values under 1810000 will produce a selection in all layers) and tap the "Query" button to query the sublayers in the current view extent. After a short time, the results for each sublayer will appear as graphics.
 
 ## How it works
 
-The `AGSArcGISMapImageLayer` in the map uses the `USA` map service as its data source. This service is hosted by ArcGIS Server, and is composed of four sublayers: `states`, `counties`, `cities`, and `highways`.
-The sublayers (represented by `AGSArcGISMapImageSublayer`), expose a `AGSServiceFeatureTable` through a `table` property. A query is created to find features with a population greater than the value provided that
-are also in the current map extent. Since the `cities`, `counties`, and `states` tables all have a `POP2000` field, they can all execute the same query.
-The features selected by the query are selected in the corresponding layers to display the results in the map.
+1. Create an `AGSArcGISMapImageLayer` object using the URL of an image service.
+2. After loading the layer, get the sublayer you want to query with from the map image layer's `mapImageSublayers` array.
+3. Load the sublayer, and then get its `AGSServiceFeatureTable` with `AGSsublayer.getTable()`.
+4. Create `AGSQueryParameters` and define its `whereClause` and `geometry`.
+5. Use `AGSFeatureTable.queryFeatures(with:completion:)` to get an `AGSFeatureQueryResult` with features matching the query. The result is an iterable of features.
 
+## About the data
+
+The `AGSArcGISMapImageLayer` in the map uses the "USA" map service as its data source. This service is hosted by ArcGIS Online, and is composed of four sublayers: "states", "counties", "cities", and "highways".
+Since the `cities`, `counties`, and `states` tables all have a `POP2000` field, they can all execute a query against that attribute and a map extent.
 
 ## Relevant API
 
- - `AGSServiceFeatureTable`
- - `AGSArcGISMapImageLayer`
- - `AGSArcGISMapImageSublayer.load(completion:)`
- - `AGSArcGISMapImageSublayer`
- - `AGSArcGISMapImageSublayer.table` 
-
-## Additional information
-
-An `AGSArcGISMapImageSublayer` must be loaded before accessing its metadata or table. Use `AGSArcGISMapImageSublayer.load(completion:)` to recursively load all sublayers and tables associated with a map image layer.
-Some sublayers do not have an associated table (group layers, for example) and some may not support specific types of queries. Consult the map service metadata for details.
+* AGSArcGISMapImageLayer
+* AGSArcGISMapImageSublayer
+* AGSQueryParameters
+* AGSFeatureTable
 
 ## Tags
 
-Query, Sublayer, MapServer, Table
+search and query

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzM-2V-EQz">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzM-2V-EQz">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,46 +17,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7t2-g1-K1m" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="627"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqt-1N-pJU">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="gyi-ow-8hI"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0Ns-WL-avp"/>
-                                    <barButtonItem title="Manage Geopackage Layers" id="MnU-iW-y5n">
-                                        <connections>
-                                            <segue destination="OWX-qD-jbh" kind="popoverPresentation" popoverAnchorBarButtonItem="MnU-iW-y5n" id="Y93-aS-VQj">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WoS-IH-V2u"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="JPl-pb-ybD" firstAttribute="bottom" secondItem="7t2-g1-K1m" secondAttribute="bottom" id="0zZ-C7-DhL"/>
                             <constraint firstItem="7t2-g1-K1m" firstAttribute="leading" secondItem="LjG-Av-qXX" secondAttribute="leading" id="1MU-VI-e8K"/>
-                            <constraint firstItem="7t2-g1-K1m" firstAttribute="bottom" secondItem="wqt-1N-pJU" secondAttribute="top" id="CmM-Pg-5on"/>
-                            <constraint firstItem="wqt-1N-pJU" firstAttribute="trailing" secondItem="JPl-pb-ybD" secondAttribute="trailing" id="JCB-qU-BTb"/>
+                            <constraint firstItem="7t2-g1-K1m" firstAttribute="top" secondItem="LjG-Av-qXX" secondAttribute="top" constant="20" symbolic="YES" id="RcT-ID-Mex"/>
                             <constraint firstItem="7t2-g1-K1m" firstAttribute="trailing" secondItem="LjG-Av-qXX" secondAttribute="trailing" id="VR1-1v-ga7"/>
-                            <constraint firstItem="JPl-pb-ybD" firstAttribute="bottom" secondItem="wqt-1N-pJU" secondAttribute="bottom" id="ch1-dn-ias"/>
-                            <constraint firstItem="wqt-1N-pJU" firstAttribute="leading" secondItem="JPl-pb-ybD" secondAttribute="leading" id="ezQ-N5-OCE"/>
-                            <constraint firstItem="7t2-g1-K1m" firstAttribute="top" secondItem="JPl-pb-ybD" secondAttribute="top" id="ipI-8Y-GWx"/>
-                            <constraint firstItem="7t2-g1-K1m" firstAttribute="top" secondItem="LjG-Av-qXX" secondAttribute="top" id="nTP-Da-lbR"/>
+                            <constraint firstAttribute="bottom" secondItem="7t2-g1-K1m" secondAttribute="bottom" constant="20" symbolic="YES" id="nz0-7K-8mL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JPl-pb-ybD"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="0zZ-C7-DhL"/>
-                                <exclude reference="nTP-Da-lbR"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="7t2-g1-K1m" id="XEO-Vi-OZ9"/>
@@ -67,43 +37,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AX4-DP-x80" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-494" y="-195"/>
-        </scene>
-        <!--Layers View Controller-->
-        <scene sceneID="0a6-en-TCN">
-            <objects>
-                <tableViewController id="OWX-qD-jbh" customClass="GPKGLayersViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="S4f-PP-p3i">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GPKGLayersCell" textLabel="l8A-vI-Ixa" style="IBUITableViewCellStyleDefault" id="K7b-hD-pnh">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K7b-hD-pnh" id="bUp-MK-9FT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Layer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l8A-vI-Ixa">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="OWX-qD-jbh" id="Evq-J1-rNL"/>
-                            <outlet property="delegate" destination="OWX-qD-jbh" id="2fE-7t-Lxc"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="luM-CF-dqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="314" y="-196"/>
         </scene>
     </scenes>
 </document>

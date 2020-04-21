@@ -508,7 +508,7 @@
 				<key>storyboardName</key>
 				<string>WMSLayerUsingURL</string>
 				<key>descriptionText</key>
-				<string>Open a WMS layer from a URL and display it in a map</string>
+				<string>Display a WMS layer using a WMS service URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

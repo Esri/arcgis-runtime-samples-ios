@@ -16,7 +16,7 @@ Pan and zoom to explore the vector tile basemap.
 ## How it works
 
 1. Construct an `AGSArcGISVectorTiledLayer` with the URL of a custom style.
-2. Create an `AGSBasemap` from the `AGSArcGISVectorTiledLayer`.
+2. Create an `AGSBasemap` from the `AGSArcGISVectorTiledLayer`.
 3. Assign the `AGSBasemap` to the map's `basemap`.
 
 ## Relevant API

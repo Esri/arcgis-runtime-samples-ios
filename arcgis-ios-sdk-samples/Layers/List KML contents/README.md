@@ -1,29 +1,37 @@
 # List KML contents
 
-List the contents of a KML file. KML files can contain a hierarchy of features, including network links to other KML content.
+List the contents of a KML file.
 
-![](image1.png)
+![List KML contents](list-kml-contents.png)
+
+## Use case
+
+KML files can contain a hierarchy of features, including network links to other KML content. A user may wish to traverse through the contents of KML nodes to know what data is contained within each node and, recursively, their children.
 
 ## How to use the sample
 
-All nodes of the KML file are shown in the table view, with the hierarchy indicated by indentation. Tap a node to see its extent in a scene view. Not all nodes have an extent (e.g. screen overlays).
+The contents of the KML file are shown in a tree. Select a node to zoom to that node. Not all nodes can be zoomed to (e.g. screen overlays).
 
 ## How it works
 
-1. A local KML file is loaded as an `AGSKMLDataset` to be used throughout the sample.
-2. All KML nodes are recursively set to be visible—since some may not be visible by default—and loaded into a array to use as the table's data source, starting with the `rootNodes` property.
-3. When a cell is tapped, the entire KML dataset is shown as a `AGSKMLLayer` in a `AGSSceneView`. A viewpoint for the node is created, if possible, and set with the `setViewpoint` function of `AGSSceneView`.
+1. Apply an `AGSKMLDataset` to the `AGSSceneView`'s `kmlDatasaet`.
+2. Explore the root nodes of the `AGSKMLDataset` recursively explored to create a view model.
+  * Each node is enabled for display at this step. KML files may include nodes that are turned off by default.
+3. When a node is selected, use the node's `extent` to determine a `AGSViewpoint` and set it to the `AGSSceneView`.
 
 ## Relevant API
 
-* `AGSKMLDataset`
-* `AGSKMLNode`
-* `AGSKMLLayer`
-
-## About the data
-
-This is an example KML file meant to demonstrate how Runtime supports several common features.
+* AGSKMLContainer
+* AGSKMLDataset
+* AGSKMLDocument
+* AGSKMLFolder
+* AGSKMLGroundOverlay
+* AGSKMLLayer
+* AGSKMLNetworkLink
+* AGSKMLNode
+* AGSKMLPlacemark
+* AGSKMLScreenOverlay
 
 ## Tags
 
-KML, KMZ, OGC, Keyhole
+Keyhole, KML, KMZ, layers, OGC

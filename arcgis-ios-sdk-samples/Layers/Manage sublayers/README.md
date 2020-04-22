@@ -2,8 +2,8 @@
 
 Add, remove, or rearrange existing sublayers in a map image layer.
 
-![Map displaying all sublayers](image1.png)
-![Sublayer settings](image2.png)
+![Map displaying all sublayers](manage-sublayers-1.png)
+![Sublayer settings](manage-sublayers-2.png)
 
 # Use case
 

@@ -2,7 +2,7 @@
 
 Play tours in KML files.
 
-![Screenshot](image1.png)
+![Screenshot](play-kml-tour.png)
 
 ## Use case
 
@@ -14,26 +14,24 @@ The sample will load the KMZ file from ArcGIS Online. When a tour is found, the 
 
 ## How it works
 
-1. Load the KML dataset and add it to a layer.
+1. Load the `KMLDataset` and add it to a layer.
 2. Create the KML tour controller. Wire up the buttons to the `play()`, `pause()`, and `rewind()` methods.
 3. Explore the tree of KML content and find a KML tour. Once a tour is found, provide it to the KML tour controller.
 4. Enable the buttons to allow the user to play, pause, and reset the tour.
 
 ## Relevant API
 
-- `AGSKMLTourController`
-- `AGSKMLTourController.tour`
-- `AGSKMLTourController.play()`
-- `AGSKMLTourController.pause()`
-- `AGSKMLTourController.reset()`
-- `AGSKMLTour`
-- `AGSKMLTour.tourStatus`
+* AGSKMLTourController
+* AGSKMLTourController.tour
+* AGSKMLTourController.play()
+* AGSKMLTourController.pause()
+* AGSKMLTourController.reset()
+* AGSKMLTour
+* AGSKMLTour.tourStatus
 
 ## Offline data
 
-Data will be downloaded from ArcGIS Online by the sample viewer automatically.
-
-* [Esri_tour.kmz](https://arcgisruntime.maps.arcgis.com/home/item.html?id=f10b1d37fdd645c9bc9b189fb546307c)
+This sample uses the [Esri_tour.kmz](https://arcgisruntime.maps.arcgis.com/home/item.html?id=f10b1d37fdd645c9bc9b189fb546307c).  It is downloaded from ArcGIS Online automatically.
 
 ## About the data
 

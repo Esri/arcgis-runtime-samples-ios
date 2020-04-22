@@ -226,11 +226,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Read a geopackage</string>
+				<string>Read geopackage</string>
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>
 				<key>descriptionText</key>
-				<string>Add rasters and feature tables from a GeoPackage to a map.</string>
+				<string>Add rasters and feature tables from a geopackage to a map.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>

@@ -2,7 +2,7 @@
 
 Display your location history on the map.
 
-![](image1.png)
+![Image of show location history](show-location-history.png)
 
 ## Use case
 
@@ -10,7 +10,7 @@ You can track device location history and display it as lines and points on the 
 
 ## How to use the sample
 
-Tap 'Start tracking' to start tracking your location, which will appear as points on the map. A line will connect the points for easier visualization. Tap 'Stop tracking' to stop updating the location history.
+Tap "Start tracking" to start tracking your location, which will appear as points on the map. A line will connect the points for easier visualization. Tap "Stop tracking" to stop updating the location history.
 
 ## How it works
 
@@ -22,22 +22,22 @@ Tap 'Start tracking' to start tracking your location, which will appear as point
 
 ## Relevant API
 
-- `AGSCLLocationDataSource`
-- `AGSGraphic`
-- `AGSGraphicsOverlay`
-- `AGSLocationDataSource`
-- `AGSLocationDisplay`
-- `AGSMap`
-- `AGSMapView`
-- `AGSPolylineBuilder`
-- `AGSSimpleLineSymbol`
-- `AGSSimpleMarkerSymbol`
-- `AGSSimpleRenderer`
+* AGSCLLocationDataSource
+* AGSGraphic
+* AGSGraphicsOverlay
+* AGSLocationDataSource
+* AGSLocationDisplay
+* AGSMap
+* AGSMapView
+* AGSPolylineBuilder
+* AGSSimpleLineSymbol
+* AGSSimpleMarkerSymbol
+* AGSSimpleRenderer
 
 ## About the data
 
-The sample uses a light gray vector basemap. The default data source relies on Core Location, which works with either device sensors or location simultation.
+The sample uses a light gray vector basemap. The default data source relies on `Core Location`, which works with either device sensors or location simultation.
 
 ## Tags
 
-GPS, bread crumb, breadcrumb, history, movement, navigation, real-time, trace, track, trail
+bread crumb, breadcrumb, GPS, history, movement, navigation, real-time, trace, track, trail

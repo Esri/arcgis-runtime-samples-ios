@@ -161,11 +161,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Open mobile map (map package)</string>
+				<string>Open mobile map package</string>
 				<key>storyboardName</key>
 				<string>OpenMobileMapPackage</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to open a mobile map from a mobile map package</string>
+				<string>Display a map from a mobile map package.</string>
 				<key>dependency</key>
 				<array>
 					<string>YellowstoneMMPK</string>

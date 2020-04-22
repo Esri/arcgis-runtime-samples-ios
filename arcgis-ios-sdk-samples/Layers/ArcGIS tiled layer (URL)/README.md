@@ -15,7 +15,7 @@ Pan and zoom to explore the tiled layer basemap.
 ## How it works
 
 1. Construct an `AGSArcGISTiledLayer` with an ArcGIS Online service URL.
-2. Add the layer instance to the map's `operationalLayers` array.
+2. Add the layer instance to the map's `operationalLayers` array.
 
 ## Relevant API
 

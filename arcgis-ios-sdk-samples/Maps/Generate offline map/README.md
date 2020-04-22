@@ -14,7 +14,7 @@ When the app starts, you will be prompted to sign in using a free ArcGIS Online 
 
 ## How it works
 
-1. Create an `AGSMap` with a `AGSPortalItem` pointing to the web map.
+1. Create an `AGSMap` with an `AGSPortalItem` pointing to the web map.
 2. Create `AGSGenerateOfflineMapParameters` with `AGSOfflineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest:completion:)` specifying the download area geometry.
 3. Create an `AGSOfflineMapTask` with the map.
 4. Create the `AGSGenerateOfflineMapJob` with `AGSOfflineMapTask.generateOfflineMapJob(with:downloadDirectory:)` and start it with `AGSGenerateOfflineMapJob.start(statusHandler:completion:)`.

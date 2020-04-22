@@ -33,11 +33,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Open map (URL)</string>
+				<string>Open map URL</string>
 				<key>storyboardName</key>
 				<string>OpenMapURL</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to open a map using its url</string>
+				<string>Display a web map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

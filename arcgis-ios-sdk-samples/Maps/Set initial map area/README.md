@@ -6,7 +6,7 @@ Display the map at an initial viewpoint representing a bounding geometry.
 
 ## Use case
 
-Setting the initial viewpoint is useful when a user wishes to first load the map at a particular area of interest. 
+Setting the initial viewpoint is useful when a user wishes to first load the map at a particular area of interest.
 
 ## How to use the sample
 

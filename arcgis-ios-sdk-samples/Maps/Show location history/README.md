@@ -36,7 +36,7 @@ Tap "Start tracking" to start tracking your location, which will appear as point
 
 ## About the data
 
-The sample uses a light gray vector basemap. The default data source relies on `Core Location`, which works with either device sensors or location simultation.
+The sample uses a light gray vector basemap. The default data source relies on `Core Location`, which works with either device sensors or location simulation.
 
 ## Tags
 

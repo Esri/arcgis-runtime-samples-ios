@@ -1,6 +1,6 @@
 # Identify layers
 
-Identify features in all layers in a map. 
+Identify features in all layers in a map.
 
 ![Image of identify layers](identify-layers.png)
 

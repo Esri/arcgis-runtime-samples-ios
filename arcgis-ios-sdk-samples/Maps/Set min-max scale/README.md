@@ -16,7 +16,7 @@ Zoom in and out of the map. The zoom extents of the map are limited between the 
 
 1. Instantiate an `AGSMap` object.
 2. Set the minimum and maximum scale using the `minScale` and `maxScale` properties of `AGSMap`.
-3. Set the map to a `AGSMapView` object.
+3. Set the map to an `AGSMapView` object.
  
 ## Relevant API
 

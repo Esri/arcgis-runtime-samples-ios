@@ -13,7 +13,7 @@ A field worker might download a mobile map package to support their operations w
 
 ## How to use the sample
 
-A list of maps from a mobile map package will be displayed. If the map contains transportation networks, the list item will have a navigation icon. Tap on a map in the list to open it. If a locator task is available, click on the map to reverse geocode the location's address. If transportation networks are available, a route will be calculated between geocode locations.
+A list of maps from a mobile map package will be displayed. If the map contains transportation networks, the list item will have a navigation icon. Tap on a map in the list to open it. If a locator task is available, tap on the map to reverse geocode the location's address. If transportation networks are available, a route will be calculated between geocode locations.
 
 ## How it works
 

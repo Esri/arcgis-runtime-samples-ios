@@ -16,13 +16,13 @@ Select a preplanned map area by tapping the "Select Map" button and selecting on
 
 ## How it works
 
-1. Open the online `AGSMap` from a `AGSPortalItem` and display it.
+1. Open the online `AGSMap` from an `AGSPortalItem` and display it.
 2. Create an `AGSOfflineMapTask` using the portal item.
 3. Get the `AGSPreplannedMapArea`s from the task, and then load them.
 4. To download a selected map area, create the default parameters with `AGSOfflineMapTask.defaultDownloadPreplannedOfflineMapParameters(with:completion:)` from the task using the selected preplanned map area.
 5. Set the update mode of the preplanned map area.
 6. Call `AGSOfflineMapTask.downloadPreplannedOfflineMapJob(with:downloadDirectory:)` to find the preplanned areas.
-7. Start the job. Once it has completed, get the  `AGSDownloadPreplannedOfflineMapResult`.
+7. Start the job. Once it has completed, get the `AGSDownloadPreplannedOfflineMapResult`.
 8. Get the offline `AGSMap` from the result and display it in the `AGSMapView`.
 
 ## Relevant API
@@ -38,7 +38,6 @@ Select a preplanned map area by tapping the "Select Map" button and selecting on
 The [Naperville stormwater network map](https://arcgisruntime.maps.arcgis.com/home/item.html?id=acc027394bc84c2fb04d1ed317aac674) is based on ArcGIS Solutions for Stormwater and provides a realistic depiction of a theoretical stormwater network.
 
 ## Additional information
-
 
 `AGSDownloadPreplannedOfflineMapParameters.updateMode` can be used to set the way the preplanned map area receives updates in several ways:
 

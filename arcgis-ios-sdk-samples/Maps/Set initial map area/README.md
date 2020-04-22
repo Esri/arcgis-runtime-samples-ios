@@ -1,14 +1,31 @@
-# Set initial map area
+# Map initial extent
 
-This sample displays a map at a specific viewpoint.
+Display the map at an initial viewpoint representing a bounding geometry.
+
+![Image of map initial extent](map-initial-extent.png)
+
+## Use case
+
+Setting the initial viewpoint is useful when a user wishes to first load the map at a particular area of interest. 
+
+## How to use the sample
+
+As application is loading, initial view point is set and map view opens at the given location.
 
 ## How it works
 
-In this sample a viewpoint `AGSViewpoint` is constructed from an envelope `AGSEnvelope` defined by minimum (x,y) and maximum (x,y) values. The map's initialViewpoint is set to this viewpoint before the map is loaded by the `AGSMapview`. Upon loading the map zooms to this initial area.
+1. Instantiate an `AGSMap` object.
+2. Instantiate an `AGSViewpoint` object using an `AGSEnvelope` object.
+3. Set the starting location to the `initialViewpoint` property of the map.
+4. Set the map to an `AGSMapView` object.
+ 
+## Relevant API
 
-![](image1.png)
+* AGSMap
+* AGSEnvelope
+* AGSMapView
+* AGSViewpoint
 
+## Tags
 
-
-
-
+initial viewpoint, extent, zoom, envelope

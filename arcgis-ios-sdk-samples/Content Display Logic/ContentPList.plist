@@ -141,7 +141,7 @@
 				<key>storyboardName</key>
 				<string>MapViewScreenshot</string>
 				<key>descriptionText</key>
-				<string>You can now take a screenshot of the map view. You can use it as the thumbnail for you newly created map or simply share it with your co-workers</string>
+				<string>Take a screenshot of the map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

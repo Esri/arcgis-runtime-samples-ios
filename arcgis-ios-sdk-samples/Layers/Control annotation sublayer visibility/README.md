@@ -2,7 +2,7 @@
 
 Use annotation sublayers to gain finer control of annotation layer subtypes.
 
-![Screenshot of Control Annotation Sublayer Visibility sample](image1.png)
+![Screenshot of Control Annotation Sublayer Visibility sample](control-annotation-sublayer.png)
 
 ## Use case
 
@@ -14,13 +14,13 @@ An annotation dataset which marks valves as "Opened" or "Closed", might be set t
 
 Open the sample and take note of the visibility of the annotation. Zoom in and out to see the annotation turn on and off based on scale ranges set on the data.
 
-Tap the Sublayers button and use the switches to manually set "Open" and "Closed" annotation sublayers visibility to on or off.
+Tap the "Sublayers" button and use the switches to manually set "Open" and "Closed" annotation sublayers visibility to on or off.
 
 ## How it works
 
-1. Load the mobile map package.
-2. Populate the table view with the annotation sublayer names (including maximum and minimum scales, where relevant).
-3. Wire up the switches to toggle the annotation sublayer's visibility.
+1. Load the `AGSMobileMapPackage`.
+2. Load the `AGSAnnotationLayer` and populate the table view with the annotation sublayer names (including maximum and minimum scales, where relevant).
+3. Wire up the switches to toggle the annotation sublayer's `isVisible` property.
 4. Observe changes to the map view's map scale to:
   * Update the current scale label toward the top of the screen.
   * Set the "Open" annotation sublayer row's text label to:

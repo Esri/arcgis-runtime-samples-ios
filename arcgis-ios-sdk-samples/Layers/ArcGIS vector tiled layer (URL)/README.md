@@ -14,8 +14,8 @@ Use the bottom button to load different vector tile basemaps.
 
 ## How it works
 
-1. Create an `AGSArcGISVectorTiledLayer` with an ArcGIS Online service URL 
-2. Add the layer instance to the `AGSMap`
+1. Create an `AGSArcGISVectorTiledLayer` with an ArcGIS Online service URL.
+2. Add the layer as an `AGSBasemap` to the `AGSMap`.
 
 ## Relevant API
 

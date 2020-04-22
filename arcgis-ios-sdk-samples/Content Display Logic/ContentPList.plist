@@ -61,7 +61,7 @@
 				<key>storyboardName</key>
 				<string>SetInitialMapLocation</string>
 				<key>descriptionText</key>
-				<string>You can set the initial location for a map by passing in the coordinates and the zoom level</string>
+				<string>Display a basemap centered at an initial location and scale.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

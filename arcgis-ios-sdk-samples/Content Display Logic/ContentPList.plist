@@ -584,7 +584,7 @@
 				<key>storyboardName</key>
 				<string>OpenStreetMapLayer</string>
 				<key>descriptionText</key>
-				<string>Display a map with an OpenStreetMap basemap.</string>
+				<string>Add OpenStreetMap as a basemap layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

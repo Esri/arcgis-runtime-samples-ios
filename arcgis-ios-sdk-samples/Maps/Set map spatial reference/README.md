@@ -16,7 +16,7 @@ Pan and zoom around the map. Observe how the map is displayed using the World Bo
 
 1. Instantiate an `AGSMap` object using a spatial reference with `AGSMap.init(spatialReference:)`.
 2. Instantiate an `AGSArcGISMapImageLayer` object and add it to the map's `operationalLayers` property.
-3. Set the map to a `AGSMapView` object.
+3. Set the map to an `AGSMapView` object.
 
 The ArcGIS map image layer will now use the spatial reference set to the ArcGIS map (World Bonne (WKID: 54024)) and not it's default spatial reference (WGS84 (WKID: 4326)).
  

@@ -14,8 +14,6 @@ The layer will be displayed automatically. Pan and zoom to explore.
 
 ## How it works
 
-To display a WMTS layer directly from a URL:
-
 1. Create an `AGSWMTSService` object using the URL of the WMTS service.
 2. Create an `AGSWMTSLayer` object with the ID of the layer to display.
 3. Make an `AGSBasemap` from the `AGSWMTSLayer` and apply it to the map.

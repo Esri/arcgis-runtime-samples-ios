@@ -2,7 +2,7 @@
 
 Apply a renderer to a sublayer.
 
-![Change sublayer renderer sample](ichange-sublayer-renderer.png)
+![Change sublayer renderer sample](change-sublayer-renderer.png)
 
 ## Use case
 

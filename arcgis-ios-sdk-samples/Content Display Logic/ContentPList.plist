@@ -49,11 +49,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Set initial map area</string>
+				<string>Map initial extent</string>
 				<key>storyboardName</key>
 				<string>SetInitialMapArea</string>
 				<key>descriptionText</key>
-				<string>You can also specify an area or enveloper as the initial view for the map to start with</string>
+				<string>Display the map at an initial viewpoint representing a bounding geometry.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

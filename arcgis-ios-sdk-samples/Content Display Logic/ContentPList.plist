@@ -125,7 +125,7 @@
 				<key>storyboardName</key>
 				<string>ShowMagnifier</string>
 				<key>descriptionText</key>
-				<string>You can tap and hold on the map to get a magnifier</string>
+				<string>Tap and hold on a map to show a magnifier.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

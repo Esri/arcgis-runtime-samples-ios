@@ -21,7 +21,7 @@
 				<key>storyboardName</key>
 				<string>ChangeMapViewBackground</string>
 				<key>descriptionText</key>
-				<string>Customize map view’s background by changing its grid properties.</string>
+				<string>Customize map view&apos;s background by changing its grid properties.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

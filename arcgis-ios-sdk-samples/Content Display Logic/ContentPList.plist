@@ -584,7 +584,7 @@
 				<key>storyboardName</key>
 				<string>DisplayKMLNetworkLinks</string>
 				<key>descriptionText</key>
-				<string>Display a KML file that loads content from a network resource.</string>
+				<string>Display a file with a KML network link, including displaying any network link control messages at launch.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

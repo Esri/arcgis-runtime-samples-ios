@@ -238,11 +238,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Set min-max scale</string>
+				<string>Min max scale</string>
 				<key>storyboardName</key>
 				<string>SetMinMaxScale</string>
 				<key>descriptionText</key>
-				<string>Shows how to set the min and max scale on a map.</string>
+				<string>Restrict zooming between specific scale ranges.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

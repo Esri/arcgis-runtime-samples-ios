@@ -560,7 +560,7 @@
 				<key>storyboardName</key>
 				<string>DisplayKML</string>
 				<key>descriptionText</key>
-				<string>Show a KML file from a URL, local file, or portal item.</string>
+				<string>Display KML from a URL, portal item, or local KML file.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

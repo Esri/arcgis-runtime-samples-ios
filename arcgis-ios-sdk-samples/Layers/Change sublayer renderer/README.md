@@ -15,7 +15,7 @@ Tap on "Apply renderer" button to apply a class breaks renderer based on populat
 ## How it works
 
 1. Create an `AGSArcGISMapImageLayer` from its URL.
-2. After it is done loading, get the counties sublayer from the map image layer's `mapImageSublayers` array .
+2. After it is done loading, get the counties sublayer from the map image layer's `mapImageSublayers` array.
 3. After the sublayer loads, get its original `AGSRenderer`.
 4. Create an `AGSClassBreaksRenderer` with a collection of `AGSClassBreak`s for different population ranges.
 5. Set the results as the sublayer's new `AGSRenderer`.

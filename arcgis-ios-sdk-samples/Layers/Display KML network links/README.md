@@ -26,7 +26,7 @@ The sample will load the KML file automatically. The data shown should refresh a
 
 ## Offline data
 
-This sample uses the radar.kmz file, which can be found on [ArcGIS Online](https://arcgisruntime.maps.arcgis.com/home/item.html?id=600748d4464442288f6db8a4ba27dc95).
+This sample uses the `radar.kmz` file, which can be found on [ArcGIS Online](https://arcgisruntime.maps.arcgis.com/home/item.html?id=600748d4464442288f6db8a4ba27dc95).
 
 ## About the data
 

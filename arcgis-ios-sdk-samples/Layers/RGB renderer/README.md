@@ -2,10 +2,6 @@
 
 Apply an RGB renderer to a raster layer to enhance feature visibility.
 
-## How to use the sample
-
-Tap on the `Edit renderer` button in the toolbar to change the settings for the rgb renderer. The sample allows you to change the stretch type and the parameters for each type. You can tap on the Render button to update the raster.
-
 ![RGB renderer settings](rgb-renderer-1.png)
 ![RGB renderer edited](rgb-renderer-2.png)
 

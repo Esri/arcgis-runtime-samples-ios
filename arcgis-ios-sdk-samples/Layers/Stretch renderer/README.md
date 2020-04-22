@@ -1,10 +1,6 @@
 # Stretch renderer
 
-This sample demonstrates how to use stretch renderer on a raster layer.
-
-## How to use the sample
-
-Tap the `Edit Renderer` button in the toolbar to open the settings for the stretch renderer. As you change the stretch type, the min, and the max, the raster layer will update accordingly.
+Use a stretch renderer to enhance the visual contrast of raster data for analysis.
 
 ![Default stretch renderer](stretch-renderer-1.png)
 ![Edited stretch renderer ](stretch-renderer-2.png)
@@ -51,7 +47,7 @@ The raster used in this sample shows an area in the south of the Shasta-Trinity 
 
 ## Additional information
 
-See [Stretch function](http://desktop.arcgis.com/en/arcmap/latest/manage-data/raster-and-images/stretch-function.htm) in the *ArcMap* AGSdocumentation for more information about the types of stretches that can be performed.
+See [Stretch function](http://desktop.arcgis.com/en/arcmap/latest/manage-data/raster-and-images/stretch-function.htm) in the *ArcMap* documentation for more information about the types of stretches that can be performed.
 
 ## Tags
 

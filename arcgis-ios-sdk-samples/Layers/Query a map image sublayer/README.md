@@ -6,7 +6,7 @@ Find features in a sublayer based on attributes and location.
 
 ## Use case
 
-Sublayers of an `AGSArcGISMapImageLayer` may expose an `AGSServiceFeatureTable` through a n `AGStable` property. This allows you to perform the same queries available when working with a table from a n `AGSFeatureLayer`: attribute query, spatial query, statistics query, query for related features, etc. An image layer with a sublayer of counties can be queried by population to only show those above a minimum population.
+Sublayers of an `AGSArcGISMapImageLayer` may expose an `AGSServiceFeatureTable` through an `AGStable` property. This allows you to perform the same queries available when working with a table from an `AGSFeatureLayer` attribute query, spatial query, statistics query, query for related features, etc. An image layer with a sublayer of counties can be queried by population to only show those above a minimum population.
 
 ## How to use the sample
 
@@ -16,7 +16,7 @@ Specify a minimum population in the input field (values under 1810000 will produ
 
 1. Create an `AGSArcGISMapImageLayer` object using the URL of an image service.
 2. After loading the layer, get the sublayer you want to query with from the map image layer's `mapImageSublayers` array.
-3. Load the sublayer, and then get its `AGSServiceFeatureTable` with `AGSsublayer.getTable()`.
+3. Load the sublayer, and then get its `AGSFeatureTable`.
 4. Create `AGSQueryParameters` and define its `whereClause` and `geometry`.
 5. Use `AGSFeatureTable.queryFeatures(with:completion:)` to get an `AGSFeatureQueryResult` with features matching the query. The result is an iterable of features.
 

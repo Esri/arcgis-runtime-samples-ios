@@ -10,7 +10,7 @@ KML, the file format used by Google Earth, supports creating tours, which can co
 
 ## How to use the sample
 
-The sample will load the KMZ file from ArcGIS Online. When a tour is found, the Play button will be enabled. Use the Play and Pause buttons to control the tour. When you're ready to show the tour, use the reset button to return the tour to the unplayed state.
+The sample will load the KMZ file from ArcGIS Online. When a tour is found, the play button will be enabled. Use the play and pause buttons to control the tour.
 
 ## How it works
 

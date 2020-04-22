@@ -11,7 +11,7 @@ A map image layer may contain many sublayers such as different types of roads in
 
 ## How to use the sample
 
-Tap the bottom button to display a list of sublayers. Tap the switches to toggle the visibility of the sublayers
+Tap the bottom button to display a list of sublayers. Tap the switches to toggle the visibility of the sublayers.
 
 ## How it works
 

@@ -1,8 +1,9 @@
-# Read a geopackage
+# Read geopackage
 
-Add rasters and feature tables from a GeoPackage to a map.
+Add rasters and feature tables from a geopackage to a map.
 
-![Read a GeoPackage](read-a-geopackage.png)
+![Image of read geopackage 1](read-geopackage-1.png)
+![Image of read geopackage 2](read-geopackage-2.png)
 
 ## Use case
 
@@ -14,15 +15,17 @@ When the sample loads, the feature tables and rasters from the GeoPackage will b
 
 ## How it works
 
-1. Initialize the GeoPackage using `AGSGeoPackage`.
-2. Iterate through available rasters, exposed by `AGSGeopackage.geoPackageRasters`.
-    * For each raster, create a new  `AGSRasterLayer`, then add it to the map.
-3. Iterate through available feature tables, exposed by `AGSGeopackage.geoPackageFeatureTables`.
-    * For each feature table, create a new  `AGSFeatureLayer`, then add it to the map.
+1. Open the GeoPackage using `AGSGeoPackage.load(completion:)` method.
+2. Iterate through available rasters, exposed by `AGSGeoPackage.geoPackageRasters`.
+    * For each raster, create an `AGSRasterLayer` object and add it to the map.
+3. Iterate through available feature tables, exposed by `AGSGeoPackage.geoPackageFeatureTables`.
+    * For each feature table, create an `AGSFeatureLayer` object and add it to the map.
 
 ## Relevant API
 
 * AGSGeoPackage
+* AGSGeoPackage.geoPackageFeatureTables
+* AGSGeoPackage.geoPackageRasters
 * AGSGeoPackageFeatureTable
 * AGSGeoPackageRaster
 
@@ -32,7 +35,7 @@ The [Aurora Colorado GeoPackage](https://www.arcgis.com/home/item.html?id=68ec42
 
 ## About the data
 
-This sample features a GeoPackage with datasets that cover Aurora, Colorado: Public art (points), Bike trails (lines), Subdivisions (polygons), Airport noise (raster), and liquour license density (raster).
+This sample features a GeoPackage with datasets that cover Aurora, Colorado: Public art (points), Bike trails (lines), Subdivisions (polygons), Airport noise (raster), and liquor license density (raster).
 
 ## Additional information
 

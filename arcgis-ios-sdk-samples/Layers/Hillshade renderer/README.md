@@ -2,10 +2,6 @@
 
 Apply a hillshade renderer to a raster.
 
-## How to use the sample
-
-Tap on the `Edit renderer` button in the toolbar to change the settings for the hillshade. The sample allows you to change the `Altitude`, `Azimuth` and `Slope type`. You can tap on the `Render` button to update the raster.
-
 ![Hillshade renderer initial view](hillshade-renderer-1.png)
 ![Hillshade renderer settings](hillshade-renderer-2.png)
 
@@ -15,7 +11,7 @@ An environmental agency may track coastal erosion by comparing images of an area
 
 ## How to use the sample
 
-Choose and adjust the settings to update the hillshade renderer on the raster layer. The sample allows you to change the Altitude, Azimuth, and Slope Type.
+Choose and adjust the settings to update the hillshade renderer on the raster layer. The sample allows you to change the altitude, azimuth, and slope type.
 
 ## How it works
 

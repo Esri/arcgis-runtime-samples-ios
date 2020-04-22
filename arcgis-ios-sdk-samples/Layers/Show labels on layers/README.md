@@ -36,7 +36,7 @@ This sample uses the [USA 116th Congressional Districts](https://www.arcgis.com/
 
 ## Additional information
 
-Help regarding the JSON syntax for defining the `LabelDefinition.FromJson` syntax can be found in [labeling info](https://developers.arcgis.com/web-map-specification/objects/labelingInfo/) in the *Web map specification*.
+Help regarding the JSON syntax for defining the `AGSLabelDefinition.fromJson` syntax can be found in [labeling info](https://developers.arcgis.com/web-map-specification/objects/labelingInfo/) in the *Web map specification*.
 
 ## Tags
 

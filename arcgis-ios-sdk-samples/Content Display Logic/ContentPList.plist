@@ -57,7 +57,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Map initial location</string>
+				<string>Set initial map location</string>
 				<key>storyboardName</key>
 				<string>SetInitialMapLocation</string>
 				<key>descriptionText</key>

@@ -614,7 +614,7 @@
 				<key>displayName</key>
 				<string>Group layers</string>
 				<key>descriptionText</key>
-				<string>Add layers to a group layer and toggle their visibility as a group.</string>
+				<string>Group a collection of layers together and toggle their visibility as a group.</string>
 				<key>storyboardName</key>
 				<string>GroupLayers</string>
 			</dict>

@@ -22,7 +22,6 @@ The second section shows layers that have been removed from the map. Tap one to 
 1. Get the `operationalLayers` property from the map.
 2. Add or remove layers using `AGSMap.operationalLayers.insert(_:at:)` and `AGSMap.operationalLayers.removeObject(at:)` respectively. The last layer in the list will be rendered on top.
 
-
 ## Relevant API
 
 * AGSMap

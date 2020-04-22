@@ -57,7 +57,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Set initial map location</string>
+				<string>Map initial location</string>
 				<key>storyboardName</key>
 				<string>SetInitialMapLocation</string>
 				<key>descriptionText</key>
@@ -65,11 +65,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Set map spatial reference</string>
+				<string>Map spatial reference</string>
 				<key>storyboardName</key>
 				<string>SetMapsSpatialReference</string>
 				<key>descriptionText</key>
-				<string>You can initialize a map by specifying the spatial reference. If you add any layer with a different spatial reference it will re-project</string>
+				<string>Specify a map&apos;s spatial reference.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

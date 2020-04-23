@@ -15,7 +15,7 @@ When the sample opens, it will automatically display the map in the mobile map p
 ## How it works
 
 1. Create an `AGSMobileMapPackage` specifying the path to the .mmpk file.
-2. Load the mobile map package with `AGSMobileMapPackage.load(completion:)` method.
+2. Load the mobile map package with the `AGSMobileMapPackage.load(completion:)` method.
 3. After it successfully loads, get the map from the .mmpk and add it to the map view.
 
 ## Relevant API

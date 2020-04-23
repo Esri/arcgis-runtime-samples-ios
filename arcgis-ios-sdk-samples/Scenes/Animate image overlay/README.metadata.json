@@ -22,7 +22,7 @@
         "AGSSceneView"
     ],
     "snippets": [
-        "AnimateImagesWithImageOverlay.swift"
+        "AnimateImagesWithImageOverlayViewController.swift"
     ],
     "title": "Animate images with image overlay"
 }

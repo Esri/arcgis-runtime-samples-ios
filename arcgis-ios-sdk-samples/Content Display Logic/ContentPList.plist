@@ -1643,6 +1643,14 @@
 				<key>displayName</key>
 				<string>Connected Trace</string>
 			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Create graphics for utility associations in a utility network.</string>
+				<key>storyboardName</key>
+				<string>DisplayUtilityAssociation</string>
+				<key>displayName</key>
+				<string>Display utility association</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

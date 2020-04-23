@@ -11,13 +11,13 @@
 		00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		00DAE5B82421321300D51281 /* NearestVertex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5B22421321300D51281 /* NearestVertex.storyboard */; };
+		00DAE5B92421321300D51281 /* NearestVertexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
+		00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
 		00DAE5D824213D5B00D51281 /* Restaurant.stylx in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5D624213D5B00D51281 /* Restaurant.stylx */; settings = {ASSET_TAGS = (Restaurant, ); }; };
 		00DAE5E024213D6B00D51281 /* CustomDictionaryStyle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5DB24213D6B00D51281 /* CustomDictionaryStyle.storyboard */; };
 		00DAE5E224213D6B00D51281 /* CustomDictionaryStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */; };
 		00DAE5E424213D9A00D51281 /* CustomDictionaryStyleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */; };
-		00DAE5B82421321300D51281 /* NearestVertex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5B22421321300D51281 /* NearestVertex.storyboard */; };
-		00DAE5B92421321300D51281 /* NearestVertexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
-		00DAE5BF2421329C00D51281 /* NearestVertexViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DAE5B32421321300D51281 /* NearestVertexViewController.swift */; };
 		00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E276272425A205000DBEDD /* NavigateRoute.storyboard */; };
 		00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */; };
 		00E276352425A3A7000DBEDD /* NavigateRouteViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */; };
@@ -765,10 +765,10 @@
 		F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
-		F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */; };
 		F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
+		F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F15CF0C923EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */; };
@@ -778,16 +778,19 @@
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
-		F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
-		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
+		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
+		F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
 		F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */; };
 		F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
 		F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
 		F1D1E2C12409AB8A006B2801 /* CreateAndSaveKML.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1D1E2C02409AB8A006B2801 /* CreateAndSaveKML.storyboard */; };
 		F1D1E2C32409AB9F006B2801 /* CreateAndSaveKMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
+		F1D5022C245246D300583CFB /* DisplayUtilityAssociation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1D5022B245246D300583CFB /* DisplayUtilityAssociation.storyboard */; };
+		F1D5022E245246EC00583CFB /* DisplayUtilityAssociationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationVC.swift */; };
+		F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationVC.swift */; };
 		F1D7508F230730360018B812 /* ElevationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
 		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
@@ -843,6 +846,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationVC.swift in CopyFiles */,
 				F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */,
 				00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */,
 				00E276352425A3A7000DBEDD /* NavigateRouteViewController.swift in CopyFiles */,
@@ -1112,11 +1116,11 @@
 /* Begin PBXFileReference section */
 		00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
+		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
+		00DAE5B32421321300D51281 /* NearestVertexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestVertexViewController.swift; sourceTree = "<group>"; };
 		00DAE5D624213D5B00D51281 /* Restaurant.stylx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Restaurant.stylx; sourceTree = "<group>"; };
 		00DAE5DB24213D6B00D51281 /* CustomDictionaryStyle.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomDictionaryStyle.storyboard; sourceTree = "<group>"; };
 		00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDictionaryStyleViewController.swift; sourceTree = "<group>"; };
-		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
-		00DAE5B32421321300D51281 /* NearestVertexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestVertexViewController.swift; sourceTree = "<group>"; };
 		00E276272425A205000DBEDD /* NavigateRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NavigateRoute.storyboard; sourceTree = "<group>"; };
 		00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateRouteViewController.swift; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
@@ -1656,6 +1660,8 @@
 		F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetElevationPointViewController.swift; sourceTree = "<group>"; };
 		F1D1E2C02409AB8A006B2801 /* CreateAndSaveKML.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAndSaveKML.storyboard; sourceTree = "<group>"; };
 		F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndSaveKMLViewController.swift; sourceTree = "<group>"; };
+		F1D5022B245246D300583CFB /* DisplayUtilityAssociation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayUtilityAssociation.storyboard; sourceTree = "<group>"; };
+		F1D5022D245246EC00583CFB /* DisplayUtilityAssociationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUtilityAssociationVC.swift; sourceTree = "<group>"; };
 		F1D7508E230730360018B812 /* ElevationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationViewController.swift; sourceTree = "<group>"; };
 		F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalRaster.storyboard; sourceTree = "<group>"; };
 		F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalRasterViewController.swift; sourceTree = "<group>"; };
@@ -1698,15 +1704,6 @@
 			path = "Convex hull";
 			sourceTree = "<group>";
 		};
-		00DAE5D924213D6B00D51281 /* Custom dictionary style */ = {
-			isa = PBXGroup;
-			children = (
-				00DAE5DB24213D6B00D51281 /* CustomDictionaryStyle.storyboard */,
-				00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */,
-			);
-			path = "Custom dictionary style";
-			sourceTree = "<group>";
-		};
 		00DAE5B12421321300D51281 /* Nearest vertex */ = {
 			isa = PBXGroup;
 			children = (
@@ -1714,6 +1711,15 @@
 				00DAE5B32421321300D51281 /* NearestVertexViewController.swift */,
 			);
 			path = "Nearest vertex";
+			sourceTree = "<group>";
+		};
+		00DAE5D924213D6B00D51281 /* Custom dictionary style */ = {
+			isa = PBXGroup;
+			children = (
+				00DAE5DB24213D6B00D51281 /* CustomDictionaryStyle.storyboard */,
+				00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */,
+			);
+			path = "Custom dictionary style";
 			sourceTree = "<group>";
 		};
 		00E276252425A205000DBEDD /* Navigate route */ = {
@@ -3911,6 +3917,7 @@
 		D98CC08F22E25D8200618682 /* Utility Network */ = {
 			isa = PBXGroup;
 			children = (
+				F1D50229245243AD00583CFB /* Display utility association */,
 				D98CC09022E25E3300618682 /* Connected Trace */,
 			);
 			path = "Utility Network";
@@ -4168,6 +4175,15 @@
 				F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */,
 			);
 			path = "Create and save KML file";
+			sourceTree = "<group>";
+		};
+		F1D50229245243AD00583CFB /* Display utility association */ = {
+			isa = PBXGroup;
+			children = (
+				F1D5022B245246D300583CFB /* DisplayUtilityAssociation.storyboard */,
+				F1D5022D245246EC00583CFB /* DisplayUtilityAssociationVC.swift */,
+			);
+			path = "Display utility association";
 			sourceTree = "<group>";
 		};
 		F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */ = {
@@ -4540,6 +4556,7 @@
 				E4B2E2661FE31E5200E610FF /* tank1.jpg in Resources */,
 				3EBA25401D2F104100AB0703 /* UniqueValueRenderer.storyboard in Resources */,
 				12BF9E451FE9D77000B1E6C4 /* ViewshedCamera.storyboard in Resources */,
+				F1D5022C245246D300583CFB /* DisplayUtilityAssociation.storyboard in Resources */,
 				9DE9FE3722FDB7FC00142DE1 /* LocationHistory.storyboard in Resources */,
 				10961CA61EF2FFD4008A7CEC /* TerrainExaggeration.storyboard in Resources */,
 				3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */,
@@ -4814,6 +4831,7 @@
 				4CE15D4C22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
+				F1D5022E245246EC00583CFB /* DisplayUtilityAssociationVC.swift in Sources */,
 				F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
 				218409DD1FE89D840098BC40 /* OrderByFieldsViewController.swift in Sources */,

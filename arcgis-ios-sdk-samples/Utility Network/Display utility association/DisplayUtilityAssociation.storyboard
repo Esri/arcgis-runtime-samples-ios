@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wEJ-aH-5mo">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Display Utility Association View Controller-->
+        <scene sceneID="nCJ-Ec-jTB">
+            <objects>
+                <viewController id="wEJ-aH-5mo" userLabel="Display Utility Association View Controller" customClass="DisplayUtilityAssociationVC" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WcN-ei-ZB2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="og2-5E-h2J" userLabel="Map View">
+                                <rect key="frame" x="20" y="20" width="374" height="856"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="og2-5E-h2J" firstAttribute="leading" secondItem="WcN-ei-ZB2" secondAttribute="leading" constant="20" symbolic="YES" id="6Xm-gB-pVl"/>
+                            <constraint firstAttribute="bottom" secondItem="og2-5E-h2J" secondAttribute="bottom" constant="20" symbolic="YES" id="ECn-x4-TJm"/>
+                            <constraint firstAttribute="trailing" secondItem="og2-5E-h2J" secondAttribute="trailing" constant="20" symbolic="YES" id="jHG-gD-qnE"/>
+                            <constraint firstItem="og2-5E-h2J" firstAttribute="top" secondItem="WcN-ei-ZB2" secondAttribute="top" constant="20" symbolic="YES" id="xVN-Ud-BVr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="duq-yN-VKT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Rj-ZW-eXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-181" y="85"/>
+        </scene>
+    </scenes>
+</document>

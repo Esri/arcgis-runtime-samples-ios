@@ -1,6 +1,6 @@
 # Map load status
 
-Determine the map's load status which can be `notLoaded`, `failedToLoad`, `loading`, `loaded`.
+Determine the map's load status which can be `notLoaded`, `failedToLoad`, `loading`, or `loaded`.
 
 ![Image for Map load status](map-load-status.png)
 

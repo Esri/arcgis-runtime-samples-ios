@@ -10,7 +10,7 @@ GIS users may want to export a screenshot of a map to enable sharing as an image
 
 ## How to use the sample
 
-Pan and zoom to find an interesting location, then tap the button to take a screenshot. The screenshot will be displayed. Note that there may be a small delay if the map is still rendering when you push the button.
+Pan and zoom to find an interesting location, then tap the button to take a screenshot. The screenshot will be displayed. Note that there may be a small delay if the map is still rendering when you tap the button.
 
 ## How it works
 

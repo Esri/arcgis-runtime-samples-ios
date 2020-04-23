@@ -20,7 +20,7 @@ Use the "Animated Zoom" button to trigger the same zoom animation on both static
 2. Create `AGSServiceFeatureTable`s for point, polygon, and polyline services.
 3. Create `AGSFeatureLayer`s for each of the `AGSServiceFeatureTable`s.
 4. Make both a `dynamic` and `static` `AGSFeatureRenderingMode` for each of the feature layers and add each to the corresponding map view's `operationalLayers`.
-5. Set the dynamic and static `AGSViewpoint`s for zoomed in and zoomed out and using `AGSGeoView.setViewpoint(_:duration:completion:)`.
+5. Set the dynamic and static `AGSViewpoint`s for zoomed in and zoomed out using `AGSGeoView.setViewpoint(_:duration:completion:)`.
 
 ## Relevant API
 

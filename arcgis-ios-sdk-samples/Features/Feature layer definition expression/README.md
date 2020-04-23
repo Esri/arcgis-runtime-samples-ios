@@ -3,7 +3,7 @@
 Limit the features displayed on a map with a definition expression. 
 
 ![Map with features](feature-layer-expression-1.png)
-![Map after applied expression](feature-layer-expression-1.png)
+![Map after applied expression](feature-layer-expression-2.png)
 
 ## Use case
 

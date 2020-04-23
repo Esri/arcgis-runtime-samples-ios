@@ -49,7 +49,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Map initial extent</string>
+				<string>Set initial map area</string>
 				<key>storyboardName</key>
 				<string>SetInitialMapArea</string>
 				<key>descriptionText</key>

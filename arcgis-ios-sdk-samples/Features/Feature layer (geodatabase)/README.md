@@ -40,7 +40,7 @@ One of the ArcGIS Runtime data set types that can be accessed via the local stor
 
 In ArcMap, choose File > Share As > ArcGIS Runtime Content from the menu items to create the .geodatabase file (see the document: https://desktop.arcgis.com/en/arcmap/latest/map/working-with-arcmap/creating-arcgis-runtime-content.htm). 
 
-Note: You could also use the 'Services Pattern' and access the `AGSGeodatabase` class via a Feature Service served up via ArcGIS Online or ArcGIS Enterprise. Instead of using `AGSGeodatabase` to access the .geodatabase file on disk, you would use `AGSGeodatabaseSyncTask` point to a URI instead. For more information review the document: https://developers.arcgis.com/ios/latest/swift/guide/take-a-layer-offline.htm.
+Note: You could also use the 'Services Pattern' and access the `AGSGeodatabase` class via a Feature Service served up via ArcGIS Online or ArcGIS Enterprise. Instead of using `AGSGeodatabase` to access the .geodatabase file on disk, you would use `AGSGeodatabaseSyncTask` to load a geodatabase from a URL instead. For more information review the document: https://developers.arcgis.com/ios/latest/swift/guide/take-a-layer-offline.htm.
 
 ## Tags
 

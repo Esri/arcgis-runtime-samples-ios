@@ -771,7 +771,7 @@
 				<key>storyboardName</key>
 				<string>FeatureCollectionLayer</string>
 				<key>descriptionText</key>
-				<string>Create a Feature Collection Layer from a Feature Collection Table, and add it to a map.</string>
+				<string>Create a feature collection layer from a feature collection table and add it to a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -31,13 +31,18 @@ The map view has several methods for setting its current viewpoint. Select a vie
 
 ## Additional information
 
-Below are some ways to set a viewpoint:
+See the various setViewpoint methods on `AGSGeoView` and `AGSMapViewCommon`.
 
-* setViewpoint
-* setViewpointCenter
-* setViewpointGeometry
-* setViewpointRotation
-* setViewpointScale
+* AGSGeoView.setViewpoint(_:)
+* AGSGeoView.setViewpoint(_:completion:)
+* AGSGeoView.setViewpoint(_:duration:completion:)
+* AGSMapViewCommon.setViewpoint(_:duration:curve:completion:)
+* AGSMapViewCommon.setViewpointCenter(_:completion:)
+* AGSMapViewCommon.setViewpointCenter(_:scale:completion:)
+* AGSMapViewCommon.setViewpointGeometry(_:completion:)
+* AGSMapViewCommon.setViewpointGeometry(_:padding:completion:)
+* AGSMapViewCommon.setViewpointRotation(_:completion:)
+* AGSMapViewCommon.setViewpointScale(_:completion:)
 
 ## Tags
 

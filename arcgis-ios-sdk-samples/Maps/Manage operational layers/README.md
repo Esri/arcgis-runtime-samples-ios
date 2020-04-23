@@ -13,14 +13,14 @@ The order of operational layers in a map determines the visual hierarchy of laye
 
 ## How to use the sample
 
-Tap the toolbar button to display the operational layers that are currently displayed in the map. In the first section, tap "-" button to remove a layer, or tap hold the reordering control and drag to reorder a layer. The map will be updated automatically.
+Tap the toolbar button to display the operational layers that are currently displayed in the map. In the first section, tap "-" button to remove a layer, or tap and hold the reordering control and drag to reorder a layer. The map will be updated automatically.
 
 The second section shows layers that have been removed from the map. Tap one to add it back to the map.
 
 ## How it works
 
-1. Get the `operationalLayers` property from the map.
-2. Add or remove layers using `AGSMap.operationalLayers.insert(_:at:)` and `AGSMap.operationalLayers.removeObject(at:)` respectively. The last layer in the list will be rendered on top.
+1. Get the operational layers from the map's `operationalLayers` property.
+2. Add or remove layers by modifying the `operationalLayers` array. The last layer in the array will be rendered on top.
 
 ## Relevant API
 
@@ -29,7 +29,7 @@ The second section shows layers that have been removed from the map. Tap one to 
 
 ## Additional information
 
-You cannot add the same layer to the map multiple times or add the same layer to multiple maps. Instead, clone the layer with `layer.copy()` to create a new instance.
+You cannot add the same layer to the map multiple times or add the same layer to multiple maps. Instead, clone the layer using `AGSLayer.copy()` to create a new instance.
 
 ## Tags
 

@@ -1,6 +1,6 @@
 # Create and save map
 
-Create and save a map as an portal item (i.e. web map).
+Create and save a map as a portal item (i.e. web map).
 
 ![Image of create and save map 1](create-and-save-map-1.png)
 ![Image of create and save map 2](create-and-save-map-2.png)

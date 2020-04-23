@@ -41,9 +41,9 @@ The [Naperville stormwater network map](https://arcgisruntime.maps.arcgis.com/ho
 
 `AGSDownloadPreplannedOfflineMapParameters.updateMode` can be used to set the way the preplanned map area receives updates in several ways:
 
-* `.noUpdates` - No updates will be performed. This mode is intended for when a static snapshot of the data is required, and it does not create a replica. This is the mode used for this sample.
-* `.syncWithFeatureServices` - Changes, including local edits, will be synced directly with the underlying feature services. This is the default update mode.
-* `.downloadScheduledUpdates` - Scheduled, read-only updates will be downloaded from the online map area and applied to the local mobile geodatabases.
+* `noUpdates`: No updates will be performed. This mode is intended for when a static snapshot of the data is required, and it does not create a replica. This is the mode used for this sample.
+* `syncWithFeatureServices`: Changes, including local edits, will be synced directly with the underlying feature services. This is the default update mode.
+* `downloadScheduledUpdates`: Scheduled, read-only updates will be downloaded from the online map area and applied to the local mobile geodatabases.
 
 See [Take a map offline - preplanned](https://developers.arcgis.com/ios/latest/swift/guide/take-map-offline-preplanned.htm) to learn about preplanned workflows, including how to define preplanned areas in ArcGIS Online. Alternatively, visit [Take a map offline - on demand](https://developers.arcgis.com/ios/latest/swift/guide/take-map-offline-on-demand.htm) or refer to the sample "Generate Offline Map" to learn about the on-demand workflow and see how the workflows differ.
 

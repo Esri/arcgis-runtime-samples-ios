@@ -40,7 +40,7 @@ The data in this sample shows the roads and trails in the Canyonlands National P
 
 ## Additional information
 
-**Note:** preplanned areas using the Scheduled Updates workflow are read-only. For preplanned areas that can be edited on the end-user device, see [Take a map offline - preplanned](https://developers.arcgis.com/ios/latest/swift/guide/take-map-offline-preplanned.htm) in the *ArcGIS Runtime SDK for iOS* guide.
+**Note:** Preplanned areas using the Scheduled Updates workflow are read-only. For preplanned areas that can be edited on the end-user device, see [Take a map offline - preplanned](https://developers.arcgis.com/ios/latest/swift/guide/take-map-offline-preplanned.htm) in the *ArcGIS Runtime SDK for iOS* guide.
 
 ## Tags
 

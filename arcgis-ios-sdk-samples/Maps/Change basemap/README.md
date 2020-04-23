@@ -10,7 +10,7 @@ Basemaps should be selected contextually. For example, in maritime applications,
 
 ## How to use the sample
 
-Tap the "Choose Basemap" button in the bottom toolbar to view a list of the available basemaps. Tap an item to set it as the map's basemap.
+Tap the "Change Basemap" button in the bottom toolbar to view a list of the available basemaps. Tap an item to set it as the map's basemap.
 
 ## How it works
 

@@ -18,7 +18,7 @@ The map in the sample comes pre-populated with a set of bookmarks. To access a b
 1. Instantiate a new `AGSMap` object.
 2. To create a new bookmark and add it to the bookmark list:
     * Instantiate a new `AGSBookmark` object passing in text (the name of the bookmark) and an `AGSViewpoint` as parameters.
-    * Add the new bookmark to the book mark list by calling `AGSMap.bookmarks.add(bookmark)`.
+    * Add the new bookmark to the map's `bookmarks` array.
 
 ## Relevant API
 

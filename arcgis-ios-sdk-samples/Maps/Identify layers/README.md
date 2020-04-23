@@ -10,7 +10,7 @@ Identify layers allows users to tap on a map, returning features at that locatio
 
 ## How to use the sample
 
-Tap to identify features. An alert will show all layers with features under the cursor, as well as a layer count.
+Tap to identify features. An alert will show all layers with features at the tapped location, as well as a layer count.
 
 ## How it works
 
@@ -22,12 +22,12 @@ Tap to identify features. An alert will show all layers with features under the 
 
 * AGSGeoView.identifyLayers(atScreenPoint:tolerance:returnPopupsOnly:maximumResultsPerLayer:completion:)
 * AGSIdentifyLayerResult
-* AGSIdentifyLayerResult.layerContent.name
 * AGSIdentifyLayerResult.sublayerResults
+* AGSLayerContent.name
 
 ## Additional information
 
-The GeoView supports two methods of identify: `identifyLayer`, which identifies features within a specific layer and `identifyLayers`, which identifies features for all layers in the current view.
+`AGSGeoView` supports two methods of identify: `identifyLayer`, which identifies features within a specific layer, and `identifyLayers`, which identifies features for all layers in the current view.
 
 ## Tags
 

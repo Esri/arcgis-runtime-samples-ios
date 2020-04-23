@@ -17,10 +17,10 @@ Toggle "Show Location" to change the visibility of the location indicator in the
 
 Change the "Auto-Pan Mode" to choose if and how the SDK will position the map view's viewpoint to keep the location indicator in-frame. A menu will appear with the following options to change the `AGSLocationDisplayAutoPanMode`:
 
-* Off - Starts the location display with no auto-pan mode set.
-* Re-Center - Starts the location display with auto-pan mode set to `.recenter`.
-* Navigation - Starts the location display with auto-pan mode set to `.navigation`.
-* Compass Navigation - Starts the location display with auto-pan mode set to `.compassNavigation`.
+* Off: Starts the location display with no auto-pan mode set.
+* Re-Center: Starts the location display with auto-pan mode set to `recenter`.
+* Navigation: Starts the location display with auto-pan mode set to `navigation`.
+* Compass Navigation: Starts the location display with auto-pan mode set to `compassNavigation`.
 
 ## How it works
 
@@ -40,7 +40,7 @@ Change the "Auto-Pan Mode" to choose if and how the SDK will position the map vi
 
 Location permissions are required for this sample.
 
-**Note**: As of iOS 8, you are required to request for user's permission in order to enable location services. You must include either `NSLocationWhenInUseUsageDescription` or `NSLocationAlwaysUsageDescription` along with a brief description of how you use location services in the `info.plist` of your project.
+**Note**: As of iOS 8, you are required to request the user's permission to enable location services. You must include either `NSLocationWhenInUseUsageDescription` or `NSLocationAlwaysUsageDescription` along with a brief description of how you use location services in the Info plist of your project.
 
 ## Tags
 

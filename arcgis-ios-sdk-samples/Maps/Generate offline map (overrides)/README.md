@@ -23,8 +23,8 @@ After you have set up the overrides to your liking, tap "Start" to start the dow
 
 1. Load a web map from an `AGSPortalItem`. Authenticate with the portal if required.
 2. Create an `AGSOfflineMapTask` with the map.
-3. Generate default task parameters using the extent area you want to download with `AGSOfflineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest:completion:)` method.
-4. Generate additional "override" parameters using the default parameters with `AGSOfflineMapTask.generateOfflineMapParameterOverrides(with:completion:)` method.
+3. Generate default task parameters using the extent area you want to download with the `AGSOfflineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest:completion:)` method.
+4. Generate additional "override" parameters using the default parameters with the `AGSOfflineMapTask.generateOfflineMapParameterOverrides(with:completion:)` method.
 5. For the basemap:
     * Get the parameters `AGSOfflineMapParametersKey` for the basemap layer.
     * Get the `AGSExportTileCacheParameters` for the basemap layer from `AGSGenerateOfflineMapParameterOverrides exportTileCacheParameters[key]` with the key above.

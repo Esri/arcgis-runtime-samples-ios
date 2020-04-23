@@ -25,7 +25,7 @@ Tap on a park in the map view. A list of species as related features will be sho
 
 ## Relevant API
 
-* AGSArcGISFeature.relate
+* AGSArcGISFeature.relate(to:)
 * AGSFeatureLayer
 * AGSFeatureTable.createFeature
 * AGSServiceFeatureTable

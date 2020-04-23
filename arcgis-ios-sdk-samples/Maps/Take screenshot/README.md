@@ -15,7 +15,7 @@ Pan and zoom to find an interesting location, then tap the button to take a scre
 ## How it works
 
 1. Wait for the map view to finish rendering the map.
-2. Call `AGSMapView.exportImage(completion:)` method to get a `UIImage` object.
+2. Call `AGSMapView.exportImage(completion:)` to get a `UIImage` object.
 
 ## Relevant API
 

@@ -16,7 +16,7 @@ When the sample loads, the feature tables and rasters from the GeoPackage will b
 ## How it works
 
 1. Create a GeoPackage from a named bundle resource using `AGSGeoPackage.init(name:)`.
-2. Load the GeoPackage using `AGSGeoPackage.load(completion:)` method.
+2. Load the GeoPackage using `AGSGeoPackage.load(completion:)`.
 3. Iterate through available rasters, exposed by `AGSGeoPackage.geoPackageRasters`.
     * For each raster, create an `AGSRasterLayer` object and add it to the map.
 4. Iterate through available feature tables, exposed by `AGSGeoPackage.geoPackageFeatureTables`.

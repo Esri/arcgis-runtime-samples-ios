@@ -14,7 +14,7 @@ Tap to identify features. An alert will show all layers with features at the tap
 
 ## How it works
 
-1. The tapped position is passed to `AGSGeoView.identifyLayers(atScreenPoint:tolerance:returnPopupsOnly:maximumResultsPerLayer:completion:)` method.
+1. The tapped position is passed to the `AGSGeoView.identifyLayers(atScreenPoint:tolerance:returnPopupsOnly:maximumResultsPerLayer:completion:)` method.
 2. For each `AGSIdentifyLayerResult` in the results, features are counted. 
     * Note: there is one identify result per layer with matching features; if the feature count is 0, that means a sublayer contains the matching features.
 

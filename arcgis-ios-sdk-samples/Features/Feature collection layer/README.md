@@ -14,7 +14,7 @@ When launched, this sample displays an `AGSFeatureCollectionLayer` with an `AGSP
 
 ## How it works
 
-1. Create an `AGSFeatureCollectionTable` for each of the geometry types `AGSPoint`, `AGSPolyline`, and `AGSPolygon` using `AGSFeatureCollectionTable(fields:geometryType:spatialReference:)`.  
+1. Create an `AGSFeatureCollectionTable` for each of the geometry types `AGSPoint`, `AGSPolyline`, and `AGSPolygon` using `AGSFeatureCollectionTable.init(fields:geometryType:spatialReference:)`.  
     i. Create the schema for each feature collection table by creating an array of `AGSField`s.    
     ii. Create an `AGSFeatureCollectionTable` with the fields created.  
     iii. Create an `AGSSimpleRenderer` from an `AGSSimpleMarkerSymbol`.  

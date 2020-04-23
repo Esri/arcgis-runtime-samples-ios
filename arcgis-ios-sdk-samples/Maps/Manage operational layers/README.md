@@ -13,7 +13,7 @@ The order of operational layers in a map determines the visual hierarchy of laye
 
 ## How to use the sample
 
-When the app starts, a list displays the operational layers that are currently displayed in the map. In the first section, tap "-" button to remove a layer, or tap hold the reordering control and drag to reorder a layer. The map will be updated automatically.
+Tap the toolbar button to display the operational layers that are currently displayed in the map. In the first section, tap "-" button to remove a layer, or tap hold the reordering control and drag to reorder a layer. The map will be updated automatically.
 
 The second section shows layers that have been removed from the map. Tap one to add it back to the map.
 

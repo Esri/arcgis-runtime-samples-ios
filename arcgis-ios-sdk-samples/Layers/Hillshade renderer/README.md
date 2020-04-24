@@ -18,7 +18,7 @@ Choose and adjust the settings to update the hillshade renderer on the raster la
 1. Create an `AGSRaster` from a grayscale raster file.
 2. Create an `AGSRasterLayer` from the raster.
 3. Create an `AGSBasemap` from the raster layer and set it to the map.
-4. Create an `AGSHillshadeRenderer`, specifying the alititude and other properties.
+4. Create an `AGSHillshadeRenderer`, specifying the altitude and other properties.
 5. Set raster layer's `AGSRenderer` to the previously created `AGSHillshadeRenderer`.
 
 ## Relevant API

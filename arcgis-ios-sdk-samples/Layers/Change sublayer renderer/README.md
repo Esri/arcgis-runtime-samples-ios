@@ -10,7 +10,7 @@ A layer showing animal populations contains sublayers for different species. A r
 
 ## How to use the sample
 
-Tap on "Apply renderer" button to apply a class breaks renderer based on population for each county. Tap on the "Reset" button to reset to original renderer.
+Tap on the "Apply renderer" button to apply a class breaks renderer based on population for each county. Tap on the "Reset" button to reset to original renderer.
 
 ## How it works
 

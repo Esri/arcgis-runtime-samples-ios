@@ -11,7 +11,7 @@ Constructing an `ArcGISTiledLayer` from a local tile package (.tpk & .tpkx), all
 
 ## How to use the sample    
 
-Launch the app to view the "San Francisco offline tile package" as the basemap. Tap the bottom button to  get a list of tile packages available
+Launch the app to view the "San Francisco offline tile package" as the basemap. Tap the bottom button to get a list of tile packages available
 
 ## How it works
 

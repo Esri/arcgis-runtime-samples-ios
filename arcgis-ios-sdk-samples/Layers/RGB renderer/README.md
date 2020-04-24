@@ -11,7 +11,7 @@ An RGB renderer is used to adjust the color bands of a multispectral image. Remo
 
 ## How to use the sample
 
-Tap the toolbar button to change the settings for the rgb renderer. You can change the stretch type and the parameters for each type.
+Tap the toolbar button to change the settings for the RGB renderer. You can change the stretch type and the parameters for each type.
 
 ## How it works
 

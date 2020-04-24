@@ -6,7 +6,7 @@ Create a raster layer from a raster image service.
 
 ## Use case
 
-Accessing a raster image from an online service can be useful for analysing the most up-to-date data available for an area. For example, retrieving recent results of bathymetry surveys within a shipping channel monitored for its sediment build-up would allow planners to assess dredging needs.
+Accessing a raster image from an online service can be useful for analyzing the most up-to-date data available for an area. For example, retrieving recent results of bathymetry surveys within a shipping channel monitored for its sediment build-up would allow planners to assess dredging needs.
 
 ## How to use the sample
 

@@ -18,7 +18,7 @@ Some WFS services return coordinates in X,Y order, while others return coordinat
 
 1. Create an instance of `AGSWFSService` with a URL to a WFS feature service. 
 2. Obtain a list of `AGSWFSLayerInfo` objects from `AGSWFSService.serviceInfo`.
-3. When a layer is selected, create an instance of `AGSWFSFeatureTable` from the `AGSWFSLayerInfo` object.  
+3. When a layer is selected, create an instance of `AGSWFSFeatureTable` from the `AGSWFSLayerInfo` object.
     * Set the axis order if necessary.
 4. Create a feature layer from the feature table. 
 5. Add the feature layer to the map.  

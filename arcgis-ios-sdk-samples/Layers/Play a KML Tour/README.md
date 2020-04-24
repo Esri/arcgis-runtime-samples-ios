@@ -31,7 +31,7 @@ The sample will load the KMZ file from ArcGIS Online. When a tour is found, the 
 
 ## Offline data
 
-This sample uses the [Esri_tour.kmz](https://arcgisruntime.maps.arcgis.com/home/item.html?id=f10b1d37fdd645c9bc9b189fb546307c).  It is downloaded from ArcGIS Online automatically.
+This sample uses the [Esri_tour.kmz](https://arcgisruntime.maps.arcgis.com/home/item.html?id=f10b1d37fdd645c9bc9b189fb546307c). It is downloaded from ArcGIS Online automatically.
 
 ## About the data
 

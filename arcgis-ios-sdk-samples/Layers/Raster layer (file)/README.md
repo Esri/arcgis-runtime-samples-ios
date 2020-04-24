@@ -25,7 +25,7 @@ When the sample starts, a raster will be loaded from a file and displayed in the
 
 ## Additional information
 
-See the topic [What is raster data?](http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/what-is-raster-data.htm) in the *ArcMap* documentation for more information about raster images.
+See the topic [What is raster data?](https://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/what-is-raster-data.htm) in the *ArcMap* documentation for more information about raster images.
 
 ## Tags
 

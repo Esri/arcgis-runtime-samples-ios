@@ -15,9 +15,9 @@ Tap the bottom button to display a list of sublayers. Tap the red button to remo
 
 ## How it works
 
-1.  Create an `AGSArcGISMapImageLayer` object with the URL to a map image service.
-2.  Get all of the map image layer's `AGSArcGISMapImageSublayer`s.
-3.  For each corresponding layer, add to, remove from, or rearrange the array of sublayers.
+1. Create an `AGSArcGISMapImageLayer` object with the URL to a map image service.
+2. Get all `AGSArcGISMapImageSublayer`s of the map image layer.
+3. For each corresponding layer, add to, remove from, or rearrange the array of sublayers.
 
 ## Relevant API
 

@@ -15,7 +15,7 @@ Tap the toolbar button to change the settings for the rgb renderer. You can chan
 
 ## How it works
 
-1. Create an `AGSRaster` from a from a local raster file.
+1. Create an `AGSRaster` from a local raster file.
 2. Create an `AGSRasterLayer` from the raster.
 3. Create an `AGSBasemap` from the raster layer and set it to the map.
 4. Create an `AGSRGBRenderer`, specifying the `stretchParameters` and other properties.

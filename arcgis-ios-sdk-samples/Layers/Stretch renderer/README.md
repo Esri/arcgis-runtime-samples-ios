@@ -47,7 +47,7 @@ The raster used in this sample shows an area in the south of the Shasta-Trinity 
 
 ## Additional information
 
-See [Stretch function](http://desktop.arcgis.com/en/arcmap/latest/manage-data/raster-and-images/stretch-function.htm) in the *ArcMap* documentation for more information about the types of stretches that can be performed.
+See [Stretch function](https://desktop.arcgis.com/en/arcmap/latest/manage-data/raster-and-images/stretch-function.htm) in the *ArcMap* documentation for more information about the types of stretches that can be performed.
 
 ## Tags
 

@@ -17,7 +17,7 @@ The contents of the KML file are shown in a tree. Select a node to zoom to that 
 1. Apply an `AGSKMLDataset` to the `AGSSceneView`'s `kmlDatasaet`.
 2. Explore the root nodes of the `AGSKMLDataset` recursively explored to create a view model.
   * Each node is enabled for display at this step. KML files may include nodes that are turned off by default.
-3. When a node is selected, use the node's `extent` to determine a `AGSViewpoint` and set it to the `AGSSceneView`.
+3. When a node is selected, use the node's `extent` to determine an `AGSViewpoint` and set it to the `AGSSceneView`.
 
 ## Relevant API
 

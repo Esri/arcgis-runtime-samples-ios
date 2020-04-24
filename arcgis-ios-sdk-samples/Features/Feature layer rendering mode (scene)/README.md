@@ -1,16 +1,34 @@
 # Feature layer rendering mode (scene)
 
-This sample demonstrates how to set the rendering mode for feature layers in a scene. There are two rendering modes, static and dynamic.
+Render features in a scene statically or dynamically by setting the feature layer rendering mode.
 
-![](image1.png)
+![Feature layer rendering mode (scene)](feature-layer-renderering-scene.png)
+
+## Use case
+
+In dynamic rendering mode, features and graphics are stored on the GPU. As a result, dynamic rendering mode is good for moving objects and for maintaining graphical fidelity during extent changes, since individual graphic changes can be efficiently applied directly to the GPU state. This gives the map or scene a seamless look and feel when interacting with it. The number of features and graphics has a direct impact on GPU resources, so large numbers of features or graphics can affect the responsiveness of maps or scenes to user interaction. Ultimately, the number and complexity of features and graphics that can be rendered in dynamic rendering mode is dependent on the power and memory of the device's GPU.
+
+In static rendering mode, features and graphics are rendered only when needed (for example, after an extent change) and offloads a significant portion of the graphical processing onto the CPU. As a result, less work is required by the GPU to draw the graphics, and the GPU can spend its resources on keeping the UI interactive. Use this mode for stationary graphics, complex geometries, and very large numbers of features or graphics. The number of features and graphics has little impact on frame render time, meaning it scales well, and pushes a constant GPU payload. However, rendering updates is CPU and system memory intensive, which can have an impact on device battery life.
 
 ## How to use the sample
 
-The sample shows two `AGSSceneView`s, each showing the same set of feature layers. The feature layers in the top view are in dynamic mode, and the layers in the bottom view are in static mode. Use the button in the bottom toolbar to zoom the views in and out. Observe the differences in how the layers are rendered in each view as they animate.
+Use the "Zoom In" button to trigger the same zoom animation on both static and dynamically rendered scenes.
 
 ## How it works
 
-You can set the `renderingMode` on an `AGSFeatureLayer` to one of two options:
+1. Create an `AGSSceneView` for each static and dynamic mode and create an `AGSScene` for each.
+2. Create `AGSServiceFeatureTable`s using point, polyline, and polygon services.
+3. Create an `AGSFeatureLayer` for each of the feature tables and a copy of each feature layer. 
+4. Set each feature layer's `renderingMode` to `dynamic` and `static` appropriately. 
+5. Add all of the feature layers to the scene's `operationalLayers`.
 
-* `AGSFeatureRenderingMode.static` - the content is re-rendered intermittently
-* `AGSFeatureRenderingMode.dynamic` - the content is re-rendered continuously as the view is animating
+## Relevant API
+
+* AGSScene
+* AGSFeatureLayer
+* AGSFeatureLayer.renderingMode
+* AGSSceneView
+
+## Tags
+
+3D, dynamic, feature layer, features, rendering, static

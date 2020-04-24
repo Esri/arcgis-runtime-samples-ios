@@ -643,7 +643,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerRenderingModeMap</string>
 				<key>descriptionText</key>
-				<string>Control the rendering mode of feature layers.</string>
+				<string>Render features statically or dynamically by setting the feature layer rendering mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -651,7 +651,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerRenderingModeScene</string>
 				<key>descriptionText</key>
-				<string>Control the rendering mode of feature layers in scenes.</string>
+				<string>Render features in a scene statically or dynamically by setting the feature layer rendering mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -659,7 +659,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerURL</string>
 				<key>descriptionText</key>
-				<string>Show a feature layer on map using the url to the service</string>
+				<string>Show features from an online feature service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -667,7 +667,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerGDB</string>
 				<key>descriptionText</key>
-				<string>Show a feature layer on map using a geodatabase</string>
+				<string>Display features from a local geodatabase.</string>
 				<key>dependency</key>
 				<array>
 					<string>LATrailsGeodatabase</string>
@@ -679,7 +679,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerGPKG</string>
 				<key>descriptionText</key>
-				<string>Show a feature layer on a map using a geopackage</string>
+				<string>Display features from a local GeoPackage.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>
@@ -691,7 +691,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerShapefile</string>
 				<key>descriptionText</key>
-				<string>Display a feature layer on a map using a shapefile</string>
+				<string>Open a shapefile stored on the device and display it as a feature layer with default symbology.</string>
 				<key>dependency</key>
 				<array>
 					<string>PublicArtShapefile</string>
@@ -703,7 +703,7 @@
 				<key>storyboardName</key>
 				<string>OnInteractionCache</string>
 				<key>descriptionText</key>
-				<string>There are different request modes you can load your feature layer in. This sample uses the &quot;On Interaction Cache Mode&quot;.</string>
+				<string>Display a feature layer from a service using the on interaction cache feature request mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -711,7 +711,7 @@
 				<key>storyboardName</key>
 				<string>OnInteractionNoCache</string>
 				<key>descriptionText</key>
-				<string>There are different request modes you can load your feature layer in. This sample uses the &quot;On Interaction No Cache Mode&quot;.</string>
+				<string>Display a feature layer from a service using the no cache feature request mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -719,7 +719,7 @@
 				<key>storyboardName</key>
 				<string>ManualCache</string>
 				<key>descriptionText</key>
-				<string>There are different request modes you can load your feature layer in. This sample uses the &quot;Manual Cache Mode&quot;.</string>
+				<string>Display a feature layer from a service using the manual cache feature request mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -727,7 +727,7 @@
 				<key>storyboardName</key>
 				<string>FLSelection</string>
 				<key>descriptionText</key>
-				<string>You can tap on the map to select or unselect features in a feature layer</string>
+				<string>Select features in a feature layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -735,7 +735,7 @@
 				<key>storyboardName</key>
 				<string>FLQuery</string>
 				<key>descriptionText</key>
-				<string>You can query features in feature layer via service feature table. In this sample you can query for States in USA</string>
+				<string>Find features in a feature table which match an SQL query.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -743,7 +743,7 @@
 				<key>storyboardName</key>
 				<string>DefinitionExpression</string>
 				<key>descriptionText</key>
-				<string>You can set the definition expression on the feature layer to load specific features</string>
+				<string>Limit the features displayed on a map with a definition expression.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -751,7 +751,7 @@
 				<key>storyboardName</key>
 				<string>OverrideRenderer</string>
 				<key>descriptionText</key>
-				<string>The feature layer comes with a default renderer but you can also override this renderer using your custom renderer</string>
+				<string>Change the appearance of a feature layer with a renderer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -759,7 +759,7 @@
 				<key>storyboardName</key>
 				<string>GenerateGeodatabase</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to take features offline</string>
+				<string>Generate a local geodatabase from an online feature service.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanFranciscoTilePackage</string>
@@ -771,7 +771,7 @@
 				<key>storyboardName</key>
 				<string>FeatureCollectionLayer</string>
 				<key>descriptionText</key>
-				<string>Show a feature collection layer using a URL to the service</string>
+				<string>Create a feature collection layer from a feature collection table and add it to a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -779,7 +779,7 @@
 				<key>storyboardName</key>
 				<string>FeatureCollectionLayerQuery</string>
 				<key>descriptionText</key>
-				<string>Use a feature collection layer to show query results from a service feature table</string>
+				<string>Create a feature collection layer to show a query result from a service feature table.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -787,7 +787,7 @@
 				<key>storyboardName</key>
 				<string>ListRelatedFeatures</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to query related features for a given feature. Tap on a feature on the map to see its related features</string>
+				<string>List features related to the selected feature.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -795,7 +795,7 @@
 				<key>storyboardName</key>
 				<string>AddDeleteRelatedFeatures</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to add or delete related features to an origin feature</string>
+				<string>Add or delete related features on an origin feature.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -803,7 +803,7 @@
 				<key>storyboardName</key>
 				<string>TimeBasedQuery</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to apply a time-based parameter to a feature layer query</string>
+				<string>Query data using a time extent.</string>
 			</dict>
 		</array>
 	</dict>

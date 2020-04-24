@@ -4,7 +4,7 @@ Group a collection of layers together and toggle their visibility as a group.
 
 ![Group layers sample](group-layers.png)
 
-## Use case  
+## Use case
 
 Group layers communicate to the user that layers are related and can be managed together. In a land development project, you might group layers according to the phase of development.
 

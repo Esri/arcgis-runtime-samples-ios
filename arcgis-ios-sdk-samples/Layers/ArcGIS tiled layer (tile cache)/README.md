@@ -33,7 +33,7 @@ This sample uses the [San Francisco offline tile package](https://www.arcgis.com
 
 ## About the data
 
-The map opens to a view of the city of San Francisco, CA. In a disconnected environment, this basemap tile service would be fully accessible to zoom and pan as if you were connected to a online service.
+The map opens to a view of the city of San Francisco, CA. In a disconnected environment, this basemap tile service would be fully accessible to zoom and pan as if you were connected to an online service.
 
 ## Additional information
 

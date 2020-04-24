@@ -18,7 +18,7 @@ Tap the bottom button to choose and adjust the altitude, azimuth, slope type and
 3. Create an `AGSBasemap` object from the raster layer and set it to the map.
 4. Create another `AGSRaster` object for elevation from a grayscale raster file.
 5. Create an `AGSBlendRenderer` object, specifying the elevation raster, color ramp, and other properties.
-    - If you specify a non-null color ramp, use the elevation raster as the base raster in addition to the elevation raster parameter. That way, the color ramp is used instead of the satellite imagery.
+    * If you specify a non-null color ramp, use the elevation raster as the base raster in addition to the elevation raster parameter. That way, the color ramp is used instead of the satellite imagery.
 6. Set the blend renderer to the raster layer.
 
 ## Relevant API

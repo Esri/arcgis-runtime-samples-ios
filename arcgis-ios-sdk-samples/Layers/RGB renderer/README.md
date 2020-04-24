@@ -19,7 +19,7 @@ Tap the toolbar button to change the settings for the rgb renderer. You can chan
 2. Create an `AGSRasterLayer` from the raster.
 3. Create an `AGSBasemap` from the raster layer and set it to the map.
 4. Create an `AGSRGBRenderer`, specifying the `stretchParameters` and other properties.
-5. Set the raster layer's `renderer` to the  `AGSRGBRenderer`.
+5. Set the raster layer's `renderer` to the `AGSRGBRenderer`.
 
 ## Relevant API
 

@@ -1628,6 +1628,18 @@
 					<string>Bristol3DModel</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Animate images with image overlay</string>
+				<key>storyboardName</key>
+				<string>AnimateImagesWithImageOverlay</string>
+				<key>descriptionText</key>
+				<string>Animate a series of images with an image overlay.</string>
+				<key>dependency</key>
+				<array>
+					<string>PacificSouthWest</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>

@@ -10,20 +10,19 @@ An image overlay is useful for displaying fast and dynamic images; for example, 
 
 ## How to use the sample
 
-The application loads a map of the Southwestern United States. Tap the "Start" or "Stop" buttons to start or stop the radar animation. Select a frame rate to decide how quickly the animation plays. Move the slider to change the opacity of the image overlay.
+The sample loads a map of the Southwestern United States. Tap the "Play" or "Pause" buttons to start or pause the radar animation. Select a frame rate to decide how quickly the animation plays. Move the slider to change the opacity of the image overlay.
 
 ## How it works
 
 1. Create an `AGSImageOverlay` and add it to the `AGSSceneView`.
-2. Set up a timer with an initial interval time of 67ms, equivalent to ~15fps.
-3. Connect to the timeout signal from the timer.
-4. Create a new `ImageFrame` every timeout and set it on the image overlay.
+2. Set up a timer with an initial frame rate of 60 FPS.
+3. Create a new `AGSImageFrame` object every time interval, and set it on the image overlay.
 
 ## Relevant API
 
-* ImageFrame
-* ImageOverlay
-* SceneView
+* AGSImageFrame
+* AGSImageOverlay
+* AGSSceneView
 
 ## About the data
 
@@ -31,8 +30,8 @@ These radar images were captured by the US National Weather Service (NWS). They 
 
 ## Additional information
 
-The supported image formats are GeoTIFF, TIFF, JPEG, and PNG. `ImageOverlay` does not support the rich processing and rendering capabilities of a `RasterLayer`. Use `Raster` and `RasterLayer` for static image rendering, analysis, and persistence.
+The supported image formats are GeoTIFF, TIFF, JPEG, and PNG. `AGSImageOverlay` does not support the rich processing and rendering capabilities of an `AGSRasterLayer`. Use `AGSRaster` and `AGSRasterLayer` for static image rendering, analysis, and persistence.
 
 ## Tags
 
-3d, animation, drone, dynamic, image frame, image overlay, real time, rendering
+3D, animation, drone, dynamic, image frame, image overlay, real time, rendering

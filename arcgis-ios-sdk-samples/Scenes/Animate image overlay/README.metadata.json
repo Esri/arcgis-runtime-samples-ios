@@ -13,12 +13,15 @@
         "image frame",
         "image overlay",
         "real time",
-        "rendering"
+        "rendering",
+        "AGSImageFrame",
+        "AGSImageOverlay",
+        "AGSSceneView"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "AGSScene",
+        "AGSImageFrame",
+        "AGSImageOverlay",
         "AGSSceneView"
     ],
     "snippets": [

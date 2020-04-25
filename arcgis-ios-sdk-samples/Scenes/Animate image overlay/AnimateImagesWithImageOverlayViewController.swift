@@ -40,7 +40,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     private var loopCounter: LoopCounter!
     /// The graphics overlay used to show a graphic at the tapped point.
     let imageOverlay = AGSImageOverlay()
-    /// The Frame delay in milisecond.
+    /// The frame rate in frame per second.
     var frameRate = 60.0
     /// An array to hold the URLs for the overlay images.
     var imageURLs: [URL] = []
@@ -131,10 +131,10 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     
     @IBAction func frameRateButtonTapped(_ button: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Select frame rate", message: nil, preferredStyle: .actionSheet)
-        // The playback delay in milisecond.
         let frameRates: [(name: String, fps: Double)] = [
             ("60 FPS", 60.0),
             ("30 FPS", 30.0),
+            ("20 FPS", 20.0),
             ("15 FPS", 15.0)
         ]
         frameRates.forEach { (name, fps) in
@@ -168,8 +168,8 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
             playPauseButton.isEnabled = true
             frameRateButton.isEnabled = true
             opacitySlider.isEnabled = true
+            setImageFrame()
         }
-        setImageFrame()
     }
     
     deinit {

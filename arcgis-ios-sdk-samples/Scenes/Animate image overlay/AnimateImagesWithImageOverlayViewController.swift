@@ -30,7 +30,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     @IBOutlet weak var opacityLabel: UILabel!
     @IBOutlet weak var opacitySlider: UISlider! {
         didSet {
-            opacityLabel.text = String(format: "%.0f%%", opacitySlider.value * 100)
+            opacityLabel.text = getOpacityString()
         }
     }
     @IBOutlet weak var playPauseButton: UIBarButtonItem!
@@ -83,41 +83,40 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         
         // new timer
         let timer = Timer(timeInterval: duration, repeats: true) { [weak self] _ in
-            self?.animate()
+            self?.setImageFrame()
         }
         self.frameRateTimer = timer
+        RunLoop.main.add(timer, forMode: .common)
     }
     
-    private func animate() {
+    func setImageFrame() {
         let imageFrame = AGSImageFrame(url: imageURLs[loopCounter.currentIndex], extent: pacificSouthwestEnvelope)
         imageOverlay.imageFrame = imageFrame
         loopCounter.next()
     }
     
     func loadImageURLs() {
-//        guard let pacificSouthWestPath = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") else {
-//            return
-//        }
-        guard let pacificSouthWestPath = Bundle.main.urls(forResourcesWithExtension: "stylx", subdirectory: "Styles") else {
+        // The images need to be added to the project with folder reference.
+        guard let pacificSouthWestURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") else {
             return
         }
-        for item in pacificSouthWestPath {
-            print("Found \(item.absoluteString)")
-        }
-        
+        // Sort the image URLs by their pathnames.
+        imageURLs = pacificSouthWestURLs.sorted { $0.relativeString < $1.relativeString }
         loopCounter = LoopCounter(size: imageURLs.count)
         playPauseButton.isEnabled = true
         frameRateButton.isEnabled = true
         opacitySlider.isEnabled = true
-//        opacitySlider.isUserInteractionEnabled = true
+    }
+    
+    func getOpacityString() -> String {
+        return String(format: "Opacity: %.0f%%", opacitySlider.value * 100)
     }
     
     // MARK: - Actions
     
-    //rotate the map view based on the value of the slider
     @IBAction func sliderValueChanged(_ slider: UISlider) {
         imageOverlay.opacity = slider.value
-        opacityLabel.text = String(format: "%.0f%%", slider.value * 100)
+        opacityLabel.text = getOpacityString()
     }
     
     @IBAction func playPauseButtonTapped(_ button: UIBarButtonItem) {
@@ -143,7 +142,6 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
                 self.loopCounter.reset()
                 self.frameRate = fps
                 if self.isAnimating {
-                    self.frameRateTimer?.invalidate()
                     self.startAnimation(fps)
                 }
             }
@@ -163,6 +161,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["AnimateImagesWithImageOverlayViewController"]
         // Load the image URLs from resources directory.
         loadImageURLs()
+        setImageFrame()
     }
     
     deinit {
@@ -185,7 +184,7 @@ struct LoopCounter {
     
     mutating func next() {
         currentIndex += 1
-        if currentIndex > size {
+        if currentIndex == size {
             currentIndex = 0
         }
     }

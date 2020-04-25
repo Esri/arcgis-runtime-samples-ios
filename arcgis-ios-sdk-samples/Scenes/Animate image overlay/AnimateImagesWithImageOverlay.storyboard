@@ -8,38 +8,90 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Animate Images With Image Overlay View Controller-->
         <scene sceneID="Fv3-mL-yH2">
             <objects>
-                <viewController id="GBY-aZ-JO5" sceneMemberID="viewController">
+                <viewController id="GBY-aZ-JO5" customClass="AnimateImagesWithImageOverlayViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="djt-gy-k6G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lnn-pc-krT">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsA-b3-hmy" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lnn-pc-krT">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Item" id="dxA-UA-82k"/>
-                                    <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="GWR-DH-edD"/>
-                                    <barButtonItem style="plain" id="HH4-3T-d2P">
-                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="NAt-87-dYz">
-                                            <rect key="frame" x="75" y="5" width="118" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </slider>
+                                    <barButtonItem enabled="NO" title="Play" id="dxA-UA-82k">
+                                        <connections>
+                                            <action selector="playPauseButtonTapped:" destination="GBY-aZ-JO5" id="m63-iq-AbH"/>
+                                        </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="Rno-80-TFJ"/>
-                                    <barButtonItem title="Item" id="s1e-oL-rmp"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="ytN-O2-ooz"/>
+                                    <barButtonItem style="plain" id="Miz-5L-iRG">
+                                        <view key="customView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1T-7d-zzc">
+                                            <rect key="frame" x="105" y="10.5" width="200" height="33"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="G9L-es-5OQ">
+                                                    <rect key="frame" x="-2" y="0.0" width="152" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="mbx-Cl-U2E"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="sliderValueChanged:" destination="GBY-aZ-JO5" eventType="valueChanged" id="CG1-Ua-9i3"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hf-Sx-W94">
+                                                    <rect key="frame" x="158" y="6" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="G9L-es-5OQ" secondAttribute="bottom" id="1V7-4s-YTk"/>
+                                                <constraint firstItem="8hf-Sx-W94" firstAttribute="leading" secondItem="G9L-es-5OQ" secondAttribute="trailing" constant="10" id="876-HP-0YD"/>
+                                                <constraint firstItem="G9L-es-5OQ" firstAttribute="leading" secondItem="X1T-7d-zzc" secondAttribute="leading" id="9z6-Yr-02M"/>
+                                                <constraint firstItem="8hf-Sx-W94" firstAttribute="centerY" secondItem="X1T-7d-zzc" secondAttribute="centerY" id="VtS-ki-NCn"/>
+                                                <constraint firstItem="G9L-es-5OQ" firstAttribute="top" secondItem="X1T-7d-zzc" secondAttribute="top" id="l6i-Be-NwX"/>
+                                                <constraint firstAttribute="trailing" secondItem="8hf-Sx-W94" secondAttribute="trailing" id="qcS-zL-GlR"/>
+                                            </constraints>
+                                        </view>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3NY-NS-cZ3"/>
+                                    <barButtonItem enabled="NO" title="fps" id="s1e-oL-rmp">
+                                        <connections>
+                                            <action selector="frameRateButtonTapped:" destination="GBY-aZ-JO5" id="gpY-ug-m82"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bsA-b3-hmy" firstAttribute="leading" secondItem="djt-gy-k6G" secondAttribute="leading" id="6w0-Sw-pv2"/>
+                            <constraint firstItem="Lnn-pc-krT" firstAttribute="bottom" secondItem="330-Pd-cXQ" secondAttribute="bottom" id="DvK-rb-oRx"/>
+                            <constraint firstItem="bsA-b3-hmy" firstAttribute="top" secondItem="330-Pd-cXQ" secondAttribute="top" id="HoV-Rx-7Ud"/>
+                            <constraint firstItem="bsA-b3-hmy" firstAttribute="trailing" secondItem="djt-gy-k6G" secondAttribute="trailing" id="SKt-dk-Odh"/>
+                            <constraint firstItem="Lnn-pc-krT" firstAttribute="leading" secondItem="djt-gy-k6G" secondAttribute="leading" id="Y4c-Rt-2pZ"/>
+                            <constraint firstItem="Lnn-pc-krT" firstAttribute="trailing" secondItem="djt-gy-k6G" secondAttribute="trailing" id="hKV-rl-IAF"/>
+                            <constraint firstItem="Lnn-pc-krT" firstAttribute="top" secondItem="bsA-b3-hmy" secondAttribute="bottom" id="szx-06-Fdx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="330-Pd-cXQ"/>
                     </view>
+                    <connections>
+                        <outlet property="frameRateButton" destination="s1e-oL-rmp" id="dIO-z4-0rY"/>
+                        <outlet property="opacityLabel" destination="8hf-Sx-W94" id="WlJ-N1-aGZ"/>
+                        <outlet property="opacitySlider" destination="G9L-es-5OQ" id="Yxa-5n-eFR"/>
+                        <outlet property="playPauseButton" destination="dxA-UA-82k" id="AA9-Fg-MkB"/>
+                        <outlet property="sceneView" destination="bsA-b3-hmy" id="bqY-JU-IpG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYV-Si-Wuh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="123" y="86"/>
+            <point key="canvasLocation" x="121.73913043478262" y="85.714285714285708"/>
         </scene>
     </scenes>
 </document>

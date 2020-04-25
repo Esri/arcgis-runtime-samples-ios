@@ -17,33 +17,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsA-b3-hmy" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lnn-pc-krT">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <items>
-                                    <barButtonItem enabled="NO" title="Play" id="dxA-UA-82k">
-                                        <connections>
-                                            <action selector="playPauseButtonTapped:" destination="GBY-aZ-JO5" id="m63-iq-AbH"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="ytN-O2-ooz"/>
                                     <barButtonItem style="plain" id="Miz-5L-iRG">
                                         <view key="customView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1T-7d-zzc">
-                                            <rect key="frame" x="105" y="10.5" width="200" height="33"/>
+                                            <rect key="frame" x="20" y="5.5" width="240" height="33"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="G9L-es-5OQ">
-                                                    <rect key="frame" x="-2" y="0.0" width="152" height="34"/>
+                                                    <rect key="frame" x="-2" y="0.0" width="124" height="34"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="mbx-Cl-U2E"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="mbx-Cl-U2E"/>
                                                     </constraints>
                                                     <connections>
                                                         <action selector="sliderValueChanged:" destination="GBY-aZ-JO5" eventType="valueChanged" id="CG1-Ua-9i3"/>
                                                     </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hf-Sx-W94">
-                                                    <rect key="frame" x="158" y="6" width="42" height="21"/>
+                                                    <rect key="frame" x="130" y="6" width="110" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="110" id="g7P-5Z-Vlx"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,6 +56,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="8hf-Sx-W94" secondAttribute="trailing" id="qcS-zL-GlR"/>
                                             </constraints>
                                         </view>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lLL-S2-pzM"/>
+                                    <barButtonItem enabled="NO" title="Play" id="dxA-UA-82k">
+                                        <connections>
+                                            <action selector="playPauseButtonTapped:" destination="GBY-aZ-JO5" id="y2j-6Z-I5i"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3NY-NS-cZ3"/>
                                     <barButtonItem enabled="NO" title="fps" id="s1e-oL-rmp">
@@ -85,7 +88,7 @@
                         <outlet property="frameRateButton" destination="s1e-oL-rmp" id="dIO-z4-0rY"/>
                         <outlet property="opacityLabel" destination="8hf-Sx-W94" id="WlJ-N1-aGZ"/>
                         <outlet property="opacitySlider" destination="G9L-es-5OQ" id="Yxa-5n-eFR"/>
-                        <outlet property="playPauseButton" destination="dxA-UA-82k" id="AA9-Fg-MkB"/>
+                        <outlet property="playPauseButton" destination="dxA-UA-82k" id="DQL-oq-xIR"/>
                         <outlet property="sceneView" destination="bsA-b3-hmy" id="bqY-JU-IpG"/>
                     </connections>
                 </viewController>

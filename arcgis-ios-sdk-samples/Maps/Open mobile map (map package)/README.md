@@ -10,7 +10,7 @@ An .mmpk file is an archive containing the data (specifically, basemaps and feat
 
 ## How to use the sample
 
-When the sample opens, it will automatically display the map in the mobile map package. Pan and zoom to observe the data from the mobile map package.
+When the sample loads, it will automatically display the map in the mobile map package. Pan and zoom to observe the data from the mobile map package.
 
 ## How it works
 

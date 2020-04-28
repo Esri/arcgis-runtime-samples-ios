@@ -2,7 +2,8 @@
 
 Set the map's reference scale and which feature layers should honor the reference scale.
 
-![Image of Map](image1.png) ![Image of Map Settings](image2.png)
+![Image of Map](map-reference-scale-1.png)
+![Image of Map Settings](map-reference-scale-2.png)
 
 ## Use case
 
@@ -12,19 +13,19 @@ Map annotations are typically only relevant at certain scales. For instance, ann
 
 ## How to use the sample
 
-- Open the settings view, tap the Reference Scale row, and use the picker to set the map's reference scale (1:500,000 1:250,000 1:100,000 1:50,000).
-- Tap the Set to Reference Scale button to set the map scale to the reference scale.
-- Tap the Layers row to show a list of the map's feature layers. Tap a row to toggle whether that layer should honor the reference scale.
+When the sample loads, tap the "Settings" button. Tap the "Reference Scale" row, and use the picker to set the map's reference scale (1:500,000 1:250,000 1:100,000 1:50,000). Then tap the "Set to Reference Scale" button to set the map scale to the reference scale.
+
+Tap the "Layers" row to show a list of the map's feature layers. Tap a row to toggle whether that layer should honor the reference scale. Tap "Done" button to dismiss the settings page.
 
 ## How it works
 
 1. Get and set the `referenceScale` property on the `AGSMap` object.
-1. Get and set the `scaleSymbols` property on individual `AGSFeatureLayer` objects.
+2. Get and set the `scaleSymbols` property on individual `AGSFeatureLayer` objects.
 
 ## Relevant API
 
-- `AGSMap`
-- `AGSFeatureLayer`
+* AGSMap
+* AGSFeatureLayer
 
 ## Additional Information
 
@@ -32,4 +33,4 @@ The map reference scale should normally be set by the map's author and not expos
 
 ## Tags
 
-Maps & Scenes
+map, reference scale, scene

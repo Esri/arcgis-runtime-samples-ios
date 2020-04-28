@@ -1,20 +1,30 @@
 # Manage bookmarks
 
-This samples demonstrates how to access and add bookmarks to a map
+Access and create bookmarks on a map.
+
+![Image of manage bookmarks 1](manage-bookmarks-1.png)
+![Image of manage bookmarks 2](manage-bookmarks-2.png)
+
+## Use case
+
+Bookmarks are used for easily storing and accessing saved locations on the map. Bookmarks are of interest in educational apps (e.g. touring historical sites) or more specifically, for a land management company wishing to visually monitor flood levels over time at a particular location. These locations can be saved as bookmarks and revisited easily each time their basemap data has been updated (e.g. working with up to date satellite imagery to monitor water levels).
 
 ## How to use the sample
 
-The map in the sample comes pre-populated with a set of bookmarks. You can tap on the `Bookmarks` button in the bottom toolbar to get the list. Then select either of them to update the map view. To create a new bookmark, pan and/or zoom to a new location and tap on the `+` button in the toolbar. You will be prompted to provide a name for the new bookmark. When you tap `Done` the new bookmark should also show up in the list.
-
-![](image1.png)
-![](image2.png)
+The map in the sample comes pre-populated with a set of bookmarks. To access a bookmark and move to that location, tap on a bookmark's name from the list. To add a bookmark, pan and zoom to a new location and tap the "+" button. Enter a unique name for the bookmark, and the bookmark will be added to the list.
 
 ## How it works
 
-The `AGSMap` has a property called `bookmarks` which is a list of `AGSBookmark`. Each of these bookmarks have a `name` and `viewpoint`. We use the `bookmarks` list as the data source for the UITableView which popups when you tap on the `Bookmarks` button. For each cell inside that table we use the `bookmark.name` property as the title. And on selection we use the `bookmark.viewpoint` property to update the visible area.
+1. Instantiate an `AGSMap` object.
+2. To create a new bookmark and add it to the bookmark list:
+    * Instantiate an `AGSBookmark` object passing in text (the name of the bookmark) and an `AGSViewpoint` as parameters.
+    * Add the new bookmark to the map's `bookmarks` array.
 
-For the creation workflow, we create a new `AGSBookmark` object using `mapView.currentViewpoint(with:)` as the `bookmark.viewpoint` and the name you provide as the `bookmark.name`. And then finally, we add the new bookmark to the list of bookmarks using `map.bookmarks.add(bookmark)`
+## Relevant API
 
+* AGSBookmark
+* AGSViewpoint
 
+## Tags
 
-
+bookmark, extent, location, zoom

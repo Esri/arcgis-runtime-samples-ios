@@ -13,7 +13,7 @@
 				<key>storyboardName</key>
 				<string>DisplayMap</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to display a map with imagery basemap</string>
+				<string>Display a map with an imagery basemap.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -21,7 +21,7 @@
 				<key>storyboardName</key>
 				<string>ChangeMapViewBackground</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to customize map view&apos;s background grid</string>
+				<string>Customize map view&apos;s background by changing its grid properties.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -29,7 +29,7 @@
 				<key>storyboardName</key>
 				<string>MapLoaded</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to tell what the map&apos;s load status is</string>
+				<string>Determine the map&apos;s load status.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -37,7 +37,7 @@
 				<key>storyboardName</key>
 				<string>OpenMapURL</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to open a map using its url</string>
+				<string>Display a web map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -45,7 +45,7 @@
 				<key>storyboardName</key>
 				<string>SwitchBasemap</string>
 				<key>descriptionText</key>
-				<string>Changing the basemap is too easy. This sample shows you how it can be done</string>
+				<string>Change a map&apos;s basemap.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -53,7 +53,7 @@
 				<key>storyboardName</key>
 				<string>SetInitialMapArea</string>
 				<key>descriptionText</key>
-				<string>You can also specify an area or enveloper as the initial view for the map to start with</string>
+				<string>Display the map at an initial viewpoint representing a bounding geometry.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -61,7 +61,7 @@
 				<key>storyboardName</key>
 				<string>SetInitialMapLocation</string>
 				<key>descriptionText</key>
-				<string>You can set the initial location for a map by passing in the coordinates and the zoom level</string>
+				<string>Display a basemap centered at an initial location and scale.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -69,7 +69,7 @@
 				<key>storyboardName</key>
 				<string>SetMapsSpatialReference</string>
 				<key>descriptionText</key>
-				<string>You can initialize a map by specifying the spatial reference. If you add any layer with a different spatial reference it will re-project</string>
+				<string>Specify a map&apos;s spatial reference.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -77,7 +77,7 @@
 				<key>storyboardName</key>
 				<string>ManageMapLayers</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to manage layers in a map. You can reorder them, delete an existing layer or insert a new layer</string>
+				<string>Add, remove, and reorder operational layers in a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -85,7 +85,7 @@
 				<key>storyboardName</key>
 				<string>Bookmarks</string>
 				<key>descriptionText</key>
-				<string>Now you can add and view bookmarks on a map</string>
+				<string>Access and create bookmarks on a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -93,7 +93,7 @@
 				<key>storyboardName</key>
 				<string>MapViewDrawStatus</string>
 				<key>descriptionText</key>
-				<string>Every time the map is drawing you get an update using the callbacks</string>
+				<string>Get the draw status of your map view or scene view to know when all layers in the map or scene have finished drawing.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -101,7 +101,7 @@
 				<key>storyboardName</key>
 				<string>LayerStatus</string>
 				<key>descriptionText</key>
-				<string>You can get the view status for each layer in your map. It tells you if the that layer is currently active or not currently visible or if an error occured while loading it etc</string>
+				<string>Determine if a layer is currently being viewed.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -109,7 +109,7 @@
 				<key>storyboardName</key>
 				<string>SetViewpoint</string>
 				<key>descriptionText</key>
-				<string>You can change the viewpoint of a map view and there are different ways you can do this. You can use a geometry or a point, etc. with or without animation</string>
+				<string>Set the map view to a new viewpoint.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -117,7 +117,7 @@
 				<key>storyboardName</key>
 				<string>MapRotation</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to rotate a map view. You can pinch to rotate or do it programmatically.</string>
+				<string>Rotate a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -125,7 +125,7 @@
 				<key>storyboardName</key>
 				<string>ShowMagnifier</string>
 				<key>descriptionText</key>
-				<string>You can tap and hold on the map to get a magnifier</string>
+				<string>Tap and hold on a map to show a magnifier.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -133,7 +133,7 @@
 				<key>storyboardName</key>
 				<string>DisplayLocation</string>
 				<key>descriptionText</key>
-				<string>You can start the location display on the map view to get current location updates. There are different auto pan modes you can switch between, namely, re-center mode, navigation mode or compass mode</string>
+				<string>Display your current position on the map, as well as switch between different types of auto pan modes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -141,7 +141,7 @@
 				<key>storyboardName</key>
 				<string>MapViewScreenshot</string>
 				<key>descriptionText</key>
-				<string>You can now take a screenshot of the map view. You can use it as the thumbnail for you newly created map or simply share it with your co-workers</string>
+				<string>Take a screenshot of the map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -149,7 +149,7 @@
 				<key>storyboardName</key>
 				<string>CreateSaveMap</string>
 				<key>descriptionText</key>
-				<string>With the new APIs you get to author a map on you mobile device. You can create a map by adding a basemap and one or more operational layers and save it to your portal</string>
+				<string>Create and save a map as a portal item (i.e. web map).</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -157,7 +157,7 @@
 				<key>storyboardName</key>
 				<string>IdentifyLayers</string>
 				<key>descriptionText</key>
-				<string>You can tap on map and get all the elements present at that location from different layers</string>
+				<string>Identify features in all layers in a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -165,7 +165,7 @@
 				<key>storyboardName</key>
 				<string>OpenMobileMapPackage</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to open a mobile map from a mobile map package</string>
+				<string>Display a map from a mobile map package.</string>
 				<key>dependency</key>
 				<array>
 					<string>YellowstoneMMPK</string>
@@ -177,7 +177,7 @@
 				<key>storyboardName</key>
 				<string>MobileMapSearchRoute</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to search and route using data in a map package</string>
+				<string>Display maps and use locators to enable search and routing offline using a mobile map package.</string>
 				<key>dependency</key>
 				<array>
 					<string>YellowstoneMMPK</string>
@@ -202,7 +202,7 @@
 				<key>storyboardName</key>
 				<string>GenerateOfflineMap</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to generate an offline map for web map in ArcGIS Portal. The sample requires login to take AGOL Basemap offline.</string>
+				<string>Take a web map offline.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -210,7 +210,7 @@
 				<key>storyboardName</key>
 				<string>GenerateOfflineMapOverrides</string>
 				<key>descriptionText</key>
-				<string>Override the default parameters when taking a map from ArcGIS Portal offline.</string>
+				<string>Take a web map offline with additional options for each layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -230,7 +230,7 @@
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to add layers to a map from a geopackage.</string>
+				<string>Add rasters and feature tables from a geopackage to a map.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>
@@ -242,7 +242,7 @@
 				<key>storyboardName</key>
 				<string>SetMinMaxScale</string>
 				<key>descriptionText</key>
-				<string>Shows how to set the min and max scale on a map.</string>
+				<string>Restrict zooming between specific scale ranges.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

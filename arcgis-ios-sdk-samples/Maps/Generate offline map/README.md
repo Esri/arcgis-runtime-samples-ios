@@ -1,15 +1,42 @@
 # Generate offline map
 
-This sample demonstrates how to generate an offline map for a web map in ArcGIS Portal.
+Take a web map offline.
+
+![Image of generate offline map](generate-offline-map.png)
+
+## Use case
+
+Taking a web map offline allows users continued productivity when their network connectivity is poor or nonexistent. For example, by taking a map offline, a field worker inspecting utility lines in remote areas could still access a feature's location and attribute information.
 
 ## How to use the sample
 
-On the map pan/zoom to the area you would like to take offline. The red rectangle shows the extent that will be downloaded. Tap on the `Generate offline map` button in the bottom toolbar to initiate creation and download. A progress view is shown for feedback. You can tap on the `Cancel` button to cancel the process. Once the download is complete the offline map will be shown in the map view.
-
-![](image1.png)
+When the app starts, you will be prompted to sign in using a free ArcGIS Online account. Once the map loads, zoom to the extent you want to take offline. The red border shows the extent that will be downloaded. Tap the "Generate offline map" button to start the offline map job. The progress view will show the job's progress. When complete, the offline map will replace the online map in the map view.
 
 ## How it works
 
-Use the `AGSOfflineMapTask` to take maps offline. The sample creates a portal item object using a web map’s ID. This portal item is used to initialize an `AGSOfflineMapTask` object. On bar button item’s action, the sample gets the default parameters for the task with the selected extent. These parameters along with the download path for the offline map are then used to create an `AGSGenerateOfflineMapJob` object from the offline map task. This job is then started and on successful completion the offline map is added to the map view. To provide feedback to the user, the `progress` property of type `NSProgress` on the `AGSGenerateOfflineMapJob` is used. A KVO is set on the `fractionCompleted` property of the progress. And on each callback the progress view is updated with the progress value.
+1. Create an `AGSMap` with an `AGSPortalItem` pointing to the web map.
+2. Create `AGSGenerateOfflineMapParameters` with `AGSOfflineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest:completion:)` specifying the download area geometry.
+3. Create an `AGSOfflineMapTask` with the map.
+4. Create the `AGSGenerateOfflineMapJob` with `AGSOfflineMapTask.generateOfflineMapJob(with:downloadDirectory:)` and start it with `AGSGenerateOfflineMapJob.start(statusHandler:completion:)`.
+5. When the job is done, get the offline map within the completion closure.
 
-As the web map that is being taken offline contains an Esri basemap, this sample requires that you sign in with an ArcGIS Online organizational account.
+## Relevant API
+
+* AGSGenerateOfflineMapJob
+* AGSGenerateOfflineMapParameters
+* AGSGenerateOfflineMapResult
+* AGSOfflineMapTask
+* AGSPortal
+* AGSPortalItem
+
+## About the data
+
+The map used in this sample shows the [Naperville water network](https://arcgisruntime.maps.arcgis.com/home/item.html?id=acc027394bc84c2fb04d1ed317aac674) within Naperville, IL, USA, with cartography designed for web and mobile devices with offline support.
+
+## Additional information
+
+The creation of the offline map can be fine-tuned using "Generate offline map (overrides)" sample, or by using "Generate offline map with local basemap" sample to achieve more customized results.
+
+## Tags
+
+download, offline, save, web map

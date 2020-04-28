@@ -1,19 +1,36 @@
 # Manage operational layers
 
-This sample demonstrates how to add, remove or reorder operational layers in a map
+Add, remove, and reorder operational layers in a map.
+
+![Image of manage operational layers 1](manage-operational-layers-1.png)
+![Image of manage operational layers 2](manage-operational-layers-2.png)
+
+## Use case
+
+Operational layers display the primary content of the map and usually provide dynamic content for the user to interact with (as opposed to basemap layers that provide context).
+
+The order of operational layers in a map determines the visual hierarchy of layers in the view. You can bring attention to a specific layer by rendering above other layers.
 
 ## How to use the sample
 
-The map in the sample app comes with two map image layers already added. If you tap on the `Operational Layers` button in the bottom toolbar, you will be shown a list of the layers. The list is divided into two different sections. The first section has the layers that are currently part of the map and the second sections has the removed layers. In first section, you can tap on the `-` delete button to remove a layer or you can tap hold the reordering control and drag to reorder a layer. In the second section, you can simplify tap on a removed layer to put it back. The layer gets added onto the top.
+Tap the toolbar button to display the operational layers that are currently displayed in the map. In the first section, tap "-" button to remove a layer, or tap and hold the reordering control and drag to reorder a layer. The map will be updated automatically.
 
-![](image1.png)
-![](image2.png)
+The second section shows layers that have been removed from the map. Tap one to add it back to the map.
 
 ## How it works
 
-`AGSMap` has a property called `operationalLayers` which is a list of `AGSLayer`. To add a layer the app uses the `add()` method on the list (`AGSList`). To remove a layer it uses `removeObject(at:)` method and for re-ordering it uses a combination of those methods.
+1. Get the operational layers from the map's `operationalLayers` property.
+2. Add or remove layers by modifying the `operationalLayers` array. The last layer in the array will be rendered on top.
 
+## Relevant API
 
+* AGSMap
+* AGSLayer
 
+## Additional information
 
+You cannot add the same layer to the map multiple times or add the same layer to multiple maps. Instead, clone the layer using `AGSLayer.copy()` to create a new instance.
 
+## Tags
+
+add, delete, layer, map, remove

@@ -1,19 +1,36 @@
-# Create and save a map
+# Create and save map
 
-This sample demonstrates how to create a map and save it to your portal
+Create and save a map as a portal item (i.e. web map).
+
+![Image of create and save map 1](create-and-save-map-1.png)
+![Image of create and save map 2](create-and-save-map-2.png)
+![Image of create and save map 3](create-and-save-map-3.png)
+![Image of create and save map 4](create-and-save-map-4.png)
+
+## Use case
+
+Maps can be created programmatically in code and then serialized and saved as an ArcGIS web map. A web map can be shared with others and opened in various applications and APIs throughout the platform, such as ArcGIS Pro, ArcGIS Online, the JavaScript API, Collector, and Explorer.
 
 ## How to use the sample
 
-On opening the sample you get to choose the layers for your map. You can choose a basemap and optionally one or more operational layers. Tapping on `Done` button should display a map with those layers added. You can tap on the `New` button to start over or the `Save` button to save the map to your portal. You will be required to login and provide a title, tags and description for the map.
-
-![](image1.png)
-![](image2.png)
-![](image3.png)
-![](image4.png)
+1. Select the basemap and layers you'd like to add to your map.
+2. Tap the "Save" button.
+3. Sign into an ArcGIS Online account.
+4. Provide a title, tags, and description.
+5. Save the map.
 
 ## How it works
 
-The sample uses a pre-populated list of layers and basemaps. When you tap on `Done`, the selected basemap is used to create an `AGSMap` object using `init(basemap:)` initializer. The authentication is handled by `AGSAuthenticationManager`. And to save the map the sample uses `save(as:portal:tags:folder:itemDescription:thumbnail:forceSaveToSupportedVersion:completion:)` method on `AGSMap`.
+1. An `AGSMap` is created with an `AGSBasemap` and a few operational layers.
+2. An `AGSPortal` object is created and loaded. This will issue an authentication challenge, prompting the user to provide credentials.
+3. Once the user is authenticated, call `AGSMap.save(as:portal:tags:folder:itemDescription:thumbnail:forceSaveToSupportedVersion:completion:)` and a new map is saved with the specified title, tags, and folder.
 
+## Relevant API
 
+* AGSMap
+* AGSMap.save
+* AGSPortal
 
+## Tags
+
+ArcGIS Online, ArcGIS Pro, portal, publish, share, web map

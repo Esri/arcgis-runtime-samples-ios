@@ -20,9 +20,9 @@ Tap on one or more features while "Start" or "Barrier" is selected. When a junct
 4. Add an `AGSGraphicsOverlay` with symbology that distinguishes starting locations from barriers.
 5. Identify tapped features on the map and add an `AGSGraphic` that represents its purpose (starting point or barrier) at the tapped location.
 6. Create an `AGSUtilityElement` for the identified feature.
-7. Determine the type of the identified feature using `AGSUtilityNetwork.definition.networkSource.sourceType` passing its table name.
-8. If the type is a `.junction`, display a terminal picker when more than one terminal is found and create an `AGSUtilityElement` using the selected terminal, or the single terminal if there is only one.
-9. If the type is an `.edge`, create an `AGSUtilityElement` from the identified feature and compute how far along the edge the user tapped using `class AGSGeometryEngine.fraction(alongLine:to:tolerance:)`.
+7. Determine the type of the identified feature using `AGSUtilityNetworkSource.sourceType` passing its table name.
+8. If the type is a `junction`, display a terminal picker when more than one terminal is found and create an `AGSUtilityElement` using the selected terminal, or the single terminal if there is only one.
+9. If the type is an `edge`, create an `AGSUtilityElement` from the identified feature and compute how far along the edge the user tapped using `class AGSGeometryEngine.fraction(alongLine:to:tolerance:)`.
 10. Add this `AGSUtilityElement` to a collection of starting locations or barriers.
 11. Create `AGSUtilityTraceParameters` with the selected trace type along with the collected starting locations and barriers (if applicable).
 12. Set the `AGSUtilityTraceConfiguration` with the utility tier's `traceConfiguration` property.

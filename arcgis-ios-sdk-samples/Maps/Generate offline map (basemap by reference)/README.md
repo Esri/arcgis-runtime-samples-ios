@@ -30,15 +30,13 @@ Since the application is not exporting online ArcGIS Online basemaps you will no
 
 ## How it works
 
-The sample creates an `AGSPortalItem` object using a web map's ID. This portal item is used to initialize an `AGSOfflineMapTask` object. When the button is tapped, the sample requests the default parameters for the task, with the selected extent, by calling `AGSOfflineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest:completion:)`. 
-
-Once the parameters are created, the application checks the `AGSGenerateOfflineMapParameters.referenceBasemapFilename` property. The author of an online web map can configure this setting to indicate the name of a suitable basemap. In this example, the application checks the app bundle for the suggested "naperville_imagery.tpk" file - and if found, asks the user whether they wish to use this instead of downloading.
-
-If the user chooses to use the basemap on the device, the `AGSGenerateOfflineMapParameters.referenceBasemapDirectory` is set to the absolute path of the directory which contains the .tpk file.
-
-An `AGSGenerateOfflineMapJob` is created by calling `AGSOfflineMapTask.generateOfflineMapJob(with:downloadDirectory:)` passing the parameters and the download location for the offline map.
-
-When the `AGSGenerateOfflineMapJob` is started it will check whether `AGSGenerateOfflineMapParameters.referenceBasemapDirectory` has been set. If this property is set, no online basemap will be downloaded and instead, the mobile map will be created with a reference to the .tpk on the device.
+1. Create an `AGSPortalItem` object using a web map's ID. 
+2. Initialize an `AGSOfflineMapTask` object using the map created with the portal item.
+3. Get the default parameters for the task by calling `AGSOfflineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest:completion:)` with the selected extent. 
+4. Check the `AGSGenerateOfflineMapParameters.referenceBasemapFilename` property. The author of an online web map can configure this setting to indicate the name of a suitable basemap. In this example, the application checks the app bundle for the suggested "naperville_imagery.tpk" file - and if found, asks the user whether they wish to use this instead of downloading.
+5. Set the `AGSGenerateOfflineMapParameters.referenceBasemapDirectory` to the absolute path of the directory which contains the .tpk file, if the user chooses to use the basemap on the device.
+6. Create an `AGSGenerateOfflineMapJob` by calling `AGSOfflineMapTask.generateOfflineMapJob(with:downloadDirectory:)` passing the parameters and the download location for the offline map.
+7. Start the `AGSGenerateOfflineMapJob`. It will check whether `AGSGenerateOfflineMapParameters.referenceBasemapDirectory` has been set. If this property is set, no online basemap will be downloaded and instead, the mobile map will be created with a reference to the .tpk on the device.
 
 ## Relevant API
 

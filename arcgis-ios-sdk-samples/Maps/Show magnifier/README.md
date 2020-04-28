@@ -14,7 +14,7 @@ Tap and hold on the map to show a magnifier, then drag across the map to move th
 
 ## How it works
 
-1. Create a new `AGSMapView` object and assign an `AGSMap` object to the `map` property.
+1. Create an `AGSMapView` object and assign an `AGSMap` object to the `map` property.
 2. Enable the magnifier by setting the `isMagnifierEnabled` property of the map view's `interactionOptions` to `true`. This will set the magnifier to be shown on the map when the user performs a long press gesture. Note: The default value is `true`.
 3. 3. Optionally, set the `allowMagnifierToPan` property of the map view's `interactionOptions` to `true` to allow the map to be panned automatically when the magnifier gets near the edge of the map.
 

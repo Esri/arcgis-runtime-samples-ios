@@ -149,7 +149,7 @@
 				<key>storyboardName</key>
 				<string>CreateSaveMap</string>
 				<key>descriptionText</key>
-				<string>Create and save a map as an portal item (i.e. web map).</string>
+				<string>Create and save a map as a portal item (i.e. web map).</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

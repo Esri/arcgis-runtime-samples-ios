@@ -9,7 +9,7 @@
 		<array>
 			<dict>
 				<key>displayName</key>
-				<string>Display map</string>
+				<string>Display a map</string>
 				<key>storyboardName</key>
 				<string>DisplayMap</string>
 				<key>descriptionText</key>
@@ -25,7 +25,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Map load status</string>
+				<string>Map loaded</string>
 				<key>storyboardName</key>
 				<string>MapLoaded</string>
 				<key>descriptionText</key>
@@ -33,7 +33,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Open map URL</string>
+				<string>Open map (URL)</string>
 				<key>storyboardName</key>
 				<string>OpenMapURL</string>
 				<key>descriptionText</key>
@@ -65,7 +65,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Map spatial reference</string>
+				<string>Set map spatial reference</string>
 				<key>storyboardName</key>
 				<string>SetMapsSpatialReference</string>
 				<key>descriptionText</key>
@@ -89,7 +89,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Display draw status</string>
+				<string>Display drawing status</string>
 				<key>storyboardName</key>
 				<string>MapViewDrawStatus</string>
 				<key>descriptionText</key>
@@ -145,7 +145,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Create and save map</string>
+				<string>Create and save a map</string>
 				<key>storyboardName</key>
 				<string>CreateSaveMap</string>
 				<key>descriptionText</key>
@@ -161,7 +161,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Open mobile map package</string>
+				<string>Open mobile map (map package)</string>
 				<key>storyboardName</key>
 				<string>OpenMobileMapPackage</string>
 				<key>descriptionText</key>
@@ -214,7 +214,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Generate offline map with local basemap</string>
+				<string>Generate offline map (basemap by reference)</string>
 				<key>descriptionText</key>
 				<string>Take a web map offline, but instead of downloading an online basemap, use one which is already on the device.</string>
 				<key>storyboardName</key>
@@ -226,7 +226,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Read geopackage</string>
+				<string>Read a geopackage</string>
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>
 				<key>descriptionText</key>
@@ -238,7 +238,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Min max scale</string>
+				<string>Set min-max scale</string>
 				<key>storyboardName</key>
 				<string>SetMinMaxScale</string>
 				<key>descriptionText</key>
@@ -262,7 +262,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Download preplanned map area</string>
+				<string>Download preplanned map</string>
 				<key>descriptionText</key>
 				<string>Take a map offline using a preplanned map area.</string>
 				<key>storyboardName</key>

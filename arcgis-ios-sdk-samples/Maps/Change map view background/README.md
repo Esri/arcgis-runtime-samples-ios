@@ -10,7 +10,7 @@ Basemaps should be selected contextually. For example, in maritime applications,
 
 ## How to use the sample
 
-Tap on the "Change background" button in the toolbar to open the settings view. Tap on the color next to "Color" and "Line color" to change the background color and the grid's line color respectively. Use the sliders to change the grid line width and grid size.
+Tap the "Change background" button in the toolbar to open the settings view. Tap the color next to "Color" and "Line color" rows to change the background color and the grid's line color respectively. Use the sliders to change the grid line width and grid size.
 
 ## How it works
 

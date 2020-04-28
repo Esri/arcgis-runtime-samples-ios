@@ -56,7 +56,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     private let map: AGSMap
     private let utilityNetwork: AGSUtilityNetwork
     private var utilityTier: AGSUtilityTier?
-    private var traceType = ("Connected", AGSUtilityTraceType.connected)
+    private var traceType = (name: "Connected", type: AGSUtilityTraceType.connected)
     private var traceParameters = AGSUtilityTraceParameters(traceType: .connected, startingLocations: [])
 
     private let parametersOverlay: AGSGraphicsOverlay = {
@@ -214,11 +214,10 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     
     // MARK: Perform Trace
     @IBAction func traceNetwork(_ sender: Any) {
-        SVProgressHUD.show(withStatus: "Running \(traceType.0) trace…")
-        let parameters = AGSUtilityTraceParameters(traceType: traceType.1, startingLocations: traceParameters.startingLocations)
-        traceParameters.barriers.forEach { barrier in
-            parameters.barriers.append(barrier)
-        }
+        SVProgressHUD.show(withStatus: "Running \(traceType.name) trace…")
+        let parameters = AGSUtilityTraceParameters(traceType: traceType.type, startingLocations: traceParameters.startingLocations)
+        parameters.barriers.append(contentsOf: traceParameters.barriers)
+
         // Set the trace configuration using the tier from the utility domain network.
         parameters.traceConfiguration = utilityTier?.traceConfiguration
         
@@ -281,12 +280,13 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     }
     
     // MARK: Terminal Selection UI
+    
     /// Popup an action sheet to select one from multiple terminals, or return if there is only one.
     ///
     /// - Parameters:
-    ///   - terminals: A list of terminals.
+    ///   - terminals: An array of terminals.
     ///   - mapPoint: The location tapped on the map.
-    ///   - completion: Completion clousre to pass the selected terminal.
+    ///   - completion: Completion closure to pass the selected terminal.
     private func selectTerminal(from terminals: [AGSUtilityTerminal], at mapPoint: AGSPoint, completion: @escaping (AGSUtilityTerminal) -> Void) {
         if terminals.count > 1 {
             // Show a terminal picker
@@ -354,16 +354,16 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     // MARK: Set trace type
     @IBAction func setTraceType(_ sender: Any) {
         let alertController = UIAlertController(title: "Select trace type", message: nil, preferredStyle: .actionSheet)
-        let types = [
-            ("Connected", AGSUtilityTraceType.connected),
-            ("Subnetwork", AGSUtilityTraceType.subnetwork),
-            ("Upstream", AGSUtilityTraceType.upstream),
-            ("Downstream", AGSUtilityTraceType.downstream)
+        let types: [(name: String, type: AGSUtilityTraceType)] = [
+            ("Connected", .connected),
+            ("Subnetwork", .subnetwork),
+            ("Upstream", .upstream),
+            ("Downstream", .downstream)
         ]
-        types.forEach { type in
-            let action = UIAlertAction(title: type.0, style: .default) { [unowned self] _ in
-                self.traceType = type
-                self.setStatus(message: "Trace type \(type.0) selected.")
+        types.forEach { (name, type) in
+            let action = UIAlertAction(title: name, style: .default) { [unowned self] _ in
+                self.traceType = (name, type)
+                self.setStatus(message: "Trace type \(name) selected.")
             }
             alertController.addAction(action)
         }
@@ -379,7 +379,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         traceParameters.startingLocations.removeAll()
         traceParameters.barriers.removeAll()
         parametersOverlay.graphics.removeAllObjects()
-        traceType = ("Connected", .connected)
+        traceType = (name: "Connected", type: .connected)
         setInstructionMessage()
     }
 

@@ -12,7 +12,7 @@ This workflow can be used by survey workers operating in remote areas where netw
 
 ## How to use the sample
 
-Start the app. It will display an offline map, check for available updates, and show update availability and size. Tap "Apply" to apply the updates to the local offline map and show the results.
+When the sample loads, it will display an offline map, check for available updates, and show update availability and size. Tap "Apply" to apply the updates to the local offline map and show the results.
 
 ## How it works
 

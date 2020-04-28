@@ -11,7 +11,7 @@ For displaying web maps stored on ArcGIS Online (e.g. soil survey results, as de
 
 ## How to use the sample
 
-Tap on the button to see a list of other web maps. Upon selection, the web map displays in the map view.
+Tap the button to see a list of other web maps. Upon selection, the web map displays in the map view.
 
 ## How it works
 

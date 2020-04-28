@@ -13,7 +13,7 @@ Map annotations are typically only relevant at certain scales. For instance, ann
 
 ## How to use the sample
 
-When the app starts, tap the "Settings" button. Tap the "Reference Scale" row, and use the picker to set the map's reference scale (1:500,000 1:250,000 1:100,000 1:50,000). Then tap the "Set to Reference Scale" button to set the map scale to the reference scale.
+When the sample loads, tap the "Settings" button. Tap the "Reference Scale" row, and use the picker to set the map's reference scale (1:500,000 1:250,000 1:100,000 1:50,000). Then tap the "Set to Reference Scale" button to set the map scale to the reference scale.
 
 Tap the "Layers" row to show a list of the map's feature layers. Tap a row to toggle whether that layer should honor the reference scale. Tap "Done" button to dismiss the settings page.
 

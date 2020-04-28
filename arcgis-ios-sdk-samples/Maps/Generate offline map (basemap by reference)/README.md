@@ -20,7 +20,7 @@ The author of a web map can support the use of basemaps which are already on a d
 
 ## How to use the sample
 
-When the app starts, tap on "Generate Offline Map" button. You will be prompted to choose whether you wish to download the online basemap or use the local "naperville_imagery.tpk" basemap which is already on the device.
+When the sample loads, tap the "Generate Offline Map" button. You will be prompted to choose whether you wish to download the online basemap or use the local "naperville_imagery.tpk" basemap which is already on the device.
 
 If you choose to download the online basemap, the offline map will be generated with the same (topographic) basemap as the online web map. To download the Esri basemap, you may be prompted to sign in to ArcGIS.com.
 

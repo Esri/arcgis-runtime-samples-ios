@@ -1645,7 +1645,7 @@
 			</dict>
 			<dict>
 				<key>descriptionText</key>
-				<string>Determine the set of operable features required to stop a network&apos;s resource, effectively isolating an area of the network.</string>
+				<string>Run a filtered trace to locate operable features that will isolate an area from the flow of network resources.</string>
 				<key>storyboardName</key>
 				<string>PerformValveIsolationTrace</string>
 				<key>displayName</key>

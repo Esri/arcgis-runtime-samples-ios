@@ -1643,6 +1643,14 @@
 				<key>displayName</key>
 				<string>Connected Trace</string>
 			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Determine the set of operable features required to stop a network&apos;s resource, effectively isolating an area of the network.</string>
+				<key>storyboardName</key>
+				<string>PerformValveIsolationTrace</string>
+				<key>displayName</key>
+				<string>Perform valve isolation trace</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

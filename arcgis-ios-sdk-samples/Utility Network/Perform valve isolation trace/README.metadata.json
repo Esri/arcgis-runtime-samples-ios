@@ -13,11 +13,36 @@
         "subnetwork trace",
         "trace configuration",
         "trace filter",
-        "utility network"
+        "utility network",
+        "AGSUtilityCategory",
+        "AGSUtilityCategoryComparison",
+        "AGSUtilityCategoryComparisonOperator",
+        "AGSUtilityDomainNetwork",
+        "AGSUtilityElement",
+        "AGSUtilityElementTraceResult",
+        "AGSUtilityNetwork",
+        "AGSUtilityNetworkDefinition",
+        "AGSUtilityTraceFilter",
+        "AGSUtilityTier",
+        "AGSUtilityTraceParameters",
+        "AGSUtilityTraceResult",
+        "AGSUtilityTraceType"
     ],
     "redirect_from": [],
     "relevant_apis": [
-        "",
+        "AGSUtilityCategory",
+        "AGSUtilityCategoryComparison",
+        "AGSUtilityCategoryComparisonOperator",
+        "AGSUtilityDomainNetwork",
+        "AGSUtilityElement",
+        "AGSUtilityElementTraceResult",
+        "AGSUtilityNetwork",
+        "AGSUtilityNetworkDefinition",
+        "AGSUtilityTraceFilter",
+        "AGSUtilityTier",
+        "AGSUtilityTraceParameters",
+        "AGSUtilityTraceResult",
+        "AGSUtilityTraceType"
     ],
     "snippets": [
         "PerformValveIsolationTraceViewController.swift"

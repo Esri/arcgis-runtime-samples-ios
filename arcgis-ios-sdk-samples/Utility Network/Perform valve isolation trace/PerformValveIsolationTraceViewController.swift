@@ -20,7 +20,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     @IBOutlet weak var traceButton: UIBarButtonItem!
     /// b
     @IBOutlet weak var categoryButton: UIBarButtonItem!
-    /// a switch
+    /// A switch to control whether to include isolated features in the trace results when used in conjunction with an isolation trace.
     @IBOutlet weak var isolationSwitch: UISwitch!
     /// The 3-line label to display navigation status.
     @IBOutlet weak var statusLabel: UILabel!
@@ -35,14 +35,24 @@ class PerformValveIsolationTraceViewController: UIViewController {
     
     var filterBarrierCategories: [AGSUtilityCategory] = []
     var selectedCategory: AGSUtilityCategory?
-    
-    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleGas/FeatureServer")!
     var startingLocation: AGSUtilityElement?
     var utilityNetwork: AGSUtilityNetwork!
     var traceConfiguration: AGSUtilityTraceConfiguration?
     
+    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleGas/FeatureServer")!
+    
+    // For creating the default trace configuration.
+    let domainNetworkName = "Pipeline"
+    let tierName = "Pipe Distribution System"
+
+    // For creating the default starting location.
+    let networkSourceName = "Gas Device"
+    let assetGroupName = "Meter"
+    let assetTypeName = "Customer"
+    let globalId = UUID(uuidString: "98A06E95-70BE-43E7-91B7-E34C9D3CB9FF")!
+    
     // Create gas distribution line layer ./3 and gas device layer ./0.
-    private var layers: [AGSFeatureLayer] {
+    var layers: [AGSFeatureLayer] {
         return [3, 0].map {
             let featureTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("\($0)"))
             let layer = AGSFeatureLayer(featureTable: featureTable)
@@ -73,8 +83,8 @@ class PerformValveIsolationTraceViewController: UIViewController {
                 return
             } else {
                 let networkDefinition = self.utilityNetwork.definition
-                let domainNetwork = networkDefinition.domainNetwork(withDomainNetworkName: "Pipeline")
-                let utilityTier = domainNetwork?.tier(withName: "Pipe Distribution System")
+                let domainNetwork = networkDefinition.domainNetwork(withDomainNetworkName: self.domainNetworkName)
+                let utilityTier = domainNetwork?.tier(withName: self.tierName)
                 self.traceConfiguration = utilityTier?.traceConfiguration
                 
                 self.filterBarrierCategories = networkDefinition.categories
@@ -83,10 +93,10 @@ class PerformValveIsolationTraceViewController: UIViewController {
                 self.traceConfiguration?.filter = AGSUtilityTraceFilter()
                 
                 // Get a default starting location.
-                let networkSource = networkDefinition.networkSource(withName: "Gas Device")
-                let assetGroup = networkSource?.assetGroup(withName: "Meter")
-                let assetType = assetGroup?.assetType(withName: "Customer")
-                self.startingLocation = self.utilityNetwork.createElement(with: assetType!, globalID: UUID(uuidString: "98A06E95-70BE-43E7-91B7-E34C9D3CB9FF")!)
+                let networkSource = networkDefinition.networkSource(withName: self.networkSourceName)
+                let assetGroup = networkSource?.assetGroup(withName: self.assetGroupName)
+                let assetType = assetGroup?.assetType(withName: self.assetTypeName)
+                self.startingLocation = self.utilityNetwork.createElement(with: assetType!, globalID: self.globalId)
                 
                 // Get a list of features for the starting location element.
                 self.utilityNetwork.features(for: [self.startingLocation!]) { (features, error) in

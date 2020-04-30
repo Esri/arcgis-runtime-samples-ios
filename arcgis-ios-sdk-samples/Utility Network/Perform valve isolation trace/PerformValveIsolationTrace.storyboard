@@ -56,13 +56,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o40-Kg-nZ5">
-                                                    <rect key="frame" x="128" y="-15.5" width="51" height="31"/>
+                                                    <rect key="frame" x="128" y="0.0" width="51" height="0.0"/>
                                                 </switch>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="o40-Kg-nZ5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5Ke-ZQ-uR3" secondAttribute="top" id="AwD-XY-htV"/>
                                                 <constraint firstItem="o40-Kg-nZ5" firstAttribute="centerY" secondItem="5Ke-ZQ-uR3" secondAttribute="centerY" id="CKa-zA-2j6"/>
                                                 <constraint firstItem="o40-Kg-nZ5" firstAttribute="leading" secondItem="lHG-2p-x4N" secondAttribute="trailing" constant="8" id="NFe-fK-sZR"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="o40-Kg-nZ5" secondAttribute="bottom" id="dSk-3Z-IrV"/>
                                                 <constraint firstItem="lHG-2p-x4N" firstAttribute="centerY" secondItem="5Ke-ZQ-uR3" secondAttribute="centerY" id="hNs-WR-ext"/>
                                                 <constraint firstItem="lHG-2p-x4N" firstAttribute="leading" secondItem="5Ke-ZQ-uR3" secondAttribute="leading" id="odc-r9-WBt"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="ztT-pV-wjE"/>

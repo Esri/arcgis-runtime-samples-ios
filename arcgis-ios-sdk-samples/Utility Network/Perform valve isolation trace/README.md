@@ -20,13 +20,13 @@ Tap "Category" to create and set the configuration's filter barriers with a util
 4. Create a default starting location from a given asset type and global ID.
 5. Add an `AGSGraphicsOverlay` with an `AGSGraphic` that represents this starting location.
 6. Populate the choice list for the filter barriers from the `categories` property of `AGSUtilityNetworkDefinition`.
-7. Get a default `AGSUtilityTraceConfiguration` from a given tier in a domain network. Set it's `filter` property with an `AGSUtilityTraceFilter` object.
+7. Get a default `AGSUtilityTraceConfiguration` from a given tier in a domain network. Set its `filter` property with an `AGSUtilityTraceFilter` object.
 8. When "Trace" is tapped,
     * Create a new `AGSUtilityCategoryComparison` with the selected category and `AGSUtilityCategoryComparisonOperator.exists`. 
     * Assign this condition to `AGSUtilityTraceFilter.barriers` from the default configuration from step 7.
     * Update the configuration's `includeIsolatedFeatures` property.
     * Create an `AGSUtilityTraceParameters` object with `AGSUtilityTraceType.isolation` and default starting location from step 4.
-    * Set this configuration to the parameters' `traceConfiguration` property, and then run the `AGSUtilityNetwork.trace(with:completion:)` method.
+    * Set this configuration to the parameters' `traceConfiguration` property.
     * Run `AGSUtilityNetwork.trace(with:completion:)` with the specified parameters.
 9. Group the `AGSUtilityElementTraceResult.elements` by their `networkSource.name`.
 10. For every `AGSFeatureLayer` in this map with trace result elements, select features by converting `AGSUtilityElement`(s) to `AGSArcGISFeature`(s) using `AGSUtilityNetwork.features(for:completion:)`.

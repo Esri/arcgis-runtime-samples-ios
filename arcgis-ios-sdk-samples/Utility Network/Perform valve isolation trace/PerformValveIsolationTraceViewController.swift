@@ -137,7 +137,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
         }
     }
     
-    // MARK: UI and Feedback
+    // MARK: UI and feedback
     
     func drawStartingLocation() {
         // Get a list of features for the starting location element.

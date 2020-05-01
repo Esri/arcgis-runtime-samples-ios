@@ -24,7 +24,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     @IBOutlet weak var categoryButton: UIBarButtonItem!
     /// The switch to control whether to include isolated features in the trace results when used in conjunction with an isolation trace.
     @IBOutlet weak var isolationSwitch: UISwitch!
-    /// The 3-line label to display navigation status.
+    /// The label to display trace status.
     @IBOutlet weak var statusLabel: UILabel!
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
@@ -82,12 +82,12 @@ class PerformValveIsolationTraceViewController: UIViewController {
     /// - Returns: An optional `AGSUtilityTraceParameters` object.
     func makeTraceParameters() -> AGSUtilityTraceParameters? {
         guard let configuration = traceConfiguration else {
-            self.setStatus(message: "Trace configuration does not exist.")
+            setStatus(message: "Trace configuration does not exist.")
             return nil
         }
         guard let category = selectedCategory else {
             // A nil category will let the trace fail.
-            self.setStatus(message: "Category not set for filter barrier.")
+            setStatus(message: "Category not set for filter barrier.")
             return nil
         }
         // Note: AGSUtilityNetworkAttributeComparison or AGSUtilityCategoryComparison with AGSUtilityCategoryComparisonOperator.doesNotExist
@@ -141,7 +141,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     
     func drawStartingLocation() {
         // Get a list of features for the starting location element.
-        self.utilityNetwork.features(for: [self.startingLocationElement]) { [weak self] (features, error) in
+        utilityNetwork.features(for: [startingLocationElement]) { [weak self] (features, error) in
             guard let self = self else { return }
             if let error = error {
                 self.setStatus(message: "Loading starting location features failed.")
@@ -179,7 +179,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     
     /// Clear all the feature selections from previous trace.
     func clearLayersSelection() {
-        self.mapView.map?.operationalLayers.lazy
+        mapView.map?.operationalLayers.lazy
             .compactMap { $0 as? AGSFeatureLayer }
             .forEach { $0.clearSelection() }
     }
@@ -187,6 +187,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func traceButtonTapped(_ button: UIBarButtonItem) {
+        clearLayersSelection()
         guard let parameters = makeTraceParameters() else { return }
         SVProgressHUD.show(withStatus: "Running isolation trace…")
         utilityNetwork.trace(with: parameters) { [weak self] (traceResults, error) in
@@ -202,7 +203,6 @@ class PerformValveIsolationTraceViewController: UIViewController {
                 SVProgressHUD.dismiss()
                 return
             }
-            self.clearLayersSelection()
             SVProgressHUD.show(withStatus: "Trace completed. Selecting features…")
             let groupedElements = Dictionary(grouping: elementTraceResult.elements) { $0.networkSource.name }
             
@@ -242,10 +242,10 @@ class PerformValveIsolationTraceViewController: UIViewController {
             }
             alertController.addAction(action)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
         alertController.popoverPresentationController?.barButtonItem = categoryButton
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
     
     // MARK: UIViewController

@@ -1637,11 +1637,11 @@
 		<array>
 			<dict>
 				<key>descriptionText</key>
-				<string>Perform a connected trace against an electric Utility Network.</string>
+				<string>Discover connected features in a utility network using connected, subnetwork, upstream, and downstream traces.</string>
 				<key>storyboardName</key>
-				<string>ConnectedTrace</string>
+				<string>TraceUtilityNetwork</string>
 				<key>displayName</key>
-				<string>Connected Trace</string>
+				<string>Trace utility network</string>
 			</dict>
 		</array>
 	</dict>

@@ -35,18 +35,23 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             if $0 == 115 {
                 // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
                 let darkCyan = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
-                let mediumVoltageValue = AGSUniqueValue(description: "N/A",
-                                                        label: "Medium voltage",
-                                                        symbol: AGSSimpleLineSymbol(style: .solid, color: darkCyan, width: 3),
-                                                        values: [5])
-                let lowVoltageValue = AGSUniqueValue(description: "N/A",
-                                                     label: "Low voltage",
-                                                     symbol: AGSSimpleLineSymbol(style: .dash, color: darkCyan, width: 3),
-                                                     values: [3])
-                layer.renderer = AGSUniqueValueRenderer(fieldNames: ["ASSETGROUP"],
-                                                        uniqueValues: [mediumVoltageValue, lowVoltageValue],
-                                                        defaultLabel: "",
-                                                        defaultSymbol: AGSSimpleLineSymbol()
+                let mediumVoltageValue = AGSUniqueValue(
+                    description: "N/A",
+                    label: "Medium voltage",
+                    symbol: AGSSimpleLineSymbol(style: .solid, color: darkCyan, width: 3),
+                    values: [5]
+                )
+                let lowVoltageValue = AGSUniqueValue(
+                    description: "N/A",
+                    label: "Low voltage",
+                    symbol: AGSSimpleLineSymbol(style: .dash, color: darkCyan, width: 3),
+                    values: [3]
+                )
+                layer.renderer = AGSUniqueValueRenderer(
+                    fieldNames: ["ASSETGROUP"],
+                    uniqueValues: [mediumVoltageValue, lowVoltageValue],
+                    defaultLabel: "",
+                    defaultSymbol: AGSSimpleLineSymbol()
                 )
             }
             return layer
@@ -214,7 +219,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     
     // MARK: Perform Trace
     @IBAction func traceNetwork(_ sender: Any) {
-        SVProgressHUD.show(withStatus: "Running \(traceType.name) trace…")
+        SVProgressHUD.show(withStatus: "Running \(traceType.name.lowercased()) trace…")
         let parameters = AGSUtilityTraceParameters(traceType: traceType.type, startingLocations: traceParameters.startingLocations)
         parameters.barriers.append(contentsOf: traceParameters.barriers)
 
@@ -281,7 +286,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     
     // MARK: Terminal Selection UI
     
-    /// Popup an action sheet to select one from multiple terminals, or return if there is only one.
+    /// Presents an action sheet to select one from multiple terminals, or return if there is only one.
     ///
     /// - Parameters:
     ///   - terminals: An array of terminals.
@@ -370,7 +375,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         alertController.popoverPresentationController?.barButtonItem = typeButton
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
     
     // MARK: Reset trace

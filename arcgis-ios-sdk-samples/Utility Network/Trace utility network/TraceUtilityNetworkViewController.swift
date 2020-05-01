@@ -66,16 +66,17 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
 
     private let parametersOverlay: AGSGraphicsOverlay = {
         let barrierPointSymbol = AGSSimpleMarkerSymbol(style: .X, color: .red, size: 20)
-        let barrierUniqueValue = AGSUniqueValue(description: "Barriers",
-                                                label: InteractionMode.addingBarriers.toString(),
-                                                symbol: barrierPointSymbol,
-                                                values: [InteractionMode.addingBarriers.traceLocationType])
+        let barrierUniqueValue = AGSUniqueValue(
+            description: "Barriers",
+            label: InteractionMode.addingBarriers.toString(),
+            symbol: barrierPointSymbol,
+            values: [InteractionMode.addingBarriers.traceLocationType])
         let startingPointSymbol = AGSSimpleMarkerSymbol(style: .cross, color: .green, size: 20)
-        let renderer = AGSUniqueValueRenderer(fieldNames: ["TraceLocationType"],
-                                              uniqueValues: [barrierUniqueValue],
-                                              defaultLabel: InteractionMode.addingStartLocation.toString(),
-                                              defaultSymbol: startingPointSymbol)
-
+        let renderer = AGSUniqueValueRenderer(
+            fieldNames: ["TraceLocationType"],
+            uniqueValues: [barrierUniqueValue],
+            defaultLabel: InteractionMode.addingStartLocation.toString(),
+            defaultSymbol: startingPointSymbol)
         let overlay = AGSGraphicsOverlay()
         overlay.renderer = renderer
 
@@ -86,8 +87,14 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     required init?(coder aDecoder: NSCoder) {
         // Create the map
         map = AGSMap(basemap: .streetsNightVector())
-        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -9813547.35557238, yMin: 5129980.36635111, xMax: -9813185.0602376, yMax: 5130215.41254146, spatialReference: .webMercator()))
-
+        map.initialViewpoint = AGSViewpoint(
+            targetExtent: AGSEnvelope(
+                xMin: -9813547.35557238,
+                yMin: 5129980.36635111,
+                xMax: -9813185.0602376,
+                yMax: 5130215.41254146,
+                spatialReference: .webMercator()
+        ))
         // Create the utility network, referencing the map.
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
 
@@ -119,7 +126,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
-                self.setStatus(message: "Loading Utility Network failed")
+                self.setStatus(message: "Loading Utility Network failed.")
                 self.presentAlert(error: error)
             } else {
                 // Update the UI to allow network traces to be run.
@@ -160,8 +167,8 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     /// An appropriate graphic is created at the tapped location to mark the element as either a starting location or barrier.
     ///
     /// - Parameters:
-    ///   - feature: The geoelement retrieved as an AGSArcGISFeature.
-    ///   - location: The AGSPoint used to identify utility elements in the utility network.
+    ///   - feature: The geoelement retrieved as an `AGSArcGISFeature`.
+    ///   - location: The `AGSPoint` used to identify utility elements in the utility network.
     private func addStartElementOrBarrier(for feature: AGSArcGISFeature, at location: AGSPoint) {
         guard let featureTable = feature.featureTable as? AGSArcGISFeatureTable,
             let networkSource = utilityNetwork.definition.networkSource(withName: featureTable.tableName) else {
@@ -255,13 +262,13 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
                 guard let layer = self.map.operationalLayers.first(where: { ($0 as? AGSFeatureLayer)?.featureTable?.tableName == networkName }) as? AGSFeatureLayer else { continue }
 
                 selectionGroup.enter()
-                self.utilityNetwork.features(for: elements) { [layer] (features, error) in
+                self.utilityNetwork.features(for: elements) { [weak self, layer] (features, error) in
                     defer {
                         selectionGroup.leave()
                     }
                     
                     if let error = error {
-                        self.presentAlert(error: error)
+                        self?.presentAlert(error: error)
                         return
                     }
                     
@@ -295,7 +302,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     private func selectTerminal(from terminals: [AGSUtilityTerminal], at mapPoint: AGSPoint, completion: @escaping (AGSUtilityTerminal) -> Void) {
         if terminals.count > 1 {
             // Show a terminal picker
-            let terminalPicker = UIAlertController(title: "Select a terminal", message: nil, preferredStyle: .actionSheet)
+            let terminalPicker = UIAlertController(title: "Select a terminal.", message: nil, preferredStyle: .actionSheet)
             
             for terminal in terminals {
                 let action = UIAlertAction(title: terminal.name, style: .default) { [terminal] _ in
@@ -358,7 +365,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     
     // MARK: Set trace type
     @IBAction func setTraceType(_ sender: Any) {
-        let alertController = UIAlertController(title: "Select trace type", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Select a trace type.", message: nil, preferredStyle: .actionSheet)
         let types: [(name: String, type: AGSUtilityTraceType)] = [
             ("Connected", .connected),
             ("Subnetwork", .subnetwork),
@@ -404,6 +411,6 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     }
     
     func setInstructionMessage() {
-        setStatus(message: "Tap on the map to add a \(currentMode.toString())")
+        setStatus(message: "Tap on the map to add a \(currentMode.toString()).")
     }
 }

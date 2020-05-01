@@ -33,13 +33,13 @@ class DisplayUtilityAssociationVC: UIViewController {
     private let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 5)
     let attachmentImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
     let connectivityImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-    var associations: [AGSUtilityAssociation]?
+//    var associations: [AGSUtilityAssociation]?
 
     func loadUtilityNetwork() {
-        let utilityNetworkGroup = DispatchGroup()
-        utilityNetworkGroup.enter()
+//        let utilityNetworkGroup = DispatchGroup()
+//        utilityNetworkGroup.enter()
             utilityNetwork.load { [weak self] error in
-                utilityNetworkGroup.leave()
+//                utilityNetworkGroup.leave()
                 if let error = error {
                     self?.presentAlert(error: error)
                     return
@@ -78,24 +78,25 @@ class DisplayUtilityAssociationVC: UIViewController {
                            print("Error creating swatch: \(error)")
                        }
                    }
+//                    self.addAssociationGraphics()
                 }
             }
         
-        utilityNetworkGroup.notify(queue: .main) { [weak self] in
-            if self?.utilityNetwork.loadStatus == .loaded {
-                print("LOADED")
-                return
-            }
-        }
+//        utilityNetworkGroup.notify(queue: .main) { [weak self] in
+//            if self?.utilityNetwork.loadStatus == .loaded {
+//                print("LOADED")
+//                return
+//            }
+//        }
     }
     
     func addAssociationGraphics() {
-        let associationsGroup = DispatchGroup()
+//        let associationsGroup = DispatchGroup()
         if utilityNetwork.loadStatus == .notLoaded {
             loadUtilityNetwork()
         }
         
-        associationsGroup.enter()
+//        associationsGroup.enter()
         // Check if the current viewpoint is outside of the max scale.
         if let targetScale = mapView.currentViewpoint(with: .centerAndScale)?.targetScale {
             if targetScale >= maxScale {
@@ -112,29 +113,20 @@ class DisplayUtilityAssociationVC: UIViewController {
                 if let error = error {
                     print("Error loading associations: \(error)")
                 } else {
-                    self?.associations = associations
-                    associationsGroup.leave()
-                }
-            }
-            
-            associationsGroup.notify(queue: .main) { [weak self] in
-                guard let self = self else { return }
-                self.associations?.forEach { association in
-                    // Check if the graphics overlay already contains the association.
-                    let graphics = self.associationsOverlay.graphics as! [AGSGraphic]
-                    let associationGID = association.globalID
-                    let existingAssociations = graphics.filter { $0.attributes["GlobalId"] as! UUID == associationGID }
-                    if existingAssociations.isEmpty {
-                        let graphic = AGSGraphic(geometry: association.geometry, symbol: .none, attributes: ["GlobalId": associationGID, "AssociationType": association.associationType])
-                        self.associationsOverlay.graphics.add(graphic)
+                    guard let self = self else { return }
+                    associations?.forEach { association in
+                        // Check if the graphics overlay already contains the association.
+                        let graphics = self.associationsOverlay.graphics as! [AGSGraphic]
+                        let associationGID = association.globalID
+                        let existingAssociations = graphics.filter { $0.attributes["GlobalId"] as! UUID == associationGID }
+                        if existingAssociations.isEmpty {
+                            let graphic = AGSGraphic(geometry: association.geometry, symbol: .none, attributes: ["GlobalId": associationGID, "AssociationType": association.associationType])
+                            self.associationsOverlay.graphics.add(graphic)
+                        }
                     }
                 }
             }
         }
-    }
-    
-    func mapViewpointDidChange() {
-        addAssociationGraphics()
     }
     
     override func viewDidLoad() {
@@ -144,7 +136,7 @@ class DisplayUtilityAssociationVC: UIViewController {
         
         self.mapView.viewpointChangedHandler = { [weak self] in
             DispatchQueue.main.async {
-                self?.mapViewpointDidChange()
+                self?.addAssociationGraphics()
             }
         }
         

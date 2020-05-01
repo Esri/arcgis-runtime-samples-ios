@@ -36,10 +36,7 @@ class DisplayUtilityAssociationVC: UIViewController {
 //    var associations: [AGSUtilityAssociation]?
 
     func loadUtilityNetwork() {
-//        let utilityNetworkGroup = DispatchGroup()
-//        utilityNetworkGroup.enter()
             utilityNetwork.load { [weak self] error in
-//                utilityNetworkGroup.leave()
                 if let error = error {
                     self?.presentAlert(error: error)
                     return
@@ -78,23 +75,16 @@ class DisplayUtilityAssociationVC: UIViewController {
                            print("Error creating swatch: \(error)")
                        }
                    }
-//                    self.addAssociationGraphics()
+//                    self.mapViewDidChange()
                 }
             }
-        
-//        utilityNetworkGroup.notify(queue: .main) { [weak self] in
-//            if self?.utilityNetwork.loadStatus == .loaded {
-//                print("LOADED")
-//                return
-//            }
-//        }
     }
     
     func addAssociationGraphics() {
 //        let associationsGroup = DispatchGroup()
-        if utilityNetwork.loadStatus == .notLoaded {
-            loadUtilityNetwork()
-        }
+//        if utilityNetwork.loadStatus == .notLoaded {
+//            loadUtilityNetwork()
+//        }
         
 //        associationsGroup.enter()
         // Check if the current viewpoint is outside of the max scale.
@@ -129,16 +119,18 @@ class DisplayUtilityAssociationVC: UIViewController {
         }
     }
     
+    func mapViewDidChange() {
+        self.mapView.viewpointChangedHandler = { [weak self] in
+           DispatchQueue.main.async {
+               self?.addAssociationGraphics()
+           }
+       }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        loadUtilityNetwork()
-        
-        self.mapView.viewpointChangedHandler = { [weak self] in
-            DispatchQueue.main.async {
-                self?.addAssociationGraphics()
-            }
-        }
+        loadUtilityNetwork()
         
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayUtilityAssociationVC"]

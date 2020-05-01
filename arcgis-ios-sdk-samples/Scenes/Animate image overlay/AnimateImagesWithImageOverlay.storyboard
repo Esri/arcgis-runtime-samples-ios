@@ -17,18 +17,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsA-b3-hmy" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lnn-pc-krT">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" id="Miz-5L-iRG">
                                         <view key="customView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1T-7d-zzc">
-                                            <rect key="frame" x="20" y="5.5" width="250" height="33"/>
+                                            <rect key="frame" x="20" y="10.5" width="210" height="33"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="G9L-es-5OQ">
-                                                    <rect key="frame" x="8" y="0.0" width="119" height="34"/>
+                                                    <rect key="frame" x="-2" y="0.0" width="104" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="mbx-Cl-U2E"/>
                                                     </constraints>
@@ -37,11 +37,11 @@
                                                     </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hf-Sx-W94">
-                                                    <rect key="frame" x="135" y="6" width="115" height="21"/>
+                                                    <rect key="frame" x="110" y="8" width="100" height="17"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="115" id="g7P-5Z-Vlx"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="g7P-5Z-Vlx"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -50,7 +50,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="G9L-es-5OQ" secondAttribute="bottom" id="1V7-4s-YTk"/>
                                                 <constraint firstItem="8hf-Sx-W94" firstAttribute="leading" secondItem="G9L-es-5OQ" secondAttribute="trailing" constant="10" id="876-HP-0YD"/>
-                                                <constraint firstItem="G9L-es-5OQ" firstAttribute="leading" secondItem="X1T-7d-zzc" secondAttribute="leading" constant="10" id="9z6-Yr-02M"/>
+                                                <constraint firstItem="G9L-es-5OQ" firstAttribute="leading" secondItem="X1T-7d-zzc" secondAttribute="leading" id="9z6-Yr-02M"/>
                                                 <constraint firstItem="8hf-Sx-W94" firstAttribute="centerY" secondItem="X1T-7d-zzc" secondAttribute="centerY" id="VtS-ki-NCn"/>
                                                 <constraint firstItem="G9L-es-5OQ" firstAttribute="top" secondItem="X1T-7d-zzc" secondAttribute="top" id="l6i-Be-NwX"/>
                                                 <constraint firstAttribute="trailing" secondItem="8hf-Sx-W94" secondAttribute="trailing" id="qcS-zL-GlR"/>

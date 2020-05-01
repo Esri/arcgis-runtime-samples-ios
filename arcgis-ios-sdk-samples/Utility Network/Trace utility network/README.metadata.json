@@ -1,0 +1,56 @@
+{
+    "category": "Utility Network",
+    "description": "Discover connected features in a utility network using connected, subnetwork, upstream, and downstream traces.",
+    "ignore": false,
+    "images": [
+        "trace-utility-network.png"
+    ],
+    "keywords": [
+        "condition barriers",
+        "downstream trace",
+        "network analysis",
+        "subnetwork trace",
+        "trace configuration",
+        "traversability",
+        "upstream trace",
+        "utility network",
+        "validate consistency",
+        "class AGSGeometryEngine.fraction(alongLine:to:tolerance:)",
+        "AGSUtilityAssetType",
+        "AGSUtilityDomainNetwork",
+        "AGSUtilityElement",
+        "AGSUtilityElementTraceResult",
+        "AGSUtilityNetwork",
+        "AGSUtilityNetworkDefinition",
+        "AGSUtilityNetworkSource",
+        "AGSUtilityTerminal",
+        "AGSUtilityTier",
+        "AGSUtilityTraceConfiguration",
+        "AGSUtilityTraceParameters",
+        "AGSUtilityTraceResult",
+        "AGSUtilityTraceType",
+        "AGSUtilityTraversability"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "class AGSGeometryEngine.fraction(alongLine:to:tolerance:)",
+        "AGSUtilityAssetType",
+        "AGSUtilityDomainNetwork",
+        "AGSUtilityElement",
+        "AGSUtilityElementTraceResult",
+        "AGSUtilityNetwork",
+        "AGSUtilityNetworkDefinition",
+        "AGSUtilityNetworkSource",
+        "AGSUtilityTerminal",
+        "AGSUtilityTier",
+        "AGSUtilityTraceConfiguration",
+        "AGSUtilityTraceParameters",
+        "AGSUtilityTraceResult",
+        "AGSUtilityTraceType",
+        "AGSUtilityTraversability"
+    ],
+    "snippets": [
+        "TraceUtilityNetworkViewController.swift"
+    ],
+    "title": "Trace utility network"
+}

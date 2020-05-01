@@ -16,9 +16,15 @@ import UIKit
 import ArcGIS
 
 class AnimateImagesWithImageOverlayViewController: UIViewController {
+    // MARK: Storyboard views
+    
+    /// The button to toggle image overlay animation.
     @IBOutlet weak var playPauseButton: UIBarButtonItem!
+    /// The button to choose a frame rate for the animation
     @IBOutlet weak var frameRateButton: UIBarButtonItem!
+    /// The label to display opacity percentage.
     @IBOutlet weak var opacityLabel: UILabel!
+    /// The slider to change opacity level, from transparent 0% to opaque 100%.
     @IBOutlet weak var opacitySlider: UISlider! {
         didSet {
             opacityLabel.text = getOpacityString()
@@ -35,12 +41,14 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
             sceneView.imageOverlays.add(imageOverlay)
         }
     }
+
+    // MARK: Instance properties
     
     /// A circular loop counter within a length.
     private var loopCounter: LoopCounter!
-    /// The graphics overlay used to show a graphic at the tapped point.
+    /// The graphics overlay to show a graphic at the tapped point.
     let imageOverlay = AGSImageOverlay()
-    /// The frame rate in frame per second.
+    /// The frame rate in the unit of frame per second.
     var frameRate = 60.0
     /// An array to hold the URLs for the overlay images.
     var imageURLs: [URL] = []
@@ -54,6 +62,8 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
             playPauseButton?.title = isAnimating ? "Pause" : "Play"
         }
     }
+    
+    // MARK: Initialize scene and animation
     
     /// Create a scene.
     ///
@@ -130,7 +140,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     }
     
     @IBAction func frameRateButtonTapped(_ button: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Select frame rate", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Select a frame rate.", message: nil, preferredStyle: .actionSheet)
         let frameRates: [(name: String, fps: Double)] = [
             ("60 FPS", 60.0),
             ("30 FPS", 30.0),

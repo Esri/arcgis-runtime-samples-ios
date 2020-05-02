@@ -17,36 +17,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="og2-5E-h2J" userLabel="Map View" customClass="AGSMapView">
-                                <rect key="frame" x="20" y="20" width="374" height="793"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="793"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96r-bO-QXb">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <barButtonItem title="Item" id="JWX-iC-6uh" userLabel="Attachment Image"/>
+                                    <barButtonItem id="JWX-iC-6uh" userLabel="Attachment Image"/>
                                     <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="o22-gE-QX2"/>
-                                    <barButtonItem title="Attachment" id="du0-pA-9ww" userLabel="Attachment Label"/>
+                                    <barButtonItem title="Attachment" id="du0-pA-9ww" userLabel="Attachment Label">
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kcu-X1-Ld8"/>
-                                    <barButtonItem title="Connectivity" id="bsi-6Y-q3J" userLabel="Connectivity Image"/>
+                                    <barButtonItem id="bsi-6Y-q3J" userLabel="Connectivity Image"/>
                                     <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="fb0-r0-Zw0"/>
-                                    <barButtonItem title="Item" id="gXK-mX-aiU" userLabel="Connectivity Label"/>
+                                    <barButtonItem title="Connectivity" id="gXK-mX-aiU" userLabel="Connectivity Label">
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="099-Hd-o2c"/>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="og2-5E-h2J" firstAttribute="leading" secondItem="WcN-ei-ZB2" secondAttribute="leading" constant="20" symbolic="YES" id="6Xm-gB-pVl"/>
+                            <constraint firstItem="og2-5E-h2J" firstAttribute="leading" secondItem="WcN-ei-ZB2" secondAttribute="leading" id="6Xm-gB-pVl"/>
                             <constraint firstItem="96r-bO-QXb" firstAttribute="bottom" secondItem="duq-yN-VKT" secondAttribute="bottom" id="IWG-AB-XiC"/>
                             <constraint firstItem="og2-5E-h2J" firstAttribute="bottom" secondItem="96r-bO-QXb" secondAttribute="top" id="RLk-YF-gQd"/>
                             <constraint firstAttribute="trailing" secondItem="96r-bO-QXb" secondAttribute="trailing" symbolic="YES" id="j9Y-py-ZhD"/>
-                            <constraint firstAttribute="trailing" secondItem="og2-5E-h2J" secondAttribute="trailing" constant="20" symbolic="YES" id="jHG-gD-qnE"/>
+                            <constraint firstAttribute="trailing" secondItem="og2-5E-h2J" secondAttribute="trailing" id="jHG-gD-qnE"/>
                             <constraint firstItem="96r-bO-QXb" firstAttribute="leading" secondItem="WcN-ei-ZB2" secondAttribute="leading" symbolic="YES" id="jMy-yd-tiA"/>
                             <constraint firstItem="og2-5E-h2J" firstAttribute="top" secondItem="WcN-ei-ZB2" secondAttribute="top" constant="20" symbolic="YES" id="xVN-Ud-BVr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="duq-yN-VKT"/>
                     </view>
                     <connections>
+                        <outlet property="attachmentBBI" destination="JWX-iC-6uh" id="2wb-tS-KrI"/>
+                        <outlet property="connectivityBBI" destination="bsi-6Y-q3J" id="gZA-8f-edX"/>
                         <outlet property="mapView" destination="og2-5E-h2J" id="vMX-ao-x0h"/>
                     </connections>
                 </viewController>

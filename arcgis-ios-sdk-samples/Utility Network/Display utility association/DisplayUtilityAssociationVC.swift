@@ -19,22 +19,22 @@ class DisplayUtilityAssociationVC: UIViewController {
     // Set the map.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: .topographicVector())
-            let initialViewpoint = AGSViewpoint(latitude: -9812698.37297436, longitude: 5131928.33743317, scale: 73.4352610787649)
-            mapView.map?.initialViewpoint = initialViewpoint
+            mapView.map = AGSMap(basemapType: .topographicVector, latitude: 41.8057655, longitude: -88.1489692, levelOfDetail: 23)
+            print("initial viewpoint created")
+            loadUtilityNetwork()
             mapView.graphicsOverlays.add(associationsOverlay)
         }
     }
+    
+    @IBOutlet var attachmentBBI: UIBarButtonItem!
+    @IBOutlet var connectivityBBI: UIBarButtonItem!
     
     private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     private let maxScale = 2000.0
     private var associationsOverlay = AGSGraphicsOverlay()
     private let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .green, width: 5)
     private let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 5)
-    let attachmentImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-    let connectivityImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-//    var associations: [AGSUtilityAssociation]?
-
+    
     func loadUtilityNetwork() {
             utilityNetwork.load { [weak self] error in
                 if let error = error {
@@ -63,41 +63,34 @@ class DisplayUtilityAssociationVC: UIViewController {
                    // Populate the legened.
                    self.attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
                        if let image = image {
-                           self?.attachmentImage.image = image
+                            self?.attachmentBBI.image = image
                        } else if let error = error {
                            print("Error creating swatch: \(error)")
                        }
                    }
                    self.connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
                        if let image = image {
-                           self?.connectivityImage.image = image
+                        self?.connectivityBBI.image = image
                        } else if let error = error {
                            print("Error creating swatch: \(error)")
                        }
                    }
-//                    self.mapViewDidChange()
+                    self.addAssociationGraphics()
+                    self.mapViewDidChange()
                 }
             }
     }
     
     func addAssociationGraphics() {
-//        let associationsGroup = DispatchGroup()
-//        if utilityNetwork.loadStatus == .notLoaded {
-//            loadUtilityNetwork()
-//        }
-        
-//        associationsGroup.enter()
         // Check if the current viewpoint is outside of the max scale.
         if let targetScale = mapView.currentViewpoint(with: .centerAndScale)?.targetScale {
             if targetScale >= maxScale {
-                print("inside targetScale")
                 return
             }
         }
         
         // Check if the current viewpoint has an extent.
         if let extent = mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry.extent {
-            print("inside extent")
             //Get all of the associations in extent of the viewpoint.
             utilityNetwork.associations(withExtent: extent) { [weak self] (associations, error) in
                 if let error = error {
@@ -109,8 +102,17 @@ class DisplayUtilityAssociationVC: UIViewController {
                         let graphics = self.associationsOverlay.graphics as! [AGSGraphic]
                         let associationGID = association.globalID
                         let existingAssociations = graphics.filter { $0.attributes["GlobalId"] as! UUID == associationGID }
+                        var symbol = AGSSymbol()
+                        switch association.associationType {
+                        case .attachment:
+                            symbol = self.attachmentSymbol
+                        case .connectivity:
+                            symbol = self.connectivitySymbol
+                        default:
+                            return
+                        }
                         if existingAssociations.isEmpty {
-                            let graphic = AGSGraphic(geometry: association.geometry, symbol: .none, attributes: ["GlobalId": associationGID, "AssociationType": association.associationType])
+                            let graphic = AGSGraphic(geometry: association.geometry, symbol: symbol, attributes: ["GlobalId": associationGID, "AssociationType": association.associationType])
                             self.associationsOverlay.graphics.add(graphic)
                         }
                     }
@@ -130,7 +132,7 @@ class DisplayUtilityAssociationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadUtilityNetwork()
+//        loadUtilityNetwork()
         
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayUtilityAssociationVC"]

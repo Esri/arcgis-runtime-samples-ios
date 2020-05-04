@@ -46,25 +46,28 @@
                                             <rect key="frame" x="20" y="27" width="0.0" height="0.0"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Isolated  Features" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHG-2p-x4N">
-                                                    <rect key="frame" x="0.0" y="-17" width="56.5" height="34"/>
+                                                    <rect key="frame" x="0.0" y="-8.5" width="0.0" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o40-Kg-nZ5">
-                                                    <rect key="frame" x="61.5" y="-15.5" width="51" height="31"/>
-                                                </switch>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="o40-Kg-nZ5" firstAttribute="centerY" secondItem="5Ke-ZQ-uR3" secondAttribute="centerY" id="CKa-zA-2j6"/>
-                                                <constraint firstItem="o40-Kg-nZ5" firstAttribute="leading" secondItem="lHG-2p-x4N" secondAttribute="trailing" constant="5" id="NFe-fK-sZR"/>
+                                                <constraint firstAttribute="trailing" secondItem="lHG-2p-x4N" secondAttribute="trailing" id="9rY-Cz-vzC"/>
                                                 <constraint firstItem="lHG-2p-x4N" firstAttribute="centerY" secondItem="5Ke-ZQ-uR3" secondAttribute="centerY" id="hNs-WR-ext"/>
                                                 <constraint firstItem="lHG-2p-x4N" firstAttribute="leading" secondItem="5Ke-ZQ-uR3" secondAttribute="leading" id="odc-r9-WBt"/>
                                             </constraints>
                                         </view>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="VEd-Tz-Ymc"/>
+                                    <barButtonItem width="5" style="plain" systemItem="fixedSpace" id="wIB-bn-Oqp"/>
+                                    <barButtonItem style="plain" id="MZH-4A-Mfg">
+                                        <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="o40-Kg-nZ5">
+                                            <rect key="frame" x="25" y="11.5" width="51" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </switch>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uu1-TF-0Q3"/>
                                     <barButtonItem enabled="NO" title="Category" id="5P5-Ez-bUO">
                                         <connections>
                                             <action selector="categoryButtonTapped:" destination="ufE-Zl-BXE" id="UW3-bW-O5R"/>

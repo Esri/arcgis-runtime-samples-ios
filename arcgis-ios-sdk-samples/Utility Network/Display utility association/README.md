@@ -2,7 +2,7 @@
 
 Create graphics for utility associations in a utility network.
 
-![Image of display utility associations](DisplayUtilityAssociations.jpg)
+![Display utility associations sample](display-utility-association.png)
 
 ## Use case
 
@@ -14,23 +14,22 @@ Pan and zoom around the map. Observe graphics that show utility associations bet
 
 ## How it works
 
-1. Create and load a `UtilityNetwork` with a feature service URL.
-2. Add a `FeatureLayer` to the map for every `utilityNetworkSource` of type `Edge` or `Junction`.
-3. Create a `GraphicsOverlay` for the utility associations.
-4. Add an event handler for the `ViewpointChanged` event of the `MapView`.
-5. When the sample starts and every time the viewpoint changes, do the following steps.
-6. Get the geometry of the mapview's extent using `GetCurrentViewpoint(ViewpointType.BoundingGeometry)?.TargetGeometry?.Extent`.
-7. Get the associations that are within the current extent using `GetAssociationsAsync(extent)`.
-8. Get the `UtilityAssociationType` for each association.
-9. Create a `Graphic` using the `Geometry` property of the association and a preferred symbol.
-10. Add the graphic to the graphics overlay.
+1. Create and load an `AGSUtilityNetwork` with a feature service URL.
+2. Add an `AGSFeatureLayer` to the map for every `AGSutilityNetworkSource` of type `edge` or `junction`.
+3. Create an `AGSGraphicsOverlay` for the utility associations.
+4. When the sample starts and every time the viewpoint changes, do the following steps.
+5. Get the geometry of the mapview's extent using `AGSMapView.currentViewpoint(with:).targetGeometry.extent`.
+6. Get the associations that are within the current extent using `associations(withExtent:completion:)`.
+7. Get the `AGSUtilityAssociationType` for each association.
+8. Create an `AGSGraphic` using the `AGSGeometry` property of the association and a preferred symbol.
+9. Add the graphic to the graphics overlay.
 
 ## Relevant API
 
-* GraphicsOverlay
-* UtilityAssociation
-* UtilityAssociationType
-* UtilityNetwork
+* AGSGraphicsOverlay
+* AGSUtilityAssociation
+* AGSUtilityAssociationType
+* AGSUtilityNetwork
 
 ## About the data
 

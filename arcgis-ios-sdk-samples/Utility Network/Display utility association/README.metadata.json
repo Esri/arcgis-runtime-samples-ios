@@ -1,0 +1,32 @@
+{
+    "category": "Utility Network",
+    "description": "Create graphics for utility associations in a utility network.",
+    "ignore": false,
+    "images": [
+        "display-utility-association.png"
+    ],
+    "keywords": [
+        "associating",
+        "association",
+        "attachment",
+        "connectivity",
+        "containment",
+        "relationships",
+        "AGSGraphicsOverlay",
+        "AGSUtilityAssociation",
+        "AGSUtilityAssociationType",
+        "AGSUtilityNetwork"
+    ],
+    "redirect_from": [
+    ],
+    "relevant_apis": [
+        "AGSGraphicsOverlay",
+        "AGSUtilityAssociation",
+        "AGSUtilityAssociationType",
+        "AGSUtilityNetwork"
+    ],
+    "snippets": [
+        "DisplayUtilityAssociationVC.swift"
+    ],
+    "title": "Display utility associations"
+}

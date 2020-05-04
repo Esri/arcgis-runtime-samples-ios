@@ -20,8 +20,6 @@ class DisplayUtilityAssociationVC: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapType: .topographicVector, latitude: 41.8057655, longitude: -88.1489692, levelOfDetail: 23)
-            print("initial viewpoint created")
-            loadUtilityNetwork()
             mapView.graphicsOverlays.add(associationsOverlay)
         }
     }
@@ -36,49 +34,49 @@ class DisplayUtilityAssociationVC: UIViewController {
     private let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 5)
     
     func loadUtilityNetwork() {
-            utilityNetwork.load { [weak self] error in
-                if let error = error {
-                    self?.presentAlert(error: error)
-                    return
-                } else {
-                    guard let self = self else { return }
-                    // Get all the edges and junctions in the network.
-                   let edges = self.utilityNetwork.definition.networkSources.filter { $0.sourceType == .edge }
-                   let junctions = self.utilityNetwork.definition.networkSources.filter { $0.sourceType == .junction }
-                   
-                   // Add all edges that are not subnet lines to the map.
-                   edges.filter { $0.sourceUsageType != .subnetLine }.forEach { source in
-                       self.mapView.map?.operationalLayers.add(AGSFeatureLayer(featureTable: source.featureTable))
-                   }
-                   // Add all the junctions to the map.
-                   junctions.forEach { source in
-                       self.mapView.map?.operationalLayers.add(AGSFeatureLayer(featureTable: source.featureTable))
-                   }
-           //                let attachmentType = AGSUtilityAssociationType.attachment
-           //                let connectivityType = AGSUtilityAssociationType.connectivity
-                   let attachmentValue = AGSUniqueValue(description: "Attachment", label: "", symbol: self.attachmentSymbol, values: [AGSUtilityAssociationType.attachment])
-                   let connectivityValue = AGSUniqueValue(description: "Connectivity", label: "", symbol: self.connectivitySymbol, values: [AGSUtilityAssociationType.connectivity])
-               
-                   self.associationsOverlay.renderer = AGSUniqueValueRenderer(fieldNames: ["AssociationType"], uniqueValues: [attachmentValue, connectivityValue], defaultLabel: "", defaultSymbol: nil)
-                   // Populate the legened.
-                   self.attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
-                       if let image = image {
-                            self?.attachmentBBI.image = image
-                       } else if let error = error {
-                           print("Error creating swatch: \(error)")
-                       }
-                   }
-                   self.connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
-                       if let image = image {
-                        self?.connectivityBBI.image = image
-                       } else if let error = error {
-                           print("Error creating swatch: \(error)")
-                       }
-                   }
-                    self.addAssociationGraphics()
-                    self.mapViewDidChange()
+        utilityNetwork.load { [weak self] error in
+            if let error = error {
+                self?.presentAlert(error: error)
+                return
+            } else {
+                guard let self = self else { return }
+                // Get all the edges and junctions in the network.
+                let edges = self.utilityNetwork.definition.networkSources.filter { $0.sourceType == .edge }
+                let junctions = self.utilityNetwork.definition.networkSources.filter { $0.sourceType == .junction }
+
+                // Add all edges that are not subnet lines to the map.
+                edges.filter { $0.sourceUsageType != .subnetLine }.forEach { source in
+                    self.mapView.map?.operationalLayers.add(AGSFeatureLayer(featureTable: source.featureTable))
                 }
+                // Add all the junctions to the map.
+                junctions.forEach { source in
+                    self.mapView.map?.operationalLayers.add(AGSFeatureLayer(featureTable: source.featureTable))
+                }
+                
+                // Create a renderer for the associations.
+                let attachmentValue = AGSUniqueValue(description: "Attachment", label: "", symbol: self.attachmentSymbol, values: [AGSUtilityAssociationType.attachment])
+                let connectivityValue = AGSUniqueValue(description: "Connectivity", label: "", symbol: self.connectivitySymbol, values: [AGSUtilityAssociationType.connectivity])
+                self.associationsOverlay.renderer = AGSUniqueValueRenderer(fieldNames: ["AssociationType"], uniqueValues: [attachmentValue, connectivityValue], defaultLabel: "", defaultSymbol: nil)
+                
+                // Populate the legened.
+                self.attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
+                    if let error = error {
+                        print("Error creating swatch: \(error)")
+                    } else {
+                        self?.attachmentBBI.image = image
+                    }
+                }
+                self.connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
+                    if let error = error {
+                        print("Error creating swatch: \(error)")
+                    } else {
+                        self?.connectivityBBI.image = image
+                    }
+                }
+                self.addAssociationGraphics()
+                self.mapViewDidChange()
             }
+        }
     }
     
     func addAssociationGraphics() {
@@ -102,16 +100,18 @@ class DisplayUtilityAssociationVC: UIViewController {
                         let graphics = self.associationsOverlay.graphics as! [AGSGraphic]
                         let associationGID = association.globalID
                         let existingAssociations = graphics.filter { $0.attributes["GlobalId"] as! UUID == associationGID }
-                        var symbol = AGSSymbol()
-                        switch association.associationType {
-                        case .attachment:
-                            symbol = self.attachmentSymbol
-                        case .connectivity:
-                            symbol = self.connectivitySymbol
-                        default:
-                            return
-                        }
+                        
+                        // If it the current association does not exist, add it to the graphics overlay.
                         if existingAssociations.isEmpty {
+                            var symbol = AGSSymbol()
+                            switch association.associationType {
+                            case .attachment:
+                                symbol = self.attachmentSymbol
+                            case .connectivity:
+                                symbol = self.connectivitySymbol
+                            default:
+                                return
+                            }
                             let graphic = AGSGraphic(geometry: association.geometry, symbol: symbol, attributes: ["GlobalId": associationGID, "AssociationType": association.associationType])
                             self.associationsOverlay.graphics.add(graphic)
                         }
@@ -121,6 +121,7 @@ class DisplayUtilityAssociationVC: UIViewController {
         }
     }
     
+    // Observe the viewpoint.
     func mapViewDidChange() {
         self.mapView.viewpointChangedHandler = { [weak self] in
            DispatchQueue.main.async {
@@ -132,7 +133,7 @@ class DisplayUtilityAssociationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        loadUtilityNetwork()
+        loadUtilityNetwork()
         
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayUtilityAssociationVC"]

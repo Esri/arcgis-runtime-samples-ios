@@ -63,7 +63,7 @@ class DisplayUtilityAssociationVC: UIViewController {
                     if let error = error {
                         print("Error creating swatch: \(error)")
                     } else {
-                        self?.attachmentBBI.image = image
+                        self?.attachmentBBI.image = image?.withRenderingMode(.alwaysOriginal)
                     }
                 }
                 self.connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in

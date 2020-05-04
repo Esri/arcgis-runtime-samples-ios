@@ -70,7 +70,7 @@ class DisplayUtilityAssociationVC: UIViewController {
                     if let error = error {
                         print("Error creating swatch: \(error)")
                     } else {
-                        self?.connectivityBBI.image = image
+                        self?.connectivityBBI.image = image?.withRenderingMode(.alwaysOriginal)
                     }
                 }
                 self.addAssociationGraphics()

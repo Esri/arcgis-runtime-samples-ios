@@ -1566,16 +1566,7 @@
 		<key>displayName</key>
 		<string>Utility Network</string>
 		<key>children</key>
-		<array>
-			<dict>
-				<key>descriptionText</key>
-				<string>Perform a connected trace against an electric Utility Network.</string>
-				<key>storyboardName</key>
-				<string>ConnectedTrace</string>
-				<key>displayName</key>
-				<string>Connected Trace</string>
-			</dict>
-		</array>
+		<array/>
 	</dict>
 	<dict>
 		<key>displayName</key>

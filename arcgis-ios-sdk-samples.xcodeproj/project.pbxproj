@@ -3917,12 +3917,9 @@
 		D98CC08F22E25D8200618682 /* Utility Network */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				F1D50229245243AD00583CFB /* Display utility association */,
 				D98CC09022E25E3300618682 /* Connected Trace */,
-=======
 				D98CC09022E25E3300618682 /* Trace utility network */,
->>>>>>> origin/v.next
 			);
 			path = "Utility Network";
 			sourceTree = "<group>";

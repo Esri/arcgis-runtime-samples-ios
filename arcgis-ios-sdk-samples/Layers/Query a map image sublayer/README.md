@@ -6,7 +6,7 @@ Find features in a sublayer based on attributes and location.
 
 ## Use case
 
-Sublayers of an `AGSArcGISMapImageLayer` may expose an `AGSServiceFeatureTable` through an `AGStable` property. This allows you to perform the same queries available when working with a table from an `AGSFeatureLayer` attribute query, spatial query, statistics query, query for related features, etc. An image layer with a sublayer of counties can be queried by population to only show those above a minimum population.
+Sublayers of an `AGSArcGISMapImageLayer` may expose an `AGSFeatureTable`. This allows you to perform the same queries available when working with a table from an `AGSFeatureLayer` attribute query, spatial query, statistics query, query for related features, etc. An image layer with a sublayer of counties can be queried by population to only show those above a minimum population.
 
 ## How to use the sample
 

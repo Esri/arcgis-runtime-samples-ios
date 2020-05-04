@@ -22,10 +22,6 @@ Web tiled services use a uniform addressing scheme with pre-rendered tiles. Imag
 2. Create an `AGSBasemap` from the layer.
 3. Update the attribution on the layer. Note: this is a necessary step because web tiled services don't have associated service metadata.
 
-For more information about web tiled layers, see the following resources:
-* [Wikipedia: tiled web maps](https://en.wikipedia.org/wiki/Tiled_web_map)
-* [ArcGIS Pro: Share a web tile layer](https://pro.arcgis.com/en/pro-app/help/sharing/overview/web-tile-layer.htm)
-
 ## Relevant API
 
 * AGSBasemap
@@ -34,6 +30,12 @@ For more information about web tiled layers, see the following resources:
 ## About the data
 
 The basemap in this sample is provided by [Stamen Design](http://maps.stamen.com). Stamen publishes tiled services based on OpenStreetMap data with several unique styles applied.
+
+## Additional information
+
+For more information about web tiled layers, see the following resources:
+* [Wikipedia: tiled web maps](https://en.wikipedia.org/wiki/Tiled_web_map)
+* [ArcGIS Pro: Share a web tile layer](https://pro.arcgis.com/en/pro-app/help/sharing/overview/web-tile-layer.htm)
 
 ## Tags
 

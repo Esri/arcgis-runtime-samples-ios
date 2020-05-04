@@ -74,7 +74,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     }
     
     /// Create feature layers from the NapervilleGas feature service URL.
-    /// The gas line layer ./3 and gas device layer ./0 created from the feature service.
+    /// The gas line layer ./3 and gas device layer ./0 are created from the feature service.
     ///
     /// - Parameter baseURL: The URL to the feature service for running the isolation trace.
     /// - Returns: An array of `AGSFeatureLayer` objects.

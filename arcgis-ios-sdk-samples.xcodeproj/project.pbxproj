@@ -3918,7 +3918,6 @@
 			isa = PBXGroup;
 			children = (
 				F1D50229245243AD00583CFB /* Display utility association */,
-				D98CC09022E25E3300618682 /* Connected Trace */,
 				D98CC09022E25E3300618682 /* Trace utility network */,
 			);
 			path = "Utility Network";

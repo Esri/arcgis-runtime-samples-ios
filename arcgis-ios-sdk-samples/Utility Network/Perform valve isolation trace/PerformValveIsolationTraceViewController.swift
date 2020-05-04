@@ -104,36 +104,6 @@ class PerformValveIsolationTraceViewController: UIViewController {
         return parameters
     }
     
-    /// Select to highlight the features in the feature layers.
-    ///
-    /// - Parameters:
-    ///   - elements: The utility elements from the trace result that correspond to `AGSArcGISFeature` objects.
-    ///   - completion: Completion closure to execute after all selections are done.
-    func selectFeatures(in elements: [AGSUtilityElement], completion: @escaping () -> Void) {
-        let groupedElements = Dictionary(grouping: elements) { $0.networkSource.name }
-        let selectionGroup = DispatchGroup()
-        
-        groupedElements.forEach { (networkName, elements) in
-            guard let layer = self.layers.first(where: { $0.featureTable?.tableName == networkName }) else { return }
-            
-            selectionGroup.enter()
-            self.utilityNetwork.features(for: elements) { [weak self, layer] (features, error) in
-                defer {
-                    selectionGroup.leave()
-                }
-                if let features = features {
-                    layer.select(features)
-                } else if let error = error {
-                    self?.presentAlert(error: error)
-                }
-            }
-        }
-        
-        selectionGroup.notify(queue: .main) {
-            completion()
-        }
-    }
-    
     func loadUtilityNetwork() {
         setStatus(message: "Loading utility network…")
         // Load the utility network to be ready to run a trace against it.
@@ -170,6 +140,36 @@ class PerformValveIsolationTraceViewController: UIViewController {
     }
     
     // MARK: UI and feedback
+    
+    /// Select to highlight the features in the feature layers.
+    ///
+    /// - Parameters:
+    ///   - elements: The utility elements from the trace result that correspond to `AGSArcGISFeature` objects.
+    ///   - completion: Completion closure to execute after all selections are done.
+    func selectFeatures(in elements: [AGSUtilityElement], completion: @escaping () -> Void) {
+        let groupedElements = Dictionary(grouping: elements) { $0.networkSource.name }
+        let selectionGroup = DispatchGroup()
+        
+        groupedElements.forEach { (networkName, elements) in
+            guard let layer = self.layers.first(where: { $0.featureTable?.tableName == networkName }) else { return }
+            
+            selectionGroup.enter()
+            self.utilityNetwork.features(for: elements) { [weak self, layer] (features, error) in
+                defer {
+                    selectionGroup.leave()
+                }
+                if let features = features {
+                    layer.select(features)
+                } else if let error = error {
+                    self?.presentAlert(error: error)
+                }
+            }
+        }
+        
+        selectionGroup.notify(queue: .main) {
+            completion()
+        }
+    }
     
     func drawStartingLocation() {
         // Get a list of features for the starting location element.

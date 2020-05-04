@@ -42,7 +42,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     // Constants for creating the default trace configuration.
     let domainNetworkName = "Pipeline"
     let tierName = "Pipe Distribution System"
-
+    
     // Constants for creating the default starting location.
     let networkSourceName = "Gas Device"
     let assetGroupName = "Meter"

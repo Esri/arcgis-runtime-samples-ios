@@ -224,19 +224,20 @@ class PerformValveIsolationTraceViewController: UIViewController {
         SVProgressHUD.show(withStatus: "Running isolation trace…")
         utilityNetwork.trace(with: parameters) { [weak self] (traceResults, error) in
             guard let self = self else { return }
+            let categoryName = self.selectedCategory!.name.lowercased()
             if let elementTraceResult = traceResults?.first as? AGSUtilityElementTraceResult,
                 !elementTraceResult.elements.isEmpty {
                 SVProgressHUD.show(withStatus: "Trace completed. Selecting features…")
                 self.selectFeatures(in: elementTraceResult.elements) { [weak self] in
-                    self?.setStatus(message: "Trace completed.")
+                    self?.setStatus(message: "Trace with \(categoryName) category completed.")
                     SVProgressHUD.dismiss()
                 }
             } else if let error = error {
-                self.setStatus(message: "Trace failed.")
+                self.setStatus(message: "Trace with \(categoryName) category failed.")
                 self.presentAlert(error: error)
                 SVProgressHUD.dismiss()
             } else {
-                self.setStatus(message: "Trace completed with no output.")
+                self.setStatus(message: "Trace with \(categoryName) category completed with no output.")
                 SVProgressHUD.dismiss()
             }
         }

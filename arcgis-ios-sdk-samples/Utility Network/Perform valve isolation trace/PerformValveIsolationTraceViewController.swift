@@ -29,7 +29,8 @@ class PerformValveIsolationTraceViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = makeMap()
+            layers = makeLayers(from: featureServiceURL)
+            mapView.map = makeMap(with: layers)
         }
     }
     
@@ -49,32 +50,44 @@ class PerformValveIsolationTraceViewController: UIViewController {
     let globalId = UUID(uuidString: "98A06E95-70BE-43E7-91B7-E34C9D3CB9FF")!
     
     /// An array to keep track of all available utility categories under current network definition.
-    lazy var filterBarrierCategories: [AGSUtilityCategory] = []
+    var filterBarrierCategories: [AGSUtilityCategory]!
+    
+    /// The feature layers created from the feature service URL.
+    var layers: [AGSFeatureLayer]!
     
     var traceConfiguration: AGSUtilityTraceConfiguration?
     var selectedCategory: AGSUtilityCategory?
     var startingLocationElement: AGSUtilityElement!
     var utilityNetwork: AGSUtilityNetwork!
     
-    /// The gas line layer ./3 and gas device layer ./0 created from the feature service.
-    var layers: [AGSFeatureLayer] {
-        return [3, 0].map {
-            let featureTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("\($0)"))
-            let layer = AGSFeatureLayer(featureTable: featureTable)
-            return layer
-        }
-    }
-    
     // MARK: Initialize map and utility network
     
     /// Create a map.
     ///
+    /// - Parameter layers: The feature layers for the utility network.
     /// - Returns: An `AGSMap` object.
-    func makeMap() -> AGSMap {
+    func makeMap(with layers: [AGSFeatureLayer]) -> AGSMap {
         let map = AGSMap(basemap: .streetsNightVector())
         // Add the utility network feature layers to the map for display.
         map.operationalLayers.addObjects(from: layers)
         return map
+    }
+    
+    /// Create feature layers from the NapervilleGas feature service URL.
+    /// The gas line layer ./3 and gas device layer ./0 created from the feature service.
+    ///
+    /// - Parameter baseURL: The URL to the feature service for running the isolation trace.
+    /// - Returns: An array of `AGSFeatureLayer` objects.
+    func makeLayers(from baseURL: URL) -> [AGSFeatureLayer] {
+        let urls = [
+            baseURL.appendingPathComponent("3"),
+            baseURL.appendingPathComponent("0")
+        ]
+        let layers = urls.map { (url) -> AGSFeatureLayer in
+            let featureTable = AGSServiceFeatureTable(url: url)
+            return AGSFeatureLayer(featureTable: featureTable)
+        }
+        return layers
     }
     
     /// Create trace parameters based on the trace configuration from current utility tier and utility category.
@@ -102,12 +115,12 @@ class PerformValveIsolationTraceViewController: UIViewController {
     }
     
     func loadUtilityNetwork() {
-        setStatus(message: "Loading Utility Network…")
+        setStatus(message: "Loading utility network…")
         // Load the utility network to be ready to run a trace against it.
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
-                self.setStatus(message: "Loading Utility Network failed.")
+                self.setStatus(message: "Loading utility network failed.")
                 self.presentAlert(error: error)
             } else {
                 let networkDefinition = self.utilityNetwork.definition
@@ -125,14 +138,13 @@ class PerformValveIsolationTraceViewController: UIViewController {
                 let assetType = assetGroup?.assetType(withName: self.assetTypeName)
                 if let type = assetType, let element = self.utilityNetwork.createElement(with: type, globalID: self.globalId) {
                     self.startingLocationElement = element
+                    // Draw the starting location element on the map.
+                    self.drawStartingLocation()
+                    self.setStatus(message: "Utility network loaded.")
+                    self.setUIState()
                 } else {
                     self.setStatus(message: "Creating starting location failed.")
-                    return
                 }
-                // Draw the starting location element on the map.
-                self.drawStartingLocation()
-                self.setStatus(message: "Utility Network loaded.")
-                self.setUIState()
             }
         }
     }
@@ -143,24 +155,26 @@ class PerformValveIsolationTraceViewController: UIViewController {
         // Get a list of features for the starting location element.
         utilityNetwork.features(for: [startingLocationElement]) { [weak self] (features, error) in
             guard let self = self else { return }
-            if let error = error {
+            if let features = features {
+                if let feature = features.first {
+                    // Get the geometry of the first feature for the starting location as a point.
+                    guard let startingLocationGeometry = feature.geometry as? AGSPoint else {
+                        self.setStatus(message: "Drawing starting location feature failed.")
+                        return
+                    }
+                    // Create a graphic for the starting point and add it to the graphics overlay.
+                    let startingPointSymbol = AGSSimpleMarkerSymbol(style: .cross, color: .green, size: 25)
+                    let startingLocationGraphic = AGSGraphic(geometry: startingLocationGeometry, symbol: startingPointSymbol)
+                    let startingLocationGraphicsOverlay = AGSGraphicsOverlay()
+                    startingLocationGraphicsOverlay.graphics.add(startingLocationGraphic)
+                    self.mapView.graphicsOverlays.add(startingLocationGraphicsOverlay)
+                    self.mapView.setViewpoint(AGSViewpoint(center: startingLocationGeometry, scale: 3000), completion: nil)
+                } else {
+                    self.setStatus(message: "Starting location features not found.")
+                }
+            } else if let error = error {
                 self.setStatus(message: "Loading starting location features failed.")
                 self.presentAlert(error: error)
-            } else if features == nil || features!.isEmpty {
-                self.setStatus(message: "Starting location features not found.")
-            } else {
-                // Get the geometry of the first feature for the starting location as a point.
-                guard let startingLocationGeometry = features!.first!.geometry as? AGSPoint else {
-                    self.setStatus(message: "Drawing starting location feature failed.")
-                    return
-                }
-                // Create a graphic for the starting point and add it to the graphics overlay.
-                let startingPointSymbol = AGSSimpleMarkerSymbol(style: .cross, color: .green, size: 25)
-                let startingLocationGraphic = AGSGraphic(geometry: startingLocationGeometry, symbol: startingPointSymbol)
-                let startingLocationGraphicsOverlay = AGSGraphicsOverlay()
-                startingLocationGraphicsOverlay.graphics.add(startingLocationGraphic)
-                self.mapView.graphicsOverlays.add(startingLocationGraphicsOverlay)
-                self.mapView.setViewpoint(AGSViewpoint(center: startingLocationGeometry, scale: 3000), completion: nil)
             }
         }
     }
@@ -179,9 +193,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     
     /// Clear all the feature selections from previous trace.
     func clearLayersSelection() {
-        mapView.map?.operationalLayers.lazy
-            .compactMap { $0 as? AGSFeatureLayer }
-            .forEach { $0.clearSelection() }
+        layers.forEach { $0.clearSelection() }
     }
     
     // MARK: - Actions
@@ -209,20 +221,18 @@ class PerformValveIsolationTraceViewController: UIViewController {
             let selectionGroup = DispatchGroup()
             
             groupedElements.forEach { (networkName, elements) in
-                guard let layer = self.mapView.map?.operationalLayers.first(where: { ($0 as? AGSFeatureLayer)?.featureTable?.tableName == networkName }) as? AGSFeatureLayer else { return }
+                guard let layer = self.layers.first(where: { $0.featureTable?.tableName == networkName }) else { return }
                 
                 selectionGroup.enter()
                 self.utilityNetwork.features(for: elements) { [weak self, layer] (features, error) in
                     defer {
                         selectionGroup.leave()
                     }
-                    if let error = error {
-                        self?.setStatus(message: "Selecting features failed.")
+                    if let features = features {
+                        layer.select(features)
+                    } else if let error = error {
                         self?.presentAlert(error: error)
-                        return
                     }
-                    guard let features = features else { return }
-                    layer.select(features)
                 }
             }
             
@@ -236,7 +246,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     @IBAction func categoryButtonTapped(_ button: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Choose a category for filter barrier.", message: nil, preferredStyle: .actionSheet)
         filterBarrierCategories.forEach { category in
-            let action = UIAlertAction(title: category.name, style: .default) { [unowned self] _ in
+            let action = UIAlertAction(title: category.name, style: .default) { _ in
                 self.selectedCategory = category
                 self.setStatus(message: "\(category.name) selected.")
             }

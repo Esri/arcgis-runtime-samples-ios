@@ -387,7 +387,7 @@
 				<key>storyboardName</key>
 				<string>VectorTileCustomStyle</string>
 				<key>descriptionText</key>
-				<string>Load ArcGIS Vector Tiled Layers using custom styles.</string>
+				<string>Load ArcGIS vector tiled layers using custom styles.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

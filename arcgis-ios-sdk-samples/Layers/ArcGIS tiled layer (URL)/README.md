@@ -1,6 +1,6 @@
 # ArcGIS tiled layer (URL)
 
-Load a Tiled Layer from a map server with a URL.
+Load a tiled layer from a map server with a URL.
 
 ![ArcGIS tiled layer (URL) sample](tiled-layer-url.png)
 

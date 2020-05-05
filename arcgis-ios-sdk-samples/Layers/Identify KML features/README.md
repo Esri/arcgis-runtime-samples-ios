@@ -18,7 +18,7 @@ Note: the KML layer used in this sample contains a screen overlay. The screen ov
 
 1. Create an `AGSGeoViewTouchDelegate`.
 2. On tap:
-  * Dismiss the `Callout`, if one is showing.
+  * Dismiss the callout if it is showing.
   * Use `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)` passing in the `AGSKMLLayer`, screen point, and other properties.
   * Await the result of the identify and then get the `AGSKMLPlacemark` from the result.
   * Create a callout at the calculated map point and populate the callout content with text from the placemark's `balloonContent`. NOTE: KML supports defining HTML for balloon content and may need to be converted from HTML to text.

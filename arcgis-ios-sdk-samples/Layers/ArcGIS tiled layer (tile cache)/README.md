@@ -7,7 +7,7 @@ Load an offline copy of a tiled map service as a basemap.
 
 ## Use case
 
-Constructing an `ArcGISTiledLayer` from a local tile package (.tpk & .tpkx), allows you to use that basemap tiled service when the application is offline. Dividing a raster into tiles allows the map to provide relevant tiles and level of detail to the user when panning and zooming. For example, when working in an environment that has no connectivity, this could provide access to a map for navigating your surroundings.
+Constructing an `ArcGISTiledLayer` from a local tile package (.tpk & .tpkx) allows you to use that basemap tiled service when the application is offline. Dividing a raster into tiles allows the map to provide relevant tiles and level of detail to the user when panning and zooming. For example, when working in an environment that has no connectivity, this could provide access to a map for navigating your surroundings.
 
 ## How to use the sample    
 

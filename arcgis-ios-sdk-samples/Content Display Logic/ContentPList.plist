@@ -516,7 +516,7 @@
 				<key>storyboardName</key>
 				<string>WMTSLayer</string>
 				<key>descriptionText</key>
-				<string>Display a layer from a Web Map Tile Service.</string>
+				<string>Display a layer from a Web Map Tile Service (WMTS).</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

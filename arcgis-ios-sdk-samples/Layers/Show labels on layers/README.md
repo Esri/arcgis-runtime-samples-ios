@@ -22,7 +22,7 @@ Pan and zoom around the United States. Labels for congressional districts will b
     * To use the text symbol, set the "symbol" key to the symbol's JSON representation using `AGSTextSymbol.toJson()`.
 5. Create a label definition from the JSON using `AGSLabelDefinition.fromJson()`.
 6. Add the definition to the feature layer's `labelDefinitions` array .
-7. Lastly, enable labels on the layer by setting its `labelsEnabled` property to true.
+7. Lastly, enable labels on the layer by setting its `labelsEnabled` property to `true`.
 
 ## Relevant API
 

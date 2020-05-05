@@ -20,7 +20,7 @@ Pan and zoom around the map. Observe the displayed military symbology on the map
 3. Load the geodatabase using `AGSGeodatabase.load(completion:)`.
 4. Once the geodatabase is done loading, create an `AGSFeatureLayer` from each of the geodatabase's `AGSGeodatabaseFeatureTable`s.
 5. After the last `AGSFeatureLayer` has loaded, set the `AGSMapView`'s viewpoint to the full extent of all the layers using the method `AGSMapViewCommon.setViewpointGeometry(_:completion:)`.
-6. Add the feature layer to map's `operationalLayers`.
+6. Add the feature layer to the map's `operationalLayers`.
 7. Create an `AGSDictionaryRenderer` and attach it to the feature layer.
 
 ## Relevant API

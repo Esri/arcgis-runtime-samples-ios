@@ -403,7 +403,7 @@
 				<key>storyboardName</key>
 				<string>RasterFunctionService</string>
 				<key>descriptionText</key>
-				<string>Load a raster from a service, then apply a function to it.</string>
+				<string>Load a raster from a service and apply a function to it.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

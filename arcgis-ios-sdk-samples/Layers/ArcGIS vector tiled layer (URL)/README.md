@@ -1,6 +1,6 @@
 # ArcGIS vector tiled layer (URL)
 
-Load an ArcGIS Vector Tiled Layer from a URL.
+Load an ArcGIS vector tiled layer from a URL.
 
 ![ArcGIS vector tiled layer (URL) sample](vector-tiled-layer-url.png)
 

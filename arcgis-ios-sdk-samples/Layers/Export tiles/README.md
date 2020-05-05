@@ -19,7 +19,7 @@ Pan and zoom into the desired area, making sure the area is within the red bound
 2. Create default `AGSExportTileCacheParameters` for the task, specifying the area of interest, minimum scale and maximum scale.
 3. Use the parameters and a path to create an `AGSExportTileCacheJob` from the task.
 4. Start the job, and when it completes successfully, get the resulting `AGSTileCache`.
-5. Use the tile cache to create an `AGSArcGISTiledLayer`, and display it in the map.
+5. Use the tile cache to create an `AGSArcGISTiledLayer` and display it in the map.
 
 ## Relevant API
 

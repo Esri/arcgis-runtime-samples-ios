@@ -16,7 +16,7 @@ When the sample starts, a raster will be loaded from a file and displayed in the
 
 1. Create an `AGSRaster` from a raster file.
 2. Create an `AGSRasterLayer` from the raster.
-3. Add it to the map's array of `operationalLayers`.
+3. Add it to the map's `operationalLayers` array.
 
 ## Relevant API
 

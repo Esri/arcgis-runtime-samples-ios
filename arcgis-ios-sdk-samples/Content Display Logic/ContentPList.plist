@@ -318,7 +318,7 @@
 				<key>storyboardName</key>
 				<string>TLUsingURL</string>
 				<key>descriptionText</key>
-				<string>Load a Tiled Layer from a map server with a URL.</string>
+				<string>Load a tiled layer from a map server with a URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

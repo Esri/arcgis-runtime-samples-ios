@@ -10,7 +10,7 @@ Map image layers are also referred to as dynamic map services. These services ge
 
 ## How to use the sample
 
-Run the sample and view the map image layer. As you navigate the map, the layer issues image requests for the new map extent. The resulting images are rendered on the screen.
+Open the sample and view the map image layer. As you navigate the map, the layer issues image requests for the new map extent. The resulting images are rendered on the screen.
 
 ## How it works
 

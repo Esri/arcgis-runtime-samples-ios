@@ -21,6 +21,9 @@
 		00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E276272425A205000DBEDD /* NavigateRoute.storyboard */; };
 		00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */; };
 		00E276352425A3A7000DBEDD /* NavigateRouteViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */; };
+		00E5B7D22458FE7900B11973 /* PerformValveIsolationTraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */; };
+		00E5B7D42458FE8900B11973 /* PerformValveIsolationTrace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */; };
+		00E5B7D5245B9C8D00B11973 /* PerformValveIsolationTraceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
@@ -843,6 +846,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00E5B7D5245B9C8D00B11973 /* PerformValveIsolationTraceViewController.swift in CopyFiles */,
 				F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */,
 				00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */,
 				00E276352425A3A7000DBEDD /* NavigateRouteViewController.swift in CopyFiles */,
@@ -1119,6 +1123,8 @@
 		00DAE5DD24213D6B00D51281 /* CustomDictionaryStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDictionaryStyleViewController.swift; sourceTree = "<group>"; };
 		00E276272425A205000DBEDD /* NavigateRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NavigateRoute.storyboard; sourceTree = "<group>"; };
 		00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateRouteViewController.swift; sourceTree = "<group>"; };
+		00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformValveIsolationTraceViewController.swift; sourceTree = "<group>"; };
+		00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PerformValveIsolationTrace.storyboard; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
@@ -1723,6 +1729,15 @@
 				00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */,
 			);
 			path = "Navigate route";
+			sourceTree = "<group>";
+		};
+		00E5B7CB2458FE6D00B11973 /* Perform valve isolation trace */ = {
+			isa = PBXGroup;
+			children = (
+				00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */,
+				00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */,
+			);
+			path = "Perform valve isolation trace";
 			sourceTree = "<group>";
 		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
@@ -3911,6 +3926,7 @@
 		D98CC08F22E25D8200618682 /* Utility Network */ = {
 			isa = PBXGroup;
 			children = (
+				00E5B7CB2458FE6D00B11973 /* Perform valve isolation trace */,
 				D98CC09022E25E3300618682 /* Trace utility network */,
 			);
 			path = "Utility Network";
@@ -4602,6 +4618,7 @@
 				E47ED0A82343C4FE0032440E /* CollectDataAR.storyboard in Resources */,
 				4C66AAF72107C4F400EE6346 /* QueryMapImageSublayer.storyboard in Resources */,
 				4CC00F7620C1FAE5004244EF /* StyleWebMapServiceLayer.storyboard in Resources */,
+				00E5B7D42458FE8900B11973 /* PerformValveIsolationTrace.storyboard in Resources */,
 				1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */,
 				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
 				D9E2E75F20EEB8FF001D0AE0 /* Public_Art.prj in Resources */,
@@ -4932,6 +4949,7 @@
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,
 				C7E5EB7021ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift in Sources */,
 				F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */,
+				00E5B7D22458FE7900B11973 /* PerformValveIsolationTraceViewController.swift in Sources */,
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundViewController.swift in Sources */,
 				3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */,

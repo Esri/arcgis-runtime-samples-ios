@@ -10,7 +10,7 @@ WMS is an OGC standard for displaying maps from images that are dynamically-gene
 
 ## How to use the sample
 
-The map will load automatically when the sample starts. Pan and zoom to explore.
+The map will load automatically when the sample is opened. Pan and zoom to explore.
 
 ## How it works
 

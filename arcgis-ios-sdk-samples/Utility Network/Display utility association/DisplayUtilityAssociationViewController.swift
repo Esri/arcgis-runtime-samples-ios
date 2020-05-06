@@ -35,22 +35,23 @@ class DisplayUtilityAssociationVC: UIViewController {
     
     func loadUtilityNetwork() {
         utilityNetwork.load { [weak self] error in
+            guard let self = self else { return }
             if let error = error {
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
             } else {
-                guard let self = self else { return }
                 // Get all the edges and junctions in the network.
                 let edges = self.utilityNetwork.definition.networkSources.filter { $0.sourceType == .edge }
                 let junctions = self.utilityNetwork.definition.networkSources.filter { $0.sourceType == .junction }
-
+//                let sourcesByType = Dictionary(grouping: self.utilityNetwork.definition.networkSources) { $0.sourceType }
+                let operationalLayers = self.mapView.map?.operationalLayers
                 // Add all edges that are not subnet lines to the map.
-                edges.filter { $0.sourceUsageType != .subnetLine }.forEach { source in
-                    self.mapView.map?.operationalLayers.add(AGSFeatureLayer(featureTable: source.featureTable))
-                }
+                let edgeLayers = edges
+                    .filter { $0.sourceUsageType != .subnetLine }
+                    .map { AGSFeatureLayer(featureTable: $0.featureTable) }
+                operationalLayers?.addObjects(from: edgeLayers)
                 // Add all the junctions to the map.
-                junctions.forEach { source in
-                    self.mapView.map?.operationalLayers.add(AGSFeatureLayer(featureTable: source.featureTable))
-                }
+                let junctionLayers = junctions.map { AGSFeatureLayer(featureTable: $0.featureTable) }
+                operationalLayers?.addObjects(from: junctionLayers)
                 
                 // Create a renderer for the associations.
                 let attachmentValue = AGSUniqueValue(description: "Attachment", label: "", symbol: self.attachmentSymbol, values: [AGSUtilityAssociationType.attachment])
@@ -80,29 +81,31 @@ class DisplayUtilityAssociationVC: UIViewController {
     
     func addAssociationGraphics() {
         // Check if the current viewpoint is outside of the max scale.
-        if let targetScale = mapView.currentViewpoint(with: .centerAndScale)?.targetScale {
-            if targetScale >= maxScale {
-                return
-            }
+        if let viewpoint = mapView.currentViewpoint(with: .centerAndScale),
+            viewpoint.targetScale >= maxScale {
+            return
         }
         
         // Check if the current viewpoint has an extent.
-        if let extent = mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry.extent {
-            //Get all of the associations in extent of the viewpoint.
-            utilityNetwork.associations(withExtent: extent) { [weak self] (associations, error) in
+        if let viewpoint = mapView.currentViewpoint(with: .boundingGeometry) {
+            // Get all of the associations in extent of the viewpoint.
+            utilityNetwork.associations(withExtent: viewpoint.targetGeometry.extent) { [weak self] (associations, error) in
+                guard let self = self else { return }
                 if let error = error {
                     print("Error loading associations: \(error)")
-                } else {
-                    guard let self = self else { return }
-                    associations?.forEach { association in
-                        // Check if the graphics overlay already contains the association.
-                        let graphics = self.associationsOverlay.graphics as! [AGSGraphic]
+                } else if let associations = associations {
+                    // Check if the graphics overlay already contains the association.
+                    let graphics = associations.compactMap { association in 
                         let associationGID = association.globalID
-                        let existingAssociations = graphics.filter { $0.attributes["GlobalId"] as! UUID == associationGID }
+                        guard !self.associationsOverlay.graphics.contains(where: {
+                            ($0 as! AGSGraphic).attributes["GlobalId"] as? UUID == association.globalID
+                            }) else {
+                                return
+                            }
                         
                         // If it the current association does not exist, add it to the graphics overlay.
                         if existingAssociations.isEmpty {
-                            var symbol = AGSSymbol()
+                            let symbol: AGSSymbol
                             switch association.associationType {
                             case .attachment:
                                 symbol = self.attachmentSymbol
@@ -112,9 +115,9 @@ class DisplayUtilityAssociationVC: UIViewController {
                                 return
                             }
                             let graphic = AGSGraphic(geometry: association.geometry, symbol: symbol, attributes: ["GlobalId": associationGID, "AssociationType": association.associationType])
-                            self.associationsOverlay.graphics.add(graphic)
                         }
                     }
+                    self.associationsOverlay.graphics.add(graphics)
                 }
             }
         }

@@ -12,11 +12,11 @@ An appropriate stretch renderer can enhance the contrast of raster imagery, allo
 
 ## How to use the sample
 
-Tap the toolbar button to change any of the following properties.
+Tap the toolbar button to change any of the following properties:
 
-* AGSStandard deviation - a linear stretch defined by the standard deviation of the pixel values
-* AGSMin-max - a linear stretch based on minimum and maximum pixel values
-* AGSPercent clip - a linear stretch between the defined percent clip minimum and percent clip maximum pixel values
+* Stretch type - a histogram stretch that will be applied to the raster to enhance its appearance.
+* Min value - the minimum value on the histogram.
+* Max value - the maximum value on the histogram.
 
 ## How it works
 

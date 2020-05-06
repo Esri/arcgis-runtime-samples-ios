@@ -18,7 +18,7 @@ Specify a minimum population in the input field (values under 1810000 will produ
 2. After loading the layer, get the sublayer you want to query with from the map image layer's `mapImageSublayers` array.
 3. Load the sublayer, and then get its `AGSFeatureTable`.
 4. Create `AGSQueryParameters` and define its `whereClause` and `geometry`.
-5. Use `AGSFeatureTable.queryFeatures(with:completion:)` to get an `AGSFeatureQueryResult` with features matching the query. The result is an iterable of features.
+5. Use `AGSFeatureTable.queryFeatures(with:completion:)` to get an `AGSFeatureQueryResult` with features matching the query. The result is an enumerator of features.
 
 ## About the data
 

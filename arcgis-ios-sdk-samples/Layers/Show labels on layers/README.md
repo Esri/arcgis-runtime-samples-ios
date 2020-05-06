@@ -18,7 +18,7 @@ Pan and zoom around the United States. Labels for congressional districts will b
 2. Create an `AGSFeatureLayer` from the service feature table.
 3. Create an `AGSTextSymbol` to use for displaying the label text.
 4. Create a JSON string for the label definition.
-    * Set the "LabelExpressionInfo.expression" key to express what the text the label should display. You can use fields of the feature by using `$feature.Name` in the expression.
+    * Set the "LabelExpressionInfo.expression" key to express what the text the label should display. You can use fields of the feature by using `$feature.NAME` in the expression.
     * To use the text symbol, set the "symbol" key to the symbol's JSON representation using `AGSTextSymbol.toJSON()`.
 5. Create a label definition from the JSON using `class AGSJSONSerializable.fromJSON(_:)`.
 6. Add the definition to the feature layer's `labelDefinitions` array .

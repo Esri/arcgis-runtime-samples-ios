@@ -59,7 +59,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     /// A boolean which indicates whether the animation is playing or paused.
     var isAnimating = false {
         didSet {
-            playPauseButton?.title = isAnimating ? "Pause" : "Play"
+             playPauseButton.title = isAnimating ? "Pause" : "Play"
         }
     }
     
@@ -120,7 +120,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     }
     
     func getOpacityString() -> String {
-        return String(format: "Opacity: %.0f%%", opacitySlider.value * 100)
+        return String(format: "Opacity\n%.0f%%", opacitySlider.value * 100)
     }
     
     // MARK: - Actions
@@ -140,7 +140,11 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     }
     
     @IBAction func frameRateButtonTapped(_ button: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Select a frame rate.", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(
+            title: "Select a frame rate.",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
         let frameRates: [(name: String, fps: Double)] = [
             ("60 FPS", 60.0),
             ("30 FPS", 30.0),

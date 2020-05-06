@@ -19,7 +19,7 @@ Pan and zoom around the map. Observe graphics that show utility associations bet
 3. Create an `AGSGraphicsOverlay` for the utility associations.
 4. When the sample is opened and every time the viewpoint changes, do the following steps.
 5. Get the geometry of the map view's extent using `AGSMapView.currentViewpoint(with:).targetGeometry.extent`.
-6. Get the associations that are within the current extent using `associations(withExtent:completion:)`.
+6. Get the associations that are within the current extent using `AGSUtilityNetwork.associations(withExtent:completion:)`.
 7. Get the `AGSUtilityAssociationType` for each association.
 8. Create an `AGSGraphic` using the `AGSGeometry` property of the association and a preferred symbol.
 9. Add the graphic to the graphics overlay.

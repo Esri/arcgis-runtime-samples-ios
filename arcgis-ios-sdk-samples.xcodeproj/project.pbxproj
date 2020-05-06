@@ -789,8 +789,8 @@
 		F1D1E2C12409AB8A006B2801 /* CreateAndSaveKML.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1D1E2C02409AB8A006B2801 /* CreateAndSaveKML.storyboard */; };
 		F1D1E2C32409AB9F006B2801 /* CreateAndSaveKMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
 		F1D5022C245246D300583CFB /* DisplayUtilityAssociation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1D5022B245246D300583CFB /* DisplayUtilityAssociation.storyboard */; };
-		F1D5022E245246EC00583CFB /* DisplayUtilityAssociationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationVC.swift */; };
-		F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationVC.swift */; };
+		F1D5022E245246EC00583CFB /* DisplayUtilityAssociationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationViewController.swift */; };
+		F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationViewController.swift */; };
 		F1D7508F230730360018B812 /* ElevationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
 		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
@@ -846,7 +846,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationVC.swift in CopyFiles */,
+				F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationViewController.swift in CopyFiles */,
 				F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */,
 				00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */,
 				00E276352425A3A7000DBEDD /* NavigateRouteViewController.swift in CopyFiles */,
@@ -1661,7 +1661,7 @@
 		F1D1E2C02409AB8A006B2801 /* CreateAndSaveKML.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAndSaveKML.storyboard; sourceTree = "<group>"; };
 		F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndSaveKMLViewController.swift; sourceTree = "<group>"; };
 		F1D5022B245246D300583CFB /* DisplayUtilityAssociation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayUtilityAssociation.storyboard; sourceTree = "<group>"; };
-		F1D5022D245246EC00583CFB /* DisplayUtilityAssociationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUtilityAssociationVC.swift; sourceTree = "<group>"; };
+		F1D5022D245246EC00583CFB /* DisplayUtilityAssociationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUtilityAssociationViewController.swift; sourceTree = "<group>"; };
 		F1D7508E230730360018B812 /* ElevationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationViewController.swift; sourceTree = "<group>"; };
 		F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalRaster.storyboard; sourceTree = "<group>"; };
 		F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalRasterViewController.swift; sourceTree = "<group>"; };
@@ -4181,7 +4181,7 @@
 			isa = PBXGroup;
 			children = (
 				F1D5022B245246D300583CFB /* DisplayUtilityAssociation.storyboard */,
-				F1D5022D245246EC00583CFB /* DisplayUtilityAssociationVC.swift */,
+				F1D5022D245246EC00583CFB /* DisplayUtilityAssociationViewController.swift */,
 			);
 			path = "Display utility association";
 			sourceTree = "<group>";
@@ -4831,7 +4831,7 @@
 				4CE15D4C22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
-				F1D5022E245246EC00583CFB /* DisplayUtilityAssociationVC.swift in Sources */,
+				F1D5022E245246EC00583CFB /* DisplayUtilityAssociationViewController.swift in Sources */,
 				F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
 				218409DD1FE89D840098BC40 /* OrderByFieldsViewController.swift in Sources */,

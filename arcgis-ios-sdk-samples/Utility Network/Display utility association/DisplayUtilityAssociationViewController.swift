@@ -37,7 +37,6 @@ class DisplayUtilityAssociationVC: UIViewController {
         utilityNetwork.load { [weak self] error in
             if let error = error {
                 self?.presentAlert(error: error)
-                return
             } else {
                 guard let self = self else { return }
                 // Get all the edges and junctions in the network.
@@ -136,6 +135,6 @@ class DisplayUtilityAssociationVC: UIViewController {
         loadUtilityNetwork()
         
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayUtilityAssociationVC"]
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayUtilityAssociationViewController"]
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jkg-IT-YhV">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Find Closest Facility Interactive View Controller-->
+        <scene sceneID="Ar9-NC-tMQ">
+            <objects>
+                <viewController id="Jkg-IT-YhV" userLabel="Find Closest Facility Interactive View Controller" customClass="FindClosestFacilityInteractiveViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BiL-9u-Tf5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5K-dh-3th" userLabel="Map View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="n5K-dh-3th" secondAttribute="bottom" id="TyA-zv-2aQ"/>
+                            <constraint firstItem="n5K-dh-3th" firstAttribute="leading" secondItem="BiL-9u-Tf5" secondAttribute="leading" id="b45-jq-ta1"/>
+                            <constraint firstItem="n5K-dh-3th" firstAttribute="top" secondItem="BiL-9u-Tf5" secondAttribute="top" id="lE1-5K-Lel"/>
+                            <constraint firstAttribute="trailing" secondItem="n5K-dh-3th" secondAttribute="trailing" id="ru6-p0-1qZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tAr-LP-i6C"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="n5K-dh-3th" id="LRb-CA-9S6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1vE-GP-hIh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="212" y="62"/>
+        </scene>
+    </scenes>
+</document>

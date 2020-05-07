@@ -45,7 +45,7 @@ class SurfacePlacementsViewController: UIViewController {
         
         self.sceneView.scene = scene
         
-        let camera = AGSCamera(latitude: 53.04, longitude: -4.04, altitude: 1300, heading: 0, pitch: 90, roll: 0)
+        let camera = AGSCamera(latitude: 53.05, longitude: -4.01, altitude: 1_115, heading: 299, pitch: 88, roll: 0)
         self.sceneView.setViewpointCamera(camera)
         
         let graphicsOverlays = [

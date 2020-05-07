@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XDb-RM-FgI">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Create And Save KML View Controller-->
+        <scene sceneID="1KW-oz-Thr">
+            <objects>
+                <viewController id="XDb-RM-FgI" userLabel="Create And Save KML View Controller" customClass="CreateAndSaveKMLViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HeE-Oi-vs0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akX-0L-bf0" userLabel="Map View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEi-Qs-afR">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WEi-Qs-afR" firstAttribute="trailing" secondItem="HeE-Oi-vs0" secondAttribute="trailing" id="6ii-kc-5Um"/>
+                            <constraint firstItem="WEi-Qs-afR" firstAttribute="leading" secondItem="HeE-Oi-vs0" secondAttribute="leading" id="8GR-II-JHm"/>
+                            <constraint firstItem="akX-0L-bf0" firstAttribute="leading" secondItem="HeE-Oi-vs0" secondAttribute="leading" id="AJa-if-Gno"/>
+                            <constraint firstItem="akX-0L-bf0" firstAttribute="bottom" secondItem="WEi-Qs-afR" secondAttribute="top" id="JDR-Tc-z2H"/>
+                            <constraint firstItem="WEi-Qs-afR" firstAttribute="bottom" secondItem="lFn-eJ-eZ1" secondAttribute="bottom" id="Mw6-U9-Nip"/>
+                            <constraint firstItem="akX-0L-bf0" firstAttribute="top" secondItem="HeE-Oi-vs0" secondAttribute="top" id="hbN-dt-ZhK"/>
+                            <constraint firstItem="akX-0L-bf0" firstAttribute="trailing" secondItem="HeE-Oi-vs0" secondAttribute="trailing" id="jFZ-Pl-7sx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lFn-eJ-eZ1"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bEb-3H-NMg"/>
+                    <connections>
+                        <outlet property="actionButtonItem" destination="MuI-Qf-AEu" id="VPL-fJ-nAg"/>
+                        <outlet property="addButton" destination="V8L-U8-tQY" id="qNU-S6-lGg"/>
+                        <outlet property="mapView" destination="akX-0L-bf0" id="TP0-P6-GWa"/>
+                        <outlet property="resetButtonItem" destination="VbR-tF-dZd" id="JZg-do-fiK"/>
+                        <outlet property="sketchDoneButton" destination="4d8-3n-68D" id="NeE-0V-sP9"/>
+                        <outlet property="toolbar" destination="WEi-Qs-afR" id="fUy-QB-yVq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BAu-Dr-atE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Reset" id="VbR-tF-dZd" userLabel="Reset Button">
+                    <connections>
+                        <action selector="resetKML" destination="XDb-RM-FgI" id="N7T-PU-Tcn"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="add" id="V8L-U8-tQY">
+                    <connections>
+                        <action selector="addFeature" destination="XDb-RM-FgI" id="Xyb-6T-rhz"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="done" id="4d8-3n-68D">
+                    <connections>
+                        <action selector="completeSketch" destination="XDb-RM-FgI" id="i9k-ux-qU9"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem enabled="NO" systemItem="action" id="MuI-Qf-AEu">
+                    <connections>
+                        <action selector="saveKMZ:" destination="XDb-RM-FgI" id="U0V-fV-qEc"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="160.80000000000001" y="108.39580209895054"/>
+        </scene>
+    </scenes>
+</document>

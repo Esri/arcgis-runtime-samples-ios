@@ -1,0 +1,31 @@
+{
+    "category": "Edit data",
+    "description": "Construct a KML document and save it as a KMZ file.",
+    "ignore": false,
+    "images": [
+        "create-save-kml-1.png",
+        "create-save-kml-2.png"
+    ],
+    "keywords": [
+        "Keyhole",
+        "KML",
+        "KMZ",
+        "OGC"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSGeometryEngine",
+        "AGSKMLDataset",
+        "AGSKMLDocument",
+        "AGSKMLGeometry",
+        "AGSKMLLayer",
+        "AGSKMLNode",
+        "AGSKMLPlacemark",
+        "AGSKMLStyle",
+        "AGSSketchEditor"
+    ],
+    "snippets": [
+        "CreateAndSaveKMLViewController.swift"
+    ],
+    "title": "Create and save KML file"
+}

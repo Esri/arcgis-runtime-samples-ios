@@ -1,0 +1,26 @@
+{
+    "category": "Layers",
+    "description": "Display annotation from a feature service URL.",
+    "ignore": false,
+    "images": [
+        "DisplayAnnotation.png"
+    ],
+    "keywords": [
+        "annotation",
+        "cartography",
+        "labels",
+        "placement",
+        "reference scale",
+        "text",
+        "utility"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSAnnotationLayer",
+        "AGSFeatureLayer"
+    ],
+    "snippets": [
+        "DisplayAnnotationViewController.swift"
+    ],
+    "title": "Display annotation"
+}

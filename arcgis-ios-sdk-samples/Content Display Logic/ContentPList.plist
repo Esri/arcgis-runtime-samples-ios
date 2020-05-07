@@ -289,6 +289,22 @@
 		<array>
 			<dict>
 				<key>displayName</key>
+				<string>Display subtype feature layer</string>
+				<key>storyboardName</key>
+				<string>DisplaySubtypeFeatureLayer</string>
+				<key>descriptionText</key>
+				<string>Display a composite layer of all the subtype values in a feature class.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display annotation</string>
+				<key>storyboardName</key>
+				<string>DisplayAnnotation</string>
+				<key>descriptionText</key>
+				<string>Display annotation from a feature service URL.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Dictionary renderer with feature layer</string>
 				<key>storyboardName</key>
 				<string>FeatureLayerDictionaryRenderer</string>
@@ -928,6 +944,18 @@
 				<key>storyboardName</key>
 				<string>ReadSymbolsFromMobileStyle</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Custom dictionary style</string>
+				<key>descriptionText</key>
+				<string>Use a custom dictionary style (.stylx) to symbolize features using a variety of attribute values.</string>
+				<key>storyboardName</key>
+				<string>CustomDictionaryStyle</string>
+				<key>dependency</key>
+				<array>
+					<string>Restaurant</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -979,6 +1007,14 @@
 		<string>Edit data</string>
 		<key>children</key>
 		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Create and save KML file</string>
+				<key>storyboardName</key>
+				<string>CreateAndSaveKML</string>
+				<key>descriptionText</key>
+				<string>Construct a KML document and save it as a KMZ file.</string>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Edit and sync features</string>
@@ -1146,6 +1182,22 @@
 				<key>descriptionText</key>
 				<string>Create a buffer around a map point and display the results as a graphic.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Convex hull</string>
+				<key>storyboardName</key>
+				<string>ConvexHull</string>
+				<key>descriptionText</key>
+				<string>Create a convex hull for a given set of points.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Nearest vertex</string>
+				<key>storyboardName</key>
+				<string>NearestVertex</string>
+				<key>descriptionText</key>
+				<string>Find the closest vertex and coordinate of a geometry to a point.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1153,6 +1205,14 @@
 		<string>Route &amp; Directions</string>
 		<key>children</key>
 		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Find closest facility to an incident (interactive)</string>
+				<key>storyboardName</key>
+				<string>FindClosestFacilityInteractive</string>
+				<key>descriptionText</key>
+				<string>Find a route to the closest facility from a location.</string>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Find route</string>
@@ -1197,6 +1257,14 @@
 				<string>Find routes from several locations to the respective closest facility.</string>
 				<key>storyboardName</key>
 				<string>FindClosestFacilityMultipleIncidentsService</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Navigate route</string>
+				<key>descriptionText</key>
+				<string>Use a routing service to navigate between two points.</string>
+				<key>storyboardName</key>
+				<string>NavigateRoute</string>
 			</dict>
 		</array>
 	</dict>
@@ -1569,11 +1637,11 @@
 		<array>
 			<dict>
 				<key>descriptionText</key>
-				<string>Perform a connected trace against an electric Utility Network.</string>
+				<string>Discover connected features in a utility network using connected, subnetwork, upstream, and downstream traces.</string>
 				<key>storyboardName</key>
-				<string>ConnectedTrace</string>
+				<string>TraceUtilityNetwork</string>
 				<key>displayName</key>
-				<string>Connected Trace</string>
+				<string>Trace utility network</string>
 			</dict>
 		</array>
 	</dict>

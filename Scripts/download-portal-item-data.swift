@@ -27,6 +27,7 @@ import Foundation
 
 protocol URLProvider {
     func makeURL(filename: String) -> URL
+    func makeSubFolderForArchive(folderName: String) -> URL
 }
 
 struct DestinationURLProvider: URLProvider {
@@ -39,6 +40,19 @@ struct DestinationURLProvider: URLProvider {
             url.appendPathComponent(subdirectory, isDirectory: true)
         }
         url.appendPathComponent(filename, isDirectory: false)
+        return url
+    }
+    
+    /// Make a sub-folder path for the extracted files from an archive.
+    ///
+    /// - Parameter folderName: The name of the folder.
+    /// - Returns: A URL of the folder.
+    func makeSubFolderForArchive(folderName: String) -> URL {
+        var url = downloadDirectory
+        if let subdirectory = fileTypes.first(where: { $0.value.contains("zip") })?.key {
+            url.appendPathComponent(subdirectory, isDirectory: true)
+        }
+        url.appendPathComponent(folderName, isDirectory: true)
         return url
     }
 }
@@ -76,21 +90,40 @@ func nameOfFileInArchive(at url: URL) throws -> String {
     return String(data: filenameData, encoding: .utf8)!.trimmingCharacters(in: .whitespacesAndNewlines)
 }
 
-/// Uncompresses the data in the archive at the source URL into the destination
-/// URL.
+func countFilesInArchive(at url: URL) throws -> Int {
+    let outputPipe = Pipe()
+    let process = Process()
+    process.executableURL = URL(fileURLWithPath: "/usr/bin/zipinfo", isDirectory: false)
+    process.arguments = ["-t", url.path]
+    process.standardOutput = outputPipe
+    try process.run()
+    process.waitUntilExit()
+    
+    // The totals info looks like "240 files, 29461066 bytes uncompressed, 28292775 bytes compressed:  4.0%"
+    let totalsInfo = outputPipe.fileHandleForReading.readDataToEndOfFile()
+    // Extract the count from the info string
+    let totalsCount = String(data: totalsInfo, encoding: .utf8)!.components(separatedBy: " ")[0]
+    return Int(totalsCount)!
+}
+
+/// Uncompresses the data in the archive at the source URL into the destination URL.
 ///
 /// - Parameters:
 ///   - sourceURL: The URL of a ZIP archive.
 ///   - destinationURL: The URL at which to uncompress the archive.
 func uncompressArchive(at sourceURL: URL, to destinationURL: URL) throws {
-    FileManager.default.createFile(atPath: destinationURL.path, contents: nil)
-    let fileHandle = try FileHandle(forWritingTo: destinationURL)
+    let outputPipe = Pipe()
     let process = Process()
     process.executableURL = URL(fileURLWithPath: "/usr/bin/unzip", isDirectory: false)
-    process.arguments = ["-p", sourceURL.path]
-    process.standardOutput = fileHandle
+    // Unzip the archive into the specified sub-folder.
+    process.arguments = [sourceURL.path, "-d", destinationURL.path]
+    process.standardOutput = outputPipe
+    
     try process.run()
     process.waitUntilExit()
+    
+    _ = outputPipe.fileHandleForReading.readDataToEndOfFile()
+    // print(String(data: unzipInfo, encoding: .utf8) ?? "No unzip output")
 }
 
 func downloadFile(at sourceURL: URL, destinationURLProvider: URLProvider, completion: @escaping (Result<URL, Error>) -> Void) {
@@ -98,25 +131,27 @@ func downloadFile(at sourceURL: URL, destinationURLProvider: URLProvider, comple
         if let temporaryURL = temporaryURL, let response = response {
             do {
                 let suggestedFilename = response.suggestedFilename!
-                let downloadFilename: String
+                let downloadURL: URL
+                var extractURL: URL?
                 let isArchive = (suggestedFilename as NSString).pathExtension == "zip"
-                if !isArchive {
-                    downloadFilename = suggestedFilename
-                } else {
-                    downloadFilename = try nameOfFileInArchive(at: temporaryURL)
+                downloadURL = destinationURLProvider.makeURL(filename: suggestedFilename)
+                if isArchive {
+                    let fileCount = try countFilesInArchive(at: temporaryURL)
+                    print("File count in the archive is \(fileCount)")
+                    extractURL = downloadURL.deletingLastPathComponent()
                 }
                 
-                let downloadURL = destinationURLProvider.makeURL(filename: downloadFilename)
                 try FileManager.default.createDirectory(at: downloadURL.deletingLastPathComponent(), withIntermediateDirectories: true)
                 
                 if FileManager.default.fileExists(atPath: downloadURL.path) {
                     try FileManager.default.removeItem(at: downloadURL)
                 }
+                
                 if isArchive {
-                    try uncompressArchive(at: temporaryURL, to: downloadURL)
-                } else {
-                    try FileManager.default.moveItem(at: temporaryURL, to: downloadURL)
+                    try uncompressArchive(at: temporaryURL, to: extractURL!)
                 }
+                try FileManager.default.moveItem(at: temporaryURL, to: downloadURL)
+
                 completion(.success(downloadURL))
             } catch {
                 completion(.failure(error))
@@ -200,16 +235,37 @@ portalItems.forEach { (portalURLString, portalItems) in
     portalItems.forEach { (portalItem) in
         // Have we already downloaded the item?
         let filename = downloadedItems[portalItem.identifier] ?? portalItem.filename
-        if FileManager.default.fileExists(atPath: destinationURLProvider.makeURL(filename: filename).path) {
+        
+        // Check if it is a non-archive single file.
+        let isFileExist: Bool = FileManager.default.fileExists(atPath: destinationURLProvider.makeURL(filename: filename).path)
+
+        // Check if there is a sub-folder for the corresponding archive, and the sub-folder is empty or not
+        let subFolderURL = destinationURLProvider.makeSubFolderForArchive(folderName: (filename as NSString).deletingPathExtension)
+        let paths = try? FileManager.default.contentsOfDirectory(
+            at: subFolderURL,
+            includingPropertiesForKeys: nil,
+            options: .skipsHiddenFiles
+        )
+        /// true: the folder exists and is empty;
+        /// false: the folder exists and has content;
+        /// nil: the folder does not exist or not accessible
+        let isEmptySubFolder = paths?.isEmpty
+        
+        if isFileExist && isEmptySubFolder != nil && !isEmptySubFolder! {
+            // One exception to this case is that the content in the folder is changed. There is no way to detect that
+            // unless we keep track of each extracted file in the .downloaded_items dictionary.
+            print("Item \(portalItem.identifier) has already been downloaded, and is extracted to an folder")
+            downloadedItems[portalItem.identifier] = filename
+        } else if isFileExist && isEmptySubFolder == nil {
             print("Item \(portalItem.identifier) has already been downloaded")
-            // This is a temporary measure for users who currently don't have a
-            // downloaded items file.
+            // This is a temporary measure for users who currently don't have a downloaded items file.
             downloadedItems[portalItem.identifier] = filename
         } else {
             print("Downloading item \(portalItem.identifier)")
             fflush(stdout)
             
             dispatchGroup.enter()
+            // Make an URL such as www.arcgis.com/sharing/rest/content/items/{itemIdentifier}/data
             let sourceURL = makeDataURL(portalURL: portalURL, itemIdentifier: portalItem.identifier)
             downloadFile(at: sourceURL, destinationURLProvider: destinationURLProvider) { (result) in
                 switch result {
@@ -218,7 +274,7 @@ portalItems.forEach { (portalURLString, portalItems) in
                     downloadedItems[portalItem.identifier] = url.lastPathComponent
                     dispatchGroup.leave()
                 case .failure(let error):
-                    print("warning: Error downloading item \(portalItem.identifier): \(error)")
+                    print("Warning: Error downloading item \(portalItem.identifier): \(error)")
                     URLSession.shared.invalidateAndCancel()
                     exit(1)
                 }
@@ -236,6 +292,7 @@ if downloadedItems != previousDownloadedItems {
         let data = try encoder.encode(downloadedItems)
         try data.write(to: downloadedItemsURL)
     } catch {
-        print("warning: Error recording downloaded items: \(error)")
+        print("Warning: Error recording downloaded items: \(error)")
+        exit(1)
     }
 }

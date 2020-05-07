@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		00ADC2C62464D43700A3B88D /* PacificSouthWest.zip in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC1D32464D43600A3B88D /* PacificSouthWest.zip */; settings = {ASSET_TAGS = (PacificSouthWest, ); }; };
+		00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */; };
+		00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
+		00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3C22464D59200A3B88D /* PacificSouthWest */; };
+		00ADC3C42464D64F00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
 		00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
@@ -846,6 +851,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00ADC3C42464D64F00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in CopyFiles */,
 				00E5B7D5245B9C8D00B11973 /* PerformValveIsolationTraceViewController.swift in CopyFiles */,
 				F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */,
 				00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */,
@@ -1114,6 +1120,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00ADC1D32464D43600A3B88D /* PacificSouthWest.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = PacificSouthWest.zip; sourceTree = "<group>"; };
+		00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnimateImagesWithImageOverlay.storyboard; sourceTree = "<group>"; };
+		00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateImagesWithImageOverlayViewController.swift; sourceTree = "<group>"; };
+		00ADC3C22464D59200A3B88D /* PacificSouthWest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PacificSouthWest; sourceTree = "<group>"; };
 		00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
 		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
@@ -1695,6 +1705,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00ADC1D22464D43600A3B88D /* Archives */ = {
+			isa = PBXGroup;
+			children = (
+				00ADC3C22464D59200A3B88D /* PacificSouthWest */,
+				00ADC1D32464D43600A3B88D /* PacificSouthWest.zip */,
+			);
+			path = Archives;
+			sourceTree = "<group>";
+		};
+		00ADC3B72464D45B00A3B88D /* Animate image overlay */ = {
+			isa = PBXGroup;
+			children = (
+				00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */,
+				00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */,
+			);
+			path = "Animate image overlay";
+			sourceTree = "<group>";
+		};
 		00D4E8D8241AA18E002689DB /* Convex hull */ = {
 			isa = PBXGroup;
 			children = (
@@ -3232,6 +3260,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				00ADC3B72464D45B00A3B88D /* Animate image overlay */,
 				F1C81C4322FCEBD100229CAA /* Get elevation at a point */,
 				F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */,
 				F1034FA122D3F5DA00B021DA /* Create terrain surface from a local tile package */,
@@ -3607,6 +3636,7 @@
 		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
 			isa = PBXGroup;
 			children = (
+				00ADC1D22464D43600A3B88D /* Archives */,
 				4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */,
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
 				F1679F0422D93FA900E5320A /* Rasters */,
@@ -4295,6 +4325,7 @@
 					MobileMapPackages,
 					MontereyElevation,
 					MontereyElevationRaster,
+					PacificSouthWest,
 					PublicArtShapefile,
 					Restaurant,
 					SRTMRaster,
@@ -4519,6 +4550,7 @@
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
 				4CA6F6CF22C6C671004F0F4F /* mil2525d.stylx in Resources */,
 				3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */,
+				00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */,
 				3E8A25911D36B97A00D14F08 /* MapLoaded.storyboard in Resources */,
 				C7E9D7C821C0500300E6C47E /* Buffer.storyboard in Resources */,
 				3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */,
@@ -4627,6 +4659,7 @@
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
 				D9E2E76120EEB8FF001D0AE0 /* Public_Art.cpg in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
+				00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
 				4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */,
 				D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */,
@@ -4635,6 +4668,7 @@
 				4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				00DAE5E024213D6B00D51281 /* CustomDictionaryStyle.storyboard in Resources */,
+				00ADC2C62464D43700A3B88D /* PacificSouthWest.zip in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
 				D9E2E76420EEB8FF001D0AE0 /* Public_Art.shp in Resources */,
 				127D29F8200EC5FC00DD6CDC /* ViewshedLocation.storyboard in Resources */,
@@ -4831,6 +4865,7 @@
 				4CE15D4C22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
+				00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */,
 				F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
 				218409DD1FE89D840098BC40 /* OrderByFieldsViewController.swift in Sources */,

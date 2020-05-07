@@ -1,19 +1,29 @@
 # Manage sublayers
 
-This sample demonstrates how to add table sublayer source as map image sublayers; how to remove a sublayer and rearrange existing sublayers in a map image layer.
+Add, remove, or rearrange existing sublayers in a map image layer.
 
-![](image1.png)
-![](image2.png)
+![Map displaying all sublayers](manage-sublayers-1.png)
+![Sublayer settings](manage-sublayers-2.png)
+
+# Use case
+
+A map image layer may contain many sublayers such as different types of roads in a road network or city, county, and state borders in a US map. The user may only be interested in a subset of these sublayers. Or, perhaps showing all of the sublayers would show too much detail. In these cases, you can add, remove, or rearrange the order of the sublayers.
 
 ## How to use the sample
 
-Tap on the `Manage Sublayers` button in the bottom toolbar to get a list of sublayers present in the map image layer and also a list of sublayers you can add to it. You can tap on one of the removed sublayers to add it to the map image layer. You can tap on the button on the left to delete a sublayer and hold and move a cell to reorder the sublayers.
+Tap the bottom button to display a list of sublayers. Tap the red button to remove a layer. Tap the green button to add a layer. Tap and drag the the right of a cell to rearrange the order of the layers.
 
 ## How it works
 
-To add a table sublayer source with known workspaceID and data source name, the sample uses the `init(workspaceID:dataSourceName:)` initializer and creates an `AGSTableSublayerSource` object. An `AGSArcGISMapImageSublayer` is created from this tableSublayerSource using the initializer `init(id:source:)`. The sublayer is then added to the `mapImageSublayers` array on mapImageLayer.
+1. Create an `AGSArcGISMapImageLayer` object with the URL to a map image service.
+2. Get all `AGSArcGISMapImageSublayer`s of the map image layer.
+3. For each corresponding layer, add to, remove from, or rearrange the array of sublayers.
 
-Similarly, to remove a sublayer, it is removed from the `mapImageSublayers` array. And to reorder, the sublayer is removed from current index and added at the new index.
+## Relevant API
 
+* AGSArcGISMapImageLayer
+* AGSArcGISMapImageSublayer
 
+## Tags
 
+layer, sublayer, visibility

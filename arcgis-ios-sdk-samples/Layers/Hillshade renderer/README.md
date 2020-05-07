@@ -1,19 +1,33 @@
 # Hillshade renderer
 
-This sample demonstrates how to use hillshade renderer on a raster
+Apply a hillshade renderer to a raster.
+
+![Hillshade renderer initial view](hillshade-renderer-1.png)
+![Hillshade renderer settings](hillshade-renderer-2.png)
+
+## Use case
+
+An environmental agency may track coastal erosion by comparing images of an area taken over a a longer period of time with hillshade renderers applied.
 
 ## How to use the sample
 
-Tap on the `Edit renderer` button in the toolbar to change the settings for the hillshade. The sample allows you to change the `Altitude`, `Azimuth` and `Slope type`. You can tap on the `Render` button to update the raster.
-
-![](image1.png)
-![](image2.png)
+Choose and adjust the settings to update the hillshade renderer on the raster layer. The sample allows you to change the altitude, azimuth, and slope type.
 
 ## How it works
 
-The sample uses `AGSHillshadeRenderer` class to generate hillshade renderers. The settings provided by the user are put in the initializer `init(altitude:azimuth:zFactor:slopeType:pixelSizeFactor:pixelSizePower:outputBitDepth:)` to get a new renderer and the renderer is then set on the raster. 
+1. Create an `AGSRaster` from a grayscale raster file.
+2. Create an `AGSRasterLayer` from the raster.
+3. Create an `AGSBasemap` from the raster layer and set it to the map.
+4. Create an `AGSHillshadeRenderer`, specifying the altitude and other properties.
+5. Set raster layer's `AGSRenderer` to the previously created `AGSHillshadeRenderer`.
 
+## Relevant API
 
+* AGSBasemap
+* AGSHillshadeRenderer
+* AGSRaster
+* AGSRasterLayer
 
+## Tags
 
-
+altitude, angle, azimuth, raster, slope, visualization

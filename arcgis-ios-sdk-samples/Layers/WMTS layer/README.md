@@ -1,9 +1,34 @@
 # WMTS layer
 
-This sample demonstrates how to display a WMTS layer as a basemap layer.
+Display a layer from a Web Map Tile Service.
 
-![](image1.png)
+![WMTS layer sample](wmts-layer.png)
+
+## Use case
+
+WMTS services can have several layers. You can use Runtime to explore the layers available from a service. This would commonly be used to enable a browsing experience where users can choose which layers they want to display at run time.
+
+## How to use the sample
+
+The layer will be displayed automatically. Pan and zoom to explore.
 
 ## How it works
 
-The samples uses `init(url:)` initializer on `AGSWMTSService` to instantiate WMTS service using the service URL. It then loads the WMTS service using `load(completion:)` method. Once the service loads, obtain the `AGSWMTSServiceInfo` and an array of `AGSWMTSLayerInfo` from the loaded `AGSWMTSService`. This particular sample gets the first element from the array of `AGSWMTSLayerInfo` and instantiates `AGSWMTSLayer` using `init(layerInfo:)` initializer. Finally, the `AGSWMTSLayer` is added to the map as a basemap layer.
+1. Create an `AGSWMTSService` object using the URL of the WMTS service.
+2. Create an `AGSWMTSLayer` object with the ID of the layer to display.
+3. Make an `AGSBasemap` from the `AGSWMTSLayer` and apply it to the map.
+
+## Relevant API
+
+* AGSWMTSLayer
+* AGSWMTSLayerInfo
+* AGSWMTSService
+* AGSWMTSServiceInfo
+
+## About the data
+
+The map visualizes world time zones.
+
+## Tags
+
+layer, OGC, raster, tiled, web map tile service

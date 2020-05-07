@@ -318,7 +318,7 @@
 				<key>storyboardName</key>
 				<string>TLUsingURL</string>
 				<key>descriptionText</key>
-				<string>You can create a tiled layer using the url to the service</string>
+				<string>Load a tiled layer from a map server with a URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -326,7 +326,7 @@
 				<key>storyboardName</key>
 				<string>LocalTiledLayer</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline</string>
+				<string>Load an offline copy of a tiled map service as a basemap.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanFranciscoTilePackage</string>
@@ -339,7 +339,7 @@
 				<key>storyboardName</key>
 				<string>ExportTiles</string>
 				<key>descriptionText</key>
-				<string>You can create a tpk from a map service</string>
+				<string>Download tiles to a local tile cache file stored on the device.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -347,7 +347,7 @@
 				<key>storyboardName</key>
 				<string>MILUsingURL</string>
 				<key>descriptionText</key>
-				<string>You can use the url to a map server to create a map image layer</string>
+				<string>Display a layer from an ArcGIS map image layer service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -355,7 +355,7 @@
 				<key>storyboardName</key>
 				<string>ChangeSublayerRenderer</string>
 				<key>descriptionText</key>
-				<string>You can change the renderer of a sublayer in a map image layer</string>
+				<string>Apply a renderer to a sublayer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -363,7 +363,7 @@
 				<key>storyboardName</key>
 				<string>SublayerVisibility</string>
 				<key>descriptionText</key>
-				<string>You can show or hide individual sublayers in a map image layer</string>
+				<string>Change the visibility of sublayers.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -371,7 +371,7 @@
 				<key>storyboardName</key>
 				<string>ManageSublayers</string>
 				<key>descriptionText</key>
-				<string>This sample shows to add or remove map image sublayers and how to re-arrange existing sublayers in a map image layer</string>
+				<string>Add, remove, or rearrange existing sublayers in a map image layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -379,7 +379,7 @@
 				<key>storyboardName</key>
 				<string>VectorTileLayer</string>
 				<key>descriptionText</key>
-				<string>You can now add vector tile layers</string>
+				<string>Load an ArcGIS vector tiled layer from a URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -387,7 +387,7 @@
 				<key>storyboardName</key>
 				<string>VectorTileCustomStyle</string>
 				<key>descriptionText</key>
-				<string>You can define different styles for same vector tiled layer using custom stylesheets</string>
+				<string>Load ArcGIS vector tiled layers using custom styles.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -395,7 +395,7 @@
 				<key>storyboardName</key>
 				<string>WebTiledLayer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to display map tiles from an online resource</string>
+				<string>Display a tiled web layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -403,7 +403,7 @@
 				<key>storyboardName</key>
 				<string>RasterFunctionService</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to create an image service raster and apply a Hillshade raster function to it.</string>
+				<string>Load a raster from a service and apply a function to it.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -411,7 +411,7 @@
 				<key>storyboardName</key>
 				<string>RasterLayer</string>
 				<key>descriptionText</key>
-				<string>You can create a raster layer from a file</string>
+				<string>Create and use a raster layer made from a local raster file.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaRaster</string>
@@ -423,7 +423,7 @@
 				<key>storyboardName</key>
 				<string>RasterLayerGPKG</string>
 				<key>descriptionText</key>
-				<string>Show a raster layer on a map using a geopackage</string>
+				<string>Display a raster contained in a GeoPackage.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>
@@ -435,7 +435,7 @@
 				<key>storyboardName</key>
 				<string>RasterLayerUsingService</string>
 				<key>descriptionText</key>
-				<string>You can create a raster layer from an ArcGIS Image service</string>
+				<string>Create a raster layer from a raster image service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -443,7 +443,7 @@
 				<key>storyboardName</key>
 				<string>HillshadeRenderer</string>
 				<key>descriptionText</key>
-				<string>You can apply hill shade renderer to a raster</string>
+				<string>Apply a hillshade renderer to a raster.</string>
 				<key>dependency</key>
 				<array>
 					<string>SRTMRaster</string>
@@ -455,7 +455,7 @@
 				<key>storyboardName</key>
 				<string>BlendRenderer</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to use blend renderer with raster layer</string>
+				<string>Blend a hillshade with a raster by specifying the elevation data.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaElevationRaster</string>
@@ -468,7 +468,7 @@
 				<key>storyboardName</key>
 				<string>RGBRenderer</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to use rgb renderer with raster layer</string>
+				<string>Apply an RGB renderer to a raster layer to enhance feature visibility.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaRaster</string>
@@ -480,7 +480,7 @@
 				<key>storyboardName</key>
 				<string>StretchRenderer</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to use stretch renderer with raster layer</string>
+				<string>Use a stretch renderer to enhance the visual contrast of raster data for analysis.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaBWRaster</string>
@@ -492,7 +492,7 @@
 				<key>storyboardName</key>
 				<string>ShowLabelsOnLayers</string>
 				<key>descriptionText</key>
-				<string>Show labels on feature layers using JSON label definitions.</string>
+				<string>Display custom labels on a feature layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -500,7 +500,7 @@
 				<key>storyboardName</key>
 				<string>WMTSLayer</string>
 				<key>descriptionText</key>
-				<string>Display a WMTS layer as a basemap layer</string>
+				<string>Display a layer from a Web Map Tile Service (WMTS).</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -508,7 +508,7 @@
 				<key>storyboardName</key>
 				<string>WMSLayerUsingURL</string>
 				<key>descriptionText</key>
-				<string>Open a WMS layer from a URL and display it in a map</string>
+				<string>Display a WMS layer using a WMS service URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -516,7 +516,7 @@
 				<key>storyboardName</key>
 				<string>StyleWebMapServiceLayer</string>
 				<key>descriptionText</key>
-				<string>Shows how to change the style of a WMS layer.</string>
+				<string>Change the style of a Web Map Service (WMS) layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -524,7 +524,7 @@
 				<key>storyboardName</key>
 				<string>QueryMapImageSublayer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to execute an attribute and spatial query on the sublayers of an ArcGIS map image layer.</string>
+				<string>Find features in a sublayer based on attributes and location.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -532,7 +532,7 @@
 				<key>storyboardName</key>
 				<string>SymbolizeShapefile</string>
 				<key>descriptionText</key>
-				<string>Symbolize a feature layer on a map using a shapefile</string>
+				<string>Display a shapefile with custom symbology.</string>
 				<key>dependency</key>
 				<array>
 					<string>SubdivisionsShapefile</string>
@@ -544,7 +544,7 @@
 				<key>storyboardName</key>
 				<string>DisplayKML</string>
 				<key>descriptionText</key>
-				<string>Show a KML file from a URL, local file, or portal item.</string>
+				<string>Display KML from a URL, portal item, or local KML file.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -560,7 +560,7 @@
 				<key>storyboardName</key>
 				<string>IdentifyKMLFeatures</string>
 				<key>descriptionText</key>
-				<string>Show a balloon popup with formatted content for tapped KML features. KML supports defining HTML for popups.</string>
+				<string>Show a callout with formatted content for a KML feature.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -568,7 +568,7 @@
 				<key>storyboardName</key>
 				<string>DisplayKMLNetworkLinks</string>
 				<key>descriptionText</key>
-				<string>Display a KML file that loads content from a network resource.</string>
+				<string>Display a file with a KML network link, including displaying any network link control messages at launch.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -584,7 +584,7 @@
 				<key>storyboardName</key>
 				<string>OpenStreetMapLayer</string>
 				<key>descriptionText</key>
-				<string>Display a map with an OpenStreetMap basemap.</string>
+				<string>Add OpenStreetMap as a basemap layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -614,7 +614,7 @@
 				<key>displayName</key>
 				<string>Group layers</string>
 				<key>descriptionText</key>
-				<string>Add layers to a group layer and toggle their visibility as a group.</string>
+				<string>Group a collection of layers together and toggle their visibility as a group.</string>
 				<key>storyboardName</key>
 				<string>GroupLayers</string>
 			</dict>

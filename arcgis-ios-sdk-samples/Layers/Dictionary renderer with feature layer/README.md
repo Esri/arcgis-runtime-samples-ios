@@ -6,29 +6,32 @@ Convert features into graphics to show them with mil2525d symbols.
 
 ## Use case
 
-A dictionary renderer uses a style file along with a rule engine to display advanced symbology. This is useful for displaying features using precise military symbology.
+A dictionary renderer uses a style file along with a rule engine to display advanced symbology. 
+This is useful for displaying features using precise military symbology.
 
 ## How to use the sample
 
-This sample displays military symbology. Pan and zoom to explore the map.
+Pan and zoom around the map. Observe the displayed military symbology on the map.
 
 ## How it works
 
-1. Create a geodatabase.
-2. Instantiate and asynchronously load the symbol dictionary using the mil2525d.stylx file.
-3. Load the geodatabase asynchronously.
-4. Once the geodatabase is done loading, create a feature layer for each of the feature tables provided by the geodatabase.
-5. Load the feature layers asynchronously.
-6. After the last layer has loaded, set the viewpoint of the map to the full extent of all the layers.
-7. Add the feature layer to map.
-8. Render the symbol dictionary and add it to the layer.
+1. Create an `AGSGeodatabase`.
+2. Create and load an `AGSDictionarySymbolStyle` using the `mil2525d.stylx` resource.
+3. Load the geodatabase using `AGSGeodatabase.load(completion:)`.
+4. Once the geodatabase is done loading, create an `AGSFeatureLayer` from each of the geodatabase's `AGSGeodatabaseFeatureTable`s.
+5. After the last `AGSFeatureLayer` has loaded, set the `AGSMapView`'s viewpoint to the full extent of all the layers using the method `AGSMapViewCommon.setViewpointGeometry(_:completion:)`.
+6. Add the feature layer to the map's `operationalLayers`.
+7. Create an `AGSDictionaryRenderer` and attach it to the feature layer.
 
 ## Relevant API
 
 * AGSDictionaryRenderer
 * AGSDictionarySymbolStyle
-* AGSGeodatabase
+
+## Offline data
+
+This sample uses the [Mil2525d Stylx File](https://www.arcgis.com/home/item.html?id=e34835bf5ec5430da7cf16bb8c0b075c) and the [Military Overlay geodatabase](https://www.arcgis.com/home/item.html?id=e0d41b4b409a49a5a7ba11939d8535dc). Both are downloaded from ArcGIS Online automatically.
 
 ## Tags
 
-dictionaryrenderer, dictionarysymbolstyle, military, symbol
+DictionaryRenderer, DictionarySymbolStyle, military, symbol

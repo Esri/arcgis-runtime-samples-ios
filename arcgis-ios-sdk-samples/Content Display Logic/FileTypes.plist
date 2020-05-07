@@ -26,5 +26,9 @@
 	<array>
 		<string>tpk</string>
 	</array>
+	<key>Archives</key>
+	<array>
+		<string>zip</string>
+	</array>
 </dict>
 </plist>

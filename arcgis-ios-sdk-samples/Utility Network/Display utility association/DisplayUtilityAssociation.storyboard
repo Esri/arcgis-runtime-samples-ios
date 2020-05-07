@@ -23,13 +23,11 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <barButtonItem id="JWX-iC-6uh" userLabel="Attachment Image"/>
                                     <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="o22-gE-QX2"/>
                                     <barButtonItem title="Attachment" id="du0-pA-9ww" userLabel="Attachment Label">
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kcu-X1-Ld8"/>
-                                    <barButtonItem id="bsi-6Y-q3J" userLabel="Connectivity Image"/>
                                     <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="fb0-r0-Zw0"/>
                                     <barButtonItem title="Connectivity" id="gXK-mX-aiU" userLabel="Connectivity Label">
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -54,9 +52,12 @@
                         <outlet property="attachmentBBI" destination="JWX-iC-6uh" id="2wb-tS-KrI"/>
                         <outlet property="connectivityBBI" destination="bsi-6Y-q3J" id="gZA-8f-edX"/>
                         <outlet property="mapView" destination="og2-5E-h2J" id="vMX-ao-x0h"/>
+                        <outlet property="toolbar" destination="96r-bO-QXb" id="KHY-Il-76Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Rj-ZW-eXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <barButtonItem id="JWX-iC-6uh" userLabel="Attachment Image"/>
+                <barButtonItem id="bsi-6Y-q3J" userLabel="Connectivity Image"/>
             </objects>
             <point key="canvasLocation" x="-181" y="85"/>
         </scene>

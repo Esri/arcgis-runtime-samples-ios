@@ -24,6 +24,7 @@ class DisplayUtilityAssociationVC: UIViewController {
         }
     }
     
+    @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var attachmentBBI: UIBarButtonItem!
     @IBOutlet var connectivityBBI: UIBarButtonItem!
     
@@ -58,17 +59,21 @@ class DisplayUtilityAssociationVC: UIViewController {
                 
                 // Populate the legened.
                 self.attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
+                    guard let self = self else { return }
                     if let error = error {
                         print("Error creating swatch: \(error)")
                     } else {
-                        self?.attachmentBBI.image = image?.withRenderingMode(.alwaysOriginal)
+                        self.attachmentBBI.image = image?.withRenderingMode(.alwaysOriginal)
+                        self.toolbar.items?.insert(self.attachmentBBI, at: 0)
                     }
                 }
                 self.connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
+                    guard let self = self else { return }
                     if let error = error {
                         print("Error creating swatch: \(error)")
                     } else {
-                        self?.connectivityBBI.image = image?.withRenderingMode(.alwaysOriginal)
+                        self.connectivityBBI.image = image?.withRenderingMode(.alwaysOriginal)
+                        self.toolbar.items?.insert(self.connectivityBBI, at: 4)
                     }
                 }
                 self.addAssociationGraphics()

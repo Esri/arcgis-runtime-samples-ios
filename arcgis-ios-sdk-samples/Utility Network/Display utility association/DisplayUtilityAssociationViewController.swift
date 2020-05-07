@@ -29,7 +29,7 @@ class DisplayUtilityAssociationVC: UIViewController {
     
     private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     private let maxScale = 2000.0
-    private var associationsOverlay = AGSGraphicsOverlay()
+    private let associationsOverlay = AGSGraphicsOverlay()
     private let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .green, width: 5)
     private let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 5)
     
@@ -40,17 +40,15 @@ class DisplayUtilityAssociationVC: UIViewController {
                 self.presentAlert(error: error)
             } else {
                 // Get all the edges and junctions in the network.
-                let edges = self.utilityNetwork.definition.networkSources.filter { $0.sourceType == .edge }
-                let junctions = self.utilityNetwork.definition.networkSources.filter { $0.sourceType == .junction }
-//                let sourcesByType = Dictionary(grouping: self.utilityNetwork.definition.networkSources) { $0.sourceType }
+                let sourcesByType = Dictionary(grouping: self.utilityNetwork.definition.networkSources) { $0.sourceType }
                 let operationalLayers = self.mapView.map?.operationalLayers
                 // Add all edges that are not subnet lines to the map.
-                let edgeLayers = edges
+                let edgeLayers = sourcesByType[.edge]!
                     .filter { $0.sourceUsageType != .subnetLine }
                     .map { AGSFeatureLayer(featureTable: $0.featureTable) }
                 operationalLayers?.addObjects(from: edgeLayers)
                 // Add all the junctions to the map.
-                let junctionLayers = junctions.map { AGSFeatureLayer(featureTable: $0.featureTable) }
+                let junctionLayers = sourcesByType[.junction]!.map { AGSFeatureLayer(featureTable: $0.featureTable) }
                 operationalLayers?.addObjects(from: junctionLayers)
                 
                 // Create a renderer for the associations.
@@ -94,30 +92,26 @@ class DisplayUtilityAssociationVC: UIViewController {
                 if let error = error {
                     print("Error loading associations: \(error)")
                 } else if let associations = associations {
-                    // Check if the graphics overlay already contains the association.
-                    let graphics = associations.compactMap { association in 
+                    let graphics: [AGSGraphic] = associations.compactMap { association in
+                        // If it the current association does not exist, add it to the graphics overlay.
                         let associationGID = association.globalID
                         guard !self.associationsOverlay.graphics.contains(where: {
-                            ($0 as! AGSGraphic).attributes["GlobalId"] as? UUID == association.globalID
+                            ($0 as! AGSGraphic).attributes["GlobalId"] as? UUID == associationGID
                             }) else {
-                                return
+                                return nil
                             }
-                        
-                        // If it the current association does not exist, add it to the graphics overlay.
-                        if existingAssociations.isEmpty {
-                            let symbol: AGSSymbol
-                            switch association.associationType {
-                            case .attachment:
-                                symbol = self.attachmentSymbol
-                            case .connectivity:
-                                symbol = self.connectivitySymbol
-                            default:
-                                return
-                            }
-                            let graphic = AGSGraphic(geometry: association.geometry, symbol: symbol, attributes: ["GlobalId": associationGID, "AssociationType": association.associationType])
+                        let symbol: AGSSymbol
+                        switch association.associationType {
+                        case .attachment:
+                            symbol = self.attachmentSymbol
+                        case .connectivity:
+                            symbol = self.connectivitySymbol
+                        default:
+                            return nil
                         }
+                        return AGSGraphic(geometry: association.geometry, symbol: symbol, attributes: ["GlobalId": associationGID, "AssociationType": association.associationType])
                     }
-                    self.associationsOverlay.graphics.add(graphics)
+                    self.associationsOverlay.graphics.addObjects(from: graphics)
                 }
             }
         }

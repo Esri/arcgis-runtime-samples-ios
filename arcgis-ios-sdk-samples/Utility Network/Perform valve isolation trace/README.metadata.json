@@ -1,0 +1,51 @@
+{
+    "category": "Utility Network",
+    "description": "Run a filtered trace to locate operable features that will isolate an area from the flow of network resources.",
+    "ignore": false,
+    "images": [
+        "perform-valve-isolation-trace.png"
+    ],
+    "keywords": [
+        "category comparison",
+        "condition barriers",
+        "isolated features",
+        "network analysis",
+        "subnetwork trace",
+        "trace configuration",
+        "trace filter",
+        "utility network",
+        "AGSUtilityCategory",
+        "AGSUtilityCategoryComparison",
+        "AGSUtilityCategoryComparisonOperator",
+        "AGSUtilityDomainNetwork",
+        "AGSUtilityElement",
+        "AGSUtilityElementTraceResult",
+        "AGSUtilityNetwork",
+        "AGSUtilityNetworkDefinition",
+        "AGSUtilityTraceFilter",
+        "AGSUtilityTier",
+        "AGSUtilityTraceParameters",
+        "AGSUtilityTraceResult",
+        "AGSUtilityTraceType"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSUtilityCategory",
+        "AGSUtilityCategoryComparison",
+        "AGSUtilityCategoryComparisonOperator",
+        "AGSUtilityDomainNetwork",
+        "AGSUtilityElement",
+        "AGSUtilityElementTraceResult",
+        "AGSUtilityNetwork",
+        "AGSUtilityNetworkDefinition",
+        "AGSUtilityTraceFilter",
+        "AGSUtilityTier",
+        "AGSUtilityTraceParameters",
+        "AGSUtilityTraceResult",
+        "AGSUtilityTraceType"
+    ],
+    "snippets": [
+        "PerformValveIsolationTraceViewController.swift"
+    ],
+    "title": "Perform Valve Isolation Trace"
+}

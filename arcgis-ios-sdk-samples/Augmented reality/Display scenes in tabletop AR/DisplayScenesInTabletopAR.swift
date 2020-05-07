@@ -39,7 +39,7 @@ class DisplayScenesInTabletopAR: UIViewController {
 
         // Configure a starting invisible scene with a tiling scheme matching that of the scene that will be used
         arView.sceneView.scene = AGSScene(tilingScheme: .geographic)
-        arView.sceneView.scene?.baseSurface?.opacity = 0
+        arView.clippingDistance = 400
 
         // Listen for tracking state changes
         arView.arSCNViewDelegate = self
@@ -142,17 +142,17 @@ extension DisplayScenesInTabletopAR: ARSCNViewDelegate {
                 helpLabel.isHidden = true
             } else if !hasFoundPlane {
                 helpLabel.isHidden = false
-                helpLabel.text = "Keep moving your phone"
+                helpLabel.text = "Keep moving your device"
             }
         case .notAvailable:
             helpLabel.text = "Location not available"
         case .limited(let reason):
             switch reason {
             case .excessiveMotion:
-                helpLabel.text = "Try moving your phone more slowly"
+                helpLabel.text = "Try moving your device more slowly"
                 helpLabel.isHidden = false
             case .initializing:
-                helpLabel.text = "Keep moving your phone"
+                helpLabel.text = "Keep moving your device"
                 helpLabel.isHidden = false
             case .insufficientFeatures:
                 helpLabel.text = "Try turning on more lights and moving around"

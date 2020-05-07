@@ -2,7 +2,7 @@
 
 Use augmented reality (AR) to pin a scene to a table or desk for easy exploration.
 
-![Scene content shown sitting on a surface, as if it were a 3D printed model](display-scene-tabletop.jpeg)
+![Scene content shown sitting on a surface, as if it were a 3D printed model](display-scenes-tabletop.png)
 
 ## Use case
 

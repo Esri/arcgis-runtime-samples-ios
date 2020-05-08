@@ -646,6 +646,14 @@
 					<string>GasDeviceAnnoMMPK</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Identify raster cell</string>
+				<key>descriptionText</key>
+				<string>Get the cell value of a local raster at the tapped location and display the result in a callout.</string>
+				<key>storyboardName</key>
+				<string>IdentifyRasterCell</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

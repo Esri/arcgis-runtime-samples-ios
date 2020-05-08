@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		00ADC3CF2464DD2B00A3B88D /* IdentifyRasterCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */; };
+		00ADC3D12464DD3600A3B88D /* IdentifyRasterCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
+		00ADC3D22464DDA200A3B88D /* IdentifyRasterCellViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
 		00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
@@ -846,6 +849,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00ADC3D22464DDA200A3B88D /* IdentifyRasterCellViewController.swift in CopyFiles */,
 				00E5B7D5245B9C8D00B11973 /* PerformValveIsolationTraceViewController.swift in CopyFiles */,
 				F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */,
 				00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */,
@@ -1114,6 +1118,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyRasterCell.storyboard; sourceTree = "<group>"; };
+		00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyRasterCellViewController.swift; sourceTree = "<group>"; };
 		00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
 		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
@@ -1695,6 +1701,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00ADC3C92464DD0600A3B88D /* Identify raster cell */ = {
+			isa = PBXGroup;
+			children = (
+				00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */,
+				00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */,
+			);
+			path = "Identify raster cell";
+			sourceTree = "<group>";
+		};
 		00D4E8D8241AA18E002689DB /* Convex hull */ = {
 			isa = PBXGroup;
 			children = (
@@ -2819,6 +2834,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				00ADC3C92464DD0600A3B88D /* Identify raster cell */,
 				F15CF0C723EE26CB0038F052 /* Display subtype feature layer */,
 				F140E1E823F35E61008AC44E /* Display annotation */,
 				F1F62C3E22E6401500EFD599 /* Dictionary renderer with feature layer */,
@@ -4612,6 +4628,7 @@
 				C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
+				00ADC3CF2464DD2B00A3B88D /* IdentifyRasterCell.storyboard in Resources */,
 				3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */,
 				4CECF89F21D57F0A00A56161 /* SetMinMaxScale.storyboard in Resources */,
 				3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */,
@@ -4751,6 +4768,7 @@
 				12D66038226697320005DE8A /* LayersTableViewController.swift in Sources */,
 				3ED7888E1D26E28500E5F311 /* TilePackagesListViewController.swift in Sources */,
 				3ED029381B8E3AB300ACA70D /* MILLegendTableViewController.swift in Sources */,
+				00ADC3D12464DD3600A3B88D /* IdentifyRasterCellViewController.swift in Sources */,
 				4C0F27B32152CA3500496666 /* IdentifyKMLFeaturesViewController.swift in Sources */,
 				3ED7888C1D26E23C00E5F311 /* LocalTiledLayerViewController.swift in Sources */,
 				3E6AE3F91C73B5480026E59C /* DirectionsViewController.swift in Sources */,

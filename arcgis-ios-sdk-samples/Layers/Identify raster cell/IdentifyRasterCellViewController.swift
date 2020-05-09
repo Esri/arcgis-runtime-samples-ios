@@ -47,19 +47,20 @@ class IdentifyRasterCellViewController: UIViewController {
     func identifyPixel(screenPoint: CGPoint) {
         mapView.identifyLayer(rasterLayer, screenPoint: screenPoint, tolerance: 1.0, returnPopupsOnly: false) { [weak self] identifyResult in
             guard let self = self else { return }
+            var calloutText: String = ""
+            var xyCoordinates: String = ""
             identifyResult.geoElements.filter { $0 is AGSRasterCell }.forEach { cell in
-                var calloutText: String = ""
                 cell.attributes.forEach { attr in
                     calloutText.append("\(attr.key): \(attr.value)\n")
                 }
-                let xyCoordinates = "X: \(cell.geometry!.extent.xMin)\nY: \(cell.geometry!.extent.yMin)"
-                let customCallout = self.calloutStackView!
-                customCallout.attributesLabel.text = calloutText
-                customCallout.coordinatesLabel.text = xyCoordinates
-                self.mapView.callout.customView = customCallout
-                self.mapView.callout.isAccessoryButtonHidden = true
-                self.mapView.callout.show(at: self.mapView.screen(toLocation: screenPoint), screenOffset: .zero, rotateOffsetWithMap: false, animated: false)
+                xyCoordinates = String(format: "X: %.3f\nY: %.3f", cell.geometry!.extent.xMin, cell.geometry!.extent.yMin)
             }
+            let customCallout = self.calloutStackView!
+            customCallout.attributesLabel.text = calloutText
+            customCallout.coordinatesLabel.text = xyCoordinates
+            self.mapView.callout.customView = customCallout
+            self.mapView.callout.isAccessoryButtonHidden = true
+            self.mapView.callout.show(at: self.mapView.screen(toLocation: screenPoint), screenOffset: .zero, rotateOffsetWithMap: false, animated: false)
         }
     }
     

@@ -31,10 +31,38 @@
                         <viewLayoutGuide key="safeArea" id="cQH-id-UEf"/>
                     </view>
                     <connections>
+                        <outlet property="calloutStackView" destination="Wqr-jb-4el" id="iS2-bn-zE1"/>
                         <outlet property="mapView" destination="cIA-Y7-Zgc" id="Hqg-Rn-lha"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5h-DC-Dtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wqr-jb-4el" customClass="IdentifyRasterCellStackView" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="110" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaL-Yh-iw7" userLabel="Title">
+                            <rect key="frame" x="0.0" y="0.0" width="110" height="50"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UA8-ez-M5c" userLabel="Projected">
+                            <rect key="frame" x="0.0" y="50" width="110" height="50"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="UA8-ez-M5c" secondAttribute="bottom" id="dFg-83-65q"/>
+                        <constraint firstItem="RaL-Yh-iw7" firstAttribute="top" secondItem="Wqr-jb-4el" secondAttribute="top" id="ewE-gz-65Q"/>
+                        <constraint firstItem="UA8-ez-M5c" firstAttribute="top" secondItem="RaL-Yh-iw7" secondAttribute="bottom" id="zeo-eO-34X"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="C22-QJ-eot"/>
+                    <connections>
+                        <outlet property="attributesLabel" destination="RaL-Yh-iw7" id="Pns-hZ-nwv"/>
+                        <outlet property="coordinatesLabel" destination="UA8-ez-M5c" id="BAc-CP-FZ5"/>
+                    </connections>
+                </stackView>
             </objects>
             <point key="canvasLocation" x="56.521739130434788" y="114.50892857142857"/>
         </scene>

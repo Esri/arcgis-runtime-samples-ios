@@ -2,8 +2,6 @@
 
 Add, delete, and download attachments for features from a service.
 
-## How to use the sample
-
 ![Selected feature](edit-feature-attachments-1.png)
 ![List of feature attachments](edit-feature-attachments-2.png)
 

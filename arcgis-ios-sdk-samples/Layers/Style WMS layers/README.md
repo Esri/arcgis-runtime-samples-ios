@@ -16,7 +16,7 @@ Once the layer loads, tap the bottom two buttons to select a type of style.
 
 1. Create an `AGSWMSLayer` specifying the URL of the service and the layer names you want.
 2. When the layer is done loading, get its array of `AGSWMSSublayer`s.
-3. Change the current style of the `AGSWMSSublayer` to one of the styles from its `styles` array..
+3. Change the current style of the `AGSWMSSublayer` to one of the styles from its `styles` array.
 
 ## Relevant API
 

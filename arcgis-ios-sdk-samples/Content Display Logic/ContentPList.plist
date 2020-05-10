@@ -862,7 +862,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Sketch on map</string>
+				<string>Sketch on the map</string>
 				<key>storyboardName</key>
 				<string>Sketch</string>
 				<key>descriptionText</key>
@@ -1244,7 +1244,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Find service area (interactive)</string>
+				<string>Find service area interactive</string>
 				<key>storyboardName</key>
 				<string>FindServiceAreaInteractive</string>
 				<key>descriptionText</key>

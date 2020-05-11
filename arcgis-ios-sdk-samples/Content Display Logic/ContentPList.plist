@@ -1542,7 +1542,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerExtrusion</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to apply extrusion to a renderer on a feature layer</string>
+				<string>Extrude features based on their attributes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -1449,7 +1449,7 @@
 			</dict>
 			<dict>
 				<key>descriptionText</key>
-				<string>This sample shows you how to open a web scene from a portal item.</string>
+				<string>Open a web scene from a portal item.</string>
 				<key>storyboardName</key>
 				<string>OpenScene</string>
 				<key>displayName</key>

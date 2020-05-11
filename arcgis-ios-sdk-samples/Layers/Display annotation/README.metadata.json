@@ -3,7 +3,7 @@
     "description": "Display annotation from a feature service URL.",
     "ignore": false,
     "images": [
-        "display-annotation.png"
+        "DisplayAnnotation.png"
     ],
     "keywords": [
         "annotation",

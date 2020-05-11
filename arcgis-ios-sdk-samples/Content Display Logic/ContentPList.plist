@@ -1469,7 +1469,7 @@
 				<key>storyboardName</key>
 				<string>ExtrudeGraphics</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to render graphics extruded in z direction</string>
+				<string>Extrude graphics based on an attribute value.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

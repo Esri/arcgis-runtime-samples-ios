@@ -1417,7 +1417,7 @@
 				<key>storyboardName</key>
 				<string>SurfacePlacements</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to position graphics using different surface placements</string>
+				<string>Position graphics relative to a surface using different surface placement modes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

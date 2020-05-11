@@ -1441,7 +1441,7 @@
 				<key>storyboardName</key>
 				<string>Animate3DGraphic</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to animate a graphic’s position and rotation and have the camera follow it</string>
+				<string>A controller follows a graphic while the graphic&apos;s position and rotation are animated.</string>
 				<key>dependency</key>
 				<array>
 					<string>MissionFiles</string>

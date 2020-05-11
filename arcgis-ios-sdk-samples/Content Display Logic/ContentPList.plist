@@ -1493,7 +1493,7 @@
 				<key>storyboardName</key>
 				<string>SceneLayerURL</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to use a scene layer in a scene</string>
+				<string>Display an ArcGIS scene layer from a URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -3,7 +3,7 @@
   "description": "Display a composite layer of all the subtype values in a feature class.",
   "ignore": false,
   "images": [
-    "Display-subtype-feature-layer.png"
+    "display-subtype-feature-layer.png"
   ],
   "keywords": [
     "asset group",

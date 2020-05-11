@@ -1393,7 +1393,7 @@
 				<key>storyboardName</key>
 				<string>DisplayScene</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to display a scene with elevation data</string>
+				<string>Display a scene with a terrain surface and some imagery.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

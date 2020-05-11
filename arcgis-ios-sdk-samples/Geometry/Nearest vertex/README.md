@@ -2,7 +2,7 @@
 
 Find the closest vertex and coordinate of a geometry to a point.
 
-![Nearest vertex](image1.png)
+![Image of nearest vertex](nearest-vertex.png)
 
 ## Use case
 

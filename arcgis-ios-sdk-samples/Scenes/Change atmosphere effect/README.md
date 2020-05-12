@@ -15,7 +15,7 @@ Use the toolbar to select one of the three available atmosphere effects. The sky
 ## How it works
 
 1. Create an `AGSScene` and display it in an `AGSSceneView`.
-2. Change the `AGSSceneView`'s  `atmosphereEffect` property.
+2. Change the `AGSSceneView`'s `atmosphereEffect` property.
  
 ## Relevant API
 

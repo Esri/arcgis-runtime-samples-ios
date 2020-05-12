@@ -1433,7 +1433,7 @@
 				<key>storyboardName</key>
 				<string>ScenePropertiesExpressions</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to update the orientation of graphics in graphics overlay using expressions on scene properties</string>
+				<string>Update the orientation of a graphic using expressions based on its attributes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

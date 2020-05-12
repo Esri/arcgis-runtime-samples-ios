@@ -39,7 +39,7 @@ class DisplayScenesInTabletopAR: UIViewController {
 
         // Configure a starting invisible scene with a tiling scheme matching that of the scene that will be used
         arView.sceneView.scene = AGSScene(tilingScheme: .geographic)
-        arView.sceneView.scene?.baseSurface?.opacity = 0
+        arView.clippingDistance = 400
 
         // Listen for tracking state changes
         arView.arSCNViewDelegate = self
@@ -142,17 +142,17 @@ extension DisplayScenesInTabletopAR: ARSCNViewDelegate {
                 helpLabel.isHidden = true
             } else if !hasFoundPlane {
                 helpLabel.isHidden = false
-                helpLabel.text = "Keep moving your phone"
+                helpLabel.text = "Keep moving your device"
             }
         case .notAvailable:
             helpLabel.text = "Location not available"
         case .limited(let reason):
             switch reason {
             case .excessiveMotion:
-                helpLabel.text = "Try moving your phone more slowly"
+                helpLabel.text = "Try moving your device more slowly"
                 helpLabel.isHidden = false
             case .initializing:
-                helpLabel.text = "Keep moving your phone"
+                helpLabel.text = "Keep moving your device"
                 helpLabel.isHidden = false
             case .insufficientFeatures:
                 helpLabel.text = "Try turning on more lights and moving around"
@@ -181,30 +181,29 @@ extension DisplayScenesInTabletopAR: ARSCNViewDelegate {
     // MARK: - Plane visualization
     private func visualizePlane(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         // Create a custom object to visualize the plane geometry and extent.
-        if #available(iOS 11.3, *) {
-            // Place content only for anchors found by plane detection.
-            guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
 
-            let arGeometry = planeAnchor.geometry
+        // Place content only for anchors found by plane detection.
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
 
-            let arPlaneSceneGeometry = ARSCNPlaneGeometry(device: renderer.device!)
+        let arGeometry = planeAnchor.geometry
 
-            arPlaneSceneGeometry?.update(from: arGeometry)
+        let arPlaneSceneGeometry = ARSCNPlaneGeometry(device: renderer.device!)
 
-            let newNode = SCNNode(geometry: arPlaneSceneGeometry)
+        arPlaneSceneGeometry?.update(from: arGeometry)
 
-            node.addChildNode(newNode)
+        let newNode = SCNNode(geometry: arPlaneSceneGeometry)
 
-            let newMaterial = SCNMaterial()
+        node.addChildNode(newNode)
 
-            newMaterial.isDoubleSided = true
+        let newMaterial = SCNMaterial()
 
-            newMaterial.diffuse.contents = UIColor(red: 0.5, green: 0, blue: 0, alpha: 0.3)
+        newMaterial.isDoubleSided = true
 
-            arPlaneSceneGeometry?.materials = [newMaterial]
+        newMaterial.diffuse.contents = UIColor(red: 0.5, green: 0, blue: 0, alpha: 0.3)
 
-            node.geometry = arPlaneSceneGeometry
-        }
+        arPlaneSceneGeometry?.materials = [newMaterial]
+
+        node.geometry = arPlaneSceneGeometry
     }
 
     public func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
@@ -215,21 +214,20 @@ extension DisplayScenesInTabletopAR: ARSCNViewDelegate {
         }
 
         // Create a custom object to visualize the plane geometry and extent.
-        if #available(iOS 11.3, *) {
-            // Place content only for anchors found by plane detection.
-            guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        
+        // Place content only for anchors found by plane detection.
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
 
-            let arGeometry = planeAnchor.geometry
+        let arGeometry = planeAnchor.geometry
 
-            let arPlaneSceneGeometry = ARSCNPlaneGeometry(device: renderer.device!)
+        let arPlaneSceneGeometry = ARSCNPlaneGeometry(device: renderer.device!)
 
-            arPlaneSceneGeometry?.update(from: arGeometry)
+        arPlaneSceneGeometry?.update(from: arGeometry)
 
-            node.childNodes[0].geometry = arPlaneSceneGeometry
+        node.childNodes[0].geometry = arPlaneSceneGeometry
 
-            if let material = node.geometry?.materials {
-                arPlaneSceneGeometry?.materials = material
-            }
+        if let material = node.geometry?.materials {
+            arPlaneSceneGeometry?.materials = material
         }
     }
 }

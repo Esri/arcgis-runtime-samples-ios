@@ -140,7 +140,7 @@ class GenerateOfflineMapBasemapByReferenceViewController: UIViewController {
         self.generateOfflineMapJob = job
         let downloadProgressView = DownloadProgressView()
         downloadProgressView.delegate = self
-        downloadProgressView.show(withStatus: "Generating ofline map…", progress: 0)
+        downloadProgressView.show(withStatus: "Generating offline map…", progress: 0)
         downloadProgressView.observedProgress = job.progress
         self.downloadProgressView = downloadProgressView
     }

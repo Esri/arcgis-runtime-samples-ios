@@ -1534,7 +1534,7 @@
 				<key>storyboardName</key>
 				<string>TerrainExaggeration</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to use terrain exaggeration on a surface in a scene</string>
+				<string>Vertically exaggerate terrain in a scene.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -31,7 +31,7 @@ The sample loads a scene showing four points that use the individual surface pla
 
 ## About the data
 
-The scene launches with a view of Wales. Four points are shown hovering with positions defined by each of the different surface placement modes.
+The scene launches with a view of Wales, UK. Four points are shown hovering with positions defined by each of the different surface placement modes.
 
 ## Additional information
 

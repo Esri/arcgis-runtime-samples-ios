@@ -10,7 +10,7 @@ Graphics representing features can be vertically extruded to represent propertie
 
 ## How to use the sample
 
-Once the sample is launched, notice that the graphics are extruded to the level set in their height property. Pan and zoom to explore
+Once the sample is launched, notice that the graphics are extruded to the level set in their height property. Pan and zoom to explore.
 
 ## How it works
 

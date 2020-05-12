@@ -25,7 +25,7 @@ Interact with the map view or scene view by zooming or panning. The other map vi
 
 ## About the data
 
-This application provides two different perspectives of the imagery basemap. A 2D MapView as well as a 3D SceneView, displayed side by side.
+This application provides two different perspectives of the imagery basemap. A 2D map view as well as a 3D scene view, displayed side by side.
 
 ## Tags
 

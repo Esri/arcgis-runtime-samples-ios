@@ -17,7 +17,7 @@ After launching the sample, watch the integrated mesh layer load in place of the
 1. Create an `AGSScene`.
 2. Create an `AGSIntegratedMeshLayer` object with the URL to an integrated mesh layer scene service.
 3. Add the layer to the scene's operational layers collection.
-4. Create a `AGSCamera` object and set it as the viewpoint camera of the scene view.
+4. Create an `AGSCamera` object and set it as the viewpoint camera of the scene view.
 
 ## Relevant API
 
@@ -25,7 +25,7 @@ After launching the sample, watch the integrated mesh layer load in place of the
 
 ## About the data
 
-This data is derived from  point cloud data from a lidar survey. Lidar data is often of a high enough resolution to capture 3D features as small as walls and trees, but also the irregular surfaces of geological features like cliffs. An integrated mesh made from a point cloud of lidar data will include realistic textures and elevation information.
+This data is derived from point cloud data from a LiDAR survey. LiDAR data is often of a high enough resolution to capture 3D features as small as walls and trees, but also the irregular surfaces of geological features like cliffs. An integrated mesh made from a point cloud of LiDAR data will include realistic textures and elevation information.
 
 This integrated mesh depicts Little Yosemite Valley in California's Yosemite National Park, including the 3,000ft granite face of El Capitan.
 

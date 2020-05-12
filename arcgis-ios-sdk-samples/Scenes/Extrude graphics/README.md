@@ -14,13 +14,13 @@ Once the sample is launched, notice that the graphics are extruded to the level 
 
 ## How it works
 
-1. Create an `AGSScene` with a `.topographic()` basemap.
+1. Create an `AGSScene` with a `topographic()` basemap.
 2. Set the scene to an `AGSSceneView`.
 2. Create an `AGSGraphicsOverlay` and `AGSSimpleRenderer`.
-3. Set the renderer's `extrusionMode` property to `.baseHeight`.
-4. Specify the attribute name of the graphic that the extrusion mode will use by setting the renderer's `extrusionExpression` property to `"[height]"`.
+3. Set the renderer's `extrusionMode` property to `baseHeight`.
+4. Specify the attribute name of the graphic that the extrusion mode will use by setting the renderer's `extrusionExpression` property to `[height]`.
 5. Apply the renderer to the graphics overlay.
-6. Create graphics and specify the attributes with the key "height".
+6. Create graphics and specify the attributes with the key `height`.
 
 ## Relevant API
 

@@ -2,35 +2,35 @@
 
 Changes the appearance of the atmosphere in a scene.
 
-![Image](image1.png)
+![Change atmosphere effect sample](change-atmosphere-effect.png)
+
+## Use case
+
+Atmospheric effect can be used to make the scene view look more realistic.
 
 ## How to use the sample
 
-Select one of the three available atmosphere effects. The sky will change to display the selected atmosphere effect. 
+Use the toolbar to select one of the three available atmosphere effects. The sky will change to display the selected atmosphere effect. 
 
 ## How it works
 
-To change the atmosphere effect:
-
-1. Create an `AGSScene` and display it in a `AGSSceneView`.
-2. Change the atmosphere effect by setting the `atmosphereEffect` property of the scene view with the desired `AGSAtmosphereEffect`.
+1. Create an `AGSScene` and display it in an `AGSSceneView`.
+2. Change the `AGSSceneView`'s  `atmosphereEffect` property.
  
 ## Relevant API
-- `AGSScene`
-- `AGSSurface`
-- `AGSArcGISTiledElevationSource`
-- `AGSCamera`
-- `AGSSceneView`
-- `AGSAtmosphereEffect`
 
-## Additional Information
+* AGSAtmosphereEffect
+* AGSScene
+* AGSSceneView
+
+## Additional information
 
 There are three atmosphere effect options:
 
-- **None**: No atmosphere effect. The sky is rendered black with a starfield consisting of randomly placed white dots.
-- **Horizon only**: Atmosphere effect applied to the sky (horizon) only.
-- **Realistic**: Atmosphere effect applied to both the sky and the surface as viewed from above. 
+* **Realistic** - A realistic atmosphere effect is applied over the entire surface.
+* **Horizon only** - Atmosphere effect applied to the sky (horizon) only.
+* **None** - No atmosphere effect. The sky is rendered black with a starfield consisting of randomly placed white dots.
 
 ## Tags
 
-3D, Atmosphere Effect, Scene 
+atmosphere, horizon, sky

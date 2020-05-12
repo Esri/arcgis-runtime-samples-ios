@@ -15,7 +15,7 @@ Pan around the scene and zoom in. Notice how many thousands of additional featur
 ## How it works
 
 1. Create an `AGSScene`.
-2. Create an `AGSArcGISSceneLayer` object with the URL to an point scene layer service.
+2. Create an `AGSArcGISSceneLayer` object with the URL to a point scene layer service.
 3. Add the layer to the scene's operational layers collection.
 
 ## Relevant API

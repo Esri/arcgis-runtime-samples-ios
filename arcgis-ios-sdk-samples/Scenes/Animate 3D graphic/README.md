@@ -11,6 +11,7 @@ Visualize movement through a 3D landscape.
 ## How to use the sample
 
 Tap the bottom buttons to adjust settings for the animation:
+
 * Mission: change the flight path, speed, and view progress
 * Play/Pause: toggle the animation
 * Stats: view the attributes of the animation
@@ -44,7 +45,8 @@ Tap the bottom buttons to adjust settings for the animation:
 
 ## Offline data
 
-This sample uses the following data which are all downloaded from ArcGIS Online automatically: 
+This sample uses the following data which are all downloaded from ArcGIS Online automatically:
+
 * [Model Marker Symbol Data](https://www.arcgis.com/home/item.html?id=681d6f7694644709a7c830ec57a2d72b)
 * [GrandCanyon.csv mission data](https://www.arcgis.com/home/item.html?id=290f0c571c394461a8b58b6775d0bd63)
 * [Hawaii.csv mission data](https://www.arcgis.com/home/item.html?id=e87c154fb9c2487f999143df5b08e9b1)

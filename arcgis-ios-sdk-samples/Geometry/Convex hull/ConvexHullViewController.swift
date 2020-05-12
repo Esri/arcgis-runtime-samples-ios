@@ -70,7 +70,7 @@ class ConvexHullViewController: UIViewController {
             default:
                 symbol = fillSymbol
             }
-            // remove the existing graphic for convex hull if there is one
+            // Remove the existing graphic for convex hull if there is one.
             if let existingGraphic = convexHullGraphic {
                 graphicsOverlay.graphics.remove(existingGraphic)
             }

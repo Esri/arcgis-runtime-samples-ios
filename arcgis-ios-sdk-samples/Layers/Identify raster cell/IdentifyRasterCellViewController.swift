@@ -44,9 +44,14 @@ class IdentifyRasterCellViewController: UIViewController {
         return map
     }
     
-    func identifyPixel(screenPoint: CGPoint) {
+    func identifyPixel(at screenPoint: CGPoint, offset: CGPoint = .zero) {
         mapView.identifyLayer(rasterLayer, screenPoint: screenPoint, tolerance: 1.0, returnPopupsOnly: false) { [weak self] identifyResult in
             guard let self = self else { return }
+            if identifyResult.geoElements.isEmpty {
+                // If there are no geoelements identified, e.g. not on a raster layer, dismiss the callout.
+                self.mapView.callout.dismiss()
+                return
+            }
             var calloutText: String = ""
             var xyCoordinates: String = ""
             identifyResult.geoElements.filter { $0 is AGSRasterCell }.forEach { cell in
@@ -60,7 +65,7 @@ class IdentifyRasterCellViewController: UIViewController {
             customCallout.coordinatesLabel.text = xyCoordinates
             self.mapView.callout.customView = customCallout
             self.mapView.callout.isAccessoryButtonHidden = true
-            self.mapView.callout.show(at: self.mapView.screen(toLocation: screenPoint), screenOffset: .zero, rotateOffsetWithMap: false, animated: false)
+            self.mapView.callout.show(at: self.mapView.screen(toLocation: screenPoint), screenOffset: offset, rotateOffsetWithMap: false, animated: false)
         }
     }
     
@@ -91,11 +96,10 @@ extension IdentifyRasterCellViewController: AGSGeoViewTouchDelegate {
     }
     
     func geoView(_ geoView: AGSGeoView, didTouchUpAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        identifyPixel(screenPoint: screenPoint)
+        identifyPixel(at: screenPoint)
     }
     
     func geoView(_ geoView: AGSGeoView, didTouchDragToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        let offset = CGFloat(50)
-        identifyPixel(screenPoint: CGPoint(x: screenPoint.x, y: screenPoint.y - offset))
+        identifyPixel(at: screenPoint, offset: CGPoint(x: 0, y: -50))
     }
 }

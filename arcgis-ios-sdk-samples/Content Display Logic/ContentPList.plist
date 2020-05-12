@@ -1454,7 +1454,7 @@
 				<key>storyboardName</key>
 				<string>DistanceCompositeSymbol</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.</string>
+				<string>Change a graphic&apos;s symbol based on the camera&apos;s proximity to it.</string>
 				<key>dependency</key>
 				<array>
 					<string>Bristol3DModel</string>

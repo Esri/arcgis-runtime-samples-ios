@@ -1,21 +1,31 @@
 # Distance composite symbol
 
-Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.
+Change a graphic's symbol based on the camera's proximity to it.
 
-# How to use the sample
+![Distance composite symbol sample](distance-composite-symbol.gif)
 
-The symbol of graphic will change while zooming in or out.
-![](DistanceCompositeSymbol.gif)
+## Use case
+
+When showing dense datasets, it is beneficial to reduce the detail of individual points when zooming out to avoid visual clutter and to avoid data points overlapping and obscuring each other.
+
+## How to use the sample
+
+The sample starts looking at a plane. Zoom out from the plane to see it turn into a cone. Keeping zooming out and it will turn into a point.
 
 ## How it works
 
-<ol>
-  <li>Create an <code>AGSGraphicsOverlay</code> and add it to the <code>AGSSceneView</code>.</li>
-  <li>Create symbols for each <code>AGSRange</code> the composite symbol.</li>
-  <li>Create a distance composite scene symbol.</li>
-  <li>Add a range for each symbol to <code>distanceCompositeSceneSymbol.ranges.append(AGSDistanceSymbolRange(symbol:minDistance:maxDistance:))</code>.
-    <ul><li>symbol, symbol to be used within the min/max range that is given</li>
-      <li>min/max distance, the minimum and maximum distance that the symbol will be displayed from the <code>AGSCamera</code></li></ul></li>
-  <li>Create a <code>AGSGraphic</code> with the symbol: <code>AGSGraphic(geometry:symbol:attributes:)</code></li>
-  <li>Add the graphic to the graphics overlay.</li>
-</ol>
+1. Create an `AGSGraphicsOverlay` object and add it to an `AGSSceneView` object.
+2. Create an `AGSDistanceCompositeSceneSymbol` object.
+3. Create `AGSDistanceSymbolRange` objects specifying an `AGSSymbol` and the min and max distance within which the symbol should be visible.
+4. Add the ranges to the range collection of the distance composite scene symbol.
+5. Create an `AGSGraphic` object with the distance composite scene symbol at a location and add it to the graphics overlay.
+
+## Relevant API
+
+* AGSDistanceCompositeSceneSymbol
+* AGSDistanceSymbolRange
+* AGSOrbitGeoElementCameraController
+
+## Tags
+
+3D, data, graphic

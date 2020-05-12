@@ -17,7 +17,7 @@ After launching the sample, watch the integrated mesh layer load in place of the
 1. Create an `AGSScene`.
 2. Create an `AGSIntegratedMeshLayer` object with the URL to an integrated mesh layer scene service.
 3. Add the layer to the scene's operational layers collection.
-4. Create a `AGSCamera` object and set it as the viewpoint camera of the scene view.
+4. Create an `AGSCamera` object and set it as the viewpoint camera of the scene view.
 
 ## Relevant API
 

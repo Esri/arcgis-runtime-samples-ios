@@ -2,7 +2,7 @@
 
 Change a graphic's symbol based on the camera's proximity to it.
 
-![Distance composite symbol sample](distance-composite-symbol.gif)
+![Distance composite symbol sample](distance-composite-symbol.png)
 
 ## Use case
 

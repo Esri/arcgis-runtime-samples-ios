@@ -1,6 +1,6 @@
 # Change atmosphere effect
 
-Changes the appearance of the atmosphere in a scene.
+Change the appearance of the atmosphere in a scene.
 
 ![Change atmosphere effect sample](change-atmosphere-effect.png)
 

@@ -1490,7 +1490,7 @@
 				<key>storyboardName</key>
 				<string>SyncMapAndSceneViews</string>
 				<key>descriptionText</key>
-				<string>Keep the view points of two views (e.g. MapView and SceneView) synchronized with each other.</string>
+				<string>Keep the view points of two views (e.g. map view and scene view) synchronized with each other.</string>
 			</dict>
 			<dict>
 				<key>descriptionText</key>
@@ -1540,7 +1540,7 @@
 				<key>displayName</key>
 				<string>Open mobile scene (scene package)</string>
 				<key>descriptionText</key>
-				<string>Opens and displays a scene from a Mobile Scene Package (.mspk).</string>
+				<string>Opens and displays a scene from a mobile scene package (.mspk).</string>
 				<key>storyboardName</key>
 				<string>OpenMobileScene</string>
 				<key>dependency</key>

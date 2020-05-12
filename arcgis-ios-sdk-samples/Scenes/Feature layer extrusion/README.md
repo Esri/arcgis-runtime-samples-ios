@@ -16,9 +16,9 @@ Tap the bottom buttons to switch between using population density and total popu
 
 1. Create an `AGSServiceFeatureTable` from a URL.
 2. Create an `AGSFeatureLayer` from the service feature table.
-* Make sure to set the `renderingMode` property to `.dynamic`.
+    * Make sure to set the `renderingMode` property to `dynamic`.
 3. Apply an `AGSSimpleRenderer` to the feature layer.
-4. Set the renderer's `extrusionMode` property to `.absoluteHeight`.
+4. Set the renderer's `extrusionMode` property to `absoluteHeight`.
 5. Set the renderer's `extrusionExpression` property to `"[POP2007]/ 10"`.
 
 ## Relevant API

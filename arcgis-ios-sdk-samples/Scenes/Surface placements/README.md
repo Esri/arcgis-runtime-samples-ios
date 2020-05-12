@@ -18,7 +18,7 @@ The sample loads a scene showing four points that use the individual surface pla
     * `absolute`, position graphic using only its Z value.
     * `relative`, position graphic using its Z value plus the elevation of the surface.
     * `drapedBillboarded`, position graphic upright on the surface and always facing the camera, not using its z value.
-2. Add graphics to the graphics overlay using the  `addObjects(from:)` method.
+2. Add graphics to the graphics overlay using the `addObjects(from:)` method.
 3. Add each graphics overlay to the scene view.
 
 ## Relevant API

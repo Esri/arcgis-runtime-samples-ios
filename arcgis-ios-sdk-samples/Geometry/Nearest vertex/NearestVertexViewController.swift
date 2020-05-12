@@ -24,7 +24,7 @@ class NearestVertexViewController: UIViewController {
     /// The symbology for the example polygon area.
     let polygonFillSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .green, outline: AGSSimpleLineSymbol(style: .solid, color: .green, width: 2))
     
-    /// The graphics overlay for the polygon and points..
+    /// The graphics overlay for the polygon and points.
     let graphicsOverlay = AGSGraphicsOverlay()
     
     /// A formatter to convert units for distance.

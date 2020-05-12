@@ -5,7 +5,7 @@ Opens and displays a scene from a Mobile Scene Package (.mspk).
 An .mspk file is an archive containing the data (specifically, basemaps and features), used to display an offline 3D scene.
 A mobile scene package can also be unpacked to a directory to allow read support for certain data types.
 
-![Screenshot](image1.png)
+![Open mobile scene (scene package) sample](open-mobile-scene-package.png)
 
 ## How to use the sample
 
@@ -24,15 +24,15 @@ This sample takes a Mobile Scene Package that was created in ArcGIS Pro, and dis
 
 ## Relevant API
 
-- `AGSMobileScenePackage`
-- `AGSSceneView`
+* AGSMobileScenePackage
+* AGSSceneView
 
 ## About the data
 
-This mobile scene package was authored with ArcGIS Pro. The package will be downloaded from ArcGIS Online automatically when needed at build time.
+This mobile scene package was authored with ArcGIS Pro. It is downloaded from ArcGIS Online automatically.
 	
-- [Item on ArcGIS Online](https://www.arcgis.com/home/item.html?id=7dd2f97bb007466ea939160d0de96a9d)
+[This item is available on ArcGIS Online](https://www.arcgis.com/home/item.html?id=7dd2f97bb007466ea939160d0de96a9d)
 
 ## Tags
 
-Offline, Scene
+offline, scene

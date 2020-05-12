@@ -16,7 +16,7 @@ When the scene loads, note the different types of 3D symbols that you can create
 
 1. Create an `AGSScene` and an `AGSSurface`.
 2. Add an `AGSArcGISTiledElevationSource` to the surface and apply it to the scene.
-3. Create am `AGSGraphicsOverlay`.
+3. Create an `AGSGraphicsOverlay`.
 4. Create various `AGSSimpleMarkerSceneSymbol`s by specifying different styles and colors, and a height, width, depth, and anchor position of each.
 5. Create an `AGSGraphic` for each symbol.
 6. Add the graphics to the graphics overlay.

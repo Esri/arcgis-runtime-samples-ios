@@ -2,7 +2,7 @@
 
 Open a web scene from a portal item.
 
-![Image of open a scene portal item](OpenScenePortalItem.png)
+![Image of open a scene portal item](open-scene-portal-item.png)
 
 ## Use case
 

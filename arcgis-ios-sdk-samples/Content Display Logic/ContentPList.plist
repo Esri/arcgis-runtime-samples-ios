@@ -1482,7 +1482,7 @@
 				<key>storyboardName</key>
 				<string>SceneLayerSelection</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to identify geoelements in a scene layer.</string>
+				<string>Identify features in a scene to select.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

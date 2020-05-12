@@ -1494,7 +1494,7 @@
 			</dict>
 			<dict>
 				<key>descriptionText</key>
-				<string>Changes the appearance of the atmosphere in a scene.</string>
+				<string>Change the appearance of the atmosphere in a scene.</string>
 				<key>storyboardName</key>
 				<string>ChangeAtmosphereEffect</string>
 				<key>displayName</key>

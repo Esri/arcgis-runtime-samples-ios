@@ -15,7 +15,7 @@ Tap on a building in the scene layer to select it. Deselect buildings by tapping
 ## How it works
 
 1. Create an `AGSArcGISSceneLayer` passing in the URL to a scene layer service.
-2. Use a `AGSGeoViewTouchDelegate` to get the screen tapped location.
+2. Use the `AGSGeoViewTouchDelegate` to get the screen tapped location.
 3. Use `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)` to identify features in the scene.
 4. From the resulting `AGSIdentifyLayerResult`, get the list of identified `AGSGeoElement`s.
 5. Get the first `AGSFeature` in the list and use `AGSArcGISSceneLayer.select(_:)` to select it.

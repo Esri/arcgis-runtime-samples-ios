@@ -1590,7 +1590,7 @@
 				<key>storyboardName</key>
 				<string>AddPointSceneLayer</string>
 				<key>descriptionText</key>
-				<string>View a point scene layer from a scene service</string>
+				<string>View a point scene layer from a scene service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

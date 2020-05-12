@@ -1,22 +1,26 @@
 # Add a point scene layer
 
-View a point scene layer from a scene service
+View a point scene layer from a scene service.
 
-![Screenshot](image1.png)
+![Add a point scene layer sample](add-point-scene.png)
 
 ## Use case
 
 Point scene layers can efficiently display large amounts of point features. While point cloud layers can only display simple symbols, point scene layers can display any type of billboard symbol or even 3D models, as long as the location of the symbol can be described by a point. Points are cached and automatically thinned when zoomed out to improve performance.
 
+## How to use the sample
+
+Pan around the scene and zoom in. Notice how many thousands of additional features appear at each successive zoom scale.
+
 ## How it works
 
-1. Create a scene.
+1. Create an `AGSScene`.
 2. Create an `AGSArcGISSceneLayer` object with the URL to an point scene layer service.
 3. Add the layer to the scene's operational layers collection.
 
 ## Relevant API
 
-- `AGSArcGISSceneLayer`
+* AGSArcGISSceneLayer
 
 ## About the data
 

@@ -1,25 +1,32 @@
 # Sync map and scene views
 
-This sample demonstrates how to keep the viewpoints of multiple map or scene views in sync, so that navigating one view immediately updates the others.
+Keep the view points of two views (e.g. MapView and SceneView) synchronized with each other.
 
-![](image1.png)
+![Sync map and scene views sample](sync-map-scene.png)
+
+## Use case
+
+You might need to synchronize GeoView viewpoints if you had two map views in one application - a main map and an inset. An inset map view could display all the layers at their full extent and contain a hollow rectangular graphic that represents the visible extent of the main map view. As you zoom or pan in the main map view, the extent graphic in the inset map would adjust accordingly.
 
 ## How to use the sample
 
-Pan, zoom, and rotate the map or scene view. The other view will update automatically to match your navigation. Note that maps are 2D while scenes are 3D, so the results may not look identical, but the centers and scales will be kept the same.
+Interact with the map view or scene view by zooming or panning. The other map view or scene view will automatically focus on the same viewpoint.
 
 ## How it works
 
-`AGSGeoView`, the common ancestor class of both `AGSMapView` and `AGSSceneView`, has a property `viewpointChangeHandler`. This is a closure called each time the viewpoint updates. Inside this closure we get the viewpoint of the sender by calling `currentViewpoint(with:)` with `AGSViewPointType.centerAndScale`. We then pass that viewpoint into `setViewpoint(_:)` on the other view, thus synchronizing all the views.
+1. Add `viewpointChangedHandler`s to both an `AGSMapView` and an `AGSSceneView`.
+2. Track the user's `AGSViewpoint` and set that to each of the `AGSGeoView`s' viewpoints using `AGSGeoView.setViewpoint(_:)`
 
 ## Relevant API
 
-- `AGSGeoView`
-- `AGSGeoView.viewpointChangeHandler`
-- `AGSGeoView.isNavigating`
-- `AGSGeoView.currentViewpoint(with:)`
-- `AGSGeoView.setViewpoint(_:)`
+* AGSGeoView
+* AGSMapView
+* AGSSceneView
+
+## About the data
+
+This application provides two different perspectives of the Imagery basemap. A 2D MapView as well as a 3D SceneView, displayed side by side.
 
 ## Tags
 
-maps, scenes, viewpoints, synchronization
+3D, automatic refresh, event, event handler, events, extent, interaction, interactions, pan, sync, synchronize, zoom

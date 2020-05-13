@@ -30,7 +30,7 @@ class IdentifyRasterCellViewController: UIViewController {
     }
     
     /// The raster layer created using local raster file.
-    let rasterLayer = AGSRasterLayer(raster: AGSRaster(name: "NDVIRaster", extension: "tif"))
+    let rasterLayer = AGSRasterLayer(raster: AGSRaster(name: "SA_EVI_8Day_03May20", extension: "tif"))
     
     // MARK: Initialize map and utility network
     
@@ -39,7 +39,7 @@ class IdentifyRasterCellViewController: UIViewController {
     /// - Parameter layers: The feature layers for the utility network.
     /// - Returns: An `AGSMap` object.
     func makeMap() -> AGSMap {
-        let map = AGSMap(basemap: .oceans())
+        let map = AGSMap(basemapType: .oceans, latitude: -33.9, longitude: 18.6, levelOfDetail: 9)
         map.operationalLayers.add(rasterLayer)
         return map
     }
@@ -78,12 +78,10 @@ class IdentifyRasterCellViewController: UIViewController {
         // Set map view's viewpoint to the raster layer's full extent
         rasterLayer.load { [weak self] (error) in
             guard let self = self else { return }
-            if let error = error {
-               self.presentAlert(error: error)
-            } else {
-                if let center = self.rasterLayer.fullExtent?.center {
-                    self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 80000))
-                }
+            if let center = self.rasterLayer.fullExtent?.center {
+                self.mapView.setViewpointCenter(center)
+            } else if let error = error {
+                self.presentAlert(error: error)
             }
         }
     }

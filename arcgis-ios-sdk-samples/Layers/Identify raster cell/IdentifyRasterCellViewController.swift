@@ -30,7 +30,7 @@ class IdentifyRasterCellViewController: UIViewController {
     }
     
     /// The raster layer created using local raster file.
-    let rasterLayer = AGSRasterLayer(raster: AGSRaster(name: "Shasta", extension: "tif"))
+    let rasterLayer = AGSRasterLayer(raster: AGSRaster(name: "NDVIRaster", extension: "tif"))
     
     // MARK: Initialize map and utility network
     

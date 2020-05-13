@@ -325,7 +325,7 @@
 				<string>Apply a colormap renderer to a raster.</string>
 				<key>dependency</key>
 				<array>
-					<string>ShastaBWRaster</string>
+					<string>NDVIRaster</string>
 				</array>
 			</dict>
 			<dict>

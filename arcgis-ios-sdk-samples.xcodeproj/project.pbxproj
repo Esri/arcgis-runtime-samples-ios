@@ -12,6 +12,10 @@
 		00ADC3CF2464DD2B00A3B88D /* IdentifyRasterCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */; };
 		00ADC3D12464DD3600A3B88D /* IdentifyRasterCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
 		00ADC3D22464DDA200A3B88D /* IdentifyRasterCellViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
+		00C6D420246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 00C6D32A246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.ovr */; settings = {ASSET_TAGS = (NDVIRaster, ); }; };
+		00C6D421246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 00C6D32B246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.aux.xml */; settings = {ASSET_TAGS = (NDVIRaster, ); }; };
+		00C6D422246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tif in Resources */ = {isa = PBXBuildFile; fileRef = 00C6D32C246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif */; settings = {ASSET_TAGS = (NDVIRaster, ); }; };
+		00C6D423246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 00C6D32D246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tfw */; settings = {ASSET_TAGS = (NDVIRaster, ); }; };
 		00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
@@ -1122,6 +1126,10 @@
 		00AB17332466227D0033A047 /* IdentifyRasterCellStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyRasterCellStackView.swift; sourceTree = "<group>"; };
 		00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyRasterCell.storyboard; sourceTree = "<group>"; };
 		00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyRasterCellViewController.swift; sourceTree = "<group>"; };
+		00C6D32A246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = SA_EVI_8Day_03May20.tif.ovr; sourceTree = "<group>"; };
+		00C6D32B246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.aux.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SA_EVI_8Day_03May20.tif.aux.xml; sourceTree = "<group>"; };
+		00C6D32C246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SA_EVI_8Day_03May20.tif; sourceTree = "<group>"; };
+		00C6D32D246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tfw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SA_EVI_8Day_03May20.tfw; sourceTree = "<group>"; };
 		00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
 		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
@@ -1711,6 +1719,25 @@
 				00AB17332466227D0033A047 /* IdentifyRasterCellStackView.swift */,
 			);
 			path = "Identify raster cell";
+			sourceTree = "<group>";
+		};
+		00C6D328246CA8FC00C63EAF /* Archives */ = {
+			isa = PBXGroup;
+			children = (
+				00C6D329246CA8FC00C63EAF /* SA_EVI_8Day_03May20 */,
+			);
+			path = Archives;
+			sourceTree = "<group>";
+		};
+		00C6D329246CA8FC00C63EAF /* SA_EVI_8Day_03May20 */ = {
+			isa = PBXGroup;
+			children = (
+				00C6D32A246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.ovr */,
+				00C6D32B246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.aux.xml */,
+				00C6D32C246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif */,
+				00C6D32D246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tfw */,
+			);
+			path = SA_EVI_8Day_03May20;
 			sourceTree = "<group>";
 		};
 		00D4E8D8241AA18E002689DB /* Convex hull */ = {
@@ -3626,6 +3653,7 @@
 		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
 			isa = PBXGroup;
 			children = (
+				00C6D328246CA8FC00C63EAF /* Archives */,
 				4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */,
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
 				F1679F0422D93FA900E5320A /* Rasters */,
@@ -4314,6 +4342,7 @@
 					MobileMapPackages,
 					MontereyElevation,
 					MontereyElevationRaster,
+					NDVIRaster,
 					PublicArtShapefile,
 					Restaurant,
 					SRTMRaster,
@@ -4409,6 +4438,7 @@
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,
 				3EA15C751ED89EAE00B1F816 /* ChangeSublayerRenderer.storyboard in Resources */,
 				3ED028731B8E3A8500ACA70D /* MapViewDrawStatus.storyboard in Resources */,
+				00C6D422246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tif in Resources */,
 				3ED028881B8E3A8500ACA70D /* OpenMapURL.storyboard in Resources */,
 				09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */,
 				4C0CBFFD22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard in Resources */,
@@ -4452,6 +4482,7 @@
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
 				3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */,
 				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
+				00C6D420246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tif.ovr in Resources */,
 				3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */,
 				123AC27D20E58CFA0026A7D6 /* GeodesicOperations.storyboard in Resources */,
 				940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */,
@@ -4555,6 +4586,7 @@
 				3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */,
 				4C783F422252DBAC00609B9C /* philadelphia.mspk in Resources */,
 				F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */,
+				00C6D421246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tif.aux.xml in Resources */,
 				00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */,
 				4CCA30CF22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard in Resources */,
 				3E4B05F81B39EF250072E514 /* SVProgressHUD.bundle in Resources */,
@@ -4666,6 +4698,7 @@
 				4C0F27B12152CA2400496666 /* IdentifyKMLFeatures.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* UpdateAttributes.storyboard in Resources */,
 				3ECCFE3B1BD0401A00CE256D /* LayerStatus.storyboard in Resources */,
+				00C6D423246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tfw in Resources */,
 				3ED028831B8E3A8500ACA70D /* MapRotation.storyboard in Resources */,
 				4C1EF2D3221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.xib in Resources */,
 			);

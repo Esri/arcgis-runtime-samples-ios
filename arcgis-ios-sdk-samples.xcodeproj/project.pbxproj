@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
-		00ADC2C62464D43700A3B88D /* PacificSouthWest.zip in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC1D32464D43600A3B88D /* PacificSouthWest.zip */; settings = {ASSET_TAGS = (PacificSouthWest, ); }; };
 		00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */; };
 		00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
-		00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3C22464D59200A3B88D /* PacificSouthWest */; };
+		00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3C22464D59200A3B88D /* PacificSouthWest */; settings = {ASSET_TAGS = (PacificSouthWest, ); }; };
 		00ADC3C42464D64F00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
 		00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
@@ -1120,7 +1119,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00ADC1D32464D43600A3B88D /* PacificSouthWest.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = PacificSouthWest.zip; sourceTree = "<group>"; };
 		00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnimateImagesWithImageOverlay.storyboard; sourceTree = "<group>"; };
 		00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateImagesWithImageOverlayViewController.swift; sourceTree = "<group>"; };
 		00ADC3C22464D59200A3B88D /* PacificSouthWest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PacificSouthWest; sourceTree = "<group>"; };
@@ -1709,7 +1707,6 @@
 			isa = PBXGroup;
 			children = (
 				00ADC3C22464D59200A3B88D /* PacificSouthWest */,
-				00ADC1D32464D43600A3B88D /* PacificSouthWest.zip */,
 			);
 			path = Archives;
 			sourceTree = "<group>";
@@ -4668,7 +4665,6 @@
 				4CAC91D92242AAEA00663A10 /* LoadWFSWithXMLQuery.storyboard in Resources */,
 				3ED028B21B8E3A9800ACA70D /* TLUsingURL.storyboard in Resources */,
 				00DAE5E024213D6B00D51281 /* CustomDictionaryStyle.storyboard in Resources */,
-				00ADC2C62464D43700A3B88D /* PacificSouthWest.zip in Resources */,
 				3E0B584D1E36BCCD00951767 /* AnalyzeHotspots.storyboard in Resources */,
 				D9E2E76420EEB8FF001D0AE0 /* Public_Art.shp in Resources */,
 				127D29F8200EC5FC00DD6CDC /* ViewshedLocation.storyboard in Resources */,

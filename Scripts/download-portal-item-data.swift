@@ -138,7 +138,7 @@ func downloadFile(at sourceURL: URL, destinationURLProvider: URLProvider, comple
                 if isArchive {
                     let fileCount = try countFilesInArchive(at: temporaryURL)
                     print("File count in the archive is \(fileCount)")
-                    extractURL = downloadURL.deletingLastPathComponent()
+                    extractURL = destinationURLProvider.makeSubFolderForArchive(folderName: (suggestedFilename as NSString).deletingPathExtension)
                 }
                 
                 try FileManager.default.createDirectory(at: downloadURL.deletingLastPathComponent(), withIntermediateDirectories: true)
@@ -149,9 +149,10 @@ func downloadFile(at sourceURL: URL, destinationURLProvider: URLProvider, comple
                 
                 if isArchive {
                     try uncompressArchive(at: temporaryURL, to: extractURL!)
+                } else {
+                    try FileManager.default.moveItem(at: temporaryURL, to: downloadURL)
                 }
-                try FileManager.default.moveItem(at: temporaryURL, to: downloadURL)
-
+                
                 completion(.success(downloadURL))
             } catch {
                 completion(.failure(error))
@@ -238,8 +239,9 @@ portalItems.forEach { (portalURLString, portalItems) in
         
         // Check if it is a non-archive single file.
         let isFileExist: Bool = FileManager.default.fileExists(atPath: destinationURLProvider.makeURL(filename: filename).path)
-
-        // Check if there is a sub-folder for the corresponding archive, and the sub-folder is empty or not
+        
+        // Check if there is a sub-folder for the corresponding archive, and the sub-folder is empty or not.
+        // The corresponding sub-folder has the same name as the archive, but without the extension.
         let subFolderURL = destinationURLProvider.makeSubFolderForArchive(folderName: (filename as NSString).deletingPathExtension)
         let paths = try? FileManager.default.contentsOfDirectory(
             at: subFolderURL,
@@ -251,7 +253,7 @@ portalItems.forEach { (portalURLString, portalItems) in
         /// nil: the folder does not exist or not accessible
         let isEmptySubFolder = paths?.isEmpty
         
-        if isFileExist && isEmptySubFolder != nil && !isEmptySubFolder! {
+        if isEmptySubFolder != nil && !isEmptySubFolder! {
             // One exception to this case is that the content in the folder is changed. There is no way to detect that
             // unless we keep track of each extracted file in the .downloaded_items dictionary.
             print("Item \(portalItem.identifier) has already been downloaded, and is extracted to an folder")

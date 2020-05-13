@@ -104,7 +104,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     /// - Parameter completion: If it loads successfully, enable the UI components in the completion closure.
     func loadImageURLs(completion: () -> Void) {
         // The images need to be added to the project with folder reference.
-        guard let pacificSouthWestURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") else {
+        guard let pacificSouthWestURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest/PacificSouthWest") else {
             return
         }
         // Sort the image URLs by their relative pathnames.

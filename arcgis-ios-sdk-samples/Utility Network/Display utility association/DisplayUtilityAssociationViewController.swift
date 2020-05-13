@@ -56,26 +56,7 @@ class DisplayUtilityAssociationVC: UIViewController {
                 let attachmentValue = AGSUniqueValue(description: "Attachment", label: "", symbol: self.attachmentSymbol, values: [AGSUtilityAssociationType.attachment])
                 let connectivityValue = AGSUniqueValue(description: "Connectivity", label: "", symbol: self.connectivitySymbol, values: [AGSUtilityAssociationType.connectivity])
                 self.associationsOverlay.renderer = AGSUniqueValueRenderer(fieldNames: ["AssociationType"], uniqueValues: [attachmentValue, connectivityValue], defaultLabel: "", defaultSymbol: nil)
-                
-                // Populate the legened.
-                self.attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
-                    guard let self = self else { return }
-                    if let error = error {
-                        print("Error creating swatch: \(error)")
-                    } else {
-                        self.attachmentBBI.image = image?.withRenderingMode(.alwaysOriginal)
-                        self.toolbar.items?.insert(self.attachmentBBI, at: 0)
-                    }
-                }
-                self.connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
-                    guard let self = self else { return }
-                    if let error = error {
-                        print("Error creating swatch: \(error)")
-                    } else {
-                        self.connectivityBBI.image = image?.withRenderingMode(.alwaysOriginal)
-                        self.toolbar.items?.insert(self.connectivityBBI, at: 4)
-                    }
-                }
+                self.createSwatches()
                 self.addAssociationGraphics()
                 self.mapViewDidChange()
             }
@@ -119,6 +100,37 @@ class DisplayUtilityAssociationVC: UIViewController {
                     self.associationsOverlay.graphics.addObjects(from: graphics)
                 }
             }
+        }
+    }
+    
+    func createSwatches() {
+        let swatchGroup = DispatchGroup()
+        var attachmentImage = UIImage()
+        var connectivityImage = UIImage()
+        
+        swatchGroup.enter()
+
+        // Populate the legened.
+        self.attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+            if let error = error {
+                print("Error creating swatch: \(error)")
+            } else if let image = image {
+                attachmentImage = image.withRenderingMode(.alwaysOriginal)
+            }
+        }
+        self.connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+            if let error = error {
+                print("Error creating swatch: \(error)")
+            } else if let image = image {
+                connectivityImage = image.withRenderingMode(.alwaysOriginal)
+            }
+        }
+        swatchGroup.leave()
+        swatchGroup.notify(queue: .main) {
+            let attachmentBBI = UIBarButtonItem(image: attachmentImage, style: .plain, target: nil, action: nil)
+            let connectivityBBI = UIBarButtonItem(image: connectivityImage, style: .plain, target: nil, action: nil)
+            self.toolbar.items?.insert(attachmentBBI, at: 0)
+            self.toolbar.items?.insert(connectivityBBI, at: 4)
         }
     }
     

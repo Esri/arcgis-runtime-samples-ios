@@ -56,6 +56,7 @@ class DisplayUtilityAssociationVC: UIViewController {
                 let attachmentValue = AGSUniqueValue(description: "Attachment", label: "", symbol: self.attachmentSymbol, values: [AGSUtilityAssociationType.attachment])
                 let connectivityValue = AGSUniqueValue(description: "Connectivity", label: "", symbol: self.connectivitySymbol, values: [AGSUtilityAssociationType.connectivity])
                 self.associationsOverlay.renderer = AGSUniqueValueRenderer(fieldNames: ["AssociationType"], uniqueValues: [attachmentValue, connectivityValue], defaultLabel: "", defaultSymbol: nil)
+                
                 self.createSwatches()
                 self.addAssociationGraphics()
                 self.mapViewDidChange()
@@ -103,44 +104,44 @@ class DisplayUtilityAssociationVC: UIViewController {
         }
     }
     
+    // Populate the legend.
     func createSwatches() {
-        let swatchGroup = DispatchGroup()
-        var attachmentImage = UIImage()
-        var connectivityImage = UIImage()
-        
-        swatchGroup.enter()
-
-        // Populate the legened.
-        self.attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
-            if let error = error {
-                print("Error creating swatch: \(error)")
-            } else if let image = image {
-                attachmentImage = image.withRenderingMode(.alwaysOriginal)
-            }
-        }
-        self.connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
-            if let error = error {
-                print("Error creating swatch: \(error)")
-            } else if let image = image {
-                connectivityImage = image.withRenderingMode(.alwaysOriginal)
-            }
-        }
-        swatchGroup.leave()
-        swatchGroup.notify(queue: .main) {
-            let attachmentBBI = UIBarButtonItem(image: attachmentImage, style: .plain, target: nil, action: nil)
-            let connectivityBBI = UIBarButtonItem(image: connectivityImage, style: .plain, target: nil, action: nil)
-            self.toolbar.items?.insert(attachmentBBI, at: 0)
-            self.toolbar.items?.insert(connectivityBBI, at: 4)
-        }
+       let swatchGroup = DispatchGroup()
+       var attachmentImage: UIImage?
+       var connectivityImage: UIImage?
+       swatchGroup.enter()
+       attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+           defer { swatchGroup.leave() }
+           if let error = error {
+               print("Error creating swatch: \(error)")
+           } else if let image = image {
+               attachmentImage = image.withRenderingMode(.alwaysOriginal)
+           }
+       }
+       swatchGroup.enter()
+       connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+           defer { swatchGroup.leave() }
+           if let error = error {
+               print("Error creating swatch: \(error)")
+           } else if let image = image {
+               connectivityImage = image.withRenderingMode(.alwaysOriginal)
+           }
+       }
+       swatchGroup.notify(queue: .main) {
+           let attachmentBBI = UIBarButtonItem(image: attachmentImage, style: .plain, target: nil, action: nil)
+           let connectivityBBI = UIBarButtonItem(image: connectivityImage, style: .plain, target: nil, action: nil)
+           self.toolbar.items?.insert(attachmentBBI, at: 0)
+           self.toolbar.items?.insert(connectivityBBI, at: 4)
+       }
     }
-    
+
     // Observe the viewpoint.
     func mapViewDidChange() {
         self.mapView.viewpointChangedHandler = { [weak self] in
            DispatchQueue.main.async {
                self?.addAssociationGraphics()
            }
-       }
+        }
     }
     
     override func viewDidLoad() {

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIA-Y7-Zgc" userLabel="Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -26,7 +26,7 @@
                             <constraint firstItem="cIA-Y7-Zgc" firstAttribute="trailing" secondItem="84r-Oy-4W5" secondAttribute="trailing" id="4YM-8P-n1E"/>
                             <constraint firstItem="cIA-Y7-Zgc" firstAttribute="leading" secondItem="84r-Oy-4W5" secondAttribute="leading" id="KMx-67-KUl"/>
                             <constraint firstItem="cIA-Y7-Zgc" firstAttribute="top" secondItem="84r-Oy-4W5" secondAttribute="top" id="QlH-1u-Gva"/>
-                            <constraint firstItem="cIA-Y7-Zgc" firstAttribute="bottom" secondItem="cQH-id-UEf" secondAttribute="bottom" id="pr9-bs-jmq"/>
+                            <constraint firstItem="cIA-Y7-Zgc" firstAttribute="bottom" secondItem="84r-Oy-4W5" secondAttribute="bottom" id="pr9-bs-jmq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cQH-id-UEf"/>
                     </view>

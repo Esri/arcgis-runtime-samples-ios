@@ -653,6 +653,10 @@
 				<string>Get the cell value of a local raster at the tapped location and display the result in a callout.</string>
 				<key>storyboardName</key>
 				<string>IdentifyRasterCell</string>
+				<key>dependency</key>
+				<array>
+					<string>NDVIRaster</string>
+				</array>
 			</dict>
 		</array>
 	</dict>

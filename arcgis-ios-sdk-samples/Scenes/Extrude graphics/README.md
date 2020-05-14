@@ -1,4 +1,4 @@
-# Extrude Graphics
+# Extrude graphics
 
 Extrude graphics based on an attribute value.
 

@@ -1,18 +1,18 @@
 {
   "images" : [
     {
+      "filename" : "80.png",
       "idiom" : "universal",
-      "filename" : "iOS_80-1.png",
       "scale" : "1x"
     },
     {
+      "filename" : "160.png",
       "idiom" : "universal",
-      "filename" : "iOS_160.png",
       "scale" : "2x"
     },
     {
+      "filename" : "240.png",
       "idiom" : "universal",
-      "filename" : "iOS_240.png",
       "scale" : "3x"
     }
   ],

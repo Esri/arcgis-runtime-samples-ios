@@ -1,4 +1,4 @@
-# Scene Layer Selection
+# Scene layer selection
 
 Identify features in a scene to select.
 

@@ -27,7 +27,7 @@ import Foundation
 
 protocol URLProvider {
     func makeURL(filename: String) -> URL
-    func makeSubFolderForArchive(folderName: String) -> URL
+    func makeSubFolderURLForArchive(folderName: String) -> URL
 }
 
 struct DestinationURLProvider: URLProvider {
@@ -46,8 +46,8 @@ struct DestinationURLProvider: URLProvider {
     /// Make a sub-folder path for the extracted files from an archive.
     ///
     /// - Parameter folderName: The name of the folder.
-    /// - Returns: A URL of the folder.
-    func makeSubFolderForArchive(folderName: String) -> URL {
+    /// - Returns: A URL to the folder.
+    func makeSubFolderURLForArchive(folderName: String) -> URL {
         var url = downloadDirectory
         if let subdirectory = fileTypes.first(where: { $0.value.contains("zip") })?.key {
             url.appendPathComponent(subdirectory, isDirectory: true)
@@ -138,7 +138,8 @@ func downloadFile(at sourceURL: URL, destinationURLProvider: URLProvider, comple
                 if isArchive {
                     let fileCount = try countFilesInArchive(at: temporaryURL)
                     print("File count in the archive is \(fileCount)")
-                    extractURL = destinationURLProvider.makeSubFolderForArchive(folderName: (suggestedFilename as NSString).deletingPathExtension)
+                    // Extract to a sub-folder with the same name as the archive without the extension.
+                    extractURL = destinationURLProvider.makeSubFolderURLForArchive(folderName: (suggestedFilename as NSString).deletingPathExtension)
                 }
                 
                 try FileManager.default.createDirectory(at: downloadURL.deletingLastPathComponent(), withIntermediateDirectories: true)
@@ -241,8 +242,8 @@ portalItems.forEach { (portalURLString, portalItems) in
         let isFileExist: Bool = FileManager.default.fileExists(atPath: destinationURLProvider.makeURL(filename: filename).path)
         
         // Check if there is a sub-folder for the corresponding archive, and the sub-folder is empty or not.
-        // The corresponding sub-folder has the same name as the archive, but without the extension.
-        let subFolderURL = destinationURLProvider.makeSubFolderForArchive(folderName: (filename as NSString).deletingPathExtension)
+        // The corresponding sub-folder has the same name as the archive without the extension.
+        let subFolderURL = destinationURLProvider.makeSubFolderURLForArchive(folderName: (filename as NSString).deletingPathExtension)
         let paths = try? FileManager.default.contentsOfDirectory(
             at: subFolderURL,
             includingPropertiesForKeys: nil,

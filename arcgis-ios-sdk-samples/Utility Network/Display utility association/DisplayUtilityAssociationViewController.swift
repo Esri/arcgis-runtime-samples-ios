@@ -25,8 +25,6 @@ class DisplayUtilityAssociationVC: UIViewController {
     }
     
     @IBOutlet var toolbar: UIToolbar!
-    @IBOutlet var attachmentBBI: UIBarButtonItem!
-    @IBOutlet var connectivityBBI: UIBarButtonItem!
     
     private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     private let maxScale = 2000.0
@@ -77,7 +75,7 @@ class DisplayUtilityAssociationVC: UIViewController {
             utilityNetwork.associations(withExtent: viewpoint.targetGeometry.extent) { [weak self] (associations, error) in
                 guard let self = self else { return }
                 if let error = error {
-                    print("Error loading associations: \(error)")
+                    self.presentAlert(error: error)
                 } else if let associations = associations {
                     let graphics: [AGSGraphic] = associations.compactMap { association in
                         // If it the current association does not exist, add it to the graphics overlay.
@@ -113,33 +111,47 @@ class DisplayUtilityAssociationVC: UIViewController {
     
     // Populate the legend.
     func createSwatches() {
-       let swatchGroup = DispatchGroup()
-       var attachmentImage: UIImage?
-       var connectivityImage: UIImage?
-       swatchGroup.enter()
-       attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
-           defer { swatchGroup.leave() }
-           if let error = error {
-               print("Error creating swatch: \(error)")
-           } else if let image = image {
-               attachmentImage = image.withRenderingMode(.alwaysOriginal)
-           }
-       }
-       swatchGroup.enter()
-       connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
-           defer { swatchGroup.leave() }
-           if let error = error {
-               print("Error creating swatch: \(error)")
-           } else if let image = image {
-               connectivityImage = image.withRenderingMode(.alwaysOriginal)
-           }
-       }
-       swatchGroup.notify(queue: .main) {
-           let attachmentBBI = UIBarButtonItem(image: attachmentImage, style: .plain, target: nil, action: nil)
-           let connectivityBBI = UIBarButtonItem(image: connectivityImage, style: .plain, target: nil, action: nil)
-           self.toolbar.items?.insert(attachmentBBI, at: 0)
-           self.toolbar.items?.insert(connectivityBBI, at: 4)
-       }
+        let swatchGroup = DispatchGroup()
+        var attachmentImage: UIImage?
+        var connectivityImage: UIImage?
+        swatchGroup.enter()
+        attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+            defer { swatchGroup.leave() }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else if let image = image {
+                attachmentImage = image.withRenderingMode(.alwaysOriginal)
+            }
+        }
+        swatchGroup.enter()
+        connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+            defer { swatchGroup.leave() }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else if let image = image {
+                    connectivityImage = image.withRenderingMode(.alwaysOriginal)
+            }
+        }
+        swatchGroup.notify(queue: .main) { [weak self] in
+            let attachmentBBI = UIBarButtonItem(image: attachmentImage, style: .plain, target: nil, action: nil)
+            let connectivityBBI = UIBarButtonItem(image: connectivityImage, style: .plain, target: nil, action: nil)
+            let attachmentLabel = UIBarButtonItem(title: "Attachment", style: .plain, target: nil, action: nil)
+            let connectivityLabel = UIBarButtonItem(title: "Connectivity", style: .plain, target: nil, action: nil)
+            let fixedSpace1 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            let fixedSpace2 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            let flexibleSpace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let flexibleSpace2 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            self?.toolbar.items? = [
+                attachmentBBI,
+                fixedSpace1,
+                attachmentLabel,
+                flexibleSpace1,
+                connectivityBBI,
+                fixedSpace2,
+                connectivityLabel,
+                flexibleSpace2
+            ]
+        }
     }
 
     // Observe the viewpoint.

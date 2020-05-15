@@ -3,7 +3,7 @@
     "description": "Create graphics for utility associations in a utility network.",
     "ignore": false,
     "images": [
-        "display-utility-association.png"
+        "display-utility-associations.png"
     ],
     "keywords": [
         "associating",

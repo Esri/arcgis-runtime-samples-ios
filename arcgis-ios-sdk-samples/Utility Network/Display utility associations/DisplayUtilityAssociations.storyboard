@@ -11,7 +11,7 @@
         <!--Display Utility Association View Controller-->
         <scene sceneID="nCJ-Ec-jTB">
             <objects>
-                <viewController id="wEJ-aH-5mo" userLabel="Display Utility Association View Controller" customClass="DisplayUtilityAssociationVC" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wEJ-aH-5mo" userLabel="Display Utility Association View Controller" customClass="DisplayUtilityAssociationsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WcN-ei-ZB2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

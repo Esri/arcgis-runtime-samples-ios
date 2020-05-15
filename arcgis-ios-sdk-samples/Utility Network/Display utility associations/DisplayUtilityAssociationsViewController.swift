@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class DisplayUtilityAssociationVC: UIViewController {
+class DisplayUtilityAssociationsViewController: UIViewController {
     // Set the map.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
@@ -136,7 +136,9 @@ class DisplayUtilityAssociationVC: UIViewController {
             let attachmentBBI = UIBarButtonItem(image: attachmentImage, style: .plain, target: nil, action: nil)
             let connectivityBBI = UIBarButtonItem(image: connectivityImage, style: .plain, target: nil, action: nil)
             let attachmentLabel = UIBarButtonItem(title: "Attachment", style: .plain, target: nil, action: nil)
+            attachmentLabel.tintColor = .black
             let connectivityLabel = UIBarButtonItem(title: "Connectivity", style: .plain, target: nil, action: nil)
+            connectivityLabel.tintColor = .black
             let fixedSpace1 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             let fixedSpace2 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             let flexibleSpace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -169,6 +171,6 @@ class DisplayUtilityAssociationVC: UIViewController {
         loadUtilityNetwork()
         
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayUtilityAssociationViewController"]
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayUtilityAssociationsViewController"]
     }
 }

@@ -15,10 +15,19 @@
         "pixel",
         "pixel value",
         "raster"
+        "AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)",
+        "AGSIdentifyLayerResult",
+        "AGSRasterCell",
+        "AGSRasterCell.attributes",
+        "AGSRasterLayer"
     ],
     "redirect_from": [],
     "relevant_apis": [
-        "AGSRasterCell"
+        "AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)",
+        "AGSIdentifyLayerResult",
+        "AGSRasterCell",
+        "AGSRasterCell.attributes",
+        "AGSRasterLayer"
     ],
     "snippets": [
         "IdentifyRasterCellViewController.swift"

@@ -96,7 +96,14 @@ class DisplayUtilityAssociationVC: UIViewController {
                         default:
                             return nil
                         }
-                        return AGSGraphic(geometry: association.geometry, symbol: symbol, attributes: ["GlobalId": associationGID, "AssociationType": association.associationType])
+                        return AGSGraphic(
+                            geometry: association.geometry,
+                            symbol: symbol,
+                            attributes: [
+                                "GlobalId": associationGID,
+                                "AssociationType": association.associationType
+                            ]
+                        )
                     }
                     self.associationsOverlay.graphics.addObjects(from: graphics)
                 }

@@ -82,9 +82,9 @@ class DisplayUtilityAssociationVC: UIViewController {
                         let associationGID = association.globalID
                         guard !self.associationsOverlay.graphics.contains(where: {
                             ($0 as! AGSGraphic).attributes["GlobalId"] as? UUID == associationGID
-                            }) else {
-                                return nil
-                            }
+                        }) else {
+                            return nil
+                        }
                         let symbol: AGSSymbol
                         switch association.associationType {
                         case .attachment:
@@ -129,7 +129,7 @@ class DisplayUtilityAssociationVC: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else if let image = image {
-                    connectivityImage = image.withRenderingMode(.alwaysOriginal)
+                connectivityImage = image.withRenderingMode(.alwaysOriginal)
             }
         }
         swatchGroup.notify(queue: .main) { [weak self] in
@@ -153,13 +153,13 @@ class DisplayUtilityAssociationVC: UIViewController {
             ]
         }
     }
-
+    
     // Observe the viewpoint.
     func mapViewDidChange() {
         self.mapView.viewpointChangedHandler = { [weak self] in
-           DispatchQueue.main.async {
-               self?.addAssociationGraphics()
-           }
+            DispatchQueue.main.async {
+                self?.addAssociationGraphics()
+            }
         }
     }
     

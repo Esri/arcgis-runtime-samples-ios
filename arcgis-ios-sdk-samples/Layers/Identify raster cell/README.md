@@ -10,25 +10,25 @@ You may want to identify a raster layer to get its exact cell value in the case 
 
 ## How to use the sample
 
-Tap or double tap drag an area of the raster to identify it and see the raster cell attributes information displayed in a callout.
+Tap or long press drag on an area of the raster to identify it and see the raster cell attributes information displayed in a callout.
 
 ## How it works
 
-1. Create an `DefaultMapViewOnTouchListener` on the `MapView`.
-2. On tap or double tap drag:
-   * Dismiss the `Callout`, if one is showing.
-   * Call `identifyLayerAsync(...)` passing in the raster layer, screen point, tolerance, and maximum number of results per layer.
-   * Add a done loading listener for the result of the identify and then get the `GeoElement` from the layer result.
-   * Create a callout at the calculated map point and populate the callout content with text from the `RasterCell` attributes.
+1. Use various delegate methods in `AGSGeoViewTouchDelegate` to get the screenPoint where a user tapped or long pressed on the map.
+2. On tap or long press drag:
+   * Dismiss the `AGSCallout`, if one is showing.
+   * Call `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)` passing in the raster layer, screen point, tolerance, and if only layers containing popups should be returned.
+   * Get the `AGSGeoElement`s from the layer identifying result.
+   * Create a callout and populate the callout content with text from the `AGSRasterCell` attributes and coordinates.
    * Show the callout.
 
 ## Relevant API
 
-* GeoView.identifyLayerAsync(...)
-* IdentifyLayerResult
-* RasterCell
-* RasterCell.attributes
-* RasterLayer
+* AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)
+* AGSIdentifyLayerResult
+* AGSRasterCell
+* AGSRasterCell.attributes
+* AGSRasterLayer
 
 ## About the data
 

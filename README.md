@@ -17,11 +17,11 @@ The ```master``` branch of this repository contains samples configured for the l
 * Edit Data - Adding, deleting and editing features
 * Geometry - Displaying geometries
 * Route & Directions - Find a route around barriers and get turn-by-turn directions
-* Analysis - 
-* Cloud & Portal - 
+* Analysis - Analyze data and display results
+* Cloud & Portal - Integrate ArcGIS Online services and tools
 * Scenes - Display scenes, 3D symbols, and scene layers
-* Utility Network - 
-* Augmented Reality - 
+* Utility Network - Trace, analyze and display information with utility networks
+* Augmented Reality - Explore, display and utilize AR within a map
 
 ## Requirements
 

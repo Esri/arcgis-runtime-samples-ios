@@ -1650,6 +1650,11 @@
 				<string>DisplayUtilityAssociations</string>
 				<key>displayName</key>
 				<string>Display utility associations</string>
+				<string>Run a filtered trace to locate operable features that will isolate an area from the flow of network resources.</string>
+				<key>storyboardName</key>
+				<string>PerformValveIsolationTrace</string>
+				<key>displayName</key>
+				<string>Perform valve isolation trace</string>
 			</dict>
 		</array>
 	</dict>

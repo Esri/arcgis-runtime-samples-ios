@@ -84,7 +84,7 @@ class ChangeAtmosphereEffectViewController: UIViewController {
         controller.modalPresentationStyle = .popover
         controller.presentationController?.delegate = self
         controller.popoverPresentationController?.barButtonItem = sender
-        controller.popoverPresentationController?.passthroughViews = [sceneView]
+        controller.popoverPresentationController?.passthroughViews?.append(sceneView)
         controller.preferredContentSize = CGSize(width: 300, height: 150)
         
         // show the options controller

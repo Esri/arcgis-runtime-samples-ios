@@ -5,7 +5,7 @@ This repository contains Swift sample code demonstrating the capabilities of [Ar
 
 ![](SampleApp.png)
 
-The ```master``` branch of this repository contains samples configured for the latest available version of ArcGIS Runtime SDK for iOS. For samples configured for older versions of the SDK,  look under the ```Releases``` tab for a specific version.
+The ```master``` branch of this repository contains samples configured for the latest available version of ArcGIS Runtime SDK for iOS. For samples configured for older versions of the SDK, look under the ```Releases``` tab for a specific version.
 
 ## Features
 
@@ -41,7 +41,7 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *12.0*, meani
     > If you've already cloned the repo without the submodule, you can load the submodule using 
     >
     >`git submodule update --init`
-1. **Install** the ArcGIS Runtime SDK for iOS to a central location on your mac as described [here](https://developers.arcgis.com/ios/latest/swift/guide/install.htm#ESRI_SECTION1_D57435A2BEBC4D29AFA3A4CAA722506A)  
+1. **Install** the ArcGIS Runtime SDK for iOS to a central location on your mac as described [here](https://developers.arcgis.com/ios/latest/swift/guide/install.htm#ESRI_SECTION1_D57435A2BEBC4D29AFA3A4CAA722506A)
 1. **Open** the `arcgis-ios-sdk-samples.xcodeproj` **project** file
 1. **Run** the `arcgis-ios-sdk-samples` app target
     > If you get the error message saying _"This Copy Files build phase contains a reference to a missing file 'ArcGISToolkit.framework'"_, you probably didn't clone the repo to include it's submodule. See Step 1 above.
@@ -51,7 +51,7 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *12.0*, meani
 1. **Fork** and then **clone** the repository
 1. **Install** the ArcGIS Runtime SDK for iOS by running the `pod install` command in the folder where you cloned this repository
 1. **Open** the `arcgis-ios-sdk-samples.xcworkspace` **workspace** file
-1. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Build Phases` tab, and **delete** the phases for `Embed Frameworks` and `Strip Frameworks` (these phases conflict with cocoapods  and are only required when using the installed SDK as described in the previous section )
+1. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Build Phases` tab, and **delete** the phases for `Embed Frameworks` and `Strip Frameworks` (these phases conflict with cocoapods and are only required when using the installed SDK as described in the previous section)
 1. **Select** the `ArcGISToolkit.xcodeproj` project node and **delete** it. (this project dependency conflicts with cocoapods and is only required when using the installed SDK as described in the previous section)
 1. **Run** the `arcgis-ios-sdk-samples` app target
 
@@ -67,7 +67,7 @@ Some sample data is too large to store in the repository, so it is automatically
 
 ## Issues
 
-Find a bug or want to request a new feature?  Please let us know by submitting an issue.
+Find a bug or want to request a new feature? Please let us know by submitting an issue.
 
 ## Contributing
 

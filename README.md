@@ -7,7 +7,6 @@ This repository contains Swift sample code demonstrating the capabilities of [Ar
 
 The ```master``` branch of this repository contains samples configured for the latest available version of ArcGIS Runtime SDK for iOS. For samples configured for older versions of the SDK,  look under the ```Releases``` tab for a specific version.
 
-
 ## Features
 
 * Maps - Open, create, inteact with and save maps

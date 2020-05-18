@@ -19,7 +19,7 @@ Tap the bottom buttons to adjust settings for the animation:
 
 ## How it works
 
-1. Create an `AGSGraphicsOverlay` and add it to the `AGSSceneView`.
+1. Create an `AGSGraphicsOverlay` object and add it to the scene view.
 2. Create an `AGSModelSceneSymbol` object.
 3. Create an `AGSGraphic` object and set its geometry to an `AGSPoint`.
 4. Set the `AGSModelSceneSymbol` object to the graphic.

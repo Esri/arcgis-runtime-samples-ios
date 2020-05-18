@@ -10,7 +10,7 @@ Atmospheric effect can be used to make the scene view look more realistic.
 
 ## How to use the sample
 
-Use the toolbar to select one of the three available atmosphere effects. The sky will change to display the selected atmosphere effect. 
+Tap "Change Effect" and select one of the three available atmosphere effects. The sky will change to display the selected atmosphere effect. 
 
 ## How it works
 

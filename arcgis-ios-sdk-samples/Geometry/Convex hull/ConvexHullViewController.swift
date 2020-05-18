@@ -80,10 +80,10 @@ class ConvexHullViewController: UIViewController {
             graphicsOverlay.graphics.add(convexHullGraphic!)
             creatButtonItem.isEnabled = false
         } else {
+        } else {
             // Display the error as an alert if there is a problem with AGSGeometryEngine.convexHull operation.
             let alertController = UIAlertController(title: nil, message: "Geometry Engine Failed!", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alertController, animated: true)
         }
     }
     

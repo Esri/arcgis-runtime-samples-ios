@@ -41,7 +41,7 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *12.0*, meani
     > If you've already cloned the repo without the submodule, you can load the submodule using 
     >
     >`git submodule update --init`
-1. **Install** the ArcGIS Runtime SDK for iOS to a central location on your mac as described [here](https://developers.arcgis.com/ios/latest/swift/guide/install.htm#ESRI_SECTION1_D57435A2BEBC4D29AFA3A4CAA722506A)
+1. **Install** the ArcGIS Runtime SDK for iOS to a central location on your Mac as described [here](https://developers.arcgis.com/ios/latest/swift/guide/install.htm#ESRI_SECTION1_D57435A2BEBC4D29AFA3A4CAA722506A)
 1. **Open** the `arcgis-ios-sdk-samples.xcodeproj` **project** file
 1. **Run** the `arcgis-ios-sdk-samples` app target
     > If you get the error message saying _"This Copy Files build phase contains a reference to a missing file 'ArcGISToolkit.framework'"_, you probably didn't clone the repo to include it's submodule. See Step 1 above.
@@ -89,4 +89,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-A copy of the license is available in the repository's [LICENSE](https://raw.githubusercontent.com/Esri/arcgis-runtime-samples-ios/master/LICENSE) file.
+A copy of the license is available in the repository's [LICENSE](https://github.com/Esri/arcgis-runtime-samples-ios/blob/master/LICENSE) file.

@@ -25,8 +25,8 @@ The sample loads a scene showing four points that use the individual surface pla
 
 * AGSGraphic
 * AGSGraphicsOverlay
-* AGSSurfacePlacement
 * AGSLayerSceneProperties
+* AGSSurfacePlacement
 * AGSSurface
 
 ## About the data

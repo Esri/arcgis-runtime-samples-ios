@@ -10,18 +10,18 @@ The ```master``` branch of this repository contains samples configured for the l
 ## Features
 
 * Maps - Open, create, interact with and save maps
-* Layers - Layer types offered by the SDK
-* Features - Working with feature layers
-* Display Information - Displaying graphics, popups and callouts
-* Search - Finding an address
-* Edit Data - Adding, deleting and editing features
-* Geometry - Displaying geometries
-* Route & Directions - Find a route around barriers and get turn-by-turn directions
-* Analysis - Analyze data and display results
-* Cloud & Portal - Integrate ArcGIS Online services and tools
-* Scenes - Display scenes, 3D symbols and scene layers
-* Utility Network - Trace, analyze and display information with utility networks
-* Augmented Reality - Explore, display and utilize AR within a map
+* Layers - Display vector and raster data in maps and scenes
+* Features - Work with feature layers and geodatabases
+* Display Information - Show graphics, popups, callouts, and sketches
+* Search - Find addresses, places, and points of interest
+* Edit Data - Add, delete, and edit features and attachments
+* Geometry - Create geometries and perform geometric operations
+* Route & Directions - Calculate routes between locations and around barriers
+* Analysis - Perform spatial analysis via geoprocessing tasks and services
+* Cloud & Portal - Search for webmaps and list portal group users
+* Scenes - Visualize 3D environments and symbols
+* Utility Network - Work with utility networks, performing traces and exploring network elements
+* Augmented Reality - View data overlaid on the real world through your device's camera
 
 ## Requirements
 

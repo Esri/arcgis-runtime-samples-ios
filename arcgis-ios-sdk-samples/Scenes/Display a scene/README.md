@@ -10,7 +10,7 @@ Scene views are 3D representations of real-world areas and objects. Scene views 
 
 ## How to use the sample
 
-When loaded, the sample will display a scene. Pan and zoom to explore the scene.
+When opened, the sample will display a scene. Pan and zoom to explore the scene.
 
 ## How it works
 

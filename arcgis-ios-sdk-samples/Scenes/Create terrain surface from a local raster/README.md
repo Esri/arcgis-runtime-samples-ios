@@ -10,7 +10,7 @@ In a scene view, the terrain surface is what the basemap, operational layers, an
 
 ## How to use the sample
 
-When launched, this sample displays a scene that was rendered using a local raster file. Pan and zoom to explore the scene and observe how the terrain surface allows visualizing elevation differences.
+When opened, this sample displays a scene that was rendered using a local raster file. Pan and zoom to explore the scene and observe how the terrain surface allows visualizing elevation differences.
 
 ## How it works
 

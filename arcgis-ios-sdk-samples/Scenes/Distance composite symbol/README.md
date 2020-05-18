@@ -17,7 +17,7 @@ The sample starts looking at a plane. Zoom out from the plane to see it turn int
 1. Create an `AGSGraphicsOverlay` object and add it to an `AGSSceneView` object.
 2. Create an `AGSDistanceCompositeSceneSymbol` object.
 3. Create `AGSDistanceSymbolRange` objects specifying an `AGSSymbol` and the min and max distance within which the symbol should be visible.
-4. Add the ranges to the range collection of the distance composite scene symbol.
+4. Add the ranges to the `ranges` array of the distance composite scene symbol.
 5. Create an `AGSGraphic` object with the distance composite scene symbol at a location and add it to the graphics overlay.
 
 ## Relevant API

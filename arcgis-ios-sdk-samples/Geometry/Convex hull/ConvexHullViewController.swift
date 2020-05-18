@@ -59,7 +59,8 @@ class ConvexHullViewController: UIViewController {
     
     /// Called in response to the Create convex hull button being tapped.
     @IBAction func createConvexHull() {
-        if let convexHullGeometry = AGSGeometryEngine.convexHull(for: AGSMultipoint(points: inputPoints)) {
+        if let normalizedPoints = AGSGeometryEngine.normalizeCentralMeridian(of: AGSMultipoint(points: inputPoints)),
+            let convexHullGeometry = AGSGeometryEngine.convexHull(for: normalizedPoints) {
             // Change the symbol depending on the returned geometry type of the convex hull.
             let symbol: AGSSymbol
             switch convexHullGeometry.geometryType {

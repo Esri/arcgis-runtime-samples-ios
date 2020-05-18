@@ -10,7 +10,7 @@ A scene is symbolized geospatial content that allows you to visualize and analyz
 
 ## How to use the sample
 
-When the sample is launched, it will automatically display the scene from ArcGIS Online. Pan and zoom to explore the scene.
+When the sample is opened, it will automatically display the scene from ArcGIS Online. Pan and zoom to explore the scene.
 
 ## How it works
 

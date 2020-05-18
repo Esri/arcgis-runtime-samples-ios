@@ -15,7 +15,7 @@ Tap "Change Effect" and select one of the three available atmosphere effects. Th
 ## How it works
 
 1. Create an `AGSScene` and display it in an `AGSSceneView`.
-2. Change the `AGSSceneView`'s `atmosphereEffect` property.
+2. Change the scene view's `atmosphereEffect` property to the desired atmosphere effect.
  
 ## Relevant API
 

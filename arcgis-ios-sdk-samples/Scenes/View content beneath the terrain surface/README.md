@@ -2,11 +2,15 @@
 
 See through terrain in a scene and move the camera underground.
 
-![Screenshot](image1.png)
+![View content beneath the terrain surface sample](view-content-beneath.png)
 
 ## Use case
 
 By default, a scene's terrain is fully opaque and the camera cannot go underground. To see underground features such as pipes in a utility network, you can lower the opacity of the terrain surface and set the navigation constraint on the surface to allow underground navigation.
+
+## How to use the sample
+
+The sample loads a scene with underground features. Pan and zoom to explore the scene. Observe how the opacity of the base surface is reduced and the navigation constraint is removed, allowing you to pan and zoom through the base surface.
 
 ## How it works
 
@@ -16,8 +20,11 @@ By default, a scene's terrain is fully opaque and the camera cannot go undergrou
 
 ## Relevant API
 
-- `AGSSurface`
-- `AGSSurface.navigationConstraint`
+* AGSSurface
+
+## About the data
+
+This data is a point scene layer showing underground wellbore paths (green polylines) and seismic events (orange points).
 
 ## Tags
 

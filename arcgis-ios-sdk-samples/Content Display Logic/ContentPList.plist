@@ -1449,7 +1449,7 @@
 			</dict>
 			<dict>
 				<key>descriptionText</key>
-				<string>This sample shows you how to open a web scene from a portal item.</string>
+				<string>Open a web scene from a portal item.</string>
 				<key>storyboardName</key>
 				<string>OpenScene</string>
 				<key>displayName</key>
@@ -1461,7 +1461,7 @@
 				<key>storyboardName</key>
 				<string>DisplayScene</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to display a scene with elevation data</string>
+				<string>Display a scene with a terrain surface and some imagery.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1469,7 +1469,7 @@
 				<key>storyboardName</key>
 				<string>ExtrudeGraphics</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to render graphics extruded in z direction</string>
+				<string>Extrude graphics based on an attribute value.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1477,7 +1477,7 @@
 				<key>storyboardName</key>
 				<string>SceneSymbols</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to create symbols with different 3D shapes</string>
+				<string>Show various kinds of 3D symbols in a scene.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1485,7 +1485,7 @@
 				<key>storyboardName</key>
 				<string>SurfacePlacements</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to position graphics using different surface placements</string>
+				<string>Position graphics relative to a surface using different surface placement modes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1493,7 +1493,7 @@
 				<key>storyboardName</key>
 				<string>SceneLayerURL</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to use a scene layer in a scene</string>
+				<string>Display an ArcGIS scene layer from a URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1501,7 +1501,7 @@
 				<key>storyboardName</key>
 				<string>ScenePropertiesExpressions</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to update the orientation of graphics in graphics overlay using expressions on scene properties</string>
+				<string>Update the orientation of a graphic using expressions based on its attributes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1509,7 +1509,7 @@
 				<key>storyboardName</key>
 				<string>Animate3DGraphic</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to animate a graphic’s position and rotation and have the camera follow it</string>
+				<string>A controller follows a graphic while the graphic&apos;s position and rotation are animated.</string>
 				<key>dependency</key>
 				<array>
 					<string>MissionFiles</string>
@@ -1522,7 +1522,7 @@
 				<key>storyboardName</key>
 				<string>DistanceCompositeSymbol</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.</string>
+				<string>Change a graphic&apos;s symbol based on the camera&apos;s proximity to it.</string>
 				<key>dependency</key>
 				<array>
 					<string>Bristol3DModel</string>
@@ -1534,7 +1534,7 @@
 				<key>storyboardName</key>
 				<string>TerrainExaggeration</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to use terrain exaggeration on a surface in a scene</string>
+				<string>Vertically exaggerate terrain in a scene.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1542,7 +1542,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerExtrusion</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to apply extrusion to a renderer on a feature layer</string>
+				<string>Extrude features based on their attributes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1550,7 +1550,7 @@
 				<key>storyboardName</key>
 				<string>SceneLayerSelection</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to identify geoelements in a scene layer.</string>
+				<string>Identify features in a scene to select.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1558,7 +1558,7 @@
 				<key>storyboardName</key>
 				<string>SyncMapAndSceneViews</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to keep the viewpoints of two map or scene views in sync with each other.</string>
+				<string>Keep the view points of two views (e.g. map view and scene view) synchronized with each other.</string>
 			</dict>
 			<dict>
 				<key>descriptionText</key>
@@ -1590,7 +1590,7 @@
 				<key>storyboardName</key>
 				<string>AddPointSceneLayer</string>
 				<key>descriptionText</key>
-				<string>View a point scene layer from a scene service</string>
+				<string>View a point scene layer from a scene service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1608,7 +1608,7 @@
 				<key>displayName</key>
 				<string>Open mobile scene (scene package)</string>
 				<key>descriptionText</key>
-				<string>Opens and displays a scene from a Mobile Scene Package (.mspk).</string>
+				<string>Opens and displays a scene from a mobile scene package (.mspk).</string>
 				<key>storyboardName</key>
 				<string>OpenMobileScene</string>
 				<key>dependency</key>

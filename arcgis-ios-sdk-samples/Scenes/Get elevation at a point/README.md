@@ -14,10 +14,10 @@ Tap anywhere on the surface to get the elevation at that point. Elevation is rep
 
 ## How it works
 
-1. Create a scene view and scene with an imagery base map.
+1. Create an `AGSSceneView` and an `AGSScene` with an `imagery()` basemap.
 2. Set the elevation source of the scene's base surface.
 3. Convert the tapped screen point into a point on surface.
-4. Asynchronously get the elevation and display the results.
+4. Asynchronously get the elevation using the `AGSSurface.elevation(for:completion:)` method and display the results.
 
 ## Relevant API
 
@@ -26,6 +26,6 @@ Tap anywhere on the surface to get the elevation at that point. Elevation is rep
 * AGSSceneView
 * AGSSurface
 
-#### Tags
+## Tags
 
 elevation, point, surface

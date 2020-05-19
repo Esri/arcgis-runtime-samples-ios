@@ -143,7 +143,7 @@ class DisplayUtilityAssociationsViewController: UIViewController {
             let fixedSpace2 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             let flexibleSpace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
             let flexibleSpace2 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            self?.toolbar.items? = [
+            self?.toolbar.items = [
                 attachmentBBI,
                 fixedSpace1,
                 attachmentLabel,

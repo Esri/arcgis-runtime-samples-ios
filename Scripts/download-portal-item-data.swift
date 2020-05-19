@@ -102,7 +102,7 @@ func numberOfFilesInArchive(at url: URL) throws -> Int {
     // "240 files, 29461066 bytes uncompressed, 28292775 bytes compressed:  4.0%"
     // To extract the count, cut the string when first space char is met.
     let totalsInfo = outputPipe.fileHandleForReading.readDataToEndOfFile()
-    let totalsCount = String(data: totalsInfo.prefix(while: { $0 != 32 }), encoding: .utf8)!
+    let totalsCount = String(data: totalsInfo.prefix { $0 != 32 }, encoding: .utf8)!
     return Int(totalsCount)!
 }
 

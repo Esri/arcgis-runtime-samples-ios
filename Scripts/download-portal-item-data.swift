@@ -27,7 +27,6 @@ import Foundation
 
 protocol URLProvider {
     func makeURL(filename: String) -> URL
-    func makeSubFolderURLForArchive(folderName: String) -> URL
 }
 
 struct DestinationURLProvider: URLProvider {
@@ -46,19 +45,6 @@ struct DestinationURLProvider: URLProvider {
             url.appendPathComponent(subdirectory, isDirectory: true)
         }
         url.appendPathComponent(filename, isDirectory: false)
-        return url
-    }
-    
-    /// Make a sub-folder path for the extracted files from an archive.
-    ///
-    /// - Parameter folderName: The name of the folder.
-    /// - Returns: A URL to the folder.
-    func makeSubFolderURLForArchive(folderName: String) -> URL {
-        var url = downloadDirectory
-        if let subdirectory = fileTypes.first(where: { $0.value.contains("zip") })?.key {
-            url.appendPathComponent(subdirectory, isDirectory: true)
-        }
-        url.appendPathComponent(folderName, isDirectory: true)
         return url
     }
 }
@@ -98,7 +84,6 @@ func nameOfFileInArchive(at url: URL) throws -> String {
     return String(data: filenameData, encoding: .utf8)!.trimmingCharacters(in: .whitespacesAndNewlines)
 }
 
-
 /// Count files in an archive.
 ///
 /// - Parameter url: The url to a ZIP archive.
@@ -130,36 +115,58 @@ func uncompressArchive(at sourceURL: URL, to destinationURL: URL) throws {
     let process = Process()
     process.executableURL = URL(fileURLWithPath: "/usr/bin/unzip", isDirectory: false)
     // Unzip the archive into a specified sub-folder and silence the output.
-    process.arguments = ["-q", sourceURL.path, "-d", destinationURL.path]
+    // "-j" is passed in to get rid of redundant subfolder.
+    process.arguments = ["-jq", sourceURL.path, "-d", destinationURL.path]
     
     try process.run()
     process.waitUntilExit()
 }
 
+/// Download file from portal and write the file(s) to appropriate path(s).
+///
+/// - Parameters:
+///   - sourceURL: The portal URL to the resource.
+///   - destinationURLProvider: A helper struct to make destination path URL with filename.
+///   - completion: A closure to handle the results.
 func downloadFile(at sourceURL: URL, destinationURLProvider: URLProvider, completion: @escaping (Result<URL, Error>) -> Void) {
     let downloadTask = URLSession.shared.downloadTask(with: sourceURL) { (temporaryURL, response, error) in
         if let temporaryURL = temporaryURL, let response = response {
             do {
                 let suggestedFilename = response.suggestedFilename!
-                let downloadURL: URL
-                var extractURL: URL?
+                let downloadName: String
                 let isArchive = (suggestedFilename as NSString).pathExtension == "zip"
-                downloadURL = destinationURLProvider.makeURL(filename: suggestedFilename)
+                // If the downloaded file is an archive and contains
+                //   - 1 file, use the name of that file.
+                //   - multiple files, use the suggested filename (*.zip).
+                // If it is not an archive, use the server suggested filename.
                 if isArchive {
-                    let fileCount = try numberOfFilesInArchive(at: temporaryURL)
-                    print("File count in the archive is \(fileCount)")
-                    // Extract to a sub-folder with the same name as the archive without the extension.
-                    extractURL = destinationURLProvider.makeSubFolderURLForArchive(folderName: (suggestedFilename as NSString).deletingPathExtension)
+                    let count = try numberOfFilesInArchive(at: temporaryURL)
+                    if count > 1 {
+                        downloadName = suggestedFilename
+                    } else {
+                        downloadName = try nameOfFileInArchive(at: temporaryURL)
+                    }
+                } else {
+                    downloadName = suggestedFilename
                 }
+                let downloadURL = destinationURLProvider.makeURL(filename: downloadName)
                 
-                try FileManager.default.createDirectory(at: downloadURL.deletingLastPathComponent(), withIntermediateDirectories: true)
+                try FileManager.default.createDirectory(
+                    at: downloadURL.deletingLastPathComponent(),
+                    withIntermediateDirectories: true
+                )
                 
                 if FileManager.default.fileExists(atPath: downloadURL.path) {
                     try FileManager.default.removeItem(at: downloadURL)
                 }
                 
                 if isArchive {
-                    try uncompressArchive(at: temporaryURL, to: extractURL!)
+                    let extractURL = downloadURL.pathExtension == "zip"
+                        // Uncompress to directory named after archive.
+                        ? downloadURL.deletingPathExtension()
+                        // Uncompress to appropriate subdirectory.
+                        : downloadURL.deletingLastPathComponent()
+                    try uncompressArchive(at: temporaryURL, to: extractURL)
                 } else {
                     try FileManager.default.moveItem(at: temporaryURL, to: downloadURL)
                 }
@@ -183,12 +190,15 @@ struct PortalItem: Decodable {
     var filename: String
 }
 
+// MARK: Enters the script from here.
+
 let arguments = CommandLine.arguments
 
 guard arguments.count == 4 else {
     print("Invalid number of arguments")
     exit(1)
 }
+
 
 let portalItemsURL = URL(fileURLWithPath: arguments[1], isDirectory: false)
 let fileTypesURL = URL(fileURLWithPath: arguments[2], isDirectory: false)
@@ -247,29 +257,17 @@ portalItems.forEach { (portalURLString, portalItems) in
     portalItems.forEach { (portalItem) in
         // Have we already downloaded the item?
         let filename = downloadedItems[portalItem.identifier] ?? portalItem.filename
+        let tempURL = destinationURLProvider.makeURL(filename: filename)
+        let pathURL = tempURL.pathExtension == "zip" ? tempURL.deletingPathExtension() : tempURL
         
-        // Check if it is a non-archive single file.
-        let isFileExist: Bool = FileManager.default.fileExists(atPath: destinationURLProvider.makeURL(filename: filename).path)
+        // Check if a single file or a folder exists.
+        var isDirectory = ObjCBool(false)
+        let isFileExist = FileManager.default.fileExists(atPath: pathURL.path, isDirectory: &isDirectory)
         
-        // Check if there is a sub-folder for the corresponding archive, and the sub-folder is empty or not.
-        // The corresponding sub-folder has the same name as the archive without the extension.
-        let subFolderURL = destinationURLProvider.makeSubFolderURLForArchive(folderName: (filename as NSString).deletingPathExtension)
-        let paths = try? FileManager.default.contentsOfDirectory(
-            at: subFolderURL,
-            includingPropertiesForKeys: nil,
-            options: .skipsHiddenFiles
-        )
-        /// true: the folder exists and is empty;
-        /// false: the folder exists and has content;
-        /// nil: the folder does not exist or not accessible
-        let isEmptySubFolder = paths?.isEmpty
-        
-        if isEmptySubFolder != nil && !isEmptySubFolder! {
-            // One exception to this case is that the content in the folder is changed. There is no way to detect that
-            // unless we keep track of each extracted file in the .downloaded_items dictionary.
+        if isFileExist && isDirectory.boolValue {
             print("Item \(portalItem.identifier) has already been downloaded, and is extracted to an folder")
             downloadedItems[portalItem.identifier] = filename
-        } else if isFileExist && isEmptySubFolder == nil {
+        } else if isFileExist {
             print("Item \(portalItem.identifier) has already been downloaded")
             // This is a temporary measure for users who currently don't have a downloaded items file.
             downloadedItems[portalItem.identifier] = filename

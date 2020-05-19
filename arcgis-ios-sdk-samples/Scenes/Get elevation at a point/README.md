@@ -26,6 +26,6 @@ Tap anywhere on the surface to get the elevation at that point. Elevation is rep
 * AGSSceneView
 * AGSSurface
 
-#### Tags
+## Tags
 
 elevation, point, surface

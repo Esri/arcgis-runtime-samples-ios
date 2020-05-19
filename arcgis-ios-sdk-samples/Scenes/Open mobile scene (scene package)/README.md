@@ -16,11 +16,9 @@ When the sample opens, it will automatically display the Scene in the Mobile Map
 This sample takes a Mobile Scene Package that was created in ArcGIS Pro, and displays an `AGSScene` from within the package in an `AGSSceneView`. 
 
 1. Create an `AGSMobileScenePackage` object using the path to the local .mspk file.
-2. Use `AGSMobileScenePackage.checkDirectReadSupportForMobileScenePackage(atFileURL:completion:)` to check whether the package can be read in the archived form (.mspk) or whether it needs to be unpacked.
-3. If the mobile scene package requires unpacking, use `AGSMobileScenePackage.unpack(atFileURL:outputDirectory:completion:)` and wait for this to complete.
-3. Call `AGSMobileScenePackage.load(completion:)` and check for any errors.
-4. When the `AGSMobileScenePackage` instance is loaded, obtain the first `AGSScene` object from the `AGSMobileScenePackage.scenes` property.
-5. Assign the scene to the scene view.
+2. Load the mobile scene package with`AGSMobileScenePackage.load(completion:)` and check for any errors.
+3. When the `AGSMobileScenePackage` instance is loaded, obtain the first `AGSScene` object from the `AGSMobileScenePackage.scenes` property.
+4. Assign the scene to the scene view.
 
 ## Relevant API
 

@@ -44,7 +44,7 @@ Tap the bottom buttons to adjust settings for the animation:
 
 ## Offline data
 
-This sample uses the following data which are all included downloaded on-demand:
+This sample uses the following data which are all included and downloaded on-demand:
 
 * [Model Marker Symbol Data](https://www.arcgis.com/home/item.html?id=681d6f7694644709a7c830ec57a2d72b)
 * [GrandCanyon.csv mission data](https://www.arcgis.com/home/item.html?id=290f0c571c394461a8b58b6775d0bd63)

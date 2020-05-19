@@ -199,7 +199,6 @@ guard arguments.count == 4 else {
     exit(1)
 }
 
-
 let portalItemsURL = URL(fileURLWithPath: arguments[1], isDirectory: false)
 let fileTypesURL = URL(fileURLWithPath: arguments[2], isDirectory: false)
 let downloadDirectoryURL = URL(fileURLWithPath: arguments[3], isDirectory: true)
@@ -232,7 +231,11 @@ let fileTypes: [String: [String]] = {
         exit(1)
     }
 }()
-let destinationURLProvider = DestinationURLProvider(downloadDirectory: downloadDirectoryURL, fileTypes: fileTypes)
+
+let destinationURLProvider = DestinationURLProvider(
+    downloadDirectory: downloadDirectoryURL,
+    fileTypes: fileTypes
+)
 
 typealias Identifier = String
 typealias Filename = String

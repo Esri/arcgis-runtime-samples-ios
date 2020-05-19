@@ -34,9 +34,15 @@ struct DestinationURLProvider: URLProvider {
     let downloadDirectory: URL
     let fileTypes: [String: [String]]
     
+    /// Make a full path for a file based on the mapping between its filename and file type.
+    ///
+    /// - Parameter filename: The filename of the file.
+    /// - Returns: A URL to the file.
     func makeURL(filename: String) -> URL {
         var url = downloadDirectory
-        if let subdirectory = fileTypes.first(where: { $0.value.contains((filename as NSString).pathExtension) })?.key {
+        if let subdirectory = fileTypes.first(
+            where: { $0.value.contains((filename as NSString).pathExtension) }
+            )?.key {
             url.appendPathComponent(subdirectory, isDirectory: true)
         }
         url.appendPathComponent(filename, isDirectory: false)
@@ -57,11 +63,12 @@ struct DestinationURLProvider: URLProvider {
     }
 }
 
-/// Creates a URL for the given item in the given portal.
+/// Creates a URL such as `{portalURL}/sharing/rest/content/items/{itemIdentifier}/data`
+/// for the given item in the given portal.
 ///
 /// - Parameters:
-///   - itemIdentifier: The identifier of the item.
 ///   - portalURL: The URL of the portal.
+///   - itemIdentifier: The identifier of the item.
 /// - Returns: A new URL.
 func makeDataURL(portalURL: URL, itemIdentifier: String) -> URL {
     return portalURL
@@ -75,7 +82,8 @@ func makeDataURL(portalURL: URL, itemIdentifier: String) -> URL {
 
 /// Returns the name of the file in the ZIP archive at the given url.
 ///
-/// - Parameter url: The url of a ZIP archive.
+/// - Parameter url: The url to a ZIP archive.
+/// - Throws: Exceptions when running the `zipinfo` process.
 /// - Returns: The file name.
 func nameOfFileInArchive(at url: URL) throws -> String {
     let outputPipe = Pipe()
@@ -90,7 +98,13 @@ func nameOfFileInArchive(at url: URL) throws -> String {
     return String(data: filenameData, encoding: .utf8)!.trimmingCharacters(in: .whitespacesAndNewlines)
 }
 
-func countFilesInArchive(at url: URL) throws -> Int {
+
+/// Count files in an archive.
+///
+/// - Parameter url: The url to a ZIP archive.
+/// - Throws: Exceptions when running the `zipinfo` process.
+/// - Returns: The file count in the archive.
+func numberOfFilesInArchive(at url: URL) throws -> Int {
     let outputPipe = Pipe()
     let process = Process()
     process.executableURL = URL(fileURLWithPath: "/usr/bin/zipinfo", isDirectory: false)
@@ -99,10 +113,11 @@ func countFilesInArchive(at url: URL) throws -> Int {
     try process.run()
     process.waitUntilExit()
     
-    // The totals info looks like "240 files, 29461066 bytes uncompressed, 28292775 bytes compressed:  4.0%"
+    // The totals info looks like
+    // "240 files, 29461066 bytes uncompressed, 28292775 bytes compressed:  4.0%"
+    // To extract the count, cut the string when first space char is met.
     let totalsInfo = outputPipe.fileHandleForReading.readDataToEndOfFile()
-    // Extract the count from the info string
-    let totalsCount = String(data: totalsInfo, encoding: .utf8)!.components(separatedBy: " ")[0]
+    let totalsCount = String(data: totalsInfo.prefix(while: { $0 != 32 }), encoding: .utf8)!
     return Int(totalsCount)!
 }
 
@@ -112,18 +127,13 @@ func countFilesInArchive(at url: URL) throws -> Int {
 ///   - sourceURL: The URL of a ZIP archive.
 ///   - destinationURL: The URL at which to uncompress the archive.
 func uncompressArchive(at sourceURL: URL, to destinationURL: URL) throws {
-    let outputPipe = Pipe()
     let process = Process()
     process.executableURL = URL(fileURLWithPath: "/usr/bin/unzip", isDirectory: false)
-    // Unzip the archive into the specified sub-folder.
-    process.arguments = [sourceURL.path, "-d", destinationURL.path]
-    process.standardOutput = outputPipe
+    // Unzip the archive into a specified sub-folder and silence the output.
+    process.arguments = ["-q", sourceURL.path, "-d", destinationURL.path]
     
     try process.run()
     process.waitUntilExit()
-    
-    _ = outputPipe.fileHandleForReading.readDataToEndOfFile()
-    // print(String(data: unzipInfo, encoding: .utf8) ?? "No unzip output")
 }
 
 func downloadFile(at sourceURL: URL, destinationURLProvider: URLProvider, completion: @escaping (Result<URL, Error>) -> Void) {
@@ -136,7 +146,7 @@ func downloadFile(at sourceURL: URL, destinationURLProvider: URLProvider, comple
                 let isArchive = (suggestedFilename as NSString).pathExtension == "zip"
                 downloadURL = destinationURLProvider.makeURL(filename: suggestedFilename)
                 if isArchive {
-                    let fileCount = try countFilesInArchive(at: temporaryURL)
+                    let fileCount = try numberOfFilesInArchive(at: temporaryURL)
                     print("File count in the archive is \(fileCount)")
                     // Extract to a sub-folder with the same name as the archive without the extension.
                     extractURL = destinationURLProvider.makeSubFolderURLForArchive(folderName: (suggestedFilename as NSString).deletingPathExtension)
@@ -268,7 +278,6 @@ portalItems.forEach { (portalURLString, portalItems) in
             fflush(stdout)
             
             dispatchGroup.enter()
-            // Make an URL such as www.arcgis.com/sharing/rest/content/items/{itemIdentifier}/data
             let sourceURL = makeDataURL(portalURL: portalURL, itemIdentifier: portalItem.identifier)
             downloadFile(at: sourceURL, destinationURLProvider: destinationURLProvider) { (result) in
                 switch result {

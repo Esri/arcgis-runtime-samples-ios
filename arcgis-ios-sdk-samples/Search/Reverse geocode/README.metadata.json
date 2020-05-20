@@ -3,25 +3,25 @@
     "description": "Use an online service to find the address for a tapped point.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "reverse-geocode.png"
     ],
     "keywords": [
+        "address",
+        "geocode",
         "locate",
         "reverse geocode",
         "search",
+        "AGSGeocodeParameters",
         "AGSLocatorTask",
-        "AGSReverseGeocodeParameters",
-        "AGSGeocodeResult",
-        "AGSGraphicsOverlay",
-        "AGSGeoViewTouchDelegate"
+        "AGSReverseGeocodeParameters"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/reverse-geocode.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/reverse-geocode.htm"
+    ],
     "relevant_apis": [
+        "AGSGeocodeParameters",
         "AGSLocatorTask",
-        "AGSReverseGeocodeParameters",
-        "AGSGeocodeResult",
-        "AGSGraphicsOverlay",
-        "AGSGeoViewTouchDelegate"
+        "AGSReverseGeocodeParameters"
     ],
     "snippets": [
         "ReverseGeocodeViewController.swift"

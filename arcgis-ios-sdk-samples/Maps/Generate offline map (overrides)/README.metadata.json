@@ -1,33 +1,49 @@
 {
     "category": "Maps",
-    "description": "Use the AGSOfflineMapTask, with the overrides, to take a webmap offline.",
+    "description": "Take a web map offline with additional options for each layer.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "generate-offline-map-overrides.png"
     ],
     "keywords": [
-        "Offline",
-        "AGSOfflineMapTask",
+        "LOD",
+        "adjust",
+        "download",
+        "extent",
+        "filter",
+        "offline",
+        "override",
+        "parameters",
+        "reduce",
+        "scale range",
+        "setting",
+        "AGSExportTileCacheParameters",
         "AGSGenerateGeodatabaseParameters",
-        "AGSGenerateOfflineMapParameters",
-        "AGSGenerateOfflineMapParameterOverrides",
+        "AGSGenerateLayerOption",
         "AGSGenerateOfflineMapJob",
+        "AGSGenerateOfflineMapParameterOverrides",
+        "AGSGenerateOfflineMapParameters",
         "AGSGenerateOfflineMapResult",
-        "AGSExportTileCacheParameters"
+        "AGSOfflineMapParametersKey",
+        "AGSOfflineMapTask"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/generate-offline-map-overrides-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/generate-offline-map-overrides-.htm"
+    ],
     "relevant_apis": [
-        "AGSOfflineMapTask",
+        "AGSExportTileCacheParameters",
         "AGSGenerateGeodatabaseParameters",
-        "AGSGenerateOfflineMapParameters",
-        "AGSGenerateOfflineMapParameterOverrides",
+        "AGSGenerateLayerOption",
         "AGSGenerateOfflineMapJob",
+        "AGSGenerateOfflineMapParameterOverrides",
+        "AGSGenerateOfflineMapParameters",
         "AGSGenerateOfflineMapResult",
-        "AGSExportTileCacheParameters"
+        "AGSOfflineMapParametersKey",
+        "AGSOfflineMapTask"
     ],
     "snippets": [
         "GenerateOfflineMapOverridesViewController.swift",
         "OfflineMapParameterOverridesViewController.swift"
     ],
-    "title": "Generate Offline Map (Overrides)"
+    "title": "Generate offline map (overrides)"
 }

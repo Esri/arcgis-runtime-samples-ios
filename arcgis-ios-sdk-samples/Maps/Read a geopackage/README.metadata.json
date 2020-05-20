@@ -1,28 +1,38 @@
 {
     "category": "Maps",
-    "description": "Add rasters and feature tables from a GeoPackage to a map.",
+    "description": "Add rasters and feature tables from a geopackage to a map.",
     "ignore": false,
     "images": [
-        "read-a-geopackage.png"
+        "read-geopackage-1.png",
+        "read-geopackage-2.png"
     ],
     "keywords": [
-            "container",
-            "GeoPackage",
-            "layer",
-            "map",
-            "OGC",
-            "package",
-            "raster",
-            "table"
+        "GeoPackage",
+        "OGC",
+        "container",
+        "layer",
+        "map",
+        "package",
+        "raster",
+        "table",
+        "AGSGeoPackage",
+        "AGSGeoPackage.geoPackageFeatureTables",
+        "AGSGeoPackage.geoPackageRasters",
+        "AGSGeoPackageFeatureTable",
+        "AGSGeoPackageRaster"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/read-a-geopackage.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/read-a-geopackage.htm"
+    ],
     "relevant_apis": [
         "AGSGeoPackage",
+        "AGSGeoPackage.geoPackageFeatureTables",
+        "AGSGeoPackage.geoPackageRasters",
         "AGSGeoPackageFeatureTable",
         "AGSGeoPackageRaster"
     ],
     "snippets": [
         "ReadGeopackageViewController.swift"
     ],
-    "title": "Read a geopackage"
+    "title": "Read geopackage"
 }

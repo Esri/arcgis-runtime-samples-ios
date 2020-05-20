@@ -1,14 +1,28 @@
 {
     "category": "Maps",
-    "description": "This sample displays a map at a specific viewpoint.",
+    "description": "Display the map at an initial viewpoint representing a bounding geometry.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "set-initial-map-area.png"
     ],
     "keywords": [
+        "envelope",
+        "extent",
+        "initial viewpoint",
+        "zoom",
+        "AGSEnvelope",
+        "AGSMap",
+        "AGSMapView",
+        "AGSViewpoint"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/set-initial-map-area.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/set-initial-map-area.htm"
+    ],
     "relevant_apis": [
+        "AGSEnvelope",
+        "AGSMap",
+        "AGSMapView",
+        "AGSViewpoint"
     ],
     "snippets": [
         "SetInitialMapAreaViewController.swift"

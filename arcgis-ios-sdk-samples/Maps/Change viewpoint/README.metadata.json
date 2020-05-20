@@ -1,15 +1,34 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates different ways in which you can change the viewpoint or visible area of a map.",
+    "description": "Set the map view to a new viewpoint.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "change-viewpoint-2.png",
+        "change-viewpoint-1.png"
     ],
     "keywords": [
+        "animate",
+        "extent",
+        "pan",
+        "rotate",
+        "scale",
+        "view",
+        "zoom",
+        "AGSGeometry",
+        "AGSMap",
+        "AGSMapView",
+        "AGSPoint",
+        "AGSViewpoint"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/change-viewpoint.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/change-viewpoint.htm"
+    ],
     "relevant_apis": [
+        "AGSGeometry",
+        "AGSMap",
+        "AGSMapView",
+        "AGSPoint",
+        "AGSViewpoint"
     ],
     "snippets": [
         "SetViewpointViewController.swift"

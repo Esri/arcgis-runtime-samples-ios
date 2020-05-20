@@ -3,7 +3,7 @@
     "description": "Access the expiration information of an expired mobile map package.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "honor-mobile-map-package-expiration-date.png"
     ],
     "keywords": [
         "expiration",
@@ -11,8 +11,7 @@
         "AGSExpiration",
         "AGSMobileMapPackage"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSExpiration",
         "AGSMobileMapPackage"

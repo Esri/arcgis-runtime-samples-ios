@@ -1,14 +1,28 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how to identify features on a map. These features could be from different layers present in the map.",
+    "description": "Identify features in all layers in a map.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "identify-layers.png"
     ],
     "keywords": [
+        "identify",
+        "recursion",
+        "recursive",
+        "sublayers",
+        "AGSGeoView.identifyLayers(atScreenPoint:tolerance:returnPopupsOnly:maximumResultsPerLayer:completion:)",
+        "AGSIdentifyLayerResult",
+        "AGSIdentifyLayerResult.sublayerResults",
+        "AGSLayerContent.name"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/identify-layers.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/identify-layers.htm"
+    ],
     "relevant_apis": [
+        "AGSGeoView.identifyLayers(atScreenPoint:tolerance:returnPopupsOnly:maximumResultsPerLayer:completion:)",
+        "AGSIdentifyLayerResult",
+        "AGSIdentifyLayerResult.sublayerResults",
+        "AGSLayerContent.name"
     ],
     "snippets": [
         "IdentifyLayersViewController.swift"

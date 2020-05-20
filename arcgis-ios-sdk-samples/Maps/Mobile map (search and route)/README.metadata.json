@@ -1,20 +1,47 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how to search and route using data in a map package.",
+    "description": "Display maps and use locators to enable search and routing offline using a mobile map package.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "mobile-map-search-and-route-2.png",
+        "mobile-map-search-and-route-1.png"
     ],
     "keywords": [
+        "disconnected",
+        "field mobility",
+        "geocode",
+        "network",
+        "network analysis",
+        "offline",
+        "routing",
+        "search",
+        "transportation",
+        "AGSGeocodeResult",
+        "AGSMobileMapPackage",
+        "AGSReverseGeocodeParameters",
+        "AGSRoute",
+        "AGSRouteParameters",
+        "AGSRouteResult",
+        "AGSRouteTask",
+        "AGSTransportationNetworkDataset"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/mobile-map-search-and-route-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/mobile-map-search-and-route-.htm"
+    ],
     "relevant_apis": [
+        "AGSGeocodeResult",
+        "AGSMobileMapPackage",
+        "AGSReverseGeocodeParameters",
+        "AGSRoute",
+        "AGSRouteParameters",
+        "AGSRouteResult",
+        "AGSRouteTask",
+        "AGSTransportationNetworkDataset"
     ],
     "snippets": [
+        "MobileMapViewController.swift",
         "MapPackagesListViewController.swift",
-        "MapPackageCell.swift",
-        "MobileMapViewController.swift"
+        "MapPackageCell.swift"
     ],
     "title": "Mobile map (search and route)"
 }

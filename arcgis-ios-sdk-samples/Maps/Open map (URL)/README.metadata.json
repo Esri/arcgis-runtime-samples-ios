@@ -1,19 +1,31 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how to open a web map from a URL on your iOS device.",
+    "description": "Display a web map.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "open-map-url-1.png",
+        "open-map-url-2.png"
     ],
     "keywords": [
+        "portal item",
+        "web map",
+        "AGSMap",
+        "AGSMapView",
+        "AGSPortal",
+        "AGSPortalItem"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/open-map-url-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/open-map-url-.htm"
+    ],
     "relevant_apis": [
+        "AGSMap",
+        "AGSMapView",
+        "AGSPortal",
+        "AGSPortalItem"
     ],
     "snippets": [
-        "OpenMapURLViewController.swift",
-        "OpenMapURLSettingsViewController.swift"
+        "OpenMapURLSettingsViewController.swift",
+        "OpenMapURLViewController.swift"
     ],
-    "title": "Open map (URL)"
+    "title": "Open map URL"
 }

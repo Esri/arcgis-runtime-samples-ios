@@ -1,18 +1,17 @@
 {
     "category": "Scenes",
-    "description": "View a point scene layer from a scene service",
+    "description": "View a point scene layer from a scene service.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "add-point-scene.png"
     ],
     "keywords": [
         "3D",
-        "point scene layer",
         "layers",
+        "point scene layer",
         "AGSArcGISSceneLayer"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSArcGISSceneLayer"
     ],

@@ -7,14 +7,13 @@
     ],
     "keywords": [
         "3D",
-        "raster",
         "elevation",
+        "raster",
         "surface",
         "AGSRasterElevationSource",
         "AGSSurface"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSRasterElevationSource",
         "AGSSurface"

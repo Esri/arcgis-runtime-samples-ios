@@ -1,14 +1,30 @@
 {
     "category": "Scenes",
-    "description": "This sample demonstrates how to update the orientation of graphics in graphics overlay using expressions on scene properties.",
+    "description": "Update the orientation of a graphic using expressions based on its attributes.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "scene-properties-expressions.png"
     ],
     "keywords": [
+        "3D",
+        "expression",
+        "graphics",
+        "heading",
+        "pitch",
+        "rotation",
+        "scene",
+        "symbology",
+        "AGSGraphicsOverlay",
+        "AGSSceneProperties",
+        "AGSSimpleRenderer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/scene-properties-expressions.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/scene-properties-expressions.htm"
+    ],
     "relevant_apis": [
+        "AGSGraphicsOverlay",
+        "AGSSceneProperties",
+        "AGSSimpleRenderer"
     ],
     "snippets": [
         "ScenePropertiesExpressionsViewController.swift"

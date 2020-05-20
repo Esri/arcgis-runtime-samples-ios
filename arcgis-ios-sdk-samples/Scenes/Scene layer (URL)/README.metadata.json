@@ -1,14 +1,28 @@
 {
     "category": "Scenes",
-    "description": "The sample shows how to use a scene layer in a scene.",
+    "description": "Display an ArcGIS scene layer from a URL.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "scene-layer-url.png"
     ],
     "keywords": [
+        "3D",
+        "URL",
+        "buildings",
+        "model",
+        "scene",
+        "service",
+        "AGSArcGISSceneLayer",
+        "AGSScene",
+        "AGSSceneView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/scene-layer-url-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/scene-layer-url-.htm"
+    ],
     "relevant_apis": [
+        "AGSArcGISSceneLayer",
+        "AGSScene",
+        "AGSSceneView"
     ],
     "snippets": [
         "SceneLayerURLViewController.swift"

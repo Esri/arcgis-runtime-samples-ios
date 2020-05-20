@@ -1,14 +1,33 @@
 {
     "category": "Scenes",
-    "description": "This sample demonstrates how to apply extrusion to a renderer on a feature layer.",
+    "description": "Extrude features based on their attributes.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "feature-layer-extrusion.png"
     ],
     "keywords": [
+        "3D",
+        "extrude",
+        "extrusion",
+        "extrusion expression",
+        "height",
+        "renderer",
+        "scene",
+        "AGSExtrusionMode",
+        "AGSFeatureLayer",
+        "AGSRendererSceneProperties",
+        "AGSServiceFeatureTable",
+        "AGSSimpleRenderer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-extrusion.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-layer-extrusion.htm"
+    ],
     "relevant_apis": [
+        "AGSExtrusionMode",
+        "AGSFeatureLayer",
+        "AGSRendererSceneProperties",
+        "AGSServiceFeatureTable",
+        "AGSSimpleRenderer"
     ],
     "snippets": [
         "FeatureLayerExtrusionViewController.swift"

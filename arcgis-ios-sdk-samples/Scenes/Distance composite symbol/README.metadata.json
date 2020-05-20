@@ -1,14 +1,25 @@
 {
     "category": "Scenes",
-    "description": "Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.",
+    "description": "Change a graphic's symbol based on the camera's proximity to it.",
     "ignore": false,
     "images": [
-        "DistanceCompositeSymbol.gif"
+        "distance-composite-symbol.png"
     ],
     "keywords": [
+        "3D",
+        "data",
+        "graphic",
+        "AGSDistanceCompositeSceneSymbol",
+        "AGSDistanceSymbolRange",
+        "AGSOrbitGeoElementCameraController"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/distance-composite-symbol.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/distance-composite-symbol.htm"
+    ],
     "relevant_apis": [
+        "AGSDistanceCompositeSceneSymbol",
+        "AGSDistanceSymbolRange",
+        "AGSOrbitGeoElementCameraController"
     ],
     "snippets": [
         "DistanceCompositeSymbolViewController.swift"

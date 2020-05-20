@@ -1,14 +1,29 @@
 {
     "category": "Scenes",
-    "description": "This sample demonstrates how to use terrain exaggeration on a surface in a scene.",
+    "description": "Vertically exaggerate terrain in a scene.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "terrain-exaggeration.png"
     ],
     "keywords": [
+        "3D",
+        "DEM",
+        "DTM",
+        "elevation",
+        "scene",
+        "surface",
+        "terrain",
+        "AGSArcGISTiledElevationSource",
+        "AGSScene",
+        "AGSSurface"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/terrain-exaggeration.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/terrain-exaggeration.htm"
+    ],
     "relevant_apis": [
+        "AGSArcGISTiledElevationSource",
+        "AGSScene",
+        "AGSSurface"
     ],
     "snippets": [
         "TerrainExaggerationViewController.swift"

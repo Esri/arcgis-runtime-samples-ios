@@ -1,19 +1,34 @@
 {
     "category": "Analysis",
-    "description": "This sample demonstrates how to execute a geoprocessing task to calculate a hotspot analysis based on the frequency of 911 calls.",
+    "description": "Use a geoprocessing service and a set of features to identify statistically significant hot spots and cold spots.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "analyze-hotspots-1.png",
+        "analyze-hotspots-2.png"
     ],
     "keywords": [
+        "analysis",
+        "density",
+        "geoprocessing",
+        "hot spots",
+        "hotspots",
+        "AGSGeoprocessingJob",
+        "AGSGeoprocessingParameters",
+        "AGSGeoprocessingResult",
+        "AGSGeoprocessingTask"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/analyze-hotspots.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/analyze-hotspots.htm"
+    ],
     "relevant_apis": [
+        "AGSGeoprocessingJob",
+        "AGSGeoprocessingParameters",
+        "AGSGeoprocessingResult",
+        "AGSGeoprocessingTask"
     ],
     "snippets": [
-        "AnalyzeHotspotsViewController.swift",
-        "HotspotSettingsViewController.swift"
+        "HotspotSettingsViewController.swift",
+        "AnalyzeHotspotsViewController.swift"
     ],
     "title": "Analyze hotspots"
 }

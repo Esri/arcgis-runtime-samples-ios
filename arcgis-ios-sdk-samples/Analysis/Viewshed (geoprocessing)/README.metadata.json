@@ -1,14 +1,32 @@
 {
     "category": "Analysis",
-    "description": "This sample demonstrates how to calculate a viewshed using a geoprocessing service.",
+    "description": "Calculate a viewshed using a geoprocessing service, in this case showing what parts of a landscape are visible from points on mountainous terrain.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "viewshed-geoprocessing.png"
     ],
     "keywords": [
+        "geoprocessing",
+        "heat map",
+        "heatmap",
+        "viewshed",
+        "AGSFeatureCollectionTable",
+        "AGSGeoprocessingFeatures",
+        "AGSGeoprocessingJob",
+        "AGSGeoprocessingParameters",
+        "AGSGeoprocessingResult",
+        "AGSGeoprocessingTask"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/viewshed-geoprocessing-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/viewshed-geoprocessing-.htm"
+    ],
     "relevant_apis": [
+        "AGSFeatureCollectionTable",
+        "AGSGeoprocessingFeatures",
+        "AGSGeoprocessingJob",
+        "AGSGeoprocessingParameters",
+        "AGSGeoprocessingResult",
+        "AGSGeoprocessingTask"
     ],
     "snippets": [
         "ViewshedGeoprocessingViewController.swift"

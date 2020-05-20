@@ -1,0 +1,19 @@
+{
+    "category": "Augmented reality",
+    "description": "Use a route displayed in the real world to navigate.",
+    "ignore": false,
+    "images": [
+        "navigate-in-AR.png"
+    ],
+    "keywords": [
+        "attachment"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "ArcGISARView"
+    ],
+    "snippets": [
+        "NavigateARViewController.swift"
+    ],
+    "title": "Navigate in AR"
+}

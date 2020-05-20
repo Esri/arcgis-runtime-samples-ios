@@ -3,7 +3,7 @@
     "description": "Tap on real-world objects to collect data.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "Collect-Data-AR.png"
     ],
     "keywords": [
         "attachment",
@@ -17,14 +17,18 @@
         "full-scale",
         "mixed reality",
         "survey",
-        "world-scale"
-    ],
-    "redirect_from": [
-    ],
-    "relevant_apis": [
-        "ArcGISARView",
+        "world-scale",
         "AGSGraphicsOverlay",
-        "AGSSceneView"
+        "AGSSceneView",
+        "AGSSurface",
+        "ArcGISARView"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSGraphicsOverlay",
+        "AGSSceneView",
+        "AGSSurface",
+        "ArcGISARView"
     ],
     "snippets": [
         "CollectDataAR.swift"

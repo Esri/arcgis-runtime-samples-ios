@@ -3,27 +3,29 @@
     "description": "Update a feature's location in an online feature service.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png",
-        "image3.png",
-        "image4.png"
+        "update-geometries-4.png",
+        "update-geometries-1.png",
+        "update-geometries-2.png",
+        "update-geometries-3.png"
     ],
     "keywords": [
-        "edit",
-        "geometry",
-        "AGSServiceFeatureTable",
+        "editing",
+        "feature layer",
+        "feature table",
+        "moving",
+        "service",
+        "updating",
+        "AGSFeature",
         "AGSFeatureLayer",
-        "AGSArcGISFeature",
-        "AGSSketchEditor",
-        "AGSPoint"
+        "AGSServiceFeatureTable"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/update-geometries-feature-service-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/update-geometries-feature-service-.htm"
+    ],
     "relevant_apis": [
-        "AGSServiceFeatureTable",
+        "AGSFeature",
         "AGSFeatureLayer",
-        "AGSArcGISFeature",
-        "AGSSketchEditor",
-        "AGSPoint"
+        "AGSServiceFeatureTable"
     ],
     "snippets": [
         "EditGeometryViewController.swift"

@@ -1,53 +1,42 @@
 {
     "category": "Edit data",
-    "description": "Synchronize offline edits with a feature service.",
+    "description": "Synchronize offline edits with a feature service using a popup.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png",
-        "image3.png"
+        "offline-edit-sync-3.png",
+        "offline-edit-sync-2.png",
+        "offline-edit-sync-1.png"
     ],
     "keywords": [
+        "feature service",
+        "geodatabase",
         "offline",
-        "generate geodatabase",
         "synchronize",
-        "edit",
-        "unregister geodatabase",
-        "AGSGeodatabaseSyncTask",
+        "AGSFeatureLayer",
+        "AGSFeatureTable",
         "AGSGenerateGeodatabaseJob",
         "AGSGenerateGeodatabaseParameters",
-        "AGSGenerateLayerOption",
-        "AGSGeodatabase",
+        "AGSGeodatabaseSyncTask",
         "AGSSyncGeodatabaseJob",
         "AGSSyncGeodatabaseParameters",
-        "AGSSyncLayerOption",
-        "AGSSyncLayerResult",
-        "AGSServiceFeatureTable",
-        "AGSPopupsViewController",
-        "AGSLoadObjects",
-        "AGSJobStatus",
-        "AGSSketchEditor"
+        "AGSSyncLayerOption"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/offline-edit-and-sync.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/offline-edit-and-sync.htm"
+    ],
     "relevant_apis": [
-        "AGSGeodatabaseSyncTask",
+        "AGSFeatureLayer",
+        "AGSFeatureTable",
         "AGSGenerateGeodatabaseJob",
         "AGSGenerateGeodatabaseParameters",
-        "AGSGenerateLayerOption",
-        "AGSGeodatabase",
+        "AGSGeodatabaseSyncTask",
         "AGSSyncGeodatabaseJob",
         "AGSSyncGeodatabaseParameters",
-        "AGSSyncLayerOption",
-        "AGSSyncLayerResult",
-        "AGSServiceFeatureTable",
-        "AGSPopupsViewController",
-        "AGSLoadObjects",
-        "AGSJobStatus",
-        "AGSSketchEditor"
+        "AGSSyncLayerOption"
     ],
     "snippets": [
         "FeatureLayersViewController.swift",
         "OfflineEditingViewController.swift"
     ],
-    "title": "Edit and sync features"
+    "title": "Offline edit and sync"
 }

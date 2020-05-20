@@ -1,37 +1,33 @@
 {
     "category": "Edit data",
-    "description": "Use popups to edit features in a feature layer",
+    "description": "View, edit, or add features using a popup.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png",
-        "image3.png"
+        "edit-features-connected-2.png",
+        "edit-features-connected-3.png",
+        "edit-features-connected-1.png"
     ],
     "keywords": [
+        "details",
         "edit",
+        "editing",
+        "feature",
+        "information",
         "popup",
-        "sketch editor",
-        "feature template",
-        "AGSPopupDefinition",
-        "AGSPopup",
-        "AGSPopupsViewController",
-        "AGSPopupsViewControllerDelegate",
-        "AGSFeatureTemplate",
+        "template",
+        "value",
         "AGSFeatureLayer",
-        "AGSSketchEditor",
-        "AGSIdentifyLayerResult",
-        "AGSServiceFeatureTable"    
+        "AGSFeatureTemplate",
+        "AGSPopup",
+        "AGSServiceFeatureTable"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/edit-features-connected-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/edit-features-connected-.htm"
+    ],
     "relevant_apis": [
-        "AGSPopupDefinition",
-        "AGSPopup",
-        "AGSPopupsViewController",
-        "AGSPopupsViewControllerDelegate",
-        "AGSFeatureTemplate",
         "AGSFeatureLayer",
-        "AGSSketchEditor",
-        "AGSIdentifyLayerResult",
+        "AGSFeatureTemplate",
+        "AGSPopup",
         "AGSServiceFeatureTable"
     ],
     "snippets": [

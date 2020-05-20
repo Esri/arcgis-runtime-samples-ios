@@ -3,33 +3,36 @@
     "description": "Display directions for a route between two points.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "find-route-1.png",
+        "find-route-2.png"
     ],
     "keywords": [
-        "route",
         "directions",
-        "network",
-        "shortest path",
-        "routing",
+        "driving",
         "navigation",
+        "network",
+        "network analysis",
+        "route",
+        "routing",
+        "shortest path",
         "turn-by-turn",
-        "maneuver",
-        "AGSRouteTask",
-        "AGSRouteParameters",
-        "AGSStop",
-        "AGSRouteResult",
+        "AGSDirectionManeuver",
         "AGSRoute",
-        "AGSDirectionManeuver"
+        "AGSRouteParameters",
+        "AGSRouteResult",
+        "AGSRouteTask",
+        "AGSStop"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/find-route.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/find-route.htm"
+    ],
     "relevant_apis": [
-        "AGSRouteTask",
-        "AGSRouteParameters",
-        "AGSStop",
-        "AGSRouteResult",
+        "AGSDirectionManeuver",
         "AGSRoute",
-        "AGSDirectionManeuver"
+        "AGSRouteParameters",
+        "AGSRouteResult",
+        "AGSRouteTask",
+        "AGSStop"
     ],
     "snippets": [
         "FindRouteViewController.swift",

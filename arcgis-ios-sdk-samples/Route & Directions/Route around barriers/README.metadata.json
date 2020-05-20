@@ -3,38 +3,63 @@
     "description": "Find a route that reaches all stops without crossing any barriers.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "route-around-barriers-2.png",
+        "route-around-barriers-1.png"
     ],
     "keywords": [
-        "network",
-        "routing",
         "barriers",
-        "stops",
+        "best sequence",
         "directions",
         "maneuver",
-        "AGSRouteTask",
-        "AGSRouteParameters",
-        "AGSStop",
-        "AGSRouteResult",
-        "AGSRoute",
+        "network analysis",
+        "routing",
+        "sequence",
+        "stop order",
+        "stops",
         "AGSDirectionManeuver",
-        "AGSPolygonBarrier"
+        "AGSPolygonBarrier",
+        "AGSRoute",
+        "AGSRoute.directionManeuvers",
+        "AGSRoute.routeGeometry",
+        "AGSRouteParameters.clearPolygonBarriers",
+        "AGSRouteParameters.findBestSequence",
+        "AGSRouteParameters.preserveFirstStop",
+        "AGSRouteParameters.preserveLastStop",
+        "AGSRouteParameters.returnDirections",
+        "AGSRouteParameters.returnStops",
+        "AGSRouteParameters.setPolygonBarriers",
+        "AGSRouteResult",
+        "AGSRouteResult.routes",
+        "AGSRouteTask",
+        "AGSStop",
+        "AGSStop.Name"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/route-around-barriers.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/route-around-barriers.htm"
+    ],
     "relevant_apis": [
-        "AGSRouteTask",
-        "AGSRouteParameters",
-        "AGSStop",
-        "AGSRouteResult",
-        "AGSRoute",
         "AGSDirectionManeuver",
-        "AGSPolygonBarrier"
+        "AGSPolygonBarrier",
+        "AGSRoute",
+        "AGSRoute.directionManeuvers",
+        "AGSRoute.routeGeometry",
+        "AGSRouteParameters.clearPolygonBarriers",
+        "AGSRouteParameters.findBestSequence",
+        "AGSRouteParameters.preserveFirstStop",
+        "AGSRouteParameters.preserveLastStop",
+        "AGSRouteParameters.returnDirections",
+        "AGSRouteParameters.returnStops",
+        "AGSRouteParameters.setPolygonBarriers",
+        "AGSRouteResult",
+        "AGSRouteResult.routes",
+        "AGSRouteTask",
+        "AGSStop",
+        "AGSStop.Name"
     ],
     "snippets": [
-        "RouteAroundBarriersViewController.swift",
         "RouteParametersViewController.swift",
-        "DirectionsListViewController.swift"
+        "DirectionsListViewController.swift",
+        "RouteAroundBarriersViewController.swift"
     ],
     "title": "Route around barriers"
 }

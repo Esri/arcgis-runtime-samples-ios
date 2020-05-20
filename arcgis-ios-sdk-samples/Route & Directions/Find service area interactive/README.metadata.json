@@ -3,31 +3,35 @@
     "description": "Find the service area within a network from a given point.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "find-service-area-interactive.png"
     ],
     "keywords": [
-        "routing",
-        "logistics",
-        "facilities",
         "barriers",
+        "facilities",
         "impedance",
-        "AGSServiceAreaTask",
-        "AGSServiceAreaParameters",
-        "AGSServiceAreaFacility",
+        "logistics",
+        "routing",
         "AGSPolygonBarrier",
-        "AGSServiceAreaResult"
+        "AGSServiceAreaFacility",
+        "AGSServiceAreaParameters",
+        "AGSServiceAreaPolygon",
+        "AGSServiceAreaResult",
+        "AGSServiceAreaTask"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/find-service-area-interactive.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/find-service-area-interactive.htm"
+    ],
     "relevant_apis": [
-        "AGSServiceAreaTask",
-        "AGSServiceAreaParameters",
-        "AGSServiceAreaFacility",
         "AGSPolygonBarrier",
-        "AGSServiceAreaResult"
+        "AGSServiceAreaFacility",
+        "AGSServiceAreaParameters",
+        "AGSServiceAreaPolygon",
+        "AGSServiceAreaResult",
+        "AGSServiceAreaTask"
     ],
     "snippets": [
-        "FindServiceAreaInteractiveViewController.swift",
-        "ServiceAreaSettingsVC.swift"
+        "ServiceAreaSettingsVC.swift",
+        "FindServiceAreaInteractiveViewController.swift"
     ],
-    "title": "Find service area"
+    "title": "Find service area interactive"
 }

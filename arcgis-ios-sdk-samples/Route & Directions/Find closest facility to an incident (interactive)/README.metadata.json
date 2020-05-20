@@ -6,11 +6,19 @@
         "find-closest-facility-to-an-incident-interactive.png"
     ],
     "keywords": [
-        "network analysis",
-        "routing and logistics",
         "incident",
+        "network analysis",
         "route",
-        "search"
+        "routing & directions",
+        "search",
+        "AGSClosestFacilityParameters",
+        "AGSClosestFacilityResult",
+        "AGSClosestFacilityRoute",
+        "AGSClosestFacilityTask",
+        "AGSFacility",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSIncident"
     ],
     "redirect_from": [],
     "relevant_apis": [
@@ -23,6 +31,8 @@
         "AGSGraphicsOverlay",
         "AGSIncident"
     ],
-    "snippets": [],
+    "snippets": [
+        "FindClosestFacilityInteractiveViewController.swift"
+    ],
     "title": "Find closest facility to an incident (interactive)"
 }

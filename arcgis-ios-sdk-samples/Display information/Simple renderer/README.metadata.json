@@ -3,23 +3,30 @@
     "description": "Display common symbols for all graphics in a graphics overlay with a renderer.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "simple-renderer.png"
     ],
     "keywords": [
+        "graphics",
+        "marker",
+        "renderer",
         "symbol",
-        "AGSSimpleMarkerSymbol",
-        "AGSSimpleRenderer",
-        "AGSPoint",
+        "symbolize",
+        "symbology",
         "AGSGraphic",
-        "AGSGraphicsOverlay"
+        "AGSGraphicsOverlay",
+        "AGSPoint",
+        "AGSSimpleMarkerSymbol",
+        "AGSSimpleRenderer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/simple-renderer.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/simple-renderer.htm"
+    ],
     "relevant_apis": [
-        "AGSSimpleMarkerSymbol",
-        "AGSSimpleRenderer",
-        "AGSPoint",
         "AGSGraphic",
-        "AGSGraphicsOverlay"
+        "AGSGraphicsOverlay",
+        "AGSPoint",
+        "AGSSimpleMarkerSymbol",
+        "AGSSimpleRenderer"
     ],
     "snippets": [
         "SimpleRendererViewController.swift"

@@ -3,20 +3,26 @@
     "description": "Show a callout with the latitude and longitude of user-tapped points.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "show-callout.png"
     ],
     "keywords": [
+        "balloon",
+        "bubble",
         "callout",
-        "tap",
-        "popup",
+        "flyout",
+        "flyover",
         "info window",
-        "AGSGeoViewTouchDelegate",
-        "AGSMapView"
+        "popup",
+        "tap",
+        "AGSCallout",
+        "AGSGeoViewTouchDelegate"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/show-callout.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/show-callout.htm"
+    ],
     "relevant_apis": [
-        "AGSGeoViewTouchDelegate",
-        "AGSMapView"
+        "AGSCallout",
+        "AGSGeoViewTouchDelegate"
     ],
     "snippets": [
         "CalloutViewController.swift"

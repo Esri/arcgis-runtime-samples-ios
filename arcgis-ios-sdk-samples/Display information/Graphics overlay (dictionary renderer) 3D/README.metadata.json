@@ -1,23 +1,27 @@
 {
     "category": "Display information",
-    "description": "Display MIL-STD-2525D military symbology in 3D.",
+    "description": "Create graphics using a local mil2525d style file and an XML file with key/value pairs for each graphic, and display the military symbols in 3D.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "dictionary-renderer-graphics-overlay.png"
     ],
     "keywords": [
-        "Graphics",
-        "Symbology",
-        "3D",
-        "AGSGraphicsOverlay",
+        "defense",
+        "military",
+        "situational awareness",
+        "tactical",
+        "visualization",
         "AGSDictionaryRenderer",
-        "AGSDictionarySymbolStyle"
+        "AGSDictionarySymbolStyle",
+        "AGSGraphicsOverlay"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/graphics-overlay-dictionary-renderer-3d.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/graphics-overlay-dictionary-renderer-3d.htm"
+    ],
     "relevant_apis": [
-        "AGSGraphicsOverlay",
         "AGSDictionaryRenderer",
-        "AGSDictionarySymbolStyle"
+        "AGSDictionarySymbolStyle",
+        "AGSGraphicsOverlay"
     ],
     "snippets": [
         "GraphicsOverlayDictionaryRenderer3DViewController.swift"

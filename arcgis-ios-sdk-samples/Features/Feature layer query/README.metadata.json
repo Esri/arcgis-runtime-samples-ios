@@ -1,15 +1,26 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to query a feature layer via feature table.",
+    "description": "Find features in a feature table which match an SQL query.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "feature-layer-query-2.png",
+        "feature-layer-query-1.png"
     ],
     "keywords": [
+        "Search and Query",
+        "AGSFeatureLayer",
+        "AGSFeatureQueryResult",
+        "AGSQueryParameters",
+        "AGSServiceFeatureTable"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-query.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-layer-query.htm"
+    ],
     "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSFeatureQueryResult",
+        "AGSQueryParameters",
+        "AGSServiceFeatureTable"
     ],
     "snippets": [
         "FLQueryViewController.swift"

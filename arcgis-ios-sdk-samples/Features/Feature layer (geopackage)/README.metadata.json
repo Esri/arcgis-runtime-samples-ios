@@ -1,14 +1,30 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to show a feature layer on a map using a geopackage.",
+    "description": "Display features from a local GeoPackage.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "feature-layer-geopackage.png"
     ],
     "keywords": [
+        "OGC",
+        "feature table",
+        "geopackage",
+        "gpkg",
+        "package",
+        "standards",
+        "AGSFeatureLayer",
+        "AGSGeoPackage",
+        "AGSGeoPackageFeatureTable",
+        "AGSMap"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-geopackage-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-layer-geopackage-.htm"
+    ],
     "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSGeoPackage",
+        "AGSGeoPackageFeatureTable",
+        "AGSMap"
     ],
     "snippets": [
         "FeatureLayerGPKGViewController.swift"

@@ -1,15 +1,30 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how you can limit which features to display on the map.",
+    "description": "Limit the features displayed on a map with a definition expression.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "feature-layer-expression-1.png",
+        "feature-layer-expression-2.png"
     ],
     "keywords": [
+        "SQL",
+        "definition expression",
+        "filter",
+        "limit data",
+        "query",
+        "restrict data",
+        "where clause",
+        "AGSDefinitionExpression",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-definition-expression.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-layer-definition-expression.htm"
+    ],
     "relevant_apis": [
+        "AGSDefinitionExpression",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable"
     ],
     "snippets": [
         "DefinitionExpressionViewController.swift"

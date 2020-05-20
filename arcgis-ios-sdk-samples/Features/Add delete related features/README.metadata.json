@@ -1,19 +1,33 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to add or delete related features on an origin feature.",
+    "description": "Add or delete related features on an origin feature.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "add-delete-features-1.png",
+        "add-delete-features-2.png"
     ],
     "keywords": [
+        "editing",
+        "features",
+        "service",
+        "updating",
+        "AGSArcGISFeature.relate(to:)",
+        "AGSFeatureLayer",
+        "AGSFeatureTable.createFeature(attributes:geometry:)",
+        "AGSServiceFeatureTable"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/add-delete-related-features.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/add-delete-related-features.htm"
+    ],
     "relevant_apis": [
+        "AGSArcGISFeature.relate(to:)",
+        "AGSFeatureLayer",
+        "AGSFeatureTable.createFeature(attributes:geometry:)",
+        "AGSServiceFeatureTable"
     ],
     "snippets": [
-        "AddDeleteRelatedFeaturesViewController.swift",
-        "RelatedFeaturesViewController.swift"
+        "RelatedFeaturesViewController.swift",
+        "AddDeleteRelatedFeaturesViewController.swift"
     ],
     "title": "Add delete related features"
 }

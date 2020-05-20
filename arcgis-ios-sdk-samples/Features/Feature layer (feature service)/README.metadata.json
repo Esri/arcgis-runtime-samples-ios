@@ -1,14 +1,30 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to show a feature layer on a map using the URL to the service",
+    "description": "Show features from an online feature service.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "feature-layer-service.png"
     ],
     "keywords": [
+        "feature table",
+        "layer",
+        "layers",
+        "service",
+        "AGSBasemap",
+        "AGSFeatureLayer",
+        "AGSMap",
+        "AGSMapView",
+        "AGSServiceFeatureTable"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-feature-service-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-layer-feature-service-.htm"
+    ],
     "relevant_apis": [
+        "AGSBasemap",
+        "AGSFeatureLayer",
+        "AGSMap",
+        "AGSMapView",
+        "AGSServiceFeatureTable"
     ],
     "snippets": [
         "FeatureLayerURLViewController.swift"

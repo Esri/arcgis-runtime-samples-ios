@@ -22,8 +22,8 @@
         "AGSUtilityElementTraceResult",
         "AGSUtilityNetwork",
         "AGSUtilityNetworkDefinition",
-        "AGSUtilityTraceFilter",
         "AGSUtilityTier",
+        "AGSUtilityTraceFilter",
         "AGSUtilityTraceParameters",
         "AGSUtilityTraceResult",
         "AGSUtilityTraceType"
@@ -38,8 +38,8 @@
         "AGSUtilityElementTraceResult",
         "AGSUtilityNetwork",
         "AGSUtilityNetworkDefinition",
-        "AGSUtilityTraceFilter",
         "AGSUtilityTier",
+        "AGSUtilityTraceFilter",
         "AGSUtilityTraceParameters",
         "AGSUtilityTraceResult",
         "AGSUtilityTraceType"
@@ -47,5 +47,5 @@
     "snippets": [
         "PerformValveIsolationTraceViewController.swift"
     ],
-    "title": "Perform Valve Isolation Trace"
+    "title": "Perform valve isolation trace"
 }

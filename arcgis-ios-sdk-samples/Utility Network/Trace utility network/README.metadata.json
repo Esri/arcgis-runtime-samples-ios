@@ -15,7 +15,6 @@
         "upstream trace",
         "utility network",
         "validate consistency",
-        "class AGSGeometryEngine.fraction(alongLine:to:tolerance:)",
         "AGSUtilityAssetType",
         "AGSUtilityDomainNetwork",
         "AGSUtilityElement",
@@ -29,11 +28,11 @@
         "AGSUtilityTraceParameters",
         "AGSUtilityTraceResult",
         "AGSUtilityTraceType",
-        "AGSUtilityTraversability"
+        "AGSUtilityTraversability",
+        "class AGSGeometryEngine.fraction(alongLine:to:tolerance:)"
     ],
     "redirect_from": [],
     "relevant_apis": [
-        "class AGSGeometryEngine.fraction(alongLine:to:tolerance:)",
         "AGSUtilityAssetType",
         "AGSUtilityDomainNetwork",
         "AGSUtilityElement",
@@ -47,7 +46,8 @@
         "AGSUtilityTraceParameters",
         "AGSUtilityTraceResult",
         "AGSUtilityTraceType",
-        "AGSUtilityTraversability"
+        "AGSUtilityTraversability",
+        "class AGSGeometryEngine.fraction(alongLine:to:tolerance:)"
     ],
     "snippets": [
         "TraceUtilityNetworkViewController.swift"

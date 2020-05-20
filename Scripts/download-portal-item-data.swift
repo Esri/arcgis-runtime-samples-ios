@@ -33,15 +33,15 @@ struct DestinationURLProvider: URLProvider {
     let downloadDirectory: URL
     let fileTypes: [String: [String]]
     
-    /// Make a full path for a file based on the mapping between its filename and file type.
+    /// Make a full path for a file based on the mapping between its filename
+    /// and file type.
     ///
     /// - Parameter filename: The filename of the file.
     /// - Returns: A URL to the file.
     func makeURL(filename: String) -> URL {
         var url = downloadDirectory
-        if let subdirectory = fileTypes.first(
-            where: { $0.value.contains((filename as NSString).pathExtension) }
-            )?.key {
+        if let subdirectory = fileTypes.first(where: {
+            $0.value.contains((filename as NSString).pathExtension) })?.key {
             url.appendPathComponent(subdirectory, isDirectory: true)
         }
         url.appendPathComponent(filename, isDirectory: false)
@@ -49,7 +49,8 @@ struct DestinationURLProvider: URLProvider {
     }
 }
 
-/// Creates a URL such as `{portalURL}/sharing/rest/content/items/{itemIdentifier}/data`
+/// Creates a URL such as
+/// `{portalURL}/sharing/rest/content/items/{itemIdentifier}/data`
 /// for the given item in the given portal.
 ///
 /// - Parameters:
@@ -126,7 +127,7 @@ func uncompressArchive(at sourceURL: URL, to destinationURL: URL) throws {
 ///
 /// - Parameters:
 ///   - sourceURL: The portal URL to the resource.
-///   - destinationURLProvider: A helper struct to make destination path URL with filename.
+///   - destinationURLProvider: A helper struct to make destination URL with filename.
 ///   - completion: A closure to handle the results.
 func downloadFile(at sourceURL: URL, destinationURLProvider: URLProvider, completion: @escaping (Result<URL, Error>) -> Void) {
     let downloadTask = URLSession.shared.downloadTask(with: sourceURL) { (temporaryURL, response, error) in
@@ -190,7 +191,7 @@ struct PortalItem: Decodable {
     var filename: String
 }
 
-// MARK: Enters the script from here.
+// MARK: Script Entry
 
 let arguments = CommandLine.arguments
 
@@ -261,16 +262,10 @@ portalItems.forEach { (portalURLString, portalItems) in
         // Have we already downloaded the item?
         let filename = downloadedItems[portalItem.identifier] ?? portalItem.filename
         let tempURL = destinationURLProvider.makeURL(filename: filename)
-        let pathURL = tempURL.pathExtension == "zip" ? tempURL.deletingPathExtension() : tempURL
+        let fileURL = tempURL.pathExtension == "zip" ? tempURL.deletingPathExtension() : tempURL
         
-        // Check if a single file or a folder exists.
-        var isDirectory = ObjCBool(false)
-        let isFileExist = FileManager.default.fileExists(atPath: pathURL.path, isDirectory: &isDirectory)
-        
-        if isFileExist && isDirectory.boolValue {
-            print("Item \(portalItem.identifier) has already been downloaded, and is extracted to an folder")
-            downloadedItems[portalItem.identifier] = filename
-        } else if isFileExist {
+        // Check if a single file or a directory exists.
+        if FileManager.default.fileExists(atPath: fileURL.path) {
             print("Item \(portalItem.identifier) has already been downloaded")
             // This is a temporary measure for users who currently don't have a downloaded items file.
             downloadedItems[portalItem.identifier] = filename

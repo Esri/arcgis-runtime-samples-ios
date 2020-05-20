@@ -1,27 +1,24 @@
 {
     "category": "Geometry",
-    "description": "Perform geodesic operations using the GeometryEngine. Geodesic calculations take into account the curvature of the Earth. Planar calculations are based on a 2D Cartesian plane.",
+    "description": "Calculate a geodesic path between two points and measure its distance.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "geodesic-operations.png"
     ],
     "keywords": [
-        "geometry engine",
         "densify",
         "distance",
-        "geodetic",
         "geodesic",
-        "AGSGeometry",
-        "AGSGeometryEngine",
-        "AGSGraphic",
-        "AGSGraphicsOverlay"
+        "geodetic",
+        "class AGSGeometryEngine.geodeticDensifyGeometry(_:maxSegmentLength:lengthUnit:curveType:)",
+        "class AGSGeometryEngine.geodeticLength(of:lengthUnit:curveType:)"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/geodesic-operations.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/geodesic-operations.htm"
+    ],
     "relevant_apis": [
-        "AGSGeometry",
-        "AGSGeometryEngine",
-        "AGSGraphic",
-        "AGSGraphicsOverlay"
+        "class AGSGeometryEngine.geodeticDensifyGeometry(_:maxSegmentLength:lengthUnit:curveType:)",
+        "class AGSGeometryEngine.geodeticLength(of:lengthUnit:curveType:)"
     ],
     "snippets": [
         "GeodesicOperationsViewController.swift"

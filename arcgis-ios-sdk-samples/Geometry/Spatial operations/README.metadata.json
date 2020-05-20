@@ -3,25 +3,38 @@
     "description": "Find the union, intersection, or difference of two geometries.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "perform-spatial-operations.png"
     ],
     "keywords": [
+        "analysis",
+        "combine",
+        "difference",
         "geometry",
         "intersection",
         "merge",
-        "difference",
+        "polygon",
         "union",
+        "AGSGeometry",
         "AGSGeometryEngine",
-        "AGSPolygonBuilder",
         "AGSGraphic",
-        "AGSGraphicsOverlay"
+        "AGSGraphicsOverlay",
+        "class AGSGeometryEngine.difference(ofGeometry1:geometry2:)",
+        "class AGSGeometryEngine.intersection(ofGeometry1:geometry2:)",
+        "class AGSGeometryEngine.symmetricDifference(ofGeometry1:geometry2:)",
+        "class AGSGeometryEngine.union(ofGeometry1:geometry2:)"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/spatial-operations.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/spatial-operations.htm"
+    ],
     "relevant_apis": [
+        "AGSGeometry",
         "AGSGeometryEngine",
-        "AGSPolygonBuilder",
         "AGSGraphic",
-        "AGSGraphicsOverlay"
+        "AGSGraphicsOverlay",
+        "class AGSGeometryEngine.difference(ofGeometry1:geometry2:)",
+        "class AGSGeometryEngine.intersection(ofGeometry1:geometry2:)",
+        "class AGSGeometryEngine.symmetricDifference(ofGeometry1:geometry2:)",
+        "class AGSGeometryEngine.union(ofGeometry1:geometry2:)"
     ],
     "snippets": [
         "SpatialOperationsViewController.swift",

@@ -3,24 +3,29 @@
     "description": "Format coordinates in a variety of common notations.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "format-coordinates.png"
     ],
     "keywords": [
-        "coordinate",
+        "USNG",
         "UTM",
+        "convert",
+        "coordinate",
         "decimal degrees",
         "degree minutes seconds",
+        "format",
         "latitude",
         "longitude",
         "AGSCoordinateFormatter",
-        "AGSGeoViewTouchDelegate",
-        "AGSGraphic"
+        "AGSLatitudeLongitudeFormat",
+        "AGSUTMConversionMode"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/format-coordinates.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/format-coordinates.htm"
+    ],
     "relevant_apis": [
         "AGSCoordinateFormatter",
-        "AGSGeoViewTouchDelegate",
-        "AGSGraphic"
+        "AGSLatitudeLongitudeFormat",
+        "AGSUTMConversionMode"
     ],
     "snippets": [
         "FormatCoordinatesViewController.swift",

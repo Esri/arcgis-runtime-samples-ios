@@ -1,25 +1,26 @@
 {
     "category": "Layers",
-    "description": "This sample demonstrates how to discover available styles and apply them to WMS sublayers.",
+    "description": "Change the style of a Web Map Service (WMS) layer.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "style-wms-layers.png"
     ],
     "keywords": [
         "WMS",
-        "styles",
         "imagery",
-        "AGSWMSLayerInfo",
-        "AGSWMSLayer.sublayers",
-        "AGSWMSLayerInfo.styles",
-        "AGSWMSSublayer.currentStyle"
+        "styles",
+        "visualization",
+        "AGSWMSLayer",
+        "AGSWMSSublayer",
+        "AGSWMSSublayerInfo"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/style-wms-layers.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/style-wms-layers.htm"
+    ],
     "relevant_apis": [
-        "AGSWMSLayerInfo",
-        "AGSWMSLayer.sublayers",
-        "AGSWMSLayerInfo.styles",
-        "AGSWMSSublayer.currentStyle"
+        "AGSWMSLayer",
+        "AGSWMSSublayer",
+        "AGSWMSSublayerInfo"
     ],
     "snippets": [
         "StyleWebMapServiceLayerViewController.swift"

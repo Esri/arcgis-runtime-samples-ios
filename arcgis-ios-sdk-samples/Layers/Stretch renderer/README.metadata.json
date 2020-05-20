@@ -3,34 +3,48 @@
     "description": "Use a stretch renderer to enhance the visual contrast of raster data for analysis.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "stretch-renderer-1.png",
+        "stretch-renderer-2.png"
     ],
     "keywords": [
-        "stretch renderer",
-        "raster layer",
-        "AGSStretchRenderer",
-        "AGSStretchParameters",
+        "analysis",
+        "deviation",
+        "histogram",
+        "imagery",
+        "interpretation",
+        "min-max",
+        "percent clip",
+        "pixel",
+        "raster",
+        "stretch",
+        "symbology",
+        "visualization",
+        "AGSColorRamp",
         "AGSMinMaxStretchParameters",
         "AGSPercentClipStretchParameters",
-        "AGSStandardDeviationStretchParameters",
         "AGSRaster",
-        "AGSRasterLayer"
+        "AGSRasterLayer",
+        "AGSStandardDeviationStretchParameters",
+        "AGSStretchParameters",
+        "AGSStretchRenderer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/stretch-renderer.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/stretch-renderer.htm"
+    ],
     "relevant_apis": [
-        "AGSStretchRenderer",
-        "AGSStretchParameters",
+        "AGSColorRamp",
         "AGSMinMaxStretchParameters",
         "AGSPercentClipStretchParameters",
-        "AGSStandardDeviationStretchParameters",
         "AGSRaster",
-        "AGSRasterLayer"
+        "AGSRasterLayer",
+        "AGSStandardDeviationStretchParameters",
+        "AGSStretchParameters",
+        "AGSStretchRenderer"
     ],
     "snippets": [
-        "StretchRendererViewController.swift",
+        "StretchRendererInputCell.swift",
         "StretchRendererSettingsVC.swift",
-        "StretchRendererInputCell.swift"
+        "StretchRendererViewController.swift"
     ],
     "title": "Stretch renderer"
 }

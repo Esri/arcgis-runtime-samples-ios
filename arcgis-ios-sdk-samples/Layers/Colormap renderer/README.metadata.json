@@ -6,8 +6,8 @@
         "colormap-renderer.png"
     ],
     "keywords": [
-        "data",
         "colormap",
+        "data",
         "raster",
         "renderer",
         "visualization",
@@ -15,8 +15,7 @@
         "AGSRaster",
         "AGSRasterLayer"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSColormapRenderer",
         "AGSRaster",

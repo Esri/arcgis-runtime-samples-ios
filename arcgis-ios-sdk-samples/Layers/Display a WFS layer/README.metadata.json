@@ -3,30 +3,29 @@
     "description": "Display a layer from a WFS service, requesting only features for the current extent.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "display-wfs-layer.png"
     ],
     "keywords": [
         "OGC",
         "WFS",
-        "feature",
-        "web",
-        "service",
-        "layers",
         "browse",
         "catalog",
+        "feature",
         "interaction cache",
+        "layers",
+        "service",
+        "web",
         "AGSFeatureLayer",
+        "AGSGeoView.viewpointChangeHandler",
         "AGSWFSFeatureTable",
-        "AGSWFSFeatureTable.populateFromService(with:clearCache:outFields:completion:)",
-        "AGSGeoView.viewpointChangeHandler"
+        "AGSWFSFeatureTable.populateFromService"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSFeatureLayer",
+        "AGSGeoView.viewpointChangeHandler",
         "AGSWFSFeatureTable",
-        "AGSWFSFeatureTable.populateFromService(with:clearCache:outFields:completion:)",
-        "AGSGeoView.viewpointChangeHandler"
+        "AGSWFSFeatureTable.populateFromService"
     ],
     "snippets": [
         "DisplayWFSViewController.swift"

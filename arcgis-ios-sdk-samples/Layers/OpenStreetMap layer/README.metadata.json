@@ -3,20 +3,27 @@
     "description": "Add OpenStreetMap as a basemap layer.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "open-street-map-layer.png"
     ],
     "keywords": [
-        "Basemaps",
-        "Layers",
+        "OSM",
+        "OpenStreetMap",
+        "basemap",
+        "layers",
+        "map",
+        "open",
+        "street",
+        "AGSBasemap",
         "AGSMap",
-        "AGSBasemapType",
         "AGSMapView",
         "AGSOpenStreetMapLayer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/openstreetmap-layer.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/openstreetmap-layer.htm"
+    ],
     "relevant_apis": [
+        "AGSBasemap",
         "AGSMap",
-        "AGSBasemapType",
         "AGSMapView",
         "AGSOpenStreetMapLayer"
     ],

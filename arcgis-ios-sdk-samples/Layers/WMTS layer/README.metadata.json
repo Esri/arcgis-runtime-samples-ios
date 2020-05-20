@@ -3,21 +3,27 @@
     "description": "Display a layer from a Web Map Tile Service.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "wmts-layer.png"
     ],
     "keywords": [
-        "OGS",
-        "WMTS",
-        "Web map tiled service",
-        "AGSWMTSService",
+        "OGC",
+        "layer",
+        "raster",
+        "tiled",
+        "web map tile service",
         "AGSWMTSLayer",
-        "AGSBasemap"
+        "AGSWMTSLayerInfo",
+        "AGSWMTSService",
+        "AGSWMTSServiceInfo"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/wmts-layer.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/wmts-layer.htm"
+    ],
     "relevant_apis": [
-        "AGSWMTSService",
         "AGSWMTSLayer",
-        "AGSBasemap"
+        "AGSWMTSLayerInfo",
+        "AGSWMTSService",
+        "AGSWMTSServiceInfo"
     ],
     "snippets": [
         "WMTSLayerViewController.swift"

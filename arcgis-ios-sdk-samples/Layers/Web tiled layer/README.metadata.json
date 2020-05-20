@@ -1,19 +1,27 @@
 {
     "category": "Layers",
-    "description": "Display a web tiled layer.",
+    "description": "Display a tiled web layer.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "web-tiled-layer.png"
     ],
     "keywords": [
-        "web tiled layer",
-        "AGSWebTiledLayer",
-        "AGSBasemap"
+        "OGC",
+        "Open Street Map",
+        "OpenStreetMap",
+        "layer",
+        "stamen.com",
+        "tiled",
+        "tiles",
+        "AGSBasemap",
+        "AGSWebTiledLayer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/web-tiled-layer.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/web-tiled-layer.htm"
+    ],
     "relevant_apis": [
-        "AGSWebTiledLayer",
-        "AGSBasemap"
+        "AGSBasemap",
+        "AGSWebTiledLayer"
     ],
     "snippets": [
         "WebTiledLayerViewController.swift"

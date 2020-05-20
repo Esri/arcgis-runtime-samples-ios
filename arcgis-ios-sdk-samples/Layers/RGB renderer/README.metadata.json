@@ -3,27 +3,42 @@
     "description": "Apply an RGB renderer to a raster layer to enhance feature visibility.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "rgb-renderer-1.png",
+        "rgb-renderer-2.png"
     ],
     "keywords": [
-        "RGB",
-        "renderer",
+        "analysis",
+        "color",
+        "composite",
+        "imagery",
+        "multiband",
+        "multispectral",
+        "pan-sharpen",
+        "photograph",
+        "raster",
+        "spectrum",
         "stretch",
+        "visualization",
+        "AGSBasemap",
         "AGSRGBRenderer",
-        "AGSStretchParameters",
-        "AGSRasterLayer"
+        "AGSRaster",
+        "AGSRasterLayer",
+        "AGSStretchParameters"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/rgb-renderer.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/rgb-renderer.htm"
+    ],
     "relevant_apis": [
+        "AGSBasemap",
         "AGSRGBRenderer",
-        "AGSStretchParameters",
-        "AGSRasterLayer"
+        "AGSRaster",
+        "AGSRasterLayer",
+        "AGSStretchParameters"
     ],
     "snippets": [
-        "RGBRendererViewController.swift",
         "RGBRendererSettingsVC.swift",
-        "RGB Renderer Cells.swift"
+        "RGB Renderer Cells.swift",
+        "RGBRendererViewController.swift"
     ],
     "title": "RGB renderer"
 }

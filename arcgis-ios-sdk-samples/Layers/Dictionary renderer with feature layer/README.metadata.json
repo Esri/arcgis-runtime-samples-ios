@@ -6,20 +6,17 @@
         "dictionary-renderer-with-feature-layer.png"
     ],
     "keywords": [
-        "dictionaryrenderer",
-        "dictionarysymbolstyle",
+        "DictionaryRenderer",
+        "DictionarySymbolStyle",
         "military",
         "symbol",
         "AGSDictionaryRenderer",
-        "AGSDictionarySymbolStyle",
-        "AGSGeodatabase"
+        "AGSDictionarySymbolStyle"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSDictionaryRenderer",
-        "AGSDictionarySymbolStyle",
-        "AGSGeodatabase"
+        "AGSDictionarySymbolStyle"
     ],
     "snippets": [
         "FeatureLayerDictionaryRendererViewController.swift"

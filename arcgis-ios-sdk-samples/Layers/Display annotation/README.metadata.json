@@ -12,7 +12,9 @@
         "placement",
         "reference scale",
         "text",
-        "utility"
+        "utility",
+        "AGSAnnotationLayer",
+        "AGSFeatureLayer"
     ],
     "redirect_from": [],
     "relevant_apis": [

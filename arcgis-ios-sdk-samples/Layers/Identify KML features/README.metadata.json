@@ -1,31 +1,31 @@
 {
     "category": "Layers",
-    "description": "Show a balloon popup with formatted text for a KML feature.",
+    "description": "Show a callout with formatted content for a KML feature.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "identify-kml-features.png"
     ],
     "keywords": [
-        "Weather",
-        "NOAA",
-        "NWS",
         "KML",
         "KMZ",
-        "OGC",
         "Keyhole",
-        "AGSKMLLayer",
-        "AGSKMLPlacemark",
-        "AGSKMLPlacemark.balloonContent",
+        "NOAA",
+        "NWS",
+        "OGC",
+        "weather",
+        "AGSGeoView",
         "AGSIdentifyLayerResult",
-        "AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)"
+        "AGSKMLLayer",
+        "AGSKMLPlacemark"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/identify-kml-features.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/identify-kml-features.htm"
+    ],
     "relevant_apis": [
-        "AGSKMLLayer",
-        "AGSKMLPlacemark",
-        "AGSKMLPlacemark.balloonContent",
+        "AGSGeoView",
         "AGSIdentifyLayerResult",
-        "AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)"
+        "AGSKMLLayer",
+        "AGSKMLPlacemark"
     ],
     "snippets": [
         "IdentifyKMLFeaturesViewController.swift"

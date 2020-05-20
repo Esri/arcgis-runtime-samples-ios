@@ -1,30 +1,26 @@
 {
     "category": "Cloud and Portal",
-    "description": "Uses Windows credentials to access services hosted on a portal secured with Integrated Windows Authentication (IWA).",
+    "description": "Connect to an IWA secured Portal and search for maps.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "integrated-windows-authentication.png"
     ],
     "keywords": [
-        "Integrated windows authentication",
-        "Microsoft Internet Information Server",
-        "challenge handler",
-        "AGSAuthenticationManager",
-        "AGSPortal",
-        "AGSCredential"
+        "Windows",
+        "authentication",
+        "portal",
+        "security",
+        "AGSPortal"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "AGSAuthenticationManager",
-        "AGSPortal",
-        "AGSCredential"
+        "AGSPortal"
     ],
     "snippets": [
-        "IntegratedWindowsAuthenticationViewController.swift",
         "IntegratedWindowsAuthenticationSearchTableViewCell.swift",
+        "IntegratedWindowsAuthenticationMapViewController.swift",
         "IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift",
-        "IntegratedWindowsAuthenticationMapViewController.swift"
+        "IntegratedWindowsAuthenticationViewController.swift"
     ],
     "title": "Integrated Windows Authentication"
 }

@@ -23,8 +23,8 @@
         "AGSMap"
     ],
     "snippets": [
-        "VectorTileCustomStyleVC.swift",
-        "VectorStylesViewController.swift"
+        "VectorStylesViewController.swift",
+        "VectorTileCustomStyleVC.swift"
     ],
     "title": "ArcGIS vector tiled layer (custom style)"
 }

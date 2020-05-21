@@ -3,8 +3,8 @@
     "description": "Change the visibility of sublayers.",
     "ignore": false,
     "images": [
-        "change-sublayer-visibility-2.png",
-        "change-sublayer-visibility-1.png"
+        "change-sublayer-visibility-1.png",
+        "change-sublayer-visibility-2.png"
     ],
     "keywords": [
         "layer",
@@ -21,8 +21,8 @@
         "AGSArcGISMapImageSublayer"
     ],
     "snippets": [
-        "SublayersTableViewController.swift",
-        "SublayerVisibilityViewController.swift"
+        "SublayerVisibilityViewController.swift",
+        "SublayersTableViewController.swift"
     ],
     "title": "Change sublayer visibility"
 }

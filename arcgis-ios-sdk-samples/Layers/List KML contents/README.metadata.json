@@ -38,8 +38,8 @@
         "AGSKMLScreenOverlay"
     ],
     "snippets": [
-        "ListKMLContentsViewController.swift",
-        "ListKMLContentsSceneViewController.swift"
+        "ListKMLContentsSceneViewController.swift",
+        "ListKMLContentsViewController.swift"
     ],
     "title": "List KML contents"
 }

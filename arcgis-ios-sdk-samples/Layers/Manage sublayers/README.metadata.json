@@ -21,8 +21,8 @@
         "AGSArcGISMapImageSublayer"
     ],
     "snippets": [
-        "MapImageSublayersViewController.swift",
-        "ManageSublayersViewController.swift"
+        "ManageSublayersViewController.swift",
+        "MapImageSublayersViewController.swift"
     ],
     "title": "Manage sublayers"
 }

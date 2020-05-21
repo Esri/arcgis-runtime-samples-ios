@@ -27,8 +27,8 @@
         "AGSSubtypeSublayer"
     ],
     "snippets": [
-        "DisplaySubtypeSettingsViewController.swift",
-        "DisplaySubtypeFeatureLayerViewController.swift"
+        "DisplaySubtypeFeatureLayerViewController.swift",
+        "DisplaySubtypeSettingsViewController.swift"
     ],
     "title": "Display a subtype feature layer"
 }

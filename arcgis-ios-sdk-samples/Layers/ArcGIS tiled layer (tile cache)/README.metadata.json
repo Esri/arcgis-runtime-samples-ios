@@ -3,8 +3,8 @@
     "description": "Load an offline copy of a tiled map service as a basemap.",
     "ignore": false,
     "images": [
-        "tiled-layer-tile-cache-2.png",
-        "tiled-layer-tile-cache-1.png"
+        "tiled-layer-tile-cache-1.png",
+        "tiled-layer-tile-cache-2.png"
     ],
     "keywords": [
         "cache",
@@ -26,8 +26,8 @@
         "AGSTileCache"
     ],
     "snippets": [
-        "TilePackagesListViewController.swift",
-        "LocalTiledLayerViewController.swift"
+        "LocalTiledLayerViewController.swift",
+        "TilePackagesListViewController.swift"
     ],
     "title": "ArcGIS tiled layer (tile cache)"
 }

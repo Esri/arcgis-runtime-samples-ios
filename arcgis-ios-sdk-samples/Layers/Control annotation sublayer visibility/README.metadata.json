@@ -22,9 +22,9 @@
         "AGSLayerContent"
     ],
     "snippets": [
-        "ControlAnnotationSublayerVisibilityViewController.swift",
         "ControlAnnotationSublayerVisibilitySublayerCell.swift",
-        "ControlAnnotationSublayerVisibilitySublayersViewController.swift"
+        "ControlAnnotationSublayerVisibilitySublayersViewController.swift",
+        "ControlAnnotationSublayerVisibilityViewController.swift"
     ],
     "title": "Control annotation sublayer visibility"
 }

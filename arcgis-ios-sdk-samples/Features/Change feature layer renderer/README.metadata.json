@@ -1,15 +1,26 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to override and reset a renderer of a feature layer.",
+    "description": "Change the appearance of a feature layer with a renderer.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "change-feature-layer-1.png",
+        "change-feature-layer-2.png"
     ],
     "keywords": [
+        "feature layer",
+        "renderer",
+        "visualization",
+        "AGSFeatureLayer.resetRenderer",
+        "AGSServiceFeatureTable",
+        "AGSSimpleRenderer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/change-feature-layer-renderer.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/change-feature-layer-renderer.htm"
+    ],
     "relevant_apis": [
+        "AGSFeatureLayer.resetRenderer",
+        "AGSServiceFeatureTable",
+        "AGSSimpleRenderer"
     ],
     "snippets": [
         "OverrideRendererViewController.swift"

@@ -3,10 +3,10 @@
     "description": "Update a feature's location in an online feature service.",
     "ignore": false,
     "images": [
-        "update-geometries-4.png",
         "update-geometries-1.png",
         "update-geometries-2.png",
-        "update-geometries-3.png"
+        "update-geometries-3.png",
+        "update-geometries-4.png"
     ],
     "keywords": [
         "editing",

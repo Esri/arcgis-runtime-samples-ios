@@ -10,7 +10,16 @@
         "Keyhole",
         "KML",
         "KMZ",
-        "OGC"
+        "OGC",
+        "AGSGeometryEngine",
+        "AGSKMLDataset",
+        "AGSKMLDocument",
+        "AGSKMLGeometry",
+        "AGSKMLLayer",
+        "AGSKMLNode",
+        "AGSKMLPlacemark",
+        "AGSKMLStyle",
+        "AGSSketchEditor"
     ],
     "redirect_from": [],
     "relevant_apis": [

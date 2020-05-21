@@ -3,8 +3,8 @@
     "description": "Combine multiple symbols from a mobile style file into a single symbol.",
     "ignore": false,
     "images": [
-        "read-symbols-from-mobile-style-2.png",
-        "read-symbols-from-mobile-style-1.png"
+        "read-symbols-from-mobile-style-1.png",
+        "read-symbols-from-mobile-style-2.png"
     ],
     "keywords": [
         "advanced symbology",

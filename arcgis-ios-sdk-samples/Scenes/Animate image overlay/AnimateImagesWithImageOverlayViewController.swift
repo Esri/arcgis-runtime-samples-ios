@@ -41,7 +41,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
             sceneView.imageOverlays.add(imageOverlay)
         }
     }
-
+    
     // MARK: Instance properties
     
     /// A circular loop counter within a length.
@@ -59,7 +59,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     /// A boolean which indicates whether the animation is playing or paused.
     var isAnimating = false {
         didSet {
-             playPauseButton.title = isAnimating ? "Pause" : "Play"
+            playPauseButton.title = isAnimating ? "Pause" : "Play"
         }
     }
     
@@ -81,8 +81,16 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         surface.elevationSources = [elevationSource]
         scene.baseSurface = surface
         // Create an envelope of the pacific southwest sector for displaying the image frame.
-        let pointForImageFrame = AGSPoint(x: -120.0724273439448, y: 35.131016955536694, spatialReference: .wgs84())
-        pacificSouthwestEnvelope = AGSEnvelope(center: pointForImageFrame, width: 15.09589635986124, height: -14.3770441522488)
+        let pointForImageFrame = AGSPoint(
+            x: -120.0724273439448,
+            y: 35.131016955536694,
+            spatialReference: .wgs84()
+        )
+        pacificSouthwestEnvelope = AGSEnvelope(
+            center: pointForImageFrame,
+            width: 15.09589635986124,
+            height: -14.3770441522488
+        )
         return scene
     }
     
@@ -178,11 +186,16 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         frameRateButton.title = "60 FPS"
         // Load the image URLs from resources directory, and set UI if the load succeeded.
         loadImageURLs {
-            loopCounter = LoopCounter(size: imageURLs.count)
+            if !imageURLs.isEmpty {
+                loopCounter = LoopCounter(size: imageURLs.count)
+                setImageFrame()
+            } else {
+                presentAlert(title: "Error", message: "Fail to load images.")
+                return
+            }
             playPauseButton.isEnabled = true
             frameRateButton.isEnabled = true
             opacitySlider.isEnabled = true
-            setImageFrame()
         }
     }
     

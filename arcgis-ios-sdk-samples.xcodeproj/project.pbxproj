@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		00C024E52475E4AB00E1DA8D /* NavigateARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARViewController.swift */; };
+		00C024E72475E54A00E1DA8D /* NavigateAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */; };
 		00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
@@ -1114,6 +1116,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00C024E42475E4AB00E1DA8D /* NavigateARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARViewController.swift; sourceTree = "<group>"; };
+		00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavigateAR.storyboard; sourceTree = "<group>"; };
 		00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
 		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
@@ -1695,6 +1699,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00C024DE2475E49A00E1DA8D /* Navigate in AR */ = {
+			isa = PBXGroup;
+			children = (
+				00C024E42475E4AB00E1DA8D /* NavigateARViewController.swift */,
+				00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */,
+			);
+			path = "Navigate in AR";
+			sourceTree = "<group>";
+		};
 		00D4E8D8241AA18E002689DB /* Convex hull */ = {
 			isa = PBXGroup;
 			children = (
@@ -4041,6 +4054,7 @@
 		E47ED0882343C1400032440E /* Augmented reality */ = {
 			isa = PBXGroup;
 			children = (
+				00C024DE2475E49A00E1DA8D /* Navigate in AR */,
 				E47ED0A12343C4FE0032440E /* Collect data in AR */,
 				E47ED0AA2343C5E00032440E /* Display scenes in tabletop AR */,
 				E47ED09E2343C4FE0032440E /* Explore scenes in flyover AR */,
@@ -4506,6 +4520,7 @@
 				3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */,
 				4C0FD7CB226528740042DE31 /* ReadSymbolsFromMobileStyle.storyboard in Resources */,
 				F1034FA622D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard in Resources */,
+				00C024E72475E54A00E1DA8D /* NavigateAR.storyboard in Resources */,
 				4C59D132238DCFB500824924 /* ApplyScheduledUpdatesToPreplannedMapArea.storyboard in Resources */,
 				C7D0EEDB215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard in Resources */,
 				3E1183DE1ECF5A1000180152 /* Hawaii.csv in Resources */,
@@ -4746,6 +4761,7 @@
 				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
 				C7094786215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift in Sources */,
 				4C0FD7CD226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift in Sources */,
+				00C024E52475E4AB00E1DA8D /* NavigateARViewController.swift in Sources */,
 				3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */,
 				E4B2E2691FE31ED500E610FF /* ViewshedGeoElementViewController.swift in Sources */,
 				12D66038226697320005DE8A /* LayersTableViewController.swift in Sources */,

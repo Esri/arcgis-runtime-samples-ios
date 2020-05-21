@@ -3,8 +3,8 @@
     "description": "Solve a route on-the-fly using offline data.",
     "ignore": false,
     "images": [
-        "offline-routing-2.png",
-        "offline-routing-1.png"
+        "offline-routing-1.png",
+        "offline-routing-2.png"
     ],
     "keywords": [
         "connectivity",

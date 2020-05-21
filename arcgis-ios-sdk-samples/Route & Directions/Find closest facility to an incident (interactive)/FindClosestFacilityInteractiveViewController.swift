@@ -97,7 +97,7 @@ extension FindClosestFacilityInteractiveViewController: AGSGeoViewTouchDelegate 
                 self.closestFacilityTask.solveClosestFacility(with: parameters) { [weak self] (result, error) in
                     guard let self = self else { return }
                     if let result = result {
-                        // Get the ranked list of colsest facilities.
+                        // Get the ranked list of closest facilities.
                         let rankedList = result.rankedFacilityIndexes(forIncidentIndex: 0)
                         
                         // Get the facility closest to the incident.

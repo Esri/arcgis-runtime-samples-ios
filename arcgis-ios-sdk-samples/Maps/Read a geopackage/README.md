@@ -16,9 +16,9 @@ When the sample loads, the feature tables and rasters from the GeoPackage will b
 
 1. Initialize the GeoPackage using `AGSGeoPackage`.
 2. Iterate through available rasters, exposed by `AGSGeopackage.geoPackageRasters`.
-    * For each raster, create a new  `AGSRasterLayer`, then add it to the map.
+    * For each raster, create a new `AGSRasterLayer`, then add it to the map.
 3. Iterate through available feature tables, exposed by `AGSGeopackage.geoPackageFeatureTables`.
-    * For each feature table, create a new  `AGSFeatureLayer`, then add it to the map.
+    * For each feature table, create a new `AGSFeatureLayer`, then add it to the map.
 
 ## Relevant API
 
@@ -32,7 +32,7 @@ The [Aurora Colorado GeoPackage](https://www.arcgis.com/home/item.html?id=68ec42
 
 ## About the data
 
-This sample features a GeoPackage with datasets that cover Aurora, Colorado: Public art (points), Bike trails (lines), Subdivisions (polygons), Airport noise (raster), and liquour license density (raster).
+This sample features a GeoPackage with datasets that cover Aurora, Colorado: Public art (points), Bike trails (lines), Subdivisions (polygons), Airport noise (raster), and liquor license density (raster).
 
 ## Additional information
 

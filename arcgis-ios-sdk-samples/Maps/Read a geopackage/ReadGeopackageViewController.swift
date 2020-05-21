@@ -46,7 +46,7 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
                 return rasterLayer
             }
             
-            // Add the arrays of feature and reaster layers to the map.
+            // Add the arrays of feature and raster layers to the map.
             map.operationalLayers.addObjects(from: rasterLayers)
             map.operationalLayers.addObjects(from: featureLayers)
         }

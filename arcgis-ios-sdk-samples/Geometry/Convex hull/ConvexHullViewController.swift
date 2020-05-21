@@ -59,7 +59,8 @@ class ConvexHullViewController: UIViewController {
     
     /// Called in response to the Create convex hull button being tapped.
     @IBAction func createConvexHull() {
-        if let convexHullGeometry = AGSGeometryEngine.convexHull(for: AGSMultipoint(points: inputPoints)) {
+        if let normalizedPoints = AGSGeometryEngine.normalizeCentralMeridian(of: AGSMultipoint(points: inputPoints)),
+            let convexHullGeometry = AGSGeometryEngine.convexHull(for: normalizedPoints) {
             // Change the symbol depending on the returned geometry type of the convex hull.
             let symbol: AGSSymbol
             switch convexHullGeometry.geometryType {
@@ -70,7 +71,7 @@ class ConvexHullViewController: UIViewController {
             default:
                 symbol = fillSymbol
             }
-            // remove the existing graphic for convex hull if there is one
+            // Remove the existing graphic for convex hull if there is one.
             if let existingGraphic = convexHullGraphic {
                 graphicsOverlay.graphics.remove(existingGraphic)
             }
@@ -79,10 +80,8 @@ class ConvexHullViewController: UIViewController {
             graphicsOverlay.graphics.add(convexHullGraphic!)
             creatButtonItem.isEnabled = false
         } else {
-            // Display the error as an alert if there is a problem with AGSGeometryEngine.convexHull operation.
-            let alertController = UIAlertController(title: nil, message: "Geometry Engine Failed!", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alertController, animated: true)
+            // Present an alert if there is a problem with AGSGeometryEngine operations.
+            self.presentAlert(title: nil, message: "Geometry Engine Failed!")
         }
     }
     

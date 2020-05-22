@@ -29,4 +29,4 @@ This point cloud data comes from Balboa Park in San Diego, California. Created a
 
 ## Tags
 
-3D, point cloud, lidar
+3D, , lidar, point cloud

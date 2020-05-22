@@ -3,8 +3,8 @@
     "description": "Set the map view to a new viewpoint.",
     "ignore": false,
     "images": [
-        "change-viewpoint-2.png",
-        "change-viewpoint-1.png"
+        "change-viewpoint-1.png",
+        "change-viewpoint-2.png"
     ],
     "keywords": [
         "animate",

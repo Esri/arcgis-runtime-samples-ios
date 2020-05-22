@@ -3,8 +3,8 @@
     "description": "Add, remove, and reorder operational layers in a map.",
     "ignore": false,
     "images": [
-        "manage-operational-layers-2.png",
-        "manage-operational-layers-1.png"
+        "manage-operational-layers-1.png",
+        "manage-operational-layers-2.png"
     ],
     "keywords": [
         "add",

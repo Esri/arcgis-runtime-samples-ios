@@ -3,8 +3,8 @@
     "description": "Display maps and use locators to enable search and routing offline using a mobile map package.",
     "ignore": false,
     "images": [
-        "mobile-map-search-and-route-2.png",
-        "mobile-map-search-and-route-1.png"
+        "mobile-map-search-and-route-1.png",
+        "mobile-map-search-and-route-2.png"
     ],
     "keywords": [
         "disconnected",

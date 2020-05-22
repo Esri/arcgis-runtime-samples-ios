@@ -3,8 +3,8 @@
     "description": "Set the map's reference scale and which feature layers should honor the reference scale.",
     "ignore": false,
     "images": [
-        "map-reference-scale-2.png",
-        "map-reference-scale-1.png"
+        "map-reference-scale-1.png",
+        "map-reference-scale-2.png"
     ],
     "keywords": [
         "map",

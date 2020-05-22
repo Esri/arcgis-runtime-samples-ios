@@ -2,12 +2,12 @@
 
 Change the appearance of a feature layer with a renderer.
 
+![Original renderer](change-feature-layer-1.png)
+![Overrde renderer](change-feature-layer-2.png)
+
 ## How to use the sample
 
 Use the buttons in the bottom toolbar to override or reset the renderer.
-
-![Original renderer](change-feature-layer-1.png)
-![Overrde renderer](change-feature-layer-2.png)
 
 ## Use case
 

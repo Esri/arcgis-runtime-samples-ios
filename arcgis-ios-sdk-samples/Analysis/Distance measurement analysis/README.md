@@ -1,8 +1,8 @@
-# Distance Measurement Analysis
+# Distance measurement analysis
 
 Measure distances between two points in 3D.
 
-![Distance Measurement Analysis](distance-measurement.png)
+![Distance measurement analysis](distance-measurement.png)
 
 ## Use case
 

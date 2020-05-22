@@ -1,4 +1,4 @@
-# Clip Geometry
+# Clip geometry
 
 Clip a geometry with another geometry.
 

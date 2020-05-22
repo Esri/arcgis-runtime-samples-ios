@@ -3,8 +3,8 @@
     "description": "Display your current position on the map, as well as switch between different types of auto-pan modes.",
     "ignore": false,
     "images": [
-        "display-device-location-2.png",
-        "display-device-location-1.png"
+        "display-device-location-1.png",
+        "display-device-location-2.png"
     ],
     "keywords": [
         "GPS",

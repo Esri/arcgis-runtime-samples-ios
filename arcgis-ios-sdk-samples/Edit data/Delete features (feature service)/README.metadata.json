@@ -3,8 +3,8 @@
     "description": "Delete features from an online feature service.",
     "ignore": false,
     "images": [
-        "delete-features-2.png",
-        "delete-features-1.png"
+        "delete-features-1.png",
+        "delete-features-2.png"
     ],
     "keywords": [
         "Service",

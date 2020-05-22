@@ -1,6 +1,6 @@
 {
     "category": "Maps",
-    "description": "Customize map view\u2019s background by changing its grid properties.",
+    "description": "Customize map view's background by changing its grid properties.",
     "ignore": false,
     "images": [
         "change-map-view-background.png"

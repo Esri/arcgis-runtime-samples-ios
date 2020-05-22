@@ -3,8 +3,8 @@
     "description": "Add, delete, and download attachments for features from a service.",
     "ignore": false,
     "images": [
-        "edit-feature-attachments-2.png",
-        "edit-feature-attachments-1.png"
+        "edit-feature-attachments-1.png",
+        "edit-feature-attachments-2.png"
     ],
     "keywords": [
         "Edit and Manage Data",

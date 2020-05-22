@@ -3,10 +3,10 @@
     "description": "Update feature attributes in an online feature service.",
     "ignore": false,
     "images": [
-        "update-attributes-4.png",
-        "update-attributes-3.png",
+        "update-attributes-1.png",
         "update-attributes-2.png",
-        "update-attributes-1.png"
+        "update-attributes-3.png",
+        "update-attributes-4.png"
     ],
     "keywords": [
         "amend",

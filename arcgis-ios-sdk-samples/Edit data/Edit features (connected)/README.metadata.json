@@ -3,9 +3,9 @@
     "description": "View, edit, or add features using a popup.",
     "ignore": false,
     "images": [
+        "edit-features-connected-1.png",
         "edit-features-connected-2.png",
-        "edit-features-connected-3.png",
-        "edit-features-connected-1.png"
+        "edit-features-connected-3.png"
     ],
     "keywords": [
         "details",

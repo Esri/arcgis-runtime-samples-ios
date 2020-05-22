@@ -2,12 +2,12 @@
 
 Select features in a feature layer.
 
-## How to use the sample
-
-Tap on a feature on the map to select it
-
 ![Map with features](feature-layer-selection-1.png)
 ![Selected feature](feature-layer-selection-2.png)
+
+## How to use the sample
+
+Tap on a feature on the map to select it.
 
 ## Use case
 

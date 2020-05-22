@@ -3,9 +3,9 @@
     "description": "Synchronize offline edits with a feature service using a popup.",
     "ignore": false,
     "images": [
-        "offline-edit-sync-3.png",
+        "offline-edit-sync-1.png",
         "offline-edit-sync-2.png",
-        "offline-edit-sync-1.png"
+        "offline-edit-sync-3.png"
     ],
     "keywords": [
         "feature service",

@@ -40,10 +40,10 @@
         "AGSSurfacePlacement"
     ],
     "snippets": [
-        "CameraSettingsViewController.swift",
         "Animate3DGraphicViewController.swift",
-        "PlaneStatsViewController.swift",
-        "MissionSettingsViewController.swift"
+        "CameraSettingsViewController.swift",
+        "MissionSettingsViewController.swift",
+        "PlaneStatsViewController.swift"
     ],
     "title": "Animate 3D graphic"
 }

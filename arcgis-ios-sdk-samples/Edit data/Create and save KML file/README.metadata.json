@@ -7,9 +7,9 @@
         "create-save-kml-2.png"
     ],
     "keywords": [
-        "Keyhole",
         "KML",
         "KMZ",
+        "Keyhole",
         "OGC",
         "AGSGeometryEngine",
         "AGSKMLDataset",

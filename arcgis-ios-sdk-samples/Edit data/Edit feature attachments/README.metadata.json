@@ -31,8 +31,8 @@
         "AGSServiceFeatureTable.applyEdits(completion:)"
     ],
     "snippets": [
-        "EditFeatureAttachmentsViewController.swift",
-        "AttachmentsTableViewController.swift"
+        "AttachmentsTableViewController.swift",
+        "EditFeatureAttachmentsViewController.swift"
     ],
     "title": "Edit feature attachments"
 }

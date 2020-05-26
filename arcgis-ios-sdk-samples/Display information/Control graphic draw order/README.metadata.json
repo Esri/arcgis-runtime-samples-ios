@@ -3,8 +3,8 @@
     "description": "Change the drawing order for a graphic.",
     "ignore": false,
     "images": [
-        "control-graphic-draw-order-2.png",
-        "control-graphic-draw-order-1.png"
+        "control-graphic-draw-order-1.png",
+        "control-graphic-draw-order-2.png"
     ],
     "keywords": [
         "display",

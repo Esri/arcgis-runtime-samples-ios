@@ -37,8 +37,8 @@
         "class AGSGeometryEngine.union(ofGeometry1:geometry2:)"
     ],
     "snippets": [
-        "SpatialOperationsViewController.swift",
-        "OperationsListViewController.swift"
+        "OperationsListViewController.swift",
+        "SpatialOperationsViewController.swift"
     ],
     "title": "Perform spatial operations"
 }

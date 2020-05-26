@@ -28,8 +28,8 @@
         "AGSUTMConversionMode"
     ],
     "snippets": [
-        "FormatCoordinatesViewController.swift",
-        "FormatCoordinatesTableViewController.swift"
+        "FormatCoordinatesTableViewController.swift",
+        "FormatCoordinatesViewController.swift"
     ],
     "title": "Format coordinates"
 }

@@ -23,8 +23,8 @@
         "class AGSGeometryEngine.geodeticBufferGeometry(_:distance:distanceUnit:maxDeviation:curveType:)"
     ],
     "snippets": [
-        "BufferViewController.swift",
-        "BufferOptionsViewController.swift"
+        "BufferOptionsViewController.swift",
+        "BufferViewController.swift"
     ],
     "title": "Buffer"
 }

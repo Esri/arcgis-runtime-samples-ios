@@ -1,6 +1,6 @@
 {
     "category": "Display information",
-    "description": "Use a custom dictionary style (.stylx) to symbolize features using a variety of attribute values.",
+    "description": "Use a custom dictionary style to symbolize features using a variety of attribute values.",
     "ignore": false,
     "images": [
         "custom-dictionary-style.png"

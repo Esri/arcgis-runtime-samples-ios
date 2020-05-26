@@ -3,8 +3,8 @@
     "description": "Find a route that reaches all stops without crossing any barriers.",
     "ignore": false,
     "images": [
-        "route-around-barriers-2.png",
-        "route-around-barriers-1.png"
+        "route-around-barriers-1.png",
+        "route-around-barriers-2.png"
     ],
     "keywords": [
         "barriers",
@@ -57,9 +57,9 @@
         "AGSStop.Name"
     ],
     "snippets": [
-        "RouteParametersViewController.swift",
         "DirectionsListViewController.swift",
-        "RouteAroundBarriersViewController.swift"
+        "RouteAroundBarriersViewController.swift",
+        "RouteParametersViewController.swift"
     ],
     "title": "Route around barriers"
 }

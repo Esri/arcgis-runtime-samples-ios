@@ -28,8 +28,8 @@
         "AGSReverseGeocodeParameters"
     ],
     "snippets": [
-        "SanDiegoAddressesViewController.swift",
-        "OfflineGeocodeViewController.swift"
+        "OfflineGeocodeViewController.swift",
+        "SanDiegoAddressesViewController.swift"
     ],
     "title": "Offline geocode"
 }

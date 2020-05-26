@@ -35,8 +35,8 @@
         "AGSStop"
     ],
     "snippets": [
-        "FindRouteViewController.swift",
-        "DirectionsViewController.swift"
+        "DirectionsViewController.swift",
+        "FindRouteViewController.swift"
     ],
     "title": "Find route"
 }

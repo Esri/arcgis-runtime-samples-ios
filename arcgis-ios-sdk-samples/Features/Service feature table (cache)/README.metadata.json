@@ -1,6 +1,6 @@
 {
     "category": "Features",
-    "description": "Display a feature layer from a service using the **on interaction cache** feature request mode.",
+    "description": "Display a feature layer from a service using the on interaction cache feature request mode.",
     "ignore": false,
     "images": [
         "service-feature-table-cache.png"

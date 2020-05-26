@@ -1,11 +1,11 @@
 {
     "category": "Layers",
-    "description": "Blend a hillshade with a raster by specifying the elevation data. The resulting raster looks similar to the original raster, but with some terrain shading, giving it a textured look.",
+    "description": "Blend a hillshade with a raster by specifying the elevation data.",
     "ignore": false,
     "images": [
         "blend-renderer-1.png",
-        "blend-renderer-3.png",
-        "blend-renderer-2.png"
+        "blend-renderer-2.png",
+        "blend-renderer-3.png"
     ],
     "keywords": [
         "color ramp",

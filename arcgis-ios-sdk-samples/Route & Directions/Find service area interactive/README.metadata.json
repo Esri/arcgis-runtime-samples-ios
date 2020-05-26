@@ -30,8 +30,8 @@
         "AGSServiceAreaTask"
     ],
     "snippets": [
-        "ServiceAreaSettingsVC.swift",
-        "FindServiceAreaInteractiveViewController.swift"
+        "FindServiceAreaInteractiveViewController.swift",
+        "ServiceAreaSettingsVC.swift"
     ],
     "title": "Find service area interactive"
 }

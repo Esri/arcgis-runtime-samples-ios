@@ -7,11 +7,6 @@
         "sketch-on-map-2.png"
     ],
     "keywords": [
-        "AGSGeometry",
-        "AGSGraphic",
-        "AGSGraphicsOverlay",
-        "AGSSketchCreationMode",
-        "AGSSketchEditor",
         "draw",
         "edit",
         "AGSGeometry",

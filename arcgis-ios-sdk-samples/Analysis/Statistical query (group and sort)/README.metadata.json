@@ -40,10 +40,10 @@
         "AGSStatisticsQueryResult"
     ],
     "snippets": [
-        "OrderByFieldsViewController.swift",
         "AddStatisticDefinitionsViewController.swift",
-        "StatisticalQueryGroupAndSortViewController.swift",
-        "GroupByFieldsViewController.swift"
+        "GroupByFieldsViewController.swift",
+        "OrderByFieldsViewController.swift",
+        "StatisticalQueryGroupAndSortViewController.swift"
     ],
     "title": "Statistical query (group and sort)"
 }

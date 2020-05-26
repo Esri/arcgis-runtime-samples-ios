@@ -18,16 +18,22 @@ import ArcGIS
 class AnimateImagesWithImageOverlayViewController: UIViewController {
     // MARK: Storyboard views
     
-    /// The button to toggle image overlay animation.
-    @IBOutlet weak var playPauseButton: UIBarButtonItem!
+    /// The button to play image overlay animation.
+    @IBOutlet var playButtonItem: UIBarButtonItem!
+    /// The button to pause image overlay animation.
+    @IBOutlet var pauseButtonItem: UIBarButtonItem!
     /// The button to choose a frame rate for the animation
-    @IBOutlet weak var frameRateButton: UIBarButtonItem!
-    /// The label to display opacity percentage.
+    @IBOutlet weak var speedButtonItem: UIBarButtonItem!
+    /// The toolbar in the view controller.
+    @IBOutlet weak var toolbar: UIToolbar!
+    /// The label to display opacity level.
     @IBOutlet weak var opacityLabel: UILabel!
+    
     /// The slider to change opacity level, from transparent 0% to opaque 100%.
     @IBOutlet weak var opacitySlider: UISlider! {
         didSet {
-            opacityLabel.text = getOpacityString()
+            imageOverlay.opacity = opacitySlider.value
+            opacityLabel.text = getOpacityPercentageString(percentage: opacitySlider.value)
         }
     }
     
@@ -44,22 +50,44 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     
     // MARK: Instance properties
     
-    /// A circular loop counter within a length.
-    private var loopCounter: LoopCounter!
-    /// The graphics overlay to show a graphic at the tapped point.
-    let imageOverlay = AGSImageOverlay()
     /// The frame rate in the unit of frame per second.
-    var frameRate = 60.0
-    /// An array to hold the URLs for the overlay images.
-    var imageURLs: [URL] = []
+    var frameRate = 60
+    /// A timer to synchronize image frame animation to the refresh rate of the display.
+    var displaylink: CADisplayLink?
+    /// The image overlay to show image frames.
+    let imageOverlay = AGSImageOverlay()
+    /// An iterator to hold and loop through the overlay images.
+    private var imagesIterator: CircularIterator<UIImage>!
+    
+    /// A formatter to format percentage strings.
+    let percentageFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.multiplier = 100
+        return formatter
+    }()
+    
     /// An envelope of the pacific southwest sector for displaying the image frame.
-    var pacificSouthwestEnvelope: AGSEnvelope!
-    /// A timer which repeatedly calls setImageFrame for a given period.
-    var frameRateTimer: Timer?
+    let pacificSouthwestEnvelope = AGSEnvelope(
+        center: AGSPoint(
+            x: -120.0724273439448,
+            y: 35.131016955536694,
+            spatialReference: .wgs84()
+        ),
+        width: 15.09589635986124,
+        height: -14.3770441522488
+    )
+
     /// A boolean which indicates whether the animation is playing or paused.
     var isAnimating = false {
         didSet {
-            playPauseButton.title = isAnimating ? "Pause" : "Play"
+            if isAnimating {
+                let index = toolbar.items!.firstIndex(of: playButtonItem)!
+                toolbar.items![index] = pauseButtonItem
+            } else {
+                let index = toolbar.items!.firstIndex(of: pauseButtonItem)!
+                toolbar.items![index] = playButtonItem
+            }
         }
     }
     
@@ -75,106 +103,89 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         // Create an elevation source from Terrain3D REST service.
         let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
-        let scene = AGSScene(basemap: AGSBasemap(baseLayer: worldDarkGrayBasemap))
         // Create a surface and add it to the scene.
         let surface = AGSSurface()
         surface.elevationSources = [elevationSource]
+        let scene = AGSScene(basemap: AGSBasemap(baseLayer: worldDarkGrayBasemap))
         scene.baseSurface = surface
-        // Create an envelope of the pacific southwest sector for displaying the image frame.
-        let pointForImageFrame = AGSPoint(
-            x: -120.0724273439448,
-            y: 35.131016955536694,
-            spatialReference: .wgs84()
-        )
-        pacificSouthwestEnvelope = AGSEnvelope(
-            center: pointForImageFrame,
-            width: 15.09589635986124,
-            height: -14.3770441522488
-        )
         return scene
     }
     
-    func startAnimation(_ fps: Double) {
-        // Invalidate timer to stop previous ongoing animation.
-        frameRateTimer?.invalidate()
-        // Duration or interval between frames in seconds.
-        let duration = 1 / Double(fps)
-        let timer = Timer(timeInterval: duration, repeats: true) { [weak self] _ in
-            self?.setImageFrame()
-        }
-        self.frameRateTimer = timer
-        // Add the timer to common mode run loop, so the timer is not effected by UI events.
-        RunLoop.main.add(timer, forMode: .common)
+    func startAnimation(fps: Int) {
+        // Invalidate display link to stop previous ongoing animation.
+        displaylink?.invalidate()
+        // Create a new display link.
+        displaylink = CADisplayLink(target: self, selector: #selector(setImageFrame))
+        // Set frame rate to 15, 30 or 60 frames per second.
+        displaylink!.preferredFramesPerSecond = fps
+        // Add to main thread common mode run loop, so it is not effected by UI events.
+        displaylink!.add(to: .main, forMode: .common)
     }
     
-    /// Load the URLs for the overlay images.
+    /// Make a circular iterator to provide image frames.
     ///
-    /// - Parameter completion: If it loads successfully, enable the UI components in the completion closure.
-    func loadImageURLs(completion: () -> Void) {
-        // The images need to be added to the project with folder reference.
-        guard let pacificSouthWestURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") else {
-            return
-        }
+    /// - Returns: A circular iterator that returns the next `UIImage` everytime get called.
+    private func makeImagesIterator() -> CircularIterator<UIImage> {
+        // Get the URLs to those images added to the project's folder reference.
+        let pacificSouthWestURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") ?? []
         // Sort the image URLs by their relative pathnames.
-        imageURLs = pacificSouthWestURLs.sorted { $0.relativeString < $1.relativeString }
-        completion()
+        let imageURLs = pacificSouthWestURLs.sorted { $0.lastPathComponent < $1.lastPathComponent }
+        return CircularIterator(
+            elements: imageURLs.map { UIImage(contentsOfFile: $0.path)! }
+        )
     }
     
-    /// Set the image at current index to the image overlay.
+    /// Set current image to the image overlay.
+    @objc
     func setImageFrame() {
-        let imageFrame = AGSImageFrame(url: imageURLs[loopCounter.currentIndex], extent: pacificSouthwestEnvelope)
-        imageOverlay.imageFrame = imageFrame
-        loopCounter.next()
+        let frame = AGSImageFrame(image: imagesIterator.next()!, extent: pacificSouthwestEnvelope)
+        imageOverlay.imageFrame = frame
     }
     
-    func getOpacityString() -> String {
-        return String(format: "Opacity\n%.0f%%", opacitySlider.value * 100)
+    func getOpacityPercentageString(percentage: Float) -> String {
+        return "Opacity\n" + percentageFormatter.string(from: NSNumber(value: percentage))!
     }
     
     // MARK: - Actions
     
     @IBAction func sliderValueChanged(_ slider: UISlider) {
         imageOverlay.opacity = slider.value
-        opacityLabel.text = getOpacityString()
+        opacityLabel.text = getOpacityPercentageString(percentage: slider.value)
     }
     
     @IBAction func playPauseButtonTapped(_ button: UIBarButtonItem) {
         if isAnimating {
-            frameRateTimer?.invalidate()
+            displaylink?.invalidate()
         } else {
-            startAnimation(frameRate)
+            startAnimation(fps: frameRate)
         }
         isAnimating.toggle()
     }
     
-    @IBAction func frameRateButtonTapped(_ button: UIBarButtonItem) {
+    @IBAction func speedButtonTapped(_ button: UIBarButtonItem) {
         let alertController = UIAlertController(
-            title: "Select a frame rate.",
+            title: "Choose playback speed.",
             message: nil,
             preferredStyle: .actionSheet
         )
-        let frameRates: [(name: String, fps: Double)] = [
-            ("60 FPS", 60.0),
-            ("30 FPS", 30.0),
-            ("20 FPS", 20.0),
-            ("15 FPS", 15.0)
+        let speedChoices: [(name: String, fps: Int)] = [
+            ("Fast", 60),
+            ("Medium", 30),
+            ("Slow", 15)
         ]
-        frameRates.forEach { (name, fps) in
-            let action = UIAlertAction(title: name, style: .default) { [unowned self] _ in
-                // Reset the counter so that it replays from the first frame.
-                self.loopCounter.reset()
+        speedChoices.forEach { (name, fps) in
+            let action = UIAlertAction(title: name, style: .default) { _ in
                 self.frameRate = fps
-                self.frameRateButton.title = name
                 if self.isAnimating {
-                    self.startAnimation(fps)
+                    self.startAnimation(fps: fps)
                 }
             }
             alertController.addAction(action)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
-        alertController.popoverPresentationController?.barButtonItem = frameRateButton
-        present(alertController, animated: true, completion: nil)
+        alertController.popoverPresentationController?.barButtonItem = speedButtonItem
+        present(alertController, animated: true)
     }
     
     // MARK: UIViewController
@@ -183,46 +194,42 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["AnimateImagesWithImageOverlayViewController"]
-        frameRateButton.title = "60 FPS"
-        // Load the image URLs from resources directory, and set UI if the load succeeded.
-        loadImageURLs {
-            if !imageURLs.isEmpty {
-                loopCounter = LoopCounter(size: imageURLs.count)
-                setImageFrame()
-            } else {
-                presentAlert(title: "Error", message: "Fail to load images.")
-                return
-            }
-            playPauseButton.isEnabled = true
-            frameRateButton.isEnabled = true
+        // Load the images from resources directory, and set UI if the load succeeded.
+        imagesIterator = makeImagesIterator()
+        if !imagesIterator.elements.isEmpty {
+            playButtonItem.isEnabled = true
+            speedButtonItem.isEnabled = true
             opacitySlider.isEnabled = true
+            // Load the first frame into the scene.
+            setImageFrame()
+        } else {
+            presentAlert(title: "Error", message: "Fail to load images.")
         }
     }
     
-    deinit {
-        // Invalidates the timer before exiting the sample.
-        frameRateTimer?.invalidate()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Invalidates display link before exiting the sample.
+        displaylink?.invalidate()
     }
 }
 
-/// A circular loop counter within a length.
-private struct LoopCounter {
-    var currentIndex: Int
-    let size: Int
+/// A generic circular iterator.
+private struct CircularIterator<Element>: IteratorProtocol {
+    let elements: [Element]
+    private var elementIterator: Array<Element>.Iterator
     
-    init(size: Int) {
-        self.currentIndex = 0
-        self.size = size
+    init(elements: [Element]) {
+        self.elements = elements
+        elementIterator = elements.makeIterator()
     }
     
-    mutating func reset() {
-        currentIndex = 0
-    }
-    
-    mutating func next() {
-        currentIndex += 1
-        if currentIndex == size {
-            currentIndex = 0
+    mutating func next() -> Element? {
+        if let next = elementIterator.next() {
+            return next
+        } else {
+            elementIterator = elements.makeIterator()
+            return elementIterator.next()
         }
     }
 }

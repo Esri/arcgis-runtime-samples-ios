@@ -39,9 +39,9 @@
         "AGSTransportationNetworkDataset"
     ],
     "snippets": [
-        "MobileMapViewController.swift",
+        "MapPackageCell.swift",
         "MapPackagesListViewController.swift",
-        "MapPackageCell.swift"
+        "MobileMapViewController.swift"
     ],
     "title": "Mobile map (search and route)"
 }

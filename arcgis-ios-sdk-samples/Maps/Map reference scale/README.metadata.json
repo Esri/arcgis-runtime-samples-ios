@@ -19,9 +19,9 @@
         "AGSMap"
     ],
     "snippets": [
-        "MapReferenceScaleViewController.swift",
+        "MapReferenceScaleLayerSelectionViewController.swift",
         "MapReferenceScaleSettingsViewController.swift",
-        "MapReferenceScaleLayerSelectionViewController.swift"
+        "MapReferenceScaleViewController.swift"
     ],
     "title": "Map reference scale"
 }

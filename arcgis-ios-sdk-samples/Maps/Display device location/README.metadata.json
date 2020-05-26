@@ -28,8 +28,8 @@
         "AGSMapView"
     ],
     "snippets": [
-        "DisplayLocationViewController.swift",
-        "DisplayLocationSettingsViewController.swift"
+        "DisplayLocationSettingsViewController.swift",
+        "DisplayLocationViewController.swift"
     ],
     "title": "Display device location"
 }

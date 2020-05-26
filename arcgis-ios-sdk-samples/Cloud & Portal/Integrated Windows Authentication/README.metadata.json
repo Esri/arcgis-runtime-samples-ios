@@ -17,9 +17,9 @@
         "AGSPortal"
     ],
     "snippets": [
-        "IntegratedWindowsAuthenticationSearchTableViewCell.swift",
         "IntegratedWindowsAuthenticationMapViewController.swift",
         "IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift",
+        "IntegratedWindowsAuthenticationSearchTableViewCell.swift",
         "IntegratedWindowsAuthenticationViewController.swift"
     ],
     "title": "Integrated Windows Authentication"

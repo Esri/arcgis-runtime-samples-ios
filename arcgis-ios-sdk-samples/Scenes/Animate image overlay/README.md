@@ -10,12 +10,12 @@ An image overlay is useful for displaying fast and dynamic images; for example, 
 
 ## How to use the sample
 
-The sample loads a map of the Southwestern United States. Tap the "Play" or "Pause" buttons to start or pause the radar animation. Select a frame rate to decide how quickly the animation plays. Move the slider to change the opacity of the image overlay.
+The sample loads a map of the Southwestern United States. Tap the play or pause buttons to start or pause the radar animation. Select a playback speed to decide how quickly the animation plays. Move the slider to change the opacity of the image overlay.
 
 ## How it works
 
 1. Create an `AGSImageOverlay` and add it to the `AGSSceneView`.
-2. Set up a timer with an initial frame rate of 60 FPS.
+2. Set up a timer with an initial frame rate of 60 frames per second.
 3. Create a new `AGSImageFrame` object every time interval, and set it on the image overlay.
 
 ## Relevant API

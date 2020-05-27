@@ -51,16 +51,23 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     
     /// The frame rate in the unit of frame per second.
     var frameRate = 60
-    /// A timer to synchronize image frame animation to the refresh rate of the display.
-    var displaylink: CADisplayLink?
     /// The image overlay to show image frames.
     let imageOverlay = AGSImageOverlay()
+    
+    /// A timer to synchronize image frame animation to the refresh rate of the display.
+    lazy var displaylink: CADisplayLink = {
+        let displaylink = CADisplayLink(target: self, selector: #selector(setImageFrame))
+        displaylink.isPaused = true
+        // Add to main thread common mode run loop, so it is not effected by UI events.
+        displaylink.add(to: .main, forMode: .common)
+        return displaylink
+    }()
+    
     /// An iterator to hold and loop through the overlay images.
     private lazy var imagesIterator: CircularIterator<UIImage> = {
-        // Get the URLs to those images added to the project's folder reference.
-        let pacificSouthWestURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") ?? []
-        // Sort the image URLs by their relative pathnames.
-        let imageURLs = pacificSouthWestURLs.sorted { $0.lastPathComponent < $1.lastPathComponent }
+        // Get the URLs to images added to the project's folder reference.
+        var imageURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") ?? []
+        imageURLs.sort { $0.lastPathComponent < $1.lastPathComponent }
         return CircularIterator(
             elements: imageURLs.map { UIImage(contentsOfFile: $0.path)! }
         )
@@ -84,21 +91,8 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         width: 15.09589635986124,
         height: -14.3770441522488
     )
-
-    /// A boolean which indicates whether the animation is playing or paused.
-    var isAnimating = false {
-        didSet {
-            if isAnimating {
-                let index = toolbar.items!.firstIndex(of: playButtonItem)!
-                toolbar.items![index] = pauseButtonItem
-            } else {
-                let index = toolbar.items!.firstIndex(of: pauseButtonItem)!
-                toolbar.items![index] = playButtonItem
-            }
-        }
-    }
     
-    // MARK: Initialize scene and animation
+    // MARK: Initialize scene and set image frame
     
     /// Create a scene.
     ///
@@ -118,17 +112,6 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         return scene
     }
     
-    func startAnimation(fps: Int) {
-        // Invalidate display link to stop previous ongoing animation.
-        displaylink?.invalidate()
-        // Create a new display link.
-        displaylink = CADisplayLink(target: self, selector: #selector(setImageFrame))
-        // Set frame rate to 15, 30 or 60 frames per second.
-        displaylink!.preferredFramesPerSecond = fps
-        // Add to main thread common mode run loop, so it is not effected by UI events.
-        displaylink!.add(to: .main, forMode: .common)
-    }
-    
     /// Set current image to the image overlay.
     @objc
     func setImageFrame() {
@@ -136,24 +119,24 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         imageOverlay.imageFrame = frame
     }
     
-    func getOpacityPercentageString(percentage: Float) -> String {
-        return percentageFormatter.string(from: percentage as NSNumber)!
-    }
-    
     // MARK: - Actions
     
     @IBAction func sliderValueChanged(_ slider: UISlider) {
         imageOverlay.opacity = slider.value
-        opacityLabel.text = getOpacityPercentageString(percentage: slider.value)
+        opacityLabel.text = percentageFormatter.string(from: slider.value as NSNumber)!
     }
     
     @IBAction func playPauseButtonTapped(_ button: UIBarButtonItem) {
-        if isAnimating {
-            displaylink?.invalidate()
+        if !displaylink.isPaused {
+            let index = toolbar.items!.firstIndex(of: pauseButtonItem)!
+            toolbar.items![index] = playButtonItem
         } else {
-            startAnimation(fps: frameRate)
+            let index = toolbar.items!.firstIndex(of: playButtonItem)!
+            toolbar.items![index] = pauseButtonItem
+            // Set framerate of the display link before starting to play.
+            displaylink.preferredFramesPerSecond = frameRate
         }
-        isAnimating.toggle()
+        displaylink.isPaused.toggle()
     }
     
     @IBAction func speedButtonTapped(_ button: UIBarButtonItem) {
@@ -170,8 +153,8 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         speedChoices.forEach { (name, fps) in
             let action = UIAlertAction(title: name, style: .default) { _ in
                 self.frameRate = fps
-                if self.isAnimating {
-                    self.startAnimation(fps: fps)
+                if !self.displaylink.isPaused {
+                    self.displaylink.preferredFramesPerSecond = fps
                 }
             }
             alertController.addAction(action)
@@ -200,10 +183,10 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         // Invalidates display link before exiting the sample.
-        displaylink?.invalidate()
+        displaylink.invalidate()
     }
 }
 

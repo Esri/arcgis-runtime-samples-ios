@@ -17,7 +17,7 @@ Tap or long press drag on an area of the raster to identify it and see the raste
 1. Use various delegate methods in `AGSGeoViewTouchDelegate` to get the screenPoint where a user tapped or long pressed on the map.
 2. On tap or long press drag:
    * Dismiss the `AGSCallout`, if one is showing.
-   * Call `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)` passing in the raster layer, screen point, tolerance, and if only layers containing popups should be returned.
+   * Call `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)` passing in the raster layer, screen point, tolerance, and whether only layers containing popups should be returned.
    * Get the `AGSGeoElement`s from the layer identifying result.
    * Create a callout and populate the callout content with text from the `AGSRasterCell` attributes and coordinates.
    * Show the callout.

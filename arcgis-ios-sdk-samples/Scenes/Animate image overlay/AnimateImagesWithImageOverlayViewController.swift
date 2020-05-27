@@ -163,7 +163,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["AnimateImagesWithImageOverlayViewController"]
-        // Load the images from resources directory, and set UI if the load succeeded.
+        // Set UI if the load succeeds.
         if !imagesIterator.elements.isEmpty {
             playButtonItem.isEnabled = true
             speedButtonItem.isEnabled = true

@@ -55,13 +55,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     let imageOverlay = AGSImageOverlay()
     
     /// A timer to synchronize image frame animation to the refresh rate of the display.
-    lazy var displaylink: CADisplayLink = {
-        let displaylink = CADisplayLink(target: self, selector: #selector(setImageFrame))
-        displaylink.isPaused = true
-        // Add to main thread common mode run loop, so it is not effected by UI events.
-        displaylink.add(to: .main, forMode: .common)
-        return displaylink
-    }()
+    var displaylink: CADisplayLink!
     
     /// An iterator to hold and loop through the overlay images.
     private lazy var imagesIterator: CircularIterator<UIImage> = {
@@ -127,11 +121,10 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     }
     
     @IBAction func playPauseButtonTapped(_ button: UIBarButtonItem) {
+        let index = toolbar.items!.firstIndex(of: button)!
         if !displaylink.isPaused {
-            let index = toolbar.items!.firstIndex(of: pauseButtonItem)!
             toolbar.items![index] = playButtonItem
         } else {
-            let index = toolbar.items!.firstIndex(of: playButtonItem)!
             toolbar.items![index] = pauseButtonItem
             // Set framerate of the display link before starting to play.
             displaylink.preferredFramesPerSecond = frameRate
@@ -183,8 +176,20 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        displaylink = CADisplayLink(target: self, selector: #selector(setImageFrame))
+        displaylink.isPaused = true
+        // Add to main thread common mode run loop, so it is not effected by UI events.
+        displaylink.add(to: .main, forMode: .common)
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        // Pause the animation and change the tool bar button.
+        if !displaylink.isPaused {
+            playPauseButtonTapped(pauseButtonItem)
+        }
         // Invalidates display link before exiting the sample.
         displaylink.invalidate()
     }

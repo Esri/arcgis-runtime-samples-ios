@@ -35,6 +35,15 @@ class IdentifyRasterCellViewController: UIViewController {
     
     /// The raster layer created using local raster file.
     let rasterLayer = AGSRasterLayer(raster: AGSRaster(name: "SA_EVI_8Day_03May20", extension: "tif"))
+    /// A formatter for coordinates.
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.usesGroupingSeparator = false
+        formatter.minimumFractionDigits = 3
+        formatter.maximumFractionDigits = 3
+        return formatter
+    }()
     
     // MARK: Initialize map and utility network
     
@@ -60,16 +69,22 @@ class IdentifyRasterCellViewController: UIViewController {
                 self.mapView.callout.dismiss()
                 return
             }
-            var calloutText: String = ""
-            var xyCoordinates: String = ""
-            identifyResult.geoElements.filter { $0 is AGSRasterCell }.forEach { cell in
-                cell.attributes.forEach { attribute in
-                    calloutText.append("\(attribute.key): \(attribute.value)\n")
-                }
-                xyCoordinates.append(String(format: "X: %.3f\nY: %.3f", cell.geometry!.extent.xMin, cell.geometry!.extent.yMin))
+            guard let cell = identifyResult.geoElements.first(where: { $0 is AGSRasterCell }) else {
+                return
             }
-            self.calloutStackView.attributesLabel.text = calloutText
-            self.calloutStackView.coordinatesLabel.text = xyCoordinates
+            var calloutText: [String] = []
+            var xyCoordinates: [String] = []
+            cell.attributes.forEach { attribute in
+                calloutText.append("\(attribute.key): \(attribute.value)")
+            }
+            let x = ("X", cell.geometry!.extent.xMin)
+            let y = ("Y", cell.geometry!.extent.yMin)
+            [x, y].forEach { (name, value) in
+                xyCoordinates.append("\(name): \(self.formatter.string(from: value as NSNumber)!)")
+            }
+            
+            self.calloutStackView.attributesLabel.text = calloutText.joined(separator: "\n")
+            self.calloutStackView.coordinatesLabel.text = xyCoordinates.joined(separator: "\n")
             self.mapView.callout.show(
                 at: self.mapView.screen(toLocation: screenPoint),
                 screenOffset: offset,

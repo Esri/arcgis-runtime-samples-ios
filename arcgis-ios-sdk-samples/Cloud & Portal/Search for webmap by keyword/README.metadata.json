@@ -25,9 +25,9 @@
         "AGSPortalQueryResultSet"
     ],
     "snippets": [
-        "WebMapViewController.swift",
         "SearchForWebmapByKeywordViewController.swift",
-        "WebMapCell.swift"
+        "WebMapCell.swift",
+        "WebMapViewController.swift"
     ],
     "title": "Search for webmap by keyword"
 }

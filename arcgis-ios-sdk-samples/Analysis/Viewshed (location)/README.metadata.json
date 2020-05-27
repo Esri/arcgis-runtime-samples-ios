@@ -29,8 +29,8 @@
         "AGSViewshed"
     ],
     "snippets": [
-        "ViewshedSettingsVC.swift",
-        "ViewshedLocationViewController.swift"
+        "ViewshedLocationViewController.swift",
+        "ViewshedSettingsVC.swift"
     ],
     "title": "Viewshed (location)"
 }

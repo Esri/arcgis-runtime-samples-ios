@@ -23,8 +23,8 @@
         "AGSLegendInfo"
     ],
     "snippets": [
-        "MILShowLegendViewController.swift",
-        "MILLegendTableViewController.swift"
+        "MILLegendTableViewController.swift",
+        "MILShowLegendViewController.swift"
     ],
     "title": "Show legend"
 }

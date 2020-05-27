@@ -28,9 +28,9 @@
         "AGSPortal"
     ],
     "snippets": [
-        "SaveAsViewController.swift",
+        "CreateOptionsViewController.swift",
         "CreateSaveMapViewController.swift",
-        "CreateOptionsViewController.swift"
+        "SaveAsViewController.swift"
     ],
     "title": "Create and save map"
 }

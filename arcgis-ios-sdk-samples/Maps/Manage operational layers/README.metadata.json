@@ -23,8 +23,8 @@
         "AGSMap"
     ],
     "snippets": [
-        "ManageMapLayersViewController.swift",
-        "MMLLayersViewController.swift"
+        "MMLLayersViewController.swift",
+        "ManageMapLayersViewController.swift"
     ],
     "title": "Manage operational layers"
 }

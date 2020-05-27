@@ -27,8 +27,8 @@
         "AGSGeoprocessingTask"
     ],
     "snippets": [
-        "HotspotSettingsViewController.swift",
-        "AnalyzeHotspotsViewController.swift"
+        "AnalyzeHotspotsViewController.swift",
+        "HotspotSettingsViewController.swift"
     ],
     "title": "Analyze hotspots"
 }

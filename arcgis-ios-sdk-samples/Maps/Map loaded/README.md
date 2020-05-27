@@ -14,7 +14,10 @@ Open the sample to load the map. The load status will be displayed on screen.
 
 ## How it works
 
-The sample uses Key-Value Observing on the `AGSMap`’s `loadStatus` property to determine when the status has changed. The `AGSLoadStatus` is `loaded` when any of the following criteria are met:
+1. Create an `AGSMap` and add it to the `AGSMapView`.
+2. Use Key-Value Observing on the `AGSMap`'s `loadStatus` property to determine when the status has changed.
+
+The `AGSLoadStatus` is `loaded` when any of the following criteria are met:
 
 * The map has a valid spatial reference.
 * The map has an an initial viewpoint.

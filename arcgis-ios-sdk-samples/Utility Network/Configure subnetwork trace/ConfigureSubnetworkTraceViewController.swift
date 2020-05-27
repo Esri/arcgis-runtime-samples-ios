@@ -16,5 +16,7 @@ import UIKit
 import ArcGIS
 
 class ConfigureSubnetworkTraceViewController: UIViewController {
+    @IBOutlet weak var mapView: AGSMapView!
     
+    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
 }

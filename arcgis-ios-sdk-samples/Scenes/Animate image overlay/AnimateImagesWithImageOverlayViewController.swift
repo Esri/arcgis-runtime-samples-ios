@@ -32,8 +32,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     /// The slider to change opacity level, from transparent 0% to opaque 100%.
     @IBOutlet weak var opacitySlider: UISlider! {
         didSet {
-            imageOverlay.opacity = opacitySlider.value
-            opacityLabel.text = getOpacityPercentageString(percentage: opacitySlider.value)
+            sliderValueChanged(opacitySlider)
         }
     }
     
@@ -57,7 +56,15 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     /// The image overlay to show image frames.
     let imageOverlay = AGSImageOverlay()
     /// An iterator to hold and loop through the overlay images.
-    private var imagesIterator: CircularIterator<UIImage>!
+    private lazy var imagesIterator: CircularIterator<UIImage> = {
+        // Get the URLs to those images added to the project's folder reference.
+        let pacificSouthWestURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") ?? []
+        // Sort the image URLs by their relative pathnames.
+        let imageURLs = pacificSouthWestURLs.sorted { $0.lastPathComponent < $1.lastPathComponent }
+        return CircularIterator(
+            elements: imageURLs.map { UIImage(contentsOfFile: $0.path)! }
+        )
+    }()
     
     /// A formatter to format percentage strings.
     let percentageFormatter: NumberFormatter = {
@@ -122,19 +129,6 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         displaylink!.add(to: .main, forMode: .common)
     }
     
-    /// Make a circular iterator to provide image frames.
-    ///
-    /// - Returns: A circular iterator that returns the next `UIImage` everytime get called.
-    private func makeImagesIterator() -> CircularIterator<UIImage> {
-        // Get the URLs to those images added to the project's folder reference.
-        let pacificSouthWestURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") ?? []
-        // Sort the image URLs by their relative pathnames.
-        let imageURLs = pacificSouthWestURLs.sorted { $0.lastPathComponent < $1.lastPathComponent }
-        return CircularIterator(
-            elements: imageURLs.map { UIImage(contentsOfFile: $0.path)! }
-        )
-    }
-    
     /// Set current image to the image overlay.
     @objc
     func setImageFrame() {
@@ -143,7 +137,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     }
     
     func getOpacityPercentageString(percentage: Float) -> String {
-        return "Opacity\n" + percentageFormatter.string(from: NSNumber(value: percentage))!
+        return percentageFormatter.string(from: percentage as NSNumber)!
     }
     
     // MARK: - Actions
@@ -195,7 +189,6 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["AnimateImagesWithImageOverlayViewController"]
         // Load the images from resources directory, and set UI if the load succeeded.
-        imagesIterator = makeImagesIterator()
         if !imagesIterator.elements.isEmpty {
             playButtonItem.isEnabled = true
             speedButtonItem.isEnabled = true

@@ -22,7 +22,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     @IBOutlet var playButtonItem: UIBarButtonItem!
     /// The button to pause image overlay animation.
     @IBOutlet var pauseButtonItem: UIBarButtonItem!
-    /// The button to choose a frame rate for the animation
+    /// The button to choose a playback speed for the animation.
     @IBOutlet weak var speedButtonItem: UIBarButtonItem!
     /// The toolbar in the view controller.
     @IBOutlet weak var toolbar: UIToolbar!
@@ -53,7 +53,6 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     var frameRate = 60
     /// The image overlay to show image frames.
     let imageOverlay = AGSImageOverlay()
-    
     /// A timer to synchronize image frame animation to the refresh rate of the display.
     var displaylink: CADisplayLink!
     

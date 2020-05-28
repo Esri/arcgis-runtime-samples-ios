@@ -36,24 +36,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5h-DC-Dtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Wqr-jb-4el" customClass="IdentifyRasterCellStackView" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="120" height="112"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wqr-jb-4el" customClass="IdentifyRasterCellStackView" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="120" height="110"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaL-Yh-iw7">
-                            <rect key="frame" x="0.0" y="0.0" width="120" height="39.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="41"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UA8-ez-M5c">
-                            <rect key="frame" x="0.0" y="51.5" width="120" height="60.5"/>
+                            <rect key="frame" x="0.0" y="51" width="120" height="59"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="UA8-ez-M5c" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RaL-Yh-iw7" secondAttribute="bottom" constant="10" id="AhA-KH-PKH"/>
+                        <constraint firstItem="UA8-ez-M5c" firstAttribute="top" secondItem="RaL-Yh-iw7" secondAttribute="bottom" constant="10" id="AhA-KH-PKH"/>
                         <constraint firstAttribute="width" constant="120" id="Byy-mC-YTW"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="C22-QJ-eot"/>

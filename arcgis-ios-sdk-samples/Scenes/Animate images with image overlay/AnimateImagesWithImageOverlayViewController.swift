@@ -51,7 +51,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
 
     /// The image overlay to show image frames.
     let imageOverlay = AGSImageOverlay()
-    /// A timer to synchronize image frame animation to the refresh rate of the display.
+    /// A timer to synchronize image overlay animation to the refresh rate of the display.
     var displayLink: CADisplayLink!
     
     /// An iterator to hold and loop through the overlay images.
@@ -102,7 +102,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         return scene
     }
     
-    /// Create a display link timer for the image frame animation.
+    /// Create a display link timer for the image overlay animation.
     ///
     /// - Returns: A new `CADisplayLink` object.
     func makeDisplayLink() -> CADisplayLink {

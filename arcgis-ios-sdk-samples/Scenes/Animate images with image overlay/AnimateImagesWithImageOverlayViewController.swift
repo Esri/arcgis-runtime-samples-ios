@@ -48,22 +48,20 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     }
     
     // MARK: Instance properties
-    
-    /// The frame rate in the unit of frame per second.
-    var frameRate = 60
+
     /// The image overlay to show image frames.
     let imageOverlay = AGSImageOverlay()
     /// A timer to synchronize image frame animation to the refresh rate of the display.
-    var displaylink: CADisplayLink!
+    var displayLink: CADisplayLink!
     
     /// An iterator to hold and loop through the overlay images.
     private lazy var imagesIterator: CircularIterator<UIImage> = {
         // Get the URLs to images added to the project's folder reference.
-        var imageURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") ?? []
-        imageURLs.sort { $0.lastPathComponent < $1.lastPathComponent }
-        return CircularIterator(
-            elements: imageURLs.map { UIImage(contentsOfFile: $0.path)! }
-        )
+        let imageURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") ?? []
+        let images = imageURLs
+            .sorted { $0.lastPathComponent < $1.lastPathComponent }
+            .map { UIImage(contentsOfFile: $0.path)! }
+        return CircularIterator(elements: images)
     }()
     
     /// A formatter to format percentage strings.
@@ -97,12 +95,24 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         // Create an elevation source from Terrain3D REST service.
         let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
-        // Create a surface and add it to the scene.
         let surface = AGSSurface()
         surface.elevationSources = [elevationSource]
         let scene = AGSScene(basemap: AGSBasemap(baseLayer: worldDarkGrayBasemap))
         scene.baseSurface = surface
         return scene
+    }
+    
+    /// Create a display link timer for the image frame animation.
+    ///
+    /// - Returns: A new `CADisplayLink` object.
+    func makeDisplayLink() -> CADisplayLink {
+        let newDisplayLink = CADisplayLink(target: self, selector: #selector(setImageFrame))
+        // Inherit the frame rate from existing display link, or set to default 60 fps.
+        newDisplayLink.preferredFramesPerSecond = displayLink?.preferredFramesPerSecond ?? 60
+        newDisplayLink.isPaused = true
+        // Add to main thread common mode run loop, so it is not effected by UI events.
+        newDisplayLink.add(to: .main, forMode: .common)
+        return newDisplayLink
     }
     
     /// Set current image to the image overlay.
@@ -121,14 +131,12 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     
     @IBAction func playPauseButtonTapped(_ button: UIBarButtonItem) {
         let index = toolbar.items!.firstIndex(of: button)!
-        if !displaylink.isPaused {
+        if !displayLink.isPaused {
             toolbar.items![index] = playButtonItem
         } else {
             toolbar.items![index] = pauseButtonItem
-            // Set framerate of the display link before starting to play.
-            displaylink.preferredFramesPerSecond = frameRate
         }
-        displaylink.isPaused.toggle()
+        displayLink.isPaused.toggle()
     }
     
     @IBAction func speedButtonTapped(_ button: UIBarButtonItem) {
@@ -144,9 +152,8 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         ]
         speedChoices.forEach { (name, fps) in
             let action = UIAlertAction(title: name, style: .default) { _ in
-                self.frameRate = fps
-                if !self.displaylink.isPaused {
-                    self.displaylink.preferredFramesPerSecond = fps
+                if !self.displayLink.isPaused {
+                    self.displayLink.preferredFramesPerSecond = fps
                 }
             }
             alertController.addAction(action)
@@ -177,20 +184,18 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        displaylink = CADisplayLink(target: self, selector: #selector(setImageFrame))
-        displaylink.isPaused = true
-        // Add to main thread common mode run loop, so it is not effected by UI events.
-        displaylink.add(to: .main, forMode: .common)
+        
+        displayLink = makeDisplayLink()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         // Pause the animation and change the tool bar button.
-        if !displaylink.isPaused {
+        if !displayLink.isPaused {
             playPauseButtonTapped(pauseButtonItem)
         }
-        // Invalidates display link before exiting the sample.
-        displaylink.invalidate()
+        // Invalidates display link before exiting.
+        displayLink.invalidate()
     }
 }
 

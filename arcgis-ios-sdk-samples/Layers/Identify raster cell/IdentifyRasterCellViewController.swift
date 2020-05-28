@@ -127,6 +127,8 @@ extension IdentifyRasterCellViewController: AGSGeoViewTouchDelegate {
     }
 }
 
+// MARK: - Custom stack view to show in a callout
+
 class IdentifyRasterCellStackView: UIStackView {
     @IBOutlet weak var attributesLabel: UILabel!
     @IBOutlet weak var coordinatesLabel: UILabel!

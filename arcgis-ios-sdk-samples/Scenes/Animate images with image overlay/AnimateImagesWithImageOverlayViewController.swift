@@ -131,11 +131,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     
     @IBAction func playPauseButtonTapped(_ button: UIBarButtonItem) {
         let index = toolbar.items!.firstIndex(of: button)!
-        if !displayLink.isPaused {
-            toolbar.items![index] = playButtonItem
-        } else {
-            toolbar.items![index] = pauseButtonItem
-        }
+        toolbar.items![index] = displayLink.isPaused ? pauseButtonItem : playButtonItem
         displayLink.isPaused.toggle()
     }
     

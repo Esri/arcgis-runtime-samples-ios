@@ -35,6 +35,7 @@ class IdentifyRasterCellViewController: UIViewController {
     
     /// The raster layer created using local raster file.
     let rasterLayer = AGSRasterLayer(raster: AGSRaster(name: "SA_EVI_8Day_03May20", extension: "tif"))
+    
     /// A formatter for coordinates.
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -45,7 +46,7 @@ class IdentifyRasterCellViewController: UIViewController {
         return formatter
     }()
     
-    // MARK: Initialize map and utility network
+    // MARK: Initialize map and identify pixel
     
     /// Create a map.
     ///
@@ -60,7 +61,7 @@ class IdentifyRasterCellViewController: UIViewController {
     ///
     /// - Parameters:
     ///   - screenPoint: The point at which to identify features.
-    ///   - offset: An offset to the point to identify to display the callout.
+    ///   - offset: An offset to the point where the callout is displayed.
     func identifyPixel(at screenPoint: CGPoint, offset: CGPoint = .zero) {
         mapView.identifyLayer(rasterLayer, screenPoint: screenPoint, tolerance: 1.0, returnPopupsOnly: false) { [weak self] identifyResult in
             guard let self = self else { return }

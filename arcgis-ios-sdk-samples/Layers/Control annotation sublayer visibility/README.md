@@ -18,15 +18,11 @@ Tap the "Sublayers" button and use the switches to manually set "Open" and "Clos
 
 ## How it works
 
-1. Load the `AGSMobileMapPackage`.
-2. Load the `AGSAnnotationLayer` and populate the table view with the annotation sublayer names (including maximum and minimum scales, where relevant).
-3. Wire up the switches to toggle the annotation sublayer's `isVisible` property.
-4. Observe changes to the map view's map scale to:
-  * Update the current scale label toward the top of the screen.
-  * Set the "Open" annotation sublayer row's text label to:
-     * Enabled, when the layer is drawn at the current map scale.
-     * Disabled, when the layer is not drawn at the current map scale.
- 
+1. Load an `AGSMobileMapPackage` that contains an `AGSAnnotationLayer`.
+2. Get the sublayers from the map package's annotation layers with `subLayerContents` property.
+3. Toggle the `isVisible` property to set visibility of each sublayer manually.
+4. To determine if a sublayer is visible at the current scale of the map view, use the `AGSLayerContent.isVisible(atScale:)` method, by passing in the map's current scale.
+
 ## Relevant API
 
 * AGSAnnotationLayer

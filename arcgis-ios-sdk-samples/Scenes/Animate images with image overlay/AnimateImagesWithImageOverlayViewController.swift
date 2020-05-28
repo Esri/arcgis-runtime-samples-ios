@@ -48,7 +48,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     }
     
     // MARK: Instance properties
-
+    
     /// The image overlay to show image frames.
     let imageOverlay = AGSImageOverlay()
     /// A timer to synchronize image overlay animation to the refresh rate of the display.
@@ -83,7 +83,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         height: -14.3770441522488
     )
     
-    // MARK: Initialize scene and set image frame
+    // MARK: Initialize scene, create animation timer and set image frame
     
     /// Create a scene.
     ///

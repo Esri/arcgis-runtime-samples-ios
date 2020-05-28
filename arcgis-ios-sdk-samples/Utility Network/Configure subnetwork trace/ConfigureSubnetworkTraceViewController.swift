@@ -19,4 +19,11 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
     
     private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    
+    override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    //add the source code button item to the right of navigation bar
+    (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ConfigureSubnetworkTraceViewController", "ConfigureSubnetworkTraceViewControllerConfigurations", "OptionsTableViewController"]
+    }
 }

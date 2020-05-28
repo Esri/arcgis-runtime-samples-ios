@@ -18,7 +18,7 @@ Tap the "Sublayers" button and use the switches to manually set "Open" and "Clos
 
 ## How it works
 
-1. Load an `AGSMobileMapPackage` that contains `AGSAnnotationLayer`.
+1. Load an `AGSMobileMapPackage` that contains an `AGSAnnotationLayer`.
 2. Get the sublayers from the map package's annotation layers with `subLayerContents` property.
 3. Toggle the `isVisible` property to set visibility of each sublayer manually.
 4. To determine if a sublayer is visible at the current scale of the map view, use the `AGSLayerContent.isVisible(atScale:)` method, by passing in the map's current scale.

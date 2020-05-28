@@ -152,9 +152,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         ]
         speedChoices.forEach { (name, fps) in
             let action = UIAlertAction(title: name, style: .default) { _ in
-                if !self.displayLink.isPaused {
-                    self.displayLink.preferredFramesPerSecond = fps
-                }
+                self.displayLink.preferredFramesPerSecond = fps
             }
             alertController.addAction(action)
         }

@@ -65,26 +65,21 @@ class IdentifyRasterCellViewController: UIViewController {
         mapView.identifyLayer(rasterLayer, screenPoint: screenPoint, tolerance: 1.0, returnPopupsOnly: false) { [weak self] identifyResult in
             guard let self = self else { return }
             if identifyResult.geoElements.isEmpty {
-                // If there are no geoelements identified, e.g. not on a raster layer, dismiss the callout.
+                // If there are no geo elements identified, e.g. not on a raster layer, dismiss the callout.
                 self.mapView.callout.dismiss()
                 return
             }
             guard let cell = identifyResult.geoElements.first(where: { $0 is AGSRasterCell }) else {
                 return
             }
-            var calloutText: [String] = []
-            var xyCoordinates: [String] = []
-            cell.attributes.forEach { attribute in
-                calloutText.append("\(attribute.key): \(attribute.value)")
-            }
-            let x = ("X", cell.geometry!.extent.xMin)
-            let y = ("Y", cell.geometry!.extent.yMin)
-            [x, y].forEach { (name, value) in
-                xyCoordinates.append("\(name): \(self.formatter.string(from: value as NSNumber)!)")
-            }
-            
-            self.calloutStackView.attributesLabel.text = calloutText.joined(separator: "\n")
-            self.calloutStackView.coordinatesLabel.text = xyCoordinates.joined(separator: "\n")
+            let calloutText = cell.attributes.map { "\($0.key): \($0.value)" }.joined(separator: "\n")
+            let extent = cell.geometry!.extent
+            let xyCoordinates = """
+            X: \(self.formatter.string(from: extent.xMin as NSNumber)!)
+            Y: \(self.formatter.string(from: extent.yMin as NSNumber)!)
+            """
+            self.calloutStackView.attributesLabel.text = calloutText
+            self.calloutStackView.coordinatesLabel.text = xyCoordinates
             self.mapView.callout.show(
                 at: self.mapView.screen(toLocation: screenPoint),
                 screenOffset: offset,
@@ -130,4 +125,9 @@ extension IdentifyRasterCellViewController: AGSGeoViewTouchDelegate {
         // When tap drag finishes, show the callout without offset.
         identifyPixel(at: screenPoint)
     }
+}
+
+class IdentifyRasterCellStackView: UIStackView {
+    @IBOutlet weak var attributesLabel: UILabel!
+    @IBOutlet weak var coordinatesLabel: UILabel!
 }

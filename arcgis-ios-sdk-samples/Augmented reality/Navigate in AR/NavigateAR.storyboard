@@ -8,20 +8,156 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--NavigateAR Route Planner-->
+        <!--NavigateAR Route Planner View Controller-->
         <scene sceneID="r8Q-DF-piv">
             <objects>
-                <viewController id="aoD-Ev-s0u" customClass="NavigateARRoutePlanner" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aoD-Ev-s0u" customClass="NavigateARRoutePlannerViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eSY-BN-xeu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGO-11-S7Y" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQs-5w-mSm">
+                                <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions are shown here." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y6-TI-luf">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="1y6-TI-luf" firstAttribute="trailing" secondItem="adb-tG-5z7" secondAttribute="trailing" id="Df9-yo-scQ"/>
+                                    <constraint firstItem="1y6-TI-luf" firstAttribute="top" secondItem="KQs-5w-mSm" secondAttribute="top" id="FNF-bE-Uay"/>
+                                    <constraint firstItem="1y6-TI-luf" firstAttribute="leading" secondItem="adb-tG-5z7" secondAttribute="leading" id="N5Q-fn-S7c"/>
+                                    <constraint firstAttribute="bottom" secondItem="1y6-TI-luf" secondAttribute="bottom" id="biy-1O-tza"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="adb-tG-5z7"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCE-Ex-Ju7">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dGl-vk-veo"/>
+                                    <barButtonItem enabled="NO" systemItem="camera" id="JA9-Qj-dbp">
+                                        <connections>
+                                            <segue destination="qwZ-CV-gmq" kind="show" identifier="showNavigator" id="OaT-Vf-4x3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tGw-5Z-EbO"/>
+                                    <barButtonItem enabled="NO" systemItem="trash" id="XqA-S6-Oc1">
+                                        <connections>
+                                            <action selector="reset" destination="aoD-Ev-s0u" id="uxx-R1-l9v"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cCE-Ex-Ju7" firstAttribute="top" secondItem="AGO-11-S7Y" secondAttribute="bottom" id="0ab-kb-au9"/>
+                            <constraint firstItem="KQs-5w-mSm" firstAttribute="top" secondItem="AGO-11-S7Y" secondAttribute="top" id="BJ4-Mo-60i"/>
+                            <constraint firstItem="KQs-5w-mSm" firstAttribute="leading" secondItem="eSY-BN-xeu" secondAttribute="leading" id="K7z-oc-ne5"/>
+                            <constraint firstItem="cCE-Ex-Ju7" firstAttribute="leading" secondItem="eSY-BN-xeu" secondAttribute="leading" id="L0K-zu-ZHs"/>
+                            <constraint firstItem="AGO-11-S7Y" firstAttribute="top" secondItem="hrM-gU-wv5" secondAttribute="top" id="VZJ-Pi-81d"/>
+                            <constraint firstItem="cCE-Ex-Ju7" firstAttribute="bottom" secondItem="hrM-gU-wv5" secondAttribute="bottom" id="fU5-gc-69r"/>
+                            <constraint firstItem="AGO-11-S7Y" firstAttribute="leading" secondItem="eSY-BN-xeu" secondAttribute="leading" id="fcg-bQ-xjm"/>
+                            <constraint firstItem="AGO-11-S7Y" firstAttribute="trailing" secondItem="eSY-BN-xeu" secondAttribute="trailing" id="sjT-Hh-JXQ"/>
+                            <constraint firstItem="cCE-Ex-Ju7" firstAttribute="trailing" secondItem="eSY-BN-xeu" secondAttribute="trailing" id="ut8-sp-TnJ"/>
+                            <constraint firstItem="KQs-5w-mSm" firstAttribute="trailing" secondItem="eSY-BN-xeu" secondAttribute="trailing" id="ynz-uh-0O8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hrM-gU-wv5"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="AGO-11-S7Y" id="G8E-zW-YCC"/>
+                        <outlet property="navigateButtonItem" destination="JA9-Qj-dbp" id="nvz-Xl-v02"/>
+                        <outlet property="resetButtonItem" destination="XqA-S6-Oc1" id="CYB-cP-VkY"/>
+                        <outlet property="statusLabel" destination="1y6-TI-luf" id="5aE-fu-gON"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8PM-oE-2dm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-25" y="86"/>
+        </scene>
+        <!--NavigateAR Navigator View Controller-->
+        <scene sceneID="uxT-hg-PrC">
+            <objects>
+                <viewController id="qwZ-CV-gmq" customClass="NavigateARNavigatorViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Flu-kb-SQh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MxU-mV-lW9" customClass="ArcGISARView" customModule="ArcGISToolkit">
+                                <rect key="frame" x="0.0" y="20.5" width="414" height="738.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLn-Ol-JFu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions are shown here." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioY-Ac-pUy">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ioY-Ac-pUy" firstAttribute="leading" secondItem="hhD-Fm-5A5" secondAttribute="leading" id="9EY-wJ-DCK"/>
+                                    <constraint firstItem="ioY-Ac-pUy" firstAttribute="trailing" secondItem="hhD-Fm-5A5" secondAttribute="trailing" id="9b5-aO-7gb"/>
+                                    <constraint firstAttribute="bottom" secondItem="ioY-Ac-pUy" secondAttribute="bottom" id="9kS-Zz-zWc"/>
+                                    <constraint firstItem="ioY-Ac-pUy" firstAttribute="top" secondItem="aLn-Ol-JFu" secondAttribute="top" id="e9j-4O-1CQ"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="hhD-Fm-5A5"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ar1-aA-9zp">
+                                <rect key="frame" x="0.0" y="759" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Calibrate" id="4bP-c5-dpg">
+                                        <connections>
+                                            <action selector="showCalibrationPopup:" destination="qwZ-CV-gmq" id="eG6-kf-NtL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="C7o-xL-tVx"/>
+                                    <barButtonItem title="Start" id="vHJ-ue-sVk">
+                                        <connections>
+                                            <action selector="startTurnByTurn:" destination="qwZ-CV-gmq" id="36p-W5-TPE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="aLn-Ol-JFu" firstAttribute="top" secondItem="Lj3-Om-KUc" secondAttribute="top" id="50I-bD-WWX"/>
+                            <constraint firstItem="Ar1-aA-9zp" firstAttribute="top" secondItem="MxU-mV-lW9" secondAttribute="bottom" id="EjF-1r-6hW"/>
+                            <constraint firstItem="MxU-mV-lW9" firstAttribute="leading" secondItem="Flu-kb-SQh" secondAttribute="leading" id="IMF-BI-NWC"/>
+                            <constraint firstItem="Ar1-aA-9zp" firstAttribute="leading" secondItem="Flu-kb-SQh" secondAttribute="leading" id="SqX-oC-zTq"/>
+                            <constraint firstItem="Ar1-aA-9zp" firstAttribute="bottom" secondItem="Lj3-Om-KUc" secondAttribute="bottom" id="Vx2-P8-kD4"/>
+                            <constraint firstItem="aLn-Ol-JFu" firstAttribute="trailing" secondItem="Flu-kb-SQh" secondAttribute="trailing" id="YqB-xs-WHZ"/>
+                            <constraint firstItem="Ar1-aA-9zp" firstAttribute="trailing" secondItem="Flu-kb-SQh" secondAttribute="trailing" id="Z6s-vY-dTO"/>
+                            <constraint firstItem="aLn-Ol-JFu" firstAttribute="bottom" secondItem="MxU-mV-lW9" secondAttribute="top" id="eeT-RE-fg7"/>
+                            <constraint firstItem="MxU-mV-lW9" firstAttribute="trailing" secondItem="Flu-kb-SQh" secondAttribute="trailing" id="j1L-sn-KL0"/>
+                            <constraint firstItem="aLn-Ol-JFu" firstAttribute="leading" secondItem="Flu-kb-SQh" secondAttribute="leading" id="yxI-ZS-nrQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Lj3-Om-KUc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="K9w-mB-UYE"/>
+                    <connections>
+                        <outlet property="arView" destination="MxU-mV-lW9" id="b7U-gq-FgW"/>
+                        <outlet property="calibrateButtonItem" destination="4bP-c5-dpg" id="m2P-xr-NAo"/>
+                        <outlet property="startButtonItem" destination="vHJ-ue-sVk" id="Nvd-iA-1uh"/>
+                        <outlet property="statusLabel" destination="ioY-Ac-pUy" id="lVM-1H-DMG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2RJ-fD-AyU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="86"/>
         </scene>
     </scenes>
 </document>

@@ -28,8 +28,6 @@ class NavigateARRoutePlannerViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            // Avoid overlapping status label and map content.
-            mapView.contentInset.top = 2 * statusLabel.font.lineHeight
             mapView.map = AGSMap(basemap: .imageryWithLabelsVector())
             mapView.graphicsOverlays.addObjects(from: [routeGraphicsOverlay, stopGraphicsOverlay])
             mapView.locationDisplay.dataSource = locationDataSource
@@ -152,6 +150,8 @@ class NavigateARRoutePlannerViewController: UIViewController {
             "NavigateARRoutePlannerViewController",
             "NavigateARNavigatorViewController"
         ]
+        // Avoid overlapping status label and map content.
+        mapView.contentInset.top = 2 * statusLabel.font.lineHeight
         
         // Configure the authentication manager to show the OAuth dialog.
         AGSAuthenticationManager.shared().delegate = self

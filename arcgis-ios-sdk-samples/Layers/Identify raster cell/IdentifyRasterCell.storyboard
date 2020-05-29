@@ -38,16 +38,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5h-DC-Dtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wqr-jb-4el" customClass="IdentifyRasterCellStackView" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="120" height="0.0"/>
+                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaL-Yh-iw7">
-                            <rect key="frame" x="0.0" y="0.0" width="31" height="0.0"/>
+                            <rect key="frame" x="0.0" y="0.0" width="31" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UA8-ez-M5c">
-                            <rect key="frame" x="0.0" y="0.0" width="31" height="0.0"/>
+                            <rect key="frame" x="0.0" y="68" width="31" height="52"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

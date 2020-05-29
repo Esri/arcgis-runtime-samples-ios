@@ -57,7 +57,7 @@
         <!--Edit Configuration Root View Controller-->
         <scene sceneID="9rY-bz-QzL">
             <objects>
-                <tableViewController id="ylb-wE-Z90" userLabel="Edit Configuration Root View Controller" sceneMemberID="viewController">
+                <tableViewController id="ylb-wE-Z90" userLabel="Edit Configuration Root View Controller" customClass="ConfigureSubnetworkTraceConfigurationsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a67-hj-zXv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,6 +81,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="accessoryView" destination="8yb-t9-UXd" id="3bU-8q-1xM"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="AOu-6C-wIq" style="IBUITableViewCellStyleDefault" id="8ws-YS-HRZ">
                                         <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
@@ -98,6 +101,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="accessoryView" destination="bIf-qK-5us" id="gEt-ez-GGc"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -127,7 +133,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="8CW-2l-97h" detailTextLabel="cSO-tT-BbZ" style="IBUITableViewCellStyleValue1" id="Wxr-c1-p7X">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="8CW-2l-97h" detailTextLabel="cSO-tT-BbZ" style="IBUITableViewCellStyleValue1" id="Wxr-c1-p7X" userLabel="Comparison Cell">
                                         <rect key="frame" x="0.0" y="214.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wxr-c1-p7X" id="j06-hA-L2S">
@@ -175,12 +181,29 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="mA0-Rc-Jdx" style="IBUITableViewCellStyleDefault" id="Vxz-Er-PKb">
+                                        <rect key="frame" x="0.0" y="301.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vxz-Er-PKb" id="vLI-XO-Agv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Add condition" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mA0-Rc-Jdx">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Section-3" id="mpP-tz-4Pd" userLabel="Barrier conditions">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fFa-yp-Krc">
-                                        <rect key="frame" x="0.0" y="357.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="401" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fFa-yp-Krc" id="Bwb-Bb-szr">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -206,6 +229,13 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="xoU-di-3Wt">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="GTe-Gd-4Ui"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="attributesCell" destination="6aY-ho-9ka" id="R4B-ew-R0C"/>
+                        <outlet property="barriersSwitch" destination="8yb-t9-UXd" id="ejc-qj-qZ8"/>
+                        <outlet property="conditionCell" destination="Wxr-c1-p7X" id="mxV-K4-3Ua"/>
+                        <outlet property="containersSwitch" destination="bIf-qK-5us" id="nbr-3e-bVk"/>
+                        <outlet property="valueCell" destination="vxd-6b-Viu" id="nan-gC-sJf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gB-gF-wHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="8yb-t9-UXd" userLabel="Barriers Switch">

@@ -767,9 +767,9 @@
 		F1034FA922D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
-		F126830D247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F126830C247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurations.swift */; };
+		F126830D247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F126830C247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurationsViewController.swift */; };
 		F126830F247F3DCF0025499E /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F14A8EFE2474AD8900242D96 /* ConfigureSubnetworkTraceViewController.swift */; };
-		F1268310247F3DCF0025499E /* ConfigureSubnetworkTraceConfigurations.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F126830C247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurations.swift */; };
+		F1268310247F3DCF0025499E /* ConfigureSubnetworkTraceConfigurationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F126830C247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurationsViewController.swift */; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
 		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */; };
@@ -852,7 +852,7 @@
 			dstSubfolderSpec = 7;
 			files = (
 				F126830F247F3DCF0025499E /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */,
-				F1268310247F3DCF0025499E /* ConfigureSubnetworkTraceConfigurations.swift in CopyFiles */,
+				F1268310247F3DCF0025499E /* ConfigureSubnetworkTraceConfigurationsViewController.swift in CopyFiles */,
 				00E5B7D5245B9C8D00B11973 /* PerformValveIsolationTraceViewController.swift in CopyFiles */,
 				F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */,
 				00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */,
@@ -1655,7 +1655,7 @@
 		F1034FA222D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalTilePackage.storyboard; sourceTree = "<group>"; };
 		F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalTilePackageViewController.swift; sourceTree = "<group>"; };
 		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpk; sourceTree = "<group>"; };
-		F126830C247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceConfigurations.swift; sourceTree = "<group>"; };
+		F126830C247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceConfigurationsViewController.swift; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F14A8EFE2474AD8900242D96 /* ConfigureSubnetworkTraceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceViewController.swift; sourceTree = "<group>"; };
@@ -4147,7 +4147,7 @@
 			children = (
 				F14A8EFE2474AD8900242D96 /* ConfigureSubnetworkTraceViewController.swift */,
 				F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */,
-				F126830C247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurations.swift */,
+				F126830C247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurationsViewController.swift */,
 			);
 			path = "Configure subnetwork trace";
 			sourceTree = "<group>";
@@ -4898,7 +4898,7 @@
 				1230046C1FE2F70300303AC2 /* LineOfSightLocationViewController.swift in Sources */,
 				3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */,
 				C793B5DF21667194000A7A10 /* ListKMLContentsViewController.swift in Sources */,
-				F126830D247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurations.swift in Sources */,
+				F126830D247F3A1A0025499E /* ConfigureSubnetworkTraceConfigurationsViewController.swift in Sources */,
 				3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */,
 				00DAE5B92421321300D51281 /* NearestVertexViewController.swift in Sources */,
 				3ED028961B8E3A8500ACA70D /* SetMapsSRViewController.swift in Sources */,

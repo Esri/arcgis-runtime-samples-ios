@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
-		00C024E52475E4AB00E1DA8D /* NavigateARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARViewController.swift */; };
+		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
+		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
+		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
+		00C024E52475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00C024E72475E54A00E1DA8D /* NavigateAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */; };
 		00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
@@ -848,6 +851,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */,
+				00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */,
 				00E5B7D5245B9C8D00B11973 /* PerformValveIsolationTraceViewController.swift in CopyFiles */,
 				F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */,
 				00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */,
@@ -1116,7 +1121,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00C024E42475E4AB00E1DA8D /* NavigateARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARViewController.swift; sourceTree = "<group>"; };
+		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
+		00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARRoutePlannerViewController.swift; sourceTree = "<group>"; };
 		00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavigateAR.storyboard; sourceTree = "<group>"; };
 		00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
@@ -1702,8 +1708,9 @@
 		00C024DE2475E49A00E1DA8D /* Navigate in AR */ = {
 			isa = PBXGroup;
 			children = (
-				00C024E42475E4AB00E1DA8D /* NavigateARViewController.swift */,
 				00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */,
+				00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */,
+				00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */,
 			);
 			path = "Navigate in AR";
 			sourceTree = "<group>";
@@ -4761,7 +4768,7 @@
 				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
 				C7094786215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift in Sources */,
 				4C0FD7CD226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift in Sources */,
-				00C024E52475E4AB00E1DA8D /* NavigateARViewController.swift in Sources */,
+				00C024E52475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift in Sources */,
 				3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */,
 				E4B2E2691FE31ED500E610FF /* ViewshedGeoElementViewController.swift in Sources */,
 				12D66038226697320005DE8A /* LayersTableViewController.swift in Sources */,
@@ -4934,6 +4941,7 @@
 				3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */,
 				C7AF466021B1C8AC0050CC49 /* ChangeAtmosphereEffectViewController.swift in Sources */,
 				3ED028891B8E3A8500ACA70D /* OpenMapURLViewController.swift in Sources */,
+				00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */,
 				3EFDE0F61E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift in Sources */,
 				3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */,
 				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,

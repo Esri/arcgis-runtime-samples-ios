@@ -148,7 +148,8 @@ class NavigateARRoutePlannerViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "NavigateARRoutePlannerViewController",
-            "NavigateARNavigatorViewController"
+            "NavigateARNavigatorViewController",
+            "NavigateARCalibrationViewController"
         ]
         // Avoid overlapping status label and map content.
         mapView.contentInset.top = 2 * statusLabel.font.lineHeight

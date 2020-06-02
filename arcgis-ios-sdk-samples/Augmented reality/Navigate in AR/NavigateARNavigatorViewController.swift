@@ -20,42 +20,33 @@ import AVFoundation
 
 // MARK: - Navigate the route
 class NavigateARNavigatorViewController: UIViewController {
-    // UI controls
-    @IBOutlet weak var arView: ArcGISARView!
-    
-    let cameraController = AGSTransformationMatrixCameraController()
-    
-    lazy var calibrationVC: NavigateARCalibrationViewController = {
-        return NavigateARCalibrationViewController(
-            sceneView: arView.sceneView,
-            cameraController: cameraController
-        )
-    }()
-    
     /// The label to display route-planning status.
     @IBOutlet weak var statusLabel: UILabel!
     
     @IBOutlet weak var calibrateButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var startButtonItem: UIBarButtonItem!
+    // UI controls
+    @IBOutlet weak var arView: ArcGISARView!
+    
+    lazy var calibrationVC = NavigateARCalibrationViewController(arcgisARView: arView)
     
     // Routing and navigation
     
-    var route: AGSRouteResult!
+    var routeResult: AGSRouteResult!
     var routeTask: AGSRouteTask!
     var routeParameters: AGSRouteParameters!
     
-    private var routeTracker: AGSRouteTracker?
+    var routeTracker: AGSRouteTracker?
     
-    private var currentRoute: AGSRoute?
-    private let trackingLocationDataSource = AGSCLLocationDataSource()
-    private let synthesizer = AVSpeechSynthesizer()
+    var currentRoute: AGSRoute?
+    let trackingLocationDataSource = AGSCLLocationDataSource()
+    let speechSynthesizer = AVSpeechSynthesizer()
     // Scene & graphics
-    private let routeOverlay = AGSGraphicsOverlay()
-    private let elevationSource = AGSArcGISTiledElevationSource(url:
-        URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
-    private let elevationSurface = AGSSurface()
-    private var isCalibrating = false {
+    let routeOverlay = AGSGraphicsOverlay()
+    let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
+    let elevationSurface = AGSSurface()
+    var isCalibrating = false {
         didSet {
             if self.isCalibrating {
                 self.arView.sceneView.scene?.baseSurface?.opacity = 0.5
@@ -67,10 +58,8 @@ class NavigateARNavigatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        statusLabel.text = "Adjust calibration before starting"
-
+        setStatus(message: "Adjust calibration before starting")
         isCalibrating = false
-        
         self.configureSceneForAR()
     }
     
@@ -84,17 +73,23 @@ class NavigateARNavigatorViewController: UIViewController {
         arView.stopTracking()
     }
     
+    // MARK: UI
+    
+    func setStatus(message: String) {
+        statusLabel.text = message
+    }
+    
     @IBAction func startTurnByTurn(_ sender: UIBarButtonItem) {
-        routeTracker = AGSRouteTracker(routeResult: route, routeIndex: 0)
+        routeTracker = AGSRouteTracker(routeResult: routeResult, routeIndex: 0)
         if routeTask.routeTaskInfo().supportsRerouting {
             routeTracker?.enableRerouting(
                 with: self.routeTask,
                 routeParameters: self.routeParameters,
                 strategy: .toNextStop,
                 visitFirstStopOnStart: true
-            ) { [weak self] (err: Error?) in
+            ) { [weak self] (error: Error?) in
                 guard let self = self else { return }
-                if let error = err {
+                if let error = error {
                     self.presentAlert(error: error)
                 } else {
                     self.routeTracker?.delegate = self
@@ -115,15 +110,17 @@ class NavigateARNavigatorViewController: UIViewController {
         scene.baseSurface?.navigationConstraint = .none
         
         // Display the scene
+        routeOverlay.sceneProperties?.surfacePlacement = .absolute
         arView.sceneView.scene = scene
         arView.locationDataSource = AGSCLLocationDataSource()
-        arView.sceneView.graphicsOverlays.add(self.routeOverlay)
-        routeOverlay.sceneProperties?.surfacePlacement = .absolute
-        let strokeSymbolLayer = AGSSolidStrokeSymbolLayer()
-        strokeSymbolLayer.capStyle = .round
-        strokeSymbolLayer.lineStyle3D = .tube
-        strokeSymbolLayer.width = 1
-        strokeSymbolLayer.color = .yellow
+        arView.sceneView.graphicsOverlays.add(routeOverlay)
+                
+        let strokeSymbolLayer = AGSSolidStrokeSymbolLayer(
+            width: 1.0,
+            color: .yellow,
+            geometricEffects: [],
+            lineStyle3D: .tube
+        )
         let polylineSymbol = AGSMultilayerPolylineSymbol(symbolLayers: [strokeSymbolLayer])
         let polylineRenderer = AGSSimpleRenderer(symbol: polylineSymbol)
         routeOverlay.renderer = polylineRenderer
@@ -135,7 +132,7 @@ class NavigateARNavigatorViewController: UIViewController {
         arView.sceneView.spaceEffect = .transparent
         arView.sceneView.atmosphereEffect = .none
         
-        setRoute(route: route.routes.first!)
+        setRoute(route: routeResult.routes.first!)
     }
     
     func setRoute(route: AGSRoute) {
@@ -157,8 +154,7 @@ class NavigateARNavigatorViewController: UIViewController {
         }
     }
     
-    private func polylineWithZ(polyine polyineInput: AGSPolyline,
-                               withCompletion completion: @escaping (_ result: AGSPolyline) -> Void) {
+    private func polylineWithZ(polyine polyineInput: AGSPolyline, withCompletion completion: @escaping (_ result: AGSPolyline) -> Void) {
         // Densify the geometry so the elevation can be adjusted every 0.3 meters
         if let densifiedPolyline = AGSGeometryEngine.densifyGeometry(polyineInput, maxSegmentLength: 0.3) as? AGSPolyline {
             // Create a polyline builder to build the new geometry
@@ -193,19 +189,14 @@ class NavigateARNavigatorViewController: UIViewController {
 }
 
 // MARK: - Route navigation status changes
+
 extension NavigateARNavigatorViewController: AGSRouteTrackerDelegate {
     func routeTracker(_ routeTracker: AGSRouteTracker, didGenerateNewVoiceGuidance voiceGuidance: AGSVoiceGuidance) {
-        // Update the label with the new text
-        statusLabel.text = voiceGuidance.text
-        
-        // Speak the text out loud
-        let utterance = AVSpeechUtterance(string: voiceGuidance.text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer.speak(utterance)
+        setSpeakDirection(with: voiceGuidance.text)
     }
     
     func routeTrackerRerouteDidStart(_ routeTracker: AGSRouteTracker) {
-        statusLabel.text = "Rerouting…"
+        setStatus(message: "Rerouting...")
     }
     
     func routeTracker(_ routeTracker: AGSRouteTracker, didUpdate trackingStatus: AGSTrackingStatus) {
@@ -214,11 +205,7 @@ extension NavigateARNavigatorViewController: AGSRouteTrackerDelegate {
         statusLabel.text = newGuidance?.text
     }
     
-    func routeTracker(
-        _ routeTracker: AGSRouteTracker,
-        rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?,
-        error: Error?
-    ) {
+    func routeTracker(_ routeTracker: AGSRouteTracker, rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?, error: Error?) {
         // Update the graphic if needed
         if let latestRoute = routeTracker.trackingStatus?.routeResult.routes[0] {
             if latestRoute != self.currentRoute {
@@ -226,19 +213,28 @@ extension NavigateARNavigatorViewController: AGSRouteTrackerDelegate {
             }
         }
     }
-}
-
-// MARK: - Handle location updates - push to route tracker if actively navigating
-extension NavigateARNavigatorViewController: AGSLocationChangeHandlerDelegate {
-    func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
-        startButtonItem.isEnabled = true
-        if let tracker = self.routeTracker {
-            tracker.trackLocation(location, completion: nil)
+    
+    func setSpeakDirection(with text: String?) {
+        speechSynthesizer.stopSpeaking(at: AVSpeechBoundary.word)
+        if let text = text {
+            let speechUtterance = AVSpeechUtterance(string: text)
+            speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate * 0.5
+            speechSynthesizer.speak(speechUtterance)
         }
     }
 }
 
+// MARK: - Handle location updates - push to route tracker if actively navigating
+
+extension NavigateARNavigatorViewController: AGSLocationChangeHandlerDelegate {
+    func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
+        startButtonItem.isEnabled = true
+        routeTracker?.trackLocation(location)
+    }
+}
+
 // MARK: - Calibration view management
+
 extension NavigateARNavigatorViewController {
     @IBAction func showCalibrationPopup(_ sender: UIBarButtonItem) {
         if self.isCalibrating {
@@ -304,134 +300,3 @@ extension NavigateARNavigatorViewController: UIAdaptivePresentationControllerDel
 }
 
 // MARK: - Calibration view
-class NavigateARCalibrationViewController: UIViewController {
-    // The scene view displaying the scene.
-    private let sceneView: AGSSceneView
-    
-    /// The camera controller used to adjust user interactions.
-    private let cameraController: AGSTransformationMatrixCameraController
-    
-    /// The UISlider used to adjust heading.
-    private let headingSlider: UISlider = {
-        let slider = UISlider(frame: .zero)
-        slider.minimumValue = -10.0
-        slider.maximumValue = 10.0
-        return slider
-    }()
-    
-    /// The last elevation slider value.
-    var lastElevationValue: Float = 0
-    
-    // The last heading slider value.
-    var lastHeadingValue: Float = 0
-    
-    /// Initialized a new calibration view with the given scene view and camera controller.
-    ///
-    /// - Parameters:
-    ///   - sceneView: The scene view displaying the scene.
-    ///   - cameraController: The camera controller used to adjust user interactions.
-    init(sceneView: AGSSceneView, cameraController: AGSTransformationMatrixCameraController) {
-        self.cameraController = cameraController
-        self.sceneView = sceneView
-        super.init(nibName: nil, bundle: nil)
-        
-        // Add the heading label and slider.
-        let headingLabel = UILabel(frame: .zero)
-        headingLabel.text = "Heading:"
-        headingLabel.textColor = view.tintColor
-        view.addSubview(headingLabel)
-        headingLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            headingLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            headingLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
-        ])
-        
-        view.addSubview(headingSlider)
-        headingSlider.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            headingSlider.leadingAnchor.constraint(equalTo: headingLabel.trailingAnchor, constant: 16),
-            headingSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            headingSlider.centerYAnchor.constraint(equalTo: headingLabel.centerYAnchor)
-        ])
-        
-        // Setup actions for the two sliders. The sliders operate as "joysticks",
-        // where moving the slider thumb will start a timer
-        // which roates or elevates the current camera when the timer fires.  The elevation and heading delta
-        // values increase the further you move away from center.  Moving and holding the thumb a little bit from center
-        // will roate/elevate just a little bit, but get progressively more the further from center the thumb is moved.
-        headingSlider.addTarget(self, action: #selector(headingChanged(_:)), for: .valueChanged)
-        headingSlider.addTarget(self, action: #selector(touchUpHeading(_:)), for: [.touchUpInside, .touchUpOutside])
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // The timers for the "joystick" behavior.
-    private var elevationTimer: Timer?
-    private var headingTimer: Timer?
-    
-    /// Handle an heading slider value-changed event.
-    ///
-    /// - Parameter sender: The slider tapped on.
-    @objc
-    func headingChanged(_ sender: UISlider) {
-        if headingTimer == nil {
-            // Create a timer which rotates the camera when fired.
-            headingTimer = Timer(timeInterval: 0.1, repeats: true) { [weak self] (_) in
-                let delta = self?.joystickHeading() ?? 0.0
-                //                print("rotate delta = \(delta)")
-                self?.rotate(delta)
-            }
-            
-            // Add the timer to the main run loop.
-            guard let timer = headingTimer else { return }
-            RunLoop.main.add(timer, forMode: .default)
-        }
-    }
-    
-    /// Handle an elevation slider touchUp event.  This will stop the timer.
-    ///
-    /// - Parameter sender: The slider tapped on.
-    @objc
-    func touchUpElevation(_ sender: UISlider) {
-        elevationTimer?.invalidate()
-        elevationTimer = nil
-        sender.value = 0.0
-    }
-    
-    /// Handle a heading slider touchUp event.  This will stop the timer.
-    ///
-    /// - Parameter sender: The slider tapped on.
-    @objc
-    func touchUpHeading(_ sender: UISlider) {
-        headingTimer?.invalidate()
-        headingTimer = nil
-        sender.value = 0.0
-    }
-    
-    /// Rotates the camera by `deltaHeading`.
-    ///
-    /// - Parameter deltaHeading: The amount to rotate the camera.
-    private func rotate(_ deltaHeading: Double) {
-        let camera = cameraController.originCamera
-        let newHeading = camera.heading + deltaHeading
-        cameraController.originCamera = camera.rotate(toHeading: newHeading, pitch: camera.pitch, roll: camera.roll)
-    }
-    
-    /// Change the cameras altitude by `deltaAltitude`.
-    ///
-    /// - Parameter deltaAltitude: The amount to elevate the camera.
-    private func elevate(_ deltaAltitude: Double) {
-        let camera = cameraController.originCamera
-        cameraController.originCamera = camera.elevate(withDeltaAltitude: deltaAltitude)
-    }
-    
-    /// Calculates the heading delta amount based on the heading slider value.
-    ///
-    /// - Returns: The heading delta.
-    private func joystickHeading() -> Double {
-        let deltaHeading = Double(headingSlider.value)
-        return pow(deltaHeading, 2) / 25.0 * (deltaHeading < 0 ? -1.0 : 1.0)
-    }
-}

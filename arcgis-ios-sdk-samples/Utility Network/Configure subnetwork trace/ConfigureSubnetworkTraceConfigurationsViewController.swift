@@ -22,64 +22,16 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
     @IBOutlet weak var comparisonCell: UITableViewCell?
     @IBOutlet weak var valueCell: UITableViewCell?
     @IBOutlet weak var addConditionButton: UITableViewCell?
-    var expressionLabel: UILabel?
-    private var utilityNetwork: AGSUtilityNetwork?
-    // For creating the default starting location.
-    private let deviceTableName = "Electric Distribution Device"
-    private let assetGroupName = "Circuit Breaker"
-    private let assetTypeName = "Three Phase"
-    private let GUID = "{1CAF7740-0BF4-4113-8DB2-654E18800028}"
-    // For creating the default trace configuration.
-    private let domainNetworkName = "ElectricDistribution"
-    private let tierName = "Medium Voltage Radial"
     
-    // Utility element to start the trace from.
-    private var startingLocation: AGSUtilityElement?
-
-    // Holding the initial conditional expression.
-    private let initialExpression: AGSUtilityTraceConditionalExpression? // Causes error
-
-    // The trace configuration.
-    private var configuration: AGSUtilityTraceConfiguration? // Causes error
-
-    // The source tier of the utility network.
-    private var sourceTier: AGSUtilityTier? // Causes error
-
-//     The currently selected values for the barrier expression.
-//    private let selectedAttribute: AGSUtilityNetworkAttribute?
-//    private let selectedComparison: AGSUtilityAttributeComparisonOperator?
-    
-    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
-//    private object selectedValue =
-    
-    func main() {
-        utilityNetwork = AGSUtilityNetwork(url: featureServiceURL)
-        let networkSource = utilityNetwork?.definition.networkSource(withName: deviceTableName)
-        let assetGroup = networkSource?.assetGroup(withName: assetGroupName)
-        let assetType = assetGroup?.assetType(withName: assetTypeName)
-        let globalID = UUID.init(uuidString: GUID)
-        startingLocation = utilityNetwork?.createElement(with: assetType!, globalID: globalID!)
-        // Set the terminal for this location. (For our case, we use the 'Load' terminal.)
-        startingLocation?.terminal = startingLocation?.assetType.terminalConfiguration?.terminals.first
-        // Get a default trace configuration from a tier to update the UI.
-        let domainNetwork = utilityNetwork?.definition.domainNetwork(withDomainNetworkName: domainNetworkName)
-        sourceTier = domainNetwork?.tier(withName: tierName)
-        
-        // Set the trace configuration.
-        configuration = sourceTier?.traceConfiguration
-        
-        //Set the default expression (if provided).
-        if let expression = sourceTier?.traceConfiguration?.traversability?.barriers {
-            expressionLabel?.text = expression
-            
-        }
+    @IBAction func barriersSwitchAction(_ sender: UISwitch) {
+        sourceTier?.traceConfiguration?.includeBarriers = sender.isOn
+    }
+    @IBAction func containersSwitchAction(_ sender: UISwitch) {
+        sourceTier?.traceConfiguration?.includeContainers = sender.isOn
     }
     
-    func expressionToString(expression: AGSUtilityTraceConditionalExpression) {
-        if let categoryComparison = expression as! AGSUtilityCategoryComparison{
-            
-        }
-    }
+    private var configuration: AGSUtilityTraceConfiguration?
+    private let selectedAttribute: AGSUtilityNetworkAttribute?
     
     /// MARK: UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -105,6 +57,31 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
             }
             optionsViewController.title = "Value"
             show(optionsViewController, sender: self)
+        } else if cell == addConditionButton {
+            if configuration == nil {
+                configuration = AGSUtilityTraceConfiguration()
+            }
+            if configuration.traversability == nil {
+                configuration.traversability = AGSUtilityTraversability()
+            }
+            // NOTE: You may also create a UtilityCategoryComparison with UtilityNetworkDefinition.Categories and UtilityCategoryComparisonOperator.
+            if selectedAttribute != nil {
+                var selectedValue: Any?
+                // If the value is a coded value.
+                if let codedValue = selectedValue as? AGSCodedValue, selectedAttribute?.domain is AGSCodedValueDomain {
+                    selectedValue = convertTo
+                } else {
+                    selectedValue = convertTo
+                }
+                // NOTE: You may also create a UtilityNetworkAttributeComparison with another NetworkAttribute.
+                let expression = AGSUtilityNetworkAttributeComparison(networkAttribute: selectedAttribute, comparisonOperator: selectedComparison, value: selectedValue)
+                if let otherExpression = configuration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
+                    // NOTE: You may also combine expressions with UtilityTraceAndCondition
+                    expression = AGSUtilityTraceOrCondition(leftExpression: otherExpression, rightExpression: expression)
+                }
+                configuration?.traversability?.barriers = expression
+                expressionLabel.Text = 
+            }
         }
     }
 }

@@ -230,9 +230,10 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="GTe-Gd-4Ui"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addConditionButton" destination="Vxz-Er-PKb" id="lGm-Au-3Hw"/>
                         <outlet property="attributesCell" destination="6aY-ho-9ka" id="R4B-ew-R0C"/>
                         <outlet property="barriersSwitch" destination="8yb-t9-UXd" id="ejc-qj-qZ8"/>
-                        <outlet property="conditionCell" destination="Wxr-c1-p7X" id="mxV-K4-3Ua"/>
+                        <outlet property="comparisonCell" destination="Wxr-c1-p7X" id="jOa-Cs-h0T"/>
                         <outlet property="containersSwitch" destination="bIf-qK-5us" id="nbr-3e-bVk"/>
                         <outlet property="valueCell" destination="vxd-6b-Viu" id="nan-gC-sJf"/>
                     </connections>
@@ -241,10 +242,16 @@
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="8yb-t9-UXd" userLabel="Barriers Switch">
                     <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="barriersSwitchAction:" destination="ylb-wE-Z90" eventType="valueChanged" id="4pP-Ji-Tdd"/>
+                    </connections>
                 </switch>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="bIf-qK-5us" userLabel="Containers Switch">
                     <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="containersSwitchAction:" destination="ylb-wE-Z90" eventType="valueChanged" id="hdq-46-w3R"/>
+                    </connections>
                 </switch>
             </objects>
             <point key="canvasLocation" x="1788" y="86"/>

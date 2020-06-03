@@ -118,13 +118,13 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ar1-aA-9zp">
                                 <rect key="frame" x="0.0" y="759" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Calibrate" id="4bP-c5-dpg">
+                                    <barButtonItem enabled="NO" title="Calibrate" id="4bP-c5-dpg">
                                         <connections>
                                             <action selector="showCalibrationPopup:" destination="qwZ-CV-gmq" id="eG6-kf-NtL"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="C7o-xL-tVx"/>
-                                    <barButtonItem title="Start" id="vHJ-ue-sVk">
+                                    <barButtonItem enabled="NO" title="Start" id="vHJ-ue-sVk">
                                         <connections>
                                             <action selector="startTurnByTurn:" destination="qwZ-CV-gmq" id="36p-W5-TPE"/>
                                         </connections>

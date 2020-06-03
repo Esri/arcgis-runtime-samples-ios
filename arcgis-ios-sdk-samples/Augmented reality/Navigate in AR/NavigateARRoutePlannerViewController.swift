@@ -38,24 +38,16 @@ class NavigateARRoutePlannerViewController: UIViewController {
     
     // MARK: Instance properties
     
-    /// The route task to solve the route between start and destination, with authentication required.
+    /// The route task that solves the route using the online routing service, with authentication required.
     let routeTask = AGSRouteTask(url: URL(string: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World")!)
-    ///
+    /// The parameters for route task to solve a route.
     var routeParameters: AGSRouteParameters!
-    ///
+    /// The data source to track device location and provide updates to location display.
     let locationDataSource = AGSCLLocationDataSource()
-    ///
+    /// A graphic overlay for start and destination graphics.
     let stopGraphicsOverlay = AGSGraphicsOverlay()
     
-    ///
-    let oAuthConfiguration: AGSOAuthConfiguration = {
-        let portalURL = URL(string: "https://www.arcgis.com")!
-        let clientID = "lgAdHkYZYlwwfAhC"
-        let redirectURLString = "my-ags-app://auth"
-        return AGSOAuthConfiguration(portalURL: portalURL, clientID: clientID, redirectURL: redirectURLString)
-    }()
-    
-    ///
+    /// A graphic overlay for route graphics.
     let routeGraphicsOverlay: AGSGraphicsOverlay = {
         let overlay = AGSGraphicsOverlay()
         overlay.renderer = AGSSimpleRenderer(
@@ -64,7 +56,14 @@ class NavigateARRoutePlannerViewController: UIViewController {
         return overlay
     }()
     
-    ///
+    /// An OAuth2 configuration for accessing online routing service.
+    let oAuthConfiguration = AGSOAuthConfiguration(
+        portalURL: URL(string: "https://www.arcgis.com")!,
+        clientID: "lgAdHkYZYlwwfAhC",
+        redirectURL: "my-ags-app://auth"
+    )
+    
+    /// An `AGSPoint` representing the start of navigation.
     var startPoint: AGSPoint? {
         didSet {
             resetButtonItem.isEnabled = true
@@ -74,7 +73,7 @@ class NavigateARRoutePlannerViewController: UIViewController {
         }
     }
     
-    ///
+    /// An `AGSPoint` representing the destination of navigation.
     var endPoint: AGSPoint? {
         didSet {
             let stopSymbol = AGSPictureMarkerSymbol(image: UIImage(named: "StopB")!)
@@ -83,7 +82,7 @@ class NavigateARRoutePlannerViewController: UIViewController {
         }
     }
     
-    ///
+    /// The route result solved by the route task.
     var routeResult: AGSRouteResult? {
         willSet(newValue) {
             if newValue != nil {
@@ -105,7 +104,7 @@ class NavigateARRoutePlannerViewController: UIViewController {
         return [stop1, stop2]
     }
     
-    /// A wrapper function for operations after the route is solved by an AGSRouteTask.
+    /// A wrapper function for operations after the route is solved by an `AGSRouteTask`.
     ///
     /// - Parameters:
     ///   - routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.
@@ -119,26 +118,6 @@ class NavigateARRoutePlannerViewController: UIViewController {
             let routeGraphic = AGSGraphic(geometry: firstRoute.routeGeometry, symbol: nil)
             self.routeGraphicsOverlay.graphics.add(routeGraphic)
             self.setStatus(message: "Tap camera to start navigation.")
-        }
-    }
-    
-    func setRouteParameters() {
-        routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-                self.setStatus(message: "Failed to load route parameters.")
-            } else if let params = params {
-                // set the travel mode to the first one matching 'walking'
-                let walkMode = self.routeTask.routeTaskInfo().travelModes.first { $0.name.contains("Walking") }
-                params.travelMode = walkMode
-                params.returnStops = true
-                params.returnDirections = true
-                params.returnRoutes = true
-                self.routeParameters = params
-                self.mapView.touchDelegate = self
-                self.setStatus(message: "Tap to place a start point.")
-            }
         }
     }
     
@@ -184,8 +163,25 @@ class NavigateARRoutePlannerViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
                 self.setStatus(message: "Failed to load route task. Check your connection or credentials.")
-            } else {
-                self.setRouteParameters()
+                return
+            }
+            // Get route parameters if no error occurs.
+            self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
+                guard let self = self else { return }
+                if let error = error {
+                    self.presentAlert(error: error)
+                    self.setStatus(message: "Failed to load route parameters.")
+                } else if let params = params {
+                    // set the travel mode to the first one matching 'walking'
+                    let walkMode = self.routeTask.routeTaskInfo().travelModes.first { $0.name.contains("Walking") }
+                    params.travelMode = walkMode
+                    params.returnStops = true
+                    params.returnDirections = true
+                    params.returnRoutes = true
+                    self.routeParameters = params
+                    self.mapView.touchDelegate = self
+                    self.setStatus(message: "Tap to place a start point.")
+                }
             }
         }
         
@@ -227,12 +223,18 @@ extension NavigateARRoutePlannerViewController: AGSGeoViewTouchDelegate {
 // MARK: - Show OAuth dialog for route service
 
 extension NavigateARRoutePlannerViewController: AGSAuthenticationManagerDelegate {
-    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, wantsToShow viewController: UIViewController) {
+    func authenticationManager(
+        _ authenticationManager: AGSAuthenticationManager,
+        wantsToShow viewController: UIViewController
+    ) {
         viewController.modalPresentationStyle = .overFullScreen
         present(viewController, animated: true)
     }
     
-    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, wantsToDismiss viewController: UIViewController) {
+    func authenticationManager(
+        _ authenticationManager: AGSAuthenticationManager,
+        wantsToDismiss viewController: UIViewController
+    ) {
         dismiss(animated: true)
     }
 }

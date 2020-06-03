@@ -73,7 +73,7 @@ class NavigateARNavigatorViewController: UIViewController {
     /// A view controller that displays a slider to adjust navigation heading according to the basemap and elevation.
     lazy var calibrationVC = NavigateARCalibrationViewController(arcgisARView: arView)
     
-    // MARK: Initialize route and graphics
+    // MARK: Instance methods: initialize route and graphics
     
     /// Create a scene.
     ///

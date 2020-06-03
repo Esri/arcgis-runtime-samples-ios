@@ -1727,7 +1727,7 @@
 			isa = PBXGroup;
 			children = (
 				00ADC3C22464D59200A3B88D /* PacificSouthWest */,
-        00C6D329246CA8FC00C63EAF /* SA_EVI_8Day_03May20 */,
+				00C6D329246CA8FC00C63EAF /* SA_EVI_8Day_03May20 */,
 			);
 			path = Archives;
 			sourceTree = "<group>";
@@ -1759,6 +1759,8 @@
 				00C6D32D246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tfw */,
 			);
 			path = SA_EVI_8Day_03May20;
+			sourceTree = "<group>";
+		};
 		00D4E8D8241AA18E002689DB /* Convex hull */ = {
 			isa = PBXGroup;
 			children = (
@@ -3674,7 +3676,6 @@
 			isa = PBXGroup;
 			children = (
 				00ADC1D22464D43600A3B88D /* Archives */,
-				00C6D328246CA8FC00C63EAF /* Archives */,
 				4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */,
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
 				F1679F0422D93FA900E5320A /* Rasters */,

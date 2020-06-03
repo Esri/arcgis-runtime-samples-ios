@@ -15,6 +15,8 @@
 import UIKit
 import ArcGISToolkit
 
+// MARK: - Calibrate navigation heading
+
 class NavigateARCalibrationViewController: UIViewController {
     /// The `ArcGISARView` used to display scene and adjust user interactions with camera.
     private let arcgisARView: ArcGISARView
@@ -29,7 +31,7 @@ class NavigateARCalibrationViewController: UIViewController {
         return slider
     }()
     
-    /// Initialized an `ArcGISARView`  from the parent view controller.
+    /// Initialize with an `ArcGISARView`  from the parent view controller.
     ///
     /// - Parameters:
     ///   - arcgisARView: The `ArcGISARView` used for calibration.
@@ -65,7 +67,7 @@ class NavigateARCalibrationViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// Handle an heading slider value-changed event.
+    /// Handle an heading slider valueChanged event.
     ///
     /// - Parameter sender: The slider tapped on.
     @objc

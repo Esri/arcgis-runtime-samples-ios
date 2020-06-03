@@ -43,13 +43,13 @@ class NavigateRouteViewController: UIViewController {
     /// An AVSpeechSynthesizer for text to speech.
     lazy var speechSynthesizer = AVSpeechSynthesizer()
     
-    /// The bar button item that initiates the create convex hull operation.
+    /// The button to initiate navigation.
     @IBOutlet weak var navigateButtonItem: UIBarButtonItem!
-    /// The bar button item that removes the convex hull as well as the MapPoints.
+    /// The button to reset navigation.
     @IBOutlet weak var resetButtonItem: UIBarButtonItem!
-    /// The bar button item that recenters the map to navigation pan mode.
+    /// The button to recenter the map to navigation pan mode.
     @IBOutlet weak var recenterButtonItem: UIBarButtonItem!
-    /// The 3-line label to display navigation status.
+    /// The label to display navigation status.
     @IBOutlet weak var statusLabel: UILabel!
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
@@ -150,7 +150,7 @@ class NavigateRouteViewController: UIViewController {
         }
     }
     
-    /// Called in response to the Navigate button being tapped.
+    /// Called in response to the "Navigate" button being tapped.
     @IBAction func startNavigation() {
         navigateButtonItem.isEnabled = false
         resetButtonItem.isEnabled = true
@@ -161,7 +161,7 @@ class NavigateRouteViewController: UIViewController {
         mapView.locationDisplay.start()
     }
     
-    /// Called in response to the Reset button being tapped.
+    /// Called in response to the "Reset" button being tapped.
     @IBAction func reset() {
         // Stop the speech, if there is any.
         speechSynthesizer.stopSpeaking(at: .immediate)
@@ -183,7 +183,7 @@ class NavigateRouteViewController: UIViewController {
         navigateButtonItem.isEnabled = true
     }
     
-    /// Called in response to the Recenter button being tapped.
+    /// Called in response to the "Recenter" button being tapped.
     @IBAction func recenter() {
         mapView.locationDisplay.autoPanMode = .navigation
         recenterButtonItem.isEnabled = false

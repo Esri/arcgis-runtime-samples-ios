@@ -1723,15 +1723,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00C6D328246CA8FC00C63EAF /* Archives */ = {
-			isa = PBXGroup;
-			children = (
-				00ADC3C22464D59200A3B88D /* PacificSouthWest */,
-				00C6D329246CA8FC00C63EAF /* SA_EVI_8Day_03May20 */,
-			);
-			path = Archives;
-			sourceTree = "<group>";
-		};
 		00ADC3C92464DD0600A3B88D /* Identify raster cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1748,6 +1739,15 @@
 				00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */,
 			);
 			path = "Animate images with image overlay";
+			sourceTree = "<group>";
+		};
+		00C6D328246CA8FC00C63EAF /* Archives */ = {
+			isa = PBXGroup;
+			children = (
+				00ADC3C22464D59200A3B88D /* PacificSouthWest */,
+				00C6D329246CA8FC00C63EAF /* SA_EVI_8Day_03May20 */,
+			);
+			path = Archives;
 			sourceTree = "<group>";
 		};
 		00C6D329246CA8FC00C63EAF /* SA_EVI_8Day_03May20 */ = {

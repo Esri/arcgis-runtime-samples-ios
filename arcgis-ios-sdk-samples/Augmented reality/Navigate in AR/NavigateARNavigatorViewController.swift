@@ -13,10 +13,9 @@
 // limitations under the License.
 
 import UIKit
-import ARKit
+import AVFoundation
 import ArcGIS
 import ArcGISToolkit
-import AVFoundation
 
 // MARK: - Navigate the route
 class NavigateARNavigatorViewController: UIViewController {
@@ -26,8 +25,17 @@ class NavigateARNavigatorViewController: UIViewController {
     @IBOutlet weak var calibrateButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var startButtonItem: UIBarButtonItem!
-    // UI controls
-    @IBOutlet weak var arView: ArcGISARView!
+    
+    @IBOutlet weak var arView: ArcGISARView! {
+        didSet {
+            arView.sceneView.scene = makeScene()
+            arView.sceneView.graphicsOverlays.add(makeRouteOverlay())
+            // Turn the space and atmosphere effects on for an immersive experience
+            arView.sceneView.spaceEffect = .transparent
+            arView.sceneView.atmosphereEffect = .none
+            arView.locationDataSource = AGSCLLocationDataSource()
+        }
+    }
     
     lazy var calibrationVC = NavigateARCalibrationViewController(arcgisARView: arView)
     
@@ -39,28 +47,70 @@ class NavigateARNavigatorViewController: UIViewController {
     
     var routeTracker: AGSRouteTracker?
     
-    var currentRoute: AGSRoute?
+    var currentRoute: AGSRoute!
     let trackingLocationDataSource = AGSCLLocationDataSource()
+    /// An AVSpeechSynthesizer for text to speech.
     let speechSynthesizer = AVSpeechSynthesizer()
-    // Scene & graphics
-    let routeOverlay = AGSGraphicsOverlay()
+    
+    let routeGraphic = AGSGraphic()
+    
     let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
     let elevationSurface = AGSSurface()
     var isCalibrating = false {
         didSet {
-            if self.isCalibrating {
-                self.arView.sceneView.scene?.baseSurface?.opacity = 0.5
-            } else {
-                self.arView.sceneView.scene?.baseSurface?.opacity = 0
-            }
+            elevationSurface.opacity = isCalibrating ? 0.6 : 0
         }
     }
     
+    /// Create a scene.
+    ///
+    /// - Returns: A new `AGSScene` object.
+    func makeScene() -> AGSScene {
+        // Create scene with imagery basemap.
+        let scene = AGSScene(basemapType: .imageryWithLabels)
+        // Create an elevation source and add it to the scene.
+        elevationSurface.navigationConstraint = .none
+        elevationSurface.opacity = 0.6
+        elevationSurface.elevationSources = [elevationSource]
+        scene.baseSurface = elevationSurface
+        return scene
+    }
+    
+    /// Make a graphic overlay and add graphics to it.
+    ///
+    /// - Returns: An `AGSGraphicsOverlay` object.
+    func makeRouteOverlay() -> AGSGraphicsOverlay {
+        let graphicsOverlay = AGSGraphicsOverlay()
+        graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
+        let strokeSymbolLayer = AGSSolidStrokeSymbolLayer(
+            width: 1.0,
+            color: .yellow,
+            geometricEffects: [],
+            lineStyle3D: .tube
+        )
+        let polylineSymbol = AGSMultilayerPolylineSymbol(symbolLayers: [strokeSymbolLayer])
+        let polylineRenderer = AGSSimpleRenderer(symbol: polylineSymbol)
+        graphicsOverlay.renderer = polylineRenderer
+        graphicsOverlay.graphics.add(routeGraphic)
+        return graphicsOverlay
+    }
+    
+    // MARK: UI
+    
+    func setStatus(message: String) {
+        statusLabel.text = message
+    }
+
+    // MARK: UIViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setStatus(message: "Adjust calibration before starting")
+        setStatus(message: "Adjust calibration before starting.")
         isCalibrating = false
-        self.configureSceneForAR()
+        // Start tracking.
+        trackingLocationDataSource.locationChangeHandlerDelegate = self
+        trackingLocationDataSource.start()
+        setRouteAndGraphic(route: routeResult.routes.first!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,117 +123,75 @@ class NavigateARNavigatorViewController: UIViewController {
         arView.stopTracking()
     }
     
-    // MARK: UI
-    
-    func setStatus(message: String) {
-        statusLabel.text = message
-    }
-    
     @IBAction func startTurnByTurn(_ sender: UIBarButtonItem) {
         routeTracker = AGSRouteTracker(routeResult: routeResult, routeIndex: 0)
         if routeTask.routeTaskInfo().supportsRerouting {
             routeTracker?.enableRerouting(
-                with: self.routeTask,
-                routeParameters: self.routeParameters,
+                with: routeTask,
+                routeParameters: routeParameters,
                 strategy: .toNextStop,
                 visitFirstStopOnStart: true
             ) { [weak self] (error: Error?) in
-                guard let self = self else { return }
                 if let error = error {
-                    self.presentAlert(error: error)
+                    self?.presentAlert(error: error)
                 } else {
-                    self.routeTracker?.delegate = self
+                    self?.routeTracker?.delegate = self
                 }
             }
         } else {
-            self.routeTracker?.delegate = self
+            routeTracker?.delegate = self
         }
     }
     
-    private func configureSceneForAR() {
-        // Create scene with imagery basemap
-        let scene = AGSScene(basemapType: .imageryWithLabels)
-        
-        // Create an elevation source and add it to the scene
-        scene.baseSurface = elevationSurface
-        elevationSurface.elevationSources.append(elevationSource)
-        scene.baseSurface?.navigationConstraint = .none
-        
-        // Display the scene
-        routeOverlay.sceneProperties?.surfacePlacement = .absolute
-        arView.sceneView.scene = scene
-        arView.locationDataSource = AGSCLLocationDataSource()
-        arView.sceneView.graphicsOverlays.add(routeOverlay)
-                
-        let strokeSymbolLayer = AGSSolidStrokeSymbolLayer(
-            width: 1.0,
-            color: .yellow,
-            geometricEffects: [],
-            lineStyle3D: .tube
-        )
-        let polylineSymbol = AGSMultilayerPolylineSymbol(symbolLayers: [strokeSymbolLayer])
-        let polylineRenderer = AGSSimpleRenderer(symbol: polylineSymbol)
-        routeOverlay.renderer = polylineRenderer
-        
-        trackingLocationDataSource.locationChangeHandlerDelegate = self
-        trackingLocationDataSource.start(completion: nil)
-        
-        // Turn the space and atmosphere effects on for an immersive experience
-        arView.sceneView.spaceEffect = .transparent
-        arView.sceneView.atmosphereEffect = .none
-        
-        setRoute(route: routeResult.routes.first!)
-    }
-    
-    func setRoute(route: AGSRoute) {
-        // set up the elevation source
-        // Create an elevation source and add it to the scene
-        // for point in line
+    func setRouteAndGraphic(route: AGSRoute) {
+        currentRoute = route
         let originalPolyline = route.routeGeometry!
-        
-        self.currentRoute = route
-        
-        self.elevationSource.load { [weak self] (_: Error?) in
-            self?.polylineWithZ(polyine: originalPolyline) { [weak self] (newPolyline: AGSPolyline) in
-                guard let self = self else { return }
-                
-                self.routeOverlay.graphics.removeAllObjects()
-                let routeGraphic = AGSGraphic(geometry: newPolyline, symbol: nil, attributes: nil)
-                self.routeOverlay.graphics.add(routeGraphic)
+        elevationSource.load { [weak self] (error: Error?) in
+            if let error = error {
+                self?.presentAlert(error: error)
+                self?.setStatus(message: "Failed to load elevation source.")
+            } else {
+                self?.addElevationToPolyline(polyine: originalPolyline) { [weak self] (newPolyline: AGSPolyline) in
+                    self?.routeGraphic.geometry = newPolyline
+                }
             }
         }
     }
     
-    private func polylineWithZ(polyine polyineInput: AGSPolyline, withCompletion completion: @escaping (_ result: AGSPolyline) -> Void) {
-        // Densify the geometry so the elevation can be adjusted every 0.3 meters
-        if let densifiedPolyline = AGSGeometryEngine.densifyGeometry(polyineInput, maxSegmentLength: 0.3) as? AGSPolyline {
-            // Create a polyline builder to build the new geometry
+    /// Densify the polyline geometry so the elevation can be adjusted every 0.3 meters,
+    /// and add an elevation to the geometry.
+    ///
+    /// - Parameters:
+    ///   - polyine: The polyline geometry of the route.
+    ///   - z: A `Double` value representing z elevation.
+    ///   - completion: A completion closure to execute after the polyline is generated with success or not.
+    func addElevationToPolyline(polyine: AGSPolyline, elevation z: Double = 3, completion: @escaping (AGSPolyline) -> Void) {
+        if let densifiedPolyline = AGSGeometryEngine.densifyGeometry(polyine, maxSegmentLength: 0.3) as? AGSPolyline {
             let polylinebuilder = AGSPolylineBuilder(spatialReference: densifiedPolyline.spatialReference)
             let allPoints = densifiedPolyline.parts.array().flatMap { $0.points.array() }
-            var elevatedPoints = 0
             
-            for point in allPoints {
-                self.elevationSurface.elevation(for: point) { (elevation: Double, err: Error?) in
-                    if let error = err {
-                        polylinebuilder.add(point)
-                        print("Error adjusting for elevation: \(error.localizedDescription)")
-                    } else {
-                        // Put the new point 3 meters above the ground elevation
-                        if let newpoint = AGSGeometryEngine.geometry(bySettingZ: elevation + 3,
-                                                                     in: point) as? AGSPoint {
-                            polylinebuilder.add(newpoint)
-                        }
+            let buildGroup = DispatchGroup()
+            allPoints.forEach { point in
+                buildGroup.enter()
+                elevationSurface.elevation(for: point) { [weak self] (elevation: Double, error: Error?) in
+                    defer {
+                        buildGroup.leave()
                     }
-                    elevatedPoints += 1
-                    
-                    if elevatedPoints == allPoints.count {
-                        completion(polylinebuilder.toGeometry())
+                    if let newpoint = AGSGeometryEngine.geometry(bySettingZ: elevation + z, in: point) as? AGSPoint {
+                        // Put the new point 3 meters above the ground elevation.
+                        polylinebuilder.add(newpoint)
+                    } else if let error = error {
+                        self?.presentAlert(error: error)
                     }
                 }
             }
+            
+            buildGroup.notify(queue: .main) {
+                completion(polylinebuilder.toGeometry())
+            }
         } else {
-            presentAlert(message: "Failed to add elevation to route line…")
-            completion(polyineInput)
+            setStatus(message: "Failed to add elevation to route line.")
+            completion(polyine)
         }
     }
 }
@@ -201,15 +209,16 @@ extension NavigateARNavigatorViewController: AGSRouteTrackerDelegate {
     
     func routeTracker(_ routeTracker: AGSRouteTracker, didUpdate trackingStatus: AGSTrackingStatus) {
         // Display new guidance
+        #warning("this is not fine")
         let newGuidance = routeTracker.generateVoiceGuidance()
         statusLabel.text = newGuidance?.text
     }
     
     func routeTracker(_ routeTracker: AGSRouteTracker, rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?, error: Error?) {
         // Update the graphic if needed
-        if let latestRoute = routeTracker.trackingStatus?.routeResult.routes[0] {
+        if let latestRoute = routeTracker.trackingStatus?.routeResult.routes.first {
             if latestRoute != self.currentRoute {
-                setRoute(route: latestRoute)
+                setRouteAndGraphic(route: latestRoute)
             }
         }
     }
@@ -224,37 +233,37 @@ extension NavigateARNavigatorViewController: AGSRouteTrackerDelegate {
     }
 }
 
-// MARK: - Handle location updates - push to route tracker if actively navigating
+// MARK: - AGSLocationChangeHandlerDelegate
 
 extension NavigateARNavigatorViewController: AGSLocationChangeHandlerDelegate {
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         startButtonItem.isEnabled = true
+        // Send location updates to route tracker if actively navigating.
         routeTracker?.trackLocation(location)
     }
 }
 
-// MARK: - Calibration view management
+// MARK: - Calibration popup
 
 extension NavigateARNavigatorViewController {
     @IBAction func showCalibrationPopup(_ sender: UIBarButtonItem) {
         if self.isCalibrating {
             isCalibrating = false
-            calibrationVC.dismiss(animated: true, completion: nil)
+            calibrationVC.dismiss(animated: true)
         } else {
             isCalibrating = true
-            let controller = self.calibrationVC
-            controller.preferredContentSize = CGSize(width: 250, height: 50)
-            showPopup(controller, sourceButton: sender)
+            showPopup(calibrationVC, sourceButton: sender)
         }
     }
     
     private func showPopup(_ controller: UIViewController, sourceButton: UIBarButtonItem) {
-        if let presentationController = NavigateARAlwaysPresentAsPopover.configurePresentation(forController: controller) {
+        controller.modalPresentationStyle = .popover
+        if let presentationController = controller.popoverPresentationController {
             presentationController.delegate = self
             presentationController.barButtonItem = sourceButton
             presentationController.permittedArrowDirections = [.down, .up]
-            self.present(controller, animated: true)
         }
+        present(controller, animated: true)
     }
 }
 
@@ -264,39 +273,8 @@ extension NavigateARNavigatorViewController: UIPopoverPresentationControllerDele
     }
 }
 
-class NavigateARAlwaysPresentAsPopover: NSObject, UIPopoverPresentationControllerDelegate {
-    // Copyright 2018, Ralf Ebert
-    // License   https://opensource.org/licenses/MIT
-    // License   https://creativecommons.org/publicdomain/zero/1.0/
-    // Source    https://www.ralfebert.de/ios-examples/uikit/choicepopover/
-    // `sharedInstance` because the delegate property is weak - the delegate instance needs to be retained.
-    private static let sharedInstance = NavigateARAlwaysPresentAsPopover()
-    
-    override private init() {
-        super.init()
-    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
-    
-    static func configurePresentation(forController controller: UIViewController) -> UIPopoverPresentationController? {
-        controller.modalPresentationStyle = .popover
-        if let presentationController = controller.presentationController as? UIPopoverPresentationController {
-            presentationController.delegate = NavigateARAlwaysPresentAsPopover.sharedInstance
-            return presentationController
-        }
-        return nil
-    }
-}
-
 extension NavigateARNavigatorViewController: UIAdaptivePresentationControllerDelegate {
-    func adaptivePresentationStyle(
-        for controller: UIPresentationController,
-        traitCollection: UITraitCollection
-    ) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
 }
-
-// MARK: - Calibration view

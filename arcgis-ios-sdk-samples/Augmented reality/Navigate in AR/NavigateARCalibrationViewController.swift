@@ -16,12 +16,12 @@ import UIKit
 import ArcGISToolkit
 
 class NavigateARCalibrationViewController: UIViewController {
-    /// The camera controller used to adjust user interactions.
+    /// The `ArcGISARView` used to display scene and adjust user interactions with camera.
     private let arcgisARView: ArcGISARView
     /// The timers for the "joystick" behavior.
     private var headingTimer: Timer?
     
-    /// The UISlider used to adjust heading.
+    /// The `UISlider` used to adjust heading.
     private let headingSlider: UISlider = {
         let slider = UISlider(frame: .zero)
         slider.minimumValue = -10.0
@@ -29,15 +29,14 @@ class NavigateARCalibrationViewController: UIViewController {
         return slider
     }()
     
-    /// Initialized a new calibration view with the given scene view and camera controller.
+    /// Initialized an `ArcGISARView`  from the parent view controller.
     ///
     /// - Parameters:
-    ///   - sceneView: The scene view displaying the scene.
-    ///   - cameraController: The camera controller used to adjust user interactions.
+    ///   - arcgisARView: The `ArcGISARView` used for calibration.
     init(arcgisARView: ArcGISARView) {
         self.arcgisARView = arcgisARView
         super.init(nibName: nil, bundle: nil)
-        
+        preferredContentSize = CGSize(width: 250, height: 50)
         // Add the heading label and slider.
         let headingLabel = UILabel(frame: .zero)
         headingLabel.text = "Heading:"
@@ -94,7 +93,7 @@ class NavigateARCalibrationViewController: UIViewController {
         sender.value = 0.0
     }
     
-    /// Rotates the camera by `deltaHeading`.
+    /// Rotates the camera by delta heading value.
     ///
     /// - Parameter deltaHeading: The amount to rotate the camera.
     private func rotate(_ deltaHeading: Double) {

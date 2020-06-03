@@ -16,6 +16,7 @@ import UIKit
 import ArcGIS
 
 // MARK: - Plan the route
+
 class NavigateARRoutePlannerViewController: UIViewController {
     // MARK: Storyboard views
     
@@ -112,12 +113,32 @@ class NavigateARRoutePlannerViewController: UIViewController {
     func didSolveRoute(with routeResult: AGSRouteResult?, error: Error?) {
         if let error = error {
             self.presentAlert(error: error)
-            self.setStatus(message: "Solve route failed.")
+            self.setStatus(message: "Failed to solve route.")
         } else if let result = routeResult, let firstRoute = result.routes.first {
             self.routeResult = result
             let routeGraphic = AGSGraphic(geometry: firstRoute.routeGeometry, symbol: nil)
             self.routeGraphicsOverlay.graphics.add(routeGraphic)
             self.setStatus(message: "Tap camera to start navigation.")
+        }
+    }
+    
+    func setRouteParameters() {
+        routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+                self.setStatus(message: "Failed to load route parameters.")
+            } else if let params = params {
+                // set the travel mode to the first one matching 'walking'
+                let walkMode = self.routeTask.routeTaskInfo().travelModes.first { $0.name.contains("Walking") }
+                params.travelMode = walkMode
+                params.returnStops = true
+                params.returnDirections = true
+                params.returnRoutes = true
+                self.routeParameters = params
+                self.mapView.touchDelegate = self
+                self.setStatus(message: "Tap to place a start point.")
+            }
         }
     }
     
@@ -127,7 +148,7 @@ class NavigateARRoutePlannerViewController: UIViewController {
         statusLabel.text = message
     }
     
-    // MARK: - Actions
+    // MARK: Actions
     
     @IBAction func reset() {
         routeGraphicsOverlay.graphics.removeAllObjects()
@@ -158,22 +179,13 @@ class NavigateARRoutePlannerViewController: UIViewController {
         AGSAuthenticationManager.shared().delegate = self
         AGSAuthenticationManager.shared().oAuthConfigurations.add(oAuthConfiguration)
         
-        routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
+        routeTask.load { [weak self] (error: Error?) in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
-                self.setStatus(message: "Loading route parameters failed.")
-                return
-            } else if let params = params {
-                // set the travel mode to the first one matching 'walking'
-                let walkMode = self.routeTask.routeTaskInfo().travelModes.first { $0.name.contains("Walking") }
-                params.travelMode = walkMode
-                params.returnStops = true
-                params.returnDirections = true
-                params.returnRoutes = true
-                self.routeParameters = params
-                self.mapView.touchDelegate = self
-                self.setStatus(message: "Tap to place a start point.")
+                self.setStatus(message: "Failed to load route task. Check your connection or credentials.")
+            } else {
+                self.setRouteParameters()
             }
         }
         
@@ -216,7 +228,7 @@ extension NavigateARRoutePlannerViewController: AGSGeoViewTouchDelegate {
 
 extension NavigateARRoutePlannerViewController: AGSAuthenticationManagerDelegate {
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, wantsToShow viewController: UIViewController) {
-        viewController.modalPresentationStyle = .formSheet
+        viewController.modalPresentationStyle = .overFullScreen
         present(viewController, animated: true)
     }
     

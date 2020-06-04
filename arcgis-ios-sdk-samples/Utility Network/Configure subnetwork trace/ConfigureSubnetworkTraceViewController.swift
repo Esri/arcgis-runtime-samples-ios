@@ -34,6 +34,9 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
 
     // Holding the initial conditional expression.
     private var initialExpression: AGSUtilityTraceConditionalExpression?
+    
+    // The trace configuration.
+    private var configuration: AGSUtilityTraceConfiguration?
 
     // The source tier of the utility network.
     private var sourceTier: AGSUtilityTier?
@@ -79,7 +82,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
                 // Get the coded value using the the attribute comparison value and attribute data type.
                 let dataType = attributeComparison.networkAttribute.dataType
                 let attributeValue = convertToDataType(otherValue: attributeComparison.value!, dataType: attributeComparison.networkAttribute.dataType)
-                let codedValue = domain.codedValues.first(where: convertToDataType(otherValue: {$0.code}, dataType: dataType) == (attributeValue))
+                let codedValue = domain.codedValues.first(where: compare(dataType: dataType, comparee1: {$0.code}, comparee2: attributeValue))
             } else {
                 return "`{attributeComparison.NetworkAttribute.Name}` {attributeComparison.ComparisonOperator} `{attributeComparison.OtherNetworkAttribute?.Name ?? attributeComparison.Value}`"
             }
@@ -107,11 +110,35 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         }
     }
     
-    func equals(a: Any, b: Any) -> Bool {
-        if type(of: a) == type(of: b) {
-            guard let a = a as? (type(of: a)), let b = b as? (type(of: b)) else { return false }
-            return a == b
-        } else { return false }
+    func compare(dataType: AGSUtilityNetworkAttributeDataType, comparee1: Any, comparee2: Any) -> Bool {
+        switch dataType {
+        case .boolean:
+            return isEqual(type: Bool.self, value1: comparee1, value2: comparee2)
+        case .double:
+            return isEqual(type: Double.self, value1: comparee1, value2: comparee2)
+        case .float:
+            return isEqual(type: Float.self, value1: comparee1, value2: comparee2)
+        case .integer:
+            return isEqual(type:Int32.self, value1: comparee1, value2: comparee2)
+        default:
+            return false
+        }
+    }
+    func isEqual<T: Equatable>(type: T.Type, value1: Any, value2: Any) -> Bool {
+        guard let value1 = value1 as? T, let value2 = value2 as? T else { return false }
+        return value1 == value2
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let navController = segue.destination as? UINavigationController,
+            let controller = navController.topViewController as? ConfigureSubnetworkTraceConfigurationsViewController {
+            controller.sourceTier = sourceTier
+            controller.configuration = configuration!
+            controller.attributes = (utilityNetwork?.definition.networkAttributes.filter({$0.isSystemDefined == false}))!
+//            controller.comparisons = AGSUtilityAttributeComparisonOperator
+        }
     }
     
     override func viewDidLoad() {

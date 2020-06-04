@@ -658,6 +658,14 @@
 					<string>NDVIRaster</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Create feature collection layer (Portal item)</string>
+				<key>descriptionText</key>
+				<string>Create a feature collection layer from a portal item.</string>
+				<key>storyboardName</key>
+				<string>FeatureCollectionLayerFromPortal</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

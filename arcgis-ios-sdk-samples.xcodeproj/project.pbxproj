@@ -1766,6 +1766,8 @@
 				00C6D32D246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tfw */,
 			);
 			path = SA_EVI_8Day_03May20;
+			sourceTree = "<group>";
+		};
 		00D4E8D8241AA18E002689DB /* Convex hull */ = {
 			isa = PBXGroup;
 			children = (

@@ -138,9 +138,6 @@ extension NearestVertexViewController: AGSGeoViewTouchDelegate {
                     rotateOffsetWithMap: false,
                     animated: true
                 )
-            } else {
-                // Display the error as an alert if there is a problem with `AGSGeometryEngine` operations.
-                presentAlert(title: "Error", message: "Geometry Engine Failed!")
             }
         } else {
             // Dismiss the callout and reset geometry for all simple marker graphics.

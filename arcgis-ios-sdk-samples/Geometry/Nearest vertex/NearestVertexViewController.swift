@@ -22,7 +22,11 @@ class NearestVertexViewController: UIViewController {
     let nearestVertexSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 15)
     
     /// The symbology for the example polygon area.
-    let polygonFillSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .green, outline: AGSSimpleLineSymbol(style: .solid, color: .green, width: 2))
+    let polygonFillSymbol = AGSSimpleFillSymbol(
+        style: .forwardDiagonal,
+        color: .green,
+        outline: AGSSimpleLineSymbol(style: .solid, color: .green, width: 2)
+    )
     
     /// The graphics overlay for the polygon and points.
     let graphicsOverlay = AGSGraphicsOverlay()
@@ -57,7 +61,14 @@ class NearestVertexViewController: UIViewController {
         didSet {
             mapView.map = makeMap()
             mapView.graphicsOverlays.add(graphicsOverlay)
-            mapView.setViewpointCenter(AGSPoint(x: -4487263.495911, y: 3699176.480377, spatialReference: .webMercator()), scale: 1e8)
+            mapView.setViewpointCenter(
+                AGSPoint(
+                    x: -4487263.495911,
+                    y: 3699176.480377,
+                    spatialReference: .webMercator()
+                ),
+                scale: 1e8
+            )
             mapView.touchDelegate = self
         }
     }
@@ -90,31 +101,46 @@ class NearestVertexViewController: UIViewController {
     }
 }
 
+// MARK: - AGSGeoViewTouchDelegate
+
 extension NearestVertexViewController: AGSGeoViewTouchDelegate {
-    // MARK: - AGSGeoViewTouchDelegate
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if mapView.callout.isHidden {
-            // If the callout is not shown, show the callout with the coordinates of the tapped location.
-            if let nearestVertexResult = AGSGeometryEngine.nearestVertex(in: polygonGraphic.geometry!, to: mapPoint),
-                let nearestCoordinateResult = AGSGeometryEngine.nearestCoordinate(in: polygonGraphic.geometry!, to: mapPoint) {
+            // If the callout is not shown, show the callout with the coordinates of the normalized map point.
+            if let normalizedPoint = AGSGeometryEngine.normalizeCentralMeridian(of: mapPoint) as? AGSPoint,
+                let nearestVertexResult = AGSGeometryEngine.nearestVertex(in: polygonGraphic.geometry!, to: normalizedPoint),
+                let nearestCoordinateResult = AGSGeometryEngine.nearestCoordinate(in: polygonGraphic.geometry!, to: normalizedPoint) {
                 // Set the geometry for the tapped point, nearest coordinate point and nearest vertex point.
-                tappedLocationGraphic.geometry = mapPoint
+                tappedLocationGraphic.geometry = normalizedPoint
                 nearestVertexGraphic.geometry = nearestVertexResult.point
                 nearestCoordinateGraphic.geometry = nearestCoordinateResult.point
                 // Get the distance to the nearest vertex in the polygon.
-                let distanceVertex = Measurement(value: nearestVertexResult.distance, unit: UnitLength.meters)
+                let distanceVertex = Measurement(
+                    value: nearestVertexResult.distance,
+                    unit: UnitLength.meters
+                )
                 // Get the distance to the nearest coordinate in the polygon.
-                let distanceCoordinate = Measurement(value: nearestCoordinateResult.distance, unit: UnitLength.meters)
+                let distanceCoordinate = Measurement(
+                    value: nearestCoordinateResult.distance,
+                    unit: UnitLength.meters
+                )
                 // Display the results on a callout of the tapped point.
                 mapView.callout.title = "Proximity result"
-                mapView.callout.detail = String(format: "Vertex dist: %@; Point dist: %@", distanceFormatter.string(from: distanceVertex), distanceFormatter.string(from: distanceCoordinate))
+                mapView.callout.detail = String(
+                    format: "Vertex dist: %@; Point dist: %@",
+                    distanceFormatter.string(from: distanceVertex),
+                    distanceFormatter.string(from: distanceCoordinate)
+                )
                 mapView.callout.isAccessoryButtonHidden = true
-                mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
+                mapView.callout.show(
+                    at: normalizedPoint,
+                    screenOffset: .zero,
+                    rotateOffsetWithMap: false,
+                    animated: true
+                )
             } else {
-                // Display the error as an alert if there is a problem with nearestVertex and nearestCoordinate operation.
-                let alertController = UIAlertController(title: nil, message: "Geometry Engine Failed!", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                present(alertController, animated: true)
+                // Display the error as an alert if there is a problem with `AGSGeometryEngine` operations.
+                presentAlert(title: "Error", message: "Geometry Engine Failed!")
             }
         } else {
             // Dismiss the callout and reset geometry for all simple marker graphics.

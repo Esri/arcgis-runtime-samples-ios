@@ -236,8 +236,15 @@ extension NavigateARNavigatorViewController: AGSRouteTrackerDelegate {
     }
     
     func routeTracker(_ routeTracker: AGSRouteTracker, didUpdate trackingStatus: AGSTrackingStatus) {
-        let currentManeuver = currentRoute.directionManeuvers[trackingStatus.currentManeuverIndex]
-        setStatus(message: currentManeuver.directionText)
+        switch trackingStatus.destinationStatus {
+        case .notReached, .approaching:
+            let currentManeuver = currentRoute.directionManeuvers[trackingStatus.currentManeuverIndex]
+            setStatus(message: currentManeuver.directionText)
+        case .reached:
+            setStatus(message: "You have arrived!")
+        default:
+            return
+        }
     }
     
     func routeTracker(

@@ -19,7 +19,7 @@ The feature collection is loaded from the portal item when the sample starts.
 3. Verify that the item represents a feature collection.
 4. Create an `AGSFeatureCollection` from the item.
 5. Create an `AGSFeatureCollectionLayer`, referring to the feature collection.
-6. Add the feature collection layer to the map's `operationalLayers` peoperty.
+6. Add the feature collection layer to the map's `operationalLayers` property.
 
 ## Relevant API
 

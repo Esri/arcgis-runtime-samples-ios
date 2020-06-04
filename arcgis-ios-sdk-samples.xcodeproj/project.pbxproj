@@ -1738,15 +1738,6 @@
 			path = "Create feature collection layer (Portal item)";
 			sourceTree = "<group>";
 		};
-        00ADC3C92464DD0600A3B88D /* Identify raster cell */ = {
-            isa = PBXGroup;
-            children = (
-                00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */,
-                00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */,
-            );
-            path = "Identify raster cell";
-            sourceTree = "<group>";
-        };
 		00ADC3B72464D45B00A3B88D /* Animate images with image overlay */ = {
 			isa = PBXGroup;
 			children = (
@@ -1754,6 +1745,15 @@
 				00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */,
 			);
 			path = "Animate images with image overlay";
+			sourceTree = "<group>";
+		};
+		00ADC3C92464DD0600A3B88D /* Identify raster cell */ = {
+			isa = PBXGroup;
+			children = (
+				00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */,
+				00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */,
+			);
+			path = "Identify raster cell";
 			sourceTree = "<group>";
 		};
 		00C6D328246CA8FC00C63EAF /* Archives */ = {

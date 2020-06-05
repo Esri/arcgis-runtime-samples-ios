@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGO-11-S7Y" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="64.5" width="414" height="748.5"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQs-5w-mSm">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
@@ -60,12 +60,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="cCE-Ex-Ju7" firstAttribute="top" secondItem="AGO-11-S7Y" secondAttribute="bottom" id="0ab-kb-au9"/>
-                            <constraint firstItem="KQs-5w-mSm" firstAttribute="top" secondItem="AGO-11-S7Y" secondAttribute="top" id="BJ4-Mo-60i"/>
                             <constraint firstItem="KQs-5w-mSm" firstAttribute="leading" secondItem="eSY-BN-xeu" secondAttribute="leading" id="K7z-oc-ne5"/>
                             <constraint firstItem="cCE-Ex-Ju7" firstAttribute="leading" secondItem="eSY-BN-xeu" secondAttribute="leading" id="L0K-zu-ZHs"/>
-                            <constraint firstItem="AGO-11-S7Y" firstAttribute="top" secondItem="hrM-gU-wv5" secondAttribute="top" id="VZJ-Pi-81d"/>
+                            <constraint firstItem="AGO-11-S7Y" firstAttribute="top" secondItem="KQs-5w-mSm" secondAttribute="bottom" id="LYU-iO-v9V"/>
                             <constraint firstItem="cCE-Ex-Ju7" firstAttribute="bottom" secondItem="hrM-gU-wv5" secondAttribute="bottom" id="fU5-gc-69r"/>
                             <constraint firstItem="AGO-11-S7Y" firstAttribute="leading" secondItem="eSY-BN-xeu" secondAttribute="leading" id="fcg-bQ-xjm"/>
+                            <constraint firstItem="KQs-5w-mSm" firstAttribute="top" secondItem="hrM-gU-wv5" secondAttribute="top" id="hmE-fK-bjX"/>
                             <constraint firstItem="AGO-11-S7Y" firstAttribute="trailing" secondItem="eSY-BN-xeu" secondAttribute="trailing" id="sjT-Hh-JXQ"/>
                             <constraint firstItem="cCE-Ex-Ju7" firstAttribute="trailing" secondItem="eSY-BN-xeu" secondAttribute="trailing" id="ut8-sp-TnJ"/>
                             <constraint firstItem="KQs-5w-mSm" firstAttribute="trailing" secondItem="eSY-BN-xeu" secondAttribute="trailing" id="ynz-uh-0O8"/>
@@ -106,7 +106,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ioY-Ac-pUy" firstAttribute="leading" secondItem="hhD-Fm-5A5" secondAttribute="leading" id="9EY-wJ-DCK"/>
                                     <constraint firstItem="ioY-Ac-pUy" firstAttribute="trailing" secondItem="hhD-Fm-5A5" secondAttribute="trailing" id="9b5-aO-7gb"/>

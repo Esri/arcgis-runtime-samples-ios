@@ -3,7 +3,7 @@
     "description": "Create a feature collection layer from a portal item.",
     "ignore": false,
     "images": [
-        "create-feature-collection-layer-from-portal.png"
+        "feature-collection-layer-from-portal.png"
     ],
     "keywords": [
         "collection",
@@ -28,5 +28,5 @@
     "snippets": [
         "FeatureCollectionLayerFromPortalViewController.swift"
     ],
-    "title": "Create feature collection layer (Portal item)"
+    "title": "Feature collection layer (portal item)"
 }

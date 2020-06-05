@@ -28,6 +28,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     // For creating the default trace configuration.
     let domainNetworkName = "ElectricDistribution"
     let tierName = "Medium Voltage Radial"
+    var attributes: [AGSUtilityNetworkAttribute]?
     
     // Utility element to start the trace from.
     var startingLocation: AGSUtilityElement?
@@ -52,9 +53,9 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         utilityNetwork?.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
-                print("ERROR")
                 self.presentAlert(error: error)
             } else {
+                self.attributes = self.utilityNetwork?.definition.networkAttributes
                 let networkSource = self.utilityNetwork?.definition.networkSource(withName: self.deviceTableName)
                 let assetGroup = networkSource?.assetGroup(withName: self.assetGroupName)
                 let assetType = assetGroup?.assetType(withName: self.assetTypeName)
@@ -156,12 +157,9 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
             super.prepare(for: segue, sender: sender)
             if let navController = segue.destination as? UINavigationController,
                 let controller = navController.topViewController as? ConfigureSubnetworkTraceConfigurationsViewController {
-                makeUtilityNetwork()
                 controller.sourceTier = self.sourceTier
                 controller.configuration = self.configuration!
-                let attributes = (self.utilityNetwork?.definition.networkAttributes.filter( { $0.isSystemDefined == false } ))!
-                controller.attributes = (self.utilityNetwork?.definition.networkAttributes.filter( { $0.isSystemDefined == false } ))!
-                print(attributes.count)
+                controller.attributes = (self.attributes?.filter { $0.isSystemDefined == false })!
             }
         }
     

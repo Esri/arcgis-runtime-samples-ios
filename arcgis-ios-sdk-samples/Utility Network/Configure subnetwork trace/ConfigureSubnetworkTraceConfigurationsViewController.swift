@@ -21,6 +21,9 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
     @IBOutlet weak var attributesCell: UITableViewCell?
     @IBOutlet weak var comparisonCell: UITableViewCell?
     @IBOutlet weak var valueCell: UITableViewCell?
+    @IBOutlet weak var attributeLabel: UILabel?
+    @IBOutlet weak var comparisonLabel: UILabel?
+    @IBOutlet weak var valueLabel: UILabel?
     @IBOutlet weak var addConditionButton: UITableViewCell?
 //    @IBOutlet weak var traceButton: UITableViewCell?
     @IBOutlet weak var textView: UITextView?
@@ -75,41 +78,50 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
     var selectedComparison: AGSUtilityAttributeComparisonOperator?
     var selectedValue: Any?
     var selectedValueString: String?
-    var attributeLabels: [String]?
-    var valueLabels: [String]?
+    var attributeLabels: [String] = []
+    var valueLabels: [String] = []
     let comparisonsStrings = ["Equal", "NotEqual", "GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", "IncludesTheValues", "DoesNotIncludeTheValues", "IncludesAny", "DoesNotIncludeAny"]
     
     // MARK: UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        for attribute in attributes! {
-            attributeLabels?.append(attribute.name)
+        attributes?.forEach { (attribute) in
+            attributeLabels.append(attribute.name)
         }
         let cell = tableView.cellForRow(at: indexPath)
         if cell == attributesCell {
-            let optionsViewController = OptionsTableViewController(labels: attributeLabels!, selectedIndex: attributes!.count) { (newIndex) in
-                self.selectedAttribute = self.attributes?[newIndex - 1]
+            let optionsViewController = OptionsTableViewController(labels: attributeLabels, selectedIndex: attributes!.count) { (newIndex) in
+                self.selectedAttribute = self.attributes?[newIndex]
+                self.attributeLabel?.text = self.selectedAttribute?.name
             }
             optionsViewController.title = "Attributes"
             show(optionsViewController, sender: self)
         } else if cell == comparisonCell {
-            let optionsViewController = OptionsTableViewController(labels: comparisonsStrings, selectedIndex: comparisonsStrings.hashValue + 1) { (newIndex) in
-                self.selectedComparison = self.comparisons?[newIndex - 1]
+            let optionsViewController = OptionsTableViewController(labels: comparisonsStrings, selectedIndex: comparisonsStrings.count) { (newIndex) in
+                self.selectedComparison = self.comparisons?[newIndex]
+                self.comparisonLabel?.text = self.comparisonsStrings[newIndex]
             }
             optionsViewController.title = "Comparison"
             show(optionsViewController, sender: self)
         } else if cell == valueCell {
             if selectedAttribute != nil {
                 if let domain = selectedAttribute?.domain as? AGSCodedValueDomain {
-                    for value in domain.codedValues {
-                        valueLabels?.append(value.name)
+                    if valueLabels.isEmpty {
+                        print("isEMPTY")
+                        domain.codedValues.forEach { (codedValue) in
+                            valueLabels.append(codedValue.name)
+                        }
                     }
-                    let optionsViewController = OptionsTableViewController(labels: valueLabels!, selectedIndex: domain.codedValues.hashValue + 1) { (newIndex) in
-                        self.selectedValueString = self.valueLabels?[newIndex - 1]
-                        self.selectedValue = domain.codedValues[newIndex - 1]
+                    print("num of codedVals \(domain.codedValues.count)")
+                    print(valueLabels)
+                    let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: domain.codedValues.count) { (newIndex) in
+                        self.valueLabel?.text = self.valueLabels[newIndex]
+                        self.selectedValue = domain.codedValues[newIndex]
                     }
                     optionsViewController.title = "Value"
                     show(optionsViewController, sender: self)
                 }
+            } else {
+                print("selectedAttribute is nil")
             }
         } else if cell == addConditionButton {
             if configuration == nil {

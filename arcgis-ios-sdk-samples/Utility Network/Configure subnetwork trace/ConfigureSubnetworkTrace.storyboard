@@ -120,7 +120,7 @@
                                                     <rect key="frame" x="20" y="12" width="67" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qxg-Ri-n2T">
@@ -140,11 +140,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8CW-2l-97h">
-                                                    <rect key="frame" x="20" y="12" width="74" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Comparison" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8CW-2l-97h">
+                                                    <rect key="frame" x="20" y="12" width="92.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cSO-tT-BbZ">
@@ -168,7 +168,7 @@
                                                     <rect key="frame" x="20" y="12" width="42" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yo3-Oy-atF">
@@ -249,12 +249,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addConditionButton" destination="Vxz-Er-PKb" id="lGm-Au-3Hw"/>
+                        <outlet property="attributeLabel" destination="qxg-Ri-n2T" id="7Ib-Kp-D64"/>
                         <outlet property="attributesCell" destination="6aY-ho-9ka" id="R4B-ew-R0C"/>
                         <outlet property="barriersSwitch" destination="8yb-t9-UXd" id="ejc-qj-qZ8"/>
                         <outlet property="comparisonCell" destination="Wxr-c1-p7X" id="jOa-Cs-h0T"/>
+                        <outlet property="comparisonLabel" destination="cSO-tT-BbZ" id="gN9-Mu-zpC"/>
                         <outlet property="containersSwitch" destination="bIf-qK-5us" id="nbr-3e-bVk"/>
                         <outlet property="textView" destination="gnI-4M-9td" id="dwN-Sc-jPp"/>
                         <outlet property="valueCell" destination="vxd-6b-Viu" id="nan-gC-sJf"/>
+                        <outlet property="valueLabel" destination="Yo3-Oy-atF" id="Vp9-lS-Ohs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gB-gF-wHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

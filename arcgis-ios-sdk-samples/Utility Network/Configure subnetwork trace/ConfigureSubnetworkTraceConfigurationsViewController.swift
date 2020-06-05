@@ -22,6 +22,8 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
     @IBOutlet weak var comparisonCell: UITableViewCell?
     @IBOutlet weak var valueCell: UITableViewCell?
     @IBOutlet weak var addConditionButton: UITableViewCell?
+//    @IBOutlet weak var traceButton: UITableViewCell?
+    @IBOutlet weak var textView: UITextView?
     
     @IBAction func barriersSwitchAction(_ sender: UISwitch) {
         sourceTier?.traceConfiguration?.includeBarriers = sender.isOn
@@ -29,12 +31,46 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
     @IBAction func containersSwitchAction(_ sender: UISwitch) {
         sourceTier?.traceConfiguration?.includeContainers = sender.isOn
     }
-    
+    @IBAction func resetButton() {
+        // Reset the barrier condition to the initial value.
+        let traceConfiguration = configuration
+        traceConfiguration?.traversability?.barriers = initialExpression
+        textView?.text = controller.expressionToString(expression: initialExpression!)
+    }
+    @IBAction func traceAction() {
+        if utilityNetwork == nil || startingLocation == nil {
+            presentAlert(title: "Error", message: "Could not trace utility network.")
+            return
+        } else {
+            // Create utility trace parameters for the starting location.
+            let startingLocations = [startingLocation]
+            let parameters = AGSUtilityTraceParameters(traceType: .subnetwork, startingLocations: startingLocations as! [AGSUtilityElement])
+            parameters.traceConfiguration = configuration
+            // Trace the utility network.
+            utilityNetwork?.trace(with: parameters) { [weak self] (traceResults, error) in
+                guard let self = self else { return }
+                if let error = error {
+                    self.presentAlert(error: error)
+                } else {
+                    // Get the first result.
+                    let elementResult = traceResults?.first as! AGSUtilityElementTraceResult
+                    
+                    // Display the number of elements found by the trace.
+                    self.presentAlert(title: "Trace Result", message: "\(elementResult.elements.count) elements found.")
+                }
+            }
+        }
+    }
+
+    let controller = ConfigureSubnetworkTraceViewController()
+    var initialExpression: AGSUtilityTraceConditionalExpression?
+    var utilityNetwork: AGSUtilityNetwork?
+    var startingLocation: AGSUtilityElement?
     var configuration: AGSUtilityTraceConfiguration?
     var sourceTier: AGSUtilityTier?
-    var attributes: [AGSUtilityNetworkAttribute]
-    var comparisons: [AGSUtilityAttributeComparisonOperator]
-    var values: [AGSCodedValue]
+    var attributes: [AGSUtilityNetworkAttribute]?
+    var comparisons: [AGSUtilityAttributeComparisonOperator]?
+    var values: [AGSCodedValue]?
     var selectedAttribute: AGSUtilityNetworkAttribute?
     var selectedComparison: AGSUtilityAttributeComparisonOperator?
     var selectedValue: Any?
@@ -43,38 +79,21 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
     var valueLabels: [String]?
     let comparisonsStrings = ["Equal", "NotEqual", "GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", "IncludesTheValues", "DoesNotIncludeTheValues", "IncludesAny", "DoesNotIncludeAny"]
     
-    func convertToDataType(otherValue: Any, dataType: AGSUtilityNetworkAttributeDataType) -> Any? {
-        switch dataType {
-        case .boolean:
-            return otherValue as! Bool
-        case .double:
-            return otherValue as! Double
-        case .float:
-            return otherValue as! Float
-        case .integer:
-            return otherValue as! Int32
-        default:
-            return nil
-        }
-    }
-    
-    /// MARK: UITableViewDelegate
+    // MARK: UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        for attribute in attributes {
+        for attribute in attributes! {
             attributeLabels?.append(attribute.name)
         }
-        
         let cell = tableView.cellForRow(at: indexPath)
         if cell == attributesCell {
-            let optionsViewController = OptionsTableViewController(labels: attributeLabels!, selectedIndex: attributes.hashValue + 1) { (newIndex) in
-                self.selectedAttribute = self.attributes[newIndex - 1]
+            let optionsViewController = OptionsTableViewController(labels: attributeLabels!, selectedIndex: attributes!.count) { (newIndex) in
+                self.selectedAttribute = self.attributes?[newIndex - 1]
             }
             optionsViewController.title = "Attributes"
             show(optionsViewController, sender: self)
         } else if cell == comparisonCell {
             let optionsViewController = OptionsTableViewController(labels: comparisonsStrings, selectedIndex: comparisonsStrings.hashValue + 1) { (newIndex) in
-                self.selectedComparison = self.comparisons[newIndex-1]
+                self.selectedComparison = self.comparisons?[newIndex - 1]
             }
             optionsViewController.title = "Comparison"
             show(optionsViewController, sender: self)
@@ -92,8 +111,6 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
                     show(optionsViewController, sender: self)
                 }
             }
-            
-            
         } else if cell == addConditionButton {
             if configuration == nil {
                 configuration = AGSUtilityTraceConfiguration()
@@ -106,18 +123,20 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
                 var selectedValue: Any?
                 // If the value is a coded value.
                 if let codedValue = selectedValue as? AGSCodedValue, selectedAttribute?.domain is AGSCodedValueDomain {
-                    selectedValue = convertToDataType(otherValue: codedValue.code!, dataType: selectedAttribute!.dataType)
+                    selectedValue = controller.convertToDataType(otherValue: codedValue.code!, dataType: selectedAttribute!.dataType)
                 } else {
-                    selectedValue = convertToDataType(otherValue: selectedValueString!, dataType: selectedAttribute!.dataType)
+                    selectedValue = controller.convertToDataType(otherValue: selectedValueString!, dataType: selectedAttribute!.dataType)
                 }
                 // NOTE: You may also create a UtilityNetworkAttributeComparison with another NetworkAttribute.
-                var expression = AGSUtilityNetworkAttributeComparison(networkAttribute: selectedAttribute!, comparisonOperator: selectedComparison!, value: selectedValue!)
+                var expression: AGSUtilityTraceConditionalExpression?
+                expression = AGSUtilityNetworkAttributeComparison(networkAttribute: selectedAttribute!, comparisonOperator: selectedComparison!, value: selectedValue!)
                 if let otherExpression = configuration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
                     // NOTE: You may also combine expressions with UtilityTraceAndCondition
                     expression = AGSUtilityTraceOrCondition(leftExpression: otherExpression, rightExpression: expression!)
                 }
                 configuration?.traversability?.barriers = expression
-//                expressionLabel.Text =
+                let expressionString = controller.expressionToString(expression: expression!)
+                textView?.text += "\n \(String(describing: expressionString))"
             }
         }
     }

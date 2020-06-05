@@ -18,81 +18,93 @@ import ArcGIS
 class ConfigureSubnetworkTraceViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
     
-    private var expressionLabel: UILabel?
-    private var utilityNetwork: AGSUtilityNetwork?
+    var expressionLabel: UILabel?
+    var utilityNetwork: AGSUtilityNetwork?
     // For creating the default starting location.
-    private let deviceTableName = "Electric Distribution Device"
-    private let assetGroupName = "Circuit Breaker"
-    private let assetTypeName = "Three Phase"
-    private let GUID = "{1CAF7740-0BF4-4113-8DB2-654E18800028}"
+    let deviceTableName = "Electric Distribution Device"
+    let assetGroupName = "Circuit Breaker"
+    let assetTypeName = "Three Phase"
+    let globalID = UUID(uuidString: "1CAF7740-0BF4-4113-8DB2-654E18800028")
     // For creating the default trace configuration.
-    private let domainNetworkName = "ElectricDistribution"
-    private let tierName = "Medium Voltage Radial"
+    let domainNetworkName = "ElectricDistribution"
+    let tierName = "Medium Voltage Radial"
     
     // Utility element to start the trace from.
-    private var startingLocation: AGSUtilityElement?
+    var startingLocation: AGSUtilityElement?
 
     // Holding the initial conditional expression.
-    private var initialExpression: AGSUtilityTraceConditionalExpression?
+    var initialExpression: AGSUtilityTraceConditionalExpression?
     
     // The trace configuration.
-    private var configuration: AGSUtilityTraceConfiguration?
+    var configuration: AGSUtilityTraceConfiguration?
 
     // The source tier of the utility network.
-    private var sourceTier: AGSUtilityTier?
+    var sourceTier: AGSUtilityTier?
 
 //     The currently selected values for the barrier expression.
 //    private let selectedAttribute: AGSUtilityNetworkAttribute!
 //    private let selectedComparison: AGSUtilityAttributeComparisonOperator!
     
-    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     
     func makeUtilityNetwork() {
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL)
-        let networkSource = utilityNetwork?.definition.networkSource(withName: deviceTableName)
-        let assetGroup = networkSource?.assetGroup(withName: assetGroupName)
-        let assetType = assetGroup?.assetType(withName: assetTypeName)
-        let globalID = UUID.init(uuidString: GUID)
-        startingLocation = utilityNetwork?.createElement(with: assetType!, globalID: globalID!)
-        // Set the terminal for this location. (For our case, we use the 'Load' terminal.)
-        startingLocation?.terminal = startingLocation?.assetType.terminalConfiguration?.terminals.first
-        // Get a default trace configuration from a tier to update the UI.
-        let domainNetwork = utilityNetwork?.definition.domainNetwork(withDomainNetworkName: domainNetworkName)
-        sourceTier = domainNetwork?.tier(withName: tierName)
-        
-        // Set the trace configuration.
-        configuration = sourceTier?.traceConfiguration
-        
-        //Set the default expression (if provided).
-        if let expression = sourceTier?.traceConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
-            expressionLabel?.text = expressionToString(expression: expression)
-            initialExpression = expression
+        utilityNetwork?.load { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                print("ERROR")
+                self.presentAlert(error: error)
+            } else {
+                let networkSource = self.utilityNetwork?.definition.networkSource(withName: self.deviceTableName)
+                let assetGroup = networkSource?.assetGroup(withName: self.assetGroupName)
+                let assetType = assetGroup?.assetType(withName: self.assetTypeName)
+                self.startingLocation = self.utilityNetwork?.createElement(with: assetType!, globalID: self.globalID!)
+                // Set the terminal for this location. (For our case, we use the 'Load' terminal.)
+                self.startingLocation?.terminal = self.startingLocation?.assetType.terminalConfiguration?.terminals.first
+                // Get a default trace configuration from a tier to update the UI.
+                let domainNetwork = self.utilityNetwork?.definition.domainNetwork(withDomainNetworkName: self.domainNetworkName)
+                self.sourceTier = domainNetwork?.tier(withName: self.tierName)
+                
+                // Set the trace configuration.
+                self.configuration = self.sourceTier?.traceConfiguration
+                
+                //Set the default expression (if provided).
+                if let expression = self.sourceTier?.traceConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
+                    self.expressionLabel?.text = self.expressionToString(expression: expression)
+                    self.initialExpression = expression
+                }
+                // Set the traversability scope.
+                self.sourceTier?.traceConfiguration?.traversability?.scope = AGSUtilityTraversabilityScope.junctions
+                // ENABLE USER INTERACTION
+                self.performSegue(withIdentifier: "EditConfigurationSegue", sender: self)
+            }
         }
-        // Set the traversability scope.
-        sourceTier?.traceConfiguration?.traversability?.scope = AGSUtilityTraversabilityScope.junctions
-        // ENABLE USER INTERACTION
     }
     
     func expressionToString(expression: AGSUtilityTraceConditionalExpression) -> String? {
         if let categoryComparison = expression as? AGSUtilityCategoryComparison {
-            return "`{categoryComparison.Category.Name}` {categoryComparison.ComparisonOperator}" // MUST FORMAT HERE BUT HOW
+            return "`\(categoryComparison.category.name)` \(categoryComparison.comparisonOperator)"
         } else if let attributeComparison = expression as? AGSUtilityNetworkAttributeComparison {
             // Check if attribute domain is a coded value domain.
             if let domain = attributeComparison.networkAttribute.domain as? AGSCodedValueDomain {
                 // Get the coded value using the the attribute comparison value and attribute data type.
                 let dataType = attributeComparison.networkAttribute.dataType
                 let attributeValue = convertToDataType(otherValue: attributeComparison.value!, dataType: attributeComparison.networkAttribute.dataType)
-                let codedValue = domain.codedValues.first(where: compare(dataType: dataType, comparee1: {$0.code}, comparee2: attributeValue))
+                let codedValue = domain.codedValues.first(where: { compare(dataType: dataType, comparee1: $0.code!, comparee2: attributeValue!) })
+                return "\(attributeComparison.networkAttribute.name) \(attributeComparison.comparisonOperator) \(String(describing: codedValue?.name))"
             } else {
-                return "`{attributeComparison.NetworkAttribute.Name}` {attributeComparison.ComparisonOperator} `{attributeComparison.OtherNetworkAttribute?.Name ?? attributeComparison.Value}`"
+                if let nameOrValue = attributeComparison.otherNetworkAttribute?.name {
+                    return "`\(attributeComparison.networkAttribute.name)` \(attributeComparison.comparisonOperator) `\(nameOrValue)`"
+                } else if let nameOrValue = attributeComparison.value {
+                    return "`\(attributeComparison.networkAttribute.name)` \(attributeComparison.comparisonOperator) `\(nameOrValue)`"
+                }
             }
-        } else if let andCondition = expression as? AGSUtilityTraceCondition {
-            return "({ExpressionToString(andCondition.LeftExpression)}) AND\n ({ExpressionToString(andCondition.RightExpression)})"
-        } else if let orCondition = expression as? AGSUtilityTraceCondition {
-            return "({ExpressionToString(orCondition.LeftExpression)}) OR\n ({ExpressionToString(orCondition.RightExpression)})"
-        } else {
-            return nil
+        } else if let andCondition = expression as? AGSUtilityTraceAndCondition {
+            return "(\(String(describing: expressionToString(expression: andCondition.leftExpression))) AND\n(\(String(describing: expressionToString(expression: andCondition.rightExpression)))"
+        } else if let orCondition = expression as? AGSUtilityTraceOrCondition {
+            return "(\(String(describing: expressionToString(expression: orCondition.leftExpression))) AND\n(\(String(describing: expressionToString(expression: orCondition.rightExpression)))"
         }
+        return nil
     }
     
     func convertToDataType(otherValue: Any, dataType: AGSUtilityNetworkAttributeDataType) -> Any? {
@@ -119,7 +131,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         case .float:
             return isEqual(type: Float.self, value1: comparee1, value2: comparee2)
         case .integer:
-            return isEqual(type:Int32.self, value1: comparee1, value2: comparee2)
+            return isEqual(type: Int32.self, value1: comparee1, value2: comparee2)
         default:
             return false
         }
@@ -129,22 +141,34 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         return value1 == value2
     }
     
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        if let navController = segue.destination as? UINavigationController,
-            let controller = navController.topViewController as? ConfigureSubnetworkTraceConfigurationsViewController {
-            controller.sourceTier = sourceTier
-            controller.configuration = configuration!
-            controller.attributes = (utilityNetwork?.definition.networkAttributes.filter({$0.isSystemDefined == false}))!
-//            controller.comparisons = AGSUtilityAttributeComparisonOperator
-        }
-    }
-    
     override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    //add the source code button item to the right of navigation bar
-    (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ConfigureSubnetworkTraceViewController", "ConfigureSubnetworkTraceConfigurationsViewController", "OptionsTableViewController"]
+        super.viewDidLoad()
+        
+        //add the source code button item to the right of navigation bar
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ConfigureSubnetworkTraceViewController", "ConfigureSubnetworkTraceConfigurationsViewController", "OptionsTableViewController"]
+        makeUtilityNetwork()
+        // initially show the map creation UI
+//        performSegue(withIdentifier: "EditConfigurationSegue", sender: self)
     }
+    
+    // MARK: - Navigation
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            super.prepare(for: segue, sender: sender)
+            if let navController = segue.destination as? UINavigationController,
+                let controller = navController.topViewController as? ConfigureSubnetworkTraceConfigurationsViewController {
+                makeUtilityNetwork()
+                controller.sourceTier = self.sourceTier
+                controller.configuration = self.configuration!
+                let attributes = (self.utilityNetwork?.definition.networkAttributes.filter( { $0.isSystemDefined == false } ))!
+                controller.attributes = (self.utilityNetwork?.definition.networkAttributes.filter( { $0.isSystemDefined == false } ))!
+                print(attributes.count)
+            }
+        }
+    
+    // MARK: - CreateOptionsViewControllerDelegate
+    
+//    func configureSubnetworkTraceConfigurationsViewController() {
+//        makeUtilityNetwork()
+//        configureSubnetworkTraceConfigurationsViewController.dismiss(animated: true)
+//    }
 }

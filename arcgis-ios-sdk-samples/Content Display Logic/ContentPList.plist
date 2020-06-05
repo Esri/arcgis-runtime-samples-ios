@@ -658,14 +658,6 @@
 					<string>NDVIRaster</string>
 				</array>
 			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Create feature collection layer (Portal item)</string>
-				<key>descriptionText</key>
-				<string>Create a feature collection layer from a portal item.</string>
-				<key>storyboardName</key>
-				<string>FeatureCollectionLayerFromPortal</string>
-			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -840,6 +832,14 @@
 				<string>TimeBasedQuery</string>
 				<key>descriptionText</key>
 				<string>This sample demonstrates how to apply a time-based parameter to a feature layer query</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Feature collection layer (portal item)</string>
+				<key>descriptionText</key>
+				<string>Create a feature collection layer from a portal item.</string>
+				<key>storyboardName</key>
+				<string>FeatureCollectionLayerFromPortal</string>
 			</dict>
 		</array>
 	</dict>

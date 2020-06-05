@@ -1729,13 +1729,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		001ECB312489A2F3009AC6C0 /* Create feature collection layer (Portal item) */ = {
+		001ECB312489A2F3009AC6C0 /* Feature collection layer (portal item) */ = {
 			isa = PBXGroup;
 			children = (
 				001ECB322489A2F3009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */,
 				001ECB342489A2F3009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */,
 			);
-			path = "Create feature collection layer (Portal item)";
+			name = "Feature collection layer (portal item)";
+			path = "../Layers/Feature collection layer (portal item)";
 			sourceTree = "<group>";
 		};
 		00ADC3B72464D45B00A3B88D /* Animate images with image overlay */ = {
@@ -2874,6 +2875,7 @@
 		3ED027FE1B8E39DD00ACA70D /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				001ECB312489A2F3009AC6C0 /* Feature collection layer (portal item) */,
 				F4E5CD7720704369000A6D35 /* Feature layer rendering mode (map) */,
 				C7FF07D321B9D227000D4055 /* Feature layer rendering mode (scene) */,
 				3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */,
@@ -2900,7 +2902,6 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				001ECB312489A2F3009AC6C0 /* Create feature collection layer (Portal item) */,
 				00ADC3C92464DD0600A3B88D /* Identify raster cell */,
 				F15CF0C723EE26CB0038F052 /* Display subtype feature layer */,
 				F140E1E823F35E61008AC44E /* Display annotation */,

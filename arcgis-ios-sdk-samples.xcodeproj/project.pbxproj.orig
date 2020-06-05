@@ -865,11 +865,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+<<<<<<< HEAD
 				F126830F247F3DCF0025499E /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */,
 				F1268310247F3DCF0025499E /* ConfigureSubnetworkTraceConfigurationsViewController.swift in CopyFiles */,
+=======
 				00ADC3C42464D64F00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in CopyFiles */,
 				00ADC3D22464DDA200A3B88D /* IdentifyRasterCellViewController.swift in CopyFiles */,
 				F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationsViewController.swift in CopyFiles */,
+>>>>>>> 457fba700c0c53ab20f8afc7d68c197eac205eea
 				00E5B7D5245B9C8D00B11973 /* PerformValveIsolationTraceViewController.swift in CopyFiles */,
 				F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */,
 				00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */,
@@ -4005,8 +4008,11 @@
 		D98CC08F22E25D8200618682 /* Utility Network */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				F14A8EFC2474AD3A00242D96 /* Configure subnetwork trace */,
+=======
 				F1D50229245243AD00583CFB /* Display utility associations */,
+>>>>>>> 457fba700c0c53ab20f8afc7d68c197eac205eea
 				00E5B7CB2458FE6D00B11973 /* Perform valve isolation trace */,
 				D98CC09022E25E3300618682 /* Trace utility network */,
 			);

@@ -257,7 +257,7 @@
                         <outlet property="containersSwitch" destination="bIf-qK-5us" id="nbr-3e-bVk"/>
                         <outlet property="textView" destination="gnI-4M-9td" id="dwN-Sc-jPp"/>
                         <outlet property="valueCell" destination="vxd-6b-Viu" id="nan-gC-sJf"/>
-                        <outlet property="valueLabel" destination="Yo3-Oy-atF" id="Vp9-lS-Ohs"/>
+                        <outlet property="valueLabel" destination="Yo3-Oy-atF" id="Ndx-8S-iAX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gB-gF-wHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

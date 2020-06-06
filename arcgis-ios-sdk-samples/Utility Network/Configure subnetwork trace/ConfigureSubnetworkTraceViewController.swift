@@ -71,6 +71,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
                 
                 //Set the default expression (if provided).
                 if let expression = self.sourceTier?.traceConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
+                    print(self.expressionToString(expression: expression))
                     self.expressionLabel?.text = self.expressionToString(expression: expression)
                     self.initialExpression = expression
                 }

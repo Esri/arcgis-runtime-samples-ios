@@ -16,17 +16,17 @@ import UIKit
 import ArcGIS
 
 class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewController {
-    @IBOutlet weak var barriersSwitch: UISwitch?
-    @IBOutlet weak var containersSwitch: UISwitch?
-    @IBOutlet weak var attributesCell: UITableViewCell?
-    @IBOutlet weak var comparisonCell: UITableViewCell?
-    @IBOutlet weak var valueCell: UITableViewCell?
-    @IBOutlet weak var attributeLabel: UILabel?
-    @IBOutlet weak var comparisonLabel: UILabel?
-    @IBOutlet weak var valueLabel: UILabel?
-    @IBOutlet weak var addConditionButton: UITableViewCell?
+    @IBOutlet weak var barriersSwitch: UISwitch!
+    @IBOutlet weak var containersSwitch: UISwitch!
+    @IBOutlet weak var attributesCell: UITableViewCell!
+    @IBOutlet weak var comparisonCell: UITableViewCell!
+    @IBOutlet weak var valueCell: UITableViewCell!
+    @IBOutlet weak var attributeLabel: UILabel!
+    @IBOutlet weak var comparisonLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var addConditionButton: UITableViewCell!
 //    @IBOutlet weak var traceButton: UITableViewCell?
-    @IBOutlet weak var textView: UITextView?
+    @IBOutlet weak var textView: UITextView!
     
     @IBAction func barriersSwitchAction(_ sender: UISwitch) {
         sourceTier?.traceConfiguration?.includeBarriers = sender.isOn
@@ -82,6 +82,28 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
     var valueLabels: [String] = []
     let comparisonsStrings = ["Equal", "NotEqual", "GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", "IncludesTheValues", "DoesNotIncludeTheValues", "IncludesAny", "DoesNotIncludeAny"]
     
+    func addValue() {
+        // Create an alert controller.
+        let alert = UIAlertController(title: "Create a value", message: "This attribute has no values. Please create one.", preferredStyle: .alert)
+        // Add the text field.
+        alert.addTextField { (textField) in
+            textField.text = "New value"
+        }
+        // Obtain user value.
+        alert.addAction(UIAlertAction(title: "Done", style: .default) { [weak self] _ in
+            let textfield = alert.textFields![0]
+            print(textfield.text)
+            self?.valueLabel?.text = textfield.text
+            self?.selectedValue = textfield.text
+            print(self?.selectedValue)
+        })
+        // Add cancel button.
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            
+        // Present the alert.
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         attributes?.forEach { (attribute) in
@@ -119,9 +141,9 @@ class ConfigureSubnetworkTraceConfigurationsViewController: UITableViewControlle
                     }
                     optionsViewController.title = "Value"
                     show(optionsViewController, sender: self)
+                } else {
+                    addValue()
                 }
-            } else {
-                print("selectedAttribute is nil")
             }
         } else if cell == addConditionButton {
             if configuration == nil {

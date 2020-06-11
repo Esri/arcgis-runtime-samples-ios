@@ -2,7 +2,7 @@
 
 Display your location history on the map.
 
-![](image1.png)
+![Image of Show location history](show-location-history.png)
 
 ## Use case
 
@@ -10,7 +10,7 @@ You can track device location history and display it as lines and points on the 
 
 ## How to use the sample
 
-Tap 'Start tracking' to start tracking your location, which will appear as points on the map. A line will connect the points for easier visualization. Tap 'Stop tracking' to stop updating the location history. This sample uses a simulated data source. To track a user's real position, use the default location data source instead.
+Tap "Start tracking" to start tracking your location, which will appear as points on the map. A line will connect the points for easier visualization. Tap "Stop tracking" to stop updating the location history. This sample uses a simulated data source. To track a user's real position, use the default location data source instead.
 
 ## How it works
 
@@ -19,7 +19,7 @@ Tap 'Start tracking' to start tracking your location, which will appear as point
 3. Create an instance of `AGSSimulatedLocationDataSource` and initialize it with a polyline, and start receiving location updates.
   - NOTE: To track a user's real position, use the default location data source for location display instead.
 4. Specify a `locationChangedHandler` on `AGSLocationDisplay` to handle location updates.
-5. Every time the location updates, store that location, display a point on the map, and re-create the route line.
+5. Every time the location updates, store that location, display a point on the map, and recreate the route line.
 
 ## Relevant API
 

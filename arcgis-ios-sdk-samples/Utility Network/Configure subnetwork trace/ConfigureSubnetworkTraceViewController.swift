@@ -179,6 +179,10 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     tableView.deselectRow(at: indexPath, animated: true)
                     addCustomValue()
                 }
+            } else {
+                // If no attribute is selected, present an alert.
+                tableView.deselectRow(at: indexPath, animated: true)
+                presentAlert(title: "No attribute selected", message: "Please select an attribute before selecting a value.")
             }
         } else if cell == addConditionButton {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -203,6 +207,11 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         // Obtain user value.
         alert.addAction(UIAlertAction(title: "Done", style: .default) { [weak self] _ in
             let textfield = alert.textFields![0]
+            // Check for invalid input characters.
+            if !(CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: textfield.text!))) {
+                // Present alert to explain error.
+                self?.presentAlert(title: "This field accepts only numeric entries.")
+            }
             self?.valueLabel?.text = textfield.text
             self?.tableView.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .none)
             self?.selectedValue = textfield.text

@@ -47,13 +47,13 @@ class NavigateARCalibrationViewController: UIViewController {
         headingLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             headingLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 2),
-            headingLabel.bottomAnchor.constraint(equalToSystemSpacingBelow: headingLabel.bottomAnchor, multiplier: 2)
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: headingLabel.bottomAnchor, multiplier: 2)
         ])
         
         view.addSubview(headingSlider)
         headingSlider.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            headingSlider.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 2),
+            headingSlider.leadingAnchor.constraint(equalToSystemSpacingAfter: headingLabel.trailingAnchor, multiplier: 2),
             view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: headingSlider.trailingAnchor, multiplier: 2),
             headingSlider.centerYAnchor.constraint(equalTo: headingLabel.centerYAnchor)
         ])
@@ -63,6 +63,7 @@ class NavigateARCalibrationViewController: UIViewController {
         headingSlider.addTarget(self, action: #selector(touchUpHeading(_:)), for: [.touchUpInside, .touchUpOutside])
     }
     
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -72,17 +73,16 @@ class NavigateARCalibrationViewController: UIViewController {
     /// - Parameter sender: The slider tapped on.
     @objc
     func headingChanged(_ sender: UISlider) {
-        if headingTimer == nil {
-            // Create a timer which rotates the camera when fired.
-            headingTimer = Timer(timeInterval: 0.1, repeats: true) { [weak self] (_) in
-                let delta = self?.joystickHeading() ?? 0.0
-                self?.rotate(delta)
-            }
-            
-            // Add the timer to the main run loop.
-            guard let timer = headingTimer else { return }
-            RunLoop.main.add(timer, forMode: .default)
+        guard headingTimer == nil else { return }
+        // Create a timer which rotates the camera when fired.
+        let timer = Timer(timeInterval: 0.1, repeats: true) { [weak self] (_) in
+            guard let self = self else { return }
+            let delta = self.joystickHeading()
+            self.rotate(delta)
         }
+        headingTimer = timer
+        // Add the timer to the main run loop.
+        RunLoop.main.add(timer, forMode: .default)
     }
     
     /// Handle a heading slider touchUp event. This will stop the timer.
@@ -113,6 +113,6 @@ class NavigateARCalibrationViewController: UIViewController {
     /// - Returns: The heading delta.
     private func joystickHeading() -> Double {
         let deltaHeading = Double(headingSlider.value)
-        return pow(deltaHeading, 2) / 25.0 * (deltaHeading < 0 ? -1.0 : 1.0)
+        return Double(signOf: deltaHeading, magnitudeOf: deltaHeading * deltaHeading / 25)
     }
 }

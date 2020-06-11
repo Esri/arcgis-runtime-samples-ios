@@ -124,7 +124,6 @@ class LocationHistoryViewController: UIViewController {
     
     private func makeDataSource(from polylineJSONString: String) -> AGSSimulatedLocationDataSource {
         let simulatedDataSource = AGSSimulatedLocationDataSource()
-        simulatedDataSource.locationChangeHandlerDelegate = self
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: polylineJSONString.data(using: .utf8)!)
             let routePolyline = try AGSPolyline.fromJSON(jsonObject) as! AGSPolyline
@@ -227,12 +226,5 @@ class LocationHistoryViewController: UIViewController {
         }
         
         trackingBarButtonItem.title = buttonText
-    }
-}
-
-extension LocationHistoryViewController: AGSLocationChangeHandlerDelegate {
-    func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
-        // Update the tracker location with the new location from the simulated data source.
-        processLocationUpdate()
     }
 }

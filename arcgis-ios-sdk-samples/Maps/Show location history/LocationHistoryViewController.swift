@@ -152,7 +152,6 @@ class LocationHistoryViewController: UIViewController {
         } else {
             stopProcessingLocationChanges()
         }
-        
         updateView()
     }
     
@@ -180,7 +179,6 @@ class LocationHistoryViewController: UIViewController {
     private func setupMapView() {
         let map = AGSMap(basemap: .lightGrayCanvasVector())
         mapView.map = map
-        
         map.load { [weak self, unowned map] (_) in
             self?.pointBuilder = AGSMultipointBuilder(spatialReference: map.spatialReference)
             self?.trackBuilder = AGSPolylineBuilder(spatialReference: map.spatialReference)
@@ -196,16 +194,13 @@ class LocationHistoryViewController: UIViewController {
         locationsOverlay.graphics.add(locationGraphic)
         
         mapView.graphicsOverlays.addObjects(from: [trackOverlay, locationsOverlay])
-        
         setupLocationDisplay(mapView.locationDisplay)
-        
         updateView()
     }
     
     private func startProcessingLocationChanges() {
         mapView.locationDisplay.locationChangedHandler = { [weak self] (location) in
             guard location.horizontalAccuracy >= 0 else { return }
-            
             DispatchQueue.main.async {
                 self?.processLocationUpdate()
             }
@@ -218,13 +213,11 @@ class LocationHistoryViewController: UIViewController {
     
     private func updateView() {
         let buttonText: String
-        
         if isTracking {
             buttonText = "Stop tracking"
         } else {
             buttonText = "Start tracking"
         }
-        
         trackingBarButtonItem.title = buttonText
     }
 }

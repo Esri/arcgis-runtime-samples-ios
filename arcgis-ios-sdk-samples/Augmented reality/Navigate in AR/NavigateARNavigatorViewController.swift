@@ -70,7 +70,7 @@ class NavigateARNavigatorViewController: UIViewController {
     ///
     /// - Returns: A new `AGSScene` object.
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemapType: .imageryWithLabels)
+        let scene = AGSScene(basemapType: .imagery)
         elevationSurface.navigationConstraint = .none
         elevationSurface.opacity = 0
         elevationSurface.elevationSources = [elevationSource]
@@ -159,12 +159,7 @@ class NavigateARNavigatorViewController: UIViewController {
     @IBAction func startTurnByTurn(_ sender: UIBarButtonItem) {
         routeTracker = AGSRouteTracker(routeResult: routeResult, routeIndex: 0)
         if routeTask.routeTaskInfo().supportsRerouting {
-            routeTracker?.enableRerouting(
-                with: routeTask,
-                routeParameters: routeParameters,
-                strategy: .toNextStop,
-                visitFirstStopOnStart: true
-            ) { [weak self] (error: Error?) in
+            routeTracker?.enableRerouting(with: routeTask, routeParameters: routeParameters, strategy: .toNextStop, visitFirstStopOnStart: true ) { [weak self] (error: Error?) in
                 if let error = error {
                     self?.presentAlert(error: error)
                 } else {

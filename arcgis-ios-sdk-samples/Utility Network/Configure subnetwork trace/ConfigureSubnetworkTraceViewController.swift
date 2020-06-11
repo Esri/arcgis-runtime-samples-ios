@@ -27,6 +27,9 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     @IBOutlet weak var addConditionButton: UITableViewCell!
     @IBOutlet weak var resetButton: UITableViewCell!
     @IBOutlet weak var traceButton: UITableViewCell!
+    @IBOutlet weak var addConditionLabel: UILabel!
+    @IBOutlet weak var resetLabel: UILabel!
+    @IBOutlet weak var traceLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     
     @IBAction func barriersSwitchAction(_ sender: UISwitch) {
@@ -36,7 +39,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         sourceTier?.traceConfiguration?.includeContainers = sender.isOn
     }
     
-    var expressionLabel: UILabel?
     var utilityNetwork: AGSUtilityNetwork?
     let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     // For creating the default starting location.
@@ -48,7 +50,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     let domainNetworkName = "ElectricDistribution"
     let tierName = "Medium Voltage Radial"
     let comparisonsStrings = ["Equal", "NotEqual", "GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", "IncludesTheValues", "DoesNotIncludeTheValues", "IncludesAny", "DoesNotIncludeAny"]
-//    let comparisonsDictionary: [AGSUtilityAttributeComparisonOperator: String] = [.equal: "Equal", .notEqual: "NotEqual", .greaterThan: "GreaterThan", .greaterThanEqual: "GreaterThanEqual", .lessThan: "LessThan", .lessThanEqual: "LessThanEqual", .includesTheValues: "IncludesTheValues", .doesNotIncludeTheValues: "DoesNotIncludeTheValues", .includesAny: "IncludesAny", .doesNotIncludeAny: "DoesNotIncludeAny"]
     
     // Utility element to start the trace from.
     var startingLocation: AGSUtilityElement!
@@ -61,12 +62,24 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
 
     // The source tier of the utility network.
     var sourceTier: AGSUtilityTier?
-    
-    var comparisons: [AGSUtilityAttributeComparisonOperator] = [.equal, .notEqual, .greaterThan, .greaterThanEqual, .lessThan, .lessThanEqual, .includesTheValues, .doesNotIncludeTheValues, .includesAny, .doesNotIncludeAny]
+    let categoryComparisonOperators: [AGSUtilityCategoryComparisonOperator: String] = [.exists: "exists", .doesNotExist: "doesNotExist" ]
+    let comparisons: [AGSUtilityAttributeComparisonOperator] = [.equal, .notEqual, .greaterThan, .greaterThanEqual, .lessThan, .lessThanEqual, .includesTheValues, .doesNotIncludeTheValues, .includesAny, .doesNotIncludeAny]
     var values: [AGSCodedValue]?
-    var selectedAttribute: AGSUtilityNetworkAttribute?
-    var selectedComparison: AGSUtilityAttributeComparisonOperator?
-    var selectedValue: Any?
+    var selectedAttribute: AGSUtilityNetworkAttribute? {
+        didSet {
+            enableButtons()
+        }
+    }
+    var selectedComparison: AGSUtilityAttributeComparisonOperator? {
+           didSet {
+               enableButtons()
+           }
+       }
+    var selectedValue: Any? {
+           didSet {
+               enableButtons()
+           }
+       }
     var selectedValueString: String?
     var attributes: [AGSUtilityNetworkAttribute]?
     var attributeLabels: [String] = []
@@ -96,7 +109,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 //Set the default expression (if provided).
                 if let expression = self.sourceTier?.traceConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
                     print(self.expressionToString(expression: expression)!)
-                    self.expressionLabel?.text = self.expressionToString(expression: expression)
+                    self.textView?.text = self.expressionToString(expression: expression)
                     self.initialExpression = expression
                 }
                 // Set the traversability scope.
@@ -142,6 +155,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     optionsViewController.title = "Value"
                     show(optionsViewController, sender: self)
                 } else {
+                    tableView.deselectRow(at: indexPath, animated: true)
                     addCustomValue()
                 }
             }
@@ -162,7 +176,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         let alert = UIAlertController(title: "Create a value", message: "This attribute has no values. Please create one.", preferredStyle: .alert)
         // Add the text field.
         alert.addTextField { (textField) in
-            textField.text = "New value"
+            textField.keyboardType = .numberPad
         }
         // Obtain user value.
         alert.addAction(UIAlertAction(title: "Done", style: .default) { [weak self] _ in
@@ -221,11 +235,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     
     func trace() {
         if utilityNetwork == nil || startingLocation == nil {
-            if utilityNetwork == nil {
-                print("UTILITY NETWORK")
-            } else if startingLocation == nil {
-                print("STARTING LOCATION")
-            }
             presentAlert(title: "Error", message: "Could not trace utility network.")
             return
         } else {
@@ -251,10 +260,22 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         }
     }
     
+    func enableButtons() {
+        if selectedAttribute == nil, selectedComparison == nil, selectedValue == nil {
+            addConditionLabel.isEnabled = false
+            resetLabel.isEnabled = false
+            traceLabel.isEnabled = false
+        } else {
+            addConditionLabel.isEnabled = true
+            resetLabel.isEnabled = true
+            traceLabel.isEnabled = true
+        }
+    }
+    
     func expressionToString(expression: AGSUtilityTraceConditionalExpression) -> String? {
         if let categoryComparison = expression as? AGSUtilityCategoryComparison {
-            let comparisonOperator = AGSUtilityCategoryComparisonOperator.doesNotExist
-            return "`\(categoryComparison.category.name)` \(comparisonOperator)"
+            let comparisonOperatorString = categoryComparisonOperators[categoryComparison.comparisonOperator]
+            return "`\(categoryComparison.category.name)` \(comparisonOperatorString!)"
         } else if let attributeComparison = expression as? AGSUtilityNetworkAttributeComparison {
             // Check if attribute domain is a coded value domain.
             if let domain = attributeComparison.networkAttribute.domain as? AGSCodedValueDomain {
@@ -281,15 +302,29 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         return nil
     }
     
+    func showResults(numberOfResults: Int) {
+        // Display the number of elements found by the trace.
+        self.presentAlert(title: "Trace Result", message: "\(numberOfResults) elements found.")
+    }
+    
     func convertToDataType(otherValue: Any, dataType: AGSUtilityNetworkAttributeDataType) -> Any? {
         switch dataType {
         case .boolean:
             return otherValue as! Bool
         case .double:
+            if let valueString = otherValue as? String {
+                return Double(valueString)
+            }
             return otherValue as! Double
         case .float:
+            if let valueString = otherValue as? String {
+                return Float(valueString)
+            }
             return otherValue as! Float
         case .integer:
+            if let valueString = otherValue as? String {
+                return Int32(valueString)
+            }
             return otherValue as! Int32
         default:
             return nil
@@ -317,14 +352,10 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let comparisonOperator = AGSUtilityCategoryComparisonOperator.doesNotExist
+        print(comparisonOperator)
         //add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ConfigureSubnetworkTraceViewController", "OptionsTableViewController"]
         makeUtilityNetwork()
-    }
-    
-    func showResults(numberOfResults: Int) {
-        // Display the number of elements found by the trace.
-        self.presentAlert(title: "Trace Result", message: "\(numberOfResults) elements found.")
     }
 }

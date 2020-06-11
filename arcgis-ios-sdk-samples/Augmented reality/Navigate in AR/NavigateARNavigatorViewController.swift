@@ -31,11 +31,12 @@ class NavigateARNavigatorViewController: UIViewController {
     /// The `ArcGISARView` managed by the view controller.
     @IBOutlet weak var arView: ArcGISARView! {
         didSet {
-            arView.sceneView.scene = makeScene()
-            arView.sceneView.graphicsOverlays.add(makeRouteOverlay())
+            let sceneView = arView.sceneView
+            sceneView.scene = makeScene()
+            sceneView.graphicsOverlays.add(makeRouteOverlay())
             // Turn the space and atmosphere effects on for an immersive experience.
-            arView.sceneView.spaceEffect = .transparent
-            arView.sceneView.atmosphereEffect = .none
+            sceneView.spaceEffect = .transparent
+            sceneView.atmosphereEffect = .none
             arView.locationDataSource = AGSCLLocationDataSource()
         }
     }
@@ -48,14 +49,6 @@ class NavigateARNavigatorViewController: UIViewController {
     var routeTask: AGSRouteTask!
     /// The parameters for route task to solve a route, received from route planner.
     var routeParameters: AGSRouteParameters!
-    
-    /// A boolean that indicates if the heading is being calibrated.
-    var isCalibrating = false {
-        didSet {
-            elevationSurface.opacity = isCalibrating ? 0.6 : 0
-        }
-    }
-    
     /// The route tracker for navigation. Use delegate methods to update tracking status.
     var routeTracker: AGSRouteTracker?
     /// The current route for navigation.
@@ -70,8 +63,6 @@ class NavigateARNavigatorViewController: UIViewController {
     let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
     /// The elevation surface set to the base surface of the scene.
     let elevationSurface = AGSSurface()
-    /// A view controller that displays a slider to adjust navigation heading according to the basemap and elevation.
-    lazy var calibrationVC = NavigateARCalibrationViewController(arcgisARView: arView)
     
     // MARK: Instance methods: initialize route and graphics
     
@@ -81,7 +72,7 @@ class NavigateARNavigatorViewController: UIViewController {
     func makeScene() -> AGSScene {
         let scene = AGSScene(basemapType: .imageryWithLabels)
         elevationSurface.navigationConstraint = .none
-        elevationSurface.opacity = 0.6
+        elevationSurface.opacity = 0
         elevationSurface.elevationSources = [elevationSource]
         scene.baseSurface = elevationSurface
         return scene
@@ -107,19 +98,20 @@ class NavigateARNavigatorViewController: UIViewController {
     }
     
     /// Set a route to current route and update graphic display.
-    /// - Parameters:
     ///
+    /// - Parameters:
     ///   - route: The new `AGSRoute` to set.
     ///   - completion: A closure to execute on successfully setting the new route and graphic.
     func setRouteAndGraphic(route: AGSRoute, onSuccess completion: (() -> Void)? = nil) {
         currentRoute = route
         let originalPolyline = route.routeGeometry!
         elevationSource.load { [weak self] (error: Error?) in
+            guard let self = self else { return }
             if let error = error {
-                self?.presentAlert(error: error)
-                self?.setStatus(message: "Failed to load elevation source.")
+                self.presentAlert(error: error)
+                self.setStatus(message: "Failed to load elevation source.")
             } else {
-                self?.addElevationToPolyline(polyine: originalPolyline) { [weak self] (newPolyline: AGSPolyline) in
+                self.addElevationToPolyline(polyine: originalPolyline) { [weak self] (newPolyline: AGSPolyline) in
                     self?.routeGraphic.geometry = newPolyline
                     completion?()
                 }
@@ -134,11 +126,7 @@ class NavigateARNavigatorViewController: UIViewController {
     ///   - polyine: The polyline geometry of the route.
     ///   - z: A `Double` value representing z elevation.
     ///   - completion: A completion closure to execute after the polyline is generated with success or not.
-    func addElevationToPolyline(
-        polyine: AGSPolyline,
-        elevation z: Double = 3,
-        completion: @escaping (AGSPolyline) -> Void
-    ) {
+    func addElevationToPolyline(polyine: AGSPolyline, elevation z: Double = 3, completion: @escaping (AGSPolyline) -> Void) {
         if let densifiedPolyline = AGSGeometryEngine.densifyGeometry(polyine, maxSegmentLength: 0.3) as? AGSPolyline {
             let polylinebuilder = AGSPolylineBuilder(spatialReference: densifiedPolyline.spatialReference)
             let allPoints = densifiedPolyline.parts.array().flatMap { $0.points.array() }
@@ -198,21 +186,21 @@ class NavigateARNavigatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        isCalibrating = false
         // Start tracking.
         trackingLocationDataSource.locationChangeHandlerDelegate = self
         trackingLocationDataSource.start()
         // Set the route solved by route planner to the scene.
         // On success, enable calibration adjustment.
         setRouteAndGraphic(route: routeResult.routes.first!) { [weak self] in
-            self?.calibrateButtonItem.isEnabled = true
-            self?.setStatus(message: "Adjust calibration before starting.")
+            guard let self = self else { return }
+            self.calibrateButtonItem.isEnabled = true
+            self.setStatus(message: "Adjust calibration before starting.")
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        arView.startTracking(.continuous, completion: nil)
+        arView.startTracking(.continuous)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -224,15 +212,12 @@ class NavigateARNavigatorViewController: UIViewController {
 // MARK: - Route navigation status changes
 
 extension NavigateARNavigatorViewController: AGSRouteTrackerDelegate {
-    func routeTracker(
-        _ routeTracker: AGSRouteTracker,
-        didGenerateNewVoiceGuidance voiceGuidance: AGSVoiceGuidance
-    ) {
+    func routeTracker(_ routeTracker: AGSRouteTracker, didGenerateNewVoiceGuidance voiceGuidance: AGSVoiceGuidance) {
         setSpeakDirection(with: voiceGuidance.text)
     }
     
     func routeTrackerRerouteDidStart(_ routeTracker: AGSRouteTracker) {
-        setStatus(message: "Rerouting...")
+        setStatus(message: "Rerouting…")
     }
     
     func routeTracker(_ routeTracker: AGSRouteTracker, didUpdate trackingStatus: AGSTrackingStatus) {
@@ -247,11 +232,7 @@ extension NavigateARNavigatorViewController: AGSRouteTrackerDelegate {
         }
     }
     
-    func routeTracker(
-        _ routeTracker: AGSRouteTracker,
-        rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?,
-        error: Error?
-    ) {
+    func routeTracker(_ routeTracker: AGSRouteTracker, rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?, error: Error?) {
         if let latestRoute = trackingStatus?.routeResult.routes.first {
             if latestRoute != self.currentRoute {
                 setRouteAndGraphic(route: latestRoute)
@@ -259,23 +240,16 @@ extension NavigateARNavigatorViewController: AGSRouteTrackerDelegate {
         }
     }
     
-    func setSpeakDirection(with text: String?) {
-        speechSynthesizer.stopSpeaking(at: AVSpeechBoundary.word)
-        if let text = text {
-            let speechUtterance = AVSpeechUtterance(string: text)
-            speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate * 0.5
-            speechSynthesizer.speak(speechUtterance)
-        }
+    func setSpeakDirection(with text: String) {
+        speechSynthesizer.stopSpeaking(at: .word)
+        speechSynthesizer.speak(AVSpeechUtterance(string: text))
     }
 }
 
 // MARK: - AGSLocationChangeHandlerDelegate
 
 extension NavigateARNavigatorViewController: AGSLocationChangeHandlerDelegate {
-    func locationDataSource(
-        _ locationDataSource: AGSLocationDataSource,
-        locationDidChange location: AGSLocation
-    ) {
+    func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         startButtonItem.isEnabled = true
         // Send location updates to route tracker if actively navigating.
         routeTracker?.trackLocation(location)
@@ -286,12 +260,9 @@ extension NavigateARNavigatorViewController: AGSLocationChangeHandlerDelegate {
 
 extension NavigateARNavigatorViewController {
     @IBAction func showCalibrationPopup(_ sender: UIBarButtonItem) {
-        if isCalibrating {
-            calibrationVC.dismiss(animated: true)
-        } else {
-            showPopup(calibrationVC, sourceButton: sender)
-        }
-        isCalibrating.toggle()
+        let calibrationVC = NavigateARCalibrationViewController(arcgisARView: arView)
+        elevationSurface.opacity = 0.6
+        showPopup(calibrationVC, sourceButton: sender)
     }
     
     private func showPopup(_ controller: UIViewController, sourceButton: UIBarButtonItem) {
@@ -306,18 +277,13 @@ extension NavigateARNavigatorViewController {
 }
 
 extension NavigateARNavigatorViewController: UIPopoverPresentationControllerDelegate {
-    func popoverPresentationControllerDidDismissPopover(
-        _ popoverPresentationController: UIPopoverPresentationController
-    ) {
-        isCalibrating = false
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        elevationSurface.opacity = 0
     }
 }
 
 extension NavigateARNavigatorViewController: UIAdaptivePresentationControllerDelegate {
-    func adaptivePresentationStyle(
-        for controller: UIPresentationController,
-        traitCollection: UITraitCollection
-    ) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
 }

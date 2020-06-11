@@ -25,7 +25,7 @@ class NavigateARCalibrationViewController: UIViewController {
     
     /// The `UISlider` used to adjust heading.
     private let headingSlider: UISlider = {
-        let slider = UISlider(frame: .zero)
+        let slider = UISlider()
         slider.minimumValue = -10.0
         slider.maximumValue = 10.0
         return slider
@@ -40,21 +40,21 @@ class NavigateARCalibrationViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         preferredContentSize = CGSize(width: 250, height: 50)
         // Add the heading label and slider.
-        let headingLabel = UILabel(frame: .zero)
+        let headingLabel = UILabel()
         headingLabel.text = "Heading:"
         headingLabel.textColor = view.tintColor
         view.addSubview(headingLabel)
         headingLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            headingLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            headingLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            headingLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 2),
+            headingLabel.bottomAnchor.constraint(equalToSystemSpacingBelow: headingLabel.bottomAnchor, multiplier: 2)
         ])
         
         view.addSubview(headingSlider)
         headingSlider.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            headingSlider.leadingAnchor.constraint(equalTo: headingLabel.trailingAnchor, constant: 16),
-            headingSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            headingSlider.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 2),
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: headingSlider.trailingAnchor, multiplier: 2),
             headingSlider.centerYAnchor.constraint(equalTo: headingLabel.centerYAnchor)
         ])
         

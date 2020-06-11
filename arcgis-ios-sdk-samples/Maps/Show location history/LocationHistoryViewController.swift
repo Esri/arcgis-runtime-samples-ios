@@ -171,9 +171,9 @@ class LocationHistoryViewController: UIViewController {
         // Comment out the line below to use device live location.
         locationDisplay.dataSource = makeDataSource(from: polylineJSONString)
         
-        locationDisplay.start { (error) in
+        locationDisplay.start { [weak self] (error) in
             if let error = error {
-                print("Error starting location display: \(error.localizedDescription)")
+                self?.presentAlert(error: error)
             }
         }
     }

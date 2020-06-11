@@ -106,18 +106,19 @@ class NavigateARRoutePlannerViewController: UIViewController {
     
     /// A wrapper function for operations after the route is solved by an `AGSRouteTask`.
     ///
-    /// - Parameters:
-    ///   - routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.
-    ///   - error: The error from `AGSRouteTask.solveRoute(with:completion:)`.
-    func didSolveRoute(with routeResult: AGSRouteResult?, error: Error?) {
-        if let error = error {
+    /// - Parameter routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.
+    func didSolveRoute(with routeResult: Result<AGSRouteResult?, Error>) {
+        switch routeResult {
+        case .success(let routeResult):
+            if let result = routeResult, let firstRoute = result.routes.first {
+                self.routeResult = result
+                let routeGraphic = AGSGraphic(geometry: firstRoute.routeGeometry, symbol: nil)
+                self.routeGraphicsOverlay.graphics.add(routeGraphic)
+                self.setStatus(message: "Tap camera to start navigation.")
+            }
+        case .failure(let error):
             self.presentAlert(error: error)
             self.setStatus(message: "Failed to solve route.")
-        } else if let result = routeResult, let firstRoute = result.routes.first {
-            self.routeResult = result
-            let routeGraphic = AGSGraphic(geometry: firstRoute.routeGeometry, symbol: nil)
-            self.routeGraphicsOverlay.graphics.add(routeGraphic)
-            self.setStatus(message: "Tap camera to start navigation.")
         }
     }
     
@@ -163,24 +164,24 @@ class NavigateARRoutePlannerViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
                 self.setStatus(message: "Failed to load route task. Check your connection or credentials.")
-                return
-            }
-            // Get route parameters if no error occurs.
-            self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
-                guard let self = self else { return }
-                if let error = error {
-                    self.presentAlert(error: error)
-                    self.setStatus(message: "Failed to load route parameters.")
-                } else if let params = params {
-                    // set the travel mode to the first one matching 'walking'
-                    let walkMode = self.routeTask.routeTaskInfo().travelModes.first { $0.name.contains("Walking") }
-                    params.travelMode = walkMode
-                    params.returnStops = true
-                    params.returnDirections = true
-                    params.returnRoutes = true
-                    self.routeParameters = params
-                    self.mapView.touchDelegate = self
-                    self.setStatus(message: "Tap to place a start point.")
+            } else {
+                // Get route parameters if no error occurs.
+                self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
+                    guard let self = self else { return }
+                    if let error = error {
+                        self.presentAlert(error: error)
+                        self.setStatus(message: "Failed to load route parameters.")
+                    } else if let params = params {
+                        // set the travel mode to the first one matching 'walking'
+                        let walkMode = self.routeTask.routeTaskInfo().travelModes.first { $0.name.contains("Walking") }
+                        params.travelMode = walkMode
+                        params.returnStops = true
+                        params.returnDirections = true
+                        params.returnRoutes = true
+                        self.routeParameters = params
+                        self.mapView.touchDelegate = self
+                        self.setStatus(message: "Tap to place a start point.")
+                    }
                 }
             }
         }
@@ -213,8 +214,12 @@ extension NavigateARRoutePlannerViewController: AGSGeoViewTouchDelegate {
         } else if endPoint == nil {
             endPoint = mapPoint
             routeParameters.setStops(makeStops())
-            routeTask.solveRoute(with: routeParameters) { [weak self] in
-                self?.didSolveRoute(with: $0, error: $1)
+            routeTask.solveRoute(with: routeParameters) { [weak self] (result, error) in
+                if let error = error {
+                    self?.didSolveRoute(with: .failure(error))
+                } else {
+                    self?.didSolveRoute(with: .success(result))
+                }
             }
         }
     }
@@ -223,18 +228,12 @@ extension NavigateARRoutePlannerViewController: AGSGeoViewTouchDelegate {
 // MARK: - Show OAuth dialog for route service
 
 extension NavigateARRoutePlannerViewController: AGSAuthenticationManagerDelegate {
-    func authenticationManager(
-        _ authenticationManager: AGSAuthenticationManager,
-        wantsToShow viewController: UIViewController
-    ) {
+    func authenticationManager( _ authenticationManager: AGSAuthenticationManager, wantsToShow viewController: UIViewController) {
         viewController.modalPresentationStyle = .overFullScreen
         present(viewController, animated: true)
     }
     
-    func authenticationManager(
-        _ authenticationManager: AGSAuthenticationManager,
-        wantsToDismiss viewController: UIViewController
-    ) {
+    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, wantsToDismiss viewController: UIViewController) {
         dismiss(animated: true)
     }
 }

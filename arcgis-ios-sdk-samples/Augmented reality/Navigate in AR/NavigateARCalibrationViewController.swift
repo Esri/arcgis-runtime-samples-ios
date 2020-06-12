@@ -20,7 +20,7 @@ import ArcGISToolkit
 class NavigateARCalibrationViewController: UIViewController {
     /// The `ArcGISARView` used to display scene and adjust user interactions with camera.
     private let arcgisARView: ArcGISARView
-    /// The timers for the "joystick" behavior.
+    /// The timer for the "joystick" behavior.
     private var headingTimer: Timer?
     
     /// The `UISlider` used to adjust heading.
@@ -31,7 +31,7 @@ class NavigateARCalibrationViewController: UIViewController {
         return slider
     }()
     
-    /// Initialize with an `ArcGISARView`  from the parent view controller.
+    /// Initialize with an `ArcGISARView` from the parent view controller.
     ///
     /// - Parameters:
     ///   - arcgisARView: The `ArcGISARView` used for calibration.

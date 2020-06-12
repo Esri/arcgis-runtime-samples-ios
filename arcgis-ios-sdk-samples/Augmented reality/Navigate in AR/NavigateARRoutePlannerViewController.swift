@@ -114,12 +114,12 @@ class NavigateARRoutePlannerViewController: UIViewController {
             self.routeResult = routeResult
             if let firstRoute = routeResult.routes.first {
                 let routeGraphic = AGSGraphic(geometry: firstRoute.routeGeometry, symbol: nil)
-                self.routeGraphicsOverlay.graphics.add(routeGraphic)
-                self.setStatus(message: "Tap camera to start navigation.")
+                routeGraphicsOverlay.graphics.add(routeGraphic)
+                setStatus(message: "Tap camera to start navigation.")
             }
         case .failure(let error):
-            self.presentAlert(error: error)
-            self.setStatus(message: "Failed to solve route.")
+            presentAlert(error: error)
+            setStatus(message: "Failed to solve route.")
         }
     }
     

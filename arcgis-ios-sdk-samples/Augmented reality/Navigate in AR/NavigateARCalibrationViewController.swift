@@ -22,6 +22,11 @@ class NavigateARCalibrationViewController: UIViewController {
     private let arcgisARView: ArcGISARView
     /// The timer for the "joystick" behavior.
     private var headingTimer: Timer?
+    /// The heading delta degrees based on the heading slider value.
+    private var joystickHeading: Double {
+        let deltaHeading = Double(headingSlider.value)
+        return Double(signOf: deltaHeading, magnitudeOf: deltaHeading * deltaHeading / 25)
+    }
     
     /// The `UISlider` used to adjust heading.
     private let headingSlider: UISlider = {
@@ -77,8 +82,7 @@ class NavigateARCalibrationViewController: UIViewController {
         // Create a timer which rotates the camera when fired.
         let timer = Timer(timeInterval: 0.1, repeats: true) { [weak self] (_) in
             guard let self = self else { return }
-            let delta = self.joystickHeading()
-            self.rotate(delta)
+            self.rotateHeading(byDegrees: self.joystickHeading)
         }
         headingTimer = timer
         // Add the timer to the main run loop.
@@ -95,24 +99,16 @@ class NavigateARCalibrationViewController: UIViewController {
         sender.value = 0.0
     }
     
-    /// Rotates the camera by delta heading value.
+    /// Rotates the camera by delta heading degrees.
     ///
-    /// - Parameter deltaHeading: The amount to rotate the camera.
-    private func rotate(_ deltaHeading: Double) {
+    /// - Parameter degrees: The degree value to rotate the camera.
+    private func rotateHeading(byDegrees degrees: Double) {
         let camera = arcgisARView.originCamera
-        let newHeading = camera.heading + deltaHeading
+        let newHeading = camera.heading + degrees
         arcgisARView.originCamera = camera.rotate(
             toHeading: newHeading,
             pitch: camera.pitch,
             roll: camera.roll
         )
-    }
-    
-    /// Calculates the heading delta amount based on the heading slider value.
-    ///
-    /// - Returns: The heading delta.
-    private func joystickHeading() -> Double {
-        let deltaHeading = Double(headingSlider.value)
-        return Double(signOf: deltaHeading, magnitudeOf: deltaHeading * deltaHeading / 25)
     }
 }

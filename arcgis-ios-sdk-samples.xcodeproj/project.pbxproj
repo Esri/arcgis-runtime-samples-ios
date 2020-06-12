@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
+		001ECB60248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */; };
+		001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
 		00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */; };
 		00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
 		00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3C22464D59200A3B88D /* PacificSouthWest */; settings = {ASSET_TAGS = (PacificSouthWest, ); }; };
@@ -864,6 +867,7 @@
 			dstSubfolderSpec = 7;
 			files = (
 				F126830F247F3DCF0025499E /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */,
+				001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */,
 				00ADC3C42464D64F00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in CopyFiles */,
 				00ADC3D22464DDA200A3B88D /* IdentifyRasterCellViewController.swift in CopyFiles */,
 				F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationsViewController.swift in CopyFiles */,
@@ -1135,6 +1139,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
+		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
 		00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnimateImagesWithImageOverlay.storyboard; sourceTree = "<group>"; };
 		00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateImagesWithImageOverlayViewController.swift; sourceTree = "<group>"; };
 		00ADC3C22464D59200A3B88D /* PacificSouthWest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PacificSouthWest; sourceTree = "<group>"; };
@@ -1736,6 +1742,22 @@
 				00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */,
 			);
 			path = "Animate images with image overlay";
+		001ECB58248B002B009AC6C0 /* Feature collection layer (portal item) */ = {
+			isa = PBXGroup;
+			children = (
+				001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */,
+				001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */,
+			);
+			path = "Feature collection layer (portal item)";
+			sourceTree = "<group>";
+		};
+		00ADC3C92464DD0600A3B88D /* Identify raster cell */ = {
+			isa = PBXGroup;
+			children = (
+				00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */,
+				00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */,
+			);
+			path = "Identify raster cell";
 			sourceTree = "<group>";
 		};
 		00ADC3C92464DD0600A3B88D /* Identify raster cell */ = {
@@ -2865,6 +2887,7 @@
 		3ED027FE1B8E39DD00ACA70D /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				001ECB58248B002B009AC6C0 /* Feature collection layer (portal item) */,
 				F4E5CD7720704369000A6D35 /* Feature layer rendering mode (map) */,
 				C7FF07D321B9D227000D4055 /* Feature layer rendering mode (scene) */,
 				3E5848FC1B91222200AB3CE9 /* Feature layer (feature service) */,
@@ -4727,6 +4750,7 @@
 				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
 				D9E2E75F20EEB8FF001D0AE0 /* Public_Art.prj in Resources */,
 				4C1EF299220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard in Resources */,
+				001ECB60248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard in Resources */,
 				D9EE379A20E2CC7700BF8AD1 /* dolmus_side.jpeg in Resources */,
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
 				D9E2E76120EEB8FF001D0AE0 /* Public_Art.cpg in Resources */,
@@ -5105,6 +5129,7 @@
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				12B736522256D618007F93C6 /* ChooseCameraControllerViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
+				001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
 				3E62940C1EAFAF4100084105 /* WebTiledLayerViewController.swift in Sources */,
 				123AC27E20E58CFA0026A7D6 /* GeodesicOperationsViewController.swift in Sources */,

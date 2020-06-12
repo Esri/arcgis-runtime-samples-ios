@@ -85,7 +85,8 @@ class NavigateARRoutePlannerViewController: UIViewController {
     /// The route result solved by the route task.
     var routeResult: AGSRouteResult? {
         willSet(newValue) {
-            if newValue != nil {
+            // Only enable when there is a valid route to navigate.
+            if newValue?.routes.first != nil {
                 navigateButtonItem.isEnabled = true
             }
         }
@@ -111,9 +112,11 @@ class NavigateARRoutePlannerViewController: UIViewController {
         switch routeResult {
         case .success(let routeResult):
             self.routeResult = routeResult
-            let routeGraphic = AGSGraphic(geometry: routeResult.routes.first!.routeGeometry, symbol: nil)
-            self.routeGraphicsOverlay.graphics.add(routeGraphic)
-            self.setStatus(message: "Tap camera to start navigation.")
+            if let firstRoute = routeResult.routes.first!.routeGeometry {
+                let routeGraphic = AGSGraphic(geometry: firstRoute, symbol: nil)
+                self.routeGraphicsOverlay.graphics.add(routeGraphic)
+                self.setStatus(message: "Tap camera to start navigation.")
+            }
         case .failure(let error):
             self.presentAlert(error: error)
             self.setStatus(message: "Failed to solve route.")

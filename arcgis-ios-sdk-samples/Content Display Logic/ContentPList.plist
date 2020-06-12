@@ -803,6 +803,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Feature collection layer (portal item)</string>
+				<key>descriptionText</key>
+				<string>Create a feature collection layer from a portal item.</string>
+				<key>storyboardName</key>
+				<string>FeatureCollectionLayerFromPortal</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Feature collection layer (query)</string>
 				<key>storyboardName</key>
 				<string>FeatureCollectionLayerQuery</string>

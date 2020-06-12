@@ -13,8 +13,8 @@
 // limitations under the License.
 
 import UIKit
-import ArcGIS
 import AVFoundation
+import ArcGIS
 
 // MARK: - Navigate route View Controller
 
@@ -78,7 +78,7 @@ class NavigateRouteViewController: UIViewController {
             mapView.locationDisplay.dataSource = makeDataSource(from: firstRoute)
             routeTracker = makeRouteTracker(result: routeResult)
             updateRouteGraphics(remaining: firstRoute.routeGeometry)
-            updateViewpoint(routeResult)
+            updateViewpoint(from: routeResult)
             // Enable bar button item.
             navigateButtonItem.isEnabled = true
         case .failure(let error):
@@ -102,7 +102,7 @@ class NavigateRouteViewController: UIViewController {
     
     /// Make the simulated data source for this demo.
     ///
-    /// - Parameter result: The solved route from the route task.
+    /// - Parameter result: Solved `AGSRouteResult` from the route task.
     /// - Returns: An `AGSSimulatedLocationDataSource` object.
     func makeDataSource(from route: AGSRoute) -> AGSSimulatedLocationDataSource {
         directionsList = route.directionManeuvers
@@ -117,7 +117,7 @@ class NavigateRouteViewController: UIViewController {
     
     /// Make a route tracker to provide navigation information.
     ///
-    /// - Parameter result: solved route from the route task.
+    /// - Parameter result: Solved `AGSRouteResult` from the route task.
     /// - Returns: An `AGSRouteTracker` object.
     func makeRouteTracker(result: AGSRouteResult) -> AGSRouteTracker {
         let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0)!
@@ -146,7 +146,7 @@ class NavigateRouteViewController: UIViewController {
     /// Update the viewpoint so that it reflects the original viewpoint when the example is loaded.
     ///
     /// - Parameter result: Solved `AGSRouteResult` from the route task.
-    func updateViewpoint(_ result: AGSRouteResult) {
+    func updateViewpoint(from result: AGSRouteResult) {
         // Show the resulting route on the map and save a reference to the route.
         if let viewPoint = defaultViewPoint {
             // Reset to initial view point with animation.
@@ -193,7 +193,7 @@ class NavigateRouteViewController: UIViewController {
         mapView.locationDisplay.dataSource = makeDataSource(from: routeResult.routes.first!)
         routeTracker = makeRouteTracker(result: routeResult)
         updateRouteGraphics(remaining: (routeResult.routes.first?.routeGeometry)!)
-        updateViewpoint(routeResult)
+        updateViewpoint(from: routeResult)
         // Reset buttons state.
         recenterButtonItem.isEnabled = false
         resetButtonItem.isEnabled = false

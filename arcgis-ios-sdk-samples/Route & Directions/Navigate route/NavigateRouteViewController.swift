@@ -102,7 +102,7 @@ class NavigateRouteViewController: UIViewController {
     
     /// Make the simulated data source for this demo.
     ///
-    /// - Parameter result: Solved `AGSRouteResult` from the route task.
+    /// - Parameter route: The first route from `AGSRouteResult` from the route task.
     /// - Returns: An `AGSSimulatedLocationDataSource` object.
     func makeDataSource(from route: AGSRoute) -> AGSSimulatedLocationDataSource {
         directionsList = route.directionManeuvers

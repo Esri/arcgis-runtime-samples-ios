@@ -82,16 +82,16 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     }
     // The comparison selected by the user.
     var selectedComparison: AGSUtilityAttributeComparisonOperator? {
-           didSet {
-               updateButtons()
-           }
-       }
-       // The value selected by the user.
+        didSet {
+            updateButtons()
+        }
+    }
+    // The value selected by the user.
     var selectedValue: Any? {
-           didSet {
-               updateButtons()
-           }
-       }
+        didSet {
+            updateButtons()
+        }
+    }
     // The value selected by the user as a string.
     var selectedValueString: String?
     
@@ -132,7 +132,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             }
         }
     }
-        
+    
     // MARK: UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
@@ -216,7 +216,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         })
         // Add cancel button.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            
+        
         // Present the alert.
         self.present(alert, animated: true, completion: nil)
     }

@@ -136,6 +136,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     // MARK: UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
         if cell == attributesCell {
             // Create the attribute labels.
             if attributeLabels.isEmpty {
@@ -176,22 +177,17 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     show(optionsViewController, sender: self)
                 } else {
                     // Prompt the user to create a custom value if none are available to select.
-                    tableView.deselectRow(at: indexPath, animated: true)
                     addCustomValue()
                 }
             } else {
                 // If no attribute is selected, present an alert.
-                tableView.deselectRow(at: indexPath, animated: true)
                 presentAlert(title: "No attribute selected", message: "Please select an attribute before selecting a value.")
             }
         } else if cell == addConditionButton {
-            tableView.deselectRow(at: indexPath, animated: true)
             addCondition()
         } else if cell == resetButton {
-            tableView.deselectRow(at: indexPath, animated: true)
             reset()
         } else if cell == traceButton {
-            tableView.deselectRow(at: indexPath, animated: true)
             trace()
         }
     }
@@ -211,10 +207,12 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             if !(CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: textfield.text!))) {
                 // Present alert to explain error.
                 self?.presentAlert(title: "This field accepts only numeric entries.")
+            } else {
+                guard let self = self else { return }
+                self.valueLabel?.text = textfield.text
+                self.tableView.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .none)
+                self.selectedValue = textfield.text
             }
-            self?.valueLabel?.text = textfield.text
-            self?.tableView.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .none)
-            self?.selectedValue = textfield.text
         })
         // Add cancel button.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -294,7 +292,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     
     func updateButtons() {
         // If the nothing has been selected, disable the buttons
-        if selectedAttribute == nil, selectedComparison == nil, selectedValue == nil {
+        if selectedAttribute == nil || selectedComparison == nil || selectedValue == nil {
             addConditionLabel.isEnabled = false
             resetLabel.isEnabled = false
             traceLabel.isEnabled = false

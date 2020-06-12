@@ -113,7 +113,7 @@ class NavigateARNavigatorViewController: UIViewController {
                 self.presentAlert(error: error)
                 self.setStatus(message: "Failed to load elevation source.")
             } else {
-                self.addElevationToPolyline(polyine: originalPolyline) { [weak self] (newPolyline: AGSPolyline) in
+                self.addElevationToPolyline(polyline: originalPolyline) { [weak self] (newPolyline: AGSPolyline) in
                     self?.routeGraphic.geometry = newPolyline
                     completion?()
                 }
@@ -125,11 +125,11 @@ class NavigateARNavigatorViewController: UIViewController {
     /// and add an elevation to the geometry.
     ///
     /// - Parameters:
-    ///   - polyine: The polyline geometry of the route.
+    ///   - polyline: The polyline geometry of the route.
     ///   - z: A `Double` value representing z elevation.
     ///   - completion: A completion closure to execute after the polyline is generated with success or not.
-    func addElevationToPolyline(polyine: AGSPolyline, elevation z: Double = 3, completion: @escaping (AGSPolyline) -> Void) {
-        if let densifiedPolyline = AGSGeometryEngine.densifyGeometry(polyine, maxSegmentLength: 0.3) as? AGSPolyline {
+    func addElevationToPolyline(polyline: AGSPolyline, elevation z: Double = 3, completion: @escaping (AGSPolyline) -> Void) {
+        if let densifiedPolyline = AGSGeometryEngine.densifyGeometry(polyline, maxSegmentLength: 0.3) as? AGSPolyline {
             let polylinebuilder = AGSPolylineBuilder(spatialReference: densifiedPolyline.spatialReference)
             let allPoints = densifiedPolyline.parts.array().flatMap { $0.points.array() }
             
@@ -138,9 +138,9 @@ class NavigateARNavigatorViewController: UIViewController {
                 buildGroup.enter()
                 elevationSurface.elevation(for: point) { [weak self] (elevation: Double, error: Error?) in
                     defer { buildGroup.leave() }
-                    if let newpoint = AGSGeometryEngine.geometry(bySettingZ: elevation + z, in: point) as? AGSPoint {
+                    if let newPoint = AGSGeometryEngine.geometry(bySettingZ: elevation + z, in: point) as? AGSPoint {
                         // Put the new point 3 meters above the ground elevation.
-                        polylinebuilder.add(newpoint)
+                        polylinebuilder.add(newPoint)
                     } else if let error = error {
                         self?.presentAlert(error: error)
                     }
@@ -152,7 +152,7 @@ class NavigateARNavigatorViewController: UIViewController {
             }
         } else {
             setStatus(message: "Failed to add elevation to route line.")
-            completion(polyine)
+            completion(polyline)
         }
     }
     

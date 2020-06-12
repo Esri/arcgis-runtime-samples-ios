@@ -1735,15 +1735,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00ADC3B72464D45B00A3B88D /* Animate images with image overlay */ = {
-			isa = PBXGroup;
-			children = (
-				00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */,
-				00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */,
-			);
-			path = "Animate images with image overlay";
-			sourceTree = "<group>";
-		};
 		001ECB58248B002B009AC6C0 /* Feature collection layer (portal item) */ = {
 			isa = PBXGroup;
 			children = (
@@ -1751,6 +1742,15 @@
 				001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */,
 			);
 			path = "Feature collection layer (portal item)";
+			sourceTree = "<group>";
+		};
+		00ADC3B72464D45B00A3B88D /* Animate images with image overlay */ = {
+			isa = PBXGroup;
+			children = (
+				00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */,
+				00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */,
+			);
+			path = "Animate images with image overlay";
 			sourceTree = "<group>";
 		};
 		00ADC3C92464DD0600A3B88D /* Identify raster cell */ = {
@@ -2134,7 +2134,6 @@
 				4C73C83321112AFF00B0F9C7 /* Frameworks */,
 				3E23A9E11AFC28F6002E2214 /* Products */,
 				97466010234265F6008EF35A /* ArcGISToolkit.xcodeproj */,
-				F125AD382493055300391A55 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4214,14 +4213,6 @@
 				F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */,
 			);
 			path = "Create terrain surface from a local tile package";
-			sourceTree = "<group>";
-		};
-		F125AD382493055300391A55 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		F140E1E823F35E61008AC44E /* Display annotation */ = {

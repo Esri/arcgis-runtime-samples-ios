@@ -56,7 +56,7 @@ class NavigateARRoutePlannerViewController: UIViewController {
         return overlay
     }()
     
-    /// An OAuth2 configuration for accessing online routing service.
+    /// An OAuth2 configuration to access online routing service.
     let oAuthConfiguration = AGSOAuthConfiguration(
         portalURL: URL(string: "https://www.arcgis.com")!,
         clientID: "lgAdHkYZYlwwfAhC",

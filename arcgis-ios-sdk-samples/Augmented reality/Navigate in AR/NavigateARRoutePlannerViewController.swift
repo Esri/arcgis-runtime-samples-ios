@@ -107,15 +107,13 @@ class NavigateARRoutePlannerViewController: UIViewController {
     /// A wrapper function for operations after the route is solved by an `AGSRouteTask`.
     ///
     /// - Parameter routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.
-    func didSolveRoute(with routeResult: Result<AGSRouteResult?, Error>) {
+    func didSolveRoute(with routeResult: Result<AGSRouteResult, Error>) {
         switch routeResult {
         case .success(let routeResult):
-            if let result = routeResult, let firstRoute = result.routes.first {
-                self.routeResult = result
-                let routeGraphic = AGSGraphic(geometry: firstRoute.routeGeometry, symbol: nil)
-                self.routeGraphicsOverlay.graphics.add(routeGraphic)
-                self.setStatus(message: "Tap camera to start navigation.")
-            }
+            self.routeResult = routeResult
+            let routeGraphic = AGSGraphic(geometry: routeResult.routes.first!.routeGeometry, symbol: nil)
+            self.routeGraphicsOverlay.graphics.add(routeGraphic)
+            self.setStatus(message: "Tap camera to start navigation.")
         case .failure(let error):
             self.presentAlert(error: error)
             self.setStatus(message: "Failed to solve route.")
@@ -217,7 +215,7 @@ extension NavigateARRoutePlannerViewController: AGSGeoViewTouchDelegate {
             routeTask.solveRoute(with: routeParameters) { [weak self] (result, error) in
                 if let error = error {
                     self?.didSolveRoute(with: .failure(error))
-                } else {
+                } else if let result = result {
                     self?.didSolveRoute(with: .success(result))
                 }
             }

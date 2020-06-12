@@ -75,15 +75,15 @@ class NavigateRouteViewController: UIViewController {
         case .success(let routeResult):
             self.routeResult = routeResult
             let firstRoute = routeResult.routes.first!
-            self.mapView.locationDisplay.dataSource = self.makeDataSource(from: firstRoute)
-            self.routeTracker = self.makeRouteTracker(routeResult)
-            self.updateRouteGraphics(remaining: firstRoute.routeGeometry)
-            self.updateViewpoint(routeResult)
+            mapView.locationDisplay.dataSource = makeDataSource(from: firstRoute)
+            routeTracker = makeRouteTracker(result: routeResult)
+            updateRouteGraphics(remaining: firstRoute.routeGeometry)
+            updateViewpoint(routeResult)
             // Enable bar button item.
-            self.navigateButtonItem.isEnabled = true
+            navigateButtonItem.isEnabled = true
         case .failure(let error):
-            self.presentAlert(error: error)
-            self.setStatus(message: "Failed to solve route.")
+            presentAlert(error: error)
+            setStatus(message: "Failed to solve route.")
         }
     }
     
@@ -119,7 +119,7 @@ class NavigateRouteViewController: UIViewController {
     ///
     /// - Parameter result: solved route from the route task.
     /// - Returns: An `AGSRouteTracker` object.
-    func makeRouteTracker(_ result: AGSRouteResult) -> AGSRouteTracker {
+    func makeRouteTracker(result: AGSRouteResult) -> AGSRouteTracker {
         let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0)!
         tracker.delegate = self
         return tracker
@@ -145,7 +145,7 @@ class NavigateRouteViewController: UIViewController {
     
     /// Update the viewpoint so that it reflects the original viewpoint when the example is loaded.
     ///
-    /// - Parameter result: solved route from the route task.
+    /// - Parameter result: Solved `AGSRouteResult` from the route task.
     func updateViewpoint(_ result: AGSRouteResult) {
         // Show the resulting route on the map and save a reference to the route.
         if let viewPoint = defaultViewPoint {
@@ -191,7 +191,7 @@ class NavigateRouteViewController: UIViewController {
         setStatus(message: "Directions are shown here.")
         // Reset the navigation.
         mapView.locationDisplay.dataSource = makeDataSource(from: routeResult.routes.first!)
-        routeTracker = makeRouteTracker(routeResult)
+        routeTracker = makeRouteTracker(result: routeResult)
         updateRouteGraphics(remaining: (routeResult.routes.first?.routeGeometry)!)
         updateViewpoint(routeResult)
         // Reset buttons state.
@@ -304,6 +304,6 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
 extension NavigateRouteViewController: AGSLocationChangeHandlerDelegate {
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         // Update the tracker location with the new location from the simulated data source.
-        self.routeTracker?.trackLocation(location)
+        routeTracker?.trackLocation(location)
     }
 }

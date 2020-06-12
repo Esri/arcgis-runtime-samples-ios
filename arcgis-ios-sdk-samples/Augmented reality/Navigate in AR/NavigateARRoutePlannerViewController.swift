@@ -112,8 +112,8 @@ class NavigateARRoutePlannerViewController: UIViewController {
         switch routeResult {
         case .success(let routeResult):
             self.routeResult = routeResult
-            if let firstRoute = routeResult.routes.first!.routeGeometry {
-                let routeGraphic = AGSGraphic(geometry: firstRoute, symbol: nil)
+            if let firstRoute = routeResult.routes.first {
+                let routeGraphic = AGSGraphic(geometry: firstRoute.routeGeometry, symbol: nil)
                 self.routeGraphicsOverlay.graphics.add(routeGraphic)
                 self.setStatus(message: "Tap camera to start navigation.")
             }

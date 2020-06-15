@@ -75,10 +75,10 @@ class NavigateRouteViewController: UIViewController {
         case .success(let routeResult):
             self.routeResult = routeResult
             let firstRoute = routeResult.routes.first!
-            mapView.locationDisplay.dataSource = makeDataSource(from: firstRoute)
+            mapView.locationDisplay.dataSource = makeDataSource(route: firstRoute)
             routeTracker = makeRouteTracker(result: routeResult)
-            updateRouteGraphics(remaining: firstRoute.routeGeometry)
-            updateViewpoint(from: routeResult)
+            updateRouteGraphics(remaining: firstRoute.routeGeometry!)
+            updateViewpoint(geometry: firstRoute.routeGeometry!)
             // Enable bar button item.
             navigateButtonItem.isEnabled = true
         case .failure(let error):
@@ -102,9 +102,9 @@ class NavigateRouteViewController: UIViewController {
     
     /// Make the simulated data source for this demo.
     ///
-    /// - Parameter route: The first route from `AGSRouteResult` from the route task.
+    /// - Parameter route: An `AGSRoute` object whose geometry is used to configure the data source.
     /// - Returns: An `AGSSimulatedLocationDataSource` object.
-    func makeDataSource(from route: AGSRoute) -> AGSSimulatedLocationDataSource {
+    func makeDataSource(route: AGSRoute) -> AGSSimulatedLocationDataSource {
         directionsList = route.directionManeuvers
         let densifiedRoute = AGSGeometryEngine.geodeticDensifyGeometry(route.routeGeometry!, maxSegmentLength: 50.0, lengthUnit: .meters(), curveType: .geodesic) as! AGSPolyline
         // The mock data source to demo the navigation. Use delegate methods to update locations for the tracker.
@@ -117,7 +117,7 @@ class NavigateRouteViewController: UIViewController {
     
     /// Make a route tracker to provide navigation information.
     ///
-    /// - Parameter result: Solved `AGSRouteResult` from the route task.
+    /// - Parameter result: An `AGSRouteResult` object used to configure the route tracker.
     /// - Returns: An `AGSRouteTracker` object.
     func makeRouteTracker(result: AGSRouteResult) -> AGSRouteTracker {
         let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0)!
@@ -145,13 +145,13 @@ class NavigateRouteViewController: UIViewController {
     
     /// Update the viewpoint so that it reflects the original viewpoint when the example is loaded.
     ///
-    /// - Parameter result: Solved `AGSRouteResult` from the route task.
-    func updateViewpoint(from result: AGSRouteResult) {
+    /// - Parameter result: An `AGSGeometry` object used to update the view point.
+    func updateViewpoint(geometry: AGSGeometry) {
         // Show the resulting route on the map and save a reference to the route.
         if let viewPoint = defaultViewPoint {
             // Reset to initial view point with animation.
             mapView.setViewpoint(viewPoint, completion: nil)
-        } else if let geometry = result.routes.first?.routeGeometry {
+        } else {
             mapView.setViewpointGeometry(geometry) { [weak self] _ in
                 // Get the initial zoomed view point.
                 self?.defaultViewPoint = self?.mapView.currentViewpoint(with: .centerAndScale)
@@ -190,10 +190,11 @@ class NavigateRouteViewController: UIViewController {
         directionsList.removeAll()
         setStatus(message: "Directions are shown here.")
         // Reset the navigation.
-        mapView.locationDisplay.dataSource = makeDataSource(from: routeResult.routes.first!)
+        let firstRoute = routeResult.routes.first!
+        mapView.locationDisplay.dataSource = makeDataSource(route: firstRoute)
         routeTracker = makeRouteTracker(result: routeResult)
-        updateRouteGraphics(remaining: (routeResult.routes.first?.routeGeometry)!)
-        updateViewpoint(from: routeResult)
+        updateRouteGraphics(remaining: firstRoute.routeGeometry!)
+        updateViewpoint(geometry: firstRoute.routeGeometry!)
         // Reset buttons state.
         recenterButtonItem.isEnabled = false
         resetButtonItem.isEnabled = false

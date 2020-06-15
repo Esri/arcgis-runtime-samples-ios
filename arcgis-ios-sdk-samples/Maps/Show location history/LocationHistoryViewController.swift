@@ -37,13 +37,14 @@ class LocationHistoryViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var trackingBarButtonItem: UIBarButtonItem! {
         didSet {
-            trackingBarButtonItem.possibleTitles?.insert("Start tracking")
-            trackingBarButtonItem.possibleTitles?.insert("Stop tracking")
+            trackingBarButtonItem.possibleTitles = [
+                "Start tracking",
+                "Stop tracking"
+            ]
         }
     }
     
-    private let polylineJSONString =
-    """
+    private let polylineJSONString = """
     {"paths":[[ [-13185646.046666779,4037971.5966668758],
     [-13185586.780000051,4037827.6633333955],[-13185514.813333312,4037709.1299999417],
     [-13185569.846666701,4037522.8633330846],[-13185591.01333339,4037378.9299996048],
@@ -122,7 +123,7 @@ class LocationHistoryViewController: UIViewController {
     
     // MARK: Private behavior
     
-    private func makeDataSource(from polylineJSONString: String) -> AGSSimulatedLocationDataSource {
+    private func makeDataSource(polylineJSONString: String) -> AGSSimulatedLocationDataSource {
         let simulatedDataSource = AGSSimulatedLocationDataSource()
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: polylineJSONString.data(using: .utf8)!)
@@ -140,9 +141,9 @@ class LocationHistoryViewController: UIViewController {
         return simulatedDataSource
     }
     
-    private func makeOverlay(with symbol: AGSSymbol) -> AGSGraphicsOverlay {
+    private func makeOverlay(rendererSymbol: AGSSymbol) -> AGSGraphicsOverlay {
         let overlay = AGSGraphicsOverlay()
-        overlay.renderer = AGSSimpleRenderer(symbol: symbol)
+        overlay.renderer = AGSSimpleRenderer(symbol: rendererSymbol)
         return overlay
     }
     
@@ -167,7 +168,7 @@ class LocationHistoryViewController: UIViewController {
         locationDisplay.autoPanMode = .recenter
         locationDisplay.initialZoomScale = Constants.initialZoomScale
         // Comment out the line below to use device live location.
-        locationDisplay.dataSource = makeDataSource(from: polylineJSONString)
+        locationDisplay.dataSource = makeDataSource(polylineJSONString: polylineJSONString)
         
         locationDisplay.start { [weak self] (error) in
             if let error = error {
@@ -180,17 +181,19 @@ class LocationHistoryViewController: UIViewController {
         let map = AGSMap(basemap: .lightGrayCanvasVector())
         mapView.map = map
         map.load { [weak self, unowned map] (_) in
-            self?.pointBuilder = AGSMultipointBuilder(spatialReference: map.spatialReference)
-            self?.trackBuilder = AGSPolylineBuilder(spatialReference: map.spatialReference)
+            guard let self = self else { return }
+            let spatialReference = map.spatialReference
+            self.pointBuilder = AGSMultipointBuilder(spatialReference: spatialReference)
+            self.trackBuilder = AGSPolylineBuilder(spatialReference: spatialReference)
         }
         
         let trackSymbol = AGSSimpleLineSymbol(style: .solid, color: Constants.trackColor, width: Constants.trackWidth)
-        let trackOverlay = makeOverlay(with: trackSymbol)
+        let trackOverlay = makeOverlay(rendererSymbol: trackSymbol)
         trackOverlay.graphics.add(trackGraphic)
         
         let locationSymbol = AGSSimpleMarkerSymbol(style: .circle, color: Constants.locationInnerColor, size: Constants.locationDiameter)
         locationSymbol.outline = AGSSimpleLineSymbol(style: .solid, color: Constants.locationBorderColor, width: Constants.locationBorderWidth)
-        let locationsOverlay = makeOverlay(with: locationSymbol)
+        let locationsOverlay = makeOverlay(rendererSymbol: locationSymbol)
         locationsOverlay.graphics.add(locationGraphic)
         
         mapView.graphicsOverlays.addObjects(from: [trackOverlay, locationsOverlay])

@@ -3,7 +3,7 @@
 Change the appearance of a feature layer with a renderer.
 
 ![Original renderer](change-feature-layer-1.png)
-![Overrde renderer](change-feature-layer-2.png)
+![Override renderer](change-feature-layer-2.png)
 
 ## How to use the sample
 

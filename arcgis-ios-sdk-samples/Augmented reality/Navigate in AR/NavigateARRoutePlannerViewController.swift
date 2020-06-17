@@ -201,7 +201,7 @@ class NavigateARRoutePlannerViewController: UIViewController {
     }
     
     deinit {
-        AGSAuthenticationManager.shared().oAuthConfigurations.removeAllObjects()
+        AGSAuthenticationManager.shared().oAuthConfigurations.remove(oAuthConfiguration)
     }
 }
 

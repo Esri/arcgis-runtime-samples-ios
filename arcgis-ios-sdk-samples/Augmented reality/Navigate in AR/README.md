@@ -20,7 +20,7 @@ When you start, route instructions will be displayed and spoken. As you proceed 
 
 1. The map page is used to plan the route before starting the AR experience. See *Navigate route*, *Find a route* and *Offline routing* samples for a more focused demonstration of that workflow.
 2. Pass the resulting `AGSRouteResult` and the input `AGSRouteTask` and `AGSRouteParameters` to the view used for the AR navigation experience.
-    * The route task and parameters are used to support a rerouting capability where routes are recalculated on-the-fly if you deviate. Due to service limitations, this sample doesn't support on-the-fly rerouting. You can incorporate offline routing to support rerouting in your apps.
+    * The route task and parameters are used to support a rerouting capability where routes are recalculated on-the-fly if you deviate. Due to service limitations, this sample doesn't support on-the-fly rerouting. You can incorporate offline routing to support rerouting in your app.
 3. Start ARKit tracking with continuous location updates when the AR view is shown.
 4. Get the route geometry from the first route in the `AGSRouteResult`. Use the scene's base surface to apply elevation to the line so that it will follow the terrain.
     1. First, densify the polyline to ensure that the elevation adjustment can be applied smoothly along the line with `class AGSGeometryEngine.densifyGeometry(_:maxSegmentLength:)`.
@@ -50,6 +50,13 @@ When you start, route instructions will be displayed and spoken. As you proceed 
 ## About the data
 
 This sample uses Esri's [World Elevation](https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer) service to ensure that route lines are placed appropriately in 3D space. It uses Esri's [World Route](https://www.arcgis.com/home/item.html?id=1feb41652c5c4bd2ba5c60df2b4ea2c4) service to calculate routes. The world routing service requires authentication and does consume ArcGIS Online credits.
+
+> Note: This item requires an ArcGIS Online organizational subscription or an ArcGIS Developer account and consumes credits.
+
+To access this sample, you'll need to do one of the following:
+- Sign in with an account that is a member of an organizational subscription.
+- Sign in with a developer account.
+- Register an application and use your application's credentials.
 
 ## Additional information
 

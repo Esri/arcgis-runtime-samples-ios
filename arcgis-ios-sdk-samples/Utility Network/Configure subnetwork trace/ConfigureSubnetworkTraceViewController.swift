@@ -69,7 +69,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     var configuration: AGSUtilityTraceConfiguration?
     // The source tier of the utility network.
     var sourceTier: AGSUtilityTier?
-    // Arrays of attribues, values, and their respective labels.
+    // Arrays of attributes, values, and their respective labels.
     var values: [AGSCodedValue]?
     var attributes: [AGSUtilityNetworkAttribute]?
     var attributeLabels: [String] = []

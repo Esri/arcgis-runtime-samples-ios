@@ -123,7 +123,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 
                 //Set the default expression (if provided).
                 if let expression = self.sourceTier?.traceConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
-                    print(self.expressionToString(expression: expression)!)
                     self.textView?.text = self.expressionToString(expression: expression)
                     self.initialExpression = expression
                 }

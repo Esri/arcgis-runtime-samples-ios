@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tu7-xN-hEQ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Show Popup View Controller-->
+        <scene sceneID="RbY-vT-1T7">
+            <objects>
+                <viewController id="Tu7-xN-hEQ" customClass="ShowPopupViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AnO-nA-r5S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sst-pw-ZgP" customClass="AGSMapView">
+                                <rect key="frame" x="-20" y="-20" width="454" height="936"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sst-pw-ZgP" firstAttribute="trailing" secondItem="AnO-nA-r5S" secondAttribute="trailing" constant="20" symbolic="YES" id="Nel-Mr-3ig"/>
+                            <constraint firstAttribute="top" secondItem="sst-pw-ZgP" secondAttribute="top" constant="20" symbolic="YES" id="T5U-LL-uju"/>
+                            <constraint firstAttribute="leading" secondItem="sst-pw-ZgP" secondAttribute="leading" constant="20" symbolic="YES" id="awz-ex-Mus"/>
+                            <constraint firstItem="sst-pw-ZgP" firstAttribute="bottom" secondItem="AnO-nA-r5S" secondAttribute="bottom" constant="20" symbolic="YES" id="t4J-8C-rEW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0fq-Sl-zPE"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="sst-pw-ZgP" id="AaI-Ba-Bbh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dOU-bk-RCL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-16" y="146"/>
+        </scene>
+    </scenes>
+</document>

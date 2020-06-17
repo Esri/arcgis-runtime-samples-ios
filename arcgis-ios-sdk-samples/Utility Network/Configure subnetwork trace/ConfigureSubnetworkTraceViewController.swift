@@ -62,7 +62,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     
     var utilityNetwork: AGSUtilityNetwork?
     // Utility element to start the trace from.
-    var startingLocation: AGSUtilityElement!
+    var startingLocation: AGSUtilityElement?
     // Holding the initial conditional expression.
     var initialExpression: AGSUtilityTraceConditionalExpression?
     // The trace configuration.
@@ -267,7 +267,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     func trace() {
         if utilityNetwork == nil || startingLocation == nil {
             presentAlert(title: "Error", message: "Could not trace utility network.")
-            return
         } else {
             // Create utility trace parameters for the starting location.
             let startingLocations = [startingLocation]

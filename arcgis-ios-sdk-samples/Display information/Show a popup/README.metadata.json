@@ -1,0 +1,26 @@
+{
+    "category": "Display information",
+    "description": "Show predefined popups from a web map.",
+    "ignore": false,
+    "images": [
+        "show-popup.png"
+    ],
+    "keywords": [
+        "feature",
+        "feature layer",
+        "popup","
+        "AGSIdentifyLayerResult",
+        "AGSMap",
+        "AGSPopupsViewController"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSIdentifyLayerResult",
+        "AGSMap",
+        "AGSPopupsViewController"
+    ],
+    "snippets": [
+        "ShowPopupViewController.swift"
+    ],
+    "title": "Show a popup"
+}

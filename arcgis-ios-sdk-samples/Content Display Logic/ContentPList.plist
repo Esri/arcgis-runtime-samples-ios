@@ -980,7 +980,7 @@
 				<key>displayName</key>
 				<string>Show a popup</string>
 				<key>descriptionText</key>
-				<string>Show a predefined popup from a feature layer.</string>
+				<string>Show predefined popups from a web map.</string>
 				<key>storyboardName</key>
 				<string>ShowPopup</string>
 			</dict>

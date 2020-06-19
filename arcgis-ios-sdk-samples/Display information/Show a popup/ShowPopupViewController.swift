@@ -28,9 +28,9 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
     func makeMap() -> AGSMap {
         // Create a map using a URL.
         let mapURL = URL(string: "https://runtime.maps.arcgis.com/home/webmap/viewer.html?webmap=e4c6eb667e6c43b896691f10cc2f1580")!
-        let map = AGSMap(url: mapURL)
+        let map = AGSMap(url: mapURL)!
         // Load the map.
-        map?.load { [weak self] (error) in
+        map.load { [weak self] (error) in
         guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
@@ -38,10 +38,10 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
                 // Set touch delegate.
                 self.mapView.touchDelegate = self
                 // Get the feature layer.
-                self.featureLayer = map?.operationalLayers[0] as? AGSFeatureLayer
+                self.featureLayer = map.operationalLayers[0] as? AGSFeatureLayer
             }
         }
-        return map!
+        return map
     }
     
     // MARK: - AGSGeoViewTouchDelegate

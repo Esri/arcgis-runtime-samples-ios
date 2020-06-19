@@ -1,6 +1,6 @@
 # Time based query
 
-Query data using a time extent. 
+Query data using a time extent.
 
 ![Time based query sample](time-based-query.png)
 

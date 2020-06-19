@@ -2,6 +2,8 @@
 
 Find the location for an address.
 
+![Find address sample](find-address.png)
+
 ## Use case
 
 A user can input a raw address into your app's search bar and zoom to the address location.
@@ -9,8 +11,6 @@ A user can input a raw address into your app's search bar and zoom to the addres
 ## How to use the sample
 
 For simplicity, the sample comes loaded with a set of suggested addresses. Choose an address from the suggestions or submit your own address to show its location on the map in a callout. Tap the pin to display the address on the map.
-
-![Find address sample](find-address.png)
 
 ## How it works
 

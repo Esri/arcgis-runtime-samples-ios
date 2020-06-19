@@ -13,13 +13,16 @@
         "pin",
         "place",
         "table-top",
-        "tabletop"
+        "tabletop",
+        "AGSSceneView",
+        "AGSSurface",
+        "ArcGISARView"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "ArcGISARView",
-        "AGSSceneView"
+        "AGSSceneView",
+        "AGSSurface",
+        "ArcGISARView"
     ],
     "snippets": [
         "DisplayScenesInTabletopAR.swift"

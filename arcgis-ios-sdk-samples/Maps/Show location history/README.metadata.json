@@ -3,22 +3,32 @@
     "description": "Display your location history on the map.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "show-location-history.png"
     ],
     "keywords": [
-        "GPS", 
-        "bread crumb", 
-        "breadcrumb", 
-        "history", 
-        "movement", 
-        "navigation", 
-        "real-time", 
-        "trace", 
-        "track", 
-        "trail"
+        "GPS",
+        "bread crumb",
+        "breadcrumb",
+        "history",
+        "movement",
+        "navigation",
+        "real-time",
+        "trace",
+        "track",
+        "trail",
+        "AGSCLLocationDataSource",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSLocationDataSource",
+        "AGSLocationDisplay",
+        "AGSMap",
+        "AGSMapView",
+        "AGSPolylineBuilder",
+        "AGSSimpleLineSymbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSSimpleRenderer"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSCLLocationDataSource",
         "AGSGraphic",

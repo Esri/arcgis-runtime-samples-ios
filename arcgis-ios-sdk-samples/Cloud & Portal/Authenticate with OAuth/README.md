@@ -2,7 +2,8 @@
 
 Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers).
 
-![Login screen](authenticate-with-oauth1.png) ![Map view after authentication](authenticate-with-oauth2.png)
+![Login screen](authenticate-with-oauth1.png) 
+![Map view after authentication](authenticate-with-oauth2.png)
 
 ## Use case
 

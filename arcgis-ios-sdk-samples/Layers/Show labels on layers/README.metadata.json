@@ -3,23 +3,26 @@
     "description": "Display custom labels on a feature layer.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "show-labels.png"
     ],
     "keywords": [
-        "labels",
-        "feature layer",
-        "AGSLabelDefinition",
-        "AGSTextSymbol",
+        "attribute",
+        "deconfliction",
+        "label",
+        "labeling",
+        "string",
+        "symbol",
+        "text",
+        "visualization",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable"
+        "AGSLabelDefinition",
+        "AGSTextSymbol"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "AGSLabelDefinition",
-        "AGSTextSymbol",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable"
+        "AGSLabelDefinition",
+        "AGSTextSymbol"
     ],
     "snippets": [
         "ShowLabelsOnLayersViewController.swift"

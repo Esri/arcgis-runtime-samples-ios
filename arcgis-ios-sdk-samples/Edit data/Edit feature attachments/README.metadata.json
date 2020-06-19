@@ -1,35 +1,38 @@
 {
     "category": "Edit data",
-    "description": "Add, delete or fetch attachments for features from a feature service.",
+    "description": "Add, delete, and download attachments for features from a service.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "edit-feature-attachments-1.png",
+        "edit-feature-attachments-2.png"
     ],
     "keywords": [
-        "attachment",
-        "image",
+        "Edit and Manage Data",
         "JPEG",
-        "PNG",
         "PDF",
+        "PNG",
         "TXT",
-        "AGSAttachment",
-        "AGSArcGISFeature",
-        "AGSServiceFeatureTable",
+        "image",
+        "picture",
+        "AGSArcGISFeature.delete(_:completion:)",
+        "AGSArcGISFeature.fetchAttachments(completion:)",
         "AGSFeatureLayer",
-        "AGSIdentifyLayerResult"
+        "AGSServiceFeatureTable",
+        "AGSServiceFeatureTable.applyEdits(completion:)"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/edit-feature-attachments.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/edit-feature-attachments.htm"
+    ],
     "relevant_apis": [
-        "AGSAttachment",
-        "AGSArcGISFeature",
-        "AGSServiceFeatureTable",
+        "AGSArcGISFeature.delete(_:completion:)",
+        "AGSArcGISFeature.fetchAttachments(completion:)",
         "AGSFeatureLayer",
-        "AGSIdentifyLayerResult"
+        "AGSServiceFeatureTable",
+        "AGSServiceFeatureTable.applyEdits(completion:)"
     ],
     "snippets": [
-        "EditFeatureAttachmentsViewController.swift",
-        "AttachmentsTableViewController.swift"
+        "AttachmentsTableViewController.swift",
+        "EditFeatureAttachmentsViewController.swift"
     ],
     "title": "Edit feature attachments"
 }

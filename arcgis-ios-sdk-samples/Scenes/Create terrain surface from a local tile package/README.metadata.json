@@ -7,14 +7,13 @@
     ],
     "keywords": [
         "3D",
-        "tile cache",
         "elevation",
         "surface",
+        "tile cache",
         "AGSArcGISTiledElevationSource",
         "AGSSurface"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSArcGISTiledElevationSource",
         "AGSSurface"

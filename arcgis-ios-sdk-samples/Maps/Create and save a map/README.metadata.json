@@ -1,22 +1,36 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how to create a map and save it to your portal",
+    "description": "Create and save a map as a portal item (i.e. web map).",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png",
-        "image3.png",
-        "image4.png"
+        "create-and-save-map-1.png",
+        "create-and-save-map-2.png",
+        "create-and-save-map-3.png",
+        "create-and-save-map-4.png"
     ],
     "keywords": [
+        "ArcGIS Online",
+        "ArcGIS Pro",
+        "portal",
+        "publish",
+        "share",
+        "web map",
+        "AGSMap",
+        "AGSMap.save",
+        "AGSPortal"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/create-and-save-a-map.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/create-and-save-a-map.htm"
+    ],
     "relevant_apis": [
+        "AGSMap",
+        "AGSMap.save",
+        "AGSPortal"
     ],
     "snippets": [
-        "CreateSaveMapViewController.swift",
         "CreateOptionsViewController.swift",
+        "CreateSaveMapViewController.swift",
         "SaveAsViewController.swift"
     ],
-    "title": "Create and save a map"
+    "title": "Create and save map"
 }

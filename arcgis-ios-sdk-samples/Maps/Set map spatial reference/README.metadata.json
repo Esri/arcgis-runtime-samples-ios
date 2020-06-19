@@ -1,17 +1,30 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how you can set the spatial reference on a AGSMap and all the operational layers would project accordingly.",
+    "description": "Specify a map's spatial reference.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "map-spatial-reference.png"
     ],
     "keywords": [
+        "SpatialReference",
+        "WKID",
+        "project",
+        "AGSArcGISMapImageLayer",
+        "AGSMap",
+        "AGSMapView",
+        "AGSSpatialReference"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/set-map-spatial-reference.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/set-map-spatial-reference.htm"
+    ],
     "relevant_apis": [
+        "AGSArcGISMapImageLayer",
+        "AGSMap",
+        "AGSMapView",
+        "AGSSpatialReference"
     ],
     "snippets": [
         "SetMapsSRViewController.swift"
     ],
-    "title": "Set map spatial reference"
+    "title": "Map spatial reference"
 }

@@ -1,27 +1,31 @@
 {
     "category": "Maps",
-    "description": "Use the AGSOfflineMapTask to take a web map offline, but instead of downloading an online basemap, use one which is already on the device.",
+    "description": "Take a web map offline, but instead of downloading an online basemap, use one which is already on the device.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "generate-offline-map-with-local-basemap.png"
     ],
     "keywords": [
-        "Offline",
-        "AGSOfflineMapTask",
-        "AGSGenerateOfflineMapParameters",
+        "basemap",
+        "download",
+        "local",
+        "offline",
+        "save",
+        "web map",
         "AGSGenerateOfflineMapJob",
-        "AGSGenerateOfflineMapResult"
+        "AGSGenerateOfflineMapParameters",
+        "AGSGenerateOfflineMapResult",
+        "AGSOfflineMapTask"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "AGSOfflineMapTask",
-        "AGSGenerateOfflineMapParameters",
         "AGSGenerateOfflineMapJob",
-        "AGSGenerateOfflineMapResult"
+        "AGSGenerateOfflineMapParameters",
+        "AGSGenerateOfflineMapResult",
+        "AGSOfflineMapTask"
     ],
     "snippets": [
         "GenerateOfflineMapBasemapByReferenceViewController.swift"
     ],
-    "title": "Generate offline map (basemap by reference)"
+    "title": "Generate offline map with local basemap"
 }

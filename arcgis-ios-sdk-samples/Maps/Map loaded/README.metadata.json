@@ -1,17 +1,28 @@
 {
     "category": "Maps",
-    "description": "This sample shows you the map's load status.",
+    "description": "Determine the map's load status which can be `notLoaded`, `failedToLoad`, `loading`, or `loaded`.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "map-load-status.png"
     ],
     "keywords": [
+        "loadStatus",
+        "loadable pattern",
+        "map",
+        "AGSLoadStatus",
+        "AGSMap",
+        "AGSMapView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/map-loaded.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/map-loaded.htm"
+    ],
     "relevant_apis": [
+        "AGSLoadStatus",
+        "AGSMap",
+        "AGSMapView"
     ],
     "snippets": [
         "MapLoadedViewController.swift"
     ],
-    "title": "Map loaded"
+    "title": "Map load status"
 }

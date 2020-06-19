@@ -1,14 +1,24 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to display a FeatureLayer from a shapefile.",
+    "description": "Open a shapefile stored on the device and display it as a feature layer with default symbology.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "feature-layer-shapefile.png"
     ],
     "keywords": [
+        "layers",
+        "shapefile",
+        "shp",
+        "vector",
+        "AGSFeatureLayer",
+        "AGSShapefileFeatureTable"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-shapefile-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-layer-shapefile-.htm"
+    ],
     "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSShapefileFeatureTable"
     ],
     "snippets": [
         "FeatureLayerShapefileViewController.swift"

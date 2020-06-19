@@ -8,7 +8,8 @@
     "keywords": [
         "feature",
         "feature layer",
-        "popup","
+        "popup",
+        "web map",
         "AGSIdentifyLayerResult",
         "AGSMap",
         "AGSPopupsViewController"

@@ -10,7 +10,7 @@ Many web maps contain predefined popups which are used to display the attributes
 
 ## How to use the sample
 
-Tap on parks in the downtown Seattle area. Parks are displayed as light green spaces.
+Tap on the features to prompt a popup that displays information about the feature. 
 
 ## How it works
 
@@ -26,6 +26,10 @@ Tap on parks in the downtown Seattle area. Parks are displayed as light green sp
 * AGSMap
 * AGSPopupsViewController
 
+## About the data
+
+This sample uses a [feature layer](https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0) that displays reported incidents in San Francisco.
+
 ## Tags
 
-feature, feature layer, popup
+feature, feature layer, popup, web map

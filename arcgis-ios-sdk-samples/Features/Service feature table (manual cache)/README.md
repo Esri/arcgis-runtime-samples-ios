@@ -14,7 +14,7 @@ Run the sample and pan and zoom around the map. No features will be requested an
 
 ## How it works
 
-1. Set the `featureRequestMode` property of the `AGSServiceFeatureTable` to `AGSFeatureRequestMode.onInteractionCache` before the table is loaded.
+1. Set the `featureRequestMode` property of the `AGSServiceFeatureTable` to `AGSFeatureRequestMode.manualCache` before the table is loaded.
 2. Load the table.
 3. Use `AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)` on the table to request features.
 

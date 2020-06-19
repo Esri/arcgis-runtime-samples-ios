@@ -28,11 +28,12 @@ When you start, route instructions will be displayed and spoken. As you proceed 
     3. Get a list of all points in the polyline by iterating through parts and points along each part.
     4. For each point in the polyline, use `AGSSurface.elevation(for:completion:)` to get the elevation for that point. Then create a new point with the *x* and *y* of the input and *z* as the returned elevation value. This sample adds 3 meters to that value so that the route line is visible above the road. Add the new point to the polyline builder.
     5. Once all points have been given an elevation and added to the polyline builder, call `AGSPolylineBuilder.toGeometry()` to get the elevation-adjusted route line.
-5. Add the route geometry to a graphics overlay and add a renderer to the graphics overlay. This sample uses an `AGSMultilayerPolylineSymbol` with an `AGSSolidStrokeSymbolLayer` to visualize a tube along the route line.
+5. Add the route geometry to a graphics overlay and add a renderer to the graphics overlay. This sample uses an `AGSMultilayerPolylineSymbol` with an `AGSSolidStrokeSymbolLayer` to visualize a tube along the route line. Note that the scene clips at 400 meters, 
 6. Create a calibration view. This sample uses a slider to manipulate the heading (direction you are facing). Because of limitations in on-device compasses, calibration is often necessary; small errors in heading cause big problems with the placement of scene content in the world.
     1. Note that while this sample implemented a slider, there are many possible strategies for implementing heading calibration.
     2. While calibrating, the basemap is shown at 60% opacity, to allow you to compare the basemap imagery with what is seen by the camera. While this works in some environments, it won't work indoors, in forested areas, or if the ground truth has changed since the basemap imagery was updated. Alternative scenarios can involve orienting relative to landmarks (for example, stage sets at a concert) or starting at a known orientation by lining up with a static image.
     3. The slider in the sample implements a "joystick" interaction; the heading is adjusted faster the further you move from the center of the slider. There are many possible slider interactions you could choose to implement.
+    4. The calibration view does not come up by default. It will pop up by tapping on the "Calibrate" button, and can be dismissed by tapping anywhere on the scene.
 7. When the user starts navigating, create an `AGSRouteTracker`, providing an `AGSRouteResult` and the index of the route you want to use; this sample always picks the first returned result.
 8. Create a location data source and listen for location change events. When the location changes, use `AGSLocationChangeHandlerDelegate` to get the updated location.
 9. Keep the calibration view accessible throughout the navigation experience. As the user walks, small heading errors may become more noticeable and require recalibration.
@@ -51,12 +52,13 @@ When you start, route instructions will be displayed and spoken. As you proceed 
 
 This sample uses Esri's [World Elevation](https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer) service to ensure that route lines are placed appropriately in 3D space. It uses Esri's [World Route](https://www.arcgis.com/home/item.html?id=1feb41652c5c4bd2ba5c60df2b4ea2c4) service to calculate routes. The world routing service requires authentication and does consume ArcGIS Online credits.
 
-> Note: This item requires an ArcGIS Online organizational subscription or an ArcGIS Developer account and consumes credits.
+**Note:** This item requires an ArcGIS Online organizational subscription or an ArcGIS Developer account and consumes credits.
 
 To access this sample, you'll need to do one of the following:
-- Sign in with an account that is a member of an organizational subscription.
-- Sign in with a developer account.
-- Register an application and use your application's credentials.
+
+* Sign in with an account that is a member of an organizational subscription.
+* Sign in with a developer account.
+* Register an application and use your application's credentials.
 
 ## Additional information
 

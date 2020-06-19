@@ -38,8 +38,8 @@ class NavigateARNavigatorViewController: UIViewController {
             sceneView.spaceEffect = .transparent
             sceneView.atmosphereEffect = .none
             arView.locationDataSource = AGSCLLocationDataSource()
-            // Clip the navigation tube in 200 meters, to avoid the tube blocking camera.
-            arView.clippingDistance = 200
+            // Clip the navigation tube in 400 meters, to avoid the tube blocking camera.
+            arView.clippingDistance = 400
         }
     }
     

@@ -11,7 +11,7 @@ Attachments provide a flexible way to manage additional information that is rela
 
 ## How to use the sample
 
-Tap a feature on the map to open a callout displaying the number of attachments. Tap on the info button to view/edit the attachments. Select an entry from the list to download and view the attachment in the gallery. Tap on the action button '+' to add an attachment or swipe left on an attachment to delete.
+Tap a feature on the map to open a callout displaying the number of attachments. Tap on the info button to view/edit the attachments. Select an entry from the list to download and view the attachment in the gallery. Tap on the action button "+" to add an attachment or swipe left on an attachment to delete.
 
 ## How it works
 

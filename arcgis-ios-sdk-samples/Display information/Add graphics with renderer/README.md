@@ -32,7 +32,7 @@ Run the sample and view graphics for points, lines, and polygons, which are styl
 
 ## Additional information
 
-To set unique symbols across a number of graphics (e.g. showing graphics of individual landmarks) see "Add graphics with symbols" sample.
+To set unique symbols across a number of graphics (e.g. showing graphics of individual landmarks), see "Add graphics with symbols" sample.
 
 ## Tags
 

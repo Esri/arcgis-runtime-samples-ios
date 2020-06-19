@@ -62,7 +62,7 @@ Tap "Add stop" to add stops to the route. Tap "Add barrier" to add areas that ca
 * AGSRouteResult.routes
 * AGSRouteTask
 * AGSStop
-* AGSStop.Name
+* AGSStop.name
 
 ## About the data
 

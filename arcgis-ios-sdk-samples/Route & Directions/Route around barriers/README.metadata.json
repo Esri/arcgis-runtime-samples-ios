@@ -32,7 +32,7 @@
         "AGSRouteResult.routes",
         "AGSRouteTask",
         "AGSStop",
-        "AGSStop.Name"
+        "AGSStop.name"
     ],
     "redirect_from": [
         "/ios/latest/swift/sample-code/route-around-barriers.htm"
@@ -54,7 +54,7 @@
         "AGSRouteResult.routes",
         "AGSRouteTask",
         "AGSStop",
-        "AGSStop.Name"
+        "AGSStop.name"
     ],
     "snippets": [
         "DirectionsListViewController.swift",

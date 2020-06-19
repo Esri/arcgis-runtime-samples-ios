@@ -171,6 +171,7 @@ class NavigateARNavigatorViewController: UIViewController {
         } else {
             routeTracker?.delegate = self
         }
+        setStatus(message: "Navigation will start.")
     }
     
     // MARK: UI

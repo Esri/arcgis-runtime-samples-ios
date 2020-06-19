@@ -38,7 +38,7 @@ This sample searches for web map portal items on a secure portal. To successfull
 More information about IWA and its use with ArcGIS can be found at the following links:
 
 * [IWA - Wikipedia](https://en.wikipedia.org/wiki/Integrated_Windows_Authentication)
-* [Use Integrated Windows Authentication with your portal](http://enterprise.arcgis.com/en/portal/latest/administer/windows/use-integrated-windows-authentication-with-your-portal.htm)
+* [Use Integrated Windows Authentication with your portal](https://enterprise.arcgis.com/en/portal/latest/administer/windows/use-integrated-windows-authentication-with-your-portal.htm)
 
 ## Tags
 

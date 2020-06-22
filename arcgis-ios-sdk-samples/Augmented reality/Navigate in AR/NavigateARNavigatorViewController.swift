@@ -172,7 +172,8 @@ class NavigateARNavigatorViewController: UIViewController {
             routeTracker?.delegate = self
         }
         setStatus(message: "Navigation will start.")
-        print(currentRoute.directionManeuvers)
+        print("❤️")
+        print(currentRoute.directionManeuvers.map { $0.directionText })
     }
     
     // MARK: UI

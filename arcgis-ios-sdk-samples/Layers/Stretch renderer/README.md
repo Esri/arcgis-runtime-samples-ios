@@ -5,7 +5,6 @@ Use a stretch renderer to enhance the visual contrast of raster data for analysi
 ![Default stretch renderer](stretch-renderer-1.png)
 ![Edited stretch renderer ](stretch-renderer-2.png)
 
-
 ## Use case
 
 An appropriate stretch renderer can enhance the contrast of raster imagery, allowing the user to control how their data is displayed for efficient imagery analysis.

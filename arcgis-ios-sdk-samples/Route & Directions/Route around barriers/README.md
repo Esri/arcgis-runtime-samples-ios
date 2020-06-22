@@ -13,7 +13,7 @@ In some situations, it is further beneficial to find the most efficient route th
 
 ## How to use the sample
 
-Tap 'Add stop' to add stops to the route. Tap 'Add barrier' to add areas that can't be crossed by the route. Tap 'Route' to find the route and display it. Tap the settings button to toggle preferences like find the best sequence or preserve the first or last stop. Additionally, tap the directions button to view a list of the directions. 
+Tap "Add stop" to add stops to the route. Tap "Add barrier" to add areas that can't be crossed by the route. Tap "Route" to find the route and display it. Tap the settings button to toggle preferences like find the best sequence or preserve the first or last stop. Additionally, tap the directions button to view a list of the directions. 
 
 ## How it works
 
@@ -62,7 +62,7 @@ Tap 'Add stop' to add stops to the route. Tap 'Add barrier' to add areas that ca
 * AGSRouteResult.routes
 * AGSRouteTask
 * AGSStop
-* AGSStop.Name
+* AGSStop.name
 
 ## About the data
 

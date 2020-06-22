@@ -34,6 +34,7 @@ The basemap in this sample is provided by [Stamen Design](http://maps.stamen.com
 ## Additional information
 
 For more information about web tiled layers, see the following resources:
+
 * [Wikipedia: Tiled web map](https://en.wikipedia.org/wiki/Tiled_web_map)
 * [ArcGIS Pro: Share a web tile layer](https://pro.arcgis.com/en/pro-app/help/sharing/overview/web-tile-layer.htm)
 

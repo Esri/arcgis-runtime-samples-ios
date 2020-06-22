@@ -5,10 +5,6 @@ Select features in a feature layer.
 ![Map with features](feature-layer-selection-1.png)
 ![Selected feature](feature-layer-selection-2.png)
 
-## How to use the sample
-
-Tap on a feature on the map to select it.
-
 ## Use case
 
 Selecting features, whether by query or identify, can be an important step both in editing data and visualizing results. One possible use case would be to query a feature layer containing street furniture. A query might look for type "bench" and return a list of bench features contained in the features with an attribute of type bench. These might be selected for further editing (see FeatureQueryResult) or may just be highlighted visually.

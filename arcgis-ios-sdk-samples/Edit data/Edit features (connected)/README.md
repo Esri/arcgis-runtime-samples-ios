@@ -1,6 +1,6 @@
 # Edit features (connected)
 
-View, edit, or add features using a popup.  
+View, edit, or add features using a popup.
 
 ![Map with features](edit-features-connected-1.png)
 ![List of templates](edit-features-connected-2.png)

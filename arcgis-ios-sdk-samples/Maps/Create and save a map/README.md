@@ -13,11 +13,7 @@ Maps can be created programmatically in code and then serialized and saved as an
 
 ## How to use the sample
 
-1. Select the basemap and layers you'd like to add to your map.
-2. Tap the "Save" button.
-3. Sign into an ArcGIS Online account.
-4. Provide a title, tags, and description.
-5. Save the map.
+Select the basemap and layers you'd like to add to your map. Tap the "Save" button. Sign into an ArcGIS Online account. Provide a title, tags, and description. Save the map.
 
 ## How it works
 

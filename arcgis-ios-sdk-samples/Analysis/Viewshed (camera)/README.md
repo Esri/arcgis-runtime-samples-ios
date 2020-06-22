@@ -10,7 +10,7 @@ A viewshed analysis is a type of visual analysis you can perform on a scene. The
 
 ## How to use the sample
 
-The sample will start with a viewshed created from the initial camera location, so only the visible (green) portion of the viewshed will be visible. Move around the scene to see the obstructed (red) portions. Tap the 'Update from camera' button to update the viewshed to the current camera position.
+The sample will start with a viewshed created from the initial camera location, so only the visible (green) portion of the viewshed will be visible. Move around the scene to see the obstructed (red) portions. Tap the "Update from camera" button to update the viewshed to the current camera position.
 
 ## How it works
 

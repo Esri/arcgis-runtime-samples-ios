@@ -1,6 +1,6 @@
 # Time based query
 
-Query data using a time extent. 
+Query data using a time extent.
 
 ![Time based query sample](time-based-query.png)
 
@@ -18,8 +18,8 @@ Run the sample, and a subset of records will be displayed on the map. Pan and zo
 2. The `featureRequestMode` of the `AGSServiceFeatureTable` is set to `manualCache`, so that the developer can control how and when the feature table is populated with data.
 3. An `AGSFeatureLayer` is created by passing in the instance of the `AGSServiceFeatureTable`.
 4. An `AGSTimeExtent` object is created by specifying start and end date/time objects.
-5. Apply the `AGSTimeExtent` to an `AGSQueryParmaters` object.
-6. Pass the `AGSQueryParmaters` into `AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)`.
+5. Apply the `AGSTimeExtent` to an `AGSQueryParameters` object.
+6. Pass the `AGSQueryParameters` into `AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)`.
 7. The feature table is populated with data that matches the provided query.
 
 ## Relevant API

@@ -76,6 +76,8 @@ opt_in_rules: # some rules are only opt-in
 identifier_name:
   min_length:
     warning: 0 # do not flag short identifiers
+trailing_closure:
+  only_single_muted_parameter: true
 
 excluded:
 - Pods

@@ -23,7 +23,6 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
     }
     
     var featureLayer: AGSFeatureLayer?
-    var popupsViewController: AGSPopupsViewController?
     
     func makeMap() -> AGSMap {
         // Create a map using a URL.
@@ -47,18 +46,18 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
     // MARK: - AGSGeoViewTouchDelegate
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // Identify the specified feature layer.
-        self.mapView.identifyLayer(featureLayer!, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyLayerResult) in
+        mapView.identifyLayer(featureLayer!, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyLayerResult) in
             guard let self = self else { return }
             if let error = result.error {
                 self.presentAlert(error: error)
             } else if !result.popups.isEmpty {
                 // Display a popup only if it exists.
-                self.popupsViewController = AGSPopupsViewController(popups: result.popups)
+                let popupsViewController = AGSPopupsViewController(popups: result.popups)
                 // Display the popup as a formsheet -- specified for iPads.
-                self.popupsViewController?.modalPresentationStyle = .formSheet
+                popupsViewController.modalPresentationStyle = .formSheet
                 // Present the popup.
-                self.present(self.popupsViewController!, animated: true)
-                self.popupsViewController?.delegate = self
+                self.present(popupsViewController, animated: true)
+                popupsViewController.delegate = self
             }
         }
     }
@@ -67,8 +66,6 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         // Dismiss the popups view controller.
         self.dismiss(animated: true)
-        // Reset the popups view controller
-        self.popupsViewController = nil
     }
     
     override func viewDidLoad() {

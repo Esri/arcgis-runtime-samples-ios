@@ -92,8 +92,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             updateButtons()
         }
     }
-    // The value selected by the user as a string.
-    var selectedValueString: String?
     
     // Create and load the utility network.
     func makeUtilityNetwork() {

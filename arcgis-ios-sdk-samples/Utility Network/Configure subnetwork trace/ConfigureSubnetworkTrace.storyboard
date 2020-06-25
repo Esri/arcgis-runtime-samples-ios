@@ -110,14 +110,14 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="jdM-C9-9ET" detailTextLabel="Yo3-Oy-atF" style="IBUITableViewCellStyleValue1" id="vxd-6b-Viu">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="jdM-C9-9ET" detailTextLabel="Yo3-Oy-atF" style="IBUITableViewCellStyleValue1" id="vxd-6b-Viu">
                                         <rect key="frame" x="0.0" y="258" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vxd-6b-Viu" id="MfO-fF-a2s">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jdM-C9-9ET">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="jdM-C9-9ET">
                                                     <rect key="frame" x="20" y="12" width="42" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -237,6 +237,7 @@
                         <outlet property="textView" destination="gnI-4M-9td" id="dwN-Sc-jPp"/>
                         <outlet property="traceButton" destination="het-6w-DnI" id="2hH-ED-uh6"/>
                         <outlet property="traceLabel" destination="jaA-5A-Kba" id="64P-BV-QTc"/>
+                        <outlet property="valueButton" destination="jdM-C9-9ET" id="Tbq-lc-t0r"/>
                         <outlet property="valueCell" destination="vxd-6b-Viu" id="nan-gC-sJf"/>
                         <outlet property="valueLabel" destination="Yo3-Oy-atF" id="Ndx-8S-iAX"/>
                     </connections>

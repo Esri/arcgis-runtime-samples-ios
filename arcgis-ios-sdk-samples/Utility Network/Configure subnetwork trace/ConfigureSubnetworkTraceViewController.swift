@@ -29,6 +29,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     // References to labels.
     @IBOutlet weak var attributeLabel: UILabel!
     @IBOutlet weak var comparisonLabel: UILabel!
+    @IBOutlet weak var valueButton: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     // References to cells that act as buttons.
     @IBOutlet weak var addConditionButton: UITableViewCell!
@@ -174,9 +175,9 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     // Prompt the user to create a custom value if none are available to select.
                     addCustomValue()
                 }
-            } else {
-                // If no attribute is selected, present an alert.
-                presentAlert(title: "No attribute selected", message: "Please select an attribute before selecting a value.")
+//            } else {
+//                // If no attribute is selected, present an alert.
+//                presentAlert(title: "No attribute selected", message: "Please select an attribute before selecting a value.")
             }
         } else if cell == addConditionButton {
             addCondition()
@@ -287,6 +288,13 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     func updateButtons() {
         // If the nothing has been selected, disable the buttons
         if selectedAttribute == nil || selectedComparison == nil || selectedValue == nil {
+            if selectedAttribute == nil {
+                valueButton.isEnabled = false
+                valueCell.isUserInteractionEnabled = false
+            } else {
+                valueButton.isEnabled = true
+                valueCell.isUserInteractionEnabled = true
+            }
             addConditionLabel.isEnabled = false
             resetLabel.isEnabled = false
             traceLabel.isEnabled = false

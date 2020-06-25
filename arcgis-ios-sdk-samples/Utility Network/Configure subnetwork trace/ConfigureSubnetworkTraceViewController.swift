@@ -43,16 +43,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     @IBAction func containersSwitchAction(_ sender: UISwitch) {
         sourceTier?.traceConfiguration?.includeContainers = sender.isOn
     }
-    // Feature service for an electric utility network in Naperville, Illinois.
-    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
-    // For creating the default starting location.
-    let deviceTableName = "Electric Distribution Device"
-    let assetGroupName = "Circuit Breaker"
-    let assetTypeName = "Three Phase"
-    let globalID = UUID(uuidString: "1CAF7740-0BF4-4113-8DB2-654E18800028")
-    // For creating the default trace configuration.
-    let domainNetworkName = "ElectricDistribution"
-    let tierName = "Medium Voltage Radial"
+    
     // An array of the types of AGSUtilityAttributeComparisonOperators as strings.
     let comparisonsStrings = ["Equal", "NotEqual", "GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", "IncludesTheValues", "DoesNotIncludeTheValues", "IncludesAny", "DoesNotIncludeAny"]
     // An array of the types of AGSUtilityAttributeComparisonOperators.
@@ -60,7 +51,11 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     // A dictionary of AGSUtilityCategoryComparisonOperators.
     let categoryComparisonOperators: [AGSUtilityCategoryComparisonOperator: String] = [.exists: "exists", .doesNotExist: "doesNotExist" ]
     
-    var utilityNetwork: AGSUtilityNetwork?
+    var utilityNetwork: AGSUtilityNetwork = {
+        // Feature service for an electric utility network in Naperville, Illinois.
+        let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+        return AGSUtilityNetwork(url: featureServiceURL)
+    }()
     // Utility element to start the trace from.
     var startingLocation: AGSUtilityElement?
     // Holding the initial conditional expression.
@@ -70,9 +65,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     // The source tier of the utility network.
     var sourceTier: AGSUtilityTier?
     // Arrays of attributes, values, and their respective labels.
-    var values: [AGSCodedValue]?
-    var attributes: [AGSUtilityNetworkAttribute]?
-    var attributeLabels: [String] = []
     var valueLabels: [String] = []
     // The attribute selected by the user.
     var selectedAttribute: AGSUtilityNetworkAttribute? {
@@ -93,28 +85,33 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         }
     }
     
-    // Create and load the utility network.
-    func makeUtilityNetwork() {
-        utilityNetwork = AGSUtilityNetwork(url: featureServiceURL)
-        utilityNetwork?.load { [weak self] error in
+    func loadUtilityNetwork() {
+        // For creating the default starting location.
+        let deviceTableName = "Electric Distribution Device"
+        let assetGroupName = "Circuit Breaker"
+        let assetTypeName = "Three Phase"
+        let globalID = UUID(uuidString: "1CAF7740-0BF4-4113-8DB2-654E18800028")
+        // For creating the default trace configuration.
+        let domainNetworkName = "ElectricDistribution"
+        let tierName = "Medium Voltage Radial"
+
+        // Load the utility network.
+        utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                // Get the network attributes.
-                self.attributes = self.utilityNetwork?.definition.networkAttributes.filter { $0.isSystemDefined == false }
-                
                 // Create a default starting location.
-                let networkSource = self.utilityNetwork?.definition.networkSource(withName: self.deviceTableName)
-                let assetGroup = networkSource?.assetGroup(withName: self.assetGroupName)
-                let assetType = assetGroup?.assetType(withName: self.assetTypeName)
-                self.startingLocation = self.utilityNetwork?.createElement(with: assetType!, globalID: self.globalID!)
+                let networkSource = self.utilityNetwork.definition.networkSource(withName: deviceTableName)
+                let assetGroup = networkSource?.assetGroup(withName: assetGroupName)
+                let assetType = assetGroup?.assetType(withName: assetTypeName)
+                self.startingLocation = self.utilityNetwork.createElement(with: assetType!, globalID: globalID!)
                 
                 // Set the terminal for this location. (For our case, we use the 'Load' terminal.)
                 self.startingLocation?.terminal = self.startingLocation?.assetType.terminalConfiguration?.terminals.first(where: { $0.name == "Load" })
                 // Get a default trace configuration from a tier to update the UI.
-                let domainNetwork = self.utilityNetwork?.definition.domainNetwork(withDomainNetworkName: self.domainNetworkName)
-                self.sourceTier = domainNetwork?.tier(withName: self.tierName)
+                let domainNetwork = self.utilityNetwork.definition.domainNetwork(withDomainNetworkName: domainNetworkName)
+                self.sourceTier = domainNetwork?.tier(withName: tierName)
                 
                 // Set the trace configuration.
                 self.configuration = self.sourceTier?.traceConfiguration
@@ -125,7 +122,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     self.initialExpression = expression
                 }
                 // Set the traversability scope.
-                self.sourceTier?.traceConfiguration?.traversability?.scope = AGSUtilityTraversabilityScope.junctions
+                self.sourceTier?.traceConfiguration?.traversability?.scope = .junctions
             }
         }
     }
@@ -135,22 +132,22 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
         if cell == attributesCell {
+            // Get the network attributes.
+            let attributes = utilityNetwork.definition.networkAttributes.filter { !$0.isSystemDefined }
             // Create the attribute labels.
-            if attributeLabels.isEmpty {
-                attributes?.forEach { (attribute) in
-                    attributeLabels.append(attribute.name)
-                }
-            }
+            let attributeLabels = attributes.map { $0.name }
             // Prompt attribute selection.
-            let optionsViewController = OptionsTableViewController(labels: attributeLabels, selectedIndex: attributes!.count) { (index) in
-                self.selectedAttribute = self.attributes![index]
+            let selectedIndex = selectedAttribute.flatMap { attributes.firstIndex(of: $0) } ?? -1
+            let optionsViewController = OptionsTableViewController(labels: attributeLabels, selectedIndex: selectedIndex) { (index) in
+                self.selectedAttribute = attributes[index]
                 self.attributeLabel?.text = self.selectedAttribute?.name
             }
             optionsViewController.title = "Attributes"
             show(optionsViewController, sender: self)
         } else if cell == comparisonCell {
             // Prompt comparison operator selection.
-            let optionsViewController = OptionsTableViewController(labels: comparisonsStrings, selectedIndex: comparisonsStrings.count) { (index) in
+            let selectedIndex = selectedComparison.flatMap { comparisons.firstIndex(of: $0) } ?? -1
+            let optionsViewController = OptionsTableViewController(labels: comparisonsStrings, selectedIndex: selectedIndex) { (index) in
                 self.selectedComparison = self.comparisons[index]
                 self.comparisonLabel?.text = self.comparisonsStrings[index]
             }
@@ -166,7 +163,8 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                         }
                     }
                     // Prompt value selection.
-                    let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: domain.codedValues.count) { (index) in
+                    let selectedIndex = selectedValue.flatMap { domain.codedValues.firstIndex(of: $0 as! AGSCodedValue) } ?? -1
+                    let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: selectedIndex) { (index) in
                         self.valueLabel?.text = self.valueLabels[index]
                         self.selectedValue = domain.codedValues[index]
                     }
@@ -263,7 +261,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     }
     
     func trace() {
-        if utilityNetwork == nil || startingLocation == nil {
+        if startingLocation == nil {
             presentAlert(title: "Error", message: "Could not trace utility network.")
         } else {
             // Create utility trace parameters for the starting location.
@@ -271,7 +269,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             let parameters = AGSUtilityTraceParameters(traceType: .subnetwork, startingLocations: startingLocations as! [AGSUtilityElement])
             parameters.traceConfiguration = configuration
             // Trace the utility network.
-            utilityNetwork?.trace(with: parameters) { [weak self] (traceResults, error) in
+            utilityNetwork.trace(with: parameters) { [weak self] (traceResults, error) in
                 guard let self = self else { return }
                 if let error = error {
                     self.presentAlert(error: error)
@@ -380,8 +378,9 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadUtilityNetwork()
+        
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ConfigureSubnetworkTraceViewController", "OptionsTableViewController"]
-        makeUtilityNetwork()
     }
 }

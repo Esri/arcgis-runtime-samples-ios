@@ -409,3 +409,12 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ConfigureSubnetworkTraceViewController", "OptionsTableViewController"]
     }
 }
+
+extension ConfigureSubnetworkTraceViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let validCharacters = ".-0123456789"
+        let text = textField.text!
+
+        return CharacterSet(charactersIn: validCharacters).isSuperset(of: CharacterSet(charactersIn: text))
+    }
+}

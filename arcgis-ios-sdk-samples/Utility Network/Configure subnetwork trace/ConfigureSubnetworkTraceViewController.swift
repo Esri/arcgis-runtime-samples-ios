@@ -283,12 +283,12 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 guard let self = self else { return }
                 if let error = error {
                     self.presentAlert(error: error)
-                } else {
-                    // Get the first result.
-                    let elementResult = traceResults?.first as! AGSUtilityElementTraceResult
+                } else if let elementResult = traceResults?.first as! AGSUtilityElementTraceResult? {
                     // Display the number of elements found by the trace.
                     let numberOfResults = elementResult.elements.count
                     self.presentAlert(title: "Trace Result", message: "\(numberOfResults) elements found.")
+                } else {
+                    self.presentAlert(title: "Trace Result", message: "No trace results found.")
                 }
             }
         }
@@ -325,10 +325,11 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     
     // Convert the expression into a readable string.
     func expressionToString(expression: AGSUtilityTraceConditionalExpression) -> String? {
-        if let categoryComparison = expression as? AGSUtilityCategoryComparison {
+        switch expression {
+        case let categoryComparison as AGSUtilityCategoryComparison:
             let comparisonOperatorString = categoryComparisonOperators[categoryComparison.comparisonOperator]
             return "`\(categoryComparison.category.name)` \(comparisonOperatorString!)"
-        } else if let attributeComparison = expression as? AGSUtilityNetworkAttributeComparison {
+        case let attributeComparison as AGSUtilityNetworkAttributeComparison:
             // Check if attribute domain is a coded value domain.
             if let domain = attributeComparison.networkAttribute.domain as? AGSCodedValueDomain {
                 // Get the coded value using the the attribute comparison value and attribute data type.
@@ -346,10 +347,12 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     return "`\(attributeComparison.networkAttribute.name)` \(comparisonOperatorString) `\(nameOrValue)`"
                 }
             }
-        } else if let andCondition = expression as? AGSUtilityTraceAndCondition {
+        case let andCondition as AGSUtilityTraceAndCondition:
             return "(\(expressionToString(expression: andCondition.leftExpression)!)) AND\n(\(expressionToString(expression: andCondition.rightExpression)!))"
-        } else if let orCondition = expression as? AGSUtilityTraceOrCondition {
+        case let orCondition as AGSUtilityTraceOrCondition:
             return "(\(expressionToString(expression: orCondition.leftExpression)!)) AND\n(\(expressionToString(expression: orCondition.rightExpression)!))"
+        default:
+            return nil
         }
         return nil
     }

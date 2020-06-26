@@ -208,6 +208,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         alert.addTextField { (textField) in
             textField.placeholder = "Add a custom value"
             textField.keyboardType = .numbersAndPunctuation
+            textField.delegate = self
             
             // Add an observer to ensure the user does not input an empty string.
             NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
@@ -221,7 +222,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         }
         // Add cancel button.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
         // Present the alert.
         self.present(alert, animated: true, completion: nil)
     }
@@ -412,6 +412,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
 
 extension ConfigureSubnetworkTraceViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         let validCharacters = ".-0123456789"
         let text = textField.text!
 

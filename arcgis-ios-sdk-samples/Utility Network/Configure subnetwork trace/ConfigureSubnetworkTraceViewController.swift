@@ -175,9 +175,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     // Prompt the user to create a custom value if none are available to select.
                     addCustomValue()
                 }
-//            } else {
-//                // If no attribute is selected, present an alert.
-//                presentAlert(title: "No attribute selected", message: "Please select an attribute before selecting a value.")
             }
         } else if cell == addConditionButton {
             addCondition()
@@ -191,16 +188,11 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     func addCustomValue() {
         // Create an alert controller.
         let alert = UIAlertController(title: "Create a value", message: "This attribute has no values. Please create one.", preferredStyle: .alert)
-        // Add the text field.
-        alert.addTextField { (textField) in
-            textField.placeholder = "Add a custom value"
-            textField.keyboardType = .numberPad
-        }
-        // Obtain user value.
-        alert.addAction(UIAlertAction(title: "Done", style: .default) { [weak self] _ in
+        // Add a "done" button and obtain user input.
+        let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self] _ in
             let textfield = alert.textFields![0]
             // Check for invalid input characters.
-            if !(CharacterSet(charactersIn: "0123456789").isSuperset(of: CharacterSet(charactersIn: textfield.text!))) {
+            if !(CharacterSet(charactersIn: ".-0123456789").isSuperset(of: CharacterSet(charactersIn: textfield.text!))) {
                 // Present alert to explain error.
                 self?.presentAlert(title: "This field accepts only numeric entries.")
             } else {
@@ -209,7 +201,24 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 self.tableView.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .none)
                 self.selectedValue = textfield.text
             }
-        })
+        }
+        alert.addAction(doneAction)
+        doneAction.isEnabled = false
+        // Add the text field.
+        alert.addTextField { (textField) in
+            textField.placeholder = "Add a custom value"
+            textField.keyboardType = .numbersAndPunctuation
+            
+            // Add an observer to ensure the user does not input an empty string.
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
+                // Get the character count of non-whitespace characters.
+                let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                let textIsNotEmpty = textCount > 0
+                
+                // Enable the done button if the textfield is not empty.
+                doneAction.isEnabled = textIsNotEmpty
+            })
+        }
         // Add cancel button.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
@@ -286,15 +295,23 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     }
     
     func updateButtons() {
-        // If the nothing has been selected, disable the buttons
         if selectedAttribute == nil || selectedComparison == nil || selectedValue == nil {
+            // Enable or disable the value button.
             if selectedAttribute == nil {
                 valueButton.isEnabled = false
                 valueCell.isUserInteractionEnabled = false
             } else {
+                if (selectedAttribute?.domain as? AGSCodedValueDomain) != nil {
+                    // Indicate that a new view controller will display.
+                    valueCell.accessoryType = .disclosureIndicator
+                } else {
+                    // Indicate that an alert will show.
+                    valueCell.accessoryType = .none
+                }
                 valueButton.isEnabled = true
                 valueCell.isUserInteractionEnabled = true
             }
+            // If selections have not been made, disable the buttons
             addConditionLabel.isEnabled = false
             resetLabel.isEnabled = false
             traceLabel.isEnabled = false

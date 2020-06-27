@@ -396,24 +396,19 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     }
     
     // Compare two values.
-    func compare(dataType: AGSUtilityNetworkAttributeDataType, comparee1: Any, comparee2: Any) -> Bool {
+    func compare(dataType: AGSUtilityNetworkAttributeDataType, value1: Any, value2: Any) -> Bool {
         switch dataType {
         case .boolean:
-            return isEqual(type: Bool.self, value1: comparee1, value2: comparee2)
+            return value1 as? Bool == value2 as? Bool
         case .double:
-            return isEqual(type: Double.self, value1: comparee1, value2: comparee2)
+            return value1 as? Double == value2 as? Double
         case .float:
-            return isEqual(type: Float.self, value1: comparee1, value2: comparee2)
+            return value1 as? Float == value2 as? Float
         case .integer:
-            return isEqual(type: Int32.self, value1: comparee1, value2: comparee2)
+            return value1 as? Int32 == value2 as? Int32
         default:
             return false
         }
-    }
-    
-    func isEqual<T: Equatable>(type: T.Type, value1: Any, value2: Any) -> Bool {
-        guard let value1 = value1 as? T, let value2 = value2 as? T else { return false }
-        return value1 == value2
     }
     
     override func viewDidLoad() {
@@ -428,9 +423,8 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
 
 extension ConfigureSubnetworkTraceViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         let validCharacters = ".-0123456789"
-        let text = textField.text!
 
         return CharacterSet(charactersIn: validCharacters).isSuperset(of: CharacterSet(charactersIn: text))
     }

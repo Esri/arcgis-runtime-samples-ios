@@ -254,7 +254,10 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             // Update the list of barrier conditions.
             configuration?.traversability?.barriers = expression
             let expressionString = expressionToString(expression: expression!)
-            textView?.text += "\n \(expressionString!))"
+            textView?.text += """
+
+            \(expressionString!)
+            """
         }
     }
     
@@ -351,9 +354,16 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 }
             }
         case let andCondition as AGSUtilityTraceAndCondition:
-            return "(\(expressionToString(expression: andCondition.leftExpression)!)) AND\n(\(expressionToString(expression: andCondition.rightExpression)!))"
+            return """
+            (\(expressionToString(expression: andCondition.leftExpression)!)) AND
+            (\(expressionToString(expression: andCondition.rightExpression)!))
+            """
+
         case let orCondition as AGSUtilityTraceOrCondition:
-            return "(\(expressionToString(expression: orCondition.leftExpression)!)) AND\n(\(expressionToString(expression: orCondition.rightExpression)!))"
+            return """
+            (\(expressionToString(expression: orCondition.leftExpression)!)) AND
+            (\(expressionToString(expression: orCondition.rightExpression)!))
+            """
         default:
             return nil
         }

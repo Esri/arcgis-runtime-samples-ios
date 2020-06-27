@@ -70,6 +70,9 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     // The attribute selected by the user.
     var selectedAttribute: AGSUtilityNetworkAttribute? {
         didSet {
+            // Reset the selected value.
+            selectedValue = nil
+            valueLabel.text = ""
             updateButtons()
         }
     }

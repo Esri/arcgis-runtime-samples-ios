@@ -194,16 +194,10 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         // Add a "done" button and obtain user input.
         let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self] _ in
             let textfield = alert.textFields![0]
-            // Check for invalid input characters.
-            if !(CharacterSet(charactersIn: ".-0123456789").isSuperset(of: CharacterSet(charactersIn: textfield.text!))) {
-                // Present alert to explain error.
-                self?.presentAlert(title: "This field accepts only numeric entries.")
-            } else {
-                guard let self = self else { return }
-                self.valueLabel?.text = textfield.text
-                self.tableView.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .none)
-                self.selectedValue = textfield.text
-            }
+            guard let self = self else { return }
+            self.valueLabel?.text = textfield.text
+            self.tableView.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .none)
+            self.selectedValue = textfield.text
         }
         alert.addAction(doneAction)
         doneAction.isEnabled = false
@@ -341,7 +335,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 // Get the coded value using the the attribute comparison value and attribute data type.
                 let dataType = attributeComparison.networkAttribute.dataType
                 let attributeValue = convertToDataType(otherValue: attributeComparison.value!, dataType: attributeComparison.networkAttribute.dataType)
-                let codedValue = domain.codedValues.first(where: { compare(dataType: dataType, comparee1: $0.code!, comparee2: attributeValue!) })
+                let codedValue = domain.codedValues.first(where: { compare(dataType: dataType, value1: $0.code!, value2: attributeValue!) })
                 let comparisonOperatorString = comparisonsStrings[attributeComparison.comparisonOperator.rawValue]
                 return "'\(attributeComparison.networkAttribute.name)' \(comparisonOperatorString) '\(codedValue!.name)'"
             } else {

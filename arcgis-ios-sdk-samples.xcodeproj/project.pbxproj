@@ -8,9 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		001ECB042486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */; };
+		001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */; };
 		001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
 		001ECB60248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */; };
 		001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
+		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
+		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
+		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */; };
 		00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
 		00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3C22464D59200A3B88D /* PacificSouthWest */; settings = {ASSET_TAGS = (PacificSouthWest, ); }; };
@@ -18,6 +23,8 @@
 		00ADC3CF2464DD2B00A3B88D /* IdentifyRasterCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */; };
 		00ADC3D12464DD3600A3B88D /* IdentifyRasterCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
 		00ADC3D22464DDA200A3B88D /* IdentifyRasterCellViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
+		00C024E52475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
+		00C024E72475E54A00E1DA8D /* NavigateAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */; };
 		00C6D420246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 00C6D32A246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.ovr */; settings = {ASSET_TAGS = (NDVIRaster, ); }; };
 		00C6D421246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tif.aux.xml in Resources */ = {isa = PBXBuildFile; fileRef = 00C6D32B246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.aux.xml */; settings = {ASSET_TAGS = (NDVIRaster, ); }; };
 		00C6D422246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tif in Resources */ = {isa = PBXBuildFile; fileRef = 00C6D32C246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif */; settings = {ASSET_TAGS = (NDVIRaster, ); }; };
@@ -863,6 +870,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */,
+				00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */,
+				00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */,
 				001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */,
 				00ADC3C42464D64F00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in CopyFiles */,
 				00ADC3D22464DDA200A3B88D /* IdentifyRasterCellViewController.swift in CopyFiles */,
@@ -1135,13 +1145,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARCalibrationViewController.swift; sourceTree = "<group>"; };
 		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
+		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnimateImagesWithImageOverlay.storyboard; sourceTree = "<group>"; };
 		00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateImagesWithImageOverlayViewController.swift; sourceTree = "<group>"; };
 		00ADC3C22464D59200A3B88D /* PacificSouthWest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PacificSouthWest; sourceTree = "<group>"; };
 		00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyRasterCell.storyboard; sourceTree = "<group>"; };
 		00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyRasterCellViewController.swift; sourceTree = "<group>"; };
+		00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARRoutePlannerViewController.swift; sourceTree = "<group>"; };
+		00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavigateAR.storyboard; sourceTree = "<group>"; };
 		00C6D32A246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = SA_EVI_8Day_03May20.tif.ovr; sourceTree = "<group>"; };
 		00C6D32B246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.aux.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SA_EVI_8Day_03May20.tif.aux.xml; sourceTree = "<group>"; };
 		00C6D32C246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SA_EVI_8Day_03May20.tif; sourceTree = "<group>"; };
@@ -1754,6 +1768,17 @@
 				00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */,
 			);
 			path = "Identify raster cell";
+			sourceTree = "<group>";
+		};
+		00C024DE2475E49A00E1DA8D /* Navigate in AR */ = {
+			isa = PBXGroup;
+			children = (
+				00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */,
+				00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */,
+				00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */,
+				001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */,
+			);
+			path = "Navigate in AR";
 			sourceTree = "<group>";
 		};
 		00C6D328246CA8FC00C63EAF /* Archives */ = {
@@ -4127,6 +4152,7 @@
 		E47ED0882343C1400032440E /* Augmented reality */ = {
 			isa = PBXGroup;
 			children = (
+				00C024DE2475E49A00E1DA8D /* Navigate in AR */,
 				E47ED0A12343C4FE0032440E /* Collect data in AR */,
 				E47ED0AA2343C5E00032440E /* Display scenes in tabletop AR */,
 				E47ED09E2343C4FE0032440E /* Explore scenes in flyover AR */,
@@ -4415,7 +4441,7 @@
 				);
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Esri;
 				TargetAttributes = {
 					3E23A9DF1AFC28F6002E2214 = {
@@ -4605,6 +4631,7 @@
 				3EFCE1BA1CF369A800E02F67 /* Yellowstone.mmpk in Resources */,
 				4C0FD7CB226528740042DE31 /* ReadSymbolsFromMobileStyle.storyboard in Resources */,
 				F1034FA622D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard in Resources */,
+				00C024E72475E54A00E1DA8D /* NavigateAR.storyboard in Resources */,
 				4C59D132238DCFB500824924 /* ApplyScheduledUpdatesToPreplannedMapArea.storyboard in Resources */,
 				C7D0EEDB215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard in Resources */,
 				3E1183DE1ECF5A1000180152 /* Hawaii.csv in Resources */,
@@ -4852,6 +4879,7 @@
 				3EC39C411C9B4857003F6459 /* FeatureLayersViewController.swift in Sources */,
 				C7094786215D36BA00BA0969 /* OfflineMapParameterOverridesViewController.swift in Sources */,
 				4C0FD7CD226528A20042DE31 /* ReadSymbolsFromMobileStyleViewController.swift in Sources */,
+				00C024E52475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift in Sources */,
 				3E0225371DB569240049F7F8 /* CategoryCell.swift in Sources */,
 				E4B2E2691FE31ED500E610FF /* ViewshedGeoElementViewController.swift in Sources */,
 				12D66038226697320005DE8A /* LayersTableViewController.swift in Sources */,
@@ -5027,6 +5055,7 @@
 				3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */,
 				C7AF466021B1C8AC0050CC49 /* ChangeAtmosphereEffectViewController.swift in Sources */,
 				3ED028891B8E3A8500ACA70D /* OpenMapURLViewController.swift in Sources */,
+				00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */,
 				3EFDE0F61E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift in Sources */,
 				3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */,
 				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,
@@ -5058,6 +5087,7 @@
 				3EEA06141D21C44000E03774 /* SurfacePlacementsViewController.swift in Sources */,
 				C7E5EB7021ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift in Sources */,
 				F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */,
+				001ECB042486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift in Sources */,
 				00E5B7D22458FE7900B11973 /* PerformValveIsolationTraceViewController.swift in Sources */,
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundViewController.swift in Sources */,
 				3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */,
@@ -5186,6 +5216,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -5242,6 +5273,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

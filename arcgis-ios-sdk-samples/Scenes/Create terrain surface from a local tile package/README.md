@@ -1,4 +1,4 @@
-# Create terrain from a local tile package
+# Create terrain surface from a local tile package
 
 Set the terrain surface with elevation described by a local tile package.
 

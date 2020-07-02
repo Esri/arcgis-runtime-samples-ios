@@ -1,4 +1,4 @@
-# Download preplanned map area
+# Download preplanned map
 
 Take a map offline using a preplanned map area.
 

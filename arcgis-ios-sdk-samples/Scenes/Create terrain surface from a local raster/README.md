@@ -1,4 +1,4 @@
-# Create terrain from a local raster
+# Create terrain surface from a local raster
 
 Set the terrain surface with elevation described by a raster file.
 

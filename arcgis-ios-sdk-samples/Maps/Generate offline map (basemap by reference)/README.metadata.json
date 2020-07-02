@@ -27,5 +27,5 @@
     "snippets": [
         "GenerateOfflineMapBasemapByReferenceViewController.swift"
     ],
-    "title": "Generate offline map with local basemap"
+    "title": "Generate offline map (basemap by reference)"
 }

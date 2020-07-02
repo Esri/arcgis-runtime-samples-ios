@@ -1,4 +1,4 @@
-# Sketch on map
+# Sketch on the map
 
 Use the Sketch Editor to edit or sketch a new point, line, or polygon geometry on a map.
 

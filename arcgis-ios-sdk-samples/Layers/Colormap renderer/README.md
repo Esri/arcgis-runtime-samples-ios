@@ -1,4 +1,4 @@
-# Colormap Renderer
+# Colormap renderer
 
 Apply a colormap renderer to a raster.
 

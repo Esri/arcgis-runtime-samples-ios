@@ -1,4 +1,4 @@
-# Create and save map
+# Create and save a map
 
 Create and save a map as a portal item (i.e. web map).
 

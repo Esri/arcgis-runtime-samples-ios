@@ -1,4 +1,4 @@
-# Read geopackage
+# Read a geopackage
 
 Add rasters and feature tables from a geopackage to a map.
 

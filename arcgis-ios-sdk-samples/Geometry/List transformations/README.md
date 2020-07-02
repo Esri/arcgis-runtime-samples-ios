@@ -1,4 +1,4 @@
-# List transformations by suitability
+# List transformations
 
 Get a list of suitable transformations for projecting a geometry between two spatial references with different horizontal datums.
 

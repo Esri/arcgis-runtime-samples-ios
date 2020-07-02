@@ -1,4 +1,4 @@
-# Map load status
+# Map loaded
 
 Determine the map's load status which can be `notLoaded`, `failedToLoad`, `loading`, or `loaded`.
 

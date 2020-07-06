@@ -17,64 +17,127 @@
 import UIKit
 import ArcGIS
 
-/// A view controller that manages the interface of the Surface Placements
-/// sample.
+/// A view controller that manages the interface of the Surface placements sample.
 class SurfacePlacementsViewController: UIViewController {
-    /// The scene displayed in the scene view.
-    let scene: AGSScene
+    // MARK: Instance properties
     
-    required init?(coder: NSCoder) {
-        scene = AGSScene(basemap: .topographic())
-        
-        // add base surface for elevation data
+    /// A label to show the value of the slider.
+    @IBOutlet weak var zValueLabel: UILabel!
+    /// The slider to change z-value of `AGSPoint` geometries, from 0 to 140 in meters.
+    @IBOutlet weak var zValueSlider: UISlider!
+    /// The switch to toggle the visibility of two draped mode graphic overlays.
+    @IBOutlet weak var drapedModeSwitch: UISwitch!
+    
+    /// The scene view managed by the view controller.
+    @IBOutlet var sceneView: AGSSceneView! {
+        didSet {
+            sceneView.scene = makeScene()
+            sceneView.setViewpointCamera(AGSCamera(latitude: 48.3889, longitude: -4.4595, altitude: 80, heading: 330, pitch: 97, roll: 0))
+            // Add graphic overlays of different surface placement modes to the scene.
+            graphicsOverlays.append(contentsOf: [
+                makeGraphicsOverlay(surfacePlacement: .drapedBillboarded),
+                makeGraphicsOverlay(surfacePlacement: .drapedFlat),
+                makeGraphicsOverlay(surfacePlacement: .relative),
+                makeGraphicsOverlay(surfacePlacement: .relativeToScene, offset: 2e-4),
+                makeGraphicsOverlay(surfacePlacement: .absolute)
+            ])
+            sceneView.graphicsOverlays.addObjects(from: graphicsOverlays)
+        }
+    }
+    
+    /// The graphic overlays of different surface placement modes.
+    var graphicsOverlays = [AGSGraphicsOverlay]()
+    /// A formatter to format z-value strings.
+    let zValueFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .none
+        return formatter
+    }()
+    
+    // MARK: - Actions
+    
+    @IBAction func switchValueChanged(_ sender: UISwitch) {
+        // Toggle the visibility of two draped mode graphic overlays respectively.
+        graphicsOverlays.forEach { graphicOverlay in
+            switch graphicOverlay.sceneProperties!.surfacePlacement {
+            case AGSSurfacePlacement.drapedFlat:
+                graphicOverlay.isVisible = sender.isOn
+            case AGSSurfacePlacement.drapedBillboarded:
+                graphicOverlay.isVisible = !sender.isOn
+            default:
+                return
+            }
+        }
+    }
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let zValue = Double(sender.value)
+        zValueLabel.text = zValueFormatter.string(from: zValue as NSNumber)!
+        // Set the z-value of each geometry of surface placement graphics.
+        graphicsOverlays.forEach { graphicOverlay in
+            graphicOverlay.graphics.forEach { graphic in
+                let currentGraphic = graphic as! AGSGraphic
+                let originalPoint = currentGraphic.geometry as! AGSPoint
+                let newPoint = AGSPoint(
+                    x: originalPoint.x,
+                    y: originalPoint.y,
+                    z: zValue,
+                    spatialReference: originalPoint.spatialReference
+                )
+                currentGraphic.geometry = newPoint
+            }
+        }
+    }
+    
+    // MARK: Initialize scene and make graphic overlays
+    
+    /// Create a scene.
+    ///
+    /// - Returns: A new `AGSScene` object.
+    func makeScene() -> AGSScene {
+        let scene = AGSScene(basemap: .imagery())
+        // Add a base surface for elevation data.
         let surface = AGSSurface()
-        /// The url of the Terrain 3D ArcGIS REST Service.
+        // Create elevation source from the Terrain 3D ArcGIS REST Service.
         let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
         let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         surface.elevationSources.append(elevationSource)
+        // Create scene layer from the Brest, France scene server.
+        let sceneServiceURL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer")!
+        let sceneLayer = AGSArcGISSceneLayer(url: sceneServiceURL)
         scene.baseSurface = surface
-        
-        super.init(coder: coder)
+        scene.operationalLayers.add(sceneLayer)
+        return scene
     }
     
-    /// The scene view managed by the view controller.
-    @IBOutlet var sceneView: AGSSceneView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.sceneView.scene = scene
-        
-        let camera = AGSCamera(latitude: 53.05, longitude: -4.01, altitude: 1_115, heading: 299, pitch: 88, roll: 0)
-        self.sceneView.setViewpointCamera(camera)
-        
-        let graphicsOverlays = [
-            makeGraphicsOverlay(surfacePlacement: .drapedBillboarded),
-            makeGraphicsOverlay(surfacePlacement: .relative),
-            makeGraphicsOverlay(surfacePlacement: .absolute)
-        ]
-        sceneView.graphicsOverlays.addObjects(from: graphicsOverlays)
-        
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SurfacePlacementsViewController"]
-    }
-    
-    /// Creates a graphics overlay for the given surface placement.
+    /// Create a graphics overlay for the given surface placement.
     ///
-    /// - Parameter surfacePlacement: The surface placement for which to create
-    /// a graphics overlay.
+    /// - Parameters:
+    ///   - surfacePlacement: The surface placement for which to create a graphics overlay.
+    ///   - offset: A offset added to x and y of the geometry, to better differentiate geometries.
     /// - Returns: A new `AGSGraphicsOverlay` object.
-    func makeGraphicsOverlay(surfacePlacement: AGSSurfacePlacement) -> AGSGraphicsOverlay {
+    func makeGraphicsOverlay(surfacePlacement: AGSSurfacePlacement, offset: Double = 0) -> AGSGraphicsOverlay {
         let symbols = [
-            AGSSimpleMarkerSceneSymbol(style: .sphere, color: .red, height: 50, width: 50, depth: 50, anchorPosition: .center),
+            AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 20),
             AGSTextSymbol(text: surfacePlacement.title, color: .blue, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
         ]
-        let point = AGSPoint(x: -4.04, y: 53.06, z: 1000, spatialReference: .wgs84())
-        let graphics = symbols.map { AGSGraphic(geometry: point, symbol: $0) }
-        
+        let surfaceRelatedPoint = AGSPoint(x: -4.4609257 + offset, y: 48.3903965 + offset, z: 70, spatialReference: .wgs84())
+        let graphics = symbols.map { AGSGraphic(geometry: surfaceRelatedPoint, symbol: $0) }
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = surfacePlacement
         graphicsOverlay.graphics.addObjects(from: graphics)
         return graphicsOverlay
+    }
+    
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SurfacePlacementsViewController"]
+        // Initialize the draped mode visibility.
+        drapedModeSwitch.isOn = false
+        switchValueChanged(drapedModeSwitch)
     }
 }
 

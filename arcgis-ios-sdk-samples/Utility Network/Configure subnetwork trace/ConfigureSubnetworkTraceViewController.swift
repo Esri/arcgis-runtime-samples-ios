@@ -65,6 +65,8 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     var configuration: AGSUtilityTraceConfiguration?
     // The source tier of the utility network.
     var sourceTier: AGSUtilityTier?
+    // The number of added conditions.
+    var numberOfConditions = 0
     // Arrays of attributes, values, and their respective labels.
     var valueLabels: [String] = []
     // The attribute selected by the user.
@@ -98,7 +100,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         // For creating the default trace configuration.
         let domainNetworkName = "ElectricDistribution"
         let tierName = "Medium Voltage Radial"
-
+        
         // Load the utility network.
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
@@ -124,6 +126,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 if let expression = self.sourceTier?.traceConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
                     self.textView?.text = self.expressionToString(expression: expression)
                     self.initialExpression = expression
+                    self.numberOfConditions += 1
                 }
                 // Set the traversability scope.
                 self.sourceTier?.traceConfiguration?.traversability?.scope = .junctions
@@ -232,6 +235,8 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         }
         // NOTE: You may also create a UtilityCategoryComparison with UtilityNetworkDefinition.Categories and UtilityCategoryComparisonOperator.
         if selectedAttribute != nil {
+            
+            
             // If the value is a coded value.
             if let codedValue = selectedValue as? AGSCodedValue, selectedAttribute?.domain is AGSCodedValueDomain {
                 selectedValue = convertToDataType(otherValue: codedValue.code!, dataType: selectedAttribute!.dataType)
@@ -249,9 +254,19 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             configuration?.traversability?.barriers = expression
             let expressionString = expressionToString(expression: expression!)
             textView?.text += """
-
+            
             \(expressionString!)
             """
+            let newLabel = UILabel()
+            newLabel.text = "\(expressionString!)"
+            let newIndexPath = IndexPath(row: 3, section: 1)
+            // update the table
+            tableView.performBatchUpdates({
+                // insert the new row
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+                let cell = tableView.cellForRow(at: newIndexPath)
+                cell?.addSubview(newLabel)
+            }, completion: nil)
         }
     }
     
@@ -352,7 +367,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             (\(expressionToString(expression: andCondition.leftExpression)!)) AND
             (\(expressionToString(expression: andCondition.rightExpression)!))
             """
-
+            
         case let orCondition as AGSUtilityTraceOrCondition:
             return """
             (\(expressionToString(expression: orCondition.leftExpression)!)) AND
@@ -369,16 +384,16 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         switch dataType {
         case .boolean:
             return otherValue as! Bool
-        case .double:
-            if let valueString = otherValue as? String {
-                return Double(valueString)
-            }
-            return otherValue as! Double
         case .float:
             if let valueString = otherValue as? String {
                 return Float(valueString)
             }
             return otherValue as! Float
+        case .double:
+            if let valueString = otherValue as? String {
+                return Double(valueString)
+            }
+            return otherValue as! Double
         case .integer:
             if let valueString = otherValue as? String {
                 return Int32(valueString)
@@ -405,6 +420,87 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         }
     }
     
+    /// A convenience type for the table view sections.
+    private enum Section: CaseIterable {
+        case switches, newCondition, conditions
+        
+        var label: String {
+            switch self {
+            case .switches:
+                return "Trace options"
+            case .newCondition:
+                return "Define new condition"
+            case .conditions:
+                return "Barrier conditions"
+            }
+        }
+    }
+    
+    private enum Switches: CaseIterable {
+        case barriers, containers
+        
+        var label: String {
+            switch self {
+            case .barriers:
+                return "Include barriers"
+            case .containers:
+                return "Include containers"
+            }
+        }
+    }
+    let switches = ["Include barriers", "Include containers"]
+    let cellIdentifiers = ["SwitchCell", "SelectionCell", "LabelOrConditionCell"]
+    let selectionLabels = ["Attribute", "Comparison", "Value", "Add new condition"]
+    let conditionLabels = ["Reset", "Trace"]
+    
+    // MARK: - UITableViewDataSource
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return Section.allCases.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch Section.allCases[section] {
+        case .switches:
+            return 2
+        case .newCondition:
+            return 4
+        case .conditions:
+            return numberOfConditions + 2
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return Section.allCases[section].label
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        switch Section.allCases[indexPath.section] {
+        case .switches:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath)
+            cell.textLabel?.text = switches[indexPath.row]
+        case .newCondition:
+            if indexPath.row < 3 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionCell", for: indexPath)
+                cell.textLabel?.text = selectionLabels[indexPath.row]
+                if indexPath.row < 2 {
+                    cell.accessoryType = .disclosureIndicator
+                }
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LabelOrConditionCell", for: indexPath)
+                cell.textLabel?.text = selectionLabels[indexPath.row]
+                return cell
+            }
+        case .conditions:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelOrConditionCell", for: indexPath)
+            cell.textLabel?.text = conditionLabels[indexPath.row]
+            return cell
+        }
+        return cell
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -419,7 +515,7 @@ extension ConfigureSubnetworkTraceViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         let validCharacters = ".-0123456789"
-
+        
         return CharacterSet(charactersIn: validCharacters).isSuperset(of: CharacterSet(charactersIn: text))
     }
 }

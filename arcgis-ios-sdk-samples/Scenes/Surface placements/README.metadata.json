@@ -22,7 +22,7 @@
         "AGSSurface",
         "AGSSurfacePlacement"
     ],
-    "redirect_from": [],
+    "redirect_from": "/ios/latest/swift/sample-code/surface-placements.htm",
     "relevant_apis": [
         "AGSGraphic",
         "AGSGraphicsOverlay",

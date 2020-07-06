@@ -25,7 +25,7 @@ class SurfacePlacementsViewController: UIViewController {
     @IBOutlet weak var zValueLabel: UILabel!
     /// The slider to change z-value of `AGSPoint` geometries, from 0 to 140 in meters.
     @IBOutlet weak var zValueSlider: UISlider!
-    /// The switch to toggle the visibility of two draped mode graphic overlays.
+    /// The switch to toggle the visibility of two draped mode graphics overlays.
     @IBOutlet weak var drapedModeSwitch: UISwitch!
     
     /// The scene view managed by the view controller.
@@ -33,7 +33,7 @@ class SurfacePlacementsViewController: UIViewController {
         didSet {
             sceneView.scene = makeScene()
             sceneView.setViewpointCamera(AGSCamera(latitude: 48.3889, longitude: -4.4595, altitude: 80, heading: 330, pitch: 97, roll: 0))
-            // Add graphic overlays of different surface placement modes to the scene.
+            // Add graphics overlays of different surface placement modes to the scene.
             graphicsOverlays.append(contentsOf: [
                 makeGraphicsOverlay(surfacePlacement: .drapedBillboarded),
                 makeGraphicsOverlay(surfacePlacement: .drapedFlat),
@@ -45,7 +45,7 @@ class SurfacePlacementsViewController: UIViewController {
         }
     }
     
-    /// The graphic overlays of different surface placement modes.
+    /// The graphics overlays of different surface placement modes.
     var graphicsOverlays = [AGSGraphicsOverlay]()
     /// A formatter to format z-value strings.
     let zValueFormatter: NumberFormatter = {
@@ -57,7 +57,7 @@ class SurfacePlacementsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
-        // Toggle the visibility of two draped mode graphic overlays respectively.
+        // Toggle the visibility of two draped mode graphics overlays respectively.
         graphicsOverlays.forEach { graphicOverlay in
             switch graphicOverlay.sceneProperties!.surfacePlacement {
             case AGSSurfacePlacement.drapedFlat:
@@ -89,7 +89,7 @@ class SurfacePlacementsViewController: UIViewController {
         }
     }
     
-    // MARK: Initialize scene and make graphic overlays
+    // MARK: Initialize scene and make graphics overlays
     
     /// Create a scene.
     ///

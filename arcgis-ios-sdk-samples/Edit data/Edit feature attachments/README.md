@@ -37,4 +37,4 @@ Attachments can only be added to and accessed on a service feature table when it
 
 ## Tags
 
-Edit and Manage Data, image, picture, JPEG, PNG, PDF, TXT
+edit and manage data, image, picture, JPEG, PNG, PDF, TXT

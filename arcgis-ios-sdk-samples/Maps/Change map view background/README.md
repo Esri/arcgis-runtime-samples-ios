@@ -30,4 +30,4 @@ Tap the "Change background" button in the toolbar to open the settings view. Tap
 
 ## Tags
 
-map, grid, background
+background, grid, map

@@ -4,7 +4,7 @@ Set the terrain surface with elevation described by a local tile package.
 
 ![Create terrain from a local tile package](create-terrain-from-a-local-tile-package.png)
 
-## Use Case
+## Use case
 
 In a scene view, the terrain surface is what the basemap, operational layers, and graphics are draped onto. For example, when viewing a scene in a mountainous region, applying a terrain surface to the scene will help in recognizing the slopes, valleys, and elevated areas.
 
@@ -33,4 +33,4 @@ The tile package must be a LERC (limited error raster compression) encoded TPK. 
 
 ## Tags
 
-3D, tile cache, elevation, surface
+3D, elevation, surface, tile cache

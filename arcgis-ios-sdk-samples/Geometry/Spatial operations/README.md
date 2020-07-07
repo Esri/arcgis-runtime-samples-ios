@@ -16,10 +16,10 @@ The sample provides an option to select a spatial operation. When an operation i
 
 ## How it works
 
-1.  Create an `AGSGraphicsOverlay` and add it to the `AGSMapView`.
-2.  Create each polygon `AGSGeometry` using `AGSPolygonBuilder`.
-3.  Add the overlapping polygons to the graphics overlay.
-4.  Perform spatial relationships between the polygons by using the appropriate operation:
+1. Create an `AGSGraphicsOverlay` and add it to the `AGSMapView`.
+2. Create each polygon `AGSGeometry` using `AGSPolygonBuilder`.
+3. Add the overlapping polygons to the graphics overlay.
+4. Perform spatial relationships between the polygons by using the appropriate operation:
     * `class AGSGeometryEngine.union(ofGeometry1:geometry2:)` - This method returns the two geometries united together as one geometry.
     * `class AGSGeometryEngine.difference(ofGeometry1:geometry2:)` - This method returns any part of Geometry2 that does not intersect Geometry1.
     * `class AGSGeometryEngine.symmetricDifference(ofGeometry1:geometry2:)` - This method returns any part of Geometry1 or Geometry2 which do not intersect.

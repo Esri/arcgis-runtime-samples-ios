@@ -32,7 +32,6 @@ Tap on one or more features while "Start" or "Barrier" is selected. When a junct
 
 ## Relevant API
 
-* class AGSGeometryEngine.fraction(alongLine:to:tolerance:)
 * AGSUtilityAssetType
 * AGSUtilityDomainNetwork
 * AGSUtilityElement
@@ -45,8 +44,9 @@ Tap on one or more features while "Start" or "Barrier" is selected. When a junct
 * AGSUtilityTraceConfiguration
 * AGSUtilityTraceParameters
 * AGSUtilityTraceResult
-* AGSUtilityTraceType
 * AGSUtilityTraversability
+* AGSUtilityTraceType
+* class AGSGeometryEngine.fraction(alongLine:to:tolerance:)
 
 ## About the data
 

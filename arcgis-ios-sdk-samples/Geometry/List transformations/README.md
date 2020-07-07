@@ -23,12 +23,12 @@ If the selected transformation is not usable (has missing grid files) then an er
 
 ## Relevant API
 
-* class AGSGeometryEngine.projectGeometry(_:to:datumTransformation:)
 * AGSDatumTransformation
 * AGSGeographicTransformation
 * AGSGeographicTransformationStep
 * AGSGeometryEngine
 * AGSTransformationCatalog
+* class AGSGeometryEngine.projectGeometry(_:to:datumTransformation:)
 
 ## Additional information
 

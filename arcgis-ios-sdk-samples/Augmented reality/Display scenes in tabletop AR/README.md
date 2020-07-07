@@ -26,9 +26,9 @@ You'll see a feed from the camera when you open the sample. Tap on any flat, hor
 
 ## Relevant API
 
-* ArcGISARView
 * AGSSceneView
 * AGSSurface
+* ArcGISARView
 
 ## Offline data
 

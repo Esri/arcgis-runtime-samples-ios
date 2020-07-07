@@ -32,10 +32,10 @@ The sample provides an option to select a spatial operation. When an operation i
 * AGSGeometryEngine
 * AGSGraphic
 * AGSGraphicsOverlay
-* class AGSGeometryEngine.union(ofGeometry1:geometry2:)
 * class AGSGeometryEngine.difference(ofGeometry1:geometry2:)
-* class AGSGeometryEngine.symmetricDifference(ofGeometry1:geometry2:)
 * class AGSGeometryEngine.intersection(ofGeometry1:geometry2:)
+* class AGSGeometryEngine.symmetricDifference(ofGeometry1:geometry2:)
+* class AGSGeometryEngine.union(ofGeometry1:geometry2:)
 
 ## Tags
 

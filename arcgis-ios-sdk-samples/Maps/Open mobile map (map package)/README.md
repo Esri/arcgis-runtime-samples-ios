@@ -1,4 +1,4 @@
-# Open mobile map package
+# Open mobile map (map package)
 
 Display a map from a mobile map package.
 

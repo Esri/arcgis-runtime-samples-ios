@@ -224,6 +224,15 @@ class DemoTouchManager {
     
     func handleEvent(_ event: UIEvent) {
         guard let touches = event.allTouches else { return }
+        
+        #if compiler(>=5.2)
+        // Check if touch is from indirect pointers like a mouse
+        // or a keyboard. If so, do not show touches
+        if #available(iOS 13.4, *) {
+            if let touch = touches.first, touch.type == .indirectPointer { return }
+        }
+        #endif
+        
         // Ensure our DemoTouch view is always at the front of its window.
         if let window = view.window {
             window.bringSubviewToFront(view)

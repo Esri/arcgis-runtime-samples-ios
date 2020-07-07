@@ -1,0 +1,32 @@
+{
+    "category": "Features",
+    "description": "Create a feature collection layer from a portal item.",
+    "ignore": false,
+    "images": [
+        "feature-collection-layer-from-portal.png"
+    ],
+    "keywords": [
+        "collection",
+        "feature collection",
+        "feature collection layer",
+        "id",
+        "item",
+        "map notes",
+        "portal",
+        "AGSFeatureCollection",
+        "AGSFeatureCollectionLayer",
+        "AGSPortal",
+        "AGSPortalItem"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSFeatureCollection",
+        "AGSFeatureCollectionLayer",
+        "AGSPortal",
+        "AGSPortalItem"
+    ],
+    "snippets": [
+        "FeatureCollectionLayerFromPortalViewController.swift"
+    ],
+    "title": "Feature collection layer (portal item)"
+}

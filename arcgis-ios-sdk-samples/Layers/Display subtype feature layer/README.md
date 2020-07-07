@@ -1,4 +1,4 @@
-# Display a subtype feature layer
+# Display subtype feature layer
 
 Display a composite layer of all the subtype values in a feature class.
 

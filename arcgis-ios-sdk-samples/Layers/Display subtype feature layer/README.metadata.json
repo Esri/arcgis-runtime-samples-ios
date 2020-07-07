@@ -1,5 +1,5 @@
 {
-    "category": "Features",
+    "category": "Layers",
     "description": "Display a composite layer of all the subtype values in a feature class.",
     "ignore": false,
     "images": [
@@ -30,5 +30,5 @@
         "DisplaySubtypeFeatureLayerViewController.swift",
         "DisplaySubtypeSettingsViewController.swift"
     ],
-    "title": "Display a subtype feature layer"
+    "title": "Display subtype feature layer"
 }

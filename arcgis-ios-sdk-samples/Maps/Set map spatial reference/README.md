@@ -1,4 +1,4 @@
-# Map spatial reference
+# Set map spatial reference
 
 Specify a map's spatial reference.
 

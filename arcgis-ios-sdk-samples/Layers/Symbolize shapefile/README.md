@@ -1,4 +1,4 @@
-# Symbolize Shapefile
+# Symbolize shapefile
 
 Display a shapefile with custom symbology.
 

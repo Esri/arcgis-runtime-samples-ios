@@ -24,8 +24,8 @@ The second section shows layers that have been removed from the map. Tap one to 
 
 ## Relevant API
 
-* AGSMap
 * AGSLayer
+* AGSMap
 
 ## Additional information
 

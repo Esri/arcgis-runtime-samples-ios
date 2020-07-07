@@ -15,7 +15,7 @@ Pan and zoom around the map. Observe drawing status of the map in the toolbar.
 ## How it works
 
 1. Create an instance of `AGSMapView`.
-2. Using KVO, add an observer for `drawStatus` of type `AGSDrawStatus`. It could either be `inProgress` or `completed` based on if the map is currently drawing or not. 
+2. Using KVO, add an observer for `drawStatus` of type `AGSDrawStatus`. It could either be `inProgress` or `completed` based on if the map is currently drawing or not.
 3. Every time it changes the `UIActivityIndicatorView` is shown or hidden.
 
 ## Relevant API

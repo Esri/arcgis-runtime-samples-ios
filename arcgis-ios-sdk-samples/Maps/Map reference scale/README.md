@@ -24,10 +24,10 @@ Tap the "Layers" row to show a list of the map's feature layers. Tap a row to to
 
 ## Relevant API
 
-* AGSMap
 * AGSFeatureLayer
+* AGSMap
 
-## Additional Information
+## Additional information
 
 The map reference scale should normally be set by the map's author and not exposed to the end user like it is in this sample.
 

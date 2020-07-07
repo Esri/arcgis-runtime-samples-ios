@@ -21,11 +21,11 @@ When the sample loads, note the map is opened at the initial view point that is 
 
 ## Relevant API
 
-* AGSMap
 * AGSEnvelope
+* AGSMap
 * AGSMapView
 * AGSViewpoint
 
 ## Tags
 
-initial viewpoint, extent, zoom, envelope
+envelope, extent, initial viewpoint, zoom

@@ -19,7 +19,7 @@ Pan and zoom around the map. Observe how the map is displayed using the World Bo
 3. Set the map to an `AGSMapView` object.
 
 The ArcGIS map image layer will now use the spatial reference set to the ArcGIS map (World Bonne (WKID: 54024)) and not its default spatial reference (WGS84 (WKID: 4326)).
- 
+
 ## Relevant API
 
 * AGSArcGISMapImageLayer

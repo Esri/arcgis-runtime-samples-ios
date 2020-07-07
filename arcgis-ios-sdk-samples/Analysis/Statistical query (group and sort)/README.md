@@ -2,7 +2,7 @@
 
 Query a feature table for statistics, grouping and sorting by different fields.
 
-![Query formsheet](statistical-group-sort-1.png) 
+![Query formsheet](statistical-group-sort-1.png)
 ![Query results](statistical-group-sort-2.png)
 
 ## Use case

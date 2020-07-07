@@ -14,8 +14,8 @@ The sample loads with the default globe camera controller. To rotate and fix the
 
 ## How it works
 
-1.  Create an instance of a class extending `AGSCameraController`: `AGSGlobeCameraController`, `AGSOrbitLocationCameraController`, `AGSOrbitGeoElementCameraController`.
-2.  Set the `cameraController` property of `AGSSceneView`.
+1. Create an instance of a class extending `AGSCameraController`: `AGSGlobeCameraController`, `AGSOrbitLocationCameraController`, `AGSOrbitGeoElementCameraController`.
+2. Set the `cameraController` property of `AGSSceneView`.
 
 ## Relevant API
 

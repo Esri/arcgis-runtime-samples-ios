@@ -18,7 +18,7 @@ When the sample loads, note the map is opened at the initial view point that is 
 2. Instantiate an `AGSViewpoint` object using an `AGSEnvelope` object.
 3. Set the starting location to the `initialViewpoint` property of the map.
 4. Set the map to an `AGSMapView` object.
- 
+
 ## Relevant API
 
 * AGSMap

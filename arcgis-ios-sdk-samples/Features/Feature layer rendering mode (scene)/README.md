@@ -24,9 +24,9 @@ Use the "Zoom In" button to trigger the same zoom animation on both static and d
 
 ## Relevant API
 
-* AGSScene
 * AGSFeatureLayer
 * AGSFeatureLayer.renderingMode
+* AGSScene
 * AGSSceneView
 
 ## Tags

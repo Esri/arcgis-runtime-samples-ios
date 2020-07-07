@@ -21,8 +21,8 @@ When opened, the sample will display a scene. Pan and zoom to explore the scene.
 
 ## Relevant API
 
-* AGScene
 * AGSArcGISTiledElevationSource
+* AGScene
 * AGSSceneView
 
 ## Tags

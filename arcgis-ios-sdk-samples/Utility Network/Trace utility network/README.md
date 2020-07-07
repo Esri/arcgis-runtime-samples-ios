@@ -44,8 +44,8 @@ Tap on one or more features while "Start" or "Barrier" is selected. When a junct
 * AGSUtilityTraceConfiguration
 * AGSUtilityTraceParameters
 * AGSUtilityTraceResult
-* AGSUtilityTraversability
 * AGSUtilityTraceType
+* AGSUtilityTraversability
 * class AGSGeometryEngine.fraction(alongLine:to:tolerance:)
 
 ## About the data

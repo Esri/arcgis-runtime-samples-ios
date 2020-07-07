@@ -32,7 +32,7 @@ Choose a type of place in the first field and an area to search within in the se
     * Call `AGSLocatorTask.geocode(withSearchText:parameters:completion:)` to get a list of `AGSGeocodeResult`s.
     * Display the places of interest using the results' `AGSGeocodeResult.displayLocation`s.
 
-## About the data  
+## About the data
 
 This sample uses the [world locator service](https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer).
 

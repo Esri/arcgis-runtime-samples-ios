@@ -11,7 +11,7 @@ Runtime `AGSQueryParameters` objects can't represent all possible queries that c
 ## How it works
 
 1. Create an `AGSWFSFeatureTable` and an `AGSFeatureLayer` to visualize the table.
-2. Set the feature request mode to `manualCache`. 
+2. Set the feature request mode to `manualCache`.
 3. Use `populateFromService(withRequestXML:clearCache:completion:)` to populate the table with only those features returned by the XML query.
 
 ## Relevant API

@@ -14,15 +14,15 @@ Tap near any of the hospitals and a route will be displayed from that tapped loc
 
 ## How it works
 
-1.  Create a new `AGSClosestFacilityTask` using a URL from an online network analysis service.
-2.  Get `AGSClosestFacilityParameters` from the task.
-3.  Add facilities to the parameters.
-4.  Add an incident (as an `AGSPoint`) to the parameters.
-5.  Get `AGSClosestFacilityResult` by solving the task with the parameters.
-6.  Get the indexed list of closet facilities to the incident.
-7.  Get the index of the closest facility.
-8.  Get closest facility route from the facility result.
-9.  Display the route on the `AGSMapView` as an `AGSGraphic` on an `AGSGraphicsOverlay`.
+1. Create a new `AGSClosestFacilityTask` using a URL from an online network analysis service.
+2. Get `AGSClosestFacilityParameters` from the task.
+3. Add facilities to the parameters.
+4. Add an incident (as an `AGSPoint`) to the parameters.
+5. Get `AGSClosestFacilityResult` by solving the task with the parameters.
+6. Get the indexed list of closet facilities to the incident.
+7. Get the index of the closest facility.
+8. Get closest facility route from the facility result.
+9. Display the route on the `AGSMapView` as an `AGSGraphic` on an `AGSGraphicsOverlay`.
 
 ## Relevant API
 

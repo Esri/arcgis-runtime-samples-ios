@@ -19,11 +19,11 @@ Tap the button to clip the blue graphic with the red dashed envelopes.
 
 ## Relevant API
 
-* class AGSGeometryEngine.clipGeometry(_:with:)
 * AGSEnvelope
 * AGSGeometry
 * AGSGraphic
 * AGSGraphicsOverlay
+* class AGSGeometryEngine.clipGeometry(_:with:)
 
 ## Additional information
 

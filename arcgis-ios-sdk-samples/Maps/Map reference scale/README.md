@@ -9,7 +9,7 @@ Set the map's reference scale and which feature layers should honor the referenc
 
 Setting a reference scale on a map fixes the size of symbols and text to the desired height and width at that scale. As you zoom in and out, symbols and text will increase or decrease in size accordingly. When no reference scale is set, symbol and text sizes remain the same size relative to the map view.
 
-Map annotations are typically only relevant at certain scales. For instance, annotations to a map showing a construction site are only relevant at that construction site's scale. So, when the map is zoomed out that information shouldn't scale with the map view, but should instead remain scaled with the map. 
+Map annotations are typically only relevant at certain scales. For instance, annotations to a map showing a construction site are only relevant at that construction site's scale. So, when the map is zoomed out that information shouldn't scale with the map view, but should instead remain scaled with the map.
 
 ## How to use the sample
 
@@ -29,7 +29,7 @@ Tap the "Layers" row to show a list of the map's feature layers. Tap a row to to
 
 ## Additional Information
 
-The map reference scale should normally be set by the map's author and not exposed to the end user like it is in this sample. 
+The map reference scale should normally be set by the map's author and not exposed to the end user like it is in this sample.
 
 ## Tags
 

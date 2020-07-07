@@ -2,10 +2,11 @@
 
 Opens and displays a scene from a mobile scene package (.mspk).
 
-An .mspk file is an archive containing the data (specifically, basemaps and features), used to display an offline 3D scene.
-A mobile scene package can also be unpacked to a directory to allow read support for certain data types.
-
 ![Open mobile scene (scene package) sample](open-mobile-scene-package.png)
+
+## Use case
+
+An .mspk file is an archive containing the data (specifically, basemaps and features), used to display an offline 3D scene.
 
 ## How to use the sample
 

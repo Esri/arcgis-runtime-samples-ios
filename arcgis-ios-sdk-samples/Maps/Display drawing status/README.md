@@ -21,8 +21,8 @@ Pan and zoom around the map. Observe drawing status of the map in the toolbar.
 ## Relevant API
 
 * AGSDrawStatus
-* AGSMapView
 * AGSMap
+* AGSMapView
 
 ## Tags
 

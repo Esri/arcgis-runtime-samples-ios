@@ -51,4 +51,4 @@ This raster data comes from Monterey, California.
 
 ## Tags
 
-3D, raster, elevation, surface
+3D, elevation, surface, raster

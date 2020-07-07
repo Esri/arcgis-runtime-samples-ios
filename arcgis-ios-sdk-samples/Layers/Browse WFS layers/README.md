@@ -10,18 +10,18 @@ Services often have multiple layers available for display. For example, a featur
 
 ## How to use the sample
 
-Use the bottom button to select a layer from the list to display it on the map. 
+Use the bottom button to select a layer from the list to display it on the map.
 
 Some WFS services return coordinates in X,Y order, while others return coordinates in lat/long (Y,X) order. If you don't see features rendered or you see features in the wrong location, use the swap switch to change the coordinate order and reload.
 
 ## How it works
 
-1. Create an instance of `AGSWFSService` with a URL to a WFS feature service. 
+1. Create an instance of `AGSWFSService` with a URL to a WFS feature service.
 2. Obtain a list of `AGSWFSLayerInfo` objects from `AGSWFSService.serviceInfo`.
 3. When a layer is selected, create an instance of `AGSWFSFeatureTable` from the `AGSWFSLayerInfo` object.
     * Set the axis order if necessary.
-4. Create a feature layer from the feature table. 
-5. Add the feature layer to the map.  
+4. Create a feature layer from the feature table.
+5. Add the feature layer to the map.
     * The sample uses randomly-generated symbology, similar to the behavior in ArcGIS Pro.
 
 ## Relevant API

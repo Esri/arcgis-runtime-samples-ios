@@ -26,12 +26,12 @@ Some WFS services return coordinates in X,Y order, while others return coordinat
 
 ## Relevant API
 
+* AGSFeatureLayer
+* AGSWFSFeatureTable
+* AGSWFSFeatureTable.axisOrder
+* AGSWGSLayerInfo
 * AGSWGSService
 * AGSWGSServiceInfo
-* AGSWGSLayerInfo
-* AGSWFSFeatureTable
-* AGSFeatureLayer
-* AGSWFSFeatureTable.axisOrder
 
 ## About the data
 

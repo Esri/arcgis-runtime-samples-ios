@@ -22,7 +22,7 @@ Tap the bottom buttons to adjust settings for the animation:
 1. Create an `AGSGraphicsOverlay` object and add it to the scene view.
 2. Create an `AGSModelSceneSymbol` object.
 3. Create an `AGSGraphic` object configured with a point and the model scene symbol.
-4. Add heading, pitch, and roll attributes to the graphic. 
+4. Add heading, pitch, and roll attributes to the graphic.
 5. Create an `AGSSimpleRenderer` object and set its expression properties.
 6. Add graphic and a renderer to the graphics overlay.
 7. Create an `AGSOrbitGeoElementCameraController` which is set to target the graphic.

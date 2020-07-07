@@ -6,7 +6,6 @@ Blend a hillshade with a raster by specifying the elevation data. The resulting 
 ![Edited renderer 1](blend-renderer-2.png)
 ![Edited renderer 2](blend-renderer-3.png)
 
-
 ## How to use the sample
 
 Tap the bottom button to choose and adjust the altitude, azimuth, slope type and color ramp type settings to update the image.

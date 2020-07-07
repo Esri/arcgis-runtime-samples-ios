@@ -43,4 +43,4 @@ See [Google's documentation](https://developers.google.com/kml/documentation/tou
 
 ## Tags
 
-KML, tour, story, interactive, narration, play, pause, animation
+animation, interactive, KML, narration, pause, play, story, tour

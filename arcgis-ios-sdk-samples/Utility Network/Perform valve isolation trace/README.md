@@ -22,7 +22,7 @@ Tap "Category" to create and set the configuration's filter barriers with a util
 6. Populate the choice list for the filter barriers from the `categories` property of `AGSUtilityNetworkDefinition`.
 7. Get a default `AGSUtilityTraceConfiguration` from a given tier in a domain network. Set its `filter` property with an `AGSUtilityTraceFilter` object.
 8. When "Trace" is tapped,
-    * Create a new `AGSUtilityCategoryComparison` with the selected category and `AGSUtilityCategoryComparisonOperator.exists`. 
+    * Create a new `AGSUtilityCategoryComparison` with the selected category and `AGSUtilityCategoryComparisonOperator.exists`.
     * Assign this condition to `AGSUtilityTraceFilter.barriers` from the default configuration from step 7.
     * Update the configuration's `includeIsolatedFeatures` property.
     * Create an `AGSUtilityTraceParameters` object with `AGSUtilityTraceType.isolation` and default starting location from step 4.

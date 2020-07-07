@@ -7,13 +7,13 @@
         "edit-feature-attachments-2.png"
     ],
     "keywords": [
-        "edit and manage data",
-        "image",
         "JPEG",
         "PDF",
-        "picture",
         "PNG",
         "TXT",
+        "edit and manage data",
+        "image",
+        "picture",
         "AGSArcGISFeature.delete(_:completion:)",
         "AGSArcGISFeature.fetchAttachments(completion:)",
         "AGSFeatureLayer",

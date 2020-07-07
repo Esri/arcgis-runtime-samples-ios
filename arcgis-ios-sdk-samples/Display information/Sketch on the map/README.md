@@ -33,4 +33,4 @@ Use the control panel to cancel the sketch, undo or redo changes made to the ske
 
 ## Tags
 
-draw, edit, AGSGeometry, AGSGraphic, AGSGraphicsOverlay, AGSSketchCreationMode, AGSSketchEditor
+AGSGeometry, AGSGraphic, AGSGraphicsOverlay, AGSSketchCreationMode, AGSSketchEditor, draw, edit

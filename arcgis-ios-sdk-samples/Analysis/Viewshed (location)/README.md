@@ -1,6 +1,6 @@
 # Viewshed (location)
 
-Perform a viewshed analysis from a defined vantage point. 
+Perform a viewshed analysis from a defined vantage point.
 
 ![Viewshed location sample](viewshed-location.png)
 
@@ -15,7 +15,7 @@ Tap on the map to add an observer location. Tap the gear icon to view the settin
 ## How it works
 
 1. Create an `AGSLocationViewshed` passing in the observer location, heading, pitch, horizontal/vertical angles, and min/max distances.
-2. Set the property values on the viewshed instance for location, direction, range, and visibility properties. 
+2. Set the property values on the viewshed instance for location, direction, range, and visibility properties.
 
 ## Relevant API
 

@@ -13,7 +13,7 @@ When the sample opens, it will automatically display the Scene in the Mobile Map
 
 ## How it works
 
-This sample takes a Mobile Scene Package that was created in ArcGIS Pro, and displays an `AGSScene` from within the package in an `AGSSceneView`. 
+This sample takes a Mobile Scene Package that was created in ArcGIS Pro, and displays an `AGSScene` from within the package in an `AGSSceneView`.
 
 1. Create an `AGSMobileScenePackage` object using the path to the local .mspk file.
 2. Load the mobile scene package with`AGSMobileScenePackage.load(completion:)` and check for any errors.
@@ -28,7 +28,7 @@ This sample takes a Mobile Scene Package that was created in ArcGIS Pro, and dis
 ## About the data
 
 This mobile scene package was authored with ArcGIS Pro. It is downloaded from ArcGIS Online automatically.
-	
+
 [This item is available on ArcGIS Online](https://www.arcgis.com/home/item.html?id=7dd2f97bb007466ea939160d0de96a9d)
 
 ## Tags

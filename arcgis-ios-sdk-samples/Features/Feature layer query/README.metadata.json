@@ -7,8 +7,8 @@
         "feature-layer-query-2.png"
     ],
     "keywords": [
-        "search",
         "query",
+        "search",
         "AGSFeatureLayer",
         "AGSFeatureQueryResult",
         "AGSQueryParameters",

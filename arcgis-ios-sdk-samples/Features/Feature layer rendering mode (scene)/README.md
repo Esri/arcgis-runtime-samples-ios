@@ -18,8 +18,8 @@ Use the "Zoom In" button to trigger the same zoom animation on both static and d
 
 1. Create an `AGSSceneView` for each static and dynamic mode and create an `AGSScene` for each.
 2. Create `AGSServiceFeatureTable`s using point, polyline, and polygon services.
-3. Create an `AGSFeatureLayer` for each of the feature tables and a copy of each feature layer. 
-4. Set each feature layer's `renderingMode` to `dynamic` and `static` appropriately. 
+3. Create an `AGSFeatureLayer` for each of the feature tables and a copy of each feature layer.
+4. Set each feature layer's `renderingMode` to `dynamic` and `static` appropriately.
 5. Add all of the feature layers to the scene's `operationalLayers`.
 
 ## Relevant API

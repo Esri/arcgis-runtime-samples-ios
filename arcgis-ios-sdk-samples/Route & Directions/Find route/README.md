@@ -24,12 +24,12 @@ For simplicity, the sample comes loaded with a start and end stop. You can click
 
 ## Relevant API
 
-*   AGSDirectionManeuver
-*   AGSRoute
-*   AGSRouteParameters
-*   AGSRouteResult
-*   AGSRouteTask
-*   AGSStop
+* AGSDirectionManeuver
+* AGSRoute
+* AGSRouteParameters
+* AGSRouteResult
+* AGSRouteTask
+* AGSStop
 
 ## Tags
 

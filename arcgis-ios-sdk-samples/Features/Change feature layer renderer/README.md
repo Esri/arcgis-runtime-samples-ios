@@ -11,7 +11,7 @@ A feature layer hosted on ArcGIS Online has a preset renderer and will display i
 
 ## How to use the sample
 
-Tap the bottom right button in the toolbar to change the renderer on the feature layer. The original renderer displays red and green outlines. The override renderer displays blue outlines. Tap the bottom left button to reset to the original renderer. 
+Tap the bottom right button in the toolbar to change the renderer on the feature layer. The original renderer displays red and green outlines. The override renderer displays blue outlines. Tap the bottom left button to reset to the original renderer.
 
 ## How it works
 
@@ -29,7 +29,7 @@ Tap the bottom right button in the toolbar to change the renderer on the feature
 
 ## About the data
 
-This sample displays a feature layer in Riverside, California, displaying which parcels do not have pool permits. 
+This sample displays a feature layer in Riverside, California, displaying which parcels do not have pool permits.
 
 ## Tags
 

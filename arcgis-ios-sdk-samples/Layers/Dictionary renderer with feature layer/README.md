@@ -6,7 +6,7 @@ Convert features into graphics to show them with mil2525d symbols.
 
 ## Use case
 
-A dictionary renderer uses a style file along with a rule engine to display advanced symbology. 
+A dictionary renderer uses a style file along with a rule engine to display advanced symbology.
 This is useful for displaying features using precise military symbology.
 
 ## How to use the sample

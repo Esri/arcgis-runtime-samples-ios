@@ -4,7 +4,7 @@ Access a web map that is secured with ArcGIS token-based authentication.
 
 ![Token Authentication sample](token-authentication.png)
 
-## Use Case
+## Use case
 
 Allows you to access a secure service with the convenience and security of ArcGIS token-based authentication. For example, rather than providing a user name and password every time you want to access a secure service, you only provide those credentials initially to obtain a token which then can be used to access secured resources.
 

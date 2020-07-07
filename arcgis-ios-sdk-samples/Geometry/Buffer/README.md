@@ -21,9 +21,9 @@ Tap the map when the sample loads. A planar buffer (brown) and geodesic buffer (
 
 ## Relevant API
 
+* AGSGraphicsOverlay
 * class AGSGeometryEngine.bufferGeometry(_:byDistance:)
 * class AGSGeometryEngine.geodeticBufferGeometry(_:distance:distanceUnit:maxDeviation:curveType:)
-* AGSGraphicsOverlay
 
 ## Additional information
 

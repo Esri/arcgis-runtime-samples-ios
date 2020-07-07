@@ -14,6 +14,7 @@ The sample loads with the sublayer visible on the map. Toggle its visibility by 
  "Set Current to Minimum Scale" button to set the sublayer's minimum scale to the current map scale.
 
 ## How it works
+
 1. Create an `AGSSubtypeFeatureLayer` from an `AGSServiceFeatureTable` that defines a subtype, and add it to the `AGSMap`.
 2. Get an `AGSSubtypeSublayer` from the subtype feature layer using its name.
 3. Enable the sublayer's labels and define them with `AGSLabelDefinition`.

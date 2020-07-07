@@ -31,7 +31,6 @@ Tap the bottom buttons to adjust settings for the animation:
 
 ## Relevant API
 
-* AGSScene
 * AGSCamera
 * AGSGlobeCameraController
 * AGSGraphic
@@ -39,6 +38,7 @@ Tap the bottom buttons to adjust settings for the animation:
 * AGSModelSceneSymbol
 * AGSOrbitGeoElementCameraController
 * AGSRenderer
+* AGSScene
 * AGSSceneView
 * AGSSurfacePlacement
 

@@ -33,4 +33,4 @@ This sample uses U.S. State polygon features from the [USA 2016 Daytime Populati
 
 ## Tags
 
-Search and Query
+search, query

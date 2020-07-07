@@ -44,4 +44,4 @@ The data in this sample shows the roads and trails in the Canyonlands National P
 
 ## Tags
 
-offline, preplanned, pre-planned, synchronize, update
+offline, pre-planned, preplanned, synchronize, update

@@ -19,11 +19,11 @@ Run the sample and pan and zoom around the map. With each interaction, new featu
 
 ## Relevant API
 
+* AGSFeatureLayer
+* AGSFeatureRequestMode.onInteractionNoCache
 * AGSServiceFeatureTable
 * AGSServiceFeatureTable.featureRequestMode
 * AGSServiceFeatureTable.populateFromService
-* AGSFeatureLayer
-* AGSFeatureRequestMode.onInteractionNoCache
 
 ## About the data
 

@@ -26,14 +26,14 @@ Tap near any of the hospitals and a route will be displayed from that tapped loc
 
 ## Relevant API
 
-*   AGSClosestFacilityParameters
-*   AGSClosestFacilityResult
-*   AGSClosestFacilityRoute
-*   AGSClosestFacilityTask
-*   AGSFacility
-*   AGSGraphic
-*   AGSGraphicsOverlay
-*   AGSIncident
+* AGSClosestFacilityParameters
+* AGSClosestFacilityResult
+* AGSClosestFacilityRoute
+* AGSClosestFacilityTask
+* AGSFacility
+* AGSGraphic
+* AGSGraphicsOverlay
+* AGSIncident
 
 ## Tags
 

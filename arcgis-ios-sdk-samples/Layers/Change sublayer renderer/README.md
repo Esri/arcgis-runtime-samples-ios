@@ -24,8 +24,8 @@ Tap on the "Apply renderer" button to apply a class breaks renderer based on pop
 
 * AGSArcGISMapImageLayer
 * AGSArcGISMapImageSubLayer
-* AGSClassBreaksRenderer
 * AGSClassBreak
+* AGSClassBreaksRenderer
 
 ## About the data
 

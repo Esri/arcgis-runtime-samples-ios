@@ -14,7 +14,7 @@ The sample loads a scene showing four points that use the individual surface pla
 
 ## How it works
 
-1. Create an `AGSGraphicsOverlay` for each placement mode, specifying the `surfacePlacement`: 
+1. Create an `AGSGraphicsOverlay` for each placement mode, specifying the `surfacePlacement`:
     * `absolute`, position graphic using only its Z value.
     * `relative`, position graphic using its Z value plus the elevation of the surface.
     * `drapedBillboarded`, position graphic upright on the surface and always facing the camera, not using its z value.

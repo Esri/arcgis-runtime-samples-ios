@@ -41,8 +41,8 @@ Tap "Category" to create and set the configuration's filter barriers with a util
 * AGSUtilityElementTraceResult
 * AGSUtilityNetwork
 * AGSUtilityNetworkDefinition
-* AGSUtilityTraceFilter
 * AGSUtilityTier
+* AGSUtilityTraceFilter
 * AGSUtilityTraceParameters
 * AGSUtilityTraceResult
 * AGSUtilityTraceType

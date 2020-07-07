@@ -448,6 +448,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             }
         }
     }
+    
     let switches = ["Include barriers", "Include containers"]
     let cellIdentifiers = ["SwitchCell", "SelectionCell", "LabelOrConditionCell"]
     let selectionLabels = ["Attribute", "Comparison", "Value", "Add new condition"]
@@ -505,6 +506,8 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         super.viewDidLoad()
         
         loadUtilityNetwork()
+        tableView.dataSource = self
+        tableView.delegate = self
         
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ConfigureSubnetworkTraceViewController", "OptionsTableViewController"]

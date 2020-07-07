@@ -37,4 +37,4 @@ Tap near any of the hospitals and a route will be displayed from that tapped loc
 
 ## Tags
 
-routing & directions, incident, network analysis, route, search
+incident, network analysis, route, routing & directions, search

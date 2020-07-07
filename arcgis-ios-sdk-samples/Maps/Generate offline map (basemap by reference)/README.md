@@ -40,10 +40,10 @@ Since the application is not exporting online ArcGIS Online basemaps you will no
 
 ## Relevant API
 
-* AGSOfflineMapTask
-* AGSGenerateOfflineMapParameters
 * AGSGenerateOfflineMapJob
+* AGSGenerateOfflineMapParameters
 * AGSGenerateOfflineMapResult
+* AGSOfflineMapTask
 
 ## Offline data
 

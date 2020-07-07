@@ -22,9 +22,9 @@ Launch the app to view the "San Francisco offline tile package" as the basemap. 
 
 ## Relevant API
 
-* AGSMap
 * AGSArcGISTiledLayer
 * AGSBasemap
+* AGSMap
 * AGSTileCache
 
 ## Offline data

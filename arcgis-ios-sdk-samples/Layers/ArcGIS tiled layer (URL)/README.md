@@ -24,4 +24,4 @@ Pan and zoom to explore the tiled layer basemap.
 
 ## Tags
 
-basemap, tiles, tiled layer
+basemap, tiled layer, tiles

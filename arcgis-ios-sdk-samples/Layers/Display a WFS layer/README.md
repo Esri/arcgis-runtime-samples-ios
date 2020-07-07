@@ -14,7 +14,7 @@ Pan and zoom to see features within the current map extent.
 
 ## How it works
 
-1. Create an `AGSWFSFeatureTable` with a URL. 
+1. Create an `AGSWFSFeatureTable` with a URL.
 2. Set the feature request mode to `manualCache`.
 3. Create an `AGSFeatureLayer` from the feature table and add it to the map.
 4. Whenever map's view point is changed, use `AGSWFSFeatureTable.populateFromService(with:clearCache:outFields:completion:)` to load the table with data for the current visible extent.

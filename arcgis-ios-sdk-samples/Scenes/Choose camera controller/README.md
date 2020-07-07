@@ -19,11 +19,11 @@ The sample loads with the default globe camera controller. To rotate and fix the
 
 ## Relevant API
 
-* AGSScene
 * AGSCamera
 * AGSGlobeCameraController
 * AGSOrbitGeoElementCameraController
 * AGSOrbitLocationCameraController
+* AGSScene
 * AGSSceneView
 
 ## Tags

@@ -40,4 +40,4 @@ This sample uses a pre-packaged sample dataset consisting of a geodatabase with 
 
 ## Tags
 
-connectivity, disconnected, fastest, locator, navigation, network analysis, offline, routing, routing, shortest, turn-by-turn
+connectivity, disconnected, fastest, locator, navigation, network analysis, offline, routing, shortest, turn-by-turn

@@ -29,8 +29,8 @@ Since the `cities`, `counties`, and `states` tables all have a `POP2000` field, 
 
 * AGSArcGISMapImageLayer
 * AGSArcGISMapImageSublayer
-* AGSQueryParameters
 * AGSFeatureTable
+* AGSQueryParameters
 
 ## Tags
 

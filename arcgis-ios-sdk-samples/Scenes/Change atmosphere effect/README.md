@@ -10,13 +10,13 @@ Atmospheric effect can be used to make the scene view look more realistic.
 
 ## How to use the sample
 
-Tap "Change Effect" and select one of the three available atmosphere effects. The sky will change to display the selected atmosphere effect. 
+Tap "Change Effect" and select one of the three available atmosphere effects. The sky will change to display the selected atmosphere effect.
 
 ## How it works
 
 1. Create an `AGSScene` and display it in an `AGSSceneView`.
 2. Change the scene view's `atmosphereEffect` property to the desired atmosphere effect.
- 
+
 ## Relevant API
 
 * AGSAtmosphereEffect

@@ -17,12 +17,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvm-OH-P4M">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="VMY-kp-qpr"/>
                                     <barButtonItem style="plain" id="cJz-lK-z9m">
                                         <view key="customView" contentMode="scaleToFill" id="mfk-gH-NEi">
-                                            <rect key="frame" x="28.5" y="9" width="60" height="36"/>
+                                            <rect key="frame" x="33.5" y="4" width="60" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draped mode" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cB-a6-keb">
@@ -43,7 +43,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="4Jn-Q1-R1u">
                                         <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="4Re-PI-RlX">
-                                            <rect key="frame" x="88.5" y="11.5" width="51" height="31"/>
+                                            <rect key="frame" x="93.5" y="6.5" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="switchValueChanged:" destination="Wm5-sQ-VeD" eventType="valueChanged" id="z7z-sN-w0R"/>
@@ -53,20 +53,20 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="yuz-M4-cVQ"/>
                                     <barButtonItem style="plain" id="Xoz-7h-zug">
                                         <view key="customView" contentMode="scaleToFill" id="79a-Fw-r0U">
-                                            <rect key="frame" x="167.5" y="9" width="100" height="36"/>
+                                            <rect key="frame" x="178.5" y="4" width="100" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-2W-3Yg">
-                                                    <rect key="frame" x="8" y="1" width="84" height="34"/>
+                                                    <rect key="frame" x="0.0" y="1" width="92" height="34"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Z-value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrn-gF-OYG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="84" height="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9r-3X-hVh">
-                                                            <rect key="frame" x="0.0" y="17" width="84" height="17"/>
+                                                            <rect key="frame" x="0.0" y="17" width="92" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="lcW-2W-3Yg" firstAttribute="centerY" secondItem="79a-Fw-r0U" secondAttribute="centerY" id="1pc-Qc-xDv"/>
-                                                <constraint firstItem="lcW-2W-3Yg" firstAttribute="leading" secondItem="Pi5-ud-tAa" secondAttribute="leading" constant="8" id="3zF-XW-5lI"/>
+                                                <constraint firstItem="lcW-2W-3Yg" firstAttribute="leading" secondItem="Pi5-ud-tAa" secondAttribute="leading" id="3zF-XW-5lI"/>
                                                 <constraint firstAttribute="trailing" secondItem="lcW-2W-3Yg" secondAttribute="trailing" constant="8" id="COp-3Z-crH"/>
                                             </constraints>
                                             <viewLayoutGuide key="safeArea" id="Pi5-ud-tAa"/>
@@ -84,8 +84,8 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="L5g-QB-jPk">
                                         <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="70" minValue="0.0" maxValue="140" id="1gl-rZ-oz2">
-                                            <rect key="frame" x="267.5" y="10" width="118" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <rect key="frame" x="278" y="5" width="102" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="sliderValueChanged:" destination="Wm5-sQ-VeD" eventType="valueChanged" id="CLi-Ie-FB4"/>
                                             </connections>
@@ -95,7 +95,7 @@
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMK-tR-WMd" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>

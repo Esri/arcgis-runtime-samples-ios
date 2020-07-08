@@ -30,7 +30,6 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzi-IO-kfE" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="88.5" width="414" height="724.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egb-ry-ghj">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>

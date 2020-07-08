@@ -33,11 +33,9 @@ The sample loads a scene showing four points that use the individual surface pla
 
 ## About the data
 
-The scene shows a view of Brest, France. Four points are shown hovering with positions defined by each of the different surface placement modes.
+The scene shows a view of Brest, France. Four points are shown hovering with positions defined by each of the different surface placement modes (absolute, relative, relative to scene, and either draped billboarded or draped flat).
 
 ## Additional information
-
-This sample uses an elevation service to add elevation/terrain to the scene. Graphics are positioned relative to that surface for the `drapedBillboarded` and `relative` surface placement modes.
 
 This sample uses an elevation service to add elevation/terrain to the scene. Graphics are positioned relative to that surface for the `drapedBillboarded`, `drapedFlat`, and `relative` surface placement modes. It also uses a scene layer containing 3D models of buildings. Graphics are positioned relative to that scene layer for the `relativeToScene` surface placement mode.
 

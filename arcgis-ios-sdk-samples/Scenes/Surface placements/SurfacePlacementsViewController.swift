@@ -17,7 +17,8 @@
 import UIKit
 import ArcGIS
 
-/// A view controller that manages the interface of the Surface placements sample.
+/// A view controller that manages the interface of the Surface placements
+/// sample.
 class SurfacePlacementsViewController: UIViewController {
     // MARK: Instance properties
     
@@ -34,19 +35,17 @@ class SurfacePlacementsViewController: UIViewController {
             sceneView.scene = makeScene()
             sceneView.setViewpointCamera(AGSCamera(latitude: 48.3889, longitude: -4.4595, altitude: 80, heading: 330, pitch: 97, roll: 0))
             // Add graphics overlays of different surface placement modes to the scene.
-            graphicsOverlays.append(contentsOf: [
-                makeGraphicsOverlay(surfacePlacement: .drapedBillboarded),
-                makeGraphicsOverlay(surfacePlacement: .drapedFlat),
-                makeGraphicsOverlay(surfacePlacement: .relative),
-                makeGraphicsOverlay(surfacePlacement: .relativeToScene, offset: 2e-4),
-                makeGraphicsOverlay(surfacePlacement: .absolute)
-            ])
-            sceneView.graphicsOverlays.addObjects(from: graphicsOverlays)
+            overlaysBySurfacePlacement[.drapedBillboarded] = makeGraphicsOverlay(surfacePlacement: .drapedBillboarded)
+            overlaysBySurfacePlacement[.drapedFlat] = makeGraphicsOverlay(surfacePlacement: .drapedFlat)
+            overlaysBySurfacePlacement[.relative] = makeGraphicsOverlay(surfacePlacement: .relative)
+            overlaysBySurfacePlacement[.relativeToScene] = makeGraphicsOverlay(surfacePlacement: .relativeToScene, offset: 2e-4)
+            overlaysBySurfacePlacement[.absolute] = makeGraphicsOverlay(surfacePlacement: .absolute)
+            sceneView.graphicsOverlays.addObjects(from: overlaysBySurfacePlacement.map { $0.value })
         }
     }
     
-    /// The graphics overlays of different surface placement modes.
-    var graphicsOverlays = [AGSGraphicsOverlay]()
+    /// A dictionary for graphics overlays of different surface placement modes.
+    var overlaysBySurfacePlacement = [AGSSurfacePlacement: AGSGraphicsOverlay]()
     /// A formatter to format z-value strings.
     let zValueFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -58,32 +57,19 @@ class SurfacePlacementsViewController: UIViewController {
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         // Toggle the visibility of two draped mode graphics overlays respectively.
-        graphicsOverlays.forEach { graphicOverlay in
-            switch graphicOverlay.sceneProperties!.surfacePlacement {
-            case AGSSurfacePlacement.drapedFlat:
-                graphicOverlay.isVisible = sender.isOn
-            case AGSSurfacePlacement.drapedBillboarded:
-                graphicOverlay.isVisible = !sender.isOn
-            default:
-                return
-            }
-        }
+        overlaysBySurfacePlacement[.drapedFlat]!.isVisible = sender.isOn
+        overlaysBySurfacePlacement[.drapedBillboarded]!.isVisible = !sender.isOn
     }
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let zValue = Double(sender.value)
         zValueLabel.text = zValueFormatter.string(from: zValue as NSNumber)!
         // Set the z-value of each geometry of surface placement graphics.
-        graphicsOverlays.forEach { graphicOverlay in
+        overlaysBySurfacePlacement.values.forEach { graphicOverlay in
             graphicOverlay.graphics.forEach { graphic in
                 let currentGraphic = graphic as! AGSGraphic
                 let originalPoint = currentGraphic.geometry as! AGSPoint
-                let newPoint = AGSPoint(
-                    x: originalPoint.x,
-                    y: originalPoint.y,
-                    z: zValue,
-                    spatialReference: originalPoint.spatialReference
-                )
+                let newPoint = AGSGeometryEngine.geometry(bySettingZ: zValue, in: originalPoint) as! AGSPoint
                 currentGraphic.geometry = newPoint
             }
         }
@@ -136,7 +122,6 @@ class SurfacePlacementsViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SurfacePlacementsViewController"]
         // Initialize the draped mode visibility.
-        drapedModeSwitch.isOn = false
         switchValueChanged(drapedModeSwitch)
     }
 }

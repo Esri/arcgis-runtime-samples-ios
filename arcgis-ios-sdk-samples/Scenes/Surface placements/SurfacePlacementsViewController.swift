@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-/// A view controller that manages the interface of the Surface placements
+/// A view controller that manages the interface of the Surface Placements
 /// sample.
 class SurfacePlacementsViewController: UIViewController {
     // MARK: Instance properties

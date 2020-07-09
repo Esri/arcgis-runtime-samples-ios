@@ -92,7 +92,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MxU-mV-lW9" customClass="ArcGISARView" customModule="ArcGISToolkit">
                                 <rect key="frame" x="0.0" y="20.5" width="414" height="738.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLn-Ol-JFu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>

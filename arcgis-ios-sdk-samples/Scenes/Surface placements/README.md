@@ -30,6 +30,7 @@ The sample loads a scene showing four points that use the individual surface pla
 * AGSLayerSceneProperties
 * AGSSurfacePlacement
 * AGSSurface
+* class AGSGeometryEngine.geometry(bySettingZ:in:)
 
 ## About the data
 

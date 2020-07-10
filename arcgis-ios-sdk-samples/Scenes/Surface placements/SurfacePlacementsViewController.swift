@@ -69,10 +69,8 @@ class SurfacePlacementsViewController: UIViewController {
         // Set the z-value of each geometry of surface placement graphics.
         overlaysBySurfacePlacement.values.forEach { graphicOverlay in
             graphicOverlay.graphics.forEach { graphic in
-                let currentGraphic = graphic as! AGSGraphic
-                let originalPoint = currentGraphic.geometry as! AGSPoint
-                let newPoint = AGSGeometryEngine.geometry(bySettingZ: zValue, in: originalPoint) as! AGSPoint
-                currentGraphic.geometry = newPoint
+                let g = graphic as! AGSGraphic
+                g.geometry = AGSGeometryEngine.geometry(bySettingZ: zValue, in: g.geometry!)
             }
         }
     }

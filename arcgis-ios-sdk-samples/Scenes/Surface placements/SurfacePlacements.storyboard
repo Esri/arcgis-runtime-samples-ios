@@ -67,13 +67,33 @@
                                 <rect key="frame" x="0.0" y="769" width="414" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="PVB-DB-c7R"/>
+                                    <barButtonItem style="plain" id="awX-XF-bnW">
+                                        <view key="customView" contentMode="scaleToFill" id="Uai-Ez-gEU">
+                                            <rect key="frame" x="32" y="5.5" width="100" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draped mode" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fl-tu-C1Z">
+                                                    <rect key="frame" x="0.0" y="-0.5" width="92" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7eI-og-0CK" firstAttribute="trailing" secondItem="5fl-tu-C1Z" secondAttribute="trailing" constant="8" id="Bw0-wN-N81"/>
+                                                <constraint firstItem="5fl-tu-C1Z" firstAttribute="leading" secondItem="7eI-og-0CK" secondAttribute="leading" id="knC-LK-6H2"/>
+                                                <constraint firstItem="5fl-tu-C1Z" firstAttribute="centerY" secondItem="Uai-Ez-gEU" secondAttribute="centerY" id="vTE-7d-lfZ"/>
+                                            </constraints>
+                                            <viewLayoutGuide key="safeArea" id="7eI-og-0CK"/>
+                                        </view>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" id="4bj-UX-pB2">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="yTQ-cO-QvB">
-                                            <rect key="frame" x="20" y="5.5" width="374" height="33"/>
+                                            <rect key="frame" x="132" y="5.5" width="250" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
-                                                <segment title="Draped Billboarded"/>
-                                                <segment title="Draped Flat"/>
+                                                <segment title="Billboarded"/>
+                                                <segment title="Flat"/>
                                             </segments>
                                             <connections>
                                                 <action selector="segmentedControlValueChanged:" destination="Wm5-sQ-VeD" eventType="valueChanged" id="P8a-sQ-jxK"/>

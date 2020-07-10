@@ -26,8 +26,8 @@ class SurfacePlacementsViewController: UIViewController {
     @IBOutlet weak var zValueLabel: UILabel!
     /// The slider to change z-value of `AGSPoint` geometries, from 0 to 140 in meters.
     @IBOutlet weak var zValueSlider: UISlider!
-    /// The switch to toggle the visibility of two draped mode graphics overlays.
-    @IBOutlet weak var drapedModeSwitch: UISwitch!
+    /// The segmented control to toggle the visibility of two draped mode graphics overlays.
+    @IBOutlet weak var drapedModeSegmentedControl: UISegmentedControl!
     
     /// The scene view managed by the view controller.
     @IBOutlet var sceneView: AGSSceneView! {
@@ -47,23 +47,25 @@ class SurfacePlacementsViewController: UIViewController {
     /// A dictionary for graphics overlays of different surface placement modes.
     var overlaysBySurfacePlacement = [AGSSurfacePlacement: AGSGraphicsOverlay]()
     /// A formatter to format z-value strings.
-    let zValueFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .none
+    let zValueFormatter: LengthFormatter = {
+        let formatter = LengthFormatter()
+        formatter.unitStyle = .short
+        formatter.numberFormatter.maximumFractionDigits = 0
         return formatter
     }()
     
     // MARK: - Actions
     
-    @IBAction func switchValueChanged(_ sender: UISwitch) {
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         // Toggle the visibility of two draped mode graphics overlays respectively.
-        overlaysBySurfacePlacement[.drapedFlat]!.isVisible = sender.isOn
-        overlaysBySurfacePlacement[.drapedBillboarded]!.isVisible = !sender.isOn
+        let isDrapedFlat = sender.selectedSegmentIndex == 1
+        overlaysBySurfacePlacement[.drapedFlat]!.isVisible = isDrapedFlat
+        overlaysBySurfacePlacement[.drapedBillboarded]!.isVisible = !isDrapedFlat
     }
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let zValue = Double(sender.value)
-        zValueLabel.text = zValueFormatter.string(from: zValue as NSNumber)!
+        zValueLabel.text = zValueFormatter.string(fromValue: zValue, unit: .meter)
         // Set the z-value of each geometry of surface placement graphics.
         overlaysBySurfacePlacement.values.forEach { graphicOverlay in
             graphicOverlay.graphics.forEach { graphic in
@@ -103,12 +105,12 @@ class SurfacePlacementsViewController: UIViewController {
     ///   - offset: A offset added to x and y of the geometry, to better differentiate geometries.
     /// - Returns: A new `AGSGraphicsOverlay` object.
     func makeGraphicsOverlay(surfacePlacement: AGSSurfacePlacement, offset: Double = 0) -> AGSGraphicsOverlay {
-        let symbols = [
-            AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 20),
-            AGSTextSymbol(text: surfacePlacement.title, color: .blue, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
-        ]
+        let markerSymbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 20)
+        let textSymbol = AGSTextSymbol(text: surfacePlacement.title, color: .magenta, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
+        // Add offset to avoid overlapping text and marker.
+        textSymbol.offsetY = 20
         let surfaceRelatedPoint = AGSPoint(x: -4.4609257 + offset, y: 48.3903965 + offset, z: 70, spatialReference: .wgs84())
-        let graphics = symbols.map { AGSGraphic(geometry: surfaceRelatedPoint, symbol: $0) }
+        let graphics = [markerSymbol, textSymbol].map { AGSGraphic(geometry: surfaceRelatedPoint, symbol: $0) }
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = surfacePlacement
         graphicsOverlay.graphics.addObjects(from: graphics)
@@ -122,7 +124,7 @@ class SurfacePlacementsViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SurfacePlacementsViewController"]
         // Initialize the draped mode visibility.
-        switchValueChanged(drapedModeSwitch)
+        segmentedControlValueChanged(drapedModeSegmentedControl)
     }
 }
 

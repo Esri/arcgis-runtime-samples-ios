@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lsE-YP-SDb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lsE-YP-SDb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -228,10 +228,8 @@
                         <outlet property="addConditionLabel" destination="mA0-Rc-Jdx" id="fs0-m4-XdE"/>
                         <outlet property="attributeLabel" destination="qxg-Ri-n2T" id="7Ib-Kp-D64"/>
                         <outlet property="attributesCell" destination="6aY-ho-9ka" id="R4B-ew-R0C"/>
-                        <outlet property="barriersSwitch" destination="8yb-t9-UXd" id="ejc-qj-qZ8"/>
                         <outlet property="comparisonCell" destination="Wxr-c1-p7X" id="jOa-Cs-h0T"/>
                         <outlet property="comparisonLabel" destination="cSO-tT-BbZ" id="gN9-Mu-zpC"/>
-                        <outlet property="containersSwitch" destination="bIf-qK-5us" id="nbr-3e-bVk"/>
                         <outlet property="resetButton" destination="15J-JS-NkS" id="wrp-iv-UaX"/>
                         <outlet property="resetLabel" destination="Anm-Eb-DIz" id="q7R-ee-OUZ"/>
                         <outlet property="textView" destination="gnI-4M-9td" id="dwN-Sc-jPp"/>
@@ -246,25 +244,19 @@
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="8yb-t9-UXd" userLabel="Barriers Switch">
                     <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <connections>
-                        <action selector="barriersSwitchAction:" destination="ylb-wE-Z90" eventType="valueChanged" id="4pP-Ji-Tdd"/>
-                    </connections>
                 </switch>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="bIf-qK-5us" userLabel="Containers Switch">
                     <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <connections>
-                        <action selector="containersSwitchAction:" destination="ylb-wE-Z90" eventType="valueChanged" id="hdq-46-w3R"/>
-                    </connections>
                 </switch>
             </objects>
             <point key="canvasLocation" x="1786.9565217391305" y="85.714285714285708"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Configure Subnetwork Trace View Controller-->
         <scene sceneID="Uoq-bp-d4o">
             <objects>
-                <tableViewController id="lsE-YP-SDb" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MTU-hO-frR">
+                <tableViewController id="lsE-YP-SDb" customClass="ConfigureSubnetworkTraceViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MTU-hO-frR" customClass="ConfigureSubnetwork">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -286,11 +278,11 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SelectionCell" textLabel="ggq-Nv-ot2" detailTextLabel="MJZ-Nk-0IK" style="IBUITableViewCellStyleValue1" id="efZ-xc-qcx">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectionCell" textLabel="ggq-Nv-ot2" detailTextLabel="MJZ-Nk-0IK" style="IBUITableViewCellStyleValue1" id="efZ-xc-qcx">
                                 <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="efZ-xc-qcx" id="6i0-Ne-BHa">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ggq-Nv-ot2">
@@ -300,8 +292,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MJZ-Nk-0IK">
-                                            <rect key="frame" x="331" y="12" width="44" height="20.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MJZ-Nk-0IK">
+                                            <rect key="frame" x="350" y="12" width="44" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -333,7 +325,25 @@
                             <outlet property="delegate" destination="lsE-YP-SDb" id="skZ-8U-ALX"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="barriersSwitch" destination="wNQ-FV-0T2" id="pxV-HN-7vK"/>
+                        <outlet property="containersSwitch" destination="DQh-jP-zoT" id="TdB-mi-Ap4"/>
+                    </connections>
                 </tableViewController>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="wNQ-FV-0T2" userLabel="Barriers Switch">
+                    <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="barriersSwitchAction:" destination="ylb-wE-Z90" eventType="valueChanged" id="fKd-ew-Kwj"/>
+                    </connections>
+                </switch>
+                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="DQh-jP-zoT" userLabel="Containers Switch">
+                    <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="containersSwitchAction:" destination="ylb-wE-Z90" eventType="valueChanged" id="MiU-AD-xOq"/>
+                    </connections>
+                </switch>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z51-mG-Bfy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2504" y="86"/>

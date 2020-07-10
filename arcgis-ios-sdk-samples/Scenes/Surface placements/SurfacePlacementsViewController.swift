@@ -54,7 +54,7 @@ class SurfacePlacementsViewController: UIViewController {
     let zValueFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
         formatter.unitStyle = .short
-        formatter.unitOptions = .providedUnit
+        formatter.unitOptions = .naturalScale
         formatter.numberFormatter.maximumFractionDigits = 0
         return formatter
     }()
@@ -126,8 +126,9 @@ class SurfacePlacementsViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SurfacePlacementsViewController"]
-        // Initialize the draped mode visibility.
+        // Initialize the slider and draped mode visibility.
         segmentedControlValueChanged(drapedModeSegmentedControl)
+        sliderValueChanged(zValueSlider)
     }
 }
 

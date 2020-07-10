@@ -70,7 +70,7 @@ class SurfacePlacementsViewController: UIViewController {
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let zValue = Double(sender.value)
-        zValueLabel.text = zValueFormatter.string(from: Measurement<UnitLength>(value: zValue, unit: UnitLength.meters))
+        zValueLabel.text = zValueFormatter.string(from: Measurement<UnitLength>(value: zValue, unit: .meters))
         // Set the z-value of each geometry of surface placement graphics.
         overlaysBySurfacePlacement.values.forEach { graphicOverlay in
             graphicOverlay.graphics.forEach { graphic in

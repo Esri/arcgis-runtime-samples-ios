@@ -35,21 +35,26 @@ class SurfacePlacementsViewController: UIViewController {
             sceneView.scene = makeScene()
             sceneView.setViewpointCamera(AGSCamera(latitude: 48.3889, longitude: -4.4595, altitude: 80, heading: 330, pitch: 97, roll: 0))
             // Add graphics overlays of different surface placement modes to the scene.
-            overlaysBySurfacePlacement[.drapedBillboarded] = makeGraphicsOverlay(surfacePlacement: .drapedBillboarded)
-            overlaysBySurfacePlacement[.drapedFlat] = makeGraphicsOverlay(surfacePlacement: .drapedFlat)
-            overlaysBySurfacePlacement[.relative] = makeGraphicsOverlay(surfacePlacement: .relative)
-            overlaysBySurfacePlacement[.relativeToScene] = makeGraphicsOverlay(surfacePlacement: .relativeToScene, offset: 2e-4)
-            overlaysBySurfacePlacement[.absolute] = makeGraphicsOverlay(surfacePlacement: .absolute)
-            sceneView.graphicsOverlays.addObjects(from: overlaysBySurfacePlacement.map { $0.value })
+            let surfacePlacements: [AGSSurfacePlacement] = [
+                .drapedBillboarded,
+                .drapedFlat,
+                .relative,
+                .relativeToScene,
+                .absolute
+            ]
+            let overlays = surfacePlacements.map(makeGraphicsOverlay)
+            overlaysBySurfacePlacement = Dictionary(uniqueKeysWithValues: zip(surfacePlacements, overlays))
+            sceneView.graphicsOverlays.addObjects(from: overlays)
         }
     }
     
     /// A dictionary for graphics overlays of different surface placement modes.
     var overlaysBySurfacePlacement = [AGSSurfacePlacement: AGSGraphicsOverlay]()
     /// A formatter to format z-value strings.
-    let zValueFormatter: LengthFormatter = {
-        let formatter = LengthFormatter()
+    let zValueFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
         formatter.unitStyle = .short
+        formatter.unitOptions = .providedUnit
         formatter.numberFormatter.maximumFractionDigits = 0
         return formatter
     }()
@@ -65,7 +70,7 @@ class SurfacePlacementsViewController: UIViewController {
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let zValue = Double(sender.value)
-        zValueLabel.text = zValueFormatter.string(fromValue: zValue, unit: .meter)
+        zValueLabel.text = zValueFormatter.string(from: Measurement<UnitLength>(value: zValue, unit: UnitLength.meters))
         // Set the z-value of each geometry of surface placement graphics.
         overlaysBySurfacePlacement.values.forEach { graphicOverlay in
             graphicOverlay.graphics.forEach { graphic in
@@ -100,13 +105,14 @@ class SurfacePlacementsViewController: UIViewController {
     ///
     /// - Parameters:
     ///   - surfacePlacement: The surface placement for which to create a graphics overlay.
-    ///   - offset: A offset added to x and y of the geometry, to better differentiate geometries.
     /// - Returns: A new `AGSGraphicsOverlay` object.
-    func makeGraphicsOverlay(surfacePlacement: AGSSurfacePlacement, offset: Double = 0) -> AGSGraphicsOverlay {
+    func makeGraphicsOverlay(surfacePlacement: AGSSurfacePlacement) -> AGSGraphicsOverlay {
         let markerSymbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 20)
         let textSymbol = AGSTextSymbol(text: surfacePlacement.title, color: .magenta, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
         // Add offset to avoid overlapping text and marker.
         textSymbol.offsetY = 20
+        // Add offset to x and y of the geometry, to better differentiate certain geometries.
+        let offset = surfacePlacement == .relativeToScene ? 2e-4 : 0
         let surfaceRelatedPoint = AGSPoint(x: -4.4609257 + offset, y: 48.3903965 + offset, z: 70, spatialReference: .wgs84())
         let graphics = [markerSymbol, textSymbol].map { AGSGraphic(geometry: surfaceRelatedPoint, symbol: $0) }
         let graphicsOverlay = AGSGraphicsOverlay()

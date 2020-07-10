@@ -103,8 +103,7 @@ class SurfacePlacementsViewController: UIViewController {
     
     /// Create a graphics overlay for the given surface placement.
     ///
-    /// - Parameters:
-    ///   - surfacePlacement: The surface placement for which to create a graphics overlay.
+    /// - Parameter surfacePlacement: The surface placement for which to create a graphics overlay.
     /// - Returns: A new `AGSGraphicsOverlay` object.
     func makeGraphicsOverlay(surfacePlacement: AGSSurfacePlacement) -> AGSGraphicsOverlay {
         let markerSymbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 20)

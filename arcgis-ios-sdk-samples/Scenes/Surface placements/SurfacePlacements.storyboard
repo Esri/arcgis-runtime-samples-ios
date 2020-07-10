@@ -17,43 +17,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvm-OH-P4M">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="VMY-kp-qpr"/>
-                                    <barButtonItem style="plain" id="cJz-lK-z9m">
-                                        <view key="customView" contentMode="scaleToFill" id="mfk-gH-NEi">
-                                            <rect key="frame" x="33.5" y="4" width="60" height="36"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draped mode" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cB-a6-keb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="36"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="QBA-fl-Opn" firstAttribute="bottom" secondItem="1cB-a6-keb" secondAttribute="bottom" id="7HU-yQ-2ZG"/>
-                                                <constraint firstItem="1cB-a6-keb" firstAttribute="leading" secondItem="QBA-fl-Opn" secondAttribute="leading" id="R7l-p9-Mmf"/>
-                                                <constraint firstItem="QBA-fl-Opn" firstAttribute="trailing" secondItem="1cB-a6-keb" secondAttribute="trailing" constant="8" id="SVM-cf-RgY"/>
-                                                <constraint firstItem="1cB-a6-keb" firstAttribute="top" secondItem="QBA-fl-Opn" secondAttribute="top" id="j6U-Mw-ll0"/>
-                                            </constraints>
-                                            <viewLayoutGuide key="safeArea" id="QBA-fl-Opn"/>
-                                        </view>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" id="4Jn-Q1-R1u">
-                                        <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="4Re-PI-RlX">
-                                            <rect key="frame" x="93.5" y="6.5" width="51" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <connections>
-                                                <action selector="switchValueChanged:" destination="Wm5-sQ-VeD" eventType="valueChanged" id="z7z-sN-w0R"/>
-                                            </connections>
-                                        </switch>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="yuz-M4-cVQ"/>
                                     <barButtonItem style="plain" id="Xoz-7h-zug">
                                         <view key="customView" contentMode="scaleToFill" id="79a-Fw-r0U">
-                                            <rect key="frame" x="178.5" y="4" width="100" height="36"/>
+                                            <rect key="frame" x="87" y="9" width="100" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-2W-3Yg">
@@ -65,7 +34,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9r-3X-hVh">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9r-3X-hVh">
                                                             <rect key="frame" x="0.0" y="17" width="92" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
@@ -84,7 +53,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="L5g-QB-jPk">
                                         <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="70" minValue="0.0" maxValue="140" id="1gl-rZ-oz2">
-                                            <rect key="frame" x="278" y="5" width="102" height="34"/>
+                                            <rect key="frame" x="187" y="10" width="140" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="sliderValueChanged:" destination="Wm5-sQ-VeD" eventType="valueChanged" id="CLi-Ie-FB4"/>
@@ -94,21 +63,44 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wna-Tk-U5n"/>
                                 </items>
                             </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWj-fZ-V3J">
+                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="PVB-DB-c7R"/>
+                                    <barButtonItem style="plain" id="4bj-UX-pB2">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="yTQ-cO-QvB">
+                                            <rect key="frame" x="20" y="5.5" width="374" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Draped Billboarded"/>
+                                                <segment title="Draped Flat"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentedControlValueChanged:" destination="Wm5-sQ-VeD" eventType="valueChanged" id="P8a-sQ-jxK"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dY9-4K-3Eq"/>
+                                </items>
+                            </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMK-tR-WMd" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Wvm-OH-P4M" firstAttribute="trailing" secondItem="vTi-g5-viN" secondAttribute="trailing" id="2jx-DH-wqK"/>
-                            <constraint firstItem="Wvm-OH-P4M" firstAttribute="top" secondItem="eMK-tR-WMd" secondAttribute="bottom" id="3eS-z6-aGn"/>
+                            <constraint firstItem="eWj-fZ-V3J" firstAttribute="top" secondItem="eMK-tR-WMd" secondAttribute="bottom" id="3eS-z6-aGn"/>
                             <constraint firstItem="eMK-tR-WMd" firstAttribute="leading" secondItem="vTi-g5-viN" secondAttribute="leading" id="BPx-al-GJx"/>
                             <constraint firstItem="eMK-tR-WMd" firstAttribute="top" secondItem="VX6-X5-GRv" secondAttribute="top" id="IAk-cC-YtC"/>
                             <constraint firstItem="VX6-X5-GRv" firstAttribute="bottom" secondItem="Wvm-OH-P4M" secondAttribute="bottom" id="KGe-1b-Vnb"/>
                             <constraint firstItem="eMK-tR-WMd" firstAttribute="top" secondItem="VX6-X5-GRv" secondAttribute="top" id="gdS-Qf-61f"/>
                             <constraint firstAttribute="trailing" secondItem="eMK-tR-WMd" secondAttribute="trailing" id="hKG-va-Sld"/>
+                            <constraint firstItem="Wvm-OH-P4M" firstAttribute="top" secondItem="eWj-fZ-V3J" secondAttribute="bottom" id="iFM-6X-TXh"/>
                             <constraint firstItem="Wvm-OH-P4M" firstAttribute="leading" secondItem="vTi-g5-viN" secondAttribute="leading" id="iy4-Qh-cUk"/>
+                            <constraint firstItem="eWj-fZ-V3J" firstAttribute="trailing" secondItem="vTi-g5-viN" secondAttribute="trailing" id="lRa-PH-PvC"/>
+                            <constraint firstItem="eWj-fZ-V3J" firstAttribute="leading" secondItem="vTi-g5-viN" secondAttribute="leading" id="y0M-bM-mk2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VX6-X5-GRv"/>
                         <variation key="default">
@@ -118,7 +110,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="drapedModeSwitch" destination="4Re-PI-RlX" id="33s-XZ-Kqm"/>
+                        <outlet property="drapedModeSegmentedControl" destination="yTQ-cO-QvB" id="zCP-h3-bkP"/>
                         <outlet property="sceneView" destination="eMK-tR-WMd" id="xW3-Zv-bXI"/>
                         <outlet property="zValueLabel" destination="P9r-3X-hVh" id="hk8-UH-oVb"/>
                         <outlet property="zValueSlider" destination="1gl-rZ-oz2" id="BpY-sp-n0F"/>

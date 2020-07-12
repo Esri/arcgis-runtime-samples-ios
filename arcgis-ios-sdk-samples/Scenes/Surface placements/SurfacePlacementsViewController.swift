@@ -107,7 +107,7 @@ class SurfacePlacementsViewController: UIViewController {
     /// - Returns: A new `AGSGraphicsOverlay` object.
     func makeGraphicsOverlay(surfacePlacement: AGSSurfacePlacement) -> AGSGraphicsOverlay {
         let markerSymbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 20)
-        let textSymbol = AGSTextSymbol(text: surfacePlacement.title, color: .magenta, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
+        let textSymbol = AGSTextSymbol(text: surfacePlacement.title, color: .blue, size: 20, horizontalAlignment: .left, verticalAlignment: .middle)
         // Add offset to avoid overlapping text and marker.
         textSymbol.offsetY = 20
         // Add offset to x and y of the geometry, to better differentiate certain geometries.

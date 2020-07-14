@@ -38,7 +38,7 @@ The sample shows trailheads in the greater Los Angeles area displayed on top of 
 
 One of the ArcGIS Runtime data set types that can be accessed via the local storage of the device (i.e. hard drive, flash drive, micro SD card, USB stick, etc.) is a mobile geodatabase. A mobile geodatabase can be provisioned for use in an ArcGIS Runtime application by ArcMap. The following provide some helpful tips on how to create a mobile geodatabase file:
 
-In ArcMap, choose File > Share As > ArcGIS Runtime Content from the menu items to create the .geodatabase file (see the [create content document]( https://desktop.arcgis.com/en/arcmap/latest/map/working-with-arcmap/creating-arcgis-runtime-content.htm)).
+In ArcMap, choose File > Share As > ArcGIS Runtime Content from the menu items to create the .geodatabase file (see the [create content document](https://desktop.arcgis.com/en/arcmap/latest/map/working-with-arcmap/creating-arcgis-runtime-content.htm)).
 
 Note: You could also use the 'Services Pattern' and access the `AGSGeodatabase` class via a Feature Service served up via ArcGIS Online or ArcGIS Enterprise. Instead of using `AGSGeodatabase` to access the .geodatabase file on disk, you would use `AGSGeodatabaseSyncTask` to load a geodatabase from a URL instead. For more information review the [take a layer offline document](https://developers.arcgis.com/ios/latest/swift/guide/take-a-layer-offline.htm).
 

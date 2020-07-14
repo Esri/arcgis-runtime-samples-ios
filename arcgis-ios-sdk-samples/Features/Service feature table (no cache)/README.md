@@ -23,7 +23,7 @@ Run the sample and pan and zoom around the map. With each interaction, new featu
 * AGSFeatureRequestMode.onInteractionNoCache
 * AGSServiceFeatureTable
 * AGSServiceFeatureTable.featureRequestMode
-* AGSServiceFeatureTable.populateFromService
+* AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)
 
 ## About the data
 

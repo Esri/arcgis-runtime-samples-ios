@@ -14,7 +14,7 @@
         "AGSFeatureRequestMode.manualCache",
         "AGSServiceFeatureTable",
         "AGSServiceFeatureTable.featureRequestMode",
-        "AGSServiceFeatureTable.populateFromService"
+        "AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)"
     ],
     "redirect_from": [
         "/ios/latest/swift/sample-code/service-feature-table-manual-cache-.htm"
@@ -25,7 +25,7 @@
         "AGSFeatureRequestMode.manualCache",
         "AGSServiceFeatureTable",
         "AGSServiceFeatureTable.featureRequestMode",
-        "AGSServiceFeatureTable.populateFromService"
+        "AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)"
     ],
     "snippets": [
         "ManualCacheViewController.swift"

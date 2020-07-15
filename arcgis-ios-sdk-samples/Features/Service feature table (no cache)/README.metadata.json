@@ -12,8 +12,7 @@
         "AGSFeatureLayer",
         "AGSFeatureRequestMode.onInteractionNoCache",
         "AGSServiceFeatureTable",
-        "AGSServiceFeatureTable.featureRequestMode",
-        "AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)"
+        "AGSServiceFeatureTable.featureRequestMode"
     ],
     "redirect_from": [
         "/ios/latest/swift/sample-code/service-feature-table-no-cache-.htm"
@@ -22,8 +21,7 @@
         "AGSFeatureLayer",
         "AGSFeatureRequestMode.onInteractionNoCache",
         "AGSServiceFeatureTable",
-        "AGSServiceFeatureTable.featureRequestMode",
-        "AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)"
+        "AGSServiceFeatureTable.featureRequestMode"
     ],
     "snippets": [
         "OnInteractionNoCacheViewController.swift"

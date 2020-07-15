@@ -20,7 +20,8 @@
         "AGSGraphicsOverlay",
         "AGSLayerSceneProperties",
         "AGSSurface",
-        "AGSSurfacePlacement"
+        "AGSSurfacePlacement",
+        "class AGSGeometryEngine.geometry(bySettingZ:in:)"
     ],
     "redirect_from": [
         "/ios/latest/swift/sample-code/surface-placements.htm"
@@ -30,7 +31,8 @@
         "AGSGraphicsOverlay",
         "AGSLayerSceneProperties",
         "AGSSurface",
-        "AGSSurfacePlacement"
+        "AGSSurfacePlacement",
+        "class AGSGeometryEngine.geometry(bySettingZ:in:)"
     ],
     "snippets": [
         "SurfacePlacementsViewController.swift"

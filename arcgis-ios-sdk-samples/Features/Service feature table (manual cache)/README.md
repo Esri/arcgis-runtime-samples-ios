@@ -24,8 +24,8 @@ Run the sample and pan and zoom around the map. No features will be requested an
 * AGSFeatureRequestMode
 * AGSFeatureRequestMode.manualCache
 * AGSServiceFeatureTable
-* AGSServiceFeatureTable.populateFromService
 * AGSServiceFeatureTable.featureRequestMode
+* AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)
 
 ## About the data
 

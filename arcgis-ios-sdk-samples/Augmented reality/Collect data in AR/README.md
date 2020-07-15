@@ -29,10 +29,10 @@ When you tap, an orange diamond will appear at the tapped location. You can move
 
 ## Relevant API
 
-* ArcGISARView
 * AGSGraphicsOverlay
 * AGSSceneView
 * AGSSurface
+* ArcGISARView
 
 ## About the data
 

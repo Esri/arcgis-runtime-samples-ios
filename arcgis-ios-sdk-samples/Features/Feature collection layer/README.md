@@ -14,12 +14,12 @@ When launched, this sample displays an `AGSFeatureCollectionLayer` with an `AGSP
 
 ## How it works
 
-1. Create an `AGSFeatureCollectionTable` for each of the geometry types `AGSPoint`, `AGSPolyline`, and `AGSPolygon` using `AGSFeatureCollectionTable.init(fields:geometryType:spatialReference:)`.  
-    i. Create the schema for each feature collection table by creating an array of `AGSField`s.    
-    ii. Create an `AGSFeatureCollectionTable` with the fields created.  
-    iii. Create an `AGSSimpleRenderer` from an `AGSSimpleMarkerSymbol`.  
-    iv. Create a new point feature using `AGSFeatureTable.createFeature()`.  
-    v. Add the feature to the `AGSFeatureCollectionTable`.  
+1. Create an `AGSFeatureCollectionTable` for each of the geometry types `AGSPoint`, `AGSPolyline`, and `AGSPolygon` using `AGSFeatureCollectionTable.init(fields:geometryType:spatialReference:)`.
+    1. Create the schema for each feature collection table by creating an array of `AGSField`s.
+    2. Create an `AGSFeatureCollectionTable` with the fields created.
+    3. Create an `AGSSimpleRenderer` from an `AGSSimpleMarkerSymbol`.
+    4. Create a new point feature using `AGSFeatureTable.createFeature()`.
+    5. Add the feature to the `AGSFeatureCollectionTable`.
 2. Create an `AGSFeatureCollection` from the `AGSFeatureCollectionTable`s.
 3. Create an `AGSFeatureCollectionLayer` using the `AGSFeatureCollection`.
 4. Add the feature collection layer to the map's, `operationalLayers`.

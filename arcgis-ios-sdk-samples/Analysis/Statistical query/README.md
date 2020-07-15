@@ -23,9 +23,9 @@ Pan and zoom to define the extent for the query. Use the "Cities in current exte
 
 * AGSServiceFeatureTable
 * AGSStatisticDefinition
+* AGSStatisticRecord
 * AGSStatisticsQueryParameters
 * AGSStatisticsQueryResult
-* AGSStatisticRecord
 * AGSStatisticType
 
 ## Tags

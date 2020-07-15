@@ -32,7 +32,7 @@ This sample shows a [Johannesburg, South Africa Scene](https://www.arcgis.com/ho
 ## Relevant API
 
 * AGSAnalysisOverlay
-* AGSGeodeticDistanceResult 
+* AGSGeodeticDistanceResult
 * AGSGeoElementViewshed
 * AGSGeometryEngine
 * AGSModelSceneSymbol

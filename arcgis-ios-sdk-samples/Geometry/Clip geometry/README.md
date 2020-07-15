@@ -14,16 +14,16 @@ Tap the button to clip the blue graphic with the red dashed envelopes.
 
 ## How it works
 
-1.  Use the static method `class AGSGeometryEngine.clipGeometry(_:with:)` to generate a clipped `AGSGeometry`, passing in an existing `AGSGeometry` and an `AGSEnvelope` as parameters.  The existing geometry will be clipped where it intersects an envelope.
-2.  Create a new `AGSGraphic` from the clipped geometry and add it to an `AGSGraphicsOverlay` on the `AGSMapView`.
+1. Use the static method `class AGSGeometryEngine.clipGeometry(_:with:)` to generate a clipped `AGSGeometry`, passing in an existing `AGSGeometry` and an `AGSEnvelope` as parameters.  The existing geometry will be clipped where it intersects an envelope.
+2. Create a new `AGSGraphic` from the clipped geometry and add it to an `AGSGraphicsOverlay` on the `AGSMapView`.
 
 ## Relevant API
 
-* class AGSGeometryEngine.clipGeometry(_:with:)
 * AGSEnvelope
 * AGSGeometry
 * AGSGraphic
 * AGSGraphicsOverlay
+* class AGSGeometryEngine.clipGeometry(_:with:)
 
 ## Additional information
 

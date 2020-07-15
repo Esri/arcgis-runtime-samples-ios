@@ -29,7 +29,7 @@ Tap the "Sublayers" button and use the switches to manually set "Open" and "Clos
 * AGSAnnotationSublayer
 * AGSLayerContent
 
-## Offline Data
+## Offline data
 
 This sample uses the [Gas Device Anno](https://arcgisruntime.maps.arcgis.com/home/item.html?id=b87307dcfb26411eb2e92e1627cb615b) Mobile Map Package. It is downloaded from ArcGIS Online automatically.
 

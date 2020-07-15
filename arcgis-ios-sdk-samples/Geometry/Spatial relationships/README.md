@@ -19,13 +19,6 @@ Tap on the map to select one of the three graphics, and its geometry will be use
 
 ## Relevant API
 
-* class AGSGeometryEngine.geometry(_:contains:)
-* class AGSGeometryEngine.geometry(_:crossesGeometry:)
-* class AGSGeometryEngine.geometry(_:disjointTo:)
-* class AGSGeometryEngine.geometry(_:intersects:)
-* class AGSGeometryEngine.geometry(_:overlapsGeometry:)
-* class AGSGeometryEngine.geometry(_:touchesGeometry:)
-* class AGSGeometryEngine.geometry(_:within:)
 * AGSGeometry
 * AGSGeometryEngine
 * AGSGeometryType
@@ -33,6 +26,13 @@ Tap on the map to select one of the three graphics, and its geometry will be use
 * AGSPoint
 * AGSPolygon
 * AGSPolyline
+* class AGSGeometryEngine.geometry(_:contains:)
+* class AGSGeometryEngine.geometry(_:crossesGeometry:)
+* class AGSGeometryEngine.geometry(_:disjointTo:)
+* class AGSGeometryEngine.geometry(_:intersects:)
+* class AGSGeometryEngine.geometry(_:overlapsGeometry:)
+* class AGSGeometryEngine.geometry(_:touchesGeometry:)
+* class AGSGeometryEngine.geometry(_:within:)
 
 ## Tags
 

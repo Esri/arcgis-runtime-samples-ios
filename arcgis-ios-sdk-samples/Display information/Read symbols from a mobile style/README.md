@@ -29,7 +29,7 @@ Tap "Symbol" and select symbols from each table view section to create a face em
 * AGSSymbolStyle
 * AGSSymbolStyleSearchParameters
 
-## Offline Data
+## Offline data
 
 A [mobile style file](https://www.arcgis.com/home/item.html?id=1bd036f221f54a99abc9e46ff3511cbf) (created using ArcGIS Pro) provides the symbols used by the sample.
 
@@ -43,4 +43,4 @@ While each of these symbols can be created from scratch, a more convenient workf
 
 ## Tags
 
-advanced symbology, multilayer, mobile style, stylx
+advanced symbology, mobile style, multilayer, stylx

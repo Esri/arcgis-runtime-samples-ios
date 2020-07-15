@@ -2,7 +2,7 @@
 
 Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers).
 
-![Login screen](authenticate-with-oauth1.png) 
+![Login screen](authenticate-with-oauth1.png)
 ![Map view after authentication](authenticate-with-oauth2.png)
 
 ## Use case
@@ -21,13 +21,13 @@ When you run the sample, the app will load a web map which contains premium cont
 
 ## Relevant API
 
- * AGSAuthenticationManager
- * AGSOAuthConfiguration
- * AGSPortalItem
+* AGSAuthenticationManager
+* AGSOAuthConfiguration
+* AGSPortalItem
 
 ## Additional information
 
-The workflow presented in this sample works for all SAML based enterprise (IWA, PKI, Okta, etc.) & social (Facebook, Google, etc.) identity providers for ArcGIS Online or Portal. For more information, see the topic [Set up enterprise logins].(https://doc.arcgis.com/en/arcgis-online/administer/enterprise-logins.htm).
+The workflow presented in this sample works for all SAML based enterprise (IWA, PKI, Okta, etc.) & social (Facebook, Google, etc.) identity providers for ArcGIS Online or Portal. For more information, see the topic [Set up enterprise logins](https://doc.arcgis.com/en/arcgis-online/administer/enterprise-logins.htm).
 
 For additional information on using OAuth in your app, see the topic [Authenticate with the API](https://developers.arcgis.com/documentation/core-concepts/security-and-authentication/mobile-and-native-user-logins/) in *Mobile and Native Named User Login*.
 

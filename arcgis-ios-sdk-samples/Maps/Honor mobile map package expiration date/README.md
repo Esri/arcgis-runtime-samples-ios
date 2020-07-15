@@ -27,7 +27,7 @@ Load the app. The author of the MMPK used in this sample chose to set the MMPK's
 * AGSExpiration
 * AGSMobileMapPackage
 
-## Offline Data
+## Offline data
 
 This sample uses the [LothianRiversAnno - Expired](https://arcgisruntime.maps.arcgis.com/home/item.html?id=174150279af74a2ba6f8b87a567f480b) mobile map package. It is downloaded from ArcGIS Online automatically.
 

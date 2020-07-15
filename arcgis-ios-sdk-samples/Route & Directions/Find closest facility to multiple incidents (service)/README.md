@@ -28,14 +28,14 @@ Tap the Solve Routes button to solve and display the route from each incident (f
 
 ## Relevant API
 
-*   AGSClosestFacilityParameters
-*   AGSClosestFacilityResult
-*   AGSClosestFacilityRoute
-*   AGSClosestFacilityTask
-*   AGSFacility
-*   AGSGraphic
-*   AGSGraphicsOverlay
-*   AGSIncident
+* AGSClosestFacilityParameters
+* AGSClosestFacilityResult
+* AGSClosestFacilityRoute
+* AGSClosestFacilityTask
+* AGSFacility
+* AGSGraphic
+* AGSGraphicsOverlay
+* AGSIncident
 
 ## Tags
 

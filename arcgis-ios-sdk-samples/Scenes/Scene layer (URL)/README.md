@@ -16,7 +16,7 @@ Pan and zoom to explore the scene.
 
 1. Create an `AGSScene` with an `imagery()` basemap.
 2. Apply the scene to an `AGSSceneView`.
-3. Create an `AGSArcGISTiledElevationSource` with a URL and add it to an `AGSSurface`. 
+3. Create an `AGSArcGISTiledElevationSource` with a URL and add it to an `AGSSurface`.
 4. Apply the surface to the scene.
 5. Create an `AGSArcGISSceneLayer` with a URL and add it to the scene's `operationalLayers` array.
 

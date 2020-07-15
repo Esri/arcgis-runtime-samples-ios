@@ -15,9 +15,9 @@ Tap anywhere on the map. A callout showing the WGS84 coordinates for the tapped 
 ## How it works
 
 1. Use `AGSGeoViewTouchDelegate.geoView(_:didTapAtScreenPoint:mapPoint:)` to get the `mapPoint` where a user tapped on the map.
-4. Create a string to display the coordinates; note that latitude and longitude in WGS84 map to the Y and X coordinates.
-5. Create a new callout definition using a title string as `title` and the coordinate string as `detail`.
-6. Display the callout by calling `AGSCallout.show(at:screenOffset:rotateOffsetWithMap:animated:)` on the map view with the location and the callout definition.
+2. Create a string to display the coordinates; note that latitude and longitude in WGS84 map to the Y and X coordinates.
+3. Create a new callout definition using a title string as `title` and the coordinate string as `detail`.
+4. Display the callout by calling `AGSCallout.show(at:screenOffset:rotateOffsetWithMap:animated:)` on the map view with the location and the callout definition.
 
 ## Relevant API
 

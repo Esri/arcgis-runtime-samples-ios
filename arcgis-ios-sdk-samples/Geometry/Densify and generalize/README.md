@@ -32,4 +32,4 @@ Tap the button to open the settings. Use the sliders to control the parameters o
 
 ## Tags
 
-densify, Edit and Manage Data, generalize, simplify
+densify, edit and manage data, generalize, simplify

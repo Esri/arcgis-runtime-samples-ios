@@ -17,7 +17,7 @@ Tap on a feature in the map. All features within a given tolerance (in pixels) o
 
 1. Create an `AGSServiceFeatureTable` from a feature service URL.
 2. Create an `AGSFeatureLayer` from the service feature table.
-3. Identify nearby features at the tapped location by specifying the `AGSGeometry` for the `AGSQueryParameters`. 
+3. Identify nearby features at the tapped location by specifying the `AGSGeometry` for the `AGSQueryParameters`.
 4. Select all identified features in the feature layer with `AGSFeatureLayer.selectFeatures(withQuery:mode:completion:)`.
 
 ## About the data

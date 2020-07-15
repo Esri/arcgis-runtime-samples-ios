@@ -5,7 +5,7 @@ Add, remove, or rearrange existing sublayers in a map image layer.
 ![Map displaying all sublayers](manage-sublayers-1.png)
 ![Sublayer settings](manage-sublayers-2.png)
 
-# Use case
+## Use case
 
 A map image layer may contain many sublayers such as different types of roads in a road network or city, county, and state borders in a US map. The user may only be interested in a subset of these sublayers. Or, perhaps showing all of the sublayers would show too much detail. In these cases, you can add, remove, or rearrange the order of the sublayers.
 

@@ -8,11 +8,11 @@ View, edit, or add features using a popup.
 
 ## Use case
 
-An end-user performing a survey may want to view, edit, or add features on a map using a popup during the course of their work. 
+An end-user performing a survey may want to view, edit, or add features on a map using a popup during the course of their work.
 
 ## How to use the sample
 
-Pan and zoom to explore various features. Tap on an existing feature to view or edit its data. Tap the "Add new feature" button to add a new feature to the map. 
+Pan and zoom to explore various features. Tap on an existing feature to view or edit its data. Tap the "Add new feature" button to add a new feature to the map.
 
 ## How it works
 

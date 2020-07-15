@@ -19,9 +19,9 @@ Tap the button to cut the polygon with the polyline and see the resulting parts 
 
 ## Relevant API
 
-* class AGSGeometryEngine.cut(_:withCutter:)
 * AGSPolygon
 * AGSPolyline
+* class AGSGeometryEngine.cut(_:withCutter:)
 
 ## Tags
 

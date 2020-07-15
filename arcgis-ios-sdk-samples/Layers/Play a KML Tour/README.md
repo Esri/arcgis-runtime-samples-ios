@@ -21,13 +21,13 @@ The sample will load the KMZ file from ArcGIS Online. When a tour is found, the 
 
 ## Relevant API
 
-* AGSKMLTourController
-* AGSKMLTourController.tour
-* AGSKMLTourController.play()
-* AGSKMLTourController.pause()
-* AGSKMLTourController.reset()
 * AGSKMLTour
 * AGSKMLTour.tourStatus
+* AGSKMLTourController
+* AGSKMLTourController.pause()
+* AGSKMLTourController.play()
+* AGSKMLTourController.reset()
+* AGSKMLTourController.tour
 
 ## Offline data
 
@@ -43,4 +43,4 @@ See [Google's documentation](https://developers.google.com/kml/documentation/tou
 
 ## Tags
 
-KML, tour, story, interactive, narration, play, pause, animation
+animation, interactive, KML, narration, pause, play, story, tour

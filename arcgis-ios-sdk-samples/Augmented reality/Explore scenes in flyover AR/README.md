@@ -23,8 +23,8 @@ When you open the sample, you'll be viewing the scene from above. You can walk a
 
 ## Relevant API
 
-* ArcGISARView
 * AGSSceneView
+* ArcGISARView
 
 ## About the data
 

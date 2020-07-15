@@ -11,7 +11,7 @@ You can use an offline network to enable routing in disconnected scenarios. For 
 
 ## How to use the sample
 
-Tap near a road to start adding a stop to the route, tap again to place it on the map. A number graphic will show its order in the route. After adding at least 2 stops, a route will display. Choose "Fastest" or "Shortest" to control how the route is optimized. The route will update on-the-fly while adding stops. 
+Tap near a road to start adding a stop to the route, tap again to place it on the map. A number graphic will show its order in the route. After adding at least 2 stops, a route will display. Choose "Fastest" or "Shortest" to control how the route is optimized. The route will update on-the-fly while adding stops.
 
 ## How it works
 
@@ -40,4 +40,4 @@ This sample uses a pre-packaged sample dataset consisting of a geodatabase with 
 
 ## Tags
 
-connectivity, disconnected, fastest, locator, navigation, network analysis, offline, routing, routing, shortest, turn-by-turn
+connectivity, disconnected, fastest, locator, navigation, network analysis, offline, routing, shortest, turn-by-turn

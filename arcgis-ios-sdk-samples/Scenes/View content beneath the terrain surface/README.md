@@ -16,7 +16,7 @@ The sample loads a scene with underground features. Pan and zoom to explore the 
 
 1. Display an `AGSScene` in an `AGSSceneView` which contains layers with underground features.
 2. To see underground, get the scene's base surface and set its opacity to a value between 0 and 1.
-2. To allow the camera to go underground, set the surface's navigation constraint to `none`.
+3. To allow the camera to go underground, set the surface's navigation constraint to `none`.
 
 ## Relevant API
 

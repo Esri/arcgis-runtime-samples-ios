@@ -6,7 +6,7 @@ Display custom labels on a feature layer.
 
 ## Use case
 
-Labeling features is useful to visually display a key piece of information or attribute of a feature on a map. For example, you may want to label rivers or street with their names. 
+Labeling features is useful to visually display a key piece of information or attribute of a feature on a map. For example, you may want to label rivers or street with their names.
 
 ## How to use the sample
 

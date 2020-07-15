@@ -27,10 +27,10 @@ Select a preplanned map area by tapping the "Select Map" button and selecting on
 
 ## Relevant API
 
-* AGSOfflineMapTask.downloadPreplannedOfflineMapJob(with:downloadDirectory:)
-* AGSOfflineMapTask.defaultDownloadPreplannedOfflineMapParameters(with:completion:)
 * AGSDownloadPreplannedOfflineMapResult
 * AGSOfflineMapTask
+* AGSOfflineMapTask.defaultDownloadPreplannedOfflineMapParameters(with:completion:)
+* AGSOfflineMapTask.downloadPreplannedOfflineMapJob(with:downloadDirectory:)
 * AGSPreplannedMapArea
 
 ## About the data

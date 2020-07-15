@@ -22,12 +22,11 @@ Run the sample and pan and zoom around the map. With each interaction, new featu
 * AGSFeatureLayer
 * AGSFeatureRequestMode.onInteractionNoCache
 * AGSServiceFeatureTable
-* AGSServiceFeatureTable.populateFromService
 * AGSServiceFeatureTable.featureRequestMode
 
 ## About the data
 
-This sample displays a [Pool permit](https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0) feature layer in Riverside, California, displaying which parcels do not have pool permits. 
+This sample displays a [Pool permit](https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0) feature layer in Riverside, California, displaying which parcels do not have pool permits.
 
 ## Additional information
 

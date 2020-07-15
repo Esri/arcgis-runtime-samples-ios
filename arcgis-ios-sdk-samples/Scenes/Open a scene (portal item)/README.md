@@ -22,8 +22,8 @@ To open a web scene from a portal item:
 
 ## Relevant API
 
-* AGSScene
 * AGSPortalItem
+* AGSScene
 * AGSSceneView
 
 ## About the data

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lsE-YP-SDb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lsE-YP-SDb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -224,20 +224,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Configurations" id="xoU-di-3Wt"/>
                     <connections>
-                        <outlet property="addConditionButton" destination="Vxz-Er-PKb" id="a8r-WD-hhf"/>
-                        <outlet property="addConditionLabel" destination="mA0-Rc-Jdx" id="fs0-m4-XdE"/>
-                        <outlet property="attributeLabel" destination="qxg-Ri-n2T" id="7Ib-Kp-D64"/>
-                        <outlet property="attributesCell" destination="6aY-ho-9ka" id="R4B-ew-R0C"/>
-                        <outlet property="comparisonCell" destination="Wxr-c1-p7X" id="jOa-Cs-h0T"/>
-                        <outlet property="comparisonLabel" destination="cSO-tT-BbZ" id="gN9-Mu-zpC"/>
-                        <outlet property="resetButton" destination="15J-JS-NkS" id="wrp-iv-UaX"/>
-                        <outlet property="resetLabel" destination="Anm-Eb-DIz" id="q7R-ee-OUZ"/>
                         <outlet property="textView" destination="gnI-4M-9td" id="dwN-Sc-jPp"/>
-                        <outlet property="traceButton" destination="het-6w-DnI" id="2hH-ED-uh6"/>
-                        <outlet property="traceLabel" destination="jaA-5A-Kba" id="64P-BV-QTc"/>
                         <outlet property="valueButton" destination="jdM-C9-9ET" id="Tbq-lc-t0r"/>
-                        <outlet property="valueCell" destination="vxd-6b-Viu" id="nan-gC-sJf"/>
-                        <outlet property="valueLabel" destination="Yo3-Oy-atF" id="Ndx-8S-iAX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gB-gF-wHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -256,7 +244,7 @@
         <scene sceneID="Uoq-bp-d4o">
             <objects>
                 <tableViewController id="lsE-YP-SDb" customClass="ConfigureSubnetworkTraceViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MTU-hO-frR" customClass="ConfigureSubnetwork">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MTU-hO-frR" customClass="ConfigureSubnetwork">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -292,7 +280,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MJZ-Nk-0IK">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MJZ-Nk-0IK">
                                             <rect key="frame" x="350" y="12" width="44" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -302,21 +290,30 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelOrConditionCell" textLabel="NzW-oH-qry" style="IBUITableViewCellStyleDefault" id="2bj-EL-S0W">
-                                <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelOrConditionCell" translatesAutoresizingMaskIntoConstraints="NO" id="2bj-EL-S0W">
+                                <rect key="frame" x="0.0" y="115" width="414" height="651.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2bj-EL-S0W" id="GZR-U1-ug4">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2bj-EL-S0W" translatesAutoresizingMaskIntoConstraints="NO" id="GZR-U1-ug4">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="651.5"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NzW-oH-qry">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCT-Xc-HAe">
+                                            <rect key="frame" x="20" y="11" width="50" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" placeholder="YES" id="9jr-OW-3QB"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" placeholder="YES" id="krs-D3-GSx"/>
+                                            </constraints>
+                                            <string key="text">adksfalsdmf,maddjadklsfjlkdsjflkdjsflkadjsflkjasdlfkjasdlfkjdslfjadslfjdslfjdslfkajsdlkfjasdlkfjsdlkajfsldkfjdslkfjlsdkjfalsdkjfldsjfldskjflsdkjfalskdfjsdlfjsadlfjsdljfalsdfjadslfjasdfmfalkdjsfalkjd</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hCT-Xc-HAe" firstAttribute="bottom" secondItem="GZR-U1-ug4" secondAttribute="bottomMargin" id="VNw-3g-vAP"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hCT-Xc-HAe" secondAttribute="trailing" id="WGl-uw-ybA"/>
+                                        <constraint firstItem="hCT-Xc-HAe" firstAttribute="leading" secondItem="GZR-U1-ug4" secondAttribute="leadingMargin" id="lGU-XF-L73"/>
+                                        <constraint firstItem="hCT-Xc-HAe" firstAttribute="top" secondItem="GZR-U1-ug4" secondAttribute="topMargin" id="qKT-8Q-f0U"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -346,7 +343,7 @@
                 </switch>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z51-mG-Bfy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2504" y="86"/>
+            <point key="canvasLocation" x="2502.898550724638" y="85.714285714285708"/>
         </scene>
     </scenes>
 </document>

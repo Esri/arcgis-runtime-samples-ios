@@ -6,7 +6,6 @@
         "map-spatial-reference.png"
     ],
     "keywords": [
-        "SpatialReference",
         "WKID",
         "project",
         "AGSArcGISMapImageLayer",

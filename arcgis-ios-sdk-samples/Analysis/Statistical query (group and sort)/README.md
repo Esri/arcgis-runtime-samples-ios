@@ -22,10 +22,6 @@ Select a combination of fields and statistic types to include in the query. Choo
 5. To execute the query, call `AGSFeatureTable.queryStatistics(with:completion:)`.
 6. Get the `AGSStatisticQueryResult`. From this, you can use `AGSStatisticsQueryResult.statisticRecordEnumerator()` to loop through and display.
 
-## About the data
-
-This sample uses a [Diabetes, Obesity, and Inactivity by US County](https://www.arcgis.com/home/item.html?id=392420848e634079bc7d0648586e818f) feature layer hosted on ArcGIS Online.
-
 ## Relevant API
 
 * AGSField
@@ -37,6 +33,10 @@ This sample uses a [Diabetes, Obesity, and Inactivity by US County](https://www.
 * AGSStatisticsQueryParameters
 * AGSStatisticsQueryResult
 * AGSStatisticType
+
+## About the data
+
+This sample uses a [Diabetes, Obesity, and Inactivity by US County](https://www.arcgis.com/home/item.html?id=392420848e634079bc7d0648586e818f) feature layer hosted on ArcGIS Online.
 
 ## Tags
 

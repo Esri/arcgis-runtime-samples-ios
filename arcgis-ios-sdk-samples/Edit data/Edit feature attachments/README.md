@@ -23,10 +23,6 @@ Tap a feature on the map to open a callout displaying the number of attachments.
 6. To delete an attachment from the selected `AGSArcGISFeature`, use the `AGSArcGISFeature.delete(_:completion:)`.
 7. After a change, apply the changes to the server using `AGSServiceFeatureTable.applyEdits(completion:)`.
 
-## Additional information
-
-Attachments can only be added to and accessed on a service feature table when its `hasAttachments` property is true.
-
 ## Relevant API
 
 * AGSArcGISFeature.delete(_:completion:)
@@ -34,6 +30,10 @@ Attachments can only be added to and accessed on a service feature table when it
 * AGSFeatureLayer
 * AGSServiceFeatureTable
 * AGSServiceFeatureTable.applyEdits(completion:)
+
+## Additional information
+
+Attachments can only be added to and accessed on a service feature table when its `hasAttachments` property is true.
 
 ## Tags
 

@@ -22,7 +22,7 @@ import ArcGIS
 private enum Constants {
     static let locationBorderColor = UIColor.backgroundGray
     static let locationInnerColor = UIColor.primaryTextColor
-    static let trackColor = UIColor.primaryBlue.withAlphaComponent(0.5)
+    static let trackColor = UIColor.primaryThemeColor.withAlphaComponent(0.5)
 
     static let locationDiameter: CGFloat = 14
     static let locationBorderWidth: CGFloat = 2

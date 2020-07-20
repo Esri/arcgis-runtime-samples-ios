@@ -86,7 +86,7 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
         sceneView.analysisOverlays.add(analysisOverlay)
         
         distanceView.backgroundColor = .backgroundGray
-        distanceView.tintColor = .primaryBlue
+        distanceView.tintColor = .primaryThemeColor
         
         updateMeasurementLabels()
         

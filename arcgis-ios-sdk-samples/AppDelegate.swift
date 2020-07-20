@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             navigationBarAppearance.configureWithTransparentBackground()
             navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
             navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navigationBarAppearance.backgroundColor = .primaryBlue
+            navigationBarAppearance.backgroundColor = .primaryThemeColor
             
             navigationBarAppearanceProxy.standardAppearance = navigationBarAppearance
             navigationBarAppearanceProxy.compactAppearance = navigationBarAppearance
@@ -114,15 +114,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         } else {
             navigationBarAppearanceProxy.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
             navigationBarAppearanceProxy.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navigationBarAppearanceProxy.barTintColor = .primaryBlue
+            navigationBarAppearanceProxy.barTintColor = .primaryThemeColor
         }
         navigationBarAppearanceProxy.tintColor = .white
         
         UIToolbar.appearance().barTintColor = .backgroundGray
-        UIToolbar.appearance().tintColor = .primaryBlue
+        UIToolbar.appearance().tintColor = .primaryThemeColor
         
-        UISwitch.appearance().onTintColor = .primaryBlue
-        UISlider.appearance().tintColor = .primaryBlue
+        UISwitch.appearance().onTintColor = .primaryThemeColor
+        UISlider.appearance().tintColor = .primaryThemeColor
+        // Change the tint color globally and programmatically
+        UIView.appearance().tintColor = .primaryThemeColor
     }
 
     // MARK: - Split view
@@ -169,9 +171,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 }
 
 extension UIColor {
-    class var primaryBlue: UIColor { return #colorLiteral(red: 0, green: 0.475, blue: 0.757, alpha: 1) }
-    class var secondaryBlue: UIColor { return #colorLiteral(red: 0, green: 0.368, blue: 0.584, alpha: 1) }
-    class var backgroundGray: UIColor { return #colorLiteral(red: 0.973, green: 0.973, blue: 0.973, alpha: 1) }
-    class var primaryTextColor: UIColor { return #colorLiteral(red: 0.196, green: 0.196, blue: 0.196, alpha: 1) }
-    class var secondaryTextColor: UIColor { return #colorLiteral(red: 0.349, green: 0.349, blue: 0.349, alpha: 1) }
+//    class var primaryBlue: UIColor { return #colorLiteral(red: 0, green: 0.475, blue: 0.757, alpha: 1) }
+    // Also used for global tint color.
+    class var primaryThemeColor: UIColor { return UIColor(named: "primaryThemeColor")! }
+    class var secondaryThemeColor: UIColor { return UIColor(named: "secondaryThemeColor")! }
+    class var backgroundGray: UIColor { return UIColor(named: "backgroundGray")! }
+    class var primaryTextColor: UIColor { return UIColor(named: "primaryTextColor")! }
+    class var secondaryTextColor: UIColor { return UIColor(named: "secondaryTextColor")! }
 }

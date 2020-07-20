@@ -19,7 +19,7 @@ import UIKit
 // MARK: - Constants
 
 private enum Constants {
-    static let progressTintColor = UIColor.primaryBlue
+    static let progressTintColor = UIColor.primaryThemeColor
     static let trackTintColor = UIColor.backgroundGray
 }
 

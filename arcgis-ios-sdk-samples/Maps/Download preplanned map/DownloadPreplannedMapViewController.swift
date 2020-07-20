@@ -20,7 +20,7 @@ import ArcGIS
 // MARK: - Constants
 
 private enum Constants {
-    static let activityIndicatorColor = UIColor.primaryBlue
+    static let activityIndicatorColor = UIColor.primaryThemeColor
     
     static let portalItemIdentifier = "acc027394bc84c2fb04d1ed317aac674"
     

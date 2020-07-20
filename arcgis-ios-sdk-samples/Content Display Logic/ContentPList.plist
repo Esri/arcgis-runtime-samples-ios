@@ -646,6 +646,18 @@
 					<string>GasDeviceAnnoMMPK</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Identify raster cell</string>
+				<key>descriptionText</key>
+				<string>Get the cell value of a local raster at the tapped location and display the result in a callout.</string>
+				<key>storyboardName</key>
+				<string>IdentifyRasterCell</string>
+				<key>dependency</key>
+				<array>
+					<string>NDVIRaster</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -788,6 +800,14 @@
 				<string>FeatureCollectionLayer</string>
 				<key>descriptionText</key>
 				<string>Show a feature collection layer using a URL to the service</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Feature collection layer (portal item)</string>
+				<key>descriptionText</key>
+				<string>Create a feature collection layer from a portal item.</string>
+				<key>storyboardName</key>
+				<string>FeatureCollectionLayerFromPortal</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1485,7 +1505,7 @@
 				<key>storyboardName</key>
 				<string>SurfacePlacements</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to position graphics using different surface placements</string>
+				<string>Position graphics relative to a surface using different surface placement modes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1628,6 +1648,18 @@
 					<string>Bristol3DModel</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Animate images with image overlay</string>
+				<key>storyboardName</key>
+				<string>AnimateImagesWithImageOverlay</string>
+				<key>descriptionText</key>
+				<string>Animate a series of images with an image overlay.</string>
+				<key>dependency</key>
+				<array>
+					<string>PacificSouthWest</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1642,6 +1674,14 @@
 				<string>TraceUtilityNetwork</string>
 				<key>displayName</key>
 				<string>Trace utility network</string>
+			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Create graphics for utility associations in a utility network.</string>
+				<key>storyboardName</key>
+				<string>DisplayUtilityAssociations</string>
+				<key>displayName</key>
+				<string>Display utility associations</string>
 			</dict>
 			<dict>
 				<key>descriptionText</key>
@@ -1685,6 +1725,14 @@
 				<string>ExploreScenesInFlyoverAR</string>
 				<key>descriptionText</key>
 				<string>Use augmented reality (AR) to quickly explore a scene more naturally than you could with a touch or mouse interface.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Navigate in AR</string>
+				<key>storyboardName</key>
+				<string>NavigateAR</string>
+				<key>descriptionText</key>
+				<string>Use a route displayed in the real world to navigate.</string>
 			</dict>
 		</array>
 	</dict>

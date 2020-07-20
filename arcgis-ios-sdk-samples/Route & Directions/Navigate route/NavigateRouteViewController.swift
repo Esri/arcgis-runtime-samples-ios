@@ -13,10 +13,14 @@
 // limitations under the License.
 
 import UIKit
-import ArcGIS
 import AVFoundation
+import ArcGIS
+
+// MARK: - Navigate route View Controller
 
 class NavigateRouteViewController: UIViewController {
+    // MARK: Instance properties
+    
     /// The route result solved by the route task.
     var routeResult: AGSRouteResult!
     /// The original view point that can be reset to later on.
@@ -43,13 +47,15 @@ class NavigateRouteViewController: UIViewController {
     /// An AVSpeechSynthesizer for text to speech.
     lazy var speechSynthesizer = AVSpeechSynthesizer()
     
-    /// The bar button item that initiates the create convex hull operation.
+    // MARK: Storyboard views
+    
+    /// The button to initiate navigation.
     @IBOutlet weak var navigateButtonItem: UIBarButtonItem!
-    /// The bar button item that removes the convex hull as well as the MapPoints.
+    /// The button to reset navigation.
     @IBOutlet weak var resetButtonItem: UIBarButtonItem!
-    /// The bar button item that recenters the map to navigation pan mode.
+    /// The button to recenter the map to navigation pan mode.
     @IBOutlet weak var recenterButtonItem: UIBarButtonItem!
-    /// The 3-line label to display navigation status.
+    /// The label to display navigation status.
     @IBOutlet weak var statusLabel: UILabel!
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
@@ -59,22 +65,25 @@ class NavigateRouteViewController: UIViewController {
         }
     }
     
-    /// A wrapper function for operations after the route is solved by an AGSRouteTask.
+    // MARK: Instance methods
+    
+    /// A wrapper function for operations after the route is solved by an `AGSRouteTask`.
     ///
-    /// - Parameters:
-    ///   - routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.
-    ///   - error: The error from `AGSRouteTask.solveRoute(with:completion:)`.
-    func didSolveRoute(with routeResult: AGSRouteResult?, error: Error?) {
-        if let error = error {
-            self.presentAlert(error: error)
-        } else if let result = routeResult, let firstRoute = result.routes.first {
-            self.routeResult = result
-            self.mapView.locationDisplay.dataSource = self.makeDataSource(firstRoute)
-            self.routeTracker = self.makeRouteTracker(result)
-            self.updateRouteGraphics(remaining: firstRoute.routeGeometry!)
-            self.updateViewpoint(result)
+    /// - Parameter routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.
+    func didSolveRoute(with routeResult: Result<AGSRouteResult, Error>) {
+        switch routeResult {
+        case .success(let routeResult):
+            self.routeResult = routeResult
+            let firstRoute = routeResult.routes.first!
+            mapView.locationDisplay.dataSource = makeDataSource(route: firstRoute)
+            routeTracker = makeRouteTracker(result: routeResult)
+            updateRouteGraphics(remaining: firstRoute.routeGeometry!)
+            updateViewpoint(geometry: firstRoute.routeGeometry!)
             // Enable bar button item.
-            self.navigateButtonItem.isEnabled = true
+            navigateButtonItem.isEnabled = true
+        case .failure(let error):
+            presentAlert(error: error)
+            setStatus(message: "Failed to solve route.")
         }
     }
     
@@ -93,9 +102,9 @@ class NavigateRouteViewController: UIViewController {
     
     /// Make the simulated data source for this demo.
     ///
-    /// - Parameter result: The solved route from the route task.
+    /// - Parameter route: An `AGSRoute` object whose geometry is used to configure the data source.
     /// - Returns: An `AGSSimulatedLocationDataSource` object.
-    func makeDataSource(_ route: AGSRoute) -> AGSSimulatedLocationDataSource {
+    func makeDataSource(route: AGSRoute) -> AGSSimulatedLocationDataSource {
         directionsList = route.directionManeuvers
         let densifiedRoute = AGSGeometryEngine.geodeticDensifyGeometry(route.routeGeometry!, maxSegmentLength: 50.0, lengthUnit: .meters(), curveType: .geodesic) as! AGSPolyline
         // The mock data source to demo the navigation. Use delegate methods to update locations for the tracker.
@@ -108,9 +117,9 @@ class NavigateRouteViewController: UIViewController {
     
     /// Make a route tracker to provide navigation information.
     ///
-    /// - Parameter result: solved route from the route task.
+    /// - Parameter result: An `AGSRouteResult` object used to configure the route tracker.
     /// - Returns: An `AGSRouteTracker` object.
-    func makeRouteTracker(_ result: AGSRouteResult) -> AGSRouteTracker {
+    func makeRouteTracker(result: AGSRouteResult) -> AGSRouteTracker {
         let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0)!
         tracker.delegate = self
         return tracker
@@ -136,13 +145,13 @@ class NavigateRouteViewController: UIViewController {
     
     /// Update the viewpoint so that it reflects the original viewpoint when the example is loaded.
     ///
-    /// - Parameter result: solved route from the route task.
-    func updateViewpoint(_ result: AGSRouteResult) {
+    /// - Parameter result: An `AGSGeometry` object used to update the view point.
+    func updateViewpoint(geometry: AGSGeometry) {
         // Show the resulting route on the map and save a reference to the route.
         if let viewPoint = defaultViewPoint {
             // Reset to initial view point with animation.
             mapView.setViewpoint(viewPoint, completion: nil)
-        } else if let geometry = result.routes.first?.routeGeometry {
+        } else {
             mapView.setViewpointGeometry(geometry) { [weak self] _ in
                 // Get the initial zoomed view point.
                 self?.defaultViewPoint = self?.mapView.currentViewpoint(with: .centerAndScale)
@@ -150,7 +159,15 @@ class NavigateRouteViewController: UIViewController {
         }
     }
     
-    /// Called in response to the Navigate button being tapped.
+    // MARK: UI
+    
+    func setStatus(message: String) {
+        statusLabel.text = message
+    }
+    
+    // MARK: Actions
+    
+    /// Called in response to the "Navigate" button being tapped.
     @IBAction func startNavigation() {
         navigateButtonItem.isEnabled = false
         resetButtonItem.isEnabled = true
@@ -161,7 +178,7 @@ class NavigateRouteViewController: UIViewController {
         mapView.locationDisplay.start()
     }
     
-    /// Called in response to the Reset button being tapped.
+    /// Called in response to the "Reset" button being tapped.
     @IBAction func reset() {
         // Stop the speech, if there is any.
         speechSynthesizer.stopSpeaking(at: .immediate)
@@ -171,19 +188,20 @@ class NavigateRouteViewController: UIViewController {
         mapView.locationDisplay.stop()
         mapView.locationDisplay.autoPanMode = .off
         directionsList.removeAll()
-        statusLabel.text = "Directions are shown here."
+        setStatus(message: "Directions are shown here.")
         // Reset the navigation.
-        mapView.locationDisplay.dataSource = makeDataSource(routeResult.routes.first!)
-        routeTracker = makeRouteTracker(routeResult)
-        updateRouteGraphics(remaining: (routeResult.routes.first?.routeGeometry)!)
-        updateViewpoint(routeResult)
+        let firstRoute = routeResult.routes.first!
+        mapView.locationDisplay.dataSource = makeDataSource(route: firstRoute)
+        routeTracker = makeRouteTracker(result: routeResult)
+        updateRouteGraphics(remaining: firstRoute.routeGeometry!)
+        updateViewpoint(geometry: firstRoute.routeGeometry!)
         // Reset buttons state.
         recenterButtonItem.isEnabled = false
         resetButtonItem.isEnabled = false
         navigateButtonItem.isEnabled = true
     }
     
-    /// Called in response to the Recenter button being tapped.
+    /// Called in response to the "Recenter" button being tapped.
     @IBAction func recenter() {
         mapView.locationDisplay.autoPanMode = .navigation
         recenterButtonItem.isEnabled = false
@@ -201,6 +219,7 @@ class NavigateRouteViewController: UIViewController {
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
+                self.setStatus(message: "Failed to get route parameters.")
             } else if let params = params {
                 // Explicitly set values for parameters.
                 params.returnDirections = true
@@ -208,8 +227,12 @@ class NavigateRouteViewController: UIViewController {
                 params.returnRoutes = true
                 params.outputSpatialReference = .wgs84()
                 params.setStops(self.makeStops())
-                self.routeTask.solveRoute(with: params) { [weak self] in
-                    self?.didSolveRoute(with: $0, error: $1)
+                self.routeTask.solveRoute(with: params) { [weak self] (result, error) in
+                    if let error = error {
+                        self?.didSolveRoute(with: .failure(error))
+                    } else if let result = result {
+                        self?.didSolveRoute(with: .success(result))
+                    }
                 }
             }
         }
@@ -226,6 +249,8 @@ class NavigateRouteViewController: UIViewController {
     }
 }
 
+// MARK: - AGSRouteTrackerDelegate
+
 extension NavigateRouteViewController: AGSRouteTrackerDelegate {
     func routeTracker(_ routeTracker: AGSRouteTracker, didGenerateNewVoiceGuidance voiceGuidance: AGSVoiceGuidance) {
         setSpeakDirection(with: voiceGuidance.text)
@@ -235,13 +260,9 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
         updateTrackingStatusDisplay(with: trackingStatus)
     }
     
-    func setSpeakDirection(with text: String?) {
-        speechSynthesizer.stopSpeaking(at: AVSpeechBoundary.word)
-        if let text = text {
-            let speechUtterance = AVSpeechUtterance(string: text)
-            speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate * 0.5
-            speechSynthesizer.speak(speechUtterance)
-        }
+    func setSpeakDirection(with text: String) {
+        speechSynthesizer.stopSpeaking(at: .word)
+        speechSynthesizer.speak(AVSpeechUtterance(string: text))
     }
     
     func updateTrackingStatusDisplay(with status: AGSTrackingStatus) {
@@ -270,7 +291,7 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
             return
         }
         updateRouteGraphics(remaining: status.routeProgress.remainingGeometry, traversed: status.routeProgress.traversedGeometry)
-        statusLabel.text = statusText
+        setStatus(message: statusText)
     }
     
     func updateRouteGraphics(remaining: AGSGeometry?, traversed: AGSGeometry? = nil) {
@@ -279,9 +300,11 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
     }
 }
 
+// MARK: - AGSLocationChangeHandlerDelegate
+
 extension NavigateRouteViewController: AGSLocationChangeHandlerDelegate {
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         // Update the tracker location with the new location from the simulated data source.
-        self.routeTracker?.trackLocation(location)
+        routeTracker?.trackLocation(location)
     }
 }

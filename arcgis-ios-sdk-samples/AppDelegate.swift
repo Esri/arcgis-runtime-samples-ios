@@ -171,7 +171,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 }
 
 extension UIColor {
-//    class var primaryBlue: UIColor { return #colorLiteral(red: 0, green: 0.475, blue: 0.757, alpha: 1) }
     // Also used for global tint color.
     class var primaryThemeColor: UIColor { return UIColor(named: "primaryThemeColor")! }
     class var secondaryThemeColor: UIColor { return UIColor(named: "secondaryThemeColor")! }

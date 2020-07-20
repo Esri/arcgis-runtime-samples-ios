@@ -20,17 +20,17 @@ Specify a minimum population in the input field (values under 1810000 will produ
 4. Create `AGSQueryParameters` and define its `whereClause` and `geometry`.
 5. Use `AGSFeatureTable.queryFeatures(with:completion:)` to get an `AGSFeatureQueryResult` with features matching the query. The result is an enumerator of features.
 
-## About the data
-
-The `AGSArcGISMapImageLayer` in the map uses the "USA" map service as its data source. This service is hosted by ArcGIS Online, and is composed of four sublayers: "states", "counties", "cities", and "highways".
-Since the `cities`, `counties`, and `states` tables all have a `POP2000` field, they can all execute a query against that attribute and a map extent.
-
 ## Relevant API
 
 * AGSArcGISMapImageLayer
 * AGSArcGISMapImageSublayer
 * AGSFeatureTable
 * AGSQueryParameters
+
+## About the data
+
+The `AGSArcGISMapImageLayer` in the map uses the "USA" map service as its data source. This service is hosted by ArcGIS Online, and is composed of four sublayers: "states", "counties", "cities", and "highways".
+Since the `cities`, `counties`, and `states` tables all have a `POP2000` field, they can all execute a query against that attribute and a map extent.
 
 ## Tags
 

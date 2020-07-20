@@ -30,6 +30,10 @@ If the selected transformation is not usable (has missing grid files) then an er
 * AGSTransformationCatalog
 * class AGSGeometryEngine.projectGeometry(_:to:datumTransformation:)
 
+## About the data
+
+The map starts out zoomed into the grounds of the Royal Observatory, Greenwich. The initial point is in the [British National Grid](https://epsg.io/27700) spatial reference, which was created by the United Kingdom Ordnance Survey. The spatial reference after projection is in [Web Mercator](https://epsg.io/3857).
+
 ## Additional information
 
 Some transformations aren't available until transformation data is provided.
@@ -43,10 +47,6 @@ To download projection engine data to your device:
 3. Click the download button next to `Projection Engine Data` to download projection engine data to your computer.
 4. Unzip the downloaded data on your computer.
 5. Copy the `PEDataRuntime` folder to your application's Documents folder.
-
-## About the data
-
-The map starts out zoomed into the grounds of the Royal Observatory, Greenwich. The initial point is in the [British National Grid](https://epsg.io/27700) spatial reference, which was created by the United Kingdom Ordnance Survey. The spatial reference after projection is in [Web Mercator](https://epsg.io/3857).
 
 ## Tags
 

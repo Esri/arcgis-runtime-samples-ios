@@ -22,14 +22,6 @@ Tap near a road to start adding a stop to the route, tap again to place it on th
 5. Solve the route using `AGSRouteTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
 6. Create a graphic with the route's geometry and a `AGSSimpleLineSymbol` and display it on another `AGSGraphicsOverlay`.
 
-## Offline data
-
-The data used by this sample is available on [ArcGIS Online](https://arcgisruntime.maps.arcgis.com/home/item.html?id=567e14f3420d40c5a206e5c0284cf8fc).
-
-## About the data
-
-This sample uses a pre-packaged sample dataset consisting of a geodatabase with a San Diego road network and a tile package with a streets basemap.
-
 ## Relevant API
 
 * AGSRouteParameters
@@ -37,6 +29,14 @@ This sample uses a pre-packaged sample dataset consisting of a geodatabase with 
 * AGSRouteTask
 * AGSStop
 * AGSTravelMode
+
+## Offline data
+
+The data used by this sample is available on [ArcGIS Online](https://arcgisruntime.maps.arcgis.com/home/item.html?id=567e14f3420d40c5a206e5c0284cf8fc).
+
+## About the data
+
+This sample uses a pre-packaged sample dataset consisting of a geodatabase with a San Diego road network and a tile package with a streets basemap.
 
 ## Tags
 

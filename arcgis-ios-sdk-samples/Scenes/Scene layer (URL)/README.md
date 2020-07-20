@@ -20,15 +20,15 @@ Pan and zoom to explore the scene.
 4. Apply the surface to the scene.
 5. Create an `AGSArcGISSceneLayer` with a URL and add it to the scene's `operationalLayers` array.
 
-## About the data
-
-This sample shows a [Brest, France Scene](https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0) hosted on ArcGIS Online.
-
 ## Relevant API
 
 * AGSArcGISSceneLayer
 * AGSScene
 * AGSSceneView
+
+## About the data
+
+This sample shows a [Brest, France Scene](https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0) hosted on ArcGIS Online.
 
 ## Tags
 

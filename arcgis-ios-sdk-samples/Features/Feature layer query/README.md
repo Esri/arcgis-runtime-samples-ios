@@ -20,16 +20,16 @@ Input the name of a U.S. state into the text field. A query is performed and the
 3. Perform the query using `AGSFeatureTable.queryFeatures(with:completion:)` on the service feature table.
 4. When complete, the query will return an `AGSFeatureQueryResult` which can be iterated over to get the matching features.
 
-## About the data
-
-This sample uses U.S. State polygon features from the [USA 2016 Daytime Population](https://www.arcgis.com/home/item.html?id=f01f0eda766344e29f42031e7bfb7d04) feature service.
-
 ## Relevant API
 
 * AGSFeatureLayer
 * AGSFeatureQueryResult
 * AGSQueryParameters
 * AGSServiceFeatureTable
+
+## About the data
+
+This sample uses U.S. State polygon features from the [USA 2016 Daytime Population](https://www.arcgis.com/home/item.html?id=f01f0eda766344e29f42031e7bfb7d04) feature service.
 
 ## Tags
 

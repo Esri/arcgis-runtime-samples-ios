@@ -123,8 +123,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         UISwitch.appearance().onTintColor = .primaryThemeColor
         UISlider.appearance().tintColor = .primaryThemeColor
-        // Change the tint color globally and programmatically
-        UIView.appearance().tintColor = .primaryThemeColor
+        
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .primaryThemeColor
     }
 
     // MARK: - Split view

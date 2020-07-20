@@ -487,11 +487,15 @@
             <point key="canvasLocation" x="1326" y="758"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="AppIcon2" width="240" height="240"/>
-        <image name="InfoIcon" width="44" height="44"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XFi-4R-2mc"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" name="primaryThemeColor"/>
+    <resources>
+        <image name="AppIcon2" width="80" height="80"/>
+        <image name="InfoIcon" width="22" height="22"/>
+        <namedColor name="primaryThemeColor">
+            <color red="0.51372549019607838" green="0.18431372549019609" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -7,9 +7,8 @@
     ],
     "keywords": [
         "3D",
-        "LocationViewshed",
-        "Scene",
         "frustum",
+        "scene",
         "viewshed",
         "visibility analysis",
         "AGSAnalysisOverlay",

@@ -34,4 +34,4 @@ This sample uses the [Mil2525d Stylx File](https://www.arcgis.com/home/item.html
 
 ## Tags
 
-DictionaryRenderer, DictionarySymbolStyle, military, symbol
+military, symbol

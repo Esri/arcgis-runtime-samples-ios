@@ -133,11 +133,8 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     self.initialExpression = expression
                     let indexPath = IndexPath(row: 0, section: 2)
                     let cell = self.tableView.cellForRow(at: indexPath)
-                    if let conditionCell = cell as? LabelOrConditionCell {
-                        conditionCell.centerLabel.text = self.expressionToString(expression: expression)
-                    } else {
-                        cell?.textLabel?.text = self.expressionToString(expression: expression)
-                    }
+                    guard let conditionCell = cell as? LabelOrConditionCell else { return }
+                    conditionCell.centerLabel.text = self.expressionToString(expression: expression)
 //                    print(self.expressionToString(expression: expression))
                     
 //                    self.tableView.reloadRows(at: [indexPath], with: .none)
@@ -294,7 +291,12 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         // Reset the barrier condition to the initial value.
         let traceConfiguration = configuration
         traceConfiguration?.traversability?.barriers = initialExpression
-        textView?.text = expressionToString(expression: initialExpression!)
+        // Reset the added rows.
+        let indexPath = IndexPath(row: 0, section: 2)
+        let cell = self.tableView.cellForRow(at: indexPath)
+        guard let conditionCell = cell as? LabelOrConditionCell else { return }
+        conditionCell.centerLabel.text = self.expressionToString(expression: initialExpression!)
+        numberOfConditions = 1
         // Reset the selected values.
         selectedAttribute = nil
         selectedComparison = nil

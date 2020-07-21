@@ -290,32 +290,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelOrConditionCell" translatesAutoresizingMaskIntoConstraints="NO" id="2bj-EL-S0W">
-                                <rect key="frame" x="0.0" y="115" width="414" height="651.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2bj-EL-S0W" translatesAutoresizingMaskIntoConstraints="NO" id="GZR-U1-ug4">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="651.5"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCT-Xc-HAe">
-                                            <rect key="frame" x="20" y="11" width="50" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" placeholder="YES" id="9jr-OW-3QB"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" placeholder="YES" id="krs-D3-GSx"/>
-                                            </constraints>
-                                            <string key="text">adksfalsdmf,maddjadklsfjlkdsjflkdjsflkadjsflkjasdlfkjasdlfkjdslfjadslfjdslfjdslfkajsdlkfjasdlkfjsdlkajfsldkfjdslkfjlsdkjfalsdkjfldsjfldskjflsdkjfalskdfjsdlfjsadlfjsdljfalsdfjadslfjasdfmfalkdjsfalkjd</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="hCT-Xc-HAe" firstAttribute="bottom" secondItem="GZR-U1-ug4" secondAttribute="bottomMargin" id="VNw-3g-vAP"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="hCT-Xc-HAe" secondAttribute="trailing" id="WGl-uw-ybA"/>
-                                        <constraint firstItem="hCT-Xc-HAe" firstAttribute="leading" secondItem="GZR-U1-ug4" secondAttribute="leadingMargin" id="lGU-XF-L73"/>
-                                        <constraint firstItem="hCT-Xc-HAe" firstAttribute="top" secondItem="GZR-U1-ug4" secondAttribute="topMargin" id="qKT-8Q-f0U"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="lsE-YP-SDb" id="3Dl-ZR-2CD"/>

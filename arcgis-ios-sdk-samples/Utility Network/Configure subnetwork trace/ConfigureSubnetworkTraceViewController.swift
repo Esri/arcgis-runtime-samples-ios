@@ -133,8 +133,13 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     self.initialExpression = expression
                     let indexPath = IndexPath(row: 0, section: 2)
                     let cell = self.tableView.cellForRow(at: indexPath)
+                    if let conditionCell = cell as? LabelOrConditionCell {
+                        conditionCell.centerLabel.text = self.expressionToString(expression: expression)
+                    } else {
+                        cell?.textLabel?.text = self.expressionToString(expression: expression)
+                    }
 //                    print(self.expressionToString(expression: expression))
-                    cell?.textLabel?.text = self.expressionToString(expression: expression)
+                    
 //                    self.tableView.reloadRows(at: [indexPath], with: .none)
 //                    self.tableView.performBatchUpdates({
 //                        // insert the new row
@@ -551,16 +556,19 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 }
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LabelOrConditionCell", for: indexPath)
-                cell.textLabel?.text = selectionLabels[indexPath.row]
-                cell.textLabel?.textColor = .systemBlue
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LabelOrConditionCell", for: indexPath) as! LabelOrConditionCell
+                cell.centerLabel.text = selectionLabels[indexPath.row]
+                cell.centerLabel.textColor = .systemBlue
                 return cell
             }
         case .conditions:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelOrConditionCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelOrConditionCell", for: indexPath) as! LabelOrConditionCell
             if indexPath.row >= numberOfConditions {
-                cell.textLabel?.text = conditionLabels[indexPath.row - 1]
-                cell.textLabel?.textColor = .systemBlue
+//                cell.subviews[0].subviews[0].text
+//                cell.subviews.
+                cell.centerLabel.text = conditionLabels[indexPath.row - 1]
+                                
+                cell.centerLabel.textColor = .systemBlue
 //                tableView.numberOfRows(inSection: 2)
             }
             return cell
@@ -575,6 +583,8 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         loadUtilityNetwork()
         tableView.dataSource = self
         tableView.delegate = self
+        let nib = UINib(nibName: "LabelOrConditionCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "LabelOrConditionCell")
         
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ConfigureSubnetworkTraceViewController", "OptionsTableViewController"]

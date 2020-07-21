@@ -1513,7 +1513,7 @@
 				<key>storyboardName</key>
 				<string>SurfacePlacements</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to position graphics using different surface placements</string>
+				<string>Position graphics relative to a surface using different surface placement modes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1733,6 +1733,14 @@
 				<string>ExploreScenesInFlyoverAR</string>
 				<key>descriptionText</key>
 				<string>Use augmented reality (AR) to quickly explore a scene more naturally than you could with a touch or mouse interface.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Navigate in AR</string>
+				<key>storyboardName</key>
+				<string>NavigateAR</string>
+				<key>descriptionText</key>
+				<string>Use a route displayed in the real world to navigate.</string>
 			</dict>
 		</array>
 	</dict>

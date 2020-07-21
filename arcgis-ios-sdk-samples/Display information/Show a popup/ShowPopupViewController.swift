@@ -51,6 +51,11 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
             if let error = result.error {
                 self.presentAlert(error: error)
             } else if !result.popups.isEmpty {
+                // Unselect the previous feature and select the newest one.
+                self.featureLayer?.clearSelection()
+                let features = result.geoElements as? [AGSFeature]
+                let selectedFeature = features?.first
+                self.featureLayer?.select(selectedFeature!)
                 // Display a popup only if it exists.
                 let popupsViewController = AGSPopupsViewController(popups: result.popups)
                 // Display the popup as a formsheet -- specified for iPads.

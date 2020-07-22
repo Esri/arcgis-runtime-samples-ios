@@ -16,8 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlW-GT-lQb">
-                        <rect key="frame" x="0.0" y="12" width="414" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="laksdjflsjfalsdjflksdjfladjfladksjflkasdjfldsajflskjflsdkfjldskjfaldjfalsdkjfdlksjfalsdjfalkdsjflkj" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlW-GT-lQb">
+                        <rect key="frame" x="12" y="12" width="390" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -26,8 +26,8 @@
                 <constraints>
                     <constraint firstItem="NlW-GT-lQb" firstAttribute="top" secondItem="FZk-1a-tO2" secondAttribute="top" constant="12" id="FFh-S1-5w0"/>
                     <constraint firstAttribute="bottom" secondItem="NlW-GT-lQb" secondAttribute="bottom" constant="12" id="UvD-ci-e8f"/>
-                    <constraint firstAttribute="trailing" secondItem="NlW-GT-lQb" secondAttribute="trailing" id="blL-eI-BBf"/>
-                    <constraint firstItem="NlW-GT-lQb" firstAttribute="leading" secondItem="FZk-1a-tO2" secondAttribute="leading" id="hWF-ic-I6r"/>
+                    <constraint firstAttribute="trailing" secondItem="NlW-GT-lQb" secondAttribute="trailing" constant="12" id="blL-eI-BBf"/>
+                    <constraint firstItem="NlW-GT-lQb" firstAttribute="leading" secondItem="FZk-1a-tO2" secondAttribute="leading" constant="12" id="hWF-ic-I6r"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

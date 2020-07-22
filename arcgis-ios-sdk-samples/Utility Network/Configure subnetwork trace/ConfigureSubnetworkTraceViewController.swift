@@ -283,7 +283,8 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             }, completion: nil)
             let cell = tableView.cellForRow(at: newIndexPath)
-            cell?.textLabel?.text = "\(expressionString!)"
+            guard let conditionCell = cell as? LabelOrConditionCell else { return }
+            conditionCell.centerLabel.text = "\(expressionString!)"
         }
     }
     
@@ -293,10 +294,14 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         traceConfiguration?.traversability?.barriers = initialExpression
         // Reset the added rows.
         let indexPath = IndexPath(row: 0, section: 2)
+//        for condition in 1...numberOfConditions {
+//            <#code#>
+//        }
+        numberOfConditions = 1
+//        tableView.deleteRows(at: <#T##[IndexPath]#>, with: .fade)
         let cell = self.tableView.cellForRow(at: indexPath)
         guard let conditionCell = cell as? LabelOrConditionCell else { return }
         conditionCell.centerLabel.text = self.expressionToString(expression: initialExpression!)
-        numberOfConditions = 1
         // Reset the selected values.
         selectedAttribute = nil
         selectedComparison = nil

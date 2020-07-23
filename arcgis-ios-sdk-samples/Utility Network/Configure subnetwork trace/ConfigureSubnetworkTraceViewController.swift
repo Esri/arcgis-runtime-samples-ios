@@ -20,17 +20,17 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     @IBOutlet weak var barriersSwitch: UISwitch!
     @IBOutlet weak var containersSwitch: UISwitch!
     // References to interactable cells.
-//    @IBOutlet weak var attributesCell: UITableViewCell!
-//    @IBOutlet weak var comparisonCell: UITableViewCell!
-//    @IBOutlet weak var valueCell: UITableViewCell!
+    var attributesCell: UITableViewCell!
+    var comparisonCell: UITableViewCell!
+    var valueCell: UITableViewCell!
     weak var addConditionLabel: UILabel?
     weak var resetLabel: UILabel?
     weak var traceLabel: UILabel?
     // References to labels.
-//    @IBOutlet weak var attributeLabel: UILabel!
-//    @IBOutlet weak var comparisonLabel: UILabel!
+    var attributesLabel: UILabel?
+    var comparisonLabel: UILabel?
+    var valueLabel: UILabel?
     @IBOutlet weak var valueButton: UILabel!
-//    @IBOutlet weak var valueLabel: UILabel!
     // References to cells that act as buttons.
     weak var addConditionCell: UITableViewCell?
     weak var resetCell: UITableViewCell?
@@ -61,7 +61,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     var startingLocation: AGSUtilityElement?
     // Holding the initial conditional expression.
     var initialExpression: AGSUtilityTraceConditionalExpression?
-//    var expressionString: String?
     // The trace configuration.
     var configuration: AGSUtilityTraceConfiguration?
     // The source tier of the utility network.
@@ -91,11 +90,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             updateButtons()
         }
     }
-    
-    var valueCell: UITableViewCell?
-    var attributeLabel: UILabel?
-    var comparisonLabel: UILabel?
-    var valueLabel: UILabel?
     
     func loadUtilityNetwork() {
         // For creating the default starting location.
@@ -135,17 +129,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     let cell = self.tableView.cellForRow(at: indexPath)
                     guard let conditionCell = cell as? LabelOrConditionCell else { return }
                     conditionCell.centerLabel.text = self.expressionToString(expression: expression)
-//                    print(self.expressionToString(expression: expression))
-                    
-//                    self.tableView.reloadRows(at: [indexPath], with: .none)
-//                    self.tableView.performBatchUpdates({
-//                        // insert the new row
-//                        let indexPath = IndexPath(row: 0, section: 2)
-//                        self.tableView.insertRows(at: [indexPath], with: .fade)
-//                        self.tableView.moveRow(at: indexPath, to: IndexPath(row: 1, section: 2))
-//                        let cell = self.tableView.cellForRow(at: indexPath)
-//                        cell?.textLabel?.text = self.expressionToString(expression: expression)
-//                    }, completion: nil)
                 }
                 // Set the traversability scope.
                 self.sourceTier?.traceConfiguration?.traversability?.scope = .junctions
@@ -166,8 +149,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             let selectedIndex = selectedAttribute.flatMap { attributes.firstIndex(of: $0) } ?? -1
             let optionsViewController = OptionsTableViewController(labels: attributeLabels, selectedIndex: selectedIndex) { (index) in
                 self.selectedAttribute = attributes[index]
-                self.attributeLabel?.text = self.selectedAttribute?.name
-                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
+                self.attributesLabel?.text = self.selectedAttribute?.name
             }
             optionsViewController.title = "Attributes"
             show(optionsViewController, sender: self)
@@ -190,7 +172,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                         }
                     }
                     // Prompt value selection.
-                    let selectedIndex = selectedValue.flatMap { domain.codedValues.firstIndex(of: $0 as! AGSCodedValue) } ?? -1
+                    let selectedIndex = selectedValue.flatMap { domain.codedValues.firstIndex(of: ($0 as! AGSCodedValue)) } ?? -1
                     let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: selectedIndex) { (index) in
                         self.valueLabel?.text = self.valueLabels[index]
                         self.selectedValue = domain.codedValues[index]
@@ -271,20 +253,17 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             // Update the list of barrier conditions.
             configuration?.traversability?.barriers = expression
             let expressionString = expressionToString(expression: expression!)
-//            textView?.text += """
-//
-//            \(expressionString!)
-//            """
             numberOfConditions += 1
             let newIndexPath = IndexPath(row: numberOfConditions - 1, section: 2)
-            // update the table
+            // Update the table
             tableView.performBatchUpdates({
-                // insert the new row
+                // Insert the new row
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             }, completion: nil)
             let cell = tableView.cellForRow(at: newIndexPath)
             guard let conditionCell = cell as? LabelOrConditionCell else { return }
             conditionCell.centerLabel.text = "\(expressionString!)"
+            tableView.reloadData()
         }
     }
     
@@ -293,21 +272,17 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         let traceConfiguration = configuration
         traceConfiguration?.traversability?.barriers = initialExpression
         // Reset the added rows.
-        let indexPath = IndexPath(row: 0, section: 2)
-//        for condition in 1...numberOfConditions {
-//            <#code#>
-//        }
-        numberOfConditions = 1
-//        tableView.deleteRows(at: <#T##[IndexPath]#>, with: .fade)
-        let cell = self.tableView.cellForRow(at: indexPath)
-        guard let conditionCell = cell as? LabelOrConditionCell else { return }
-        conditionCell.centerLabel.text = self.expressionToString(expression: initialExpression!)
-        // Reset the selected values.
+        
+        for _ in 1...numberOfConditions - 1 {
+            numberOfConditions -= 1
+            let indexPath = IndexPath(row: 1, section: 2)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
         selectedAttribute = nil
         selectedComparison = nil
         selectedValue = nil
         //Reset the labels.
-        attributeLabel?.text = nil
+        attributesLabel?.text = nil
         comparisonLabel?.text = nil
         valueLabel?.text = nil
     }
@@ -341,7 +316,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             guard let valueCell = valueCell else { return }
             // Enable or disable the value button.
             if selectedAttribute == nil {
-                valueButton.isEnabled = false
+//                valueButton.isEnabled = false
                 valueCell.isUserInteractionEnabled = false
             } else {
                 if (selectedAttribute?.domain as? AGSCodedValueDomain) != nil {
@@ -351,7 +326,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     // Indicate that an alert will show.
                     valueCell.accessoryType = .none
                 }
-                valueButton.isEnabled = true
+//                valueButton.isEnabled = true
                 valueCell.isUserInteractionEnabled = true
             }
             // If selections have not been made, disable the buttons
@@ -477,41 +452,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         }
     }
     
-    func assignCellsAndLabels(indexPath: IndexPath) {
-        switch indexPath.section {
-        case 1:
-            switch indexPath.row {
-            case 0:
-                let attributeCell = tableView.cellForRow(at: indexPath)
-                attributeLabel = attributeCell?.detailTextLabel
-            case 1:
-                let comparisonCell = tableView.cellForRow(at: indexPath)
-                comparisonLabel = comparisonCell?.detailTextLabel
-            case 2:
-                valueCell = tableView.cellForRow(at: indexPath)
-                valueLabel = valueCell?.detailTextLabel
-            case 3:
-                addConditionCell = tableView.cellForRow(at: indexPath)
-                addConditionLabel = addConditionCell?.textLabel
-            default:
-                print("idk")
-            }
-        case 2:
-            switch indexPath.row {
-            case numberOfConditions:
-                resetCell = tableView.cellForRow(at: indexPath)
-                resetLabel = resetCell?.textLabel
-            case numberOfConditions + 1:
-                traceCell = tableView.cellForRow(at: indexPath)
-                traceLabel = traceCell?.textLabel
-            default:
-                print("idk")
-            }
-        default:
-            print("idk")
-        }
-    }
-    
     let switches = ["Include barriers", "Include containers"]
     let cellIdentifiers = ["SwitchCell", "SelectionCell", "LabelOrConditionCell"]
     let selectionLabels = ["Attribute", "Comparison", "Value", "Add new condition"]
@@ -561,26 +501,36 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     cell.textLabel?.textColor = .systemBlue
                     cell.accessoryType = .disclosureIndicator
                 }
+                switch indexPath.row {
+                case 0:
+                    attributesCell = cell
+                    attributesLabel = cell.detailTextLabel
+                case 1:
+                    comparisonCell = cell
+                    comparisonLabel = cell.detailTextLabel
+                case 2:
+                    valueCell = cell
+                    valueLabel = cell.detailTextLabel
+                default:
+                    break
+                }
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LabelOrConditionCell", for: indexPath) as! LabelOrConditionCell
+                addConditionCell = cell
                 cell.centerLabel.text = selectionLabels[indexPath.row]
+                
                 cell.centerLabel.textColor = .systemBlue
                 return cell
             }
         case .conditions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LabelOrConditionCell", for: indexPath) as! LabelOrConditionCell
             if indexPath.row >= numberOfConditions {
-//                cell.subviews[0].subviews[0].text
-//                cell.subviews.
-                cell.centerLabel.text = conditionLabels[indexPath.row - 1]
-                                
+                cell.centerLabel.text = conditionLabels[indexPath.row - numberOfConditions]
                 cell.centerLabel.textColor = .systemBlue
-//                tableView.numberOfRows(inSection: 2)
             }
             return cell
         }
-        assignCellsAndLabels(indexPath: indexPath)
         return cell
     }
     

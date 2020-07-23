@@ -120,6 +120,7 @@ class ReadSymbolsFromMobileStyleSymbolSettingsViewController: UITableViewControl
         } else if imageOperations[indexPath] != nil {
             return nil
         } else {
+            let op = searchResultForRow(at: indexPath).sy
             let operation = searchResult.symbol?.createSwatch(withWidth: 40, height: 40, screen: .main, backgroundColor: nil) { [weak self] (image, error) in
                 guard let self = self else { return }
                 self.imageOperations[indexPath] = nil

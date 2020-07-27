@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate {
-    @IBOutlet private weak var mapView: AGSMapView! {
+    @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
         }

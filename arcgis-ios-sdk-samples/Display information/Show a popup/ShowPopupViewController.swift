@@ -45,24 +45,26 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
     
     // MARK: - AGSGeoViewTouchDelegate
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        guard let featureLayer = self.featureLayer else { return }
         // Identify the specified feature layer.
-        mapView.identifyLayer(featureLayer!, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyLayerResult) in
+        mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyLayerResult) in
             guard let self = self else { return }
             if let error = result.error {
                 self.presentAlert(error: error)
             } else if !result.popups.isEmpty {
-                // Unselect the previous feature and select the newest one.
-                self.featureLayer?.clearSelection()
+                // Unselect the previous feature.
+                featureLayer.clearSelection()
+                // Select the new feature.
                 let features = result.geoElements as? [AGSFeature]
                 let selectedFeature = features?.first
-                self.featureLayer?.select(selectedFeature!)
+                featureLayer.select(selectedFeature!)
                 // Display a popup only if it exists.
                 let popupsViewController = AGSPopupsViewController(popups: result.popups)
                 // Display the popup as a formsheet -- specified for iPads.
                 popupsViewController.modalPresentationStyle = .formSheet
                 // Present the popup.
-                self.present(popupsViewController, animated: true)
                 popupsViewController.delegate = self
+                self.present(popupsViewController, animated: true)
             }
         }
     }

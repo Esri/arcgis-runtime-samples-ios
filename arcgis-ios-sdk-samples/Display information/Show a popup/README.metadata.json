@@ -1,6 +1,6 @@
 {
     "category": "Display information",
-    "description": "Show predefined popups from a web map.",
+    "description": "Show a predefined popup from a web map.",
     "ignore": false,
     "images": [
         "show-popup.png"

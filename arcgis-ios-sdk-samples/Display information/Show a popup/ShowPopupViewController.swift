@@ -30,7 +30,7 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
         let map = AGSMap(url: mapURL)!
         // Load the map.
         map.load { [weak self] (error) in
-        guard let self = self else { return }
+            guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {

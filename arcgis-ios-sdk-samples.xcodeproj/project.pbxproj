@@ -2179,7 +2179,7 @@
 				3E0B58451E36BCCD00951767 /* Analysis */,
 				3EEE1D671E4935FC003263FC /* Cloud & Portal */,
 				3EEA06001D21C3E800E03774 /* Scenes */,
-				D98CC08F22E25D8200618682 /* Utility Network */,
+				D98CC08F22E25D8200618682 /* Utility network */,
 				E47ED0882343C1400032440E /* Augmented reality */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				C7E86C8E21751CFE001C65C3 /* Extensions */,
@@ -4033,14 +4033,14 @@
 			path = Shapefiles;
 			sourceTree = "<group>";
 		};
-		D98CC08F22E25D8200618682 /* Utility Network */ = {
+		D98CC08F22E25D8200618682 /* Utility network */ = {
 			isa = PBXGroup;
 			children = (
 				F1D50229245243AD00583CFB /* Display utility associations */,
 				00E5B7CB2458FE6D00B11973 /* Perform valve isolation trace */,
 				D98CC09022E25E3300618682 /* Trace utility network */,
 			);
-			path = "Utility Network";
+			path = "Utility network";
 			sourceTree = "<group>";
 		};
 		D98CC09022E25E3300618682 /* Trace utility network */ = {

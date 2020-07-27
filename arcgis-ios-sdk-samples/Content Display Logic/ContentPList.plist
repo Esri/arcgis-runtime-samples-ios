@@ -1664,7 +1664,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Utility Network</string>
+		<string>Utility network</string>
 		<key>children</key>
 		<array>
 			<dict>

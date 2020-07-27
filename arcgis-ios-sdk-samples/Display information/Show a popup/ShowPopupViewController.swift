@@ -37,7 +37,7 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
                 // Set touch delegate.
                 self.mapView.touchDelegate = self
                 // Get the feature layer.
-                self.featureLayer = map.operationalLayers[0] as? AGSFeatureLayer
+                self.featureLayer = map.operationalLayers.firstObject as? AGSFeatureLayer
             }
         }
         return map

@@ -70,7 +70,7 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
     // MARK: - AGSPopupsViewControllerDelegate methods
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         // Dismiss the popups view controller.
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     override func viewDidLoad() {

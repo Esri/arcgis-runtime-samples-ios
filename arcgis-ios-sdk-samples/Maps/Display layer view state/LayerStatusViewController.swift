@@ -15,73 +15,60 @@
 import UIKit
 import ArcGIS
 
-class LayerStatusViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet private var mapView: AGSMapView!
-    @IBOutlet private var tableView: UITableView!
-    @IBOutlet private var visualEffectView: UIVisualEffectView!
+class LayerStatusViewController: UIViewController {
+    // MARK: Instance properties
     
-    private var map: AGSMap!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //constraint visual effect view to the map view's attribution label
-        let constraint = self.visualEffectView.bottomAnchor.constraint(equalTo: self.mapView.attributionTopAnchor, constant: -10)
-        
-        //activate constraint
-        constraint.isActive = true
+    /// The map view managed by the view controller.
+    @IBOutlet weak var mapView: AGSMapView! {
+        didSet {
+            mapView.map = AGSMap(basemap: .topographic())
+            mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 4e7))
+            mapView.layerViewStateChangedHandler = layerViewStateChangedHandler
+        }
     }
+    /// The label to display layer view status.
+    @IBOutlet weak var statusLabel: UILabel!
+    /// The feature layer loaded from a portal item.
+    var featureLayer: AGSFeatureLayer = {
+        let portalItem = AGSPortalItem(url: URL(string: "https://runtime.maps.arcgis.com/home/item.html?id=b8f4033069f141729ffb298b7418b653")!)!
+        let featureLayer = AGSFeatureLayer(item: portalItem, layerID: 0)
+        featureLayer.minScale = 4e8
+        featureLayer.maxScale = 4e7
+        return featureLayer
+    }()
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.map = AGSMap()
-        
-        //create tiled layer using a url
-        let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
-        //add the layer to the map
-        self.map.operationalLayers.add(tiledLayer)
-
-        //create an map image layer using a url
-        let imageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
-        imageLayer.minScale = 40000000
-        imageLayer.maxScale = 2000000
-        //add it to the map
-        self.map.operationalLayers.add(imageLayer)
-        
-        //create feature layer using a url
-        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)
-        let featurelayer = AGSFeatureLayer(featureTable: featureTable)
-        //add it to the map
-        self.map.operationalLayers.add(featurelayer)
-        
-        //reload table
-        self.tableView.reloadData()
-        //assign map to the map view
-        self.mapView.map = self.map
-        //zoom to custom viewpoint
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 5e7))
-        
-        //layer status logic
-        //assign a closure for layerViewStateChangedHandler, in order to receive layer view status changes
-        self.mapView.layerViewStateChangedHandler = { [weak self] (layer: AGSLayer, state: AGSLayerViewState) in
+    // MARK: Instance methods
+    
+    /// Display layer view state and handle errors.
+    ///
+    /// - Parameters:
+    ///   - layer: The `AGSLayer` of which view state has changed.
+    ///   - state: The `AGSLayerViewState` that contains changed statuses.
+    func layerViewStateChangedHandler(layer: AGSLayer, state: AGSLayerViewState) {
+        // Only check the view state of the feature layer.
+        guard layer == featureLayer else {
+            return
+        }
+        if let error = state.error {
             DispatchQueue.main.async {
-                guard let self = self else { return }
-                //find the index of layer in operational layers list
-                //and update its status
-                let index = self.map.operationalLayers.index(of: layer)
-                if index != NSNotFound {
-                    let indexPath = IndexPath(row: index, section: 0)
-                    self.tableView.reloadRows(at: [indexPath], with: .none)
-                }
+                self.presentAlert(error: error)
             }
         }
-        
-        //setup source code bar button item
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["LayerStatusViewController"]
+        DispatchQueue.main.async {
+            self.setStatus(message: self.viewStatusString(state.status))
+        }
     }
-
-    //return string for current status name
+    
+    // MARK: UI
+    
+    func setStatus(message: String) {
+        statusLabel.text = message
+    }
+    
+    /// Get a string for current statuses.
+    ///
+    /// - Parameter status: An `AGSLayerViewStatus` OptionSet that  indicates the layer's statuses.
+    /// - Returns: A comma separated string to represent current statuses.
     func viewStatusString(_ status: AGSLayerViewStatus) -> String {
         var statuses = [String]()
         if status.contains(.active) {
@@ -99,6 +86,9 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         if status.contains(.error) {
             statuses.append("Error")
         }
+        if status.contains(.warning) {
+            statuses.append("Warning")
+        }
         if !statuses.isEmpty {
             return statuses.joined(separator: ", ")
         } else {
@@ -106,37 +96,26 @@ class LayerStatusViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    // MARK: - Table view data source
+    // MARK: Actions
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    @IBAction func layerVisibilitySwitchValueChanged(_ sender: UISwitch) {
+        featureLayer.isVisible = sender.isOn
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.map?.operationalLayers.count ?? 0
-    }
+    // MARK: UIViewController
     
-    // MARK: - Table view delegates
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LayerStatusCell", for: indexPath)
-        cell.backgroundColor = .clear
-        let layer = self.map.operationalLayers[indexPath.row] as! AGSLayer
-        
-        //if the layer is loaded then show the name
-        //else use a template
-        if layer.loadStatus == .loaded {
-            cell.textLabel?.text = layer.name
-        } else {
-            cell.textLabel?.text = "Layer \(indexPath.row)"
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames  = ["LayerStatusViewController"]
+        // Load the feature layer.
+        featureLayer.load { [weak self] (error) in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                self.mapView.map?.operationalLayers.add(self.featureLayer)
+            }
         }
-        
-        if let layerViewState = mapView.layerViewState(for: layer) {
-            cell.detailTextLabel?.text = viewStatusString(layerViewState.status)
-        } else {
-            cell.detailTextLabel?.text = "Unknown"
-        }
-        
-        return cell
     }
 }

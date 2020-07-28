@@ -32,8 +32,8 @@ class LayerStatusViewController: UIViewController {
     var featureLayer: AGSFeatureLayer = {
         let portalItem = AGSPortalItem(url: URL(string: "https://runtime.maps.arcgis.com/home/item.html?id=b8f4033069f141729ffb298b7418b653")!)!
         let featureLayer = AGSFeatureLayer(item: portalItem, layerID: 0)
-        featureLayer.minScale = 4e8
-        featureLayer.maxScale = 4e7
+        featureLayer.minScale = 2e8
+        featureLayer.maxScale = 2e7
         return featureLayer
     }()
     

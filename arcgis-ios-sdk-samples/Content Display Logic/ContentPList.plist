@@ -1107,6 +1107,14 @@
 					<string>SanFranciscoTilePackage</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Edit features with feature-linked annotation</string>
+				<key>storyboardName</key>
+				<string>EditFeaturesWithFeatureLinkedAnnotation</string>
+				<key>descriptionText</key>
+				<string>Edit feature attributes which are linked to annotation through an expression.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

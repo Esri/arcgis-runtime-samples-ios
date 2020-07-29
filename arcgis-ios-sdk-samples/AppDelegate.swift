@@ -125,6 +125,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         UISlider.appearance().tintColor = .primaryThemeColor
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .primaryThemeColor
+        
+        UITableViewCell.appearance().tintColor = .primaryThemeColor
     }
 
     // MARK: - Split view

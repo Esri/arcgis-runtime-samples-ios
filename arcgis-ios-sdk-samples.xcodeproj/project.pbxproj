@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		00166C8824D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
+		00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */; };
+		00166C8C24D236A300DD317E /* RealisticLightingAndShadowsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
 		001ECB042486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */; };
 		001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */; };
 		001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
@@ -870,6 +873,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00166C8C24D236A300DD317E /* RealisticLightingAndShadowsViewController.swift in CopyFiles */,
 				001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */,
 				00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */,
 				00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */,
@@ -1145,6 +1149,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealisticLightingAndShadowsViewController.swift; sourceTree = "<group>"; };
+		00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RealisticLightingAndShadows.storyboard; sourceTree = "<group>"; };
 		001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARCalibrationViewController.swift; sourceTree = "<group>"; };
 		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
@@ -1743,6 +1749,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00166C8524D20E0E00DD317E /* Realistic lighting and shadows */ = {
+			isa = PBXGroup;
+			children = (
+				00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */,
+				00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */,
+			);
+			path = "Realistic lighting and shadows";
+			sourceTree = "<group>";
+		};
 		001ECB58248B002B009AC6C0 /* Feature collection layer (portal item) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3340,6 +3355,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				00166C8524D20E0E00DD317E /* Realistic lighting and shadows */,
 				00ADC3B72464D45B00A3B88D /* Animate images with image overlay */,
 				F1C81C4322FCEBD100229CAA /* Get elevation at a point */,
 				F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */,
@@ -4521,6 +4537,7 @@
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
 				C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */,
+				00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */,
 				C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
@@ -4933,6 +4950,7 @@
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
 				C7E9D7C621C0500300E6C47E /* BufferViewController.swift in Sources */,
+				00166C8824D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift in Sources */,
 				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
 				F1034F9C22D3EE8900B021DA /* ProjectStackView.swift in Sources */,
 				4C0CBFFF22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in Sources */,

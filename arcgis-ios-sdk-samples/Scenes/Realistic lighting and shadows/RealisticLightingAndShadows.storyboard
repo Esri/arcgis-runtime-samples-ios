@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aTU-AV-gOg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Realistic Lighting And Shadows View Controller-->
+        <scene sceneID="rGu-vQ-gIo">
+            <objects>
+                <viewController id="aTU-AV-gOg" customClass="RealisticLightingAndShadowsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G5J-mI-Ghn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6g-a4-T3I" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="730"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fa6-xB-TYJ">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="032-Du-hYf"/>
+                                    <barButtonItem style="plain" id="ieP-1w-zmk">
+                                        <view key="customView" contentMode="scaleToFill" id="AfW-Ve-nGX">
+                                            <rect key="frame" x="42" y="4" width="240" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Date time is shown here." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDm-Uy-q8n">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="iDm-Uy-q8n" secondAttribute="trailing" id="3OU-Q9-FxD"/>
+                                                <constraint firstItem="iDm-Uy-q8n" firstAttribute="leading" secondItem="AfW-Ve-nGX" secondAttribute="leading" id="EZN-DE-7lN"/>
+                                                <constraint firstItem="iDm-Uy-q8n" firstAttribute="top" secondItem="AfW-Ve-nGX" secondAttribute="top" id="ccQ-X3-9Fr"/>
+                                                <constraint firstAttribute="bottom" secondItem="iDm-Uy-q8n" secondAttribute="bottom" id="nyM-6y-DAQ"/>
+                                            </constraints>
+                                        </view>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rbQ-5G-zr8"/>
+                                    <barButtonItem title="Mode" id="hID-no-gPl">
+                                        <connections>
+                                            <action selector="modeButtonTapped:" destination="aTU-AV-gOg" id="zxy-gt-oIP"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="PVk-Ok-Zb2"/>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umr-Q2-zU9">
+                                <rect key="frame" x="0.0" y="774" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="LMf-qC-QSu"/>
+                                    <barButtonItem title="AM" id="SKA-Sg-ke6">
+                                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="jz1-TF-t0a">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="720" minValue="0.0" maxValue="1439" id="za2-vg-UDk">
+                                            <rect key="frame" x="99" y="5" width="220" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="sliderValueChanged:" destination="aTU-AV-gOg" eventType="valueChanged" id="sGc-N2-jGX"/>
+                                            </connections>
+                                        </slider>
+                                    </barButtonItem>
+                                    <barButtonItem title="PM" id="2iO-Dm-dzh">
+                                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2pQ-cw-3QX"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Fa6-xB-TYJ" firstAttribute="top" secondItem="umr-Q2-zU9" secondAttribute="bottom" id="3HF-qC-5vv"/>
+                            <constraint firstItem="Fa6-xB-TYJ" firstAttribute="leading" secondItem="G5J-mI-Ghn" secondAttribute="leading" id="3Mp-kx-AyN"/>
+                            <constraint firstItem="Fa6-xB-TYJ" firstAttribute="trailing" secondItem="G5J-mI-Ghn" secondAttribute="trailing" id="70H-Hr-GWd"/>
+                            <constraint firstItem="umr-Q2-zU9" firstAttribute="top" secondItem="B6g-a4-T3I" secondAttribute="bottom" id="9kU-AY-rR7"/>
+                            <constraint firstItem="B6g-a4-T3I" firstAttribute="top" secondItem="1K1-uy-pPX" secondAttribute="top" id="RaR-1n-cmF"/>
+                            <constraint firstItem="1K1-uy-pPX" firstAttribute="bottom" secondItem="Fa6-xB-TYJ" secondAttribute="bottom" id="YVG-Nl-5VM"/>
+                            <constraint firstItem="umr-Q2-zU9" firstAttribute="leading" secondItem="G5J-mI-Ghn" secondAttribute="leading" id="aDQ-yD-CP3"/>
+                            <constraint firstItem="B6g-a4-T3I" firstAttribute="trailing" secondItem="G5J-mI-Ghn" secondAttribute="trailing" id="fUI-3t-jjp"/>
+                            <constraint firstItem="B6g-a4-T3I" firstAttribute="leading" secondItem="G5J-mI-Ghn" secondAttribute="leading" id="ngh-k8-v1i"/>
+                            <constraint firstItem="umr-Q2-zU9" firstAttribute="trailing" secondItem="G5J-mI-Ghn" secondAttribute="trailing" id="yxy-NH-jDr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1K1-uy-pPX"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateTimeLabel" destination="iDm-Uy-q8n" id="kYn-2d-heQ"/>
+                        <outlet property="minuteSlider" destination="za2-vg-UDk" id="UWs-eA-hbJ"/>
+                        <outlet property="sceneView" destination="B6g-a4-T3I" id="rPD-vA-SnI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n9X-xE-vkK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="351" y="-182"/>
+        </scene>
+    </scenes>
+</document>

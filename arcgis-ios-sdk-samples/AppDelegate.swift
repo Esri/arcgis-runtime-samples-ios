@@ -117,16 +117,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             navigationBarAppearanceProxy.barTintColor = .primaryThemeColor
         }
         navigationBarAppearanceProxy.tintColor = .white
-        
+        // Override tint color for `UIControl`s.
         UIToolbar.appearance().barTintColor = .backgroundGray
         UIToolbar.appearance().tintColor = .primaryThemeColor
-        
         UISwitch.appearance().onTintColor = .primaryThemeColor
         UISlider.appearance().tintColor = .primaryThemeColor
+        UITableViewCell.appearance().tintColor = .primaryThemeColor
+        UIProgressView.appearance().tintColor = .primaryThemeColor
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .primaryThemeColor
-        
-        UITableViewCell.appearance().tintColor = .primaryThemeColor
     }
 
     // MARK: - Split view

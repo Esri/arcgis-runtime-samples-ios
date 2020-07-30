@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Edit Feature Attachments View Controller-->
         <scene sceneID="Y18-FQ-jHG">
             <objects>
-                <viewController id="XVk-fN-Z3w" sceneMemberID="viewController">
+                <viewController id="XVk-fN-Z3w" customClass="EditFeatureAttachmentsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GJn-Lh-FXz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,6 +30,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Qz-Ee-AN2"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="ShL-2L-KLv" id="bmm-SO-oHS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wH9-bK-G5m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

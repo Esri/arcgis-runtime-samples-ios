@@ -15,78 +15,83 @@
 import UIKit
 import ArcGIS
 
-class FLSelectionViewController: UIViewController, AGSGeoViewTouchDelegate {
-    @IBOutlet private weak var mapView: AGSMapView!
+class FLSelectionViewController: UIViewController {
+    // MARK: Storyboard views
     
-    private var featureLayer: AGSFeatureLayer?
-    // the query is retained internally by the SDK so use a weak reference
-    private weak var activeSelectionQuery: AGSCancelable?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FLSelectionViewController"]
-        
-        //initialize map with topographic basemap
-        let map = AGSMap(basemap: .streets())
-        //initial viewpoint
-        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -180, yMin: -90, xMax: 180, yMax: 90, spatialReference: .wgs84()))
-        
-        //assign map to the map view
-        mapView.map = map
-        mapView.touchDelegate = self
-        
-        let featureServiceURL = URL(string: "https://services1.arcgis.com/4yjifSiIG17X0gW4/arcgis/rest/services/GDP_per_capita_1960_2016/FeatureServer/0")!
-        
-        //create feature table using a url
-        let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
-        
-        //create feature layer using this feature table
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        self.featureLayer = featureLayer
-        
-        //add feature layer to the map
-        map.operationalLayers.add(featureLayer)
-        
-        mapView.selectionProperties.color = .cyan
+    /// A label to show the selection status.
+    @IBOutlet weak var statusLabel: UILabel!
+    /// The map view managed by the view controller.
+    @IBOutlet weak var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+            mapView.touchDelegate = self
+            mapView.selectionProperties.color = .cyan
+        }
     }
     
-    // MARK: - AGSGeoViewTouchDelegate
+    // MARK: Properties and methods
     
-    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        //cancel the active query if it hasn't been completed yet
-        if let activeSelectionQuery = activeSelectionQuery {
-            activeSelectionQuery.cancel()
-        }
-        
-        guard let map = mapView.map,
-            let featureLayer = featureLayer else {
-                return
-        }
-        
-        //tolerance level
-        let toleranceInPoints: Double = 12
-        //use tolerance to compute the envelope for query
-        let toleranceInMapUnits = toleranceInPoints * mapView.unitsPerPoint
-        let envelope = AGSEnvelope(xMin: mapPoint.x - toleranceInMapUnits,
-                                   yMin: mapPoint.y - toleranceInMapUnits,
-                                   xMax: mapPoint.x + toleranceInMapUnits,
-                                   yMax: mapPoint.y + toleranceInMapUnits,
-                                   spatialReference: map.spatialReference)
-        
-        //create query parameters object
-        let queryParams = AGSQueryParameters()
-        queryParams.geometry = envelope
-        
-        //run the selection query
-        activeSelectionQuery = featureLayer.selectFeatures(withQuery: queryParams, mode: .new) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
+    /// An array of selected features.
+    var selectedFeatures = [AGSFeature]()
+    
+    /// The feature layer created from a feature service.
+    let featureLayer: AGSFeatureLayer = {
+        // Create feature table using a url.
+        let featureServiceURL = URL(string: "https://services1.arcgis.com/4yjifSiIG17X0gW4/arcgis/rest/services/GDP_per_capita_1960_2016/FeatureServer/0")!
+        let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
+        // Create feature layer using this feature table.
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        return featureLayer
+    }()
+    
+    /// Create a map.
+    ///
+    /// - Returns: An `AGSMap` object.
+    func makeMap() -> AGSMap {
+        // Initialize map with topographic basemap.
+        let map = AGSMap(basemap: .streets())
+        // Set initial viewpoint.
+        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -180, yMin: -90, xMax: 180, yMax: 90, spatialReference: .wgs84()))
+        // Add feature layer to the map.
+        map.operationalLayers.add(featureLayer)
+        return map
+    }
+    
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["FLSelectionViewController"]
+        // Load the feature layer.
+        featureLayer.load { [weak self] (error) in
             if let error = error {
                 self?.presentAlert(error: error)
+            } else {
+                self?.mapView.setViewpointScale(2e8)
             }
-            if let result = queryResult {
-                print("\(result.featureEnumerator().allObjects.count) feature(s) selected")
+        }
+    }
+}
+
+// MARK: - AGSGeoViewTouchDelegate
+
+extension FLSelectionViewController: AGSGeoViewTouchDelegate {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        // Identify features at the tapped location.
+        mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12.0, returnPopupsOnly: false, maximumResults: 10) { [weak self] result in
+            guard let self = self else { return }
+            if let error = result.error {
+                self.presentAlert(error: error)
+                return
             }
+            // Un-select previous results.
+            self.featureLayer.unselectFeatures(self.selectedFeatures)
+            // Select current results.
+            self.selectedFeatures = result.geoElements.map { $0 as! AGSFeature }
+            self.featureLayer.select(self.selectedFeatures)
+            // Show status.
+            self.statusLabel.text = "\(result.geoElements.count) feature(s) selected."
         }
     }
 }

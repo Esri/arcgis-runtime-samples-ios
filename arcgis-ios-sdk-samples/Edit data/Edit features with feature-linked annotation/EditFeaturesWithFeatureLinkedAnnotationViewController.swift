@@ -17,36 +17,45 @@
 import UIKit
 import ArcGIS
 
-class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
+class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = makeMap()
+            // Create the map with a light gray canvas basemap centered on Loudoun, Virginia.
+            let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39.0204, longitude: -77.4159, levelOfDetail: 18)
+            mapView.map = map
+            loadGeodatabase()
         }
     }
     private var selectedFeature: AGSFeature?
     private var selectedFeatureIsPolyline = false
     
-    func makeMap() -> AGSMap {
+    func loadGeodatabase() {
         // Load geodatabase from shared resources.
         let geodatabaseURL = Bundle.main.url(forResource: "loudoun_anno", withExtension: ".geodatabase")!
         let geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
-        // Create the map with a light gray canvas basemap centered on Loudoun, Virginia.
-        let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39.0204, longitude: -77.4159, levelOfDetail: 18)
+//        let group = DispatchGroup()
+//        group.enter()
         geodatabase.load { (error: Error?) in
-            // Create feature layers from tables in the geodatabase.
-            let parcelLinesFeatureLayer = AGSFeatureLayer(featureTable: geodatabase.geodatabaseFeatureTable(withName: "ParcelLines_1")!)
-            let addressPointFeatureLayer = AGSFeatureLayer(featureTable: geodatabase.geodatabaseFeatureTable(withName: "Loudoun_Address_Points_1")!)
-            // Create annotation layers from tables in the geodatabase.
-            let parcelLinesAnnotationLayer = AGSAnnotationLayer(featureTable: geodatabase.geodatabaseAnnotationTable(withTableName: "ParcelLinesAnno_1")!)
-            let addressPointsAnnotationLayer = AGSAnnotationLayer(featureTable: geodatabase.geodatabaseAnnotationTable(withTableName: "Loudoun_Address_PointsAnno_1")!)
-            // Add the feature layers to the map.
-            map.operationalLayers.add(parcelLinesFeatureLayer)
-            map.operationalLayers.add(addressPointFeatureLayer)
-            // Add the annotation layers to the map.
-            map.operationalLayers.add(parcelLinesAnnotationLayer)
-            map.operationalLayers.add(addressPointsAnnotationLayer)
+//            guard let map = self.mapView.map else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                guard let map = self.mapView.map else { return }
+                // Create feature layers from tables in the geodatabase.
+                let parcelLinesFeatureLayer = AGSFeatureLayer(featureTable: geodatabase.geodatabaseFeatureTable(withName: "ParcelLines_1")!)
+                let addressPointFeatureLayer = AGSFeatureLayer(featureTable: geodatabase.geodatabaseFeatureTable(withName: "Loudoun_Address_Points_1")!)
+                // Create annotation layers from tables in the geodatabase.
+                let parcelLinesAnnotationLayer = AGSAnnotationLayer(featureTable: geodatabase.geodatabaseAnnotationTable(withTableName: "ParcelLinesAnno_1")!)
+                let addressPointsAnnotationLayer = AGSAnnotationLayer(featureTable: geodatabase.geodatabaseAnnotationTable(withTableName: "Loudoun_Address_PointsAnno_1")!)
+                // Add the feature layers to the map.
+                map.operationalLayers.add(parcelLinesFeatureLayer)
+                map.operationalLayers.add(addressPointFeatureLayer)
+                // Add the annotation layers to the map.
+                map.operationalLayers.add(parcelLinesAnnotationLayer)
+                map.operationalLayers.add(addressPointsAnnotationLayer)
+//                group.leave()
+            }
         }
-        return map
     }
     
     // MARK: - AGSGeoViewTouchDelegate
@@ -71,23 +80,34 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         selectedFeature = nil
         
         // Identify across all layers
-        let identifyLayerResultFuture = mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10.0, returnPopupsOnly: false) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
-            results?.forEach { (result) in
-                let featureLayer = result.layerContent as! AGSFeatureLayer
-                // Get a reference to the identified feature
-                self.selectedFeature = result.geoElements[0] as? AGSFeature
-                // If the selected feature is a polyline with any part containing more than one segment (i.e. a curve).
-                if let polyline = self.selectedFeature?.geometry as? AGSPolyline {
-                    let polylineArray = polyline.parts.array()
-                    polylineArray.forEach { part in
-                        if part.pointCount > 2 {
-                            // Set selected feature to nil.
-                            self.selectedFeature = nil
-                            // Show a message to select straight (single segment) polylines only.
-                            self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
-                            return
+        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10.0, returnPopupsOnly: false) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
+//        guard let selectedFeature = self.selectedFeature else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                results?.forEach { (result) in
+                    if let featureLayer = result.layerContent as? AGSFeatureLayer {
+                        // Get a reference to the identified feature
+                        self.selectedFeature = result.geoElements[0] as? AGSFeature
+                        // If the selected feature is a polyline with any part containing more than one segment (i.e. a curve).
+                        if let polyline = self.selectedFeature?.geometry as? AGSPolyline {
+                            let polylineArray = polyline.parts.array()
+                            polylineArray.forEach { part in
+                                if part.pointCount > 2 {
+                                    // Set selected feature to nil.
+                                    self.selectedFeature = nil
+                                    // Show a message to select straight (single segment) polylines only.
+                                    self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
+                                    return
+                                }
+                            }
                         }
-                       
+                        featureLayer.select(self.selectedFeature!)
+                        if self.selectedFeature?.geometry?.geometryType.rawValue == 1 {
+                            self.showEditableAttributes(selectedFeature: self.selectedFeature!)
+                        } else if self.selectedFeature?.geometry?.geometryType.rawValue == 3 {
+                            self.selectedFeatureIsPolyline = true
+                        }
                     }
                 }
             }
@@ -97,11 +117,11 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     // Create an alert dialog with edit texts to allow editing of the given feature's 'AD_ADDRESS' and 'ST_STR_NAM' attributes.
     func showEditableAttributes(selectedFeature: AGSFeature) {
         // Inflate the edit attribute layout.
-        let alert = UIAlertController(title: "Edit feature attribute", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Edit feature attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
         alert.addTextField()
         alert.addTextField()
-        alert.textFields?[0].placeholder = "'AD_ADDRESS'"
-        alert.textFields?[1].placeholder = "'ST_STR_NAM'"
+        alert.textFields?[0].text = String(describing: self.selectedFeature?.attributes["AD_ADDRESS"])
+        alert.textFields?[1].text = String(describing: self.selectedFeature?.attributes["ST_STR_NAM"])
         alert.textFields?[0].keyboardType = .asciiCapable
         alert.textFields?[1].keyboardType = .asciiCapable
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -112,17 +132,23 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             selectedFeature.attributes["ST_STR_NAM"] = streetTextField?.text
             selectedFeature.featureTable?.update(selectedFeature)
         })
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Move the currently selected point feature to the given map point, by updating the selected feature's geometry and feature table.
     func movePoint(mapPoint: AGSPoint) {
+//        guard let selectedFeature = self.selectedFeature else { return }
         // Set the selected feature's geometry to the new map point.
-        selectedFeature?.geometry = mapPoint
+        self.selectedFeature?.geometry = mapPoint
         // Update the selected feature's feature table.
-        selectedFeature?.featureTable?.update(selectedFeature!) { (error: Error?) in
-            // Clear selection of polyline.
-            self.clearSelection()
-            self.selectedFeature = nil
+        self.selectedFeature?.featureTable?.update(selectedFeature!) { (error: Error?) in
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                // Clear selection of polyline.
+                self.clearSelection()
+                self.selectedFeature = nil
+            }
         }
     }
     
@@ -141,10 +167,14 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         selectedFeature?.geometry = polylineBuilder.toGeometry()
         // Update the selected feature's feature table.
         selectedFeature?.featureTable?.update(selectedFeature!) { (error: Error?) in
-            // Clear selection of polyline.
-            self.clearSelection()
-            self.selectedFeatureIsPolyline = false
-            self.selectedFeature = nil
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                // Clear selection of polyline.
+                self.clearSelection()
+                self.selectedFeatureIsPolyline = false
+                self.selectedFeature = nil
+            }
         }
     }
     
@@ -155,5 +185,13 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
                 featureLayer.clearSelection()
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Set the touch delegate.
+        self.mapView.touchDelegate = self
+        // Add the source code button item to the right of navigation bar.
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesWithFeatureLinkedAnnotationViewController"]
     }
 }

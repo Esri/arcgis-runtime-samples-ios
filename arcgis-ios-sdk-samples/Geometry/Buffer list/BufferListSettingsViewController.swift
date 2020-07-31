@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 protocol BufferListSettingsViewControllerDelegate: AnyObject {
-    func bufferOptionsViewController(_ bufferOptionsViewController: BufferListSettingsViewController, bufferDistanceChangedTo bufferDistance: Measurement<UnitLength>, areBuffersUnioned: Bool)
+    func bufferListSettingsViewController(_ bufferListSettingsViewController: BufferListSettingsViewController, bufferDistanceChangedTo bufferDistance: Measurement<UnitLength>, areBuffersUnioned: Bool)
 }
 
 class BufferListSettingsViewController: UITableViewController {
@@ -35,8 +35,7 @@ class BufferListSettingsViewController: UITableViewController {
     
     var bufferDistance: Measurement<UnitLength> = Measurement(value: 500, unit: .miles) {
         didSet {
-            distanceSlider.value = Float(bufferDistance.value)
-            distanceLabel.text = measurementFormatter.string(from: bufferDistance)
+            updateDistanceUI()
         }
     }
     
@@ -45,9 +44,19 @@ class BufferListSettingsViewController: UITableViewController {
         bufferDistance.value = Double(sender.value)
     }
     
+    func updateDistanceUI() {
+        distanceSlider.value = Float(bufferDistance.value)
+        distanceLabel.text = measurementFormatter.string(from: bufferDistance)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateDistanceUI()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Notify the delegate with the new values.
-        delegate?.bufferOptionsViewController(self, bufferDistanceChangedTo: bufferDistance, areBuffersUnioned: unionSwitch.isOn)
+        delegate?.bufferListSettingsViewController(self, bufferDistanceChangedTo: bufferDistance, areBuffersUnioned: unionSwitch.isOn)
     }
 }

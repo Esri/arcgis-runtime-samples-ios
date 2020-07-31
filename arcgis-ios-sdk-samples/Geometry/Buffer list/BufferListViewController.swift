@@ -83,7 +83,11 @@ class BufferListViewController: UIViewController {
     var tappedPointsAndRadius = [(point: AGSPoint, radius: Double)]()
     
     /// The radius of the buffer.
-    var bufferRadius: Measurement<UnitLength> = Measurement(value: 100, unit: .miles)
+    var bufferRadius: Measurement<UnitLength> = Measurement(value: 100, unit: .miles) {
+        didSet {
+            radiusLabel.text = distanceFormatter.string(from: bufferRadius)
+        }
+    }
     /// A formatter to format the output distance string.
     let distanceFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
@@ -115,7 +119,7 @@ class BufferListViewController: UIViewController {
         // Create the buffers.
         // Notice: the radius distances has the same unit of the map's spatial reference's unit.
         if let bufferPolygon = AGSGeometryEngine.bufferGeometries(tappedPointsAndRadius.map { $0.point }, distances: tappedPointsAndRadius.map { NSNumber(value: $0.radius) }, unionResults: isUnionSwitch.isOn) {
-            let graphics: [AGSGraphic] = bufferPolygon.map { AGSGraphic(geometry: $0, symbol: nil) }
+            let graphics = bufferPolygon.map { AGSGraphic(geometry: $0, symbol: nil) }
             bufferGraphicsOverlay.graphics.addObjects(from: graphics)
             setStatus(message: "Buffers created.")
         }
@@ -131,7 +135,6 @@ class BufferListViewController: UIViewController {
     @IBAction func distanceSliderValueChanged(_ sender: UISlider) {
         // Update the buffer radius with the slider value.
         bufferRadius.value = Double(sender.value)
-        radiusLabel.text = distanceFormatter.string(from: bufferRadius)
     }
     
     // MARK: UI

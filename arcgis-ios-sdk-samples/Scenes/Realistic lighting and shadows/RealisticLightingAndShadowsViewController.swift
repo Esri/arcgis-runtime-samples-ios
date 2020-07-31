@@ -84,7 +84,7 @@ class RealisticLightingAndShadowsViewController: UIViewController {
         )
         let modes: [(name: String, mode: AGSLightingMode)] = [
             ("Light and shadows", .lightAndShadows),
-            ("Light", .light),
+            ("Light only", .light),
             ("No light", .noLight)
         ]
         modes.forEach { (name, mode) in

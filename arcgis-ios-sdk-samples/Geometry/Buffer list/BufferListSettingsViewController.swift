@@ -33,7 +33,7 @@ class BufferListSettingsViewController: UITableViewController {
         return formatter
     }()
     
-    var bufferDistance: Measurement<UnitLength> = Measurement(value: 500, unit: .miles) {
+    var bufferDistance: Measurement<UnitLength> = Measurement(value: 50, unit: .miles) {
         didSet {
             updateDistanceUI()
         }

@@ -10,9 +10,7 @@
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		00166C9224D3838200DD317E /* BufferListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00166C9124D3838200DD317E /* BufferListViewController.swift */; };
 		00166C9424D3838D00DD317E /* BufferList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00166C9324D3838D00DD317E /* BufferList.storyboard */; };
-		00166C9624D3929D00DD317E /* BufferListSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00166C9524D3929D00DD317E /* BufferListSettingsViewController.swift */; };
 		00166C9724D465B900DD317E /* BufferListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00166C9124D3838200DD317E /* BufferListViewController.swift */; };
-		00166C9824D465B900DD317E /* BufferListSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00166C9524D3929D00DD317E /* BufferListSettingsViewController.swift */; };
 		001ECB042486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */; };
 		001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */; };
 		001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
@@ -876,7 +874,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				00166C9724D465B900DD317E /* BufferListViewController.swift in CopyFiles */,
-				00166C9824D465B900DD317E /* BufferListSettingsViewController.swift in CopyFiles */,
 				001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */,
 				00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */,
 				00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */,
@@ -1154,7 +1151,6 @@
 /* Begin PBXFileReference section */
 		00166C9124D3838200DD317E /* BufferListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferListViewController.swift; sourceTree = "<group>"; };
 		00166C9324D3838D00DD317E /* BufferList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BufferList.storyboard; sourceTree = "<group>"; };
-		00166C9524D3929D00DD317E /* BufferListSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferListSettingsViewController.swift; sourceTree = "<group>"; };
 		001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARCalibrationViewController.swift; sourceTree = "<group>"; };
 		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
@@ -1757,7 +1753,6 @@
 			isa = PBXGroup;
 			children = (
 				00166C9124D3838200DD317E /* BufferListViewController.swift */,
-				00166C9524D3929D00DD317E /* BufferListSettingsViewController.swift */,
 				00166C9324D3838D00DD317E /* BufferList.storyboard */,
 			);
 			path = "Buffer list";
@@ -5027,7 +5022,6 @@
 				3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */,
 				D9316A641FDB4F060075AD92 /* ReadGeopackageViewController.swift in Sources */,
 				3ED028921B8E3A8500ACA70D /* SetInitialMapLocationViewController.swift in Sources */,
-				00166C9624D3929D00DD317E /* BufferListSettingsViewController.swift in Sources */,
 				3ED029661B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift in Sources */,
 				3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */,
 				098049A82253FC3F009C685D /* BrowseWFSLayersViewController.swift in Sources */,

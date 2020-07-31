@@ -16,8 +16,20 @@ import UIKit
 import ArcGIS
 
 class BufferListViewController: UIViewController {
-    /// A label to display status messages.
+    // MARK: Storyboard views
+    
+    /// A label to display status message.
     @IBOutlet weak var statusLabel: UILabel!
+    /// A label to display current radius slider distance value.
+    @IBOutlet weak var radiusLabel: UILabel! {
+        didSet {
+            distanceSliderValueChanged(distanceSlider)
+        }
+    }
+    /// A switch to control either to union results or not for buffer operation.
+    @IBOutlet weak var isUnionSwitch: UISwitch!
+    /// A slider to adjust the radius distance of a buffer.
+    @IBOutlet weak var distanceSlider: UISlider!
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
@@ -26,17 +38,11 @@ class BufferListViewController: UIViewController {
             mapView.touchDelegate = self
         }
     }
-    let statePlaneNorthCentralTexas = AGSSpatialReference(wkid: 32038)!
-    /// An image layer
+    
+    // MARK: Instance properties
+    
+    /// An image layer serve as the base layer of the map.
     let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)
-    /// An overlay
-    let bufferGraphicsOverlay = AGSGraphicsOverlay()
-    /// An overlay for displaying the location of the tap point with red circle symbol.
-    let tapLocationsGraphicsOverlay = AGSGraphicsOverlay()
-    /// An overlay
-    let boundaryGraphicsOverlay = AGSGraphicsOverlay()
-    /// An array of tapped points and buffer radius paris.
-    var tappedPointsAndRadius = [(point: AGSPoint, radius: Double)]()
     /// A polygon that represents the valid area of use for the spatial reference.
     let boundaryPolygon: AGSPolygon = {
         let boundaryPoints = [
@@ -50,39 +56,66 @@ class BufferListViewController: UIViewController {
         return AGSGeometryEngine.projectGeometry(polygon, to: statePlaneNorthCentralTexas) as! AGSPolygon
     }()
     
-    var isUnion = false
-    var bufferRadius: Measurement<UnitLength> = Measurement(value: 50, unit: .miles)
+    /// An overlay to display the boundary.
+    var boundaryGraphicsOverlay: AGSGraphicsOverlay {
+        let boundaryGraphicsOverlay = AGSGraphicsOverlay()
+        let lineSymbol = AGSSimpleLineSymbol(style: .dash, color: .red, width: 5)
+        let boundaryGraphic = AGSGraphic(geometry: boundaryPolygon, symbol: lineSymbol)
+        boundaryGraphicsOverlay.graphics.add(boundaryGraphic)
+        return boundaryGraphicsOverlay
+    }
+    /// An overlay to display buffers graphics.
+    let bufferGraphicsOverlay: AGSGraphicsOverlay = {
+        let overlay = AGSGraphicsOverlay()
+        let bufferPolygonOutlineSymbol = AGSSimpleLineSymbol(style: .solid, color: .systemGreen, width: 3)
+        let bufferPolygonFillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.yellow.withAlphaComponent(0.6), outline: bufferPolygonOutlineSymbol)
+        overlay.renderer = AGSSimpleRenderer(symbol: bufferPolygonFillSymbol)
+        return overlay
+    }()
+    /// An overlay to display tapped locations with red circle symbol.
+    let tapLocationsGraphicsOverlay: AGSGraphicsOverlay = {
+        let overlay = AGSGraphicsOverlay()
+        let circleSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
+        overlay.renderer = AGSSimpleRenderer(symbol: circleSymbol)
+        return overlay
+    }()
+    /// An array of tapped points and buffer radius (in US feet) tuple.
+    var tappedPointsAndRadius = [(point: AGSPoint, radius: Double)]()
+    
+    /// The radius of the buffer.
+    var bufferRadius: Measurement<UnitLength> = Measurement(value: 100, unit: .miles)
+    /// A formatter to format the output distance string.
+    let distanceFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.unitStyle = .short
+        formatter.unitOptions = .naturalScale
+        formatter.numberFormatter.maximumFractionDigits = 0
+        return formatter
+    }()
+    
+    // MARK: Instance methods
     
     /// Creates a map.
     ///
     /// - Returns: A new `AGSMap` object.
     func makeMap() -> AGSMap {
+        // The spatial reference for this sample.
+        let statePlaneNorthCentralTexas = AGSSpatialReference(wkid: 32038)!
         let map = AGSMap(spatialReference: statePlaneNorthCentralTexas)
         map.basemap.baseLayers.add(mapImageLayer)
         map.initialViewpoint = AGSViewpoint(targetExtent: boundaryPolygon.extent)
         return map
     }
     
-    func configureGraphicsOverlays() {
-        let circleSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
-        tapLocationsGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: circleSymbol)
-        
-        let lineSymbol = AGSSimpleLineSymbol(style: .dash, color: .red, width: 5)
-        let boundaryGraphic = AGSGraphic(geometry: boundaryPolygon, symbol: lineSymbol)
-        boundaryGraphicsOverlay.graphics.add(boundaryGraphic)
-        
-        let bufferPolygonOutlineSymbol = AGSSimpleLineSymbol(style: .solid, color: .primaryBlue, width: 3)
-        let bufferPolygonFillSymbol = AGSSimpleFillSymbol(style: .solid, color: .cyan, outline: bufferPolygonOutlineSymbol)
-        bufferGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: bufferPolygonFillSymbol)
-    }
+    // MARK: Actions
     
     @IBAction func createButtonTapped(_ sender: UIBarButtonItem) {
-        if let bufferPolygon = AGSGeometryEngine.bufferGeometries(tappedPointsAndRadius.map { $0.point }, distances: tappedPointsAndRadius.map { NSNumber(value: $0.radius) }, unionResults: isUnion) {
-            let graphics: [AGSGraphic] = bufferPolygon.map {
-                let graphic = AGSGraphic(geometry: $0, symbol: nil)
-                graphic.zIndex = 0
-                return graphic
-            }
+        // Clear existing buffers graphics before drawing.
+        bufferGraphicsOverlay.graphics.removeAllObjects()
+        // Create the buffers.
+        // Notice: the radius distances has the same unit of the map's spatial reference's unit.
+        if let bufferPolygon = AGSGeometryEngine.bufferGeometries(tappedPointsAndRadius.map { $0.point }, distances: tappedPointsAndRadius.map { NSNumber(value: $0.radius) }, unionResults: isUnionSwitch.isOn) {
+            let graphics: [AGSGraphic] = bufferPolygon.map { AGSGraphic(geometry: $0, symbol: nil) }
             bufferGraphicsOverlay.graphics.addObjects(from: graphics)
             setStatus(message: "Buffers created.")
         }
@@ -95,27 +128,24 @@ class BufferListViewController: UIViewController {
         setStatus(message: "Buffers removed. Tap on the map to add buffers.")
     }
     
+    @IBAction func distanceSliderValueChanged(_ sender: UISlider) {
+        // Update the buffer radius with the slider value.
+        bufferRadius.value = Double(sender.value)
+        radiusLabel.text = distanceFormatter.string(from: bufferRadius)
+    }
+    
     // MARK: UI
     
     func setStatus(message: String) {
         statusLabel.text = message
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? BufferListSettingsViewController {
-            // Popover settings and preferred content size.
-            controller.presentationController?.delegate = self
-            controller.preferredContentSize = CGSize(width: 300, height: 128)
-        }
-    }
-    
+    // MARK: UIViewController
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
-            "BufferListViewController",
-            "BufferListSettingsViewController"
-        ]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["BufferListViewController"]
         // Load the map image layer.
         mapImageLayer.load { [weak self] (error) in
             if let error = error {
@@ -125,42 +155,27 @@ class BufferListViewController: UIViewController {
                 self?.setStatus(message: "Tap on the map to add buffers.")
             }
         }
-        configureGraphicsOverlays()
     }
 }
+
+// MARK: - AGSGeoViewTouchDelegate
 
 extension BufferListViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // Only proceed when the tapped point is within the boundary.
         guard AGSGeometryEngine.geometry(boundaryPolygon, contains: mapPoint) else {
+            setStatus(message: "Tap within the boundary to add buffer.")
             return
         }
+        // The spatial reference in this sample use US feet as unit.
+        let radius = bufferRadius.converted(to: .feet).value
         // Ensure that the buffer radius in meters is a positive value.
-        let spatialReferenceUnit = statePlaneNorthCentralTexas.unit
-        print(spatialReferenceUnit.abbreviation)
-        let radius = bufferRadius.converted(to: .meters).value
-        guard radius > 0 else {
-            return
-        }
+        guard radius > 0 else { return }
         // Create and add graphic symbolizing the tap point.
         let pointGraphic = AGSGraphic(geometry: mapPoint, symbol: nil)
         tapLocationsGraphicsOverlay.graphics.add(pointGraphic)
         // Keep track of tapped points and their radius.
         tappedPointsAndRadius.append((point: mapPoint, radius: radius))
-        setStatus(message: "Point added.")
-    }
-}
-
-extension BufferListViewController: BufferListSettingsViewControllerDelegate {
-    func bufferListSettingsViewController(_ bufferListSettingsViewController: BufferListSettingsViewController, bufferDistanceChangedTo bufferDistance: Measurement<UnitLength>, areBuffersUnioned: Bool) {
-        bufferRadius = bufferDistance
-        isUnion = areBuffersUnioned
-    }
-}
-
-extension BufferListViewController: UIAdaptivePresentationControllerDelegate {
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // For popover or non modal presentation.
-        return .none
+        setStatus(message: "Buffer center point added.")
     }
 }

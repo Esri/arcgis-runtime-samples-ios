@@ -41,7 +41,7 @@ class BufferListViewController: UIViewController {
     
     // MARK: Instance properties
     
-    /// An image layer serve as the base layer of the map.
+    /// An image layer as the base layer of the map.
     let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)
     /// A polygon that represents the valid area of use for the spatial reference.
     let boundaryPolygon: AGSPolygon = {
@@ -72,7 +72,7 @@ class BufferListViewController: UIViewController {
         overlay.renderer = AGSSimpleRenderer(symbol: bufferPolygonFillSymbol)
         return overlay
     }()
-    /// An overlay to display tapped locations with red circle symbol.
+    /// An overlay to display tapped locations with red circle symbols.
     let tapLocationsGraphicsOverlay: AGSGraphicsOverlay = {
         let overlay = AGSGraphicsOverlay()
         let circleSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
@@ -88,7 +88,7 @@ class BufferListViewController: UIViewController {
             radiusLabel.text = distanceFormatter.string(from: bufferRadius)
         }
     }
-    /// A formatter to format the output distance string.
+    /// A formatter for the output distance string.
     let distanceFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
         formatter.unitStyle = .short
@@ -172,7 +172,7 @@ extension BufferListViewController: AGSGeoViewTouchDelegate {
         }
         // The spatial reference in this sample use US feet as unit.
         let radius = bufferRadius.converted(to: .feet).value
-        // Ensure that the buffer radius in meters is a positive value.
+        // Ensure that the buffer radius is a positive value.
         guard radius > 0 else { return }
         // Create and add graphic symbolizing the tap point.
         let pointGraphic = AGSGraphic(geometry: mapPoint, symbol: nil)

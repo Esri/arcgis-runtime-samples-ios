@@ -79,7 +79,7 @@ class BufferListViewController: UIViewController {
         overlay.renderer = AGSSimpleRenderer(symbol: circleSymbol)
         return overlay
     }()
-    /// An array of tapped points and buffer radius (in US feet) tuple.
+    /// An array of tapped points and buffer radii (in US feet) tuple.
     var tappedPointsAndRadius = [(point: AGSPoint, radius: Double)]()
     
     /// The radius of the buffer.

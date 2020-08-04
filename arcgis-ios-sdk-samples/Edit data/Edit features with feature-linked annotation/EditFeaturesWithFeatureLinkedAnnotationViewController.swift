@@ -165,28 +165,36 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     // Move the last of the vertex point of the currently selected polyline to the given map point, by updating the selected feature's geometry and feature table.
     func movePolylineVertex(mapPoint: AGSPoint) {
-        // Get the selected feature's geometry as a polyline nearest to the map point.
-        let polyline = selectedFeature?.geometry as? AGSPolyline
-        // Get the nearest vertex to the map point on the selected feature polyline.
-        let nearestVertex = AGSGeometryEngine.nearestVertex(in: polyline!, to: (AGSGeometryEngine.projectGeometry(mapPoint, to: (polyline?.spatialReference)!) as? AGSPoint)!)
-        let polylineBuilder = AGSPolylineBuilder(polyline: polyline)
-        // Get the part of the polyline nearest to the map point.
-        polylineBuilder.parts[nearestVertex!.partIndex].removePoint(at: nearestVertex!.partIndex)
-        // Add the map point as the new point on the polyline.
-        polylineBuilder.parts[nearestVertex!.partIndex].addPoint(AGSGeometryEngine.projectGeometry(mapPoint, to: polylineBuilder.parts[nearestVertex!.partIndex].spatialReference!) as! AGSPoint)
-        // Set the selected feature's geometry to the new polyline.
-        selectedFeature?.geometry = polylineBuilder.toGeometry()
-        // Update the selected feature's feature table.
-        selectedFeature?.featureTable?.update(selectedFeature!) { (error: Error?) in
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                // Clear selection of polyline.
-                self.clearSelection()
-                self.selectedFeatureIsPolyline = false
-                self.selectedFeature = nil
+        let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
+            self.clearSelection()
+            self.selectedFeature = nil
+        })
+        alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
+            // Get the selected feature's geometry as a polyline nearest to the map point.
+            let polyline = self.selectedFeature?.geometry as? AGSPolyline
+            // Get the nearest vertex to the map point on the selected feature polyline.
+            let nearestVertex = AGSGeometryEngine.nearestVertex(in: polyline!, to: (AGSGeometryEngine.projectGeometry(mapPoint, to: (polyline?.spatialReference)!) as? AGSPoint)!)
+            let polylineBuilder = AGSPolylineBuilder(polyline: polyline)
+            // Get the part of the polyline nearest to the map point.
+            polylineBuilder.parts[nearestVertex!.partIndex].removePoint(at: nearestVertex!.partIndex)
+            // Add the map point as the new point on the polyline.
+            polylineBuilder.parts[nearestVertex!.partIndex].addPoint(AGSGeometryEngine.projectGeometry(mapPoint, to: polylineBuilder.parts[nearestVertex!.partIndex].spatialReference!) as! AGSPoint)
+            // Set the selected feature's geometry to the new polyline.
+            self.selectedFeature?.geometry = polylineBuilder.toGeometry()
+            // Update the selected feature's feature table.
+            self.selectedFeature?.featureTable?.update(self.selectedFeature!) { (error: Error?) in
+                if let error = error {
+                    self.presentAlert(error: error)
+                } else {
+                    // Clear selection of polyline.
+                    self.clearSelection()
+                    self.selectedFeatureIsPolyline = false
+                    self.selectedFeature = nil
+                }
             }
-        }
+        })
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Clear selection from all feature layers.

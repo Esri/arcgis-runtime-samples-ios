@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIk-JH-uY3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,9 +30,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="MSB-XK-96k" firstAttribute="top" secondItem="gTA-cM-d3f" secondAttribute="top" id="0NH-nf-VjW"/>
-                                    <constraint firstItem="gTA-cM-d3f" firstAttribute="bottom" secondItem="MSB-XK-96k" secondAttribute="bottom" id="DmO-dG-i0y"/>
+                                    <constraint firstAttribute="bottom" secondItem="MSB-XK-96k" secondAttribute="bottom" id="Iyd-zR-VVL"/>
                                     <constraint firstItem="gTA-cM-d3f" firstAttribute="trailing" secondItem="MSB-XK-96k" secondAttribute="trailing" id="f8v-qY-d8G"/>
+                                    <constraint firstItem="MSB-XK-96k" firstAttribute="top" secondItem="AIN-Oz-V0e" secondAttribute="top" id="osw-4T-oBd"/>
                                     <constraint firstItem="MSB-XK-96k" firstAttribute="leading" secondItem="gTA-cM-d3f" secondAttribute="leading" id="uMl-di-SOU"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="gTA-cM-d3f"/>

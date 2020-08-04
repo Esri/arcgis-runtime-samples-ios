@@ -49,11 +49,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuN-wd-ao7">
-                                            <rect key="frame" x="87" y="92" width="120" height="30"/>
-                                            <color key="backgroundColor" name="primaryThemeColor"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <rect key="frame" x="87" y="92" width="120" height="33"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Get Statistics">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="titleColor" name="AccentColor"/>
                                             </state>
                                             <connections>
                                                 <action selector="getStatisticsAction:" destination="DKT-K8-rR8" eventType="touchUpInside" id="EWY-Dg-U5T"/>
@@ -115,7 +114,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="primaryThemeColor">
+        <namedColor name="AccentColor">
             <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

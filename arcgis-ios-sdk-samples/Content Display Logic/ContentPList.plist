@@ -976,6 +976,14 @@
 					<string>Restaurant</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Show a popup</string>
+				<key>descriptionText</key>
+				<string>Show a predefined popup from a web map.</string>
+				<key>storyboardName</key>
+				<string>ShowPopup</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

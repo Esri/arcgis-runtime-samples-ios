@@ -119,10 +119,9 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         // Inflate the edit attribute layout.
         let alert = UIAlertController(title: "Edit feature attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
         alert.addTextField()
-        alert.addTextField()
-        alert.textFields?[0].text = String(describing: self.selectedFeature?.attributes["AD_ADDRESS"])
-        alert.textFields?[1].text = String(describing: self.selectedFeature?.attributes["ST_STR_NAM"])
-        alert.textFields?[0].keyboardType = .asciiCapable
+        alert.textFields?[0].text = "\(selectedFeature.attributes["AD_ADDRESS"]!)"
+        alert.textFields?[1].text = selectedFeature.attributes["ST_STR_NAM"] as? String
+        alert.textFields?[0].keyboardType = .asciiCapableNumberPad
         alert.textFields?[1].keyboardType = .asciiCapable
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Done", style: .default) { _ in
@@ -130,6 +129,8 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
             let streetTextField = alert.textFields?[1]
             selectedFeature.attributes["AD_ADDRESS"] = addressTextField?.text
             selectedFeature.attributes["ST_STR_NAM"] = streetTextField?.text
+//            self.selectedFeature?.attributes["AD_ADDRESS"] = "146546"
+//            self.selectedFeature?.attributes["ST_STR_NAM"] = "Wood"
             selectedFeature.featureTable?.update(selectedFeature)
         })
         self.present(alert, animated: true, completion: nil)

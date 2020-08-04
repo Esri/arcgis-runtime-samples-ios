@@ -119,15 +119,19 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         // Inflate the edit attribute layout.
         let alert = UIAlertController(title: "Edit feature attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
         alert.addTextField()
-        alert.textFields?[0].text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
-        alert.textFields?[1].text = selectedFeature.attributes["ST_STR_NAM"] as? String
+        alert.addTextField()
+        alert.textFields?[0].text = (self.selectedFeature?.attributes["AD_ADDRESS"] as? NSNumber)?.stringValue
+        alert.textFields?[1].text = self.selectedFeature?.attributes["ST_STR_NAM"] as? String
         alert.textFields?[0].keyboardType = .asciiCapableNumberPad
         alert.textFields?[1].keyboardType = .asciiCapable
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.clearSelection()
+            self.selectedFeature = nil
+        })
         alert.addAction(UIAlertAction(title: "Done", style: .default) { _ in
             let addressTextField = alert.textFields?[0]
             let streetTextField = alert.textFields?[1]
-            selectedFeature.attributes["AD_ADDRESS"] = addressTextField?.text
+            selectedFeature.attributes["AD_ADDRESS"] = Int((addressTextField?.text)!)
             selectedFeature.attributes["ST_STR_NAM"] = streetTextField?.text
             selectedFeature.featureTable?.update(selectedFeature)
         })
@@ -138,7 +142,10 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     func movePoint(mapPoint: AGSPoint) {
 //        guard let selectedFeature = self.selectedFeature else { return }
         let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "No", style: .cancel))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
+            self.clearSelection()
+            self.selectedFeature = nil
+        })
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
             // Set the selected feature's geometry to the new map point.
             self.selectedFeature?.geometry = mapPoint
@@ -158,33 +165,28 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     // Move the last of the vertex point of the currently selected polyline to the given map point, by updating the selected feature's geometry and feature table.
     func movePolylineVertex(mapPoint: AGSPoint) {
-        let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "No", style: .cancel))
-            alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
-            // Get the selected feature's geometry as a polyline nearest to the map point.
-            let polyline = selectedFeature?.geometry as? AGSPolyline
-            // Get the nearest vertex to the map point on the selected feature polyline.
-            let nearestVertex = AGSGeometryEngine.nearestVertex(in: polyline!, to: (AGSGeometryEngine.projectGeometry(mapPoint, to: (polyline?.spatialReference)!) as? AGSPoint)!)
-            let polylineBuilder = AGSPolylineBuilder(polyline: polyline)
-            // Get the part of the polyline nearest to the map point.
-            polylineBuilder.parts[nearestVertex!.partIndex].removePoint(at: nearestVertex!.partIndex)
-            // Add the map point as the new point on the polyline.
-            polylineBuilder.parts[nearestVertex!.partIndex].addPoint(AGSGeometryEngine.projectGeometry(mapPoint, to: polylineBuilder.parts[nearestVertex!.partIndex].spatialReference!) as! AGSPoint)
-            // Set the selected feature's geometry to the new polyline.
-            selectedFeature?.geometry = polylineBuilder.toGeometry()
-            // Update the selected feature's feature table.
-            selectedFeature?.featureTable?.update(selectedFeature!) { (error: Error?) in
-                if let error = error {
-                    self.presentAlert(error: error)
-                } else {
-                    // Clear selection of polyline.
-                    self.clearSelection()
-                    self.selectedFeatureIsPolyline = false
-                    self.selectedFeature = nil
-                }
+        // Get the selected feature's geometry as a polyline nearest to the map point.
+        let polyline = selectedFeature?.geometry as? AGSPolyline
+        // Get the nearest vertex to the map point on the selected feature polyline.
+        let nearestVertex = AGSGeometryEngine.nearestVertex(in: polyline!, to: (AGSGeometryEngine.projectGeometry(mapPoint, to: (polyline?.spatialReference)!) as? AGSPoint)!)
+        let polylineBuilder = AGSPolylineBuilder(polyline: polyline)
+        // Get the part of the polyline nearest to the map point.
+        polylineBuilder.parts[nearestVertex!.partIndex].removePoint(at: nearestVertex!.partIndex)
+        // Add the map point as the new point on the polyline.
+        polylineBuilder.parts[nearestVertex!.partIndex].addPoint(AGSGeometryEngine.projectGeometry(mapPoint, to: polylineBuilder.parts[nearestVertex!.partIndex].spatialReference!) as! AGSPoint)
+        // Set the selected feature's geometry to the new polyline.
+        selectedFeature?.geometry = polylineBuilder.toGeometry()
+        // Update the selected feature's feature table.
+        selectedFeature?.featureTable?.update(selectedFeature!) { (error: Error?) in
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                // Clear selection of polyline.
+                self.clearSelection()
+                self.selectedFeatureIsPolyline = false
+                self.selectedFeature = nil
             }
-        })
-        self.present(alert, animated: true, completion: nil)
+        }
     }
     
     // Clear selection from all feature layers.

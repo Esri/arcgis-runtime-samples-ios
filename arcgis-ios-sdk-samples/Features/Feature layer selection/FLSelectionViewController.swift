@@ -88,7 +88,7 @@ extension FLSelectionViewController: AGSGeoViewTouchDelegate {
             // Un-select previous results.
             self.featureLayer.unselectFeatures(self.selectedFeatures)
             // Select current results.
-            self.selectedFeatures = result.geoElements.map { $0 as! AGSFeature }
+            self.selectedFeatures = result.geoElements as! [AGSFeature]
             self.featureLayer.select(self.selectedFeatures)
             // Show status.
             self.statusLabel.text = "\(result.geoElements.count) feature(s) selected."

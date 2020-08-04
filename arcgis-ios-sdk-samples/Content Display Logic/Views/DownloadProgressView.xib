@@ -41,7 +41,6 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOX-4U-fqJ">
                             <rect key="frame" x="91.5" y="152" width="57" height="33"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                            <color key="tintColor" name="primaryThemeColor"/>
                             <state key="normal" title="Cancel"/>
                             <connections>
                                 <action selector="cancelAction" destination="-1" eventType="touchUpInside" id="0Uh-4A-vKB"/>
@@ -64,6 +63,7 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" name="AccentColor"/>
             <constraints>
                 <constraint firstItem="FvF-Nq-g4W" firstAttribute="centerX" secondItem="3Mj-KC-mCm" secondAttribute="centerX" id="4Wd-OW-EMy"/>
                 <constraint firstItem="FvF-Nq-g4W" firstAttribute="centerY" secondItem="3Mj-KC-mCm" secondAttribute="centerY" id="Oa4-3O-OPK"/>
@@ -72,8 +72,8 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="primaryThemeColor">
-            <color red="0.51372549019607838" green="0.18431372549019609" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="AccentColor">
+            <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

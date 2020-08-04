@@ -62,7 +62,7 @@ class FeatureLayerSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["FLSelectionViewController"]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["FeatureLayerSelectionViewController"]
         // Load the feature layer.
         featureLayer.load { [weak self] (error) in
             if let error = error {

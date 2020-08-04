@@ -108,9 +108,9 @@
             <point key="canvasLocation" x="133.59999999999999" y="151.57421289355324"/>
         </scene>
     </scenes>
-    <color key="tintColor" name="primaryThemeColor"/>
+    <color key="tintColor" name="AccentColor"/>
     <resources>
-        <namedColor name="primaryThemeColor">
+        <namedColor name="AccentColor">
             <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

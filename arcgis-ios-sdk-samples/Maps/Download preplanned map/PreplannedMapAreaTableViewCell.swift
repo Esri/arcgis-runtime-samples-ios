@@ -16,13 +16,6 @@
 
 import UIKit
 
-// MARK: - Constants
-
-private enum Constants {
-    static let progressTintColor = UIColor.primaryThemeColor
-    static let trackTintColor = UIColor.backgroundGray
-}
-
 // MARK: - PreplannedMapAreaTableViewCell
 
 class PreplannedMapAreaTableViewCell: UITableViewCell {
@@ -30,8 +23,6 @@ class PreplannedMapAreaTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        progressView.progressTintColor = Constants.progressTintColor
-        progressView.trackTintColor = Constants.trackTintColor
+        progressView.trackTintColor = .backgroundGray
     }
 }

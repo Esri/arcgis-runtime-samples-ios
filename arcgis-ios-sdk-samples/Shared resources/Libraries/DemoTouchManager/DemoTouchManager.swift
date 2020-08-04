@@ -95,7 +95,7 @@ private class PingLayer: CAShapeLayer, CAAnimationDelegate {
         super.init()
         
         fillColor = UIColor.clear.cgColor
-        strokeColor = UIColor.primaryThemeColor.cgColor
+        strokeColor = UIColor.accentColor.cgColor
         lineWidth = 1
         
         path = fromPath
@@ -279,7 +279,7 @@ private class TouchView: UIView {
 private class DemoTouchesView: UIView {
     // MARK: Properties
     
-    var touchFillColor = UIColor.primaryThemeColor
+    var touchFillColor = UIColor.accentColor
     var touchSize: CGFloat = 44
     var touchBorderColor = UIColor.white
     var touchBorderWidth: CGFloat = 2.0

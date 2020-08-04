@@ -199,7 +199,7 @@ class StatisticalQueryGroupAndSortViewController: UIViewController, UITableViewD
         // Create the view
         let returnedView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 44))
         returnedView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        returnedView.backgroundColor = .primaryThemeColor
+        returnedView.backgroundColor = .accentColor
         returnedView.layer.borderColor = UIColor.white.cgColor
         returnedView.layer.borderWidth = 1
 

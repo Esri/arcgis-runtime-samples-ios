@@ -20,8 +20,6 @@ import ArcGIS
 // MARK: - Constants
 
 private enum Constants {
-    static let activityIndicatorColor = UIColor.accentColor
-    
     static let portalItemIdentifier = "acc027394bc84c2fb04d1ed317aac674"
     
     static let popoverPreferredWidth: CGFloat = 375
@@ -89,8 +87,6 @@ class DownloadPreplannedMapViewController: UIViewController {
             return
         }
         sourceBarButtonItem.filenames = ["DownloadPreplannedMapViewController", "MapSelectionTableViewController", "PreplannedMapAreaTableViewCell"]
-        
-        activityIndicatorView.color = Constants.activityIndicatorColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

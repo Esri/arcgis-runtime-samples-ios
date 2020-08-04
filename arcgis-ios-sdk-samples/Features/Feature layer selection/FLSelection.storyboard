@@ -48,7 +48,7 @@
                             <constraint firstAttribute="trailing" secondItem="AIN-Oz-V0e" secondAttribute="trailing" id="hKE-ZT-76b"/>
                             <constraint firstItem="Jek-wa-W5c" firstAttribute="leading" secondItem="pct-Is-DQi" secondAttribute="leading" id="kOD-ZL-TiH"/>
                             <constraint firstItem="Jek-wa-W5c" firstAttribute="top" secondItem="pct-Is-DQi" secondAttribute="top" id="oNR-8U-fFY"/>
-                            <constraint firstItem="AIN-Oz-V0e" firstAttribute="top" secondItem="Zuc-h4-Txi" secondAttribute="top" id="vUZ-0c-Y6S"/>
+                            <constraint firstItem="AIN-Oz-V0e" firstAttribute="top" secondItem="Jek-wa-W5c" secondAttribute="top" id="vUZ-0c-Y6S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zuc-h4-Txi"/>
                         <variation key="default">

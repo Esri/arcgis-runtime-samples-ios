@@ -789,7 +789,6 @@
 		F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F1124F0A24CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */; };
 		F1124F0C24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
-		F1124F0E24D0B68200E672EC /* loudoun_anno.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F1124F0D24D0B68200E672EC /* loudoun_anno.geodatabase */; settings = {ASSET_TAGS = (loudoun_anno, ); }; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
 		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
@@ -805,6 +804,7 @@
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F191564D24DA1B4A006FBDD5 /* loudoun_anno.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F191564C24DA1B4A006FBDD5 /* loudoun_anno.geodatabase */; settings = {ASSET_TAGS = (loudoun_anno, ); }; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
@@ -1699,7 +1699,6 @@
 		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpk; sourceTree = "<group>"; };
 		F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditFeaturesWithFeatureLinkedAnnotation.storyboard; sourceTree = "<group>"; };
 		F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFeaturesWithFeatureLinkedAnnotationViewController.swift; sourceTree = "<group>"; };
-		F1124F0D24D0B68200E672EC /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; name = loudoun_anno.geodatabase; path = ../../../../Downloads/loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
@@ -1707,6 +1706,7 @@
 		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
 		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
+		F191564C24DA1B4A006FBDD5 /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
@@ -2615,7 +2615,7 @@
 		3E8A25881D36B89400D14F08 /* Geodatabases */ = {
 			isa = PBXGroup;
 			children = (
-				F1124F0D24D0B68200E672EC /* loudoun_anno.geodatabase */,
+				F191564C24DA1B4A006FBDD5 /* loudoun_anno.geodatabase */,
 				F1F62C4322E65E0900EFD599 /* militaryoverlay.geodatabase */,
 				3E8A25891D36B89400D14F08 /* LA_Trails.geodatabase */,
 			);
@@ -4586,7 +4586,7 @@
 				3EABC7B11DB17B2C00C161C6 /* Shasta.tif.ovr in Resources */,
 				3E6AE3FA1C73B5480026E59C /* FindRoute.storyboard in Resources */,
 				3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */,
-				F1124F0E24D0B68200E672EC /* loudoun_anno.geodatabase in Resources */,
+				F191564D24DA1B4A006FBDD5 /* loudoun_anno.geodatabase in Resources */,
 				10859BAB1FE0AAE400F6E552 /* FeatureLayerExtrusion.storyboard in Resources */,
 				D98CC09222E25EC400618682 /* TraceUtilityNetwork.storyboard in Resources */,
 				3EABC7C41DB191BC00C161C6 /* Shasta_Elevation.tif.ovr in Resources */,

@@ -138,18 +138,23 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     // Move the currently selected point feature to the given map point, by updating the selected feature's geometry and feature table.
     func movePoint(mapPoint: AGSPoint) {
 //        guard let selectedFeature = self.selectedFeature else { return }
-        // Set the selected feature's geometry to the new map point.
-        self.selectedFeature?.geometry = mapPoint
-        // Update the selected feature's feature table.
-        self.selectedFeature?.featureTable?.update(selectedFeature!) { (error: Error?) in
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                // Clear selection of polyline.
-                self.clearSelection()
-                self.selectedFeature = nil
+        let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
+            // Set the selected feature's geometry to the new map point.
+            self.selectedFeature?.geometry = mapPoint
+            // Update the selected feature's feature table.
+            self.selectedFeature?.featureTable?.update(self.selectedFeature!) { (error: Error?) in
+                if let error = error {
+                    self.presentAlert(error: error)
+                } else {
+                    // Clear selection of polyline.
+                    self.clearSelection()
+                    self.selectedFeature = nil
+                }
             }
-        }
+        })
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Move the last of the vertex point of the currently selected polyline to the given map point, by updating the selected feature's geometry and feature table.

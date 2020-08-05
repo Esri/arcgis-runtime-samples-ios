@@ -172,10 +172,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 }
 
 extension UIColor {
-    // Also used for global tint color.
+    // Also used as global tint/accent color.
     class var accentColor: UIColor { return UIColor(named: "AccentColor")! }
-    class var secondaryThemeColor: UIColor { return UIColor(named: "secondaryThemeColor")! }
     class var backgroundGray: UIColor { return UIColor(named: "backgroundGray")! }
+    class var backgroundGrayWithOpacity: UIColor { return UIColor(named: "backgroundGrayWithOpacity")! }
     class var primaryTextColor: UIColor { return UIColor(named: "primaryTextColor")! }
-    class var secondaryTextColor: UIColor { return UIColor(named: "secondaryTextColor")! }
 }

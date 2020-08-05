@@ -18,6 +18,8 @@ import ArcGIS
 class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
+            // Set the touch delegate.
+            self.mapView.touchDelegate = self
             // Create the map with a light gray canvas basemap centered on Loudoun, Virginia.
             let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39.0204, longitude: -77.4159, levelOfDetail: 18)
             mapView.map = map
@@ -82,8 +84,9 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                     if let featureLayer = result.layerContent as? AGSFeatureLayer {
                         // Get a reference to the identified feature
                         self.selectedFeature = result.geoElements[0] as? AGSFeature
+                        guard let selectedFeature = self.selectedFeature else { return }
                         // If the selected feature is a polyline with any part containing more than one segment (i.e. a curve).
-                        if let polyline = self.selectedFeature?.geometry as? AGSPolyline {
+                        if let polyline = selectedFeature.geometry as? AGSPolyline {
                             let polylineArray = polyline.parts.array()
                             polylineArray.forEach { part in
                                 if part.pointCount > 2 {
@@ -91,19 +94,21 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                                     self.selectedFeature = nil
                                     // Show a message to select straight (single segment) polylines only.
                                     self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
-                                    return
                                 }
                             }
+                            return
                         }
-                        // Ensure the feature is not nil and select it.
-                        guard let selectedFeature = self.selectedFeature else { return }
+                        // Select the feature.
                         featureLayer.select(selectedFeature)
-                        // If the selected feature is a point, prompt the edit attributes alert.
-                        if selectedFeature.geometry?.geometryType.rawValue == 1 {
+                        switch selectedFeature.geometry?.geometryType {
+                        case .point:
+                            // If the selected feature is a point, prompt the edit attributes alert.
                             self.showEditableAttributes(selectedFeature: selectedFeature)
-                        } else if selectedFeature.geometry?.geometryType.rawValue == 3 {
+                        case .polyline:
                             // If the selected feature is a polyline, set the value to true.
                             self.selectedFeatureIsPolyline = true
+                        default:
+                            return
                         }
                     }
                 }
@@ -113,7 +118,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     // Create an alert dialog with edit texts to allow editing of the given feature's 'AD_ADDRESS' and 'ST_STR_NAM' attributes.
     func showEditableAttributes(selectedFeature: AGSFeature) {
-        guard let selectedFeature = self.selectedFeature else { return }
         // Create an alert controller and customize the title and message.
         let alert = UIAlertController(title: "Edit feature attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
         // Add text fields to prompt user input.
@@ -123,8 +127,8 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         alert.textFields?[0].text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
         alert.textFields?[1].text = selectedFeature.attributes["ST_STR_NAM"] as? String
         // Prompt the appropriate keyboard types.
-        alert.textFields?[0].keyboardType = .asciiCapableNumberPad
-        alert.textFields?[1].keyboardType = .asciiCapable
+        alert.textFields?[0].keyboardType = .numberPad
+        alert.textFields?[1].keyboardType = .default
         // Add a "Cancel" option and clear the selection if cancel is selected.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.clearSelection()
@@ -186,12 +190,13 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
             // Get the selected feature's geometry as a polyline nearest to the map point.
             guard let polyline = selectedFeature.geometry as? AGSPolyline else { return }
             // Get the nearest vertex to the map point on the selected feature polyline.
-            let nearestVertex = AGSGeometryEngine.nearestVertex(in: polyline, to: (AGSGeometryEngine.projectGeometry(mapPoint, to: (polyline.spatialReference)!) as? AGSPoint)!)
+            guard let nearestVertex = AGSGeometryEngine.nearestVertex(in: polyline, to:
+                (AGSGeometryEngine.projectGeometry(mapPoint, to: (polyline.spatialReference)!) as? AGSPoint)!) else { return }
             let polylineBuilder = AGSPolylineBuilder(polyline: polyline)
             // Get the part of the polyline nearest to the map point.
-            polylineBuilder.parts[nearestVertex!.partIndex].removePoint(at: nearestVertex!.partIndex)
+            polylineBuilder.parts[nearestVertex.partIndex].removePoint(at: nearestVertex.partIndex)
             // Add the map point as the new point on the polyline.
-            polylineBuilder.parts[nearestVertex!.partIndex].addPoint(AGSGeometryEngine.projectGeometry(mapPoint, to: polylineBuilder.parts[nearestVertex!.partIndex].spatialReference!) as! AGSPoint)
+            polylineBuilder.parts[nearestVertex.partIndex].addPoint(AGSGeometryEngine.projectGeometry(mapPoint, to: polylineBuilder.parts[nearestVertex.partIndex].spatialReference!) as! AGSPoint)
             // Set the selected feature's geometry to the new polyline.
             selectedFeature.geometry = polylineBuilder.toGeometry()
             // Update the selected feature's feature table.
@@ -220,8 +225,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Set the touch delegate.
-        self.mapView.touchDelegate = self
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesWithFeatureLinkedAnnotationViewController"]
     }

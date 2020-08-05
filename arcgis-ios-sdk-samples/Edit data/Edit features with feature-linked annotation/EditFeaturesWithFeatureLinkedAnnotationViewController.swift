@@ -211,8 +211,8 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     // Clear selection from all feature layers.
     func clearSelection() {
-        self.mapView.map?.operationalLayers.forEach { (each) in
-            if let featureLayer = each as? AGSFeatureLayer {
+        self.mapView.map?.operationalLayers.forEach { layer in
+            if let featureLayer = layer as? AGSFeatureLayer {
                 featureLayer.clearSelection()
             }
         }

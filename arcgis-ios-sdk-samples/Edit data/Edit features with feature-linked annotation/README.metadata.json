@@ -8,8 +8,8 @@
     "keywords": [
         "annotation",
         "attributes",
-        "features",
         "feature-linked annotation",
+        "features",
         "fields",
         "AGSAnnotationLayer",
         "AGSFeature",

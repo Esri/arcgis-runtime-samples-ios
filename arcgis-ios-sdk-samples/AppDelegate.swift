@@ -117,15 +117,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             navigationBarAppearanceProxy.barTintColor = .accentColor
         }
         navigationBarAppearanceProxy.tintColor = .white
-        // Override tint color for `UIControl`s.
-        UIToolbar.appearance().barTintColor = .backgroundGray
-        UIToolbar.appearance().tintColor = .accentColor
-        UISwitch.appearance().onTintColor = .accentColor
-        UISlider.appearance().tintColor = .accentColor
-        UITableViewCell.appearance().tintColor = .accentColor
-        UIProgressView.appearance().tintColor = .accentColor
-        
-        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .accentColor
+        if #available(iOS 14.0, *) {
+            // Nothing to do! iOS 14 handles global tint with accent color.
+            // Except UISwitch.
+            UISwitch.appearance().onTintColor = .accentColor
+        } else {
+            // Override tint color for `UIControl`s.
+            UIToolbar.appearance().barTintColor = .backgroundGray
+            UIToolbar.appearance().tintColor = .accentColor
+            UISwitch.appearance().onTintColor = .accentColor
+            UISlider.appearance().tintColor = .accentColor
+            UITableViewCell.appearance().tintColor = .accentColor
+            UIProgressView.appearance().tintColor = .accentColor
+            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .accentColor
+        }
     }
 
     // MARK: - Split view

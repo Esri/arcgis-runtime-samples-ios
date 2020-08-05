@@ -10,18 +10,16 @@ Annotation is useful for displaying text that you don't want to move or resize w
 
 ## How to use the sample
 
-Pan and zoom the map to see that the text on the map is annotation, not labels. Tap one of the address points to update the house number (AD_ADDRESS) and street name (ST_STR_NAM). Tap one of the dashed parcel polylines and tap another location to change its geometry. NOTE: Selection is only enabled for points and straight (single segment) polylines.
-
-The feature-linked annotation will update accordingly.
+Pan and zoom the map to see that the text on the map is annotation, not labels. Tap one of the address points to update the house number (AD_ADDRESS) and street name (ST_STR_NAM). Tap one of the dashed parcel polylines and tap another location to change its geometry. NOTE: Selection is only enabled for points and straight (single segment) polylines. The feature-linked annotation will update accordingly.
 
 ## How it works
 
-1. Load the geodatabase. NOTE: Read/write geodatabases should normally come from a `GeodatabaseSyncTask`, but this has been omitted here. That functionality is covered in the sample *Generate geodatabase*.
-2. Create `FeatureLayer`s from geodatabase feature tables found in the geodatabase with `geodatabase.geodatabaseFeatureTables`.
-3. Create `AnnotationLayer`s from geodatabase feature tables found in the geodatabase with `geodatabase.geodatabaseAnnotationTables`.
-4. Add the `FeatureLayer`s and `AnnotationLayer`s to the map's operational layers.
-5. Use a `DefaultMapViewOnTouchListener` to listen for taps on the map to either select address points or parcel polyline features.  NOTE: Selection is only enabled for points and straight (single segment) polylines.
-    * For the address points, a dialog is opened to allow editing of the address number (AD_ADDRESS) and street name (ST_STR_NAM) attributes.
+1. Load the geodatabase using `AGSLoadable.load(completion:)`. NOTE: Read/write geodatabases should normally come from an `AGSGeodatabaseSyncTask`, but this has been omitted here.
+2. Create `AGSFeatureLayer`s from the geodatabase's array of feature tables.
+3. Create `AGSAnnotationLayer`s from the feature tables.
+4. Add the `AGSFeatureLayer`s and `AGSAnnotationLayer`s to the map's operational layers.
+5. Use  `geoView(_:didTapAtScreenPoint:mapPoint:)` track taps on the map to either select address points or parcel polyline features.  NOTE: Selection is only enabled for points and straight (single segment) polylines.
+    * For the address points, an alert is opened to allow editing of the address number (AD_ADDRESS) and street name (ST_STR_NAM) attributes.
     * For the parcel lines, a second tap will change one of the polyline's vertices.
 
 Both expressions were defined by the data author in ArcGIS Pro using [the Arcade expression language](https://developers.arcgis.com/arcade/).

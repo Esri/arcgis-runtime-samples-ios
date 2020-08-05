@@ -18,7 +18,7 @@
         "AGSFeatureLayer",
         "AGSGeodatabase"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/edit-features-connected-.htm",
+    "redirect_from": [],
     "relevant_apis": [
         "AGSAnnotationLayer",
         "AGSFeature",

@@ -18,7 +18,7 @@ Pan and zoom the map to see that the text on the map is annotation, not labels. 
 2. Create `AGSFeatureLayer`s from the geodatabase's array of feature tables.
 3. Create `AGSAnnotationLayer`s from the feature tables.
 4. Add the `AGSFeatureLayer`s and `AGSAnnotationLayer`s to the map's operational layers.
-5. Use  `geoView(_:didTapAtScreenPoint:mapPoint:)` track taps on the map to either select address points or parcel polyline features.  NOTE: Selection is only enabled for points and straight (single segment) polylines.
+5. Use `geoView(_:didTapAtScreenPoint:mapPoint:)` track taps on the map to either select address points or parcel polyline features.  NOTE: Selection is only enabled for points and straight (single segment) polylines.
     * For the address points, an alert is opened to allow editing of the address number (AD\_ADDRESS) and street name (ST\_STR\_NAM) attributes.
     * For the parcel lines, a second tap will change one of the polyline's vertices.
 

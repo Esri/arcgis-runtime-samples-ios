@@ -100,8 +100,8 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                         featureLayer.select(selectedFeature)
                         // If the selected feature is a point, prompt the edit attributes alert.
                         if selectedFeature.geometry?.geometryType.rawValue == 1 {
-                            self.showEditableAttributes(selectedFeature: self.selectedFeature!)
-                        } else if self.selectedFeature?.geometry?.geometryType.rawValue == 3 {
+                            self.showEditableAttributes(selectedFeature: selectedFeature)
+                        } else if selectedFeature.geometry?.geometryType.rawValue == 3 {
                             // If the selected feature is a polyline, set the value to true.
                             self.selectedFeatureIsPolyline = true
                         }
@@ -113,14 +113,15 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     // Create an alert dialog with edit texts to allow editing of the given feature's 'AD_ADDRESS' and 'ST_STR_NAM' attributes.
     func showEditableAttributes(selectedFeature: AGSFeature) {
+        guard let selectedFeature = self.selectedFeature else { return }
         // Create an alert controller and customize the title and message.
         let alert = UIAlertController(title: "Edit feature attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
         // Add text fields to prompt user input.
         alert.addTextField()
         alert.addTextField()
         // Popuplate the text fields with the current values.
-        alert.textFields?[0].text = (self.selectedFeature?.attributes["AD_ADDRESS"] as? NSNumber)?.stringValue
-        alert.textFields?[1].text = self.selectedFeature?.attributes["ST_STR_NAM"] as? String
+        alert.textFields?[0].text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
+        alert.textFields?[1].text = selectedFeature.attributes["ST_STR_NAM"] as? String
         // Prompt the appropriate keyboard types.
         alert.textFields?[0].keyboardType = .asciiCapableNumberPad
         alert.textFields?[1].keyboardType = .asciiCapable
@@ -144,7 +145,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     // Move the currently selected point feature to the given map point, by updating the selected feature's geometry and feature table.
     func movePoint(mapPoint: AGSPoint) {
-//        guard let selectedFeature = self.selectedFeature else { return }
+        guard let selectedFeature = self.selectedFeature else { return }
         // Create an alert to confirm that the user wants to update the geometry.
         let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
         // Clear the selection and selected feature if "No" is selected.
@@ -154,9 +155,9 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         })
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
             // Set the selected feature's geometry to the new map point.
-            self.selectedFeature?.geometry = mapPoint
+            selectedFeature.geometry = mapPoint
             // Update the selected feature's feature table.
-            self.selectedFeature?.featureTable?.update(self.selectedFeature!) { (error: Error?) in
+            selectedFeature.featureTable?.update(selectedFeature) { (error: Error?) in
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {
@@ -172,6 +173,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     // Move the last of the vertex point of the currently selected polyline to the given map point, by updating the selected feature's geometry and feature table.
     func movePolylineVertex(mapPoint: AGSPoint) {
+        guard let selectedFeature = self.selectedFeature else { return }
         // Create an alert to confirm that the user wants to update the geometry.
         let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
         // Clear the selection and selected feature if "No" is selected.
@@ -181,7 +183,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         })
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
             // Get the selected feature's geometry as a polyline nearest to the map point.
-            let polyline = self.selectedFeature?.geometry as? AGSPolyline
+            let polyline = selectedFeature.geometry as? AGSPolyline
             // Get the nearest vertex to the map point on the selected feature polyline.
             let nearestVertex = AGSGeometryEngine.nearestVertex(in: polyline!, to: (AGSGeometryEngine.projectGeometry(mapPoint, to: (polyline?.spatialReference)!) as? AGSPoint)!)
             let polylineBuilder = AGSPolylineBuilder(polyline: polyline)
@@ -190,9 +192,9 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
             // Add the map point as the new point on the polyline.
             polylineBuilder.parts[nearestVertex!.partIndex].addPoint(AGSGeometryEngine.projectGeometry(mapPoint, to: polylineBuilder.parts[nearestVertex!.partIndex].spatialReference!) as! AGSPoint)
             // Set the selected feature's geometry to the new polyline.
-            self.selectedFeature?.geometry = polylineBuilder.toGeometry()
+            selectedFeature.geometry = polylineBuilder.toGeometry()
             // Update the selected feature's feature table.
-            self.selectedFeature?.featureTable?.update(self.selectedFeature!) { (error: Error?) in
+            selectedFeature.featureTable?.update(selectedFeature) { (error: Error?) in
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {

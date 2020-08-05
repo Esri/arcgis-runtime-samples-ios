@@ -84,9 +84,8 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                     if let featureLayer = result.layerContent as? AGSFeatureLayer {
                         // Get a reference to the identified feature
                         self.selectedFeature = result.geoElements[0] as? AGSFeature
-                        guard let selectedFeature = self.selectedFeature else { return }
                         // If the selected feature is a polyline with any part containing more than one segment (i.e. a curve).
-                        if let polyline = selectedFeature.geometry as? AGSPolyline {
+                        if let polyline = self.selectedFeature?.geometry as? AGSPolyline {
                             let polylineArray = polyline.parts.array()
                             polylineArray.forEach { part in
                                 if part.pointCount > 2 {
@@ -94,11 +93,12 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                                     self.selectedFeature = nil
                                     // Show a message to select straight (single segment) polylines only.
                                     self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
+                                    return
                                 }
                             }
-                            return
                         }
                         // Select the feature.
+                        guard let selectedFeature = self.selectedFeature else { return }
                         featureLayer.select(selectedFeature)
                         switch selectedFeature.geometry?.geometryType {
                         case .point:

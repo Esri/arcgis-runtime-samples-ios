@@ -1,4 +1,3 @@
-//
 // Copyright © 2020 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +11,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 
 import UIKit
 import ArcGIS
@@ -33,10 +31,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         // Load geodatabase from shared resources.
         let geodatabaseURL = Bundle.main.url(forResource: "loudoun_anno", withExtension: ".geodatabase")!
         let geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
-//        let group = DispatchGroup()
-//        group.enter()
         geodatabase.load { (error: Error?) in
-//            guard let map = self.mapView.map else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {
@@ -53,7 +48,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                 // Add the annotation layers to the map.
                 map.operationalLayers.add(parcelLinesAnnotationLayer)
                 map.operationalLayers.add(addressPointsAnnotationLayer)
-//                group.leave()
             }
         }
     }
@@ -81,7 +75,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         
         // Identify across all layers
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10.0, returnPopupsOnly: false) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
-//        guard let selectedFeature = self.selectedFeature else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {
@@ -102,10 +95,14 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                                 }
                             }
                         }
-                        featureLayer.select(self.selectedFeature!)
-                        if self.selectedFeature?.geometry?.geometryType.rawValue == 1 {
+                        // Ensure the feature is not nil and select it.
+                        guard let selectedFeature = self.selectedFeature else { return }
+                        featureLayer.select(selectedFeature)
+                        // If the selected feature is a point, prompt the edit attributes alert.
+                        if selectedFeature.geometry?.geometryType.rawValue == 1 {
                             self.showEditableAttributes(selectedFeature: self.selectedFeature!)
                         } else if self.selectedFeature?.geometry?.geometryType.rawValue == 3 {
+                            // If the selected feature is a polyline, set the value to true.
                             self.selectedFeatureIsPolyline = true
                         }
                     }
@@ -116,32 +113,41 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     // Create an alert dialog with edit texts to allow editing of the given feature's 'AD_ADDRESS' and 'ST_STR_NAM' attributes.
     func showEditableAttributes(selectedFeature: AGSFeature) {
-        // Inflate the edit attribute layout.
+        // Create an alert controller and customize the title and message.
         let alert = UIAlertController(title: "Edit feature attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
+        // Add text fields to prompt user input.
         alert.addTextField()
         alert.addTextField()
+        // Popuplate the text fields with the current values.
         alert.textFields?[0].text = (self.selectedFeature?.attributes["AD_ADDRESS"] as? NSNumber)?.stringValue
         alert.textFields?[1].text = self.selectedFeature?.attributes["ST_STR_NAM"] as? String
+        // Prompt the appropriate keyboard types.
         alert.textFields?[0].keyboardType = .asciiCapableNumberPad
         alert.textFields?[1].keyboardType = .asciiCapable
+        // Add a "Cancel" option and clear the selection if cancel is selected.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.clearSelection()
             self.selectedFeature = nil
         })
+        // Add a "Done" option to complete the editing process and close the alert.
         alert.addAction(UIAlertAction(title: "Done", style: .default) { _ in
             let addressTextField = alert.textFields?[0]
             let streetTextField = alert.textFields?[1]
+            // Set the new values for the attributes and update the selected feature.
             selectedFeature.attributes["AD_ADDRESS"] = Int((addressTextField?.text)!)
             selectedFeature.attributes["ST_STR_NAM"] = streetTextField?.text
             selectedFeature.featureTable?.update(selectedFeature)
         })
+        // Present the alert.
         self.present(alert, animated: true, completion: nil)
     }
     
     // Move the currently selected point feature to the given map point, by updating the selected feature's geometry and feature table.
     func movePoint(mapPoint: AGSPoint) {
 //        guard let selectedFeature = self.selectedFeature else { return }
+        // Create an alert to confirm that the user wants to update the geometry.
         let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
+        // Clear the selection and selected feature if "No" is selected.
         alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
             self.clearSelection()
             self.selectedFeature = nil
@@ -160,12 +166,15 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                 }
             }
         })
+        // Present the alert.
         self.present(alert, animated: true, completion: nil)
     }
     
     // Move the last of the vertex point of the currently selected polyline to the given map point, by updating the selected feature's geometry and feature table.
     func movePolylineVertex(mapPoint: AGSPoint) {
+        // Create an alert to confirm that the user wants to update the geometry.
         let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
+        // Clear the selection and selected feature if "No" is selected.
         alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
             self.clearSelection()
             self.selectedFeature = nil

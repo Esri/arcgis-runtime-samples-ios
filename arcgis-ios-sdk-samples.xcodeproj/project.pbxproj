@@ -804,6 +804,7 @@
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F191564D24DA1B4A006FBDD5 /* loudoun_anno.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F191564C24DA1B4A006FBDD5 /* loudoun_anno.geodatabase */; settings = {ASSET_TAGS = (loudoun_anno, ); }; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
@@ -873,6 +874,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */,
 				001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */,
 				00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */,
 				00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */,

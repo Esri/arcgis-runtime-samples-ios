@@ -179,13 +179,14 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         // Clear the selection and selected feature if "No" is selected.
         alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
             self.clearSelection()
+            self.selectedFeatureIsPolyline = false
             self.selectedFeature = nil
         })
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
             // Get the selected feature's geometry as a polyline nearest to the map point.
-            let polyline = selectedFeature.geometry as? AGSPolyline
+            guard let polyline = selectedFeature.geometry as? AGSPolyline else { return }
             // Get the nearest vertex to the map point on the selected feature polyline.
-            let nearestVertex = AGSGeometryEngine.nearestVertex(in: polyline!, to: (AGSGeometryEngine.projectGeometry(mapPoint, to: (polyline?.spatialReference)!) as? AGSPoint)!)
+            let nearestVertex = AGSGeometryEngine.nearestVertex(in: polyline, to: (AGSGeometryEngine.projectGeometry(mapPoint, to: (polyline.spatialReference)!) as? AGSPoint)!)
             let polylineBuilder = AGSPolylineBuilder(polyline: polyline)
             // Get the part of the polyline nearest to the map point.
             polylineBuilder.parts[nearestVertex!.partIndex].removePoint(at: nearestVertex!.partIndex)

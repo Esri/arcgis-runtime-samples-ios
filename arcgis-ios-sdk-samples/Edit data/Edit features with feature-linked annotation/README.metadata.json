@@ -3,9 +3,7 @@
     "description": "Edit feature attributes which are linked to annotation through an expression.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png",
-        "image3.png"
+        "feature-linked-annotation.png"
     ],
     "keywords": [
         "annotation",
@@ -26,8 +24,7 @@
         "AGSGeodatabase"
     ],
     "snippets": [
-        "EditFeaturesOnlineViewController.swift",
-        "FeatureTemplatePickerViewController.swift"
+        "EditFeaturesWithFeatureLinkedAnnotationViewController.swift"
     ],
     "title": "Edit features with feature-linked annotation"
 }

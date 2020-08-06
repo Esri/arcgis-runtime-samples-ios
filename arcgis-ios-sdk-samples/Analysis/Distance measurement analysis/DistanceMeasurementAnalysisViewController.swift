@@ -25,7 +25,6 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
     
     /// The scene view managed by the view controller.
     @IBOutlet weak var sceneView: AGSSceneView!
-    /// The view for displaying distances.
     @IBOutlet weak var directMeasurementLabel: UILabel!
     @IBOutlet weak var horizontalMeasurementLabel: UILabel!
     @IBOutlet weak var verticalMeasurementLabel: UILabel!

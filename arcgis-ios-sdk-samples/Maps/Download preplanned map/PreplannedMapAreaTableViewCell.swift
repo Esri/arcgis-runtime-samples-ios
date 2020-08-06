@@ -23,6 +23,5 @@ class PreplannedMapAreaTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        progressView.trackTintColor = .backgroundGray
     }
 }

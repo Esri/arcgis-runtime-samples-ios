@@ -122,7 +122,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             // Nothing to do! iOS 14 handles global tint with accent color.
         } else {
             // Override tint color for `UIControl`s.
-            UIToolbar.appearance().barTintColor = .backgroundGray
             UIToolbar.appearance().tintColor = .accentColor
             UISlider.appearance().tintColor = .accentColor
             UITableViewCell.appearance().tintColor = .accentColor
@@ -177,5 +176,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 extension UIColor {
     // Also used as global tint/accent color.
     class var accentColor: UIColor { return UIColor(named: "AccentColor")! }
-    class var backgroundGray: UIColor { return UIColor(named: "backgroundGray")! }
 }

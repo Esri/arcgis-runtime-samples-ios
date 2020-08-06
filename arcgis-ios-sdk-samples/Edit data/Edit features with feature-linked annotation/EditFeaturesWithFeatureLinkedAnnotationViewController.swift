@@ -19,7 +19,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             // Set the touch delegate.
-            self.mapView.touchDelegate = self
+            mapView.touchDelegate = self
             // Create the map with a light gray canvas basemap centered on Loudoun, Virginia.
             let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39.0204, longitude: -77.4159, levelOfDetail: 18)
             mapView.map = map
@@ -79,39 +79,37 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10.0, returnPopupsOnly: false) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
             if let error = error {
                 self.presentAlert(error: error)
-            } else {
-                results?.forEach { (result) in
-                    if let featureLayer = result.layerContent as? AGSFeatureLayer {
-                        // Get a reference to the identified feature
-                        self.selectedFeature = result.geoElements[0] as? AGSFeature
-                        // If the selected feature is a polyline with any part containing more than one segment (i.e. a curve).
-                        if let polyline = self.selectedFeature?.geometry as? AGSPolyline {
-                            let polylineArray = polyline.parts.array()
-                            polylineArray.forEach { part in
-                                if part.pointCount > 2 {
-                                    // Set selected feature to nil.
-                                    self.selectedFeature = nil
-                                    // Show a message to select straight (single segment) polylines only.
-                                    self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
-                                    return
-                                }
-                            }
-                        }
-                        // Select the feature.
-                        guard let selectedFeature = self.selectedFeature else { return }
-                        featureLayer.select(selectedFeature)
-                        switch selectedFeature.geometry?.geometryType {
-                        case .point:
-                            // If the selected feature is a point, prompt the edit attributes alert.
-                            self.showEditableAttributes(selectedFeature: selectedFeature)
-                        case .polyline:
-                            // If the selected feature is a polyline, set the value to true.
-                            self.selectedFeatureIsPolyline = true
-                        default:
+                return
+            }
+            results?.forEach { (result) in
+                //Get a reference to the identified feature layer and feature.
+                guard let featureLayer = result.layerContent as? AGSFeatureLayer, let selectedFeature = result.geoElements[0] as? AGSFeature else { return }
+                switch selectedFeature.geometry?.geometryType {
+                case .point:
+                    // If the selected feature is a point, prompt the edit attributes alert.
+                    self.showEditableAttributes(selectedFeature: selectedFeature)
+                case .polyline:
+                    let polyline = selectedFeature.geometry as! AGSPolyline
+                    let polylineArray = polyline.parts.array()
+                    // If the selected feature is a polyline with any part containing more than one segment (i.e. a curve), present an alert.
+                    for part in polylineArray {
+                        if part.pointCount > 2 {
+                            // Set the value to nil.
+                            self.selectedFeature = nil
+                            // Present the alert.
+                            self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
                             return
                         }
                     }
+                    // If the selected feature is a valid polyline, set the value to true.
+                    self.selectedFeatureIsPolyline = true
+                default:
+                    return
                 }
+                // Select the feature.
+                featureLayer.select(selectedFeature)
+                // Set the feature globally.
+                self.selectedFeature = selectedFeature
             }
         }
     }

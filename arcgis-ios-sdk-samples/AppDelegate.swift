@@ -178,6 +178,4 @@ extension UIColor {
     // Also used as global tint/accent color.
     class var accentColor: UIColor { return UIColor(named: "AccentColor")! }
     class var backgroundGray: UIColor { return UIColor(named: "backgroundGray")! }
-    class var backgroundGrayWithOpacity: UIColor { return UIColor(named: "backgroundGrayWithOpacity")! }
-    class var primaryTextColor: UIColor { return UIColor(named: "primaryTextColor")! }
 }

@@ -101,7 +101,7 @@
 				<key>storyboardName</key>
 				<string>LayerStatus</string>
 				<key>descriptionText</key>
-				<string>You can get the view status for each layer in your map. It tells you if the that layer is currently active or not currently visible or if an error occured while loading it etc</string>
+				<string>Determine if a layer is currently being viewed.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

@@ -75,7 +75,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         clearSelection()
         selectedFeature = nil
         
-        // Identify across all layers
+        // Identify across all layers.
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10.0, returnPopupsOnly: false) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
             if let error = error {
                 self.presentAlert(error: error)

@@ -22,7 +22,6 @@ class LayerStatusViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemap: .topographic())
-            mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 4e7))
             mapView.layerViewStateChangedHandler = layerViewStateChangedHandler
         }
     }
@@ -32,8 +31,8 @@ class LayerStatusViewController: UIViewController {
     var featureLayer: AGSFeatureLayer = {
         let portalItem = AGSPortalItem(url: URL(string: "https://runtime.maps.arcgis.com/home/item.html?id=b8f4033069f141729ffb298b7418b653")!)!
         let featureLayer = AGSFeatureLayer(item: portalItem, layerID: 0)
-        featureLayer.minScale = 2e8
-        featureLayer.maxScale = 2e7
+        featureLayer.minScale = 1e8
+        featureLayer.maxScale = 6e6
         return featureLayer
     }()
     
@@ -46,15 +45,11 @@ class LayerStatusViewController: UIViewController {
     ///   - state: The `AGSLayerViewState` that contains changed statuses.
     func layerViewStateChangedHandler(layer: AGSLayer, state: AGSLayerViewState) {
         // Only check the view state of the feature layer.
-        guard layer == featureLayer else {
-            return
-        }
-        if let error = state.error {
-            DispatchQueue.main.async {
+        guard layer == featureLayer else { return }
+        DispatchQueue.main.async {
+            if let error = state.error {
                 self.presentAlert(error: error)
             }
-        }
-        DispatchQueue.main.async {
             self.setStatus(message: self.viewStatusString(state.status))
         }
     }
@@ -117,6 +112,7 @@ class LayerStatusViewController: UIViewController {
                 self.presentAlert(error: error)
             } else {
                 self.mapView.map?.operationalLayers.add(self.featureLayer)
+                self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 2e7))
             }
         }
     }

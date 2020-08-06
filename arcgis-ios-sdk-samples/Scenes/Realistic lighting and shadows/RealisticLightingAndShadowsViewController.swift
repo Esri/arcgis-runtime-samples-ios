@@ -64,6 +64,15 @@ class RealisticLightingAndShadowsViewController: UIViewController {
         let scene = AGSScene(basemap: .topographic())
         scene.baseSurface = surface
         scene.operationalLayers.add(buildingsLayer)
+        // Load the scene.
+        scene.load { [weak self] (error) in
+            if let error = error {
+                self?.presentAlert(error: error)
+            } else {
+                let camera = AGSCamera(latitude: 45.54605, longitude: -122.69033, altitude: 941.00021, heading: 162.58544, pitch: 60.0, roll: 0)
+                self?.sceneView.setViewpointCamera(camera)
+            }
+        }
         return scene
     }
     
@@ -105,14 +114,6 @@ class RealisticLightingAndShadowsViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["RealisticLightingAndShadowsViewController"]
-        sceneView.scene?.load { [weak self] (error) in
-            if let error = error {
-                self?.presentAlert(error: error)
-            } else {
-                let camera = AGSCamera(latitude: 45.54605, longitude: -122.69033, altitude: 941.00021, heading: 162.58544, pitch: 60.0, roll: 0)
-                self?.sceneView.setViewpointCamera(camera)
-            }
-        }
         // Initialize the date time.
         sliderValueChanged(minuteSlider)
     }

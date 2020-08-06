@@ -755,7 +755,7 @@
 				<key>storyboardName</key>
 				<string>FLSelection</string>
 				<key>descriptionText</key>
-				<string>You can tap on the map to select or unselect features in a feature layer</string>
+				<string>Select features in a feature layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -975,6 +975,14 @@
 				<array>
 					<string>Restaurant</string>
 				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Show a popup</string>
+				<key>descriptionText</key>
+				<string>Show a predefined popup from a web map.</string>
+				<key>storyboardName</key>
+				<string>ShowPopup</string>
 			</dict>
 		</array>
 	</dict>

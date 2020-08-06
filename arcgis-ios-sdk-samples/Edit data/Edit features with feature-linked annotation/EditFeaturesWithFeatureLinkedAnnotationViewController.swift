@@ -121,7 +121,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         // Add text fields to prompt user input.
         alert.addTextField()
         alert.addTextField()
-        // Popuplate the text fields with the current values.
+        // Populate the text fields with the current values.
         alert.textFields?[0].text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
         alert.textFields?[1].text = selectedFeature.attributes["ST_STR_NAM"] as? String
         // Prompt the appropriate keyboard types.

@@ -81,7 +81,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                 return
             }
             results?.forEach { (result) in
-                //Get a reference to the identified feature layer and feature.
+                // Get a reference to the identified feature layer and feature.
                 guard let featureLayer = result.layerContent as? AGSFeatureLayer, let selectedFeature = result.geoElements.first as? AGSFeature else { return }
                 switch selectedFeature.geometry?.geometryType {
                 case .point:

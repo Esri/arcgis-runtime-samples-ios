@@ -101,7 +101,7 @@
 				<key>storyboardName</key>
 				<string>LayerStatus</string>
 				<key>descriptionText</key>
-				<string>Determine if a layer is currently being viewed.</string>
+				<string>Determine whether a layer is currently visible.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

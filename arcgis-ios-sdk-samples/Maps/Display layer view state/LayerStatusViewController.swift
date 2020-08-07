@@ -22,37 +22,31 @@ class LayerStatusViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemap: .topographic())
-            mapView.layerViewStateChangedHandler = layerViewStateChangedHandler
+            mapView.map?.operationalLayers.add(featureLayer)
+            mapView.map?.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 2e7)
+            mapView.layerViewStateChangedHandler = { [weak self] layer, state in
+                guard let self = self else { return }
+                // Only check the view state of the feature layer.
+                guard layer == self.featureLayer else { return }
+                DispatchQueue.main.async {
+                    if let error = state.error {
+                        self.presentAlert(error: error)
+                    }
+                    self.setStatus(message: self.viewStatusString(state.status))
+                }
+            }
         }
     }
     /// The label to display layer view status.
     @IBOutlet weak var statusLabel: UILabel!
     /// The feature layer loaded from a portal item.
-    var featureLayer: AGSFeatureLayer = {
+    let featureLayer: AGSFeatureLayer = {
         let portalItem = AGSPortalItem(url: URL(string: "https://runtime.maps.arcgis.com/home/item.html?id=b8f4033069f141729ffb298b7418b653")!)!
         let featureLayer = AGSFeatureLayer(item: portalItem, layerID: 0)
         featureLayer.minScale = 1e8
         featureLayer.maxScale = 6e6
         return featureLayer
     }()
-    
-    // MARK: Instance methods
-    
-    /// Display layer view state and handle errors.
-    ///
-    /// - Parameters:
-    ///   - layer: The `AGSLayer` of which view state has changed.
-    ///   - state: The `AGSLayerViewState` that contains changed statuses.
-    func layerViewStateChangedHandler(layer: AGSLayer, state: AGSLayerViewState) {
-        // Only check the view state of the feature layer.
-        guard layer == featureLayer else { return }
-        DispatchQueue.main.async {
-            if let error = state.error {
-                self.presentAlert(error: error)
-            }
-            self.setStatus(message: self.viewStatusString(state.status))
-        }
-    }
     
     // MARK: UI
     
@@ -105,15 +99,5 @@ class LayerStatusViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames  = ["LayerStatusViewController"]
         // Avoid the overlap between the status label and the map content.
         mapView.contentInset.top = 2 * statusLabel.font.lineHeight
-        // Load the feature layer.
-        featureLayer.load { [weak self] (error) in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                self.mapView.map?.operationalLayers.add(self.featureLayer)
-                self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 2e7))
-            }
-        }
     }
 }

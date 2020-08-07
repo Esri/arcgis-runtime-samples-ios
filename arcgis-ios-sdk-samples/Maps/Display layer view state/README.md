@@ -1,6 +1,6 @@
 # Display layer view state
 
-Determine if a layer is currently being viewed.
+Determine whether a layer is currently visible.
 
 ![Image of display layer view state](display-layer-view-state.png)
 
@@ -12,7 +12,7 @@ The view status includes information on the loading state of layers and whether 
 
 When the feature layer is loaded, pan and zoom around the map. Note how the `AGSLayerViewState` flags change; for example, `outOfScale` becomes true when the map is scaled outside of the layer's min and max scale range. Tap the toggle to hide the layer and observe the view state change to `notVisible`.
 
-You can toggle on airplane mode or disconnect from network and pan around the map to see layers display the `warning` status when they cannot online fetch data. Toggle airplane mode back off to see the warning disappear.
+Disconnect from the network and pan around the map to see the `warning` status of the different layers when they cannot online fetch data. Reconnect to the network to see the warning disappear.
 
 ## How it works
 
@@ -34,7 +34,7 @@ The [Satellite (MODIS) Thermal Hotspots and Fire Activity](https://runtime.maps.
 
 ## Additional information
 
-The following are members of the `AGSLayerViewState.status` enum:
+The following are members of the `AGSLayerViewState` enum:
 
 * `active`: The layer in the view is active.
 * `notVisible`: The layer in the view is not visible.

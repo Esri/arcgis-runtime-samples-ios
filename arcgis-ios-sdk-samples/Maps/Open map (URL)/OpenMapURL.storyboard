@@ -57,8 +57,8 @@
                         <viewLayoutGuide key="safeArea" id="vjo-78-dWd"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="RCT-Vk-XYM"/>
                                 <exclude reference="TUU-BU-V3O"/>
+                                <exclude reference="RCT-Vk-XYM"/>
                             </mask>
                         </variation>
                     </view>
@@ -95,7 +95,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

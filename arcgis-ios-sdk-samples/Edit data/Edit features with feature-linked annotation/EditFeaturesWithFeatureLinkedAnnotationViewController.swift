@@ -133,7 +133,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
             selectedFeature.featureTable?.update(selectedFeature)
         })
         // Present the alert.
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     // Move the currently selected point feature to the given map point, by updating the selected feature's geometry and feature table.

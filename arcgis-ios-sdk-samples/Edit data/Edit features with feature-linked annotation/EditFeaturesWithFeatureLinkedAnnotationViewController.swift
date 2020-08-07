@@ -207,7 +207,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                 }
             }
         })
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     // Clear selection from all feature layers.

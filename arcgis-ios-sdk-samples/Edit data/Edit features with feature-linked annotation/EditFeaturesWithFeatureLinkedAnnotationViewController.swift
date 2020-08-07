@@ -18,11 +18,10 @@ import ArcGIS
 class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
+            // Create the map with a light gray canvas basemap centered on Loudoun, Virginia.
+            mapView.map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39.0204, longitude: -77.4159, levelOfDetail: 18)
             // Set the touch delegate.
             mapView.touchDelegate = self
-            // Create the map with a light gray canvas basemap centered on Loudoun, Virginia.
-            let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39.0204, longitude: -77.4159, levelOfDetail: 18)
-            mapView.map = map
             loadGeodatabase()
         }
     }

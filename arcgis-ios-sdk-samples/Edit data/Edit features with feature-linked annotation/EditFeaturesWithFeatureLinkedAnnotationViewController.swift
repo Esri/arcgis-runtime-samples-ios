@@ -138,7 +138,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     // Move the currently selected point feature to the given map point, by updating the selected feature's geometry and feature table.
     func movePoint(mapPoint: AGSPoint) {
-        guard let selectedFeature = self.selectedFeature else { return }
+        guard let selectedFeature = selectedFeature else { return }
         // Create an alert to confirm that the user wants to update the geometry.
         let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
         // Clear the selection and selected feature if "No" is selected.

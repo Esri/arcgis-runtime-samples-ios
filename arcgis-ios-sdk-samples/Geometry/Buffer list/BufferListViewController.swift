@@ -30,7 +30,7 @@ class BufferListViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
-            mapView.graphicsOverlays.addObjects(from: [boundaryGraphicsOverlay, bufferGraphicsOverlay, tapLocationsGraphicsOverlay])
+            mapView.graphicsOverlays.addObjects(from: [boundaryGraphicsOverlay, bufferGraphicsOverlay, tappedLocationsGraphicsOverlay])
             mapView.touchDelegate = self
         }
     }
@@ -69,7 +69,7 @@ class BufferListViewController: UIViewController {
         return overlay
     }()
     /// An overlay to display tapped locations with red circle symbols.
-    let tapLocationsGraphicsOverlay: AGSGraphicsOverlay = {
+    let tappedLocationsGraphicsOverlay: AGSGraphicsOverlay = {
         let overlay = AGSGraphicsOverlay()
         let circleSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
         overlay.renderer = AGSSimpleRenderer(symbol: circleSymbol)
@@ -122,7 +122,7 @@ class BufferListViewController: UIViewController {
     
     @IBAction func clearButtonTapped(_ sender: UIBarButtonItem) {
         bufferGraphicsOverlay.graphics.removeAllObjects()
-        tapLocationsGraphicsOverlay.graphics.removeAllObjects()
+        tappedLocationsGraphicsOverlay.graphics.removeAllObjects()
         tappedPointsAndRadius.removeAll()
         setStatus(message: "Buffers removed. Tap on the map to add buffers.")
     }
@@ -185,7 +185,7 @@ extension BufferListViewController: AGSGeoViewTouchDelegate {
             let radiusInFeet = self.bufferRadius.converted(to: .feet).value
             // Create and add graphic symbolizing the tap point.
             let pointGraphic = AGSGraphic(geometry: mapPoint, symbol: nil)
-            self.tapLocationsGraphicsOverlay.graphics.add(pointGraphic)
+            self.tappedLocationsGraphicsOverlay.graphics.add(pointGraphic)
             // Keep track of tapped points and their radius.
             self.tappedPointsAndRadius.append((point: mapPoint, radius: radiusInFeet))
             self.setStatus(message: "Buffer center point added.")

@@ -117,7 +117,7 @@ class MapReferenceScaleSettingsViewController: UITableViewController {
         // Update Map Scale section.
         
         mapScaleLabel.text = string(fromScale: mapScale)
-        setMapScaleToReferenceScaleButton.textLabel?.textColor = view.tintColor
+        setMapScaleToReferenceScaleButton.textLabel?.textColor = .accentColor
     }
     
     override func viewDidDisappear(_ animated: Bool) {

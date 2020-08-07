@@ -116,7 +116,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             navigationBarAppearanceProxy.titleTextAttributes = [.foregroundColor: UIColor.white]
             navigationBarAppearanceProxy.barTintColor = .accentColor
         }
-        navigationBarAppearanceProxy.tintColor = .white
         UISwitch.appearance().onTintColor = .accentColor
         if #available(iOS 14.0, *) {
             // Nothing to do! iOS 14 handles global tint with accent color.

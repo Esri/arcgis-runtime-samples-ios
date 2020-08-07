@@ -75,11 +75,11 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     func selectFeature(screenPoint: CGPoint) {
         // Clear any previously selected features.
         clearSelection()
-        selectedFeature = nil
         
         // Identify across all layers.
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10.0, returnPopupsOnly: false) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
             if let error = error {
+                self.clearSelection()
                 self.presentAlert(error: error)
                 return
             }
@@ -207,6 +207,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     // Clear selection from all feature layers.
     func clearSelection() {
+        selectedFeature = nil
         self.mapView.map?.operationalLayers.forEach { layer in
             if let featureLayer = layer as? AGSFeatureLayer {
                 featureLayer.clearSelection()

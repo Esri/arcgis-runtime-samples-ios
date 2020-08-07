@@ -2623,7 +2623,6 @@
 		3E8A25881D36B89400D14F08 /* Geodatabases */ = {
 			isa = PBXGroup;
 			children = (
-				F191564C24DA1B4A006FBDD5 /* loudoun_anno.geodatabase */,
 				F1F62C4322E65E0900EFD599 /* militaryoverlay.geodatabase */,
 				3E8A25891D36B89400D14F08 /* LA_Trails.geodatabase */,
 			);
@@ -3733,6 +3732,7 @@
 		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
 			isa = PBXGroup;
 			children = (
+				F1A33E3E24DE157300E95355 /* Geodatabases */,
 				00C6D328246CA8FC00C63EAF /* Archives */,
 				4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */,
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
@@ -4294,6 +4294,14 @@
 				F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */,
 			);
 			path = Rasters;
+			sourceTree = "<group>";
+		};
+		F1A33E3E24DE157300E95355 /* Geodatabases */ = {
+			isa = PBXGroup;
+			children = (
+				F191564C24DA1B4A006FBDD5 /* loudoun_anno.geodatabase */,
+			);
+			path = Geodatabases;
 			sourceTree = "<group>";
 		};
 		F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */ = {

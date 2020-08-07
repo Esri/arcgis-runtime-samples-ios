@@ -25,30 +25,33 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
             loadGeodatabase()
         }
     }
-    private var selectedFeature: AGSFeature?
-    private var selectedFeatureIsPolyline = false
+    var selectedFeature: AGSFeature?
+    var selectedFeatureIsPolyline = false
+    var geodatabase: AGSGeodatabase?
     
     func loadGeodatabase() {
         // Load geodatabase from shared resources.
         let geodatabaseURL = Bundle.main.url(forResource: "loudoun_anno", withExtension: "geodatabase")!
-        let geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
-        geodatabase.load { (error: Error?) in
+        geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
+        guard let geodatabase = geodatabase else { return }
+        geodatabase.load { [weak self] (error: Error?) in
+            guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {
                 guard let map = self.mapView.map else { return }
                 // Create feature layers from tables in the geodatabase.
-                let parcelLinesFeatureLayer = AGSFeatureLayer(featureTable: geodatabase.geodatabaseFeatureTable(withName: "ParcelLines_1")!)
-                let addressPointFeatureLayer = AGSFeatureLayer(featureTable: geodatabase.geodatabaseFeatureTable(withName: "Loudoun_Address_Points_1")!)
-                // Create annotation layers from tables in the geodatabase.
-                let parcelLinesAnnotationLayer = AGSAnnotationLayer(featureTable: geodatabase.geodatabaseAnnotationTable(withTableName: "ParcelLinesAnno_1")!)
-                let addressPointsAnnotationLayer = AGSAnnotationLayer(featureTable: geodatabase.geodatabaseAnnotationTable(withTableName: "Loudoun_Address_PointsAnno_1")!)
+                let featureTableNames = ["ParcelLines_1", "Loudoun_Address_Points_1"]
+                let featureTables = featureTableNames.compactMap { geodatabase.geodatabaseFeatureTable(withName: $0) }
+                let featureLayers = featureTables.map(AGSFeatureLayer.init)
                 // Add the feature layers to the map.
-                map.operationalLayers.add(parcelLinesFeatureLayer)
-                map.operationalLayers.add(addressPointFeatureLayer)
+                map.operationalLayers.addObjects(from: featureLayers)
+                // Create annotation layers from tables in the geodatabase.
+                let annotationTableNames = ["ParcelLinesAnno_1", "Loudoun_Address_PointsAnno_1"]
+                let annotationTables = annotationTableNames.compactMap { geodatabase.geodatabaseAnnotationTable(withTableName: $0) }
+                let annotationLayers = annotationTables.map(AGSAnnotationLayer.init)
                 // Add the annotation layers to the map.
-                map.operationalLayers.add(parcelLinesAnnotationLayer)
-                map.operationalLayers.add(addressPointsAnnotationLayer)
+                map.operationalLayers.addObjects(from: annotationLayers)
             }
         }
     }

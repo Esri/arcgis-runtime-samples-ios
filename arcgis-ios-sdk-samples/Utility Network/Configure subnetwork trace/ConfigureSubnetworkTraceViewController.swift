@@ -16,27 +16,9 @@ import UIKit
 import ArcGIS
 
 class ConfigureSubnetworkTraceViewController: UITableViewController {
-    // Reference to the switches.
+    // References to the switches.
     @IBOutlet weak var barriersSwitch: UISwitch!
     @IBOutlet weak var containersSwitch: UISwitch!
-    // References to interactable cells.
-    var attributesCell: UITableViewCell!
-    var comparisonCell: UITableViewCell!
-    var valueCell: UITableViewCell!
-    weak var addConditionLabel: UILabel?
-    weak var resetLabel: UILabel?
-    weak var traceLabel: UILabel?
-    // References to labels.
-    var attributesLabel: UILabel?
-    var comparisonLabel: UILabel?
-    var valueLabel: UILabel?
-    @IBOutlet weak var valueButton: UILabel!
-    // References to cells that act as buttons.
-    weak var addConditionCell: UITableViewCell?
-    weak var resetCell: UITableViewCell?
-    weak var traceCell: UITableViewCell?
-    // Reference to the text view.
-    @IBOutlet weak var textView: UITextView!
     // References to the switch actions.
     @IBAction func barriersSwitchAction(_ sender: UISwitch) {
         sourceTier?.traceConfiguration?.includeBarriers = sender.isOn
@@ -44,6 +26,23 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     @IBAction func containersSwitchAction(_ sender: UISwitch) {
         sourceTier?.traceConfiguration?.includeContainers = sender.isOn
     }
+    // References to interactable cells.
+    var attributesCell: UITableViewCell?
+    var comparisonCell: UITableViewCell?
+    var valueCell: UITableViewCell?
+    // References to cells that act as buttons.
+    var addConditionCell: UITableViewCell?
+    var resetCell: UITableViewCell?
+    var traceCell: UITableViewCell?
+    // References to labels.
+    var attributesLabel: UILabel?
+    var comparisonLabel: UILabel?
+    var valueLabel: UILabel?
+    // References to the button labels.
+    var valueButtonLabel: UILabel?
+    var addConditionLabel: UILabel?
+    var resetLabel: UILabel?
+    var traceLabel: UILabel?
     
     // An array of the types of AGSUtilityAttributeComparisonOperators as strings.
     let comparisonsStrings = ["Equal", "NotEqual", "GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", "IncludesTheValues", "DoesNotIncludeTheValues", "IncludesAny", "DoesNotIncludeAny"]
@@ -122,7 +121,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 // Set the trace configuration.
                 self.configuration = self.sourceTier?.traceConfiguration
                 
-                //Set the default expression (if provided).
+                // Set the default expression (if provided).
                 if let expression = self.sourceTier?.traceConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
                     self.initialExpression = expression
                     let indexPath = IndexPath(row: 0, section: 2)
@@ -140,7 +139,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath == IndexPath(row: 0, section: 1) {
+        if cell == attributesCell {
             // Get the network attributes.
             let attributes = utilityNetwork.definition.networkAttributes.filter { !$0.isSystemDefined }
             // Create the attribute labels.
@@ -153,7 +152,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             }
             optionsViewController.title = "Attributes"
             show(optionsViewController, sender: self)
-        } else if indexPath == IndexPath(row: 1, section: 1) {
+        } else if cell == comparisonCell {
             // Prompt comparison operator selection.
             let selectedIndex = selectedComparison.flatMap { comparisons.firstIndex(of: $0) } ?? -1
             let optionsViewController = OptionsTableViewController(labels: comparisonsStrings, selectedIndex: selectedIndex) { (index) in
@@ -162,7 +161,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             }
             optionsViewController.title = "Comparison"
             show(optionsViewController, sender: self)
-        } else if indexPath == IndexPath(row: 2, section: 1) {
+        } else if cell == valueCell {
             if selectedAttribute != nil {
                 if let domain = selectedAttribute?.domain as? AGSCodedValueDomain {
                     // Get the value labels.
@@ -184,7 +183,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     addCustomValue()
                 }
             }
-        } else if indexPath == IndexPath(row: 3, section: 1) {
+        } else if cell == addConditionCell {
             addCondition()
         } else if indexPath == IndexPath(row: numberOfConditions, section: 2) {
             reset()
@@ -316,7 +315,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             guard let valueCell = valueCell else { return }
             // Enable or disable the value button.
             if selectedAttribute == nil {
-//                valueButton.isEnabled = false
+                valueButtonLabel?.isEnabled = false
                 valueCell.isUserInteractionEnabled = false
             } else {
                 if (selectedAttribute?.domain as? AGSCodedValueDomain) != nil {
@@ -326,7 +325,8 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                     // Indicate that an alert will show.
                     valueCell.accessoryType = .none
                 }
-//                valueButton.isEnabled = true
+                valueButtonLabel?.textColor = .systemBlue
+                valueButtonLabel?.isEnabled = true
                 valueCell.isUserInteractionEnabled = true
             }
             // If selections have not been made, disable the buttons
@@ -511,6 +511,8 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 case 2:
                     valueCell = cell
                     valueLabel = cell.detailTextLabel
+                    valueButtonLabel = cell.textLabel
+                    updateButtons()
                 default:
                     break
                 }

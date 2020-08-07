@@ -161,7 +161,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
             }
         })
         // Present the alert.
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     // Move the last of the vertex point of the currently selected polyline to the given map point, by updating the selected feature's geometry and feature table.

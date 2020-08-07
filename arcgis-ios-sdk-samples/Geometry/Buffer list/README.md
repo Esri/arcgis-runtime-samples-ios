@@ -10,11 +10,11 @@ Creating buffers is a core concept in GIS proximity analysis that allows you to 
 
 ## How to use the sample
 
-Tap on the map to add points. Tap the create button to draw buffer(s) around the points (the radius of the buffer is determined by the value of the slider). Toggle on union if you want the result to union (combine) the buffers. Tap the trash button to start over. The red dashed envelope shows the area where you can expect reasonable results for planar buffer operations with the North Central Texas State Plane spatial reference.
+Tap on the map to add points. Tap the create button to draw buffer(s) around the points (the radius of the buffer is determined by the value of the slider). Toggle on union if you want the result to union (combine) the buffers. Tap the trash icon to start over. The red dashed envelope shows the area where you can expect reasonable results for planar buffer operations with the North Central Texas State Plane spatial reference.
 
 ## How it works
 
-1. Use `class AGSGeometryEngine.bufferGeometries(_:distances:unionResults:)` to create a list of `AGSGeometry`.
+1. Use `class AGSGeometryEngine.bufferGeometries(_:distances:unionResults:)` to create a list of `AGSGeometry`s.
     * The parameter `points` are the points to buffer around, `distances` are the buffer radius distances for each point (in the unit of the geometry's spatial reference) and `unionResults` is a boolean for whether the results should be unioned.
 2. Add the resulting polygons (if not unioned) or single polygon (if unioned) to the map's `AGSGraphicsOverlay` as an `AGSGraphic`.
 

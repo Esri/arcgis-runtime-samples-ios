@@ -181,12 +181,12 @@ extension BufferListViewController: AGSGeoViewTouchDelegate {
             }
             // Update the buffer radius with the text value.
             self.bufferRadius.value = radius.doubleValue
-            // The spatial reference in this sample use US feet as unit.
+            // The spatial reference in this sample uses US feet as a unit.
             let radiusInFeet = self.bufferRadius.converted(to: .feet).value
             // Create and add graphic symbolizing the tap point.
             let pointGraphic = AGSGraphic(geometry: mapPoint, symbol: nil)
             self.tappedLocationsGraphicsOverlay.graphics.add(pointGraphic)
-            // Keep track of tapped points and their radius.
+            // Keep track of tapped points and their radii.
             self.tappedPointsAndRadius.append((point: mapPoint, radius: radiusInFeet))
             self.setStatus(message: "Buffer center point added.")
         }

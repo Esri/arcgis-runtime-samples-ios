@@ -89,19 +89,11 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                     self.showEditableAttributes(selectedFeature: selectedFeature)
                 case .polyline:
                     let polyline = selectedFeature.geometry as! AGSPolyline
-                    let polylineArray = polyline.parts.array()
                     // If the selected feature is a polyline with any part containing more than one segment (i.e. a curve), present an alert.
-                    for part in polylineArray {
-                        if part.pointCount > 2 {
-                            // Set the value to nil.
-                            self.selectedFeature = nil
-                            // Present the alert.
-                            self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
-                            return
-                        }
+                    if polyline.parts.array().contains(where: { $0.pointCount > 2 }) {
+                        self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
+                        return
                     }
-                    // If the selected feature is a valid polyline, set the value to true.
-                    self.selectedFeatureIsPolyline = true
                 default:
                     return
                 }

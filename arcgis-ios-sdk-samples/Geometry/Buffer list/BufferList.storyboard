@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-UP-Trk" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaP-1i-B9b" userLabel="Bottom Toolbar">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
@@ -32,13 +32,13 @@
                                         </switch>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2BJ-dE-VHh"/>
-                                    <barButtonItem title="Create" id="X2w-wl-7Ee">
+                                    <barButtonItem enabled="NO" title="Create" id="X2w-wl-7Ee">
                                         <connections>
                                             <action selector="createButtonTapped:" destination="R7Z-SU-KiT" id="S2g-m3-mcG"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="5RJ-Za-3w8"/>
-                                    <barButtonItem systemItem="trash" id="LAL-38-1WG">
+                                    <barButtonItem enabled="NO" systemItem="trash" id="LAL-38-1WG">
                                         <connections>
                                             <action selector="clearButtonTapped:" destination="R7Z-SU-KiT" id="zeN-TX-sas"/>
                                         </connections>
@@ -64,68 +64,27 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="ZDJ-Yf-JKf"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oaw-YA-AUW" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buffer radius" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42t-4T-kvx">
-                                        <rect key="frame" x="8" y="11.5" width="98.5" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="1" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="JxT-H6-Oec">
-                                        <rect key="frame" x="112.5" y="7" width="189" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="S9d-8L-RTl"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="distanceSliderValueChanged:" destination="R7Z-SU-KiT" eventType="valueChanged" id="lsk-ez-p5T"/>
-                                        </connections>
-                                    </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sly-85-UaL">
-                                        <rect key="frame" x="307.5" y="11.5" width="28.5" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="sly-85-UaL" secondAttribute="trailing" id="EL0-Ju-WaW"/>
-                                    <constraint firstItem="sly-85-UaL" firstAttribute="centerY" secondItem="42t-4T-kvx" secondAttribute="centerY" id="Owv-i9-aTl"/>
-                                    <constraint firstAttribute="height" constant="44" id="Qit-6m-TSe"/>
-                                    <constraint firstItem="42t-4T-kvx" firstAttribute="leading" secondItem="Oaw-YA-AUW" secondAttribute="leadingMargin" id="cuQ-FL-R3Y"/>
-                                    <constraint firstItem="JxT-H6-Oec" firstAttribute="centerY" secondItem="42t-4T-kvx" secondAttribute="centerY" id="joZ-Jo-Gh3"/>
-                                    <constraint firstItem="JxT-H6-Oec" firstAttribute="centerY" secondItem="Oaw-YA-AUW" secondAttribute="centerY" id="kry-o6-G8T"/>
-                                    <constraint firstItem="sly-85-UaL" firstAttribute="leading" secondItem="JxT-H6-Oec" secondAttribute="trailing" constant="8" symbolic="YES" id="lyg-zC-W5I"/>
-                                    <constraint firstItem="JxT-H6-Oec" firstAttribute="centerX" secondItem="Oaw-YA-AUW" secondAttribute="centerX" id="oMe-Ny-Dnz"/>
-                                    <constraint firstItem="JxT-H6-Oec" firstAttribute="leading" secondItem="42t-4T-kvx" secondAttribute="trailing" constant="8" symbolic="YES" id="suy-0e-erO"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="8yC-UP-Trk" firstAttribute="top" secondItem="6NZ-cd-jMU" secondAttribute="top" id="1Hk-WX-dXy"/>
                             <constraint firstAttribute="trailing" secondItem="OaP-1i-B9b" secondAttribute="trailing" id="B9G-pV-OtP"/>
                             <constraint firstAttribute="trailing" secondItem="qpw-93-Elf" secondAttribute="trailing" id="CuP-zC-Zou"/>
-                            <constraint firstItem="Oaw-YA-AUW" firstAttribute="leading" secondItem="YQK-RR-w9r" secondAttribute="leading" id="KCD-9X-D30"/>
                             <constraint firstItem="6NZ-cd-jMU" firstAttribute="bottom" secondItem="OaP-1i-B9b" secondAttribute="bottom" id="LTH-iv-N5f"/>
                             <constraint firstItem="8yC-UP-Trk" firstAttribute="trailing" secondItem="YQK-RR-w9r" secondAttribute="trailing" id="Mkj-N5-96n"/>
                             <constraint firstItem="qpw-93-Elf" firstAttribute="leading" secondItem="YQK-RR-w9r" secondAttribute="leading" id="Oxv-Wq-kyP"/>
                             <constraint firstItem="OaP-1i-B9b" firstAttribute="leading" secondItem="YQK-RR-w9r" secondAttribute="leading" id="Yd2-Pl-HiG"/>
-                            <constraint firstAttribute="trailing" secondItem="Oaw-YA-AUW" secondAttribute="trailing" id="dpy-Ml-PRL"/>
+                            <constraint firstItem="OaP-1i-B9b" firstAttribute="top" secondItem="8yC-UP-Trk" secondAttribute="bottom" id="kjX-ks-TOU"/>
                             <constraint firstItem="8yC-UP-Trk" firstAttribute="leading" secondItem="YQK-RR-w9r" secondAttribute="leading" id="lwR-km-lOB"/>
-                            <constraint firstItem="Oaw-YA-AUW" firstAttribute="top" secondItem="8yC-UP-Trk" secondAttribute="bottom" id="ouQ-EM-oIs"/>
                             <constraint firstItem="qpw-93-Elf" firstAttribute="top" secondItem="6NZ-cd-jMU" secondAttribute="top" id="rze-nW-wJ6"/>
-                            <constraint firstItem="OaP-1i-B9b" firstAttribute="top" secondItem="Oaw-YA-AUW" secondAttribute="bottom" id="wzo-TU-zYQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6NZ-cd-jMU"/>
                     </view>
                     <connections>
-                        <outlet property="distanceSlider" destination="JxT-H6-Oec" id="L2l-bE-qfJ"/>
+                        <outlet property="clearBarButtonItem" destination="LAL-38-1WG" id="t0v-eW-mfh"/>
+                        <outlet property="createBarButtonItem" destination="X2w-wl-7Ee" id="3GW-pU-aTy"/>
                         <outlet property="isUnionSwitch" destination="4o0-qb-u2w" id="6Ow-sG-F0Z"/>
                         <outlet property="mapView" destination="8yC-UP-Trk" id="mS5-l6-jt1"/>
-                        <outlet property="radiusLabel" destination="sly-85-UaL" id="9Qt-Xi-PJN"/>
                         <outlet property="statusLabel" destination="WSw-rq-kST" id="tlM-Ar-llt"/>
                     </connections>
                 </viewController>

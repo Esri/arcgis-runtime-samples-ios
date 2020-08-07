@@ -18,18 +18,14 @@ import ArcGIS
 class BufferListViewController: UIViewController {
     // MARK: Storyboard views
     
+    /// The create button.
+    @IBOutlet weak var createBarButtonItem: UIBarButtonItem!
+    /// The clear button.
+    @IBOutlet weak var clearBarButtonItem: UIBarButtonItem!
     /// A label to display status message.
     @IBOutlet weak var statusLabel: UILabel!
-    /// A label to display current radius slider distance value.
-    @IBOutlet weak var radiusLabel: UILabel! {
-        didSet {
-            distanceSliderValueChanged(distanceSlider)
-        }
-    }
     /// A switch to control either to union results or not for buffer operation.
     @IBOutlet weak var isUnionSwitch: UISwitch!
-    /// A slider to adjust the radius distance of a buffer.
-    @IBOutlet weak var distanceSlider: UISlider!
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
@@ -80,19 +76,18 @@ class BufferListViewController: UIViewController {
         return overlay
     }()
     /// An array of tapped points and buffer radius (in US feet) tuple.
-    var tappedPointsAndRadius = [(point: AGSPoint, radius: Double)]()
-    
-    /// The radius of the buffer.
-    var bufferRadius: Measurement<UnitLength> = Measurement(value: 100, unit: .miles) {
+    var tappedPointsAndRadius = [(point: AGSPoint, radius: Double)]() {
         didSet {
-            radiusLabel.text = distanceFormatter.string(from: bufferRadius)
+            createBarButtonItem.isEnabled = !tappedPointsAndRadius.isEmpty
+            clearBarButtonItem.isEnabled = !tappedPointsAndRadius.isEmpty
         }
     }
+    
+    /// The radius of the buffer.
+    var bufferRadius: Measurement<UnitLength> = Measurement(value: 0, unit: .miles)
     /// A formatter for the output distance string.
     let distanceFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
-        formatter.unitStyle = .short
-        formatter.unitOptions = .naturalScale
         formatter.numberFormatter.maximumFractionDigits = 0
         return formatter
     }()
@@ -132,11 +127,6 @@ class BufferListViewController: UIViewController {
         setStatus(message: "Buffers removed. Tap on the map to add buffers.")
     }
     
-    @IBAction func distanceSliderValueChanged(_ sender: UISlider) {
-        // Update the buffer radius with the slider value.
-        bufferRadius.value = Double(sender.value)
-    }
-    
     // MARK: UI
     
     func setStatus(message: String) {
@@ -170,15 +160,38 @@ extension BufferListViewController: AGSGeoViewTouchDelegate {
             setStatus(message: "Tap within the boundary to add buffer.")
             return
         }
-        // The spatial reference in this sample use US feet as unit.
-        let radius = bufferRadius.converted(to: .feet).value
-        // Ensure that the buffer radius is a positive value.
-        guard radius > 0 else { return }
-        // Create and add graphic symbolizing the tap point.
-        let pointGraphic = AGSGraphic(geometry: mapPoint, symbol: nil)
-        tapLocationsGraphicsOverlay.graphics.add(pointGraphic)
-        // Keep track of tapped points and their radius.
-        tappedPointsAndRadius.append((point: mapPoint, radius: radius))
-        setStatus(message: "Buffer center point added.")
+        // Use an alert to get radius input from user.
+        let alert = UIAlertController(title: "Provide a buffer radius", message: "Between 0 and 300 \(self.distanceFormatter.string(from: self.bufferRadius.unit))", preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.keyboardType = .numberPad
+            textField.placeholder = "100"
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(cancelAction)
+        let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self, textField = alert.textFields?.first] _ in
+            guard let self = self else { return }
+            // Ensure the buffer radius is valid, and is a positive value that isn't too large.
+            guard let text = textField?.text,
+                !text.isEmpty,
+                let radius = self.distanceFormatter.numberFormatter.number(from: text),
+                radius.doubleValue > 0,
+                radius.doubleValue <= 300 else {
+                    self.setStatus(message: "Tap on the map to add buffers.")
+                    return
+            }
+            // Update the buffer radius with the text value.
+            self.bufferRadius.value = radius.doubleValue
+            // The spatial reference in this sample use US feet as unit.
+            let radiusInFeet = self.bufferRadius.converted(to: .feet).value
+            // Create and add graphic symbolizing the tap point.
+            let pointGraphic = AGSGraphic(geometry: mapPoint, symbol: nil)
+            self.tapLocationsGraphicsOverlay.graphics.add(pointGraphic)
+            // Keep track of tapped points and their radius.
+            self.tappedPointsAndRadius.append((point: mapPoint, radius: radiusInFeet))
+            self.setStatus(message: "Buffer center point added.")
+        }
+        alert.addAction(doneAction)
+        alert.preferredAction = doneAction
+        present(alert, animated: true)
     }
 }

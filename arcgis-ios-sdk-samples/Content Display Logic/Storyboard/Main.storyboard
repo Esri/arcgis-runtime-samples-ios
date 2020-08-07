@@ -15,6 +15,7 @@
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" largeTitles="YES" id="GpO-dt-EG2">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="onD-yF-9Eu" kind="relationship" relationship="rootViewController" id="21H-h0-M7R"/>
@@ -29,7 +30,7 @@
             <objects>
                 <viewController id="HRz-Eg-7ly" customClass="AppInfoViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AWt-rk-bdu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54t-nf-ZK2">
@@ -265,7 +266,7 @@
             <objects>
                 <viewController title="Detail" id="xTO-iT-Uqg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OWg-y6-Kjp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a sample from the list" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99s-uK-gYc">
@@ -332,6 +333,7 @@
                                 <segment title="Info"/>
                                 <segment title="Code"/>
                             </segments>
+                            <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <connections>
                                 <action selector="valueChanged:" destination="aBz-1T-a42" eventType="valueChanged" id="F3E-aq-YII"/>
                             </connections>

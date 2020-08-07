@@ -20,8 +20,4 @@ import UIKit
 
 class PreplannedMapAreaTableViewCell: UITableViewCell {
     @IBOutlet private(set) weak var progressView: UIProgressView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 }

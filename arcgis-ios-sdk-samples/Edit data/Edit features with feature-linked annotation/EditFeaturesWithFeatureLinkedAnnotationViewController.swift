@@ -30,7 +30,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     
     func loadGeodatabase() {
         // Load geodatabase from shared resources.
-        let geodatabaseURL = Bundle.main.url(forResource: "loudoun_anno", withExtension: ".geodatabase")!
+        let geodatabaseURL = Bundle.main.url(forResource: "loudoun_anno", withExtension: "geodatabase")!
         let geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
         geodatabase.load { (error: Error?) in
             if let error = error {

@@ -135,7 +135,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         }
     }
     
-    // MARK: UITableViewDelegate
+    // MARK: UITableViewDelegate for the options
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -144,8 +144,9 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             let attributes = utilityNetwork.definition.networkAttributes.filter { !$0.isSystemDefined }
             // Create the attribute labels.
             let attributeLabels = attributes.map { $0.name }
-            // Prompt attribute selection.
+            // Get the index of the last selection.
             let selectedIndex = selectedAttribute.flatMap { attributes.firstIndex(of: $0) } ?? -1
+            // Prompt attribute selection.
             let optionsViewController = OptionsTableViewController(labels: attributeLabels, selectedIndex: selectedIndex) { (index) in
                 self.selectedAttribute = attributes[index]
                 self.attributesLabel?.text = self.selectedAttribute?.name
@@ -153,8 +154,9 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             optionsViewController.title = "Attributes"
             show(optionsViewController, sender: self)
         } else if cell == comparisonCell {
-            // Prompt comparison operator selection.
+            // Get the index of the last selection.
             let selectedIndex = selectedComparison.flatMap { comparisons.firstIndex(of: $0) } ?? -1
+            // Prompt comparison operator selection.
             let optionsViewController = OptionsTableViewController(labels: comparisonsStrings, selectedIndex: selectedIndex) { (index) in
                 self.selectedComparison = self.comparisons[index]
                 self.comparisonLabel?.text = self.comparisonsStrings[index]
@@ -170,8 +172,10 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                             valueLabels.append(codedValue.name)
                         }
                     }
-                    // Prompt value selection.
+                    #warning("Line 177 fails after adding a condition with the attribute 'Phases current' and trying to select a new value.")
+                    // Get the index of the last selection.
                     let selectedIndex = selectedValue.flatMap { domain.codedValues.firstIndex(of: ($0 as! AGSCodedValue)) } ?? -1
+                    // Prompt value selection.
                     let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: selectedIndex) { (index) in
                         self.valueLabel?.text = self.valueLabels[index]
                         self.selectedValue = domain.codedValues[index]
@@ -184,6 +188,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
                 }
             }
         } else if cell == addConditionCell {
+            // Add the condition with the selected attributes.
             addCondition()
         } else if indexPath == IndexPath(row: numberOfConditions, section: 2) {
             reset()
@@ -197,10 +202,12 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         let alert = UIAlertController(title: "Create a value", message: "This attribute has no values. Please create one.", preferredStyle: .alert)
         // Add a "done" button and obtain user input.
         let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self] _ in
-            let textfield = alert.textFields![0]
             guard let self = self else { return }
+            let textfield = alert.textFields![0]
+            // Display the custom value on the value label.
             self.valueLabel?.text = textfield.text
             self.tableView.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .none)
+            // Set the user input to be the selected value.
             self.selectedValue = textfield.text
         }
         alert.addAction(doneAction)
@@ -228,6 +235,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     }
     
     func addCondition() {
+        #warning("This function may cause a custom value to be blue instead of black.")
         if configuration == nil {
             configuration = AGSUtilityTraceConfiguration()
         }
@@ -252,6 +260,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             // Update the list of barrier conditions.
             configuration?.traversability?.barriers = expression
             let expressionString = expressionToString(expression: expression!)
+            // Increase the number of conditions.
             numberOfConditions += 1
             let newIndexPath = IndexPath(row: numberOfConditions - 1, section: 2)
             // Update the table
@@ -271,12 +280,12 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         let traceConfiguration = configuration
         traceConfiguration?.traversability?.barriers = initialExpression
         // Reset the added rows.
-        
         for _ in 1...numberOfConditions - 1 {
             numberOfConditions -= 1
             let indexPath = IndexPath(row: 1, section: 2)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+        // Reset the selections.
         selectedAttribute = nil
         selectedComparison = nil
         selectedValue = nil
@@ -312,7 +321,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     
     func updateButtons() {
         if selectedAttribute == nil || selectedComparison == nil || selectedValue == nil {
-            guard let valueCell = valueCell else { return }
+            guard let valueCell = self.valueCell else { return }
             // Enable or disable the value button.
             if selectedAttribute == nil {
                 valueButtonLabel?.isEnabled = false
@@ -373,7 +382,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             
         case let orCondition as AGSUtilityTraceOrCondition:
             return """
-            (\(expressionToString(expression: orCondition.leftExpression)!)) AND
+            (\(expressionToString(expression: orCondition.leftExpression)!)) OR
             (\(expressionToString(expression: orCondition.rightExpression)!))
             """
         default:
@@ -479,7 +488,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
         switch Section.allCases[indexPath.section] {
         case .switches:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath)
@@ -490,7 +498,7 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             case 1:
                 cell.accessoryView = containersSwitch
             default:
-                print("idk what to do here hehe")
+                return cell
             }
             return cell
         case .newCondition:
@@ -533,7 +541,6 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
             }
             return cell
         }
-        return cell
     }
     
     override func viewDidLoad() {
@@ -550,7 +557,9 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
     }
 }
 
+// MARK: UITextFieldDelegate
 extension ConfigureSubnetworkTraceViewController: UITextFieldDelegate {
+    // Ensure that the text field will only accept numbers.
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         let validCharacters = ".-0123456789"

@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class FLSelectionViewController: UIViewController {
+class FeatureLayerSelectionViewController: UIViewController {
     // MARK: Storyboard views
     
     /// A label to show the selection status.
@@ -62,7 +62,7 @@ class FLSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["FLSelectionViewController"]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["FeatureLayerSelectionViewController"]
         // Load the feature layer.
         featureLayer.load { [weak self] (error) in
             if let error = error {
@@ -76,7 +76,7 @@ class FLSelectionViewController: UIViewController {
 
 // MARK: - AGSGeoViewTouchDelegate
 
-extension FLSelectionViewController: AGSGeoViewTouchDelegate {
+extension FeatureLayerSelectionViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // Identify features at the tapped location.
         mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12.0, returnPopupsOnly: false, maximumResults: 10) { [weak self] result in

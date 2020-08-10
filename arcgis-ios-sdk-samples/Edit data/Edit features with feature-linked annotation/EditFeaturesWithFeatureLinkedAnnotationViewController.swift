@@ -97,6 +97,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                         self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
                         return
                     }
+                    self.selectedFeatureIsPolyline = true
                 default:
                     return
                 }

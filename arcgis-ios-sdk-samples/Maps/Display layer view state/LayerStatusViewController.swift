@@ -16,14 +16,12 @@ import UIKit
 import ArcGIS
 
 class LayerStatusViewController: UIViewController {
-    // MARK: Instance properties
+    // MARK: Instance properties and methods
     
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: .topographic())
-            mapView.map?.operationalLayers.add(featureLayer)
-            mapView.map?.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 2e7)
+            mapView.map = makeMap(featureLayer: featureLayer)
             mapView.layerViewStateChangedHandler = { [weak self] layer, state in
                 guard let self = self else { return }
                 // Only check the view state of the feature layer.
@@ -37,8 +35,10 @@ class LayerStatusViewController: UIViewController {
             }
         }
     }
+    
     /// The label to display layer view status.
     @IBOutlet weak var statusLabel: UILabel!
+    
     /// The feature layer loaded from a portal item.
     let featureLayer: AGSFeatureLayer = {
         let portalItem = AGSPortalItem(url: URL(string: "https://runtime.maps.arcgis.com/home/item.html?id=b8f4033069f141729ffb298b7418b653")!)!
@@ -47,6 +47,17 @@ class LayerStatusViewController: UIViewController {
         featureLayer.maxScale = 6e6
         return featureLayer
     }()
+    
+    /// Create a map with an `AGSFeatureLayer` added to its operational layers.
+    ///
+    /// - Parameter featureLayer: An `AGSFeatureLayer` object.
+    /// - Returns: An `AGSMap` object.
+    func makeMap(featureLayer: AGSFeatureLayer) -> AGSMap {
+        let map = AGSMap(basemap: .topographic())
+        map.operationalLayers.add(featureLayer)
+        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 2e7)
+        return map
+    }
     
     // MARK: UI
     

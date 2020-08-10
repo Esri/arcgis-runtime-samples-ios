@@ -34,17 +34,11 @@ class RealisticLightingAndShadowsViewController: UIViewController {
     
     // MARK: Instance properties
     
-    /// A DateComponents struct to encapsulate the minute value from the slider.
-    var dateComponents = DateComponents()
-    /// The Date object of today.
-    let today = Calendar.current.startOfDay(for: Date())
     /// A date formatter to format date time output.
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = .current
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
-        formatter.timeZone = .current
         return formatter
     }()
     
@@ -71,8 +65,10 @@ class RealisticLightingAndShadowsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
-        dateComponents.minute = Int(sender.value)
-        let date = Calendar.current.date(byAdding: dateComponents, to: today)!
+        // A DateComponents struct to encapsulate the minute value from the slider.
+        let dateComponents = DateComponents(minute: Int(sender.value))
+        let startOfToday = Calendar.current.startOfDay(for: Date())
+        let date = Calendar.current.date(byAdding: dateComponents, to: startOfToday)!
         dateTimeLabel.text = dateFormatter.string(from: date)
         sceneView.sunTime = date
     }
@@ -83,18 +79,18 @@ class RealisticLightingAndShadowsViewController: UIViewController {
             message: nil,
             preferredStyle: .actionSheet
         )
-        let modes: [(name: String, mode: AGSLightingMode)] = [
-            ("Light and shadows", .lightAndShadows),
-            ("Light only", .light),
-            ("No light", .noLight)
+        let modes: KeyValuePairs<String, AGSLightingMode> = [
+            "Light and shadows": .lightAndShadows,
+            "Light only": .light,
+            "No light": .noLight
         ]
-        modes.forEach { (name, mode) in
+        modes.forEach { name, lightingMode in
             let action = UIAlertAction(title: name, style: .default) { _ in
-                self.sceneView.sunLighting = mode
+                self.sceneView.sunLighting = lightingMode
             }
             alertController.addAction(action)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
         alertController.popoverPresentationController?.barButtonItem = button
         present(alertController, animated: true)
@@ -105,7 +101,7 @@ class RealisticLightingAndShadowsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["RealisticLightingAndShadowsViewController"]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["RealisticLightingAndShadowsViewController"]
         // Initialize the date time.
         sliderValueChanged(minuteSlider)
     }

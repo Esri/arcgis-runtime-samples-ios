@@ -62,7 +62,7 @@ class RealisticLightingAndShadowsViewController: UIViewController {
         return scene
     }
     
-    // MARK: - Actions
+    // MARK: Actions
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         // A DateComponents struct to encapsulate the minute value from the slider.

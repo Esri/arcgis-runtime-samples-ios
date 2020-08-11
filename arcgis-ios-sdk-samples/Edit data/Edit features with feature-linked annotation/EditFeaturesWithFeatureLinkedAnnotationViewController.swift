@@ -123,7 +123,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     }
     
     // Move the currently selected point feature to the given map point, by updating the selected feature's geometry and feature table.
-    func movePoint(mapPoint: AGSPoint) {
+    func moveSelectedFeature(to: AGSPoint) {
         guard let selectedFeature = selectedFeature else { return }
         // Create an alert to confirm that the user wants to update the geometry.
         let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
@@ -134,7 +134,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         })
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
             // Set the selected feature's geometry to the new map point.
-            selectedFeature.geometry = mapPoint
+            selectedFeature.geometry = to
             // Update the selected feature's feature table.
             selectedFeature.featureTable?.update(selectedFeature) { (error: Error?) in
                 if let error = error {
@@ -212,7 +212,7 @@ extension EditFeaturesWithFeatureLinkedAnnotationViewController: AGSGeoViewTouch
                 if selectedFeature.geometry?.geometryType == .polyline {
                     moveLastVertexOfSelectedFeature(to: mapPoint)
                 } else {
-                    movePoint(mapPoint: mapPoint)
+                    moveSelectedFeature(to: mapPoint)
                 }
             } else {
                 // If a feature hasn't been selected.

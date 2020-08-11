@@ -65,7 +65,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         } else {
             // Move the feature.
             if selectedFeatureIsPolyline {
-                movePolylineVertex(mapPoint: mapPoint)
+                moveLastVertexOfSelectedFeature(to: mapPoint)
             } else {
                 movePoint(mapPoint: mapPoint)
             }
@@ -169,7 +169,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
     }
     
     // Move the last of the vertex point of the currently selected polyline to the given map point, by updating the selected feature's geometry and feature table.
-    func movePolylineVertex(mapPoint: AGSPoint) {
+    func moveLastVertexOfSelectedFeature(to: AGSPoint) {
         guard let selectedFeature = self.selectedFeature else { return }
         // Create an alert to confirm that the user wants to update the geometry.
         let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
@@ -182,13 +182,13 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
             // Get the selected feature's geometry as a polyline nearest to the map point.
             guard let polyline = selectedFeature.geometry as? AGSPolyline,
-                let selectedMapPoint = AGSGeometryEngine.projectGeometry(mapPoint, to: polyline.spatialReference!) as? AGSPoint,
+                let selectedMapPoint = AGSGeometryEngine.projectGeometry(to, to: polyline.spatialReference!) as? AGSPoint,
                 let nearestVertex = AGSGeometryEngine.nearestVertex(in: polyline, to: selectedMapPoint) else { return }
             let polylineBuilder = AGSPolylineBuilder(polyline: polyline)
             // Get the part of the polyline nearest to the map point.
             polylineBuilder.parts[nearestVertex.partIndex].removePoint(at: nearestVertex.partIndex)
             // Add the map point as the new point on the polyline.
-            polylineBuilder.parts[nearestVertex.partIndex].addPoint(AGSGeometryEngine.projectGeometry(mapPoint, to: polylineBuilder.parts[nearestVertex.partIndex].spatialReference!) as! AGSPoint)
+            polylineBuilder.parts[nearestVertex.partIndex].addPoint(AGSGeometryEngine.projectGeometry(to, to: polylineBuilder.parts[nearestVertex.partIndex].spatialReference!) as! AGSPoint)
             // Set the selected feature's geometry to the new polyline.
             selectedFeature.geometry = polylineBuilder.toGeometry()
             // Update the selected feature's feature table.

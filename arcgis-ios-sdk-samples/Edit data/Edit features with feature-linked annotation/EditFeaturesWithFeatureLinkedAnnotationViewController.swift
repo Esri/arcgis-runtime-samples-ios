@@ -95,15 +95,19 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     func showEditableAttributes(selectedFeature: AGSFeature) {
         // Create an alert controller and customize the title and message.
         let alert = UIAlertController(title: "Edit feature attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
-        // Add text fields to prompt user input.
-        alert.addTextField()
-        alert.addTextField()
-        // Populate the text fields with the current values.
-        alert.textFields?[0].text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
-        alert.textFields?[1].text = selectedFeature.attributes["ST_STR_NAM"] as? String
-        // Prompt the appropriate keyboard types.
-        alert.textFields?[0].keyboardType = .numberPad
-        alert.textFields?[1].keyboardType = .default
+        // Add a text field to prompt the user to input the street address.
+        alert.addTextField { (textField) in
+            // Prompt a number pad for the address.
+            textField.keyboardType = .numberPad
+            // Populate the text fields with the current value.
+            textField.text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
+        }
+        // Add a text field to prompt the user to input the street name.
+        alert.addTextField { (textField) in
+            // Prompt a keyboard to enter the street name.
+            textField.keyboardType = .default
+            textField.text = selectedFeature.attributes["ST_STR_NAM"] as? String
+        }
         // Add a "Cancel" option and clear the selection if cancel is selected.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.clearSelection()

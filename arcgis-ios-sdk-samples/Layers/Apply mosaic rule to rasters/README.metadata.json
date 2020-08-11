@@ -1,0 +1,29 @@
+{
+    "category": "Layers",
+    "description": "Apply mosaic rule to a mosaic dataset of rasters.",
+    "ignore": false,
+    "images": [
+        "apply-mosaic-rule-to-rasters.png"
+    ],
+    "keywords": [
+        "image service",
+        "mosaic method",
+        "mosaic rule",
+        "raster",
+        "AGSImageServiceRaster",
+        "AGSMosaicMethod",
+        "AGSMosaicOperation",
+        "AGSMosaicRule"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSImageServiceRaster",
+        "AGSMosaicMethod",
+        "AGSMosaicOperation",
+        "AGSMosaicRule"
+    ],
+    "snippets": [
+        "ApplyMosaicRuleToRastersViewController.swift"
+    ],
+    "title": "Apply mosaic rule to rasters"
+}

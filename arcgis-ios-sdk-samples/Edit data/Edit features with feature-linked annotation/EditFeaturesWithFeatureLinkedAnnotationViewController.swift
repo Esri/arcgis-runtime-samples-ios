@@ -55,12 +55,12 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         }
     }
     
-    func selectFeature(screenPoint: CGPoint) {
+    func selectFeature(at: CGPoint) {
         // Clear any previously selected features.
         clearSelection()
         
         // Identify across all layers.
-        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10.0, returnPopupsOnly: false) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
+        mapView.identifyLayers(atScreenPoint: at, tolerance: 10.0, returnPopupsOnly: false) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
             if let error = error {
                 self.clearSelection()
                 self.presentAlert(error: error)
@@ -207,11 +207,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
 extension EditFeaturesWithFeatureLinkedAnnotationViewController: AGSGeoViewTouchDelegate {
     // Select the nearest feature or move the point or polyline vertex to the given screen point.
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // If a feature hasn't been selected.
-//        if selectedFeature == nil {
-//            selectFeature(screenPoint: screenPoint)
-//        } else {
-            // Move the feature.
+        // If a feature has been selected, determine what the type of geometry and move it accordingly.
             if let selectedFeature = selectedFeature {
                 if selectedFeature.geometry?.geometryType == .polyline {
                     moveLastVertexOfSelectedFeature(to: mapPoint)
@@ -219,7 +215,8 @@ extension EditFeaturesWithFeatureLinkedAnnotationViewController: AGSGeoViewTouch
                     movePoint(mapPoint: mapPoint)
                 }
             } else {
-                selectFeature(screenPoint: screenPoint)
+                // If a feature hasn't been selected.
+                selectFeature(at: screenPoint)
             }
 //        }
     }

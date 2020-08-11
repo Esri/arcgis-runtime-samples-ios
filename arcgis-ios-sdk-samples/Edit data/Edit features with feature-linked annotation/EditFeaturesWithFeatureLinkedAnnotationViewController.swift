@@ -97,31 +97,49 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     func showEditableAttributes(selectedFeature: AGSFeature) {
         // Create an alert controller and customize the title and message.
         let alert = UIAlertController(title: "Edit feature attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
-        // Add a text field to prompt the user to input the street address.
-        alert.addTextField { (textField) in
-            // Prompt a number pad for the address.
-            textField.keyboardType = .numberPad
-            // Populate the text fields with the current value.
-            textField.text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
-        }
-        // Add a text field to prompt the user to input the street name.
-        alert.addTextField { (textField) in
-            // Prompt a keyboard to enter the street name.
-            textField.keyboardType = .default
-            textField.text = selectedFeature.attributes["ST_STR_NAM"] as? String
-        }
-        // Add a "Cancel" option and clear the selection if cancel is selected.
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            self.clearSelection()
-        })
         // Add a "Done" option to complete the editing process and close the alert.
-        alert.addAction(UIAlertAction(title: "Done", style: .default) { _ in
+        let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
             let addressTextField = alert.textFields?[0]
             let streetTextField = alert.textFields?[1]
             // Set the new values for the attributes and update the selected feature.
             selectedFeature.attributes["AD_ADDRESS"] = Int((addressTextField?.text)!)
             selectedFeature.attributes["ST_STR_NAM"] = streetTextField?.text
             selectedFeature.featureTable?.update(selectedFeature)
+        }
+        alert.addAction(doneAction)
+        // Add a text field to prompt the user to input the street address.
+        alert.addTextField { (textField) in
+            // Prompt a number pad for the address.
+            textField.keyboardType = .numberPad
+            // Populate the text fields with the current value.
+            textField.text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
+            // Add an observer to ensure the user does not input an empty string.
+            _ = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
+                // Get the character count of non-whitespace characters.
+                let textIsNotEmpty = !(textField.text?.isEmpty)!
+                
+                // Enable the done button if the textfield is not empty.
+                doneAction.isEnabled = textIsNotEmpty
+            })
+        }
+        // Add a text field to prompt the user to input the street name.
+        alert.addTextField { (textField) in
+            // Prompt a keyboard to enter the street name.
+            textField.keyboardType = .default
+            textField.text = selectedFeature.attributes["ST_STR_NAM"] as? String
+            // Add an observer to ensure the user does not input an empty string.
+            _ = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
+                // Get the character count of non-whitespace characters.
+                let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                let textIsNotEmpty = textCount > 0
+                
+                // Enable the done button if the textfield is not empty.
+                doneAction.isEnabled = textIsNotEmpty
+            })
+        }
+        // Add a "Cancel" option and clear the selection if cancel is selected.
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.clearSelection()
         })
         // Present the alert.
         present(alert, animated: true)

@@ -122,7 +122,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     }
     
     // Move the currently selected point feature to the given map point, by updating the selected feature's geometry and feature table.
-    func moveSelectedFeature(to: AGSPoint) {
+    func moveSelectedFeature(to mapPoint: AGSPoint) {
         guard let selectedFeature = selectedFeature else { return }
         // Create an alert to confirm that the user wants to update the geometry.
         let alert = UIAlertController(title: "Confirm update", message: "Are you sure you want to move the selected feature?", preferredStyle: .alert)
@@ -132,9 +132,10 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         })
         alert.addAction(UIAlertAction(title: "Move", style: .default) { _ in
             // Set the selected feature's geometry to the new map point.
-            selectedFeature.geometry = to
+            selectedFeature.geometry = mapPoint
             // Update the selected feature's feature table.
-            selectedFeature.featureTable?.update(selectedFeature) { (error: Error?) in
+            selectedFeature.featureTable?.update(selectedFeature) { [weak self] (error: Error?) in
+                guard let self = self else { return }
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {
@@ -169,7 +170,8 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             // Set the selected feature's geometry to the new polyline.
             selectedFeature.geometry = polylineBuilder.toGeometry()
             // Update the selected feature's feature table.
-            selectedFeature.featureTable?.update(selectedFeature) { (error: Error?) in
+            selectedFeature.featureTable?.update(selectedFeature) { [weak self] (error: Error?) in
+                guard let self = self else { return }
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {

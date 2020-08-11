@@ -29,6 +29,38 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
     /// The image service raster to demo mosaic rules.
     var imageServiceRaster: AGSImageServiceRaster!
     
+    let mosaicRulePresets: KeyValuePairs<String, AGSMosaicRule> = {
+        // A default mosaic rule object, with mosaic method as none.
+        let noneRule = AGSMosaicRule()
+        noneRule.mosaicMethod = .none
+        
+        // A mosaic rule object with northwest method.
+        let northWestRule = AGSMosaicRule()
+        northWestRule.mosaicMethod = .northwest
+        northWestRule.mosaicOperation = .first
+        
+        // A mosaic rule object with center method and blend operation.
+        let centerRule = AGSMosaicRule()
+        centerRule.mosaicMethod = .center
+        centerRule.mosaicOperation = .blend
+        
+        // A mosaic rule object with byAttribute method and sort on "OBJECTID" field of the service.
+        let byAttributeRule = AGSMosaicRule()
+        byAttributeRule.mosaicMethod = .attribute
+        byAttributeRule.sortField = "OBJECTID"
+        
+        // A mosaic rule object with lockRaster method and locks 3 image rasters.
+        let lockRasterRule = AGSMosaicRule()
+        lockRasterRule.mosaicMethod = .lockRaster
+        lockRasterRule.lockRasterIDs = [1, 7, 12]
+        
+        return ["None": noneRule,
+                "NorthWest": northWestRule,
+                "Center": centerRule,
+                "ByAttribute": byAttributeRule,
+                "LockRaster": lockRasterRule]
+    }()
+    
     // MARK: Instance methods
     
     /// Create a map.
@@ -57,34 +89,10 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
                 if let center = self.imageServiceRaster.serviceInfo?.fullExtent?.center {
                     self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 25000.0))
                 }
-                self.setStatus(message: "Raster loaded.")
+                self.setStatus(message: "Image service raster loaded.")
             }
         }
         return map
-    }
-    
-    func makeMosaicRules() -> [(name: String, rule: AGSMosaicRule)] {
-        // A default mosaic rule object, with mosaic method as none.
-        let noneRule = AGSMosaicRule()
-        noneRule.mosaicMethod = .none
-        // A mosaic rule object with northwest method.
-        let northWestRule = AGSMosaicRule()
-        northWestRule.mosaicMethod = .northwest
-        northWestRule.mosaicOperation = .first
-        // A mosaic rule object with center method and blend operation.
-        let centerRule = AGSMosaicRule()
-        centerRule.mosaicMethod = .center
-        centerRule.mosaicOperation = .blend
-        // A mosaic rule object with byAttribute method and sort on "OBJECTID" field of the service.
-        let byAttributeRule = AGSMosaicRule()
-        byAttributeRule.mosaicMethod = .attribute
-        byAttributeRule.sortField = "OBJECTID"
-        // A mosaic rule object with lockRaster method and locks 3 image rasters.
-        let lockRasterRule = AGSMosaicRule()
-        lockRasterRule.mosaicMethod = .lockRaster
-        lockRasterRule.lockRasterIDs = [1, 7, 12]
-        
-        return [("None", noneRule), ("NorthWest", northWestRule), ("Center", centerRule), ("ByAttribute", byAttributeRule), ("LockRaster", lockRasterRule)]
     }
     
     // MARK: UI
@@ -97,12 +105,11 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
     
     @IBAction func chooseMosaicRule(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(
-            title: "Choose a mosaic rule for image service.",
+            title: "Choose a mosaic rule to apply to the image service.",
             message: nil,
             preferredStyle: .actionSheet
         )
-        alertController.popoverPresentationController?.barButtonItem = sender
-        makeMosaicRules().forEach { name, rule in
+        mosaicRulePresets.forEach { name, rule in
             let action = UIAlertAction(title: name, style: .default) { _ in
                 self.setStatus(message: "\(name) selected.")
                 self.imageServiceRaster.mosaicRule = rule
@@ -111,6 +118,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
+        alertController.popoverPresentationController?.barButtonItem = sender
         present(alertController, animated: true)
     }
     

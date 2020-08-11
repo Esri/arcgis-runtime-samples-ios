@@ -107,7 +107,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         // Add a "Cancel" option and clear the selection if cancel is selected.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.clearSelection()
-            self.selectedFeature = nil
         })
         // Add a "Done" option to complete the editing process and close the alert.
         alert.addAction(UIAlertAction(title: "Done", style: .default) { _ in
@@ -126,13 +125,12 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     func moveSelectedFeature(to: AGSPoint) {
         guard let selectedFeature = selectedFeature else { return }
         // Create an alert to confirm that the user wants to update the geometry.
-        let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Confirm update", message: "Are you sure you want to move the selected feature?", preferredStyle: .alert)
         // Clear the selection and selected feature if "No" is selected.
-        alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.clearSelection()
-            self.selectedFeature = nil
         })
-        alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "Move", style: .default) { _ in
             // Set the selected feature's geometry to the new map point.
             selectedFeature.geometry = to
             // Update the selected feature's feature table.
@@ -142,7 +140,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
                 } else {
                     // Clear selection of polyline.
                     self.clearSelection()
-                    self.selectedFeature = nil
                 }
             }
         })
@@ -154,13 +151,12 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     func moveLastVertexOfSelectedFeature(to: AGSPoint) {
         guard let selectedFeature = self.selectedFeature else { return }
         // Create an alert to confirm that the user wants to update the geometry.
-        let alert = UIAlertController(title: "Confirm update", message: "Would you like to update the geometry?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Confirm update", message: "Are you sure you want to move the selected feature?", preferredStyle: .alert)
         // Clear the selection and selected feature if "No" is selected.
-        alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.clearSelection()
-            self.selectedFeature = nil
         })
-        alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "Move", style: .default) { _ in
             // Get the selected feature's geometry as a polyline nearest to the map point.
             guard let polyline = selectedFeature.geometry as? AGSPolyline,
                 let selectedMapPoint = AGSGeometryEngine.projectGeometry(to, to: polyline.spatialReference!) as? AGSPoint,
@@ -179,7 +175,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
                 } else {
                     // Clear selection of polyline.
                     self.clearSelection()
-                    self.selectedFeature = nil
                 }
             }
         })

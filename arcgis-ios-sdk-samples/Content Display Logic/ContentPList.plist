@@ -101,7 +101,7 @@
 				<key>storyboardName</key>
 				<string>LayerStatus</string>
 				<key>descriptionText</key>
-				<string>Determine if a layer is currently being viewed.</string>
+				<string>Determine whether a layer is currently visible.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -753,7 +753,7 @@
 				<key>displayName</key>
 				<string>Feature layer selection</string>
 				<key>storyboardName</key>
-				<string>FLSelection</string>
+				<string>FeatureLayerSelection</string>
 				<key>descriptionText</key>
 				<string>Select features in a feature layer.</string>
 			</dict>
@@ -975,6 +975,14 @@
 				<array>
 					<string>Restaurant</string>
 				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Show a popup</string>
+				<key>descriptionText</key>
+				<string>Show a predefined popup from a web map.</string>
+				<key>storyboardName</key>
+				<string>ShowPopup</string>
 			</dict>
 		</array>
 	</dict>

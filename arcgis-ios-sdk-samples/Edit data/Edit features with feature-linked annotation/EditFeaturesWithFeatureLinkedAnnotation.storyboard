@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ShL-2L-KLv" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -26,7 +26,7 @@
                             <constraint firstAttribute="bottom" secondItem="ShL-2L-KLv" secondAttribute="bottom" id="S29-b1-app"/>
                             <constraint firstAttribute="trailing" secondItem="ShL-2L-KLv" secondAttribute="trailing" id="TUw-FV-Ejk"/>
                             <constraint firstItem="ShL-2L-KLv" firstAttribute="leading" secondItem="GJn-Lh-FXz" secondAttribute="leading" id="VLT-a8-Pd0"/>
-                            <constraint firstItem="ShL-2L-KLv" firstAttribute="top" secondItem="GJn-Lh-FXz" secondAttribute="top" id="hbe-fB-wc8"/>
+                            <constraint firstItem="ShL-2L-KLv" firstAttribute="top" secondItem="1Qz-Ee-AN2" secondAttribute="top" id="hbe-fB-wc8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Qz-Ee-AN2"/>
                     </view>

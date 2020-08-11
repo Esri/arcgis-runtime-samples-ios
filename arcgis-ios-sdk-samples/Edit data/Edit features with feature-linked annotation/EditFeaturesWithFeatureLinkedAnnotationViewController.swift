@@ -27,6 +27,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     }
     var selectedFeature: AGSFeature?
     var geodatabase: AGSGeodatabase?
+    var identifyLayers: AGSCancelable?
     
     func loadGeodatabase() {
         // Load geodatabase from shared resources.
@@ -60,7 +61,8 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         clearSelection()
         
         // Identify across all layers.
-        mapView.identifyLayers(atScreenPoint: at, tolerance: 10.0, returnPopupsOnly: false) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
+        identifyLayers = mapView.identifyLayers(atScreenPoint: at, tolerance: 10.0, returnPopupsOnly: false) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
+            guard let self = self else { return }
             if let error = error {
                 self.clearSelection()
                 self.presentAlert(error: error)
@@ -205,20 +207,22 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
 }
 
 // MARK: - AGSGeoViewTouchDelegate
+// Select the nearest feature or move the point or polyline vertex to the given screen point.
 extension EditFeaturesWithFeatureLinkedAnnotationViewController: AGSGeoViewTouchDelegate {
-    // Select the nearest feature or move the point or polyline vertex to the given screen point.
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        if let identifyLayers = identifyLayers {
+            identifyLayers.cancel()
+        }
         // If a feature has been selected, determine what the type of geometry and move it accordingly.
-            if let selectedFeature = selectedFeature {
-                if selectedFeature.geometry?.geometryType == .polyline {
-                    moveLastVertexOfSelectedFeature(to: mapPoint)
-                } else {
-                    moveSelectedFeature(to: mapPoint)
-                }
+        if let selectedFeature = selectedFeature {
+            if selectedFeature.geometry?.geometryType == .polyline {
+                moveLastVertexOfSelectedFeature(to: mapPoint)
             } else {
-                // If a feature hasn't been selected.
-                selectFeature(at: screenPoint)
+                moveSelectedFeature(to: mapPoint)
             }
-//        }
+        } else {
+            // If a feature hasn't been selected.
+            selectFeature(at: screenPoint)
+        }
     }
 }

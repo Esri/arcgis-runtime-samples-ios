@@ -1,4 +1,4 @@
-# Show a popup
+# Show popup
 
 Show a predefined popup from a web map.
 

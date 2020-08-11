@@ -26,7 +26,7 @@ class ShowPopupViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPop
     
     func makeMap() -> AGSMap {
         // Create a map using a URL.
-        let mapURL = URL(string: "https://runtime.maps.arcgis.com/home/webmap/viewer.html?webmap=e4c6eb667e6c43b896691f10cc2f1580")!
+        let mapURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=fb788308ea2e4d8682b9c05ef641f273")!
         let map = AGSMap(url: mapURL)!
         // Load the map.
         map.load { [weak self] (error) in

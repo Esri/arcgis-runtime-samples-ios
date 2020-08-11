@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, AGSGeoViewTouchDelegate {
+class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             // Create the map with a light gray canvas basemap centered on Loudoun, Virginia.
@@ -52,22 +52,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
                 let annotationLayers = annotationTables.map(AGSAnnotationLayer.init)
                 // Add the annotation layers to the map.
                 map.operationalLayers.addObjects(from: annotationLayers)
-            }
-        }
-    }
-    
-    // MARK: - AGSGeoViewTouchDelegate
-    // Select the nearest feature or move the point or polyline vertex to the given screen point.
-    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // If a feature hasn't been selected.
-        if selectedFeature == nil {
-            selectFeature(screenPoint: screenPoint)
-        } else {
-            // Move the feature.
-            if selectedFeatureIsPolyline {
-                moveLastVertexOfSelectedFeature(to: mapPoint)
-            } else {
-                movePoint(mapPoint: mapPoint)
             }
         }
     }
@@ -220,5 +204,23 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController, A
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesWithFeatureLinkedAnnotationViewController"]
+    }
+}
+
+// MARK: - AGSGeoViewTouchDelegate
+extension EditFeaturesWithFeatureLinkedAnnotationViewController: AGSGeoViewTouchDelegate {
+    // Select the nearest feature or move the point or polyline vertex to the given screen point.
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        // If a feature hasn't been selected.
+        if selectedFeature == nil {
+            selectFeature(screenPoint: screenPoint)
+        } else {
+            // Move the feature.
+            if selectedFeatureIsPolyline {
+                moveLastVertexOfSelectedFeature(to: mapPoint)
+            } else {
+                movePoint(mapPoint: mapPoint)
+            }
+        }
     }
 }

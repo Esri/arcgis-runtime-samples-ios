@@ -8,9 +8,7 @@ Determine whether a layer is currently visible.
 
 The view status includes information on the loading state of layers and whether layers are visible at a given scale. You might change how a layer is displayed in a layer list to communicate whether it is being viewed in the map. For example, you could show a loading spinner next to its name when the view status is `loading`, gray out the name when `notVisible` or `outOfScale`, show the name normally when `active`, or with an error icon when the state is `warning` or `error`.
 
-## Use case
-
-The view state includes information on the loading state of layers and whether layers are visible at a given scale. For example, you might change how a layer is displayed in a layer list to communicate whether it is being viewed in the map: Show a loading spinner next to its name when the view state is `loading`, gray out the name when `notVisible` or `outOfScale`, show the name normally when `active`, or with an error icon when the state is `error`.
+## How to use the sample
 
 When the feature layer is loaded, pan and zoom around the map. Note how the `AGSLayerViewState` flags change; for example, `outOfScale` becomes true when the map is scaled outside of the layer's min and max scale range. Tap the toggle to hide the layer and observe the view state change to `notVisible`.
 

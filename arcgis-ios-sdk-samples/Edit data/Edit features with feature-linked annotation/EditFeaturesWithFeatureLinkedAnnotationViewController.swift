@@ -26,7 +26,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         }
     }
     var selectedFeature: AGSFeature?
-    var selectedFeatureIsPolyline = false
     var geodatabase: AGSGeodatabase?
     
     func loadGeodatabase() {
@@ -81,7 +80,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
                         self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
                         return
                     }
-                    self.selectedFeatureIsPolyline = true
                 default:
                     return
                 }
@@ -160,7 +158,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         // Clear the selection and selected feature if "No" is selected.
         alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
             self.clearSelection()
-            self.selectedFeatureIsPolyline = false
             self.selectedFeature = nil
         })
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
@@ -182,7 +179,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
                 } else {
                     // Clear selection of polyline.
                     self.clearSelection()
-                    self.selectedFeatureIsPolyline = false
                     self.selectedFeature = nil
                 }
             }
@@ -212,15 +208,19 @@ extension EditFeaturesWithFeatureLinkedAnnotationViewController: AGSGeoViewTouch
     // Select the nearest feature or move the point or polyline vertex to the given screen point.
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // If a feature hasn't been selected.
-        if selectedFeature == nil {
-            selectFeature(screenPoint: screenPoint)
-        } else {
+//        if selectedFeature == nil {
+//            selectFeature(screenPoint: screenPoint)
+//        } else {
             // Move the feature.
-            if selectedFeatureIsPolyline {
-                moveLastVertexOfSelectedFeature(to: mapPoint)
+            if let selectedFeature = selectedFeature {
+                if selectedFeature.geometry?.geometryType == .polyline {
+                    moveLastVertexOfSelectedFeature(to: mapPoint)
+                } else {
+                    movePoint(mapPoint: mapPoint)
+                }
             } else {
-                movePoint(mapPoint: mapPoint)
+                selectFeature(screenPoint: screenPoint)
             }
-        }
+//        }
     }
 }

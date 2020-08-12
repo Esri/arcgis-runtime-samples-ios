@@ -12,7 +12,7 @@ The view status includes information on the loading state of layers and whether 
 
 When the feature layer is loaded, pan and zoom around the map. Note how the `AGSLayerViewState` flags change; for example, `outOfScale` becomes true when the map is scaled outside of the layer's min and max scale range. Tap the toggle to hide the layer and observe the view state change to `notVisible`.
 
-Disconnect from the network and pan around the map to see the `warning` status of the different layers when they cannot online fetch data. Reconnect to the network to see the warning disappear.
+Disconnect from the network and pan around the map to see the `warning` status of the different layers when they cannot fetch online data. Reconnect to the network to see the warning disappear.
 
 ## How it works
 

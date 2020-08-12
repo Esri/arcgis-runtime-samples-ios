@@ -210,7 +210,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     // Clear selection from all feature layers.
     func clearSelection() {
         selectedFeature = nil
-        self.mapView.map?.operationalLayers.forEach { layer in
+        mapView.map?.operationalLayers.forEach { layer in
             if let featureLayer = layer as? AGSFeatureLayer {
                 featureLayer.clearSelection()
             }

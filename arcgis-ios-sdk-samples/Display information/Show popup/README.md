@@ -2,7 +2,7 @@
 
 Show a predefined popup from a web map.
 
-![Show a popup screenshot](show-popup.png)
+![Show popup screenshot](show-popup.png)
 
 ## Use case
 

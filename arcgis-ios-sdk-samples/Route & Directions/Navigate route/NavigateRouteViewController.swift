@@ -120,7 +120,7 @@ class NavigateRouteViewController: UIViewController {
     /// - Parameter result: An `AGSRouteResult` object used to configure the route tracker.
     /// - Returns: An `AGSRouteTracker` object.
     func makeRouteTracker(result: AGSRouteResult) -> AGSRouteTracker {
-        let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0)!
+        let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0, skipCoincidentStops: true)!
         tracker.delegate = self
         return tracker
     }

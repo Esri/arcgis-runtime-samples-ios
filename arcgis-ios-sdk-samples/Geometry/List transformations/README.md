@@ -48,7 +48,7 @@ To download projection engine data to your device:
 2. In the Dashboard page, click '[Download APIs and SDKs](https://developers.arcgis.com/downloads/data)' and go to the `Supplemental ArcGIS Runtime Data` tab.
 3. Click the download button next to `Projection Engine Data` to download projection engine data to your computer.
 4. Unzip the downloaded data on your computer.
-5. Copy the `PEDataRuntime` folder to your application's Documents folder.?
+5. Copy the `PEDataRuntime` folder to your application's Documents folder.
 
 ## Tags
 

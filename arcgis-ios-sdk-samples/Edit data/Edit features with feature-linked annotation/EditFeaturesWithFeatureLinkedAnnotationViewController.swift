@@ -114,7 +114,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             // Populate the text fields with the current value.
             textField.text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
             // Add an observer to ensure the user does not input an empty string.
-            _ = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
+            _ = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: .main, using: {_ in
                 // Get the character count of non-whitespace characters.
                 let textIsNotEmpty = !(textField.text?.isEmpty)!
                 

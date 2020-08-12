@@ -1,14 +1,32 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to create a new feature collection with three feature collection tables (containing points, lines, and polygons). Features are added programmatically and the collection is displayed in the map as a feature collection layer.",
+    "description": "Create a feature collection layer from a feature collection table and add it to a map.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "feature-collection-layer.png"
     ],
     "keywords": [
+        "collection",
+        "feature",
+        "layers",
+        "table",
+        "AGSFeature",
+        "AGSFeatureCollection",
+        "AGSFeatureCollectionLayer",
+        "AGSFeatureCollectionTable",
+        "AGSField",
+        "AGSSimpleRenderer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/feature-collection-layer.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-collection-layer.htm"
+    ],
     "relevant_apis": [
+        "AGSFeature",
+        "AGSFeatureCollection",
+        "AGSFeatureCollectionLayer",
+        "AGSFeatureCollectionTable",
+        "AGSField",
+        "AGSSimpleRenderer"
     ],
     "snippets": [
         "FeatureCollectionLayerViewController.swift"

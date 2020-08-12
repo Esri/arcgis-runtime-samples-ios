@@ -17,7 +17,7 @@ Tap on a feature in the map. All features within a given tolerance (in pixels) o
 
 1. Create an `AGSServiceFeatureTable` from a feature service URL.
 2. Create an `AGSFeatureLayer` from the service feature table.
-3. Identify nearby features at the tapped location using `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)` method on the map view.
+3. Identify nearby features at the tapped location using the `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)` method on the map view.
 4. Select all identified features in the feature layer with `AGSFeatureLayer.select(_:)`.
 
 ## Relevant API

@@ -3,7 +3,7 @@
     "description": "Use augmented reality (AR) to quickly explore a scene more naturally than you could with a touch or mouse interface.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "Explore-Scenes-In-Flyover-AR.png"
     ],
     "keywords": [
         "augmented reality",
@@ -12,13 +12,14 @@
         "fly over",
         "flyover",
         "mixed reality",
-        "translation factor"
+        "translation factor",
+        "AGSSceneView",
+        "ArcGISARView"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "ArcGISARView",
-        "AGSSceneView"
+        "AGSSceneView",
+        "ArcGISARView"
     ],
     "snippets": [
         "ExploreScenesInFlyoverAR.swift"

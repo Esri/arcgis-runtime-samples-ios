@@ -1,14 +1,27 @@
 {
     "category": "Scenes",
-    "description": "This sample demonstrates how to display an scene with elevation data.",
+    "description": "Display a scene with a terrain surface and some imagery.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "display-scene.png"
     ],
     "keywords": [
+        "3D",
+        "basemap",
+        "elevation",
+        "scene",
+        "surface",
+        "AGSArcGISTiledElevationSource",
+        "AGSSceneView",
+        "AGScene"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/display-a-scene.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/display-a-scene.htm"
+    ],
     "relevant_apis": [
+        "AGSArcGISTiledElevationSource",
+        "AGSSceneView",
+        "AGScene"
     ],
     "snippets": [
         "DisplaySceneViewController.swift"

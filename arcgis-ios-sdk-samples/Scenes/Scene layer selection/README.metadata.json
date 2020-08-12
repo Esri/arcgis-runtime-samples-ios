@@ -1,24 +1,35 @@
 {
     "category": "Scenes",
-    "description": "This sample demonstrates how to identify geoelements in a scene layer.",
+    "description": "Identify features in a scene to select.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "scene-layer-selection.png"
     ],
     "keywords": [
-        "Search and Query",
-        "AGSScene",
+        "3D",
+        "Berlin",
+        "buildings",
+        "identify",
+        "model",
+        "query",
+        "search",
+        "select",
         "AGSArcGISSceneLayer",
+        "AGSGeoViewTouchDelegate",
+        "AGSScene",
         "AGSSceneView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/scene-layer-selection.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/scene-layer-selection.htm"
+    ],
     "relevant_apis": [
-        "AGSScene",
         "AGSArcGISSceneLayer",
+        "AGSGeoViewTouchDelegate",
+        "AGSScene",
         "AGSSceneView"
     ],
     "snippets": [
         "SceneLayerSelectionViewController.swift"
     ],
-    "title": "Scene Layer Selection"
+    "title": "Scene layer selection"
 }

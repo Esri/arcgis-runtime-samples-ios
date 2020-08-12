@@ -1,14 +1,26 @@
 {
     "category": "Maps",
-    "description": "This sample display the current drawing status of the map in the toolbar.",
+    "description": "Get the draw status of your map view or scene view to know when all layers in the map or scene have finished drawing.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "display-drawing-status.png"
     ],
     "keywords": [
+        "draw",
+        "loading",
+        "map",
+        "render",
+        "AGSDrawStatus",
+        "AGSMap",
+        "AGSMapView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/display-drawing-status.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/display-drawing-status.htm"
+    ],
     "relevant_apis": [
+        "AGSDrawStatus",
+        "AGSMap",
+        "AGSMapView"
     ],
     "snippets": [
         "MapViewDrawStatusViewController.swift"

@@ -3,35 +3,34 @@
     "description": "Play tours in KML files.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "play-kml-tour.png"
     ],
     "keywords": [
-        "KML tour",
-        "story",
+        "KML",
+        "animation",
         "interactive",
         "narration",
-        "play",
         "pause",
-        "animation",
-        "AGSKMLTourController",
-        "AGSKMLTourController.tour",
-        "AGSKMLTourController.play()",
-        "AGSKMLTourController.pause()",
-        "AGSKMLTourController.reset()",
-        "AGSKMLTour",
-        "AGSKMLTour.tourStatus"
-    ],
-    "redirect_from": [
-    ],
-    "relevant_apis": [
-        "AGSKMLTourController",
-        "AGSKMLTourController.tour",
-        "AGSKMLTourController.play()",
-        "AGSKMLTourController.pause()",
-        "AGSKMLTourController.reset()",
+        "play",
+        "story",
+        "tour",
         "AGSKMLTour",
         "AGSKMLTour.tourStatus",
-        "AGSKMLLayer"
+        "AGSKMLTourController",
+        "AGSKMLTourController.pause()",
+        "AGSKMLTourController.play()",
+        "AGSKMLTourController.reset()",
+        "AGSKMLTourController.tour"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSKMLTour",
+        "AGSKMLTour.tourStatus",
+        "AGSKMLTourController",
+        "AGSKMLTourController.pause()",
+        "AGSKMLTourController.play()",
+        "AGSKMLTourController.reset()",
+        "AGSKMLTourController.tour"
     ],
     "snippets": [
         "PlayKMLTourViewController.swift"

@@ -3,32 +3,29 @@
     "description": "Geocode addresses to locations and reverse geocode locations to addresses offline.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "offline-geocode.png"
     ],
     "keywords": [
-        "offline",
         "geocode",
+        "geocoder",
+        "locator",
+        "offline",
+        "package",
+        "query",
         "search",
-        "locator file",
-        "tile package",
-        "AGSLocatorTask",
         "AGSGeocodeParameters",
-        "AGSReverseGeocodeParameters",
         "AGSGeocodeResult",
-        "AGSIdentifyGraphicsOverlayResult",
-        "AGSGeoViewTouchDelegate",
-        "AGSGraphicsOverlay"
-
+        "AGSLocatorTask",
+        "AGSReverseGeocodeParameters"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/offline-geocode.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/offline-geocode.htm"
+    ],
     "relevant_apis": [
-        "AGSLocatorTask",
         "AGSGeocodeParameters",
-        "AGSReverseGeocodeParameters",
         "AGSGeocodeResult",
-        "AGSIdentifyGraphicsOverlayResult",
-        "AGSGeoViewTouchDelegate",
-        "AGSGraphicsOverlay"
+        "AGSLocatorTask",
+        "AGSReverseGeocodeParameters"
     ],
     "snippets": [
         "OfflineGeocodeViewController.swift",

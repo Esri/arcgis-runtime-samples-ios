@@ -1,22 +1,30 @@
 {
     "category": "Layers",
-    "description": "This sample demonstrates how to load custom styled vector tiled layers",
+    "description": "Load ArcGIS vector tiled layers using custom styles.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "vector-tiled-layer-custom-1.png",
+        "vector-tiled-layer-custom-2.png"
     ],
     "keywords": [
+        "tiles",
+        "vector",
+        "vector basemap",
+        "vector tiled layer",
+        "vector tiles",
         "AGSArcGISVectorTiledLayer",
-        "ArcGIS vector tiled layer"
+        "AGSMap"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/arcgis-vector-tiled-layer-custom-style-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/arcgis-vector-tiled-layer-custom-style-.htm"
+    ],
     "relevant_apis": [
-        "AGSArcGISVectorTiledLayer"
+        "AGSArcGISVectorTiledLayer",
+        "AGSMap"
     ],
     "snippets": [
-        "VectorTileCustomStyleVC.swift",
-        "VectorStylesViewController.swift"
+        "VectorStylesViewController.swift",
+        "VectorTileCustomStyleVC.swift"
     ],
-    "title": "ArcGIS vector tiled layer with custom style"
+    "title": "ArcGIS vector tiled layer (custom style)"
 }

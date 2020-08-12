@@ -1,12 +1,32 @@
 # Set initial map location
 
-This sample creates a map with a standard ESRI Imagery with Labels basemap that is centered on a latitude and longitude location and zoomed into a specific level of detail.
+Display a basemap centered at an initial location and scale.
+
+![Image of set initial map location](set-initial-map-location.png)
+
+## Use case
+
+You can set a map's initial location when you want to highlight a particular feature or area to establish the context.
+
+## How to use the sample
+
+When the map loads, note the specific location and scale of the initial map view.
 
 ## How it works
 
-The sample uses the all-encompassing map constructor to initialize with the imagery with labels basemap at an initial location. The basemap is one of the standard ArcGIS Online basemaps and is defined using `AGSBasemapType` of `.imageryWithLabels`.
+1. Create an `AGSMap`, specifying a basemap type, latitude and longitude in WGS84, and a level of detail.
+2. Display the map in a map view.
 
-![](image1.png)
+## Relevant API
 
+* AGSBasemapType
+* AGSMap
+* AGSMapView
 
+## About the data
 
+The map opens with satellite imagery of a guitar-shaped field in the Pampas region of north central Argentina.
+
+## Tags
+
+basemap, center, envelope, extent, initial, lat, latitude, level of detail, location, LOD, long, longitude, scale, zoom level

@@ -1668,6 +1668,14 @@
 					<string>PacificSouthWest</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Realistic lighting and shadows</string>
+				<key>storyboardName</key>
+				<string>RealisticLightingAndShadows</string>
+				<key>descriptionText</key>
+				<string>Show realistic lighting and shadows for a given time of day.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

@@ -25,15 +25,19 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             loadGeodatabase()
         }
     }
+    // The feature that has been selected.
     var selectedFeature: AGSFeature?
+    // A geodatabase to be loaded.
     var geodatabase: AGSGeodatabase?
+    // The returned cancelable after identifying the layers.
     var identifyLayers: AGSCancelable?
     
     func loadGeodatabase() {
-        // Load geodatabase from shared resources.
+        // Obtain the geodatabase URL from portal data.
         let geodatabaseURL = Bundle.main.url(forResource: "loudoun_anno", withExtension: "geodatabase")!
         geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
         guard let geodatabase = geodatabase else { return }
+        // Load a geodatabase from portal data.
         geodatabase.load { [weak self] (error: Error?) in
             guard let self = self else { return }
             if let error = error {
@@ -62,15 +66,14 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         
         // Identify across all layers.
         identifyLayers = mapView.identifyLayers(atScreenPoint: at, tolerance: 10.0, returnPopupsOnly: false) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
-            guard let self = self else { return }
+            guard let self = self, let results = results else { return }
             if let error = error {
                 self.clearSelection()
                 self.presentAlert(error: error)
                 return
             }
-            results?.forEach { (result) in
-                // Get a reference to the identified feature layer and feature.
-                guard let featureLayer = result.layerContent as? AGSFeatureLayer, let selectedFeature = result.geoElements.first as? AGSFeature else { return }
+            for result in results {
+                guard let featureLayer = result.layerContent as? AGSFeatureLayer, let selectedFeature = result.geoElements.first as? AGSFeature else { continue }
                 switch selectedFeature.geometry?.geometryType {
                 case .point:
                     // If the selected feature is a point, prompt the edit attributes alert.
@@ -89,14 +92,18 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
                 featureLayer.select(selectedFeature)
                 // Set the feature globally.
                 self.selectedFeature = selectedFeature
+                return
             }
         }
     }
     
     // Create an alert dialog with edit texts to allow editing of the given feature's 'AD_ADDRESS' and 'ST_STR_NAM' attributes.
     func showEditableAttributes(selectedFeature: AGSFeature) {
+        // Create objects that observe changes to the text of the secure portal URL text field.
+        var streetTextDidChangeObserver: NSObjectProtocol!
+        var addressTextDidChangeObserver: NSObjectProtocol!
         // Create an alert controller and customize the title and message.
-        let alert = UIAlertController(title: "Edit feature attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Edit Feature Attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
         // Add a "Done" option to complete the editing process and close the alert.
         let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
             let addressTextField = alert.textFields?[0]
@@ -105,6 +112,13 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             selectedFeature.attributes["AD_ADDRESS"] = Int((addressTextField?.text)!)
             selectedFeature.attributes["ST_STR_NAM"] = streetTextField?.text
             selectedFeature.featureTable?.update(selectedFeature)
+
+            if let streetObserver = streetTextDidChangeObserver, let addressObserver = addressTextDidChangeObserver {
+                NotificationCenter.default.removeObserver(streetObserver)
+                NotificationCenter.default.removeObserver(addressObserver)
+                streetTextDidChangeObserver = nil
+                addressTextDidChangeObserver = nil
+            }
         }
         alert.addAction(doneAction)
         // Add a text field to prompt the user to input the street address.
@@ -114,12 +128,9 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             // Populate the text fields with the current value.
             textField.text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
             // Add an observer to ensure the user does not input an empty string.
-            _ = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: .main, using: {_ in
-                // Get the character count of non-whitespace characters.
-                let textIsNotEmpty = !(textField.text?.isEmpty)!
-                
-                // Enable the done button if the textfield is not empty.
-                doneAction.isEnabled = textIsNotEmpty
+            streetTextDidChangeObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: .main, using: {_ in
+                // Enable the done button if both textfields are not empty.
+                doneAction.isEnabled = (alert.textFields?.allSatisfy { $0.text?.isEmpty == false })!
             })
         }
         // Add a text field to prompt the user to input the street name.
@@ -128,13 +139,9 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             textField.keyboardType = .default
             textField.text = selectedFeature.attributes["ST_STR_NAM"] as? String
             // Add an observer to ensure the user does not input an empty string.
-            _ = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
-                // Get the character count of non-whitespace characters.
-                let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
-                let textIsNotEmpty = textCount > 0
-                
-                // Enable the done button if the textfield is not empty.
-                doneAction.isEnabled = textIsNotEmpty
+            addressTextDidChangeObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
+                // Enable the done button if both textfields are not empty.
+                doneAction.isEnabled = (alert.textFields?.allSatisfy { $0.text?.isEmpty == false })!
             })
         }
         // Add a "Cancel" option and clear the selection if cancel is selected.
@@ -149,7 +156,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     func moveSelectedFeature(to mapPoint: AGSPoint) {
         guard let selectedFeature = selectedFeature else { return }
         // Create an alert to confirm that the user wants to update the geometry.
-        let alert = UIAlertController(title: "Confirm update", message: "Are you sure you want to move the selected feature?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Confirm Update", message: "Are you sure you want to move the selected feature?", preferredStyle: .alert)
         // Clear the selection and selected feature if "No" is selected.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.clearSelection()
@@ -176,7 +183,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     func moveLastVertexOfSelectedFeature(to mapPoint: AGSPoint) {
         guard let selectedFeature = self.selectedFeature else { return }
         // Create an alert to confirm that the user wants to update the geometry.
-        let alert = UIAlertController(title: "Confirm update", message: "Are you sure you want to move the selected feature?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Confirm Update", message: "Are you sure you want to move the selected feature?", preferredStyle: .alert)
         // Clear the selection and selected feature if "No" is selected.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.clearSelection()

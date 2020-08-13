@@ -1,33 +1,33 @@
 {
     "category": "Cloud and Portal",
-    "description": "Find webmap portal items by using a keyword.",
+    "description": "Find webmap portal items by using a search term.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "search-for-webmap-by-keyword.png"
     ],
     "keywords": [
-        "webmap",
+        "keyword",
         "query",
         "search",
-        "keyword",
-        "AGSPortalQueryParameters",
-        "AGSPortalQueryResultSet",
-        "AGSPortalItem",
+        "webmap",
         "AGSPortal",
-        "AGSAuthenticationManager"
+        "AGSPortalItem",
+        "AGSPortalQueryParameters",
+        "AGSPortalQueryResultSet"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/search-for-webmap-by-keyword.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/search-for-webmap-by-keyword.htm"
+    ],
     "relevant_apis": [
-        "AGSPortalQueryParameters",
-        "AGSPortalQueryResultSet",
-        "AGSPortalItem",
         "AGSPortal",
-        "AGSAuthenticationManager"
+        "AGSPortalItem",
+        "AGSPortalQueryParameters",
+        "AGSPortalQueryResultSet"
     ],
     "snippets": [
         "SearchForWebmapByKeywordViewController.swift",
-        "WebMapViewController.swift",
-        "WebMapCell.swift"
+        "WebMapCell.swift",
+        "WebMapViewController.swift"
     ],
-    "title": "Search for webmap"
+    "title": "Search for webmap by keyword"
 }

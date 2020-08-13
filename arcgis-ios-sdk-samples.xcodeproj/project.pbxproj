@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		00166C8824D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
+		00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */; };
+		00166C8C24D236A300DD317E /* RealisticLightingAndShadowsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
 		001ECB042486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */; };
 		001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */; };
 		001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
@@ -160,7 +163,7 @@
 		3E1E5EF21D9F0E6F00F4913C /* HillshadeRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E1E5EE41D9F08ED00F4913C /* HillshadeRendererViewController.swift */; };
 		3E1E5EF31D9F0E6F00F4913C /* HillshadeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E1E5EE61D9F095A00F4913C /* HillshadeSettingsViewController.swift */; };
 		3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */; };
-		3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9EE1AFC28F6002E2214 /* Images.xcassets */; };
+		3E23A9EF1AFC28F6002E2214 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */; };
 		3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */; };
 		3E24E6741BFE560B00322DAC /* LayerStatusViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; };
 		3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A680D1B0D2A7000A318AA /* ListViewController.swift */; };
@@ -403,8 +406,8 @@
 		3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */; };
 		3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028C71B8E3AA500ACA70D /* FLQuery.storyboard */; };
 		3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */; };
-		3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028CD1B8E3AA500ACA70D /* FLSelection.storyboard */; };
-		3ED028EF1B8E3AA500ACA70D /* FLSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028CE1B8E3AA500ACA70D /* FLSelectionViewController.swift */; };
+		3ED028EE1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028CD1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard */; };
+		3ED028EF1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028CE1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift */; };
 		3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028D41B8E3AA500ACA70D /* OnInteractionCache.storyboard */; };
 		3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028D51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift */; };
 		3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028D81B8E3AA500ACA70D /* ManualCache.storyboard */; };
@@ -453,7 +456,7 @@
 		3ED0298F1B8E571700ACA70D /* OnInteractionCacheViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028D51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift */; };
 		3ED029901B8E571700ACA70D /* OnInteractionNoCacheViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028DD1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift */; };
 		3ED029911B8E571700ACA70D /* ManualCacheViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028D91B8E3AA500ACA70D /* ManualCacheViewController.swift */; };
-		3ED029921B8E571700ACA70D /* FLSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028CE1B8E3AA500ACA70D /* FLSelectionViewController.swift */; };
+		3ED029921B8E571700ACA70D /* FeatureLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028CE1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift */; };
 		3ED029931B8E571700ACA70D /* FLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */; };
 		3ED029941B8E571700ACA70D /* DefinitionExpressionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */; };
 		3ED029951B8E571700ACA70D /* OverrideRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028BE1B8E3AA500ACA70D /* OverrideRendererViewController.swift */; };
@@ -878,6 +881,7 @@
 			dstSubfolderSpec = 7;
 			files = (
 				F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */,
+				00166C8C24D236A300DD317E /* RealisticLightingAndShadowsViewController.swift in CopyFiles */,
 				F1F651AD24995294006DF277 /* ShowPopupViewController.swift in CopyFiles */,
 				001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */,
 				00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */,
@@ -1089,7 +1093,7 @@
 				3ED0298F1B8E571700ACA70D /* OnInteractionCacheViewController.swift in CopyFiles */,
 				3ED029901B8E571700ACA70D /* OnInteractionNoCacheViewController.swift in CopyFiles */,
 				3ED029911B8E571700ACA70D /* ManualCacheViewController.swift in CopyFiles */,
-				3ED029921B8E571700ACA70D /* FLSelectionViewController.swift in CopyFiles */,
+				3ED029921B8E571700ACA70D /* FeatureLayerSelectionViewController.swift in CopyFiles */,
 				3ED029931B8E571700ACA70D /* FLQueryViewController.swift in CopyFiles */,
 				3ED029941B8E571700ACA70D /* DefinitionExpressionViewController.swift in CopyFiles */,
 				3ED029951B8E571700ACA70D /* OverrideRendererViewController.swift in CopyFiles */,
@@ -1154,6 +1158,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealisticLightingAndShadowsViewController.swift; sourceTree = "<group>"; };
+		00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RealisticLightingAndShadows.storyboard; sourceTree = "<group>"; };
 		001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARCalibrationViewController.swift; sourceTree = "<group>"; };
 		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
@@ -1260,7 +1266,7 @@
 		3E23A9E01AFC28F6002E2214 /* ArcGIS Runtime SDK Samples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArcGIS Runtime SDK Samples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E23A9E41AFC28F6002E2214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "arcgis-ios-sdk-samples/AppDelegate.swift"; sourceTree = "<group>"; };
-		3E23A9EE1AFC28F6002E2214 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "arcgis-ios-sdk-samples/Images.xcassets"; sourceTree = "<group>"; };
+		3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "arcgis-ios-sdk-samples/Assets.xcassets"; sourceTree = "<group>"; };
 		3E23A9F11AFC28F6002E2214 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3E2A680D1B0D2A7000A318AA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeBarButtonItem.swift; sourceTree = "<group>"; };
@@ -1447,8 +1453,8 @@
 		3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefinitionExpressionViewController.swift; sourceTree = "<group>"; };
 		3ED028C71B8E3AA500ACA70D /* FLQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FLQuery.storyboard; sourceTree = "<group>"; };
 		3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLQueryViewController.swift; sourceTree = "<group>"; };
-		3ED028CD1B8E3AA500ACA70D /* FLSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FLSelection.storyboard; sourceTree = "<group>"; };
-		3ED028CE1B8E3AA500ACA70D /* FLSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLSelectionViewController.swift; sourceTree = "<group>"; };
+		3ED028CD1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerSelection.storyboard; sourceTree = "<group>"; };
+		3ED028CE1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerSelectionViewController.swift; sourceTree = "<group>"; };
 		3ED028D41B8E3AA500ACA70D /* OnInteractionCache.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnInteractionCache.storyboard; sourceTree = "<group>"; };
 		3ED028D51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnInteractionCacheViewController.swift; sourceTree = "<group>"; };
 		3ED028D81B8E3AA500ACA70D /* ManualCache.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManualCache.storyboard; sourceTree = "<group>"; };
@@ -1757,6 +1763,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00166C8524D20E0E00DD317E /* Realistic lighting and shadows */ = {
+			isa = PBXGroup;
+			children = (
+				00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */,
+				00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */,
+			);
+			path = "Realistic lighting and shadows";
+			sourceTree = "<group>";
+		};
 		001ECB58248B002B009AC6C0 /* Feature collection layer (portal item) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2159,7 +2174,7 @@
 			isa = PBXGroup;
 			children = (
 				3E23A9E21AFC28F6002E2214 /* arcgis-ios-sdk-samples */,
-				3E23A9EE1AFC28F6002E2214 /* Images.xcassets */,
+				3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */,
 				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
 				4CD2B5552142EAF900767D87 /* arcgis-ios-sdk-samplesTests */,
 				4CB506D3224C2DBC006A3471 /* Portal Data */,
@@ -3206,8 +3221,8 @@
 		3ED028CC1B8E3AA500ACA70D /* Feature layer selection */ = {
 			isa = PBXGroup;
 			children = (
-				3ED028CD1B8E3AA500ACA70D /* FLSelection.storyboard */,
-				3ED028CE1B8E3AA500ACA70D /* FLSelectionViewController.swift */,
+				3ED028CD1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard */,
+				3ED028CE1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift */,
 			);
 			path = "Feature layer selection";
 			sourceTree = "<group>";
@@ -3356,6 +3371,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				00166C8524D20E0E00DD317E /* Realistic lighting and shadows */,
 				00ADC3B72464D45B00A3B88D /* Animate images with image overlay */,
 				F1C81C4322FCEBD100229CAA /* Get elevation at a point */,
 				F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */,
@@ -4566,6 +4582,7 @@
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
 				C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */,
+				00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */,
 				C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */,
 				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
@@ -4588,7 +4605,7 @@
 				3E4BF45A1C5BD77300D85919 /* OfflineGeocode.storyboard in Resources */,
 				3EABC7C31DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml in Resources */,
 				3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */,
-				3E23A9EF1AFC28F6002E2214 /* Images.xcassets in Resources */,
+				3E23A9EF1AFC28F6002E2214 /* Assets.xcassets in Resources */,
 				3EBA25611D34178200AB0703 /* SimpleMarkerSymbol.storyboard in Resources */,
 				2182C9821FDA01A0003E3A0F /* StatisticalQuery.storyboard in Resources */,
 				3ED0286C1B8E3A8500ACA70D /* DisplayLocation.storyboard in Resources */,
@@ -4752,7 +4769,7 @@
 				D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */,
 				09607F851FDB61DC00FA43B6 /* TimeBasedQuery.storyboard in Resources */,
 				3E4A64B01D8B37DA00CF930C /* Settings.bundle in Resources */,
-				3ED028EE1B8E3AA500ACA70D /* FLSelection.storyboard in Resources */,
+				3ED028EE1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard in Resources */,
 				3EAF09491D710AAF00F8538F /* ChangeMapViewBackground.storyboard in Resources */,
 				C76817072163DB7C00EC82F4 /* DisplayKML.storyboard in Resources */,
 				D97B7E3D1FD9BE2B00E1239D /* SymbolizeShapefile.storyboard in Resources */,
@@ -4956,7 +4973,7 @@
 				3ED75D041ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift in Sources */,
 				3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */,
 				9DE9FE3422FDB7CA00142DE1 /* LocationHistoryViewController.swift in Sources */,
-				3ED028EF1B8E3AA500ACA70D /* FLSelectionViewController.swift in Sources */,
+				3ED028EF1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift in Sources */,
 				3E5E09401EF4567A00FF3454 /* RelatedFeaturesViewController.swift in Sources */,
 				D97B7E3C1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift in Sources */,
 				C7D0EEDA215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift in Sources */,
@@ -4980,6 +4997,7 @@
 				3E03F0931B0561FA0078EB36 /* SourceCodeViewController.swift in Sources */,
 				3ED0289A1B8E3A8500ACA70D /* ShowMagnifierViewController.swift in Sources */,
 				C7E9D7C621C0500300E6C47E /* BufferViewController.swift in Sources */,
+				00166C8824D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift in Sources */,
 				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
 				F1034F9C22D3EE8900B021DA /* ProjectStackView.swift in Sources */,
 				4C0CBFFF22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in Sources */,

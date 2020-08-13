@@ -1,18 +1,31 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to select features in a feature layer",
+    "description": "Select features in a feature layer.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "feature-layer-selection-1.png",
+        "feature-layer-selection-2.png"
     ],
     "keywords": [
+        "features",
+        "layers",
+        "select",
+        "selection",
+        "tolerance",
+        "AGSFeature",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/feature-layer-selection.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-layer-selection.htm"
+    ],
     "relevant_apis": [
+        "AGSFeature",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable"
     ],
     "snippets": [
-        "FLSelectionViewController.swift"
+        "FeatureLayerSelectionViewController.swift"
     ],
     "title": "Feature layer selection"
 }

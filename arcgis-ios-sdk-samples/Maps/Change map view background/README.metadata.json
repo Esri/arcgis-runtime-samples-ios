@@ -1,14 +1,25 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how to customize map view's background grid",
+    "description": "Customize map view's background by changing its grid properties.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "change-map-view-background.png"
     ],
     "keywords": [
+        "background",
+        "grid",
+        "map",
+        "AGSBackgroundGrid",
+        "AGSMap",
+        "AGSMapView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/change-mapview-background.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/change-mapview-background.htm"
+    ],
     "relevant_apis": [
+        "AGSBackgroundGrid",
+        "AGSMap",
+        "AGSMapView"
     ],
     "snippets": [
         "ChangeMapViewBackgroundViewController.swift",

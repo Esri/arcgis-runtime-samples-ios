@@ -38,7 +38,7 @@ The map starts out zoomed into the grounds of the Royal Observatory, Greenwich. 
 
 Some transformations aren't available until transformation data is provided.
 
-This sample uses an `AGSGeographicTransformation` object, which extends the `AGSDatumTransformation` class. As of 100.9, *ArcGIS Runtime* also includes an `AGSHorizontalVerticalTransformation` class, which also extends `AGSDatumTransformation`. The `AGSHorizontalVerticalTransformation` class is used to transform coordinates of z-aware geometries between spatial references that have different geographic and/or vertical coordinate systems.
+This sample uses `AGSGeographicTransformation`, a subclass of `AGSDatumTransformation`. As of 100.9, *ArcGIS Runtime* also includes `AGSHorizontalVerticalTransformation`, another subclass of `AGSDatumTransformation`. The `AGSHorizontalVerticalTransformation` class is used to transform coordinates of z-aware geometries between spatial references that have different geographic and/or vertical coordinate systems.
 
 This sample can be used with or without provisioning projection engine data to your device. If you do not provision data, a limited number of transformations will be available.
 

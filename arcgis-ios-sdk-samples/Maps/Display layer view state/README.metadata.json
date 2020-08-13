@@ -1,15 +1,17 @@
 {
     "category": "Maps",
-    "description": "Determine if a layer is currently being viewed.",
+    "description": "Determine whether a layer is currently visible.",
     "ignore": false,
     "images": [
         "display-layer-view-state.png"
     ],
     "keywords": [
         "layer",
+        "load",
         "map",
         "status",
         "view",
+        "visibility",
         "AGSLayer",
         "AGSLayerViewState",
         "AGSMap",

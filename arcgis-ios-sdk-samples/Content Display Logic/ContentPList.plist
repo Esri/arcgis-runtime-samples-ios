@@ -1222,7 +1222,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Route &amp; Directions</string>
+		<string>Route and directions</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -1385,7 +1385,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Cloud &amp; Portal</string>
+		<string>Cloud and portal</string>
 		<key>children</key>
 		<array>
 			<dict>

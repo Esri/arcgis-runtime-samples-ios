@@ -3,25 +3,31 @@
     "description": "Render features in a layer using a distinct symbol for each unique attribute value.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "unique-value-renderer.png"
     ],
     "keywords": [
-        "unique value renderer",
+        "draw",
+        "renderer",
         "symbol",
-        "feature layer",
-        "AGSUniqueValue",
-        "AGSUniqueValueRenderer",
+        "symbology",
+        "values",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable",
         "AGSSimpleFillSymbol",
         "AGSSimpleLineSymbol",
-        "AGSFeatureLayer"
+        "AGSUniqueValue",
+        "AGSUniqueValueRenderer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/unique-value-renderer.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/unique-value-renderer.htm"
+    ],
     "relevant_apis": [
-        "AGSUniqueValue",
-        "AGSUniqueValueRenderer",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable",
         "AGSSimpleFillSymbol",
         "AGSSimpleLineSymbol",
-        "AGSFeatureLayer"
+        "AGSUniqueValue",
+        "AGSUniqueValueRenderer"
     ],
     "snippets": [
         "UniqueValueRendererViewController.swift"

@@ -13,7 +13,7 @@
 				<key>storyboardName</key>
 				<string>DisplayMap</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to display a map with imagery basemap</string>
+				<string>Display a map with an imagery basemap.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -21,7 +21,7 @@
 				<key>storyboardName</key>
 				<string>ChangeMapViewBackground</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to customize map view&apos;s background grid</string>
+				<string>Customize map view&apos;s background by changing its grid properties.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -29,7 +29,7 @@
 				<key>storyboardName</key>
 				<string>MapLoaded</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to tell what the map&apos;s load status is</string>
+				<string>Determine the map&apos;s load status.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -37,7 +37,7 @@
 				<key>storyboardName</key>
 				<string>OpenMapURL</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to open a map using its url</string>
+				<string>Display a web map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -45,7 +45,7 @@
 				<key>storyboardName</key>
 				<string>SwitchBasemap</string>
 				<key>descriptionText</key>
-				<string>Changing the basemap is too easy. This sample shows you how it can be done</string>
+				<string>Change a map&apos;s basemap.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -53,7 +53,7 @@
 				<key>storyboardName</key>
 				<string>SetInitialMapArea</string>
 				<key>descriptionText</key>
-				<string>You can also specify an area or enveloper as the initial view for the map to start with</string>
+				<string>Display the map at an initial viewpoint representing a bounding geometry.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -61,7 +61,7 @@
 				<key>storyboardName</key>
 				<string>SetInitialMapLocation</string>
 				<key>descriptionText</key>
-				<string>You can set the initial location for a map by passing in the coordinates and the zoom level</string>
+				<string>Display a basemap centered at an initial location and scale.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -69,7 +69,7 @@
 				<key>storyboardName</key>
 				<string>SetMapsSpatialReference</string>
 				<key>descriptionText</key>
-				<string>You can initialize a map by specifying the spatial reference. If you add any layer with a different spatial reference it will re-project</string>
+				<string>Specify a map&apos;s spatial reference.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -77,7 +77,7 @@
 				<key>storyboardName</key>
 				<string>ManageMapLayers</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to manage layers in a map. You can reorder them, delete an existing layer or insert a new layer</string>
+				<string>Add, remove, and reorder operational layers in a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -85,7 +85,7 @@
 				<key>storyboardName</key>
 				<string>Bookmarks</string>
 				<key>descriptionText</key>
-				<string>Now you can add and view bookmarks on a map</string>
+				<string>Access and create bookmarks on a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -93,7 +93,7 @@
 				<key>storyboardName</key>
 				<string>MapViewDrawStatus</string>
 				<key>descriptionText</key>
-				<string>Every time the map is drawing you get an update using the callbacks</string>
+				<string>Get the draw status of your map view or scene view to know when all layers in the map or scene have finished drawing.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -101,7 +101,7 @@
 				<key>storyboardName</key>
 				<string>LayerStatus</string>
 				<key>descriptionText</key>
-				<string>You can get the view status for each layer in your map. It tells you if the that layer is currently active or not currently visible or if an error occured while loading it etc</string>
+				<string>Determine whether a layer is currently visible.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -109,7 +109,7 @@
 				<key>storyboardName</key>
 				<string>SetViewpoint</string>
 				<key>descriptionText</key>
-				<string>You can change the viewpoint of a map view and there are different ways you can do this. You can use a geometry or a point, etc. with or without animation</string>
+				<string>Set the map view to a new viewpoint.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -117,7 +117,7 @@
 				<key>storyboardName</key>
 				<string>MapRotation</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to rotate a map view. You can pinch to rotate or do it programmatically.</string>
+				<string>Rotate a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -125,7 +125,7 @@
 				<key>storyboardName</key>
 				<string>ShowMagnifier</string>
 				<key>descriptionText</key>
-				<string>You can tap and hold on the map to get a magnifier</string>
+				<string>Tap and hold on a map to show a magnifier.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -133,7 +133,7 @@
 				<key>storyboardName</key>
 				<string>DisplayLocation</string>
 				<key>descriptionText</key>
-				<string>You can start the location display on the map view to get current location updates. There are different auto pan modes you can switch between, namely, re-center mode, navigation mode or compass mode</string>
+				<string>Display your current position on the map, as well as switch between different types of auto pan modes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -141,7 +141,7 @@
 				<key>storyboardName</key>
 				<string>MapViewScreenshot</string>
 				<key>descriptionText</key>
-				<string>You can now take a screenshot of the map view. You can use it as the thumbnail for you newly created map or simply share it with your co-workers</string>
+				<string>Take a screenshot of the map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -149,7 +149,7 @@
 				<key>storyboardName</key>
 				<string>CreateSaveMap</string>
 				<key>descriptionText</key>
-				<string>With the new APIs you get to author a map on you mobile device. You can create a map by adding a basemap and one or more operational layers and save it to your portal</string>
+				<string>Create and save a map as a portal item (i.e. web map).</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -157,7 +157,7 @@
 				<key>storyboardName</key>
 				<string>IdentifyLayers</string>
 				<key>descriptionText</key>
-				<string>You can tap on map and get all the elements present at that location from different layers</string>
+				<string>Identify features in all layers in a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -165,7 +165,7 @@
 				<key>storyboardName</key>
 				<string>OpenMobileMapPackage</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to open a mobile map from a mobile map package</string>
+				<string>Display a map from a mobile map package.</string>
 				<key>dependency</key>
 				<array>
 					<string>YellowstoneMMPK</string>
@@ -177,7 +177,7 @@
 				<key>storyboardName</key>
 				<string>MobileMapSearchRoute</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to search and route using data in a map package</string>
+				<string>Display maps and use locators to enable search and routing offline using a mobile map package.</string>
 				<key>dependency</key>
 				<array>
 					<string>YellowstoneMMPK</string>
@@ -202,7 +202,7 @@
 				<key>storyboardName</key>
 				<string>GenerateOfflineMap</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to generate an offline map for web map in ArcGIS Portal. The sample requires login to take AGOL Basemap offline.</string>
+				<string>Take a web map offline.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -210,7 +210,7 @@
 				<key>storyboardName</key>
 				<string>GenerateOfflineMapOverrides</string>
 				<key>descriptionText</key>
-				<string>Override the default parameters when taking a map from ArcGIS Portal offline.</string>
+				<string>Take a web map offline with additional options for each layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -230,7 +230,7 @@
 				<key>storyboardName</key>
 				<string>ReadGeopackage</string>
 				<key>descriptionText</key>
-				<string>Add rasters and feature tables from a GeoPackage to a map.</string>
+				<string>Add rasters and feature tables from a geopackage to a map.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>
@@ -242,7 +242,7 @@
 				<key>storyboardName</key>
 				<string>SetMinMaxScale</string>
 				<key>descriptionText</key>
-				<string>Shows how to set the min and max scale on a map.</string>
+				<string>Restrict zooming between specific scale ranges.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -334,7 +334,7 @@
 				<key>storyboardName</key>
 				<string>TLUsingURL</string>
 				<key>descriptionText</key>
-				<string>You can create a tiled layer using the url to the service</string>
+				<string>Load a tiled layer from a map server with a URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -342,7 +342,7 @@
 				<key>storyboardName</key>
 				<string>LocalTiledLayer</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to load an offline copy of a tiled map service so that that basemap tiled service is available when applications are offline</string>
+				<string>Load an offline copy of a tiled map service as a basemap.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanFranciscoTilePackage</string>
@@ -355,7 +355,7 @@
 				<key>storyboardName</key>
 				<string>ExportTiles</string>
 				<key>descriptionText</key>
-				<string>You can create a tpk from a map service</string>
+				<string>Download tiles to a local tile cache file stored on the device.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -363,7 +363,7 @@
 				<key>storyboardName</key>
 				<string>MILUsingURL</string>
 				<key>descriptionText</key>
-				<string>You can use the url to a map server to create a map image layer</string>
+				<string>Display a layer from an ArcGIS map image layer service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -371,7 +371,7 @@
 				<key>storyboardName</key>
 				<string>ChangeSublayerRenderer</string>
 				<key>descriptionText</key>
-				<string>You can change the renderer of a sublayer in a map image layer</string>
+				<string>Apply a renderer to a sublayer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -379,7 +379,7 @@
 				<key>storyboardName</key>
 				<string>SublayerVisibility</string>
 				<key>descriptionText</key>
-				<string>You can show or hide individual sublayers in a map image layer</string>
+				<string>Change the visibility of sublayers.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -387,7 +387,7 @@
 				<key>storyboardName</key>
 				<string>ManageSublayers</string>
 				<key>descriptionText</key>
-				<string>This sample shows to add or remove map image sublayers and how to re-arrange existing sublayers in a map image layer</string>
+				<string>Add, remove, or rearrange existing sublayers in a map image layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -395,7 +395,7 @@
 				<key>storyboardName</key>
 				<string>VectorTileLayer</string>
 				<key>descriptionText</key>
-				<string>You can now add vector tile layers</string>
+				<string>Load an ArcGIS vector tiled layer from a URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -403,7 +403,7 @@
 				<key>storyboardName</key>
 				<string>VectorTileCustomStyle</string>
 				<key>descriptionText</key>
-				<string>You can define different styles for same vector tiled layer using custom stylesheets</string>
+				<string>Load ArcGIS vector tiled layers using custom styles.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -411,7 +411,7 @@
 				<key>storyboardName</key>
 				<string>WebTiledLayer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to display map tiles from an online resource</string>
+				<string>Display a tiled web layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -419,7 +419,7 @@
 				<key>storyboardName</key>
 				<string>RasterFunctionService</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to create an image service raster and apply a Hillshade raster function to it.</string>
+				<string>Load a raster from a service and apply a function to it.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -427,7 +427,7 @@
 				<key>storyboardName</key>
 				<string>RasterLayer</string>
 				<key>descriptionText</key>
-				<string>You can create a raster layer from a file</string>
+				<string>Create and use a raster layer made from a local raster file.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaRaster</string>
@@ -439,7 +439,7 @@
 				<key>storyboardName</key>
 				<string>RasterLayerGPKG</string>
 				<key>descriptionText</key>
-				<string>Show a raster layer on a map using a geopackage</string>
+				<string>Display a raster contained in a GeoPackage.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>
@@ -451,7 +451,7 @@
 				<key>storyboardName</key>
 				<string>RasterLayerUsingService</string>
 				<key>descriptionText</key>
-				<string>You can create a raster layer from an ArcGIS Image service</string>
+				<string>Create a raster layer from a raster image service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -459,7 +459,7 @@
 				<key>storyboardName</key>
 				<string>HillshadeRenderer</string>
 				<key>descriptionText</key>
-				<string>You can apply hill shade renderer to a raster</string>
+				<string>Apply a hillshade renderer to a raster.</string>
 				<key>dependency</key>
 				<array>
 					<string>SRTMRaster</string>
@@ -471,7 +471,7 @@
 				<key>storyboardName</key>
 				<string>BlendRenderer</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to use blend renderer with raster layer</string>
+				<string>Blend a hillshade with a raster by specifying the elevation data.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaElevationRaster</string>
@@ -484,7 +484,7 @@
 				<key>storyboardName</key>
 				<string>RGBRenderer</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to use rgb renderer with raster layer</string>
+				<string>Apply an RGB renderer to a raster layer to enhance feature visibility.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaRaster</string>
@@ -496,7 +496,7 @@
 				<key>storyboardName</key>
 				<string>StretchRenderer</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to use stretch renderer with raster layer</string>
+				<string>Use a stretch renderer to enhance the visual contrast of raster data for analysis.</string>
 				<key>dependency</key>
 				<array>
 					<string>ShastaBWRaster</string>
@@ -508,7 +508,7 @@
 				<key>storyboardName</key>
 				<string>ShowLabelsOnLayers</string>
 				<key>descriptionText</key>
-				<string>Show labels on feature layers using JSON label definitions.</string>
+				<string>Display custom labels on a feature layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -516,7 +516,7 @@
 				<key>storyboardName</key>
 				<string>WMTSLayer</string>
 				<key>descriptionText</key>
-				<string>Display a WMTS layer as a basemap layer</string>
+				<string>Display a layer from a Web Map Tile Service (WMTS).</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -524,7 +524,7 @@
 				<key>storyboardName</key>
 				<string>WMSLayerUsingURL</string>
 				<key>descriptionText</key>
-				<string>Open a WMS layer from a URL and display it in a map</string>
+				<string>Display a WMS layer using a WMS service URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -532,7 +532,7 @@
 				<key>storyboardName</key>
 				<string>StyleWebMapServiceLayer</string>
 				<key>descriptionText</key>
-				<string>Shows how to change the style of a WMS layer.</string>
+				<string>Change the style of a Web Map Service (WMS) layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -540,7 +540,7 @@
 				<key>storyboardName</key>
 				<string>QueryMapImageSublayer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to execute an attribute and spatial query on the sublayers of an ArcGIS map image layer.</string>
+				<string>Find features in a sublayer based on attributes and location.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -548,7 +548,7 @@
 				<key>storyboardName</key>
 				<string>SymbolizeShapefile</string>
 				<key>descriptionText</key>
-				<string>Symbolize a feature layer on a map using a shapefile</string>
+				<string>Display a shapefile with custom symbology.</string>
 				<key>dependency</key>
 				<array>
 					<string>SubdivisionsShapefile</string>
@@ -560,7 +560,7 @@
 				<key>storyboardName</key>
 				<string>DisplayKML</string>
 				<key>descriptionText</key>
-				<string>Show a KML file from a URL, local file, or portal item.</string>
+				<string>Display KML from a URL, portal item, or local KML file.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -576,7 +576,7 @@
 				<key>storyboardName</key>
 				<string>IdentifyKMLFeatures</string>
 				<key>descriptionText</key>
-				<string>Show a balloon popup with formatted content for tapped KML features. KML supports defining HTML for popups.</string>
+				<string>Show a callout with formatted content for a KML feature.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -584,7 +584,7 @@
 				<key>storyboardName</key>
 				<string>DisplayKMLNetworkLinks</string>
 				<key>descriptionText</key>
-				<string>Display a KML file that loads content from a network resource.</string>
+				<string>Display a file with a KML network link, including displaying any network link control messages at launch.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -600,7 +600,7 @@
 				<key>storyboardName</key>
 				<string>OpenStreetMapLayer</string>
 				<key>descriptionText</key>
-				<string>Display a map with an OpenStreetMap basemap.</string>
+				<string>Add OpenStreetMap as a basemap layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -630,7 +630,7 @@
 				<key>displayName</key>
 				<string>Group layers</string>
 				<key>descriptionText</key>
-				<string>Add layers to a group layer and toggle their visibility as a group.</string>
+				<string>Group a collection of layers together and toggle their visibility as a group.</string>
 				<key>storyboardName</key>
 				<string>GroupLayers</string>
 			</dict>
@@ -671,7 +671,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerRenderingModeMap</string>
 				<key>descriptionText</key>
-				<string>Control the rendering mode of feature layers.</string>
+				<string>Render features statically or dynamically by setting the feature layer rendering mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -679,7 +679,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerRenderingModeScene</string>
 				<key>descriptionText</key>
-				<string>Control the rendering mode of feature layers in scenes.</string>
+				<string>Render features in a scene statically or dynamically by setting the feature layer rendering mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -687,7 +687,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerURL</string>
 				<key>descriptionText</key>
-				<string>Show a feature layer on map using the url to the service</string>
+				<string>Show features from an online feature service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -695,7 +695,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerGDB</string>
 				<key>descriptionText</key>
-				<string>Show a feature layer on map using a geodatabase</string>
+				<string>Display features from a local geodatabase.</string>
 				<key>dependency</key>
 				<array>
 					<string>LATrailsGeodatabase</string>
@@ -707,7 +707,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerGPKG</string>
 				<key>descriptionText</key>
-				<string>Show a feature layer on a map using a geopackage</string>
+				<string>Display features from a local GeoPackage.</string>
 				<key>dependency</key>
 				<array>
 					<string>AuroraCOGeopackage</string>
@@ -719,7 +719,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerShapefile</string>
 				<key>descriptionText</key>
-				<string>Display a feature layer on a map using a shapefile</string>
+				<string>Open a shapefile stored on the device and display it as a feature layer with default symbology.</string>
 				<key>dependency</key>
 				<array>
 					<string>PublicArtShapefile</string>
@@ -731,7 +731,7 @@
 				<key>storyboardName</key>
 				<string>OnInteractionCache</string>
 				<key>descriptionText</key>
-				<string>There are different request modes you can load your feature layer in. This sample uses the &quot;On Interaction Cache Mode&quot;.</string>
+				<string>Display a feature layer from a service using the on interaction cache feature request mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -739,7 +739,7 @@
 				<key>storyboardName</key>
 				<string>OnInteractionNoCache</string>
 				<key>descriptionText</key>
-				<string>There are different request modes you can load your feature layer in. This sample uses the &quot;On Interaction No Cache Mode&quot;.</string>
+				<string>Display a feature layer from a service using the no cache feature request mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -747,15 +747,15 @@
 				<key>storyboardName</key>
 				<string>ManualCache</string>
 				<key>descriptionText</key>
-				<string>There are different request modes you can load your feature layer in. This sample uses the &quot;Manual Cache Mode&quot;.</string>
+				<string>Display a feature layer from a service using the manual cache feature request mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Feature layer selection</string>
 				<key>storyboardName</key>
-				<string>FLSelection</string>
+				<string>FeatureLayerSelection</string>
 				<key>descriptionText</key>
-				<string>You can tap on the map to select or unselect features in a feature layer</string>
+				<string>Select features in a feature layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -763,7 +763,7 @@
 				<key>storyboardName</key>
 				<string>FLQuery</string>
 				<key>descriptionText</key>
-				<string>You can query features in feature layer via service feature table. In this sample you can query for States in USA</string>
+				<string>Find features in a feature table which match an SQL query.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -771,7 +771,7 @@
 				<key>storyboardName</key>
 				<string>DefinitionExpression</string>
 				<key>descriptionText</key>
-				<string>You can set the definition expression on the feature layer to load specific features</string>
+				<string>Limit the features displayed on a map with a definition expression.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -779,7 +779,7 @@
 				<key>storyboardName</key>
 				<string>OverrideRenderer</string>
 				<key>descriptionText</key>
-				<string>The feature layer comes with a default renderer but you can also override this renderer using your custom renderer</string>
+				<string>Change the appearance of a feature layer with a renderer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -787,7 +787,7 @@
 				<key>storyboardName</key>
 				<string>GenerateGeodatabase</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to take features offline</string>
+				<string>Generate a local geodatabase from an online feature service.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanFranciscoTilePackage</string>
@@ -799,7 +799,7 @@
 				<key>storyboardName</key>
 				<string>FeatureCollectionLayer</string>
 				<key>descriptionText</key>
-				<string>Show a feature collection layer using a URL to the service</string>
+				<string>Create a feature collection layer from a feature collection table and add it to a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -815,7 +815,7 @@
 				<key>storyboardName</key>
 				<string>FeatureCollectionLayerQuery</string>
 				<key>descriptionText</key>
-				<string>Use a feature collection layer to show query results from a service feature table</string>
+				<string>Create a feature collection layer to show a query result from a service feature table.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -823,7 +823,7 @@
 				<key>storyboardName</key>
 				<string>ListRelatedFeatures</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to query related features for a given feature. Tap on a feature on the map to see its related features</string>
+				<string>List features related to the selected feature.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -831,7 +831,7 @@
 				<key>storyboardName</key>
 				<string>AddDeleteRelatedFeatures</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to add or delete related features to an origin feature</string>
+				<string>Add or delete related features on an origin feature.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -839,7 +839,7 @@
 				<key>storyboardName</key>
 				<string>TimeBasedQuery</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to apply a time-based parameter to a feature layer query</string>
+				<string>Query data using a time extent.</string>
 			</dict>
 		</array>
 	</dict>
@@ -854,7 +854,7 @@
 				<key>storyboardName</key>
 				<string>GORenderers</string>
 				<key>descriptionText</key>
-				<string>You can add graphics to a map using the new Graphics Overlay</string>
+				<string>Add graphics with renderer to a map to change the style of all graphics in a graphics overlay by referencing a single symbol style.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -862,7 +862,7 @@
 				<key>storyboardName</key>
 				<string>GraphicsWithSymbols</string>
 				<key>descriptionText</key>
-				<string>You can add graphics to a map using the new Graphics Overlay and specify symbol for each graphic</string>
+				<string>Use a symbol style to display a graphic on a graphics overlay.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -870,7 +870,7 @@
 				<key>storyboardName</key>
 				<string>GOIdentify</string>
 				<key>descriptionText</key>
-				<string>You can use the identify method on map view to get the graphics at a location. It could be the location, user interacted with, via tap gesture or simply some custom location</string>
+				<string>Display an alert message when a graphic is tapped.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -878,7 +878,7 @@
 				<key>storyboardName</key>
 				<string>GraphicDrawOrder</string>
 				<key>descriptionText</key>
-				<string>You can change the drawing order of graphics in graphics overlay using the z index</string>
+				<string>Change the drawing order for a graphic.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -886,7 +886,7 @@
 				<key>storyboardName</key>
 				<string>Sketch</string>
 				<key>descriptionText</key>
-				<string>You can use the sketch editor for sketching on your map</string>
+				<string>Use the Sketch Editor to edit or sketch a new point, line, or polygon geometry on a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -894,7 +894,7 @@
 				<key>storyboardName</key>
 				<string>Callout</string>
 				<key>descriptionText</key>
-				<string>Tap on the map to get the coordinates for the location in a callout. Tap again to hide it.</string>
+				<string>Show a callout with the latitude and longitude of user-tapped points.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -902,7 +902,7 @@
 				<key>storyboardName</key>
 				<string>MILShowLegend</string>
 				<key>descriptionText</key>
-				<string>Tap on the button in the toolbar to display legends for the layers on the map</string>
+				<string>Show a legend for all the operational layers in the map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -910,7 +910,7 @@
 				<key>storyboardName</key>
 				<string>SimpleMarkerSymbol</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to create a graphic with simple marker symbol</string>
+				<string>Show a simple marker symbol on a map.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -918,7 +918,7 @@
 				<key>storyboardName</key>
 				<string>PictureMarkerSymbols</string>
 				<key>descriptionText</key>
-				<string>This sample shows how to create picture marker symbols from a remote image and an image in assets</string>
+				<string>Use pictures for markers.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -926,7 +926,7 @@
 				<key>storyboardName</key>
 				<string>SimpleRenderer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to create a simple renderer and add it to a graphics overlay</string>
+				<string>Display common symbols for all graphics in a graphics overlay with a renderer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -934,7 +934,7 @@
 				<key>storyboardName</key>
 				<string>UniqueValueRenderer</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrate how to use a unique value renderer to style different features in a feature layer with different symbols</string>
+				<string>Render features in a layer using a distinct symbol for each unique attribute value.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -942,7 +942,7 @@
 				<key>storyboardName</key>
 				<string>DisplayGrid</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to display and work with coordinate system grids such as LatitudeLongitude, MGRS, UTM and USNG on a map view</string>
+				<string>Display coordinate system grids including Latitude/Longitude, MGRS, UTM and USNG on a map view.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -950,7 +950,7 @@
 				<key>storyboardName</key>
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to display billboarded point graphics with military symbols.</string>
+				<string>Create graphics using a local mil2525d style file and an XML file with key/value pairs for each graphic, and display the military symbols in 3D.</string>
 				<key>dependency</key>
 				<array>
 					<string>mil2525d</string>
@@ -960,7 +960,7 @@
 				<key>displayName</key>
 				<string>Read symbols from a mobile style</string>
 				<key>descriptionText</key>
-				<string>Open a mobile style (.stylx) and read its contents. Combine several symbols from the style into a single multilayer point symbol, then use it to display graphics in the map view.</string>
+				<string>Combine multiple symbols from a mobile style file into a single symbol.</string>
 				<key>storyboardName</key>
 				<string>ReadSymbolsFromMobileStyle</string>
 			</dict>
@@ -997,7 +997,7 @@
 				<key>storyboardName</key>
 				<string>FindAddress</string>
 				<key>descriptionText</key>
-				<string>Type in or select a prepopulated address to show its location on the map</string>
+				<string>Find the location for an address.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1005,7 +1005,7 @@
 				<key>storyboardName</key>
 				<string>ReverseGeocode</string>
 				<key>descriptionText</key>
-				<string>Tap on a location on the map to find the closest address</string>
+				<string>Use an online service to find the address for a tapped point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1013,7 +1013,7 @@
 				<key>storyboardName</key>
 				<string>FindPlace</string>
 				<key>descriptionText</key>
-				<string>Search for a point of interest either nearby, near a particular location or across the world</string>
+				<string>Find places of interest near a location or within a specific area.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1021,7 +1021,7 @@
 				<key>storyboardName</key>
 				<string>OfflineGeocode</string>
 				<key>descriptionText</key>
-				<string>Type in or select a prepopulated address to show its location on the map. Or tap and hold to get address for a point on the map. Tap, hold and move to get instant results from the locator file</string>
+				<string>Geocode addresses to locations and reverse geocode locations to addresses offline.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanDiegoLocator</string>
@@ -1057,7 +1057,7 @@
 				<key>storyboardName</key>
 				<string>AddFeatures</string>
 				<key>descriptionText</key>
-				<string>Tap on a location on the map to add a new feature at that location</string>
+				<string>Add features to a feature layer.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1065,7 +1065,7 @@
 				<key>storyboardName</key>
 				<string>DeleteFeatures</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to select it and then tap on the info button to delete the feature</string>
+				<string>Delete features from an online feature service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1073,7 +1073,7 @@
 				<key>storyboardName</key>
 				<string>UpdateAttributes</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to display a callout. The callout shows the damage type for that feature and an info button. To change the damage type tap on the info button and select a new on from the list shown</string>
+				<string>Update feature attributes in an online feature service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1081,7 +1081,7 @@
 				<key>storyboardName</key>
 				<string>EditGeometry</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to display a callout. To change the geometry of the selected feature tap on the info button. Tap on the new location on the map and tap Done to save</string>
+				<string>Update a feature&apos;s location in an online feature service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1089,7 +1089,7 @@
 				<key>storyboardName</key>
 				<string>EditFeatureAttachments</string>
 				<key>descriptionText</key>
-				<string>Tap on a feature to display a callout. The callout shows the number of attachments associated with that feature. Tap on the info button to open the list view. You can add, delete or download an attachment in this list</string>
+				<string>Add, delete, and download attachments for features from a service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1097,7 +1097,7 @@
 				<key>storyboardName</key>
 				<string>EditFeaturesOnline</string>
 				<key>descriptionText</key>
-				<string>This sample shows you how to add or edit features in an online feature layer using popups. The new popups provide inline editing for fast editing experience</string>
+				<string>View, edit, or add features using a popup.  </string>
 				<key>dependency</key>
 				<array>
 					<string>SanDiegoTilePackage</string>
@@ -1109,7 +1109,7 @@
 				<key>storyboardName</key>
 				<string>OfflineEditing</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to take features offline, make changes and sync them back to the service</string>
+				<string>Synchronize offline edits with a feature service using a popup.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanFranciscoTilePackage</string>
@@ -1128,7 +1128,7 @@
 				<key>storyboardName</key>
 				<string>Project</string>
 				<key>descriptionText</key>
-				<string>Project a point to another spatial reference.</string>
+				<string>Project a point from one spatial reference to another.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1136,7 +1136,7 @@
 				<key>storyboardName</key>
 				<string>CreateGeometries</string>
 				<key>descriptionText</key>
-				<string>The sample shows simple ways to create different types of geometries</string>
+				<string>Create simple geometry types.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1144,7 +1144,7 @@
 				<key>storyboardName</key>
 				<string>SpatialOperations</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to perform geometry operations between overlapping polygons</string>
+				<string>Find the union, intersection, or difference of two geometries.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1152,7 +1152,7 @@
 				<key>storyboardName</key>
 				<string>FormatCoordinates</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to convert a map location Point to a number of different coordinate notations. Tap on the map or edit the values in textfields</string>
+				<string>Format coordinates in a variety of common notations.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1160,7 +1160,7 @@
 				<key>storyboardName</key>
 				<string>ListTransformations</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to use the transformation catalog to get a list of available datum transformations that can be used to project a geometry between two different spatial references, and how to use one of the transformations to perform the geometry engine&apos;s &quot;project&quot; operation.</string>
+				<string>Get a list of suitable transformations for projecting a geometry between two spatial references with different horizontal datums.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1168,7 +1168,7 @@
 				<key>storyboardName</key>
 				<string>GeodesicOperations</string>
 				<key>descriptionText</key>
-				<string>Use geometry engine to calculate a geodesic path between two points and measure its distance. </string>
+				<string>Calculate a geodesic path between two points and measure its distance.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1176,7 +1176,7 @@
 				<key>storyboardName</key>
 				<string>CutGeometry</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to cut a geometry with a polyline using the GeometryEngine. For example, you may want to subdivide a large parcel polygon into several smaller parcels.</string>
+				<string>Cut a geometry along a polyline.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1184,7 +1184,7 @@
 				<key>storyboardName</key>
 				<string>ClipGeometry</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to clip a geometry with an envelope using the geometry engine.</string>
+				<string>Clip a geometry with another geometry.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1192,7 +1192,7 @@
 				<key>storyboardName</key>
 				<string>SpatialRelationships</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to use the AGSGeometryEngine to evaluate the spatial relationships between geometries.</string>
+				<string>Determine spatial relationships between two geometries.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1200,7 +1200,7 @@
 				<key>storyboardName</key>
 				<string>DensifyAndGeneralize</string>
 				<key>descriptionText</key>
-				<string>Apply densify and generalize functions to polyline geometry.</string>
+				<string>Apply densify and generalize functions to multipart geometry.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1208,7 +1208,7 @@
 				<key>storyboardName</key>
 				<string>Buffer</string>
 				<key>descriptionText</key>
-				<string>Create buffers around the tap location with a given radius.</string>
+				<string>Create a buffer around a map point and display the results as a graphic.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1247,7 +1247,7 @@
 				<key>storyboardName</key>
 				<string>FindRoute</string>
 				<key>descriptionText</key>
-				<string>The sample comes loaded with start and end stops. Tap on the Route button to solve for route between these stops. On completion the route is displayed on the map and the directions button is enabled. Tap on the button to see the list of directions</string>
+				<string>Display directions for a route between two points.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1255,7 +1255,7 @@
 				<key>storyboardName</key>
 				<string>RouteAroundBarriers</string>
 				<key>descriptionText</key>
-				<string>Add stops and barriers to the map, set the route parameters and tap route. A route will be shown connecting the stops with a list of directions</string>
+				<string>Find a route that reaches all stops without crossing any barriers.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1263,7 +1263,7 @@
 				<key>storyboardName</key>
 				<string>OfflineRouting</string>
 				<key>descriptionText</key>
-				<string>Tap on the map to add the first stop. Add additional stops to display the route. To route &apos;on the fly&apos; tap, hold and move to show the route dynamically.</string>
+				<string>Solve a route on-the-fly using offline data.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanDiegoNetworkData</string>
@@ -1276,7 +1276,7 @@
 				<key>storyboardName</key>
 				<string>FindServiceAreaInteractive</string>
 				<key>descriptionText</key>
-				<string>This samples shows how to find service areas around a point</string>
+				<string>Find the service area within a network from a given point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1307,7 +1307,7 @@
 				<key>storyboardName</key>
 				<string>AnalyzeHotspots</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to execute a geoprocessing task to calculate a hotspot analysis based on the frequency of 911 calls.</string>
+				<string>Use a geoprocessing service and a set of features to identify statistically significant hot spots and cold spots.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1315,7 +1315,7 @@
 				<key>storyboardName</key>
 				<string>StatisticalQuery</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.</string>
+				<string>Query a table to get aggregated statistics back for a specific field.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1323,7 +1323,7 @@
 				<key>storyboardName</key>
 				<string>StatisticalQueryGroupAndSort</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to query a feature table to get statistics for one or more specified fields. The results can be grouped and sorted using one or more fields in the table.</string>
+				<string>Query a feature table for statistics, grouping and sorting by different fields.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1331,7 +1331,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedGeoprocessing</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to calculate a viewshed using a geoprocessing service.</string>
+				<string>Calculate a viewshed using a geoprocessing service, in this case showing what parts of a landscape are visible from points on mountainous terrain.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1339,7 +1339,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedCamera</string>
 				<key>descriptionText</key>
-				<string>Shows how to create a location viewshed from a camera.</string>
+				<string>Analyze the viewshed for a camera. A viewshed shows the visible and obstructed areas from an observer&apos;s vantage point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1347,7 +1347,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedLocation</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to interactively edit a viewshed analysis in a scene and see updates on-the-fly.</string>
+				<string>Perform a viewshed analysis from a defined vantage point.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1355,7 +1355,7 @@
 				<key>storyboardName</key>
 				<string>ViewshedGeoElement</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to construct a viewshed so that it updates automatically relative to a moving GeoElement.</string>
+				<string>Analyze the viewshed for an object (geo element) in a scene.</string>
 				<key>dependency</key>
 				<array>
 					<string>Bradley3DModel</string>
@@ -1367,7 +1367,7 @@
 				<key>storyboardName</key>
 				<string>LineOfSightLocation</string>
 				<key>descriptionText</key>
-				<string>Place a line of sight between two locations.</string>
+				<string>Perform a line of sight analysis between two points in real time.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1375,7 +1375,7 @@
 				<key>storyboardName</key>
 				<string>LineOfSightGeoElement</string>
 				<key>descriptionText</key>
-				<string>Line of sight between an observer and a moving GeoElement</string>
+				<string>Show a line of sight between two moving objects.</string>
 				<key>dependency</key>
 				<array>
 					<string>Dolmus3DModel</string>
@@ -1387,7 +1387,7 @@
 				<key>storyboardName</key>
 				<string>DistanceMeasurementAnalysis</string>
 				<key>descriptionText</key>
-				<string>Demonstrates measuring 3D distances between two points in a scene.</string>
+				<string>Measure distances between two points in 3D.</string>
 			</dict>
 		</array>
 	</dict>
@@ -1402,7 +1402,7 @@
 				<key>storyboardName</key>
 				<string>GroupUsers</string>
 				<key>descriptionText</key>
-				<string>The sample demonstrates how to show the users in a group</string>
+				<string>Shows a list of users in a portal group.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1418,13 +1418,13 @@
 				<key>storyboardName</key>
 				<string>IntegratedWindowsAuthentication</string>
 				<key>descriptionText</key>
-				<string>Uses Windows credentials to access services hosted on a portal secured with Integrated Windows Authentication (IWA).</string>
+				<string>Connect to an IWA secured portal and search for maps.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Authenticate with OAuth</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers). Accessing secured items requires a login on the portal that hosts them (an ArcGIS Online account, for example).</string>
+				<string>Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources, such as private web maps or layers.</string>
 				<key>storyboardName</key>
 				<string>AuthenticateWithOAuth</string>
 			</dict>
@@ -1432,7 +1432,7 @@
 				<key>displayName</key>
 				<string>Token authentication</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to access a map service that is secured with ArcGIS token-based authentication.</string>
+				<string>Access a web map that is secured with ArcGIS token-based authentication.</string>
 				<key>storyboardName</key>
 				<string>TokenAuthentication</string>
 			</dict>
@@ -1477,7 +1477,7 @@
 			</dict>
 			<dict>
 				<key>descriptionText</key>
-				<string>This sample shows you how to open a web scene from a portal item.</string>
+				<string>Open a web scene from a portal item.</string>
 				<key>storyboardName</key>
 				<string>OpenScene</string>
 				<key>displayName</key>
@@ -1489,7 +1489,7 @@
 				<key>storyboardName</key>
 				<string>DisplayScene</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to display a scene with elevation data</string>
+				<string>Display a scene with a terrain surface and some imagery.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1497,7 +1497,7 @@
 				<key>storyboardName</key>
 				<string>ExtrudeGraphics</string>
 				<key>descriptionText</key>
-				<string>The sample shows you how to render graphics extruded in z direction</string>
+				<string>Extrude graphics based on an attribute value.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1505,7 +1505,7 @@
 				<key>storyboardName</key>
 				<string>SceneSymbols</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to create symbols with different 3D shapes</string>
+				<string>Show various kinds of 3D symbols in a scene.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1521,7 +1521,7 @@
 				<key>storyboardName</key>
 				<string>SceneLayerURL</string>
 				<key>descriptionText</key>
-				<string>The sample shows how to use a scene layer in a scene</string>
+				<string>Display an ArcGIS scene layer from a URL.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1529,7 +1529,7 @@
 				<key>storyboardName</key>
 				<string>ScenePropertiesExpressions</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to update the orientation of graphics in graphics overlay using expressions on scene properties</string>
+				<string>Update the orientation of a graphic using expressions based on its attributes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1537,7 +1537,7 @@
 				<key>storyboardName</key>
 				<string>Animate3DGraphic</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to animate a graphic’s position and rotation and have the camera follow it</string>
+				<string>A controller follows a graphic while the graphic&apos;s position and rotation are animated.</string>
 				<key>dependency</key>
 				<array>
 					<string>MissionFiles</string>
@@ -1550,7 +1550,7 @@
 				<key>storyboardName</key>
 				<string>DistanceCompositeSymbol</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to create a graphic using a distance composite scene symbol. Distance composite scene symbols can render different symbols depending on the distance between the camera and the graphic.</string>
+				<string>Change a graphic&apos;s symbol based on the camera&apos;s proximity to it.</string>
 				<key>dependency</key>
 				<array>
 					<string>Bristol3DModel</string>
@@ -1562,7 +1562,7 @@
 				<key>storyboardName</key>
 				<string>TerrainExaggeration</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to use terrain exaggeration on a surface in a scene</string>
+				<string>Vertically exaggerate terrain in a scene.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1570,7 +1570,7 @@
 				<key>storyboardName</key>
 				<string>FeatureLayerExtrusion</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to apply extrusion to a renderer on a feature layer</string>
+				<string>Extrude features based on their attributes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1578,7 +1578,7 @@
 				<key>storyboardName</key>
 				<string>SceneLayerSelection</string>
 				<key>descriptionText</key>
-				<string>This sample demonstrates how to identify geoelements in a scene layer.</string>
+				<string>Identify features in a scene to select.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1586,7 +1586,7 @@
 				<key>storyboardName</key>
 				<string>SyncMapAndSceneViews</string>
 				<key>descriptionText</key>
-				<string>Demonstrates how to keep the viewpoints of two map or scene views in sync with each other.</string>
+				<string>Keep the view points of two views (e.g. map view and scene view) synchronized with each other.</string>
 			</dict>
 			<dict>
 				<key>descriptionText</key>
@@ -1618,7 +1618,7 @@
 				<key>storyboardName</key>
 				<string>AddPointSceneLayer</string>
 				<key>descriptionText</key>
-				<string>View a point scene layer from a scene service</string>
+				<string>View a point scene layer from a scene service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1636,7 +1636,7 @@
 				<key>displayName</key>
 				<string>Open mobile scene (scene package)</string>
 				<key>descriptionText</key>
-				<string>Opens and displays a scene from a Mobile Scene Package (.mspk).</string>
+				<string>Opens and displays a scene from a mobile scene package (.mspk).</string>
 				<key>storyboardName</key>
 				<string>OpenMobileScene</string>
 				<key>dependency</key>
@@ -1667,6 +1667,14 @@
 				<array>
 					<string>PacificSouthWest</string>
 				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Realistic lighting and shadows</string>
+				<key>storyboardName</key>
+				<string>RealisticLightingAndShadows</string>
+				<key>descriptionText</key>
+				<string>Show realistic lighting and shadows for a given time of day.</string>
 			</dict>
 		</array>
 	</dict>

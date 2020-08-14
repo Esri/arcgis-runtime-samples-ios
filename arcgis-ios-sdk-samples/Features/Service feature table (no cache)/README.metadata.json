@@ -1,14 +1,27 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to use a feature service in on interaction no cache mode.",
+    "description": "Display a feature layer from a service using the no cache feature request mode.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "service-feature-table-no-cache.png"
     ],
     "keywords": [
+        "cache",
+        "feature request mode",
+        "performance",
+        "AGSFeatureLayer",
+        "AGSFeatureRequestMode.onInteractionNoCache",
+        "AGSServiceFeatureTable",
+        "AGSServiceFeatureTable.featureRequestMode"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/service-feature-table-no-cache-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/service-feature-table-no-cache-.htm"
+    ],
     "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSFeatureRequestMode.onInteractionNoCache",
+        "AGSServiceFeatureTable",
+        "AGSServiceFeatureTable.featureRequestMode"
     ],
     "snippets": [
         "OnInteractionNoCacheViewController.swift"

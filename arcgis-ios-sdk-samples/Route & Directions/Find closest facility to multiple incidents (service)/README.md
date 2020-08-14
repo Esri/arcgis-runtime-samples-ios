@@ -2,7 +2,7 @@
 
 Find routes from several locations to the respective closest facility.
 
-![Screenshot of Find Closest Facility to Multiple Incidents Service sample](image1.png)
+![Screenshot of Find Closest Facility to Multiple Incidents Service sample](find-closest-facility-service.png)
 
 ## Use case
 
@@ -28,14 +28,14 @@ Tap the Solve Routes button to solve and display the route from each incident (f
 
 ## Relevant API
 
-*   AGSClosestFacilityParameters
-*   AGSClosestFacilityResult
-*   AGSClosestFacilityRoute
-*   AGSClosestFacilityTask
-*   AGSFacility
-*   AGSGraphic
-*   AGSGraphicsOverlay
-*   AGSIncident
+* AGSClosestFacilityParameters
+* AGSClosestFacilityResult
+* AGSClosestFacilityRoute
+* AGSClosestFacilityTask
+* AGSFacility
+* AGSGraphic
+* AGSGraphicsOverlay
+* AGSIncident
 
 ## Tags
 

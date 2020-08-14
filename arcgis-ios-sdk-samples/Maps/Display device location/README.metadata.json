@@ -1,19 +1,35 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how you can enable location services and switch between different types of auto pan modes.",
+    "description": "Display your current position on the map, as well as switch between different types of auto-pan modes.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "display-device-location-1.png",
+        "display-device-location-2.png"
     ],
     "keywords": [
+        "GPS",
+        "compass",
+        "location",
+        "map",
+        "mobile",
+        "navigation",
+        "AGSLocationDisplay",
+        "AGSLocationDisplayAutoPanMode",
+        "AGSMap",
+        "AGSMapView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/display-device-location.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/display-device-location.htm"
+    ],
     "relevant_apis": [
+        "AGSLocationDisplay",
+        "AGSLocationDisplayAutoPanMode",
+        "AGSMap",
+        "AGSMapView"
     ],
     "snippets": [
-        "DisplayLocationViewController.swift",
-        "DisplayLocationSettingsViewController.swift"
+        "DisplayLocationSettingsViewController.swift",
+        "DisplayLocationViewController.swift"
     ],
     "title": "Display device location"
 }

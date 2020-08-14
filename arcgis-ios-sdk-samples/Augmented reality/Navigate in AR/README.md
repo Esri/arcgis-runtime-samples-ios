@@ -40,13 +40,13 @@ When you start, route instructions will be displayed and spoken. As you proceed 
 
 ## Relevant API
 
-* ArcGISARView
-* AGSGeometryEngine
 * AGSCLLocationDataSource
+* AGSGeometryEngine
 * AGSRouteResult
 * AGSRouteTask
 * AGSRouteTracker
 * AGSSurface
+* ArcGISARView
 
 ## About the data
 

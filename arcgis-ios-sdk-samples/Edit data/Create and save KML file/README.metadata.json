@@ -7,10 +7,19 @@
         "create-save-kml-2.png"
     ],
     "keywords": [
-        "Keyhole",
         "KML",
         "KMZ",
-        "OGC"
+        "Keyhole",
+        "OGC",
+        "AGSGeometryEngine",
+        "AGSKMLDataset",
+        "AGSKMLDocument",
+        "AGSKMLGeometry",
+        "AGSKMLLayer",
+        "AGSKMLNode",
+        "AGSKMLPlacemark",
+        "AGSKMLStyle",
+        "AGSSketchEditor"
     ],
     "redirect_from": [],
     "relevant_apis": [

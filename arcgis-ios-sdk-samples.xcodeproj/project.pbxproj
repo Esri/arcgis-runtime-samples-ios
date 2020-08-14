@@ -2898,7 +2898,7 @@
 		3ED027FD1B8E392500ACA70D /* Display information */ = {
 			isa = PBXGroup;
 			children = (
-				F1F651A724984742006DF277 /* Show a popup */,
+				F1F651A724984742006DF277 /* Show popup */,
 				00DAE5D924213D6B00D51281 /* Custom dictionary style */,
 				3ED028FD1B8E3AB300ACA70D /* Add graphics with renderer */,
 				3E71621D1BA0D7C2008DE398 /* Add graphics with symbols */,
@@ -4357,13 +4357,13 @@
 			path = "Dictionary renderer with feature layer";
 			sourceTree = "<group>";
 		};
-		F1F651A724984742006DF277 /* Show a popup */ = {
+		F1F651A724984742006DF277 /* Show popup */ = {
 			isa = PBXGroup;
 			children = (
 				F1F651A924984850006DF277 /* ShowPopupViewController.swift */,
 				F1F651AB2498485C006DF277 /* ShowPopup.storyboard */,
 			);
-			path = "Show a popup";
+			path = "Show popup";
 			sourceTree = "<group>";
 		};
 		F4159C6D20925A8D0016E53D /* Open a scene (portal item) */ = {

@@ -15,13 +15,32 @@
 import UIKit
 import ArcGIS
 
+protocol ConfigureSubnetworkTraceOptionsViewControllerDelegate: AnyObject {
+    func onDismiss(_ controller: ConfigureSubnetworkTraceOptionsViewController, didAddContidionExpression expression: AGSUtilityTraceConditionalExpression)
+}
+
 class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
+    // MARK: Storyboard views
+    
+    /// The cell for attribute options.
     @IBOutlet var attributesCell: UITableViewCell!
+    /// The cell for comparison operator options.
     @IBOutlet var comparisonCell: UITableViewCell!
+    /// The cell for value to compare with.
     @IBOutlet var valueCell: UITableViewCell!
+    /// A button to add the conditional expression to the trace configuration.
+    @IBOutlet var addBarButtonItem: UIBarButtonItem!
+    
+    // MARK: Properties
+    
+    /// A delegate to notify other view controllers.
+    weak var delegate: ConfigureSubnetworkTraceOptionsViewControllerDelegate?
     
     /// An array of possible network attributes.
     var possibleAttributes: [AGSUtilityNetworkAttribute]!
+    /// An array of `AGSUtilityAttributeComparisonOperator` and their description string pairs.
+    var attributeComparisonOperators: KeyValuePairs<AGSUtilityAttributeComparisonOperator, String>!
+    
     /// The attribute selected by the user.
     var selectedAttribute: AGSUtilityNetworkAttribute? {
         didSet {
@@ -34,67 +53,80 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     /// The comparison selected by the user.
     var selectedComparison: AGSUtilityAttributeComparisonOperator? {
         didSet {
-            if let index = comparisons.firstIndex(where: { $0.0 == selectedComparison }) {
-                comparisonCell.detailTextLabel?.text = comparisons[index].1
+            if let index = attributeComparisonOperators.firstIndex(where: { $0.0 == selectedComparison }) {
+                comparisonCell.detailTextLabel?.text = attributeComparisonOperators[index].1
+            } else {
+                comparisonCell.detailTextLabel?.text = nil
             }
             updateCellStates()
         }
     }
     /// The value selected by the user.
-    var selectedValue: String? {
+    var selectedValue: Any? {
         didSet {
-            valueCell.detailTextLabel?.text = selectedValue
+            addBarButtonItem.isEnabled = selectedValue != nil
         }
     }
     
+    /// A reference to the observer that detects if text field input is empty.
     var emptyStringObserver: Any!
     
-    /// An array of pairs of `AGSUtilityAttributeComparisonOperator` and their name strings.
-    let comparisons: KeyValuePairs<AGSUtilityAttributeComparisonOperator, String> = [
-        .equal: "Equal",
-        .notEqual: "NotEqual",
-        .greaterThan: "GreaterThan",
-        .greaterThanEqual: "GreaterThanEqual",
-        .lessThan: "LessThan",
-        .lessThanEqual: "LessThanEqual",
-        .includesTheValues: "IncludesTheValues",
-        .doesNotIncludeTheValues: "DoesNotIncludeTheValues",
-        .includesAny: "IncludesAny",
-        .doesNotIncludeAny: "DoesNotIncludeAny"
-    ]
+    // MARK: Actions
     
-    /// A dictionary of `AGSUtilityCategoryComparisonOperators`.
-    /// - Note: You may also create a `AGSUtilityCategoryComparison` with
-    ///         `AGSUtilityNetworkDefinition.categories` and `AGSUtilityCategoryComparisonOperator`.
-    // let categoryComparisonOperators: KeyValuePairs<AGSUtilityCategoryComparisonOperator, String> = [
-    //     .exists: "exists",
-    //     .doesNotExist: "doesNotExist"
-    // ]
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        // deselect row manually
-        if cell == valueCell {
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-        switch cell {
-        case attributesCell:
-            showAttributePicker()
-        case comparisonCell:
-            showComparisonPicker()
-        case valueCell:
-            showValueInputField { [weak self] value in
-                self?.selectedValue = value?.stringValue
-                self?.valueCell.detailTextLabel?.text = value?.stringValue
+    @IBAction func addConditionBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        if let attribute = selectedAttribute, let comparison = selectedComparison, let value = selectedValue {
+            let convertedValue: Any
+            
+            if let codedValue = value as? AGSCodedValue, attribute.domain is AGSCodedValueDomain {
+                // The value is a coded value.
+                convertedValue = convertToDataType(value: codedValue.code!, dataType: attribute.dataType)
+            } else {
+                // The value is from user input.
+                convertedValue = convertToDataType(value: value, dataType: attribute.dataType)
             }
+            
+            if let expression = AGSUtilityNetworkAttributeComparison(networkAttribute: attribute, comparisonOperator: comparison, value: convertedValue) {
+                // Create and pass the valid expression back to the main view controller.
+                delegate?.onDismiss(self, didAddContidionExpression: expression)
+            }
+        }
+        dismiss(animated: true)
+    }
+    
+    @IBAction func cancelBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
+    // MARK: UI and data binding methods
+    
+    /// Convert the values to matching data types.
+    ///
+    /// - Parameters:
+    ///   - value: The right hand side value used in the conditional expression.
+    ///   - dataType: An `AGSUtilityNetworkAttributeDataType` enum case.
+    ///
+    /// - Note: The input value can either be an `AGSCodedValue` populated from the left hand side
+    ///         attribute's domain, or a numeric value entered by the user.
+    ///
+    /// - Returns: Converted value.
+    func convertToDataType(value: Any, dataType: AGSUtilityNetworkAttributeDataType) -> Any {
+        switch dataType {
+        case .integer:
+            return value as! Int64
+        case .float:
+            return value as! Float
+        case .double:
+            return value as! Double
+        case .boolean:
+            return value as! Bool
         default:
-            fatalError("Unknown cell type")
+            return value
         }
     }
     
     func updateCellStates() {
         // Disable the value cell when attribute is unspecified.
-        if selectedAttribute == nil {
+        if selectedAttribute == nil || selectedComparison == nil {
             valueCell.textLabel?.isEnabled = false
             valueCell.isUserInteractionEnabled = false
         } else {
@@ -112,8 +144,9 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     func showAttributePicker() {
         let selectedIndex = possibleAttributes.firstIndex { $0 == selectedAttribute } ?? -1
-        let optionsViewController = OptionsTableViewController(labels: possibleAttributes.map { $0.name }, selectedIndex: selectedIndex) { (newIndex) in
+        let optionsViewController = OptionsTableViewController(labels: possibleAttributes.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
             self.selectedAttribute = self.possibleAttributes[newIndex]
+            self.navigationController?.popViewController(animated: true)
         }
         optionsViewController.title = "Attributes"
         show(optionsViewController, sender: self)
@@ -121,23 +154,38 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     func showComparisonPicker() {
         let selectedIndex = selectedComparison?.rawValue ?? -1
-        let optionsViewController = OptionsTableViewController(labels: comparisons.map { $0.1 }, selectedIndex: selectedIndex) { (newIndex) in
-            self.selectedComparison = self.comparisons[newIndex].0
+        let optionsViewController = OptionsTableViewController(labels: attributeComparisonOperators.map { $0.1 }, selectedIndex: selectedIndex) { newIndex in
+            self.selectedComparison = self.attributeComparisonOperators[newIndex].0
+            self.navigationController?.popViewController(animated: true)
         }
         optionsViewController.title = "Comparison"
+        show(optionsViewController, sender: self)
+    }
+    
+    func showValuePicker(values: [AGSCodedValue]) {
+        let selectedIndex = -1
+        let valueLabels = values.map { $0.name }
+        let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: selectedIndex) { newIndex in
+            self.selectedValue = values[newIndex]
+            self.valueCell.detailTextLabel?.text = valueLabels[newIndex]
+            self.navigationController?.popViewController(animated: true)
+        }
+        optionsViewController.title = "Value"
         show(optionsViewController, sender: self)
     }
     
     func showValueInputField(completion: @escaping (NSNumber?) -> Void) {
         let alertController = UIAlertController(title: "Provide a comparison value", message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let doneAction = UIAlertAction(title: "Done", style: .default) { [textField = alertController.textFields?.first] _ in
-            // If the text field is empty, do nothing.
+        let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
+            let textField = alertController.textFields?.first
+            // Remove the empty string observer when done button is no longer in use.
             NotificationCenter.default.removeObserver(
                 self.emptyStringObserver!,
                 name: UITextField.textDidChangeNotification,
                 object: textField
             )
+            // If the text field is empty, do nothing.
             guard let text = textField?.text, !text.isEmpty else { return }
             // Convert the string to a number.
             let formatter = NumberFormatter()
@@ -167,12 +215,47 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         // Add actions to alert controller.
         alertController.addAction(cancelAction)
         alertController.addAction(doneAction)
+        doneAction.isEnabled = false
         alertController.preferredAction = doneAction
         present(alertController, animated: true)
     }
     
-    deinit {
-        print("✅ options deinit")
+    // MARK: UITableViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        selectedAttribute = nil
+        selectedComparison = nil
+        selectedValue = nil
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath)
+        // deselect row manually
+        if cell == valueCell {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        switch cell {
+        case attributesCell:
+            showAttributePicker()
+        case comparisonCell:
+            showComparisonPicker()
+        case valueCell:
+            if let domain = selectedAttribute?.domain as? AGSCodedValueDomain {
+                showValuePicker(values: domain.codedValues)
+            } else {
+                showValueInputField { [weak self] value in
+                    // Assign an `NSNumber?` to selected value so that it can cast to numbers.
+                    self?.selectedValue = value
+                    self?.valueCell.detailTextLabel?.text = value?.stringValue
+                    // Mitigate the Apple's UI bug in right detail cell.
+                    self?.tableView.reloadRows(at: [indexPath], with: .none)
+                }
+            }
+        default:
+            fatalError("Unknown cell type")
+        }
     }
 }
 

@@ -15,439 +15,35 @@
 import UIKit
 import ArcGIS
 
-class ConfigureSubnetworkTraceViewController: UITableViewController {
-    // References to the switches.
-    @IBOutlet weak var barriersSwitch: UISwitch!
-    @IBOutlet weak var containersSwitch: UISwitch!
-    // References to the switch actions.
-    @IBAction func barriersSwitchAction(_ sender: UISwitch) {
-        sourceTier?.traceConfiguration?.includeBarriers = sender.isOn
-    }
-    @IBAction func containersSwitchAction(_ sender: UISwitch) {
-        sourceTier?.traceConfiguration?.includeContainers = sender.isOn
-    }
-    // References to interactable cells.
-    var attributesCell: UITableViewCell?
-    var comparisonCell: UITableViewCell?
-    var valueCell: UITableViewCell?
-    // References to cells that act as buttons.
-    var addConditionCell: UITableViewCell?
-    var resetCell: UITableViewCell?
-    var traceCell: UITableViewCell?
-    // References to labels.
-    var attributesLabel: UILabel?
-    var comparisonLabel: UILabel?
-    var valueLabel: UILabel?
-    // References to the button labels.
-    var valueButtonLabel: UILabel?
-    var addConditionLabel: UILabel?
-    var resetLabel: UILabel?
-    var traceLabel: UILabel?
+class ConfigureSubnetworkTraceViewController: UIViewController {
+    // MARK: Storyboard views
     
-    // An array of the types of AGSUtilityAttributeComparisonOperators as strings.
-    let comparisonsStrings = ["Equal", "NotEqual", "GreaterThan", "GreaterThanEqual", "LessThan", "LessThanEqual", "IncludesTheValues", "DoesNotIncludeTheValues", "IncludesAny", "DoesNotIncludeAny"]
-    // An array of the types of AGSUtilityAttributeComparisonOperators.
-    let comparisons: [AGSUtilityAttributeComparisonOperator] = [.equal, .notEqual, .greaterThan, .greaterThanEqual, .lessThan, .lessThanEqual, .includesTheValues, .doesNotIncludeTheValues, .includesAny, .doesNotIncludeAny]
-    // A dictionary of AGSUtilityCategoryComparisonOperators.
-    let categoryComparisonOperators: [AGSUtilityCategoryComparisonOperator: String] = [.exists: "exists", .doesNotExist: "doesNotExist" ]
+    /// A switch to control whether to include barriers in the trace.
+    @IBOutlet var barriersSwitch: UISwitch!
+    /// A switch to control whether to include containers in the trace.
+    @IBOutlet var containersSwitch: UISwitch!
+    /// The table view to display conditional expressions.
+    @IBOutlet var tableView: UITableView!
     
-    var utilityNetwork: AGSUtilityNetwork = {
-        // Feature service for an electric utility network in Naperville, Illinois.
-        let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
-        return AGSUtilityNetwork(url: featureServiceURL)
-    }()
-    // Utility element to start the trace from.
-    var startingLocation: AGSUtilityElement?
-    // Holding the initial conditional expression.
-    var initialExpression: AGSUtilityTraceConditionalExpression?
-    // The trace configuration.
-    var configuration: AGSUtilityTraceConfiguration?
-    // The source tier of the utility network.
-    var sourceTier: AGSUtilityTier?
-    // The number of added conditions.
-    var numberOfConditions = 1
-    // Arrays of attributes, values, and their respective labels.
-    var valueLabels: [String] = []
-    // The attribute selected by the user.
-    var selectedAttribute: AGSUtilityNetworkAttribute? {
-        didSet {
-            // Reset the selected value.
-            selectedValue = nil
-            valueLabel?.text = ""
-            updateButtons()
-        }
-    }
-    // The comparison selected by the user.
-    var selectedComparison: AGSUtilityAttributeComparisonOperator? {
-        didSet {
-            updateButtons()
-        }
-    }
-    // The value selected by the user.
-    var selectedValue: Any? {
-        didSet {
-            updateButtons()
-        }
-    }
-    
-    func loadUtilityNetwork() {
-        // For creating the default starting location.
-        let deviceTableName = "Electric Distribution Device"
-        let assetGroupName = "Circuit Breaker"
-        let assetTypeName = "Three Phase"
-        let globalID = UUID(uuidString: "1CAF7740-0BF4-4113-8DB2-654E18800028")
-        // For creating the default trace configuration.
-        let domainNetworkName = "ElectricDistribution"
-        let tierName = "Medium Voltage Radial"
-        
-        // Load the utility network.
-        utilityNetwork.load { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                // Create a default starting location.
-                let networkSource = self.utilityNetwork.definition.networkSource(withName: deviceTableName)
-                let assetGroup = networkSource?.assetGroup(withName: assetGroupName)
-                let assetType = assetGroup?.assetType(withName: assetTypeName)
-                self.startingLocation = self.utilityNetwork.createElement(with: assetType!, globalID: globalID!)
-                
-                // Set the terminal for this location. (For our case, we use the 'Load' terminal.)
-                self.startingLocation?.terminal = self.startingLocation?.assetType.terminalConfiguration?.terminals.first(where: { $0.name == "Load" })
-                // Get a default trace configuration from a tier to update the UI.
-                let domainNetwork = self.utilityNetwork.definition.domainNetwork(withDomainNetworkName: domainNetworkName)
-                self.sourceTier = domainNetwork?.tier(withName: tierName)
-                
-                // Set the trace configuration.
-                self.configuration = self.sourceTier?.traceConfiguration
-                
-                // Set the default expression (if provided).
-                if let expression = self.sourceTier?.traceConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
-                    self.initialExpression = expression
-                    let indexPath = IndexPath(row: 0, section: 2)
-                    let cell = self.tableView.cellForRow(at: indexPath)
-                    guard let conditionCell = cell as? LabelOrConditionCell else { return }
-                    conditionCell.centerLabel.text = self.expressionToString(expression: expression)
-                }
-                // Set the traversability scope.
-                self.sourceTier?.traceConfiguration?.traversability?.scope = .junctions
-            }
-        }
-    }
-    
-    // MARK: UITableViewDelegate for the options
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        tableView.deselectRow(at: indexPath, animated: true)
-        if cell == attributesCell {
-            // Get the network attributes.
-            let attributes = utilityNetwork.definition.networkAttributes.filter { !$0.isSystemDefined }
-            // Create the attribute labels.
-            let attributeLabels = attributes.map { $0.name }
-            // Get the index of the last selection.
-            let selectedIndex = selectedAttribute.flatMap { attributes.firstIndex(of: $0) } ?? -1
-            // Prompt attribute selection.
-            let optionsViewController = OptionsTableViewController(labels: attributeLabels, selectedIndex: selectedIndex) { (index) in
-                self.selectedAttribute = attributes[index]
-                self.attributesLabel?.text = self.selectedAttribute?.name
-            }
-            optionsViewController.title = "Attributes"
-            show(optionsViewController, sender: self)
-        } else if cell == comparisonCell {
-            // Get the index of the last selection.
-            let selectedIndex = selectedComparison.flatMap { comparisons.firstIndex(of: $0) } ?? -1
-            // Prompt comparison operator selection.
-            let optionsViewController = OptionsTableViewController(labels: comparisonsStrings, selectedIndex: selectedIndex) { (index) in
-                self.selectedComparison = self.comparisons[index]
-                self.comparisonLabel?.text = self.comparisonsStrings[index]
-            }
-            optionsViewController.title = "Comparison"
-            show(optionsViewController, sender: self)
-        } else if cell == valueCell {
-            if selectedAttribute != nil {
-                if let domain = selectedAttribute?.domain as? AGSCodedValueDomain {
-                    // Get the value labels.
-                    if valueLabels.isEmpty {
-                        domain.codedValues.forEach { (codedValue) in
-                            valueLabels.append(codedValue.name)
-                        }
-                    }
-                    #warning("Line 177 fails after adding a condition with the attribute 'Phases current' and trying to select a new value.")
-                    // Get the index of the last selection.
-                    let selectedIndex = selectedValue.flatMap { domain.codedValues.firstIndex(of: ($0 as! AGSCodedValue)) } ?? -1
-                    // Prompt value selection.
-                    let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: selectedIndex) { (index) in
-                        self.valueLabel?.text = self.valueLabels[index]
-                        self.selectedValue = domain.codedValues[index]
-                    }
-                    optionsViewController.title = "Value"
-                    show(optionsViewController, sender: self)
-                } else {
-                    // Prompt the user to create a custom value if none are available to select.
-                    addCustomValue()
-                }
-            }
-        } else if cell == addConditionCell {
-            // Add the condition with the selected attributes.
-            addCondition()
-        } else if indexPath == IndexPath(row: numberOfConditions, section: 2) {
-            reset()
-        } else if indexPath == IndexPath(row: numberOfConditions + 1, section: 2) {
-            trace()
-        }
-    }
-    
-    func addCustomValue() {
-        // Create an alert controller.
-        let alert = UIAlertController(title: "Create a value", message: "This attribute has no values. Please create one.", preferredStyle: .alert)
-        // Add a "done" button and obtain user input.
-        let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            let textfield = alert.textFields![0]
-            // Display the custom value on the value label.
-            self.valueLabel?.text = textfield.text
-            self.tableView.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .none)
-            // Set the user input to be the selected value.
-            self.selectedValue = textfield.text
-        }
-        alert.addAction(doneAction)
-        doneAction.isEnabled = false
-        // Add the text field.
-        alert.addTextField { (textField) in
-            textField.placeholder = "Add a custom value"
-            textField.keyboardType = .numbersAndPunctuation
-            textField.delegate = self
-            
-            // Add an observer to ensure the user does not input an empty string.
-            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
-                // Get the character count of non-whitespace characters.
-                let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
-                let textIsNotEmpty = textCount > 0
-                
-                // Enable the done button if the textfield is not empty.
-                doneAction.isEnabled = textIsNotEmpty
-            })
-        }
-        // Add cancel button.
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        // Present the alert.
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func addCondition() {
-        #warning("This function may cause a custom value to be blue instead of black.")
-        if configuration == nil {
-            configuration = AGSUtilityTraceConfiguration()
-        }
-        if configuration?.traversability == nil {
-            configuration?.traversability = AGSUtilityTraversability()
-        }
-        // NOTE: You may also create a UtilityCategoryComparison with UtilityNetworkDefinition.Categories and UtilityCategoryComparisonOperator.
-        if selectedAttribute != nil {
-            // If the value is a coded value.
-            if let codedValue = selectedValue as? AGSCodedValue, selectedAttribute?.domain is AGSCodedValueDomain {
-                selectedValue = convertToDataType(otherValue: codedValue.code!, dataType: selectedAttribute!.dataType)
-            } else {
-                selectedValue = convertToDataType(otherValue: selectedValue!, dataType: selectedAttribute!.dataType)
-            }
-            // NOTE: You may also create a UtilityNetworkAttributeComparison with another NetworkAttribute.
-            var expression: AGSUtilityTraceConditionalExpression?
-            expression = AGSUtilityNetworkAttributeComparison(networkAttribute: selectedAttribute!, comparisonOperator: selectedComparison!, value: selectedValue!)
-            if let otherExpression = configuration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
-                // NOTE: You may also combine expressions with UtilityTraceAndCondition
-                expression = AGSUtilityTraceOrCondition(leftExpression: otherExpression, rightExpression: expression!)
-            }
-            // Update the list of barrier conditions.
-            configuration?.traversability?.barriers = expression
-            let expressionString = expressionToString(expression: expression!)
-            // Increase the number of conditions.
-            numberOfConditions += 1
-            let newIndexPath = IndexPath(row: numberOfConditions - 1, section: 2)
-            // Update the table
-            tableView.performBatchUpdates({
-                // Insert the new row
-                tableView.insertRows(at: [newIndexPath], with: .fade)
-            }, completion: nil)
-            let cell = tableView.cellForRow(at: newIndexPath)
-            guard let conditionCell = cell as? LabelOrConditionCell else { return }
-            conditionCell.centerLabel.text = "\(expressionString!)"
-            tableView.reloadData()
-        }
-    }
-    
-    func reset() {
-        // Reset the barrier condition to the initial value.
-        let traceConfiguration = configuration
-        traceConfiguration?.traversability?.barriers = initialExpression
-        // Reset the added rows.
-        for _ in 1...numberOfConditions - 1 {
-            numberOfConditions -= 1
-            let indexPath = IndexPath(row: 1, section: 2)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-        // Reset the selections.
-        selectedAttribute = nil
-        selectedComparison = nil
-        selectedValue = nil
-        //Reset the labels.
-        attributesLabel?.text = nil
-        comparisonLabel?.text = nil
-        valueLabel?.text = nil
-    }
-    
-    func trace() {
-        if startingLocation == nil {
-            presentAlert(title: "Error", message: "Could not trace utility network.")
-        } else {
-            // Create utility trace parameters for the starting location.
-            let startingLocations = [startingLocation]
-            let parameters = AGSUtilityTraceParameters(traceType: .subnetwork, startingLocations: startingLocations as! [AGSUtilityElement])
-            parameters.traceConfiguration = configuration
-            // Trace the utility network.
-            utilityNetwork.trace(with: parameters) { [weak self] (traceResults, error) in
-                guard let self = self else { return }
-                if let error = error {
-                    self.presentAlert(error: error)
-                } else if let elementResult = traceResults?.first as! AGSUtilityElementTraceResult? {
-                    // Display the number of elements found by the trace.
-                    let numberOfResults = elementResult.elements.count
-                    self.presentAlert(title: "Trace Result", message: "\(numberOfResults) elements found.")
-                } else {
-                    self.presentAlert(title: "Trace Result", message: "No trace results found.")
-                }
-            }
-        }
-    }
-    
-    func updateButtons() {
-        if selectedAttribute == nil || selectedComparison == nil || selectedValue == nil {
-            guard let valueCell = self.valueCell else { return }
-            // Enable or disable the value button.
-            if selectedAttribute == nil {
-                valueButtonLabel?.isEnabled = false
-                valueCell.isUserInteractionEnabled = false
-            } else {
-                if (selectedAttribute?.domain as? AGSCodedValueDomain) != nil {
-                    // Indicate that a new view controller will display.
-                    valueCell.accessoryType = .disclosureIndicator
-                } else {
-                    // Indicate that an alert will show.
-                    valueCell.accessoryType = .none
-                }
-                valueButtonLabel?.textColor = .systemBlue
-                valueButtonLabel?.isEnabled = true
-                valueCell.isUserInteractionEnabled = true
-            }
-            // If selections have not been made, disable the buttons
-            addConditionLabel?.isEnabled = false
-            resetLabel?.isEnabled = false
-            traceLabel?.isEnabled = false
-        } else {
-            // Enable the buttons once all selections have been made
-            addConditionLabel?.isEnabled = true
-            resetLabel?.isEnabled = true
-            traceLabel?.isEnabled = true
-        }
-    }
-    
-    // Convert the expression into a readable string.
-    func expressionToString(expression: AGSUtilityTraceConditionalExpression) -> String? {
-        switch expression {
-        case let categoryComparison as AGSUtilityCategoryComparison:
-            let comparisonOperatorString = categoryComparisonOperators[categoryComparison.comparisonOperator]
-            return "`\(categoryComparison.category.name)` \(comparisonOperatorString!)"
-        case let attributeComparison as AGSUtilityNetworkAttributeComparison:
-            // Check if attribute domain is a coded value domain.
-            if let domain = attributeComparison.networkAttribute.domain as? AGSCodedValueDomain {
-                // Get the coded value using the the attribute comparison value and attribute data type.
-                let dataType = attributeComparison.networkAttribute.dataType
-                let attributeValue = convertToDataType(otherValue: attributeComparison.value!, dataType: attributeComparison.networkAttribute.dataType)
-                let codedValue = domain.codedValues.first(where: { compare(dataType: dataType, value1: $0.code!, value2: attributeValue!) })
-                let comparisonOperatorString = comparisonsStrings[attributeComparison.comparisonOperator.rawValue]
-                return "'\(attributeComparison.networkAttribute.name)' \(comparisonOperatorString) '\(codedValue!.name)'"
-            } else {
-                if let nameOrValue = attributeComparison.otherNetworkAttribute?.name {
-                    let comparisonOperatorString = comparisonsStrings[attributeComparison.comparisonOperator.rawValue]
-                    return "`\(attributeComparison.networkAttribute.name)` \(comparisonOperatorString) `\(nameOrValue)`"
-                } else if let nameOrValue = attributeComparison.value {
-                    let comparisonOperatorString = comparisonsStrings[attributeComparison.comparisonOperator.rawValue]
-                    return "`\(attributeComparison.networkAttribute.name)` \(comparisonOperatorString) `\(nameOrValue)`"
-                }
-            }
-        case let andCondition as AGSUtilityTraceAndCondition:
-            return """
-            (\(expressionToString(expression: andCondition.leftExpression)!)) AND
-            (\(expressionToString(expression: andCondition.rightExpression)!))
-            """
-            
-        case let orCondition as AGSUtilityTraceOrCondition:
-            return """
-            (\(expressionToString(expression: orCondition.leftExpression)!)) OR
-            (\(expressionToString(expression: orCondition.rightExpression)!))
-            """
-        default:
-            return nil
-        }
-        return nil
-    }
-    
-    // Convert the values to matching data types.
-    func convertToDataType(otherValue: Any, dataType: AGSUtilityNetworkAttributeDataType) -> Any? {
-        switch dataType {
-        case .boolean:
-            return otherValue as! Bool
-        case .float:
-            if let valueString = otherValue as? String {
-                return Float(valueString)
-            }
-            return otherValue as! Float
-        case .double:
-            if let valueString = otherValue as? String {
-                return Double(valueString)
-            }
-            return otherValue as! Double
-        case .integer:
-            if let valueString = otherValue as? String {
-                return Int32(valueString)
-            }
-            return otherValue as! Int32
-        default:
-            return nil
-        }
-    }
-    
-    // Compare two values.
-    func compare(dataType: AGSUtilityNetworkAttributeDataType, value1: Any, value2: Any) -> Bool {
-        switch dataType {
-        case .boolean:
-            return value1 as? Bool == value2 as? Bool
-        case .double:
-            return value1 as? Double == value2 as? Double
-        case .float:
-            return value1 as? Float == value2 as? Float
-        case .integer:
-            return value1 as? Int32 == value2 as? Int32
-        default:
-            return false
-        }
-    }
+    // MARK: Properties
     
     /// A convenience type for the table view sections.
     private enum Section: CaseIterable {
-        case switches, newCondition, conditions
+        case switches, conditions, chainedConditions
         
         var label: String {
             switch self {
             case .switches:
                 return "Trace options"
-            case .newCondition:
-                return "Define new condition"
             case .conditions:
-                return "Barrier conditions"
+                return "List of conditions"
+            case .chainedConditions:
+                return "Chained condition"
             }
         }
     }
     
+    /// A convenience type for the labels of switches in the table rows.
     private enum Switches: CaseIterable {
         case barriers, containers
         
@@ -461,109 +57,303 @@ class ConfigureSubnetworkTraceViewController: UITableViewController {
         }
     }
     
-    let switches = ["Include barriers", "Include containers"]
-    let cellIdentifiers = ["SwitchCell", "SelectionCell", "LabelOrConditionCell"]
-    let selectionLabels = ["Attribute", "Comparison", "Value", "Add new condition"]
-    let conditionLabels = ["Reset", "Trace"]
+    /// A feature service for an electric utility network in Naperville, Illinois.
+    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     
-    // MARK: - UITableViewDataSource
+    /// An array of condition expressions.
+    var traceConditionalExpressions = [AGSUtilityTraceConditionalExpression]()
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return Section.allCases.count
-    }
+    /// The operator to chain conditions together, i.e. `AND` or `OR`.
+    /// - Note: You may also combine expressions with `AGSUtilityTraceAndCondition`.
+    ///         i.e. `AGSUtilityTraceAndCondition.init`
+    let chainExpressionsOperator = AGSUtilityTraceOrCondition.init
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch Section.allCases[section] {
-        case .switches:
-            return 2
-        case .newCondition:
-            return 4
-        case .conditions:
-            return numberOfConditions + 2
+    /// The utility element to start the trace from.
+    var startingLocation: AGSUtilityElement?
+    /// The initial conditional expression.
+    var initialExpression: AGSUtilityTraceConditionalExpression?
+    /// The trace configuration.
+    var configuration: AGSUtilityTraceConfiguration?
+    
+    /// A array of `AGSUtilityCategoryComparisonOperator` and their description string pairs.
+    /// - Note: You may also create a `AGSUtilityCategoryComparison` with
+    ///         `AGSUtilityNetworkDefinition.categories` and `AGSUtilityCategoryComparisonOperator`.
+    let categoryComparisonOperators: KeyValuePairs<AGSUtilityCategoryComparisonOperator, String> = [
+        .exists: "exists",
+        .doesNotExist: "doesNotExist"
+    ]
+    
+    /// An array of `AGSUtilityAttributeComparisonOperator` and their description string pairs.
+    let attributeComparisonOperators: KeyValuePairs<AGSUtilityAttributeComparisonOperator, String> = [
+        .equal: "Equal",
+        .notEqual: "NotEqual",
+        .greaterThan: "GreaterThan",
+        .greaterThanEqual: "GreaterThanEqual",
+        .lessThan: "LessThan",
+        .lessThanEqual: "LessThanEqual",
+        .includesTheValues: "IncludesTheValues",
+        .doesNotIncludeTheValues: "DoesNotIncludeTheValues",
+        .includesAny: "IncludesAny",
+        .doesNotIncludeAny: "DoesNotIncludeAny"
+    ]
+    
+    // MARK: Actions
+    
+    @IBAction func traceBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        SVProgressHUD.show(withStatus: "Running trace…")
+        if let location = startingLocation {
+            // Create utility trace parameters for the starting location.
+            let parameters = AGSUtilityTraceParameters(traceType: .subnetwork, startingLocations: [location])
+            configuration?.includeBarriers = barriersSwitch.isOn
+            configuration?.includeContainers = containersSwitch.isOn
+            configuration?.traversability?.barriers = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions)
+            parameters.traceConfiguration = configuration
+            // Trace the utility network.
+            utilityNetwork.trace(with: parameters) { [weak self] (results, error) in
+                SVProgressHUD.dismiss()
+                guard let self = self else { return }
+                if let error = error {
+                    self.presentAlert(error: error)
+                } else if let elementResult = results?.first as? AGSUtilityElementTraceResult {
+                    // Display the number of elements found by the trace.
+                    self.presentAlert(title: "Trace Result", message: "\(elementResult.elements.count) elements found.")
+                } else {
+                    // No elements found.
+                    self.presentAlert(title: "Trace Result", message: "No trace results found.")
+                }
+            }
         }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Section.allCases[section].label
+    @IBAction func resetBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        // Reset the barrier condition to the initial value.
+        configuration?.traversability?.barriers = initialExpression
+        // Reset the conditions.
+        if let initialExpression = initialExpression {
+            // Add back the initial expression.
+            traceConditionalExpressions = [initialExpression]
+        } else {
+            traceConditionalExpressions.removeAll()
+        }
+        tableView.reloadSections(IndexSet(integersIn: 1...2), with: .automatic)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch Section.allCases[indexPath.section] {
-        case .switches:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath)
-            cell.textLabel?.text = switches[indexPath.row]
-            switch indexPath.row {
-            case 0:
-                cell.accessoryView = barriersSwitch
-            case 1:
-                cell.accessoryView = containersSwitch
-            default:
-                return cell
-            }
-            return cell
-        case .newCondition:
-            if indexPath.row < 3 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionCell", for: indexPath)
-                cell.textLabel?.text = selectionLabels[indexPath.row]
-                if indexPath.row < 2 {
-                    cell.textLabel?.textColor = .systemBlue
-                    cell.accessoryType = .disclosureIndicator
-                }
-                switch indexPath.row {
-                case 0:
-                    attributesCell = cell
-                    attributesLabel = cell.detailTextLabel
-                case 1:
-                    comparisonCell = cell
-                    comparisonLabel = cell.detailTextLabel
-                case 2:
-                    valueCell = cell
-                    valueLabel = cell.detailTextLabel
-                    valueButtonLabel = cell.textLabel
-                    updateButtons()
-                default:
-                    break
-                }
-                return cell
+    // MARK: Methods
+    
+    func loadUtilityNetwork() {
+        // Constants for creating the default starting location.
+        let deviceTableName = "Electric Distribution Device"
+        let assetGroupName = "Circuit Breaker"
+        let assetTypeName = "Three Phase"
+        let globalID = UUID(uuidString: "1CAF7740-0BF4-4113-8DB2-654E18800028")!
+        
+        // Constants for creating the default trace configuration.
+        let domainNetworkName = "ElectricDistribution"
+        let tierName = "Medium Voltage Radial"
+        
+        // Load the utility network.
+        utilityNetwork.load { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LabelOrConditionCell", for: indexPath) as! LabelOrConditionCell
-                addConditionCell = cell
-                cell.centerLabel.text = selectionLabels[indexPath.row]
+                // Create a default starting location.
+                let networkSource = self.utilityNetwork.definition.networkSource(withName: deviceTableName)
+                let assetType = networkSource?.assetGroup(withName: assetGroupName)?.assetType(withName: assetTypeName)
+                if let type = assetType, let startingLocation = self.utilityNetwork.createElement(with: type, globalID: globalID) {
+                    // Set the terminal for this location. (For our case, use the "Load" terminal.)
+                    startingLocation.terminal = startingLocation.assetType.terminalConfiguration?.terminals.first(where: { $0.name == "Load" })
+                    self.startingLocation = startingLocation
+                }
+                // Get a default trace configuration from a tier to update the UI.
+                let domainNetwork = self.utilityNetwork.definition.domainNetwork(withDomainNetworkName: domainNetworkName)
+                var utilityTierConfiguration = domainNetwork?.tier(withName: tierName)?.traceConfiguration
                 
-                cell.centerLabel.textColor = .systemBlue
-                return cell
+                // Set the trace configuration.
+                if utilityTierConfiguration == nil {
+                    utilityTierConfiguration = AGSUtilityTraceConfiguration()
+                }
+                if utilityTierConfiguration?.traversability == nil {
+                    utilityTierConfiguration?.traversability = AGSUtilityTraversability()
+                }
+                
+                // Set the default expression (if provided).
+                if let expression = utilityTierConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
+                    self.initialExpression = expression
+                    if !self.traceConditionalExpressions.contains(expression) {
+                        self.traceConditionalExpressions.append(expression)
+                    }
+                    self.tableView.reloadSections(IndexSet(integersIn: 1...2), with: .automatic)
+                }
+                // Set the traversability scope.
+                utilityTierConfiguration?.traversability?.scope = .junctions
+                
+                self.configuration = utilityTierConfiguration
             }
-        case .conditions:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelOrConditionCell", for: indexPath) as! LabelOrConditionCell
-            if indexPath.row >= numberOfConditions {
-                cell.centerLabel.text = conditionLabels[indexPath.row - numberOfConditions]
-                cell.centerLabel.textColor = .systemBlue
-            }
-            return cell
         }
     }
+    
+    /// Chain the conditional expressions together with AND or OR operators.
+    /// .
+    /// - Parameters:
+    ///   - chainingOperator: An operator closure which is the initializer
+    ///                       of either `AGSUtilityTraceAndCondition` or `AGSUtilityTraceOrCondition`.
+    ///   - expressions: An array of `AGSUtilityTraceConditionalExpression`s.
+    /// - Returns: The chained conditional expression.
+    func chainExpressions(using chainingOperator: (AGSUtilityTraceConditionalExpression, AGSUtilityTraceConditionalExpression) -> AGSUtilityTraceConditionalExpression, expressions: [AGSUtilityTraceConditionalExpression]) -> AGSUtilityTraceConditionalExpression? {
+        guard let firstExpression = expressions.first else { return nil }
+        if expressions.count == 1 {
+            return firstExpression
+        }
+        return expressions[1...].reduce(firstExpression) { leftCondition, rightCondition in
+            chainingOperator(leftCondition, rightCondition)
+        }
+    }
+    
+    /// Convert an `AGSUtilityTraceConditionalExpression` into a readable string.
+    ///
+    /// - Parameter expression: An `AGSUtilityTraceConditionalExpression`.
+    /// - Returns: A string describing the expression.
+    func expressionToString(expression: AGSUtilityTraceConditionalExpression) -> String {
+        switch expression {
+        case let categoryComparison as AGSUtilityCategoryComparison:
+            let comparisonOperatorString = categoryComparisonOperators.first { $0.0 == categoryComparison.comparisonOperator }!.1
+            return "`\(categoryComparison.category.name)` \(comparisonOperatorString)"
+        case let attributeComparison as AGSUtilityNetworkAttributeComparison:
+            let attributeName = attributeComparison.networkAttribute.name
+            let comparisonOperator = attributeComparisonOperators.first { $0.0 == attributeComparison.comparisonOperator }!.1
+            // Check if attribute domain is a coded value domain.
+            if let codedValue = attributeComparison.value as? AGSCodedValue {
+                return "'\(attributeName)' \(comparisonOperator) '\(codedValue.name)'"
+            } else if let otherName = attributeComparison.otherNetworkAttribute?.name {
+                return "`\(attributeName)` \(comparisonOperator) `\(otherName)`"
+            } else if let value = attributeComparison.value {
+                return "`\(attributeName)` \(comparisonOperator) `\(value)`"
+            } else {
+                fatalError("Unknown attribute comparison expression")
+            }
+        case let andCondition as AGSUtilityTraceAndCondition:
+            return """
+            (\(expressionToString(expression: andCondition.leftExpression))) AND
+            (\(expressionToString(expression: andCondition.rightExpression)))
+            """
+        case let orCondition as AGSUtilityTraceOrCondition:
+            return """
+            (\(expressionToString(expression: orCondition.leftExpression))) OR
+            (\(expressionToString(expression: orCondition.rightExpression)))
+            """
+        default:
+            fatalError("Unknown trace condition expression type")
+        }
+    }
+    
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadUtilityNetwork()
-        tableView.dataSource = self
-        tableView.delegate = self
-        let nib = UINib(nibName: "LabelOrConditionCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "LabelOrConditionCell")
-        
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ConfigureSubnetworkTraceViewController", "OptionsTableViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+            "ConfigureSubnetworkTraceViewController",
+            "ConfigureSubnetworkTraceOptionsViewController"
+        ]
+        loadUtilityNetwork()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navigationController = segue.destination as? UINavigationController,
+            let controller = navigationController.topViewController as? ConfigureSubnetworkTraceOptionsViewController {
+            controller.possibleAttributes = utilityNetwork.definition.networkAttributes.filter { !$0.isSystemDefined }
+            controller.attributeComparisonOperators = attributeComparisonOperators
+            controller.delegate = self
+        }
+    }
+    
+    deinit {
+        print("✅ c s t deinit")
     }
 }
 
-// MARK: UITextFieldDelegate
-extension ConfigureSubnetworkTraceViewController: UITextFieldDelegate {
-    // Ensure that the text field will only accept numbers.
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        let validCharacters = ".-0123456789"
-        
-        return CharacterSet(charactersIn: validCharacters).isSuperset(of: CharacterSet(charactersIn: text))
+// MARK: - ConfigureSubnetworkTraceOptionsViewControllerDelegate
+
+extension ConfigureSubnetworkTraceViewController: ConfigureSubnetworkTraceOptionsViewControllerDelegate {
+    func onDismiss(_ controller: ConfigureSubnetworkTraceOptionsViewController, didAddContidionExpression expression: AGSUtilityTraceConditionalExpression) {
+        if !traceConditionalExpressions.contains(expression) {
+            // Append the new conditional expression if it is not a duplicate.
+            traceConditionalExpressions.append(expression)
+            tableView.reloadSections(IndexSet(integersIn: 1...2), with: .automatic)
+        }
     }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return Section.allCases[section].label
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return Section.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch Section.allCases[section] {
+        case .switches:
+            return 2
+        case .conditions:
+            return traceConditionalExpressions.count
+        case .chainedConditions:
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch Section.allCases[indexPath.section] {
+        case .switches:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath)
+            switch indexPath.row {
+            case 0:
+                cell.accessoryView = barriersSwitch
+                cell.textLabel?.text = Switches.barriers.label
+            case 1:
+                cell.accessoryView = containersSwitch
+                cell.textLabel?.text = Switches.containers.label
+            default:
+                fatalError("Unknown SwitchCell type")
+            }
+            return cell
+        case .conditions:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ConditionCell", for: indexPath)
+            cell.textLabel?.text = expressionToString(expression: traceConditionalExpressions[indexPath.row])
+            return cell
+        case .chainedConditions:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChainedConditionCell", for: indexPath) as! ChainedConditionsCell
+            if let expression = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions) {
+                cell.conditionsLabel.text = expressionToString(expression: expression)
+            } else {
+                cell.conditionsLabel.text = "Expressions failed to convert to string."
+            }
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // Don't allow deletion of the first row if default condition exists.
+        if initialExpression != nil {
+            guard indexPath.row != 0 else { return }
+        }
+        if editingStyle == .delete {
+            traceConditionalExpressions.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+class ChainedConditionsCell: UITableViewCell {
+    @IBOutlet var conditionsLabel: UILabel!
 }

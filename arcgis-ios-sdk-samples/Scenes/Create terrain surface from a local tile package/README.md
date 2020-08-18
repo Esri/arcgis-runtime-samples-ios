@@ -1,14 +1,16 @@
-# Create terrain from a local tile package
+# Create terrain surface from a local tile package
 
 Set the terrain surface with elevation described by a local tile package.
 
 ![Create terrain from a local tile package](create-terrain-from-a-local-tile-package.png)
 
-## Use Case
+## Use case
 
-The terrain surface is what the basemap, operational layers, and graphics are draped on. The tile package must be a LERC (limited error raster compression) encoded TPK. Details on creating these are in the [ArcGIS Pro documentation](https://pro.arcgis.com/en/pro-app/help/sharing/overview/tile-package.htm).
+In a scene view, the terrain surface is what the basemap, operational layers, and graphics are draped onto. For example, when viewing a scene in a mountainous region, applying a terrain surface to the scene will help in recognizing the slopes, valleys, and elevated areas.
 
-Terrain can be loaded offline from tile packages (.tpk).
+## How to use the sample
+
+When loaded, the sample will show a scene with a terrain surface applied. Pan and zoom to explore the scene and observe how the terrain surface allows visualizing elevation differences.
 
 ## How it works
 
@@ -21,14 +23,18 @@ Terrain can be loaded offline from tile packages (.tpk).
 * AGSArcGISTiledElevationSource
 * AGSSurface
 
-## About the data
-
-This terrain data comes from Monterey, California.
-
 ## Offline data
 
 This sample uses the [Monterey Elevation](https://arcgisruntime.maps.arcgis.com/home/item.html?id=cce37043eb0440c7a5c109cf8aad5500) tile package. It is downloaded from ArcGIS Online automatically.
 
+## About the data
+
+This terrain data comes from Monterey, California.
+
+## Additional information
+
+The tile package must be a LERC (limited error raster compression) encoded TPK. Details on the topic can be found in [Share a tile package](https://pro.arcgis.com/en/pro-app/help/sharing/overview/tile-package.htm) in the *ArcGIS Pro* documentation.
+
 ## Tags
 
-3D, tile cache, elevation, surface
+3D, elevation, surface, tile cache

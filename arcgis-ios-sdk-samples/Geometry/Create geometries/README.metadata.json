@@ -3,32 +3,30 @@
     "description": "Create simple geometry types.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "create-geometries.png"
     ],
     "keywords": [
-        "point",
-        "point collection",
-        "polyline",
-        "multipoint",
-        "polygon",
-        "envelope",
-        "geometry",
-        "graphic",
-        "AGSGraphicsOverlay",
-        "AGSGraphic",
+        "area",
+        "boundary",
+        "line",
+        "marker",
+        "path",
+        "shape",
         "AGSEnvelope",
-        "AGSMultipointBuilder",
-        "AGSPolylineBuilder",
-        "AGSPolygonBuilder"
+        "AGSMultipoint",
+        "AGSPoint",
+        "AGSPolygon",
+        "AGSPolyline"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/create-geometries.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/create-geometries.htm"
+    ],
     "relevant_apis": [
-        "AGSGraphicsOverlay",
-        "AGSGraphic",
         "AGSEnvelope",
-        "AGSMultipointBuilder",
-        "AGSPolylineBuilder",
-        "AGSPolygonBuilder"
+        "AGSMultipoint",
+        "AGSPoint",
+        "AGSPolygon",
+        "AGSPolyline"
     ],
     "snippets": [
         "CreateGeometriesViewController.swift"

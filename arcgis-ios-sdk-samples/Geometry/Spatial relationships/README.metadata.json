@@ -3,35 +3,49 @@
     "description": "Determine spatial relationships between two geometries.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "spatial-relationships.png"
     ],
     "keywords": [
-        "geometry",
-        "spatial relationship",
-        "crosses",
-        "contains",
-        "disjoint",
-        "intersects",
-        "overlaps",
-        "touches",
-        "within",
+        "geometries",
+        "relationship",
+        "spatial analysis",
+        "AGSGeometry",
         "AGSGeometryEngine",
+        "AGSGeometryType",
         "AGSGraphic",
-        "AGSGraphicsOverlay",
-        "AGSGeoView",
-        "AGSGeoViewTouchDelegate"
+        "AGSPoint",
+        "AGSPolygon",
+        "AGSPolyline",
+        "class AGSGeometryEngine.geometry(_:contains:)",
+        "class AGSGeometryEngine.geometry(_:crossesGeometry:)",
+        "class AGSGeometryEngine.geometry(_:disjointTo:)",
+        "class AGSGeometryEngine.geometry(_:intersects:)",
+        "class AGSGeometryEngine.geometry(_:overlapsGeometry:)",
+        "class AGSGeometryEngine.geometry(_:touchesGeometry:)",
+        "class AGSGeometryEngine.geometry(_:within:)"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/spatial-relationships.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/spatial-relationships.htm"
+    ],
     "relevant_apis": [
+        "AGSGeometry",
         "AGSGeometryEngine",
+        "AGSGeometryType",
         "AGSGraphic",
-        "AGSGraphicsOverlay",
-        "AGSGeoView",
-        "AGSGeoViewTouchDelegate"
+        "AGSPoint",
+        "AGSPolygon",
+        "AGSPolyline",
+        "class AGSGeometryEngine.geometry(_:contains:)",
+        "class AGSGeometryEngine.geometry(_:crossesGeometry:)",
+        "class AGSGeometryEngine.geometry(_:disjointTo:)",
+        "class AGSGeometryEngine.geometry(_:intersects:)",
+        "class AGSGeometryEngine.geometry(_:overlapsGeometry:)",
+        "class AGSGeometryEngine.geometry(_:touchesGeometry:)",
+        "class AGSGeometryEngine.geometry(_:within:)"
     ],
     "snippets": [
-        "SpatialRelationshipsViewController.swift",
-        "SpatialRelationshipsTableViewController.swift"
+        "SpatialRelationshipsTableViewController.swift",
+        "SpatialRelationshipsViewController.swift"
     ],
     "title": "Spatial relationships"
 }

@@ -15,8 +15,8 @@ The sample loads a map of the Southwestern United States. Tap the play or pause 
 ## How it works
 
 1. Create an `AGSImageOverlay` and add it to the `AGSSceneView`.
-2. Set up a timer with an initial frame rate of 60 frames per second.
-3. Create a new `AGSImageFrame` object every time interval, and set it on the image overlay.
+2. Set up a repeating timer with an initial interval time of 16ms, which will display approximately 60 `AGSImageFrame`s per second.
+3. Create a new image frame when the timer fires and set it on the image overlay.
 
 ## Relevant API
 

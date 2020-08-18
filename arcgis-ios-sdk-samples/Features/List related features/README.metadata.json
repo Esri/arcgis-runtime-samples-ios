@@ -1,14 +1,32 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to query related features for a given feature.",
+    "description": "List features related to the selected feature.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "list-related-features.png"
     ],
     "keywords": [
+        "features",
+        "identify",
+        "query",
+        "related",
+        "relationship",
+        "search",
+        "AGSArcGISFeature",
+        "AGSArcGISFeatureTable",
+        "AGSArcGISFeatureTable.queryRelatedFeatures",
+        "AGSFeatureQueryResult",
+        "AGSRelatedFeatureQueryResult"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/list-related-features.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/list-related-features.htm"
+    ],
     "relevant_apis": [
+        "AGSArcGISFeature",
+        "AGSArcGISFeatureTable",
+        "AGSArcGISFeatureTable.queryRelatedFeatures",
+        "AGSFeatureQueryResult",
+        "AGSRelatedFeatureQueryResult"
     ],
     "snippets": [
         "ListRelatedFeaturesVC.swift",

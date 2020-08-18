@@ -22,8 +22,8 @@
         "AGSUtilityElementTraceResult",
         "AGSUtilityNetwork",
         "AGSUtilityNetworkDefinition",
-        "AGSUtilityTraceFilter",
         "AGSUtilityTier",
+        "AGSUtilityTraceFilter",
         "AGSUtilityTraceParameters",
         "AGSUtilityTraceResult",
         "AGSUtilityTraceType"
@@ -38,8 +38,8 @@
         "AGSUtilityElementTraceResult",
         "AGSUtilityNetwork",
         "AGSUtilityNetworkDefinition",
-        "AGSUtilityTraceFilter",
         "AGSUtilityTier",
+        "AGSUtilityTraceFilter",
         "AGSUtilityTraceParameters",
         "AGSUtilityTraceResult",
         "AGSUtilityTraceType"

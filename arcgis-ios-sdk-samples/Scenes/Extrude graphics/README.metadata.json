@@ -1,17 +1,33 @@
 {
     "category": "Scenes",
-    "description": "This sample demonstrates how to render graphics extruded in the z direction.",
+    "description": "Extrude graphics based on an attribute value.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "extrude-graphics.png"
     ],
     "keywords": [
+        "3D",
+        "extrude",
+        "extrusion",
+        "height",
+        "scene",
+        "visualization",
+        "AGSExtrusionMode",
+        "AGSRendererSceneProperties",
+        "AGSScene",
+        "AGSSimpleRenderer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/extrude-graphics.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/extrude-graphics.htm"
+    ],
     "relevant_apis": [
+        "AGSExtrusionMode",
+        "AGSRendererSceneProperties",
+        "AGSScene",
+        "AGSSimpleRenderer"
     ],
     "snippets": [
         "ExtrudeGraphicsViewController.swift"
     ],
-    "title": "Extrude Graphics"
+    "title": "Extrude graphics"
 }

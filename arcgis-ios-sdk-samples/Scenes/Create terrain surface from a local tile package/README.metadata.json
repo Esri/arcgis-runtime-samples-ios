@@ -7,14 +7,13 @@
     ],
     "keywords": [
         "3D",
-        "tile cache",
         "elevation",
         "surface",
+        "tile cache",
         "AGSArcGISTiledElevationSource",
         "AGSSurface"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSArcGISTiledElevationSource",
         "AGSSurface"
@@ -22,5 +21,5 @@
     "snippets": [
         "CreateTerrainSurfaceFromLocalTilePackageViewController.swift"
     ],
-    "title": "Create terrain from a local tile package"
+    "title": "Create terrain surface from a local tile package"
 }

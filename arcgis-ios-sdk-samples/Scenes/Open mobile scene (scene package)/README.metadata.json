@@ -1,18 +1,17 @@
 {
     "category": "Scenes",
-    "description": "Opens and displays a scene from a Mobile Scene Package (.mspk).",
+    "description": "Opens and displays a scene from a mobile scene package (.mspk).",
     "ignore": false,
     "images": [
-        "image1.png"
+        "open-mobile-scene-package.png"
     ],
     "keywords": [
-        "Offline",
-        "Scene",
+        "offline",
+        "scene",
         "AGSMobileScenePackage",
         "AGSSceneView"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSMobileScenePackage",
         "AGSSceneView"

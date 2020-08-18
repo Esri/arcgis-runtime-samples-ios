@@ -1,14 +1,42 @@
 {
     "category": "Analysis",
-    "description": "This sample demonstrates how to query a feature table to get aggregated statistics back for a specific field.",
+    "description": "Query a table to get aggregated statistics back for a specific field.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "statistical-query.png"
     ],
     "keywords": [
+        "analysis",
+        "average",
+        "bounding geometry",
+        "filter",
+        "intersect",
+        "maximum",
+        "mean",
+        "minimum",
+        "query",
+        "spatial query",
+        "standard deviation",
+        "statistics",
+        "sum",
+        "variance",
+        "AGSServiceFeatureTable",
+        "AGSStatisticDefinition",
+        "AGSStatisticRecord",
+        "AGSStatisticType",
+        "AGSStatisticsQueryParameters",
+        "AGSStatisticsQueryResult"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/statistical-query.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/statistical-query.htm"
+    ],
     "relevant_apis": [
+        "AGSServiceFeatureTable",
+        "AGSStatisticDefinition",
+        "AGSStatisticRecord",
+        "AGSStatisticType",
+        "AGSStatisticsQueryParameters",
+        "AGSStatisticsQueryResult"
     ],
     "snippets": [
         "StatisticalQueryViewController.swift"

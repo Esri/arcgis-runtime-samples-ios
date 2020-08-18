@@ -1,17 +1,29 @@
 # Change sublayer visibility
 
-This sample demonstrates how you can hide or show sublayers of a map image layer
+Change the visibility of sublayers.
 
-## How the app works
+![All sublayers visible](change-sublayer-visibility-1.png)
+![Cities sublayer hidden](change-sublayer-visibility-2.png))
 
-Tapping on the `Sublayers` button in the bottom toolbar displays the list of sublayers. Each sublayer in the list has a switch, which can be used to toggle visibility of that particular sublayer.
+## Use case
 
-![](image1.png)
-![](image2.png)
+A map image layer may contain many sublayers such as different types of roads in a road network or city, county, and state borders in a US map. The user may only be interested in a subset of these sublayers. Or, perhaps showing all of the sublayers would show too much detail. In these cases, you can hide certain sublayers by changing their visibility.
+
+## How to use the sample
+
+Tap the bottom button to display a list of sublayers. Tap the switches to toggle the visibility of the sublayers.
 
 ## How it works
 
-The `mapImageSublayers` property on `AGSArcGISMapImageLayer` is used to get the list of `AGSArcGISMapImageSublayer`. Each of these sublayer has a property called `visible`, which is used to toggle visibility.
+1. Create an `AGSArcGISMapImageLayer` object with the URL to a map image service.
+2. Get all `AGSArcGISMapImageSublayer`s of the map image layer.
+3. For each layer in the sublayer list, set its visible property to true or false.
 
+## Relevant API
 
+* AGSArcGISMapImageLayer
+* AGSArcGISMapImageSublayer
 
+## Tags
+
+layer, sublayer, visibility

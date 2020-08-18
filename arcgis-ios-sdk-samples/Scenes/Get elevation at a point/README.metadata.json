@@ -7,26 +7,23 @@
     ],
     "keywords": [
         "elevation",
-        "scene",
         "point",
-        "AGSPoint",
-        "AGSScene",
+        "surface",
+        "AGSArcGISTiledElevationSource",
+        "AGSElevationSource",
         "AGSSceneView",
-        "AGSSurface",
-        "AGSElevationSource"
+        "AGSSurface"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "AGSPoint",
-        "AGSScene",
+        "AGSArcGISTiledElevationSource",
+        "AGSElevationSource",
         "AGSSceneView",
-        "AGSSurface",
-        "AGSElevationSource"
+        "AGSSurface"
     ],
     "snippets": [
-        "GetElevationPointViewController.swift",
-        "ElevationViewController.swift"
+        "ElevationViewController.swift",
+        "GetElevationPointViewController.swift"
     ],
-    "title": "Get Elevation at a Point"
+    "title": "Get elevation at a point"
 }

@@ -3,7 +3,7 @@
     "description": "Access a web map that is secured with ArcGIS token-based authentication.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "token-authentication.png"
     ],
     "keywords": [
         "authentication",
@@ -16,8 +16,7 @@
         "AGSPortal",
         "AGSPortalItem"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSMap",
         "AGSMapView",

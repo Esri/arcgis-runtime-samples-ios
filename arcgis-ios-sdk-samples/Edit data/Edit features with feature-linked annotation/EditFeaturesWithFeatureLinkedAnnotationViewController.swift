@@ -97,7 +97,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     
     // Create an alert dialog with edit texts to allow editing of the given feature's 'AD_ADDRESS' and 'ST_STR_NAM' attributes.
     func showEditableAttributes(selectedFeature: AGSFeature) {
-        // Create objects that observe changes to the text of the secure portal URL text field.
+        // Create an object to observe changes from the text fields.
         var textFieldObserver: NSObjectProtocol!
         // Create an alert controller and customize the title and message.
         let alert = UIAlertController(title: "Edit Feature Attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
@@ -109,7 +109,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             selectedFeature.attributes["AD_ADDRESS"] = Int((addressTextField?.text)!)
             selectedFeature.attributes["ST_STR_NAM"] = streetTextField?.text
             selectedFeature.featureTable?.update(selectedFeature)
-
+            // Remove the observer after editing is complete.
             if let textFieldObserver = textFieldObserver {
                 NotificationCenter.default.removeObserver(textFieldObserver)
             }

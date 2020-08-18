@@ -27,16 +27,13 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     }
     // The feature that has been selected.
     var selectedFeature: AGSFeature?
-    // A geodatabase to be loaded.
-    var geodatabase: AGSGeodatabase?
     // The returned cancelable after identifying the layers.
     var identifyLayers: AGSCancelable?
     
     func loadGeodatabase() {
         // Obtain the geodatabase URL from portal data.
         let geodatabaseURL = Bundle.main.url(forResource: "loudoun_anno", withExtension: "geodatabase")!
-        geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
-        guard let geodatabase = geodatabase else { return }
+        let geodatabase = AGSGeodatabase(fileURL: geodatabaseURL)
         // Load a geodatabase from portal data.
         geodatabase.load { [weak self] (error: Error?) in
             guard let self = self else { return }
@@ -66,33 +63,34 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         
         // Identify across all layers.
         identifyLayers = mapView.identifyLayers(atScreenPoint: at, tolerance: 10.0, returnPopupsOnly: false) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
-            guard let self = self, let results = results else { return }
+            guard let self = self else { return }
             if let error = error {
                 self.clearSelection()
                 self.presentAlert(error: error)
                 return
-            }
-            for result in results {
-                guard let featureLayer = result.layerContent as? AGSFeatureLayer, let selectedFeature = result.geoElements.first as? AGSFeature else { continue }
-                switch selectedFeature.geometry?.geometryType {
-                case .point:
-                    // If the selected feature is a point, prompt the edit attributes alert.
-                    self.showEditableAttributes(selectedFeature: selectedFeature)
-                case .polyline:
-                    let polyline = selectedFeature.geometry as! AGSPolyline
-                    // If the selected feature is a polyline with any part containing more than one segment (i.e. a curve), present an alert.
-                    if polyline.parts.array().contains(where: { $0.pointCount > 2 }) {
-                        self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
+            } else if let results = results {
+                for result in results {
+                    guard let featureLayer = result.layerContent as? AGSFeatureLayer, let selectedFeature = result.geoElements.first as? AGSFeature else { continue }
+                    switch selectedFeature.geometry?.geometryType {
+                    case .point:
+                        // If the selected feature is a point, prompt the edit attributes alert.
+                        self.showEditableAttributes(selectedFeature: selectedFeature)
+                    case .polyline:
+                        let polyline = selectedFeature.geometry as! AGSPolyline
+                        // If the selected feature is a polyline with any part containing more than one segment (i.e. a curve), present an alert.
+                        if polyline.parts.array().contains(where: { $0.pointCount > 2 }) {
+                            self.presentAlert(title: "Make a different selection", message: "Select straight (single segment) polylines only.")
+                            return
+                        }
+                    default:
                         return
                     }
-                default:
+                    // Select the feature.
+                    featureLayer.select(selectedFeature)
+                    // Set the feature globally.
+                    self.selectedFeature = selectedFeature
                     return
                 }
-                // Select the feature.
-                featureLayer.select(selectedFeature)
-                // Set the feature globally.
-                self.selectedFeature = selectedFeature
-                return
             }
         }
     }

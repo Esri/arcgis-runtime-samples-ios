@@ -34,7 +34,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     
     func loadGeodatabase() {
         // Load a geodatabase from portal data.
-        geodatabase.load { [weak self] (error: Error?) in
+        geodatabase.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)

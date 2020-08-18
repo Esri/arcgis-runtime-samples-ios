@@ -28,7 +28,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     // The feature that has been selected.
     var selectedFeature: AGSFeature?
     // The returned cancelable after identifying the layers.
-    var identifyLayers: AGSCancelable?
+    var identifyOperation: AGSCancelable?
     
     func loadGeodatabase() {
         // Obtain the geodatabase URL from portal data.
@@ -62,7 +62,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         clearSelection()
         
         // Identify across all layers.
-        identifyLayers = mapView.identifyLayers(atScreenPoint: at, tolerance: 10.0, returnPopupsOnly: false) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
+        identifyOperation = mapView.identifyLayers(atScreenPoint: at, tolerance: 10.0, returnPopupsOnly: false) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
             guard let self = self else { return }
             if let error = error {
                 self.clearSelection()
@@ -224,8 +224,8 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
 // Select the nearest feature or move the point or polyline vertex to the given screen point.
 extension EditFeaturesWithFeatureLinkedAnnotationViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let identifyLayers = identifyLayers {
-            identifyLayers.cancel()
+        if let identifyOperation = identifyOperation {
+            identifyOperation.cancel()
         }
         // If a feature has been selected, determine what the type of geometry and move it accordingly.
         if let selectedFeature = selectedFeature {

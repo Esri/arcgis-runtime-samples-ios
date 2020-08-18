@@ -98,8 +98,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
     // Create an alert dialog with edit texts to allow editing of the given feature's 'AD_ADDRESS' and 'ST_STR_NAM' attributes.
     func showEditableAttributes(selectedFeature: AGSFeature) {
         // Create objects that observe changes to the text of the secure portal URL text field.
-        var streetTextDidChangeObserver: NSObjectProtocol!
-        var addressTextDidChangeObserver: NSObjectProtocol!
+        var textFieldObserver: NSObjectProtocol!
         // Create an alert controller and customize the title and message.
         let alert = UIAlertController(title: "Edit Feature Attributes", message: "Edit the 'AD_ADDRESS' and 'ST_STR_NAM' attributes.", preferredStyle: .alert)
         // Add a "Done" option to complete the editing process and close the alert.
@@ -111,11 +110,8 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             selectedFeature.attributes["ST_STR_NAM"] = streetTextField?.text
             selectedFeature.featureTable?.update(selectedFeature)
 
-            if let streetObserver = streetTextDidChangeObserver, let addressObserver = addressTextDidChangeObserver {
-                NotificationCenter.default.removeObserver(streetObserver)
-                NotificationCenter.default.removeObserver(addressObserver)
-                streetTextDidChangeObserver = nil
-                addressTextDidChangeObserver = nil
+            if let textFieldObserver = textFieldObserver {
+                NotificationCenter.default.removeObserver(textFieldObserver)
             }
         }
         alert.addAction(doneAction)
@@ -126,7 +122,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             // Populate the text fields with the current value.
             textField.text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
             // Add an observer to ensure the user does not input an empty string.
-            streetTextDidChangeObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: .main, using: {_ in
+            textFieldObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: .main, using: {_ in
                 // Enable the done button if both textfields are not empty.
                 doneAction.isEnabled = (alert.textFields?.allSatisfy { $0.text?.isEmpty == false })!
             })
@@ -136,11 +132,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             // Prompt a keyboard to enter the street name.
             textField.keyboardType = .default
             textField.text = selectedFeature.attributes["ST_STR_NAM"] as? String
-            // Add an observer to ensure the user does not input an empty string.
-            addressTextDidChangeObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
-                // Enable the done button if both textfields are not empty.
-                doneAction.isEnabled = (alert.textFields?.allSatisfy { $0.text?.isEmpty == false })!
-            })
         }
         // Add a "Cancel" option and clear the selection if cancel is selected.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in

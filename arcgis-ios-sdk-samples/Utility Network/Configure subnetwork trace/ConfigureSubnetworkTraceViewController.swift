@@ -195,7 +195,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     }
     
     /// Chain the conditional expressions together with AND or OR operators.
-    /// .
+    ///
     /// - Parameters:
     ///   - chainingOperator: An operator closure which is the initializer
     ///                       of either `AGSUtilityTraceAndCondition` or `AGSUtilityTraceOrCondition`.

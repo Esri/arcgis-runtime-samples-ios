@@ -100,27 +100,28 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func traceBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        guard let location = startingLocation else { return }
+        
+        // Create utility trace parameters for the starting location.
+        let parameters = AGSUtilityTraceParameters(traceType: .subnetwork, startingLocations: [location])
+        configuration?.includeBarriers = barriersSwitch.isOn
+        configuration?.includeContainers = containersSwitch.isOn
+        configuration?.traversability?.barriers = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions)
+        parameters.traceConfiguration = configuration
+        
+        // Trace the utility network.
         SVProgressHUD.show(withStatus: "Running trace…")
-        if let location = startingLocation {
-            // Create utility trace parameters for the starting location.
-            let parameters = AGSUtilityTraceParameters(traceType: .subnetwork, startingLocations: [location])
-            configuration?.includeBarriers = barriersSwitch.isOn
-            configuration?.includeContainers = containersSwitch.isOn
-            configuration?.traversability?.barriers = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions)
-            parameters.traceConfiguration = configuration
-            // Trace the utility network.
-            utilityNetwork.trace(with: parameters) { [weak self] (results, error) in
-                SVProgressHUD.dismiss()
-                guard let self = self else { return }
-                if let error = error {
-                    self.presentAlert(error: error)
-                } else if let elementResult = results?.first as? AGSUtilityElementTraceResult {
-                    // Display the number of elements found by the trace.
-                    self.presentAlert(title: "Trace Result", message: "\(elementResult.elements.count) elements found.")
-                } else {
-                    // No elements found.
-                    self.presentAlert(title: "Trace Result", message: "No trace results found.")
-                }
+        utilityNetwork.trace(with: parameters) { [weak self] (results, error) in
+            SVProgressHUD.dismiss()
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else if let elementResult = results?.first as? AGSUtilityElementTraceResult {
+                // Display the number of elements found by the trace.
+                self.presentAlert(title: "Trace Result", message: "\(elementResult.elements.count) elements found.")
+            } else {
+                // No elements found.
+                self.presentAlert(title: "Trace Result", message: "No trace results found.")
             }
         }
     }

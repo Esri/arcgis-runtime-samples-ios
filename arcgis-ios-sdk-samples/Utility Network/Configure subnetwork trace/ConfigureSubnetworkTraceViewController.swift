@@ -222,13 +222,20 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         case let attributeComparison as AGSUtilityNetworkAttributeComparison:
             let attributeName = attributeComparison.networkAttribute.name
             let comparisonOperator = attributeComparisonOperators.first { $0.0 == attributeComparison.comparisonOperator }!.1
-            // Check if attribute domain is a coded value domain.
-            if let codedValue = attributeComparison.value as? AGSCodedValue {
-                return "'\(attributeName)' \(comparisonOperator) '\(codedValue.name)'"
-            } else if let otherName = attributeComparison.otherNetworkAttribute?.name {
+            
+            if let otherName = attributeComparison.otherNetworkAttribute?.name {
+                // Check if it is comparing with another network attribute.
                 return "`\(attributeName)` \(comparisonOperator) `\(otherName)`"
             } else if let value = attributeComparison.value {
-                return "`\(attributeName)` \(comparisonOperator) `\(value)`"
+                let dataType = attributeComparison.networkAttribute.dataType
+                if let domain = attributeComparison.networkAttribute.domain as? AGSCodedValueDomain,
+                    let codedValue = domain.codedValues.first(where: { compareAttributeData(dataType: dataType, value1: $0.code!, value2: value) }) {
+                    // Check if attribute domain is a coded value domain.
+                    return "'\(attributeName)' \(comparisonOperator) '\(codedValue.name)'"
+                } else {
+                    // It is comparing with a user input value.
+                    return "`\(attributeName)` \(comparisonOperator) `\(value)`"
+                }
             } else {
                 fatalError("Unknown attribute comparison expression")
             }
@@ -244,6 +251,28 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
             """
         default:
             fatalError("Unknown trace condition expression type")
+        }
+    }
+    
+    /// Compare two attribute values.
+    ///
+    /// - Parameters:
+    ///   - dataType: An `AGSUtilityNetworkAttributeDataType` enum that tells the type of 2 values.
+    ///   - value1: The lhs value to compare.
+    ///   - value2: The rhs value to compare.
+    /// - Returns: A boolean indicating if the values are euqal both in type and in value.
+    func compareAttributeData(dataType: AGSUtilityNetworkAttributeDataType, value1: Any, value2: Any) -> Bool {
+        switch dataType {
+        case .boolean:
+            return value1 as? Bool == value2 as? Bool
+        case .double:
+            return value1 as? Double == value2 as? Double
+        case .float:
+            return value1 as? Float == value2 as? Float
+        case .integer:
+            return value1 as? Int64 == value2 as? Int64
+        default:
+            return false
         }
     }
     

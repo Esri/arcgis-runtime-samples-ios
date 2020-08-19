@@ -68,9 +68,6 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         }
     }
     
-    /// A reference to the observer that detects if text field input is empty.
-    var emptyStringObserver: Any!
-    
     // MARK: Actions
     
     @IBAction func addConditionBarButtonItemTapped(_ sender: UIBarButtonItem) {
@@ -177,11 +174,13 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     func showValueInputField(completion: @escaping (NSNumber?) -> Void) {
         let alertController = UIAlertController(title: "Provide a comparison value", message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        // Create an object to observe if text field input is empty.
+        var textFieldObserver: NSObjectProtocol!
         let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
             let textField = alertController.textFields?.first
             // Remove the empty string observer when done button is no longer in use.
             NotificationCenter.default.removeObserver(
-                self.emptyStringObserver!,
+                textFieldObserver!,
                 name: UITextField.textDidChangeNotification,
                 object: textField
             )
@@ -199,7 +198,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             textField.keyboardType = .numbersAndPunctuation
             textField.placeholder = "e.g. 15"
             // Add an observer to ensure the user does not input an empty string.
-            self.emptyStringObserver = NotificationCenter.default.addObserver(
+            textFieldObserver = NotificationCenter.default.addObserver(
                 forName: UITextField.textDidChangeNotification,
                 object: textField,
                 queue: .main

@@ -296,10 +296,6 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
             controller.delegate = self
         }
     }
-    
-    deinit {
-        print("✅ c s t deinit")
-    }
 }
 
 // MARK: - ConfigureSubnetworkTraceOptionsViewControllerDelegate

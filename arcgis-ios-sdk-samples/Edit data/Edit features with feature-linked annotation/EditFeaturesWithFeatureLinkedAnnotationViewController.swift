@@ -56,12 +56,12 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         }
     }
     
-    func selectFeature(at: CGPoint) {
+    func selectFeature(at point: CGPoint) {
         // Clear any previously selected features.
         clearSelection()
         
         // Identify across all layers.
-        identifyOperation = mapView.identifyLayers(atScreenPoint: at, tolerance: 10.0, returnPopupsOnly: false) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
+        identifyOperation = mapView.identifyLayers(atScreenPoint: point, tolerance: 10.0, returnPopupsOnly: false) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
             guard let self = self else { return }
             if let error = error {
                 self.clearSelection()

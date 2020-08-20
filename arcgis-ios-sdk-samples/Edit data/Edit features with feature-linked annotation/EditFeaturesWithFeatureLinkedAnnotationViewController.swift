@@ -66,7 +66,6 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             if let error = error {
                 self.clearSelection()
                 self.presentAlert(error: error)
-                return
             } else if let results = results {
                 for result in results {
                     guard let featureLayer = result.layerContent as? AGSFeatureLayer, let selectedFeature = result.geoElements.first as? AGSFeature else { continue }

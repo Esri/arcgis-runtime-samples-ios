@@ -134,6 +134,10 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         // Add a "Cancel" option and clear the selection if cancel is selected.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.clearSelection()
+            // Remove the observer after editing is complete.
+            if let textFieldObserver = textFieldObserver {
+                NotificationCenter.default.removeObserver(textFieldObserver)
+            }
         })
         // Present the alert.
         present(alert, animated: true)

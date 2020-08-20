@@ -224,6 +224,7 @@ extension EditFeaturesWithFeatureLinkedAnnotationViewController: AGSGeoViewTouch
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if let identifyOperation = identifyOperation {
             identifyOperation.cancel()
+            self.identifyOperation = nil
         }
         // If a feature has been selected, determine what the type of geometry and move it accordingly.
         if let selectedFeature = selectedFeature {

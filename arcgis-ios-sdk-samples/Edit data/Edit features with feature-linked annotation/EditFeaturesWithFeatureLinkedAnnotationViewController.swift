@@ -113,17 +113,17 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             }
         }
         alert.addAction(doneAction)
+        // Add an observer to ensure the user does not input an empty string.
+        textFieldObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: .main, using: {_ in
+            // Enable the done button if both textfields are not empty.
+            doneAction.isEnabled = (alert.textFields?.allSatisfy { $0.text?.isEmpty == false })!
+        })
         // Add a text field to prompt the user to input the street address.
         alert.addTextField { (textField) in
             // Prompt a number pad for the address.
             textField.keyboardType = .numberPad
             // Populate the text fields with the current value.
             textField.text = (selectedFeature.attributes["AD_ADDRESS"] as! NSNumber).stringValue
-            // Add an observer to ensure the user does not input an empty string.
-            textFieldObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: .main, using: {_ in
-                // Enable the done button if both textfields are not empty.
-                doneAction.isEnabled = (alert.textFields?.allSatisfy { $0.text?.isEmpty == false })!
-            })
         }
         // Add a text field to prompt the user to input the street name.
         alert.addTextField { (textField) in

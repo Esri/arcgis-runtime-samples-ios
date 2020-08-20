@@ -136,7 +136,13 @@ class EditWithBranchVersioningViewController: UIViewController {
 //            }
 //        }
         serviceGeodatabase.createVersion(with: parameters) { [weak self] serviceVersionInfo, error in
-            
+            if let info = serviceVersionInfo {
+                // Create version succeeded.
+                self?.createdVersionName = info.name
+            } else if let error = error {
+                // Failed to create version.
+                self?.presentAlert(error: error)
+            }
         }
     }
     
@@ -182,23 +188,27 @@ class EditWithBranchVersioningViewController: UIViewController {
             message: "Please provide a branch name and an optional description.",
             preferredStyle: .alert
         )
+        // Remove observer on cancel.
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             NotificationCenter.default.removeObserver(textFieldObserver!)
         }
-        alertController.addAction(cancelAction)
+        // Create a new version and remove observer.
         let createAction = UIAlertAction(title: "Create", style: .default) { [weak self] _ in
             guard let self = self else { return }
             NotificationCenter.default.removeObserver(textFieldObserver!)
             let branchTextField = alertController.textFields![0]
             let descriptionTextField = alertController.textFields![1]
             // If the text field is empty, do nothing.
-            guard let branchText = branchTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-                !branchText.isEmpty else { return }
+            guard let branchText = branchTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !branchText.isEmpty else { return }
             let descriptionText = descriptionTextField.text
             let parameters = self.createServiceParameters(uniqueName: branchText, description: descriptionText, accessPermission: permission)
             self.createVersion(parameters: parameters)
         }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(createAction)
         alertController.preferredAction = createAction
+        
         // The text field for version name.
         alertController.addTextField { textField in
             textField.placeholder = "Must be unique, no leading space, cannot include . ; ' \""
@@ -229,7 +239,6 @@ class EditWithBranchVersioningViewController: UIViewController {
             message: "Choose an access level for the new branch version.",
             preferredStyle: .actionSheet
         )
-        alertController.popoverPresentationController?.barButtonItem = sender
         let versionAccessPermission: KeyValuePairs<String, AGSVersionAccess> = [
             "Public": .public,
             "Protected": .protected,
@@ -243,6 +252,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
+        alertController.popoverPresentationController?.barButtonItem = sender
         present(alertController, animated: true)
     }
     
@@ -257,7 +267,7 @@ class EditWithBranchVersioningViewController: UIViewController {
 
 extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // Tap to identify a pixel on the raster layer.
+        // Tap to identify a pixel on the feature layer.
         identifyPixel(at: screenPoint)
     }
 }
@@ -268,6 +278,7 @@ extension EditWithBranchVersioningViewController: UITextFieldDelegate {
     // Ensure that the text field will only accept numbers.
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        // Must not include special characters: . ; ' "
         let invalidCharacters = ".;'\""
         return CharacterSet(charactersIn: invalidCharacters).isDisjoint(with: CharacterSet(charactersIn: text))
     }

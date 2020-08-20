@@ -1115,6 +1115,14 @@
 					<string>SanFranciscoTilePackage</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Edit with branch versioning</string>
+				<key>storyboardName</key>
+				<string>EditWithBranchVersioning</string>
+				<key>descriptionText</key>
+				<string>Create version and edit features on a service geodatabase.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

@@ -172,18 +172,18 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     }
     
     func showValueInputField(completion: @escaping (NSNumber?) -> Void) {
-        let alertController = UIAlertController(title: "Provide a comparison value", message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         // Create an object to observe if text field input is empty.
         var textFieldObserver: NSObjectProtocol!
+        
+        let alertController = UIAlertController(title: "Provide a comparison value", message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)  { _ in
+            // Remove observer when canceled.
+            NotificationCenter.default.removeObserver(textFieldObserver!)
+        }
         let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
             let textField = alertController.textFields?.first
-            // Remove the empty string observer when done button is no longer in use.
-            NotificationCenter.default.removeObserver(
-                textFieldObserver!,
-                name: UITextField.textDidChangeNotification,
-                object: textField
-            )
+            // Remove the observer when done button is no longer in use.
+            NotificationCenter.default.removeObserver(textFieldObserver!)
             // If the text field is empty, do nothing.
             guard let text = textField?.text, !text.isEmpty else { return }
             // Convert the string to a number.

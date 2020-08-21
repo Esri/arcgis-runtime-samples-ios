@@ -18,25 +18,21 @@ import ArcGIS
 class OpenSceneViewController: UIViewController {
     @IBOutlet weak var sceneView: AGSSceneView!
     
-    private var portal: AGSPortal!
-    private var portalItem: AGSPortalItem!
-    private var scene: AGSScene!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenSceneViewController"]
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["OpenSceneViewController"]
 
-        //initialize portal with AGOL
-        portal = AGSPortal.arcGISOnline(withLoginRequired: false)
+        // Initialize portal with AGOL.
+        let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         
-        //get the portal item
+        // Get the portal item, a scene features Berlin, Germany.
         let portalItem = AGSPortalItem(portal: portal, itemID: "31874da8a16d45bfbc1273422f772270")
         
-        //create scene from portal item
+        // Create scene from the portal item.
         let scene = AGSScene(item: portalItem)
         
+        // Assign the scene to the scene view.
         sceneView.scene = scene
     }
 }

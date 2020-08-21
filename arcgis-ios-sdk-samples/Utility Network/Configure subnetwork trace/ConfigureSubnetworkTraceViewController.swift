@@ -110,7 +110,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         parameters.traceConfiguration = configuration
         
         // Trace the utility network.
-        SVProgressHUD.show(withStatus: "Running trace…")
+        SVProgressHUD.show(withStatus: "Tracing…")
         utilityNetwork.trace(with: parameters) { [weak self] (results, error) in
             SVProgressHUD.dismiss()
             guard let self = self else { return }

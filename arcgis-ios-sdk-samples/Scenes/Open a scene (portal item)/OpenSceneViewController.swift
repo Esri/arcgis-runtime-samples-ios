@@ -26,10 +26,10 @@ class OpenSceneViewController: UIViewController {
         // Initialize portal with AGOL.
         let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         
-        // Get the portal item, a scene features Berlin, Germany.
+        // Get the portal item, a scene featuring Berlin, Germany.
         let portalItem = AGSPortalItem(portal: portal, itemID: "31874da8a16d45bfbc1273422f772270")
         
-        // Create scene from the portal item.
+        // Create a scene from the portal item.
         let scene = AGSScene(item: portalItem)
         
         // Set the scene to the scene view.

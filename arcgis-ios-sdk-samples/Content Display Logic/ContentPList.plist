@@ -845,7 +845,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Display information</string>
+		<string>Display Information</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -1032,7 +1032,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Edit data</string>
+		<string>Edit Data</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -1230,7 +1230,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Route and directions</string>
+		<string>Route &amp; Directions</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -1393,7 +1393,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Cloud and portal</string>
+		<string>Cloud &amp; Portal</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -1680,7 +1680,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Utility network</string>
+		<string>Utility Network</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -1711,7 +1711,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Augmented reality</string>
+		<string>Augmented Reality</string>
 		<key>children</key>
 		<array>
 			<dict>

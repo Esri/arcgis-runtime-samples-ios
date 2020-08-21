@@ -88,23 +88,23 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNs-C6-zew">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Add" id="ISN-Q1-lte">
+                                    <barButtonItem title="Reset" id="Eec-Mb-rgh">
+                                        <connections>
+                                            <action selector="resetBarButtonItemTapped:" destination="eeV-QV-qKJ" id="kqe-1v-txa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RQv-69-HIS"/>
+                                    <barButtonItem systemItem="add" id="ISN-Q1-lte">
                                         <connections>
                                             <segue destination="xcg-8g-6Cg" kind="popoverPresentation" popoverAnchorBarButtonItem="ISN-Q1-lte" id="9Dd-8I-0Fn">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RQv-69-HIS"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Wif-Bv-s5P"/>
                                     <barButtonItem title="Trace" id="2rY-Ib-uDW">
                                         <connections>
                                             <action selector="traceBarButtonItemTapped:" destination="eeV-QV-qKJ" id="OmS-vz-fXC"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Wif-Bv-s5P"/>
-                                    <barButtonItem title="Reset" id="Eec-Mb-rgh">
-                                        <connections>
-                                            <action selector="resetBarButtonItemTapped:" destination="eeV-QV-qKJ" id="kqe-1v-txa"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

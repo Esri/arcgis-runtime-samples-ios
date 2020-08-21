@@ -32,7 +32,7 @@ class OpenSceneViewController: UIViewController {
         // Create scene from the portal item.
         let scene = AGSScene(item: portalItem)
         
-        // Assign the scene to the scene view.
+        // Set the scene to the scene view.
         sceneView.scene = scene
     }
 }

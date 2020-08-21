@@ -32,7 +32,7 @@ class OpenSceneViewController: UIViewController {
         portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         
         //get the portal item
-        let portalItem = AGSPortalItem(portal: portal, itemID: "c6f90b19164c4283884361005faea852")
+        let portalItem = AGSPortalItem(portal: portal, itemID: "31874da8a16d45bfbc1273422f772270")
         
         //create scene from portal item
         let scene = AGSScene(item: portalItem)

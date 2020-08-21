@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8jp-1J-oLJ"/>
-                                    <barButtonItem title="Create version" id="hQm-w1-CUc">
+                                    <barButtonItem enabled="NO" title="Create version" id="hQm-w1-CUc">
                                         <connections>
                                             <action selector="versionBarButtonItemTapped:" destination="soL-GT-eo7" id="Ag8-jj-OIu"/>
                                         </connections>

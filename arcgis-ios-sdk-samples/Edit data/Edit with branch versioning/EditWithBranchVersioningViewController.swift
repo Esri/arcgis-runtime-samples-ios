@@ -29,6 +29,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
+            mapView.touchDelegate = self
+            mapView.callout.delegate = self
         }
     }
     /// The geodatabase's default branch version name.
@@ -37,8 +39,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     var createdVersionName: String!
     /// The name of the branch that the user is currently on.
     var currentVersionName: String! {
-        didSet {
-            statusLabel.text = currentVersionName
+        didSet(newValue) {
+            setStatus(message: newValue)
         }
     }
     
@@ -47,6 +49,13 @@ class EditWithBranchVersioningViewController: UIViewController {
     var selectedFeature: AGSFeature!
     var identifyOperation: AGSCancelable?
     
+    private enum DamageType: String, CaseIterable {
+        case destroyed = "Destroyed"
+        case major = "Major"
+        case minor = "Minor"
+        case affected = "Affected"
+        case inaccessible = "Inaccessible"
+    }
     
     /// Create a map.
     ///
@@ -67,6 +76,10 @@ class EditWithBranchVersioningViewController: UIViewController {
                 }
                 self.defaultVersionName = serviceGeodatabase.defaultVersionName
                 self.currentVersionName = serviceGeodatabase.versionName
+                if serviceGeodatabase.defaultVersionName != serviceGeodatabase.versionName {
+                    self.versionBarButtonItem.title = "Switch version"
+                }
+                self.versionBarButtonItem.isEnabled = true
             } else if let error = error {
                 self.presentAlert(error: error)
             }
@@ -75,12 +88,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         return map
     }
     
-    /// Identify a pixel on the raster layer and display the result in a callout.
-    ///
-    /// - Parameters:
-    ///   - screenPoint: The point at which to identify features.
-    ///   - offset: An offset to the point where the callout is displayed.
-    func identifyPixel(at screenPoint: CGPoint, offset: CGPoint = .zero) {
+    func identifyPixel(at screenPoint: CGPoint, completion: @escaping (AGSFeature) -> Void) {
         // Clear selection before identify.
         if let selectedFeature = selectedFeature {
             self.featureLayer.unselectFeature(selectedFeature)
@@ -96,23 +104,44 @@ class EditWithBranchVersioningViewController: UIViewController {
             }
             self.featureLayer.select(firstFeature)
             self.selectedFeature = firstFeature
-            self.editFeatureAttribute(feature: firstFeature)
+            completion(firstFeature)
         }
     }
     
-    func editFeatureAttribute(feature: AGSFeature) {
-        
+    func editFeatureAttribute(feature: AGSFeature, sourceRect: CGRect) {
+        let alertController = UIAlertController(
+            title: "Damage type",
+            message: "Choose a damage type for the building.",
+            preferredStyle: .actionSheet
+        )
+        DamageType.allCases.forEach { type in
+            let action = UIAlertAction(title: type.rawValue, style: .default) { _ in
+                feature.attributes["typdamage"] = type.rawValue
+            }
+            alertController.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        alertController.popoverPresentationController?.sourceRect = sourceRect
+        present(alertController, animated: true)
     }
     
     @IBAction func versionBarButtonItemTapped(_ sender: UIBarButtonItem) {
         if sender.title == "Create version" {
             chooseVersionAccessPermission(sender) { permission in
-                self.createBranchAlert(permission: permission)
-                
+                self.createBranchAlert(permission: permission) { [weak self] result in
+                    switch result {
+                    case .success(let versionName):
+                        sender.title = "Switch version"
+                        self?.createdVersionName = versionName
+                    case .failure(let error):
+                        self?.presentAlert(error: error)
+                    }
+                }
             }
-            sender.title = "Switch version"
         } else {
-            
+            let otherVersion = currentVersionName == defaultVersionName ? createdVersionName : defaultVersionName
+            switchVersion(to: otherVersion!)
         }
     }
     
@@ -126,7 +155,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         return parameters
     }
     
-    func createVersion(parameters: AGSServiceVersionParameters) {
+    func createVersion(parameters: AGSServiceVersionParameters, completion: @escaping (Result<String, Error>) -> Void) {
 //        serviceGeodatabase.fetchVersions { [weak self] serviceVersionInfo, error in
 //            if let info = serviceVersionInfo {
 //                let versionNames = info.map { $0.name }
@@ -135,13 +164,13 @@ class EditWithBranchVersioningViewController: UIViewController {
 //                self?.presentAlert(error: error)
 //            }
 //        }
-        serviceGeodatabase.createVersion(with: parameters) { [weak self] serviceVersionInfo, error in
+        serviceGeodatabase.createVersion(with: parameters) { serviceVersionInfo, error in
             if let info = serviceVersionInfo {
                 // Create version succeeded.
-                self?.createdVersionName = info.name
+                completion(.success(info.name))
             } else if let error = error {
                 // Failed to create version.
-                self?.presentAlert(error: error)
+                completion(.failure(error))
             }
         }
     }
@@ -173,13 +202,28 @@ class EditWithBranchVersioningViewController: UIViewController {
         }
     }
     
+    func undoLocalEdits() {
+        if serviceGeodatabase.hasLocalEdits() {
+            serviceGeodatabase.undoLocalEdits { error in
+                if let error = error {
+                    self.presentAlert(error: error)
+                }
+            }
+        }
+    }
+    
     // MARK: UI
     
     func setStatus(message: String) {
         statusLabel.text = message
     }
     
-    func createBranchAlert(permission: AGSVersionAccess) {
+    func showCallout(_ feature: AGSFeature, tapLocation: AGSPoint?) {
+        mapView.callout.title = feature.attributes["typdamage"] as? String
+        mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
+    }
+    
+    func createBranchAlert(permission: AGSVersionAccess, completion: @escaping (Result<String, Error>) -> Void) {
         // Create an object to observe changes from the text fields.
         var textFieldObserver: NSObjectProtocol!
         // An alert to get user input for branch name and description.
@@ -202,7 +246,9 @@ class EditWithBranchVersioningViewController: UIViewController {
             guard let branchText = branchTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !branchText.isEmpty else { return }
             let descriptionText = descriptionTextField.text
             let parameters = self.createServiceParameters(uniqueName: branchText, description: descriptionText, accessPermission: permission)
-            self.createVersion(parameters: parameters)
+            self.createVersion(parameters: parameters) { result in
+                completion(result)
+            }
         }
         
         alertController.addAction(cancelAction)
@@ -267,8 +313,23 @@ class EditWithBranchVersioningViewController: UIViewController {
 
 extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        // Dismiss presenting callout, if any.
+        mapView.callout.dismiss()
         // Tap to identify a pixel on the feature layer.
-        identifyPixel(at: screenPoint)
+        identifyPixel(at: screenPoint) { feature in
+            self.showCallout(feature, tapLocation: mapPoint)
+        }
+    }
+}
+
+// MARK: - AGSCalloutDelegate
+
+extension EditWithBranchVersioningViewController: AGSCalloutDelegate {
+    func didTapAccessoryButton(for callout: AGSCallout) {
+        // Hide the callout
+        // mapView.callout.dismiss()
+        // Show editing options table.
+        editFeatureAttribute(feature: selectedFeature, sourceRect: callout.bounds)
     }
 }
 

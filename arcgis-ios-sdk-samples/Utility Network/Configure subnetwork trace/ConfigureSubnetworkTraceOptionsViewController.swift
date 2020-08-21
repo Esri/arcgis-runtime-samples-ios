@@ -197,6 +197,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         alertController.addTextField { textField in
             textField.keyboardType = .numbersAndPunctuation
             textField.placeholder = "e.g. 15"
+            textField.delegate = self
             // Add an observer to ensure the user does not input an empty string.
             textFieldObserver = NotificationCenter.default.addObserver(
                 forName: UITextField.textDidChangeNotification,

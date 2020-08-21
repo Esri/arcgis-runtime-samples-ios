@@ -79,8 +79,8 @@ class GroupLayersViewController: UIViewController {
         
         // Create two scene layers.
         let trees = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_Trees/SceneServer")!)
-        let buildings = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevB_BuildingShells/SceneServer")!)
-        
+        let buildingsA = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_BuildingShells/SceneServer")!)
+        let buildingsB = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevB_BuildingShells/SceneServer")!)
         // Create a feature layer.
         let pathwaysTable = AGSServiceFeatureTable(url: URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_Pathways/FeatureServer/1")!)
         let pathways = AGSFeatureLayer(featureTable: pathwaysTable)
@@ -88,7 +88,7 @@ class GroupLayersViewController: UIViewController {
         pathways.sceneProperties?.surfacePlacement = .relative
         
         // Add the scene layers and feature layer as children of the group layer.
-        groupLayer.layers.addObjects(from: [trees, pathways, buildings])
+        groupLayer.layers.addObjects(from: [trees, pathways, projectArea, buildingsA, buildingsB])
         return groupLayer
     }
     

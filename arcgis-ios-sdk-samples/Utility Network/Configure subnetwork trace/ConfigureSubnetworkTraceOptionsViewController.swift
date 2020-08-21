@@ -176,7 +176,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         var textFieldObserver: NSObjectProtocol!
         
         let alertController = UIAlertController(title: "Provide a comparison value", message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)  { _ in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             // Remove observer when canceled.
             NotificationCenter.default.removeObserver(textFieldObserver!)
         }

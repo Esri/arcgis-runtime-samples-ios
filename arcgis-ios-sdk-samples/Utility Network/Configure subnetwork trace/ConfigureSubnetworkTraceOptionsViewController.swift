@@ -194,28 +194,26 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
                 completion(nil)
             }
         }
+        // Add the done action to the alert controller.
+        doneAction.isEnabled = false
+        alertController.addAction(doneAction)
+        // Add a text field to the alert controller.
         alertController.addTextField { textField in
             textField.keyboardType = .numbersAndPunctuation
             textField.placeholder = "e.g. 15"
             textField.delegate = self
-            // Add an observer to ensure the user does not input an empty string.
-            textFieldObserver = NotificationCenter.default.addObserver(
-                forName: UITextField.textDidChangeNotification,
-                object: textField,
-                queue: .main
-            ) { _ in
-                // Get the character count of non-whitespace characters.
-                let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
-                let textIsNotEmpty = textCount > 0
-                
-                // Enable the done button if the textfield is not empty.
-                doneAction.isEnabled = textIsNotEmpty
-            }
         }
-        // Add actions to alert controller.
+        // Add an observer to ensure the user does not input an empty string.
+        textFieldObserver = NotificationCenter.default.addObserver(
+            forName: UITextField.textDidChangeNotification,
+            object: nil,
+            queue: .main
+        ) { _ in
+            // Enable the done button if the textfield is not empty.
+            doneAction.isEnabled = !(alertController.textFields?.first?.text?.isEmpty)!
+        }
+        // Add a cancel action to alert controller.
         alertController.addAction(cancelAction)
-        alertController.addAction(doneAction)
-        doneAction.isEnabled = false
         alertController.preferredAction = doneAction
         present(alertController, animated: true)
     }

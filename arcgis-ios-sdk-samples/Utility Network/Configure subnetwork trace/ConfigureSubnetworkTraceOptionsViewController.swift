@@ -123,10 +123,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     func updateCellStates() {
         // Disable the value cell when attribute is unspecified.
-        if selectedAttribute == nil || selectedComparison == nil {
-            valueCell.textLabel?.isEnabled = false
-            valueCell.isUserInteractionEnabled = false
-        } else {
+        if selectedAttribute != nil {
             if selectedAttribute?.domain as? AGSCodedValueDomain != nil {
                 // Indicate that a new view controller will display.
                 valueCell.accessoryType = .disclosureIndicator
@@ -134,6 +131,12 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
                 // Indicate that an alert will show.
                 valueCell.accessoryType = .none
             }
+            valueCell.textLabel?.isEnabled = true
+            valueCell.isUserInteractionEnabled = true
+        } else if selectedAttribute == nil || selectedComparison == nil {
+            valueCell.textLabel?.isEnabled = false
+            valueCell.isUserInteractionEnabled = false
+        } else {
             valueCell.textLabel?.isEnabled = true
             valueCell.isUserInteractionEnabled = true
         }

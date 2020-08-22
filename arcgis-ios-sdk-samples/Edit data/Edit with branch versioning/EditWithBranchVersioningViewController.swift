@@ -50,7 +50,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     
     var serviceGeodatabase: AGSServiceGeodatabase!
     var featureLayer: AGSFeatureLayer!
-    var selectedFeature: AGSFeature!
+    var selectedFeature: AGSFeature?
     var identifyOperation: AGSCancelable?
     
     private enum DamageType: String, CaseIterable {
@@ -74,8 +74,7 @@ class EditWithBranchVersioningViewController: UIViewController {
             SVProgressHUD.dismiss()
             guard let self = self else { return }
             if serviceGeodatabase.loadStatus == .loaded {
-                let serviceFeatureTable = serviceGeodatabase.table(withLayerID: 0)!
-                let featureLayer = AGSFeatureLayer(featureTable: serviceFeatureTable)
+                let featureLayer = AGSFeatureLayer(featureTable: serviceGeodatabase.table(withLayerID: 0)!)
                 self.featureLayer = featureLayer
                 map.operationalLayers.add(featureLayer)
                 
@@ -90,7 +89,9 @@ class EditWithBranchVersioningViewController: UIViewController {
                     }
                 }
                 self.defaultVersionName = serviceGeodatabase.defaultVersionName
-                self.currentVersionName = serviceGeodatabase.versionName
+                // It seems to be detached at first.
+//                self.currentVersionName = serviceGeodatabase.versionName
+                self.currentVersionName = serviceGeodatabase.defaultVersionName
                 self.fetchVersions(geodatabase: serviceGeodatabase) { [weak self] result in
                     switch result {
                     case .success(let versions):
@@ -102,6 +103,7 @@ class EditWithBranchVersioningViewController: UIViewController {
                         self?.presentAlert(title: "Error", message: errorMessage)
                     }
                 }
+                self.switchVersion(geodatabase: serviceGeodatabase, to: serviceGeodatabase.defaultVersionName)
             } else if let error = error {
                 self.presentAlert(error: error)
             }
@@ -128,38 +130,6 @@ class EditWithBranchVersioningViewController: UIViewController {
             self.selectedFeature = firstFeature
             completion(firstFeature)
         }
-    }
-    
-    func editFeatureAttribute(feature: AGSFeature, sourceRect: CGRect) {
-        let alertController = UIAlertController(
-            title: "Damage type",
-            message: "Choose a damage type for the building.",
-            preferredStyle: .actionSheet
-        )
-        DamageType.allCases.forEach { type in
-            let action = UIAlertAction(title: type.rawValue, style: .default) { _ in
-                feature.attributes["typdamage"] = type.rawValue
-                feature.featureTable?.update(feature) { error in
-                    if let error = error {
-                        self.presentAlert(error: error)
-                    } else {
-                        self.applyLocalEdits(geodatabase: self.serviceGeodatabase) {
-                            // Reload feature table with the new edits.
-//                            self.featureLayer.featureTable?.load()
-                        }
-                    }
-                }
-                
-                self.mapView.callout.dismiss()
-            }
-            alertController.addAction(action)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            self.mapView.callout.dismiss()
-        }
-        alertController.addAction(cancelAction)
-        alertController.popoverPresentationController?.sourceRect = sourceRect
-        present(alertController, animated: true)
     }
     
     @IBAction func createBarButtonItemTapped(_ sender: UIBarButtonItem) {
@@ -238,13 +208,9 @@ class EditWithBranchVersioningViewController: UIViewController {
     func applyLocalEdits(geodatabase: AGSServiceGeodatabase, completion: (() -> Void)? = nil) {
         if geodatabase.hasLocalEdits() {
             SVProgressHUD.show(withStatus: "Applying local edits…")
-            geodatabase.applyEdits { _, error in
+            geodatabase.applyEdits { _, _ in
                 SVProgressHUD.dismiss()
-                if let error = error {
-                    self.presentAlert(error: error)
-                } else {
-                    completion?()
-                }
+                completion?()
             }
         } else {
             completion?()
@@ -254,11 +220,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     func undoLocalEdits(geodatabase: AGSServiceGeodatabase) {
         if geodatabase.hasLocalEdits() {
             SVProgressHUD.show(withStatus: "Discarding local edits…")
-            geodatabase.undoLocalEdits { error in
+            geodatabase.undoLocalEdits { _ in
                 SVProgressHUD.dismiss()
-                if let error = error {
-                    self.presentAlert(error: error)
-                }
             }
         }
     }
@@ -273,6 +236,51 @@ class EditWithBranchVersioningViewController: UIViewController {
         let damageLabel = feature.attributes["typdamage"] as? String
         mapView.callout.title = damageLabel ?? "Default"
         mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
+    }
+    
+    /// Move the currently selected feature to the given map point, by updating the selected feature's geometry and feature table.
+    func moveFeature(feature: AGSFeature, to mapPoint: AGSPoint) {
+        // Create an alert to confirm that the user wants to update the geometry.
+        let alert = UIAlertController(title: "Confirm Update", message: "Are you sure you want to move the selected feature?", preferredStyle: .alert)
+        // Clear the selection and selected feature if "No" is selected.
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.featureLayer.unselectFeature(feature)
+        }
+        
+        let moveAction = UIAlertAction(title: "Move", style: .default) { _ in
+            // Set the selected feature's geometry to the new map point.
+            feature.geometry = mapPoint
+            // Update the selected feature's feature table.
+            feature.featureTable?.update(feature) { _ in
+                self.featureLayer.unselectFeature(feature)
+                self.selectedFeature = nil
+            }
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(moveAction)
+        present(alert, animated: true)
+    }
+    
+    func editFeatureDamageAttribute(feature: AGSFeature, sourceRect: CGRect) {
+        let alertController = UIAlertController(
+            title: "Damage type",
+            message: "Choose a damage type for the building.",
+            preferredStyle: .actionSheet
+        )
+        DamageType.allCases.forEach { type in
+            let action = UIAlertAction(title: type.rawValue, style: .default) { _ in
+                feature.attributes["typdamage"] = type.rawValue
+                feature.featureTable?.update(feature)
+                self.mapView.callout.dismiss()
+            }
+            alertController.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.mapView.callout.dismiss()
+        }
+        alertController.addAction(cancelAction)
+        alertController.popoverPresentationController?.sourceRect = sourceRect
+        present(alertController, animated: true)
     }
     
     func createBranchAlert(permission: AGSVersionAccess, completion: @escaping (AGSServiceVersionParameters) -> Void) {
@@ -385,8 +393,12 @@ extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
         // Dismiss presenting callout, if any.
         mapView.callout.dismiss()
         // Tap to identify a pixel on the feature layer.
-        identifyPixel(at: screenPoint) { feature in
-            self.showCallout(feature, tapLocation: mapPoint)
+        if let selectedFeature = selectedFeature {
+            moveFeature(feature: selectedFeature, to: mapPoint)
+        } else {
+            identifyPixel(at: screenPoint) { feature in
+                self.showCallout(feature, tapLocation: mapPoint)
+            }
         }
     }
 }
@@ -395,10 +407,8 @@ extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
 
 extension EditWithBranchVersioningViewController: AGSCalloutDelegate {
     func didTapAccessoryButton(for callout: AGSCallout) {
-        // Hide the callout
-        // mapView.callout.dismiss()
-        // Show editing options table.
-        editFeatureAttribute(feature: selectedFeature, sourceRect: callout.bounds)
+        // Show editing options actionsheet.
+        editFeatureDamageAttribute(feature: selectedFeature!, sourceRect: callout.bounds)
     }
 }
 

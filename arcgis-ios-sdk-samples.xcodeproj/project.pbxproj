@@ -1690,8 +1690,8 @@
 		E47ED0A02343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExploreScenesInFlyoverAR.storyboard; sourceTree = "<group>"; };
 		E47ED0A22343C4FE0032440E /* CollectDataAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CollectDataAR.storyboard; sourceTree = "<group>"; };
 		E47ED0A32343C4FE0032440E /* CollectDataAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectDataAR.swift; sourceTree = "<group>"; };
-		E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DisplayScenesInTabletopAR.storyboard; path = "arcgis-ios-sdk-samples/Augmented reality/Display scenes in tabletop AR/DisplayScenesInTabletopAR.storyboard"; sourceTree = SOURCE_ROOT; };
-		E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayScenesInTabletopAR.swift; path = "arcgis-ios-sdk-samples/Augmented reality/Display scenes in tabletop AR/DisplayScenesInTabletopAR.swift"; sourceTree = SOURCE_ROOT; };
+		E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayScenesInTabletopAR.storyboard; sourceTree = "<group>"; };
+		E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayScenesInTabletopAR.swift; sourceTree = "<group>"; };
 		E4B2E2631FE31E5100E610FF /* bradle.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = bradle.3ds; sourceTree = "<group>"; };
 		E4B2E2641FE31E5100E610FF /* tank1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tank1.jpg; sourceTree = "<group>"; };
 		E4B2E2681FE31ED500E610FF /* ViewshedGeoElementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewshedGeoElementViewController.swift; sourceTree = "<group>"; };
@@ -4207,9 +4207,8 @@
 				E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */,
 				E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */,
 			);
-			name = "Display scenes in tabletop AR";
-			path = "arcgis-ios-sdk-samples/Augmented Reality/Display scenes in tabletop AR";
-			sourceTree = SOURCE_ROOT;
+			path = "Display scenes in tabletop AR";
+			sourceTree = "<group>";
 		};
 		E4B2E2621FE31E5100E610FF /* bradley_low_3ds */ = {
 			isa = PBXGroup;

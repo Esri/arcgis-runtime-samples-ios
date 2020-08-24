@@ -133,15 +133,14 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             }
             valueCell.textLabel?.isEnabled = true
             valueCell.isUserInteractionEnabled = true
-        } else if selectedAttribute == nil || selectedComparison == nil {
+        } else {
+            // Enable the value cell when an attribute is specified.
             valueCell.textLabel?.isEnabled = false
             valueCell.isUserInteractionEnabled = false
-        } else {
-            valueCell.textLabel?.isEnabled = true
-            valueCell.isUserInteractionEnabled = true
         }
     }
     
+    // Transition to the attribute options view controller.
     func showAttributePicker() {
         let selectedIndex = possibleAttributes.firstIndex { $0 == selectedAttribute } ?? -1
         let optionsViewController = OptionsTableViewController(labels: possibleAttributes.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
@@ -152,6 +151,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         show(optionsViewController, sender: self)
     }
     
+    // Transition to the comparison options view controller.
     func showComparisonPicker() {
         let selectedIndex = selectedComparison?.rawValue ?? -1
         let optionsViewController = OptionsTableViewController(labels: attributeComparisonOperators.map { $0.1 }, selectedIndex: selectedIndex) { newIndex in
@@ -162,6 +162,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         show(optionsViewController, sender: self)
     }
     
+    // Transition to the value options view controller.
     func showValuePicker(values: [AGSCodedValue]) {
         let selectedIndex = -1
         let valueLabels = values.map { $0.name }
@@ -174,6 +175,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         show(optionsViewController, sender: self)
     }
     
+    // Prompt an alert to allow the user to input custom values.
     func showValueInputField(completion: @escaping (NSNumber?) -> Void) {
         // Create an object to observe if text field input is empty.
         var textFieldObserver: NSObjectProtocol!
@@ -233,7 +235,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
-        // deselect row manually
+        // Deselect row manually.
         if cell == valueCell {
             tableView.deselectRow(at: indexPath, animated: true)
         }

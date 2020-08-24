@@ -3,27 +3,32 @@
     "description": "Display a shapefile with custom symbology.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "symbolize-shapefile.png"
     ],
     "keywords": [
+        "package",
+        "shape file",
         "shapefile",
-        "offline",
-        "renderer",
-        "AGSShapefileFeatureTable",
+        "symbology",
+        "visualization",
         "AGSFeatureLayer",
+        "AGSShapefileFeatureTable",
+        "AGSSimpleFillSymbol",
         "AGSSimpleLineSymbol",
         "AGSSimpleRenderer"
-
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/symbolize-shapefile.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/symbolize-shapefile.htm"
+    ],
     "relevant_apis": [
-        "AGSShapefileFeatureTable",
         "AGSFeatureLayer",
+        "AGSShapefileFeatureTable",
+        "AGSSimpleFillSymbol",
         "AGSSimpleLineSymbol",
         "AGSSimpleRenderer"
     ],
     "snippets": [
         "SymbolizeShapefileViewController.swift"
     ],
-    "title": "Symbolize Shapefile"
+    "title": "Symbolize shapefile"
 }

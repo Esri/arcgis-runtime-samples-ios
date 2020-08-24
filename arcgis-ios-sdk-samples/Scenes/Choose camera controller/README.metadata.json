@@ -3,33 +3,31 @@
     "description": "Control the behavior of the camera in a scene.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "choose-camera-controller.png"
     ],
     "keywords": [
-        "Camera Controller",
-        "Camera",
-        "SceneView",
         "3D",
-        "AGSScene",
+        "camera",
+        "camera controller",
         "AGSCamera",
         "AGSGlobeCameraController",
         "AGSOrbitGeoElementCameraController",
         "AGSOrbitLocationCameraController",
+        "AGSScene",
         "AGSSceneView"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "AGSScene",
         "AGSCamera",
         "AGSGlobeCameraController",
         "AGSOrbitGeoElementCameraController",
         "AGSOrbitLocationCameraController",
+        "AGSScene",
         "AGSSceneView"
     ],
     "snippets": [
-        "ChooseCameraControllerViewController.swift",
-        "CameraControllerTableViewController.swift"
+        "CameraControllerTableViewController.swift",
+        "ChooseCameraControllerViewController.swift"
     ],
     "title": "Choose camera controller"
 }

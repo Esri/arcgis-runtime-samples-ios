@@ -1,21 +1,29 @@
 {
     "category": "Display information",
-    "description": "Change the drawing order of a graphic.",
+    "description": "Change the drawing order for a graphic.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "control-graphic-draw-order-1.png",
+        "control-graphic-draw-order-2.png"
     ],
     "keywords": [
-        "draw order",
-        "graphic",
+        "display",
+        "graphics",
+        "overlap",
+        "overlay",
+        "AGSGraphic",
+        "AGSGraphic.zIndex",
         "AGSGraphicsOverlay",
-        "AGSGraphic"
+        "AGSSimpleMarkerSymbol"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/control-graphic-draw-order.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/control-graphic-draw-order.htm"
+    ],
     "relevant_apis": [
+        "AGSGraphic",
+        "AGSGraphic.zIndex",
         "AGSGraphicsOverlay",
-        "AGSGraphic"
+        "AGSSimpleMarkerSymbol"
     ],
     "snippets": [
         "GraphicDrawOrderViewController.swift"

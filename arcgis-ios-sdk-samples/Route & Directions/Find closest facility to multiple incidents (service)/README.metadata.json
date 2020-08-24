@@ -3,7 +3,7 @@
     "description": "Find routes from several locations to the respective closest facility.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "find-closest-facility-service.png"
     ],
     "keywords": [
         "incident",
@@ -19,8 +19,7 @@
         "AGSGraphicsOverlay",
         "AGSIncident"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSClosestFacilityParameters",
         "AGSClosestFacilityResult",

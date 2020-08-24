@@ -1,21 +1,49 @@
 {
     "category": "Analysis",
-    "description": "This sample demonstrates how to query a feature table to get statistics for one or more specified fields.",
+    "description": "Query a feature table for statistics, grouping and sorting by different fields.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "statistical-group-sort-1.png",
+        "statistical-group-sort-2.png"
     ],
     "keywords": [
+        "correlation",
+        "data",
+        "fields",
+        "filter",
+        "group",
+        "sort",
+        "statistics",
+        "table",
+        "AGSField",
+        "AGSOrderBy",
+        "AGSQueryParameters",
+        "AGSServiceFeatureTable",
+        "AGSStatisticDefinition",
+        "AGSStatisticRecord",
+        "AGSStatisticType",
+        "AGSStatisticsQueryParameters",
+        "AGSStatisticsQueryResult"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/statistical-query-group-and-sort-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/statistical-query-group-and-sort-.htm"
+    ],
     "relevant_apis": [
+        "AGSField",
+        "AGSOrderBy",
+        "AGSQueryParameters",
+        "AGSServiceFeatureTable",
+        "AGSStatisticDefinition",
+        "AGSStatisticRecord",
+        "AGSStatisticType",
+        "AGSStatisticsQueryParameters",
+        "AGSStatisticsQueryResult"
     ],
     "snippets": [
-        "StatisticalQueryGroupAndSortViewController.swift",
         "AddStatisticDefinitionsViewController.swift",
         "GroupByFieldsViewController.swift",
-        "OrderByFieldsViewController.swift"
+        "OrderByFieldsViewController.swift",
+        "StatisticalQueryGroupAndSortViewController.swift"
     ],
     "title": "Statistical query (group and sort)"
 }

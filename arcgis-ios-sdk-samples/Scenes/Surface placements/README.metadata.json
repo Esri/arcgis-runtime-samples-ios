@@ -1,14 +1,38 @@
 {
     "category": "Scenes",
-    "description": "This sample demonstrates how to position graphics using different surface placements",
+    "description": "Position graphics relative to a surface using different surface placement modes.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "surface-placements.png"
     ],
     "keywords": [
+        "3D",
+        "absolute",
+        "altitude",
+        "draped",
+        "elevation",
+        "floating",
+        "relative",
+        "scenes",
+        "sea level",
+        "surface placement",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSLayerSceneProperties",
+        "AGSSurface",
+        "AGSSurfacePlacement",
+        "class AGSGeometryEngine.geometry(bySettingZ:in:)"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/surface-placements.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/surface-placements.htm"
+    ],
     "relevant_apis": [
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "AGSLayerSceneProperties",
+        "AGSSurface",
+        "AGSSurfacePlacement",
+        "class AGSGeometryEngine.geometry(bySettingZ:in:)"
     ],
     "snippets": [
         "SurfacePlacementsViewController.swift"

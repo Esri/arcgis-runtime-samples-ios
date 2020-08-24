@@ -3,27 +3,26 @@
     "description": "Delete features from an online feature service.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "delete-features-1.png",
+        "delete-features-2.png"
     ],
     "keywords": [
-        "delete",
+        "Service",
+        "deletion",
         "feature",
-        "AGSFeatureLayer",
-        "AGSServiceFeatureTable",
-        "AGSFeatureEditResult",
+        "online",
+        "table",
         "AGSFeature",
-        "AGSIdentifyLayerResult",
-        "AGSCancelable"
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/delete-features-feature-service-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/delete-features-feature-service-.htm"
+    ],
     "relevant_apis": [
-        "AGSFeatureLayer",
-        "AGSServiceFeatureTable",
-        "AGSFeatureEditResult",
         "AGSFeature",
-        "AGSIdentifyLayerResult",
-        "AGSCancelable"
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable"
     ],
     "snippets": [
         "DeleteFeaturesViewController.swift"

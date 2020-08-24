@@ -1,14 +1,28 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how you can take screenshot of a map.",
+    "description": "Take a screenshot of the map.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "take-screenshot.png"
     ],
     "keywords": [
+        "capture",
+        "export",
+        "image",
+        "print",
+        "screen capture",
+        "screenshot",
+        "share",
+        "shot",
+        "AGSGeoView.exportImage(completion:)",
+        "AGSMapView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/take-screenshot.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/take-screenshot.htm"
+    ],
     "relevant_apis": [
+        "AGSGeoView.exportImage(completion:)",
+        "AGSMapView"
     ],
     "snippets": [
         "MapViewScreenshotViewController.swift"

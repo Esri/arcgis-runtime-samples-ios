@@ -3,26 +3,23 @@
     "description": "Cut a geometry along a polyline.",
     "ignore": false,
     "images": [
-        "CutGeometry.png"
+        "cut-geometry.png"
     ],
     "keywords": [
-        "geometry",
         "cut",
+        "geometry",
         "split",
-        "geometry engine",
-        "AGSGeometryEngine",
         "AGSPolygon",
         "AGSPolyline",
-        "AGSGraphicsOverlay",
-        "AGSGraphic"
+        "class AGSGeometryEngine.cut(_:withCutter:)"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/cut-geometry.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/cut-geometry.htm"
+    ],
     "relevant_apis": [
-        "AGSGeometryEngine",
         "AGSPolygon",
         "AGSPolyline",
-        "AGSGraphicsOverlay",
-        "AGSGraphic"
+        "class AGSGeometryEngine.cut(_:withCutter:)"
     ],
     "snippets": [
         "CutGeometryViewController.swift"

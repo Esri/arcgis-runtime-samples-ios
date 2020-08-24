@@ -3,7 +3,7 @@
     "description": "Find the closest vertex and coordinate of a geometry to a point.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "nearest-vertex.png"
     ],
     "keywords": [
         "analysis",

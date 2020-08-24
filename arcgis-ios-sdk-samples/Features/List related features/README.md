@@ -1,18 +1,30 @@
 # List related features
 
-This sample demonstrates how to query related features for a given feature.
+List features related to the selected feature.
+
+![List related features sample](list-related-features.png)
+
+## Use case
+
+Related features are useful for managing relational information, like what you would store in a relational database management system (RDBMS). You can define relationship between records as one-to-one, one-to-many, or many-to-one. For example, you could model inspections and facilities as a many-to-one relationship. Then, for any facility feature, you could list related inspection features.
 
 ## How to use the sample
 
-Tap on a feature on the map to see a list of related features.
-
-![](image1.png)
+Tap on a feature to select it. The related features will be displayed in a list.
 
 ## How it works
 
-The sample is preloaded with layers from a feature service. The relationships among the layers are defined in the service. The origin layer is shown on the map as an operational layer. The related layers are added as tables to the map. As you tap on the map, `geoView(_:didTapAtScreenPoint:mapPoint:)` touch delegate method is invoked. Inside this method, an identify operation is performed to get features at the tapped location using `identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)` method on `AGSMapView`. If a feature is found, then the related features for that feature are queried using `queryRelatedFeaturesForFeature(_:completion:)` method on its feature table. The results from the query are shown as a list in popover.
+1. With an `AGSArcGISFeature`, call `AGSArcGISFeatureTable.queryRelatedFeatures(for:completion:)` on the feature's feature table.
+2. Iterate over the result's collection of `AGSRelatedFeatureQueryResult` objects to get the related features and add them to a list.
 
+## Relevant API
 
+* AGSArcGISFeature
+* AGSArcGISFeatureTable
+* AGSArcGISFeatureTable.queryRelatedFeatures
+* AGSFeatureQueryResult
+* AGSRelatedFeatureQueryResult
 
+## Tags
 
-
+features, identify, query, related, relationship, search

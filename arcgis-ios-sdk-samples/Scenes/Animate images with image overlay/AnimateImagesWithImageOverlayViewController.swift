@@ -168,10 +168,10 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         if !imagesIterator.elements.isEmpty {
             playButtonItem.isEnabled = true
             speedButtonItem.isEnabled = true
-            opacitySlider.isEnabled = true
             // Load the first frame into the scene.
             setImageFrame()
         } else {
+            opacitySlider.isEnabled = false
             presentAlert(title: "Error", message: "Fail to load images.")
         }
     }

@@ -14,7 +14,7 @@
         "identify",
         "pixel",
         "pixel value",
-        "raster"
+        "raster",
         "AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:completion:)",
         "AGSIdentifyLayerResult",
         "AGSRasterCell",

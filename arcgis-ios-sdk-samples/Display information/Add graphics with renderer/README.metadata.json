@@ -1,32 +1,36 @@
 {
     "category": "Display information",
-    "description": "Add graphics and set renderer on the graphic overlays",
+    "description": "A renderer allows you to change the style of all graphics in a graphics overlay by referencing a single symbol style.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "add-graphics-with-renderer.png"
     ],
     "keywords": [
-        "graphic",
-        "graphics overlay",
+        "display",
+        "graphics",
+        "marker",
+        "overlay",
         "renderer",
         "symbol",
+        "AGSGeometry",
+        "AGSGraphic",
         "AGSGraphicsOverlay",
-        "AGSSimpleRenderer",
-        "AGSPoint",
-        "AGSSimpleMarkerSymbol",
-        "AGSPolylineBuilder",
+        "AGSSimpleFillSymbol",
         "AGSSimpleLineSymbol",
-        "AGSGraphic"
+        "AGSSimpleMarkerSymbol",
+        "AGSSimpleRenderer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/add-graphics-with-renderer.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/add-graphics-with-renderer.htm"
+    ],
     "relevant_apis": [
+        "AGSGeometry",
+        "AGSGraphic",
         "AGSGraphicsOverlay",
-        "AGSSimpleRenderer",
-        "AGSPoint",
-        "AGSSimpleMarkerSymbol",
-        "AGSPolylineBuilder",
+        "AGSSimpleFillSymbol",
         "AGSSimpleLineSymbol",
-        "AGSGraphic"
+        "AGSSimpleMarkerSymbol",
+        "AGSSimpleRenderer"
     ],
     "snippets": [
         "GORenderersViewController.swift"

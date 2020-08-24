@@ -1,34 +1,36 @@
 {
     "category": "Display information",
-    "description": "Open a mobile style (.stylx) and read its contents. Combine several symbols from the style into a single multilayer point symbol, then use it to display graphics in the map view.",
+    "description": "Combine multiple symbols from a mobile style file into a single symbol.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "read-symbols-from-mobile-style-1.png",
+        "read-symbols-from-mobile-style-2.png"
     ],
     "keywords": [
         "advanced symbology",
-        "multilayer",
         "mobile style",
+        "multilayer",
         "stylx",
         "AGSMultilayerPointSymbol",
-        "AGSSymbol",
+        "AGSMultilayerSymbol",
         "AGSSymbolLayer",
         "AGSSymbolStyle",
         "AGSSymbolStyleSearchParameters"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/read-symbols-from-a-mobile-style.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/read-symbols-from-a-mobile-style.htm"
+    ],
     "relevant_apis": [
         "AGSMultilayerPointSymbol",
-        "AGSSymbol",
+        "AGSMultilayerSymbol",
         "AGSSymbolLayer",
         "AGSSymbolStyle",
         "AGSSymbolStyleSearchParameters"
     ],
     "snippets": [
-        "ReadSymbolsFromMobileStyleViewController.swift",
+        "ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift",
         "ReadSymbolsFromMobileStyleSymbolViewController.swift",
-        "ReadSymbolsFromMobileStyleSymbolSettingsViewController.swift"
+        "ReadSymbolsFromMobileStyleViewController.swift"
     ],
     "title": "Read symbols from a mobile style"
 }

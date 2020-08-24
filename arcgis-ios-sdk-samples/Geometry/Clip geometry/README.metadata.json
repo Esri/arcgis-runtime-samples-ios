@@ -3,31 +3,28 @@
     "description": "Clip a geometry with another geometry.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "clip-geometry.png"
     ],
     "keywords": [
-        "geometry",
+        "analysis",
         "clip",
-        "geometry engine",
-        "AGSGraphicsOverlay",
-        "AGSGraphic",
-        "AGSGeometry",
+        "geometry",
         "AGSEnvelope",
-        "AGSSimpleLineSymbol",
-        "AGSSimpleFillSymbol"
+        "AGSGeometry",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "class AGSGeometryEngine.clipGeometry(_:with:)"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "AGSGraphicsOverlay",
-        "AGSGraphic",
-        "AGSGeometry",
         "AGSEnvelope",
-        "AGSSimpleLineSymbol",
-        "AGSSimpleFillSymbol"
+        "AGSGeometry",
+        "AGSGraphic",
+        "AGSGraphicsOverlay",
+        "class AGSGeometryEngine.clipGeometry(_:with:)"
     ],
     "snippets": [
         "ClipGeometryViewController.swift"
     ],
-    "title": "Clip Geometry"
+    "title": "Clip geometry"
 }

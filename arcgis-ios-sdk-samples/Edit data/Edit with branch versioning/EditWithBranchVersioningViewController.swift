@@ -20,7 +20,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     
     /// The label to display branch versioning status.
     @IBOutlet var statusLabel: UILabel!
-    /// The button to creat a version.
+    /// The button to create a version.
     @IBOutlet var createBarButtonItem: UIBarButtonItem!
     /// The button to switch to a version.
     @IBOutlet var switchBarButtonItem: UIBarButtonItem!
@@ -98,7 +98,7 @@ class EditWithBranchVersioningViewController: UIViewController {
                 self.existingVersionNames.append(serviceGeodatabase.defaultVersionName)
                 
                 // Load feature layer.
-                let featureLayer = self.loadFeatureLayer(from: serviceGeodatabase.table(withLayerID: 0)!) {
+                let featureLayer = self.loadFeatureLayer(with: serviceGeodatabase.table(withLayerID: 0)!) {
                     // After the feature layer is loaded, switch to default version.
                     self.switchVersion(geodatabase: serviceGeodatabase, to: serviceGeodatabase.defaultVersionName)
                 }
@@ -112,13 +112,13 @@ class EditWithBranchVersioningViewController: UIViewController {
         return serviceGeodatabase
     }
     
-    /// Load a feature layer from a feature table.
+    /// Load a feature layer with a feature table.
     ///
     /// - Parameters:
     ///   - featureTable: The feature table for creating the feature layer.
     ///   - completion: An optional closure to execute after feature layer is successfully loaded.
     /// - Returns: An `AGSFeatureLayer` object.
-    func loadFeatureLayer(from featureTable: AGSFeatureTable, completion: (() -> Void)? = nil) -> AGSFeatureLayer {
+    func loadFeatureLayer(with featureTable: AGSFeatureTable, completion: (() -> Void)? = nil) -> AGSFeatureLayer {
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
         SVProgressHUD.show(withStatus: "Loading feature layer…")
@@ -164,8 +164,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     ///
     /// - Parameters:
     ///   - accessPermission: An `AGSVersionAccess` object that defines the permission level.
-    ///   - uniqueName: A unique string serves as branch version name.
-    ///   - description: A string to describe the branch.
+    ///   - uniqueName: A unique string as branch version name.
+    ///   - description: An optional string to describe the branch.
     /// - Returns: An `AGSServiceVersionParameters` object.
     func createServiceParameters(accessPermission: AGSVersionAccess, uniqueName: String, description: String?) -> AGSServiceVersionParameters {
         let parameters = AGSServiceVersionParameters()
@@ -183,7 +183,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     ///   - geodatabase: The geodatabase to create the version.
     ///   - parameters: The parameters for the new branch version.
     ///   - completion: The results for `AGSServiceGeodatabase.createVersion(with:completion:)` call.
-    func createVersion(geodatabase: AGSServiceGeodatabase, parameters: AGSServiceVersionParameters, completion: @escaping (Result<String, Error>) -> Void) {
+    func createVersion(geodatabase: AGSServiceGeodatabase, with parameters: AGSServiceVersionParameters, completion: @escaping (Result<String, Error>) -> Void) {
         geodatabase.createVersion(with: parameters) { serviceVersionInfo, error in
             if let info = serviceVersionInfo {
                 // Create version succeeded.
@@ -271,7 +271,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         chooseVersionAccessPermission(sender) { permission in
             self.createBranchAlert(permission: permission) { [weak self] parameters in
                 guard let self = self else { return }
-                self.createVersion(geodatabase: self.serviceGeodatabase, parameters: parameters) { [weak self] result in
+                self.createVersion(geodatabase: self.serviceGeodatabase, with: parameters) { [weak self] result in
                     switch result {
                     case .success(let versionName):
                         self?.existingVersionNames.append(versionName)
@@ -307,7 +307,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         statusLabel.text = message
     }
     
-    func showCallout(_ feature: AGSFeature, tapLocation: AGSPoint?) {
+    func showCallout(for feature: AGSFeature, tapLocation: AGSPoint?) {
         let damageLabel = feature.attributes["typdamage"] as? String
         mapView.callout.title = damageLabel ?? "Default"
         mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
@@ -316,12 +316,16 @@ class EditWithBranchVersioningViewController: UIViewController {
     /// Move the currently selected feature to the given map point, by updating the selected feature's geometry and feature table.
     func moveFeature(feature: AGSFeature, to mapPoint: AGSPoint) {
         // Create an alert to confirm that the user wants to update the geometry.
-        let alert = UIAlertController(title: "Confirm Update", message: "Do you want to move the selected feature?", preferredStyle: .alert)
-        // Clear the selection and selected feature if canceled.
+        let alert = UIAlertController(
+            title: "Confirm Update",
+            message: "Do you want to move the selected feature?",
+            preferredStyle: .alert
+        )
+        // Clear the selection and selected feature on cancel.
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.clearSelection()
         }
-        
+        // Move the feature to new geometry.
         let moveAction = UIAlertAction(title: "Move", style: .default) { _ in
             // Set the selected feature's geometry to the new map point.
             feature.geometry = mapPoint
@@ -392,8 +396,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     
     func editFeatureDamageAttribute(feature: AGSFeature, sourceRect: CGRect) {
         let alertController = UIAlertController(
-            title: "Damage type",
-            message: "Choose a damage type for the building.",
+            title: "Choose a damage type for the building",
+            message: nil,
             preferredStyle: .actionSheet
         )
         DamageType.allCases.forEach { type in
@@ -476,7 +480,7 @@ extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
             moveFeature(feature: selectedFeature, to: mapPoint)
         } else {
             identifyPixel(on: featureLayer, at: screenPoint) { feature in
-                self.showCallout(feature, tapLocation: mapPoint)
+                self.showCallout(for: feature, tapLocation: mapPoint)
             }
         }
     }
@@ -494,7 +498,6 @@ extension EditWithBranchVersioningViewController: AGSCalloutDelegate {
 // MARK: - UITextFieldDelegate
 
 extension EditWithBranchVersioningViewController: UITextFieldDelegate {
-    // Ensure that the text field will only accept numbers.
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         // Must not include special characters: . ; ' "

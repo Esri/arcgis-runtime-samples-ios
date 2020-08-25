@@ -65,7 +65,7 @@
     ],
     "snippets": [
         "ConfigureSubnetworkTraceViewController.swift",
-        "ConfigureSubnetworkTraceOptionsViewController"
+        "ConfigureSubnetworkTraceOptionsViewController.swift"
     ],
     "title": "Configure subnetwork trace"
 }

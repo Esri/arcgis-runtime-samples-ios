@@ -66,7 +66,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     /// A reference to the cancelable identify layer operation.
     var identifyOperation: AGSCancelable?
     
-    /// Possible values for "typedamage" attribute.
+    /// Possible values for the service's "typdamage" attribute.
     private enum DamageType: String, CaseIterable {
         case destroyed = "Destroyed"
         case major = "Major"

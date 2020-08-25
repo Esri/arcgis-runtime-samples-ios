@@ -16,6 +16,8 @@ import UIKit
 import ArcGIS
 
 class EditWithBranchVersioningViewController: UIViewController {
+    // MARK: Storyboard views
+    
     /// The label to display branch versioning status.
     @IBOutlet var statusLabel: UILabel!
     /// The button to creat a version.
@@ -26,33 +28,45 @@ class EditWithBranchVersioningViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = makeMap()
+            mapView.map = AGSMap(basemap: .streetsVector())
             mapView.touchDelegate = self
             mapView.callout.delegate = self
         }
     }
+    
+    // MARK: Properties
+    
     /// The geodatabase's default branch version name.
     var defaultVersionName: String!
-    /// The geodatabase's existing version names in sorted order.
+    /// The geodatabase's existing version names.
+    /// - Note: To get a full list of versions, use `AGSServiceGeodatabase.fetchVersions(completion:)`.
+    ///         In this sample, only the default version and versions created in current session are shown.
     var existingVersionNames = [String]() {
         didSet {
-            existingVersionNames.sort()
+            if existingVersionNames.count > 1 {
+                switchBarButtonItem.isEnabled = true
+            }
         }
     }
     /// The name of the branch that the user is currently on.
     var currentVersionName: String! {
-        didSet(newValue) {
+        willSet(newValue) {
             if newValue != nil {
                 DispatchQueue.main.async { self.setStatus(message: newValue) }
             }
         }
     }
     
+    /// The service geodatabase to demo branch versioning.
     var serviceGeodatabase: AGSServiceGeodatabase!
+    /// A feature layer to display damaged building features.
     var featureLayer: AGSFeatureLayer!
+    /// A reference to current selected feature.
     var selectedFeature: AGSFeature?
+    /// A reference to the cancelable identify layer operation.
     var identifyOperation: AGSCancelable?
     
+    /// Possible values for "typedamage" attribute.
     private enum DamageType: String, CaseIterable {
         case destroyed = "Destroyed"
         case major = "Major"
@@ -62,61 +76,61 @@ class EditWithBranchVersioningViewController: UIViewController {
         case `default` = "Default"
     }
     
-    /// Create a map.
-    ///
-    /// - Returns: An `AGSMap` object.
-    func makeMap() -> AGSMap {
-        let map = AGSMap(basemap: .streetsVector())
-        let serviceGeodatabase = AGSServiceGeodatabase(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!)
+    // MARK: Methods
+    
+    func loadServiceGeodatabase() -> AGSServiceGeodatabase {
+        let damageFeatureService = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
+        let serviceGeodatabase = AGSServiceGeodatabase(url: damageFeatureService)
+        // If not explicitly set, the service geodatabase will ask for credentials
+        // on loading. You can also set its `credential` property. E.g.
+        #warning("to remove before PR")
         serviceGeodatabase.credential = AGSCredential(user: "editor01", password: "editor01.password")
+        
         SVProgressHUD.show(withStatus: "Loading service geodatabase…")
         serviceGeodatabase.load { [weak self] error in
             SVProgressHUD.dismiss()
             guard let self = self else { return }
             if serviceGeodatabase.loadStatus == .loaded {
-                let featureLayer = AGSFeatureLayer(featureTable: serviceGeodatabase.table(withLayerID: 0)!)
-                self.featureLayer = featureLayer
-                map.operationalLayers.add(featureLayer)
-                
-                SVProgressHUD.show(withStatus: "Loading feature layer…")
-                featureLayer.load { [weak self] error in
-                    SVProgressHUD.dismiss()
-                    if let error = error {
-                        self?.presentAlert(error: error)
-                    } else if let extent = featureLayer.fullExtent {
-                        self?.mapView.setViewpoint(AGSViewpoint(targetExtent: extent), completion: nil)
-                        self?.createBarButtonItem.isEnabled = true
-                    }
-                }
+                // Load with default version.
                 self.defaultVersionName = serviceGeodatabase.defaultVersionName
-                // It seems to be detached at first.
-//                self.currentVersionName = serviceGeodatabase.versionName
-                self.currentVersionName = serviceGeodatabase.defaultVersionName
-                self.fetchVersions(geodatabase: serviceGeodatabase) { [weak self] result in
-                    switch result {
-                    case .success(let versions):
-                        self?.existingVersionNames = versions
-                        self?.switchBarButtonItem.isEnabled = true
-                    case .failure(let error as NSError):
-                        // Provide additional error reason to users.
-                        let errorMessage = error.localizedDescription + (error.localizedFailureReason ?? "")
-                        self?.presentAlert(title: "Error", message: errorMessage)
-                    }
+                self.existingVersionNames.append(serviceGeodatabase.defaultVersionName)
+                
+                // Load feature layer.
+                let featureLayer = self.loadFeatureLayer(from: serviceGeodatabase.table(withLayerID: 0)!) {
+                    // After the feature layer is loaded
+                    self.switchVersion(geodatabase: serviceGeodatabase, to: serviceGeodatabase.defaultVersionName)
                 }
-                self.switchVersion(geodatabase: serviceGeodatabase, to: serviceGeodatabase.defaultVersionName)
+                self.featureLayer = featureLayer
+                self.mapView.map?.operationalLayers.add(featureLayer)
             } else if let error = error {
                 self.presentAlert(error: error)
+                self.setStatus(message: "Error loading service geodatabase.")
             }
         }
-        self.serviceGeodatabase = serviceGeodatabase
-        return map
+        return serviceGeodatabase
+    }
+    
+    func loadFeatureLayer(from featureTable: AGSFeatureTable, completion: (() -> Void)? = nil) -> AGSFeatureLayer {
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        
+        SVProgressHUD.show(withStatus: "Loading feature layer…")
+        featureLayer.load { [weak self] error in
+            SVProgressHUD.dismiss()
+            if let extent = featureLayer.fullExtent {
+                // Zoom to the target extent with animation.
+                self?.mapView.setViewpoint(AGSViewpoint(targetExtent: extent), completion: nil)
+                self?.createBarButtonItem.isEnabled = true
+                completion?()
+            } else if let error = error {
+                self?.presentAlert(error: error)
+            }
+        }
+        return featureLayer
     }
     
     func identifyPixel(at screenPoint: CGPoint, completion: @escaping (AGSFeature) -> Void) {
         // Clear selection before identify.
-        if let selectedFeature = selectedFeature {
-            self.featureLayer.unselectFeature(selectedFeature)
-        }
+        clearSelection()
         // Clear in-progress identify operation.
         identifyOperation?.cancel()
         identifyOperation = nil
@@ -132,49 +146,14 @@ class EditWithBranchVersioningViewController: UIViewController {
         }
     }
     
-    @IBAction func createBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        chooseVersionAccessPermission(sender) { permission in
-            self.createBranchAlert(permission: permission) { parameters in
-                self.createVersion(geodatabase: self.serviceGeodatabase, parameters: parameters) { [weak self] result in
-                    switch result {
-                    case .success(let versionName):
-                        self?.existingVersionNames.append(versionName)
-                    case .failure(let error as NSError):
-                        // Provide additional error reason to users.
-                        let errorMessage = error.localizedDescription + (error.localizedFailureReason ?? "")
-                        self?.presentAlert(title: "Error", message: errorMessage)
-                    }
-                }
-            }
-        }
-    }
-    
-    @IBAction func switchBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        chooseVersionToSwitch(sender) { versionName in
-             self.switchVersion(geodatabase: self.serviceGeodatabase, to: versionName)
-        }
-    }
-    
-    func createServiceParameters(uniqueName: String, description: String?, accessPermission: AGSVersionAccess) -> AGSServiceVersionParameters {
+    func createServiceParameters(accessPermission: AGSVersionAccess, uniqueName: String, description: String?) -> AGSServiceVersionParameters {
         let parameters = AGSServiceVersionParameters()
-        parameters.name = uniqueName
         parameters.access = accessPermission
+        parameters.name = uniqueName
         if let description = description {
             parameters.parametersDescription = description
         }
         return parameters
-    }
-    
-    func fetchVersions(geodatabase: AGSServiceGeodatabase, completion: @escaping (Result<[String], Error>) -> Void) {
-        geodatabase.fetchVersions { serviceVersionInfo, error in
-            if let info = serviceVersionInfo {
-                // Fetch versions succeeded.
-                completion(.success(info.map { $0.name }))
-            } else if let error = error {
-                // Failed to fetch versions.
-                completion(.failure(error))
-            }
-        }
     }
     
     func createVersion(geodatabase: AGSServiceGeodatabase, parameters: AGSServiceVersionParameters, completion: @escaping (Result<String, Error>) -> Void) {
@@ -190,16 +169,32 @@ class EditWithBranchVersioningViewController: UIViewController {
     }
     
     func switchVersion(geodatabase: AGSServiceGeodatabase, to branchVersionName: String) {
-        // Always apply local edits before switching to a new branch.
-        applyLocalEdits(geodatabase: geodatabase) {
-            geodatabase.switchVersion(withName: branchVersionName) { [weak self] error in
-                guard let self = self else { return }
-                if let error = error {
-                    self.presentAlert(error: error)
-                } else {
-                    self.currentVersionName = branchVersionName
-                    // Reload feature table with the new version.
-                    self.featureLayer.featureTable?.load()
+        if currentVersionName == defaultVersionName {
+            // Discard local edits if currently on default branch.
+            undoLocalEdits(geodatabase: geodatabase) {
+                geodatabase.switchVersion(withName: branchVersionName) { [weak self] error in
+                    guard let self = self else { return }
+                    if let error = error {
+                        self.presentAlert(error: error)
+                    } else {
+                        // Reload feature table with the new version.
+                        self.featureLayer.featureTable?.load()
+                        self.currentVersionName = branchVersionName
+                    }
+                }
+            }
+        } else {
+            // Apply local edits when switching to a user created branch.
+            applyLocalEdits(geodatabase: geodatabase) {
+                geodatabase.switchVersion(withName: branchVersionName) { [weak self] error in
+                    guard let self = self else { return }
+                    if let error = error {
+                        self.presentAlert(error: error)
+                    } else {
+                        // Reload feature table with the new version.
+                        self.featureLayer.featureTable?.load()
+                        self.currentVersionName = branchVersionName
+                    }
                 }
             }
         }
@@ -217,16 +212,55 @@ class EditWithBranchVersioningViewController: UIViewController {
         }
     }
     
-    func undoLocalEdits(geodatabase: AGSServiceGeodatabase) {
+    func undoLocalEdits(geodatabase: AGSServiceGeodatabase, completion: (() -> Void)? = nil) {
         if geodatabase.hasLocalEdits() {
             SVProgressHUD.show(withStatus: "Discarding local edits…")
             geodatabase.undoLocalEdits { _ in
                 SVProgressHUD.dismiss()
+                completion?()
+            }
+        } else {
+            completion?()
+        }
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func createBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        chooseVersionAccessPermission(sender) { permission in
+            self.createBranchAlert(permission: permission) { [weak self] parameters in
+                guard let self = self else { return }
+                self.createVersion(geodatabase: self.serviceGeodatabase, parameters: parameters) { [weak self] result in
+                    switch result {
+                    case .success(let versionName):
+                        self?.existingVersionNames.append(versionName)
+                    case .failure(let error as NSError):
+                        // Provide additional error reason to users if there is any.
+                        let errorMessage = error.localizedDescription + (error.localizedFailureReason ?? "")
+                        self?.presentAlert(title: "Error", message: errorMessage)
+                        self?.setStatus(message: "Error creating new version.")
+                    }
+                }
             }
         }
     }
     
+    @IBAction func switchBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        // Clear selection before switching to a new branch version.
+        clearSelection()
+        chooseVersion(sender) { versionName in
+             self.switchVersion(geodatabase: self.serviceGeodatabase, to: versionName)
+        }
+    }
+    
     // MARK: UI
+    
+    func clearSelection() {
+        if let feature = selectedFeature {
+            featureLayer.unselectFeature(feature)
+            selectedFeature = nil
+        }
+    }
     
     func setStatus(message: String) {
         statusLabel.text = message
@@ -241,10 +275,10 @@ class EditWithBranchVersioningViewController: UIViewController {
     /// Move the currently selected feature to the given map point, by updating the selected feature's geometry and feature table.
     func moveFeature(feature: AGSFeature, to mapPoint: AGSPoint) {
         // Create an alert to confirm that the user wants to update the geometry.
-        let alert = UIAlertController(title: "Confirm Update", message: "Are you sure you want to move the selected feature?", preferredStyle: .alert)
-        // Clear the selection and selected feature if "No" is selected.
+        let alert = UIAlertController(title: "Confirm Update", message: "Do you want to move the selected feature?", preferredStyle: .alert)
+        // Clear the selection and selected feature if canceled.
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            self.featureLayer.unselectFeature(feature)
+            self.clearSelection()
         }
         
         let moveAction = UIAlertAction(title: "Move", style: .default) { _ in
@@ -252,35 +286,12 @@ class EditWithBranchVersioningViewController: UIViewController {
             feature.geometry = mapPoint
             // Update the selected feature's feature table.
             feature.featureTable?.update(feature) { _ in
-                self.featureLayer.unselectFeature(feature)
-                self.selectedFeature = nil
+                self.clearSelection()
             }
         }
         alert.addAction(cancelAction)
         alert.addAction(moveAction)
         present(alert, animated: true)
-    }
-    
-    func editFeatureDamageAttribute(feature: AGSFeature, sourceRect: CGRect) {
-        let alertController = UIAlertController(
-            title: "Damage type",
-            message: "Choose a damage type for the building.",
-            preferredStyle: .actionSheet
-        )
-        DamageType.allCases.forEach { type in
-            let action = UIAlertAction(title: type.rawValue, style: .default) { _ in
-                feature.attributes["typdamage"] = type.rawValue
-                feature.featureTable?.update(feature)
-                self.mapView.callout.dismiss()
-            }
-            alertController.addAction(action)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            self.mapView.callout.dismiss()
-        }
-        alertController.addAction(cancelAction)
-        alertController.popoverPresentationController?.sourceRect = sourceRect
-        present(alertController, animated: true)
     }
     
     func createBranchAlert(permission: AGSVersionAccess, completion: @escaping (AGSServiceVersionParameters) -> Void) {
@@ -305,7 +316,7 @@ class EditWithBranchVersioningViewController: UIViewController {
             // If the text field is empty, do nothing.
             guard let branchText = branchTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !branchText.isEmpty else { return }
             let descriptionText = descriptionTextField.text
-            let parameters = self.createServiceParameters(uniqueName: branchText, description: descriptionText, accessPermission: permission)
+            let parameters = self.createServiceParameters(accessPermission: permission, uniqueName: branchText, description: descriptionText)
             completion(parameters)
         }
         createAction.isEnabled = false
@@ -338,10 +349,32 @@ class EditWithBranchVersioningViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    func chooseVersionToSwitch(_ sender: UIBarButtonItem, completion: @escaping (String) -> Void) {
+    func editFeatureDamageAttribute(feature: AGSFeature, sourceRect: CGRect) {
         let alertController = UIAlertController(
-            title: "Choose branch version",
-            message: "Choose to switch to another branch.",
+            title: "Damage type",
+            message: "Choose a damage type for the building.",
+            preferredStyle: .actionSheet
+        )
+        DamageType.allCases.forEach { type in
+            let action = UIAlertAction(title: type.rawValue, style: .default) { _ in
+                feature.attributes["typdamage"] = type.rawValue
+                feature.featureTable?.update(feature)
+                self.mapView.callout.dismiss()
+            }
+            alertController.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.mapView.callout.dismiss()
+        }
+        alertController.addAction(cancelAction)
+        alertController.popoverPresentationController?.sourceRect = sourceRect
+        present(alertController, animated: true)
+    }
+    
+    func chooseVersion(_ sender: UIBarButtonItem, completion: @escaping (String) -> Void) {
+        let alertController = UIAlertController(
+            title: "Choose to switch to another version",
+            message: nil,
             preferredStyle: .actionSheet
         )
         existingVersionNames.forEach { name in
@@ -358,8 +391,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     
     func chooseVersionAccessPermission(_ sender: UIBarButtonItem, completion: @escaping (AGSVersionAccess) -> Void) {
         let alertController = UIAlertController(
-            title: "Branch version access level",
-            message: "Choose an access level for the new branch version.",
+            title: "Choose an access level for the new branch version",
+            message: nil,
             preferredStyle: .actionSheet
         )
         let versionAccessPermission: KeyValuePairs<String, AGSVersionAccess> = [
@@ -385,6 +418,8 @@ class EditWithBranchVersioningViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames  = ["EditWithBranchVersioningViewController"]
+        // Load the service geodatabase.
+        serviceGeodatabase = loadServiceGeodatabase()
     }
 }
 

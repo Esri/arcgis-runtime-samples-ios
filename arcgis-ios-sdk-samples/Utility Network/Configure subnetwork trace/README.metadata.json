@@ -64,7 +64,8 @@
         "AGSUtilityTraversability"
     ],
     "snippets": [
-        "ConfigureSubnetworkTraceViewController.swift"
+        "ConfigureSubnetworkTraceViewController.swift",
+        "ConfigureSubnetworkTraceOptionsViewController"
     ],
     "title": "Configure subnetwork trace"
 }

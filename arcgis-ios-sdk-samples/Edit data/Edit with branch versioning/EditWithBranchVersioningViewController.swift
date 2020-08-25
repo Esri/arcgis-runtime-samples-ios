@@ -290,7 +290,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         // Clear selection before switching to a new branch version.
         clearSelection()
         chooseVersion(sender) { versionName in
-             self.switchVersion(geodatabase: self.serviceGeodatabase, to: versionName)
+            self.switchVersion(geodatabase: self.serviceGeodatabase, to: versionName)
         }
     }
     

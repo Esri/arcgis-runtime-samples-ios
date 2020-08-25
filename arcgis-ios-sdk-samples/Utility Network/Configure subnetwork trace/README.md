@@ -24,8 +24,8 @@ Example barrier conditions for the default dataset:
 2. Populate the choice list for the comparison source with the non-system defined `AGSUtilityNetworkDefinition.networkAttributes`. Populate the choice list for the comparison operator with the enum values from `AGSUtilityAttributeComparisonOperator`.
 3. Create an `AGSUtilityElement` from this asset type to use as the starting location for the trace.
 4. Update the selected barrier expression and the checked options in the UI using this tier's `AGSTraceConfiguration`.
-5. When 'Network Attribute' is selected, if its `AGSDomain` is an `AGSCodedValueDomain`, populate the choice list for the comparison value with its `AGSCodedValues`.  Otherwise, display a `UITextField` for entering an attribute value.
-6. When "Add condition" is tapped, create a new `AGSUtilityNetworkAttributeComparison` using the selected comparison source, operator, and selected or typed value. Use the selected source's `dataType` to convert the comparison value to the correct data type.
+5. When an attribute has been selected, if its `AGSDomain` is an `AGSCodedValueDomain`, populate the choice list for the comparison value with its `AGSCodedValues`.  Otherwise, display a `UITextField` for entering an attribute value.
+6. When "Add" is tapped, create a new `AGSUtilityNetworkAttributeComparison` using the selected comparison source, operator, and selected or typed value. Use the selected source's `dataType` to convert the comparison value to the correct data type.
 7. If the traversability's list of `barriers` is not empty, create an `AGSUtilityTraceOrCondition` with the existing `barriers` and the new comparison from step 6.
 8. When "Trace" is tapped, create `AGSUtilityTraceParameters` passing in `subnetwork` and the default starting location. Set its `traceConfiguration` with the modified options, selections, and expression; then trace the utility network with `AGSUtilityNetwork.trace(with:completion:)`.
 9. When "Reset" is tapped, set the trace configurations expression back to its original value.

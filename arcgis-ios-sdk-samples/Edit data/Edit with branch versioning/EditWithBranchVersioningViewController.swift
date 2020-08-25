@@ -78,11 +78,14 @@ class EditWithBranchVersioningViewController: UIViewController {
     
     // MARK: Methods
     
-    func loadServiceGeodatabase() -> AGSServiceGeodatabase {
-        let damageFeatureService = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
-        let serviceGeodatabase = AGSServiceGeodatabase(url: damageFeatureService)
-        // If not explicitly set, the service geodatabase will ask for credentials
-        // on loading. You can also set its `credential` property. E.g.
+    /// Load service geodatabase from a feature service URL.
+    ///
+    /// - Parameter serviceURL: The URL to the feature service.
+    /// - Returns: An `AGSServiceGeodatabase` object.
+    func loadServiceGeodatabase(serviceURL: URL) -> AGSServiceGeodatabase {
+        let serviceGeodatabase = AGSServiceGeodatabase(url: serviceURL)
+        // If not explicitly set, the service geodatabase will ask for credentials on loading.
+        // You can also set its `credential` property. E.g.
         // serviceGeodatabase.credential = AGSCredential(user: "editor01", password: "editor01.password")
         
         SVProgressHUD.show(withStatus: "Loading service geodatabase…")
@@ -96,7 +99,7 @@ class EditWithBranchVersioningViewController: UIViewController {
                 
                 // Load feature layer.
                 let featureLayer = self.loadFeatureLayer(from: serviceGeodatabase.table(withLayerID: 0)!) {
-                    // After the feature layer is loaded
+                    // After the feature layer is loaded, switch to default version.
                     self.switchVersion(geodatabase: serviceGeodatabase, to: serviceGeodatabase.defaultVersionName)
                 }
                 self.featureLayer = featureLayer
@@ -109,6 +112,12 @@ class EditWithBranchVersioningViewController: UIViewController {
         return serviceGeodatabase
     }
     
+    /// Load a feature layer from a feature table.
+    ///
+    /// - Parameters:
+    ///   - featureTable: The feature table for creating the feature layer.
+    ///   - completion: An optional closure to execute after feature layer is successfully loaded.
+    /// - Returns: An `AGSFeatureLayer` object.
     func loadFeatureLayer(from featureTable: AGSFeatureTable, completion: (() -> Void)? = nil) -> AGSFeatureLayer {
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
@@ -127,7 +136,13 @@ class EditWithBranchVersioningViewController: UIViewController {
         return featureLayer
     }
     
-    func identifyPixel(at screenPoint: CGPoint, completion: @escaping (AGSFeature) -> Void) {
+    /// Identify a tapped point on a feature layer.
+    ///
+    /// - Parameters:
+    ///   - featureLayer: The feature layer where to identigy the features.
+    ///   - screenPoint: The tapped screen point.
+    ///   - completion: A closure to pass the identified feature for further usage.
+    func identifyPixel(on featureLayer: AGSFeatureLayer, at screenPoint: CGPoint, completion: @escaping (AGSFeature) -> Void) {
         // Clear selection before identify.
         clearSelection()
         // Clear in-progress identify operation.
@@ -145,6 +160,13 @@ class EditWithBranchVersioningViewController: UIViewController {
         }
     }
     
+    /// Create service parameters with provided information.
+    ///
+    /// - Parameters:
+    ///   - accessPermission: An `AGSVersionAccess` object that defines the permission level.
+    ///   - uniqueName: A unique string serves as branch version name.
+    ///   - description: A string to describe the branch.
+    /// - Returns: An `AGSServiceVersionParameters` object.
     func createServiceParameters(accessPermission: AGSVersionAccess, uniqueName: String, description: String?) -> AGSServiceVersionParameters {
         let parameters = AGSServiceVersionParameters()
         parameters.access = accessPermission
@@ -155,6 +177,12 @@ class EditWithBranchVersioningViewController: UIViewController {
         return parameters
     }
     
+    /// Create a new branch version with parameters in the service geodatabase.
+    ///
+    /// - Parameters:
+    ///   - geodatabase: The geodatabase to create the version.
+    ///   - parameters: The parameters for the new branch version.
+    ///   - completion: The results for `AGSServiceGeodatabase.createVersion(with:completion:)` call.
     func createVersion(geodatabase: AGSServiceGeodatabase, parameters: AGSServiceVersionParameters, completion: @escaping (Result<String, Error>) -> Void) {
         geodatabase.createVersion(with: parameters) { serviceVersionInfo, error in
             if let info = serviceVersionInfo {
@@ -167,6 +195,11 @@ class EditWithBranchVersioningViewController: UIViewController {
         }
     }
     
+    /// Switch the geodatabase to connect to a new branch version.
+    ///
+    /// - Parameters:
+    ///   - geodatabase: The geodatabase to connect switch version.
+    ///   - branchVersionName: The new branch version name to connect to.
     func switchVersion(geodatabase: AGSServiceGeodatabase, to branchVersionName: String) {
         if currentVersionName == defaultVersionName {
             // Discard local edits if currently on default branch.
@@ -199,6 +232,11 @@ class EditWithBranchVersioningViewController: UIViewController {
         }
     }
     
+    /// Apply local edits to the geodatabase.
+    ///
+    /// - Parameters:
+    ///   - geodatabase: The geodatabase to apply edits.
+    ///   - completion: An optional closure to execute after edits are applied.
     func applyLocalEdits(geodatabase: AGSServiceGeodatabase, completion: (() -> Void)? = nil) {
         if geodatabase.hasLocalEdits() {
             SVProgressHUD.show(withStatus: "Applying local edits…")
@@ -211,6 +249,10 @@ class EditWithBranchVersioningViewController: UIViewController {
         }
     }
     
+    /// Undo local edits on the geodatabase.
+    /// - Parameters:
+    ///   - geodatabase: The geodatabase to discard edits.
+    ///   - completion: An optional closure to execute after edits are undone.
     func undoLocalEdits(geodatabase: AGSServiceGeodatabase, completion: (() -> Void)? = nil) {
         if geodatabase.hasLocalEdits() {
             SVProgressHUD.show(withStatus: "Discarding local edits…")
@@ -418,9 +460,12 @@ class EditWithBranchVersioningViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames  = ["EditWithBranchVersioningViewController"]
         // Load the service geodatabase.
-        serviceGeodatabase = loadServiceGeodatabase()
+        let damageFeatureService = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
+        serviceGeodatabase = loadServiceGeodatabase(serviceURL: damageFeatureService)
     }
 }
+
+// MARK: - AGSGeoViewTouchDelegate
 
 extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
@@ -430,7 +475,7 @@ extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
         if let selectedFeature = selectedFeature {
             moveFeature(feature: selectedFeature, to: mapPoint)
         } else {
-            identifyPixel(at: screenPoint) { feature in
+            identifyPixel(on: featureLayer, at: screenPoint) { feature in
                 self.showCallout(feature, tapLocation: mapPoint)
             }
         }

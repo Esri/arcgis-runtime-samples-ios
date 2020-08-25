@@ -83,8 +83,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         let serviceGeodatabase = AGSServiceGeodatabase(url: damageFeatureService)
         // If not explicitly set, the service geodatabase will ask for credentials
         // on loading. You can also set its `credential` property. E.g.
-        #warning("to remove before PR")
-        serviceGeodatabase.credential = AGSCredential(user: "editor01", password: "editor01.password")
+        // serviceGeodatabase.credential = AGSCredential(user: "editor01", password: "editor01.password")
         
         SVProgressHUD.show(withStatus: "Loading service geodatabase…")
         serviceGeodatabase.load { [weak self] error in

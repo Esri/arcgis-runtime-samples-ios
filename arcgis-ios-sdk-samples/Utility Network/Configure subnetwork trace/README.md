@@ -21,7 +21,7 @@ Example barrier conditions for the default dataset:
 ## How it works
 
 1. Create and load an `AGSUtilityNetwork` with a feature service URL, then get an asset type and a tier by their names.
-2. Populate the choice list for the comparison source with the non-system defined `AGSUtilityNetworkDefinition.networkAttributes`.  Populate the choice list for the comparison operator with the enum values from `AGSUtilityAttributeComparisonOperator`.
+2. Populate the choice list for the comparison source with the non-system defined `AGSUtilityNetworkDefinition.networkAttributes`. Populate the choice list for the comparison operator with the enum values from `AGSUtilityAttributeComparisonOperator`.
 3. Create an `AGSUtilityElement` from this asset type to use as the starting location for the trace.
 4. Update the selected barrier expression and the checked options in the UI using this tier's `AGSTraceConfiguration`.
 5. When 'Network Attribute' is selected, if its `AGSDomain` is an `AGSCodedValueDomain`, populate the choice list for the comparison value with its `AGSCodedValues`.  Otherwise, display a `UITextField` for entering an attribute value.

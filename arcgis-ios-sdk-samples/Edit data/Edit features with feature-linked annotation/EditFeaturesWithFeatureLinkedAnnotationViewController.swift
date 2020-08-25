@@ -22,37 +22,76 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
             mapView.map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39.0204, longitude: -77.4159, levelOfDetail: 18)
             // Set the touch delegate.
             mapView.touchDelegate = self
-            loadGeodatabase()
         }
     }
     // The geodatabase used by this sample.
-    let geodatabase = AGSGeodatabase(fileURL: Bundle.main.url(forResource: "loudoun_anno", withExtension: "geodatabase")!)
+    let geodatabase: AGSGeodatabase!
     // The feature that has been selected.
     var selectedFeature: AGSFeature?
     // The returned cancelable after identifying the layers.
     var identifyOperation: AGSCancelable?
     
-    func loadGeodatabase() {
-        // Load a geodatabase from portal data.
-        geodatabase.load { [weak self] error in
-            guard let self = self else { return }
+    required init?(coder: NSCoder) {
+        // Create a URL leading to the resource.
+        let geodatabaseURL = Bundle.main.url(forResource: "loudoun_anno", withExtension: "geodatabase")!
+        do {
+            // Create a temporary directory URL.
+            let temporaryDirectoryURL = try FileManager.default.url(
+                for: .itemReplacementDirectory,
+                in: .userDomainMask,
+                appropriateFor: geodatabaseURL,
+                create: true
+            )
+            // Create a temporary URL where the geodatabase URL can be copied to.
+            let temporaryGeodatabaseURL = temporaryDirectoryURL.appendingPathComponent(ProcessInfo.processInfo.globallyUniqueString)
+            try FileManager.default.copyItem(at: geodatabaseURL, to: temporaryGeodatabaseURL)
+            // Create the geodatabase with the URL.
+            geodatabase = AGSGeodatabase(fileURL: temporaryGeodatabaseURL)
+        } catch {
+            print("Error setting up geodatabase: \(error)")
+            geodatabase = nil
+        }
+        
+        super.init(coder: coder)
+        
+        // Load the geodatabase.
+        geodatabase?.load { [weak self] (error) in
+            let result: Result<Void, Error>
             if let error = error {
-                self.presentAlert(error: error)
+                result = .failure(error)
             } else {
-                guard let map = self.mapView.map else { return }
-                // Create feature layers from tables in the geodatabase.
-                let featureTableNames = ["ParcelLines_1", "Loudoun_Address_Points_1"]
-                let featureTables = featureTableNames.compactMap { self.geodatabase.geodatabaseFeatureTable(withName: $0) }
-                let featureLayers = featureTables.map(AGSFeatureLayer.init)
-                // Add the feature layers to the map.
-                map.operationalLayers.addObjects(from: featureLayers)
-                // Create annotation layers from tables in the geodatabase.
-                let annotationTableNames = ["ParcelLinesAnno_1", "Loudoun_Address_PointsAnno_1"]
-                let annotationTables = annotationTableNames.compactMap { self.geodatabase.geodatabaseAnnotationTable(withTableName: $0) }
-                let annotationLayers = annotationTables.map(AGSAnnotationLayer.init)
-                // Add the annotation layers to the map.
-                map.operationalLayers.addObjects(from: annotationLayers)
+                result = .success(())
             }
+            self?.geodatabaseDidLoad(with: result)
+        }
+    }
+    
+    deinit {
+        if let geodatabase = geodatabase {
+            geodatabase.close()
+            try? FileManager.default.removeItem(at: geodatabase.fileURL)
+        }
+    }
+    
+    // Called in response to the geodatabase load operation completing.
+    func geodatabaseDidLoad(with result: Result<Void, Error>) {
+        switch result {
+        case .success:
+            guard let map = self.mapView.map else { return }
+            // Create feature layers from tables in the geodatabase.
+            let featureTableNames = ["ParcelLines_1", "Loudoun_Address_Points_1"]
+            let featureTables = featureTableNames.compactMap { self.geodatabase.geodatabaseFeatureTable(withName: $0) }
+            let featureLayers = featureTables.map(AGSFeatureLayer.init)
+            // Add the feature layers to the map.
+            map.operationalLayers.addObjects(from: featureLayers)
+            // Create annotation layers from tables in the geodatabase.
+            let annotationTableNames = ["ParcelLinesAnno_1", "Loudoun_Address_PointsAnno_1"]
+            let annotationTables = annotationTableNames.compactMap { self.geodatabase.geodatabaseAnnotationTable(withTableName: $0) }
+            let annotationLayers = annotationTables.map(AGSAnnotationLayer.init)
+            // Add the annotation layers to the map.
+            map.operationalLayers.addObjects(from: annotationLayers)
+        case .failure(let error):
+            self.presentAlert(error: error)
         }
     }
     

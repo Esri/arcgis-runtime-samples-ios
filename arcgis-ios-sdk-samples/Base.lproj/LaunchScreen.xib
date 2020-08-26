@@ -25,12 +25,26 @@
                     <view key="view" contentMode="scaleToFill" id="naG-VL-GTw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J06-47-j6r">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="J06-47-j6r" firstAttribute="top" secondItem="naG-VL-GTw" secondAttribute="top" id="IiY-2a-EIr"/>
+                            <constraint firstAttribute="trailing" secondItem="J06-47-j6r" secondAttribute="trailing" id="Wue-0H-yVX"/>
+                            <constraint firstItem="J06-47-j6r" firstAttribute="leading" secondItem="naG-VL-GTw" secondAttribute="leading" id="afV-bF-k0L"/>
+                            <constraint firstItem="g17-eF-g37" firstAttribute="bottom" secondItem="J06-47-j6r" secondAttribute="bottom" id="pME-OG-wdR"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xB8-dd-IUB"/>
+                    <navigationItem key="navigationItem" id="xB8-dd-IUB">
+                        <nil key="title"/>
+                    </navigationItem>
                 </viewController>
             </viewControllers>
-            <point key="canvasLocation" x="1156" y="439"/>
+            <point key="canvasLocation" x="1155.072463768116" y="438.61607142857139"/>
         </navigationController>
     </objects>
     <resources>

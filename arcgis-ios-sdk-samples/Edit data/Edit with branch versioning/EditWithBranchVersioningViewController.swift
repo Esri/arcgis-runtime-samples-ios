@@ -51,7 +51,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     /// The name of the branch that the user is currently on.
     var currentVersionName: String! {
         willSet(newValue) {
-            if newValue != nil {
+            // When the service has internal error, it might give empty version name.
+            if newValue != nil && !newValue.isEmpty {
                 DispatchQueue.main.async { self.setStatus(message: newValue) }
             }
         }

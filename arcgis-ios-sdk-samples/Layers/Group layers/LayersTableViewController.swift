@@ -114,15 +114,15 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     func formattedValue(of name: String) -> String {
         switch name {
         case "DevA_Trees":
-            return "Dev A: Trees"
+            return "Trees"
         case "DevA_Pathways":
-            return "Dev A: Pathways"
-        case "DevA_BuildingShell_Textured":
-            return "Dev A: Building Shell Textured"
-        case "PlannedDemo_BuildingShell":
-            return "Planned Demo Building Shell"
+            return "Pathways"
+        case "DevA_BuildingShells":
+            return "Buildings A"
+        case "DevB_BuildingShells":
+            return "Buildings B"
         case "DevelopmentProjectArea":
-            return "Development Project Area"
+            return "Project area"
         default:
             return name
         }

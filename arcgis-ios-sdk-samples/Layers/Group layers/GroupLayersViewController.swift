@@ -19,7 +19,7 @@ class GroupLayersViewController: UIViewController {
     @IBOutlet var sceneView: AGSSceneView!
     @IBOutlet var layersBarButtonItem: UIBarButtonItem!
     
-    let groupLayerName = "Dev A"
+    let groupLayerName = "Buildings group"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +28,8 @@ class GroupLayersViewController: UIViewController {
         
         // Assign scene to the scene view.
         sceneView.scene = makeScene()
-    
-        addOperationalLayers()
+        // Add the group layers to the scene as operational layers.
+        sceneView.scene?.operationalLayers.addObjects(from: [makeProjectAreaGroupLayer(), makeBuildingsGroupLayer()])
         zoomToGroupLayer()
     }
     
@@ -53,7 +53,7 @@ class GroupLayersViewController: UIViewController {
                 self?.sceneView.setViewpointCamera(camera) { (_) in
                     DispatchQueue.main.async {
                         // Enable the bar button item to display
-                        // the Table of Contents of operational layers.
+                        // The table of contents of operational layers.
                         self?.layersBarButtonItem.isEnabled = true
                     }
                 }
@@ -61,34 +61,40 @@ class GroupLayersViewController: UIViewController {
         }
     }
     
-    /// Adds a group layer and other layers to the scene as operational layers.
-    func addOperationalLayers() {
-        let sceneLayer = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_BuildingShells/SceneServer")!)
-        
-        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/DevelopmentProjectArea/FeatureServer/0")!)
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        
-        sceneView.scene?.operationalLayers.addObjects(from: [makeGroupLayer(), sceneLayer, featureLayer])
-    }
-    
-    /// Returns a group layer.
-    func makeGroupLayer() -> AGSGroupLayer {
+    /// Returns the project area group layer
+    func makeProjectAreaGroupLayer() -> AGSGroupLayer {
         // Create a group layer and set its name.
         let groupLayer = AGSGroupLayer()
-        groupLayer.name = groupLayerName
-        
-        // Create two scene layers.
+        groupLayer.name = "Project area group"
+        // Create a layer for the trees.
         let trees = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_Trees/SceneServer")!)
-        let buildingsA = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_BuildingShells/SceneServer")!)
-        let buildingsB = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevB_BuildingShells/SceneServer")!)
-        // Create a feature layer.
+        // Create a layer for the pathways.
         let pathwaysTable = AGSServiceFeatureTable(url: URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_Pathways/FeatureServer/1")!)
         let pathways = AGSFeatureLayer(featureTable: pathwaysTable)
         pathways.sceneProperties?.altitudeOffset = 1
         pathways.sceneProperties?.surfacePlacement = .relative
+        // Create a layer for the project area.
+        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/DevelopmentProjectArea/FeatureServer/0")!)
+        let projectArea = AGSFeatureLayer(featureTable: featureTable)
+        // Add the scene layers and feature layer as children of the group layer.
+        groupLayer.layers.addObjects(from: [trees, pathways, projectArea])
+        return groupLayer
+    }
+    
+    /// Returns the buildings group layer.
+    func makeBuildingsGroupLayer() -> AGSGroupLayer {
+        // Create a group layer and set its name.
+        let groupLayer = AGSGroupLayer()
+        groupLayer.name = groupLayerName
+        
+        //Create layers for the buildings.
+        let buildingsA = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_BuildingShells/SceneServer")!)
+        let buildingsB = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevB_BuildingShells/SceneServer")!)
         
         // Add the scene layers and feature layer as children of the group layer.
-        groupLayer.layers.addObjects(from: [trees, pathways, projectArea, buildingsA, buildingsB])
+        groupLayer.layers.addObjects(from: [buildingsA, buildingsB])
+        // Set the visibility mode to exclusive.
+        groupLayer.visibilityMode = .exclusive
         return groupLayer
     }
     

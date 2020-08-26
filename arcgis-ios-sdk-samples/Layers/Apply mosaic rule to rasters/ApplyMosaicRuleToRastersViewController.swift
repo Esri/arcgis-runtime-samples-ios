@@ -68,7 +68,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
     /// - Returns: An `AGSMap` object.
     func makeMap() -> AGSMap {
         // The URL of an image service that supports mosaic rules.
-        let imageServiceURL = URL(string: "http://rtc-100-8.esri.com/arcgis/rest/services/imageServices/amberg_germany/ImageServer")!
+        let imageServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/amberg_germany/ImageServer")!
         // Create an image service raster from an online raster service.
         imageServiceRaster = AGSImageServiceRaster(url: imageServiceURL)
         // Check if a mosaic rule exists. If not, create one.

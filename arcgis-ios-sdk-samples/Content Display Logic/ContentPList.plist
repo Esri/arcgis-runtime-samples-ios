@@ -845,7 +845,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Display information</string>
+		<string>Display Information</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -1032,7 +1032,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Edit data</string>
+		<string>Edit Data</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -1723,7 +1723,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Augmented reality</string>
+		<string>Augmented Reality</string>
 		<key>children</key>
 		<array>
 			<dict>

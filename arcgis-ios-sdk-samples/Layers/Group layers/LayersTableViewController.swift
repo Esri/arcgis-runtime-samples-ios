@@ -61,6 +61,8 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
             
             // Set label.
             cell.textLabel?.text = formattedValue(of: childLayer.name)
+            
+            // Indicate which layer is visible
             if childLayer.isVisible {
                 cell.accessoryType = .checkmark
             } else {
@@ -91,6 +93,14 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         return headerView
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] {
+            childLayers[indexPath.row].isVisible = true
+            tableView.reloadData()
+        }
+    }
+    
     // MARK: - GroupLayersCellDelegate
     
     func didToggleSwitch(_ cell: GroupLayersCell, isOn: Bool) {
@@ -117,14 +127,28 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     ///     - enabled: Indicates if the switch should be enabled or disabled.
     func updateSwitchForRows(in section: Int, isEnabled: Bool) {
         guard let visibleRows = tableView.indexPathsForVisibleRows else { return }
-        
-        visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
-            if let cell = tableView.cellForRow(at: indexPath) as? GroupLayersCell {
-                cell.layerVisibilitySwitch.isEnabled = isEnabled
+        switch section {
+        case 0:
+            visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
+                if let cell = tableView.cellForRow(at: indexPath) as? GroupLayersCell {
+                    cell.layerVisibilitySwitch.isEnabled = isEnabled
+                }
             }
+        case 1:
+            guard let groupLayer = layers[section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] else { return }
+            childLayers.forEach { layer in
+                layer.isVisible = false
+            }
+            visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
+                if let cell = tableView.cellForRow(at: indexPath) {
+                    cell.isUserInteractionEnabled = false
+                    cell.textLabel?.isEnabled = false
+                }
+            }
+        default:
+            return
         }
     }
-    
     /// Modifies name of the layer.
     ///
     /// - Parameter name: Original name of the layer.

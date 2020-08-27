@@ -35,23 +35,41 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GroupLayersCell
-        
-        guard let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
-        
-        let childLayer = childLayers[indexPath.row]
-        
-        // Set label.
-        cell.layerNameLabel.text = formattedValue(of: childLayer.name)
-        
-        // Set state of the switch.
-        cell.layerVisibilitySwitch.isOn = childLayer.isVisible
-        cell.layerVisibilitySwitch.isEnabled = groupLayer.isVisible
-        
-        // To update the visibility of operational layers on switch toggle.
-        cell.delegate = self
-        
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! GroupLayersCell
+            guard let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
+            
+            let childLayer = childLayers[indexPath.row]
+            
+            // Set label.
+            cell.layerNameLabel.text = formattedValue(of: childLayer.name)
+            
+            // Set state of the switch.
+            cell.layerVisibilitySwitch.isOn = childLayer.isVisible
+            cell.layerVisibilitySwitch.isEnabled = groupLayer.isVisible
+            
+            // To update the visibility of operational layers on switch toggle.
+            cell.delegate = self
+            
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "exclusiveCell", for: indexPath) as! GroupLayersCell
+            guard let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
+            
+            let childLayer = childLayers[indexPath.row]
+            
+            // Set label.
+            cell.textLabel?.text = formattedValue(of: childLayer.name)
+            if childLayer.isVisible {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+            return cell
+        default:
+            fatalError("Unknown cell type")
+        }
     }
     
     // MARK: - UITableViewDelegate

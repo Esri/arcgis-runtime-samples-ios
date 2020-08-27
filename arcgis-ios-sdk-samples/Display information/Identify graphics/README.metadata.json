@@ -1,24 +1,24 @@
 {
     "category": "Display information",
-    "description": "Identify graphics in a graphics overlay.",
+    "description": "Display an alert message when a graphic is tapped.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "identify-graphics.png"
     ],
     "keywords": [
-        "identify",
         "graphics",
-        "AGSMapView",
-        "AGSIdentifyGraphicsOverlayResult",
+        "identify",
+        "AGSGraphic",
         "AGSGraphicsOverlay",
-        "AGSGeoViewTouchDelegate"
+        "AGSMapView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/identify-graphics.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/identify-graphics.htm"
+    ],
     "relevant_apis": [
-        "AGSMapView",
-        "AGSIdentifyGraphicsOverlayResult",
+        "AGSGraphic",
         "AGSGraphicsOverlay",
-        "AGSGeoViewTouchDelegate"
+        "AGSMapView"
     ],
     "snippets": [
         "GOIdentifyViewController.swift"

@@ -1,0 +1,31 @@
+{
+    "category": "Scenes",
+    "description": "Animate a series of images with an image overlay.",
+    "ignore": false,
+    "images": [
+        "animate-images-with-image-overlay.png"
+    ],
+    "keywords": [
+        "3D",
+        "animation",
+        "drone",
+        "dynamic",
+        "image frame",
+        "image overlay",
+        "real time",
+        "rendering",
+        "AGSImageFrame",
+        "AGSImageOverlay",
+        "AGSSceneView"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSImageFrame",
+        "AGSImageOverlay",
+        "AGSSceneView"
+    ],
+    "snippets": [
+        "AnimateImagesWithImageOverlayViewController.swift"
+    ],
+    "title": "Animate images with image overlay"
+}

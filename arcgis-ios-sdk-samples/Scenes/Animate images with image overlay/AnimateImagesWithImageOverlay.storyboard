@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GBY-aZ-JO5">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Animate Images With Image Overlay View Controller-->
+        <scene sceneID="Fv3-mL-yH2">
+            <objects>
+                <viewController id="GBY-aZ-JO5" customClass="AnimateImagesWithImageOverlayViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="djt-gy-k6G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsA-b3-hmy" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lnn-pc-krT">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" id="ePe-Xd-XYS">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="G9L-es-5OQ">
+                                            <rect key="frame" x="20" y="10" width="104" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="mbx-Cl-U2E"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="sliderValueChanged:" destination="GBY-aZ-JO5" eventType="valueChanged" id="CG1-Ua-9i3"/>
+                                            </connections>
+                                        </slider>
+                                    </barButtonItem>
+                                    <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="Jco-Fj-TzV"/>
+                                    <barButtonItem style="plain" id="Miz-5L-iRG">
+                                        <view key="customView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1T-7d-zzc">
+                                            <rect key="frame" x="134" y="27" width="0.0" height="0.0"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="euT-Ac-AK4">
+                                                    <rect key="frame" x="0.0" y="-17" width="0.0" height="34"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jon-0r-uRy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hf-Sx-W94">
+                                                            <rect key="frame" x="0.0" y="17" width="0.0" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="euT-Ac-AK4" firstAttribute="centerY" secondItem="X1T-7d-zzc" secondAttribute="centerY" id="PCu-RD-iEF"/>
+                                                <constraint firstAttribute="trailing" secondItem="euT-Ac-AK4" secondAttribute="trailing" id="kWZ-b4-PU3"/>
+                                                <constraint firstItem="euT-Ac-AK4" firstAttribute="leading" secondItem="X1T-7d-zzc" secondAttribute="leading" id="tdQ-MC-WTz"/>
+                                            </constraints>
+                                        </view>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lLL-S2-pzM"/>
+                                    <barButtonItem enabled="NO" systemItem="play" id="GT0-HQ-dKW">
+                                        <connections>
+                                            <action selector="playPauseButtonTapped:" destination="GBY-aZ-JO5" id="gmo-uU-tw2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3NY-NS-cZ3"/>
+                                    <barButtonItem enabled="NO" title="Speed" id="s1e-oL-rmp">
+                                        <connections>
+                                            <action selector="speedButtonTapped:" destination="GBY-aZ-JO5" id="Tng-W2-bl8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bsA-b3-hmy" firstAttribute="leading" secondItem="djt-gy-k6G" secondAttribute="leading" id="6w0-Sw-pv2"/>
+                            <constraint firstItem="Lnn-pc-krT" firstAttribute="bottom" secondItem="330-Pd-cXQ" secondAttribute="bottom" id="DvK-rb-oRx"/>
+                            <constraint firstItem="bsA-b3-hmy" firstAttribute="top" secondItem="330-Pd-cXQ" secondAttribute="top" id="HoV-Rx-7Ud"/>
+                            <constraint firstItem="bsA-b3-hmy" firstAttribute="trailing" secondItem="djt-gy-k6G" secondAttribute="trailing" id="SKt-dk-Odh"/>
+                            <constraint firstItem="Lnn-pc-krT" firstAttribute="leading" secondItem="djt-gy-k6G" secondAttribute="leading" id="Y4c-Rt-2pZ"/>
+                            <constraint firstItem="Lnn-pc-krT" firstAttribute="trailing" secondItem="djt-gy-k6G" secondAttribute="trailing" id="hKV-rl-IAF"/>
+                            <constraint firstItem="Lnn-pc-krT" firstAttribute="top" secondItem="bsA-b3-hmy" secondAttribute="bottom" id="szx-06-Fdx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="330-Pd-cXQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="opacityLabel" destination="8hf-Sx-W94" id="WlJ-N1-aGZ"/>
+                        <outlet property="opacitySlider" destination="G9L-es-5OQ" id="Yxa-5n-eFR"/>
+                        <outlet property="pauseButtonItem" destination="mzf-g7-zyS" id="9wT-Dc-2el"/>
+                        <outlet property="playButtonItem" destination="GT0-HQ-dKW" id="PfM-Em-Kqg"/>
+                        <outlet property="sceneView" destination="bsA-b3-hmy" id="bqY-JU-IpG"/>
+                        <outlet property="speedButtonItem" destination="s1e-oL-rmp" id="NCC-lc-Ep4"/>
+                        <outlet property="toolbar" destination="Lnn-pc-krT" id="BTo-7a-a51"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aYV-Si-Wuh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="pause" id="mzf-g7-zyS">
+                    <connections>
+                        <action selector="playPauseButtonTapped:" destination="GBY-aZ-JO5" id="VMM-lu-1pi"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="121.73913043478262" y="85.714285714285708"/>
+        </scene>
+    </scenes>
+</document>

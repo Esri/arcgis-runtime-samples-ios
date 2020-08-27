@@ -87,6 +87,8 @@
 	<string>To show your location on the map</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>For adding pictures from your photo library as attachments</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

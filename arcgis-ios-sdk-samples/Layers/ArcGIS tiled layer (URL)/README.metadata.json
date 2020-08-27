@@ -1,16 +1,20 @@
 {
     "category": "Layers",
-    "description": "Load an ArcGIS tiled layer from a URL.",
+    "description": "Load a tiled layer from a map server with a URL.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "tiled-layer-url.png"
     ],
     "keywords": [
+        "basemap",
+        "tiled layer",
+        "tiles",
         "AGSArcGISTiledLayer",
-        "ArcGIS tiled layer",
-        "tiled layer"
+        "AGSMap"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/arcgis-tiled-layer-url-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/arcgis-tiled-layer-url-.htm"
+    ],
     "relevant_apis": [
         "AGSArcGISTiledLayer",
         "AGSMap"
@@ -18,5 +22,5 @@
     "snippets": [
         "TLUsingURLViewController.swift"
     ],
-    "title": "ArcGIS tiled layer URL"
+    "title": "ArcGIS tiled layer (URL)"
 }

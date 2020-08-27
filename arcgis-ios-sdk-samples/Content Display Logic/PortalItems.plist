@@ -6,6 +6,12 @@
 	<array>
 		<dict>
 			<key>identifier</key>
+			<string>74c0c9fa80f4498c9739cc42531e9948</string>
+			<key>filename</key>
+			<string>loudoun_anno.geodatabase</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
 			<string>c78b149a1d52414682c86a5feeb13d30</string>
 			<key>filename</key>
 			<string>mil2525d.stylx</string>
@@ -57,6 +63,18 @@
 			<string>751138a2e0844e06853522d54103222a</string>
 			<key>filename</key>
 			<string>Restaurant.stylx</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>9465e8c02b294c69bdb42de056a23ab1</string>
+			<key>filename</key>
+			<string>PacificSouthWest.zip</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>b5f977c78ec74b3a8857ca86d1d9b318</string>
+			<key>filename</key>
+			<string>SA_EVI_8Day_03May20.zip</string>
 		</dict>
 	</array>
 </dict>

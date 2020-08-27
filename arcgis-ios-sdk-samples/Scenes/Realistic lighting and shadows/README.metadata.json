@@ -1,0 +1,31 @@
+{
+    "category": "Scenes",
+    "description": "Show realistic lighting and shadows for a given time of day.",
+    "ignore": false,
+    "images": [
+        "realistic-lighting-and-shadows.png"
+    ],
+    "keywords": [
+        "3D",
+        "lighting",
+        "realism",
+        "realistic",
+        "rendering",
+        "shadows",
+        "sun",
+        "time",
+        "AGSLightingMode",
+        "AGSScene",
+        "AGSSceneView"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSLightingMode",
+        "AGSScene",
+        "AGSSceneView"
+    ],
+    "snippets": [
+        "RealisticLightingAndShadowsViewController.swift"
+    ],
+    "title": "Realistic lighting and shadows"
+}

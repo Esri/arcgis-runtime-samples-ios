@@ -1125,7 +1125,7 @@
 				<key>storyboardName</key>
 				<string>EditFeaturesWithFeatureLinkedAnnotation</string>
 				<key>descriptionText</key>
-				<string>Edit feature attributes which are linked to annotation through an expression.</string>
+				<string>Edit feature attributes which are linked to annotations through an expression.</string>
 			</dict>
 		</array>
 	</dict>

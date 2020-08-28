@@ -251,6 +251,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     }
     
     /// Undo local edits on the geodatabase.
+    /// 
     /// - Parameters:
     ///   - geodatabase: The geodatabase to discard edits.
     ///   - completion: An optional closure to execute after edits are undone.
@@ -273,14 +274,17 @@ class EditWithBranchVersioningViewController: UIViewController {
             self.createBranchAlert(permission: permission) { [weak self] parameters in
                 guard let self = self else { return }
                 self.createVersion(geodatabase: self.serviceGeodatabase, with: parameters) { [weak self] result in
+                    guard let self = self else { return }
                     switch result {
                     case .success(let versionName):
-                        self?.existingVersionNames.append(versionName)
+                        self.existingVersionNames.append(versionName)
+                        // Switch to the new version after it is created.
+                        self.switchVersion(geodatabase: self.serviceGeodatabase, to: versionName)
                     case .failure(let error as NSError):
                         // Provide additional error reason to users if there is any.
                         let errorMessage = error.localizedDescription + (error.localizedFailureReason ?? "")
-                        self?.presentAlert(title: "Error", message: errorMessage)
-                        self?.setStatus(message: "Error creating new version.")
+                        self.presentAlert(title: "Error", message: errorMessage)
+                        self.setStatus(message: "Error creating new version.")
                     }
                 }
             }
@@ -309,8 +313,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     }
     
     func showCallout(for feature: AGSFeature, tapLocation: AGSPoint?) {
-        let damageLabel = feature.attributes["typdamage"] as? String
-        mapView.callout.title = damageLabel ?? "Default"
+        let placeName = feature.attributes["placename"] as? String
+        mapView.callout.title = placeName
         mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
     }
     
@@ -474,7 +478,11 @@ class EditWithBranchVersioningViewController: UIViewController {
 
 extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // Dismiss presenting callout, if any.
+        // Disable interaction with features on default branch.
+        if currentVersionName == defaultVersionName {
+            return
+        }
+        // Dismiss any presenting callout.
         mapView.callout.dismiss()
         // Tap to identify a pixel on the feature layer.
         if let selectedFeature = selectedFeature {

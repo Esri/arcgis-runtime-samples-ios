@@ -138,6 +138,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         case 1:
             visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
                 if let cell = tableView.cellForRow(at: indexPath) {
+                    cell.tintColor = .gray
                     cell.isUserInteractionEnabled = isEnabled
                     cell.textLabel?.isEnabled = isEnabled
                 }

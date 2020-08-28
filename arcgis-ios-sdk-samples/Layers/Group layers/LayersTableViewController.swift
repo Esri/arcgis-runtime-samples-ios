@@ -133,6 +133,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         case 0:
             visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
                 if let cell = tableView.cellForRow(at: indexPath) as? GroupLayersCell {
+                    cell.isUserInteractionEnabled = isEnabled
                     cell.layerVisibilitySwitch.isEnabled = isEnabled
                 }
             }

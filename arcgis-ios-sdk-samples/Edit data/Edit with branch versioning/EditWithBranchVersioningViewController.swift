@@ -251,7 +251,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     }
     
     /// Undo local edits on the geodatabase.
-    /// 
+    ///
     /// - Parameters:
     ///   - geodatabase: The geodatabase to discard edits.
     ///   - completion: An optional closure to execute after edits are undone.
@@ -484,10 +484,12 @@ extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
         }
         // Dismiss any presenting callout.
         mapView.callout.dismiss()
-        // Tap to identify a pixel on the feature layer.
+        
         if let selectedFeature = selectedFeature {
+            // If there is a feature selected already, tap elsewhere to move it.
             moveFeature(feature: selectedFeature, to: mapPoint)
         } else {
+            // Tap to identify a pixel on the feature layer.
             identifyPixel(on: featureLayer, at: screenPoint) { feature in
                 self.showCallout(for: feature, tapLocation: mapPoint)
             }

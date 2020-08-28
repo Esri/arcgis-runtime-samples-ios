@@ -93,6 +93,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         return headerView
     }
     
+    // Change the visibility according to which cell was tapped.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] {
@@ -115,7 +116,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     func didToggleSwitch(_ sectionView: GroupLayersSectionView, isOn: Bool) {
         guard let section = tableView.section(forHeaderView: sectionView) else { return }
         layers[section].isVisible = isOn
-        updateSwitchForRows(in: section, isEnabled: isOn)
+        updateCells(in: section, isEnabled: isOn)
     }
     
     // MARK: - Helper methods
@@ -125,7 +126,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     /// - Parameters:
     ///     - section: Section of the table view.
     ///     - enabled: Indicates if the switch should be enabled or disabled.
-    func updateSwitchForRows(in section: Int, isEnabled: Bool) {
+    func updateCells(in section: Int, isEnabled: Bool) {
         guard let visibleRows = tableView.indexPathsForVisibleRows else { return }
         switch section {
         case 0:
@@ -135,14 +136,10 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
                 }
             }
         case 1:
-            guard let groupLayer = layers[section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] else { return }
-            childLayers.forEach { layer in
-                layer.isVisible = false
-            }
             visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
                 if let cell = tableView.cellForRow(at: indexPath) {
-                    cell.isUserInteractionEnabled = false
-                    cell.textLabel?.isEnabled = false
+                    cell.isUserInteractionEnabled = isEnabled
+                    cell.textLabel?.isEnabled = isEnabled
                 }
             }
         default:

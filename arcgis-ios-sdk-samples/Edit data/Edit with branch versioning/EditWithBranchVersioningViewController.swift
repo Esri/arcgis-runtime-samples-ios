@@ -83,7 +83,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     ///
     /// - Parameter serviceURL: The URL to the feature service.
     /// - Returns: An `AGSServiceGeodatabase` object.
-    func loadServiceGeodatabase(serviceURL: URL) -> AGSServiceGeodatabase {
+    func loadServiceGeodatabase(from serviceURL: URL) -> AGSServiceGeodatabase {
         let serviceGeodatabase = AGSServiceGeodatabase(url: serviceURL)
         // If not explicitly set, the service geodatabase will ask for credentials on loading.
         // You can also set its `credential` property. E.g.
@@ -470,7 +470,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames  = ["EditWithBranchVersioningViewController"]
         // Load the service geodatabase.
         let damageFeatureService = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
-        serviceGeodatabase = loadServiceGeodatabase(serviceURL: damageFeatureService)
+        serviceGeodatabase = loadServiceGeodatabase(from: damageFeatureService)
     }
 }
 

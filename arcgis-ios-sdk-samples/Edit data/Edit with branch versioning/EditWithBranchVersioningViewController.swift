@@ -417,7 +417,10 @@ class EditWithBranchVersioningViewController: UIViewController {
             self.mapView.callout.dismiss()
         }
         alertController.addAction(cancelAction)
+        alertController.popoverPresentationController?.sourceView = view
         alertController.popoverPresentationController?.sourceRect = sourceRect
+        // Hide the arrow as we cannot get the exact location of the accessory button.
+        alertController.popoverPresentationController?.permittedArrowDirections = []
         present(alertController, animated: true)
     }
     
@@ -502,7 +505,8 @@ extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
 extension EditWithBranchVersioningViewController: AGSCalloutDelegate {
     func didTapAccessoryButton(for callout: AGSCallout) {
         // Show editing options actionsheet.
-        editFeatureDamageAttribute(feature: selectedFeature!, sourceRect: callout.bounds)
+        let sourceRect = CGRect(origin: mapView.location(toScreen: callout.mapLocation!), size: .zero)
+        editFeatureDamageAttribute(feature: selectedFeature!, sourceRect: sourceRect)
     }
 }
 

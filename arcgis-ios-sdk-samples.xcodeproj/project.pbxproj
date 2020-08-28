@@ -19,6 +19,7 @@
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
+		008D175224EEEEBD0001BB8F /* loudoun_anno.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */; settings = {ASSET_TAGS = (loudoun_anno, ); }; };
 		00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */; };
 		00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
 		00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3C22464D59200A3B88D /* PacificSouthWest */; settings = {ASSET_TAGS = (PacificSouthWest, ); }; };
@@ -790,6 +791,8 @@
 		F1034FA622D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1034FA222D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */; };
 		F1034FA922D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
 		F1034FAA22D3F5FA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */; };
+		F1124F0A24CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */; };
+		F1124F0C24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
 		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
@@ -805,6 +808,7 @@
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
@@ -876,6 +880,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */,
 				00166C8C24D236A300DD317E /* RealisticLightingAndShadowsViewController.swift in CopyFiles */,
 				F1F651AD24995294006DF277 /* ShowPopupViewController.swift in CopyFiles */,
 				001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */,
@@ -1159,6 +1164,7 @@
 		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
+		008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnimateImagesWithImageOverlay.storyboard; sourceTree = "<group>"; };
 		00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateImagesWithImageOverlayViewController.swift; sourceTree = "<group>"; };
 		00ADC3C22464D59200A3B88D /* PacificSouthWest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PacificSouthWest; sourceTree = "<group>"; };
@@ -1690,8 +1696,8 @@
 		E47ED0A02343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExploreScenesInFlyoverAR.storyboard; sourceTree = "<group>"; };
 		E47ED0A22343C4FE0032440E /* CollectDataAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CollectDataAR.storyboard; sourceTree = "<group>"; };
 		E47ED0A32343C4FE0032440E /* CollectDataAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectDataAR.swift; sourceTree = "<group>"; };
-		E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DisplayScenesInTabletopAR.storyboard; path = "arcgis-ios-sdk-samples/Augmented reality/Display scenes in tabletop AR/DisplayScenesInTabletopAR.storyboard"; sourceTree = SOURCE_ROOT; };
-		E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayScenesInTabletopAR.swift; path = "arcgis-ios-sdk-samples/Augmented reality/Display scenes in tabletop AR/DisplayScenesInTabletopAR.swift"; sourceTree = SOURCE_ROOT; };
+		E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayScenesInTabletopAR.storyboard; sourceTree = "<group>"; };
+		E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayScenesInTabletopAR.swift; sourceTree = "<group>"; };
 		E4B2E2631FE31E5100E610FF /* bradle.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = bradle.3ds; sourceTree = "<group>"; };
 		E4B2E2641FE31E5100E610FF /* tank1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tank1.jpg; sourceTree = "<group>"; };
 		E4B2E2681FE31ED500E610FF /* ViewshedGeoElementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewshedGeoElementViewController.swift; sourceTree = "<group>"; };
@@ -1704,9 +1710,11 @@
 		F1034FA222D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalTilePackage.storyboard; sourceTree = "<group>"; };
 		F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalTilePackageViewController.swift; sourceTree = "<group>"; };
 		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpk; sourceTree = "<group>"; };
+		F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditFeaturesWithFeatureLinkedAnnotation.storyboard; sourceTree = "<group>"; };
+		F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFeaturesWithFeatureLinkedAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
-		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MontereyElevation.dt2; path = "Portal Data/Rasters/MontereyElevation.dt2"; sourceTree = SOURCE_ROOT; };
+		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MontereyElevation.dt2; sourceTree = "<group>"; };
 		F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeFeatureLayerViewController.swift; sourceTree = "<group>"; };
 		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
@@ -1771,6 +1779,14 @@
 				001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */,
 			);
 			path = "Feature collection layer (portal item)";
+			sourceTree = "<group>";
+		};
+		008D175024EEEEBD0001BB8F /* Geodatabases */ = {
+			isa = PBXGroup;
+			children = (
+				008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */,
+			);
+			path = Geodatabases;
 			sourceTree = "<group>";
 		};
 		00ADC3B72464D45B00A3B88D /* Animate images with image overlay */ = {
@@ -2196,11 +2212,11 @@
 				3E4BF43C1C5AC66700D85919 /* Search */,
 				3ED027FC1B8E38F400ACA70D /* Edit data */,
 				3EBA25711D34509500AB0703 /* Geometry */,
-				3E6AE3E91C6D10DA0026E59C /* Route & Directions */,
+				3E6AE3E91C6D10DA0026E59C /* Route and directions */,
 				3E0B58451E36BCCD00951767 /* Analysis */,
-				3EEE1D671E4935FC003263FC /* Cloud & Portal */,
+				3EEE1D671E4935FC003263FC /* Cloud and portal */,
 				3EEA06001D21C3E800E03774 /* Scenes */,
-				D98CC08F22E25D8200618682 /* Utility Network */,
+				D98CC08F22E25D8200618682 /* Utility network */,
 				E47ED0882343C1400032440E /* Augmented reality */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				C7E86C8E21751CFE001C65C3 /* Extensions */,
@@ -2490,7 +2506,7 @@
 			path = "Audio Files";
 			sourceTree = "<group>";
 		};
-		3E6AE3E91C6D10DA0026E59C /* Route & Directions */ = {
+		3E6AE3E91C6D10DA0026E59C /* Route and directions */ = {
 			isa = PBXGroup;
 			children = (
 				00E276252425A205000DBEDD /* Navigate route */,
@@ -2501,7 +2517,7 @@
 				3ED75D001ED39EDF009B1F75 /* Find service area interactive */,
 				4C0CBFFB22F9D2FB00D3F1DB /* Find closest facility to multiple incidents (service) */,
 			);
-			path = "Route & Directions";
+			path = "Route and directions";
 			sourceTree = "<group>";
 		};
 		3E6AE3EA1C6D10F70026E59C /* Offline routing */ = {
@@ -2882,6 +2898,7 @@
 		3ED027FC1B8E38F400ACA70D /* Edit data */ = {
 			isa = PBXGroup;
 			children = (
+				F1124F0724CFA87F00E672EC /* Edit features with feature-linked annotation */,
 				F1D1E2BE2409AA8D006B2801 /* Create and save KML file */,
 				F164997722E9249B0088CA93 /* Edit and sync features */,
 				3E41DD6D1B9A1EA800DA11CC /* Add features (feature service) */,
@@ -3437,7 +3454,7 @@
 			path = "List related features";
 			sourceTree = "<group>";
 		};
-		3EEE1D671E4935FC003263FC /* Cloud & Portal */ = {
+		3EEE1D671E4935FC003263FC /* Cloud and portal */ = {
 			isa = PBXGroup;
 			children = (
 				E459919A1EF3021D0089E9FD /* Search for webmap by keyword */,
@@ -3446,7 +3463,7 @@
 				4C5F98BD2280A4A000414343 /* Authenticate with OAuth */,
 				4C2F906F2289C18400357824 /* Token authentication */,
 			);
-			path = "Cloud & Portal";
+			path = "Cloud and portal";
 			sourceTree = "<group>";
 		};
 		3EEE1D681E4935FC003263FC /* List portal group users */ = {
@@ -3739,6 +3756,7 @@
 		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
 			isa = PBXGroup;
 			children = (
+				008D175024EEEEBD0001BB8F /* Geodatabases */,
 				00C6D328246CA8FC00C63EAF /* Archives */,
 				4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */,
 				4C783F402252DB9B00609B9C /* Mobile Scene Packages */,
@@ -4056,14 +4074,14 @@
 			path = Shapefiles;
 			sourceTree = "<group>";
 		};
-		D98CC08F22E25D8200618682 /* Utility Network */ = {
+		D98CC08F22E25D8200618682 /* Utility network */ = {
 			isa = PBXGroup;
 			children = (
 				F1D50229245243AD00583CFB /* Display utility associations */,
 				00E5B7CB2458FE6D00B11973 /* Perform valve isolation trace */,
 				D98CC09022E25E3300618682 /* Trace utility network */,
 			);
-			path = "Utility Network";
+			path = "Utility network";
 			sourceTree = "<group>";
 		};
 		D98CC09022E25E3300618682 /* Trace utility network */ = {
@@ -4207,9 +4225,8 @@
 				E47ED0B02343C87E0032440E /* DisplayScenesInTabletopAR.swift */,
 				E47ED0AF2343C87E0032440E /* DisplayScenesInTabletopAR.storyboard */,
 			);
-			name = "Display scenes in tabletop AR";
-			path = "arcgis-ios-sdk-samples/Augmented Reality/Display scenes in tabletop AR";
-			sourceTree = SOURCE_ROOT;
+			path = "Display scenes in tabletop AR";
+			sourceTree = "<group>";
 		};
 		E4B2E2621FE31E5100E610FF /* bradley_low_3ds */ = {
 			isa = PBXGroup;
@@ -4255,6 +4272,15 @@
 				F1034FA522D3F5DA00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift */,
 			);
 			path = "Create terrain surface from a local tile package";
+			sourceTree = "<group>";
+		};
+		F1124F0724CFA87F00E672EC /* Edit features with feature-linked annotation */ = {
+			isa = PBXGroup;
+			children = (
+				F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */,
+				F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */,
+			);
+			path = "Edit features with feature-linked annotation";
 			sourceTree = "<group>";
 		};
 		F140E1E823F35E61008AC44E /* Display annotation */ = {
@@ -4465,6 +4491,7 @@
 					TilePackages,
 					YellowstoneMMPK,
 					canyonlands,
+					loudoun_anno,
 					mil2525d,
 					militaryoverlay,
 					naperville_imagery,
@@ -4540,6 +4567,7 @@
 				3E8526371B90D92700690EBD /* Bookmarks.storyboard in Resources */,
 				3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */,
 				3ED028991B8E3A8500ACA70D /* ShowMagnifier.storyboard in Resources */,
+				F1124F0A24CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard in Resources */,
 				098049AB2253FC3F009C685D /* BrowseWFSLayers.storyboard in Resources */,
 				D97B7E681FD9BFE700E1239D /* Subdivisions.shp in Resources */,
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,
@@ -4610,6 +4638,7 @@
 				3E8A05CB1ECE68E80032231C /* Animate3DGraphic.storyboard in Resources */,
 				4C5F98BF2280A4EB00414343 /* AuthenticateWithOAuth.storyboard in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
+				008D175224EEEEBD0001BB8F /* loudoun_anno.geodatabase in Resources */,
 				D9E2E76020EEB8FF001D0AE0 /* Public_Art.dbf in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				4CCA30C622386413009D2AEF /* ViewPointCloudDataOffline.storyboard in Resources */,
@@ -5146,6 +5175,7 @@
 				3EBA25421D2F106600AB0703 /* UniqueValueRendererViewController.swift in Sources */,
 				F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */,
 				3ED0296A1B8E3ACD00ACA70D /* UpdateAttributesViewController.swift in Sources */,
+				F1124F0C24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in Sources */,
 				3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */,
 				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,
 				3EEB2B981EB9695F00B52513 /* ListRelatedFeaturesVC.swift in Sources */,

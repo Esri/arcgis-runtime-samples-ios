@@ -133,7 +133,7 @@
 				<key>storyboardName</key>
 				<string>DisplayLocation</string>
 				<key>descriptionText</key>
-				<string>Display your current position on the map, as well as switch between different types of auto pan modes.</string>
+				<string>Display your current position on the map, as well as switch between different types of auto-pan modes.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -419,7 +419,7 @@
 				<key>storyboardName</key>
 				<string>RasterFunctionService</string>
 				<key>descriptionText</key>
-				<string>Load a raster from a service and apply a function to it.</string>
+				<string>Load a raster from a service, then apply a function to it.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -516,7 +516,7 @@
 				<key>storyboardName</key>
 				<string>WMTSLayer</string>
 				<key>descriptionText</key>
-				<string>Display a layer from a Web Map Tile Service (WMTS).</string>
+				<string>Display a layer from a Web Map Tile Service.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -845,7 +845,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Display information</string>
+		<string>Display Information</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -942,7 +942,7 @@
 				<key>storyboardName</key>
 				<string>DisplayGrid</string>
 				<key>descriptionText</key>
-				<string>Display coordinate system grids including Latitude/Longitude, MGRS, UTM and USNG on a map view.</string>
+				<string>Display coordinate system grids including Latitude-Longitude, MGRS, UTM and USNG on a map view.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -950,7 +950,7 @@
 				<key>storyboardName</key>
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
-				<string>Create graphics using a local mil2525d style file and an XML file with key/value pairs for each graphic, and display the military symbols in 3D.</string>
+				<string>Create graphics using a local mil2525d style file and an XML file with key-value pairs for each graphic, and display the military symbols in 3D.</string>
 				<key>dependency</key>
 				<array>
 					<string>mil2525d</string>
@@ -1032,7 +1032,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Edit data</string>
+		<string>Edit Data</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -1097,7 +1097,7 @@
 				<key>storyboardName</key>
 				<string>EditFeaturesOnline</string>
 				<key>descriptionText</key>
-				<string>View, edit, or add features using a popup.  </string>
+				<string>View, edit, or add features using a popup.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanDiegoTilePackage</string>
@@ -1115,6 +1115,18 @@
 					<string>SanFranciscoTilePackage</string>
 				</array>
 			</dict>
+			<dict>
+				<key>dependency</key>
+				<array>
+					<string>loudoun_anno</string>
+				</array>
+				<key>displayName</key>
+				<string>Edit features with feature-linked annotation</string>
+				<key>storyboardName</key>
+				<string>EditFeaturesWithFeatureLinkedAnnotation</string>
+				<key>descriptionText</key>
+				<string>Edit feature attributes which are linked to annotations through an expression.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1128,7 +1140,7 @@
 				<key>storyboardName</key>
 				<string>Project</string>
 				<key>descriptionText</key>
-				<string>Project a point from one spatial reference to another.</string>
+				<string>Project a point to another spatial reference.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1410,7 +1422,7 @@
 				<key>storyboardName</key>
 				<string>SearchForWebmapByKeyword</string>
 				<key>descriptionText</key>
-				<string>Shows how to search for webmaps within a portal using a keyword.</string>
+				<string>Find webmap portal items by using a search term.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1418,13 +1430,13 @@
 				<key>storyboardName</key>
 				<string>IntegratedWindowsAuthentication</string>
 				<key>descriptionText</key>
-				<string>Connect to an IWA secured portal and search for maps.</string>
+				<string>Connect to an IWA secured Portal and search for maps.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Authenticate with OAuth</string>
 				<key>descriptionText</key>
-				<string>Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources, such as private web maps or layers.</string>
+				<string>Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers).</string>
 				<key>storyboardName</key>
 				<string>AuthenticateWithOAuth</string>
 			</dict>
@@ -1711,7 +1723,7 @@
 	</dict>
 	<dict>
 		<key>displayName</key>
-		<string>Augmented reality</string>
+		<string>Augmented Reality</string>
 		<key>children</key>
 		<array>
 			<dict>

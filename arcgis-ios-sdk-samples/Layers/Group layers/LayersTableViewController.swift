@@ -62,7 +62,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
             // Set label.
             cell.textLabel?.text = formattedValue(of: childLayer.name)
             
-            // Indicate which layer is visible
+            // Indicate which layer is visible.
             if childLayer.isVisible {
                 cell.accessoryType = .checkmark
             } else {
@@ -141,7 +141,12 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
                 if let cell = tableView.cellForRow(at: indexPath) {
                     cell.isUserInteractionEnabled = isEnabled
                     cell.textLabel?.isEnabled = isEnabled
-                    cell.tintColor = .gray
+                    // Change the tint if the cell is enabled.
+                    if isEnabled {
+                        cell.tintColor = .none
+                    } else {
+                        cell.tintColor = .gray
+                    }
                 }
             }
         default:

@@ -74,7 +74,7 @@ class GroupLayersViewController: UIViewController {
         // Create a layer for the project area.
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/DevelopmentProjectArea/FeatureServer/0")!)
         let projectArea = AGSFeatureLayer(featureTable: featureTable)
-        // Add the scene layers and feature layer as children of the group layer.
+        // Add the scene layer and feature layers as children of the group layer.
         groupLayer.layers.addObjects(from: [trees, pathways, projectArea])
         return groupLayer
     }

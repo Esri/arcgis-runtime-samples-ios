@@ -93,10 +93,11 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         return headerView
     }
     
-    // Change the visibility according to which cell was tapped.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Deselect the selected row.
         tableView.deselectRow(at: indexPath, animated: true)
         if let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] {
+            // Change the visibility according to which cell was tapped.
             childLayers[indexPath.row].isVisible = true
             tableView.reloadData()
         }
@@ -138,9 +139,9 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         case 1:
             visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
                 if let cell = tableView.cellForRow(at: indexPath) {
-                    cell.tintColor = .gray
                     cell.isUserInteractionEnabled = isEnabled
                     cell.textLabel?.isEnabled = isEnabled
+                    cell.tintColor = .gray
                 }
             }
         default:

@@ -1133,7 +1133,7 @@
 				<key>storyboardName</key>
 				<string>EditWithBranchVersioning</string>
 				<key>descriptionText</key>
-				<string>Create version and edit features on a service geodatabase.</string>
+				<string>Create, query and edit a specific server version using service geodatabase.</string>
 			</dict>
 		</array>
 	</dict>

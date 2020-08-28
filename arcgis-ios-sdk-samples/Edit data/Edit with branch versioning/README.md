@@ -35,7 +35,7 @@ Tap "Switch" to switch between the version you created and the default version. 
 
 * AGSFeatureLayer
 * AGSServiceFeatureTable
-* AGSServiceGedodatabase
+* AGSServiceGeodatabase
 * AGSServiceVersionInfo
 * AGSServiceVersionParameters
 * AGSVersionAccess

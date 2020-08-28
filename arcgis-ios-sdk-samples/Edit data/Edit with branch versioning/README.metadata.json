@@ -13,7 +13,7 @@
         "version management server",
         "AGSFeatureLayer",
         "AGSServiceFeatureTable",
-        "AGSServiceGedodatabase",
+        "AGSServiceGeodatabase",
         "AGSServiceVersionInfo",
         "AGSServiceVersionParameters",
         "AGSVersionAccess"
@@ -22,7 +22,7 @@
     "relevant_apis": [
         "AGSFeatureLayer",
         "AGSServiceFeatureTable",
-        "AGSServiceGedodatabase",
+        "AGSServiceGeodatabase",
         "AGSServiceVersionInfo",
         "AGSServiceVersionParameters",
         "AGSVersionAccess"

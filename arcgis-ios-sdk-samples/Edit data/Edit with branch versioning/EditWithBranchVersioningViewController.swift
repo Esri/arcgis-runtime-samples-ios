@@ -144,7 +144,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     ///   - screenPoint: The tapped screen point.
     ///   - completion: A closure to pass the identified feature for further usage.
     func identifyPixel(on featureLayer: AGSFeatureLayer, at screenPoint: CGPoint, completion: @escaping (AGSFeature) -> Void) {
-        // Clear selection before identify.
+        // Clear selection before identifying layers.
         clearSelection()
         // Clear in-progress identify operation.
         identifyOperation?.cancel()

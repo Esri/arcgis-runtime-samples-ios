@@ -1,6 +1,6 @@
 # Edit with branch versioning
 
-Create, query and edit a specific server version using service geodatabase.
+Create, query, and edit a specific server version using service geodatabase.
 
 ![Image of edit with branch versioning 1](edit-with-branch-versioning-1.png)
 ![Image of edit with branch versioning 2](edit-with-branch-versioning-2.png)
@@ -11,7 +11,7 @@ Workflows often progress in discrete stages, with each stage requiring the alloc
 
 ## How to use the sample
 
-Upon opening the sample, you will be prompted to enter credentials for the service. Once loaded, the map will zoom to the extent of the feature layer. The current version is indicated at the top of the map. Tap "Create" to open a dialog to specify the version information (name, access, and description). See the *Additional information* section for restrictions on the version name.
+Upon launching the sample, you will be prompted to enter credentials for the service. Once loaded, the map will zoom to the extent of the feature layer. The current version is indicated at the top of the map. Tap "Create" to open a dialog to specify the version information (name, access, and description). See the *Additional information* section for the provided credentials and restrictions on the version name.
 
 Create the version with the information that you specified. Select a feature to edit an attribute and/or tap a second time to relocate the point.
 
@@ -25,8 +25,8 @@ Tap "Switch" to switch between the version you created and the default version. 
 4. Create `AGSServiceVersionParameters` with a unique name, `AGSVersionAccess`, and description.
     * Note - See the additional information section for more restrictions on the version name.
 5. Create a new version calling `AGSServiceGeodatabase.createVersion(with:completion:)`, passing in the service version parameters.
-6. Upon finish, get the `AGSServiceVersionInfo` of the version created.
-7. Switch to the version you have just created calling `AGSServiceGeodatabase.switchVersion(withName:completion:)`, passing in the version name obtained from the service version info from the step above.
+6. Upon completion, get the `AGSServiceVersionInfo` of the version created.
+7. Switch to the version you have just created by calling `AGSServiceGeodatabase.switchVersion(withName:completion:)`, passing in the version name obtained from the service version info from the step above.
 8. Select an `AGSFeature` to edit its "typdamage" attribute and location.
 9. Apply these edits to your version by calling `AGSServiceGeodatabase.applyEdits(completion:)`.
 10. Switch back and forth between your versions and the default version to see how the versions differ.
@@ -46,12 +46,12 @@ The feature service in this sample is [Damage to commercial buildings](https://s
 
 ## Additional information
 
-The credentials for testing purpose
+The credentials for testing purposes:
 
 * username: editor01
 * password: editor01.password
 
-The name of the version must meet the following criteria
+The name of the version must meet the following criteria:
 
 1. Must not exceed 62 characters
 2. Must not include: Period (.), Semicolon (;), Single quotation mark ('), Double quotation mark (")
@@ -59,7 +59,7 @@ The name of the version must meet the following criteria
 
 * Note - the version name will have the username and a period (.) prepended to it, e.g "editor01.MyNewUniqueVersionName".
 
-Branch versioning access permission
+Branch versioning access permissions:
 
 1. Public - Any portal user can view and edit the version.
 2. Protected - Any portal user can view, but only the version owner, feature layer owner, and portal administrator can edit the version.

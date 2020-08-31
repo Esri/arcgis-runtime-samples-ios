@@ -95,13 +95,15 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Deselect the selected row.
-        tableView.deselectRow(at: indexPath, animated: true)
-        if let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] {
-            // Change the visibility according to which cell was tapped.
-            childLayers[indexPath.row].isVisible = true
-            tableView.reloadData()
+        let groupLayer = layers[indexPath.section] as! AGSGroupLayer
+        let childLayers = groupLayer.layers as! [AGSLayer]
+        
+        var indexPathsToReload = [indexPath]
+        if let indexOfPreviouslyVisibleLayer = childLayers.firstIndex(where: { $0.isVisible }) {
+            indexPathsToReload.append(IndexPath(row: indexOfPreviouslyVisibleLayer, section: indexPath.section))
         }
+        childLayers[indexPath.row].isVisible = true
+        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
     }
     
     // MARK: - GroupLayersCellDelegate

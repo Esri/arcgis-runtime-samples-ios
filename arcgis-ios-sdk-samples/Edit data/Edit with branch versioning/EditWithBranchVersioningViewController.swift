@@ -204,6 +204,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     func switchVersion(geodatabase: AGSServiceGeodatabase, to branchVersionName: String) {
         if currentVersionName == defaultVersionName {
             // Discard local edits if currently on default branch.
+            // Since making edits on default branch is disabled,
+            // code below won't get executed, but left here for parity.
             undoLocalEdits(geodatabase: geodatabase) {
                 geodatabase.switchVersion(withName: branchVersionName) { [weak self] error in
                     guard let self = self else { return }

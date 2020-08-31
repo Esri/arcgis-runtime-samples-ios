@@ -315,8 +315,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     func showCallout(for feature: AGSFeature, tapLocation: AGSPoint?) {
         let placeName = feature.attributes["placename"] as? String
         let damageName = feature.attributes["typdamage"] as? String ?? "Default"
-        mapView.callout.title = placeName
-        mapView.callout.detail = damageName
+        mapView.callout.title = damageName
+        mapView.callout.detail = placeName
         mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
     }
     
@@ -401,7 +401,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    func editFeatureDamageAttribute(feature: AGSFeature, sourceRect: CGRect) {
+    func editFeatureDamageAttribute(feature: AGSFeature, sourceCallout: AGSCallout) {
         let alertController = UIAlertController(
             title: "Choose a damage type for the building",
             message: nil,
@@ -419,10 +419,9 @@ class EditWithBranchVersioningViewController: UIViewController {
             self.mapView.callout.dismiss()
         }
         alertController.addAction(cancelAction)
-        alertController.popoverPresentationController?.sourceView = view
+        let sourceRect = CGRect(origin: CGPoint(x: sourceCallout.bounds.maxX, y: sourceCallout.bounds.midY), size: .zero)
+        alertController.popoverPresentationController?.sourceView = sourceCallout
         alertController.popoverPresentationController?.sourceRect = sourceRect
-        // Hide the arrow as we cannot get the exact location of the accessory button.
-        alertController.popoverPresentationController?.permittedArrowDirections = []
         present(alertController, animated: true)
     }
     
@@ -507,8 +506,7 @@ extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
 extension EditWithBranchVersioningViewController: AGSCalloutDelegate {
     func didTapAccessoryButton(for callout: AGSCallout) {
         // Show editing options actionsheet.
-        let sourceRect = CGRect(origin: mapView.location(toScreen: callout.mapLocation!), size: .zero)
-        editFeatureDamageAttribute(feature: selectedFeature!, sourceRect: sourceRect)
+        editFeatureDamageAttribute(feature: selectedFeature!, sourceCallout: callout)
     }
 }
 

@@ -456,14 +456,10 @@ class EditWithBranchVersioningViewController: UIViewController {
             message: nil,
             preferredStyle: .actionSheet
         )
-        let versionAccessPermission: KeyValuePairs<String, AGSVersionAccess> = [
-            "Public": .public,
-            "Protected": .protected,
-            "Private": .private
-        ]
-        versionAccessPermission.forEach { name, permission in
-            let action = UIAlertAction(title: name, style: .default) { _ in
-                completion(permission)
+        let versionAccessPermission: [AGSVersionAccess] = [.public, .protected, .private]
+        versionAccessPermission.forEach { versionAccess in
+            let action = UIAlertAction(title: versionAccess.title, style: .default) { _ in
+                completion(versionAccess.self)
             }
             alertController.addAction(action)
         }
@@ -530,5 +526,17 @@ extension EditWithBranchVersioningViewController: UITextFieldDelegate {
         // Must not include special characters: . ; ' "
         let invalidCharacters = ".;'\""
         return CharacterSet(charactersIn: invalidCharacters).isDisjoint(with: CharacterSet(charactersIn: text))
+    }
+}
+
+private extension AGSVersionAccess {
+    /// The human readable name of the version access.
+    var title: String {
+        switch self {
+        case .public: return "Public"
+        case .protected: return "Protected"
+        case .private: return "Private"
+        @unknown default: return "Unknown"
+        }
     }
 }

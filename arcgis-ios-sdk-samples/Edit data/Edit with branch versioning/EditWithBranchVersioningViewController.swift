@@ -314,11 +314,12 @@ class EditWithBranchVersioningViewController: UIViewController {
         statusLabel.text = message
     }
     
-    func showCallout(for feature: AGSFeature, tapLocation: AGSPoint?) {
+    func showCallout(for feature: AGSFeature, tapLocation: AGSPoint?, isAccessoryButtonHidden: Bool = false) {
         let placeName = feature.attributes["placename"] as? String
         let damageName = feature.attributes["typdamage"] as? String ?? "Default"
         mapView.callout.title = damageName
         mapView.callout.detail = placeName
+        mapView.callout.isAccessoryButtonHidden = isAccessoryButtonHidden
         mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
     }
     
@@ -484,12 +485,17 @@ class EditWithBranchVersioningViewController: UIViewController {
 
 extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // Disable interaction with features on default branch.
-        if currentVersionName == defaultVersionName {
-            return
-        }
         // Dismiss any presenting callout.
         mapView.callout.dismiss()
+        // Disable features editing on the default branch.
+        if currentVersionName == defaultVersionName {
+            // Tap to identify a pixel on the feature layer.
+            identifyPixel(on: featureLayer, at: screenPoint) { feature in
+                // Show a callout without the accessory button.
+                self.showCallout(for: feature, tapLocation: mapPoint, isAccessoryButtonHidden: true)
+            }
+            return
+        }
         
         if let selectedFeature = selectedFeature {
             // If there is a feature selected already, tap elsewhere to move it.

@@ -272,6 +272,9 @@ class EditWithBranchVersioningViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func createBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        // Clear selection before creating a new branch version.
+        clearSelection()
+        mapView.callout.dismiss()
         chooseVersionAccessPermission(sender) { permission in
             self.createBranchAlert(permission: permission) { [weak self] parameters in
                 guard let self = self else { return }
@@ -296,6 +299,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     @IBAction func switchBarButtonItemTapped(_ sender: UIBarButtonItem) {
         // Clear selection before switching to a new branch version.
         clearSelection()
+        mapView.callout.dismiss()
         chooseVersion(sender) { versionName in
             self.switchVersion(geodatabase: self.serviceGeodatabase, to: versionName)
         }

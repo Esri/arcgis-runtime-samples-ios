@@ -35,10 +35,11 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        guard let groupLayer = layers[indexPath.section] as? AGSGroupLayer else { fatalError("Unknown cell type") }
+        switch groupLayer.visibilityMode {
+        case .independent:
             let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! GroupLayersCell
-            guard let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
+            guard let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
             
             let childLayer = childLayers[indexPath.row]
             
@@ -53,9 +54,9 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
             cell.delegate = self
             
             return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "exclusiveCell", for: indexPath) as! GroupLayersCell
-            guard let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
+        case .exclusive:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "exclusiveCell", for: indexPath)
+            guard let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
             
             let childLayer = childLayers[indexPath.row]
             

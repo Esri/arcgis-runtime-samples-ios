@@ -314,7 +314,9 @@ class EditWithBranchVersioningViewController: UIViewController {
     
     func showCallout(for feature: AGSFeature, tapLocation: AGSPoint?) {
         let placeName = feature.attributes["placename"] as? String
+        let damageName = feature.attributes["typdamage"] as? String ?? "Default"
         mapView.callout.title = placeName
+        mapView.callout.detail = damageName
         mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
     }
     

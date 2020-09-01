@@ -123,8 +123,8 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     func updateCellStates() {
         // Disable the value cell when attribute is unspecified.
-        if selectedAttribute != nil {
-            if selectedAttribute?.domain as? AGSCodedValueDomain != nil {
+        if let selectedAttribute = selectedAttribute {
+            if selectedAttribute.domain is AGSCodedValueDomain {
                 // Indicate that a new view controller will display.
                 valueCell.accessoryType = .disclosureIndicator
             } else {

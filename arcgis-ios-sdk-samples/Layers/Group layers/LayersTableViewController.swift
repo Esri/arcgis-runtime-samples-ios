@@ -1,4 +1,4 @@
-// Copyright 2020 Esri.
+// Copyright 2019 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -65,11 +65,11 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
             // Enable or disable the cell accordingly.
             cell.isUserInteractionEnabled = groupLayer.isVisible
             cell.textLabel?.isEnabled = groupLayer.isVisible
-            // Change the tint if the cell is enabled.
+            // Adjust the tint if the cell is enabled.
             if groupLayer.isVisible {
-                cell.tintColor = .none
+                cell.tintAdjustmentMode = .automatic
             } else {
-                cell.tintColor = .gray
+                cell.tintAdjustmentMode = .dimmed
             }
             // Indicate which layer is visible.
             if childLayer.isVisible {

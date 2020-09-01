@@ -329,7 +329,7 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section.allCases[section] {
         case .switches:
-            return 2
+            return Switches.allCases.count
         case .conditions:
             return traceConditionalExpressions.count
         case .chainedConditions:

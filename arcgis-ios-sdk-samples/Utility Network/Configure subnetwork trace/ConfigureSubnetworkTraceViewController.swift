@@ -104,10 +104,12 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         
         // Create utility trace parameters for the starting location.
         let parameters = AGSUtilityTraceParameters(traceType: .subnetwork, startingLocations: [location])
-        configuration?.includeBarriers = barriersSwitch.isOn
-        configuration?.includeContainers = containersSwitch.isOn
-        configuration?.traversability?.barriers = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions)
-        parameters.traceConfiguration = configuration
+        if let configuration = configuration {
+            configuration.includeBarriers = barriersSwitch.isOn
+            configuration.includeContainers = containersSwitch.isOn
+            configuration.traversability?.barriers = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions)
+            parameters.traceConfiguration = configuration
+        }
         
         // Trace the utility network.
         SVProgressHUD.show(withStatus: "Tracing…")

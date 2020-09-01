@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JxV-EA-CYk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JxV-EA-CYk">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC7-F9-vN9" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAu-7I-JM1">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.333333333333329"/>
@@ -40,7 +40,7 @@
                                 <viewLayoutGuide key="safeArea" id="UbJ-c8-Wwv"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSf-vt-cp3">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <items>
                                     <barButtonItem enabled="NO" title="Navigate" id="Pj1-2W-66g">
                                         <connections>
@@ -79,9 +79,9 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="EC7-F9-vN9" id="Rz7-I3-sa6"/>
-                        <outlet property="navigateButtonItem" destination="Pj1-2W-66g" id="dcJ-7Q-mn6"/>
-                        <outlet property="recenterButtonItem" destination="yMb-Zf-aou" id="XO6-9r-Qaf"/>
-                        <outlet property="resetButtonItem" destination="W0g-he-t8F" id="fg3-jR-qIN"/>
+                        <outlet property="navigateBarButtonItem" destination="Pj1-2W-66g" id="dcJ-7Q-mn6"/>
+                        <outlet property="recenterBarButtonItem" destination="yMb-Zf-aou" id="XO6-9r-Qaf"/>
+                        <outlet property="resetBarButtonItem" destination="W0g-he-t8F" id="fg3-jR-qIN"/>
                         <outlet property="statusLabel" destination="IhO-bQ-arF" id="2T9-GI-6me"/>
                     </connections>
                 </viewController>

@@ -244,9 +244,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addBarButtonItem" destination="gz8-su-BK1" id="1Gw-sm-lQB"/>
                         <outlet property="attributesCell" destination="eUk-7U-uDy" id="lsW-Wc-3Zl"/>
                         <outlet property="comparisonCell" destination="VOg-Pi-HzB" id="4KK-JN-uzt"/>
+                        <outlet property="doneBarButtonItem" destination="gz8-su-BK1" id="1Gw-sm-lQB"/>
                         <outlet property="valueCell" destination="1sD-wn-kN5" id="m39-C1-U9U"/>
                     </connections>
                 </tableViewController>

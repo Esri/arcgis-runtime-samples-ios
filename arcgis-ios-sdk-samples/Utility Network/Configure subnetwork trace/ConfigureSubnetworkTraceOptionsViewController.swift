@@ -29,7 +29,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     /// The cell for value to compare with.
     @IBOutlet var valueCell: UITableViewCell!
     /// A button to add the conditional expression to the trace configuration.
-    @IBOutlet var addBarButtonItem: UIBarButtonItem!
+    @IBOutlet var doneBarButtonItem: UIBarButtonItem!
     
     // MARK: Properties
     
@@ -44,9 +44,11 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     /// The attribute selected by the user.
     var selectedAttribute: AGSUtilityNetworkAttribute? {
         didSet {
-            // Reset the selected value.
+            // Set the selected attribute name.
             attributesCell.detailTextLabel?.text = selectedAttribute?.name
+            // Reset the selected value.
             selectedValue = nil
+            valueCell.detailTextLabel?.text = nil
             updateCellStates()
         }
     }
@@ -58,13 +60,13 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             } else {
                 comparisonCell.detailTextLabel?.text = nil
             }
-            updateCellStates()
+            doneBarButtonItem.isEnabled = selectedComparison != nil && selectedValue != nil
         }
     }
     /// The value selected by the user.
     var selectedValue: Any? {
         didSet {
-            addBarButtonItem.isEnabled = selectedValue != nil
+            doneBarButtonItem.isEnabled = selectedComparison != nil && selectedValue != nil
         }
     }
     
@@ -191,11 +193,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             NotificationCenter.default.removeObserver(textFieldObserver!)
             // Convert the string to a number.
             let formatter = NumberFormatter()
-            if let value = formatter.number(from: (textField?.text)!) {
-                completion(value)
-            } else {
-                completion(nil)
-            }
+            completion(formatter.number(from: (textField?.text)!))
         }
         // Add the done action to the alert controller.
         doneAction.isEnabled = false
@@ -233,10 +231,6 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
-        // Deselect row manually.
-        if cell == valueCell {
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
         switch cell {
         case attributesCell:
             showAttributePicker()

@@ -17,9 +17,9 @@ The layers in the map will be displayed in a table of contents. Toggle the switc
 1. Create an `AGSGroupLayer` object.
 2. Add a child layer to the group layer's layers collection.
 3. Set the group layer's `groupVisibilityMode` to change its behavior:
-    * `groupVisibilityMode.INDEPENDENT` allows each sublayer to change its visibility independently.
-    * `groupVisibilityMode.EXCLUSIVE` allows only one sublayer to be visible at a time.
-    * `groupVisibilityMode.INHERITED` treats the group layer as if it is one merged layer.
+    * `independent` allows each sublayer to change its visibility independently.
+    * `inherited` treats the group layer as if it is one merged layer.
+    * `exclusive` allows only one sublayer to be visible at a time.
 4. To toggle the visibility of the group, simply change the group layer's `isVisible` property.
 
 ## Relevant API

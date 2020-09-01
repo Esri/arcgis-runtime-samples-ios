@@ -164,8 +164,8 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
             } else {
                 // Create a default starting location.
                 let networkSource = self.utilityNetwork.definition.networkSource(withName: deviceTableName)
-                let assetType = networkSource?.assetGroup(withName: assetGroupName)?.assetType(withName: assetTypeName)
-                if let type = assetType, let startingLocation = self.utilityNetwork.createElement(with: type, globalID: globalID) {
+                if let assetType = networkSource?.assetGroup(withName: assetGroupName)?.assetType(withName: assetTypeName),
+                   let startingLocation = self.utilityNetwork.createElement(with: assetType, globalID: globalID) {
                     // Set the terminal for this location. (For our case, use the "Load" terminal.)
                     startingLocation.terminal = startingLocation.assetType.terminalConfiguration?.terminals.first(where: { $0.name == "Load" })
                     self.startingLocation = startingLocation

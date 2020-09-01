@@ -17,10 +17,19 @@ import ArcGIS
 
 class LayersTableViewController: UITableViewController, GroupLayersCellDelegate, GroupLayersSectionViewDelegate {
     var layers = [AGSLayer]()
+    var tableViewContentSizeObservation: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(GroupLayersSectionView.nib, forHeaderFooterViewReuseIdentifier: GroupLayersSectionView.reuseIdentifier)
+    }
+    
+    // Adjust the size of the table view according to its contents.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableViewContentSizeObservation = tableView.observe(\.contentSize) { [unowned self] (tableView, _) in
+            self.preferredContentSize = CGSize(width: self.preferredContentSize.width, height: tableView.contentSize.height)
+        }
     }
     
     // MARK: - UITableViewDataSource

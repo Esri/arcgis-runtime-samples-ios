@@ -231,7 +231,7 @@
                             <outlet property="delegate" destination="YFg-XB-smY" id="ntn-Ai-qDU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add condition" id="OJ4-l4-Y7N">
+                    <navigationItem key="navigationItem" title="Add Condition" id="OJ4-l4-Y7N">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GKf-xK-PKH">
                             <connections>
                                 <action selector="cancelBarButtonItemTapped:" destination="YFg-XB-smY" id="6JC-PG-D0A"/>

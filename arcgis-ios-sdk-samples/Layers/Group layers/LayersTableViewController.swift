@@ -147,7 +147,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         case "DevB_BuildingShells":
             return "Buildings B"
         case "DevelopmentProjectArea":
-            return "Project area"
+            return "Project Area"
         default:
             return name
         }

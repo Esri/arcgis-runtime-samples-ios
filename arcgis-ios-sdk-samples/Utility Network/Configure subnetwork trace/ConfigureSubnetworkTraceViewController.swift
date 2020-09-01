@@ -172,18 +172,15 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
                 }
                 // Get a default trace configuration from a tier to update the UI.
                 let domainNetwork = self.utilityNetwork.definition.domainNetwork(withDomainNetworkName: domainNetworkName)
-                var utilityTierConfiguration = domainNetwork?.tier(withName: tierName)?.traceConfiguration
+                let utilityTierConfiguration = domainNetwork?.tier(withName: tierName)?.traceConfiguration ?? AGSUtilityTraceConfiguration()
                 
-                // Set the trace configuration.
-                if utilityTierConfiguration == nil {
-                    utilityTierConfiguration = AGSUtilityTraceConfiguration()
-                }
-                if utilityTierConfiguration?.traversability == nil {
-                    utilityTierConfiguration?.traversability = AGSUtilityTraversability()
+                // Set the traversability.
+                if utilityTierConfiguration.traversability == nil {
+                    utilityTierConfiguration.traversability = AGSUtilityTraversability()
                 }
                 
                 // Set the default expression (if provided).
-                if let expression = utilityTierConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
+                if let expression = utilityTierConfiguration.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
                     self.initialExpression = expression
                     if !self.traceConditionalExpressions.contains(expression) {
                         self.traceConditionalExpressions.append(expression)
@@ -191,7 +188,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
                     self.tableView.reloadSections(IndexSet(integersIn: 1...2), with: .automatic)
                 }
                 // Set the traversability scope.
-                utilityTierConfiguration?.traversability?.scope = .junctions
+                utilityTierConfiguration.traversability?.scope = .junctions
                 
                 self.configuration = utilityTierConfiguration
             }

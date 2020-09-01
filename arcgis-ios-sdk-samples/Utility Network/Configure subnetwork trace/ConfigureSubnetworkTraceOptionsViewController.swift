@@ -191,7 +191,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             NotificationCenter.default.removeObserver(textFieldObserver!)
             // Convert the string to a number.
             let formatter = NumberFormatter()
-            if let value = formatter.number(from: text) {
+            if let value = formatter.number(from: (textField?.text)!) {
                 completion(value)
             } else {
                 completion(nil)

@@ -37,7 +37,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     weak var delegate: ConfigureSubnetworkTraceOptionsViewControllerDelegate?
     
     /// An array of possible network attributes.
-    var possibleAttributes: [AGSUtilityNetworkAttribute]!
+    var possibleAttributes: [AGSUtilityNetworkAttribute] = []
     /// An array of `AGSUtilityAttributeComparisonOperator` and their description string pairs.
     var attributeComparisonOperators: KeyValuePairs<AGSUtilityAttributeComparisonOperator, String>!
     

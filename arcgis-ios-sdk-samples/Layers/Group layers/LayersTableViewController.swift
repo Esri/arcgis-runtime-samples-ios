@@ -40,13 +40,13 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         case .independent:
             let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! GroupLayersCell
             guard let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
-            
             let childLayer = childLayers[indexPath.row]
             
             // Set label.
             cell.layerNameLabel.text = formattedValue(of: childLayer.name)
             
-            // Set state of the switch.
+            // Set state of the cell and switch.
+            cell.isUserInteractionEnabled = groupLayer.isVisible
             cell.layerVisibilitySwitch.isOn = childLayer.isVisible
             cell.layerVisibilitySwitch.isEnabled = groupLayer.isVisible
             
@@ -62,7 +62,15 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
             
             // Set label.
             cell.textLabel?.text = formattedValue(of: childLayer.name)
-            
+            // Enable or disable the cell accordingly.
+            cell.isUserInteractionEnabled = groupLayer.isVisible
+            cell.textLabel?.isEnabled = groupLayer.isVisible
+            // Change the tint if the cell is enabled.
+            if groupLayer.isVisible {
+                cell.tintColor = .none
+            } else {
+                cell.tintColor = .gray
+            }
             // Indicate which layer is visible.
             if childLayer.isVisible {
                 cell.accessoryType = .checkmark
@@ -120,43 +128,10 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     func didToggleSwitch(_ sectionView: GroupLayersSectionView, isOn: Bool) {
         guard let section = tableView.section(forHeaderView: sectionView) else { return }
         layers[section].isVisible = isOn
-        updateCells(in: section, isEnabled: isOn)
+        tableView.reloadSections([section], with: .automatic)
     }
     
     // MARK: - Helper methods
-    
-    /// Ensures we cannot toggle visibility of child layers when the parent is turned off.
-    ///
-    /// - Parameters:
-    ///     - section: Section of the table view.
-    ///     - enabled: Indicates if the switch should be enabled or disabled.
-    func updateCells(in section: Int, isEnabled: Bool) {
-        guard let visibleRows = tableView.indexPathsForVisibleRows else { return }
-        switch section {
-        case 0:
-            visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
-                if let cell = tableView.cellForRow(at: indexPath) as? GroupLayersCell {
-                    cell.isUserInteractionEnabled = isEnabled
-                    cell.layerVisibilitySwitch.isEnabled = isEnabled
-                }
-            }
-        case 1:
-            visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
-                if let cell = tableView.cellForRow(at: indexPath) {
-                    cell.isUserInteractionEnabled = isEnabled
-                    cell.textLabel?.isEnabled = isEnabled
-                    // Change the tint if the cell is enabled.
-                    if isEnabled {
-                        cell.tintColor = .none
-                    } else {
-                        cell.tintColor = .gray
-                    }
-                }
-            }
-        default:
-            return
-        }
-    }
     /// Modifies name of the layer.
     ///
     /// - Parameter name: Original name of the layer.

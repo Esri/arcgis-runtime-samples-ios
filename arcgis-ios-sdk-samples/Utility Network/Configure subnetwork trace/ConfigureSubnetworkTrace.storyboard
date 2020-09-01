@@ -140,7 +140,7 @@
             </objects>
             <point key="canvasLocation" x="3500.0000000000005" y="85.714285714285708"/>
         </scene>
-        <!--Add condition-->
+        <!--Add Condition-->
         <scene sceneID="cZu-hF-J2e">
             <objects>
                 <tableViewController id="YFg-XB-smY" customClass="ConfigureSubnetworkTraceOptionsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Condition" id="WQe-NV-8Gg">
+                            <tableViewSection id="WQe-NV-8Gg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="g2l-ua-IUG" detailTextLabel="dfx-Fe-N6h" style="IBUITableViewCellStyleValue1" id="eUk-7U-uDy">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -237,7 +237,7 @@
                                 <action selector="cancelBarButtonItemTapped:" destination="YFg-XB-smY" id="6JC-PG-D0A"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="gz8-su-BK1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gz8-su-BK1" userLabel="Done Bar Button Item">
                             <connections>
                                 <action selector="addConditionBarButtonItemTapped:" destination="YFg-XB-smY" id="2dF-2A-DRM"/>
                             </connections>

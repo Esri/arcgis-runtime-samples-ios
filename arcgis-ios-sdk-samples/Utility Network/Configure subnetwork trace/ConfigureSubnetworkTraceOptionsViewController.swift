@@ -189,8 +189,6 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             let textField = alertController.textFields?.first
             // Remove the observer when done button is no longer in use.
             NotificationCenter.default.removeObserver(textFieldObserver!)
-            // If the text field is empty, do nothing.
-            guard let text = textField?.text, !text.isEmpty else { return }
             // Convert the string to a number.
             let formatter = NumberFormatter()
             if let value = formatter.number(from: text) {

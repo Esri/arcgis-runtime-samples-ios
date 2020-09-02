@@ -218,7 +218,7 @@ class EditWithBranchVersioningViewController: UIViewController {
                     if let error = error {
                         self.presentAlert(error: error)
                     } else {
-                        DispatchQueue.main.async { [weak self] in self?.currentVersionName = branchVersionName }
+                        DispatchQueue.main.async { self.currentVersionName = branchVersionName }
                     }
                 }
             }
@@ -230,7 +230,7 @@ class EditWithBranchVersioningViewController: UIViewController {
                     if let error = error {
                         self.presentAlert(error: error)
                     } else {
-                        DispatchQueue.main.async { [weak self] in self?.currentVersionName = branchVersionName }
+                        DispatchQueue.main.async { self.currentVersionName = branchVersionName }
                     }
                 }
             }
@@ -278,7 +278,8 @@ class EditWithBranchVersioningViewController: UIViewController {
         clearSelection()
         mapView.callout.dismiss()
         chooseVersionAccessPermission(sender) { permission in
-            self.askUserForBranchDetails(permission: permission) { parameters in
+            self.askUserForBranchDetails(permission: permission) { [weak self] parameters in
+                guard let self = self else { return }
                 self.makeVersion(geodatabase: self.serviceGeodatabase, with: parameters) { [weak self] result in
                     guard let self = self else { return }
                     switch result {
@@ -366,12 +367,13 @@ class EditWithBranchVersioningViewController: UIViewController {
             NotificationCenter.default.removeObserver(textFieldObserver!)
         }
         // Create a new version and remove observer.
-        let createAction = UIAlertAction(title: "Create", style: .default) { _ in
+        let createAction = UIAlertAction(title: "Create", style: .default) { [weak self] _ in
             NotificationCenter.default.removeObserver(textFieldObserver!)
             let branchText = alertController.textFields![0].text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let descriptionText = alertController.textFields![1].text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            let parameters = self.makeServiceParameters(accessPermission: permission, uniqueName: branchText, description: descriptionText)
-            completion(parameters)
+            if let parameters = self?.makeServiceParameters(accessPermission: permission, uniqueName: branchText, description: descriptionText) {
+                completion(parameters)
+            }
         }
         createAction.isEnabled = false
         alertController.addAction(cancelAction)

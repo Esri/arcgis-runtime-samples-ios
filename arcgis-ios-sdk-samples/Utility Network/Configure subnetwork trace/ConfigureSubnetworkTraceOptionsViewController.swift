@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 protocol ConfigureSubnetworkTraceOptionsViewControllerDelegate: AnyObject {
-    func onDismiss(_ controller: ConfigureSubnetworkTraceOptionsViewController, didAddContidionExpression expression: AGSUtilityTraceConditionalExpression)
+    func optionsViewController(_ controller: ConfigureSubnetworkTraceOptionsViewController, didCreate: AGSUtilityTraceConditionalExpression)
 }
 
 class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
@@ -98,7 +98,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             
             if let expression = AGSUtilityNetworkAttributeComparison(networkAttribute: attribute, comparisonOperator: comparison, value: convertedValue) {
                 // Create and pass the valid expression back to the main view controller.
-                delegate?.onDismiss(self, didAddContidionExpression: expression)
+                delegate?.optionsViewController(self, didCreate: expression)
             }
         }
         dismiss(animated: true)

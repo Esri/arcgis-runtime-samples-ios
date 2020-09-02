@@ -279,7 +279,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
 // MARK: - ConfigureSubnetworkTraceOptionsViewControllerDelegate
 
 extension ConfigureSubnetworkTraceViewController: ConfigureSubnetworkTraceOptionsViewControllerDelegate {
-    func onDismiss(_ controller: ConfigureSubnetworkTraceOptionsViewController, didAddContidionExpression expression: AGSUtilityTraceConditionalExpression) {
+    func optionsViewController(_ controller: ConfigureSubnetworkTraceOptionsViewController, didCreate expression: AGSUtilityTraceConditionalExpression) {
         if !traceConditionalExpressions.contains(expression) {
             // Append the new conditional expression if it is not a duplicate.
             traceConditionalExpressions.append(expression)
@@ -335,7 +335,6 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChainedConditionCell", for: indexPath) as! ChainedConditionsCell
             if let expression = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions) {
                 cell.conditionsLabel.text = expressionToString(expression: expression)
-//                tableView.footerView(forSection: 1)?.textLabel?.text = expressionToString(expression: expression)
             } else {
                 cell.conditionsLabel.text = "Expressions failed to convert to string."
             }

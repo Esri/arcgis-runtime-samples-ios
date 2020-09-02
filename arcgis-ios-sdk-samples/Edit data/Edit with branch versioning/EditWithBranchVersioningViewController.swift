@@ -169,23 +169,6 @@ class EditWithBranchVersioningViewController: UIViewController {
         }
     }
     
-    /// Make service parameters with provided information.
-    ///
-    /// - Parameters:
-    ///   - accessPermission: An `AGSVersionAccess` object that defines the permission level.
-    ///   - uniqueName: A unique string as branch version name.
-    ///   - description: An optional string to describe the branch.
-    /// - Returns: An `AGSServiceVersionParameters` object.
-    func makeServiceParameters(accessPermission: AGSVersionAccess, uniqueName: String, description: String?) -> AGSServiceVersionParameters {
-        let parameters = AGSServiceVersionParameters()
-        parameters.access = accessPermission
-        parameters.name = uniqueName
-        if let description = description {
-            parameters.parametersDescription = description
-        }
-        return parameters
-    }
-    
     /// Make a new branch version with parameters in the service geodatabase.
     ///
     /// - Parameters:
@@ -367,13 +350,21 @@ class EditWithBranchVersioningViewController: UIViewController {
             NotificationCenter.default.removeObserver(textFieldObserver!)
         }
         // Create a new version and remove observer.
-        let createAction = UIAlertAction(title: "Create", style: .default) { [weak self] _ in
+        let createAction = UIAlertAction(title: "Create", style: .default) { _ in
             NotificationCenter.default.removeObserver(textFieldObserver!)
             let branchText = alertController.textFields![0].text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let descriptionText = alertController.textFields![1].text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            if let parameters = self?.makeServiceParameters(accessPermission: permission, uniqueName: branchText, description: descriptionText) {
-                completion(parameters)
-            }
+            // Make service parameters with provided information.
+            let parameters: AGSServiceVersionParameters = {
+                let parameters = AGSServiceVersionParameters()
+                parameters.access = permission
+                parameters.name = branchText
+                if let description = descriptionText {
+                    parameters.parametersDescription = description
+                }
+                return parameters
+            }()
+            completion(parameters)
         }
         createAction.isEnabled = false
         alertController.addAction(cancelAction)

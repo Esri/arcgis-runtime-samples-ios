@@ -335,6 +335,7 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChainedConditionCell", for: indexPath) as! ChainedConditionsCell
             if let expression = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions) {
                 cell.conditionsLabel.text = expressionToString(expression: expression)
+//                tableView.footerView(forSection: 1)?.textLabel?.text = expressionToString(expression: expression)
             } else {
                 cell.conditionsLabel.text = "Expressions failed to convert to string."
             }
@@ -356,10 +357,6 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

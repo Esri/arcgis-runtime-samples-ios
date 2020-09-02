@@ -68,6 +68,20 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         }
     }
     
+    /// An array of `AGSUtilityAttributeComparisonOperator` and their description string pairs.
+    let attributeComparisonOperators: KeyValuePairs<AGSUtilityAttributeComparisonOperator, String> = [
+        .equal: "Equal",
+        .notEqual: "NotEqual",
+        .greaterThan: "GreaterThan",
+        .greaterThanEqual: "GreaterThanEqual",
+        .lessThan: "LessThan",
+        .lessThanEqual: "LessThanEqual",
+        .includesTheValues: "IncludesTheValues",
+        .doesNotIncludeTheValues: "DoesNotIncludeTheValues",
+        .includesAny: "IncludesAny",
+        .doesNotIncludeAny: "DoesNotIncludeAny"
+    ]
+    
     // MARK: Actions
     
     @IBAction func addConditionBarButtonItemTapped(_ sender: UIBarButtonItem) {

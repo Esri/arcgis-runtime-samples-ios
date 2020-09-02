@@ -182,10 +182,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     /// - Returns: The chained conditional expression.
     func chainExpressions(using chainingOperator: (AGSUtilityTraceConditionalExpression, AGSUtilityTraceConditionalExpression) -> AGSUtilityTraceConditionalExpression, expressions: [AGSUtilityTraceConditionalExpression]) -> AGSUtilityTraceConditionalExpression? {
         guard let firstExpression = expressions.first else { return nil }
-        if expressions.count == 1 {
-            return firstExpression
-        }
-        return expressions[1...].reduce(firstExpression) { leftCondition, rightCondition in
+        return expressions.dropFirst().reduce(firstExpression) { leftCondition, rightCondition in
             chainingOperator(leftCondition, rightCondition)
         }
     }
@@ -286,6 +283,8 @@ extension ConfigureSubnetworkTraceViewController: ConfigureSubnetworkTraceOption
         if !traceConditionalExpressions.contains(expression) {
             // Append the new conditional expression if it is not a duplicate.
             traceConditionalExpressions.append(expression)
+//            let lastRow = tableView.numberOfRows(inSection: 1) - 1
+//            tableView.reloadRows(at: [IndexPath(row: lastRow, section: 1)], with: .automatic)
             tableView.reloadSections(IndexSet(integersIn: 1...2), with: .automatic)
         }
     }
@@ -343,11 +342,15 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // Don't allow deletion of the first row if default condition exists.
-        if initialExpression != nil {
-            guard indexPath.row != 0 else { return }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Disable editing for the first row.
+        if indexPath == IndexPath(row: 0, section: 1) {
+            return false
         }
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             traceConditionalExpressions.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)

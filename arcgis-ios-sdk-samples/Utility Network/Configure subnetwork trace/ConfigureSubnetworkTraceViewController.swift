@@ -28,8 +28,8 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     // MARK: Properties
     
     /// A convenience type for the table view sections.
-    private enum Section: CaseIterable {
-        case switches, conditions, chainedConditions
+    private enum Section: Int, CaseIterable {
+        case switches, conditions
         
         var label: String {
             switch self {
@@ -37,8 +37,6 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
                 return "Trace options"
             case .conditions:
                 return "List of conditions"
-            case .chainedConditions:
-                return "Chained condition"
             }
         }
     }
@@ -74,6 +72,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     var initialExpression: AGSUtilityTraceConditionalExpression?
     /// The trace configuration.
     var configuration: AGSUtilityTraceConfiguration?
+    var expressionString: String?
     
     // MARK: Actions
     
@@ -116,7 +115,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         } else {
             traceConditionalExpressions.removeAll()
         }
-        tableView.reloadSections(IndexSet(integersIn: 1...2), with: .automatic)
+        tableView.reloadSections([Section.conditions.rawValue], with: .automatic)
     }
     
     // MARK: Methods
@@ -163,7 +162,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
                     if !self.traceConditionalExpressions.contains(expression) {
                         self.traceConditionalExpressions.append(expression)
                     }
-                    self.tableView.reloadSections(IndexSet(integersIn: 1...2), with: .automatic)
+                    self.tableView.reloadSections([Section.conditions.rawValue], with: .automatic)
                 }
                 // Set the traversability scope.
                 utilityTierConfiguration.traversability?.scope = .junctions
@@ -284,8 +283,8 @@ extension ConfigureSubnetworkTraceViewController: ConfigureSubnetworkTraceOption
             // Append the new conditional expression if it is not a duplicate.
             traceConditionalExpressions.append(expression)
 //            let lastRow = tableView.numberOfRows(inSection: 1) - 1
-//            tableView.reloadRows(at: [IndexPath(row: lastRow, section: 1)], with: .automatic)
-            tableView.reloadSections(IndexSet(integersIn: 1...2), with: .automatic)
+//            tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
+            tableView.reloadSections([Section.conditions.rawValue], with: .automatic)
         }
     }
 }
@@ -307,8 +306,6 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
             return Switches.allCases.count
         case .conditions:
             return traceConditionalExpressions.count
-        case .chainedConditions:
-            return 1
         }
     }
     
@@ -316,29 +313,43 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
         switch Section.allCases[indexPath.section] {
         case .switches:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath)
-            switch indexPath.row {
-            case 0:
+            switch Switches.allCases[indexPath.row] {
+            case .barriers:
                 cell.accessoryView = barriersSwitch
                 cell.textLabel?.text = Switches.barriers.label
-            case 1:
+            case .containers:
                 cell.accessoryView = containersSwitch
                 cell.textLabel?.text = Switches.containers.label
-            default:
-                fatalError("Unknown SwitchCell type")
             }
             return cell
         case .conditions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ConditionCell", for: indexPath)
             cell.textLabel?.text = expressionToString(expression: traceConditionalExpressions[indexPath.row])
             return cell
-        case .chainedConditions:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ChainedConditionCell", for: indexPath) as! ChainedConditionsCell
+//        case .chainedConditions:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ChainedConditionCell", for: indexPath) as! ChainedConditionsCell
+//            if let expression = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions) {
+//                cell.conditionsLabel.text = expressionToString(expression: expression)
+//                expressionString = expressionToString(expression: expression)
+//                // Reload footer here
+//
+//            } else {
+//                cell.conditionsLabel.text = "Expressions failed to convert to string."
+//            }
+//            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch Section.allCases[section] {
+        case .switches:
+            return nil
+        case .conditions:
             if let expression = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions) {
-                cell.conditionsLabel.text = expressionToString(expression: expression)
+                return expressionToString(expression: expression)
             } else {
-                cell.conditionsLabel.text = "Expressions failed to convert to string."
+                return "Expressions failed to convert to string."
             }
-            return cell
         }
     }
     
@@ -354,7 +365,9 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
         if editingStyle == .delete {
             traceConditionalExpressions.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
+            // Reload footer
+//            tableView.reloadData()
+            tableView.reloadSections([Section.conditions.rawValue], with: .automatic)
         }
     }
 }
@@ -389,8 +402,4 @@ extension AGSUtilityAttributeComparisonOperator {
         default: return "Unknown AGSUtilityAttributeComparisonOperator"
         }
     }
-}
-
-class ChainedConditionsCell: UITableViewCell {
-    @IBOutlet var conditionsLabel: UILabel!
 }

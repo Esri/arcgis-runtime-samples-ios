@@ -54,31 +54,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChainedConditionCell" id="SDQ-D2-eRK" customClass="ChainedConditionsCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="142.5" width="414" height="59"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SDQ-D2-eRK" id="4oS-Mf-8HG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Chained conditions shown here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfb-sE-cuk">
-                                                    <rect key="frame" x="20" y="19" width="374" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Vfb-sE-cuk" firstAttribute="leading" secondItem="4oS-Mf-8HG" secondAttribute="leadingMargin" id="Cv2-k6-DZo"/>
-                                                <constraint firstItem="Vfb-sE-cuk" firstAttribute="top" secondItem="4oS-Mf-8HG" secondAttribute="topMargin" constant="8" id="Fi6-Tp-k2X"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Vfb-sE-cuk" secondAttribute="trailing" id="PLk-ab-eIk"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Vfb-sE-cuk" secondAttribute="bottom" constant="8" id="WBl-ea-6x2"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="conditionsLabel" destination="Vfb-sE-cuk" id="KCX-T9-zTg"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="eeV-QV-qKJ" id="oLr-zA-oMG"/>

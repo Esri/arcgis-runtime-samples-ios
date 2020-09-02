@@ -32,6 +32,11 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableViewContentSizeObservation = nil
+    }
+    
     // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -48,7 +48,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         switch groupLayer.visibilityMode {
         case .independent:
             let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! GroupLayersCell
-            guard let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
+            let childLayers = groupLayer.layers as! [AGSLayer]
             let childLayer = childLayers[indexPath.row]
             
             // Set label.

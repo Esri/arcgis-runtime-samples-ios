@@ -1,6 +1,6 @@
 {
     "category": "Edit data",
-    "description": "Create, query, and edit a specific server version using service geodatabase.",
+    "description": "Create, query, and edit a specific server version using a service geodatabase.",
     "ignore": false,
     "images": [
         "edit-with-branch-versioning-1.png",

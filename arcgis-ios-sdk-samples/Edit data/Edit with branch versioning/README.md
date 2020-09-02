@@ -1,6 +1,6 @@
 # Edit with branch versioning
 
-Create, query, and edit a specific server version using service geodatabase.
+Create, query, and edit a specific server version using a service geodatabase.
 
 ![Image of edit with branch versioning 1](edit-with-branch-versioning-1.png)
 ![Image of edit with branch versioning 2](edit-with-branch-versioning-2.png)

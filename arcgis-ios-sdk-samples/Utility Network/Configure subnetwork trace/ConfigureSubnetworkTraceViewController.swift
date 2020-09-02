@@ -75,28 +75,6 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     /// The trace configuration.
     var configuration: AGSUtilityTraceConfiguration?
     
-    /// A array of `AGSUtilityCategoryComparisonOperator` and their description string pairs.
-    /// - Note: You may also create a `AGSUtilityCategoryComparison` with
-    ///         `AGSUtilityNetworkDefinition.categories` and `AGSUtilityCategoryComparisonOperator`.
-    let categoryComparisonOperators: KeyValuePairs<AGSUtilityCategoryComparisonOperator, String> = [
-        .exists: "exists",
-        .doesNotExist: "doesNotExist"
-    ]
-    
-    /// An array of `AGSUtilityAttributeComparisonOperator` and their description string pairs.
-    let attributeComparisonOperators: KeyValuePairs<AGSUtilityAttributeComparisonOperator, String> = [
-        .equal: "Equal",
-        .notEqual: "NotEqual",
-        .greaterThan: "GreaterThan",
-        .greaterThanEqual: "GreaterThanEqual",
-        .lessThan: "LessThan",
-        .lessThanEqual: "LessThanEqual",
-        .includesTheValues: "IncludesTheValues",
-        .doesNotIncludeTheValues: "DoesNotIncludeTheValues",
-        .includesAny: "IncludesAny",
-        .doesNotIncludeAny: "DoesNotIncludeAny"
-    ]
-    
     // MARK: Actions
     
     @IBAction func traceBarButtonItemTapped(_ sender: UIBarButtonItem) {
@@ -219,11 +197,13 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     func expressionToString(expression: AGSUtilityTraceConditionalExpression) -> String {
         switch expression {
         case let categoryComparison as AGSUtilityCategoryComparison:
-            let comparisonOperatorString = categoryComparisonOperators.first { $0.0 == categoryComparison.comparisonOperator }!.1
+            let comparisonOperatorString = categoryComparison.comparisonOperator.title
+                //categoryComparisonOperators.first { $0.0 == categoryComparison.comparisonOperator }!.1
             return "`\(categoryComparison.category.name)` \(comparisonOperatorString)"
         case let attributeComparison as AGSUtilityNetworkAttributeComparison:
             let attributeName = attributeComparison.networkAttribute.name
-            let comparisonOperator = attributeComparisonOperators.first { $0.0 == attributeComparison.comparisonOperator }!.1
+            let comparisonOperator = attributeComparison.comparisonOperator.title
+                //attributeComparisonOperators.first { $0.0 == attributeComparison.comparisonOperator }!.1
             
             if let otherName = attributeComparison.otherNetworkAttribute?.name {
                 // Check if it is comparing with another network attribute.
@@ -294,7 +274,6 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         if let navigationController = segue.destination as? UINavigationController,
             let controller = navigationController.topViewController as? ConfigureSubnetworkTraceOptionsViewController {
             controller.possibleAttributes = utilityNetwork.definition.networkAttributes.filter { !$0.isSystemDefined }
-            controller.attributeComparisonOperators = attributeComparisonOperators
             controller.delegate = self
         }
     }
@@ -378,6 +357,38 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+/// An extension of `AGSUtilityCategoryComparisonOperator` that returns a human readable description.
+/// - Note: You may also create a `AGSUtilityCategoryComparison` with
+///         `AGSUtilityNetworkDefinition.categories` and `AGSUtilityCategoryComparisonOperator`.
+extension AGSUtilityCategoryComparisonOperator {
+    var title: String {
+        switch self {
+        case .exists: return "exists"
+        case .doesNotExist: return "doesNotExist"
+        default: return "Unknown AGSUtilityCategoryComparisonOperator"
+        }
+    }
+}
+
+/// An extension of `AGSUtilityAttributeComparisonOperator` that returns a human readable description.
+extension AGSUtilityAttributeComparisonOperator {
+    var title: String {
+        switch self {
+        case .equal: return "Equal"
+        case .notEqual: return "NotEqual"
+        case .greaterThan: return "GreaterThan"
+        case .greaterThanEqual: return "GreaterThanEqual"
+        case .lessThan: return "LessThan"
+        case .lessThanEqual: return "LessThanEqual"
+        case .includesTheValues: return "IncludesTheValues"
+        case .doesNotIncludeTheValues: return "DoesNotIncludeTheValues"
+        case .includesAny: return "IncludesAny"
+        case .doesNotIncludeAny: return "DoesNotIncludeAny"
+        default: return "Unknown AGSUtilityAttributeComparisonOperator"
+        }
     }
 }
 

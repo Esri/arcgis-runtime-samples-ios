@@ -38,8 +38,6 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     /// An array of possible network attributes.
     var possibleAttributes: [AGSUtilityNetworkAttribute] = []
-    /// An array of `AGSUtilityAttributeComparisonOperator` and their description string pairs.
-    var attributeComparisonOperators: KeyValuePairs<AGSUtilityAttributeComparisonOperator, String>!
     
     /// The attribute selected by the user.
     var selectedAttribute: AGSUtilityNetworkAttribute? {
@@ -55,8 +53,8 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     /// The comparison selected by the user.
     var selectedComparison: AGSUtilityAttributeComparisonOperator? {
         didSet {
-            if let index = attributeComparisonOperators.firstIndex(where: { $0.0 == selectedComparison }) {
-                comparisonCell.detailTextLabel?.text = attributeComparisonOperators[index].1
+            if let selectedComparisonString = selectedComparison?.title {
+                comparisonCell.detailTextLabel?.text = selectedComparisonString
             } else {
                 comparisonCell.detailTextLabel?.text = nil
             }

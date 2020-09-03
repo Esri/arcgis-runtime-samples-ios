@@ -111,9 +111,9 @@ class EditWithBranchVersioningViewController: UIViewController {
                 self.existingVersionNames.append(serviceGeodatabase.defaultVersionName)
                 
                 // Load feature layer.
-                let featureLayer = self.loadFeatureLayer(with: serviceGeodatabase.table(withLayerID: 0)!) {
+                let featureLayer = self.loadFeatureLayer(with: serviceGeodatabase.table(withLayerID: 0)!) { [weak self] in
                     // After the feature layer is loaded, switch to default version.
-                    self.switchVersion(to: serviceGeodatabase.defaultVersionName)
+                    self?.switchVersion(to: serviceGeodatabase.defaultVersionName)
                 }
                 self.featureLayer = featureLayer
                 self.mapView.map?.operationalLayers.add(featureLayer)
@@ -201,7 +201,7 @@ class EditWithBranchVersioningViewController: UIViewController {
                     if let error = error {
                         self.presentAlert(error: error)
                     } else {
-                        DispatchQueue.main.async { self.currentVersionName = branchVersionName }
+                        DispatchQueue.main.async { [weak self] in self?.currentVersionName = branchVersionName }
                     }
                 }
             }
@@ -213,7 +213,7 @@ class EditWithBranchVersioningViewController: UIViewController {
                     if let error = error {
                         self.presentAlert(error: error)
                     } else {
-                        DispatchQueue.main.async { self.currentVersionName = branchVersionName }
+                        DispatchQueue.main.async { [weak self] in self?.currentVersionName = branchVersionName }
                     }
                 }
             }
@@ -355,15 +355,12 @@ class EditWithBranchVersioningViewController: UIViewController {
             let branchText = alertController.textFields![0].text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let descriptionText = alertController.textFields![1].text?.trimmingCharacters(in: .whitespacesAndNewlines)
             // Make service parameters with provided information.
-            let parameters: AGSServiceVersionParameters = {
-                let parameters = AGSServiceVersionParameters()
-                parameters.access = permission
-                parameters.name = branchText
-                if let description = descriptionText {
-                    parameters.parametersDescription = description
-                }
-                return parameters
-            }()
+            let parameters = AGSServiceVersionParameters()
+            parameters.access = permission
+            parameters.name = branchText
+            if let description = descriptionText {
+                parameters.parametersDescription = description
+            }
             completion(parameters)
         }
         createAction.isEnabled = false

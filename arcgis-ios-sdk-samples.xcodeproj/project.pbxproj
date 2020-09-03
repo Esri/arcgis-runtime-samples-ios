@@ -2222,11 +2222,11 @@
 				3E4BF43C1C5AC66700D85919 /* Search */,
 				3ED027FC1B8E38F400ACA70D /* Edit data */,
 				3EBA25711D34509500AB0703 /* Geometry */,
-				3E6AE3E91C6D10DA0026E59C /* Route & Directions */,
+				3E6AE3E91C6D10DA0026E59C /* Route and directions */,
 				3E0B58451E36BCCD00951767 /* Analysis */,
-				3EEE1D671E4935FC003263FC /* Cloud & Portal */,
+				3EEE1D671E4935FC003263FC /* Cloud and portal */,
 				3EEA06001D21C3E800E03774 /* Scenes */,
-				D98CC08F22E25D8200618682 /* Utility Network */,
+				D98CC08F22E25D8200618682 /* Utility network */,
 				E47ED0882343C1400032440E /* Augmented reality */,
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				C7E86C8E21751CFE001C65C3 /* Extensions */,
@@ -2516,7 +2516,7 @@
 			path = "Audio Files";
 			sourceTree = "<group>";
 		};
-		3E6AE3E91C6D10DA0026E59C /* Route & Directions */ = {
+		3E6AE3E91C6D10DA0026E59C /* Route and directions */ = {
 			isa = PBXGroup;
 			children = (
 				00E276252425A205000DBEDD /* Navigate route */,
@@ -2527,7 +2527,7 @@
 				3ED75D001ED39EDF009B1F75 /* Find service area interactive */,
 				4C0CBFFB22F9D2FB00D3F1DB /* Find closest facility to multiple incidents (service) */,
 			);
-			path = "Route & Directions";
+			path = "Route and directions";
 			sourceTree = "<group>";
 		};
 		3E6AE3EA1C6D10F70026E59C /* Offline routing */ = {
@@ -3464,7 +3464,7 @@
 			path = "List related features";
 			sourceTree = "<group>";
 		};
-		3EEE1D671E4935FC003263FC /* Cloud & Portal */ = {
+		3EEE1D671E4935FC003263FC /* Cloud and portal */ = {
 			isa = PBXGroup;
 			children = (
 				E459919A1EF3021D0089E9FD /* Search for webmap by keyword */,
@@ -3473,7 +3473,7 @@
 				4C5F98BD2280A4A000414343 /* Authenticate with OAuth */,
 				4C2F906F2289C18400357824 /* Token authentication */,
 			);
-			path = "Cloud & Portal";
+			path = "Cloud and portal";
 			sourceTree = "<group>";
 		};
 		3EEE1D681E4935FC003263FC /* List portal group users */ = {
@@ -4084,7 +4084,7 @@
 			path = Shapefiles;
 			sourceTree = "<group>";
 		};
-		D98CC08F22E25D8200618682 /* Utility Network */ = {
+		D98CC08F22E25D8200618682 /* Utility network */ = {
 			isa = PBXGroup;
 			children = (
 				F14A8EFC2474AD3A00242D96 /* Configure subnetwork trace */,
@@ -4092,7 +4092,7 @@
 				00E5B7CB2458FE6D00B11973 /* Perform valve isolation trace */,
 				D98CC09022E25E3300618682 /* Trace utility network */,
 			);
-			path = "Utility Network";
+			path = "Utility network";
 			sourceTree = "<group>";
 		};
 		D98CC09022E25E3300618682 /* Trace utility network */ = {

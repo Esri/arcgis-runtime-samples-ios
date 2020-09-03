@@ -1,6 +1,6 @@
 {
     "category": "Edit data",
-    "description": "Edit feature attributes which are linked to annotation through an expression.",
+    "description": "Edit feature attributes which are linked to annotations through an expression.",
     "ignore": false,
     "images": [
         "feature-linked-annotation.png"

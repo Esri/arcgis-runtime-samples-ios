@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 class LayersTableViewController: UITableViewController, GroupLayersCellDelegate, GroupLayersSectionViewDelegate {
-    var layers = [AGSLayer]()
+    var layers = [AGSGroupLayer]()
     var tableViewContentSizeObservation: NSKeyValueObservation?
     
     override func viewDidLoad() {
@@ -39,12 +39,12 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let groupLayer = layers[section] as? AGSGroupLayer else { return 0 }
+        let groupLayer = layers[section]
         return groupLayer.layers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let groupLayer = layers[indexPath.section] as? AGSGroupLayer else { fatalError("Unknown cell type") }
+        let groupLayer = layers[indexPath.section]
         switch groupLayer.visibilityMode {
         case .independent:
             let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! GroupLayersCell
@@ -75,6 +75,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
             cell.isUserInteractionEnabled = groupLayer.isVisible
             cell.textLabel?.isEnabled = groupLayer.isVisible
             // Adjust the tint if the cell is enabled.
+            cell.tintColor = view.tintColor
             if groupLayer.isVisible {
                 cell.tintAdjustmentMode = .automatic
             } else {
@@ -112,7 +113,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let groupLayer = layers[indexPath.section] as! AGSGroupLayer
+        let groupLayer = layers[indexPath.section]
         let childLayers = groupLayer.layers as! [AGSLayer]
         
         var indexPathsToReload = [indexPath]
@@ -127,7 +128,8 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     
     func didToggleSwitch(_ cell: GroupLayersCell, isOn: Bool) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        if let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] {
+        let groupLayer = layers[indexPath.section]
+        if let childLayers = groupLayer.layers as? [AGSLayer] {
             childLayers[indexPath.row].isVisible = isOn
         }
     }

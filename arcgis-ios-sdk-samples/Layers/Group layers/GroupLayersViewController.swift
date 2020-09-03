@@ -26,8 +26,6 @@ class GroupLayersViewController: UIViewController {
         
         // Assign scene to the scene view.
         sceneView.scene = makeScene()
-        // Add the group layers to the scene as operational layers.
-        sceneView.scene?.operationalLayers.addObjects(from: [makeProjectAreaGroupLayer(), makeBuildingsGroupLayer()])
         zoomToGroupLayer()
     }
     
@@ -106,6 +104,9 @@ class GroupLayersViewController: UIViewController {
         let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
+        
+        // Add the group layers to the scene as operational layers.
+        scene.operationalLayers.addObjects(from: [makeProjectAreaGroupLayer(), makeBuildingsGroupLayer()])
         
         return scene
     }

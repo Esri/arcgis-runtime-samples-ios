@@ -10,7 +10,7 @@ Group layers communicate to the user that layers are related and can be managed 
 
 ## How to use the sample
 
-The layers in the map will be displayed in a table of contents. Toggle the switch next to a layer's name or tap the cell to change its visibility. Turning a group layer's visibility off will override the visibility of its child layers.
+The layers in the map will be displayed in a table of contents. For project area group layers, toggle the switch next to a layer's name. For the buildings group layers, tap the cell to change its visibility. Turning a group layer's visibility off will override the visibility of its child layers.
 
 ## How it works
 

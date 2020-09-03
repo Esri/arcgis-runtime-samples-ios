@@ -49,13 +49,13 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Get the group and child layer.
         let groupLayer = layers[indexPath.section]
+        guard let childLayers = groupLayer.layers as? [AGSLayer] else { fatalError("Unknown child layers error") }
+        let childLayer = childLayers[indexPath.row]
         switch groupLayer.visibilityMode {
         case .independent:
             let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! GroupLayersCell
-            let childLayers = groupLayer.layers as! [AGSLayer]
-            let childLayer = childLayers[indexPath.row]
-            
             // Set label.
             cell.layerNameLabel.text = formattedValue(of: childLayer.name)
             
@@ -70,10 +70,6 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
             return cell
         case .exclusive:
             let cell = tableView.dequeueReusableCell(withIdentifier: "exclusiveCell", for: indexPath)
-            guard let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
-            
-            let childLayer = childLayers[indexPath.row]
-            
             // Set label.
             cell.textLabel?.text = formattedValue(of: childLayer.name)
             // Enable or disable the cell accordingly.

@@ -495,6 +495,8 @@ extension EditWithBranchVersioningViewController: AGSGeoViewTouchDelegate {
 
 extension EditWithBranchVersioningViewController: AGSCalloutDelegate {
     func didTapAccessoryButton(for callout: AGSCallout) {
+        // Dismiss the callout.
+        callout.dismiss()
         // Show editing options actionsheet.
         editFeatureDamageAttribute(feature: selectedFeature!)
     }

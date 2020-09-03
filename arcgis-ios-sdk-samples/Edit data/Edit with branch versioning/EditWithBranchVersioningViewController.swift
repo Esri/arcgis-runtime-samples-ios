@@ -106,18 +106,19 @@ class EditWithBranchVersioningViewController: UIViewController {
                 self.presentAlert(error: error)
                 self.setStatus(message: "Error loading service geodatabase.")
             } else {
+                self.serviceGeodatabase = serviceGeodatabase
                 // Load with default version.
                 self.defaultVersionName = serviceGeodatabase.defaultVersionName
                 self.existingVersionNames.append(serviceGeodatabase.defaultVersionName)
                 
                 // Load feature layer.
-                let featureLayer = self.loadFeatureLayer(with: serviceGeodatabase.table(withLayerID: 0)!) { [weak self] in
+                self.loadFeatureLayer(with: serviceGeodatabase.table(withLayerID: 0)!) { [weak self] featureLayer in
                     // After the feature layer is loaded, switch to default version.
                     self?.switchVersion(to: serviceGeodatabase.defaultVersionName)
+                    self?.featureLayer = featureLayer
+                    // Add the feature layer to the map.
+                    self?.mapView.map?.operationalLayers.add(featureLayer)
                 }
-                self.featureLayer = featureLayer
-                self.mapView.map?.operationalLayers.add(featureLayer)
-                self.serviceGeodatabase = serviceGeodatabase
             }
         }
     }
@@ -126,9 +127,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     ///
     /// - Parameters:
     ///   - featureTable: The feature table for creating the feature layer.
-    ///   - completion: An optional closure to execute after feature layer is successfully loaded.
-    /// - Returns: An `AGSFeatureLayer` object.
-    func loadFeatureLayer(with featureTable: AGSFeatureTable, completion: @escaping () -> Void) -> AGSFeatureLayer {
+    ///   - completion: A closure that pass back an `AGSFeatureLayer` object after it is successfully loaded.
+    func loadFeatureLayer(with featureTable: AGSFeatureTable, completion: @escaping (AGSFeatureLayer) -> Void) {
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
         SVProgressHUD.show(withStatus: "Loading feature layer…")
@@ -138,12 +138,11 @@ class EditWithBranchVersioningViewController: UIViewController {
                 // Zoom to the target extent with animation.
                 self?.mapView.setViewpoint(AGSViewpoint(targetExtent: extent), completion: nil)
                 self?.createBarButtonItem.isEnabled = true
-                completion()
+                completion(featureLayer)
             } else if let error = error {
                 self?.presentAlert(error: error)
             }
         }
-        return featureLayer
     }
     
     /// Identify a tapped point on a feature layer.
@@ -224,7 +223,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     ///
     /// - Parameters:
     ///   - geodatabase: The geodatabase to apply edits.
-    ///   - completion: An optional closure to execute after edits are applied.
+    ///   - completion: A closure to execute after edits are applied.
     func applyLocalEdits(geodatabase: AGSServiceGeodatabase, completion: @escaping () -> Void) {
         if geodatabase.hasLocalEdits() {
             SVProgressHUD.show(withStatus: "Applying local edits…")
@@ -241,7 +240,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     ///
     /// - Parameters:
     ///   - geodatabase: The geodatabase to discard edits.
-    ///   - completion: An optional closure to execute after edits are undone.
+    ///   - completion: A closure to execute after edits are undone.
     func undoLocalEdits(geodatabase: AGSServiceGeodatabase, completion: @escaping () -> Void) {
         if geodatabase.hasLocalEdits() {
             SVProgressHUD.show(withStatus: "Discarding local edits…")

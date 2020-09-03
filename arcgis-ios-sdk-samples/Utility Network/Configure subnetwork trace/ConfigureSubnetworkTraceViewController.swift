@@ -18,6 +18,10 @@ import ArcGIS
 class ConfigureSubnetworkTraceViewController: UIViewController {
     // MARK: Storyboard views
     
+    /// A label to display chained condtional expressions.
+    @IBOutlet var chainedConditionsLabel: UILabel!
+    /// A custom view as the table footer.
+    @IBOutlet var customFooterView: UIView!
     /// A switch to control whether to include barriers in the trace.
     @IBOutlet var barriersSwitch: UISwitch!
     /// A switch to control whether to include containers in the trace.
@@ -72,7 +76,14 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     var initialExpression: AGSUtilityTraceConditionalExpression?
     /// The trace configuration.
     var configuration: AGSUtilityTraceConfiguration?
-    var expressionString: String?
+    /// A chained expression string.
+    var expressionString: String {
+        if let expression = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions) {
+            return expressionToString(expression: expression)
+        } else {
+            return "Expressions failed to convert to string."
+        }
+    }
     
     // MARK: Actions
     
@@ -116,6 +127,8 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
             traceConditionalExpressions.removeAll()
         }
         tableView.reloadSections([Section.conditions.rawValue], with: .automatic)
+        // Reload footer label.
+        chainedConditionsLabel.text = expressionString
     }
     
     // MARK: Methods
@@ -163,6 +176,8 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
                         self.traceConditionalExpressions.append(expression)
                     }
                     self.tableView.reloadSections([Section.conditions.rawValue], with: .automatic)
+                    // Reload footer label.
+                    self.chainedConditionsLabel.text = self.expressionString
                 }
                 // Set the traversability scope.
                 utilityTierConfiguration.traversability?.scope = .junctions
@@ -264,6 +279,8 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
             "ConfigureSubnetworkTraceOptionsViewController"
         ]
         loadUtilityNetwork()
+        // Assign a custom table footer view.
+        tableView.tableFooterView = customFooterView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -282,9 +299,10 @@ extension ConfigureSubnetworkTraceViewController: ConfigureSubnetworkTraceOption
         if !traceConditionalExpressions.contains(expression) {
             // Append the new conditional expression if it is not a duplicate.
             traceConditionalExpressions.append(expression)
-//            let lastRow = tableView.numberOfRows(inSection: 1) - 1
-//            tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
-            tableView.reloadSections([Section.conditions.rawValue], with: .automatic)
+            // Insert the newly added condition to the table.
+            tableView.insertRows(at: [IndexPath(row: traceConditionalExpressions.endIndex - 1, section: Section.conditions.rawValue)], with: .automatic)
+            // Reload footer label.
+            chainedConditionsLabel.text = expressionString
         }
     }
 }
@@ -326,48 +344,23 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
             let cell = tableView.dequeueReusableCell(withIdentifier: "ConditionCell", for: indexPath)
             cell.textLabel?.text = expressionToString(expression: traceConditionalExpressions[indexPath.row])
             return cell
-//        case .chainedConditions:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ChainedConditionCell", for: indexPath) as! ChainedConditionsCell
-//            if let expression = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions) {
-//                cell.conditionsLabel.text = expressionToString(expression: expression)
-//                expressionString = expressionToString(expression: expression)
-//                // Reload footer here
-//
-//            } else {
-//                cell.conditionsLabel.text = "Expressions failed to convert to string."
-//            }
-//            return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch Section.allCases[section] {
-        case .switches:
-            return nil
-        case .conditions:
-            if let expression = chainExpressions(using: chainExpressionsOperator, expressions: traceConditionalExpressions) {
-                return expressionToString(expression: expression)
-            } else {
-                return "Expressions failed to convert to string."
-            }
         }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Disable editing for the first row.
-        if indexPath == IndexPath(row: 0, section: 1) {
+        if indexPath == IndexPath(row: 0, section: Section.conditions.rawValue) {
             return false
         }
         return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+        if indexPath.section == Section.conditions.rawValue && editingStyle == .delete {
             traceConditionalExpressions.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            // Reload footer
-//            tableView.reloadData()
-            tableView.reloadSections([Section.conditions.rawValue], with: .automatic)
+            // Reload footer label.
+            chainedConditionsLabel.text = expressionString
         }
     }
 }

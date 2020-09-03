@@ -99,7 +99,9 @@
                     </view>
                     <connections>
                         <outlet property="barriersSwitch" destination="wNQ-FV-0T2" id="yim-Se-fqH"/>
+                        <outlet property="chainedConditionsLabel" destination="hgw-lH-Wh0" id="Obo-aX-x3B"/>
                         <outlet property="containersSwitch" destination="DQh-jP-zoT" id="a7w-nn-Tv9"/>
+                        <outlet property="customFooterView" destination="L87-re-DTY" id="kh9-20-L3t"/>
                         <outlet property="tableView" destination="AON-wr-WJ5" id="7kT-uO-sA3"/>
                     </connections>
                 </viewController>
@@ -112,6 +114,24 @@
                     <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </switch>
+                <view contentMode="scaleToFill" id="L87-re-DTY">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chained conditions shown here." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgw-lH-Wh0">
+                            <rect key="frame" x="20" y="0.0" width="200" height="16"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="hgw-lH-Wh0" secondAttribute="trailing" constant="20" symbolic="YES" id="EBM-7p-9pz"/>
+                        <constraint firstItem="hgw-lH-Wh0" firstAttribute="leading" secondItem="L87-re-DTY" secondAttribute="leading" constant="20" symbolic="YES" id="HHf-1j-oQE"/>
+                        <constraint firstItem="hgw-lH-Wh0" firstAttribute="top" secondItem="L87-re-DTY" secondAttribute="top" id="daY-Zk-dbk"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="bN1-gO-9K3"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="3500.0000000000005" y="85.714285714285708"/>
         </scene>

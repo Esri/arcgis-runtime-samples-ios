@@ -31,7 +31,7 @@ class GroupLayersViewController: UIViewController {
     
     /// Zooms to the extent of the Group Layer when its child layers are loaded.
     func zoomToGroupLayer() {
-        guard let groupLayer = (sceneView.scene?.operationalLayers as! [AGSLayer]).first(where: { $0.name == "Project area group" }) as? AGSGroupLayer else {
+        guard let groupLayer = (sceneView.scene?.operationalLayers as! [AGSGroupLayer]).first(where: { $0.name == "Project area group" }) else {
             return
         }
         

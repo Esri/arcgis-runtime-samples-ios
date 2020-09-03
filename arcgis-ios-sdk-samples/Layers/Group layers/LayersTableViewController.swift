@@ -32,6 +32,11 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableViewContentSizeObservation = nil
+    }
+    
     // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,7 +53,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         switch groupLayer.visibilityMode {
         case .independent:
             let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! GroupLayersCell
-            guard let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
+            let childLayers = groupLayer.layers as! [AGSLayer]
             let childLayer = childLayers[indexPath.row]
             
             // Set label.

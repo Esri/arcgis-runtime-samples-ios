@@ -128,7 +128,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     ///   - featureTable: The feature table for creating the feature layer.
     ///   - completion: An optional closure to execute after feature layer is successfully loaded.
     /// - Returns: An `AGSFeatureLayer` object.
-    func loadFeatureLayer(with featureTable: AGSFeatureTable, completion: (() -> Void)? = nil) -> AGSFeatureLayer {
+    func loadFeatureLayer(with featureTable: AGSFeatureTable, completion: @escaping () -> Void) -> AGSFeatureLayer {
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
         SVProgressHUD.show(withStatus: "Loading feature layer…")
@@ -138,7 +138,7 @@ class EditWithBranchVersioningViewController: UIViewController {
                 // Zoom to the target extent with animation.
                 self?.mapView.setViewpoint(AGSViewpoint(targetExtent: extent), completion: nil)
                 self?.createBarButtonItem.isEnabled = true
-                completion?()
+                completion()
             } else if let error = error {
                 self?.presentAlert(error: error)
             }
@@ -225,15 +225,15 @@ class EditWithBranchVersioningViewController: UIViewController {
     /// - Parameters:
     ///   - geodatabase: The geodatabase to apply edits.
     ///   - completion: An optional closure to execute after edits are applied.
-    func applyLocalEdits(geodatabase: AGSServiceGeodatabase, completion: (() -> Void)? = nil) {
+    func applyLocalEdits(geodatabase: AGSServiceGeodatabase, completion: @escaping () -> Void) {
         if geodatabase.hasLocalEdits() {
             SVProgressHUD.show(withStatus: "Applying local edits…")
             geodatabase.applyEdits { _, _ in
                 SVProgressHUD.dismiss()
-                completion?()
+                completion()
             }
         } else {
-            completion?()
+            completion()
         }
     }
     
@@ -242,15 +242,15 @@ class EditWithBranchVersioningViewController: UIViewController {
     /// - Parameters:
     ///   - geodatabase: The geodatabase to discard edits.
     ///   - completion: An optional closure to execute after edits are undone.
-    func undoLocalEdits(geodatabase: AGSServiceGeodatabase, completion: (() -> Void)? = nil) {
+    func undoLocalEdits(geodatabase: AGSServiceGeodatabase, completion: @escaping () -> Void) {
         if geodatabase.hasLocalEdits() {
             SVProgressHUD.show(withStatus: "Discarding local edits…")
             geodatabase.undoLocalEdits { _ in
                 SVProgressHUD.dismiss()
-                completion?()
+                completion()
             }
         } else {
-            completion?()
+            completion()
         }
     }
     

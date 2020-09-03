@@ -37,7 +37,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     weak var delegate: ConfigureSubnetworkTraceOptionsViewControllerDelegate?
     
     /// An array of possible network attributes.
-    var possibleAttributes: [AGSUtilityNetworkAttribute] = []
+    var possibleAttributes = [AGSUtilityNetworkAttribute]()
     
     /// The attribute selected by the user.
     var selectedAttribute: AGSUtilityNetworkAttribute? {
@@ -67,20 +67,6 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             doneBarButtonItem.isEnabled = selectedComparison != nil && selectedValue != nil
         }
     }
-    
-    /// An array of `AGSUtilityAttributeComparisonOperator` and their description string pairs.
-    let attributeComparisonOperators: KeyValuePairs<AGSUtilityAttributeComparisonOperator, String> = [
-        .equal: "Equal",
-        .notEqual: "NotEqual",
-        .greaterThan: "GreaterThan",
-        .greaterThanEqual: "GreaterThanEqual",
-        .lessThan: "LessThan",
-        .lessThanEqual: "LessThanEqual",
-        .includesTheValues: "IncludesTheValues",
-        .doesNotIncludeTheValues: "DoesNotIncludeTheValues",
-        .includesAny: "IncludesAny",
-        .doesNotIncludeAny: "DoesNotIncludeAny"
-    ]
     
     // MARK: Actions
     
@@ -168,8 +154,10 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     // Transition to the comparison options view controller.
     func showComparisonPicker() {
         let selectedIndex = selectedComparison?.rawValue ?? -1
-        let optionsViewController = OptionsTableViewController(labels: attributeComparisonOperators.map { $0.1 }, selectedIndex: selectedIndex) { newIndex in
-            self.selectedComparison = self.attributeComparisonOperators[newIndex].0
+        // An array of `AGSUtilityAttributeComparisonOperator` init from their raw value.
+        let attributeComparisonOperators = (0...9).map { AGSUtilityAttributeComparisonOperator(rawValue: $0)! }
+        let optionsViewController = OptionsTableViewController(labels: attributeComparisonOperators.map { $0.title }, selectedIndex: selectedIndex) { newIndex in
+            self.selectedComparison = attributeComparisonOperators[newIndex]
             self.navigationController?.popViewController(animated: true)
         }
         optionsViewController.title = "Comparison"
@@ -200,12 +188,11 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             NotificationCenter.default.removeObserver(textFieldObserver!)
         }
         let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
-            let textField = alertController.textFields?.first
+            let textField = alertController.textFields!.first!
             // Remove the observer when done button is no longer in use.
             NotificationCenter.default.removeObserver(textFieldObserver!)
             // Convert the string to a number.
-            let formatter = NumberFormatter()
-            completion(formatter.number(from: (textField?.text)!))
+            completion(NumberFormatter().number(from: textField.text!))
         }
         // Add the done action to the alert controller.
         doneAction.isEnabled = false
@@ -214,7 +201,6 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         alertController.addTextField { textField in
             textField.keyboardType = .numbersAndPunctuation
             textField.placeholder = "e.g. 15"
-            textField.delegate = self
         }
         // Add an observer to ensure the user does not input an empty string.
         textFieldObserver = NotificationCenter.default.addObserver(
@@ -222,8 +208,12 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             object: nil,
             queue: .main
         ) { _ in
-            // Enable the done button if the textfield is not empty.
-            doneAction.isEnabled = !(alertController.textFields?.first?.text?.isEmpty)!
+            if let text = alertController.textFields!.first!.text {
+                // Enable the done button if the textfield is not empty and is a valid number.
+                doneAction.isEnabled = !text.isEmpty && NumberFormatter().number(from: text) != nil
+            } else {
+                doneAction.isEnabled = false
+            }
         }
         // Add a cancel action to alert controller.
         alertController.addAction(cancelAction)
@@ -263,16 +253,5 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         default:
             fatalError("Unknown cell type")
         }
-    }
-}
-
-// MARK: - UITextFieldDelegate
-
-extension ConfigureSubnetworkTraceOptionsViewController: UITextFieldDelegate {
-    // Ensure that the text field will only accept numbers.
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        let validCharacters = ".-0123456789"
-        return CharacterSet(charactersIn: validCharacters).isSuperset(of: CharacterSet(charactersIn: text))
     }
 }

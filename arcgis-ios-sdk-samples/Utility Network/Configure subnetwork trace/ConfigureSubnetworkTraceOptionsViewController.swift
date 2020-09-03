@@ -243,11 +243,12 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
                 showValuePicker(values: domain.codedValues)
             } else {
                 showValueInputField { [weak self] value in
+                    guard let self = self else { return }
                     // Assign an `NSNumber?` to selected value so that it can cast to numbers.
-                    self?.selectedValue = value
-                    self?.valueCell.detailTextLabel?.text = value?.stringValue
+                    self.selectedValue = value
+                    self.valueCell.detailTextLabel?.text = value?.stringValue
                     // Mitigate the Apple's UI bug in right detail cell.
-                    self?.tableView.reloadRows(at: [indexPath], with: .none)
+                    tableView.reloadRows(at: [indexPath], with: .none)
                 }
             }
         default:

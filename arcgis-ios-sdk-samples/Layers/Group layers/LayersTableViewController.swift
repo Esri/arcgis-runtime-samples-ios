@@ -126,7 +126,7 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
             indexPathsToReload.append(IndexPath(row: indexOfPreviouslyVisibleLayer, section: indexPath.section))
         }
         childLayers[indexPath.row].isVisible = true
-        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+        reloadRows(at: indexPathsToReload)
     }
     
     // MARK: - GroupLayersCellDelegate
@@ -144,7 +144,10 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     func didToggleSwitch(_ sectionView: GroupLayersSectionView, isOn: Bool) {
         guard let section = tableView.section(forHeaderView: sectionView) else { return }
         layers[section].isVisible = isOn
-        tableView.reloadSections([section], with: .automatic)
+        let rowsInSection = tableView.numberOfRows(inSection: section)
+        let rowArray = 0...rowsInSection - 1
+        let indexPaths = rowArray.map { IndexPath(row: $0, section: section) }
+        reloadRows(at: indexPaths)
     }
     
     // MARK: - Helper methods
@@ -167,6 +170,11 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         default:
             return name
         }
+    }
+    
+    func reloadRows(at indexPaths: [IndexPath]) {
+        tableViewContentSizeObservation = nil
+        tableView.reloadRows(at: indexPaths, with: .automatic)
     }
 }
 

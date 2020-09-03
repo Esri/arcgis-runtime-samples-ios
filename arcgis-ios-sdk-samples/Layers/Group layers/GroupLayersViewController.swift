@@ -117,7 +117,7 @@ class GroupLayersViewController: UIViewController {
         if segue.identifier == "LayersPopover" {
             guard let controller = segue.destination as? LayersTableViewController else { return }
             
-            let operationalLayers = sceneView.scene?.operationalLayers as! [AGSLayer]
+            let operationalLayers = sceneView.scene?.operationalLayers as! [AGSGroupLayer]
             controller.layers.append(contentsOf: operationalLayers)
             
             // Popover presentation logic.

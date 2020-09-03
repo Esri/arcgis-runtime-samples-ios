@@ -341,7 +341,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         var textFieldObserver: NSObjectProtocol!
         // An alert to get user input for branch name and description.
         let alertController = UIAlertController(
-            title: "Create branch version",
+            title: "Create Branch Version",
             message: "Please provide a branch name and a description.",
             preferredStyle: .alert
         )
@@ -391,7 +391,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     
     func editFeatureDamageAttribute(feature: AGSFeature) {
         let alertController = UIAlertController(
-            title: "Damage type",
+            title: "Damage Type",
             message: "Choose a damage type for the building.",
             preferredStyle: .actionSheet
         )
@@ -435,7 +435,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     
     func chooseVersionAccessPermission(_ sender: UIBarButtonItem, completion: @escaping (AGSVersionAccess) -> Void) {
         let alertController = UIAlertController(
-            title: "Access permissions",
+            title: "Access Permissions",
             message: "Choose an access level for the new branch version.",
             preferredStyle: .actionSheet
         )

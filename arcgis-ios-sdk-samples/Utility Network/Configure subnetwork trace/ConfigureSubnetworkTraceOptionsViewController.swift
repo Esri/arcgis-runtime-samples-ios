@@ -210,7 +210,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         ) { _ in
             if let text = alertController.textFields!.first!.text {
                 // Enable the done button if the textfield is not empty and is a valid number.
-                doneAction.isEnabled = !text.isEmpty && NumberFormatter().number(from: text) != nil
+                doneAction.isEnabled = NumberFormatter().number(from: text) != nil
             } else {
                 doneAction.isEnabled = false
             }

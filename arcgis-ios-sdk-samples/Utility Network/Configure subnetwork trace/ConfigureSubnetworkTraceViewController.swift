@@ -20,7 +20,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     
     /// A label to display chained condtional expressions.
     @IBOutlet var chainedConditionsLabel: UILabel!
-    /// A custom view as the table footer.
+    /// A custom view as the table footer view.
     @IBOutlet var customFooterView: UIView!
     /// A switch to control whether to include barriers in the trace.
     @IBOutlet var barriersSwitch: UISwitch!
@@ -108,7 +108,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
                 self.presentAlert(error: error)
             } else if let elementResult = results?.first as? AGSUtilityElementTraceResult {
                 // Display the number of elements found by the trace.
-                self.presentAlert(title: "Trace Result", message: "\(elementResult.elements.count) elements found.")
+                self.presentAlert(title: "Trace Result", message: "\(elementResult.elements.count) element(s) found.")
             } else {
                 // No elements found.
                 self.presentAlert(title: "Trace Result", message: "No trace results found.")
@@ -209,13 +209,10 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         switch expression {
         case let categoryComparison as AGSUtilityCategoryComparison:
             let comparisonOperatorString = categoryComparison.comparisonOperator.title
-                //categoryComparisonOperators.first { $0.0 == categoryComparison.comparisonOperator }!.1
             return "`\(categoryComparison.category.name)` \(comparisonOperatorString)"
         case let attributeComparison as AGSUtilityNetworkAttributeComparison:
             let attributeName = attributeComparison.networkAttribute.name
             let comparisonOperator = attributeComparison.comparisonOperator.title
-                //attributeComparisonOperators.first { $0.0 == attributeComparison.comparisonOperator }!.1
-            
             if let otherName = attributeComparison.otherNetworkAttribute?.name {
                 // Check if it is comparing with another network attribute.
                 return "`\(attributeName)` \(comparisonOperator) `\(otherName)`"
@@ -300,7 +297,7 @@ extension ConfigureSubnetworkTraceViewController: ConfigureSubnetworkTraceOption
             // Append the new conditional expression if it is not a duplicate.
             traceConditionalExpressions.append(expression)
             // Insert the newly added condition to the table.
-            tableView.insertRows(at: [IndexPath(row: traceConditionalExpressions.endIndex - 1, section: Section.conditions.rawValue)], with: .automatic)
+            tableView.insertRows(at: [IndexPath(row: traceConditionalExpressions.count - 1, section: Section.conditions.rawValue)], with: .automatic)
             // Reload footer label.
             chainedConditionsLabel.text = expressionString
         }
@@ -348,11 +345,13 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Disable editing for the first row.
-        if indexPath == IndexPath(row: 0, section: Section.conditions.rawValue) {
+        if indexPath.section == Section.conditions.rawValue && indexPath.row != 0 {
+            // Enable editing for the rest of conditions section.
+            return true
+        } else {
+            // Disable editing for the first row of conditions section and other rows.
             return false
         }
-        return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -368,12 +367,12 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
 /// An extension of `AGSUtilityCategoryComparisonOperator` that returns a human readable description.
 /// - Note: You may also create a `AGSUtilityCategoryComparison` with
 ///         `AGSUtilityNetworkDefinition.categories` and `AGSUtilityCategoryComparisonOperator`.
-extension AGSUtilityCategoryComparisonOperator {
+private extension AGSUtilityCategoryComparisonOperator {
     var title: String {
         switch self {
-        case .exists: return "exists"
-        case .doesNotExist: return "doesNotExist"
-        default: return "Unknown AGSUtilityCategoryComparisonOperator"
+        case .exists: return "Exists"
+        case .doesNotExist: return "DoesNotExist"
+        @unknown default: return "Unknown"
         }
     }
 }
@@ -392,7 +391,7 @@ extension AGSUtilityAttributeComparisonOperator {
         case .doesNotIncludeTheValues: return "DoesNotIncludeTheValues"
         case .includesAny: return "IncludesAny"
         case .doesNotIncludeAny: return "DoesNotIncludeAny"
-        default: return "Unknown AGSUtilityAttributeComparisonOperator"
+        @unknown default: return "Unknown"
         }
     }
 }

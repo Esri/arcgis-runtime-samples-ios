@@ -37,7 +37,7 @@
     ],
     "snippets": [
         "RGB Renderer Cells.swift",
-        "RGBRendererSettingsVC.swift",
+        "RGBRendererSettingsViewController.swift",
         "RGBRendererViewController.swift"
     ],
     "title": "RGB renderer"

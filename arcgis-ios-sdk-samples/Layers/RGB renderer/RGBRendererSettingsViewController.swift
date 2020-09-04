@@ -16,12 +16,12 @@
 import UIKit
 import ArcGIS
 
-protocol RGBRendererSettingsVCDelegate: AnyObject {
-    func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
+protocol RGBRendererSettingsViewControllerDelegate: AnyObject {
+    func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters)
 }
 
-class RGBRendererSettingsVC: UITableViewController {
-    weak var delegate: RGBRendererSettingsVCDelegate?
+class RGBRendererSettingsViewController: UITableViewController {
+    weak var delegate: RGBRendererSettingsViewControllerDelegate?
     
     weak var stretchTypeCell: UITableViewCell?
     
@@ -61,7 +61,7 @@ class RGBRendererSettingsVC: UITableViewController {
     private var percentClipMax: Double = 1
     private var standardDeviationFactor: Double = 1
     
-    private var stretchType: RGBRendererSettingsVC.StretchType = .minMax {
+    private var stretchType: RGBRendererSettingsViewController.StretchType = .minMax {
         didSet {
             updateStretchTypeLabel()
         }

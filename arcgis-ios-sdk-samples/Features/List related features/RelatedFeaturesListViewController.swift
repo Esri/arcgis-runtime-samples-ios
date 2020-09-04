@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class RelatedFeaturesListVC: UITableViewController {
+class RelatedFeaturesListViewController: UITableViewController {
     //results required for display
     var results = [AGSRelatedFeatureQueryResult]() {
         didSet {

@@ -33,18 +33,14 @@ class NavigateRouteViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemap: .navigationVector())
-            let stopSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .orange, size: 20)
-            let stopGraphics = makeStops().map { AGSGraphic(geometry: $0.geometry, symbol: stopSymbol) }
-            let routeGraphics = [routeAheadGraphic, routeTraveledGraphic]
-            let graphicsOverlay = makeRouteOverlay(graphics: routeGraphics + stopGraphics)
-            mapView.graphicsOverlays.add(graphicsOverlay)
+            mapView.graphicsOverlays.add(makeRouteOverlay())
         }
     }
     
     // MARK: Instance properties
     
     /// The route task to solve the route between stops, using the online routing service.
-    var routeTask: AGSRouteTask!
+    let routeTask = AGSRouteTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
     /// The route result solved by the route task.
     var routeResult: AGSRouteResult!
     /// The route tracker for navigation. Use delegate methods to update tracking status.
@@ -128,13 +124,15 @@ class NavigateRouteViewController: UIViewController {
     
     /// Make a graphics overlay with graphics.
     ///
-    /// - Parameter graphics: The `AGSGraphic`s to add to the overlay.
     /// - Returns: An `AGSGraphicsOverlay` object.
-    func makeRouteOverlay(graphics: [AGSGraphic]) -> AGSGraphicsOverlay {
+    func makeRouteOverlay() -> AGSGraphicsOverlay {
         // The graphics overlay for the polygon and points.
         let graphicsOverlay = AGSGraphicsOverlay()
+        let stopSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .orange, size: 20)
+        let stopGraphics = makeStops().map { AGSGraphic(geometry: $0.geometry, symbol: stopSymbol) }
+        let routeGraphics = [routeAheadGraphic, routeTraveledGraphic]
         // Add graphics to the graphics overlay.
-        graphicsOverlay.graphics.addObjects(from: graphics)
+        graphicsOverlay.graphics.addObjects(from: routeGraphics + stopGraphics)
         return graphicsOverlay
     }
     
@@ -173,7 +171,10 @@ class NavigateRouteViewController: UIViewController {
         mapView.locationDisplay.dataSource = routeTrackerLocationDataSource
         mapView.locationDisplay.autoPanMode = .navigation
         // If the user navigates the map view away from the location display, activate the recenter button.
-        mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] _ in self?.recenterBarButtonItem.isEnabled = true }
+        mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] _ in
+            self?.recenterBarButtonItem.isEnabled = true
+            self?.mapView.locationDisplay.autoPanModeChangedHandler = nil
+        }
         
         // Update graphics and viewpoint.
         let firstRouteGeometry = firstRoute.routeGeometry!
@@ -205,6 +206,7 @@ class NavigateRouteViewController: UIViewController {
         mapView.locationDisplay.dataSource.didUpdate(initialLocation)
         // Stop the location display as well as datasource generation, if reset before the end is reached.
         mapView.locationDisplay.stop()
+        mapView.locationDisplay.autoPanModeChangedHandler = nil
         mapView.locationDisplay.autoPanMode = .off
         directionsList.removeAll()
         setStatus(message: "Directions are shown here.")
@@ -221,6 +223,10 @@ class NavigateRouteViewController: UIViewController {
     @IBAction func recenter() {
         mapView.locationDisplay.autoPanMode = .navigation
         recenterBarButtonItem.isEnabled = false
+        mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] _ in
+            self?.recenterBarButtonItem.isEnabled = true
+            self?.mapView.locationDisplay.autoPanModeChangedHandler = nil
+        }
     }
     
     // MARK: UIViewController
@@ -233,7 +239,6 @@ class NavigateRouteViewController: UIViewController {
         mapView.contentInset.top = CGFloat(statusLabel.numberOfLines) * statusLabel.font.lineHeight
         
         // Solve the route as map loads.
-        routeTask = AGSRouteTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
         routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
             guard let self = self else { return }
             if let params = params {

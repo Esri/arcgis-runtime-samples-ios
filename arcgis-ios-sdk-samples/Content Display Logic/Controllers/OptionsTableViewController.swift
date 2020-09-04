@@ -50,7 +50,7 @@ class OptionsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(OptionCell.self, forCellReuseIdentifier: "OptionCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "OptionCell")
     }
     
     // UITableViewDataSource
@@ -61,26 +61,20 @@ class OptionsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath)
-        cell.selectionStyle = .none
         let option = options[indexPath.row]
         cell.textLabel?.text = option.label
         cell.imageView?.image = option.image
-        if selectedIndex == indexPath.row {
-            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-        }
+        cell.accessoryType = indexPath.row == selectedIndex ? .checkmark : .none
         return cell
     }
     
     // UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPathOfPreviouslySelectedRow = IndexPath(row: selectedIndex, section: indexPath.section)
+        let indexPathsToReload = [indexPathOfPreviouslySelectedRow, indexPath]
         selectedIndex = indexPath.row
+        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
         onChange(indexPath.row)
-    }
-}
-
-private class OptionCell: UITableViewCell {
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        accessoryType = selected ? .checkmark : .none
     }
 }

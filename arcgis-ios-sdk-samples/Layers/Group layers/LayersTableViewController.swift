@@ -16,11 +16,25 @@ import UIKit
 import ArcGIS
 
 class LayersTableViewController: UITableViewController, GroupLayersCellDelegate, GroupLayersSectionViewDelegate {
-    var layers = [AGSLayer]()
+    var layers = [AGSGroupLayer]()
+    var tableViewContentSizeObservation: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(GroupLayersSectionView.nib, forHeaderFooterViewReuseIdentifier: GroupLayersSectionView.reuseIdentifier)
+    }
+    
+    // Adjust the size of the table view according to its contents.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableViewContentSizeObservation = tableView.observe(\.contentSize) { [unowned self] (tableView, _) in
+            self.preferredContentSize = CGSize(width: self.preferredContentSize.width, height: tableView.contentSize.height)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableViewContentSizeObservation = nil
     }
     
     // MARK: - UITableViewDataSource
@@ -30,28 +44,54 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let groupLayer = layers[section] as? AGSGroupLayer else { return 0 }
+        let groupLayer = layers[section]
         return groupLayer.layers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GroupLayersCell
-        
-        guard let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] else { return cell }
-        
+        // Get the group and child layer.
+        let groupLayer = layers[indexPath.section]
+        guard let childLayers = groupLayer.layers as? [AGSLayer] else { fatalError("Unknown child layers error") }
         let childLayer = childLayers[indexPath.row]
-        
-        // Set label.
-        cell.layerNameLabel.text = formattedValue(of: childLayer.name)
-        
-        // Set state of the switch.
-        cell.layerVisibilitySwitch.isOn = childLayer.isVisible
-        cell.layerVisibilitySwitch.isEnabled = groupLayer.isVisible
-        
-        // To update the visibility of operational layers on switch toggle.
-        cell.delegate = self
-        
-        return cell
+        switch groupLayer.visibilityMode {
+        case .independent:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! GroupLayersCell
+            // Set label.
+            cell.layerNameLabel.text = formattedValue(of: childLayer.name)
+            
+            // Set state of the cell and switch.
+            cell.isUserInteractionEnabled = groupLayer.isVisible
+            cell.layerVisibilitySwitch.isOn = childLayer.isVisible
+            cell.layerVisibilitySwitch.isEnabled = groupLayer.isVisible
+            
+            // To update the visibility of operational layers on switch toggle.
+            cell.delegate = self
+            
+            return cell
+        case .exclusive:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "exclusiveCell", for: indexPath)
+            // Set label.
+            cell.textLabel?.text = formattedValue(of: childLayer.name)
+            // Enable or disable the cell accordingly.
+            cell.isUserInteractionEnabled = groupLayer.isVisible
+            cell.textLabel?.isEnabled = groupLayer.isVisible
+            // Adjust the tint if the cell is enabled.
+            cell.tintColor = view.tintColor
+            if groupLayer.isVisible {
+                cell.tintAdjustmentMode = .automatic
+            } else {
+                cell.tintAdjustmentMode = .dimmed
+            }
+            // Indicate which layer is visible.
+            if childLayer.isVisible {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+            return cell
+        default:
+            fatalError("Unknown cell type")
+        }
     }
     
     // MARK: - UITableViewDelegate
@@ -73,11 +113,25 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
         return headerView
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let groupLayer = layers[indexPath.section]
+        let childLayers = groupLayer.layers as! [AGSLayer]
+        
+        var indexPathsToReload = [indexPath]
+        if let indexOfPreviouslyVisibleLayer = childLayers.firstIndex(where: { $0.isVisible }) {
+            indexPathsToReload.append(IndexPath(row: indexOfPreviouslyVisibleLayer, section: indexPath.section))
+        }
+        childLayers[indexPath.row].isVisible = true
+        tableViewContentSizeObservation = nil
+        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+    }
+    
     // MARK: - GroupLayersCellDelegate
     
     func didToggleSwitch(_ cell: GroupLayersCell, isOn: Bool) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        if let groupLayer = layers[indexPath.section] as? AGSGroupLayer, let childLayers = groupLayer.layers as? [AGSLayer] {
+        let groupLayer = layers[indexPath.section]
+        if let childLayers = groupLayer.layers as? [AGSLayer] {
             childLayers[indexPath.row].isVisible = isOn
         }
     }
@@ -87,26 +141,11 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     func didToggleSwitch(_ sectionView: GroupLayersSectionView, isOn: Bool) {
         guard let section = tableView.section(forHeaderView: sectionView) else { return }
         layers[section].isVisible = isOn
-        updateSwitchForRows(in: section, isEnabled: isOn)
+        tableViewContentSizeObservation = nil
+        tableView.reloadSections([section], with: .automatic)
     }
     
     // MARK: - Helper methods
-    
-    /// Ensures we cannot toggle visibility of child layers when the parent is turned off.
-    ///
-    /// - Parameters:
-    ///     - section: Section of the table view.
-    ///     - enabled: Indicates if the switch should be enabled or disabled.
-    func updateSwitchForRows(in section: Int, isEnabled: Bool) {
-        guard let visibleRows = tableView.indexPathsForVisibleRows else { return }
-        
-        visibleRows.lazy.filter { $0.section == section }.forEach { indexPath in
-            if let cell = tableView.cellForRow(at: indexPath) as? GroupLayersCell {
-                cell.layerVisibilitySwitch.isEnabled = isEnabled
-            }
-        }
-    }
-    
     /// Modifies name of the layer.
     ///
     /// - Parameter name: Original name of the layer.
@@ -114,15 +153,15 @@ class LayersTableViewController: UITableViewController, GroupLayersCellDelegate,
     func formattedValue(of name: String) -> String {
         switch name {
         case "DevA_Trees":
-            return "Dev A: Trees"
+            return "Trees"
         case "DevA_Pathways":
-            return "Dev A: Pathways"
-        case "DevA_BuildingShell_Textured":
-            return "Dev A: Building Shell Textured"
-        case "PlannedDemo_BuildingShell":
-            return "Planned Demo Building Shell"
+            return "Pathways"
+        case "DevA_BuildingShells":
+            return "Buildings A"
+        case "DevB_BuildingShells":
+            return "Buildings B"
         case "DevelopmentProjectArea":
-            return "Development Project Area"
+            return "Project Area"
         default:
             return name
         }

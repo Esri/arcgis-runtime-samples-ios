@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouchDelegate, ServiceAreaSettingsVCDelegate, UIAdaptivePresentationControllerDelegate {
+class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouchDelegate, ServiceAreaSettingsViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var segmentedControl: UISegmentedControl!
     @IBOutlet private var serviceAreaBBI: UIBarButtonItem!
@@ -35,7 +35,7 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
         super.viewDidLoad()
 
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveViewController", "ServiceAreaSettingsVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveViewController", "ServiceAreaSettingsViewController"]
         
         //initialize map with basemap
         let map = AGSMap(basemap: .terrainWithLabels())
@@ -207,7 +207,7 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ServiceAreaSettingsSegue" {
-            let controller = segue.destination as! ServiceAreaSettingsVC
+            let controller = segue.destination as! ServiceAreaSettingsViewController
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             controller.delegate = self
@@ -218,11 +218,11 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
     
     // MARK: - ServiceAreaSettingsVCDelegate
     
-    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateFirstTimeBreak timeBreak: Int) {
+    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsViewController, didUpdateFirstTimeBreak timeBreak: Int) {
         self.firstTimeBreak = timeBreak
     }
     
-    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateSecondTimeBreak timeBreak: Int) {
+    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsViewController, didUpdateSecondTimeBreak timeBreak: Int) {
         self.secondTimeBreak = timeBreak
     }
     

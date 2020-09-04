@@ -15,18 +15,18 @@
 
 import UIKit
 
-protocol ServiceAreaSettingsVCDelegate: AnyObject {
-    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateFirstTimeBreak timeBreak: Int)
-    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsVC, didUpdateSecondTimeBreak timeBreak: Int)
+protocol ServiceAreaSettingsViewControllerDelegate: AnyObject {
+    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsViewController, didUpdateFirstTimeBreak timeBreak: Int)
+    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsViewController, didUpdateSecondTimeBreak timeBreak: Int)
 }
 
-class ServiceAreaSettingsVC: UIViewController {
+class ServiceAreaSettingsViewController: UIViewController {
     @IBOutlet private var firstTimeBreakSlider: UISlider!
     @IBOutlet private var secondTimeBreakSlider: UISlider!
     @IBOutlet private var firstTimeBreakLabel: UILabel!
     @IBOutlet private var secondTimeBreakLabel: UILabel!
     
-    weak var delegate: ServiceAreaSettingsVCDelegate?
+    weak var delegate: ServiceAreaSettingsViewControllerDelegate?
     
     var firstTimeBreak: Int = 3
     var secondTimeBreak: Int = 8

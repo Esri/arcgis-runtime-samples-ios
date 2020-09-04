@@ -17,7 +17,7 @@ import UIKit
 import ArcGIS
 
 protocol RGBRendererSettingsViewControllerDelegate: AnyObject {
-    func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters)
+    func rgbRendererSettingsViewController(_ rgbRendererSettingsViewController: RGBRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters)
 }
 
 class RGBRendererSettingsViewController: UITableViewController {
@@ -109,7 +109,7 @@ class RGBRendererSettingsViewController: UITableViewController {
     }
     
     private func rendererParametersChanged() {
-        delegate?.rgbRendererSettingsVC(self, didSelectStretchParameters: makeStretchParameters())
+        delegate?.rgbRendererSettingsViewController(self, didSelectStretchParameters: makeStretchParameters())
     }
     
     // MARK: - Actions

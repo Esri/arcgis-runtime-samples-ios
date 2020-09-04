@@ -42,7 +42,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsViewContro
     
     // MARK: - RGBRendererSettingsVCDelegate
     
-    func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters) {
+    func rgbRendererSettingsViewController(_ rgbRendererSettingsVC: RGBRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters) {
         let renderer = AGSRGBRenderer(stretchParameters: parameters, bandIndexes: [], gammas: [], estimateStatistics: true)
         rasterLayer?.renderer = renderer
     }

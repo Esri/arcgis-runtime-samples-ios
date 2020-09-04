@@ -17,7 +17,7 @@ import UIKit
 import ArcGIS
 
 protocol StretchRendererSettingsViewControllerDelegate: AnyObject {
-    func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters)
+    func stretchRendererSettingsViewController(_ stretchRendererSettingsViewController: StretchRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters)
 }
 
 class StretchRendererSettingsViewController: UITableViewController {
@@ -77,7 +77,7 @@ class StretchRendererSettingsViewController: UITableViewController {
     }
     
     private func rendererParametersChanged() {
-        delegate?.stretchRendererSettingsVC(self, didSelectStretchParameters: makeStretchParameters())
+        delegate?.stretchRendererSettingsViewController(self, didSelectStretchParameters: makeStretchParameters())
     }
     
     // MARK: - Actions

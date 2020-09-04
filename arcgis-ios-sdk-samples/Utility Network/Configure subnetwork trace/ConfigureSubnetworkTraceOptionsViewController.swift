@@ -154,8 +154,8 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     // Transition to the comparison options view controller.
     func showComparisonPicker() {
         let selectedIndex = selectedComparison?.rawValue ?? -1
-        // An array of `AGSUtilityAttributeComparisonOperator` init from their raw value.
-        let attributeComparisonOperators = (0...9).map { AGSUtilityAttributeComparisonOperator(rawValue: $0)! }
+        // An array of `AGSUtilityAttributeComparisonOperator`s.
+        let attributeComparisonOperators = AGSUtilityAttributeComparisonOperator.allCases
         let optionsViewController = OptionsTableViewController(labels: attributeComparisonOperators.map { $0.title }, selectedIndex: selectedIndex) { newIndex in
             self.selectedComparison = attributeComparisonOperators[newIndex]
             self.navigationController?.popViewController(animated: true)

@@ -378,7 +378,14 @@ private extension AGSUtilityCategoryComparisonOperator {
 }
 
 /// An extension of `AGSUtilityAttributeComparisonOperator` that returns a human readable description.
-extension AGSUtilityAttributeComparisonOperator {
+extension AGSUtilityAttributeComparisonOperator: CaseIterable {
+    // Manually set the maximum raw value of cases to facilitate protocol conformation.
+    private static let maxCaseValue = AGSUtilityAttributeComparisonOperator.doesNotIncludeAny.rawValue
+    
+    public static let allCases: [AGSUtilityAttributeComparisonOperator] = {
+        return (0...maxCaseValue).map { AGSUtilityAttributeComparisonOperator(rawValue: $0)! }
+    }()
+    
     var title: String {
         switch self {
         case .equal: return "Equal"

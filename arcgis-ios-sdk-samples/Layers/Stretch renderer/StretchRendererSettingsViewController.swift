@@ -16,12 +16,12 @@
 import UIKit
 import ArcGIS
 
-protocol StretchRendererSettingsVCDelegate: AnyObject {
-    func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
+protocol StretchRendererSettingsViewControllerDelegate: AnyObject {
+    func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters)
 }
 
-class StretchRendererSettingsVC: UITableViewController {
-    weak var delegate: StretchRendererSettingsVCDelegate?
+class StretchRendererSettingsViewController: UITableViewController {
+    weak var delegate: StretchRendererSettingsViewControllerDelegate?
     
     weak var stretchTypeCell: UITableViewCell?
     

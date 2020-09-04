@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class StretchRendererViewController: UIViewController, StretchRendererSettingsVCDelegate {
+class StretchRendererViewController: UIViewController, StretchRendererSettingsViewControllerDelegate {
     @IBOutlet var mapView: AGSMapView!
     
     private weak var rasterLayer: AGSRasterLayer?
@@ -25,7 +25,7 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StretchRendererViewController", "StretchRendererSettingsVC", "StretchRendererInputCell", "OptionsTableViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StretchRendererViewController", "StretchRendererSettingsViewController", "StretchRendererInputCell", "OptionsTableViewController"]
         
         //create raster
         let raster = AGSRaster(name: "ShastaBW", extension: "tif")
@@ -42,7 +42,7 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
     
     // MARK: - StretchRendererSettingsVCDelegate
     
-    func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
+    func stretchRendererSettingsVC(_ stretchRendererSettingsVC: StretchRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters) {
         let renderer = AGSStretchRenderer(stretchParameters: parameters, gammas: [], estimateStatistics: true, colorRamp: AGSColorRamp(type: .none, size: 1))
         rasterLayer?.renderer = renderer
     }
@@ -51,7 +51,7 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVC
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? StretchRendererSettingsVC {
+            let controller = navController.viewControllers.first as? StretchRendererSettingsViewController {
             controller.delegate = self
             controller.preferredContentSize = {
                 let height: CGFloat

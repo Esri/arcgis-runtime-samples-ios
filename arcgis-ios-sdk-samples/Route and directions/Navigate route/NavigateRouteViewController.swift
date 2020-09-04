@@ -52,7 +52,7 @@ class NavigateRouteViewController: UIViewController {
     /// A list to keep track of directions solved by the route task.
     var directionsList: [AGSDirectionManeuver] = []
     
-    /// The original view point that can be reset to later on.
+    /// The original view point that can be reset later on.
     var defaultViewPoint: AGSViewpoint?
     /// The initial location for the solved route.
     var initialLocation: AGSLocation!

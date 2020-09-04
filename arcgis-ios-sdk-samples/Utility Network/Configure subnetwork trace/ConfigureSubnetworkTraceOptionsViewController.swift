@@ -256,3 +256,24 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         }
     }
 }
+
+/// An extension of `AGSUtilityAttributeComparisonOperator` that returns a human readable description.
+private extension AGSUtilityAttributeComparisonOperator {
+    static let allCases = (Self.equal.rawValue...Self.doesNotIncludeAny.rawValue).map { AGSUtilityAttributeComparisonOperator(rawValue: $0)! }
+    
+    var title: String {
+        switch self {
+        case .equal: return "Equal"
+        case .notEqual: return "NotEqual"
+        case .greaterThan: return "GreaterThan"
+        case .greaterThanEqual: return "GreaterThanEqual"
+        case .lessThan: return "LessThan"
+        case .lessThanEqual: return "LessThanEqual"
+        case .includesTheValues: return "IncludesTheValues"
+        case .doesNotIncludeTheValues: return "DoesNotIncludeTheValues"
+        case .includesAny: return "IncludesAny"
+        case .doesNotIncludeAny: return "DoesNotIncludeAny"
+        @unknown default: return "Unknown"
+        }
+    }
+}

@@ -24,7 +24,7 @@
     ],
     "snippets": [
         "VectorStylesViewController.swift",
-        "VectorTileCustomStyleVC.swift"
+        "VectorTileCustomStyleViewController.swift"
     ],
     "title": "ArcGIS vector tiled layer (custom style)"
 }

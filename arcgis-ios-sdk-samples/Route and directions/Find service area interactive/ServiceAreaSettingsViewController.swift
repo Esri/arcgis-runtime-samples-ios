@@ -16,8 +16,8 @@
 import UIKit
 
 protocol ServiceAreaSettingsViewControllerDelegate: AnyObject {
-    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsViewController, didUpdateFirstTimeBreak timeBreak: Int)
-    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsViewController, didUpdateSecondTimeBreak timeBreak: Int)
+    func serviceAreaSettingsViewController(_ serviceAreaSettingsViewController: ServiceAreaSettingsViewController, didUpdateFirstTimeBreak timeBreak: Int)
+    func serviceAreaSettingsViewController(_ serviceAreaSettingsViewController: ServiceAreaSettingsViewController, didUpdateSecondTimeBreak timeBreak: Int)
 }
 
 class ServiceAreaSettingsViewController: UIViewController {
@@ -47,11 +47,11 @@ class ServiceAreaSettingsViewController: UIViewController {
         if sender == self.firstTimeBreakSlider {
             self.firstTimeBreakLabel.text = "\(Int(sender.value))"
             
-            self.delegate?.serviceAreaSettingsVC(self, didUpdateFirstTimeBreak: Int(sender.value))
+            self.delegate?.serviceAreaSettingsViewController(self, didUpdateFirstTimeBreak: Int(sender.value))
         } else {
             self.secondTimeBreakLabel.text = "\(Int(sender.value))"
             
-            self.delegate?.serviceAreaSettingsVC(self, didUpdateSecondTimeBreak: Int(sender.value))
+            self.delegate?.serviceAreaSettingsViewController(self, didUpdateSecondTimeBreak: Int(sender.value))
         }
     }
 }

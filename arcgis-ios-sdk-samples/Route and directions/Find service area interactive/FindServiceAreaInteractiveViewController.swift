@@ -218,11 +218,11 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
     
     // MARK: - ServiceAreaSettingsVCDelegate
     
-    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsViewController, didUpdateFirstTimeBreak timeBreak: Int) {
+    func serviceAreaSettingsViewController(_ serviceAreaSettingsVC: ServiceAreaSettingsViewController, didUpdateFirstTimeBreak timeBreak: Int) {
         self.firstTimeBreak = timeBreak
     }
     
-    func serviceAreaSettingsVC(_ serviceAreaSettingsVC: ServiceAreaSettingsViewController, didUpdateSecondTimeBreak timeBreak: Int) {
+    func serviceAreaSettingsViewController(_ serviceAreaSettingsVC: ServiceAreaSettingsViewController, didUpdateSecondTimeBreak timeBreak: Int) {
         self.secondTimeBreak = timeBreak
     }
     

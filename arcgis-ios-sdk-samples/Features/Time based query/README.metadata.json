@@ -22,7 +22,7 @@
         "AGSTimeExtent"
     ],
     "snippets": [
-        "TimeBasedQueryVC.swift"
+        "TimeBasedQueryViewController.swift"
     ],
     "title": "Time based query"
 }

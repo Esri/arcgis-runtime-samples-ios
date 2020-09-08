@@ -36,9 +36,8 @@
         "AGSStretchParameters"
     ],
     "snippets": [
-        "RGB Renderer Cells.swift",
-        "RGBRendererSettingsViewController.swift",
-        "RGBRendererViewController.swift"
+        "RGBRendererViewController.swift",
+        "RGBRendererSettingsViewController.swift"
     ],
     "title": "RGB renderer"
 }

@@ -56,9 +56,6 @@
 		09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */; };
 		09607F821FDB616100FA43B6 /* TimeBasedQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryViewController.swift */; };
 		09607F831FDB617F00FA43B6 /* TimeBasedQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryViewController.swift */; };
-		09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */; };
-		09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
-		09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
 		09607F851FDB61DC00FA43B6 /* TimeBasedQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */; };
 		097426BF22456EE00067E9D1 /* DisplayWFSViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		098049A82253FC3F009C685D /* BrowseWFSLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098049A32253FC3F009C685D /* BrowseWFSLayersViewController.swift */; };

@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 class ApplyMosaicRuleToRastersViewController: UIViewController {
-    // MARK: Storyboard views and instance properties
+    // MARK: Storyboard views and properties
     
     /// A label to show status messages.
     @IBOutlet weak var statusLabel: UILabel!
@@ -28,8 +28,8 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
     }
     /// The image service raster to demo mosaic rules.
     var imageServiceRaster: AGSImageServiceRaster!
-    
-    let mosaicRulePresets: KeyValuePairs<String, AGSMosaicRule> = {
+    /// A preset of mosaic rules for demonstration purpose.
+    let mosaicRulePairs: KeyValuePairs<String, AGSMosaicRule> = {
         // A default mosaic rule object, with mosaic method as none.
         let noneRule = AGSMosaicRule()
         noneRule.mosaicMethod = .none
@@ -61,7 +61,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
                 "LockRaster": lockRasterRule]
     }()
     
-    // MARK: Instance methods
+    // MARK: Methods
     
     /// Create a map.
     ///
@@ -109,7 +109,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
             message: nil,
             preferredStyle: .actionSheet
         )
-        mosaicRulePresets.forEach { name, rule in
+        mosaicRulePairs.forEach { name, rule in
             let action = UIAlertAction(title: name, style: .default) { _ in
                 self.setStatus(message: "\(name) selected.")
                 self.imageServiceRaster.mosaicRule = rule

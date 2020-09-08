@@ -40,9 +40,9 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsViewContro
         mapView.map = map
     }
     
-    // MARK: - RGBRendererSettingsVCDelegate
+    // MARK: - RGBRendererSettingsViewControllerDelegate
     
-    func rgbRendererSettingsViewController(_ rgbRendererSettingsVC: RGBRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters) {
+    func rgbRendererSettingsViewController(_ rgbRendererSettingsViewController: RGBRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters) {
         let renderer = AGSRGBRenderer(stretchParameters: parameters, bandIndexes: [], gammas: [], estimateStatistics: true)
         rasterLayer?.renderer = renderer
     }

@@ -206,3 +206,15 @@ class RGBRendererSettingsViewController: UITableViewController {
         show(optionsViewController, sender: self)
     }
 }
+
+class RGBRendererInputCell: UITableViewCell {
+    @IBOutlet weak var leadingLabel: UILabel!
+    @IBOutlet weak var textField: UITextField!
+}
+
+class RGBRenderer3InputCell: UITableViewCell {
+    @IBOutlet weak var leadingLabel: UILabel!
+    @IBOutlet weak var textField1: UITextField!
+    @IBOutlet weak var textField2: UITextField!
+    @IBOutlet weak var textField3: UITextField!
+}

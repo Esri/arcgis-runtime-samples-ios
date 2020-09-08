@@ -25,7 +25,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsViewContro
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RGBRendererViewController", "RGBRendererSettingsViewController", "RGB Renderer Cells", "OptionsTableViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RGBRendererViewController", "RGBRendererSettingsViewController", "OptionsTableViewController"]
 
         //create raster
         let raster = AGSRaster(name: "Shasta", extension: "tif")

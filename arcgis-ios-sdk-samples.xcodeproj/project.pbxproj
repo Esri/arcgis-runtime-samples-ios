@@ -478,8 +478,8 @@
 		3ED75D031ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED75D011ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard */; };
 		3ED75D041ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED75D021ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift */; };
 		3ED75D051ED39FA7009B1F75 /* FindServiceAreaInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED75D021ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift */; };
-		3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsVC.swift */; };
-		3ED75D081ED4E5A0009B1F75 /* ServiceAreaSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsVC.swift */; };
+		3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift */; };
+		3ED75D081ED4E5A0009B1F75 /* ServiceAreaSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift */; };
 		3ED7888C1D26E23C00E5F311 /* LocalTiledLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7888B1D26E23C00E5F311 /* LocalTiledLayerViewController.swift */; };
 		3ED7888E1D26E28500E5F311 /* TilePackagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7888D1D26E28500E5F311 /* TilePackagesListViewController.swift */; };
 		3ED788901D26E2F700E5F311 /* LocalTiledLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */; };
@@ -993,7 +993,7 @@
 				3E8A05E21ECE6BC20032231C /* PlaneStatsViewController.swift in CopyFiles */,
 				3EEB2B9A1EBA808100B52513 /* ListRelatedFeaturesViewController.swift in CopyFiles */,
 				3EEB2B9B1EBA808100B52513 /* RelatedFeaturesListViewController.swift in CopyFiles */,
-				3ED75D081ED4E5A0009B1F75 /* ServiceAreaSettingsVC.swift in CopyFiles */,
+				3ED75D081ED4E5A0009B1F75 /* ServiceAreaSettingsViewController.swift in CopyFiles */,
 				3ED75D051ED39FA7009B1F75 /* FindServiceAreaInteractiveViewController.swift in CopyFiles */,
 				3E8A05BD1ECD08CD0032231C /* SceneLayerURLViewController.swift in CopyFiles */,
 				3E62940D1EAFB69300084105 /* WebTiledLayerViewController.swift in CopyFiles */,
@@ -1486,7 +1486,7 @@
 		3ED5EB761B752A42009F9B75 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		3ED75D011ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindServiceAreaInteractive.storyboard; sourceTree = "<group>"; };
 		3ED75D021ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindServiceAreaInteractiveViewController.swift; sourceTree = "<group>"; };
-		3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAreaSettingsVC.swift; sourceTree = "<group>"; };
+		3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAreaSettingsViewController.swift; sourceTree = "<group>"; };
 		3ED7888B1D26E23C00E5F311 /* LocalTiledLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalTiledLayerViewController.swift; sourceTree = "<group>"; };
 		3ED7888D1D26E28500E5F311 /* TilePackagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilePackagesListViewController.swift; sourceTree = "<group>"; };
 		3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocalTiledLayer.storyboard; sourceTree = "<group>"; };
@@ -3342,7 +3342,7 @@
 			children = (
 				3ED75D011ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard */,
 				3ED75D021ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift */,
-				3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsVC.swift */,
+				3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift */,
 			);
 			path = "Find service area interactive";
 			sourceTree = "<group>";
@@ -5047,7 +5047,7 @@
 				09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				215E23D421024715001DE092 /* SpatialRelationshipsViewController.swift in Sources */,
-				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsVC.swift in Sources */,
+				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift in Sources */,
 				4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */,
 				166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */,
 				C7432D3A2187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift in Sources */,

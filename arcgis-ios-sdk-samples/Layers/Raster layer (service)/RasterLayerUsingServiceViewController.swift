@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-class RasterLayerUsingServiceVC: UIViewController {
+class RasterLayerUsingServiceViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
     
     override func viewDidLoad() {
@@ -44,6 +44,6 @@ class RasterLayerUsingServiceVC: UIViewController {
         map.operationalLayers.add(rasterLayer)
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerUsingServiceVC"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerUsingServiceViewController"]
     }
 }

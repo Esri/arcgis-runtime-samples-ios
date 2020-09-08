@@ -1,16 +1,20 @@
 {
     "category": "Layers",
-    "description": "This sample demonstrates how to create a map image layer from a URL",
+    "description": "Display a layer from an ArcGIS map image layer service.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "map-image-layer-url.png"
     ],
     "keywords": [
-        "ArcGIS map image layer",
-        "map image layer",
+        "display",
+        "image",
+        "layer",
+        "map",
         "AGSArcGISMapImageLayer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/arcgis-map-image-layer-url-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/arcgis-map-image-layer-url-.htm"
+    ],
     "relevant_apis": [
         "AGSArcGISMapImageLayer"
     ],

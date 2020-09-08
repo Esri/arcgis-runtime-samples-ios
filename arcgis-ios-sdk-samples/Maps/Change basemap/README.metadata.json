@@ -1,14 +1,24 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how to change the basemap of a map.",
+    "description": "Change a map's basemap. A basemap is beneath all layers on an `AGSMap` and is used to provide visual reference for the operational layers.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "change-basemap.png"
     ],
     "keywords": [
+        "basemap",
+        "map",
+        "AGSBasemap",
+        "AGSMap",
+        "AGSMapView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/change-basemap.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/change-basemap.htm"
+    ],
     "relevant_apis": [
+        "AGSBasemap",
+        "AGSMap",
+        "AGSMapView"
     ],
     "snippets": [
         "SwitchBasemapViewController.swift"

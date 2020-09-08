@@ -1,19 +1,30 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how to add, remove or reorder operational layers in a map",
+    "description": "Add, remove, and reorder operational layers in a map.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "manage-operational-layers-1.png",
+        "manage-operational-layers-2.png"
     ],
     "keywords": [
+        "add",
+        "delete",
+        "layer",
+        "map",
+        "remove",
+        "AGSLayer",
+        "AGSMap"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/manage-operational-layers.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/manage-operational-layers.htm"
+    ],
     "relevant_apis": [
+        "AGSLayer",
+        "AGSMap"
     ],
     "snippets": [
-        "ManageMapLayersViewController.swift",
-        "MMLLayersViewController.swift"
+        "MMLLayersViewController.swift",
+        "ManageMapLayersViewController.swift"
     ],
     "title": "Manage operational layers"
 }

@@ -1,14 +1,23 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how to rotate a map on your iOS device.",
+    "description": "Rotate a map.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "map-rotation.png"
     ],
     "keywords": [
+        "rotate",
+        "rotation",
+        "viewpoint",
+        "AGSMap",
+        "AGSMapView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/map-rotation.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/map-rotation.htm"
+    ],
     "relevant_apis": [
+        "AGSMap",
+        "AGSMapView"
     ],
     "snippets": [
         "MapRotationViewController.swift"

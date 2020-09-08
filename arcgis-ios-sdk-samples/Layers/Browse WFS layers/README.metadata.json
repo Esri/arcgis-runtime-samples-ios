@@ -3,31 +3,34 @@
     "description": "Browse a WFS service for layers and add them to the map.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "browse-wfs-layers.png"
     ],
     "keywords": [
         "OGC",
         "WFS",
-        "feature",
-        "web service",
-        "layers",
         "browse",
         "catalog",
-        "AGSWGSService",
-        "AGSWGSServiceInfo",
-        "AGSWGSLayerInfo",
-        "AGSWFSFeatureTable",
+        "feature",
+        "layers",
+        "service",
+        "web",
         "AGSFeatureLayer",
-        "AGSWFSFeatureTable.axisOrder"
+        "AGSWFSFeatureTable",
+        "AGSWFSFeatureTable.axisOrder",
+        "AGSWGSLayerInfo",
+        "AGSWGSService",
+        "AGSWGSServiceInfo"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/browse-wfs-layers.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/browse-wfs-layers.htm"
+    ],
     "relevant_apis": [
-        "AGSWGSService",
-        "AGSWGSServiceInfo",
-        "AGSWGSLayerInfo",
-        "AGSWFSFeatureTable",
         "AGSFeatureLayer",
-        "AGSWFSFeatureTable.axisOrder"
+        "AGSWFSFeatureTable",
+        "AGSWFSFeatureTable.axisOrder",
+        "AGSWGSLayerInfo",
+        "AGSWGSService",
+        "AGSWGSServiceInfo"
     ],
     "snippets": [
         "BrowseWFSLayersViewController.swift",

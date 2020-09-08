@@ -1,0 +1,30 @@
+{
+    "category": "Edit data",
+    "description": "Edit feature attributes which are linked to annotations through an expression.",
+    "ignore": false,
+    "images": [
+        "feature-linked-annotation.png"
+    ],
+    "keywords": [
+        "annotation",
+        "attributes",
+        "feature-linked annotation",
+        "features",
+        "fields",
+        "AGSAnnotationLayer",
+        "AGSFeature",
+        "AGSFeatureLayer",
+        "AGSGeodatabase"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSAnnotationLayer",
+        "AGSFeature",
+        "AGSFeatureLayer",
+        "AGSGeodatabase"
+    ],
+    "snippets": [
+        "EditFeaturesWithFeatureLinkedAnnotationViewController.swift"
+    ],
+    "title": "Edit features with feature-linked annotation"
+}

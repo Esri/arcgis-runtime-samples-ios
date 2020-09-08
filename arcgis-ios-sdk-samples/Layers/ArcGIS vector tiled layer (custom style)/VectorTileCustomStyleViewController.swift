@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate {
+class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDelegate {
     @IBOutlet var mapView: AGSMapView!
     
     private var itemIDs = ["1349bfa0ed08485d8a92c442a3850b06",
@@ -31,7 +31,7 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate {
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileCustomStyleVC", "VectorStylesViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileCustomStyleViewController", "VectorStylesViewController"]
         
         //initialize map
         let map = AGSMap()
@@ -82,7 +82,7 @@ class VectorTileCustomStyleVC: UIViewController, VectorStylesVCDelegate {
     }
 }
 
-extension VectorTileCustomStyleVC: UIAdaptivePresentationControllerDelegate {
+extension VectorTileCustomStyleViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }

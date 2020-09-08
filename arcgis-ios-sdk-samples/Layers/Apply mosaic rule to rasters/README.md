@@ -8,7 +8,7 @@ Apply mosaic rule to a mosaic dataset of rasters.
 
 An image service can use a mosaic rule to mosaic multiple rasters on-the-fly. A mosaic rule can specify which rasters are selected, and how the selected rasters are z-ordered. It can also specify how overlapping pixels from different rasters at the same location are resolved.
 
-For example, when using the "By Attribute" mosaic method, the values in an attribute field are used to sort the images, and when using the "Center" method, the image closest to the center of the display is positioned as the top image in the mosaic. Additionally, mosaic operation allows you to define how to resolve the overlapping cells, such as choosing a blending operation.
+For example, when using the "By Attribute" mosaic method, the values in an attribute field are used to sort the images, and when using the "Center" method, the image closest to the center of the display is positioned as the top image in the mosaic. Additionally, the mosaic operator allows you to define how to resolve the overlapping cells, such as choosing a blending operation.
 
 Specifying mosaic rules is useful for viewing overlapping rasters. For example, using the "By Attribute" mosaic method to sort the rasters based on their acquisition date allows the newest image to be on top. Using "mean" mosaic operation makes the overlapping areas contain the mean cell values from all the overlapping rasters.
 
@@ -32,7 +32,7 @@ When the rasters are loaded, choose from a list of preset mosaic rules to apply 
 
 ## About the data
 
-This sample uses a [raster image service](not-decided-yet) hosted on *ArcGIS Online* that shows aerial images of Amberg, Germany.
+This sample uses a [raster image service](https://sampleserver7.arcgisonline.com/arcgis/rest/services/amberg_germany/ImageServer) hosted on *ArcGIS Online* that shows aerial images of Amberg, Germany.
 
 ## Additional information
 

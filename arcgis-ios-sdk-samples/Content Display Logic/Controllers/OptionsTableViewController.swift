@@ -28,19 +28,33 @@ class OptionsTableViewController: UITableViewController {
     }
     
     private let options: [Option]
-    private var selectedIndex: Int
+    /// The index of the currently selected option or `nil` if no option is
+    /// selected.
+    private var selectedIndex: Int?
     private let onChange: (Int) -> Void
     
-    convenience init(labels: [String], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
-        let options = labels.map { Option(label: $0) }
-        self.init(options: options, selectedIndex: selectedIndex, onChange: onChange)
-    }
-    
-    init(options: [Option], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
+    /// Creates a new instance with the options, selected index, and selection
+    /// change handler.
+    /// - Parameters:
+    ///   - options: The options displayed by the view controller.
+    ///   - selectedIndex: The index of the currently selected option or `nil`.
+    ///   - onChange: A closure called when the selected option has changed.
+    init(options: [Option], selectedIndex: Int?, onChange: @escaping (Int) -> Void) {
         self.options = options
         self.selectedIndex = selectedIndex
         self.onChange = onChange
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    /// Creates a new instance with the given labels, selected index, and
+    /// selection change handler.
+    /// - Parameters:
+    ///   - labels: An array of labels for the options.
+    ///   - selectedIndex: The index of the currently selected option or `nil`.
+    ///   - onChange: A closure called when the selected option has changed.
+    convenience init(labels: [String], selectedIndex: Int?, onChange: @escaping (Int) -> Void) {
+        let options = labels.map { Option(label: $0) }
+        self.init(options: options, selectedIndex: selectedIndex, onChange: onChange)
     }
     
     @available(*, unavailable)
@@ -71,10 +85,18 @@ class OptionsTableViewController: UITableViewController {
     // UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPathOfPreviouslySelectedRow = IndexPath(row: selectedIndex, section: indexPath.section)
-        let indexPathsToReload = [indexPathOfPreviouslySelectedRow, indexPath]
-        selectedIndex = indexPath.row
-        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
-        onChange(indexPath.row)
+        let indexOfSelectedRow = indexPath.row
+        let indexOfPreviouslySelectedRow = selectedIndex
+        if indexOfSelectedRow != selectedIndex {
+            selectedIndex = indexOfSelectedRow
+            var indexPathsToReload = [indexPath]
+            if let row = indexOfPreviouslySelectedRow {
+                indexPathsToReload.append(IndexPath(row: row, section: indexPath.section))
+            }
+            tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+            onChange(indexPath.row)
+        } else {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 }

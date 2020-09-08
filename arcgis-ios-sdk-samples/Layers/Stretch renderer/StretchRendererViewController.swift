@@ -40,9 +40,9 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVi
         mapView.map = map
     }
     
-    // MARK: - StretchRendererSettingsVCDelegate
+    // MARK: - StretchRendererSettingsViewControllerDelegate
     
-    func stretchRendererSettingsViewController(_ stretchRendererSettingsVC: StretchRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters) {
+    func stretchRendererSettingsViewController(_ stretchRendererSettingsViewController: StretchRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters) {
         let renderer = AGSStretchRenderer(stretchParameters: parameters, gammas: [], estimateStatistics: true, colorRamp: AGSColorRamp(type: .none, size: 1))
         rasterLayer?.renderer = renderer
     }

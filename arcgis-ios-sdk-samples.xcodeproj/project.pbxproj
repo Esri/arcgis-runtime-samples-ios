@@ -51,9 +51,9 @@
 		00E5B7D5245B9C8D00B11973 /* PerformValveIsolationTraceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
-		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
+		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */; };
 		09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */; };
-		09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */; };
+		09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */; };
 		09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
 		09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
 		09607F851FDB61DC00FA43B6 /* TimeBasedQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */; };
@@ -251,10 +251,10 @@
 		3E71621F1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */; };
 		3E7162351BA1F529008DE398 /* GraphicsWithSymbols.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */; };
 		3E7162361BA21932008DE398 /* GraphicsWithSymbolsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */; };
-		3E81C1B91D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81C1B81D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift */; };
+		3E81C1B91D8A0EF700470AA4 /* VectorTileCustomStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81C1B81D8A0EF700470AA4 /* VectorTileCustomStyleViewController.swift */; };
 		3E81C1BB1D8A17B600470AA4 /* VectorStylesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81C1BA1D8A17B600470AA4 /* VectorStylesViewController.swift */; };
 		3E81C1BD1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E81C1BC1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard */; };
-		3E81C1BE1D8A19E400470AA4 /* VectorTileCustomStyleVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E81C1B81D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift */; };
+		3E81C1BE1D8A19E400470AA4 /* VectorTileCustomStyleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E81C1B81D8A0EF700470AA4 /* VectorTileCustomStyleViewController.swift */; };
 		3E81C1BF1D8A19E400470AA4 /* VectorStylesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E81C1BA1D8A17B600470AA4 /* VectorStylesViewController.swift */; };
 		3E8526371B90D92700690EBD /* Bookmarks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8526331B90D92700690EBD /* Bookmarks.storyboard */; };
 		3E8526381B90D92700690EBD /* BookmarksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8526341B90D92700690EBD /* BookmarksListViewController.swift */; };
@@ -478,8 +478,8 @@
 		3ED75D031ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED75D011ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard */; };
 		3ED75D041ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED75D021ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift */; };
 		3ED75D051ED39FA7009B1F75 /* FindServiceAreaInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED75D021ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift */; };
-		3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsVC.swift */; };
-		3ED75D081ED4E5A0009B1F75 /* ServiceAreaSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsVC.swift */; };
+		3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift */; };
+		3ED75D081ED4E5A0009B1F75 /* ServiceAreaSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift */; };
 		3ED7888C1D26E23C00E5F311 /* LocalTiledLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7888B1D26E23C00E5F311 /* LocalTiledLayerViewController.swift */; };
 		3ED7888E1D26E28500E5F311 /* TilePackagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7888D1D26E28500E5F311 /* TilePackagesListViewController.swift */; };
 		3ED788901D26E2F700E5F311 /* LocalTiledLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */; };
@@ -967,7 +967,7 @@
 				2182C9841FDA0272003E3A0F /* StatisticalQueryViewController.swift in CopyFiles */,
 				2196CAFB1FD869D200512693 /* RasterFunctionServiceViewController.swift in CopyFiles */,
 				D90407961FD8651600BFE07B /* RasterLayerGPKGViewController.swift in CopyFiles */,
-				09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceVC.swift in CopyFiles */,
+				09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceViewController.swift in CopyFiles */,
 				D9ED2DAA1FD75A3D0043BFE1 /* FeatureLayerGPKGViewController.swift in CopyFiles */,
 				1259FB941FD297560037105E /* WMSLayerUsingURLViewController.swift in CopyFiles */,
 				127E11D91FD0C457002CBD12 /* WMTSLayerViewController.swift in CopyFiles */,
@@ -993,7 +993,7 @@
 				3E8A05E21ECE6BC20032231C /* PlaneStatsViewController.swift in CopyFiles */,
 				3EEB2B9A1EBA808100B52513 /* ListRelatedFeaturesViewController.swift in CopyFiles */,
 				3EEB2B9B1EBA808100B52513 /* RelatedFeaturesListViewController.swift in CopyFiles */,
-				3ED75D081ED4E5A0009B1F75 /* ServiceAreaSettingsVC.swift in CopyFiles */,
+				3ED75D081ED4E5A0009B1F75 /* ServiceAreaSettingsViewController.swift in CopyFiles */,
 				3ED75D051ED39FA7009B1F75 /* FindServiceAreaInteractiveViewController.swift in CopyFiles */,
 				3E8A05BD1ECD08CD0032231C /* SceneLayerURLViewController.swift in CopyFiles */,
 				3E62940D1EAFB69300084105 /* WebTiledLayerViewController.swift in CopyFiles */,
@@ -1022,7 +1022,7 @@
 				3EABC7D31DB197BF00C161C6 /* StretchRendererViewController.swift in CopyFiles */,
 				3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsVC.swift in CopyFiles */,
 				3EABC7D61DB197BF00C161C6 /* StretchRendererInputCell.swift in CopyFiles */,
-				3E81C1BE1D8A19E400470AA4 /* VectorTileCustomStyleVC.swift in CopyFiles */,
+				3E81C1BE1D8A19E400470AA4 /* VectorTileCustomStyleViewController.swift in CopyFiles */,
 				3E81C1BF1D8A19E400470AA4 /* VectorStylesViewController.swift in CopyFiles */,
 				3EAF094A1D710BAB00F8538F /* ChangeMapViewBackgroundViewController.swift in CopyFiles */,
 				3E8D54FD1D53FCD500E628D9 /* ScenePropertiesExpressionsViewController.swift in CopyFiles */,
@@ -1189,7 +1189,7 @@
 		00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PerformValveIsolationTrace.storyboard; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
-		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceVC.swift; sourceTree = "<group>"; };
+		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceViewController.swift; sourceTree = "<group>"; };
 		09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterLayerUsingService.storyboard; sourceTree = "<group>"; };
 		09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBasedQueryVC.swift; sourceTree = "<group>"; };
 		09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeBasedQuery.storyboard; sourceTree = "<group>"; };
@@ -1329,7 +1329,7 @@
 		3E6C771B1CCFC53B00E89873 /* IdentifyLayers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IdentifyLayers.storyboard; sourceTree = "<group>"; };
 		3E71621E1BA0D7ED008DE398 /* GraphicsWithSymbolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsWithSymbolsViewController.swift; sourceTree = "<group>"; };
 		3E7162341BA1F529008DE398 /* GraphicsWithSymbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GraphicsWithSymbols.storyboard; sourceTree = "<group>"; };
-		3E81C1B81D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorTileCustomStyleVC.swift; sourceTree = "<group>"; };
+		3E81C1B81D8A0EF700470AA4 /* VectorTileCustomStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorTileCustomStyleViewController.swift; sourceTree = "<group>"; };
 		3E81C1BA1D8A17B600470AA4 /* VectorStylesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorStylesViewController.swift; sourceTree = "<group>"; };
 		3E81C1BC1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VectorTileCustomStyle.storyboard; sourceTree = "<group>"; };
 		3E8526331B90D92700690EBD /* Bookmarks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Bookmarks.storyboard; sourceTree = "<group>"; };
@@ -1486,7 +1486,7 @@
 		3ED5EB761B752A42009F9B75 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		3ED75D011ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindServiceAreaInteractive.storyboard; sourceTree = "<group>"; };
 		3ED75D021ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindServiceAreaInteractiveViewController.swift; sourceTree = "<group>"; };
-		3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAreaSettingsVC.swift; sourceTree = "<group>"; };
+		3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAreaSettingsViewController.swift; sourceTree = "<group>"; };
 		3ED7888B1D26E23C00E5F311 /* LocalTiledLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalTiledLayerViewController.swift; sourceTree = "<group>"; };
 		3ED7888D1D26E28500E5F311 /* TilePackagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilePackagesListViewController.swift; sourceTree = "<group>"; };
 		3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocalTiledLayer.storyboard; sourceTree = "<group>"; };
@@ -1904,7 +1904,7 @@
 		096A55DC1FD8677800D2E91B /* Raster layer (service) */ = {
 			isa = PBXGroup;
 			children = (
-				09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift */,
+				09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */,
 				09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */,
 			);
 			path = "Raster layer (service)";
@@ -2569,7 +2569,7 @@
 			isa = PBXGroup;
 			children = (
 				3E81C1BC1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard */,
-				3E81C1B81D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift */,
+				3E81C1B81D8A0EF700470AA4 /* VectorTileCustomStyleViewController.swift */,
 				3E81C1BA1D8A17B600470AA4 /* VectorStylesViewController.swift */,
 			);
 			path = "ArcGIS vector tiled layer (custom style)";
@@ -3342,7 +3342,7 @@
 			children = (
 				3ED75D011ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard */,
 				3ED75D021ED39EDF009B1F75 /* FindServiceAreaInteractiveViewController.swift */,
-				3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsVC.swift */,
+				3ED75D061ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift */,
 			);
 			path = "Find service area interactive";
 			sourceTree = "<group>";
@@ -5047,7 +5047,7 @@
 				09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				215E23D421024715001DE092 /* SpatialRelationshipsViewController.swift in Sources */,
-				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsVC.swift in Sources */,
+				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift in Sources */,
 				4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */,
 				166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */,
 				C7432D3A2187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift in Sources */,
@@ -5083,7 +5083,7 @@
 				1218C845225C06AF0027F3E2 /* CameraControllerTableViewController.swift in Sources */,
 				4C783F3E2252D65A00609B9C /* OpenMobileSceneViewController.swift in Sources */,
 				2182C9831FDA01A0003E3A0F /* StatisticalQueryViewController.swift in Sources */,
-				3E81C1B91D8A0EF700470AA4 /* VectorTileCustomStyleVC.swift in Sources */,
+				3E81C1B91D8A0EF700470AA4 /* VectorTileCustomStyleViewController.swift in Sources */,
 				127D29F6200EC5FC00DD6CDC /* ViewshedSettingsViewController.swift in Sources */,
 				3EABC7CB1DB1947500C161C6 /* BlendRendererViewController.swift in Sources */,
 				3E0B58511E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift in Sources */,
@@ -5161,7 +5161,7 @@
 				F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */,
 				3E4BF44A1C5AEF8800D85919 /* ReverseGeocodeViewController.swift in Sources */,
 				21E9CDED1EF9C5EA00BD4D7D /* DisplayGridViewController.swift in Sources */,
-				09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceVC.swift in Sources */,
+				09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift in Sources */,
 				C74ECB4F21C17E9100129D6D /* GeneralizeSettingsViewController.swift in Sources */,
 				4CCA30D122399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift in Sources */,
 				21E914411FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift in Sources */,

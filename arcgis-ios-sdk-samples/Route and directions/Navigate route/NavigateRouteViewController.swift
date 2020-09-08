@@ -169,12 +169,7 @@ class NavigateRouteViewController: UIViewController {
         
         // Set location display.
         mapView.locationDisplay.dataSource = routeTrackerLocationDataSource
-        mapView.locationDisplay.autoPanMode = .navigation
-        // If the user navigates the map view away from the location display, activate the recenter button.
-        mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] _ in
-            self?.recenterBarButtonItem.isEnabled = true
-            self?.mapView.locationDisplay.autoPanModeChangedHandler = nil
-        }
+        recenter()
         
         // Update graphics and viewpoint.
         let firstRouteGeometry = firstRoute.routeGeometry!
@@ -214,7 +209,6 @@ class NavigateRouteViewController: UIViewController {
         // Reset the navigation.
         setNavigation(with: routeResult)
         // Reset buttons state.
-        recenterBarButtonItem.isEnabled = false
         resetBarButtonItem.isEnabled = false
         navigateBarButtonItem.isEnabled = true
     }
@@ -224,7 +218,9 @@ class NavigateRouteViewController: UIViewController {
         mapView.locationDisplay.autoPanMode = .navigation
         recenterBarButtonItem.isEnabled = false
         mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] _ in
-            self?.recenterBarButtonItem.isEnabled = true
+            DispatchQueue.main.async { [weak self] in
+                self?.recenterBarButtonItem.isEnabled = true
+            }
             self?.mapView.locationDisplay.autoPanModeChangedHandler = nil
         }
     }

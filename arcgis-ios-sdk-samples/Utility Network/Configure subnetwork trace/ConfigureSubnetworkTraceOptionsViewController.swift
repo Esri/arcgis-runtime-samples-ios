@@ -142,8 +142,8 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     // Transition to the attribute options view controller.
     func showAttributePicker() {
-        let selectedIndex = possibleAttributes.firstIndex { $0 == selectedAttribute } ?? nil
-        let optionsViewController = OptionsTableViewController(labels: possibleAttributes.map { $0.name }, selectedIndex: selectedIndex!) { newIndex in
+        let selectedIndex = possibleAttributes.firstIndex { $0 == selectedAttribute }
+        let optionsViewController = OptionsTableViewController(labels: possibleAttributes.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
             self.selectedAttribute = self.possibleAttributes[newIndex]
             self.navigationController?.popViewController(animated: true)
         }
@@ -153,10 +153,10 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     // Transition to the comparison options view controller.
     func showComparisonPicker() {
-        let selectedIndex = selectedComparison?.rawValue ?? nil
+        let selectedIndex = selectedComparison?.rawValue
         // An array of `AGSUtilityAttributeComparisonOperator`s.
         let attributeComparisonOperators = AGSUtilityAttributeComparisonOperator.allCases
-        let optionsViewController = OptionsTableViewController(labels: attributeComparisonOperators.map { $0.title }, selectedIndex: selectedIndex!) { newIndex in
+        let optionsViewController = OptionsTableViewController(labels: attributeComparisonOperators.map { $0.title }, selectedIndex: selectedIndex) { newIndex in
             self.selectedComparison = attributeComparisonOperators[newIndex]
             self.navigationController?.popViewController(animated: true)
         }
@@ -166,9 +166,14 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     // Transition to the value options view controller.
     func showValuePicker(values: [AGSCodedValue]) {
-        let selectedIndex: Int? = nil
+        let selectedIndex: Int?
+        if let selectedValue = selectedValue as? AGSCodedValue {
+            selectedIndex = values.firstIndex { $0 == selectedValue }
+        } else {
+            selectedIndex = nil
+        }
         let valueLabels = values.map { $0.name }
-        let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: selectedIndex!) { newIndex in
+        let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: selectedIndex) { newIndex in
             self.selectedValue = values[newIndex]
             self.valueCell.detailTextLabel?.text = valueLabels[newIndex]
             self.navigationController?.popViewController(animated: true)

@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-class TimeBasedQueryVC: UIViewController {
+class TimeBasedQueryViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
     private var map: AGSMap!
@@ -49,7 +49,7 @@ class TimeBasedQueryVC: UIViewController {
         self.populateFeaturesWithQuery()
         
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TimeBasedQueryVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TimeBasedQueryViewController"]
     }
     
     func populateFeaturesWithQuery() {

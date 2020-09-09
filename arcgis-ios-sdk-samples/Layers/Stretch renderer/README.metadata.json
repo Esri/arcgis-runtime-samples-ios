@@ -43,7 +43,7 @@
     ],
     "snippets": [
         "StretchRendererInputCell.swift",
-        "StretchRendererSettingsVC.swift",
+        "StretchRendererSettingsViewController.swift",
         "StretchRendererViewController.swift"
     ],
     "title": "Stretch renderer"

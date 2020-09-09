@@ -54,8 +54,8 @@
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */; };
 		09587FF91FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */; };
 		09587FFA1FD8BB0900FCF9A5 /* RasterLayerUsingServiceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */; };
-		09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
-		09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */; };
+		09607F821FDB616100FA43B6 /* TimeBasedQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryViewController.swift */; };
+		09607F831FDB617F00FA43B6 /* TimeBasedQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09607F811FDB616100FA43B6 /* TimeBasedQueryViewController.swift */; };
 		09607F851FDB61DC00FA43B6 /* TimeBasedQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */; };
 		097426BF22456EE00067E9D1 /* DisplayWFSViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		098049A82253FC3F009C685D /* BrowseWFSLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098049A32253FC3F009C685D /* BrowseWFSLayersViewController.swift */; };
@@ -960,7 +960,7 @@
 				10859BAF1FE0AC8100F6E552 /* FeatureLayerExtrusionViewController.swift in CopyFiles */,
 				D9316A651FDB4F850075AD92 /* ReadGeopackageViewController.swift in CopyFiles */,
 				4CEA34FE20C5EC680087F93A /* StyleWebMapServiceLayerViewController.swift in CopyFiles */,
-				09607F831FDB617F00FA43B6 /* TimeBasedQueryVC.swift in CopyFiles */,
+				09607F831FDB617F00FA43B6 /* TimeBasedQueryViewController.swift in CopyFiles */,
 				D97B7E6F1FDA0FC200E1239D /* SymbolizeShapefileViewController.swift in CopyFiles */,
 				2182C9841FDA0272003E3A0F /* StatisticalQueryViewController.swift in CopyFiles */,
 				2196CAFB1FD869D200512693 /* RasterFunctionServiceViewController.swift in CopyFiles */,
@@ -1188,7 +1188,7 @@
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceViewController.swift; sourceTree = "<group>"; };
 		09587FF81FD8B63100FCF9A5 /* RasterLayerUsingService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterLayerUsingService.storyboard; sourceTree = "<group>"; };
-		09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBasedQueryVC.swift; sourceTree = "<group>"; };
+		09607F811FDB616100FA43B6 /* TimeBasedQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBasedQueryViewController.swift; sourceTree = "<group>"; };
 		09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeBasedQuery.storyboard; sourceTree = "<group>"; };
 		098049A32253FC3F009C685D /* BrowseWFSLayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseWFSLayersViewController.swift; sourceTree = "<group>"; };
 		098049A42253FC3F009C685D /* WFSLayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WFSLayersTableViewController.swift; sourceTree = "<group>"; };
@@ -1892,7 +1892,7 @@
 			isa = PBXGroup;
 			children = (
 				09607F841FDB61DC00FA43B6 /* TimeBasedQuery.storyboard */,
-				09607F811FDB616100FA43B6 /* TimeBasedQueryVC.swift */,
+				09607F811FDB616100FA43B6 /* TimeBasedQueryViewController.swift */,
 			);
 			path = "Time based query";
 			sourceTree = "<group>";
@@ -5039,7 +5039,7 @@
 				3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */,
 				4C478E5022402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift in Sources */,
 				3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */,
-				09607F821FDB616100FA43B6 /* TimeBasedQueryVC.swift in Sources */,
+				09607F821FDB616100FA43B6 /* TimeBasedQueryViewController.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
 				215E23D421024715001DE092 /* SpatialRelationshipsViewController.swift in Sources */,
 				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift in Sources */,

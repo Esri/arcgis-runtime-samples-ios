@@ -98,13 +98,11 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     /// Convert the values to matching data types.
     ///
+    /// - Note: The input value can either be an `AGSCodedValue` populated from the left hand side
+    ///         attribute's domain, or a numeric value entered by the user.
     /// - Parameters:
     ///   - value: The right hand side value used in the conditional expression.
     ///   - dataType: An `AGSUtilityNetworkAttributeDataType` enum case.
-    ///
-    /// - Note: The input value can either be an `AGSCodedValue` populated from the left hand side
-    ///         attribute's domain, or a numeric value entered by the user.
-    ///
     /// - Returns: Converted value.
     func convertToDataType(value: Any, dataType: AGSUtilityNetworkAttributeDataType) -> Any {
         switch dataType {
@@ -262,10 +260,10 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     }
 }
 
-/// An extension of `AGSUtilityAttributeComparisonOperator` that returns a human readable description.
 private extension AGSUtilityAttributeComparisonOperator {
     static let allCases: [AGSUtilityAttributeComparisonOperator] = [.equal, .notEqual, .greaterThan, .greaterThanEqual, .lessThan, .lessThanEqual, .includesTheValues, .doesNotIncludeTheValues, .includesAny, .doesNotIncludeAny]
     
+    /// An extension of `AGSUtilityAttributeComparisonOperator` that returns a human readable description.
     var title: String {
         switch self {
         case .equal: return "Equal"

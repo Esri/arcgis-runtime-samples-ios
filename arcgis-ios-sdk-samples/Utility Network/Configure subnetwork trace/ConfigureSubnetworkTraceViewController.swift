@@ -364,10 +364,10 @@ extension ConfigureSubnetworkTraceViewController: UITableViewDelegate, UITableVi
     }
 }
 
-/// An extension of `AGSUtilityCategoryComparisonOperator` that returns a human readable description.
-/// - Note: You may also create a `AGSUtilityCategoryComparison` with
-///         `AGSUtilityNetworkDefinition.categories` and `AGSUtilityCategoryComparisonOperator`.
 private extension AGSUtilityCategoryComparisonOperator {
+    /// An extension of `AGSUtilityCategoryComparisonOperator` that returns a human readable description.
+    /// - Note: You may also create a `AGSUtilityCategoryComparison` with
+    ///         `AGSUtilityNetworkDefinition.categories` and `AGSUtilityCategoryComparisonOperator`.
     var title: String {
         switch self {
         case .exists: return "Exists"
@@ -377,8 +377,8 @@ private extension AGSUtilityCategoryComparisonOperator {
     }
 }
 
-/// An extension of `AGSUtilityAttributeComparisonOperator` that returns a human readable description.
 private extension AGSUtilityAttributeComparisonOperator {
+    /// An extension of `AGSUtilityAttributeComparisonOperator` that returns a human readable description.
     var title: String {
         switch self {
         case .equal: return "Equal"

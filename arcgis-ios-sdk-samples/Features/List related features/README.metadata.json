@@ -29,8 +29,8 @@
         "AGSRelatedFeatureQueryResult"
     ],
     "snippets": [
-        "ListRelatedFeaturesVC.swift",
-        "RelatedFeaturesListVC.swift"
+        "ListRelatedFeaturesViewController.swift",
+        "RelatedFeaturesListViewController.swift"
     ],
     "title": "List related features"
 }

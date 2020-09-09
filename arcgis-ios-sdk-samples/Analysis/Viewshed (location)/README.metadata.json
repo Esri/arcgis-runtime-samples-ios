@@ -29,7 +29,7 @@
     ],
     "snippets": [
         "ViewshedLocationViewController.swift",
-        "ViewshedSettingsVC.swift"
+        "ViewshedSettingsViewController.swift"
     ],
     "title": "Viewshed (location)"
 }

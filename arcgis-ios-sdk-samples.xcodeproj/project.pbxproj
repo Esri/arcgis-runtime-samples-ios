@@ -294,7 +294,7 @@
 		3EABC7941DB1772000C161C6 /* RGBRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */; };
 		3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */; };
 		3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */; };
-		3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */; };
+		3EABC7A21DB1793000C161C6 /* StretchRendererSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsViewController.swift */; };
 		3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */; };
 		3EABC7AE1DB17B2C00C161C6 /* Shasta.tfw in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */; settings = {ASSET_TAGS = (ShastaRaster, ); }; };
 		3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */; settings = {ASSET_TAGS = (ShastaRaster, ); }; };
@@ -316,7 +316,7 @@
 		3EABC7CE1DB197BF00C161C6 /* RGBRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */; };
 		3EABC7CF1DB197BF00C161C6 /* RGBRendererSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC78C1DB1772000C161C6 /* RGBRendererSettingsViewController.swift */; };
 		3EABC7D31DB197BF00C161C6 /* StretchRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */; };
-		3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsVC.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */; };
+		3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79D1DB1793000C161C6 /* StretchRendererSettingsViewController.swift */; };
 		3EABC7D61DB197BF00C161C6 /* StretchRendererInputCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */; };
 		3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAF09441D7108DC00F8538F /* ChangeMapViewBackgroundViewController.swift */; };
 		3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAF09461D71093D00F8538F /* GridSettingsViewController.swift */; };
@@ -1017,7 +1017,7 @@
 				3EABC7CE1DB197BF00C161C6 /* RGBRendererViewController.swift in CopyFiles */,
 				3EABC7CF1DB197BF00C161C6 /* RGBRendererSettingsViewController.swift in CopyFiles */,
 				3EABC7D31DB197BF00C161C6 /* StretchRendererViewController.swift in CopyFiles */,
-				3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsVC.swift in CopyFiles */,
+				3EABC7D41DB197BF00C161C6 /* StretchRendererSettingsViewController.swift in CopyFiles */,
 				3EABC7D61DB197BF00C161C6 /* StretchRendererInputCell.swift in CopyFiles */,
 				3E81C1BE1D8A19E400470AA4 /* VectorTileCustomStyleViewController.swift in CopyFiles */,
 				3E81C1BF1D8A19E400470AA4 /* VectorStylesViewController.swift in CopyFiles */,
@@ -1358,7 +1358,7 @@
 		3EABC78E1DB1772000C161C6 /* RGBRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBRendererViewController.swift; sourceTree = "<group>"; };
 		3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StretchRenderer.storyboard; sourceTree = "<group>"; };
 		3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererInputCell.swift; sourceTree = "<group>"; };
-		3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererSettingsVC.swift; sourceTree = "<group>"; };
+		3EABC79D1DB1793000C161C6 /* StretchRendererSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererSettingsViewController.swift; sourceTree = "<group>"; };
 		3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchRendererViewController.swift; sourceTree = "<group>"; };
 		3EABC7AA1DB17B2C00C161C6 /* Shasta.tfw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shasta.tfw; sourceTree = "<group>"; };
 		3EABC7AB1DB17B2C00C161C6 /* Shasta.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Shasta.tif; sourceTree = "<group>"; };
@@ -2702,7 +2702,7 @@
 			children = (
 				3EABC79B1DB1793000C161C6 /* StretchRenderer.storyboard */,
 				3EABC79F1DB1793000C161C6 /* StretchRendererViewController.swift */,
-				3EABC79D1DB1793000C161C6 /* StretchRendererSettingsVC.swift */,
+				3EABC79D1DB1793000C161C6 /* StretchRendererSettingsViewController.swift */,
 				3EABC79C1DB1793000C161C6 /* StretchRendererInputCell.swift */,
 			);
 			path = "Stretch renderer";
@@ -4960,7 +4960,7 @@
 				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
 				3E8A05CF1ECE68E80032231C /* PlaneStatsViewController.swift in Sources */,
 				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift in Sources */,
-				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsVC.swift in Sources */,
+				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsViewController.swift in Sources */,
 				F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */,
 				3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */,
 				C76F75722182729700938D8D /* ColorPickerViewController.swift in Sources */,

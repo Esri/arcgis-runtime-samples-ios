@@ -142,8 +142,8 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     // Transition to the attribute options view controller.
     func showAttributePicker() {
-        let selectedIndex = possibleAttributes.firstIndex { $0 == selectedAttribute } ?? -1
-        let optionsViewController = OptionsTableViewController(labels: possibleAttributes.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
+        let selectedIndex = possibleAttributes.firstIndex { $0 == selectedAttribute } ?? nil
+        let optionsViewController = OptionsTableViewController(labels: possibleAttributes.map { $0.name }, selectedIndex: selectedIndex!) { newIndex in
             self.selectedAttribute = self.possibleAttributes[newIndex]
             self.navigationController?.popViewController(animated: true)
         }
@@ -153,10 +153,10 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     // Transition to the comparison options view controller.
     func showComparisonPicker() {
-        let selectedIndex = selectedComparison?.rawValue ?? -1
+        let selectedIndex = selectedComparison?.rawValue ?? nil
         // An array of `AGSUtilityAttributeComparisonOperator`s.
         let attributeComparisonOperators = AGSUtilityAttributeComparisonOperator.allCases
-        let optionsViewController = OptionsTableViewController(labels: attributeComparisonOperators.map { $0.title }, selectedIndex: selectedIndex) { newIndex in
+        let optionsViewController = OptionsTableViewController(labels: attributeComparisonOperators.map { $0.title }, selectedIndex: selectedIndex!) { newIndex in
             self.selectedComparison = attributeComparisonOperators[newIndex]
             self.navigationController?.popViewController(animated: true)
         }
@@ -166,9 +166,9 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     // Transition to the value options view controller.
     func showValuePicker(values: [AGSCodedValue]) {
-        let selectedIndex = -1
+        let selectedIndex: Int? = nil
         let valueLabels = values.map { $0.name }
-        let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: selectedIndex) { newIndex in
+        let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: selectedIndex!) { newIndex in
             self.selectedValue = values[newIndex]
             self.valueCell.detailTextLabel?.text = valueLabels[newIndex]
             self.navigationController?.popViewController(animated: true)
@@ -259,20 +259,20 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
 
 /// An extension of `AGSUtilityAttributeComparisonOperator` that returns a human readable description.
 private extension AGSUtilityAttributeComparisonOperator {
-    static let allCases = (Self.equal.rawValue...Self.doesNotIncludeAny.rawValue).map { AGSUtilityAttributeComparisonOperator(rawValue: $0)! }
+    static let allCases: [AGSUtilityAttributeComparisonOperator] = [.equal, .notEqual, .greaterThan, .greaterThanEqual, .lessThan, .lessThanEqual, .includesTheValues, .doesNotIncludeTheValues, .includesAny, .doesNotIncludeAny]
     
     var title: String {
         switch self {
         case .equal: return "Equal"
-        case .notEqual: return "NotEqual"
-        case .greaterThan: return "GreaterThan"
-        case .greaterThanEqual: return "GreaterThanEqual"
-        case .lessThan: return "LessThan"
-        case .lessThanEqual: return "LessThanEqual"
-        case .includesTheValues: return "IncludesTheValues"
-        case .doesNotIncludeTheValues: return "DoesNotIncludeTheValues"
-        case .includesAny: return "IncludesAny"
-        case .doesNotIncludeAny: return "DoesNotIncludeAny"
+        case .notEqual: return "Not Equal"
+        case .greaterThan: return "Greater Than"
+        case .greaterThanEqual: return "Greater Than Equal"
+        case .lessThan: return "Less Than"
+        case .lessThanEqual: return "Less Than Equal"
+        case .includesTheValues: return "Includes The Values"
+        case .doesNotIncludeTheValues: return "Does Not Include The Values"
+        case .includesAny: return "Includes Any"
+        case .doesNotIncludeAny: return "Does Not Include Any"
         @unknown default: return "Unknown"
         }
     }

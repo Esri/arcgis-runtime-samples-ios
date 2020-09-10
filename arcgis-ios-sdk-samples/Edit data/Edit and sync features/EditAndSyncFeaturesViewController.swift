@@ -131,7 +131,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 geodatabaseFeatureTable.load { [weak self, unowned geodatabaseFeatureTable] (error: Error?) in
                     if let error = error {
                         self?.presentAlert(error: error)
-                    } else {
+                    } else if geodatabaseFeatureTable.geometryType == .point {
                         // Create a new feature layer from the table and add it to the map.
                         let featureLayer = AGSFeatureLayer(featureTable: geodatabaseFeatureTable)
                         self?.mapView.map?.operationalLayers.add(featureLayer)
@@ -154,7 +154,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
     func generateGeodatabase() {
         // Hide the unnecessary items.
         barButtonItem.isEnabled = false
-        extentView.isHidden = true
         
         // Get the area outlined by the extent view.
         areaOfInterest = self.extentViewFrameToEnvelope()

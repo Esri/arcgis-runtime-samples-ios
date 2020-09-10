@@ -23,15 +23,14 @@ class SpatialOperationsViewController: UIViewController {
         didSet {
             // Initialize map with basemap.
             mapView.map = AGSMap(basemap: .topographic())
-            // Add graphics overlay to map view.
-            mapView.graphicsOverlays.add(graphicsOverlay)
+            // Add the graphics overlay with two polygon graphics and the result graphic to map view.
+            mapView.graphicsOverlays.add(makeGraphicsOverlay())
             // Set initial viewpoint.
             let center = AGSPoint(x: -13453, y: 6710127, spatialReference: .webMercator())
             mapView.setViewpointCenter(center, scale: 30000, completion: nil)
         }
     }
-    /// An overlay to display polygon graphics.
-    private let graphicsOverlay = AGSGraphicsOverlay()
+    
     /// The resulting graphic for the spatial operation.
     private var resultGraphic: AGSGraphic!
     
@@ -89,7 +88,7 @@ class SpatialOperationsViewController: UIViewController {
     
     // MARK: Methods
     
-    func addGraphics() {
+    func makeGraphicsOverlay() -> AGSGraphicsOverlay {
         // A black line symbol for borders of the graphics.
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 1)
         // The blue fill symbol of polygon 1.
@@ -106,8 +105,12 @@ class SpatialOperationsViewController: UIViewController {
         let graphic = AGSGraphic(geometry: nil, symbol: symbol)
         resultGraphic = graphic
         
+        // An overlay to display polygon graphics.
+        let graphicsOverlay = AGSGraphicsOverlay()
+        
         // Add graphics to graphics overlay.
         graphicsOverlay.graphics.addObjects(from: [polygon1Graphic, polygon2Graphic, graphic])
+        return graphicsOverlay
     }
     
     private func performOperation(_ operation: SpatialOperation) {
@@ -157,9 +160,6 @@ class SpatialOperationsViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["SpatialOperationsViewController"]
-        
-        // Add two polygon graphics and the result graphic to the graphics overlay.
-        addGraphics()
     }
 }
 

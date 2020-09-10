@@ -132,16 +132,14 @@ class SpatialOperationsViewController: UIViewController {
     }
     
     @IBAction func chooseOperationBarButtonTapped(_ sender: UIBarButtonItem) {
-        let selectedIndex = SpatialOperation.allCases.firstIndex(where: { $0 == selectedOperation })
+        let selectedIndex = SpatialOperation.allCases.firstIndex(of: selectedOperation)
         
         let controller = OptionsTableViewController(labels: SpatialOperation.allCases.map { $0.label }, selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
             let newOperation = SpatialOperation.allCases[newIndex]
-            if self.selectedOperation != newOperation {
-                self.selectedOperation = newOperation
-                // Perform the spatial operation.
-                self.performOperation(self.selectedOperation)
-            }
+            self.selectedOperation = newOperation
+            // Perform the spatial operation.
+            self.performOperation(self.selectedOperation)
         }
         
         // Configure the options controller as a popover.

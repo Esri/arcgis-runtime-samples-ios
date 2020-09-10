@@ -142,6 +142,9 @@ class EditAndSyncFeaturesViewController: UIViewController {
             self.barButtonItem.isEnabled = false
             self.instructionsLabel.text = "Tap on a feature"
             self.mapView.touchDelegate = self
+            self.mapView.interactionOptions.isPanEnabled = false
+            self.mapView.interactionOptions.isZoomEnabled = false
+            self.mapView.interactionOptions.isRotateEnabled = false
         }
     }
     
@@ -266,11 +269,9 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
             mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 22.0, returnPopupsOnly: false, maximumResultsPerLayer: 1) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
                 if let error = error {
                     self?.presentAlert(error: error)
-                } else if let results = results {
+                } else if let feature = results?.first?.geoElements.first as? AGSFeature {
                     self?.instructionsLabel.text = "Tap on the map to move the feature"
-                    if let feature = results.first?.geoElements.first as? AGSFeature {
-                        self?.selectedFeature = feature
-                    }
+                    self?.selectedFeature = feature
                 }
             }
         }

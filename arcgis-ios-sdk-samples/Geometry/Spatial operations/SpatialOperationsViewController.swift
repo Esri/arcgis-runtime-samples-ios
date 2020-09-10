@@ -138,8 +138,8 @@ class SpatialOperationsViewController: UIViewController {
             guard let self = self else { return }
             let newOperation = SpatialOperation.allCases[newIndex]
             self.selectedOperation = newOperation
-            // Perform the spatial operation.
-            self.performOperation(self.selectedOperation)
+            // Perform the new spatial operation.
+            self.performOperation(newOperation)
         }
         
         // Configure the options controller as a popover.

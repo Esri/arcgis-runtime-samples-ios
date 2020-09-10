@@ -148,11 +148,9 @@
 		3E0B58521E36D54800951767 /* AnalyzeHotspotsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */; };
 		3E0B58531E36D54800951767 /* HotspotSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */; };
 		3E0B58541E36D54800951767 /* ViewshedGeoprocessingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B584C1E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift */; };
-		3E0B58591E36D8D300951767 /* OperationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58561E36D8D300951767 /* OperationsListViewController.swift */; };
 		3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */; };
 		3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */; };
 		3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */; };
-		3E0B585D1E36D93800951767 /* OperationsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58561E36D8D300951767 /* OperationsListViewController.swift */; };
 		3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */; };
 		3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */; };
 		3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD61AFD481900FC60D6 /* Main.storyboard */; };
@@ -1002,7 +1000,6 @@
 				3EEE1D731E493655003263FC /* GroupUserCell.swift in CopyFiles */,
 				3EEE1D741E493655003263FC /* GroupUsersViewController.swift in CopyFiles */,
 				3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */,
-				3E0B585D1E36D93800951767 /* OperationsListViewController.swift in CopyFiles */,
 				3E0B58521E36D54800951767 /* AnalyzeHotspotsViewController.swift in CopyFiles */,
 				3E0B58531E36D54800951767 /* HotspotSettingsViewController.swift in CopyFiles */,
 				3E0B58541E36D54800951767 /* ViewshedGeoprocessingViewController.swift in CopyFiles */,
@@ -1253,7 +1250,6 @@
 		3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzeHotspotsViewController.swift; sourceTree = "<group>"; };
 		3E0B584B1E36BCCD00951767 /* ViewshedGeoprocessing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedGeoprocessing.storyboard; sourceTree = "<group>"; };
 		3E0B584C1E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedGeoprocessingViewController.swift; sourceTree = "<group>"; };
-		3E0B58561E36D8D300951767 /* OperationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsListViewController.swift; sourceTree = "<group>"; };
 		3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpatialOperations.storyboard; sourceTree = "<group>"; };
 		3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialOperationsViewController.swift; sourceTree = "<group>"; };
 		3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ContentPList.plist; sourceTree = "<group>"; };
@@ -2155,7 +2151,6 @@
 			children = (
 				3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */,
 				3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */,
-				3E0B58561E36D8D300951767 /* OperationsListViewController.swift */,
 			);
 			path = "Spatial operations";
 			sourceTree = "<group>";
@@ -5151,7 +5146,6 @@
 				4C54BF2D22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift in Sources */,
 				3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */,
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
-				3E0B58591E36D8D300951767 /* OperationsListViewController.swift in Sources */,
 				12BF9E461FE9D77000B1E6C4 /* ViewshedCameraViewController.swift in Sources */,
 				3EBA25461D300C1D00AB0703 /* SimpleRendererViewController.swift in Sources */,
 				3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */,

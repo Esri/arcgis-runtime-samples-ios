@@ -228,9 +228,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectedAttribute = nil
-        selectedComparison = nil
-        selectedValue = nil
+        updateCellStates()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

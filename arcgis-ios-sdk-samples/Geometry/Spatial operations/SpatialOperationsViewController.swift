@@ -159,7 +159,7 @@ class SpatialOperationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["SpatialOperationsViewController"]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["SpatialOperationsViewController", "OptionsTableViewController"]
     }
 }
 

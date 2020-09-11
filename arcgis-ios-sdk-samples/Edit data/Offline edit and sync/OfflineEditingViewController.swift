@@ -153,6 +153,8 @@ class OfflineEditingViewController: UIViewController {
     }
     
     private func switchToServiceMode() {
+        //hide extent view
+        extentView.isHidden = true
         if let generatedGeodatabase = generatedGeodatabase {
             //unregister geodatabase
             syncTask?.unregisterGeodatabase(generatedGeodatabase) { (error: Error?) in
@@ -390,8 +392,6 @@ class OfflineEditingViewController: UIViewController {
             let featureLayerController = navController.viewControllers.first as? FeatureLayersViewController {
             featureLayerController.featureLayerInfos = syncTask?.featureServiceInfo?.layerInfos ?? []
             featureLayerController.onCompletion = { [weak self] selectedLayerIDs in
-                //hide extent view
-                self?.extentView.isHidden = true
                 if let extent = self?.frameToExtent() {
                     self?.generateGeodatabase(selectedLayerIDs, extent: extent)
                 }

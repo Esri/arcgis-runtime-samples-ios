@@ -91,7 +91,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                     // For each layer in the serice, add a layer to the map.
                     let layerURL = (self.featureServiceURL?.appendingPathComponent(String(index)))!
                     let featureTable = AGSServiceFeatureTable(url: layerURL)
-                    featureTable.load { [weak self] error in
+                    _ = featureTable.load { [weak self] error in
                         guard let self = self else { return }
                         if let error = error {
                             self.presentAlert(error: error)

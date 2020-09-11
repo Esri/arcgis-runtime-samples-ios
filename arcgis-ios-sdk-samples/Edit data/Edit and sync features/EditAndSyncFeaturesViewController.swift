@@ -85,12 +85,14 @@ class EditAndSyncFeaturesViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                guard let featureServiceInfo = self.geodatabaseSyncTask?.featureServiceInfo, let map = self.mapView.map else { return }
+                let featureServiceInfo = (self.geodatabaseSyncTask?.featureServiceInfo)!
+                let map = self.mapView.map!
                 for index in featureServiceInfo.layerInfos.indices {
                     // For each layer in the serice, add a layer to the map.
-                    guard let layerURL = self.featureServiceURL?.appendingPathComponent(String(index)) else { return }
+                    let layerURL = (self.featureServiceURL?.appendingPathComponent(String(index)))!
                     let featureTable = AGSServiceFeatureTable(url: layerURL)
-                    featureTable.load { error in
+                    featureTable.load { [weak self] error in
+                        guard let self = self else { return }
                         if let error = error {
                             self.presentAlert(error: error)
                         } else if featureTable.geometryType == .point {

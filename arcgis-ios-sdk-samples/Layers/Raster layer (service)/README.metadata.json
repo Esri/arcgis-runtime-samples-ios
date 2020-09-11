@@ -19,7 +19,7 @@
         "AGSmageServiceRaster"
     ],
     "snippets": [
-        "RasterLayerUsingServiceVC.swift"
+        "RasterLayerUsingServiceViewController.swift"
     ],
     "title": "Raster layer (service)"
 }

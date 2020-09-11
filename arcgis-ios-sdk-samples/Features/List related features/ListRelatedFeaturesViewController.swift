@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
+class ListRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet var mapView: AGSMapView!
     
     private var parksFeatureLayer: AGSFeatureLayer!
@@ -29,7 +29,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
         super.viewDidLoad()
 
         //add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ListRelatedFeaturesVC", "RelatedFeaturesListVC"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ListRelatedFeaturesViewController", "RelatedFeaturesListViewController"]
         
         //initialize map with a basemap
         let map = AGSMap(basemap: .nationalGeographic())
@@ -148,7 +148,7 @@ class ListRelatedFeaturesVC: UIViewController, AGSGeoViewTouchDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RelatedFeaturesSegue",
             let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? RelatedFeaturesListVC {
+            let controller = navController.viewControllers.first as? RelatedFeaturesListViewController {
             //set results from related features query
             controller.results = results
         }

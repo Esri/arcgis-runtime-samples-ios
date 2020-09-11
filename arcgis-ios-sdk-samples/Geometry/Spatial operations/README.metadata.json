@@ -3,7 +3,7 @@
     "description": "Find the union, intersection, or difference of two geometries.",
     "ignore": false,
     "images": [
-        "perform-spatial-operations.png"
+        "spatial-operations.png"
     ],
     "keywords": [
         "analysis",
@@ -37,7 +37,6 @@
         "class AGSGeometryEngine.union(ofGeometry1:geometry2:)"
     ],
     "snippets": [
-        "OperationsListViewController.swift",
         "SpatialOperationsViewController.swift"
     ],
     "title": "Spatial operations"

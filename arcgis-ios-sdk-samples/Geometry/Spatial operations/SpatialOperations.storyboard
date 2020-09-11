@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wXy-eD-QP8">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wXy-eD-QP8">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,40 +13,34 @@
             <objects>
                 <viewController id="wXy-eD-QP8" customClass="SpatialOperationsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8z2-nZ-bKd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-7M-cMe" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
-                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJH-PV-h1x">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="a4a-Ng-QAr"/>
-                                </constraints>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wws-q2-7AP">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5aQ-cI-FQi"/>
-                                    <barButtonItem title="Choose Operation" id="up8-yW-buV">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MBL-1w-k9p"/>
+                                    <barButtonItem title="Choose Operation" id="GRo-tX-eyf">
                                         <connections>
-                                            <segue destination="VGy-wk-pXT" kind="popoverPresentation" identifier="OperationsListSegue" popoverAnchorBarButtonItem="up8-yW-buV" id="oln-Q7-UMI">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
+                                            <action selector="chooseOperationBarButtonTapped:" destination="wXy-eD-QP8" id="jdV-Pr-ACl"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JB4-lb-8pk"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MeH-cN-NDf"/>
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="T7o-7M-cMe" secondAttribute="trailing" id="GBz-tP-50I"/>
+                            <constraint firstItem="Wws-q2-7AP" firstAttribute="trailing" secondItem="8z2-nZ-bKd" secondAttribute="trailing" id="2fg-WA-4ju"/>
+                            <constraint firstItem="T7o-7M-cMe" firstAttribute="leading" secondItem="8z2-nZ-bKd" secondAttribute="leading" id="5S8-Nq-42C"/>
                             <constraint firstItem="T7o-7M-cMe" firstAttribute="top" secondItem="hcd-vh-Nc6" secondAttribute="top" id="HBS-Zd-hCh"/>
-                            <constraint firstItem="T7o-7M-cMe" firstAttribute="leading" secondItem="8z2-nZ-bKd" secondAttribute="leading" id="MEB-Rw-fcU"/>
-                            <constraint firstItem="T7o-7M-cMe" firstAttribute="bottom" secondItem="vJH-PV-h1x" secondAttribute="top" id="P6T-Ol-Z3P"/>
-                            <constraint firstItem="vJH-PV-h1x" firstAttribute="trailing" secondItem="hcd-vh-Nc6" secondAttribute="trailing" id="cWl-b8-3y9"/>
-                            <constraint firstItem="vJH-PV-h1x" firstAttribute="leading" secondItem="hcd-vh-Nc6" secondAttribute="leading" id="fms-TG-JeV"/>
-                            <constraint firstItem="hcd-vh-Nc6" firstAttribute="bottom" secondItem="vJH-PV-h1x" secondAttribute="bottom" id="gK6-VT-Egl"/>
+                            <constraint firstItem="Wws-q2-7AP" firstAttribute="leading" secondItem="8z2-nZ-bKd" secondAttribute="leading" id="W9e-FH-DNS"/>
+                            <constraint firstItem="Wws-q2-7AP" firstAttribute="bottom" secondItem="hcd-vh-Nc6" secondAttribute="bottom" id="uR1-2T-c7X"/>
+                            <constraint firstAttribute="trailing" secondItem="T7o-7M-cMe" secondAttribute="trailing" id="vSe-E9-zkR"/>
+                            <constraint firstItem="Wws-q2-7AP" firstAttribute="top" secondItem="T7o-7M-cMe" secondAttribute="bottom" id="yvU-s7-a4e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hcd-vh-Nc6"/>
                     </view>
@@ -59,43 +51,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A9Q-b5-ebG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="312.80000000000001" y="342.27886056971516"/>
-        </scene>
-        <!--Operations List View Controller-->
-        <scene sceneID="4Gc-Ph-CJj">
-            <objects>
-                <tableViewController id="VGy-wk-pXT" customClass="OperationsListViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f6p-Lv-rPV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="OperationCell" textLabel="4EK-ez-hL2" style="IBUITableViewCellStyleDefault" id="VkY-4M-lu3">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VkY-4M-lu3" id="EcN-oL-SQJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4EK-ez-hL2">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="VGy-wk-pXT" id="nGt-nD-mBF"/>
-                            <outlet property="delegate" destination="VGy-wk-pXT" id="4ew-Ve-eiu"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n1c-L8-zfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1078" y="342"/>
         </scene>
     </scenes>
 </document>

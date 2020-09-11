@@ -35,7 +35,7 @@ class ViewshedLocationViewController: UIViewController {
         // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "ViewshedLocationViewController",
-            "ViewshedSettingsVC",
+            "ViewshedSettingsViewController",
             "ColorPickerViewController"
         ]
         
@@ -76,7 +76,7 @@ class ViewshedLocationViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? ViewshedSettingsVC {
+            let controller = navController.viewControllers.first as? ViewshedSettingsViewController {
             controller.viewshed = viewshed
             controller.preferredContentSize = {
                 let height: CGFloat

@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class ViewshedSettingsVC: UITableViewController {
+class ViewshedSettingsViewController: UITableViewController {
     weak var viewshed: AGSLocationViewshed? {
         didSet {
             if isViewLoaded {

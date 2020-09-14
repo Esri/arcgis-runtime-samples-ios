@@ -89,7 +89,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 let map = self.mapView.map!
                 for index in featureServiceInfo.layerInfos.indices {
                     // For each layer in the serice, add a layer to the map.
-                    let layerURL = (self.featureServiceURL?.appendingPathComponent(String(index)))!
+                    let layerURL = self.featureServiceURL!.appendingPathComponent(String(index))
                     let featureTable = AGSServiceFeatureTable(url: layerURL)
                     _ = featureTable.load { [weak self] error in
                         guard let self = self else { return }

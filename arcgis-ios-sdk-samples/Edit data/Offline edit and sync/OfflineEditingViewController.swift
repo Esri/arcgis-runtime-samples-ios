@@ -153,10 +153,14 @@ class OfflineEditingViewController: UIViewController {
     }
     
     private func switchToServiceMode() {
-        //hide extent view
+        // Hide the extent view.
         extentView.isHidden = true
+        // Re-enable interactions.
+        self.mapView.interactionOptions.isPanEnabled = true
+        self.mapView.interactionOptions.isZoomEnabled = true
+        self.mapView.interactionOptions.isRotateEnabled = true
         if let generatedGeodatabase = generatedGeodatabase {
-            //unregister geodatabase
+            // Unregister the geodatabase.
             syncTask?.unregisterGeodatabase(generatedGeodatabase) { (error: Error?) in
                 if let error = error {
                     print("Error while unregistering geodatabase: \(error.localizedDescription)")
@@ -164,10 +168,10 @@ class OfflineEditingViewController: UIViewController {
             }
         }
         
-        //remove all layers added from the geodatabase
+        // Remove all layers added from the geodatabase.
         mapView.map?.operationalLayers.removeAllObjects()
         
-        //add layers from the service
+        // Add layers from the service
         addFeatureLayers()
         
         //update the flag
@@ -238,6 +242,10 @@ class OfflineEditingViewController: UIViewController {
                             }
                         }
                         self.presentAlert(message: "Now showing layers from the geodatabase")
+                        // Ensure that the user does not move outside of the downloaded extent view.
+                        self.mapView.interactionOptions.isPanEnabled = false
+                        self.mapView.interactionOptions.isZoomEnabled = false
+                        self.mapView.interactionOptions.isRotateEnabled = false
                     }
                 }
             }
@@ -440,7 +448,7 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
             mapView.sketchEditor?.start(with: geometry)
             
             //zoom to the existing feature's geometry
-            mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
+//            mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
         }
         
         return sketchEditor

@@ -85,7 +85,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                let featureServiceInfo = (self.geodatabaseSyncTask?.featureServiceInfo)!
+                let featureServiceInfo = self.geodatabaseSyncTask.featureServiceInfo!
                 let map = self.mapView.map!
                 for index in featureServiceInfo.layerInfos.indices {
                     // For each layer in the serice, add a layer to the map.

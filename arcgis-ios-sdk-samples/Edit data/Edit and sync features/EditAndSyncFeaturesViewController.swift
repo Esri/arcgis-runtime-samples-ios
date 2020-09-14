@@ -28,7 +28,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             mapView.map = map
             
             // Create a geodatabase sync task using the feature service URL.
-            geodatabaseSyncTask = AGSGeodatabaseSyncTask(url: featureServiceURL!)
+            geodatabaseSyncTask = AGSGeodatabaseSyncTask(url: featureServiceURL)
             self.addFeatureLayers()
         }
     }
@@ -45,7 +45,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet private var barButtonItem: UIBarButtonItem!
     @IBOutlet private var instructionsLabel: UILabel!
     
-    private let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")
+    private let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
     private let syncGeodatabaseTitle = "Sync geodatabase"
     private var generateJob: AGSGenerateGeodatabaseJob?
     private var syncJob: AGSSyncGeodatabaseJob?
@@ -85,15 +85,18 @@ class EditAndSyncFeaturesViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                if let featureServiceInfo = self.geodatabaseSyncTask?.featureServiceInfo,
-                    let map = self.mapView.map {
-                    for index in featureServiceInfo.layerInfos.indices.reversed() {
-                        let layerInfo = featureServiceInfo.layerInfos[index]
-                        // For each layer in the serice, add a layer to the map.
-                        if let layerURL = self.featureServiceURL?.appendingPathComponent(String(index)) {
-                            let featureTable = AGSServiceFeatureTable(url: layerURL)
+                let featureServiceInfo = self.geodatabaseSyncTask.featureServiceInfo!
+                let map = self.mapView.map!
+                for index in featureServiceInfo.layerInfos.indices {
+                    // For each layer in the serice, add a layer to the map.
+                    let layerURL = self.featureServiceURL.appendingPathComponent(String(index))
+                    let featureTable = AGSServiceFeatureTable(url: layerURL)
+                    featureTable.load { [weak self, unowned featureTable] error in
+                        guard let self = self else { return }
+                        if let error = error {
+                            self.presentAlert(error: error)
+                        } else if featureTable.geometryType == .point {
                             let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                            featureLayer.name = layerInfo.name
                             map.operationalLayers.add(featureLayer)
                         }
                     }
@@ -130,7 +133,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 geodatabaseFeatureTable.load { [weak self, unowned geodatabaseFeatureTable] (error: Error?) in
                     if let error = error {
                         self?.presentAlert(error: error)
-                    } else {
+                    } else if geodatabaseFeatureTable.geometryType == .point {
                         // Create a new feature layer from the table and add it to the map.
                         let featureLayer = AGSFeatureLayer(featureTable: geodatabaseFeatureTable)
                         self?.mapView.map?.operationalLayers.add(featureLayer)
@@ -141,6 +144,9 @@ class EditAndSyncFeaturesViewController: UIViewController {
             self.barButtonItem.isEnabled = false
             self.instructionsLabel.text = "Tap on a feature"
             self.mapView.touchDelegate = self
+            self.mapView.interactionOptions.isPanEnabled = false
+            self.mapView.interactionOptions.isZoomEnabled = false
+            self.mapView.interactionOptions.isRotateEnabled = false
         }
     }
     
@@ -153,7 +159,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
     func generateGeodatabase() {
         // Hide the unnecessary items.
         barButtonItem.isEnabled = false
-        extentView.isHidden = true
         
         // Get the area outlined by the extent view.
         areaOfInterest = self.extentViewFrameToEnvelope()
@@ -266,11 +271,9 @@ extension EditAndSyncFeaturesViewController: AGSGeoViewTouchDelegate {
             mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 22.0, returnPopupsOnly: false, maximumResultsPerLayer: 1) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
                 if let error = error {
                     self?.presentAlert(error: error)
-                } else if let results = results {
+                } else if let feature = results?.first?.geoElements.first as? AGSFeature {
                     self?.instructionsLabel.text = "Tap on the map to move the feature"
-                    if let feature = results.first?.geoElements.first as? AGSFeature {
-                        self?.selectedFeature = feature
-                    }
+                    self?.selectedFeature = feature
                 }
             }
         }

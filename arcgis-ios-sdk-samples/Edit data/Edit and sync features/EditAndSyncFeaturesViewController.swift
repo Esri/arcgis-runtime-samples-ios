@@ -28,7 +28,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             mapView.map = map
             
             // Create a geodatabase sync task using the feature service URL.
-            geodatabaseSyncTask = AGSGeodatabaseSyncTask(url: featureServiceURL!)
+            geodatabaseSyncTask = AGSGeodatabaseSyncTask(url: featureServiceURL)
             self.addFeatureLayers()
         }
     }
@@ -45,7 +45,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
     @IBOutlet private var barButtonItem: UIBarButtonItem!
     @IBOutlet private var instructionsLabel: UILabel!
     
-    private let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")
+    private let featureServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/WildfireSync/FeatureServer")!
     private let syncGeodatabaseTitle = "Sync geodatabase"
     private var generateJob: AGSGenerateGeodatabaseJob?
     private var syncJob: AGSSyncGeodatabaseJob?
@@ -89,9 +89,9 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 let map = self.mapView.map!
                 for index in featureServiceInfo.layerInfos.indices {
                     // For each layer in the serice, add a layer to the map.
-                    let layerURL = self.featureServiceURL!.appendingPathComponent(String(index))
+                    let layerURL = self.featureServiceURL.appendingPathComponent(String(index))
                     let featureTable = AGSServiceFeatureTable(url: layerURL)
-                    _ = featureTable.load { [weak self] error in
+                    featureTable.load { [weak self, unowned featureTable] error in
                         guard let self = self else { return }
                         if let error = error {
                             self.presentAlert(error: error)

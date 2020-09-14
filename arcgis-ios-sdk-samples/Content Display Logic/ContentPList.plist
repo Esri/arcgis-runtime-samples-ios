@@ -1735,6 +1735,14 @@
 				<key>displayName</key>
 				<string>Perform valve isolation trace</string>
 			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Get a server-defined trace configuration for a given tier and modify its traversability scope, add new condition barriers, and control what is included in the subnetwork trace result.</string>
+				<key>storyboardName</key>
+				<string>ConfigureSubnetworkTrace</string>
+				<key>displayName</key>
+				<string>Configure subnetwork trace</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

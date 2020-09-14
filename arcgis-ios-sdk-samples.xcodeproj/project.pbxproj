@@ -16,6 +16,8 @@
 		001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
 		001ECB60248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */; };
 		001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
+		003BC30F24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
+		003BC31224E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -148,11 +150,9 @@
 		3E0B58521E36D54800951767 /* AnalyzeHotspotsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */; };
 		3E0B58531E36D54800951767 /* HotspotSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58481E36BCCD00951767 /* HotspotSettingsViewController.swift */; };
 		3E0B58541E36D54800951767 /* ViewshedGeoprocessingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B584C1E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift */; };
-		3E0B58591E36D8D300951767 /* OperationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58561E36D8D300951767 /* OperationsListViewController.swift */; };
 		3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */; };
 		3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */; };
 		3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */; };
-		3E0B585D1E36D93800951767 /* OperationsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E0B58561E36D8D300951767 /* OperationsListViewController.swift */; };
 		3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */; };
 		3E0D3AD41AFD1FF600FC60D6 /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */; };
 		3E0D3AD71AFD481900FC60D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0D3AD61AFD481900FC60D6 /* Main.storyboard */; };
@@ -796,9 +796,12 @@
 		F1124F0C24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpk in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
+		F12C739F250ADDB000C1E3FE /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
+		F12C73A0250ADDB000C1E3FE /* ConfigureSubnetworkTraceOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
 		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */; };
 		F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
+		F14A8F012474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */; };
 		F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
@@ -881,6 +884,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F12C739F250ADDB000C1E3FE /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */,
+				F12C73A0250ADDB000C1E3FE /* ConfigureSubnetworkTraceOptionsViewController.swift in CopyFiles */,
 				008D175A24EF35800001BB8F /* EditWithBranchVersioningViewController.swift in CopyFiles */,
 				F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */,
 				00166C8C24D236A300DD317E /* RealisticLightingAndShadowsViewController.swift in CopyFiles */,
@@ -1002,7 +1007,6 @@
 				3EEE1D731E493655003263FC /* GroupUserCell.swift in CopyFiles */,
 				3EEE1D741E493655003263FC /* GroupUsersViewController.swift in CopyFiles */,
 				3E0B585C1E36D93800951767 /* SpatialOperationsViewController.swift in CopyFiles */,
-				3E0B585D1E36D93800951767 /* OperationsListViewController.swift in CopyFiles */,
 				3E0B58521E36D54800951767 /* AnalyzeHotspotsViewController.swift in CopyFiles */,
 				3E0B58531E36D54800951767 /* HotspotSettingsViewController.swift in CopyFiles */,
 				3E0B58541E36D54800951767 /* ViewshedGeoprocessingViewController.swift in CopyFiles */,
@@ -1164,6 +1168,8 @@
 		001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARCalibrationViewController.swift; sourceTree = "<group>"; };
 		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
+		003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceOptionsViewController.swift; sourceTree = "<group>"; };
+		003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceViewController.swift; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWithBranchVersioningViewController.swift; sourceTree = "<group>"; };
@@ -1253,7 +1259,6 @@
 		3E0B58491E36BCCD00951767 /* AnalyzeHotspotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzeHotspotsViewController.swift; sourceTree = "<group>"; };
 		3E0B584B1E36BCCD00951767 /* ViewshedGeoprocessing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewshedGeoprocessing.storyboard; sourceTree = "<group>"; };
 		3E0B584C1E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewshedGeoprocessingViewController.swift; sourceTree = "<group>"; };
-		3E0B58561E36D8D300951767 /* OperationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsListViewController.swift; sourceTree = "<group>"; };
 		3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpatialOperations.storyboard; sourceTree = "<group>"; };
 		3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialOperationsViewController.swift; sourceTree = "<group>"; };
 		3E0D3AD11AFD1C7500FC60D6 /* ContentPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ContentPList.plist; sourceTree = "<group>"; };
@@ -1716,6 +1721,7 @@
 		F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFeaturesWithFeatureLinkedAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
+		F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigureSubnetworkTrace.storyboard; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MontereyElevation.dt2; sourceTree = "<group>"; };
 		F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeFeatureLayerViewController.swift; sourceTree = "<group>"; };
 		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
@@ -2155,7 +2161,6 @@
 			children = (
 				3E0B58571E36D8D300951767 /* SpatialOperations.storyboard */,
 				3E0B58581E36D8D300951767 /* SpatialOperationsViewController.swift */,
-				3E0B58561E36D8D300951767 /* OperationsListViewController.swift */,
 			);
 			path = "Spatial operations";
 			sourceTree = "<group>";
@@ -4088,6 +4093,7 @@
 		D98CC08F22E25D8200618682 /* Utility network */ = {
 			isa = PBXGroup;
 			children = (
+				F14A8EFC2474AD3A00242D96 /* Configure subnetwork trace */,
 				F1D50229245243AD00583CFB /* Display utility associations */,
 				00E5B7CB2458FE6D00B11973 /* Perform valve isolation trace */,
 				D98CC09022E25E3300618682 /* Trace utility network */,
@@ -4301,6 +4307,16 @@
 				F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */,
 			);
 			path = "Display annotation";
+			sourceTree = "<group>";
+		};
+		F14A8EFC2474AD3A00242D96 /* Configure subnetwork trace */ = {
+			isa = PBXGroup;
+			children = (
+				003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */,
+				003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */,
+				F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */,
+			);
+			path = "Configure subnetwork trace";
 			sourceTree = "<group>";
 		};
 		F15CF0C723EE26CB0038F052 /* Display subtype feature layer */ = {
@@ -4720,6 +4736,7 @@
 				3E5849001B9123E900AB3CE9 /* FeatureLayerURL.storyboard in Resources */,
 				00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */,
 				3E8A25911D36B97A00D14F08 /* MapLoaded.storyboard in Resources */,
+				F14A8F012474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard in Resources */,
 				C7E9D7C821C0500300E6C47E /* Buffer.storyboard in Resources */,
 				3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */,
 				E4B2E2651FE31E5200E610FF /* bradle.3ds in Resources */,
@@ -4976,6 +4993,7 @@
 				C7BE9C4F219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift in Sources */,
 				3E4BF44C1C5AF04300D85919 /* FindPlaceViewController.swift in Sources */,
 				3E8A05CF1ECE68E80032231C /* PlaneStatsViewController.swift in Sources */,
+				003BC30F24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift in Sources */,
 				3EFDE0F81E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift in Sources */,
 				3EABC7A21DB1793000C161C6 /* StretchRendererSettingsViewController.swift in Sources */,
 				F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */,
@@ -4988,6 +5006,7 @@
 				3E5E09401EF4567A00FF3454 /* RelatedFeaturesViewController.swift in Sources */,
 				D97B7E3C1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift in Sources */,
 				C7D0EEDA215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift in Sources */,
+				003BC31224E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift in Sources */,
 				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
 				4C0FD7CF22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in Sources */,
 				10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */,
@@ -5151,7 +5170,6 @@
 				4C54BF2D22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift in Sources */,
 				3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */,
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
-				3E0B58591E36D8D300951767 /* OperationsListViewController.swift in Sources */,
 				12BF9E461FE9D77000B1E6C4 /* ViewshedCameraViewController.swift in Sources */,
 				3EBA25461D300C1D00AB0703 /* SimpleRendererViewController.swift in Sources */,
 				3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */,

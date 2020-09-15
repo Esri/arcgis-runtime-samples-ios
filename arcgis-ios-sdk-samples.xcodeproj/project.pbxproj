@@ -20,10 +20,10 @@
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		008D175224EEEEBD0001BB8F /* loudoun_anno.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */; settings = {ASSET_TAGS = (loudoun_anno, ); }; };
-		009D8BEF24F9AC8D00FD7E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */; };
 		008D175724EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
 		008D175924EEF4390001BB8F /* EditWithBranchVersioning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */; };
 		008D175A24EF35800001BB8F /* EditWithBranchVersioningViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
+		009D8BEF24F9AC8D00FD7E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */; };
 		00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */; };
 		00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
 		00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3C22464D59200A3B88D /* PacificSouthWest */; settings = {ASSET_TAGS = (PacificSouthWest, ); }; };
@@ -1163,9 +1163,9 @@
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
-		009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWithBranchVersioningViewController.swift; sourceTree = "<group>"; };
 		008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditWithBranchVersioning.storyboard; sourceTree = "<group>"; };
+		009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnimateImagesWithImageOverlay.storyboard; sourceTree = "<group>"; };
 		00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateImagesWithImageOverlayViewController.swift; sourceTree = "<group>"; };
 		00ADC3C22464D59200A3B88D /* PacificSouthWest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PacificSouthWest; sourceTree = "<group>"; };

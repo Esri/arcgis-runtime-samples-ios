@@ -26,11 +26,11 @@ class ColorPickerViewController: UITableViewController {
     @IBOutlet weak var alphaLabel: UILabel!
     
     private var color: UIColor {
+        get {
+            UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+        }
         set {
             newValue.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-        }
-        get {
-            return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
         }
     }
     private var onUpdate: ((UIColor) -> Void)?

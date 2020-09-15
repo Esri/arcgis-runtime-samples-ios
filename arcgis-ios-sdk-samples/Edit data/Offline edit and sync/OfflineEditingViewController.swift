@@ -156,9 +156,9 @@ class OfflineEditingViewController: UIViewController {
         // Hide the extent view.
         extentView.isHidden = true
         // Re-enable interactions.
-        self.mapView.interactionOptions.isPanEnabled = true
-        self.mapView.interactionOptions.isZoomEnabled = true
-        self.mapView.interactionOptions.isRotateEnabled = true
+        mapView.interactionOptions.isPanEnabled = true
+        mapView.interactionOptions.isZoomEnabled = true
+        mapView.interactionOptions.isRotateEnabled = true
         if let generatedGeodatabase = generatedGeodatabase {
             // Unregister the geodatabase.
             syncTask?.unregisterGeodatabase(generatedGeodatabase) { (error: Error?) in

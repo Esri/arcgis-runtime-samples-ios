@@ -80,10 +80,10 @@ class FeatureLayersViewController: UITableViewController {
     }
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
-        // get selected layer ids
+        // Get selected layer ids.
         let selectedLayerIds = selectedLayerInfos.map { $0.id }
         
-        // run the completion handler
+        // Run the completion handler.
         onCompletion?(selectedLayerIds)
         
         dismiss(animated: true)

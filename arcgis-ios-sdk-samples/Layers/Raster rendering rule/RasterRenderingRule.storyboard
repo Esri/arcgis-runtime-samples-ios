@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hEJ-rf-XL3">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Raster Rendering Rule View Controller-->
+        <scene sceneID="85f-hG-5F9">
+            <objects>
+                <viewController id="hEJ-rf-XL3" customClass="RasterRenderingRuleViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cbW-fo-k99">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oly-Ak-pKW" userLabel="Map View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2G-eE-oT2">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="g5v-Ev-zwb"/>
+                                    <barButtonItem enabled="NO" title="Choose Rendering Rule" id="pij-q2-Hof">
+                                        <connections>
+                                            <action selector="chooseRenderingRule:" destination="hEJ-rf-XL3" id="fAR-1i-9WY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="FJS-EG-WKN"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oly-Ak-pKW" firstAttribute="leading" secondItem="cbW-fo-k99" secondAttribute="leading" id="7SK-tP-vtd"/>
+                            <constraint firstItem="UAR-ho-6Cz" firstAttribute="bottom" secondItem="U2G-eE-oT2" secondAttribute="bottom" id="W4p-vu-ICg"/>
+                            <constraint firstItem="oly-Ak-pKW" firstAttribute="top" secondItem="cbW-fo-k99" secondAttribute="top" id="cGj-5R-LMN"/>
+                            <constraint firstItem="oly-Ak-pKW" firstAttribute="trailing" secondItem="cbW-fo-k99" secondAttribute="trailing" id="gx4-Tm-Aud"/>
+                            <constraint firstAttribute="trailing" secondItem="U2G-eE-oT2" secondAttribute="trailing" id="itg-jX-EtB"/>
+                            <constraint firstItem="U2G-eE-oT2" firstAttribute="leading" secondItem="cbW-fo-k99" secondAttribute="leading" id="wGg-Tb-bJi"/>
+                            <constraint firstItem="U2G-eE-oT2" firstAttribute="top" secondItem="oly-Ak-pKW" secondAttribute="bottom" id="yIe-rg-L0I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UAR-ho-6Cz"/>
+                    </view>
+                    <connections>
+                        <outlet property="chooseRenderingRuleBarButtonItem" destination="pij-q2-Hof" id="6GI-pA-Jle"/>
+                        <outlet property="mapView" destination="oly-Ak-pKW" id="Qvp-3X-w5I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7D-Jj-d3S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="259" y="-38"/>
+        </scene>
+    </scenes>
+</document>

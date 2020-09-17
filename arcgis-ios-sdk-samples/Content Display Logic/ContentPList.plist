@@ -658,6 +658,18 @@
 					<string>NDVIRaster</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Add ENC exchange set</string>
+				<key>descriptionText</key>
+				<string>Display nautical charts per the ENC specification.</string>
+				<key>storyboardName</key>
+				<string>AddENCExchangeSet</string>
+				<key>dependency</key>
+				<array>
+					<string>ExchangeSetWithoutUpdates</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>

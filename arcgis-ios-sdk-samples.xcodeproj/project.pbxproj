@@ -18,6 +18,9 @@
 		001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
 		003BC30F24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
 		003BC31224E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
+		003D25622513D833007527C2 /* RasterRenderingRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D25612513D833007527C2 /* RasterRenderingRule.storyboard */; };
+		003D25642513D844007527C2 /* RasterRenderingRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003D25632513D844007527C2 /* RasterRenderingRuleViewController.swift */; };
+		003D25652513DF58007527C2 /* RasterRenderingRuleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D25632513D844007527C2 /* RasterRenderingRuleViewController.swift */; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -884,6 +887,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				003D25652513DF58007527C2 /* RasterRenderingRuleViewController.swift in CopyFiles */,
 				F12C739F250ADDB000C1E3FE /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */,
 				F12C73A0250ADDB000C1E3FE /* ConfigureSubnetworkTraceOptionsViewController.swift in CopyFiles */,
 				008D175A24EF35800001BB8F /* EditWithBranchVersioningViewController.swift in CopyFiles */,
@@ -1170,6 +1174,8 @@
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
 		003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceOptionsViewController.swift; sourceTree = "<group>"; };
 		003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceViewController.swift; sourceTree = "<group>"; };
+		003D25612513D833007527C2 /* RasterRenderingRule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RasterRenderingRule.storyboard; sourceTree = "<group>"; };
+		003D25632513D844007527C2 /* RasterRenderingRuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterRenderingRuleViewController.swift; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWithBranchVersioningViewController.swift; sourceTree = "<group>"; };
@@ -1787,6 +1793,15 @@
 				001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */,
 			);
 			path = "Feature collection layer (portal item)";
+			sourceTree = "<group>";
+		};
+		003D255D2513D824007527C2 /* Raster rendering rule */ = {
+			isa = PBXGroup;
+			children = (
+				003D25632513D844007527C2 /* RasterRenderingRuleViewController.swift */,
+				003D25612513D833007527C2 /* RasterRenderingRule.storyboard */,
+			);
+			path = "Raster rendering rule";
 			sourceTree = "<group>";
 		};
 		008D175024EEEEBD0001BB8F /* Geodatabases */ = {
@@ -2981,6 +2996,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				003D255D2513D824007527C2 /* Raster rendering rule */,
 				00ADC3C92464DD0600A3B88D /* Identify raster cell */,
 				F15CF0C723EE26CB0038F052 /* Display subtype feature layer */,
 				F140E1E823F35E61008AC44E /* Display annotation */,
@@ -4620,6 +4636,7 @@
 				D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
 				3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */,
+				003D25622513D833007527C2 /* RasterRenderingRule.storyboard in Resources */,
 				3ED028781B8E3A8500ACA70D /* ManageMapLayers.storyboard in Resources */,
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
 				C7AF466621B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard in Resources */,
@@ -4988,6 +5005,7 @@
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
 				3EBA255B1D33FF1400AB0703 /* PictureMarkerSymbolsViewController.swift in Sources */,
 				21E9CDEC1EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift in Sources */,
+				003D25642513D844007527C2 /* RasterRenderingRuleViewController.swift in Sources */,
 				3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */,
 				3ED028791B8E3A8500ACA70D /* ManageMapLayersViewController.swift in Sources */,
 				C7BE9C4F219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift in Sources */,

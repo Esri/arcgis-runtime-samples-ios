@@ -30,7 +30,7 @@ class RasterRenderingRuleViewController: UIViewController {
     // MARK: Properties and methods
     
     /// An online image service that features Charlotte, North Carolina's downtown area.
-    var imageServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/CharlotteLAS/ImageServer")!
+    let imageServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/CharlotteLAS/ImageServer")!
     /// A list of rendering rule info supported by the service.
     var rasterRenderingRules = [AGSRenderingRuleInfo]()
     

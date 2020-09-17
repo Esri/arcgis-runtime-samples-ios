@@ -658,6 +658,14 @@
 					<string>NDVIRaster</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Raster rendering rule</string>
+				<key>descriptionText</key>
+				<string>Display a raster on a map and apply different rendering rules to that raster.</string>
+				<key>storyboardName</key>
+				<string>RasterRenderingRule</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

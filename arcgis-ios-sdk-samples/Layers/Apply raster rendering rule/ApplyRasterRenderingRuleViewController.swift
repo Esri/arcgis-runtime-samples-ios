@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class RasterRenderingRuleViewController: UIViewController {
+class ApplyRasterRenderingRuleViewController: UIViewController {
     // MARK: Storyboard views
     
     /// The map view managed by the view controller.
@@ -43,7 +43,7 @@ class RasterRenderingRuleViewController: UIViewController {
         let imageServiceRaster = AGSImageServiceRaster(url: imageServiceURL)
         map.operationalLayers.add(makeRasterLayer(raster: imageServiceRaster))
         // Load the raster and get a list of rendering rule info supported by the service.
-        imageServiceRaster.load { [weak self] error in
+        imageServiceRaster.load { [weak self, unowned imageServiceRaster] error in
             guard let self = self else { return }
             if let serviceInfo = imageServiceRaster.serviceInfo, let extent = serviceInfo.fullExtent {
                 self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent), completion: nil)
@@ -78,13 +78,14 @@ class RasterRenderingRuleViewController: UIViewController {
         )
         rasterRenderingRules.forEach { ruleInfo in
             let action = UIAlertAction(title: ruleInfo.name, style: .default) { _ in
+                let map = self.mapView.map!
                 // Clear all raster layers before adding new one.
-                self.mapView.map!.operationalLayers.removeAllObjects()
+                map.operationalLayers.removeAllObjects()
                 // Create a new `AGSRenderingRule` object with the chosen rule.
                 let renderingRule = AGSRenderingRule(renderingRuleInfo: ruleInfo)
                 let imageServiceRaster = AGSImageServiceRaster(url: self.imageServiceURL)
                 // Add the new raster layer to the map.
-                self.mapView.map!.operationalLayers.add(self.makeRasterLayer(raster: imageServiceRaster, renderingRule: renderingRule))
+                map.operationalLayers.add(self.makeRasterLayer(raster: imageServiceRaster, renderingRule: renderingRule))
             }
             alertController.addAction(action)
         }
@@ -99,6 +100,6 @@ class RasterRenderingRuleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["RasterRenderingRuleViewController"]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ApplyRasterRenderingRuleViewController"]
     }
 }

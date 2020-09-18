@@ -660,11 +660,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Raster rendering rule</string>
+				<string>Apply raster rendering rule</string>
 				<key>descriptionText</key>
 				<string>Display a raster on a map and apply different rendering rules to that raster.</string>
 				<key>storyboardName</key>
-				<string>RasterRenderingRule</string>
+				<string>ApplyRasterRenderingRule</string>
 			</dict>
 		</array>
 	</dict>

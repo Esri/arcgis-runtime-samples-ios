@@ -3,7 +3,7 @@
     "description": "Display a raster on a map and apply different rendering rules to that raster.",
     "ignore": false,
     "images": [
-        "raster-rendering-rule.png"
+        "apply-raster-rendering-rule.png"
     ],
     "keywords": [
         "raster",
@@ -20,7 +20,7 @@
         "AGSRenderingRule"
     ],
     "snippets": [
-        "RasterRenderingRuleViewController.swift"
+        "ApplyRasterRenderingRuleViewController.swift"
     ],
-    "title": "Raster rendering rule"
+    "title": "Apply raster rendering rule"
 }

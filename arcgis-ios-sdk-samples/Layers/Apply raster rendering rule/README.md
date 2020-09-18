@@ -1,8 +1,8 @@
-# Raster rendering rule
+# Apply raster rendering rule
 
 Display a raster on a map and apply different rendering rules to that raster.
 
-![Image of raster rendering rule](raster-rendering-rule.png)
+![Image of apply raster rendering rule](apply-raster-rendering-rule.png)
 
 ## Use case
 

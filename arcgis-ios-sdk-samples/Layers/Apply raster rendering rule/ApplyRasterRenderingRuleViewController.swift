@@ -34,7 +34,7 @@ class ApplyRasterRenderingRuleViewController: UIViewController {
     /// A list of rendering rule info supported by the service.
     var rasterRenderingRules = [AGSRenderingRuleInfo]()
     /// A dictionary to cache created raster layers.
-    var rasterLayerDict = [String: AGSRasterLayer]()
+    var rasterLayers = [String: AGSRasterLayer]()
     
     /// Create a map.
     ///
@@ -84,16 +84,16 @@ class ApplyRasterRenderingRuleViewController: UIViewController {
                 // Clear all raster layers before adding new one.
                 map.operationalLayers.removeAllObjects()
                 let rasterLayer: AGSRasterLayer
-                if self.rasterLayerDict[ruleInfo.name] != nil {
+                if self.rasterLayers[ruleInfo.name] != nil {
                     // Retrieve cached raster layer if it exists.
-                    rasterLayer = self.rasterLayerDict[ruleInfo.name]!
+                    rasterLayer = self.rasterLayers[ruleInfo.name]!
                 } else {
                     // Create a new `AGSRenderingRule` object with the chosen rule.
                     let renderingRule = AGSRenderingRule(renderingRuleInfo: ruleInfo)
                     let imageServiceRaster = AGSImageServiceRaster(url: self.imageServiceURL)
                     // Create a new raster layer with the rendering rule.
                     rasterLayer = self.makeRasterLayer(raster: imageServiceRaster, renderingRule: renderingRule)
-                    self.rasterLayerDict[ruleInfo.name] = rasterLayer
+                    self.rasterLayers[ruleInfo.name] = rasterLayer
                 }
                 // Add the new raster layer to the map.
                 map.operationalLayers.add(rasterLayer)

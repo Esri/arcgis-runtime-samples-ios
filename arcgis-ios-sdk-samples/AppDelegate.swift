@@ -127,6 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             UITableViewCell.appearance().tintColor = .accentColor
             UIProgressView.appearance().tintColor = .accentColor
             UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .accentColor
+            UIButton.appearance(whenContainedInInstancesOf: [AGSCallout.self]).tintColor = .accentColor
         }
     }
 

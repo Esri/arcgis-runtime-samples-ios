@@ -16,6 +16,8 @@
 		001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
 		001ECB60248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */; };
 		001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
+		00255DD025156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00255DCF25156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard */; };
+		00255DD225156C2F001A71DF /* ViewHiddenInfrastructureARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARViewController.swift */; };
 		003BC30F24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
 		003BC31224E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -1168,6 +1170,8 @@
 		001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARCalibrationViewController.swift; sourceTree = "<group>"; };
 		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
+		00255DCF25156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewHiddenInfrastructureAR.storyboard; sourceTree = "<group>"; };
+		00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHiddenInfrastructureARViewController.swift; sourceTree = "<group>"; };
 		003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceOptionsViewController.swift; sourceTree = "<group>"; };
 		003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceViewController.swift; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
@@ -1787,6 +1791,15 @@
 				001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */,
 			);
 			path = "Feature collection layer (portal item)";
+			sourceTree = "<group>";
+		};
+		00255DCB25156C17001A71DF /* View hidden infrastructure in AR */ = {
+			isa = PBXGroup;
+			children = (
+				00255DCF25156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard */,
+				00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARViewController.swift */,
+			);
+			path = "View hidden infrastructure in AR";
 			sourceTree = "<group>";
 		};
 		008D175024EEEEBD0001BB8F /* Geodatabases */ = {
@@ -4210,6 +4223,7 @@
 		E47ED0882343C1400032440E /* Augmented reality */ = {
 			isa = PBXGroup;
 			children = (
+				00255DCB25156C17001A71DF /* View hidden infrastructure in AR */,
 				00C024DE2475E49A00E1DA8D /* Navigate in AR */,
 				E47ED0A12343C4FE0032440E /* Collect data in AR */,
 				E47ED0AA2343C5E00032440E /* Display scenes in tabletop AR */,
@@ -4704,6 +4718,7 @@
 				C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */,
 				00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
+				00255DD025156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
 				3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */,
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
@@ -5183,6 +5198,7 @@
 				C7E5EB7021ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift in Sources */,
 				F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */,
 				001ECB042486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift in Sources */,
+				00255DD225156C2F001A71DF /* ViewHiddenInfrastructureARViewController.swift in Sources */,
 				00E5B7D22458FE7900B11973 /* PerformValveIsolationTraceViewController.swift in Sources */,
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundViewController.swift in Sources */,
 				3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */,

@@ -19,9 +19,9 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
     // MARK: Storyboard views and properties
     
     /// A label to show status messages.
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet var statusLabel: UILabel!
     /// The map view managed by the view controller.
-    @IBOutlet weak var mapView: AGSMapView! {
+    @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
         }

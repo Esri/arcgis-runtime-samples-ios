@@ -23,10 +23,23 @@ class AddENCExchangeSetViewController: UIViewController {
         }
     }
     
-    let temporaryDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(
-        ProcessInfo.processInfo.globallyUniqueString,
-        isDirectory: true
-    )
+    func getTemporaryDocumentDirectoryURL(subfolderURL: URL) -> URL? {
+        do {
+            let tempDirectory = try FileManager.default.url(
+                for: .documentDirectory,
+                in: .userDomainMask,
+                appropriateFor: subfolderURL,
+                create: true
+            )
+//            .appendingPathComponent("ENC_ROOT", isDirectory: true)
+            .appendingPathComponent(ProcessInfo.processInfo.globallyUniqueString)
+            return tempDirectory
+        } catch {
+            return nil
+        }
+    }
+    
+    var temporaryDocumentDirectory: URL!
     
     /// Create a map.
     ///
@@ -38,17 +51,20 @@ class AddENCExchangeSetViewController: UIViewController {
         let fileURLs = Bundle.main.urls(forResourcesWithExtension: nil, subdirectory: "ExchangeSetwithoutUpdates") ?? []
         let directoryURL = fileURLs.first!.deletingLastPathComponent()
         
-        AGSENCEnvironmentSettings.shared().resourceDirectory = directoryURL
-        AGSENCEnvironmentSettings.shared().sencDataDirectory = temporaryDirectoryURL
-        try? FileManager.default.createDirectory(at: temporaryDirectoryURL, withIntermediateDirectories: true)
+        guard let url = getTemporaryDocumentDirectoryURL(subfolderURL: directoryURL) else { return map }
+        temporaryDocumentDirectory = url
+        try? FileManager.default.copyItem(at: directoryURL, to: temporaryDocumentDirectory)
         
-        let catalogFileURL = fileURLs.filter { $0.lastPathComponent == "CATALOG.031" }
-//        let catalogFileURL = temporaryDirectoryURL.appendingPathComponent("CATALOG.031")
-        let ENCExchangeSet = AGSENCExchangeSet(fileURLs: catalogFileURL)
+        AGSENCEnvironmentSettings.shared().resourceDirectory = temporaryDocumentDirectory
+        AGSENCEnvironmentSettings.shared().sencDataDirectory = temporaryDocumentDirectory
         
-//        let us = try? FileManager.default.contentsOfDirectory(at: temporaryDirectoryURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+//        let catalogURL = fileURLs.filter { $0.lastPathComponent == "CATALOG.031" }
+        let catalogURL = [temporaryDocumentDirectory.appendingPathComponent("CATALOG.031")]
+        let encExchangeSet = AGSENCExchangeSet(fileURLs: catalogURL)
         
-        ENCExchangeSet.load { [weak self] error in  //, unowned ENCExchangeSet
+        let us = try? FileManager.default.contentsOfDirectory(at: temporaryDocumentDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+        
+        encExchangeSet.load { [weak self] error in  //, unowned ENCExchangeSet
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
@@ -56,7 +72,7 @@ class AddENCExchangeSetViewController: UIViewController {
                 var ENCLayers = [AGSENCLayer]()
                 let loadGroup = DispatchGroup()
                 // Create a list of ENC layers and add them to the map
-                for dataset in ENCExchangeSet.datasets {
+                for dataset in encExchangeSet.datasets {
                     let layer = AGSENCLayer(cell: AGSENCCell(dataset: dataset))
                     ENCLayers.append(layer)
                     loadGroup.enter()
@@ -90,8 +106,9 @@ class AddENCExchangeSetViewController: UIViewController {
     }
     
     deinit {
-        DispatchQueue.global(qos: .utility).async { [temporaryDirectoryURL = self.temporaryDirectoryURL] in
-            try? FileManager.default.removeItem(at: temporaryDirectoryURL)
+        DispatchQueue.global(qos: .utility).async { [temporaryDirectoryURL = self.temporaryDocumentDirectory] in
+            guard let url = temporaryDirectoryURL else { return }
+            try? FileManager.default.removeItem(at: url)
         }
     }
 }

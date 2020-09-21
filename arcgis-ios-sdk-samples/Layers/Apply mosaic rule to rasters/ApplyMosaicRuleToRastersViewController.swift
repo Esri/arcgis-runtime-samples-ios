@@ -85,7 +85,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                // When loaded, set map view's viewpoint to the image service raster's center.
+                // When loaded, set the map view's viewpoint to the image service raster's center.
                 if let center = self.imageServiceRaster.serviceInfo?.fullExtent?.center {
                     self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 25000.0))
                 }
@@ -126,7 +126,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ApplyMosaicRuleToRastersViewController"]
     }
 }

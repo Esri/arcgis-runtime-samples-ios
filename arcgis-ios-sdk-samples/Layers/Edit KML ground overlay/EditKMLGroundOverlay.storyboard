@@ -18,17 +18,33 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QlX-Cr-Hln" customClass="AGSMap">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CtD-jN-6S4">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Item" id="SLT-ky-3wM"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7TH-cv-iDi"/>
+                                    <barButtonItem style="plain" id="Dsc-nE-fyf">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="deL-fs-eJt">
+                                            <rect key="frame" x="276" y="10" width="118" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </slider>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DkQ-hM-5hh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QlX-Cr-Hln" firstAttribute="leading" secondItem="VhX-3L-oDy" secondAttribute="leading" id="4pV-Nm-9u3"/>
+                            <constraint firstItem="DkQ-hM-5hh" firstAttribute="bottom" secondItem="CtD-jN-6S4" secondAttribute="bottom" id="UC5-gk-uVQ"/>
                             <constraint firstAttribute="trailing" secondItem="QlX-Cr-Hln" secondAttribute="trailing" id="Z4i-lR-tiz"/>
                             <constraint firstItem="QlX-Cr-Hln" firstAttribute="top" secondItem="VhX-3L-oDy" secondAttribute="top" id="eJZ-rS-dhH"/>
-                            <constraint firstAttribute="bottom" secondItem="QlX-Cr-Hln" secondAttribute="bottom" id="jz9-Rh-UsC"/>
+                            <constraint firstItem="QlX-Cr-Hln" firstAttribute="bottom" secondItem="CtD-jN-6S4" secondAttribute="top" id="jz9-Rh-UsC"/>
+                            <constraint firstItem="CtD-jN-6S4" firstAttribute="leading" secondItem="VhX-3L-oDy" secondAttribute="leading" id="pdC-1o-f15"/>
+                            <constraint firstAttribute="trailing" secondItem="CtD-jN-6S4" secondAttribute="trailing" id="vxw-Wh-ibS"/>
                         </constraints>
                     </view>
                 </viewController>

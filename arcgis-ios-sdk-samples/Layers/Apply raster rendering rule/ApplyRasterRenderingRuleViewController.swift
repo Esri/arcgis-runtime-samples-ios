@@ -76,11 +76,10 @@ class ApplyRasterRenderingRuleViewController: UIViewController {
                     // Retrieve cached raster layer if it exists.
                     rasterLayer = existingLayer
                 } else {
-                    // Create a new `AGSRenderingRule` object with the chosen rule.
-                    let renderingRule = AGSRenderingRule(renderingRuleInfo: ruleInfo)
+                    // Create a new `AGSImageServiceRaster` object with the chosen rule.
                     let imageServiceRaster = AGSImageServiceRaster(url: self.imageServiceURL)
-                    imageServiceRaster.renderingRule = renderingRule
-                    // Create a new raster layer with the rendering rule.
+                    imageServiceRaster.renderingRule = AGSRenderingRule(renderingRuleInfo: ruleInfo)
+                    // Create a new raster layer.
                     rasterLayer = AGSRasterLayer(raster: imageServiceRaster)
                     self.rasterLayers[ruleInfo.name] = rasterLayer
                 }

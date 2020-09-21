@@ -43,7 +43,7 @@ class ApplyRasterRenderingRuleViewController: UIViewController {
         let map = AGSMap(basemap: .streets())
         // Create a raster layer from the raster and add it to the map.
         let imageServiceRaster = AGSImageServiceRaster(url: imageServiceURL)
-        map.operationalLayers.add(makeRasterLayer(raster: imageServiceRaster))
+        map.operationalLayers.add(AGSRasterLayer(raster: imageServiceRaster))
         // Load the raster and get a list of rendering rule info supported by the service.
         imageServiceRaster.load { [weak self, unowned imageServiceRaster] error in
             guard let self = self else { return }
@@ -56,18 +56,6 @@ class ApplyRasterRenderingRuleViewController: UIViewController {
             }
         }
         return map
-    }
-    
-    /// Create a raster layer from an image service raster with an optional rendering rule.
-    ///
-    /// - Parameters:
-    ///   - raster: An `AGSImageServiceRaster` object.
-    ///   - renderingRule: An optional `AGSRenderingRule` object.
-    /// - Returns: An `AGSRasterLayer` object.
-    func makeRasterLayer(raster: AGSImageServiceRaster, renderingRule: AGSRenderingRule? = nil) -> AGSRasterLayer {
-        raster.renderingRule = renderingRule
-        let rasterLayer = AGSRasterLayer(raster: raster)
-        return rasterLayer
     }
     
     // MARK: Actions
@@ -84,15 +72,16 @@ class ApplyRasterRenderingRuleViewController: UIViewController {
                 // Clear all raster layers before adding new one.
                 map.operationalLayers.removeAllObjects()
                 let rasterLayer: AGSRasterLayer
-                if self.rasterLayers[ruleInfo.name] != nil {
+                if let existingLayer = self.rasterLayers[ruleInfo.name] {
                     // Retrieve cached raster layer if it exists.
-                    rasterLayer = self.rasterLayers[ruleInfo.name]!
+                    rasterLayer = existingLayer
                 } else {
                     // Create a new `AGSRenderingRule` object with the chosen rule.
                     let renderingRule = AGSRenderingRule(renderingRuleInfo: ruleInfo)
                     let imageServiceRaster = AGSImageServiceRaster(url: self.imageServiceURL)
+                    imageServiceRaster.renderingRule = renderingRule
                     // Create a new raster layer with the rendering rule.
-                    rasterLayer = self.makeRasterLayer(raster: imageServiceRaster, renderingRule: renderingRule)
+                    rasterLayer = AGSRasterLayer(raster: imageServiceRaster)
                     self.rasterLayers[ruleInfo.name] = rasterLayer
                 }
                 // Add the new raster layer to the map.

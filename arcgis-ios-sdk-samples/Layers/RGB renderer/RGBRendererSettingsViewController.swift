@@ -16,12 +16,12 @@
 import UIKit
 import ArcGIS
 
-protocol RGBRendererSettingsVCDelegate: AnyObject {
-    func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters)
+protocol RGBRendererSettingsViewControllerDelegate: AnyObject {
+    func rgbRendererSettingsViewController(_ rgbRendererSettingsViewController: RGBRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters)
 }
 
-class RGBRendererSettingsVC: UITableViewController {
-    weak var delegate: RGBRendererSettingsVCDelegate?
+class RGBRendererSettingsViewController: UITableViewController {
+    weak var delegate: RGBRendererSettingsViewControllerDelegate?
     
     weak var stretchTypeCell: UITableViewCell?
     
@@ -61,7 +61,7 @@ class RGBRendererSettingsVC: UITableViewController {
     private var percentClipMax: Double = 1
     private var standardDeviationFactor: Double = 1
     
-    private var stretchType: RGBRendererSettingsVC.StretchType = .minMax {
+    private var stretchType: RGBRendererSettingsViewController.StretchType = .minMax {
         didSet {
             updateStretchTypeLabel()
         }
@@ -109,7 +109,7 @@ class RGBRendererSettingsVC: UITableViewController {
     }
     
     private func rendererParametersChanged() {
-        delegate?.rgbRendererSettingsVC(self, didSelectStretchParameters: makeStretchParameters())
+        delegate?.rgbRendererSettingsViewController(self, didSelectStretchParameters: makeStretchParameters())
     }
     
     // MARK: - Actions
@@ -205,4 +205,16 @@ class RGBRendererSettingsVC: UITableViewController {
         optionsViewController.title = "Stretch Type"
         show(optionsViewController, sender: self)
     }
+}
+
+class RGBRendererInputCell: UITableViewCell {
+    @IBOutlet weak var leadingLabel: UILabel!
+    @IBOutlet weak var textField: UITextField!
+}
+
+class RGBRenderer3InputCell: UITableViewCell {
+    @IBOutlet weak var leadingLabel: UILabel!
+    @IBOutlet weak var textField1: UITextField!
+    @IBOutlet weak var textField2: UITextField!
+    @IBOutlet weak var textField3: UITextField!
 }

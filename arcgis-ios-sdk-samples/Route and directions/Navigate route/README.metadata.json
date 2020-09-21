@@ -20,6 +20,7 @@
         "AGSRouteParameters",
         "AGSRouteTask",
         "AGSRouteTracker",
+        "AGSRouteTrackerLocationDataSource",
         "AGSSimulatedLocationDataSource",
         "AGSStop",
         "AGSVoiceGuidance"
@@ -34,6 +35,7 @@
         "AGSRouteParameters",
         "AGSRouteTask",
         "AGSRouteTracker",
+        "AGSRouteTrackerLocationDataSource",
         "AGSSimulatedLocationDataSource",
         "AGSStop",
         "AGSVoiceGuidance"

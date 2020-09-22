@@ -16,20 +16,27 @@ import UIKit
 import ArcGIS
 
 class EditKMLGroundOverlayViewController: UIViewController {
-    // MARK: Storyboard views
+    // MARK: Storyboard views and properties
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
             sceneView.scene = makeScene()
         }
     }
+    // The slider that controls the overlay's opacity.
     @IBOutlet var opacitySlider: UISlider!
+    // The label that displays the slider's value.
     @IBOutlet var valueLabel: UILabel!
     
+    // The KML ground overlay.
     var overlay: AGSKMLGroundOverlay?
     
+    // MARK: Actions and methods
     @IBAction func sliderValueChanged(_ slider: UISlider) {
-        let alpha = CGFloat(255 * slider.value)
+        // Change the color of the overlay according to the slider's value.
+        let alpha = CGFloat(slider.value)
         overlay?.color = UIColor(red: 0, green: 0, blue: 0, alpha: alpha)
+        // Update the slider's value label.
+        valueLabel.text = String(format: "%.2f", slider.value)
     }
     
     func makeScene() -> AGSScene {
@@ -40,7 +47,7 @@ class EditKMLGroundOverlayViewController: UIViewController {
         // Create a KML icon for the overlay image.
         let imageURL = URL(string: "https://libapps.s3.amazonaws.com/accounts/55937/images/1944.jpg")!
         let overlayImage = AGSKMLIcon(url: imageURL)
-        //Create the KML ground overlay.
+        // Apply a KML ground overlay.
         overlay = AGSKMLGroundOverlay(geometry: overlayGeometry, icon: overlayImage)
         guard let overlay = overlay else { return scene }
         // Set the rotation of the ground overlay.
@@ -56,8 +63,13 @@ class EditKMLGroundOverlayViewController: UIViewController {
         let camera = AGSCamera(lookAt: overlayCenter, distance: 1250, heading: 45, pitch: 60, roll: 0)
         let targetExtent = overlay.geometry as! AGSEnvelope
         sceneView.setViewpoint(AGSViewpoint(targetExtent: targetExtent, camera: camera))
-        // Make an event handler for the opacity slider.
-        
+        // Return the scene.
         return scene
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of the navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["EditKMLGroundOverlayViewController"]
     }
 }

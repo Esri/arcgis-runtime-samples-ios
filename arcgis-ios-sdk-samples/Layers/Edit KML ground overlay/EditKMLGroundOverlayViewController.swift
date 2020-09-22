@@ -28,7 +28,7 @@ class EditKMLGroundOverlayViewController: UIViewController {
     var overlay: AGSKMLGroundOverlay?
     
     @IBAction func sliderValueChanged(_ slider: UISlider) {
-        let alpha = CGFloat(255*slider.value)
+        let alpha = CGFloat(255 * slider.value)
         overlay?.color = UIColor(red: 0, green: 0, blue: 0, alpha: alpha)
     }
     

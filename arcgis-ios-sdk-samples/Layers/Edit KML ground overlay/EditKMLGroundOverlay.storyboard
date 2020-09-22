@@ -61,12 +61,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QlX-Cr-Hln" firstAttribute="leading" secondItem="VhX-3L-oDy" secondAttribute="leading" id="4pV-Nm-9u3"/>
+                            <constraint firstItem="OBw-N8-s44" firstAttribute="trailing" secondItem="DkQ-hM-5hh" secondAttribute="trailing" id="6Vd-cn-1Je"/>
                             <constraint firstItem="QlX-Cr-Hln" firstAttribute="bottom" secondItem="OBw-N8-s44" secondAttribute="top" id="8gn-sK-pU5"/>
                             <constraint firstItem="OBw-N8-s44" firstAttribute="bottom" secondItem="DkQ-hM-5hh" secondAttribute="bottom" id="Z0Y-1X-ODW"/>
                             <constraint firstAttribute="trailing" secondItem="QlX-Cr-Hln" secondAttribute="trailing" id="Z4i-lR-tiz"/>
                             <constraint firstItem="QlX-Cr-Hln" firstAttribute="top" secondItem="VhX-3L-oDy" secondAttribute="top" id="eJZ-rS-dhH"/>
-                            <constraint firstAttribute="trailing" secondItem="OBw-N8-s44" secondAttribute="trailing" id="hqW-eH-Lxi"/>
-                            <constraint firstItem="OBw-N8-s44" firstAttribute="leading" secondItem="VhX-3L-oDy" secondAttribute="leading" id="n1b-9a-56R"/>
+                            <constraint firstItem="OBw-N8-s44" firstAttribute="leading" secondItem="DkQ-hM-5hh" secondAttribute="leading" id="r0Z-BN-4gR"/>
                         </constraints>
                     </view>
                     <connections>

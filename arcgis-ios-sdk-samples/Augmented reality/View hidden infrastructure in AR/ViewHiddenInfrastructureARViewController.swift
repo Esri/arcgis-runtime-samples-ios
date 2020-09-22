@@ -334,7 +334,7 @@ class HiddenInfrastructureARViewer: UIViewController, ARSCNViewDelegate {
         infrastructureOverlay.sceneProperties?.surfacePlacement = .absolute
         arView.sceneView.graphicsOverlays.add(infrastructureOverlay)
         
-        let infrastructureGraphics = pipeGraphics.map { AGSGraphic(geometry: $0.geometry, symbol: nil)}
+        let infrastructureGraphics = pipeGraphics.map { AGSGraphic(geometry: $0.geometry, symbol: nil) }
         infrastructureOverlay.graphics.addObjects(from: infrastructureGraphics)
         
         // Configure location data source

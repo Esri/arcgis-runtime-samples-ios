@@ -124,7 +124,8 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
     /// Handle an elevation slider valueChanged event.
     ///
     /// - Parameter sender: The slider tapped on.
-    @objc func elevationChanged(_ sender: UISlider) {
+    @objc
+    func elevationChanged(_ sender: UISlider) {
         guard elevationTimer == nil else { return }
         let timer = Timer(timeInterval: 0.25, repeats: true) { [weak self] _ in
             guard let self = self else { return }

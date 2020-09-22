@@ -28,7 +28,7 @@ class EditKMLGroundOverlayViewController: UIViewController {
     @IBOutlet var valueLabel: UILabel!
     
     // The KML ground overlay.
-    var overlay: AGSKMLGroundOverlay?
+    var overlay: AGSKMLGroundOverlay!
     
     // MARK: Actions and methods
     @IBAction func sliderValueChanged(_ slider: UISlider) {
@@ -48,8 +48,8 @@ class EditKMLGroundOverlayViewController: UIViewController {
         let imageURL = URL(string: "https://libapps.s3.amazonaws.com/accounts/55937/images/1944.jpg")!
         let overlayImage = AGSKMLIcon(url: imageURL)
         // Apply a KML ground overlay.
-        overlay = AGSKMLGroundOverlay(geometry: overlayGeometry, icon: overlayImage)
-        guard let overlay = overlay else { return scene }
+        let overlay = AGSKMLGroundOverlay(geometry: overlayGeometry, icon: overlayImage)!
+        self.overlay = overlay
         // Set the rotation of the ground overlay.
         overlay.rotation = -3.046024799346924
         // Create a KML dataset with the ground overlay as the root node.

@@ -230,7 +230,7 @@ class HiddenInfrastructureARViewer: UIViewController, ARSCNViewDelegate {
     private let toolbar = UIToolbar()
     private let helpLabel = UILabel()
     private let arKitStatusLabel = UILabel()
-    private var calibrationVC: ARRealScaleRoamingCalibrator
+    private var calibrationVC: ViewHiddenInfrastructureARCalibrationViewController
     private let realScaleModePicker = UISegmentedControl(items: ["Roaming", "Local"])
     private let calibrationBBI = UIBarButtonItem(title: "Calibrate",
                                                  style: .plain,
@@ -340,8 +340,7 @@ class HiddenInfrastructureARViewer: UIViewController, ARSCNViewDelegate {
 
     public init(pipeGraphics: [AGSGraphic]) {
         self.pipeGraphics = pipeGraphics
-        calibrationVC = ARRealScaleRoamingCalibrator(sceneView:
-            arView.sceneView, cameraController: arView.cameraController)
+        calibrationVC = ViewHiddenInfrastructureARCalibrationViewController(arcgisARView: arView)
         isCalibrating = false
         super.init(nibName: nil, bundle: nil)
     }
@@ -352,7 +351,7 @@ class HiddenInfrastructureARViewer: UIViewController, ARSCNViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        arView.startTracking(useLocationDataSourceOnce: false, completion: nil)
+        arView.startTracking(.continuous)
         showCalibrationPopup(calibrationBBI)
     }
 
@@ -369,12 +368,14 @@ extension HiddenInfrastructureARViewer {
         if sender.selectedSegmentIndex == 0 {
             // Roaming - continuous update
             arView.stopTracking()
-            arView.startTracking(useLocationDataSourceOnce: false, completion: nil)
+            arView.startTracking(.continuous)
+//            arView.startTracking(useLocationDataSourceOnce: false, completion: nil)
             helpLabel.text = "Using CoreLocation + ARKit"
         } else {
             // Local - only update once, then manually calibrate
             arView.stopTracking()
-            arView.startTracking(useLocationDataSourceOnce: true, completion: nil)
+            arView.startTracking(.initial)
+//            arView.startTracking(useLocationDataSourceOnce: true, completion: nil)
             helpLabel.text = "Using ARKit only"
         }
     }
@@ -386,7 +387,6 @@ extension HiddenInfrastructureARViewer {
         } else {
             isCalibrating = true
             let controller = self.calibrationVC
-            controller.preferredContentSize = CGSize(width: 250, height: 100)
             showPopup(controller, sourceButton: sender)
         }
     }
@@ -431,188 +431,6 @@ class AlwaysPresentAsPopover: NSObject, UIPopoverPresentationControllerDelegate 
             return presentationController
         }
         return nil
-    }
-}
-
-class ARRealScaleRoamingCalibrator: UIViewController {
-    // The scene view displaying the scene.
-    private let sceneView: AGSSceneView
-
-    /// The camera controller used to adjust user interactions.
-    private let cameraController: AGSTransformationMatrixCameraController
-
-    /// The UISlider used to adjust elevation.
-    private let elevationSlider: UISlider = {
-        let slider = UISlider(frame: .zero)
-        slider.minimumValue = -50.0
-        slider.maximumValue = 50.0
-        return slider
-    }()
-
-    /// The UISlider used to adjust heading.
-    private let headingSlider: UISlider = {
-        let slider = UISlider(frame: .zero)
-        slider.minimumValue = -10.0
-        slider.maximumValue = 10.0
-        return slider
-    }()
-
-    /// The last elevation slider value.
-    var lastElevationValue: Float = 0
-
-    // The last heading slider value.
-    var lastHeadingValue: Float = 0
-
-    /// Initialized a new calibration view with the given scene view and camera controller.
-    ///
-    /// - Parameters:
-    ///   - sceneView: The scene view displaying the scene.
-    ///   - cameraController: The camera controller used to adjust user interactions.
-    init(sceneView: AGSSceneView, cameraController: AGSTransformationMatrixCameraController) {
-        self.cameraController = cameraController
-        self.sceneView = sceneView
-        super.init(nibName: nil, bundle: nil)
-
-        // Add the heading label and slider.
-        let headingLabel = UILabel(frame: .zero)
-        headingLabel.text = "Heading:"
-        headingLabel.textColor = view.tintColor
-        view.addSubview(headingLabel)
-        headingLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            headingLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            headingLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
-            ])
-
-        view.addSubview(headingSlider)
-        headingSlider.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            headingSlider.leadingAnchor.constraint(equalTo: headingLabel.trailingAnchor, constant: 16),
-            headingSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            headingSlider.centerYAnchor.constraint(equalTo: headingLabel.centerYAnchor)
-            ])
-
-        // Add the elevation label and slider.
-        let elevationLabel = UILabel(frame: .zero)
-        elevationLabel.text = "Elevation:"
-        elevationLabel.textColor = view.tintColor
-        view.addSubview(elevationLabel)
-        elevationLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            elevationLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            elevationLabel.bottomAnchor.constraint(equalTo: headingLabel.topAnchor, constant: -24)
-            ])
-
-        view.addSubview(elevationSlider)
-        elevationSlider.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            elevationSlider.leadingAnchor.constraint(equalTo: elevationLabel.trailingAnchor, constant: 16),
-            elevationSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            elevationSlider.centerYAnchor.constraint(equalTo: elevationLabel.centerYAnchor)
-            ])
-
-        // Setup actions for the two sliders. The sliders operate as "joysticks",
-        // where moving the slider thumb will start a timer
-        // which roates or elevates the current camera when the timer fires.  The elevation and heading delta
-        // values increase the further you move away from center.  Moving and holding the thumb a little bit from center
-        // will roate/elevate just a little bit, but get progressively more the further from center the thumb is moved.
-        headingSlider.addTarget(self, action: #selector(headingChanged(_:)), for: .valueChanged)
-        headingSlider.addTarget(self, action: #selector(touchUpHeading(_:)), for: [.touchUpInside, .touchUpOutside])
-        elevationSlider.addTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
-        elevationSlider.addTarget(self, action: #selector(touchUpElevation(_:)), for: [.touchUpInside, .touchUpOutside])
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // The timers for the "joystick" behavior.
-    private var elevationTimer: Timer?
-    private var headingTimer: Timer?
-
-    /// Handle an elevation slider value-changed event.
-    ///
-    /// - Parameter sender: The slider tapped on.
-    @objc func elevationChanged(_ sender: UISlider) {
-        if elevationTimer == nil {
-            // Create a timer which elevates the camera when fired.
-            elevationTimer = Timer(timeInterval: 0.25, repeats: true, block: { [weak self] (_) in
-                let delta = self?.joystickElevation() ?? 0.0
-                //                print("elevate delta = \(delta)")
-                self?.elevate(delta)
-            })
-
-            // Add the timer to the main run loop.
-            guard let timer = elevationTimer else { return }
-            RunLoop.main.add(timer, forMode: .default)
-        }
-    }
-
-    /// Handle an heading slider value-changed event.
-    ///
-    /// - Parameter sender: The slider tapped on.
-    @objc func headingChanged(_ sender: UISlider) {
-        if headingTimer == nil {
-            // Create a timer which rotates the camera when fired.
-            headingTimer = Timer(timeInterval: 0.1, repeats: true, block: { [weak self] (_) in
-                let delta = self?.joystickHeading() ?? 0.0
-                //                print("rotate delta = \(delta)")
-                self?.rotate(delta)
-            })
-            // Add the timer to the main run loop.
-            guard let timer = headingTimer else { return }
-            RunLoop.main.add(timer, forMode: .default)
-        }
-    }
-
-    /// Handle an elevation slider touchUp event.  This will stop the timer.
-    ///
-    /// - Parameter sender: The slider tapped on.
-    @objc func touchUpElevation(_ sender: UISlider) {
-        elevationTimer?.invalidate()
-        elevationTimer = nil
-        sender.value = 0.0
-    }
-
-    /// Handle a heading slider touchUp event.  This will stop the timer.
-    ///
-    /// - Parameter sender: The slider tapped on.
-    @objc func touchUpHeading(_ sender: UISlider) {
-        headingTimer?.invalidate()
-        headingTimer = nil
-        sender.value = 0.0
-    }
-
-    /// Rotates the camera by `deltaHeading`.
-    ///
-    /// - Parameter deltaHeading: The amount to rotate the camera.
-    private func rotate(_ deltaHeading: Double) {
-        let camera = cameraController.originCamera
-        let newHeading = camera.heading + deltaHeading
-        cameraController.originCamera = camera.rotate(toHeading: newHeading, pitch: camera.pitch, roll: camera.roll)
-    }
-
-    /// Change the cameras altitude by `deltaAltitude`.
-    ///
-    /// - Parameter deltaAltitude: The amount to elevate the camera.
-    private func elevate(_ deltaAltitude: Double) {
-        let camera = cameraController.originCamera
-        cameraController.originCamera = camera.elevate(withDeltaAltitude: deltaAltitude)
-    }
-
-    /// Calculates the elevation delta amount based on the elevation slider value.
-    ///
-    /// - Returns: The elevation delta.
-    private func joystickElevation() -> Double {
-        let deltaElevation = Double(elevationSlider.value)
-        return pow(deltaElevation, 2) / 50.0 * (deltaElevation < 0 ? -1.0 : 1.0)
-    }
-
-    /// Calculates the heading delta amount based on the heading slider value.
-    ///
-    /// - Returns: The heading delta.
-    private func joystickHeading() -> Double {
-        let deltaHeading = Double(headingSlider.value)
-        return pow(deltaHeading, 2) / 25.0 * (deltaHeading < 0 ? -1.0 : 1.0)
     }
 }
 

@@ -58,7 +58,7 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
     init(arcgisARView: ArcGISARView) {
         self.arcgisARView = arcgisARView
         super.init(nibName: nil, bundle: nil)
-        preferredContentSize = CGSize(width: 250, height: 50)
+        preferredContentSize = CGSize(width: 250, height: 100)
         // Add the heading label and slider.
         let headingLabel = UILabel()
         headingLabel.text = "Heading:"

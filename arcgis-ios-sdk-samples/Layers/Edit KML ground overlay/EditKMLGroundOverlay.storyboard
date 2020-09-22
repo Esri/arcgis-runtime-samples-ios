@@ -17,36 +17,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QlX-Cr-Hln" customClass="AGSMap">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QlX-Cr-Hln" userLabel="Scene View" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CtD-jN-6S4">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                                <items>
-                                    <barButtonItem title="Item" id="SLT-ky-3wM"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7TH-cv-iDi"/>
-                                    <barButtonItem style="plain" id="Dsc-nE-fyf">
-                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="deL-fs-eJt">
-                                            <rect key="frame" x="276" y="10" width="118" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </slider>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBw-N8-s44" userLabel="Slider View">
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnj-c3-Bba" userLabel="Opacity Label">
+                                        <rect key="frame" x="8" y="14.5" width="59" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0Ni-VA-Db8">
+                                        <rect key="frame" x="73" y="10" width="268" height="31"/>
+                                        <connections>
+                                            <action selector="sliderValueChanged:" destination="NFA-Uf-2BM" eventType="valueChanged" id="ouV-lj-YHu"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29f-sM-h0o" userLabel="Value Label">
+                                        <rect key="frame" x="347" y="14.5" width="59" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Nnj-c3-Bba" firstAttribute="leading" secondItem="OBw-N8-s44" secondAttribute="leading" constant="8" id="DuL-gM-MKR"/>
+                                    <constraint firstItem="0Ni-VA-Db8" firstAttribute="leading" secondItem="Nnj-c3-Bba" secondAttribute="trailing" constant="8" id="ISz-n5-I9e"/>
+                                    <constraint firstAttribute="height" constant="50" id="S1L-hT-PQi"/>
+                                    <constraint firstItem="0Ni-VA-Db8" firstAttribute="centerY" secondItem="OBw-N8-s44" secondAttribute="centerY" id="V44-bt-8vd"/>
+                                    <constraint firstItem="29f-sM-h0o" firstAttribute="leading" secondItem="0Ni-VA-Db8" secondAttribute="trailing" constant="8" id="XXX-Wm-lIT"/>
+                                    <constraint firstAttribute="trailing" secondItem="29f-sM-h0o" secondAttribute="trailing" constant="8" id="gBm-qV-tmN"/>
+                                    <constraint firstItem="0Ni-VA-Db8" firstAttribute="centerX" secondItem="OBw-N8-s44" secondAttribute="centerX" id="kNN-9u-sQl"/>
+                                    <constraint firstItem="Nnj-c3-Bba" firstAttribute="centerY" secondItem="OBw-N8-s44" secondAttribute="centerY" id="mZm-bJ-r5q"/>
+                                    <constraint firstItem="29f-sM-h0o" firstAttribute="centerY" secondItem="OBw-N8-s44" secondAttribute="centerY" id="y7F-Bk-jc9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DkQ-hM-5hh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QlX-Cr-Hln" firstAttribute="leading" secondItem="VhX-3L-oDy" secondAttribute="leading" id="4pV-Nm-9u3"/>
-                            <constraint firstItem="DkQ-hM-5hh" firstAttribute="bottom" secondItem="CtD-jN-6S4" secondAttribute="bottom" id="UC5-gk-uVQ"/>
+                            <constraint firstItem="QlX-Cr-Hln" firstAttribute="bottom" secondItem="OBw-N8-s44" secondAttribute="top" id="8gn-sK-pU5"/>
+                            <constraint firstItem="OBw-N8-s44" firstAttribute="bottom" secondItem="DkQ-hM-5hh" secondAttribute="bottom" id="Z0Y-1X-ODW"/>
                             <constraint firstAttribute="trailing" secondItem="QlX-Cr-Hln" secondAttribute="trailing" id="Z4i-lR-tiz"/>
                             <constraint firstItem="QlX-Cr-Hln" firstAttribute="top" secondItem="VhX-3L-oDy" secondAttribute="top" id="eJZ-rS-dhH"/>
-                            <constraint firstItem="QlX-Cr-Hln" firstAttribute="bottom" secondItem="CtD-jN-6S4" secondAttribute="top" id="jz9-Rh-UsC"/>
-                            <constraint firstItem="CtD-jN-6S4" firstAttribute="leading" secondItem="VhX-3L-oDy" secondAttribute="leading" id="pdC-1o-f15"/>
-                            <constraint firstAttribute="trailing" secondItem="CtD-jN-6S4" secondAttribute="trailing" id="vxw-Wh-ibS"/>
+                            <constraint firstAttribute="trailing" secondItem="OBw-N8-s44" secondAttribute="trailing" id="hqW-eH-Lxi"/>
+                            <constraint firstItem="OBw-N8-s44" firstAttribute="leading" secondItem="VhX-3L-oDy" secondAttribute="leading" id="n1b-9a-56R"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="opacitySlider" destination="0Ni-VA-Db8" id="4d6-8N-VlR"/>
+                        <outlet property="sceneView" destination="QlX-Cr-Hln" id="oRT-Us-sht"/>
+                        <outlet property="valueLabel" destination="29f-sM-h0o" id="bFV-jR-oEv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nlt-sh-CIv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

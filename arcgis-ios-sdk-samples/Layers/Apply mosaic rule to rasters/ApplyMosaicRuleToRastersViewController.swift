@@ -20,10 +20,19 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
     
     /// A label to show status messages.
     @IBOutlet var statusLabel: UILabel!
+    /// The KVO on draw status of the map view.
+    private var drawStatusObservation: NSKeyValueObservation?
+    
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
+            // Observe the map view's drawing status to see when the new mosaic rule is loaded.
+            drawStatusObservation = mapView.observe(\.drawStatus, options: .initial) { (mapView, _) in
+                if mapView.drawStatus == .completed {
+                    SVProgressHUD.dismiss()
+                }
+            }
         }
     }
     /// The image service raster to demo mosaic rules.
@@ -80,6 +89,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         let map = AGSMap(basemap: .topographicVector())
         // Add raster layer as an operational layer to the map.
         map.operationalLayers.add(rasterLayer)
+        SVProgressHUD.show(withStatus: "Loading")
         rasterLayer.load { [weak self] (error: Error?) in
             guard let self = self else { return }
             if let error = error {
@@ -111,6 +121,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         )
         mosaicRulePairs.forEach { name, rule in
             let action = UIAlertAction(title: name, style: .default) { _ in
+                SVProgressHUD.show(withStatus: "Loading mosaic rule")
                 self.setStatus(message: "\(name) selected.")
                 self.imageServiceRaster.mosaicRule = rule
             }
@@ -128,5 +139,10 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ApplyMosaicRuleToRastersViewController"]
+    }
+    
+    deinit {
+        // Nilify the KVO after the main view disappears.
+        drawStatusObservation = nil
     }
 }

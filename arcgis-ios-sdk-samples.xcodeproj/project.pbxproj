@@ -18,6 +18,9 @@
 		001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
 		003BC30F24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
 		003BC31224E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
+		003D25622513D833007527C2 /* ApplyRasterRenderingRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */; };
+		003D25642513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */; };
+		003D25652513DF58007527C2 /* ApplyRasterRenderingRuleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -25,6 +28,7 @@
 		008D175724EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
 		008D175924EEF4390001BB8F /* EditWithBranchVersioning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */; };
 		008D175A24EF35800001BB8F /* EditWithBranchVersioningViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
+		009D8BEF24F9AC8D00FD7E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */; };
 		00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */; };
 		00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
 		00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3C22464D59200A3B88D /* PacificSouthWest */; settings = {ASSET_TAGS = (PacificSouthWest, ); }; };
@@ -171,7 +175,6 @@
 		3E1E5EF31D9F0E6F00F4913C /* HillshadeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E1E5EE61D9F095A00F4913C /* HillshadeSettingsViewController.swift */; };
 		3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */; };
 		3E23A9EF1AFC28F6002E2214 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */; };
-		3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */; };
 		3E24E6741BFE560B00322DAC /* LayerStatusViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; };
 		3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A680D1B0D2A7000A318AA /* ListViewController.swift */; };
 		3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */; };
@@ -888,6 +891,7 @@
 			dstSubfolderSpec = 7;
 			files = (
 				00F953C724E34CCC00D16555 /* ApplyMosaicRuleToRastersViewController.swift in CopyFiles */,
+				003D25652513DF58007527C2 /* ApplyRasterRenderingRuleViewController.swift in CopyFiles */,
 				F12C739F250ADDB000C1E3FE /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */,
 				F12C73A0250ADDB000C1E3FE /* ConfigureSubnetworkTraceOptionsViewController.swift in CopyFiles */,
 				008D175A24EF35800001BB8F /* EditWithBranchVersioningViewController.swift in CopyFiles */,
@@ -1174,10 +1178,13 @@
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
 		003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceOptionsViewController.swift; sourceTree = "<group>"; };
 		003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceViewController.swift; sourceTree = "<group>"; };
+		003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApplyRasterRenderingRule.storyboard; sourceTree = "<group>"; };
+		003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRasterRenderingRuleViewController.swift; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWithBranchVersioningViewController.swift; sourceTree = "<group>"; };
 		008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditWithBranchVersioning.storyboard; sourceTree = "<group>"; };
+		009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnimateImagesWithImageOverlay.storyboard; sourceTree = "<group>"; };
 		00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateImagesWithImageOverlayViewController.swift; sourceTree = "<group>"; };
 		00ADC3C22464D59200A3B88D /* PacificSouthWest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PacificSouthWest; sourceTree = "<group>"; };
@@ -1282,7 +1289,6 @@
 		3E23A9E41AFC28F6002E2214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "arcgis-ios-sdk-samples/AppDelegate.swift"; sourceTree = "<group>"; };
 		3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "arcgis-ios-sdk-samples/Assets.xcassets"; sourceTree = "<group>"; };
-		3E23A9F11AFC28F6002E2214 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3E2A680D1B0D2A7000A318AA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeBarButtonItem.swift; sourceTree = "<group>"; };
 		3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditFeaturesOnline.storyboard; sourceTree = "<group>"; };
@@ -1795,6 +1801,15 @@
 			path = "Feature collection layer (portal item)";
 			sourceTree = "<group>";
 		};
+		003D255D2513D824007527C2 /* Apply raster rendering rule */ = {
+			isa = PBXGroup;
+			children = (
+				003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */,
+				003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */,
+			);
+			path = "Apply raster rendering rule";
+			sourceTree = "<group>";
+		};
 		008D175024EEEEBD0001BB8F /* Geodatabases */ = {
 			isa = PBXGroup;
 			children = (
@@ -2183,6 +2198,7 @@
 		3E0D3AD51AFD47BF00FC60D6 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */,
 				3E0D3AD61AFD481900FC60D6 /* Main.storyboard */,
 			);
 			path = Storyboard;
@@ -2252,7 +2268,6 @@
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				C7E86C8E21751CFE001C65C3 /* Extensions */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
-				3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */,
 				3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */,
 				3E23A9E41AFC28F6002E2214 /* Info.plist */,
 			);
@@ -2997,6 +3012,7 @@
 			isa = PBXGroup;
 			children = (
 				00F953C124E34C1300D16555 /* Apply mosaic rule to rasters */,
+				003D255D2513D824007527C2 /* Apply raster rendering rule */,
 				00ADC3C92464DD0600A3B88D /* Identify raster cell */,
 				F15CF0C723EE26CB0038F052 /* Display subtype feature layer */,
 				F140E1E823F35E61008AC44E /* Display annotation */,
@@ -4626,7 +4642,6 @@
 				C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */,
 				00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */,
 				C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */,
-				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
 				D9E2E76320EEB8FF001D0AE0 /* Public_Art.sbn in Resources */,
 				D9E2E75320EEAC58001D0AE0 /* FeatureLayerShapefile.storyboard in Resources */,
@@ -4636,6 +4651,7 @@
 				D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
 				3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */,
+				003D25622513D833007527C2 /* ApplyRasterRenderingRule.storyboard in Resources */,
 				3ED028781B8E3A8500ACA70D /* ManageMapLayers.storyboard in Resources */,
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
 				C7AF466621B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard in Resources */,
@@ -4846,6 +4862,7 @@
 				D9E2E76620EEB8FF001D0AE0 /* Public_Art.shp.xml in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
 				00DAE5D824213D5B00D51281 /* Restaurant.stylx in Resources */,
+				009D8BEF24F9AC8D00FD7E76 /* LaunchScreen.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
@@ -5005,6 +5022,7 @@
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
 				3EBA255B1D33FF1400AB0703 /* PictureMarkerSymbolsViewController.swift in Sources */,
 				21E9CDEC1EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift in Sources */,
+				003D25642513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift in Sources */,
 				3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */,
 				3ED028791B8E3A8500ACA70D /* ManageMapLayersViewController.swift in Sources */,
 				C7BE9C4F219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift in Sources */,
@@ -5295,22 +5313,12 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3E23A9F11AFC28F6002E2214 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		3E23A9FF1AFC28F6002E2214 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -5368,6 +5376,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

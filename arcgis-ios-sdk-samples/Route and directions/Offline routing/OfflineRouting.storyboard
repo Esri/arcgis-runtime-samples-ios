@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XiM-Ic-ILI">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XiM-Ic-ILI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,39 +11,37 @@
         <!--Offline Routing View Controller-->
         <scene sceneID="fNR-gM-0Sw">
             <objects>
-                <viewController id="XiM-Ic-ILI" customClass="OfflineRoutingViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XiM-Ic-ILI" customClass="OfflineRoutingViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TeH-ax-zgC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l92-Q4-Uk4" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msR-U7-cd1">
-                                <rect key="frame" x="0.0" y="623" width="375" height="36"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfV-dz-lse">
                                         <rect key="frame" x="8" y="8" width="43" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(0.5 mi)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZB-D0-rcp">
                                         <rect key="frame" x="55" y="8" width="59" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5V-9s-nrk">
-                                        <rect key="frame" x="323" y="-4" width="44" height="44"/>
+                                        <rect key="frame" x="384" y="7" width="22" height="22"/>
                                         <state key="normal" image="trashBlue"/>
                                         <connections>
                                             <action selector="trashAction" destination="XiM-Ic-ILI" eventType="touchUpInside" id="aow-la-aiR"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="wfV-dz-lse" firstAttribute="centerY" secondItem="msR-U7-cd1" secondAttribute="centerY" id="6SU-PC-rum"/>
                                     <constraint firstItem="NZB-D0-rcp" firstAttribute="leading" secondItem="wfV-dz-lse" secondAttribute="trailing" constant="4" id="CZS-1J-Glj"/>
@@ -57,7 +53,7 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohl-3X-6nD">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Chx-y5-d7h"/>
                                 </constraints>
@@ -65,7 +61,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="FdY-uT-UmQ"/>
                                     <barButtonItem style="plain" id="EGO-cf-9qa">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dea-4D-qZ3">
-                                            <rect key="frame" x="121" y="7.5" width="133" height="29"/>
+                                            <rect key="frame" x="134.5" y="6" width="145" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Fastest"/>
@@ -80,7 +76,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Ohl-3X-6nD" firstAttribute="top" secondItem="msR-U7-cd1" secondAttribute="bottom" constant="-36" id="00W-hv-SbS"/>
                             <constraint firstItem="4Sz-d2-GIP" firstAttribute="trailing" secondItem="msR-U7-cd1" secondAttribute="trailing" id="75w-YH-vgj"/>
@@ -90,7 +86,7 @@
                             <constraint firstItem="msR-U7-cd1" firstAttribute="leading" secondItem="4Sz-d2-GIP" secondAttribute="leading" id="dZr-dh-xFA"/>
                             <constraint firstItem="l92-Q4-Uk4" firstAttribute="leading" secondItem="TeH-ax-zgC" secondAttribute="leading" id="qAg-Wf-ZrC"/>
                             <constraint firstAttribute="trailing" secondItem="Ohl-3X-6nD" secondAttribute="trailing" id="rU3-l6-PgI"/>
-                            <constraint firstItem="l92-Q4-Uk4" firstAttribute="top" secondItem="4Sz-d2-GIP" secondAttribute="top" constant="-20" id="sGs-DR-j1e"/>
+                            <constraint firstItem="l92-Q4-Uk4" firstAttribute="top" secondItem="4Sz-d2-GIP" secondAttribute="top" id="sGs-DR-j1e"/>
                             <constraint firstItem="Ohl-3X-6nD" firstAttribute="leading" secondItem="TeH-ax-zgC" secondAttribute="leading" id="vnQ-BE-ey1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Sz-d2-GIP"/>
@@ -108,7 +104,11 @@
             <point key="canvasLocation" x="547" y="216"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="AccentColor"/>
     <resources>
-        <image name="trashBlue" width="44" height="44"/>
+        <image name="trashBlue" width="22" height="22"/>
+        <namedColor name="AccentColor">
+            <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

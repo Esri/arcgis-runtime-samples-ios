@@ -1,0 +1,30 @@
+{
+    "category": "Layers",
+    "description": "Edit the values of a KML ground overlay.",
+    "ignore": false,
+    "images": [
+        "edit-kml-ground-overlay.png"
+    ],
+    "keywords": [
+        "imagery",
+        "Keyhole",
+        "KML",
+        "KMZ",
+        "OGC",
+        "AGSKMLDataset",
+        "AGSKMLGroundOverlay",
+        "AGSKMLIcon",
+        "AGSKMLLayer"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSKMLDataset",
+        "AGSKMLGroundOverlay",
+        "AGSKMLIcon",
+        "AGSKMLLayer"
+    ],
+    "snippets": [
+        "EditKMLGroundOverlayViewController"
+    ],
+    "title": "Edit KML ground overlay"
+}

@@ -24,7 +24,7 @@
         "AGSKMLLayer"
     ],
     "snippets": [
-        "EditKMLGroundOverlayViewController"
+        "EditKMLGroundOverlayViewController.swift"
     ],
     "title": "Edit KML ground overlay"
 }

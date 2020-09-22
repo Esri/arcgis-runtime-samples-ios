@@ -83,7 +83,7 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
         elevationLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             elevationLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 2),
-            headingLabel.bottomAnchor.constraint(equalToSystemSpacingBelow: elevationLabel.bottomAnchor, multiplier: 2)
+            headingLabel.topAnchor.constraint(equalToSystemSpacingBelow: elevationLabel.bottomAnchor, multiplier: 2)
         ])
         view.addSubview(elevationSlider)
         elevationSlider.translatesAutoresizingMaskIntoConstraints = false

@@ -6,7 +6,7 @@ Edit the values of a KML ground overlay.
 
 ## Use case
 
-KML ground overlays are used for showing aerial imagery, symbology, or other images draped over a scene. Changing the geometry, rotation, and other attributes of a ground overlay after it has been loaded allows for live editing.  For example, editing the geometry and opacity of a historical image draped over present day satellite imagery makes it possible to view change over time.
+KML ground overlays are used for showing aerial imagery, symbology, or other images draped over a scene. Changing the geometry, rotation, and other attributes of a ground overlay after it has been loaded allows for live editing. For example, editing the geometry and opacity of a historical image draped over present day satellite imagery makes it possible to view change over time.
 
 ## How to use the sample
 

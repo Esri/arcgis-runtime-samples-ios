@@ -56,7 +56,7 @@ class EditKMLGroundOverlayViewController: UIViewController {
         let dataset = AGSKMLDataset(rootNode: overlay)
         // Create a KML layer for the scene view.
         let layer = AGSKMLLayer(kmlDataset: dataset)
-        // Add the layer to the map.
+        // Add the layer to the scene.
         scene.operationalLayers.add(layer)
         // Move the viewpoint to the ground overlay.
         let overlayCenter = overlay.geometry.extent.center

@@ -6,11 +6,11 @@
         "edit-kml-ground-overlay.png"
     ],
     "keywords": [
-        "imagery",
-        "Keyhole",
         "KML",
         "KMZ",
+        "Keyhole",
         "OGC",
+        "imagery",
         "AGSKMLDataset",
         "AGSKMLGroundOverlay",
         "AGSKMLIcon",

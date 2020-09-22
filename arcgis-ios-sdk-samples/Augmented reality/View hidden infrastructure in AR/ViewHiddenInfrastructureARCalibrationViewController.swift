@@ -15,18 +15,33 @@
 import UIKit
 import ArcGISToolkit
 
-// MARK: - Calibrate navigation heading
+// MARK: - Calibrate heading and elevation
 
 class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
     /// The `ArcGISARView` used to display scene and adjust user interactions with camera.
     private let arcgisARView: ArcGISARView
-    /// The timer for the "joystick" behavior.
+    /// The elevation timer for the "joystick" behavior.
+    private var elevationTimer: Timer?
+    /// The heading timer for the "joystick" behavior.
     private var headingTimer: Timer?
     /// The heading delta degrees based on the heading slider value.
     private var joystickHeading: Double {
         let deltaHeading = Double(headingSlider.value)
         return Double(signOf: deltaHeading, magnitudeOf: deltaHeading * deltaHeading / 25)
     }
+    
+    private var joystickElevation: Double {
+        let deltaElevation = Double(elevationSlider.value)
+        return Double(signOf: deltaElevation, magnitudeOf: deltaElevation * deltaElevation / 50)
+    }
+    
+    /// The `UISlider` used to adjust elevation.
+    private let elevationSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = -50.0
+        slider.maximumValue = 50.0
+        return slider
+    }()
     
     /// The `UISlider` used to adjust heading.
     private let headingSlider: UISlider = {
@@ -53,7 +68,6 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
             headingLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 2),
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: headingLabel.bottomAnchor, multiplier: 2)
         ])
-        
         view.addSubview(headingSlider)
         headingSlider.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -62,9 +76,28 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
             headingSlider.centerYAnchor.constraint(equalTo: headingLabel.centerYAnchor)
         ])
         
-        // Setup actions for the slider which operate as "joysticks".
+        // Add the elevation label and slider.
+        let elevationLabel = UILabel()
+        elevationLabel.text = "Elevation:"
+        view.addSubview(elevationLabel)
+        elevationLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            elevationLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 2),
+            headingLabel.bottomAnchor.constraint(equalToSystemSpacingBelow: elevationLabel.bottomAnchor, multiplier: 2)
+        ])
+        view.addSubview(elevationSlider)
+        elevationSlider.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            elevationSlider.leadingAnchor.constraint(equalToSystemSpacingAfter: elevationLabel.trailingAnchor, multiplier: 2),
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: elevationSlider.trailingAnchor, multiplier: 2),
+            elevationSlider.centerYAnchor.constraint(equalTo: elevationLabel.centerYAnchor)
+        ])
+        
+        // Setup actions for the sliders which operate as "joysticks".
         headingSlider.addTarget(self, action: #selector(headingChanged(_:)), for: .valueChanged)
         headingSlider.addTarget(self, action: #selector(touchUpHeading(_:)), for: [.touchUpInside, .touchUpOutside])
+        elevationSlider.addTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
+        elevationSlider.addTarget(self, action: #selector(touchUpElevation(_:)), for: [.touchUpInside, .touchUpOutside])
     }
     
     @available(*, unavailable)
@@ -79,13 +112,36 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
     func headingChanged(_ sender: UISlider) {
         guard headingTimer == nil else { return }
         // Create a timer which rotates the camera when fired.
-        let timer = Timer(timeInterval: 0.1, repeats: true) { [weak self] (_) in
+        let timer = Timer(timeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.rotateHeading(byDegrees: self.joystickHeading)
         }
         headingTimer = timer
         // Add the timer to the main run loop.
         RunLoop.main.add(timer, forMode: .default)
+    }
+    
+    /// Handle an elevation slider valueChanged event.
+    ///
+    /// - Parameter sender: The slider tapped on.
+    @objc func elevationChanged(_ sender: UISlider) {
+        guard elevationTimer == nil else { return }
+        let timer = Timer(timeInterval: 0.25, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            self.elevate(byMeters: self.joystickElevation)
+        }
+        elevationTimer = timer
+        RunLoop.main.add(timer, forMode: .default)
+    }
+    
+    /// Handle an elevation slider touchUp event.  This will stop the timer.
+    ///
+    /// - Parameter sender: The slider tapped on.
+    @objc
+    func touchUpElevation(_ sender: UISlider) {
+        elevationTimer?.invalidate()
+        elevationTimer = nil
+        sender.value = 0.0
     }
     
     /// Handle a heading slider touchUp event. This will stop the timer.
@@ -109,5 +165,13 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
             pitch: camera.pitch,
             roll: camera.roll
         )
+    }
+    
+    /// Change the cameras altitude by delta altitude meters.
+    ///
+    /// - Parameter deltaAltitude: The amount to elevate the camera.
+    private func elevate(byMeters deltaAltitude: Double) {
+        let camera = arcgisARView.originCamera
+        arcgisARView.originCamera = camera.elevate(withDeltaAltitude: deltaAltitude)
     }
 }

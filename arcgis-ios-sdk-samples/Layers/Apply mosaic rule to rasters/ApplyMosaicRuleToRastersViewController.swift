@@ -36,7 +36,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         }
     }
     /// The image service raster to demo mosaic rules.
-    var imageServiceRaster: AGSImageServiceRaster!
+    var imageServiceRaster = AGSImageServiceRaster(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/amberg_germany/ImageServer")!)
     /// A preset of mosaic rules for demonstration purpose.
     let mosaicRulePairs: KeyValuePairs<String, AGSMosaicRule> = {
         // A default mosaic rule object, with mosaic method as none.
@@ -76,10 +76,6 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
     ///
     /// - Returns: An `AGSMap` object.
     func makeMap() -> AGSMap {
-        // The URL of an image service that supports mosaic rules.
-        let imageServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/amberg_germany/ImageServer")!
-        // Create an image service raster from an online raster service.
-        imageServiceRaster = AGSImageServiceRaster(url: imageServiceURL)
         // Check if a mosaic rule exists. If not, create one.
         if imageServiceRaster.mosaicRule == nil {
             imageServiceRaster.mosaicRule = AGSMosaicRule()

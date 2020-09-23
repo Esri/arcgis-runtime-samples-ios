@@ -664,8 +664,8 @@
 				<key>descriptionText</key>
 				<string>Apply mosaic rule to a mosaic dataset of rasters.</string>
 				<key>storyboardName</key>
-				<string>ApplyMosaicRuleToRasters</string>
-      </dict>
+				<string>ApplyMosaicRuleToRasters2</string>
+			</dict>
 			<dict>
 				<key>displayName</key>
 				<string>Apply raster rendering rule</string>

@@ -41,6 +41,8 @@ class AddENCExchangeSetViewController: UIViewController {
     
     var temporaryDocumentDirectory: URL!
     
+    let temporaryDirectory: URL = FileManager.default.temporaryDirectory
+    
     /// Create a map.
     ///
     /// - Returns: An `AGSMap` object.
@@ -48,21 +50,22 @@ class AddENCExchangeSetViewController: UIViewController {
         // Create a map with oceans basemap.
         let map = AGSMap(basemap: .oceans())
         // Load ENC exchange set from bundle.
-        let fileURLs = Bundle.main.urls(forResourcesWithExtension: nil, subdirectory: "ExchangeSetwithoutUpdates") ?? []
-        let directoryURL = fileURLs.first!.deletingLastPathComponent()
+        let fileURLs = Bundle.main.urls(forResourcesWithExtension: nil, subdirectory: "ExchangeSetwithoutUpdates")!
+        let hydrographyDirectory = Bundle.main.urls(forResourcesWithExtension: nil, subdirectory: "hydrography")!.first!.deletingLastPathComponent()
+//        let directoryURL = fileURLs.first!.deletingLastPathComponent()
+//
+//        guard let url = getTemporaryDocumentDirectoryURL(subfolderURL: directoryURL) else { return map }
+//        temporaryDocumentDirectory = url
+//        try? FileManager.default.copyItem(at: directoryURL, to: temporaryDocumentDirectory)
         
-        guard let url = getTemporaryDocumentDirectoryURL(subfolderURL: directoryURL) else { return map }
-        temporaryDocumentDirectory = url
-        try? FileManager.default.copyItem(at: directoryURL, to: temporaryDocumentDirectory)
+        AGSENCEnvironmentSettings.shared().resourceDirectory = hydrographyDirectory
+        AGSENCEnvironmentSettings.shared().sencDataDirectory = temporaryDirectory
         
-        AGSENCEnvironmentSettings.shared().resourceDirectory = temporaryDocumentDirectory
-        AGSENCEnvironmentSettings.shared().sencDataDirectory = temporaryDocumentDirectory
-        
-//        let catalogURL = fileURLs.filter { $0.lastPathComponent == "CATALOG.031" }
-        let catalogURL = [temporaryDocumentDirectory.appendingPathComponent("CATALOG.031")]
+        let catalogURL = fileURLs.filter { $0.lastPathComponent == "CATALOG.031" }
+//        let catalogURL = [temporaryDocumentDirectory.appendingPathComponent("CATALOG.031")]
         let encExchangeSet = AGSENCExchangeSet(fileURLs: catalogURL)
         
-        let us = try? FileManager.default.contentsOfDirectory(at: temporaryDocumentDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+//        let us = try? FileManager.default.contentsOfDirectory(at: temporaryDocumentDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
         
         encExchangeSet.load { [weak self] error in  //, unowned ENCExchangeSet
             guard let self = self else { return }

@@ -82,6 +82,12 @@
 			<key>filename</key>
 			<string>ExchangeSetwithoutUpdates.zip</string>
 		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>af74ccbb69c846ef97085e4bebd3e76a</string>
+			<key>filename</key>
+			<string>hydrography.zip</string>
+		</dict>
 	</array>
 </dict>
 </plist>

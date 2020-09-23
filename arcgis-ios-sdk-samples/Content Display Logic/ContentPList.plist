@@ -668,6 +668,7 @@
 				<key>dependency</key>
 				<array>
 					<string>ExchangeSetWithoutUpdates</string>
+					<string>Hydrography</string>
 				</array>
 			</dict>
 		</array>

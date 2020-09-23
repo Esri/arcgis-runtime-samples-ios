@@ -89,6 +89,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         rasterLayer.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
+                SVProgressHUD.dismiss()
                 self.presentAlert(error: error)
             } else {
                 // When loaded, set the map view's viewpoint to the image service raster's center.

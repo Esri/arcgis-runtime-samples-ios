@@ -28,7 +28,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         didSet {
             mapView.map = makeMap()
             // Observe the map view's drawing status to see when the new mosaic rule is loaded.
-            drawStatusObservation = mapView.observe(\.drawStatus, options: .initial) { (mapView, _) in
+            drawStatusObservation = mapView.observe(\.drawStatus, options: .initial) { mapView, _ in
                 if mapView.drawStatus == .completed {
                     SVProgressHUD.dismiss()
                 }
@@ -90,7 +90,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         // Add raster layer as an operational layer to the map.
         map.operationalLayers.add(rasterLayer)
         SVProgressHUD.show(withStatus: "Loading")
-        rasterLayer.load { [weak self] (error: Error?) in
+        rasterLayer.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)

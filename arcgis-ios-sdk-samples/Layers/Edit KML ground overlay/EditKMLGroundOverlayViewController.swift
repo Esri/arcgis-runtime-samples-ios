@@ -34,7 +34,7 @@ class EditKMLGroundOverlayViewController: UIViewController {
     @IBAction func sliderValueChanged(_ slider: UISlider) {
         // Change the color of the overlay according to the slider's value.
         let alpha = CGFloat(slider.value)
-        overlay.color = UIColor(red: 0, green: 0, blue: 0, alpha: alpha)
+        overlay.color = UIColor.black.withAlphaComponent(alpha)
         // Update the slider's value label.
         valueLabel.text = String(format: "%.2f", slider.value)
     }

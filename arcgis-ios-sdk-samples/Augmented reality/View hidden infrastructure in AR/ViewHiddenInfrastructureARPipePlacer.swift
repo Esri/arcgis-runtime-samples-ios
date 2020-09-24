@@ -115,6 +115,7 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
     
     @IBAction func trashBarButtonTapped(_ sender: UIBarButtonItem) {
         pipeGraphicsOverlay.graphics.removeAllObjects()
+        setStatus(message: "Tap add button to add pipes.")
     }
     
     // MARK: UI

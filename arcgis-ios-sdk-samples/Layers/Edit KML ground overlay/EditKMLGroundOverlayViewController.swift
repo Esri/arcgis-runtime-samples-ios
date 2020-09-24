@@ -36,7 +36,9 @@ class EditKMLGroundOverlayViewController: UIViewController {
         let alpha = CGFloat(slider.value)
         overlay.color = UIColor.black.withAlphaComponent(alpha)
         // Update the slider's value label.
-        valueLabel.text = String(format: "%.2f", slider.value)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.maximumFractionDigits = 2
+        valueLabel.text = numberFormatter.string(from: slider.value as NSNumber)
     }
     
     func makeScene() -> AGSScene {

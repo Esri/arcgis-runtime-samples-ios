@@ -47,12 +47,16 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
     /// The data source to track device location and provide updates to location display.
     let locationDataSource = AGSCLLocationDataSource()
     
+    /// The KVO on draw status of the map view.
+    private var graphicsObservation: NSKeyValueObservation?
+    
     /// A graphics overlay for showing the pipes.
     let pipeGraphicsOverlay: AGSGraphicsOverlay = {
         let overlay = AGSGraphicsOverlay()
         overlay.renderer = AGSSimpleRenderer(
             symbol: AGSSimpleLineSymbol(style: .solid, color: .yellow, width: 2)
         )
+        
         return overlay
     }()
     
@@ -84,13 +88,21 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
         setButtonStateOnGeometryChanged(sketchEditor: sketchEditor)
         if sender.title == "Add" {
             sketchEditor.start(with: nil, creationMode: .polyline)
+            setStatus(message: "Tap on the map to add geometry.")
+            sender.title = "Done"
         } else if sender.title == "Done" {
             if let polyline = sketchEditor.geometry as? AGSPolyline {
                 presentElevationAlert { [weak self] elevation in
                     self?.addGraphicsFromSketchEditor(polyline: polyline, elevationOffset: elevation)
                 }
+                sketchEditor.clearGeometry()
             }
+            sender.title = "Add"
         }
+    }
+    
+    @IBAction func trashBarButtonTapped(_ sender: UIBarButtonItem) {
+        pipeGraphicsOverlay.graphics.removeAllObjects()
     }
     
     func addGraphicsFromSketchEditor(polyline: AGSPolyline, elevationOffset: NSNumber) {
@@ -100,16 +112,16 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
             let graphic: AGSGraphic
             if error != nil {
                 graphic = AGSGraphic(geometry: polyline, symbol: nil)
-                self.setStatus(message: "Pipe added without elevation")
+                self.setStatus(message: "Pipe added without elevation.")
             } else {
                 let elevatedPolyline = AGSGeometryEngine.geometry(bySettingZ: elevation + elevationOffset.doubleValue, in: polyline)
                 graphic = AGSGraphic(geometry: elevatedPolyline, symbol: nil)
                 if elevationOffset.intValue < 0 {
-                    self.setStatus(message: "Pipe added \(elevationOffset.stringValue) below surface")
+                    self.setStatus(message: "Pipe added \(elevationOffset.stringValue) below surface.")
                 } else if elevationOffset.intValue == 0 {
-                    self.setStatus(message: "Pipe added at ground level")
+                    self.setStatus(message: "Pipe added at ground level.")
                 } else {
-                    self.setStatus(message: "Pipe added \(elevationOffset.stringValue) above surface")
+                    self.setStatus(message: "Pipe added \(elevationOffset.stringValue) above surface.")
                 }
             }
             self.pipeGraphicsOverlay.graphics.add(graphic)
@@ -176,6 +188,16 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
                 self.sketchBarButtonItem.isEnabled = true
             }
         }
+        // Add a KVO
+        graphicsObservation = pipeGraphicsOverlay.observe(\.graphics, options: .initial) { [weak self] overlay, _ in
+            guard let self = self else { return }
+            // 'NSMutableArray' has no member 'isEmpty'; check its count instead.
+            let graphicsCount = overlay.graphics.count
+            let hasGraphics = graphicsCount > 0
+            self.trashBarButtonItem.isEnabled = hasGraphics
+            self.cameraBarButtonItem.isEnabled = hasGraphics
+        }
+        
         mapView.locationDisplay.start()
     }
 }

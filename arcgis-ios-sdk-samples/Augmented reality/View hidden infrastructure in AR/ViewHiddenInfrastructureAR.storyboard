@@ -44,7 +44,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="mM5-mb-BBv"/>
-                                    <barButtonItem enabled="NO" systemItem="trash" id="d1G-AG-l8H"/>
+                                    <barButtonItem enabled="NO" systemItem="trash" id="d1G-AG-l8H">
+                                        <connections>
+                                            <action selector="trashBarButtonTapped:" destination="UPr-32-pgN" id="exd-xD-WvX"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyR-37-Gl1">

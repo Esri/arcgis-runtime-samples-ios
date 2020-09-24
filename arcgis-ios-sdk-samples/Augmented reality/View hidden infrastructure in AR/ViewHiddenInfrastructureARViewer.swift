@@ -27,7 +27,7 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
     /// A segmented control to choose between roaming and local mode.
     @IBOutlet var realScaleModePicker: UISegmentedControl!
     /// The `ArcGISARView` managed by the view controller.
-    @IBOutlet weak var arView: ArcGISARView! {
+    @IBOutlet var arView: ArcGISARView! {
         didSet {
             // Configure scene view.
             let sceneView = arView.sceneView
@@ -44,7 +44,7 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
     
     // MARK: Properties
     
-    /// The graphics for pipe infrastructure passed from pipe planner view controller.
+    /// The graphics for pipe infrastructure passed from pipe placer view controller.
     var pipeGraphics = [AGSGraphic]()
     /// The elevation source with elevation service URL.
     let elevationSource = AGSArcGISTiledElevationSource(url: URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!)
@@ -75,7 +75,7 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
         graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
         let strokeSymbolLayer = AGSSolidStrokeSymbolLayer(
             width: 0.3,
-            color: .yellow,
+            color: .red,
             geometricEffects: [],
             lineStyle3D: .tube
         )
@@ -128,32 +128,20 @@ extension ViewHiddenInfrastructureARViewer: ARSCNViewDelegate {
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         // Don't show anything in roaming mode; constant location tracking reset means
         // ARKit will always be initializing
-        if realScaleModePicker.selectedSegmentIndex == 0 {
-//            arKitStatusLabel.isHidden = true
-            return
-        }
+        guard realScaleModePicker.selectedSegmentIndex == 1 else { return }
         switch camera.trackingState {
         case .normal:
-//            arKitStatusLabel.isHidden = true
             break
         case .notAvailable:
             setStatus(message: "ARKit location not available")
-//            arKitStatusLabel.text = "ARKit location not available"
-//            arKitStatusLabel.isHidden = false
         case .limited(let reason):
             switch reason {
             case .excessiveMotion:
                 setStatus(message: "Try moving your phone more slowly")
-//                arKitStatusLabel.text = "Try moving your phone more slowly"
-//                arKitStatusLabel.isHidden = false
             case .initializing:
                 setStatus(message: "Keep moving your phone")
-//                arKitStatusLabel.text = "Keep moving your phone"
-//                arKitStatusLabel.isHidden = false
             case .insufficientFeatures:
                 setStatus(message: "Try turning on more lights and moving around")
-//                arKitStatusLabel.text = "Try turning on more lights and moving around"
-//                arKitStatusLabel.isHidden = false
             case .relocalizing:
                 // this won't happen as this sample doesn't use relocalization
                 break
@@ -168,18 +156,19 @@ extension ViewHiddenInfrastructureARViewer: ARSCNViewDelegate {
 
 extension ViewHiddenInfrastructureARViewer {
     @IBAction func showCalibrationPopup(_ sender: UIBarButtonItem) {
-        let calibrationVC = ViewHiddenInfrastructureARCalibrationViewController(arcgisARView: arView)
-        elevationSurface.opacity = 0.6
+        let calibrationVC = ViewHiddenInfrastructureARCalibrationViewController(arcgisARView: arView, isLocal: realScaleModePicker.selectedSegmentIndex == 1)
+        elevationSurface.opacity = 0.5
         showPopup(calibrationVC, sourceButton: sender)
     }
     
-    private func showPopup(_ controller: UIViewController, sourceButton: UIBarButtonItem) {
+    func showPopup(_ controller: UIViewController, sourceButton: UIBarButtonItem) {
         controller.modalPresentationStyle = .popover
         if let presentationController = controller.popoverPresentationController {
             presentationController.delegate = self
             presentationController.barButtonItem = sourceButton
             presentationController.permittedArrowDirections = [.down, .up]
         }
+        realScaleModePicker.isEnabled = false
         present(controller, animated: true)
     }
 }
@@ -187,6 +176,7 @@ extension ViewHiddenInfrastructureARViewer {
 extension ViewHiddenInfrastructureARViewer: UIPopoverPresentationControllerDelegate {
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         elevationSurface.opacity = 0
+        realScaleModePicker.isEnabled = true
     }
 }
 

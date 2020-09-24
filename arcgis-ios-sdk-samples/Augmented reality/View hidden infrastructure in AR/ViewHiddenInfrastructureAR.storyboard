@@ -27,16 +27,6 @@
                                             <action selector="sketchBarButtonTapped:" destination="UPr-32-pgN" id="WLg-7n-iQo"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="Undo" id="kPa-bx-A0v">
-                                        <connections>
-                                            <action selector="undo:" destination="UPr-32-pgN" id="oHQ-iC-nko"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem image="Redo" id="MW4-mc-A1d">
-                                        <connections>
-                                            <action selector="redo:" destination="UPr-32-pgN" id="79x-Ft-1st"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uS0-RZ-Yhq"/>
                                     <barButtonItem enabled="NO" systemItem="camera" id="e2J-Tm-wd2">
                                         <connections>
@@ -56,12 +46,12 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions are shown here." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M90-C2-4nN">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="M90-C2-4nN" firstAttribute="trailing" secondItem="ZzE-Jj-RjQ" secondAttribute="trailing" id="3J0-cn-Mqh"/>
                                     <constraint firstItem="M90-C2-4nN" firstAttribute="top" secondItem="AyR-37-Gl1" secondAttribute="top" id="HkY-HL-vud"/>
@@ -89,11 +79,9 @@
                     <connections>
                         <outlet property="cameraBarButtonItem" destination="e2J-Tm-wd2" id="wg1-uu-LLR"/>
                         <outlet property="mapView" destination="rVg-12-bUC" id="HNl-4f-2rx"/>
-                        <outlet property="redoBarButtonItem" destination="MW4-mc-A1d" id="bgb-CP-a6Q"/>
                         <outlet property="sketchBarButtonItem" destination="ZiE-LO-5h3" id="bEq-Yp-dPv"/>
                         <outlet property="statusLabel" destination="M90-C2-4nN" id="fcb-2L-tXQ"/>
                         <outlet property="trashBarButtonItem" destination="d1G-AG-l8H" id="W9D-o3-pCA"/>
-                        <outlet property="undoBarButtonItem" destination="kPa-bx-A0v" id="16x-yy-FJ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZJP-p6-9Wh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -109,20 +97,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNG-g5-Mmo" customClass="ArcGISARView" customModule="ArcGISToolkit">
-                                <rect key="frame" x="0.0" y="20.5" width="414" height="738.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3z-mu-aGJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions are shown here." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G54-G0-CA5">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="G54-G0-CA5" firstAttribute="leading" secondItem="FTa-Ao-hiw" secondAttribute="leading" id="5pj-Mt-uwn"/>
                                     <constraint firstItem="G54-G0-CA5" firstAttribute="top" secondItem="p3z-mu-aGJ" secondAttribute="top" id="rac-8x-xzn"/>
@@ -134,7 +121,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0j-oo-wc9">
                                 <rect key="frame" x="0.0" y="759" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem enabled="NO" title="Calibrate" id="4HJ-ag-4mQ">
+                                    <barButtonItem title="Calibrate" id="4HJ-ag-4mQ">
                                         <connections>
                                             <action selector="showCalibrationPopup:" destination="Ax7-UJ-W7h" id="9R1-PU-foW"/>
                                         </connections>
@@ -161,9 +148,9 @@
                         <constraints>
                             <constraint firstItem="C0j-oo-wc9" firstAttribute="trailing" secondItem="u8b-FE-y2r" secondAttribute="trailing" id="2ze-T9-gDo"/>
                             <constraint firstItem="HNG-g5-Mmo" firstAttribute="leading" secondItem="u8b-FE-y2r" secondAttribute="leading" id="3cD-yy-GrF"/>
+                            <constraint firstItem="HNG-g5-Mmo" firstAttribute="top" secondItem="dO8-VK-xMq" secondAttribute="top" id="DaL-s1-VhL"/>
                             <constraint firstItem="C0j-oo-wc9" firstAttribute="top" secondItem="HNG-g5-Mmo" secondAttribute="bottom" id="Fav-JE-KmC"/>
                             <constraint firstItem="p3z-mu-aGJ" firstAttribute="leading" secondItem="u8b-FE-y2r" secondAttribute="leading" id="YH4-Ji-fik"/>
-                            <constraint firstItem="p3z-mu-aGJ" firstAttribute="bottom" secondItem="HNG-g5-Mmo" secondAttribute="top" id="fLa-BY-ii2"/>
                             <constraint firstItem="C0j-oo-wc9" firstAttribute="leading" secondItem="u8b-FE-y2r" secondAttribute="leading" id="nm2-JC-nzg"/>
                             <constraint firstItem="HNG-g5-Mmo" firstAttribute="trailing" secondItem="u8b-FE-y2r" secondAttribute="trailing" id="qIm-ll-yg7"/>
                             <constraint firstItem="C0j-oo-wc9" firstAttribute="bottom" secondItem="dO8-VK-xMq" secondAttribute="bottom" id="seq-ih-4kT"/>
@@ -185,8 +172,4 @@
             <point key="canvasLocation" x="758" y="179"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Redo" width="22" height="22"/>
-        <image name="Undo" width="22" height="22"/>
-    </resources>
 </document>

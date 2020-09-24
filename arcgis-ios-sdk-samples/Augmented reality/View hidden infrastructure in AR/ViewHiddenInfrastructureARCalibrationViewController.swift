@@ -29,17 +29,17 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
         let deltaHeading = Double(headingSlider.value)
         return Double(signOf: deltaHeading, magnitudeOf: deltaHeading * deltaHeading / 25)
     }
-    
+    /// The delta elevation in meters.
     private var joystickElevation: Double {
         let deltaElevation = Double(elevationSlider.value)
-        return Double(signOf: deltaElevation, magnitudeOf: deltaElevation * deltaElevation / 50)
+        return Double(signOf: -deltaElevation, magnitudeOf: deltaElevation * deltaElevation / 100)
     }
     
     /// The `UISlider` used to adjust elevation.
     private let elevationSlider: UISlider = {
         let slider = UISlider()
-        slider.minimumValue = -50.0
-        slider.maximumValue = 50.0
+        slider.minimumValue = -20.0
+        slider.maximumValue = 20.0
         return slider
     }()
     
@@ -52,13 +52,16 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
     }()
     
     /// Initialize with an `ArcGISARView` from the parent view controller.
-    ///
     /// - Parameters:
     ///   - arcgisARView: The `ArcGISARView` used for calibration.
-    init(arcgisARView: ArcGISARView) {
+    ///   - isLocal: A boolean to decide if the AR view is in local mode.
+    init(arcgisARView: ArcGISARView, isLocal: Bool) {
         self.arcgisARView = arcgisARView
         super.init(nibName: nil, bundle: nil)
-        preferredContentSize = CGSize(width: 250, height: 100)
+        
+        // Only make space for the elevation slider when in "Local" mode.
+        preferredContentSize = CGSize(width: 250, height: isLocal ? 96: 48)
+        
         // Add the heading label and slider.
         let headingLabel = UILabel()
         headingLabel.text = "Heading:"
@@ -76,28 +79,32 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
             headingSlider.centerYAnchor.constraint(equalTo: headingLabel.centerYAnchor)
         ])
         
-        // Add the elevation label and slider.
-        let elevationLabel = UILabel()
-        elevationLabel.text = "Elevation:"
-        view.addSubview(elevationLabel)
-        elevationLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            elevationLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 2),
-            headingLabel.topAnchor.constraint(equalToSystemSpacingBelow: elevationLabel.bottomAnchor, multiplier: 2)
-        ])
-        view.addSubview(elevationSlider)
-        elevationSlider.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            elevationSlider.leadingAnchor.constraint(equalToSystemSpacingAfter: elevationLabel.trailingAnchor, multiplier: 2),
-            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: elevationSlider.trailingAnchor, multiplier: 2),
-            elevationSlider.centerYAnchor.constraint(equalTo: elevationLabel.centerYAnchor)
-        ])
-        
         // Setup actions for the sliders which operate as "joysticks".
         headingSlider.addTarget(self, action: #selector(headingChanged(_:)), for: .valueChanged)
         headingSlider.addTarget(self, action: #selector(touchUpHeading(_:)), for: [.touchUpInside, .touchUpOutside])
-        elevationSlider.addTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
-        elevationSlider.addTarget(self, action: #selector(touchUpElevation(_:)), for: [.touchUpInside, .touchUpOutside])
+        
+        // Only "Local" mode support adjusting elevation.
+        if isLocal {
+            // Add the elevation label and slider.
+            let elevationLabel = UILabel()
+            elevationLabel.text = "Elevation:"
+            view.addSubview(elevationLabel)
+            elevationLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                elevationLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 2),
+                headingLabel.topAnchor.constraint(equalToSystemSpacingBelow: elevationLabel.bottomAnchor, multiplier: 2)
+            ])
+            view.addSubview(elevationSlider)
+            elevationSlider.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                elevationSlider.leadingAnchor.constraint(equalToSystemSpacingAfter: elevationLabel.trailingAnchor, multiplier: 2),
+                view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: elevationSlider.trailingAnchor, multiplier: 2),
+                elevationSlider.centerYAnchor.constraint(equalTo: elevationLabel.centerYAnchor)
+            ])
+            
+            elevationSlider.addTarget(self, action: #selector(elevationChanged(_:)), for: .valueChanged)
+            elevationSlider.addTarget(self, action: #selector(touchUpElevation(_:)), for: [.touchUpInside, .touchUpOutside])
+        }
     }
     
     @available(*, unavailable)
@@ -127,7 +134,7 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
     @objc
     func elevationChanged(_ sender: UISlider) {
         guard elevationTimer == nil else { return }
-        let timer = Timer(timeInterval: 0.25, repeats: true) { [weak self] _ in
+        let timer = Timer(timeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.elevate(byMeters: self.joystickElevation)
         }
@@ -135,7 +142,7 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
         RunLoop.main.add(timer, forMode: .default)
     }
     
-    /// Handle an elevation slider touchUp event.  This will stop the timer.
+    /// Handle an elevation slider touchUp event. This will stop the timer.
     ///
     /// - Parameter sender: The slider tapped on.
     @objc
@@ -168,7 +175,7 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
         )
     }
     
-    /// Change the cameras altitude by delta altitude meters.
+    /// Change the cameras elevation by delta altitude in meters.
     ///
     /// - Parameter deltaAltitude: The amount to elevate the camera.
     private func elevate(byMeters deltaAltitude: Double) {

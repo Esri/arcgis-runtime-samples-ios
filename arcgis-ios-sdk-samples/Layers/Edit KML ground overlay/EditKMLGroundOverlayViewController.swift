@@ -20,6 +20,11 @@ class EditKMLGroundOverlayViewController: UIViewController {
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
             sceneView.scene = makeScene(groundOverlay: overlay)
+            // Move the viewpoint to the ground overlay.
+            let overlayCenter = overlay.geometry.extent.center
+            let camera = AGSCamera(lookAt: overlayCenter, distance: 1250, heading: 45, pitch: 60, roll: 0)
+            let targetExtent = overlay.geometry as! AGSEnvelope
+            sceneView.setViewpoint(AGSViewpoint(targetExtent: targetExtent, camera: camera))
         }
     }
     // The slider that controls the overlay's opacity.
@@ -34,7 +39,10 @@ class EditKMLGroundOverlayViewController: UIViewController {
         // Create a KML icon for the overlay image.
         let imageURL = URL(string: "https://libapps.s3.amazonaws.com/accounts/55937/images/1944.jpg")!
         let overlayImage = AGSKMLIcon(url: imageURL)
-        return AGSKMLGroundOverlay(geometry: overlayGeometry, icon: overlayImage)!
+        let overlay = AGSKMLGroundOverlay(geometry: overlayGeometry, icon: overlayImage)!
+        // Set the rotation of the ground overlay.
+        overlay.rotation = -3.046024799346924
+        return overlay
     }()
     
     // MARK: Actions and methods
@@ -54,19 +62,12 @@ class EditKMLGroundOverlayViewController: UIViewController {
     func makeScene(groundOverlay: AGSKMLGroundOverlay) -> AGSScene {
         // Create a scene for the scene view.
         let scene = AGSScene(basemap: .imagery())
-        // Set the rotation of the ground overlay.
-        groundOverlay.rotation = -3.046024799346924
         // Create a KML dataset with the ground overlay as the root node.
         let dataset = AGSKMLDataset(rootNode: groundOverlay)
         // Create a KML layer for the scene view.
         let layer = AGSKMLLayer(kmlDataset: dataset)
         // Add the layer to the scene.
         scene.operationalLayers.add(layer)
-        // Move the viewpoint to the ground overlay.
-        let overlayCenter = groundOverlay.geometry.extent.center
-        let camera = AGSCamera(lookAt: overlayCenter, distance: 1250, heading: 45, pitch: 60, roll: 0)
-        let targetExtent = groundOverlay.geometry as! AGSEnvelope
-        sceneView.setViewpoint(AGSViewpoint(targetExtent: targetExtent, camera: camera))
         // Return the scene.
         return scene
     }

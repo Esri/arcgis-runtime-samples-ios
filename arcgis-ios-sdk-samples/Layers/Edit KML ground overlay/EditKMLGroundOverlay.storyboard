@@ -37,7 +37,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Gzf-D2-LS1" secondAttribute="bottom" id="CKu-AP-Lj6"/>
                                                 <constraint firstItem="Gzf-D2-LS1" firstAttribute="leading" secondItem="lsB-DM-WTC" secondAttribute="leading" id="Xcy-5p-O0d"/>
@@ -48,7 +47,7 @@
                                     </barButtonItem>
                                     <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="KLA-Pi-K5O"/>
                                     <barButtonItem style="plain" id="z7b-uA-QJT">
-                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" id="0Ni-VA-Db8">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" id="0Ni-VA-Db8">
                                             <rect key="frame" x="155" y="10" width="174" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
@@ -72,7 +71,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="29f-sM-h0o" firstAttribute="leading" secondItem="DR7-Ug-Dr7" secondAttribute="leading" id="Ib9-ri-luK"/>
                                                 <constraint firstAttribute="trailing" secondItem="29f-sM-h0o" secondAttribute="trailing" id="fjn-3a-xKw"/>

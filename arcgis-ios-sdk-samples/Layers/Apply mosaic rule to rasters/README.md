@@ -1,6 +1,6 @@
 # Apply mosaic rule to rasters
 
-Apply mosaic rule to a mosaic dataset of rasters.
+Apply a mosaic rule to a mosaic dataset of rasters.
 
 ![Apply mosaic rule to rasters](apply-mosaic-rule-to-rasters.png)
 
@@ -40,4 +40,4 @@ For more information, see [Understanding the mosaicking rules](https://desktop.a
 
 ## Tags
 
-image service, mosaic rule, mosaic method, raster
+image service, mosaic method, mosaic rule, raster

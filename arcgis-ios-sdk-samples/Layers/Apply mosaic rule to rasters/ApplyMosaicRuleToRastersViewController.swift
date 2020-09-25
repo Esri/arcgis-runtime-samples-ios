@@ -137,9 +137,4 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ApplyMosaicRuleToRastersViewController"]
     }
-    
-    deinit {
-        // Nilify the KVO after the main view disappears.
-        drawStatusObservation = nil
-    }
 }

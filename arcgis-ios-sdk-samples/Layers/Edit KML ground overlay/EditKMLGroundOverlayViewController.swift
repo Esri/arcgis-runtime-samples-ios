@@ -21,9 +21,8 @@ class EditKMLGroundOverlayViewController: UIViewController {
         didSet {
             sceneView.scene = makeScene(groundOverlay: overlay)
             // Move the viewpoint to the ground overlay.
-            let overlayCenter = overlay.geometry.extent.center
-            let camera = AGSCamera(lookAt: overlayCenter, distance: 1250, heading: 45, pitch: 60, roll: 0)
             let targetExtent = overlay.geometry as! AGSEnvelope
+            let camera = AGSCamera(lookAt: targetExtent.center, distance: 1250, heading: 45, pitch: 60, roll: 0)
             sceneView.setViewpoint(AGSViewpoint(targetExtent: targetExtent, camera: camera))
         }
     }

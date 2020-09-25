@@ -76,6 +76,18 @@
 			<key>filename</key>
 			<string>SA_EVI_8Day_03May20.zip</string>
 		</dict>
+		<dict>
+			<key>filename</key>
+			<string>PSCC_vector.vtpk</string>
+			<key>identifier</key>
+			<string>aae86ca2cf8f4e6087065fb8bf1b6ecd</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>2056bf1b350244d69c78e4f84d1ba215</string>
+			<key>filename</key>
+			<string>PSCC_style.json</string>
+		</dict>
 	</array>
 </dict>
 </plist>

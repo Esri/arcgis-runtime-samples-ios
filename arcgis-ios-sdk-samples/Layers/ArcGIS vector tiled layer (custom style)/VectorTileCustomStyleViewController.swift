@@ -44,7 +44,14 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         mapView.map = map
         
         //show the default vector tiled layer
-        showSelectedItem(itemIDs.first!)
+//        showSelectedItem(itemIDs.first!)
+        
+        let vectorTileCacheURL = Bundle.main.url(forResource: "PSCC_vector", withExtension: "vtpk")!
+        let vectorTileCache = AGSVectorTileCache(fileURL: vectorTileCacheURL)
+        let itemResourceCacheURL = Bundle.main.url(forResource: "PSCC_style", withExtension: "json")!
+        let itemResourceCache = AGSItemResourceCache(fileURL: itemResourceCacheURL)
+        let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemResourceCache)
+        mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
     }
     
     private func showSelectedItem(_ itemID: String) {

@@ -37,8 +37,8 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         let map = AGSMap()
 
         //initial viewpoint
-        let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator())
-        map.initialViewpoint = AGSViewpoint(center: centerPoint, scale: 88659253.829259947)
+//        let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator())
+//        map.initialViewpoint = AGSViewpoint(center: centerPoint, scale: 88659253.829259947)
         
         //assign map to map view
         mapView.map = map
@@ -50,8 +50,11 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         let vectorTileCache = AGSVectorTileCache(fileURL: vectorTileCacheURL)
         let itemResourceCacheURL = Bundle.main.url(forResource: "PSCC_style", withExtension: "json")!
         let itemResourceCache = AGSItemResourceCache(fileURL: itemResourceCacheURL)
-        let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemResourceCache)
+//        let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemResourceCache)
+        let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache)
         mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
+        let point = AGSPoint(x: 33.8258, y: 116.5393, spatialReference: .wgs84())
+        mapView.map?.initialViewpoint = AGSViewpoint(center: point, scale: 2e7)
     }
     
     private func showSelectedItem(_ itemID: String) {

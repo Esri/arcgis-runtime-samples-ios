@@ -31,6 +31,14 @@ class EditKMLGroundOverlayViewController: UIViewController {
     // The label that displays the slider's value.
     @IBOutlet var valueLabel: UILabel!
     
+    // A number formatter to format the opacity value.
+    let numberFormatter: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        return numberFormatter
+    }()
+    
     // The KML ground overlay.
     let overlay: AGSKMLGroundOverlay = {
         // Create a geometry for the ground overlay.
@@ -50,11 +58,6 @@ class EditKMLGroundOverlayViewController: UIViewController {
         let alpha = CGFloat(slider.value)
         overlay.color = UIColor.black.withAlphaComponent(alpha)
         // Update the slider's value label.
-        let numberFormatter: NumberFormatter = {
-            let numberFormatter = NumberFormatter()
-            numberFormatter.maximumFractionDigits = 2
-            return numberFormatter
-        }()
         valueLabel.text = numberFormatter.string(from: slider.value as NSNumber)
     }
     

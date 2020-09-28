@@ -95,13 +95,14 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
     
     @IBAction func sketchBarButtonTapped(_ sender: UIBarButtonItem) {
         guard let sketchEditor = mapView.sketchEditor else { return }
-        if sender.title == "Add" {
-            // Start the sketch editor when add is tapped.
+        switch sender.title {
+        case "Add":
+            // Start the sketch editor when "Add" is tapped.
             sketchEditor.start(with: nil, creationMode: .polyline)
             setStatus(message: "Tap on the map to add geometry.")
             sender.title = "Done"
-        } else if sender.title == "Done" {
-            // Stop the sketch editor and create graphics after done is tapped.
+        case "Done":
+            // Stop the sketch editor and create graphics when "Done" is tapped.
             if let polyline = sketchEditor.geometry as? AGSPolyline, polyline.parts.array().contains(where: { $0.pointCount > 2 }) {
                 // Let user provide an elevation if the geometry is a valid polyline.
                 presentElevationAlert { [weak self] elevation in
@@ -113,6 +114,8 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
             sketchEditor.stop()
             sketchEditor.clearGeometry()
             sender.title = "Add"
+        default:
+            break
         }
     }
     

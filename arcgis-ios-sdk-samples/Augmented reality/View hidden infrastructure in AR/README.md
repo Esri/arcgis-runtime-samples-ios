@@ -11,11 +11,11 @@ You can use AR to "x-ray" the ground to see pipes, wiring, or other infrastructu
 
 ## How to use the sample
 
-When you open the sample, you'll see a map centered on your current location. Use the sketch editor to draw pipes around your location. An elevation surface will be queried to place the drawn infrastructure above or below ground. When you're ready, tap the camera button to view the infrastructure you drew in AR.
+When the sample is launched, you'll see a map centered on your current location. Tap "Add" to launch the sketch editor and draw pipes around your location. After drawing the pipes, input an elevation value to place the drawn infrastructure above or below ground. When you're ready, tap the camera button to view the infrastructure you drew in AR.
 
 There are two calibration modes in the sample: roaming and local. In roaming calibration mode, your position is updated automatically from the location data source every second. Because of that, you can only adjust heading, not position or elevation. This mode is best when working in a large area, where you would travel beyond the useful range of ARKit.
 
-When you're ready to take a more precise look at the infrastructure, switch to local calibration mode. In local calibration mode, you can make fine adjustments to location, altitude, and heading to ensure the content is exactly where it should be.
+When you're ready to take a more precise look at the infrastructure, switch to local calibration mode. In local calibration mode, you can make fine adjustments to location, elevation, and heading to ensure the content is exactly where it should be.
 
 ## How it works
 
@@ -29,7 +29,7 @@ When you're ready to take a more precise look at the infrastructure, switch to l
 6. Configure a graphics overlay and renderer for showing the drawn pipes. This sample uses an `AGSSolidStrokeSymbolLayer` with an `AGSMultilayerPolylineSymbol` to draw the pipes as tubes. Add the drawn pipes to the overlay.
 7. Configure the calibration experience.
     * When in "roaming" (continuous location update) mode, only heading calibration should be enabled. In continuous update mode, the user's calibration is overwritten by sensor-based values every second.
-    * When in "local" mode, the user needs to be able to adjust the heading, altitude, and position; position adjustment is achieved by panning.
+    * When in "local" mode, the user needs to be able to adjust the heading, elevation, and position; position adjustment is achieved by panning.
     * This sample uses a basemap as a reference during calibration; consider how you will support your user's calibration efforts. A basemap-oriented approach won't work indoors or in areas without readily visible, unchanging features like roads.
 
 ## Relevant API

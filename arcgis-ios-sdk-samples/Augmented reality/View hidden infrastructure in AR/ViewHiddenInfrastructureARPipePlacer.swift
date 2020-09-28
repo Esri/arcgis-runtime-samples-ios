@@ -102,10 +102,13 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
             sender.title = "Done"
         } else if sender.title == "Done" {
             // Stop the sketch editor and create graphics after done is tapped.
-            if let polyline = sketchEditor.geometry as? AGSPolyline {
+            if let polyline = sketchEditor.geometry as? AGSPolyline, polyline.parts.array().contains(where: { $0.pointCount > 2 }) {
+                // Let user provide an elevation if the geometry is a valid polyline.
                 presentElevationAlert { [weak self] elevation in
                     self?.addGraphicsFromSketchEditor(polyline: polyline, elevationOffset: elevation)
                 }
+            } else {
+                setStatus(message: "No pipe added.")
             }
             sketchEditor.stop()
             sketchEditor.clearGeometry()

@@ -20,7 +20,7 @@ import ArcGISToolkit
 class ViewHiddenInfrastructureARViewer: UIViewController {
     // MARK: Storyboard views
     
-    /// The label to display route-planning status.
+    /// The label to display AR status.
     @IBOutlet var statusLabel: UILabel!
     /// The bar button to calibrate navigation heading.
     @IBOutlet var calibrateButtonItem: UIBarButtonItem!
@@ -127,7 +127,7 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
 extension ViewHiddenInfrastructureARViewer: ARSCNViewDelegate {
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         // Don't show anything in roaming mode; constant location tracking reset means
-        // ARKit will always be initializing
+        // ARKit will always be initializing.
         guard realScaleModePicker.selectedSegmentIndex == 1 else { return }
         switch camera.trackingState {
         case .normal:
@@ -143,7 +143,7 @@ extension ViewHiddenInfrastructureARViewer: ARSCNViewDelegate {
             case .insufficientFeatures:
                 setStatus(message: "Try turning on more lights and moving around")
             case .relocalizing:
-                // this won't happen as this sample doesn't use relocalization
+                // This won't happen as this sample doesn't use relocalization.
                 break
             @unknown default:
                 fatalError("Unknown AR tracking state limited reason")

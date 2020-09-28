@@ -18,7 +18,7 @@ import ArcGIS
 class ViewHiddenInfrastructureARPipePlacer: UIViewController {
     // MARK: Storyboard views
     
-    /// The label to display route-planning status.
+    /// The label to display pipe infrastructure planning status.
     @IBOutlet var statusLabel: UILabel!
     /// The bar button to add a new geometry.
     @IBOutlet var sketchBarButtonItem: UIBarButtonItem! {

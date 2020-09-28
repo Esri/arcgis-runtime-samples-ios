@@ -172,6 +172,12 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
         
         // Configure the elevation surface used to place drawn graphics relative to the ground.
         elevationSurface.elevationSources.append(elevationSource)
+        elevationSource.load { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            }
+        }
         
         // Add a KVO to update the button states.
         graphicsObservation = pipeGraphicsOverlay.observe(\.graphics, options: .initial) { [weak self] overlay, _ in
@@ -184,6 +190,7 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
         }
         
         // Set location display.
+        setStatus(message: "Adjusting to your current location…")
         locationDataSource.locationChangeHandlerDelegate = self
         locationDataSource.start { [weak self] error in
             guard let self = self else { return }

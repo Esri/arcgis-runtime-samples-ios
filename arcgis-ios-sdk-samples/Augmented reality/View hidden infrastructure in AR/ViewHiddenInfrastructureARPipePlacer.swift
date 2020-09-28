@@ -172,14 +172,6 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
         
         // Configure the elevation surface used to place drawn graphics relative to the ground.
         elevationSurface.elevationSources.append(elevationSource)
-        elevationSource.load { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                self.sketchBarButtonItem.isEnabled = true
-            }
-        }
         
         // Add a KVO to update the button states.
         graphicsObservation = pipeGraphicsOverlay.observe(\.graphics, options: .initial) { [weak self] overlay, _ in
@@ -211,6 +203,7 @@ extension ViewHiddenInfrastructureARPipePlacer: AGSLocationChangeHandlerDelegate
         // Stop auto-adjusting when it is accurate enough.
         if location.horizontalAccuracy < 20 {
             setStatus(message: "Tap add button to add pipes.")
+            sketchBarButtonItem.isEnabled = true
             locationDataSource.locationChangeHandlerDelegate = nil
             locationDataSource.stop()
         }

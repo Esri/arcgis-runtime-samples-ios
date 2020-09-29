@@ -32,7 +32,7 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
             // Configure scene view.
             let sceneView = arView.sceneView
             sceneView.scene = makeScene()
-            sceneView.graphicsOverlays.add(makePipeOverlay())
+            sceneView.graphicsOverlays.addObjects(from: [makePipeOverlay(), makeShadowOverlay(), makeLeadersOverlay()])
             // Turn the space and atmosphere effects on for an immersive experience.
             sceneView.spaceEffect = .transparent
             sceneView.atmosphereEffect = .none
@@ -84,6 +84,45 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
         graphicsOverlay.renderer = polylineRenderer
         let infrastructureGraphics = pipeGraphics.map { AGSGraphic(geometry: $0.geometry, symbol: nil) }
         graphicsOverlay.graphics.addObjects(from: infrastructureGraphics)
+        return graphicsOverlay
+    }
+    
+    func makeShadowOverlay() -> AGSGraphicsOverlay {
+        let graphicsOverlay = AGSGraphicsOverlay()
+        graphicsOverlay.sceneProperties?.surfacePlacement = .drapedFlat
+        let shadowSymbol = AGSSimpleLineSymbol(style: .solid, color: .systemYellow, width: 0.3)
+        let shadowRender = AGSSimpleRenderer(symbol: shadowSymbol)
+        graphicsOverlay.renderer = shadowRender
+        let shadowGraphics: [AGSGraphic] = pipeGraphics.compactMap { graphic in
+            if let elevationOffset = graphic.attributes["ElevationOffset"] as? Double, elevationOffset < 0 {
+                return AGSGraphic(geometry: graphic.geometry, symbol: nil)
+            } else {
+                return nil
+            }
+        }
+        graphicsOverlay.graphics.addObjects(from: shadowGraphics)
+        return graphicsOverlay
+    }
+    
+    func makeLeadersOverlay() -> AGSGraphicsOverlay {
+        let graphicsOverlay = AGSGraphicsOverlay()
+        graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
+        let leadersSymbol = AGSSimpleLineSymbol(style: .dash, color: .systemRed, width: 0.3)
+        let leadersRender = AGSSimpleRenderer(symbol: leadersSymbol)
+        graphicsOverlay.renderer = leadersRender
+        var leadersGraphics = [AGSGraphic]()
+        pipeGraphics.forEach { graphic in
+            if let pipePolyline = graphic.geometry as? AGSPolyline, let elevationOffset = graphic.attributes["ElevationOffset"] as? Double {
+                pipePolyline.parts.array().forEach { part in
+                    part.points.array().forEach { point in
+                        let offsetPoint = AGSPoint(x: point.x, y: point.y, z: point.z - elevationOffset, spatialReference: point.spatialReference)
+                        let leaderLine = AGSPolyline(points: [point, offsetPoint])
+                        leadersGraphics.append(AGSGraphic(geometry: leaderLine, symbol: nil))
+                    }
+                }
+            }
+        }
+        graphicsOverlay.graphics.addObjects(from: leadersGraphics)
         return graphicsOverlay
     }
     

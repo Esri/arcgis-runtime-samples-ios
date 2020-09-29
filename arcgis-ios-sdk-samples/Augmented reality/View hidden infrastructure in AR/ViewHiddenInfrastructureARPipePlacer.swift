@@ -78,7 +78,7 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
                 self.setStatus(message: "Pipe added without elevation.")
             } else {
                 let elevatedPolyline = AGSGeometryEngine.geometry(bySettingZ: elevation + elevationOffset.doubleValue, in: polyline)
-                graphic = AGSGraphic(geometry: elevatedPolyline, symbol: nil)
+                graphic = AGSGraphic(geometry: elevatedPolyline, symbol: nil, attributes: ["ElevationOffset": elevationOffset.doubleValue])
                 if elevationOffset.intValue < 0 {
                     self.setStatus(message: "Pipe added \(elevationOffset.stringValue) meter(s) below surface.")
                 } else if elevationOffset.intValue == 0 {
@@ -103,7 +103,7 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
             sender.title = "Done"
         case "Done":
             // Stop the sketch editor and create graphics when "Done" is tapped.
-            if let polyline = sketchEditor.geometry as? AGSPolyline, polyline.parts.array().contains(where: { $0.pointCount > 2 }) {
+            if let polyline = sketchEditor.geometry as? AGSPolyline, polyline.parts.array().contains(where: { $0.pointCount >= 2 }) {
                 // Let user provide an elevation if the geometry is a valid polyline.
                 presentElevationAlert { [weak self] elevation in
                     self?.addGraphicsFromSketchEditor(polyline: polyline, elevationOffset: elevation)

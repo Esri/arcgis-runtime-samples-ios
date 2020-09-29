@@ -141,6 +141,11 @@
                                         </segmentedControl>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wj1-Mo-KXi"/>
+                                    <barButtonItem title="Options" id="SYY-Eh-QIY">
+                                        <connections>
+                                            <action selector="optionsBarButtonTapped:" destination="Ax7-UJ-W7h" id="gSJ-oe-yEu"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -162,7 +167,6 @@
                     <navigationItem key="navigationItem" id="Bdq-9D-ekC"/>
                     <connections>
                         <outlet property="arView" destination="HNG-g5-Mmo" id="KVn-lt-Qrw"/>
-                        <outlet property="calibrateButtonItem" destination="4HJ-ag-4mQ" id="CrR-Kz-pi0"/>
                         <outlet property="realScaleModePicker" destination="lQs-at-RKk" id="21b-H9-inm"/>
                         <outlet property="statusLabel" destination="G54-G0-CA5" id="yP7-rh-Thx"/>
                     </connections>

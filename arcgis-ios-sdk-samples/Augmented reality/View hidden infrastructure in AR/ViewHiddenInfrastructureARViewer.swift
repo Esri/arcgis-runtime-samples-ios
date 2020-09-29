@@ -22,8 +22,6 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
     
     /// The label to display AR status.
     @IBOutlet var statusLabel: UILabel!
-    /// The bar button to calibrate navigation heading.
-    @IBOutlet var calibrateButtonItem: UIBarButtonItem!
     /// A segmented control to choose between roaming and local mode.
     @IBOutlet var realScaleModePicker: UISegmentedControl!
     /// The `ArcGISARView` managed by the view controller.
@@ -32,7 +30,10 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
             // Configure scene view.
             let sceneView = arView.sceneView
             sceneView.scene = makeScene()
-            sceneView.graphicsOverlays.addObjects(from: [makePipeOverlay(), makeShadowOverlay(), makeLeadersOverlay()])
+            // Configure overlays.
+            shadowsOverlay = makeShadowsOverlay()
+            leadersOverlay = makeLeadersOverlay()
+            sceneView.graphicsOverlays.addObjects(from: [makePipesOverlay(), shadowsOverlay!, leadersOverlay!])
             // Turn the space and atmosphere effects on for an immersive experience.
             sceneView.spaceEffect = .transparent
             sceneView.atmosphereEffect = .none
@@ -51,6 +52,11 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
     /// The elevation surface set to the base surface of the scene.
     let elevationSurface = AGSSurface()
     
+    /// A reference to the shadows overlay, to show ground level shadows of the underground pipes.
+    var shadowsOverlay: AGSGraphicsOverlay!
+    /// A reference to the leaders overlay, to show leader lines between ground and pipes.
+    var leadersOverlay: AGSGraphicsOverlay!
+    
     // MARK: Methods
     
     /// Create a scene.
@@ -66,10 +72,10 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
         return scene
     }
     
-    /// Create a graphic overlay and add graphics to it.
+    /// Create a graphic overlay for pipes and add graphics to it.
     ///
     /// - Returns: An `AGSGraphicsOverlay` object.
-    func makePipeOverlay() -> AGSGraphicsOverlay {
+    func makePipesOverlay() -> AGSGraphicsOverlay {
         // Configure and add the overlay for showing drawn pipe infrastructure.
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
@@ -87,7 +93,10 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
         return graphicsOverlay
     }
     
-    func makeShadowOverlay() -> AGSGraphicsOverlay {
+    /// Create a graphic overlay for shadows and add graphics to it.
+    ///
+    /// - Returns: An `AGSGraphicsOverlay` object.
+    func makeShadowsOverlay() -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .drapedFlat
         let shadowSymbol = AGSSimpleLineSymbol(style: .solid, color: .systemYellow, width: 0.3)
@@ -95,6 +104,7 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
         graphicsOverlay.renderer = shadowRender
         let shadowGraphics: [AGSGraphic] = pipeGraphics.compactMap { graphic in
             if let elevationOffset = graphic.attributes["ElevationOffset"] as? Double, elevationOffset < 0 {
+                // Show yellow shadow at ground level for underground pipes.
                 return AGSGraphic(geometry: graphic.geometry, symbol: nil)
             } else {
                 return nil
@@ -104,6 +114,9 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
         return graphicsOverlay
     }
     
+    /// Create a graphic overlay for leader lines and add graphics to it.
+    ///
+    /// - Returns: An `AGSGraphicsOverlay` object.
     func makeLeadersOverlay() -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
@@ -115,6 +128,7 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
             if let pipePolyline = graphic.geometry as? AGSPolyline, let elevationOffset = graphic.attributes["ElevationOffset"] as? Double {
                 pipePolyline.parts.array().forEach { part in
                     part.points.array().forEach { point in
+                        // Add a leader line to each vertex of the pipe between its elevation and the ground level.
                         let offsetPoint = AGSPoint(x: point.x, y: point.y, z: point.z - elevationOffset, spatialReference: point.spatialReference)
                         let leaderLine = AGSPolyline(points: [point, offsetPoint])
                         leadersGraphics.append(AGSGraphic(geometry: leaderLine, symbol: nil))
@@ -139,6 +153,36 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
             arView.startTracking(.initial)
             setStatus(message: "Using ARKit only")
         }
+    }
+    
+    @IBAction func optionsBarButtonTapped(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(
+            title: "Show supplementary graphics to understand parallax effect.",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        alertController.addAction(
+            UIAlertAction(title: "Leaders and shadows", style: .default) { _ in
+                self.shadowsOverlay.isVisible = true
+                self.leadersOverlay.isVisible = true
+            }
+        )
+        alertController.addAction(
+            UIAlertAction(title: "Leaders only", style: .default) { _ in
+                self.shadowsOverlay.isVisible = false
+                self.leadersOverlay.isVisible = true
+            }
+        )
+        alertController.addAction(
+            UIAlertAction(title: "No supplementary graphics", style: .default) { _ in
+                self.shadowsOverlay.isVisible = false
+                self.leadersOverlay.isVisible = false
+            }
+        )
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        alertController.popoverPresentationController?.barButtonItem = sender
+        present(alertController, animated: true)
     }
     
     // MARK: UI

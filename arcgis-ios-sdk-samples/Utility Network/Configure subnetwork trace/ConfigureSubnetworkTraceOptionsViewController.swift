@@ -190,7 +190,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
             // Remove observer when canceled.
             NotificationCenter.default.removeObserver(textFieldObserver!)
         }
-        let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
+        let doneAction = UIAlertAction(title: "Done", style: .default) { [unowned alertController] _ in
             let textField = alertController.textFields!.first!
             // Remove the observer when done button is no longer in use.
             NotificationCenter.default.removeObserver(textFieldObserver!)

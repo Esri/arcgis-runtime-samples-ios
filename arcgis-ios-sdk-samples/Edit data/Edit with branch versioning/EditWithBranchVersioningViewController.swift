@@ -376,7 +376,8 @@ class EditWithBranchVersioningViewController: UIViewController {
                 object: textField,
                 queue: .main
             ) { _ in
-                let text = alertController.textFields![0].text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//                let text = alertController.textFields![0].text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let text = textField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 // Enable the done button if branch version textfield is not empty.
                 createAction.isEnabled = !text.isEmpty
             }

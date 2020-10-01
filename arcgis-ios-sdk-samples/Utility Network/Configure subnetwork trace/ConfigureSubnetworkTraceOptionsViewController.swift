@@ -204,18 +204,18 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         alertController.addTextField { textField in
             textField.keyboardType = .numbersAndPunctuation
             textField.placeholder = "e.g. 15"
-        }
-        // Add an observer to ensure the user does not input an empty string.
-        textFieldObserver = NotificationCenter.default.addObserver(
-            forName: UITextField.textDidChangeNotification,
-            object: nil,
-            queue: .main
-        ) { _ in
-            if let text = alertController.textFields!.first!.text {
-                // Enable the done button if the textfield is not empty and is a valid number.
-                doneAction.isEnabled = NumberFormatter().number(from: text) != nil
-            } else {
-                doneAction.isEnabled = false
+            // Add an observer to ensure the user does not input an empty string.
+            textFieldObserver = NotificationCenter.default.addObserver(
+                forName: UITextField.textDidChangeNotification,
+                object: textField,
+                queue: .main
+            ) { _ in
+                if let text = textField.text {
+                    // Enable the done button if the textfield is not empty and is a valid number.
+                    doneAction.isEnabled = NumberFormatter().number(from: text) != nil
+                } else {
+                    doneAction.isEnabled = false
+                }
             }
         }
         // Add a cancel action to alert controller.

@@ -674,6 +674,14 @@
 				<key>storyboardName</key>
 				<string>ApplyRasterRenderingRule</string>
 			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Edit the values of a KML ground overlay.</string>
+				<key>storyboardName</key>
+				<string>EditKMLGroundOverlay</string>
+				<key>displayName</key>
+				<string>Edit KML ground overlay</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

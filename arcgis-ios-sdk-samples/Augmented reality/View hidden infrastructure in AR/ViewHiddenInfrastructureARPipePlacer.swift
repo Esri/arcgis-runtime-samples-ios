@@ -211,14 +211,12 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
 
 extension ViewHiddenInfrastructureARPipePlacer: AGSLocationChangeHandlerDelegate {
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
+        // Stop the location adjustment immediately after the first location update is received.
         let newViewpoint = AGSViewpoint(center: location.position!, scale: 1000)
         mapView.setViewpoint(newViewpoint, completion: nil)
-        // Stop auto-adjusting when it is accurate enough.
-        if location.horizontalAccuracy < 20 {
-            setStatus(message: "Tap add button to add pipes.")
-            sketchBarButtonItem.isEnabled = true
-            locationDataSource.locationChangeHandlerDelegate = nil
-            locationDataSource.stop()
-        }
+        setStatus(message: "Tap add button to add pipes.")
+        sketchBarButtonItem.isEnabled = true
+        locationDataSource.locationChangeHandlerDelegate = nil
+        locationDataSource.stop()
     }
 }

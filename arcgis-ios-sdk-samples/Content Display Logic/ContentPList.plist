@@ -658,6 +658,30 @@
 					<string>NDVIRaster</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Apply mosaic rule to rasters</string>
+				<key>descriptionText</key>
+				<string>Apply a mosaic rule to a mosaic dataset of rasters.</string>
+				<key>storyboardName</key>
+				<string>ApplyMosaicRuleToRasters</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Apply raster rendering rule</string>
+				<key>descriptionText</key>
+				<string>Display a raster on a map and apply different rendering rules to that raster.</string>
+				<key>storyboardName</key>
+				<string>ApplyRasterRenderingRule</string>
+			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Edit the values of a KML ground overlay.</string>
+				<key>storyboardName</key>
+				<string>EditKMLGroundOverlay</string>
+				<key>displayName</key>
+				<string>Edit KML ground overlay</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1126,6 +1150,14 @@
 				<string>EditFeaturesWithFeatureLinkedAnnotation</string>
 				<key>descriptionText</key>
 				<string>Edit feature attributes which are linked to annotations through an expression.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Edit with branch versioning</string>
+				<key>storyboardName</key>
+				<string>EditWithBranchVersioning</string>
+				<key>descriptionText</key>
+				<string>Create, query, and edit a specific server version using a service geodatabase.</string>
 			</dict>
 		</array>
 	</dict>
@@ -1718,6 +1750,14 @@
 				<string>PerformValveIsolationTrace</string>
 				<key>displayName</key>
 				<string>Perform valve isolation trace</string>
+			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Get a server-defined trace configuration for a given tier and modify its traversability scope, add new condition barriers, and control what is included in the subnetwork trace result.</string>
+				<key>storyboardName</key>
+				<string>ConfigureSubnetworkTrace</string>
+				<key>displayName</key>
+				<string>Configure subnetwork trace</string>
 			</dict>
 		</array>
 	</dict>

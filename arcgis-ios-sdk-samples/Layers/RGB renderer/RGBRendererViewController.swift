@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate {
+class RGBRendererViewController: UIViewController, RGBRendererSettingsViewControllerDelegate {
     @IBOutlet var mapView: AGSMapView!
     
     private var rasterLayer: AGSRasterLayer?
@@ -25,7 +25,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
         super.viewDidLoad()
         
         //add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RGBRendererViewController", "RGBRendererSettingsVC", "RGB Renderer Cells", "OptionsTableViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RGBRendererViewController", "RGBRendererSettingsViewController", "OptionsTableViewController"]
 
         //create raster
         let raster = AGSRaster(name: "Shasta", extension: "tif")
@@ -40,9 +40,9 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
         mapView.map = map
     }
     
-    // MARK: - RGBRendererSettingsVCDelegate
+    // MARK: - RGBRendererSettingsViewControllerDelegate
     
-    func rgbRendererSettingsVC(_ rgbRendererSettingsVC: RGBRendererSettingsVC, didSelectStretchParameters parameters: AGSStretchParameters) {
+    func rgbRendererSettingsViewController(_ rgbRendererSettingsViewController: RGBRendererSettingsViewController, didSelectStretchParameters parameters: AGSStretchParameters) {
         let renderer = AGSRGBRenderer(stretchParameters: parameters, bandIndexes: [], gammas: [], estimateStatistics: true)
         rasterLayer?.renderer = renderer
     }
@@ -51,7 +51,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsVCDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? RGBRendererSettingsVC {
+            let controller = navController.viewControllers.first as? RGBRendererSettingsViewController {
             controller.preferredContentSize = {
                 let height: CGFloat
                 if traitCollection.horizontalSizeClass == .regular,

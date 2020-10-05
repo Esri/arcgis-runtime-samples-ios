@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
+class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet var mapView: AGSMapView!
     
     private var parksFeatureTable: AGSServiceFeatureTable!

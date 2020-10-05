@@ -14,7 +14,3 @@ runs:
   args:
     - "-s"
     - ${{ inputs.FILE_PATHS }}
-
-branding:
-  icon: "mic"
-  color: "purple"

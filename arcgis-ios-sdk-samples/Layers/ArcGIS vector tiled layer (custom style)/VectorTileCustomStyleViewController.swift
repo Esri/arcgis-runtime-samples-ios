@@ -46,15 +46,29 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         //show the default vector tiled layer
 //        showSelectedItem(itemIDs.first!)
         
-        let vectorTileCacheURL = Bundle.main.url(forResource: "PSCC_vector", withExtension: "vtpk")!
-        let vectorTileCache = AGSVectorTileCache(fileURL: vectorTileCacheURL)
-        let itemResourceCacheURL = Bundle.main.url(forResource: "PSCC_style", withExtension: "json")!
-        let itemResourceCache = AGSItemResourceCache(fileURL: itemResourceCacheURL)
-//        let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemResourceCache)
-        let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache)
-        mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
-        let point = AGSPoint(x: 33.8258, y: 116.5393, spatialReference: .wgs84())
-        mapView.map?.initialViewpoint = AGSViewpoint(center: point, scale: 2e7)
+//        let vectorTileCacheURL = Bundle.main.url(forResource: "PSCC_vector", withExtension: "vtpk")!
+        let vectorTileCache = AGSVectorTileCache(name: "PSCC_vector")
+        let styleURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=2056bf1b350244d69c78e4f84d1ba215")!
+        let task = AGSExportVectorTilesTask(url: styleURL)
+        let job = task.exportStyleResourceCacheJob(withDownloadDirectory: getItemResourceCacheURL())
+        job.start(statusHandler: nil) { [weak self] (result, error) in
+            guard let self = self else { return }
+            if let error = error {
+                print(error)
+            } else if let result = result {
+//                let itemresourceCahce = AGSItemResourceCache(fileURL: styleURL)
+                let itemresourceCahce = result.itemResourceCache
+                let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
+                self.mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
+            }
+        }
+//        let itemResourceCache = AGSItemResourceCache(fileURL: styleURL)
+        
+//        let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache)
+//        vectorTiledLayer.itemResourceCache = itemResourceCache
+//        mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
+//        let point = AGSPoint(x: 33.8258, y: 116.5393, spatialReference: .wgs84())
+//        mapView.map?.initialViewpoint = AGSViewpoint(center: point, scale: 2e7)
     }
     
     private func showSelectedItem(_ itemID: String) {
@@ -89,6 +103,16 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
     func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String) {
         //show newly selected vector layer
         showSelectedItem(itemID)
+    }
+    
+    private func getItemResourceCacheURL() -> URL {
+        //get a suitable directory to place files
+        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        //create a unique name for the geodatabase based on current timestamp
+        let formattedDate = ISO8601DateFormatter().string(from: Date())
+        
+        return directoryURL.appendingPathComponent("\(formattedDate).zip")
     }
 }
 

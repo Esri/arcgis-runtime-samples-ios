@@ -99,7 +99,7 @@ class MetadataCreator:
     def __init__(self, folder_path: str):
         """
         The standard format of metadata.json for iOS platform. Read more at:
-        https://devtopia.esri.com/runtime/common-samples/wiki/README.metadata.json
+        /common-samples/wiki/README.metadata.json
         """
         self.category = ''          # Populate from path.
         self.description = ''       # Populate from README.

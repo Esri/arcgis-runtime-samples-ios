@@ -269,8 +269,8 @@ def main():
     msg = 'Description checker script. Run it against the ' \
           '/arcgis-ios-sdk-samples folder or a single sample folder. ' \
           'On success: Script will exit with zero. ' \
-          'On failure: Title inconsistency will print to console and the ' \
-          'script will exit with non-zero code.'
+          'On failure: Description inconsistency will print to console and ' \
+          'the script will exit with non-zero code.'
     parser = argparse.ArgumentParser(description=msg)
     parser.add_argument('-a', '--all', help='path to arcgis-ios-sdk-samples '
                                             'folder')

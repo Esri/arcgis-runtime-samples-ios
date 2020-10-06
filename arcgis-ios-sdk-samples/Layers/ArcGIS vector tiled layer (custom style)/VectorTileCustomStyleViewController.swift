@@ -48,19 +48,24 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         
 //        let vectorTileCacheURL = Bundle.main.url(forResource: "PSCC_vector", withExtension: "vtpk")!
         let vectorTileCache = AGSVectorTileCache(name: "PSCC_vector")
-        let styleURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=2056bf1b350244d69c78e4f84d1ba215")!
-        let task = AGSExportVectorTilesTask(url: styleURL)
-        let job = task.exportStyleResourceCacheJob(withDownloadDirectory: getItemResourceCacheURL())
-        job.start(statusHandler: nil) { [weak self] (result, error) in
-            guard let self = self else { return }
-            if let error = error {
-                print(error)
-            } else if let result = result {
-//                let itemresourceCahce = AGSItemResourceCache(fileURL: styleURL)
-                let itemresourceCahce = result.itemResourceCache
-                let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
-                self.mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
+        let styleURL = URL(string: "https://www.arcgis.com/home/item.html?id=2056bf1b350244d69c78e4f84d1ba215")!
+        let portalItem = AGSPortalItem(url: styleURL)!
+        let task = AGSExportVectorTilesTask(portalItem: portalItem)
+        if task.hasStyleResources {
+            let job = task.exportStyleResourceCacheJob(withDownloadDirectory: getItemResourceCacheURL())
+            job.start(statusHandler: nil) { [weak self] (result, error) in
+                guard let self = self else { return }
+                if let error = error {
+                    print(error)
+                } else if let result = result {
+    //                let itemresourceCahce = AGSItemResourceCache(fileURL: styleURL)
+                    let itemresourceCahce = result.itemResourceCache
+                    let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
+                    self.mapView.map?.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
+                }
             }
+        } else {
+            return
         }
 //        let itemResourceCache = AGSItemResourceCache(fileURL: styleURL)
         

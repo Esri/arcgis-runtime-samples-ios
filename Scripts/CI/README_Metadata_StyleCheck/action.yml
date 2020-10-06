@@ -12,5 +12,5 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - "-s"
+    - "--string"
     - ${{ inputs.FILE_PATHS }}

@@ -115,6 +115,7 @@ class SampleNames:
           - sample’s folder name
           - sample’s `README.md` title
           - `README.metadata.json` title
+          - sample's plist title
         - Category names
           - sample’s enclosing category folder name
           - `README.metadata.json` category

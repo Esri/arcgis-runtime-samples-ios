@@ -6,12 +6,6 @@
 	<array>
 		<dict>
 			<key>identifier</key>
-			<string>74c0c9fa80f4498c9739cc42531e9948</string>
-			<key>filename</key>
-			<string>loudoun_anno.geodatabase</string>
-		</dict>
-		<dict>
-			<key>identifier</key>
 			<string>c78b149a1d52414682c86a5feeb13d30</string>
 			<key>filename</key>
 			<string>mil2525d.stylx</string>
@@ -69,6 +63,12 @@
 			<string>9465e8c02b294c69bdb42de056a23ab1</string>
 			<key>filename</key>
 			<string>PacificSouthWest.zip</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>74c0c9fa80f4498c9739cc42531e9948</string>
+			<key>filename</key>
+			<string>loudoun_anno.geodatabase</string>
 		</dict>
 		<dict>
 			<key>identifier</key>

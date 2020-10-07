@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UPr-32-pgN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UPr-32-pgN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -51,6 +52,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="ZzE-Jj-RjQ"/>
                                 <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="M90-C2-4nN" firstAttribute="trailing" secondItem="ZzE-Jj-RjQ" secondAttribute="trailing" id="3J0-cn-Mqh"/>
@@ -58,10 +60,10 @@
                                     <constraint firstAttribute="bottom" secondItem="M90-C2-4nN" secondAttribute="bottom" id="WG9-s7-Ksm"/>
                                     <constraint firstItem="M90-C2-4nN" firstAttribute="leading" secondItem="ZzE-Jj-RjQ" secondAttribute="leading" id="d1N-8D-kWB"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="ZzE-Jj-RjQ"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="EsN-0e-YYN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AyR-37-Gl1" firstAttribute="trailing" secondItem="gIE-75-e2w" secondAttribute="trailing" id="51s-ke-htP"/>
                             <constraint firstItem="rVg-12-bUC" firstAttribute="top" secondItem="EsN-0e-YYN" secondAttribute="top" id="EJ4-f2-2bU"/>
@@ -74,7 +76,6 @@
                             <constraint firstItem="rVg-12-bUC" firstAttribute="leading" secondItem="gIE-75-e2w" secondAttribute="leading" id="uca-UB-0jK"/>
                             <constraint firstItem="9xV-17-Uj7" firstAttribute="trailing" secondItem="gIE-75-e2w" secondAttribute="trailing" id="vbw-mF-UHu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="EsN-0e-YYN"/>
                     </view>
                     <connections>
                         <outlet property="cameraBarButtonItem" destination="e2J-Tm-wd2" id="wg1-uu-LLR"/>
@@ -88,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="-54" y="180"/>
         </scene>
-        <!--View Hidden InfrastructureAR Viewer-->
+        <!--View Hidden InfrastructureAR View Controller-->
         <scene sceneID="cyJ-ND-bdV">
             <objects>
-                <viewController id="Ax7-UJ-W7h" customClass="ViewHiddenInfrastructureARViewer" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ax7-UJ-W7h" customClass="ViewHiddenInfrastructureARViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u8b-FE-y2r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +110,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="FTa-Ao-hiw"/>
                                 <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="G54-G0-CA5" firstAttribute="leading" secondItem="FTa-Ao-hiw" secondAttribute="leading" id="5pj-Mt-uwn"/>
@@ -116,7 +118,6 @@
                                     <constraint firstAttribute="bottom" secondItem="G54-G0-CA5" secondAttribute="bottom" id="sYT-pS-epi"/>
                                     <constraint firstItem="G54-G0-CA5" firstAttribute="trailing" secondItem="FTa-Ao-hiw" secondAttribute="trailing" id="uDj-BF-VVl"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="FTa-Ao-hiw"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0j-oo-wc9">
                                 <rect key="frame" x="0.0" y="759" width="414" height="49"/>
@@ -129,7 +130,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="MbD-L2-Ne8"/>
                                     <barButtonItem style="plain" id="ymD-sU-NlE">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="lQs-at-RKk">
-                                            <rect key="frame" x="134.5" y="10.5" width="145" height="33"/>
+                                            <rect key="frame" x="133.5" y="10.5" width="147" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Roaming"/>
@@ -149,7 +150,8 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="dO8-VK-xMq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="C0j-oo-wc9" firstAttribute="trailing" secondItem="u8b-FE-y2r" secondAttribute="trailing" id="2ze-T9-gDo"/>
                             <constraint firstItem="HNG-g5-Mmo" firstAttribute="leading" secondItem="u8b-FE-y2r" secondAttribute="leading" id="3cD-yy-GrF"/>
@@ -162,7 +164,6 @@
                             <constraint firstItem="p3z-mu-aGJ" firstAttribute="top" secondItem="dO8-VK-xMq" secondAttribute="top" id="ugj-lJ-ZHg"/>
                             <constraint firstItem="p3z-mu-aGJ" firstAttribute="trailing" secondItem="u8b-FE-y2r" secondAttribute="trailing" id="yRZ-rt-Lnf"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dO8-VK-xMq"/>
                     </view>
                     <navigationItem key="navigationItem" id="Bdq-9D-ekC"/>
                     <connections>
@@ -176,4 +177,9 @@
             <point key="canvasLocation" x="758" y="179"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

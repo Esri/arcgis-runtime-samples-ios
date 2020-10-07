@@ -95,13 +95,8 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
     
     @IBAction func sketchBarButtonTapped(_ sender: UIBarButtonItem) {
         guard let sketchEditor = mapView.sketchEditor else { return }
-        switch sender.title {
-        case "Add":
-            // Start the sketch editor when "Add" is tapped.
-            sketchEditor.start(with: nil, creationMode: .polyline)
-            setStatus(message: "Tap on the map to add geometry.")
-            sender.title = "Done"
-        case "Done":
+        switch sketchEditor.isStarted {
+        case true:
             // Stop the sketch editor and create graphics when "Done" is tapped.
             if let polyline = sketchEditor.geometry as? AGSPolyline, polyline.parts.array().contains(where: { $0.pointCount >= 2 }) {
                 // Let user provide an elevation if the geometry is a valid polyline.
@@ -114,8 +109,11 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
             sketchEditor.stop()
             sketchEditor.clearGeometry()
             sender.title = "Add"
-        default:
-            break
+        case false:
+            // Start the sketch editor when "Add" is tapped.
+            sketchEditor.start(with: nil, creationMode: .polyline)
+            setStatus(message: "Tap on the map to add geometry.")
+            sender.title = "Done"
         }
     }
     
@@ -138,14 +136,14 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let doneAction = UIAlertAction(title: "Done", style: .default) { [textField = alert.textFields?.first] _ in
-            let distanceFormatter = MeasurementFormatter()
+            let distanceFormatter = NumberFormatter()
             // Format the string to an integer.
-            distanceFormatter.numberFormatter.maximumFractionDigits = 0
+            distanceFormatter.maximumFractionDigits = 0
             
             // Ensure the elevation value is valid.
             guard let text = textField?.text,
                 !text.isEmpty,
-                let elevation = distanceFormatter.numberFormatter.number(from: text),
+                let elevation = distanceFormatter.number(from: text),
                 elevation.intValue >= -10,
                 elevation.intValue <= 10 else { return }
             // Pass back the elevation value.
@@ -161,7 +159,7 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showViewer",
-            let controller = segue.destination as? ViewHiddenInfrastructureARViewer,
+            let controller = segue.destination as? ViewHiddenInfrastructureARViewController,
             let graphics = pipeGraphicsOverlay.graphics as? [AGSGraphic] {
             controller.pipeGraphics = graphics
         }
@@ -172,7 +170,7 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "ViewHiddenInfrastructureARPipePlacer",
-            "ViewHiddenInfrastructureARViewer",
+            "ViewHiddenInfrastructureARViewController",
             "ViewHiddenInfrastructureARCalibrationViewController"
         ]
         

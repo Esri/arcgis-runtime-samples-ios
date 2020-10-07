@@ -54,7 +54,7 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
     /// Initialize with an `ArcGISARView` from the parent view controller.
     /// - Parameters:
     ///   - arcgisARView: The `ArcGISARView` used for calibration.
-    ///   - isLocal: A boolean to decide if the AR view is in local mode.
+    ///   - isLocal: A Boolean value indicating whether the AR view is in local mode.
     init(arcgisARView: ArcGISARView, isLocal: Bool) {
         self.arcgisARView = arcgisARView
         super.init(nibName: nil, bundle: nil)

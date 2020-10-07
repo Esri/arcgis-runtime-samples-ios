@@ -17,7 +17,11 @@ import UIKit
 import ArcGIS
 
 class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDelegate {
-    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = AGSMap()
+        }
+    }
     
     private var itemIDs = ["1349bfa0ed08485d8a92c442a3850b06",
                            "bd8ac41667014d98b933e97713ba8377",
@@ -29,63 +33,65 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
     }
     
     var exportVectorTilesJob: AGSExportVectorTilesJob?
-    let customStyleID = "2056bf1b350244d69c78e4f84d1ba215"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileCustomStyleViewController", "VectorStylesViewController"]
-//
-//        //initialize map
-//        let map = AGSMap()
-//
-//        //assign map to map view
-        mapView.map = AGSMap()
         
-//        setViewpoint()
-        
-        //show the default vector tiled layer
+        // Show the default vector tiled layer.
         showSelectedItem(itemIDs.first!)
     }
     
     // MARK: - Helper functions
     private func showSelectedItem(_ itemID: String) {
         guard let map = mapView.map else { return }
+        // Get the vector tiled layer URL.
         let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
-        if itemID == customStyleID {
+        if itemID == itemIDs.last {
+            // If the custom style is chosen, use the local vector tile package.
             let vectorTileCache = AGSVectorTileCache(name: "PSCC_vector")
+            // Create a portal item with the URL.
             let portalItem = AGSPortalItem(url: vectorTiledLayerURL)!
+            // Create a task to export the custom style resources.
             let task = AGSExportVectorTilesTask(portalItem: portalItem)
+            // Get the AGSExportVectorTilesJob.
             exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: getItemResourceCacheURL())
+            // Start the job.
             exportVectorTilesJob?.start(statusHandler: nil) { [weak self] (result, error) in
                 guard let self = self else { return }
                 if let error = error {
+                    // Handle errors.
                     self.presentAlert(error: error)
                 } else if let result = result {
+                    // Get the item resource cache from the result.
                     let itemresourceCahce = result.itemResourceCache
+                    // Create a vector tiled layer with the vector tiled cache and the item resource cache.
                     let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
+                    // Assign the vector tiled layer to the basemap.
                     map.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
+                    // Set the viewpoint to display the Palm Springs Convention Center.
                     let point = AGSPoint(x: -116.5384, y: 33.8258, spatialReference: .wgs84())
                     self.mapView.setViewpoint(AGSViewpoint(center: point, scale: 3_000))
                 }
             }
         } else {
+            // Create a vector tiled layer from the URL.
             let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: vectorTiledLayerURL)
             map.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
-            //initial viewpoint
+            // Set the viewpoint.
             let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator())
             self.mapView.setViewpoint(AGSViewpoint(center: centerPoint, scale: 88659253.829259947))
         }
     }
     
     private func getItemResourceCacheURL() -> URL {
-        //get a suitable directory to place files
+        // Get a suitable directory to place files.
         let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        
-        //create a unique name for the geodatabase based on current timestamp
+        // Create a unique name for the item resource cache based on current timestamp.
         let formattedDate = ISO8601DateFormatter().string(from: Date())
-        
+        // Create and return the full, unique URL.
         return directoryURL.appendingPathComponent("\(formattedDate)")
     }
     
@@ -113,7 +119,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
     // MARK: - VectorStylesVCDelegate
     
     func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String) {
-        //show newly selected vector layer
+        // Show newly the selected vector layer.
         showSelectedItem(itemID)
     }
 }

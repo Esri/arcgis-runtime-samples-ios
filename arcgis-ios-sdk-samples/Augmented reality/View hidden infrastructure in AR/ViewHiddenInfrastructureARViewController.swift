@@ -17,7 +17,7 @@ import ARKit
 import ArcGIS
 import ArcGISToolkit
 
-class ViewHiddenInfrastructureARViewer: UIViewController {
+class ViewHiddenInfrastructureARViewController: UIViewController {
     // MARK: Storyboard views
     
     /// The label to display AR status.
@@ -31,9 +31,9 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
             let sceneView = arView.sceneView
             sceneView.scene = makeScene()
             // Configure overlays.
-            shadowsOverlay = makeShadowsOverlay()
-            leadersOverlay = makeLeadersOverlay()
-            sceneView.graphicsOverlays.addObjects(from: [makePipesOverlay(), shadowsOverlay!, leadersOverlay!])
+            shadowsOverlay = makeShadowsOverlay(with: pipeGraphics)
+            leadersOverlay = makeLeadersOverlay(with: pipeGraphics)
+            sceneView.graphicsOverlays.addObjects(from: [makePipesOverlay(with: pipeGraphics), shadowsOverlay!, leadersOverlay!])
             // Turn the space and atmosphere effects on for an immersive experience.
             sceneView.spaceEffect = .transparent
             sceneView.atmosphereEffect = .none
@@ -73,8 +73,9 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
     
     /// Create a graphic overlay for pipes and add graphics to it.
     ///
+    /// - Parameter pipeGraphics: The graphics of the pipes.
     /// - Returns: An `AGSGraphicsOverlay` object.
-    func makePipesOverlay() -> AGSGraphicsOverlay {
+    func makePipesOverlay(with pipeGraphics: [AGSGraphic]) -> AGSGraphicsOverlay {
         // Configure and add the overlay for showing drawn pipe infrastructure.
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
@@ -94,8 +95,9 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
     
     /// Create a graphic overlay for shadows and add graphics to it.
     ///
+    /// - Parameter pipeGraphics: The graphics of the pipes.
     /// - Returns: An `AGSGraphicsOverlay` object.
-    func makeShadowsOverlay() -> AGSGraphicsOverlay {
+    func makeShadowsOverlay(with pipeGraphics: [AGSGraphic]) -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .drapedFlat
         let shadowSymbol = AGSSimpleLineSymbol(style: .solid, color: .systemYellow, width: 0.3)
@@ -115,8 +117,9 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
     
     /// Create a graphic overlay for leader lines and add graphics to it.
     ///
+    /// - Parameter pipeGraphics: The graphics of the pipes.
     /// - Returns: An `AGSGraphicsOverlay` object.
-    func makeLeadersOverlay() -> AGSGraphicsOverlay {
+    func makeLeadersOverlay(with pipeGraphics: [AGSGraphic]) -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
         let leadersSymbol = AGSSimpleLineSymbol(style: .dash, color: .systemRed, width: 0.3)
@@ -124,14 +127,13 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
         graphicsOverlay.renderer = leadersRender
         var leadersGraphics = [AGSGraphic]()
         pipeGraphics.forEach { graphic in
-            if let pipePolyline = graphic.geometry as? AGSPolyline, let elevationOffset = graphic.attributes["ElevationOffset"] as? Double {
-                pipePolyline.parts.array().forEach { part in
-                    part.points.array().forEach { point in
-                        // Add a leader line to each vertex of the pipe between its elevation and the ground level.
-                        let offsetPoint = AGSPoint(x: point.x, y: point.y, z: point.z - elevationOffset, spatialReference: point.spatialReference)
-                        let leaderLine = AGSPolyline(points: [point, offsetPoint])
-                        leadersGraphics.append(AGSGraphic(geometry: leaderLine, symbol: nil))
-                    }
+            guard let pipePolyline = graphic.geometry as? AGSPolyline, let elevationOffset = graphic.attributes["ElevationOffset"] as? Double else { return }
+            pipePolyline.parts.array().forEach { part in
+                part.points.array().forEach { point in
+                    // Add a leader line to each vertex of the pipe between its elevation and the ground level.
+                    let offsetPoint = AGSPoint(x: point.x, y: point.y, z: point.z - elevationOffset, spatialReference: point.spatialReference)
+                    let leaderLine = AGSPolyline(points: [point, offsetPoint])
+                    leadersGraphics.append(AGSGraphic(geometry: leaderLine, symbol: nil))
                 }
             }
         }
@@ -206,7 +208,7 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
 
 // MARK: - ARKit camera tracking status
 
-extension ViewHiddenInfrastructureARViewer: ARSCNViewDelegate {
+extension ViewHiddenInfrastructureARViewController: ARSCNViewDelegate {
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         // Don't show anything in roaming mode; constant location tracking reset means
         // ARKit will always be initializing.
@@ -236,7 +238,7 @@ extension ViewHiddenInfrastructureARViewer: ARSCNViewDelegate {
 
 // MARK: - Calibration popup
 
-extension ViewHiddenInfrastructureARViewer {
+extension ViewHiddenInfrastructureARViewController {
     @IBAction func showCalibrationPopup(_ sender: UIBarButtonItem) {
         let calibrationVC = ViewHiddenInfrastructureARCalibrationViewController(arcgisARView: arView, isLocal: realScaleModePicker.selectedSegmentIndex == 1)
         elevationSurface.opacity = 0.5
@@ -255,14 +257,14 @@ extension ViewHiddenInfrastructureARViewer {
     }
 }
 
-extension ViewHiddenInfrastructureARViewer: UIPopoverPresentationControllerDelegate {
+extension ViewHiddenInfrastructureARViewController: UIPopoverPresentationControllerDelegate {
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         elevationSurface.opacity = 0
         realScaleModePicker.isEnabled = true
     }
 }
 
-extension ViewHiddenInfrastructureARViewer: UIAdaptivePresentationControllerDelegate {
+extension ViewHiddenInfrastructureARViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }

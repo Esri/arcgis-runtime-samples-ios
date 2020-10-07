@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class ViewHiddenInfrastructureARPipePlacer: UIViewController {
+class ViewHiddenInfrastructureARPipePlacingViewController: UIViewController {
     // MARK: Storyboard views
     
     /// The label to display pipe infrastructure planning status.
@@ -169,7 +169,7 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
-            "ViewHiddenInfrastructureARPipePlacer",
+            "ViewHiddenInfrastructureARPipePlacingViewController",
             "ViewHiddenInfrastructureARViewController",
             "ViewHiddenInfrastructureARCalibrationViewController"
         ]
@@ -207,7 +207,7 @@ class ViewHiddenInfrastructureARPipePlacer: UIViewController {
 
 // MARK: - Location change handler
 
-extension ViewHiddenInfrastructureARPipePlacer: AGSLocationChangeHandlerDelegate {
+extension ViewHiddenInfrastructureARPipePlacingViewController: AGSLocationChangeHandlerDelegate {
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         // Stop the location adjustment immediately after the first location update is received.
         let newViewpoint = AGSViewpoint(center: location.position!, scale: 1000)

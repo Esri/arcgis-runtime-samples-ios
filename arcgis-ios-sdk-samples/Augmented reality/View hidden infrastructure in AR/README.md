@@ -7,7 +7,7 @@ Visualize hidden infrastructure in its real-world location using augmented reali
 
 ## Use case
 
-You can use AR to "x-ray" the ground to see pipes, wiring, or other infrastructure that isn't otherwise visible. You could use this feature to trace the flow of water through a building to help identify the source of a leak.
+You can use AR to "x-ray" the ground to see pipes, wiring, or other infrastructure that isn't otherwise visible. For example, you could use this feature to trace the flow of water through a building to help identify the source of a leak.
 
 ## How to use the sample
 
@@ -22,7 +22,7 @@ When you're ready to take a more precise look at the infrastructure, switch to l
 1. Draw pipes on the map. See more in the "Sketch on map" sample to learn how to use the sketch editor for creating graphics.
 2. When you start the AR visualization experience, create and show the `ArcGISARView`.
 3. Access the `sceneView` property of the AR View and set the space effect `none` and the atmosphere effect to `transparent`.
-4. Create an elevation source and add it to the scene's base surface. Set the navigation constraint to `none` to allow going underground if needed.
+4. Create an elevation source and set it as the scene's base surface. Set the navigation constraint to `none` to allow going underground if needed.
 5. Listen to ARKit events with `ARSCNViewDelegate`. Provide feedback on ARKit tracking as needed.
     * Note: ARKit feedback should only be provided when the location data source is not continuously updating, i.e. in "local" mode.
     * When the location is continuously being updated, ARKit tracking never has time to reach the "normal" state, so feedback is not useful.

@@ -67,7 +67,6 @@ class ViewHiddenInfrastructureARViewer: UIViewController {
         elevationSurface.navigationConstraint = .none
         elevationSurface.opacity = 0
         elevationSurface.elevationSources = [elevationSource]
-        elevationSurface.navigationConstraint = .none
         scene.baseSurface = elevationSurface
         return scene
     }

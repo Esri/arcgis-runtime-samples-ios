@@ -35,8 +35,8 @@
         "ArcGISARView"
     ],
     "snippets": [
-        "ViewHiddenInfrastructureARPipePlacer.swift",
-        "ViewHiddenInfrastructureARViewer.swift",
+        "ViewHiddenInfrastructureARPipePlacingViewController.swift",
+        "ViewHiddenInfrastructureARViewController.swift",
         "ViewHiddenInfrastructureARCalibrationViewController.swift"
     ],
     "title": "View hidden infrastructure in AR"

@@ -407,7 +407,6 @@
 				<key>dependency</key>
 				<array>
 					<string>PSCC_vector</string>
-					<string>PSCC_style</string>
 				</array>
 			</dict>
 			<dict>

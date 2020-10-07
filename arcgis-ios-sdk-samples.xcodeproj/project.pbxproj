@@ -805,7 +805,6 @@
 		F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */; };
 		F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F1410A7D251D78E000FA72CE /* PSCC_vector.vtpk in Resources */ = {isa = PBXBuildFile; fileRef = F1410A7C251D78E000FA72CE /* PSCC_vector.vtpk */; settings = {ASSET_TAGS = (PSCC_vector, ); }; };
-		F1410A80251D78FB00FA72CE /* PSCC_style.json in Resources */ = {isa = PBXBuildFile; fileRef = F1410A7F251D78FB00FA72CE /* PSCC_style.json */; settings = {ASSET_TAGS = (PSCC_style, ); }; };
 		F14A8F012474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */; };
 		F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
@@ -1730,7 +1729,6 @@
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F1410A7C251D78E000FA72CE /* PSCC_vector.vtpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = PSCC_vector.vtpk; sourceTree = "<group>"; };
-		F1410A7F251D78FB00FA72CE /* PSCC_style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PSCC_style.json; sourceTree = "<group>"; };
 		F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigureSubnetworkTrace.storyboard; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MontereyElevation.dt2; sourceTree = "<group>"; };
 		F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeFeatureLayerViewController.swift; sourceTree = "<group>"; };
@@ -3759,7 +3757,6 @@
 			isa = PBXGroup;
 			children = (
 				00DAE5D624213D5B00D51281 /* Restaurant.stylx */,
-				F1410A7F251D78FB00FA72CE /* PSCC_style.json */,
 				4CA6F6CE22C6C671004F0F4F /* mil2525d.stylx */,
 			);
 			path = Styles;
@@ -4743,7 +4740,6 @@
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
 				D97B7E5C1FD9BFE700E1239D /* Subdivisions.prj in Resources */,
 				00DAE5B82421321300D51281 /* NearestVertex.storyboard in Resources */,
-				F1410A80251D78FB00FA72CE /* PSCC_style.json in Resources */,
 				C7AF465F21B1C8AC0050CC49 /* ChangeAtmosphereEffect.storyboard in Resources */,
 				C74ECB5121C17E9100129D6D /* DensifyAndGeneralize.storyboard in Resources */,
 				169CDBCA223C6B5F00ABFF0A /* AddPointSceneLayer.storyboard in Resources */,

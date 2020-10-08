@@ -29,7 +29,10 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
                            "1bf0cc4a4380468fbbff107e100f65a5",
                            "2056bf1b350244d69c78e4f84d1ba215"]
     private var shownItemID: String? {
-        return ((mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer)?.item as? AGSPortalItem)?.itemID
+        if let itemID = ((mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer)?.item as? AGSPortalItem)?.itemID {
+            return itemID
+        }
+        return "2056bf1b350244d69c78e4f84d1ba215"
     }
     
     var exportVectorTilesJob: AGSExportVectorTilesJob?

@@ -23,11 +23,15 @@ protocol VectorStylesVCDelegate: AnyObject {
 class VectorStylesViewController: UITableViewController {
     var itemIDs: [String] = []
     var selectedItemID: String?
+    var tableViewContentSizeObservation: NSKeyValueObservation?
     
     weak var delegate: VectorStylesVCDelegate?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tableViewContentSizeObservation = tableView.observe(\.contentSize) { [unowned self] (tableView, _) in
+            self.preferredContentSize = CGSize(width: self.preferredContentSize.width, height: tableView.contentSize.height)
+        }
         if let selectedItemID = selectedItemID,
             let row = itemIDs.firstIndex(of: selectedItemID) {
             let indexPath = IndexPath(row: row, section: 0)
@@ -37,8 +41,12 @@ class VectorStylesViewController: UITableViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableViewContentSizeObservation = nil
+    }
+    
     // MARK: - UITableViewDelegate
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemID = itemIDs[indexPath.row]
         delegate?.vectorStylesViewController(self, didSelectItemWithID: itemID)

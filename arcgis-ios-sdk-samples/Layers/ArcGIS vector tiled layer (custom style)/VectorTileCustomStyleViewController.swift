@@ -102,17 +102,9 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             controller.delegate = self
             controller.itemIDs = itemIDs
             controller.selectedItemID = shownItemID
+            // Popover presentation logic.
             controller.presentationController?.delegate = self
-            controller.preferredContentSize = {
-                let height: CGFloat
-                if traitCollection.horizontalSizeClass == .regular,
-                    traitCollection.verticalSizeClass == .regular {
-                    height = 200
-                } else {
-                    height = 150
-                }
-                return CGSize(width: 375, height: height)
-            }()
+            controller.preferredContentSize = CGSize(width: 300, height: 220)
         }
     }
     

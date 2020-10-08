@@ -59,7 +59,10 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             // Get the AGSExportVectorTilesJob.
             exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: getItemResourceCacheURL())
             // Start the job.
-            exportVectorTilesJob?.start(statusHandler: nil) { [weak self] (result, error) in
+            exportVectorTilesJob?.start(statusHandler: { (status) in
+                SVProgressHUD.show(withStatus: status.statusString())
+            }, completion: { [weak self] (result, error) in
+                SVProgressHUD.dismiss()
                 guard let self = self else { return }
                 if let error = error {
                     // Handle errors.
@@ -75,7 +78,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
                     let point = AGSPoint(x: -116.5384, y: 33.8258, spatialReference: .wgs84())
                     self.mapView.setViewpoint(AGSViewpoint(center: point, scale: 3_000))
                 }
-            }
+            })
         } else {
             // Create a vector tiled layer from the URL.
             let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: vectorTiledLayerURL)

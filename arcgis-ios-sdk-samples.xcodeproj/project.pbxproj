@@ -804,8 +804,8 @@
 		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */; };
 		F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
-		F1410A7D251D78E000FA72CE /* PSCC_vector.vtpk in Resources */ = {isa = PBXBuildFile; fileRef = F1410A7C251D78E000FA72CE /* PSCC_vector.vtpk */; settings = {ASSET_TAGS = (PSCC_vector, ); }; };
 		F14A8F012474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */; };
+		F14F0919252E932700636914 /* PSCC_vector.vtpk in Resources */ = {isa = PBXBuildFile; fileRef = F14F0918252E932700636914 /* PSCC_vector.vtpk */; settings = {ASSET_TAGS = (PSCC_vector, ); }; };
 		F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
@@ -1728,8 +1728,8 @@
 		F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFeaturesWithFeatureLinkedAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
-		F1410A7C251D78E000FA72CE /* PSCC_vector.vtpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = PSCC_vector.vtpk; sourceTree = "<group>"; };
 		F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigureSubnetworkTrace.storyboard; sourceTree = "<group>"; };
+		F14F0918252E932700636914 /* PSCC_vector.vtpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = PSCC_vector.vtpk; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MontereyElevation.dt2; sourceTree = "<group>"; };
 		F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeFeatureLayerViewController.swift; sourceTree = "<group>"; };
 		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
@@ -3571,6 +3571,7 @@
 		4C060E652261195C0070C787 /* Tile Packages */ = {
 			isa = PBXGroup;
 			children = (
+				F14F0918252E932700636914 /* PSCC_vector.vtpk */,
 				F1034FAB22D3F6C700B021DA /* MontereyElevation.tpk */,
 				4C060E662261195C0070C787 /* naperville_imagery.tpk */,
 			);
@@ -3790,7 +3791,6 @@
 		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
 			isa = PBXGroup;
 			children = (
-				F1410A7A251D78B500FA72CE /* Vector Tiled Layer Packages */,
 				008D175024EEEEBD0001BB8F /* Geodatabases */,
 				00C6D328246CA8FC00C63EAF /* Archives */,
 				4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */,
@@ -4328,14 +4328,6 @@
 			path = "Display annotation";
 			sourceTree = "<group>";
 		};
-		F1410A7A251D78B500FA72CE /* Vector Tiled Layer Packages */ = {
-			isa = PBXGroup;
-			children = (
-				F1410A7C251D78E000FA72CE /* PSCC_vector.vtpk */,
-			);
-			path = "Vector Tiled Layer Packages";
-			sourceTree = "<group>";
-		};
 		F14A8EFC2474AD3A00242D96 /* Configure subnetwork trace */ = {
 			isa = PBXGroup;
 			children = (
@@ -4859,7 +4851,7 @@
 				D9E2E76620EEB8FF001D0AE0 /* Public_Art.shp.xml in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
 				00DAE5D824213D5B00D51281 /* Restaurant.stylx in Resources */,
-				F1410A7D251D78E000FA72CE /* PSCC_vector.vtpk in Resources */,
+				F14F0919252E932700636914 /* PSCC_vector.vtpk in Resources */,
 				009D8BEF24F9AC8D00FD7E76 /* LaunchScreen.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */,

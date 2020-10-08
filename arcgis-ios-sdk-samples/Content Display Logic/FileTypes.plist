@@ -28,6 +28,7 @@
 	</array>
 	<key>Tile Packages</key>
 	<array>
+		<string>vtpk</string>
 		<string>tpk</string>
 	</array>
 	<key>Archives</key>

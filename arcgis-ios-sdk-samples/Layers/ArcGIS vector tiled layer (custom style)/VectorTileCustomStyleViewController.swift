@@ -88,7 +88,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             map.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
             // Set the viewpoint.
             let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator())
-            self.mapView.setViewpoint(AGSViewpoint(center: centerPoint, scale: 88659253.829259947))
+            mapView.setViewpoint(AGSViewpoint(center: centerPoint, scale: 88659253.829259947))
         }
     }
     

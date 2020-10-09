@@ -4553,8 +4553,6 @@
 					MontereyElevation,
 					MontereyElevationRaster,
 					NDVIRaster,
-					PSCC_package,
-					PSCC_style,
 					PSCC_vector,
 					PacificSouthWest,
 					PublicArtShapefile,

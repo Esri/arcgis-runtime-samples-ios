@@ -664,11 +664,27 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Apply mosaic rule to rasters</string>
+				<key>descriptionText</key>
+				<string>Apply a mosaic rule to a mosaic dataset of rasters.</string>
+				<key>storyboardName</key>
+				<string>ApplyMosaicRuleToRasters</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Apply raster rendering rule</string>
 				<key>descriptionText</key>
 				<string>Display a raster on a map and apply different rendering rules to that raster.</string>
 				<key>storyboardName</key>
 				<string>ApplyRasterRenderingRule</string>
+			</dict>
+			<dict>
+				<key>descriptionText</key>
+				<string>Edit the values of a KML ground overlay.</string>
+				<key>storyboardName</key>
+				<string>EditKMLGroundOverlay</string>
+				<key>displayName</key>
+				<string>Edit KML ground overlay</string>
 			</dict>
 		</array>
 	</dict>

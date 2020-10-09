@@ -58,6 +58,9 @@
 		00E5B7D22458FE7900B11973 /* PerformValveIsolationTraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */; };
 		00E5B7D42458FE8900B11973 /* PerformValveIsolationTrace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */; };
 		00E5B7D5245B9C8D00B11973 /* PerformValveIsolationTraceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */; };
+		00F953C524E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00F953C324E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard */; };
+		00F953C624E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */; };
+		00F953C724E34CCC00D16555 /* ApplyMosaicRuleToRastersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */; };
@@ -816,6 +819,9 @@
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F16922B225158B1E00A8F36E /* EditKMLGroundOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16922B125158B1E00A8F36E /* EditKMLGroundOverlay.storyboard */; };
+		F16922B525158B4400A8F36E /* EditKMLGroundOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */; };
+		F16922B7251590E200A8F36E /* EditKMLGroundOverlayViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */; };
 		F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
@@ -888,6 +894,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F16922B7251590E200A8F36E /* EditKMLGroundOverlayViewController.swift in CopyFiles */,
+				00F953C724E34CCC00D16555 /* ApplyMosaicRuleToRastersViewController.swift in CopyFiles */,
 				003D25652513DF58007527C2 /* ApplyRasterRenderingRuleViewController.swift in CopyFiles */,
 				F12C739F250ADDB000C1E3FE /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */,
 				F12C73A0250ADDB000C1E3FE /* ConfigureSubnetworkTraceOptionsViewController.swift in CopyFiles */,
@@ -1204,6 +1212,8 @@
 		00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateRouteViewController.swift; sourceTree = "<group>"; };
 		00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformValveIsolationTraceViewController.swift; sourceTree = "<group>"; };
 		00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PerformValveIsolationTrace.storyboard; sourceTree = "<group>"; };
+		00F953C324E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ApplyMosaicRuleToRasters.storyboard; sourceTree = "<group>"; };
+		00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplyMosaicRuleToRastersViewController.swift; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceViewController.swift; sourceTree = "<group>"; };
@@ -1735,6 +1745,8 @@
 		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
 		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
+		F16922B125158B1E00A8F36E /* EditKMLGroundOverlay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditKMLGroundOverlay.storyboard; sourceTree = "<group>"; };
+		F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditKMLGroundOverlayViewController.swift; sourceTree = "<group>"; };
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
@@ -1915,6 +1927,15 @@
 				00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */,
 			);
 			path = "Perform valve isolation trace";
+			sourceTree = "<group>";
+		};
+		00F953C124E34C1300D16555 /* Apply mosaic rule to rasters */ = {
+			isa = PBXGroup;
+			children = (
+				00F953C324E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard */,
+				00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */,
+			);
+			path = "Apply mosaic rule to rasters";
 			sourceTree = "<group>";
 		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
@@ -2998,6 +3019,8 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				F16922AF251589CB00A8F36E /* Edit KML ground overlay */,
+				00F953C124E34C1300D16555 /* Apply mosaic rule to rasters */,
 				003D255D2513D824007527C2 /* Apply raster rendering rule */,
 				00ADC3C92464DD0600A3B88D /* Identify raster cell */,
 				F15CF0C723EE26CB0038F052 /* Display subtype feature layer */,
@@ -4365,6 +4388,15 @@
 			path = Rasters;
 			sourceTree = "<group>";
 		};
+		F16922AF251589CB00A8F36E /* Edit KML ground overlay */ = {
+			isa = PBXGroup;
+			children = (
+				F16922B125158B1E00A8F36E /* EditKMLGroundOverlay.storyboard */,
+				F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */,
+			);
+			path = "Edit KML ground overlay";
+			sourceTree = "<group>";
+		};
 		F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */ = {
 			isa = PBXGroup;
 			children = (
@@ -4555,7 +4587,6 @@
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 					};
 					4CD2B5532142EAF900767D87 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -4727,6 +4758,7 @@
 				C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */,
 				00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
+				00F953C524E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
 				3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */,
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
@@ -4855,6 +4887,7 @@
 				009D8BEF24F9AC8D00FD7E76 /* LaunchScreen.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */,
+				F16922B225158B1E00A8F36E /* EditKMLGroundOverlay.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
 				00ADC3CF2464DD2B00A3B88D /* IdentifyRasterCell.storyboard in Resources */,
@@ -5255,6 +5288,7 @@
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				12B736522256D618007F93C6 /* ChooseCameraControllerViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
+				00F953C624E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift in Sources */,
 				001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
 				3E62940C1EAFAF4100084105 /* WebTiledLayerViewController.swift in Sources */,
@@ -5266,6 +5300,7 @@
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
 				9DA3CD8C23060687007CB1F3 /* MapSelectionTableViewController.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
+				F16922B525158B4400A8F36E /* EditKMLGroundOverlayViewController.swift in Sources */,
 				3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in Sources */,
 				4C1EF29D220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
@@ -5419,7 +5454,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5453,7 +5488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSET_PACK_MANIFEST_URL_PREFIX = "";
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

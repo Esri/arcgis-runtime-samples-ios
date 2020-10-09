@@ -209,7 +209,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
                 forName: UITextField.textDidChangeNotification,
                 object: textField,
                 queue: .main
-            ) { _ in
+            ) { [ unowned doneAction ] _ in
                 if let text = textField.text {
                     // Enable the done button if the textfield is not empty and is a valid number.
                     doneAction.isEnabled = NumberFormatter().number(from: text) != nil

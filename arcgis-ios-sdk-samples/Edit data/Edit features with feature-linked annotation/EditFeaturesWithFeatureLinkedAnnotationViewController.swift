@@ -153,7 +153,7 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         }
         alert.addAction(doneAction)
         // Add an observer to ensure the user does not input an empty string.
-        textFieldObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: .main, using: { [unowned alert] _ in
+        textFieldObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: .main, using: { [unowned alert, unowned doneAction] _ in
             // Enable the done button if both textfields are not empty.
             doneAction.isEnabled = (alert.textFields?.allSatisfy { $0.text?.isEmpty == false })!
         })

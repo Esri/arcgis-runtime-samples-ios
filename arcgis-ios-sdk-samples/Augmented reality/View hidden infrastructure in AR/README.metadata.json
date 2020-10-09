@@ -36,7 +36,7 @@
     ],
     "snippets": [
         "ViewHiddenInfrastructureARPipePlacingViewController.swift",
-        "ViewHiddenInfrastructureARViewController.swift",
+        "ViewHiddenInfrastructureARExplorerViewController.swift",
         "ViewHiddenInfrastructureARCalibrationViewController.swift"
     ],
     "title": "View hidden infrastructure in AR"

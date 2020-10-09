@@ -31,9 +31,9 @@ class ViewHiddenInfrastructureARExplorerViewController: UIViewController {
             let sceneView = arView.sceneView
             sceneView.scene = makeScene()
             // Configure overlays.
-            shadowsOverlay = makeShadowsOverlay(with: pipeGraphics)
-            leadersOverlay = makeLeadersOverlay(with: pipeGraphics)
-            sceneView.graphicsOverlays.addObjects(from: [makePipesOverlay(with: pipeGraphics), shadowsOverlay!, leadersOverlay!])
+            shadowsOverlay = makeShadowsOverlay(pipeGraphics: pipeGraphics)
+            leadersOverlay = makeLeadersOverlay(pipeGraphics: pipeGraphics)
+            sceneView.graphicsOverlays.addObjects(from: [makePipesOverlay(pipeGraphics: pipeGraphics), shadowsOverlay!, leadersOverlay!])
             // Turn the space and atmosphere effects on for an immersive experience.
             sceneView.spaceEffect = .transparent
             sceneView.atmosphereEffect = .none
@@ -75,7 +75,7 @@ class ViewHiddenInfrastructureARExplorerViewController: UIViewController {
     ///
     /// - Parameter pipeGraphics: The graphics of the pipes.
     /// - Returns: An `AGSGraphicsOverlay` object.
-    func makePipesOverlay(with pipeGraphics: [AGSGraphic]) -> AGSGraphicsOverlay {
+    func makePipesOverlay(pipeGraphics: [AGSGraphic]) -> AGSGraphicsOverlay {
         // Configure and add the overlay for showing drawn pipe infrastructure.
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
@@ -97,7 +97,7 @@ class ViewHiddenInfrastructureARExplorerViewController: UIViewController {
     ///
     /// - Parameter pipeGraphics: The graphics of the pipes.
     /// - Returns: An `AGSGraphicsOverlay` object.
-    func makeShadowsOverlay(with pipeGraphics: [AGSGraphic]) -> AGSGraphicsOverlay {
+    func makeShadowsOverlay(pipeGraphics: [AGSGraphic]) -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .drapedFlat
         let shadowSymbol = AGSSimpleLineSymbol(style: .solid, color: .systemYellow, width: 0.3)
@@ -119,7 +119,7 @@ class ViewHiddenInfrastructureARExplorerViewController: UIViewController {
     ///
     /// - Parameter pipeGraphics: The graphics of the pipes.
     /// - Returns: An `AGSGraphicsOverlay` object.
-    func makeLeadersOverlay(with pipeGraphics: [AGSGraphic]) -> AGSGraphicsOverlay {
+    func makeLeadersOverlay(pipeGraphics: [AGSGraphic]) -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .absolute
         let leadersSymbol = AGSSimpleLineSymbol(style: .dash, color: .systemRed, width: 0.3)

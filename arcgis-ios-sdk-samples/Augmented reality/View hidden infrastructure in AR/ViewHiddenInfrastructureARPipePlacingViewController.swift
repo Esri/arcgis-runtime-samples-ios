@@ -159,7 +159,7 @@ class ViewHiddenInfrastructureARPipePlacingViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showViewer",
-            let controller = segue.destination as? ViewHiddenInfrastructureARViewController,
+            let controller = segue.destination as? ViewHiddenInfrastructureARExplorerViewController,
             let graphics = pipeGraphicsOverlay.graphics as? [AGSGraphic] {
             controller.pipeGraphics = graphics
         }
@@ -170,7 +170,7 @@ class ViewHiddenInfrastructureARPipePlacingViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "ViewHiddenInfrastructureARPipePlacingViewController",
-            "ViewHiddenInfrastructureARViewController",
+            "ViewHiddenInfrastructureARExplorerViewController",
             "ViewHiddenInfrastructureARCalibrationViewController"
         ]
         

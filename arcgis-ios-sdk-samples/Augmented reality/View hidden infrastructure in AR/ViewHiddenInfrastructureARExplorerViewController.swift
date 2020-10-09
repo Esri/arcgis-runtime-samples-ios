@@ -17,7 +17,7 @@ import ARKit
 import ArcGIS
 import ArcGISToolkit
 
-class ViewHiddenInfrastructureARViewController: UIViewController {
+class ViewHiddenInfrastructureARExplorerViewController: UIViewController {
     // MARK: Storyboard views
     
     /// The label to display AR status.
@@ -208,7 +208,7 @@ class ViewHiddenInfrastructureARViewController: UIViewController {
 
 // MARK: - ARKit camera tracking status
 
-extension ViewHiddenInfrastructureARViewController: ARSCNViewDelegate {
+extension ViewHiddenInfrastructureARExplorerViewController: ARSCNViewDelegate {
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         // Don't show anything in roaming mode; constant location tracking reset means
         // ARKit will always be initializing.
@@ -238,7 +238,7 @@ extension ViewHiddenInfrastructureARViewController: ARSCNViewDelegate {
 
 // MARK: - Calibration popup
 
-extension ViewHiddenInfrastructureARViewController {
+extension ViewHiddenInfrastructureARExplorerViewController {
     @IBAction func showCalibrationPopup(_ sender: UIBarButtonItem) {
         let calibrationVC = ViewHiddenInfrastructureARCalibrationViewController(arcgisARView: arView, isLocal: realScaleModePicker.selectedSegmentIndex == 1)
         elevationSurface.opacity = 0.5
@@ -257,14 +257,14 @@ extension ViewHiddenInfrastructureARViewController {
     }
 }
 
-extension ViewHiddenInfrastructureARViewController: UIPopoverPresentationControllerDelegate {
+extension ViewHiddenInfrastructureARExplorerViewController: UIPopoverPresentationControllerDelegate {
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         elevationSurface.opacity = 0
         realScaleModePicker.isEnabled = true
     }
 }
 
-extension ViewHiddenInfrastructureARViewController: UIAdaptivePresentationControllerDelegate {
+extension ViewHiddenInfrastructureARExplorerViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }

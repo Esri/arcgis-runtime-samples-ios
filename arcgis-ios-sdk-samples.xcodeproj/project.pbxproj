@@ -22,6 +22,9 @@
 		003D256E2513F4B6007527C2 /* AddENCExchangeSet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */; };
 		003D25702513FBB5007527C2 /* ExchangeSetwithoutUpdates in Resources */ = {isa = PBXBuildFile; fileRef = 003D256F2513FBB5007527C2 /* ExchangeSetwithoutUpdates */; settings = {ASSET_TAGS = (ExchangeSetWithoutUpdates, ); }; };
 		003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */; };
+		003D25622513D833007527C2 /* ApplyRasterRenderingRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */; };
+		003D25642513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */; };
+		003D25652513DF58007527C2 /* ApplyRasterRenderingRuleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -29,9 +32,10 @@
 		008D175724EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
 		008D175924EEF4390001BB8F /* EditWithBranchVersioning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */; };
 		008D175A24EF35800001BB8F /* EditWithBranchVersioningViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
+		009D8BEF24F9AC8D00FD7E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */; };
 		00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */; };
 		00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
-		00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3C22464D59200A3B88D /* PacificSouthWest */; settings = {ASSET_TAGS = (PacificSouthWest, ); }; };
+		00ADC3C32464D59200A3B88D /* PacificSouthWest2 in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3C22464D59200A3B88D /* PacificSouthWest2 */; settings = {ASSET_TAGS = (PacificSouthWest, ); }; };
 		00ADC3C42464D64F00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */; };
 		00ADC3CF2464DD2B00A3B88D /* IdentifyRasterCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */; };
 		00ADC3D12464DD3600A3B88D /* IdentifyRasterCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
@@ -58,6 +62,9 @@
 		00E5B7D22458FE7900B11973 /* PerformValveIsolationTraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */; };
 		00E5B7D42458FE8900B11973 /* PerformValveIsolationTrace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */; };
 		00E5B7D5245B9C8D00B11973 /* PerformValveIsolationTraceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */; };
+		00F953C524E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00F953C324E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard */; };
+		00F953C624E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */; };
+		00F953C724E34CCC00D16555 /* ApplyMosaicRuleToRastersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */; };
@@ -172,7 +179,6 @@
 		3E1E5EF31D9F0E6F00F4913C /* HillshadeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E1E5EE61D9F095A00F4913C /* HillshadeSettingsViewController.swift */; };
 		3E23A9E61AFC28F6002E2214 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */; };
 		3E23A9EF1AFC28F6002E2214 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */; };
-		3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */; };
 		3E24E6741BFE560B00322DAC /* LayerStatusViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ECCFE391BD0401A00CE256D /* LayerStatusViewController.swift */; };
 		3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A680D1B0D2A7000A318AA /* ListViewController.swift */; };
 		3E2A68181B153CDE00A318AA /* SourceCodeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */; };
@@ -816,6 +822,9 @@
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
 		F164997C22E9257E0088CA93 /* EditAndSyncFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
+		F16922B225158B1E00A8F36E /* EditKMLGroundOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16922B125158B1E00A8F36E /* EditKMLGroundOverlay.storyboard */; };
+		F16922B525158B4400A8F36E /* EditKMLGroundOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */; };
+		F16922B7251590E200A8F36E /* EditKMLGroundOverlayViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */; };
 		F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
@@ -889,6 +898,9 @@
 			dstSubfolderSpec = 7;
 			files = (
 				003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */,
+				F16922B7251590E200A8F36E /* EditKMLGroundOverlayViewController.swift in CopyFiles */,
+				00F953C724E34CCC00D16555 /* ApplyMosaicRuleToRastersViewController.swift in CopyFiles */,
+				003D25652513DF58007527C2 /* ApplyRasterRenderingRuleViewController.swift in CopyFiles */,
 				F12C739F250ADDB000C1E3FE /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */,
 				F12C73A0250ADDB000C1E3FE /* ConfigureSubnetworkTraceOptionsViewController.swift in CopyFiles */,
 				008D175A24EF35800001BB8F /* EditWithBranchVersioningViewController.swift in CopyFiles */,
@@ -1178,13 +1190,16 @@
 		003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddENCExchangeSetViewController.swift; sourceTree = "<group>"; };
 		003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddENCExchangeSet.storyboard; sourceTree = "<group>"; };
 		003D256F2513FBB5007527C2 /* ExchangeSetwithoutUpdates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ExchangeSetwithoutUpdates; sourceTree = "<group>"; };
+		003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApplyRasterRenderingRule.storyboard; sourceTree = "<group>"; };
+		003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRasterRenderingRuleViewController.swift; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWithBranchVersioningViewController.swift; sourceTree = "<group>"; };
 		008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditWithBranchVersioning.storyboard; sourceTree = "<group>"; };
+		009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnimateImagesWithImageOverlay.storyboard; sourceTree = "<group>"; };
 		00ADC3BA2464D45B00A3B88D /* AnimateImagesWithImageOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateImagesWithImageOverlayViewController.swift; sourceTree = "<group>"; };
-		00ADC3C22464D59200A3B88D /* PacificSouthWest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PacificSouthWest; sourceTree = "<group>"; };
+		00ADC3C22464D59200A3B88D /* PacificSouthWest2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PacificSouthWest2; sourceTree = "<group>"; };
 		00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyRasterCell.storyboard; sourceTree = "<group>"; };
 		00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyRasterCellViewController.swift; sourceTree = "<group>"; };
 		00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARRoutePlannerViewController.swift; sourceTree = "<group>"; };
@@ -1204,6 +1219,8 @@
 		00E2762A2425A205000DBEDD /* NavigateRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateRouteViewController.swift; sourceTree = "<group>"; };
 		00E5B7D12458FE7900B11973 /* PerformValveIsolationTraceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformValveIsolationTraceViewController.swift; sourceTree = "<group>"; };
 		00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PerformValveIsolationTrace.storyboard; sourceTree = "<group>"; };
+		00F953C324E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ApplyMosaicRuleToRasters.storyboard; sourceTree = "<group>"; };
+		00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplyMosaicRuleToRastersViewController.swift; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceViewController.swift; sourceTree = "<group>"; };
@@ -1284,7 +1301,6 @@
 		3E23A9E41AFC28F6002E2214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "arcgis-ios-sdk-samples/AppDelegate.swift"; sourceTree = "<group>"; };
 		3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "arcgis-ios-sdk-samples/Assets.xcassets"; sourceTree = "<group>"; };
-		3E23A9F11AFC28F6002E2214 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3E2A680D1B0D2A7000A318AA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeBarButtonItem.swift; sourceTree = "<group>"; };
 		3E39F6CF1B9790A9000DEC6C /* EditFeaturesOnline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditFeaturesOnline.storyboard; sourceTree = "<group>"; };
@@ -1735,6 +1751,8 @@
 		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
 		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
+		F16922B125158B1E00A8F36E /* EditKMLGroundOverlay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditKMLGroundOverlay.storyboard; sourceTree = "<group>"; };
+		F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditKMLGroundOverlayViewController.swift; sourceTree = "<group>"; };
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
@@ -1806,6 +1824,15 @@
 			path = "Add ENC exchange set";
 			sourceTree = "<group>";
 		};
+		003D255D2513D824007527C2 /* Apply raster rendering rule */ = {
+			isa = PBXGroup;
+			children = (
+				003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */,
+				003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */,
+			);
+			path = "Apply raster rendering rule";
+			sourceTree = "<group>";
+		};
 		008D175024EEEEBD0001BB8F /* Geodatabases */ = {
 			isa = PBXGroup;
 			children = (
@@ -1856,7 +1883,7 @@
 			isa = PBXGroup;
 			children = (
 				003D256F2513FBB5007527C2 /* ExchangeSetwithoutUpdates */,
-				00ADC3C22464D59200A3B88D /* PacificSouthWest */,
+				00ADC3C22464D59200A3B88D /* PacificSouthWest2 */,
 				00C6D329246CA8FC00C63EAF /* SA_EVI_8Day_03May20 */,
 			);
 			path = Archives;
@@ -1916,6 +1943,15 @@
 				00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */,
 			);
 			path = "Perform valve isolation trace";
+			sourceTree = "<group>";
+		};
+		00F953C124E34C1300D16555 /* Apply mosaic rule to rasters */ = {
+			isa = PBXGroup;
+			children = (
+				00F953C324E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard */,
+				00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */,
+			);
+			path = "Apply mosaic rule to rasters";
 			sourceTree = "<group>";
 		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
@@ -2186,6 +2222,7 @@
 		3E0D3AD51AFD47BF00FC60D6 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */,
 				3E0D3AD61AFD481900FC60D6 /* Main.storyboard */,
 			);
 			path = Storyboard;
@@ -2255,7 +2292,6 @@
 				3E4B05E51B39EE920072E514 /* Shared resources */,
 				C7E86C8E21751CFE001C65C3 /* Extensions */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
-				3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */,
 				3EA34D591B38C3B3003DC0E8 /* Samples-Bridging-Header.h */,
 				3E23A9E41AFC28F6002E2214 /* Info.plist */,
 			);
@@ -3000,6 +3036,9 @@
 			isa = PBXGroup;
 			children = (
 				003D25672513F486007527C2 /* Add ENC exchange set */,
+				F16922AF251589CB00A8F36E /* Edit KML ground overlay */,
+				00F953C124E34C1300D16555 /* Apply mosaic rule to rasters */,
+				003D255D2513D824007527C2 /* Apply raster rendering rule */,
 				00ADC3C92464DD0600A3B88D /* Identify raster cell */,
 				F15CF0C723EE26CB0038F052 /* Display subtype feature layer */,
 				F140E1E823F35E61008AC44E /* Display annotation */,
@@ -4365,6 +4404,15 @@
 			path = Rasters;
 			sourceTree = "<group>";
 		};
+		F16922AF251589CB00A8F36E /* Edit KML ground overlay */ = {
+			isa = PBXGroup;
+			children = (
+				F16922B125158B1E00A8F36E /* EditKMLGroundOverlay.storyboard */,
+				F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */,
+			);
+			path = "Edit KML ground overlay";
+			sourceTree = "<group>";
+		};
 		F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */ = {
 			isa = PBXGroup;
 			children = (
@@ -4553,7 +4601,6 @@
 					3E23A9DF1AFC28F6002E2214 = {
 						CreatedOnToolsVersion = 6.2;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 					};
 					4CD2B5532142EAF900767D87 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -4630,7 +4677,6 @@
 				C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */,
 				00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */,
 				C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */,
-				3E23A9F21AFC28F6002E2214 /* LaunchScreen.xib in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
 				D9E2E76320EEB8FF001D0AE0 /* Public_Art.sbn in Resources */,
 				D9E2E75320EEAC58001D0AE0 /* FeatureLayerShapefile.storyboard in Resources */,
@@ -4640,6 +4686,7 @@
 				D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
 				3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */,
+				003D25622513D833007527C2 /* ApplyRasterRenderingRule.storyboard in Resources */,
 				3ED028781B8E3A8500ACA70D /* ManageMapLayers.storyboard in Resources */,
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
 				C7AF466621B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard in Resources */,
@@ -4727,6 +4774,7 @@
 				C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */,
 				00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
+				00F953C524E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
 				3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */,
 				3E4BF47D1C5BDDCA00D85919 /* san-diego-locator.loc.xml in Resources */,
@@ -4851,8 +4899,10 @@
 				D9E2E76620EEB8FF001D0AE0 /* Public_Art.shp.xml in Resources */,
 				3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */,
 				00DAE5D824213D5B00D51281 /* Restaurant.stylx in Resources */,
+				009D8BEF24F9AC8D00FD7E76 /* LaunchScreen.storyboard in Resources */,
 				3ED028911B8E3A8500ACA70D /* SetInitialMapLocation.storyboard in Resources */,
 				C793B5EA2166BB71000A7A10 /* OpenStreetMapLayer.storyboard in Resources */,
+				F16922B225158B1E00A8F36E /* EditKMLGroundOverlay.storyboard in Resources */,
 				3E8A25831D36B6E300D14F08 /* FeatureLayerGDB.storyboard in Resources */,
 				3ED0288D1B8E3A8500ACA70D /* SetInitialMapArea.storyboard in Resources */,
 				00ADC3CF2464DD2B00A3B88D /* IdentifyRasterCell.storyboard in Resources */,
@@ -4872,7 +4922,7 @@
 				3EABC7B51DB181DD00C161C6 /* ShastaBW.tif in Resources */,
 				D9E2E76120EEB8FF001D0AE0 /* Public_Art.cpg in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
-				00ADC3C32464D59200A3B88D /* PacificSouthWest in Resources */,
+				00ADC3C32464D59200A3B88D /* PacificSouthWest2 in Resources */,
 				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
 				4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */,
 				D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */,
@@ -5010,6 +5060,7 @@
 				3ED0294C1B8E3AB300ACA70D /* SketchViewController.swift in Sources */,
 				3EBA255B1D33FF1400AB0703 /* PictureMarkerSymbolsViewController.swift in Sources */,
 				21E9CDEC1EF9C5EA00BD4D7D /* DisplayGridSettingsViewController.swift in Sources */,
+				003D25642513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift in Sources */,
 				3ED029711B8E3ACD00ACA70D /* EditGeometryViewController.swift in Sources */,
 				3ED028791B8E3A8500ACA70D /* ManageMapLayersViewController.swift in Sources */,
 				C7BE9C4F219F4FE0003A03D2 /* SpatialRelationshipsTableViewController.swift in Sources */,
@@ -5253,6 +5304,7 @@
 				3ED0289D1B8E3A8500ACA70D /* MapViewScreenshotViewController.swift in Sources */,
 				12B736522256D618007F93C6 /* ChooseCameraControllerViewController.swift in Sources */,
 				3E5848FE1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift in Sources */,
+				00F953C624E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift in Sources */,
 				001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
 				3E62940C1EAFAF4100084105 /* WebTiledLayerViewController.swift in Sources */,
@@ -5264,6 +5316,7 @@
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
 				9DA3CD8C23060687007CB1F3 /* MapSelectionTableViewController.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
+				F16922B525158B4400A8F36E /* EditKMLGroundOverlayViewController.swift in Sources */,
 				3E5E093F1EF4567A00FF3454 /* AddDeleteRelatedFeaturesViewController.swift in Sources */,
 				4C1EF29D220FEBAB00F73EAE /* IntegratedWindowsAuthenticationSearchTableViewCell.swift in Sources */,
 				3ED5EB751B740A58009F9B75 /* SegmentedViewController.swift in Sources */,
@@ -5300,22 +5353,12 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		3E23A9F01AFC28F6002E2214 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3E23A9F11AFC28F6002E2214 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		3E23A9FF1AFC28F6002E2214 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -5373,6 +5416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -5426,7 +5470,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5460,7 +5504,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSET_PACK_MANIFEST_URL_PREFIX = "";
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

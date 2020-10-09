@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qW7-PQ-38T">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="9LZ-2W-5vI">
+            <objects>
+                <viewController id="lzw-Ag-WcD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0uM-W7-T9F">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6P1-Di-HoJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rKA-Rs-lqa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zPm-Dt-xVA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="946.66666666666663" y="116.66666666666666"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yeo-ro-VIu">
+            <objects>
+                <navigationController id="ifg-yx-ASU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qqO-uI-gDp">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="AccentColor"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8eA-oZ-rQP" kind="relationship" relationship="rootViewController" id="VhM-3G-M8P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r0Z-39-MZz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="190" y="-532"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="dwV-vX-Zx9">
+            <objects>
+                <collectionViewController id="8eA-oZ-rQP" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1eS-UY-a1r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aZE-5w-4GU">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="8eA-oZ-rQP" id="egB-OX-Pp3"/>
+                            <outlet property="delegate" destination="8eA-oZ-rQP" id="ICR-H0-RST"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="ana-aL-hpo"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l9Y-H7-OCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="-532"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="QgP-hC-css">
+            <objects>
+                <splitViewController maximumPrimaryColumnWidth="320" minimumPrimaryColumnWidth="320" id="qW7-PQ-38T" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="ifg-yx-ASU" kind="relationship" relationship="masterViewController" id="gf1-pU-EG6"/>
+                        <segue destination="ZUS-Yw-hZo" kind="relationship" relationship="detailViewController" id="MaE-4R-Ied"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qxb-bl-Bp4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-729" y="-208"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WeV-3w-FlR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZUS-Yw-hZo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9We-k7-2jK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="AccentColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lzw-Ag-WcD" kind="relationship" relationship="rootViewController" id="36M-eb-pgK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iKt-BZ-U6D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="189.62962962962962" y="116.66666666666666"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

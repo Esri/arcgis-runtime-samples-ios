@@ -76,7 +76,7 @@ class MapReferenceScaleSettingsViewController: UITableViewController {
     func toggleReferenceScalePickerVisibility() {
         tableView.performBatchUpdates({
         if referenceScalePickerHidden {
-            referenceScaleLabel.textColor = view.tintColor
+            referenceScaleLabel.textColor = .accentColor
             tableView.insertRows(at: [.referenceScalePicker], with: .fade)
             referenceScalePickerHidden = false
         } else {
@@ -117,7 +117,7 @@ class MapReferenceScaleSettingsViewController: UITableViewController {
         // Update Map Scale section.
         
         mapScaleLabel.text = string(fromScale: mapScale)
-        setMapScaleToReferenceScaleButton.textLabel?.textColor = view.tintColor
+        setMapScaleToReferenceScaleButton.textLabel?.textColor = .accentColor
     }
     
     override func viewDidDisappear(_ animated: Bool) {

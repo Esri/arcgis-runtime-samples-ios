@@ -3,7 +3,7 @@ ArcGIS Runtime SDK for iOS Samples [![](https://user-images.githubusercontent.co
 
 This repository contains Swift sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/latest/) and how to use them in your own app. The project that can be opened in Xcode and run on a simulator or a device. Or you can [download the app from the App Store](https://itunes.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771) on your iOS device.
 
-![](SampleApp.png)
+![Samples app](SamplesApp.png)
 
 The ```master``` branch of this repository contains samples configured for the latest available version of ArcGIS Runtime SDK for iOS. For samples configured for older versions of the SDK, look under the ```Releases``` tab for a specific version.
 

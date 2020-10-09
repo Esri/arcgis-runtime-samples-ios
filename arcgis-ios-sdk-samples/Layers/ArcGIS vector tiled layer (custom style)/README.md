@@ -22,7 +22,7 @@ Pan and zoom to explore the vector tile basemap.
     3. Create an `AGSExportVectorTilesTask` using the portal item.
     4. Get the `AGSExportVectorTilesJob` using `AGSExportVectorTilesTask.exportStyleResourceCacheJob(withDownloadDirectory:)`.
     5. Start the job using `AGSExportVectorTilesJob.start(statusHandler:completion:)`.
-    6. Once the job is complete, construct an `AGSArcGISVectorTiledLayer` using the vector tile cache and the `AGSItemResourceCache` from the job's result. 
+    6. Once the job is complete, construct an `AGSArcGISVectorTiledLayer` using the vector tile cache and the `AGSItemResourceCache` from the job's result.
 2. Create an `AGSBasemap` from the `AGSArcGISVectorTiledLayer`.
 3. Assign the `AGSBasemap` to the map's `basemap`.
 

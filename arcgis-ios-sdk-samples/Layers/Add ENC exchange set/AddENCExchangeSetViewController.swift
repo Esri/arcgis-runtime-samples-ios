@@ -23,7 +23,7 @@ class AddENCExchangeSetViewController: UIViewController {
         }
     }
     
-    /// Load the ENC dataset to the map view.
+    /// Load the ENC dataset and add to the map view.
     ///
     /// - Parameter mapView: The map view managed by the view controller.
     func addENCExchangeSet(mapView: AGSMapView) {

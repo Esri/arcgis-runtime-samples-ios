@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +19,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3a-nA-IYu" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="774"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sqg-eH-RPH">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
@@ -43,7 +43,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="J2C-4W-aTK"/>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Sqg-eH-RPH" firstAttribute="leading" secondItem="J2C-4W-aTK" secondAttribute="leading" id="1cd-Iu-KQX"/>
                             <constraint firstItem="J2C-4W-aTK" firstAttribute="bottom" secondItem="Sqg-eH-RPH" secondAttribute="bottom" id="If4-sd-TSV"/>
@@ -101,7 +101,6 @@
                                                             <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="DqA-sG-bEY" firstAttribute="leading" secondItem="GB6-Me-RR4" secondAttribute="leading" id="1HE-du-0Ug"/>
                                                         <constraint firstAttribute="height" constant="30" id="5vf-MD-v8p"/>
@@ -152,7 +151,6 @@
                                                             <color key="backgroundColor" red="0.46666666670000001" green="0.73333333329999995" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="0Dx-26-Jhf" firstAttribute="top" secondItem="60e-gI-Cpd" secondAttribute="top" id="7rW-h4-ocz"/>
                                                         <constraint firstAttribute="bottom" secondItem="Wy0-ho-I7x" secondAttribute="bottom" id="WeX-kg-XwM"/>
@@ -209,7 +207,6 @@
                                                             <color key="backgroundColor" red="0.55294117649999996" green="0.0" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="LaA-gq-nXh" firstAttribute="leading" secondItem="6YW-zd-8Uz" secondAttribute="leading" id="F96-DK-CQ7"/>
                                                         <constraint firstAttribute="trailing" secondItem="cph-8b-QGh" secondAttribute="trailing" id="FIt-Jh-oeG"/>
@@ -266,7 +263,6 @@
                                                             <color key="backgroundColor" red="0.72941176470000002" green="0.0" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="VG3-9A-v5A" firstAttribute="leading" secondItem="eto-uh-Nwo" secondAttribute="trailing" id="HZN-co-KRR"/>
                                                         <constraint firstAttribute="bottom" secondItem="eto-uh-Nwo" secondAttribute="bottom" id="QSH-dm-aSz"/>
@@ -323,7 +319,6 @@
                                                             <color key="backgroundColor" red="0.55294117647058827" green="0.69803921568627447" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="576-sA-6t9" secondAttribute="trailing" id="6p3-yZ-Gqu"/>
                                                         <constraint firstAttribute="width" constant="40" id="COi-aI-nb5"/>
@@ -372,4 +367,9 @@
             <point key="canvasLocation" x="1176.8" y="279.31034482758622"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

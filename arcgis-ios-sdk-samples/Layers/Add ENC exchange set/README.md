@@ -34,6 +34,10 @@ This sample downloads the [ENC Exchange Set without updates](https://www.arcgis.
 
 The latest [hydrography package](https://developers.arcgis.com/downloads/data) can be downloaded from *ArcGIS for Developers* (login is required). The *S57DataDictionary.xml* file is contained in it along with many others but a user does not need to know that in order to render ENC data.
 
+## Additional information
+
+Read more about [Display electronic navigational charts](https://developers.arcgis.com/ios/latest/swift/guide/display-electronic-navigational-charts.htm) on *ArcGIS for Developers*.
+
 ## Tags
 
 data, ENC, hydrographic, layers, maritime, nautical chart

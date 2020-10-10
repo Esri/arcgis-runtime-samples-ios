@@ -18,13 +18,13 @@
 		001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
 		003BC30F24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
 		003BC31224E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
+		003D25622513D833007527C2 /* ApplyRasterRenderingRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */; };
+		003D25642513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */; };
+		003D25652513DF58007527C2 /* ApplyRasterRenderingRuleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */; };
 		003D256C2513F4A6007527C2 /* AddENCExchangeSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */; };
 		003D256E2513F4B6007527C2 /* AddENCExchangeSet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */; };
 		003D25702513FBB5007527C2 /* ExchangeSetwithoutUpdates in Resources */ = {isa = PBXBuildFile; fileRef = 003D256F2513FBB5007527C2 /* ExchangeSetwithoutUpdates */; settings = {ASSET_TAGS = (ExchangeSetWithoutUpdates, ); }; };
 		003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */; };
-		003D25622513D833007527C2 /* ApplyRasterRenderingRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */; };
-		003D25642513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */; };
-		003D25652513DF58007527C2 /* ApplyRasterRenderingRuleViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -40,6 +40,7 @@
 		00ADC3CF2464DD2B00A3B88D /* IdentifyRasterCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */; };
 		00ADC3D12464DD3600A3B88D /* IdentifyRasterCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
 		00ADC3D22464DDA200A3B88D /* IdentifyRasterCellViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
+		00BA068525311B0D0039EF4D /* hydrography in Resources */ = {isa = PBXBuildFile; fileRef = 00BA068325311B0D0039EF4D /* hydrography */; settings = {ASSET_TAGS = (Hydrography, ); }; };
 		00C024E52475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00C024E72475E54A00E1DA8D /* NavigateAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */; };
 		00C6D420246CA8FD00C63EAF /* SA_EVI_8Day_03May20.tif.ovr in Resources */ = {isa = PBXBuildFile; fileRef = 00C6D32A246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.ovr */; settings = {ASSET_TAGS = (NDVIRaster, ); }; };
@@ -1187,11 +1188,11 @@
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
 		003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceOptionsViewController.swift; sourceTree = "<group>"; };
 		003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceViewController.swift; sourceTree = "<group>"; };
+		003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApplyRasterRenderingRule.storyboard; sourceTree = "<group>"; };
+		003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRasterRenderingRuleViewController.swift; sourceTree = "<group>"; };
 		003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddENCExchangeSetViewController.swift; sourceTree = "<group>"; };
 		003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddENCExchangeSet.storyboard; sourceTree = "<group>"; };
 		003D256F2513FBB5007527C2 /* ExchangeSetwithoutUpdates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ExchangeSetwithoutUpdates; sourceTree = "<group>"; };
-		003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApplyRasterRenderingRule.storyboard; sourceTree = "<group>"; };
-		003D25632513D844007527C2 /* ApplyRasterRenderingRuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRasterRenderingRuleViewController.swift; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWithBranchVersioningViewController.swift; sourceTree = "<group>"; };
@@ -1202,6 +1203,7 @@
 		00ADC3C22464D59200A3B88D /* PacificSouthWest2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PacificSouthWest2; sourceTree = "<group>"; };
 		00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyRasterCell.storyboard; sourceTree = "<group>"; };
 		00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyRasterCellViewController.swift; sourceTree = "<group>"; };
+		00BA068325311B0D0039EF4D /* hydrography */ = {isa = PBXFileReference; lastKnownFileType = folder; path = hydrography; sourceTree = "<group>"; };
 		00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARRoutePlannerViewController.swift; sourceTree = "<group>"; };
 		00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavigateAR.storyboard; sourceTree = "<group>"; };
 		00C6D32A246CA8FC00C63EAF /* SA_EVI_8Day_03May20.tif.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = SA_EVI_8Day_03May20.tif.ovr; sourceTree = "<group>"; };
@@ -1815,15 +1817,6 @@
 			path = "Feature collection layer (portal item)";
 			sourceTree = "<group>";
 		};
-		003D25672513F486007527C2 /* Add ENC exchange set */ = {
-			isa = PBXGroup;
-			children = (
-				003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */,
-				003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */,
-			);
-			path = "Add ENC exchange set";
-			sourceTree = "<group>";
-		};
 		003D255D2513D824007527C2 /* Apply raster rendering rule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1831,6 +1824,15 @@
 				003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */,
 			);
 			path = "Apply raster rendering rule";
+			sourceTree = "<group>";
+		};
+		003D25672513F486007527C2 /* Add ENC exchange set */ = {
+			isa = PBXGroup;
+			children = (
+				003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */,
+				003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */,
+			);
+			path = "Add ENC exchange set";
 			sourceTree = "<group>";
 		};
 		008D175024EEEEBD0001BB8F /* Geodatabases */ = {
@@ -1882,6 +1884,7 @@
 		00C6D328246CA8FC00C63EAF /* Archives */ = {
 			isa = PBXGroup;
 			children = (
+				00BA068325311B0D0039EF4D /* hydrography */,
 				003D256F2513FBB5007527C2 /* ExchangeSetwithoutUpdates */,
 				00ADC3C22464D59200A3B88D /* PacificSouthWest2 */,
 				00C6D329246CA8FC00C63EAF /* SA_EVI_8Day_03May20 */,
@@ -4563,6 +4566,7 @@
 					Dolmus3DModel,
 					ExchangeSetWithoutUpdates,
 					GasDeviceAnnoMMPK,
+					Hydrography,
 					LATrailsGeodatabase,
 					LothianRiversAnnoMMPK,
 					MissionFiles,
@@ -4865,6 +4869,7 @@
 				F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */,
 				D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */,
 				D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */,
+				00BA068525311B0D0039EF4D /* hydrography in Resources */,
 				09607F851FDB61DC00FA43B6 /* TimeBasedQuery.storyboard in Resources */,
 				3E4A64B01D8B37DA00CF930C /* Settings.bundle in Resources */,
 				3ED028EE1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard in Resources */,

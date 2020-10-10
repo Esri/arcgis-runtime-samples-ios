@@ -19,99 +19,90 @@ class AddENCExchangeSetViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = makeMap()
+            mapView.map = AGSMap(basemap: .oceans())
         }
     }
     
-    func getTemporaryDocumentDirectoryURL(subfolderURL: URL) -> URL? {
-        do {
-            let tempDirectory = try FileManager.default.url(
-                for: .documentDirectory,
-                in: .userDomainMask,
-                appropriateFor: subfolderURL,
-                create: true
-            )
-//            .appendingPathComponent("ENC_ROOT", isDirectory: true)
-            .appendingPathComponent(ProcessInfo.processInfo.globallyUniqueString)
-            return tempDirectory
-        } catch {
-            return nil
-        }
-    }
-    
-    var temporaryDocumentDirectory: URL!
-    
-    let temporaryDirectory: URL = FileManager.default.temporaryDirectory
-    
-    /// Create a map.
+    /// Load the ENC dataset to the map view.
     ///
-    /// - Returns: An `AGSMap` object.
-    func makeMap() -> AGSMap {
-        // Create a map with oceans basemap.
-        let map = AGSMap(basemap: .oceans())
-        // Load ENC exchange set from bundle.
-        let fileURLs = Bundle.main.urls(forResourcesWithExtension: nil, subdirectory: "ExchangeSetwithoutUpdates")!
-        let hydrographyDirectory = Bundle.main.urls(forResourcesWithExtension: nil, subdirectory: "hydrography")!.first!.deletingLastPathComponent()
-//        let directoryURL = fileURLs.first!.deletingLastPathComponent()
-//
-//        guard let url = getTemporaryDocumentDirectoryURL(subfolderURL: directoryURL) else { return map }
-//        temporaryDocumentDirectory = url
-//        try? FileManager.default.copyItem(at: directoryURL, to: temporaryDocumentDirectory)
+    /// - Parameter mapView: The map view managed by the view controller.
+    func addENCExchangeSet(mapView: AGSMapView) {
+        guard let map = mapView.map else { return }
+        // Load catalog file in ENC exchange set from bundle.
+        let catalogURL = Bundle.main.url(
+            forResource: "CATALOG",
+            withExtension: "031",
+            subdirectory: "ExchangeSetwithoutUpdates/ExchangeSetwithoutUpdates/ENC_ROOT"
+        )!
+        let encExchangeSet = AGSENCExchangeSet(fileURLs: [catalogURL])
         
-        AGSENCEnvironmentSettings.shared().resourceDirectory = hydrographyDirectory
-        AGSENCEnvironmentSettings.shared().sencDataDirectory = temporaryDirectory
+        // URL to the "hydrography" data folder that contains the "S57DataDictionary.xml" file.
+        let hydrographyDirectory = Bundle.main.url(
+            forResource: "S57DataDictionary",
+            withExtension: "xml",
+            subdirectory: "hydrography/hydrography"
+        )!
+        .deletingLastPathComponent()
+        // Set environment settings for loading the dataset.
+        let environmentSettings = AGSENCEnvironmentSettings.shared()
+        environmentSettings.resourceDirectory = hydrographyDirectory
+        // The SENC data directory is for temporarily storing generated files.
+        environmentSettings.sencDataDirectory = FileManager.default.temporaryDirectory
         
-        let catalogURL = fileURLs.filter { $0.lastPathComponent == "CATALOG.031" }
-//        let catalogURL = [temporaryDocumentDirectory.appendingPathComponent("CATALOG.031")]
-        let encExchangeSet = AGSENCExchangeSet(fileURLs: catalogURL)
-        
-//        let us = try? FileManager.default.contentsOfDirectory(at: temporaryDocumentDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-        
-        encExchangeSet.load { [weak self] error in  //, unowned ENCExchangeSet
+        encExchangeSet.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {
                 var ENCLayers = [AGSENCLayer]()
                 let loadGroup = DispatchGroup()
-                // Create a list of ENC layers and add them to the map
-                for dataset in encExchangeSet.datasets {
+                // A reference to the last error occurred, if there is any.
+                var loadError: Error?
+                // Create a list of ENC layers and load each layer.
+                encExchangeSet.datasets.forEach { dataset in
                     let layer = AGSENCLayer(cell: AGSENCCell(dataset: dataset))
                     ENCLayers.append(layer)
                     loadGroup.enter()
-                    layer.load { [weak self] error in
-                        defer {
-                            loadGroup.leave()
-                        }
-                        if let error = error {
-                            self?.presentAlert(error: error)
-                        }
+                    layer.load { error in
+                        defer { loadGroup.leave() }
+                        loadError = error
                     }
                 }
-                
+                // Add layers to the map.
                 map.operationalLayers.addObjects(from: ENCLayers)
                 
-                // Zoom to the combined extent of all ENC layers.
-                loadGroup.notify(queue: .main) {
+                // Zoom to the combined extent of all ENC layers after they are loaded.
+                loadGroup.notify(queue: .main) { [weak self] in
                     if let completeExtent = AGSGeometryEngine.combineExtents(ofGeometries: ENCLayers.compactMap { $0.fullExtent }) {
-                        self.mapView.setViewpoint(AGSViewpoint(targetExtent: completeExtent), completion: nil)
+                        self?.mapView.setViewpoint(AGSViewpoint(targetExtent: completeExtent), completion: nil)
+                    } else if let error = loadError {
+                        self?.presentAlert(error: error)
                     }
                 }
             }
         }
-        return map
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["AddENCExchangeSetViewController"]
+        addENCExchangeSet(mapView: mapView)
     }
     
     deinit {
-        DispatchQueue.global(qos: .utility).async { [temporaryDirectoryURL = self.temporaryDocumentDirectory] in
-            guard let url = temporaryDirectoryURL else { return }
-            try? FileManager.default.removeItem(at: url)
+        // Remove all files in tmp folder.
+        DispatchQueue.global(qos: .utility).async {
+            let tmpURL = FileManager.default.temporaryDirectory
+            if let tmpDirectory = try? FileManager.default.contentsOfDirectory(
+                at: tmpURL,
+                includingPropertiesForKeys: nil,
+                options: .skipsHiddenFiles
+            ) {
+                tmpDirectory.forEach { file in
+                    try? FileManager.default.removeItem(atPath: file.path)
+                }
+            }
         }
     }
 }

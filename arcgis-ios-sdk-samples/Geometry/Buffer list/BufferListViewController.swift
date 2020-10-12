@@ -24,12 +24,12 @@ class BufferListViewController: UIViewController {
     @IBOutlet weak var clearBarButtonItem: UIBarButtonItem!
     /// A label to display status message.
     @IBOutlet weak var statusLabel: UILabel!
-    /// A switch to control either to union results or not for buffer operation.
+    /// A switch to enable "union" for buffer operation.
     @IBOutlet weak var isUnionSwitch: UISwitch!
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = makeMap()
+            mapView.map = makeMap(imageLayer: mapImageLayer)
             mapView.graphicsOverlays.addObjects(from: [boundaryGraphicsOverlay, bufferGraphicsOverlay, tappedLocationsGraphicsOverlay])
             mapView.touchDelegate = self
         }
@@ -54,11 +54,11 @@ class BufferListViewController: UIViewController {
     
     /// An overlay to display the boundary.
     var boundaryGraphicsOverlay: AGSGraphicsOverlay {
-        let boundaryGraphicsOverlay = AGSGraphicsOverlay()
+        let overlay = AGSGraphicsOverlay()
         let lineSymbol = AGSSimpleLineSymbol(style: .dash, color: .red, width: 5)
         let boundaryGraphic = AGSGraphic(geometry: boundaryPolygon, symbol: lineSymbol)
-        boundaryGraphicsOverlay.graphics.add(boundaryGraphic)
-        return boundaryGraphicsOverlay
+        overlay.graphics.add(boundaryGraphic)
+        return overlay
     }
     /// An overlay to display buffers graphics.
     let bufferGraphicsOverlay: AGSGraphicsOverlay = {
@@ -94,15 +94,15 @@ class BufferListViewController: UIViewController {
     
     // MARK: Instance methods
     
-    /// Creates a map.
+    /// Creates a map with an image base layer.
     ///
+    /// - Parameter imageLayer: An `AGSArcGISMapImageLayer` object as the base layer of the map.
     /// - Returns: A new `AGSMap` object.
-    func makeMap() -> AGSMap {
+    func makeMap(imageLayer: AGSArcGISMapImageLayer) -> AGSMap {
         // The spatial reference for this sample.
         let statePlaneNorthCentralTexas = AGSSpatialReference(wkid: 32038)!
         let map = AGSMap(spatialReference: statePlaneNorthCentralTexas)
-        map.basemap.baseLayers.add(mapImageLayer)
-        map.initialViewpoint = AGSViewpoint(targetExtent: boundaryPolygon.extent)
+        map.basemap.baseLayers.add(imageLayer)
         return map
     }
     
@@ -113,6 +113,7 @@ class BufferListViewController: UIViewController {
         bufferGraphicsOverlay.graphics.removeAllObjects()
         // Create the buffers.
         // Notice: the radius distances has the same unit of the map's spatial reference's unit.
+        // In this case, the statePlaneNorthCentralTexas spatial reference uses US feet.
         if let bufferPolygon = AGSGeometryEngine.bufferGeometries(tappedPointsAndRadius.map { $0.point }, distances: tappedPointsAndRadius.map { NSNumber(value: $0.radius) }, unionResults: isUnionSwitch.isOn) {
             let graphics = bufferPolygon.map { AGSGraphic(geometry: $0, symbol: nil) }
             bufferGraphicsOverlay.graphics.addObjects(from: graphics)
@@ -141,11 +142,13 @@ class BufferListViewController: UIViewController {
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["BufferListViewController"]
         // Load the map image layer.
         mapImageLayer.load { [weak self] (error) in
+            guard let self = self else { return }
             if let error = error {
-                self?.presentAlert(error: error)
-                self?.setStatus(message: "Fail to load basemap.")
+                self.presentAlert(error: error)
+                self.setStatus(message: "Fail to load basemap.")
             } else {
-                self?.setStatus(message: "Tap on the map to add buffers.")
+                self.mapView.setViewpoint(AGSViewpoint(targetExtent: self.boundaryPolygon.extent), completion: nil)
+                self.setStatus(message: "Tap on the map to add buffers.")
             }
         }
     }
@@ -166,8 +169,6 @@ extension BufferListViewController: AGSGeoViewTouchDelegate {
             textField.keyboardType = .numberPad
             textField.placeholder = "100"
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addAction(cancelAction)
         let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self, textField = alert.textFields?.first] _ in
             guard let self = self else { return }
             // Ensure the buffer radius is valid, and is a positive value that isn't too large.
@@ -175,13 +176,13 @@ extension BufferListViewController: AGSGeoViewTouchDelegate {
                 !text.isEmpty,
                 let radius = self.distanceFormatter.numberFormatter.number(from: text),
                 radius.doubleValue > 0,
-                radius.doubleValue <= 300 else {
+                radius.doubleValue < 300 else {
                     self.setStatus(message: "Tap on the map to add buffers.")
                     return
             }
             // Update the buffer radius with the text value.
             self.bufferRadius.value = radius.doubleValue
-            // The spatial reference in this sample uses US feet as a unit.
+            // The spatial reference in this sample uses US feet as its unit.
             let radiusInFeet = self.bufferRadius.converted(to: .feet).value
             // Create and add graphic symbolizing the tap point.
             let pointGraphic = AGSGraphic(geometry: mapPoint, symbol: nil)
@@ -191,6 +192,8 @@ extension BufferListViewController: AGSGeoViewTouchDelegate {
             self.setStatus(message: "Buffer center point added.")
         }
         alert.addAction(doneAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(cancelAction)
         alert.preferredAction = doneAction
         present(alert, animated: true)
     }

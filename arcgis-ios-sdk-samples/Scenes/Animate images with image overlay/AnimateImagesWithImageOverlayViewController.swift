@@ -57,7 +57,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     /// An iterator to hold and loop through the overlay images.
     private lazy var imagesIterator: CircularIterator<UIImage> = {
         // Get the URLs to images added to the project's folder reference.
-        let imageURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest") ?? []
+        let imageURLs = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "PacificSouthWest2") ?? []
         let images = imageURLs
             .sorted { $0.lastPathComponent < $1.lastPathComponent }
             .map { UIImage(contentsOfFile: $0.path)! }
@@ -168,10 +168,10 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         if !imagesIterator.elements.isEmpty {
             playButtonItem.isEnabled = true
             speedButtonItem.isEnabled = true
-            opacitySlider.isEnabled = true
             // Load the first frame into the scene.
             setImageFrame()
         } else {
+            opacitySlider.isEnabled = false
             presentAlert(title: "Error", message: "Fail to load images.")
         }
     }

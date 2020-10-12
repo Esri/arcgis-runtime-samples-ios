@@ -1,15 +1,28 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to set the rendering mode for feature layers in a scene. There are two rendering modes, static and dynamic.",
+    "description": "Render features in a scene statically or dynamically by setting the feature layer rendering mode.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "feature-layer-renderering-scene.png"
     ],
     "keywords": [
+        "3D",
+        "dynamic",
+        "feature layer",
+        "features",
+        "rendering",
+        "static",
+        "AGSFeatureLayer",
+        "AGSFeatureLayer.renderingMode",
+        "AGSScene",
+        "AGSSceneView"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSFeatureLayer.renderingMode",
+        "AGSScene",
+        "AGSSceneView"
     ],
     "snippets": [
         "FeatureLayerRenderingModeSceneViewController.swift"

@@ -14,7 +14,7 @@ The sample loads a scene showing four points that use the individual surface pla
 
 ## How it works
 
-1. Create an `AGSGraphicsOverlay` for each placement mode, specifying the `surfacePlacement`: 
+1. Create an `AGSGraphicsOverlay` for each placement mode, specifying the `surfacePlacement`:
     * `absolute`, position graphic using only its z value.
     * `relative`, position graphic using its z value plus the elevation of the surface.
     * `relativeToScene`, position graphic using its z value plus the altitude values of the scene.
@@ -28,8 +28,8 @@ The sample loads a scene showing four points that use the individual surface pla
 * AGSGraphic
 * AGSGraphicsOverlay
 * AGSLayerSceneProperties
-* AGSSurfacePlacement
 * AGSSurface
+* AGSSurfacePlacement
 * class AGSGeometryEngine.geometry(bySettingZ:in:)
 
 ## About the data

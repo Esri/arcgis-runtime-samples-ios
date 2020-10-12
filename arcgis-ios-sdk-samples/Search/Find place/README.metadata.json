@@ -3,33 +3,34 @@
     "description": "Find places of interest near a location or within a specific area.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "find-place-1.png",
+        "find-place-2.png"
     ],
     "keywords": [
-        "search",
-        "geocode",
-        "suggestions",
-        "places of interest",
-        "locator",
         "POI",
-        "points of interest",
-        "world locator service",
-        "AGSLocatorTask",
+        "businesses",
+        "geocode",
+        "locations",
+        "locator",
+        "places of interest",
+        "point of interest",
+        "search",
+        "suggestions",
         "AGSGeocodeParameters",
         "AGSGeocodeResult",
+        "AGSLocatorTask",
         "AGSSuggestParameters",
-        "AGSSuggestResult",
-        "AGSGraphicsOverlay"
+        "AGSSuggestResult"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/find-place.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/find-place.htm"
+    ],
     "relevant_apis": [
-        "AGSLocatorTask",
         "AGSGeocodeParameters",
         "AGSGeocodeResult",
+        "AGSLocatorTask",
         "AGSSuggestParameters",
-        "AGSSuggestResult",
-        "AGSGraphicsOverlay"
+        "AGSSuggestResult"
     ],
     "snippets": [
         "FindPlaceViewController.swift"

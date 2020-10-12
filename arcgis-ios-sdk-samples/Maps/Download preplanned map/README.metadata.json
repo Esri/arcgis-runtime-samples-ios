@@ -3,26 +3,25 @@
     "description": "Take a map offline using a preplanned map area.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "download-preplanned-map-area.png"
     ],
     "keywords": [
-        "Offline", 
-        "preplanned", 
-        "pre-planned", 
-        "map area"
-    ],
-    "redirect_from": [
-    ],
-    "relevant_apis": [
-        "AGSCancelable",
-        "AGSDownloadPreplannedOfflineMapJob",
-        "AGSLoadObjects",
-        "AGSMap",
-        "AGSMapView",
-        "AGSMobileMapPackage",
+        "map area",
+        "offline",
+        "pre-planned",
+        "preplanned",
+        "AGSDownloadPreplannedOfflineMapResult",
         "AGSOfflineMapTask",
-        "AGSPortal",
-        "AGSPortalItem",
+        "AGSOfflineMapTask.defaultDownloadPreplannedOfflineMapParameters(with:completion:)",
+        "AGSOfflineMapTask.downloadPreplannedOfflineMapJob(with:downloadDirectory:)",
+        "AGSPreplannedMapArea"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSDownloadPreplannedOfflineMapResult",
+        "AGSOfflineMapTask",
+        "AGSOfflineMapTask.defaultDownloadPreplannedOfflineMapParameters(with:completion:)",
+        "AGSOfflineMapTask.downloadPreplannedOfflineMapJob(with:downloadDirectory:)",
         "AGSPreplannedMapArea"
     ],
     "snippets": [

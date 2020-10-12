@@ -47,7 +47,6 @@ class NavigateARCalibrationViewController: UIViewController {
         // Add the heading label and slider.
         let headingLabel = UILabel()
         headingLabel.text = "Heading:"
-        headingLabel.textColor = view.tintColor
         view.addSubview(headingLabel)
         headingLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

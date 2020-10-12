@@ -1,19 +1,29 @@
 {
     "category": "Maps",
-    "description": "This samples demonstrates how to access and add bookmarks to a map",
+    "description": "Access and create bookmarks on a map.",
     "ignore": false,
     "images": [
-        "image1.png",
-        "image2.png"
+        "manage-bookmarks-1.png",
+        "manage-bookmarks-2.png"
     ],
     "keywords": [
+        "bookmark",
+        "extent",
+        "location",
+        "zoom",
+        "AGSBookmark",
+        "AGSViewpoint"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/manage-bookmarks.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/manage-bookmarks.htm"
+    ],
     "relevant_apis": [
+        "AGSBookmark",
+        "AGSViewpoint"
     ],
     "snippets": [
-        "BookmarksViewController.swift",
-        "BookmarksListViewController.swift"
+        "BookmarksListViewController.swift",
+        "BookmarksViewController.swift"
     ],
     "title": "Manage bookmarks"
 }

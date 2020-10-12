@@ -44,4 +44,4 @@ A custom set of points is used to create an `AGSPolyline` and initialize an `AGS
 
 ## Tags
 
-GPS, bread crumb, breadcrumb, history, movement, navigation, real-time, trace, track, trail
+bread crumb, breadcrumb, GPS, history, movement, navigation, real-time, trace, track, trail

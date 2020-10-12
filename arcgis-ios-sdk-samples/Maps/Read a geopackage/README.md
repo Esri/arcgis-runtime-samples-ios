@@ -1,8 +1,9 @@
 # Read a geopackage
 
-Add rasters and feature tables from a GeoPackage to a map.
+Add rasters and feature tables from a geopackage to a map.
 
-![Read a GeoPackage](read-a-geopackage.png)
+![Image of read geopackage 1](read-geopackage-1.png)
+![Image of read geopackage 2](read-geopackage-2.png)
 
 ## Use case
 
@@ -14,15 +15,18 @@ When the sample loads, the feature tables and rasters from the GeoPackage will b
 
 ## How it works
 
-1. Initialize the GeoPackage using `AGSGeoPackage`.
-2. Iterate through available rasters, exposed by `AGSGeopackage.geoPackageRasters`.
-    * For each raster, create a new `AGSRasterLayer`, then add it to the map.
-3. Iterate through available feature tables, exposed by `AGSGeopackage.geoPackageFeatureTables`.
-    * For each feature table, create a new `AGSFeatureLayer`, then add it to the map.
+1. Create a GeoPackage from a named bundle resource using `AGSGeoPackage.init(name:)`.
+2. Load the GeoPackage using `AGSGeoPackage.load(completion:)`.
+3. Iterate through available rasters, exposed by `AGSGeoPackage.geoPackageRasters`.
+    * For each raster, create an `AGSRasterLayer` object and add it to the map.
+4. Iterate through available feature tables, exposed by `AGSGeoPackage.geoPackageFeatureTables`.
+    * For each feature table, create an `AGSFeatureLayer` object and add it to the map.
 
 ## Relevant API
 
 * AGSGeoPackage
+* AGSGeoPackage.geoPackageFeatureTables
+* AGSGeoPackage.geoPackageRasters
 * AGSGeoPackageFeatureTable
 * AGSGeoPackageRaster
 

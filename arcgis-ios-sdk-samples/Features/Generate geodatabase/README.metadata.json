@@ -1,14 +1,28 @@
 {
     "category": "Features",
-    "description": "This sample demonstrates how to take a feature service offline by generating a geodatabase",
+    "description": "Generate a local geodatabase from an online feature service.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "generate-geodatabase.png"
     ],
     "keywords": [
+        "disconnected",
+        "local geodatabase",
+        "offline",
+        "sync",
+        "AGSGenerateGeodatabaseJob",
+        "AGSGenerateGeodatabaseParameters",
+        "AGSGeodatabase",
+        "AGSGeodatabaseSyncTask"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/generate-geodatabase.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/generate-geodatabase.htm"
+    ],
     "relevant_apis": [
+        "AGSGenerateGeodatabaseJob",
+        "AGSGenerateGeodatabaseParameters",
+        "AGSGeodatabase",
+        "AGSGeodatabaseSyncTask"
     ],
     "snippets": [
         "GenerateGeodatabaseViewController.swift"

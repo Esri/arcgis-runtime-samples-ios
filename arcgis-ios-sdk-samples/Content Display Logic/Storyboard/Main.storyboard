@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dro-WJ-0ka">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dro-WJ-0ka">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +14,7 @@
             <objects>
                 <navigationController title="Samples" id="yRd-en-sGR" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" largeTitles="YES" id="GpO-dt-EG2">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -30,11 +31,11 @@
             <objects>
                 <viewController id="HRz-Eg-7ly" customClass="AppInfoViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AWt-rk-bdu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54t-nf-ZK2">
-                                <rect key="frame" x="32.666666666666657" y="279" width="310" height="200"/>
+                                <rect key="frame" x="52" y="321" width="310" height="200"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="rjI-Fj-tXd">
                                         <rect key="frame" x="115" y="8" width="80" height="80"/>
@@ -73,14 +74,15 @@
                                     <constraint firstAttribute="bottom" secondItem="r26-1c-eoY" secondAttribute="bottom" constant="8" id="qAU-fQ-LD2"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-nR-s0N">
-                                <rect key="frame" x="168" y="674" width="39" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-nR-s0N">
+                                <rect key="frame" x="187.5" y="758" width="39" height="30"/>
                                 <state key="normal" title="Close"/>
                                 <connections>
                                     <action selector="closeAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="JSz-9v-XS9"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="a6h-ca-33f"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Op6-nR-s0N" firstAttribute="centerX" secondItem="a6h-ca-33f" secondAttribute="centerX" id="7Te-o6-LfY"/>
@@ -88,7 +90,6 @@
                             <constraint firstItem="54t-nf-ZK2" firstAttribute="centerY" secondItem="AWt-rk-bdu" secondAttribute="centerY" id="biI-md-HHl"/>
                             <constraint firstItem="a6h-ca-33f" firstAttribute="bottom" secondItem="Op6-nR-s0N" secondAttribute="bottom" constant="20" id="qig-cv-gQO"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="a6h-ca-33f"/>
                     </view>
                     <connections>
                         <outlet property="appNameLabel" destination="sgZ-Nk-kH7" id="WRm-0Q-H4P"/>
@@ -104,7 +105,7 @@
             <objects>
                 <collectionViewController definesPresentationContext="YES" id="onD-yF-9Eu" customClass="ContentCollectionViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" id="yuT-nZ-Wrk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="VF4-1P-JDR">
@@ -145,7 +146,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISPLAY INFORMATION" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qg1-az-h5v">
-                                            <rect key="frame" x="2" y="100" width="136" height="33.666666666666657"/>
+                                            <rect key="frame" x="2" y="100" width="136" height="33.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -203,28 +204,28 @@
             <objects>
                 <tableViewController storyboardIdentifier="ContentTableViewController" id="qbY-kB-MCT" customClass="ContentTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="22" sectionFooterHeight="22" id="5VG-Pu-2XV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ContentTableCell" id="UHI-3v-SDe" customClass="ContentTableCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="80.333335876464844"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UHI-3v-SDe" id="hjB-p9-kF0">
-                                    <rect key="frame" x="0.0" y="0.0" width="316" height="80.333335876464844"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="351" height="81"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="pVi-Nv-PRP">
-                                            <rect key="frame" x="16" y="19.000000000000004" width="292" height="42.333333333333343"/>
+                                            <rect key="frame" x="20" y="19" width="323" height="43"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open an existing map" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7O-tm-Q24">
-                                                    <rect key="frame" x="0.0" y="0.0" width="165.66666666666666" height="20.333333333333332"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="165" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="AGSMap, AGSMapView" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WF4-gk-Tcu">
-                                                    <rect key="frame" x="0.0" y="26.333333333333336" width="140.66666666666666" height="16"/>
+                                                    <rect key="frame" x="0.0" y="26.5" width="140.5" height="16.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -266,22 +267,22 @@
             <objects>
                 <viewController title="Detail" id="xTO-iT-Uqg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OWg-y6-Kjp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a sample from the list" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99s-uK-gYc">
-                                <rect key="frame" x="79.666666666666686" y="368" width="217" height="21"/>
+                                <rect key="frame" x="100" y="410" width="215" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Mtd-3h-Dnj"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Mtd-3h-Dnj" firstAttribute="centerX" secondItem="99s-uK-gYc" secondAttribute="centerX" constant="-0.5" id="XZY-cT-gcg"/>
                             <constraint firstAttribute="centerY" secondItem="99s-uK-gYc" secondAttribute="centerY" constant="0.5" id="Ytu-54-YW5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Mtd-3h-Dnj"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="uhc-ru-ALH"/>
@@ -295,22 +296,23 @@
             <objects>
                 <viewController storyboardIdentifier="SegmentedViewController" automaticallyAdjustsScrollViewInsets="NO" id="aBz-1T-a42" customClass="SegmentedViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rXs-h5-bEr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5R-Ku-rtU" userLabel="Code Container View">
-                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <connections>
                                     <segue destination="qe9-PB-Pzq" kind="embed" identifier="SourceCodeSegue" id="nmt-TZ-5x3"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-3m-v2G" userLabel="Info Container View">
-                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <connections>
                                     <segue destination="NMd-B8-rJ5" kind="embed" identifier="SampleInfoSegue" id="c6m-uQ-Kz4"/>
                                 </connections>
                             </containerView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Asf-ux-BYr"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MfE-3m-v2G" firstAttribute="top" secondItem="Asf-ux-BYr" secondAttribute="top" id="CwL-cC-IdS"/>
@@ -322,18 +324,17 @@
                             <constraint firstItem="z5R-Ku-rtU" firstAttribute="top" secondItem="Asf-ux-BYr" secondAttribute="top" id="pQz-jW-tbe"/>
                             <constraint firstItem="MfE-3m-v2G" firstAttribute="leading" secondItem="rXs-h5-bEr" secondAttribute="leading" id="yqF-bG-HDh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Asf-ux-BYr"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xla-oL-Hlb">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2NF-7S-DQ2">
-                            <rect key="frame" x="37.666666666666657" y="6" width="300" height="32"/>
+                            <rect key="frame" x="57" y="6" width="300" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Info"/>
                                 <segment title="Code"/>
                             </segments>
-                            <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="tintColor" systemColor="systemBackgroundColor"/>
                             <connections>
                                 <action selector="valueChanged:" destination="aBz-1T-a42" eventType="valueChanged" id="F3E-aq-YII"/>
                             </connections>
@@ -355,11 +356,30 @@
             <objects>
                 <viewController id="NMd-B8-rJ5" customClass="SampleInfoViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p2z-Do-b04">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e32-Rc-zGM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="RfT-xO-g6f"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="e32-Rc-zGM" firstAttribute="leading" secondItem="p2z-Do-b04" secondAttribute="leading" id="Jld-qf-du7"/>
+                            <constraint firstAttribute="trailing" secondItem="e32-Rc-zGM" secondAttribute="trailing" id="Jsm-fH-yTv"/>
+                            <constraint firstItem="e32-Rc-zGM" firstAttribute="top" secondItem="p2z-Do-b04" secondAttribute="top" id="d0p-PM-5Q6"/>
+                            <constraint firstAttribute="bottom" secondItem="e32-Rc-zGM" secondAttribute="bottom" id="i4r-eb-pkx"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="e32-Rc-zGM" id="iys-KD-7nI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNK-Yk-cxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -370,15 +390,15 @@
             <objects>
                 <viewController storyboardIdentifier="SourceCodeViewController" id="qe9-PB-Pzq" customClass="SourceCodeViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PsA-Cm-EhI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rA3-JQ-Mdx" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="680"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="764"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZS-cc-Di0">
-                                <rect key="frame" x="0.0" y="680" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="764" width="414" height="44"/>
                                 <color key="backgroundColor" red="0.97647720575332642" green="0.9764588475227356" blue="0.97647124528884888" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Kff-Ig-9pK"/>
@@ -396,6 +416,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="63H-yR-XyK"/>
                         <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rA3-JQ-Mdx" secondAttribute="trailing" id="Gxz-aI-6b0"/>
@@ -406,7 +427,6 @@
                             <constraint firstItem="cZS-cc-Di0" firstAttribute="trailing" secondItem="63H-yR-XyK" secondAttribute="trailing" id="wAh-N1-Zqp"/>
                             <constraint firstItem="cZS-cc-Di0" firstAttribute="top" secondItem="rA3-JQ-Mdx" secondAttribute="bottom" id="xgj-Pi-jqq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="63H-yR-XyK"/>
                     </view>
                     <connections>
                         <outlet property="contentView" destination="rA3-JQ-Mdx" id="CSj-eW-KXG"/>
@@ -436,7 +456,7 @@
             <objects>
                 <navigationController storyboardIdentifier="DetailNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6mK-5c-4sN" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="V9q-Qo-B83">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -453,19 +473,19 @@
             <objects>
                 <tableViewController id="ZtT-NE-hWv" customClass="ListViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iNp-vT-fBs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="670"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="754"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCell" textLabel="hPX-p8-mBC" style="IBUITableViewCellStyleDefault" id="ZUl-1v-KYM">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZUl-1v-KYM" id="4hb-ou-79v">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hPX-p8-mBC">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.666667938232422"/>
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -498,5 +518,8 @@
         <namedColor name="AccentColor">
             <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -43,8 +43,6 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         
         let searchBar = searchController.searchBar
         searchBar.autocapitalizationType = .none
-        // Set the color of "Cancel" text, to mimic the settings on iOS 12. On iOS 13 it is default to white.
-        searchBar.tintColor = .white
         
         if #available(iOS 13, *) {
             // Change the backgroundColor to differentiate from nav bar color.
@@ -57,6 +55,8 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
             // Different meaning - not as good as iOS 12 looks like with this fix,
             // but at least acceptable and a bit better than what it would look like
             // on 12 without this fix.
+            // Set the color of "Cancel" text, to mimic the settings on iOS 12. On iOS 13 it is default to white.
+            searchBar.tintColor = .white
             
             // find the text field to customize its appearance
             if let textfield = searchBar.value(forKey: "searchField") as? UITextField {

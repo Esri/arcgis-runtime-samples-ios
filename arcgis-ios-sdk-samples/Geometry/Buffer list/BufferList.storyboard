@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R7Z-SU-KiT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R7Z-SU-KiT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,12 +23,28 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaP-1i-B9b" userLabel="Bottom Toolbar">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Union" id="EXP-G8-t1g">
-                                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <barButtonItem style="plain" id="RDT-QL-YSL">
+                                        <view key="customView" contentMode="scaleToFill" id="BXU-Kh-JQi">
+                                            <rect key="frame" x="20" y="9" width="50" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Union" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JQ-FZ-h2h">
+                                                    <rect key="frame" x="0.0" y="7.5" width="50" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="5JQ-FZ-h2h" secondAttribute="trailing" id="eca-Dg-abY"/>
+                                                <constraint firstItem="5JQ-FZ-h2h" firstAttribute="centerY" secondItem="BXU-Kh-JQi" secondAttribute="centerY" id="els-UO-y6s"/>
+                                                <constraint firstItem="5JQ-FZ-h2h" firstAttribute="leading" secondItem="BXU-Kh-JQi" secondAttribute="leading" id="eyf-4x-b0T"/>
+                                            </constraints>
+                                        </view>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="S7O-oY-L1Z">
                                         <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="4o0-qb-u2w">
-                                            <rect key="frame" x="76" y="11.5" width="51" height="31"/>
+                                            <rect key="frame" x="70" y="11.5" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </switch>
                                     </barButtonItem>
@@ -55,6 +72,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="ZDJ-Yf-JKf"/>
                                 <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="WSw-rq-kST" firstAttribute="top" secondItem="qpw-93-Elf" secondAttribute="top" id="03o-FP-kvt"/>
@@ -62,10 +80,10 @@
                                     <constraint firstAttribute="bottom" secondItem="WSw-rq-kST" secondAttribute="bottom" id="7zN-e5-gdv"/>
                                     <constraint firstItem="ZDJ-Yf-JKf" firstAttribute="trailing" secondItem="WSw-rq-kST" secondAttribute="trailing" id="o42-r8-feX"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="ZDJ-Yf-JKf"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6NZ-cd-jMU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8yC-UP-Trk" firstAttribute="top" secondItem="6NZ-cd-jMU" secondAttribute="top" id="1Hk-WX-dXy"/>
                             <constraint firstAttribute="trailing" secondItem="OaP-1i-B9b" secondAttribute="trailing" id="B9G-pV-OtP"/>
@@ -78,7 +96,6 @@
                             <constraint firstItem="8yC-UP-Trk" firstAttribute="leading" secondItem="YQK-RR-w9r" secondAttribute="leading" id="lwR-km-lOB"/>
                             <constraint firstItem="qpw-93-Elf" firstAttribute="top" secondItem="6NZ-cd-jMU" secondAttribute="top" id="rze-nW-wJ6"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6NZ-cd-jMU"/>
                     </view>
                     <connections>
                         <outlet property="clearBarButtonItem" destination="LAL-38-1WG" id="t0v-eW-mfh"/>
@@ -93,4 +110,9 @@
             <point key="canvasLocation" x="166.66666666666669" y="118.52678571428571"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -102,7 +102,12 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
         if filenames.count > 1 {
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
         } else {
-            toolbarTitleButton.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+            if #available(iOS 13.0, *) {
+                toolbarTitleButton.setTitleTextAttributes([.foregroundColor: UIColor.label], for: .normal)
+            } else {
+                // Fallback on earlier versions
+                toolbarTitleButton.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+            }
         }
         toolbarTitleButton.title = titleString
     }

@@ -12,7 +12,7 @@ An ENC exchange set is a catalog of data files which can be loaded as cells. The
 
 ## How to use the sample
 
-Run the sample and view the ENC data. Pan and zoom around the map. Take note of the high level of detail in the data and the smooth rendering of the layer.
+When launched, the sample displays the ENC data. Take note of the high level of detail in the data and the smooth rendering of the layer.
 
 ## How it works
 

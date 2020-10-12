@@ -294,14 +294,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5R-Ku-rtU" userLabel="Code Container View">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5R-Ku-rtU" userLabel="Code Container View">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <connections>
                                     <segue destination="qe9-PB-Pzq" kind="embed" identifier="SourceCodeSegue" id="nmt-TZ-5x3"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-3m-v2G" userLabel="Info Container View">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-3m-v2G" userLabel="Info Container View">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <connections>
                                     <segue destination="NMd-B8-rJ5" kind="embed" identifier="SampleInfoSegue" id="c6m-uQ-Kz4"/>
                                 </connections>
@@ -312,10 +312,10 @@
                         <constraints>
                             <constraint firstItem="MfE-3m-v2G" firstAttribute="top" secondItem="Asf-ux-BYr" secondAttribute="top" id="CwL-cC-IdS"/>
                             <constraint firstItem="z5R-Ku-rtU" firstAttribute="trailing" secondItem="rXs-h5-bEr" secondAttribute="trailing" id="Io8-c8-jLg"/>
-                            <constraint firstItem="MfE-3m-v2G" firstAttribute="bottom" secondItem="rXs-h5-bEr" secondAttribute="bottom" id="NK3-OW-3OG"/>
+                            <constraint firstItem="MfE-3m-v2G" firstAttribute="bottom" secondItem="Asf-ux-BYr" secondAttribute="bottom" id="NK3-OW-3OG"/>
                             <constraint firstItem="MfE-3m-v2G" firstAttribute="trailing" secondItem="rXs-h5-bEr" secondAttribute="trailing" id="W1c-PG-j3x"/>
                             <constraint firstItem="z5R-Ku-rtU" firstAttribute="leading" secondItem="rXs-h5-bEr" secondAttribute="leading" id="YdR-2X-v9b"/>
-                            <constraint firstItem="z5R-Ku-rtU" firstAttribute="bottom" secondItem="rXs-h5-bEr" secondAttribute="bottom" id="eYS-sS-Rlb"/>
+                            <constraint firstItem="z5R-Ku-rtU" firstAttribute="bottom" secondItem="Asf-ux-BYr" secondAttribute="bottom" id="eYS-sS-Rlb"/>
                             <constraint firstItem="z5R-Ku-rtU" firstAttribute="top" secondItem="Asf-ux-BYr" secondAttribute="top" id="pQz-jW-tbe"/>
                             <constraint firstItem="MfE-3m-v2G" firstAttribute="leading" secondItem="rXs-h5-bEr" secondAttribute="leading" id="yqF-bG-HDh"/>
                         </constraints>
@@ -351,11 +351,11 @@
             <objects>
                 <viewController id="NMd-B8-rJ5" customClass="SampleInfoViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p2z-Do-b04">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e32-Rc-zGM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            <wkWebView contentMode="scaleToFill" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e32-Rc-zGM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
@@ -384,14 +384,29 @@
             <objects>
                 <viewController storyboardIdentifier="SourceCodeViewController" id="qe9-PB-Pzq" customClass="SourceCodeViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PsA-Cm-EhI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rA3-JQ-Mdx" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="764"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="730"/>
+                                <subviews>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KE4-Ic-Gt2">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="730"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="KE4-Ic-Gt2" secondAttribute="bottom" id="ApL-oy-iHl"/>
+                                    <constraint firstItem="KE4-Ic-Gt2" firstAttribute="leading" secondItem="rA3-JQ-Mdx" secondAttribute="leading" id="a3B-K1-Iw3"/>
+                                    <constraint firstAttribute="trailing" secondItem="KE4-Ic-Gt2" secondAttribute="trailing" id="nxz-eX-LGE"/>
+                                    <constraint firstItem="KE4-Ic-Gt2" firstAttribute="top" secondItem="rA3-JQ-Mdx" secondAttribute="top" id="sqb-Ou-quV"/>
+                                </constraints>
                             </view>
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZS-cc-Di0">
-                                <rect key="frame" x="0.0" y="764" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="730" width="414" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="RgF-M3-ILn"/>
                                     <barButtonItem id="zbn-kS-wmE">
@@ -409,17 +424,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rA3-JQ-Mdx" secondAttribute="trailing" id="Gxz-aI-6b0"/>
-                            <constraint firstItem="cZS-cc-Di0" firstAttribute="leading" secondItem="63H-yR-XyK" secondAttribute="leading" id="HbP-pv-Z3e"/>
+                            <constraint firstItem="cZS-cc-Di0" firstAttribute="leading" secondItem="PsA-Cm-EhI" secondAttribute="leading" id="HbP-pv-Z3e"/>
                             <constraint firstItem="63H-yR-XyK" firstAttribute="bottom" secondItem="cZS-cc-Di0" secondAttribute="bottom" id="UmR-sv-GZn"/>
                             <constraint firstItem="rA3-JQ-Mdx" firstAttribute="top" secondItem="PsA-Cm-EhI" secondAttribute="top" id="lAi-DH-gfE"/>
                             <constraint firstItem="rA3-JQ-Mdx" firstAttribute="leading" secondItem="PsA-Cm-EhI" secondAttribute="leading" id="tTG-eT-spV"/>
-                            <constraint firstItem="cZS-cc-Di0" firstAttribute="trailing" secondItem="63H-yR-XyK" secondAttribute="trailing" id="wAh-N1-Zqp"/>
+                            <constraint firstItem="cZS-cc-Di0" firstAttribute="trailing" secondItem="PsA-Cm-EhI" secondAttribute="trailing" id="wAh-N1-Zqp"/>
                             <constraint firstItem="cZS-cc-Di0" firstAttribute="top" secondItem="rA3-JQ-Mdx" secondAttribute="bottom" id="xgj-Pi-jqq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="contentView" destination="rA3-JQ-Mdx" id="CSj-eW-KXG"/>
                         <outlet property="toolbarTitleButton" destination="zbn-kS-wmE" id="reN-O0-gAK"/>
+                        <outlet property="webView" destination="KE4-Ic-Gt2" id="anj-eU-nBT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWR-U8-1d5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -462,7 +478,7 @@
             <objects>
                 <tableViewController id="ZtT-NE-hWv" customClass="ListViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iNp-vT-fBs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="754"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>

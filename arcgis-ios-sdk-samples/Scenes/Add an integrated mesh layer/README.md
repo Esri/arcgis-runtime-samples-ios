@@ -10,7 +10,7 @@ An integrated mesh is used to generate a mesh over a point dataset. They are mos
 
 ## How to use the sample
 
-Run the sample and watch the integrated mesh layer load in place. Navigate around the scene to visualize the high level of detail on the buildings.
+After launching the sample, watch the integrated mesh layer load in place. Navigate around the scene to visualize the high level of detail on the buildings.
 
 ## How it works
 

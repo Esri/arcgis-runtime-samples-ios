@@ -42,6 +42,7 @@
                                             </constraints>
                                         </view>
                                     </barButtonItem>
+                                    <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="JAy-3r-gJx"/>
                                     <barButtonItem style="plain" id="S7O-oY-L1Z">
                                         <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="4o0-qb-u2w">
                                             <rect key="frame" x="70" y="11.5" width="51" height="31"/>

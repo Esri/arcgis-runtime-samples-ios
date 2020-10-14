@@ -139,7 +139,7 @@ public extension ProgressHUD {
     }
     
     //---------------------------------------------------------------------------------------------------------------------------------------------
-    class func show(_ status: String? = nil, interaction: Bool = true) {
+    class func show(_ status: String? = nil, interaction: Bool = false) {
         
         DispatchQueue.main.async {
             shared.setup(status: status, hide: false, interaction: interaction)

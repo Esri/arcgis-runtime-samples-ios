@@ -60,6 +60,7 @@ public enum AlertIcon {
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
+@available(iOS 13.0, *)
 extension AlertIcon {
     
     var image: UIImage? {
@@ -124,16 +125,6 @@ public extension ProgressHUD {
         get { shared.fontStatus }
         set { shared.fontStatus = newValue }
     }
-    
-    class var imageSuccess: UIImage {
-        get { shared.imageSuccess }
-        set { shared.imageSuccess = newValue }
-    }
-    
-    class var imageError: UIImage {
-        get { shared.imageError }
-        set { shared.imageError = newValue }
-    }
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -157,6 +148,7 @@ public extension ProgressHUD {
     
     // MARK: -
     //---------------------------------------------------------------------------------------------------------------------------------------------
+    @available(iOS 13.0, *)
     class func show(_ status: String? = nil, icon: AlertIcon, interaction: Bool = true) {
         
         let image = icon.image?.withTintColor(shared.colorAnimation, renderingMode: .alwaysOriginal)
@@ -177,17 +169,29 @@ public extension ProgressHUD {
     // MARK: -
     //---------------------------------------------------------------------------------------------------------------------------------------------
     class func showSuccess(_ status: String? = nil, image: UIImage? = nil, interaction: Bool = true) {
-        
+        let imageSuccess: UIImage?
+        if #available(iOS 13.0, *) {
+            imageSuccess = UIImage.checkmark.withTintColor(UIColor.systemGreen, renderingMode: .alwaysOriginal)
+        } else {
+            // Fallback on earlier versions
+            imageSuccess = nil
+        }
         DispatchQueue.main.async {
-            shared.setup(status: status, staticImage: image ?? shared.imageSuccess, hide: true, interaction: interaction)
+            shared.setup(status: status, staticImage: image ?? imageSuccess, hide: true, interaction: interaction)
         }
     }
     
     //---------------------------------------------------------------------------------------------------------------------------------------------
     class func showError(_ status: String? = nil, image: UIImage? = nil, interaction: Bool = true) {
-        
+        let imageError: UIImage?
+        if #available(iOS 13.0, *) {
+            imageError = UIImage.remove.withTintColor(UIColor.systemRed, renderingMode: .alwaysOriginal)
+        } else {
+            // Fallback on earlier versions
+            imageError = nil
+        }
         DispatchQueue.main.async {
-            shared.setup(status: status, staticImage: image ?? shared.imageError, hide: true, interaction: interaction)
+            shared.setup(status: status, staticImage: image ?? imageError, hide: true, interaction: interaction)
         }
     }
     
@@ -252,13 +256,11 @@ public class ProgressHUD: UIView {
     
     private var colorBackground	= UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
     private var colorHUD		= UIColor.systemGray
-    private var colorStatus		= UIColor.label
+    private var colorStatus = UIColor.fallbackLabel
     private var colorAnimation	= UIColor.lightGray
     private var colorProgress	= UIColor.lightGray
     
     private var fontStatus		= UIFont.boldSystemFont(ofSize: 24)
-    private var imageSuccess	= UIImage.checkmark.withTintColor(UIColor.systemGreen, renderingMode: .alwaysOriginal)
-    private var imageError		= UIImage.remove.withTintColor(UIColor.systemRed, renderingMode: .alwaysOriginal)
     
     private let keyboardWillShow	= UIResponder.keyboardWillShowNotification
     private let keyboardWillHide	= UIResponder.keyboardWillHideNotification
@@ -619,8 +621,13 @@ public class ProgressHUD: UIView {
     // MARK: - Animation
     //---------------------------------------------------------------------------------------------------------------------------------------------
     private func animationSystemActivityIndicator(_ view: UIView) {
-        
-        let spinner = UIActivityIndicatorView(style: .large)
+        let spinner: UIActivityIndicatorView
+        if #available(iOS 13.0, *) {
+            spinner = UIActivityIndicatorView(style: .large)
+        } else {
+            // Fallback on earlier versions
+            spinner = UIActivityIndicatorView()
+        }
         spinner.frame = view.bounds
         spinner.color = colorAnimation
         spinner.hidesWhenStopped = true
@@ -1182,7 +1189,7 @@ public class ProgressHUD: UIView {
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 private class ProgressView: UIView {
     
-    var color: UIColor = .systemBackground {
+    var color: UIColor = .fallbackSystemBackgroud {
         didSet { setupLayers() }
     }
     private var progress: CGFloat = 0
@@ -1266,5 +1273,28 @@ private class ProgressView: UIView {
         
         progress = value
         labelPercentage.text = "\(Int(value*100))%"
+    }
+}
+
+
+private extension UIColor {
+    class var fallbackSystemBackgroud: UIColor {
+        let color: UIColor
+        if #available(iOS 13.0, *) {
+            color = .systemBackground
+        } else {
+            color = .white
+        }
+        return color
+    }
+    
+    class var fallbackLabel: UIColor {
+        let color: UIColor
+        if #available(iOS 13.0, *) {
+            color = .label
+        } else {
+            color = .black
+        }
+        return color
     }
 }

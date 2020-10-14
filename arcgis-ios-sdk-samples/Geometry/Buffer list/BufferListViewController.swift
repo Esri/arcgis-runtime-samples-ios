@@ -18,8 +18,8 @@ import ArcGIS
 class BufferListViewController: UIViewController {
     // MARK: Storyboard views
     
-    /// The create button.
-    @IBOutlet weak var createBarButtonItem: UIBarButtonItem!
+    /// The undo button.
+    @IBOutlet weak var undoBarButtonItem: UIBarButtonItem!
     /// The clear button.
     @IBOutlet weak var clearBarButtonItem: UIBarButtonItem!
     /// A label to display status message.
@@ -78,8 +78,10 @@ class BufferListViewController: UIViewController {
     /// An array of tapped points and buffer radii (in US feet) tuple.
     var tappedPointsAndRadius = [(point: AGSPoint, radius: Double)]() {
         didSet {
-            createBarButtonItem.isEnabled = !tappedPointsAndRadius.isEmpty
+            undoBarButtonItem.isEnabled = !tappedPointsAndRadius.isEmpty
             clearBarButtonItem.isEnabled = !tappedPointsAndRadius.isEmpty
+            // Redraw the buffers.
+            drawBuffers()
         }
     }
     
@@ -108,24 +110,20 @@ class BufferListViewController: UIViewController {
     
     // MARK: Actions
     
-    @IBAction func createButtonTapped(_ sender: UIBarButtonItem) {
-        // Clear existing buffers graphics before drawing.
-        bufferGraphicsOverlay.graphics.removeAllObjects()
-        // Create the buffers.
-        // Notice: the radius distances has the same unit of the map's spatial reference's unit.
-        // In this case, the statePlaneNorthCentralTexas spatial reference uses US feet.
-        if let bufferPolygon = AGSGeometryEngine.bufferGeometries(tappedPointsAndRadius.map { $0.point }, distances: tappedPointsAndRadius.map { NSNumber(value: $0.radius) }, unionResults: isUnionSwitch.isOn) {
-            let graphics = bufferPolygon.map { AGSGraphic(geometry: $0, symbol: nil) }
-            bufferGraphicsOverlay.graphics.addObjects(from: graphics)
-            setStatus(message: "Buffers created.")
-        }
+    @IBAction func undoButtonTapped(_ sender: UIBarButtonItem) {
+        // Remove the last pair of tapped point and radius.
+        _ = tappedPointsAndRadius.popLast()
+    }
+    
+    @IBAction func isUnionSwitchValueChanged(_ sender: UISwitch) {
+        // Redraw buffers when the union switch's value is changed.
+        drawBuffers()
     }
     
     @IBAction func clearButtonTapped(_ sender: UIBarButtonItem) {
         bufferGraphicsOverlay.graphics.removeAllObjects()
         tappedLocationsGraphicsOverlay.graphics.removeAllObjects()
         tappedPointsAndRadius.removeAll()
-        setStatus(message: "Buffers removed. Tap on the map to add buffers.")
     }
     
     // MARK: UI
@@ -134,8 +132,30 @@ class BufferListViewController: UIViewController {
         statusLabel.text = message
     }
     
+    func drawBuffers() {
+        // Clear existing buffers graphics before drawing.
+        bufferGraphicsOverlay.graphics.removeAllObjects()
+        tappedLocationsGraphicsOverlay.graphics.removeAllObjects()
+        
+        guard !tappedPointsAndRadius.isEmpty else {
+            setStatus(message: "Tap on the map to add buffers.")
+            return
+        }
+        
+        // Create the buffers.
+        // Notice: the radius distances has the same unit of the map's spatial reference's unit.
+        // In this case, the statePlaneNorthCentralTexas spatial reference uses US feet.
+        if let bufferPolygon = AGSGeometryEngine.bufferGeometries(tappedPointsAndRadius.map { $0.point }, distances: tappedPointsAndRadius.map { NSNumber(value: $0.radius) }, unionResults: isUnionSwitch.isOn) {
+            // Add graphics symbolizing the tap point.
+            tappedLocationsGraphicsOverlay.graphics.addObjects(from: tappedPointsAndRadius.map { AGSGraphic(geometry: $0.point, symbol: nil) })
+            // Add graphics of the buffer polygons.
+            bufferGraphicsOverlay.graphics.addObjects(from: bufferPolygon.map { AGSGraphic(geometry: $0, symbol: nil) })
+            setStatus(message: "Buffers created.")
+        }
+    }
+    
     // MARK: UIViewController
-     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
@@ -145,7 +165,7 @@ class BufferListViewController: UIViewController {
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
-                self.setStatus(message: "Fail to load basemap.")
+                self.setStatus(message: "Failed to load basemap.")
             } else {
                 self.mapView.setViewpoint(AGSViewpoint(targetExtent: self.boundaryPolygon.extent), completion: nil)
                 self.setStatus(message: "Tap on the map to add buffers.")
@@ -164,35 +184,53 @@ extension BufferListViewController: AGSGeoViewTouchDelegate {
             return
         }
         // Use an alert to get radius input from user.
-        let alert = UIAlertController(title: "Provide a buffer radius", message: "Between 0 and 300 \(self.distanceFormatter.string(from: self.bufferRadius.unit))", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Provide a buffer radius", message: "Between 0 and 300 \(distanceFormatter.string(from: bufferRadius.unit))", preferredStyle: .alert)
+        // Create an object to observe changes from the textfield.
+        var textFieldObserver: NSObjectProtocol!
+        // Add a textfield to get user input.
         alert.addTextField { textField in
             textField.keyboardType = .numberPad
             textField.placeholder = "100"
         }
-        let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self, textField = alert.textFields?.first] _ in
-            guard let self = self else { return }
-            // Ensure the buffer radius is valid, and is a positive value that isn't too large.
-            guard let text = textField?.text,
-                !text.isEmpty,
-                let radius = self.distanceFormatter.numberFormatter.number(from: text),
-                radius.doubleValue > 0,
-                radius.doubleValue < 300 else {
-                    self.setStatus(message: "Tap on the map to add buffers.")
-                    return
-            }
+        
+        let doneAction = UIAlertAction(title: "Done", style: .default) { [weak self, unowned alert, mapPoint = mapPoint] _ in
+            // Remove the observer after editing is complete.
+            NotificationCenter.default.removeObserver(textFieldObserver!)
+            
+            guard let self = self,
+                  let text = alert.textFields?.first?.text,
+                  let radius = self.distanceFormatter.numberFormatter.number(from: text)
+            else { return }
+            
             // Update the buffer radius with the text value.
             self.bufferRadius.value = radius.doubleValue
             // The spatial reference in this sample uses US feet as its unit.
             let radiusInFeet = self.bufferRadius.converted(to: .feet).value
-            // Create and add graphic symbolizing the tap point.
-            let pointGraphic = AGSGraphic(geometry: mapPoint, symbol: nil)
-            self.tappedLocationsGraphicsOverlay.graphics.add(pointGraphic)
+            
             // Keep track of tapped points and their radii.
             self.tappedPointsAndRadius.append((point: mapPoint, radius: radiusInFeet))
-            self.setStatus(message: "Buffer center point added.")
         }
+        
+        // Add an observer to ensure the user input is valid.
+        textFieldObserver = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: .main, using: { [weak self, weak alert, unowned doneAction] _ in
+            // Ensure the buffer radius input is valid, and is within the range.
+            if let text = alert?.textFields?.first?.text,
+               !text.isEmpty,
+               let radius = self?.distanceFormatter.numberFormatter.number(from: text),
+               radius.doubleValue > 0,
+               radius.doubleValue < 300 {
+                doneAction.isEnabled = true
+            } else {
+                doneAction.isEnabled = false
+            }
+        })
+        // Disable done button by default.
+        doneAction.isEnabled = false
         alert.addAction(doneAction)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            // Remove the observer when canceled.
+            NotificationCenter.default.removeObserver(textFieldObserver!)
+        }
         alert.addAction(cancelAction)
         alert.preferredAction = doneAction
         present(alert, animated: true)

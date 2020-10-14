@@ -23,7 +23,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         }
     }
     
-    private var itemIDs = ["1349bfa0ed08485d8a92c442a3850b06",
+    private let itemIDs = ["1349bfa0ed08485d8a92c442a3850b06",
                            "bd8ac41667014d98b933e97713ba8377",
                            "02f85ec376084c508b9c8e5a311724fa",
                            "1bf0cc4a4380468fbbff107e100f65a5",

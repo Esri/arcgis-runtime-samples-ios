@@ -42,54 +42,47 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
     var shownItemID: String?
     // The job to export the item resource cache.
     var exportVectorTilesJob: AGSExportVectorTilesJob?
+    // The vector tiled layer created by the local VTPK.
+    var offlineVectorTiledLayer: AGSArcGISVectorTiledLayer?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileCustomStyleViewController", "VectorStylesViewController"]
-        
-        // Show the default vector tiled layer.
-        showSelectedItem(itemIDs.first!)
+    func loadOfflineLayer() {
+        // Get the vector tiled layer URL.
+        let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=2056bf1b350244d69c78e4f84d1ba215")!
+        // Create a vector tile cache using the local vector tile package.
+        let vectorTileCache = AGSVectorTileCache(name: "PSCC_vector")
+        // Create a portal item with the URL.
+        let portalItem = AGSPortalItem(url: vectorTiledLayerURL)!
+        // Create a task to export the custom style resources.
+        let task = AGSExportVectorTilesTask(portalItem: portalItem)
+        // Get the AGSExportVectorTilesJob.
+        exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL!)
+        // Start the job.
+        exportVectorTilesJob?.start(statusHandler: nil) { [weak self] (result, error) in
+            guard let self = self else { return }
+            if let result = result {
+                // Get the item resource cache from the result.
+                let itemresourceCahce = result.itemResourceCache
+                // Create a vector tiled layer with the vector tiled cache and the item resource cache.
+                self.offlineVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
+            } else if let error = error {
+                // Handle errors.
+                self.presentAlert(error: error)
+            }
+        }
     }
     
-    // MARK: - Helper functions
     private func showSelectedItem(_ itemID: String) {
         guard let map = mapView.map else { return }
-        // Get the vector tiled layer URL.
-        let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
         shownItemID = itemID
         if itemID == itemIDs.last {
-            // If the custom style is chosen, use the local vector tile package.
-            let vectorTileCache = AGSVectorTileCache(name: "PSCC_vector")
-            // Create a portal item with the URL.
-            let portalItem = AGSPortalItem(url: vectorTiledLayerURL)!
-            // Create a task to export the custom style resources.
-            let task = AGSExportVectorTilesTask(portalItem: portalItem)
-            // Get the AGSExportVectorTilesJob.
-            exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL!)
-            // Start the job.
-            exportVectorTilesJob?.start(statusHandler: { (status) in
-                SVProgressHUD.show(withStatus: status.statusString())
-            }, completion: { [weak self] (result, error) in
-                SVProgressHUD.dismiss()
-                guard let self = self else { return }
-                if let result = result {
-                    // Get the item resource cache from the result.
-                    let itemresourceCahce = result.itemResourceCache
-                    // Create a vector tiled layer with the vector tiled cache and the item resource cache.
-                    let vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
-                    // Assign the vector tiled layer to the basemap.
-                    map.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
-                    // Set the viewpoint to display the Palm Springs Convention Center.
-                    let point = AGSPoint(x: -116.5384, y: 33.8258, spatialReference: .wgs84())
-                    self.mapView.setViewpoint(AGSViewpoint(center: point, scale: 3_000))
-                } else if let error = error {
-                    // Handle errors.
-                    self.presentAlert(error: error)
-                }
-            })
+            // If the custom style is chosen, assign the local vector tile package to the basemap.
+            map.basemap = AGSBasemap(baseLayer: offlineVectorTiledLayer!)
+            // Set the viewpoint to display the Palm Springs Convention Center.
+            let point = AGSPoint(x: -116.5384, y: 33.8258, spatialReference: .wgs84())
+            self.mapView.setViewpoint(AGSViewpoint(center: point, scale: 3_000))
         } else {
+            // Get the vector tiled layer URL.
+            let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
             // Create a vector tiled layer from the URL.
             let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: vectorTiledLayerURL)
             map.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
@@ -97,6 +90,16 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator())
             mapView.setViewpoint(AGSViewpoint(center: centerPoint, scale: 88659253.829259947))
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Load the offline vector tiled layer.
+        loadOfflineLayer()
+        // Show the default vector tiled layer.
+        showSelectedItem(itemIDs.first!)
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileCustomStyleViewController", "VectorStylesViewController"]
     }
     
     // MARK: - Navigation

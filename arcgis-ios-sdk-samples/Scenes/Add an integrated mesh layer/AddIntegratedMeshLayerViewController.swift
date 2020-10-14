@@ -25,8 +25,8 @@ class AddIntegratedMeshLayerViewController: UIViewController {
         didSet {
             sceneView.scene = makeScene()
             
-            let location = AGSPoint(x: -119.622075, y: 37.720650, z: 2_104.901239, spatialReference: .wgs84())
-            let camera = AGSCamera(location: location, heading: 315.50368761552056, pitch: 78.09465920130114, roll: 0)
+            let location = AGSPoint(x: 2.8259, y: 41.9906, z: 200.0, spatialReference: .wgs84())
+            let camera = AGSCamera(location: location, heading: 190, pitch: 65, roll: 0)
             sceneView.setViewpointCamera(camera)
         }
     }
@@ -46,8 +46,9 @@ class AddIntegratedMeshLayerViewController: UIViewController {
         surface.elevationSources = [elevationSource]
         scene.baseSurface = surface
         
-        // Create the integrated mesh layer and add it to the scene.
-        let integratedMeshLayerURL = URL(string: "https://tiles.arcgis.com/tiles/FQD0rKU8X5sAQfh8/arcgis/rest/services/VRICON_Yosemite_Sample_Integrated_Mesh_scene_layer/SceneServer")!
+        // Create the integrated mesh layer that depicts
+        // the city of Girona, Spain and add it to the scene.
+        let integratedMeshLayerURL = URL(string: "https://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/Girona_Spain/SceneServer")!
         let integratedMeshLayer = AGSIntegratedMeshLayer(url: integratedMeshLayerURL)
         scene.operationalLayers.add(integratedMeshLayer)
         

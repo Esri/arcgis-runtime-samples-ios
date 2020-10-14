@@ -55,8 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         //enable/disable touches based on settings
         self.setTouchPref()
         
-        SVProgressHUD.setDefaultMaskType(.gradient)
-        
         return true
     }
 

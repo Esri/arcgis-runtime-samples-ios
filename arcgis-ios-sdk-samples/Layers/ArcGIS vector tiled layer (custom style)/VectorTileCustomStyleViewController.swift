@@ -28,13 +28,19 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
                            "02f85ec376084c508b9c8e5a311724fa",
                            "1bf0cc4a4380468fbbff107e100f65a5",
                            "2056bf1b350244d69c78e4f84d1ba215"]
-    private var shownItemID: String? {
-        if let itemID = ((mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer)?.item as? AGSPortalItem)?.itemID {
-            return itemID
-        }
-        return "2056bf1b350244d69c78e4f84d1ba215"
-    }
     
+    let temporaryURL: URL? = {
+        // Get a suitable directory to place files.
+        let directoryURL = FileManager.default.temporaryDirectory
+        // Create a unique name for the item resource cache based on current timestamp.
+        let formattedDate = ISO8601DateFormatter().string(from: Date())
+        // Create and return the full, unique URL.
+        return directoryURL.appendingPathComponent("\(formattedDate)")
+    }()
+    
+    // The item ID of the shown layer.
+    var shownItemID: String?
+    // The job to export the item resource cache.
     var exportVectorTilesJob: AGSExportVectorTilesJob?
     
     override func viewDidLoad() {
@@ -52,6 +58,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         guard let map = mapView.map else { return }
         // Get the vector tiled layer URL.
         let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
+        shownItemID = itemID
         if itemID == itemIDs.last {
             // If the custom style is chosen, use the local vector tile package.
             let vectorTileCache = AGSVectorTileCache(name: "PSCC_vector")
@@ -60,17 +67,14 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             // Create a task to export the custom style resources.
             let task = AGSExportVectorTilesTask(portalItem: portalItem)
             // Get the AGSExportVectorTilesJob.
-            exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: getItemResourceCacheURL())
+            exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL!)
             // Start the job.
             exportVectorTilesJob?.start(statusHandler: { (status) in
                 SVProgressHUD.show(withStatus: status.statusString())
             }, completion: { [weak self] (result, error) in
                 SVProgressHUD.dismiss()
                 guard let self = self else { return }
-                if let error = error {
-                    // Handle errors.
-                    self.presentAlert(error: error)
-                } else if let result = result {
+                if let result = result {
                     // Get the item resource cache from the result.
                     let itemresourceCahce = result.itemResourceCache
                     // Create a vector tiled layer with the vector tiled cache and the item resource cache.
@@ -80,6 +84,9 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
                     // Set the viewpoint to display the Palm Springs Convention Center.
                     let point = AGSPoint(x: -116.5384, y: 33.8258, spatialReference: .wgs84())
                     self.mapView.setViewpoint(AGSViewpoint(center: point, scale: 3_000))
+                } else if let error = error {
+                    // Handle errors.
+                    self.presentAlert(error: error)
                 }
             })
         } else {
@@ -90,15 +97,6 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator())
             mapView.setViewpoint(AGSViewpoint(center: centerPoint, scale: 88659253.829259947))
         }
-    }
-    
-    private func getItemResourceCacheURL() -> URL {
-        // Get a suitable directory to place files.
-        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        // Create a unique name for the item resource cache based on current timestamp.
-        let formattedDate = ISO8601DateFormatter().string(from: Date())
-        // Create and return the full, unique URL.
-        return directoryURL.appendingPathComponent("\(formattedDate)")
     }
     
     // MARK: - Navigation

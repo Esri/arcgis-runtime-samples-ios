@@ -41,11 +41,6 @@ class VectorStylesViewController: UITableViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        tableViewContentSizeObservation = nil
-    }
-    
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemID = itemIDs[indexPath.row]

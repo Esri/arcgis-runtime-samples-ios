@@ -98,9 +98,9 @@ class EditWithBranchVersioningViewController: UIViewController {
         // You can also set its `credential` property. E.g.
         // serviceGeodatabase.credential = AGSCredential(user: "editor01", password: "editor01.password")
         
-        SVProgressHUD.show(withStatus: "Loading service geodatabase…")
+        ProgressHUD.show("Loading service geodatabase…")
         serviceGeodatabase.load { [weak self] error in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
@@ -131,9 +131,9 @@ class EditWithBranchVersioningViewController: UIViewController {
     func loadFeatureLayer(with featureTable: AGSFeatureTable, completion: @escaping (AGSFeatureLayer) -> Void) {
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
-        SVProgressHUD.show(withStatus: "Loading feature layer…")
+        ProgressHUD.show("Loading feature layer…")
         featureLayer.load { [weak self] error in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             if let extent = featureLayer.fullExtent {
                 // Zoom to the target extent with animation.
                 self?.mapView.setViewpoint(AGSViewpoint(targetExtent: extent), completion: nil)
@@ -226,9 +226,9 @@ class EditWithBranchVersioningViewController: UIViewController {
     ///   - completion: A closure to execute after edits are applied.
     func applyLocalEdits(geodatabase: AGSServiceGeodatabase, completion: @escaping () -> Void) {
         if geodatabase.hasLocalEdits() {
-            SVProgressHUD.show(withStatus: "Applying local edits…")
+            ProgressHUD.show("Applying local edits…")
             geodatabase.applyEdits { _, _ in
-                SVProgressHUD.dismiss()
+                ProgressHUD.dismiss()
                 completion()
             }
         } else {
@@ -243,9 +243,9 @@ class EditWithBranchVersioningViewController: UIViewController {
     ///   - completion: A closure to execute after edits are undone.
     func undoLocalEdits(geodatabase: AGSServiceGeodatabase, completion: @escaping () -> Void) {
         if geodatabase.hasLocalEdits() {
-            SVProgressHUD.show(withStatus: "Discarding local edits…")
+            ProgressHUD.show("Discarding local edits…")
             geodatabase.undoLocalEdits { _ in
-                SVProgressHUD.dismiss()
+                ProgressHUD.dismiss()
                 completion()
             }
         } else {

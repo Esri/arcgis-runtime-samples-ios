@@ -26,11 +26,11 @@ class AttachmentsTableViewController: UITableViewController {
     
     private func loadAttachments() {
         //show progress hud
-        SVProgressHUD.show(withStatus: "Loading attachments")
+        ProgressHUD.show("Loading attachments")
         
         feature?.fetchAttachments { [weak self] (attachments: [AGSAttachment]?, error: Error?) in
             //dismiss progress hud
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             guard let self = self else {
                 return
@@ -64,10 +64,10 @@ class AttachmentsTableViewController: UITableViewController {
     }
     
     private func downloadImage(for attachment: AGSAttachment) {
-        SVProgressHUD.show(withStatus: "Downloading attachment")
+        ProgressHUD.show("Downloading attachment")
         
         attachment.fetchData { [weak self] (data: Data?, error: Error?) in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             guard let self = self else {
                 return
@@ -131,11 +131,11 @@ class AttachmentsTableViewController: UITableViewController {
     @IBAction func doneAction() {
         if let table = feature?.featureTable as? AGSServiceFeatureTable {
             //show progress hud
-            SVProgressHUD.show(withStatus: "Applying edits")
+            ProgressHUD.show("Applying edits")
             
             table.applyEdits { [weak self] (_, error) in
                 //dismiss progress hud
-                SVProgressHUD.dismiss()
+                ProgressHUD.dismiss()
                 
                 guard let self = self else {
                     return
@@ -157,10 +157,10 @@ class AttachmentsTableViewController: UITableViewController {
         }
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Adding attachment")
+        ProgressHUD.show("Adding attachment")
         
         feature?.addAttachment(withName: "Attachment.png", contentType: "png", data: pngData) { [weak self] (attachment: AGSAttachment?, error: Error?) in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             guard let self = self else {
                 return

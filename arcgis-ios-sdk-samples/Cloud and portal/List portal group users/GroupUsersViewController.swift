@@ -41,14 +41,14 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     
     private func loadPortalGroup() {
         //show progress hud
-        SVProgressHUD.show(withStatus: "Loading Portal Group")
+        ProgressHUD.show("Loading Portal Group")
         
         //query group based on owner and title
         let queryParams = AGSPortalQueryParameters(forGroupsWithOwner: "ArcGISRuntimeSDK", title: "Runtime Group")
         
         //find groups with using query params
         self.portal.findGroups(with: queryParams) { [weak self] (resultSet: AGSPortalQueryResultSet?, error: Error?) in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             guard let self = self else {
                 return
@@ -73,11 +73,11 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     
     private func fetchGroupUsers() {
         //show progress hud
-        SVProgressHUD.show(withStatus: "Fetching Users")
+        ProgressHUD.show("Fetching Users")
         
         //fetch users in group
         self.portalGroup.fetchUsers { [weak self] (users, _, error) in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             guard let self = self else {
                 return
@@ -102,12 +102,12 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     
     private func loadAllUsers() {
         //show progress hud
-        SVProgressHUD.show(withStatus: "Loading User Data")
+        ProgressHUD.show("Loading User Data")
         
         //load user data
         AGSLoadObjects(portalUsers) { [weak self] (success) in
             //dismiss hud
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             if success {
                 //reload table view

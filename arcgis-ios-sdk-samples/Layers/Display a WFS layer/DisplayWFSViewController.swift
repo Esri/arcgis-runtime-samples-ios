@@ -80,7 +80,7 @@ class DisplayWFSViewController: UIViewController {
         params.spatialRelationship = .intersects
         
         // Show progress
-        SVProgressHUD.show(withStatus: "Querying")
+        ProgressHUD.show("Querying")
     
         // Populate features based on query
         self.lastQuery = self.wfsFeatureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
@@ -100,7 +100,7 @@ class DisplayWFSViewController: UIViewController {
                 }
             }
             // Hide Progress
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
         }
     }
 }

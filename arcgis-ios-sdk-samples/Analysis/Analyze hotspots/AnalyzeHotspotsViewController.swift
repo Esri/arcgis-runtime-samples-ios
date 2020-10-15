@@ -75,10 +75,10 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         //start job
         geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
             //show progress hud with job status
-            SVProgressHUD.show(withStatus: status.statusString())
+            ProgressHUD.show(status.statusString())
         }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             //dismiss progress hud
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             guard let self = self else { return }
             if let error = error {
                 //show error

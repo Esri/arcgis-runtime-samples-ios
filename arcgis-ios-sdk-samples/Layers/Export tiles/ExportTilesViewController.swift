@@ -120,10 +120,10 @@ class ExportTilesViewController: UIViewController {
         //run the job
         job.start(statusHandler: { (status) in
             //show job status
-            SVProgressHUD.show(withStatus: status.statusString())
+            ProgressHUD.show(status.statusString())
         }, completion: { [weak self] (result, error) in
             //hide progress view
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             guard let self = self else {
                 return

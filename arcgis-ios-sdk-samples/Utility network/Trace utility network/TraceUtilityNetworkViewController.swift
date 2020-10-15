@@ -226,7 +226,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     
     // MARK: Perform Trace
     @IBAction func traceNetwork(_ sender: Any) {
-        SVProgressHUD.show(withStatus: "Running \(traceType.name.lowercased()) trace…")
+        ProgressHUD.show("Running \(traceType.name.lowercased()) trace…")
         let parameters = AGSUtilityTraceParameters(traceType: traceType.type, startingLocations: traceParameters.startingLocations)
         parameters.barriers.append(contentsOf: traceParameters.barriers)
 
@@ -236,7 +236,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         utilityNetwork.trace(with: parameters) { [weak self] (traceResult, error) in
             if let error = error {
                 self?.setStatus(message: "Trace failed.")
-                SVProgressHUD.dismiss()
+                ProgressHUD.dismiss()
                 self?.presentAlert(error: error)
                 return
             }
@@ -246,13 +246,13 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             guard let elementTraceResult = traceResult?.first as? AGSUtilityElementTraceResult,
                 !elementTraceResult.elements.isEmpty else {
                     self.setStatus(message: "Trace completed with no output.")
-                    SVProgressHUD.dismiss()
+                    ProgressHUD.dismiss()
                     return
             }
             
             self.clearSelection()
 
-            SVProgressHUD.show(withStatus: "Trace completed. Selecting features…")
+            ProgressHUD.show("Trace completed. Selecting features…")
 
             let groupedElements = Dictionary(grouping: elementTraceResult.elements) { $0.networkSource.name }
             
@@ -280,7 +280,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             
             selectionGroup.notify(queue: .main) { [weak self] in
                 self?.setStatus(message: "Trace completed.")
-                SVProgressHUD.dismiss()
+                ProgressHUD.dismiss()
             }
         }
     }

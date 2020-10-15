@@ -108,10 +108,10 @@ class GenerateGeodatabaseViewController: UIViewController {
                 //kick off the job
                 generateJob.start(
                     statusHandler: { (status: AGSJobStatus) in
-                        SVProgressHUD.show(withStatus: status.statusString())
+                        ProgressHUD.show(status.statusString())
                     },
                     completion: { [weak self] (object: AnyObject?, error: Error?) in
-                        SVProgressHUD.dismiss()
+                        ProgressHUD.dismiss()
                         
                         if let error = error {
                             self?.presentAlert(error: error)

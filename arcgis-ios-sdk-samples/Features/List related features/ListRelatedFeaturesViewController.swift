@@ -82,12 +82,12 @@ class ListRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelega
         }
         
         //show progress hud
-        SVProgressHUD.show(withStatus: "Identifying feature")
+        ProgressHUD.show("Identifying feature")
         
         //identify features at the tapped location
         self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyLayerResult) in
             //dismiss progress hud
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             if let error = result.error {
                 //dismiss progress hud
@@ -113,12 +113,12 @@ class ListRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelega
     //query for related features given the origin feature
     private func queryRelatedFeatures() {
         //show progress hud
-        SVProgressHUD.show(withStatus: "Querying related features")
+        ProgressHUD.show("Querying related features")
         
         //query for related features
         self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
             //dismiss progress hud
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             guard let self = self else { return }
             

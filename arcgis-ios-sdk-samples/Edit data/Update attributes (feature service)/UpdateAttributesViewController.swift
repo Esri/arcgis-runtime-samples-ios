@@ -62,10 +62,10 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
     }
     
     func applyEdits() {
-        SVProgressHUD.show(withStatus: "Applying edits")
+        ProgressHUD.show("Applying edits")
         
         featureTable.applyEdits { [weak self] (_, error) in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             guard let self = self else {
                 return
@@ -127,11 +127,11 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
 extension UpdateAttributesViewController: UpdateAttributesOptionsViewControllerDelegate {
     func optionsViewController(_ optionsViewController: UpdateAttributesOptionsViewController, didSelectOptionAtIndex index: Int) {
         self.dismiss(animated: true)
-        SVProgressHUD.show(withStatus: "Updating")
+        ProgressHUD.show("Updating")
         
         selectedFeature.attributes["typdamage"] = types[index]
         featureTable.update(selectedFeature) { [weak self] (error: Error?) in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             if let error = error {
                 self?.presentAlert(error: error)

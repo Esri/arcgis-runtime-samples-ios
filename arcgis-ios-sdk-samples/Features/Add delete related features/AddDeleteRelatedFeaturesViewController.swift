@@ -71,12 +71,12 @@ class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchD
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         //show progress hud for identify
-        SVProgressHUD.show(withStatus: "Identifying feature")
+        ProgressHUD.show("Identifying feature")
         
         //identify features at tapped location
         self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result) in
             //hide progress hud
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             if let error = result.error {
                 //show error to user

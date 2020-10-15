@@ -30,7 +30,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
             // Observe the map view's drawing status to see when the new mosaic rule is loaded.
             drawStatusObservation = mapView.observe(\.drawStatus, options: .initial) { mapView, _ in
                 if mapView.drawStatus == .completed {
-                    SVProgressHUD.dismiss()
+                    ProgressHUD.dismiss()
                 }
             }
         }
@@ -85,11 +85,11 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         let map = AGSMap(basemap: .topographicVector())
         // Add raster layer as an operational layer to the map.
         map.operationalLayers.add(rasterLayer)
-        SVProgressHUD.show(withStatus: "Loading")
+        ProgressHUD.show("Loading")
         rasterLayer.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
-                SVProgressHUD.dismiss()
+                ProgressHUD.dismiss()
                 self.presentAlert(error: error)
             } else {
                 // When loaded, set the map view's viewpoint to the image service raster's center.
@@ -118,7 +118,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         )
         mosaicRulePairs.forEach { name, rule in
             let action = UIAlertAction(title: name, style: .default) { _ in
-                SVProgressHUD.show(withStatus: "Loading mosaic rule")
+                ProgressHUD.show("Loading mosaic rule")
                 self.setStatus(message: "\(name) selected.")
                 self.imageServiceRaster.mosaicRule = rule
             }

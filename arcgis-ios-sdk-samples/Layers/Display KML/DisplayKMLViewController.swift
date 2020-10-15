@@ -90,13 +90,13 @@ class DisplayKMLViewController: UIViewController {
         mapView.map?.operationalLayers.add(kmlLayer)
         
         // Show the progress indicator
-        SVProgressHUD.show(withStatus: "Loading KML Layer")
+        ProgressHUD.show("Loading KML Layer")
         
         // This load call is not required, but it allows for error
         // feedback and progress indication
         kmlLayer.load { [weak self] (error) in
             // Close the progress indicator
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
 
             if let error = error {
                 self?.presentAlert(error: error)

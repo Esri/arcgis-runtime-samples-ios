@@ -100,9 +100,9 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         }
         
         // Trace the utility network.
-        SVProgressHUD.show(withStatus: "Tracing…")
+        ProgressHUD.show("Tracing…")
         utilityNetwork.trace(with: parameters) { [weak self] (results, error) in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
@@ -145,9 +145,9 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         let tierName = "Medium Voltage Radial"
         
         // Load the utility network.
-        SVProgressHUD.show(withStatus: "Loading utility network…")
+        ProgressHUD.show("Loading utility network…")
         utilityNetwork.load { [weak self] error in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)

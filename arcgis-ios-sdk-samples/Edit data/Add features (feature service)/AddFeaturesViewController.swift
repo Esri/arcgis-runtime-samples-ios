@@ -59,11 +59,11 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         let feature = featureTable.createFeature(attributes: featureAttributes, geometry: normalizedGeometry)
         
         //show the progress hud
-        SVProgressHUD.show(withStatus: "Adding..")
+        ProgressHUD.show("Adding…")
         
         //add the feature to the feature table
         featureTable.add(feature) { [weak self] (error: Error?) in
-            SVProgressHUD.dismiss()
+            ProgressHUD.dismiss()
             
             if let error = error {
                 self?.presentAlert(message: "Error while adding feature: \(error.localizedDescription)")
@@ -79,13 +79,13 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     func applyEdits() {
         self.featureTable.applyEdits { [weak self] (featureEditResults: [AGSFeatureEditResult]?, error: Error?) in
             if let error = error {
-                self?.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
+                self?.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
             } else {
                 if let featureEditResults = featureEditResults,
                     featureEditResults.first?.completedWithErrors == false {
                     self?.presentAlert(message: "Edits applied successfully")
                 }
-                SVProgressHUD.dismiss()
+                ProgressHUD.dismiss()
             }
         }
     }

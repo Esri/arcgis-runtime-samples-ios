@@ -82,3 +82,4 @@ trailing_closure:
 excluded:
 - Pods
 - arcgis-runtime-toolkit-ios
+- arcgis-ios-sdk-samples/Shared resources/Libraries/ProgressHUD.swift

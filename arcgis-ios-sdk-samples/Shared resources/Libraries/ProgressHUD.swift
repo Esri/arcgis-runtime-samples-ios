@@ -502,8 +502,8 @@ public class ProgressHUD: UIView {
         
         toolbarHUD?.bounds = CGRect(x: 0, y: 0, width: width, height: height)
         
-        let centerX = width/2
-        var centerY = height/2
+        let centerX = width / 2
+        var centerY = height / 2
         
         if (labelStatus?.text != nil) { centerY = 55 }
         

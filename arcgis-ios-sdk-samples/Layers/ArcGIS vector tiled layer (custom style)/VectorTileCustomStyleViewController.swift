@@ -79,7 +79,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             map.basemap = AGSBasemap(baseLayer: offlineVectorTiledLayer!)
             // Set the viewpoint to display the Palm Springs Convention Center.
             let point = AGSPoint(x: -116.5384, y: 33.8258, spatialReference: .wgs84())
-            self.mapView.setViewpoint(AGSViewpoint(center: point, scale: 3_000))
+            mapView.setViewpoint(AGSViewpoint(center: point, scale: 3_000))
         } else {
             // Get the vector tiled layer URL.
             let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!

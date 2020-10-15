@@ -11,11 +11,18 @@
 		00166C8824D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
 		00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */; };
 		00166C8C24D236A300DD317E /* RealisticLightingAndShadowsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
+		001D341D251AA8D900F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001D341C251AA8D900F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift */; };
+		001D342F251BF94600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001D342E251BF94600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift */; };
+		001D3437251D407600F9EEBE /* ViewHiddenInfrastructureARPipePlacingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift */; };
+		001D3438251D407600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001D342E251BF94600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift */; };
+		001D3439251D407600F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001D341C251AA8D900F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift */; };
 		001ECB042486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */; };
 		001ECB062486DDF3009AC6C0 /* NavigateARCalibrationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */; };
 		001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
 		001ECB60248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */; };
 		001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
+		00255DD025156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00255DCF25156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard */; };
+		00255DD225156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift */; };
 		003BC30F24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
 		003BC31224E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
 		003D25622513D833007527C2 /* ApplyRasterRenderingRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */; };
@@ -893,6 +900,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				001D3437251D407600F9EEBE /* ViewHiddenInfrastructureARPipePlacingViewController.swift in CopyFiles */,
+				001D3438251D407600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift in CopyFiles */,
+				001D3439251D407600F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift in CopyFiles */,
 				F16922B7251590E200A8F36E /* EditKMLGroundOverlayViewController.swift in CopyFiles */,
 				00F953C724E34CCC00D16555 /* ApplyMosaicRuleToRastersViewController.swift in CopyFiles */,
 				003D25652513DF58007527C2 /* ApplyRasterRenderingRuleViewController.swift in CopyFiles */,
@@ -1177,9 +1187,13 @@
 /* Begin PBXFileReference section */
 		00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealisticLightingAndShadowsViewController.swift; sourceTree = "<group>"; };
 		00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RealisticLightingAndShadows.storyboard; sourceTree = "<group>"; };
+		001D341C251AA8D900F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHiddenInfrastructureARCalibrationViewController.swift; sourceTree = "<group>"; };
+		001D342E251BF94600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHiddenInfrastructureARExplorerViewController.swift; sourceTree = "<group>"; };
 		001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARCalibrationViewController.swift; sourceTree = "<group>"; };
 		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
+		00255DCF25156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewHiddenInfrastructureAR.storyboard; sourceTree = "<group>"; };
+		00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHiddenInfrastructureARPipePlacingViewController.swift; sourceTree = "<group>"; };
 		003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceOptionsViewController.swift; sourceTree = "<group>"; };
 		003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceViewController.swift; sourceTree = "<group>"; };
 		003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApplyRasterRenderingRule.storyboard; sourceTree = "<group>"; };
@@ -1805,6 +1819,17 @@
 				001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */,
 			);
 			path = "Feature collection layer (portal item)";
+			sourceTree = "<group>";
+		};
+		00255DCB25156C17001A71DF /* View hidden infrastructure in AR */ = {
+			isa = PBXGroup;
+			children = (
+				00255DCF25156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard */,
+				00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift */,
+				001D342E251BF94600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift */,
+				001D341C251AA8D900F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift */,
+			);
+			path = "View hidden infrastructure in AR";
 			sourceTree = "<group>";
 		};
 		003D255D2513D824007527C2 /* Apply raster rendering rule */ = {
@@ -4249,6 +4274,7 @@
 		E47ED0882343C1400032440E /* Augmented reality */ = {
 			isa = PBXGroup;
 			children = (
+				00255DCB25156C17001A71DF /* View hidden infrastructure in AR */,
 				00C024DE2475E49A00E1DA8D /* Navigate in AR */,
 				E47ED0A12343C4FE0032440E /* Collect data in AR */,
 				E47ED0AA2343C5E00032440E /* Display scenes in tabletop AR */,
@@ -4752,6 +4778,7 @@
 				C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */,
 				00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
+				00255DD025156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard in Resources */,
 				00F953C524E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
 				3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */,
@@ -5059,6 +5086,7 @@
 				C7D0EEDA215EA60800ECDD2C /* DisplayKMLNetworkLinksViewController.swift in Sources */,
 				003BC31224E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift in Sources */,
 				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
+				001D342F251BF94600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift in Sources */,
 				4C0FD7CF22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in Sources */,
 				10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */,
 				C7FF07D621B9D258000D4055 /* FeatureLayerRenderingModeSceneViewController.swift in Sources */,
@@ -5126,6 +5154,7 @@
 				3ED028B01B8E3A9800ACA70D /* MILUsingURLViewController.swift in Sources */,
 				3EBA25741D3450F600AB0703 /* CreateGeometriesViewController.swift in Sources */,
 				4C478E5022402891009F8CDF /* MapReferenceScaleLayerSelectionViewController.swift in Sources */,
+				001D341D251AA8D900F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift in Sources */,
 				3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */,
 				09607F821FDB616100FA43B6 /* TimeBasedQueryViewController.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
@@ -5234,6 +5263,7 @@
 				C7E5EB7021ADA2DF004D48F7 /* FormatCoordinatesTableViewController.swift in Sources */,
 				F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */,
 				001ECB042486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift in Sources */,
+				00255DD225156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift in Sources */,
 				00E5B7D22458FE7900B11973 /* PerformValveIsolationTraceViewController.swift in Sources */,
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundViewController.swift in Sources */,
 				3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */,

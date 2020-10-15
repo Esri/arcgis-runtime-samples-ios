@@ -18,43 +18,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3a-nA-IYu" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
-                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sqg-eH-RPH">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="6ah-Dy-HjX"/>
-                                </constraints>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRt-Jl-9L6">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="pf1-SL-9qt"/>
-                                    <barButtonItem title="Change Style" id="YPo-a4-2i8">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kwe-96-Xjz"/>
+                                    <barButtonItem enabled="NO" title="Change Style" id="nmT-Xl-FTP">
                                         <connections>
-                                            <action selector="changeStyleAction" destination="Csd-Ea-ggy" id="zsb-af-8eZ"/>
-                                            <segue destination="VYX-hL-6b0" kind="popoverPresentation" popoverAnchorBarButtonItem="YPo-a4-2i8" id="efI-eL-kEv">
+                                            <segue destination="VYX-hL-6b0" kind="popoverPresentation" popoverAnchorBarButtonItem="nmT-Xl-FTP" id="nZU-hF-ES3">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                <popoverPassthroughViews>
-                                                    <view reference="k3a-nA-IYu"/>
-                                                </popoverPassthroughViews>
                                             </segue>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="e7x-Gg-ggn"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="S71-dn-X9K"/>
                                 </items>
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="J2C-4W-aTK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Sqg-eH-RPH" firstAttribute="leading" secondItem="J2C-4W-aTK" secondAttribute="leading" id="1cd-Iu-KQX"/>
-                            <constraint firstItem="J2C-4W-aTK" firstAttribute="bottom" secondItem="Sqg-eH-RPH" secondAttribute="bottom" id="If4-sd-TSV"/>
-                            <constraint firstItem="Sqg-eH-RPH" firstAttribute="trailing" secondItem="J2C-4W-aTK" secondAttribute="trailing" id="Onq-ov-4Xm"/>
+                            <constraint firstItem="k3a-nA-IYu" firstAttribute="bottom" secondItem="pRt-Jl-9L6" secondAttribute="top" id="6it-Iy-nKs"/>
+                            <constraint firstItem="pRt-Jl-9L6" firstAttribute="leading" secondItem="J2C-4W-aTK" secondAttribute="leading" id="IQJ-hg-hiQ"/>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="trailing" secondItem="ZZc-h1-EmK" secondAttribute="trailing" id="PaZ-yT-0mR"/>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="leading" secondItem="ZZc-h1-EmK" secondAttribute="leading" id="U5y-e9-Ld4"/>
-                            <constraint firstItem="k3a-nA-IYu" firstAttribute="bottom" secondItem="Sqg-eH-RPH" secondAttribute="top" id="fNJ-h0-UIV"/>
+                            <constraint firstItem="pRt-Jl-9L6" firstAttribute="trailing" secondItem="J2C-4W-aTK" secondAttribute="trailing" id="a8B-5p-AIF"/>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="top" secondItem="J2C-4W-aTK" secondAttribute="top" id="feA-7n-AT0"/>
+                            <constraint firstItem="pRt-Jl-9L6" firstAttribute="bottom" secondItem="J2C-4W-aTK" secondAttribute="bottom" id="tcC-gs-DHe"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="changeStyleBBI" destination="nmT-Xl-FTP" id="aWT-sa-eqn"/>
                         <outlet property="mapView" destination="k3a-nA-IYu" id="Lj7-sA-nZx"/>
                     </connections>
                 </viewController>

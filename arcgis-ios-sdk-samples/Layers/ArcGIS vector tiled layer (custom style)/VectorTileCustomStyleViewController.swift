@@ -22,22 +22,13 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             mapView.map = AGSMap()
         }
     }
-    
+    @IBOutlet var changeStyleBBI: UIBarButtonItem!
+    // Array of the item IDs.
     private let itemIDs = ["1349bfa0ed08485d8a92c442a3850b06",
                            "bd8ac41667014d98b933e97713ba8377",
                            "02f85ec376084c508b9c8e5a311724fa",
                            "1bf0cc4a4380468fbbff107e100f65a5",
                            "2056bf1b350244d69c78e4f84d1ba215"]
-    
-    let temporaryURL: URL? = {
-        // Get a suitable directory to place files.
-        let directoryURL = FileManager.default.temporaryDirectory
-        // Create a unique name for the item resource cache based on current timestamp.
-        let formattedDate = ISO8601DateFormatter().string(from: Date())
-        // Create and return the full, unique URL.
-        return directoryURL.appendingPathComponent("\(formattedDate)")
-    }()
-    
     // The item ID of the shown layer.
     var shownItemID: String?
     // The job to export the item resource cache.
@@ -46,6 +37,14 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
     var offlineVectorTiledLayer: AGSArcGISVectorTiledLayer?
     
     func loadOfflineLayer() {
+        let temporaryURL: URL = {
+            // Get a suitable directory to place files.
+            let directoryURL = FileManager.default.temporaryDirectory
+            // Create a unique name for the item resource cache based on current timestamp.
+            let formattedDate = ISO8601DateFormatter().string(from: Date())
+            // Create and return the full, unique URL.
+            return directoryURL.appendingPathComponent("\(formattedDate)")
+        }()
         // Get the vector tiled layer URL.
         let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=2056bf1b350244d69c78e4f84d1ba215")!
         // Create a vector tile cache using the local vector tile package.
@@ -55,7 +54,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         // Create a task to export the custom style resources.
         let task = AGSExportVectorTilesTask(portalItem: portalItem)
         // Get the AGSExportVectorTilesJob.
-        exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL!)
+        exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL)
         // Start the job.
         exportVectorTilesJob?.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else { return }
@@ -64,6 +63,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
                 let itemresourceCahce = result.itemResourceCache
                 // Create a vector tiled layer with the vector tiled cache and the item resource cache.
                 self.offlineVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
+                self.changeStyleBBI.isEnabled = true
             } else if let error = error {
                 // Handle errors.
                 self.presentAlert(error: error)

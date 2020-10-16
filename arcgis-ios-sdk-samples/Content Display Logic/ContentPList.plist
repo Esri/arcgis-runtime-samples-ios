@@ -1345,6 +1345,10 @@
 				<string>Navigate between two points and dynamically recalculate an alternate route when the original route is unavailable.</string>
 				<key>displayName</key>
 				<string>Navigate route with rerouting</string>
+				<key>dependency</key>
+				<array>
+					<string>SanDiegoDetour</string>
+				</array>
 			</dict>
 		</array>
 	</dict>

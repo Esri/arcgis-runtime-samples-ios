@@ -141,6 +141,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     /// - Parameter route: An `AGSRoute` object whose geometry is used to configure the data source.
     /// - Returns: An `AGSSimulatedLocationDataSource` object.
     func makeDataSource(route: AGSRoute) -> AGSSimulatedLocationDataSource {
+        let gpxURL = Bundle.main.url(forResource: "navigate_a_route_detour", withExtension: "gpx")
         let densifiedRoute = AGSGeometryEngine.geodeticDensifyGeometry(route.routeGeometry!, maxSegmentLength: 50.0, lengthUnit: .meters(), curveType: .geodesic) as! AGSPolyline
         // The mock data source to demo the navigation. Use delegate methods to update locations for the tracker.
         let mockDataSource = AGSSimulatedLocationDataSource()

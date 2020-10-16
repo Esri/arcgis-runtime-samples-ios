@@ -34,5 +34,9 @@
 	<array>
 		<string>zip</string>
 	</array>
+	<key>New item</key>
+	<array>
+		<string>gpx</string>
+	</array>
 </dict>
 </plist>

@@ -23,6 +23,14 @@ class AddENCExchangeSetViewController: UIViewController {
         }
     }
     
+    /// A URL to the temporary folder for SENC data directory.
+    let temporaryURL: URL = {
+        let directoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+        // Create and return the full, unique URL to the temporary folder.
+        try? FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
+        return directoryURL
+    }()
+    
     /// Load the ENC dataset and add to the map view.
     ///
     /// - Parameter mapView: The map view managed by the view controller.
@@ -47,38 +55,18 @@ class AddENCExchangeSetViewController: UIViewController {
         let environmentSettings = AGSENCEnvironmentSettings.shared()
         environmentSettings.resourceDirectory = hydrographyDirectory
         // The SENC data directory is for temporarily storing generated files.
-        environmentSettings.sencDataDirectory = FileManager.default.temporaryDirectory
+        environmentSettings.sencDataDirectory = temporaryURL
         
         encExchangeSet.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                var ENCLayers = [AGSENCLayer]()
-                let loadGroup = DispatchGroup()
-                // A reference to the last error occurred, if there is any.
-                var loadError: Error?
-                // Create a list of ENC layers and load each layer.
-                encExchangeSet.datasets.forEach { dataset in
-                    let layer = AGSENCLayer(cell: AGSENCCell(dataset: dataset))
-                    ENCLayers.append(layer)
-                    loadGroup.enter()
-                    layer.load { error in
-                        defer { loadGroup.leave() }
-                        loadError = error
-                    }
-                }
+                // Create a list of ENC layers from datasets.
+                let encLayers = encExchangeSet.datasets.map { AGSENCLayer(cell: AGSENCCell(dataset: $0)) }
                 // Add layers to the map.
-                map.operationalLayers.addObjects(from: ENCLayers)
-                
-                // Zoom to the combined extent of all ENC layers after they are loaded.
-                loadGroup.notify(queue: .main) { [weak self] in
-                    if let completeExtent = AGSGeometryEngine.combineExtents(ofGeometries: ENCLayers.compactMap { $0.fullExtent }) {
-                        self?.mapView.setViewpoint(AGSViewpoint(targetExtent: completeExtent), completion: nil)
-                    } else if let error = loadError {
-                        self?.presentAlert(error: error)
-                    }
-                }
+                map.operationalLayers.addObjects(from: encLayers)
+                mapView.setViewpoint(AGSViewpoint(latitude: -32.5, longitude: 60.95, scale: 1e5), completion: nil)
             }
         }
     }
@@ -91,18 +79,8 @@ class AddENCExchangeSetViewController: UIViewController {
     }
     
     deinit {
-        // Remove all files in tmp folder.
-        DispatchQueue.global(qos: .utility).async {
-            let tmpURL = FileManager.default.temporaryDirectory
-            if let tmpDirectory = try? FileManager.default.contentsOfDirectory(
-                at: tmpURL,
-                includingPropertiesForKeys: nil,
-                options: .skipsHiddenFiles
-            ) {
-                tmpDirectory.forEach { file in
-                    try? FileManager.default.removeItem(atPath: file.path)
-                }
-            }
-        }
+        // Recursively remove all files in the sample-specific
+        // temporary folder and the folder itself.
+        try? FileManager.default.removeItem(at: temporaryURL)
     }
 }

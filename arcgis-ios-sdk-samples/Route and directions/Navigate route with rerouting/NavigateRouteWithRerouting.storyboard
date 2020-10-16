@@ -1,7 +1,99 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QNZ-80-92R">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Navigate Route With Rerouting View Controller-->
+        <scene sceneID="rti-Bq-cQX">
+            <objects>
+                <viewController id="QNZ-80-92R" customClass="NavigateRouteWithReroutingViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iHM-cv-Zt2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sd9-5N-pPZ" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqm-kL-vVF">
+                                <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions are shown here." lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqP-Cf-t0c">
+                                        <rect key="frame" x="24" y="0.0" width="366" height="20.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="61W-JK-gvI"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="EqP-Cf-t0c" firstAttribute="leading" secondItem="61W-JK-gvI" secondAttribute="leading" constant="24" id="DRs-LJ-eY5"/>
+                                    <constraint firstItem="EqP-Cf-t0c" firstAttribute="trailing" secondItem="61W-JK-gvI" secondAttribute="trailing" constant="-24" id="EbJ-Dy-L7z"/>
+                                    <constraint firstItem="EqP-Cf-t0c" firstAttribute="top" secondItem="cqm-kL-vVF" secondAttribute="top" id="Su4-ly-Kcc"/>
+                                    <constraint firstItem="EqP-Cf-t0c" firstAttribute="bottom" secondItem="cqm-kL-vVF" secondAttribute="bottom" id="XgC-Ex-Lqb"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0UD-z0-a6o">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem enabled="NO" title="Navigate" id="zMn-wI-4hD">
+                                        <connections>
+                                            <action selector="startNavigation" destination="QNZ-80-92R" id="f4l-sh-yf9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1B3-ZQ-riP"/>
+                                    <barButtonItem enabled="NO" title="Recenter" id="sGg-01-aaq">
+                                        <connections>
+                                            <action selector="recenter" destination="QNZ-80-92R" id="NsU-og-y49"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="NDb-au-anI"/>
+                                    <barButtonItem enabled="NO" title="     Reset" id="8Co-Hf-7Ii">
+                                        <connections>
+                                            <action selector="reset" destination="QNZ-80-92R" id="CP3-ER-5HC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GDg-hB-WI5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0UD-z0-a6o" firstAttribute="top" secondItem="sd9-5N-pPZ" secondAttribute="bottom" symbolic="YES" id="2UN-Qn-XYS"/>
+                            <constraint firstItem="sd9-5N-pPZ" firstAttribute="trailing" secondItem="iHM-cv-Zt2" secondAttribute="trailing" id="8aC-1A-wLB"/>
+                            <constraint firstItem="0UD-z0-a6o" firstAttribute="trailing" secondItem="iHM-cv-Zt2" secondAttribute="trailing" id="GLo-tE-6aP"/>
+                            <constraint firstItem="sd9-5N-pPZ" firstAttribute="leading" secondItem="iHM-cv-Zt2" secondAttribute="leading" id="Sgy-6n-Lrs"/>
+                            <constraint firstItem="cqm-kL-vVF" firstAttribute="top" secondItem="sd9-5N-pPZ" secondAttribute="top" id="UKQ-hg-eZb"/>
+                            <constraint firstItem="sd9-5N-pPZ" firstAttribute="top" secondItem="GDg-hB-WI5" secondAttribute="top" id="Uac-sL-B77"/>
+                            <constraint firstItem="cqm-kL-vVF" firstAttribute="leading" secondItem="iHM-cv-Zt2" secondAttribute="leading" id="Uy8-ry-hzQ"/>
+                            <constraint firstItem="0UD-z0-a6o" firstAttribute="bottom" secondItem="GDg-hB-WI5" secondAttribute="bottom" id="fOq-4p-O19"/>
+                            <constraint firstItem="cqm-kL-vVF" firstAttribute="trailing" secondItem="iHM-cv-Zt2" secondAttribute="trailing" id="gmb-qJ-tm9"/>
+                            <constraint firstItem="0UD-z0-a6o" firstAttribute="leading" secondItem="iHM-cv-Zt2" secondAttribute="leading" id="jmG-8i-ADj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="sd9-5N-pPZ" id="bmR-Po-9Bg"/>
+                        <outlet property="navigateBarButtonItem" destination="zMn-wI-4hD" id="ymh-b3-1Kr"/>
+                        <outlet property="recenterBarButtonItem" destination="sGg-01-aaq" id="6cN-VZ-CLn"/>
+                        <outlet property="resetBarButtonItem" destination="8Co-Hf-7Ii" id="eIf-JY-trW"/>
+                        <outlet property="statusLabel" destination="EqP-Cf-t0c" id="jtc-Xl-lCo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HZq-Bg-rPV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-249" y="-496"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

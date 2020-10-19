@@ -40,7 +40,7 @@ class AddENCExchangeSetViewController: UIViewController {
         let catalogURL = Bundle.main.url(
             forResource: "CATALOG",
             withExtension: "031",
-            subdirectory: "ExchangeSetwithoutUpdates/ExchangeSetwithoutUpdates/ENC_ROOT"
+            subdirectory: "ExchangeSetWithoutUpdates/ENC_ROOT"
         )!
         let encExchangeSet = AGSENCExchangeSet(fileURLs: [catalogURL])
         
@@ -48,7 +48,7 @@ class AddENCExchangeSetViewController: UIViewController {
         let hydrographyDirectory = Bundle.main.url(
             forResource: "S57DataDictionary",
             withExtension: "xml",
-            subdirectory: "hydrography/hydrography"
+            subdirectory: "hydrography"
         )!
         .deletingLastPathComponent()
         // Set environment settings for loading the dataset.

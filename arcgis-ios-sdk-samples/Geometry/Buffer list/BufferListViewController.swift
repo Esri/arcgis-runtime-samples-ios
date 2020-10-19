@@ -30,7 +30,14 @@ class BufferListViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap(imageLayer: mapImageLayer)
-            mapView.graphicsOverlays.addObjects(from: [boundaryGraphicsOverlay, bufferGraphicsOverlay, tappedLocationsGraphicsOverlay])
+            // Create and add graphics overlays.
+            
+            // An overlay to display the boundary.
+            let boundaryGraphicsOverlay = makeBoundaryGraphicsOverlay(boundaryGeometry: boundaryPolygon)
+            bufferGraphicsOverlay = makeBufferGraphicsOverlay()
+            tappedLocationsGraphicsOverlay = makeTappedLocationsGraphicsOverlay()
+            mapView.graphicsOverlays.addObjects(from: [boundaryGraphicsOverlay, bufferGraphicsOverlay!, tappedLocationsGraphicsOverlay!])
+            
             mapView.touchDelegate = self
         }
     }
@@ -52,41 +59,24 @@ class BufferListViewController: UIViewController {
         return AGSGeometryEngine.projectGeometry(polygon, to: statePlaneNorthCentralTexas) as! AGSPolygon
     }()
     
-    /// An overlay to display the boundary.
-    var boundaryGraphicsOverlay: AGSGraphicsOverlay {
-        let overlay = AGSGraphicsOverlay()
-        let lineSymbol = AGSSimpleLineSymbol(style: .dash, color: .red, width: 5)
-        let boundaryGraphic = AGSGraphic(geometry: boundaryPolygon, symbol: lineSymbol)
-        overlay.graphics.add(boundaryGraphic)
-        return overlay
-    }
     /// An overlay to display buffers graphics.
-    let bufferGraphicsOverlay: AGSGraphicsOverlay = {
-        let overlay = AGSGraphicsOverlay()
-        let bufferPolygonOutlineSymbol = AGSSimpleLineSymbol(style: .solid, color: .systemGreen, width: 3)
-        let bufferPolygonFillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.yellow.withAlphaComponent(0.6), outline: bufferPolygonOutlineSymbol)
-        overlay.renderer = AGSSimpleRenderer(symbol: bufferPolygonFillSymbol)
-        return overlay
-    }()
+    var bufferGraphicsOverlay: AGSGraphicsOverlay!
     /// An overlay to display tapped locations with red circle symbols.
-    let tappedLocationsGraphicsOverlay: AGSGraphicsOverlay = {
-        let overlay = AGSGraphicsOverlay()
-        let circleSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
-        overlay.renderer = AGSSimpleRenderer(symbol: circleSymbol)
-        return overlay
-    }()
+    var tappedLocationsGraphicsOverlay: AGSGraphicsOverlay!
     /// An array of tapped points and buffer radii (in US feet) tuple.
-    var tappedPointsAndRadius = [(point: AGSPoint, radius: Double)]() {
+    var tappedPointsAndRadii = [(point: AGSPoint, radius: Double)]() {
         didSet {
-            undoBarButtonItem.isEnabled = !tappedPointsAndRadius.isEmpty
-            clearBarButtonItem.isEnabled = !tappedPointsAndRadius.isEmpty
+            let newValueIsEmpty = tappedPointsAndRadii.isEmpty
+            if newValueIsEmpty != oldValue.isEmpty {
+                // Only set button states when the emptiness of the array has changed.
+                undoBarButtonItem.isEnabled = !newValueIsEmpty
+                clearBarButtonItem.isEnabled = !newValueIsEmpty
+            }
             // Redraw the buffers.
             drawBuffers()
         }
     }
     
-    /// The radius of the buffer.
-    var bufferRadius: Measurement<UnitLength> = Measurement(value: 0, unit: .miles)
     /// A formatter for the output distance string.
     let distanceFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
@@ -108,11 +98,40 @@ class BufferListViewController: UIViewController {
         return map
     }
     
+    /// Creates a graphics overlay for the boundary polygon graphics.
+    ///
+    /// - Parameter boundaryGeometry: The geometry of bounday graphics.
+    /// - Returns: A new `AGSGraphicsOverlay` object.
+    func makeBoundaryGraphicsOverlay(boundaryGeometry: AGSGeometry) -> AGSGraphicsOverlay {
+        let overlay = AGSGraphicsOverlay()
+        let lineSymbol = AGSSimpleLineSymbol(style: .dash, color: .red, width: 5)
+        let boundaryGraphic = AGSGraphic(geometry: boundaryGeometry, symbol: lineSymbol)
+        overlay.graphics.add(boundaryGraphic)
+        return overlay
+    }
+    
+    /// Creates a graphics overlay for the buffer graphics.
+    func makeBufferGraphicsOverlay() -> AGSGraphicsOverlay {
+        let overlay = AGSGraphicsOverlay()
+        let bufferPolygonOutlineSymbol = AGSSimpleLineSymbol(style: .solid, color: .systemGreen, width: 3)
+        let bufferPolygonFillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor.yellow.withAlphaComponent(0.6), outline: bufferPolygonOutlineSymbol)
+        overlay.renderer = AGSSimpleRenderer(symbol: bufferPolygonFillSymbol)
+        return overlay
+    }
+    
+    /// Creates a graphics overlay for the tapped location graphics.
+    func makeTappedLocationsGraphicsOverlay() -> AGSGraphicsOverlay {
+        let overlay = AGSGraphicsOverlay()
+        let circleSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
+        overlay.renderer = AGSSimpleRenderer(symbol: circleSymbol)
+        return overlay
+    }
+    
     // MARK: Actions
     
     @IBAction func undoButtonTapped(_ sender: UIBarButtonItem) {
         // Remove the last pair of tapped point and radius.
-        _ = tappedPointsAndRadius.popLast()
+        tappedPointsAndRadii.removeLast()
     }
     
     @IBAction func isUnionSwitchValueChanged(_ sender: UISwitch) {
@@ -123,7 +142,7 @@ class BufferListViewController: UIViewController {
     @IBAction func clearButtonTapped(_ sender: UIBarButtonItem) {
         bufferGraphicsOverlay.graphics.removeAllObjects()
         tappedLocationsGraphicsOverlay.graphics.removeAllObjects()
-        tappedPointsAndRadius.removeAll()
+        tappedPointsAndRadii.removeAll()
     }
     
     // MARK: UI
@@ -137,17 +156,22 @@ class BufferListViewController: UIViewController {
         bufferGraphicsOverlay.graphics.removeAllObjects()
         tappedLocationsGraphicsOverlay.graphics.removeAllObjects()
         
-        guard !tappedPointsAndRadius.isEmpty else {
+        guard !tappedPointsAndRadii.isEmpty else {
             setStatus(message: "Tap on the map to add buffers.")
             return
         }
         
+        // Reduce the tuples into points and radii arrays.
+        let (points, radii) = tappedPointsAndRadii.reduce(into: ([AGSPoint](), [NSNumber]())) { (result, pointAndRadius) in
+            result.0.append(pointAndRadius.point)
+            result.1.append(pointAndRadius.radius as NSNumber)
+        }
         // Create the buffers.
         // Notice: the radius distances has the same unit of the map's spatial reference's unit.
         // In this case, the statePlaneNorthCentralTexas spatial reference uses US feet.
-        if let bufferPolygon = AGSGeometryEngine.bufferGeometries(tappedPointsAndRadius.map { $0.point }, distances: tappedPointsAndRadius.map { NSNumber(value: $0.radius) }, unionResults: isUnionSwitch.isOn) {
+        if let bufferPolygon = AGSGeometryEngine.bufferGeometries(points, distances: radii, unionResults: isUnionSwitch.isOn) {
             // Add graphics symbolizing the tap point.
-            tappedLocationsGraphicsOverlay.graphics.addObjects(from: tappedPointsAndRadius.map { AGSGraphic(geometry: $0.point, symbol: nil) })
+            tappedLocationsGraphicsOverlay.graphics.addObjects(from: points.map { AGSGraphic(geometry: $0, symbol: nil) })
             // Add graphics of the buffer polygons.
             bufferGraphicsOverlay.graphics.addObjects(from: bufferPolygon.map { AGSGraphic(geometry: $0, symbol: nil) })
             setStatus(message: "Buffers created.")
@@ -184,7 +208,7 @@ extension BufferListViewController: AGSGeoViewTouchDelegate {
             return
         }
         // Use an alert to get radius input from user.
-        let alert = UIAlertController(title: "Provide a buffer radius", message: "Between 0 and 300 \(distanceFormatter.string(from: bufferRadius.unit))", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Provide a buffer radius between 0 and 300 \(distanceFormatter.string(from: UnitLength.miles)).", message: nil, preferredStyle: .alert)
         // Create an object to observe changes from the textfield.
         var textFieldObserver: NSObjectProtocol!
         // Add a textfield to get user input.
@@ -203,12 +227,12 @@ extension BufferListViewController: AGSGeoViewTouchDelegate {
             else { return }
             
             // Update the buffer radius with the text value.
-            self.bufferRadius.value = radius.doubleValue
+            let radiusInMiles = Measurement(value: radius.doubleValue, unit: UnitLength.miles)
             // The spatial reference in this sample uses US feet as its unit.
-            let radiusInFeet = self.bufferRadius.converted(to: .feet).value
+            let radiusInFeet = radiusInMiles.converted(to: .feet).value
             
             // Keep track of tapped points and their radii.
-            self.tappedPointsAndRadius.append((point: mapPoint, radius: radiusInFeet))
+            self.tappedPointsAndRadii.append((point: mapPoint, radius: radiusInFeet))
         }
         
         // Add an observer to ensure the user input is valid.

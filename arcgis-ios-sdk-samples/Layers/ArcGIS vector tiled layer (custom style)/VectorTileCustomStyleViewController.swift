@@ -22,7 +22,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             mapView.map = AGSMap()
         }
     }
-    @IBOutlet var changeStyleBBI: UIBarButtonItem!
+    @IBOutlet var changeStyleBarItem: UIBarButtonItem!
     // Array of the item IDs.
     private let itemIDs = ["1349bfa0ed08485d8a92c442a3850b06",
                            "bd8ac41667014d98b933e97713ba8377",
@@ -41,9 +41,9 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             // Get a suitable directory to place files.
             let directoryURL = FileManager.default.temporaryDirectory
             // Create a unique name for the item resource cache based on current timestamp.
-            let formattedDate = ISO8601DateFormatter().string(from: Date())
+            let temporaryFileName = UUID().uuidString
             // Create and return the full, unique URL.
-            return directoryURL.appendingPathComponent("\(formattedDate)")
+            return directoryURL.appendingPathComponent("\(temporaryFileName)")
         }()
         // Get the vector tiled layer URL.
         let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=2056bf1b350244d69c78e4f84d1ba215")!
@@ -63,12 +63,13 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
                 let itemresourceCahce = result.itemResourceCache
                 // Create a vector tiled layer with the vector tiled cache and the item resource cache.
                 self.offlineVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
-                self.changeStyleBBI.isEnabled = true
+                self.changeStyleBarItem.isEnabled = true
             } else if let error = error {
                 // Handle errors.
                 self.presentAlert(error: error)
             }
         }
+        try? FileManager.default.removeItem(at: temporaryURL)
     }
     
     private func showSelectedItem(_ itemID: String) {

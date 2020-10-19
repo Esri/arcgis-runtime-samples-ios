@@ -39,16 +39,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="bottom" secondItem="pRt-Jl-9L6" secondAttribute="top" id="6it-Iy-nKs"/>
-                            <constraint firstItem="pRt-Jl-9L6" firstAttribute="leading" secondItem="J2C-4W-aTK" secondAttribute="leading" id="IQJ-hg-hiQ"/>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="trailing" secondItem="ZZc-h1-EmK" secondAttribute="trailing" id="PaZ-yT-0mR"/>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="leading" secondItem="ZZc-h1-EmK" secondAttribute="leading" id="U5y-e9-Ld4"/>
-                            <constraint firstItem="pRt-Jl-9L6" firstAttribute="trailing" secondItem="J2C-4W-aTK" secondAttribute="trailing" id="a8B-5p-AIF"/>
+                            <constraint firstItem="pRt-Jl-9L6" firstAttribute="leading" secondItem="ZZc-h1-EmK" secondAttribute="leading" id="cIJ-YJ-wQB"/>
+                            <constraint firstAttribute="trailing" secondItem="pRt-Jl-9L6" secondAttribute="trailing" id="fba-tl-oNY"/>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="top" secondItem="J2C-4W-aTK" secondAttribute="top" id="feA-7n-AT0"/>
                             <constraint firstItem="pRt-Jl-9L6" firstAttribute="bottom" secondItem="J2C-4W-aTK" secondAttribute="bottom" id="tcC-gs-DHe"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="changeStyleBBI" destination="nmT-Xl-FTP" id="aWT-sa-eqn"/>
+                        <outlet property="changeStyleBarItem" destination="nmT-Xl-FTP" id="aWT-sa-eqn"/>
                         <outlet property="mapView" destination="k3a-nA-IYu" id="Lj7-sA-nZx"/>
                     </connections>
                 </viewController>

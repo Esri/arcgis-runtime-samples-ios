@@ -1810,6 +1810,14 @@
 				<key>descriptionText</key>
 				<string>Use a route displayed in the real world to navigate.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>View hidden infrastructure in AR</string>
+				<key>descriptionText</key>
+				<string>Visualize hidden infrastructure in its real-world location using augmented reality.</string>
+				<key>storyboardName</key>
+				<string>ViewHiddenInfrastructureAR</string>
+			</dict>
 		</array>
 	</dict>
 </array>

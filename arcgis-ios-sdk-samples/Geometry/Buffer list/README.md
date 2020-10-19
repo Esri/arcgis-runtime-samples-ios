@@ -15,7 +15,7 @@ Tap on the map to add buffers. Toggle on "Union" toggle if you want the result t
 ## How it works
 
 1. Use `class AGSGeometryEngine.bufferGeometries(_:distances:unionResults:)` to create a list of `AGSGeometry`s.
-    * The parameter `points` are the points to buffer around, `distances` are the buffer radius distances for each point (in the unit of the geometry's spatial reference) and `unionResults` is a boolean for whether the results should be unioned.
+    * The parameter `points` are the points to buffer around, `distances` are the buffer radius distances for each point (in the unit of the geometry's spatial reference) and `unionResults` is a Boolean for whether the results should be unioned.
 2. Add the resulting polygons (if not unioned) or single polygon (if unioned) to the map's `AGSGraphicsOverlay` as an `AGSGraphic`.
 
 ## Relevant API

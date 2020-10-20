@@ -55,6 +55,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     var initialLocation: AGSLocation!
     let startLocation = AGSPoint(x: -117.160386727, y: 32.706608, spatialReference: .wgs84())
     let destinationLocation = AGSPoint(x: -117.147230, y: 32.730467, spatialReference: .wgs84())
+    var boundaries = [AGSPoint]()
     
     /// A formatter to format a time value into human readable string.
     let timeFormatter: DateComponentsFormatter = {
@@ -152,8 +153,14 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     
     func readLocations() {
         let gpxURL = Bundle.main.url(forResource: "navigate_a_route_detour", withExtension: "gpx")!
-        let xmlParser = XMLParser(contentsOf: gpxURL)
-        xmlParser?.shouldProcessNamespaces = true
+        let gpxDocument = XMLParser(contentsOf: gpxURL)
+        gpxDocument?.delegate = self
+        let success = gpxDocument?.parse()
+        if !success! {
+            print("Fail")
+        } else {
+            let polyline = AGSPolyline(points: boundaries)
+        }
         
     }
     
@@ -326,3 +333,17 @@ extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDele
         routeTracker?.trackLocation(location)
     }
 }
+
+extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        //Only check for the lines that have a <trkpt> or <wpt> tag. The other lines don't have coordinates and thus don't interest us
+        if elementName == "trkpt" || elementName == "wpt" {
+            //Create a World map coordinate from the file
+            let lat = Double(attributeDict["lat"]!)
+            let lon = Double(attributeDict["lon"]!)
+            let point = AGSPoint(x: lon!, y: lat!, spatialReference: .wgs84())
+            boundaries.append(point)
+        }
+    }
+}
+

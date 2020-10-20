@@ -69,9 +69,9 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     ///
     /// - Returns: An array of `AGSStop` objects.
     func makeStops() -> [AGSStop] {
-        let stop1 = AGSStop(point: AGSPoint(x: -117.160386727, y: 32.706608, spatialReference: .wgs84()))
+        let stop1 = AGSStop(point: startLocation)
         stop1.name = "San Diego Convention Center"
-        let stop2 = AGSStop(point: AGSPoint(x: -117.147230, y: 32.730467, spatialReference: .wgs84()))
+        let stop2 = AGSStop(point: destinationLocation)
         stop2.name = "RH Fleet Aerospace Museum"
         return [stop1, stop2]
     }
@@ -151,8 +151,10 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     }
     
     func readLocations() {
-        let gpxURL = Bundle.main.url(forResource: "navigate_a_route_detour", withExtension: "gpx")
-        let gpxDocument = 
+        let gpxURL = Bundle.main.url(forResource: "navigate_a_route_detour", withExtension: "gpx")!
+        let xmlParser = XMLParser(contentsOf: gpxURL)
+        xmlParser?.shouldProcessNamespaces = true
+        
     }
     
     /// Set route tracker, data source and location display with a solved route result.

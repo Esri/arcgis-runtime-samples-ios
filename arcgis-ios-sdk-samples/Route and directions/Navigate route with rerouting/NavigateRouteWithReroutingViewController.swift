@@ -55,7 +55,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     var initialLocation: AGSLocation!
     let startLocation = AGSPoint(x: -117.160386727, y: 32.706608, spatialReference: .wgs84())
     let destinationLocation = AGSPoint(x: -117.147230, y: 32.730467, spatialReference: .wgs84())
-    var boundaries = [AGSPoint]()
+    var gpxPoints = [AGSPoint]()
     
     /// A formatter to format a time value into human readable string.
     let timeFormatter: DateComponentsFormatter = {
@@ -141,9 +141,8 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     ///
     /// - Parameter route: An `AGSRoute` object whose geometry is used to configure the data source.
     /// - Returns: An `AGSSimulatedLocationDataSource` object.
-    func makeDataSource(route: AGSRoute) -> AGSSimulatedLocationDataSource {
-        
-        let densifiedRoute = AGSGeometryEngine.geodeticDensifyGeometry(route.routeGeometry!, maxSegmentLength: 50.0, lengthUnit: .meters(), curveType: .geodesic) as! AGSPolyline
+    func makeDetourDataSource(polyline: AGSPolyline) -> AGSSimulatedLocationDataSource {
+        let densifiedRoute = AGSGeometryEngine.geodeticDensifyGeometry(polyline, maxSegmentLength: 50.0, lengthUnit: .meters(), curveType: .geodesic) as! AGSPolyline
         // The mock data source to demo the navigation. Use delegate methods to update locations for the tracker.
         let mockDataSource = AGSSimulatedLocationDataSource()
         mockDataSource.setLocationsWith(densifiedRoute)
@@ -151,17 +150,15 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         return mockDataSource
     }
     
-    func readLocations() {
+    func makePolylineFromGPX() -> AGSPolyline{
         let gpxURL = Bundle.main.url(forResource: "navigate_a_route_detour", withExtension: "gpx")!
         let gpxDocument = XMLParser(contentsOf: gpxURL)
         gpxDocument?.delegate = self
         let success = gpxDocument?.parse()
         if !success! {
             print("Fail")
-        } else {
-            let polyline = AGSPolyline(points: boundaries)
         }
-        
+        return AGSPolyline(points: gpxPoints)
     }
     
     /// Set route tracker, data source and location display with a solved route result.
@@ -174,7 +171,8 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         // Set the mock location data source.
         let firstRoute = routeResult.routes.first!
         directionsList = firstRoute.directionManeuvers
-        let mockDataSource = makeDataSource(route: firstRoute)
+        
+        let mockDataSource = makeDetourDataSource(polyline: makePolylineFromGPX())
         initialLocation = mockDataSource.locations?.first
         // Create a route tracker location data source to snap the location display to the route.
         let routeTrackerLocationDataSource = AGSRouteTrackerLocationDataSource(routeTracker: routeTracker, locationDataSource: mockDataSource)
@@ -342,7 +340,7 @@ extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
             let lat = Double(attributeDict["lat"]!)
             let lon = Double(attributeDict["lon"]!)
             let point = AGSPoint(x: lon!, y: lat!, spatialReference: .wgs84())
-            boundaries.append(point)
+            gpxPoints.append(point)
         }
     }
 }

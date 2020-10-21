@@ -505,6 +505,7 @@
                             <outlet property="delegate" destination="ZtT-NE-hWv" id="96r-hq-Oe5"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="ouG-F7-0hZ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yhe-8p-BRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

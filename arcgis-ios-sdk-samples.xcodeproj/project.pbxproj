@@ -11,6 +11,9 @@
 		00166C8824D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
 		00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */; };
 		00166C8C24D236A300DD317E /* RealisticLightingAndShadowsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
+		00166C9224D3838200DD317E /* BufferListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00166C9124D3838200DD317E /* BufferListViewController.swift */; };
+		00166C9424D3838D00DD317E /* BufferList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00166C9324D3838D00DD317E /* BufferList.storyboard */; };
+		00166C9724D465B900DD317E /* BufferListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00166C9124D3838200DD317E /* BufferListViewController.swift */; };
 		001D341D251AA8D900F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001D341C251AA8D900F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift */; };
 		001D342F251BF94600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001D342E251BF94600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift */; };
 		001D3437251D407600F9EEBE /* ViewHiddenInfrastructureARPipePlacingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift */; };
@@ -905,6 +908,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00166C9724D465B900DD317E /* BufferListViewController.swift in CopyFiles */,
 				003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */,
 				001D3437251D407600F9EEBE /* ViewHiddenInfrastructureARPipePlacingViewController.swift in CopyFiles */,
 				001D3438251D407600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift in CopyFiles */,
@@ -1193,6 +1197,8 @@
 /* Begin PBXFileReference section */
 		00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealisticLightingAndShadowsViewController.swift; sourceTree = "<group>"; };
 		00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RealisticLightingAndShadows.storyboard; sourceTree = "<group>"; };
+		00166C9124D3838200DD317E /* BufferListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferListViewController.swift; sourceTree = "<group>"; };
+		00166C9324D3838D00DD317E /* BufferList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BufferList.storyboard; sourceTree = "<group>"; };
 		001D341C251AA8D900F9EEBE /* ViewHiddenInfrastructureARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHiddenInfrastructureARCalibrationViewController.swift; sourceTree = "<group>"; };
 		001D342E251BF94600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHiddenInfrastructureARExplorerViewController.swift; sourceTree = "<group>"; };
 		001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARCalibrationViewController.swift; sourceTree = "<group>"; };
@@ -1820,6 +1826,15 @@
 				00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */,
 			);
 			path = "Realistic lighting and shadows";
+			sourceTree = "<group>";
+		};
+		00166C8F24D3833B00DD317E /* Buffer list */ = {
+			isa = PBXGroup;
+			children = (
+				00166C9124D3838200DD317E /* BufferListViewController.swift */,
+				00166C9324D3838D00DD317E /* BufferList.storyboard */,
+			);
+			path = "Buffer list";
 			sourceTree = "<group>";
 		};
 		001ECB58248B002B009AC6C0 /* Feature collection layer (portal item) */ = {
@@ -2902,6 +2917,7 @@
 		3EBA25711D34509500AB0703 /* Geometry */ = {
 			isa = PBXGroup;
 			children = (
+				00166C8F24D3833B00DD317E /* Buffer list */,
 				00DAE5B12421321300D51281 /* Nearest vertex */,
 				00D4E8D8241AA18E002689DB /* Convex hull */,
 				F1034F9822D3EDFE00B021DA /* Project */,
@@ -4887,6 +4903,7 @@
 				D9EE379920E2CC7700BF8AD1 /* dolmus.3ds in Resources */,
 				21E9CDEB1EF9C5EA00BD4D7D /* DisplayGrid.storyboard in Resources */,
 				4CECF8CA21DD5C2200A56161 /* Mil2525DMessages.xml in Resources */,
+				00166C9424D3838D00DD317E /* BufferList.storyboard in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				C7094783215D34BA00BA0969 /* GenerateOfflineMapOverrides.storyboard in Resources */,
 				4C59D141238DF23E00824924 /* canyonlands in Resources */,
@@ -5270,6 +5287,7 @@
 				00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */,
 				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
+				00166C9224D3838200DD317E /* BufferListViewController.swift in Sources */,
 				4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
 				C7094784215D34BA00BA0969 /* GenerateOfflineMapOverridesViewController.swift in Sources */,

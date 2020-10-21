@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -602,7 +602,7 @@
 		4C6FAE1C22F8A38700BE2D0B /* ControlAnnotationSublayerVisibilitySublayerCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C54BF2C22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift */; };
 		4C72117020BF444C004A7DD9 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72116E20BF444C004A7DD9 /* SVProgressAnimatedView.m */; };
 		4C72117320BF4457004A7DD9 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72117220BF4457004A7DD9 /* SVRadialGradientLayer.m */; };
-		4C73C837211130E000B0F9C7 /* ArcGIS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C73C83421112B4300B0F9C7 /* ArcGIS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C73C837211130E000B0F9C7 /* ArcGIS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C73C83421112B4300B0F9C7 /* ArcGIS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C783F3C2252D61200609B9C /* OpenMobileScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C783F3B2252D61200609B9C /* OpenMobileScene.storyboard */; };
 		4C783F3E2252D65A00609B9C /* OpenMobileSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C783F3D2252D65A00609B9C /* OpenMobileSceneViewController.swift */; };
 		4C783F3F2252D80B00609B9C /* OpenMobileSceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C783F3D2252D65A00609B9C /* OpenMobileSceneViewController.swift */; };
@@ -1187,7 +1187,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4CCC0877234E78BB00AD5F9A /* ArcGISToolkit.framework in Embed Frameworks */,
-				4C73C837211130E000B0F9C7 /* ArcGIS.framework in Embed Frameworks */,
+				4C73C837211130E000B0F9C7 /* ArcGIS.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1617,7 +1617,7 @@
 		4C72116F20BF444C004A7DD9 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		4C72117120BF4456004A7DD9 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		4C72117220BF4457004A7DD9 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
-		4C73C83421112B4300B0F9C7 /* ArcGIS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ArcGIS.framework; path = $HOME/Library/SDKs/ArcGIS/iOS/Frameworks/Dynamic/ArcGIS.framework; sourceTree = "<absolute>"; };
+		4C73C83421112B4300B0F9C7 /* ArcGIS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ArcGIS.xcframework; path = /Users/tin10919/Library/SDKs/ArcGIS/Frameworks/ArcGIS.xcframework; sourceTree = "<absolute>"; };
 		4C783F3B2252D61200609B9C /* OpenMobileScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenMobileScene.storyboard; sourceTree = "<group>"; };
 		4C783F3D2252D65A00609B9C /* OpenMobileSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMobileSceneViewController.swift; sourceTree = "<group>"; };
 		4C783F412252DBAC00609B9C /* philadelphia.mspk */ = {isa = PBXFileReference; lastKnownFileType = file; path = philadelphia.mspk; sourceTree = "<group>"; };
@@ -3797,7 +3797,7 @@
 		4C73C83321112AFF00B0F9C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4C73C83421112B4300B0F9C7 /* ArcGIS.framework */,
+				4C73C83421112B4300B0F9C7 /* ArcGIS.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

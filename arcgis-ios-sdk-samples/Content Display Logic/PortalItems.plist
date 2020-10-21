@@ -6,12 +6,6 @@
 	<array>
 		<dict>
 			<key>identifier</key>
-			<string>74c0c9fa80f4498c9739cc42531e9948</string>
-			<key>filename</key>
-			<string>loudoun_anno.geodatabase</string>
-		</dict>
-		<dict>
-			<key>identifier</key>
 			<string>c78b149a1d52414682c86a5feeb13d30</string>
 			<key>filename</key>
 			<string>mil2525d.stylx</string>
@@ -66,9 +60,15 @@
 		</dict>
 		<dict>
 			<key>identifier</key>
-			<string>9465e8c02b294c69bdb42de056a23ab1</string>
+			<string>d1453556d91e46dea191c20c398b82cd</string>
 			<key>filename</key>
-			<string>PacificSouthWest.zip</string>
+			<string>PacificSouthWest2.zip</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>74c0c9fa80f4498c9739cc42531e9948</string>
+			<key>filename</key>
+			<string>loudoun_anno.geodatabase</string>
 		</dict>
 		<dict>
 			<key>identifier</key>
@@ -81,6 +81,16 @@
 			<string>PSCC_vector.vtpk</string>
 			<key>identifier</key>
 			<string>aae86ca2cf8f4e6087065fb8bf1b6ecd</string>
+			<key>identifier</key>
+			<string>38a74d8a2a404fe8851ce32b3231f625</string>
+			<key>filename</key>
+			<string>ExchangeSetWithoutUpdates.zip</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>c16f3845b9cc4b93a908d87d28823afd</string>
+			<key>filename</key>
+			<string>hydrography.zip</string>
 		</dict>
 	</array>
 </dict>

@@ -664,6 +664,19 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Add ENC exchange set</string>
+				<key>descriptionText</key>
+				<string>Display nautical charts per the ENC specification.</string>
+				<key>storyboardName</key>
+				<string>AddENCExchangeSet</string>
+				<key>dependency</key>
+				<array>
+					<string>ExchangeSetWithoutUpdates</string>
+					<string>Hydrography</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Apply mosaic rule to rasters</string>
 				<key>descriptionText</key>
 				<string>Apply a mosaic rule to a mosaic dataset of rasters.</string>
@@ -1805,6 +1818,14 @@
 				<string>NavigateAR</string>
 				<key>descriptionText</key>
 				<string>Use a route displayed in the real world to navigate.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>View hidden infrastructure in AR</string>
+				<key>descriptionText</key>
+				<string>Visualize hidden infrastructure in its real-world location using augmented reality.</string>
+				<key>storyboardName</key>
+				<string>ViewHiddenInfrastructureAR</string>
 			</dict>
 		</array>
 	</dict>

@@ -1,0 +1,31 @@
+{
+    "category": "Layers",
+    "description": "Display nautical charts per the ENC specification.",
+    "ignore": false,
+    "images": [
+        "add-enc-exchange-set.png"
+    ],
+    "keywords": [
+        "ENC",
+        "data",
+        "hydrographic",
+        "layers",
+        "maritime",
+        "nautical chart",
+        "AGSENCCell",
+        "AGSENCDataset",
+        "AGSENCExchangeSet",
+        "AGSENCLayer"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSENCCell",
+        "AGSENCDataset",
+        "AGSENCExchangeSet",
+        "AGSENCLayer"
+    ],
+    "snippets": [
+        "AddENCExchangeSetViewController.swift"
+    ],
+    "title": "Add ENC exchange set"
+}

@@ -56,6 +56,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     let startLocation = AGSPoint(x: -117.160386727, y: 32.706608, spatialReference: .wgs84())
     let destinationLocation = AGSPoint(x: -117.147230, y: 32.730467, spatialReference: .wgs84())
     var gpxPoints = [AGSPoint]()
+    var routeParameters: AGSRouteParameters?
     
     /// A formatter to format a time value into human readable string.
     let timeFormatter: DateComponentsFormatter = {
@@ -84,7 +85,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         navigateBarButtonItem.isEnabled = false
         resetBarButtonItem.isEnabled = true
         // Start the location data source and location display.
-        mapView.locationDisplay.start()        
+        mapView.locationDisplay.start()
     }
     
     /// Called in response to the "Reset" button being tapped.
@@ -150,13 +151,13 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         return mockDataSource
     }
     
-    func makePolylineFromGPX() -> AGSPolyline{
+    func makePolylineFromGPX() -> AGSPolyline {
         let gpxURL = Bundle.main.url(forResource: "navigate_a_route_detour", withExtension: "gpx")!
         let gpxDocument = XMLParser(contentsOf: gpxURL)
         gpxDocument?.delegate = self
-        let success = gpxDocument?.parse()
-        if !success! {
-            print("Fail")
+        let didParseGPX = gpxDocument?.parse()
+        if !didParseGPX! {
+            print("Error parsing GPX document")
         }
         return AGSPolyline(points: gpxPoints)
     }
@@ -185,6 +186,12 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         let firstRouteGeometry = firstRoute.routeGeometry!
         updateRouteGraphics(remaining: firstRouteGeometry)
         updateViewpoint(geometry: firstRouteGeometry)
+        
+        if routeTask.routeTaskInfo().supportsRerouting {
+            routeTracker.enableRerouting(with: routeTask, routeParameters: routeParameters!, strategy: .toNextWaypoint, visitFirstStopOnStart: false) {_ in
+                
+            }
+        }
     }
     /// Make a route tracker to provide navigation information.
     ///
@@ -259,6 +266,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
                 params.returnRoutes = true
                 params.outputSpatialReference = .wgs84()
                 params.setStops(self.makeStops())
+                self.routeParameters = params
                 self.routeTask.solveRoute(with: params) { [weak self] (result, error) in
                     if let result = result {
                         self?.route = result.routes.first
@@ -321,7 +329,12 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
         routeAheadGraphic.geometry = remaining
         routeTraveledGraphic.geometry = traversed
     }
+    
+    func routeTrackerRerouteDidStart(_ routeTracker: AGSRouteTracker) {
+        // speach stuff
+    }
 }
+
 
 // MARK: - AGSLocationChangeHandlerDelegate
 
@@ -333,7 +346,7 @@ extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDele
 }
 
 extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String]) {
         //Only check for the lines that have a <trkpt> or <wpt> tag. The other lines don't have coordinates and thus don't interest us
         if elementName == "trkpt" || elementName == "wpt" {
             //Create a World map coordinate from the file
@@ -344,4 +357,3 @@ extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
         }
     }
 }
-

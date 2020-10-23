@@ -11,7 +11,7 @@ Field workers with limited network connectivity can use exported tiles as a base
 
 ## How to use the sample
 
-Pan and zoom into the desired area, making sure the area is within the red boundary. Tap the "Export tiles" button to start the process. On successful completion you will see a preview of the downloaded tile package.
+Pan and zoom into the desired area, making sure the area is within the red boundary. Tap the "Export tiles" button and choose an export format to start the process. On successful completion you will see a preview of the downloaded tile package.
 
 ## How it works
 
@@ -32,6 +32,8 @@ Pan and zoom into the desired area, making sure the area is within the red bound
 ## Additional information
 
 ArcGIS tiled layers do not support reprojection, query, select, identify, or editing. Visit the [ArcGiS Online Developer's portal](https://developers.arcgis.com/ios/latest/swift/guide/layer-types-described.htm#ESRI_SECTION1_30E7379BE7FE4EC2AF7D8FBFEA7BB4CC) to learn more about the characteristics of ArcGIS tiled layers.
+
+Refer to [Tile Package Specification](https://github.com/Esri/tile-package-spec) on GitHub for more information of the tile package format.
 
 ## Tags
 

@@ -3,14 +3,14 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 */
 
 body {
-  background-color: #002b36;
+  background-color: #000;
 }
 
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #002b36;
+  background: #000;
   color: #839496;
 }
 

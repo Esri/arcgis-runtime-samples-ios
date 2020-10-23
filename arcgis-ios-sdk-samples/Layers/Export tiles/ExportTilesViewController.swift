@@ -58,8 +58,8 @@ class ExportTilesViewController: UIViewController {
     
     /// The tiled layer created from world street map service.
     let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer")!)
-    /// An export task to request the tile package.
-    var exportTask: AGSExportTileCacheTask!
+    /// The export task to request the tile package with the same URL as the tile layer.
+    let exportTask = AGSExportTileCacheTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer")!)
     /// An export job to download the tile package.
     var job: AGSExportTileCacheJob! {
         didSet {
@@ -75,42 +75,31 @@ class ExportTilesViewController: UIViewController {
         return directoryURL
     }()
     
-    // MARK: Methods
-    
-    /// Get the extent within the extent view for generating a tile package.
-    func frameToExtent() -> AGSEnvelope {
-        let frame = mapView.convert(extentView.frame, from: self.view)
+    /// Tile Package storage formats.
+    /// - Note: Please read more about the file formats at [here](https://github.com/Esri/tile-package-spec).
+    private enum TilePackageFormat {
+        case tpk, tpkx
         
-        let minPoint = mapView.screen(toLocation: frame.origin)
-        let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.origin.x + frame.width, y: frame.origin.y + frame.height))
-        let extent = AGSEnvelope(min: minPoint, max: maxPoint)
-        return extent
-    }
-    
-    /// Zoom the map view to Southern California for demo purposes.
-    func zoomToViewpoint(mapView: AGSMapView, scale: Double) {
-        let center = AGSPoint(x: -117, y: 34, spatialReference: .wgs84())
-        mapView.setViewpoint(AGSViewpoint(center: center, scale: scale), completion: nil)
-    }
-    
-    /// Remove the downloaded tile packages.
-    func removeTemporaryTilePackages() {
-        // Remove all files in the sample-specific temporary folder.
-        guard let files = try? FileManager.default.contentsOfDirectory(at: temporaryFolderURL, includingPropertiesForKeys: nil), !files.isEmpty else { return }
-        files.forEach { filePath in
-            try? FileManager.default.removeItem(at: filePath)
+        var description: String {
+            switch self {
+            case .tpk:
+                return "Compact Cache V1 (.tpk)"
+            case .tpkx:
+                return "Compact Cache V2 (.tpkx)"
+            }
+        }
+        
+        var fileExtension: String {
+            switch self {
+            case .tpk:
+                return "tpk"
+            case .tpkx:
+                return "tpkx"
+            }
         }
     }
     
-    /// Get destination URL for the tile package.
-    func getDownloadURL(fileExtension: String) -> URL {
-        // If the downloadFileURL ends with ".tpk", the tile cache will use
-        // the legacy compact format. If the downloadFileURL ends with ".tpkx",
-        // the tile cache will use the current compact version 2 format.
-        // See more in the doc of
-        // `AGSExportTileCacheTask.exportTileCacheJob(with:downloadFileURL:)`.
-        temporaryFolderURL.appendingPathComponent("myTileCache.\(fileExtension)")
-    }
+    // MARK: Methods
     
     /// Initiate the `AGSExportTileCacheTask` to download a tile package.
     ///
@@ -125,7 +114,6 @@ class ExportTilesViewController: UIViewController {
         // current scale as the minScale and tiled layer's max scale as maxScale
         var minScale = mapView.mapScale
         let maxScale = tiledLayer.maxScale
-        
         if minScale < maxScale {
             minScale = maxScale
         }
@@ -174,6 +162,41 @@ class ExportTilesViewController: UIViewController {
         })
     }
     
+    /// Get the extent within the extent view for generating a tile package.
+    func frameToExtent() -> AGSEnvelope {
+        let frame = mapView.convert(extentView.frame, from: self.view)
+        
+        let minPoint = mapView.screen(toLocation: frame.origin)
+        let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.origin.x + frame.width, y: frame.origin.y + frame.height))
+        let extent = AGSEnvelope(min: minPoint, max: maxPoint)
+        return extent
+    }
+    
+    /// Zoom the mapto Southern California with animation, for demo purposes.
+    func zoomToViewpoint(mapView: AGSMapView, scale: Double) {
+        let center = AGSPoint(x: -117, y: 34, spatialReference: .wgs84())
+        mapView.setViewpoint(AGSViewpoint(center: center, scale: scale), completion: nil)
+    }
+    
+    /// Remove the downloaded tile packages.
+    func removeTemporaryTilePackages() {
+        // Remove all files in the sample-specific temporary folder.
+        guard let files = try? FileManager.default.contentsOfDirectory(at: temporaryFolderURL, includingPropertiesForKeys: nil), !files.isEmpty else { return }
+        files.forEach { filePath in
+            try? FileManager.default.removeItem(at: filePath)
+        }
+    }
+    
+    /// Get destination URL for the tile package.
+    private func getDownloadURL(fileFormat: TilePackageFormat) -> URL {
+        // If the downloadFileURL ends with ".tpk", the tile cache will use
+        // the legacy compact format. If the downloadFileURL ends with ".tpkx",
+        // the tile cache will use the current compact version 2 format.
+        // See more in the doc of
+        // `AGSExportTileCacheTask.exportTileCacheJob(with:downloadFileURL:)`.
+        temporaryFolderURL.appendingPathComponent("myTileCache.\(fileFormat.fileExtension)")
+    }
+    
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -190,16 +213,11 @@ class ExportTilesViewController: UIViewController {
                 message: nil,
                 preferredStyle: .actionSheet
             )
-            alertController.addAction(
-                UIAlertAction(title: "Compact Cache V1 (.tpk)", style: .default) { [unowned self] _ in
-                    self.initiateDownload(exportTask: exportTask, downloadFileURL: self.getDownloadURL(fileExtension: "tpk"))
-                }
-            )
-            if mapServiceInfo.exportTileCacheCompactV2Allowed {
-                // Only add the option when tpkx export is allowed.
+            let allowedFormats: [TilePackageFormat] = mapServiceInfo.exportTileCacheCompactV2Allowed ? [.tpk, .tpkx] : [.tpk]
+            allowedFormats.forEach { fileFormat in
                 alertController.addAction(
-                    UIAlertAction(title: "Compact Cache V2 (.tpkx)", style: .default) { _ in
-                        self.initiateDownload(exportTask: self.exportTask, downloadFileURL: self.getDownloadURL(fileExtension: "tpkx"))
+                    UIAlertAction(title: fileFormat.description, style: .default) { [unowned self] _ in
+                        self.initiateDownload(exportTask: exportTask, downloadFileURL: self.getDownloadURL(fileFormat: fileFormat))
                     }
                 )
             }
@@ -222,8 +240,7 @@ class ExportTilesViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportTilesViewController"]
-        // Initialize and load the export task.
-        exportTask = AGSExportTileCacheTask(url: tiledLayer.url!)
+        // Load the export task.
         exportTask.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {

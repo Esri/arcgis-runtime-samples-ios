@@ -27,9 +27,9 @@
                                 <rect key="frame" x="0.0" y="761" width="390" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="MO1-MP-yl8"/>
-                                    <barButtonItem title="Export tiles" id="f1v-WL-0Sq">
+                                    <barButtonItem enabled="NO" title="Export tiles" id="f1v-WL-0Sq">
                                         <connections>
-                                            <action selector="barButtonItemAction" destination="tz0-lf-ZRZ" id="qeO-Am-ymJ"/>
+                                            <action selector="exportTilesBarButtonTapped:" destination="tz0-lf-ZRZ" id="0iX-iY-VXb"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nof-Xt-Scz"/>
@@ -50,7 +50,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Close"/>
                                             <connections>
-                                                <action selector="closeAction" destination="tz0-lf-ZRZ" eventType="touchUpInside" id="pK5-JC-Dq0"/>
+                                                <action selector="closeButtonTapped:" destination="tz0-lf-ZRZ" eventType="touchUpInside" id="fM2-ul-GD3"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tile package" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="med-fb-GMh">
@@ -115,7 +115,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="barButtonItem" destination="f1v-WL-0Sq" id="77U-yX-wxD"/>
+                        <outlet property="exportTilesBarButtonItem" destination="f1v-WL-0Sq" id="vlO-1b-d9Y"/>
                         <outlet property="extentView" destination="Xws-VU-aFf" id="obu-IQ-j02"/>
                         <outlet property="mapView" destination="4Ax-yA-Gum" id="NaY-G7-f7L"/>
                         <outlet property="previewMapView" destination="487-BM-FZS" id="tYB-S3-qqr"/>

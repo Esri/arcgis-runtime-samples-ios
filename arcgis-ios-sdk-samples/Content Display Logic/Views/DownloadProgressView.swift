@@ -111,7 +111,7 @@ class DownloadProgressView: UIView {
         self.shapeLayer.frame = CGRect(x: 0, y: 0, width: 2 * self.radius, height: 2 * self.radius)
         self.shapeLayer.path = self.bezierPath.cgPath
         self.shapeLayer.fillColor = UIColor.clear.cgColor
-        self.shapeLayer.strokeColor = UIColor.darkGray.cgColor
+        self.shapeLayer.strokeColor = UIColor.green.cgColor
         self.shapeLayer.lineWidth = 3
         self.shapeLayer.strokeEnd = 0
         

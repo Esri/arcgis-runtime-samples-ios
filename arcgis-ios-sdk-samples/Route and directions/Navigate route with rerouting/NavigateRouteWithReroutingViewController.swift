@@ -348,7 +348,7 @@ extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDele
 }
 
 extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, _: String?, attributes attributeDictionary: [String: String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName: String?, attributes attributeDictionary: [String: String]) {
         //Only check for the lines that have a <trkpt> or <wpt> tag. The other lines don't have coordinates and thus don't interest us
         if elementName == "trkpt" || elementName == "wpt" {
             //Create a World map coordinate from the file

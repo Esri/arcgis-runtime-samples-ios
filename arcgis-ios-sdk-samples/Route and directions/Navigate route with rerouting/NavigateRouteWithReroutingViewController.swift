@@ -159,6 +159,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         if !didParseGPX! {
             print("Error parsing GPX document")
         }
+        print("Successfully parsed GPX")
         return AGSPolyline(points: gpxPoints)
     }
     
@@ -204,11 +205,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         tracker.voiceGuidanceUnitSystem = Locale.current.usesMetricSystem ? .metric : .imperial
         return tracker
     }
-//    func rerouteStarted() {
-//        // Remove the event listeners for tracking status changes while the route tracker recalculates
-//        routeTracker.delegate?.routeTracker?(routeTracker, didGenerateNewVoiceGuidance: <#T##AGSVoiceGuidance#>)
-//
-//    }
+    
     /// Make a graphics overlay with graphics.
     ///
     /// - Returns: An `AGSGraphicsOverlay` object.
@@ -331,10 +328,15 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
     }
     
     func routeTrackerRerouteDidStart(_ routeTracker: AGSRouteTracker) {
-        // speach stuff
+        routeTracker.delegate = nil
+    }
+    
+    func routeTracker(_ routeTracker: AGSRouteTracker, rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?, error: Error?) {
+        // Get the new directions.
+        directionsList = (trackingStatus?.routeResult.routes.first!.directionManeuvers)!
+        routeTracker.delegate = self
     }
 }
-
 
 // MARK: - AGSLocationChangeHandlerDelegate
 
@@ -346,12 +348,12 @@ extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDele
 }
 
 extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, _: String?, attributes attributeDictionary: [String: String]) {
         //Only check for the lines that have a <trkpt> or <wpt> tag. The other lines don't have coordinates and thus don't interest us
         if elementName == "trkpt" || elementName == "wpt" {
             //Create a World map coordinate from the file
-            let lat = Double(attributeDict["lat"]!)
-            let lon = Double(attributeDict["lon"]!)
+            let lat = Double(attributeDictionary["lat"]!)
+            let lon = Double(attributeDictionary["lon"]!)
             let point = AGSPoint(x: lon!, y: lat!, spatialReference: .wgs84())
             gpxPoints.append(point)
         }

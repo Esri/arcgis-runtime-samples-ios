@@ -54,7 +54,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     /// The initial location for the solved route.
     var initialLocation: AGSLocation!
     let startLocation = AGSPoint(x: -117.160386727, y: 32.706608, spatialReference: .wgs84())
-    let destinationLocation = AGSPoint(x: -117.147230, y: 32.730467, spatialReference: .wgs84())
+    let destinationLocation = AGSPoint(x: -117.146679, y: 32.730351, spatialReference: .wgs84())
     var gpxPoints = [AGSPoint]()
     var routeParameters: AGSRouteParameters?
     
@@ -159,7 +159,6 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         if !didParseGPX! {
             print("Error parsing GPX document")
         }
-        print("Successfully parsed GPX")
         return AGSPolyline(points: gpxPoints)
     }
     
@@ -189,8 +188,10 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         updateViewpoint(geometry: firstRouteGeometry)
         
         if routeTask.routeTaskInfo().supportsRerouting {
-            routeTracker.enableRerouting(with: routeTask, routeParameters: routeParameters!, strategy: .toNextWaypoint, visitFirstStopOnStart: false) {_ in
-                
+            routeTracker.enableRerouting(with: routeTask, routeParameters: routeParameters!, strategy: .toNextWaypoint, visitFirstStopOnStart: false) { error in
+                if let error = error {
+                    self.presentAlert(error: error)
+                }
             }
         }
     }
@@ -310,15 +311,15 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
                 let nextDirection = directionsList[status.currentManeuverIndex + 1].directionText
                 statusText.append("\nNext direction: \(nextDirection)")
             }
+            updateRouteGraphics(remaining: status.routeProgress.remainingGeometry, traversed: status.routeProgress.traversedGeometry)
         case .reached:
+            mapView.locationDisplay.stop()
             statusText = "Destination reached."
             routeAheadGraphic.geometry = nil
-            routeTraveledGraphic.geometry = status.routeResult.routes.first?.routeGeometry
-            mapView.locationDisplay.stop()
+            updateRouteGraphics(remaining: status.routeProgress.remainingGeometry, traversed: status.routeResult.routes.first?.routeGeometry)
         default:
             statusText = "Off route!"
         }
-        updateRouteGraphics(remaining: status.routeProgress.remainingGeometry, traversed: status.routeProgress.traversedGeometry)
         setStatus(message: statusText)
     }
     
@@ -328,13 +329,17 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
     }
     
     func routeTrackerRerouteDidStart(_ routeTracker: AGSRouteTracker) {
-        routeTracker.delegate = nil
+//        routeTracker.delegate = nil
     }
     
     func routeTracker(_ routeTracker: AGSRouteTracker, rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?, error: Error?) {
-        // Get the new directions.
-        directionsList = (trackingStatus?.routeResult.routes.first!.directionManeuvers)!
-        routeTracker.delegate = self
+        if let error = error {
+            self.presentAlert(error: error)
+        } else {
+            // Get the new directions.
+            directionsList = (trackingStatus?.routeResult.routes.first!.directionManeuvers)!
+//            routeTracker.delegate = self
+        }
     }
 }
 

@@ -328,10 +328,6 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
         routeTraveledGraphic.geometry = traversed
     }
     
-    func routeTrackerRerouteDidStart(_ routeTracker: AGSRouteTracker) {
-//        routeTracker.delegate = nil
-    }
-    
     func routeTracker(_ routeTracker: AGSRouteTracker, rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?, error: Error?) {
         if let error = error {
             self.presentAlert(error: error)

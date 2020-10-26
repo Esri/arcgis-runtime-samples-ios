@@ -67,16 +67,6 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     }()
     /// An AVSpeechSynthesizer for text to speech.
     let speechSynthesizer = AVSpeechSynthesizer()
-    /// Create the stops for the navigation.
-    ///
-    /// - Returns: An array of `AGSStop` objects.
-    func makeStops() -> [AGSStop] {
-        let stop1 = AGSStop(point: startLocation)
-        stop1.name = "San Diego Convention Center"
-        let stop2 = AGSStop(point: destinationLocation)
-        stop2.name = "RH Fleet Aerospace Museum"
-        return [stop1, stop2]
-    }
     
     // MARK: Actions
     
@@ -121,6 +111,33 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     }
     
     // MARK: Instance methods
+    
+    /// Make a graphics overlay with graphics.
+    ///
+    /// - Returns: An `AGSGraphicsOverlay` object.
+    func makeRouteOverlay() -> AGSGraphicsOverlay {
+        // The graphics overlay for the polygon and points.
+        let graphicsOverlay = AGSGraphicsOverlay()
+        let startSymbol = AGSSimpleMarkerSymbol(style: .cross, color: .green, size: 25)
+        let startGraphic = AGSGraphic(geometry: startLocation, symbol: startSymbol, attributes: nil)
+        let destinationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .red, size: 20)
+        let destinationGraphic = AGSGraphic(geometry: destinationLocation, symbol: destinationSymbol, attributes: nil)
+        routeAheadGraphic.geometry = route?.routeGeometry
+        // Add graphics to the graphics overlay.
+        graphicsOverlay.graphics.addObjects(from: [startGraphic, destinationGraphic, routeAheadGraphic, routeTraveledGraphic])
+        return graphicsOverlay
+    }
+    
+    /// Create the stops for the navigation.
+    ///
+    /// - Returns: An array of `AGSStop` objects.
+    func makeStops() -> [AGSStop] {
+        let stop1 = AGSStop(point: startLocation)
+        stop1.name = "San Diego Convention Center"
+        let stop2 = AGSStop(point: destinationLocation)
+        stop2.name = "RH Fleet Aerospace Museum"
+        return [stop1, stop2]
+    }
     
     /// A wrapper function for operations after the route is solved by an `AGSRouteTask`.
     ///
@@ -207,22 +224,6 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         return tracker
     }
     
-    /// Make a graphics overlay with graphics.
-    ///
-    /// - Returns: An `AGSGraphicsOverlay` object.
-    func makeRouteOverlay() -> AGSGraphicsOverlay {
-        // The graphics overlay for the polygon and points.
-        let graphicsOverlay = AGSGraphicsOverlay()
-        let startSymbol = AGSSimpleMarkerSymbol(style: .cross, color: .green, size: 25)
-        let startGraphic = AGSGraphic(geometry: startLocation, symbol: startSymbol, attributes: nil)
-        let destinationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .red, size: 20)
-        let destinationGraphic = AGSGraphic(geometry: destinationLocation, symbol: destinationSymbol, attributes: nil)
-        routeAheadGraphic.geometry = route?.routeGeometry
-        // Add graphics to the graphics overlay.
-        graphicsOverlay.graphics.addObjects(from: [startGraphic, destinationGraphic, routeAheadGraphic, routeTraveledGraphic])
-        return graphicsOverlay
-    }
-    
     /// Update the viewpoint so that it reflects the original viewpoint when the example is loaded.
     ///
     /// - Parameter result: An `AGSGeometry` object used to update the view point.
@@ -292,6 +293,15 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
         updateTrackingStatusDisplay(routeTracker: routeTracker, status: trackingStatus)
     }
     
+    func routeTracker(_ routeTracker: AGSRouteTracker, rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?, error: Error?) {
+        if let error = error {
+            self.presentAlert(error: error)
+        } else {
+            // Get the new directions.
+            directionsList = (trackingStatus?.routeResult.routes.first!.directionManeuvers)!
+        }
+    }
+    
     func setSpeakDirection(with text: String) {
         speechSynthesizer.stopSpeaking(at: .word)
         speechSynthesizer.speak(AVSpeechUtterance(string: text))
@@ -311,31 +321,20 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
                 let nextDirection = directionsList[status.currentManeuverIndex + 1].directionText
                 statusText.append("\nNext direction: \(nextDirection)")
             }
-            updateRouteGraphics(remaining: status.routeProgress.remainingGeometry, traversed: status.routeProgress.traversedGeometry)
         case .reached:
             mapView.locationDisplay.stop()
             statusText = "Destination reached."
             routeAheadGraphic.geometry = nil
-            updateRouteGraphics(remaining: status.routeProgress.remainingGeometry, traversed: status.routeResult.routes.first?.routeGeometry)
         default:
             statusText = "Off route!"
         }
+        updateRouteGraphics(remaining: status.routeProgress.remainingGeometry, traversed: status.routeProgress.traversedGeometry)
         setStatus(message: statusText)
     }
     
     func updateRouteGraphics(remaining: AGSGeometry?, traversed: AGSGeometry? = nil) {
         routeAheadGraphic.geometry = remaining
         routeTraveledGraphic.geometry = traversed
-    }
-    
-    func routeTracker(_ routeTracker: AGSRouteTracker, rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?, error: Error?) {
-        if let error = error {
-            self.presentAlert(error: error)
-        } else {
-            // Get the new directions.
-            directionsList = (trackingStatus?.routeResult.routes.first!.directionManeuvers)!
-//            routeTracker.delegate = self
-        }
     }
 }
 
@@ -350,7 +349,7 @@ extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDele
 
 extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName: String?, attributes attributeDictionary: [String: String]) {
-        //Only check for the lines that have a <trkpt> or <wpt> tag. The other lines don't have coordinates and thus don't interest us
+        // Collect coordinates by checking for the lines that have a <trkpt> or <wpt> tag,
         if elementName == "trkpt" || elementName == "wpt" {
             //Create a World map coordinate from the file
             let lat = Double(attributeDictionary["lat"]!)

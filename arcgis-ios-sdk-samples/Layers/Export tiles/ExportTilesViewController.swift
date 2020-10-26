@@ -26,7 +26,8 @@ class ExportTilesViewController: UIViewController {
             // Set the min scale of the map to avoid requesting a huge download.
             let scale = 1e7
             mapView.map?.minScale = scale
-            zoomToViewpoint(mapView: mapView, scale: scale)
+            let center = AGSPoint(x: -117, y: 34, spatialReference: .wgs84())
+            mapView.setViewpoint(AGSViewpoint(center: center, scale: scale), completion: nil)
         }
     }
     
@@ -153,7 +154,8 @@ class ExportTilesViewController: UIViewController {
                 
                 let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
                 self.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
-                self.zoomToViewpoint(mapView: self.previewMapView, scale: 1e7)
+                let extent = parameters.areaOfInterest as! AGSEnvelope
+                self.previewMapView.setViewpoint(AGSViewpoint(targetExtent: extent), completion: nil)
             } else if let error = error {
                 if (error as NSError).code != NSUserCancelledError {
                     self.presentAlert(error: error)
@@ -170,12 +172,6 @@ class ExportTilesViewController: UIViewController {
         let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.origin.x + frame.width, y: frame.origin.y + frame.height))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
-    }
-    
-    /// Zoom the mapto Southern California with animation, for demo purposes.
-    func zoomToViewpoint(mapView: AGSMapView, scale: Double) {
-        let center = AGSPoint(x: -117, y: 34, spatialReference: .wgs84())
-        mapView.setViewpoint(AGSViewpoint(center: center, scale: scale), completion: nil)
     }
     
     /// Remove the downloaded tile packages.

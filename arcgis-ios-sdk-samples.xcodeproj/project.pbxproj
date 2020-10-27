@@ -4600,7 +4600,6 @@
 					naperville_imagery,
 					philadelphia,
 					"sandiego-north-balboa-pointcloud",
-					sandiegoDetour,
 				);
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0940;

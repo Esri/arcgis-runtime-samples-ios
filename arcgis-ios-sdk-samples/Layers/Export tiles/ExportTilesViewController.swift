@@ -108,11 +108,9 @@ class ExportTilesViewController: UIViewController {
     ///   - exportTask: An `AGSExportTileCacheTask` to run the export job.
     ///   - downloadFileURL: A URL to where the tile package is saved.
     func initiateDownload(exportTask: AGSExportTileCacheTask, downloadFileURL: URL) {
-        // Remove previous existing tile packages.
-        removeTemporaryTilePackages()
-        
         // Get the parameters by specifying the selected area, map view's
-        // current scale as the minScale and tiled layer's max scale as maxScale
+        // current scale as the minScale, and tiled layer's max scale as
+        // maxScale.
         var minScale = mapView.mapScale
         let maxScale = tiledLayer.maxScale
         if minScale < maxScale {
@@ -174,15 +172,6 @@ class ExportTilesViewController: UIViewController {
         return extent
     }
     
-    /// Remove the downloaded tile packages.
-    func removeTemporaryTilePackages() {
-        // Remove all files in the sample-specific temporary folder.
-        guard let files = try? FileManager.default.contentsOfDirectory(at: temporaryFolderURL, includingPropertiesForKeys: nil), !files.isEmpty else { return }
-        files.forEach { filePath in
-            try? FileManager.default.removeItem(at: filePath)
-        }
-    }
-    
     /// Get destination URL for the tile package.
     private func getDownloadURL(fileFormat: TilePackageFormat) -> URL {
         // If the downloadFileURL ends with ".tpk", the tile cache will use
@@ -225,9 +214,15 @@ class ExportTilesViewController: UIViewController {
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
+        // Hide the preview and background.
         visualEffectView.isHidden = true
         // Release the map in order to free the tiled layer.
         previewMapView.map = nil
+        // Remove all files in the sample-specific temporary folder.
+        guard let files = try? FileManager.default.contentsOfDirectory(at: temporaryFolderURL, includingPropertiesForKeys: nil), !files.isEmpty else { return }
+        files.forEach { filePath in
+            try? FileManager.default.removeItem(at: filePath)
+        }
     }
     
     // MARK: UIViewController

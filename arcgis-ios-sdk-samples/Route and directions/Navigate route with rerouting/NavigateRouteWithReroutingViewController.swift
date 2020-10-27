@@ -18,7 +18,6 @@ import ArcGIS
 
 class NavigateRouteWithReroutingViewController: UIViewController {
     // MARK: Storyboard views
-    
     /// The label to display navigation status.
     @IBOutlet var statusLabel: UILabel!
     /// The button to start navigation.
@@ -43,6 +42,8 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     var routeResult: AGSRouteResult!
     /// The route tracker for navigation. Use delegate methods to update tracking status.
     var routeTracker: AGSRouteTracker!
+    /// The parameters of the route tracker.
+    var routeParameters: AGSRouteParameters?
     /// A list to keep track of directions solved by the route task.
     var directionsList: [AGSDirectionManeuver] = []
     /// The graphic (with a dashed line symbol) to represent the route ahead.
@@ -53,10 +54,12 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     var defaultViewPoint: AGSViewpoint?
     /// The initial location for the solved route.
     var initialLocation: AGSLocation!
+    /// The starting location, the San Diego Convention Center.
     let startLocation = AGSPoint(x: -117.160386727, y: 32.706608, spatialReference: .wgs84())
+    /// The destination location, the RH Fleet Aerospace Museum.
     let destinationLocation = AGSPoint(x: -117.146679, y: 32.730351, spatialReference: .wgs84())
+    /// The points provided by the GPX file.
     var gpxPoints = [AGSPoint]()
-    var routeParameters: AGSRouteParameters?
     
     /// A formatter to format a time value into human readable string.
     let timeFormatter: DateComponentsFormatter = {
@@ -89,7 +92,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         mapView.locationDisplay.autoPanModeChangedHandler = nil
         mapView.locationDisplay.autoPanMode = .off
         directionsList.removeAll()
-//        setStatus(message: "Directions are shown here.")
+        setStatus(message: "Directions are shown here.")
         
         // Reset the navigation.
         setNavigation(with: routeResult)
@@ -111,6 +114,21 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     }
     
     // MARK: Instance methods
+    /// A wrapper function for operations after the route is solved by an `AGSRouteTask`.
+    ///
+    /// - Parameter routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.
+    func didSolveRoute(with routeResult: Result<AGSRouteResult, Error>) {
+        switch routeResult {
+        case .success(let routeResult):
+            self.routeResult = routeResult
+            setNavigation(with: routeResult)
+            navigateBarButtonItem.isEnabled = true
+        case .failure(let error):
+            presentAlert(error: error)
+            setStatus(message: "Failed to solve route.")
+            navigateBarButtonItem.isEnabled = false
+        }
+    }
     
     /// Make a graphics overlay with graphics.
     ///
@@ -118,8 +136,10 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     func makeRouteOverlay() -> AGSGraphicsOverlay {
         // The graphics overlay for the polygon and points.
         let graphicsOverlay = AGSGraphicsOverlay()
+        // Create a graphic for the start location.
         let startSymbol = AGSSimpleMarkerSymbol(style: .cross, color: .green, size: 25)
         let startGraphic = AGSGraphic(geometry: startLocation, symbol: startSymbol, attributes: nil)
+        // Create a graphic for the destination location.
         let destinationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .red, size: 20)
         let destinationGraphic = AGSGraphic(geometry: destinationLocation, symbol: destinationSymbol, attributes: nil)
         routeAheadGraphic.geometry = route?.routeGeometry
@@ -137,22 +157,6 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         let stop2 = AGSStop(point: destinationLocation)
         stop2.name = "RH Fleet Aerospace Museum"
         return [stop1, stop2]
-    }
-    
-    /// A wrapper function for operations after the route is solved by an `AGSRouteTask`.
-    ///
-    /// - Parameter routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.
-    func didSolveRoute(with routeResult: Result<AGSRouteResult, Error>) {
-        switch routeResult {
-        case .success(let routeResult):
-            self.routeResult = routeResult
-            setNavigation(with: routeResult)
-            navigateBarButtonItem.isEnabled = true
-        case .failure(let error):
-            presentAlert(error: error)
-//            setStatus(message: "Failed to solve route.")
-            navigateBarButtonItem.isEnabled = false
-        }
     }
     
     /// Make the simulated data source for this demo.
@@ -173,13 +177,24 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         let gpxDocument = XMLParser(contentsOf: gpxURL)
         gpxDocument?.delegate = self
         let didParseGPX = gpxDocument?.parse()
-        if !didParseGPX! {
-            print("Error parsing GPX document")
+        if !didParseGPX!, let error = gpxDocument?.parserError {
+            self.presentAlert(error: error)
         }
         return AGSPolyline(points: gpxPoints)
     }
     
-    /// Set route tracker, data source and location display with a solved route result.
+    /// Make a route tracker to provide navigation information.
+    ///
+    /// - Parameter result: An `AGSRouteResult` object used to configure the route tracker.
+    /// - Returns: An `AGSRouteTracker` object.
+    func makeRouteTracker(result: AGSRouteResult) -> AGSRouteTracker {
+        let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0, skipCoincidentStops: true)!
+        tracker.delegate = self
+        tracker.voiceGuidanceUnitSystem = Locale.current.usesMetricSystem ? .metric : .imperial
+        return tracker
+    }
+    
+    /// Set route tracker, data source, and location display with a solved route result.
     ///
     /// - Parameter routeResult: An `AGSRouteResult` object.
     func setNavigation(with routeResult: AGSRouteResult) {
@@ -212,17 +227,6 @@ class NavigateRouteWithReroutingViewController: UIViewController {
             }
         }
     }
-    /// Make a route tracker to provide navigation information.
-    ///
-    /// - Parameter result: An `AGSRouteResult` object used to configure the route tracker.
-    /// - Returns: An `AGSRouteTracker` object.
-    func makeRouteTracker(result: AGSRouteResult) -> AGSRouteTracker {
-        let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0, skipCoincidentStops: true)!
-//        tracker.delegate?.routeTracker?(tracker, didGenerateNewVoiceGuidance: <#T##AGSVoiceGuidance#>)
-        tracker.delegate = self
-        tracker.voiceGuidanceUnitSystem = Locale.current.usesMetricSystem ? .metric : .imperial
-        return tracker
-    }
     
     /// Update the viewpoint so that it reflects the original viewpoint when the example is loaded.
     ///
@@ -247,13 +251,12 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     }
     
     // MARK: UIViewController
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["NavigateRouteWithReroutingViewController"]
         // Avoid the overlap between the status label and the map content.
-//        mapView.contentInset.top = CGFloat(statusLabel.numberOfLines) * statusLabel.font.lineHeight
+        mapView.contentInset.top = CGFloat(statusLabel.numberOfLines) * statusLabel.font.lineHeight
         
         // Solve the route as map loads.
         routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
@@ -349,8 +352,8 @@ extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDele
 
 extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName: String?, attributes attributeDictionary: [String: String]) {
-        // Collect coordinates by checking for the lines that have a <trkpt> or <wpt> tag,
-        if elementName == "trkpt" || elementName == "wpt" {
+        // Collect coordinates by checking for the lines that have a <trkpt> tag,
+        if elementName == "trkpt" {
             //Create a World map coordinate from the file
             let lat = Double(attributeDictionary["lat"]!)
             let lon = Double(attributeDictionary["lon"]!)

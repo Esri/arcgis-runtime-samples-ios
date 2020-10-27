@@ -29,6 +29,7 @@
 	<key>Tile Packages</key>
 	<array>
 		<string>tpk</string>
+		<string>tpkx</string>
 	</array>
 	<key>Archives</key>
 	<array>

@@ -47,12 +47,12 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         // Create and return the full, unique URL.
         return directoryURL.appendingPathComponent("\(temporaryFileName)")
     }
-    func loadVectorTiledLayer(url vectorTiledLayerURL: URL) -> AGSArcGISVectorTiledLayer {
-        var offlineVectorTiledLayer: AGSArcGISVectorTiledLayer?
+    
+    func loadVectorTiledLayer(url vectorTiledLayerURL: URL, itemID: String) {
         // Get a temporary URL to download the custom style.
         let temporaryURL = getTemporaryURL()
         // Create a vector tile cache using the local vector tile package.
-        let vectorTileCache = AGSVectorTileCache(name: "PSCC_vector")
+        let vectorTileCache = AGSVectorTileCache(name: "dodge_city")
         // Create a portal item with the URL.
         let portalItem = AGSPortalItem(url: vectorTiledLayerURL)!
         // Create a task to export the custom style resources.
@@ -65,32 +65,41 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             if let result = result {
                 // Get the item resource cache from the result.
                 let itemresourceCahce = result.itemResourceCache
-                // Create a vector tiled layer with the vector tiled cache and the item resource cache.
-                offlineVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
+                switch itemID {
+                case "9a01f41307ec4add9121a40cf020a6b6":
+                    if self.dayVectorTiledLayer == nil {
+                        // Create a vector tiled layer with the vector tiled cache and the item resource cache.
+                        self.dayVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
+                    }
+                    self.mapView.map!.basemap = AGSBasemap(baseLayer: self.dayVectorTiledLayer!)
+                case "ce8a34e5d4ca4fa193a097511daa8855":
+                    if self.nightVectorTiledLayer == nil {
+                        // Create a vector tiled layer with the vector tiled cache and the item resource cache.
+                        self.nightVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
+                    }
+                    self.mapView.map!.basemap = AGSBasemap(baseLayer: self.nightVectorTiledLayer!)
+                default:
+                    fatalError("Unidentified item ID")
+                }
             } else if let error = error {
                 // Handle errors.
                 self.presentAlert(error: error)
             }
         }
 //        try? FileManager.default.removeItem(at: temporaryURL)
-        return offlineVectorTiledLayer!
     }
     
     private func showSelectedItem(_ itemID: String) {
         guard let map = mapView.map else { return }
         shownItemID = itemID
-        // Set the viewpoint to display Dodge City, KS.
-        let point = AGSPoint(x: -100.01766, y: 37.76528, spatialReference: .wgs84())
-        mapView.setViewpoint(AGSViewpoint(center: point, scale: 5_000))
-        if itemID == "9a01f41307ec4add9121a40cf020a6b6" {
-            // If the custom day style is chosen, assign the local vector tile package to the basemap.
-            map.basemap = AGSBasemap(baseLayer: dayVectorTiledLayer!)
-        } else if itemID == "ce8a34e5d4ca4fa193a097511daa8855"{
-            // If the custom night style is chosen, assign the local vector tile package to the basemap.
-            map.basemap = AGSBasemap(baseLayer: nightVectorTiledLayer!)
+        // Get the vector tiled layer URL.
+        let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
+        if itemID == "9a01f41307ec4add9121a40cf020a6b6" || itemID == "ce8a34e5d4ca4fa193a097511daa8855"{
+            loadVectorTiledLayer(url: vectorTiledLayerURL, itemID: itemID)
+            // Set the viewpoint to display Dodge City, KS.
+            let point = AGSPoint(x: -100.01766, y: 37.76528, spatialReference: .wgs84())
+            mapView.setViewpoint(AGSViewpoint(center: point, scale: 5_000))
         } else {
-            // Get the vector tiled layer URL.
-            let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
             // Create a vector tiled layer from the URL.
             let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: vectorTiledLayerURL)
             map.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
@@ -102,9 +111,6 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Load the offline vector tiled layers.
-        dayVectorTiledLayer = loadVectorTiledLayer(url: URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=9a01f41307ec4add9121a40cf020a6b6")!)
-        nightVectorTiledLayer = loadVectorTiledLayer(url: URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=ce8a34e5d4ca4fa193a097511daa8855")!)
         // Show the default vector tiled layer.
         showSelectedItem(itemIDs.first!)
         // Add the source code button item to the right of navigation bar.

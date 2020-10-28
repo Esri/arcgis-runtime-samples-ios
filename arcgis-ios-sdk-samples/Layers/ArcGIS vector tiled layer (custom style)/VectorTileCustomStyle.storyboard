@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kwe-96-Xjz"/>
-                                    <barButtonItem enabled="NO" title="Change Style" id="nmT-Xl-FTP">
+                                    <barButtonItem title="Change Style" id="nmT-Xl-FTP">
                                         <connections>
                                             <segue destination="VYX-hL-6b0" kind="popoverPresentation" popoverAnchorBarButtonItem="nmT-Xl-FTP" id="nZU-hF-ES3">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>

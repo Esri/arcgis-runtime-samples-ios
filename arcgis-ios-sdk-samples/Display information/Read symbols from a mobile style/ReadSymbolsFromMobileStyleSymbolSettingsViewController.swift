@@ -120,17 +120,24 @@ class ReadSymbolsFromMobileStyleSymbolSettingsViewController: UITableViewControl
         } else if imageOperations[indexPath] != nil {
             return nil
         } else {
-            let operation = searchResult.symbol?.createSwatch(withWidth: 40, height: 40, screen: .main, backgroundColor: nil) { [weak self] (image, error) in
+            searchResult.symbol { [weak self] symbol, error in
                 guard let self = self else { return }
-                self.imageOperations[indexPath] = nil
-                if let image = image {
-                    self.cachedImages[indexPath] = image
-                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                if let symbol = symbol {
+                    let createSwatchOperation = symbol.createSwatch(withWidth: 40, height: 40, screen: .main, backgroundColor: nil) { [weak self] (image, error) in
+                        guard let self = self else { return }
+                        self.imageOperations[indexPath] = nil
+                        if let image = image {
+                            self.cachedImages[indexPath] = image
+                            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                        } else if let error = error {
+                            self.presentAlert(title: "Error creating swatch", message: error.localizedDescription)
+                        }
+                    }
+                    self.imageOperations[indexPath] = createSwatchOperation
                 } else if let error = error {
-                    print("Error cerating swatch: \(error)")
+                    self.presentAlert(error: error)
                 }
             }
-            imageOperations[indexPath] = operation
             return nil
         }
     }

@@ -77,6 +77,18 @@
 			<string>SA_EVI_8Day_03May20.zip</string>
 		</dict>
 		<dict>
+			<key>identifier</key>
+			<string>38a74d8a2a404fe8851ce32b3231f625</string>
+			<key>filename</key>
+			<string>ExchangeSetWithoutUpdates.zip</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>c16f3845b9cc4b93a908d87d28823afd</string>
+			<key>filename</key>
+			<string>hydrography.zip</string>
+    </dict>
+    <dict>
 			<key>filename</key>
 			<string>navigate_a_route_detour</string>
 			<key>identifier</key>

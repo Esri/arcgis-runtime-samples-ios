@@ -46,7 +46,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         
         if #available(iOS 13, *) {
             // Change the backgroundColor to differentiate from nav bar color.
-            searchBar.searchTextField.backgroundColor = .systemBackground
+            searchBar.searchTextField.backgroundColor = .tertiarySystemBackground
             // Set the color of the insertion cursor as well as the text. The text is default to black color whereas the cursor is white.
             searchBar.searchTextField.tintColor = .label
         } else {

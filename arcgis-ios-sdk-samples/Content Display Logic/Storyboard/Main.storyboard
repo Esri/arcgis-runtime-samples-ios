@@ -80,7 +80,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a6h-ca-33f"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Op6-nR-s0N" firstAttribute="centerX" secondItem="a6h-ca-33f" secondAttribute="centerX" id="7Te-o6-LfY"/>
                             <constraint firstItem="54t-nf-ZK2" firstAttribute="centerX" secondItem="a6h-ca-33f" secondAttribute="centerX" id="LwH-pF-D4X"/>
@@ -104,7 +104,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" id="yuT-nZ-Wrk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="VF4-1P-JDR">
                             <size key="itemSize" width="140" height="140"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -273,7 +273,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mtd-3h-Dnj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Mtd-3h-Dnj" firstAttribute="centerX" secondItem="99s-uK-gYc" secondAttribute="centerX" constant="-0.5" id="XZY-cT-gcg"/>
                             <constraint firstAttribute="centerY" secondItem="99s-uK-gYc" secondAttribute="centerY" constant="0.5" id="Ytu-54-YW5"/>
@@ -308,7 +308,7 @@
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Asf-ux-BYr"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="MfE-3m-v2G" firstAttribute="top" secondItem="Asf-ux-BYr" secondAttribute="top" id="CwL-cC-IdS"/>
                             <constraint firstItem="z5R-Ku-rtU" firstAttribute="trailing" secondItem="rXs-h5-bEr" secondAttribute="trailing" id="Io8-c8-jLg"/>
@@ -526,6 +526,9 @@
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

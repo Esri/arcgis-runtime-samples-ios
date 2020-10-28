@@ -406,7 +406,7 @@
 				<string>Load ArcGIS vector tiled layers using custom styles.</string>
 				<key>dependency</key>
 				<array>
-					<string>PSCC_vector</string>
+					<string>DodgeCity</string>
 				</array>
 			</dict>
 			<dict>

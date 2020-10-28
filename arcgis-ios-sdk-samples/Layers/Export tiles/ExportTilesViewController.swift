@@ -84,9 +84,9 @@ class ExportTilesViewController: UIViewController {
         var description: String {
             switch self {
             case .tpk:
-                return "Compact Cache V1 (.tpk)"
+                return "Compact Cache V1 (.\(fileExtension))"
             case .tpkx:
-                return "Compact Cache V2 (.tpkx)"
+                return "Compact Cache V2 (.\(fileExtension))"
             }
         }
         
@@ -106,7 +106,7 @@ class ExportTilesViewController: UIViewController {
     ///
     /// - Parameters:
     ///   - exportTask: An `AGSExportTileCacheTask` to run the export job.
-    ///   - downloadFileURL: A URL to where the tile package is saved.
+    ///   - downloadFileURL: A URL to where the tile package should be saved.
     func initiateDownload(exportTask: AGSExportTileCacheTask, downloadFileURL: URL) {
         // Get the parameters by specifying the selected area, map view's
         // current scale as the minScale, and tiled layer's max scale as
@@ -172,39 +172,42 @@ class ExportTilesViewController: UIViewController {
         return extent
     }
     
-    /// Get destination URL for the tile package.
-    private func getDownloadURL(fileFormat: TilePackageFormat) -> URL {
+    /// Make the destination URL for the tile package.
+    private func makeDownloadURL(fileFormat: TilePackageFormat) -> URL {
         // If the downloadFileURL ends with ".tpk", the tile cache will use
         // the legacy compact format. If the downloadFileURL ends with ".tpkx",
         // the tile cache will use the current compact version 2 format.
         // See more in the doc of
         // `AGSExportTileCacheTask.exportTileCacheJob(with:downloadFileURL:)`.
-        temporaryDirectoryURL.appendingPathComponent("myTileCache.\(fileFormat.fileExtension)")
+        temporaryDirectoryURL
+            .appendingPathComponent("myTileCache", isDirectory: false)
+            .appendingPathExtension(fileFormat.fileExtension)
     }
     
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
         if let exportJob = job {
-            // If it is downloading, cancel download.
+            // If an existing job is downloading, cancel the download.
             exportJob.progress.cancel()
             job = nil
-        } else {
+        } else if let mapServiceInfo = exportTask.mapServiceInfo, mapServiceInfo.exportTilesAllowed {
             // Otherwise, try to download when exporting tiles is allowed.
-            guard let mapServiceInfo = exportTask.mapServiceInfo, mapServiceInfo.exportTilesAllowed else { return }
             // Create an action sheet to choose export format.
             let alertController = UIAlertController(
                 title: "Choose Export Format",
                 message: nil,
                 preferredStyle: .actionSheet
             )
-            let allowedFormats: [TilePackageFormat] = mapServiceInfo.exportTileCacheCompactV2Allowed ? [.tpk, .tpkx] : [.tpk]
-            allowedFormats.forEach { fileFormat in
-                alertController.addAction(
-                    UIAlertAction(title: fileFormat.description, style: .default) { [unowned self] _ in
-                        self.initiateDownload(exportTask: exportTask, downloadFileURL: self.getDownloadURL(fileFormat: fileFormat))
-                    }
-                )
+            // Add the CompactV1 (.tpk) option.
+            alertController.addAction(UIAlertAction(title: TilePackageFormat.tpk.description, style: .default) { _ in
+                self.initiateDownload(exportTask: self.exportTask, downloadFileURL: self.makeDownloadURL(fileFormat: .tpk))
+            })
+            // Add the CompactV2 (.tpkx) option if it is supported.
+            if mapServiceInfo.exportTileCacheCompactV2Allowed {
+                alertController.addAction(UIAlertAction(title: TilePackageFormat.tpkx.description, style: .default) { _ in
+                    self.initiateDownload(exportTask: self.exportTask, downloadFileURL: self.makeDownloadURL(fileFormat: .tpkx))
+                })
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             alertController.addAction(cancelAction)

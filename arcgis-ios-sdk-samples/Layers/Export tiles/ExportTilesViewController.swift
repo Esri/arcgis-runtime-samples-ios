@@ -68,10 +68,10 @@ class ExportTilesViewController: UIViewController {
         }
     }
     
-    /// A URL to the temporary folder to temporarily store the exported tile package.
-    let temporaryFolderURL: URL = {
+    /// A URL to the temporary directory to temporarily store the exported tile package.
+    let temporaryDirectoryURL: URL = {
         let directoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
-        // Create and return the full, unique URL to the temporary folder.
+        // Create and return the full, unique URL to the temporary directory.
         try? FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
         return directoryURL
     }()
@@ -179,7 +179,7 @@ class ExportTilesViewController: UIViewController {
         // the tile cache will use the current compact version 2 format.
         // See more in the doc of
         // `AGSExportTileCacheTask.exportTileCacheJob(with:downloadFileURL:)`.
-        temporaryFolderURL.appendingPathComponent("myTileCache.\(fileFormat.fileExtension)")
+        temporaryDirectoryURL.appendingPathComponent("myTileCache.\(fileFormat.fileExtension)")
     }
     
     // MARK: Actions
@@ -218,8 +218,8 @@ class ExportTilesViewController: UIViewController {
         visualEffectView.isHidden = true
         // Release the map in order to free the tiled layer.
         previewMapView.map = nil
-        // Remove all files in the sample-specific temporary folder.
-        guard let files = try? FileManager.default.contentsOfDirectory(at: temporaryFolderURL, includingPropertiesForKeys: nil), !files.isEmpty else { return }
+        // Remove all files in the sample-specific temporary directory.
+        guard let files = try? FileManager.default.contentsOfDirectory(at: temporaryDirectoryURL, includingPropertiesForKeys: nil), !files.isEmpty else { return }
         files.forEach { filePath in
             try? FileManager.default.removeItem(at: filePath)
         }
@@ -243,7 +243,7 @@ class ExportTilesViewController: UIViewController {
     }
     
     deinit {
-        // Remove the temporary folder and all content in it.
-        try? FileManager.default.removeItem(at: temporaryFolderURL)
+        // Remove the temporary directory and all content in it.
+        try? FileManager.default.removeItem(at: temporaryDirectoryURL)
     }
 }

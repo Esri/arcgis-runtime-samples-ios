@@ -33,7 +33,7 @@ This terrain data comes from Monterey, California.
 
 ## Additional information
 
-The tile package must be a LERC (limited error raster compression) encoded TPKX. Details on the topic can be found in [Share a tile package](https://pro.arcgis.com/en/pro-app/help/sharing/overview/tile-package.htm) in the *ArcGIS Pro* documentation.
+The tile package must be a LERC (limited error raster compression) encoded TPK/TPKX. Details on the topic can be found in [Share a tile package](https://pro.arcgis.com/en/pro-app/help/sharing/overview/tile-package.htm) in the *ArcGIS Pro* documentation.
 
 ## Tags
 

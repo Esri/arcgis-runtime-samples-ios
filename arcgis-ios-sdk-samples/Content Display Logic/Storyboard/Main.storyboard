@@ -202,7 +202,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="22" sectionFooterHeight="22" id="5VG-Pu-2XV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ContentTableCell" id="UHI-3v-SDe" customClass="ContentTableCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="81"/>
@@ -236,6 +236,7 @@
                                         <constraint firstItem="pVi-Nv-PRP" firstAttribute="leading" secondItem="hjB-p9-kF0" secondAttribute="leadingMargin" id="loI-Zf-Lb3"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="detailLabel" destination="WF4-gk-Tcu" id="vk5-go-uAq"/>
                                     <outlet property="stackView" destination="pVi-Nv-PRP" id="Ab9-oe-EmG"/>

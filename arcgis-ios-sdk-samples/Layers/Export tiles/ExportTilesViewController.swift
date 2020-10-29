@@ -69,12 +69,7 @@ class ExportTilesViewController: UIViewController {
     }
     
     /// A URL to the temporary directory to temporarily store the exported tile package.
-    let temporaryDirectoryURL: URL = {
-        let directoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
-        // Create and return the full, unique URL to the temporary directory.
-        try? FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
-        return directoryURL
-    }()
+    let temporaryDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
     
     /// Tile Package storage formats.
     /// - Note: Please read more about the file formats at [here](https://github.com/Esri/tile-package-spec).
@@ -179,7 +174,10 @@ class ExportTilesViewController: UIViewController {
         // the tile cache will use the current compact version 2 format.
         // See more in the doc of
         // `AGSExportTileCacheTask.exportTileCacheJob(with:downloadFileURL:)`.
-        temporaryDirectoryURL
+        
+        // Create the temp directory if it doesn't exist.
+        try? FileManager.default.createDirectory(at: temporaryDirectoryURL, withIntermediateDirectories: true)
+        return temporaryDirectoryURL
             .appendingPathComponent("myTileCache", isDirectory: false)
             .appendingPathExtension(fileFormat.fileExtension)
     }
@@ -221,11 +219,8 @@ class ExportTilesViewController: UIViewController {
         visualEffectView.isHidden = true
         // Release the map in order to free the tiled layer.
         previewMapView.map = nil
-        // Remove all files in the sample-specific temporary directory.
-        guard let files = try? FileManager.default.contentsOfDirectory(at: temporaryDirectoryURL, includingPropertiesForKeys: nil), !files.isEmpty else { return }
-        files.forEach { filePath in
-            try? FileManager.default.removeItem(at: filePath)
-        }
+        // Remove the sample-specific temporary directory and all content in it.
+        try? FileManager.default.removeItem(at: temporaryDirectoryURL)
     }
     
     // MARK: UIViewController

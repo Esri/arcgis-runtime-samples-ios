@@ -28,7 +28,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
                            "bd8ac41667014d98b933e97713ba8377",
                            "02f85ec376084c508b9c8e5a311724fa",
                            "1bf0cc4a4380468fbbff107e100f65a5",
-                           "9a01f41307ec4add9121a40cf020a6b6",
+                           "e01262ef2a4f4d91897d9bbd3a9b1075",
                            "ce8a34e5d4ca4fa193a097511daa8855"]
     // The item ID of the shown layer.
     var shownItemID: String?
@@ -58,15 +58,20 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         // Create a task to export the custom style resources.
         let task = AGSExportVectorTilesTask(portalItem: portalItem)
         // Get the AGSExportVectorTilesJob.
-        exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL)
+        let exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL)
+        self.exportVectorTilesJob = exportVectorTilesJob
         // Start the job.
-        exportVectorTilesJob?.start(statusHandler: nil) { [weak self] (result, error) in
+        exportVectorTilesJob.start(
+            statusHandler: { (status: AGSJobStatus) in
+                SVProgressHUD.show(withStatus: status.statusString())
+            }, completion: { [weak self] (result, error) in
+                SVProgressHUD.dismiss()
             guard let self = self else { return }
             if let result = result {
                 // Get the item resource cache from the result.
                 let itemresourceCahce = result.itemResourceCache
                 switch itemID {
-                case "9a01f41307ec4add9121a40cf020a6b6":
+                case "e01262ef2a4f4d91897d9bbd3a9b1075":
                     if self.dayVectorTiledLayer == nil {
                         // Create a vector tiled layer with the vector tiled cache and the item resource cache.
                         self.dayVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
@@ -85,7 +90,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
                 // Handle errors.
                 self.presentAlert(error: error)
             }
-        }
+        })
 //        try? FileManager.default.removeItem(at: temporaryURL)
     }
     
@@ -94,11 +99,14 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         shownItemID = itemID
         // Get the vector tiled layer URL.
         let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
-        if itemID == "9a01f41307ec4add9121a40cf020a6b6" || itemID == "ce8a34e5d4ca4fa193a097511daa8855"{
+        if itemID == "e01262ef2a4f4d91897d9bbd3a9b1075", let dayVectorTiledLayer = dayVectorTiledLayer {
+            map.basemap = AGSBasemap(baseLayer: dayVectorTiledLayer)
+        } else if itemID == "ce8a34e5d4ca4fa193a097511daa8855", let nightVectorTiledLayer = nightVectorTiledLayer {
+            map.basemap = AGSBasemap(baseLayer: nightVectorTiledLayer)
             loadVectorTiledLayer(url: vectorTiledLayerURL, itemID: itemID)
             // Set the viewpoint to display Dodge City, KS.
             let point = AGSPoint(x: -100.01766, y: 37.76528, spatialReference: .wgs84())
-            mapView.setViewpoint(AGSViewpoint(center: point, scale: 5_000))
+            mapView.setViewpoint(AGSViewpoint(center: point, scale: 40000))
         } else {
             // Create a vector tiled layer from the URL.
             let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: vectorTiledLayerURL)

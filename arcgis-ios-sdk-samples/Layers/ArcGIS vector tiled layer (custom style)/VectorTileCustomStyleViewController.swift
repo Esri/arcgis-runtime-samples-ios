@@ -58,27 +58,28 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         // Create a task to export the custom style resources.
         let task = AGSExportVectorTilesTask(portalItem: portalItem)
         // Get the AGSExportVectorTilesJob.
-        let exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL)
-        self.exportVectorTilesJob = exportVectorTilesJob
+        exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL)
         // Start the job.
-        exportVectorTilesJob.start(
+        exportVectorTilesJob?.start(
             statusHandler: { (status: AGSJobStatus) in
                 SVProgressHUD.show(withStatus: status.statusString())
             }, completion: { [weak self] (result, error) in
                 SVProgressHUD.dismiss()
-            guard let self = self else { return }
+                guard let self = self, let map = self.mapView.map else { return }
             if let result = result {
                 // Get the item resource cache from the result.
                 let itemresourceCahce = result.itemResourceCache
                 switch itemID {
                 case "e01262ef2a4f4d91897d9bbd3a9b1075":
                     // Create a vector tiled layer with the vector tiled cache and the item resource cache.
-                    self.dayVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
-                    self.mapView.map?.basemap = AGSBasemap(baseLayer: self.dayVectorTiledLayer!)
+                    let dayVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
+                    map.basemap = AGSBasemap(baseLayer: dayVectorTiledLayer)
+                    self.dayVectorTiledLayer = dayVectorTiledLayer
                 case "ce8a34e5d4ca4fa193a097511daa8855":
                     // Create a vector tiled layer with the vector tiled cache and the item resource cache.
-                    self.nightVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
-                    self.mapView.map?.basemap = AGSBasemap(baseLayer: self.nightVectorTiledLayer!)
+                    let nightVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
+                    map.basemap = AGSBasemap(baseLayer: nightVectorTiledLayer)
+                    self.nightVectorTiledLayer = nightVectorTiledLayer
                 default:
                     fatalError("Unidentified item ID")
                 }
@@ -88,30 +89,35 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             }
             }
         )
-//        try? FileManager.default.removeItem(at: temporaryURL)
+        try? FileManager.default.removeItem(at: temporaryURL)
     }
     
     private func showSelectedItem(_ itemID: String) {
         guard let map = mapView.map else { return }
         shownItemID = itemID
-        // Get the vector tiled layer URL.
-        let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
         // Set the viewpoint to display Dodge City, KS.
         let point = AGSPoint(x: -100.01766, y: 37.76528, spatialReference: .wgs84())
         mapView.setViewpoint(AGSViewpoint(center: point, scale: 40000))
-        if itemID == "e01262ef2a4f4d91897d9bbd3a9b1075" {
+        // Get the vector tiled layer URL.
+        let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
+        switch itemID {
+        case "e01262ef2a4f4d91897d9bbd3a9b1075":
             if dayVectorTiledLayer == nil {
+                // Load the vector tiled layer from a local VTPK and style.
                 loadVectorTiledLayer(url: vectorTiledLayerURL, itemID: itemID)
+            } else {
+                // Display the layer if it has already been loaded.
+                map.basemap = AGSBasemap(baseLayer: dayVectorTiledLayer!)
             }
-            guard let dayVectorTiledLayer = dayVectorTiledLayer else { return }
-            map.basemap = AGSBasemap(baseLayer: dayVectorTiledLayer)
-        } else if itemID == "ce8a34e5d4ca4fa193a097511daa8855" {
+        case "ce8a34e5d4ca4fa193a097511daa8855":
             if nightVectorTiledLayer == nil {
+                // Load the vector tiled layer from a local VTPK and style.
                 loadVectorTiledLayer(url: vectorTiledLayerURL, itemID: itemID)
+            } else {
+                // Display the layer if it has already been loaded.
+                map.basemap = AGSBasemap(baseLayer: nightVectorTiledLayer!)
             }
-            guard let nightVectorTiledLayer = nightVectorTiledLayer else { return }
-            map.basemap = AGSBasemap(baseLayer: nightVectorTiledLayer)
-        } else {
+        default:
             // Create a vector tiled layer from the URL.
             let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: vectorTiledLayerURL)
             map.basemap = AGSBasemap(baseLayer: vectorTiledLayer)

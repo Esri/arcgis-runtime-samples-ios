@@ -138,10 +138,10 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         let graphicsOverlay = AGSGraphicsOverlay()
         // Create a graphic for the start location.
         let startSymbol = AGSSimpleMarkerSymbol(style: .cross, color: .green, size: 25)
-        let startGraphic = AGSGraphic(geometry: startLocation, symbol: startSymbol, attributes: nil)
+        let startGraphic = AGSGraphic(geometry: startLocation, symbol: startSymbol)
         // Create a graphic for the destination location.
         let destinationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .red, size: 20)
-        let destinationGraphic = AGSGraphic(geometry: destinationLocation, symbol: destinationSymbol, attributes: nil)
+        let destinationGraphic = AGSGraphic(geometry: destinationLocation, symbol: destinationSymbol)
         routeAheadGraphic.geometry = route?.routeGeometry
         // Add graphics to the graphics overlay.
         graphicsOverlay.graphics.addObjects(from: [startGraphic, destinationGraphic, routeAheadGraphic, routeTraveledGraphic])

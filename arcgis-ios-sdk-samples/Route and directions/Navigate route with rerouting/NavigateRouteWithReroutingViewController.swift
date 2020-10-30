@@ -352,11 +352,13 @@ extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDele
 extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName: String?, attributes attributeDictionary: [String: String]) {
         // Collect coordinates by checking for the lines that have a <trkpt> tag,
-        if elementName == "trkpt" {
-            //Create a World map coordinate from the file
-            let lat = Double(attributeDictionary["lat"]!)
-            let lon = Double(attributeDictionary["lon"]!)
-            let point = AGSPoint(x: lon!, y: lat!, spatialReference: .wgs84())
+        if elementName == "trkpt",
+           let latString = attributeDictionary["lat"],
+           let lonString = attributeDictionary["lon"],
+           let lat = numberFormatter.number(from: latString)?.doubleValue,
+           let lon = numberFormatter.number(from: lonString)?.doubleValue {
+            // Create a World map coordinate from the file.
+            let point = AGSPoint(x: lon, y: lat, spatialReference: .wgs84())
             gpxPoints.append(point)
         }
     }

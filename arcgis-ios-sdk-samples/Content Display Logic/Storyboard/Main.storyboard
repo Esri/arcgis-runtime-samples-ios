@@ -364,7 +364,7 @@
                             </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RfT-xO-g6f"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="e32-Rc-zGM" firstAttribute="leading" secondItem="p2z-Do-b04" secondAttribute="leading" id="Jld-qf-du7"/>
                             <constraint firstAttribute="trailing" secondItem="e32-Rc-zGM" secondAttribute="trailing" id="Jsm-fH-yTv"/>
@@ -422,7 +422,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="63H-yR-XyK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rA3-JQ-Mdx" secondAttribute="trailing" id="Gxz-aI-6b0"/>
                             <constraint firstItem="63H-yR-XyK" firstAttribute="bottom" secondItem="lOs-Xt-37W" secondAttribute="bottom" id="JNt-5r-Dnf"/>

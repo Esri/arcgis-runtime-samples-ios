@@ -161,7 +161,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     
     /// Make the simulated data source for this demo.
     ///
-    /// - Parameter route: An `AGSRoute` object whose geometry is used to configure the data source.
+    /// - Parameter polyline: An `AGSPolyline` the geometry that is used to configure the data source.
     /// - Returns: An `AGSSimulatedLocationDataSource` object.
     func makeDetourDataSource(polyline: AGSPolyline) -> AGSSimulatedLocationDataSource {
         // The mock data source to demo the navigation. Use delegate methods to update locations for the tracker.
@@ -173,10 +173,10 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     
     func makePolylineFromGPX() -> AGSPolyline {
         let gpxURL = Bundle.main.url(forResource: "navigate_a_route_detour", withExtension: "gpx")!
-        let gpxDocument = XMLParser(contentsOf: gpxURL)
-        gpxDocument?.delegate = self
-        let didParseGPX = gpxDocument?.parse()
-        if !didParseGPX!, let error = gpxDocument?.parserError {
+        guard let gpxDocument = XMLParser(contentsOf: gpxURL) else { fatalError("Could not load GPX document") }
+        gpxDocument.delegate = self
+        let didParseGPX = gpxDocument.parse()
+        if !didParseGPX, let error = gpxDocument.parserError {
             presentAlert(error: error)
         }
         return AGSPolyline(points: gpxPoints)
@@ -282,6 +282,12 @@ class NavigateRouteWithReroutingViewController: UIViewController {
             }
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Reset the sample
+        reset()
+    }
 }
 
 // MARK: - AGSRouteTrackerDelegate
@@ -345,12 +351,17 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
 extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDelegate {
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         // Update the tracker location with the new location from the simulated data source.
-        routeTracker?.trackLocation(location)
+        routeTracker?.trackLocation(location) { [ weak self ] error in
+            if let error = error {
+                self?.setStatus(message: error.localizedDescription)
+            }
+        }
     }
 }
 
 extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName: String?, attributes attributeDictionary: [String: String]) {
+        let numberFormatter = NumberFormatter()
         // Collect coordinates by checking for the lines that have a <trkpt> tag,
         if elementName == "trkpt",
            let latString = attributeDictionary["lat"],

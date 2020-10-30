@@ -4604,7 +4604,6 @@
 					MontereyElevation,
 					MontereyElevationRaster,
 					NDVIRaster,
-					PSCC_vector,
 					PacificSouthWest,
 					PublicArtShapefile,
 					Restaurant,

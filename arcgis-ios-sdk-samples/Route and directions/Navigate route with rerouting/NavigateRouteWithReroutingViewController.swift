@@ -178,7 +178,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         gpxDocument?.delegate = self
         let didParseGPX = gpxDocument?.parse()
         if !didParseGPX!, let error = gpxDocument?.parserError {
-            self.presentAlert(error: error)
+            presentAlert(error: error)
         }
         return AGSPolyline(points: gpxPoints)
     }

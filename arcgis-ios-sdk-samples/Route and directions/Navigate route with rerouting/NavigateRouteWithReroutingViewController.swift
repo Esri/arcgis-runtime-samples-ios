@@ -297,10 +297,10 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
     
     func routeTracker(_ routeTracker: AGSRouteTracker, rerouteDidCompleteWith trackingStatus: AGSTrackingStatus?, error: Error?) {
         if let error = error {
-            self.presentAlert(error: error)
-        } else {
+            presentAlert(error: error)
+        } else if let status = trackingStatus {
             // Get the new directions.
-            directionsList = (trackingStatus?.routeResult.routes.first!.directionManeuvers)!
+            directionsList = status.routeResult.routes.first!.directionManeuvers
         }
     }
     

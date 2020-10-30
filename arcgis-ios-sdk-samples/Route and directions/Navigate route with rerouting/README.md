@@ -45,7 +45,7 @@ Tap "Navigate" to simulate traveling and to receive directions from a preset sta
 
 ## Offline data
 
-The [Navigate a Route GPX Track](https://arcgisruntime.maps.arcgis.com/home/item.html?id=91e7e6be79cc4d2f8416eff867674c1e) provides a simulated path for the device to demonstrate routing while travelling.
+The [Navigate a Route GPX Track](https://arcgisruntime.maps.arcgis.com/home/item.html?id=91e7e6be79cc4d2f8416eff867674c1e) provides a simulated path for the device to demonstrate routing while traveling.
 
 ## About the data
 

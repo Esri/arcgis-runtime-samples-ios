@@ -1,0 +1,27 @@
+{
+    "category": "Geometry",
+    "description": "Generate multiple individual buffers or a single unioned buffer around multiple points.",
+    "ignore": false,
+    "images": [
+        "buffer-list.png"
+    ],
+    "keywords": [
+        "analysis",
+        "buffer",
+        "geometry",
+        "planar",
+        "AGSGeometry",
+        "AGSSpatialReference",
+        "class AGSGeometryEngine.bufferGeometries(_:distances:unionResults:)"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSGeometry",
+        "AGSSpatialReference",
+        "class AGSGeometryEngine.bufferGeometries(_:distances:unionResults:)"
+    ],
+    "snippets": [
+        "BufferListViewController.swift"
+    ],
+    "title": "Buffer list"
+}

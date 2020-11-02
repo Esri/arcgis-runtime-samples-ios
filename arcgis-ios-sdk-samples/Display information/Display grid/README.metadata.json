@@ -1,33 +1,47 @@
 {
     "category": "Display information",
-    "description": "Display coordinate system grids including Latitude/Longitude, MGRS, UTM and USNG on a map view.",
+    "description": "Display coordinate system grids including Latitude-Longitude, MGRS, UTM and USNG on a map view.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "display-grid.png"
     ],
     "keywords": [
+        "MGRS",
+        "USNG",
+        "UTM",
+        "coordinates",
+        "degrees",
         "graticule",
-        "map view",
-        "scene view",
-        "AGSMapView",
+        "grid",
+        "latitude",
+        "longitude",
+        "minutes",
+        "seconds",
         "AGSGrid",
         "AGSLatitudeLongitudeGrid",
         "AGSMGRSGrid",
-        "AGSUTMGrid",
-        "AGSUSNGGrid"
+        "AGSMapView",
+        "AGSSimpleLineSymbol",
+        "AGSTextSymbol",
+        "AGSUSNGGrid",
+        "AGSUTMGrid"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/display-grid.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/display-grid.htm"
+    ],
     "relevant_apis": [
-        "AGSMapView",
         "AGSGrid",
         "AGSLatitudeLongitudeGrid",
         "AGSMGRSGrid",
-        "AGSUTMGrid",
-        "AGSUSNGGrid"
+        "AGSMapView",
+        "AGSSimpleLineSymbol",
+        "AGSTextSymbol",
+        "AGSUSNGGrid",
+        "AGSUTMGrid"
     ],
     "snippets": [
-        "DisplayGridViewController.swift",
-        "DisplayGridSettingsViewController.swift"
+        "DisplayGridSettingsViewController.swift",
+        "DisplayGridViewController.swift"
     ],
     "title": "Display grid"
 }

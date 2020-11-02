@@ -1,18 +1,32 @@
 # Delete features (feature service)
 
-This sample demonstrates how to delete features from a feature layer that uses a feature service.
+Delete features from an online feature service.
+
+![Choose a feature to delete](delete-features-1.png)
+![Confirm deletion](delete-features-2.png)
+
+## Use case
+
+Sometimes users may want to delete features from an online feature service.
 
 ## How to use the sample
 
-Tap on a feature on the map. The callout should show. Tap on the trash button in the callout to delete the feature. An alert should show asking for confirmation
-
-![](image1.png)
-![](image2.png)
+Tap on a feature to display a callout. Tap on the trash can icon in the callout to delete the feature.
 
 ## How it works
 
-The sample uses the `geoView(_:didTapAtScreenPoint:mapPoint:)` method on `AGSGeoViewTouchDelegate` to get the tapped point. Identifies the feature around that point using `identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)` method on `AGSMapView`. It then shows a callout for that feature using the `show(for:tapLocation:animated:)` method on `mapView.callout`. When tapped on the trash icon, it deletes feature using `delete(_:completion:)` method and applies the edit to the service using the `applyEdits(completion:)` method.
+1. Create an `AGSServiceFeatureTable` object from a URL.
+2. Create an `AGSFeatureLayer` object from the `AGSServiceFeatureTable`.
+3. Identify the selected feature by using `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)`.
+4. Remove the selected features from the `AGSServiceFeatureTable` using `AGSFeatureTable.delete(_:completion:)`.
+5. Update the table on the server using `AGSServiceFeatureTable.applyEdits(completion:)`.
 
+## Relevant API
 
+* AGSFeature
+* AGSFeatureLayer
+* AGSServiceFeatureTable
 
+## Tags
 
+deletion, feature, online, Service, table

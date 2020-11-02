@@ -17,21 +17,16 @@ import WebKit
 
 class SampleInfoViewController: UIViewController {
     /// The web view that displays the readme.
-    @IBOutlet private weak var webView: WKWebView!
+    @IBOutlet var webView: WKWebView! {
+        didSet {
+            webView.navigationDelegate = self
+        }
+    }
     
     var readmeURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // We must construct the web view in code as long as we support iOS 10.
-        // Prior to iOS 11, there was a bug in WKWebView.init(coder:) that
-        // caused a crash.
-        let webView = WKWebView(frame: view.bounds)
-        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        webView.navigationDelegate = self
-        view.addSubview(webView)
-        self.webView = webView
         
         if let readmeURL = readmeURL,
             let html = markdownTextFromFile(at: readmeURL) {
@@ -53,7 +48,8 @@ class SampleInfoViewController: UIViewController {
     }
     
     func displayHTML(_ readmeContent: String) {
-        let cssPath = Bundle.main.path(forResource: "style", ofType: "css") ?? ""
+        let cssPath = Bundle.main.path(forResource: "style", ofType: "css")!
+        let darkmodePath = Bundle.main.path(forResource: "darkmode", ofType: "css")!
         let string = """
             <!doctype html>
             <html>
@@ -61,6 +57,7 @@ class SampleInfoViewController: UIViewController {
                 <link rel="stylesheet" href="\(cssPath)">
                 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css">
                 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+                <link rel="stylesheet" href="\(darkmodePath)">
                 <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height">
             </head>
             <body>

@@ -14,13 +14,13 @@ Pan and zoom to position the red rectangle around the area to be taken offline. 
 
 ## How it works
 
-1. Create a geodatabase sync task from a URL to a feature service.
-2. Generate the geodatabase sync task to create geodatabase parameters by passing in an envelope extent as the parameter.
-3. Create a generate job, passing in the parameters and a path to where the geodatabase should be downloaded locally.
+1. Create an `AGSGeodatabaseSyncTask` from a URL to a feature service.
+2. Generate the geodatabase sync task with default parameters using `AGSGeodatabaseSyncTask.defaultGenerateGeodatabaseParameters(withExtent:completion:)`.
+3. Create an `AGSGenerateGeodatabaseJob` object using `AGSGeodatabaseSyncTask.generateJob(with:downloadFileURL:)`, passing in the parameters and a path to where the geodatabase should be downloaded locally.
 4. Start the job and get a geodatabase as a result.
-5. Set the sync direction.
+5. Set the sync direction to `.bidirectional`.
 6. To enable editing, load the geodatabase and get its feature tables. Create feature layers from the feature tables and add them to the map's operational layers collection.
-7. Create a sync job passing in the parameters and geodatabase as arguments.
+7. Create an `AGSSyncGeodatabaseJob` object using `AGSGeodatabaseSyncTask.syncJob(with:geodatabase:)`, passing in the parameters and geodatabase as arguments.
 8. Start the sync job to synchronize the edits.
 
 ## Relevant API

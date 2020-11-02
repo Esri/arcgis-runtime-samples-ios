@@ -1,14 +1,35 @@
 {
     "category": "Analysis",
-    "description": "This sample demonstrates how to attach a viewshed to a moving GeoElement.",
+    "description": "Analyze the viewshed for an object (geo element) in a scene.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "viewshed-geoelement.png"
     ],
     "keywords": [
+        "3D",
+        "analysis",
+        "buildings",
+        "model",
+        "scene",
+        "viewshed",
+        "visibility analysis",
+        "AGSAnalysisOverlay",
+        "AGSGeoElementViewshed",
+        "AGSGeodeticDistanceResult",
+        "AGSGeometryEngine",
+        "AGSModelSceneSymbol",
+        "AGSOrbitGeoElementCameraController"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/viewshed-geoelement-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/viewshed-geoelement-.htm"
+    ],
     "relevant_apis": [
+        "AGSAnalysisOverlay",
+        "AGSGeoElementViewshed",
+        "AGSGeodeticDistanceResult",
+        "AGSGeometryEngine",
+        "AGSModelSceneSymbol",
+        "AGSOrbitGeoElementCameraController"
     ],
     "snippets": [
         "ViewshedGeoElementViewController.swift"

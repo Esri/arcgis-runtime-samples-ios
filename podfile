@@ -1,4 +1,5 @@
-platform :ios, '11.0'
+platform :ios, '12.0'
 target 'ArcGIS Runtime SDK Samples' do
-  pod 'ArcGIS-Runtime-Toolkit-iOS', '~> 100.7'
+  use_frameworks!
+  pod 'ArcGIS-Runtime-Toolkit-iOS', '~> 100.9'
 end

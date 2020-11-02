@@ -3,17 +3,22 @@
     "description": "Apply scheduled updates to a downloaded preplanned map area.",
     "ignore": false,
     "images": [
-        "ApplyScheduledUpdatesToPreplannedMapArea.png"
+        "apply-scheduled-updates-to-preplanned-map-area.png"
     ],
     "keywords": [
         "offline",
-        "preplanned",
         "pre-planned",
+        "preplanned",
         "synchronize",
-        "update"
+        "update",
+        "AGSMobileMapPackage",
+        "AGSOfflineMapSyncJob",
+        "AGSOfflineMapSyncParameters",
+        "AGSOfflineMapSyncResult",
+        "AGSOfflineMapSyncTask",
+        "AGSOfflineMapUpdatesInfo"
     ],
-    "redirect_from": [
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSMobileMapPackage",
         "AGSOfflineMapSyncJob",

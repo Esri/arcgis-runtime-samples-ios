@@ -1,0 +1,26 @@
+{
+    "category": "Cloud and portal",
+    "description": "Connect to an IWA secured Portal and search for maps.",
+    "ignore": false,
+    "images": [
+        "integrated-windows-authentication.png"
+    ],
+    "keywords": [
+        "Windows",
+        "authentication",
+        "portal",
+        "security",
+        "AGSPortal"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSPortal"
+    ],
+    "snippets": [
+        "IntegratedWindowsAuthenticationMapViewController.swift",
+        "IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift",
+        "IntegratedWindowsAuthenticationSearchTableViewCell.swift",
+        "IntegratedWindowsAuthenticationViewController.swift"
+    ],
+    "title": "Integrated Windows Authentication"
+}

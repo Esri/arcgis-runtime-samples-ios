@@ -1,20 +1,30 @@
 {
     "category": "Layers",
-    "description": "Display a raster contained in a GeoPackage file.",
+    "description": "Display a raster contained in a GeoPackage.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "raster-layer-geopackage.png"
     ],
     "keywords": [
         "OGC",
-        "GeoPackage",
+        "container",
+        "data",
+        "image",
+        "import",
+        "layer",
+        "package",
         "raster",
+        "visualization",
         "AGSGeoPackage",
+        "AGSGeoPackageRaster",
         "AGSRasterLayer"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/raster-layer-geopackage-.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/raster-layer-geopackage-.htm"
+    ],
     "relevant_apis": [
         "AGSGeoPackage",
+        "AGSGeoPackageRaster",
         "AGSRasterLayer"
     ],
     "snippets": [

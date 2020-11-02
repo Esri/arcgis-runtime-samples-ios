@@ -175,4 +175,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 extension UIColor {
     // Also used as global tint/accent color.
     class var accentColor: UIColor { return UIColor(named: "AccentColor")! }
+    // The translucent background color for status labels.
+    class var statusLabelBackgroundColor: UIColor { return UIColor(named: "statusLabelBackgroundColor")! }
 }

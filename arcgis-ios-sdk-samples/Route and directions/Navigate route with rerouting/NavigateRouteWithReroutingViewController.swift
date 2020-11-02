@@ -351,7 +351,7 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
 extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDelegate {
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         // Update the tracker location with the new location from the simulated data source.
-        routeTracker?.trackLocation(location) { [ weak self ] error in
+        routeTracker?.trackLocation(location) { [weak self] error in
             if let error = error {
                 self?.setStatus(message: error.localizedDescription)
             }

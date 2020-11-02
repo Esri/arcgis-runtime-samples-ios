@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wbC-YQ-IFf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wbC-YQ-IFf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,13 +23,14 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting up ARKit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvw-so-ZTT">
                                 <rect key="frame" x="0.0" y="44" width="414" height="21"/>
-                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Jsj-Q3-6Gy"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Hvw-so-ZTT" firstAttribute="top" secondItem="Jsj-Q3-6Gy" secondAttribute="top" id="COM-6c-ceI"/>
                             <constraint firstAttribute="trailing" secondItem="arp-qo-cpt" secondAttribute="trailing" id="HkV-3l-y1E"/>
@@ -37,7 +40,6 @@
                             <constraint firstItem="arp-qo-cpt" firstAttribute="top" secondItem="Jsj-Q3-6Gy" secondAttribute="top" id="xfq-QR-o6j"/>
                             <constraint firstAttribute="trailing" secondItem="Hvw-so-ZTT" secondAttribute="trailing" id="y9g-tD-vwY"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Jsj-Q3-6Gy"/>
                     </view>
                     <connections>
                         <outlet property="arKitStatusLabel" destination="Hvw-so-ZTT" id="Zx9-wO-jBa"/>
@@ -49,4 +51,12 @@
             <point key="canvasLocation" x="141" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

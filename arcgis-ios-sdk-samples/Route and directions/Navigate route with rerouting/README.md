@@ -53,7 +53,7 @@ The route taken in this sample goes from the San Diego Convention Center, site o
 
 ## Additional information
 
-The route tracker will start a rerouting calculation automatically as necessary when the device's location indicates that it is off-route. The route tracker also validates that the device is "on" the transportation network, if it is not (e.g. in a parking lot) rerouting will not occur until the device location indicates that it is back "on" the transportation network.
+The route tracker will start a rerouting calculation automatically as necessary when the device's location indicates that it is off-route. The route tracker also validates that the device is "on" the transportation network. If it is not (e.g. in a parking lot), rerouting will not occur until the device location indicates that it is back "on" the transportation network.
 
 ## Tags
 

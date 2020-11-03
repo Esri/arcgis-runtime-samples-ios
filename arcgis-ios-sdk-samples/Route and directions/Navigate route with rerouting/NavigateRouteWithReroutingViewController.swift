@@ -114,6 +114,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     }
     
     // MARK: Instance methods
+    
     /// A wrapper function for operations after the route is solved by an `AGSRouteTask`.
     ///
     /// - Parameter routeResult: The result from `AGSRouteTask.solveRoute(with:completion:)`.

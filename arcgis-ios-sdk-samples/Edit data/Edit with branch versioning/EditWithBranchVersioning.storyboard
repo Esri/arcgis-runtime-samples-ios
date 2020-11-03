@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="soL-GT-eo7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="soL-GT-eo7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,14 +31,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <viewLayoutGuide key="safeArea" id="F8K-HY-PDY"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Y0j-pn-QCO" secondAttribute="bottom" id="554-9S-VFn"/>
                                     <constraint firstItem="Y0j-pn-QCO" firstAttribute="leading" secondItem="F8K-HY-PDY" secondAttribute="leading" id="AUQ-fP-qcI"/>
                                     <constraint firstItem="F8K-HY-PDY" firstAttribute="trailing" secondItem="Y0j-pn-QCO" secondAttribute="trailing" id="db2-3U-MOa"/>
                                     <constraint firstItem="Y0j-pn-QCO" firstAttribute="top" secondItem="pce-Gl-BxP" secondAttribute="top" id="eWE-eC-Wzb"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="F8K-HY-PDY"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agZ-fN-G1x">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
@@ -57,7 +59,8 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5nu-f2-R64"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="agZ-fN-G1x" firstAttribute="leading" secondItem="xWv-0q-hDA" secondAttribute="leading" id="4I7-u6-azr"/>
                             <constraint firstItem="pce-Gl-BxP" firstAttribute="trailing" secondItem="xWv-0q-hDA" secondAttribute="trailing" id="7Tq-Vj-1WT"/>
@@ -70,7 +73,6 @@
                             <constraint firstItem="pce-Gl-BxP" firstAttribute="top" secondItem="4zy-TU-Kb0" secondAttribute="top" id="q7O-yh-3Mu"/>
                             <constraint firstItem="pce-Gl-BxP" firstAttribute="leading" secondItem="xWv-0q-hDA" secondAttribute="leading" id="tq6-ez-byE"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="5nu-f2-R64"/>
                     </view>
                     <connections>
                         <outlet property="createBarButtonItem" destination="hQm-w1-CUc" id="3qd-Hw-zWt"/>
@@ -84,4 +86,12 @@
             <point key="canvasLocation" x="581" y="-152"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

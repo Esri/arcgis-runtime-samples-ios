@@ -36,6 +36,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     }
     
     // MARK: Instance properties
+    
     var route: AGSRoute?
     /// The route task to solve the route between stops, using the online routing service.
     let routeTask = AGSRouteTask(databaseName: "sandiego", networkName: "Streets_ND")

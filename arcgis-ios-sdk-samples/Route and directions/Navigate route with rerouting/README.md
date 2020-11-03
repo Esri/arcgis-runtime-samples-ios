@@ -24,7 +24,7 @@ Tap "Navigate" to simulate traveling and to receive directions from a preset sta
 8. Implement `AGSLocationChangeHandlerDelegate.locationDataSource(_:locationDidChange:)` to track the location of the device and update the route tracking status.
 9. Implement `AGSRouteTrackerDelegate.routeTracker(_:didUpdate:)` to be notified of `AGSTrackingStatus` changes, and use them to display updated route information. `AGSTrackingStatus` includes a variety of information on the route progress, such as the remaining distance, remaining geometry or traversed geometry (represented by an `AGSPolyline`), or the remaining time (`Double`), amongst others.
 10. Implement `AGSRouteTrackerDelegate.routeTracker(_:didGenerateNewVoiceGuidance:)` to be notified of new voice guidances. From the voice guidance, get the `AGSVoiceGuidance.text` representing the directions and use a text-to-speech engine to output the maneuver directions.
-11. You can also query the tracking status for the current `AGSDirectionManeuver` index, retrieve that maneuver from the `AGSRoute`, and get its direction text to display in the GUI.
+11. You can also query the tracking status for the current `AGSDirectionManeuver` index by retrieving that maneuver from the `AGSRoute` and getting its direction text to display in the GUI.
 12. To establish whether the destination has been reached, get the `destinationStatus` from the tracking status. If the destination status is `reached` and the `remainingDestinationCount` is 1, you have arrived at the destination and can stop routing. If there are several destinations on your route and the remaining destination count is greater than 1, switch the route tracker to the next destination.
 
 ## Relevant API

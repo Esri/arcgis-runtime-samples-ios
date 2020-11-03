@@ -18,6 +18,7 @@ import ArcGIS
 
 class NavigateRouteWithReroutingViewController: UIViewController {
     // MARK: Storyboard views
+    
     /// The label to display navigation status.
     @IBOutlet var statusLabel: UILabel!
     /// The button to start navigation.

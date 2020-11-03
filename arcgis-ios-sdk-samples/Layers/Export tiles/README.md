@@ -15,7 +15,7 @@ Pan and zoom into the desired area, making sure the area is within the red bound
 
 ## How it works
 
-1. Create a map and set its `minScale` to 1e7. This will reduce the size of the exported tile package so that it takes less time to download.
+1. Create a map and set its `minScale` to 10,000,000. Limiting the scale in this sample limits the potential size of the selection area, thereby keeping the exported tile package to a reasonable size.
 2. Create an `AGSExportTileCacheTask`, passing in the URL of the tiled layer.
 3. Create default `AGSExportTileCacheParameters` for the task, specifying the area of interest, minimum scale and maximum scale.
 4. Use the parameters and a path to create an `AGSExportTileCacheJob` from the task.

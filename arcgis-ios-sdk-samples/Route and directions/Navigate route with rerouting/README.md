@@ -21,7 +21,7 @@ Tap "Navigate" to simulate traveling and to receive directions from a preset sta
 5. Solve the route using `AGSRouteTask.solveRoute(with:completion:)` to get an `AGSRouteResult`.
 6. Create an `AGSRouteTracker` using the route result, and the index of the desired route to take.
 7. Enable rerouting in the route tracker using `AGSRouteTracker.enableRerouting(with:routeParameters:strategy:visitFirstStopOnStart:completion:)`. Pass `AGSReroutingStrategy.toNextWaypoint` as the value of `strategy` to specify that in the case of a reroute, the new route goes from present location to next waypoint or stop.
-8. Use `AGSLocationChangeHandlerDelegate.locationDataSource(_:locationDidChange:)` to track the location of the device and update the route tracking status.
+8. Implement `AGSLocationChangeHandlerDelegate.locationDataSource(_:locationDidChange:)` to track the location of the device and update the route tracking status.
 9. Use `AGSRouteTrackerDelegate.routeTracker(_:didUpdate:)` to be notified of `AGSTrackingStatus` changes, and use them to display updated route information. `AGSTrackingStatus` includes a variety of information on the route progress, such as the remaining distance, remaining geometry or traversed geometry (represented by an `AGSPolyline`), or the remaining time (`Double`), amongst others.
 10. Use `AGSRouteTrackerDelegate.routeTracker(_:didGenerateNewVoiceGuidance:)` to be notified of new voice guidances. From the voice guidance, get the `AGSVoiceGuidance.text` representing the directions and use a text-to-speech engine to output the maneuver directions.
 11. You can also query the tracking status for the current `AGSDirectionManeuver` index, retrieve that maneuver from the `AGSRoute`, and get its direction text to display in the GUI.

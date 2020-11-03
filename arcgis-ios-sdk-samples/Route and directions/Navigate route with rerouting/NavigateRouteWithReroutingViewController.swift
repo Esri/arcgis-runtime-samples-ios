@@ -108,10 +108,11 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         mapView.locationDisplay.autoPanMode = .navigation
         recenterBarButtonItem.isEnabled = false
         mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] _ in
-            DispatchQueue.main.async { [weak self] in
-                self?.recenterBarButtonItem.isEnabled = true
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.recenterBarButtonItem.isEnabled = true
+                self.mapView.locationDisplay.autoPanModeChangedHandler = nil
             }
-            self?.mapView.locationDisplay.autoPanModeChangedHandler = nil
         }
     }
     

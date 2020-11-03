@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cvY-7M-ZXh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cvY-7M-ZXh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,21 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzi-IO-kfE" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tAH-tt-W9l">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions and feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tx-3F-CSy">
-                                        <rect key="frame" x="10" y="12" width="394" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <edgeInsets key="layoutMargins" top="12" left="10" bottom="12" right="10"/>
+                                <viewLayoutGuide key="safeArea" id="ICA-iz-QNp"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <constraints>
+                                    <constraint firstItem="0tx-3F-CSy" firstAttribute="top" secondItem="tAH-tt-W9l" secondAttribute="top" id="6by-Zg-1c7"/>
+                                    <constraint firstItem="0tx-3F-CSy" firstAttribute="trailing" secondItem="ICA-iz-QNp" secondAttribute="trailing" id="Rc6-Rk-HC6"/>
+                                    <constraint firstItem="0tx-3F-CSy" firstAttribute="leading" secondItem="ICA-iz-QNp" secondAttribute="leading" id="qg9-S3-WE2"/>
+                                    <constraint firstItem="0tx-3F-CSy" firstAttribute="bottom" secondItem="tAH-tt-W9l" secondAttribute="bottom" id="xKF-yd-R9M"/>
+                                </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzi-IO-kfE" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="88.5" width="414" height="724.5"/>
-                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egb-ry-ghj">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
@@ -88,9 +97,10 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="NjT-hr-oyQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pzi-IO-kfE" firstAttribute="top" secondItem="tAH-tt-W9l" secondAttribute="bottom" id="0Mj-Fl-txx"/>
+                            <constraint firstItem="pzi-IO-kfE" firstAttribute="top" secondItem="NjT-hr-oyQ" secondAttribute="top" id="0Mj-Fl-txx"/>
                             <constraint firstItem="tAH-tt-W9l" firstAttribute="top" secondItem="NjT-hr-oyQ" secondAttribute="top" id="5pH-bI-rIv"/>
                             <constraint firstItem="Egb-ry-ghj" firstAttribute="leading" secondItem="BT5-Ci-f7L" secondAttribute="leading" id="KDi-UL-ezP"/>
                             <constraint firstItem="Egb-ry-ghj" firstAttribute="bottom" secondItem="NjT-hr-oyQ" secondAttribute="bottom" id="VaC-k1-529"/>
@@ -101,7 +111,6 @@
                             <constraint firstItem="tAH-tt-W9l" firstAttribute="leading" secondItem="BT5-Ci-f7L" secondAttribute="leading" id="rnW-Rp-hTk"/>
                             <constraint firstItem="pzi-IO-kfE" firstAttribute="leading" secondItem="BT5-Ci-f7L" secondAttribute="leading" id="tBH-Ll-mm1"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="NjT-hr-oyQ"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="pzi-IO-kfE" id="3PV-ce-qwm"/>
@@ -118,4 +127,12 @@
             <point key="canvasLocation" x="-117.39130434782609" y="166.74107142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

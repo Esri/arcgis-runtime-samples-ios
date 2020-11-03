@@ -17,37 +17,49 @@ import WebKit
 
 class SourceCodeViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     /// The view to which the web view is added.
-    @IBOutlet private weak var contentView: UIView!
+    @IBOutlet var contentView: UIView!
     /// The web view that displays the source code.
-    @IBOutlet private weak var webView: WKWebView!
-    @IBOutlet private weak var toolbarTitleButton: UIBarButtonItem!
+    @IBOutlet var webView: WKWebView!
+    @IBOutlet var toolbarTitleButton: UIBarButtonItem! {
+        didSet {
+            if filenames.count <= 1 {
+                if #available(iOS 13.0, *) {
+                    toolbarTitleButton.tintColor = UIColor.label
+                } else {
+                    toolbarTitleButton.tintColor = UIColor.black
+                }
+            }
+            toolbarTitleButton.possibleTitles = Set(filenames)
+        }
+    }
     
     private var listViewController: ListViewController!
     private var selectedFilenameIndex = 0
     var filenames = [String]()
+    private var currentFilename: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // We must construct the web view in code as long as we support iOS 10.
-        // Prior to iOS 11, there was a bug in WKWebView.init(coder:) that
-        // caused a crash.
-        let webView = WKWebView(frame: contentView.bounds)
-        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        webView.scrollView.alwaysBounceHorizontal = true
-        contentView.addSubview(webView)
-        self.webView = webView
-        
-        if let filename = filenames.first {
+        if let filename = currentFilename {
+            loadHTMLPage(filename: filename)
+        } else if let filename = filenames.first {
+            currentFilename = filename
             loadHTMLPage(filename: filename)
         }
     }
     
+    // Change the highlight.js rendered HTML when switch between modes.
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        loadHTMLPage(filename: currentFilename)
+    }
+    
     func loadHTMLPage(filename: String) {
-        if let content = self.contentOfFile(filename) {
-            self.setupToolbarTitle(filename, arrowPointingDown: true)
-            let htmlString = self.htmlStringForContent(content)
-            self.webView.loadHTMLString(htmlString, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+        if let content = contentOfFile(filename) {
+            setupToolbarTitle(filename, arrowPointingDown: true)
+            let htmlString = htmlStringForContent(content)
+            webView.loadHTMLString(htmlString, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
         }
     }
     
@@ -63,13 +75,17 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     }
     
     func htmlStringForContent(_ content: String) -> String {
-        let cssPath = Bundle.main.path(forResource: "xcode", ofType: "css") ?? ""
-        let jsPath = Bundle.main.path(forResource: "highlight.pack", ofType: "js") ?? ""
-        let scale = UIDevice.current.userInterfaceIdiom == .phone ? "0.5" : "1.0"
+        let cssPath: String
+        if traitCollection.userInterfaceStyle == .dark {
+            cssPath = Bundle.main.path(forResource: "solarized-dark", ofType: "css")!
+        } else {
+            cssPath = Bundle.main.path(forResource: "xcode", ofType: "css")!
+        }
+        let jsPath = Bundle.main.path(forResource: "highlight.pack", ofType: "js")!
         let stringForHTML = """
             <html>
             <head>
-                <meta name='viewport' content='width=device-width, initial-scale='\(scale)'/>
+                <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height">
                 <link rel="stylesheet" href="\(cssPath)">
                 <script src="\(jsPath)"></script>
                 <script>hljs.initHighlightingOnLoad();</script>
@@ -83,13 +99,13 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     }
     
     func setupToolbarTitle(_ filename: String, arrowPointingDown: Bool) {
-        var titleString = filename
+        let titleString: String
         if filenames.count > 1 {
             titleString = String(format: "%@ %@", (arrowPointingDown ? "▶︎" : " \u{25B4}"), filename)
         } else {
-            self.toolbarTitleButton.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+            titleString = filename
         }
-        self.toolbarTitleButton.title = titleString
+        toolbarTitleButton.title = titleString
     }
     
     // MARK: - Navigation
@@ -118,6 +134,6 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
+        return .none
     }
 }

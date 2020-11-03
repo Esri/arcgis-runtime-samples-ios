@@ -116,8 +116,7 @@ func uncompressArchive(at sourceURL: URL, to destinationURL: URL) throws {
     let process = Process()
     process.executableURL = URL(fileURLWithPath: "/usr/bin/unzip", isDirectory: false)
     // Unzip the archive into a specified sub-folder and silence the output.
-    // "-j" is passed in to get rid of redundant subfolder.
-    process.arguments = ["-jq", sourceURL.path, "-d", destinationURL.path]
+    process.arguments = ["-q", sourceURL.path, "-d", destinationURL.path]
     
     try process.run()
     process.waitUntilExit()

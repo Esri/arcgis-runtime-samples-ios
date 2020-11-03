@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             navigationBarAppearance.configureWithTransparentBackground()
             navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
             navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navigationBarAppearance.backgroundColor = .primaryBlue
+            navigationBarAppearance.backgroundColor = .accentColor
             
             navigationBarAppearanceProxy.standardAppearance = navigationBarAppearance
             navigationBarAppearanceProxy.compactAppearance = navigationBarAppearance
@@ -114,15 +114,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         } else {
             navigationBarAppearanceProxy.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
             navigationBarAppearanceProxy.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navigationBarAppearanceProxy.barTintColor = .primaryBlue
+            navigationBarAppearanceProxy.barTintColor = .accentColor
         }
+        UISwitch.appearance().onTintColor = .accentColor
         navigationBarAppearanceProxy.tintColor = .white
-        
-        UIToolbar.appearance().barTintColor = .backgroundGray
-        UIToolbar.appearance().tintColor = .primaryBlue
-        
-        UISwitch.appearance().onTintColor = .primaryBlue
-        UISlider.appearance().tintColor = .primaryBlue
+        if #available(iOS 14.0, *) {
+            // Nothing to do! iOS 14 handles global tint with accent color.
+        } else {
+            // Override tint color for `UIControl`s.
+            UIToolbar.appearance().tintColor = .accentColor
+            UISlider.appearance().tintColor = .accentColor
+            UITableViewCell.appearance().tintColor = .accentColor
+            UIProgressView.appearance().tintColor = .accentColor
+            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .accentColor
+            UIButton.appearance(whenContainedInInstancesOf: [AGSCallout.self]).tintColor = .accentColor
+        }
     }
 
     // MARK: - Split view
@@ -169,9 +175,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 }
 
 extension UIColor {
-    class var primaryBlue: UIColor { return #colorLiteral(red: 0, green: 0.475, blue: 0.757, alpha: 1) }
-    class var secondaryBlue: UIColor { return #colorLiteral(red: 0, green: 0.368, blue: 0.584, alpha: 1) }
-    class var backgroundGray: UIColor { return #colorLiteral(red: 0.973, green: 0.973, blue: 0.973, alpha: 1) }
-    class var primaryTextColor: UIColor { return #colorLiteral(red: 0.196, green: 0.196, blue: 0.196, alpha: 1) }
-    class var secondaryTextColor: UIColor { return #colorLiteral(red: 0.349, green: 0.349, blue: 0.349, alpha: 1) }
+    // Also used as global tint/accent color.
+    class var accentColor: UIColor { return UIColor(named: "AccentColor")! }
+    // The translucent background color for status labels.
+    class var statusLabelBackgroundColor: UIColor { return UIColor(named: "statusLabelBackgroundColor")! }
 }

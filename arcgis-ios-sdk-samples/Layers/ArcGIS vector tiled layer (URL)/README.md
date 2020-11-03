@@ -1,12 +1,27 @@
 # ArcGIS vector tiled layer (URL)
 
-This sample demonstrates how to create a vector tile layer from a URL
+Load an ArcGIS vector tiled layer from a URL.
 
-![](image1.png)
+![ArcGIS vector tiled layer (URL) sample](vector-tiled-layer-url.png)
+
+## Use case
+
+Vector tile basemaps can be created in ArcGIS Pro and published as offline packages or online services. `ArcGISVectorTiledLayer` has many advantages over traditional raster based basemaps (`ArcGISTiledLayer`), including smooth scaling between different screen DPIs, smaller package sizes, and the ability to rotate symbols and labels dynamically.
+
+## How to use the sample
+
+Use the bottom button to load different vector tile basemaps.
 
 ## How it works
 
-`AGSArcGISVectorTiledLayer` provides an initializer called `init(url:)` that takes a URL
+1. Create an `AGSArcGISVectorTiledLayer` with an ArcGIS Online service URL.
+2. Add the layer as an `AGSBasemap` to the `AGSMap`.
 
+## Relevant API
 
+* AGSArcGISVectorTiledLayer
+* AGSBasemap
 
+## Tags
+
+tiles, vector, vector basemap, vector tiled layer, vector tiles

@@ -1,14 +1,24 @@
 {
     "category": "Maps",
-    "description": "This samples demonstrates how to display a map with a basemap",
+    "description": "Display a map with an imagery basemap.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "display-map.png"
     ],
     "keywords": [
+        "basemap",
+        "map",
+        "AGSBasemap",
+        "AGSMap",
+        "AGSMapView"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/display-a-map.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/display-a-map.htm"
+    ],
     "relevant_apis": [
+        "AGSBasemap",
+        "AGSMap",
+        "AGSMapView"
     ],
     "snippets": [
         "DisplayMapViewController.swift"

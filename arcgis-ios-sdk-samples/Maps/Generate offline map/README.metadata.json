@@ -1,14 +1,32 @@
 {
     "category": "Maps",
-    "description": "This sample demonstrates how to generate an offline map for a web map in ArcGIS Portal.",
+    "description": "Take a web map offline.",
     "ignore": false,
     "images": [
-        "image1.png"
+        "generate-offline-map.png"
     ],
     "keywords": [
+        "download",
+        "offline",
+        "save",
+        "web map",
+        "AGSGenerateOfflineMapJob",
+        "AGSGenerateOfflineMapParameters",
+        "AGSGenerateOfflineMapResult",
+        "AGSOfflineMapTask",
+        "AGSPortal",
+        "AGSPortalItem"
     ],
-    "redirect_from": "/ios/latest/swift/sample-code/generate-offline-map.htm",
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/generate-offline-map.htm"
+    ],
     "relevant_apis": [
+        "AGSGenerateOfflineMapJob",
+        "AGSGenerateOfflineMapParameters",
+        "AGSGenerateOfflineMapResult",
+        "AGSOfflineMapTask",
+        "AGSPortal",
+        "AGSPortalItem"
     ],
     "snippets": [
         "GenerateOfflineMapViewController.swift"

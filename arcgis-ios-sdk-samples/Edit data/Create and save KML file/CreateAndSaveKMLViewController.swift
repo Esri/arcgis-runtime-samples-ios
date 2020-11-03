@@ -61,8 +61,12 @@ class CreateAndSaveKMLViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: [kmzProvider], applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = sender
         present(activityViewController, animated: true)
-        activityViewController.completionWithItemsHandler = { (_, _, _, _) in
-            kmzProvider.deleteKMZ()
+        activityViewController.completionWithItemsHandler = { _, completed, _, activityError in
+            if completed {
+                kmzProvider.deleteKMZ()
+            } else if let error = activityError {
+                self.presentAlert(error: error)
+            }
         }
     }
 

@@ -133,7 +133,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     
     /// Make a graphics overlay with graphics.
     ///
-    /// - Returns: An `AGSGraphicsOverlay` object.
+    /// - Returns: A new `AGSGraphicsOverlay` object.
     func makeRouteOverlay() -> AGSGraphicsOverlay {
         // The graphics overlay for the polygon and points.
         let graphicsOverlay = AGSGraphicsOverlay()

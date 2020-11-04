@@ -229,6 +229,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     }
     
     // MARK: UIViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.

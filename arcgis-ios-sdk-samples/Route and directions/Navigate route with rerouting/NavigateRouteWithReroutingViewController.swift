@@ -263,7 +263,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // Reset the sample
+        // Reset the sample.
         reset()
     }
 }

@@ -40,7 +40,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     /// The route task to solve the route between stops, using the online routing service.
     let routeTask = AGSRouteTask(databaseName: "sandiego", networkName: "Streets_ND")
     /// The route result solved by the route task.
-    var routeResult: AGSRouteResult!
+    var result: AGSRouteResult!
     /// The route tracker for navigation. Use delegate methods to update tracking status.
     var routeTracker: AGSRouteTracker!
     /// The parameters of the route tracker.
@@ -96,7 +96,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         setStatus(message: "Directions are shown here.")
         
         // Reset the navigation.
-        setNavigation(with: routeResult)
+        setNavigation(with: result)
         // Reset buttons state.
         resetBarButtonItem.isEnabled = false
         navigateBarButtonItem.isEnabled = true
@@ -123,7 +123,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     func didSolveRoute(with routeResult: Result<AGSRouteResult, Error>) {
         switch routeResult {
         case .success(let routeResult):
-            self.routeResult = routeResult
+            self.result = routeResult
             setNavigation(with: routeResult)
             navigateBarButtonItem.isEnabled = true
         case .failure(let error):

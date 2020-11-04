@@ -37,7 +37,6 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     
     // MARK: Instance properties
     
-    var route: AGSRoute?
     /// The route task to solve the route between stops, using the online routing service.
     let routeTask = AGSRouteTask(databaseName: "sandiego", networkName: "Streets_ND")
     /// The route result solved by the route task.
@@ -54,14 +53,12 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     let routeTraveledGraphic = AGSGraphic(geometry: nil, symbol: AGSSimpleLineSymbol(style: .solid, color: .systemBlue, width: 3))
     /// The original view point that can be reset later on.
     var defaultViewPoint: AGSViewpoint?
-    /// The initial location for the solved route.
-    var initialLocation: AGSLocation!
     /// The starting location, the San Diego Convention Center.
     let startLocation = AGSPoint(x: -117.160386727, y: 32.706608, spatialReference: .wgs84())
     /// The destination location, the RH Fleet Aerospace Museum.
     let destinationLocation = AGSPoint(x: -117.146679, y: 32.730351, spatialReference: .wgs84())
-    /// The points provided by the GPX file.
-    var gpxPoints = [AGSPoint]()
+    /// The location data source provided by a local GPX file.
+    var gpxDataSource: AGSGPXLocationDataSource?
     
     /// A formatter to format a time value into human readable string.
     let timeFormatter: DateComponentsFormatter = {
@@ -87,6 +84,8 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     @IBAction func reset() {
         // Stop the speech, if there is any.
         speechSynthesizer.stopSpeaking(at: .immediate)
+        // Set the initial location.
+        guard let initialLocation = gpxDataSource?.locations?.first else { return }
         // Reset to the starting location for location display.
         mapView.locationDisplay.dataSource.didUpdate(initialLocation)
         // Stop the location display as well as datasource generation, if reset before the end is reached.
@@ -146,7 +145,6 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         // Create a graphic for the destination location.
         let destinationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .red, size: 20)
         let destinationGraphic = AGSGraphic(geometry: destinationLocation, symbol: destinationSymbol)
-        routeAheadGraphic.geometry = route?.routeGeometry
         // Add graphics to the graphics overlay.
         graphicsOverlay.graphics.addObjects(from: [startGraphic, destinationGraphic, routeAheadGraphic, routeTraveledGraphic])
         return graphicsOverlay
@@ -161,29 +159,6 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         let stop2 = AGSStop(point: destinationLocation)
         stop2.name = "RH Fleet Aerospace Museum"
         return [stop1, stop2]
-    }
-    
-    /// Make the simulated data source for this demo.
-    ///
-    /// - Parameter polyline: An `AGSPolyline` the geometry that is used to configure the data source.
-    /// - Returns: An `AGSSimulatedLocationDataSource` object.
-    func makeDetourDataSource(polyline: AGSPolyline) -> AGSSimulatedLocationDataSource {
-        // The mock data source to demo the navigation. Use delegate methods to update locations for the tracker.
-        let mockDataSource = AGSSimulatedLocationDataSource()
-        mockDataSource.setLocationsWith(polyline)
-        mockDataSource.locationChangeHandlerDelegate = self
-        return mockDataSource
-    }
-    
-    func makePolylineFromGPX() -> AGSPolyline {
-        let gpxURL = Bundle.main.url(forResource: "navigate_a_route_detour", withExtension: "gpx")!
-        guard let gpxDocument = XMLParser(contentsOf: gpxURL) else { fatalError("Could not load GPX document") }
-        gpxDocument.delegate = self
-        let didParseGPX = gpxDocument.parse()
-        if !didParseGPX, let error = gpxDocument.parserError {
-            presentAlert(error: error)
-        }
-        return AGSPolyline(points: gpxPoints)
     }
     
     /// Make a route tracker to provide navigation information.
@@ -207,11 +182,11 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         // Set the mock location data source.
         let firstRoute = routeResult.routes.first!
         directionsList = firstRoute.directionManeuvers
-        
-        let mockDataSource = makeDetourDataSource(polyline: makePolylineFromGPX())
-        initialLocation = mockDataSource.locations?.first
+        // Create the data source from a local GPX file.
+        gpxDataSource = AGSGPXLocationDataSource(name: "navigate_a_route_detour")
+        guard let gpxDataSource = gpxDataSource else { return }
         // Create a route tracker location data source to snap the location display to the route.
-        let routeTrackerLocationDataSource = AGSRouteTrackerLocationDataSource(routeTracker: routeTracker, locationDataSource: mockDataSource)
+        let routeTrackerLocationDataSource = AGSRouteTrackerLocationDataSource(routeTracker: routeTracker, locationDataSource: gpxDataSource)
         
         // Set location display.
         mapView.locationDisplay.dataSource = routeTrackerLocationDataSource
@@ -274,7 +249,6 @@ class NavigateRouteWithReroutingViewController: UIViewController {
                 self.routeParameters = params
                 self.routeTask.solveRoute(with: params) { [weak self] (result, error) in
                     if let result = result {
-                        self?.route = result.routes.first
                         self?.didSolveRoute(with: .success(result))
                     } else if let error = error {
                         self?.didSolveRoute(with: .failure(error))
@@ -360,22 +334,6 @@ extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDele
                 self?.setStatus(message: error.localizedDescription)
                 self?.routeTracker.delegate = nil
             }
-        }
-    }
-}
-
-extension NavigateRouteWithReroutingViewController: XMLParserDelegate {
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName: String?, attributes attributeDictionary: [String: String]) {
-        let numberFormatter = NumberFormatter()
-        // Collect coordinates by checking for the lines that have a <trkpt> tag,
-        if elementName == "trkpt",
-           let latString = attributeDictionary["lat"],
-           let lonString = attributeDictionary["lon"],
-           let lat = numberFormatter.number(from: latString)?.doubleValue,
-           let lon = numberFormatter.number(from: lonString)?.doubleValue {
-            // Create a World map coordinate from the file.
-            let point = AGSPoint(x: lon, y: lat, spatialReference: .wgs84())
-            gpxPoints.append(point)
         }
     }
 }

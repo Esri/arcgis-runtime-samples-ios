@@ -22,7 +22,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TSB-xc-4Yr"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dyM-T5-XGp" firstAttribute="leading" secondItem="wDe-HO-ujz" secondAttribute="leading" id="4fc-Ch-zlm"/>
                             <constraint firstAttribute="bottom" secondItem="dyM-T5-XGp" secondAttribute="bottom" id="I2Q-Qu-ZAN"/>
@@ -46,7 +46,7 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

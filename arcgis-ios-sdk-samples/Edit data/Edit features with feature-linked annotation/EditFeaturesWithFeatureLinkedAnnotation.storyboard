@@ -22,7 +22,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Qz-Ee-AN2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ShL-2L-KLv" secondAttribute="bottom" id="S29-b1-app"/>
                             <constraint firstAttribute="trailing" secondItem="ShL-2L-KLv" secondAttribute="trailing" id="TUw-FV-Ejk"/>
@@ -40,7 +40,7 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

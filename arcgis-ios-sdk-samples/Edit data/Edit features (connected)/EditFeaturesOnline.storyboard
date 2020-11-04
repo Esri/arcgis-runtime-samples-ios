@@ -45,7 +45,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wjl-Bj-tg4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="XdC-IV-Urg" firstAttribute="bottom" secondItem="wjl-Bj-tg4" secondAttribute="bottom" id="DQS-Ug-gt8"/>
                             <constraint firstItem="NzB-bg-pvw" firstAttribute="leading" secondItem="QKn-Go-ihh" secondAttribute="leading" id="G78-UE-3Jd"/>
@@ -130,6 +130,9 @@
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

@@ -22,7 +22,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rdU-fn-d8i"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Ef2-5L-bqX" secondAttribute="bottom" id="AfI-RU-ubh"/>
                             <constraint firstItem="Ef2-5L-bqX" firstAttribute="top" secondItem="4A8-jc-AVa" secondAttribute="top" id="ZzU-Xe-GGQ"/>
@@ -46,7 +46,7 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

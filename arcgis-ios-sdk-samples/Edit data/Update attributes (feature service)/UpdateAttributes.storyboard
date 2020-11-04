@@ -22,7 +22,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tkd-21-F1k"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="uzg-2n-LkU" secondAttribute="bottom" id="0kk-Ww-qgs"/>
                             <constraint firstItem="uzg-2n-LkU" firstAttribute="leading" secondItem="kFf-uD-lO1" secondAttribute="leading" id="2qK-XM-D9p"/>
@@ -108,6 +108,9 @@
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

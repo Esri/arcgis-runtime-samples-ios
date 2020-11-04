@@ -72,7 +72,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5NL-pv-SzQ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Nt3-l1-3cF" firstAttribute="leading" secondItem="OYo-b7-tB3" secondAttribute="leading" id="7KV-4I-cPK"/>
                             <constraint firstItem="Nt3-l1-3cF" firstAttribute="top" secondItem="5NL-pv-SzQ" secondAttribute="top" id="7lV-3B-8vu"/>
@@ -129,6 +129,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="zU0-Jw-tYD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeatureLayerCell" id="r9x-RB-wCT">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -185,7 +186,10 @@
         <namedColor name="statusLabelBackgroudColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

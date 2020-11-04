@@ -84,7 +84,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N6g-Fk-J7N"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qin-hu-BG3" firstAttribute="leading" secondItem="nKj-rx-hlh" secondAttribute="leading" id="Ecs-v3-2Fz"/>
                             <constraint firstItem="dYW-LW-6mH" firstAttribute="trailing" secondItem="nKj-rx-hlh" secondAttribute="trailing" id="HZR-NM-iEK"/>
@@ -115,7 +115,7 @@
         <namedColor name="statusLabelBackgroudColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

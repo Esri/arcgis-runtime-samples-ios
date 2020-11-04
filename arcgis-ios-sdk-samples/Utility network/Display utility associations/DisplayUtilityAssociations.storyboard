@@ -26,7 +26,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="duq-yN-VKT"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="og2-5E-h2J" firstAttribute="leading" secondItem="WcN-ei-ZB2" secondAttribute="leading" id="6Xm-gB-pVl"/>
                             <constraint firstItem="96r-bO-QXb" firstAttribute="bottom" secondItem="duq-yN-VKT" secondAttribute="bottom" id="IWG-AB-XiC"/>
@@ -48,7 +48,7 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

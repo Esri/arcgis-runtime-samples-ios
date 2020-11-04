@@ -55,7 +55,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     var defaultViewPoint: AGSViewpoint?
     /// The starting location, the San Diego Convention Center.
     let startLocation = AGSPoint(x: -117.160386727, y: 32.706608, spatialReference: .wgs84())
-    /// The destination location, the RH Fleet Aerospace Museum.
+    /// The destination location, the Fleet Science Center.
     let destinationLocation = AGSPoint(x: -117.146679, y: 32.730351, spatialReference: .wgs84())
     /// The location data source provided by a local GPX file.
     var gpxDataSource: AGSGPXLocationDataSource?

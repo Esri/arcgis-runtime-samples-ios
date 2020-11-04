@@ -47,9 +47,10 @@
                         <viewLayoutGuide key="safeArea" id="wjl-Bj-tg4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="brw-un-veL" firstAttribute="width" secondItem="XdC-IV-Urg" secondAttribute="width" id="AQw-mc-Mju"/>
+                            <constraint firstItem="XdC-IV-Urg" firstAttribute="bottom" secondItem="wjl-Bj-tg4" secondAttribute="bottom" id="DQS-Ug-gt8"/>
                             <constraint firstItem="NzB-bg-pvw" firstAttribute="leading" secondItem="QKn-Go-ihh" secondAttribute="leading" id="G78-UE-3Jd"/>
                             <constraint firstItem="NzB-bg-pvw" firstAttribute="top" secondItem="wjl-Bj-tg4" secondAttribute="top" id="HZc-YE-7zK"/>
+                            <constraint firstItem="XdC-IV-Urg" firstAttribute="trailing" secondItem="brw-un-veL" secondAttribute="trailing" id="PMf-2B-jdm"/>
                             <constraint firstItem="NzB-bg-pvw" firstAttribute="top" secondItem="QKn-Go-ihh" secondAttribute="top" id="SbG-PK-Ysx"/>
                             <constraint firstItem="wjl-Bj-tg4" firstAttribute="bottom" secondItem="brw-un-veL" secondAttribute="bottom" id="T0Q-pE-74P"/>
                             <constraint firstItem="brw-un-veL" firstAttribute="leading" secondItem="QKn-Go-ihh" secondAttribute="leading" id="TPX-IW-0kg"/>
@@ -58,7 +59,6 @@
                             <constraint firstItem="NzB-bg-pvw" firstAttribute="bottom" secondItem="brw-un-veL" secondAttribute="top" id="gjz-Rp-UVh"/>
                             <constraint firstAttribute="trailing" secondItem="NzB-bg-pvw" secondAttribute="trailing" id="l4K-zS-1ge"/>
                             <constraint firstItem="brw-un-veL" firstAttribute="top" secondItem="XdC-IV-Urg" secondAttribute="top" id="nd1-ne-6Wn"/>
-                            <constraint firstItem="brw-un-veL" firstAttribute="height" secondItem="XdC-IV-Urg" secondAttribute="height" id="xKU-dg-LQI"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

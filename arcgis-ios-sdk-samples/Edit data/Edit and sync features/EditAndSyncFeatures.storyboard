@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sH-Kk-wWr" userLabel="Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5p-5s-jhB" userLabel="Extent View">
-                                <rect key="frame" x="72.5" y="157" width="269" height="582"/>
+                                <rect key="frame" x="72.5" y="142.5" width="269" height="528"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -54,7 +54,7 @@
                             <constraint firstItem="IcZ-Ht-3Pq" firstAttribute="trailing" secondItem="0sk-IR-n2v" secondAttribute="trailing" id="2tl-ha-oBi"/>
                             <constraint firstItem="r5p-5s-jhB" firstAttribute="centerX" secondItem="0sk-IR-n2v" secondAttribute="centerX" id="5es-lz-FM6"/>
                             <constraint firstItem="0sH-Kk-wWr" firstAttribute="top" secondItem="0sk-IR-n2v" secondAttribute="top" id="677-Pm-PlF"/>
-                            <constraint firstAttribute="bottom" secondItem="0sH-Kk-wWr" secondAttribute="bottom" id="Asu-nB-CGz"/>
+                            <constraint firstItem="IcZ-Ht-3Pq" firstAttribute="top" secondItem="0sH-Kk-wWr" secondAttribute="bottom" id="Asu-nB-CGz"/>
                             <constraint firstItem="r5p-5s-jhB" firstAttribute="height" secondItem="0sH-Kk-wWr" secondAttribute="height" multiplier="0.65" id="B2J-ST-hgt"/>
                             <constraint firstItem="IcZ-Ht-3Pq" firstAttribute="bottom" secondItem="gGt-4y-cpB" secondAttribute="bottom" id="GOZ-qk-Hc3"/>
                             <constraint firstItem="HcO-gi-Dd8" firstAttribute="leading" secondItem="0sk-IR-n2v" secondAttribute="leading" id="Gdd-Ue-2mA"/>

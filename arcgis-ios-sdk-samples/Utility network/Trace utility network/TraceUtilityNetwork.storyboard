@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzi-IO-kfE" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tAH-tt-W9l">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAH-tt-W9l">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions and feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tx-3F-CSy">
@@ -39,7 +39,7 @@
                                     <constraint firstItem="0tx-3F-CSy" firstAttribute="leading" secondItem="ICA-iz-QNp" secondAttribute="leading" id="qg9-S3-WE2"/>
                                     <constraint firstItem="0tx-3F-CSy" firstAttribute="bottom" secondItem="tAH-tt-W9l" secondAttribute="bottom" id="xKF-yd-R9M"/>
                                 </constraints>
-                            </stackView>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egb-ry-ghj">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>

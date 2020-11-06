@@ -216,8 +216,9 @@ class NavigateRouteWithReroutingViewController: UIViewController {
             mapView.setViewpoint(viewPoint, completion: nil)
         } else {
             mapView.setViewpointGeometry(geometry) { [weak self] _ in
+                guard let self = self else { return }
                 // Get the initial zoomed view point.
-                self?.defaultViewPoint = self?.mapView.currentViewpoint(with: .centerAndScale)
+                self.defaultViewPoint = self.mapView.currentViewpoint(with: .centerAndScale)
             }
         }
     }

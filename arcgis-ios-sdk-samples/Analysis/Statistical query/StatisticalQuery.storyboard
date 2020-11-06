@@ -62,6 +62,7 @@
                                             <rect key="frame" x="237" y="53" width="51" height="31"/>
                                         </switch>
                                     </subviews>
+                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="Vbu-gq-lFX" firstAttribute="trailing" secondItem="6k4-pi-srd" secondAttribute="trailingMargin" constant="-6" id="3Pe-l0-ELs"/>
                                         <constraint firstItem="ZwN-CW-cHD" firstAttribute="centerY" secondItem="Vbu-gq-lFX" secondAttribute="centerY" id="6T7-8z-1dz"/>

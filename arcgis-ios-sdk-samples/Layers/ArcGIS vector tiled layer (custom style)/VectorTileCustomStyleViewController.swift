@@ -13,10 +13,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 import UIKit
 import ArcGIS
 
 class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDelegate {
+    // MARK: Storyboard views
+    
+    /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap()

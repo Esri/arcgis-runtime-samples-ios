@@ -48,11 +48,12 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         return directoryURL.appendingPathComponent("\(temporaryFileName)")
     }
     
-    func loadVectorTiledLayer(url vectorTiledLayerURL: URL, itemID: String) {
+    func loadVectorTiledLayer(itemID: String) {
         // Get a temporary URL to download the custom style.
         let temporaryURL = getTemporaryURL()
         // Create a vector tile cache using the local vector tile package.
         let vectorTileCache = AGSVectorTileCache(name: "dodge_city")
+        let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
         // Create a portal item with the URL.
         let portalItem = AGSPortalItem(url: vectorTiledLayerURL)!
         // Create a task to export the custom style resources.
@@ -104,7 +105,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         case "e01262ef2a4f4d91897d9bbd3a9b1075":
             if dayVectorTiledLayer == nil {
                 // Load the vector tiled layer from a local VTPK and style.
-                loadVectorTiledLayer(url: vectorTiledLayerURL, itemID: itemID)
+                loadVectorTiledLayer(itemID: itemID)
             } else {
                 // Display the layer if it has already been loaded.
                 map.basemap = AGSBasemap(baseLayer: dayVectorTiledLayer!)
@@ -112,7 +113,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         case "ce8a34e5d4ca4fa193a097511daa8855":
             if nightVectorTiledLayer == nil {
                 // Load the vector tiled layer from a local VTPK and style.
-                loadVectorTiledLayer(url: vectorTiledLayerURL, itemID: itemID)
+                loadVectorTiledLayer(itemID: itemID)
             } else {
                 // Display the layer if it has already been loaded.
                 map.basemap = AGSBasemap(baseLayer: nightVectorTiledLayer!)

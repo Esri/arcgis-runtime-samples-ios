@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,17 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GzU-Me-xVd">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GzU-Me-xVd">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D00-lg-Ft4">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="426"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="422"/>
                                         <connections>
                                             <segue destination="geL-f0-eoD" kind="embed" id="fDz-l6-wCh"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-Mm-bqf" customClass="AGSMapView">
-                                        <rect key="frame" x="0.0" y="426" width="414" height="426"/>
+                                        <rect key="frame" x="0.0" y="430" width="414" height="422"/>
                                     </view>
                                 </subviews>
                                 <variation key="heightClass=regular-widthClass=compact" axis="vertical"/>
@@ -55,7 +56,7 @@
             <objects>
                 <tableViewController id="geL-f0-eoD" customClass="FormatCoordinatesTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="5vY-pq-BWx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="426"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="422"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <sections>

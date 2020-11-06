@@ -2,8 +2,7 @@
 
 Add rasters and feature tables from a geopackage to a map.
 
-![Image of read geopackage 1](read-geopackage-1.png)
-![Image of read geopackage 2](read-geopackage-2.png)
+![Image of read geopackage](read-geopackage.png)
 
 ## Use case
 

@@ -36,7 +36,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="J2C-4W-aTK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="bottom" secondItem="pRt-Jl-9L6" secondAttribute="top" id="6it-Iy-nKs"/>
                             <constraint firstItem="k3a-nA-IYu" firstAttribute="trailing" secondItem="ZZc-h1-EmK" secondAttribute="trailing" id="PaZ-yT-0mR"/>
@@ -75,7 +75,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIJ-tz-aZS">
-                                                    <rect key="frame" x="68" y="12" width="346" height="20"/>
+                                                    <rect key="frame" x="68" y="12" width="55" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -114,12 +114,12 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zIJ-tz-aZS" firstAttribute="leading" secondItem="GB6-Me-RR4" secondAttribute="trailing" constant="8" id="LqX-QM-ZTU"/>
+                                                <constraint firstItem="zIJ-tz-aZS" firstAttribute="leading" secondItem="GB6-Me-RR4" secondAttribute="trailing" constant="8" symbolic="YES" id="LqX-QM-ZTU"/>
                                                 <constraint firstAttribute="bottom" secondItem="zIJ-tz-aZS" secondAttribute="bottom" constant="12" id="p08-7y-19C"/>
                                                 <constraint firstItem="zIJ-tz-aZS" firstAttribute="top" secondItem="Fuw-dI-qie" secondAttribute="top" constant="12" id="pbn-TA-I7s"/>
                                                 <constraint firstItem="GB6-Me-RR4" firstAttribute="centerY" secondItem="Fuw-dI-qie" secondAttribute="centerY" id="uKW-xt-v9V"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="GB6-Me-RR4" secondAttribute="leading" id="vbV-HM-Jkw"/>
-                                                <constraint firstAttribute="trailing" secondItem="zIJ-tz-aZS" secondAttribute="trailing" id="zXq-H6-9Xv"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zIJ-tz-aZS" secondAttribute="trailing" id="zXq-H6-9Xv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -163,7 +163,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Style 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-Jw-gtr">
-                                                    <rect key="frame" x="68" y="12" width="346" height="20"/>
+                                                    <rect key="frame" x="68" y="12" width="50" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -171,11 +171,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="EiX-Jw-gtr" firstAttribute="top" secondItem="fsg-Nk-JY2" secondAttribute="top" constant="12" id="07K-eQ-aBz"/>
-                                                <constraint firstItem="EiX-Jw-gtr" firstAttribute="leading" secondItem="60e-gI-Cpd" secondAttribute="trailing" constant="8" id="0AC-sT-euu"/>
+                                                <constraint firstItem="EiX-Jw-gtr" firstAttribute="leading" secondItem="60e-gI-Cpd" secondAttribute="trailing" constant="8" symbolic="YES" id="0AC-sT-euu"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="60e-gI-Cpd" secondAttribute="leading" id="YeW-2B-hQk"/>
                                                 <constraint firstItem="60e-gI-Cpd" firstAttribute="centerY" secondItem="fsg-Nk-JY2" secondAttribute="centerY" id="bvi-iN-WKA"/>
                                                 <constraint firstAttribute="bottom" secondItem="EiX-Jw-gtr" secondAttribute="bottom" constant="12" id="ggy-IU-gGq"/>
-                                                <constraint firstAttribute="trailing" secondItem="EiX-Jw-gtr" secondAttribute="trailing" id="kEi-EN-l8t"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EiX-Jw-gtr" secondAttribute="trailing" id="kEi-EN-l8t"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -219,7 +219,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Style 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-tk-dh3">
-                                                    <rect key="frame" x="68" y="12" width="346" height="20"/>
+                                                    <rect key="frame" x="68" y="12" width="52.5" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -230,8 +230,8 @@
                                                 <constraint firstAttribute="bottom" secondItem="2OT-tk-dh3" secondAttribute="bottom" constant="12" id="Fwr-fH-BeZ"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="6YW-zd-8Uz" secondAttribute="leading" id="HK5-xr-t8c"/>
                                                 <constraint firstItem="6YW-zd-8Uz" firstAttribute="centerY" secondItem="qJl-9i-UfG" secondAttribute="centerY" id="e8g-am-u7U"/>
-                                                <constraint firstAttribute="trailing" secondItem="2OT-tk-dh3" secondAttribute="trailing" id="eKd-oT-Zd5"/>
-                                                <constraint firstItem="2OT-tk-dh3" firstAttribute="leading" secondItem="6YW-zd-8Uz" secondAttribute="trailing" constant="8" id="zGx-ET-x1u"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2OT-tk-dh3" secondAttribute="trailing" id="eKd-oT-Zd5"/>
+                                                <constraint firstItem="2OT-tk-dh3" firstAttribute="leading" secondItem="6YW-zd-8Uz" secondAttribute="trailing" constant="8" symbolic="YES" id="zGx-ET-x1u"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -275,7 +275,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Style 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQY-Bf-UL7">
-                                                    <rect key="frame" x="68" y="12" width="346" height="20"/>
+                                                    <rect key="frame" x="68" y="12" width="53" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -286,8 +286,8 @@
                                                 <constraint firstAttribute="leadingMargin" secondItem="vm7-KH-oo9" secondAttribute="leading" id="5Ds-Rs-TiR"/>
                                                 <constraint firstItem="vm7-KH-oo9" firstAttribute="centerY" secondItem="0jl-mb-lzJ" secondAttribute="centerY" id="UBz-nr-c3n"/>
                                                 <constraint firstAttribute="bottom" secondItem="fQY-Bf-UL7" secondAttribute="bottom" constant="12" id="XlU-1f-RNo"/>
-                                                <constraint firstAttribute="trailing" secondItem="fQY-Bf-UL7" secondAttribute="trailing" id="YVe-1L-nmm"/>
-                                                <constraint firstItem="fQY-Bf-UL7" firstAttribute="leading" secondItem="vm7-KH-oo9" secondAttribute="trailing" constant="8" id="dYS-ef-89y"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fQY-Bf-UL7" secondAttribute="trailing" id="YVe-1L-nmm"/>
+                                                <constraint firstItem="fQY-Bf-UL7" firstAttribute="leading" secondItem="vm7-KH-oo9" secondAttribute="trailing" constant="8" symbolic="YES" id="dYS-ef-89y"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -339,7 +339,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Eva-Qw-W63" firstAttribute="centerY" secondItem="Wft-Cj-G9I" secondAttribute="centerY" id="JOy-kX-YB8"/>
-                                                <constraint firstItem="LgN-yo-i5R" firstAttribute="leading" secondItem="Eva-Qw-W63" secondAttribute="trailing" constant="8" id="Zae-Iw-78C"/>
+                                                <constraint firstItem="LgN-yo-i5R" firstAttribute="leading" secondItem="Eva-Qw-W63" secondAttribute="trailing" constant="8" symbolic="YES" id="Zae-Iw-78C"/>
                                                 <constraint firstItem="LgN-yo-i5R" firstAttribute="top" secondItem="Wft-Cj-G9I" secondAttribute="top" constant="12" id="ghY-dt-saR"/>
                                                 <constraint firstAttribute="bottom" secondItem="LgN-yo-i5R" secondAttribute="bottom" constant="12" id="j7r-wN-gbO"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="Eva-Qw-W63" secondAttribute="leading" id="wT9-FB-pbC"/>
@@ -397,7 +397,7 @@
                                                 <constraint firstItem="5wQ-n7-Wej" firstAttribute="top" secondItem="1nN-th-yZy" secondAttribute="top" constant="12" id="2ao-Fm-7Dk"/>
                                                 <constraint firstAttribute="bottom" secondItem="5wQ-n7-Wej" secondAttribute="bottom" constant="12" id="42z-qG-Hdq"/>
                                                 <constraint firstItem="7tq-ym-HH6" firstAttribute="centerY" secondItem="1nN-th-yZy" secondAttribute="centerY" id="8bx-LG-dp3"/>
-                                                <constraint firstItem="5wQ-n7-Wej" firstAttribute="leading" secondItem="7tq-ym-HH6" secondAttribute="trailing" constant="8" id="BRb-a7-XWZ"/>
+                                                <constraint firstItem="5wQ-n7-Wej" firstAttribute="leading" secondItem="7tq-ym-HH6" secondAttribute="trailing" constant="8" symbolic="YES" id="BRb-a7-XWZ"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="7tq-ym-HH6" secondAttribute="leading" id="FNf-DM-6oc"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5wQ-n7-Wej" secondAttribute="trailing" id="f6I-fC-rgs"/>
                                             </constraints>
@@ -419,6 +419,9 @@
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HJc-ia-gdz">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HJc-ia-gdz">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,25 +19,24 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6d-CB-JFv" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <visualEffectView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWm-CJ-sgL">
-                                <rect key="frame" x="0.0" y="426.5" width="414" height="53"/>
+                                <rect key="frame" x="0.0" y="427" width="414" height="52.5"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8q1-rt-KTV">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="xb0-rF-EJT">
                                             <rect key="frame" x="8" y="0.0" width="398" height="52.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Expiration Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulk-GF-bmI">
-                                                    <rect key="frame" x="124.5" y="16" width="149.5" height="20.5"/>
+                                                    <rect key="frame" x="125" y="16" width="148.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Time to Expiration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YE-JI-5Br">
-                                                    <rect key="frame" x="130" y="0.0" width="138" height="0.0"/>
+                                                    <rect key="frame" x="130.5" y="0.0" width="137.5" height="0.0"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -57,7 +55,8 @@
                                 <blurEffect style="prominent"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="OfE-CO-85a"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="w6d-CB-JFv" firstAttribute="leading" secondItem="Qoq-Sq-2ST" secondAttribute="leading" id="09K-Ed-Swb"/>
                             <constraint firstItem="w6d-CB-JFv" firstAttribute="top" secondItem="Qoq-Sq-2ST" secondAttribute="top" id="0Dk-bL-qzo"/>
@@ -67,7 +66,6 @@
                             <constraint firstAttribute="trailing" secondItem="w6d-CB-JFv" secondAttribute="trailing" id="bqV-qA-pM9"/>
                             <constraint firstAttribute="trailing" secondItem="zWm-CJ-sgL" secondAttribute="trailing" id="pGh-WT-AmI"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="OfE-CO-85a"/>
                     </view>
                     <connections>
                         <outlet property="expirationMessageLabel" destination="ulk-GF-bmI" id="rHb-ze-D4Z"/>
@@ -81,4 +79,9 @@
             <point key="canvasLocation" x="139" y="156"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -23,6 +23,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Og-nO-uja">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Br6-zt-5cs"/>
                                     <barButtonItem enabled="NO" title="Create" id="seG-ll-Wuw">
                                         <connections>
                                             <action selector="createConvexHull" destination="lQr-0X-gJw" id="pVW-Hm-lTa"/>
@@ -34,6 +35,7 @@
                                             <action selector="reset" destination="lQr-0X-gJw" id="kGT-Kh-QdG"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AZ8-ew-E2X"/>
                                 </items>
                             </toolbar>
                         </subviews>

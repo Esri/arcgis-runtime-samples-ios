@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="beF-yn-MU6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="beF-yn-MU6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +30,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.9186059397163121" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="qgh-ab-wUm" firstAttribute="leading" secondItem="kPT-2F-sjn" secondAttribute="leading" constant="8" id="C08-dP-VVv"/>
                                     <constraint firstAttribute="bottom" secondItem="qgh-ab-wUm" secondAttribute="bottom" constant="5" id="HUY-6p-HyU"/>
@@ -38,7 +38,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="dWq-gF-XP9"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kPT-2F-sjn" firstAttribute="top" secondItem="dWq-gF-XP9" secondAttribute="top" id="KHL-gn-59o"/>
                             <constraint firstItem="kPT-2F-sjn" firstAttribute="leading" secondItem="7gX-cs-H6x" secondAttribute="leading" id="Nih-89-rjN"/>
@@ -48,7 +49,6 @@
                             <constraint firstItem="YLS-ms-81h" firstAttribute="leading" secondItem="7gX-cs-H6x" secondAttribute="leading" id="un2-9E-dxd"/>
                             <constraint firstAttribute="bottom" secondItem="YLS-ms-81h" secondAttribute="bottom" id="vU8-Mj-D8l"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dWq-gF-XP9"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="YLS-ms-81h" id="jNG-ze-yg7"/>
@@ -59,4 +59,9 @@
             <point key="canvasLocation" x="799" y="10"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

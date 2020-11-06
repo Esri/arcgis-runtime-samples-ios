@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -97,7 +96,7 @@
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" tag="14" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t9t-ip-BVn">
                                                                 <rect key="frame" x="5" y="5" width="100" height="66.5"/>
-                                                                <color key="backgroundColor" red="0.56237625469999997" green="0.81865171930000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="t9t-ip-BVn" secondAttribute="height" multiplier="3:2" id="YAK-Yy-36Y"/>
                                                                 </constraints>
@@ -109,7 +108,7 @@
                                                             </label>
                                                             <imageView hidden="YES" userInteractionEnabled="NO" tag="12" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinOutline" translatesAutoresizingMaskIntoConstraints="NO" id="8rT-Rx-NAX">
                                                                 <rect key="frame" x="85" y="5" width="20" height="20"/>
-                                                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="4Lz-ya-Ldt"/>
                                                                     <constraint firstAttribute="width" constant="20" id="CAa-J4-LQP"/>
@@ -117,7 +116,7 @@
                                                             </imageView>
                                                             <imageView hidden="YES" userInteractionEnabled="NO" tag="13" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DirectionsList" translatesAutoresizingMaskIntoConstraints="NO" id="MIW-7m-mv8">
                                                                 <rect key="frame" x="5" y="5" width="20" height="20"/>
-                                                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="1fH-Rr-nzL"/>
                                                                     <constraint firstAttribute="width" constant="20" id="4Eu-Di-87F"/>
@@ -125,6 +124,7 @@
                                                             </imageView>
                                                         </subviews>
                                                     </view>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="Xdf-Nf-VlP" firstAttribute="leading" secondItem="dL7-Rt-c7l" secondAttribute="leading" constant="2" id="0gL-uD-sht"/>
                                                         <constraint firstItem="MIW-7m-mv8" firstAttribute="leading" secondItem="t9t-ip-BVn" secondAttribute="leading" id="IXo-LA-WuI"/>
@@ -181,11 +181,11 @@
     <resources>
         <image name="DirectionsList" width="22" height="22"/>
         <image name="PinOutline" width="22" height="22"/>
-        <namedColor name="statusLabelBackgroudColor">
-            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

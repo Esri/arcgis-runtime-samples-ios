@@ -183,8 +183,8 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         let firstRoute = routeResult.routes.first!
         directionsList = firstRoute.directionManeuvers
         // Create the data source from a local GPX file.
-        gpxDataSource = AGSGPXLocationDataSource(name: "navigate_a_route_detour")
-        guard let gpxDataSource = gpxDataSource else { return }
+        let gpxDataSource = AGSGPXLocationDataSource(name: "navigate_a_route_detour")
+        self.gpxDataSource = gpxDataSource
         // Create a route tracker location data source to snap the location display to the route.
         let routeTrackerLocationDataSource = AGSRouteTrackerLocationDataSource(routeTracker: routeTracker, locationDataSource: gpxDataSource)
         

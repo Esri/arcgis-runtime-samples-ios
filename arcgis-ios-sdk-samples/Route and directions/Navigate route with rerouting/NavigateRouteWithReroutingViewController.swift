@@ -305,7 +305,7 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
             Distance remaining: \(distanceRemaining)
             Time remaining: \(timeRemaining)
             """
-            if status.currentManeuverIndex + 1 < directionsList.count {
+            if status.currentManeuverIndex + 1 < directionsList.endIndex {
                 let nextDirection = directionsList[status.currentManeuverIndex + 1].directionText
                 statusText.append("\nNext direction: \(nextDirection)")
             }

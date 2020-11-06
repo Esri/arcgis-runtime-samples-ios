@@ -38,19 +38,24 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
     var dayVectorTiledLayer: AGSArcGISVectorTiledLayer?
     // The vector tiled layer created by the local VTPK and night custom style.
     var nightVectorTiledLayer: AGSArcGISVectorTiledLayer?
-    
-    func getTemporaryURL() -> URL {
-        // Get a suitable directory to place files.
+    // A URL to the temporary folder to temporarily store the exported tile package.
+    let temporaryFolderURL: URL = {
         let directoryURL = FileManager.default.temporaryDirectory
+        // Create and return the full, unique URL to the temporary folder.
+        try? FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
+        return directoryURL
+    }()
+    
+    func getDownloadURL(temporaryFolderURL: URL) -> URL {
         // Create a unique name for the item resource cache based on current timestamp.
         let temporaryFileName = UUID().uuidString
         // Create and return the full, unique URL.
-        return directoryURL.appendingPathComponent("\(temporaryFileName)")
+        return temporaryFolderURL.appendingPathComponent("\(temporaryFileName)")
     }
     
     func loadVectorTiledLayer(itemID: String) {
         // Get a temporary URL to download the custom style.
-        let temporaryURL = getTemporaryURL()
+        let temporaryURL = getDownloadURL(temporaryFolderURL: temporaryFolderURL)
         // Create a vector tile cache using the local vector tile package.
         let vectorTileCache = AGSVectorTileCache(name: "dodge_city")
         let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
@@ -58,6 +63,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         let portalItem = AGSPortalItem(url: vectorTiledLayerURL)!
         // Create a task to export the custom style resources.
         let task = AGSExportVectorTilesTask(portalItem: portalItem)
+        
         // Get the AGSExportVectorTilesJob.
         exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL)
         // Start the job.
@@ -90,7 +96,6 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             }
             }
         )
-        try? FileManager.default.removeItem(at: temporaryURL)
     }
     
     private func showSelectedItem(_ itemID: String) {
@@ -108,7 +113,8 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
                 loadVectorTiledLayer(itemID: itemID)
             } else {
                 // Display the layer if it has already been loaded.
-                map.basemap = AGSBasemap(baseLayer: dayVectorTiledLayer!)
+                guard let dayVectorTiledLayer = dayVectorTiledLayer else { return }
+                map.basemap = AGSBasemap(baseLayer: dayVectorTiledLayer)
             }
         case "ce8a34e5d4ca4fa193a097511daa8855":
             if nightVectorTiledLayer == nil {
@@ -154,6 +160,11 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
     func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String) {
         // Show newly the selected vector layer.
         showSelectedItem(itemID)
+    }
+    
+    deinit {
+        // Remove the temporary folder and all content in it.
+        try? FileManager.default.removeItem(at: temporaryFolderURL)
     }
 }
 

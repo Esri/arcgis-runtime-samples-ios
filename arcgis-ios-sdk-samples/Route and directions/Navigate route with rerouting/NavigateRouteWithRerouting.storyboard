@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,11 +20,11 @@
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sd9-5N-pPZ" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqm-kL-vVF">
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cqm-kL-vVF" userLabel="Status View">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions are shown here." lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqP-Cf-t0c">
-                                        <rect key="frame" x="24" y="0.0" width="366" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -34,8 +34,8 @@
                                 <viewLayoutGuide key="safeArea" id="61W-JK-gvI"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="EqP-Cf-t0c" firstAttribute="leading" secondItem="61W-JK-gvI" secondAttribute="leading" constant="24" id="DRs-LJ-eY5"/>
-                                    <constraint firstItem="EqP-Cf-t0c" firstAttribute="trailing" secondItem="61W-JK-gvI" secondAttribute="trailing" constant="-24" id="EbJ-Dy-L7z"/>
+                                    <constraint firstItem="EqP-Cf-t0c" firstAttribute="leading" secondItem="cqm-kL-vVF" secondAttribute="leading" id="DRs-LJ-eY5"/>
+                                    <constraint firstItem="EqP-Cf-t0c" firstAttribute="trailing" secondItem="cqm-kL-vVF" secondAttribute="trailing" id="EbJ-Dy-L7z"/>
                                     <constraint firstItem="EqP-Cf-t0c" firstAttribute="top" secondItem="cqm-kL-vVF" secondAttribute="top" id="Su4-ly-Kcc"/>
                                     <constraint firstItem="EqP-Cf-t0c" firstAttribute="bottom" secondItem="cqm-kL-vVF" secondAttribute="bottom" id="XgC-Ex-Lqb"/>
                                 </constraints>

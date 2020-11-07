@@ -1,0 +1,15 @@
+@media (prefers-color-scheme: dark) {
+    h1, h2, h3, h4, h5, h6 {
+        color: #f2f2f7;
+    }
+    body {
+        background-color: #2C2C2E;
+        color: #f2f2f7;
+    }
+    a:link {
+        color: #0096e2;
+    }
+    a:visited {
+        color: #9d57df;
+    }
+}

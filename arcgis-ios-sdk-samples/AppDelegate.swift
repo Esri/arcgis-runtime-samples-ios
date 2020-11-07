@@ -118,6 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         UISwitch.appearance().onTintColor = .accentColor
         navigationBarAppearanceProxy.tintColor = .white
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .accentColor
         if #available(iOS 14.0, *) {
             // Nothing to do! iOS 14 handles global tint with accent color.
         } else {
@@ -126,7 +127,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             UISlider.appearance().tintColor = .accentColor
             UITableViewCell.appearance().tintColor = .accentColor
             UIProgressView.appearance().tintColor = .accentColor
-            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .accentColor
             UIButton.appearance(whenContainedInInstancesOf: [AGSCallout.self]).tintColor = .accentColor
         }
     }
@@ -177,4 +177,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 extension UIColor {
     // Also used as global tint/accent color.
     class var accentColor: UIColor { return UIColor(named: "AccentColor")! }
+    // The translucent background color for status labels.
+    class var statusLabelBackgroundColor: UIColor { return UIColor(named: "statusLabelBackgroundColor")! }
 }

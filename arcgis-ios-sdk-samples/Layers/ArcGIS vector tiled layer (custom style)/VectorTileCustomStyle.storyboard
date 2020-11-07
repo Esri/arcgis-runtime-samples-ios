@@ -48,7 +48,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="changeStyleBarItem" destination="nmT-Xl-FTP" id="aWT-sa-eqn"/>
+                        <outlet property="changeStyleBarButtonItem" destination="nmT-Xl-FTP" id="aWT-sa-eqn"/>
                         <outlet property="mapView" destination="k3a-nA-IYu" id="Lj7-sA-nZx"/>
                     </connections>
                 </viewController>

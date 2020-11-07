@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDelegate {
+class VectorTileCustomStyleViewController: UIViewController {
     // MARK: Storyboard views
     
     /// The map view managed by the view controller.
@@ -26,154 +26,181 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
             mapView.map = AGSMap()
         }
     }
-    @IBOutlet var changeStyleBarItem: UIBarButtonItem!
-    // Array of the item IDs.
-    private let itemIDs = ["1349bfa0ed08485d8a92c442a3850b06",
-                           "bd8ac41667014d98b933e97713ba8377",
-                           "02f85ec376084c508b9c8e5a311724fa",
-                           "1bf0cc4a4380468fbbff107e100f65a5",
-                           "e01262ef2a4f4d91897d9bbd3a9b1075",
-                           "ce8a34e5d4ca4fa193a097511daa8855"]
-    // The item ID of the shown layer.
-    var shownItemID: String?
-    // The job to export the item resource cache.
-    var exportVectorTilesJob: AGSExportVectorTilesJob?
-    // The vector tiled layer created by the local VTPK and day custom style.
-    var dayVectorTiledLayer: AGSArcGISVectorTiledLayer?
-    // The vector tiled layer created by the local VTPK and night custom style.
-    var nightVectorTiledLayer: AGSArcGISVectorTiledLayer?
-    // A URL to the temporary folder to temporarily store the exported tile package.
-    let temporaryFolderURL: URL = {
-        let directoryURL = FileManager.default.temporaryDirectory
-        // Create and return the full, unique URL to the temporary folder.
+    /// The button to change vector tile style.
+    @IBOutlet var changeStyleBarButtonItem: UIBarButtonItem!
+    
+    // MARK: Properties
+    
+    /// A list of portal item IDs for the online layers.
+    let onlineItemIDs = [
+        "1349bfa0ed08485d8a92c442a3850b06",
+        "bd8ac41667014d98b933e97713ba8377",
+        "02f85ec376084c508b9c8e5a311724fa",
+        "1bf0cc4a4380468fbbff107e100f65a5"
+    ]
+    
+    /// A list of portal item IDs for the layers which custom style is applied from local resources.
+    let offlineItemIDs = [
+        // A vector tiled layer created by the local VTPK and day custom style.
+        "e01262ef2a4f4d91897d9bbd3a9b1075",
+        // A vector tiled layer created by the local VTPK and night custom style.
+        "ce8a34e5d4ca4fa193a097511daa8855"
+    ]
+    /// A URL to the temporary directory to store the exported tile packages.
+    let temporaryDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    /// The item ID of the currently showing layer.
+    var currentItemID: String?
+    /// A dictionary to cache loaded vector tiled layers.
+    var vectorTiledLayers = [String: AGSArcGISVectorTiledLayer]()
+    /// An export job to export the item resource cache.
+    var exportVectorTilesJob: AGSExportVectorTilesJob!
+    
+    // MARK: Methods
+    
+    /// Get the URL to a portal item specific temporary directory.
+    ///
+    /// - Parameter itemID: The portal item ID.
+    /// - Returns: A URL to the temporary directory.
+    func getDownloadDirectoryURL(itemID: String) -> URL {
+        let directoryURL = temporaryDirectoryURL.appendingPathComponent(itemID)
+        // Create and return the full, unique URL to the temporary directory.
         try? FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
         return directoryURL
-    }()
-    
-    func getDownloadURL(temporaryFolderURL: URL) -> URL {
-        // Create a unique name for the item resource cache based on current timestamp.
-        let temporaryFileName = UUID().uuidString
-        // Create and return the full, unique URL.
-        return temporaryFolderURL.appendingPathComponent("\(temporaryFileName)")
     }
     
-    func loadVectorTiledLayer(itemID: String) {
-        // Get a temporary URL to download the custom style.
-        let temporaryURL = getDownloadURL(temporaryFolderURL: temporaryFolderURL)
-        // Create a vector tile cache using the local vector tile package.
-        let vectorTileCache = AGSVectorTileCache(name: "dodge_city")
-        let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
-        // Create a portal item with the URL.
-        let portalItem = AGSPortalItem(url: vectorTiledLayerURL)!
-        // Create a task to export the custom style resources.
+    /// Get the vector tiled layer's portal URL.
+    func getPortalURL(itemID: String) -> URL {
+        return URL(string: "https://www.arcgis.com/home/item.html?id=\(itemID)")!
+    }
+    
+    /// Load vector tiled layer with offline custom styles in VTPK.
+    ///
+    /// - Parameters:
+    ///   - itemID: The portal item ID.
+    ///   - completion: A closure to pass back the layer with custom style.
+    func loadVectorTiledLayerWithOfflineCustomStyle(itemID: String, completion: @escaping (AGSArcGISVectorTiledLayer) -> Void) {
+        // The portal item from the URL.
+        let portalItem = AGSPortalItem(url: getPortalURL(itemID: itemID))!
+        // An export task to export the custom style resources.
         let task = AGSExportVectorTilesTask(portalItem: portalItem)
+        // The job to export the item resource cache.
+        let job = task.exportStyleResourceCacheJob(withDownloadDirectory: getDownloadDirectoryURL(itemID: itemID))
+        // Hold a strong reference to the job until it finishes.
+        exportVectorTilesJob = job
         
-        // Get the AGSExportVectorTilesJob.
-        exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: temporaryURL)
-        // Start the job.
-        exportVectorTilesJob?.start(
+        job.start(
             statusHandler: { (status: AGSJobStatus) in
                 SVProgressHUD.show(withStatus: status.statusString())
-            }, completion: { [weak self] (result, error) in
+            }, completion: { [weak self] result, error in
                 SVProgressHUD.dismiss()
-                guard let self = self, let map = self.mapView.map else { return }
-            if let result = result {
-                // Get the item resource cache from the result.
-                let itemresourceCahce = result.itemResourceCache
-                switch itemID {
-                case "e01262ef2a4f4d91897d9bbd3a9b1075":
+                guard let self = self else { return }
+                if let result = result {
+                    // The vector tile cache created from the local vector tile package.
+                    let vectorTileCache = AGSVectorTileCache(name: "dodge_city")
                     // Create a vector tiled layer with the vector tiled cache and the item resource cache.
-                    let dayVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
-                    map.basemap = AGSBasemap(baseLayer: dayVectorTiledLayer)
-                    self.dayVectorTiledLayer = dayVectorTiledLayer
-                case "ce8a34e5d4ca4fa193a097511daa8855":
-                    // Create a vector tiled layer with the vector tiled cache and the item resource cache.
-                    let nightVectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: itemresourceCahce)
-                    map.basemap = AGSBasemap(baseLayer: nightVectorTiledLayer)
-                    self.nightVectorTiledLayer = nightVectorTiledLayer
-                default:
-                    fatalError("Unidentified item ID")
+                    let layer = AGSArcGISVectorTiledLayer(vectorTileCache: vectorTileCache, itemResourceCache: result.itemResourceCache)
+                    // Pass back the exported layer.
+                    completion(layer)
+                } else if let error = error {
+                    // Handle errors.
+                    self.presentAlert(error: error)
                 }
-            } else if let error = error {
-                // Handle errors.
-                self.presentAlert(error: error)
-            }
+                // De-reference the job.
+                self.exportVectorTilesJob = nil
             }
         )
     }
     
-    private func showSelectedItem(_ itemID: String) {
-        guard let map = mapView.map else { return }
-        shownItemID = itemID
-        // Set the viewpoint to display Dodge City, KS.
-        let point = AGSPoint(x: -100.01766, y: 37.76528, spatialReference: .wgs84())
-        mapView.setViewpoint(AGSViewpoint(center: point, scale: 40000))
-        // Get the vector tiled layer URL.
-        let vectorTiledLayerURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=\(itemID)")!
-        switch itemID {
-        case "e01262ef2a4f4d91897d9bbd3a9b1075":
-            if dayVectorTiledLayer == nil {
-                // Load the vector tiled layer from a local VTPK and style.
-                loadVectorTiledLayer(itemID: itemID)
+    // MARK: UI
+    
+    func showSelectedItem(_ itemID: String) {
+        // Record currently showing layer's item ID.
+        currentItemID = itemID
+        
+        if onlineItemIDs.contains(itemID) {
+            // The vector tiled layer with custom style is stored online.
+            let vectorTiledLayer: AGSArcGISVectorTiledLayer
+            if let layer = vectorTiledLayers[itemID] {
+                // Retrieve cached layer if it exists.
+                vectorTiledLayer = layer
             } else {
-                // Display the layer if it has already been loaded.
-                guard let dayVectorTiledLayer = dayVectorTiledLayer else { return }
-                map.basemap = AGSBasemap(baseLayer: dayVectorTiledLayer)
+                // Create a vector tiled layer from the URL.
+                vectorTiledLayer = AGSArcGISVectorTiledLayer(url: getPortalURL(itemID: itemID))
+                vectorTiledLayers[itemID] = vectorTiledLayer
             }
-        case "ce8a34e5d4ca4fa193a097511daa8855":
-            if nightVectorTiledLayer == nil {
-                // Load the vector tiled layer from a local VTPK and style.
-                loadVectorTiledLayer(itemID: itemID)
+            // Set the layer to the map.
+            let viewpoint = AGSViewpoint(center: AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator()), scale: 1e8)
+            setMap(layer: vectorTiledLayer, viewpoint: viewpoint)
+        } else if offlineItemIDs.contains(itemID) {
+            // The custom style is stored offline in a VTPK.
+            
+            // The viewpoint to display Dodge City, KS.
+            let dodgeViewpoint = AGSViewpoint(center: AGSPoint(x: -100.01766, y: 37.76528, spatialReference: .wgs84()), scale: 4e4)
+            if let layer = vectorTiledLayers[itemID] {
+                // Retrieve cached layer if it exists.
+                setMap(layer: layer, viewpoint: dodgeViewpoint)
             } else {
-                // Display the layer if it has already been loaded.
-                map.basemap = AGSBasemap(baseLayer: nightVectorTiledLayer!)
+                // Load the custom style from a local VTPK.
+                loadVectorTiledLayerWithOfflineCustomStyle(itemID: itemID) { [weak self, viewpoint = dodgeViewpoint] layer in
+                    guard let self = self else { return }
+                    self.vectorTiledLayers[itemID] = layer
+                    self.setMap(layer: layer, viewpoint: viewpoint)
+                }
             }
-        default:
-            // Create a vector tiled layer from the URL.
-            let vectorTiledLayer = AGSArcGISVectorTiledLayer(url: vectorTiledLayerURL)
-            map.basemap = AGSBasemap(baseLayer: vectorTiledLayer)
-            // Set the viewpoint.
-            let centerPoint = AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator())
-            mapView.setViewpoint(AGSViewpoint(center: centerPoint, scale: 88659253.829259947))
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Show the default vector tiled layer.
-        showSelectedItem(itemIDs.first!)
-        // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileCustomStyleViewController", "VectorStylesViewController"]
+    func setMap(layer: AGSArcGISVectorTiledLayer, viewpoint: AGSViewpoint) {
+        // Reset the map to release resources.
+        mapView.map = nil
+        // Assign a new map created from the base layer.
+        mapView.map = AGSMap(basemap: AGSBasemap(baseLayer: layer))
+        // Set viewpoint without animation.
+        mapView.setViewpoint(viewpoint)
     }
     
-    // MARK: - Navigation
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["VectorTileCustomStyleViewController", "VectorStylesViewController"]
+        
+        // Show the first vector tiled layer.
+        showSelectedItem(onlineItemIDs.first!)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? VectorStylesViewController {
             controller.delegate = self
-            controller.itemIDs = itemIDs
-            controller.selectedItemID = shownItemID
-            // Popover presentation logic.
+            controller.itemIDs = onlineItemIDs + offlineItemIDs
+            controller.selectedItemID = currentItemID
             controller.presentationController?.delegate = self
-            controller.preferredContentSize = CGSize(width: 300, height: 220)
+            let height = controller.itemIDs.count * 45
+            controller.preferredContentSize = CGSize(width: 300, height: height)
         }
     }
     
-    // MARK: - VectorStylesVCDelegate
-    
-    func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String) {
-        // Show newly the selected vector layer.
-        showSelectedItem(itemID)
-    }
-    
     deinit {
-        // Remove the temporary folder and all content in it.
-        try? FileManager.default.removeItem(at: temporaryFolderURL)
+        // Remove the temporary directory and all content in it.
+        try? FileManager.default.removeItem(at: temporaryDirectoryURL)
     }
 }
 
+// MARK: - VectorStylesVCDelegate
+
+extension VectorTileCustomStyleViewController: VectorStylesVCDelegate {
+    func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String) {
+        // Show the newly selected vector layer.
+        showSelectedItem(itemID)
+    }
+}
+
+// MARK: - UIAdaptivePresentationControllerDelegate
+
 extension VectorTileCustomStyleViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // Show presented controller as a popover.
         return .none
     }
 }

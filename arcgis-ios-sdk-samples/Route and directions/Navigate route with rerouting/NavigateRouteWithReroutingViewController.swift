@@ -46,7 +46,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     /// The parameters of the route tracker.
     var routeParameters: AGSRouteParameters?
     /// A list to keep track of directions solved by the route task.
-    var directionsList: [AGSDirectionManeuver] = []
+    var directionManeuvers: [AGSDirectionManeuver] = []
     /// The graphic (with a dashed line symbol) to represent the route ahead.
     let routeAheadGraphic = AGSGraphic(geometry: nil, symbol: AGSSimpleLineSymbol(style: .dash, color: .systemPurple, width: 5))
     /// The graphic to represent the route that's been traveled (initially empty).
@@ -92,7 +92,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         mapView.locationDisplay.stop()
         mapView.locationDisplay.autoPanModeChangedHandler = nil
         mapView.locationDisplay.autoPanMode = .off
-        directionsList.removeAll()
+        directionManeuvers.removeAll()
         setStatus(message: "Directions are shown here.")
         
         // Reset the navigation.
@@ -181,7 +181,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         
         // Set the mock location data source.
         let firstRoute = routeResult.routes.first!
-        directionsList = firstRoute.directionManeuvers
+        directionManeuvers = firstRoute.directionManeuvers
         // Create the data source from a local GPX file.
         let gpxDataSource = AGSGPXLocationDataSource(name: "navigate_a_route_detour")
         self.gpxDataSource = gpxDataSource
@@ -286,7 +286,7 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
             presentAlert(error: error)
         } else if let status = trackingStatus {
             // Get the new directions.
-            directionsList = status.routeResult.routes.first!.directionManeuvers
+            directionManeuvers = status.routeResult.routes.first!.directionManeuvers
         }
     }
     
@@ -305,8 +305,8 @@ extension NavigateRouteWithReroutingViewController: AGSRouteTrackerDelegate {
             Distance remaining: \(distanceRemaining)
             Time remaining: \(timeRemaining)
             """
-            if status.currentManeuverIndex + 1 < directionsList.endIndex {
-                let nextDirection = directionsList[status.currentManeuverIndex + 1].directionText
+            if status.currentManeuverIndex + 1 < directionManeuvers.endIndex {
+                let nextDirection = directionManeuvers[status.currentManeuverIndex + 1].directionText
                 statusText.append("\nNext direction: \(nextDirection)")
             }
         case .reached:

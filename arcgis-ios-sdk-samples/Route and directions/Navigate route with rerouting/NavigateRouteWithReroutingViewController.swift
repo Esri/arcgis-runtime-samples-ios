@@ -167,6 +167,13 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     /// - Returns: An `AGSRouteTracker` object.
     func makeRouteTracker(result: AGSRouteResult) -> AGSRouteTracker {
         let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0, skipCoincidentStops: true)!
+        if routeTask.routeTaskInfo().supportsRerouting {
+            tracker.enableRerouting(with: routeTask, routeParameters: routeParameters!, strategy: .toNextWaypoint, visitFirstStopOnStart: false) { error in
+                if let error = error {
+                    self.presentAlert(error: error)
+                }
+            }
+        }
         tracker.delegate = self
         tracker.voiceGuidanceUnitSystem = Locale.current.usesMetricSystem ? .metric : .imperial
         return tracker
@@ -196,14 +203,6 @@ class NavigateRouteWithReroutingViewController: UIViewController {
         let firstRouteGeometry = firstRoute.routeGeometry!
         updateRouteGraphics(remaining: firstRouteGeometry)
         updateViewpoint(geometry: firstRouteGeometry)
-        
-        if routeTask.routeTaskInfo().supportsRerouting {
-            routeTracker.enableRerouting(with: routeTask, routeParameters: routeParameters!, strategy: .toNextWaypoint, visitFirstStopOnStart: false) { error in
-                if let error = error {
-                    self.presentAlert(error: error)
-                }
-            }
-        }
     }
     
     /// Update the viewpoint so that it reflects the original viewpoint when the example is loaded.

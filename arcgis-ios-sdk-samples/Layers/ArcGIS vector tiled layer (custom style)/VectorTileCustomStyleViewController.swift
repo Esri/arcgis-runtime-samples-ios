@@ -21,11 +21,7 @@ class VectorTileCustomStyleViewController: UIViewController {
     // MARK: Storyboard views
     
     /// The map view managed by the view controller.
-    @IBOutlet var mapView: AGSMapView! {
-        didSet {
-            mapView.map = AGSMap()
-        }
-    }
+    @IBOutlet var mapView: AGSMapView!
     /// The button to change vector tile style.
     @IBOutlet var changeStyleBarButtonItem: UIBarButtonItem!
     
@@ -84,16 +80,17 @@ class VectorTileCustomStyleViewController: UIViewController {
         // An export task to export the custom style resources.
         let task = AGSExportVectorTilesTask(portalItem: portalItem)
         // The job to export the item resource cache.
-        let job = task.exportStyleResourceCacheJob(withDownloadDirectory: getDownloadDirectoryURL(itemID: itemID))
+        exportVectorTilesJob = task.exportStyleResourceCacheJob(withDownloadDirectory: getDownloadDirectoryURL(itemID: itemID))
         // Hold a strong reference to the job until it finishes.
-        exportVectorTilesJob = job
-        
-        job.start(
+        exportVectorTilesJob.start(
             statusHandler: { (status: AGSJobStatus) in
                 SVProgressHUD.show(withStatus: status.statusString())
             }, completion: { [weak self] result, error in
                 SVProgressHUD.dismiss()
                 guard let self = self else { return }
+                // De-reference the job.
+                self.exportVectorTilesJob = nil
+                
                 if let result = result {
                     // The vector tile cache created from the local vector tile package.
                     let vectorTileCache = AGSVectorTileCache(name: "dodge_city")
@@ -102,11 +99,8 @@ class VectorTileCustomStyleViewController: UIViewController {
                     // Pass back the exported layer.
                     completion(layer)
                 } else if let error = error {
-                    // Handle errors.
                     self.presentAlert(error: error)
                 }
-                // De-reference the job.
-                self.exportVectorTilesJob = nil
             }
         )
     }
@@ -128,7 +122,7 @@ class VectorTileCustomStyleViewController: UIViewController {
                 vectorTiledLayer = AGSArcGISVectorTiledLayer(url: getPortalURL(itemID: itemID))
                 vectorTiledLayers[itemID] = vectorTiledLayer
             }
-            // Set the layer to the map.
+            // Set the layer to the map's basemap.
             let viewpoint = AGSViewpoint(center: AGSPoint(x: 1990591.559979, y: 794036.007991, spatialReference: .webMercator()), scale: 1e8)
             setMap(layer: vectorTiledLayer, viewpoint: viewpoint)
         } else if offlineItemIDs.contains(itemID) {

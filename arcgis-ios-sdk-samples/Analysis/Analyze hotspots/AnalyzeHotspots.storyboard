@@ -18,13 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYj-u8-YnT" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
-                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-Rj-o77">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Rkf-mO-WLe"/>
-                                </constraints>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-Rj-o77">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="TKf-Pw-3b8"/>
                                     <barButtonItem title="Analyze" id="1IF-Ns-Kew">
@@ -40,12 +37,12 @@
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HYj-u8-YnT" firstAttribute="top" secondItem="jzg-fS-Q8J" secondAttribute="top" id="UcV-xf-XTQ"/>
-                            <constraint firstItem="n0l-Rj-o77" firstAttribute="leading" secondItem="jzg-fS-Q8J" secondAttribute="leading" id="X6a-sE-EHO"/>
+                            <constraint firstItem="n0l-Rj-o77" firstAttribute="leading" secondItem="EuI-TD-shm" secondAttribute="leading" id="X6a-sE-EHO"/>
                             <constraint firstItem="HYj-u8-YnT" firstAttribute="bottom" secondItem="n0l-Rj-o77" secondAttribute="top" id="ceX-U0-eQE"/>
                             <constraint firstAttribute="trailing" secondItem="HYj-u8-YnT" secondAttribute="trailing" id="chr-bg-HCN"/>
                             <constraint firstItem="HYj-u8-YnT" firstAttribute="leading" secondItem="EuI-TD-shm" secondAttribute="leading" id="h9G-Qm-gbL"/>
                             <constraint firstItem="jzg-fS-Q8J" firstAttribute="bottom" secondItem="n0l-Rj-o77" secondAttribute="bottom" id="j8v-aC-Vp5"/>
-                            <constraint firstItem="n0l-Rj-o77" firstAttribute="trailing" secondItem="jzg-fS-Q8J" secondAttribute="trailing" id="wTT-q2-Ecw"/>
+                            <constraint firstItem="n0l-Rj-o77" firstAttribute="trailing" secondItem="EuI-TD-shm" secondAttribute="trailing" id="wTT-q2-Ecw"/>
                         </constraints>
                     </view>
                     <connections>

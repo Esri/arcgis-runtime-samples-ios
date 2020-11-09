@@ -119,9 +119,9 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     
     /// A wrapper function for operations after the route is solved by an `AGSRouteTask`.
     ///
-    /// - Parameter routeResult: The result of the solve route operation.
-    func didSolveRoute(with routeResult: Result<AGSRouteResult, Error>) {
-        switch routeResult {
+    /// - Parameter result: The result of the solve route operation.
+    func didSolveRoute(with result: Result<AGSRouteResult, Error>) {
+        switch result {
         case .success(let routeResult):
             self.routeResult = routeResult
             setNavigation(with: routeResult)

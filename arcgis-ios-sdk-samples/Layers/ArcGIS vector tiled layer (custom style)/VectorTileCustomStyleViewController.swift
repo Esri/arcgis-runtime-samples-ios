@@ -37,9 +37,9 @@ class VectorTileCustomStyleViewController: UIViewController {
     
     /// A list of portal item IDs for the layers which custom style is applied from local resources.
     let offlineItemIDs = [
-        // A vector tiled layer created by the local VTPK and day custom style.
+        // A vector tiled layer created by the local VTPK and light custom style.
         "e01262ef2a4f4d91897d9bbd3a9b1075",
-        // A vector tiled layer created by the local VTPK and night custom style.
+        // A vector tiled layer created by the local VTPK and dark custom style.
         "ce8a34e5d4ca4fa193a097511daa8855"
     ]
     /// A URL to the temporary directory to store the exported tile packages.

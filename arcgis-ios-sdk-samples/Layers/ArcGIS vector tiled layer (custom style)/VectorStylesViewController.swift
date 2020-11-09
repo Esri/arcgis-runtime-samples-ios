@@ -21,7 +21,9 @@ protocol VectorStylesVCDelegate: AnyObject {
 }
 
 class VectorStylesViewController: UITableViewController {
+    /// The item IDs of the custom styles.
     var itemIDs: [String] = []
+    /// The item ID of the selected style.
     var selectedItemID: String?
     
     weak var delegate: VectorStylesVCDelegate?
@@ -31,8 +33,10 @@ class VectorStylesViewController: UITableViewController {
         if let selectedItemID = selectedItemID,
             let row = itemIDs.firstIndex(of: selectedItemID) {
             let indexPath = IndexPath(row: row, section: 0)
+            // Select the row of the displayed item.
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             let cell = tableView.cellForRow(at: indexPath)
+            // Indicate which item is displayed.
             cell?.accessoryType = .checkmark
         }
     }
@@ -40,10 +44,12 @@ class VectorStylesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemID = itemIDs[indexPath.row]
         delegate?.vectorStylesViewController(self, didSelectItemWithID: itemID)
+        // Indicate which cell has been selected.
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // Indicate which cell has been unselected.
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
 }

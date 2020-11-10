@@ -20,21 +20,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLS-ms-81h" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPT-2F-sjn">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPT-2F-sjn" userLabel="Instructions View">
                                 <rect key="frame" x="0.0" y="44" width="414" height="46"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to see all areas that are visible within 15 kilometres radius" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgh-ab-wUm">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to see all areas that are visible within 15 kilometres radius" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgh-ab-wUm" userLabel="Instructions label">
                                         <rect key="frame" x="8" y="5" width="398" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="qgh-ab-wUm" firstAttribute="leading" secondItem="kPT-2F-sjn" secondAttribute="leading" constant="8" id="C08-dP-VVv"/>
+                                    <constraint firstItem="qgh-ab-wUm" firstAttribute="leading" secondItem="kPT-2F-sjn" secondAttribute="leadingMargin" id="C08-dP-VVv"/>
                                     <constraint firstAttribute="bottom" secondItem="qgh-ab-wUm" secondAttribute="bottom" constant="5" id="HUY-6p-HyU"/>
                                     <constraint firstItem="qgh-ab-wUm" firstAttribute="top" secondItem="kPT-2F-sjn" secondAttribute="top" constant="5" id="KSX-QM-agC"/>
-                                    <constraint firstAttribute="trailing" secondItem="qgh-ab-wUm" secondAttribute="trailing" constant="8" id="xC7-oH-NBN"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="qgh-ab-wUm" secondAttribute="trailing" id="xC7-oH-NBN"/>
                                 </constraints>
                             </view>
                         </subviews>

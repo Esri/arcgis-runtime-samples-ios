@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="47c-a8-hUr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="47c-a8-hUr">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Time Based Query View Controller-->
         <scene sceneID="Q9w-2g-uMM">
             <objects>
-                <viewController id="47c-a8-hUr" customClass="TimeBasedQueryViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="47c-a8-hUr" customClass="TimeBasedQueryViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s6d-qz-M1g">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LxG-tc-wz1" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="-20" width="600" height="620"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="24" width="414" height="872"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="A5T-8a-e6o"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="LxG-tc-wz1" secondAttribute="bottom" id="FdV-L4-3F6"/>
                             <constraint firstAttribute="trailing" secondItem="LxG-tc-wz1" secondAttribute="trailing" id="ZUb-9L-ZlY"/>
                             <constraint firstItem="LxG-tc-wz1" firstAttribute="leading" secondItem="s6d-qz-M1g" secondAttribute="leading" id="ehs-Ch-iZf"/>
                             <constraint firstItem="LxG-tc-wz1" firstAttribute="top" secondItem="A5T-8a-e6o" secondAttribute="top" constant="-20" id="flP-a0-p4E"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="A5T-8a-e6o"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="LxG-tc-wz1" id="OfR-kH-mSZ"/>
@@ -37,4 +39,9 @@
             <point key="canvasLocation" x="116" y="126.38680659670166"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -18,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJN-iK-ua0" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6QO-qc-8uf"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="EJN-iK-ua0" firstAttribute="top" secondItem="6QO-qc-8uf" secondAttribute="top" id="Htf-Ag-Gpx"/>
-                            <constraint firstItem="6QO-qc-8uf" firstAttribute="bottom" secondItem="EJN-iK-ua0" secondAttribute="bottom" id="Y0E-pE-KCB"/>
+                            <constraint firstAttribute="bottom" secondItem="EJN-iK-ua0" secondAttribute="bottom" id="Y0E-pE-KCB"/>
                             <constraint firstItem="EJN-iK-ua0" firstAttribute="trailing" secondItem="mgO-Tb-CUI" secondAttribute="trailing" id="aFu-IZ-IuS"/>
                             <constraint firstItem="EJN-iK-ua0" firstAttribute="leading" secondItem="mgO-Tb-CUI" secondAttribute="leading" id="xeC-a0-NZi"/>
                         </constraints>

@@ -31,6 +31,7 @@
                                     </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="gTA-cM-d3f"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="MSB-XK-96k" secondAttribute="bottom" id="Iyd-zR-VVL"/>
                                     <constraint firstItem="gTA-cM-d3f" firstAttribute="trailing" secondItem="MSB-XK-96k" secondAttribute="trailing" id="f8v-qY-d8G"/>

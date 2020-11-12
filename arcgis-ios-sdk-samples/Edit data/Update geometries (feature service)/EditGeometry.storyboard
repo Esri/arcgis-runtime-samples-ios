@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GSk-lW-Mjg">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GSk-lW-Mjg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Edit Geometry View Controller-->
         <scene sceneID="8sc-hz-yRK">
             <objects>
-                <viewController id="GSk-lW-Mjg" customClass="EditGeometryViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GSk-lW-Mjg" customClass="EditGeometryViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wIC-Qr-QYb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8E0-Q1-C3I" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
-                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJv-2z-hgI">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Nee-S1-CYT"/>
-                                </constraints>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJv-2z-hgI">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="RJ4-zg-y84"/>
                                     <barButtonItem systemItem="done" id="vU6-1Z-ntn">
@@ -37,7 +32,8 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="fhn-Qd-zlO"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8E0-Q1-C3I" firstAttribute="top" secondItem="fhn-Qd-zlO" secondAttribute="top" id="0V7-kv-fYg"/>
                             <constraint firstItem="fhn-Qd-zlO" firstAttribute="bottom" secondItem="8E0-Q1-C3I" secondAttribute="bottom" id="SDW-0Y-e02"/>
@@ -46,10 +42,9 @@
                             <constraint firstAttribute="trailing" secondItem="8E0-Q1-C3I" secondAttribute="trailing" id="gRf-Or-rMc"/>
                             <constraint firstItem="fhn-Qd-zlO" firstAttribute="bottom" secondItem="YJv-2z-hgI" secondAttribute="bottom" id="n4h-qi-X3x"/>
                             <constraint firstItem="8E0-Q1-C3I" firstAttribute="top" secondItem="wIC-Qr-QYb" secondAttribute="top" id="nRL-dC-mdY"/>
-                            <constraint firstItem="YJv-2z-hgI" firstAttribute="leading" secondItem="fhn-Qd-zlO" secondAttribute="leading" id="oD7-C2-3aF"/>
-                            <constraint firstItem="YJv-2z-hgI" firstAttribute="trailing" secondItem="fhn-Qd-zlO" secondAttribute="trailing" id="tLF-nu-CsL"/>
+                            <constraint firstItem="YJv-2z-hgI" firstAttribute="leading" secondItem="wIC-Qr-QYb" secondAttribute="leading" id="oD7-C2-3aF"/>
+                            <constraint firstItem="YJv-2z-hgI" firstAttribute="trailing" secondItem="wIC-Qr-QYb" secondAttribute="trailing" id="tLF-nu-CsL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="fhn-Qd-zlO"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="SDW-0Y-e02"/>
@@ -68,4 +63,9 @@
             <point key="canvasLocation" x="-17" y="50"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

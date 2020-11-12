@@ -25,7 +25,7 @@ When loaded, the sample will show a scene with a terrain surface applied. Pan an
 
 ## Offline data
 
-This sample uses the [Monterey Elevation](https://arcgisruntime.maps.arcgis.com/home/item.html?id=cce37043eb0440c7a5c109cf8aad5500) tile package. It is downloaded from ArcGIS Online automatically.
+This sample uses the [Monterey Elevation](https://arcgisruntime.maps.arcgis.com/home/item.html?id=52ca74b4ba8042b78b3c653696f34a9c) tile package, using CompactV2 storage format (.tpkx). It is downloaded from ArcGIS Online automatically.
 
 ## About the data
 
@@ -33,7 +33,7 @@ This terrain data comes from Monterey, California.
 
 ## Additional information
 
-The tile package must be a LERC (limited error raster compression) encoded TPK. Details on the topic can be found in [Share a tile package](https://pro.arcgis.com/en/pro-app/help/sharing/overview/tile-package.htm) in the *ArcGIS Pro* documentation.
+The tile package must be a LERC (limited error raster compression) encoded TPK/TPKX. Details on the topic can be found in [Share a tile package](https://pro.arcgis.com/en/pro-app/help/sharing/overview/tile-package.htm) in the *ArcGIS Pro* documentation.
 
 ## Tags
 

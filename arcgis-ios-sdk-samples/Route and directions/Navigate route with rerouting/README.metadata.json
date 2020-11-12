@@ -1,0 +1,49 @@
+{
+    "category": "Route and directions",
+    "description": "Navigate between two points and dynamically recalculate an alternate route when the original route is unavailable.",
+    "ignore": false,
+    "images": [
+        "navigate-route-rerouting.png"
+    ],
+    "keywords": [
+        "directions",
+        "maneuver",
+        "navigation",
+        "route",
+        "turn-by-turn",
+        "voice",
+        "AGSDestinationStatus",
+        "AGSDirectionManeuver",
+        "AGSLocation",
+        "AGSLocationDataSource",
+        "AGSReroutingStrategy",
+        "AGSRoute",
+        "AGSRouteParameters",
+        "AGSRouteTask",
+        "AGSRouteTracker",
+        "AGSRouteTrackerLocationDataSource",
+        "AGSSimulatedLocationDataSource",
+        "AGSStop",
+        "AGSVoiceGuidance"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSDestinationStatus",
+        "AGSDirectionManeuver",
+        "AGSLocation",
+        "AGSLocationDataSource",
+        "AGSReroutingStrategy",
+        "AGSRoute",
+        "AGSRouteParameters",
+        "AGSRouteTask",
+        "AGSRouteTracker",
+        "AGSRouteTrackerLocationDataSource",
+        "AGSSimulatedLocationDataSource",
+        "AGSStop",
+        "AGSVoiceGuidance"
+    ],
+    "snippets": [
+        "NavigateRouteWithReroutingViewController.swift"
+    ],
+    "title": "Navigate route with rerouting"
+}

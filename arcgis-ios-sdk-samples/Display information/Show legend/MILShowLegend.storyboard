@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XE8-79-pxI">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XE8-79-pxI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Show Legend View Controller-->
         <scene sceneID="w8i-F0-Rvs">
             <objects>
-                <viewController id="XE8-79-pxI" customClass="MILShowLegendViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XE8-79-pxI" customClass="MILShowLegendViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l1M-f6-dAu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2R-ZE-V6z" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
-                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKR-pu-EO6">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="noz-mx-gZh"/>
-                                </constraints>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKR-pu-EO6">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2ZX-83-khe"/>
                                     <barButtonItem enabled="NO" title="Legend" id="5Ty-Vq-L40">
@@ -40,11 +35,12 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="0bc-G8-RvH"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="e2R-ZE-V6z" secondAttribute="trailing" id="0Tj-vn-0PM"/>
-                            <constraint firstItem="zKR-pu-EO6" firstAttribute="trailing" secondItem="0bc-G8-RvH" secondAttribute="trailing" id="43M-Tr-LjU"/>
-                            <constraint firstItem="zKR-pu-EO6" firstAttribute="leading" secondItem="0bc-G8-RvH" secondAttribute="leading" id="brw-hi-tZx"/>
+                            <constraint firstItem="zKR-pu-EO6" firstAttribute="trailing" secondItem="l1M-f6-dAu" secondAttribute="trailing" id="43M-Tr-LjU"/>
+                            <constraint firstItem="zKR-pu-EO6" firstAttribute="leading" secondItem="l1M-f6-dAu" secondAttribute="leading" id="brw-hi-tZx"/>
                             <constraint firstItem="e2R-ZE-V6z" firstAttribute="top" secondItem="0bc-G8-RvH" secondAttribute="top" id="d03-Xv-Ko2"/>
                             <constraint firstItem="0bc-G8-RvH" firstAttribute="bottom" secondItem="zKR-pu-EO6" secondAttribute="bottom" id="dzD-Pf-57g"/>
                             <constraint firstItem="0bc-G8-RvH" firstAttribute="bottom" secondItem="e2R-ZE-V6z" secondAttribute="bottom" id="fWu-Jl-omM"/>
@@ -52,7 +48,6 @@
                             <constraint firstItem="e2R-ZE-V6z" firstAttribute="leading" secondItem="l1M-f6-dAu" secondAttribute="leading" id="sAF-C0-Siz"/>
                             <constraint firstItem="e2R-ZE-V6z" firstAttribute="bottom" secondItem="zKR-pu-EO6" secondAttribute="top" id="yjY-O2-XzN"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="0bc-G8-RvH"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="fWu-Jl-omM"/>
@@ -72,17 +67,17 @@
         <!--Legend Table View Controller-->
         <scene sceneID="ddW-X1-PYX">
             <objects>
-                <tableViewController id="8zj-UG-frQ" customClass="MILLegendTableViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8zj-UG-frQ" customClass="MILLegendTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NqX-qv-pGi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MILLegendCell" id="Ybg-Dq-Lgg">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ybg-Dq-Lgg" id="jpC-zR-v5d">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -98,4 +93,12 @@
             <point key="canvasLocation" x="1265" y="427"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

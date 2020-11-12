@@ -22,6 +22,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8g-vM-vWe">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="la4-0b-AFP" appends="YES" id="Njg-Aq-jLI"/>
@@ -29,6 +30,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Tc-uH-tDj">
                                 <rect key="frame" x="0.0" y="24" width="414" height="104"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="104" id="ccJ-er-ztx"/>
                                 </constraints>
@@ -87,6 +89,7 @@
                             </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-TV-QUA">
                                 <rect key="frame" x="92" y="802" width="230" height="40"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="PP0-Gq-ohg"/>
                                     <constraint firstAttribute="height" constant="40" id="mHc-8w-z6t"/>

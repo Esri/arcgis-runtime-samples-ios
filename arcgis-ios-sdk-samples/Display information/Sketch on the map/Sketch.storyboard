@@ -18,17 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNW-2r-OsJ" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45u-o5-Qgv">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="bOy-pD-9Q6"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem id="Mme-ds-Pgy">
                                         <segmentedControl key="customView" opaque="NO" tag="55" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="X7k-S7-bpe">
-                                            <rect key="frame" x="20" y="6" width="204" height="32"/>
+                                            <rect key="frame" x="20" y="11" width="204" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="" image="Point"/>
@@ -67,12 +64,12 @@
                         <constraints>
                             <constraint firstItem="UNW-2r-OsJ" firstAttribute="leading" secondItem="uzT-c2-KDC" secondAttribute="leading" id="97C-Yw-nS2"/>
                             <constraint firstAttribute="trailing" secondItem="UNW-2r-OsJ" secondAttribute="trailing" id="EBx-iN-agX"/>
-                            <constraint firstItem="45u-o5-Qgv" firstAttribute="trailing" secondItem="wmh-qh-lu9" secondAttribute="trailing" id="IWW-Hn-Gca"/>
+                            <constraint firstItem="45u-o5-Qgv" firstAttribute="trailing" secondItem="uzT-c2-KDC" secondAttribute="trailing" id="IWW-Hn-Gca"/>
                             <constraint firstItem="UNW-2r-OsJ" firstAttribute="top" secondItem="uzT-c2-KDC" secondAttribute="top" id="mO3-To-5ed"/>
                             <constraint firstItem="wmh-qh-lu9" firstAttribute="bottom" secondItem="45u-o5-Qgv" secondAttribute="bottom" id="nmf-aT-31W"/>
                             <constraint firstItem="UNW-2r-OsJ" firstAttribute="top" secondItem="wmh-qh-lu9" secondAttribute="top" id="oI1-dt-Zdm"/>
                             <constraint firstItem="UNW-2r-OsJ" firstAttribute="bottom" secondItem="45u-o5-Qgv" secondAttribute="top" id="tvR-WM-gbk"/>
-                            <constraint firstItem="45u-o5-Qgv" firstAttribute="leading" secondItem="wmh-qh-lu9" secondAttribute="leading" id="xLr-iV-E65"/>
+                            <constraint firstItem="45u-o5-Qgv" firstAttribute="leading" secondItem="uzT-c2-KDC" secondAttribute="leading" id="xLr-iV-E65"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

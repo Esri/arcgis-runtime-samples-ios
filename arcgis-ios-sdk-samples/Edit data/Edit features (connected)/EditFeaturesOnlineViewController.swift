@@ -54,7 +54,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.featureLayer = featureLayer
     }
     
-    private func dismissFeatureTemplatePickerVC() {
+    private func dismissFeatureTemplatePickerViewController() {
         self.dismiss(animated: true)
     }
     
@@ -236,6 +236,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     func featureTemplatePickerViewControllerWantsToDismiss(_ controller: FeatureTemplatePickerViewController) {
-        self.dismissFeatureTemplatePickerVC()
+        self.dismissFeatureTemplatePickerViewController()
     }
 }

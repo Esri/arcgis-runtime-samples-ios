@@ -62,8 +62,8 @@ class CollectDataAR: UIViewController {
                 arView.sceneView.scene?.baseSurface?.opacity = 0
 
                 // Dismiss popover
-                if let calibrationVC = calibrationViewController {
-                    calibrationVC.dismiss(animated: true)
+                if let controller = calibrationViewController {
+                    controller.dismiss(animated: true)
                 }
             }
         }

@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate {
+class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsViewControllerDelegate {
     @IBOutlet var mapView: AGSMapView!
     
     /// Geoprocessing task with the url of the service
@@ -107,7 +107,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         })
     }
     
-    // MARK: - HotspotSettingsVCDelegate
+    // MARK: - HotspotSettingsViewControllerDelegate
     
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: Date, toDate: Date) {
         hotspotSettingsViewController.dismiss(animated: true)

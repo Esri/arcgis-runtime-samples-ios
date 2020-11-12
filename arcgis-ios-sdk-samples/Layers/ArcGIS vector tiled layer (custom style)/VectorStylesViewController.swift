@@ -16,7 +16,7 @@
 
 import UIKit
 
-protocol VectorStylesVCDelegate: AnyObject {
+protocol VectorStylesViewControllerDelegate: AnyObject {
     func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String)
 }
 
@@ -24,7 +24,7 @@ class VectorStylesViewController: UITableViewController {
     var itemIDs: [String] = []
     var selectedItemID: String?
     
-    weak var delegate: VectorStylesVCDelegate?
+    weak var delegate: VectorStylesViewControllerDelegate?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

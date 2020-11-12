@@ -77,10 +77,10 @@
 			<string>SA_EVI_8Day_03May20.zip</string>
 		</dict>
 		<dict>
-			<key>filename</key>
-			<string>dodge_city.vtpk</string>
 			<key>identifier</key>
 			<string>f4b742a57af344988b02227e2824ca5f</string>
+			<key>filename</key>
+			<string>dodge_city.vtpk</string>
 		</dict>
 		<dict>
 			<key>identifier</key>

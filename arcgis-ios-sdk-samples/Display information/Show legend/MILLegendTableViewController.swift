@@ -81,8 +81,6 @@ class MILLegendTableViewController: UITableViewController {
             }
         }
         
-        cell.backgroundColor = .clear
-        
         return cell
     }
     

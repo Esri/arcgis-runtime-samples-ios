@@ -32,7 +32,7 @@ class CreateTerrainSurfaceFromLocalTilePackageViewController: UIViewController {
         
         // Create an elevation source using the path to the tile package.
         let surface = AGSSurface()
-        let tpkURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: ".tpk")!
+        let tpkURL = Bundle.main.url(forResource: "MontereyElevation", withExtension: "tpkx")!
         let elevationSource = AGSArcGISTiledElevationSource(url: tpkURL)
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface

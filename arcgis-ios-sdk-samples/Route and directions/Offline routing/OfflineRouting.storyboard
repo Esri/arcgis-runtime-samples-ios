@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XiM-Ic-ILI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XiM-Ic-ILI">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l92-Q4-Uk4" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msR-U7-cd1">
-                                <rect key="frame" x="0.0" y="818" width="414" height="36"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfV-dz-lse">
                                         <rect key="frame" x="8" y="8" width="43" height="20.5"/>
@@ -53,15 +54,12 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohl-3X-6nD">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Chx-y5-d7h"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="FdY-uT-UmQ"/>
                                     <barButtonItem style="plain" id="EGO-cf-9qa">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dea-4D-qZ3">
-                                            <rect key="frame" x="134.5" y="6" width="145" height="32"/>
+                                            <rect key="frame" x="134.5" y="11" width="145" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Fastest"/>
@@ -76,7 +74,8 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4Sz-d2-GIP"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ohl-3X-6nD" firstAttribute="top" secondItem="msR-U7-cd1" secondAttribute="bottom" constant="-36" id="00W-hv-SbS"/>
                             <constraint firstItem="4Sz-d2-GIP" firstAttribute="trailing" secondItem="msR-U7-cd1" secondAttribute="trailing" id="75w-YH-vgj"/>
@@ -89,7 +88,6 @@
                             <constraint firstItem="l92-Q4-Uk4" firstAttribute="top" secondItem="4Sz-d2-GIP" secondAttribute="top" id="sGs-DR-j1e"/>
                             <constraint firstItem="Ohl-3X-6nD" firstAttribute="leading" secondItem="TeH-ax-zgC" secondAttribute="leading" id="vnQ-BE-ey1"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="4Sz-d2-GIP"/>
                     </view>
                     <connections>
                         <outlet property="detailsViewBottomContraint" destination="00W-hv-SbS" id="ZDz-aW-d5R"/>
@@ -110,5 +108,8 @@
         <namedColor name="AccentColor">
             <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

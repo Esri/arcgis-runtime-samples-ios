@@ -16,7 +16,7 @@
 
 import UIKit
 
-protocol VectorStylesViewControllerDelegate: AnyObject {
+protocol VectorStylesVCDelegate: AnyObject {
     func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String)
 }
 
@@ -26,7 +26,7 @@ class VectorStylesViewController: UITableViewController {
     /// The item ID of the selected style.
     var selectedItemID: String?
     
-    weak var delegate: VectorStylesViewControllerDelegate?
+    weak var delegate: VectorStylesVCDelegate?
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)

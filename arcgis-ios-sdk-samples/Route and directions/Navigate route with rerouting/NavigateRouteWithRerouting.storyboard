@@ -32,7 +32,6 @@
                                     </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="61W-JK-gvI"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="EqP-Cf-t0c" firstAttribute="leading" secondItem="cqm-kL-vVF" secondAttribute="leadingMargin" id="DRs-LJ-eY5"/>
                                     <constraint firstItem="EqP-Cf-t0c" firstAttribute="trailing" secondItem="cqm-kL-vVF" secondAttribute="trailingMargin" id="EbJ-Dy-L7z"/>
@@ -64,7 +63,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GDg-hB-WI5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0UD-z0-a6o" firstAttribute="top" secondItem="sd9-5N-pPZ" secondAttribute="bottom" symbolic="YES" id="2UN-Qn-XYS"/>
                             <constraint firstItem="sd9-5N-pPZ" firstAttribute="trailing" secondItem="iHM-cv-Zt2" secondAttribute="trailing" id="8aC-1A-wLB"/>
@@ -92,7 +91,7 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

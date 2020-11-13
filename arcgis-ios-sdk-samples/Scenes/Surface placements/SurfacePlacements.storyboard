@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wm5-sQ-VeD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wm5-sQ-VeD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,12 +44,12 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
+                                            <viewLayoutGuide key="safeArea" id="Pi5-ud-tAa"/>
                                             <constraints>
                                                 <constraint firstItem="lcW-2W-3Yg" firstAttribute="centerY" secondItem="79a-Fw-r0U" secondAttribute="centerY" id="1pc-Qc-xDv"/>
                                                 <constraint firstItem="lcW-2W-3Yg" firstAttribute="leading" secondItem="Pi5-ud-tAa" secondAttribute="leading" id="3zF-XW-5lI"/>
                                                 <constraint firstAttribute="trailing" secondItem="lcW-2W-3Yg" secondAttribute="trailing" constant="8" id="COp-3Z-crH"/>
                                             </constraints>
-                                            <viewLayoutGuide key="safeArea" id="Pi5-ud-tAa"/>
                                         </view>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="L5g-QB-jPk">
@@ -79,12 +80,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <viewLayoutGuide key="safeArea" id="7eI-og-0CK"/>
                                             <constraints>
                                                 <constraint firstItem="7eI-og-0CK" firstAttribute="trailing" secondItem="5fl-tu-C1Z" secondAttribute="trailing" constant="8" id="Bw0-wN-N81"/>
                                                 <constraint firstItem="5fl-tu-C1Z" firstAttribute="leading" secondItem="7eI-og-0CK" secondAttribute="leading" id="knC-LK-6H2"/>
                                                 <constraint firstItem="5fl-tu-C1Z" firstAttribute="centerY" secondItem="Uai-Ez-gEU" secondAttribute="centerY" id="vTE-7d-lfZ"/>
                                             </constraints>
-                                            <viewLayoutGuide key="safeArea" id="7eI-og-0CK"/>
                                         </view>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="4bj-UX-pB2">
@@ -105,10 +106,10 @@
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMK-tR-WMd" customClass="AGSSceneView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="VX6-X5-GRv"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Wvm-OH-P4M" firstAttribute="trailing" secondItem="vTi-g5-viN" secondAttribute="trailing" id="2jx-DH-wqK"/>
                             <constraint firstItem="eWj-fZ-V3J" firstAttribute="top" secondItem="eMK-tR-WMd" secondAttribute="bottom" id="3eS-z6-aGn"/>
@@ -122,7 +123,6 @@
                             <constraint firstItem="eWj-fZ-V3J" firstAttribute="trailing" secondItem="vTi-g5-viN" secondAttribute="trailing" id="lRa-PH-PvC"/>
                             <constraint firstItem="eWj-fZ-V3J" firstAttribute="leading" secondItem="vTi-g5-viN" secondAttribute="leading" id="y0M-bM-mk2"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="VX6-X5-GRv"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="IAk-cC-YtC"/>
@@ -141,4 +141,9 @@
             <point key="canvasLocation" x="328.98550724637681" y="408.48214285714283"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

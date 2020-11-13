@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hxJ-u5-xSg">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hxJ-u5-xSg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,14 +14,11 @@
             <objects>
                 <viewController id="hxJ-u5-xSg" customClass="FindRouteViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cuz-tT-dx6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D7f-TJ-Fif">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="jfy-3B-ZXa"/>
-                                </constraints>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D7f-TJ-Fif">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DJx-Iu-aKn"/>
                                     <barButtonItem enabled="NO" title="Route" id="jNZ-gi-0zH">
@@ -39,21 +35,20 @@
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APo-C9-AtT" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="UJo-Tq-54A"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="APo-C9-AtT" firstAttribute="bottom" secondItem="D7f-TJ-Fif" secondAttribute="top" id="6wp-nL-Enz"/>
                             <constraint firstItem="UJo-Tq-54A" firstAttribute="bottom" secondItem="D7f-TJ-Fif" secondAttribute="bottom" id="N3o-sA-YES"/>
                             <constraint firstAttribute="trailing" secondItem="APo-C9-AtT" secondAttribute="trailing" id="Oe2-cn-qSi"/>
                             <constraint firstItem="APo-C9-AtT" firstAttribute="top" secondItem="UJo-Tq-54A" secondAttribute="top" id="XPQ-aw-QNl"/>
-                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="trailing" secondItem="UJo-Tq-54A" secondAttribute="trailing" id="cDm-u3-gwx"/>
+                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="trailing" secondItem="cuz-tT-dx6" secondAttribute="trailing" id="cDm-u3-gwx"/>
                             <constraint firstItem="APo-C9-AtT" firstAttribute="leading" secondItem="cuz-tT-dx6" secondAttribute="leading" id="rSj-od-AzH"/>
-                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="leading" secondItem="UJo-Tq-54A" secondAttribute="leading" id="wCa-b0-hLK"/>
+                            <constraint firstItem="D7f-TJ-Fif" firstAttribute="leading" secondItem="cuz-tT-dx6" secondAttribute="leading" id="wCa-b0-hLK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="UJo-Tq-54A"/>
                     </view>
                     <navigationItem key="navigationItem" id="c7L-nK-kvT"/>
                     <connections>
@@ -71,15 +66,15 @@
             <objects>
                 <tableViewController title="Directions" id="PuY-V9-yyC" customClass="DirectionsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yn7-OJ-h1K">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirectionsCell" id="cYL-Ib-dqo">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cYL-Ib-dqo" id="TzM-s1-jKF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -96,6 +91,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DirectionsList" width="44" height="44"/>
+        <image name="DirectionsList" width="22" height="22"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

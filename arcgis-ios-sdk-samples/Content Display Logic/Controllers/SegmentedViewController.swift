@@ -19,9 +19,6 @@ class SegmentedViewController: UIViewController {
     @IBOutlet private weak var infoContainerView: UIView!
     @IBOutlet private weak var codeContainerView: UIView!
     
-    private var sourceCodeVC: SourceCodeViewController!
-    private var sampleInfoVC: SampleInfoViewController!
-    
     var filenames = [String]()
     var readmeURL: URL?
     

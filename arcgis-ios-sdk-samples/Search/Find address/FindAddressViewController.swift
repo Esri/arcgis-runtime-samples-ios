@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, WorldAddressesVCDelegate {
+class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, WorldAddressesViewControllerDelegate {
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var button: UIButton!
     @IBOutlet private var searchBar: UISearchBar!
@@ -178,7 +178,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         return UIModalPresentationStyle.none
     }
     
-    // MARK: - AddressesListVCDelegate
+    // MARK: - WorldAddressesViewControllerDelegate
     
     func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address: String) {
         self.searchBar.text = address

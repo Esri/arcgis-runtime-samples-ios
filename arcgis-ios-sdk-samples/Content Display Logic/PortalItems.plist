@@ -88,6 +88,12 @@
 			<key>filename</key>
 			<string>hydrography.zip</string>
 		</dict>
+		<dict>
+			<key>filename</key>
+			<string>navigate_a_route_detour</string>
+			<key>identifier</key>
+			<string>91e7e6be79cc4d2f8416eff867674c1e</string>
+		</dict>
 	</array>
 </dict>
 </plist>

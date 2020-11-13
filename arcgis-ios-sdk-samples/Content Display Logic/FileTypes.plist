@@ -35,5 +35,9 @@
 	<array>
 		<string>zip</string>
 	</array>
+	<key>GPS Exchanges</key>
+	<array>
+		<string>gpx</string>
+	</array>
 </dict>
 </plist>

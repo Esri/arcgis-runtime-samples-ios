@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol MissionSettingsVCDelegate: AnyObject {
+protocol MissionSettingsViewControllerDelegate: AnyObject {
     func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didSelectMissionAtIndex index: Int)
     func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didChangeSpeed speed: Int)
 }
@@ -25,7 +25,7 @@ class MissionSettingsViewController: UITableViewController {
     @IBOutlet private weak var speedSlider: UISlider?
     @IBOutlet private weak var progressView: UIProgressView?
     
-    weak var delegate: MissionSettingsVCDelegate?
+    weak var delegate: MissionSettingsViewControllerDelegate?
     
     var missionFileNames: [String] = []
     var selectedMissionIndex: Int = 0 {

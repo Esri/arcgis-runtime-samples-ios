@@ -16,7 +16,7 @@
 import UIKit
 import ArcGIS
 
-class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDelegate {
+class VectorTileCustomStyleViewController: UIViewController, VectorStylesViewControllerDelegate {
     @IBOutlet var mapView: AGSMapView!
     
     private var itemIDs = ["1349bfa0ed08485d8a92c442a3850b06",
@@ -74,7 +74,7 @@ class VectorTileCustomStyleViewController: UIViewController, VectorStylesVCDeleg
         }
     }
     
-    // MARK: - VectorStylesVCDelegate
+    // MARK: - VectorStylesViewControllerDelegate
     
     func vectorStylesViewController(_ vectorStylesViewController: VectorStylesViewController, didSelectItemWithID itemID: String) {
         //show newly selected vector layer

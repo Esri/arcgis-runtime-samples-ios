@@ -192,10 +192,10 @@ class NavigateARRoutePlannerViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNavigator" {
-            if let navigatorVC = segue.destination as? NavigateARNavigatorViewController {
-                navigatorVC.routeResult = routeResult!
-                navigatorVC.routeTask = routeTask
-                navigatorVC.routeParameters = routeParameters
+            if let navigatorViewController = segue.destination as? NavigateARNavigatorViewController {
+                navigatorViewController.routeResult = routeResult!
+                navigatorViewController.routeTask = routeTask
+                navigatorViewController.routeParameters = routeParameters
             }
         }
     }

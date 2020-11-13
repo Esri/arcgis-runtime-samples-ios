@@ -14,12 +14,12 @@
 
 import UIKit
 
-protocol SanDiegoAddressesVCDelegate: AnyObject {
+protocol SanDiegoAddressesViewControllerDelegate: AnyObject {
     func sanDiegoAddressesViewController(_ sanDiegoAddressesViewController: SanDiegoAddressesViewController, didSelectAddress address: String)
 }
 
 class SanDiegoAddressesViewController: UITableViewController {
-    weak var delegate: SanDiegoAddressesVCDelegate?
+    weak var delegate: SanDiegoAddressesViewControllerDelegate?
     
     //prepopulated list of addresses
     private var addresses = [

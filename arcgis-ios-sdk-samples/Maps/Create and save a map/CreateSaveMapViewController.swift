@@ -94,10 +94,10 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
             let rootController = navController.viewControllers.last {
-            if let createOptionsVC = rootController as? CreateOptionsViewController {
-                createOptionsVC.delegate = self
-            } else if let saveAsVC = rootController as? SaveAsViewController {
-                saveAsVC.delegate = self
+            if let createOptionsViewController = rootController as? CreateOptionsViewController {
+                createOptionsViewController.delegate = self
+            } else if let saveAsViewController = rootController as? SaveAsViewController {
+                saveAsViewController.delegate = self
             }
         }
     }

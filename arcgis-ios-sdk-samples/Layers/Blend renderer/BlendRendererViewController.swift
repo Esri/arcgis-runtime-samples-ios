@@ -48,7 +48,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsViewCo
 
     // MARK: - BlendRendererSettingsViewControllerDelegate
     
-    func blendRendererSettingsViewController(_ blendRendererSettingsVC: BlendRendererSettingsViewController, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
+    func blendRendererSettingsViewController(_ blendRendererSettingsViewController: BlendRendererSettingsViewController, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
         setBlendRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
     }
     

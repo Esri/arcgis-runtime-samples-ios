@@ -191,26 +191,13 @@ class ExportTilesViewController: UIViewController {
             job = nil
         } else if let mapServiceInfo = exportTask.mapServiceInfo, mapServiceInfo.exportTilesAllowed {
             // Otherwise, try to download when exporting tiles is allowed.
-            // Create an action sheet to choose export format.
-            let alertController = UIAlertController(
-                title: "Choose Export Format",
-                message: nil,
-                preferredStyle: .actionSheet
-            )
-            // Add the CompactV1 (.tpk) option.
-            alertController.addAction(UIAlertAction(title: TilePackageFormat.tpk.description, style: .default) { _ in
-                self.initiateDownload(exportTask: self.exportTask, downloadFileURL: self.makeDownloadURL(fileFormat: .tpk))
-            })
-            // Add the CompactV2 (.tpkx) option if it is supported.
             if mapServiceInfo.exportTileCacheCompactV2Allowed {
-                alertController.addAction(UIAlertAction(title: TilePackageFormat.tpkx.description, style: .default) { _ in
-                    self.initiateDownload(exportTask: self.exportTask, downloadFileURL: self.makeDownloadURL(fileFormat: .tpkx))
-                })
+                // Export using the CompactV2 (.tpkx) if it is supported.
+                self.initiateDownload(exportTask: self.exportTask, downloadFileURL: self.makeDownloadURL(fileFormat: .tpkx))
+            } else {
+                // Otherwise, use the CompactV1 (.tpk) format.
+                self.initiateDownload(exportTask: self.exportTask, downloadFileURL: self.makeDownloadURL(fileFormat: .tpk))
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            alertController.addAction(cancelAction)
-            alertController.popoverPresentationController?.barButtonItem = sender
-            present(alertController, animated: true)
         }
     }
     

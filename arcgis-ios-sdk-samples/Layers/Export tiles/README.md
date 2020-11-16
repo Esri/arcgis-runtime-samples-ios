@@ -36,6 +36,8 @@ ArcGIS tiled layers do not support reprojection, query, select, identify, or edi
 
 Refer to the [Tile Package Specification](https://github.com/Esri/tile-package-spec) on GitHub for more information on the tile package format.
 
+This workflow can be used with [Esri basemaps](https://www.esri.com/en-us/arcgis/products/location-services/services/basemaps).
+
 ## Tags
 
 cache, download, offline

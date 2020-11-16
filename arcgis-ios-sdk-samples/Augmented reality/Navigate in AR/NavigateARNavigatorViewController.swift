@@ -256,9 +256,9 @@ extension NavigateARNavigatorViewController: AGSLocationChangeHandlerDelegate {
 
 extension NavigateARNavigatorViewController {
     @IBAction func showCalibrationPopup(_ sender: UIBarButtonItem) {
-        let calibrationVC = NavigateARCalibrationViewController(arcgisARView: arView)
+        let calibrationViewController = NavigateARCalibrationViewController(arcgisARView: arView)
         elevationSurface.opacity = 0.6
-        showPopup(calibrationVC, sourceButton: sender)
+        showPopup(calibrationViewController, sourceButton: sender)
     }
     
     private func showPopup(_ controller: UIViewController, sourceButton: UIBarButtonItem) {

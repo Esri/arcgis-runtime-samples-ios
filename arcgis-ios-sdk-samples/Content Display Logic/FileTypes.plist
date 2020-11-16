@@ -29,10 +29,15 @@
 	<key>Tile Packages</key>
 	<array>
 		<string>tpk</string>
+		<string>tpkx</string>
 	</array>
 	<key>Archives</key>
 	<array>
 		<string>zip</string>
+	</array>
+	<key>GPS Exchanges</key>
+	<array>
+		<string>gpx</string>
 	</array>
 </dict>
 </plist>

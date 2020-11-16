@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol HotspotSettingsVCDelegate: AnyObject {
+protocol HotspotSettingsViewControllerDelegate: AnyObject {
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: Date, toDate: Date)
 }
 
@@ -22,7 +22,7 @@ class HotspotSettingsViewController: UITableViewController {
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     
-    weak var delegate: HotspotSettingsVCDelegate?
+    weak var delegate: HotspotSettingsViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hEJ-rf-XL3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hEJ-rf-XL3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oly-Ak-pKW" userLabel="Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2G-eE-oT2">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="g5v-Ev-zwb"/>
                                     <barButtonItem enabled="NO" title="Choose Rendering Rule" id="pij-q2-Hof">
@@ -32,7 +33,8 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="UAR-ho-6Cz"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="oly-Ak-pKW" firstAttribute="leading" secondItem="cbW-fo-k99" secondAttribute="leading" id="7SK-tP-vtd"/>
                             <constraint firstItem="UAR-ho-6Cz" firstAttribute="bottom" secondItem="U2G-eE-oT2" secondAttribute="bottom" id="W4p-vu-ICg"/>
@@ -42,7 +44,6 @@
                             <constraint firstItem="U2G-eE-oT2" firstAttribute="leading" secondItem="cbW-fo-k99" secondAttribute="leading" id="wGg-Tb-bJi"/>
                             <constraint firstItem="U2G-eE-oT2" firstAttribute="top" secondItem="oly-Ak-pKW" secondAttribute="bottom" id="yIe-rg-L0I"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="UAR-ho-6Cz"/>
                     </view>
                     <connections>
                         <outlet property="chooseRenderingRuleBarButtonItem" destination="pij-q2-Hof" id="6GI-pA-Jle"/>
@@ -54,4 +55,9 @@
             <point key="canvasLocation" x="259" y="-38"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

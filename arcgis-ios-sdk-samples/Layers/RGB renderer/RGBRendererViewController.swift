@@ -52,16 +52,7 @@ class RGBRendererViewController: UIViewController, RGBRendererSettingsViewContro
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? RGBRendererSettingsViewController {
-            controller.preferredContentSize = {
-                let height: CGFloat
-                if traitCollection.horizontalSizeClass == .regular,
-                    traitCollection.verticalSizeClass == .regular {
-                    height = 200
-                } else {
-                    height = 150
-                }
-                return CGSize(width: 375, height: height)
-            }()
+            controller.preferredContentSize = CGSize(width: 375, height: 135)
             controller.delegate = self
             if let parameters = (rasterLayer?.renderer as? AGSRGBRenderer)?.stretchParameters {
                 controller.setupForParameters(parameters)

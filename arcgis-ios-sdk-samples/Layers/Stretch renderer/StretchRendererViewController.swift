@@ -53,16 +53,7 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVi
         if let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? StretchRendererSettingsViewController {
             controller.delegate = self
-            controller.preferredContentSize = {
-                let height: CGFloat
-                if traitCollection.horizontalSizeClass == .regular,
-                    traitCollection.verticalSizeClass == .regular {
-                    height = 200
-                } else {
-                    height = 150
-                }
-                return CGSize(width: 375, height: height)
-            }()
+            controller.preferredContentSize = CGSize(width: 375, height: 135)
             navController.presentationController?.delegate = self
         }
     }

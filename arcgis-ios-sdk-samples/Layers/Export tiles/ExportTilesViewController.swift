@@ -49,11 +49,7 @@ class ExportTilesViewController: UIViewController {
         }
     }
     /// A bar button to initiate or cancel the download task.
-    @IBOutlet var exportTilesBarButtonItem: UIBarButtonItem! {
-        didSet {
-            exportTilesBarButtonItem.possibleTitles = ["Export tiles", "Cancel"]
-        }
-    }
+    @IBOutlet var exportTilesBarButtonItem: UIBarButtonItem!
     
     // MARK: Properties
     
@@ -64,7 +60,7 @@ class ExportTilesViewController: UIViewController {
     /// An export job to download the tile package.
     var job: AGSExportTileCacheJob! {
         didSet {
-            exportTilesBarButtonItem.title = job == nil ? "Export tiles" : "Cancel"
+            exportTilesBarButtonItem.isEnabled = job == nil ? true : false
         }
     }
     

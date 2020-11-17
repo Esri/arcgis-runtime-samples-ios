@@ -187,13 +187,16 @@ class ExportTilesViewController: UIViewController {
             job = nil
         } else if let mapServiceInfo = exportTask.mapServiceInfo, mapServiceInfo.exportTilesAllowed {
             // Otherwise, try to download when exporting tiles is allowed.
+            
+            let tilePackageFormat: TilePackageFormat
             if mapServiceInfo.exportTileCacheCompactV2Allowed {
                 // Export using the CompactV2 (.tpkx) if it is supported.
-                self.initiateDownload(exportTask: self.exportTask, downloadFileURL: self.makeDownloadURL(fileFormat: .tpkx))
+                tilePackageFormat = .tpkx
             } else {
                 // Otherwise, use the CompactV1 (.tpk) format.
-                self.initiateDownload(exportTask: self.exportTask, downloadFileURL: self.makeDownloadURL(fileFormat: .tpk))
+                tilePackageFormat = .tpk
             }
+            self.initiateDownload(exportTask: exportTask, downloadFileURL: makeDownloadURL(fileFormat: tilePackageFormat))
         }
     }
     

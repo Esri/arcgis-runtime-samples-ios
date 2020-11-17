@@ -47,8 +47,7 @@ class ExploreScenesInFlyoverAR: UIViewController {
         let scene = AGSScene(basemapType: .imagery)
 
         // Create an integrated mesh layer
-        let meshLayer = AGSIntegratedMeshLayer(url:
-            URL(string: "https://www.arcgis.com/home/item.html?id=dbc72b3ebb024c848d89a42fe6387a1b")!)
+        let meshLayer = AGSIntegratedMeshLayer(url: URL(string: "https://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/Girona_Spain/SceneServer")!)
         
         // Add the mesh layer to our scene
         scene.operationalLayers.add(meshLayer)
@@ -57,18 +56,13 @@ class ExploreScenesInFlyoverAR: UIViewController {
         arView.sceneView.scene = scene
 
         // Wait for the layer to load, then set the AR camera
-        meshLayer.load { [weak self, weak meshLayer] (err: Error?) in
+        meshLayer.load { [weak self] error in
             guard let self = self else { return }
-            guard let `meshLayer` = meshLayer else { return }
-            if let error = err {
+            if let error = error {
                 self.presentAlert(error: error)
-            } else if let envelope = meshLayer.fullExtent {
-                let camera = AGSCamera(latitude: envelope.center.y,
-                                       longitude: envelope.center.x,
-                                       altitude: 600,
-                                       heading: 0,
-                                       pitch: 90,
-                                       roll: 0)
+            } else {
+                let location = AGSPoint(x: 2.8259, y: 41.9906, z: 200.0, spatialReference: .wgs84())
+                let camera = AGSCamera(location: location, heading: 190, pitch: 65, roll: 0)
                 self.arView.originCamera = camera
             }
         }

@@ -31,7 +31,8 @@ class VectorStylesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if itemIDs[indexPath.row] == selectedItemID {
-            // Select the displayed item.
+            // Select and indicate the displayed item.
+            cell.accessoryType = .checkmark
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         } else {
             cell.accessoryType = .none

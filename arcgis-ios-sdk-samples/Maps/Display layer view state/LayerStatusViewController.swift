@@ -107,7 +107,7 @@ class LayerStatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames  = ["LayerStatusViewController"]
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["LayerStatusViewController"]
         // Avoid the overlap between the status label and the map content.
         mapView.contentInset.top = 2 * statusLabel.font.lineHeight
     }

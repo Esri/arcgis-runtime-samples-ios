@@ -456,7 +456,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames  = ["EditWithBranchVersioningViewController"]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["EditWithBranchVersioningViewController"]
         // Load the service geodatabase.
         let damageFeatureService = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
         loadServiceGeodatabase(from: damageFeatureService)

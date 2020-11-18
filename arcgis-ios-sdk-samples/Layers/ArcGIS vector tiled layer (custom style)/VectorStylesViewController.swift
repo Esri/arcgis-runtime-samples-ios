@@ -30,13 +30,8 @@ class VectorStylesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        if itemIDs[indexPath.row] == selectedItemID {
-            // Select and indicate the displayed item.
-            cell.accessoryType = .checkmark
-            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-        } else {
-            cell.accessoryType = .none
-        }
+        // Indicate the displayed item.
+        cell.accessoryType = itemIDs[indexPath.row] == selectedItemID ? .checkmark : .none
         return cell
     }
     
@@ -45,10 +40,10 @@ class VectorStylesViewController: UITableViewController {
         delegate?.vectorStylesViewController(self, didSelectItemWithID: itemID)
         // Indicate which cell has been selected.
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-    }
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        // Indicate which cell has been unselected.
-        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        
+        if let previousItemID = selectedItemID, let previousRow = itemIDs.firstIndex(of: previousItemID) {
+            tableView.cellForRow(at: IndexPath(row: previousRow, section: 0))?.accessoryType = .none
+        }
+        selectedItemID = itemID
     }
 }

@@ -38,12 +38,13 @@ class VectorStylesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemID = itemIDs[indexPath.row]
         delegate?.vectorStylesViewController(self, didSelectItemWithID: itemID)
-        // Indicate which cell has been selected.
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        
+        // Indicate that the previous item has been deselected.
         if let previousItemID = selectedItemID, let previousRow = itemIDs.firstIndex(of: previousItemID) {
             tableView.cellForRow(at: IndexPath(row: previousRow, section: 0))?.accessoryType = .none
         }
+        // Indicate which cell has been selected.
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        
         selectedItemID = itemID
     }
 }

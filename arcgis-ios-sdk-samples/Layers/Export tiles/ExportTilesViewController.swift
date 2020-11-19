@@ -48,7 +48,7 @@ class ExportTilesViewController: UIViewController {
             previewMapView.layer.borderWidth = 8
         }
     }
-    /// A bar button to initiate or cancel the download task.
+    /// A bar button to initiate the download task.
     @IBOutlet var exportTilesBarButtonItem: UIBarButtonItem!
     
     // MARK: Properties
@@ -181,13 +181,8 @@ class ExportTilesViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
-        if let exportJob = job {
-            // If an existing job is downloading, cancel the download.
-            exportJob.progress.cancel()
-            job = nil
-        } else if let mapServiceInfo = exportTask.mapServiceInfo, mapServiceInfo.exportTilesAllowed {
-            // Otherwise, try to download when exporting tiles is allowed.
-            
+        if let mapServiceInfo = exportTask.mapServiceInfo, mapServiceInfo.exportTilesAllowed {
+            // Try to download when exporting tiles is allowed.
             let tilePackageFormat: TilePackageFormat
             if mapServiceInfo.exportTileCacheCompactV2Allowed {
                 // Export using the CompactV2 (.tpkx) if it is supported.
@@ -197,6 +192,8 @@ class ExportTilesViewController: UIViewController {
                 tilePackageFormat = .tpk
             }
             self.initiateDownload(exportTask: exportTask, downloadFileURL: makeDownloadURL(fileFormat: tilePackageFormat))
+        } else {
+            presentAlert(title: "Error", message: "Exporting tiles is not supported for the service.")
         }
     }
     

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="beF-yn-MU6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="beF-yn-MU6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLS-ms-81h" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </view>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="34" translatesAutoresizingMaskIntoConstraints="NO" id="yMh-oN-h6N" userLabel="Instructions Container">
                                 <rect key="frame" x="0.0" y="44" width="414" height="34"/>
                                 <subviews>
@@ -38,13 +42,11 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="DOk-3h-gKt" secondAttribute="bottom" constant="8" id="48f-E0-Fb3"/>
                                     <constraint firstItem="DOk-3h-gKt" firstAttribute="top" secondItem="yMh-oN-h6N" secondAttribute="top" constant="8" id="ZTX-Hc-u47"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLS-ms-81h" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="78" width="414" height="818"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bDJ-YQ-Fba"/>
@@ -53,7 +55,7 @@
                             <constraint firstAttribute="trailing" secondItem="YLS-ms-81h" secondAttribute="trailing" id="4JD-Hc-i8w"/>
                             <constraint firstItem="YLS-ms-81h" firstAttribute="bottom" secondItem="7gX-cs-H6x" secondAttribute="bottom" id="6p8-oz-atx"/>
                             <constraint firstItem="YLS-ms-81h" firstAttribute="leading" secondItem="7gX-cs-H6x" secondAttribute="leading" id="72h-w0-ibb"/>
-                            <constraint firstItem="YLS-ms-81h" firstAttribute="top" secondItem="yMh-oN-h6N" secondAttribute="bottom" id="H0c-YF-ggi"/>
+                            <constraint firstItem="YLS-ms-81h" firstAttribute="top" secondItem="bDJ-YQ-Fba" secondAttribute="top" id="H0c-YF-ggi"/>
                             <constraint firstAttribute="trailing" secondItem="yMh-oN-h6N" secondAttribute="trailing" id="LlD-gz-Qxg"/>
                             <constraint firstItem="bDJ-YQ-Fba" firstAttribute="top" secondItem="yMh-oN-h6N" secondAttribute="top" symbolic="YES" id="Lyf-dh-JpZ"/>
                             <constraint firstItem="DOk-3h-gKt" firstAttribute="leading" secondItem="bDJ-YQ-Fba" secondAttribute="leading" id="Pot-p2-KQq"/>
@@ -73,6 +75,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

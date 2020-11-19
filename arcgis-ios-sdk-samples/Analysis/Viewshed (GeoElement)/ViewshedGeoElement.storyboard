@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="asZ-BO-edQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="asZ-BO-edQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0U-33-i0S" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="101" width="414" height="795"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </view>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM1-Ws-yO3" userLabel="Instruction View">
                                 <rect key="frame" x="0.0" y="44" width="414" height="57"/>
@@ -30,6 +31,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <constraints>
                                     <constraint firstItem="PF5-we-Wcu" firstAttribute="top" secondItem="cM1-Ws-yO3" secondAttribute="top" constant="8" id="1Qa-Ms-iDL"/>
                                     <constraint firstAttribute="bottom" secondItem="PF5-we-Wcu" secondAttribute="bottom" constant="8" id="TJj-bI-d0C"/>
@@ -47,7 +49,7 @@
                             <constraint firstItem="Z0U-33-i0S" firstAttribute="leading" secondItem="OmS-KM-jTp" secondAttribute="leading" id="sGF-jw-jKg"/>
                             <constraint firstAttribute="bottom" secondItem="Z0U-33-i0S" secondAttribute="bottom" id="smM-X7-5Ow"/>
                             <constraint firstItem="zHk-5t-F8j" firstAttribute="trailing" secondItem="PF5-we-Wcu" secondAttribute="trailing" constant="8" id="tnr-q8-s06"/>
-                            <constraint firstItem="Z0U-33-i0S" firstAttribute="top" secondItem="cM1-Ws-yO3" secondAttribute="bottom" id="xLC-MU-DwI"/>
+                            <constraint firstItem="Z0U-33-i0S" firstAttribute="top" secondItem="zHk-5t-F8j" secondAttribute="top" id="xLC-MU-DwI"/>
                         </constraints>
                     </view>
                     <connections>
@@ -60,6 +62,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

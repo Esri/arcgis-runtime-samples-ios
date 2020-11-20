@@ -49,7 +49,7 @@ class FeatureLayerSelectionViewController: UIViewController {
     /// - Returns: An `AGSMap` object.
     func makeMap() -> AGSMap {
         // Initialize map with topographic basemap.
-        let map = AGSMap(basemap: .streets())
+        let map = AGSMap(basemapStyle: .arcGISStreets)
         // Set initial viewpoint.
         map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -180, yMin: -90, xMax: 180, yMax: 90, spatialReference: .wgs84()))
         // Add feature layer to the map.

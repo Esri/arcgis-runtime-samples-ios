@@ -32,7 +32,7 @@ class SetMinMaxScaleViewController: UIViewController {
     ///
     /// - Returns: A new `AGSMap` object.
     func makeMap() -> AGSMap {
-        let map = AGSMap(basemap: .streets())
+        let map = AGSMap(basemapStyle: .arcGISStreets)
         map.minScale = 8_000
         map.maxScale = 2_000
         return map

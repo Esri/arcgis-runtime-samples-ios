@@ -40,7 +40,7 @@ class ViewshedLocationViewController: UIViewController {
         ]
         
         // initialize the scene with an imagery basemap
-        let scene = AGSScene(basemap: .imagery())
+        let scene = AGSScene(basemapStyle: .arcGISImagery)
         
         // assign the scene to the scene view
         sceneView.scene = scene

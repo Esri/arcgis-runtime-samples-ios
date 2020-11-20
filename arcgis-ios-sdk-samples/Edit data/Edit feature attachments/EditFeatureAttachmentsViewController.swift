@@ -40,7 +40,7 @@ class EditFeatureAttachmentsViewController: UIViewController {
             "AttachmentsTableViewController"
         ]
         
-        let map = AGSMap(basemap: .oceans())
+        let map = AGSMap(basemapStyle: .arcGISOceans)
         //set initial viewpoint
         map.initialViewpoint = AGSViewpoint(
             center: AGSPoint(x: 0, y: 0, spatialReference: .webMercator()),

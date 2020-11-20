@@ -28,7 +28,7 @@ class SimpleRendererViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SimpleRendererViewController"]
         
         //instantiate map with basemap
-        let map = AGSMap(basemap: .imageryWithLabels())
+        let map = AGSMap(basemapStyle: .arcGISImageryLabels)
         
         //assign map to the map view
         self.mapView.map = map

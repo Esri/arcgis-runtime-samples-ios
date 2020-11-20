@@ -30,7 +30,7 @@ class MapRotationViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapRotationViewController"]
         
         //instantiate map with topographic basemap
-        self.map = AGSMap(basemap: .streets())
+        self.map = AGSMap(basemapStyle: .arcGISStreets)
         
         //assign map to the map view
         self.mapView.map = self.map

@@ -17,7 +17,7 @@ import ArcGIS
 
 class MapLoadedViewController: UIViewController {
     /// The map displayed in the map view.
-    let map = AGSMap(basemap: .imageryWithLabels())
+    let map = AGSMap(basemapStyle: .arcGISImageryLabels)
 
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var bannerLabel: UILabel!

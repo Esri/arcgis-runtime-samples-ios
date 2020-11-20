@@ -54,7 +54,7 @@ class GeodesicOperationsViewController: UIViewController, AGSGeoViewTouchDelegat
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GeodesicOperationsViewController"]
         
         // Assign map with imagery basemap to the map view.
-        mapView.map = AGSMap(basemap: .imagery())
+        mapView.map = AGSMap(basemapStyle: .arcGISImagery)
         
         // Add the graphics overlay to the map view.
         mapView.graphicsOverlays.add(graphicsOverlay)

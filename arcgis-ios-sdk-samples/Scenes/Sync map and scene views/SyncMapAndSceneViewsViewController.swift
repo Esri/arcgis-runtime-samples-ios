@@ -30,7 +30,7 @@ class SyncMapAndSceneViewsViewController: UIViewController {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SyncMapAndSceneViewsViewController"]
         
         // add a map with labeled imagery to the map view
-        mapView.map = AGSMap(basemap: .imageryWithLabels())
+        mapView.map = AGSMap(basemapStyle: .arcGISImageryLabels)
         // add a scene with labeled imagery to the scene view
         sceneView.scene = AGSScene(basemap: .imageryWithLabels())
         

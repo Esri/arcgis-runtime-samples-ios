@@ -32,7 +32,7 @@ class NavigateRouteViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: .navigationVector())
+            mapView.map = AGSMap(basemapStyle: .arcGISNavigation)
             mapView.graphicsOverlays.add(makeRouteOverlay())
         }
     }

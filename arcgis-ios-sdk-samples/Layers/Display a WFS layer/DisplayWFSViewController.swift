@@ -24,7 +24,7 @@ class DisplayWFSViewController: UIViewController {
         super.viewDidLoad()
         
         // Initialize a map with topographic basemap
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         
         // A URL to the GetCapabilities endpoint of a WFS service
         let wfsServiceURL = URL(string: "https://dservices2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/services/Seattle_Downtown_Features/WFSServer?service=wfs&request=getcapabilities")!

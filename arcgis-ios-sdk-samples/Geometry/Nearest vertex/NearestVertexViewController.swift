@@ -77,7 +77,7 @@ class NearestVertexViewController: UIViewController {
     ///
     /// - Returns: A new `AGSMap` object.
     func makeMap() -> AGSMap {
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         return map
     }
     

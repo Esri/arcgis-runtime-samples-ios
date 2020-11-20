@@ -240,9 +240,9 @@ extension ViewHiddenInfrastructureARExplorerViewController: ARSCNViewDelegate {
 
 extension ViewHiddenInfrastructureARExplorerViewController {
     @IBAction func showCalibrationPopup(_ sender: UIBarButtonItem) {
-        let calibrationVC = ViewHiddenInfrastructureARCalibrationViewController(arcgisARView: arView, isLocal: realScaleModePicker.selectedSegmentIndex == 1)
+        let calibrationViewController = ViewHiddenInfrastructureARCalibrationViewController(arcgisARView: arView, isLocal: realScaleModePicker.selectedSegmentIndex == 1)
         elevationSurface.opacity = 0.5
-        showPopup(calibrationVC, sourceButton: sender)
+        showPopup(calibrationViewController, sourceButton: sender)
     }
     
     func showPopup(_ controller: UIViewController, sourceButton: UIBarButtonItem) {

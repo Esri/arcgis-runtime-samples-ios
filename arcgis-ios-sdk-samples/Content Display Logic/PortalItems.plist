@@ -78,6 +78,12 @@
 		</dict>
 		<dict>
 			<key>identifier</key>
+			<string>f4b742a57af344988b02227e2824ca5f</string>
+			<key>filename</key>
+			<string>dodge_city.vtpk</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
 			<string>38a74d8a2a404fe8851ce32b3231f625</string>
 			<key>filename</key>
 			<string>ExchangeSetWithoutUpdates.zip</string>

@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l92-Q4-Uk4" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="768.5"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msR-U7-cd1">
-                                <rect key="frame" x="0.0" y="813" width="414" height="36"/>
+                                <rect key="frame" x="0.0" y="812.5" width="414" height="36.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfV-dz-lse">
                                         <rect key="frame" x="8" y="8" width="43" height="20.5"/>
@@ -36,7 +36,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5V-9s-nrk">
-                                        <rect key="frame" x="384" y="7" width="22" height="22"/>
+                                        <rect key="frame" x="384" y="7.5" width="22" height="22"/>
                                         <state key="normal" image="trashBlue"/>
                                         <connections>
                                             <action selector="trashAction" destination="XiM-Ic-ILI" eventType="touchUpInside" id="aow-la-aiR"/>
@@ -47,9 +47,9 @@
                                     <constraint firstItem="wfV-dz-lse" firstAttribute="centerY" secondItem="msR-U7-cd1" secondAttribute="centerY" id="6SU-PC-rum"/>
                                     <constraint firstItem="NZB-D0-rcp" firstAttribute="leading" secondItem="wfV-dz-lse" secondAttribute="trailing" constant="4" id="CZS-1J-Glj"/>
                                     <constraint firstItem="wfV-dz-lse" firstAttribute="leading" secondItem="msR-U7-cd1" secondAttribute="leading" constant="8" id="Fnb-a4-cgD"/>
+                                    <constraint firstItem="wfV-dz-lse" firstAttribute="top" secondItem="msR-U7-cd1" secondAttribute="top" constant="8" id="Jgo-LE-ZED"/>
                                     <constraint firstItem="K5V-9s-nrk" firstAttribute="centerY" secondItem="msR-U7-cd1" secondAttribute="centerY" id="V3o-LJ-eF2"/>
                                     <constraint firstItem="NZB-D0-rcp" firstAttribute="centerY" secondItem="msR-U7-cd1" secondAttribute="centerY" id="V8h-rx-fQG"/>
-                                    <constraint firstAttribute="height" constant="36" id="nkU-v2-5qF"/>
                                     <constraint firstAttribute="trailing" secondItem="K5V-9s-nrk" secondAttribute="trailing" constant="8" id="poY-7q-es1"/>
                                 </constraints>
                             </view>

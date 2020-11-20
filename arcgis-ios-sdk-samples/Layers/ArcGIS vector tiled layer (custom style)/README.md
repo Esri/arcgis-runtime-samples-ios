@@ -16,12 +16,12 @@ Pan and zoom to explore the vector tile basemap.
 ## How it works
 
 1. Construct an `AGSArcGISVectorTiledLayer` with the URL of a custom style from AGOL.
-    * Follow these steps to create a vector tiled layer with a custom style from offline resources:\
-    i. Construct an `AGSVectorTileCache` using the name of the local vector tile package.\
-    ii. Create an `AGSPortalItem` using the URL of a custom style.\
-    iii. Create an `AGSExportVectorTilesTask` using the portal item.\
-    iv. Get the `AGSExportVectorTilesJob` using `AGSExportVectorTilesTask.exportStyleResourceCacheJob(withDownloadDirectory:)`.\
-    v. Start the job using  `AGSExportVectorTilesJob.start(statusHandler:completion:)`.\
+    * Follow these steps to create a vector tiled layer with a custom style from offline resources:<br/>
+    i. Construct an `AGSVectorTileCache` using the name of the local vector tile package.<br/>
+    ii. Create an `AGSPortalItem` using the URL of a custom style.<br/>
+    iii. Create an `AGSExportVectorTilesTask` using the portal item.<br/>
+    iv. Get the `AGSExportVectorTilesJob` using `AGSExportVectorTilesTask.exportStyleResourceCacheJob(withDownloadDirectory:)`.<br/>
+    v. Start the job using  `AGSExportVectorTilesJob.start(statusHandler:completion:)`.<br/>
     vi. Once the job is complete, construct an `AGSArcGISVectorTiledLayer` using the vector tile cache and the `AGSItemResourceCache` from the job's result.
 2. Create an `AGSBasemap` from the `AGSArcGISVectorTiledLayer`.
 3. Assign the `AGSBasemap` to the map's `basemap`.

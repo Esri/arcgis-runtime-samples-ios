@@ -1,4 +1,4 @@
-all  # opt-in all rules by default
+all  # Opt-in all rules by default
 rule 'MD003', :style => :atx  # Header style written as non-closing pound marks. e.g. ## Section title
 rule 'MD004', :style => :asterisk  # Unordered list style as asterisk, rather than hyphen or plus sign
 rule 'MD009', :br_spaces => 2  # Allows an exception for 2 trailing spaces used to insert an explicit line break

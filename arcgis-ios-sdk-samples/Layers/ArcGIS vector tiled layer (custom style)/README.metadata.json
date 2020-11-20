@@ -13,14 +13,20 @@
         "vector tiled layer",
         "vector tiles",
         "AGSArcGISVectorTiledLayer",
-        "AGSMap"
+        "AGSExportVectorTilesTask",
+        "AGSItemResourceCache",
+        "AGSMap",
+        "AGSVectorTileCache"
     ],
     "redirect_from": [
         "/ios/latest/swift/sample-code/arcgis-vector-tiled-layer-custom-style-.htm"
     ],
     "relevant_apis": [
         "AGSArcGISVectorTiledLayer",
-        "AGSMap"
+        "AGSExportVectorTilesTask",
+        "AGSItemResourceCache",
+        "AGSMap",
+        "AGSVectorTileCache"
     ],
     "snippets": [
         "VectorStylesViewController.swift",

@@ -34,7 +34,7 @@ class OfflineEditingViewController: UIViewController {
     private var generatedGeodatabase: AGSGeodatabase?
     private var generateJob: AGSGenerateGeodatabaseJob?
     private var syncJob: AGSSyncGeodatabaseJob?
-    private var popupsVC: AGSPopupsViewController?
+    private var popupsViewController: AGSPopupsViewController?
     
     private var liveMode = true {
         didSet {
@@ -387,8 +387,8 @@ class OfflineEditingViewController: UIViewController {
     @IBAction func sketchDoneAction() {
         navigationItem.hidesBackButton = false
         navigationItem.rightBarButtonItem?.isEnabled = true
-        if let popupsVC = popupsVC {
-             present(popupsVC, animated: true)
+        if let popupsViewController = popupsViewController {
+             present(popupsViewController, animated: true)
         }
         NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
@@ -429,10 +429,10 @@ extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
                     }
                 }
                 if !popups.isEmpty {
-                    let popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
-                    self.popupsVC = popupsVC
-                    popupsVC.delegate = self
-                    self.present(popupsVC, animated: true)
+                    let popupsViewController = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
+                    self.popupsViewController = popupsViewController
+                    popupsViewController.delegate = self
+                    self.present(popupsViewController, animated: true)
                 } else {
                     self.presentAlert(message: "No features selected")
                 }
@@ -506,6 +506,6 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
         // Dismiss the popups view controller.
         dismiss(animated: true)
-        popupsVC = nil
+        self.popupsViewController = nil
     }
 }

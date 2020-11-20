@@ -71,7 +71,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
         
         // The auto-pan mode may be updated by the SDK as well as the user,
         // so use the change handler to set the UI
-        locationDisplay?.autoPanModeChangedHandler = { [weak self] (change) in
+        locationDisplay?.autoPanModeChangedHandler = { [weak self] (_) in
             // update the UI for the new mode
             self?.updateUIForAutoPanMode()
         }

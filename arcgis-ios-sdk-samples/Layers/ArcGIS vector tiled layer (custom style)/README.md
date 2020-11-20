@@ -16,7 +16,7 @@ Pan and zoom to explore the vector tile basemap.
 ## How it works
 
 1. Construct an `AGSArcGISVectorTiledLayer` with the URL of a custom style from AGOL.
-    * Follow these steps to create a vector tiled layer with a custom style from offline resources:  
+    * Follow these steps to create a vector tiled layer with a custom style from offline resources:   
     i. Construct an `AGSVectorTileCache` using the name of the local vector tile package.  
     ii. Create an `AGSPortalItem` using the URL of a custom style.  
     iii. Create an `AGSExportVectorTilesTask` using the portal item.  

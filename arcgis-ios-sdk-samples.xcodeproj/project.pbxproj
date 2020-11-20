@@ -826,6 +826,7 @@
 		F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F14A8F012474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */; };
 		F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
+		F1510FD3254A18E200C29150 /* dodge_city.vtpk in Resources */ = {isa = PBXBuildFile; fileRef = F1510FD2254A18E200C29150 /* dodge_city.vtpk */; settings = {ASSET_TAGS = (DodgeCity, ); }; };
 		F151AB8C22D7B0CA00055E45 /* MontereyElevation.dt2 in Resources */ = {isa = PBXBuildFile; fileRef = F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */; settings = {ASSET_TAGS = (MontereyElevationRaster, ); }; };
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F15CF0C923EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */; };
@@ -1777,6 +1778,7 @@
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigureSubnetworkTrace.storyboard; sourceTree = "<group>"; };
+		F1510FD2254A18E200C29150 /* dodge_city.vtpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = dodge_city.vtpk; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MontereyElevation.dt2; sourceTree = "<group>"; };
 		F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeFeatureLayerViewController.swift; sourceTree = "<group>"; };
 		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
@@ -3670,6 +3672,7 @@
 		4C060E652261195C0070C787 /* Tile Packages */ = {
 			isa = PBXGroup;
 			children = (
+				F1510FD2254A18E200C29150 /* dodge_city.vtpk */,
 				F1034FAB22D3F6C700B021DA /* MontereyElevation.tpkx */,
 				4C060E662261195C0070C787 /* naperville_imagery.tpk */,
 			);
@@ -4637,6 +4640,7 @@
 					Bradley3DModel,
 					Bristol,
 					Bristol3DModel,
+					DodgeCity,
 					Dolmus3DModel,
 					ExchangeSetWithoutUpdates,
 					GasDeviceAnnoMMPK,
@@ -4742,6 +4746,7 @@
 				3ED028991B8E3A8500ACA70D /* ShowMagnifier.storyboard in Resources */,
 				F1124F0A24CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard in Resources */,
 				098049AB2253FC3F009C685D /* BrowseWFSLayers.storyboard in Resources */,
+				F1510FD3254A18E200C29150 /* dodge_city.vtpk in Resources */,
 				D97B7E681FD9BFE700E1239D /* Subdivisions.shp in Resources */,
 				F1E8F0C9253A601C000B9A0F /* navigate_a_route_detour.gpx in Resources */,
 				3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */,

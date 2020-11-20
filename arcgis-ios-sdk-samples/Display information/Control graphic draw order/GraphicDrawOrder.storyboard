@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K2u-zA-P0T">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K2u-zA-P0T">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,7 +29,7 @@
                                             <constraint firstAttribute="width" constant="44" id="HIy-ZE-YoA"/>
                                             <constraint firstAttribute="height" constant="44" id="tuh-M3-5AB"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="BlueMarker"/>
+                                        <state key="normal" image="BlueMarker"/>
                                         <connections>
                                             <action selector="buttonAction:" destination="K2u-zA-P0T" eventType="touchUpInside" id="NDo-jv-9mO"/>
                                         </connections>
@@ -40,7 +40,7 @@
                                             <constraint firstAttribute="height" constant="44" id="8HN-jC-Cs7"/>
                                             <constraint firstAttribute="width" constant="44" id="bVG-8X-iNf"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="RedMarker2"/>
+                                        <state key="normal" image="RedMarker2"/>
                                         <connections>
                                             <action selector="buttonAction:" destination="K2u-zA-P0T" eventType="touchUpInside" id="EZL-w1-coQ"/>
                                         </connections>
@@ -51,7 +51,7 @@
                                             <constraint firstAttribute="width" constant="44" id="vR7-Zy-epx"/>
                                             <constraint firstAttribute="height" constant="44" id="yJR-EO-01P"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="GreenMarker"/>
+                                        <state key="normal" image="GreenMarker"/>
                                         <connections>
                                             <action selector="buttonAction:" destination="K2u-zA-P0T" eventType="touchUpInside" id="SKE-iS-PVR"/>
                                         </connections>
@@ -62,7 +62,7 @@
                                             <constraint firstAttribute="width" constant="44" id="IXO-YT-7nt"/>
                                             <constraint firstAttribute="height" constant="44" id="oik-IP-gMq"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="VioletMarker"/>
+                                        <state key="normal" image="VioletMarker"/>
                                         <connections>
                                             <action selector="buttonAction:" destination="K2u-zA-P0T" eventType="touchUpInside" id="0du-1S-jvu"/>
                                         </connections>

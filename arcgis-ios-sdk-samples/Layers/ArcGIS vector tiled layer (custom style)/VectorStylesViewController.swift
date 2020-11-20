@@ -21,31 +21,30 @@ protocol VectorStylesVCDelegate: AnyObject {
 }
 
 class VectorStylesViewController: UITableViewController {
+    /// The item IDs of the custom styles.
     var itemIDs: [String] = []
+    /// The item ID of the selected style.
     var selectedItemID: String?
     
     weak var delegate: VectorStylesVCDelegate?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let selectedItemID = selectedItemID,
-            let row = itemIDs.firstIndex(of: selectedItemID) {
-            let indexPath = IndexPath(row: row, section: 0)
-            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-            let cell = tableView.cellForRow(at: indexPath)
-            cell?.accessoryType = .checkmark
-        }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        // Indicate the displayed item.
+        cell.accessoryType = itemIDs[indexPath.row] == selectedItemID ? .checkmark : .none
+        return cell
     }
     
-    // MARK: - UITableViewDelegate
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemID = itemIDs[indexPath.row]
         delegate?.vectorStylesViewController(self, didSelectItemWithID: itemID)
+        // Indicate that the previous item has been deselected.
+        if let previousItemID = selectedItemID, let previousRow = itemIDs.firstIndex(of: previousItemID) {
+            tableView.cellForRow(at: IndexPath(row: previousRow, section: 0))?.accessoryType = .none
+        }
+        // Indicate which cell has been selected.
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-    }
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        
+        selectedItemID = itemID
     }
 }

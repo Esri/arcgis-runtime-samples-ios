@@ -404,6 +404,10 @@
 				<string>VectorTileCustomStyle</string>
 				<key>descriptionText</key>
 				<string>Load ArcGIS vector tiled layers using custom styles.</string>
+				<key>dependency</key>
+				<array>
+					<string>DodgeCity</string>
+				</array>
 			</dict>
 			<dict>
 				<key>displayName</key>

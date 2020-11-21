@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7OF-WW-ois">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7OF-WW-ois">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHI-Dx-Wlm" userLabel="Dynamic Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="409"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="426"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vR4-Yr-oi4" userLabel="Static Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="453" width="414" height="409"/>
+                                <rect key="frame" x="0.0" y="470" width="414" height="426"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGP-7C-mcY">
                                 <rect key="frame" x="142.5" y="429" width="129" height="38"/>
@@ -32,7 +32,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Static" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ5-jH-GCE">
-                                <rect key="frame" x="20" y="473" width="44" height="21"/>
+                                <rect key="frame" x="20" y="490" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -52,15 +52,15 @@
                             <constraint firstItem="EGP-7C-mcY" firstAttribute="centerX" secondItem="tmZ-VH-cn3" secondAttribute="centerX" id="MR7-ux-QMj"/>
                             <constraint firstItem="Y4G-d2-Z1I" firstAttribute="top" secondItem="MHI-Dx-Wlm" secondAttribute="top" constant="20" id="N2M-mf-TrB"/>
                             <constraint firstItem="vR4-Yr-oi4" firstAttribute="height" secondItem="MHI-Dx-Wlm" secondAttribute="height" id="P8t-2L-tyo"/>
-                            <constraint firstItem="MHI-Dx-Wlm" firstAttribute="trailing" secondItem="rqu-X2-DNl" secondAttribute="trailing" id="TpH-et-Orp"/>
-                            <constraint firstItem="vR4-Yr-oi4" firstAttribute="leading" secondItem="rqu-X2-DNl" secondAttribute="leading" id="WLj-qa-LqK"/>
+                            <constraint firstItem="MHI-Dx-Wlm" firstAttribute="trailing" secondItem="tmZ-VH-cn3" secondAttribute="trailing" id="TpH-et-Orp"/>
+                            <constraint firstItem="vR4-Yr-oi4" firstAttribute="leading" secondItem="tmZ-VH-cn3" secondAttribute="leading" id="WLj-qa-LqK"/>
                             <constraint firstItem="aQ5-jH-GCE" firstAttribute="top" secondItem="vR4-Yr-oi4" secondAttribute="top" constant="20" id="YCX-Mb-hZl"/>
                             <constraint firstItem="Y4G-d2-Z1I" firstAttribute="leading" secondItem="rqu-X2-DNl" secondAttribute="leading" constant="20" id="eih-HO-RpH"/>
                             <constraint firstItem="vR4-Yr-oi4" firstAttribute="top" secondItem="MHI-Dx-Wlm" secondAttribute="bottom" id="fhn-ss-WAm"/>
-                            <constraint firstItem="vR4-Yr-oi4" firstAttribute="trailing" secondItem="rqu-X2-DNl" secondAttribute="trailing" id="sIn-PU-ewR"/>
+                            <constraint firstItem="vR4-Yr-oi4" firstAttribute="trailing" secondItem="tmZ-VH-cn3" secondAttribute="trailing" id="sIn-PU-ewR"/>
                             <constraint firstItem="EGP-7C-mcY" firstAttribute="centerY" secondItem="tmZ-VH-cn3" secondAttribute="centerY" id="sud-XJ-k3l"/>
-                            <constraint firstItem="MHI-Dx-Wlm" firstAttribute="leading" secondItem="rqu-X2-DNl" secondAttribute="leading" id="w5r-bj-pSq"/>
-                            <constraint firstItem="vR4-Yr-oi4" firstAttribute="bottom" secondItem="rqu-X2-DNl" secondAttribute="bottom" id="zZD-Yg-niw"/>
+                            <constraint firstItem="MHI-Dx-Wlm" firstAttribute="leading" secondItem="tmZ-VH-cn3" secondAttribute="leading" id="w5r-bj-pSq"/>
+                            <constraint firstItem="vR4-Yr-oi4" firstAttribute="bottom" secondItem="tmZ-VH-cn3" secondAttribute="bottom" id="zZD-Yg-niw"/>
                         </constraints>
                     </view>
                     <connections>

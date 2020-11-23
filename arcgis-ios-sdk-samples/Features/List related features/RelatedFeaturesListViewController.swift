@@ -59,10 +59,6 @@ class RelatedFeaturesListViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = .white
-    }
-    
     // MARK: - Actions
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {

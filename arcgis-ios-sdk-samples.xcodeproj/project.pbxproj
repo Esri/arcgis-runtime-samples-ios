@@ -877,6 +877,25 @@
 		F4E5CD7E207058D8000A6D35 /* FeatureLayerRenderingModeMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4E5CD7C20704AAA000A6D35 /* FeatureLayerRenderingModeMapViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		007A424F256C747E0025F582 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.masque";
+			fileType = pattern.proxy;
+			inputFiles = (
+				"$(SRCROOT)/.secrets",
+			);
+			isEditable = 1;
+			name = "Generate swift code from secrets";
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE)",
+			);
+			runOncePerArchitecture = 0;
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n\"${SRCROOT}/Scripts/masquerade\" -i \"${INPUT_FILE_PATH}\" -o \"${SCRIPT_OUTPUT_FILE_0}\" -s \"${SCRIPT_INPUT_FILE_0}\" -f\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		4C8C80BB23AC3FF5000333B3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -4602,6 +4621,7 @@
 				4CBDB3192190E88F006E5D39 /* Lint Code */,
 			);
 			buildRules = (
+				007A424F256C747E0025F582 /* PBXBuildRule */,
 			);
 			dependencies = (
 				9746601E234266A3008EF35A /* PBXTargetDependency */,

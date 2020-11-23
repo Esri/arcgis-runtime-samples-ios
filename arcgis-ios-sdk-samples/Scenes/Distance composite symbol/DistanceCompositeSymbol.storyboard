@@ -1,36 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NV6-yr-Kek">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NV6-yr-Kek">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Distance Composite Symbol View Controller-->
         <scene sceneID="hVI-Ld-ZaZ">
             <objects>
-                <viewController id="NV6-yr-Kek" customClass="DistanceCompositeSymbolViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NV6-yr-Kek" customClass="DistanceCompositeSymbolViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ERF-Ab-Eaq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gz-Lx-yOj" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="sYU-1H-syh"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2gz-Lx-yOj" firstAttribute="top" secondItem="sYU-1H-syh" secondAttribute="top" id="4Xk-H1-5fR"/>
                             <constraint firstItem="2gz-Lx-yOj" firstAttribute="bottom" secondItem="ERF-Ab-Eaq" secondAttribute="bottom" id="WuK-nY-DiP"/>
                             <constraint firstAttribute="trailing" secondItem="2gz-Lx-yOj" secondAttribute="trailing" id="Xl5-t9-5QL"/>
                             <constraint firstItem="2gz-Lx-yOj" firstAttribute="leading" secondItem="ERF-Ab-Eaq" secondAttribute="leading" id="fYE-Lu-aAD"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="sYU-1H-syh"/>
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="2gz-Lx-yOj" id="Ngi-mo-abw"/>
@@ -41,4 +39,9 @@
             <point key="canvasLocation" x="-268" y="89.505247376311857"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -83,7 +83,6 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
                 return
             }
             
-            self.title = self.mapView.map?.item?.title
             self.barButtonItem.isEnabled = true
         }
         

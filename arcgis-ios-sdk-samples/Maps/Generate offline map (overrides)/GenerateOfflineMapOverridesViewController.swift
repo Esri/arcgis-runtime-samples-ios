@@ -91,7 +91,6 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
                 return
             }
             
-            self.title = self.mapView.map?.item?.title
             self.generateButtonItem.isEnabled = true
         }
         

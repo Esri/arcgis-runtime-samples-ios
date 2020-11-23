@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aoD-Ev-s0u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aoD-Ev-s0u">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,26 +19,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGO-11-S7Y" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="64.5" width="414" height="748.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQs-5w-mSm">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions are shown here." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y6-TI-luf">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="adb-tG-5z7"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <constraints>
                                     <constraint firstItem="1y6-TI-luf" firstAttribute="trailing" secondItem="adb-tG-5z7" secondAttribute="trailing" id="Df9-yo-scQ"/>
                                     <constraint firstItem="1y6-TI-luf" firstAttribute="top" secondItem="KQs-5w-mSm" secondAttribute="top" id="FNF-bE-Uay"/>
                                     <constraint firstItem="1y6-TI-luf" firstAttribute="leading" secondItem="adb-tG-5z7" secondAttribute="leading" id="N5Q-fn-S7c"/>
                                     <constraint firstAttribute="bottom" secondItem="1y6-TI-luf" secondAttribute="bottom" id="biy-1O-tza"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="adb-tG-5z7"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCE-Ex-Ju7">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
@@ -56,12 +58,13 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="hrM-gU-wv5"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cCE-Ex-Ju7" firstAttribute="top" secondItem="AGO-11-S7Y" secondAttribute="bottom" id="0ab-kb-au9"/>
                             <constraint firstItem="KQs-5w-mSm" firstAttribute="leading" secondItem="eSY-BN-xeu" secondAttribute="leading" id="K7z-oc-ne5"/>
                             <constraint firstItem="cCE-Ex-Ju7" firstAttribute="leading" secondItem="eSY-BN-xeu" secondAttribute="leading" id="L0K-zu-ZHs"/>
-                            <constraint firstItem="AGO-11-S7Y" firstAttribute="top" secondItem="KQs-5w-mSm" secondAttribute="bottom" id="LYU-iO-v9V"/>
+                            <constraint firstItem="AGO-11-S7Y" firstAttribute="top" secondItem="hrM-gU-wv5" secondAttribute="top" id="LYU-iO-v9V"/>
                             <constraint firstItem="cCE-Ex-Ju7" firstAttribute="bottom" secondItem="hrM-gU-wv5" secondAttribute="bottom" id="fU5-gc-69r"/>
                             <constraint firstItem="AGO-11-S7Y" firstAttribute="leading" secondItem="eSY-BN-xeu" secondAttribute="leading" id="fcg-bQ-xjm"/>
                             <constraint firstItem="KQs-5w-mSm" firstAttribute="top" secondItem="hrM-gU-wv5" secondAttribute="top" id="hmE-fK-bjX"/>
@@ -69,7 +72,6 @@
                             <constraint firstItem="cCE-Ex-Ju7" firstAttribute="trailing" secondItem="eSY-BN-xeu" secondAttribute="trailing" id="ut8-sp-TnJ"/>
                             <constraint firstItem="KQs-5w-mSm" firstAttribute="trailing" secondItem="eSY-BN-xeu" secondAttribute="trailing" id="ynz-uh-0O8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="hrM-gU-wv5"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="AGO-11-S7Y" id="G8E-zW-YCC"/>
@@ -91,27 +93,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MxU-mV-lW9" customClass="ArcGISARView" customModule="ArcGISToolkit">
-                                <rect key="frame" x="0.0" y="20.5" width="414" height="738.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLn-Ol-JFu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions are shown here." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioY-Ac-pUy">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="hhD-Fm-5A5"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <constraints>
                                     <constraint firstItem="ioY-Ac-pUy" firstAttribute="leading" secondItem="hhD-Fm-5A5" secondAttribute="leading" id="9EY-wJ-DCK"/>
                                     <constraint firstItem="ioY-Ac-pUy" firstAttribute="trailing" secondItem="hhD-Fm-5A5" secondAttribute="trailing" id="9b5-aO-7gb"/>
                                     <constraint firstAttribute="bottom" secondItem="ioY-Ac-pUy" secondAttribute="bottom" id="9kS-Zz-zWc"/>
                                     <constraint firstItem="ioY-Ac-pUy" firstAttribute="top" secondItem="aLn-Ol-JFu" secondAttribute="top" id="e9j-4O-1CQ"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="hhD-Fm-5A5"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ar1-aA-9zp">
                                 <rect key="frame" x="0.0" y="759" width="414" height="49"/>
@@ -130,7 +131,8 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Lj3-Om-KUc"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aLn-Ol-JFu" firstAttribute="top" secondItem="Lj3-Om-KUc" secondAttribute="top" id="50I-bD-WWX"/>
                             <constraint firstItem="Ar1-aA-9zp" firstAttribute="top" secondItem="MxU-mV-lW9" secondAttribute="bottom" id="EjF-1r-6hW"/>
@@ -139,11 +141,10 @@
                             <constraint firstItem="Ar1-aA-9zp" firstAttribute="bottom" secondItem="Lj3-Om-KUc" secondAttribute="bottom" id="Vx2-P8-kD4"/>
                             <constraint firstItem="aLn-Ol-JFu" firstAttribute="trailing" secondItem="Flu-kb-SQh" secondAttribute="trailing" id="YqB-xs-WHZ"/>
                             <constraint firstItem="Ar1-aA-9zp" firstAttribute="trailing" secondItem="Flu-kb-SQh" secondAttribute="trailing" id="Z6s-vY-dTO"/>
-                            <constraint firstItem="aLn-Ol-JFu" firstAttribute="bottom" secondItem="MxU-mV-lW9" secondAttribute="top" id="eeT-RE-fg7"/>
+                            <constraint firstAttribute="top" secondItem="MxU-mV-lW9" secondAttribute="top" id="eeT-RE-fg7"/>
                             <constraint firstItem="MxU-mV-lW9" firstAttribute="trailing" secondItem="Flu-kb-SQh" secondAttribute="trailing" id="j1L-sn-KL0"/>
                             <constraint firstItem="aLn-Ol-JFu" firstAttribute="leading" secondItem="Flu-kb-SQh" secondAttribute="leading" id="yxI-ZS-nrQ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Lj3-Om-KUc"/>
                     </view>
                     <navigationItem key="navigationItem" id="K9w-mB-UYE"/>
                     <connections>
@@ -158,4 +159,12 @@
             <point key="canvasLocation" x="828" y="86"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

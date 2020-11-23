@@ -41,7 +41,6 @@ class BookmarksListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarkCell", for: indexPath)
-        cell.backgroundColor = .clear
         //get the respective bookmark
         let bookmark = self.bookmarks[indexPath.row]
         //assign the bookmark's name as the title for the cell

@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kwY-aI-1sv">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kwY-aI-1sv">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Set Initial Map Area View Controller-->
         <scene sceneID="dJ0-Tr-FNc">
             <objects>
-                <viewController id="kwY-aI-1sv" customClass="SetInitialMapAreaViewController" customModule="arcgis_ios_sdk_samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kwY-aI-1sv" customClass="SetInitialMapAreaViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0uB-uH-SmY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Exe-jJ-k5v" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Nwq-Ll-1dd"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Exe-jJ-k5v" firstAttribute="top" secondItem="0uB-uH-SmY" secondAttribute="top" id="7nn-rb-MxB"/>
                             <constraint firstItem="Exe-jJ-k5v" firstAttribute="top" secondItem="Nwq-Ll-1dd" secondAttribute="top" id="Anp-EX-vNx"/>
@@ -31,7 +30,6 @@
                             <constraint firstItem="Exe-jJ-k5v" firstAttribute="bottom" secondItem="0uB-uH-SmY" secondAttribute="bottom" id="mUA-t1-JBy"/>
                             <constraint firstItem="Exe-jJ-k5v" firstAttribute="leading" secondItem="0uB-uH-SmY" secondAttribute="leading" id="xnJ-ub-pvG"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Nwq-Ll-1dd"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="7nn-rb-MxB"/>
@@ -47,4 +45,9 @@
             <point key="canvasLocation" x="551" y="412"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

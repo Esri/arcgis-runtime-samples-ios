@@ -94,7 +94,7 @@ TEMP_DIR=$(mktemp -d -t secrets)
 # Check if tmp dir was created
 if [ ! "${TEMP_DIR}" ] || [ ! -d "${TEMP_DIR}" ]; then
   # Fallback to /tmp
-  TEMP_DIR='/tmp/masque'
+  TEMP_DIR="/tmp/masque"
 fi
 
 # Deletes the temp directory

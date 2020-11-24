@@ -52,10 +52,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         self.modifyAppearance()
         
-        //enable/disable touches based on settings
+        // Enable/disable touches based on settings.
         self.setTouchPref()
         
         SVProgressHUD.setDefaultMaskType(.gradient)
+        
+        // Set license key with custom build rule.
+        AppDelegate.licenseApplication()
         
         return true
     }
@@ -179,4 +182,26 @@ extension UIColor {
     class var accentColor: UIColor { return UIColor(named: "AccentColor")! }
     // The translucent background color for status labels.
     class var statusLabelBackgroundColor: UIColor { return UIColor(named: "statusLabelBackgroundColor")! }
+}
+
+extension AppDelegate {
+    /// License the app with ArcGIS Runtime deployment license keys.
+    ///
+    /// - Note: An invalid key does not throw an exception, but simply fails to license the app,
+    ///   falling back to Developer Mode (which will display a watermark on the map view).
+    static func licenseApplication() {
+        do {
+            // Don't set extension key if you don't use utility network samples.
+            // try AGSArcGISRuntimeEnvironment.setLicenseKey(.licenseKey)
+            
+            // Set both keys for accessing all samples.
+            try AGSArcGISRuntimeEnvironment.setLicenseKey(.licenseKey, extensions: [.extensionLicenseKey])
+            
+            // Set API keys for new metered basemap styles.
+            // AGSArcGISRuntimeEnvironment.apiKey = .apiKey
+        } catch {
+            print("[Error: AGSArcGISRuntimeEnvironment] Error licensing app: \(error.localizedDescription)")
+        }
+        print("[ArcGIS Runtime License] \(AGSArcGISRuntimeEnvironment.license())")
+    }
 }

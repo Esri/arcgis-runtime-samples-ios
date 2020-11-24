@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lQr-0X-gJw">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lQr-0X-gJw">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,15 +14,16 @@
             <objects>
                 <viewController id="lQr-0X-gJw" customClass="ConvexHullViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jum-nO-Jw7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MpB-iY-wSy" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Og-nO-uja">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Br6-zt-5cs"/>
                                     <barButtonItem enabled="NO" title="Create" id="seG-ll-Wuw">
                                         <connections>
                                             <action selector="createConvexHull" destination="lQr-0X-gJw" id="pVW-Hm-lTa"/>
@@ -33,10 +35,12 @@
                                             <action selector="reset" destination="lQr-0X-gJw" id="kGT-Kh-QdG"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AZ8-ew-E2X"/>
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="vpj-2E-1tA"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8Og-nO-uja" firstAttribute="trailing" secondItem="jum-nO-Jw7" secondAttribute="trailing" id="5XN-xX-bQ6"/>
                             <constraint firstItem="MpB-iY-wSy" firstAttribute="trailing" secondItem="jum-nO-Jw7" secondAttribute="trailing" id="Umu-g3-yYq"/>
@@ -46,7 +50,6 @@
                             <constraint firstItem="8Og-nO-uja" firstAttribute="bottom" secondItem="vpj-2E-1tA" secondAttribute="bottom" id="pus-1w-nVz"/>
                             <constraint firstItem="MpB-iY-wSy" firstAttribute="top" secondItem="vpj-2E-1tA" secondAttribute="top" id="x2K-uG-Q4N"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="vpj-2E-1tA"/>
                     </view>
                     <connections>
                         <outlet property="creatButtonItem" destination="seG-ll-Wuw" id="QCE-bQ-pDq"/>
@@ -59,4 +62,9 @@
             <point key="canvasLocation" x="-7.2463768115942031" y="-162.72321428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

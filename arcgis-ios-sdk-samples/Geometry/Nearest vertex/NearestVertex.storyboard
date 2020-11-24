@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDu-17-dje">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDu-17-dje">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,22 +14,21 @@
             <objects>
                 <viewController id="VDu-17-dje" customClass="NearestVertexViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z7H-KH-7Jx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dKM-xz-6a3" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="cWY-7y-ask"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dKM-xz-6a3" firstAttribute="leading" secondItem="z7H-KH-7Jx" secondAttribute="leading" id="U6b-nn-lLN"/>
-                            <constraint firstItem="dKM-xz-6a3" firstAttribute="top" secondItem="z7H-KH-7Jx" secondAttribute="top" id="ZrE-gy-66r"/>
+                            <constraint firstItem="dKM-xz-6a3" firstAttribute="top" secondItem="cWY-7y-ask" secondAttribute="top" id="ZrE-gy-66r"/>
                             <constraint firstItem="dKM-xz-6a3" firstAttribute="bottom" secondItem="z7H-KH-7Jx" secondAttribute="bottom" id="lUl-M8-cPv"/>
                             <constraint firstItem="dKM-xz-6a3" firstAttribute="trailing" secondItem="z7H-KH-7Jx" secondAttribute="trailing" id="mBq-ct-gqH"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="cWY-7y-ask"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="dKM-xz-6a3" id="2Nj-Cp-rgC"/>
@@ -39,4 +39,9 @@
             <point key="canvasLocation" x="-125" y="88"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

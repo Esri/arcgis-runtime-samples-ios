@@ -1757,6 +1757,14 @@
 				<key>descriptionText</key>
 				<string>Show realistic lighting and shadows for a given time of day.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display 3D labels</string>
+				<key>storyboardName</key>
+				<string>Display3DLabels</string>
+				<key>descriptionText</key>
+				<string>Display 3D labels on scenes.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

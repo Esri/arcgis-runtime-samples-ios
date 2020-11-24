@@ -18,7 +18,7 @@ import ArcGIS
 class Display3DLabelsViewController: UIViewController {
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
-            let url = URL(string: "http://www.arcgis.com/home/webscene/viewer.html?webscene=659b351e4e3341719a2310636e8806c3")!
+            let url = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=850dfee7d30f4d9da0ebca34a533c169")!
             sceneView.scene = AGSScene(url: url)
         }
     }

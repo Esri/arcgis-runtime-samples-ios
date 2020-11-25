@@ -33,7 +33,7 @@ class GraphicDrawOrderViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GraphicDrawOrderViewController"]
         
-        //create an instance of a map with ESRI topographic basemap
+        //create an instance of a map with ESRI streets basemap
         self.map = AGSMap(basemapStyle: .arcGISStreets)
         //assign map to the map view
         self.mapView.map = self.map

@@ -30,7 +30,7 @@ class BrowseWFSLayersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Initialize a map with topographic basemap
+        // Initialize a map with an imagery basemap
         let map = AGSMap(basemapStyle: .arcGISImagery)
         
         // Assign map to the map view

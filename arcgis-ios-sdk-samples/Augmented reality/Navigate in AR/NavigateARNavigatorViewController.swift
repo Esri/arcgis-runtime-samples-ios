@@ -70,7 +70,7 @@ class NavigateARNavigatorViewController: UIViewController {
     ///
     /// - Returns: A new `AGSScene` object.
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemapType: .imagery)
+        let scene = AGSScene(basemapStyle: .arcGISImagery)
         elevationSurface.navigationConstraint = .none
         elevationSurface.opacity = 0
         elevationSurface.elevationSources = [elevationSource]

@@ -33,7 +33,7 @@ class IdentifyKMLFeaturesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let map = AGSMap(basemap: .darkGrayCanvasVector())
+        let map = AGSMap(basemapStyle: .arcGISDarkGray)
         map.operationalLayers.add(forecastLayer)
         
         let center = AGSPoint(x: -48_885, y: 1_718_235, spatialReference: AGSSpatialReference(wkid: 5070))

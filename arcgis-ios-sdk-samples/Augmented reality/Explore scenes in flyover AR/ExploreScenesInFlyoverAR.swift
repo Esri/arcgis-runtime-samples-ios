@@ -44,7 +44,7 @@ class ExploreScenesInFlyoverAR: UIViewController {
 
     private func configureSceneForAR() {
         // Create scene with imagery basemap
-        let scene = AGSScene(basemapType: .imagery)
+        let scene = AGSScene(basemapStyle: .arcGISImagery)
 
         // Create an integrated mesh layer
         let meshLayer = AGSIntegratedMeshLayer(url: URL(string: "https://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/Girona_Spain/SceneServer")!)

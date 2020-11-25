@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Csd-Ea-ggy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Csd-Ea-ggy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -303,14 +303,14 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0W-73-arK">
                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="30"/>
-                                                            <color key="backgroundColor" red="0.9882352941176471" green="0.92549019607843142" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.9882352941176471" green="0.92549019607843142" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="6Rc-uz-4Uu"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="576-sA-6t9">
                                                             <rect key="frame" x="20" y="0.0" width="20" height="30"/>
-                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.50196078431372548" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.50196078431372548" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
@@ -359,14 +359,14 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9F-xK-GVz">
                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="30"/>
-                                                            <color key="backgroundColor" red="0.58823529411764708" green="0.71764705882352942" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.58823529411764708" green="0.71764705882352942" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="ea8-j6-3BP"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdP-Pa-ErI">
                                                             <rect key="frame" x="20" y="0.0" width="20" height="30"/>
-                                                            <color key="backgroundColor" red="0.27058823529411763" green="0.38431372549019605" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.27058823529411763" green="0.38431372549019605" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
                                                     <constraints>

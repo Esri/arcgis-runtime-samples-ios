@@ -61,7 +61,7 @@ class BufferViewController: UIViewController {
             "BufferOptionsViewController"
         ]
         
-        // instantiate a map using a topo basemap
+        // instantiate a map using a topographic basemap
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         // assign the map to the map view
         mapView.map = map

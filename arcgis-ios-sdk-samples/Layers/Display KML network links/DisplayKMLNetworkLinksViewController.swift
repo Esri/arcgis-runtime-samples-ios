@@ -32,7 +32,7 @@ class DisplayKMLNetworkLinksViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayKMLNetworkLinksViewController"]
         
-        // instantiate a scene using labeled imagery
+        // instantiate a scene using labeled imagery basemap
         let scene = AGSScene(basemapStyle: .arcGISImageryLabels)
         // set the view's scene
         sceneView.scene = scene

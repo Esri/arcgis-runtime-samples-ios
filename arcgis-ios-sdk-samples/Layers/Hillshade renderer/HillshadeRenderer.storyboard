@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N7b-bD-HuP">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N7b-bD-HuP">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,18 +14,14 @@
             <objects>
                 <viewController id="N7b-bD-HuP" customClass="HillshadeRendererViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sfV-F2-b3Z">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="toV-EU-MxY" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
-                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTa-lo-avh">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="feA-6O-qWN"/>
-                                </constraints>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTa-lo-avh">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="OH3-bI-VcW"/>
                                     <barButtonItem title="Edit Renderer" id="KPp-2c-3qW">
@@ -39,18 +36,18 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="d5y-Pa-YAz"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dTa-lo-avh" firstAttribute="trailing" secondItem="d5y-Pa-YAz" secondAttribute="trailing" id="06q-2C-dZ8"/>
+                            <constraint firstItem="dTa-lo-avh" firstAttribute="trailing" secondItem="sfV-F2-b3Z" secondAttribute="trailing" id="06q-2C-dZ8"/>
                             <constraint firstItem="toV-EU-MxY" firstAttribute="leading" secondItem="sfV-F2-b3Z" secondAttribute="leading" id="5Um-t7-BJ2"/>
                             <constraint firstItem="toV-EU-MxY" firstAttribute="bottom" secondItem="dTa-lo-avh" secondAttribute="top" id="8zD-Vl-bkN"/>
                             <constraint firstItem="toV-EU-MxY" firstAttribute="top" secondItem="d5y-Pa-YAz" secondAttribute="top" id="LUU-Ca-c8n"/>
                             <constraint firstItem="d5y-Pa-YAz" firstAttribute="bottom" secondItem="dTa-lo-avh" secondAttribute="bottom" id="QCc-Q6-q13"/>
                             <constraint firstItem="toV-EU-MxY" firstAttribute="top" secondItem="sfV-F2-b3Z" secondAttribute="top" id="eV8-pH-7Ng"/>
                             <constraint firstAttribute="trailing" secondItem="toV-EU-MxY" secondAttribute="trailing" id="kJj-jY-ysn"/>
-                            <constraint firstItem="dTa-lo-avh" firstAttribute="leading" secondItem="d5y-Pa-YAz" secondAttribute="leading" id="xYO-Do-f2c"/>
+                            <constraint firstItem="dTa-lo-avh" firstAttribute="leading" secondItem="sfV-F2-b3Z" secondAttribute="leading" id="xYO-Do-f2c"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="d5y-Pa-YAz"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="eV8-pH-7Ng"/>
@@ -70,27 +67,27 @@
             <objects>
                 <tableViewController id="T6U-yA-4tq" customClass="HillshadeSettingsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" id="FQE-6p-d3M">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
                             <tableViewSection id="rh2-ca-FRf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="aow-tg-SJc">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aow-tg-SJc" id="k0n-Av-f49">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SX0-Ks-5Mk">
-                                                    <rect key="frame" x="16" y="12" width="59.5" height="21"/>
+                                                    <rect key="frame" x="16" y="12" width="59" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="45" minValue="0.0" maxValue="90" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8L-nx-xtk">
-                                                    <rect key="frame" x="137" y="7.5" width="184" height="31"/>
+                                                    <rect key="frame" x="176" y="7.5" width="184" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="180" id="gaP-db-tEP"/>
                                                     </constraints>
@@ -99,12 +96,12 @@
                                                     </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I70-xt-7vc">
-                                                    <rect key="frame" x="327" y="12" width="32" height="20.5"/>
+                                                    <rect key="frame" x="366" y="12" width="32" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="32" id="CX7-HU-HpM"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -121,20 +118,20 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="68K-hl-e5U">
-                                        <rect key="frame" x="0.0" y="73" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="73" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="68K-hl-e5U" id="Za4-uX-COF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Azimuth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-UG-Nqw">
                                                     <rect key="frame" x="16" y="12" width="63" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="315" minValue="0.0" maxValue="359" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-D8-xR2">
-                                                    <rect key="frame" x="137" y="7.5" width="184" height="31"/>
+                                                    <rect key="frame" x="176" y="7.5" width="184" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="180" id="DXo-os-5xq"/>
                                                     </constraints>
@@ -143,12 +140,12 @@
                                                     </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="315" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEL-og-M5L">
-                                                    <rect key="frame" x="327" y="12" width="32" height="20.5"/>
+                                                    <rect key="frame" x="366" y="12" width="32" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="32" id="Zhs-sr-LSw"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -165,21 +162,21 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="B8g-pb-4Pz" detailTextLabel="ThK-zT-k3i" style="IBUITableViewCellStyleValue1" id="mtb-Bi-dsT">
-                                        <rect key="frame" x="0.0" y="118" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="118" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mtb-Bi-dsT" id="rRm-Q8-T41">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Slope Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="B8g-pb-4Pz">
-                                                    <rect key="frame" x="16" y="13" width="85.5" height="20.5"/>
+                                                    <rect key="frame" x="20" y="13" width="85" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="ThK-zT-k3i">
-                                                    <rect key="frame" x="296" y="13" width="44" height="20.5"/>
+                                                    <rect key="frame" x="331" y="13" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
@@ -214,7 +211,7 @@
             <objects>
                 <navigationController id="uzB-kx-TIw" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Cz-R7-Rh1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -226,4 +223,12 @@
             <point key="canvasLocation" x="1036" y="372"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

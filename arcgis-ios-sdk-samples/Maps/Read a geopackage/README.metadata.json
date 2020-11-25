@@ -3,8 +3,7 @@
     "description": "Add rasters and feature tables from a geopackage to a map.",
     "ignore": false,
     "images": [
-        "read-geopackage-1.png",
-        "read-geopackage-2.png"
+        "read-geopackage.png"
     ],
     "keywords": [
         "GeoPackage",

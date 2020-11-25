@@ -83,7 +83,7 @@ class HonorMobileMapPackageExpirationDateViewController: UIViewController {
         guard let expirationDate = mobileMapPackage.expiration?.dateTime else {
             return
         }
-        let dateComponents = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: expirationDate, to: Date())
+        let dateComponents = Calendar.current.dateComponents([.year, .day, .hour, .minute, .second], from: expirationDate, to: Date())
         let text: String
         if let string = DateComponentsFormatter.localizedString(from: dateComponents, unitsStyle: .abbreviated) {
             text = String(format: "Expired %@ ago.", string)

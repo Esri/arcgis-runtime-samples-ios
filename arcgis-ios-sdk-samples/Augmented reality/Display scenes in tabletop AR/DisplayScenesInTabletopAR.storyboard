@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9jd-tI-OWR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9jd-tI-OWR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,17 +20,17 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5S-t5-nxA" customClass="ArcGISARView" customModule="ArcGISToolkit">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Move the phone slowly to begin tracking." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LI-jX-nbZ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
-                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1At-b3-BXl"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="C5S-t5-nxA" firstAttribute="top" secondItem="1At-b3-BXl" secondAttribute="top" id="V9t-Oo-Wba"/>
                             <constraint firstItem="3LI-jX-nbZ" firstAttribute="leading" secondItem="UlC-uU-6kg" secondAttribute="leading" id="YXg-op-B0O"/>
@@ -38,7 +40,6 @@
                             <constraint firstItem="C5S-t5-nxA" firstAttribute="leading" secondItem="UlC-uU-6kg" secondAttribute="leading" id="vGK-ZX-fHi"/>
                             <constraint firstItem="3LI-jX-nbZ" firstAttribute="trailing" secondItem="UlC-uU-6kg" secondAttribute="trailing" id="zgu-r4-5DN"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1At-b3-BXl"/>
                     </view>
                     <connections>
                         <outlet property="arView" destination="C5S-t5-nxA" id="wdM-nm-EN9"/>
@@ -50,4 +51,12 @@
             <point key="canvasLocation" x="-271" y="129"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

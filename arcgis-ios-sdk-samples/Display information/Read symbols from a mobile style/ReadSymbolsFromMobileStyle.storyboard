@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1ar-Hf-dS6">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1ar-Hf-dS6">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,31 +14,33 @@
             <objects>
                 <viewController id="1ar-Hf-dS6" customClass="ReadSymbolsFromMobileStyleViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DTF-Nu-Xm1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V0D-Un-tnh" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y20-7A-Wxq">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wK1-4B-Crk"/>
                                     <barButtonItem title="Symbol" id="R43-JQ-6kU">
                                         <connections>
                                             <action selector="showSymbol" destination="1ar-Hf-dS6" id="dXg-Wn-tvE"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="U5E-CO-Aba"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="trV-kt-81y"/>
                                     <barButtonItem title="Clear" id="cEi-XD-Kru">
                                         <connections>
                                             <action selector="removeAllGraphics" destination="1ar-Hf-dS6" id="kjl-gd-r0v"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="U5E-CO-Aba"/>
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3MO-Uc-5vK"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="y20-7A-Wxq" firstAttribute="bottom" secondItem="3MO-Uc-5vK" secondAttribute="bottom" id="4JP-Iq-OsH"/>
                             <constraint firstAttribute="trailing" secondItem="V0D-Un-tnh" secondAttribute="trailing" id="7Dx-5a-HTh"/>
@@ -49,7 +50,6 @@
                             <constraint firstItem="V0D-Un-tnh" firstAttribute="top" secondItem="3MO-Uc-5vK" secondAttribute="top" id="TTr-bz-ThU"/>
                             <constraint firstItem="V0D-Un-tnh" firstAttribute="leading" secondItem="DTF-Nu-Xm1" secondAttribute="leading" id="mcK-LM-sUb"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="3MO-Uc-5vK"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="V0D-Un-tnh" id="1Qj-RN-6l9"/>
@@ -64,31 +64,31 @@
             <objects>
                 <viewController storyboardIdentifier="SymbolViewController" id="snD-xX-7pd" customClass="ReadSymbolsFromMobileStyleSymbolViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MxG-Lb-GNy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ascending" translatesAutoresizingMaskIntoConstraints="NO" id="z6M-rl-0w8">
-                                <rect key="frame" x="157.5" y="36" width="60" height="60"/>
+                                <rect key="frame" x="177" y="60" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="EJ6-yv-X5C"/>
                                     <constraint firstAttribute="width" secondItem="z6M-rl-0w8" secondAttribute="height" multiplier="1:1" id="SWo-TI-OnZ"/>
                                 </constraints>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqe-vl-61K">
-                                <rect key="frame" x="0.0" y="112" width="375" height="555"/>
+                                <rect key="frame" x="0.0" y="136" width="414" height="760"/>
                                 <connections>
                                     <segue destination="ngI-1F-5ur" kind="embed" id="QzG-Qf-Jc7"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceo-Xw-h0n" userLabel="Divider View">
-                                <rect key="frame" x="0.0" y="112" width="375" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="136" width="414" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Dju-EC-SCx"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="HvU-RR-YXI"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="z6M-rl-0w8" firstAttribute="top" secondItem="HvU-RR-YXI" secondAttribute="top" constant="16" id="1cX-sD-Umj"/>
                             <constraint firstAttribute="bottom" secondItem="Aqe-vl-61K" secondAttribute="bottom" id="Gyq-Ac-FQ5"/>
@@ -100,7 +100,6 @@
                             <constraint firstItem="ceo-Xw-h0n" firstAttribute="leading" secondItem="MxG-Lb-GNy" secondAttribute="leading" id="hZL-Ma-dsN"/>
                             <constraint firstItem="z6M-rl-0w8" firstAttribute="centerX" secondItem="HvU-RR-YXI" secondAttribute="centerX" id="wkX-xG-ZSN"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="HvU-RR-YXI"/>
                     </view>
                     <navigationItem key="navigationItem" title="Symbol" id="NUd-Fb-N46">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="U2B-cT-FXJ">
@@ -122,19 +121,19 @@
             <objects>
                 <tableViewController id="ngI-1F-5ur" customClass="ReadSymbolsFromMobileStyleSymbolSettingsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="bSz-yW-de6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="760"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="basic" textLabel="8nl-uB-zcf" style="IBUITableViewCellStyleDefault" id="YcG-BJ-EIu">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YcG-BJ-EIu" id="cKE-cC-xCR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8nl-uB-zcf">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -144,21 +143,20 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="color" id="Faj-cE-bwj" customClass="ReadSymbolsFromMobileStyleSymbolSettingsColorCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="99" width="414" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Faj-cE-bwj" id="bLf-ch-oIh">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DJd-cL-VzY">
-                                            <rect key="frame" x="16" y="12" width="41.5" height="19.5"/>
+                                            <rect key="frame" x="20" y="12" width="41" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdV-Z0-or5">
-                                            <rect key="frame" x="273" y="7" width="60" height="30"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <rect key="frame" x="315" y="7.5" width="60" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="tgu-Gn-Aos"/>
                                                 <constraint firstAttribute="width" constant="60" id="ueN-ie-fcd"/>
@@ -179,20 +177,20 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="size" id="p0q-gF-VZY" customClass="ReadSymbolsFromMobileStyleSymbolSettingsSizeCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="52.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p0q-gF-VZY" id="kUY-ek-RAM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlE-KS-rs1">
-                                            <rect key="frame" x="16" y="11.5" width="32.5" height="20.5"/>
+                                            <rect key="frame" x="20" y="16" width="32" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="r4Y-8R-gA8">
-                                            <rect key="frame" x="169.5" y="11" width="191.5" height="22.5"/>
+                                            <rect key="frame" x="185" y="11.5" width="211" height="31"/>
                                             <connections>
                                                 <action selector="updateSize" destination="p0q-gF-VZY" eventType="valueChanged" id="J4d-PY-4tN"/>
                                             </connections>
@@ -226,5 +224,11 @@
     </scenes>
     <resources>
         <image name="Ascending" width="30" height="30"/>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

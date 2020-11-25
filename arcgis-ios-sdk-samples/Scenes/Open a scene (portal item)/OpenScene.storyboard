@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oI0-pg-r9z">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oI0-pg-r9z">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,21 +14,21 @@
             <objects>
                 <viewController id="oI0-pg-r9z" customClass="OpenSceneViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wvg-jB-teh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryt-GZ-85l" customClass="AGSSceneView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="jRW-g3-mXx"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ryt-GZ-85l" secondAttribute="trailing" id="BgQ-MV-9tu"/>
                             <constraint firstItem="ryt-GZ-85l" firstAttribute="top" secondItem="jRW-g3-mXx" secondAttribute="top" id="JNq-wS-0zt"/>
                             <constraint firstAttribute="bottom" secondItem="ryt-GZ-85l" secondAttribute="bottom" id="VgJ-5E-mY1"/>
                             <constraint firstItem="ryt-GZ-85l" firstAttribute="leading" secondItem="Wvg-jB-teh" secondAttribute="leading" id="qyt-Hr-y87"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="jRW-g3-mXx"/>
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="ryt-GZ-85l" id="SJP-OI-qba"/>
@@ -38,4 +39,9 @@
             <point key="canvasLocation" x="-76" y="62"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

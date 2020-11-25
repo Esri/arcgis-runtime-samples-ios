@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="he9-d0-x8C">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="he9-d0-x8C">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,17 +19,16 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yLc-1s-l0R" userLabel="Scene View" customClass="AGSSceneView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="r91-IO-Hfv"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="yLc-1s-l0R" firstAttribute="top" secondItem="LzB-Vs-K1f" secondAttribute="top" id="9Fr-r0-JHh"/>
                             <constraint firstItem="yLc-1s-l0R" firstAttribute="leading" secondItem="LzB-Vs-K1f" secondAttribute="leading" id="PAD-KI-3Q5"/>
                             <constraint firstAttribute="trailing" secondItem="yLc-1s-l0R" secondAttribute="trailing" id="ZiY-T3-g7e"/>
                             <constraint firstAttribute="bottom" secondItem="yLc-1s-l0R" secondAttribute="bottom" id="qrj-Xz-dML"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="r91-IO-Hfv"/>
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="yLc-1s-l0R" id="uiM-hD-McR"/>
@@ -41,4 +39,9 @@
             <point key="canvasLocation" x="20" y="161"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzM-2V-EQz">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzM-2V-EQz">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,22 +14,21 @@
             <objects>
                 <viewController id="FzM-2V-EQz" customClass="ReadGeopackageViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LjG-Av-qXX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7t2-g1-K1m" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="627"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="JPl-pb-ybD"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7t2-g1-K1m" firstAttribute="leading" secondItem="LjG-Av-qXX" secondAttribute="leading" id="1MU-VI-e8K"/>
-                            <constraint firstItem="7t2-g1-K1m" firstAttribute="top" secondItem="LjG-Av-qXX" secondAttribute="top" constant="20" symbolic="YES" id="RcT-ID-Mex"/>
+                            <constraint firstItem="7t2-g1-K1m" firstAttribute="top" secondItem="JPl-pb-ybD" secondAttribute="top" id="RcT-ID-Mex"/>
                             <constraint firstItem="7t2-g1-K1m" firstAttribute="trailing" secondItem="LjG-Av-qXX" secondAttribute="trailing" id="VR1-1v-ga7"/>
-                            <constraint firstAttribute="bottom" secondItem="7t2-g1-K1m" secondAttribute="bottom" constant="20" symbolic="YES" id="nz0-7K-8mL"/>
+                            <constraint firstAttribute="bottom" secondItem="7t2-g1-K1m" secondAttribute="bottom" id="nz0-7K-8mL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="JPl-pb-ybD"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="7t2-g1-K1m" id="XEO-Vi-OZ9"/>
@@ -39,4 +39,9 @@
             <point key="canvasLocation" x="-494" y="-195"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7OF-WW-ois">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7OF-WW-ois">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,34 +15,34 @@
             <objects>
                 <viewController storyboardIdentifier="FeatureLayerRenderingModeMapStoryboard" title="Feature layer rendering mode (map)" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7OF-WW-ois" customClass="FeatureLayerRenderingModeSceneViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tmZ-VH-cn3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="nae-Eq-pEL">
-                                <rect key="frame" x="0.0" y="44" width="375" height="690"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nae-Eq-pEL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHI-Dx-Wlm" userLabel="Dynamic Map View" customClass="AGSSceneView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="380.5"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vR4-Yr-oi4" userLabel="Static Map View" customClass="AGSSceneView">
-                                        <rect key="frame" x="0.0" y="352" width="375" height="338"/>
+                                        <rect key="frame" x="0.0" y="388.5" width="414" height="380.5"/>
                                     </view>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dynamic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4G-d2-Z1I">
-                                <rect key="frame" x="20" y="64" width="66.666666666666671" height="20.333333333333329"/>
+                                <rect key="frame" x="20" y="64" width="66.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Static" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ5-jH-GCE">
-                                <rect key="frame" x="20" y="416" width="44" height="20.333333333333314"/>
+                                <rect key="frame" x="20" y="452.5" width="44" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0CO-T4-sXC">
-                                <rect key="frame" x="0.0" y="734" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="NaI-d4-KFb"/>
                                     <barButtonItem title="Zoom In" id="rGg-1q-Ig1">
@@ -54,7 +54,8 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="rqu-X2-DNl"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0CO-T4-sXC" firstAttribute="top" secondItem="nae-Eq-pEL" secondAttribute="bottom" id="3Xi-Vn-5aA"/>
                             <constraint firstItem="nae-Eq-pEL" firstAttribute="trailing" secondItem="tmZ-VH-cn3" secondAttribute="trailing" id="7nl-US-aci"/>
@@ -68,7 +69,6 @@
                             <constraint firstItem="rqu-X2-DNl" firstAttribute="bottom" secondItem="0CO-T4-sXC" secondAttribute="bottom" id="msP-vE-uFw"/>
                             <constraint firstItem="aQ5-jH-GCE" firstAttribute="top" secondItem="vR4-Yr-oi4" secondAttribute="top" constant="20" id="uFL-DX-gUw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="rqu-X2-DNl"/>
                     </view>
                     <connections>
                         <outlet property="dynamicSceneView" destination="MHI-Dx-Wlm" id="ey3-nL-f5Q"/>
@@ -80,4 +80,9 @@
             <point key="canvasLocation" x="-76" y="43.596059113300491"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

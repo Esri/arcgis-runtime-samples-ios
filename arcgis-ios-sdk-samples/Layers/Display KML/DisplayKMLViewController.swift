@@ -45,7 +45,8 @@ class DisplayKMLViewController: UIViewController {
         super.viewDidLoad()
         
         // Instantiate a map with a dark gray basemap centered on the United States
-        let map = AGSMap(basemapType: .darkGrayCanvasVector, latitude: 39, longitude: -98, levelOfDetail: 4)
+        let map = AGSMap(basemapStyle: .arcGISDarkGray)
+        map.initialViewpoint = AGSViewpoint(latitude: 39, longitude: -98, scale: 3.6978595474472E7)
         // Display the map in the map view
         mapView.map = map
         

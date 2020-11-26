@@ -21,8 +21,9 @@ class OpenStreetMapLayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize map with an OpenStreetMap basemap
-        let map = AGSMap(basemapType: .openStreetMap, latitude: 34.056295, longitude: -117.195800, levelOfDetail: 10)
+        //initialize map with an OpenStreetMap standard basemap
+        let map = AGSMap(basemapStyle: .osmStandard)
+        map.initialViewpoint = AGSViewpoint(latitude: 34.056295, longitude: -117.195800, scale: 577790.554289)
         //assign the map to the map view
         mapView.map = map
     

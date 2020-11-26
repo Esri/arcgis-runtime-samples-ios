@@ -4614,7 +4614,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E23AA011AFC28F6002E2214 /* Build configuration list for PBXNativeTarget "ArcGIS Runtime SDK Samples" */;
 			buildPhases = (
-				007A4255256C7F480025F582 /* Add execution permission to masquerade script */,
 				3E23A9DC1AFC28F6002E2214 /* Sources */,
 				3E23A9DD1AFC28F6002E2214 /* Frameworks */,
 				4CB506D1224C2C20006A3471 /* Download Portal Item Data */,
@@ -5073,24 +5072,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		007A4255256C7F480025F582 /* Add execution permission to masquerade script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Add execution permission to masquerade script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# The project uses a bash program named *masquerade* in a custom build rule to conceal app secrets in versioned source code. Grant masquerade executable permissions.\nchmod a+rwx,g-wx,o-wx \"${SRCROOT}/Scripts/masquerade\"\n";
-		};
 		3ED029A21B8E5D4D00ACA70D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

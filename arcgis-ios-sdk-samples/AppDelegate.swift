@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         SVProgressHUD.setDefaultMaskType(.gradient)
         
         // Set license key with custom build rule.
-        AppDelegate.licenseApplication()
+        application.license()
         
         return true
     }
@@ -184,12 +184,12 @@ extension UIColor {
     class var statusLabelBackgroundColor: UIColor { return UIColor(named: "statusLabelBackgroundColor")! }
 }
 
-extension AppDelegate {
+extension UIApplication {
     /// License the app with ArcGIS Runtime deployment license keys.
     ///
     /// - Note: An invalid key does not throw an exception, but simply fails to license the app,
     ///   falling back to Developer Mode (which will display a watermark on the map view).
-    static func licenseApplication() {
+    func license() {
         do {
             // Don't set extension key if you don't use utility network samples.
             // try AGSArcGISRuntimeEnvironment.setLicenseKey(.licenseKey)

@@ -57,8 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         SVProgressHUD.setDefaultMaskType(.gradient)
         
-        // Set license key with custom build rule.
-        application.license()
+        // Uncomment the following line to set license key.
+        // application.license()
         
         return true
     }
@@ -197,11 +197,11 @@ extension UIApplication {
             // Set both keys for accessing all samples.
             try AGSArcGISRuntimeEnvironment.setLicenseKey(.licenseKey, extensions: [.extensionLicenseKey])
             
-            // Set API keys for new metered basemap styles.
+            // Authentication with an API key or named user is required to
+            // access basemaps and other location services
             // AGSArcGISRuntimeEnvironment.apiKey = .apiKey
         } catch {
             print("[Error: AGSArcGISRuntimeEnvironment] Error licensing app: \(error.localizedDescription)")
         }
-        print("[ArcGIS Runtime License] \(AGSArcGISRuntimeEnvironment.license())")
     }
 }

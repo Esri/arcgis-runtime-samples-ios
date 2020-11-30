@@ -188,7 +188,7 @@ extension UIApplication {
     /// License the app with ArcGIS Runtime deployment license keys.
     ///
     /// - Note: An invalid key does not throw an exception, but simply fails to license the app,
-    ///   falling back to Developer Mode (which will display a watermark on the map view).
+    ///         falling back to Developer Mode (which will display a watermark on the map view).
     func license() {
         do {
             // Don't set extension key if you don't use utility network samples.

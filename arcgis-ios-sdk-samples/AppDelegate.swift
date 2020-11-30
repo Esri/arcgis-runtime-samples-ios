@@ -201,7 +201,7 @@ extension UIApplication {
             // access basemaps and other location services
             // AGSArcGISRuntimeEnvironment.apiKey = .apiKey
         } catch {
-            print("[Error: AGSArcGISRuntimeEnvironment] Error licensing app: \(error.localizedDescription)")
+            print("Error licensing app: \(error.localizedDescription)")
         }
     }
 }

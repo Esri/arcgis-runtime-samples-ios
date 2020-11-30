@@ -30,7 +30,7 @@ class ScenePropertiesExpressionsViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ScenePropertiesExpressionsViewController"]
         
         //initialize scene with streets basemap
-        let scene = AGSScene(basemapStyle: .arcGISStreets)
+        let scene = AGSScene(basemap: .streets())
         //assign scene to the scene view
         self.sceneView.scene = scene
         

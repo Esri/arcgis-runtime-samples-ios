@@ -63,7 +63,7 @@ class ViewHiddenInfrastructureARExplorerViewController: UIViewController {
     ///
     /// - Returns: A new `AGSScene` object.
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemapStyle: .arcGISImagery)
+        let scene = AGSScene(basemap: .imagery())
         elevationSurface.navigationConstraint = .none
         elevationSurface.opacity = 0
         elevationSurface.elevationSources = [elevationSource]

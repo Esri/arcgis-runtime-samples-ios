@@ -35,7 +35,7 @@ class AddIntegratedMeshLayerViewController: UIViewController {
     ///
     /// - Returns: A new `AGSScene` object.
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemapStyle: .arcGISImagery)
+        let scene = AGSScene(basemap: .imagery())
         
         // Create the elevation source.
         let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!

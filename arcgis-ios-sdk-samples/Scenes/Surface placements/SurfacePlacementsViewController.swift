@@ -86,7 +86,7 @@ class SurfacePlacementsViewController: UIViewController {
     ///
     /// - Returns: A new `AGSScene` object.
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemapType: .imagery)
+        let scene = AGSScene(basemap: .imagery())
         // Add a base surface for elevation data.
         let surface = AGSSurface()
         // Create elevation source from the Terrain 3D ArcGIS REST Service.

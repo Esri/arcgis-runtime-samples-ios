@@ -56,7 +56,7 @@ class RealisticLightingAndShadowsViewController: UIViewController {
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
         let surface = AGSSurface()
         surface.elevationSources = [elevationSource]
-        let scene = AGSScene(basemapType: .topographic)
+        let scene = AGSScene(basemap: .topographic())
         scene.baseSurface = surface
         scene.operationalLayers.add(buildingsLayer)
         return scene

@@ -46,7 +46,7 @@ class LineOfSightLocationViewController: UIViewController, AGSGeoViewTouchDelega
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["LineOfSightLocationViewController"]
         
         // initialize the scene with an imagery basemap
-        let scene = AGSScene(basemapType: .imagery)
+        let scene = AGSScene(basemap: .imagery())
         
         // assign the scene to the scene view
         sceneView.scene = scene

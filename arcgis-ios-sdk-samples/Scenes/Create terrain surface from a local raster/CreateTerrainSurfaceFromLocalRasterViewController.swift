@@ -28,7 +28,7 @@ class CreateTerrainSurfaceFromLocalRasterViewController: UIViewController {
     }
     
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemap: .imageryWithLabels())
+        let scene = AGSScene(basemapType: .imageryWithLabels)
         
         let surface = AGSSurface()
         // Create raster elevation source.

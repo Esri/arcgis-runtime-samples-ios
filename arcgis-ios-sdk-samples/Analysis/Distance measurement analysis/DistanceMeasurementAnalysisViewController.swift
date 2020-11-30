@@ -31,7 +31,7 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
     
     required init?(coder: NSCoder) {
         // Create the scene.
-        scene = AGSScene(basemap: .imagery())
+        scene = AGSScene(basemapType: .imagery)
         
         /// The url of the Terrain 3D ArcGIS REST Service.
         let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!

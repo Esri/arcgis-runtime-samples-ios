@@ -28,7 +28,7 @@ class AddPointSceneLayerViewController: UIViewController {
     ///
     /// - Returns: A new `AGSScene` object.
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemap: .imagery())
+        let scene = AGSScene(basemapType: .imagery)
         
         // Create the elevation source.
         let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!

@@ -25,7 +25,7 @@ class SceneLayerSelectionViewController: UIViewController {
     let buildingsLayer: AGSArcGISSceneLayer
     
     required init?(coder: NSCoder) {
-        scene = AGSScene(basemap: .imagery())
+        scene = AGSScene(basemapType: .imagery)
         
         // Create a surface set it as the base surface of the scene.
         let surface = AGSSurface()

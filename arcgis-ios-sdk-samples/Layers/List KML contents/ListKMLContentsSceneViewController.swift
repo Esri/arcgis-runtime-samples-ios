@@ -24,7 +24,7 @@ class ListKMLContentsSceneViewController: UIViewController {
     
     private let scene: AGSScene = {
         // initialize scene with labeled imagery
-        let scene = AGSScene(basemap: .imageryWithLabels())
+        let scene = AGSScene(basemapType: .imageryWithLabels)
         
         // create an elevation source and add it to the scene's surface
         let elevationSourceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!

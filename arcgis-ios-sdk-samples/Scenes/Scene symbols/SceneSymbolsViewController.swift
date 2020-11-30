@@ -26,7 +26,7 @@ class SceneSymbolsViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SceneSymbolsViewController"]
         
-        let scene = AGSScene(basemap: .topographic())
+        let scene = AGSScene(basemapType: .topographic)
         
         // Add base surface for elevation data.
         let surface = AGSSurface()

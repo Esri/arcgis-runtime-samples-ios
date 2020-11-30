@@ -61,7 +61,7 @@ class LineOfSightGeoElementViewController: UIViewController {
         observerPoint = AGSPoint(x: -73.984988, y: 40.748131, z: observerZMin, spatialReference: .wgs84())
 
         // initialize the scene with an imagery basemap
-        scene = AGSScene(basemap: .imageryWithLabels())
+        scene = AGSScene(basemapType: .imageryWithLabels)
 
         /// The url of the Terrain 3D ArcGIS REST Service.
         let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!

@@ -23,7 +23,7 @@ class GraphicsOverlayDictionaryRenderer3DViewController: UIViewController {
     /// The scene view managed by the view controller.
     @IBOutlet weak var sceneView: AGSSceneView! {
         didSet {
-            sceneView.scene = AGSScene(basemap: .imagery())
+            sceneView.scene = AGSScene(basemapType: .imagery)
             sceneView.graphicsOverlays.add(makeGraphicsOverlay())
         }
     }

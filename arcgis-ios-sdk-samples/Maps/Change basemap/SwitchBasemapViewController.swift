@@ -20,23 +20,23 @@ class SwitchBasemapViewController: UIViewController {
     
     /// The basemap options plus labels.
     private let basemapInfoArray: [(basemap: AGSBasemap, label: String)] = [
-        (.darkGrayCanvasVector(), "Dark Gray Canvas (Vector)"),
-        (.imagery(), "Imagery (Raster)"),
-        (.imageryWithLabels(), "Imagery w/ Labels (Raster)"),
+        (.init(style: .arcGISDarkGray), "Dark Gray Canvas (Vector)"),
+        (.init(style: .arcGISImagery), "Imagery (Raster)"),
+        (.init(style: .arcGISImageryLabels), "Imagery w/ Labels (Raster)"),
         (.imageryWithLabelsVector(), "Imagery w/ Labels (Vector)"),
-        (.lightGrayCanvas(), "Light Gray Canvas (Raster)"),
+        (.init(style: .arcGISLightGray), "Light Gray Canvas (Raster)"),
         (.lightGrayCanvasVector(), "Light Gray Canvas (Vector)"),
         (.nationalGeographic(), "National Geograhpic (Raster)"),
-        (.navigationVector(), "Navigation (Vector)"),
-        (.oceans(), "Oceans (Raster)"),
-        (.openStreetMap(), "OpenStreetMap (Raster)"),
-        (.streets(), "Streets (Raster)"),
+        (.init(style: .arcGISNavigation), "Navigation (Vector)"),
+        (.init(style: .arcGISOceans), "Oceans (Raster)"),
+        (.init(style: .osmStreets), "OpenStreetMap (Raster)"),
+        (.init(style: .arcGISStreets), "Streets (Raster)"),
         (.streetsVector(), "Streets (Vector)"),
-        (.streetsNightVector(), "Streets Night (Vector)"),
-        (.streetsWithReliefVector(), "Streets w/ Relief (Vector)"),
-        (.terrainWithLabels(), "Terrain w/ Labels (Raster)"),
+        (.init(style: .arcGISStreetsNight), "Streets Night (Vector)"),
+        (.init(style: .osmStreetsRelief), "Streets w/ Relief (Vector)"),
+        (.init(style: .arcGISTerrain), "Terrain w/ Labels (Raster)"),
         (.terrainWithLabelsVector(), "Terrain w/ Labels (Vector)"),
-        (.topographic(), "Topographic (Raster)"),
+        (.init(style: .arcGISTopographic), "Topographic (Raster)"),
         (.topographicVector(), "Topographic (Vector)")
     ]
     

@@ -21,7 +21,7 @@ class DisplayLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let map = AGSMap(basemapStyle: .arcGISImagery)
+        let map = AGSMap(basemapStyle: .arcGISImageryStandard)
         mapView.map = map
         
         //add the source code button item to the right of navigation bar

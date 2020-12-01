@@ -31,7 +31,7 @@ class BrowseWFSLayersViewController: UIViewController {
         super.viewDidLoad()
         
         // Initialize a map with an imagery basemap
-        let map = AGSMap(basemapStyle: .arcGISImagery)
+        let map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
         // Assign map to the map view
         mapView.map = map

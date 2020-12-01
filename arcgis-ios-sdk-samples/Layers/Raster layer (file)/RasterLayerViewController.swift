@@ -37,7 +37,7 @@ class RasterLayerViewController: UIViewController {
         self.rasterLayer = AGSRasterLayer(raster: raster)
         
         //initialize map with imagery basemap
-        self.map = AGSMap(basemapStyle: .arcGISImagery)
+        self.map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
         //assign map to the map view
         self.mapView.map = map

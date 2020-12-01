@@ -31,7 +31,7 @@ class DisplayGridViewController: UIViewController {
         ]
 
         // Initialize map with imagery basemap
-        let map = AGSMap(basemapStyle: .arcGISImagery)
+        let map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
         // Set initial viewpoint
         let center = AGSPoint(x: -7702852.905619, y: 6217972.345771, spatialReference: .webMercator())

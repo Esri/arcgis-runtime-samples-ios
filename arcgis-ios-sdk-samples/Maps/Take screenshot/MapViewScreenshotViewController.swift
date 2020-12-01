@@ -33,7 +33,7 @@ class MapViewScreenshotViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapViewScreenshotViewController"]
         
         //instantiate map with imagegry basemap
-        self.map = AGSMap(basemapStyle: .arcGISImagery)
+        self.map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
         //assign the map to the map view
         self.mapView.map = self.map

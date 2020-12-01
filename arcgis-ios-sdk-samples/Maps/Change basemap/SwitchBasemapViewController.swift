@@ -16,7 +16,12 @@ import UIKit
 import ArcGIS
 
 class SwitchBasemapViewController: UIViewController {
-    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView! {
+        didSet {
+            // Initialize the map with the first basemap.
+            mapView.map = AGSMap(basemap: basemapInfoArray.first!.basemap)
+        }
+    }
     
     /// The basemap options plus labels.
     private let basemapInfoArray: [(basemap: AGSBasemap, label: String)] = [
@@ -41,14 +46,7 @@ class SwitchBasemapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // initialize the map with topographic basemap
-        let map = AGSMap(basemap: basemapInfoArray.first!.basemap)
-
-        // assign the map to the map view
-        mapView.map = map
-        
-        // add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "SwitchBasemapViewController",
             "OptionsTableViewController"
@@ -57,7 +55,7 @@ class SwitchBasemapViewController: UIViewController {
 
     @IBAction func changeBasemapAction(_ sender: UIBarButtonItem) {
         guard let basemap = mapView.map?.basemap,
-            // get the index of the basemap currently shown in the map
+            // Get the index of the basemap currently shown in the map.
             let selectedIndex = basemapInfoArray.firstIndex(where: { $0.basemap == basemap }) else {
             return
         }
@@ -67,26 +65,26 @@ class SwitchBasemapViewController: UIViewController {
         /// A view controller allowing the user to select the basemap to show.
         let controller = OptionsTableViewController(labels: basemapLabels, selectedIndex: selectedIndex) { [weak self] (newIndex) in
             if let self = self {
-                // update the map with the selected basemap
+                // Update the map with the selected basemap.
                 self.mapView?.map?.basemap = self.basemapInfoArray[newIndex].basemap
             }
         }
         
-        // configure the options controller as a popover
+        // Configure the options controller as a popover.
         controller.modalPresentationStyle = .popover
         controller.presentationController?.delegate = self
         controller.preferredContentSize = CGSize(width: 300, height: 300)
         controller.popoverPresentationController?.barButtonItem = sender
         controller.popoverPresentationController?.passthroughViews?.append(mapView)
         
-        // show the popover
+        // Show the popover.
         present(controller, animated: true)
     }
 }
 
 extension SwitchBasemapViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // show presented controller as popovers even on small displays
+        // Show presented controller as popovers even on small displays.
         return .none
     }
 }

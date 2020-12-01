@@ -63,7 +63,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
         
         let openAction = UIAlertAction(title: "Open In Safari", style: .default) { _ in
             if let itemID = self.mapView.map?.item?.itemID,
-                var components = URLComponents(string: "https://www.arcgis.com/home/webmap/viewer.html") {
+               var components = URLComponents(string: "https://www.arcgis.com/home/webmap/viewer.html") {
                 components.queryItems = [URLQueryItem(name: "webmap", value: itemID)]
                 UIApplication.shared.open(components.url!, options: [:])
             }
@@ -93,7 +93,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
-            let rootController = navController.viewControllers.last {
+           let rootController = navController.viewControllers.last {
             if let createOptionsViewController = rootController as? CreateOptionsViewController {
                 createOptionsViewController.delegate = self
             } else if let saveAsViewController = rootController as? SaveAsViewController {

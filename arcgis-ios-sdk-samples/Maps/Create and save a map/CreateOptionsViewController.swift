@@ -33,7 +33,7 @@ class CreateOptionsViewController: UITableViewController {
     private var selectedLayerIndices: IndexSet = []
     
     weak var delegate: CreateOptionsViewControllerDelegate?
-
+    
     // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -97,7 +97,7 @@ class CreateOptionsViewController: UITableViewController {
             break
         }
     }
-
+    
     // MARK: - Actions
     
     @IBAction private func doneAction() {

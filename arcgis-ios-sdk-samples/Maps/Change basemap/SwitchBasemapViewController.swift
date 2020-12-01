@@ -23,21 +23,20 @@ class SwitchBasemapViewController: UIViewController {
         (.init(style: .arcGISDarkGray), "Dark Gray Canvas (Vector)"),
         (.init(style: .arcGISImagery), "Imagery (Raster)"),
         (.init(style: .arcGISImageryLabels), "Imagery w/ Labels (Raster)"),
-        (.imageryWithLabelsVector(), "Imagery w/ Labels (Vector)"),
         (.init(style: .arcGISLightGray), "Light Gray Canvas (Raster)"),
-        (.lightGrayCanvasVector(), "Light Gray Canvas (Vector)"),
-        (.nationalGeographic(), "National Geograhpic (Raster)"),
         (.init(style: .arcGISNavigation), "Navigation (Vector)"),
+        (.init(style: .arcGISNavigationNight), "Navigation Night (Vector)"),
         (.init(style: .arcGISOceans), "Oceans (Raster)"),
         (.init(style: .osmStreets), "OpenStreetMap (Raster)"),
         (.init(style: .arcGISStreets), "Streets (Raster)"),
-        (.streetsVector(), "Streets (Vector)"),
         (.init(style: .arcGISStreetsNight), "Streets Night (Vector)"),
         (.init(style: .osmStreetsRelief), "Streets w/ Relief (Vector)"),
         (.init(style: .arcGISTerrain), "Terrain w/ Labels (Raster)"),
-        (.terrainWithLabelsVector(), "Terrain w/ Labels (Vector)"),
+        (.init(style: .arcGISTerrainDetail), "Terrain w/ Detail (Vector)"),
         (.init(style: .arcGISTopographic), "Topographic (Raster)"),
-        (.topographicVector(), "Topographic (Vector)")
+        (.init(style: .arcGISHillshadeLight), "Hillshade Light (Raster)"),
+        (.init(style: .arcGISHillshadeDark), "Hillshade Dark (Raster)"),
+        (.init(style: .arcGISNova), "Nova (Vector)")
     ]
     
     override func viewDidLoad() {

@@ -7,7 +7,7 @@
     ],
     "keywords": [
         "LOD",
-        "basemap",
+        "basemap style",
         "center",
         "envelope",
         "extent",
@@ -20,7 +20,7 @@
         "longitude",
         "scale",
         "zoom level",
-        "AGSBasemapType",
+        "AGSBasemapStyle",
         "AGSMap",
         "AGSMapView"
     ],
@@ -28,7 +28,7 @@
         "/ios/latest/swift/sample-code/set-initial-map-location.htm"
     ],
     "relevant_apis": [
-        "AGSBasemapType",
+        "AGSBasemapStyle",
         "AGSMap",
         "AGSMapView"
     ],

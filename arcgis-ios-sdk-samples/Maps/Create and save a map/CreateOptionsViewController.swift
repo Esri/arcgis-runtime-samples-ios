@@ -20,7 +20,7 @@ protocol CreateOptionsViewControllerDelegate: AnyObject {
 }
 
 class CreateOptionsViewController: UITableViewController {
-    private let basemaps: [AGSBasemap] = [.streets(), .imagery(), .topographic(), .oceans()]
+    private let basemaps: [AGSBasemap] = [.arcGISStreets, .arcGISImageryStandard, .arcGISTopographic, .arcGISOceans].map { AGSBasemap(style: $0) }
     private let layers: [AGSLayer] = {
         let layerURLs = [
             URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!,

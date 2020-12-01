@@ -25,10 +25,10 @@ class SwitchBasemapViewController: UIViewController {
     
     /// The basemap options plus labels.
     private let basemapInfoArray: [(basemap: AGSBasemap, label: String)] = [
-        (.init(style: .arcGISDarkGray), "Dark Gray Canvas (Vector)"),
-        (.init(style: .arcGISImagery), "Imagery (Raster)"),
-        (.init(style: .arcGISImageryLabels), "Imagery w/ Labels (Raster)"),
-        (.init(style: .arcGISLightGray), "Light Gray Canvas (Raster)"),
+        (.init(style: .arcGISDarkGrayBase), "Dark Gray Canvas (Vector)"),
+        (.init(style: .arcGISImageryStandard), "Imagery (Raster)"),
+        (.init(style: .arcGISImagery), "Imagery w/ Labels (Raster)"),
+        (.init(style: .arcGISLightGrayBase), "Light Gray Canvas (Raster)"),
         (.init(style: .arcGISNavigation), "Navigation (Vector)"),
         (.init(style: .arcGISNavigationNight), "Navigation Night (Vector)"),
         (.init(style: .arcGISOceans), "Oceans (Raster)"),

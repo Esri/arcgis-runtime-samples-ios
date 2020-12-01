@@ -87,7 +87,7 @@ Note: Without licensing or licensing with invalid keys do not throw an exception
 
 Visit the developer's website to learn more about [licensing your ArcGIS Runtime app](https://developers.arcgis.com/pricing/licensing/).
 
-To learn more about `masquerade`, consult the [documentation](https://github.com/Esri/data-collection-ios/tree/master/docs#app-configuration) of Esri's Data Collection app.
+To learn more about `masquerade`, consult the [documentation](https://github.com/Esri/data-collection-ios/tree/master/docs#masquerade) of Esri's Data Collection app.
 
 ## Additional Resources
 

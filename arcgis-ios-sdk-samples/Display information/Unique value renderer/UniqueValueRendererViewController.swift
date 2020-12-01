@@ -37,7 +37,7 @@ class UniqueValueRendererViewController: UIViewController {
     /// - Returns: A new `AGSMap` object.
     func makeMap() -> AGSMap {
         //instantiate map with basemap
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         
         //create feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)

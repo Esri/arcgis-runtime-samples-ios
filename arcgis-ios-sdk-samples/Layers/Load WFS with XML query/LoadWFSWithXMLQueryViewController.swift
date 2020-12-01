@@ -67,7 +67,7 @@ class LoadWFSWithXMLQueryViewController: UIViewController {
     /// - Parameter featureTable: A feature table.
     /// - Returns: A new `AGSMap` object.
     func makeMap(featureTable: AGSFeatureTable) -> AGSMap {
-        let map = AGSMap(basemap: .navigationVector())
+        let map = AGSMap(basemapStyle: .arcGISNavigation)
         
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         map.operationalLayers.add(featureLayer)

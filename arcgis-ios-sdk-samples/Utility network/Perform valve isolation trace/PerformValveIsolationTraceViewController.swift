@@ -74,7 +74,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     /// - Parameter layers: The feature layers for the utility network.
     /// - Returns: An `AGSMap` object.
     func makeMap(with layers: [AGSFeatureLayer]) -> AGSMap {
-        let map = AGSMap(basemap: .streetsNightVector())
+        let map = AGSMap(basemapStyle: .arcGISStreetsNight)
         // Add the utility network feature layers to the map for display.
         map.operationalLayers.addObjects(from: layers)
         return map

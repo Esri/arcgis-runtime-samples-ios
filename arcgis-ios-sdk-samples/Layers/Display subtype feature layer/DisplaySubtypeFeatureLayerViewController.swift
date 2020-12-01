@@ -53,7 +53,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     }
     
     func makeMap() -> AGSMap {
-        let map = AGSMap(basemap: .streetsNightVector())
+        let map = AGSMap(basemapStyle: .arcGISStreetsNight)
         map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -9812691.11079696, yMin: 5128687.20710657, xMax: -9812377.9447607, yMax: 5128865.36767282, spatialReference: .webMercator()))
 
         // Create a subtype feature layer from a service feature table.

@@ -40,7 +40,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsViewContro
         ]
 
         //initialize map with basemap
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         
         //center for initial viewpoint
         let center = AGSPoint(x: -13671170.647485, y: 5693633.356735, spatialReference: .webMercator())

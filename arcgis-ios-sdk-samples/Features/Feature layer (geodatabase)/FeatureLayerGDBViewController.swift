@@ -27,7 +27,7 @@ class FeatureLayerGDBViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerGDBViewController"]
         
         //instantiate map with basemap
-        let map = AGSMap(basemap: .imageryWithLabels())
+        let map = AGSMap(basemapStyle: .arcGISImagery)
         
         //set initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4)

@@ -34,7 +34,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditGeometryViewController"]
         
-        self.map = AGSMap(basemap: .oceans())
+        self.map = AGSMap(basemapStyle: .arcGISOceans)
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: .webMercator()), scale: 2e6)
         

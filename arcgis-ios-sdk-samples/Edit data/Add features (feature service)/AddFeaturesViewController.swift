@@ -28,7 +28,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddFeaturesViewController"]
         
         //instantiate map with a basemap
-        let map = AGSMap(basemap: .streets())
+        let map = AGSMap(basemapStyle: .arcGISStreets)
         //set initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
         

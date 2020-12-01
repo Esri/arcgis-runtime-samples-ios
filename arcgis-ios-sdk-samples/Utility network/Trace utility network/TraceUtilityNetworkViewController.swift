@@ -86,7 +86,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     // MARK: Initialize map and Utility Network
     required init?(coder aDecoder: NSCoder) {
         // Create the map
-        map = AGSMap(basemap: .streetsNightVector())
+        map = AGSMap(basemapStyle: .arcGISStreetsNight)
         map.initialViewpoint = AGSViewpoint(
             targetExtent: AGSEnvelope(
                 xMin: -9813547.35557238,

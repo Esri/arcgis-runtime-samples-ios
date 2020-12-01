@@ -31,7 +31,7 @@ class SketchViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SketchViewController"]
         
-        self.map = AGSMap(basemap: .lightGrayCanvas())
+        self.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         
         self.sketchEditor = AGSSketchEditor()
         self.mapView.sketchEditor = self.sketchEditor

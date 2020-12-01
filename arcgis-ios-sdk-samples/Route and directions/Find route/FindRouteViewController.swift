@@ -43,7 +43,7 @@ class FindRouteViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindRouteViewController", "DirectionsViewController"]
         
         //initialize map with topographic basemap
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         self.mapView.map = map
         
         //add graphicsOverlays to the map view

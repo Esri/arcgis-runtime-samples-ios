@@ -33,7 +33,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController", "FeatureTemplatePickerViewController"]
         
-        self.map = AGSMap(basemap: .topographic())
+        self.map = AGSMap(basemapStyle: .arcGISTopographic)
         //set initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9184518.55, y: 3240636.90, spatialReference: .webMercator()), scale: 7e5)
         self.mapView.map = self.map

@@ -28,7 +28,7 @@ class DefinitionExpressionViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DefinitionExpressionViewController"]
         
         //initialize map using topographic basemap
-        self.map = AGSMap(basemap: .topographic())
+        self.map = AGSMap(basemapStyle: .arcGISTopographic)
         //initial viewpoint
         self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: .webMercator()), scale: 90000)
         

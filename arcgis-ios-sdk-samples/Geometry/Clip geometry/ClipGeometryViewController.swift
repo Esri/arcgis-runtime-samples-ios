@@ -94,7 +94,7 @@ class ClipGeometryViewController: UIViewController {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ClipGeometryViewController"]
         
         // instantiate map using a basemap
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         // assign the map to the map view
         mapView.map = map
         

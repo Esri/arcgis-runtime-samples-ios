@@ -22,7 +22,7 @@ class SpatialOperationsViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Initialize map with basemap.
-            mapView.map = AGSMap(basemap: .topographic())
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             // Add the graphics overlay with two polygon graphics and the result graphic to map view.
             mapView.graphicsOverlays.add(makeGraphicsOverlay())
             // Set initial viewpoint.

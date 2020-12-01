@@ -27,7 +27,7 @@ class SimpleMarkerSymbolViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SimpleMarkerSymbolViewController"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: .imageryWithLabels())
+        let map = AGSMap(basemapStyle: .arcGISImagery)
         
         //initial viewpoint
         let center = AGSPoint(x: -226773, y: 6550477, spatialReference: .webMercator())

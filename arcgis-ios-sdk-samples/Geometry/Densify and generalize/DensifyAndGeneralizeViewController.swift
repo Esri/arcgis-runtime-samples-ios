@@ -94,7 +94,7 @@ class DensifyAndGeneralizeViewController: UIViewController {
         ]
 
         // initialize map with basemap
-        let map = AGSMap(basemap: .streetsNightVector())
+        let map = AGSMap(basemapStyle: .arcGISStreetsNight)
         // assign map to map view
         mapView.map = map
        

@@ -38,7 +38,7 @@ class ManageMapLayersViewController: UIViewController {
             "MMLLayersViewController"
         ]
                 
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -133e5, y: 45e5, spatialReference: .webMercator()), scale: 2e7)
         
         let elevationImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)

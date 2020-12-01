@@ -27,7 +27,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["IdentifyLayersViewController"]
         
         //create an instance of a map
-        self.map = AGSMap(basemap: .topographic())
+        self.map = AGSMap(basemapStyle: .arcGISTopographic)
         
         //map image layer
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)

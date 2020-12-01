@@ -26,7 +26,7 @@ class SetInitialMapLocationViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SetInitialMapLocationViewController"]
         
         //initialize map with `imagery with labels` basemap and an initial location
-        let map = AGSMap(basemapStyle: .arcGISImageryLabels)
+        let map = AGSMap(basemapStyle: .arcGISImagery)
         map.initialViewpoint = AGSViewpoint(latitude: -33.867886, longitude: -63.985, scale: 9027.977411)
         self.map = map
         

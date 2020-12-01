@@ -34,7 +34,7 @@ class ViewHiddenInfrastructureARPipePlacingViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: .imageryWithLabelsVector())
+            mapView.map = AGSMap(basemapStyle: .arcGISImagery)
             mapView.graphicsOverlays.add(pipeGraphicsOverlay)
             mapView.sketchEditor = AGSSketchEditor()
         }

@@ -38,7 +38,7 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveViewController", "ServiceAreaSettingsViewController"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: .terrainWithLabels())
+        let map = AGSMap(basemapStyle: .arcGISTerrain)
         
         //center for initial viewpoint
         let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: .webMercator())

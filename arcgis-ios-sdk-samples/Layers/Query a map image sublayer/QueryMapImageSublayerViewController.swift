@@ -23,7 +23,7 @@ class QueryMapImageSublayerViewController: UIViewController {
     let graphicsOverlay: AGSGraphicsOverlay
     
     required init?(coder: NSCoder) {
-        map = AGSMap(basemap: .streetsVector())
+        map = AGSMap(basemapStyle: .arcGISStreets)
         
         // Set the initial viewpoint.
         let center = AGSPoint(x: -12716000.00, y: 4170400.00, spatialReference: .webMercator())

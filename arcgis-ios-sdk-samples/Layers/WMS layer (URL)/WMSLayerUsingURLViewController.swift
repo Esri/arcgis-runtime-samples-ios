@@ -22,7 +22,8 @@ class WMSLayerUsingURLViewController: UIViewController {
         super.viewDidLoad()
         
         //initialize the map with a light gray basemap centered on the United States
-        let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39, longitude: -98, levelOfDetail: 4)
+        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
+        map.initialViewpoint = AGSViewpoint(latitude: 39, longitude: -98, scale: 3.6978595474472E7)
         //assign the map to the map view
         mapView.map = map
         

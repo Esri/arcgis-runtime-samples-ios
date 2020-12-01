@@ -26,7 +26,7 @@ class SetInitialMapAreaViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SetInitialMapAreaViewController"]
         
         //initialize the map with imagery basemap
-        self.map = AGSMap(basemapStyle: .arcGISImagery)
+        self.map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
         //set initial map area
         let envelope = AGSEnvelope(xMin: -12211308.778729, yMin: 4645116.003309, xMax: -12208257.879667, yMax: 4650542.535773, spatialReference: .webMercator())

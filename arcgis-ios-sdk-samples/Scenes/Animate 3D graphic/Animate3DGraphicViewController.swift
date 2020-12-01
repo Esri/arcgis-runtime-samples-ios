@@ -60,7 +60,7 @@ class Animate3DGraphicViewController: UIViewController {
         mapView.isAttributionTextVisible = false
         
         //initalize scene with imagery basemap
-        let scene = AGSScene(basemapStyle: .arcGISImagery)
+        let scene = AGSScene(basemap: .imagery())
         
         //assign scene to scene view
         sceneView.scene = scene

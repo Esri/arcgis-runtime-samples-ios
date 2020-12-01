@@ -27,7 +27,7 @@ class ChangeAtmosphereEffectViewController: UIViewController {
         super.viewDidLoad()
         
         /// The scene for the scene view.
-        let scene = AGSScene(basemapStyle: .arcGISImagery)
+        let scene = AGSScene(basemapType: .imagery)
         // add the scene to the scene view
         sceneView.scene = scene
         

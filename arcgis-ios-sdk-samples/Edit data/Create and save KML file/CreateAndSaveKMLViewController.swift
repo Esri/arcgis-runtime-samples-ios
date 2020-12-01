@@ -20,7 +20,7 @@ class CreateAndSaveKMLViewController: UIViewController {
     // Set the map.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemapStyle: .arcGISDarkGray)
+            mapView.map = AGSMap(basemapStyle: .arcGISDarkGrayBase)
             mapView.sketchEditor = AGSSketchEditor()
         }
     }

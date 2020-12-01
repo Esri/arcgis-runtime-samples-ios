@@ -24,7 +24,7 @@ class FeatureLayerExtrusionViewController: UIViewController {
     let renderer: AGSRenderer
     
     required init?(coder: NSCoder) {
-        scene = AGSScene(basemapStyle: .arcGISTopographic)
+        scene = AGSScene(basemapType: .topographic)
         
         /// The url of the States layer of the Census Map Service.
         let censusMapServiceStatesLayerURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!

@@ -24,7 +24,7 @@ class RasterLayerUsingServiceViewController: UIViewController {
         super.viewDidLoad()
         
         // initialize a map with dark canvas vector basemap
-        let map = AGSMap(basemapStyle: .arcGISDarkGray)
+        let map = AGSMap(basemapStyle: .arcGISDarkGrayBase)
         
         // assign the map to the map view
         mapView.map = map

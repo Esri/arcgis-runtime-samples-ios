@@ -27,7 +27,7 @@ class DisplaySceneViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplaySceneViewController"]
         
         //initialize scene with topographic basemap
-        let scene = AGSScene(basemapStyle: .arcGISImagery)
+        let scene = AGSScene(basemap: .imagery())
         //assign scene to the scene view
         self.sceneView.scene = scene
         

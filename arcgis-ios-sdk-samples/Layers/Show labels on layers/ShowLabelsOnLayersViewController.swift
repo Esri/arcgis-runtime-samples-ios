@@ -25,7 +25,7 @@ class ShowLabelsOnLayersViewController: UIViewController {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ShowLabelsOnLayersViewController"]
         
         // create a map with a light gray canvas basemap.
-        let map = AGSMap(basemapStyle: .arcGISLightGray)
+        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         // assign the map to the map view
         mapView.map = map
         

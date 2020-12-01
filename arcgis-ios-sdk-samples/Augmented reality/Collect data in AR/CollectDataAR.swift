@@ -105,7 +105,7 @@ class CollectDataAR: UIViewController {
 
     private func configureSceneForAR() {
         // Create scene with imagery basemap
-        let scene = AGSScene(basemapStyle: .arcGISImageryLabels)
+        let scene = AGSScene(basemapType: .imageryWithLabels)
 
         // Create an elevation source and add it to the scene
         let elevationSource = AGSArcGISTiledElevationSource(url:

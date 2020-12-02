@@ -885,7 +885,6 @@
 			filePatterns = "*.masque";
 			fileType = pattern.proxy;
 			inputFiles = (
-				"$(SRCROOT)/.secrets",
 			);
 			isEditable = 1;
 			name = "Generate swift code from secrets";
@@ -893,7 +892,7 @@
 				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE)",
 			);
 			runOncePerArchitecture = 0;
-			script = "\"${SRCROOT}/Scripts/masquerade\" -i \"${INPUT_FILE_PATH}\" -o \"${SCRIPT_OUTPUT_FILE_0}\" -s \"${SCRIPT_INPUT_FILE_0}\" -f\n";
+			script = "\"${SRCROOT}/Scripts/masquerade\" -i \"${INPUT_FILE_PATH}\" -o \"${SCRIPT_OUTPUT_FILE_0}\" -s \"$SRCROOT/.secrets\" -f\n";
 		};
 /* End PBXBuildRule section */
 
@@ -4614,6 +4613,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E23AA011AFC28F6002E2214 /* Build configuration list for PBXNativeTarget "ArcGIS Runtime SDK Samples" */;
 			buildPhases = (
+				007E8EF32578290F003077CC /* Create .secrets file if it does not exist */,
 				3E23A9DC1AFC28F6002E2214 /* Sources */,
 				3E23A9DD1AFC28F6002E2214 /* Frameworks */,
 				4CB506D1224C2C20006A3471 /* Download Portal Item Data */,
@@ -5072,6 +5072,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		007E8EF32578290F003077CC /* Create .secrets file if it does not exist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Create .secrets file if it does not exist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ ! -e \"$SRCROOT/.secrets\" ]\nthen\n    touch \"$SRCROOT/.secrets\"\nfi\n";
+		};
 		3ED029A21B8E5D4D00ACA70D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

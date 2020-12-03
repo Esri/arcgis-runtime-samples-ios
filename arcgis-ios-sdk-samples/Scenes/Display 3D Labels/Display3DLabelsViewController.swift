@@ -22,7 +22,7 @@ class Display3DLabelsViewController: UIViewController {
             sceneView.scene = makeScene()
             
             // Set initial scene viewpoint.
-            let camera = AGSCamera(latitude: 40.704202, longitude: -74.011586, altitude: 300.0, heading: 180, pitch: 80, roll: 0)
+            let camera = AGSCamera(latitude: 40.704883, longitude: -74.01092, altitude: 300.0, heading: 180, pitch: 50, roll: 0)
             sceneView.setViewpointCamera(camera)
         }
     }
@@ -30,7 +30,8 @@ class Display3DLabelsViewController: UIViewController {
     var hydrantsLayer: AGSArcGISSceneLayer!
     
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemapStyle: .arcGISLightGray)
+        let sceneURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=850dfee7d30f4d9da0ebca34a533c169")!
+        let scene = AGSScene(url: sceneURL)
         // Create a scene layer from buildings REST service.
         let featureTableURL = URL(string: "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/ArcGIS/rest/services/GasMain2D_AOI/FeatureServer/0")!
         // create a feature table from the URL
@@ -43,9 +44,9 @@ class Display3DLabelsViewController: UIViewController {
         // create a feature layer from the table
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         // add the layer to the map
-        scene.operationalLayers.add(featureLayer)// turn on labelling
+//        scene.operationalLayers.add(featureLayer)// turn on labelling
         featureLayer.labelsEnabled = true
-        scene.baseSurface = surface
+//        scene.baseSurface = surface
         // create label definitions for the two groups
         do {
             let labelDefinition = try makeLabelDefinition()
@@ -55,7 +56,7 @@ class Display3DLabelsViewController: UIViewController {
         } catch {
             presentAlert(error: error)
         }
-        return scene
+        return scene!
     }
     
     private func makeLabelDefinition() throws -> AGSLabelDefinition {

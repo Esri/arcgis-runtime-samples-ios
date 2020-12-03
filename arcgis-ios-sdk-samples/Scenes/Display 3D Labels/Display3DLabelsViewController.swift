@@ -30,19 +30,32 @@ class Display3DLabelsViewController: UIViewController {
     var hydrantsLayer: AGSArcGISSceneLayer!
     
     func makeScene() -> AGSScene {
-        // Create a scene layer from buildings REST service.
-        let hydrantsURL = URL(string: "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/ArcGIS/rest/services/NYC_Utilities_Water_Hydrants/SceneServer")!
-        hydrantsLayer = AGSArcGISSceneLayer(url: hydrantsURL)
-        // Create an elevation source from Terrain3D REST service.
-//        let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
-//        let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
-//        let surface = AGSSurface()
-//        surface.elevationSources = [elevationSource]
         let scene = AGSScene(basemapStyle: .arcGISLightGray)
-//        scene.baseSurface = surface
-        scene.operationalLayers.add(hydrantsLayer!)
+        // Create a scene layer from buildings REST service.
+        let featureTableURL = URL(string: "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/ArcGIS/rest/services/GasMain2D_AOI/FeatureServer/0")!
+        // create a feature table from the URL
+        let featureTable = AGSServiceFeatureTable(url: featureTableURL)
+        // Create an elevation source from Terrain3D REST service.
+        let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+        let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
+        let surface = AGSSurface()
+        surface.elevationSources = [elevationSource]
+        // create a feature layer from the table
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        // add the layer to the map
+        scene.operationalLayers.add(featureLayer)// turn on labelling
+        featureLayer.labelsEnabled = true
+        scene.baseSurface = surface
+        // create label definitions for the two groups
+        do {
+            let labelDefinition = try makeLabelDefinition()
+            
+            // add the label definitions to the layer
+            featureLayer.labelDefinitions.addObjects(from: [labelDefinition])
+        } catch {
+            presentAlert(error: error)
+        }
         return scene
-        
     }
     
     private func makeLabelDefinition() throws -> AGSLabelDefinition {
@@ -67,32 +80,28 @@ class Display3DLabelsViewController: UIViewController {
 
         // Make a JSON object.
         let labelJSONObject: [String: Any] = [
+            "labelExpression": "[OBJECTID ]",
             "labelPlacement": "esriServerPointLabelPlacementAboveRight",
             "useCodedValues": true,
             "symbol": textSymbolJSON
         ]
         
+        // create and return a label definition from the JSON object
         let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
-        return result as! AGSLabelDefinition
+        if let definition = result as? AGSLabelDefinition {
+            return definition
+        } else {
+            throw labelsError.withDescription("The JSON could not be read as a label definition.")
+        }
     }
     
+    private enum labelsError: Error {
+        case withDescription(String)
+    }
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hydrantsLayer.load { [weak self] (error) in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else if let layer = self.hydrantsLayer {
-                do {
-                    let label = try self.makeLabelDefinition()
-                    hydrantsLayer.labe
-                } catch {
-                    self.presentAlert(error: error)
-                }
-            }
-        }
         
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["Display3DLabelsViewController"]

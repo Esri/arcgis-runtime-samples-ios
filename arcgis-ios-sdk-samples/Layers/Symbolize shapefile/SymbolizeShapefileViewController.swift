@@ -23,7 +23,7 @@ class SymbolizeShapefileViewController: UIViewController {
         super.viewDidLoad()
         
         // Instantiate a map using a basemap.
-        let map = AGSMap(basemap: .streetsVector())
+        let map = AGSMap(basemapStyle: .arcGISStreets)
         
         // Create a shapefile feature table from a named bundle resource.
         let shapefileTable = AGSShapefileFeatureTable(name: "Subdivisions")

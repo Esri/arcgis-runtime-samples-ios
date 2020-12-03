@@ -25,7 +25,7 @@ class FeatureLayerURLViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerURLViewController"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: .terrainWithLabels())
+        let map = AGSMap(basemapStyle: .arcGISTerrain)
         
         //initial viewpoint
         map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000)

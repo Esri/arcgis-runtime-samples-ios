@@ -19,7 +19,9 @@ class DisplayUtilityAssociationsViewController: UIViewController {
     // Set the map.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemapType: .topographicVector, latitude: 41.8057655, longitude: -88.1489692, levelOfDetail: 23)
+            let map = AGSMap(basemapStyle: .arcGISTopographic)
+            map.initialViewpoint = AGSViewpoint(latitude: 41.8057655, longitude: -88.1489692, scale: 70.5310735)
+            mapView.map = map
             mapView.graphicsOverlays.add(associationsOverlay)
         }
     }

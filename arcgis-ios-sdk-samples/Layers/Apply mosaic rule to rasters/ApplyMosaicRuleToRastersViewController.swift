@@ -82,7 +82,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         }
         // Create a raster layer.
         let rasterLayer = AGSRasterLayer(raster: imageServiceRaster)
-        let map = AGSMap(basemap: .topographicVector())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         // Add raster layer as an operational layer to the map.
         map.operationalLayers.add(rasterLayer)
         SVProgressHUD.show(withStatus: "Loading")

@@ -23,7 +23,8 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
 
     func makeMap() -> AGSMap {
         // Instantiate and display a map using a basemap, location, and zoom level.
-        let map = AGSMap(basemapType: .streets, latitude: 39.7294, longitude: -104.8319, levelOfDetail: 11)
+        let map = AGSMap(basemapStyle: .arcGISStreets)
+        map.initialViewpoint = AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 288895.277144)
         
         // Create a geopackage from a named bundle resource.
         let geoPackage = AGSGeoPackage(name: "AuroraCO")

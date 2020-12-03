@@ -52,7 +52,8 @@ class IdentifyRasterCellViewController: UIViewController {
     ///
     /// - Returns: An `AGSMap` object.
     func makeMap() -> AGSMap {
-        let map = AGSMap(basemapType: .oceans, latitude: -34.1, longitude: 18.6, levelOfDetail: 9)
+        let map = AGSMap(basemapStyle: .arcGISOceans)
+        map.initialViewpoint = AGSViewpoint(latitude: -34.1, longitude: 18.6, scale: 1155581.108577)
         map.operationalLayers.add(rasterLayer)
         return map
     }

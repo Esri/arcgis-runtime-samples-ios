@@ -25,22 +25,22 @@ class SwitchBasemapViewController: UIViewController {
     
     /// The basemap options plus labels.
     private let basemapInfoArray: [(basemap: AGSBasemap, label: String)] = [
-        (.init(style: .arcGISDarkGrayBase), "Dark Gray Canvas (Vector)"),
-        (.init(style: .arcGISImageryStandard), "Imagery (Raster)"),
-        (.init(style: .arcGISImagery), "Imagery w/ Labels (Vector)"),
-        (.init(style: .arcGISLightGrayBase), "Light Gray Canvas (Raster)"),
-        (.init(style: .arcGISNavigation), "Navigation (Vector)"),
-        (.init(style: .arcGISNavigationNight), "Navigation Night (Vector)"),
-        (.init(style: .arcGISOceans), "Oceans (Raster)"),
-        (.init(style: .osmStreets), "OpenStreetMap (Raster)"),
-        (.init(style: .arcGISStreets), "Streets (Vector)"),
-        (.init(style: .arcGISStreetsNight), "Streets Night (Vector)"),
-        (.init(style: .osmStreetsRelief), "Streets w/ Relief (Vector)"),
-        (.init(style: .arcGISTerrain), "Terrain w/ Labels (Vector)"),
-        (.init(style: .arcGISTopographic), "Topographic (Vector)"),
-        (.init(style: .arcGISHillshadeLight), "Hillshade Light (Raster)"),
-        (.init(style: .arcGISHillshadeDark), "Hillshade Dark (Raster)"),
-        (.init(style: .arcGISNova), "Nova (Vector)")
+        (.init(style: .arcGISDarkGrayBase), "Dark Gray Canvas"),
+        (.init(style: .arcGISImageryStandard), "Imagery"),
+        (.init(style: .arcGISImagery), "Imagery w/ Labels"),
+        (.init(style: .arcGISLightGrayBase), "Light Gray Canvas"),
+        (.init(style: .arcGISNavigation), "Navigation"),
+        (.init(style: .arcGISNavigationNight), "Navigation Night"),
+        (.init(style: .arcGISOceans), "Oceans"),
+        (.init(style: .osmStreets), "OpenStreetMap"),
+        (.init(style: .arcGISStreets), "Streets"),
+        (.init(style: .arcGISStreetsNight), "Streets Night"),
+        (.init(style: .osmStreetsRelief), "Streets w/ Relief"),
+        (.init(style: .arcGISTerrain), "Terrain w/ Labels"),
+        (.init(style: .arcGISTopographic), "Topographic"),
+        (.init(style: .arcGISHillshadeLight), "Hillshade Light"),
+        (.init(style: .arcGISHillshadeDark), "Hillshade Dark"),
+        (.init(style: .arcGISNova), "Nova")
     ]
     
     override func viewDidLoad() {

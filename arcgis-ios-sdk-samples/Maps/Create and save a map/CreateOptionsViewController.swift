@@ -20,7 +20,7 @@ protocol CreateOptionsViewControllerDelegate: AnyObject {
 }
 
 class CreateOptionsViewController: UITableViewController {
-    private let basemaps: [AGSBasemap] = [.arcGISStreets, .arcGISImageryStandard, .arcGISTopographic, .arcGISOceans].map { AGSBasemap(style: $0) }
+    private let basemapStyles: [(name: String, style: AGSBasemapStyle)] = [("Streets", .arcGISStreets), ("Imagery", .arcGISImageryStandard), ("Topographic", .arcGISTopographic), ("Oceans", .arcGISOceans)]
     private let layers: [AGSLayer] = {
         let layerURLs = [
             URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!,
@@ -45,15 +45,15 @@ class CreateOptionsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? basemaps.count : layers.count
+        return section == 0 ? basemapStyles.count : layers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath)
         switch indexPath.section {
         case 0:
-            let basemap = basemaps[indexPath.row]
-            cell.textLabel?.text = basemap.name
+            let basemapStyle = basemapStyles[indexPath.row]
+            cell.textLabel?.text = basemapStyle.name
             
             //accesory view
             if selectedBasemapIndex == indexPath.row {
@@ -102,7 +102,7 @@ class CreateOptionsViewController: UITableViewController {
     
     @IBAction private func doneAction() {
         //create a basemap with the selected basemap index
-        let basemap = basemaps[selectedBasemapIndex].copy() as! AGSBasemap
+        let basemap = AGSBasemap(style: basemapStyles[selectedBasemapIndex].style)
         
         //create an array of the selected operational layers
         let selectedLayers = selectedLayerIndices.map { layers[$0].copy() as! AGSLayer }

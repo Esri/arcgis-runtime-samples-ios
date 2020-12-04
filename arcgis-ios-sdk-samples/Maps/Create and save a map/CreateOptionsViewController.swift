@@ -55,7 +55,7 @@ class CreateOptionsViewController: UITableViewController {
             let basemapStyle = basemapStyles[indexPath.row]
             cell.textLabel?.text = basemapStyle.name
             
-            //accesory view
+            // Accesory view.
             if selectedBasemapIndex == indexPath.row {
                 cell.accessoryType = .checkmark
             } else {
@@ -65,7 +65,7 @@ class CreateOptionsViewController: UITableViewController {
             let layer = layers[indexPath.row]
             cell.textLabel?.text = layer.name
             
-            //accessory view
+            // Accessory view.
             if selectedLayerIndices.contains(indexPath.row) {
                 cell.accessoryType = .checkmark
             } else {
@@ -80,14 +80,14 @@ class CreateOptionsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            //create a IndexPath for the previously selected index
+            // Create a IndexPath for the previously selected index.
             let previousSelectionIndexPath = IndexPath(row: selectedBasemapIndex, section: 0)
             selectedBasemapIndex = indexPath.row
             tableView.reloadRows(at: [indexPath, previousSelectionIndexPath], with: .none)
         case 1:
-            //check if already selected
+            // Check if already selected.
             if selectedLayerIndices.contains(indexPath.row) {
-                //remove the selection
+                // Remove the selection.
                 selectedLayerIndices.remove(indexPath.row)
             } else {
                 selectedLayerIndices.update(with: indexPath.row)
@@ -101,10 +101,10 @@ class CreateOptionsViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction private func doneAction() {
-        //create a basemap with the selected basemap index
+        // Create a basemap with the selected basemap index.
         let basemap = AGSBasemap(style: basemapStyles[selectedBasemapIndex].style)
         
-        //create an array of the selected operational layers
+        // Create an array of the selected operational layers.
         let selectedLayers = selectedLayerIndices.map { layers[$0].copy() as! AGSLayer }
         
         delegate?.createOptionsViewController(self, didSelectBasemap: basemap, layers: selectedLayers)

@@ -21,41 +21,63 @@ class Display3DLabelsViewController: UIViewController {
             // Initialize the scene with imagery basemap.
             sceneView.scene = makeScene()
             
-            // Set initial scene viewpoint.
-            let camera = AGSCamera(latitude: 40.704883, longitude: -74.01092, altitude: 300.0, heading: 180, pitch: 50, roll: 0)
-            sceneView.setViewpointCamera(camera)
+//            // Set initial scene viewpoint.
+//            let camera = AGSCamera(latitude: 40.704883, longitude: -74.01092, altitude: 300.0, heading: 180, pitch: 50, roll: 0)
+//            sceneView.setViewpointCamera(camera)
+            sceneView.labeling = AGSViewLabelProperties(animationEnabled: true, labelingEnabled: true)
+            sceneView.scene?.load { [ weak self ] error in
+                // Create a scene layer from buildings REST service.
+                let featureTableURL = URL(string: "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/ArcGIS/rest/services/GasMain2D_AOI/FeatureServer/0")!
+                // create a feature table from the URL
+                let featureTable = AGSServiceFeatureTable(url: featureTableURL)
+                // create a feature layer from the table
+                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                // add the layer to the map
+//                self?.sceneView.scene?.operationalLayers.add(featureLayer)
+                let layers = self?.sceneView.scene?.operationalLayers as! [AGSGroupLayer]
+//                    for featureLayer in layers {
+//                        let layer = featureLayer as! AGSFeatureLayer
+//                        // turn on labelling
+//                        layer.labelsEnabled = true
+//                        layer.isVisible = true
+//                        // create label definitions for the two groups
+//                        do {
+//                            let labelDefinition = try self?.makeLabelDefinition()
+//
+//                            // add the label definitions to the layer
+//                            layer.labelDefinitions.addObjects(from: [labelDefinition!])
+//                        } catch {
+//                            self?.presentAlert(error: error)
+//                        }
+//                    }
+                let groupLayer = layers.first(where: { $0.name == "Gas" })
+                let gasFeatureLayer = groupLayer?.layers[0] as! AGSFeatureLayer
+                
+                gasFeatureLayer.labelsEnabled = true
+                gasFeatureLayer.isVisible = true
+                do {
+                    let labelDefinition = try self?.makeLabelDefinition()
+                    // add the label definitions to the layer
+                    gasFeatureLayer.labelDefinitions.add(labelDefinition)
+                    } catch {
+                        self?.presentAlert(error: error)
+                    }
+            }
         }
     }
-    
-    var hydrantsLayer: AGSArcGISSceneLayer!
     
     func makeScene() -> AGSScene {
         let sceneURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=850dfee7d30f4d9da0ebca34a533c169")!
         let scene = AGSScene(url: sceneURL)
-        // Create a scene layer from buildings REST service.
-        let featureTableURL = URL(string: "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/ArcGIS/rest/services/GasMain2D_AOI/FeatureServer/0")!
-        // create a feature table from the URL
-        let featureTable = AGSServiceFeatureTable(url: featureTableURL)
+//        let scene = AGSScene(basemapStyle: .arcGISLightGrayBase)
         // Create an elevation source from Terrain3D REST service.
-        let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
-        let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
-        let surface = AGSSurface()
-        surface.elevationSources = [elevationSource]
-        // create a feature layer from the table
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        // add the layer to the map
-//        scene.operationalLayers.add(featureLayer)// turn on labelling
-        featureLayer.labelsEnabled = true
+//        let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+//        let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
+//        let surface = AGSSurface()
+//        surface.elevationSources = [elevationSource]
+//
 //        scene.baseSurface = surface
-        // create label definitions for the two groups
-        do {
-            let labelDefinition = try makeLabelDefinition()
-            
-            // add the label definitions to the layer
-            featureLayer.labelDefinitions.addObjects(from: [labelDefinition])
-        } catch {
-            presentAlert(error: error)
-        }
+       
         return scene!
     }
     
@@ -74,15 +96,15 @@ class Display3DLabelsViewController: UIViewController {
         textSymbol.offsetX = 0
         textSymbol.offsetY = 0
         textSymbol.fontDecoration = .none
-        textSymbol.size = 10.5
+        textSymbol.size = 20.5
         textSymbol.fontStyle = .normal
         textSymbol.fontWeight = .normal
         let textSymbolJSON = try textSymbol.toJSON()
 
         // Make a JSON object.
         let labelJSONObject: [String: Any] = [
-            "labelExpression": "[OBJECTID ]",
-            "labelPlacement": "esriServerPointLabelPlacementAboveRight",
+            "labelExpression": "MANUFACTURER",
+            "labelPlacement": "esriServerLinePlacementAboveAlong",
             "useCodedValues": true,
             "symbol": textSymbolJSON
         ]

@@ -20,7 +20,12 @@ protocol CreateOptionsViewControllerDelegate: AnyObject {
 }
 
 class CreateOptionsViewController: UITableViewController {
-    private let basemapStyles: [(name: String, style: AGSBasemapStyle)] = [("Streets", .arcGISStreets), ("Imagery", .arcGISImageryStandard), ("Topographic", .arcGISTopographic), ("Oceans", .arcGISOceans)]
+    private let basemapStyles: KeyValuePairs<String, AGSBasemapStyle> = [
+        "Streets": .arcGISStreets,
+        "Imagery": .arcGISImageryStandard,
+        "Topographic": .arcGISTopographic,
+        "Oceans": .arcGISOceans
+    ]
     private let layers: [AGSLayer] = {
         let layerURLs = [
             URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!,
@@ -53,7 +58,7 @@ class CreateOptionsViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             let basemapStyle = basemapStyles[indexPath.row]
-            cell.textLabel?.text = basemapStyle.name
+            cell.textLabel?.text = basemapStyle.key
             
             // Accesory view.
             if selectedBasemapIndex == indexPath.row {
@@ -102,7 +107,7 @@ class CreateOptionsViewController: UITableViewController {
     
     @IBAction private func doneAction() {
         // Create a basemap with the selected basemap index.
-        let basemap = AGSBasemap(style: basemapStyles[selectedBasemapIndex].style)
+        let basemap = AGSBasemap(style: basemapStyles[selectedBasemapIndex].value)
         
         // Create an array of the selected operational layers.
         let selectedLayers = selectedLayerIndices.map { layers[$0].copy() as! AGSLayer }

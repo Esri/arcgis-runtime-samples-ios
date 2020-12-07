@@ -20,6 +20,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
+            mapView.setViewpoint(AGSViewpoint(targetExtent: AGSEnvelope(xMin: -9812691.11079696, yMin: 5128687.20710657, xMax: -9812377.9447607, yMax: 5128865.36767282, spatialReference: .webMercator())))
         }
     }
     
@@ -54,7 +55,6 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     
     func makeMap() -> AGSMap {
         let map = AGSMap(basemapStyle: .arcGISStreetsNight)
-        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -9812691.11079696, yMin: 5128687.20710657, xMax: -9812377.9447607, yMax: 5128865.36767282, spatialReference: .webMercator()))
 
         // Create a subtype feature layer from a service feature table.
         let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/100")

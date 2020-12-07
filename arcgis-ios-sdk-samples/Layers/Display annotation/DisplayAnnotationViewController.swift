@@ -20,12 +20,12 @@ class DisplayAnnotationViewController: UIViewController {
         didSet {
             // Assign the map to the map view.
             mapView.map = makeMap()
+            mapView.setViewpoint(AGSViewpoint(latitude: 55.882436, longitude: -2.725610, scale: 72223.819286))
         }
     }
     
     func makeMap() -> AGSMap {
         let map = AGSMap(basemapStyle: .arcGISLightGray)
-        map.initialViewpoint = AGSViewpoint(latitude: 55.882436, longitude: -2.725610, scale: 72223.819286)
         
         // Create a feature layer.
         let featureServiceURL = URL(string: "https://services1.arcgis.com/6677msI40mnLuuLr/arcgis/rest/services/East_Lothian_Rivers/FeatureServer/0")!

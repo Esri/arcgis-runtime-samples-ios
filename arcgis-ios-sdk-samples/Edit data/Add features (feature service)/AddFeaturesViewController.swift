@@ -29,18 +29,17 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         //instantiate map with a basemap
         let map = AGSMap(basemapStyle: .arcGISStreets)
-        //set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
         
         //assign the map to the map view
-        self.mapView.map = map
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
         //set touch delegate on map view as self
-        self.mapView.touchDelegate = self
+        mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
-        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
         //add the feature layer to the operational layers on map
         map.operationalLayers.add(featureLayer)

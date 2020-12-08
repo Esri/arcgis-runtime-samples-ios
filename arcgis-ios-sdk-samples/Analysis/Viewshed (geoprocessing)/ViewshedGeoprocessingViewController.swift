@@ -31,9 +31,9 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewshedGeoprocessingViewController"]
 
         let map = AGSMap(basemapStyle: .arcGISTopographic)
-        map.initialViewpoint = AGSViewpoint(latitude: 45.3790902612337, longitude: 6.84905317262762, scale: 144447.638572)
         
         self.mapView.map = map
+        self.mapView.setViewpoint(AGSViewpoint(latitude: 45.3790902612337, longitude: 6.84905317262762, scale: 144447.638572))
         
         self.mapView.touchDelegate = self
         

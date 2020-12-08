@@ -34,9 +34,8 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController", "FeatureTemplatePickerViewController"]
         
         self.map = AGSMap(basemapStyle: .arcGISTopographic)
-        //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9184518.55, y: 3240636.90, spatialReference: .webMercator()), scale: 7e5)
         self.mapView.map = self.map
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -9184518.55, y: 3240636.90, spatialReference: .webMercator()), scale: 7e5))
         self.mapView.touchDelegate = self
         
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)

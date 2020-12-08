@@ -20,8 +20,8 @@ class EditFeaturesWithFeatureLinkedAnnotationViewController: UIViewController {
         didSet {
             // Create the map with a light gray canvas basemap centered on Loudoun, Virginia.
             let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-            map.initialViewpoint = AGSViewpoint(latitude: 39.0204, longitude: -77.4159, scale: 2256.994353)
             mapView.map = map
+            mapView.setViewpoint(AGSViewpoint(latitude: 39.0204, longitude: -77.4159, scale: 2256.994353))
             // Set the touch delegate.
             mapView.touchDelegate = self
         }

@@ -41,14 +41,13 @@ class EditFeatureAttachmentsViewController: UIViewController {
         ]
         
         let map = AGSMap(basemapStyle: .arcGISOceans)
-        //set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(
-            center: AGSPoint(x: 0, y: 0, spatialReference: .webMercator()),
-            scale: 100000000
-        )
         map.operationalLayers.add(featureLayer)
         
         mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(
+            center: AGSPoint(x: 0, y: 0, spatialReference: .webMercator()),
+            scale: 100000000
+        ))
         mapView.touchDelegate = self
     }
 

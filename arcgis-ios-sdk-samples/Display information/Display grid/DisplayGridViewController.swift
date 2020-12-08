@@ -22,7 +22,7 @@ class DisplayGridViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "DisplayGridViewController",
             "DisplayGridSettingsViewController",
@@ -30,17 +30,16 @@ class DisplayGridViewController: UIViewController {
             "ColorPickerViewController"
         ]
 
-        // Initialize map with imagery basemap
+        // Initialize map with imagery basemap.
         let map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
-        // Set initial viewpoint
-        let center = AGSPoint(x: -7702852.905619, y: 6217972.345771, spatialReference: .webMercator())
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 23227)
-        
-        // Assign map to the map view
+        // Assign map to the map view.
         mapView.map = map
+        // Set viewpoint.
+        let center = AGSPoint(x: -7702852.905619, y: 6217972.345771, spatialReference: .webMercator())
+        mapView.setViewpoint(AGSViewpoint(center: center, scale: 23227))
         
-        // Add lat long grid
+        // Add lat long grid.
         mapView.grid = AGSLatitudeLongitudeGrid()
     }
     

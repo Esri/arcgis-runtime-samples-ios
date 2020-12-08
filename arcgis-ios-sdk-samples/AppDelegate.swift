@@ -199,7 +199,7 @@ extension UIApplication {
             
             // Authentication with an API key or named user is required to
             // access basemaps and other location services
-            // AGSArcGISRuntimeEnvironment.apiKey = .apiKey
+            AGSArcGISRuntimeEnvironment.apiKey = .apiKey
         } catch {
             print("Error licensing app: \(error.localizedDescription)")
         }

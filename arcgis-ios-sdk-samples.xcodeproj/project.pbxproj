@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -885,6 +885,7 @@
 			filePatterns = "*.masque";
 			fileType = pattern.proxy;
 			inputFiles = (
+				"$(SRCROOT)/.secrets",
 			);
 			isEditable = 1;
 			name = "Generate swift code from secrets";
@@ -892,7 +893,7 @@
 				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE)",
 			);
 			runOncePerArchitecture = 0;
-			script = "rm -f \"${SCRIPT_OUTPUT_FILE_0}\"\n\"${SRCROOT}/Scripts/masquerade\" -i \"${INPUT_FILE_PATH}\" -o \"${SCRIPT_OUTPUT_FILE_0}\" -s \"$SRCROOT/.secrets\"\n";
+			script = "\"${SRCROOT}/Scripts/masquerade\" -i \"${INPUT_FILE_PATH}\" -o \"${SCRIPT_OUTPUT_FILE_0}\" -s \"${SCRIPT_INPUT_FILE_0}\" -f\n";
 		};
 /* End PBXBuildRule section */
 
@@ -5074,6 +5075,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		007E8EF32578290F003077CC /* Create .secrets file if it does not exist */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);

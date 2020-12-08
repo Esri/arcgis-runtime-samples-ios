@@ -23,9 +23,10 @@ class WMSLayerUsingURLViewController: UIViewController {
         
         //initialize the map with a light gray basemap centered on the United States
         let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-        map.initialViewpoint = AGSViewpoint(latitude: 39, longitude: -98, scale: 3.6978595474472E7)
+        
         //assign the map to the map view
         mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(latitude: 39, longitude: -98, scale: 3.6978595474472E7))
         
         // a URL to the GetCapabilities endpoint of a WMS service
         let wmsServiceURL = URL(string: "https://nowcoast.noaa.gov/arcgis/services/nowcoast/radar_meteo_imagery_nexrad_time/MapServer/WMSServer?request=GetCapabilities&service=WMS")!

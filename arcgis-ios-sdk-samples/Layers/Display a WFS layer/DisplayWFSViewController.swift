@@ -59,11 +59,9 @@ class DisplayWFSViewController: UIViewController {
             }
         }
         
-        // Set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -122.341581, yMin: 47.613758, xMax: -122.332662, yMax: 47.617207, spatialReference: .wgs84()))
-        
         // Assign the map to the map view
         mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(targetExtent: AGSEnvelope(xMin: -122.341581, yMin: 47.613758, xMax: -122.332662, yMax: 47.617207, spatialReference: .wgs84())))
 
         // Add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayWFSViewController"]

@@ -36,10 +36,9 @@ class IdentifyKMLFeaturesViewController: UIViewController {
         let map = AGSMap(basemapStyle: .arcGISDarkGrayBase)
         map.operationalLayers.add(forecastLayer)
         
-        let center = AGSPoint(x: -48_885, y: 1_718_235, spatialReference: AGSSpatialReference(wkid: 5070))
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 50_000_000)
-        
         mapView.map = map
+        let center = AGSPoint(x: -48_885, y: 1_718_235, spatialReference: AGSSpatialReference(wkid: 5070))
+        mapView.setViewpoint(AGSViewpoint(center: center, scale: 50_000_000))
         
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["IdentifyKMLFeaturesViewController"]

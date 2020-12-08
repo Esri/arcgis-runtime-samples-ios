@@ -25,9 +25,8 @@ class RasterLayerGPKGViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerGPKGViewController"]
         
-        // Instantiate a map using a basemap, location, and zoom level.
+        // Instantiate a map.
         let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-        map.initialViewpoint = AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 288895.277144)
         
         // Create a geopackage from a named bundle resource.
         geoPackage = AGSGeoPackage(name: "AuroraCO")
@@ -50,5 +49,6 @@ class RasterLayerGPKGViewController: UIViewController {
         
         // Display the map in the map view.
         mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 288895.277144))
     }
 }

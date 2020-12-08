@@ -101,14 +101,20 @@ class Display3DLabelsViewController: UIViewController {
         textSymbol.fontWeight = .normal
         let textSymbolJSON = try textSymbol.toJSON()
 
+        /// An expression that specifies the content of the label using the table's attributes.
+        let expression = "INSTALLATIONMETHOD"
+        let value = "{NOMINALDIAMETER}"
+        
         // Make a JSON object.
         let labelJSONObject: [String: Any] = [
-            "labelExpression": "MANUFACTURER",
+            "labelExpressionInfo": [
+                "expression": "$feature.\(expression)"
+            ],
             "labelPlacement": "esriServerLinePlacementAboveAlong",
             "useCodedValues": true,
             "symbol": textSymbolJSON
         ]
-        
+        print(labelJSONObject)
         // create and return a label definition from the JSON object
         let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
         if let definition = result as? AGSLabelDefinition {

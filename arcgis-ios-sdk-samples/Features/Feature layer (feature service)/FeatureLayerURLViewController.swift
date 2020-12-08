@@ -27,11 +27,9 @@ class FeatureLayerURLViewController: UIViewController {
         //initialize map with basemap
         let map = AGSMap(basemapStyle: .arcGISTerrain)
         
-        //initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000)
-        
         //assign map to the map view
         self.mapView.map = map
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000))
         
         //initialize service feature table using url
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)

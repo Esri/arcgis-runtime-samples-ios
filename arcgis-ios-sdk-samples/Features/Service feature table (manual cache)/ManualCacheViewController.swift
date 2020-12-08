@@ -18,7 +18,6 @@ import ArcGIS
 class ManualCacheViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map: AGSMap!
     var featureTable: AGSServiceFeatureTable!
     
     override func viewDidLoad() {
@@ -28,21 +27,20 @@ class ManualCacheViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManualCacheViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemapStyle: .arcGISTopographic)
-        //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: .webMercator()), scale: 500000)
-        
-        //assign map to the map view
-        self.mapView.map = self.map
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         
         //create feature table using a url
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
+        featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
         //set the feature request mode to Manual Cache
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         //create feature layer using this feature table
-        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         //add feature layer to the map
-        self.map.operationalLayers.add(featureLayer)
+        map.operationalLayers.add(featureLayer)
+        
+        //assign map to the map view
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: .webMercator()), scale: 500000))
     }
     
     // MARK: - Actions
@@ -54,7 +52,7 @@ class ManualCacheViewController: UIViewController {
         params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
         
         //populate features based on query
-        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
+        featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
             //check for error
             if let error = error {
                 self?.presentAlert(error: error)

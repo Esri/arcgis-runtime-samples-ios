@@ -1763,7 +1763,7 @@
 				<key>storyboardName</key>
 				<string>Display3DLabels</string>
 				<key>descriptionText</key>
-				<string>Display 3D labels on scenes.</string>
+				<string>Display custom labels on a 3D scene.</string>
 			</dict>
 		</array>
 	</dict>

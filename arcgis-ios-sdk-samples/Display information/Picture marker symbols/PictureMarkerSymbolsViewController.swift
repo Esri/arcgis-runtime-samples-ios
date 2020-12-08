@@ -18,7 +18,7 @@ import ArcGIS
 class PictureMarkerSymbolsViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
-    private var graphicsOverlay = AGSGraphicsOverlay()
+    private let graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,21 +29,19 @@ class PictureMarkerSymbolsViewController: UIViewController {
         //initialize map with basemap
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //initial envelope
-        let center = AGSPoint(x: -225166.5, y: 6551249, spatialReference: .webMercator())
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 1e5)
-        
         //assign the map to the map view
-        self.mapView.map = map
+        mapView.map = map
+        let center = AGSPoint(x: -225166.5, y: 6551249, spatialReference: .webMercator())
+        mapView.setViewpoint(AGSViewpoint(center: center, scale: 1e5))
         
         //add the graphics overlay to the map view
-        self.mapView.graphicsOverlays.add(self.graphicsOverlay)
+        mapView.graphicsOverlays.add(graphicsOverlay)
         
         //add picture marker symbol using a remote image
-        self.addPictureMarkerSymbolFromURL()
+        addPictureMarkerSymbolFromURL()
         
         //add picture marker symbol using image in assets
-        self.addPictureMarkerSymbolFromImage()
+        addPictureMarkerSymbolFromImage()
     }
     
     private func addPictureMarkerSymbolFromURL() {
@@ -62,7 +60,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
         let graphic = AGSGraphic(geometry: campsitePoint, symbol: campsiteSymbol, attributes: nil)
         
         //add the graphic to the overlay
-        self.graphicsOverlay.graphics.add(graphic)
+        graphicsOverlay.graphics.add(graphic)
     }
     
     private func addPictureMarkerSymbolFromImage() {
@@ -82,6 +80,6 @@ class PictureMarkerSymbolsViewController: UIViewController {
         let graphic = AGSGraphic(geometry: pinPoint, symbol: pinSymbol, attributes: nil)
         
         //add the graphic to the overlay
-        self.graphicsOverlay.graphics.add(graphic)
+        graphicsOverlay.graphics.add(graphic)
     }
 }

@@ -18,7 +18,7 @@ import ArcGIS
 class SimpleMarkerSymbolViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
-    private var graphicsOverlay = AGSGraphicsOverlay()
+    private let graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +29,16 @@ class SimpleMarkerSymbolViewController: UIViewController {
         //initialize map with basemap
         let map = AGSMap(basemapStyle: .arcGISImagery)
         
-        //initial viewpoint
-        let center = AGSPoint(x: -226773, y: 6550477, spatialReference: .webMercator())
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 6500)
-        
         //assign map to the map view
-        self.mapView.map = map
+        mapView.map = map
+        let center = AGSPoint(x: -226773, y: 6550477, spatialReference: .webMercator())
+        mapView.setViewpoint(AGSViewpoint(center: center, scale: 6500))
         
         //add graphics overlay to the map view
-        self.mapView.graphicsOverlays.add(graphicsOverlay)
+        mapView.graphicsOverlays.add(graphicsOverlay)
         
         //add a graphic with simple marker symbol
-        self.addSimpleMarkerSymbol()
+        addSimpleMarkerSymbol()
     }
 
     private func addSimpleMarkerSymbol() {
@@ -54,6 +52,6 @@ class SimpleMarkerSymbolViewController: UIViewController {
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         
         //add the graphic to the graphics overlay
-        self.graphicsOverlay.graphics.add(graphic)
+        graphicsOverlay.graphics.add(graphic)
     }
 }

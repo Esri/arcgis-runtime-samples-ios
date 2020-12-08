@@ -22,7 +22,6 @@ class SketchViewController: UIViewController {
     @IBOutlet private weak var redoBBI: UIBarButtonItem!
     @IBOutlet private weak var clearBBI: UIBarButtonItem!
     
-    private var map: AGSMap!
     private var sketchEditor: AGSSketchEditor!
     
     override func viewDidLoad() {
@@ -31,20 +30,20 @@ class SketchViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SketchViewController"]
         
-        self.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
+        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         
         self.sketchEditor = AGSSketchEditor()
         self.mapView.sketchEditor = self.sketchEditor
         
         self.sketchEditor.start(with: nil, creationMode: .polyline)
         
-        self.mapView.map = self.map
+        self.mapView.map = map
         self.mapView.interactionOptions.isMagnifierEnabled = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: .AGSSketchEditorGeometryDidChange, object: nil)
         
-        //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: .webMercator()))
+        //set viewpoint
+        self.mapView.setViewpoint(AGSViewpoint(targetExtent: AGSEnvelope(xMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: .webMercator())))
     }
     
     @objc

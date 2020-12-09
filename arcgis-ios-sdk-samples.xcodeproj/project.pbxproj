@@ -3520,7 +3520,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				F11CED6A256C82A8002A3F56 /* Display 3D Labels */,
+				F11CED6A256C82A8002A3F56 /* Display 3D labels */,
 				00166C8524D20E0E00DD317E /* Realistic lighting and shadows */,
 				00ADC3B72464D45B00A3B88D /* Animate images with image overlay */,
 				F1C81C4322FCEBD100229CAA /* Get elevation at a point */,
@@ -4429,13 +4429,13 @@
 			path = "Edit features with feature-linked annotation";
 			sourceTree = "<group>";
 		};
-		F11CED6A256C82A8002A3F56 /* Display 3D Labels */ = {
+		F11CED6A256C82A8002A3F56 /* Display 3D labels */ = {
 			isa = PBXGroup;
 			children = (
 				F11CED6C256C849A002A3F56 /* Display3DLabelsViewController.swift */,
 				F11CED72256C857B002A3F56 /* Display3DLabels.storyboard */,
 			);
-			path = "Display 3D Labels";
+			path = "Display 3D labels";
 			sourceTree = "<group>";
 		};
 		F140E1E823F35E61008AC44E /* Display annotation */ = {

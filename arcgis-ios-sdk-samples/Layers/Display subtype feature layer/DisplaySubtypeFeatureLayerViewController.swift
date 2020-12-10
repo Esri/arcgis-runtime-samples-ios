@@ -32,6 +32,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     
     var subtypeFeatureLayer: AGSSubtypeFeatureLayer? {
         didSet {
+            AGSAuthenticationManager.shared().delegate = self
             subtypeFeatureLayer?.load { [weak self] (error) in
                 guard let self = self else { return }
                 if let error = error {
@@ -57,7 +58,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -9812691.11079696, yMin: 5128687.20710657, xMax: -9812377.9447607, yMax: 5128865.36767282, spatialReference: .webMercator()))
 
         // Create a subtype feature layer from a service feature table.
-        let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/100")
+        let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/")
         let featureTable = AGSServiceFeatureTable(url: featureServiceURL!)
         subtypeFeatureLayer = AGSSubtypeFeatureLayer(featureTable: featureTable)
         subtypeFeatureLayer?.scaleSymbols = false
@@ -144,5 +145,14 @@ extension DisplaySubtypeFeatureLayerViewController: UIAdaptivePresentationContro
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // Ensure that the settings show in a popover even on small displays.
         return .none
+    }
+}
+
+extension DisplaySubtypeFeatureLayerViewController: AGSAuthenticationManagerDelegate {
+    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
+        let user = "viewer01"
+        let password = "I68VGU^nMurF"
+        let credentials = AGSCredential(user: user, password: password)
+        challenge.continue(with: credentials)
     }
 }

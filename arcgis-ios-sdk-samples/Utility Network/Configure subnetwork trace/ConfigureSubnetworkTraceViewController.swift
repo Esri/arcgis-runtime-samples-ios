@@ -60,7 +60,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     }
     
     /// A feature service for an electric utility network in Naperville, Illinois.
-    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
+    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://3.82.6.114/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     
     /// An array of condition expressions.
     var traceConditionalExpressions = [AGSUtilityTraceConditionalExpression]()

@@ -32,7 +32,6 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     
     var subtypeFeatureLayer: AGSSubtypeFeatureLayer? {
         didSet {
-            AGSAuthenticationManager.shared().delegate = self
             subtypeFeatureLayer?.load { [weak self] (error) in
                 guard let self = self else { return }
                 if let error = error {
@@ -56,7 +55,8 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     func makeMap() -> AGSMap {
         let map = AGSMap(basemap: .streetsNightVector())
         map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -9812691.11079696, yMin: 5128687.20710657, xMax: -9812377.9447607, yMax: 5128865.36767282, spatialReference: .webMercator()))
-
+        
+        AGSAuthenticationManager.shared().delegate = self
         // Create a subtype feature layer from a service feature table.
         let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/")
         let featureTable = AGSServiceFeatureTable(url: featureServiceURL!)

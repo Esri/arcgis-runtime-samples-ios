@@ -96,7 +96,8 @@ class EditWithBranchVersioningViewController: UIViewController {
         let serviceGeodatabase = AGSServiceGeodatabase(url: serviceURL)
         // If not explicitly set, the service geodatabase will ask for credentials on loading.
         // You can also set its `credential` property. E.g.
-        // serviceGeodatabase.credential = AGSCredential(user: "editor01", password: "editor01.password")
+         serviceGeodatabase.credential = AGSCredential(user: "editor01", password: "S7#i2LWmYH75")
+        
         
         SVProgressHUD.show(withStatus: "Loading service geodatabase…")
         serviceGeodatabase.load { [weak self] error in
@@ -458,7 +459,7 @@ class EditWithBranchVersioningViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["EditWithBranchVersioningViewController"]
         // Load the service geodatabase.
-        let damageFeatureService = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
+        let damageFeatureService = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/DamageAssessment/FeatureServer")!
         loadServiceGeodatabase(from: damageFeatureService)
     }
 }

@@ -9,7 +9,7 @@
          <ExecutionAction
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
-               title = "Download Portal Item Data Script"
+               title = "Download Portal Item Data"
                scriptText = "/usr/bin/osascript -e &apos;display notification &quot;Build will start after download is complete&quot; with title &quot;Downloading Portal Data&quot; subtitle &quot;Prebuild&quot; sound name &quot;Funk&quot;&apos;&#10;&#10;PORTAL_ITEMS=&quot;${SRCROOT}/arcgis-ios-sdk-samples/Content Display Logic/PortalItems.plist&quot;&#10;FILE_TYPES=&quot;${SRCROOT}/arcgis-ios-sdk-samples/Content Display Logic/FileTypes.plist&quot;&#10;DOWNLOAD_DIRECTORY=&quot;${SRCROOT}/Portal Data&quot;&#10;xcrun --sdk macosx swift &quot;${SRCROOT}/Scripts/download-portal-item-data.swift&quot; &quot;$PORTAL_ITEMS&quot; &quot;$FILE_TYPES&quot; &quot;$DOWNLOAD_DIRECTORY&quot;&#10;&#10;/usr/bin/osascript -e &apos;display notification &quot;Project will start to build&quot; with title &quot;Download Complete&quot; subtitle &quot;Prebuild&quot; sound name &quot;Glass&quot;&apos;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference

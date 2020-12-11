@@ -36,7 +36,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         }
     }
     /// The image service raster to demo mosaic rules.
-    var imageServiceRaster = AGSImageServiceRaster(url: URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/amberg_germany/ImageServer")!)
+    var imageServiceRaster = AGSImageServiceRaster(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/amberg_germany/ImageServer")!)
     /// A preset of mosaic rules for demonstration purpose.
     let mosaicRulePairs: KeyValuePairs<String, AGSMosaicRule> = {
         // A default mosaic rule object, with mosaic method as none.

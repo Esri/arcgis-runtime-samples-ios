@@ -27,4 +27,4 @@ When opened, the sample will display a scene. Pan and zoom to explore the scene.
 
 ## Tags
 
-3D, basemap style, elevation, scene, surface
+3D, basemap, elevation, scene, surface

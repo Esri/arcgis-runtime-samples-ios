@@ -94,11 +94,8 @@ class EditWithBranchVersioningViewController: UIViewController {
     /// - Parameter serviceURL: The URL to the feature service.
     func loadServiceGeodatabase(from serviceURL: URL) {
         let serviceGeodatabase = AGSServiceGeodatabase(url: serviceURL)
-        // If not explicitly set, the service geodatabase will ask for credentials on loading.
-        // You can also set its `credential` property. E.g.
-         serviceGeodatabase.credential = AGSCredential(user: "editor01", password: "S7#i2LWmYH75")
-        
-        
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        serviceGeodatabase.credential = AGSCredential(user: "editor01", password: "S7#i2LWmYH75")
         SVProgressHUD.show(withStatus: "Loading service geodatabase…")
         serviceGeodatabase.load { [weak self] error in
             SVProgressHUD.dismiss()

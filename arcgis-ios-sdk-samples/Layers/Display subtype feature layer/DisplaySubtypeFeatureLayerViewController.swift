@@ -58,7 +58,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         
         AGSAuthenticationManager.shared().delegate = self
         // Create a subtype feature layer from a service feature table.
-        let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/")
+        let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/0")
         let featureTable = AGSServiceFeatureTable(url: featureServiceURL!)
         subtypeFeatureLayer = AGSSubtypeFeatureLayer(featureTable: featureTable)
         subtypeFeatureLayer?.scaleSymbols = false
@@ -150,9 +150,8 @@ extension DisplaySubtypeFeatureLayerViewController: UIAdaptivePresentationContro
 
 extension DisplaySubtypeFeatureLayerViewController: AGSAuthenticationManagerDelegate {
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
-        let user = "viewer01"
-        let password = "I68VGU^nMurF"
-        let credentials = AGSCredential(user: user, password: password)
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        let credentials = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         challenge.continue(with: credentials)
     }
 }

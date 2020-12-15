@@ -60,7 +60,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     }
     
     /// A feature service for an electric utility network in Naperville, Illinois.
-    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://3.82.6.114/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
+    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     
     /// An array of condition expressions.
     var traceConditionalExpressions = [AGSUtilityTraceConditionalExpression]()
@@ -146,6 +146,8 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         
         // Load the utility network.
         SVProgressHUD.show(withStatus: "Loading utility network…")
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
             SVProgressHUD.dismiss()
             guard let self = self else { return }

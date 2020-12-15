@@ -231,6 +231,7 @@ extension NavigateARRoutePlannerViewController: AGSGeoViewTouchDelegate {
 
 extension NavigateARRoutePlannerViewController: AGSAuthenticationManagerDelegate {
     func authenticationManager( _ authenticationManager: AGSAuthenticationManager, wantsToShow viewController: UIViewController) {
+        viewController.modalPresentationStyle = .overFullScreen
         present(viewController, animated: true)
     }
     

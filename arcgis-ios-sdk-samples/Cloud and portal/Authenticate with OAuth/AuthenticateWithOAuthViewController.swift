@@ -76,6 +76,7 @@ class AuthenticateWithOAuthViewController: UIViewController {
 
 extension AuthenticateWithOAuthViewController: AGSAuthenticationManagerDelegate {
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, wantsToShow viewController: UIViewController) {
+        viewController.modalPresentationStyle = .formSheet
         present(viewController, animated: true)
     }
     

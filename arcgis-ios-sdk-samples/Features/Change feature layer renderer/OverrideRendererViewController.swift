@@ -50,11 +50,11 @@ class OverrideRendererViewController: UIViewController {
         //create a new renderer using the symbol just created
         let renderer = AGSSimpleRenderer(symbol: symbol)
         //assign the new renderer to the feature layer
-        featureLayer.renderer = renderer
+        self.featureLayer.renderer = renderer
     }
     
     @IBAction private func resetRenderer() {
         //reset the renderer to default
-        featureLayer.resetRenderer()
+        self.featureLayer.resetRenderer()
     }
 }

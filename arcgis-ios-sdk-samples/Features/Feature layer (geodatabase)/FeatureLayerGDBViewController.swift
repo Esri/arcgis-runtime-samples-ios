@@ -34,17 +34,16 @@ class FeatureLayerGDBViewController: UIViewController {
         mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4))
         
         //instantiate geodatabase with name
-        geodatabase = AGSGeodatabase(name: "LA_Trails")
+        self.geodatabase = AGSGeodatabase(name: "LA_Trails")
         
         //load the geodatabase for feature tables
-        geodatabase.load { [weak self] (error: Error?) in
-            guard let self = self else { return }
+        self.geodatabase.load { [weak self] (error: Error?) in
             if let error = error {
-                self.presentAlert(error: error)
+                self?.presentAlert(error: error)
             } else {
-                let featureTable = self.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
+                let featureTable = self!.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                self.mapView.map?.operationalLayers.add(featureLayer)
+                self?.mapView.map?.operationalLayers.add(featureLayer)
             }
         }
     }

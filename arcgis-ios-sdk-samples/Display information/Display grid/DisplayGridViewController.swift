@@ -29,12 +29,9 @@ class DisplayGridViewController: UIViewController {
             "OptionsTableViewController",
             "ColorPickerViewController"
         ]
-
-        // Initialize map with imagery basemap.
-        let map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
         // Assign map to the map view.
-        mapView.map = map
+        mapView.map = AGSMap(basemapStyle: .arcGISImageryStandard)
         // Set viewpoint.
         let center = AGSPoint(x: -7702852.905619, y: 6217972.345771, spatialReference: .webMercator())
         mapView.setViewpoint(AGSViewpoint(center: center, scale: 23227))

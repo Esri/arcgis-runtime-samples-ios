@@ -21,7 +21,7 @@ The sample provides an option to select a spatial operation. When an operation i
 3. Add the overlapping polygons to the graphics overlay.
 4. Perform spatial relationships between the polygons by using the appropriate operation:
     * `class AGSGeometryEngine.union(ofGeometry1:geometry2:)` - This method returns the two geometries united together as one geometry.
-    * `class AGSGeometryEngine.difference(ofGeometry1:geometry2:)` - This method returns any part of Geometry2 that does not intersect Geometry1.
+    * `class AGSGeometryEngine.difference(ofGeometry1:geometry2:)` - This method returns the difference of Geometry1 from Geometry2.
     * `class AGSGeometryEngine.symmetricDifference(ofGeometry1:geometry2:)` - This method returns any part of Geometry1 or Geometry2 which do not intersect.
     * `class AGSGeometryEngine.intersection(ofGeometry1:geometry2:)` - This method returns the intersection of Geometry1 and Geometry2.
 5. Use the geometry that is returned from the method call to create a new `AGSGraphic` and add it to the graphics overlay for it to be displayed.

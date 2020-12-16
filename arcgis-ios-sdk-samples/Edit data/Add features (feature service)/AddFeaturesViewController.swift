@@ -27,19 +27,17 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddFeaturesViewController"]
         
-        //instantiate map with a basemap
-        let map = AGSMap(basemapStyle: .arcGISStreets)
-        
         //assign the map to the map view
-        mapView.map = map
-        mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
+        let map = AGSMap(basemapStyle: .arcGISStreets)
+        self.mapView.map = map
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
         //set touch delegate on map view as self
-        mapView.touchDelegate = self
+        self.mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         //add the feature layer to the operational layers on map
         map.operationalLayers.add(featureLayer)

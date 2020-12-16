@@ -17,20 +17,18 @@ import ArcGIS
 
 class SetInitialMapLocationViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
-    var map: AGSMap!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SetInitialMapLocationViewController"]
         
-        //initialize map with `imagery with labels` basemap and an initial location
+        // Initialize map with imagery basemap.
         let map = AGSMap(basemapStyle: .arcGISImagery)
-        map.initialViewpoint = AGSViewpoint(latitude: -33.867886, longitude: -63.985, scale: 9027.977411)
-        self.map = map
         
-        //assign the map to the map view
-        self.mapView.map = self.map
+        // Assign the map to the map view.
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(latitude: -33.867886, longitude: -63.985, scale: 9027.977411))
     }
 }

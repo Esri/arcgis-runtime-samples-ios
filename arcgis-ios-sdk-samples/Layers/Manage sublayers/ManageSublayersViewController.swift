@@ -41,11 +41,11 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         //initial viewpoint
         let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference: .webMercator())
         
-        //set initial viewpoint on map
-        map.initialViewpoint = AGSViewpoint(targetExtent: envelope)
-        
         //assign map to map view
         self.mapView.map = map
+        
+        //set the viewpoint on map view
+        self.mapView.setViewpoint(AGSViewpoint(targetExtent: envelope))
         
         //create sublayers from tableSublayerSource
         self.createSublayers()

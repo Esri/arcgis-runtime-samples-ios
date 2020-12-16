@@ -23,9 +23,10 @@ class OpenStreetMapLayerViewController: UIViewController {
         
         //initialize map with an OpenStreetMap standard basemap
         let map = AGSMap(basemapStyle: .osmStandard)
-        map.initialViewpoint = AGSViewpoint(latitude: 34.056295, longitude: -117.195800, scale: 577790.554289)
+        
         //assign the map to the map view
         mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(latitude: 34.056295, longitude: -117.195800, scale: 577790.554289))
     
         //add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenStreetMapLayerViewController"]

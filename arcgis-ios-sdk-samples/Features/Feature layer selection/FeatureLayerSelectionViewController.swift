@@ -24,6 +24,7 @@ class FeatureLayerSelectionViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
+            mapView.setViewpoint(AGSViewpoint(targetExtent: AGSEnvelope(xMin: -180, yMin: -90, xMax: 180, yMax: 90, spatialReference: .wgs84())))
             mapView.touchDelegate = self
             mapView.selectionProperties.color = .cyan
         }
@@ -50,8 +51,6 @@ class FeatureLayerSelectionViewController: UIViewController {
     func makeMap() -> AGSMap {
         // Initialize map with topographic basemap.
         let map = AGSMap(basemapStyle: .arcGISStreets)
-        // Set initial viewpoint.
-        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -180, yMin: -90, xMax: 180, yMax: 90, spatialReference: .wgs84()))
         // Add feature layer to the map.
         map.operationalLayers.add(featureLayer)
         return map

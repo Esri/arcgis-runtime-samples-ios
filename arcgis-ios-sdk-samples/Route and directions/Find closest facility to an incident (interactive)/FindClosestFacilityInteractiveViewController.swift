@@ -22,8 +22,8 @@ class FindClosestFacilityInteractiveViewController: UIViewController {
         didSet {
             // Initialize the map.
             let map = AGSMap(basemapStyle: .arcGISStreets)
-            map.initialViewpoint = AGSViewpoint(latitude: 32.727, longitude: -117.1750, scale: 144447.638572)
             mapView.map = map
+            mapView.setViewpoint(AGSViewpoint(latitude: 32.727, longitude: -117.1750, scale: 144447.638572))
             mapView.touchDelegate = self
             
             // Create symbols and graphics to add to the graphic overlays.

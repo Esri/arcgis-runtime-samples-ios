@@ -28,12 +28,12 @@ class FeatureCollectionLayerViewController: UIViewController {
         //initialize map with basemap
         let map = AGSMap(basemapStyle: .arcGISOceans)
         
-        //initial viewpoint
-        let point = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: .wgs84())
-        map.initialViewpoint = AGSViewpoint(center: point, scale: 1.5e6)
-        
         //assign map to the map view
-        self.mapView.map = map
+        mapView.map = map
+        
+        //set viewpoint
+        let point = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: .wgs84())
+        mapView.setViewpoint(AGSViewpoint(center: point, scale: 1.5e6))
         
         self.addFeatureCollectionLayer()
     }

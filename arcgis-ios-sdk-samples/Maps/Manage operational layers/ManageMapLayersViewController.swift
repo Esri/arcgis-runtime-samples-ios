@@ -32,32 +32,32 @@ class ManageMapLayersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "ManageMapLayersViewController",
             "MMLLayersViewController"
         ]
-                
-        let map = AGSMap(basemapStyle: .arcGISTopographic)
-        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -133e5, y: 45e5, spatialReference: .webMercator()), scale: 2e7)
         
         let elevationImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
         let censusTiledLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
         
         allLayers = [elevationImageLayer, censusTiledLayer]
         
-        // load all the layers into the map to start
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
+        
+        // Load all the layers into the map to start.
         map.operationalLayers.addObjects(from: allLayers)
         
         mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -133e5, y: 45e5, spatialReference: .webMercator()), scale: 2e7))
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? MMLLayersViewController {
-            // convert and assign the map's operational layers as a Swift array
+           let controller = navController.viewControllers.first as? MMLLayersViewController {
+            // Convert and assign the map's operational layers as a Swift array.
             controller.map = mapView?.map
             controller.allLayers = allLayers
             controller.preferredContentSize = CGSize(width: 300, height: 200)

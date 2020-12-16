@@ -37,9 +37,6 @@ class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchD
         //initial viewpoint
         let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: .webMercator())
         
-        //set initial viewpoint on map
-        map.initialViewpoint = AGSViewpoint(center: point, scale: 36764077)
-        
         //parks feature table
         self.parksFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/ArcGIS/rest/services/AlaskaNationalParksSpecies_Add_Delete/FeatureServer/0")!)
         
@@ -58,10 +55,11 @@ class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchD
         map.tables.add(speciesFeatureTable)
         
         //assign map to map view
-        self.mapView.map = map
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(center: point, scale: 36764077))
         
         //set touch delegate
-        self.mapView.touchDelegate = self
+        mapView.touchDelegate = self
         
         //store the feature layer for later use
         self.parksFeatureLayer = parksFeatureLayer

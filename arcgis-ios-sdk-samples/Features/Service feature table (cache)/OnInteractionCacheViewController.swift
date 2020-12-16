@@ -18,8 +18,6 @@ import ArcGIS
 class OnInteractionCacheViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map: AGSMap!
-    
     private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
     
     override func viewDidLoad() {
@@ -29,15 +27,7 @@ class OnInteractionCacheViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OnInteractionCacheViewController"]
         
         //initialize map with light gray canvas basemap
-        self.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-        
-        //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(
-            xMin: -1.30758164047166E7,
-            yMin: 4014771.46954516,
-            xMax: -1.30730056797177E7,
-            yMax: 4016869.78617381,
-            spatialReference: .webMercator()))
+        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         
         //feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
@@ -45,8 +35,16 @@ class OnInteractionCacheViewController: UIViewController {
         featureTable.featureRequestMode = AGSFeatureRequestMode.onInteractionCache
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         //add the feature layer to the map
-        self.map.operationalLayers.add(featureLayer)
+        map.operationalLayers.add(featureLayer)
         
-        self.mapView.map = self.map
+        mapView.map = map
+        let extent = AGSEnvelope(
+            xMin: -1.30758164047166E7,
+            yMin: 4014771.46954516,
+            xMax: -1.30730056797177E7,
+            yMax: 4016869.78617381,
+            spatialReference: .webMercator()
+        )
+        mapView.setViewpoint(AGSViewpoint(targetExtent: extent))
     }
 }

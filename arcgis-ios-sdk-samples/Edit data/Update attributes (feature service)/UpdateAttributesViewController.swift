@@ -39,15 +39,13 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
         ]
         
         self.map = AGSMap(basemapStyle: .arcGISOceans)
-        //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
-        
         self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
         let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
         self.map.operationalLayers.add(featureLayer)
         
         self.mapView.map = self.map
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
         self.mapView.touchDelegate = self
         
         //store the feature layer for later use

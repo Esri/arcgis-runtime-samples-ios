@@ -21,7 +21,7 @@ class WMSLayerUsingURLViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize the map with a light gray basemap centered on the United States
+        //initialize the map with a light gray basemap
         let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         
         //assign the map to the map view

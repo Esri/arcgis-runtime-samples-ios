@@ -44,7 +44,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         //assign map to map view
         self.mapView.map = map
         
-        //set initial viewpoint on map
+        //set the viewpoint on map view
         self.mapView.setViewpoint(AGSViewpoint(targetExtent: envelope))
         
         //create sublayers from tableSublayerSource

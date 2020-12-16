@@ -30,7 +30,7 @@ class SetInitialMapAreaViewController: UIViewController {
         // Assign the map to the map view.
         mapView.map = map
         
-        // Set initial map area.
+        // Set the map view's viewpoint.
         let envelope = AGSEnvelope(xMin: -12211308.778729, yMin: 4645116.003309, xMax: -12208257.879667, yMax: 4650542.535773, spatialReference: .webMercator())
         mapView.setViewpoint(AGSViewpoint(targetExtent: envelope))
     }

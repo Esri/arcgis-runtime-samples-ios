@@ -33,7 +33,7 @@ class ChangeMapViewBackgroundViewController: UIViewController {
         // Assign map to the map view.
         mapView.map = map
         
-        // Set initial viewpoint.
+        // Set the map view's viewpoint.
         let center = AGSPoint(x: 3224786, y: 2661231, spatialReference: .webMercator())
         mapView.setViewpoint(AGSViewpoint(center: center, scale: 236663484))
         

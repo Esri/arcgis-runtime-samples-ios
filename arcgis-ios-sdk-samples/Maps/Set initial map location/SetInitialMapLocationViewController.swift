@@ -24,7 +24,7 @@ class SetInitialMapLocationViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SetInitialMapLocationViewController"]
         
-        // Initialize map with imagery basemap and an initial location.
+        // Initialize map with imagery basemap.
         let map = AGSMap(basemapStyle: .arcGISImagery)
         
         // Assign the map to the map view.

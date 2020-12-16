@@ -34,9 +34,6 @@ class ListRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelega
         //initialize map with a basemap
         let map = AGSMap(basemap: .nationalGeographic())
         
-        //initial viewpoint
-        let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: .webMercator())
-        
         //add self as the touch delegate for map view
         //we will need to be notified when the user taps with the map
         self.mapView.touchDelegate = self
@@ -63,6 +60,7 @@ class ListRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelega
         
         //assign map to the map view
         mapView.map = map
+        let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: .webMercator())
         mapView.setViewpoint(AGSViewpoint(center: point, scale: 36764077))
         
         //set selection color

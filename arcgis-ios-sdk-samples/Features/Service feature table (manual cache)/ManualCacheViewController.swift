@@ -30,11 +30,11 @@ class ManualCacheViewController: UIViewController {
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         
         //create feature table using a url
-        featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
         //set the feature request mode to Manual Cache
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
         //create feature layer using this feature table
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         //add feature layer to the map
         map.operationalLayers.add(featureLayer)
         
@@ -52,7 +52,7 @@ class ManualCacheViewController: UIViewController {
         params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
         
         //populate features based on query
-        featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
+        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
             //check for error
             if let error = error {
                 self?.presentAlert(error: error)

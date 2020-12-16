@@ -47,11 +47,11 @@ class DefinitionExpressionViewController: UIViewController {
     
     @IBAction func applyDefinitionExpression() {
         //adding definition expression to show specific features only
-        featureLayer.definitionExpression = "req_Type = 'Tree Maintenance or Damage'"
+        self.featureLayer.definitionExpression = "req_Type = 'Tree Maintenance or Damage'"
     }
     
     @IBAction func resetDefinitionExpression() {
         //reset definition expression
-        featureLayer.definitionExpression = ""
+        self.featureLayer.definitionExpression = ""
     }
 }

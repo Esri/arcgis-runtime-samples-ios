@@ -26,11 +26,8 @@ class GraphicsWithSymbolsViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GraphicsWithSymbolsViewController"]
         
-        //instantiate map with basemap, initial viewpoint and level of detail
-        let map = AGSMap(basemapStyle: .arcGISOceans)
-        
         //assign the map to the map view
-        mapView.map = map
+        mapView.map = AGSMap(basemapStyle: .arcGISOceans)
         mapView.setViewpoint(AGSViewpoint(latitude: 56.075844, longitude: -2.681572, scale: 288895.277144))
         
         let graphicsOverlay = AGSGraphicsOverlay()

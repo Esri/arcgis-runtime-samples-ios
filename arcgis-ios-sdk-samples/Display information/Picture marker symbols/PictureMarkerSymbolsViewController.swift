@@ -26,22 +26,19 @@ class PictureMarkerSymbolsViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["PictureMarkerSymbolsViewController"]
         
-        //initialize map with basemap
-        let map = AGSMap(basemapStyle: .arcGISTopographic)
-        
         //assign the map to the map view
-        mapView.map = map
+        self.mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
         let center = AGSPoint(x: -225166.5, y: 6551249, spatialReference: .webMercator())
-        mapView.setViewpoint(AGSViewpoint(center: center, scale: 1e5))
+        self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 1e5))
         
         //add the graphics overlay to the map view
-        mapView.graphicsOverlays.add(graphicsOverlay)
+        self.mapView.graphicsOverlays.add(graphicsOverlay)
         
         //add picture marker symbol using a remote image
-        addPictureMarkerSymbolFromURL()
+        self.addPictureMarkerSymbolFromURL()
         
         //add picture marker symbol using image in assets
-        addPictureMarkerSymbolFromImage()
+        self.addPictureMarkerSymbolFromImage()
     }
     
     private func addPictureMarkerSymbolFromURL() {
@@ -60,7 +57,7 @@ class PictureMarkerSymbolsViewController: UIViewController {
         let graphic = AGSGraphic(geometry: campsitePoint, symbol: campsiteSymbol, attributes: nil)
         
         //add the graphic to the overlay
-        graphicsOverlay.graphics.add(graphic)
+        self.graphicsOverlay.graphics.add(graphic)
     }
     
     private func addPictureMarkerSymbolFromImage() {
@@ -80,6 +77,6 @@ class PictureMarkerSymbolsViewController: UIViewController {
         let graphic = AGSGraphic(geometry: pinPoint, symbol: pinSymbol, attributes: nil)
         
         //add the graphic to the overlay
-        graphicsOverlay.graphics.add(graphic)
+        self.graphicsOverlay.graphics.add(graphic)
     }
 }

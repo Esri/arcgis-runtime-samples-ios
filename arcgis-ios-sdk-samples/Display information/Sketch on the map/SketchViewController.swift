@@ -30,14 +30,12 @@ class SketchViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SketchViewController"]
         
-        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-        
         self.sketchEditor = AGSSketchEditor()
         self.mapView.sketchEditor = self.sketchEditor
         
         self.sketchEditor.start(with: nil, creationMode: .polyline)
         
-        self.mapView.map = map
+        self.mapView.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         self.mapView.interactionOptions.isMagnifierEnabled = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: .AGSSketchEditorGeometryDidChange, object: nil)

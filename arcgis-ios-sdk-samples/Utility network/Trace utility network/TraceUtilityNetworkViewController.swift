@@ -25,7 +25,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var modeControl: UISegmentedControl!
     
-    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     
     // Create electrical distribution line layer ./115 and electrical device layer ./100.
     private var layers: [AGSFeatureLayer] {
@@ -121,6 +121,8 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         // Set the selection color for features in the map view.
         mapView.selectionProperties = AGSSelectionProperties(color: .yellow)
         
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         // Load the Utility Network to be ready for us to run a trace against it.
         setStatus(message: "Loading Utility Network…")
         utilityNetwork.load { [weak self] error in

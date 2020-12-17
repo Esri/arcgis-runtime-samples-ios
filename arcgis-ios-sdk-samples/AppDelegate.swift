@@ -198,7 +198,7 @@ extension UIApplication {
             try AGSArcGISRuntimeEnvironment.setLicenseKey(.licenseKey, extensions: [.extensionLicenseKey])
             
             // Authentication with an API key or named user is required to
-            // access basemaps and other location services
+            // access basemaps and other location services.
             AGSArcGISRuntimeEnvironment.apiKey = .apiKey
         } catch {
             print("Error licensing app: \(error.localizedDescription)")

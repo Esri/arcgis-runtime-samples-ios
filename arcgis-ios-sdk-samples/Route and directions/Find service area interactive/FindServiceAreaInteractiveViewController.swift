@@ -38,16 +38,14 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveViewController", "ServiceAreaSettingsViewController"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: .terrainWithLabels())
+        let map = AGSMap(basemapStyle: .arcGISTerrain)
         
         //center for initial viewpoint
         let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: .webMercator())
         
-        //initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 1e5)
-        
         //assign map to map view
         self.mapView.map = map
+        self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 1e5))
         
         //assign touch delegate as self to know when use interacted with the map view
         //Will be adding facilities and barriers on interaction

@@ -22,7 +22,7 @@ class DisplayMapViewController: UIViewController {
         super.viewDidLoad()
         
         //initialize map with a basemap
-        let map = AGSMap(basemap: .imagery())
+        let map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
         //assign the map to the map view
         self.mapView.map = map

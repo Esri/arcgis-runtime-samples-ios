@@ -98,7 +98,7 @@ class SpatialRelationshipsViewController: UIViewController, AGSGeoViewTouchDeleg
         mapView.touchDelegate = self
         
         // Instantiate map using basemap and set on mapView
-        mapView.map = AGSMap(basemap: .topographic())
+        mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
 
         // Add polygon, polyline and point graphics to graphics overlay
         graphicsOverlay.graphics.addObjects(from: [polygonGraphic, polylineGraphic, pointGraphic])

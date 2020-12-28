@@ -6,9 +6,9 @@
         "display-map.png"
     ],
     "keywords": [
-        "basemap",
+        "basemap style",
         "map",
-        "AGSBasemap",
+        "AGSBasemapStyle",
         "AGSMap",
         "AGSMapView"
     ],
@@ -16,7 +16,7 @@
         "/ios/latest/swift/sample-code/display-a-map.htm"
     ],
     "relevant_apis": [
-        "AGSBasemap",
+        "AGSBasemapStyle",
         "AGSMap",
         "AGSMapView"
     ],

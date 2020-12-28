@@ -29,7 +29,7 @@ class NavigateARRoutePlannerViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: .imageryWithLabelsVector())
+            mapView.map = AGSMap(basemapStyle: .arcGISImagery)
             mapView.graphicsOverlays.addObjects(from: [routeGraphicsOverlay, stopGraphicsOverlay])
             mapView.locationDisplay.dataSource = locationDataSource
             mapView.locationDisplay.autoPanMode = .recenter

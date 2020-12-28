@@ -25,6 +25,7 @@ class IdentifyRasterCellViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
+            mapView.setViewpoint(AGSViewpoint(latitude: -34.1, longitude: 18.6, scale: 1155581.108577))
             mapView.touchDelegate = self
             mapView.callout.customView = calloutStackView
             mapView.callout.isAccessoryButtonHidden = true
@@ -52,7 +53,7 @@ class IdentifyRasterCellViewController: UIViewController {
     ///
     /// - Returns: An `AGSMap` object.
     func makeMap() -> AGSMap {
-        let map = AGSMap(basemapType: .oceans, latitude: -34.1, longitude: 18.6, levelOfDetail: 9)
+        let map = AGSMap(basemapStyle: .arcGISOceans)
         map.operationalLayers.add(rasterLayer)
         return map
     }

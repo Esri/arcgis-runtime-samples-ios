@@ -41,7 +41,7 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
         ]
         
         //initializer map with basemap
-        let map = AGSMap(basemap: .imagery())
+        let map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
         //assign map to map view
         mapView.map = map

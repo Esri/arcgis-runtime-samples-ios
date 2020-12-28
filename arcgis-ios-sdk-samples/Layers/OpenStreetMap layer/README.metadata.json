@@ -8,12 +8,12 @@
     "keywords": [
         "OSM",
         "OpenStreetMap",
-        "basemap",
+        "basemap style",
         "layers",
         "map",
         "open",
         "street",
-        "AGSBasemap",
+        "AGSBasemapStyle",
         "AGSMap",
         "AGSMapView",
         "AGSOpenStreetMapLayer"
@@ -22,7 +22,7 @@
         "/ios/latest/swift/sample-code/openstreetmap-layer.htm"
     ],
     "relevant_apis": [
-        "AGSBasemap",
+        "AGSBasemapStyle",
         "AGSMap",
         "AGSMapView",
         "AGSOpenStreetMapLayer"

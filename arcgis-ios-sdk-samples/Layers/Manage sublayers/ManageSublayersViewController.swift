@@ -30,7 +30,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController", "MapImageSublayersViewController"]
         
         //instantiate map with basemap
-        let map = AGSMap(basemap: .streets())
+        let map = AGSMap(basemapStyle: .arcGISStreets)
         
         //initialize map image layer
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)
@@ -41,11 +41,11 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
         //initial viewpoint
         let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference: .webMercator())
         
-        //set initial viewpoint on map
-        map.initialViewpoint = AGSViewpoint(targetExtent: envelope)
-        
         //assign map to map view
         self.mapView.map = map
+        
+        //set the viewpoint on map view
+        self.mapView.setViewpoint(AGSViewpoint(targetExtent: envelope))
         
         //create sublayers from tableSublayerSource
         self.createSublayers()

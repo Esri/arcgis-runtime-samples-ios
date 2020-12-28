@@ -14,12 +14,12 @@ When the sample opens, it will automatically display the map with the OpenStreet
 
 ## How it works
 
-1. Create an `AGSMap` with `openStreetMap` as the `basemapType` and specify the other properties.
+1. Create an `AGSMap` with `osmStandard` as the `basemapStyle` and specify the other properties.
 2. Apply the `AGSMap` to the `AGSMapView`.
 
 ## Relevant API
 
-* AGSBasemap
+* AGSBasemapStyle
 * AGSMap
 * AGSMapView
 * AGSOpenStreetMapLayer
@@ -34,4 +34,4 @@ Esri now hosts an [OpenStreetMap vector layer on ArcGIS Online](https://www.arcg
 
 ## Tags
 
-basemap, layers, map, open, OpenStreetMap, OSM, street
+basemap style, layers, map, open, OpenStreetMap, OSM, street

@@ -28,7 +28,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GOIdentifyViewController"]
         
         //initialize the map with topographic basemap
-        self.map = AGSMap(basemap: .topographic())
+        self.map = AGSMap(basemapStyle: .arcGISTopographic)
         
         //call the method to add a graphics to the map view
         //will be using this graphic to test identify

@@ -16,11 +16,12 @@ Tap the "Change Basemap" button in the bottom toolbar to view a list of the avai
 
 1. Create an `AGSMap` object.
 2. Set the map to the `AGSMapView` object.
-3. Choose a new basemap type and set it on the map.
+3. Create different basemaps by initializing them with `AGSBasemapStyle`s.
 
 ## Relevant API
 
 * AGSBasemap
+* AGSBasemapStyle
 * AGSMap
 * AGSMapView
 

@@ -30,17 +30,16 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DeleteFeaturesViewController"]
         
         //instantiate map with a basemap
-        let map = AGSMap(basemap: .streets())
-        //set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6)
+        let map = AGSMap(basemapStyle: .arcGISStreets)
         
         //assign the map to the map view
         self.mapView.map = map
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
         //set touch delegate on map view as self
         self.mapView.touchDelegate = self
         
         //instantiate service feature table using the url to the service
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
+        featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         //create a feature layer using the service feature table
         let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         

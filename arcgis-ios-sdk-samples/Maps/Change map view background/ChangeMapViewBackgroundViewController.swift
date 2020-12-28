@@ -21,25 +21,25 @@ class ChangeMapViewBackgroundViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ChangeMapViewBackgroundViewController", "GridSettingsViewController", "ColorPickerViewController"]
         
-        //initialize tiled layer
+        // Initialize tiled layer.
         let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer")!)
 
-        //initialize map with tiled layer as basemap
+        // Initialize map with tiled layer as basemap.
         let map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayer))
         
-        //set initial viewpoint
-        let center = AGSPoint(x: 3224786, y: 2661231, spatialReference: .webMercator())
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 236663484)
-
-        //assign map to the map view
+        // Assign map to the map view.
         mapView.map = map
         
-        // create a background grid with default values
+        // Set the map view's viewpoint.
+        let center = AGSPoint(x: 3224786, y: 2661231, spatialReference: .webMercator())
+        mapView.setViewpoint(AGSViewpoint(center: center, scale: 236663484))
+        
+        // Create a background grid with default values.
         let backgroundGrid = AGSBackgroundGrid(color: .black, gridLineColor: .white, gridLineWidth: 2, gridSize: 32)
-        // assign the background grid to the map view
+        // Assign the background grid to the map view.
         mapView.backgroundGrid = backgroundGrid
     }
     
@@ -67,7 +67,7 @@ class ChangeMapViewBackgroundViewController: UIViewController {
 
 extension ChangeMapViewBackgroundViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // ensure that the settings are show in a popover even on small displays
+        // Ensure that the settings are shown in a popover on small displays.
         return .none
     }
 }

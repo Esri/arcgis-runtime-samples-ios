@@ -37,7 +37,7 @@ class StatisticalQueryViewController: UIViewController {
         getStatisticsButton.layer.cornerRadius = 10
         
         // Initialize map and set it on map view
-        map = AGSMap(basemap: .streetsVector())
+        map = AGSMap(basemapStyle: .arcGISStreets)
         mapView.map = map
 
         // Initialize feature table, layer and add it to map

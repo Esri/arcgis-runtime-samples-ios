@@ -19,7 +19,7 @@ class FeatureLayerDictionaryRendererViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Initialize the map.
-            mapView.map = AGSMap(basemap: .topographic())
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             
             // Display symbology using a geodatabase.
             displayLayersFromGeodatabase()

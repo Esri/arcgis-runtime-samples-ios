@@ -28,7 +28,7 @@ class SetViewpointViewController: UIViewController {
         super.viewDidLoad()
         
         //initialize the map with imagery basemap
-        self.map = AGSMap(basemap: .imageryWithLabels())
+        self.map = AGSMap(basemapStyle: .arcGISImagery)
         
         //assign the map to the mapview
         self.mapView.map = self.map

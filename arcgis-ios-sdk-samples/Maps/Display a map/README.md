@@ -14,16 +14,16 @@ Run the sample to view the map. Pan and zoom to navigate the map.
 
 ## How it works
 
-1. Create an `AGSMap` object with an `AGSBasemap.imagery()` basemap.
+1. Create an `AGSMap` object with an `AGSBasemapStyle.arcGISImageryStandard` basemap style.
 2. Create an `AGSMapView` object to display the map.
 3. Set the map to the map view.
 
 ## Relevant API
 
-* AGSBasemap
+* AGSBasemapStyle
 * AGSMap
 * AGSMapView
 
 ## Tags
 
-basemap, map
+basemap style, map

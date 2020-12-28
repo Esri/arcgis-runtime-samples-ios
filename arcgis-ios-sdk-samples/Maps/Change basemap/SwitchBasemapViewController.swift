@@ -16,40 +16,36 @@ import UIKit
 import ArcGIS
 
 class SwitchBasemapViewController: UIViewController {
-    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView! {
+        didSet {
+            // Initialize the map with the first basemap.
+            mapView.map = AGSMap(basemap: basemapInfoArray.first!.basemap)
+        }
+    }
     
     /// The basemap options plus labels.
     private let basemapInfoArray: [(basemap: AGSBasemap, label: String)] = [
-        (.darkGrayCanvasVector(), "Dark Gray Canvas (Vector)"),
-        (.imagery(), "Imagery (Raster)"),
-        (.imageryWithLabels(), "Imagery w/ Labels (Raster)"),
-        (.imageryWithLabelsVector(), "Imagery w/ Labels (Vector)"),
-        (.lightGrayCanvas(), "Light Gray Canvas (Raster)"),
-        (.lightGrayCanvasVector(), "Light Gray Canvas (Vector)"),
-        (.nationalGeographic(), "National Geograhpic (Raster)"),
-        (.navigationVector(), "Navigation (Vector)"),
-        (.oceans(), "Oceans (Raster)"),
-        (.openStreetMap(), "OpenStreetMap (Raster)"),
-        (.streets(), "Streets (Raster)"),
-        (.streetsVector(), "Streets (Vector)"),
-        (.streetsNightVector(), "Streets Night (Vector)"),
-        (.streetsWithReliefVector(), "Streets w/ Relief (Vector)"),
-        (.terrainWithLabels(), "Terrain w/ Labels (Raster)"),
-        (.terrainWithLabelsVector(), "Terrain w/ Labels (Vector)"),
-        (.topographic(), "Topographic (Raster)"),
-        (.topographicVector(), "Topographic (Vector)")
+        (.init(style: .arcGISDarkGrayBase), "Dark Gray Canvas"),
+        (.init(style: .arcGISImageryStandard), "Imagery"),
+        (.init(style: .arcGISImagery), "Imagery w/ Labels"),
+        (.init(style: .arcGISLightGrayBase), "Light Gray Canvas"),
+        (.init(style: .arcGISNavigation), "Navigation"),
+        (.init(style: .arcGISNavigationNight), "Navigation Night"),
+        (.init(style: .arcGISOceans), "Oceans"),
+        (.init(style: .osmStreets), "OpenStreetMap"),
+        (.init(style: .arcGISStreets), "Streets"),
+        (.init(style: .arcGISStreetsNight), "Streets Night"),
+        (.init(style: .osmStreetsRelief), "Streets w/ Relief"),
+        (.init(style: .arcGISTerrain), "Terrain w/ Labels"),
+        (.init(style: .arcGISTopographic), "Topographic"),
+        (.init(style: .arcGISHillshadeLight), "Hillshade Light"),
+        (.init(style: .arcGISHillshadeDark), "Hillshade Dark"),
+        (.init(style: .arcGISNova), "Nova")
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // initialize the map with topographic basemap
-        let map = AGSMap(basemap: basemapInfoArray.first!.basemap)
-
-        // assign the map to the map view
-        mapView.map = map
-        
-        // add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "SwitchBasemapViewController",
             "OptionsTableViewController"
@@ -58,7 +54,7 @@ class SwitchBasemapViewController: UIViewController {
 
     @IBAction func changeBasemapAction(_ sender: UIBarButtonItem) {
         guard let basemap = mapView.map?.basemap,
-            // get the index of the basemap currently shown in the map
+            // Get the index of the basemap currently shown in the map.
             let selectedIndex = basemapInfoArray.firstIndex(where: { $0.basemap == basemap }) else {
             return
         }
@@ -68,26 +64,26 @@ class SwitchBasemapViewController: UIViewController {
         /// A view controller allowing the user to select the basemap to show.
         let controller = OptionsTableViewController(labels: basemapLabels, selectedIndex: selectedIndex) { [weak self] (newIndex) in
             if let self = self {
-                // update the map with the selected basemap
+                // Update the map with the selected basemap.
                 self.mapView?.map?.basemap = self.basemapInfoArray[newIndex].basemap
             }
         }
         
-        // configure the options controller as a popover
+        // Configure the options controller as a popover.
         controller.modalPresentationStyle = .popover
         controller.presentationController?.delegate = self
         controller.preferredContentSize = CGSize(width: 300, height: 300)
         controller.popoverPresentationController?.barButtonItem = sender
         controller.popoverPresentationController?.passthroughViews?.append(mapView)
         
-        // show the popover
+        // Show the popover.
         present(controller, animated: true)
     }
 }
 
 extension SwitchBasemapViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // show presented controller as popovers even on small displays
+        // Show presented controller as popovers even on small displays.
         return .none
     }
 }

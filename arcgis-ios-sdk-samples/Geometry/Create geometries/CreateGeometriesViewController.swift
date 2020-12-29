@@ -27,7 +27,7 @@ class CreateGeometriesViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CreateGeometriesViewController"]
         
         //instantiate map using basemap
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         
         //assign map to the map view
         self.mapView.map = map

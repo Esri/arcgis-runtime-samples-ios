@@ -18,7 +18,7 @@ import ArcGIS
 class SimpleMarkerSymbolViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
-    private var graphicsOverlay = AGSGraphicsOverlay()
+    private let graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +26,10 @@ class SimpleMarkerSymbolViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SimpleMarkerSymbolViewController"]
         
-        //initialize map with basemap
-        let map = AGSMap(basemap: .imageryWithLabels())
-        
-        //initial viewpoint
-        let center = AGSPoint(x: -226773, y: 6550477, spatialReference: .webMercator())
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 6500)
-        
         //assign map to the map view
-        self.mapView.map = map
+        self.mapView.map = AGSMap(basemapStyle: .arcGISImagery)
+        let center = AGSPoint(x: -226773, y: 6550477, spatialReference: .webMercator())
+        self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 6500))
         
         //add graphics overlay to the map view
         self.mapView.graphicsOverlays.add(graphicsOverlay)

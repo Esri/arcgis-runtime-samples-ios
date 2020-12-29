@@ -28,7 +28,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: .streetsVector())
+            mapView.map = AGSMap(basemapStyle: .arcGISStreets)
             mapView.touchDelegate = self
             mapView.callout.delegate = self
         }

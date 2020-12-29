@@ -17,7 +17,7 @@ import ArcGIS
 
 class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet weak var mapView: AGSMapView!
-
+    
     @IBOutlet weak var traceNetworkButton: UIBarButtonItem!
     @IBOutlet weak var resetButton: UIBarButtonItem!
     @IBOutlet weak var typeButton: UIBarButtonItem!
@@ -57,13 +57,13 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             return layer
         }
     }
-
+    
     private let map: AGSMap
     private let utilityNetwork: AGSUtilityNetwork
     private var utilityTier: AGSUtilityTier?
     private var traceType = (name: "Connected", type: AGSUtilityTraceType.connected)
     private var traceParameters = AGSUtilityTraceParameters(traceType: .connected, startingLocations: [])
-
+    
     private let parametersOverlay: AGSGraphicsOverlay = {
         let barrierPointSymbol = AGSSimpleMarkerSymbol(style: .X, color: .red, size: 20)
         let barrierUniqueValue = AGSUniqueValue(
@@ -79,25 +79,17 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             defaultSymbol: startingPointSymbol)
         let overlay = AGSGraphicsOverlay()
         overlay.renderer = renderer
-
+        
         return overlay
     }()
     
     // MARK: Initialize map and Utility Network
     required init?(coder aDecoder: NSCoder) {
         // Create the map
-        map = AGSMap(basemap: .streetsNightVector())
-        map.initialViewpoint = AGSViewpoint(
-            targetExtent: AGSEnvelope(
-                xMin: -9813547.35557238,
-                yMin: 5129980.36635111,
-                xMax: -9813185.0602376,
-                yMax: 5130215.41254146,
-                spatialReference: .webMercator()
-        ))
+        map = AGSMap(basemapStyle: .arcGISStreetsNight)
         // Create the utility network, referencing the map.
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
-
+        
         super.init(coder: aDecoder)
         
         // Add the utility network feature layers to the map for display.
@@ -113,9 +105,17 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         
         // Initialize the UI
         setUIState()
-
+        
         // Set up the map view
         mapView.map = map
+        let extent = AGSEnvelope(
+            xMin: -9813547.35557238,
+            yMin: 5129980.36635111,
+            xMax: -9813185.0602376,
+            yMax: 5130215.41254146,
+            spatialReference: .webMercator()
+        )
+        mapView.setViewpoint(AGSViewpoint(targetExtent: extent))
         mapView.graphicsOverlays.add(parametersOverlay)
         mapView.touchDelegate = self
         // Set the selection color for features in the map view.
@@ -149,7 +149,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         if let identifyAction = identifyAction {
             identifyAction.cancel()
         }
-
+        
         setStatus(message: "Identifying trace locations…")
         identifyAction = mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10, returnPopupsOnly: false) { [weak self] (result, error) in
             guard let self = self else { return }
@@ -160,7 +160,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             }
             
             guard let feature = result?.first?.geoElements.first as? AGSArcGISFeature else { return }
-
+            
             self.addStartElementOrBarrier(for: feature, at: mapPoint)
         }
     }
@@ -173,25 +173,25 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     ///   - location: The `AGSPoint` used to identify utility elements in the utility network.
     private func addStartElementOrBarrier(for feature: AGSArcGISFeature, at location: AGSPoint) {
         guard let featureTable = feature.featureTable as? AGSArcGISFeatureTable,
-            let networkSource = utilityNetwork.definition.networkSource(withName: featureTable.tableName) else {
-                self.setStatus(message: "Could not identify location.")
-                return
+              let networkSource = utilityNetwork.definition.networkSource(withName: featureTable.tableName) else {
+            self.setStatus(message: "Could not identify location.")
+            return
         }
         
         switch networkSource.sourceType {
         case .junction:
             // If the user tapped on a junction, get the asset's terminal(s).
             if let assetGroupField = featureTable.field(forName: featureTable.subtypeField),
-                let assetGroupCode = feature.attributes[assetGroupField.name] as? Int,
-                let assetGroup = networkSource.assetGroups.first(where: { $0.code == assetGroupCode }),
-                let assetTypeField = featureTable.field(forName: "ASSETTYPE"),
-                let assetTypeCode = feature.attributes[assetTypeField.name] as? Int,
-                let assetType = assetGroup.assetTypes.first(where: { $0.code == assetTypeCode }),
-                let terminals = assetType.terminalConfiguration?.terminals {
+               let assetGroupCode = feature.attributes[assetGroupField.name] as? Int,
+               let assetGroup = networkSource.assetGroups.first(where: { $0.code == assetGroupCode }),
+               let assetTypeField = featureTable.field(forName: "ASSETTYPE"),
+               let assetTypeCode = feature.attributes[assetTypeField.name] as? Int,
+               let assetType = assetGroup.assetTypes.first(where: { $0.code == assetTypeCode }),
+               let terminals = assetType.terminalConfiguration?.terminals {
                 selectTerminal(from: terminals, at: feature.geometry as? AGSPoint ?? location) { [weak self, currentMode] terminal in
                     guard let self = self,
-                        let element = self.utilityNetwork.createElement(with: feature, terminal: terminal),
-                        let location = feature.geometry as? AGSPoint else { return }
+                          let element = self.utilityNetwork.createElement(with: feature, terminal: terminal),
+                          let location = feature.geometry as? AGSPoint else { return }
                     
                     self.add(element: element, for: location, mode: currentMode)
                     self.setStatus(message: "terminal: \(terminal.name)")
@@ -200,8 +200,8 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         case .edge:
             // If the user tapped on an edge, determine how far along that edge.
             if let geometry = feature.geometry,
-                let line = AGSGeometryEngine.geometryByRemovingZ(from: geometry) as? AGSPolyline,
-                let element = utilityNetwork.createElement(with: feature, terminal: nil) {
+               let line = AGSGeometryEngine.geometryByRemovingZ(from: geometry) as? AGSPolyline,
+               let element = utilityNetwork.createElement(with: feature, terminal: nil) {
                 element.fractionAlongEdge = AGSGeometryEngine.fraction(alongLine: line, to: location, tolerance: -1)
                 
                 add(element: element, for: location, mode: currentMode)
@@ -231,7 +231,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         SVProgressHUD.show(withStatus: "Running \(traceType.name.lowercased()) trace…")
         let parameters = AGSUtilityTraceParameters(traceType: traceType.type, startingLocations: traceParameters.startingLocations)
         parameters.barriers.append(contentsOf: traceParameters.barriers)
-
+        
         // Set the trace configuration using the tier from the utility domain network.
         parameters.traceConfiguration = utilityTier?.traceConfiguration
         
@@ -242,27 +242,27 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
                 self?.presentAlert(error: error)
                 return
             }
-
+            
             guard let self = self else { return }
             
             guard let elementTraceResult = traceResult?.first as? AGSUtilityElementTraceResult,
-                !elementTraceResult.elements.isEmpty else {
-                    self.setStatus(message: "Trace completed with no output.")
-                    SVProgressHUD.dismiss()
-                    return
+                  !elementTraceResult.elements.isEmpty else {
+                self.setStatus(message: "Trace completed with no output.")
+                SVProgressHUD.dismiss()
+                return
             }
             
             self.clearSelection()
-
+            
             SVProgressHUD.show(withStatus: "Trace completed. Selecting features…")
-
+            
             let groupedElements = Dictionary(grouping: elementTraceResult.elements) { $0.networkSource.name }
             
             let selectionGroup = DispatchGroup()
-
+            
             for (networkName, elements) in groupedElements {
                 guard let layer = self.map.operationalLayers.first(where: { ($0 as? AGSFeatureLayer)?.featureTable?.tableName == networkName }) as? AGSFeatureLayer else { continue }
-
+                
                 selectionGroup.enter()
                 self.utilityNetwork.features(for: elements) { [weak self, layer] (features, error) in
                     defer {
@@ -328,7 +328,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             completion(terminal)
         }
     }
-
+    
     // MARK: Interaction Mode
     private enum InteractionMode: Int {
         case addingStartLocation = 0
@@ -396,7 +396,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         traceType = (name: "Connected", type: .connected)
         setInstructionMessage()
     }
-
+    
     // MARK: UI and Feedback
     private func setStatus(message: String) {
         statusLabel.text = message

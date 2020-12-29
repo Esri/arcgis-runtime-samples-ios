@@ -30,7 +30,7 @@ class FLQueryViewController: UIViewController, UISearchBarDelegate {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FLQueryViewController"]
         
         // initialize map with topographic basemap
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         // assign map to the map view
         mapView.map = map
         

@@ -27,7 +27,7 @@ class GORenderersViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GORenderersViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: .topographic())
+        self.map = AGSMap(basemapStyle: .arcGISTopographic)
         
         //add the graphics overaly, with graphics added, to map view
         self.addGraphicsOverlay()

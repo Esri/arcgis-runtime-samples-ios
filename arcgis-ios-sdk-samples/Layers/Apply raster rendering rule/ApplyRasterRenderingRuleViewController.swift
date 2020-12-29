@@ -40,7 +40,7 @@ class ApplyRasterRenderingRuleViewController: UIViewController {
     ///
     /// - Returns: An `AGSMap` object.
     func makeMap() -> AGSMap {
-        let map = AGSMap(basemap: .streets())
+        let map = AGSMap(basemapStyle: .arcGISStreets)
         // Create a raster layer from the raster and add it to the map.
         let imageServiceRaster = AGSImageServiceRaster(url: imageServiceURL)
         map.operationalLayers.add(AGSRasterLayer(raster: imageServiceRaster))

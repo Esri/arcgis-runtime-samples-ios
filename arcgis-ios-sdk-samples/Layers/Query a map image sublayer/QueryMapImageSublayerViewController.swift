@@ -23,11 +23,7 @@ class QueryMapImageSublayerViewController: UIViewController {
     let graphicsOverlay: AGSGraphicsOverlay
     
     required init?(coder: NSCoder) {
-        map = AGSMap(basemap: .streetsVector())
-        
-        // Set the initial viewpoint.
-        let center = AGSPoint(x: -12716000.00, y: 4170400.00, spatialReference: .webMercator())
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 6000000)
+        map = AGSMap(basemapStyle: .arcGISStreets)
         
         /// The url of a map service containing sample data of the United States.
         let unitedStatesMapServiceURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!
@@ -62,6 +58,9 @@ class QueryMapImageSublayerViewController: UIViewController {
         
         // Assign the map to the map view.
         mapView.map = map
+        // Set the viewpoint.
+        let center = AGSPoint(x: -12716000.00, y: 4170400.00, spatialReference: .webMercator())
+        mapView.setViewpoint(AGSViewpoint(center: center, scale: 6000000))
         
         // Add the graphics overlay to the map view.
         mapView.graphicsOverlays.add(graphicsOverlay)

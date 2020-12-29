@@ -25,8 +25,12 @@ class FeatureLayerGPKGViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerGPKGViewController"]
         
-        // Instantiate a map using a basemap, location, and zoom level.
-        let map = AGSMap(basemapType: .lightGrayCanvasVector, latitude: 39.7294, longitude: -104.8319, levelOfDetail: 10)
+        // Instantiate a map.
+        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
+        
+        // Display the map in the map view.
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 577790.554289))
         
         // Create a geopackage from a named bundle resource.
         geoPackage = AGSGeoPackage(name: "AuroraCO")
@@ -44,8 +48,5 @@ class FeatureLayerGPKGViewController: UIViewController {
                 map.operationalLayers.add(featureLayer)
             }
         }
-        
-        // Display the map in the map view.
-        mapView.map = map
     }
 }

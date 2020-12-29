@@ -19,7 +19,7 @@ class AddENCExchangeSetViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: .oceans())
+            mapView.map = AGSMap(basemapStyle: .arcGISOceans)
         }
     }
     

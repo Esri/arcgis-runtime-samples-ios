@@ -1,0 +1,152 @@
+#!/usr/bin/env bash
+# Copyright 2020 Esri.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#   https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Usage instructions
+helpFunction()
+{
+  bold=$(tput bold)
+  normal=$(tput sgr0)
+  underline=$(tput smul)
+  echo ""
+  echo "Usage: ${bold}masquerade${normal} [${bold}-i${normal} ${underline}file${normal}] [${bold}-o${normal} ${underline}file${normal}] [${bold}-s${normal} ${underline}file${normal}]"
+  echo -e ""
+  echo -e "\t${bold}-i${normal}"
+  echo -e "\t\tPath to input file."
+  echo -e "\t\tThe program will parse the input file looking for bracket-enclosed keys, ex: {{ KEY }}"
+  echo -e ""
+  echo -e "\t${bold}-o${normal} "
+  echo -e "\t\tPath to output generated file."
+  echo -e "\t\tPlease ensure the the user has write permissions."
+  echo -e ""
+  echo -e "\t${bold}-s${normal}"
+  echo -e "\t\tPath to a file containing key/value secrets."
+  echo -e "\t\tEvery line is treated as a different key following the format KEY=VALUE where"
+  echo -e "\t\t${underline}KEY${normal} alpha-numeric and underscore characters"
+  echo -e "\t\t${underline}=${normal} the equal character '=' is a delimiter"
+  echo -e "\t\t${underline}VALUE${normal} any character before newline"
+  echo -e ""
+  echo -e "\t${bold}-f${normal}"
+  echo -e "\t\tForce overwrite existing file at output path."
+  echo -e ""
+  exit 1
+}
+
+# -o force write defaults to false
+FORCE_WRITE='false'
+
+# Command line options
+while getopts "i:o:s:f" opt
+do
+  case "$opt" in
+    i ) INPUT_FILE="$OPTARG" ;;
+    o ) OUTPUT_FILE="$OPTARG" ;;
+    s ) SECRETS="$OPTARG" ;;
+    f ) FORCE_WRITE='true' ;;
+    ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
+  esac
+done
+
+# Validate -i param:
+# - input param is not missing
+# - input file is file
+if [ -z "${INPUT_FILE}" ]; then
+  echo "error: -i input file param is missing."
+  helpFunction
+elif [ ! -f "${INPUT_FILE}" ]; then
+  echo "error: ${INPUT_FILE} input file not found."
+  helpFunction
+fi
+
+# Validate -o param:
+# - output param is not missing
+# - output file exists and has specified a forced overwrite
+if [ -z "${OUTPUT_FILE}" ]; then
+  echo "error: -o output file param is missing."
+  helpFunction
+elif [ -f "${OUTPUT_FILE}" ] && [ "${FORCE_WRITE}" == 'false' ]; then
+  echo "error: ${OUTPUT_FILE} file exists at path."
+  echo "error: supply the -f flag to overwrite the output file."
+  exit 1
+fi
+
+# Validate -s param:
+# - secrets param is not missing
+# - secrets is file
+# - secrets is valid format
+if [ -z "${SECRETS}" ]; then
+  echo "error: -s secrets file param is missing."
+  helpFunction
+elif [ ! -f "${SECRETS}" ]; then
+  echo "error: ${SECRETS} secrets file not found."
+  helpFunction
+else
+  while read -r line
+  do
+    if [[ ! $line =~ ^[a-zA-Z0-9_]*=.+$ ]]; then
+      echo "error: ${line} invalid secret"
+      exit 1
+    fi
+  done < <(grep -Ev '^#' "${SECRETS}")
+fi
+
+# Create temporary directory
+TEMP_DIR=$(mktemp -d -t secrets)
+
+# Check if tmp dir was created
+if [ ! "${TEMP_DIR}" ] || [ ! -d "${TEMP_DIR}" ]; then
+  # Fallback to /tmp
+  TEMP_DIR="/tmp/masque"
+fi
+
+# Deletes the temp directory
+function cleanup {
+  rm -rf "${TEMP_DIR}"
+}
+
+# Register the cleanup function to be called on the EXIT signal
+trap cleanup EXIT
+
+## Create temporary file path
+TEMP_FILE="${TEMP_DIR}/$(basename "${INPUT_FILE}")"
+
+# Copy input file to temporary file
+cp "${INPUT_FILE}" "${TEMP_FILE}"
+
+# First pass: iterate replacing keys found in template with values found in secrets
+while read -r line
+do
+  # Extract key/value pairs
+	KEY=$(echo "${line}" | cut -d= -f1)
+	VALUE=$(echo "${line}" | cut -d= -f2)
+	# Use sed to replace keys with values
+  # Note, accepts space surrounding key
+	sed -i.bak -e "s/{{ *${KEY} *}}/${VALUE}/g" "${TEMP_FILE}"
+done < <(grep -Ev '^#' "${SECRETS}")
+
+# Second pass: clean-up missed variable brackets
+while read -r line
+do
+	# Use sed to replace keys with values
+	sed -i.bak -e "s/{{.*}}//g" "${TEMP_FILE}"
+done < <(grep -Ev '^#' "${TEMP_FILE}")
+
+# Move finished working file to ouput
+mv "${TEMP_FILE}" "${OUTPUT_FILE}"
+
+# Confirm the move was successful
+if [ ! -f "${OUTPUT_FILE}" ]; then
+  echo "error: ${OUTPUT_FILE} could not write to output file."
+  exit 1
+fi

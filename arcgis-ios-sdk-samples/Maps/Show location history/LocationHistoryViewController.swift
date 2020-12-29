@@ -177,7 +177,7 @@ class LocationHistoryViewController: UIViewController {
     }
     
     private func setupMapView() {
-        let map = AGSMap(basemap: .lightGrayCanvasVector())
+        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         mapView.map = map
         map.load { [weak self, unowned map] (_) in
             guard let self = self else { return }

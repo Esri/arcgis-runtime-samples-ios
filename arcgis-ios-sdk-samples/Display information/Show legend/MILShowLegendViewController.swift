@@ -28,7 +28,7 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MILShowLegendViewController", "MILLegendTableViewController"]
         
         //initialize the map
-        self.map = AGSMap(basemap: .topographic())
+        self.map = AGSMap(basemapStyle: .arcGISTopographic)
         
         //create tiled layer
         let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/Soil_Survey_Map/MapServer")!)

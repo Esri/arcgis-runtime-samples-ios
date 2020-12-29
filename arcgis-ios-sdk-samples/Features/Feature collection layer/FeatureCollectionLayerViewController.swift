@@ -26,14 +26,14 @@ class FeatureCollectionLayerViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureCollectionLayerViewController"]
         
         //initialize map with basemap
-        let map = AGSMap(basemap: .oceans())
-        
-        //initial viewpoint
-        let point = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: .wgs84())
-        map.initialViewpoint = AGSViewpoint(center: point, scale: 1.5e6)
+        let map = AGSMap(basemapStyle: .arcGISOceans)
         
         //assign map to the map view
-        self.mapView.map = map
+        mapView.map = map
+        
+        //set viewpoint
+        let point = AGSPoint(x: -79.497238, y: 8.849289, spatialReference: .wgs84())
+        mapView.setViewpoint(AGSViewpoint(center: point, scale: 1.5e6))
         
         self.addFeatureCollectionLayer()
     }

@@ -49,7 +49,7 @@ class Animate3DGraphicViewController: UIViewController {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["Animate3DGraphicViewController", "MissionSettingsViewController", "CameraSettingsViewController", "PlaneStatsViewController", "OptionsTableViewController"]
         
         //map
-        let map = AGSMap(basemap: .streets())
+        let map = AGSMap(basemapStyle: .arcGISStreets)
         mapView.map = map
         mapView.interactionOptions.isEnabled = false
         

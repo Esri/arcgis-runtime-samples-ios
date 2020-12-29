@@ -20,7 +20,7 @@ class ColormapRendererViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Assign map to the map view.
-            mapView.map = AGSMap(basemap: .imagery())
+            mapView.map = AGSMap(basemapStyle: .arcGISImageryStandard)
             
             // Create and add the raster layer to the operational layers of the map.
             mapView.map?.operationalLayers.add(makeRasterLayer())

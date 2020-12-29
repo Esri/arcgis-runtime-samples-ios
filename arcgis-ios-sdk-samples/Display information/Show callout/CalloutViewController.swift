@@ -27,7 +27,7 @@ class CalloutViewController: UIViewController, AGSGeoViewTouchDelegate {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CalloutViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: .topographic())
+        self.map = AGSMap(basemapStyle: .arcGISTopographic)
         //assign map to the map view
         self.mapView.map = self.map
         //register as the map view's touch delegate

@@ -18,7 +18,6 @@ import ArcGIS
 class OverrideRendererViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView!
     
-    private var map: AGSMap!
     private var featureLayer: AGSFeatureLayer!
     
     override func viewDidLoad() {
@@ -28,18 +27,18 @@ class OverrideRendererViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OverrideRendererViewController"]
         
         //initialize map with topographic basemap
-        self.map = AGSMap(basemap: .topographic())
-        //initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1.30758164047166E7, yMin: 4014771.46954516, xMax: -1.30730056797177E7, yMax: 4016869.78617381, spatialReference: .webMercator()))
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
+        
         //assign map to the map view's map
-        self.mapView.map = self.map
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(targetExtent: AGSEnvelope(xMin: -1.30758164047166E7, yMin: 4014771.46954516, xMax: -1.30730056797177E7, yMax: 4016869.78617381, spatialReference: .webMercator())))
         
         //initialize feature table using a url to feature server url
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0")!)
         //initialize feature layer with feature table
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         //add the feature layer to the operational layers on the map view
-        self.map.operationalLayers.add(featureLayer)
+        map.operationalLayers.add(featureLayer)
         
         //store the feature layer for later use
         self.featureLayer = featureLayer

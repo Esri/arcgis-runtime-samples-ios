@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class Display3DLabelsViewController: UIViewController {
+class Display3DLabelsSceneViewController: UIViewController {
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
             let scene = makeScene()
@@ -93,7 +93,7 @@ class Display3DLabelsViewController: UIViewController {
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["Display3DLabelsViewController"]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["Display3DLabelsSceneViewController"]
     }
     
     private enum jsonLabelError: Error {

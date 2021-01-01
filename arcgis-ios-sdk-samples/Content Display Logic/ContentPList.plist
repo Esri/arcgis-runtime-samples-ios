@@ -1759,11 +1759,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Display 3D labels</string>
+				<string>Display 3D labels in scene</string>
 				<key>storyboardName</key>
-				<string>Display3DLabels</string>
+				<string>Display3DLabelsScene</string>
 				<key>descriptionText</key>
-				<string>Display custom labels on a 3D scene.</string>
+				<string>Display custom labels in a 3D scene.</string>
 			</dict>
 		</array>
 	</dict>

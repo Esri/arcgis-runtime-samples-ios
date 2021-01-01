@@ -40,7 +40,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ListTransformationsViewController"]
 
         // Get MapView from layout and set a map into this view
-        mapView.map = AGSMap(basemap: .lightGrayCanvasVector())
+        mapView.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         mapView.graphicsOverlays.add(graphicsOverlay)
         
         //add original graphic to overlay

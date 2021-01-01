@@ -23,7 +23,7 @@ class ReadSymbolsFromMobileStyleViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: .topographic())
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             mapView.graphicsOverlays.add(AGSGraphicsOverlay())
             mapView.touchDelegate = self
         }

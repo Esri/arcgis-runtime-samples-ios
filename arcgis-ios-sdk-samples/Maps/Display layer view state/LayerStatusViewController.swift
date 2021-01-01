@@ -22,6 +22,7 @@ class LayerStatusViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap(featureLayer: featureLayer)
+            mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 2e7))
             mapView.layerViewStateChangedHandler = { [weak self] layer, state in
                 guard let self = self else { return }
                 // Only check the view state of the feature layer.
@@ -53,9 +54,8 @@ class LayerStatusViewController: UIViewController {
     /// - Parameter featureLayer: An `AGSFeatureLayer` object.
     /// - Returns: An `AGSMap` object.
     func makeMap(featureLayer: AGSFeatureLayer) -> AGSMap {
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         map.operationalLayers.add(featureLayer)
-        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -11e6, y: 45e5, spatialReference: .webMercator()), scale: 2e7)
         return map
     }
     

@@ -26,22 +26,20 @@ class MapViewDrawStatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapViewDrawStatusViewController"]
         
-        //instantiate the map with topographic basemap
-        self.map = AGSMap(basemap: .topographic())
+        // Instantiate the map with topographic basemap.
+        map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //initial viewpoint
-        self.map?.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -13639984, yMin: 4537387, xMax: -13606734, yMax: 4558866, spatialReference: .webMercator()))
-        
-        //add a feature layer
+        // Add a feature layer.
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        self.map?.operationalLayers.add(featureLayer)
+        map?.operationalLayers.add(featureLayer)
         
-        //assign the map to mapView
-        self.mapView.map = self.map
+        // Assign the map to mapView.
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(targetExtent: AGSEnvelope(xMin: -13639984, yMin: 4537387, xMax: -13606734, yMax: 4558866, spatialReference: .webMercator())))
     }
     
     override func viewWillAppear(_ animated: Bool) {

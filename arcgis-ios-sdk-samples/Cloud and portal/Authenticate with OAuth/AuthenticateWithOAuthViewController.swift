@@ -60,6 +60,7 @@ class AuthenticateWithOAuthViewController: UIViewController {
     
     deinit {
         AGSAuthenticationManager.shared().oAuthConfigurations.remove(oAuthConfiguration)
+        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
     }
     
     // MARK: UIViewController

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uF5-61-Oq4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uF5-61-Oq4">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,18 +14,15 @@
             <objects>
                 <viewController id="uF5-61-Oq4" customClass="FindServiceAreaInteractiveViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hcg-KY-lJP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScH-Y2-uZg">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="fnu-FH-ab3"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" id="Kxl-Gy-DEg">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="oEe-fu-LvD">
-                                            <rect key="frame" x="20" y="6" width="147" height="32"/>
+                                            <rect key="frame" x="20" y="11" width="147" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Facilities"/>
@@ -53,21 +53,20 @@
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSP-7z-qfE" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="MkB-vx-el3"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="WSP-7z-qfE" secondAttribute="trailing" id="9vr-BX-4DC"/>
-                            <constraint firstItem="ScH-Y2-uZg" firstAttribute="leading" secondItem="MkB-vx-el3" secondAttribute="leading" id="CUL-JW-i9h"/>
+                            <constraint firstItem="ScH-Y2-uZg" firstAttribute="leading" secondItem="hcg-KY-lJP" secondAttribute="leading" id="CUL-JW-i9h"/>
                             <constraint firstItem="WSP-7z-qfE" firstAttribute="top" secondItem="MkB-vx-el3" secondAttribute="top" id="DQZ-ct-0Jd"/>
                             <constraint firstItem="MkB-vx-el3" firstAttribute="bottom" secondItem="ScH-Y2-uZg" secondAttribute="bottom" id="b8s-8P-97w"/>
                             <constraint firstItem="WSP-7z-qfE" firstAttribute="bottom" secondItem="ScH-Y2-uZg" secondAttribute="top" id="eXf-9t-Bta"/>
                             <constraint firstItem="WSP-7z-qfE" firstAttribute="leading" secondItem="hcg-KY-lJP" secondAttribute="leading" id="pw7-bJ-IoT"/>
-                            <constraint firstItem="ScH-Y2-uZg" firstAttribute="trailing" secondItem="MkB-vx-el3" secondAttribute="trailing" id="xKk-FZ-VeS"/>
+                            <constraint firstItem="ScH-Y2-uZg" firstAttribute="trailing" secondItem="hcg-KY-lJP" secondAttribute="trailing" id="xKk-FZ-VeS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="MkB-vx-el3"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="WSP-7z-qfE" id="ulV-cd-J6t"/>
@@ -84,53 +83,54 @@
             <objects>
                 <viewController id="t9g-Ff-NPa" customClass="ServiceAreaSettingsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uzu-od-HFD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2T-cI-s7u">
-                                <rect key="frame" x="264" y="10" width="72" height="24"/>
+                                <rect key="frame" x="171" y="10" width="72" height="24"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="PNE-4V-aHy">
-                                <rect key="frame" x="8" y="76.5" width="584" height="31"/>
+                                <rect key="frame" x="8" y="76.5" width="398" height="31"/>
                                 <connections>
                                     <action selector="sliderValueChangedWithSender:" destination="t9g-Ff-NPa" eventType="valueChanged" id="pqZ-XN-ynG"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First time break (minutes)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIz-jS-rfu">
-                                <rect key="frame" x="10" y="54" width="196" height="20.5"/>
+                                <rect key="frame" x="10" y="54" width="195" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZu-FW-Wln">
-                                <rect key="frame" x="579.5" y="54" width="10.5" height="20.5"/>
+                                <rect key="frame" x="393.5" y="54" width="10.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" minValue="6" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qvu-ox-z0V">
-                                <rect key="frame" x="8" y="149" width="584" height="31"/>
+                                <rect key="frame" x="8" y="149" width="398" height="31"/>
                                 <connections>
                                     <action selector="sliderValueChangedWithSender:" destination="t9g-Ff-NPa" eventType="valueChanged" id="ktx-hM-Db9"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second time break (minutes)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJs-Jr-B44">
-                                <rect key="frame" x="10" y="126.5" width="221" height="20.5"/>
+                                <rect key="frame" x="10" y="126.5" width="219.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkP-AP-Mt7">
-                                <rect key="frame" x="579.5" y="126.5" width="10.5" height="20.5"/>
+                                <rect key="frame" x="393.5" y="126.5" width="10.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="NYY-e1-NGk"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="FJs-Jr-B44" firstAttribute="top" secondItem="PNE-4V-aHy" secondAttribute="bottom" constant="20" id="3xU-r7-aq7"/>
                             <constraint firstItem="FJs-Jr-B44" firstAttribute="centerY" secondItem="qkP-AP-Mt7" secondAttribute="centerY" id="KDP-Bu-hFH"/>
@@ -149,7 +149,6 @@
                             <constraint firstItem="IIz-jS-rfu" firstAttribute="top" secondItem="q2T-cI-s7u" secondAttribute="bottom" constant="20" id="uZY-rS-HtV"/>
                             <constraint firstItem="NYY-e1-NGk" firstAttribute="trailing" secondItem="PNE-4V-aHy" secondAttribute="trailing" constant="10" id="xfZ-r8-u18"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="NYY-e1-NGk"/>
                     </view>
                     <connections>
                         <outlet property="firstTimeBreakLabel" destination="eZu-FW-Wln" id="PEa-km-j9p"/>
@@ -165,5 +164,8 @@
     </scenes>
     <resources>
         <image name="Settings" width="30" height="30"/>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

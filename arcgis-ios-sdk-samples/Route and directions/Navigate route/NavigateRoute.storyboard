@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JxV-EA-CYk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JxV-EA-CYk">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,21 +25,20 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.333333333333329"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions are shown here." lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhO-bQ-arF">
-                                        <rect key="frame" x="24" y="0.0" width="366" height="20.333333333333332"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="8" y="0.0" width="398" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <viewLayoutGuide key="safeArea" id="UbJ-c8-Wwv"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <constraints>
-                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="leading" secondItem="UbJ-c8-Wwv" secondAttribute="leading" constant="24" id="3PX-fr-3Id"/>
+                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="leading" secondItem="kAu-7I-JM1" secondAttribute="leadingMargin" id="3PX-fr-3Id"/>
                                     <constraint firstItem="IhO-bQ-arF" firstAttribute="top" secondItem="kAu-7I-JM1" secondAttribute="top" id="94a-pS-CSb"/>
-                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="trailing" secondItem="UbJ-c8-Wwv" secondAttribute="trailing" constant="-24" id="hcc-fV-s1G"/>
+                                    <constraint firstItem="IhO-bQ-arF" firstAttribute="trailing" secondItem="kAu-7I-JM1" secondAttribute="trailingMargin" id="hcc-fV-s1G"/>
                                     <constraint firstItem="IhO-bQ-arF" firstAttribute="bottom" secondItem="kAu-7I-JM1" secondAttribute="bottom" id="pCW-0c-623"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="UbJ-c8-Wwv"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSf-vt-cp3">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
@@ -62,7 +63,8 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FzH-kw-6eq"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kAu-7I-JM1" firstAttribute="trailing" secondItem="YVM-3B-TME" secondAttribute="trailing" id="6Qa-YR-jLm"/>
                             <constraint firstItem="EC7-F9-vN9" firstAttribute="trailing" secondItem="YVM-3B-TME" secondAttribute="trailing" id="UTA-4p-JY6"/>
@@ -75,7 +77,6 @@
                             <constraint firstItem="iSf-vt-cp3" firstAttribute="trailing" secondItem="YVM-3B-TME" secondAttribute="trailing" id="mNt-7z-iVa"/>
                             <constraint firstItem="EC7-F9-vN9" firstAttribute="leading" secondItem="YVM-3B-TME" secondAttribute="leading" id="yhJ-yl-82k"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FzH-kw-6eq"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="EC7-F9-vN9" id="Rz7-I3-sa6"/>
@@ -90,4 +91,12 @@
             <point key="canvasLocation" x="155.07246376811597" y="-164.0625"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

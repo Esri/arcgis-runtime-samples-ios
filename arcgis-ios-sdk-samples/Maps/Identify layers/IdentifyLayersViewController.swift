@@ -18,18 +18,16 @@ import ArcGIS
 class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     @IBOutlet var mapView: AGSMapView!
     
-    private var map: AGSMap!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["IdentifyLayersViewController"]
         
-        //create an instance of a map
-        self.map = AGSMap(basemap: .topographic())
+        // Create an instance of a map
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //map image layer
+        // Map image layer.
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
         //hide Continent and World layers
@@ -39,42 +37,42 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
                 mapImageLayer?.subLayerContents[2].isVisible = false
             }
         }
-        self.map.operationalLayers.add(mapImageLayer)
+        map.operationalLayers.add(mapImageLayer)
         
-        //feature table
+        // Feature table.
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
     
-        //feature layer
+        // Feature layer.
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
-        //add feature layer add to the operational layers
-        self.map.operationalLayers.add(featureLayer)
+        // Add feature layer add to the operational layers.
+        map.operationalLayers.add(featureLayer)
         
-        //set initial viewpoint to a specific region
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -10977012.785807, y: 4514257.550369, spatialReference: .webMercator()), scale: 68015210)
+        // Assign map to the map view.
+        mapView.map = map
         
-        //assign map to the map view
-        self.mapView.map = self.map
+        // Set viewpoint to a specific region.
+        mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -10977012.785807, y: 4514257.550369, spatialReference: .webMercator()), scale: 68015210))
         
-        //add self as the touch delegate for the map view
-        self.mapView.touchDelegate = self
+        // Add self as the touch delegate for the map view.
+        mapView.touchDelegate = self
     }
     
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        //get the geoElements for all layers present at the tapped point
+        // Get the geoElements for all layers present at the tapped point.
         self.identifyLayers(screenPoint)
     }
     
     // MARK: - Identify layers
     
     private func identifyLayers(_ screen: CGPoint) {
-        //show progress hud
+        // Show progress hud.
         SVProgressHUD.show(withStatus: "Identifying")
         
         self.mapView.identifyLayers(atScreenPoint: screen, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
-            //dismiss progress hud
+            // Dismiss progress hud.
             SVProgressHUD.dismiss()
             
             if let error = error {
@@ -95,47 +93,47 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
             let layerName = identifyLayerResult.layerContent.name
             messageString.append("\(layerName) :: \(count)")
             
-            //add new line character if not the final element in array
+            // Add new line character if not the final element in array.
             if identifyLayerResult != results.last! {
                 messageString.append(" \n ")
             }
             
-            //update total count
+            // Update total count.
             totalCount += count
         }
         
-        //if any elements were found show the results
-        //else notify user that no elements were found
         if totalCount > 0 {
+            // If any elements were found, show the results.
             presentAlert(title: "Number of elements found", message: messageString)
         } else {
+            // Notify user that no elements were found.
             presentAlert(message: "No element found")
         }
     }
     
     private func geoElementsCountFromResult(_ result: AGSIdentifyLayerResult) -> Int {
-        //create temp array
+        // Create temp array.
         var tempResults = [result]
         
-        //using Depth First Search approach to handle recursion
+        // Using Depth First Search approach to handle recursion.
         var count = 0
         var index = 0
         
         while index < tempResults.count {
-            //get the result object from the array
+            // Get the result object from the array.
             let identifyResult = tempResults[index]
             
-            //update count with geoElements from the result
+            // Update count with geoElements from the result.
             count += identifyResult.geoElements.count
             
-            //check if the result has any sublayer results
-            //if yes then add those result objects in the tempResults
-            //array after the current result
+            // Check if the result has any sublayer results.
+            // If yes then add those result objects in the tempResults
+            // array after the current result.
             if !identifyResult.sublayerResults.isEmpty {
                 tempResults.insert(contentsOf: identifyResult.sublayerResults, at: index + 1)
             }
             
-            //update the count and repeat
+            // Update the count and repeat.
             index += 1
         }
         

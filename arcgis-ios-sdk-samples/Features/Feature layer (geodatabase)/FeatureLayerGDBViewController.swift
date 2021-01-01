@@ -27,10 +27,11 @@ class FeatureLayerGDBViewController: UIViewController {
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerGDBViewController"]
         
         //instantiate map with basemap
-        let map = AGSMap(basemap: .imageryWithLabels())
+        let map = AGSMap(basemapStyle: .arcGISImagery)
         
-        //set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4)
+        //assign map to the map view
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4))
         
         //instantiate geodatabase with name
         self.geodatabase = AGSGeodatabase(name: "LA_Trails")
@@ -45,8 +46,5 @@ class FeatureLayerGDBViewController: UIViewController {
                 self?.mapView.map?.operationalLayers.add(featureLayer)
             }
         }
-        
-        //assign map to the map view
-        self.mapView.map = map
     }
 }

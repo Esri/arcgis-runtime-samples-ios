@@ -59,6 +59,36 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *12.0*, meani
 
 Some sample data is too large to store in the repository, so it is automatically downloaded at build time. The first time the app is built, a build script downloads the necessary data to `Portal Data`. The script only downloads data files that do not already exist, so subsequent builds will take significantly less time.
 
+## Configure app secrets
+
+As a best-practices principle, the project conceals app secrets from source code by generating and compiling an `AppSecrets.swift` source code file at build time using a custom build rule.
+
+This build rule looks for a secrets file stored in the project's root directory, `$(SRCROOT)/.secrets`.
+
+Note: Without licensing or licensing with invalid keys do not throw an exception, but simply fail to license the app, falling back to Developer Mode (which will display a watermark on the map and scene views).
+
+1. Create a hidden secrets file in the project's root directory.
+
+  ```bash
+  touch .secrets
+  ```
+
+2. Add your **License Key** to the secrets file. Licensing the app will remove the 'Licensed for Developer Use Only' watermark. Licensing the app is optional in development but required for production. _Optionally_ add your **Extension License Key** and **API Key** to the secrets file if needed. Acquire license keys from your [dashboard](https://developers.arcgis.com/dashboard).
+
+  ```bash
+  echo ARCGIS_LICENSE_KEY=your-license-key >> .secrets
+  echo ARCGIS_EXTENSION_LICENSE_KEY=your-extension-license-key >> .secrets
+  echo ARCGIS_API_KEY=your-api-key >> .secrets
+  ```
+
+  > Replace 'your-license-key', 'your-extension-license-key' and 'your-api-key' with your keys.
+
+3. Uncomment the line `application.license()` in `AppDelegate.application(_:didFinishLaunchingWithOptions:)`, and choose the appropriate licensing method for your keys.
+
+Visit the developer's website to learn more about [licensing your ArcGIS Runtime app](https://developers.arcgis.com/pricing/licensing/).
+
+To learn more about `masquerade`, consult the [documentation](https://github.com/Esri/data-collection-ios/tree/master/docs#masquerade) of Esri's Data Collection app.
+
 ## Additional Resources
 
 * Want to start a new project? [Setup](https://developers.arcgis.com/ios/latest/swift/guide/install.htm) your dev environment

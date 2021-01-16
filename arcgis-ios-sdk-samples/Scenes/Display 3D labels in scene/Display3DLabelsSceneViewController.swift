@@ -46,7 +46,7 @@ class Display3DLabelsSceneViewController: UIViewController {
         return scene
     }
     
-    func makeLabelDefinition() throws -> AGSLabelDefinition {
+    func makeLabelDefinition() throws -> AGSLabelDefinition? {
         // Make and stylize the text symbol.
         let textSymbol = AGSTextSymbol()
         textSymbol.angle = 0
@@ -78,11 +78,7 @@ class Display3DLabelsSceneViewController: UIViewController {
         
         //  Create and return a label definition from the JSON object.
         let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
-        if let definition = result as? AGSLabelDefinition {
-            return definition
-        } else {
-            throw jsonLabelError.withDescription("The JSON could not be read as a label definition.")
-        }
+        return result as? AGSLabelDefinition
     }
     
     // MARK: UIViewController
@@ -92,9 +88,5 @@ class Display3DLabelsSceneViewController: UIViewController {
         
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["Display3DLabelsSceneViewController"]
-    }
-    
-    private enum jsonLabelError: Error {
-        case withDescription(String)
     }
 }

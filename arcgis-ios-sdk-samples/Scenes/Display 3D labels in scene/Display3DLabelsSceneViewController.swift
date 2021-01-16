@@ -18,33 +18,31 @@ import ArcGIS
 class Display3DLabelsSceneViewController: UIViewController {
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
-            let scene = makeScene()
-            // Load the scene.
-            scene.load { [ weak self ] error in
-                // Get the feature layer.
-                let layers = scene.operationalLayers as! [AGSGroupLayer]
-                let groupLayer = layers.first(where: { $0.name == "Gas" })
-                let gasFeatureLayer = groupLayer?.layers[0] as! AGSFeatureLayer
-                // Enable labels on the feature layer.
-                gasFeatureLayer.labelsEnabled = true
-                do {
-                    guard let labelDefinition = try self?.makeLabelDefinition() else { return }
-                    // Add the label definition to the layer.
-                    gasFeatureLayer.labelDefinitions.add(labelDefinition)
-                    } catch {
-                        // If failure to make a label definition, present an error.
-                        self?.presentAlert(error: error)
-                    }
-            }
             // Set the scene to the scene view.
-            sceneView.scene = scene
+            sceneView.scene = makeScene()
         }
     }
     
     func makeScene() -> AGSScene {
-        let sceneURL = URL(string: "https://arcgisruntime.maps.arcgis.com/home/item.html?id=850dfee7d30f4d9da0ebca34a533c169")!
+        let sceneURL = URL(string: "https://www.arcgis.com/home/item.html?id=850dfee7d30f4d9da0ebca34a533c169")!
         let scene = AGSScene(url: sceneURL)!
-       
+        // Load the scene.
+        scene.load { [ weak self ] error in
+            // Get the feature layer.
+            let layers = scene.operationalLayers as! [AGSGroupLayer]
+            let groupLayer = layers.first(where: { $0.name == "Gas" })
+            let gasFeatureLayer = groupLayer?.layers[0] as! AGSFeatureLayer
+            // Enable labels on the feature layer.
+            gasFeatureLayer.labelsEnabled = true
+            do {
+                guard let labelDefinition = try self?.makeLabelDefinition() else { return }
+                // Add the label definition to the layer.
+                gasFeatureLayer.labelDefinitions.add(labelDefinition)
+            } catch {
+                // If failure to make a label definition, present an error.
+                self?.presentAlert(error: error)
+            }
+        }
         return scene
     }
     

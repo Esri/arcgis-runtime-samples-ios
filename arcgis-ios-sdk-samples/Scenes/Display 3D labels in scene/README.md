@@ -1,8 +1,8 @@
-# Display 3D Labels
+# Display 3D labels in scene
 
-Display custom labels on a 3D scene.
+Display custom labels in a 3D scene.
 
-![Display 3D Labels](display-3d-labels.png)
+![Display 3D labels in scene](display-3d-labels.png)
 
 ## Use case
 
@@ -35,8 +35,8 @@ Pan and zoom to explore the scene. Notice the labels on the 3D gas network.
 
 ## About the data
 
-This sample shows a [NYC infrastructure scene](https://arcgisruntime.maps.arcgis.com/home/item.html?id=850dfee7d30f4d9da0ebca34a533c169) hosted on ArcGIS Online.
+This sample shows a [NYC infrastructure scene](https://www.arcgis.com/home/item.html?id=850dfee7d30f4d9da0ebca34a533c169) hosted on ArcGIS Online.
 
 ## Tags
 
-3D, attribute, buildings, label, model, scene, symbol, text, visualization, URL
+3D, attribute, buildings, label, model, scene, symbol, text, URL, visualization

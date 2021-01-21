@@ -23,20 +23,20 @@ class ShowMagnifierViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //instantiate map with topographic basemap
+        // instantiate map with topographic basemap
         self.map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
-        //asssign map to the map view
+        // asssign map to the map view
         self.mapView.map = self.map
         
-        //enable magnifier
+        // enable magnifier
         self.mapView.interactionOptions.isMagnifierEnabled = true
         
-        //zoom to custom viewpoint
+        // zoom to custom viewpoint
         let viewpoint = AGSViewpoint(center: AGSPoint(x: -110.8258, y: 32.1545089, spatialReference: .wgs84()), scale: 2e4)
         self.mapView.setViewpoint(viewpoint)
         
-        //setup source code BBI
+        // setup source code BBI
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ShowMagnifierViewController"]
     }
 }

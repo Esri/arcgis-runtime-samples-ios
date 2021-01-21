@@ -30,74 +30,74 @@ class GraphicDrawOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GraphicDrawOrderViewController"]
         
-        //create an instance of a map with ESRI streets basemap
+        // create an instance of a map with ESRI streets basemap
         self.map = AGSMap(basemapStyle: .arcGISStreets)
-        //assign map to the map view
+        // assign map to the map view
         self.mapView.map = self.map
         
-        //add the graphics overlay to the map view
+        // add the graphics overlay to the map view
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
-        //add the graphics to the overlay
+        // add the graphics to the overlay
         self.addGraphics()
         
-        //set map scale
+        // set map scale
         let mapScale: Double = 53500
         
-        //initial viewpoint
+        // initial viewpoint
         self.mapView.setViewpointCenter(AGSPoint(x: -13148960, y: 4000040, spatialReference: .webMercator()), scale: mapScale)
         
-        //restricting map scale to preserve the graphics overlapping
+        // restricting map scale to preserve the graphics overlapping
         self.map.minScale = mapScale
         self.map.maxScale = mapScale
     }
     
     private func addGraphics() {
-        //starting x and y
+        // starting x and y
         let x: Double = -13149000
         let y: Double = 4e6
-        //distance between the graphics
+        // distance between the graphics
         let delta: Double = 100
         
-        //blue marker
+        // blue marker
         var geometry = AGSPoint(x: x, y: y, spatialReference: .webMercator())
         var symbol = AGSPictureMarkerSymbol(image: UIImage(named: "BlueMarker")!)
         var graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         graphics.append(graphic)
         
-        //red marker
+        // red marker
         geometry = AGSPoint(x: x + delta, y: y, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "RedMarker2")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         graphics.append(graphic)
         
-        //green marker
+        // green marker
         geometry = AGSPoint(x: x, y: y + delta, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "GreenMarker")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         graphics.append(graphic)
         
-        //Violet marker
+        // Violet marker
         geometry = AGSPoint(x: x + delta, y: y + delta, spatialReference: .webMercator())
         symbol = AGSPictureMarkerSymbol(image: UIImage(named: "VioletMarker")!)
         graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil)
         graphics.append(graphic)
         
-        //add the graphics to the overlay
+        // add the graphics to the overlay
         self.graphicsOverlay.graphics.addObjects(from: graphics)
     }
     
     // MARK: - Actions
     
     @IBAction func buttonAction(_ sender: UIButton) {
-        //increment draw index by 1 and assign as the zIndex for the respective graphic
+        // increment draw index by 1 and assign as the zIndex for the respective graphic
         self.drawIndex += 1
         
-        //the button's tag value specifies which graphic to re-index
-        //for example, a button tag value of 1 will move self.graphics[1] - the red marker
+        // the button's tag value specifies which graphic to re-index
+        // for example, a button tag value of 1 will move self.graphics[1] - the red marker
         graphics[sender.tag].zIndex = self.drawIndex
     }
 }

@@ -37,10 +37,10 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GenerateOfflineMapViewController"]
 
-        //prepare the authentication manager for user login (required for taking the sample's basemap offline)
+        // prepare the authentication manager for user login (required for taking the sample's basemap offline)
         let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
@@ -56,20 +56,20 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     }
     
     private func addMap() {
-        //portal for the web map
+        // portal for the web map
         let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
         
-        //portal item for web map
+        // portal item for web map
         let portalItem = AGSPortalItem(portal: portal, itemID: "acc027394bc84c2fb04d1ed317aac674")
         self.portalItem = portalItem
         
-        //map from portal item
+        // map from portal item
         let map = AGSMap(item: portalItem)
         
-        //assign map to the map view
+        // assign map to the map view
         mapView.map = map
         
-        //disable the bar button item until the map loads
+        // disable the bar button item until the map loads
         mapView.map?.load { [weak self] (error) in
             guard let self = self else {
                 return
@@ -77,7 +77,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             
             if let error = error {
                 if (error as NSError).code != NSUserCancelledError {
-                    //show error
+                    // show error
                     self.presentAlert(error: error)
                 }
                 return
@@ -86,10 +86,10 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             self.barButtonItem.isEnabled = true
         }
         
-        //instantiate offline map task
+        // instantiate offline map task
         offlineMapTask = AGSOfflineMapTask(portalItem: portalItem)
         
-        //setup extent view
+        // setup extent view
         extentView.layer.borderColor = UIColor.red.cgColor
         extentView.layer.borderWidth = 3
     }
@@ -105,30 +105,30 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         let generateOfflineMapJob = offlineMapTask.generateOfflineMapJob(with: parameters, downloadDirectory: downloadDirectory)
         self.generateOfflineMapJob = generateOfflineMapJob
         
-        //observe the job's progress
+        // observe the job's progress
         jobProgressObservation = generateOfflineMapJob.progress.observe(\.fractionCompleted, options: .new) { [weak self] (progress, _) in
             DispatchQueue.main.async { [weak self] in
-                //update progress label
+                // update progress label
                 self?.progressLabel.text = progress.localizedDescription
-                //update progress view
+                // update progress view
                 self?.progressView.progress = Float(progress.fractionCompleted)
             }
         }
         
-        //unhide the progress parent view
+        // unhide the progress parent view
         progressParentView.isHidden = false
         
-        //start the job
+        // start the job
         generateOfflineMapJob.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else {
                 return
             }
             
-            //remove KVO observer
+            // remove KVO observer
             self.jobProgressObservation = nil
             
             if let error = error {    
-                //do not display error if user simply cancelled the request
+                // do not display error if user simply cancelled the request
                 if (error as NSError).code != NSUserCancelledError {
                     self.presentAlert(error: error)
                 }
@@ -153,31 +153,31 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
                          message: "The following error(s) occurred while generating the offline map:\n\n\(errorMessages.joined(separator: "\n"))")
         }
         
-        //disable cancel button
+        // disable cancel button
         cancelButton.isEnabled = false
         
-        //assign offline map to map view
+        // assign offline map to map view
         mapView.map = result.offlineMap
     }
     
     // MARK: - Actions
     
     @IBAction func generateOfflineMapAction() {
-        //disable bar button item
+        // disable bar button item
         barButtonItem.isEnabled = false
         
-        //hide the extent view
+        // hide the extent view
         extentView.isHidden = true
         
-        //show progress hud
+        // show progress hud
         SVProgressHUD.show(withStatus: "Getting default parameters")
         
-        //get the area outlined by the extent view
+        // get the area outlined by the extent view
         let areaOfInterest = extentViewFrameToEnvelope()
         
-        //default parameters for offline map task
+        // default parameters for offline map task
         offlineMapTask?.defaultGenerateOfflineMapParameters(withAreaOfInterest: areaOfInterest) { [weak self] (parameters: AGSGenerateOfflineMapParameters?, error: Error?) in
-            //dismiss progress hud
+            // dismiss progress hud
             SVProgressHUD.dismiss()
             
             guard let parameters = parameters,
@@ -190,26 +190,26 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
                 return
             }
             
-            //will need the parameters for creating the job later
+            // will need the parameters for creating the job later
             self.parameters = parameters
             
-            //take map offline
+            // take map offline
             self.takeMapOffline()
         }
     }
     
     @IBAction func cancelAction() {
-        //cancel generate offline map job
+        // cancel generate offline map job
         generateOfflineMapJob?.progress.cancel()
         
         progressParentView.isHidden = true
         progressView.progress = 0
         progressLabel.text = ""
         
-        //enable take map offline bar button item
+        // enable take map offline bar button item
         barButtonItem.isEnabled = true
         
-        //unhide the extent view
+        // unhide the extent view
         extentView.isHidden = false
     }
     
@@ -232,21 +232,21 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     private func extentViewFrameToEnvelope() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)
         
-        //the lower-left corner
+        // the lower-left corner
         let minPoint = mapView.screen(toLocation: frame.origin)
         
-        //the upper-right corner
+        // the upper-right corner
         let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.maxX, y: frame.maxY))
         
-        //return the envenlope covering the entire extent frame
+        // return the envenlope covering the entire extent frame
         return AGSEnvelope(min: minPoint, max: maxPoint)
     }
     
     private func getNewOfflineMapDirectoryURL() -> URL {
-        //get a suitable directory to place files
+        // get a suitable directory to place files
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
-        //create a unique name based on current timestamp
+        // create a unique name based on current timestamp
         let formattedDate = ISO8601DateFormatter().string(from: Date())
         
         return documentDirectoryURL.appendingPathComponent("\(formattedDate)")

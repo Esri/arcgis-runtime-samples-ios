@@ -52,7 +52,7 @@ class SublayersTableViewController: UITableViewController {
         let sublayer = sublayers[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "SublayerCell", for: indexPath)
         cell.textLabel?.text = sublayer.name
-        //accessory switch
+        // accessory switch
         let visibilitySwitch = UISwitch(frame: .zero)
         visibilitySwitch.tag = indexPath.row
         visibilitySwitch.isOn = sublayer.isVisible
@@ -64,7 +64,7 @@ class SublayersTableViewController: UITableViewController {
     @objc
     func switchChanged(_ sender: UISwitch) {
         let index = sender.tag
-        //change the visiblity
+        // change the visiblity
         let sublayer = self.sublayers[index]
         sublayer.isVisible = sender.isOn
     }

@@ -72,7 +72,7 @@ class RGBRendererSettingsViewController: UITableViewController {
     }
     
     private func makeStretchParameters() -> AGSStretchParameters {
-        //get the values from textFields in rows based on the selected stretch type
+        // get the values from textFields in rows based on the selected stretch type
         switch stretchType {
         case .minMax:
             var minValue1 = 0, minValue2 = 0, minValue3 = 0, maxValue1 = 255, maxValue2 = 255, maxValue3 = 255
@@ -121,7 +121,7 @@ class RGBRendererSettingsViewController: UITableViewController {
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return the rows based on the stretch type selected
+        // return the rows based on the stretch type selected
         switch self.stretchType {
         case .minMax, .percentClip:
             return 3
@@ -131,14 +131,14 @@ class RGBRendererSettingsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //first row cell is always RGBRendererStretchTypeCell
+        // first row cell is always RGBRendererStretchTypeCell
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RGBRendererStretchTypeCell", for: indexPath)
             stretchTypeCell = cell
             updateStretchTypeLabel()
             return cell
         } else {
-            //load the rest of the cells based on the stretch type selected
+            // load the rest of the cells based on the stretch type selected
             switch stretchType {
             case .minMax:
                  let cell = tableView.dequeueReusableCell(withIdentifier: "RGBRenderer3InputCell", for: indexPath) as! RGBRenderer3InputCell

@@ -23,7 +23,7 @@ class HillshadeRendererViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "HillshadeRendererViewController",
             "HillshadeSettingsViewController",
@@ -38,7 +38,7 @@ class HillshadeRendererViewController: UIViewController {
         
         mapView.map = map
         
-        //initial renderer
+        // initial renderer
         setRenderer(altitude: 45, azimuth: 315, slopeType: .none)
     }
     

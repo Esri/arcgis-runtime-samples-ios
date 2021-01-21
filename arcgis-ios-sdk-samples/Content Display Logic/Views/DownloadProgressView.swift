@@ -155,7 +155,7 @@ class DownloadProgressView: UIView {
         self.shapeLayer.removeAllAnimations()
         
         if animated {
-            //create animation
+            // create animation
             let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
             animation.duration = 0.2
             animation.fromValue = self.shapeLayer.strokeEnd
@@ -168,7 +168,7 @@ class DownloadProgressView: UIView {
             self.shapeLayer.strokeEnd = self.progress
         }
         
-        //progress label
+        // progress label
         self.progressLabel.text = "\(Int(self.progress * 100))%"
     }
     

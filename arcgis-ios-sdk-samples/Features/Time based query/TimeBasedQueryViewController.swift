@@ -27,36 +27,36 @@ class TimeBasedQueryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize map with oceans basemap
+        // initialize map with oceans basemap
         self.map = AGSMap(basemapStyle: .arcGISOceans)
         
-        //assign map to the map view
+        // assign map to the map view
         self.mapView.map = self.map
         
-        //create feature table using a url
+        // create feature table using a url
         self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Hurricanes/MapServer/0")!)
         
-        //define the request mode
+        // define the request mode
         self.featureTable.featureRequestMode = .manualCache
         
-        //create feature layer using the feature table
+        // create feature layer using the feature table
         let layer = AGSFeatureLayer(featureTable: self.featureTable)
         
-        //add feature layer to map's operational layers
+        // add feature layer to map's operational layers
         self.map.operationalLayers.add(layer)
         
-        //populate features based on a time-based query
+        // populate features based on a time-based query
         self.populateFeaturesWithQuery()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TimeBasedQueryViewController"]
     }
     
     func populateFeaturesWithQuery() {
-        //create query parameters
+        // create query parameters
         let queryParams = AGSQueryParameters()
 
-        //create a new time extent that covers the desired interval from September 1st to September 22th, 2000
+        // create a new time extent that covers the desired interval from September 1st to September 22th, 2000
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         let startTime = formatter.date(from: "2000/9/1 00:00")
@@ -64,17 +64,17 @@ class TimeBasedQueryViewController: UIViewController {
         
         let timeExtent = AGSTimeExtent(startTime: startTime, endTime: endTime)
         
-        //apply the time extent to query parameters to filter features based on time
+        // apply the time extent to query parameters to filter features based on time
         queryParams.timeExtent = timeExtent
         
-        //populate features based on query parameters
+        // populate features based on query parameters
         self.featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
-            //check for error
+            // check for error
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
-                //the resulting features should be displayed on the map
-                //you can print the count of features
+                // the resulting features should be displayed on the map
+                // you can print the count of features
                 print("Hurriance features during the time interval: \(result?.featureEnumerator().allObjects.count ?? 0)")
             }
         }

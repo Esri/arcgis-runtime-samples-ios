@@ -29,7 +29,7 @@ class SampleSearchEngine {
                 return
             }
 
-            //index the content of all sample names, descriptions, and readme files
+            // index the content of all sample names, descriptions, and readme files
             strongSelf.indexSampleReadmes()
             strongSelf.isLoadingReadmeIndex = false
         }
@@ -53,11 +53,11 @@ class SampleSearchEngine {
                                     if  [NSLinguisticTag.noun, .verb, .adjective, .otherWord].contains(tag) {
                                         let word = ((string as NSString).substring(with: tokenRange) as String).lowercased()
                                         
-                                        //trivial comparisons
+                                        // trivial comparisons
                                         if word != "`." && word != "```" && word != "`" {
-                                            //if word already exists in the dictionary
+                                            // if word already exists in the dictionary
                                             if var samples = displayNamesByReadmeWords[word] {
-                                                //add the sample display name to the list if not already present
+                                                // add the sample display name to the list if not already present
                                                 if !samples.contains(sampleDisplayName) {
                                                     samples.append(sampleDisplayName)
                                                     displayNamesByReadmeWords[word] = samples

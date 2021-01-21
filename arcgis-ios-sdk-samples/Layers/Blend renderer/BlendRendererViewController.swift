@@ -31,12 +31,12 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BlendRendererViewController", "BlendRendererSettingsViewController", "OptionsTableViewController"]
         
-        //initialize map
+        // initialize map
         let map = AGSMap()
-        //assign map to the map view
+        // assign map to the map view
         mapView.map = map
         
         // set the initial blend renderer

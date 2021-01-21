@@ -22,10 +22,10 @@ class UniqueValueRendererViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            //assign map to the map view
+            // assign map to the map view
             mapView.map = makeMap()
             
-            //set initial viewpoint
+            // set initial viewpoint
             let center = AGSPoint(x: -12966000.5, y: 4441498.5, spatialReference: .webMercator())
             mapView.setViewpoint(AGSViewpoint(center: center, scale: 4e7))
         }
@@ -36,17 +36,17 @@ class UniqueValueRendererViewController: UIViewController {
     ///
     /// - Returns: A new `AGSMap` object.
     func makeMap() -> AGSMap {
-        //instantiate map with basemap
+        // instantiate map with basemap
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //create feature layer
+        // create feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3")!)
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
-        //make unique value renderer and assign it to the feature layer
+        // make unique value renderer and assign it to the feature layer
         featureLayer.renderer = makeUniqueValueRenderer()
         
-        //add the layer to the map as operational layer
+        // add the layer to the map as operational layer
         map.operationalLayers.add(featureLayer)
         
         return map
@@ -57,29 +57,29 @@ class UniqueValueRendererViewController: UIViewController {
     ///
     /// - Returns: A new `AGSUniqueValueRenderer` object.
     func makeUniqueValueRenderer() -> AGSUniqueValueRenderer {
-        //instantiate a new unique value renderer
+        // instantiate a new unique value renderer
         let renderer = AGSUniqueValueRenderer()
         
-        //set the field to use for the unique values
-        //You can add multiple fields to be used for the renderer in the form of a list, in this case we are only adding a single field
+        // set the field to use for the unique values
+        // You can add multiple fields to be used for the renderer in the form of a list, in this case we are only adding a single field
         renderer.fieldNames = ["STATE_ABBR"]
         
-        //create symbols to be used in the renderer
+        // create symbols to be used in the renderer
         let defaultSymbol = AGSSimpleFillSymbol(style: .null, color: .clear, outline: AGSSimpleLineSymbol(style: .solid, color: .gray, width: 2))
         let californiaSymbol = AGSSimpleFillSymbol(style: .solid, color: .red, outline: AGSSimpleLineSymbol(style: .solid, color: .red, width: 2))
         let arizonaSymbol = AGSSimpleFillSymbol(style: .solid, color: .green, outline: AGSSimpleLineSymbol(style: .solid, color: .green, width: 2))
         let nevadaSymbol = AGSSimpleFillSymbol(style: .solid, color: .blue, outline: AGSSimpleLineSymbol(style: .solid, color: .blue, width: 2))
         
-        //set the default symbol
+        // set the default symbol
         renderer.defaultSymbol = defaultSymbol
         renderer.defaultLabel = "Other"
         
-        //create unique values
+        // create unique values
         let californiaValue = AGSUniqueValue(description: "State of California", label: "California", symbol: californiaSymbol, values: ["CA"])
         let arizonaValue = AGSUniqueValue(description: "State of Arizona", label: "Arizona", symbol: arizonaSymbol, values: ["AZ"])
         let nevadaValue = AGSUniqueValue(description: "State of Nevada", label: "Nevada", symbol: nevadaSymbol, values: ["NV"])
         
-        //add the values to the renderer
+        // add the values to the renderer
         renderer.uniqueValues.append(contentsOf: [californiaValue, arizonaValue, nevadaValue])
         
         return renderer
@@ -90,7 +90,7 @@ class UniqueValueRendererViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["UniqueValueRendererViewController"]
     }
 }

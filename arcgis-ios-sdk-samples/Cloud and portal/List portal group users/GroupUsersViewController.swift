@@ -25,28 +25,28 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GroupUsersViewController", "GroupUserCell"]
 
-        //automatic cell sizing for table view
+        // automatic cell sizing for table view
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 104
         
-        //initialize portal with AGOL
+        // initialize portal with AGOL
         self.portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         
-        //load the portal group to be used
+        // load the portal group to be used
         self.loadPortalGroup()
     }
     
     private func loadPortalGroup() {
-        //show progress hud
+        // show progress hud
         SVProgressHUD.show(withStatus: "Loading Portal Group")
         
-        //query group based on owner and title
+        // query group based on owner and title
         let queryParams = AGSPortalQueryParameters(forGroupsWithOwner: "ArcGISRuntimeSDK", title: "Runtime Group")
         
-        //find groups with using query params
+        // find groups with using query params
         self.portal.findGroups(with: queryParams) { [weak self] (resultSet: AGSPortalQueryResultSet?, error: Error?) in
             SVProgressHUD.dismiss()
             
@@ -55,16 +55,16 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             }
             
             if let error = error {
-                //show error
+                // show error
                 self.presentAlert(error: error)
             } else {
-                //fetch users for the resulting group
+                // fetch users for the resulting group
                 if let groups = resultSet?.results as? [AGSPortalGroup],
                     let group = groups.first {
                     self.portalGroup = group
                     self.fetchGroupUsers()
                 } else {
-                    //show error that no groups found
+                    // show error that no groups found
                     self.presentAlert(message: "No groups found")
                 }
             }
@@ -72,10 +72,10 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     private func fetchGroupUsers() {
-        //show progress hud
+        // show progress hud
         SVProgressHUD.show(withStatus: "Fetching Users")
         
-        //fetch users in group
+        // fetch users in group
         self.portalGroup.fetchUsers { [weak self] (users, _, error) in
             SVProgressHUD.dismiss()
             
@@ -84,14 +84,14 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
             }
             
             if let error = error {
-                //show error
+                // show error
                 self.presentAlert(error: error)
             } else if let users = users {
-                //if there are users in the group
+                // if there are users in the group
                 if !users.isEmpty {
-                    //initialize AGSPortalUser objects with user names
+                    // initialize AGSPortalUser objects with user names
                     self.portalUsers = users.map { AGSPortalUser(portal: self.portal, username: $0) }
-                    //load all users before populating into table view
+                    // load all users before populating into table view
                     self.loadAllUsers()
                 } else {
                     self.presentAlert(message: "No users found")
@@ -101,16 +101,16 @@ class GroupUsersViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     private func loadAllUsers() {
-        //show progress hud
+        // show progress hud
         SVProgressHUD.show(withStatus: "Loading User Data")
         
-        //load user data
+        // load user data
         AGSLoadObjects(portalUsers) { [weak self] (success) in
-            //dismiss hud
+            // dismiss hud
             SVProgressHUD.dismiss()
             
             if success {
-                //reload table view
+                // reload table view
                 self?.tableView.reloadData()
             } else {
                 self?.presentAlert(message: "Error while loading users data")

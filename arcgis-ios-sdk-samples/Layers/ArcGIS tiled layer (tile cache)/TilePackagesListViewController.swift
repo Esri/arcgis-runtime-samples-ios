@@ -28,7 +28,7 @@ class TilePackagesListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //fetch tile packages from bundle and document directory
+        // fetch tile packages from bundle and document directory
         self.fetchTilePackages()
     }
     

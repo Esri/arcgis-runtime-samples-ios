@@ -27,7 +27,7 @@ class SurfacePlacementsViewController: UIViewController {
     /// The slider to change z-value of `AGSPoint` geometries, from 0 to 140 in meters.
     @IBOutlet weak var zValueSlider: UISlider! {
         didSet {
-            zValueSlider.value = 70
+            zValueSlider.value = (zValueSlider.maximumValue + zValueSlider.minimumValue) / 2
         }
     }
     /// The segmented control to toggle the visibility of two draped mode graphics overlays.

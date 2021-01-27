@@ -20,13 +20,13 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
     
     private var map: AGSMap!
     
-    private weak var bookmarksListVC: BookmarksListViewController!
+    private weak var bookmarksListViewController: BookmarksListViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //initialize map using imagery with labels basemap
-        self.map = AGSMap(basemap: .imageryWithLabels())
+        self.map = AGSMap(basemapStyle: .arcGISImagery)
         
         //assign map to the mapView
         self.mapView.map = self.map
@@ -116,7 +116,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
         //add the bookmark to the map
         self.map.bookmarks.add(bookmark)
         //refresh the table view if it exists
-        self.bookmarksListVC?.tableView.reloadData()
+        self.bookmarksListViewController?.tableView.reloadData()
     }
     
     // MARK: - Navigation
@@ -124,7 +124,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? BookmarksListViewController {
             //store a weak reference in order to update the table view when adding new bookmark
-            self.bookmarksListVC = controller
+            self.bookmarksListViewController = controller
             //popover presentation logic
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)

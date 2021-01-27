@@ -14,12 +14,12 @@ When the map loads, note the specific location and scale of the initial map view
 
 ## How it works
 
-1. Create an `AGSMap`, specifying a basemap type, latitude and longitude in WGS84, and a level of detail.
+1. Create an `AGSMap`, specifying a basemap style, latitude and longitude in WGS84, and a level of detail.
 2. Display the map in a map view.
 
 ## Relevant API
 
-* AGSBasemapType
+* AGSBasemapStyle
 * AGSMap
 * AGSMapView
 
@@ -29,4 +29,4 @@ The map opens with satellite imagery of a guitar-shaped field in the Pampas regi
 
 ## Tags
 
-basemap, center, envelope, extent, initial, lat, latitude, level of detail, location, LOD, long, longitude, scale, zoom level
+basemap style, center, envelope, extent, initial, lat, latitude, level of detail, location, LOD, long, longitude, scale, zoom level

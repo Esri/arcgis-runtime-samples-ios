@@ -33,8 +33,8 @@ class SaveAsViewController: UITableViewController {
     
     @IBAction private func saveAction() {
         guard let title = titleTextField.text,
-            !title.isEmpty else {
-            //show error message
+              !title.isEmpty else {
+            // Show error message.
             presentAlert(message: "Please enter a title.")
             return
         }

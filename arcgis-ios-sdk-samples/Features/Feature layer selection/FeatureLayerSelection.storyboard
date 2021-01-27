@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIk-JH-uY3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIk-JH-uY3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,17 +31,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="gTA-cM-d3f"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="MSB-XK-96k" secondAttribute="bottom" id="Iyd-zR-VVL"/>
                                     <constraint firstItem="gTA-cM-d3f" firstAttribute="trailing" secondItem="MSB-XK-96k" secondAttribute="trailing" id="f8v-qY-d8G"/>
                                     <constraint firstItem="MSB-XK-96k" firstAttribute="top" secondItem="AIN-Oz-V0e" secondAttribute="top" id="osw-4T-oBd"/>
                                     <constraint firstItem="MSB-XK-96k" firstAttribute="leading" secondItem="gTA-cM-d3f" secondAttribute="leading" id="uMl-di-SOU"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="gTA-cM-d3f"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Zuc-h4-Txi"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Jek-wa-W5c" secondAttribute="trailing" id="GpA-Ez-euQ"/>
                             <constraint firstAttribute="bottom" secondItem="Jek-wa-W5c" secondAttribute="bottom" id="VQ4-XP-L4k"/>
@@ -50,7 +53,6 @@
                             <constraint firstItem="Jek-wa-W5c" firstAttribute="top" secondItem="pct-Is-DQi" secondAttribute="top" id="oNR-8U-fFY"/>
                             <constraint firstItem="AIN-Oz-V0e" firstAttribute="top" secondItem="Jek-wa-W5c" secondAttribute="top" id="vUZ-0c-Y6S"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Zuc-h4-Txi"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="oNR-8U-fFY"/>
@@ -67,4 +69,12 @@
             <point key="canvasLocation" x="542" y="440"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

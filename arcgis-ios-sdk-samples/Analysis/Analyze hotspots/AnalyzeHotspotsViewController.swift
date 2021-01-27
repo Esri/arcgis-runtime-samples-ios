@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate {
+class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsViewControllerDelegate {
     @IBOutlet var mapView: AGSMapView!
     
     /// Geoprocessing task with the url of the service
@@ -40,16 +40,12 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         ]
 
         //initialize map with basemap
-        let map = AGSMap(basemap: .topographic())
-        
-        //center for initial viewpoint
-        let center = AGSPoint(x: -13671170.647485, y: 5693633.356735, spatialReference: .webMercator())
-        
-        //set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 57779)
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         
         //assign map to map view
         mapView.map = map
+        let center = AGSPoint(x: -13671170.647485, y: 5693633.356735, spatialReference: .webMercator())
+        mapView.setViewpoint(AGSViewpoint(center: center, scale: 57779))
     }
     
     private func analyzeHotspots(_ fromDate: Date, toDate: Date) {
@@ -107,7 +103,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsVCDelegate
         })
     }
     
-    // MARK: - HotspotSettingsVCDelegate
+    // MARK: - HotspotSettingsViewControllerDelegate
     
     func hotspotSettingsViewController(_ hotspotSettingsViewController: HotspotSettingsViewController, didSelectDates fromDate: Date, toDate: Date) {
         hotspotSettingsViewController.dismiss(animated: true)

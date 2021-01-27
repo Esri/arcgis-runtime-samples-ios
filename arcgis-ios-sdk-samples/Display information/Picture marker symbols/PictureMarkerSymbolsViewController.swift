@@ -18,7 +18,7 @@ import ArcGIS
 class PictureMarkerSymbolsViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
-    private var graphicsOverlay = AGSGraphicsOverlay()
+    private let graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +26,13 @@ class PictureMarkerSymbolsViewController: UIViewController {
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["PictureMarkerSymbolsViewController"]
         
-        //initialize map with basemap
-        let map = AGSMap(basemap: .topographic())
-        
-        //initial envelope
-        let center = AGSPoint(x: -225166.5, y: 6551249, spatialReference: .webMercator())
-        map.initialViewpoint = AGSViewpoint(center: center, scale: 1e5)
-        
         //assign the map to the map view
-        self.mapView.map = map
+        self.mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+        let center = AGSPoint(x: -225166.5, y: 6551249, spatialReference: .webMercator())
+        self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 1e5))
         
         //add the graphics overlay to the map view
-        self.mapView.graphicsOverlays.add(self.graphicsOverlay)
+        self.mapView.graphicsOverlays.add(graphicsOverlay)
         
         //add picture marker symbol using a remote image
         self.addPictureMarkerSymbolFromURL()

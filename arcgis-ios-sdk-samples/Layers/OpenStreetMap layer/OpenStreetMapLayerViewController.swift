@@ -21,10 +21,12 @@ class OpenStreetMapLayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize map with an OpenStreetMap basemap
-        let map = AGSMap(basemapType: .openStreetMap, latitude: 34.056295, longitude: -117.195800, levelOfDetail: 10)
+        //initialize map with an OpenStreetMap standard basemap
+        let map = AGSMap(basemapStyle: .osmStandard)
+        
         //assign the map to the map view
         mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(latitude: 34.056295, longitude: -117.195800, scale: 577790.554289))
     
         //add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenStreetMapLayerViewController"]

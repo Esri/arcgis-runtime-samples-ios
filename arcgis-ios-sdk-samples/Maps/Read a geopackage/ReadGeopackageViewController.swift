@@ -18,12 +18,13 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
+            mapView.setViewpoint(AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 288895.277144))
         }
     }
 
     func makeMap() -> AGSMap {
-        // Instantiate and display a map using a basemap, location, and zoom level.
-        let map = AGSMap(basemapType: .streets, latitude: 39.7294, longitude: -104.8319, levelOfDetail: 11)
+        // Instantiate a map.
+        let map = AGSMap(basemapStyle: .arcGISStreets)
         
         // Create a geopackage from a named bundle resource.
         let geoPackage = AGSGeoPackage(name: "AuroraCO")

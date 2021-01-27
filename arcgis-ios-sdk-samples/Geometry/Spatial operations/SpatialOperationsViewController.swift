@@ -22,10 +22,10 @@ class SpatialOperationsViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Initialize map with basemap.
-            mapView.map = AGSMap(basemap: .topographic())
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             // Add the graphics overlay with two polygon graphics and the result graphic to map view.
             mapView.graphicsOverlays.add(makeGraphicsOverlay())
-            // Set initial viewpoint.
+            // Set the map view's viewpoint.
             let center = AGSPoint(x: -13453, y: 6710127, spatialReference: .webMercator())
             mapView.setViewpointCenter(center, scale: 30000, completion: nil)
         }

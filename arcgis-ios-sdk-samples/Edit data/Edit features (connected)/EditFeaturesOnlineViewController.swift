@@ -23,7 +23,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     private var map: AGSMap!
     private var sketchEditor: AGSSketchEditor!
     private var featureLayer: AGSFeatureLayer!
-    private var popupsVC: AGSPopupsViewController!
+    private var popupsViewController: AGSPopupsViewController!
     
     private var lastQuery: AGSCancelable!
     
@@ -33,10 +33,9 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController", "FeatureTemplatePickerViewController"]
         
-        self.map = AGSMap(basemap: .topographic())
-        //set initial viewpoint
-        self.map.initialViewpoint = AGSViewpoint(center: AGSPoint(x: -9184518.55, y: 3240636.90, spatialReference: .webMercator()), scale: 7e5)
+        self.map = AGSMap(basemapStyle: .arcGISTopographic)
         self.mapView.map = self.map
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -9184518.55, y: 3240636.90, spatialReference: .webMercator()), scale: 7e5))
         self.mapView.touchDelegate = self
         
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
@@ -54,7 +53,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.featureLayer = featureLayer
     }
     
-    private func dismissFeatureTemplatePickerVC() {
+    private func dismissFeatureTemplatePickerViewController() {
         self.dismiss(animated: true)
     }
     
@@ -86,10 +85,10 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
                 print(error)
             } else if !identifyLayerResult.geoElements.isEmpty {
                 let popups = identifyLayerResult.geoElements.map(AGSPopup.init(geoElement:))
-                self.popupsVC = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
-                self.popupsVC.modalPresentationStyle = .formSheet
-                self.present(self.popupsVC, animated: true)
-                self.popupsVC.delegate = self
+                self.popupsViewController = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
+                self.popupsViewController.modalPresentationStyle = .formSheet
+                self.present(self.popupsViewController, animated: true)
+                self.popupsViewController.delegate = self
             }
         }
     }
@@ -156,7 +155,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         //dismiss the popups view controller
         self.dismiss(animated: true)
         
-        self.popupsVC = nil
+        self.popupsViewController = nil
     }
     
     @objc
@@ -174,7 +173,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         
         //present the popups view controller again
-        self.present(self.popupsVC, animated: true)
+        self.present(self.popupsViewController, animated: true)
         
         //remove self as observer for notifications
         NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
@@ -193,9 +192,9 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FeatureTemplateSegue",
             let navigationController = segue.destination as? UINavigationController,
-            let featureTemplatePickerVC = navigationController.topViewController as? FeatureTemplatePickerViewController {
-            featureTemplatePickerVC.addTemplatesFromLayer(featureLayer)
-            featureTemplatePickerVC.delegate = self
+            let featureTemplatePickerViewController = navigationController.topViewController as? FeatureTemplatePickerViewController {
+            featureTemplatePickerViewController.addTemplatesFromLayer(featureLayer)
+            featureTemplatePickerViewController.delegate = self
         }
     }
     
@@ -219,23 +218,23 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         let popup = AGSPopup(geoElement: newFeature, popupDefinition: popupDefinition)
         
         //initialize popups view controller
-        self.popupsVC = AGSPopupsViewController(popups: [popup], containerStyle: .navigationBar)
-        self.popupsVC.delegate = self
+        self.popupsViewController = AGSPopupsViewController(popups: [popup], containerStyle: .navigationBar)
+        self.popupsViewController.delegate = self
         
         //Only for iPad, set presentation style to Form sheet
         //We don't want it to cover the entire screen
-        self.popupsVC.modalPresentationStyle = .formSheet
+        self.popupsViewController.modalPresentationStyle = .formSheet
 
         //First, dismiss the Feature Template Picker
         self.dismiss(animated: false)
 
         //Next, Present the popup view controller
-        self.present(self.popupsVC, animated: true) { [weak self] in
-            self?.popupsVC.startEditingCurrentPopup()
+        self.present(self.popupsViewController, animated: true) { [weak self] in
+            self?.popupsViewController.startEditingCurrentPopup()
         }
     }
     
     func featureTemplatePickerViewControllerWantsToDismiss(_ controller: FeatureTemplatePickerViewController) {
-        self.dismissFeatureTemplatePickerVC()
+        self.dismissFeatureTemplatePickerViewController()
     }
 }

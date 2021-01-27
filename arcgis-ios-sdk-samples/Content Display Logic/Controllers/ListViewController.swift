@@ -39,7 +39,6 @@ class ListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
         
         cell.textLabel?.text = list[indexPath.row]
-        cell.backgroundColor = .clear
         return cell
     }
     

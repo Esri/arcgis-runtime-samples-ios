@@ -48,7 +48,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsViewCo
 
     // MARK: - BlendRendererSettingsViewControllerDelegate
     
-    func blendRendererSettingsViewController(_ blendRendererSettingsVC: BlendRendererSettingsViewController, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
+    func blendRendererSettingsViewController(_ blendRendererSettingsViewController: BlendRendererSettingsViewController, selectedAltitude altitude: Double, azimuth: Double, slopeType: AGSSlopeType, colorRampType: AGSPresetColorRampType) {
         setBlendRenderer(altitude: altitude, azimuth: azimuth, slopeType: slopeType, colorRampType: colorRampType)
     }
     
@@ -100,16 +100,7 @@ class BlendRendererViewController: UIViewController, BlendRendererSettingsViewCo
             let controller = navController.viewControllers.first as? BlendRendererSettingsViewController,
             let rasterLayer = mapView.map?.basemap.baseLayers.firstObject as? AGSRasterLayer,
             let renderer = rasterLayer.renderer as? AGSBlendRenderer {
-            controller.preferredContentSize = {
-                let height: CGFloat
-                if traitCollection.horizontalSizeClass == .regular,
-                    traitCollection.verticalSizeClass == .regular {
-                    height = 250
-                } else {
-                    height = 200
-                }
-                return CGSize(width: 375, height: height)
-            }()
+            controller.preferredContentSize = CGSize(width: 375, height: 180)
             navController.presentationController?.delegate = self
             controller.delegate = self
             controller.altitude = renderer.altitude

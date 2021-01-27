@@ -23,7 +23,7 @@ class SourceCodeBarButtonItem: UIBarButtonItem {
         super.init()
         self.image = UIImage(named: "InfoIcon")
         self.target = self
-        self.action = #selector(SourceCodeBarButtonItem.showSegmentedVC)
+        self.action = #selector(SourceCodeBarButtonItem.showSegmentedViewController)
     }
 
     @available(*, unavailable)
@@ -32,7 +32,7 @@ class SourceCodeBarButtonItem: UIBarButtonItem {
     }
     
     @objc
-    func showSegmentedVC() {
+    func showSegmentedViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let controller = storyboard.instantiateViewController(withIdentifier: "SegmentedViewController") as! SegmentedViewController
         controller.filenames = filenames

@@ -29,7 +29,7 @@ class NavigateARRoutePlannerViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: .imageryWithLabelsVector())
+            mapView.map = AGSMap(basemapStyle: .arcGISImagery)
             mapView.graphicsOverlays.addObjects(from: [routeGraphicsOverlay, stopGraphicsOverlay])
             mapView.locationDisplay.dataSource = locationDataSource
             mapView.locationDisplay.autoPanMode = .recenter
@@ -192,16 +192,17 @@ class NavigateARRoutePlannerViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNavigator" {
-            if let navigatorVC = segue.destination as? NavigateARNavigatorViewController {
-                navigatorVC.routeResult = routeResult!
-                navigatorVC.routeTask = routeTask
-                navigatorVC.routeParameters = routeParameters
+            if let navigatorViewController = segue.destination as? NavigateARNavigatorViewController {
+                navigatorViewController.routeResult = routeResult!
+                navigatorViewController.routeTask = routeTask
+                navigatorViewController.routeParameters = routeParameters
             }
         }
     }
     
     deinit {
         AGSAuthenticationManager.shared().oAuthConfigurations.remove(oAuthConfiguration)
+        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
     }
 }
 

@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, SanDiegoAddressesVCDelegate {
+class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, SanDiegoAddressesViewControllerDelegate {
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var button: UIButton!
     @IBOutlet private var searchBar: UISearchBar!
@@ -268,7 +268,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         return UIModalPresentationStyle.none
     }
     
-    // MARK: - SanDiegoAddressesVCDelegate
+    // MARK: - SanDiegoAddressesViewControllerDelegate
     
     //when the user selects an address from the list
     //update the search bar text, geocode the selected address

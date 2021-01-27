@@ -85,7 +85,7 @@ class FindClosestFacilityMultipleIncidentsServiceViewController: UIViewControlle
     ///
     /// - Returns: A new `AGSMap` object.
     func makeMap() -> AGSMap {
-        let map = AGSMap(basemap: .streetsWithReliefVector())
+        let map = AGSMap(basemapStyle: .arcGISStreetsRelief)
         
         let facilitiesLayer = makeFacilitiesLayer()
         let incidentsLayer = makeIncidentsLayer()

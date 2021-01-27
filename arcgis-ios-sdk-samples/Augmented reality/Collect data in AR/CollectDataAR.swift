@@ -50,7 +50,7 @@ class CollectDataAR: UIViewController {
     @IBOutlet var realScaleModePicker: UISegmentedControl!
     @IBOutlet var toolbar: UIToolbar!
 
-    private var calibrationVC: CollectDataARCalibrationViewController?
+    private var calibrationViewController: CollectDataARCalibrationViewController?
     private var isCalibrating = false {
         didSet {
             if isCalibrating {
@@ -62,8 +62,8 @@ class CollectDataAR: UIViewController {
                 arView.sceneView.scene?.baseSurface?.opacity = 0
 
                 // Dismiss popover
-                if let calibrationVC = calibrationVC {
-                    calibrationVC.dismiss(animated: true)
+                if let controller = calibrationViewController {
+                    controller.dismiss(animated: true)
                 }
             }
         }
@@ -88,9 +88,9 @@ class CollectDataAR: UIViewController {
         super.viewDidLoad()
 
         // Create and prep the calibration view controller
-        calibrationVC = CollectDataARCalibrationViewController(arcgisARView: arView)
-        calibrationVC?.preferredContentSize = CGSize(width: 250, height: 100)
-        calibrationVC?.useContinuousPositioning = true
+        calibrationViewController = CollectDataARCalibrationViewController(arcgisARView: arView)
+        calibrationViewController?.preferredContentSize = CGSize(width: 250, height: 100)
+        calibrationViewController?.useContinuousPositioning = true
 
         // Set delegates and configure arView
         arView.sceneView.touchDelegate = self
@@ -142,7 +142,7 @@ class CollectDataAR: UIViewController {
     }
 
     @IBAction func showCalibrationPopup(_ sender: UIBarButtonItem) {
-        if let controller = calibrationVC {
+        if let controller = calibrationViewController {
             if realScaleModePicker.selectedSegmentIndex == 0 { // Roaming
                 isCalibrating = true
             } else { // Local
@@ -185,12 +185,12 @@ class CollectDataAR: UIViewController {
             // Roaming - continuous update
             arView.startTracking(.continuous)
             helpLabel.text = "Using CoreLocation + ARKit"
-            calibrationVC?.useContinuousPositioning = true
+            calibrationViewController?.useContinuousPositioning = true
         } else {
             // Local - only update once, then manually calibrate
             arView.startTracking(.initial)
             helpLabel.text = "Using ARKit only"
-            calibrationVC?.useContinuousPositioning = false
+            calibrationViewController?.useContinuousPositioning = false
         }
         
         // Turn off calibration when switching modes

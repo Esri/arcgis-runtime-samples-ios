@@ -17,14 +17,14 @@ import ArcGIS
 
 private extension UIImage {
     func croppedImage(_ size: CGSize) -> UIImage {
-        //calculate rect based on input size
+        // Calculate rect based on input size.
         let originX = (size.width - size.width) / 2
         let originY = (size.height - size.height) / 2
         
         let scale = UIScreen.main.scale
         let rect = CGRect(x: originX * scale, y: originY * scale, width: size.width * scale, height: size.height * scale)
         
-        //crop image
+        // Crop image.
         let croppedCGImage = cgImage!.cropping(to: rect)!
         let croppedImage = UIImage(cgImage: croppedCGImage, scale: scale, orientation: .up)
         
@@ -40,19 +40,19 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "CreateSaveMapViewController",
             "CreateOptionsViewController",
             "SaveAsViewController"
         ]
         
-        //Auth Manager settings
+        // Auth Manager settings
         let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
         
-        // initially show the map creation UI
+        // Initially show the map creation UI.
         performSegue(withIdentifier: "CreateNewSegue", sender: self)
     }
     
@@ -63,7 +63,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
         
         let openAction = UIAlertAction(title: "Open In Safari", style: .default) { _ in
             if let itemID = self.mapView.map?.item?.itemID,
-                var components = URLComponents(string: "https://www.arcgis.com/home/webmap/viewer.html") {
+               var components = URLComponents(string: "https://www.arcgis.com/home/webmap/viewer.html") {
                 components.queryItems = [URLQueryItem(name: "webmap", value: itemID)]
                 UIApplication.shared.open(components.url!, options: [:])
             }
@@ -93,11 +93,11 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
-            let rootController = navController.viewControllers.last {
-            if let createOptionsVC = rootController as? CreateOptionsViewController {
-                createOptionsVC.delegate = self
-            } else if let saveAsVC = rootController as? SaveAsViewController {
-                saveAsVC.delegate = self
+           let rootController = navController.viewControllers.last {
+            if let createOptionsViewController = rootController as? CreateOptionsViewController {
+                createOptionsViewController.delegate = self
+            } else if let saveAsViewController = rootController as? SaveAsViewController {
+                saveAsViewController.delegate = self
             }
         }
     }
@@ -105,13 +105,13 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     // MARK: - CreateOptionsViewControllerDelegate
     
     func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]) {
-        //create a map with the selected basemap
+        // Create a map with the selected basemap.
         let map = AGSMap(basemap: basemap)
         
-        //add the selected operational layers
+        // Add the selected operational layers.
         map.operationalLayers.addObjects(from: layers)
         
-        //assign the new map to the map view
+        // Assign the new map to the map view.
         mapView.map = map
         
         createOptionsViewController.dismiss(animated: true)
@@ -122,7 +122,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
         SVProgressHUD.show(withStatus: "Saving")
         
-        //set the initial viewpoint from map view
+        // Set the initial viewpoint from map view.
         mapView.map?.initialViewpoint = mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)
         
         mapView.exportImage { [weak self] (image: UIImage?, error: Error?) in
@@ -130,12 +130,12 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
                 return
             }
             
-            //crop the image from the center
-            //also to cut on the size
+            // Crop the image from the center.
+            // Also to cut on the size.
             let croppedImage: UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
             
             self.mapView.map?.save(as: title, portal: self.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
-                //dismiss progress hud
+                // Dismiss progress hud.
                 SVProgressHUD.dismiss()
                 if let error = error {
                     saveAsViewController.presentAlert(error: error)

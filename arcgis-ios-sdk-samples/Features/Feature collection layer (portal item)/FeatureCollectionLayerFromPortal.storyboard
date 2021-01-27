@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8d0-G0-i76">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8d0-G0-i76">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,17 +19,16 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENC-mC-3nM" userLabel="Map View" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ZsF-bZ-jrw"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ENC-mC-3nM" firstAttribute="top" secondItem="a6x-ne-fML" secondAttribute="top" id="3YU-My-lfc"/>
                             <constraint firstItem="ENC-mC-3nM" firstAttribute="trailing" secondItem="a6x-ne-fML" secondAttribute="trailing" id="6KN-yH-N5X"/>
                             <constraint firstItem="ENC-mC-3nM" firstAttribute="leading" secondItem="a6x-ne-fML" secondAttribute="leading" id="Gd5-GG-bHv"/>
                             <constraint firstAttribute="bottom" secondItem="ENC-mC-3nM" secondAttribute="bottom" id="ucm-41-rZy"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ZsF-bZ-jrw"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="ENC-mC-3nM" id="qzU-Bp-sHd"/>
@@ -39,4 +39,9 @@
             <point key="canvasLocation" x="-67" y="119"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

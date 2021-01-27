@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, WorldAddressesVCDelegate {
+class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, WorldAddressesViewControllerDelegate {
     @IBOutlet private var mapView: AGSMapView!
     @IBOutlet private var button: UIButton!
     @IBOutlet private var searchBar: UISearchBar!
@@ -33,7 +33,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindAddressViewController", "WorldAddressesViewController"]
         
         //instantiate a map with an imagery with labels basemap
-        let map = AGSMap(basemap: .imageryWithLabels())
+        let map = AGSMap(basemapStyle: .arcGISImagery)
         self.mapView.map = map
         self.mapView.touchDelegate = self
         
@@ -178,7 +178,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
         return UIModalPresentationStyle.none
     }
     
-    // MARK: - AddressesListVCDelegate
+    // MARK: - WorldAddressesViewControllerDelegate
     
     func worldAddressesViewController(_ worldAddressesViewController: WorldAddressesViewController, didSelectAddress address: String) {
         self.searchBar.text = address

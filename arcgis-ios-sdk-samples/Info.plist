@@ -45,6 +45,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -85,6 +87,8 @@
 	<string>For taking pictures or videos as attachments</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To show your location on the map</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>For adding video recordings as attachments</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>For adding pictures from your photo library as attachments</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
@@ -124,8 +128,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

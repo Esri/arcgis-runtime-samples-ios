@@ -24,7 +24,7 @@ class DisplayWFSViewController: UIViewController {
         super.viewDidLoad()
         
         // Initialize a map with topographic basemap
-        let map = AGSMap(basemap: .topographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         
         // A URL to the GetCapabilities endpoint of a WFS service
         let wfsServiceURL = URL(string: "https://dservices2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/services/Seattle_Downtown_Features/WFSServer?service=wfs&request=getcapabilities")!
@@ -59,11 +59,9 @@ class DisplayWFSViewController: UIViewController {
             }
         }
         
-        // Set initial viewpoint
-        map.initialViewpoint = AGSViewpoint(targetExtent: AGSEnvelope(xMin: -122.341581, yMin: 47.613758, xMax: -122.332662, yMax: 47.617207, spatialReference: .wgs84()))
-        
         // Assign the map to the map view
         mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(targetExtent: AGSEnvelope(xMin: -122.341581, yMin: 47.613758, xMax: -122.332662, yMax: 47.617207, spatialReference: .wgs84())))
 
         // Add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayWFSViewController"]

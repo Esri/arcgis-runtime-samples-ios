@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CXg-Uu-bew">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CXg-Uu-bew">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,17 +20,16 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIA-Y7-Zgc" userLabel="Map View" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="cQH-id-UEf"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cIA-Y7-Zgc" firstAttribute="trailing" secondItem="84r-Oy-4W5" secondAttribute="trailing" id="4YM-8P-n1E"/>
                             <constraint firstItem="cIA-Y7-Zgc" firstAttribute="leading" secondItem="84r-Oy-4W5" secondAttribute="leading" id="KMx-67-KUl"/>
                             <constraint firstItem="cIA-Y7-Zgc" firstAttribute="top" secondItem="84r-Oy-4W5" secondAttribute="top" id="QlH-1u-Gva"/>
                             <constraint firstItem="cIA-Y7-Zgc" firstAttribute="bottom" secondItem="84r-Oy-4W5" secondAttribute="bottom" id="pr9-bs-jmq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="cQH-id-UEf"/>
                     </view>
                     <connections>
                         <outlet property="calloutStackView" destination="Wqr-jb-4el" id="iS2-bn-zE1"/>
@@ -43,20 +43,20 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaL-Yh-iw7">
                             <rect key="frame" x="0.0" y="0.0" width="31" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UA8-ez-M5c">
                             <rect key="frame" x="0.0" y="68" width="31" height="52"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <viewLayoutGuide key="safeArea" id="C22-QJ-eot"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="Byy-mC-YTW"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="C22-QJ-eot"/>
                     <connections>
                         <outlet property="attributesLabel" destination="RaL-Yh-iw7" id="Pns-hZ-nwv"/>
                         <outlet property="coordinatesLabel" destination="UA8-ez-M5c" id="BAc-CP-FZ5"/>
@@ -66,4 +66,9 @@
             <point key="canvasLocation" x="56.521739130434788" y="114.50892857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

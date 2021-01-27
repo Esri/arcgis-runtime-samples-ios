@@ -28,7 +28,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: .streetsVector())
+            mapView.map = AGSMap(basemapStyle: .arcGISStreets)
             mapView.touchDelegate = self
             mapView.callout.delegate = self
         }
@@ -375,8 +375,8 @@ class EditWithBranchVersioningViewController: UIViewController {
                 forName: UITextField.textDidChangeNotification,
                 object: textField,
                 queue: .main
-            ) { _ in
-                let text = alertController.textFields![0].text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            ) { [ unowned createAction ] _ in
+                let text = textField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 // Enable the done button if branch version textfield is not empty.
                 createAction.isEnabled = !text.isEmpty
             }
@@ -456,7 +456,7 @@ class EditWithBranchVersioningViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames  = ["EditWithBranchVersioningViewController"]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["EditWithBranchVersioningViewController"]
         // Load the service geodatabase.
         let damageFeatureService = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
         loadServiceGeodatabase(from: damageFeatureService)

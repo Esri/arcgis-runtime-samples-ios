@@ -49,7 +49,7 @@ class Animate3DGraphicViewController: UIViewController {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["Animate3DGraphicViewController", "MissionSettingsViewController", "CameraSettingsViewController", "PlaneStatsViewController", "OptionsTableViewController"]
         
         //map
-        let map = AGSMap(basemap: .streets())
+        let map = AGSMap(basemapStyle: .arcGISStreets)
         mapView.map = map
         mapView.interactionOptions.isEnabled = false
         
@@ -339,7 +339,7 @@ class Animate3DGraphicViewController: UIViewController {
     }
 }
 
-extension Animate3DGraphicViewController: MissionSettingsVCDelegate {
+extension Animate3DGraphicViewController: MissionSettingsViewControllerDelegate {
     func missionSettingsViewController(_ missionSettingsViewController: MissionSettingsViewController, didSelectMissionAtIndex index: Int) {
         selectedMissionIndex = index
         changeMissionAction()

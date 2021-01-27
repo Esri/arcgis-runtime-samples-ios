@@ -404,6 +404,10 @@
 				<string>VectorTileCustomStyle</string>
 				<key>descriptionText</key>
 				<string>Load ArcGIS vector tiled layers using custom styles.</string>
+				<key>dependency</key>
+				<array>
+					<string>DodgeCity</string>
+				</array>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -656,6 +660,19 @@
 				<key>dependency</key>
 				<array>
 					<string>NDVIRaster</string>
+				</array>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Add ENC exchange set</string>
+				<key>descriptionText</key>
+				<string>Display nautical charts per the ENC specification.</string>
+				<key>storyboardName</key>
+				<string>AddENCExchangeSet</string>
+				<key>dependency</key>
+				<array>
+					<string>ExchangeSetWithoutUpdates</string>
+					<string>Hydrography</string>
 				</array>
 			</dict>
 			<dict>
@@ -1270,6 +1287,14 @@
 				<key>descriptionText</key>
 				<string>Find the closest vertex and coordinate of a geometry to a point.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Buffer list</string>
+				<key>storyboardName</key>
+				<string>BufferList</string>
+				<key>descriptionText</key>
+				<string>Generate multiple individual buffers or a single unioned buffer around multiple points.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1337,6 +1362,18 @@
 				<string>Use a routing service to navigate between two points.</string>
 				<key>storyboardName</key>
 				<string>NavigateRoute</string>
+			</dict>
+			<dict>
+				<key>storyboardName</key>
+				<string>NavigateRouteWithRerouting</string>
+				<key>descriptionText</key>
+				<string>Navigate between two points and dynamically recalculate an alternate route when the original route is unavailable.</string>
+				<key>displayName</key>
+				<string>Navigate route with rerouting</string>
+				<key>dependency</key>
+				<array>
+					<string>SanDiegoDetour</string>
+				</array>
 			</dict>
 		</array>
 	</dict>
@@ -1801,6 +1838,14 @@
 				<string>NavigateAR</string>
 				<key>descriptionText</key>
 				<string>Use a route displayed in the real world to navigate.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>View hidden infrastructure in AR</string>
+				<key>descriptionText</key>
+				<string>Visualize hidden infrastructure in its real-world location using augmented reality.</string>
+				<key>storyboardName</key>
+				<string>ViewHiddenInfrastructureAR</string>
 			</dict>
 		</array>
 	</dict>

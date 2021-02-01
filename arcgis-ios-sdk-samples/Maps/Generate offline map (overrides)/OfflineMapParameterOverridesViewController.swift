@@ -29,7 +29,11 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     
     /// The max scale level for the output. Note that higher values are zoomed further in,
     /// i.e. 23 has the most detail, but each tile covers a tiny area.
-    @IBOutlet weak var maxScaleLevelSlider: UISlider!
+    @IBOutlet weak var maxScaleLevelSlider: UISlider! {
+        didSet {
+            maxScaleLevelSlider.value = maxScaleLevelSlider.maximumValue
+        }
+    }
     
     /// The extra padding added to the extent rect to fetch a larger area, in meters.
     @IBOutlet weak var basemapExtentBufferSlider: UISlider!

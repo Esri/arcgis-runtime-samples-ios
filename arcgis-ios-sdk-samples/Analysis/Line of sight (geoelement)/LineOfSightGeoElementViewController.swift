@@ -34,6 +34,8 @@ class LineOfSightGeoElementViewController: UIViewController {
     
     private let observerZMin = 20.0
     private let observerZMax = 1500.0
+    /// The roof height in meters of Empire State Building.
+    private let observerZ = 380.0
     
     private let observerPoint: AGSPoint
 
@@ -58,7 +60,7 @@ class LineOfSightGeoElementViewController: UIViewController {
         // set up the scene, layers and overlay
         // ====================================
         
-        observerPoint = AGSPoint(x: -73.984988, y: 40.748131, z: observerZMin, spatialReference: .wgs84())
+        observerPoint = AGSPoint(x: -73.984988, y: 40.748131, z: observerZ, spatialReference: .wgs84())
 
         // initialize the scene with an imagery basemap
         scene = AGSScene(basemap: .imageryWithLabels())

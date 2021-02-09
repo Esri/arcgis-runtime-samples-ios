@@ -56,7 +56,7 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
     
     private func createSublayers() {
         // We will create 2 mapImageSublayers from tableSublayerSource with known workspaceID and dataSourceName
-        // These sublayers are not yet part of the mapImageLayer's sublayers, so will be shown as part of the 
+        // These sublayers are not yet part of the mapImageLayer's sublayers, so will be shown as part of the
         // removed sublayers array at first
         
         // create tableSublayerSource from workspaceID and dataSourceName

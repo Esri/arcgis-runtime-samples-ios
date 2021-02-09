@@ -36,21 +36,21 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize reverse geocode params
+        // initialize reverse geocode params
         self.reverseGeocodeParameters = AGSReverseGeocodeParameters()
         self.reverseGeocodeParameters.maxResults = 1
         self.reverseGeocodeParameters.resultAttributeNames.append(contentsOf: ["*"])
 
-        //set the map on to the map view
+        // set the map on to the map view
         self.mapView.map = self.map
         
-        //touch delegate
+        // touch delegate
         self.mapView.touchDelegate = self
         
-        //add graphic overlays
+        // add graphic overlays
         self.mapView.graphicsOverlays.addObjects(from: [self.routeGraphicsOverlay, self.markerGraphicsOverlay])
         
-        //route task
+        // route task
         self.setupRouteTask()
     }
     
@@ -77,13 +77,13 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         return graphic
     }
     
-    //method returns the symbol for the route graphic
+    // method returns the symbol for the route graphic
     func routeSymbol() -> AGSSimpleLineSymbol {
         let symbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 5)
         return symbol
     }
     
-    //method to show the callout for the provided graphic, with tap location details
+    // method to show the callout for the provided graphic, with tap location details
     private func showCalloutForGraphic(_ graphic: AGSGraphic, tapLocation: AGSPoint, animated: Bool, offset: Bool) {
         self.mapView.callout.title = graphic.attributes["Match_addr"] as? String
         self.mapView.callout.isAccessoryButtonHidden = true
@@ -97,23 +97,23 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
         if self.routeTask == nil && self.locatorTask == nil {
             return
         } else if routeTask == nil {
-            //if routing is not possible, then clear previous graphics
+            // if routing is not possible, then clear previous graphics
             self.markerGraphicsOverlay.graphics.removeAllObjects()
         }
         
-        //identify to check if a graphic is present
-        //if yes, then show callout with geocoding
-        //else add a graphic and route if more than one graphic
+        // identify to check if a graphic is present
+        // if yes, then show callout with geocoding
+        // else add a graphic and route if more than one graphic
         
         self.mapView.identify(self.markerGraphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyGraphicsOverlayResult) in
             if let error = result.error {
                 self?.presentAlert(error: error)
             } else {
                 if let graphic = result.graphics.first {
-                    //reverse geocode
+                    // reverse geocode
                     self?.reverseGeocode(point: mapPoint, withGraphic: graphic)
                 } else {
-                    //add a graphic
+                    // add a graphic
                     var graphic: AGSGraphic
                     
                     if self?.routeTask != nil {
@@ -125,10 +125,10 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
                     
                     self?.markerGraphicsOverlay.graphics.add(graphic)
                     
-                    //reverse geocode
+                    // reverse geocode
                     self?.reverseGeocode(point: mapPoint, withGraphic: graphic)
                     
-                    //find route
+                    // find route
                     self?.route()
                 }
             }
@@ -142,7 +142,7 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
             return
         }
         
-        //cancel previous request if any
+        // cancel previous request if any
         if self.locatorTaskCancelable != nil {
             self.locatorTaskCancelable.cancel()
         }
@@ -151,18 +151,18 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
-                //assign the label property of result as an attributes to the graphic
-                //and show the callout
+                // assign the label property of result as an attributes to the graphic
+                // and show the callout
                 if let results = results,
                     !results.isEmpty {
                     graphic.attributes["Match_addr"] = results.first!.formattedAddressString
                     self?.showCalloutForGraphic(graphic, tapLocation: point, animated: false, offset: false)
                     return
                 } else {
-                    //no result was found
+                    // no result was found
                     self?.presentAlert(message: "No address found")
                     
-                    //dismiss the callout if already visible
+                    // dismiss the callout if already visible
                     self?.mapView.callout.dismiss()
                 }
             }
@@ -172,17 +172,17 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     // MARK: - Route
     
     private func setupRouteTask() {
-        //if map contains network data
+        // if map contains network data
         if let transportationNetwork = map.transportationNetworks.first {
             self.routeTask = AGSRouteTask(dataset: transportationNetwork)
             
-            //get default parameters
+            // get default parameters
             self.getDefaultParameters()
         }
     }
     
     private func getDefaultParameters() {
-        //get the default parameters
+        // get the default parameters
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
@@ -197,26 +197,26 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
             return
         }
         
-        //cancel previous request if any
+        // cancel previous request if any
         if self.routeTaskCancelable != nil {
             self.routeTaskCancelable.cancel()
         }
         
-        //create stops for last and second last graphic
+        // create stops for last and second last graphic
         let count = self.markerGraphicsOverlay.graphics.count
         let lastGraphic = self.markerGraphicsOverlay.graphics[count - 1] as! AGSGraphic
         let secondLastGraphic = self.markerGraphicsOverlay.graphics[count - 2] as! AGSGraphic
         let stops = self.stopsForGraphics([secondLastGraphic, lastGraphic])
         
-        //add stops to the parameters
+        // add stops to the parameters
         self.routeParameters.clearStops()
         self.routeParameters.setStops(stops)
         
-        //route
+        // route
         self.routeTaskCancelable = self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
-                //remove the last marker
+                // remove the last marker
                 self?.markerGraphicsOverlay.graphics.removeLastObject()
             } else if let route = routeResult?.routes.first {
                 let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self?.routeSymbol(), attributes: nil)
@@ -237,16 +237,16 @@ class MobileMapViewController: UIViewController, AGSGeoViewTouchDelegate {
     // MARK: - actions
     
     @IBAction private func trashAction() {
-        //remove all markers
+        // remove all markers
         self.markerGraphicsOverlay.graphics.removeAllObjects()
-        //remove route graphics
+        // remove route graphics
         self.routeGraphicsOverlay.graphics.removeAllObjects()
-        //dismiss callout
+        // dismiss callout
         self.mapView.callout.dismiss()
     }
 }
 
-//extension for extracting the right attributes if available
+// extension for extracting the right attributes if available
 private extension AGSGeocodeResult {
     var formattedAddressString: String? {
         if !label.isEmpty {

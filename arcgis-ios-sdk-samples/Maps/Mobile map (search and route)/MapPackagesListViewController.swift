@@ -26,7 +26,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapPackagesListViewController", "MobileMapViewController", "MapPackageCell"]
         
         tableView.rowHeight = UITableView.automaticDimension
@@ -42,8 +42,8 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
             mapPackagesInBundle = bundleMobileMapPackageURLs.map(AGSMobileMapPackage.init(fileURL:))
         }
         
-        //load map packages from the documents directory
-        //added using iTunes
+        // load map packages from the documents directory
+        // added using iTunes
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let subpaths = FileManager.default.subpaths(atPath: documentDirectoryURL.path)!
         
@@ -51,7 +51,7 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
         let mmpks = subpaths.filter { predicate.evaluate(with: $0) }
         let documentMobileMapPackageURLs = mmpks.map { documentDirectoryURL.appendingPathComponent($0) }
         
-        //create map packages from the paths
+        // create map packages from the paths
         mapPackagesInDocumentsDir = documentMobileMapPackageURLs.map(AGSMobileMapPackage.init(fileURL:))
         
         self.tableView.reloadData()
@@ -96,13 +96,13 @@ class MapPackagesListViewController: UITableViewController, MapPackageCellDelega
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //collapse previously expanded cell
+        // collapse previously expanded cell
         var indexPathsArray = [IndexPath]()
         indexPathsArray.append(indexPath)
         
         if self.selectedRowIndexPath != nil {
             if self.selectedRowIndexPath == indexPath {
-                //collapse
+                // collapse
                 self.selectedRowIndexPath = nil
             } else {
                 indexPathsArray.append(self.selectedRowIndexPath)

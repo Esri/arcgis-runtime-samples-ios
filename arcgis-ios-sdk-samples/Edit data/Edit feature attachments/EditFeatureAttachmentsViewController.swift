@@ -34,7 +34,7 @@ class EditFeatureAttachmentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "EditFeatureAttachmentsViewController",
             "AttachmentsTableViewController"
@@ -67,7 +67,7 @@ extension EditFeatureAttachmentsViewController: AGSGeoViewTouchDelegate {
             lastQuery.cancel()
         }
         
-        //hide the callout
+        // hide the callout
         mapView.callout.dismiss()
         
         lastQuery = mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
@@ -79,9 +79,9 @@ extension EditFeatureAttachmentsViewController: AGSGeoViewTouchDelegate {
                 print(error)
             } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
                 let feature = features.first,
-                //show callout for the first feature
+                // show callout for the first feature
                 let title = feature.attributes["typdamage"] as? String {
-                //fetch attachment
+                // fetch attachment
                 feature.fetchAttachments { (attachments: [AGSAttachment]?, error: Error?) in
                     if let error = error {
                         print(error)
@@ -91,7 +91,7 @@ extension EditFeatureAttachmentsViewController: AGSGeoViewTouchDelegate {
                         self.mapView.callout.detail = detail
                         self.mapView.callout.delegate = self
                         self.mapView.callout.show(for: feature, tapLocation: mapPoint, animated: true)
-                        //update selected feature
+                        // update selected feature
                         self.selectedFeature = feature
                     }
                 }
@@ -102,9 +102,9 @@ extension EditFeatureAttachmentsViewController: AGSGeoViewTouchDelegate {
 
 extension EditFeatureAttachmentsViewController: AGSCalloutDelegate {
     func didTapAccessoryButton(for callout: AGSCallout) {
-        //hide the callout
+        // hide the callout
         mapView.callout.dismiss()
-        //show the attachments list vc
+        // show the attachments list vc
         performSegue(withIdentifier: "AttachmentsSegue", sender: self)
     }
 }

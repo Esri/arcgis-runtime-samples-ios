@@ -23,18 +23,18 @@ class OnInteractionNoCacheViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OnInteractionNoCacheViewController"]
         
-        //initialize map with topographic basemap
+        // initialize map with topographic basemap
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //feature layer
+        // feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
-        //set the request mode
+        // set the request mode
         featureTable.featureRequestMode = AGSFeatureRequestMode.onInteractionNoCache
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        //add the feature layer to the map
+        // add the feature layer to the map
         map.operationalLayers.add(featureLayer)
         
         mapView.map = map

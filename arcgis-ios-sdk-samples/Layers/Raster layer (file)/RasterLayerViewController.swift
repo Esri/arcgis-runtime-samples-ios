@@ -27,25 +27,25 @@ class RasterLayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerViewController"]
         
-        //create raster
+        // create raster
         let raster = AGSRaster(name: "Shasta", extension: "tif")
         
-        //create raster layer using raster
+        // create raster layer using raster
         self.rasterLayer = AGSRasterLayer(raster: raster)
         
-        //initialize map with imagery basemap
+        // initialize map with imagery basemap
         self.map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
-        //assign map to the map view
+        // assign map to the map view
         self.mapView.map = map
         
-        //add the raster layer to the operational layers of the map
+        // add the raster layer to the operational layers of the map
         self.mapView.map?.operationalLayers.add(rasterLayer!)
         
-        //set map view's viewpoint to the raster layer's full extent
+        // set map view's viewpoint to the raster layer's full extent
         self.rasterLayer.load { [weak self] (error) in
             if let error = error {
                self?.presentAlert(error: error)

@@ -31,7 +31,7 @@ class MILLegendTableViewController: UITableViewController {
             if !layer.subLayerContents.isEmpty {
                 self.populateLegends(with: layer.subLayerContents)
             } else {
-                //else if no sublayers fetch legend info
+                // else if no sublayers fetch legend info
                 self.orderArray.append(layer)
                 layer.fetchLegendInfos { [weak self] (legendInfos, error) in
                     if let error = error {

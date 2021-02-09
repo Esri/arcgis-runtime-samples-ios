@@ -83,7 +83,7 @@ class GroupLayersViewController: UIViewController {
         let groupLayer = AGSGroupLayer()
         groupLayer.name = "Buildings group"
         
-        //Create layers for the buildings.
+        // Create layers for the buildings.
         let buildingsA = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevA_BuildingShells/SceneServer")!)
         let buildingsB = AGSArcGISSceneLayer(url: URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/DevB_BuildingShells/SceneServer")!)
         

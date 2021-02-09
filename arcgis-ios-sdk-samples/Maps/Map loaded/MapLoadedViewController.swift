@@ -27,14 +27,14 @@ class MapLoadedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //setup source code bar button item
+        // setup source code bar button item
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapLoadedViewController"]
         
-        //assign map to map view
+        // assign map to map view
         mapView.map = map
         
         mapLoadStatusObservation = map.observe(\.loadStatus, options: .initial) { [weak self] (_, _) in
-            //update the banner label on main thread
+            // update the banner label on main thread
             DispatchQueue.main.async { [weak self] in
                 self?.updateLoadStatusLabel()
             }

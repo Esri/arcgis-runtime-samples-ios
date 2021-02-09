@@ -34,25 +34,25 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "FormatCoordinatesViewController",
             "FormatCoordinatesTableViewController"
         ]
         
-        //initializer map with basemap
+        // initializer map with basemap
         let map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
-        //assign map to map view
+        // assign map to map view
         mapView.map = map
         
-        //add graphics overlay to the map view
+        // add graphics overlay to the map view
         mapView.graphicsOverlays.add(graphicsOverlay)
         
-        //touch delegate for map view
+        // touch delegate for map view
         mapView.touchDelegate = self
         
-        //add initial graphic
+        // add initial graphic
         displayGraphicAtPoint(point)
     }
     
@@ -67,10 +67,10 @@ class FormatCoordinatesViewController: UIViewController, AGSGeoViewTouchDelegate
     }
     
     private func displayGraphicAtPoint(_ point: AGSPoint) {
-        //remove previous graphic from graphics overlay
+        // remove previous graphic from graphics overlay
         graphicsOverlay.graphics.removeAllObjects()
         
-        //add graphic at tapped location
+        // add graphic at tapped location
         let symbol = AGSSimpleMarkerSymbol(style: .cross, color: .yellow, size: 20)
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         graphicsOverlay.graphics.add(graphic)

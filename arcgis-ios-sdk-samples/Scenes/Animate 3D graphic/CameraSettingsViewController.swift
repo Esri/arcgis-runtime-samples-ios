@@ -105,41 +105,41 @@ class CameraSettingsViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction private func distanceValueChanged(sender: UISlider) {
-        //update property
+        // update property
         orbitGeoElementCameraController?.cameraDistance = Double(sender.value)
         
-        //update label
+        // update label
         updateUIForDistance()
     }
     
     @IBAction private func headingOffsetValueChanged(sender: UISlider) {
-        //update property
+        // update property
         orbitGeoElementCameraController?.cameraHeadingOffset = Double(sender.value)
         
-        //update label
+        // update label
         updateUIForHeadingOffset()
     }
     
     @IBAction private func pitchOffsetValueChanged(sender: UISlider) {
-        //update property
+        // update property
         orbitGeoElementCameraController?.cameraPitchOffset = Double(sender.value)
         
-        //update label
+        // update label
         updateUIForPitchOffset()
     }
     
     @IBAction private func autoHeadingEnabledValueChanged(sender: UISwitch) {
-        //update property
+        // update property
         orbitGeoElementCameraController?.isAutoHeadingEnabled = sender.isOn
     }
     
     @IBAction private func autoPitchEnabledValueChanged(sender: UISwitch) {
-        //update property
+        // update property
         orbitGeoElementCameraController?.isAutoPitchEnabled = sender.isOn
     }
     
     @IBAction private func autoRollEnabledValueChanged(sender: UISwitch) {
-        //update property
+        // update property
         orbitGeoElementCameraController?.isAutoRollEnabled = sender.isOn
     }
 }

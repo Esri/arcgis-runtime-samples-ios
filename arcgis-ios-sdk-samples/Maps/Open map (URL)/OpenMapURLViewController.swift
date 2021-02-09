@@ -55,7 +55,7 @@ class OpenMapURLViewController: UIViewController {
         // create the map for the url and add it to the map view
         showMap(at: initialMapURL)
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "OpenMapURLViewController",
             "OpenMapURLSettingsViewController"

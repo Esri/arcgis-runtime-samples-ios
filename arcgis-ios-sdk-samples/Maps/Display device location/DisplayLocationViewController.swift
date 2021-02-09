@@ -24,7 +24,7 @@ class DisplayLocationViewController: UIViewController {
         let map = AGSMap(basemapStyle: .arcGISImageryStandard)
         mapView.map = map
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "DisplayLocationViewController",
             "DisplayLocationSettingsViewController",

@@ -43,7 +43,7 @@ class RasterLayerUsingServiceViewController: UIViewController {
         // add raster layer as an operational layer to the map
         map.operationalLayers.add(rasterLayer)
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerUsingServiceViewController"]
     }
 }

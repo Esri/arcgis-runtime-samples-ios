@@ -23,35 +23,35 @@ class DefinitionExpressionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DefinitionExpressionViewController"]
         
-        //initialize map using topographic basemap
+        // initialize map using topographic basemap
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //assign map to the map view's map
+        // assign map to the map view's map
         mapView.map = map
         mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: .webMercator()), scale: 90000))
         
-        //create feature table using a url to feature server's layer
+        // create feature table using a url to feature server's layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
-        //create feature layer using this feature table
+        // create feature layer using this feature table
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
-        //add the feature layer to the map
+        // add the feature layer to the map
         map.operationalLayers.add(featureLayer)
         
-        //store the feature layer for later use
+        // store the feature layer for later use
         self.featureLayer = featureLayer
     }
     
     @IBAction func applyDefinitionExpression() {
-        //adding definition expression to show specific features only
+        // adding definition expression to show specific features only
         self.featureLayer.definitionExpression = "req_Type = 'Tree Maintenance or Damage'"
     }
     
     @IBAction func resetDefinitionExpression() {
-        //reset definition expression
+        // reset definition expression
         self.featureLayer.definitionExpression = ""
     }
 }

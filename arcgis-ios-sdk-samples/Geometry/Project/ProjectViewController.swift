@@ -18,12 +18,12 @@ import ArcGIS
 class ProjectViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
-            //initialize the map
+            // initialize the map
             mapView.map = AGSMap(basemap: .nationalGeographic())
             mapView.touchDelegate = self
             mapView.setViewpointCenter(AGSPoint(x: -1.2e7, y: 5e6, spatialReference: .webMercator()), scale: 4e7)
             
-            //initialize the graphic overlay
+            // initialize the graphic overlay
             mapView.graphicsOverlays.add(graphicsOverlay)
         }
     }
@@ -32,7 +32,7 @@ class ProjectViewController: UIViewController {
     
     private let graphicsOverlay = AGSGraphicsOverlay()
     
-    //make graphics
+    // make graphics
     private func makeGraphics(geometry: AGSGeometry) -> AGSGraphic {
         let pointSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 5.0)
         pointSymbol.outline = AGSSimpleLineSymbol(style: .solid, color: .red, width: 2.0)
@@ -41,7 +41,7 @@ class ProjectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ProjectViewController", "ProjectStackView"]
     }
 }
@@ -58,7 +58,7 @@ extension ProjectViewController: AGSGeoViewTouchDelegate {
             mapView.callout.customView = customCallout
             mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
             graphicsOverlay.graphics.add(makeGraphics(geometry: mapPoint))
-        } else {  //hide the callout
+        } else {  // hide the callout
             graphicsOverlay.graphics.removeAllObjects()
             mapView.callout.dismiss()
         }

@@ -40,13 +40,13 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     
     /// Switch indicating if the system valves layer should be included in the download.
     @IBOutlet weak var includeSystemValvesSwitch: UISwitch!
-    ///Switch indicating if the service connections layer should be included in the download.
+    /// Switch indicating if the service connections layer should be included in the download.
     @IBOutlet weak var includeServiceConnectionsSwitch: UISwitch!
     
     /// The minimum flow rate by which to filter features in the Hydrants layer, in gallons per minute.
     @IBOutlet weak var minHydrantFlowRateSlider: UISlider!
     
-    ///Switch indicating if the pipe layers should be restricted to the extent frame.
+    /// Switch indicating if the pipe layers should be restricted to the extent frame.
     @IBOutlet weak var cropWaterPipesToExtentSwitch: UISwitch!
     
     @IBOutlet weak var minScaleLevelLabel: UILabel!

@@ -23,20 +23,20 @@ class FeatureLayerGDBViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerGDBViewController"]
         
-        //instantiate map with basemap
+        // instantiate map with basemap
         let map = AGSMap(basemapStyle: .arcGISImagery)
         
-        //assign map to the map view
+        // assign map to the map view
         mapView.map = map
         mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4))
         
-        //instantiate geodatabase with name
+        // instantiate geodatabase with name
         self.geodatabase = AGSGeodatabase(name: "LA_Trails")
         
-        //load the geodatabase for feature tables
+        // load the geodatabase for feature tables
         self.geodatabase.load { [weak self] (error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)

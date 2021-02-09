@@ -43,7 +43,7 @@ class ListTransformationsViewController: UIViewController, UITableViewDelegate, 
         mapView.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         mapView.graphicsOverlays.add(graphicsOverlay)
         
-        //add original graphic to overlay
+        // add original graphic to overlay
         addGraphic(originalGeometry, color: .red, style: .square)
         
         mapView.map?.load { [weak self] (error) in

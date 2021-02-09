@@ -24,27 +24,27 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GOIdentifyViewController"]
         
-        //initialize the map with topographic basemap
+        // initialize the map with topographic basemap
         self.map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //call the method to add a graphics to the map view
-        //will be using this graphic to test identify
+        // call the method to add a graphics to the map view
+        // will be using this graphic to test identify
         self.addGraphicsOverlay()
         
-        //assign the map to the map view's map object
+        // assign the map to the map view's map object
         self.mapView.map = self.map
         
-        //add self as the touch delegate of the mapview
-        //we will be using a method on the delegate to know 
-        //when the user tapped on the map view
+        // add self as the touch delegate of the mapview
+        // we will be using a method on the delegate to know 
+        // when the user tapped on the map view
         self.mapView.touchDelegate = self
     }
     
     func addGraphicsOverlay() {
-        //polygon graphic
+        // polygon graphic
         let polygonGeometry = AGSPolygonBuilder(spatialReference: .webMercator())
         polygonGeometry.addPointWith(x: -20e5, y: 20e5)
         polygonGeometry.addPointWith(x: 20e5, y: 20e5)
@@ -53,27 +53,27 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.solid, color: .yellow, outline: nil)
         let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry(), symbol: nil, attributes: nil)
         
-        //assign the renderer
+        // assign the renderer
         self.graphicsOverlay.renderer = AGSSimpleRenderer(symbol: polygonSymbol)
-        //add the polygon graphic
+        // add the polygon graphic
         self.graphicsOverlay.graphics.add(polygonGraphic)
-        //add the graphics overlay to the map view
+        // add the graphics overlay to the map view
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
     }
     
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        //use the following method to identify graphics in a specific graphics overlay
-        //otherwise if you need to identify on all the graphics overlay present in the map view
-        //use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
+        // use the following method to identify graphics in a specific graphics overlay
+        // otherwise if you need to identify on all the graphics overlay present in the map view
+        // use `identifyGraphicsOverlaysAtScreenCoordinate:tolerance:maximumGraphics:completion:` method provided on map view
         let tolerance: Double = 12
         
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: tolerance, returnPopupsOnly: false, maximumResults: 10) { [weak self] (result: AGSIdentifyGraphicsOverlayResult) in
             if let error = result.error {
                 print("error while identifying :: \(error.localizedDescription)")
             } else {
-                //if a graphics is found then show an alert
+                // if a graphics is found then show an alert
                 if !result.graphics.isEmpty {
                     self?.presentAlert(message: "Tapped on graphic")
                 }

@@ -39,27 +39,27 @@ class FindRouteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindRouteViewController", "DirectionsViewController"]
         
-        //initialize map with topographic basemap
+        // initialize map with topographic basemap
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         self.mapView.map = map
         
-        //add graphicsOverlays to the map view
+        // add graphicsOverlays to the map view
         self.mapView.graphicsOverlays.addObjects(from: [routeGraphicsOverlay, stopGraphicsOverlay])
         
-        //zoom to viewpoint
+        // zoom to viewpoint
         self.mapView.setViewpointCenter(AGSPoint(x: -13041154.715252, y: 3858170.236806, spatialReference: .webMercator()), scale: 1e5)
         
-        //initialize route task
+        // initialize route task
         self.routeTask = AGSRouteTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route")!)
         
-        //get default parameters
+        // get default parameters
         self.getDefaultParameters()
     }
     
-    //add hard coded stops to the map view
+    // add hard coded stops to the map view
     func addStops() {
         self.stop1Geometry = AGSPoint(x: -13041171.537945, y: 3860988.271378, spatialReference: .webMercator())
         self.stop2Geometry = AGSPoint(x: -13041693.562570, y: 3856006.859684, spatialReference: .webMercator())
@@ -70,12 +70,12 @@ class FindRouteViewController: UIViewController {
         self.stopGraphicsOverlay.graphics.addObjects(from: [startStopGraphic, endStopGraphic])
     }
     
-    //method provides a text symbol for stop with specified parameters
+    // method provides a text symbol for stop with specified parameters
     func stopSymbol(withName name: String, textColor: UIColor) -> AGSTextSymbol {
         return AGSTextSymbol(text: name, color: textColor, size: 20, horizontalAlignment: .center, verticalAlignment: .middle)
     }
     
-    //method provides a line symbol for the route graphic
+    // method provides a line symbol for the route graphic
     func routeSymbol() -> AGSSimpleLineSymbol {
         let symbol = AGSSimpleLineSymbol(style: .solid, color: .yellow, width: 5)
         return symbol
@@ -83,38 +83,38 @@ class FindRouteViewController: UIViewController {
     
     // MARK: - Route logic
     
-    //method to get the default parameters for the route task
+    // method to get the default parameters for the route task
     func getDefaultParameters() {
         self.routeTask.defaultRouteParameters { [weak self] (params: AGSRouteParameters?, error: Error?) in
             if let error = error {
                 print(error)
             } else {
-                //on completion store the parameters
+                // on completion store the parameters
                 self?.routeParameters = params
-                //add stops
+                // add stops
                 self?.addStops()
-                //enable bar button item
+                // enable bar button item
                 self?.routeBBI.isEnabled = true
             }
         }
     }
     
     @IBAction func route() {
-        //route only if default parameters are fetched successfully
+        // route only if default parameters are fetched successfully
         if self.routeParameters == nil {
             print("Default route parameters not loaded")
         }
         
-        //set parameters to return directions
+        // set parameters to return directions
         self.routeParameters.returnDirections = true
         
-        //clear previous routes
+        // clear previous routes
         self.routeGraphicsOverlay.graphics.removeAllObjects()
         
-        //clear previous stops
+        // clear previous stops
         self.routeParameters.clearStops()
         
-        //set the stops
+        // set the stops
         let stop1 = AGSStop(point: self.stop1Geometry)
         stop1.name = "Origin"
         let stop2 = AGSStop(point: self.stop2Geometry)
@@ -125,9 +125,9 @@ class FindRouteViewController: UIViewController {
             if let error = error {
                 print(error)
             } else if let route = routeResult?.routes.first {
-                //show the resulting route on the map
-                //also save a reference to the route object
-                //in order to access directions
+                // show the resulting route on the map
+                // also save a reference to the route object
+                // in order to access directions
                 self.generatedRoute = route
                 let routeGraphic = AGSGraphic(geometry: self.generatedRoute.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
                 self.routeGraphicsOverlay.graphics.add(routeGraphic)

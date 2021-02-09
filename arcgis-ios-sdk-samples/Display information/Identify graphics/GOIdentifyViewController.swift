@@ -38,7 +38,7 @@ class GOIdentifyViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.map = self.map
         
         // add self as the touch delegate of the mapview
-        // we will be using a method on the delegate to know 
+        // we will be using a method on the delegate to know
         // when the user tapped on the map view
         self.mapView.touchDelegate = self
     }

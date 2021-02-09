@@ -60,7 +60,7 @@ class FeatureCollectionLayerViewController: UIViewController {
         let placeField = AGSField(fieldType: .text, name: "Place", alias: "Place name", length: 40, domain: nil, editable: true, allowNull: false)
         fields.append(placeField)
         
-        // initialize feature collection table with the fields created 
+        // initialize feature collection table with the fields created
         // and geometry type as Point
         let pointsCollectionTable = AGSFeatureCollectionTable(fields: fields, geometryType: .point, spatialReference: .wgs84())
         

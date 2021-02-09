@@ -142,7 +142,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
             // remove key-value observation
             self.progressObservation = nil
             
-            if let error = error {    
+            if let error = error {
                 // do not display error if user simply cancelled the request
                 if (error as NSError).code != NSUserCancelledError {
                     self.presentAlert(error: error)

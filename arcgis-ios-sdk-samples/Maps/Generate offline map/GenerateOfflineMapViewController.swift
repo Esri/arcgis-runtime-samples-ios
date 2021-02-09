@@ -127,7 +127,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
             // remove KVO observer
             self.jobProgressObservation = nil
             
-            if let error = error {    
+            if let error = error {
                 // do not display error if user simply cancelled the request
                 if (error as NSError).code != NSUserCancelledError {
                     self.presentAlert(error: error)

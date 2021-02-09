@@ -67,7 +67,7 @@ class MILLegendTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MILLegendCell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MILLegendCell", for: indexPath)
 
         let layer = self.orderArray[indexPath.section]
         let legendInfos = self.legendInfosDict[self.hashString(for: layer)]!

@@ -27,7 +27,7 @@ class SketchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SketchViewController"]
         
         self.sketchEditor = AGSSketchEditor()
@@ -40,13 +40,13 @@ class SketchViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: .AGSSketchEditorGeometryDidChange, object: nil)
         
-        //set viewpoint
+        // set viewpoint
         self.mapView.setViewpoint(AGSViewpoint(targetExtent: AGSEnvelope(xMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: .webMercator())))
     }
     
     @objc
     func respondToGeomChanged() {
-        //Enable/disable UI elements appropriately
+        // Enable/disable UI elements appropriately
         self.undoBBI.isEnabled = self.sketchEditor.undoManager.canUndo
         self.redoBBI.isEnabled = self.sketchEditor.undoManager.canRedo
         self.clearBBI.isEnabled = self.sketchEditor.geometry != nil && !self.sketchEditor.geometry!.isEmpty
@@ -56,19 +56,19 @@ class SketchViewController: UIViewController {
     
     @IBAction func geometryValueChanged(_ segmentedControl: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
-        case 0://point
+        case 0:// point
             self.sketchEditor.start(with: nil, creationMode: .point)
             
-        case 1://polyline
+        case 1:// polyline
             self.sketchEditor.start(with: nil, creationMode: .polyline)
             
-        case 2://freehand polyline
+        case 2:// freehand polyline
             self.sketchEditor.start(with: nil, creationMode: .freehandPolyline)
             
-        case 3://polygon
+        case 3:// polygon
             self.sketchEditor.start(with: nil, creationMode: .polygon)
             
-        case 4://freehand polygon
+        case 4:// freehand polygon
             self.sketchEditor.start(with: nil, creationMode: .freehandPolygon)
             
         default:
@@ -79,13 +79,13 @@ class SketchViewController: UIViewController {
     }
     
     @IBAction func undo() {
-        if self.sketchEditor.undoManager.canUndo { //extra check, just to be sure
+        if self.sketchEditor.undoManager.canUndo { // extra check, just to be sure
             self.sketchEditor.undoManager.undo()
         }
     }
     
     @IBAction func redo() {
-        if self.sketchEditor.undoManager.canRedo { //extra check, just to be sure
+        if self.sketchEditor.undoManager.canRedo { // extra check, just to be sure
             self.sketchEditor.undoManager.redo()
         }
     }

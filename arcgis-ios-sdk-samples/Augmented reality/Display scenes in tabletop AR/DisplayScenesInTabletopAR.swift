@@ -44,7 +44,7 @@ class DisplayScenesInTabletopAR: UIViewController {
         // Listen for tracking state changes
         arView.arSCNViewDelegate = self
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayScenesInTabletopAR"]
     }
 

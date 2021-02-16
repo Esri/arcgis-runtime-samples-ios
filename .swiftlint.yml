@@ -22,7 +22,6 @@ disabled_rules: # rule identifiers to exclude from running
   - force_cast
   - line_length
   - notification_center_detachment
-  - trailing_whitespace
   - type_body_length
   - type_name
 
@@ -78,6 +77,8 @@ identifier_name:
     warning: 0 # do not flag short identifiers
 trailing_closure:
   only_single_muted_parameter: true
+trailing_whitespace:
+  ignores_empty_lines: true
 
 excluded:
 - Pods

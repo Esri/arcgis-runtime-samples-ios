@@ -23,32 +23,32 @@ class SimpleMarkerSymbolViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SimpleMarkerSymbolViewController"]
         
-        //assign map to the map view
+        // assign map to the map view
         self.mapView.map = AGSMap(basemapStyle: .arcGISImagery)
         let center = AGSPoint(x: -226773, y: 6550477, spatialReference: .webMercator())
         self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 6500))
         
-        //add graphics overlay to the map view
+        // add graphics overlay to the map view
         self.mapView.graphicsOverlays.add(graphicsOverlay)
         
-        //add a graphic with simple marker symbol
+        // add a graphic with simple marker symbol
         self.addSimpleMarkerSymbol()
     }
 
     private func addSimpleMarkerSymbol() {
-        //create a simple marker symbol
+        // create a simple marker symbol
         let symbol = AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 12)
         
-        //create point
+        // create point
         let point = AGSPoint(x: -226773, y: 6550477, spatialReference: .webMercator())
         
-        //graphic for point using simple marker symbol
+        // graphic for point using simple marker symbol
         let graphic = AGSGraphic(geometry: point, symbol: symbol, attributes: nil)
         
-        //add the graphic to the graphics overlay
+        // add the graphic to the graphics overlay
         self.graphicsOverlay.graphics.add(graphic)
     }
 }

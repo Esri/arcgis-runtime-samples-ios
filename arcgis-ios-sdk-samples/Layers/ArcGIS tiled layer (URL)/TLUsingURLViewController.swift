@@ -23,17 +23,17 @@ class TLUsingURLViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //create a tiledLayer using url to a map server
+        // create a tiledLayer using url to a map server
         let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://services.arcgisonline.com/arcgis/rest/services/NatGeo_World_Map/MapServer")!)
         
-        //initialize the map and add the tiled layer as an operational layer
+        // initialize the map and add the tiled layer as an operational layer
         self.map = AGSMap()
         self.map.operationalLayers.add(tiledLayer)
         
-        //assign the map to the map view
+        // assign the map to the map view
         self.mapView.map = self.map
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["TLUsingURLViewController"]
     }
 }

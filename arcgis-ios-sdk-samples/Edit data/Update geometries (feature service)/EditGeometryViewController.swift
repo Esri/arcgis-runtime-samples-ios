@@ -31,7 +31,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditGeometryViewController"]
         
         self.map = AGSMap(basemapStyle: .arcGISOceans)
@@ -45,14 +45,14 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -9030446.96, y: 943791.32, spatialReference: .webMercator()), scale: 2e6))
         self.mapView.touchDelegate = self
         
-        //store the feature layer for later use
+        // store the feature layer for later use
         self.featureLayer = featureLayer
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //default state for toolbar is off
+        // default state for toolbar is off
         self.setToolbarVisibility(visible: false)
     }
     
@@ -71,7 +71,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
             } else {
                 self?.presentAlert(message: "Saved successfully!")
             }
-            //un hide the feature
+            // un hide the feature
             self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
         }
     }
@@ -83,7 +83,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
             lastQuery.cancel()
         }
         
-        //hide the callout
+        // hide the callout
         self.mapView.callout.dismiss()
         
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
@@ -91,12 +91,12 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
                 print(error)
             } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
                 let feature = features.first {
-                //show callout for the first feature
+                // show callout for the first feature
                 let title = feature.attributes["typdamage"] as! String
                 self?.mapView.callout.title = title
                 self?.mapView.callout.delegate = self
                 self?.mapView.callout.show(for: feature, tapLocation: mapPoint, animated: true)
-                //update selected feature
+                // update selected feature
                 self?.selectedFeature = feature
             }
         }
@@ -105,22 +105,22 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
-        //hide the callout
+        // hide the callout
         self.mapView.callout.dismiss()
         
-        //add the default geometry
+        // add the default geometry
         let point = self.selectedFeature.geometry as! AGSPoint
         
-        //instantiate sketch editor with selected feature's geometry
+        // instantiate sketch editor with selected feature's geometry
         self.mapView.sketchEditor = AGSSketchEditor()
         
-        //enable the sketch editor to start tracking user gesture
+        // enable the sketch editor to start tracking user gesture
         self.mapView.sketchEditor?.start(with: point)
         
-        //show the toolbar
+        // show the toolbar
         self.setToolbarVisibility(visible: true)
         
-        //hide the feature for time being
+        // hide the feature for time being
         self.featureLayer.setFeature(self.selectedFeature, visible: false)
     }
     
@@ -133,22 +133,22 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
                 if let error = error {
                     self?.presentAlert(error: error)
                     
-                    //un hide the feature
+                    // un hide the feature
                     self?.featureLayer.setFeature(self!.selectedFeature, visible: true)
                 } else {
-                    //apply edits
+                    // apply edits
                     self?.applyEdits()
                 }
             }
         }
         
-        //hide toolbar
+        // hide toolbar
         self.setToolbarVisibility(visible: false)
         
-        //disable sketch editor
+        // disable sketch editor
         self.mapView.sketchEditor?.stop()
         
-        //clear sketch editor
+        // clear sketch editor
         self.mapView.sketchEditor?.clearGeometry()
     }
 }

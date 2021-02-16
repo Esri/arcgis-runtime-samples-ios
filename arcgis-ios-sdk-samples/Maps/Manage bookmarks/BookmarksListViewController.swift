@@ -16,13 +16,13 @@ import UIKit
 import ArcGIS
 
 class BookmarksListViewController: UITableViewController {
-    //list of bookmarks
+    // list of bookmarks
     var bookmarks = [AGSBookmark]()
     
-    //private property to store selection action for table cell
+    // private property to store selection action for table cell
     private var selectAction: ((AGSViewpoint) -> Void)?
     
-    //executed for tableview row selection
+    // executed for tableview row selection
     func setSelectAction(_ action : @escaping ((AGSViewpoint) -> Void)) {
         self.selectAction = action
     }
@@ -41,9 +41,9 @@ class BookmarksListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarkCell", for: indexPath)
-        //get the respective bookmark
+        // get the respective bookmark
         let bookmark = self.bookmarks[indexPath.row]
-        //assign the bookmark's name as the title for the cell
+        // assign the bookmark's name as the title for the cell
         cell.textLabel?.text = bookmark.name
         
         return cell
@@ -51,7 +51,7 @@ class BookmarksListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let bookmark = self.bookmarks[indexPath.row]
-        //execute the closure if it exists
+        // execute the closure if it exists
         selectAction?(bookmark.viewpoint!)
         tableView.deselectRow(at: indexPath, animated: true)
     }

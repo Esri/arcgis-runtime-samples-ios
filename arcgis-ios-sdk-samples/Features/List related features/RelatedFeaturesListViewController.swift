@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 class RelatedFeaturesListViewController: UITableViewController {
-    //results required for display
+    // results required for display
     var results = [AGSRelatedFeatureQueryResult]() {
         didSet {
             if let result = results.first {

@@ -42,7 +42,7 @@ class ContentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize download progress view
+        // initialize download progress view
         let downloadProgressView = DownloadProgressView()
         downloadProgressView.delegate = self
         self.downloadProgressView = downloadProgressView
@@ -67,35 +67,35 @@ class ContentTableViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //hide keyboard if visible
+        // hide keyboard if visible
         view.endEditing(true)
         
         let sample = displayedSamples[indexPath.row]
         
-        //download on demand resources
+        // download on demand resources
         if !sample.dependencies.isEmpty {
             let bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
             bundleResourceRequest.loadingPriority = NSBundleResourceRequestLoadingPriorityUrgent
             self.bundleResourceRequest = bundleResourceRequest
             
-            //conditionally begin accessing to know if we need to show download progress view or not
+            // conditionally begin accessing to know if we need to show download progress view or not
             bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
                 DispatchQueue.main.async {
-                    //if resource is already available then simply show the sample
+                    // if resource is already available then simply show the sample
                     if isResourceAvailable {
                         self?.showSample(sample)
                     }
-                    //else download the resource
+                    // else download the resource
                     else {
                         self?.downloadResource(for: sample, at: indexPath)
                     }
                 }
             }
         } else {
-            //clear bundleResourceRequest
+            // clear bundleResourceRequest
             bundleResourceRequest?.endAccessingResources()
             
-            //show view controller
+            // show view controller
             showSample(sample)
         }
     }
@@ -111,28 +111,28 @@ class ContentTableViewController: UITableViewController {
             return
         }
         
-        //show download progress view
+        // show download progress view
         downloadProgressView?.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
         
-        //add an observer to update the progress in download progress view
+        // add an observer to update the progress in download progress view
         downloadProgressObservation = bundleResourceRequest.progress.observe(\.fractionCompleted) { [weak self] (progress, _) in
             DispatchQueue.main.async {
                 self?.downloadProgressView?.updateProgress(progress: CGFloat(progress.fractionCompleted), animated: true)
             }
         }
         
-        //begin
+        // begin
         bundleResourceRequest.beginAccessingResources { [weak self] (error: Error?) in
             guard let self = self else {
                 return
             }
             
-            //in main thread
+            // in main thread
             DispatchQueue.main.async {
-                //remove observation
+                // remove observation
                 self.downloadProgressObservation = nil
                 
-                //dismiss download progress view
+                // dismiss download progress view
                 self.downloadProgressView?.dismiss()
                 
                 if let error = error {
@@ -144,7 +144,7 @@ class ContentTableViewController: UITableViewController {
                     }
                 } else {
                     if self.bundleResourceRequest?.progress.isCancelled == false {
-                        //show view controller
+                        // show view controller
                         self.showSample(sample)
                     }
                 }
@@ -157,22 +157,22 @@ class ContentTableViewController: UITableViewController {
         let controller = storyboard.instantiateInitialViewController()!
         controller.title = sample.name
         
-        //must use the presenting controller when opening from search results or else splitViewController will be nil
+        // must use the presenting controller when opening from search results or else splitViewController will be nil
         let presentingController: UIViewController? = searchEngine != nil ? presentingViewController : self
             
         let navController = UINavigationController(rootViewController: controller)
         
-        //don't use large titles on samples
+        // don't use large titles on samples
         controller.navigationItem.largeTitleDisplayMode = .never
         
-        //add the button on the left on the detail view controller
+        // add the button on the left on the detail view controller
         controller.navigationItem.leftBarButtonItem = presentingController?.splitViewController?.displayModeButtonItem
         controller.navigationItem.leftItemsSupplementBackButton = true
         
-        //present the sample view controller
+        // present the sample view controller
         presentingController?.showDetailViewController(navController, sender: self)
         
-        //create and setup the info button
+        // create and setup the info button
         let infoBBI = SourceCodeBarButtonItem()
         infoBBI.readmeURL = sample.readmeURL
         infoBBI.navController = navController
@@ -180,11 +180,11 @@ class ContentTableViewController: UITableViewController {
     }
     
     private func toggleExpansion(at indexPath: IndexPath) {
-        //if same row selected then hide the detail view
+        // if same row selected then hide the detail view
         if expandedRowIndexPaths.contains(indexPath) {
             expandedRowIndexPaths.remove(indexPath)
         } else {
-            //get the two cells and update
+            // get the two cells and update
             expandedRowIndexPaths.update(with: indexPath)
         }
         tableView.reloadRows(at: [indexPath], with: .automatic)

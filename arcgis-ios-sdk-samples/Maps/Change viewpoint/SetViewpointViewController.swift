@@ -27,13 +27,13 @@ class SetViewpointViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize the map with imagery basemap
+        // initialize the map with imagery basemap
         self.map = AGSMap(basemapStyle: .arcGISImagery)
         
-        //assign the map to the mapview
+        // assign the map to the mapview
         self.mapView.map = self.map
         
-        //create a graphicsOverlay to show the graphics
+        // create a graphicsOverlay to show the graphics
         let graphicsOverlay = AGSGraphicsOverlay()
         
         self.londonCoordinate = AGSPoint(x: 0.1275, y: 51.5072, spatialReference: .wgs84())
@@ -70,7 +70,7 @@ class SetViewpointViewController: UIViewController {
             self.mapView.setViewpointCenter(self.londonCoordinate, scale: 40000, completion: nil)
         case 2:
             let currentScale = self.mapView.mapScale
-            let targetScale = currentScale / 2.5 //zoom in
+            let targetScale = currentScale / 2.5 // zoom in
             let currentCenter = self.mapView.visibleArea!.extent.center
             self.mapView.setViewpoint(AGSViewpoint(center: currentCenter, scale: targetScale), duration: 5, curve: AGSAnimationCurve.easeInOutSine) { (finishedWithoutInterruption) in
                 if finishedWithoutInterruption {

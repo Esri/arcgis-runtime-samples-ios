@@ -183,7 +183,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             self.generateJob = generateGeodatabaseJob
             generateGeodatabaseJob.start(
                 statusHandler: { (status: AGSJobStatus) in
-                    SVProgressHUD.show(withStatus: status.statusString()) //Show job status.
+                    SVProgressHUD.show(withStatus: status.statusString()) // Show job status.
                 },
                 completion: { [weak self] (_, error: Error?) in
                     SVProgressHUD.dismiss()

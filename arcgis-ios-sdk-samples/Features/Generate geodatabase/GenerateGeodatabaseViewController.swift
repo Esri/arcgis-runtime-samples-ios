@@ -32,7 +32,7 @@ class GenerateGeodatabaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GenerateGeodatabaseViewController"]
         
         let tpkURL = Bundle.main.url(forResource: "SanFrancisco", withExtension: "tpk")!
@@ -44,7 +44,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         
         addFeatureLayers()
 
-        //setup extent view
+        // setup extent view
         extentView.layer.borderColor = UIColor.red.cgColor
         extentView.layer.borderWidth = 3
     }
@@ -70,7 +70,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                 }
                 self.mapView.map?.operationalLayers.addObjects(from: featureLayers.reversed())
                 
-                //enable download
+                // enable download
                 self.downloadBBI.isEnabled = true
             }
         }
@@ -87,14 +87,14 @@ class GenerateGeodatabaseViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func downloadAction() {
-        //generate default param to contain all layers in the service
+        // generate default param to contain all layers in the service
         syncTask.defaultGenerateGeodatabaseParameters(withExtent: self.frameToExtent()) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: Error?) in
             if let params = params,
                 let self = self {
-                //don't include attachments to minimze the geodatabae size
+                // don't include attachments to minimze the geodatabae size
                 params.returnAttachments = false
                 
-                //create a unique name for the geodatabase based on current timestamp
+                // create a unique name for the geodatabase based on current timestamp
                 let dateFormatter = ISO8601DateFormatter()
                 
                 let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -102,10 +102,10 @@ class GenerateGeodatabaseViewController: UIViewController {
                     .appendingPathComponent(dateFormatter.string(from: Date()))
                     .appendingPathExtension("geodatabase")
                 
-                //request a job to generate the geodatabase
+                // request a job to generate the geodatabase
                 let generateJob = self.syncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
                 self.activeJob = generateJob
-                //kick off the job
+                // kick off the job
                 generateJob.start(
                     statusHandler: { (status: AGSJobStatus) in
                         SVProgressHUD.show(withStatus: status.statusString())
@@ -146,7 +146,7 @@ class GenerateGeodatabaseViewController: UIViewController {
                 AGSLoadObjects(generatedGeodatabase.geodatabaseFeatureTables) { (success: Bool) in
                     if success {
                         for featureTable in generatedGeodatabase.geodatabaseFeatureTables.reversed() {
-                            //check if featureTable has geometry
+                            // check if featureTable has geometry
                             if featureTable.hasGeometry {
                                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                                 self.mapView.map?.operationalLayers.add(featureLayer)

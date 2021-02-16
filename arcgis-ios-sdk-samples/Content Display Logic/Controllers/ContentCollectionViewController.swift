@@ -85,21 +85,21 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         
         let category = categories[indexPath.item]
         
-        //mask to bounds
+        // mask to bounds
         cell.layer.masksToBounds = false
         
-        //name
+        // name
         cell.nameLabel.text = category.name.uppercased()
         
-        //icon
+        // icon
         let image = UIImage(named: "\(category.name)_icon")
         cell.iconImageView.image = image
         
-        //background image
+        // background image
         let bgImage = UIImage(named: "\(category.name)_bg")
         cell.backgroundImageView.image = bgImage
         
-        //cell shadow
+        // cell shadow
         cell.layer.cornerRadius = 5
         cell.layer.masksToBounds = true
         
@@ -109,7 +109,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
     // MARK: - UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //hide keyboard if visible
+        // hide keyboard if visible
         view.endEditing(true)
         
         let category = categories[indexPath.item]
@@ -125,10 +125,10 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         let collectionViewSize = collectionView.bounds.inset(by: collectionView.safeAreaInsets).size
         
         let spacing: CGFloat = 10
-        //first try for 3 items in a row
+        // first try for 3 items in a row
         var width = (collectionViewSize.width - 4 * spacing) / 3
         if width < 150 {
-            //if too small then go for 2 in a row
+            // if too small then go for 2 in a row
             width = (collectionViewSize.width - 3 * spacing) / 2
         }
         return CGSize(width: width, height: width)

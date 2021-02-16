@@ -25,11 +25,11 @@ class AttachmentsTableViewController: UITableViewController {
     private var attachments: [AGSAttachment] = []
     
     private func loadAttachments() {
-        //show progress hud
+        // show progress hud
         SVProgressHUD.show(withStatus: "Loading attachments")
         
         feature?.fetchAttachments { [weak self] (attachments: [AGSAttachment]?, error: Error?) in
-            //dismiss progress hud
+            // dismiss progress hud
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -130,11 +130,11 @@ class AttachmentsTableViewController: UITableViewController {
     
     @IBAction func doneAction() {
         if let table = feature?.featureTable as? AGSServiceFeatureTable {
-            //show progress hud
+            // show progress hud
             SVProgressHUD.show(withStatus: "Applying edits")
             
             table.applyEdits { [weak self] (_, error) in
-                //dismiss progress hud
+                // dismiss progress hud
                 SVProgressHUD.dismiss()
                 
                 guard let self = self else {
@@ -156,7 +156,7 @@ class AttachmentsTableViewController: UITableViewController {
             return
         }
         
-        //show progress hud
+        // show progress hud
         SVProgressHUD.show(withStatus: "Adding attachment")
         
         feature?.addAttachment(withName: "Attachment.png", contentType: "png", data: pngData) { [weak self] (attachment: AGSAttachment?, error: Error?) in

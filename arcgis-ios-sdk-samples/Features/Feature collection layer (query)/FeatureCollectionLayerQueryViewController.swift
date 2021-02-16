@@ -24,46 +24,46 @@ class FeatureCollectionLayerQueryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureCollectionLayerQueryViewController"]
         
-        //initialize map with basemap
+        // initialize map with basemap
         let map = AGSMap(basemapStyle: .arcGISOceans)
         
-        //assign map to the map view
+        // assign map to the map view
         self.mapView.map = map
         
-        //initialize service feature table to be queried
+        // initialize service feature table to be queried
         self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire/FeatureServer/0")!)
         
-        //create query parameters
+        // create query parameters
         let queryParams = AGSQueryParameters()
         
         // 1=1 will give all the features from the table
         queryParams.whereClause = "1=1"
         
-        //show progress hud
+        // show progress hud
         SVProgressHUD.show(withStatus: "Querying")
         
-        //query feature from the table
+        // query feature from the table
         self.featureTable.queryFeatures(with: queryParams) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
-            //hide progress hud
+            // hide progress hud
             SVProgressHUD.dismiss()
             
             if let error = error {
-                //show error
+                // show error
                 self?.presentAlert(error: error)
             } else {
-                //create a feature collection table fromt the query results
+                // create a feature collection table fromt the query results
                 let featureCollectionTable = AGSFeatureCollectionTable(featureSet: queryResult!)
                 
-                //create a feature collection from the above feature collection table
+                // create a feature collection from the above feature collection table
                 let featureCollection = AGSFeatureCollection(featureCollectionTables: [featureCollectionTable])
                 
-                //create a feature collection layer
+                // create a feature collection layer
                 let featureCollectionLayer = AGSFeatureCollectionLayer(featureCollection: featureCollection)
                 
-                //add the layer to the operational layers array
+                // add the layer to the operational layers array
                 self?.mapView.map?.operationalLayers.add(featureCollectionLayer)
             }
         }

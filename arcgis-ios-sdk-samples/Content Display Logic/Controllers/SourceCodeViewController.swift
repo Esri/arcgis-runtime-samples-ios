@@ -64,9 +64,9 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     }
     
     func contentOfFile(_ name: String) -> String? {
-        //find the path of the file
+        // find the path of the file
         if let path = Bundle.main.path(forResource: name, ofType: ".swift") {
-            //read the content of the file
+            // read the content of the file
             if let content = try? String(contentsOfFile: path, encoding: String.Encoding.utf8) {
                 return content
             }

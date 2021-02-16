@@ -70,7 +70,7 @@ class ViewshedLocationViewController: UIViewController {
         analysisOverlay.analyses.add(viewshed)
         sceneView.analysisOverlays.add(analysisOverlay)
         
-        //set touch delegate on scene view as self
+        // set touch delegate on scene view as self
         sceneView.touchDelegate = self
     }
     

@@ -33,67 +33,67 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "AnalyzeHotspotsViewController",
             "HotspotSettingsViewController"
         ]
 
-        //initialize map with basemap
+        // initialize map with basemap
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //assign map to map view
+        // assign map to map view
         mapView.map = map
         let center = AGSPoint(x: -13671170.647485, y: 5693633.356735, spatialReference: .webMercator())
         mapView.setViewpoint(AGSViewpoint(center: center, scale: 57779))
     }
     
     private func analyzeHotspots(_ fromDate: Date, toDate: Date) {
-        //cancel previous job request
+        // cancel previous job request
         self.geoprocessingJob?.progress.cancel()
         
         let fromDateString = dateFormatter.string(from: fromDate)
         let toDateString = dateFormatter.string(from: toDate)
         
-        //parameters
+        // parameters
         let params = AGSGeoprocessingParameters(executionType: .asynchronousSubmit)
         params.processSpatialReference = self.mapView.map?.spatialReference
         params.outputSpatialReference = self.mapView.map?.spatialReference
         
-        //query string
+        // query string
         let queryString = "(\"DATE\" > date '\(fromDateString) 00:00:00' AND \"DATE\" < date '\(toDateString) 00:00:00')"
         params.inputs["Query"] = AGSGeoprocessingString(value: queryString)
         
-        //job
+        // job
         let geoprocessingJob = geoprocessingTask.geoprocessingJob(with: params)
         self.geoprocessingJob = geoprocessingJob
         
-        //start job
+        // start job
         geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
-            //show progress hud with job status
+            // show progress hud with job status
             SVProgressHUD.show(withStatus: status.statusString())
         }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
-            //dismiss progress hud
+            // dismiss progress hud
             SVProgressHUD.dismiss()
             guard let self = self else { return }
             if let error = error {
-                //show error
+                // show error
                 self.presentAlert(error: error)
             } else {
-                //a map image layer is generated as a result
-                //remove any layer previously added to the map
+                // a map image layer is generated as a result
+                // remove any layer previously added to the map
                 self.mapView.map?.operationalLayers.removeAllObjects()
                 
-                //add the new layer to the map
+                // add the new layer to the map
                 self.mapView.map?.operationalLayers.add(result!.mapImageLayer!)
                 
-                //set map view's viewpoint to the new layer's full extent
+                // set map view's viewpoint to the new layer's full extent
                 (self.mapView.map?.operationalLayers.firstObject as! AGSLayer).load { [weak self] (error: Error?) in
                     guard let self = self else { return }
                     if let error = error {
                         self.presentAlert(error: error)
                     } else {
-                        //set viewpoint as the extent of the mapImageLayer
+                        // set viewpoint as the extent of the mapImageLayer
                         if let extent = result?.mapImageLayer?.fullExtent {
                             self.mapView.setViewpointGeometry(extent)
                         }

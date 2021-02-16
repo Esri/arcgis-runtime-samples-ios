@@ -42,7 +42,7 @@ class ReadGeopackageViewController: UIViewController, UIPopoverPresentationContr
             // Create raster layers for each raster in the geopackage.
             let rasterLayers = geoPackage.geoPackageRasters.map { raster -> AGSLayer in
                 let rasterLayer = AGSRasterLayer(raster: raster)
-                //make it semi-transparent so it doesn't obscure the contents under it
+                // make it semi-transparent so it doesn't obscure the contents under it
                 rasterLayer.opacity = 0.55
                 return rasterLayer
             }

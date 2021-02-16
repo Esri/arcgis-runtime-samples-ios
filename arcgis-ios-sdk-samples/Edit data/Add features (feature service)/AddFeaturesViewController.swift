@@ -24,51 +24,51 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddFeaturesViewController"]
         
-        //assign the map to the map view
+        // assign the map to the map view
         let map = AGSMap(basemapStyle: .arcGISStreets)
         self.mapView.map = map
         self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
-        //set touch delegate on map view as self
+        // set touch delegate on map view as self
         self.mapView.touchDelegate = self
         
-        //instantiate service feature table using the url to the service
+        // instantiate service feature table using the url to the service
         self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
-        //create a feature layer using the service feature table
+        // create a feature layer using the service feature table
         let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
         
-        //add the feature layer to the operational layers on map
+        // add the feature layer to the operational layers on map
         map.operationalLayers.add(featureLayer)
     }
     
     func addFeature(at mappoint: AGSPoint) {
-        //disable interaction with map view
+        // disable interaction with map view
         mapView.isUserInteractionEnabled = false
         
-        //normalize geometry
+        // normalize geometry
         let normalizedGeometry = AGSGeometryEngine.normalizeCentralMeridian(of: mappoint)!
         
-        //attributes for the new feature
+        // attributes for the new feature
         let featureAttributes = ["typdamage": "Minor", "primcause": "Earthquake"]
-        //create a new feature
+        // create a new feature
         let feature = featureTable.createFeature(attributes: featureAttributes, geometry: normalizedGeometry)
         
-        //show the progress hud
+        // show the progress hud
         SVProgressHUD.show(withStatus: "Adding..")
         
-        //add the feature to the feature table
+        // add the feature to the feature table
         featureTable.add(feature) { [weak self] (error: Error?) in
             SVProgressHUD.dismiss()
             
             if let error = error {
                 self?.presentAlert(message: "Error while adding feature: \(error.localizedDescription)")
             } else {
-                //applied edits on success
+                // applied edits on success
                 self?.applyEdits()
             }
-            //enable interaction with map view
+            // enable interaction with map view
             self?.mapView.isUserInteractionEnabled = true
         }
     }
@@ -90,7 +90,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        //add a feature at the tapped location
+        // add a feature at the tapped location
         self.addFeature(at: mapPoint)
     }
 }

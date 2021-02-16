@@ -29,78 +29,78 @@ class MapViewScreenshotViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MapViewScreenshotViewController"]
         
-        //instantiate map with imagegry basemap
+        // instantiate map with imagegry basemap
         self.map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
-        //assign the map to the map view
+        // assign the map to the map view
         self.mapView.map = self.map
         
-        //initialize and assign tap gesture to hide overlay parent view
+        // initialize and assign tap gesture to hide overlay parent view
         self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapViewScreenshotViewController.hideOverlayParentView))
         self.overlayParentView.addGestureRecognizer(self.tapGestureRecognizer)
         
-        //add border to the overlay image view
+        // add border to the overlay image view
         self.overlayImageView.layer.borderColor = UIColor.white.cgColor
         self.overlayImageView.layer.borderWidth = 2
     }
     
     // MARK: - Actions
     
-    //hide the screenshot overlay view
+    // hide the screenshot overlay view
     @objc
     func hideOverlayParentView() {
         self.overlayParentView.isHidden = true
     }
     
-    //show the screenshot overlay view
+    // show the screenshot overlay view
     private func showOverlayParentView() {
         self.overlayParentView.isHidden = false
     }
     
-    //called when the user taps on the screenshot button
+    // called when the user taps on the screenshot button
     @IBAction private func screenshotAction(_ sender: AnyObject) {
-        //hide the screenshot view if currently visible
+        // hide the screenshot view if currently visible
         self.hideOverlayParentView()
         
-        //the method on map view we can use to get the screenshot image
+        // the method on map view we can use to get the screenshot image
         self.mapView.exportImage { [weak self] (image: UIImage?, error: Error?) in
             if let error = error {
                 self?.presentAlert(error: error)
             }
             if let image = image {
-                //on completion imitate flash
+                // on completion imitate flash
                 self?.imitateFlashAndPreviewImage(image)
             }
         }
     }
     
-    //imitate the white flash screen when the user taps on the screenshot button
+    // imitate the white flash screen when the user taps on the screenshot button
     private func imitateFlashAndPreviewImage(_ image: UIImage) {
         let flashView = UIView(frame: self.mapView.bounds)
         flashView.backgroundColor = .white
         self.mapView.addSubview(flashView)
         
-        //animate the white flash view on and off to show the flash effect
+        // animate the white flash view on and off to show the flash effect
         UIView.animate(
             withDuration: 0.3,
             animations: {
                 flashView.alpha = 0
             },
             completion: { [weak self] (_) in
-                //On completion play the shutter sound
+                // On completion play the shutter sound
                 self?.playShutterSound()
                 flashView.removeFromSuperview()
-                //show the screenshot on screen
+                // show the screenshot on screen
                 self?.overlayImageView.image = image
                 self?.showOverlayParentView()
             }
         )
     }
     
-    //to play the shutter sound once the screenshot is taken
+    // to play the shutter sound once the screenshot is taken
     func playShutterSound() {
         if self.shutterSound == 0 {
             if let filepath = Bundle.main.path(forResource: "Camera Shutter", ofType: "caf") {

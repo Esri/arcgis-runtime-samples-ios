@@ -31,7 +31,7 @@ class MILLegendTableViewController: UITableViewController {
             if !layer.subLayerContents.isEmpty {
                 self.populateLegends(with: layer.subLayerContents)
             } else {
-                //else if no sublayers fetch legend info
+                // else if no sublayers fetch legend info
                 self.orderArray.append(layer)
                 layer.fetchLegendInfos { [weak self] (legendInfos, error) in
                     if let error = error {
@@ -67,7 +67,7 @@ class MILLegendTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MILLegendCell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MILLegendCell", for: indexPath)
 
         let layer = self.orderArray[indexPath.section]
         let legendInfos = self.legendInfosDict[self.hashString(for: layer)]!

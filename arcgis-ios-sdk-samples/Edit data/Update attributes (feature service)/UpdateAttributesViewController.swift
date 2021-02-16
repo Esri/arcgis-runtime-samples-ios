@@ -32,7 +32,7 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
             "UpdateAttributesViewController",
             "UpdateAttributesOptionsViewController"
@@ -48,7 +48,7 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
         self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
         self.mapView.touchDelegate = self
         
-        //store the feature layer for later use
+        // store the feature layer for later use
         self.featureLayer = featureLayer
     }
     
@@ -85,7 +85,7 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
             lastQuery.cancel()
         }
         
-        //hide the callout
+        // hide the callout
         self.mapView.callout.dismiss()
         
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
@@ -93,9 +93,9 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
                 print(error)
             } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
                 let feature = features.first {
-                //show callout for the first feature
+                // show callout for the first feature
                 self?.showCallout(feature, tapLocation: mapPoint)
-                //update selected feature
+                // update selected feature
                 self?.selectedFeature = feature
             }
         }
@@ -104,9 +104,9 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
     // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
-        //hide the callout
+        // hide the callout
         self.mapView.callout.dismiss()
-        //show editing options
+        // show editing options
         self.performSegue(withIdentifier: self.optionsSegueName, sender: self)
     }
     

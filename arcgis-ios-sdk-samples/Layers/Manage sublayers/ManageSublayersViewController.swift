@@ -26,63 +26,63 @@ class ManageSublayersViewController: UIViewController, MapImageSublayersViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManageSublayersViewController", "MapImageSublayersViewController"]
         
-        //instantiate map with basemap
+        // instantiate map with basemap
         let map = AGSMap(basemapStyle: .arcGISStreets)
         
-        //initialize map image layer
+        // initialize map image layer
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)
         
-        //add layer to map
+        // add layer to map
         map.operationalLayers.add(mapImageLayer)
         
-        //initial viewpoint
+        // initial viewpoint
         let envelope = AGSEnvelope(xMin: -13834661.666904, yMin: 331181.323482, xMax: -8255704.998713, yMax: 9118038.075882, spatialReference: .webMercator())
         
-        //assign map to map view
+        // assign map to map view
         self.mapView.map = map
         
-        //set the viewpoint on map view
+        // set the viewpoint on map view
         self.mapView.setViewpoint(AGSViewpoint(targetExtent: envelope))
         
-        //create sublayers from tableSublayerSource
+        // create sublayers from tableSublayerSource
         self.createSublayers()
         
-        //store the map image layer for later use
+        // store the map image layer for later use
         self.mapImageLayer = mapImageLayer
     }
     
     private func createSublayers() {
-        //We will create 2 mapImageSublayers from tableSublayerSource with known workspaceID and dataSourceName
-        //These sublayers are not yet part of the mapImageLayer's sublayers, so will be shown as part of the 
-        //removed sublayers array at first
+        // We will create 2 mapImageSublayers from tableSublayerSource with known workspaceID and dataSourceName
+        // These sublayers are not yet part of the mapImageLayer's sublayers, so will be shown as part of the
+        // removed sublayers array at first
         
-        //create tableSublayerSource from workspaceID and dataSourceName
+        // create tableSublayerSource from workspaceID and dataSourceName
         let tableSublayerSource1 = AGSTableSublayerSource(workspaceID: self.workspaceID, dataSourceName: "ss6.gdb.rivers")
         
-        //create mapImageSublayer from tableSublayerSource
+        // create mapImageSublayer from tableSublayerSource
         let mapImageSublayer1 = AGSArcGISMapImageSublayer(id: 4, source: tableSublayerSource1)
         
-        //assign a renderer to the sublayer
+        // assign a renderer to the sublayer
         let renderer1 = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: .blue, width: 1))
         mapImageSublayer1.renderer = renderer1
         
-        //name for the sublayer
+        // name for the sublayer
         mapImageSublayer1.name = "Rivers"
         
-        //create tableSublayerSource from workspaceID and dataSourceName
+        // create tableSublayerSource from workspaceID and dataSourceName
         let tableSublayerSource2 = AGSTableSublayerSource(workspaceID: self.workspaceID, dataSourceName: "ss6.gdb.lakes")
         
-        //create mapImageSublayer from tableSublayerSource
+        // create mapImageSublayer from tableSublayerSource
         let mapImageSublayer2 = AGSArcGISMapImageSublayer(id: 5, source: tableSublayerSource2)
         
-        //assign a renderer to the sublayer
+        // assign a renderer to the sublayer
         let renderer2 = AGSSimpleRenderer(symbol: AGSSimpleFillSymbol(style: .solid, color: .cyan, outline: nil))
         mapImageSublayer2.renderer = renderer2
         
-        //name for the sublayer
+        // name for the sublayer
         mapImageSublayer2.name = "Lakes"
         removedMapImageSublayers.append(contentsOf: [mapImageSublayer1, mapImageSublayer2])
     }

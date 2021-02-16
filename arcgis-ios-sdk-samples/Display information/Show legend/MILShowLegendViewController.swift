@@ -24,26 +24,26 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MILShowLegendViewController", "MILLegendTableViewController"]
         
-        //initialize the map
+        // initialize the map
         self.map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //create tiled layer
+        // create tiled layer
         let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/Soil_Survey_Map/MapServer")!)
         self.map.operationalLayers.add(tiledLayer)
         
-        //create a map image layer using a url
+        // create a map image layer using a url
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
-        //add the image layer to the map
+        // add the image layer to the map
         self.map.operationalLayers.add(mapImageLayer)
         
-        //create feature table using a url
+        // create feature table using a url
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0")!)
-        //create feature layer using this feature table
+        // create feature layer using this feature table
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        //add feature layer to the map
+        // add feature layer to the map
         self.map.operationalLayers.add(featureLayer)
         
         self.map.load { [weak self] (error: Error?) in
@@ -54,7 +54,7 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         
         self.mapView.map = self.map
         
-        //zoom to a custom viewpoint
+        // zoom to a custom viewpoint
         self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: .webMercator()), scale: 9e7)
     }
     

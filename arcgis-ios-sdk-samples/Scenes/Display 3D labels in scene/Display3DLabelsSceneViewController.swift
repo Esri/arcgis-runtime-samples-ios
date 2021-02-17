@@ -24,23 +24,27 @@ class Display3DLabelsSceneViewController: UIViewController {
     }
     
     func makeScene() -> AGSScene {
-        let sceneURL = URL(string: "https://www.arcgis.com/home/item.html?id=850dfee7d30f4d9da0ebca34a533c169")!
-        let scene = AGSScene(url: sceneURL)!
+        let scene = AGSScene(
+            item: AGSPortalItem(
+                portal: AGSPortal.arcGISOnline(withLoginRequired: false),
+                itemID: "850dfee7d30f4d9da0ebca34a533c169")
+        )
         // Load the scene.
-        scene.load { [ weak self ] error in
+        scene.load { [weak self] error in
             // Get the feature layer.
-            let layers = scene.operationalLayers as! [AGSGroupLayer]
-            let groupLayer = layers.first(where: { $0.name == "Gas" })
-            let gasFeatureLayer = groupLayer?.layers[0] as! AGSFeatureLayer
-            // Enable labels on the feature layer.
-            gasFeatureLayer.labelsEnabled = true
-            do {
-                guard let labelDefinition = try self?.makeLabelDefinition() else { return }
-                // Add the label definition to the layer.
-                gasFeatureLayer.labelDefinitions.add(labelDefinition)
-            } catch {
-                // If failure to make a label definition, present an error.
-                self?.presentAlert(error: error)
+            if let layers = scene.operationalLayers as? [AGSGroupLayer],
+               let groupLayer = layers.first(where: { $0.name == "Gas" }),
+               let gasFeatureLayer = groupLayer.layers.firstObject as? AGSFeatureLayer {
+                do {
+                    guard let labelDefinition = try self?.makeLabelDefinition() else { return }
+                    // Enable labels on the feature layer.
+                    gasFeatureLayer.labelsEnabled = true
+                    // Add the label definition to the layer.
+                    gasFeatureLayer.labelDefinitions.add(labelDefinition)
+                } catch {
+                    // If failure to make a label definition, present an error.
+                    print(error)
+                }
             }
         }
         return scene
@@ -77,8 +81,8 @@ class Display3DLabelsSceneViewController: UIViewController {
         ]
         
         //  Create and return a label definition from the JSON object.
-        let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
-        return result as? AGSLabelDefinition
+        let result = try AGSLabelDefinition.fromJSON(labelJSONObject) as! AGSLabelDefinition
+        return result
     }
     
     // MARK: UIViewController

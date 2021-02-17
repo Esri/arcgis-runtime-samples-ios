@@ -15,7 +15,7 @@
         "symbol",
         "text",
         "URL",
-        "visualization"
+        "visualization",
         "AGSFeatureLayer",
         "AGSLabelDefinition",
         "AGSScene",

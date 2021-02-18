@@ -7,6 +7,7 @@
     ],
     "keywords": [
         "3D",
+        "URL",
         "attribute",
         "buildings",
         "label",
@@ -14,7 +15,6 @@
         "scene",
         "symbol",
         "text",
-        "URL",
         "visualization",
         "AGSFeatureLayer",
         "AGSLabelDefinition",

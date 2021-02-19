@@ -39,6 +39,7 @@ class Display3DLabelsSceneViewController: UIViewController {
                     guard let labelDefinition = try self?.makeLabelDefinition() else { return }
                     // Enable labels on the feature layer.
                     gasFeatureLayer.labelsEnabled = true
+                    gasFeatureLayer.labelDefinitions.removeAllObjects()
                     // Add the label definition to the layer.
                     gasFeatureLayer.labelDefinitions.add(labelDefinition)
                 } catch {
@@ -75,7 +76,7 @@ class Display3DLabelsSceneViewController: UIViewController {
             "labelExpressionInfo": [
                 "expression": "$feature.INSTALLATIONDATE"
             ],
-            "labelPlacement": "esriServerLinePlacementAboveAlong",
+            "labelPlacement": "esriServerPointLabelPlacementAboveCenter",
             "useCodedValues": true,
             "symbol": textSymbolJSON
         ]

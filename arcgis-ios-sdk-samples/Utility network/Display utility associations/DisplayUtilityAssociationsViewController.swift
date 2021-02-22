@@ -28,13 +28,14 @@ class DisplayUtilityAssociationsViewController: UIViewController {
     
     @IBOutlet var toolbar: UIToolbar!
     
-    private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
+    private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/server/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     private let maxScale = 2000.0
     private let associationsOverlay = AGSGraphicsOverlay()
     private let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .green, width: 5)
     private let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 5)
     
     func loadUtilityNetwork() {
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -167,6 +168,8 @@ class DisplayUtilityAssociationsViewController: UIViewController {
         super.viewDidLoad()
         
         loadUtilityNetwork()
+//        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
+//        mapView.map?.utilityNetworks.add(utilityNetwork)
         
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayUtilityAssociationsViewController"]

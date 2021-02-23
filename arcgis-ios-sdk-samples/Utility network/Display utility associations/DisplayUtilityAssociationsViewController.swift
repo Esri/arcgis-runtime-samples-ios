@@ -28,7 +28,7 @@ class DisplayUtilityAssociationsViewController: UIViewController {
     
     @IBOutlet var toolbar: UIToolbar!
     
-    private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/server/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
+    private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     private let maxScale = 2000.0
     private let associationsOverlay = AGSGraphicsOverlay()
     private let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .green, width: 5)
@@ -167,9 +167,8 @@ class DisplayUtilityAssociationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.map?.utilityNetworks.add(utilityNetwork)
         loadUtilityNetwork()
-//        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
-//        mapView.map?.utilityNetworks.add(utilityNetwork)
         
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayUtilityAssociationsViewController"]

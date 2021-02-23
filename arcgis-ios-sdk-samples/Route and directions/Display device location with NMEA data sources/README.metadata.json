@@ -1,0 +1,33 @@
+{
+    "category": "Route and directions",
+    "description": "Parse NMEA sentences and use the results to show device location on the map.",
+    "ignore": false,
+    "images": [
+        "display-device-location-with-NMEA-data-sources.png"
+    ],
+    "keywords": [
+        "GPS",
+        "NMEA",
+        "dongle",
+        "history",
+        "navigation",
+        "real-time",
+        "trace",
+        "AGSLocation",
+        "AGSLocationDisplay",
+        "AGSNMEALocationDataSource",
+        "AGSNMEASatelliteInfo"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSLocation",
+        "AGSLocationDisplay",
+        "AGSNMEALocationDataSource",
+        "AGSNMEASatelliteInfo"
+    ],
+    "snippets": [
+        "DisplayDeviceLocationWithNMEADataSourcesViewController.swift",
+        "SimulatedNMEADataSource.swift"
+    ],
+    "title": "Display device location with NMEA data sources"
+}

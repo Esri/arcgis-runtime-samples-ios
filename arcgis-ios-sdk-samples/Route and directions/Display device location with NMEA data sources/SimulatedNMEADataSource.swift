@@ -31,6 +31,9 @@ class SimulatedNMEADataSource {
     
     /// Load locations from NMEA sentences.
     /// Read mock NMEA sentences line by line and group them by the timestamp.
+    /// - Parameters:
+    ///   - nmeaSourceFile: The URL of the NMEA source file.
+    ///   - speed: The playback speed multiplier.
     init(from nmeaSourceFile: URL, speed: Double = 1.0) {
         // An empty container for NMEA data.
         var dataSplittedBySecond = [Data]()

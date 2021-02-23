@@ -24,7 +24,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
             mapView.map = AGSMap(basemapStyle: .arcGISNavigation)
         }
     }
-    /// The label to display satellite info.
+    /// The label to display satellites info.
     @IBOutlet var statusLabel: UILabel!
     /// The button to start the demo.
     @IBOutlet var startBarButtonItem: UIBarButtonItem!
@@ -38,7 +38,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     /// An NMEA location data source, to parse NMEA data.
     let nmeaLocationDataSource = AGSNMEALocationDataSource(receiverSpatialReference: .wgs84())
     /// A mock data source to read NMEA sentences from a local file, and generate
-    /// mock NMEA data every second.
+    /// mock NMEA data every fixed amount of time.
     let mockNMEADataSource = SimulatedNMEADataSource(from: Bundle.main.url(forResource: "Redlands", withExtension: "nmea")!, speed: 1.5)
     
     // MARK: Actions
@@ -47,9 +47,9 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         // Set buttons states.
         startBarButtonItem.isEnabled = false
         resetBarButtonItem.isEnabled = true
-        // Set location data source for location display.
+        // Set NMEA location data source for location display.
         mapView.locationDisplay.dataSource = nmeaLocationDataSource
-        // Start the location data source and location display.
+        // Start the data source and location display.
         mockNMEADataSource.start()
         mapView.locationDisplay.start()
         // Recenter the map and set pan mode.
@@ -91,16 +91,9 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
             "SimulatedNMEADataSource"
         ]
         // Load NMEA location data source.
-        nmeaLocationDataSource.start { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                self.startBarButtonItem.isEnabled = true
-                self.nmeaLocationDataSource.locationChangeHandlerDelegate = self
-                self.mockNMEADataSource.delegate = self
-            }
-        }
+        startBarButtonItem.isEnabled = true
+        nmeaLocationDataSource.locationChangeHandlerDelegate = self
+        mockNMEADataSource.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,7 +107,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
 extension DisplayDeviceLocationWithNMEADataSourcesViewController: SimulatedNMEADataSourceDelegate {
     func dataSource(didUpdate nmeaData: Data) {
         // Push mock data into the data source.
-        // Note: You can also read real-time NMEA sentences from a GPS dongle.
+        // Note: You can also get real-time NMEA sentences from a GPS dongle.
         nmeaLocationDataSource.push(nmeaData)
     }
 }
@@ -123,7 +116,7 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: SimulatedNMEAD
 
 extension DisplayDeviceLocationWithNMEADataSourcesViewController: AGSNMEALocationDataSourceDelegate {
     func nmeaLocationDataSource(_ NMEALocationDataSource: AGSNMEALocationDataSource, satellitesDidChange satellites: [AGSNMEASatelliteInfo]) {
-        // Update the satellite info status text.
+        // Update the satellites info status text.
         let satelliteSystemsText = Set(satellites.map { $0.system }).map { $0.label }.joined(separator: ", ")
         let idText = satellites.map { String($0.satelliteID) }.joined(separator: ", ")
         let statusText =

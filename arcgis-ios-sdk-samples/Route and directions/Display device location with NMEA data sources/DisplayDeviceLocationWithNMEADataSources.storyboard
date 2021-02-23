@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p9V-jd-Z58">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Display Device Location WithNMEA Data Sources View Controller-->
+        <scene sceneID="f6d-Or-mJX">
+            <objects>
+                <viewController id="p9V-jd-Z58" customClass="DisplayDeviceLocationWithNMEADataSourcesViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xJd-vV-Dsb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nk8-cN-fxr" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8tL-4E-K67" userLabel="Status View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satellites info will be shown here." lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-N5-5HY">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="AxU-Fm-eyW"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <constraints>
+                                    <constraint firstItem="AuA-N5-5HY" firstAttribute="trailing" secondItem="8tL-4E-K67" secondAttribute="trailingMargin" id="KNU-0K-aM8"/>
+                                    <constraint firstItem="AuA-N5-5HY" firstAttribute="leading" secondItem="8tL-4E-K67" secondAttribute="leadingMargin" id="WqK-hR-BZJ"/>
+                                    <constraint firstItem="AuA-N5-5HY" firstAttribute="bottom" secondItem="8tL-4E-K67" secondAttribute="bottom" id="cEp-ea-ZbS"/>
+                                    <constraint firstItem="AuA-N5-5HY" firstAttribute="top" secondItem="8tL-4E-K67" secondAttribute="top" id="hGl-Zo-qSF"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Y8-SV-RLM">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem enabled="NO" title="Start" id="5zT-3j-ciE">
+                                        <connections>
+                                            <action selector="start" destination="p9V-jd-Z58" id="RJf-Gh-LQc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="TJg-hg-TuR"/>
+                                    <barButtonItem enabled="NO" title="Recenter" id="cdd-nl-SbK">
+                                        <connections>
+                                            <action selector="recenter" destination="p9V-jd-Z58" id="pas-MH-MMt"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BSg-2s-KDx"/>
+                                    <barButtonItem enabled="NO" title="Reset" id="uae-tA-eHu">
+                                        <connections>
+                                            <action selector="reset" destination="p9V-jd-Z58" id="gMl-6I-3bg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Gx-7T-4Go"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Nk8-cN-fxr" firstAttribute="trailing" secondItem="xJd-vV-Dsb" secondAttribute="trailing" id="5wL-8Y-2bp"/>
+                            <constraint firstItem="7Gx-7T-4Go" firstAttribute="bottom" secondItem="0Y8-SV-RLM" secondAttribute="bottom" id="BKJ-zO-Dm4"/>
+                            <constraint firstItem="8tL-4E-K67" firstAttribute="leading" secondItem="xJd-vV-Dsb" secondAttribute="leading" id="HZD-Ho-6ee"/>
+                            <constraint firstItem="0Y8-SV-RLM" firstAttribute="trailing" secondItem="xJd-vV-Dsb" secondAttribute="trailing" id="LAJ-Yf-OrI"/>
+                            <constraint firstItem="Nk8-cN-fxr" firstAttribute="bottom" secondItem="0Y8-SV-RLM" secondAttribute="top" id="STg-fO-bwB"/>
+                            <constraint firstItem="7Gx-7T-4Go" firstAttribute="bottom" secondItem="0Y8-SV-RLM" secondAttribute="bottom" id="c2c-pR-5Yd"/>
+                            <constraint firstItem="Nk8-cN-fxr" firstAttribute="leading" secondItem="xJd-vV-Dsb" secondAttribute="leading" id="ePf-we-3hg"/>
+                            <constraint firstItem="Nk8-cN-fxr" firstAttribute="top" secondItem="7Gx-7T-4Go" secondAttribute="top" id="f5b-hW-tFo"/>
+                            <constraint firstAttribute="trailing" secondItem="8tL-4E-K67" secondAttribute="trailing" id="gTU-3g-C0m"/>
+                            <constraint firstItem="8tL-4E-K67" firstAttribute="top" secondItem="7Gx-7T-4Go" secondAttribute="top" id="uTi-o1-RqK"/>
+                            <constraint firstItem="0Y8-SV-RLM" firstAttribute="leading" secondItem="xJd-vV-Dsb" secondAttribute="leading" id="z9P-KW-ckr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Nk8-cN-fxr" id="7Z0-YC-DXR"/>
+                        <outlet property="recenterBarButtonItem" destination="cdd-nl-SbK" id="ei0-C5-7DM"/>
+                        <outlet property="resetBarButtonItem" destination="uae-tA-eHu" id="qte-mL-Xd9"/>
+                        <outlet property="startBarButtonItem" destination="5zT-3j-ciE" id="DoF-ii-8aH"/>
+                        <outlet property="statusLabel" destination="AuA-N5-5HY" id="7kD-Uz-jpu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CTI-cV-c5e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="357" y="72"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

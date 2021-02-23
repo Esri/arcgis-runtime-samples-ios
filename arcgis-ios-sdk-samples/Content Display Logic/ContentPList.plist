@@ -1375,6 +1375,18 @@
 					<string>SanDiegoDetour</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display device location with NMEA data sources</string>
+				<key>descriptionText</key>
+				<string>Parse NMEA sentences and use the results to show device location on the map.</string>
+				<key>storyboardName</key>
+				<string>DisplayDeviceLocationWithNMEADataSources</string>
+				<key>dependency</key>
+				<array>
+					<string>RedlandsNMEA</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>

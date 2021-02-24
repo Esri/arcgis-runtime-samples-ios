@@ -13,6 +13,7 @@
         "containment",
         "relationships",
         "AGSGraphicsOverlay",
+        "AGSServiceGeodatabase",
         "AGSUtilityAssociation",
         "AGSUtilityAssociationType",
         "AGSUtilityNetwork"

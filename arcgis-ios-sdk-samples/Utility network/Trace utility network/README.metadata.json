@@ -15,6 +15,7 @@
         "upstream trace",
         "utility network",
         "validate consistency",
+        "AGSServiceGeodatabase",
         "AGSUtilityAssetType",
         "AGSUtilityDomainNetwork",
         "AGSUtilityElement",

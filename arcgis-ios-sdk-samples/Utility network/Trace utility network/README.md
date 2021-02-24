@@ -15,23 +15,25 @@ Tap on one or more features while "Start" or "Barrier" is selected. When a junct
 ## How it works
 
 1. Create an `AGSMapView` and listen for `didTap` events on the `AGSGeoViewTouchDelegate`.
-2. Create an `AGSMap` that contains `AGSFeatureLayer`(s) that are part of a utility network.
-3. Create and load an `AGSUtilityNetwork` with the same feature service URL and map.
-4. Add an `AGSGraphicsOverlay` with symbology that distinguishes starting locations from barriers.
-5. Identify tapped features on the map and add an `AGSGraphic` that represents its purpose (starting point or barrier) at the tapped location.
-6. Create an `AGSUtilityElement` for the identified feature.
-7. Determine the type of the identified feature using `AGSUtilityNetworkSource.sourceType`.
-8. If the type is `junction`, display a terminal picker when more than one terminal is found and create an `AGSUtilityElement` using the selected terminal, or the single terminal if there is only one.
-9. If the type is `edge`, create an `AGSUtilityElement` from the identified feature and compute how far along the edge the user tapped using `class AGSGeometryEngine.fraction(alongLine:to:tolerance:)`.
-10. Add this `AGSUtilityElement` to a collection of starting locations or barriers.
-11. Create `AGSUtilityTraceParameters` with the selected trace type along with the collected starting locations and barriers (if applicable).
-12. Set the `AGSUtilityTraceConfiguration` with the utility tier's `traceConfiguration` property.
-13. Run `AGSUtilityNetwork.trace(with:completion:)` with the specified starting points and (optionally) barriers.
-14. Group the `AGSUtilityElementTraceResult.elements` by their `networkSource.name`.
-15. For every `AGSFeatureLayer` in this map with trace result elements, select features by converting `AGSUtilityElement`(s) to `AGSArcGISFeature`(s) using `AGSUtilityNetwork.features(for:completion:)`.
+2. Create and load an `AGSServiceGeodatabase` with a feature service URL and get tables with their layer IDs.
+3. Create an `AGSMap` object that contains `AGSFeatureLayer`(s) created from the service geodatabase's tables.
+4. Create and load an `AGSUtilityNetwork` with the same feature service URL and map.
+5. Add an `AGSGraphicsOverlay` with symbology that distinguishes starting locations from barriers.
+6. Identify tapped features on the map and add an `AGSGraphic` that represents its purpose (starting point or barrier) at the tapped location.
+7. Create an `AGSUtilityElement` for the identified feature.
+8. Determine the type of the identified feature using `AGSUtilityNetworkSource.sourceType`.
+9. If the type is `junction`, display a terminal picker when more than one terminal is found and create an `AGSUtilityElement` using the selected terminal, or the single terminal if there is only one.
+10. If the type is `edge`, create an `AGSUtilityElement` from the identified feature and compute how far along the edge the user tapped using `class AGSGeometryEngine.fraction(alongLine:to:tolerance:)`.
+11. Add this `AGSUtilityElement` to a collection of starting locations or barriers.
+12. Create `AGSUtilityTraceParameters` with the selected trace type along with the collected starting locations and barriers (if applicable).
+13. Set the `AGSUtilityTraceConfiguration` with the utility tier's `traceConfiguration` property.
+14. Run `AGSUtilityNetwork.trace(with:completion:)` with the specified starting points and (optionally) barriers.
+15. Group the `AGSUtilityElementTraceResult.elements` by their `networkSource.name`.
+16. For every `AGSFeatureLayer` in this map with trace result elements, select features by converting `AGSUtilityElement`(s) to `AGSArcGISFeature`(s) using `AGSUtilityNetwork.features(for:completion:)`.
 
 ## Relevant API
 
+* AGSServiceGeodatabase
 * AGSUtilityAssetType
 * AGSUtilityDomainNetwork
 * AGSUtilityElement

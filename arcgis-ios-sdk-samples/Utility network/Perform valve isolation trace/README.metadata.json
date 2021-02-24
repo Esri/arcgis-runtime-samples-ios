@@ -14,6 +14,7 @@
         "trace configuration",
         "trace filter",
         "utility network",
+        "AGSServiceGeodatabase",
         "AGSUtilityCategory",
         "AGSUtilityCategoryComparison",
         "AGSUtilityCategoryComparisonOperator",

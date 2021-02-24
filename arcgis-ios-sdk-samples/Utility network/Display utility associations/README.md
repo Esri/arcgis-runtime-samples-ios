@@ -14,7 +14,7 @@ Pan and zoom around the map. Observe graphics that show utility associations bet
 
 ## How it works
 
-1. Create and load an `AGSUtilityNetwork` with a feature service URL.
+1. Create an `AGSUtilityNetwork` with a feature service URL, add it to the map's `utilityNetworks` array, then load it.
 2. Add an `AGSFeatureLayer` to the map for every `AGSUtilityNetworkSource` of type `edge` or `junction`.
 3. Create an `AGSGraphicsOverlay` for the utility associations.
 4. When the sample is opened and every time the viewpoint changes, do the following steps.
@@ -27,6 +27,7 @@ Pan and zoom around the map. Observe graphics that show utility associations bet
 ## Relevant API
 
 * AGSGraphicsOverlay
+* AGSServiceGeodatabase
 * AGSUtilityAssociation
 * AGSUtilityAssociationType
 * AGSUtilityNetwork

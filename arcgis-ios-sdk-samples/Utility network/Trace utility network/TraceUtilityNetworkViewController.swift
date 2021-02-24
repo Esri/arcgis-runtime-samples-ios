@@ -25,11 +25,9 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var modeControl: UISegmentedControl!
     
-    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     
-    // Create electrical distribution line layer ./115 and electrical device layer ./100.
     private var layers = [AGSFeatureLayer]()
-    
     private let map: AGSMap
     private let serviceGeodatabase: AGSServiceGeodatabase
     private let utilityNetwork: AGSUtilityNetwork
@@ -69,11 +67,12 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         // Load the service geodatabase.
         serviceGeodatabase.load { [weak self] error in
             guard let self = self else { return }
+            // Create electrical distribution line layer ./115 and electrical device layer ./100.
             self.layers = {
-                return [3, 0].map {
+                return [115, 100].map {
                     let featureTable = AGSServiceFeatureTable(url: self.featureServiceURL.appendingPathComponent("\($0)"))
                     let layer = AGSFeatureLayer(featureTable: featureTable)
-                    if $0 == 3 {
+                    if $0 == 115 {
                         // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
                         let darkCyan = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
                         let mediumVoltageValue = AGSUniqueValue(

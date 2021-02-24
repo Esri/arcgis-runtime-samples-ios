@@ -32,7 +32,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     // MARK: Instance properties
     
     /// The URL to the feature service for running the isolation trace.
-    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleGas/FeatureServer")!
+    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleGas/FeatureServer")!
     
     // Constants for creating the default trace configuration.
     let domainNetworkName = "Pipeline"
@@ -94,7 +94,6 @@ class PerformValveIsolationTraceViewController: UIViewController {
     /// Load the service geodatabase and initialize the layers.
     func loadServiceGeodatabase() {
         serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
-        serviceGeodatabase.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         serviceGeodatabase.load { [ weak self ] error in
             guard let self = self else { return }
             // The gas line layer ./3 and gas device layer ./0 are created from the service geodatabase.
@@ -120,7 +119,6 @@ class PerformValveIsolationTraceViewController: UIViewController {
     func loadUtilityNetwork() {
         setStatus(message: "Loading utility network…")
         // Load the utility network to be ready to run a trace against it.
-        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {

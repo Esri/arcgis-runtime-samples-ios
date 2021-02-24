@@ -1,0 +1,32 @@
+{
+    "category": "Display information",
+    "description": "Create symbol styles from a style file hosted on a portal.",
+    "ignore": false,
+    "images": [
+        "create-symbol-styles-from-web-styles.png"
+    ],
+    "keywords": [
+        "renderer",
+        "symbol",
+        "symbology",
+        "web style",
+        "AGSFeatureLayer",
+        "AGSSymbol",
+        "AGSSymbolStyle",
+        "AGSUniqueValue",
+        "AGSUniqueValueRenderer"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSSymbol",
+        "AGSSymbolStyle",
+        "AGSUniqueValue",
+        "AGSUniqueValueRenderer"
+    ],
+    "snippets": [
+        "CreateSymbolStylesFromWebStylesLegendTableViewController.swift",
+        "CreateSymbolStylesFromWebStylesViewController.swift"
+    ],
+    "title": "Create symbol styles from web styles"
+}

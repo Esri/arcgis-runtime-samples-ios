@@ -20,6 +20,8 @@ class DisplayUtilityAssociationsViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             let map = AGSMap(basemapStyle: .arcGISTopographic)
+            // Add the utility network to the map.
+            map.utilityNetworks.add(utilityNetwork)
             mapView.map = map
             mapView.setViewpoint(AGSViewpoint(latitude: 41.8057655, longitude: -88.1489692, scale: 70.5310735))
             mapView.graphicsOverlays.add(associationsOverlay)
@@ -35,7 +37,6 @@ class DisplayUtilityAssociationsViewController: UIViewController {
     private let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 5)
     
     func loadUtilityNetwork() {
-        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -167,7 +168,6 @@ class DisplayUtilityAssociationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapView.map?.utilityNetworks.add(utilityNetwork)
         loadUtilityNetwork()
         
         // Add the source code button item to the right of navigation bar.

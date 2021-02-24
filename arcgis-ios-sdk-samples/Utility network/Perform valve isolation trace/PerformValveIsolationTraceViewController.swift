@@ -27,16 +27,12 @@ class PerformValveIsolationTraceViewController: UIViewController {
     /// The label to display trace status.
     @IBOutlet weak var statusLabel: UILabel!
     /// The map view managed by the view controller.
-    @IBOutlet weak var mapView: AGSMapView! {
-        didSet {
-            mapView.map = makeMap(with: layers)
-        }
-    }
+    @IBOutlet weak var mapView: AGSMapView!
     
     // MARK: Instance properties
     
     /// The URL to the feature service for running the isolation trace.
-    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleGas/FeatureServer")!
+    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleGas/FeatureServer")!
     
     // Constants for creating the default trace configuration.
     let domainNetworkName = "Pipeline"
@@ -54,30 +50,21 @@ class PerformValveIsolationTraceViewController: UIViewController {
     var selectedCategory: AGSUtilityCategory?
     var startingLocationElement: AGSUtilityElement!
     var utilityNetwork: AGSUtilityNetwork!
-    
-    /// The gas line layer ./3 and gas device layer ./0 are created from the feature service URL.
-    lazy var layers: [AGSFeatureLayer] = {
-        let urls = [
-            featureServiceURL.appendingPathComponent("3"),
-            featureServiceURL.appendingPathComponent("0")
-        ]
-        return urls.map { (url) -> AGSFeatureLayer in
-            let featureTable = AGSServiceFeatureTable(url: url)
-            return AGSFeatureLayer(featureTable: featureTable)
-        }
-    }()
+    var serviceGeodatabase: AGSServiceGeodatabase!
+    var layers = [AGSFeatureLayer]()
     
     // MARK: Initialize map and utility network
     
     /// Create a map.
     ///
     /// - Parameter layers: The feature layers for the utility network.
-    /// - Returns: An `AGSMap` object.
-    func makeMap(with layers: [AGSFeatureLayer]) -> AGSMap {
+    func setMap(with layers: [AGSFeatureLayer]) {
         let map = AGSMap(basemapStyle: .arcGISStreetsNight)
         // Add the utility network feature layers to the map for display.
         map.operationalLayers.addObjects(from: layers)
-        return map
+        // Create the utility network, referencing the map.
+        utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
+        mapView.map = map
     }
     
     /// Create trace parameters based on the trace configuration from current utility tier and category.
@@ -104,9 +91,36 @@ class PerformValveIsolationTraceViewController: UIViewController {
         return parameters
     }
     
+    /// Load the service geodatabase and initialize the layers.
+    func loadServiceGeodatabase() {
+        serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
+        serviceGeodatabase.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
+        serviceGeodatabase.load { [ weak self ] error in
+            guard let self = self else { return }
+            // The gas line layer ./3 and gas device layer ./0 are created from the service geodatabase.
+            self.layers = {
+                let layerIDs = [
+                    3,
+                    0
+                ]
+                return layerIDs.map { (layerID) -> AGSFeatureLayer in
+                    let featureTable = self.serviceGeodatabase.table(withLayerID: layerID)!
+                    return AGSFeatureLayer(featureTable: featureTable)
+                }
+            }()
+            self.setMap(with: self.layers)
+            self.loadUtilityNetwork()
+            if let error = error {
+                self.presentAlert(error: error)
+            }
+        }
+    }
+    
+    /// Load the utility network.
     func loadUtilityNetwork() {
         setStatus(message: "Loading utility network…")
         // Load the utility network to be ready to run a trace against it.
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -151,7 +165,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
         let selectionGroup = DispatchGroup()
         
         groupedElements.forEach { (networkName, elements) in
-            guard let layer = self.layers.first(where: { $0.featureTable?.tableName == networkName }) else { return }
+            guard let layer = layers.first(where: { $0.featureTable?.tableName == networkName }) else { return }
             
             selectionGroup.enter()
             self.utilityNetwork.features(for: elements) { [weak self, layer] (features, error) in
@@ -226,7 +240,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
             guard let self = self else { return }
             let categoryName = self.selectedCategory!.name.lowercased()
             if let elementTraceResult = traceResults?.first as? AGSUtilityElementTraceResult,
-                !elementTraceResult.elements.isEmpty {
+               !elementTraceResult.elements.isEmpty {
                 SVProgressHUD.show(withStatus: "Trace completed. Selecting features…")
                 self.selectFeatures(in: elementTraceResult.elements) { [weak self] in
                     self?.setStatus(message: "Trace with \(categoryName) category completed.")
@@ -266,10 +280,9 @@ class PerformValveIsolationTraceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadServiceGeodatabase()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["PerformValveIsolationTraceViewController"]
-        // Create the utility network, referencing the map.
-        utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: mapView.map!)
-        loadUtilityNetwork()
     }
 }

@@ -25,40 +25,13 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var modeControl: UISegmentedControl!
     
-    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     
     // Create electrical distribution line layer ./115 and electrical device layer ./100.
-    private var layers: [AGSFeatureLayer] {
-        return [115, 100].map {
-            let featureTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("\($0)"))
-            let layer = AGSFeatureLayer(featureTable: featureTable)
-            if $0 == 115 {
-                // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
-                let darkCyan = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
-                let mediumVoltageValue = AGSUniqueValue(
-                    description: "N/A",
-                    label: "Medium voltage",
-                    symbol: AGSSimpleLineSymbol(style: .solid, color: darkCyan, width: 3),
-                    values: [5]
-                )
-                let lowVoltageValue = AGSUniqueValue(
-                    description: "N/A",
-                    label: "Low voltage",
-                    symbol: AGSSimpleLineSymbol(style: .dash, color: darkCyan, width: 3),
-                    values: [3]
-                )
-                layer.renderer = AGSUniqueValueRenderer(
-                    fieldNames: ["ASSETGROUP"],
-                    uniqueValues: [mediumVoltageValue, lowVoltageValue],
-                    defaultLabel: "",
-                    defaultSymbol: AGSSimpleLineSymbol()
-                )
-            }
-            return layer
-        }
-    }
+    private var layers = [AGSFeatureLayer]()
     
     private let map: AGSMap
+    private let serviceGeodatabase: AGSServiceGeodatabase
     private let utilityNetwork: AGSUtilityNetwork
     private var utilityTier: AGSUtilityTier?
     private var traceType = (name: "Connected", type: AGSUtilityTraceType.connected)
@@ -83,17 +56,53 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         return overlay
     }()
     
-    // MARK: Initialize map and Utility Network
+    // MARK: Initialize map, utility network, and service geodatabase
     required init?(coder aDecoder: NSCoder) {
         // Create the map
         map = AGSMap(basemapStyle: .arcGISStreetsNight)
+        
         // Create the utility network, referencing the map.
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
-        
+        // Create the service geodatabase that matches the utility network.
+        serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
         super.init(coder: aDecoder)
+        // Load the service geodatabase.
+        serviceGeodatabase.load { [weak self] error in
+            guard let self = self else { return }
+            self.layers = {
+                return [3, 0].map {
+                    let featureTable = AGSServiceFeatureTable(url: self.featureServiceURL.appendingPathComponent("\($0)"))
+                    let layer = AGSFeatureLayer(featureTable: featureTable)
+                    if $0 == 3 {
+                        // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
+                        let darkCyan = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
+                        let mediumVoltageValue = AGSUniqueValue(
+                            description: "N/A",
+                            label: "Medium voltage",
+                            symbol: AGSSimpleLineSymbol(style: .solid, color: darkCyan, width: 3),
+                            values: [5]
+                        )
+                        let lowVoltageValue = AGSUniqueValue(
+                            description: "N/A",
+                            label: "Low voltage",
+                            symbol: AGSSimpleLineSymbol(style: .dash, color: darkCyan, width: 3),
+                            values: [3]
+                        )
+                        layer.renderer = AGSUniqueValueRenderer(
+                            fieldNames: ["ASSETGROUP"],
+                            uniqueValues: [mediumVoltageValue, lowVoltageValue],
+                            defaultLabel: "",
+                            defaultSymbol: AGSSimpleLineSymbol()
+                        )
+                    }
+                    return layer
+                }
+            }()
+            // Add the utility network feature layers to the map for display.
+            self.map.operationalLayers.addObjects(from: self.layers)
+        }
         
-        // Add the utility network feature layers to the map for display.
-        map.operationalLayers.addObjects(from: layers)
+        
     }
     
     // MARK: Initialize user interface

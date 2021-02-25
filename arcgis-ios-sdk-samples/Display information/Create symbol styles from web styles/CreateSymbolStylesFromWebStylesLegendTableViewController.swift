@@ -17,14 +17,14 @@ import ArcGIS
 
 class CreateSymbolStylesFromWebStylesLegendTableViewController: UITableViewController {
     /// The symbols to display in the legend table.
-    var symbols: [(name: String, symbol: AGSSymbol)]?
+    var symbols = [(name: String, symbol: AGSSymbol)]()
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        symbols?.count ?? 0
+        symbols.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -34,9 +34,9 @@ class CreateSymbolStylesFromWebStylesLegendTableViewController: UITableViewContr
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SymbolLegendCell", for: indexPath)
         // Display the name of the symbol.
-        cell.textLabel?.text = symbols?[indexPath.row].name
+        cell.textLabel?.text = symbols[indexPath.row].name
         // Create an icon swatch for the symbol and update the cell.
-        symbols?[indexPath.row].symbol.createSwatch { (image, _) in
+        symbols[indexPath.row].symbol.createSwatch { (image, _) in
             if let updateCell = tableView.cellForRow(at: indexPath) {
                 updateCell.imageView?.image = image
                 updateCell.setNeedsLayout()

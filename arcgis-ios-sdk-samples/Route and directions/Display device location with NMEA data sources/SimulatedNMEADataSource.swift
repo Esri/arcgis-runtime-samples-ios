@@ -36,7 +36,7 @@ class SimulatedNMEADataSource {
     ///   - speed: The playback speed multiplier.
     init(from nmeaSourceFile: URL, speed: Double = 1.0) {
         // An empty container for NMEA data.
-        var dataSplittedBySecond = [Data]()
+        var dataBySeconds = [Data]()
         
         if let nmeaStrings = try? String(contentsOf: nmeaSourceFile, encoding: .utf8).components(separatedBy: .newlines).filter({ !$0.isEmpty }) {
             // A temporary container for the NMEA sentences at current timestamp.
@@ -49,13 +49,13 @@ class SimulatedNMEADataSource {
                 let sentenceIdentifier = nmeaLine.prefix(6)
                 if sentenceIdentifier == "$GPRMC",
                    !currentTimestamp.isEmpty {
-                    dataSplittedBySecond.append(Data(currentTimestamp.joined(separator: "\n").utf8))
+                    dataBySeconds.append(Data(currentTimestamp.joined(separator: "\n").utf8))
                     currentTimestamp.removeAll()
                 }
             }
         }
         // Create an iterator for the mock data generation.
-        nmeaDataIterator = CircularIterator(elements: dataSplittedBySecond)
+        nmeaDataIterator = CircularIterator(elements: dataBySeconds)
         playbackSpeed = speed
     }
     

@@ -69,20 +69,14 @@ class Display3DLabelsSceneViewController: UIViewController {
         textSymbol.size = 14
         textSymbol.fontStyle = .normal
         textSymbol.fontWeight = .normal
-        let textSymbolJSON = try textSymbol.toJSON()
-
-        // Make a JSON object.
-        let labelJSONObject: [String: Any] = [
-            "labelExpressionInfo": [
-                "expression": "$feature.INSTALLATIONDATE"
-            ],
-            "labelPlacement": "esriServerPointLabelPlacementAboveCenter",
-            "useCodedValues": true,
-            "symbol": textSymbolJSON
-        ]
         
+        let labelDefinition = AGSLabelDefinition()
+        labelDefinition.expression = AGSArcadeLabelExpression(arcadeExpression: "Text($feature.INSTALLATIONDATE, `DD MMM YY`)")
+        labelDefinition.placement = .lineAboveAlong
+        labelDefinition.useCodedValues = true
+        labelDefinition.textSymbol = textSymbol
         //  Create and return a label definition from the JSON object.
-        let result = try AGSLabelDefinition.fromJSON(labelJSONObject) as! AGSLabelDefinition
+        let result = labelDefinition
         return result
     }
     

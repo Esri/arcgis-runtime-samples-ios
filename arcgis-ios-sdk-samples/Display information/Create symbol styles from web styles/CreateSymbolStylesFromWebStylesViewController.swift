@@ -120,6 +120,8 @@ private class SymbolsDataSource: NSObject {
         didSet {
             // Keep the array sorted whenever it is modified.
             symbols.sort { $0.category < $1.category }
+            // Reset caches to ensure legends are updated correctly.
+            resetCaches()
         }
     }
     
@@ -127,6 +129,14 @@ private class SymbolsDataSource: NSObject {
     private var cachedImages = [IndexPath: UIImage]()
     /// A cache for cancelable operations.
     private var imageOperations = [IndexPath: AGSCancelable]()
+    
+    private func resetCaches() {
+        imageOperations.forEach { _, operation in
+            operation.cancel()
+        }
+        imageOperations.removeAll()
+        cachedImages.removeAll()
+    }
     
     /// Get certain categories of symbols from a symbol style.
     /// - Parameters:

@@ -46,9 +46,7 @@
 		008D175A24EF35800001BB8F /* EditWithBranchVersioningViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
 		009B5FF825E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B5FF625E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift */; };
 		009B5FFD25E58E5A00BB9A77 /* CreateSymbolStylesFromWebStyles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009B5FFC25E58E5A00BB9A77 /* CreateSymbolStylesFromWebStyles.storyboard */; };
-		009B600125E5A3E600BB9A77 /* CreateSymbolStylesFromWebStylesLegendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B600025E5A3E600BB9A77 /* CreateSymbolStylesFromWebStylesLegendTableViewController.swift */; };
 		009B600325E5DB4700BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 009B5FF625E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift */; };
-		009B600425E5DB4700BB9A77 /* CreateSymbolStylesFromWebStylesLegendTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 009B600025E5A3E600BB9A77 /* CreateSymbolStylesFromWebStylesLegendTableViewController.swift */; };
 		009D8BEF24F9AC8D00FD7E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */; };
 		00A3766A256C932800EC433A /* AppSecrets.swift.masque in Sources */ = {isa = PBXBuildFile; fileRef = 007A4250256C7A400025F582 /* AppSecrets.swift.masque */; };
 		00A9CFF625DF3ED7009A483A /* SA_EVI_8Day_03May20 in Resources */ = {isa = PBXBuildFile; fileRef = 00A9CFF525DF3ED7009A483A /* SA_EVI_8Day_03May20 */; settings = {ASSET_TAGS = (NDVIRaster, ); }; };
@@ -938,7 +936,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				009B600325E5DB4700BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift in CopyFiles */,
-				009B600425E5DB4700BB9A77 /* CreateSymbolStylesFromWebStylesLegendTableViewController.swift in CopyFiles */,
 				F1E8F0B32537D704000B9A0F /* NavigateRouteWithReroutingViewController.swift in CopyFiles */,
 				00166C9724D465B900DD317E /* BufferListViewController.swift in CopyFiles */,
 				003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */,
@@ -1254,7 +1251,6 @@
 		008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditWithBranchVersioning.storyboard; sourceTree = "<group>"; };
 		009B5FF625E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSymbolStylesFromWebStylesViewController.swift; sourceTree = "<group>"; };
 		009B5FFC25E58E5A00BB9A77 /* CreateSymbolStylesFromWebStyles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateSymbolStylesFromWebStyles.storyboard; sourceTree = "<group>"; };
-		009B600025E5A3E600BB9A77 /* CreateSymbolStylesFromWebStylesLegendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSymbolStylesFromWebStylesLegendTableViewController.swift; sourceTree = "<group>"; };
 		009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		00A9CFF525DF3ED7009A483A /* SA_EVI_8Day_03May20 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SA_EVI_8Day_03May20; sourceTree = "<group>"; };
 		00ADC3B82464D45B00A3B88D /* AnimateImagesWithImageOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnimateImagesWithImageOverlay.storyboard; sourceTree = "<group>"; };
@@ -1936,7 +1932,6 @@
 			children = (
 				009B5FFC25E58E5A00BB9A77 /* CreateSymbolStylesFromWebStyles.storyboard */,
 				009B5FF625E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift */,
-				009B600025E5A3E600BB9A77 /* CreateSymbolStylesFromWebStylesLegendTableViewController.swift */,
 			);
 			path = "Create symbol styles from web styles";
 			sourceTree = "<group>";
@@ -5274,7 +5269,6 @@
 				3EABC7A41DB1793000C161C6 /* StretchRendererViewController.swift in Sources */,
 				09607F821FDB616100FA43B6 /* TimeBasedQueryViewController.swift in Sources */,
 				3ED0286D1B8E3A8500ACA70D /* DisplayLocationViewController.swift in Sources */,
-				009B600125E5A3E600BB9A77 /* CreateSymbolStylesFromWebStylesLegendTableViewController.swift in Sources */,
 				215E23D421024715001DE092 /* SpatialRelationshipsViewController.swift in Sources */,
 				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift in Sources */,
 				4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */,

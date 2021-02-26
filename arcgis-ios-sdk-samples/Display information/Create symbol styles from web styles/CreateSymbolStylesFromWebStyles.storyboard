@@ -56,16 +56,16 @@
             </objects>
             <point key="canvasLocation" x="409" y="76"/>
         </scene>
-        <!--Create Symbol Styles From Web Styles Legend Table View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="h4J-H6-1A1">
             <objects>
-                <tableViewController id="YKo-hR-7jI" customClass="CreateSymbolStylesFromWebStylesLegendTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="YKo-hR-7jI" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jHa-tn-JGS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SymbolLegendCell" textLabel="2vf-Th-uRX" style="IBUITableViewCellStyleDefault" id="vTx-X9-l6a">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="basic" textLabel="2vf-Th-uRX" style="IBUITableViewCellStyleDefault" id="vTx-X9-l6a">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vTx-X9-l6a" id="cft-xv-wi4">

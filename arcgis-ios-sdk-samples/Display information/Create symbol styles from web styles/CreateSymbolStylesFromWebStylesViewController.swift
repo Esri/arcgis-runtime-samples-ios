@@ -128,7 +128,7 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mapScaleObservation = mapView.observe(\.mapScale, options: .initial) { [weak self] (_, _) in
-            DispatchQueue.main.async { [weak self] in
+            DispatchQueue.main.async {
                 guard let self = self else { return }
                 self.featureLayer.scaleSymbols = self.mapView.mapScale >= 8e4
             }

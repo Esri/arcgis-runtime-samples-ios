@@ -52,16 +52,12 @@ class Display3DLabelsSceneViewController: UIViewController {
     func makeLabelDefinition() -> AGSLabelDefinition {
         // Make and stylize the text symbol.
         let textSymbol = AGSTextSymbol()
-        textSymbol.angle = 0
-        textSymbol.backgroundColor = .clear
         textSymbol.outlineColor = .white
         textSymbol.color = .orange
         textSymbol.haloColor = .white
         textSymbol.haloWidth = 2
         textSymbol.horizontalAlignment = .center
         textSymbol.verticalAlignment = .middle
-        textSymbol.isKerningEnabled = false
-        textSymbol.fontDecoration = .none
         textSymbol.size = 16
         
         // Create and return a label definition using the text symbol.

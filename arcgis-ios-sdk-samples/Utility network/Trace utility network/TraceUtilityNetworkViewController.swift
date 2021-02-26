@@ -65,7 +65,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
         super.init(coder: aDecoder)
         // Load the service geodatabase.
-        serviceGeodatabase.load { [weak self] error in
+        serviceGeodatabase.load { [weak self] _ in
             guard let self = self else { return }
             // Create electrical distribution line layer ./115 and electrical device layer ./100.
             self.layers = {
@@ -100,8 +100,6 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             // Add the utility network feature layers to the map for display.
             self.map.operationalLayers.addObjects(from: self.layers)
         }
-        
-        
     }
     
     // MARK: Initialize user interface

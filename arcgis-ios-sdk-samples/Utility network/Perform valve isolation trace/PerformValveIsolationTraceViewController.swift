@@ -94,7 +94,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     /// Load the service geodatabase and initialize the layers.
     func loadServiceGeodatabase() {
         serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
-        serviceGeodatabase.load { [ weak self ] error in
+        serviceGeodatabase.load { [weak self] error in
             guard let self = self else { return }
             // The gas line layer ./3 and gas device layer ./0 are created from the service geodatabase.
             self.layers = {

@@ -84,7 +84,7 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController {
     /// - Parameters:
     ///   - symbolStyle: An `AGSSymbolStyle` object.
     ///   - categories: The types of symbols to search in the symbol style.
-    ///   - completion: A collection of categorized symbols.
+    ///   - completion: A closure that takes an array of categorized symbols.
     func getSymbols(symbolStyle: AGSSymbolStyle, categories: [SymbolCategory], completion: @escaping ([(category: SymbolCategory, symbol: AGSSymbol)]) -> Void) {
         let getSymbolsGroup = DispatchGroup()
         var symbols = [(SymbolCategory, AGSSymbol)]()

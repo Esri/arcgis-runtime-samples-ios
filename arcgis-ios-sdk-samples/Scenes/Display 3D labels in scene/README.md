@@ -14,7 +14,7 @@ Pan and zoom to explore the scene. Notice the labels on the 3D gas network.
 
 ## How it works
 
-1. Create an `AGSScene` using a URL .
+1. Create an `AGSScene` using a URL.
 2. Apply the scene to an `AGSSceneView` and load it.
 3. After loading is complete, obtain the `AGSFeatureLayer` from the scene's `operationalLayers`.
 4. Set the feature layer's `labelsEnabled` property to `true`.

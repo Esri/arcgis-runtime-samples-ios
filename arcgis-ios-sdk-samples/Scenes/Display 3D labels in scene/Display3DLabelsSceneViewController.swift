@@ -31,27 +31,25 @@ class Display3DLabelsSceneViewController: UIViewController {
         )
         // Load the scene.
         scene.load { [weak self] error in
+            guard let self = self else { return }
             // Get the feature layer.
             if let layers = scene.operationalLayers as? [AGSGroupLayer],
                let groupLayer = layers.first(where: { $0.name == "Gas" }),
                let gasFeatureLayer = groupLayer.layers.firstObject as? AGSFeatureLayer {
-                do {
-                    guard let labelDefinition = try self?.makeLabelDefinition() else { return }
-                    // Enable labels on the feature layer.
-                    gasFeatureLayer.labelsEnabled = true
-                    gasFeatureLayer.labelDefinitions.removeAllObjects()
-                    // Add the label definition to the layer.
-                    gasFeatureLayer.labelDefinitions.add(labelDefinition)
-                } catch {
-                    // If failure to make a label definition, present an error.
-                    print(error)
-                }
+                let labelDefinition = self.makeLabelDefinition()
+                // Enable labels on the feature layer.
+                gasFeatureLayer.labelsEnabled = true
+                gasFeatureLayer.labelDefinitions.removeAllObjects()
+                // Add the label definition to the layer.
+                gasFeatureLayer.labelDefinitions.add(labelDefinition)
+            } else if let error = error {
+                self.presentAlert(error: error)
             }
         }
         return scene
     }
     
-    func makeLabelDefinition() throws -> AGSLabelDefinition? {
+    func makeLabelDefinition() -> AGSLabelDefinition {
         // Make and stylize the text symbol.
         let textSymbol = AGSTextSymbol()
         textSymbol.angle = 0
@@ -63,21 +61,17 @@ class Display3DLabelsSceneViewController: UIViewController {
         textSymbol.horizontalAlignment = .center
         textSymbol.verticalAlignment = .middle
         textSymbol.isKerningEnabled = false
-        textSymbol.offsetX = 0
-        textSymbol.offsetY = 0
         textSymbol.fontDecoration = .none
-        textSymbol.size = 14
-        textSymbol.fontStyle = .normal
-        textSymbol.fontWeight = .normal
+        textSymbol.size = 16
         
+        // Create and return a label definition using the text symbol.
         let labelDefinition = AGSLabelDefinition()
         labelDefinition.expression = AGSArcadeLabelExpression(arcadeExpression: "Text($feature.INSTALLATIONDATE, `DD MMM YY`)")
         labelDefinition.placement = .lineAboveAlong
         labelDefinition.useCodedValues = true
         labelDefinition.textSymbol = textSymbol
-        //  Create and return a label definition from the JSON object.
-        let result = labelDefinition
-        return result
+        
+        return labelDefinition
     }
     
     // MARK: UIViewController

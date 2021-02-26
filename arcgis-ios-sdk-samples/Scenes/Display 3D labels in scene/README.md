@@ -6,11 +6,11 @@ Display custom labels in a 3D scene.
 
 ## Use case
 
-Labeling features is useful to visually display information or attributes on a scene. For example, city officials or maintenence crews may want to show installation dates on a gas network.
+Labeling features is useful to visually display information or attributes on a scene. For example, city officials or maintenance crews may want to show installation dates of features of a gas network.
 
 ## How to use the sample
 
-Pan and zoom to explore the scene. Notice the labels on the 3D gas network.
+Pan and zoom to explore the scene. Notice the labels showing installation dates of features in the 3D gas network.
 
 ## How it works
 
@@ -32,7 +32,7 @@ Pan and zoom to explore the scene. Notice the labels on the 3D gas network.
 
 ## About the data
 
-This sample shows a [NYC infrastructure scene](https://www.arcgis.com/home/item.html?id=850dfee7d30f4d9da0ebca34a533c169) hosted on ArcGIS Online.
+This sample shows a [New York City infrastructure](https://www.arcgis.com/home/item.html?id=850dfee7d30f4d9da0ebca34a533c169) scene hosted on ArcGIS Online.
 
 ## Tags
 

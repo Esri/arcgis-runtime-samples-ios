@@ -33,9 +33,10 @@ class Display3DLabelsSceneViewController: UIViewController {
         scene.load { [weak self] error in
             guard let self = self else { return }
             // Get the feature layer.
-            if let layers = scene.operationalLayers as? [AGSGroupLayer],
-               let groupLayer = layers.first(where: { $0.name == "Gas" }),
-               let gasFeatureLayer = groupLayer.layers.firstObject as? AGSFeatureLayer {
+            if let operationalLayers = scene.operationalLayers as? [AGSGroupLayer],
+               let groupLayer = operationalLayers.first(where: { $0.name == "Gas" }),
+               let layers = groupLayer.layers as? [AGSLayer],
+               let gasFeatureLayer = layers.first(where: { $0.name == "Gas Main" }) as? AGSFeatureLayer {
                 let labelDefinition = self.makeLabelDefinition()
                 // Enable labels on the feature layer.
                 gasFeatureLayer.labelsEnabled = true
@@ -52,12 +53,9 @@ class Display3DLabelsSceneViewController: UIViewController {
     func makeLabelDefinition() -> AGSLabelDefinition {
         // Make and stylize the text symbol.
         let textSymbol = AGSTextSymbol()
-        textSymbol.outlineColor = .white
         textSymbol.color = .orange
         textSymbol.haloColor = .white
         textSymbol.haloWidth = 2
-        textSymbol.horizontalAlignment = .center
-        textSymbol.verticalAlignment = .middle
         textSymbol.size = 16
         
         // Create and return a label definition using the text symbol.

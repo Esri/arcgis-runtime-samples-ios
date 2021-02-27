@@ -25,7 +25,6 @@
         "AGSUniqueValueRenderer"
     ],
     "snippets": [
-        "CreateSymbolStylesFromWebStylesLegendTableViewController.swift",
         "CreateSymbolStylesFromWebStylesViewController.swift"
     ],
     "title": "Create symbol styles from web styles"

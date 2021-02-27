@@ -26,7 +26,7 @@ class SimulatedNMEADataSource {
     private let playbackSpeed: Double
     /// An iterator to hold and loop through the mock NMEA data.
     private var nmeaDataIterator: CircularIterator<Data>
-    /// A timer to periodically update NMEA data.
+    /// A timer to periodically provide NMEA data updates.
     private var timer: Timer?
     /// A delegate to notify view controllers.
     weak var delegate: SimulatedNMEADataSourceDelegate?

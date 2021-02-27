@@ -120,7 +120,9 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: AGSNMEALocatio
         let satelliteSystemsText = Set(satellites.map(\.system.label))
             .sorted()
             .joined(separator: ", ")
-        let idText = satellites.map { String($0.satelliteID) }.joined(separator: ", ")
+        let idText = satellites
+            .map { String($0.satelliteID) }
+            .joined(separator: ", ")
         let statusText =
             """
             \(satellites.count) satellites in view

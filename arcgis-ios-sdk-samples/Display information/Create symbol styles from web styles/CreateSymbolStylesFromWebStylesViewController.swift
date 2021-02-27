@@ -209,7 +209,7 @@ extension SymbolsDataSource: UITableViewDataSource {
     
     /// Asynchronously create image swatches for a symbol at certain index path.
     /// - Parameter indexPath: An index path locating a row in tableView.
-    /// - Returns: A `UIImage` if cache hits, or `nil` if the operation hasn't been finished.
+    /// - Returns: A `UIImage` if cache hits, or `nil` if the operation hasn't finished.
     private func createImageForRow(at indexPath: IndexPath) -> UIImage? {
         let symbol = symbols[indexPath.row].symbol
         if let image = cachedImages[indexPath] {

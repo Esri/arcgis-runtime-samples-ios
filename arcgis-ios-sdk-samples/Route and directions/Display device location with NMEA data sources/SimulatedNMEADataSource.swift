@@ -15,8 +15,10 @@
 protocol SimulatedNMEADataSourceDelegate: AnyObject {
     /// A mock delegate method to receive NMEA data updates.
     /// Replace it with the real one to receive NMEA sentences from a GPS dongle.
-    /// - Parameter nmeaData: The latest NMEA data.
-    func dataSource(didUpdate nmeaData: Data)
+    /// - Parameters:
+    ///   - dataSource: The data source itself.
+    ///   - nmeaData: The latest NMEA data.
+    func dataSource(_ dataSource: SimulatedNMEADataSource, didUpdate nmeaData: Data)
 }
 
 class SimulatedNMEADataSource {
@@ -34,7 +36,7 @@ class SimulatedNMEADataSource {
     /// - Parameters:
     ///   - nmeaSourceFile: The URL of the NMEA source file.
     ///   - speed: The playback speed multiplier.
-    init(from nmeaSourceFile: URL, speed: Double = 1.0) {
+    init(nmeaSourceFile: URL, speed: Double = 1.0) {
         // An empty container for NMEA data.
         var dataBySeconds = [Data]()
         
@@ -63,12 +65,12 @@ class SimulatedNMEADataSource {
         guard !nmeaDataIterator.elements.isEmpty else { return }
         // Invalidate timer to stop previous mock data generation.
         timer?.invalidate()
-        // Duration in second.
-        let duration = TimeInterval(1) / playbackSpeed
+        // Time interval in second.
+        let interval: TimeInterval = 1 / playbackSpeed
         // Create a new timer.
-        let newTimer = Timer.scheduledTimer(withTimeInterval: duration, repeats: true) { [weak self] _ in
+        let newTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            self.delegate?.dataSource(didUpdate: self.nmeaDataIterator.next()!)
+            self.delegate?.dataSource(self, didUpdate: self.nmeaDataIterator.next()!)
         }
         timer = newTimer
     }

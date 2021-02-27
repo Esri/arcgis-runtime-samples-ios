@@ -39,7 +39,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     let nmeaLocationDataSource = AGSNMEALocationDataSource(receiverSpatialReference: .wgs84())
     /// A mock data source to read NMEA sentences from a local file, and generate
     /// mock NMEA data every fixed amount of time.
-    let mockNMEADataSource = SimulatedNMEADataSource(from: Bundle.main.url(forResource: "Redlands", withExtension: "nmea")!, speed: 1.5)
+    let mockNMEADataSource = SimulatedNMEADataSource(nmeaSourceFile: Bundle.main.url(forResource: "Redlands", withExtension: "nmea")!, speed: 1.5)
     
     // MARK: Actions
     
@@ -105,7 +105,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
 // MARK: SimulatedNMEADataSourceDelegate
 
 extension DisplayDeviceLocationWithNMEADataSourcesViewController: SimulatedNMEADataSourceDelegate {
-    func dataSource(didUpdate nmeaData: Data) {
+    func dataSource(_ dataSource: SimulatedNMEADataSource, didUpdate nmeaData: Data) {
         // Push mock data into the data source.
         // Note: You can also get real-time NMEA sentences from a GPS dongle.
         nmeaLocationDataSource.push(nmeaData)
@@ -117,7 +117,9 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: SimulatedNMEAD
 extension DisplayDeviceLocationWithNMEADataSourcesViewController: AGSNMEALocationDataSourceDelegate {
     func nmeaLocationDataSource(_ NMEALocationDataSource: AGSNMEALocationDataSource, satellitesDidChange satellites: [AGSNMEASatelliteInfo]) {
         // Update the satellites info status text.
-        let satelliteSystemsText = Set(satellites.map { $0.system }).map { $0.label }.joined(separator: ", ")
+        let satelliteSystemsText = Set(satellites.map(\.system.label))
+            .sorted()
+            .joined(separator: ", ")
         let idText = satellites.map { String($0.satelliteID) }.joined(separator: ", ")
         let statusText =
             """

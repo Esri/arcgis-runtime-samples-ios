@@ -1,5 +1,5 @@
 {
-    "category": "Route and directions",
+    "category": "Maps",
     "description": "Parse NMEA sentences and use the results to show device location on the map.",
     "ignore": false,
     "images": [

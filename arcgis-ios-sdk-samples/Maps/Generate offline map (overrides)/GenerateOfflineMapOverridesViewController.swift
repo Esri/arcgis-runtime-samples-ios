@@ -117,7 +117,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         self.generateOfflineMapJob = generateOfflineMapJob
         
         progressObservation = generateOfflineMapJob.progress.observe(\.fractionCompleted, options: .initial) { [weak self] (progress, _) in
-            DispatchQueue.main.async { [weak self] in
+            DispatchQueue.main.async {
                 guard let self = self else {
                     return
                 }

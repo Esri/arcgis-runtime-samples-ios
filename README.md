@@ -92,7 +92,7 @@ To learn more about `masquerade`, consult the [documentation](https://github.com
 ## Additional Resources
 
 * Want to start a new project? [Setup](https://developers.arcgis.com/ios/get-started) your dev environment
-* New to the API? Explore the documentation : [Guide](https://developers.arcgis.com/ios/swift/guide/introduction.htm) | [API Reference](https://developers.arcgis.com/ios/api-reference/)
+* New to the API? Explore the documentation : [Guide](https://developers.arcgis.com/ios/) | [API Reference](https://developers.arcgis.com/ios/api-reference/)
 * Got a question? Ask the community on our [forum](https://community.esri.com/community/developers/native-app-developers/arcgis-runtime-sdk-for-ios/)
 
 ## Issues

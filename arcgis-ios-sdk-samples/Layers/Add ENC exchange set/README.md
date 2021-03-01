@@ -36,7 +36,7 @@ The latest [hydrography package](https://developers.arcgis.com/downloads/data) c
 
 ## Additional information
 
-Read more about [Display electronic navigational charts](https://developers.arcgis.com/ios/latest/swift/guide/display-electronic-navigational-charts.htm) on *ArcGIS for Developers*.
+Read more about [Electronic Navigational Charts](https://developers.arcgis.com/ios/license-and-deployment/deployment/#enc-electronic-navigational-charts-style-directory) on the developers guide.
 
 ## Tags
 

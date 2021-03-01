@@ -2665,7 +2665,6 @@
 		3E6AE3E91C6D10DA0026E59C /* Route and directions */ = {
 			isa = PBXGroup;
 			children = (
-				0023F97925E717AC006B574E /* Display device location with NMEA data sources */,
 				F1E8F0AB2537D677000B9A0F /* Navigate route with rerouting */,
 				00E276252425A205000DBEDD /* Navigate route */,
 				F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */,
@@ -3206,6 +3205,7 @@
 				9D4BA6C822FCAFAD0086D5D3 /* Show location history */,
 				9DF04DBA2304C7F50014C1EE /* Download preplanned map */,
 				4C59D12E238DCF5B00824924 /* Apply scheduled updates to preplanned map area */,
+				0023F97925E717AC006B574E /* Display device location with NMEA data sources */,
 			);
 			path = Maps;
 			sourceTree = "<group>";

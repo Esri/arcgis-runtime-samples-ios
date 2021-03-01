@@ -60,7 +60,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         mapView.locationDisplay.autoPanMode = .recenter
         recenterBarButtonItem.isEnabled = false
         mapView.locationDisplay.autoPanModeChangedHandler = { [weak self] _ in
-            DispatchQueue.main.async { [weak self] in
+            DispatchQueue.main.async {
                 self?.recenterBarButtonItem.isEnabled = true
             }
             self?.mapView.locationDisplay.autoPanModeChangedHandler = nil

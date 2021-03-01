@@ -34,7 +34,7 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
         scene = AGSScene(basemap: .topographic())
         
         // The elevation image service URL.
-        let elevationServiceURL = URL(string: "https://tiles.arcgis.com/tiles/d3voDfTFbHOCRwVR/arcgis/rest/services/MNT_IDF/ImageServer")!
+        let elevationServiceURL = URL(string: "https://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!
         
         // Create the surface and set it as the base surface of the scene.
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
@@ -46,6 +46,8 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
         let brestBuildingsServiceURL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
         // Create the building layer and add it to the scene.
         let buildingsLayer = AGSArcGISSceneLayer(url: brestBuildingsServiceURL)
+        // Offset the altitude to avoid clipping with the elevation source.
+        buildingsLayer.altitudeOffset = 2
         scene.operationalLayers.add(buildingsLayer)
         
         // Create the location distance measurement.

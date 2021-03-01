@@ -3,11 +3,12 @@
     "description": "Display custom labels in a 3D scene.",
     "ignore": false,
     "images": [
-        "display-3d-labels.png"
+        "show-labels-on-layer-3d.png"
     ],
     "keywords": [
         "3D",
         "URL",
+        "arcade",
         "attribute",
         "buildings",
         "label",
@@ -16,6 +17,7 @@
         "symbol",
         "text",
         "visualization",
+        "AGSArcadeLabelExpression",
         "AGSFeatureLayer",
         "AGSLabelDefinition",
         "AGSScene",
@@ -24,6 +26,7 @@
     ],
     "redirect_from": [],
     "relevant_apis": [
+        "AGSArcadeLabelExpression",
         "AGSFeatureLayer",
         "AGSLabelDefinition",
         "AGSScene",
@@ -31,7 +34,7 @@
         "AGSTextSymbol"
     ],
     "snippets": [
-        "Display3DLabelsSceneViewController.swift"
+        "ShowLabelsOnLayer3DViewController.swift"
     ],
-    "title": "Display 3D labels in scene"
+    "title": "Show labels on layer in 3D"
 }

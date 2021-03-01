@@ -816,9 +816,9 @@
 		F1124F0A24CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */; };
 		F1124F0C24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
-		F11CED6D256C849A002A3F56 /* Display3DLabelsSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* Display3DLabelsSceneViewController.swift */; };
-		F11CED73256C857B002A3F56 /* Display3DLabelsScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11CED72256C857B002A3F56 /* Display3DLabelsScene.storyboard */; };
-		F11CED76256C8BD3002A3F56 /* Display3DLabelsSceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* Display3DLabelsSceneViewController.swift */; };
+		F11CED6D256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */; };
+		F11CED73256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */; };
+		F11CED76256C8BD3002A3F56 /* ShowLabelsOnLayer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpkx */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
 		F12C739F250ADDB000C1E3FE /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
 		F12C73A0250ADDB000C1E3FE /* ConfigureSubnetworkTraceOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
@@ -935,7 +935,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				F11CED76256C8BD3002A3F56 /* Display3DLabelsSceneViewController.swift in CopyFiles */,
+				F11CED76256C8BD3002A3F56 /* ShowLabelsOnLayer3DViewController.swift in CopyFiles */,
 				F1E8F0B32537D704000B9A0F /* NavigateRouteWithReroutingViewController.swift in CopyFiles */,
 				00166C9724D465B900DD317E /* BufferListViewController.swift in CopyFiles */,
 				003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */,
@@ -1794,8 +1794,8 @@
 		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpkx; sourceTree = "<group>"; };
 		F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditFeaturesWithFeatureLinkedAnnotation.storyboard; sourceTree = "<group>"; };
 		F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFeaturesWithFeatureLinkedAnnotationViewController.swift; sourceTree = "<group>"; };
-		F11CED6C256C849A002A3F56 /* Display3DLabelsSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display3DLabelsSceneViewController.swift; sourceTree = "<group>"; };
-		F11CED72256C857B002A3F56 /* Display3DLabelsScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Display3DLabelsScene.storyboard; sourceTree = "<group>"; };
+		F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLabelsOnLayer3DViewController.swift; sourceTree = "<group>"; };
+		F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayer3D.storyboard; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigureSubnetworkTrace.storyboard; sourceTree = "<group>"; };
@@ -3525,7 +3525,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				F11CED6A256C82A8002A3F56 /* Display 3D labels in scene */,
+				F11CED6A256C82A8002A3F56 /* Show labels on layer in 3D */,
 				00166C8524D20E0E00DD317E /* Realistic lighting and shadows */,
 				00ADC3B72464D45B00A3B88D /* Animate images with image overlay */,
 				F1C81C4322FCEBD100229CAA /* Get elevation at a point */,
@@ -4434,13 +4434,13 @@
 			path = "Edit features with feature-linked annotation";
 			sourceTree = "<group>";
 		};
-		F11CED6A256C82A8002A3F56 /* Display 3D labels in scene */ = {
+		F11CED6A256C82A8002A3F56 /* Show labels on layer in 3D */ = {
 			isa = PBXGroup;
 			children = (
-				F11CED6C256C849A002A3F56 /* Display3DLabelsSceneViewController.swift */,
-				F11CED72256C857B002A3F56 /* Display3DLabelsScene.storyboard */,
+				F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */,
+				F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */,
 			);
-			path = "Display 3D labels in scene";
+			path = "Show labels on layer in 3D";
 			sourceTree = "<group>";
 		};
 		F140E1E823F35E61008AC44E /* Display annotation */ = {
@@ -4916,7 +4916,7 @@
 				00ADC3BD2464D45C00A3B88D /* AnimateImagesWithImageOverlay.storyboard in Resources */,
 				3E8A25911D36B97A00D14F08 /* MapLoaded.storyboard in Resources */,
 				F14A8F012474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard in Resources */,
-				F11CED73256C857B002A3F56 /* Display3DLabelsScene.storyboard in Resources */,
+				F11CED73256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard in Resources */,
 				C7E9D7C821C0500300E6C47E /* Buffer.storyboard in Resources */,
 				F1E8F0B12537D6DD000B9A0F /* NavigateRouteWithRerouting.storyboard in Resources */,
 				3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */,
@@ -5151,7 +5151,7 @@
 				00A3766A256C932800EC433A /* AppSecrets.swift.masque in Sources */,
 				C7E86C9121751D1E001C65C3 /* UIViewController.swift in Sources */,
 				4CCA30C822386429009D2AEF /* ViewPointCloudDataOfflineViewController.swift in Sources */,
-				F11CED6D256C849A002A3F56 /* Display3DLabelsSceneViewController.swift in Sources */,
+				F11CED6D256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift in Sources */,
 				3EABC7921DB1772000C161C6 /* RGBRendererSettingsViewController.swift in Sources */,
 				4CCE7BD620D2BD34001238F5 /* DistanceMeasurementAnalysisViewController.swift in Sources */,
 				3E39F6D41B9790A9000DEC6C /* FeatureTemplatePickerViewController.swift in Sources */,

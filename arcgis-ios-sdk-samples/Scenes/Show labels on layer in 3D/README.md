@@ -1,8 +1,8 @@
-# Display 3D labels in scene
+# Show labels on layer in 3D
 
 Display custom labels in a 3D scene.
 
-![Display 3D labels in scene](display-3d-labels.png)
+![Show labels on layer in 3D](show-labels-on-layer-3d.png)
 
 ## Use case
 
@@ -24,6 +24,7 @@ Pan and zoom to explore the scene. Notice the labels showing installation dates 
 
 ## Relevant API
 
+* AGSArcadeLabelExpression
 * AGSFeatureLayer
 * AGSLabelDefinition
 * AGSScene
@@ -36,4 +37,4 @@ This sample shows a [New York City infrastructure](https://www.arcgis.com/home/i
 
 ## Tags
 
-3D, attribute, buildings, label, model, scene, symbol, text, URL, visualization
+3D, arcade, attribute, buildings, label, model, scene, symbol, text, URL, visualization

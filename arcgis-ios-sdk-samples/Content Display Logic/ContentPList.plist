@@ -1759,9 +1759,9 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Display 3D labels in scene</string>
+				<string>Show labels on layer in 3D</string>
 				<key>storyboardName</key>
-				<string>Display3DLabelsScene</string>
+				<string>ShowLabelsOnLayer3D</string>
 				<key>descriptionText</key>
 				<string>Display custom labels in a 3D scene.</string>
 			</dict>

@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class Display3DLabelsSceneViewController: UIViewController {
+class ShowLabelsOnLayer3DViewController: UIViewController {
     @IBOutlet var sceneView: AGSSceneView! {
         didSet {
             // Set the scene to the scene view.
@@ -74,6 +74,6 @@ class Display3DLabelsSceneViewController: UIViewController {
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["Display3DLabelsSceneViewController"]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ShowLabelsOnLayer3DViewController"]
     }
 }

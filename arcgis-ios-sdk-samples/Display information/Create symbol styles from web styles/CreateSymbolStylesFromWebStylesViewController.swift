@@ -299,8 +299,4 @@ private enum SymbolCategory: CaseIterable, Comparable {
         }
         return values
     }
-    
-    static func < (lhs: SymbolCategory, rhs: SymbolCategory) -> Bool {
-        return lhs.symbolName < rhs.symbolName
-    }
 }

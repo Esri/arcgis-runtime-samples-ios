@@ -107,7 +107,7 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         
         // observe the job's progress
         jobProgressObservation = generateOfflineMapJob.progress.observe(\.fractionCompleted, options: .new) { [weak self] (progress, _) in
-            DispatchQueue.main.async { [weak self] in
+            DispatchQueue.main.async {
                 // update progress label
                 self?.progressLabel.text = progress.localizedDescription
                 // update progress view

@@ -40,8 +40,13 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     var mapScaleObservation: NSKeyValueObservation?
     /// The Esri 2D point symbol style created from a web style.
     let symbolStyle = AGSSymbolStyle(styleName: "Esri2DPointSymbolsStyle", portal: .arcGISOnline(withLoginRequired: false))
-    /// The data source that handles symbols retrieval and for the legend table display.
-    private let symbolsDataSource = SymbolsDataSource()
+    
+    private var symbolsDataSource: SymbolsDataSource?
+    private var symbols = [(category: SymbolCategory, symbol: AGSSymbol)]() {
+        didSet {
+            symbolsDataSource?.symbols = symbols
+        }
+    }
     
     /// A feature layer with LA County Points of Interest service.
     let featureLayer: AGSFeatureLayer = {
@@ -62,84 +67,12 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         return map
     }
     
-    // MARK: UIViewController
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["CreateSymbolStylesFromWebStylesViewController"]
-        
-        // Get the symbols from the symbol style hosted on an ArcGIS portal.
-        symbolsDataSource.getSymbols(symbolStyle: symbolStyle, categories: SymbolCategory.allCases) { [weak self] in
-            guard let self = self else { return }
-            self.featureLayer.renderer = self.symbolsDataSource.makeUniqueValueRenderer(fieldNames: ["cat2"])
-            self.legendBarButtonItem.isEnabled = true
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        mapScaleObservation = mapView.observe(\.mapScale, options: .initial) { [weak self] (_, _) in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.featureLayer.scaleSymbols = self.mapView.mapScale >= 8e4
-            }
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        mapScaleObservation = nil
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LegendTableSegue",
-           let controller = segue.destination as? UITableViewController {
-            controller.presentationController?.delegate = self
-            controller.tableView.dataSource = symbolsDataSource
-            // Hold a weak reference to the table view to asynchronously reload
-            // image swatches for the symbols.
-            symbolsDataSource.tableView = controller.tableView
-        }
-    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // Ensure that the settings are shown in a popover on small displays.
-        return .none
-    }
-}
-
-// MARK: - SymbolsDataSource
-
-private class SymbolsDataSource: NSObject {
-    /// A weak reference to the table view which the data source itself connects.
-    weak var tableView: UITableView?
-    
-    /// The symbols created from a symbol style.
-    private var symbols = [(category: SymbolCategory, symbol: AGSSymbol)]() {
-        didSet {
-            // Reset caches to ensure legends are updated correctly.
-            resetCaches()
-        }
-    }
-    
-    /// A cache for the image swatches of the symbols.
-    private var cachedImages = [IndexPath: UIImage]()
-    /// A cache for cancelable operations.
-    private var imageOperations = [IndexPath: AGSCancelable]()
-    
-    private func resetCaches() {
-        imageOperations.forEach { $1.cancel() }
-        imageOperations.removeAll()
-        cachedImages.removeAll()
-    }
-    
     /// Get certain categories of symbols from a symbol style.
     /// - Parameters:
     ///   - symbolStyle: An `AGSSymbolStyle` object.
     ///   - categories: The types of symbols to search in the symbol style.
     ///   - completion: A closure executed upon success.
-    func getSymbols(symbolStyle: AGSSymbolStyle, categories: [SymbolCategory], completion: @escaping () -> Void) {
+    private func getSymbols(symbolStyle: AGSSymbolStyle, categories: [SymbolCategory], completion: @escaping () -> Void) {
         let getSymbolsGroup = DispatchGroup()
         var symbols = [(SymbolCategory, AGSSymbol)]()
         
@@ -175,6 +108,83 @@ private class SymbolsDataSource: NSObject {
             }
         }
         return renderer
+    }
+    
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["CreateSymbolStylesFromWebStylesViewController"]
+        
+        // Get the symbols from the symbol style hosted on an ArcGIS portal.
+        getSymbols(symbolStyle: symbolStyle, categories: SymbolCategory.allCases) { [weak self] in
+            guard let self = self else { return }
+            self.featureLayer.renderer = self.makeUniqueValueRenderer(fieldNames: ["cat2"])
+            self.legendBarButtonItem.isEnabled = true
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mapScaleObservation = mapView.observe(\.mapScale, options: .initial) { [weak self] (_, _) in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.featureLayer.scaleSymbols = self.mapView.mapScale >= 8e4
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        mapScaleObservation = nil
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LegendTableSegue",
+           let controller = segue.destination as? UITableViewController {
+            controller.presentationController?.delegate = self
+            // The data source for the legend table display.
+            symbolsDataSource = SymbolsDataSource(tableView: controller.tableView, symbols: symbols)
+            controller.tableView.dataSource = symbolsDataSource
+        }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // Ensure that the settings are shown in a popover on small displays.
+        return .none
+    }
+}
+
+// MARK: - SymbolsDataSource
+
+private class SymbolsDataSource: NSObject {
+    /// A weak reference to the table view which the data source itself connects.
+    private weak var tableView: UITableView?
+    
+    /// The symbols created from a symbol style.
+    var symbols: [(category: SymbolCategory, symbol: AGSSymbol)] {
+        didSet {
+            // Reset caches to ensure legends are updated correctly.
+            resetCaches()
+            tableView?.reloadData()
+        }
+    }
+    
+    /// A cache for the image swatches of the symbols.
+    private var cachedImages = [IndexPath: UIImage]()
+    /// A cache for cancelable operations.
+    private var imageOperations = [IndexPath: AGSCancelable]()
+    
+    private func resetCaches() {
+        imageOperations.forEach { $1.cancel() }
+        imageOperations.removeAll()
+        cachedImages.removeAll()
+    }
+    
+    init(tableView: UITableView, symbols: [(category: SymbolCategory, symbol: AGSSymbol)]) {
+        self.tableView = tableView
+        self.symbols = symbols
     }
 }
 

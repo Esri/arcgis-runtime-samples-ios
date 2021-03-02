@@ -118,8 +118,6 @@ private class SymbolsDataSource: NSObject {
     /// The symbols created from a symbol style.
     private var symbols = [(category: SymbolCategory, symbol: AGSSymbol)]() {
         didSet {
-            // Keep the array sorted whenever it is modified.
-            symbols.sort { $0.category < $1.category }
             // Reset caches to ensure legends are updated correctly.
             resetCaches()
         }
@@ -160,7 +158,7 @@ private class SymbolsDataSource: NSObject {
             }
         }
         getSymbolsGroup.notify(queue: .main) { [weak self] in
-            self?.symbols = symbols
+            self?.symbols = symbols.sorted { $0.0 < $1.0 }
             completion()
         }
     }

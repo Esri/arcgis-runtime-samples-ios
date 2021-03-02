@@ -129,9 +129,7 @@ private class SymbolsDataSource: NSObject {
     private var imageOperations = [IndexPath: AGSCancelable]()
     
     private func resetCaches() {
-        imageOperations.forEach { _, operation in
-            operation.cancel()
-        }
+        imageOperations.forEach { $1.cancel() }
         imageOperations.removeAll()
         cachedImages.removeAll()
     }

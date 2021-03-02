@@ -68,35 +68,35 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         serviceGeodatabase.load { [weak self] _ in
             guard let self = self else { return }
             // Create electrical distribution line layer ./115 and electrical device layer ./100.
-            self.layers = {
-                return [115, 100].map {
-                    let featureTable = AGSServiceFeatureTable(url: self.featureServiceURL.appendingPathComponent("\($0)"))
-                    let layer = AGSFeatureLayer(featureTable: featureTable)
-                    if $0 == 115 {
-                        // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
-                        let darkCyan = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
-                        let mediumVoltageValue = AGSUniqueValue(
-                            description: "N/A",
-                            label: "Medium voltage",
-                            symbol: AGSSimpleLineSymbol(style: .solid, color: darkCyan, width: 3),
-                            values: [5]
-                        )
-                        let lowVoltageValue = AGSUniqueValue(
-                            description: "N/A",
-                            label: "Low voltage",
-                            symbol: AGSSimpleLineSymbol(style: .dash, color: darkCyan, width: 3),
-                            values: [3]
-                        )
-                        layer.renderer = AGSUniqueValueRenderer(
-                            fieldNames: ["ASSETGROUP"],
-                            uniqueValues: [mediumVoltageValue, lowVoltageValue],
-                            defaultLabel: "",
-                            defaultSymbol: AGSSimpleLineSymbol()
-                        )
-                    }
-                    return layer
+            let urls = [self.featureServiceURL.appendingPathComponent("115"),
+                        self.featureServiceURL.appendingPathComponent("200")]
+            self.layers = urls.map { url -> AGSFeatureLayer in
+                let featureTable = AGSServiceFeatureTable(url: url)
+                let layer = AGSFeatureLayer(featureTable: featureTable)
+                if featureTable.serviceLayerID == 115 {
+                    // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
+                    let darkCyan = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
+                    let mediumVoltageValue = AGSUniqueValue(
+                        description: "N/A",
+                        label: "Medium voltage",
+                        symbol: AGSSimpleLineSymbol(style: .solid, color: darkCyan, width: 3),
+                        values: [5]
+                    )
+                    let lowVoltageValue = AGSUniqueValue(
+                        description: "N/A",
+                        label: "Low voltage",
+                        symbol: AGSSimpleLineSymbol(style: .dash, color: darkCyan, width: 3),
+                        values: [3]
+                    )
+                    layer.renderer = AGSUniqueValueRenderer(
+                        fieldNames: ["ASSETGROUP"],
+                        uniqueValues: [mediumVoltageValue, lowVoltageValue],
+                        defaultLabel: "",
+                        defaultSymbol: AGSSimpleLineSymbol()
+                    )
                 }
-            }()
+                return layer
+            }
             // Add the utility network feature layers to the map for display.
             self.map.operationalLayers.addObjects(from: self.layers)
         }

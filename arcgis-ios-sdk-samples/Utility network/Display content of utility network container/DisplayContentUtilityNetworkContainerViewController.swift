@@ -15,14 +15,104 @@
 import UIKit
 import ArcGIS
 
-class DisplayContentUtilityNetworkContainerViewController: UIViewController {
+class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGSGeoViewTouchDelegate {
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+        }
+    }
     
+    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    var utilityNetwork: AGSUtilityNetwork?
+    var containerFeature: AGSArcGISFeature?
+    var previousViewpoint: AGSViewpoint?
     
+    let boundingBoxSymbol = AGSSimpleLineSymbol(style: .dash, color: .yellow, width: 3)
+    let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .blue, width: 3)
+    let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 3)
+    
+    func makeMap() -> AGSMap {
+        let webMapURL = URL(string: "https://ss7portal.arcgisonline.com/arcgis/home/item.html?id=5b64cf7a89ca4f98b5ed3da545d334ef")!
+        let map = AGSMap(url: webMapURL)!
+        return map
+    }
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: mapView.map!)
+        
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayContentUtilityNetworkContainer"]
+    }
+    
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { (layerResults, error) in
+            // A map containing SubtypeFeatureLayer is expected to have features as part of its sublayer's result.
+            layerResults?.forEach { layerResult in
+                if self.containerFeature == nil, layerResult.layerContent is AGSSubtypeFeatureLayer {
+                    layerResult.sublayerResults.forEach { sublayerResult in
+                        sublayerResult.geoElements.forEach { geoElement in
+                            if self.containerFeature == nil, let feature = geoElement as? AGSArcGISFeature {
+                                self.containerFeature = feature
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        guard let containerFeature = containerFeature, let containerElement = utilityNetwork?.createElement(with: containerFeature) else { return }
+//        let containerElement = utilityNetwork?.createElement(with: containerFeature)
+        // Get the containment associations from this element to display its content.
+        utilityNetwork?.associations(with: containerElement, type: .containment) { [self] containmentAssociations, error in
+            var contentElements = [AGSUtilityElement]()
+            containmentAssociations?.forEach { association in
+                var otherElement: AGSUtilityElement
+                if association.fromElement.objectID == containerElement.objectID {
+                    otherElement = association.toElement
+                } else {
+                    otherElement = association.fromElement
+                }
+                contentElements.append(otherElement)
+                if contentElements.count > 0 {
+                    previousViewpoint = self.mapView.currentViewpoint(with: .boundingGeometry)
+                    (self.mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
+                        layer.isVisible = false
+                    }
+                    // Set container view visibility to visible.
+                    
+                    let overlay = mapView.graphicsOverlays[0] as? AGSGraphicsOverlay
+                    utilityNetwork?.features(for: contentElements) { (contentFeatures, error) in
+                        contentFeatures?.forEach { content in
+                            let symbol = (content.featureTable as? AGSArcGISFeatureTable)?.layerInfo?.drawingInfo?.renderer?.symbol(for: content)
+                            overlay?.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
+                        }
+                        var boundingBox: AGSGeometry?
+                        if overlay?.graphics.count == 1, (overlay?.graphics[0] as? AGSGraphic)?.geometry == mapPoint {
+                            mapView.setViewpointCenter(mapPoint, scale: containerElement.assetType.containerViewScale)
+                            boundingBox = mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry
+                        } else {
+                            boundingBox = AGSGeometryEngine.bufferGeometry(overlay!.extent, byDistance: 0.05)
+                        }
+                        overlay?.graphics.add(AGSGraphic(geometry: boundingBox, symbol: boundingBoxSymbol))
+                        mapView.setViewpointGeometry(AGSGeometryEngine.bufferGeometry(overlay!.extent, byDistance: 0.05)!)
+                        
+                        // Get the associations for this extent to display how content features are attached or connected.
+                        utilityNetwork?.associations(withExtent: overlay!.extent) { (containmentAssociations, error) in
+                            containmentAssociations?.forEach { association in
+                                var symbol = AGSSymbol()
+                                if association.associationType == .attachment {
+                                    symbol = attachmentSymbol
+                                } else {
+                                    symbol = connectivitySymbol
+                                }
+                                overlay?.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

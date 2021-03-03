@@ -18,19 +18,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgJ-4V-EwJ" userLabel="Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgX-Rf-9Od">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ynB-wT-vpa"/>
+                                    <barButtonItem style="plain" id="cNd-8p-Dr6">
+                                        <view key="customView" contentMode="scaleToFill" id="E1w-Sy-6vR">
+                                            <rect key="frame" x="124" y="9" width="166" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exit container view" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3f-HF-fH7">
+                                                    <rect key="frame" x="12" y="7.5" width="142.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="K3f-HF-fH7" firstAttribute="centerY" secondItem="E1w-Sy-6vR" secondAttribute="centerY" id="3uY-Uo-SXi"/>
+                                                <constraint firstItem="K3f-HF-fH7" firstAttribute="centerX" secondItem="E1w-Sy-6vR" secondAttribute="centerX" id="qkS-hY-dd0"/>
+                                            </constraints>
+                                        </view>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="y1a-Dr-ncT"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OZH-zL-pnv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fgJ-4V-EwJ" firstAttribute="top" secondItem="OZH-zL-pnv" secondAttribute="top" id="5mP-Jt-EqZ"/>
-                            <constraint firstAttribute="bottom" secondItem="fgJ-4V-EwJ" secondAttribute="bottom" id="67S-Xm-lNe"/>
                             <constraint firstAttribute="trailing" secondItem="fgJ-4V-EwJ" secondAttribute="trailing" id="6rA-qI-QCW"/>
+                            <constraint firstAttribute="trailing" secondItem="cgX-Rf-9Od" secondAttribute="trailing" id="K5m-ww-UGU"/>
+                            <constraint firstItem="cgX-Rf-9Od" firstAttribute="top" secondItem="fgJ-4V-EwJ" secondAttribute="bottom" id="MIU-Xk-yQA"/>
                             <constraint firstItem="fgJ-4V-EwJ" firstAttribute="leading" secondItem="UYX-lE-URm" secondAttribute="leading" id="lzC-F5-3hv"/>
+                            <constraint firstItem="cgX-Rf-9Od" firstAttribute="leading" secondItem="UYX-lE-URm" secondAttribute="leading" id="naF-TB-des"/>
+                            <constraint firstItem="cgX-Rf-9Od" firstAttribute="bottom" secondItem="OZH-zL-pnv" secondAttribute="bottom" id="u3l-x3-Bzi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="fgJ-4V-EwJ" id="q15-iU-W9n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YpG-zh-aU9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

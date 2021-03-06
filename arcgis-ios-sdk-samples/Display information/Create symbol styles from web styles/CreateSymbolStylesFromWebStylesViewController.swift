@@ -173,14 +173,16 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         }
     }
     
-    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
-        // Release the data source when the table view controller is dismissed.
-        symbolsDataSource = nil
-    }
+    // MARK: UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // Ensure that the settings are shown in a popover on small displays.
         return .none
+    }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        // Release the data source when the table view controller is dismissed.
+        symbolsDataSource = nil
     }
 }
 

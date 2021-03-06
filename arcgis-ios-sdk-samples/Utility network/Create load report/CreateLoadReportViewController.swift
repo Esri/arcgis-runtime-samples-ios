@@ -95,6 +95,7 @@ class CreateLoadReportViewController: UIViewController {
                 // Get possible coded phase values from the attributes.
                 if let domain = phasesNetworkAttribute.domain as? AGSCodedValueDomain {
                     self.phaseChoices = domain.codedValues.sorted { $0.name < $1.name }
+                    self.addDefaultPhase()
                 }
                 // Create a comparison to check the existence of service points.
                 let serviceCategoryComparison = AGSUtilityCategoryComparison(category: serviceCategory, comparisonOperator: .exists)
@@ -138,6 +139,13 @@ class CreateLoadReportViewController: UIViewController {
         let domainNetwork = utilityNetwork.definition.domainNetwork(withDomainNetworkName: domainNetworkName)
         let utilityTierConfiguration = domainNetwork?.tier(withName: tierName)?.traceConfiguration
         return utilityTierConfiguration
+    }
+    
+    /// Add a default phase to the list to better showcase the sample.
+    func addDefaultPhase() {
+        guard let defaultPhase = phaseChoices.first else { return }
+        self.phaseSummaries.append((defaultPhase, nil))
+        self.tableView.insertRows(at: [IndexPath(row: self.phaseSummaries.endIndex - 1, section: 0)], with: .automatic)
     }
     
     // MARK: Actions
@@ -227,6 +235,10 @@ class CreateLoadReportViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "Phases, Total Customers, Total Load"
+    }
+    
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         "Tap add button to add phases.\nTap run to get load reports for phases in the table."
     }
@@ -245,5 +257,12 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
         cell.textLabel?.text = "Phase: \(phase.name)"
         cell.detailTextLabel?.text = (summary?.description) ?? "Tap run to get report"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            phaseSummaries.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }

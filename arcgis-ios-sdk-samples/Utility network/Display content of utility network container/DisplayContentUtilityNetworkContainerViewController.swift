@@ -49,6 +49,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             layer.isVisible = true
             if let previousViewpoint = previousViewpoint {
                 mapView.setViewpoint(previousViewpoint)
+                mapView.isUserInteractionEnabled = true
             }
         }
     }
@@ -118,8 +119,10 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                                 overlay?.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
                             }
                             var boundingBox: AGSGeometry?
-                            if overlay?.graphics.count == 1, (overlay?.graphics[0] as? AGSGraphic)?.geometry == mapPoint {
-                                self.mapView.setViewpointCenter(mapPoint, scale: containerElement.assetType.containerViewScale)
+                            if overlay?.graphics.count == 1,
+//                                let point = (overlay?.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint
+                               let point = (overlay?.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
+                                self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale)
                                 boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry
                             } else {
                                 boundingBox = AGSGeometryEngine.bufferGeometry(overlay!.extent, byDistance: 0.05)
@@ -139,6 +142,10 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                                     overlay?.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
                                 }
                                 self.exitBarButtonItem.isEnabled = true
+                                self.mapView.isUserInteractionEnabled = false
+                                if let error = error {
+                                    self.presentAlert(error: error)
+                                }
                             }
                         }
                     }

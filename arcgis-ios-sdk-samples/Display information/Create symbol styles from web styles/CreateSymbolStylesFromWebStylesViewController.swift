@@ -36,12 +36,15 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     
     // MARK: Instance properties
     
-    /// The observation on the map view's `mapScale` property.
-    var mapScaleObservation: NSKeyValueObservation?
     /// The Esri 2D point symbol style created from a web style.
     let symbolStyle = AGSSymbolStyle(styleName: "Esri2DPointSymbolsStyle", portal: .arcGISOnline(withLoginRequired: false))
-    
+    /// The observation on the map view's `mapScale` property.
+    var mapScaleObservation: NSKeyValueObservation?
+    /// A cache for the image swatches of the symbols.
+    var cachedImages = [AGSSymbol: UIImage]()
+    /// The data source for the legend table.
     private var symbolsDataSource: SymbolsDataSource?
+    /// A list of symbols created from the web style.
     private var symbols = [(category: SymbolCategory, symbol: AGSSymbol)]()
     
     /// A feature layer with LA County Points of Interest service.
@@ -61,6 +64,22 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         map.referenceScale = 1e5
         map.operationalLayers.add(featureLayer)
         return map
+    }
+    
+    /// Create an `AGSUniqueValueRenderer` to render feature layer with symbol styles.
+    /// - Parameter fieldNames: The attributes to match the unique values against.
+    /// - Returns: An `AGSUniqueValueRenderer` object.
+    func makeUniqueValueRenderer(fieldNames: [String]) -> AGSUniqueValueRenderer {
+        let renderer = AGSUniqueValueRenderer()
+        renderer.fieldNames = fieldNames
+        renderer.uniqueValues = symbols.flatMap { category, symbol in
+            // For each category value of a symbol, we need to create a
+            // unique value for it, so the field name matches to all categories.
+            category.symbolCategoryValues.map { symbolValue in
+                AGSUniqueValue(description: "", label: category.symbolName, symbol: symbol, values: [symbolValue])
+            }
+        }
+        return renderer
     }
     
     /// Get certain categories of symbols from a symbol style.
@@ -90,20 +109,26 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         }
     }
     
-    /// Create an `AGSUniqueValueRenderer` to render feature layer with symbol styles.
-    /// - Parameter fieldNames: The attributes to match the unique values against.
-    /// - Returns: An `AGSUniqueValueRenderer` object.
-    func makeUniqueValueRenderer(fieldNames: [String]) -> AGSUniqueValueRenderer {
-        let renderer = AGSUniqueValueRenderer()
-        renderer.fieldNames = fieldNames
-        renderer.uniqueValues = symbols.flatMap { category, symbol in
-            // For each category value of a symbol, we need to create a
-            // unique value for it, so the field name matches to all categories.
-            category.symbolCategoryValues.map { symbolValue in
-                AGSUniqueValue(description: "", label: category.symbolName, symbol: symbol, values: [symbolValue])
+    /// Asynchronously create image swatches for the symbols.
+    func createImages(completion: @escaping () -> Void) {
+        let createImagesGroup = DispatchGroup()
+        var cachedImages = [AGSSymbol: UIImage]()
+        
+        symbols.forEach { _, symbol in
+            createImagesGroup.enter()
+            symbol.createSwatch { image, _ in
+                defer {
+                    createImagesGroup.leave()
+                }
+                if let image = image {
+                    cachedImages[symbol] = image
+                }
             }
         }
-        return renderer
+        createImagesGroup.notify(queue: .main) { [weak self] in
+            self?.cachedImages = cachedImages
+            completion()
+        }
     }
     
     // MARK: UIViewController
@@ -115,9 +140,10 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         
         // Get the symbols from the symbol style hosted on an ArcGIS portal.
         getSymbols(symbolStyle: symbolStyle, categories: SymbolCategory.allCases) { [weak self] in
-            guard let self = self else { return }
-            self.featureLayer.renderer = self.makeUniqueValueRenderer(fieldNames: ["cat2"])
-            self.legendBarButtonItem.isEnabled = true
+            self?.featureLayer.renderer = self?.makeUniqueValueRenderer(fieldNames: ["cat2"])
+            self?.createImages {
+                self?.legendBarButtonItem.isEnabled = true
+            }
         }
     }
     
@@ -140,8 +166,9 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         if segue.identifier == "LegendTableSegue",
            let controller = segue.destination as? UITableViewController {
             controller.presentationController?.delegate = self
-            // The data source for the legend table display.
-            symbolsDataSource = SymbolsDataSource(tableView: controller.tableView, symbols: symbols)
+            // The data source for the legend table.
+            let legendItems = symbols.map { LegendItem(name: $0.symbolName, image: cachedImages[$1]!) }
+            symbolsDataSource = SymbolsDataSource(legendItems: legendItems)
             controller.tableView.dataSource = symbolsDataSource
         }
     }
@@ -157,38 +184,25 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     }
 }
 
-// MARK: - SymbolsDataSource
+// MARK: - SymbolsDataSource, UITableViewDataSource
 
-private class SymbolsDataSource: NSObject {
-    /// A weak reference to the table view which the data source itself connects.
-    private weak var tableView: UITableView?
-    /// The symbols created from a symbol style.
-    private let symbols: [(category: SymbolCategory, symbol: AGSSymbol)]
-    /// A cache for the image swatches of the symbols.
-    private var cachedImages = [IndexPath: UIImage]()
-    /// A cache for cancelable operations.
-    private var imageOperations = [IndexPath: AGSCancelable]()
+private class SymbolsDataSource: NSObject, UITableViewDataSource {
+    /// The legend items for the legend table.
+    private let legendItems: [LegendItem]
     
-    init(tableView: UITableView, symbols: [(category: SymbolCategory, symbol: AGSSymbol)]) {
-        self.tableView = tableView
-        self.symbols = symbols
+    init(legendItems: [LegendItem]) {
+        self.legendItems = legendItems
     }
-}
 
-// MARK: - UITableViewDataSource
-
-extension SymbolsDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        symbols.count
+        legendItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Create a cell with basic style.
-        let cell = tableView.dequeueReusableCell(withIdentifier: "basic", for: indexPath)
-        // Display the name of the symbol.
-        cell.textLabel?.text = symbols[indexPath.row].category.symbolName
-        // Create an image swatch for the symbol and update the cell.
-        cell.imageView?.image = createImageForRow(at: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Basic", for: indexPath)
+        let legendItem = legendItems[indexPath.row]
+        cell.textLabel?.text = legendItem.name
+        cell.imageView?.image = legendItem.image
         return cell
     }
     
@@ -199,29 +213,13 @@ extension SymbolsDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "Symbol Styles"
     }
-    
-    /// Asynchronously create image swatches for a symbol at certain index path.
-    /// - Parameter indexPath: An index path locating a row in tableView.
-    /// - Returns: A `UIImage` if cache hits, or `nil` if the operation hasn't finished.
-    private func createImageForRow(at indexPath: IndexPath) -> UIImage? {
-        let symbol = symbols[indexPath.row].symbol
-        if let image = cachedImages[indexPath] {
-            return image
-        } else if imageOperations[indexPath] != nil {
-            return nil
-        } else {
-            let createSwatchOperation = symbol.createSwatch { [weak self] (image, _) in
-                guard let self = self else { return }
-                self.imageOperations[indexPath] = nil
-                if let image = image {
-                    self.cachedImages[indexPath] = image
-                    self.tableView?.reloadRows(at: [indexPath], with: .automatic)
-                }
-            }
-            imageOperations[indexPath] = createSwatchOperation
-            return nil
-        }
-    }
+}
+
+// MARK: - LegendItem
+
+private struct LegendItem {
+    var name: String
+    var image: UIImage
 }
 
 // MARK: - SymbolCategory

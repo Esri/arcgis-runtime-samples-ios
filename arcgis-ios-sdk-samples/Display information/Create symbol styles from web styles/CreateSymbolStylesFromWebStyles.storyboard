@@ -88,8 +88,12 @@
                             <outlet property="delegate" destination="YKo-hR-7jI" id="mWm-Hi-ffx"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="zkf-B2-vai" kind="unwind" identifier="unwindSegue" unwindAction="unwindActionWithUnwindSegue:" id="fgc-u4-TBe"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XjA-4a-9wc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="zkf-B2-vai" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1152" y="76"/>
         </scene>

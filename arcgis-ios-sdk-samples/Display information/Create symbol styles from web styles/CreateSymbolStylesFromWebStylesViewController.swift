@@ -42,11 +42,7 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     let symbolStyle = AGSSymbolStyle(styleName: "Esri2DPointSymbolsStyle", portal: .arcGISOnline(withLoginRequired: false))
     
     private var symbolsDataSource: SymbolsDataSource?
-    private var symbols = [(category: SymbolCategory, symbol: AGSSymbol)]() {
-        didSet {
-            symbolsDataSource?.symbols = symbols
-        }
-    }
+    private var symbols = [(category: SymbolCategory, symbol: AGSSymbol)]()
     
     /// A feature layer with LA County Points of Interest service.
     let featureLayer: AGSFeatureLayer = {
@@ -150,6 +146,11 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         }
     }
     
+    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
+        // Release the data source when the table view controller is dismissed.
+        symbolsDataSource = nil
+    }
+    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // Ensure that the settings are shown in a popover on small displays.
         return .none
@@ -161,26 +162,12 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
 private class SymbolsDataSource: NSObject {
     /// A weak reference to the table view which the data source itself connects.
     private weak var tableView: UITableView?
-    
     /// The symbols created from a symbol style.
-    var symbols: [(category: SymbolCategory, symbol: AGSSymbol)] {
-        didSet {
-            // Reset caches to ensure legends are updated correctly.
-            resetCaches()
-            tableView?.reloadData()
-        }
-    }
-    
+    private let symbols: [(category: SymbolCategory, symbol: AGSSymbol)]
     /// A cache for the image swatches of the symbols.
     private var cachedImages = [IndexPath: UIImage]()
     /// A cache for cancelable operations.
     private var imageOperations = [IndexPath: AGSCancelable]()
-    
-    private func resetCaches() {
-        imageOperations.forEach { $1.cancel() }
-        imageOperations.removeAll()
-        cachedImages.removeAll()
-    }
     
     init(tableView: UITableView, symbols: [(category: SymbolCategory, symbol: AGSSymbol)]) {
         self.tableView = tableView

@@ -83,17 +83,17 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         return renderer
     }
     
-    /// Get certain categories of symbols from a symbol style.
+    /// Get certain types of symbols from a symbol style.
     /// - Parameters:
     ///   - symbolStyle: An `AGSSymbolStyle` object.
-    ///   - categories: The types of symbols to search in the symbol style.
+    ///   - types: The types of symbols to search in the symbol style.
     ///   - completion: A closure executed upon success.
-    private func getSymbols(symbolStyle: AGSSymbolStyle, categories: [SymbolCategory], completion: @escaping () -> Void) {
+    private func getSymbols(symbolStyle: AGSSymbolStyle, types: [SymbolType], completion: @escaping () -> Void) {
         let getSymbolsGroup = DispatchGroup()
         var legendItems = [LegendItem]()
         var symbols = [(String, AGSSymbol, [String])]()
         
-        categories.forEach { category in
+        types.forEach { category in
             getSymbolsGroup.enter()
             let symbolName = category.symbolName
             let symbolCategoryValues = category.symbolCategoryValues
@@ -128,7 +128,7 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["CreateSymbolStylesFromWebStylesViewController"]
         
         // Get the symbols from the symbol style hosted on an ArcGIS portal.
-        getSymbols(symbolStyle: symbolStyle, categories: SymbolCategory.allCases) { [weak self] in
+        getSymbols(symbolStyle: symbolStyle, types: SymbolType.allCases) { [weak self] in
             guard let self = self else { return }
             self.featureLayer.renderer = self.makeUniqueValueRenderer(fieldNames: ["cat2"])
             self.legendBarButtonItem.isEnabled = true
@@ -211,9 +211,9 @@ private struct LegendItem {
     let image: UIImage
 }
 
-// MARK: - SymbolCategory
+// MARK: - SymbolType
 
-private enum SymbolCategory: CaseIterable, Comparable {
+private enum SymbolType: CaseIterable, Comparable {
     case atm, beach, campground, cityHall, hospital, library, park, placeOfWorship, policeStation, postOffice, school, trail
     
     /// The names of the symbols in the web style.

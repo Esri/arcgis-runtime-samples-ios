@@ -40,12 +40,12 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     let symbolStyle = AGSSymbolStyle(styleName: "Esri2DPointSymbolsStyle", portal: .arcGISOnline(withLoginRequired: false))
     /// The observation on the map view's `mapScale` property.
     var mapScaleObservation: NSKeyValueObservation?
-    /// A cache for the image swatches of the symbols.
-    var cachedImages = [AGSSymbol: UIImage]()
     /// The data source for the legend table.
     private var symbolsDataSource: SymbolsDataSource?
     /// A list of symbols created from the web style.
-    private var symbols = [(category: SymbolCategory, symbol: AGSSymbol)]()
+    private var symbols = [(symbolName: String, symbol: AGSSymbol, symbolCategoryValues: [String])]()
+    /// The legend items for legend table.
+    private var legendItems = [LegendItem]()
     
     /// A feature layer with LA County Points of Interest service.
     let featureLayer: AGSFeatureLayer = {
@@ -72,11 +72,11 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     func makeUniqueValueRenderer(fieldNames: [String]) -> AGSUniqueValueRenderer {
         let renderer = AGSUniqueValueRenderer()
         renderer.fieldNames = fieldNames
-        renderer.uniqueValues = symbols.flatMap { category, symbol in
+        renderer.uniqueValues = symbols.flatMap { symbolName, symbol, symbolCategoryValues in
             // For each category value of a symbol, we need to create a
             // unique value for it, so the field name matches to all categories.
-            category.symbolCategoryValues.map { symbolValue in
-                AGSUniqueValue(description: "", label: category.symbolName, symbol: symbol, values: [symbolValue])
+            symbolCategoryValues.map { symbolValue in
+                AGSUniqueValue(description: "", label: symbolName, symbol: symbol, values: [symbolValue])
             }
         }
         return renderer
@@ -89,44 +89,31 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     ///   - completion: A closure executed upon success.
     private func getSymbols(symbolStyle: AGSSymbolStyle, categories: [SymbolCategory], completion: @escaping () -> Void) {
         let getSymbolsGroup = DispatchGroup()
-        var symbols = [(SymbolCategory, AGSSymbol)]()
+        var legendItems = [LegendItem]()
+        var symbols = [(String, AGSSymbol, [String])]()
         
         categories.forEach { category in
             getSymbolsGroup.enter()
-            symbolStyle.symbol(forKeys: [category.symbolName]) { symbol, _ in
-                defer {
-                    getSymbolsGroup.leave()
-                }
-                // Add the symbol to the result collection and ignore any error.
+            let symbolName = category.symbolName
+            let symbolCategoryValues = category.symbolCategoryValues
+            symbolStyle.symbol(forKeys: [symbolName]) { symbol, _ in
+                // Add the symbol to result collections and ignore any error.
                 if let symbol = symbol {
-                    symbols.append((category, symbol))
+                    symbols.append((symbolName, symbol, symbolCategoryValues))
+                    symbol.createSwatch { image, _ in
+                        defer {
+                            getSymbolsGroup.leave()
+                        }
+                        if let image = image {
+                            legendItems.append(LegendItem(name: symbolName, image: image))
+                        }
+                    }
                 }
             }
         }
         getSymbolsGroup.notify(queue: .main) { [weak self] in
-            self?.symbols = symbols.sorted { $0.0 < $1.0 }
-            completion()
-        }
-    }
-    
-    /// Asynchronously create image swatches for the symbols.
-    func createImages(completion: @escaping () -> Void) {
-        let createImagesGroup = DispatchGroup()
-        var cachedImages = [AGSSymbol: UIImage]()
-        
-        symbols.forEach { _, symbol in
-            createImagesGroup.enter()
-            symbol.createSwatch { image, _ in
-                defer {
-                    createImagesGroup.leave()
-                }
-                if let image = image {
-                    cachedImages[symbol] = image
-                }
-            }
-        }
-        createImagesGroup.notify(queue: .main) { [weak self] in
-            self?.cachedImages = cachedImages
+            self?.legendItems = legendItems.sorted { $0.name < $1.name }
+            self?.symbols = symbols
             completion()
         }
     }
@@ -140,10 +127,9 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         
         // Get the symbols from the symbol style hosted on an ArcGIS portal.
         getSymbols(symbolStyle: symbolStyle, categories: SymbolCategory.allCases) { [weak self] in
-            self?.featureLayer.renderer = self?.makeUniqueValueRenderer(fieldNames: ["cat2"])
-            self?.createImages {
-                self?.legendBarButtonItem.isEnabled = true
-            }
+            guard let self = self else { return }
+            self.featureLayer.renderer = self.makeUniqueValueRenderer(fieldNames: ["cat2"])
+            self.legendBarButtonItem.isEnabled = true
         }
     }
     
@@ -167,7 +153,6 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
            let controller = segue.destination as? UITableViewController {
             controller.presentationController?.delegate = self
             // The data source for the legend table.
-            let legendItems = symbols.map { LegendItem(name: $0.symbolName, image: cachedImages[$1]!) }
             symbolsDataSource = SymbolsDataSource(legendItems: legendItems)
             controller.tableView.dataSource = symbolsDataSource
         }
@@ -220,8 +205,8 @@ private class SymbolsDataSource: NSObject, UITableViewDataSource {
 // MARK: - LegendItem
 
 private struct LegendItem {
-    var name: String
-    var image: UIImage
+    let name: String
+    let image: UIImage
 }
 
 // MARK: - SymbolCategory

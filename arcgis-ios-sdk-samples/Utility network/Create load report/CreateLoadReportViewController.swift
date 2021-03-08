@@ -240,7 +240,7 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        "Tap add button to add phases.\nTap run to get load reports for phases in the table."
+        "Tap the add button to add phases.\nTap \"Run\" to get load reports."
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -255,7 +255,7 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "RightDetail", for: indexPath)
         let (phase, summary) = phaseSummaries[indexPath.row]
         cell.textLabel?.text = "Phase: \(phase.name)"
-        cell.detailTextLabel?.text = (summary?.description) ?? "Tap run to get report"
+        cell.detailTextLabel?.text = (summary?.description) ?? "Customers: N/A\tLoad: N/A"
         return cell
     }
     

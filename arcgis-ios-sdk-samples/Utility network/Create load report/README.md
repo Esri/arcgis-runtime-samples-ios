@@ -1,6 +1,6 @@
 # Create load report
 
-Create a simple electric distribution report that adds up the count of customers and total load per phase by tracing downstream from a given point.
+Create a simple electric distribution report that displays the count of customers and total load per phase by tracing downstream from a given point.
 
 ![Image of create load report](create-load-report.png)
 

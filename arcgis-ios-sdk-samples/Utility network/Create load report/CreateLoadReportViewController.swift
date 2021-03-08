@@ -144,8 +144,8 @@ class CreateLoadReportViewController: UIViewController {
     /// Add a default phase to the list to better showcase the sample.
     func addDefaultPhase() {
         guard let defaultPhase = phaseChoices.first else { return }
-        self.phaseSummaries.append((defaultPhase, nil))
-        self.tableView.insertRows(at: [IndexPath(row: self.phaseSummaries.endIndex - 1, section: 0)], with: .automatic)
+        phaseSummaries.append((defaultPhase, nil))
+        tableView.insertRows(at: [IndexPath(row: phaseSummaries.endIndex - 1, section: 0)], with: .automatic)
     }
     
     // MARK: Actions

@@ -1,6 +1,6 @@
 {
     "category": "Utility network",
-    "description": "Create a simple electric distribution report that adds up the count of customers and total load per phase by tracing downstream from a given point.",
+    "description": "Create a simple electric distribution report that displays the count of customers and total load per phase by tracing downstream from a given point.",
     "ignore": false,
     "images": [
         "create-load-report.png"

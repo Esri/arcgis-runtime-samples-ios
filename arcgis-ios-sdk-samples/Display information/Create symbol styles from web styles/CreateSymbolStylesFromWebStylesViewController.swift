@@ -42,7 +42,7 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     var mapScaleObservation: NSKeyValueObservation?
     /// The data source for the legend table.
     private var symbolsDataSource: SymbolsDataSource?
-    /// A list of symbols created from the web style.
+    /// A list of symbols created from the web style, with their associated names and values.
     private var symbols = [(symbolName: String, symbol: AGSSymbol, symbolCategoryValues: [String])]()
     /// The legend items for legend table.
     private var legendItems = [LegendItem]()
@@ -74,7 +74,8 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         renderer.fieldNames = fieldNames
         renderer.uniqueValues = symbols.flatMap { symbolName, symbol, symbolCategoryValues in
             // For each category value of a symbol, we need to create a
-            // unique value for it, so the field name matches to all categories.
+            // unique value for it, so the field name matches to all
+            // category values.
             symbolCategoryValues.map { symbolValue in
                 AGSUniqueValue(description: "", label: symbolName, symbol: symbol, values: [symbolValue])
             }
@@ -112,8 +113,9 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
             }
         }
         getSymbolsGroup.notify(queue: .main) { [weak self] in
-            self?.legendItems = legendItems.sorted { $0.name < $1.name }
-            self?.symbols = symbols
+            guard let self = self else { return }
+            self.legendItems = legendItems.sorted { $0.name < $1.name }
+            self.symbols = symbols
             completion()
         }
     }

@@ -21,7 +21,7 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = makeMap(featureLayer: featureLayer)
+            mapView.map = makeMap(referenceScale: 1e5)
             mapView.setViewpoint(
                 AGSViewpoint(
                     latitude: 34.28301,
@@ -41,11 +41,11 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     /// The observation on the map view's `mapScale` property.
     var mapScaleObservation: NSKeyValueObservation?
     /// The data source for the legend table.
-    private var symbolsDataSource: SymbolsDataSource?
-    /// A list of symbols created from the web style, with their associated names and values.
-    private var symbols = [(symbolName: String, symbol: AGSSymbol, symbolCategoryValues: [String])]()
-    /// The legend items for legend table.
-    private var legendItems = [LegendItem]()
+    private var symbolsDataSource: SymbolsDataSource? {
+        didSet {
+            legendBarButtonItem.isEnabled = true
+        }
+    }
     
     /// A feature layer with LA County Points of Interest service.
     let featureLayer: AGSFeatureLayer = {
@@ -56,28 +56,27 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     
     // MARK: Methods
     
-    /// Create a map with an `AGSFeatureLayer` added to its operational layers.
-    /// - Parameter featureLayer: An `AGSFeatureLayer` object.
-    /// - Returns: An `AGSMap` object.
-    func makeMap(featureLayer: AGSFeatureLayer) -> AGSMap {
+    /// Create a map with a reference scale.
+    func makeMap(referenceScale: Double) -> AGSMap {
         let map = AGSMap(basemapStyle: .arcGISLightGray)
-        map.referenceScale = 1e5
-        map.operationalLayers.add(featureLayer)
+        map.referenceScale = referenceScale
         return map
     }
     
     /// Create an `AGSUniqueValueRenderer` to render feature layer with symbol styles.
-    /// - Parameter fieldNames: The attributes to match the unique values against.
+    /// - Parameters:
+    ///   - fieldNames: The attributes to match the unique values against.
+    ///   - symbolInfos: A dictionary of symbols and their associated infos.
     /// - Returns: An `AGSUniqueValueRenderer` object.
-    func makeUniqueValueRenderer(fieldNames: [String]) -> AGSUniqueValueRenderer {
+    func makeUniqueValueRenderer(fieldNames: [String], symbolInfos: [AGSSymbol: (name: String, values: [String])]) -> AGSUniqueValueRenderer {
         let renderer = AGSUniqueValueRenderer()
         renderer.fieldNames = fieldNames
-        renderer.uniqueValues = symbols.flatMap { symbolName, symbol, symbolCategoryValues in
+        renderer.uniqueValues = symbolInfos.flatMap { symbol, infos in
             // For each category value of a symbol, we need to create a
             // unique value for it, so the field name matches to all
             // category values.
-            symbolCategoryValues.map { symbolValue in
-                AGSUniqueValue(description: "", label: symbolName, symbol: symbol, values: [symbolValue])
+            infos.values.map { symbolValue in
+                AGSUniqueValue(description: "", label: infos.name, symbol: symbol, values: [symbolValue])
             }
         }
         return renderer
@@ -87,36 +86,40 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     /// - Parameters:
     ///   - symbolStyle: An `AGSSymbolStyle` object.
     ///   - types: The types of symbols to search in the symbol style.
-    ///   - completion: A closure executed upon success.
-    private func getSymbols(symbolStyle: AGSSymbolStyle, types: [SymbolType], completion: @escaping () -> Void) {
+    private func getSymbols(symbolStyle: AGSSymbolStyle, types: [SymbolType]) {
         let getSymbolsGroup = DispatchGroup()
         var legendItems = [LegendItem]()
-        var symbols = [(String, AGSSymbol, [String])]()
+        var symbolInfos = [AGSSymbol: (String, [String])]()
         
+        // Get the `AGSSymbol` for each symbol type.
         types.forEach { category in
             getSymbolsGroup.enter()
             let symbolName = category.symbolName
             let symbolCategoryValues = category.symbolCategoryValues
             symbolStyle.symbol(forKeys: [symbolName]) { symbol, _ in
-                // Add the symbol to result collections and ignore any error.
-                if let symbol = symbol {
-                    symbols.append((symbolName, symbol, symbolCategoryValues))
-                    symbol.createSwatch { image, _ in
-                        defer {
-                            getSymbolsGroup.leave()
-                        }
-                        if let image = image {
-                            legendItems.append(LegendItem(name: symbolName, image: image))
-                        }
-                    }
+                defer { getSymbolsGroup.leave() }
+                // Add the symbol to result dictionary and ignore any error.
+                guard let symbol = symbol else { return }
+                symbolInfos[symbol] = (symbolName, symbolCategoryValues)
+                
+                // Get the image swatch for the symbol.
+                getSymbolsGroup.enter()
+                symbol.createSwatch { image, _ in
+                    defer { getSymbolsGroup.leave() }
+                    guard let image = image else { return }
+                    legendItems.append(LegendItem(name: symbolName, image: image))
                 }
             }
         }
+        
         getSymbolsGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-            self.legendItems = legendItems.sorted { $0.name < $1.name }
-            self.symbols = symbols
-            completion()
+            // Create the data source for the legend table.
+            self.symbolsDataSource = SymbolsDataSource(legendItems: legendItems.sorted { $0.name < $1.name })
+            // Create unique values and set them to the renderer.
+            self.featureLayer.renderer = self.makeUniqueValueRenderer(fieldNames: ["cat2"], symbolInfos: symbolInfos)
+            // Add the feature layer to the map.
+            self.mapView.map?.operationalLayers.add(self.featureLayer)
         }
     }
     
@@ -126,13 +129,8 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["CreateSymbolStylesFromWebStylesViewController"]
-        
         // Get the symbols from the symbol style hosted on an ArcGIS portal.
-        getSymbols(symbolStyle: symbolStyle, types: SymbolType.allCases) { [weak self] in
-            guard let self = self else { return }
-            self.featureLayer.renderer = self.makeUniqueValueRenderer(fieldNames: ["cat2"])
-            self.legendBarButtonItem.isEnabled = true
-        }
+        getSymbols(symbolStyle: symbolStyle, types: SymbolType.allCases)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -154,8 +152,6 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
         if segue.identifier == "LegendTableSegue",
            let controller = segue.destination as? UITableViewController {
             controller.presentationController?.delegate = self
-            // The data source for the legend table.
-            symbolsDataSource = SymbolsDataSource(legendItems: legendItems)
             controller.tableView.dataSource = symbolsDataSource
         }
     }
@@ -165,11 +161,6 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // Ensure that the settings are shown in a popover on small displays.
         return .none
-    }
-    
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        // Release the data source when the table view controller is dismissed.
-        symbolsDataSource = nil
     }
 }
 

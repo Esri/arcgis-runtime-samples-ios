@@ -29,6 +29,8 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgX-Rf-9Od">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qP6-q2-bY8"/>
+                                    <barButtonItem title="Legend" id="kbl-L6-sWd" userLabel="Legend Bar Button Item"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ynB-wT-vpa"/>
                                     <barButtonItem enabled="NO" title="Exit container view" id="xMf-yG-3Pq">
                                         <connections>

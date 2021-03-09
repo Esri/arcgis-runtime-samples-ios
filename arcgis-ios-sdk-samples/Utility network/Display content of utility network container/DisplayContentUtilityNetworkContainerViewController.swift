@@ -95,7 +95,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             }
             guard let containerFeature = self.containerFeature, let containerElement = self.utilityNetwork?.createElement(with: containerFeature) else { return }
             // Get the containment associations from this element to display its content.
-            self.utilityNetwork?.associations(with: containerElement, type: .containment) {containmentAssociations, error in
+            self.utilityNetwork?.associations(with: containerElement, type: .containment) { containmentAssociations, error in
                 var contentElements = [AGSUtilityElement]()
                 containmentAssociations?.forEach { association in
                     var otherElement: AGSUtilityElement
@@ -112,26 +112,25 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                         }
                         // Set container view visibility to visible.
                         self.containerView.isHidden = false
-                        let overlay = self.mapView.graphicsOverlays.firstObject as? AGSGraphicsOverlay
+                        guard let overlay = self.mapView.graphicsOverlays.firstObject as? AGSGraphicsOverlay else { return }
                         self.utilityNetwork?.features(for: contentElements) { (contentFeatures, error) in
                             contentFeatures?.forEach { content in
                                 let symbol = (content.featureTable as? AGSArcGISFeatureTable)?.layerInfo?.drawingInfo?.renderer?.symbol(for: content)
-                                overlay?.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
+                                overlay.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
                             }
                             var boundingBox: AGSGeometry?
-                            if overlay?.graphics.count == 1,
-//                                let point = (overlay?.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint
-                               let point = (overlay?.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
+                            if overlay.graphics.count == 1,
+                               let point = (overlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
                                 self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale)
                                 boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry
                             } else {
-                                boundingBox = AGSGeometryEngine.bufferGeometry(overlay!.extent, byDistance: 0.05)
+                                boundingBox = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)
                             }
-                            overlay?.graphics.add(AGSGraphic(geometry: boundingBox, symbol: self.boundingBoxSymbol))
-                            self.mapView.setViewpointGeometry(AGSGeometryEngine.bufferGeometry(overlay!.extent, byDistance: 0.05)!)
+                            overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: self.boundingBoxSymbol))
+                            self.mapView.setViewpointGeometry(AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!)
                             
                             // Get the associations for this extent to display how content features are attached or connected.
-                            self.utilityNetwork?.associations(withExtent: overlay!.extent) { (containmentAssociations, error) in
+                            self.utilityNetwork?.associations(withExtent: overlay.extent) { (containmentAssociations, error) in
                                 containmentAssociations?.forEach { association in
                                     var symbol = AGSSymbol()
                                     if association.associationType == .attachment {
@@ -139,7 +138,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                                     } else {
                                         symbol = self.connectivitySymbol
                                     }
-                                    overlay?.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
+                                    overlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
                                 }
                                 self.exitBarButtonItem.isEnabled = true
                                 self.mapView.isUserInteractionEnabled = false

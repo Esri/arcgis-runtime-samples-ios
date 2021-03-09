@@ -24,6 +24,11 @@
 		001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
 		001ECB60248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */; };
 		001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
+		0023F98025E717AC006B574E /* SimulatedNMEADataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023F97A25E717AC006B574E /* SimulatedNMEADataSource.swift */; };
+		0023F98125E717AC006B574E /* DisplayDeviceLocationWithNMEADataSources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0023F97B25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSources.storyboard */; };
+		0023F98225E717AC006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023F97C25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift */; };
+		0023F98825E717EA006B574E /* SimulatedNMEADataSource.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0023F97A25E717AC006B574E /* SimulatedNMEADataSource.swift */; };
+		0023F98925E717EA006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0023F97C25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift */; };
 		00255DD025156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00255DCF25156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard */; };
 		00255DD225156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift */; };
 		003BC30F24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
@@ -35,6 +40,7 @@
 		003D256E2513F4B6007527C2 /* AddENCExchangeSet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */; };
 		003D25702513FBB5007527C2 /* ExchangeSetWithoutUpdates in Resources */ = {isa = PBXBuildFile; fileRef = 003D256F2513FBB5007527C2 /* ExchangeSetWithoutUpdates */; settings = {ASSET_TAGS = (ExchangeSetWithoutUpdates, ); }; };
 		003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */; };
+		005507FC25E48134003990D3 /* Redlands.nmea in Resources */ = {isa = PBXBuildFile; fileRef = 005507FB25E48134003990D3 /* Redlands.nmea */; settings = {ASSET_TAGS = (RedlandsNMEA, ); }; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -932,6 +938,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				0023F98825E717EA006B574E /* SimulatedNMEADataSource.swift in CopyFiles */,
+				0023F98925E717EA006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift in CopyFiles */,
 				F1E8F0B32537D704000B9A0F /* NavigateRouteWithReroutingViewController.swift in CopyFiles */,
 				00166C9724D465B900DD317E /* BufferListViewController.swift in CopyFiles */,
 				003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */,
@@ -1229,6 +1237,9 @@
 		001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARCalibrationViewController.swift; sourceTree = "<group>"; };
 		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
+		0023F97A25E717AC006B574E /* SimulatedNMEADataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulatedNMEADataSource.swift; sourceTree = "<group>"; };
+		0023F97B25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSources.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayDeviceLocationWithNMEADataSources.storyboard; sourceTree = "<group>"; };
+		0023F97C25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayDeviceLocationWithNMEADataSourcesViewController.swift; sourceTree = "<group>"; };
 		00255DCF25156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewHiddenInfrastructureAR.storyboard; sourceTree = "<group>"; };
 		00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHiddenInfrastructureARPipePlacingViewController.swift; sourceTree = "<group>"; };
 		003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSubnetworkTraceOptionsViewController.swift; sourceTree = "<group>"; };
@@ -1238,6 +1249,7 @@
 		003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddENCExchangeSetViewController.swift; sourceTree = "<group>"; };
 		003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddENCExchangeSet.storyboard; sourceTree = "<group>"; };
 		003D256F2513FBB5007527C2 /* ExchangeSetWithoutUpdates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ExchangeSetWithoutUpdates; sourceTree = "<group>"; };
+		005507FB25E48134003990D3 /* Redlands.nmea */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redlands.nmea; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		007A4250256C7A400025F582 /* AppSecrets.swift.masque */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AppSecrets.swift.masque; path = "arcgis-ios-sdk-samples/AppSecrets.swift.masque"; sourceTree = "<group>"; };
 		007FC9452534E8AE00D8D9A1 /* darkmode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = darkmode.css; sourceTree = "<group>"; };
@@ -1873,6 +1885,16 @@
 				001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */,
 			);
 			path = "Feature collection layer (portal item)";
+			sourceTree = "<group>";
+		};
+		0023F97925E717AC006B574E /* Display device location with NMEA data sources */ = {
+			isa = PBXGroup;
+			children = (
+				0023F97B25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSources.storyboard */,
+				0023F97C25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift */,
+				0023F97A25E717AC006B574E /* SimulatedNMEADataSource.swift */,
+			);
+			path = "Display device location with NMEA data sources";
 			sourceTree = "<group>";
 		};
 		00255DCB25156C17001A71DF /* View hidden infrastructure in AR */ = {
@@ -3183,6 +3205,7 @@
 				9D4BA6C822FCAFAD0086D5D3 /* Show location history */,
 				9DF04DBA2304C7F50014C1EE /* Download preplanned map */,
 				4C59D12E238DCF5B00824924 /* Apply scheduled updates to preplanned map area */,
+				0023F97925E717AC006B574E /* Display device location with NMEA data sources */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -4549,6 +4572,7 @@
 		F1E8F0C6253A6007000B9A0F /* GPS Exchanges */ = {
 			isa = PBXGroup;
 			children = (
+				005507FB25E48134003990D3 /* Redlands.nmea */,
 				F1E8F0C8253A601C000B9A0F /* navigate_a_route_detour.gpx */,
 			);
 			path = "GPS Exchanges";
@@ -4661,6 +4685,7 @@
 					NDVIRaster,
 					PacificSouthWest,
 					PublicArtShapefile,
+					RedlandsNMEA,
 					Restaurant,
 					SRTMRaster,
 					SanDiegoDetour,
@@ -4849,6 +4874,7 @@
 				3EF024E81ECBC10600166EC5 /* FormatCoordinates.storyboard in Resources */,
 				3E1183DD1ECF5A1000180152 /* GrandCanyon.csv in Resources */,
 				4C4DCA42225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard in Resources */,
+				005507FC25E48134003990D3 /* Redlands.nmea in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
 				D9E2E76220EEB8FF001D0AE0 /* Public_Art.sbx in Resources */,
 				3E8A05DD1ECE69840032231C /* Bristol.dae in Resources */,
@@ -4866,6 +4892,7 @@
 				C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */,
 				00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
+				0023F98125E717AC006B574E /* DisplayDeviceLocationWithNMEADataSources.storyboard in Resources */,
 				00255DD025156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard in Resources */,
 				00F953C524E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard in Resources */,
 				3ED028951B8E3A8500ACA70D /* SetMapsSpatialReference.storyboard in Resources */,
@@ -5231,6 +5258,7 @@
 				3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */,
 				3E8A25841D36B6E300D14F08 /* FeatureLayerGDBViewController.swift in Sources */,
 				4C72117020BF444C004A7DD9 /* SVProgressAnimatedView.m in Sources */,
+				0023F98025E717AC006B574E /* SimulatedNMEADataSource.swift in Sources */,
 				127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */,
 				4CE15D4C22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
@@ -5273,6 +5301,7 @@
 				3E81C1BB1D8A17B600470AA4 /* VectorStylesViewController.swift in Sources */,
 				F1034F9E22D3EE8900B021DA /* ProjectViewController.swift in Sources */,
 				3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */,
+				0023F98225E717AC006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift in Sources */,
 				D9316A641FDB4F060075AD92 /* ReadGeopackageViewController.swift in Sources */,
 				3ED028921B8E3A8500ACA70D /* SetInitialMapLocationViewController.swift in Sources */,
 				3ED029661B8E3ACD00ACA70D /* EditFeatureAttachmentsViewController.swift in Sources */,

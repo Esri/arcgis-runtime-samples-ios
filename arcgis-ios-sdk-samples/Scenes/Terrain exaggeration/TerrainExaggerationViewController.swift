@@ -21,7 +21,7 @@ class TerrainExaggerationViewController: UIViewController {
     @IBOutlet weak var sceneView: AGSSceneView!
     
     // initialize scene with streets basemap
-    let scene = AGSScene(basemapStyle: .arcGISStreets)
+    let scene = AGSScene(basemap: .streets())
     
     // initialize surface
     let surface = AGSSurface()

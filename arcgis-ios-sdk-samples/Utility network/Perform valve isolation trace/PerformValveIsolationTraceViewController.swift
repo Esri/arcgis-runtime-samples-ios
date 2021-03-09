@@ -97,18 +97,12 @@ class PerformValveIsolationTraceViewController: UIViewController {
         serviceGeodatabase.load { [weak self] error in
             guard let self = self else { return }
             // The gas line layer ./3 and gas device layer ./0 are created from the service geodatabase.
-            self.layers = {
-                let featureTables = [
-                    self.serviceGeodatabase.table(withLayerID: 3),
-                    self.serviceGeodatabase.table(withLayerID: 0)
-                ]
-                return featureTables.map { (featureTable) -> AGSFeatureLayer in
-                    return AGSFeatureLayer(featureTable: featureTable!)
-                }
-            }()
-            self.setMap(with: self.layers)
-            self.loadUtilityNetwork()
-            if let error = error {
+            if let gasLineLayerTable = self.serviceGeodatabase.table(withLayerID: 3),
+               let gasDeviceLayerTable = self.serviceGeodatabase.table(withLayerID: 0) {
+                self.layers = [gasLineLayerTable, gasDeviceLayerTable].map { AGSFeatureLayer(featureTable: $0) }
+                self.setMap(with: self.layers)
+                self.loadUtilityNetwork()
+            } else if let error = error {
                 self.presentAlert(error: error)
             }
         }

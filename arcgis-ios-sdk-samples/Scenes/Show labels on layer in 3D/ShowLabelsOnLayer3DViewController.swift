@@ -27,7 +27,8 @@ class ShowLabelsOnLayer3DViewController: UIViewController {
         let scene = AGSScene(
             item: AGSPortalItem(
                 portal: AGSPortal.arcGISOnline(withLoginRequired: false),
-                itemID: "850dfee7d30f4d9da0ebca34a533c169")
+                itemID: "850dfee7d30f4d9da0ebca34a533c169"
+            )
         )
         // Load the scene.
         scene.load { [weak self] error in

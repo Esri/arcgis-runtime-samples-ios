@@ -121,8 +121,9 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                             var boundingBox: AGSGeometry?
                             if overlay.graphics.count == 1,
                                let point = (overlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
-                                self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale)
-                                boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry
+                                self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in
+                                    boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry 
+                                }
                             } else {
                                 boundingBox = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)
                             }

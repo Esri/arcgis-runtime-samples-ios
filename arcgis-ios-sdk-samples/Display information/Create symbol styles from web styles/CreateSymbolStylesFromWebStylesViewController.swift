@@ -97,17 +97,17 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
             let symbolName = category.symbolName
             let symbolCategoryValues = category.symbolCategoryValues
             symbolStyle.symbol(forKeys: [symbolName]) { symbol, _ in
-                defer { getSymbolsGroup.leave() }
                 // Add the symbol to result dictionary and ignore any error.
-                guard let symbol = symbol else { return }
-                symbolInfos[symbol] = (symbolName, symbolCategoryValues)
-                
-                // Get the image swatch for the symbol.
-                getSymbolsGroup.enter()
-                symbol.createSwatch { image, _ in
-                    defer { getSymbolsGroup.leave() }
-                    guard let image = image else { return }
-                    legendItems.append(LegendItem(name: symbolName, image: image))
+                if let symbol = symbol {
+                    symbolInfos[symbol] = (symbolName, symbolCategoryValues)
+                    // Get the image swatch for the symbol.
+                    symbol.createSwatch { image, _ in
+                        defer { getSymbolsGroup.leave() }
+                        guard let image = image else { return }
+                        legendItems.append(LegendItem(name: symbolName, image: image))
+                    }
+                } else {
+                    getSymbolsGroup.leave()
                 }
             }
         }

@@ -65,6 +65,31 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             }
         }
     }
+    
+    func getAssociationsWithExtent(boundingBox: AGSGeometry, overlay: AGSGraphicsOverlay) {
+        overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: self.boundingBoxSymbol))
+        self.mapView.setViewpointGeometry(AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!) { _ in
+            // Get the associations for this extent to display how content features are attached or connected.
+            self.utilityNetwork?.associations(withExtent: overlay.extent) { (containmentAssociations, error) in
+                containmentAssociations?.forEach { association in
+                    var symbol = AGSSymbol()
+                    if association.associationType == .attachment {
+                        symbol = self.attachmentSymbol
+                    } else {
+                        symbol = self.connectivitySymbol
+                    }
+                    overlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
+                }
+                self.exitBarButtonItem.isEnabled = true
+                self.mapView.isUserInteractionEnabled = false
+                if let error = error {
+                    self.presentAlert(error: error)
+                }
+            }
+        }
+        
+    }
+    
     // MARK: UIViewController
     
     override func viewDidLoad() {
@@ -122,31 +147,34 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                             if overlay.graphics.count == 1,
                                let point = (overlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
                                 self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in
-                                    boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry 
+                                    guard let boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry else { return }
+                                    self.getAssociationsWithExtent(boundingBox: boundingBox, overlay: overlay)
+//                                    boundingBox = boundingBox
                                 }
                             } else {
                                 boundingBox = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)
+                                self.getAssociationsWithExtent(boundingBox: boundingBox!, overlay: overlay)
                             }
-                            overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: self.boundingBoxSymbol))
-                            self.mapView.setViewpointGeometry(AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!)
-                            
-                            // Get the associations for this extent to display how content features are attached or connected.
-                            self.utilityNetwork?.associations(withExtent: overlay.extent) { (containmentAssociations, error) in
-                                containmentAssociations?.forEach { association in
-                                    var symbol = AGSSymbol()
-                                    if association.associationType == .attachment {
-                                        symbol = self.attachmentSymbol
-                                    } else {
-                                        symbol = self.connectivitySymbol
-                                    }
-                                    overlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
-                                }
-                                self.exitBarButtonItem.isEnabled = true
-                                self.mapView.isUserInteractionEnabled = false
-                                if let error = error {
-                                    self.presentAlert(error: error)
-                                }
-                            }
+//                            overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: self.boundingBoxSymbol))
+//                            self.mapView.setViewpointGeometry(AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!)
+//
+//                            // Get the associations for this extent to display how content features are attached or connected.
+//                            self.utilityNetwork?.associations(withExtent: overlay.extent) { (containmentAssociations, error) in
+//                                containmentAssociations?.forEach { association in
+//                                    var symbol = AGSSymbol()
+//                                    if association.associationType == .attachment {
+//                                        symbol = self.attachmentSymbol
+//                                    } else {
+//                                        symbol = self.connectivitySymbol
+//                                    }
+//                                    overlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
+//                                }
+//                                self.exitBarButtonItem.isEnabled = true
+//                                self.mapView.isUserInteractionEnabled = false
+//                                if let error = error {
+//                                    self.presentAlert(error: error)
+//                                }
+//                            }
                         }
                     }
                 }

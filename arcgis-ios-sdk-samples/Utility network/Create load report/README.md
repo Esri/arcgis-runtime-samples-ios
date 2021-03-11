@@ -10,7 +10,7 @@ You can use a load report to display the customers per phase as well as the load
 
 ## How to use the sample
 
-Choose phases to be included in the report. Tap "Run" to initiate a downstream trace on the network and create a load report. Swipe to delete phases from the list. Tap "Reset" to clear the phases and start over.
+Choose phases to be included in the report. Tap "Run" to initiate a downstream trace on the network and create a load report. Tap "Reset" to clear the phase summaries in the report and start over.
 
 ## How it works
 

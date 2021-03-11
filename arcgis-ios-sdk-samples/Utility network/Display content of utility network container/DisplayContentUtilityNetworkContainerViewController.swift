@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGSGeoViewTouchDelegate {
+class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
@@ -28,11 +28,12 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     var utilityNetwork: AGSUtilityNetwork?
     var containerFeature: AGSArcGISFeature?
     var previousViewpoint: AGSViewpoint?
+    var legendInfos = [AGSLegendInfo]()
     
     let boundingBoxSymbol = AGSSimpleLineSymbol(style: .dash, color: .yellow, width: 3)
     let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .blue, width: 3)
     let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 3)
-    var map = AGSMap()
+    
     
     func makeMap() -> AGSMap {
         let webMapURL = URL(string: "https://ss7portal.arcgisonline.com/arcgis/home/item.html?id=5b64cf7a89ca4f98b5ed3da545d334ef")!
@@ -62,6 +63,23 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             self.mapView.touchDelegate = self
             if let error = error {
                 self.presentAlert(error: error)
+            }
+        }
+    }
+    
+    func getLegends() {
+        guard let featureTable = AGSServiceFeatureTable(url: featureServiceURL).item else { return }
+        let featureLayers = [
+            AGSFeatureLayer(item: featureTable, layerID: 105),
+            AGSFeatureLayer(item: featureTable, layerID: 900)
+        ]
+        featureLayers.forEach { layer in
+            layer.fetchLegendInfos{ [weak self] legendInfos, error in
+                guard let self = self, let legendInfos = legendInfos else { return }
+                self.legendInfos = legendInfos
+                if let error = error {
+                    self.presentAlert(error: error)
+                }
             }
         }
     }
@@ -180,5 +198,22 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                 }
             }
         }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DisplayContentLegendSegue" {
+            let controller = segue.destination as! DisplayContentUtilityNetworkTableViewController
+            controller.presentationController?.delegate = self
+            controller.preferredContentSize = CGSize(width: 300, height: 200)
+            controller.legendInfos = legendInfos
+        }
+    }
+    
+    // MARK: - UIAdaptivePresentationControllerDelegate
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }

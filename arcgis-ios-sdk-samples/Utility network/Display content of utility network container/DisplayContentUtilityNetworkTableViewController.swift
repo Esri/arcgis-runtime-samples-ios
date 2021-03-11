@@ -16,5 +16,13 @@ import UIKit
 import ArcGIS
 
 class DisplayContentUtilityNetworkTableViewController: UITableViewController {
+    var legendInfos = [AGSLegendInfo]()
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        <#code#>
+    }
 }

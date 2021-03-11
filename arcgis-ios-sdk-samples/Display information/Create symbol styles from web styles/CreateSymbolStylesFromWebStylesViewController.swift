@@ -66,12 +66,12 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     /// Create an `AGSUniqueValueRenderer` to render feature layer with symbol styles.
     /// - Parameters:
     ///   - fieldNames: The attributes to match the unique values against.
-    ///   - symbolInfos: A dictionary of symbols and their associated infos.
+    ///   - symbolDetails: A dictionary of symbols and their associated information.
     /// - Returns: An `AGSUniqueValueRenderer` object.
-    func makeUniqueValueRenderer(fieldNames: [String], symbolInfos: [AGSSymbol: (name: String, values: [String])]) -> AGSUniqueValueRenderer {
+    func makeUniqueValueRenderer(fieldNames: [String], symbolDetails: [AGSSymbol: (name: String, values: [String])]) -> AGSUniqueValueRenderer {
         let renderer = AGSUniqueValueRenderer()
         renderer.fieldNames = fieldNames
-        renderer.uniqueValues = symbolInfos.flatMap { symbol, infos in
+        renderer.uniqueValues = symbolDetails.flatMap { symbol, infos in
             // For each category value of a symbol, we need to create a
             // unique value for it, so the field name matches to all
             // category values.
@@ -89,7 +89,7 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
     private func getSymbols(symbolStyle: AGSSymbolStyle, types: [SymbolType]) {
         let getSymbolsGroup = DispatchGroup()
         var legendItems = [LegendItem]()
-        var symbolInfos = [AGSSymbol: (String, [String])]()
+        var symbolDetails = [AGSSymbol: (String, [String])]()
         
         // Get the `AGSSymbol` for each symbol type.
         types.forEach { category in
@@ -99,7 +99,7 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
             symbolStyle.symbol(forKeys: [symbolName]) { symbol, _ in
                 // Add the symbol to result dictionary and ignore any error.
                 if let symbol = symbol {
-                    symbolInfos[symbol] = (symbolName, symbolCategoryValues)
+                    symbolDetails[symbol] = (symbolName, symbolCategoryValues)
                     // Get the image swatch for the symbol.
                     symbol.createSwatch { image, _ in
                         defer { getSymbolsGroup.leave() }
@@ -117,7 +117,7 @@ class CreateSymbolStylesFromWebStylesViewController: UIViewController, UIAdaptiv
             // Create the data source for the legend table.
             self.symbolsDataSource = SymbolsDataSource(legendItems: legendItems.sorted { $0.name < $1.name })
             // Create unique values and set them to the renderer.
-            self.featureLayer.renderer = self.makeUniqueValueRenderer(fieldNames: ["cat2"], symbolInfos: symbolInfos)
+            self.featureLayer.renderer = self.makeUniqueValueRenderer(fieldNames: ["cat2"], symbolDetails: symbolDetails)
             // Add the feature layer to the map.
             self.mapView.map?.operationalLayers.add(self.featureLayer)
         }

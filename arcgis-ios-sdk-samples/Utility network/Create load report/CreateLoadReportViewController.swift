@@ -20,47 +20,60 @@ class CreateLoadReportViewController: UIViewController {
     
     /// The table view to display the load reports.
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var resetBarButtonItem: UIBarButtonItem!
+    @IBOutlet var runBarButtonItem: UIBarButtonItem!
     
     // MARK: Properties
     
     /// A feature service for an electric utility network in Naperville, Illinois.
     let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
-    /// The utility element to start the trace from.
-    var startingLocation: AGSUtilityElement?
     /// The initial conditional expression.
-    var initialExpression: AGSUtilityTraceConditionalExpression?
+    var initialExpression: AGSUtilityTraceConditionalExpression!
     /// The trace parameters for creating load reports.
-    var traceParameters: AGSUtilityTraceParameters?
+    var traceParameters: AGSUtilityTraceParameters!
     /// The network attributes for the comparison.
-    var phasesNetworkAttribute: AGSUtilityNetworkAttribute?
+    var phasesNetworkAttribute: AGSUtilityNetworkAttribute!
     /// A list of possible phases populated from the network's attributes.
-    var phaseChoices = [AGSCodedValue]()
-    /// A list of phases for which to create load reports.
-    var phaseSummaries = [(phase: AGSCodedValue, summary: PhaseSummary?)]()
+    var excludedPhases = [AGSCodedValue]()
+    /// A list of phases that are included in the load report.
+    var includedPhases = [AGSCodedValue]() {
+        didSet {
+            let isEmpty = includedPhases.isEmpty
+            DispatchQueue.main.async { [weak self] in
+                self?.runBarButtonItem.isEnabled = !isEmpty
+            }
+        }
+    }
+    /// The phase summaries in the load report.
+    var summaries = [AGSCodedValue: PhaseSummary]() {
+        didSet {
+            if !resetBarButtonItem.isEnabled {
+                DispatchQueue.main.async { [weak self] in
+                    self?.resetBarButtonItem.isEnabled = true
+                }
+            }
+        }
+    }
     
-    /// A struct for the phase summary, which contains the phase,
-    /// the total customers and total load for the phase.
+    /// The number formatter for phase summaries.
+    let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.usesGroupingSeparator = true
+        return formatter
+    }()
+    
+    /// A struct for the phase summary, which contains the total customers
+    /// and total load for the phase.
     struct PhaseSummary {
-        let phase: AGSCodedValue
         let totalCustomers: Int
         let totalLoad: Int
-        
-        var description: String {
-            "Customers: \(totalCustomers)\tLoad: \(totalLoad)"
-        }
     }
     
     // MARK: Methods
     
+    /// Load the utility network.
     func loadUtilityNetwork() {
-        // For counting total customers.
-        let serviceCategoryName = "ServicePoint"
-        // For counting total load.
-        let loadNetworkAttributeName = "Service Load"
-        // Get load report for phases.
-        let phasesNetworkAttributeName = "Phases Current"
-        
-        // Load the utility network.
         SVProgressHUD.show(withStatus: "Loading utility network…")
         utilityNetwork.load { [weak self] error in
             SVProgressHUD.dismiss()
@@ -79,32 +92,48 @@ class CreateLoadReportViewController: UIViewController {
                 self.presentAlert(message: "Fail to get trace configuration.")
                 return
             }
-            // Set the starting location.
-            self.startingLocation = startingLocation
-            // Set the default expression.
-            self.initialExpression = utilityTierConfiguration.traversability?.barriers as? AGSUtilityTraceConditionalExpression
-            
-            // Create downstream trace parameters with function outputs.
-            self.traceParameters = AGSUtilityTraceParameters(traceType: .downstream, startingLocations: [startingLocation])
-            self.traceParameters?.resultTypes.append(.ags_value(with: .functionOutputs))
-            // Create function input and output condition.
-            if let serviceCategory = self.utilityNetwork.definition.categories.first(where: { $0.name == serviceCategoryName }),
-               let loadAttribute = self.utilityNetwork.definition.networkAttributes.first(where: { $0.name == loadNetworkAttributeName }),
-               let phasesNetworkAttribute = self.utilityNetwork.definition.networkAttributes.first(where: { $0.name == phasesNetworkAttributeName }) {
-                self.phasesNetworkAttribute = phasesNetworkAttribute
-                // Get possible coded phase values from the attributes.
-                if let domain = phasesNetworkAttribute.domain as? AGSCodedValueDomain {
-                    self.phaseChoices = domain.codedValues.sorted { $0.name < $1.name }
-                    self.addDefaultPhase()
+            // Proceed if the utility network loaded without issue.
+            self.utilityNetworkDidLoad(startingLocation: startingLocation, traceConfiguration: utilityTierConfiguration)
+        }
+    }
+    
+    /// Called in response to the utility network load operation completing.
+    /// - Parameters:
+    ///   - startingLocation: The utility element to start the trace from.
+    ///   - traceConfiguration: The utility tier's trace configuration.
+    func utilityNetworkDidLoad(startingLocation: AGSUtilityElement, traceConfiguration: AGSUtilityTraceConfiguration) {
+        // Set the default expression.
+        initialExpression = traceConfiguration.traversability?.barriers as? AGSUtilityTraceConditionalExpression
+        
+        // Create downstream trace parameters with function outputs.
+        let traceParameters = AGSUtilityTraceParameters(traceType: .downstream, startingLocations: [startingLocation])
+        traceParameters.resultTypes.append(.ags_value(with: .functionOutputs))
+        
+        // The service category for counting total customers.
+        if let serviceCategory = utilityNetwork.definition.categories.first(where: { $0.name == "ServicePoint" }),
+           // The load attribute for counting total load.
+           let loadAttribute = utilityNetwork.definition.networkAttributes.first(where: { $0.name == "Service Load" }),
+           // The phase attribute for getting total phase current load.
+           let phasesNetworkAttribute = utilityNetwork.definition.networkAttributes.first(where: { $0.name == "Phases Current" }) {
+            self.phasesNetworkAttribute = phasesNetworkAttribute
+            // Get possible coded phase values from the attributes.
+            if let domain = phasesNetworkAttribute.domain as? AGSCodedValueDomain {
+                excludedPhases = domain.codedValues.sorted { $0.name < $1.name }
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.tableView.reloadSections([Section.excluded.rawValue], with: .automatic)
+                    self.tableView.isEditing = true
                 }
-                // Create a comparison to check the existence of service points.
-                let serviceCategoryComparison = AGSUtilityCategoryComparison(category: serviceCategory, comparisonOperator: .exists)
-                let addLoadAttributeFunction = AGSUtilityTraceFunction(functionType: .add, networkAttribute: loadAttribute, condition: serviceCategoryComparison)
-                utilityTierConfiguration.functions = [addLoadAttributeFunction]
-                utilityTierConfiguration.outputCondition = serviceCategoryComparison
-                // Assign the trace configuration to trace parameters.
-                self.traceParameters?.traceConfiguration = utilityTierConfiguration
             }
+            // Create a comparison to check the existence of service points.
+            let serviceCategoryComparison = AGSUtilityCategoryComparison(category: serviceCategory, comparisonOperator: .exists)
+            let addLoadAttributeFunction = AGSUtilityTraceFunction(functionType: .add, networkAttribute: loadAttribute, condition: serviceCategoryComparison)
+            // Create function input and output condition.
+            traceConfiguration.functions = [addLoadAttributeFunction]
+            traceConfiguration.outputCondition = serviceCategoryComparison
+            // Assign the trace configuration to trace parameters.
+            traceParameters.traceConfiguration = traceConfiguration
+            self.traceParameters = traceParameters
         }
     }
     
@@ -119,105 +148,74 @@ class CreateLoadReportViewController: UIViewController {
         let globalID = UUID(uuidString: "1CAF7740-0BF4-4113-8DB2-654E18800028")!
         
         // Create a default starting location.
-        let networkSource = utilityNetwork.definition.networkSource(withName: deviceTableName)
-        if let assetType = networkSource?.assetGroup(withName: assetGroupName)?.assetType(withName: assetTypeName),
-           let startingLocation = utilityNetwork.createElement(with: assetType, globalID: globalID),
-           let terminal = assetType.terminalConfiguration?.terminals.first(where: { $0.name == terminalName }) {
+        if let networkSource = utilityNetwork.definition.networkSource(withName: deviceTableName),
+           let assetType = networkSource.assetGroup(withName: assetGroupName)?.assetType(withName: assetTypeName),
+           let startingLocation = utilityNetwork.createElement(with: assetType, globalID: globalID) {
             // Set the terminal for the location. (For our case, use the "Load" terminal.)
-            startingLocation.terminal = terminal
+            startingLocation.terminal = assetType.terminalConfiguration?.terminals.first(where: { $0.name == terminalName })
             return startingLocation
+        } else {
+            return nil
         }
-        return nil
     }
     
     /// Get the utility tier's trace configuration.
     func getTraceConfiguration() -> AGSUtilityTraceConfiguration? {
-        // Constants for creating the default trace configuration.
-        let domainNetworkName = "ElectricDistribution"
-        let tierName = "Medium Voltage Radial"
-        // Get a default trace configuration from a tier to update the UI.
-        let domainNetwork = utilityNetwork.definition.domainNetwork(withDomainNetworkName: domainNetworkName)
-        let utilityTierConfiguration = domainNetwork?.tier(withName: tierName)?.traceConfiguration
-        return utilityTierConfiguration
-    }
-    
-    /// Add a default phase to the list to better showcase the sample.
-    func addDefaultPhase() {
-        guard let defaultPhase = phaseChoices.first else { return }
-        phaseSummaries.append((defaultPhase, nil))
-        tableView.insertRows(at: [IndexPath(row: phaseSummaries.endIndex - 1, section: 0)], with: .automatic)
+        // Get a default trace configuration from a tier in the network.
+        utilityNetwork
+            .definition
+            .domainNetwork(withDomainNetworkName: "ElectricDistribution")?
+            .tier(withName: "Medium Voltage Radial")?
+            .traceConfiguration
     }
     
     // MARK: Actions
     
     @IBAction func resetBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        phaseSummaries.removeAll()
-        tableView.reloadData()
-    }
-    
-    @IBAction func addBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        let selectedPhases = Set(phaseSummaries.map { $0.phase })
-        let remainingPhases = phaseChoices.filter { !selectedPhases.contains($0) }
-        guard !remainingPhases.isEmpty else { return }
-        let alertController = UIAlertController(
-            title: "Add a phase to get the load report.",
-            message: nil,
-            preferredStyle: .actionSheet
-        )
-        remainingPhases.forEach { phase in
-            alertController.addAction(UIAlertAction(title: phase.name, style: .default) { _ in
-                self.phaseSummaries.append((phase, nil))
-                self.tableView.insertRows(at: [IndexPath(row: self.phaseSummaries.endIndex - 1, section: 0)], with: .automatic)
-            })
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addAction(cancelAction)
-        alertController.popoverPresentationController?.barButtonItem = sender
-        present(alertController, animated: true)
+        summaries.removeAll()
+        tableView.reloadSections([Section.included.rawValue], with: .automatic)
+        resetBarButtonItem.isEnabled = false
+        runBarButtonItem.isEnabled = !includedPhases.isEmpty
     }
     
     @IBAction func runBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        guard !phaseSummaries.isEmpty,
-              let expression = initialExpression,
-              let phasesNetworkAttribute = phasesNetworkAttribute,
-              let traceParameters = traceParameters else { return }
-        
-        let traceGroup = DispatchGroup()
+        runBarButtonItem.isEnabled = false
         SVProgressHUD.show(withStatus: "Creating load report…")
         
-        for i in 0..<phaseSummaries.count {
-            let phase = phaseSummaries[i].phase
+        let traceGroup = DispatchGroup()
+        for phase in includedPhases {
             guard let phaseCode = phase.code else { continue }
             // Create a conditional expression.
             let phasesAttributeComparison = AGSUtilityNetworkAttributeComparison(networkAttribute: phasesNetworkAttribute, comparisonOperator: .doesNotIncludeAny, value: phaseCode)!
             // Chain it with the base condition using an OR operator.
-            traceParameters.traceConfiguration?.traversability?.barriers = AGSUtilityTraceOrCondition(leftExpression: expression, rightExpression: phasesAttributeComparison)
+            traceParameters.traceConfiguration?.traversability?.barriers = AGSUtilityTraceOrCondition(leftExpression: initialExpression, rightExpression: phasesAttributeComparison)
             
             traceGroup.enter()
             utilityNetwork.trace(with: traceParameters) { [weak self] results, _ in
-                defer {
-                    traceGroup.leave()
-                }
+                defer { traceGroup.leave() }
                 // Return if not result and ignore any trace error.
-                guard let results = results else { return }
+                guard let self = self, let results = results else { return }
                 var totalCustomers = 0
                 var totalLoad = 0
                 results.forEach { result in
-                    if let elementResult = result as? AGSUtilityElementTraceResult {
+                    switch result {
+                    case let elementResult as AGSUtilityElementTraceResult:
                         // Get the unique customers count.
-                        totalCustomers = Set(elementResult.elements.map { $0.objectID }).count
-                    } else if let functionResult = result as? AGSUtilityFunctionTraceResult {
+                        totalCustomers = Set(elementResult.elements.map(\.objectID)).count
+                    case let functionResult as AGSUtilityFunctionTraceResult:
                         // Get the total load with a function output.
                         totalLoad = functionResult.functionOutputs.first?.result as? Int ?? 0
+                    default:
+                        break
                     }
                 }
-                self?.phaseSummaries[i].summary = PhaseSummary(phase: phase, totalCustomers: totalCustomers, totalLoad: totalLoad)
+                self.summaries[phase] = PhaseSummary(totalCustomers: totalCustomers, totalLoad: totalLoad)
             }
         }
         // Reload the load report table when trace completes.
         traceGroup.notify(queue: .main) { [weak self] in
             SVProgressHUD.dismiss()
-            self?.tableView.reloadData()
+            self?.tableView.reloadSections([Section.included.rawValue], with: .automatic)
         }
     }
     
@@ -236,33 +234,127 @@ class CreateLoadReportViewController: UIViewController {
 
 extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Phases, Total Customers, Total Load"
-    }
-    
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        "Tap the add button to add phases.\nTap \"Run\" to get load reports."
+        Section.allCases[section].titleForHeader
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        Section.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        phaseSummaries.count
+        switch Section.allCases[section] {
+        case .included:
+            return includedPhases.count
+        case .excluded:
+            return excludedPhases.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RightDetail", for: indexPath)
-        let (phase, summary) = phaseSummaries[indexPath.row]
-        cell.textLabel?.text = "Phase: \(phase.name)"
-        cell.detailTextLabel?.text = (summary?.description) ?? "Customers: N/A\tLoad: N/A"
+        let cell: UITableViewCell
+        let phase: AGSCodedValue
+        switch Section.allCases[indexPath.section] {
+        case .included:
+            cell = tableView.dequeueReusableCell(withIdentifier: Section.included.cellIdentifier, for: indexPath)
+            phase = includedPhases[indexPath.row]
+            cell.textLabel?.text = "Phase: " + phase.name
+            if let summary = summaries[phase] {
+                cell.detailTextLabel?.text = "C: " + numberFormatter.string(from: NSNumber(value: summary.totalCustomers))! + "    L: " + numberFormatter.string(from: NSNumber(value: summary.totalLoad))!
+            } else {
+                cell.detailTextLabel?.text = "N/A"
+            }
+        case .excluded:
+            cell = tableView.dequeueReusableCell(withIdentifier: Section.excluded.cellIdentifier, for: indexPath)
+            phase = excludedPhases[indexPath.row]
+            cell.textLabel?.text = phase.name
+        }
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        switch Section.allCases[indexPath.section] {
+        case .included:
+            return .delete
+        case .excluded:
+            return .insert
+        }
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            phaseSummaries.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.beginUpdates()
+        switch editingStyle {
+        case .delete:
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            let phase = includedPhases[indexPath.row]
+            includedPhases.remove(at: indexPath.row)
+            // Binary search to find the insertion index.
+            let insertionIndex = (excludedPhases as NSArray).index(
+                of: phase,
+                inSortedRange: NSRange(excludedPhases.indices),
+                options: [.insertionIndex],
+                usingComparator: { ($0 as! AGSCodedValue).name.compare(($1 as! AGSCodedValue).name) }
+            )
+            excludedPhases.insert(phase, at: insertionIndex)
+            let section = Section.excluded.rawValue
+            tableView.insertRows(at: [IndexPath(row: insertionIndex, section: section)], with: .automatic)
+        case .insert:
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            let phase = excludedPhases[indexPath.row]
+            excludedPhases.remove(at: indexPath.row)
+            includedPhases.append(phase)
+            let section = Section.included.rawValue
+            let newRow = tableView.numberOfRows(inSection: section)
+            tableView.insertRows(at: [IndexPath(row: newRow, section: section)], with: .automatic)
+        default:
+            break
+        }
+        tableView.endUpdates()
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let phase = includedPhases[sourceIndexPath.row]
+        includedPhases.remove(at: sourceIndexPath.row)
+        includedPhases.insert(phase, at: destinationIndexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Only allow moving rows in the included phases section.
+        Section.allCases[indexPath.section] == .included
+    }
+    
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        // Only allow moving rows in the included phases section.
+        sourceIndexPath.section != proposedDestinationIndexPath.section ? sourceIndexPath : proposedDestinationIndexPath
+    }
+}
+
+// MARK: Section Enum
+
+extension CreateLoadReportViewController {
+    /// A convenience type for the table view sections.
+    enum Section: Int, CaseIterable {
+        case included, excluded
+        
+        var titleForHeader: String {
+            switch self {
+            case .included:
+                return "Phases, Total Customers(C), Total Load(L)"
+            case .excluded:
+                return "More Phases"
+            }
+        }
+        
+        var cellIdentifier: String {
+            switch self {
+            case .included:
+                return "RightDetail"
+            case .excluded:
+                return "Basic"
+            }
         }
     }
 }

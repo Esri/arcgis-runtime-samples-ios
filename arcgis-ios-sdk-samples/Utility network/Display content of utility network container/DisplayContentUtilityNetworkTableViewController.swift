@@ -49,14 +49,15 @@ class DisplayContentUtilityNetworkTableViewController: UITableViewController {
             let contentSwatch = indexPath.row - legendInfos.count
             cell.textLabel?.text = contentSwatchesDict[contentSwatch].key
             cell.imageView?.image = contentSwatchesDict[contentSwatch].value
+            cell.setNeedsLayout()
         } else {
             let legendInfo = legendInfos[indexPath.row]
             cell.textLabel?.text = legendInfo.name
             legendInfo.symbol?.createSwatch { (image, _) in
                 cell.imageView?.image = image
+                cell.setNeedsLayout()
             }
         }
-        cell.setNeedsLayout()
         return cell
     }
     

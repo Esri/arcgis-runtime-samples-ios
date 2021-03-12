@@ -36,24 +36,9 @@ class CreateLoadReportViewController: UIViewController {
     /// A list of possible phases populated from the network's attributes.
     var excludedPhases = [AGSCodedValue]()
     /// A list of phases that are included in the load report.
-    var includedPhases = [AGSCodedValue]() {
-        didSet {
-            let isEmpty = includedPhases.isEmpty
-            DispatchQueue.main.async { [weak self] in
-                self?.runBarButtonItem.isEnabled = !isEmpty
-            }
-        }
-    }
+    var includedPhases = [AGSCodedValue]()
     /// The phase summaries in the load report.
-    var summaries = [AGSCodedValue: PhaseSummary]() {
-        didSet {
-            if !resetBarButtonItem.isEnabled {
-                DispatchQueue.main.async { [weak self] in
-                    self?.resetBarButtonItem.isEnabled = true
-                }
-            }
-        }
-    }
+    var summaries = [AGSCodedValue: PhaseSummary]()
     
     /// The number formatter for phase summaries.
     let numberFormatter: NumberFormatter = {
@@ -121,7 +106,7 @@ class CreateLoadReportViewController: UIViewController {
                 excludedPhases = domain.codedValues.sorted { $0.name < $1.name }
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    self.tableView.reloadSections([Section.excluded.rawValue], with: .automatic)
+                    self.tableView.reloadSection(.excluded)
                     self.tableView.isEditing = true
                 }
             }
@@ -173,16 +158,16 @@ class CreateLoadReportViewController: UIViewController {
     
     @IBAction func resetBarButtonItemTapped(_ sender: UIBarButtonItem) {
         summaries.removeAll()
-        tableView.reloadSections([Section.included.rawValue], with: .automatic)
-        resetBarButtonItem.isEnabled = false
+        tableView.reloadSection(.included)
         runBarButtonItem.isEnabled = !includedPhases.isEmpty
+        resetBarButtonItem.isEnabled = false
     }
     
     @IBAction func runBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        runBarButtonItem.isEnabled = false
         SVProgressHUD.show(withStatus: "Creating load report…")
         
         let traceGroup = DispatchGroup()
+        var summaries = [AGSCodedValue: PhaseSummary]()
         for phase in includedPhases {
             guard let phaseCode = phase.code else { continue }
             // Create a conditional expression.
@@ -191,10 +176,10 @@ class CreateLoadReportViewController: UIViewController {
             traceParameters.traceConfiguration?.traversability?.barriers = AGSUtilityTraceOrCondition(leftExpression: initialExpression, rightExpression: phasesAttributeComparison)
             
             traceGroup.enter()
-            utilityNetwork.trace(with: traceParameters) { [weak self] results, _ in
+            utilityNetwork.trace(with: traceParameters) { results, _ in
                 defer { traceGroup.leave() }
                 // Return if not result and ignore any trace error.
-                guard let self = self, let results = results else { return }
+                guard let results = results else { return }
                 var totalCustomers = 0
                 var totalLoad = 0
                 results.forEach { result in
@@ -209,13 +194,16 @@ class CreateLoadReportViewController: UIViewController {
                         break
                     }
                 }
-                self.summaries[phase] = PhaseSummary(totalCustomers: totalCustomers, totalLoad: totalLoad)
+                summaries[phase] = PhaseSummary(totalCustomers: totalCustomers, totalLoad: totalLoad)
             }
         }
         // Reload the load report table when trace completes.
         traceGroup.notify(queue: .main) { [weak self] in
             SVProgressHUD.dismiss()
-            self?.tableView.reloadSections([Section.included.rawValue], with: .automatic)
+            guard let self = self else { return }
+            self.summaries = summaries
+            self.tableView.reloadSection(.included)
+            self.resetBarButtonItem.isEnabled = true
         }
     }
     
@@ -282,9 +270,10 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         tableView.beginUpdates()
+        defer { tableView.endUpdates() }
+        tableView.deleteRows(at: [indexPath], with: .automatic)
         switch editingStyle {
         case .delete:
-            tableView.deleteRows(at: [indexPath], with: .automatic)
             let phase = includedPhases[indexPath.row]
             includedPhases.remove(at: indexPath.row)
             // Binary search to find the insertion index.
@@ -295,40 +284,42 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
                 usingComparator: { ($0 as! AGSCodedValue).name.compare(($1 as! AGSCodedValue).name) }
             )
             excludedPhases.insert(phase, at: insertionIndex)
-            let section = Section.excluded.rawValue
-            tableView.insertRows(at: [IndexPath(row: insertionIndex, section: section)], with: .automatic)
+            // Remove the summary.
+            summaries.removeValue(forKey: phase)
+            tableView.insertRows(at: [IndexPath(row: insertionIndex, section: .excluded)], with: .automatic)
         case .insert:
-            tableView.deleteRows(at: [indexPath], with: .automatic)
             let phase = excludedPhases[indexPath.row]
             excludedPhases.remove(at: indexPath.row)
-            includedPhases.append(phase)
-            let section = Section.included.rawValue
-            let newRow = tableView.numberOfRows(inSection: section)
-            tableView.insertRows(at: [IndexPath(row: newRow, section: section)], with: .automatic)
+            let insertionIndex = (includedPhases as NSArray).index(
+                of: phase,
+                inSortedRange: NSRange(includedPhases.indices),
+                options: [.insertionIndex],
+                usingComparator: { ($0 as! AGSCodedValue).name.compare(($1 as! AGSCodedValue).name) }
+            )
+            includedPhases.insert(phase, at: insertionIndex)
+            tableView.insertRows(at: [IndexPath(row: insertionIndex, section: .included)], with: .automatic)
         default:
-            break
+            return
         }
-        tableView.endUpdates()
+        // Toggle button state.
+        runBarButtonItem.isEnabled = !includedPhases.isEmpty
+        resetBarButtonItem.isEnabled = !summaries.isEmpty
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let phase = includedPhases[sourceIndexPath.row]
-        includedPhases.remove(at: sourceIndexPath.row)
-        includedPhases.insert(phase, at: destinationIndexPath.row)
+}
+
+private extension UITableView {
+    func reloadSection(_ section: CreateLoadReportViewController.Section) {
+        reloadSections([section.rawValue], with: .automatic)
     }
-    
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Only allow moving rows in the included phases section.
-        Section.allCases[indexPath.section] == .included
-    }
-    
-    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        // Only allow moving rows in the included phases section.
-        sourceIndexPath.section != proposedDestinationIndexPath.section ? sourceIndexPath : proposedDestinationIndexPath
+}
+
+private extension IndexPath {
+    init(row: Int, section: CreateLoadReportViewController.Section) {
+        self.init(row: row, section: section.rawValue)
     }
 }
 

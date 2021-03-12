@@ -66,9 +66,15 @@ extension IdentifyKMLFeaturesViewController: AGSGeoViewTouchDelegate {
         geoView.callout.dismiss()
         geoView.identifyLayer(forecastLayer, screenPoint: screenPoint, tolerance: 15, returnPopupsOnly: false) { [weak self] (result) in
             if let error = result.error {
-                print("Error identifying layer: \(error)")
+                self?.presentAlert(error: error)
             } else if let placemarkIndex = result.geoElements.firstIndex(where: { $0 is AGSKMLPlacemark }) {
                 let placemark = result.geoElements[placemarkIndex] as! AGSKMLPlacemark
+                // Google Earth only displays the placemarks with description
+                // or extended data. To match its behavior, add a description
+                // placeholder if it doesn't exist in the data source.
+                if placemark.attributes["description"] == nil {
+                    placemark.attributes["description"] = "Weather condition"
+                }
                 self?.showCallout(for: placemark, at: mapPoint)
             }
         }

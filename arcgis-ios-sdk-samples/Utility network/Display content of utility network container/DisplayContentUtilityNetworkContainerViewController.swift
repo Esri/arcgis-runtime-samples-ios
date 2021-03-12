@@ -28,6 +28,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     var utilityNetwork: AGSUtilityNetwork?
     var containerFeature: AGSArcGISFeature?
     var previousViewpoint: AGSViewpoint?
+    var featureLayers = [AGSFeatureLayer]()
     var legendInfos = [AGSLegendInfo]()
     
     let boundingBoxSymbol = AGSSimpleLineSymbol(style: .dash, color: .yellow, width: 3)
@@ -68,15 +69,13 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     }
     
     func getLegends() {
-        guard let featureTable = AGSServiceFeatureTable(url: featureServiceURL).item else { return }
-        let featureLayers = [
-            AGSFeatureLayer(item: featureTable, layerID: 105),
-            AGSFeatureLayer(item: featureTable, layerID: 900)
-        ]
+        let electricDistributionTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/105")!)
+        let structureJunctionTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/900")!)
+        featureLayers = [electricDistributionTable, structureJunctionTable].map(AGSFeatureLayer.init)
         featureLayers.forEach { layer in
-            layer.fetchLegendInfos{ [weak self] legendInfos, error in
+            layer.fetchLegendInfos { [weak self] (legendInfos, error) in
                 guard let self = self, let legendInfos = legendInfos else { return }
-                self.legendInfos = legendInfos
+                self.legendInfos.append(contentsOf: legendInfos)
                 if let error = error {
                     self.presentAlert(error: error)
                 }
@@ -114,6 +113,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         super.viewDidLoad()
         loadUtilityNetwork()
         mapView.graphicsOverlays.add(AGSGraphicsOverlay())
+        getLegends()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayContentUtilityNetworkContainer"]
     }
@@ -208,6 +208,27 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             controller.legendInfos = legendInfos
+            boundingBoxSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+                if let image = image {
+                    controller.boundingBoxSwatch = image.withRenderingMode(.alwaysOriginal)
+                } else if let error = error {
+                    self.presentAlert(error: error)
+                }
+            }
+            attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+                if let image = image {
+                    controller.attachmentSwatch = image.withRenderingMode(.alwaysOriginal)
+                } else if let error = error {
+                    self.presentAlert(error: error)
+                }
+            }
+            connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+                if let image = image {
+                    controller.connectivitySwatch = image.withRenderingMode(.alwaysOriginal)
+                } else if let error = error {
+                    self.presentAlert(error: error)
+                }
+            }
         }
     }
     

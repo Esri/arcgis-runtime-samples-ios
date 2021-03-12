@@ -17,12 +17,50 @@ import ArcGIS
 
 class DisplayContentUtilityNetworkTableViewController: UITableViewController {
     var legendInfos = [AGSLegendInfo]()
+    var boundingBoxSwatch: UIImage?
+    var attachmentSwatch: UIImage?
+    var connectivitySwatch: UIImage?
+    var contentSwatchesDict = KeyValuePairs<String, UIImage>()
+    
+    func makeDictionary() -> KeyValuePairs<String, UIImage> {
+        if let boundingBoxSwatch = boundingBoxSwatch, let attachmentSwatch = attachmentSwatch, let connectivitySwatch = connectivitySwatch {
+            return [
+                "Bounding box": boundingBoxSwatch,
+                "Attachment": attachmentSwatch,
+                "Connectivity": connectivitySwatch
+            ]
+        }
+        return [:]
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        contentSwatchesDict = makeDictionary()
+        return legendInfos.count + contentSwatchesDict.count
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        <#code#>
+        1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayContentLegendCell", for: indexPath)
+        if indexPath.row >= legendInfos.count {
+            let contentSwatch = indexPath.row - legendInfos.count
+            cell.textLabel?.text = contentSwatchesDict[contentSwatch].key
+            cell.imageView?.image = contentSwatchesDict[contentSwatch].value
+        } else {
+            let legendInfo = legendInfos[indexPath.row]
+            cell.textLabel?.text = legendInfo.name
+            legendInfo.symbol?.createSwatch { (image, _) in
+                cell.imageView?.image = image
+            }
+        }
+        cell.setNeedsLayout()
+        return cell
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }

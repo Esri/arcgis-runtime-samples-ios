@@ -56,7 +56,7 @@ class IdentifyKMLFeaturesViewController: UIViewController {
             mapView.callout.customView = textView
             mapView.callout.show(at: point, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
         } catch {
-            print("Error converting balloon content to attributed string: \(error)")
+            presentAlert(error: error)
         }
     }
 }

@@ -34,8 +34,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     let boundingBoxSymbol = AGSSimpleLineSymbol(style: .dash, color: .yellow, width: 3)
     let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .blue, width: 3)
     let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 3)
-    
-    
+
     func makeMap() -> AGSMap {
         let webMapURL = URL(string: "https://ss7portal.arcgisonline.com/arcgis/home/item.html?id=5b64cf7a89ca4f98b5ed3da545d334ef")!
         let map = AGSMap(url: webMapURL)!
@@ -85,7 +84,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     
     func getAssociationsWithExtent(boundingBox: AGSGeometry, overlay: AGSGraphicsOverlay) {
         overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: boundingBoxSymbol))
-        mapView.setViewpointGeometry(AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!) { _ in
+        let geometry = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!
+        mapView.setViewpointGeometry(geometry) { _ in
             // Get the associations for this extent to display how content features are attached or connected.
             self.utilityNetwork?.associations(withExtent: overlay.extent) { (containmentAssociations, error) in
                 containmentAssociations?.forEach { association in
@@ -96,9 +96,9 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                         symbol = self.connectivitySymbol
                     }
                     overlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
-                    self.exitBarButtonItem.isEnabled = true
-                    self.mapView.isUserInteractionEnabled = false
                 }
+                self.exitBarButtonItem.isEnabled = true
+                self.mapView.isUserInteractionEnabled = false
                 if let error = error {
                     self.presentAlert(error: error)
                 }
@@ -177,10 +177,9 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                     otherElement = association.fromElement
                 }
                 contentElements.append(otherElement)
-                
-                if !contentElements.isEmpty {
-                    self.displayGraphics(with: containerElement, for: contentElements)
-                }
+            }
+            if !contentElements.isEmpty {
+                self.displayGraphics(with: containerElement, for: contentElements)
             }
             if let error = error {
                 self.presentAlert(error: error)

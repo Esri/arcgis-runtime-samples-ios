@@ -84,8 +84,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     }
     
     func getAssociationsWithExtent(boundingBox: AGSGeometry, overlay: AGSGraphicsOverlay) {
-        overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: self.boundingBoxSymbol))
-        self.mapView.setViewpointGeometry(AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!) { _ in
+        overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: boundingBoxSymbol))
+        mapView.setViewpointGeometry(AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!) { _ in
             // Get the associations for this extent to display how content features are attached or connected.
             self.utilityNetwork?.associations(withExtent: overlay.extent) { (containmentAssociations, error) in
                 containmentAssociations?.forEach { association in
@@ -96,15 +96,14 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                         symbol = self.connectivitySymbol
                     }
                     overlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
+                    self.exitBarButtonItem.isEnabled = true
+                    self.mapView.isUserInteractionEnabled = false
                 }
-                self.exitBarButtonItem.isEnabled = true
-                self.mapView.isUserInteractionEnabled = false
                 if let error = error {
                     self.presentAlert(error: error)
                 }
             }
         }
-        
     }
     
     // MARK: UIViewController
@@ -118,84 +117,88 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayContentUtilityNetworkContainer"]
     }
     
+    func setContainerFeature(layerResults: [AGSIdentifyLayerResult]) {
+        // A map containing SubtypeFeatureLayer is expected to have features as part of its sublayer's result.
+        layerResults.forEach { layerResult in
+            if self.containerFeature == nil, layerResult.layerContent is AGSSubtypeFeatureLayer {
+                layerResult.sublayerResults.forEach { sublayerResult in
+                    sublayerResult.geoElements.forEach { geoElement in
+                        if let feature = geoElement as? AGSArcGISFeature {
+                            self.containerFeature = feature
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func displayGraphics(with containerElement: AGSUtilityElement, for contentElements: [AGSUtilityElement]) {
+        previousViewpoint = mapView.currentViewpoint(with: .boundingGeometry)
+        (mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
+            layer.isVisible = false
+        }
+        // Set container view visibility to visible.
+        containerView.isHidden = false
+        guard let overlay = mapView.graphicsOverlays.firstObject as? AGSGraphicsOverlay else { return }
+        utilityNetwork?.features(for: contentElements) { (contentFeatures, error) in
+            if let contentFeatures = contentFeatures {
+                contentFeatures.forEach { content in
+                    let symbol = (content.featureTable as? AGSArcGISFeatureTable)?.layerInfo?.drawingInfo?.renderer?.symbol(for: content)
+                    overlay.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
+                }
+                var boundingBox: AGSGeometry?
+                if overlay.graphics.count == 1,
+                   let point = (overlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
+                    self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in
+                        guard let boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry else { return }
+                        self.getAssociationsWithExtent(boundingBox: boundingBox, overlay: overlay)
+    //                                    boundingBox = boundingBox
+                    }
+                } else {
+                    boundingBox = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)
+                    self.getAssociationsWithExtent(boundingBox: boundingBox!, overlay: overlay)
+                }
+            } else if let error = error {
+                self.presentAlert(error: error)
+            }
+        }
+    }
+    
+    func getAssociations() {
+        guard let containerFeature = containerFeature, let containerElement = utilityNetwork?.createElement(with: containerFeature) else { return }
+        // Get the containment associations from this element to display its content.
+        utilityNetwork?.associations(with: containerElement, type: .containment) { containmentAssociations, error in
+            var contentElements = [AGSUtilityElement]()
+            containmentAssociations?.forEach { association in
+                var otherElement: AGSUtilityElement
+                if association.fromElement.objectID == containerElement.objectID {
+                    otherElement = association.toElement
+                } else {
+                    otherElement = association.fromElement
+                }
+                contentElements.append(otherElement)
+                
+                if !contentElements.isEmpty {
+                    self.displayGraphics(with: containerElement, for: contentElements)
+                }
+            }
+            if let error = error {
+                self.presentAlert(error: error)
+            }
+        }
+    }
+    
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if !containerView.isHidden {
             return
         }
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (layerResults, error) in
             guard let self = self else { return }
-            // A map containing SubtypeFeatureLayer is expected to have features as part of its sublayer's result.
-            layerResults?.forEach { layerResult in
-                if self.containerFeature == nil, layerResult.layerContent is AGSSubtypeFeatureLayer {
-                    layerResult.sublayerResults.forEach { sublayerResult in
-                        sublayerResult.geoElements.forEach { geoElement in
-                            if self.containerFeature == nil, let feature = geoElement as? AGSArcGISFeature {
-                                self.containerFeature = feature
-                            }
-                        }
-                    }
-                }
-            }
-            guard let containerFeature = self.containerFeature, let containerElement = self.utilityNetwork?.createElement(with: containerFeature) else { return }
-            // Get the containment associations from this element to display its content.
-            self.utilityNetwork?.associations(with: containerElement, type: .containment) { containmentAssociations, error in
-                var contentElements = [AGSUtilityElement]()
-                containmentAssociations?.forEach { association in
-                    var otherElement: AGSUtilityElement
-                    if association.fromElement.objectID == containerElement.objectID {
-                        otherElement = association.toElement
-                    } else {
-                        otherElement = association.fromElement
-                    }
-                    contentElements.append(otherElement)
-                    if !contentElements.isEmpty {
-                        self.previousViewpoint = self.mapView.currentViewpoint(with: .boundingGeometry)
-                        (self.mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
-                            layer.isVisible = false
-                        }
-                        // Set container view visibility to visible.
-                        self.containerView.isHidden = false
-                        guard let overlay = self.mapView.graphicsOverlays.firstObject as? AGSGraphicsOverlay else { return }
-                        self.utilityNetwork?.features(for: contentElements) { (contentFeatures, error) in
-                            contentFeatures?.forEach { content in
-                                let symbol = (content.featureTable as? AGSArcGISFeatureTable)?.layerInfo?.drawingInfo?.renderer?.symbol(for: content)
-                                overlay.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
-                            }
-                            var boundingBox: AGSGeometry?
-                            if overlay.graphics.count == 1,
-                               let point = (overlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
-                                self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in
-                                    guard let boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry else { return }
-                                    self.getAssociationsWithExtent(boundingBox: boundingBox, overlay: overlay)
-//                                    boundingBox = boundingBox
-                                }
-                            } else {
-                                boundingBox = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)
-                                self.getAssociationsWithExtent(boundingBox: boundingBox!, overlay: overlay)
-                            }
-//                            overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: self.boundingBoxSymbol))
-//                            self.mapView.setViewpointGeometry(AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!)
-//
-//                            // Get the associations for this extent to display how content features are attached or connected.
-//                            self.utilityNetwork?.associations(withExtent: overlay.extent) { (containmentAssociations, error) in
-//                                containmentAssociations?.forEach { association in
-//                                    var symbol = AGSSymbol()
-//                                    if association.associationType == .attachment {
-//                                        symbol = self.attachmentSymbol
-//                                    } else {
-//                                        symbol = self.connectivitySymbol
-//                                    }
-//                                    overlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
-//                                }
-//                                self.exitBarButtonItem.isEnabled = true
-//                                self.mapView.isUserInteractionEnabled = false
-//                                if let error = error {
-//                                    self.presentAlert(error: error)
-//                                }
-//                            }
-                        }
-                    }
-                }
+            if let layerResults = layerResults {
+                self.setContainerFeature(layerResults: layerResults)
+                self.getAssociations()
+            } else if let error = error {
+                self.presentAlert(error: error)
             }
         }
     }

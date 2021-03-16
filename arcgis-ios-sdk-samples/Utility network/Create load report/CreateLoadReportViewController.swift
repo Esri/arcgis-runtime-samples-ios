@@ -245,9 +245,10 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
         case .included:
             cell = tableView.dequeueReusableCell(withIdentifier: Section.included.cellIdentifier, for: indexPath)
             phase = includedPhases[indexPath.row]
-            cell.textLabel?.text = "Phase: " + phase.name
+            cell.textLabel?.text = String(format: "Phase: %@", phase.name)
             if let summary = summaries[phase] {
-                cell.detailTextLabel?.text = "C: " + numberFormatter.string(from: NSNumber(value: summary.totalCustomers))! + "    L: " + numberFormatter.string(from: NSNumber(value: summary.totalLoad))!
+                let formattedString = String(format: "C: %@\tL: %@", numberFormatter.string(from: NSNumber(value: summary.totalCustomers))!, numberFormatter.string(from: NSNumber(value: summary.totalLoad))!)
+                cell.detailTextLabel?.text = formattedString
             } else {
                 cell.detailTextLabel?.text = "N/A"
             }
@@ -272,17 +273,23 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
         tableView.beginUpdates()
         defer { tableView.endUpdates() }
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        func index(forInserting phase: AGSCodedValue, into array: [AGSCodedValue]) -> Int {
+            // Binary search to find the insertion index.
+            (array as NSArray).index(
+                of: phase,
+                inSortedRange: NSRange(array.indices),
+                options: [.insertionIndex],
+                usingComparator: { ($0 as! AGSCodedValue).name.compare(($1 as! AGSCodedValue).name) }
+            )
+        }
+        
+        let insertionIndex: Int
         switch editingStyle {
         case .delete:
             let phase = includedPhases[indexPath.row]
             includedPhases.remove(at: indexPath.row)
-            // Binary search to find the insertion index.
-            let insertionIndex = (excludedPhases as NSArray).index(
-                of: phase,
-                inSortedRange: NSRange(excludedPhases.indices),
-                options: [.insertionIndex],
-                usingComparator: { ($0 as! AGSCodedValue).name.compare(($1 as! AGSCodedValue).name) }
-            )
+            insertionIndex = index(forInserting: phase, into: excludedPhases)
             excludedPhases.insert(phase, at: insertionIndex)
             // Remove the summary.
             summaries.removeValue(forKey: phase)
@@ -290,12 +297,7 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
         case .insert:
             let phase = excludedPhases[indexPath.row]
             excludedPhases.remove(at: indexPath.row)
-            let insertionIndex = (includedPhases as NSArray).index(
-                of: phase,
-                inSortedRange: NSRange(includedPhases.indices),
-                options: [.insertionIndex],
-                usingComparator: { ($0 as! AGSCodedValue).name.compare(($1 as! AGSCodedValue).name) }
-            )
+            insertionIndex = index(forInserting: phase, into: includedPhases)
             includedPhases.insert(phase, at: insertionIndex)
             tableView.insertRows(at: [IndexPath(row: insertionIndex, section: .included)], with: .automatic)
         default:

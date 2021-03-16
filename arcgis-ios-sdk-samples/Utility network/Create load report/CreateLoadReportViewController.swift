@@ -20,12 +20,14 @@ class CreateLoadReportViewController: UIViewController {
     
     /// The table view to display the load reports.
     @IBOutlet var tableView: UITableView!
+    /// The button to reset the phase summaries.
     @IBOutlet var resetBarButtonItem: UIBarButtonItem!
+    /// The button to run the trace and create a load report.
     @IBOutlet var runBarButtonItem: UIBarButtonItem!
     
     // MARK: Properties
     
-    /// A feature service for an electric utility network in Naperville, Illinois.
+    /// A feature service of an electric utility network in Naperville, Illinois.
     let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     /// The initial conditional expression.
     var initialExpression: AGSUtilityTraceConditionalExpression!
@@ -33,7 +35,9 @@ class CreateLoadReportViewController: UIViewController {
     var traceParameters: AGSUtilityTraceParameters!
     /// The network attributes for the comparison.
     var phasesNetworkAttribute: AGSUtilityNetworkAttribute!
+    
     /// A list of possible phases populated from the network's attributes.
+    /// By default, they are not included in the load report.
     var excludedPhases = [AGSCodedValue]()
     /// A list of phases that are included in the load report.
     var includedPhases = [AGSCodedValue]()
@@ -178,7 +182,7 @@ class CreateLoadReportViewController: UIViewController {
             traceGroup.enter()
             utilityNetwork.trace(with: traceParameters) { results, _ in
                 defer { traceGroup.leave() }
-                // Return if not result and ignore any trace error.
+                // If the trace gives not result, return and ignore any error.
                 guard let results = results else { return }
                 var totalCustomers = 0
                 var totalLoad = 0
@@ -270,12 +274,8 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        tableView.beginUpdates()
-        defer { tableView.endUpdates() }
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        
+        /// Binary search to find the insertion index in a sorted array.
         func index(forInserting phase: AGSCodedValue, into array: [AGSCodedValue]) -> Int {
-            // Binary search to find the insertion index.
             (array as NSArray).index(
                 of: phase,
                 inSortedRange: NSRange(array.indices),
@@ -283,6 +283,10 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
                 usingComparator: { ($0 as! AGSCodedValue).name.compare(($1 as! AGSCodedValue).name) }
             )
         }
+        
+        tableView.beginUpdates()
+        defer { tableView.endUpdates() }
+        tableView.deleteRows(at: [indexPath], with: .automatic)
         
         let insertionIndex: Int
         switch editingStyle {
@@ -313,18 +317,6 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
     }
 }
 
-private extension UITableView {
-    func reloadSection(_ section: CreateLoadReportViewController.Section) {
-        reloadSections([section.rawValue], with: .automatic)
-    }
-}
-
-private extension IndexPath {
-    init(row: Int, section: CreateLoadReportViewController.Section) {
-        self.init(row: row, section: section.rawValue)
-    }
-}
-
 // MARK: Section Enum
 
 extension CreateLoadReportViewController {
@@ -349,5 +341,17 @@ extension CreateLoadReportViewController {
                 return "Basic"
             }
         }
+    }
+}
+
+private extension UITableView {
+    func reloadSection(_ section: CreateLoadReportViewController.Section) {
+        reloadSections([section.rawValue], with: .automatic)
+    }
+}
+
+private extension IndexPath {
+    init(row: Int, section: CreateLoadReportViewController.Section) {
+        self.init(row: row, section: section.rawValue)
     }
 }

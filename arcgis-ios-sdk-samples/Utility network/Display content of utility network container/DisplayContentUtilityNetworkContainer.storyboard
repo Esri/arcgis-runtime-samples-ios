@@ -17,11 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I1q-Te-2q7" userLabel="Container View">
-                                <rect key="frame" x="41.5" y="121" width="331" height="615"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgJ-4V-EwJ" userLabel="Map View" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -60,7 +55,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="containerView" destination="I1q-Te-2q7" id="k9m-gu-OHf"/>
                         <outlet property="exitBarButtonItem" destination="xMf-yG-3Pq" id="lcb-zF-3Lw"/>
                         <outlet property="mapView" destination="fgJ-4V-EwJ" id="ueN-8y-yS8"/>
                     </connections>

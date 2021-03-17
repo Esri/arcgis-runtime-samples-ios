@@ -16,68 +16,124 @@ import UIKit
 import ArcGIS
 
 class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate {
+    /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
         }
     }
-    @IBOutlet var containerView: UIView!
+    /// The bar button item to prompt return of the main view.
     @IBOutlet var exitBarButtonItem: UIBarButtonItem!
     
+    /// A feature service for an electric utility network in Naperville, Illinois.
     let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     var utilityNetwork: AGSUtilityNetwork?
-    var containerFeature: AGSArcGISFeature?
+    /// The default or previous viewpoint before entering the container view.
     var previousViewpoint: AGSViewpoint?
-    var featureLayers = [AGSFeatureLayer]()
+    /// An array containing information about the feature services' legends.
     var legendInfos = [AGSLegendInfo]()
     
+    // The symbols used to display the container view contents.
     let boundingBoxSymbol = AGSSimpleLineSymbol(style: .dash, color: .yellow, width: 3)
     let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .blue, width: 3)
     let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 3)
-
+    
+    /// The action that is prompted when exiting the container view.
+    @IBAction func exitContainerView() {
+        // Disable the bar button item since container view will be exited.
+        exitBarButtonItem.isEnabled = false
+        // Remove all the objects that were added onto the graphics overlay.
+        (mapView.graphicsOverlays[0] as? AGSGraphicsOverlay)?.graphics.removeAllObjects()
+        (mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
+            // Make each operational layer visible.
+            layer.isVisible = true
+            guard let previousViewpoint = previousViewpoint else { return }
+            // Return to the viewpoint before container view was entered.
+            mapView.setViewpointGeometry(previousViewpoint.targetGeometry) { [weak self] _ in
+                // Enable interaction on the map view.
+                self?.mapView.isUserInteractionEnabled = true
+            }
+        }
+    }
+    
+    /// Create a map.
+    ///
+    /// - Returns: An `AGSMap` object.
     func makeMap() -> AGSMap {
         let webMapURL = URL(string: "https://ss7portal.arcgisonline.com/arcgis/home/item.html?id=5b64cf7a89ca4f98b5ed3da545d334ef")!
         let map = AGSMap(url: webMapURL)!
         return map
     }
     
-    @IBAction func exitContainerView() {
-        containerView.isHidden = true
-        containerFeature = nil
-        exitBarButtonItem.isEnabled = false
-        (mapView.graphicsOverlays[0] as? AGSGraphicsOverlay)?.graphics.removeAllObjects()
-        (mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
-            layer.isVisible = true
-            if let previousViewpoint = previousViewpoint {
-                mapView.setViewpoint(previousViewpoint)
-                mapView.isUserInteractionEnabled = true
-            }
-        }
-    }
-    
+    /// Create and load the utility network using the feature service URL.
     func loadUtilityNetwork() {
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: mapView.map!)
         utilityNetwork?.load { [weak self] error in
             guard let self = self else { return }
-            // Add self as the touch delegate for the map view.
-            self.mapView.touchDelegate = self
             if let error = error {
                 self.presentAlert(error: error)
             }
         }
     }
     
+    /// Get the legend information provided by the feature layers used in the utility network.
     func getLegends() {
+        // Create feature tables from URLs.
         let electricDistributionTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/105")!)
         let structureJunctionTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/900")!)
-        featureLayers = [electricDistributionTable, structureJunctionTable].map(AGSFeatureLayer.init)
+        // Create feature layers using the feature tables.
+        let featureLayers = [electricDistributionTable, structureJunctionTable].map(AGSFeatureLayer.init)
         featureLayers.forEach { layer in
+            // Get the legend information of each layer.
             layer.fetchLegendInfos { [weak self] (legendInfos, error) in
                 guard let self = self, let legendInfos = legendInfos else { return }
                 self.legendInfos.append(contentsOf: legendInfos)
                 if let error = error {
                     self.presentAlert(error: error)
                 }
+            }
+        }
+    }
+    
+    /// Get the container feature that was tapped on.
+    ///
+    /// - Parameters:
+    ///   - layerResults: The layer results identified by the touch delegate.
+    ///   - completion: A closure to pass back the feature that was tapped on.
+    func getContainerFeature(layerResults: [AGSIdentifyLayerResult], completion: @escaping (AGSArcGISFeature) -> Void) {
+        // A map containing SubtypeFeatureLayer is expected to have features as part of its sublayer's result.
+        layerResults.forEach { layerResult in
+            if layerResult.layerContent is AGSSubtypeFeatureLayer {
+                layerResult.sublayerResults.forEach { sublayerResult in
+                    sublayerResult.geoElements.forEach { geoElement in
+                        if let feature = geoElement as? AGSArcGISFeature {
+                            completion(feature)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func getAssociations(for containerFeature: AGSArcGISFeature) {
+        guard let containerElement = utilityNetwork?.createElement(with: containerFeature) else { return }
+        // Get the containment associations from this element to display its content.
+        utilityNetwork?.associations(with: containerElement, type: .containment) { containmentAssociations, error in
+            var contentElements = [AGSUtilityElement]()
+            containmentAssociations?.forEach { association in
+                var otherElement: AGSUtilityElement
+                if association.fromElement.objectID == containerElement.objectID {
+                    otherElement = association.toElement
+                } else {
+                    otherElement = association.fromElement
+                }
+                contentElements.append(otherElement)
+            }
+            if !contentElements.isEmpty {
+                self.getFeatures(with: containerElement, for: contentElements)
+            }
+            if let error = error {
+                self.presentAlert(error: error)
             }
         }
     }
@@ -106,39 +162,12 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         }
     }
     
-    // MARK: UIViewController
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadUtilityNetwork()
-        mapView.graphicsOverlays.add(AGSGraphicsOverlay())
-        getLegends()
-        // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayContentUtilityNetworkContainer"]
-    }
-    
-    func setContainerFeature(layerResults: [AGSIdentifyLayerResult]) {
-        // A map containing SubtypeFeatureLayer is expected to have features as part of its sublayer's result.
-        layerResults.forEach { layerResult in
-            if self.containerFeature == nil, layerResult.layerContent is AGSSubtypeFeatureLayer {
-                layerResult.sublayerResults.forEach { sublayerResult in
-                    sublayerResult.geoElements.forEach { geoElement in
-                        if let feature = geoElement as? AGSArcGISFeature {
-                            self.containerFeature = feature
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func displayGraphics(with containerElement: AGSUtilityElement, for contentElements: [AGSUtilityElement]) {
+    func getFeatures(with containerElement: AGSUtilityElement, for contentElements: [AGSUtilityElement]) {
         previousViewpoint = mapView.currentViewpoint(with: .boundingGeometry)
         (mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
             layer.isVisible = false
         }
-        // Set container view visibility to visible.
-        containerView.isHidden = false
         guard let overlay = mapView.graphicsOverlays.firstObject as? AGSGraphicsOverlay else { return }
         utilityNetwork?.features(for: contentElements) { (contentFeatures, error) in
             if let contentFeatures = contentFeatures {
@@ -152,7 +181,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                     self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in
                         guard let boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry else { return }
                         self.getAssociationsWithExtent(boundingBox: boundingBox, overlay: overlay)
-    //                                    boundingBox = boundingBox
                     }
                 } else {
                     boundingBox = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)
@@ -164,42 +192,35 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         }
     }
     
-    func getAssociations() {
-        guard let containerFeature = containerFeature, let containerElement = utilityNetwork?.createElement(with: containerFeature) else { return }
-        // Get the containment associations from this element to display its content.
-        utilityNetwork?.associations(with: containerElement, type: .containment) { containmentAssociations, error in
-            var contentElements = [AGSUtilityElement]()
-            containmentAssociations?.forEach { association in
-                var otherElement: AGSUtilityElement
-                if association.fromElement.objectID == containerElement.objectID {
-                    otherElement = association.toElement
-                } else {
-                    otherElement = association.fromElement
+    // MARK: - AGSGeoViewTouchDelegate
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (layerResults, error) in
+            guard let self = self else { return }
+            if let layerResults = layerResults {
+                self.getContainerFeature(layerResults: layerResults) { containerFeature in
+                    self.getAssociations(for: containerFeature)
                 }
-                contentElements.append(otherElement)
-            }
-            if !contentElements.isEmpty {
-                self.displayGraphics(with: containerElement, for: contentElements)
-            }
-            if let error = error {
+//                self.getAssociations()
+            } else if let error = error {
                 self.presentAlert(error: error)
             }
         }
     }
     
-    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if !containerView.isHidden {
-            return
-        }
-        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (layerResults, error) in
-            guard let self = self else { return }
-            if let layerResults = layerResults {
-                self.setContainerFeature(layerResults: layerResults)
-                self.getAssociations()
-            } else if let error = error {
-                self.presentAlert(error: error)
-            }
-        }
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Load the utility network.
+        loadUtilityNetwork()
+        // Add a graphics overlay.
+        mapView.graphicsOverlays.add(AGSGraphicsOverlay())
+        // Add self as the touch delegate for the map view.
+        mapView.touchDelegate = self
+        // Get the legends from the feature service.
+        getLegends()
+        // Add the source code button item to the right of navigation bar.
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayContentUtilityNetworkContainer"]
     }
     
     // MARK: - Navigation
@@ -208,8 +229,10 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         if segue.identifier == "DisplayContentLegendSegue" {
             let controller = segue.destination as! DisplayContentUtilityNetworkTableViewController
             controller.presentationController?.delegate = self
+            // Set the size of the view controller.
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             controller.legendInfos = legendInfos
+            // Create a swatch of the bounding box symbol.
             boundingBoxSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
                 if let image = image {
                     controller.boundingBoxSwatch = image.withRenderingMode(.alwaysOriginal)
@@ -217,6 +240,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                     self.presentAlert(error: error)
                 }
             }
+            // Create a swatch of the attachment symbol.
             attachmentSymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
                 if let image = image {
                     controller.attachmentSwatch = image.withRenderingMode(.alwaysOriginal)
@@ -224,6 +248,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                     self.presentAlert(error: error)
                 }
             }
+            // Create a swatch of the connectivity symbol.
             connectivitySymbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
                 if let image = image {
                     controller.connectivitySwatch = image.withRenderingMode(.alwaysOriginal)

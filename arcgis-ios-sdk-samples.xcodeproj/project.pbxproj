@@ -836,6 +836,7 @@
 		F15CF0C923EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */; };
 		F15CF0CB23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */; };
 		F15CF0CC23EE31A70038F052 /* DisplaySubtypeFeatureLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */; };
+		F16174B02602E55A00300FF9 /* DisplayContentUtilityNetworkTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1841C6625F82DF50051892D /* DisplayContentUtilityNetworkTableViewController.swift */; };
 		F164997622E90F150088CA93 /* FeatureLayerDictionaryRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1F62C4122E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift */; };
 		F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */; };
 		F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */; };
@@ -942,6 +943,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F16174B02602E55A00300FF9 /* DisplayContentUtilityNetworkTableViewController.swift in CopyFiles */,
 				F1710AF525EEF4C000900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in CopyFiles */,
 				0023F98825E717EA006B574E /* SimulatedNMEADataSource.swift in CopyFiles */,
 				0023F98925E717EA006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift in CopyFiles */,

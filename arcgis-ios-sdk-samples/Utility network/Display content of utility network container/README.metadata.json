@@ -1,32 +1,36 @@
 {
     "category": "Utility network",
-    "description": "Create graphics for utility associations in a utility network.",
+    "description": "A utility network container allows a dense collection of features to be represented by a single feature, which can be used to reduce map clutter.",
     "ignore": false,
     "images": [
-        "display-utility-associations.png"
+        "display-content-utility-network.png"
     ],
     "keywords": [
-        "associating",
-        "association",
-        "attachment",
-        "connectivity",
-        "containment",
-        "relationships",
-        "AGSGraphicsOverlay",
+        "associations",
+        "connectivity association",
+        "containment association",
+        "structural attachment associations",
+        "utility network",
+        "AGSSubtypeFeatureLayer",
         "AGSUtilityAssociation",
         "AGSUtilityAssociationType",
-        "AGSUtilityNetwork"
+        "AGSUtilityElement",
+        "AGSUtilityNetwork",
+        "AGSUtilityNetworkDefinition"
     ],
     "redirect_from": [
     ],
     "relevant_apis": [
-        "AGSGraphicsOverlay",
+        "AGSSubtypeFeatureLayer",
         "AGSUtilityAssociation",
         "AGSUtilityAssociationType",
-        "AGSUtilityNetwork"
+        "AGSUtilityElement",
+        "AGSUtilityNetwork",
+        "AGSUtilityNetworkDefinition"
     ],
     "snippets": [
-        "DisplayUtilityAssociationsViewController.swift"
+        "DisplayContentUtilityNetworkContainerViewController.swift",
+        "DisplayContentUtilityNetworkTableViewController.swift"
     ],
-    "title": "Display utility associations"
+    "title": "Display content of utility network container"
 }

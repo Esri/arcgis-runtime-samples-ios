@@ -17,40 +17,28 @@ import ArcGIS
 
 class DisplayContentUtilityNetworkTableViewController: UITableViewController {
     var legendInfos = [AGSLegendInfo]()
-    var boundingBoxSwatch: UIImage?
-    var attachmentSwatch: UIImage?
-    var connectivitySwatch: UIImage?
-    var contentSwatchesDict = KeyValuePairs<String, UIImage>()
-    
-    func makeDictionary() -> KeyValuePairs<String, UIImage> {
-        if let boundingBoxSwatch = boundingBoxSwatch, let attachmentSwatch = attachmentSwatch, let connectivitySwatch = connectivitySwatch {
-            return [
-                "Bounding box": boundingBoxSwatch,
-                "Attachment": attachmentSwatch,
-                "Connectivity": connectivitySwatch
-            ]
-        }
-        return [:]
-    }
-    
+    var contentSwatches = KeyValuePairs<String, UIImage>()
+   
+    // Set the number of rows.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        contentSwatchesDict = makeDictionary()
-        return legendInfos.count + contentSwatchesDict.count
+        return legendInfos.count + contentSwatches.count
     }
     
+    // Set the number of sections.
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayContentLegendCell", for: indexPath)
+        // Add the container view swatches to the legend after the feature layer legend information.
         if indexPath.row >= legendInfos.count {
             let contentSwatch = indexPath.row - legendInfos.count
-            cell.textLabel?.text = contentSwatchesDict[contentSwatch].key
-            cell.imageView?.image = contentSwatchesDict[contentSwatch].value
+            cell.textLabel?.text = contentSwatches[contentSwatch].key
+            cell.imageView?.image = contentSwatches[contentSwatch].value
             cell.setNeedsLayout()
         } else {
+            // Add the information provided by the feature layers to the legend.
             let legendInfo = legendInfos[indexPath.row]
             cell.textLabel?.text = legendInfo.name
             legendInfo.symbol?.createSwatch { (image, _) in

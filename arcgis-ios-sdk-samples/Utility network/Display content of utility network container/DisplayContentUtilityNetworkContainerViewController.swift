@@ -70,9 +70,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     func loadUtilityNetwork() {
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: mapView.map!)
         utilityNetwork?.load { [weak self] error in
-            guard let self = self else { return }
             if let error = error {
-                self.presentAlert(error: error)
+                self?.presentAlert(error: error)
             }
         }
     }
@@ -123,7 +122,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         // Create a container element using the selected feature.
         guard let containerElement = utilityNetwork?.createElement(with: containerFeature) else { return }
         // Get the containment associations from this element to display its content.
-        utilityNetwork?.associations(with: containerElement, type: .containment) { containmentAssociations, error in
+        utilityNetwork?.associations(with: containerElement, type: .containment) { [weak self] containmentAssociations, error in
+            guard let self = self else { return }
             var contentElements = [AGSUtilityElement]()
             // Determine the type of each element and add it to the array of content elements.
             containmentAssociations?.forEach { association in
@@ -194,7 +194,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         // Add the bounding box symbol.
         overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: boundingBoxSymbol))
         let geometry = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!
-        mapView.setViewpointGeometry(geometry) { _ in
+        mapView.setViewpointGeometry(geometry) { [weak self] _ in
+            guard let self = self else { return }
             // Get the associations for this extent to display how content features are attached or connected.
             self.utilityNetwork?.associations(withExtent: overlay.extent) { (containmentAssociations, error) in
                 containmentAssociations?.forEach { association in

@@ -132,15 +132,14 @@ class RelatedFeaturesViewController: UITableViewController {
         
         relatedTable.applyEdits { [weak self] (results, error) in
             SVProgressHUD.dismiss()
-            
-            if let firstResult = results?.first {
-                if firstResult.completedWithErrors {
+            if let results = results {
+                if let firstResult = results.first,
+                   firstResult.completedWithErrors {
                     // The edit fails with error.
                     self?.presentAlert(error: firstResult.error!)
-                } else {
-                    // Query to update features in the table.
-                    self?.queryRelatedFeatures()
                 }
+                // Query to update features in the table.
+                self?.queryRelatedFeatures()
             } else if let error = error {
                 self?.presentAlert(error: error)
             }

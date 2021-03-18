@@ -1021,7 +1021,7 @@
 				<key>displayName</key>
 				<string>Custom dictionary style</string>
 				<key>descriptionText</key>
-				<string>Use a custom dictionary style (.stylx) to symbolize features using a variety of attribute values.</string>
+				<string>Use a custom dictionary style created from a web style or style file to symbolize features using a variety of attribute values.</string>
 				<key>storyboardName</key>
 				<string>CustomDictionaryStyle</string>
 				<key>dependency</key>

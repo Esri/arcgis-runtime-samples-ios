@@ -36,7 +36,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     
     // The symbols used to display the container view contents.
     let boundingBoxSymbol = AGSSimpleLineSymbol(style: .dash, color: .yellow, width: 3)
-    let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .blue, width: 3)
+    let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .green, width: 3)
     let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 3)
     
     /// The action that is prompted when exiting the container view.
@@ -102,16 +102,10 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     ///   - completion: A closure to pass back the feature that was tapped on.
     func getContainerFeature(layerResults: [AGSIdentifyLayerResult], completion: @escaping (AGSArcGISFeature) -> Void) {
         // A map containing SubtypeFeatureLayer is expected to have features as part of its sublayer's result.
-        layerResults.forEach { layerResult in
-            if layerResult.layerContent is AGSSubtypeFeatureLayer {
-                layerResult.sublayerResults.forEach { sublayerResult in
-                    sublayerResult.geoElements.forEach { geoElement in
-                        if let feature = geoElement as? AGSArcGISFeature {
-                            completion(feature)
-                        }
-                    }
-                }
-            }
+        let layerResult = layerResults.first(where: { $0.layerContent is AGSSubtypeFeatureLayer })
+        layerResult?.sublayerResults.forEach { sublayerResult in
+            guard let feature = sublayerResult.geoElements.first(where: { $0 is AGSArcGISFeature }) as? AGSArcGISFeature else { return }
+            completion(feature)
         }
     }
     
@@ -198,7 +192,11 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             guard let self = self else { return }
             // Get the associations for this extent to display how content features are attached or connected.
             self.utilityNetwork?.associations(withExtent: overlay.extent) { (containmentAssociations, error) in
-                containmentAssociations?.forEach { association in
+                guard let containmentAssociations = containmentAssociations else { return }
+                if containmentAssociations.isEmpty {
+                    self.presentAlert(title: nil, message: "This feature contains no associations.")
+                }
+                containmentAssociations.forEach { association in
                     var symbol = AGSSymbol()
                     if association.associationType == .attachment {
                         symbol = self.attachmentSymbol

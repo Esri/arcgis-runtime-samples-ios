@@ -21,7 +21,14 @@ class CustomDictionaryStyleViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemapStyle: .arcGISStreets)
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.setViewpoint(
+                AGSViewpoint(
+                    latitude: 34.0574,
+                    longitude: -117.1963,
+                    scale: 1e4
+                )
+            )
         }
     }
     /// The segmented control to toggle between style file and web style.
@@ -72,7 +79,6 @@ class CustomDictionaryStyleViewController: UIViewController {
     
     func setupUI() {
         mapView.map?.operationalLayers.add(featureLayer)
-        mapView.setViewpointGeometry(featureLayer.fullExtent!)
         segmentedControl.isEnabled = true
         segmentedControlValueChanged(segmentedControl)
     }

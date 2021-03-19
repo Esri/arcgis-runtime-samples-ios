@@ -26,10 +26,10 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kLe-7X-NlK"/>
                                     <barButtonItem style="plain" id="Uog-EC-qJ7">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Wfu-l9-jpD">
-                                            <rect key="frame" x="125.5" y="10.5" width="163" height="33"/>
+                                            <rect key="frame" x="85.5" y="10.5" width="243" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
-                                                <segment title="Style file"/>
+                                                <segment title="Local style file"/>
                                                 <segment title="Web style"/>
                                             </segments>
                                             <connections>

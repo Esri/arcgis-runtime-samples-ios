@@ -14,9 +14,9 @@ Toggle between the dictionary symbols from the web style and style file. Pan and
 
 ## How it works
 
-1. Create an `AGSPortalItem`, referring to a `AGSPortal` and the item ID of the web style.
+1. Create an `AGSPortalItem`, referring to an `AGSPortal` and the item ID of the web style.
 2. Based on the style selected:
-    * Web style: create a new `AGSDictionarySymbolStyle` from the portal item using `AGSDictionarySymbolStyle.init(portalItem:)` with the portal item.
+    * Web style: create a new `AGSDictionarySymbolStyle` from the portal item using `AGSDictionarySymbolStyle.init(portalItem:)`.
     * Style file: create a new `AGSDictionarySymbolStyle` using `AGSDictionarySymbolStyle.init(url:)` with a URL to the style file on local disk.
 3. Create a new `AGSDictionaryRenderer`, providing the dictionary symbol style.
 4. Apply the dictionary renderer to a feature layer.

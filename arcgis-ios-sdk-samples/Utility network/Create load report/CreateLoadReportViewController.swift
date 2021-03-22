@@ -120,6 +120,9 @@ class CreateLoadReportViewController: UIViewController {
             // Create function input and output condition.
             traceConfiguration.functions = [addLoadAttributeFunction]
             traceConfiguration.outputCondition = serviceCategoryComparison
+            // Set to false to ensure that service points with incorrect phasing
+            // (which therefore act as barriers) are not counted with results.
+            traceConfiguration.includeBarriers = false
             // Assign the trace configuration to trace parameters.
             traceParameters.traceConfiguration = traceConfiguration
             self.traceParameters = traceParameters
@@ -251,7 +254,7 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
             phase = includedPhases[indexPath.row]
             cell.textLabel?.text = String(format: "Phase: %@", phase.name)
             if let summary = summaries[phase] {
-                let formattedString = String(format: "C: %@\tL: %@", numberFormatter.string(from: NSNumber(value: summary.totalCustomers))!, numberFormatter.string(from: NSNumber(value: summary.totalLoad))!)
+                let formattedString = String(format: "C: %@  L: %@", numberFormatter.string(from: NSNumber(value: summary.totalCustomers))!, numberFormatter.string(from: NSNumber(value: summary.totalLoad))!)
                 cell.detailTextLabel?.text = formattedString
             } else {
                 cell.detailTextLabel?.text = "N/A"

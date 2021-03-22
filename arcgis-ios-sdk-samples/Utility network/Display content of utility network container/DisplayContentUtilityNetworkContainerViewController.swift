@@ -263,6 +263,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         mapView.touchDelegate = self
         // Add a graphics overlay.
         mapView.graphicsOverlays.add(AGSGraphicsOverlay())
+        mapView.setViewpoint(AGSViewpoint(latitude: 41.801504, longitude: -88.163718, scale: 4e3))
         // Get the legends from the feature service.
         getLegends()
         // Add the source code button item to the right of navigation bar.

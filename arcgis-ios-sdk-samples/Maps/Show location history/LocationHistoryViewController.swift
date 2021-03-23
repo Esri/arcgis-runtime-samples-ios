@@ -93,7 +93,7 @@ class LocationHistoryViewController: UIViewController {
     ]],"spatialReference":{"wkid":102100,"latestWkid":3857}}
     """
     
-    private var isTracking: Bool = false {
+    private var isTracking = false {
         didSet {
             handleLocationStatusChange()
         }

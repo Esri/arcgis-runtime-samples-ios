@@ -50,7 +50,6 @@ class PerformValveIsolationTraceViewController: UIViewController {
     var selectedCategory: AGSUtilityCategory?
     var startingLocationElement: AGSUtilityElement!
     var utilityNetwork: AGSUtilityNetwork!
-    var serviceGeodatabase: AGSServiceGeodatabase!
     var layers = [AGSFeatureLayer]()
     
     // MARK: Initialize map and utility network
@@ -93,13 +92,13 @@ class PerformValveIsolationTraceViewController: UIViewController {
     
     /// Load the service geodatabase and initialize the layers.
     func loadServiceGeodatabase() {
-        serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
+        let serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
         serviceGeodatabase.load { [weak self] error in
             guard let self = self else { return }
             // The gas line layer ./3 and gas device layer ./0 are created from the service geodatabase.
-            if let gasLineLayerTable = self.serviceGeodatabase.table(withLayerID: 3),
-               let gasDeviceLayerTable = self.serviceGeodatabase.table(withLayerID: 0) {
-                self.layers = [gasLineLayerTable, gasDeviceLayerTable].map { AGSFeatureLayer(featureTable: $0) }
+            if let gasLineLayerTable = serviceGeodatabase.table(withLayerID: 3),
+               let gasDeviceLayerTable = serviceGeodatabase.table(withLayerID: 0) {
+                self.layers = [gasLineLayerTable, gasDeviceLayerTable].map(AGSFeatureLayer.init)
                 self.setMap(with: self.layers)
                 self.loadUtilityNetwork()
             } else if let error = error {

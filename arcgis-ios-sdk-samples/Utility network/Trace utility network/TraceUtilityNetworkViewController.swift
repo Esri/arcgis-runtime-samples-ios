@@ -27,7 +27,6 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     
     private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     
-    private var layers = [AGSFeatureLayer]()
     private let map: AGSMap
     private let serviceGeodatabase: AGSServiceGeodatabase
     private let utilityNetwork: AGSUtilityNetwork
@@ -70,7 +69,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             // Create electrical distribution line layer ./115 and electrical device layer ./100.
             let urls = [self.featureServiceURL.appendingPathComponent("115"),
                         self.featureServiceURL.appendingPathComponent("200")]
-            self.layers = urls.map { url -> AGSFeatureLayer in
+            let layers = urls.map { url -> AGSFeatureLayer in
                 let featureTable = AGSServiceFeatureTable(url: url)
                 let layer = AGSFeatureLayer(featureTable: featureTable)
                 if featureTable.serviceLayerID == 115 {
@@ -98,7 +97,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
                 return layer
             }
             // Add the utility network feature layers to the map for display.
-            self.map.operationalLayers.addObjects(from: self.layers)
+            self.map.operationalLayers.addObjects(from: layers)
         }
     }
     

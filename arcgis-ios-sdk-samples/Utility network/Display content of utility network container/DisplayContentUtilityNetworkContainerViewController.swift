@@ -77,7 +77,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     }
     
     /// Get the legend information provided by the feature layers used in the utility network.
-    func getLegends() {
+    func fetchLegendInfo() {
         // Create feature tables from URLs.
         let electricDistributionTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/105")!)
         let structureJunctionTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/900")!)
@@ -100,7 +100,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// - Parameters:
     ///   - layerResults: The layer results identified by the touch delegate.
     ///   - completion: A closure to pass back the feature that was tapped on.
-    func getContainerFeature(layerResults: [AGSIdentifyLayerResult], completion: @escaping (AGSArcGISFeature) -> Void) {
+    func identifyContainerFeature(layerResults: [AGSIdentifyLayerResult], completion: @escaping (AGSArcGISFeature) -> Void) {
         // A map containing SubtypeFeatureLayer is expected to have features as part of its sublayer's result.
         let layerResult = layerResults.first(where: { $0.layerContent is AGSSubtypeFeatureLayer })
         layerResult?.sublayerResults.forEach { sublayerResult in
@@ -112,7 +112,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// Get the containment associations from the chosen element.
     ///
     /// - Parameter containerFeature: The selected container feature
-    func getContainmentAssociations(for containerFeature: AGSArcGISFeature) {
+    func addElementAssociations(for containerFeature: AGSArcGISFeature) {
         // Create a container element using the selected feature.
         guard let containerElement = utilityNetwork?.createElement(with: containerFeature) else { return }
         // Get the containment associations from this element to display its content.
@@ -121,29 +121,29 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             var contentElements = [AGSUtilityElement]()
             // Determine the type of each element and add it to the array of content elements.
             containmentAssociations?.forEach { association in
-                var otherElement: AGSUtilityElement
+                var element: AGSUtilityElement
                 if association.fromElement.objectID == containerElement.objectID {
-                    otherElement = association.toElement
+                    element = association.toElement
                 } else {
-                    otherElement = association.fromElement
+                    element = association.fromElement
                 }
-                contentElements.append(otherElement)
+                contentElements.append(element)
             }
             // If there are elements, find their corresponding features.
             if !contentElements.isEmpty {
-                self.getFeatures(within: containerElement, for: contentElements)
+                self.addGraphicsToFeatures(within: containerElement, for: contentElements)
             } else if let error = error {
                 self.presentAlert(error: error)
             }
         }
     }
     
-    /// Get the features that correspond to the content's elements.
+    /// Get the features that correspond to the content's elements and add graphics.
     ///
     /// - Parameters:
     ///     - containerElement: The container element of the selected feature
     ///     - contentElements: An array of the content elements.
-    func getFeatures(within containerElement: AGSUtilityElement, for contentElements: [AGSUtilityElement]) {
+    func addGraphicsToFeatures(within containerElement: AGSUtilityElement, for contentElements: [AGSUtilityElement]) {
         // Save the previous viewpoint.
         previousViewpoint = mapView.currentViewpoint(with: .boundingGeometry)
         // Hide the layers to display the container view.
@@ -167,11 +167,11 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                    let point = (overlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
                     self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in
                         guard let boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry else { return }
-                        self.getAssociationsWithExtent(boundingBox: boundingBox, overlay: overlay)
+                        self.identifyAssociationsWithExtent(boundingBox: boundingBox, overlay: overlay)
                     }
                 } else {
                     boundingBox = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)
-                    self.getAssociationsWithExtent(boundingBox: boundingBox!, overlay: overlay)
+                    self.identifyAssociationsWithExtent(boundingBox: boundingBox!, overlay: overlay)
                 }
             } else if let error = error {
                 self.presentAlert(error: error)
@@ -184,7 +184,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// - Parameters:
     ///     - boundingBox: The gemeotry which represents the boundaries of the extent.
     ///     - overlay: The overlay to add the symbols to.
-    func getAssociationsWithExtent(boundingBox: AGSGeometry, overlay: AGSGraphicsOverlay) {
+    func identifyAssociationsWithExtent(boundingBox: AGSGeometry, overlay: AGSGraphicsOverlay) {
         // Add the bounding box symbol.
         overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: boundingBoxSymbol))
         let geometry = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!
@@ -222,8 +222,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (layerResults, error) in
             guard let self = self else { return }
             if let layerResults = layerResults {
-                self.getContainerFeature(layerResults: layerResults) { containerFeature in
-                    self.getContainmentAssociations(for: containerFeature)
+                self.identifyContainerFeature(layerResults: layerResults) { containerFeature in
+                    self.addElementAssociations(for: containerFeature)
                 }
             } else if let error = error {
                 self.presentAlert(error: error)
@@ -265,7 +265,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         mapView.graphicsOverlays.add(AGSGraphicsOverlay())
         mapView.setViewpoint(AGSViewpoint(latitude: 41.801504, longitude: -88.163718, scale: 4e3))
         // Get the legends from the feature service.
-        getLegends()
+        fetchLegendInfo()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayContentUtilityNetworkContainerViewController", "DisplayContentUtilityNetworkTableViewController"]
     }

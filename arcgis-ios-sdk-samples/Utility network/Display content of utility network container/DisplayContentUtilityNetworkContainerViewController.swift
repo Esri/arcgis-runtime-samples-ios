@@ -290,6 +290,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
+        return .none
     }
 }

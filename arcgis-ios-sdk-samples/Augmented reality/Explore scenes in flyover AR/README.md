@@ -38,7 +38,7 @@ This sample requires a device that is compatible with ARKit 1.0 on iOS.
 
 **Flyover AR** is one of three main patterns for working with geographic information in augmented reality.
 
-This sample uses the ArcGIS Runtime Toolkit. See the section [Enable your app for AR using AR Toolkit](https://developers.arcgis.com/ios/latest/swift/guide/display-scenes-in-augmented-reality.htm) in the iOS Guide to learn about the toolkit and how to add it to your app.
+This sample uses the ArcGIS Runtime Toolkit. See the section [Enable your app for AR using AR Toolkit](https://developers.arcgis.com/ios/scenes-3d/display-scenes-in-augmented-reality/) in the iOS Guide to learn about the toolkit and how to add it to your app.
 
 ## Tags
 

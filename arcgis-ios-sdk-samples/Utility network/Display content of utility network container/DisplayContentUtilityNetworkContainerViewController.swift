@@ -24,10 +24,12 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     }
     /// The bar button item to prompt return of the main view.
     @IBOutlet var exitBarButtonItem: UIBarButtonItem!
+    @IBOutlet var legendBarButtonItem: UIBarButtonItem!
     
     /// A feature service for an electric utility network in Naperville, Illinois.
     let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     var utilityNetwork: AGSUtilityNetwork?
+    let graphicsOverlay = AGSGraphicsOverlay()
     /// The default or previous viewpoint before entering the container view.
     var previousViewpoint: AGSViewpoint?
     /// An array containing information about the feature services' legends.
@@ -44,7 +46,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         // Disable the bar button item since container view will be exited.
         exitBarButtonItem.isEnabled = false
         // Remove all the objects that were added onto the graphics overlay.
-        (mapView.graphicsOverlays[0] as? AGSGraphicsOverlay)?.graphics.removeAllObjects()
+        graphicsOverlay.graphics.removeAllObjects()
         (mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
             // Make each operational layer visible.
             layer.isVisible = true
@@ -70,6 +72,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     func loadUtilityNetwork() {
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: mapView.map!)
         utilityNetwork?.load { [weak self] error in
+            // Add self as the touch delegate for the map view.
+            self?.mapView.touchDelegate = self
             if let error = error {
                 self?.presentAlert(error: error)
             }
@@ -79,14 +83,15 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// Get the legend information provided by the feature layers used in the utility network.
     func fetchLegendInfo() {
         // Create feature tables from URLs.
-        let electricDistributionTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/105")!)
-        let structureJunctionTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/900")!)
+        let electricDistributionTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("105"))
+        let structureJunctionTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("900"))
         // Create feature layers using the feature tables.
         featureLayers = [electricDistributionTable, structureJunctionTable].map(AGSFeatureLayer.init)
         featureLayers.forEach { layer in
             // Get the legend information of each layer.
             layer.fetchLegendInfos { [weak self] (legendInfos, error) in
                 guard let self = self, let legendInfos = legendInfos else { return }
+                self.legendBarButtonItem.isEnabled = true
                 self.legendInfos.append(contentsOf: legendInfos)
                 if let error = error {
                     self.presentAlert(error: error)
@@ -150,28 +155,29 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         (mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
             layer.isVisible = false
         }
-        // Get the overlay to add the symbols to.
-        guard let overlay = mapView.graphicsOverlays.firstObject as? AGSGraphicsOverlay else { return }
         // Get the corresponding features for the array of content elements.
         utilityNetwork?.features(for: contentElements) { [weak self] (contentFeatures, error) in
             guard let self = self else { return }
             if let contentFeatures = contentFeatures {
+                if contentFeatures.count == 1 {
+                    self.presentAlert(title: nil, message: "This feature contains no associations.")
+                }
                 // Create and add a symbol for each of the features.
                 contentFeatures.forEach { content in
                     let symbol = (content.featureTable as? AGSArcGISFeatureTable)?.layerInfo?.drawingInfo?.renderer?.symbol(for: content)
-                    overlay.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
+                    self.graphicsOverlay.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
                 }
                 // The bounding box which defines the container view may be computed using the extent of the features it contains or centered around its geometry at the container's view scale.
                 var boundingBox: AGSGeometry?
-                if overlay.graphics.count == 1,
-                   let point = (overlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
+                if self.graphicsOverlay.graphics.count == 1,
+                   let point = (self.graphicsOverlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
                     self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in
                         guard let boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry else { return }
-                        self.identifyAssociationsWithExtent(boundingBox: boundingBox, overlay: overlay)
+                        self.identifyAssociationsWithExtent(boundingBox: boundingBox)
                     }
                 } else {
-                    boundingBox = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)
-                    self.identifyAssociationsWithExtent(boundingBox: boundingBox!, overlay: overlay)
+                    boundingBox = AGSGeometryEngine.bufferGeometry(self.graphicsOverlay.extent, byDistance: 0.05)
+                    self.identifyAssociationsWithExtent(boundingBox: boundingBox!)
                 }
             } else if let error = error {
                 self.presentAlert(error: error)
@@ -181,21 +187,16 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     
     /// Get associations for the specified extent and display its associations.
     ///
-    /// - Parameters:
-    ///     - boundingBox: The gemeotry which represents the boundaries of the extent.
-    ///     - overlay: The overlay to add the symbols to.
-    func identifyAssociationsWithExtent(boundingBox: AGSGeometry, overlay: AGSGraphicsOverlay) {
+    /// - Parameter boundingBox: The gemeotry which represents the boundaries of the extent.
+    func identifyAssociationsWithExtent(boundingBox: AGSGeometry) {
         // Add the bounding box symbol.
-        overlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: boundingBoxSymbol))
-        let geometry = AGSGeometryEngine.bufferGeometry(overlay.extent, byDistance: 0.05)!
+        graphicsOverlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: boundingBoxSymbol))
+        let geometry = AGSGeometryEngine.bufferGeometry(graphicsOverlay.extent, byDistance: 0.05)!
         mapView.setViewpointGeometry(geometry) { [weak self] _ in
             guard let self = self else { return }
             // Get the associations for this extent to display how content features are attached or connected.
-            self.utilityNetwork?.associations(withExtent: overlay.extent) { (containmentAssociations, error) in
+            self.utilityNetwork?.associations(withExtent: self.graphicsOverlay.extent) { (containmentAssociations, error) in
                 guard let containmentAssociations = containmentAssociations else { return }
-                if containmentAssociations.isEmpty {
-                    self.presentAlert(title: nil, message: "This feature contains no associations.")
-                }
                 containmentAssociations.forEach { association in
                     var symbol = AGSSymbol()
                     if association.associationType == .attachment {
@@ -203,7 +204,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                     } else {
                         symbol = self.connectivitySymbol
                     }
-                    overlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
+                    self.graphicsOverlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
                 }
                 // Enable the bar button item to exit the container view.
                 self.exitBarButtonItem.isEnabled = true
@@ -259,10 +260,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         super.viewDidLoad()
         // Load the utility network.
         loadUtilityNetwork()
-        // Add self as the touch delegate for the map view.
-        mapView.touchDelegate = self
         // Add a graphics overlay.
-        mapView.graphicsOverlays.add(AGSGraphicsOverlay())
+        mapView.graphicsOverlays.add(graphicsOverlay)
         mapView.setViewpoint(AGSViewpoint(latitude: 41.801504, longitude: -88.163718, scale: 4e3))
         // Get the legends from the feature service.
         fetchLegendInfo()
@@ -276,8 +275,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         if segue.identifier == "DisplayContentLegendSegue" {
             let controller = segue.destination as! DisplayContentUtilityNetworkTableViewController
             controller.presentationController?.delegate = self
-            // Set the size of the view controller.
-            controller.preferredContentSize = CGSize(width: 300, height: 200)
             controller.legendInfos = legendInfos
             controller.contentSwatches = [
                 "Bounding box": makeSwatch(symbol: boundingBoxSymbol),

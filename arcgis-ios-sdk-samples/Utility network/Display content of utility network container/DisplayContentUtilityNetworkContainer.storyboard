@@ -19,13 +19,12 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgJ-4V-EwJ" userLabel="Map View" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgX-Rf-9Od">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="qP6-q2-bY8"/>
-                                    <barButtonItem title="Legend" id="kbl-L6-sWd" userLabel="Legend Bar Button Item">
+                                    <barButtonItem enabled="NO" title="Legend" id="kbl-L6-sWd" userLabel="Legend Bar Button Item">
                                         <connections>
                                             <segue destination="joz-Jj-EES" kind="popoverPresentation" identifier="DisplayContentLegendSegue" popoverAnchorBarButtonItem="kbl-L6-sWd" id="gib-aU-q8U">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -43,7 +42,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OZH-zL-pnv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fgJ-4V-EwJ" firstAttribute="top" secondItem="OZH-zL-pnv" secondAttribute="top" id="5mP-Jt-EqZ"/>
                             <constraint firstAttribute="trailing" secondItem="fgJ-4V-EwJ" secondAttribute="trailing" id="6rA-qI-QCW"/>
@@ -56,6 +55,7 @@
                     </view>
                     <connections>
                         <outlet property="exitBarButtonItem" destination="xMf-yG-3Pq" id="lcb-zF-3Lw"/>
+                        <outlet property="legendBarButtonItem" destination="kbl-L6-sWd" id="orA-3j-efO"/>
                         <outlet property="mapView" destination="fgJ-4V-EwJ" id="ueN-8y-yS8"/>
                     </connections>
                 </viewController>
@@ -94,6 +94,9 @@
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

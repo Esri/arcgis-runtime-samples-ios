@@ -280,6 +280,18 @@
 					<string>canyonlands</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display device location with NMEA data sources</string>
+				<key>descriptionText</key>
+				<string>Parse NMEA sentences and use the results to show device location on the map.</string>
+				<key>storyboardName</key>
+				<string>DisplayDeviceLocationWithNMEADataSources</string>
+				<key>dependency</key>
+				<array>
+					<string>RedlandsNMEA</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1024,6 +1036,14 @@
 				<string>Show a predefined popup from a web map.</string>
 				<key>storyboardName</key>
 				<string>ShowPopup</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Create symbol styles from web styles</string>
+				<key>descriptionText</key>
+				<string>Create symbol styles from a style file hosted on a portal.</string>
+				<key>storyboardName</key>
+				<string>CreateSymbolStylesFromWebStyles</string>
 			</dict>
 		</array>
 	</dict>

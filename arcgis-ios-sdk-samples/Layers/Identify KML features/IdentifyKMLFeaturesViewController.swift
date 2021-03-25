@@ -17,33 +17,34 @@
 import UIKit
 import ArcGIS
 
-/// A view controller that manages the interface of the Identify KML Features
+/// A view controller that manages the interface of the Identify KML features
 /// sample.
 class IdentifyKMLFeaturesViewController: UIViewController {
+    // MARK: Storyboard views
+    
+    /// The map view managed by the view controller.
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            let map = AGSMap(basemapStyle: .arcGISDarkGrayBase)
+            map.operationalLayers.add(forecastLayer)
+            mapView.map = map
+            let center = AGSPoint(x: -48_885, y: 1_718_235, spatialReference: AGSSpatialReference(wkid: 5070))
+            mapView.setViewpointCenter(center, scale: 50_000_000)
+        }
+    }
+    
+    // MARK: Instance properties
+    
     /// A KML layer with forecast data.
     let forecastLayer: AGSKMLLayer = {
-        let url = URL(string: "https://www.wpc.ncep.noaa.gov/kml/noaa_chart/WPC_Day1_SigWx.kml")!
+        let url = URL(string: "https://www.wpc.ncep.noaa.gov/kml/noaa_chart/WPC_Day1_SigWx_latest.kml")!
         let dataset = AGSKMLDataset(url: url)
         return AGSKMLLayer(kmlDataset: dataset)
     }()
     
-    /// The map view managed by the view controller.
-    @IBOutlet weak var mapView: AGSMapView!
+    // MARK: Methods
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let map = AGSMap(basemapStyle: .arcGISDarkGrayBase)
-        map.operationalLayers.add(forecastLayer)
-        
-        mapView.map = map
-        let center = AGSPoint(x: -48_885, y: 1_718_235, spatialReference: AGSSpatialReference(wkid: 5070))
-        mapView.setViewpoint(AGSViewpoint(center: center, scale: 50_000_000))
-        
-        // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["IdentifyKMLFeaturesViewController"]
-    }
-    
+    /// Show a callout for the ballon content of the placemark.
     func showCallout(for placemark: AGSKMLPlacemark, at point: AGSPoint) {
         guard let data = placemark.balloonContent.data(using: .utf8) else { return }
         do {
@@ -56,20 +57,35 @@ class IdentifyKMLFeaturesViewController: UIViewController {
             mapView.callout.customView = textView
             mapView.callout.show(at: point, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
         } catch {
-            print("Error converting balloon content to attributed string: \(error)")
+            presentAlert(error: error)
         }
     }
+    
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["IdentifyKMLFeaturesViewController"]
+    }
 }
+
+// MARK: - AGSGeoViewTouchDelegate
 
 extension IdentifyKMLFeaturesViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         geoView.callout.dismiss()
         geoView.identifyLayer(forecastLayer, screenPoint: screenPoint, tolerance: 15, returnPopupsOnly: false) { [weak self] (result) in
-            if let error = result.error {
-                print("Error identifying layer: \(error)")
-            } else if let placemarkIndex = result.geoElements.firstIndex(where: { $0 is AGSKMLPlacemark }) {
-                let placemark = result.geoElements[placemarkIndex] as! AGSKMLPlacemark
+            if let placemark = result.geoElements.first as? AGSKMLPlacemark {
+                // Google Earth only displays the placemarks with description
+                // or extended data. To match its behavior, add a description
+                // placeholder if it is empty in the data source.
+                if placemark.nodeDescription.isEmpty {
+                    placemark.nodeDescription = "Weather condition"
+                }
                 self?.showCallout(for: placemark, at: mapPoint)
+            } else if let error = result.error {
+                self?.presentAlert(error: error)
             }
         }
     }

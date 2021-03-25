@@ -23,18 +23,18 @@ class OnInteractionCacheViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OnInteractionCacheViewController"]
         
-        //initialize map with light gray canvas basemap
+        // initialize map with light gray canvas basemap
         let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         
-        //feature layer
+        // feature layer
         let featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
-        //set the request mode
+        // set the request mode
         featureTable.featureRequestMode = AGSFeatureRequestMode.onInteractionCache
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        //add the feature layer to the map
+        // add the feature layer to the map
         map.operationalLayers.add(featureLayer)
         
         mapView.map = map

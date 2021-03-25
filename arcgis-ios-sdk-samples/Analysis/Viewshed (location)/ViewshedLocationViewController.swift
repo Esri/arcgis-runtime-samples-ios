@@ -22,7 +22,7 @@ class ViewshedLocationViewController: UIViewController {
     
     private weak var viewshed: AGSLocationViewshed?
     
-    private var canMoveViewshed: Bool = false {
+    private var canMoveViewshed = false {
         didSet {
             setObserverOnTapInstruction.isHidden = canMoveViewshed
             updateObserverOnDragInstruction.isHidden = !canMoveViewshed
@@ -70,7 +70,7 @@ class ViewshedLocationViewController: UIViewController {
         analysisOverlay.analyses.add(viewshed)
         sceneView.analysisOverlays.add(analysisOverlay)
         
-        //set touch delegate on scene view as self
+        // set touch delegate on scene view as self
         sceneView.touchDelegate = self
     }
     

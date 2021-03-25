@@ -23,38 +23,38 @@ class GORenderersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GORenderersViewController"]
         
-        //initialize map with topographic basemap
+        // initialize map with topographic basemap
         self.map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //add the graphics overaly, with graphics added, to map view
+        // add the graphics overaly, with graphics added, to map view
         self.addGraphicsOverlay()
         
-        //assign map to the map view's map
+        // assign map to the map view's map
         self.mapView.map = self.map
     }
     
     func addGraphicsOverlay() {
-        //point graphic
+        // point graphic
         let pointGeometry = AGSPoint(x: 40e5, y: 40e5, spatialReference: .webMercator())
         let pointSymbol = AGSSimpleMarkerSymbol(style: AGSSimpleMarkerSymbolStyle.diamond, color: .red, size: 10)
         let pointGraphic = AGSGraphic(geometry: pointGeometry, symbol: nil, attributes: nil)
         
-        //create graphics overlay for point
+        // create graphics overlay for point
         let pointGraphicOverlay = AGSGraphicsOverlay()
         
-        //renderer
+        // renderer
         pointGraphicOverlay.renderer = AGSSimpleRenderer(symbol: pointSymbol)
         
-        //add the graphic to the overlay
+        // add the graphic to the overlay
         pointGraphicOverlay.graphics.add(pointGraphic)
         
-        //add the overlay to the map view
+        // add the overlay to the map view
         self.mapView.graphicsOverlays.add(pointGraphicOverlay)
         
-        //line graphic
+        // line graphic
         let lineGeometry = AGSPolylineBuilder(spatialReference: .webMercator())
         lineGeometry.addPointWith(x: -10e5, y: 40e5)
         lineGeometry.addPointWith(x: 20e5, y: 50e5)
@@ -64,16 +64,16 @@ class GORenderersViewController: UIViewController {
         // create graphics overlay for polyline
         let lineGraphicOverlay = AGSGraphicsOverlay()
         
-        //renderer
+        // renderer
         lineGraphicOverlay.renderer = AGSSimpleRenderer(symbol: lineSymbol)
         
-        //add the graphic to the overlay
+        // add the graphic to the overlay
         lineGraphicOverlay.graphics.add(lineGraphic)
         
-        //add the overlay to the map view
+        // add the overlay to the map view
         self.mapView.graphicsOverlays.add(lineGraphicOverlay)
         
-        //polygon graphic
+        // polygon graphic
         let polygonGeometry = AGSPolygonBuilder(spatialReference: .webMercator())
         polygonGeometry.addPointWith(x: -20e5, y: 20e5)
         polygonGeometry.addPointWith(x: 20e5, y: 20e5)
@@ -82,16 +82,16 @@ class GORenderersViewController: UIViewController {
         let polygonSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.solid, color: .yellow, outline: nil)
         let polygonGraphic = AGSGraphic(geometry: polygonGeometry.toGeometry(), symbol: nil, attributes: nil)
         
-        //create graphics overlay for polygon
+        // create graphics overlay for polygon
         let polygonGraphicOverlay = AGSGraphicsOverlay()
         
-        //renderer
+        // renderer
         polygonGraphicOverlay.renderer = AGSSimpleRenderer(symbol: polygonSymbol)
         
-        //add the graphic to the overlay
+        // add the graphic to the overlay
         polygonGraphicOverlay.graphics.add(polygonGraphic)
         
-        //add the overlay to the map view
+        // add the overlay to the map view
         self.mapView.graphicsOverlays.add(polygonGraphicOverlay)
     }
 }

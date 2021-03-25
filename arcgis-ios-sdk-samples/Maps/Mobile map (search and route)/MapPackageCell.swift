@@ -46,7 +46,7 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                //update title label
+                // update title label
                 self?.titleLabel.text = self?.mapPackage.item?.title
                 
                 self?.collectionView.reloadData()
@@ -73,24 +73,24 @@ class MapPackageCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MobileMapCell", for: indexPath)
         
-        //label
+        // label
         let label = cell.viewWithTag(11) as! UILabel
         label.text = "Map \(indexPath.item + 1)"
         
-        //border
+        // border
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
         
-        //search image view
+        // search image view
         let searchImageView = cell.viewWithTag(12) as! UIImageView
         searchImageView.isHidden = (self.mapPackage.locatorTask == nil)
         
         let map = self.mapPackage.maps[indexPath.item]
-        //route image view
+        // route image view
         let routeImageView = cell.viewWithTag(13) as! UIImageView
         routeImageView.isHidden = map.transportationNetworks.isEmpty
         
-        //thumbnail
+        // thumbnail
         let imageView = cell.viewWithTag(14) as! UIImageView
         imageView.image = map.item?.thumbnail?.image
         imageView.layer.borderColor = UIColor.gray.cgColor

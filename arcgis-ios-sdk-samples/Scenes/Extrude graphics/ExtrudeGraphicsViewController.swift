@@ -30,23 +30,23 @@ class ExtrudeGraphicsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExtrudeGraphicsViewController"]
         
-        //initialize scene with topographic basemap
+        // initialize scene with topographic basemap
         let scene = AGSScene(basemap: .topographic())
-        //assign scene to the scene view
+        // assign scene to the scene view
         self.sceneView.scene = scene
         
-        //set the viewpoint camera
+        // set the viewpoint camera
         let camera = AGSCamera(location: self.cameraStartingPoint, heading: 10, pitch: 70, roll: 0)
         self.sceneView.setViewpointCamera(camera)
         
-        //add graphics overlay
+        // add graphics overlay
         graphicsOverlay.sceneProperties?.surfacePlacement = .drapedBillboarded
         self.sceneView.graphicsOverlays.add(graphicsOverlay)
         
-        //simple renderer with extrusion property
+        // simple renderer with extrusion property
         let renderer = AGSSimpleRenderer()
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .white, width: 1)
         renderer.symbol = AGSSimpleFillSymbol(style: .solid, color: .accentColor, outline: lineSymbol)
@@ -62,16 +62,16 @@ class ExtrudeGraphicsViewController: UIViewController {
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         
-        //add the graphics
+        // add the graphics
         self.addGraphics()
     }
     
     private func addGraphics() {
-        //starting point
+        // starting point
         let x = cameraStartingPoint.x - 0.01
         let y = cameraStartingPoint.y + 0.25
         
-        //creating a grid of polygon graphics
+        // creating a grid of polygon graphics
         for column in stride(from: 0.0, through: 6.0, by: 1.0) {
             for row in stride(from: 0.0, through: 4.0, by: 1.0) {
                 let startingX = x + column * (squareSize + spacing)
@@ -83,8 +83,8 @@ class ExtrudeGraphicsViewController: UIViewController {
         }
     }
     
-    //the function returns a polygon starting at the given point
-    //with size equal to squareSize
+    // the function returns a polygon starting at the given point
+    // with size equal to squareSize
     private func polygonForStartingPoint(_ point: AGSPoint) -> AGSPolygon {
         let polygon = AGSPolygonBuilder(spatialReference: .wgs84())
         polygon.addPointWith(x: point.x, y: point.y)
@@ -94,7 +94,7 @@ class ExtrudeGraphicsViewController: UIViewController {
         return polygon.toGeometry()
     }
     
-    //add a graphic to the graphics overlay for the given polygon
+    // add a graphic to the graphics overlay for the given polygon
     private func addGraphicForPolygon(_ polygon: AGSPolygon) {
         let rand = Int.random(in: 0...maxHeight)
         

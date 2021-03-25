@@ -21,13 +21,13 @@ class DisplayMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize map with a basemap
+        // initialize map with a basemap
         let map = AGSMap(basemapStyle: .arcGISImageryStandard)
         
-        //assign the map to the map view
+        // assign the map to the map view
         self.mapView.map = map
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayMapViewController"]
     }
 }

@@ -99,7 +99,7 @@ class CollectDataAR: UIViewController {
         arView.locationDataSource = AGSCLLocationDataSource()
         configureSceneForAR()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CollectDataAR"]
     }
 
@@ -269,7 +269,7 @@ extension CollectDataAR {
         
         if let newFeature = featureTable.createFeature(attributes: featureAttributes, geometry: featurePoint) as? AGSArcGISFeature {
             lastEditedFeature = newFeature
-            //add the feature to the feature table
+            // add the feature to the feature table
             featureTable.add(newFeature) { [weak self] (error: Error?) in
                 guard let self = self else { return }
                 
@@ -362,7 +362,7 @@ class CollectDataARCalibrationViewController: UIViewController {
     
     /// Determines whether continuous positioning is in use
     /// Showing the elevation slider is only appropriate when using local positioning
-    var useContinuousPositioning: Bool = true {
+    var useContinuousPositioning = true {
         didSet {
             if useContinuousPositioning {
                 elevationSlider.isEnabled = false

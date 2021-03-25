@@ -29,20 +29,24 @@ class OfflineMapParameterOverridesViewController: UITableViewController {
     
     /// The max scale level for the output. Note that higher values are zoomed further in,
     /// i.e. 23 has the most detail, but each tile covers a tiny area.
-    @IBOutlet weak var maxScaleLevelSlider: UISlider!
+    @IBOutlet weak var maxScaleLevelSlider: UISlider! {
+        didSet {
+            maxScaleLevelSlider.value = maxScaleLevelSlider.maximumValue
+        }
+    }
     
     /// The extra padding added to the extent rect to fetch a larger area, in meters.
     @IBOutlet weak var basemapExtentBufferSlider: UISlider!
     
     /// Switch indicating if the system valves layer should be included in the download.
     @IBOutlet weak var includeSystemValvesSwitch: UISwitch!
-    ///Switch indicating if the service connections layer should be included in the download.
+    /// Switch indicating if the service connections layer should be included in the download.
     @IBOutlet weak var includeServiceConnectionsSwitch: UISwitch!
     
     /// The minimum flow rate by which to filter features in the Hydrants layer, in gallons per minute.
     @IBOutlet weak var minHydrantFlowRateSlider: UISlider!
     
-    ///Switch indicating if the pipe layers should be restricted to the extent frame.
+    /// Switch indicating if the pipe layers should be restricted to the extent frame.
     @IBOutlet weak var cropWaterPipesToExtentSwitch: UISwitch!
     
     @IBOutlet weak var minScaleLevelLabel: UILabel!

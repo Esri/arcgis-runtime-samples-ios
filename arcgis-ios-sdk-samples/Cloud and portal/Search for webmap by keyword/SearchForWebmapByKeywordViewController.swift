@@ -122,7 +122,7 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
                     print(error.localizedDescription)
                 }
             } else {
-                //if our results are an array of portal items, set it on our web maps collection ViewController
+                // if our results are an array of portal items, set it on our web maps collection ViewController
                 if let portalItems = resultSet?.results as? [AGSPortalItem] {
                     self?.resultPortalItems = portalItems
                 } else {

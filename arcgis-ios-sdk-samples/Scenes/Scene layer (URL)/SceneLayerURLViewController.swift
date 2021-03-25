@@ -23,16 +23,16 @@ class SceneLayerURLViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SceneLayerURLViewController"]
         
-        //initialize scene with topographic basemap
-        let scene = AGSScene(basemap: .imagery())
+        // initialize scene with topographic basemap
+        let scene = AGSScene(basemap: .topographic())
         
-        //assign scene to the scene view
+        // assign scene to the scene view
         self.sceneView.scene = scene
         
-        //set the viewpoint camera
+        // set the viewpoint camera
         let point = AGSPoint(x: -4.49779155626782, y: 48.38282454039932, z: 62.013264927081764, spatialReference: .wgs84())
         let camera = AGSCamera(location: point, heading: 41.64729875588979, pitch: 71.2017391571523, roll: 0)
         self.sceneView.setViewpointCamera(camera)
@@ -47,7 +47,7 @@ class SceneLayerURLViewController: UIViewController {
         
         /// The url of the scene service for buildings in Brest, France.
         let brestBuildingsServiceURL = URL(string: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Brest/SceneServer/layers/0")!
-        //scene layer
+        // scene layer
         let sceneLayer = AGSArcGISSceneLayer(url: brestBuildingsServiceURL)
         self.sceneView.scene?.operationalLayers.add(sceneLayer)
     }

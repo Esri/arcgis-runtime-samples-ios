@@ -84,38 +84,38 @@ class MapImageSublayersViewController: UITableViewController {
         case .delete:
             tableView.beginUpdates()
             
-            //remove row from table view
+            // remove row from table view
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
-            //remove sublayer from map image layer
+            // remove sublayer from map image layer
             let sublayer = self.mapImageLayer.mapImageSublayers[indexPath.row] as AnyObject as! AGSArcGISMapImageSublayer
             
             self.mapImageLayer.mapImageSublayers.removeObject(at: indexPath.row)
             
-            //add sublayer to the removed array
+            // add sublayer to the removed array
             self.removedMapImageSublayers.insert(sublayer, at: 0)
             
             let indexPath = IndexPath(row: 0, section: 1)
             
-            //add row to the removed sublayer sources section
+            // add row to the removed sublayer sources section
             tableView.insertRows(at: [indexPath], with: .automatic)
             
             tableView.endUpdates()
         case .insert:
             tableView.beginUpdates()
             
-            //remove row from table view
+            // remove row from table view
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
-            //remove sublayerSource from the removed array
+            // remove sublayerSource from the removed array
             let sublayer = self.removedMapImageSublayers.remove(at: indexPath.row)
             
-            //add sublayerSource to the added array
+            // add sublayerSource to the added array
             self.mapImageLayer.mapImageSublayers.insert(sublayer, at: 0)
             
             let indexPath = IndexPath(row: 0, section: 0)
             
-            //add row to the removed sublayer sources section
+            // add row to the removed sublayer sources section
             tableView.insertRows(at: [indexPath], with: .automatic)
             
             tableView.endUpdates()
@@ -147,10 +147,10 @@ class MapImageSublayersViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction private func doneAction() {
-        //dismiss view controller
+        // dismiss view controller
         self.dismiss(animated: true)
         
-        //update the removed sublayers array on the delegate
+        // update the removed sublayers array on the delegate
         self.delegate?.mapImageSublayersViewController(self, didCloseWith: self.removedMapImageSublayers)
     }
 }

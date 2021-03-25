@@ -23,31 +23,31 @@ class CalloutViewController: UIViewController, AGSGeoViewTouchDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CalloutViewController"]
         
-        //initialize map with topographic basemap
+        // initialize map with topographic basemap
         self.map = AGSMap(basemapStyle: .arcGISTopographic)
-        //assign map to the map view
+        // assign map to the map view
         self.mapView.map = self.map
-        //register as the map view's touch delegate
-        //in order to get tap notifications
+        // register as the map view's touch delegate
+        // in order to get tap notifications
         self.mapView.touchDelegate = self
-        //zoom to custom view point
+        // zoom to custom view point
         self.mapView.setViewpointCenter(AGSPoint(x: -1.2e7, y: 5e6, spatialReference: .webMercator()), scale: 4e7)
     }
     
     // MARK: - AGSGeoViewTouchDelegate
     
-    //user tapped on the map
+    // user tapped on the map
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        //if the callout is not shown, show the callout with the coordinates of the tapped location
+        // if the callout is not shown, show the callout with the coordinates of the tapped location
         if self.mapView.callout.isHidden {
             self.mapView.callout.title = "Location"
             self.mapView.callout.detail = String(format: "x: %.2f, y: %.2f", mapPoint.x, mapPoint.y)
             self.mapView.callout.isAccessoryButtonHidden = true
             self.mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
-        } else {  //hide the callout
+        } else {  // hide the callout
             self.mapView.callout.dismiss()
         }
     }

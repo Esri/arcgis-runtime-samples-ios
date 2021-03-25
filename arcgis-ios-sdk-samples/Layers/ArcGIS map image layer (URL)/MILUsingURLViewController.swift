@@ -23,14 +23,14 @@ class MILUsingURLViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["MILUsingURLViewController"]
         
-        //create a map image layer using a url
+        // create a map image layer using a url
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Elevation/WorldElevations/MapServer")!)
-        //initialize the map
+        // initialize the map
         self.map = AGSMap()
-        //add the image layer to the map
+        // add the image layer to the map
         self.map.operationalLayers.add(mapImageLayer)
         
         self.mapView.map = self.map

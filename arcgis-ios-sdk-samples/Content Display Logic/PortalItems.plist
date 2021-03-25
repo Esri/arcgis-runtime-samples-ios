@@ -100,6 +100,12 @@
 			<key>identifier</key>
 			<string>91e7e6be79cc4d2f8416eff867674c1e</string>
 		</dict>
+		<dict>
+			<key>filename</key>
+			<string>RedlandsNMEA</string>
+			<key>identifier</key>
+			<string>d5bad9f4fee9483791e405880fb466da</string>
+		</dict>
 	</array>
 </dict>
 </plist>

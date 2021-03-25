@@ -32,29 +32,29 @@ class FeatureTemplatePickerViewController: UITableViewController {
     
     func addTemplatesFromLayer(_ featureLayer: AGSFeatureLayer) {
         let featureTable = featureLayer.featureTable as! AGSServiceFeatureTable
-        //if layer contains only templates (no feature types)
+        // if layer contains only templates (no feature types)
         if !featureTable.featureTemplates.isEmpty {
-            //for each template
+            // for each template
             for template in featureTable.featureTemplates {
                 let info = FeatureTemplateInfo(
                     featureLayer: featureLayer,
                     featureTemplate: template
                 )
-                //add to array
+                // add to array
                 self.infos.append(info)
             }
         }
-            //otherwise if layer contains feature types
+            // otherwise if layer contains feature types
         else {
-            //for each type
+            // for each type
             for type in featureTable.featureTypes {
-                //for each temple in type
+                // for each temple in type
                 for template in type.templates {
                     let info = FeatureTemplateInfo(
                         featureLayer: featureLayer,
                         featureTemplate: template
                     )
-                    //add to array
+                    // add to array
                     self.infos.append(info)
                 }
             }
@@ -62,7 +62,7 @@ class FeatureTemplatePickerViewController: UITableViewController {
     }
     
     @IBAction func cancelAction() {
-        //Notify the delegate that user tried to dismiss the view controller
+        // Notify the delegate that user tried to dismiss the view controller
         self.delegate?.featureTemplatePickerViewControllerWantsToDismiss(self)
     }
     
@@ -77,10 +77,10 @@ class FeatureTemplatePickerViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //Get a cell
+        // Get a cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "TemplatePickerCell", for: indexPath)
         
-        //Set its label, image, etc for the template
+        // Set its label, image, etc for the template
         let info = self.infos[indexPath.row]
         cell.textLabel?.text = info.featureTemplate.name
         
@@ -90,11 +90,11 @@ class FeatureTemplatePickerViewController: UITableViewController {
     // MARK: - table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Notify the delegate that the user picked a feature template
+        // Notify the delegate that the user picked a feature template
         let info = self.infos[indexPath.row]
         self.delegate?.featureTemplatePickerViewController(self, didSelectFeatureTemplate: info.featureTemplate, forFeatureLayer: info.featureLayer)
         
-        //unselect the cell
+        // unselect the cell
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -26,16 +26,16 @@ class WMTSLayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize the map
+        // initialize the map
         self.map = AGSMap()
         
-        //assign the map to the map view
+        // assign the map to the map view
         self.mapView.map = self.map
         
-        //create a WMTS service with the service URL
+        // create a WMTS service with the service URL
         self.wmtsService = AGSWMTSService(url: wmtsServiceURL)
         
-        //load the WMTS service to access the service information
+        // load the WMTS service to access the service information
         self.wmtsService.load { [weak self] (error) in
             guard let self = self else { return }
             if let error = error {
@@ -49,7 +49,7 @@ class WMTSLayerViewController: UIViewController {
             }
         }
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["WMTSLayerViewController"]
     }
 }

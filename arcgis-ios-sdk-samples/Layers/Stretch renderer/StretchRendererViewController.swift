@@ -24,19 +24,19 @@ class StretchRendererViewController: UIViewController, StretchRendererSettingsVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["StretchRendererViewController", "StretchRendererSettingsViewController", "StretchRendererInputCell", "OptionsTableViewController"]
         
-        //create raster
+        // create raster
         let raster = AGSRaster(name: "ShastaBW", extension: "tif")
         
-        //create raster layer using the raster
+        // create raster layer using the raster
         let rasterLayer = AGSRasterLayer(raster: raster)
         self.rasterLayer = rasterLayer
         
-        //initialize a map with raster layer as the basemap
+        // initialize a map with raster layer as the basemap
         let map = AGSMap(basemap: AGSBasemap(baseLayer: rasterLayer))
-        //assign map to the map view
+        // assign map to the map view
         mapView.map = map
     }
     

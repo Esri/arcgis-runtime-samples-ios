@@ -34,66 +34,66 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindServiceAreaInteractiveViewController", "ServiceAreaSettingsViewController"]
         
-        //initialize map with basemap
+        // initialize map with basemap
         let map = AGSMap(basemapStyle: .arcGISTerrain)
         
-        //center for initial viewpoint
+        // center for initial viewpoint
         let center = AGSPoint(x: -13041154, y: 3858170, spatialReference: .webMercator())
         
-        //assign map to map view
+        // assign map to map view
         self.mapView.map = map
         self.mapView.setViewpoint(AGSViewpoint(center: center, scale: 1e5))
         
-        //assign touch delegate as self to know when use interacted with the map view
-        //Will be adding facilities and barriers on interaction
+        // assign touch delegate as self to know when use interacted with the map view
+        // Will be adding facilities and barriers on interaction
         self.mapView.touchDelegate = self
         
-        //initialize service area task
+        // initialize service area task
         self.serviceAreaTask = AGSServiceAreaTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/ServiceArea")!)
         
-        //get default parameters for the task
+        // get default parameters for the task
         self.getDefaultParameters()
         
-        //facility picture marker symbol
+        // facility picture marker symbol
         let facilitySymbol = AGSPictureMarkerSymbol(image: UIImage(named: "Facility")!)
         
-        //offset symbol in Y to align image properly
+        // offset symbol in Y to align image properly
         facilitySymbol.offsetY = 21
         
-        //assign renderer on facilities graphics overlay using the picture marker symbol
+        // assign renderer on facilities graphics overlay using the picture marker symbol
         self.facilitiesGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: facilitySymbol)
         
-        //barrier symbol
+        // barrier symbol
         let barrierSymbol = AGSSimpleFillSymbol(style: .diagonalCross, color: .red, outline: nil)
         
-        //set symbol on barrier graphics overlay using renderer
+        // set symbol on barrier graphics overlay using renderer
         self.barriersGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: barrierSymbol)
         
-        //add graphicOverlays to the map. One for facilities, barriers and service areas
+        // add graphicOverlays to the map. One for facilities, barriers and service areas
         self.mapView.graphicsOverlays.addObjects(from: [self.serviceAreaGraphicsOverlay, self.barriersGraphicsOverlay, self.facilitiesGraphicsOverlay])
     }
     
     private func getDefaultParameters() {
-        //get default parameters
+        // get default parameters
         self.serviceAreaTask.defaultServiceAreaParameters { [weak self] (parameters: AGSServiceAreaParameters?, error: Error?) in
             guard error == nil else {
                 self?.presentAlert(message: "Error getting default parameters:: \(error!.localizedDescription)")
                 return
             }
             
-            //keep a reference to the default parameters to be used later
+            // keep a reference to the default parameters to be used later
             self?.serviceAreaParameters = parameters
             
-            //enable service area bar button item
+            // enable service area bar button item
             self?.serviceAreaBBI.isEnabled = true
         }
     }
     
     private func serviceAreaSymbol(for index: Int) -> AGSSymbol {
-        //fill symbol for service area
+        // fill symbol for service area
         var fillSymbol: AGSSimpleFillSymbol
         
         if index == 0 {
@@ -110,21 +110,21 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
     // MARK: - Actions
     
     @IBAction private func serviceArea() {
-        //remove previously added service areas
+        // remove previously added service areas
         serviceAreaGraphicsOverlay.graphics.removeAllObjects()
         
         let facilitiesGraphics = facilitiesGraphicsOverlay.graphics as! [AGSGraphic]
         
-        //check if at least a single facility is added
+        // check if at least a single facility is added
         guard !facilitiesGraphics.isEmpty else {
             presentAlert(message: "At least one facility is required")
             return
         }
         
-        //add facilities
+        // add facilities
         var facilities = [AGSServiceAreaFacility]()
         
-        //for each graphic in facilities graphicsOverlay add a facility to the parameters
+        // for each graphic in facilities graphicsOverlay add a facility to the parameters
         for graphic in facilitiesGraphics {
             let point = graphic.geometry as! AGSPoint
             let facility = AGSServiceAreaFacility(point: point)
@@ -132,10 +132,10 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
         }
         self.serviceAreaParameters.setFacilities(facilities)
         
-        //add barriers
+        // add barriers
         var barriers = [AGSPolygonBarrier]()
         
-        //for each graphic in barrier graphicsOverlay add a barrier to the parameters
+        // for each graphic in barrier graphicsOverlay add a barrier to the parameters
         for graphic in barriersGraphicsOverlay.graphics as! [AGSGraphic] {
             let polygon = graphic.geometry as! AGSPolygon
             let barrier = AGSPolygonBarrier(polygon: polygon)
@@ -143,17 +143,17 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
         }
         serviceAreaParameters.setPolygonBarriers(barriers)
         
-        //set time breaks
+        // set time breaks
         serviceAreaParameters.defaultImpedanceCutoffs = [NSNumber(value: firstTimeBreak), NSNumber(value: secondTimeBreak)]
         
         serviceAreaParameters.geometryAtOverlap = .dissolve
         
-        //show progress hud
+        // show progress hud
         SVProgressHUD.show(withStatus: "Loading")
         
-        //solve for service area
+        // solve for service area
         serviceAreaTask.solveServiceArea(with: serviceAreaParameters) { [weak self] (result: AGSServiceAreaResult?, error: Error?) in
-            //dismiss progress hud
+            // dismiss progress hud
             SVProgressHUD.dismiss()
             
             guard let self = self else {
@@ -163,10 +163,10 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
             if let error = error {
                 self.presentAlert(message: "Error solving service area: \(error.localizedDescription)")
             } else {
-                //add resulting polygons as graphics to the overlay
-                //since we are using `geometryAtOVerlap` as `dissolve` and the cutoff values
-                //are the same across facilities, we only need to draw the resultPolygons at
-                //facility index 0. It will contain either merged or multipart polygons
+                // add resulting polygons as graphics to the overlay
+                // since we are using `geometryAtOVerlap` as `dissolve` and the cutoff values
+                // are the same across facilities, we only need to draw the resultPolygons at
+                // facility index 0. It will contain either merged or multipart polygons
                 if let polygons = result?.resultPolygons(atFacilityIndex: 0) {
                     for index in polygons.indices {
                         let polygon = polygons[index]
@@ -180,7 +180,7 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
     }
     
     @IBAction private func clearAction() {
-        //remove all existing graphics in service area and facilities graphics overlays
+        // remove all existing graphics in service area and facilities graphics overlays
         self.serviceAreaGraphicsOverlay.graphics.removeAllObjects()
         self.facilitiesGraphicsOverlay.graphics.removeAllObjects()
         self.barriersGraphicsOverlay.graphics.removeAllObjects()
@@ -190,11 +190,11 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if segmentedControl.selectedSegmentIndex == 0 {
-            //facilities selected
+            // facilities selected
             let graphic = AGSGraphic(geometry: mapPoint, symbol: nil, attributes: nil)
             self.facilitiesGraphicsOverlay.graphics.add(graphic)
         } else {
-            //barriers selected
+            // barriers selected
             let bufferedGeometry = AGSGeometryEngine.bufferGeometry(mapPoint, byDistance: 500)
             let graphic = AGSGraphic(geometry: bufferedGeometry, symbol: nil, attributes: nil)
             self.barriersGraphicsOverlay.graphics.add(graphic)

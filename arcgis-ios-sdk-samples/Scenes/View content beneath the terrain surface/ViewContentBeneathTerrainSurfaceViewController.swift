@@ -26,10 +26,10 @@ class ViewContentBeneathTerrainSurfaceViewController: UIViewController {
     ///
     /// - Returns: A new `AGSScene` object.
     func makeScene() -> AGSScene {
-        //initialize portal with AGOL
+        // initialize portal with AGOL
         let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         
-        //get the portal item
+        // get the portal item
         let portalItem = AGSPortalItem(portal: portal, itemID: "91a4fafd747a47c7bab7797066cb9272")
         
         let scene = AGSScene(item: portalItem)
@@ -44,7 +44,7 @@ class ViewContentBeneathTerrainSurfaceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewContentBeneathTerrainSurfaceViewController"]
     }
 }

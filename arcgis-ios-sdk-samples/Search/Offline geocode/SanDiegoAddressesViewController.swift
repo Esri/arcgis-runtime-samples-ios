@@ -21,7 +21,7 @@ protocol SanDiegoAddressesViewControllerDelegate: AnyObject {
 class SanDiegoAddressesViewController: UITableViewController {
     weak var delegate: SanDiegoAddressesViewControllerDelegate?
     
-    //prepopulated list of addresses
+    // prepopulated list of addresses
     private var addresses = [
         "910 N Harbor Dr, San Diego, CA 92101",
         "2920 Zoo Dr, San Diego, CA 92101",

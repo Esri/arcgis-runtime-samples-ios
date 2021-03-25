@@ -1037,6 +1037,14 @@
 				<key>storyboardName</key>
 				<string>ShowPopup</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Create symbol styles from web styles</string>
+				<key>descriptionText</key>
+				<string>Create symbol styles from a style file hosted on a portal.</string>
+				<key>storyboardName</key>
+				<string>CreateSymbolStylesFromWebStyles</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

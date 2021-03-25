@@ -362,7 +362,7 @@ class CollectDataARCalibrationViewController: UIViewController {
     
     /// Determines whether continuous positioning is in use
     /// Showing the elevation slider is only appropriate when using local positioning
-    var useContinuousPositioning: Bool = true {
+    var useContinuousPositioning = true {
         didSet {
             if useContinuousPositioning {
                 elevationSlider.isEnabled = false

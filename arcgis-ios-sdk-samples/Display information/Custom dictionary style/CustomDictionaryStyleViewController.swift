@@ -66,7 +66,9 @@ class CustomDictionaryStyleViewController: UIViewController {
         )
         // Create the dictionary renderer from the web style.
         let restaurantStyle = AGSDictionarySymbolStyle(portalItem: item)
-        return AGSDictionaryRenderer(dictionarySymbolStyle: restaurantStyle)
+        // Map the input fields in the feature layer to the
+        // dictionary symbol style's expected fields for symbols.
+        return AGSDictionaryRenderer(dictionarySymbolStyle: restaurantStyle, symbologyFieldOverrides: ["healthgrade": "Inspection"], textFieldOverrides: [:])
     }()
     
     // MARK: Methods

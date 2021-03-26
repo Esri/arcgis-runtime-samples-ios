@@ -24,7 +24,7 @@ class CustomDictionaryStyleViewController: UIViewController {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             mapView.setViewpoint(
                 AGSViewpoint(
-                    latitude: 34.0574,
+                    latitude: 34.0543,
                     longitude: -117.1963,
                     scale: 1e4
                 )

@@ -68,7 +68,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             guard let self = self else { return }
             // Create electrical distribution line layer ./115 and electrical device layer ./100.
             let urls = [self.featureServiceURL.appendingPathComponent("115"),
-                        self.featureServiceURL.appendingPathComponent("200")]
+                        self.featureServiceURL.appendingPathComponent("100")]
             let layers = urls.map { url -> AGSFeatureLayer in
                 let featureTable = AGSServiceFeatureTable(url: url)
                 let layer = AGSFeatureLayer(featureTable: featureTable)

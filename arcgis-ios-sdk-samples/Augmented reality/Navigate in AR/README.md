@@ -72,7 +72,7 @@ A digital elevation model is used to ensure that the displayed route is position
 
 Because most navigation scenarios involve traveling beyond the accurate range for ARKit positioning, this sample relies on **continuous location updates** from the location data source. Because the origin camera is constantly being reset by the location data source, the sample doesn't allow the user to pan to calibrate or adjust the altitude with a slider. The location data source doesn't provide a heading, so it isn't overwritten when the location refreshes.
 
-This sample uses the ArcGIS Runtime Toolkit. See the section [Enable your app for AR using AR Toolkit](https://developers.arcgis.com/ios/latest/swift/guide/display-scenes-in-augmented-reality.htm) in the iOS Guide to learn about the toolkit and how to add it to your app.
+This sample uses the ArcGIS Runtime Toolkit. See the section [Enable your app for AR using AR Toolkit](https://developers.arcgis.com/ios/scenes-3d/display-scenes-in-augmented-reality/) in the iOS Guide to learn about the toolkit and how to add it to your app.
 
 ## Tags
 

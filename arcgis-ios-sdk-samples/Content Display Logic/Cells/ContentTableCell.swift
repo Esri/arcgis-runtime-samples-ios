@@ -19,7 +19,7 @@ class ContentTableCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var detailLabel: UILabel!
     
-    var isExpanded: Bool = false {
+    var isExpanded = false {
         didSet {
             detailLabel.isHidden = !isExpanded
         }

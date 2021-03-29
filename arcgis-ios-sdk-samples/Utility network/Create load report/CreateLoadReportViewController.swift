@@ -166,7 +166,6 @@ class CreateLoadReportViewController: UIViewController {
     @IBAction func resetBarButtonItemTapped(_ sender: UIBarButtonItem) {
         summaries.removeAll()
         tableView.reloadSection(.included)
-        runBarButtonItem.isEnabled = !includedPhases.isEmpty
         resetBarButtonItem.isEnabled = false
     }
     
@@ -246,23 +245,19 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
-        let phase: AGSCodedValue
+        let cell = tableView.dequeueReusableCell(withIdentifier: Section.allCases[indexPath.section].cellIdentifier, for: indexPath)
         switch Section.allCases[indexPath.section] {
         case .included:
-            cell = tableView.dequeueReusableCell(withIdentifier: Section.included.cellIdentifier, for: indexPath)
-            phase = includedPhases[indexPath.row]
+            let phase = includedPhases[indexPath.row]
             cell.textLabel?.text = String(format: "Phase: %@", phase.name)
             if let summary = summaries[phase] {
-                let formattedString = String(format: "C: %@  L: %@", numberFormatter.string(from: NSNumber(value: summary.totalCustomers))!, numberFormatter.string(from: NSNumber(value: summary.totalLoad))!)
+                let formattedString = String(format: "C: %@  L: %@", numberFormatter.string(from: summary.totalCustomers as NSNumber)!, numberFormatter.string(from: summary.totalLoad as NSNumber)!)
                 cell.detailTextLabel?.text = formattedString
             } else {
                 cell.detailTextLabel?.text = "N/A"
             }
         case .excluded:
-            cell = tableView.dequeueReusableCell(withIdentifier: Section.excluded.cellIdentifier, for: indexPath)
-            phase = excludedPhases[indexPath.row]
-            cell.textLabel?.text = phase.name
+            cell.textLabel?.text = excludedPhases[indexPath.row].name
         }
         return cell
     }
@@ -287,26 +282,28 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
             )
         }
         
-        tableView.beginUpdates()
-        defer { tableView.endUpdates() }
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        
-        let insertionIndex: Int
         switch editingStyle {
         case .delete:
             let phase = includedPhases[indexPath.row]
             includedPhases.remove(at: indexPath.row)
-            insertionIndex = index(forInserting: phase, into: excludedPhases)
+            let insertionIndex = index(forInserting: phase, into: excludedPhases)
             excludedPhases.insert(phase, at: insertionIndex)
             // Remove the summary.
             summaries.removeValue(forKey: phase)
-            tableView.insertRows(at: [IndexPath(row: insertionIndex, section: .excluded)], with: .automatic)
+            // Update the table.
+            tableView.performBatchUpdates {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.insertRows(at: [IndexPath(row: insertionIndex, section: .excluded)], with: .automatic)
+            }
         case .insert:
             let phase = excludedPhases[indexPath.row]
             excludedPhases.remove(at: indexPath.row)
-            insertionIndex = index(forInserting: phase, into: includedPhases)
+            let insertionIndex = index(forInserting: phase, into: includedPhases)
             includedPhases.insert(phase, at: insertionIndex)
-            tableView.insertRows(at: [IndexPath(row: insertionIndex, section: .included)], with: .automatic)
+            tableView.performBatchUpdates {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.insertRows(at: [IndexPath(row: insertionIndex, section: .included)], with: .automatic)
+            }
         default:
             return
         }

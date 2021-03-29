@@ -284,8 +284,8 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
         
         switch editingStyle {
         case .delete:
-            includedPhases.remove(at: indexPath.row)
             let phase = includedPhases[indexPath.row]
+            includedPhases.remove(at: indexPath.row)
             let insertionIndex = index(forInserting: phase, into: excludedPhases)
             excludedPhases.insert(phase, at: insertionIndex)
             // Remove the summary.
@@ -296,8 +296,8 @@ extension CreateLoadReportViewController: UITableViewDelegate, UITableViewDataSo
                 tableView.insertRows(at: [IndexPath(row: insertionIndex, section: .excluded)], with: .automatic)
             }
         case .insert:
-            excludedPhases.remove(at: indexPath.row)
             let phase = excludedPhases[indexPath.row]
+            excludedPhases.remove(at: indexPath.row)
             let insertionIndex = index(forInserting: phase, into: includedPhases)
             includedPhases.insert(phase, at: insertionIndex)
             tableView.performBatchUpdates {

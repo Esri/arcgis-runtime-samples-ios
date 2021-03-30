@@ -25,14 +25,14 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var modeControl: UISegmentedControl!
     
-    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     
-    // Create electrical distribution line layer ./115 and electrical device layer ./100.
+    // Create electrical distribution line layer ./3 and electrical device layer ./0.
     private var layers: [AGSFeatureLayer] {
-        return [115, 100].map {
+        return [3, 0].map {
             let featureTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("\($0)"))
             let layer = AGSFeatureLayer(featureTable: featureTable)
-            if $0 == 115 {
+            if $0 == 3 {
                 // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
                 let darkCyan = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
                 let mediumVoltageValue = AGSUniqueValue(
@@ -89,7 +89,6 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         map = AGSMap(basemapStyle: .arcGISStreetsNight)
         // Create the utility network, referencing the map.
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
-        
         super.init(coder: aDecoder)
         
         // Add the utility network feature layers to the map for display.
@@ -121,6 +120,8 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         // Set the selection color for features in the map view.
         mapView.selectionProperties = AGSSelectionProperties(color: .yellow)
         
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         // Load the Utility Network to be ready for us to run a trace against it.
         setStatus(message: "Loading Utility Network…")
         utilityNetwork.load { [weak self] error in

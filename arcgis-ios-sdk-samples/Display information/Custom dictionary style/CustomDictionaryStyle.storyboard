@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hvF-0F-hWN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hvF-0F-hWN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,25 +18,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shM-y5-34T" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdK-Fr-VCg">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kLe-7X-NlK"/>
+                                    <barButtonItem style="plain" id="Uog-EC-qJ7">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Wfu-l9-jpD">
+                                            <rect key="frame" x="85.5" y="10.5" width="243" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Local style file"/>
+                                                <segment title="Web style"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentedControlValueChanged:" destination="hvF-0F-hWN" eventType="valueChanged" id="l2j-PN-5Uu"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="TZk-ac-d8h"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cwh-Eh-0DP"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="shM-y5-34T" firstAttribute="top" secondItem="2sv-Ae-bcW" secondAttribute="top" id="6Sa-BR-4ix"/>
+                            <constraint firstItem="shM-y5-34T" firstAttribute="top" secondItem="cwh-Eh-0DP" secondAttribute="top" id="6Sa-BR-4ix"/>
                             <constraint firstItem="shM-y5-34T" firstAttribute="leading" secondItem="2sv-Ae-bcW" secondAttribute="leading" id="H27-Yq-31E"/>
+                            <constraint firstItem="DdK-Fr-VCg" firstAttribute="leading" secondItem="2sv-Ae-bcW" secondAttribute="leading" id="HTz-KV-JTC"/>
                             <constraint firstItem="shM-y5-34T" firstAttribute="trailing" secondItem="2sv-Ae-bcW" secondAttribute="trailing" id="RHA-YU-Lqa"/>
-                            <constraint firstItem="shM-y5-34T" firstAttribute="bottom" secondItem="2sv-Ae-bcW" secondAttribute="bottom" id="wk3-eg-JDw"/>
+                            <constraint firstItem="DdK-Fr-VCg" firstAttribute="bottom" secondItem="cwh-Eh-0DP" secondAttribute="bottom" id="akz-Vb-nQZ"/>
+                            <constraint firstItem="DdK-Fr-VCg" firstAttribute="trailing" secondItem="2sv-Ae-bcW" secondAttribute="trailing" id="hqn-Y2-gGd"/>
+                            <constraint firstItem="DdK-Fr-VCg" firstAttribute="top" secondItem="shM-y5-34T" secondAttribute="bottom" id="sP6-eo-YiK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="shM-y5-34T" id="9ym-Ap-g8A"/>
+                        <outlet property="segmentedControl" destination="Wfu-l9-jpD" id="UJd-Mc-Uoh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pn5-wY-hQe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-213" y="141"/>
+            <point key="canvasLocation" x="-213.04347826086959" y="140.625"/>
         </scene>
     </scenes>
     <resources>

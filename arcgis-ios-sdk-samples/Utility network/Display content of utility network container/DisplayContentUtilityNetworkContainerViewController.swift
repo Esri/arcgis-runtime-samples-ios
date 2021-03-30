@@ -204,9 +204,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                 }
                 // Enable the bar button item to exit the container view.
                 self.exitBarButtonItem.isEnabled = true
-                if let error = error {
-                    self.presentAlert(error: error)
-                }
             }
         }
     }

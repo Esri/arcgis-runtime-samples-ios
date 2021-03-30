@@ -19,7 +19,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = makeMap()
+            makeMap()
+            mapView.setViewpoint(AGSViewpoint(latitude: 41.801504, longitude: -88.163718, scale: 4e3))
         }
     }
     /// The bar button item to prompt return of the main view.
@@ -62,20 +63,22 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// Create a map.
     ///
     /// - Returns: An `AGSMap` object.
-    func makeMap() -> AGSMap {
+    func makeMap() {
         let webMapURL = URL(string: "https://ss7portal.arcgisonline.com/arcgis/home/item.html?id=5b64cf7a89ca4f98b5ed3da545d334ef")!
-        let map = AGSMap(url: webMapURL)!
-        return map
+        let map = AGSMap(url: webMapURL)
+        mapView.map = map
     }
     
     /// Create and load the utility network using the feature service URL.
     func loadUtilityNetwork() {
-        utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: mapView.map!)
+        guard let map = mapView.map else { return }
+        utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
         utilityNetwork?.load { [weak self] error in
-            // Add self as the touch delegate for the map view.
-            self?.mapView.touchDelegate = self
             if let error = error {
                 self?.presentAlert(error: error)
+            } else {
+                // Add self as the touch delegate for the map view.
+                self?.mapView.touchDelegate = self
             }
         }
     }
@@ -121,24 +124,19 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         // Create a container element using the selected feature.
         guard let containerElement = utilityNetwork?.createElement(with: containerFeature) else { return }
         // Get the containment associations from this element to display its content.
-        utilityNetwork?.associations(with: containerElement, type: .containment) { [weak self] containmentAssociations, error in
-            guard let self = self else { return }
-            var contentElements = [AGSUtilityElement]()
+        utilityNetwork?.associations(with: containerElement, type: .containment) { [weak self] containmentAssociations, _ in
             // Determine the type of each element and add it to the array of content elements.
-            containmentAssociations?.forEach { association in
-                var element: AGSUtilityElement
+            guard let self = self, let associations = containmentAssociations else { return }
+            let contentElements: [AGSUtilityElement] = associations.map { association in
                 if association.fromElement.objectID == containerElement.objectID {
-                    element = association.toElement
+                    return association.toElement
                 } else {
-                    element = association.fromElement
+                    return association.fromElement
                 }
-                contentElements.append(element)
             }
             // If there are elements, find their corresponding features.
             if !contentElements.isEmpty {
                 self.addGraphicsToFeatures(within: containerElement, for: contentElements)
-            } else if let error = error {
-                self.presentAlert(error: error)
             }
         }
     }
@@ -159,9 +157,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         utilityNetwork?.features(for: contentElements) { [weak self] (contentFeatures, error) in
             guard let self = self else { return }
             if let contentFeatures = contentFeatures {
-                if contentFeatures.count == 1 {
-                    self.presentAlert(title: nil, message: "This feature contains no associations.")
-                }
                 // Create and add a symbol for each of the features.
                 contentFeatures.forEach { content in
                     let symbol = (content.featureTable as? AGSArcGISFeatureTable)?.layerInfo?.drawingInfo?.renderer?.symbol(for: content)
@@ -169,9 +164,10 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                 }
                 // The bounding box which defines the container view may be computed using the extent of the features it contains or centered around its geometry at the container's view scale.
                 var boundingBox: AGSGeometry?
-                if self.graphicsOverlay.graphics.count == 1,
+                if contentFeatures.count == 1,
                    let point = (self.graphicsOverlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
                     self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in
+                        self.presentAlert(title: nil, message: "This feature contains no associations.")
                         guard let boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry else { return }
                         self.identifyAssociationsWithExtent(boundingBox: boundingBox)
                     }
@@ -208,8 +204,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                 }
                 // Enable the bar button item to exit the container view.
                 self.exitBarButtonItem.isEnabled = true
-                // Turn off user interaction to avoid straying away from the container view.
-                self.mapView.isUserInteractionEnabled = false
                 if let error = error {
                     self.presentAlert(error: error)
                 }
@@ -219,6 +213,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     
     // MARK: - AGSGeoViewTouchDelegate
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        // Turn off user interaction to avoid straying away from the container view.
+        self.mapView.isUserInteractionEnabled = false
         // Identify the top most feature that corresponds to the tapped point.
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (layerResults, error) in
             guard let self = self else { return }
@@ -262,7 +258,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         loadUtilityNetwork()
         // Add a graphics overlay.
         mapView.graphicsOverlays.add(graphicsOverlay)
-        mapView.setViewpoint(AGSViewpoint(latitude: 41.801504, longitude: -88.163718, scale: 4e3))
         // Get the legends from the feature service.
         fetchLegendInfo()
         // Add the source code button item to the right of navigation bar.

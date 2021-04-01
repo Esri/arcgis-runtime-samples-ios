@@ -26,10 +26,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
             let map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayer))
             // Assign the map to the map view.
             mapView.map = map
-            
-            // Create a geodatabase sync task using the feature service URL.
-            geodatabaseSyncTask = AGSGeodatabaseSyncTask(url: featureServiceURL)
-            self.addFeatureLayers()
         }
     }
     
@@ -41,7 +37,6 @@ class EditAndSyncFeaturesViewController: UIViewController {
         }
     }
     
-    @IBOutlet private var toolBar: UIToolbar!
     @IBOutlet private var barButtonItem: UIBarButtonItem!
     @IBOutlet private var instructionsLabel: UILabel!
     
@@ -52,19 +47,18 @@ class EditAndSyncFeaturesViewController: UIViewController {
     private var geodatabaseSyncTask: AGSGeodatabaseSyncTask!
     private var geodatabase: AGSGeodatabase!
     private var areaOfInterest: AGSEnvelope!
-
+    
     private var selectedFeature: AGSFeature? {
         didSet {
-            if let feature = selectedFeature {
-                if let featureLayer = feature.featureTable?.layer as? AGSFeatureLayer {
-                    featureLayer.select(feature)
-                }
+            if let feature = selectedFeature,
+               let featureLayer = feature.featureTable?.layer as? AGSFeatureLayer {
+                featureLayer.select(feature)
             } else {
                 clearSelection()
             }
         }
     }
-
+    
     private func extentViewFrameToEnvelope() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)
         
@@ -86,21 +80,15 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 self.presentAlert(error: error)
             } else {
                 let featureServiceInfo = self.geodatabaseSyncTask.featureServiceInfo!
-                let map = self.mapView.map!
-                for index in featureServiceInfo.layerInfos.indices {
-                    // For each layer in the serice, add a layer to the map.
-                    let layerURL = self.featureServiceURL.appendingPathComponent(String(index))
+                let featureLayers = featureServiceInfo.layerInfos.compactMap { (layerInfo) -> AGSFeatureLayer? in
+                    let layerID = layerInfo.id
+                    guard layerID >= 0 else { return nil }
+                    let layerURL = self.featureServiceURL.appendingPathComponent(String(layerID))
                     let featureTable = AGSServiceFeatureTable(url: layerURL)
-                    featureTable.load { [weak self, unowned featureTable] error in
-                        guard let self = self else { return }
-                        if let error = error {
-                            self.presentAlert(error: error)
-                        } else if featureTable.geometryType == .point {
-                            let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                            map.operationalLayers.add(featureLayer)
-                        }
-                    }
+                    return AGSFeatureLayer(featureTable: featureTable)
                 }
+                self.mapView.map?.operationalLayers.addObjects(from: featureLayers)
+                self.barButtonItem.isEnabled = true
             }
         }
     }
@@ -166,7 +154,10 @@ class EditAndSyncFeaturesViewController: UIViewController {
         geodatabaseSyncTask.defaultGenerateGeodatabaseParameters(withExtent: areaOfInterest) { [weak self] (params: AGSGenerateGeodatabaseParameters?, error: Error?) in
             guard let self = self else { return }
             
-            guard let params = params else { return self.presentAlert(title: "Could not generate default parameters: \(error!)") }
+            guard let params = params else {
+                self.presentAlert(title: "Could not generate default parameters: \(error!)")
+                return
+            }
             // Don't include attachments to minimize the geodatabase size.
             params.returnAttachments = false
             
@@ -177,7 +168,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             let downloadFileURL = documentDirectoryURL
                 .appendingPathComponent(dateFormatter.string(from: Date()))
                 .appendingPathExtension("geodatabase")
-           
+            
             // Request a job to generate the geodatabase.
             let generateGeodatabaseJob = self.geodatabaseSyncTask.generateJob(with: params, downloadFileURL: downloadFileURL)
             self.generateJob = generateGeodatabaseJob
@@ -245,6 +236,10 @@ class EditAndSyncFeaturesViewController: UIViewController {
         
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditAndSyncFeaturesViewController"]
+        
+        // Create a geodatabase sync task using the feature service URL.
+        geodatabaseSyncTask = AGSGeodatabaseSyncTask(url: featureServiceURL)
+        addFeatureLayers()
     }
 }
 

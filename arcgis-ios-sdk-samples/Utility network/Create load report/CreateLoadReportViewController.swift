@@ -28,7 +28,7 @@ class CreateLoadReportViewController: UIViewController {
     // MARK: Properties
     
     /// A feature service of an electric utility network in Naperville, Illinois.
-    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
+    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     /// The initial conditional expression.
     var initialExpression: AGSUtilityTraceConditionalExpression!
     /// The trace parameters for creating load reports.
@@ -64,6 +64,9 @@ class CreateLoadReportViewController: UIViewController {
     /// Load the utility network.
     func loadUtilityNetwork() {
         SVProgressHUD.show(withStatus: "Loading utility network…")
+        // NOTE: Never hardcode login information in a production application.
+        // This is done solely for the sake of the sample.
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
             SVProgressHUD.dismiss()
             guard let self = self else { return }

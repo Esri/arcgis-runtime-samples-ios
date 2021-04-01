@@ -80,13 +80,14 @@ class EditAndSyncFeaturesViewController: UIViewController {
                 self.presentAlert(error: error)
             } else {
                 let featureServiceInfo = self.geodatabaseSyncTask.featureServiceInfo!
-                for index in featureServiceInfo.layerInfos.indices.reversed() {
-                    // For each layer in the serice, add a layer to the map.
-                    let layerURL = self.featureServiceURL.appendingPathComponent(String(index))
+                let featureLayers = featureServiceInfo.layerInfos.compactMap { (layerInfo) -> AGSFeatureLayer? in
+                    let layerID = layerInfo.id
+                    guard layerID >= 0 else { return nil }
+                    let layerURL = self.featureServiceURL.appendingPathComponent(String(layerID))
                     let featureTable = AGSServiceFeatureTable(url: layerURL)
-                    let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                    self.mapView.map?.operationalLayers.add(featureLayer)
+                    return AGSFeatureLayer(featureTable: featureTable)
                 }
+                self.mapView.map?.operationalLayers.addObjects(from: featureLayers)
                 self.barButtonItem.isEnabled = true
             }
         }

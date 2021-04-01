@@ -28,7 +28,7 @@ class CreateLoadReportViewController: UIViewController {
     // MARK: Properties
     
     /// A feature service of an electric utility network in Naperville, Illinois.
-    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
+    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     /// The initial conditional expression.
     var initialExpression: AGSUtilityTraceConditionalExpression!
     /// The trace parameters for creating load reports.

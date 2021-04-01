@@ -1111,6 +1111,10 @@
 				<string>EditAndSyncFeatures</string>
 				<key>descriptionText</key>
 				<string>Synchronize offline edits with a feature service.</string>
+				<key>dependency</key>
+				<array>
+					<string>SanFranciscoTilePackage</string>
+				</array>
 			</dict>
 			<dict>
 				<key>displayName</key>

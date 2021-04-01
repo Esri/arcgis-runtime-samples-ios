@@ -64,6 +64,9 @@ class CreateLoadReportViewController: UIViewController {
     /// Load the utility network.
     func loadUtilityNetwork() {
         SVProgressHUD.show(withStatus: "Loading utility network…")
+        // NOTE: Never hardcode login information in a production application.
+        // This is done solely for the sake of the sample.
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
             SVProgressHUD.dismiss()
             guard let self = self else { return }

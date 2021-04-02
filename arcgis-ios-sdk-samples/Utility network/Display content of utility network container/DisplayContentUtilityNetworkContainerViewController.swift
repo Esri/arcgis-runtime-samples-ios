@@ -19,6 +19,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
+            AGSAuthenticationManager.shared().delegate = self
             makeMap()
             mapView.setViewpoint(AGSViewpoint(latitude: 41.801504, longitude: -88.163718, scale: 4e3))
         }
@@ -28,7 +29,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     @IBOutlet var legendBarButtonItem: UIBarButtonItem!
     
     /// A feature service for an electric utility network in Naperville, Illinois.
-    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     var utilityNetwork: AGSUtilityNetwork?
     let graphicsOverlay = AGSGraphicsOverlay()
     /// The default or previous viewpoint before entering the container view.
@@ -64,7 +65,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     ///
     /// - Returns: An `AGSMap` object.
     func makeMap() {
-        let webMapURL = URL(string: "https://ss7portal.arcgisonline.com/arcgis/home/item.html?id=5b64cf7a89ca4f98b5ed3da545d334ef")!
+        let webMapURL = URL(string: "https://sampleserver7.arcgisonline.com/portal/home/item.html?id=813eda749a9444e4a9d833a4db19e1c8")!
         let map = AGSMap(url: webMapURL)
         mapView.map = map
     }
@@ -280,5 +281,13 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
+    }
+}
+
+extension DisplayContentUtilityNetworkContainerViewController: AGSAuthenticationManagerDelegate {
+    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        let credentials = AGSCredential(user: "editor01", password: "S7#i2LWmYH75")
+        challenge.continue(with: credentials)
     }
 }

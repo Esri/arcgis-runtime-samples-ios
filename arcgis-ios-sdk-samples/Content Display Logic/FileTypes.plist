@@ -39,6 +39,7 @@
 	<key>GPS Exchanges</key>
 	<array>
 		<string>gpx</string>
+		<string>nmea</string>
 	</array>
 </dict>
 </plist>

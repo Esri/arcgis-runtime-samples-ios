@@ -24,25 +24,25 @@ class SublayerVisibilityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SublayerVisibilityViewController", "SublayersTableViewController"]
         
-        //initialize map with topographic basemap
+        // initialize map with topographic basemap
         self.map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //initialize the map image layer using a url
+        // initialize the map image layer using a url
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
-        //add the image layer to the map
+        // add the image layer to the map
         self.map.operationalLayers.add(mapImageLayer)
         
-        //assign the map to the map view
+        // assign the map to the map view
         self.mapView.map = self.map
         
-        //zoom to a custom viewpoint
+        // zoom to a custom viewpoint
         self.mapView.setViewpointCenter(AGSPoint(x: -11e6, y: 6e6, spatialReference: .webMercator()), scale: 9e7)
         
-        //store the map image layer for later use
+        // store the map image layer for later use
         self.mapImageLayer = mapImageLayer
     }
     
@@ -50,7 +50,7 @@ class SublayerVisibilityViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SublayersPopover" {
-            //get the destination view controller as BookmarksListViewController
+            // get the destination view controller as BookmarksListViewController
             let controller = segue.destination as! SublayersTableViewController
             if let sublayers = mapImageLayer.mapImageSublayers as? [AGSArcGISMapImageSublayer] {
                 controller.sublayers = sublayers

@@ -26,42 +26,42 @@ class FeatureLayerRenderingModeMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerRenderingModeMapViewController"]
         
-        //points for zoomed in and zoomed out
+        // points for zoomed in and zoomed out
         let zoomedInPoint = AGSPoint(x: -118.37, y: 34.46, spatialReference: .wgs84())
         let zoomedOutPoint = AGSPoint(x: -118.45, y: 34.395, spatialReference: .wgs84())
         zoomedInViewpoint = AGSViewpoint(center: zoomedInPoint, scale: 650000, rotation: 0)
         zoomedOutViewpoint = AGSViewpoint(center: zoomedOutPoint, scale: 50000, rotation: 90)
         
-        //assign maps to the map views
+        // assign maps to the map views
         self.dynamicMapView.map = AGSMap()
         self.staticMapView.map = AGSMap()
         
-        //create service feature tables using point,polygon, and polyline services
+        // create service feature tables using point,polygon, and polyline services
         let pointTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/0")!)
         let polylineTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/8")!)
         let polygonTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)
         
-        //create feature layers from the feature tables
+        // create feature layers from the feature tables
         let featureLayers: [AGSFeatureLayer] = [
             AGSFeatureLayer(featureTable: polygonTable),
             AGSFeatureLayer(featureTable: polylineTable),
             AGSFeatureLayer(featureTable: pointTable)]
         
         for featureLayer in featureLayers {
-            //add the layer to the dynamic view
+            // add the layer to the dynamic view
             featureLayer.renderingMode = AGSFeatureRenderingMode.dynamic
             self.dynamicMapView.map?.operationalLayers.add(featureLayer)
             
-            //add the layer to the static view
+            // add the layer to the static view
             let staticFeatureLayer = featureLayer.copy() as! AGSFeatureLayer
             staticFeatureLayer.renderingMode = AGSFeatureRenderingMode.static
             self.staticMapView.map?.operationalLayers.add(staticFeatureLayer)
         }
         
-        //set the initial viewpoint
+        // set the initial viewpoint
         self.dynamicMapView.setViewpoint(zoomedOutViewpoint)
         self.staticMapView.setViewpoint(zoomedOutViewpoint)
     }

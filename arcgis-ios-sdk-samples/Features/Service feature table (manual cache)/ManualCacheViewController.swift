@@ -23,22 +23,22 @@ class ManualCacheViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ManualCacheViewController"]
         
-        //initialize map with topographic basemap
+        // initialize map with topographic basemap
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //create feature table using a url
+        // create feature table using a url
         self.featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
-        //set the feature request mode to Manual Cache
+        // set the feature request mode to Manual Cache
         featureTable.featureRequestMode = AGSFeatureRequestMode.manualCache
-        //create feature layer using this feature table
+        // create feature layer using this feature table
         let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
-        //add feature layer to the map
+        // add feature layer to the map
         map.operationalLayers.add(featureLayer)
         
-        //assign map to the map view
+        // assign map to the map view
         mapView.map = map
         mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: .webMercator()), scale: 500000))
     }
@@ -46,19 +46,19 @@ class ManualCacheViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func populateAction(_ sender: AnyObject) {
-        //set query parameters
+        // set query parameters
         let params = AGSQueryParameters()
-        //for specific request type
+        // for specific request type
         params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
         
-        //populate features based on query
+        // populate features based on query
         self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
-            //check for error
+            // check for error
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
-                //the resulting features should be displayed on the map
-                //you can print the count of features
+                // the resulting features should be displayed on the map
+                // you can print the count of features
                 print("Populated \(result?.featureEnumerator().allObjects.count ?? 0) features.")
             }
         }

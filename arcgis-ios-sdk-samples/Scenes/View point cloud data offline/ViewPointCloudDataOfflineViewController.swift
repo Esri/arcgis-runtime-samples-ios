@@ -71,7 +71,7 @@ class ViewPointCloudDataOfflineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewPointCloudDataOfflineViewController"]
     }
 }

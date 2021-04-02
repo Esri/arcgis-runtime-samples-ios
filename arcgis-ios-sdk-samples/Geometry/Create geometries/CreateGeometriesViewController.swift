@@ -23,35 +23,35 @@ class CreateGeometriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["CreateGeometriesViewController"]
         
-        //instantiate map using basemap
+        // instantiate map using basemap
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        //assign map to the map view
+        // assign map to the map view
         self.mapView.map = map
         
-        //add graphics overlay to the map view
+        // add graphics overlay to the map view
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
-        //create symbols for drawing graphics
+        // create symbols for drawing graphics
         let markerSymbol = AGSSimpleMarkerSymbol(style: .triangle, color: .blue, size: 14)
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 3)
         let fillSymbol = AGSSimpleFillSymbol(style: .cross, color: .blue, outline: nil)
         
-        //add a graphic of point, multipoint, polyline and polygon
+        // add a graphic of point, multipoint, polyline and polygon
         self.graphicsOverlay.graphics.add(AGSGraphic(geometry: self.createPoint(), symbol: markerSymbol, attributes: nil))
         self.graphicsOverlay.graphics.add(AGSGraphic(geometry: self.createMultipoint(), symbol: markerSymbol, attributes: nil))
         self.graphicsOverlay.graphics.add(AGSGraphic(geometry: self.createPolyline(), symbol: lineSymbol, attributes: nil))
         self.graphicsOverlay.graphics.add(AGSGraphic(geometry: self.createPolygon(), symbol: fillSymbol, attributes: nil))
         
-        //use the envelope to set the viewpoint of the map view
+        // use the envelope to set the viewpoint of the map view
         self.mapView.setViewpointGeometry(self.createEnvelope(), padding: 100, completion: nil)
     }
     
     private func createEnvelope() -> AGSEnvelope {
-        //create an envelope using minimum and maximum x,y coordinates and a spatial reference
+        // create an envelope using minimum and maximum x,y coordinates and a spatial reference
         let envelope = AGSEnvelope(xMin: -123.0, yMin: 33.5, xMax: -101.0, yMax: 48.0, spatialReference: .wgs84())
         return envelope
     }
@@ -74,7 +74,7 @@ class CreateGeometriesViewController: UIViewController {
     }
     
     private func createPolyline() -> AGSPolyline {
-        //create a polyline
+        // create a polyline
         let polylineBuilder = AGSPolylineBuilder(spatialReference: .wgs84())
         polylineBuilder.addPointWith(x: -119.992, y: 41.989)
         polylineBuilder.addPointWith(x: -119.994, y: 38.994)

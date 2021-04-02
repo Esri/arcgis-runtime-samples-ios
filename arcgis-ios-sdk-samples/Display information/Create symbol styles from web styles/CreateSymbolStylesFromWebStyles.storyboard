@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vcx-LR-YNo">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Create Symbol Styles From Web Styles View Controller-->
+        <scene sceneID="47M-K5-28L">
+            <objects>
+                <viewController id="Vcx-LR-YNo" customClass="CreateSymbolStylesFromWebStylesViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WE7-HH-FBL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHt-wp-Wu8" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Qa-9V-Nu0">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3RZ-3N-CsA"/>
+                                    <barButtonItem enabled="NO" title="Legend" id="AP4-AV-z2k">
+                                        <connections>
+                                            <segue destination="YKo-hR-7jI" kind="popoverPresentation" identifier="LegendTableSegue" popoverAnchorBarButtonItem="AP4-AV-z2k" id="ye4-kV-8GS">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="XQ2-CK-bL0"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hop-H2-a7R"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5Qa-9V-Nu0" firstAttribute="top" secondItem="CHt-wp-Wu8" secondAttribute="bottom" id="Q5m-rl-Inz"/>
+                            <constraint firstItem="5Qa-9V-Nu0" firstAttribute="trailing" secondItem="WE7-HH-FBL" secondAttribute="trailing" id="RN4-lm-Yr0"/>
+                            <constraint firstItem="5Qa-9V-Nu0" firstAttribute="leading" secondItem="WE7-HH-FBL" secondAttribute="leading" id="VDU-1o-VSI"/>
+                            <constraint firstItem="CHt-wp-Wu8" firstAttribute="trailing" secondItem="WE7-HH-FBL" secondAttribute="trailing" id="hr1-OG-emu"/>
+                            <constraint firstItem="CHt-wp-Wu8" firstAttribute="leading" secondItem="WE7-HH-FBL" secondAttribute="leading" id="kiC-94-GXh"/>
+                            <constraint firstItem="5Qa-9V-Nu0" firstAttribute="bottom" secondItem="hop-H2-a7R" secondAttribute="bottom" id="myn-yq-CvJ"/>
+                            <constraint firstItem="CHt-wp-Wu8" firstAttribute="top" secondItem="hop-H2-a7R" secondAttribute="top" id="mzE-Eh-akq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="legendBarButtonItem" destination="AP4-AV-z2k" id="KOc-uZ-lxd"/>
+                        <outlet property="mapView" destination="CHt-wp-Wu8" id="Mvx-PH-3VO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zCe-pg-ya1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="409" y="76"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="h4J-H6-1A1">
+            <objects>
+                <tableViewController id="YKo-hR-7jI" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jHa-tn-JGS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Basic" textLabel="2vf-Th-uRX" style="IBUITableViewCellStyleDefault" id="vTx-X9-l6a">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vTx-X9-l6a" id="cft-xv-wi4">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2vf-Th-uRX">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YKo-hR-7jI" id="TjT-bo-25G"/>
+                            <outlet property="delegate" destination="YKo-hR-7jI" id="mWm-Hi-ffx"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XjA-4a-9wc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1152" y="76"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

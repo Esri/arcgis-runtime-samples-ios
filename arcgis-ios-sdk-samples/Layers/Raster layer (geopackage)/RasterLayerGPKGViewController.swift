@@ -22,7 +22,7 @@ class RasterLayerGPKGViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["RasterLayerGPKGViewController"]
         
         // Instantiate a map.
@@ -41,7 +41,7 @@ class RasterLayerGPKGViewController: UIViewController {
             // Add the first raster from the geopackage to the map.
             if let raster = self?.geoPackage?.geoPackageRasters.first {
                 let rasterLayer = AGSRasterLayer(raster: raster)
-                //make it semi-transparent so it doesn't obscure the contents under it
+                // make it semi-transparent so it doesn't obscure the contents under it
                 rasterLayer.opacity = 0.55
                 map.operationalLayers.add(rasterLayer)
             }

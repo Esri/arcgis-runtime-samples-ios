@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navigationController.topViewController!.navigationItem.leftItemsSupplementBackButton = true
         splitViewController.delegate = self
         
-        //min max width for master
+        // min max width for master
         splitViewController.minimumPrimaryColumnWidth = 320
         splitViewController.maximumPrimaryColumnWidth = 320
         
@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Touch settings
     
     func setTouchPref() {
-        //enable/disable touches based on settings
+        // enable/disable touches based on settings
         let bool = UserDefaults.standard.bool(forKey: "showTouch")
         if bool {
             DemoTouchManager.shared.showTouches()

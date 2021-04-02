@@ -21,23 +21,23 @@ class FeatureLayerURLViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureLayerURLViewController"]
         
-        //initialize map with basemap
+        // initialize map with basemap
         let map = AGSMap(basemapStyle: .arcGISTerrain)
         
-        //assign map to the map view
+        // assign map to the map view
         self.mapView.map = map
         self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000))
         
-        //initialize service feature table using url
+        // initialize service feature table using url
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)
 
-        //create a feature layer
+        // create a feature layer
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         
-        //add the feature layer to the operational layers
+        // add the feature layer to the operational layers
         map.operationalLayers.add(featureLayer)
     }
 }

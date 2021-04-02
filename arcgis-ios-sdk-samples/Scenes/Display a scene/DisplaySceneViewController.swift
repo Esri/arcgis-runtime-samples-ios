@@ -23,15 +23,15 @@ class DisplaySceneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplaySceneViewController"]
         
-        //initialize scene with topographic basemap
+        // initialize scene with topographic basemap
         let scene = AGSScene(basemap: .imagery())
-        //assign scene to the scene view
+        // assign scene to the scene view
         self.sceneView.scene = scene
         
-        //set the viewpoint camera
+        // set the viewpoint camera
         let camera = AGSCamera(latitude: 45.74, longitude: 6.88, altitude: 4500, heading: 10, pitch: 70, roll: 0)
         self.sceneView.setViewpointCamera(camera)
         

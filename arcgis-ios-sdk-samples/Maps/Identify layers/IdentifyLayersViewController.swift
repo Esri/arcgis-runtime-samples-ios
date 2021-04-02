@@ -30,7 +30,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
         // Map image layer.
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer")!)
         
-        //hide Continent and World layers
+        // hide Continent and World layers
         mapImageLayer.load { [weak mapImageLayer] (error: Error?) in
             if error == nil {
                 mapImageLayer?.subLayerContents[1].isVisible = false

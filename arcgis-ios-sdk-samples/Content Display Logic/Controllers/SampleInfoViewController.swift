@@ -35,9 +35,9 @@ class SampleInfoViewController: UIViewController {
     }
     
     func markdownTextFromFile(at url: URL) -> String? {
-        //read the content of the file
+        // read the content of the file
         if let content = try? String(contentsOf: url, encoding: .utf8) {
-            //remove the images
+            // remove the images
             let pattern = "!\\[.*\\]\\(.*\\)"
             if let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) {
                 let range = NSRange(location: 0, length: content.count)

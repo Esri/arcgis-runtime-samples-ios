@@ -26,35 +26,35 @@ class ScenePropertiesExpressionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ScenePropertiesExpressionsViewController"]
         
-        //initialize scene with streets basemap
+        // initialize scene with streets basemap
         let scene = AGSScene(basemap: .streets())
-        //assign scene to the scene view
+        // assign scene to the scene view
         self.sceneView.scene = scene
         
-        //set the viewpoint camera
+        // set the viewpoint camera
         let point = AGSPoint(x: 83.9, y: 28.4, z: 5200, spatialReference: .wgs84())
         let camera = AGSCamera(lookAt: point, distance: 1000, heading: 0, pitch: 50, roll: 0)
         self.sceneView.setViewpointCamera(camera)
         
-        //create a graphics overlay
+        // create a graphics overlay
         let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.sceneProperties?.surfacePlacement = .relative
         
-        //add it to the scene view
+        // add it to the scene view
         self.sceneView.graphicsOverlays.add(graphicsOverlay)
         
-        //add renderer using rotation expressions
+        // add renderer using rotation expressions
         let renderer = AGSSimpleRenderer()
         renderer.sceneProperties?.headingExpression = "[HEADING]"
         renderer.sceneProperties?.pitchExpression = "[PITCH]"
         graphicsOverlay.renderer = renderer
         
-        //create a red cone graphic
+        // create a red cone graphic
         let coneSymbol = AGSSimpleMarkerSceneSymbol(style: .cone, color: .red, height: 200, width: 100, depth: 100, anchorPosition: .center)
-        coneSymbol.pitch = -90  //correct symbol's default pitch
+        coneSymbol.pitch = -90  // correct symbol's default pitch
         let conePoint = AGSPoint(x: 83.9, y: 28.404, z: 5000, spatialReference: .wgs84())
         let coneAttributes = ["HEADING": 0, "PITCH": 0]
         let coneGraphic = AGSGraphic(geometry: conePoint, symbol: coneSymbol, attributes: coneAttributes)
@@ -64,13 +64,13 @@ class ScenePropertiesExpressionsViewController: UIViewController {
     
     @IBAction func headingSliderValueChanged(_ slider: UISlider) {
         coneGraphic.attributes["HEADING"] = slider.value
-        //update label
+        // update label
         self.headingLabel.text = "\(Int(slider.value))"
     }
     
     @IBAction func pitchSliderValueChanged(_ slider: UISlider) {
         coneGraphic.attributes["PITCH"] = slider.value
-        //update label
+        // update label
         self.pitchLabel.text = "\(Int(slider.value))"
     }
 }

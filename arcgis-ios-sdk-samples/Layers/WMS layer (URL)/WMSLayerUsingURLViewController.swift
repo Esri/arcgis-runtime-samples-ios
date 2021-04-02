@@ -21,10 +21,10 @@ class WMSLayerUsingURLViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize the map with a light gray basemap
+        // initialize the map with a light gray basemap
         let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         
-        //assign the map to the map view
+        // assign the map to the map view
         mapView.map = map
         mapView.setViewpoint(AGSViewpoint(latitude: 39, longitude: -98, scale: 3.6978595474472E7))
         
@@ -33,20 +33,20 @@ class WMSLayerUsingURLViewController: UIViewController {
         // the names of the layers to load at the WMS service
         let wmsServiceLayerNames = ["1"]
         
-        //initialize the WMS layer with the service URL and uniquely identifying WMS layer names
+        // initialize the WMS layer with the service URL and uniquely identifying WMS layer names
         let wmsLayer = AGSWMSLayer(url: wmsServiceURL, layerNames: wmsServiceLayerNames)
         
-        //load the WMS layer
+        // load the WMS layer
         wmsLayer.load { [weak self] (error) in
             if let error = error {
                 self?.presentAlert(error: error)
             } else if wmsLayer.loadStatus == .loaded {
-                //add the WMS layer to the map
+                // add the WMS layer to the map
                 map.operationalLayers.add(wmsLayer)
             }
         }
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["WMSLayerUsingURLViewController"]
     }
 }

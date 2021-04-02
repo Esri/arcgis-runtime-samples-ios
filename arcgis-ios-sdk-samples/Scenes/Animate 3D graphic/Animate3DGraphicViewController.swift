@@ -45,10 +45,10 @@ class Animate3DGraphicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["Animate3DGraphicViewController", "MissionSettingsViewController", "CameraSettingsViewController", "PlaneStatsViewController", "OptionsTableViewController"]
         
-        //map
+        // map
         let map = AGSMap(basemapStyle: .arcGISStreets)
         mapView.map = map
         mapView.interactionOptions.isEnabled = false
@@ -56,49 +56,49 @@ class Animate3DGraphicViewController: UIViewController {
         mapView.layer.borderColor = UIColor.white.cgColor
         mapView.layer.borderWidth = 2
         
-        //hide attribution text for map view
+        // hide attribution text for map view
         mapView.isAttributionTextVisible = false
         
-        //initalize scene with imagery basemap
+        // initalize scene with imagery basemap
         let scene = AGSScene(basemap: .imagery())
         
-        //assign scene to scene view
+        // assign scene to scene view
         sceneView.scene = scene
         
         /// The url of the Terrain 3D ArcGIS REST Service.
         let worldElevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
-        //elevation source
+        // elevation source
         let elevationSource = AGSArcGISTiledElevationSource(url: worldElevationServiceURL)
         
-        //surface
+        // surface
         let surface = AGSSurface()
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         
-        //graphics overlay for scene view
+        // graphics overlay for scene view
         sceneGraphicsOverlay.sceneProperties?.surfacePlacement = .absolute
         sceneView.graphicsOverlays.add(sceneGraphicsOverlay)
         
-        //renderer for scene graphics overlay
+        // renderer for scene graphics overlay
         let renderer = AGSSimpleRenderer()
         
-        //expressions
+        // expressions
         renderer.sceneProperties?.headingExpression = "[HEADING]"
         renderer.sceneProperties?.pitchExpression = "[PITCH]"
         renderer.sceneProperties?.rollExpression = "[ROLL]"
         
-        //set renderer on the overlay
+        // set renderer on the overlay
         sceneGraphicsOverlay.renderer = renderer
         
-        //graphics overlay for map view
+        // graphics overlay for map view
         mapView.graphicsOverlays.add(mapGraphicsOverlay)
         
-        //renderer for map graphics overlay
+        // renderer for map graphics overlay
         let renderer2D = AGSSimpleRenderer()
         renderer2D.rotationExpression = "[ANGLE]"
         mapGraphicsOverlay.renderer = renderer2D
         
-        //route graphic
+        // route graphic
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 1)
         let routeGraphic = AGSGraphic(geometry: nil, symbol: lineSymbol, attributes: nil)
         self.routeGraphic = routeGraphic
@@ -106,13 +106,13 @@ class Animate3DGraphicViewController: UIViewController {
         
         addPlane2D()
         
-        //add the plane model
+        // add the plane model
         addPlane3D()
         
-        //setup camera to follow the plane
+        // setup camera to follow the plane
         setupCamera()
         
-        //select the first mission by default
+        // select the first mission by default
         changeMissionAction()
     }
     
@@ -124,20 +124,20 @@ class Animate3DGraphicViewController: UIViewController {
     }
     
     private func addPlane3D() {
-        //model symbol
+        // model symbol
         let planeModelSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 20)
         planeModelSymbol.anchorPosition = .center
         
-        //arbitrary geometry for time being, the geometry will update with animation
+        // arbitrary geometry for time being, the geometry will update with animation
         let point = AGSPoint(x: 0, y: 0, z: 0, spatialReference: .wgs84())
         
-        //create graphic for the model
+        // create graphic for the model
         let planeModelGraphic = AGSGraphic()
         self.planeModelGraphic = planeModelGraphic
         planeModelGraphic.geometry = point
         planeModelGraphic.symbol = planeModelSymbol
         
-        //add graphic to the graphics overlay
+        // add graphic to the graphics overlay
         sceneGraphicsOverlay.graphics.add(planeModelGraphic)
     }
     
@@ -146,36 +146,36 @@ class Animate3DGraphicViewController: UIViewController {
             return
         }
         
-        //AGSOrbitGeoElementCameraController to follow plane graphic
-        //initialize object specifying the target geo element and distance to keep from it
+        // AGSOrbitGeoElementCameraController to follow plane graphic
+        // initialize object specifying the target geo element and distance to keep from it
         let orbitGeoElementCameraController = AGSOrbitGeoElementCameraController(targetGeoElement: planeModelGraphic, distance: 1000)
         self.orbitGeoElementCameraController = orbitGeoElementCameraController
         
-        //set camera to align its heading with the model
+        // set camera to align its heading with the model
         orbitGeoElementCameraController.isAutoHeadingEnabled = true
         
-        //will keep the camera still while the model pitches or rolls
+        // will keep the camera still while the model pitches or rolls
         orbitGeoElementCameraController.isAutoPitchEnabled = false
         orbitGeoElementCameraController.isAutoRollEnabled = false
         
-        //min and max distance values between the model and the camera
+        // min and max distance values between the model and the camera
         orbitGeoElementCameraController.minCameraDistance = 500
         orbitGeoElementCameraController.maxCameraDistance = 8000
         
-        //set the camera controller on scene view
+        // set the camera controller on scene view
         sceneView.cameraController = orbitGeoElementCameraController
     }
     
     private func loadMissionData(_ name: String) {
-        //get the path of the specified file in the bundle
+        // get the path of the specified file in the bundle
         if let path = Bundle.main.path(forResource: name, ofType: nil) {
-            //get content of the file
+            // get content of the file
             if let content = try? String(contentsOfFile: path) {
-                //split content into array of lines separated by new line character
-                //each line is one frame
+                // split content into array of lines separated by new line character
+                // each line is one frame
                 let lines = content.components(separatedBy: CharacterSet.newlines)
                 
-                //create a frame object for each line
+                // create a frame object for each line
                 frames = lines.map { (line) -> Frame in
                     let details = line.components(separatedBy: ",")
                     precondition(details.count == 6)
@@ -185,7 +185,7 @@ class Animate3DGraphicViewController: UIViewController {
                                             z: Double(details[2])!,
                                             spatialReference: .wgs84())
                     
-                    //load position, heading, pitch and roll for each frame
+                    // load position, heading, pitch and roll for each frame
                     return Frame(position: position,
                                  heading: Measurement(value: Double(details[3])!, unit: UnitAngle.degrees),
                                  pitch: Measurement(value: Double(details[4])!, unit: UnitAngle.degrees),
@@ -198,13 +198,13 @@ class Animate3DGraphicViewController: UIViewController {
     }
     
     private func startAnimation() {
-        //invalidate timer to stop previous ongoing animation
+        // invalidate timer to stop previous ongoing animation
         self.animationTimer?.invalidate()
         
-        //duration or interval
+        // duration or interval
         let duration = 1 / Double(animationSpeed)
         
-        //new timer
+        // new timer
         let animationTimer = Timer(timeInterval: duration, repeats: true) { [weak self] _ in
             self?.animate()
         }
@@ -213,67 +213,67 @@ class Animate3DGraphicViewController: UIViewController {
     }
     
     private func animate() {
-        //validations
+        // validations
         guard !frames.isEmpty,
             let planeModelGraphic = planeModelGraphic,
             let triangleGraphic = triangleGraphic else {
             return
         }
         
-        //if animation is complete
+        // if animation is complete
         if currentFrameIndex >= frames.count {
-            //invalidate timer
+            // invalidate timer
             animationTimer?.invalidate()
             
-            //update state
+            // update state
             isAnimating = false
             
-            //reset index
+            // reset index
             currentFrameIndex = 0
             
             return
         }
         
-        //else get the frame
+        // else get the frame
         let frame = frames[currentFrameIndex]
         
-        //update the properties on the model
+        // update the properties on the model
         planeModelGraphic.geometry = frame.position
         planeModelGraphic.attributes["HEADING"] = frame.heading.value
         planeModelGraphic.attributes["PITCH"] = frame.pitch.value
         planeModelGraphic.attributes["ROLL"] = frame.roll.value
         
-        //2D plane
+        // 2D plane
         triangleGraphic.geometry = frame.position
         
-        //set viewpoint for map view
+        // set viewpoint for map view
         let viewpoint = AGSViewpoint(center: frame.position, scale: 100000, rotation: 360 + frame.heading.value)
         mapView.setViewpoint(viewpoint)
         
-        //update progress
+        // update progress
         missionSettingsViewController?.progress = Float(currentFrameIndex) / Float(frames.count)
         
-        //update stats
+        // update stats
         planeStatsViewController?.frame = frame
         
-        //increment current frame index
+        // increment current frame index
         currentFrameIndex += 1
     }
     
     // MARK: - Actions
     
     @IBAction func changeMissionAction() {
-        //invalidate timer
+        // invalidate timer
         animationTimer?.invalidate()
         
-        //set play button
+        // set play button
         isAnimating = false
         
-        //new mission name
+        // new mission name
         let missionFileName = missionFileNames[selectedMissionIndex]
         loadMissionData(missionFileName)
         
-        //create a polyline from position in each frame to be used as path
+        // create a polyline from position in each frame to be used as path
         let points = frames.map { (frame) -> AGSPoint in
             return frame.position
         }
@@ -281,10 +281,10 @@ class Animate3DGraphicViewController: UIViewController {
         let polylineBuilder = AGSPolylineBuilder(points: points)
         routeGraphic?.geometry = polylineBuilder.toGeometry()
         
-        //set current frame to zero
+        // set current frame to zero
         currentFrameIndex = 0
         
-        //animate to first frame
+        // animate to first frame
         animate()
     }
     
@@ -307,10 +307,10 @@ class Animate3DGraphicViewController: UIViewController {
         if let controller = segue.destination as? CameraSettingsViewController {
             controller.orbitGeoElementCameraController = orbitGeoElementCameraController
             
-            //pop over settings
+            // pop over settings
             controller.presentationController?.delegate = self
             
-            //preferred content size
+            // preferred content size
             if traitCollection.horizontalSizeClass == .regular,
                 traitCollection.verticalSizeClass == .regular {
                 controller.preferredContentSize = CGSize(width: 300, height: 380)
@@ -320,18 +320,18 @@ class Animate3DGraphicViewController: UIViewController {
         } else if let planeStatsViewController = segue.destination as? PlaneStatsViewController {
             self.planeStatsViewController = planeStatsViewController
             
-            //pop over settings
+            // pop over settings
             planeStatsViewController.presentationController?.delegate = self
         } else if let navController = segue.destination as? UINavigationController,
             let controller = navController.viewControllers.first as? MissionSettingsViewController {
             self.missionSettingsViewController = controller
-            //initial values
+            // initial values
             controller.missionFileNames = missionFileNames
             controller.selectedMissionIndex = selectedMissionIndex
             controller.animationSpeed = animationSpeed
             controller.progress = Float(currentFrameIndex) / Float(frames.count)
             
-            //pop over settings
+            // pop over settings
             navController.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
             controller.delegate = self
@@ -357,7 +357,7 @@ extension Animate3DGraphicViewController: MissionSettingsViewControllerDelegate 
 
 extension Animate3DGraphicViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        //for popover or non modal presentation
+        // for popover or non modal presentation
         return .none
     }
 }

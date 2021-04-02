@@ -25,13 +25,13 @@ class OpenMobileMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenMobileMapViewController"]
         
-        //initialize map package
+        // initialize map package
         self.mapPackage = AGSMobileMapPackage(name: "Yellowstone")
         
-        //load map package
+        // load map package
         self.mapPackage.load { [weak self] (error: Error?) in
             guard let self = self else {
                 return
@@ -40,7 +40,7 @@ class OpenMobileMapViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else if let map = self.mapPackage.maps.first {
-                //assign the first map from the map package to the map view
+                // assign the first map from the map package to the map view
                 self.mapView.map = map
             } else {
                 self.presentAlert(message: "No mobile maps found in the map package")

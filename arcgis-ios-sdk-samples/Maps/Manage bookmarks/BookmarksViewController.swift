@@ -25,56 +25,56 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //initialize map using imagery with labels basemap
+        // initialize map using imagery with labels basemap
         self.map = AGSMap(basemapStyle: .arcGISImagery)
         
-        //assign map to the mapView
+        // assign map to the mapView
         self.mapView.map = self.map
 
-        //add default bookmarks
+        // add default bookmarks
         self.addDefaultBookmarks()
         
-        //zoom to the last bookmark
+        // zoom to the last bookmark
         self.map.initialViewpoint = (self.map.bookmarks.lastObject as AnyObject).viewpoint
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["BookmarksViewController", "BookmarksListViewController"]
     }
     
     private func addDefaultBookmarks() {
-        //create a few bookmarks and add them to the map
+        // create a few bookmarks and add them to the map
         var viewpoint: AGSViewpoint, bookmark: AGSBookmark
         
-        //Mysterious Desert Pattern
+        // Mysterious Desert Pattern
         viewpoint = AGSViewpoint(latitude: 27.3805833, longitude: 33.6321389, scale: 6e3)
         bookmark = AGSBookmark()
         bookmark.name = "Mysterious Desert Pattern"
         bookmark.viewpoint = viewpoint
-        //add the bookmark to the map
+        // add the bookmark to the map
         self.map.bookmarks.add(bookmark)
         
-        //Strange Symbol
+        // Strange Symbol
         viewpoint = AGSViewpoint(latitude: 37.401573, longitude: -116.867808, scale: 6e3)
         bookmark = AGSBookmark()
         bookmark.name = "Strange Symbol"
         bookmark.viewpoint = viewpoint
-        //add the bookmark to the map
+        // add the bookmark to the map
         self.map.bookmarks.add(bookmark)
         
-        //Guitar-Shaped Forest
+        // Guitar-Shaped Forest
         viewpoint = AGSViewpoint(latitude: -33.867886, longitude: -63.985, scale: 4e4)
         bookmark = AGSBookmark()
         bookmark.name = "Guitar-Shaped Forest"
         bookmark.viewpoint = viewpoint
-        //add the bookmark to the map
+        // add the bookmark to the map
         self.map.bookmarks.add(bookmark)
         
-        //Grand Prismatic Spring
+        // Grand Prismatic Spring
         viewpoint = AGSViewpoint(latitude: 44.525049, longitude: -110.83819, scale: 6e3)
         bookmark = AGSBookmark()
         bookmark.name = "Grand Prismatic Spring"
         bookmark.viewpoint = viewpoint
-        //add the bookmark to the map
+        // add the bookmark to the map
         self.map.bookmarks.add(bookmark)
     }
     
@@ -109,13 +109,13 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
     }
     
     private func addBookmark(withName name: String) {
-        //instantiate a bookmark and set the properties
+        // instantiate a bookmark and set the properties
         let bookmark = AGSBookmark()
         bookmark.name = name
         bookmark.viewpoint = self.mapView.currentViewpoint(with: AGSViewpointType.boundingGeometry)
-        //add the bookmark to the map
+        // add the bookmark to the map
         self.map.bookmarks.add(bookmark)
-        //refresh the table view if it exists
+        // refresh the table view if it exists
         self.bookmarksListViewController?.tableView.reloadData()
     }
     
@@ -123,14 +123,14 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? BookmarksListViewController {
-            //store a weak reference in order to update the table view when adding new bookmark
+            // store a weak reference in order to update the table view when adding new bookmark
             self.bookmarksListViewController = controller
-            //popover presentation logic
+            // popover presentation logic
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 200)
-            //assign the bookmarks to be shown
+            // assign the bookmarks to be shown
             controller.bookmarks = self.map.bookmarks as! [AGSBookmark]
-            //set the closure to be executed when the user selects a bookmark
+            // set the closure to be executed when the user selects a bookmark
             controller.setSelectAction { [weak self] (viewpoint: AGSViewpoint) in
                 self?.mapView.setViewpoint(viewpoint)
             }
@@ -140,7 +140,7 @@ class BookmarksViewController: UIViewController, UIAdaptivePresentationControlle
     // MARK: - UIAdaptivePresentationControllerDelegate
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        //for popover or non modal presentation
+        // for popover or non modal presentation
         return UIModalPresentationStyle.none
     }
 }

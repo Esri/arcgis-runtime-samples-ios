@@ -280,6 +280,18 @@
 					<string>canyonlands</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display device location with NMEA data sources</string>
+				<key>descriptionText</key>
+				<string>Parse NMEA sentences and use the results to show device location on the map.</string>
+				<key>storyboardName</key>
+				<string>DisplayDeviceLocationWithNMEADataSources</string>
+				<key>dependency</key>
+				<array>
+					<string>RedlandsNMEA</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1009,7 +1021,7 @@
 				<key>displayName</key>
 				<string>Custom dictionary style</string>
 				<key>descriptionText</key>
-				<string>Use a custom dictionary style (.stylx) to symbolize features using a variety of attribute values.</string>
+				<string>Use a custom dictionary style created from a web style or style file to symbolize features using a variety of attribute values.</string>
 				<key>storyboardName</key>
 				<string>CustomDictionaryStyle</string>
 				<key>dependency</key>
@@ -1024,6 +1036,14 @@
 				<string>Show a predefined popup from a web map.</string>
 				<key>storyboardName</key>
 				<string>ShowPopup</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Create symbol styles from web styles</string>
+				<key>descriptionText</key>
+				<string>Create symbol styles from a style file hosted on a portal.</string>
+				<key>storyboardName</key>
+				<string>CreateSymbolStylesFromWebStyles</string>
 			</dict>
 		</array>
 	</dict>
@@ -1091,6 +1111,10 @@
 				<string>EditAndSyncFeatures</string>
 				<key>descriptionText</key>
 				<string>Synchronize offline edits with a feature service.</string>
+				<key>dependency</key>
+				<array>
+					<string>SanFranciscoTilePackage</string>
+				</array>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1795,6 +1819,14 @@
 				<string>ConfigureSubnetworkTrace</string>
 				<key>displayName</key>
 				<string>Configure subnetwork trace</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Create load report</string>
+				<key>descriptionText</key>
+				<string>Create a simple electric distribution report that displays the count of customers and total load per phase by tracing downstream from a given point.</string>
+				<key>storyboardName</key>
+				<string>CreateLoadReport</string>
 			</dict>
 		</array>
 	</dict>

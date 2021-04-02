@@ -41,7 +41,7 @@ class AddPointSceneLayerViewController: UIViewController {
         
         /// Add a point scene layer with points at world airport locations
         let pointSceneLayerURL = URL(string: "https://tiles.arcgis.com/tiles/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Airports_PointSceneLayer/SceneServer/layers/0")!
-        //scene layer
+        // scene layer
         let sceneLayer = AGSArcGISSceneLayer(url: pointSceneLayerURL)
         scene.operationalLayers.add(sceneLayer)
         
@@ -51,7 +51,7 @@ class AddPointSceneLayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add the source code button item to the right of navigation bar
+        // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddPointSceneLayerViewController"]
     }
 }

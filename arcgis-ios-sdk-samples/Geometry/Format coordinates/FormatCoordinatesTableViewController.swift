@@ -34,7 +34,7 @@ class FormatCoordinatesTableViewController: UITableViewController {
         updateCoordinateFieldsForPoint()
     }
     
-    //use AGSCoordinateFormatter to generate coordinate string for the given point
+    // use AGSCoordinateFormatter to generate coordinate string for the given point
     private func updateCoordinateFieldsForPoint() {
         guard let point = point else {
             return

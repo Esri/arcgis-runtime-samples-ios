@@ -87,8 +87,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// Get the legend information provided by the feature layers used in the utility network.
     func fetchLegendInfo() {
         // Create feature tables from URLs.
-        let electricDistributionTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("105"))
-        let structureJunctionTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("900"))
+        let electricDistributionTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("1"))
+        let structureJunctionTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("5"))
         // Create feature layers using the feature tables.
         featureLayers = [electricDistributionTable, structureJunctionTable].map(AGSFeatureLayer.init)
         featureLayers.forEach { layer in

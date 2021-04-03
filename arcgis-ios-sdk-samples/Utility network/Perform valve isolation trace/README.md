@@ -51,7 +51,7 @@ Tap "Category" to create and set the configuration's filter barriers with a util
 
 ## About the data
 
-The [Naperville gas network feature service](https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleGas/FeatureServer), hosted on ArcGIS Online, contains a utility network used to run the isolation trace shown in this sample.
+The [Naperville gas network feature service](https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleGas/FeatureServer), hosted on ArcGIS Online, contains a utility network used to run the isolation trace shown in this sample.
 
 ## Tags
 

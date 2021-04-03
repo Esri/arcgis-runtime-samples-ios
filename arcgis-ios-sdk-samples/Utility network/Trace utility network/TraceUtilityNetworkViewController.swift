@@ -25,7 +25,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var modeControl: UISegmentedControl!
     
-    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     
     private let map: AGSMap
     private let serviceGeodatabase: AGSServiceGeodatabase
@@ -60,19 +60,21 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         
         // Create the utility network, referencing the map.
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         // Create the service geodatabase that matches the utility network.
         serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
         super.init(coder: aDecoder)
         // Load the service geodatabase.
         serviceGeodatabase.load { [weak self] _ in
             guard let self = self else { return }
-            // Create electrical distribution line layer ./115 and electrical device layer ./100.
-            let urls = [self.featureServiceURL.appendingPathComponent("115"),
-                        self.featureServiceURL.appendingPathComponent("100")]
+            // Create electrical distribution line layer ./3 and electrical device layer ./0.
+            let urls = [self.featureServiceURL.appendingPathComponent("3"),
+                        self.featureServiceURL.appendingPathComponent("0")]
             let layers = urls.map { url -> AGSFeatureLayer in
                 let featureTable = AGSServiceFeatureTable(url: url)
                 let layer = AGSFeatureLayer(featureTable: featureTable)
-                if featureTable.serviceLayerID == 115 {
+                if featureTable.serviceLayerID == 3 {
                     // Define a solid line for medium voltage lines and a dashed line for low voltage lines.
                     let darkCyan = UIColor(red: 0, green: 0.55, blue: 0.55, alpha: 1)
                     let mediumVoltageValue = AGSUniqueValue(

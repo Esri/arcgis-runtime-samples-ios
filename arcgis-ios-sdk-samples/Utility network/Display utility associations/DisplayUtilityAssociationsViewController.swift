@@ -30,13 +30,15 @@ class DisplayUtilityAssociationsViewController: UIViewController {
     
     @IBOutlet var toolbar: UIToolbar!
     
-    private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
+    private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     private let maxScale = 2000.0
     private let associationsOverlay = AGSGraphicsOverlay()
     private let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .green, width: 5)
     private let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 5)
     
     func loadUtilityNetwork() {
+        // WARNING: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {

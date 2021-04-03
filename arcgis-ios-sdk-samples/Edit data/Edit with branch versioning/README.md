@@ -42,14 +42,14 @@ Tap "Switch" to switch between the version you created and the default version. 
 
 ## About the data
 
-The feature service in this sample is [Damage to commercial buildings](https://sampleserver7.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0) located in Naperville, Illinois.
+The feature service in this sample is [Damage to commercial buildings](https://sampleserver7.arcgisonline.com/server/rest/services/DamageAssessment/FeatureServer) located in Naperville, Illinois.
 
 ## Additional information
 
 The credentials for testing purposes:
 
 * username: editor01
-* password: editor01.password
+* password: S7#i2LWmYH75
 
 The name of the version must meet the following criteria:
 

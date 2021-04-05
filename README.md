@@ -5,7 +5,7 @@ This repository contains Swift sample code demonstrating the capabilities of [Ar
 
 ![Samples app](SamplesApp.png)
 
-The ```master``` branch of this repository contains samples configured for the latest available version of ArcGIS Runtime SDK for iOS. For samples configured for older versions of the SDK, look under the [```Releases```](https://github.com/Esri/arcgis-runtime-samples-ios/releases) tab for a specific version.
+The ```main``` branch of this repository contains samples configured for the latest available version of ArcGIS Runtime SDK for iOS. For samples configured for older versions of the SDK, look under the [```Releases```](https://github.com/Esri/arcgis-runtime-samples-ios/releases) tab for a specific version.
 
 ## Features
 
@@ -87,7 +87,7 @@ Note: Without licensing or licensing with invalid keys do not throw an exception
 
 Visit the developer's website to learn more about [Licensing your ArcGIS Runtime App](https://developers.arcgis.com/pricing/licensing/) and [Security and authentication](https://developers.arcgis.com/documentation/mapping-apis-and-location-services/security-and-authentication/).
 
-To learn more about `masquerade`, consult the [documentation](https://github.com/Esri/data-collection-ios/tree/master/docs#masquerade) of Esri's Data Collection app.
+To learn more about `masquerade`, consult the [documentation](https://github.com/Esri/data-collection-ios/tree/main/docs#masquerade) of Esri's Data Collection app.
 
 ## Additional Resources
 

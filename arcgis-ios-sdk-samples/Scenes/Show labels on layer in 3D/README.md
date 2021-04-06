@@ -19,7 +19,7 @@ Pan and zoom to explore the scene. Notice the labels showing installation dates 
 3. After loading is complete, obtain the `AGSFeatureLayer` from the scene's `operationalLayers`.
 4. Set the feature layer's `labelsEnabled` property to `true`.
 5. Create an `AGSTextSymbol` to use for displaying the label text.
-6. Create an `AGSLabelDefinition` using an  `AGSArcadeLabelExpression`.
+6. Create an `AGSLabelDefinition` using an `AGSArcadeLabelExpression`.
 7. Add the definition to the feature layer's `labelDefinitions` array.
 
 ## Relevant API

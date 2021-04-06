@@ -62,7 +62,7 @@ class ShowLabelsOnLayer3DViewController: UIViewController {
         // Create and return a label definition using the text symbol.
         let labelDefinition = AGSLabelDefinition()
         // Set an arcade expression to provide better formatting.
-        labelDefinition.expression = AGSArcadeLabelExpression(arcadeExpression: "Text($feature.INSTALLATIONDATE, `DD MMM YY`)")
+        labelDefinition.expression = AGSArcadeLabelExpression(arcadeString: "Text($feature.INSTALLATIONDATE, `DD MMM YY`)")
         labelDefinition.placement = .lineAboveAlong
         labelDefinition.useCodedValues = true
         labelDefinition.textSymbol = textSymbol

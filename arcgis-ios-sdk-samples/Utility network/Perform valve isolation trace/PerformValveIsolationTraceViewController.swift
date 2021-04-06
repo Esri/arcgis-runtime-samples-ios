@@ -93,6 +93,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     
     /// Load the service geodatabase and initialize the layers.
     func loadServiceGeodatabase() {
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
         serviceGeodatabase.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         serviceGeodatabase.load { [weak self] error in
             guard let self = self else { return }

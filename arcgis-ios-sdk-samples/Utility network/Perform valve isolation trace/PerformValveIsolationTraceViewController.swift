@@ -66,7 +66,6 @@ class PerformValveIsolationTraceViewController: UIViewController {
         let map = AGSMap(basemapStyle: .arcGISStreetsNight)
         // Add the utility network to the map's array of utility networks.
         map.utilityNetworks.add(utilityNetwork)
-        mapView.map = map
         return map
     }
     

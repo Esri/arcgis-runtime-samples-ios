@@ -27,7 +27,11 @@ class PerformValveIsolationTraceViewController: UIViewController {
     /// The label to display trace status.
     @IBOutlet weak var statusLabel: UILabel!
     /// The map view managed by the view controller.
-    @IBOutlet weak var mapView: AGSMapView!
+    @IBOutlet weak var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+        }
+    }
     
     // MARK: Instance properties
     
@@ -58,13 +62,12 @@ class PerformValveIsolationTraceViewController: UIViewController {
     /// Create a map.
     ///
     /// - Parameter layers: The feature layers for the utility network.
-    func setMap(with layers: [AGSFeatureLayer]) {
+    func makeMap() -> AGSMap {
         let map = AGSMap(basemapStyle: .arcGISStreetsNight)
-        // Add the utility network feature layers to the map for display.
-        map.operationalLayers.addObjects(from: layers)
         // Add the utility network to the map's array of utility networks.
         map.utilityNetworks.add(utilityNetwork)
         mapView.map = map
+        return map
     }
     
     /// Create trace parameters based on the trace configuration from current utility tier and category.
@@ -101,7 +104,8 @@ class PerformValveIsolationTraceViewController: UIViewController {
             if let gasDeviceLayerTable = self.serviceGeodatabase.table(withLayerID: 0),
                let gasLineLayerTable = self.serviceGeodatabase.table(withLayerID: 3) {
                 self.layers = [gasLineLayerTable, gasDeviceLayerTable].map(AGSFeatureLayer.init)
-                self.setMap(with: self.layers)
+                // Add the utility network feature layers to the map for display.
+                self.mapView.map?.operationalLayers.addObjects(from: self.layers)
                 self.loadUtilityNetwork()
             } else if let error = error {
                 self.presentAlert(error: error)

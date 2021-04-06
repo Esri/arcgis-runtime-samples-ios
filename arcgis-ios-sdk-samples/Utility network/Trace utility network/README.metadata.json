@@ -15,6 +15,7 @@
         "upstream trace",
         "utility network",
         "validate consistency",
+        "AGSServiceGeodatabase",
         "AGSUtilityAssetType",
         "AGSUtilityDomainNetwork",
         "AGSUtilityElement",
@@ -33,6 +34,7 @@
     ],
     "redirect_from": [],
     "relevant_apis": [
+        "AGSServiceGeodatabase",
         "AGSUtilityAssetType",
         "AGSUtilityDomainNetwork",
         "AGSUtilityElement",

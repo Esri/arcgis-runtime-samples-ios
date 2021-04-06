@@ -41,9 +41,8 @@ class ShowLabelsOnLayer3DViewController: UIViewController {
                 let labelDefinition = self.makeLabelDefinition()
                 // Enable labels on the feature layer.
                 gasFeatureLayer.labelsEnabled = true
-                gasFeatureLayer.labelDefinitions.removeAllObjects()
-                // Add the label definition to the layer.
-                gasFeatureLayer.labelDefinitions.add(labelDefinition)
+                // Set the layer's label definitions.
+                gasFeatureLayer.labelDefinitions.setArray([labelDefinition])
             } else if let error = error {
                 self.presentAlert(error: error)
             }

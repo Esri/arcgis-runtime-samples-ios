@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x5g-SP-gLy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x5g-SP-gLy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="RT5-mr-U1C"/>
-                                    <barButtonItem title="Generate Geodatabase" id="1os-c0-2Eg" userLabel="Bar Button Item">
+                                    <barButtonItem enabled="NO" title="Generate Geodatabase" id="1os-c0-2Eg" userLabel="Bar Button Item">
                                         <connections>
                                             <action selector="generateOrSync" destination="x5g-SP-gLy" id="5Ky-fq-dYu"/>
                                         </connections>
@@ -73,7 +73,6 @@
                         <outlet property="extentView" destination="r5p-5s-jhB" id="Jpf-uw-Cte"/>
                         <outlet property="instructionsLabel" destination="HcO-gi-Dd8" id="kRJ-PE-Pcc"/>
                         <outlet property="mapView" destination="0sH-Kk-wWr" id="39U-ww-1Lh"/>
-                        <outlet property="toolBar" destination="IcZ-Ht-3Pq" id="TuF-KQ-RXm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05V-VB-iTD" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -24,7 +24,7 @@ Note: the KML layer used in this sample contains a screen overlay. The screen ov
   * Create a callout at the calculated map point and populate the callout content with text from the placemark's `balloonContent`. NOTE: KML supports defining HTML for balloon content and may need to be converted from HTML to text.
   * Show the callout.
 
-Note: There are several types of KML features. This sample only identifies features of type `KMLPlacemark`.
+Note: There are several types of KML features. This sample only identifies features of type `AGSKMLPlacemark`.
 
 ## Relevant API
 
@@ -35,7 +35,7 @@ Note: There are several types of KML features. This sample only identifies featu
 
 ## About the data
 
-This sample shows a forecast for significant weather within the U.S. Regions of severe thunderstorms, flooding, snowfall, and freezing rain are shown. Tap the features to see details.
+This sample shows a forecast for [significant weather within the U.S. Regions](https://www.wpc.ncep.noaa.gov/kml/kmlproducts.php#sigwx) of severe thunderstorms, flooding, snowfall, and freezing rain are shown.
 
 ## Additional information
 

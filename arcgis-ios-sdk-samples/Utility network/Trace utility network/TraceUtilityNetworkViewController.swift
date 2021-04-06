@@ -25,14 +25,19 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var modeControl: UISegmentedControl!
     
-    private let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
+    private static let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
     
     private let map: AGSMap
-    private let serviceGeodatabase: AGSServiceGeodatabase
-    private let utilityNetwork: AGSUtilityNetwork
+    private let serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
+    private let utilityNetwork = AGSUtilityNetwork(url: featureServiceURL)
     private var utilityTier: AGSUtilityTier?
     private var traceType = (name: "Connected", type: AGSUtilityTraceType.connected)
     private var traceParameters = AGSUtilityTraceParameters(traceType: .connected, startingLocations: [])
+    // Create electrical distribution line layer ./3 and electrical device layer ./0.
+    private let featureLayerURLs = [
+        featureServiceURL.appendingPathComponent("3"),
+        featureServiceURL.appendingPathComponent("0")
+    ]
     
     private let parametersOverlay: AGSGraphicsOverlay = {
         let barrierPointSymbol = AGSSimpleMarkerSymbol(style: .X, color: .red, size: 20)
@@ -58,20 +63,15 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         // Create the map
         map = AGSMap(basemapStyle: .arcGISStreetsNight)
         
-        // Create the utility network, referencing the map.
-        utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
+        // Add the utility network to the map's array of utility networks.
+        map.utilityNetworks.add(utilityNetwork)
         // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
         utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
-        // Create the service geodatabase that matches the utility network.
-        serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
         super.init(coder: aDecoder)
         // Load the service geodatabase.
         serviceGeodatabase.load { [weak self] _ in
             guard let self = self else { return }
-            // Create electrical distribution line layer ./3 and electrical device layer ./0.
-            let urls = [self.featureServiceURL.appendingPathComponent("3"),
-                        self.featureServiceURL.appendingPathComponent("0")]
-            let layers = urls.map { url -> AGSFeatureLayer in
+            let layers = self.featureLayerURLs.map { url -> AGSFeatureLayer in
                 let featureTable = AGSServiceFeatureTable(url: url)
                 let layer = AGSFeatureLayer(featureTable: featureTable)
                 if featureTable.serviceLayerID == 3 {

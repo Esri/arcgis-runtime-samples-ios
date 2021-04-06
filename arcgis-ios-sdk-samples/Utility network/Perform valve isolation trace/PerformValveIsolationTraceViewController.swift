@@ -50,6 +50,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     var selectedCategory: AGSUtilityCategory?
     var startingLocationElement: AGSUtilityElement!
     var utilityNetwork: AGSUtilityNetwork!
+    var serviceGeodatabase: AGSServiceGeodatabase!
     var layers = [AGSFeatureLayer]()
     
     // MARK: Initialize map and utility network
@@ -92,12 +93,12 @@ class PerformValveIsolationTraceViewController: UIViewController {
     
     /// Load the service geodatabase and initialize the layers.
     func loadServiceGeodatabase() {
-        let serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
+        serviceGeodatabase = AGSServiceGeodatabase(url: featureServiceURL)
         serviceGeodatabase.load { [weak self] error in
             guard let self = self else { return }
             // The  gas device layer ./0 and gas line layer ./3 are created from the service geodatabase.
-            if let gasDeviceLayerTable = serviceGeodatabase.table(withLayerID: 0),
-                let gasLineLayerTable = serviceGeodatabase.table(withLayerID: 3) {
+            if let gasDeviceLayerTable = self.serviceGeodatabase.table(withLayerID: 0),
+               let gasLineLayerTable = self.serviceGeodatabase.table(withLayerID: 3) {
                 self.layers = [gasLineLayerTable, gasDeviceLayerTable].map(AGSFeatureLayer.init)
                 self.setMap(with: self.layers)
                 self.loadUtilityNetwork()
@@ -111,7 +112,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     func loadUtilityNetwork() {
         setStatus(message: "Loading utility network…")
         // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
-        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
+//        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         // Load the utility network to be ready to run a trace against it.
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
@@ -192,6 +193,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
                         startingLocationGraphicsOverlay.graphics.add(startingLocationGraphic)
                         self.mapView.graphicsOverlays.add(startingLocationGraphicsOverlay)
                         self.mapView.setViewpoint(AGSViewpoint(center: startingLocationGeometry, scale: 3000), completion: nil)
+                        self.setStatus(message: "Use the toolbar to change the attributes.")
                     } else {
                         self.setStatus(message: "Drawing starting location feature failed.")
                     }
@@ -273,8 +275,17 @@ class PerformValveIsolationTraceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AGSAuthenticationManager.shared().delegate = self
         loadServiceGeodatabase()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["PerformValveIsolationTraceViewController"]
+    }
+}
+
+extension PerformValveIsolationTraceViewController: AGSAuthenticationManagerDelegate {
+    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        let credentials = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
+        challenge.continue(with: credentials)
     }
 }

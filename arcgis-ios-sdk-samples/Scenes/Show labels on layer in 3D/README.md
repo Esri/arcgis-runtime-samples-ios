@@ -15,8 +15,8 @@ Pan and zoom to explore the scene. Notice the labels showing installation dates 
 ## How it works
 
 1. Create an `AGSScene` using a URL.
-2. Apply the scene to an `AGSSceneView` and load it.
-3. After loading is complete, obtain the `AGSFeatureLayer` from the scene's `operationalLayers`.
+2. Assign the scene to an `AGSSceneView` and load it.
+3. After loading is complete, obtain the `AGSFeatureLayer` from the scene's `operationalLayers` property.
 4. Set the feature layer's `labelsEnabled` property to `true`.
 5. Create an `AGSTextSymbol` to use for displaying the label text.
 6. Create an `AGSLabelDefinition` using an `AGSArcadeLabelExpression`.

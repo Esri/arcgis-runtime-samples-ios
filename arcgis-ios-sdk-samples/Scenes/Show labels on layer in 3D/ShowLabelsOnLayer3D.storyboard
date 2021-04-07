@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zIa-rF-U19">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Show Labels On Layer3D View Controller-->
+        <scene sceneID="anW-FF-tFY">
+            <objects>
+                <viewController id="zIa-rF-U19" customClass="ShowLabelsOnLayer3DViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zgz-gC-daN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Lc-Le-sF5" customClass="AGSSceneView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hKU-b6-pQ8"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="9Lc-Le-sF5" secondAttribute="bottom" id="5XS-uO-irV"/>
+                            <constraint firstItem="9Lc-Le-sF5" firstAttribute="leading" secondItem="Zgz-gC-daN" secondAttribute="leading" id="IS3-DS-Yn8"/>
+                            <constraint firstAttribute="trailing" secondItem="9Lc-Le-sF5" secondAttribute="trailing" id="Ikx-mi-cRr"/>
+                            <constraint firstItem="hKU-b6-pQ8" firstAttribute="top" secondItem="9Lc-Le-sF5" secondAttribute="top" id="Pf4-cb-Xau"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="9Lc-Le-sF5" id="pi5-hl-S5h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L8H-ht-vpI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="306" y="122"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -159,7 +159,8 @@ class NavigateARNavigatorViewController: UIViewController {
     @IBAction func startTurnByTurn(_ sender: UIBarButtonItem) {
         routeTracker = AGSRouteTracker(routeResult: routeResult, routeIndex: 0, skipCoincidentStops: true)
         if routeTask.routeTaskInfo().supportsRerouting {
-            routeTracker?.enableRerouting(with: routeTask, routeParameters: routeParameters, strategy: .toNextStop, visitFirstStopOnStart: true ) { [weak self] (error: Error?) in
+            let reroutingParameters = AGSReroutingParameters(routeTask: routeTask, routeParameters: routeParameters)!
+            routeTracker?.enableRerouting(with: reroutingParameters) { [weak self] error in
                 if let error = error {
                     self?.presentAlert(error: error)
                 } else {

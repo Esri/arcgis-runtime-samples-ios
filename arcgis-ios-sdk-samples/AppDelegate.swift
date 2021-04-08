@@ -25,13 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var categoryBrowserViewController: ContentCollectionViewController {
         return (splitViewController.viewControllers.first as! UINavigationController).viewControllers.first as! ContentCollectionViewController
     }
- 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        if url.absoluteString.range(of: "auth", options: [], range: nil, locale: nil) != nil {
-            AGSApplicationDelegate.shared().application(app, open: url, options: options)
-        }
-        return true
-    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         // Override point for customization after application launch.

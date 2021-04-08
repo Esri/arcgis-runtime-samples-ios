@@ -92,7 +92,7 @@ class IntegratedWindowsAuthenticationPortalMapBrowserViewController: UITableView
     
     /// Shows an activity indicator in the center of the table view.
     func showActivityIndicator() {
-        let activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        let activityIndicatorView = UIActivityIndicatorView(style: .medium)
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.startAnimating()
         

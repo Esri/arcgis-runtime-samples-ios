@@ -18,6 +18,7 @@ import ArcGIS
 class DisplayContentUtilityNetworkTableViewController: UITableViewController {
     var legendInfos = [AGSLegendInfo]()
     var contentSwatches = KeyValuePairs<String, UIImage>()
+    var images = [(String, UIImage)]()
    
     // Set the number of rows.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,20 +33,22 @@ class DisplayContentUtilityNetworkTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayContentLegendCell", for: indexPath)
         // Add the container view swatches to the legend after the feature layer legend information.
-        if indexPath.row >= legendInfos.count {
-            let contentSwatch = indexPath.row - legendInfos.count
-            cell.textLabel?.text = contentSwatches[contentSwatch].key
-            cell.imageView?.image = contentSwatches[contentSwatch].value
-            cell.setNeedsLayout()
-        } else {
-            // Add the information provided by the feature layers to the legend.
-            let legendInfo = legendInfos[indexPath.row]
-            cell.textLabel?.text = legendInfo.name
-            legendInfo.symbol?.createSwatch { (image, _) in
-                cell.imageView?.image = image
-                cell.setNeedsLayout()
-            }
-        }
+//        if indexPath.row >= legendInfos.count {
+//            let contentSwatch = indexPath.row - legendInfos.count
+//            cell.textLabel?.text = contentSwatches[contentSwatch].key
+//            cell.imageView?.image = contentSwatches[contentSwatch].value
+//            cell.setNeedsLayout()
+//        } else {
+//            // Add the information provided by the feature layers to the legend.
+//            let legendInfo = legendInfos[indexPath.row]
+//            cell.textLabel?.text = legendInfo.name
+//            legendInfo.symbol?.createSwatch { (image, _) in
+//                cell.imageView?.image = image
+//                cell.setNeedsLayout()
+//            }
+//        }
+        cell.textLabel?.text = images[indexPath.row].0
+        cell.imageView?.image = images[indexPath.row].1
         return cell
     }
     

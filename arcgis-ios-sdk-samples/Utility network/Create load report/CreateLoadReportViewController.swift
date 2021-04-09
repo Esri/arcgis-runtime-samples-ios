@@ -97,9 +97,9 @@ class CreateLoadReportViewController: UIViewController {
         // Set the default expression.
         initialExpression = traceConfiguration.traversability?.barriers as? AGSUtilityTraceConditionalExpression
         
-        // Create downstream trace parameters with function outputs.
+        // Create downstream trace parameters with elements and function outputs.
         let traceParameters = AGSUtilityTraceParameters(traceType: .downstream, startingLocations: [startingLocation])
-        traceParameters.resultTypes.append(.ags_value(with: .functionOutputs))
+        traceParameters.resultTypes = [.ags_value(with: .elements), .ags_value(with: .functionOutputs)]
         
         // The service category for counting total customers.
         if let serviceCategory = utilityNetwork.definition.categories.first(where: { $0.name == "ServicePoint" }),

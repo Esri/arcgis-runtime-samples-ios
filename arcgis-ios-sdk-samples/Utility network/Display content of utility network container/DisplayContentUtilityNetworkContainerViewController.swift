@@ -114,12 +114,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             layer.fetchLegendInfos { [weak self] (legendInfos, error) in
                 guard let self = self, let legendInfos = legendInfos else { return }
                 defer { legendGroup.leave() }
-//                self.legendBarButtonItem.isEnabled = true
                 self.legendInfos.append(contentsOf: legendInfos)
-//                self.makeSwatches(legend: legendInfos) { legendItems in
-//                    self.legendItems.append(contentsOf: legendItems)
-//                    self.symbolsDataSource = SymbolsDataSource(legendItems: self.legendItems)
-//                }
                 if let error = error {
                     self.presentAlert(error: error)
                 }
@@ -127,31 +122,36 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         }
         legendGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-            let symbols = self.legendInfos + [self.boundingBoxSymbol, self.attachmentSymbol, self.connectivitySymbol]
-            self.makeSwatches(legend: symbols) { legendItems in
-                self.symbolsDataSource = SymbolsDataSource(legendItems: legendItems)
+            let featureLayerSymbols = self.legendInfos.reduce(into: [(String, AGSSymbol)]() ) { specifiedSymbols, legendInfo in
+                if !legendInfo.name.isEmpty, let symbol = legendInfo.symbol {
+                    specifiedSymbols.append((legendInfo.name, symbol))
+                }
+            }
+            let allSymbols: [(String, AGSSymbol)] = featureLayerSymbols +
+                [("Bounding box", self.boundingBoxSymbol.symbol),
+                 ("Attachment", self.attachmentSymbol.symbol),
+                 ("Connectivity", self.connectivitySymbol.symbol)]
+            self.makeSwatches(legend: allSymbols) { legendItems in
+                self.symbolsDataSource = SymbolsDataSource(legendItems: legendItems.sorted { $0.name < $1.name })
             }
         }
     }
     
-    private func makeSwatches(legend: [Any], completion: @escaping ([LegendItem]) -> Void) {
+    /// Create swatches from the provided symbols.
+    ///
+    /// - Parameters:
+    ///     - legend: The array containing all of the symbols and their names.
+    ///     - completion: A closure to pass back the legend with cached images.
+    private func makeSwatches(legend: [(String, AGSSymbol)], completion: @escaping ([LegendItem]) -> Void) {
         let swatchGroup = DispatchGroup()
         var legendItems = [LegendItem]()
-        var symbol = AGSSymbol()
-        var name = String()
         legend.forEach { symbolItem in
-            if let legendInfoItem = symbolItem as? AGSLegendInfo, !legendInfoItem.name.isEmpty {
-                name = legendInfoItem.name
-                symbol = legendInfoItem.symbol!
-            } else if let containerViewSymbol = symbolItem as? ContainerViewSymbol {
-                name = containerViewSymbol.name
-                symbol = containerViewSymbol.symbol
-            }
+            let symbol = symbolItem.1
             swatchGroup.enter()
-            symbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+            symbol.createSwatch(withBackgroundColor: nil, screen: .main) { image, _ in
                 if let image = image {
                     defer { swatchGroup.leave() }
-                    legendItems.append(LegendItem(name: name, image: image))
+                    legendItems.append(LegendItem(name: symbolItem.0, image: image))
                 } else {
                     swatchGroup.leave()
                 }
@@ -161,8 +161,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             completion(legendItems)
         }
     }
-
-    func makeSwatch(name: String, symbol: AGSSymbol) ->
     
     /// Get the container feature that was tapped on.
     ///
@@ -252,7 +250,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         mapView.setViewpointGeometry(geometry) { [weak self] _ in
             guard let self = self else { return }
             // Get the associations for this extent to display how content features are attached or connected.
-            self.utilityNetwork?.associations(withExtent: self.graphicsOverlay.extent) { (containmentAssociations, error) in
+            self.utilityNetwork?.associations(withExtent: self.graphicsOverlay.extent) { containmentAssociations, _ in
                 guard let containmentAssociations = containmentAssociations else { return }
                 containmentAssociations.forEach { association in
                     var symbol = AGSSymbol()
@@ -286,28 +284,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         }
     }
     
-    /// Create a swatch from the provided symbol.
-    ///
-    /// - Parameter symbol: The symbol to make a swatch from.
-    /// - Returns The resulting image that represents the swatch.
-//    func makeSwatch(symbol: AGSSymbol) -> UIImage {
-//        let swatchGroup = DispatchGroup()
-//        var swatchImage = UIImage()
-//        swatchGroup.enter()
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            symbol.createSwatch(withBackgroundColor: nil, screen: .main) { [weak self] (image, error) in
-//                if let image = image {
-//                    swatchImage = image
-//                } else if let error = error {
-//                    self?.presentAlert(error: error)
-//                }
-//                swatchGroup.leave()
-//            }
-//        }
-//        swatchGroup.wait()
-//        return swatchImage
-//    }
-    
     // MARK: - UIViewController
     
     override func viewDidLoad() {
@@ -323,32 +299,21 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     }
     
     // MARK: - Navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DisplayContentLegendSegue",
             let controller = segue.destination as? UITableViewController {
                 controller.presentationController?.delegate = self
                 controller.tableView.dataSource = symbolsDataSource
             }
-//            as! DisplayContentUtilityNetworkTableViewController
-//            controller.presentationController?.delegate = self
-//            controller.legendInfos = legendInfos
-//            controller.contentSwatches = [
-//                "Bounding box": makeSwatch(symbol: boundingBoxSymbol),
-//                "Attachment": makeSwatch(symbol: attachmentSymbol),
-//                "Connectivity": makeSwatch(symbol: connectivitySymbol)
-//            ]
-//            controller.images = images
-//        }
     }
     
     // MARK: - UIAdaptivePresentationControllerDelegate
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
 }
 
+// MARK: - AGSAuthenticationManagerDelegate
 extension DisplayContentUtilityNetworkContainerViewController: AGSAuthenticationManagerDelegate {
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
         // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.

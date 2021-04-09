@@ -38,16 +38,6 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SearchForWebmapByKeywordViewController", "WebMapCell", "WebMapViewController"]
         
-        if #available(iOS 13, *) {
-            // for iOS 13 this must be added in viewDidLoad
-            // for iOS 12, it gets added in viewDidAppear, because for iOS 12 it doesn't
-            // show up if added here.
-            addSearchController()
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         if navigationItem.searchController == nil {
             addSearchController()
         }
@@ -66,31 +56,11 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         let searchBar = searchController.searchBar
         searchBar.autocapitalizationType = .none
         
-        if #available(iOS 13, *) {
-            // Change the backgroundColor to differentiate from nav bar color.
-            searchBar.searchTextField.backgroundColor = .tertiarySystemBackground
-            // Set the color of the insertion cursor as well as the text. The text is default to black color whereas the cursor is white.
-            searchBar.searchTextField.tintColor = .label
-        } else {
-            // This code is required to make the search bar look decent on iOS 12
-            // This does not work on iOS 13, where the search bar looks different.
-            // Different meaning - not as good as iOS 12 looks like with this fix,
-            // but at least acceptable and a bit better than what it would look like
-            // on 12 without this fix.
-            // Set the color of "Cancel" text, to mimic the settings on iOS 12. On iOS 13 it is default to white.
-            searchBar.tintColor = .white
-            
-            // find the text field to customize its appearance
-            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-                // set the color of the insertion cursor
-                textfield.tintColor = UIColor.darkText
-                if let backgroundview = textfield.subviews.first {
-                    backgroundview.backgroundColor = UIColor.white
-                    backgroundview.layer.cornerRadius = 12
-                    backgroundview.clipsToBounds = true
-                }
-            }
-        }
+        // Change the backgroundColor to differentiate from nav bar color.
+        searchBar.searchTextField.backgroundColor = .tertiarySystemBackground
+        // Set the color of the insertion cursor as well as the text.
+        // The text is default to black color whereas the cursor is white.
+        searchBar.searchTextField.tintColor = .label
         
         // embed the search bar under the title in the navigation bar
         navigationItem.searchController = searchController

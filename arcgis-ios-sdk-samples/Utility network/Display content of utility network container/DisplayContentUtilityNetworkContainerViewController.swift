@@ -37,12 +37,20 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// An array containing information about the feature services' legends.
     var legendInfos = [AGSLegendInfo]()
     var featureLayers = [AGSFeatureLayer]()
-    private var legendItems = [LegendItem]()
     
     // The symbols used to display the container view contents.
-    let boundingBoxSymbol = AGSSimpleLineSymbol(style: .dash, color: .yellow, width: 3)
-    let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .green, width: 3)
-    let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 3)
+    let boundingBoxSymbol = ContainerViewSymbol(
+        name: "Bounding box",
+        symbol: AGSSimpleLineSymbol(style: .dash, color: .yellow, width: 3)
+    )
+    let attachmentSymbol = ContainerViewSymbol(
+        name: "Attachment",
+        symbol: AGSSimpleLineSymbol(style: .dot, color: .green, width: 3)
+    )
+    let connectivitySymbol = ContainerViewSymbol(
+        name: "Connectivity",
+        symbol: AGSSimpleLineSymbol(style: .dot, color: .red, width: 3)
+    )
     
     /// The data source for the legend table.
         private var symbolsDataSource: SymbolsDataSource? {
@@ -97,38 +105,55 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         // Create feature tables from URLs.
         let electricDistributionTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("1"))
         let structureJunctionTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("5"))
+        let legendGroup = DispatchGroup()
         // Create feature layers using the feature tables.
         featureLayers = [electricDistributionTable, structureJunctionTable].map(AGSFeatureLayer.init)
         featureLayers.forEach { layer in
+            legendGroup.enter()
             // Get the legend information of each layer.
             layer.fetchLegendInfos { [weak self] (legendInfos, error) in
                 guard let self = self, let legendInfos = legendInfos else { return }
+                defer { legendGroup.leave() }
 //                self.legendBarButtonItem.isEnabled = true
                 self.legendInfos.append(contentsOf: legendInfos)
-                self.makeSwatches(legend: legendInfos) { legendItems in
-                    self.legendItems.append(contentsOf: legendItems)
-                    self.symbolsDataSource = SymbolsDataSource(legendItems: self.legendItems)
-                }
+//                self.makeSwatches(legend: legendInfos) { legendItems in
+//                    self.legendItems.append(contentsOf: legendItems)
+//                    self.symbolsDataSource = SymbolsDataSource(legendItems: self.legendItems)
+//                }
                 if let error = error {
                     self.presentAlert(error: error)
                 }
             }
         }
+        legendGroup.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+            let symbols = self.legendInfos + [self.boundingBoxSymbol, self.attachmentSymbol, self.connectivitySymbol]
+            self.makeSwatches(legend: symbols) { legendItems in
+                self.symbolsDataSource = SymbolsDataSource(legendItems: legendItems)
+            }
+        }
     }
     
-    private func makeSwatches(legend: [AGSLegendInfo], completion: @escaping ([LegendItem]) -> Void) {
+    private func makeSwatches(legend: [Any], completion: @escaping ([LegendItem]) -> Void) {
         let swatchGroup = DispatchGroup()
         var legendItems = [LegendItem]()
-        legend.forEach { legendInfo in
-            if let symbol = legendInfo.symbol {
-                swatchGroup.enter()
-                symbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
-                    if !legendInfo.name.isEmpty, let image = image {
-                        defer { swatchGroup.leave() }
-                        legendItems.append(LegendItem(name: legendInfo.name, image: image))
-                    } else {
-                        swatchGroup.leave()
-                    }
+        var symbol = AGSSymbol()
+        var name = String()
+        legend.forEach { symbolItem in
+            if let legendInfoItem = symbolItem as? AGSLegendInfo, !legendInfoItem.name.isEmpty {
+                name = legendInfoItem.name
+                symbol = legendInfoItem.symbol!
+            } else if let containerViewSymbol = symbolItem as? ContainerViewSymbol {
+                name = containerViewSymbol.name
+                symbol = containerViewSymbol.symbol
+            }
+            swatchGroup.enter()
+            symbol.createSwatch(withBackgroundColor: nil, screen: .main) { (image, error) in
+                if let image = image {
+                    defer { swatchGroup.leave() }
+                    legendItems.append(LegendItem(name: name, image: image))
+                } else {
+                    swatchGroup.leave()
                 }
             }
         }
@@ -136,6 +161,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             completion(legendItems)
         }
     }
+
+    func makeSwatch(name: String, symbol: AGSSymbol) ->
     
     /// Get the container feature that was tapped on.
     ///
@@ -220,7 +247,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// - Parameter boundingBox: The gemeotry which represents the boundaries of the extent.
     func identifyAssociationsWithExtent(boundingBox: AGSGeometry) {
         // Add the bounding box symbol.
-        graphicsOverlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: boundingBoxSymbol))
+        graphicsOverlay.graphics.add(AGSGraphic(geometry: boundingBox, symbol: boundingBoxSymbol.symbol))
         let geometry = AGSGeometryEngine.bufferGeometry(graphicsOverlay.extent, byDistance: 0.05)!
         mapView.setViewpointGeometry(geometry) { [weak self] _ in
             guard let self = self else { return }
@@ -230,9 +257,9 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                 containmentAssociations.forEach { association in
                     var symbol = AGSSymbol()
                     if association.associationType == .attachment {
-                        symbol = self.attachmentSymbol
+                        symbol = self.attachmentSymbol.symbol
                     } else {
-                        symbol = self.connectivitySymbol
+                        symbol = self.connectivitySymbol.symbol
                     }
                     self.graphicsOverlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
                 }
@@ -356,7 +383,7 @@ private class SymbolsDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Symbol Styles"
+        "Legend"
     }
 }
 
@@ -364,4 +391,10 @@ private class SymbolsDataSource: NSObject, UITableViewDataSource {
 private struct LegendItem {
     let name: String
     let image: UIImage
+}
+
+// MARK: - ContainerViewSymbol
+struct ContainerViewSymbol {
+    let name: String
+    let symbol: AGSSymbol
 }

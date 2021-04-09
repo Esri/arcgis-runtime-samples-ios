@@ -38,9 +38,7 @@ class SearchForWebmapByKeywordViewController: UICollectionViewController {
         
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SearchForWebmapByKeywordViewController", "WebMapCell", "WebMapViewController"]
         
-        if navigationItem.searchController == nil {
-            addSearchController()
-        }
+        addSearchController()
     }
     
     private func addSearchController() {

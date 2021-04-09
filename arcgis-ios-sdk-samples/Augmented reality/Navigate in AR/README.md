@@ -50,17 +50,17 @@ When you start, route instructions will be displayed and spoken. As you proceed 
 
 ## About the data
 
-This sample uses Esri's [World Elevation](https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer) service to ensure that route lines are placed appropriately in 3D space. It uses Esri's [World Route](https://www.arcgis.com/home/item.html?id=1feb41652c5c4bd2ba5c60df2b4ea2c4) service to calculate routes. The world routing service requires authentication and does consume ArcGIS Online credits.
+This sample uses Esri's [World Elevation](https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer) service to ensure that route lines are placed appropriately in 3D space. It uses Esri's [World Route](https://www.arcgis.com/home/item.html?id=1feb41652c5c4bd2ba5c60df2b4ea2c4) service to calculate routes.
 
-**Note:** This routing service requires one of the following authentication methods
+**Note:** This routing service requires one of the following authentication methods:
 
-* An ArcGIS Online organizational subscription and consumes credits
-* An ArcGIS Developer account and consumes credits
+* An ArcGIS Online organizational subscription and credits
+* An ArcGIS Developer account and credits
 * An API key
 
-To access this sample with ArcGIS identity/named user login using OAuth workflow, please read more at [ArcGIS Identity](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/arcgis-identity/).
+To access the routing service with ArcGIS identity/named user login using OAuth workflow, please read more at [ArcGIS Identity](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/arcgis-identity/).
 
-The routing service can also be accessed with an API key, either specified in AppDelegate or in the sample. Please read more at [API keys](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/api-keys/).
+The routing service can also be accessed with an API key. Please read more at [API keys](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/api-keys/).
 
 Learn more about [security and authentication on ArcGIS Developers website](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/).
 

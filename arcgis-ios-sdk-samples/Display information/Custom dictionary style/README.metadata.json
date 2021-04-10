@@ -1,6 +1,6 @@
 {
     "category": "Display information",
-    "description": "Use a custom dictionary style (.stylx) to symbolize features using a variety of attribute values.",
+    "description": "Use a custom dictionary style created from a web style or style file to symbolize features using a variety of attribute values.",
     "ignore": false,
     "images": [
         "custom-dictionary-style.png"
@@ -8,18 +8,24 @@
     "keywords": [
         "dictionary",
         "military",
+        "portal",
+        "portal item",
         "renderer",
         "style",
         "stylx",
         "unique value",
         "visualization",
         "AGSDictionaryRenderer",
-        "AGSDictionarySymbolStyle"
+        "AGSDictionarySymbolStyle",
+        "AGSPortal",
+        "AGSPortalItem"
     ],
     "redirect_from": [],
     "relevant_apis": [
         "AGSDictionaryRenderer",
-        "AGSDictionarySymbolStyle"
+        "AGSDictionarySymbolStyle",
+        "AGSPortal",
+        "AGSPortalItem"
     ],
     "snippets": [
         "CustomDictionaryStyleViewController.swift"

@@ -1,9 +1,9 @@
 {
     "category": "Utility network",
-    "description": "Discover connected features in a utility network using connected, subnetwork, upstream, and downstream traces.",
+    "description": "Create a simple electric distribution report that displays the count of customers and total load per phase by tracing downstream from a given point.",
     "ignore": false,
     "images": [
-        "trace-utility-network.png"
+        "create-load-report.png"
     ],
     "keywords": [
         "condition barriers",
@@ -15,44 +15,48 @@
         "upstream trace",
         "utility network",
         "validate consistency",
-        "AGSServiceGeodatabase",
         "AGSUtilityAssetType",
+        "AGSUtilityCategoryComparison",
         "AGSUtilityDomainNetwork",
         "AGSUtilityElement",
         "AGSUtilityElementTraceResult",
         "AGSUtilityNetwork",
+        "AGSUtilityNetworkAttribute",
+        "AGSUtilityNetworkAttributeComparison",
         "AGSUtilityNetworkDefinition",
         "AGSUtilityNetworkSource",
         "AGSUtilityTerminal",
         "AGSUtilityTier",
         "AGSUtilityTraceConfiguration",
+        "AGSUtilityTraceFunction",
         "AGSUtilityTraceParameters",
         "AGSUtilityTraceResult",
         "AGSUtilityTraceType",
-        "AGSUtilityTraversability",
-        "class AGSGeometryEngine.fraction(alongLine:to:tolerance:)"
+        "AGSUtilityTraversability"
     ],
     "redirect_from": [],
     "relevant_apis": [
-        "AGSServiceGeodatabase",
         "AGSUtilityAssetType",
+        "AGSUtilityCategoryComparison",
         "AGSUtilityDomainNetwork",
         "AGSUtilityElement",
         "AGSUtilityElementTraceResult",
         "AGSUtilityNetwork",
+        "AGSUtilityNetworkAttribute",
+        "AGSUtilityNetworkAttributeComparison",
         "AGSUtilityNetworkDefinition",
         "AGSUtilityNetworkSource",
         "AGSUtilityTerminal",
         "AGSUtilityTier",
         "AGSUtilityTraceConfiguration",
+        "AGSUtilityTraceFunction",
         "AGSUtilityTraceParameters",
         "AGSUtilityTraceResult",
         "AGSUtilityTraceType",
-        "AGSUtilityTraversability",
-        "class AGSGeometryEngine.fraction(alongLine:to:tolerance:)"
+        "AGSUtilityTraversability"
     ],
     "snippets": [
-        "TraceUtilityNetworkViewController.swift"
+        "CreateLoadReportViewController.swift"
     ],
-    "title": "Trace utility network"
+    "title": "Create load report"
 }

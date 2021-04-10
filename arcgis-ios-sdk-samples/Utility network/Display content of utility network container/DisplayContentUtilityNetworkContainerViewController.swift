@@ -68,9 +68,10 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         (mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
             // Make each operational layer visible.
             layer.isVisible = true
-            guard let previousViewpoint = previousViewpoint else { return }
+        }
+        if let previousViewpoint = previousViewpoint {
             // Return to the viewpoint before container view was entered.
-            mapView.setViewpointGeometry(previousViewpoint.targetGeometry) { [weak self] _ in
+            mapView.setViewpoint(previousViewpoint) { [weak self] _ in
                 // Enable interaction on the map view.
                 self?.mapView.isUserInteractionEnabled = true
             }

@@ -28,8 +28,7 @@
         "AGSUtilityNetworkDefinition"
     ],
     "snippets": [
-        "DisplayContentUtilityNetworkContainerViewController.swift",
-        "DisplayContentUtilityNetworkTableViewController.swift"
+        "DisplayContentUtilityNetworkContainerViewController.swift"
     ],
     "title": "Display content of utility network container"
 }

@@ -38,8 +38,8 @@ class NavigateARRoutePlannerViewController: UIViewController {
     
     // MARK: Instance properties
     
-    /// The route task that solves the route using the online routing service, with authentication required.
-    let routeTask = AGSRouteTask(url: URL(string: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World")!)
+    /// The route task that solves the route using the online routing service, using API key authentication.
+    let routeTask = AGSRouteTask(url: URL(string: "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World")!)
     /// The parameters for route task to solve a route.
     var routeParameters: AGSRouteParameters!
     /// The data source to track device location and provide updates to location display.
@@ -55,13 +55,6 @@ class NavigateARRoutePlannerViewController: UIViewController {
         )
         return overlay
     }()
-    
-    /// An OAuth2 configuration to access online routing service.
-    let oAuthConfiguration = AGSOAuthConfiguration(
-        portalURL: URL(string: "https://www.arcgis.com")!,
-        clientID: "lgAdHkYZYlwwfAhC",
-        redirectURL: "my-ags-app://auth"
-    )
     
     /// An `AGSPoint` representing the start of navigation.
     var startPoint: AGSPoint? {
@@ -156,10 +149,6 @@ class NavigateARRoutePlannerViewController: UIViewController {
         // Avoid overlapping status label and map content.
         mapView.contentInset.top = 2 * statusLabel.font.lineHeight
         
-        // Configure the authentication manager to show the OAuth dialog.
-        AGSAuthenticationManager.shared().delegate = self
-        AGSAuthenticationManager.shared().oAuthConfigurations.add(oAuthConfiguration)
-        
         routeTask.load { [weak self] (error: Error?) in
             guard let self = self else { return }
             if let error = error {
@@ -199,11 +188,6 @@ class NavigateARRoutePlannerViewController: UIViewController {
             }
         }
     }
-    
-    deinit {
-        AGSAuthenticationManager.shared().oAuthConfigurations.remove(oAuthConfiguration)
-        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
-    }
 }
 
 // MARK: - Set route start and end on touch
@@ -224,18 +208,5 @@ extension NavigateARRoutePlannerViewController: AGSGeoViewTouchDelegate {
                 }
             }
         }
-    }
-}
-
-// MARK: - Show OAuth dialog for route service
-
-extension NavigateARRoutePlannerViewController: AGSAuthenticationManagerDelegate {
-    func authenticationManager( _ authenticationManager: AGSAuthenticationManager, wantsToShow viewController: UIViewController) {
-        viewController.modalPresentationStyle = .overFullScreen
-        present(viewController, animated: true)
-    }
-    
-    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, wantsToDismiss viewController: UIViewController) {
-        dismiss(animated: true)
     }
 }

@@ -318,7 +318,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
 extension DisplayContentUtilityNetworkContainerViewController: AGSAuthenticationManagerDelegate {
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
         // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
-        let credentials = AGSCredential(user: "editor01", password: "S7#i2LWmYH75")
+        let credentials = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         challenge.continue(with: credentials)
     }
 }

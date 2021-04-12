@@ -32,11 +32,20 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     @IBOutlet var recenterBarButtonItem: UIBarButtonItem!
     /// The button to reset the demo.
     @IBOutlet var resetBarButtonItem: UIBarButtonItem!
+    /// The segmented control to toggle between mock data and real device.
+    @IBOutlet var segmentedControl: UISegmentedControl!
+    
+    // MARK: Constants
+    
+    /// The name of the BadElf device to identify it from accessories list.
+    let surveyorName = "Bad Elf GNSS Surveyor"
+    /// The protocol string to establish the EASession.
+    let protocolName = "com.bad-elf.gps"
     
     // MARK: Instance properties
     
     /// An NMEA location data source, to parse NMEA data.
-    let nmeaLocationDataSource = AGSNMEALocationDataSource(receiverSpatialReference: .wgs84())
+    var nmeaLocationDataSource: AGSNMEALocationDataSource!
     /// A mock data source to read NMEA sentences from a local file, and generate
     /// mock NMEA data every fixed amount of time.
     let mockNMEADataSource = SimulatedNMEADataSource(nmeaSourceFile: Bundle.main.url(forResource: "Redlands", withExtension: "nmea")!, speed: 1.5)
@@ -47,6 +56,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         // Set buttons states.
         startBarButtonItem.isEnabled = false
         resetBarButtonItem.isEnabled = true
+        segmentedControl.isEnabled = false
         // Set NMEA location data source for location display.
         mapView.locationDisplay.dataSource = nmeaLocationDataSource
         // Start the data source and location display.
@@ -71,6 +81,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         // Reset buttons states.
         startBarButtonItem.isEnabled = true
         resetBarButtonItem.isEnabled = false
+        segmentedControl.isEnabled = true
         // Reset the status text.
         statusLabel.text = "Satellites info will be shown here."
         // Reset and stop the location display.
@@ -79,6 +90,29 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         mapView.locationDisplay.stop()
         // Pause the mock data generation.
         mockNMEADataSource.stop()
+    }
+    
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            nmeaLocationDataSource = AGSNMEALocationDataSource(receiverSpatialReference: .wgs84())
+            nmeaLocationDataSource.locationChangeHandlerDelegate = self
+            mockNMEADataSource.delegate = self
+        case 1:
+            mockNMEADataSource.delegate = nil
+            if let accessory = EAAccessoryManager.shared().connectedAccessories.first(where: { $0.name == surveyorName }),
+               let dataSource = AGSNMEALocationDataSource(eaAccessory: accessory, protocol: protocolName) {
+                nmeaLocationDataSource = dataSource
+                nmeaLocationDataSource.locationChangeHandlerDelegate = self
+            } else {
+                // Reset to simulated data if no real device found.
+                presentAlert(message: "GNSS surveyor not found!")
+                sender.selectedSegmentIndex = 0
+                segmentedControlValueChanged(sender)
+            }
+        default:
+            return
+        }
     }
     
     // MARK: UIViewController
@@ -90,10 +124,8 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
             "DisplayDeviceLocationWithNMEADataSourcesViewController",
             "SimulatedNMEADataSource"
         ]
-        // Load NMEA location data source.
         startBarButtonItem.isEnabled = true
-        nmeaLocationDataSource.locationChangeHandlerDelegate = self
-        mockNMEADataSource.delegate = self
+        segmentedControlValueChanged(segmentedControl)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

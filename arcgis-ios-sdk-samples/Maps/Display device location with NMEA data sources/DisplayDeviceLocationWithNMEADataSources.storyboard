@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nk8-cN-fxr" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8tL-4E-K67" userLabel="Status View">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
@@ -43,12 +43,12 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Y8-SV-RLM">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem enabled="NO" title="Start" id="5zT-3j-ciE">
+                                    <barButtonItem enabled="NO" title="Source" id="Kal-xo-fKO">
                                         <connections>
-                                            <action selector="start" destination="p9V-jd-Z58" id="RJf-Gh-LQc"/>
+                                            <action selector="chooseDataSource:" destination="p9V-jd-Z58" id="8oI-HU-0F4"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="TJg-hg-TuR"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="XYW-L1-zEn"/>
                                     <barButtonItem enabled="NO" title="Recenter" id="cdd-nl-SbK">
                                         <connections>
                                             <action selector="recenter" destination="p9V-jd-Z58" id="pas-MH-MMt"/>
@@ -62,24 +62,6 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTv-iq-Qy3">
-                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" id="MKT-18-XdI">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="cYX-98-MIZ">
-                                            <rect key="frame" x="20" y="6" width="374" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="Simulated"/>
-                                                <segment title="Device"/>
-                                            </segments>
-                                            <connections>
-                                                <action selector="segmentedControlValueChanged:" destination="p9V-jd-Z58" eventType="valueChanged" id="VT2-xT-8az"/>
-                                            </connections>
-                                        </segmentedControl>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7Gx-7T-4Go"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
@@ -88,14 +70,11 @@
                             <constraint firstItem="7Gx-7T-4Go" firstAttribute="bottom" secondItem="0Y8-SV-RLM" secondAttribute="bottom" id="BKJ-zO-Dm4"/>
                             <constraint firstItem="8tL-4E-K67" firstAttribute="leading" secondItem="xJd-vV-Dsb" secondAttribute="leading" id="HZD-Ho-6ee"/>
                             <constraint firstItem="0Y8-SV-RLM" firstAttribute="trailing" secondItem="xJd-vV-Dsb" secondAttribute="trailing" id="LAJ-Yf-OrI"/>
-                            <constraint firstItem="sTv-iq-Qy3" firstAttribute="top" secondItem="Nk8-cN-fxr" secondAttribute="bottom" id="aj4-Us-rzp"/>
                             <constraint firstItem="Nk8-cN-fxr" firstAttribute="leading" secondItem="xJd-vV-Dsb" secondAttribute="leading" id="ePf-we-3hg"/>
-                            <constraint firstAttribute="trailing" secondItem="sTv-iq-Qy3" secondAttribute="trailing" id="ei6-MR-2pE"/>
                             <constraint firstItem="Nk8-cN-fxr" firstAttribute="top" secondItem="7Gx-7T-4Go" secondAttribute="top" id="f5b-hW-tFo"/>
                             <constraint firstAttribute="trailing" secondItem="8tL-4E-K67" secondAttribute="trailing" id="gTU-3g-C0m"/>
-                            <constraint firstItem="sTv-iq-Qy3" firstAttribute="bottom" secondItem="0Y8-SV-RLM" secondAttribute="top" id="iPT-GA-dct"/>
+                            <constraint firstItem="0Y8-SV-RLM" firstAttribute="top" secondItem="Nk8-cN-fxr" secondAttribute="bottom" id="hNN-sD-3AO"/>
                             <constraint firstItem="8tL-4E-K67" firstAttribute="top" secondItem="7Gx-7T-4Go" secondAttribute="top" id="uTi-o1-RqK"/>
-                            <constraint firstItem="sTv-iq-Qy3" firstAttribute="leading" secondItem="xJd-vV-Dsb" secondAttribute="leading" id="v7u-eY-e7i"/>
                             <constraint firstItem="0Y8-SV-RLM" firstAttribute="leading" secondItem="xJd-vV-Dsb" secondAttribute="leading" id="z9P-KW-ckr"/>
                         </constraints>
                     </view>
@@ -103,8 +82,7 @@
                         <outlet property="mapView" destination="Nk8-cN-fxr" id="7Z0-YC-DXR"/>
                         <outlet property="recenterBarButtonItem" destination="cdd-nl-SbK" id="ei0-C5-7DM"/>
                         <outlet property="resetBarButtonItem" destination="uae-tA-eHu" id="qte-mL-Xd9"/>
-                        <outlet property="segmentedControl" destination="cYX-98-MIZ" id="pDA-rR-9yM"/>
-                        <outlet property="startBarButtonItem" destination="5zT-3j-ciE" id="DoF-ii-8aH"/>
+                        <outlet property="sourceBarButtonItem" destination="Kal-xo-fKO" id="O08-iD-2uk"/>
                         <outlet property="statusLabel" destination="AuA-N5-5HY" id="7kD-Uz-jpu"/>
                     </connections>
                 </viewController>

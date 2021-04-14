@@ -6,9 +6,9 @@ Parse NMEA sentences and use the results to show device location on the map.
 
 ## Use case
 
-NMEA sentences can be retrieved from GPS receivers and parsed into a series of coordinates with additional information. Devices without a built-in GPS receiver can retrieve NMEA sentences by using a separate GPS dongle, commonly connected Bluetooth or through a serial port.
+NMEA sentences can be retrieved from GNSS/GPS receivers and parsed into a series of coordinates with additional information. Devices without a built-in GNSS receiver can retrieve NMEA sentences by using a separate GNSS dongle, commonly connected Bluetooth or through a serial port.
 
-The NMEA location data source allows for detailed interrogation of the information coming from the GPS receiver. For example, allowing you to report the number of satellites in view.
+The NMEA location data source allows for detailed interrogation of the information coming from the GNSS receiver. For example, allowing you to report the number of satellites in view.
 
 ## How to use the sample
 
@@ -34,7 +34,7 @@ Tap "Source" to choose between a simulated location data source and any data sou
 
 ## About the data
 
-A list of NMEA sentences is used to initialize a `SimulatedNMEADataSource` object. This simulated data source provides NMEA data periodically, and allows the sample to be used on devices without a GPS dongle that produces NMEA data.
+A list of NMEA sentences is used to initialize a `SimulatedNMEADataSource` object. This simulated data source provides NMEA data periodically, and allows the sample to be used on devices without a GNSS dongle that produces NMEA data.
 
 The route taken in this sample features a [2-minute driving trip around Redlands, CA](https://arcgis.com/home/item.html?id=d5bad9f4fee9483791e405880fb466da).
 

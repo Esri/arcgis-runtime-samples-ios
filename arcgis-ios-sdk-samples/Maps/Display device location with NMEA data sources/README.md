@@ -38,7 +38,7 @@ A list of NMEA sentences is used to initialize a `SimulatedNMEADataSource` objec
 
 The route taken in this sample features a [2-minute driving trip around Redlands, CA](https://arcgis.com/home/item.html?id=d5bad9f4fee9483791e405880fb466da).
 
-## Additional Information
+## Additional information
 
 To support GNSS device connection in an app, here are a few steps:
 

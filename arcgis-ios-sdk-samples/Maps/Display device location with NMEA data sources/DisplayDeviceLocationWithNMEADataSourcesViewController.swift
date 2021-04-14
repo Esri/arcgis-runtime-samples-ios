@@ -48,9 +48,19 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     
     /// An NMEA location data source, to parse NMEA data.
     var nmeaLocationDataSource: AGSNMEALocationDataSource?
+    /// A string to hold the latest satellite info.
+    var satelliteInfoText = "Satellites info will be shown here."
     /// A mock data source to read NMEA sentences from a local file, and generate
     /// mock NMEA data every fixed amount of time.
     let mockNMEADataSource = SimulatedNMEADataSource(nmeaSourceFile: Bundle.main.url(forResource: "Redlands", withExtension: "nmea")!, speed: 1.5)
+    /// A formatter for the accuracy distance string.
+    let distanceFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .naturalScale
+        formatter.numberFormatter.minimumFractionDigits = 1
+        formatter.numberFormatter.maximumFractionDigits = 1
+        return formatter
+    }()
     
     // MARK: Actions
     
@@ -123,7 +133,8 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         resetBarButtonItem.isEnabled = false
         sourceBarButtonItem.isEnabled = true
         // Reset the status text.
-        statusLabel.text = "Satellites info will be shown here."
+        statusLabel.text = "Location info will be shown here."
+        satelliteInfoText = "Satellites info will be shown here."
         // Reset and stop the location display.
         mapView.locationDisplay.autoPanModeChangedHandler = nil
         mapView.locationDisplay.autoPanMode = .off
@@ -165,6 +176,24 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: SimulatedNMEAD
 // MARK: AGSNMEALocationDataSourceDelegate
 
 extension DisplayDeviceLocationWithNMEADataSourcesViewController: AGSNMEALocationDataSourceDelegate {
+    func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
+        guard let nmeaLocation = location as? AGSNMEALocation else { return }
+        let horizontalAccuracy = Measurement(
+            value: nmeaLocation.horizontalAccuracy,
+            unit: UnitLength.meters
+        )
+        let verticalAccuracy = Measurement(
+            value: nmeaLocation.verticalAccuracy,
+            unit: UnitLength.meters
+        )
+        let accuracyText = String(
+            format: "Accuracy - Horizontal: %@; Vertical: %@",
+            distanceFormatter.string(from: horizontalAccuracy),
+            distanceFormatter.string(from: verticalAccuracy)
+        )
+        statusLabel.text = accuracyText + "\n" + satelliteInfoText
+    }
+    
     func nmeaLocationDataSource(_ NMEALocationDataSource: AGSNMEALocationDataSource, satellitesDidChange satellites: [AGSNMEASatelliteInfo]) {
         // Update the satellites info status text.
         let satelliteSystemsText = Set(satellites.map(\.system.label))
@@ -173,13 +202,12 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: AGSNMEALocatio
         let idText = satellites
             .map { String($0.satelliteID) }
             .joined(separator: ", ")
-        let statusText =
-            """
-            \(satellites.count) satellites in view
-            System(s): \(satelliteSystemsText)
-            IDs: \(idText)
-            """
-        statusLabel.text = statusText
+        satelliteInfoText = String(
+            format: "%d satellites in view\nSystem(s): %@\nIDs: %@",
+            satellites.count,
+            satelliteSystemsText,
+            idText
+        )
     }
 }
 

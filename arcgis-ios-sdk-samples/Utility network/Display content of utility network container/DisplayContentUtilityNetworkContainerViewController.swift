@@ -161,12 +161,12 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// - Parameters:
     ///   - layerResults: The layer results identified by the touch delegate.
     ///   - completion: A closure to pass back the feature that was tapped on.
-    func identifyContainerFeature(layerResults: [AGSIdentifyLayerResult], completion: @escaping (AGSArcGISFeature) -> Void) {
+    func identifyContainerFeature(layerResults: [AGSIdentifyLayerResult]) {
         // A map containing SubtypeFeatureLayer is expected to have features as part of its sublayer's result.
         let layerResult = layerResults.first(where: { $0.layerContent is AGSSubtypeFeatureLayer })
         layerResult?.sublayerResults.forEach { sublayerResult in
             guard let feature = sublayerResult.geoElements.first(where: { $0 is AGSArcGISFeature }) as? AGSArcGISFeature else { return }
-            completion(feature)
+            addElementAssociations(for: feature)
         }
     }
     
@@ -269,9 +269,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (layerResults, error) in
             guard let self = self else { return }
             if let layerResults = layerResults {
-                self.identifyContainerFeature(layerResults: layerResults) { containerFeature in
-                    self.addElementAssociations(for: containerFeature)
-                }
+                self.identifyContainerFeature(layerResults: layerResults)
             } else if let error = error {
                 self.presentAlert(error: error)
             }

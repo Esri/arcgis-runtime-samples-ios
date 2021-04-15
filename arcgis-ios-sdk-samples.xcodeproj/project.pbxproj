@@ -48,6 +48,8 @@
 		0069F4C225F0118200CA7BD2 /* CreateLoadReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */; };
 		007FC9482534E8AE00D8D9A1 /* darkmode.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9452534E8AE00D8D9A1 /* darkmode.css */; };
 		007FC9492534E8AE00D8D9A1 /* solarized-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9472534E8AE00D8D9A1 /* solarized-dark.css */; };
+		0083AA192628ED18003A28C8 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0083AA162628ED18003A28C8 /* ProgressViewController.xib */; };
+		0083AA1A2628ED18003A28C8 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AA172628ED18003A28C8 /* ProgressViewController.swift */; };
 		008D175224EEEEBD0001BB8F /* loudoun_anno.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */; settings = {ASSET_TAGS = (loudoun_anno, ); }; };
 		008D175724EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
 		008D175924EEF4390001BB8F /* EditWithBranchVersioning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */; };
@@ -1263,6 +1265,8 @@
 		007A4250256C7A400025F582 /* AppSecrets.swift.masque */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AppSecrets.swift.masque; path = "arcgis-ios-sdk-samples/AppSecrets.swift.masque"; sourceTree = "<group>"; };
 		007FC9452534E8AE00D8D9A1 /* darkmode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = darkmode.css; sourceTree = "<group>"; };
 		007FC9472534E8AE00D8D9A1 /* solarized-dark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "solarized-dark.css"; sourceTree = "<group>"; };
+		0083AA162628ED18003A28C8 /* ProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
+		0083AA172628ED18003A28C8 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWithBranchVersioningViewController.swift; sourceTree = "<group>"; };
 		008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditWithBranchVersioning.storyboard; sourceTree = "<group>"; };
@@ -1937,6 +1941,15 @@
 			path = "Create load report";
 			sourceTree = "<group>";
 		};
+		0083AA152628ED18003A28C8 /* Progress View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0083AA162628ED18003A28C8 /* ProgressViewController.xib */,
+				0083AA172628ED18003A28C8 /* ProgressViewController.swift */,
+			);
+			path = "Progress View Controller";
+			sourceTree = "<group>";
+		};
 		008D175024EEEEBD0001BB8F /* Geodatabases */ = {
 			isa = PBXGroup;
 			children = (
@@ -2434,6 +2447,7 @@
 				3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */,
 				C7760331217FAC9B0092D978 /* OptionsTableViewController.swift */,
 				C71288192183CA81007502A6 /* Color Picker */,
+				0083AA152628ED18003A28C8 /* Progress View Controller */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -4812,6 +4826,7 @@
 				092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */,
 				F1F62C4422E65E0900EFD599 /* militaryoverlay.geodatabase in Resources */,
 				3EBA254A1D300FB500AB0703 /* SimpleRenderer.storyboard in Resources */,
+				0083AA192628ED18003A28C8 /* ProgressViewController.xib in Resources */,
 				D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
 				3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */,
@@ -5440,6 +5455,7 @@
 				3EE692021B03D22500C167B8 /* Category.swift in Sources */,
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
 				E4477CBE20EC0CCD004E14F9 /* ListTransformationsViewController.swift in Sources */,
+				0083AA1A2628ED18003A28C8 /* ProgressViewController.swift in Sources */,
 				3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */,
 				12D66036226697320005DE8A /* GroupLayersViewController.swift in Sources */,
 				F1E4B11122D6AF5D005FDB4D /* ColormapRendererViewController.swift in Sources */,

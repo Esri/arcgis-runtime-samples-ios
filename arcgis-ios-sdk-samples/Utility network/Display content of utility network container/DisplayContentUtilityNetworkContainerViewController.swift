@@ -19,7 +19,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            AGSAuthenticationManager.shared().delegate = self
             makeMap()
             mapView.setViewpoint(AGSViewpoint(latitude: 41.801504, longitude: -88.163718, scale: 4e3))
         }
@@ -30,7 +29,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     
     /// A feature service for an electric utility network in Naperville, Illinois.
     let featureServiceURL = URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!
-    var utilityNetwork: AGSUtilityNetwork?
+    var utilityNetwork: AGSUtilityNetwork!
     let graphicsOverlay = AGSGraphicsOverlay()
     /// The default or previous viewpoint before entering the container view.
     var previousViewpoint: AGSViewpoint?
@@ -53,11 +52,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     )
     
     /// The data source for the legend table.
-        private var symbolsDataSource: SymbolsDataSource? {
-            didSet {
-                legendBarButtonItem.isEnabled = true
-            }
-        }
+        private var symbolsDataSource: SymbolsDataSource?
     
     /// The action that is prompted when exiting the container view.
     @IBAction func exitContainerView() {
@@ -112,20 +107,20 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         featureLayers.forEach { layer in
             legendGroup.enter()
             // Get the legend information of each layer.
-            layer.fetchLegendInfos { [weak self] (legendInfos, error) in
-                guard let self = self, let legendInfos = legendInfos else { return }
+            layer.fetchLegendInfos { [weak self] legendInfos, _ in
                 defer { legendGroup.leave() }
-                self.legendInfos.append(contentsOf: legendInfos)
-                if let error = error {
-                    self.presentAlert(error: error)
-                }
+                guard let legendInfos = legendInfos else { return }
+                self?.legendInfos.append(contentsOf: legendInfos)
             }
         }
         legendGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-            let featureLayerSymbols = self.legendInfos.reduce(into: [(String, AGSSymbol)]() ) { specifiedSymbols, legendInfo in
-                if !legendInfo.name.isEmpty, let symbol = legendInfo.symbol {
-                    specifiedSymbols.append((legendInfo.name, symbol))
+            let featureLayerSymbols: [(String, AGSSymbol)] = self.legendInfos.compactMap { legendInfo in
+                if !legendInfo.name.isEmpty,
+                   let symbol = legendInfo.symbol {
+                    return (legendInfo.name, symbol)
+                } else {
+                    return nil
                 }
             }
             let allSymbols: [(String, AGSSymbol)] = featureLayerSymbols +
@@ -134,6 +129,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                  ("Connectivity", self.connectivitySymbol.symbol)]
             self.makeSwatches(legend: allSymbols) { legendItems in
                 self.symbolsDataSource = SymbolsDataSource(legendItems: legendItems.sorted { $0.name < $1.name })
+                self.legendBarButtonItem.isEnabled = true
             }
         }
     }
@@ -150,12 +146,9 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             let symbol = symbolItem.1
             swatchGroup.enter()
             symbol.createSwatch(withBackgroundColor: nil, screen: .main) { image, _ in
-                if let image = image {
-                    defer { swatchGroup.leave() }
-                    legendItems.append(LegendItem(name: symbolItem.0, image: image))
-                } else {
-                    swatchGroup.leave()
-                }
+                defer { swatchGroup.leave() }
+                guard let image = image else { return }
+                legendItems.append(LegendItem(name: symbolItem.0, image: image))
             }
         }
         swatchGroup.notify(queue: .main) {
@@ -289,6 +282,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AGSAuthenticationManager.shared().delegate = self
         // Load the utility network.
         loadUtilityNetwork()
         // Add a graphics overlay.
@@ -296,7 +290,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         // Get the legends from the feature service.
         fetchLegendInfo()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayContentUtilityNetworkContainerViewController", "DisplayContentUtilityNetworkTableViewController"]
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayContentUtilityNetworkContainerViewController"]
     }
     
     // MARK: - Navigation

@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import Foundation
+
 protocol SimulatedNMEADataSourceDelegate: AnyObject {
     /// A mock delegate method to receive NMEA data updates.
     /// Replace it with the real one to receive NMEA sentences from a GPS dongle.

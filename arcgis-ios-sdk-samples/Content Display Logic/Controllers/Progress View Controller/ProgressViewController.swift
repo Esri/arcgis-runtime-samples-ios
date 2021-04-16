@@ -27,11 +27,11 @@ protocol GlobalProgressDisplayable {
 }
 
 extension GlobalProgressDisplayable {
-    func showProgressHUD(_ message: String, duration: TimeInterval? = nil) {
-        GlobalProgress.shared.showProgress(message, duration: duration, window: window, animated: true)
+    func showProgressHUD(message: String, duration: TimeInterval? = nil) {
+        GlobalProgress.shared.showProgress(message: message, duration: duration, window: window, animated: true)
     }
-    func showErrorHUD(_ error: Error, duration: TimeInterval = 2.0) {
-        GlobalProgress.shared.showProgress(error.localizedDescription, duration: duration, window: window, animated: false)
+    func showErrorHUD(error: Error, duration: TimeInterval = 2.0) {
+        GlobalProgress.shared.showProgress(message: error.localizedDescription, duration: duration, window: window, animated: false)
     }
     func hideProgressHUD() {
         GlobalProgress.shared.hideProgress()
@@ -47,77 +47,101 @@ private class GlobalProgress {
     
     private var timer: Timer?
     
-    func showProgress(_ message: String, duration: TimeInterval?, window: UIWindow?, animated: Bool) {
-        // Invalidate old timer, if one exists
-        timer?.invalidate()
-        timer = nil
-        // Update existing progress if already presented
+    func showProgress(message: String, duration: TimeInterval?, window: UIWindow?, animated: Bool) {
+        // Invalidate old timer, if one exists.
+        if let timer = timer {
+            timer.invalidate()
+            self.timer = nil
+        }
+        // Update existing progress if already presented.
         if let alertWindow = alertWindow {
-            (alertWindow.rootViewController as! PhantomViewController).progress.label.text = message
+            (alertWindow.rootViewController as! PhantomViewController).progressViewController.label.text = message
         } else {
             let progressWindow = UIWindow(frame: window?.frame ?? UIScreen.main.bounds)
-            let progress = ProgressViewController()
-            progress.loadViewIfNeeded()
-            progress.label.text = message
-            let phantom = PhantomViewController(progress)
+            let progressViewController = ProgressViewController()
+            progressViewController.loadViewIfNeeded()
+            progressViewController.label.text = message
+            let phantom = PhantomViewController(progressViewController: progressViewController)
             progressWindow.rootViewController = phantom
             progressWindow.windowLevel = .alert + 1
             progressWindow.makeKeyAndVisible()
             alertWindow = progressWindow
         }
-        // Create a timer to dismiss if a duration is set
+        // Create a timer to dismiss if a duration is set.
         if let duration = duration {
-            timer = Timer.scheduledTimer(
-                timeInterval: duration,
-                target: self,
-                selector: #selector(hideProgress),
-                userInfo: nil,
-                repeats: false
-            )
+            timer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [unowned self] _ in
+                self.timer = nil
+                self.hideProgress()
+            }
         }
     }
     
-    @objc
     func hideProgress() {
         guard let window = alertWindow,
               let phantom = window.rootViewController as? PhantomViewController
         else { return }
         
-        phantom.progress.dismiss(animated: true) {
-            self.alertWindow?.resignKey()
+        phantom.progressViewController.dismiss(animated: true) {
+            guard let alertWindow = self.alertWindow else { return }
+            alertWindow.resignKey()
             self.alertWindow = nil
         }
     }
 }
 
 private class ProgressViewController: UIViewController {
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var activityView: UIActivityIndicatorView!
+    @IBOutlet var label: UILabel!
+    @IBOutlet var activityView: UIActivityIndicatorView!
     
     init() {
         super.init(nibName: "ProgressViewController", bundle: Bundle.main)
+        view.backgroundColor = backgroundColor(for: traitCollection.userInterfaceStyle)
     }
     
+    @available(*, unavailable)
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        fatalError("init(nibName:bundle:) has not been implemented")
+    }
+    
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
-    override var prefersStatusBarHidden: Bool {
-        false
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        view.backgroundColor = backgroundColor(for: traitCollection.userInterfaceStyle)
+    }
+    
+    private func backgroundColor(for userInterfaceStyle: UIUserInterfaceStyle) -> UIColor {
+        let backgroundColor: UIColor
+        switch userInterfaceStyle {
+        case .dark:
+            backgroundColor = UIColor.black.withAlphaComponent(0.48)
+        default:
+            backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        }
+        return backgroundColor
     }
 }
 
 private class PhantomViewController: UIViewController {
-    let progress: ProgressViewController
+    let progressViewController: ProgressViewController
     
     // MARK: - Init
     
-    init(_ progress: ProgressViewController) {
-        self.progress = progress
+    init(progressViewController: ProgressViewController) {
+        self.progressViewController = progressViewController
         super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    @available(*, unavailable)
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        fatalError("init(nibName:bundle:) has not been implemented")
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -125,8 +149,8 @@ private class PhantomViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        progress.modalTransitionStyle = .crossDissolve
-        progress.modalPresentationStyle = .overFullScreen
-        present(progress, animated: true, completion: nil)
+        progressViewController.modalTransitionStyle = .crossDissolve
+        progressViewController.modalPresentationStyle = .overFullScreen
+        present(progressViewController, animated: true)
     }
 }

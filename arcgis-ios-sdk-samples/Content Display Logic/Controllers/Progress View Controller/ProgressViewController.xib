@@ -2,12 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProgressViewController" customModule="Demo_App" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProgressViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
             <connections>
                 <outlet property="activityView" destination="fuJ-0p-PJT" id="nm1-El-hjq"/>
                 <outlet property="label" destination="XQR-fN-MRY" id="fVR-4w-y1Z"/>
@@ -20,36 +21,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-xg-GVK">
-                    <rect key="frame" x="88" y="389.5" width="238.5" height="127.5"/>
+                    <rect key="frame" x="96" y="397.5" width="222.5" height="111.5"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tiG-wt-R88">
-                        <rect key="frame" x="0.0" y="0.0" width="238.5" height="127.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="222.5" height="111.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R2o-b6-Ljz">
-                                <rect key="frame" x="16" y="16" width="206.5" height="95.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="1K4-en-qgj">
+                                <rect key="frame" x="8" y="8" width="206.5" height="95.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="1K4-en-qgj">
-                                        <rect key="frame" x="0.0" y="0.0" width="206.5" height="95.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Presenting status of long-running process" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQR-fN-MRY">
-                                                <rect key="frame" x="0.0" y="0.0" width="206.5" height="42.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fuJ-0p-PJT">
-                                                <rect key="frame" x="0.0" y="58.5" width="206.5" height="37"/>
-                                            </activityIndicatorView>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Presenting status of long-running process" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQR-fN-MRY">
+                                        <rect key="frame" x="0.0" y="0.0" width="206.5" height="42.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fuJ-0p-PJT">
+                                        <rect key="frame" x="84.5" y="58.5" width="37" height="37"/>
+                                    </activityIndicatorView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="R2o-b6-Ljz" secondAttribute="trailing" constant="16" id="PwF-za-IED"/>
-                            <constraint firstAttribute="bottom" secondItem="R2o-b6-Ljz" secondAttribute="bottom" constant="16" id="Qsb-Vg-aCq"/>
-                            <constraint firstItem="R2o-b6-Ljz" firstAttribute="top" secondItem="tiG-wt-R88" secondAttribute="top" constant="16" id="Y2d-Q6-BI6"/>
-                            <constraint firstItem="R2o-b6-Ljz" firstAttribute="leading" secondItem="tiG-wt-R88" secondAttribute="leading" constant="16" id="z8T-qc-pYE"/>
+                            <constraint firstItem="1K4-en-qgj" firstAttribute="leading" secondItem="tiG-wt-R88" secondAttribute="leadingMargin" id="J3k-8q-do8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1K4-en-qgj" secondAttribute="trailing" id="doz-OU-X34"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="1K4-en-qgj" secondAttribute="bottom" id="gws-bO-855"/>
+                            <constraint firstItem="1K4-en-qgj" firstAttribute="top" secondItem="tiG-wt-R88" secondAttribute="topMargin" id="q9V-NV-RPf"/>
                         </constraints>
                     </view>
                     <constraints>
@@ -65,7 +61,6 @@
                 </visualEffectView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="3mk-xg-GVK" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="GBr-Tb-vn8"/>
                 <constraint firstItem="3mk-xg-GVK" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="no0-tm-KtD"/>

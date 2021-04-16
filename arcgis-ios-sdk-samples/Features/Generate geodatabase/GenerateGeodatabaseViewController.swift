@@ -110,13 +110,13 @@ class GenerateGeodatabaseViewController: UIViewController {
                     statusHandler: { (status: AGSJobStatus) in
                         SVProgressHUD.show(withStatus: status.statusString())
                     },
-                    completion: { [weak self] (object: AnyObject?, error: Error?) in
+                    completion: { [weak self] (geodatabase: AGSGeodatabase?, error: Error?) in
                         SVProgressHUD.dismiss()
                         
                         if let error = error {
                             self?.presentAlert(error: error)
                         } else {
-                            self?.generatedGeodatabase = object as? AGSGeodatabase
+                            self?.generatedGeodatabase = geodatabase
                             self?.displayLayersFromGeodatabase()
                         }
                         

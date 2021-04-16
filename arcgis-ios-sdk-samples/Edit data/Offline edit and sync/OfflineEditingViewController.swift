@@ -303,7 +303,7 @@ class OfflineEditingViewController: UIViewController {
         
         // Start the job.
         generateJob.start(statusHandler: { (status) in
-            UIApplication.shared.showProgressHUD(status.statusString())
+            UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (object, error) in
             UIApplication.shared.hideProgressHUD()
             
@@ -369,7 +369,7 @@ class OfflineEditingViewController: UIViewController {
         let syncJob = syncTask.syncJob(with: params, geodatabase: generatedGeodatabase)
         self.syncJob = syncJob
         syncJob.start(statusHandler: { (status) in
-            UIApplication.shared.showProgressHUD(status.statusString())
+            UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (_, error) in
             UIApplication.shared.hideProgressHUD()
             
@@ -410,7 +410,7 @@ class OfflineEditingViewController: UIViewController {
 
 extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        UIApplication.shared.showProgressHUD("Loading")
+        UIApplication.shared.showProgressHUD(message: "Loading")
         
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
             UIApplication.shared.hideProgressHUD()
@@ -482,7 +482,7 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
         // Sync changes if in service mode.
         if liveMode {
             // Tell the user edits are being saved int the background.
-            UIApplication.shared.showProgressHUD("Saving feature details...")
+            UIApplication.shared.showProgressHUD(message: "Saving feature details...")
             
             (feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (_, error) in
                 UIApplication.shared.hideProgressHUD()

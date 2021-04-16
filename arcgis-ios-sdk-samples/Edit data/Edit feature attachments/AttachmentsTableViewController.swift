@@ -26,7 +26,7 @@ class AttachmentsTableViewController: UITableViewController {
     
     private func loadAttachments() {
         // show progress hud
-        UIApplication.shared.showProgressHUD("Loading attachments")
+        UIApplication.shared.showProgressHUD(message: "Loading attachments")
         
         feature?.fetchAttachments { [weak self] (attachments: [AGSAttachment]?, error: Error?) in
             // dismiss progress hud
@@ -64,7 +64,7 @@ class AttachmentsTableViewController: UITableViewController {
     }
     
     private func downloadImage(for attachment: AGSAttachment) {
-        UIApplication.shared.showProgressHUD("Downloading attachment")
+        UIApplication.shared.showProgressHUD(message: "Downloading attachment")
         
         attachment.fetchData { [weak self] (data: Data?, error: Error?) in
             UIApplication.shared.hideProgressHUD()
@@ -131,7 +131,7 @@ class AttachmentsTableViewController: UITableViewController {
     @IBAction func doneAction() {
         if let table = feature?.featureTable as? AGSServiceFeatureTable {
             // show progress hud
-            UIApplication.shared.showProgressHUD("Applying edits")
+            UIApplication.shared.showProgressHUD(message: "Applying edits")
             
             table.applyEdits { [weak self] (_, error) in
                 // dismiss progress hud
@@ -157,7 +157,7 @@ class AttachmentsTableViewController: UITableViewController {
         }
         
         // show progress hud
-        UIApplication.shared.showProgressHUD("Adding attachment")
+        UIApplication.shared.showProgressHUD(message: "Adding attachment")
         
         feature?.addAttachment(withName: "Attachment.png", contentType: "png", data: pngData) { [weak self] (attachment: AGSAttachment?, error: Error?) in
             UIApplication.shared.hideProgressHUD()

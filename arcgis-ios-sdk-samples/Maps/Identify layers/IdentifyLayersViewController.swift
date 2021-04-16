@@ -69,7 +69,7 @@ class IdentifyLayersViewController: UIViewController, AGSGeoViewTouchDelegate {
     
     private func identifyLayers(_ screen: CGPoint) {
         // Show progress hud.
-        UIApplication.shared.showProgressHUD("Identifying")
+        UIApplication.shared.showProgressHUD(message: "Identifying")
         
         self.mapView.identifyLayers(atScreenPoint: screen, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { (results: [AGSIdentifyLayerResult]?, error: Error?) in
             // Dismiss progress hud.

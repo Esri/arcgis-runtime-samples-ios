@@ -233,7 +233,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
     
     // MARK: Perform Trace
     @IBAction func traceNetwork(_ sender: Any) {
-        UIApplication.shared.showProgressHUD("Running \(traceType.name.lowercased()) trace…")
+        UIApplication.shared.showProgressHUD(message: "Running \(traceType.name.lowercased()) trace…")
         let parameters = AGSUtilityTraceParameters(traceType: traceType.type, startingLocations: traceParameters.startingLocations)
         parameters.barriers.append(contentsOf: traceParameters.barriers)
         
@@ -259,7 +259,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
             
             self.clearSelection()
             
-            UIApplication.shared.showProgressHUD("Trace completed. Selecting features…")
+            UIApplication.shared.showProgressHUD(message: "Trace completed. Selecting features…")
             
             let groupedElements = Dictionary(grouping: elementTraceResult.elements) { $0.networkSource.name }
             

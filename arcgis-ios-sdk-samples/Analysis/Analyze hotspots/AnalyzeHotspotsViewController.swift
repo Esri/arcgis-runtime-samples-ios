@@ -71,7 +71,7 @@ class AnalyzeHotspotsViewController: UIViewController, HotspotSettingsViewContro
         // start job
         geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
             // show progress hud with job status
-            UIApplication.shared.showProgressHUD(status.statusString())
+            UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             // dismiss progress hud
             UIApplication.shared.hideProgressHUD()

@@ -92,7 +92,7 @@ class DisplayKMLViewController: UIViewController {
         mapView.map?.operationalLayers.add(kmlLayer)
         
         // Show the progress indicator
-        UIApplication.shared.showProgressHUD("Loading KML Layer")
+        UIApplication.shared.showProgressHUD(message: "Loading KML Layer")
         
         // This load call is not required, but it allows for error
         // feedback and progress indication

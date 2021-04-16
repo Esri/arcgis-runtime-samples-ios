@@ -85,7 +85,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         // Add raster layer as an operational layer to the map.
         map.operationalLayers.add(rasterLayer)
-        UIApplication.shared.showProgressHUD("Loading")
+        UIApplication.shared.showProgressHUD(message: "Loading")
         rasterLayer.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -118,7 +118,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         )
         mosaicRulePairs.forEach { name, rule in
             let action = UIAlertAction(title: name, style: .default) { _ in
-                UIApplication.shared.showProgressHUD("Loading mosaic rule")
+                UIApplication.shared.showProgressHUD(message: "Loading mosaic rule")
                 self.setStatus(message: "\(name) selected.")
                 self.imageServiceRaster.mosaicRule = rule
             }

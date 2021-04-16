@@ -120,7 +120,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     // MARK: - SaveAsViewControllerDelegate
     
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
-        UIApplication.shared.showProgressHUD("Saving")
+        UIApplication.shared.showProgressHUD(message: "Saving")
         
         // Set the initial viewpoint from map view.
         mapView.map?.initialViewpoint = mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)

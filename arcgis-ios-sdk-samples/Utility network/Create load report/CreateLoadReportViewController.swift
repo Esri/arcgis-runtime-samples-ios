@@ -63,7 +63,7 @@ class CreateLoadReportViewController: UIViewController {
     
     /// Load the utility network.
     func loadUtilityNetwork() {
-        UIApplication.shared.showProgressHUD("Loading utility network…")
+        UIApplication.shared.showProgressHUD(message: "Loading utility network…")
         // NOTE: Never hardcode login information in a production application.
         // This is done solely for the sake of the sample.
         utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
@@ -173,7 +173,7 @@ class CreateLoadReportViewController: UIViewController {
     }
     
     @IBAction func runBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        UIApplication.shared.showProgressHUD("Creating load report…")
+        UIApplication.shared.showProgressHUD(message: "Creating load report…")
         
         let traceGroup = DispatchGroup()
         var summaries = [AGSCodedValue: PhaseSummary]()

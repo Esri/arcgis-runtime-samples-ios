@@ -43,7 +43,7 @@ class FeatureCollectionLayerQueryViewController: UIViewController {
         queryParams.whereClause = "1=1"
         
         // show progress hud
-        UIApplication.shared.showProgressHUD("Querying")
+        UIApplication.shared.showProgressHUD(message: "Querying")
         
         // query feature from the table
         self.featureTable.queryFeatures(with: queryParams) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in

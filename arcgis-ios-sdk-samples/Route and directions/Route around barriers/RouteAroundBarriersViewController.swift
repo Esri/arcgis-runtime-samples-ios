@@ -121,7 +121,7 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.routeParameters.clearPolygonBarriers()
         self.routeParameters.setPolygonBarriers(barriers)
         
-        UIApplication.shared.showProgressHUD("Routing")
+        UIApplication.shared.showProgressHUD(message: "Routing")
         
         self.routeTask.solveRoute(with: self.routeParameters) { [weak self] (routeResult: AGSRouteResult?, error: Error?) in
             UIApplication.shared.hideProgressHUD()

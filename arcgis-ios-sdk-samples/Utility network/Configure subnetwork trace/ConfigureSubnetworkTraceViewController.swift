@@ -100,7 +100,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         }
         
         // Trace the utility network.
-        UIApplication.shared.showProgressHUD("Tracing…")
+        UIApplication.shared.showProgressHUD(message: "Tracing…")
         utilityNetwork.trace(with: parameters) { [weak self] (results, error) in
             UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }
@@ -145,7 +145,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         let tierName = "Medium Voltage Radial"
         
         // Load the utility network.
-        UIApplication.shared.showProgressHUD("Loading utility network…")
+        UIApplication.shared.showProgressHUD(message: "Loading utility network…")
         // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
         utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in

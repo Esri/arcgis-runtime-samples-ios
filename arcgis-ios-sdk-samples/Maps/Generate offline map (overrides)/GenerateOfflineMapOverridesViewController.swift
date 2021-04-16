@@ -223,7 +223,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         extentView.isHidden = true
         
         // show progress hud
-        UIApplication.shared.showProgressHUD("Getting default parameters")
+        UIApplication.shared.showProgressHUD(message: "Getting default parameters")
         
         // get the area outlined by the extent view
         let areaOfInterest = extentViewFrameToEnvelope()

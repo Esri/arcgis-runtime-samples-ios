@@ -44,7 +44,7 @@ class RelatedFeaturesViewController: UITableViewController {
         }
         
         // show progress hud
-        UIApplication.shared.showProgressHUD("Querying related features")
+        UIApplication.shared.showProgressHUD(message: "Querying related features")
         
         // keep for later use
         self.relationshipInfo = relationshipInfo
@@ -84,7 +84,7 @@ class RelatedFeaturesViewController: UITableViewController {
         feature.relate(to: self.originFeature)
         
         // show progress hud
-        UIApplication.shared.showProgressHUD("Adding feature")
+        UIApplication.shared.showProgressHUD(message: "Adding feature")
         
         // add new feature to related table
         relatedTable.add(feature) { [weak self] (error) in
@@ -106,7 +106,7 @@ class RelatedFeaturesViewController: UITableViewController {
         }
         
         // show progress hud
-        UIApplication.shared.showProgressHUD("Deleting feature")
+        UIApplication.shared.showProgressHUD(message: "Deleting feature")
         
         // delete feature from related table
         relatedTable.delete(feature) { [weak self] (error) in
@@ -128,7 +128,7 @@ class RelatedFeaturesViewController: UITableViewController {
         }
         
         // show progress hud
-        UIApplication.shared.showProgressHUD("Applying edits")
+        UIApplication.shared.showProgressHUD(message: "Applying edits")
         
         relatedTable.applyEdits { [weak self] (_, error) in
             UIApplication.shared.hideProgressHUD()

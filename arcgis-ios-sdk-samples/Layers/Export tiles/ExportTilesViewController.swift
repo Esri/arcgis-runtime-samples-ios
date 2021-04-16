@@ -131,7 +131,7 @@ class ExportTilesViewController: UIViewController {
         // Get and run the job.
         job = exportTask.exportTileCacheJob(with: parameters, downloadFileURL: downloadFileURL)
         job.start(statusHandler: { (status) in
-            UIApplication.shared.showProgressHUD(status.statusString())
+            UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (result, error) in
             UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }

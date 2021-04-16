@@ -59,7 +59,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     func applyEdits() {
         // show progress hud
-        UIApplication.shared.showProgressHUD("Applying edits")
+        UIApplication.shared.showProgressHUD(message: "Applying edits")
         
         (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (_, error) in
             UIApplication.shared.hideProgressHUD()

@@ -174,7 +174,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
             self.generateJob = generateGeodatabaseJob
             generateGeodatabaseJob.start(
                 statusHandler: { (status: AGSJobStatus) in
-                    UIApplication.shared.showProgressHUD(status.statusString()) // Show job status.
+                    UIApplication.shared.showProgressHUD(message: status.statusString()) // Show job status.
                 },
                 completion: { [weak self] (_, error: Error?) in
                     UIApplication.shared.hideProgressHUD()
@@ -212,7 +212,7 @@ class EditAndSyncFeaturesViewController: UIViewController {
         let syncGeodatabaseJob = geodatabaseSyncTask.syncJob(with: syncGeodatabaseParameters, geodatabase: geodatabase)
         self.syncJob = syncGeodatabaseJob
         syncGeodatabaseJob.start(statusHandler: { (status: AGSJobStatus) in
-            UIApplication.shared.showProgressHUD(status.statusString())
+            UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (_: [AGSSyncLayerResult]?, error: Error?) in
             UIApplication.shared.hideProgressHUD()
             if let error = error {

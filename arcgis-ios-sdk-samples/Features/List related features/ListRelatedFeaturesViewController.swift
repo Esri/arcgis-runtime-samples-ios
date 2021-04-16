@@ -79,7 +79,7 @@ class ListRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelega
         }
         
         // show progress hud
-        UIApplication.shared.showProgressHUD("Identifying feature")
+        UIApplication.shared.showProgressHUD(message: "Identifying feature")
         
         // identify features at the tapped location
         self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result: AGSIdentifyLayerResult) in
@@ -110,7 +110,7 @@ class ListRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelega
     // query for related features given the origin feature
     private func queryRelatedFeatures() {
         // show progress hud
-        UIApplication.shared.showProgressHUD("Querying related features")
+        UIApplication.shared.showProgressHUD(message: "Querying related features")
         
         // query for related features
         self.parksFeatureTable.queryRelatedFeatures(for: self.selectedPark) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in

@@ -56,7 +56,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         let feature = featureTable.createFeature(attributes: featureAttributes, geometry: normalizedGeometry)
         
         // show the progress hud
-        UIApplication.shared.showProgressHUD("Adding..")
+        UIApplication.shared.showProgressHUD(message: "Adding..")
         
         // add the feature to the feature table
         featureTable.add(feature) { [weak self] (error: Error?) in

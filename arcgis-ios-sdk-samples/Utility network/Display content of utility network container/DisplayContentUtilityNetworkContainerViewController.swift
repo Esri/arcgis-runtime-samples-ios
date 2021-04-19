@@ -52,7 +52,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     )
     
     /// The data source for the legend table.
-        private var symbolsDataSource: SymbolsDataSource?
+    private var symbolsDataSource: SymbolsDataSource?
     
     /// The action that is prompted when exiting the container view.
     @IBAction func exitContainerView() {
@@ -215,7 +215,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                     let symbol = (content.featureTable as? AGSArcGISFeatureTable)?.layerInfo?.drawingInfo?.renderer?.symbol(for: content)
                     self.graphicsOverlay.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
                 }
-                // The bounding box which defines the container view may be computed using the extent of the features it contains or centered around its geometry at the container's view scale.
+                // Set the bounding box which defines the container view may be computed using the extent of the features it contains or centered around its geometry at the container's view scale.
                 if contentFeatures.count == 1,
                    let point = (self.graphicsOverlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
                     self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in

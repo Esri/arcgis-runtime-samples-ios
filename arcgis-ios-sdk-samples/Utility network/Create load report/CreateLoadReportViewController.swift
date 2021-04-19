@@ -63,12 +63,12 @@ class CreateLoadReportViewController: UIViewController {
     
     /// Load the utility network.
     func loadUtilityNetwork() {
-        SVProgressHUD.show(withStatus: "Loading utility network…")
+        UIApplication.shared.showProgressHUD(message: "Loading utility network…")
         // NOTE: Never hardcode login information in a production application.
         // This is done solely for the sake of the sample.
         utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }
             guard error == nil else {
                 self.presentAlert(error: error!)
@@ -97,9 +97,9 @@ class CreateLoadReportViewController: UIViewController {
         // Set the default expression.
         initialExpression = traceConfiguration.traversability?.barriers as? AGSUtilityTraceConditionalExpression
         
-        // Create downstream trace parameters with function outputs.
+        // Create downstream trace parameters with elements and function outputs.
         let traceParameters = AGSUtilityTraceParameters(traceType: .downstream, startingLocations: [startingLocation])
-        traceParameters.resultTypes.append(.ags_value(with: .functionOutputs))
+        traceParameters.resultTypes = [.ags_value(with: .elements), .ags_value(with: .functionOutputs)]
         
         // The service category for counting total customers.
         if let serviceCategory = utilityNetwork.definition.categories.first(where: { $0.name == "ServicePoint" }),
@@ -173,7 +173,7 @@ class CreateLoadReportViewController: UIViewController {
     }
     
     @IBAction func runBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        SVProgressHUD.show(withStatus: "Creating load report…")
+        UIApplication.shared.showProgressHUD(message: "Creating load report…")
         
         let traceGroup = DispatchGroup()
         var summaries = [AGSCodedValue: PhaseSummary]()
@@ -208,7 +208,7 @@ class CreateLoadReportViewController: UIViewController {
         }
         // Reload the load report table when trace completes.
         traceGroup.notify(queue: .main) { [weak self] in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }
             self.summaries = summaries
             self.tableView.reloadSection(.included)

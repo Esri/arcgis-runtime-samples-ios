@@ -48,8 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Enable/disable touches based on settings.
         self.setTouchPref()
         
-        SVProgressHUD.setDefaultMaskType(.gradient)
-        
         // Uncomment the following line to set license key.
         // application.license()
         

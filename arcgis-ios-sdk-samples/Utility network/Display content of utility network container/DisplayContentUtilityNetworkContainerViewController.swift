@@ -216,7 +216,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                     self.graphicsOverlay.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
                 }
                 // The bounding box which defines the container view may be computed using the extent of the features it contains or centered around its geometry at the container's view scale.
-                var boundingBox: AGSGeometry?
                 if contentFeatures.count == 1,
                    let point = (self.graphicsOverlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
                     self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in
@@ -225,7 +224,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                         self.identifyAssociationsWithExtent(boundingBox: boundingBox)
                     }
                 } else {
-                    boundingBox = AGSGeometryEngine.bufferGeometry(self.graphicsOverlay.extent, byDistance: 0.05)
+                    let boundingBox = AGSGeometryEngine.bufferGeometry(self.graphicsOverlay.extent, byDistance: 0.05)
                     self.identifyAssociationsWithExtent(boundingBox: boundingBox!)
                 }
             } else if let error = error {

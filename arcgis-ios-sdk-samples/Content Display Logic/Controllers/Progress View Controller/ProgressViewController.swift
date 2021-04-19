@@ -113,7 +113,7 @@ private class ProgressViewController: UIViewController {
         view.backgroundColor = backgroundColor(for: traitCollection.userInterfaceStyle)
     }
     
-    private func backgroundColor(for userInterfaceStyle: UIUserInterfaceStyle) -> UIColor {
+    func backgroundColor(for userInterfaceStyle: UIUserInterfaceStyle) -> UIColor {
         let backgroundColor: UIColor
         switch userInterfaceStyle {
         case .dark:

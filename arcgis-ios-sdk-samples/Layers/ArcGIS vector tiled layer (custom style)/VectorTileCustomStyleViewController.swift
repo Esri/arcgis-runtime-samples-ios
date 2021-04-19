@@ -84,9 +84,9 @@ class VectorTileCustomStyleViewController: UIViewController {
         // Hold a strong reference to the job until it finishes.
         exportVectorTilesJob.start(
             statusHandler: { (status: AGSJobStatus) in
-                SVProgressHUD.show(withStatus: status.statusString())
+                UIApplication.shared.showProgressHUD(message: status.statusString())
             }, completion: { [weak self] result, error in
-                SVProgressHUD.dismiss()
+                UIApplication.shared.hideProgressHUD()
                 guard let self = self else { return }
                 // De-reference the job.
                 self.exportVectorTilesJob = nil

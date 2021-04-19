@@ -43,12 +43,12 @@ class FeatureCollectionLayerQueryViewController: UIViewController {
         queryParams.whereClause = "1=1"
         
         // show progress hud
-        SVProgressHUD.show(withStatus: "Querying")
+        UIApplication.shared.showProgressHUD(message: "Querying")
         
         // query feature from the table
         self.featureTable.queryFeatures(with: queryParams) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
             // hide progress hud
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             if let error = error {
                 // show error

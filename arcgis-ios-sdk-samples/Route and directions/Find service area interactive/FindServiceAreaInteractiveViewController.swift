@@ -149,12 +149,12 @@ class FindServiceAreaInteractiveViewController: UIViewController, AGSGeoViewTouc
         serviceAreaParameters.geometryAtOverlap = .dissolve
         
         // show progress hud
-        SVProgressHUD.show(withStatus: "Loading")
+        UIApplication.shared.showProgressHUD(message: "Loading")
         
         // solve for service area
         serviceAreaTask.solveServiceArea(with: serviceAreaParameters) { [weak self] (result: AGSServiceAreaResult?, error: Error?) in
             // dismiss progress hud
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             guard let self = self else {
                 return

@@ -90,6 +90,7 @@
 		00F953C524E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00F953C324E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard */; };
 		00F953C624E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */; };
 		00F953C724E34CCC00D16555 /* ApplyMosaicRuleToRastersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */; };
+		00FCD95E262E539F008629F3 /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = 00FCD95D262E539F008629F3 /* ArcGISToolkit */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */; };
@@ -1828,6 +1829,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00FCD95E262E539F008629F3 /* ArcGISToolkit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4630,6 +4632,9 @@
 			dependencies = (
 			);
 			name = "ArcGIS Runtime SDK Samples";
+			packageProductDependencies = (
+				00FCD95D262E539F008629F3 /* ArcGISToolkit */,
+			);
 			productName = "arcgis-ios-sdk-samples";
 			productReference = 3E23A9E01AFC28F6002E2214 /* ArcGIS Runtime SDK Samples.app */;
 			productType = "com.apple.product-type.application";
@@ -5710,6 +5715,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		00FCD95D262E539F008629F3 /* ArcGISToolkit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ArcGISToolkit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3E23A9D81AFC28F6002E2214 /* Project object */;
 }

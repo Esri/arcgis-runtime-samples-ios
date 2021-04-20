@@ -31,6 +31,19 @@ The ```main``` branch of this repository contains samples configured for the lat
 
 The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meaning that it can run on devices with *iOS 13.0* or newer.
 
+## Building samples using Swift Package Manager
+
+1. **Fork** and then **clone** the repository
+1. **Install** the ArcGIS Runtime SDK for iOS and ArcGIS Runtime Toolkit with Swift Package Manager
+    * Open your project in Xcode
+    * Go to File > Swift Packages > Add Package Dependency option
+    * Enter `https://github.com/Esri/arcgis-runtime-toolkit-ios` as the package repository URL
+    * Choose version 100.11.0 or a later version. Click Next. Only version 100.11.0 or newer supports Swift Package Manager.
+
+    > Note: The Toolkit Swift Package adds the ArcGIS SDK Swift Package as a dependency so no need to add both separately. If you already have the ArcGIS SDK Swift Package delete that and just add the Toolkit Swift Package.
+
+    > New to Swift Package Manager? Visit swift.org/package-manager/
+
 ## Building samples using installed SDK
 
 1. **Fork** and then **clone** the repository
@@ -38,15 +51,32 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meani
     >
     >`git clone --recursive [URL to Git repo]`
     >
-    > If you've already cloned the repo without the submodule, you can load the submodule using 
+    > If you've already cloned the repo without the submodule, you can load the submodule using
     >
     >`git submodule update --init`
+
+### Steps to set up the ArcGIS Runtime SDK Swift Package
+
 1. **Install** the ArcGIS Runtime SDK for iOS to a central location on your Mac as described [here](https://developers.arcgis.com/ios/get-started)
+1. **Download** the package repository for ArcGIS Runtime SDK for iOS [here](https://github.com/Esri/arcgis-runtime-ios), and extract it to `$HOME/arcgis-runtime-ios`
+1. Create a symbolic link to the ArcGIS Runtime SDK binary framework
+    > `ln -s $HOME/Library/SDKs/ArcGIS/Frameworks/ArcGIS.xcframework $HOME/arcgis-runtime-ios/ArcGIS.xcframework`
+1. Open the package manifest (Package.swift) for ArcGIS Runtime SDK
+    > Change target to
+    > `.binaryTarget(name: "ArcGIS", path: "ArcGIS.xcframework")`
+
+### Steps to set up ArcGIS Runtime Toolkit Swift Package
+
+1. **Open** the Toolkit's package manifest:
+    > Add `import FileProvider`
+    > Change dependency to
+    > `.package(name: "ArcGIS", path: "\(FileManager.default.homeDirectoryForCurrentUser.path)/arcgis-runtime-ios")`
+
 1. **Open** the `arcgis-ios-sdk-samples.xcodeproj` **project** file
 1. **Run** the `arcgis-ios-sdk-samples` app target
     > If you get the error message saying _"This Copy Files build phase contains a reference to a missing file 'ArcGISToolkit.framework'"_, you probably didn't clone the repo to include it's submodule. See Step 1 above.
 
-## Building samples with CocoaPods
+## Building samples using CocoaPods
 
 1. **Fork** and then **clone** the repository
 1. **Install** the ArcGIS Runtime SDK for iOS by running the `pod install` command in the folder where you cloned this repository

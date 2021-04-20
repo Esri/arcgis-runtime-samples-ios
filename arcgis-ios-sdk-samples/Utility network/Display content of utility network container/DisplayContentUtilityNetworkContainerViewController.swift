@@ -217,7 +217,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                 }
                 // Set the bounding box which defines the container view may be computed using the extent of the features it contains or centered around its geometry at the container's view scale.
                 if contentFeatures.count == 1,
-                   let point = (self.graphicsOverlay.graphics.firstObject as? AGSGraphic)?.geometry as? AGSPoint {
+                   let point = contentFeatures.first?.geometry as? AGSPoint {
                     self.mapView.setViewpointCenter(point, scale: containerElement.assetType.containerViewScale) { _ in
                         self.presentAlert(title: nil, message: "This feature contains no associations.")
                         guard let boundingBox = self.mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry else { return }

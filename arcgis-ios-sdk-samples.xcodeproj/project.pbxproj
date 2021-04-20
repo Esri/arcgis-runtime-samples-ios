@@ -41,6 +41,8 @@
 		003D25702513FBB5007527C2 /* ExchangeSetWithoutUpdates in Resources */ = {isa = PBXBuildFile; fileRef = 003D256F2513FBB5007527C2 /* ExchangeSetWithoutUpdates */; settings = {ASSET_TAGS = (ExchangeSetWithoutUpdates, ); }; };
 		003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */; };
 		005507FC25E48134003990D3 /* Redlands.nmea in Resources */ = {isa = PBXBuildFile; fileRef = 005507FB25E48134003990D3 /* Redlands.nmea */; settings = {ASSET_TAGS = (RedlandsNMEA, ); }; };
+		005B5270262E5B0800F044FE /* ArcGIS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005B526F262E5B0800F044FE /* ArcGIS.xcframework */; };
+		005B5271262E5B0800F044FE /* ArcGIS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 005B526F262E5B0800F044FE /* ArcGIS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -612,7 +614,6 @@
 		4C6FAE1A22F8A37D00BE2D0B /* ControlAnnotationSublayerVisibilityViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CE15D4B22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift */; };
 		4C6FAE1B22F8A38300BE2D0B /* ControlAnnotationSublayerVisibilitySublayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CE15D5222F380FB005F2968 /* ControlAnnotationSublayerVisibilitySublayersViewController.swift */; };
 		4C6FAE1C22F8A38700BE2D0B /* ControlAnnotationSublayerVisibilitySublayerCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C54BF2C22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift */; };
-		4C73C837211130E000B0F9C7 /* ArcGIS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C73C83421112B4300B0F9C7 /* ArcGIS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C783F3C2252D61200609B9C /* OpenMobileScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C783F3B2252D61200609B9C /* OpenMobileScene.storyboard */; };
 		4C783F3E2252D65A00609B9C /* OpenMobileSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C783F3D2252D65A00609B9C /* OpenMobileSceneViewController.swift */; };
 		4C783F3F2252D80B00609B9C /* OpenMobileSceneViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C783F3D2252D65A00609B9C /* OpenMobileSceneViewController.swift */; };
@@ -916,6 +917,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		005B5272262E5B0800F044FE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				005B5271262E5B0800F044FE /* ArcGIS.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3E03F0951B056DC40078EB36 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1200,17 +1212,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4C73C838211130E000B0F9C7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				4C73C837211130E000B0F9C7 /* ArcGIS.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -1236,6 +1237,7 @@
 		003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddENCExchangeSet.storyboard; sourceTree = "<group>"; };
 		003D256F2513FBB5007527C2 /* ExchangeSetWithoutUpdates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ExchangeSetWithoutUpdates; sourceTree = "<group>"; };
 		005507FB25E48134003990D3 /* Redlands.nmea */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redlands.nmea; sourceTree = "<group>"; };
+		005B526F262E5B0800F044FE /* ArcGIS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ArcGIS.xcframework; path = $HOME/arcgis-runtime-ios/ArcGIS.xcframework; sourceTree = "<absolute>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		0069F4BD25F0111D00CA7BD2 /* CreateLoadReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateLoadReport.storyboard; sourceTree = "<group>"; };
 		0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoadReportViewController.swift; sourceTree = "<group>"; };
@@ -1636,7 +1638,6 @@
 		4C66AAF62107C4F400EE6346 /* QueryMapImageSublayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryMapImageSublayer.storyboard; sourceTree = "<group>"; };
 		4C66AAF82107C50B00EE6346 /* QueryMapImageSublayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryMapImageSublayerViewController.swift; sourceTree = "<group>"; };
 		4C68A28A22DE9D3E0009F43C /* FileTypes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FileTypes.plist; sourceTree = "<group>"; };
-		4C73C83421112B4300B0F9C7 /* ArcGIS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ArcGIS.xcframework; path = $HOME/Library/SDKs/ArcGIS/Frameworks/ArcGIS.xcframework; sourceTree = "<absolute>"; };
 		4C783F3B2252D61200609B9C /* OpenMobileScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenMobileScene.storyboard; sourceTree = "<group>"; };
 		4C783F3D2252D65A00609B9C /* OpenMobileSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMobileSceneViewController.swift; sourceTree = "<group>"; };
 		4C783F412252DBAC00609B9C /* philadelphia.mspk */ = {isa = PBXFileReference; lastKnownFileType = file; path = philadelphia.mspk; sourceTree = "<group>"; };
@@ -1829,6 +1830,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005B5270262E5B0800F044FE /* ArcGIS.xcframework in Frameworks */,
 				00FCD95E262E539F008629F3 /* ArcGISToolkit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3837,7 +3839,7 @@
 		4C73C83321112AFF00B0F9C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4C73C83421112B4300B0F9C7 /* ArcGIS.xcframework */,
+				005B526F262E5B0800F044FE /* ArcGIS.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

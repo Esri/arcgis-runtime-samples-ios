@@ -267,10 +267,13 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         // Identify the top most feature that corresponds to the tapped point.
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 5, returnPopupsOnly: false) { [weak self] (layerResults, error) in
             guard let self = self else { return }
-            if let layerResults = layerResults {
+            if let layerResults = layerResults, !layerResults.isEmpty {
                 self.identifyContainerFeature(layerResults: layerResults)
-            } else if let error = error {
-                self.presentAlert(error: error)
+            } else {
+                if let error = error {
+                    self.presentAlert(error: error)
+                }
+                self.mapView.isUserInteractionEnabled = true
             }
         }
     }

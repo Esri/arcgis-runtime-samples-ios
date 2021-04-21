@@ -41,11 +41,9 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meani
 ## Building Samples Using CocoaPods
 
 1. **Fork** and then **clone** the repository
-1. **Open** the `arcgis-ios-sdk-samples.xcodeproj` **project** file
-1. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Swift Packages` tab, and **delete** the `arcgis-runtime-toolkit-ios` package. Then close the project file
-    > This Swift Package conflicts with CocoaPods and is only required when using the Swift Package Manager as described in the previous section
 1. **Install** the ArcGIS Runtime SDK for iOS by running the `pod install` command in the folder where you cloned this repository
 1. **Open** the `arcgis-ios-sdk-samples.xcworkspace` **workspace** file
+1. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Swift Packages` tab, and **delete** the `arcgis-runtime-toolkit-ios` package. (This Swift Package conflicts with CocoaPods and is only required when using the Swift Package Manager as described in the previous section)
 1. **Run** the `arcgis-ios-sdk-samples` app target
 
 ## Sample Data

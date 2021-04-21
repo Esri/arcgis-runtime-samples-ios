@@ -36,45 +36,13 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meani
 1. **Fork** and then **clone** the repository
 1. **Run** the `arcgis-ios-sdk-samples` app target
 
-> The project is configured to install the ArcGIS Runtime SDK for iOS and ArcGIS Runtime Toolkit with Swift Package Manager.
-> To add the Swift Packages to your project, follow the steps below
-
-* Open your project in Xcode
-* Go to File > Swift Packages > Add Package Dependency option
-* Enter `https://github.com/Esri/arcgis-runtime-toolkit-ios` as the package repository URL
-* Choose version 100.11.0 or a later version. Click Next. Only version 100.11.0 or newer supports Swift Package Manager.
-
-> Note: The Toolkit Swift Package adds the ArcGIS Runtime SDK Swift Package as a dependency, so there is no need to add both separately.
-> 
-> New to Swift Package Manager? Visit [here](https://swift.org/package-manager/)
-
-## Building Samples Using Manually Installed SDK
-
-1. **Install** the ArcGIS Runtime SDK for iOS to a central location on your Mac as described [here](https://developers.arcgis.com/ios/get-started)
-1. **Fork** and then **clone** the repository
-1. **Download** the package repository for ArcGIS Runtime SDK for iOS [here](https://github.com/Esri/arcgis-runtime-ios), and extract it to `$HOME/arcgis-runtime-ios`
-1. **Create** a symbolic link to the ArcGIS Runtime SDK binary framework
-    > `ln -s $HOME/Library/SDKs/ArcGIS/Frameworks/ArcGIS.xcframework $HOME/arcgis-runtime-ios/ArcGIS.xcframework`
-1. **Open** the package manifest (Package.swift) for ArcGIS Runtime SDK
-    > Change target to
-    > `.binaryTarget(name: "ArcGIS", path: "ArcGIS.xcframework")`
-1. **Download** the package repository for ArcGIS Runtime Toolkit for iOS [here](https://github.com/Esri/arcgis-runtime-toolkit-ios), and extract it to the project directory
-1. **Drag** the Toolkit's folder into the Project navigator
-    > This action adds your dependency’s Swift package as a local package to your project.
-1. **Open** the Toolkit's package manifest
-    > Add `import FileProvider`
-    >
-    > Change dependency to
-    > `.package(name: "ArcGIS", path: "\(FileManager.default.homeDirectoryForCurrentUser.path)/arcgis-runtime-ios")`
-1. **Open** the `arcgis-ios-sdk-samples.xcodeproj` **project** file
-1. **Run** the `arcgis-ios-sdk-samples` app target
-
-> For more information on setting up local Swift Packages, visit [here](https://developer.apple.com/documentation/swift_packages/editing_a_package_dependency_as_a_local_package)
+> To add the Swift Packages to your project, consult the [documentation](https://github.com/Esri/arcgis-runtime-toolkit-ios/#swift-package-manager) in the ArcGIS Runtime Toolkit repo.
 
 ## Building Samples Using CocoaPods
 
 1. **Fork** and then **clone** the repository
 1. **Install** the ArcGIS Runtime SDK for iOS by running the `pod install` command in the folder where you cloned this repository
+1. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Swift Packages` tab, and **delete** the `arcgis-runtime-toolkit-ios` package. (This Swift Package conflicts with CocoaPods and is only required when using the Swift Package Manager as described in the previous section)
 1. **Open** the `arcgis-ios-sdk-samples.xcworkspace` **workspace** file
 1. **Run** the `arcgis-ios-sdk-samples` app target
 

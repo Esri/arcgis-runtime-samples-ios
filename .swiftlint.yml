@@ -82,4 +82,3 @@ trailing_whitespace:
 
 excluded:
 - Pods
-- arcgis-runtime-toolkit-ios

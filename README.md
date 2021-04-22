@@ -38,7 +38,7 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meani
     > The project has been configured to use the Swift Package for ArcGIS Runtime iOS Toolkit. Xcode will automatically start downloading the latest toolkit, and in turn, the package for ArcGIS Runtime iOS SDK which the toolkit depends upon.
 1. **Run** the `arcgis-ios-sdk-samples` app target
 
-> To add the Swift Packages to your own projects, consult the documentation for the [ArcGIS Runtime iOS Toolkit](https://github.com/Esri/arcgis-runtime-toolkit-ios/#swift-package-manager) and [ArcGIS Runtime iOS SDK](https://github.com/Esri/arcgis-runtime-ios#instructions).
+> To add the Swift packages to your own projects, consult the documentation for the [ArcGIS Runtime iOS Toolkit](https://github.com/Esri/arcgis-runtime-toolkit-ios/#swift-package-manager) and [ArcGIS Runtime iOS SDK](https://github.com/Esri/arcgis-runtime-ios#instructions).
 
 ## Building Samples Using CocoaPods
 

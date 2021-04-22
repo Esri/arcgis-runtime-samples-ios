@@ -237,7 +237,7 @@ class DemoTouchManager {
         if let window = view.window {
             window.bringSubviewToFront(view)
         } else {
-            UIApplication.shared.keyWindow?.addSubview(view)
+            UIApplication.shared.windows.first(where: \.isKeyWindow)?.addSubview(view)
         }
         view.updateTouches(touches)
     }

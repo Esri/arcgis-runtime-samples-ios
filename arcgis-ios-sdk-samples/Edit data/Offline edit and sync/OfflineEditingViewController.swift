@@ -303,9 +303,9 @@ class OfflineEditingViewController: UIViewController {
         
         // Start the job.
         generateJob.start(statusHandler: { (status) in
-            SVProgressHUD.show(withStatus: status.statusString())
+            UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (object, error) in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             guard let self = self else {
                 return
@@ -369,9 +369,9 @@ class OfflineEditingViewController: UIViewController {
         let syncJob = syncTask.syncJob(with: params, geodatabase: generatedGeodatabase)
         self.syncJob = syncJob
         syncJob.start(statusHandler: { (status) in
-            SVProgressHUD.show(withStatus: status.statusString())
+            UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (_, error) in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             if let error = error {
                 self?.presentAlert(error: error)
@@ -410,10 +410,10 @@ class OfflineEditingViewController: UIViewController {
 
 extension OfflineEditingViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        SVProgressHUD.show(withStatus: "Loading")
+        UIApplication.shared.showProgressHUD(message: "Loading")
         
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResultsPerLayer: 10) { [weak self] (results: [AGSIdentifyLayerResult]?, error: Error?) in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             guard let self = self else {
                 return
@@ -482,10 +482,10 @@ extension OfflineEditingViewController: AGSPopupsViewControllerDelegate {
         // Sync changes if in service mode.
         if liveMode {
             // Tell the user edits are being saved int the background.
-            SVProgressHUD.show(withStatus: "Saving feature details...")
+            UIApplication.shared.showProgressHUD(message: "Saving feature details...")
             
             (feature.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (_, error) in
-                SVProgressHUD.dismiss()
+                UIApplication.shared.hideProgressHUD()
                 
                 if let error = error {
                     self?.presentAlert(error: error)

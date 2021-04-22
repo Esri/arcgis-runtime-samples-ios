@@ -44,42 +44,22 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         let searchBar = searchController.searchBar
         searchBar.autocapitalizationType = .none
         
-        if #available(iOS 13, *) {
-            // Change the backgroundColor to differentiate from nav bar color.
-            searchBar.searchTextField.backgroundColor = .tertiarySystemBackground
-            // Set the color of the insertion cursor as well as the text. The text is default to black color whereas the cursor is white.
-            searchBar.searchTextField.tintColor = .label
-        } else {
-            // This code is required to make the search bar look decent on iOS 12
-            // This does not work on iOS 13, where the search bar looks different.
-            // Different meaning - not as good as iOS 12 looks like with this fix,
-            // but at least acceptable and a bit better than what it would look like
-            // on 12 without this fix.
-            // Set the color of "Cancel" text, to mimic the settings on iOS 12. On iOS 13 it is default to white.
-            searchBar.tintColor = .white
-            
-            // find the text field to customize its appearance
-            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-                // set the color of the insertion cursor
-                textfield.tintColor = UIColor.darkText
-                if let backgroundview = textfield.subviews.first {
-                    backgroundview.backgroundColor = UIColor.white
-                    backgroundview.layer.cornerRadius = 12
-                    backgroundview.clipsToBounds = true
-                }
-            }
-        }
+        // Change the backgroundColor to differentiate from nav bar color.
+        searchBar.searchTextField.backgroundColor = .tertiarySystemBackground
+        // Set the color of the insertion cursor as well as the text.
+        // The text is default to black color whereas the cursor is white.
+        searchBar.searchTextField.tintColor = .label
         
         // embed the search bar under the title in the navigation bar
         navigationItem.searchController = searchController
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         

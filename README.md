@@ -31,35 +31,28 @@ The ```main``` branch of this repository contains samples configured for the lat
 
 The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meaning that it can run on devices with *iOS 13.0* or newer.
 
-## Building samples using installed SDK
+## Building Samples Using Swift Package Manager
 
 1. **Fork** and then **clone** the repository
-    > Make sure to use the "recursive" option to ensure you get the **ArcGIS Runtime Toolkit** submodule
-    >
-    >`git clone --recursive [URL to Git repo]`
-    >
-    > If you've already cloned the repo without the submodule, you can load the submodule using 
-    >
-    >`git submodule update --init`
-1. **Install** the ArcGIS Runtime SDK for iOS to a central location on your Mac as described [here](https://developers.arcgis.com/ios/get-started)
 1. **Open** the `arcgis-ios-sdk-samples.xcodeproj` **project** file
+    > The project has been configured to use the `arcgis-runtime-toolkit-ios` package, which provides the `ArcGISToolkit` framework as well as the `ArcGIS` framework.
 1. **Run** the `arcgis-ios-sdk-samples` app target
-    > If you get the error message saying _"This Copy Files build phase contains a reference to a missing file 'ArcGISToolkit.framework'"_, you probably didn't clone the repo to include it's submodule. See Step 1 above.
 
-## Building samples with CocoaPods
+> To add the Swift packages to your own projects, consult the documentation for the [ArcGIS Runtime iOS Toolkit](https://github.com/Esri/arcgis-runtime-toolkit-ios/#swift-package-manager) and [ArcGIS Runtime iOS SDK](https://github.com/Esri/arcgis-runtime-ios#instructions).
+
+## Building Samples Using CocoaPods
 
 1. **Fork** and then **clone** the repository
 1. **Install** the ArcGIS Runtime SDK for iOS by running the `pod install` command in the folder where you cloned this repository
 1. **Open** the `arcgis-ios-sdk-samples.xcworkspace` **workspace** file
-1. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Build Phases` tab, and **delete** the phases for `Embed Frameworks`. (This phase conflicts with CocoaPods and is only required when using the installed SDK as described in the previous section)
-1. **Select** the `ArcGISToolkit.xcodeproj` project node and **delete** it. (this project dependency conflicts with CocoaPods and is only required when using the installed SDK as described in the previous section)
+1. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Swift Packages` tab, and **delete** the `arcgis-runtime-toolkit-ios` package. This Swift package conflicts with CocoaPods and is only required when using the Swift Package Manager as described in the previous section.
 1. **Run** the `arcgis-ios-sdk-samples` app target
 
 ## Sample Data
 
 Some sample data is too large to store in the repository, so it is automatically downloaded at build time. The first time the app is built, a build script downloads the necessary data to `Portal Data`. The script only downloads data files that do not already exist, so subsequent builds will take significantly less time.
 
-## Configure app secrets
+## Configure App Secrets
 
 As a best-practices principle, the project conceals app secrets from source code by generating and compiling an `AppSecrets.swift` source code file at build time using a custom build rule.
 

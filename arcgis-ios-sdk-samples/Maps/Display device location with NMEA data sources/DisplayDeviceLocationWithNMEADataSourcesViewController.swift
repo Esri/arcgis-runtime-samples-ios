@@ -64,28 +64,42 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     
     // MARK: Actions
     
+    /// The Bluetooth accessory picker dismissed with no error.
+    func accessoryPickerDidDisappear() {
+        for accessory in EAAccessoryManager.shared().connectedAccessories {
+            // The protocol string to establish the EASession.
+            guard let protocolString = accessory.protocolStrings.first(where: { supportedProtocolStrings.contains($0) }) else {
+                // Skip any device which protocol is not included in the plist.
+                // This typically shouldn't happen, unless the device requires
+                // additional configuration.
+                continue
+            }
+            // Only read from the first supported accessory.
+            nmeaLocationDataSource = AGSNMEALocationDataSource(eaAccessory: accessory, protocol: protocolString)
+            nmeaLocationDataSource?.locationChangeHandlerDelegate = self
+            start()
+            break
+        }
+    }
+    
     @IBAction func chooseDataSource(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(
             title: "Choose an NMEA data source.",
             message: nil,
             preferredStyle: .actionSheet
         )
-        // Populate from connected GNSS surveyor devices.
-        EAAccessoryManager.shared().connectedAccessories.forEach { accessory in
-            // The protocol string to establish the EASession.
-            guard let protocolString = accessory.protocolStrings.first(where: { supportedProtocolStrings.contains($0) }) else {
-                // Skip any device which protocol is not included in the plist.
-                // This typically shouldn't happen, unless the device requires
-                // additional configuration.
-                return
+        // Add real data source to the options.
+        let realDataSourceAction = UIAlertAction(title: "Device", style: .default) { [self] _ in
+            // Displays an alert to pair the device with a Bluetooth accessory.
+            EAAccessoryManager.shared().showBluetoothAccessoryPicker(withNameFilter: nil) { error in
+                if let error = error {
+                    presentAlert(error: error)
+                } else {
+                    accessoryPickerDidDisappear()
+                }
             }
-            let action = UIAlertAction(title: accessory.name, style: .default) { [self] _ in
-                nmeaLocationDataSource = AGSNMEALocationDataSource(eaAccessory: accessory, protocol: protocolString)
-                nmeaLocationDataSource?.locationChangeHandlerDelegate = self
-                start()
-            }
-            alertController.addAction(action)
         }
+        alertController.addAction(realDataSourceAction)
         // Add mock data source to the options.
         let mockDataSourceAction = UIAlertAction(title: "Mock Data", style: .default) { [self] _ in
             nmeaLocationDataSource = AGSNMEALocationDataSource(receiverSpatialReference: .wgs84())

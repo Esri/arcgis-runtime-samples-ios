@@ -44,7 +44,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     /// The route tracker for navigation. Use delegate methods to update tracking status.
     var routeTracker: AGSRouteTracker!
     /// The parameters of the route tracker.
-    var routeParameters: AGSRouteParameters?
+    var routeParameters: AGSRouteParameters!
     /// A list to keep track of directions solved by the route task.
     var directionManeuvers: [AGSDirectionManeuver] = []
     /// The graphic (with a dashed line symbol) to represent the route ahead.
@@ -168,7 +168,8 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     func makeRouteTracker(result: AGSRouteResult) -> AGSRouteTracker {
         let tracker = AGSRouteTracker(routeResult: result, routeIndex: 0, skipCoincidentStops: true)!
         if routeTask.routeTaskInfo().supportsRerouting {
-            tracker.enableRerouting(with: routeTask, routeParameters: routeParameters!, strategy: .toNextWaypoint, visitFirstStopOnStart: false) { error in
+            let reroutingParameters = AGSReroutingParameters(routeTask: routeTask, routeParameters: routeParameters)!
+            tracker.enableRerouting(with: reroutingParameters) { error in
                 if let error = error {
                     self.presentAlert(error: error)
                 }

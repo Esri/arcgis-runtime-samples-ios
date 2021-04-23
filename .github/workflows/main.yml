@@ -2,11 +2,11 @@
 name: README and metadata formatting
 
 # Controls when the action will run.
-# Below triggers the workflow on pull requests to `master` or `v.next` branch.
+# Below triggers the workflow on pull requests to `main` or `v.next` branch.
 on:
   pull_request:
     branches:
-      - master
+      - main
       - v.next
 
 # A workflow run is made up of one or more jobs that can run sequentially or

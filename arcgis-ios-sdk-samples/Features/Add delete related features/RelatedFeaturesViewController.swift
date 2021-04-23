@@ -44,7 +44,7 @@ class RelatedFeaturesViewController: UITableViewController {
         }
         
         // show progress hud
-        SVProgressHUD.show(withStatus: "Querying related features")
+        UIApplication.shared.showProgressHUD(message: "Querying related features")
         
         // keep for later use
         self.relationshipInfo = relationshipInfo
@@ -58,7 +58,7 @@ class RelatedFeaturesViewController: UITableViewController {
         // query for species related to the selected park
         self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
             // dismiss progress hud
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             if let error = error {
                 self?.presentAlert(error: error)
@@ -84,11 +84,11 @@ class RelatedFeaturesViewController: UITableViewController {
         feature.relate(to: self.originFeature)
         
         // show progress hud
-        SVProgressHUD.show(withStatus: "Adding feature")
+        UIApplication.shared.showProgressHUD(message: "Adding feature")
         
         // add new feature to related table
         relatedTable.add(feature) { [weak self] (error) in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             if let error = error {
                 self?.presentAlert(error: error)
@@ -106,11 +106,11 @@ class RelatedFeaturesViewController: UITableViewController {
         }
         
         // show progress hud
-        SVProgressHUD.show(withStatus: "Deleting feature")
+        UIApplication.shared.showProgressHUD(message: "Deleting feature")
         
         // delete feature from related table
         relatedTable.delete(feature) { [weak self] (error) in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             if let error = error {
                 self?.presentAlert(error: error)
@@ -128,10 +128,10 @@ class RelatedFeaturesViewController: UITableViewController {
         }
         
         // show progress hud
-        SVProgressHUD.show(withStatus: "Applying edits")
+        UIApplication.shared.showProgressHUD(message: "Applying edits")
         
         relatedTable.applyEdits { [weak self] (_, error) in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             if let error = error {
                 // show error

@@ -83,12 +83,12 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         newFeature.geometry = point
         
         // show progress hud
-        SVProgressHUD.show(withStatus: "Adding Feature")
+        UIApplication.shared.showProgressHUD(message: "Adding Feature")
         
         // add the new feature to the feature collection table
         featureCollectionTable.add(newFeature) { [weak self] (error: Error?) in
             // dismiss progress hud
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             if let error = error {
                 // show error
@@ -114,10 +114,10 @@ class ViewshedGeoprocessingViewController: UIViewController, AGSGeoViewTouchDele
         // start the job
         geoprocessingJob.start(statusHandler: { (status: AGSJobStatus) in
             // show progress hud with job status
-            SVProgressHUD.show(withStatus: status.statusString())
+            UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (result: AGSGeoprocessingResult?, error: Error?) in
             // dismiss progress hud
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             guard let self = self else {
                 return

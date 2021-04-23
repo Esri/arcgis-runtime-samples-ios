@@ -59,10 +59,10 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     func applyEdits() {
         // show progress hud
-        SVProgressHUD.show(withStatus: "Applying edits")
+        UIApplication.shared.showProgressHUD(message: "Applying edits")
         
         (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (_, error) in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             
             if let error = error {
                 self?.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")

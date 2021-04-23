@@ -191,7 +191,10 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: AGSNMEALocatio
             distanceFormatter.string(from: horizontalAccuracy),
             distanceFormatter.string(from: verticalAccuracy)
         )
-        statusLabel.text = accuracyText + "\n" + satelliteInfoText
+        statusLabel.text = """
+        \(accuracyText)
+        \(satelliteInfoText)
+        """
     }
     
     func nmeaLocationDataSource(_ NMEALocationDataSource: AGSNMEALocationDataSource, satellitesDidChange satellites: [AGSNMEASatelliteInfo]) {
@@ -203,7 +206,11 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: AGSNMEALocatio
             .map { String($0.satelliteID) }
             .joined(separator: ", ")
         satelliteInfoText = String(
-            format: "%d satellites in view\nSystem(s): %@\nIDs: %@",
+            format: """
+            %d satellites in view
+            System(s): %@
+            IDs: %@
+            """,
             satellites.count,
             satelliteSystemsText,
             idText

@@ -44,7 +44,7 @@ To support GNSS device connection in an app, here are a few steps:
 
 * Enable Bluetooth connection in the device settings or connect via cable connection.
 * Refer to the device manufacturer's documentation to get its protocol string and add the protocol to the app’s `Info.plist` under the `UISupportedExternalAccessoryProtocols` key.
-* When working with any MFi accessory, the end user must register their iOS app with the accessory manufacturer first to whitelist their app before submitting it to the AppStore for approval. This is a requirement by Apple and stated in the iOS Developer Program License Agreement.
+* When working with any MFi accessory, the end user must register their iOS app with the accessory manufacturer first to whitelist their app before submitting it to the App Store for approval. This is a requirement by Apple and stated in the iOS Developer Program License Agreement.
 
 Please read Apple's documentation below for further details.
 

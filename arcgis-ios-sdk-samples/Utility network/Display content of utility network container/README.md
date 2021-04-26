@@ -21,12 +21,12 @@ Tap on a container feature to show all features inside the container.  The conta
 5. Identify the tapped feature and create an `AGSUtilityElement` from it.
 6. Get the associations for this element using `AGSUtilityNetwork.associations(with:completion:)`.
 7. Turn-off the visibility of all of the map's `operationalLayers`.
-8. Get the features for the `AGSUtilityElement`(s) from the associations using `AGSUtilityNetwork.features(for:completion:)`
+8. Get the features for the `AGSUtilityElement`(s) from the associations using `AGSUtilityNetwork.features(for:completion:)`.
 9. Add an `AGSGraphic` with the same geometry and symbol as these features.
 10. Add another `AGSGraphic` that represents this extent and zoom to this extent with some buffer.
-11. Get associations for this extent using `AGSUtilityNetwork.associations(withExtent:completion:)`
+11. Get associations for this extent using `AGSUtilityNetwork.associations(withExtent:completion:)`.
 12. Add an `AGSGraphic` to represent the association geometry between them using a symbol that distinguishes between `attachment` and `connectivity` association type.
-13. Turn-on the visibility of all `operationalLayers`, clear the `AGSGraphics` and zoom out to previous extent to exit container view.
+13. Turn-on the visibility of all `operationalLayers`, clear the `AGSGraphic` objects, and zoom out to previous extent to exit container view.
 
 ## Relevant API
 

@@ -23,11 +23,7 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
     @IBOutlet var toolbarTitleButton: UIBarButtonItem! {
         didSet {
             if filenames.count <= 1 {
-                if #available(iOS 13.0, *) {
-                    toolbarTitleButton.tintColor = UIColor.label
-                } else {
-                    toolbarTitleButton.tintColor = UIColor.black
-                }
+                toolbarTitleButton.tintColor = .label
             }
             toolbarTitleButton.possibleTitles = Set(filenames)
         }

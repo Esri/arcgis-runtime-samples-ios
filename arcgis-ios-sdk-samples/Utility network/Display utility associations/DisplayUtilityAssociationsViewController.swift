@@ -143,13 +143,8 @@ class DisplayUtilityAssociationsViewController: UIViewController {
             let connectivityBBI = UIBarButtonItem(image: connectivityImage, style: .plain, target: nil, action: nil)
             let attachmentLabel = UIBarButtonItem(title: "Attachment", style: .plain, target: nil, action: nil)
             let connectivityLabel = UIBarButtonItem(title: "Connectivity", style: .plain, target: nil, action: nil)
-            if #available(iOS 13.0, *) {
-                attachmentLabel.tintColor = .label
-                connectivityLabel.tintColor = .label
-            } else {
-                attachmentLabel.tintColor = .black
-                connectivityLabel.tintColor = .black
-            }
+            attachmentLabel.tintColor = .label
+            connectivityLabel.tintColor = .label
             let fixedSpace1 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             let fixedSpace2 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             let flexibleSpace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

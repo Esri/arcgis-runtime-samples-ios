@@ -19,7 +19,9 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            makeMap()
+            mapView.map = AGSMap(
+                url: URL(string: "https://sampleserver7.arcgisonline.com/portal/home/item.html?id=813eda749a9444e4a9d833a4db19e1c8")!
+            )
             mapView.setViewpoint(AGSViewpoint(latitude: 41.801504, longitude: -88.163718, scale: 4e3))
         }
     }
@@ -71,15 +73,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                 self?.mapView.isUserInteractionEnabled = true
             }
         }
-    }
-    
-    /// Create a map.
-    ///
-    /// - Returns: An `AGSMap` object.
-    func makeMap() {
-        let webMapURL = URL(string: "https://sampleserver7.arcgisonline.com/portal/home/item.html?id=813eda749a9444e4a9d833a4db19e1c8")!
-        let map = AGSMap(url: webMapURL)
-        mapView.map = map
     }
     
     /// Create and load the utility network using the feature service URL.

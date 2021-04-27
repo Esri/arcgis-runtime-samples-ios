@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8tL-4E-K67" userLabel="Status View">
-                                <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="41"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accuracy info will be shown here." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-N5-5HY">
                                         <rect key="frame" x="20" y="0.0" width="374" height="20.5"/>
@@ -43,7 +43,7 @@
                                     <constraint firstItem="AuA-N5-5HY" firstAttribute="trailing" secondItem="8tL-4E-K67" secondAttribute="trailingMargin" id="KNU-0K-aM8"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="18n-Ym-Ezn" secondAttribute="trailing" id="WHz-Kx-SY0"/>
                                     <constraint firstItem="AuA-N5-5HY" firstAttribute="leading" secondItem="8tL-4E-K67" secondAttribute="leadingMargin" id="WqK-hR-BZJ"/>
-                                    <constraint firstItem="AuA-N5-5HY" firstAttribute="bottom" secondItem="8tL-4E-K67" secondAttribute="bottom" id="cEp-ea-ZbS"/>
+                                    <constraint firstItem="18n-Ym-Ezn" firstAttribute="bottom" secondItem="8tL-4E-K67" secondAttribute="bottom" id="fHs-AW-qrh"/>
                                     <constraint firstItem="AuA-N5-5HY" firstAttribute="top" secondItem="8tL-4E-K67" secondAttribute="top" id="hGl-Zo-qSF"/>
                                     <constraint firstItem="18n-Ym-Ezn" firstAttribute="leading" secondItem="8tL-4E-K67" secondAttribute="leadingMargin" id="q55-3H-CNg"/>
                                     <constraint firstItem="18n-Ym-Ezn" firstAttribute="top" secondItem="AuA-N5-5HY" secondAttribute="bottom" id="tYj-Wz-2Dw"/>

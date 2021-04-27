@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p9V-jd-Z58">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p9V-jd-Z58">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -24,8 +24,14 @@
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8tL-4E-K67" userLabel="Status View">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location info will be shown here." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-N5-5HY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accuracy info will be shown here." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-N5-5HY">
                                         <rect key="frame" x="20" y="0.0" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satellites info will be shown here." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18n-Ym-Ezn">
+                                        <rect key="frame" x="20" y="20.5" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -35,9 +41,12 @@
                                 <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <constraints>
                                     <constraint firstItem="AuA-N5-5HY" firstAttribute="trailing" secondItem="8tL-4E-K67" secondAttribute="trailingMargin" id="KNU-0K-aM8"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="18n-Ym-Ezn" secondAttribute="trailing" id="WHz-Kx-SY0"/>
                                     <constraint firstItem="AuA-N5-5HY" firstAttribute="leading" secondItem="8tL-4E-K67" secondAttribute="leadingMargin" id="WqK-hR-BZJ"/>
                                     <constraint firstItem="AuA-N5-5HY" firstAttribute="bottom" secondItem="8tL-4E-K67" secondAttribute="bottom" id="cEp-ea-ZbS"/>
                                     <constraint firstItem="AuA-N5-5HY" firstAttribute="top" secondItem="8tL-4E-K67" secondAttribute="top" id="hGl-Zo-qSF"/>
+                                    <constraint firstItem="18n-Ym-Ezn" firstAttribute="leading" secondItem="8tL-4E-K67" secondAttribute="leadingMargin" id="q55-3H-CNg"/>
+                                    <constraint firstItem="18n-Ym-Ezn" firstAttribute="top" secondItem="AuA-N5-5HY" secondAttribute="bottom" id="tYj-Wz-2Dw"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Y8-SV-RLM">
@@ -79,11 +88,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accuracyStatusLabel" destination="AuA-N5-5HY" id="7kD-Uz-jpu"/>
                         <outlet property="mapView" destination="Nk8-cN-fxr" id="7Z0-YC-DXR"/>
                         <outlet property="recenterBarButtonItem" destination="cdd-nl-SbK" id="ei0-C5-7DM"/>
                         <outlet property="resetBarButtonItem" destination="uae-tA-eHu" id="qte-mL-Xd9"/>
+                        <outlet property="satelliteStatusLabel" destination="18n-Ym-Ezn" id="Pen-IC-cfe"/>
                         <outlet property="sourceBarButtonItem" destination="Kal-xo-fKO" id="O08-iD-2uk"/>
-                        <outlet property="statusLabel" destination="AuA-N5-5HY" id="7kD-Uz-jpu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTI-cV-c5e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

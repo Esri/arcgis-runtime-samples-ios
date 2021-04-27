@@ -24,8 +24,10 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
             mapView.map = AGSMap(basemapStyle: .arcGISNavigation)
         }
     }
+    /// The label to display accuracy info.
+    @IBOutlet var accuracyStatusLabel: UILabel!
     /// The label to display satellites info.
-    @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var satelliteStatusLabel: UILabel!
     /// The button to choose a data source and start the demo.
     @IBOutlet var sourceBarButtonItem: UIBarButtonItem!
     /// The button to reset pan mode to "recenter".
@@ -37,19 +39,15 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     
     /// The protocols specified in the `Info.plist` that the app uses to
     /// communicate with external accessory hardware.
-    let supportedProtocolStrings: [String] = {
-        guard let protocols = Bundle.main.object(forInfoDictionaryKey: "UISupportedExternalAccessoryProtocols") as? [String] else {
-            return []
-        }
-        return protocols
-    }()
+    let supportedProtocolStrings: Set<String> = Bundle.main
+        .object(forInfoDictionaryKey: "UISupportedExternalAccessoryProtocols")
+        .flatMap { $0 as? [String] }
+        .map(Set.init) ?? []
     
     // MARK: Instance properties
     
     /// An NMEA location data source, to parse NMEA data.
     var nmeaLocationDataSource: AGSNMEALocationDataSource?
-    /// A string to hold the latest satellite info.
-    var satelliteInfoText = "Satellites info will be shown here."
     /// A mock data source to read NMEA sentences from a local file, and generate
     /// mock NMEA data every fixed amount of time.
     let mockNMEADataSource = SimulatedNMEADataSource(nmeaSourceFile: Bundle.main.url(forResource: "Redlands", withExtension: "nmea")!, speed: 1.5)
@@ -147,8 +145,8 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         resetBarButtonItem.isEnabled = false
         sourceBarButtonItem.isEnabled = true
         // Reset the status text.
-        statusLabel.text = "Location info will be shown here."
-        satelliteInfoText = "Satellites info will be shown here."
+        accuracyStatusLabel.text = "Accuracy info will be shown here."
+        satelliteStatusLabel.text = "Satellites info will be shown here."
         // Reset and stop the location display.
         mapView.locationDisplay.autoPanModeChangedHandler = nil
         mapView.locationDisplay.autoPanMode = .off
@@ -205,10 +203,7 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: AGSNMEALocatio
             distanceFormatter.string(from: horizontalAccuracy),
             distanceFormatter.string(from: verticalAccuracy)
         )
-        statusLabel.text = """
-        \(accuracyText)
-        \(satelliteInfoText)
-        """
+        accuracyStatusLabel.text = accuracyText
     }
     
     func nmeaLocationDataSource(_ NMEALocationDataSource: AGSNMEALocationDataSource, satellitesDidChange satellites: [AGSNMEASatelliteInfo]) {
@@ -219,7 +214,7 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: AGSNMEALocatio
         let idText = satellites
             .map { String($0.satelliteID) }
             .joined(separator: ", ")
-        satelliteInfoText = String(
+        satelliteStatusLabel.text = String(
             format: """
             %d satellites in view
             System(s): %@

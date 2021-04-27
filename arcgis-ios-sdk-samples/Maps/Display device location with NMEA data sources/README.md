@@ -6,7 +6,7 @@ Parse NMEA sentences and use the results to show device location on the map.
 
 ## Use case
 
-NMEA sentences can be retrieved from GNSS/GPS receivers and parsed into a series of coordinates with additional information. Devices without a built-in GNSS receiver can retrieve NMEA sentences by using a separate GNSS dongle, commonly connected through Bluetooth or a serial port.
+NMEA sentences can be retrieved from GNSS/GPS receivers and parsed into a series of coordinates with additional information. iOS devices can retrieve NMEA sentences by using a separate GNSS dongle, commonly connected through Bluetooth or cable.
 
 The NMEA location data source allows for detailed interrogation of the information coming from the GNSS receiver. For example, allowing you to report the number of satellites in view, accuracy of the location, etc.
 

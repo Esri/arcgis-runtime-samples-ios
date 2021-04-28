@@ -62,8 +62,11 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     
     // MARK: Actions
     
-    /// The Bluetooth accessory picker dismissed with no error.
-    func accessoryPickerDidDisappear() {
+    /// Get the first connected and supported Bluetooth accessory with its
+    /// protocol string.
+    /// - Returns: A tuple of the accessory and its protocol,
+    ///            or nil if no supported accessory exists.
+    func firstSupportedAccessoryWithProtocol() -> (EAAccessory, String)? {
         for accessory in EAAccessoryManager.shared().connectedAccessories {
             // The protocol string to establish the EASession.
             guard let protocolString = accessory.protocolStrings.first(where: { supportedProtocolStrings.contains($0) }) else {
@@ -72,12 +75,17 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
                 // additional configuration.
                 continue
             }
-            // Only read from the first supported accessory.
-            nmeaLocationDataSource = AGSNMEALocationDataSource(eaAccessory: accessory, protocol: protocolString)
-            nmeaLocationDataSource?.locationChangeHandlerDelegate = self
-            start()
-            break
+            // Only return the first connected and supported accessory.
+            return (accessory, protocolString)
         }
+        return nil
+    }
+    
+    /// The Bluetooth accessory picker connected to a supported accessory.
+    func accessoryDidConnect(connectedAccessory: EAAccessory, protocolString: String) {
+        nmeaLocationDataSource = AGSNMEALocationDataSource(eaAccessory: connectedAccessory, protocol: protocolString)
+        nmeaLocationDataSource?.locationChangeHandlerDelegate = self
+        start()
     }
     
     @IBAction func chooseDataSource(_ sender: UIBarButtonItem) {
@@ -88,12 +96,29 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         )
         // Add real data source to the options.
         let realDataSourceAction = UIAlertAction(title: "Device", style: .default) { [self] _ in
-            // Displays an alert to pair the device with a Bluetooth accessory.
-            EAAccessoryManager.shared().showBluetoothAccessoryPicker(withNameFilter: nil) { error in
-                if let error = error {
-                    presentAlert(error: error)
-                } else {
-                    accessoryPickerDidDisappear()
+            if let (accessory, protocolString) = firstSupportedAccessoryWithProtocol() {
+                // Use the supported accessory directly if it's already connected.
+                accessoryDidConnect(connectedAccessory: accessory, protocolString: protocolString)
+            } else {
+                // Display an alert to pair the device with a Bluetooth accessory.
+                EAAccessoryManager.shared().showBluetoothAccessoryPicker(withNameFilter: nil) { error in
+                    if let error = error as? EABluetoothAccessoryPickerError {
+                        switch error.code {
+                        case .alreadyConnected:
+                            presentAlert(message: "The specified accessory was already connected.")
+                        case .resultNotFound:
+                            presentAlert(message: "The specified accessory could not be found, perhaps because it was turned off prior to connection.")
+                        case .resultCancelled:
+                            // Don't show error message if user cancels the picker.
+                            return
+                        default:
+                            presentAlert(message: "Selecting an accessory failed for an unknown reason.")
+                        }
+                    } else if let (accessory, protocolString) = firstSupportedAccessoryWithProtocol() {
+                        // Proceed with supported and connected accessory, and
+                        // ignore other accessories that aren't supported.
+                        accessoryDidConnect(connectedAccessory: accessory, protocolString: protocolString)
+                    }
                 }
             }
         }
@@ -150,11 +175,15 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         // Reset and stop the location display.
         mapView.locationDisplay.autoPanModeChangedHandler = nil
         mapView.locationDisplay.autoPanMode = .off
+        // Stop the location display, which in turn stop the data source.
         mapView.locationDisplay.stop()
         // Pause the mock data generation.
         mockNMEADataSource.stop()
         // Disconnect from the mock data updates.
         mockNMEADataSource.delegate = nil
+        // Reset NMEA location data source.
+        nmeaLocationDataSource?.locationChangeHandlerDelegate = nil
+        nmeaLocationDataSource = nil
     }
     
     // MARK: UIViewController

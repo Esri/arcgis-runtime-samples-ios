@@ -53,4 +53,4 @@ Please read Apple's documentation below for further details.
 
 ## Tags
 
-Bluetooth, accessory, GNSS, GPS, history, MFi, navigation, NMEA, real-time, trace
+Bluetooth, accessory, GNSS, GPS, history, navigation, NMEA, real-time, trace

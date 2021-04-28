@@ -47,7 +47,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     // MARK: Instance properties
     
     /// An NMEA location data source, to parse NMEA data.
-    var nmeaLocationDataSource: AGSNMEALocationDataSource?
+    var nmeaLocationDataSource: AGSNMEALocationDataSource!
     /// A mock data source to read NMEA sentences from a local file, and generate
     /// mock NMEA data every fixed amount of time.
     let mockNMEADataSource = SimulatedNMEADataSource(nmeaSourceFile: Bundle.main.url(forResource: "Redlands", withExtension: "nmea")!, speed: 1.5)
@@ -83,9 +83,11 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     
     /// The Bluetooth accessory picker connected to a supported accessory.
     func accessoryDidConnect(connectedAccessory: EAAccessory, protocolString: String) {
-        nmeaLocationDataSource = AGSNMEALocationDataSource(eaAccessory: connectedAccessory, protocol: protocolString)
-        nmeaLocationDataSource?.locationChangeHandlerDelegate = self
-        start()
+        if let dataSource = AGSNMEALocationDataSource(eaAccessory: connectedAccessory, protocol: protocolString) {
+            nmeaLocationDataSource = dataSource
+            nmeaLocationDataSource.locationChangeHandlerDelegate = self
+            start()
+        }
     }
     
     @IBAction func chooseDataSource(_ sender: UIBarButtonItem) {
@@ -138,12 +140,8 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     }
     
     func start() {
-        guard let dataSource = nmeaLocationDataSource else {
-            presentAlert(title: "Error", message: "NMEA data source failed to initialize from GNSS surveyor!")
-            return
-        }
         // Set NMEA location data source for location display.
-        mapView.locationDisplay.dataSource = dataSource
+        mapView.locationDisplay.dataSource = nmeaLocationDataSource
         // Set buttons states.
         sourceBarButtonItem.isEnabled = false
         resetBarButtonItem.isEnabled = true
@@ -182,7 +180,6 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         // Disconnect from the mock data updates.
         mockNMEADataSource.delegate = nil
         // Reset NMEA location data source.
-        nmeaLocationDataSource?.locationChangeHandlerDelegate = nil
         nmeaLocationDataSource = nil
     }
     
@@ -210,7 +207,7 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: SimulatedNMEAD
     func dataSource(_ dataSource: SimulatedNMEADataSource, didUpdate nmeaData: Data) {
         // Push mock data into the data source.
         // Note: You can also get real-time NMEA sentences from a GNSS surveyor.
-        nmeaLocationDataSource?.push(nmeaData)
+        nmeaLocationDataSource.push(nmeaData)
     }
 }
 
@@ -237,12 +234,12 @@ extension DisplayDeviceLocationWithNMEADataSourcesViewController: AGSNMEALocatio
     
     func nmeaLocationDataSource(_ NMEALocationDataSource: AGSNMEALocationDataSource, satellitesDidChange satellites: [AGSNMEASatelliteInfo]) {
         // Update the satellites info status text.
-        let satelliteSystemsText = Set(satellites.map(\.system.label))
-            .sorted()
-            .joined(separator: ", ")
-        let idText = satellites
-            .map { String($0.satelliteID) }
-            .joined(separator: ", ")
+        let satelliteSystemsText = ListFormatter.localizedString(
+            byJoining: Set(satellites.map(\.system.label)).sorted()
+        )
+        let idText = ListFormatter.localizedString(
+            byJoining: satellites.map { String($0.satelliteID) }
+        )
         satelliteStatusLabel.text = String(
             format: """
             %d satellites in view

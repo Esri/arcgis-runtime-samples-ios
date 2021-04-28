@@ -6,9 +6,9 @@ Parse NMEA sentences and use the results to show device location on the map.
 
 ## Use case
 
-NMEA sentences can be retrieved from GNSS/GPS receivers and parsed into a series of coordinates with additional information. iOS devices can retrieve NMEA sentences by using a separate GNSS dongle, commonly connected through Bluetooth or cable.
+NMEA sentences can be retrieved from an MFi GNSS/GPS accessory and parsed into a series of coordinates with additional information.
 
-The NMEA location data source allows for detailed interrogation of the information coming from the GNSS receiver. For example, allowing you to report the number of satellites in view, accuracy of the location, etc.
+The NMEA location data source allows for detailed interrogation of the information coming from a GNSS accessory. For example, allowing you to report the number of satellites in view, accuracy of the location, etc.
 
 ## How to use the sample
 
@@ -17,11 +17,11 @@ Tap "Source" to choose between a simulated location data source or any data sour
 ## How it works
 
 1. Load NMEA sentences.
-    * If a supported GNSS receiver is connected, the sample can get NMEA updates from it.
+    * If a supported GNSS accessory is connected, the sample can get NMEA updates from it.
     * Otherwise, the sample will read mock data from a local file.
 2. Create an `AGSNMEALocationDataSource`. There are 2 ways to provide updates to the data source.
-    * When updates are received from a GNSS device or the mock data provider, push the data into `AGSNMEALocationDataSource`.
-    * With the Runtime SDK 100.11.0 release, you can create an `AGSNMEALocationDataSource` with the GNSS device connected via `EAAccessory` and its protocol specified in `UISupportedExternalAccessoryProtocols`. The data source created this way will automatically get updates from the device instead of requiring to push data explicitly.
+    * When updates are received from a GNSS accessory or the mock data provider, push the data into `AGSNMEALocationDataSource`.
+    * Starting with Runtime SDK 100.11, you can initialize `AGSNMEALocationDataSource` with a GNSS accessory. The data source created this way will automatically get updates from the accessory instead of requiring to push data explicitly.
 3. Set the `AGSNMEALocationDataSource` to the location display's data source.
 4. Start the location display to begin receiving location and satellite updates.
 
@@ -34,13 +34,13 @@ Tap "Source" to choose between a simulated location data source or any data sour
 
 ## About the data
 
-A list of NMEA sentences is used to initialize a `SimulatedNMEADataSource` object. This simulated data source provides NMEA data periodically and allows the sample to be used on devices without a GNSS receiver.
+A list of NMEA sentences is used to initialize a `SimulatedNMEADataSource` object. This simulated data source provides NMEA data periodically and allows the sample to be used without a GNSS accessory.
 
 The route taken in this sample features a [2-minute driving trip around Redlands, CA](https://arcgis.com/home/item.html?id=d5bad9f4fee9483791e405880fb466da).
 
 ## Additional information
 
-To support GNSS device connection in an app, here are a few steps:
+To support GNSS accessory connection in an app, here are a few steps:
 
 * Enable Bluetooth connection in the device settings or connect via cable connection.
 * Refer to the device manufacturer's documentation to get its protocol string and add the protocol to the app’s `Info.plist` under the `UISupportedExternalAccessoryProtocols` key.
@@ -53,4 +53,4 @@ Please read Apple's documentation below for further details.
 
 ## Tags
 
-Bluetooth, dongle, GNSS, GPS, history, navigation, NMEA, real-time, trace
+Bluetooth, accessory, GNSS, GPS, history, MFi, navigation, NMEA, real-time, trace

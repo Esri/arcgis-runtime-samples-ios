@@ -148,7 +148,7 @@ class WFSLayersTableViewController: UITableViewController {
         params.whereClause = "1=1"
         
         // Show progress
-        SVProgressHUD.show(withStatus: "Querying")
+        UIApplication.shared.showProgressHUD(message: "Querying")
         
         // Populate features based on query
         self.lastQuery = wfsFeatureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
@@ -182,7 +182,7 @@ class WFSLayersTableViewController: UITableViewController {
                 }
             }
             // Hide Progress
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
         }
     }
 }

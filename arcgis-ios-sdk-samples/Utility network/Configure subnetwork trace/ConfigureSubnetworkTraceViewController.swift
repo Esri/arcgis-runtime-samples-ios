@@ -60,7 +60,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
     }
     
     /// A feature service for an electric utility network in Naperville, Illinois.
-    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
+    let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     
     /// An array of condition expressions.
     var traceConditionalExpressions = [AGSUtilityTraceConditionalExpression]()
@@ -100,9 +100,9 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         }
         
         // Trace the utility network.
-        SVProgressHUD.show(withStatus: "Tracing…")
+        UIApplication.shared.showProgressHUD(message: "Tracing…")
         utilityNetwork.trace(with: parameters) { [weak self] (results, error) in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
@@ -145,9 +145,11 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
         let tierName = "Medium Voltage Radial"
         
         // Load the utility network.
-        SVProgressHUD.show(withStatus: "Loading utility network…")
+        UIApplication.shared.showProgressHUD(message: "Loading utility network…")
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
-            SVProgressHUD.dismiss()
+            UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)

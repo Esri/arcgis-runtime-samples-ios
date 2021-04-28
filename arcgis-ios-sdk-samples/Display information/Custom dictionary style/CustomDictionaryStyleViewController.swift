@@ -16,49 +16,73 @@ import UIKit
 import ArcGIS
 
 class CustomDictionaryStyleViewController: UIViewController {
+    // MARK: Storyboard views
+    
     /// The map view managed by the view controller.
-    @IBOutlet weak var mapView: AGSMapView! {
+    @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = makeMap()
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.setViewpoint(
+                AGSViewpoint(
+                    latitude: 34.0543,
+                    longitude: -117.1963,
+                    scale: 1e4
+                )
+            )
         }
     }
+    /// The segmented control to toggle between style file and web style.
+    @IBOutlet var segmentedControl: UISegmentedControl!
     
-    /// Creates a map.
-    ///
-    /// - Returns: A new `AGSMap` object.
-    func makeMap() -> AGSMap {
-        let map = AGSMap(basemapStyle: .arcGISStreets)
-        // Add the feature layer to the map.
-        map.operationalLayers.add(makeFeatureLayer())
-        return map
-    }
+    // MARK: Instance properties
     
-    /// Creates a feature layer that contains custom symbol style.
-    func makeFeatureLayer() -> AGSFeatureLayer {
-        // The URL to the restaurants feature table.
-        let restaurantFeatureTableURL = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Redlands_Restaurants/FeatureServer/0")!
+    /// A feature layer showing a subset of restaurants in Redlands, CA.
+    let featureLayer: AGSFeatureLayer = {
+        // Create restaurants feature table from the feature service URL.
+        let restaurantFeatureTable = AGSServiceFeatureTable(
+            url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Redlands_Restaurants/FeatureServer/0")!
+        )
+        // Create the restaurants layer.
+        return AGSFeatureLayer(featureTable: restaurantFeatureTable)
+    }()
+    
+    /// A dictionary renderer created from a custom symbol style dictionary file
+    /// (.stylx) on local disk.
+    let dictionaryRendererFromStyleFile: AGSDictionaryRenderer = {
         // The URL to the symbol style dictionary from shared resources.
         let restaurantStyleURL = Bundle.main.url(forResource: "Restaurant", withExtension: "stylx")!
-        // Create restaurants feature table from the feature service URL.
-        let restaurantFeatureTable = AGSServiceFeatureTable(url: restaurantFeatureTableURL)
-        // Create the restaurants layer.
-        let featureLayer = AGSFeatureLayer(featureTable: restaurantFeatureTable)
-        // Open the custom style file.
-        let restaurantStyle = AGSDictionarySymbolStyle(url: restaurantStyleURL)
         // Create the dictionary renderer from the style file.
-        let dictRenderer = AGSDictionaryRenderer(dictionarySymbolStyle: restaurantStyle)
-        // Apply the dictionary renderer to a feature layer.
-        featureLayer.renderer = dictRenderer
-        featureLayer.load { [weak self] (error: Error?) in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                // Set the viewpoint to the full extent of all layers.
-                self.mapView.setViewpointGeometry(featureLayer.fullExtent!)
-            }
-        }
-        return featureLayer
+        let restaurantStyle = AGSDictionarySymbolStyle(url: restaurantStyleURL)
+        return AGSDictionaryRenderer(dictionarySymbolStyle: restaurantStyle)
+    }()
+    
+    /// A dictionary renderer created from a custom symbol style hosted on
+    /// ArcGIS Online.
+    let dictionaryRendererFromWebStyle: AGSDictionaryRenderer = {
+        // The restaurant web style.
+        let item = AGSPortalItem(
+            portal: .arcGISOnline(withLoginRequired: false),
+            itemID: "adee951477014ec68d7cf0ea0579c800"
+        )
+        // Create the dictionary renderer from the web style.
+        let restaurantStyle = AGSDictionarySymbolStyle(portalItem: item)
+        // Map the input fields in the feature layer to the
+        // dictionary symbol style's expected fields for symbols.
+        return AGSDictionaryRenderer(dictionarySymbolStyle: restaurantStyle, symbologyFieldOverrides: ["healthgrade": "Inspection"], textFieldOverrides: [:])
+    }()
+    
+    // MARK: Methods
+    
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        let isStyleFile = sender.selectedSegmentIndex == 0
+        // Apply the dictionary renderer to the feature layer.
+        featureLayer.renderer = isStyleFile ? dictionaryRendererFromStyleFile : dictionaryRendererFromWebStyle
+    }
+    
+    func setupUI() {
+        mapView.map?.operationalLayers.add(featureLayer)
+        segmentedControl.isEnabled = true
+        segmentedControlValueChanged(segmentedControl)
     }
     
     // MARK: UIViewController
@@ -67,5 +91,14 @@ class CustomDictionaryStyleViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["CustomDictionaryStyleViewController"]
+        
+        featureLayer.load { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                self.setupUI()
+            }
+        }
     }
 }

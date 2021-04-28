@@ -120,7 +120,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     // MARK: - SaveAsViewControllerDelegate
     
     func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
-        SVProgressHUD.show(withStatus: "Saving")
+        UIApplication.shared.showProgressHUD(message: "Saving")
         
         // Set the initial viewpoint from map view.
         mapView.map?.initialViewpoint = mapView.currentViewpoint(with: AGSViewpointType.centerAndScale)
@@ -136,7 +136,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             
             self.mapView.map?.save(as: title, portal: self.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
                 // Dismiss progress hud.
-                SVProgressHUD.dismiss()
+                UIApplication.shared.hideProgressHUD()
                 if let error = error {
                     saveAsViewController.presentAlert(error: error)
                 } else {

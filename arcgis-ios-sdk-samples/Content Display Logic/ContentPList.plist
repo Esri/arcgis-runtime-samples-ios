@@ -1021,7 +1021,7 @@
 				<key>displayName</key>
 				<string>Custom dictionary style</string>
 				<key>descriptionText</key>
-				<string>Use a custom dictionary style (.stylx) to symbolize features using a variety of attribute values.</string>
+				<string>Use a custom dictionary style created from a web style or style file to symbolize features using a variety of attribute values.</string>
 				<key>storyboardName</key>
 				<string>CustomDictionaryStyle</string>
 				<key>dependency</key>
@@ -1111,6 +1111,10 @@
 				<string>EditAndSyncFeatures</string>
 				<key>descriptionText</key>
 				<string>Synchronize offline edits with a feature service.</string>
+				<key>dependency</key>
+				<array>
+					<string>SanFranciscoTilePackage</string>
+				</array>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1777,6 +1781,14 @@
 				<key>descriptionText</key>
 				<string>Show realistic lighting and shadows for a given time of day.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Show labels on layer in 3D</string>
+				<key>storyboardName</key>
+				<string>ShowLabelsOnLayer3D</string>
+				<key>descriptionText</key>
+				<string>Display custom labels in a 3D scene.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1815,6 +1827,14 @@
 				<string>ConfigureSubnetworkTrace</string>
 				<key>displayName</key>
 				<string>Configure subnetwork trace</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Create load report</string>
+				<key>descriptionText</key>
+				<string>Create a simple electric distribution report that displays the count of customers and total load per phase by tracing downstream from a given point.</string>
+				<key>storyboardName</key>
+				<string>CreateLoadReport</string>
 			</dict>
 		</array>
 	</dict>

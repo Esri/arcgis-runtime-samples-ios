@@ -20,6 +20,8 @@ class DisplayUtilityAssociationsViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             let map = AGSMap(basemapStyle: .arcGISTopographic)
+            // Add the utility network to the map.
+            map.utilityNetworks.add(utilityNetwork)
             mapView.map = map
             mapView.setViewpoint(AGSViewpoint(latitude: 41.8057655, longitude: -88.1489692, scale: 70.5310735))
             mapView.graphicsOverlays.add(associationsOverlay)
@@ -28,13 +30,15 @@ class DisplayUtilityAssociationsViewController: UIViewController {
     
     @IBOutlet var toolbar: UIToolbar!
     
-    private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
+    private let utilityNetwork = AGSUtilityNetwork(url: URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer")!)
     private let maxScale = 2000.0
     private let associationsOverlay = AGSGraphicsOverlay()
     private let attachmentSymbol = AGSSimpleLineSymbol(style: .dot, color: .green, width: 5)
     private let connectivitySymbol = AGSSimpleLineSymbol(style: .dot, color: .red, width: 5)
     
     func loadUtilityNetwork() {
+        // WARNING: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        utilityNetwork.credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -139,13 +143,8 @@ class DisplayUtilityAssociationsViewController: UIViewController {
             let connectivityBBI = UIBarButtonItem(image: connectivityImage, style: .plain, target: nil, action: nil)
             let attachmentLabel = UIBarButtonItem(title: "Attachment", style: .plain, target: nil, action: nil)
             let connectivityLabel = UIBarButtonItem(title: "Connectivity", style: .plain, target: nil, action: nil)
-            if #available(iOS 13.0, *) {
-                attachmentLabel.tintColor = .label
-                connectivityLabel.tintColor = .label
-            } else {
-                attachmentLabel.tintColor = .black
-                connectivityLabel.tintColor = .black
-            }
+            attachmentLabel.tintColor = .label
+            connectivityLabel.tintColor = .label
             let fixedSpace1 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             let fixedSpace2 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             let flexibleSpace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

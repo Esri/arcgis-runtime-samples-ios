@@ -30,13 +30,13 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
             // Observe the map view's drawing status to see when the new mosaic rule is loaded.
             drawStatusObservation = mapView.observe(\.drawStatus, options: .initial) { mapView, _ in
                 if mapView.drawStatus == .completed {
-                    SVProgressHUD.dismiss()
+                    UIApplication.shared.hideProgressHUD()
                 }
             }
         }
     }
     /// The image service raster to demo mosaic rules.
-    var imageServiceRaster = AGSImageServiceRaster(url: URL(string: "https://sampleserver7.arcgisonline.com/arcgis/rest/services/amberg_germany/ImageServer")!)
+    var imageServiceRaster = AGSImageServiceRaster(url: URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/amberg_germany/ImageServer")!)
     /// A preset of mosaic rules for demonstration purpose.
     let mosaicRulePairs: KeyValuePairs<String, AGSMosaicRule> = {
         // A default mosaic rule object, with mosaic method as none.
@@ -85,11 +85,11 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         // Add raster layer as an operational layer to the map.
         map.operationalLayers.add(rasterLayer)
-        SVProgressHUD.show(withStatus: "Loading")
+        UIApplication.shared.showProgressHUD(message: "Loading")
         rasterLayer.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
-                SVProgressHUD.dismiss()
+                UIApplication.shared.hideProgressHUD()
                 self.presentAlert(error: error)
             } else {
                 // When loaded, set the map view's viewpoint to the image service raster's center.
@@ -118,7 +118,7 @@ class ApplyMosaicRuleToRastersViewController: UIViewController {
         )
         mosaicRulePairs.forEach { name, rule in
             let action = UIAlertAction(title: name, style: .default) { _ in
-                SVProgressHUD.show(withStatus: "Loading mosaic rule")
+                UIApplication.shared.showProgressHUD(message: "Loading mosaic rule")
                 self.setStatus(message: "\(name) selected.")
                 self.imageServiceRaster.mosaicRule = rule
             }

@@ -97,16 +97,11 @@ class ApplyScheduledUpdatesToPreplannedMapAreaViewController: UIViewController {
             let alertController: UIAlertController
             if updatesInfo.downloadAvailability == .available {
                 let downloadSize = updatesInfo.scheduledUpdatesDownloadSize
-                let downloadSizeString: String
-                if #available(iOS 13.0, *) {
-                    let measurement = Measurement(
-                        value: Double(downloadSize),
-                        unit: UnitInformationStorage.bytes
-                    )
-                    downloadSizeString = ByteCountFormatter.string(from: measurement, countStyle: .file)
-                } else {
-                    downloadSizeString = ByteCountFormatter.string(fromByteCount: Int64(downloadSize), countStyle: .file)
-                }
+                let measurement = Measurement(
+                    value: Double(downloadSize),
+                    unit: UnitInformationStorage.bytes
+                )
+                let downloadSizeString = ByteCountFormatter.string(from: measurement, countStyle: .file)
                 alertController = UIAlertController(
                     title: "Scheduled Updates Available",
                     message: "A \(downloadSizeString) update is available. Would you like to apply it?",

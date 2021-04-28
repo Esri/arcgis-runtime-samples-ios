@@ -13,6 +13,7 @@
         "containment",
         "relationships",
         "AGSGraphicsOverlay",
+        "AGSServiceGeodatabase",
         "AGSUtilityAssociation",
         "AGSUtilityAssociationType",
         "AGSUtilityNetwork"
@@ -21,6 +22,7 @@
     ],
     "relevant_apis": [
         "AGSGraphicsOverlay",
+        "AGSServiceGeodatabase",
         "AGSUtilityAssociation",
         "AGSUtilityAssociationType",
         "AGSUtilityNetwork"

@@ -35,8 +35,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     let graphicsOverlay = AGSGraphicsOverlay()
     /// The default or previous viewpoint before entering the container view.
     var previousViewpoint: AGSViewpoint?
-    /// An array containing information about the feature services' legends.
-    var legendInfos = [AGSLegendInfo]()
     var featureLayers = [AGSFeatureLayer]()
     
     // The symbols used to display the container view contents.
@@ -76,9 +74,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     }
     
     /// Create and load the utility network using the feature service URL.
-    func loadUtilityNetwork() {
-        guard let map = mapView.map else { return }
-        utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: map)
+    func createAndLoadUtilityNetwork() {
+        utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: mapView.map!)
         utilityNetwork?.load { [weak self] error in
             if let error = error {
                 self?.presentAlert(error: error)
@@ -94,16 +91,16 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         // Create feature tables from URLs.
         let electricDistributionTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("1"))
         let structureJunctionTable = AGSServiceFeatureTable(url: featureServiceURL.appendingPathComponent("5"))
+        var accumulatedLegendInfos = [AGSLegendInfo]()
         let legendGroup = DispatchGroup()
         // Create feature layers using the feature tables.
         featureLayers = [electricDistributionTable, structureJunctionTable].map(AGSFeatureLayer.init)
         featureLayers.forEach { layer in
             legendGroup.enter()
             // Get the legend information of each layer.
-            layer.fetchLegendInfos { [weak self] legendInfos, _ in
+            layer.fetchLegendInfos { legendInfos, _ in
                 defer { legendGroup.leave() }
-                guard let legendInfos = legendInfos else { return }
-                self?.legendInfos.append(contentsOf: legendInfos)
+                accumulatedLegendInfos.append(contentsOf: legendInfos!)
             }
         }
         legendGroup.notify(queue: .main) { [weak self] in

@@ -36,6 +36,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var portal: AGSPortal?
+    private var apiKey: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,9 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             "SaveAsViewController"
         ]
         
+        apiKey = AGSArcGISRuntimeEnvironment.apiKey
+        AGSArcGISRuntimeEnvironment.apiKey = ""
+        
         // Auth Manager settings
         let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
@@ -54,6 +58,10 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
         
         // Initially show the map creation UI.
         performSegue(withIdentifier: "CreateNewSegue", sender: self)
+    }
+    
+    deinit {
+        AGSArcGISRuntimeEnvironment.apiKey = apiKey
     }
     
     private func showSuccess() {
@@ -106,6 +114,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     
     func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]) {
         // Create a map with the selected basemap.
+        basemap.apiKey = apiKey
         let map = AGSMap(basemap: basemap)
         
         // Add the selected operational layers.

@@ -37,12 +37,14 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     
     // MARK: Constants
     
-    /// The protocols specified in the `Info.plist` that the app uses to
+    /// The protocols used in this sample to get NMEA sentences.
+    /// They are also specified in the `Info.plist` to allow the app to
     /// communicate with external accessory hardware.
-    let supportedProtocolStrings: Set<String> = Bundle.main
-        .object(forInfoDictionaryKey: "UISupportedExternalAccessoryProtocols")
-        .flatMap { $0 as? [String] }
-        .map(Set.init) ?? []
+    let supportedProtocolStrings = [
+        "com.bad-elf.gps",
+        "com.eos-gnss.positioningsource",
+        "com.geneq.sxbluegpssource"
+    ]
     
     // MARK: Instance properties
     
@@ -87,6 +89,8 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
             nmeaLocationDataSource = dataSource
             nmeaLocationDataSource.locationChangeHandlerDelegate = self
             start()
+        } else {
+            presentAlert(message: "NMEA location data source failed to initialize from the accessory!")
         }
     }
     
@@ -102,16 +106,15 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
                 // Use the supported accessory directly if it's already connected.
                 accessoryDidConnect(connectedAccessory: accessory, protocolString: protocolString)
             } else {
-                // Display an alert to pair the device with a Bluetooth accessory.
+                // Show a picker to pair the device with a Bluetooth accessory.
                 EAAccessoryManager.shared().showBluetoothAccessoryPicker(withNameFilter: nil) { error in
-                    if let error = error as? EABluetoothAccessoryPickerError {
+                    if let error = error as? EABluetoothAccessoryPickerError,
+                       error.code != .alreadyConnected {
                         switch error.code {
-                        case .alreadyConnected:
-                            presentAlert(message: "The specified accessory was already connected.")
                         case .resultNotFound:
                             presentAlert(message: "The specified accessory could not be found, perhaps because it was turned off prior to connection.")
                         case .resultCancelled:
-                            // Don't show error message if user cancels the picker.
+                            // Don't show error message when the picker is cancelled.
                             return
                         default:
                             presentAlert(message: "Selecting an accessory failed for an unknown reason.")
@@ -128,7 +131,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
         // Add mock data source to the options.
         let mockDataSourceAction = UIAlertAction(title: "Mock Data", style: .default) { [self] _ in
             nmeaLocationDataSource = AGSNMEALocationDataSource(receiverSpatialReference: .wgs84())
-            nmeaLocationDataSource!.locationChangeHandlerDelegate = self
+            nmeaLocationDataSource.locationChangeHandlerDelegate = self
             mockNMEADataSource.delegate = self
             start()
         }

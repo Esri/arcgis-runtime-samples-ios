@@ -71,7 +71,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
     func firstSupportedAccessoryWithProtocol() -> (EAAccessory, String)? {
         for accessory in EAAccessoryManager.shared().connectedAccessories {
             // The protocol string to establish the EASession.
-            guard let protocolString = supportedProtocolStrings.first(where: { accessory.protocolStrings.contains($0) }) else {
+            guard let protocolString = accessory.protocolStrings.first(where: { supportedProtocolStrings.contains($0) }) else {
                 // Skip the accessories with protocol not for NMEA data transfer.
                 continue
             }

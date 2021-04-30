@@ -105,7 +105,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         }
         legendGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-            let featureLayerSymbols: [(String, AGSSymbol)] = self.legendInfos.compactMap { legendInfo in
+            let featureLayerSymbols: [(String, AGSSymbol)] = accumulatedLegendInfos.compactMap { legendInfo in
                 if !legendInfo.name.isEmpty,
                    let symbol = legendInfo.symbol {
                     return (legendInfo.name, symbol)
@@ -153,11 +153,10 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     ///   - completion: A closure to pass back the feature that was tapped on.
     func identifyContainerFeature(layerResults: [AGSIdentifyLayerResult]) {
         // A map containing SubtypeFeatureLayer is expected to have features as part of its sublayer's result.
-        let layerResult = layerResults.first(where: { $0.layerContent is AGSSubtypeFeatureLayer })
-        layerResult?.sublayerResults.forEach { sublayerResult in
-            guard let feature = sublayerResult.geoElements.first(where: { $0 is AGSArcGISFeature }) as? AGSArcGISFeature else { return }
-            addElementAssociations(for: feature)
-        }
+        guard let layerResult = layerResults.first(where: { $0.layerContent is AGSSubtypeFeatureLayer }) else { return }
+        layerResult.sublayerResults
+            .flatMap { $0.geoElements.compactMap { $0 as? AGSArcGISFeature } }
+            .forEach(addElementAssociations(for:))
     }
     
     /// Get the containment associations from the chosen element.
@@ -274,7 +273,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         super.viewDidLoad()
         AGSAuthenticationManager.shared().delegate = self
         // Load the utility network.
-        loadUtilityNetwork()
+        createAndLoadUtilityNetwork()
         // Add a graphics overlay.
         mapView.graphicsOverlays.add(graphicsOverlay)
         // Get the legends from the feature service.

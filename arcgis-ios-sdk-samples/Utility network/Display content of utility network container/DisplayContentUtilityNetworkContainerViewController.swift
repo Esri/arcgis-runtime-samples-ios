@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGSGeoViewTouchDelegate, UIAdaptivePresentationControllerDelegate {
+class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGSGeoViewTouchDelegate {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
@@ -23,6 +23,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                 url: URL(string: "https://sampleserver7.arcgisonline.com/portal/home/item.html?id=813eda749a9444e4a9d833a4db19e1c8")!
             )
             mapView.setViewpoint(AGSViewpoint(latitude: 41.801504, longitude: -88.163718, scale: 4e3))
+            // Add a graphics overlay.
+            mapView.graphicsOverlays.add(graphicsOverlay)
         }
     }
     /// The bar button item to prompt return of the main view.
@@ -38,15 +40,15 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     var featureLayers = [AGSFeatureLayer]()
     
     // The symbols used to display the container view contents.
-    let boundingBoxSymbol = ContainerViewSymbol(
+    private let boundingBoxSymbol = ContainerViewSymbol(
         name: "Bounding box",
         symbol: AGSSimpleLineSymbol(style: .dash, color: .yellow, width: 3)
     )
-    let attachmentSymbol = ContainerViewSymbol(
+    private let attachmentSymbol = ContainerViewSymbol(
         name: "Attachment",
         symbol: AGSSimpleLineSymbol(style: .dot, color: .green, width: 3)
     )
-    let connectivitySymbol = ContainerViewSymbol(
+    private let connectivitySymbol = ContainerViewSymbol(
         name: "Connectivity",
         symbol: AGSSimpleLineSymbol(style: .dot, color: .red, width: 3)
     )
@@ -164,9 +166,9 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// - Parameter containerFeature: The selected container feature
     func addElementAssociations(for containerFeature: AGSArcGISFeature) {
         // Create a container element using the selected feature.
-        guard let containerElement = utilityNetwork?.createElement(with: containerFeature) else { return }
+        guard let containerElement = utilityNetwork!.createElement(with: containerFeature) else { return }
         // Get the containment associations from this element to display its content.
-        utilityNetwork?.associations(with: containerElement, type: .containment) { [weak self] containmentAssociations, _ in
+        utilityNetwork!.associations(with: containerElement, type: .containment) { [weak self] containmentAssociations, _ in
             // Determine the type of each element and add it to the array of content elements.
             guard let self = self, let associations = containmentAssociations else { return }
             let contentElements: [AGSUtilityElement] = associations.map { association in
@@ -192,18 +194,20 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         // Save the previous viewpoint.
         previousViewpoint = mapView.currentViewpoint(with: .boundingGeometry)
         // Hide the layers to display the container view.
-        (mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
-            layer.isVisible = false
-        }
+        setOperationalLayersVisibility(isVisible: false)
         // Get the corresponding features for the array of content elements.
         utilityNetwork?.features(for: contentElements) { [weak self] (contentFeatures, error) in
             guard let self = self else { return }
             if let contentFeatures = contentFeatures {
                 // Create and add a symbol for each of the features.
-                contentFeatures.forEach { content in
-                    let symbol = (content.featureTable as? AGSArcGISFeatureTable)?.layerInfo?.drawingInfo?.renderer?.symbol(for: content)
-                    self.graphicsOverlay.graphics.add(AGSGraphic(geometry: content.geometry, symbol: symbol))
+                let graphics: [AGSGraphic] = contentFeatures.compactMap { (feature) in
+                    guard let featureTable = feature.featureTable as? AGSArcGISFeatureTable,
+                          let symbol = featureTable.layerInfo?.drawingInfo?.renderer?.symbol(for: feature) else {
+                        return nil
+                    }
+                    return AGSGraphic(geometry: feature.geometry, symbol: symbol)
                 }
+                self.graphicsOverlay.graphics.addObjects(from: graphics)
                 // Set the bounding box which defines the container view may be computed using the extent of the features it contains or centered around its geometry at the container's view scale.
                 if contentFeatures.count == 1,
                    let point = contentFeatures.first?.geometry as? AGSPoint {
@@ -220,6 +224,14 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                 self.presentAlert(error: error)
             }
         }
+    }
+    
+    /// Change the visibility of the operational layers.
+    ///
+    /// - Parameter isVisible: A boolean to make the map visible or not.
+    func setOperationalLayersVisibility(isVisible: Bool) {
+        let operationlLayers = mapView.map!.operationalLayers as! [AGSLayer]
+        operationlLayers.forEach { $0.isVisible = isVisible }
     }
     
     /// Get associations for the specified extent and display its associations.
@@ -274,8 +286,6 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         AGSAuthenticationManager.shared().delegate = self
         // Load the utility network.
         createAndLoadUtilityNetwork()
-        // Add a graphics overlay.
-        mapView.graphicsOverlays.add(graphicsOverlay)
         // Get the legends from the feature service.
         fetchLegendInfo()
         // Add the source code button item to the right of navigation bar.
@@ -283,6 +293,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     }
     
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DisplayContentLegendSegue",
             let controller = segue.destination as? UITableViewController {
@@ -290,23 +301,27 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                 controller.tableView.dataSource = symbolsDataSource
             }
     }
-    
-    // MARK: - UIAdaptivePresentationControllerDelegate
+}
+
+// MARK: - UIAdaptivePresentationControllerDelegate
+
+extension DisplayContentUtilityNetworkContainerViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
 }
-
 // MARK: - AGSAuthenticationManagerDelegate
+
 extension DisplayContentUtilityNetworkContainerViewController: AGSAuthenticationManagerDelegate {
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
         // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
-        let credentials = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
-        challenge.continue(with: credentials)
+        let credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
+        challenge.continue(with: credential)
     }
 }
 
 // MARK: - SymbolsDataSource, UITableViewDataSource
+
 private class SymbolsDataSource: NSObject, UITableViewDataSource {
     /// The legend items for the legend table.
     private let legendItems: [LegendItem]
@@ -337,13 +352,15 @@ private class SymbolsDataSource: NSObject, UITableViewDataSource {
 }
 
 // MARK: - LegendItem
+
 private struct LegendItem {
     let name: String
     let image: UIImage
 }
 
 // MARK: - ContainerViewSymbol
-struct ContainerViewSymbol {
+
+private struct ContainerViewSymbol {
     let name: String
     let symbol: AGSSymbol
 }

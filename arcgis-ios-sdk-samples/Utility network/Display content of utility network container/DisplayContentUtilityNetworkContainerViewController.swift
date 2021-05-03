@@ -115,11 +115,11 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
                     return nil
                 }
             }
-            let allSymbols: [(String, AGSSymbol)] = featureLayerSymbols +
-                [("Bounding box", self.boundingBoxSymbol.symbol),
-                 ("Attachment", self.attachmentSymbol.symbol),
-                 ("Connectivity", self.connectivitySymbol.symbol)]
-            self.makeSwatches(legend: allSymbols) { legendItems in
+            let symbolsDictionary = Dictionary(featureLayerSymbols +
+                                        [("Bounding box", self.boundingBoxSymbol.symbol),
+                                         ("Attachment", self.attachmentSymbol.symbol),
+                                         ("Connectivity", self.connectivitySymbol.symbol)], uniquingKeysWith: { (first, _) in first })
+            self.makeLegendItems(symbols: symbolsDictionary) { legendItems in
                 self.symbolsDataSource = SymbolsDataSource(legendItems: legendItems.sorted { $0.name < $1.name })
                 self.legendBarButtonItem.isEnabled = true
             }
@@ -131,16 +131,16 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     /// - Parameters:
     ///     - legend: The array containing all of the symbols and their names.
     ///     - completion: A closure to pass back the legend with cached images.
-    private func makeSwatches(legend: [(String, AGSSymbol)], completion: @escaping ([LegendItem]) -> Void) {
+    private func makeLegendItems(symbols: [String: AGSSymbol], completion: @escaping ([LegendItem]) -> Void) {
         let swatchGroup = DispatchGroup()
         var legendItems = [LegendItem]()
-        legend.forEach { symbolItem in
-            let symbol = symbolItem.1
+        symbols.forEach { symbolItem in
+            let symbol = symbolItem.value
             swatchGroup.enter()
             symbol.createSwatch(withBackgroundColor: nil, screen: .main) { image, _ in
                 defer { swatchGroup.leave() }
                 guard let image = image else { return }
-                legendItems.append(LegendItem(name: symbolItem.0, image: image))
+                legendItems.append(LegendItem(name: symbolItem.key, image: image))
             }
         }
         swatchGroup.notify(queue: .main) {
@@ -244,8 +244,8 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         mapView.setViewpointGeometry(geometry) { [weak self] _ in
             guard let self = self else { return }
             // Get the associations for this extent to display how content features are attached or connected.
-            self.utilityNetwork?.associations(withExtent: self.graphicsOverlay.extent) { containmentAssociations, _ in
-                guard let containmentAssociations = containmentAssociations else { return }
+            self.utilityNetwork?.associations(withExtent: self.graphicsOverlay.extent) { [weak self] containmentAssociations, _ in
+                guard let self = self, let containmentAssociations = containmentAssociations else { return }
                 containmentAssociations.forEach { association in
                     var symbol = AGSSymbol()
                     if association.associationType == .attachment {
@@ -296,10 +296,10 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DisplayContentLegendSegue",
-            let controller = segue.destination as? UITableViewController {
-                controller.presentationController?.delegate = self
-                controller.tableView.dataSource = symbolsDataSource
-            }
+           let controller = segue.destination as? UITableViewController {
+            controller.presentationController?.delegate = self
+            controller.tableView.dataSource = symbolsDataSource
+        }
     }
 }
 
@@ -325,15 +325,15 @@ extension DisplayContentUtilityNetworkContainerViewController: AGSAuthentication
 private class SymbolsDataSource: NSObject, UITableViewDataSource {
     /// The legend items for the legend table.
     private let legendItems: [LegendItem]
-
+    
     init(legendItems: [LegendItem]) {
         self.legendItems = legendItems
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         legendItems.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayContentLegendCell", for: indexPath)
         let legendItem = legendItems[indexPath.row]
@@ -341,11 +341,11 @@ private class SymbolsDataSource: NSObject, UITableViewDataSource {
         cell.imageView?.image = legendItem.image
         return cell
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
-
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "Legend"
     }

@@ -79,11 +79,13 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     func createAndLoadUtilityNetwork() {
         utilityNetwork = AGSUtilityNetwork(url: featureServiceURL, map: mapView.map!)
         utilityNetwork?.load { [weak self] error in
+            guard let self = self else { return }
             if let error = error {
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
             } else {
                 // Add self as the touch delegate for the map view.
-                self?.mapView.touchDelegate = self
+                self.mapView.touchDelegate = self
+                self.mapView.isUserInteractionEnabled = true
             }
         }
     }
@@ -150,9 +152,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     
     /// Get the container feature that was tapped on.
     ///
-    /// - Parameters:
-    ///   - layerResults: The layer results identified by the touch delegate.
-    ///   - completion: A closure to pass back the feature that was tapped on.
+    /// - Parameter layerResults: The layer results identified by the touch delegate.
     func identifyContainerFeature(layerResults: [AGSIdentifyLayerResult]) {
         // A map containing SubtypeFeatureLayer is expected to have features as part of its sublayer's result.
         guard let layerResult = layerResults.first(where: { $0.layerContent is AGSSubtypeFeatureLayer }) else { return }
@@ -246,15 +246,13 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
             // Get the associations for this extent to display how content features are attached or connected.
             self.utilityNetwork?.associations(withExtent: self.graphicsOverlay.extent) { [weak self] containmentAssociations, _ in
                 guard let self = self, let containmentAssociations = containmentAssociations else { return }
-                containmentAssociations.forEach { association in
-                    var symbol = AGSSymbol()
-                    if association.associationType == .attachment {
-                        symbol = self.attachmentSymbol.symbol
-                    } else {
-                        symbol = self.connectivitySymbol.symbol
-                    }
-                    self.graphicsOverlay.graphics.add(AGSGraphic(geometry: association.geometry, symbol: symbol))
+                let graphics: [AGSGraphic] = containmentAssociations.map { (association) in
+                    let symbol = association.associationType == .attachment
+                        ? self.attachmentSymbol.symbol
+                        : self.connectivitySymbol.symbol
+                    return AGSGraphic(geometry: association.geometry, symbol: symbol)
                 }
+                self.graphicsOverlay.graphics.addObjects(from: graphics)
                 // Enable the bar button item to exit the container view.
                 self.exitBarButtonItem.isEnabled = true
             }

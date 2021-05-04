@@ -310,6 +310,7 @@ extension DisplayContentUtilityNetworkContainerViewController: UIAdaptivePresent
         return .none
     }
 }
+
 // MARK: - AGSAuthenticationManagerDelegate
 
 extension DisplayContentUtilityNetworkContainerViewController: AGSAuthenticationManagerDelegate {

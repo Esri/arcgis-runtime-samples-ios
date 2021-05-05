@@ -25,6 +25,10 @@ Tap the map to see the nearest address displayed in a callout.
 * AGSLocatorTask
 * AGSReverseGeocodeParameters
 
+## About the data
+
+This sample uses the [World Geocoding Service](https://www.arcgis.com/home/item.html?id=305f2e55e67f4389bef269669fc2e284).
+
 ## Tags
 
 address, geocode, locate, reverse geocode, search

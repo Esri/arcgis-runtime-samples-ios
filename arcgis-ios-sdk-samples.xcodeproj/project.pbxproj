@@ -3166,7 +3166,7 @@
 				3ED028101B8E3A8400ACA70D /* Change viewpoint */,
 				3ED028331B8E3A8500ACA70D /* Map rotation */,
 				3ED0284D1B8E3A8500ACA70D /* Show magnifier */,
-				3ED028181B8E3A8400ACA70D /* Display device location */,
+				3ED028181B8E3A8400ACA70D /* Display device location with autopan modes */,
 				3ED028521B8E3A8500ACA70D /* Take screenshot */,
 				3ED028011B8E3A8400ACA70D /* Create and save a map */,
 				3E6C77141CCFC33100E89873 /* Identify layers */,
@@ -3218,14 +3218,14 @@
 			path = "Change viewpoint";
 			sourceTree = "<group>";
 		};
-		3ED028181B8E3A8400ACA70D /* Display device location */ = {
+		3ED028181B8E3A8400ACA70D /* Display device location with autopan modes */ = {
 			isa = PBXGroup;
 			children = (
 				3ED0281A1B8E3A8400ACA70D /* DisplayLocation.storyboard */,
 				3ED0281B1B8E3A8400ACA70D /* DisplayLocationViewController.swift */,
 				C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */,
 			);
-			path = "Display device location";
+			path = "Display device location with autopan modes";
 			sourceTree = "<group>";
 		};
 		3ED028201B8E3A8400ACA70D /* Display drawing status */ = {

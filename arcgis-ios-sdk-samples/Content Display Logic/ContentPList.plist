@@ -129,7 +129,7 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Display device location</string>
+				<string>Display device location with autopan modes</string>
 				<key>storyboardName</key>
 				<string>DisplayLocation</string>
 				<key>descriptionText</key>

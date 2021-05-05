@@ -31,5 +31,5 @@
         "DisplayLocationSettingsViewController.swift",
         "DisplayLocationViewController.swift"
     ],
-    "title": "Display device location"
+    "title": "Display device location with autopan modes"
 }

@@ -68,33 +68,19 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     private func makeLabelDefinition() throws -> AGSLabelDefinition {
         // Make and stylize the text symbol.
         let textSymbol = AGSTextSymbol()
-        textSymbol.angle = 0
         textSymbol.backgroundColor = .clear
         textSymbol.outlineColor = .white
         textSymbol.color = .blue
         textSymbol.haloColor = .white
         textSymbol.haloWidth = 2
-        textSymbol.horizontalAlignment = .center
-        textSymbol.verticalAlignment = .middle
-        textSymbol.isKerningEnabled = false
-        textSymbol.offsetX = 0
-        textSymbol.offsetY = 0
-        textSymbol.fontDecoration = .none
         textSymbol.size = 10.5
-        textSymbol.fontStyle = .normal
-        textSymbol.fontWeight = .normal
-        let textSymbolJSON = try textSymbol.toJSON()
-
-        // Make a JSON object.
-        let labelJSONObject: [String: Any] = [
-            "labelExpression": "[nominalvoltage]",
-            "labelPlacement": "esriServerPointLabelPlacementAboveRight",
-            "useCodedValues": true,
-            "symbol": textSymbolJSON
-        ]
-        
-        let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
-        return result as! AGSLabelDefinition
+        // Make a label definition and adjust its properties.
+        let labelDefinition = AGSLabelDefinition()
+        labelDefinition.expression = AGSArcadeLabelExpression(arcadeString: "$feature.nominalvoltage")
+        labelDefinition.placement = .pointAboveRight
+        labelDefinition.useCodedValues = true
+        labelDefinition.textSymbol = textSymbol
+        return  labelDefinition
     }
     
     // The formatter used to generate strings from scale values.

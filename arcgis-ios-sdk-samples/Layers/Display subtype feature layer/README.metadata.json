@@ -6,6 +6,7 @@
         "display-subtype-feature-layer.png"
     ],
     "keywords": [
+        "arcade",
         "asset group",
         "feature layer",
         "labeling",
@@ -21,6 +22,7 @@
     ],
     "redirect_from": [],
     "relevant_apis": [
+        "AGSArcadeLabelExpression",
         "AGSLabelDefinition",
         "AGSServiceFeatureTable",
         "AGSSubtypeFeatureLayer",

@@ -43,12 +43,9 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
                     self.originalRenderer = self.subtypeSublayer?.renderer
                     self.subtypeSublayer?.labelsEnabled = true
                     self.settingsButton.isEnabled = true
-                    do {
-                        let label = try self.makeLabelDefinition()
-                        self.subtypeSublayer?.labelDefinitions.append(label)
-                    } catch {
-                        self.presentAlert(error: error)
-                    }
+                    // Make and add the labels.
+                    let label = self.makeLabelDefinition()
+                    self.subtypeSublayer?.labelDefinitions.append(label)
                 }
             }
         }
@@ -65,7 +62,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         return map
     }
     
-    private func makeLabelDefinition() throws -> AGSLabelDefinition {
+    private func makeLabelDefinition() -> AGSLabelDefinition {
         // Make and stylize the text symbol.
         let textSymbol = AGSTextSymbol()
         textSymbol.backgroundColor = .clear

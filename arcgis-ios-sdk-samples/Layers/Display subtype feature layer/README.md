@@ -24,6 +24,7 @@ The sample loads with the sublayer visible on the map. Toggle its visibility by 
 
 ## Relevant API
 
+* AGSArcadeLabelExpression
 * AGSLabelDefinition
 * AGSServiceFeatureTable
 * AGSSubtypeFeatureLayer
@@ -35,4 +36,4 @@ The [feature service layer](https://sampleserver7.arcgisonline.com/server/rest/s
 
 ## Tags
 
-asset group, feature layer, labeling, sublayer, subtype, symbology, utility network, visible scale range
+arcade, asset group, feature layer, labeling, sublayer, subtype, symbology, utility network, visible scale range

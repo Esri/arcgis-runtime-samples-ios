@@ -15,6 +15,7 @@
         "symbology",
         "utility network",
         "visible scale range",
+        "AGSArcadeLabelExpression",
         "AGSLabelDefinition",
         "AGSServiceFeatureTable",
         "AGSSubtypeFeatureLayer",

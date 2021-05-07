@@ -56,7 +56,7 @@ class RelatedFeaturesViewController: UITableViewController {
         parameters.orderByFields = [AGSOrderBy(fieldName: "OBJECTID", sortOrder: .descending)]
         
         // query for species related to the selected park
-        self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
+        self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters, queryFeatureFields: .loadAll) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
             // dismiss progress hud
             UIApplication.shared.hideProgressHUD()
             

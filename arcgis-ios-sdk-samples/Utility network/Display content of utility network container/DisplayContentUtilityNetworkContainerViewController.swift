@@ -62,10 +62,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
         exitBarButtonItem.isEnabled = false
         // Remove all the objects that were added onto the graphics overlay.
         graphicsOverlay.graphics.removeAllObjects()
-        (mapView.map?.operationalLayers as? [AGSLayer])?.forEach { layer in
-            // Make each operational layer visible.
-            layer.isVisible = true
-        }
+        setOperationalLayersVisibility(isVisible: true)
         if let previousViewpoint = previousViewpoint {
             // Return to the viewpoint before container view was entered.
             mapView.setViewpoint(previousViewpoint) { [weak self] _ in
@@ -260,6 +257,7 @@ class DisplayContentUtilityNetworkContainerViewController: UIViewController, AGS
     }
     
     // MARK: - AGSGeoViewTouchDelegate
+    
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // Turn off user interaction to avoid straying away from the container view.
         self.mapView.isUserInteractionEnabled = false

@@ -18,7 +18,7 @@ import ArcGIS
 class ShowLabelsOnLayersViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = makeMap()
+            mapView.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
             // Set the map viewpoint to show the layer.
             mapView.setViewpointCenter(AGSPoint(x: -10840000, y: 4680000, spatialReference: .webMercator()), scale: 20000000)
         }
@@ -43,7 +43,7 @@ class ShowLabelsOnLayersViewController: UIViewController {
         mapView.map?.operationalLayers.add(featureLayer)
         // Turn on labeling.
         featureLayer.labelsEnabled = true
-       
+        
         // Create label definitions for the two groups.
         let demDefinition = makeLabelDefinition(party: "Democrat", color: .blue)
         let repDefinition = makeLabelDefinition(party: "Republican", color: .red)

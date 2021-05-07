@@ -56,7 +56,7 @@ class RelatedFeaturesViewController: UITableViewController {
         parameters.orderByFields = [AGSOrderBy(fieldName: "OBJECTID", sortOrder: .descending)]
         
         // query for species related to the selected park
-        self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
+        self.originFeatureTable.queryRelatedFeatures(for: self.originFeature, parameters: parameters, queryFeatureFields: .loadAll) { [weak self] (results: [AGSRelatedFeatureQueryResult]?, error: Error?) in
             // dismiss progress hud
             UIApplication.shared.hideProgressHUD()
             
@@ -130,15 +130,19 @@ class RelatedFeaturesViewController: UITableViewController {
         // show progress hud
         UIApplication.shared.showProgressHUD(message: "Applying edits")
         
-        relatedTable.applyEdits { [weak self] (_, error) in
+        relatedTable.applyEdits { [weak self] (results, error) in
             UIApplication.shared.hideProgressHUD()
-            
-            if let error = error {
-                // show error
-                self?.presentAlert(error: error)
-            } else {
-                // query to update features
-                self?.queryRelatedFeatures()
+            guard let self = self else { return }
+            if let results = results {
+                if let firstResult = results.first,
+                   firstResult.completedWithErrors {
+                    // The edit fails with error.
+                    self.presentAlert(error: firstResult.error!)
+                }
+                // Query to update features in the table.
+                self.queryRelatedFeatures()
+            } else if let error = error {
+                self.presentAlert(error: error)
             }
         }
     }

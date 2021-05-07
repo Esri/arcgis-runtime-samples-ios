@@ -1,4 +1,4 @@
-# Display device location
+# Display device location with autopan modes
 
 Display your current position on the map, as well as switch between different types of auto-pan modes.
 

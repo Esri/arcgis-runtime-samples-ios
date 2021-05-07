@@ -34,4 +34,4 @@ Esri now hosts an [OpenStreetMap vector layer on ArcGIS Online](https://www.arcg
 
 ## Tags
 
-basemap style, layers, map, open, OpenStreetMap, OSM, street
+basemap, layers, map, open, OpenStreetMap, OSM, street

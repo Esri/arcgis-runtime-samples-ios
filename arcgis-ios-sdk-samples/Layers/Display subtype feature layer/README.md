@@ -34,6 +34,10 @@ The sample loads with the sublayer visible on the map. Toggle its visibility by 
 
 The [feature service layer](https://sampleserver7.arcgisonline.com/server/rest/services/UtilityNetwork/NapervilleElectric/FeatureServer/0) in this sample represents an electric network in Naperville, Illinois, which contains a utility network with asset classification for different devices.
 
+## Additional information
+
+Help regarding the Arcade label expression script for defining a label definition can be found on the [ArcGIS Developers](https://developers.arcgis.com/arcade/) site.
+
 ## Tags
 
 arcade, asset group, feature layer, labeling, sublayer, subtype, symbology, utility network, visible scale range

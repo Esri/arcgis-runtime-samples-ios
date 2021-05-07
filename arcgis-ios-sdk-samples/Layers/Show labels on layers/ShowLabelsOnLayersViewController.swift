@@ -32,7 +32,7 @@ class ShowLabelsOnLayersViewController: UIViewController {
     
     /// Adds a feature layer and its labels.
     private func addLayerAndLabels() {
-        /// A URL for a feature service layer.
+        // A URL for a feature service layer.
         let featureTableURL = URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Congressional_Districts_analysis/FeatureServer/0")!
         
         // Create a feature table from the URL.
@@ -54,16 +54,16 @@ class ShowLabelsOnLayersViewController: UIViewController {
     
     /// Creates a label definition for the given PARTY field value and color.
     private func makeLabelDefinition(party: String, color: UIColor) -> AGSLabelDefinition {
-        /// The styling for the label.
+        // The styling for the label.
         let textSymbol = AGSTextSymbol()
         textSymbol.size = 12
         textSymbol.haloColor = .white
         textSymbol.haloWidth = 2
         textSymbol.color = color
         
-        /// An SQL WHERE statement for filtering the features this label applies to.
+        // An SQL WHERE statement for filtering the features this label applies to.
         let whereStatement = "PARTY = '\(party)'"
-        /// An expression that specifies the content of the label using the table's attributes.
+        // An expression that specifies the content of the label using the table's attributes.
         let expression = "$feature.NAME + ' (' + left($feature.PARTY,1) + ')\\nDistrict' + $feature.CDFIPS"
         // Make an arcade label expression.
         let arcadeLabelExpression = AGSArcadeLabelExpression(arcadeString: expression)

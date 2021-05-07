@@ -96,7 +96,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         currentScaleLabel.text = "Current scale: " + updatedText
     }
     
-     override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         mapScaleObservation = mapView.observe(\.mapScale, options: .initial) { [weak self] (_, _) in
@@ -111,7 +111,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if let navController = segue.destination as? UINavigationController,
-            let controller = navController.topViewController as? DisplaySubtypeSettingsViewController {
+           let controller = navController.topViewController as? DisplaySubtypeSettingsViewController {
             controller.map = mapView?.map
             controller.mapScale = mapView.mapScale
             controller.minScale = subtypeSublayer.minScale

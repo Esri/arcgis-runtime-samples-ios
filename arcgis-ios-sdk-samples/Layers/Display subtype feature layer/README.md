@@ -18,6 +18,7 @@ The sample loads with the sublayer visible on the map. Toggle its visibility by 
 1. Create an `AGSSubtypeFeatureLayer` from an `AGSServiceFeatureTable` that defines a subtype, and add it to the `AGSMap`.
 2. Get an `AGSSubtypeSublayer` from the subtype feature layer using its name.
 3. Enable the sublayer's labels and define them with `AGSLabelDefinition`.
+    * Use `AGSArcadeLabelExpression` to set the expression for label definitions.
 4. Make a switch to toggle the sublayer's visibility.
 5. Create an alternate renderer by making an `AGSSimpleRenderer`.
 6. Get the current map scale and make it the minimum map scale.

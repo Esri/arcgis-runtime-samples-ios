@@ -18,16 +18,11 @@ import ArcGIS
 class ShowLabelsOnLayersViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
+            // Create a map with a light gray canvas basemap.
             mapView.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
             // Set the map viewpoint to show the layer.
             mapView.setViewpointCenter(AGSPoint(x: -10840000, y: 4680000, spatialReference: .webMercator()), scale: 20000000)
         }
-    }
-    
-    private func makeMap() -> AGSMap {
-        // Create a map with a light gray canvas basemap.
-        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-        return map
     }
     
     /// Adds a feature layer and its labels.

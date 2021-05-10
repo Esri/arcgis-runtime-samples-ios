@@ -73,7 +73,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         textSymbol.size = 10.5
         // Make a label definition and adjust its properties.
         let labelDefinition = AGSLabelDefinition()
-        labelDefinition.expression = AGSArcadeLabelExpression(arcadeString: "$feature.nominalvoltage")
+        labelDefinition.expression = AGSSimpleLabelExpression(simpleExpression: "[nominalvoltage]")
         labelDefinition.placement = .pointAboveRight
         labelDefinition.useCodedValues = true
         labelDefinition.textSymbol = textSymbol

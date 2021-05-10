@@ -27,6 +27,10 @@ Select the basemap and layers you'd like to add to your map. Tap the "Save" butt
 * AGSMap.save
 * AGSPortal
 
+## Additional information
+
+The sample allows users to view the basemaps with the pre-baked API keys. To save the map to ArcGIS Online, please login with an ArcGIS identity/named user account.
+
 ## Tags
 
 ArcGIS Online, ArcGIS Pro, portal, publish, share, web map

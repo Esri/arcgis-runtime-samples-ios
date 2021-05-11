@@ -16,90 +16,70 @@ import UIKit
 import ArcGIS
 
 class ShowLabelsOnLayersViewController: UIViewController {
-    @IBOutlet private weak var mapView: AGSMapView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ShowLabelsOnLayersViewController"]
-        
-        // create a map with a light gray canvas basemap.
-        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-        // assign the map to the map view
-        mapView.map = map
-        
-        /// A URL for a feature service layer.
-        let featureTableURL = URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Congressional_Districts_analysis/FeatureServer/0")!
-        
-        // create a feature table from the URL
-        let featureTable = AGSServiceFeatureTable(url: featureTableURL)
-        
-        // set the map viewpoint to show the layer
-        mapView.setViewpointCenter(AGSPoint(x: -10840000, y: 4680000, spatialReference: .webMercator()), scale: 20000000)
-        
-        // create a feature layer from the table
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        // add the layer to the map
-        map.operationalLayers.add(featureLayer)
-        
-        // turn on labelling
-        featureLayer.labelsEnabled = true
-       
-        do {
-            // create label definitions for the two groups
-            let demDefinition = try makeLabelDefinition(party: "Democrat", color: .blue)
-            let repDefinition = try makeLabelDefinition(party: "Republican", color: .red)
-            
-            // add the label definitions to the layer
-            featureLayer.labelDefinitions.addObjects(from: [demDefinition, repDefinition])
-        } catch {
-            presentAlert(error: error)
+    @IBOutlet private weak var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+            // Set the map viewpoint to show the layer.
+            mapView.setViewpointCenter(AGSPoint(x: -10840000, y: 4680000, spatialReference: .webMercator()), scale: 20000000)
         }
     }
     
-    /// Creates a label definition for the given PARTY field value and color.
-    private func makeLabelDefinition(party: String, color: UIColor) throws -> AGSLabelDefinition {
-        // The JSON syntax reference for AGSLabelDefinition.fromJSON(_:) can be found here:
-        // https://developers.arcgis.com/web-map-specification/objects/labelingInfo/
+    /// Make the map and add the feature layer.
+    private func makeMap() -> AGSMap {
+        // Create a map with a light gray canvas basemap.
+        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
+        // A URL for a feature service layer.
+        let featureTableURL = URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Congressional_Districts_analysis/FeatureServer/0")!
         
-        /// The styling for the label.
+        // Create a feature table from the URL.
+        let featureTable = AGSServiceFeatureTable(url: featureTableURL)
+        // Create a feature layer from the table.
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        // Add the layer to the map.
+        map.operationalLayers.add(featureLayer)
+        addLabels(to: featureLayer)
+        
+        return map
+    }
+    
+    /// Add labels to the layer.
+    private func addLabels(to layer: AGSFeatureLayer) {
+        // Turn on labeling.
+        layer.labelsEnabled = true
+        
+        // Create label definitions for the two groups.
+        let demDefinition = makeLabelDefinition(party: "Democrat", color: .blue)
+        let repDefinition = makeLabelDefinition(party: "Republican", color: .red)
+        
+        // Add the label definitions to the layer.
+        layer.labelDefinitions.addObjects(from: [demDefinition, repDefinition])
+    }
+    
+    /// Creates a label definition for the given PARTY field value and color.
+    private func makeLabelDefinition(party: String, color: UIColor) -> AGSLabelDefinition {
+        // The styling for the label.
         let textSymbol = AGSTextSymbol()
         textSymbol.size = 12
         textSymbol.haloColor = .white
         textSymbol.haloWidth = 2
         textSymbol.color = color
         
-        // the object must be converted to a JSON object
-        let textSymbolJSON = try textSymbol.toJSON()
-        
-        /// A SQL WHERE statement for filtering the features this label applies to.
+        // An SQL WHERE statement for filtering the features this label applies to.
         let whereStatement = "PARTY = '\(party)'"
-        
-        /// An expression that specifies the content of the label using the table's attributes.
+        // An expression that specifies the content of the label using the table's attributes.
         let expression = "$feature.NAME + ' (' + left($feature.PARTY,1) + ')\\nDistrict' + $feature.CDFIPS"
-        
-        /// The root JSON object defining the label.
-        let labelJSONObject: [String: Any] = [
-            // see https://developers.arcgis.com/web-map-specification/objects/labelExpressionInfo/
-            "labelExpressionInfo": [
-                "expression": expression
-            ],
-            "labelPlacement": "esriServerPolygonPlacementAlwaysHorizontal",
-            "where": whereStatement,
-            "symbol": textSymbolJSON
-        ]
-        
-        // create and return a label definition from the JSON object
-        let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
-        if let definition = result as? AGSLabelDefinition {
-            return definition
-        } else {
-            throw ShowLabelsOnLayersError.withDescription("The JSON could not be read as a label definition.")
-        }
+        // Make an arcade label expression.
+        let arcadeLabelExpression = AGSArcadeLabelExpression(arcadeString: expression)
+        let labelDefinition = AGSLabelDefinition(labelExpression: arcadeLabelExpression, textSymbol: textSymbol)
+        labelDefinition.placement = .polygonAlwaysHorizontal
+        labelDefinition.whereClause = whereStatement
+        return labelDefinition
     }
     
-    private enum ShowLabelsOnLayersError: Error {
-        case withDescription(String)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ShowLabelsOnLayersViewController"]
     }
 }

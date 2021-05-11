@@ -16,6 +16,7 @@
         "visible scale range",
         "AGSLabelDefinition",
         "AGSServiceFeatureTable",
+        "AGSSimpleLabelExpression",
         "AGSSubtypeFeatureLayer",
         "AGSSubtypeSublayer"
     ],
@@ -23,6 +24,7 @@
     "relevant_apis": [
         "AGSLabelDefinition",
         "AGSServiceFeatureTable",
+        "AGSSimpleLabelExpression",
         "AGSSubtypeFeatureLayer",
         "AGSSubtypeSublayer"
     ],

@@ -18,15 +18,16 @@ import ArcGIS
 class ShowLabelsOnLayersViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
-            // Create a map with a light gray canvas basemap.
-            mapView.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
+            mapView.map = makeMap()
             // Set the map viewpoint to show the layer.
             mapView.setViewpointCenter(AGSPoint(x: -10840000, y: 4680000, spatialReference: .webMercator()), scale: 20000000)
         }
     }
     
-    /// Adds a feature layer and its labels.
-    private func addLayerAndLabels() {
+    /// Make the map and add the feature layer.
+    private func makeMap() -> AGSMap {
+        // Create a map with a light gray canvas basemap.
+        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         // A URL for a feature service layer.
         let featureTableURL = URL(string: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Congressional_Districts_analysis/FeatureServer/0")!
         
@@ -35,16 +36,23 @@ class ShowLabelsOnLayersViewController: UIViewController {
         // Create a feature layer from the table.
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         // Add the layer to the map.
-        mapView.map?.operationalLayers.add(featureLayer)
+        map.operationalLayers.add(featureLayer)
+        addLabels(to: featureLayer)
+        
+        return map
+    }
+    
+    /// Add labels to the layer.
+    private func addLabels(to layer: AGSFeatureLayer) {
         // Turn on labeling.
-        featureLayer.labelsEnabled = true
+        layer.labelsEnabled = true
         
         // Create label definitions for the two groups.
         let demDefinition = makeLabelDefinition(party: "Democrat", color: .blue)
         let repDefinition = makeLabelDefinition(party: "Republican", color: .red)
         
         // Add the label definitions to the layer.
-        featureLayer.labelDefinitions.addObjects(from: [demDefinition, repDefinition])
+        layer.labelDefinitions.addObjects(from: [demDefinition, repDefinition])
     }
     
     /// Creates a label definition for the given PARTY field value and color.
@@ -70,7 +78,6 @@ class ShowLabelsOnLayersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addLayerAndLabels()
         
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ShowLabelsOnLayersViewController"]

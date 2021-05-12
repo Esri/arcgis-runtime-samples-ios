@@ -94,7 +94,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     /// Create a map with a utility network.
     func makeMap() -> AGSMap {
         let map = AGSMap(basemapStyle: .arcGISStreetsNight)
-        // Add the not loaded utility network to the map.
+        // Add the not yet loaded utility network to the map.
         map.utilityNetworks.add(utilityNetwork)
         return map
     }
@@ -119,6 +119,8 @@ class PerformValveIsolationTraceViewController: UIViewController {
             } else if let error = error {
                 UIApplication.shared.hideProgressHUD()
                 self.presentAlert(error: error)
+            } else {
+                UIApplication.shared.hideProgressHUD()
             }
         }
     }
@@ -164,6 +166,11 @@ class PerformValveIsolationTraceViewController: UIViewController {
                 self.startingLocationPoint = startingLocationPoint
                 self.addGraphic(for: startingLocationPoint, traceLocationType: "starting point")
                 self.mapView.setViewpointCenter(startingLocationPoint, scale: 3000, completion: nil)
+                // Get available utility categories.
+                self.filterBarrierCategories = self.utilityNetwork.definition.categories
+                self.categoryBarButtonItem.isEnabled = true
+                // Enable touch event detection on the map view.
+                self.mapView.touchDelegate = self
                 self.setStatus(
                     message: """
                     Utility network loaded.
@@ -175,11 +182,6 @@ class PerformValveIsolationTraceViewController: UIViewController {
                 self.setStatus(message: "Failed to load starting location features.")
             }
         }
-        // Get available utility categories.
-        filterBarrierCategories = utilityNetwork.definition.categories
-        categoryBarButtonItem.isEnabled = true
-        // Enable touch event detection on the map view.
-        mapView.touchDelegate = self
     }
     
     // MARK: Factory methods
@@ -247,7 +249,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
             guard let layer = layers.first(where: { $0.featureTable?.tableName == networkName }) else { return }
             
             selectionGroup.enter()
-            self.utilityNetwork.features(for: elements) { [weak self, layer] (features, error) in
+            utilityNetwork.features(for: elements) { [weak self, layer] (features, error) in
                 defer {
                     selectionGroup.leave()
                 }
@@ -287,7 +289,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
         }
         traceParameters.traceConfiguration = configuration
         
-        utilityNetwork.trace(with: traceParameters) { [weak self] (traceResults, error) in
+        utilityNetwork.trace(with: traceParameters) { [weak self] traceResults, error in
             guard let self = self else { return }
             if let elementTraceResult = traceResults?.first as? AGSUtilityElementTraceResult,
                !elementTraceResult.elements.isEmpty {

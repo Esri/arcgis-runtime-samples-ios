@@ -230,6 +230,8 @@ class PerformValveIsolationTraceViewController: UIViewController {
             let filter = AGSUtilityTraceFilter()
             filter.barriers = comparison
             configuration.filter = filter
+        } else {
+            configuration.filter = nil
         }
         configuration.includeIsolatedFeatures = isolationSwitch.isOn
         return configuration

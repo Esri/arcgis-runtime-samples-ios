@@ -335,7 +335,7 @@ extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDele
             guard let self = self else { return }
             if let error = error {
                 // Display error message and stop further route tracking if it
-                // fails due to formatting or licensing issue.
+                // fails due to data format, licensing issue, etc.
                 self.setStatus(message: error.localizedDescription)
                 locationDataSource.locationChangeHandlerDelegate = nil
             }

@@ -29,7 +29,7 @@ Select the basemap and layers you'd like to add to your map. Tap the "Save" butt
 
 ## Additional information
 
-The sample allows users to view the basemaps with the pre-baked API key. To save the map to ArcGIS Online, please login with an ArcGIS identity/named user account.
+In this sample, an API key is set directly on `AGSBasemap` objects rather than on the whole app using the `AGSArcGISRuntimeEnvironment` class. This is useful in a scenario where an individual developer is part of an organization within ArcGIS Online that uses an API key to access a range of `AGSBasemapStyle`s. In the case that an individual member of the organization wants to save a map locally to their account, and not that of the organization, they can set the organization's API key on the basemap, and log in to their own account when challenged.  The individual can then save the final map to their own ArcGIS Online account.
 
 ## Tags
 

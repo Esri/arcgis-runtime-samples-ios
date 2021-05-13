@@ -334,8 +334,10 @@ extension NavigateRouteWithReroutingViewController: AGSLocationChangeHandlerDele
         routeTracker?.trackLocation(location) { [weak self] error in
             guard let self = self else { return }
             if let error = error {
+                // Display error message and stop further route tracking if it
+                // fails due to formatting or licensing issue.
                 self.setStatus(message: error.localizedDescription)
-                self.routeTracker.delegate = nil
+                locationDataSource.locationChangeHandlerDelegate = nil
             }
         }
     }

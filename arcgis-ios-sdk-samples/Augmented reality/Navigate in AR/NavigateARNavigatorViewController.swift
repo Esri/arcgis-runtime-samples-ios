@@ -249,7 +249,15 @@ extension NavigateARNavigatorViewController: AGSLocationChangeHandlerDelegate {
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         startButtonItem.isEnabled = true
         // Send location updates to route tracker if actively navigating.
-        routeTracker?.trackLocation(location)
+        routeTracker?.trackLocation(location)  { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                // Display error message and stop further route tracking if it
+                // fails due to formatting or licensing issue.
+                self.setStatus(message: error.localizedDescription)
+                locationDataSource.locationChangeHandlerDelegate = nil
+            }
+        }
     }
 }
 

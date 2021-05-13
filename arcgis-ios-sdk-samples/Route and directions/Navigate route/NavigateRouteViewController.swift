@@ -329,7 +329,7 @@ extension NavigateRouteViewController: AGSLocationChangeHandlerDelegate {
                 // Display error message and stop further route tracking if it
                 // fails due to data format, licensing issue, etc.
                 self.setStatus(message: error.localizedDescription)
-                locationDataSource.locationChangeHandlerDelegate = nil
+                self.routeTracker = nil
             }
         }
     }

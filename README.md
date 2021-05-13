@@ -25,7 +25,7 @@ The ```main``` branch of this repository contains samples configured for the lat
 
 ## Requirements
 
-* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.11.1 (or newer)
+* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.11.0 (or newer)
 * [ArcGIS Runtime Toolkit for iOS](https://github.com/Esri/arcgis-runtime-toolkit-ios) 100.11.0 (or newer)
 * Xcode 12.0 (or newer)
 

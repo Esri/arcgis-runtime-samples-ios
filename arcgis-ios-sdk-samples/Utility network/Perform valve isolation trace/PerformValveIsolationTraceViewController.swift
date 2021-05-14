@@ -174,7 +174,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
                 self.setStatus(
                     message: """
                     Utility network loaded.
-                    Tap on the map to add filter barriers, or run the trace directly without filter barriers.
+                    Tap on the map to add filter barriers or run the trace directly without filter barriers.
                     """
                 )
             } else if let error = error {

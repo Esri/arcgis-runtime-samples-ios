@@ -383,6 +383,8 @@ extension PerformValveIsolationTraceViewController: AGSGeoViewTouchDelegate {
         if let identifyAction = identifyAction {
             identifyAction.cancel()
         }
+        // Turn off user interaction to avoid unintended touch during identify.
+        mapView.isUserInteractionEnabled = false
         identifyAction = mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10, returnPopupsOnly: false) { [weak self] result, error in
             guard let self = self else { return }
             if let feature = result?.first?.geoElements.first as? AGSArcGISFeature {
@@ -391,6 +393,7 @@ extension PerformValveIsolationTraceViewController: AGSGeoViewTouchDelegate {
                 self.setStatus(message: "Error identifying trace locations.")
                 self.presentAlert(error: error)
             }
+            self.mapView.isUserInteractionEnabled = true
         }
     }
     

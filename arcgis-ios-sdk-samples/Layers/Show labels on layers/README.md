@@ -16,16 +16,15 @@ Pan and zoom around the United States. Labels for congressional districts will b
 
 1. Create an `AGSServiceFeatureTable` using a feature service URL.
 2. Create an `AGSFeatureLayer` from the service feature table.
-3. Create an `AGSTextSymbol` to use for displaying the label text.
-4. Create a JSON string for the label definition.
-    * Set the "LabelExpressionInfo.expression" key to express what the text the label should display. You can use fields of the feature by using `$feature.NAME` in the expression.
-    * To use the text symbol, set the "symbol" key to the symbol's JSON representation using `AGSTextSymbol.toJSON()`.
-5. Create a label definition from the JSON using `class AGSJSONSerializable.fromJSON(_:)`.
-6. Add the definition to the feature layer's `labelDefinitions` array.
-7. Lastly, enable labels on the layer by setting its `labelsEnabled` property to `true`.
+3. Create and stylize an `AGSTextSymbol` to use for displaying the label text.
+4. Create an `AGSLabelDefinition` with an `AGSArcadeLabelExpression` and the text symbol.
+    * You can use fields of the feature by using `$feature.NAME` in the expression.
+5. Add the definition to the feature layer's `labelDefinitions` array.
+6. Lastly, enable labels on the layer by setting its `labelsEnabled` property to `true`.
 
 ## Relevant API
 
+* AGSArcadeLabelExpression
 * AGSFeatureLayer
 * AGSLabelDefinition
 * AGSTextSymbol
@@ -36,8 +35,8 @@ This sample uses the [USA 116th Congressional Districts](https://www.arcgis.com/
 
 ## Additional information
 
-Help regarding the JSON syntax for defining a label definition can be found in [labeling info](https://developers.arcgis.com/web-map-specification/objects/labelingInfo/) in the *Web map specification*.
+Help regarding the Arcade label expression script for defining a label definition can be found on the [ArcGIS Developers](https://developers.arcgis.com/arcade/) site.
 
 ## Tags
 
-attribute, deconfliction, label, labeling, string, symbol, text, visualization
+arcade, attribute, deconfliction, label, labeling, string, symbol, text, visualization

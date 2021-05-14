@@ -1836,6 +1836,14 @@
 				<key>storyboardName</key>
 				<string>CreateLoadReport</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display content of utility network container</string>
+				<key>storyboardName</key>
+				<string>DisplayContentUtilityNetworkContainer</string>
+				<key>descriptionText</key>
+				<string>A utility network container allows a dense collection of features to be represented by a single feature, which can be used to reduce map clutter.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

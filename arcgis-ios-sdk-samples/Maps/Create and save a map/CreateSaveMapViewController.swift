@@ -47,7 +47,8 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             "CreateOptionsViewController",
             "SaveAsViewController"
         ]
-        
+        // Temporarily remove the API key for this sample.
+        // Please see the additional information in the README.
         apiKey = AGSArcGISRuntimeEnvironment.apiKey
         AGSArcGISRuntimeEnvironment.apiKey = ""
         

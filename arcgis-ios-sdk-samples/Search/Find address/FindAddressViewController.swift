@@ -24,7 +24,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     private var geocodeParameters: AGSGeocodeParameters!
     private let graphicsOverlay = AGSGraphicsOverlay()
     
-    private let locatorURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+    private let locatorURL = "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
     
     override func viewDidLoad() {
         super.viewDidLoad()

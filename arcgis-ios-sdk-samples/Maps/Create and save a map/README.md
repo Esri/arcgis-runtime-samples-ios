@@ -29,7 +29,7 @@ Select the basemap and layers you'd like to add to your map. Tap the "Save" butt
 
 ## Additional information
 
-In this sample, an API key is set directly on `AGSBasemap` objects rather than on the whole app using the `AGSArcGISRuntimeEnvironment` class. This is useful in a scenario where an individual developer is part of an organization within ArcGIS Online that uses an API key to access a range of `AGSBasemapStyle`s. In the case that an individual member of the organization wants to save a map locally to their account, and not that of the organization, they can set the organization's API key on the basemap, and log in to their own account when challenged. The individual can then save the final map to their own ArcGIS Online account.
+In this sample, the API key is unset from `AGSArcGISRuntimeEnvironment` class when the user wants to save the map. This is useful in a scenario where an individual developer is part of an organization within ArcGIS Online that uses an API key to access a range of `AGSBasemapStyle`s. In the case that an individual member of the organization wants to save a map locally to their account, and not that of the organization, they can either set the organization's API key on the basemap, or set it as the environment key, unset before saving the map, and log in to their own account when challenged. The individual can then save the final map to their own ArcGIS Online account.
 
 ## Tags
 

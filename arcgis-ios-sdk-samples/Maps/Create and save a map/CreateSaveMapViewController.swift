@@ -36,7 +36,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     @IBOutlet private weak var mapView: AGSMapView!
     
     private var portal: AGSPortal?
-    private var apiKey: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +46,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             "CreateOptionsViewController",
             "SaveAsViewController"
         ]
-        // Temporarily remove the API key for this sample.
-        // Please see the additional information in the README.
-        apiKey = AGSArcGISRuntimeEnvironment.apiKey
-        AGSArcGISRuntimeEnvironment.apiKey = ""
         
         // Auth Manager settings
         let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
@@ -59,10 +54,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
         
         // Initially show the map creation UI.
         performSegue(withIdentifier: "CreateNewSegue", sender: self)
-    }
-    
-    deinit {
-        AGSArcGISRuntimeEnvironment.apiKey = apiKey
     }
     
     private func showSuccess() {
@@ -115,7 +106,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     
     func createOptionsViewController(_ createOptionsViewController: CreateOptionsViewController, didSelectBasemap basemap: AGSBasemap, layers: [AGSLayer]) {
         // Create a map with the selected basemap.
-        basemap.apiKey = apiKey
         let map = AGSMap(basemap: basemap)
         
         // Add the selected operational layers.
@@ -144,6 +134,11 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             // Also to cut on the size.
             let croppedImage: UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
             
+            // Temporarily unset the API key for this sample.
+            // Please see the additional information in the README.
+            let apiKey = AGSArcGISRuntimeEnvironment.apiKey
+            AGSArcGISRuntimeEnvironment.apiKey = ""
+            
             self.mapView.map?.save(as: title, portal: self.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
                 // Dismiss progress hud.
                 UIApplication.shared.hideProgressHUD()
@@ -155,6 +150,8 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
                     }
                 }
             }
+            
+            AGSArcGISRuntimeEnvironment.apiKey = apiKey
         }
     }
 }

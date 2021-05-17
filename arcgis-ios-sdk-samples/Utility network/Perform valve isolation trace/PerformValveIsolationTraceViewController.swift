@@ -380,6 +380,8 @@ class PerformValveIsolationTraceViewController: UIViewController {
 
 extension PerformValveIsolationTraceViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        // Don't identify taps if trace has completed.
+        if traceCompleted { return }
         if let identifyAction = identifyAction {
             identifyAction.cancel()
         }

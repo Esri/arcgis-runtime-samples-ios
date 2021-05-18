@@ -142,6 +142,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             self.mapView.map?.save(as: title, portal: self.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
                 // Dismiss progress hud.
                 UIApplication.shared.hideProgressHUD()
+                AGSArcGISRuntimeEnvironment.apiKey = apiKey
                 if let error = error {
                     saveAsViewController.presentAlert(error: error)
                 } else {
@@ -150,8 +151,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
                     }
                 }
             }
-            
-            AGSArcGISRuntimeEnvironment.apiKey = apiKey
         }
     }
 }

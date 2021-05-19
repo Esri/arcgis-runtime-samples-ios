@@ -19,7 +19,7 @@ Tap on one or more features to use as filter barriers or create and set the conf
 2. Create and load an `AGSServiceGeodatabase` with a feature service URL and get tables with their layer IDs.
 3. Create an `AGSMap` object that contains `AGSFeatureLayer`(s) created from the service geodatabase's tables.
 4. Create and load an `AGSUtilityNetwork` with the same feature service URL and map. Use `AGSGeoViewTouchDelegate.geoView(_:didTapAtScreenPoint:mapPoint:)` to get the `mapPoint` where a user tapped on the map.
-5. Create `AGSUtilityTraceParameters` with `isolation` trace type and aa default starting location from a given asset type and global ID.
+5. Create `AGSUtilityTraceParameters` with `isolation` trace type and a default starting location from a given asset type and global ID.
 6. Get a default `AGSUtilityTraceConfiguration` from a given tier in a domain network. Set its `filter` property with an `AGSUtilityTraceFilter` object.
 7. Add an `AGSGraphicsOverlay` for showing starting location and filter barriers.
 8. Populate the choice list for the filter barriers from the `categories` property of `AGSUtilityNetworkDefinition`.

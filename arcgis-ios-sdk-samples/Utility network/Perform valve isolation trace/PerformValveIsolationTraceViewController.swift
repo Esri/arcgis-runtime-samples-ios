@@ -61,10 +61,10 @@ class PerformValveIsolationTraceViewController: UIViewController {
     /// The utility category selected for running the trace.
     var selectedCategory: AGSUtilityCategory?
     /// An array of available utility categories with current network definition.
-    var filterBarrierCategories: [AGSUtilityCategory]!
+    var filterBarrierCategories = [AGSUtilityCategory]()
     /// An array to hold the gas line and gas device feature layers created from
     /// the service geodatabase.
-    var layers: [AGSFeatureLayer]!
+    var layers = [AGSFeatureLayer]()
     /// The point geometry of the starting location.
     var startingLocationPoint: AGSPoint!
     
@@ -132,20 +132,17 @@ class PerformValveIsolationTraceViewController: UIViewController {
         utilityNetwork.load { [weak self] error in
             guard let self = self else { return }
             let errorMessage = "Failed to load utility network."
-            guard error == nil else {
+            if let error = error {
                 UIApplication.shared.hideProgressHUD()
-                self.presentAlert(error: error!)
+                self.presentAlert(error: error)
                 self.setStatus(message: errorMessage)
-                return
-            }
-            // Create a default starting location.
-            guard let startingLocation = self.makeStartingLocation() else {
+            } else if let startingLocation = self.makeStartingLocation() {
+                self.utilityNetworkDidLoad(startingLocation: startingLocation)
+            } else {
                 UIApplication.shared.hideProgressHUD()
                 self.presentAlert(message: "Failed to create starting location.")
                 self.setStatus(message: errorMessage)
-                return
             }
-            self.utilityNetworkDidLoad(startingLocation: startingLocation)
         }
     }
     
@@ -165,7 +162,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
                 // Then draw the starting location on the map.
                 self.startingLocationPoint = startingLocationPoint
                 self.addGraphic(for: startingLocationPoint, traceLocationType: "starting point")
-                self.mapView.setViewpointCenter(startingLocationPoint, scale: 3000, completion: nil)
+                self.mapView.setViewpointCenter(startingLocationPoint, scale: 3_000)
                 // Get available utility categories.
                 self.filterBarrierCategories = self.utilityNetwork.definition.categories
                 self.categoryBarButtonItem.isEnabled = true
@@ -313,8 +310,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
     }
     
     @IBAction func traceResetButtonTapped(_ button: UIBarButtonItem) {
-        switch traceCompleted {
-        case true:
+        if traceCompleted {
             // Reset the trace if it is already completed
             clearLayersSelection()
             traceParameters.filterBarriers.removeAll()
@@ -323,14 +319,14 @@ class PerformValveIsolationTraceViewController: UIViewController {
             selectedCategory = nil
             // Add back the starting location.
             addGraphic(for: startingLocationPoint, traceLocationType: "starting point")
-            mapView.setViewpointCenter(startingLocationPoint, scale: 3000, completion: nil)
+            mapView.setViewpointCenter(startingLocationPoint, scale: 3_000)
             // Set UI state.
             setStatus(message: "Tap on the map to add filter barriers, or run the trace directly without filter barriers.")
             traceResetBarButtonItem.title = "Trace"
             traceResetBarButtonItem.isEnabled = false
             categoryBarButtonItem.isEnabled = true
             isolationSwitch.isEnabled = true
-        case false:
+        } else {
             UIApplication.shared.showProgressHUD(message: "Running isolation trace…")
             // Run the trace.
             trace { [weak self] in
@@ -381,10 +377,8 @@ class PerformValveIsolationTraceViewController: UIViewController {
 extension PerformValveIsolationTraceViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // Don't identify taps if trace has completed.
-        if traceCompleted { return }
-        if let identifyAction = identifyAction {
-            identifyAction.cancel()
-        }
+        guard !traceCompleted else { return }
+        identifyAction?.cancel()
         // Turn off user interaction to avoid unintended touch during identify.
         mapView.isUserInteractionEnabled = false
         identifyAction = mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 10, returnPopupsOnly: false) { [weak self] result, error in
@@ -419,7 +413,7 @@ extension PerformValveIsolationTraceViewController: AGSGeoViewTouchDelegate {
             }
             self.traceParameters.filterBarriers.append(element)
             let point = geometry as? AGSPoint ?? location
-            self.addGraphic(for: point, traceLocationType: PerformValveIsolationTraceViewController.filterBarrierIdentifier)
+            self.addGraphic(for: point, traceLocationType: Self.filterBarrierIdentifier)
         }
         
         switch element.networkSource.sourceType {
@@ -473,7 +467,7 @@ extension PerformValveIsolationTraceViewController: AGSGeoViewTouchDelegate {
                 let tapPoint = mapView.location(toScreen: mapPoint)
                 popoverController.sourceRect = CGRect(origin: tapPoint, size: .zero)
             }
-            present(terminalPicker, animated: true, completion: nil)
+            present(terminalPicker, animated: true)
         } else if let terminal = terminals.first {
             completion(terminal)
         }

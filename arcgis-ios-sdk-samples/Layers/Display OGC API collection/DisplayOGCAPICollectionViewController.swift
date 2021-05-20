@@ -33,6 +33,15 @@ class DisplayOGCAPICollectionViewController: UIViewController {
     var lastQuery: AGSCancelable?
     /// The KVO on navigating status of the map view.
     var navigatingObservation: NSKeyValueObservation?
+    /// The base query parameters to populate features from the OGC API service.
+    let visibleExtentQueryParameters: AGSQueryParameters = {
+        let queryParameters = AGSQueryParameters()
+        queryParameters.spatialRelationship = .intersects
+        // Set a limit of 5000 on the number of returned features per request,
+        // because the default on some services could be as low as 10.
+        queryParameters.maxFeatures = 5_000
+        return queryParameters
+    }()
     
     /// A feature layer to visualize the OGC API features.
     let ogcFeatureLayer: AGSFeatureLayer = {
@@ -59,19 +68,14 @@ class DisplayOGCAPICollectionViewController: UIViewController {
         // Cancel if there is an existing query request.
         lastQuery?.cancel()
         
-        // Create a query based on the current visible extent.
-        let visibleExtentQuery = AGSQueryParameters()
-        visibleExtentQuery.geometry = mapView.visibleArea?.extent
-        visibleExtentQuery.spatialRelationship = .intersects
-        // Set a limit of 5000 on the number of returned features per request,
-        // because the default on some services could be as low as 10.
-        visibleExtentQuery.maxFeatures = 5_000
+        // Set the query's geometry to the current visible extent.
+        visibleExtentQueryParameters.geometry = mapView.visibleArea?.extent
         
         // Populate the table with the query. Setting `outFields` to `nil`
         // requests all fields.
         let table = ogcFeatureLayer.featureTable as! AGSOGCFeatureCollectionTable
         lastQuery = table.populateFromService(
-            with: visibleExtentQuery,
+            with: visibleExtentQueryParameters,
             clearCache: false,
             outfields: nil
         ) { [weak self] _, error in

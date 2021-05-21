@@ -6,6 +6,7 @@
         "show-labels.png"
     ],
     "keywords": [
+        "arcade",
         "attribute",
         "deconfliction",
         "label",
@@ -14,12 +15,14 @@
         "symbol",
         "text",
         "visualization",
+        "AGSArcadeLabelExpression",
         "AGSFeatureLayer",
         "AGSLabelDefinition",
         "AGSTextSymbol"
     ],
     "redirect_from": [],
     "relevant_apis": [
+        "AGSArcadeLabelExpression",
         "AGSFeatureLayer",
         "AGSLabelDefinition",
         "AGSTextSymbol"

@@ -42,7 +42,7 @@ Choose a type of place in the first field and an area to search within in the se
 
 ## About the data
 
-This sample uses the [world locator service](https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer).
+This sample uses the [World Geocoding Service](https://www.arcgis.com/home/item.html?id=305f2e55e67f4389bef269669fc2e284).
 
 ## Tags
 

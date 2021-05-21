@@ -847,6 +847,9 @@
 		F16922B225158B1E00A8F36E /* EditKMLGroundOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16922B125158B1E00A8F36E /* EditKMLGroundOverlay.storyboard */; };
 		F16922B525158B4400A8F36E /* EditKMLGroundOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */; };
 		F16922B7251590E200A8F36E /* EditKMLGroundOverlayViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */; };
+		F1710AF025EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */; };
+		F1710AF325EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1710AF225EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard */; };
+		F1710AF525EEF4C000900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */; };
 		F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
@@ -921,6 +924,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1710AF525EEF4C000900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in CopyFiles */,
 				F11CED76256C8BD3002A3F56 /* ShowLabelsOnLayer3DViewController.swift in CopyFiles */,
 				00F359C725F2F27500A7C880 /* CreateLoadReportViewController.swift in CopyFiles */,
 				009B600325E5DB4700BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift in CopyFiles */,
@@ -1782,6 +1786,8 @@
 		F164997A22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndSyncFeaturesViewController.swift; sourceTree = "<group>"; };
 		F16922B125158B1E00A8F36E /* EditKMLGroundOverlay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditKMLGroundOverlay.storyboard; sourceTree = "<group>"; };
 		F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditKMLGroundOverlayViewController.swift; sourceTree = "<group>"; };
+		F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayContentUtilityNetworkContainerViewController.swift; path = "arcgis-ios-sdk-samples/Utility Network/Display content of utility network container/DisplayContentUtilityNetworkContainerViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F1710AF225EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = DisplayContentUtilityNetworkContainer.storyboard; path = "arcgis-ios-sdk-samples/Utility Network/Display content of utility network container/DisplayContentUtilityNetworkContainer.storyboard"; sourceTree = SOURCE_ROOT; };
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
@@ -3166,7 +3172,7 @@
 				3ED028101B8E3A8400ACA70D /* Change viewpoint */,
 				3ED028331B8E3A8500ACA70D /* Map rotation */,
 				3ED0284D1B8E3A8500ACA70D /* Show magnifier */,
-				3ED028181B8E3A8400ACA70D /* Display device location */,
+				3ED028181B8E3A8400ACA70D /* Display device location with autopan modes */,
 				3ED028521B8E3A8500ACA70D /* Take screenshot */,
 				3ED028011B8E3A8400ACA70D /* Create and save a map */,
 				3E6C77141CCFC33100E89873 /* Identify layers */,
@@ -3218,14 +3224,14 @@
 			path = "Change viewpoint";
 			sourceTree = "<group>";
 		};
-		3ED028181B8E3A8400ACA70D /* Display device location */ = {
+		3ED028181B8E3A8400ACA70D /* Display device location with autopan modes */ = {
 			isa = PBXGroup;
 			children = (
 				3ED0281A1B8E3A8400ACA70D /* DisplayLocation.storyboard */,
 				3ED0281B1B8E3A8400ACA70D /* DisplayLocationViewController.swift */,
 				C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */,
 			);
-			path = "Display device location";
+			path = "Display device location with autopan modes";
 			sourceTree = "<group>";
 		};
 		3ED028201B8E3A8400ACA70D /* Display drawing status */ = {
@@ -4203,6 +4209,7 @@
 		D98CC08F22E25D8200618682 /* Utility network */ = {
 			isa = PBXGroup;
 			children = (
+				F1710AEE25EECFB100900FF2 /* Display content of utility network container */,
 				0069F4B825F0110900CA7BD2 /* Create load report */,
 				F14A8EFC2474AD3A00242D96 /* Configure subnetwork trace */,
 				F1D50229245243AD00583CFB /* Display utility associations */,
@@ -4474,6 +4481,15 @@
 				F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */,
 			);
 			path = "Edit KML ground overlay";
+			sourceTree = "<group>";
+		};
+		F1710AEE25EECFB100900FF2 /* Display content of utility network container */ = {
+			isa = PBXGroup;
+			children = (
+				F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */,
+				F1710AF225EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard */,
+			);
+			path = "Display content of utility network container";
 			sourceTree = "<group>";
 		};
 		F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */ = {
@@ -4838,6 +4854,7 @@
 				C76F757421827C9C00938D8D /* ColorPicker.storyboard in Resources */,
 				D97B7E621FD9BFE700E1239D /* Subdivisions.sbn in Resources */,
 				3ED028691B8E3A8500ACA70D /* SetViewpoint.storyboard in Resources */,
+				F1710AF325EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard in Resources */,
 				3EFCE1BD1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard in Resources */,
 				9DF04DC02304C7F50014C1EE /* DownloadPreplannedMap.storyboard in Resources */,
 				166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */,
@@ -5163,6 +5180,7 @@
 				003BC31224E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift in Sources */,
 				3EEA06101D21C44000E03774 /* DisplaySceneViewController.swift in Sources */,
 				001D342F251BF94600F9EEBE /* ViewHiddenInfrastructureARExplorerViewController.swift in Sources */,
+				F1710AF025EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in Sources */,
 				4C0FD7CF22652E3B0042DE31 /* ReadSymbolsFromMobileStyleSymbolViewController.swift in Sources */,
 				10859BAC1FE0AAE400F6E552 /* FeatureLayerExtrusionViewController.swift in Sources */,
 				C7FF07D621B9D258000D4055 /* FeatureLayerRenderingModeSceneViewController.swift in Sources */,
@@ -5564,7 +5582,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.11.0;
+				MARKETING_VERSION = 100.11.1;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5593,7 +5611,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.11.0;
+				MARKETING_VERSION = 100.11.1;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5699,7 +5717,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Esri/arcgis-runtime-toolkit-ios";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = upToNextMinorVersion;
 				minimumVersion = 100.11.0;
 			};
 		};

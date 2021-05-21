@@ -115,6 +115,12 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>UISupportedExternalAccessoryProtocols</key>
+	<array>
+		<string>com.bad-elf.gps</string>
+		<string>com.eos-gnss.positioningsource</string>
+		<string>com.geneq.sxbluegpssource</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

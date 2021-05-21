@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AJ2-vJ-kOC">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Display Content Utility Network Container View Controller-->
+        <scene sceneID="bvO-0D-Blr">
+            <objects>
+                <viewController id="AJ2-vJ-kOC" customClass="DisplayContentUtilityNetworkContainerViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UYX-lE-URm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgJ-4V-EwJ" userLabel="Map View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgX-Rf-9Od">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qP6-q2-bY8"/>
+                                    <barButtonItem enabled="NO" title="Legend" id="kbl-L6-sWd" userLabel="Legend Bar Button Item">
+                                        <connections>
+                                            <segue destination="joz-Jj-EES" kind="popoverPresentation" identifier="DisplayContentLegendSegue" popoverAnchorBarButtonItem="kbl-L6-sWd" id="gib-aU-q8U">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ynB-wT-vpa"/>
+                                    <barButtonItem enabled="NO" title="Exit container view" id="xMf-yG-3Pq">
+                                        <connections>
+                                            <action selector="exitContainerView" destination="AJ2-vJ-kOC" id="soo-wX-CO5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="y1a-Dr-ncT"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OZH-zL-pnv"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fgJ-4V-EwJ" firstAttribute="top" secondItem="OZH-zL-pnv" secondAttribute="top" id="5mP-Jt-EqZ"/>
+                            <constraint firstAttribute="trailing" secondItem="fgJ-4V-EwJ" secondAttribute="trailing" id="6rA-qI-QCW"/>
+                            <constraint firstAttribute="trailing" secondItem="cgX-Rf-9Od" secondAttribute="trailing" id="K5m-ww-UGU"/>
+                            <constraint firstItem="cgX-Rf-9Od" firstAttribute="top" secondItem="fgJ-4V-EwJ" secondAttribute="bottom" id="MIU-Xk-yQA"/>
+                            <constraint firstItem="fgJ-4V-EwJ" firstAttribute="leading" secondItem="UYX-lE-URm" secondAttribute="leading" id="lzC-F5-3hv"/>
+                            <constraint firstItem="cgX-Rf-9Od" firstAttribute="leading" secondItem="UYX-lE-URm" secondAttribute="leading" id="naF-TB-des"/>
+                            <constraint firstItem="cgX-Rf-9Od" firstAttribute="bottom" secondItem="OZH-zL-pnv" secondAttribute="bottom" id="u3l-x3-Bzi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="exitBarButtonItem" destination="xMf-yG-3Pq" id="lcb-zF-3Lw"/>
+                        <outlet property="legendBarButtonItem" destination="kbl-L6-sWd" id="orA-3j-efO"/>
+                        <outlet property="mapView" destination="fgJ-4V-EwJ" id="ueN-8y-yS8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YpG-zh-aU9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="286" y="125"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Kby-xD-QOf">
+            <objects>
+                <tableViewController id="joz-Jj-EES" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ecK-k8-KjM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DisplayContentLegendCell" id="MhE-DT-St6">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MhE-DT-St6" id="IDe-Lg-rTq">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="joz-Jj-EES" id="O1H-cD-y7N"/>
+                            <outlet property="delegate" destination="joz-Jj-EES" id="SNK-nN-BKT"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DCW-I4-c5O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1013" y="125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

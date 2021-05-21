@@ -43,12 +43,9 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
                     self.originalRenderer = self.subtypeSublayer?.renderer
                     self.subtypeSublayer?.labelsEnabled = true
                     self.settingsButton.isEnabled = true
-                    do {
-                        let label = try self.makeLabelDefinition()
-                        self.subtypeSublayer?.labelDefinitions.append(label)
-                    } catch {
-                        self.presentAlert(error: error)
-                    }
+                    // Make and add the labels.
+                    let label = self.makeLabelDefinition()
+                    self.subtypeSublayer?.labelDefinitions.append(label)
                 }
             }
         }
@@ -65,36 +62,22 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         return map
     }
     
-    private func makeLabelDefinition() throws -> AGSLabelDefinition {
+    private func makeLabelDefinition() -> AGSLabelDefinition {
         // Make and stylize the text symbol.
         let textSymbol = AGSTextSymbol()
-        textSymbol.angle = 0
         textSymbol.backgroundColor = .clear
         textSymbol.outlineColor = .white
         textSymbol.color = .blue
         textSymbol.haloColor = .white
         textSymbol.haloWidth = 2
-        textSymbol.horizontalAlignment = .center
-        textSymbol.verticalAlignment = .middle
-        textSymbol.isKerningEnabled = false
-        textSymbol.offsetX = 0
-        textSymbol.offsetY = 0
-        textSymbol.fontDecoration = .none
         textSymbol.size = 10.5
-        textSymbol.fontStyle = .normal
-        textSymbol.fontWeight = .normal
-        let textSymbolJSON = try textSymbol.toJSON()
-
-        // Make a JSON object.
-        let labelJSONObject: [String: Any] = [
-            "labelExpression": "[nominalvoltage]",
-            "labelPlacement": "esriServerPointLabelPlacementAboveRight",
-            "useCodedValues": true,
-            "symbol": textSymbolJSON
-        ]
-        
-        let result = try AGSLabelDefinition.fromJSON(labelJSONObject)
-        return result as! AGSLabelDefinition
+        // Make a label definition and adjust its properties.
+        let labelDefinition = AGSLabelDefinition()
+        labelDefinition.expression = AGSSimpleLabelExpression(simpleExpression: "[nominalvoltage]")
+        labelDefinition.placement = .pointAboveRight
+        labelDefinition.useCodedValues = true
+        labelDefinition.textSymbol = textSymbol
+        return  labelDefinition
     }
     
     // The formatter used to generate strings from scale values.
@@ -113,7 +96,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
         currentScaleLabel.text = "Current scale: " + updatedText
     }
     
-     override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         mapScaleObservation = mapView.observe(\.mapScale, options: .initial) { [weak self] (_, _) in
@@ -128,7 +111,7 @@ class DisplaySubtypeFeatureLayerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if let navController = segue.destination as? UINavigationController,
-            let controller = navController.topViewController as? DisplaySubtypeSettingsViewController {
+           let controller = navController.topViewController as? DisplaySubtypeSettingsViewController {
             controller.map = mapView?.map
             controller.mapScale = mapView.mapScale
             controller.minScale = subtypeSublayer.minScale

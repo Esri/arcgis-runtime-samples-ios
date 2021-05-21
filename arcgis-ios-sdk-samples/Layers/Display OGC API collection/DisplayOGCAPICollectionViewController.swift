@@ -16,8 +16,10 @@ import UIKit
 import ArcGIS
 
 class DisplayOGCAPICollectionViewController: UIViewController {
+    // MARK: Instance properties
+    
     /// The map view managed by the view controller.
-    @IBOutlet weak var mapView: AGSMapView! {
+    @IBOutlet var mapView: AGSMapView! {
         didSet {
             let map = AGSMap(basemapStyle: .arcGISTopographic)
             map.operationalLayers.add(ogcFeatureLayer)
@@ -26,8 +28,6 @@ class DisplayOGCAPICollectionViewController: UIViewController {
             mapView.setViewpoint(AGSViewpoint(latitude: 32.62, longitude: 36.10, scale: 20_000))
         }
     }
-    
-    // MARK: Instance properties
     
     /// The last query job.
     var lastQuery: AGSCancelable?
@@ -79,8 +79,9 @@ class DisplayOGCAPICollectionViewController: UIViewController {
             clearCache: false,
             outfields: nil
         ) { [weak self] _, error in
-            if let error = error, (error as NSError).code != NSUserCancelledError {
-                // Do not display error if user simply cancelled the request.
+            if let error = error,
+               // Do not display error if user simply cancelled the request.
+               (error as NSError).code != NSUserCancelledError {
                 self?.presentAlert(error: error)
             }
         }

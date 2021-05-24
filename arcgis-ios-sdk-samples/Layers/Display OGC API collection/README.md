@@ -19,7 +19,7 @@ Pan the map and see how new features are loaded from the OGC API feature service
 3. Create an `AGSFeatureLayer` using the feature table and add it to the map view.
 4. Create a default `AGSQueryParameters` object.
     * Set the parameter's `spatialRelationship` property to `intersects`.
-    * Set the `maxFeatures` property to 5000 (some services have a low default value for maximum features).
+    * Set the `maxFeatures` property to `5_000` (some services have a low default value for maximum features).
 5. Every time the map view navigation completes:
     * Set the parameter's `geometry` to the current extent of the map view.
     * Call `AGSOGCFeatureCollectionTable.populateFromService(with:clearCache:outfields:completion:)` using the query parameters.

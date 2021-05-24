@@ -93,14 +93,12 @@ class DisplayOGCAPICollectionViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayOGCAPICollectionViewController"]
-        // Query for features with the initial extent.
-        populateFeaturesFromQuery()
-        // Query for features whenever map's viewpoint change has finished.
-        navigatingObservation = mapView.observe(\.isNavigating, options: .new) { _, change in
-            if change.newValue == false {
-                DispatchQueue.main.async {
-                    self.populateFeaturesFromQuery()
-                }
+        // Query for features whenever the user stops interacting with the map
+        // view.
+        navigatingObservation = mapView.observe(\.isNavigating, options: .initial) { mapView, _ in
+            guard !mapView.isNavigating else { return }
+            DispatchQueue.main.async { [weak self] in
+                self?.populateFeaturesFromQuery()
             }
         }
     }

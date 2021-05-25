@@ -10,11 +10,11 @@ OGC API standards are used for sharing geospatial data on the web. As an open st
 
 ## How to use the sample
 
-Select a layer to display from the list of layers shown in an OGC API service.
+Enter a valid OGC API service URL. Select a layer to display from the list of layers shown in an OGC API service.
 
 ## How it works
 
-1. Create an `AGSOGCFeatureService` object with a URL to an OGC API feature service.
+1. Create an `AGSOGCFeatureService` object with an OGC API feature service URL.
 2. Obtain the `AGSOGCFeatureServiceInfo` object from `serviceInfo` property.
 3. Create a list of feature collections from the `featureCollectionInfos` property of the service info object.
 4. When a feature collection is selected, create an `AGSOGCFeatureCollectionTable` from the `AGSOGCFeatureCollectionInfo`.

@@ -21,7 +21,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = map
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             // Set the viewpoint to Daraa, Syria.
             mapView.setViewpoint(AGSViewpoint(latitude: 32.62, longitude: 36.10, scale: 20_000))
         }
@@ -31,7 +31,6 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
     
     // MARK: Properties
     
-    let map = AGSMap(basemapStyle: .arcGISTopographic)
     /// The most recent query job.
     var lastQuery: AGSCancelable?
     /// The Daraa, Syria OGC API feature service URL.
@@ -72,7 +71,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
         // Cancel if there is an existing query request.
         lastQuery?.cancel()
         // Remove existing layers.
-        map.operationalLayers.removeAllObjects()
+        mapView.map?.operationalLayers.removeAllObjects()
         
         let table = AGSOGCFeatureCollectionTable(featureCollectionInfo: info)
         // Set the feature request mode to manual (only manual is currently
@@ -94,7 +93,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
                 // Zoom to the extent of the selected collection.
                 let featureLayer = AGSFeatureLayer(featureTable: table)
                 featureLayer.renderer = self.makeRenderer(for: table.geometryType)
-                self.map.operationalLayers.add(featureLayer)
+                self.mapView.map?.operationalLayers.add(featureLayer)
                 self.mapView.setViewpointGeometry(extent, padding: 50, completion: nil)
             }
         }
@@ -184,14 +183,25 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["BrowseOGCAPIFeatureServiceViewController"]
         // Ask user for service URL when the sample has loaded.
-        askUserForServiceURL { [weak self] result in
+        var completion: ((Result<URL, Error>) -> Void)!
+        completion = { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let serviceURL):
-                self?.loadService(url: serviceURL)
+                self.loadService(url: serviceURL)
             case .failure(let error):
-                self?.presentAlert(error: error)
+                let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                let tryAgainAction = UIAlertAction(title: "Try Again", style: .default) { _ in
+                    self.askUserForServiceURL(completion: completion)
+                }
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                alertController.addAction(tryAgainAction)
+                alertController.addAction(cancelAction)
+                alertController.preferredAction = tryAgainAction
+                self.present(alertController, animated: true)
             }
         }
+        askUserForServiceURL(completion: completion)
     }
 }
 

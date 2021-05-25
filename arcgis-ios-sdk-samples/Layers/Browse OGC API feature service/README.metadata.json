@@ -27,7 +27,7 @@
         "AGSOGCFeatureServiceInfo"
     ],
     "snippets": [
-        "BrowseOGCAPIServicesViewController.swift"
+        "BrowseOGCAPIFeatureServiceViewController.swift"
     ],
     "title": "Browse OGC API feature service"
 }

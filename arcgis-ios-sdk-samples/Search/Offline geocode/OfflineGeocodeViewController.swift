@@ -53,7 +53,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.graphicsOverlays.add(self.graphicsOverlay)
         
         // initialize locator task
-        self.locatorTask = AGSLocatorTask(name: "san-diego-locator")
+        self.locatorTask = AGSLocatorTask(name: "SanDiego_StreetAddress")
         
         // initialize geocode params
         self.geocodeParameters = AGSGeocodeParameters()

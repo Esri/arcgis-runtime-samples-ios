@@ -1085,7 +1085,7 @@
 				<string>Geocode addresses to locations and reverse geocode locations to addresses offline.</string>
 				<key>dependency</key>
 				<array>
-					<string>SanDiegoLocator</string>
+					<string>SanDiego_StreetAddress</string>
 					<string>SanDiegoTilePackage</string>
 				</array>
 			</dict>

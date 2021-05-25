@@ -203,7 +203,7 @@ extension BrowseOGCAPIFeatureServiceViewController: UIAdaptivePresentationContro
     }
 }
 
-// MARK: Custom errors
+// MARK: - Custom errors
 
 extension BrowseOGCAPIFeatureServiceViewController {
     private enum InputError: LocalizedError {

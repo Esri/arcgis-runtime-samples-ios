@@ -323,6 +323,14 @@ extension NavigateRouteViewController: AGSRouteTrackerDelegate {
 extension NavigateRouteViewController: AGSLocationChangeHandlerDelegate {
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         // Update the tracker location with the new location from the simulated data source.
-        routeTracker?.trackLocation(location)
+        routeTracker?.trackLocation(location) { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                // Display error message and stop further route tracking if it
+                // fails due to data format, licensing issue, etc.
+                self.setStatus(message: error.localizedDescription)
+                self.routeTracker = nil
+            }
+        }
     }
 }

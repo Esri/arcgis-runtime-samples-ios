@@ -711,6 +711,14 @@
 				<key>displayName</key>
 				<string>Edit KML ground overlay</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display OGC API collection</string>
+				<key>descriptionText</key>
+				<string>Display an OGC API feature collection and query features while navigating the map view.</string>
+				<key>storyboardName</key>
+				<string>DisplayOGCAPICollection</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

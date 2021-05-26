@@ -24,6 +24,9 @@
 		001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
 		001ECB60248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */; };
 		001ECB63248B0093009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */; };
+		0022769026570BA500CC7DB9 /* DisplayOGCAPICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022768F26570BA500CC7DB9 /* DisplayOGCAPICollectionViewController.swift */; };
+		0022769226570BBE00CC7DB9 /* DisplayOGCAPICollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0022769126570BBE00CC7DB9 /* DisplayOGCAPICollection.storyboard */; };
+		002276932657281200CC7DB9 /* DisplayOGCAPICollectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0022768F26570BA500CC7DB9 /* DisplayOGCAPICollectionViewController.swift */; };
 		0023F98025E717AC006B574E /* SimulatedNMEADataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023F97A25E717AC006B574E /* SimulatedNMEADataSource.swift */; };
 		0023F98125E717AC006B574E /* DisplayDeviceLocationWithNMEADataSources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0023F97B25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSources.storyboard */; };
 		0023F98225E717AC006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023F97C25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift */; };
@@ -922,6 +925,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				002276932657281200CC7DB9 /* DisplayOGCAPICollectionViewController.swift in CopyFiles */,
 				F1710AF525EEF4C000900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in CopyFiles */,
 				F11CED76256C8BD3002A3F56 /* ShowLabelsOnLayer3DViewController.swift in CopyFiles */,
 				00F359C725F2F27500A7C880 /* CreateLoadReportViewController.swift in CopyFiles */,
@@ -1213,6 +1217,8 @@
 		001ECB032486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARCalibrationViewController.swift; sourceTree = "<group>"; };
 		001ECB59248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerFromPortalViewController.swift; sourceTree = "<group>"; };
 		001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerFromPortal.storyboard; sourceTree = "<group>"; };
+		0022768F26570BA500CC7DB9 /* DisplayOGCAPICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayOGCAPICollectionViewController.swift; sourceTree = "<group>"; };
+		0022769126570BBE00CC7DB9 /* DisplayOGCAPICollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayOGCAPICollection.storyboard; sourceTree = "<group>"; };
 		0023F97A25E717AC006B574E /* SimulatedNMEADataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulatedNMEADataSource.swift; sourceTree = "<group>"; };
 		0023F97B25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSources.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayDeviceLocationWithNMEADataSources.storyboard; sourceTree = "<group>"; };
 		0023F97C25E717AC006B574E /* DisplayDeviceLocationWithNMEADataSourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayDeviceLocationWithNMEADataSourcesViewController.swift; sourceTree = "<group>"; };
@@ -1856,6 +1862,15 @@
 				001ECB5B248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard */,
 			);
 			path = "Feature collection layer (portal item)";
+			sourceTree = "<group>";
+		};
+		0022768C26570B7700CC7DB9 /* Display OGC API collection */ = {
+			isa = PBXGroup;
+			children = (
+				0022768F26570BA500CC7DB9 /* DisplayOGCAPICollectionViewController.swift */,
+				0022769126570BBE00CC7DB9 /* DisplayOGCAPICollection.storyboard */,
+			);
+			path = "Display OGC API collection";
 			sourceTree = "<group>";
 		};
 		0023F97925E717AC006B574E /* Display device location with NMEA data sources */ = {
@@ -3100,6 +3115,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				0022768C26570B7700CC7DB9 /* Display OGC API collection */,
 				003D25672513F486007527C2 /* Add ENC exchange set */,
 				F16922AF251589CB00A8F36E /* Edit KML ground overlay */,
 				00F953C124E34C1300D16555 /* Apply mosaic rule to rasters */,
@@ -4795,6 +4811,7 @@
 				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
 				F15694D2265DBE96007AEB61 /* SanDiego_StreetAddress.loz in Resources */,
 				3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */,
+				0022769226570BBE00CC7DB9 /* DisplayOGCAPICollection.storyboard in Resources */,
 				003D25702513FBB5007527C2 /* ExchangeSetWithoutUpdates in Resources */,
 				123AC27D20E58CFA0026A7D6 /* GeodesicOperations.storyboard in Resources */,
 				940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */,
@@ -5403,6 +5420,7 @@
 				001ECB5E248B002B009AC6C0 /* FeatureCollectionLayerFromPortalViewController.swift in Sources */,
 				3E2A680E1B0D2A7000A318AA /* ListViewController.swift in Sources */,
 				3E62940C1EAFAF4100084105 /* WebTiledLayerViewController.swift in Sources */,
+				0022769026570BA500CC7DB9 /* DisplayOGCAPICollectionViewController.swift in Sources */,
 				123AC27E20E58CFA0026A7D6 /* GeodesicOperationsViewController.swift in Sources */,
 				3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */,
 				009B5FF825E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift in Sources */,
@@ -5574,7 +5592,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.11.0;
+				MARKETING_VERSION = 100.11.1;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5603,7 +5621,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.11.0;
+				MARKETING_VERSION = 100.11.1;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5709,7 +5727,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Esri/arcgis-runtime-toolkit-ios";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = upToNextMinorVersion;
 				minimumVersion = 100.11.0;
 			};
 		};

@@ -101,7 +101,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         self.mapView.callout.isAccessoryButtonHidden = true
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
-
+    
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {

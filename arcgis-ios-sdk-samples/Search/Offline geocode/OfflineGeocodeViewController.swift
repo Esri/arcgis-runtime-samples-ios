@@ -144,7 +144,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
             } else {
                 // If no result was found print in log instead of alert to avoid breaking the flow.
                 print("No address found")
-
+                
                 // Dismiss the callout if already visible.
                 self?.mapView.callout.dismiss()
             }
@@ -168,10 +168,10 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.callout.isAccessoryButtonHidden = true
         
         // Configure the magnifier graphics.
-       let img = UIImage(named: "Magnifier", in: AGSBundle(), compatibleWith: nil)!
-       // The total amount by which we will need to offset the callout along y-axis
-       // to show it correctly centered on the pushpin's head in the magnifier.
-       let magnifierOffset = CGPoint(x: 0, y: -img.size.height)
+        let img = UIImage(named: "Magnifier", in: AGSBundle(), compatibleWith: nil)!
+        // The total amount by which we will need to offset the callout along y-axis
+        // to show it correctly centered on the pushpin's head in the magnifier.
+        let magnifierOffset = CGPoint(x: 0, y: -img.size.height)
         if !offset {
             self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: animated)
         } else {

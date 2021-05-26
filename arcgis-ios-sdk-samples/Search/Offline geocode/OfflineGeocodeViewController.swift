@@ -33,12 +33,9 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     @IBOutlet private var button: UIButton!
     @IBOutlet private var searchBar: UISearchBar!
     
-    private var locatorTask: AGSLocatorTask!
-    private var geocodeParameters: AGSGeocodeParameters!
-    private var reverseGeocodeParameters: AGSReverseGeocodeParameters!
+    private var locatorTask = AGSLocatorTask(name: "SanDiego_StreetAddress")
     private let graphicsOverlay = AGSGraphicsOverlay()
     private var locatorTaskOperation: AGSCancelable!
-    private var magnifierOffset: CGPoint!
     private var longPressedAndMoving = false
     
     func makeMap() -> AGSMap {
@@ -58,28 +55,10 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OfflineGeocodeViewController", "SanDiegoAddressesViewController"]
         
-        // Initialize locator task.
-        self.locatorTask = AGSLocatorTask(name: "SanDiego_StreetAddress")
-        
-        // Initialize geocode parameters.
-        self.geocodeParameters = AGSGeocodeParameters()
-        self.geocodeParameters.resultAttributeNames.append(contentsOf: ["Match_addr"])
-        self.geocodeParameters.minScore = 75
-        
-        // Initialize reverse geocode parameters.
-        self.reverseGeocodeParameters = AGSReverseGeocodeParameters()
-        self.reverseGeocodeParameters.maxResults = 1
-        self.reverseGeocodeParameters.resultAttributeNames.append(contentsOf: ["*"])
-        
         // Add self as the observer for the keyboard show notification.
         // Display a button every time keyboard is displayed so the user
         // can tap and cancel search and hide the keyboard.
         NotificationCenter.default.addObserver(self, selector: #selector(GeocodeOfflineViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-         
-        // The total amount by which we will need to offset the callout along y-axis
-        // to show it correctly centered on the pushpin's head in the magnifier.
-        let img = UIImage(named: "Magnifier", in: AGSBundle(), compatibleWith: nil)!
-        self.magnifierOffset = CGPoint(x: 0, y: -img.size.height)
     }
     
     private func geocodeSearchText(_ text: String) {
@@ -92,8 +71,12 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         // Remove all previous graphics.
         self.graphicsOverlay.graphics.removeAllObjects()
         
+        // Initialize geocode parameters.
+        let geocodeParameters = AGSGeocodeParameters()
+        geocodeParameters.resultAttributeNames.append(contentsOf: ["Match_addr"])
+        geocodeParameters.minScore = 75
         // Perform geocode with the input.
-        self.locatorTask.geocode(withSearchText: text, parameters: self.geocodeParameters) { [weak self]  (results: [AGSGeocodeResult]?, error: Error?) in
+        self.locatorTask.geocode(withSearchText: text, parameters: geocodeParameters) { [weak self]  (results: [AGSGeocodeResult]?, error: Error?) in
             guard let self = self else {
                 return
             }
@@ -137,8 +120,12 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         let graphic = self.makeGraphic(point: normalizedPoint)
         self.graphicsOverlay.graphics.add(graphic)
         
+        // Initialize reverse geocode parameters.
+        let reverseGeocodeParameters = AGSReverseGeocodeParameters()
+        reverseGeocodeParameters.maxResults = 1
+        reverseGeocodeParameters.resultAttributeNames.append(contentsOf: ["*"])
         // Perform reverse geocode.
-        self.locatorTaskOperation = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: self.reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
+        self.locatorTaskOperation = self.locatorTask.reverseGeocode(withLocation: normalizedPoint, parameters: reverseGeocodeParameters) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
             if let error = error as NSError? {
                 if error.code != NSUserCancelledError {
                     // Print error instead alerting to avoid disturbing the flow.
@@ -149,9 +136,9 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
                 // Assign the attributes to the graphic
                 // and show the callout.
                 let cityString = result.attributes?["City"] as? String ?? ""
-                let streetString = result.attributes?["Street"] as? String ?? ""
-                let stateString = result.attributes?["State"] as? String ?? ""
-                graphic.attributes.addEntries(from: ["Match_addr": "\(streetString) \(cityString) \(stateString)"])
+                let streetString = result.attributes?["StAddr"] as? String ?? ""
+                let stateString = result.attributes?["Region"] as? String ?? ""
+                graphic.attributes.addEntries(from: ["Match_addr": "\(streetString), \(cityString), \(stateString)"])
                 self?.showCalloutForGraphic(graphic, tapLocation: normalizedPoint, animated: false, offset: self!.longPressedAndMoving)
                 return
             } else {
@@ -180,10 +167,15 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
         self.mapView.callout.title = graphic.attributes["Match_addr"] as? String
         self.mapView.callout.isAccessoryButtonHidden = true
         
+        // Configure the magnifier graphics.
+       let img = UIImage(named: "Magnifier", in: AGSBundle(), compatibleWith: nil)!
+       // The total amount by which we will need to offset the callout along y-axis
+       // to show it correctly centered on the pushpin's head in the magnifier.
+       let magnifierOffset = CGPoint(x: 0, y: -img.size.height)
         if !offset {
             self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: animated)
         } else {
-            self.mapView.callout.show(at: tapLocation, screenOffset: self.magnifierOffset, rotateOffsetWithMap: false, animated: animated)
+            self.mapView.callout.show(at: tapLocation, screenOffset: magnifierOffset, rotateOffsetWithMap: false, animated: animated)
         }
     }
     

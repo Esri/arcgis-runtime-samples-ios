@@ -405,15 +405,15 @@ extension FindPlaceViewController: UITableViewDelegate {
 
 extension FindPlaceViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // dismiss the callout if already visible
+        // Dismiss the callout if already visible.
         self.mapView.callout.dismiss()
         
-        // identify graphics at the tapped location
+        // Identify graphics at the tapped location.
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) in
             if let error = result.error {
                 print(error)
             } else if let graphic = result.graphics.first {
-                // show callout for the first graphic in the array
+                // Show callout for the first graphic in the array.
                 self.showCalloutForGraphic(graphic, tapLocation: mapPoint)
             }
         }

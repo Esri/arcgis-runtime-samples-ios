@@ -16,7 +16,7 @@ Configure a CQL query by setting a where clause, the max features count and a ti
 ## How it works
 
 1. Create an `AGSOGCFeatureCollectionTable` object using a URL to an OGC API feature service and a collection ID.
-2. Create a `AGSQueryParameters` object.
+2. Create an `AGSQueryParameters` object.
 3. In the settings page, set the `whereClause` and the `maxFeatures` properties. Create `Date` objects for the start time and end time being queried and set the `timeExtent` property.
 4. Populate the `AGSOGCFeatureCollectionTable` using `AGSOGCFeatureCollectionTable.populateFromService(with:clearCache:outfields:completion:)` with the custom query parameters created in the previous steps.
 5. Set the view point with the feature table's extent to view the newly-queried features.

@@ -11,7 +11,7 @@ CQL (Common Query Language) is an OGC-created query language used to query for s
 
 ## How to use the sample
 
-Enter a CQL query. Press the "Apply query" button to see the query applied to the OGC API features shown on the map.
+Configure a CQL query by setting a where clause, the max features count and a time extent. Press the "Apply" button to see the query applied to the OGC API features shown on the map.
 
 ## How it works
 

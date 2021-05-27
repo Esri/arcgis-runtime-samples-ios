@@ -91,6 +91,11 @@
 		00F953C524E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00F953C324E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard */; };
 		00F953C624E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */; };
 		00F953C724E34CCC00D16555 /* ApplyMosaicRuleToRastersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */; };
+		00FFE6D8265DC788001E92ED /* QueryWithCQLFilters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FFE6D7265DC788001E92ED /* QueryWithCQLFilters.storyboard */; };
+		00FFE6DA265DC797001E92ED /* QueryWithCQLFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE6D9265DC797001E92ED /* QueryWithCQLFiltersViewController.swift */; };
+		00FFE6DC265DC7B9001E92ED /* QueryWithCQLFiltersSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FFE6DB265DC7B9001E92ED /* QueryWithCQLFiltersSettingsViewController.swift */; };
+		00FFE6DD26606343001E92ED /* QueryWithCQLFiltersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00FFE6D9265DC797001E92ED /* QueryWithCQLFiltersViewController.swift */; };
+		00FFE6DE26606343001E92ED /* QueryWithCQLFiltersSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00FFE6DB265DC7B9001E92ED /* QueryWithCQLFiltersSettingsViewController.swift */; };
 		092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */; };
 		092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */; };
 		09587FF71FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */; };
@@ -924,6 +929,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00FFE6DD26606343001E92ED /* QueryWithCQLFiltersViewController.swift in CopyFiles */,
+				00FFE6DE26606343001E92ED /* QueryWithCQLFiltersSettingsViewController.swift in CopyFiles */,
 				F1710AF525EEF4C000900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in CopyFiles */,
 				F11CED76256C8BD3002A3F56 /* ShowLabelsOnLayer3DViewController.swift in CopyFiles */,
 				00F359C725F2F27500A7C880 /* CreateLoadReportViewController.swift in CopyFiles */,
@@ -1264,6 +1271,9 @@
 		00E5B7D32458FE8900B11973 /* PerformValveIsolationTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PerformValveIsolationTrace.storyboard; sourceTree = "<group>"; };
 		00F953C324E34C3300D16555 /* ApplyMosaicRuleToRasters.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ApplyMosaicRuleToRasters.storyboard; sourceTree = "<group>"; };
 		00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplyMosaicRuleToRastersViewController.swift; sourceTree = "<group>"; };
+		00FFE6D7265DC788001E92ED /* QueryWithCQLFilters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryWithCQLFilters.storyboard; sourceTree = "<group>"; };
+		00FFE6D9265DC797001E92ED /* QueryWithCQLFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryWithCQLFiltersViewController.swift; sourceTree = "<group>"; };
+		00FFE6DB265DC7B9001E92ED /* QueryWithCQLFiltersSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryWithCQLFiltersSettingsViewController.swift; sourceTree = "<group>"; };
 		092A1C2322456D9500C5F230 /* DisplayWFS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayWFS.storyboard; sourceTree = "<group>"; };
 		092A1C2622456D9500C5F230 /* DisplayWFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayWFSViewController.swift; sourceTree = "<group>"; };
 		09587FF61FD8B5F500FCF9A5 /* RasterLayerUsingServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterLayerUsingServiceViewController.swift; sourceTree = "<group>"; };
@@ -2037,6 +2047,16 @@
 				00F953C424E34C3300D16555 /* ApplyMosaicRuleToRastersViewController.swift */,
 			);
 			path = "Apply mosaic rule to rasters";
+			sourceTree = "<group>";
+		};
+		00FFE6D4265DC76A001E92ED /* Query with CQL filters */ = {
+			isa = PBXGroup;
+			children = (
+				00FFE6D7265DC788001E92ED /* QueryWithCQLFilters.storyboard */,
+				00FFE6D9265DC797001E92ED /* QueryWithCQLFiltersViewController.swift */,
+				00FFE6DB265DC7B9001E92ED /* QueryWithCQLFiltersSettingsViewController.swift */,
+			);
+			path = "Query with CQL filters";
 			sourceTree = "<group>";
 		};
 		092A1C2222456D9500C5F230 /* Display a WFS layer */ = {
@@ -3106,6 +3126,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				00FFE6D4265DC76A001E92ED /* Query with CQL filters */,
 				003D25672513F486007527C2 /* Add ENC exchange set */,
 				F16922AF251589CB00A8F36E /* Edit KML ground overlay */,
 				00F953C124E34C1300D16555 /* Apply mosaic rule to rasters */,
@@ -4784,6 +4805,7 @@
 				3EABC7C31DB191BC00C161C6 /* Shasta_Elevation.tif.aux.xml in Resources */,
 				3E6AE3EC1C6D11BA0026E59C /* OfflineRouting.storyboard in Resources */,
 				003D256E2513F4B6007527C2 /* AddENCExchangeSet.storyboard in Resources */,
+				00FFE6D8265DC788001E92ED /* QueryWithCQLFilters.storyboard in Resources */,
 				3E23A9EF1AFC28F6002E2214 /* Assets.xcassets in Resources */,
 				3EBA25611D34178200AB0703 /* SimpleMarkerSymbol.storyboard in Resources */,
 				2182C9821FDA01A0003E3A0F /* StatisticalQuery.storyboard in Resources */,
@@ -5270,6 +5292,7 @@
 				3ED029681B8E3ACD00ACA70D /* UpdateAttributesOptionsViewController.swift in Sources */,
 				4CECF8A121D57F4000A56161 /* SetMinMaxScaleViewController.swift in Sources */,
 				3EBA25631D3417B000AB0703 /* SimpleMarkerSymbolViewController.swift in Sources */,
+				00FFE6DA265DC797001E92ED /* QueryWithCQLFiltersViewController.swift in Sources */,
 				3E81C1BB1D8A17B600470AA4 /* VectorStylesViewController.swift in Sources */,
 				F1034F9E22D3EE8900B021DA /* ProjectViewController.swift in Sources */,
 				3EAF09471D71093D00F8538F /* GridSettingsViewController.swift in Sources */,
@@ -5374,6 +5397,7 @@
 				4CCA30D122399AB2009D2AEF /* AddIntegratedMeshLayerViewController.swift in Sources */,
 				21E914411FDEFBF800C7D6DC /* StatisticalQueryGroupAndSortViewController.swift in Sources */,
 				4CC00F7520C1FAE5004244EF /* StyleWebMapServiceLayerViewController.swift in Sources */,
+				00FFE6DC265DC7B9001E92ED /* QueryWithCQLFiltersSettingsViewController.swift in Sources */,
 				3E3B2C221BBCADDB00A99C5E /* ContentTableCell.swift in Sources */,
 				3E5E094F1EF850BA00FF3454 /* MapImageSublayersViewController.swift in Sources */,
 				10961CA71EF2FFD4008A7CEC /* TerrainExaggerationViewController.swift in Sources */,

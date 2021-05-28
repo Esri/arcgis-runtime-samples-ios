@@ -6,7 +6,7 @@ Browse an OGC API feature service for layers and add them to the map.
 
 ## Use case
 
-OGC API standards are used for sharing geospatial data on the web. As an open standard, the OGC API aims to improve access to geospatial or location information and could be a good choice for sharing data internationally or between organizations. That data could be of any type, including, for example transportation layers shared between government organizations and private businesses.
+OGC API standards are used for sharing geospatial data on the web. As an open standard, the OGC API aims to improve access to geospatial or location information and could be a good choice for sharing data internationally or between organizations. That data could be of any type, including, for example, transportation layers shared between government organizations and private businesses.
 
 ## How to use the sample
 

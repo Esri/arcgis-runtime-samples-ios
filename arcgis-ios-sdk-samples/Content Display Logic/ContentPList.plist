@@ -713,19 +713,19 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Query with CQL filters</string>
-				<key>descriptionText</key>
-				<string>Query data from an OGC API feature service using CQL filters.</string>
-				<key>storyboardName</key>
-				<string>QueryWithCQLFilters</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
 				<string>Display OGC API collection</string>
 				<key>descriptionText</key>
 				<string>Display an OGC API feature collection and query features while navigating the map view.</string>
 				<key>storyboardName</key>
 				<string>DisplayOGCAPICollection</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Query with CQL filters</string>
+				<key>descriptionText</key>
+				<string>Query data from an OGC API feature service using CQL filters.</string>
+				<key>storyboardName</key>
+				<string>QueryWithCQLFilters</string>
 			</dict>
 		</array>
 	</dict>

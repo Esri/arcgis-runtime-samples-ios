@@ -1907,8 +1907,8 @@
 		003267B0265C476A00DB4CB5 /* Browse OGC API feature service */ = {
 			isa = PBXGroup;
 			children = (
-				003267B3265C478600DB4CB5 /* BrowseOGCAPIFeatureService.storyboard */,
 				003267B5265C479200DB4CB5 /* BrowseOGCAPIFeatureServiceViewController.swift */,
+				003267B3265C478600DB4CB5 /* BrowseOGCAPIFeatureService.storyboard */,
 			);
 			path = "Browse OGC API feature service";
 			sourceTree = "<group>";

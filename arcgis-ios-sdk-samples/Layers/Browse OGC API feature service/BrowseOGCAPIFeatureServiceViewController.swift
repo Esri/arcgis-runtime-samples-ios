@@ -27,7 +27,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
         }
     }
     /// The bar button to browse feature layers.
-    @IBOutlet var browseBarButtonItem: UIBarButtonItem!
+    @IBOutlet var layersBarButtonItem: UIBarButtonItem!
     
     // MARK: Properties
     
@@ -36,9 +36,13 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
     /// The Daraa, Syria OGC API feature service URL.
     let defaultServiceURL = URL(string: "https://demo.ldproxy.net/daraa")!
     /// The service metadata of feature collections from the loaded service.
-    var featureCollectionInfos = [AGSOGCFeatureCollectionInfo]()
+    var featureCollectionInfos: [AGSOGCFeatureCollectionInfo] = []
     /// The OGC feature collection info selected by the user.
     var selectedInfo: AGSOGCFeatureCollectionInfo?
+    /// The OGC API features service.
+    var service: AGSOGCFeatureService!
+    /// A flag to indicate whether the service URL has been provided.
+    var urlProvided = false
     
     /// The query parameters to populate features from the OGC API service.
     let queryParameters: AGSQueryParameters = {
@@ -53,27 +57,24 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
     
     /// Create and load the OGC API features service from a URL.
     func loadService(url: URL) {
-        let service = AGSOGCFeatureService(url: url)
+        service = AGSOGCFeatureService(url: url)
         service.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
-            } else if let infos = service.serviceInfo?.featureCollectionInfos {
+            } else if let infos = self.service.serviceInfo?.featureCollectionInfos {
                 self.featureCollectionInfos = infos
-                self.browseBarButtonItem.isEnabled = true
+                self.layersBarButtonItem.isEnabled = true
             }
         }
     }
     
-    /// Create a feature layer from the OGC feature collection table.
-    /// - Parameter info: The `AGSOGCFeatureCollectionInfo` selected by user.
-    func loadLayer(info: AGSOGCFeatureCollectionInfo) {
+    /// Load and display a feature layer from the OGC feature collection table.
+    /// - Parameter table: The `AGSOGCFeatureCollectionTable` selected by user.
+    func displayLayer(with table: AGSOGCFeatureCollectionTable) {
         // Cancel if there is an existing query request.
         lastQuery?.cancel()
-        // Remove existing layers.
-        mapView.map?.operationalLayers.removeAllObjects()
         
-        let table = AGSOGCFeatureCollectionTable(featureCollectionInfo: info)
         // Set the feature request mode to manual (only manual is currently
         // supported). In this mode, you must manually populate the table -
         // panning and zooming won't request features automatically.
@@ -89,12 +90,14 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
                // Do not display error if user simply cancelled the request.
                (error as NSError).code != NSUserCancelledError {
                 self.presentAlert(error: error)
-            } else if let extent = info.extent {
+            } else if let info = table.featureCollectionInfo,
+                      let extent = info.extent {
                 // Zoom to the extent of the selected collection.
                 let featureLayer = AGSFeatureLayer(featureTable: table)
                 featureLayer.renderer = self.makeRenderer(for: table.geometryType)
-                self.mapView.map?.operationalLayers.add(featureLayer)
-                self.mapView.setViewpointGeometry(extent, padding: 50, completion: nil)
+                self.mapView.map?.operationalLayers.setArray([featureLayer])
+                self.mapView.setViewpointGeometry(extent, padding: 50)
+                self.selectedInfo = info
             }
         }
     }
@@ -109,7 +112,9 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
             renderer = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .solid, color: .blue, width: 1))
         case .polygon, .envelope:
             renderer = AGSSimpleRenderer(symbol: AGSSimpleFillSymbol(style: .solid, color: .blue, outline: nil))
-        default:
+        case .unknown:
+            fallthrough
+        @unknown default:
             renderer = nil
         }
         return renderer
@@ -133,12 +138,12 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
         // Validate and create URL from user input and remove observer.
         let loadAction = UIAlertAction(title: "Load", style: .default) { _ in
             NotificationCenter.default.removeObserver(textFieldObserver!)
-            guard let text = alertController.textFields![0].text?.trimmingCharacters(in: .whitespacesAndNewlines),
-                  let serviceURL = URL(string: text) else {
+            if let text = alertController.textFields![0].text,
+               let serviceURL = URL(string: text.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                completion(.success(serviceURL))
+            } else {
                 completion(.failure(InputError.invalidURL))
-                return
             }
-            completion(.success(serviceURL))
         }
         alertController.addAction(cancelAction)
         alertController.addAction(loadAction)
@@ -164,10 +169,10 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
     
     @IBAction func browseLayerInfos(_ sender: UIBarButtonItem) {
         let selectedIndex = featureCollectionInfos.firstIndex { $0 == selectedInfo }
-        let optionsViewController = OptionsTableViewController(labels: featureCollectionInfos.map { $0.title }, selectedIndex: selectedIndex) { [self] newIndex in
+        let optionsViewController = OptionsTableViewController(labels: featureCollectionInfos.map(\.title), selectedIndex: selectedIndex) { [self] newIndex in
             let selectedInfo = featureCollectionInfos[newIndex]
-            self.selectedInfo = selectedInfo
-            loadLayer(info: selectedInfo)
+            let table = AGSOGCFeatureCollectionTable(featureCollectionInfo: selectedInfo)
+            displayLayer(with: table)
         }
         optionsViewController.modalPresentationStyle = .popover
         optionsViewController.preferredContentSize = CGSize(width: 300, height: 300)
@@ -182,6 +187,11 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["BrowseOGCAPIFeatureServiceViewController"]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard !urlProvided else { return }
         // Ask user for service URL when the sample has loaded.
         var completion: ((Result<URL, Error>) -> Void)!
         completion = { [weak self] result in
@@ -189,6 +199,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
             switch result {
             case .success(let serviceURL):
                 self.loadService(url: serviceURL)
+                self.urlProvided = true
             case .failure(let error):
                 let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                 let tryAgainAction = UIAlertAction(title: "Try Again", style: .default) { _ in

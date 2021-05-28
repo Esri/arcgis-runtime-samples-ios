@@ -86,6 +86,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
             outfields: nil
         ) { [weak self, table] _, error in
             guard let self = self else { return }
+            self.lastQuery = nil
             if let error = error,
                // Do not display error if user simply cancelled the request.
                (error as NSError).code != NSUserCancelledError {

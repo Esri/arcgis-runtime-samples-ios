@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KnP-M3-jrs"/>
-                                    <barButtonItem enabled="NO" title="Browse Layers" id="7Dh-s3-xHh">
+                                    <barButtonItem enabled="NO" title="Layers" id="7Dh-s3-xHh">
                                         <connections>
                                             <action selector="browseLayerInfos:" destination="Y6W-OH-hqX" id="dgP-MK-fTp"/>
                                         </connections>
@@ -46,7 +46,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="browseBarButtonItem" destination="7Dh-s3-xHh" id="FC3-qC-xCu"/>
+                        <outlet property="layersBarButtonItem" destination="7Dh-s3-xHh" id="FC3-qC-xCu"/>
                         <outlet property="mapView" destination="u6U-yX-17o" id="ZQW-v3-tGm"/>
                     </connections>
                 </viewController>

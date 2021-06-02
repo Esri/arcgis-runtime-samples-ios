@@ -140,7 +140,8 @@ class FindPlaceViewController: UIViewController {
         }
     }
     
-    /// Clear preferred location information, hide the suggestions table view, empty previously selected suggest result and previously fetch search. location
+    /// Clear preferred location information, hide the suggestions table view, empty previously selected suggest result and
+    /// previously fetch search location.
     private func clearPreferredLocationInfo() {
         self.animateTableView(expand: false)
         self.selectedSuggestResult = nil

@@ -140,7 +140,7 @@ class FindPlaceViewController: UIViewController {
         }
     }
     
-    /// Clear prefered location information, hide the suggestions table view, empty previously selected suggest result and previously fetch search. location
+    /// Clear preferred location information, hide the suggestions table view, empty previously selected suggest result and previously fetch search. location
     private func clearPreferredLocationInfo() {
         self.animateTableView(expand: false)
         self.selectedSuggestResult = nil
@@ -311,7 +311,7 @@ class FindPlaceViewController: UIViewController {
         // Check if a suggestion is present.
         if self.selectedSuggestResult != nil {
             // Since a suggestion is selected, check if it was already geocoded to a location.
-            // If not, then goecode the suggestion.
+            // If not, then geocode the suggestion.
             // otherwise, use the geocoded location to find the POIs.
             if self.preferredSearchLocation == nil {
                 self.geocodeUsingSuggestResult(self.selectedSuggestResult) { [weak self] in

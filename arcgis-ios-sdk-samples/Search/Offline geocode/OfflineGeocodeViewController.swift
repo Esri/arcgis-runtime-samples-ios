@@ -19,7 +19,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     @IBOutlet private var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
-            // Register self as the touch delgate for the map view.
+            // Register self as the touch delegate for the map view.
             mapView.touchDelegate = self
             
             // Add the graphics overlay to the map view.
@@ -209,7 +209,7 @@ class GeocodeOfflineViewController: UIViewController, AGSGeoViewTouchDelegate, U
     
     func geoView(_ geoView: AGSGeoView, didEndLongPressAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         self.longPressedAndMoving = false
-        // Update the callout to show on top of the graphic
+        // Update the callout to show on top of the graphic.
         self.mapView.touchDelegate?.geoView!(self.mapView, didTapAtScreenPoint: screenPoint, mapPoint: mapPoint)
     }
     

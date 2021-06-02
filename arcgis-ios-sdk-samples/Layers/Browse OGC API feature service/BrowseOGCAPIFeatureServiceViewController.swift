@@ -155,7 +155,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
                 object: textField,
                 queue: .main
             ) { [unowned loadAction] _ in
-                let text = textField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let text = textField.text!
                 let serviceURL = URL(string: text.trimmingCharacters(in: .whitespacesAndNewlines))
                 // Enable the load button if the text is a valid URL.
                 loadAction.isEnabled = serviceURL != nil

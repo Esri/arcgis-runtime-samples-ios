@@ -41,8 +41,6 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
     var selectedInfo: AGSOGCFeatureCollectionInfo?
     /// The OGC API features service.
     var service: AGSOGCFeatureService!
-    /// A flag to indicate whether the service URL has been provided.
-    var urlProvided = false
     
     /// The query parameters to populate features from the OGC API service.
     let queryParameters: AGSQueryParameters = {
@@ -56,8 +54,8 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
     // MARK: Methods
     
     /// Create and load the OGC API features service from a URL.
-    func loadService(url: URL) {
-        service = AGSOGCFeatureService(url: url)
+    func makeService(url: URL) -> AGSOGCFeatureService {
+        let service = AGSOGCFeatureService(url: url)
         service.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -67,14 +65,16 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
                 self.layersBarButtonItem.isEnabled = true
             }
         }
+        return service
     }
     
     /// Load and display a feature layer from the OGC feature collection table.
-    /// - Parameter table: The `AGSOGCFeatureCollectionTable` selected by user.
-    func displayLayer(with table: AGSOGCFeatureCollectionTable) {
+    /// - Parameter info: The `AGSOGCFeatureCollectionInfo` selected by user.
+    func displayLayer(with info: AGSOGCFeatureCollectionInfo) {
         // Cancel if there is an existing query request.
         lastQuery?.cancel()
         
+        let table = AGSOGCFeatureCollectionTable(featureCollectionInfo: info)
         // Set the feature request mode to manual (only manual is currently
         // supported). In this mode, you must manually populate the table -
         // panning and zooming won't request features automatically.
@@ -91,8 +91,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
                // Do not display error if user simply cancelled the request.
                (error as NSError).code != NSUserCancelledError {
                 self.presentAlert(error: error)
-            } else if let info = table.featureCollectionInfo,
-                      let extent = info.extent {
+            } else if let extent = info.extent {
                 // Zoom to the extent of the selected collection.
                 let featureLayer = AGSFeatureLayer(featureTable: table)
                 featureLayer.renderer = self.makeRenderer(for: table.geometryType)
@@ -123,7 +122,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
     
     // MARK: Action
     
-    func askUserForServiceURL(completion: @escaping (Result<URL, Error>) -> Void) {
+    func askUserForServiceURL(completion: @escaping (URL) -> Void) {
         // Create an object to observe changes from the text fields.
         var textFieldObserver: NSObjectProtocol!
         let alertController = UIAlertController(
@@ -134,17 +133,13 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
         // Remove observer on cancel.
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             NotificationCenter.default.removeObserver(textFieldObserver!)
-            completion(.failure(InputError.userCancelled))
         }
-        // Validate and create URL from user input and remove observer.
+        // Create URL from user input and remove observer.
         let loadAction = UIAlertAction(title: "Load", style: .default) { _ in
             NotificationCenter.default.removeObserver(textFieldObserver!)
-            if let text = alertController.textFields![0].text,
-               let serviceURL = URL(string: text.trimmingCharacters(in: .whitespacesAndNewlines)) {
-                completion(.success(serviceURL))
-            } else {
-                completion(.failure(InputError.invalidURL))
-            }
+            let text = alertController.textFields![0].text!
+            let serviceURL = URL(string: text.trimmingCharacters(in: .whitespacesAndNewlines))!
+            completion(serviceURL)
         }
         alertController.addAction(cancelAction)
         alertController.addAction(loadAction)
@@ -161,8 +156,9 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
                 queue: .main
             ) { [unowned loadAction] _ in
                 let text = textField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                // Enable the load button if textfield is not empty.
-                loadAction.isEnabled = !text.isEmpty
+                let serviceURL = URL(string: text.trimmingCharacters(in: .whitespacesAndNewlines))
+                // Enable the load button if the text is a valid URL.
+                loadAction.isEnabled = serviceURL != nil
             }
         }
         present(alertController, animated: true)
@@ -172,8 +168,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
         let selectedIndex = featureCollectionInfos.firstIndex { $0 == selectedInfo }
         let optionsViewController = OptionsTableViewController(labels: featureCollectionInfos.map(\.title), selectedIndex: selectedIndex) { [self] newIndex in
             let selectedInfo = featureCollectionInfos[newIndex]
-            let table = AGSOGCFeatureCollectionTable(featureCollectionInfo: selectedInfo)
-            displayLayer(with: table)
+            displayLayer(with: selectedInfo)
         }
         optionsViewController.modalPresentationStyle = .popover
         optionsViewController.preferredContentSize = CGSize(width: 300, height: 300)
@@ -192,28 +187,11 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard !urlProvided else { return }
+        guard service == nil else { return }
         // Ask user for service URL when the sample has loaded.
-        var completion: ((Result<URL, Error>) -> Void)!
-        completion = { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let serviceURL):
-                self.loadService(url: serviceURL)
-                self.urlProvided = true
-            case .failure(let error):
-                let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                let tryAgainAction = UIAlertAction(title: "Try Again", style: .default) { _ in
-                    self.askUserForServiceURL(completion: completion)
-                }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-                alertController.addAction(tryAgainAction)
-                alertController.addAction(cancelAction)
-                alertController.preferredAction = tryAgainAction
-                self.present(alertController, animated: true)
-            }
+        askUserForServiceURL { serviceURL in
+            self.service = self.makeService(url: serviceURL)
         }
-        askUserForServiceURL(completion: completion)
     }
 }
 
@@ -222,25 +200,5 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
 extension BrowseOGCAPIFeatureServiceViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
-    }
-}
-
-// MARK: - Custom errors
-
-extension BrowseOGCAPIFeatureServiceViewController {
-    private enum InputError: LocalizedError {
-        var errorDescription: String? {
-            switch self {
-            case .invalidURL:
-                return "Bad URL."
-            case .userCancelled:
-                return "User cancelled input."
-            }
-        }
-        
-        /// Thrown when an invalid URL is entered when the sample loads.
-        case invalidURL
-        /// Thrown when user cancelled the URL input.
-        case userCancelled
     }
 }

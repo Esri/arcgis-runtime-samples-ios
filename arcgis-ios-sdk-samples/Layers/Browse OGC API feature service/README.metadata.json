@@ -1,0 +1,33 @@
+{
+    "category": "Layers",
+    "description": "Browse an OGC API feature service for layers and add them to the map.",
+    "ignore": false,
+    "images": [
+        "browse-OGC-API-feature-service.png"
+    ],
+    "keywords": [
+        "OGC",
+        "OGC API",
+        "browse",
+        "catalog",
+        "feature",
+        "layers",
+        "service",
+        "web",
+        "AGSOGCFeatureCollectionInfo",
+        "AGSOGCFeatureCollectionTable",
+        "AGSOGCFeatureService",
+        "AGSOGCFeatureServiceInfo"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSOGCFeatureCollectionInfo",
+        "AGSOGCFeatureCollectionTable",
+        "AGSOGCFeatureService",
+        "AGSOGCFeatureServiceInfo"
+    ],
+    "snippets": [
+        "BrowseOGCAPIFeatureServiceViewController.swift"
+    ],
+    "title": "Browse OGC API feature service"
+}

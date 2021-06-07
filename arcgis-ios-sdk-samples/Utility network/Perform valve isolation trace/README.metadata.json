@@ -3,17 +3,20 @@
     "description": "Run a filtered trace to locate operable features that will isolate an area from the flow of network resources.",
     "ignore": false,
     "images": [
-        "perform-valve-isolation-trace.png"
+        "perform-valve-isolation-trace-1.png",
+        "perform-valve-isolation-trace-2.png"
     ],
     "keywords": [
         "category comparison",
         "condition barriers",
+        "filter barriers",
         "isolated features",
         "network analysis",
         "subnetwork trace",
         "trace configuration",
         "trace filter",
         "utility network",
+        "AGSGeometryEngine.fraction(alongLine:to:tolerance:)",
         "AGSServiceGeodatabase",
         "AGSUtilityCategory",
         "AGSUtilityCategoryComparison",
@@ -23,6 +26,7 @@
         "AGSUtilityElementTraceResult",
         "AGSUtilityNetwork",
         "AGSUtilityNetworkDefinition",
+        "AGSUtilityTerminal",
         "AGSUtilityTier",
         "AGSUtilityTraceFilter",
         "AGSUtilityTraceParameters",
@@ -31,6 +35,7 @@
     ],
     "redirect_from": [],
     "relevant_apis": [
+        "AGSGeometryEngine.fraction(alongLine:to:tolerance:)",
         "AGSServiceGeodatabase",
         "AGSUtilityCategory",
         "AGSUtilityCategoryComparison",
@@ -40,6 +45,7 @@
         "AGSUtilityElementTraceResult",
         "AGSUtilityNetwork",
         "AGSUtilityNetworkDefinition",
+        "AGSUtilityTerminal",
         "AGSUtilityTier",
         "AGSUtilityTraceFilter",
         "AGSUtilityTraceParameters",

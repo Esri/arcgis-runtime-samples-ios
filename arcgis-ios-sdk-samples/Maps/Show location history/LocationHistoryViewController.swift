@@ -105,6 +105,8 @@ class LocationHistoryViewController: UIViewController {
     private var trackBuilder: AGSPolylineBuilder?
     private var pointBuilder: AGSMultipointBuilder?
     
+    private var lastPosition: AGSPoint?
+    
     // MARK: UIViewController
     
     override func viewDidLoad() {
@@ -156,7 +158,7 @@ class LocationHistoryViewController: UIViewController {
     }
     
     private func processLocationUpdate() {
-        guard isTracking, let position = mapView.locationDisplay.mapLocation, position.x != 0, position.y != 0 else { return }
+        guard isTracking, let position = lastPosition, position.x != 0, position.y != 0 else { return }
         pointBuilder?.points.add(position)
         locationGraphic.geometry = pointBuilder?.toGeometry()
         trackBuilder?.add(position)
@@ -202,9 +204,10 @@ class LocationHistoryViewController: UIViewController {
     
     private func startProcessingLocationChanges() {
         mapView.locationDisplay.locationChangedHandler = { [weak self] (location) in
-            guard location.horizontalAccuracy >= 0 else { return }
+            guard let self = self, location.horizontalAccuracy >= 0 else { return }
             DispatchQueue.main.async {
-                self?.processLocationUpdate()
+                self.processLocationUpdate()
+                self.lastPosition = location.position
             }
         }
     }

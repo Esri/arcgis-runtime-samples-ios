@@ -566,7 +566,6 @@
 		3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */; };
 		3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C11CF374C600E02F67 /* MobileMapViewController.swift */; };
 		3EFCE1C61CF374C600E02F67 /* MobileMapSearchRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C21CF374C600E02F67 /* MobileMapSearchRoute.storyboard */; };
-		3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EFCE1C71CF38A9C00E02F67 /* SanFrancisco.mmpk */; settings = {ASSET_TAGS = (SanFranciscoMMPK, ); }; };
 		3EFDE0F51E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F01E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard */; };
 		3EFDE0F61E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift */; };
 		3EFDE0F71E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */; };
@@ -879,6 +878,7 @@
 		F1E8F0B12537D6DD000B9A0F /* NavigateRouteWithRerouting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E8F0B02537D6DD000B9A0F /* NavigateRouteWithRerouting.storyboard */; };
 		F1E8F0B32537D704000B9A0F /* NavigateRouteWithReroutingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E8F0AD2537D6C4000B9A0F /* NavigateRouteWithReroutingViewController.swift */; };
 		F1E8F0C9253A601C000B9A0F /* navigate_a_route_detour.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F1E8F0C8253A601C000B9A0F /* navigate_a_route_detour.gpx */; settings = {ASSET_TAGS = (SanDiegoDetour, ); }; };
+		F1F5ACB0266EE51E00C02843 /* SanFrancisco.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = F1F5ACAF266EE51E00C02843 /* SanFrancisco.mmpk */; settings = {ASSET_TAGS = (SanFranciscoMMPK, ); }; };
 		F1F62C4022E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1F62C3F22E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard */; };
 		F1F62C4222E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F62C4122E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift */; };
 		F1F62C4422E65E0900EFD599 /* militaryoverlay.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F1F62C4322E65E0900EFD599 /* militaryoverlay.geodatabase */; settings = {ASSET_TAGS = (militaryoverlay, ); }; };
@@ -1596,7 +1596,6 @@
 		3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPackagesListViewController.swift; sourceTree = "<group>"; };
 		3EFCE1C11CF374C600E02F67 /* MobileMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileMapViewController.swift; sourceTree = "<group>"; };
 		3EFCE1C21CF374C600E02F67 /* MobileMapSearchRoute.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MobileMapSearchRoute.storyboard; sourceTree = "<group>"; };
-		3EFCE1C71CF38A9C00E02F67 /* SanFrancisco.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.mmpk; sourceTree = "<group>"; };
 		3EFDE0F01E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayer.storyboard; sourceTree = "<group>"; };
 		3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerViewController.swift; sourceTree = "<group>"; };
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
@@ -1817,6 +1816,7 @@
 		F1E8F0AD2537D6C4000B9A0F /* NavigateRouteWithReroutingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateRouteWithReroutingViewController.swift; sourceTree = "<group>"; };
 		F1E8F0B02537D6DD000B9A0F /* NavigateRouteWithRerouting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavigateRouteWithRerouting.storyboard; sourceTree = "<group>"; };
 		F1E8F0C8253A601C000B9A0F /* navigate_a_route_detour.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = navigate_a_route_detour.gpx; sourceTree = "<group>"; };
+		F1F5ACAF266EE51E00C02843 /* SanFrancisco.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.mmpk; sourceTree = "<group>"; };
 		F1F62C3F22E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeatureLayerDictionaryRenderer.storyboard; sourceTree = "<group>"; };
 		F1F62C4122E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureLayerDictionaryRendererViewController.swift; sourceTree = "<group>"; };
 		F1F62C4322E65E0900EFD599 /* militaryoverlay.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = militaryoverlay.geodatabase; sourceTree = "<group>"; };
@@ -3678,7 +3678,7 @@
 			isa = PBXGroup;
 			children = (
 				4C59D140238DF23E00824924 /* canyonlands */,
-				3EFCE1C71CF38A9C00E02F67 /* SanFrancisco.mmpk */,
+				F1F5ACAF266EE51E00C02843 /* SanFrancisco.mmpk */,
 				3EFCE1B61CF369A800E02F67 /* Yellowstone.mmpk */,
 			);
 			path = "Mobile map packages";
@@ -4792,6 +4792,7 @@
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
 				C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */,
+				F1F5ACB0266EE51E00C02843 /* SanFrancisco.mmpk in Resources */,
 				00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */,
 				C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */,
 				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
@@ -5052,7 +5053,6 @@
 				D9E2E76120EEB8FF001D0AE0 /* Public_Art.cpg in Resources */,
 				3EABC7C91DB1947500C161C6 /* BlendRenderer.storyboard in Resources */,
 				00ADC3C32464D59200A3B88D /* PacificSouthWest2 in Resources */,
-				3EFCE1C81CF38A9C00E02F67 /* SanFrancisco.mmpk in Resources */,
 				4C9912382245534100CCBC2A /* PlayKMLTour.storyboard in Resources */,
 				D9E2E76520EEB8FF001D0AE0 /* Public_Art.shx in Resources */,
 				4CCE7BD820D2BD4E001238F5 /* DistanceMeasurementAnalysis.storyboard in Resources */,

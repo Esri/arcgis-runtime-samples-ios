@@ -29,7 +29,7 @@ Type the address in the text field or tap the arrow on the right and select from
 The sample viewer will download offline data automatically before loading the sample.
 
 * [San Diego Streets Tile Package](https://www.arcgis.com/home/item.html?id=1330ab96ac9c40a49e59650557f2cd63)
-* [San Diego Offline Locator](https://www.arcgis.com/home/item.html?id=3424d442ebe54f3cbf34462382d3aebe)
+* [San Diego Eagle Locator](https://www.arcgis.com/home/item.html?id=3424d442ebe54f3cbf34462382d3aebe)
 
 ## Tags
 

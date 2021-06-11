@@ -29,7 +29,7 @@ class FindAddressViewController: UIViewController, AGSGeoViewTouchDelegate, UISe
     @IBOutlet private var button: UIButton!
     @IBOutlet private var searchBar: UISearchBar!
     
-    private var locatorTask = AGSLocatorTask(url: URL(string: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
+    private let locatorTask = AGSLocatorTask(url: URL(string: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
     private let graphicsOverlay = AGSGraphicsOverlay()
     
     override func viewDidLoad() {

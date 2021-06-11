@@ -30,7 +30,7 @@ class ReverseGeocodeViewController: UIViewController, AGSGeoViewTouchDelegate {
         }
     }
     
-    private var locatorTask = AGSLocatorTask(url: URL(string: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
+    private let locatorTask = AGSLocatorTask(url: URL(string: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
     private var graphicsOverlay = AGSGraphicsOverlay()
     private var cancelable: AGSCancelable!
     

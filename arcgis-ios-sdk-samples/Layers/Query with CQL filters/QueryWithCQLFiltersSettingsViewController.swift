@@ -44,10 +44,16 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
     
     let numberFormatter = NumberFormatter()
     let sampleWhereClauses = [
-        // Sample Query 1, cql-text.
+        // Sample Query 1: Features with an F_CODE property of "AP010".
+        // A cql-text query.
         "F_CODE = 'AP010'",
-        // Sample Query 2.
-        "F_CODE LIKE 'AQ%'"
+        // A cql-json query.
+        "{ \"eq\" : [ { \"property\" : \"F_CODE\" }, \"AP010\" ] }",
+        // Sample Query 2: Features with an F_CODE property matching the pattern.
+        "F_CODE LIKE 'AQ%'",
+        // Sample Query 3: Use cql-json to combine "before" and "eq" operators
+        // with the logical "and" operator.
+        "{\"and\":[{\"eq\":[{ \"property\" : \"F_CODE\" }, \"AP010\"]},{ \"before\":[{ \"property\" : \"ZI001_SDV\"},\"2013-01-01\"]}]}"
     ]
     var selectedWhereClause: String?
     var maxFeatures = 1000

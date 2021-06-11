@@ -35,7 +35,7 @@ class FindPlaceViewController: UIViewController {
     private var textFieldLocationButton: UIButton!
     private let graphicsOverlay = AGSGraphicsOverlay()
     
-    private var locatorTask: AGSLocatorTask!
+    private let locatorTask = AGSLocatorTask(url: URL(string: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
     private var suggestResults = [AGSSuggestResult]() {
         didSet {
             tableView.reloadData()
@@ -83,9 +83,6 @@ class FindPlaceViewController: UIViewController {
                 }
             }
         }
-        
-        // Initialize locator task.
-        self.locatorTask = AGSLocatorTask(url: URL(string: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
         
         // Hide suggest result table view by default.
         self.animateTableView(expand: false)

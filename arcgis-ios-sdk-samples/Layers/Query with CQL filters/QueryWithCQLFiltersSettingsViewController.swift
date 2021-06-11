@@ -25,7 +25,11 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
     /// The cell for where clause options.
     @IBOutlet var whereClauseCell: UITableViewCell!
     /// The cell for max features input.
-    @IBOutlet var maxFeaturesCell: UITableViewCell!
+    @IBOutlet var maxFeaturesCell: UITableViewCell! {
+        didSet {
+            maxFeaturesCell.detailTextLabel?.text = String(maxFeatures)
+        }
+    }
     /// The start date picker.
     @IBOutlet var startDatePicker: UIDatePicker!
     /// The end date picker.
@@ -40,25 +44,20 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
     
     let numberFormatter = NumberFormatter()
     let sampleWhereClauses = [
-        // Sample Query 1, cql-text, cql-json.
+        // Sample Query 1, cql-text.
         "F_CODE = 'AP010'",
-        "{\"eq\":{\"property\":\"F_CODE\",\"value\":\"AP010\"}}",
         // Sample Query 2.
-        "F_CODE LIKE 'AQ%'",
-        "{\"like\":{\"property\":\"F_CODE\",\"value\":\"AQ%\"}}",
-        // Sample Query 3: use cql-json to combine "before" and "after" temporal
-        // operators with the logcial "and" operator
-        "{\"and\":[{\"after\":{\"property\":\"ZI001_SDV\", \"value\":\"2011-12-31\"}},{\"before\":{\"property\":\"ZI001_SDV\",\"value\":\"2013-01-01\"}}]}"
+        "F_CODE LIKE 'AQ%'"
     ]
     var selectedWhereClause: String?
-    var maxFeatures: Int?
+    var maxFeatures = 1000
     
     // MARK: Methods and Actions
     
     func makeQueryParameters() -> AGSQueryParameters {
         let queryParameters = AGSQueryParameters()
         queryParameters.whereClause = selectedWhereClause ?? ""
-        queryParameters.maxFeatures = maxFeatures ?? 1_000
+        queryParameters.maxFeatures = maxFeatures
         if dateFilterSwitch.isOn {
             queryParameters.timeExtent = AGSTimeExtent(startTime: startDatePicker.date, endTime: endDatePicker.date)
         }
@@ -78,7 +77,7 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
     }
     
     /// Prompt an alert to allow the user to input a numeric value.
-    func showValueInputField(completion: @escaping (NSNumber?) -> Void) {
+    func showValueInputField(completion: @escaping (NSNumber) -> Void) {
         // Create an object to observe if text field input is empty.
         var textFieldObserver: NSObjectProtocol!
         let alertController = UIAlertController(
@@ -95,7 +94,7 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
             NotificationCenter.default.removeObserver(textFieldObserver!)
             let textField = alertController.textFields!.first!
             // Convert the string to a number.
-            completion(self.numberFormatter.number(from: textField.text!))
+            completion(self.numberFormatter.number(from: textField.text!)!)
         }
         alertController.addAction(doneAction)
         alertController.addAction(cancelAction)
@@ -104,7 +103,7 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
         alertController.addTextField { textField in
             textField.keyboardType = .numberPad
             textField.placeholder = "e.g. 1000"
-            textField.text = "1000"
+            textField.text = String(self.maxFeatures)
             // Add an observer to ensure the user does not input an empty string.
             textFieldObserver = NotificationCenter.default.addObserver(
                 forName: UITextField.textDidChangeNotification,
@@ -159,8 +158,8 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
         case maxFeaturesCell:
             showValueInputField { [weak self] value in
                 guard let self = self else { return }
-                self.maxFeaturesCell.detailTextLabel?.text = value?.stringValue
-                self.maxFeatures = value?.intValue
+                self.maxFeaturesCell.detailTextLabel?.text = value.stringValue
+                self.maxFeatures = value.intValue
                 // Mitigate the Apple's UI bug in right detail cell.
                 tableView.reloadRows(at: [indexPath], with: .none)
             }

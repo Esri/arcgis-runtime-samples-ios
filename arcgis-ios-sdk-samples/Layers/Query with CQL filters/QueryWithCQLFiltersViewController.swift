@@ -70,13 +70,14 @@ class QueryWithCQLFiltersViewController: UIViewController {
             outfields: nil
         ) { [weak self] result, error in
             guard let self = self else { return }
+            self.lastQuery = nil
             if let error = error,
                // Do not display error if user cancelled the request.
                (error as NSError).code != NSUserCancelledError {
                 self.presentAlert(error: error)
             } else if let result = result, let extent = self.ogcFeatureLayer.featureTable?.extent {
                 // Zoom to the extent of the selected collection.
-                self.mapView.setViewpointGeometry(extent, padding: 50, completion: nil)
+                self.mapView.setViewpointGeometry(extent, padding: 50)
                 self.presentAlert(title: "Query Result", message: "Query returned \(result.featureEnumerator().allObjects.count) features.")
             }
         }
@@ -92,16 +93,8 @@ class QueryWithCQLFiltersViewController: UIViewController {
             "QueryWithCQLFiltersSettingsViewController"
         ]
         ogcFeatureLayer.load { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                // Show a default query result.
-                let defaultQueryParameters = AGSQueryParameters()
-                defaultQueryParameters.maxFeatures = 1_000
-                self.populateFeaturesFromQuery(queryParameters: defaultQueryParameters)
-                self.cqlFiltersBarButtonItem.isEnabled = true
-            }
+            guard error == nil else { return }
+            self?.cqlFiltersBarButtonItem.isEnabled = true
         }
     }
     

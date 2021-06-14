@@ -29,8 +29,8 @@
         "AGSTimeExtent"
     ],
     "snippets": [
-        "QueryWithCQLFiltersSettingsViewController.swift",
-        "QueryWithCQLFiltersViewController.swift"
+        "QueryWithCQLFiltersViewController.swift",
+        "QueryWithCQLFiltersSettingsViewController.swift"
     ],
     "title": "Query with CQL filters"
 }

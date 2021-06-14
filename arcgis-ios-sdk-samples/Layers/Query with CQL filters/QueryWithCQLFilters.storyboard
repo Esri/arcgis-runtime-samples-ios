@@ -211,7 +211,7 @@
                                 <action selector="cancelAction:" destination="GDg-hx-dhZ" id="ttA-SM-YIa"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Apply" id="OVi-4g-9SG">
+                        <barButtonItem key="rightBarButtonItem" title="Apply" style="done" id="OVi-4g-9SG">
                             <connections>
                                 <action selector="applyAction:" destination="GDg-hx-dhZ" id="bqj-v6-Er2"/>
                             </connections>

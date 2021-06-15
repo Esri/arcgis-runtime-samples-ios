@@ -89,7 +89,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="omO-6f-ZT3" detailTextLabel="wqB-UE-dn8" style="IBUITableViewCellStyleValue1" id="75O-7j-cXk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="omO-6f-ZT3" style="IBUITableViewCellStyleDefault" id="75O-7j-cXk">
                                         <rect key="frame" x="0.0" y="93" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="75O-7j-cXk" id="ZZY-LK-dHh">
@@ -97,14 +97,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Max Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="omO-6f-ZT3">
-                                                    <rect key="frame" x="20" y="12" width="103" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wqB-UE-dn8">
-                                                    <rect key="frame" x="350" y="12" width="44" height="20.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -112,6 +105,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="accessoryView" destination="D2L-uc-QtG" id="uxv-Ps-LOe"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="Lgu-9r-tvg" style="IBUITableViewCellStyleDefault" id="XMM-T7-RZw">
                                         <rect key="frame" x="0.0" y="136.5" width="414" height="43.5"/>
@@ -220,7 +216,7 @@
                     <connections>
                         <outlet property="dateFilterSwitch" destination="LGL-U2-Ll0" id="I71-AX-C06"/>
                         <outlet property="endDatePicker" destination="6LQ-al-yZa" id="DA7-Y8-TCo"/>
-                        <outlet property="maxFeaturesCell" destination="75O-7j-cXk" id="ghZ-1B-0da"/>
+                        <outlet property="maxFeaturesTextField" destination="D2L-uc-QtG" id="uCi-rK-qgk"/>
                         <outlet property="startDatePicker" destination="sgJ-QZ-HK6" id="Wxy-qS-PcF"/>
                         <outlet property="whereClauseCell" destination="351-2f-PyS" id="CHe-zf-63Z"/>
                     </connections>
@@ -233,6 +229,15 @@
                         <action selector="switchValueChanged:" destination="GDg-hx-dhZ" eventType="valueChanged" id="OTz-6E-fao"/>
                     </connections>
                 </switch>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 1000" textAlignment="right" minimumFontSize="17" id="D2L-uc-QtG">
+                    <rect key="frame" x="0.0" y="0.0" width="97" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <connections>
+                        <action selector="textFieldEditingDidEnd:" destination="GDg-hx-dhZ" eventType="editingDidEnd" id="QBr-oq-5TP"/>
+                    </connections>
+                </textField>
             </objects>
             <point key="canvasLocation" x="1604" y="119"/>
         </scene>

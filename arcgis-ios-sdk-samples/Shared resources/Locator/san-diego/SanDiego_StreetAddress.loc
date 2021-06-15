@@ -1,0 +1,30 @@
+LocFileUseUTF8 = True
+Category = Address
+Description = Locator built with StreetAddress
+CLSID = {26AC4C70-EA6E-4125-86F9-5ED7970D15F7}
+UICLSID = {AE5A3A0E-F756-11D2-9F4F-00C04F8ED1C4}
+
+WarmUp = False
+
+MinimumCandidateScore = 70
+MinimumMatchScore = 75
+
+NumThreads = 4
+
+MaxCandidates = 50
+
+MaxSuggestCandidates = 15
+DefaultSuggestCandidates = 5
+
+; BatchOutputFields =
+; CandidateOutputFields =
+; CountriesFilter =
+; CategoriesFilter =
+; ReverseFeatureTypesFilter =
+
+DefaultLocationType = rooftop
+MatchOutOfRange = true
+
+EnableXYProviders = TRUE
+
+PrecisionType = GLOBAL_EXTRA_HIGH

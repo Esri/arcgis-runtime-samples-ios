@@ -25,9 +25,9 @@ Tap the map to see the nearest address displayed in a callout.
 * AGSLocatorTask
 * AGSReverseGeocodeParameters
 
-## About the data
+## Additional information
 
-This sample uses the [World Geocoding Service](https://www.arcgis.com/home/item.html?id=305f2e55e67f4389bef269669fc2e284).
+This sample uses the World Geocoding Service. For more information, see [Geocoding service](https://developers.arcgis.com/documentation/mapping-apis-and-services/search/services/geocoding-service/) from *ArcGIS for Developers*.
 
 ## Tags
 

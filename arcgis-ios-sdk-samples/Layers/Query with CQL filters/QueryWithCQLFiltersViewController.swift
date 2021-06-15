@@ -109,7 +109,7 @@ class QueryWithCQLFiltersViewController: UIViewController {
 // MARK: - QueryWithCQLFiltersSettingsViewControllerDelegate
 
 extension QueryWithCQLFiltersViewController: QueryWithCQLFiltersSettingsViewControllerDelegate {
-    func settingsViewController(_ controller: QueryWithCQLFiltersSettingsViewController, queryParameters: AGSQueryParameters) {
+    func settingsViewController(_ controller: QueryWithCQLFiltersSettingsViewController, didCreate queryParameters: AGSQueryParameters) {
         populateFeaturesFromQuery(queryParameters: queryParameters)
     }
 }

@@ -16,18 +16,22 @@ import UIKit
 import ArcGIS
 
 protocol QueryWithCQLFiltersSettingsViewControllerDelegate: AnyObject {
-    func settingsViewController(_ controller: QueryWithCQLFiltersSettingsViewController, queryParameters: AGSQueryParameters)
+    func settingsViewController(_ controller: QueryWithCQLFiltersSettingsViewController, didCreate queryParameters: AGSQueryParameters)
 }
 
 class QueryWithCQLFiltersSettingsViewController: UITableViewController {
     // MARK: Storyboard views
     
     /// The cell for where clause options.
-    @IBOutlet var whereClauseCell: UITableViewCell!
-    /// The cell for max features input.
-    @IBOutlet var maxFeaturesCell: UITableViewCell! {
+    @IBOutlet var whereClauseCell: UITableViewCell! {
         didSet {
-            maxFeaturesCell.detailTextLabel?.text = String(maxFeatures)
+            whereClauseCell.detailTextLabel?.text = selectedWhereClause
+        }
+    }
+    /// The text field for max features input.
+    @IBOutlet var maxFeaturesTextField: UITextField! {
+        didSet {
+            maxFeaturesTextField.text = String(maxFeatures)
         }
     }
     /// The start date picker.
@@ -43,26 +47,26 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
     weak var delegate: QueryWithCQLFiltersSettingsViewControllerDelegate?
     
     let numberFormatter = NumberFormatter()
-    let sampleWhereClauses = [
+    let sampleWhereClauses: [String] = [
         // Sample Query 1: Features with an F_CODE property of "AP010".
         // A cql-text query.
         "F_CODE = 'AP010'",
         // A cql-json query.
-        "{ \"eq\" : [ { \"property\" : \"F_CODE\" }, \"AP010\" ] }",
+        #"{"eq":[{"property":"F_CODE"},"AP010"]}"#,
         // Sample Query 2: Features with an F_CODE property matching the pattern.
         "F_CODE LIKE 'AQ%'",
         // Sample Query 3: Use cql-json to combine "before" and "eq" operators
         // with the logical "and" operator.
-        "{\"and\":[{\"eq\":[{ \"property\" : \"F_CODE\" }, \"AP010\"]},{ \"before\":[{ \"property\" : \"ZI001_SDV\"},\"2013-01-01\"]}]}"
+        #"{"and":[{"eq":[{"property":"F_CODE"},"AP010"]},{"before":[{"property":"ZI001_SDV"},"2013-01-01"]}]}"#
     ]
-    var selectedWhereClause: String?
+    var selectedWhereClause: String = ""
     var maxFeatures = 1000
     
     // MARK: Methods and Actions
     
     func makeQueryParameters() -> AGSQueryParameters {
         let queryParameters = AGSQueryParameters()
-        queryParameters.whereClause = selectedWhereClause ?? ""
+        queryParameters.whereClause = selectedWhereClause
         queryParameters.maxFeatures = maxFeatures
         if dateFilterSwitch.isOn {
             queryParameters.timeExtent = AGSTimeExtent(startTime: startDatePicker.date, endTime: endDatePicker.date)
@@ -82,51 +86,6 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
         show(optionsViewController, sender: self)
     }
     
-    /// Prompt an alert to allow the user to input a numeric value.
-    func showValueInputField(completion: @escaping (NSNumber) -> Void) {
-        // Create an object to observe if text field input is empty.
-        var textFieldObserver: NSObjectProtocol!
-        let alertController = UIAlertController(
-            title: "Provide the max features query parameter.",
-            message: nil,
-            preferredStyle: .alert
-        )
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            // Remove observer when cancelled.
-            NotificationCenter.default.removeObserver(textFieldObserver!)
-        }
-        let doneAction = UIAlertAction(title: "Done", style: .default) { [unowned alertController] _ in
-            // Remove the observer when done button is no longer in use.
-            NotificationCenter.default.removeObserver(textFieldObserver!)
-            let textField = alertController.textFields!.first!
-            // Convert the string to a number.
-            completion(self.numberFormatter.number(from: textField.text!)!)
-        }
-        alertController.addAction(doneAction)
-        alertController.addAction(cancelAction)
-        alertController.preferredAction = doneAction
-        // Add a text field to the alert controller.
-        alertController.addTextField { textField in
-            textField.keyboardType = .numberPad
-            textField.placeholder = "e.g. 1000"
-            textField.text = String(self.maxFeatures)
-            // Add an observer to ensure the user does not input an empty string.
-            textFieldObserver = NotificationCenter.default.addObserver(
-                forName: UITextField.textDidChangeNotification,
-                object: textField,
-                queue: .main
-            ) { [unowned doneAction] _ in
-                if let text = textField.text {
-                    // Enable if the textfield is not empty and is a valid number.
-                    doneAction.isEnabled = self.numberFormatter.number(from: text) != nil
-                } else {
-                    doneAction.isEnabled = false
-                }
-            }
-        }
-        present(alertController, animated: true)
-    }
-    
     /// Set the date picker limits to maintain a valid state.
     func updateDatePickerLimits() {
         // Keep the start date less than the end date.
@@ -144,8 +103,20 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
     }
     
     @IBAction func applyAction(_ sender: UIBarButtonItem) {
-        delegate?.settingsViewController(self, queryParameters: makeQueryParameters())
         dismiss(animated: true)
+        delegate?.settingsViewController(self, didCreate: makeQueryParameters())
+    }
+    
+    @IBAction func textFieldEditingDidEnd(_ sender: UITextField) {
+        if let text = sender.text,
+           let value = self.numberFormatter.number(from: text),
+           value.intValue > 0 {
+            maxFeatures = value.intValue
+        } else {
+            // Reset to default value if the input is invalid.
+            maxFeatures = 1000
+            sender.text = "1000"
+        }
     }
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
@@ -161,16 +132,13 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
         switch cell {
         case whereClauseCell:
             showWhereClausePicker()
-        case maxFeaturesCell:
-            showValueInputField { [weak self] value in
-                guard let self = self else { return }
-                self.maxFeaturesCell.detailTextLabel?.text = value.stringValue
-                self.maxFeatures = value.intValue
-                // Mitigate the Apple's UI bug in right detail cell.
-                tableView.reloadRows(at: [indexPath], with: .none)
-            }
         default:
             return
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.keyboardDismissMode = .onDrag
     }
 }

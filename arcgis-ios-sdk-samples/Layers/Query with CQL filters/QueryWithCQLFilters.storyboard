@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,7 +59,7 @@
         <scene sceneID="WDl-lQ-mai">
             <objects>
                 <tableViewController id="GDg-hx-dhZ" customClass="QueryWithCQLFiltersSettingsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="r8q-Gg-OrV">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="r8q-Gg-OrV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -202,7 +203,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="CQL Filters" id="iQj-FT-f4r">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="AK8-Ni-KMZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AK8-Ni-KMZ">
                             <connections>
                                 <action selector="cancelAction:" destination="GDg-hx-dhZ" id="ttA-SM-YIa"/>
                             </connections>
@@ -229,9 +230,10 @@
                         <action selector="switchValueChanged:" destination="GDg-hx-dhZ" eventType="valueChanged" id="OTz-6E-fao"/>
                     </connections>
                 </switch>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 1000" textAlignment="right" minimumFontSize="17" id="D2L-uc-QtG">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g. 1000" textAlignment="right" minimumFontSize="17" id="D2L-uc-QtG">
                     <rect key="frame" x="0.0" y="0.0" width="97" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" name="AccentColor"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <connections>
@@ -262,6 +264,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

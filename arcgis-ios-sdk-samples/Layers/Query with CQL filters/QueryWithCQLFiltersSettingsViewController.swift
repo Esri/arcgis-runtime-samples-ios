@@ -31,7 +31,18 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
     /// The text field for max features input.
     @IBOutlet var maxFeaturesTextField: UITextField! {
         didSet {
-            maxFeaturesTextField.text = String(maxFeatures)
+            // Add a toolbar to dismiss keyboard.
+            let toolbar = UIToolbar()
+            let items: [UIBarButtonItem] = [
+                .init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                .init(barButtonSystemItem: .done, target: self, action: #selector(inputAccessoryViewDoneButtonTapped(_:)))
+            ]
+            toolbar.setItems(items, animated: true)
+            toolbar.sizeToFit()
+            maxFeaturesTextField.inputAccessoryView = toolbar
+            
+            maxFeaturesTextField.delegate = self
+            updateMaxFeaturesTextField(value: maxFeatures)
         }
     }
     /// The start date picker.
@@ -60,14 +71,14 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
         #"{"and":[{"eq":[{"property":"F_CODE"},"AP010"]},{"before":[{"property":"ZI001_SDV"},"2013-01-01"]}]}"#
     ]
     var selectedWhereClause: String = ""
-    var maxFeatures = 1000
+    var maxFeatures: NSNumber = 1_000
     
-    // MARK: Methods and Actions
+    // MARK: Methods
     
     func makeQueryParameters() -> AGSQueryParameters {
         let queryParameters = AGSQueryParameters()
         queryParameters.whereClause = selectedWhereClause
-        queryParameters.maxFeatures = maxFeatures
+        queryParameters.maxFeatures = maxFeatures.intValue
         if dateFilterSwitch.isOn {
             queryParameters.timeExtent = AGSTimeExtent(startTime: startDatePicker.date, endTime: endDatePicker.date)
         }
@@ -94,6 +105,17 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
         endDatePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: startDatePicker.date)
     }
     
+    func updateMaxFeaturesTextField(value: NSNumber) {
+        maxFeaturesTextField.text = numberFormatter.string(from: value)
+    }
+    
+    // MARK: Actions
+    
+    @objc
+    func inputAccessoryViewDoneButtonTapped(_ sender: UIBarButtonItem) {
+        maxFeaturesTextField.resignFirstResponder()
+    }
+    
     @IBAction func datePickerAction(_ sender: Any) {
         updateDatePickerLimits()
     }
@@ -111,11 +133,10 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
         if let text = sender.text,
            let value = self.numberFormatter.number(from: text),
            value.intValue > 0 {
-            maxFeatures = value.intValue
+            maxFeatures = value
         } else {
-            // Reset to default value if the input is invalid.
-            maxFeatures = 1000
-            sender.text = "1000"
+            // Reset to the previous value if the input is invalid.
+            updateMaxFeaturesTextField(value: maxFeatures)
         }
     }
     
@@ -127,7 +148,6 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
     // MARK: UITableViewController
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
         switch cell {
         case whereClauseCell:
@@ -136,9 +156,13 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
             return
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.keyboardDismissMode = .onDrag
+}
+
+// MARK: - UITextFieldDelegate
+
+extension QueryWithCQLFiltersSettingsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

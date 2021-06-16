@@ -37,7 +37,7 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
                 .init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
                 .init(barButtonSystemItem: .done, target: self, action: #selector(inputAccessoryViewDoneButtonTapped(_:)))
             ]
-            toolbar.setItems(items, animated: true)
+            toolbar.setItems(items, animated: false)
             toolbar.sizeToFit()
             maxFeaturesTextField.inputAccessoryView = toolbar
             

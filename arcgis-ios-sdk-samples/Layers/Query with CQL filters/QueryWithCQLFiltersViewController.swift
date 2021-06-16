@@ -78,7 +78,7 @@ class QueryWithCQLFiltersViewController: UIViewController {
             } else if let result = result, let extent = self.ogcFeatureLayer.featureTable?.extent {
                 // Zoom to the extent of the selected collection.
                 self.mapView.setViewpointGeometry(extent, padding: 50)
-                self.presentAlert(title: "Query Result", message: "Query returned \(result.featureEnumerator().allObjects.count) features.")
+                self.presentAlert(title: "Query Result", message: "Query returned \(NumberFormatter.localizedString(from: result.featureEnumerator().allObjects.count as NSNumber, number: .decimal)) features.")
             }
         }
     }

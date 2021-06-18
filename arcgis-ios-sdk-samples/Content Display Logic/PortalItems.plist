@@ -106,6 +106,18 @@
 			<key>identifier</key>
 			<string>d5bad9f4fee9483791e405880fb466da</string>
 		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>260eb6535c824209964cf281766ebe43</string>
+			<key>filename</key>
+			<string>SanFrancisco.mmpk</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>e1f3a7254cb845b09450f54937c16061</string>
+			<key>filename</key>
+			<string>Yellowstone.mmpk</string>
+		</dict>
 	</array>
 </dict>
 </plist>

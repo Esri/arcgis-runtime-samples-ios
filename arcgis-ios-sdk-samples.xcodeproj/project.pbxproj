@@ -2520,7 +2520,6 @@
 				3EC39C351C9B1A7A003F6459 /* Extensions */,
 				3E6AE3EF1C6D15C40026E59C /* Network data */,
 				3E4BF45D1C5BD84900D85919 /* Locator */,
-				3E4BF45B1C5BD7A900D85919 /* Tile packages */,
 				D97B7E3E1FD9BF1E00E1239D /* Shapefiles */,
 				3E4B05E61B39EF250072E514 /* Libraries */,
 				3EABC7951DB1787600C161C6 /* Rasters */,
@@ -2587,13 +2586,6 @@
 				3E4BF4471C5AEF3D00D85919 /* ReverseGeocode.storyboard */,
 			);
 			path = "Reverse geocode";
-			sourceTree = "<group>";
-		};
-		3E4BF45B1C5BD7A900D85919 /* Tile packages */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Tile packages";
 			sourceTree = "<group>";
 		};
 		3E4BF45D1C5BD84900D85919 /* Locator */ = {

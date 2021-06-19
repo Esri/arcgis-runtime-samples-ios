@@ -35,8 +35,7 @@ class GenerateGeodatabaseViewController: UIViewController {
         // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GenerateGeodatabaseViewController"]
         
-        let tpkURL = Bundle.main.url(forResource: "SanFrancisco", withExtension: "tpk")!
-        let tileCache = AGSTileCache(fileURL: tpkURL)
+        let tileCache = AGSTileCache(name: "SanFrancisco")
         let localTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
         
         let map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))

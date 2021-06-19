@@ -255,7 +255,6 @@
 		3E4BF4831C5BDF0900D85919 /* FindPlaceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF44B1C5AF04300D85919 /* FindPlaceViewController.swift */; };
 		3E4BF4841C5BDF0900D85919 /* OfflineGeocodeViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */; };
 		3E4BF4851C5BDF0900D85919 /* SanDiegoAddressesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */; };
-		3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */; settings = {ASSET_TAGS = (SanDiegoTilePackage, ); }; };
 		3E54D2331CC697F100BB9904 /* GraphicDrawOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */; };
 		3E54D2351CC6985200BB9904 /* GraphicDrawOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */; };
 		3E54D2361CC69E5E00BB9904 /* GraphicDrawOrderViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */; };
@@ -388,7 +387,6 @@
 		3EC39C221C9A643E003F6459 /* RouteAroundBarriersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1A1C9A5928003F6459 /* RouteAroundBarriersViewController.swift */; };
 		3EC39C231C9A643E003F6459 /* DirectionsListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */; };
 		3EC39C241C9A643E003F6459 /* RouteParametersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */; };
-		3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */; settings = {ASSET_TAGS = (SanFranciscoTilePackage, ); }; };
 		3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */; };
 		3EC39C341C9B106D003F6459 /* ExportTiles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */; };
 		3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */; };
@@ -839,6 +837,8 @@
 		F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F142F76A267C12E400BD608A /* SanFrancisco.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = F142F769267C12E400BD608A /* SanFrancisco.mmpk */; settings = {ASSET_TAGS = (SanFranciscoMMPK, ); }; };
 		F142F76E267C12F800BD608A /* Yellowstone.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = F142F76D267C12F800BD608A /* Yellowstone.mmpk */; settings = {ASSET_TAGS = (YellowstoneMMPK, ); }; };
+		F142F79F267D755700BD608A /* SanFrancisco.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F142F79D267D755700BD608A /* SanFrancisco.tpkx */; settings = {ASSET_TAGS = (SanFranciscoTilePackage, ); }; };
+		F142F7A0267D755700BD608A /* streetmap_SD.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F142F79E267D755700BD608A /* streetmap_SD.tpkx */; settings = {ASSET_TAGS = (SanDiegoTilePackage, ); }; };
 		F14A8F012474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */; };
 		F14F2CA323FC768200693196 /* DisplaySubtypeSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1510FD3254A18E200C29150 /* dodge_city.vtpk in Resources */ = {isa = PBXBuildFile; fileRef = F1510FD2254A18E200C29150 /* dodge_city.vtpk */; settings = {ASSET_TAGS = (DodgeCity, ); }; };
@@ -1388,7 +1388,6 @@
 		3E4BF4551C5BD66C00D85919 /* OfflineGeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineGeocodeViewController.swift; sourceTree = "<group>"; };
 		3E4BF4571C5BD6C400D85919 /* SanDiegoAddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SanDiegoAddressesViewController.swift; sourceTree = "<group>"; };
 		3E4BF4591C5BD77300D85919 /* OfflineGeocode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineGeocode.storyboard; sourceTree = "<group>"; };
-		3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = streetmap_SD.tpk; sourceTree = "<group>"; };
 		3E54D2321CC697F100BB9904 /* GraphicDrawOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicDrawOrderViewController.swift; sourceTree = "<group>"; };
 		3E54D2341CC6985200BB9904 /* GraphicDrawOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GraphicDrawOrder.storyboard; sourceTree = "<group>"; };
 		3E5848FD1B9122C900AB3CE9 /* FeatureLayerURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerURLViewController.swift; sourceTree = "<group>"; };
@@ -1480,7 +1479,6 @@
 		3EC39C1C1C9A59B9003F6459 /* DirectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsListViewController.swift; sourceTree = "<group>"; };
 		3EC39C1D1C9A59B9003F6459 /* RouteParametersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteParametersViewController.swift; sourceTree = "<group>"; };
 		3EC39C201C9A59D5003F6459 /* RouteAroundBarriers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RouteAroundBarriers.storyboard; sourceTree = "<group>"; };
-		3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.tpk; sourceTree = "<group>"; };
 		3EC39C311C9B0DF6003F6459 /* ExportTilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportTilesViewController.swift; sourceTree = "<group>"; };
 		3EC39C331C9B106D003F6459 /* ExportTiles.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExportTiles.storyboard; sourceTree = "<group>"; };
 		3EC39C361C9B1ADA003F6459 /* AGSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGSExtensions.swift; sourceTree = "<group>"; };
@@ -1793,6 +1791,8 @@
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F142F769267C12E400BD608A /* SanFrancisco.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.mmpk; sourceTree = "<group>"; };
 		F142F76D267C12F800BD608A /* Yellowstone.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Yellowstone.mmpk; sourceTree = "<group>"; };
+		F142F79D267D755700BD608A /* SanFrancisco.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpkx; path = ../../../Downloads/SanFrancisco.tpkx; sourceTree = "<group>"; };
+		F142F79E267D755700BD608A /* streetmap_SD.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; name = streetmap_SD.tpkx; path = ../../../Downloads/streetmap_SD.tpkx; sourceTree = "<group>"; };
 		F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigureSubnetworkTrace.storyboard; sourceTree = "<group>"; };
 		F1510FD2254A18E200C29150 /* dodge_city.vtpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = dodge_city.vtpk; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MontereyElevation.dt2; sourceTree = "<group>"; };
@@ -2592,8 +2592,6 @@
 		3E4BF45B1C5BD7A900D85919 /* Tile packages */ = {
 			isa = PBXGroup;
 			children = (
-				3EC39C2D1C9B0A9D003F6459 /* SanFrancisco.tpk */,
-				3E4BF48A1C5C1FB000D85919 /* streetmap_SD.tpk */,
 			);
 			path = "Tile packages";
 			sourceTree = "<group>";
@@ -3729,6 +3727,8 @@
 		4C060E652261195C0070C787 /* Tile Packages */ = {
 			isa = PBXGroup;
 			children = (
+				F142F79D267D755700BD608A /* SanFrancisco.tpkx */,
+				F142F79E267D755700BD608A /* streetmap_SD.tpkx */,
 				F1510FD2254A18E200C29150 /* dodge_city.vtpk */,
 				F1034FAB22D3F6C700B021DA /* MontereyElevation.tpkx */,
 				4C060E662261195C0070C787 /* naperville_imagery.tpk */,
@@ -4804,7 +4804,6 @@
 				003267B4265C478600DB4CB5 /* BrowseOGCAPIFeatureService.storyboard in Resources */,
 				4C0CBFFD22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard in Resources */,
 				F142F76E267C12F800BD608A /* Yellowstone.mmpk in Resources */,
-				3E4BF48B1C5C1FB000D85919 /* streetmap_SD.tpk in Resources */,
 				3ED028651B8E3A8500ACA70D /* HighwayJson.txt in Resources */,
 				3EC39C3A1C9B23DF003F6459 /* GenerateGeodatabase.storyboard in Resources */,
 				C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */,
@@ -4897,6 +4896,7 @@
 				4C4DCA42225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard in Resources */,
 				005507FC25E48134003990D3 /* Redlands.nmea in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
+				F142F7A0267D755700BD608A /* streetmap_SD.tpkx in Resources */,
 				D9E2E76220EEB8FF001D0AE0 /* Public_Art.sbx in Resources */,
 				3E8A05DD1ECE69840032231C /* Bristol.dae in Resources */,
 				3E8D54FB1D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard in Resources */,
@@ -5000,6 +5000,7 @@
 				00166C9424D3838D00DD317E /* BufferList.storyboard in Resources */,
 				3ED028621B8E3A8500ACA70D /* SwitchBasemap.storyboard in Resources */,
 				C7094783215D34BA00BA0969 /* GenerateOfflineMapOverrides.storyboard in Resources */,
+				F142F79F267D755700BD608A /* SanFrancisco.tpkx in Resources */,
 				4C59D141238DF23E00824924 /* canyonlands in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
@@ -5032,7 +5033,6 @@
 				3EBA25761D34510F00AB0703 /* CreateGeometries.storyboard in Resources */,
 				C793B5DE21667194000A7A10 /* ListKMLContents.storyboard in Resources */,
 				4C783F3C2252D61200609B9C /* OpenMobileScene.storyboard in Resources */,
-				3EC39C2F1C9B0A9D003F6459 /* SanFrancisco.tpk in Resources */,
 				4CF6DF1F22F2094F00A3092A /* LothianRiversAnno.mmpk in Resources */,
 				4C68A28B22DE9D3E0009F43C /* FileTypes.plist in Resources */,
 				3EABC7A01DB1793000C161C6 /* StretchRenderer.storyboard in Resources */,

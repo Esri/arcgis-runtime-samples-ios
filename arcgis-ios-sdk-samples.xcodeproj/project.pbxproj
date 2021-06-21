@@ -571,7 +571,6 @@
 		3EFDE0F91E36AE3100CBCD92 /* FeatureCollectionLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F11E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift */; };
 		3EFDE0FA1E36AE3100CBCD92 /* FeatureCollectionLayerQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift */; };
 		4C060E632260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */; };
-		4C060E672261195C0070C787 /* naperville_imagery.tpk in Resources */ = {isa = PBXBuildFile; fileRef = 4C060E662261195C0070C787 /* naperville_imagery.tpk */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
 		4C0CBFFD22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0CBFFC22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard */; };
 		4C0CBFFF22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0CBFFE22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift */; };
 		4C0F27B12152CA2400496666 /* IdentifyKMLFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */; };
@@ -865,6 +864,7 @@
 		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
 		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
+		F1BCA98F268102EB0027F5A8 /* naperville_imagery.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
 		F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */; };
 		F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
 		F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
@@ -1602,7 +1602,6 @@
 		3EFDE0F31E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureCollectionLayerQuery.storyboard; sourceTree = "<group>"; };
 		3EFDE0F41E36ABB700CBCD92 /* FeatureCollectionLayerQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionLayerQueryViewController.swift; sourceTree = "<group>"; };
 		4C060E622260E9F90070C787 /* GenerateOfflineMapBasemapByReferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateOfflineMapBasemapByReferenceViewController.swift; sourceTree = "<group>"; };
-		4C060E662261195C0070C787 /* naperville_imagery.tpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpk; sourceTree = "<group>"; };
 		4C0CBFFC22F9D36D00D3F1DB /* FindClosestFacilityMultipleIncidentsService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityMultipleIncidentsService.storyboard; sourceTree = "<group>"; };
 		4C0CBFFE22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityMultipleIncidentsServiceViewController.swift; sourceTree = "<group>"; };
 		4C0F27B02152CA2400496666 /* IdentifyKMLFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyKMLFeatures.storyboard; sourceTree = "<group>"; };
@@ -1809,6 +1808,7 @@
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
+		F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; name = naperville_imagery.tpkx; path = ../../../Downloads/naperville_imagery.tpkx; sourceTree = "<group>"; };
 		F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetElevationPoint.storyboard; sourceTree = "<group>"; };
 		F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetElevationPointViewController.swift; sourceTree = "<group>"; };
 		F1D1E2C02409AB8A006B2801 /* CreateAndSaveKML.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAndSaveKML.storyboard; sourceTree = "<group>"; };
@@ -3719,11 +3719,11 @@
 		4C060E652261195C0070C787 /* Tile Packages */ = {
 			isa = PBXGroup;
 			children = (
+				F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */,
 				F142F79D267D755700BD608A /* SanFrancisco.tpkx */,
 				F142F79E267D755700BD608A /* streetmap_SD.tpkx */,
 				F1510FD2254A18E200C29150 /* dodge_city.vtpk */,
 				F1034FAB22D3F6C700B021DA /* MontereyElevation.tpkx */,
-				4C060E662261195C0070C787 /* naperville_imagery.tpk */,
 			);
 			path = "Tile Packages";
 			sourceTree = "<group>";
@@ -4886,6 +4886,7 @@
 				3EF024E81ECBC10600166EC5 /* FormatCoordinates.storyboard in Resources */,
 				3E1183DD1ECF5A1000180152 /* GrandCanyon.csv in Resources */,
 				4C4DCA42225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard in Resources */,
+				F1BCA98F268102EB0027F5A8 /* naperville_imagery.tpkx in Resources */,
 				005507FC25E48134003990D3 /* Redlands.nmea in Resources */,
 				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
 				F142F7A0267D755700BD608A /* streetmap_SD.tpkx in Resources */,
@@ -5072,7 +5073,6 @@
 				3E6C771C1CCFC53B00E89873 /* IdentifyLayers.storyboard in Resources */,
 				D9ED2DA91FD759190043BFE1 /* AuroraCO.gpkg in Resources */,
 				4CE15D5022F37E8D005F2968 /* GasDeviceAnno.mmpk in Resources */,
-				4C060E672261195C0070C787 /* naperville_imagery.tpk in Resources */,
 				E4B2E26B1FE31EEA00E610FF /* ViewshedGeoElement.storyboard in Resources */,
 				4C0F27B12152CA2400496666 /* IdentifyKMLFeatures.storyboard in Resources */,
 				3ED029691B8E3ACD00ACA70D /* UpdateAttributes.storyboard in Resources */,

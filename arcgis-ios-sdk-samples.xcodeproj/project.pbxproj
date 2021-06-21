@@ -1790,8 +1790,8 @@
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F142F769267C12E400BD608A /* SanFrancisco.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.mmpk; sourceTree = "<group>"; };
 		F142F76D267C12F800BD608A /* Yellowstone.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Yellowstone.mmpk; sourceTree = "<group>"; };
-		F142F79D267D755700BD608A /* SanFrancisco.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; name = SanFrancisco.tpkx; path = ../../../Downloads/SanFrancisco.tpkx; sourceTree = "<group>"; };
-		F142F79E267D755700BD608A /* streetmap_SD.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; name = streetmap_SD.tpkx; path = ../../../Downloads/streetmap_SD.tpkx; sourceTree = "<group>"; };
+		F142F79D267D755700BD608A /* SanFrancisco.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.tpkx; sourceTree = "<group>"; };
+		F142F79E267D755700BD608A /* streetmap_SD.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = streetmap_SD.tpkx; sourceTree = "<group>"; };
 		F14A8F002474AD9D00242D96 /* ConfigureSubnetworkTrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigureSubnetworkTrace.storyboard; sourceTree = "<group>"; };
 		F1510FD2254A18E200C29150 /* dodge_city.vtpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = dodge_city.vtpk; sourceTree = "<group>"; };
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MontereyElevation.dt2; sourceTree = "<group>"; };
@@ -1808,7 +1808,7 @@
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
-		F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; name = naperville_imagery.tpkx; path = ../../../Downloads/naperville_imagery.tpkx; sourceTree = "<group>"; };
+		F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpkx; sourceTree = "<group>"; };
 		F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetElevationPoint.storyboard; sourceTree = "<group>"; };
 		F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetElevationPointViewController.swift; sourceTree = "<group>"; };
 		F1D1E2C02409AB8A006B2801 /* CreateAndSaveKML.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAndSaveKML.storyboard; sourceTree = "<group>"; };

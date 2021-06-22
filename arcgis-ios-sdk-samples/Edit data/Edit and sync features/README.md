@@ -35,6 +35,7 @@ Pan and zoom to position the red rectangle around the area to be taken offline. 
 * AGSSyncLayerOption
 
 ## Offline data
+
 This sample uses a [San Francisco offline basemap tile package](https://www.arcgis.com/home/item.html?id=e4a398afe9a945f3b0f4dca1e4faccb5).
 
 ## About the data

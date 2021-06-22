@@ -37,6 +37,10 @@ Tap the "Generate Geodatabase" button and then pan and zoom to position the red 
 * AGSSyncGeodatabaseParameters
 * AGSSyncLayerOption
 
+## Offline data
+
+This sample uses a [San Francisco offline basemap tile package](https://www.arcgis.com/home/item.html?id=e4a398afe9a945f3b0f4dca1e4faccb5).
+
 ## About the data
 
 The basemap uses an offline tile package of San Francisco. The online feature service has features with wildfire information.

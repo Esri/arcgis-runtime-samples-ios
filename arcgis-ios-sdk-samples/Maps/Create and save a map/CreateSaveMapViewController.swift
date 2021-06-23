@@ -34,6 +34,7 @@ private extension UIImage {
 
 class CreateSaveMapViewController: UIViewController, CreateOptionsViewControllerDelegate, SaveAsViewControllerDelegate {
     @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     private var portal: AGSPortal?
     
@@ -46,6 +47,16 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             "CreateOptionsViewController",
             "SaveAsViewController"
         ]
+        
+        let portal = AGSPortal(url: URL(string: "https://www.arcgis.com")!, loginRequired: true)
+        self.portal = portal
+        portal.load { [weak self] (error) in
+            if let error = error {
+                print(error)
+            } else {
+                self?.saveButton.isEnabled = true
+            }
+        }
         
         // Auth Manager settings
         let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
@@ -78,15 +89,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     // MARK: - Actions
     
     @IBAction func saveAsAction(_ sender: AnyObject) {
-        let portal = AGSPortal(url: URL(string: "https://www.arcgis.com")!, loginRequired: true)
-        self.portal = portal
-        portal.load { [weak self] (error) in
-            if let error = error {
-                print(error)
-            } else {
-                self?.performSegue(withIdentifier: "SaveAsSegue", sender: self)
-            }
-        }
+        self.performSegue(withIdentifier: "SaveAsSegue", sender: self)
     }
     
     // MARK: - Navigation

@@ -48,13 +48,21 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             "SaveAsViewController"
         ]
         
+        // Temporarily unset the API key for this sample.
+        // Please see the additional information in the README.
+        let apiKey = AGSArcGISRuntimeEnvironment.apiKey
+        AGSArcGISRuntimeEnvironment.apiKey = ""
+        
         let portal = AGSPortal(url: URL(string: "https://www.arcgis.com")!, loginRequired: true)
         self.portal = portal
         portal.load { [weak self] (error) in
             if let error = error {
                 print(error)
             } else {
+                // Initially show the map creation UI.
+                self?.performSegue(withIdentifier: "CreateNewSegue", sender: self)
                 self?.saveButton.isEnabled = true
+                AGSArcGISRuntimeEnvironment.apiKey = apiKey
             }
         }
         
@@ -62,9 +70,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
         let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
         AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
-        
-        // Initially show the map creation UI.
-        performSegue(withIdentifier: "CreateNewSegue", sender: self)
     }
     
     private func showSuccess() {

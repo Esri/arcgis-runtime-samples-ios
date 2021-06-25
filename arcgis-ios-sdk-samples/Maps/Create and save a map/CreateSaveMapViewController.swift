@@ -61,21 +61,17 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             if let error = error {
                 print(error)
             } else {
-                let group = DispatchGroup()
-                group.enter()
                 // Get the user's array of portal folders.
                 portal.user?.fetchContent { _, folders, _ in
                     if let portalFolders = folders {
                         self.portalFolders = portalFolders
-                        group.leave()
                     }
                 }
                 // Initially show the map creation UI.
                 self.performSegue(withIdentifier: "CreateNewSegue", sender: self)
+                // Reset the API key after successful login.
                 AGSArcGISRuntimeEnvironment.apiKey = apiKey
-                group.notify(queue: .main) { [weak self] in
-                    self?.saveButton.isEnabled = true
-                }
+                self.saveButton.isEnabled = true
             }
         }
         
@@ -141,7 +137,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     
     // MARK: - SaveAsViewControllerDelegate
     
-    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String, folder: AGSPortalFolder) {
+    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String, folder: AGSPortalFolder?) {
         UIApplication.shared.showProgressHUD(message: "Saving")
         
         // Set the initial viewpoint from map view.

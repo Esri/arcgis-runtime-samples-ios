@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 protocol SaveAsViewControllerDelegate: AnyObject {
-    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String, folder: AGSPortalFolder)
+    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String, folder: AGSPortalFolder?)
 }
 
 class SaveAsViewController: UITableViewController {
@@ -26,10 +26,14 @@ class SaveAsViewController: UITableViewController {
     @IBOutlet private weak var folderLabel: UILabel!
     
     /// Indicates whether the reference scale picker is currently hidden.
-    private var folderPickerHidden = true
+    var folderPickerHidden = true
+    /// The index path of the folder picker view.
     let folderPicker = IndexPath(row: 4, section: 0)
+    /// The array of folders loaded from the portal.
     var portalFolders = [AGSPortalFolder]()
+    /// Folder selected by the user.
     var selectedFolder: AGSPortalFolder?
+    /// The SaveAsViewController delegate.
     weak var delegate: SaveAsViewControllerDelegate?
     
     // MARK: - Actions
@@ -45,19 +49,14 @@ class SaveAsViewController: UITableViewController {
             presentAlert(message: "Please enter a title.")
             return
         }
-        
-        guard let folder = selectedFolder,
-              selectedFolder != nil else {
-            // Show error message.
-            presentAlert(message: "Please select a folder.")
-            return
-        }
+        // Get the tags from the text field.
         let tags = tagsTextField.text?
             .components(separatedBy: ",")
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) } ?? []
-        
+        // Get the item description from the text field.
         let itemDescription = descriptionTextField.text ?? ""
-        delegate?.saveAsViewController(self, didInitiateSaveWithTitle: title, tags: tags, itemDescription: itemDescription, folder: folder)
+        
+        delegate?.saveAsViewController(self, didInitiateSaveWithTitle: title, tags: tags, itemDescription: itemDescription, folder: selectedFolder)
     }
     
     /// Toggles visisbility of the reference scale picker.
@@ -103,16 +102,27 @@ extension SaveAsViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return portalFolders.count // user loaded folders
+        return portalFolders.count + 1
     }
 }
 
 extension SaveAsViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return portalFolders[row].title
+        let folderIndex = row - 1
+        if row == 0 {
+            return "No folder"
+        }
+        return portalFolders[folderIndex].title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedFolder = portalFolders[row]
+        let folderIndex = row - 1
+        if row == 0 {
+            selectedFolder = nil
+            folderLabel.text = "No folder"
+        } else {
+            selectedFolder = portalFolders[folderIndex]
+            folderLabel.text = selectedFolder?.title
+        }
     }
 }

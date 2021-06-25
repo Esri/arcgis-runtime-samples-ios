@@ -239,7 +239,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" contentMode="left" text="My folder" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E6Z-zw-SNT">
+                                                <label opaque="NO" contentMode="left" text="No folder" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E6Z-zw-SNT">
                                                     <rect key="frame" x="76.5" y="12" width="317.5" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
@@ -266,8 +266,8 @@
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xt4-kR-W8Z" userLabel="Folder Picker View">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="B9z-G7-GUf" id="ZBl-6E-ZFU"/>
-                                                        <outlet property="delegate" destination="B9z-G7-GUf" id="v2l-AU-uhw"/>
+                                                        <outlet property="dataSource" destination="Kr2-KR-2IC" id="qZR-E6-jgu"/>
+                                                        <outlet property="delegate" destination="Kr2-KR-2IC" id="PKC-07-Iq6"/>
                                                     </connections>
                                                 </pickerView>
                                             </subviews>

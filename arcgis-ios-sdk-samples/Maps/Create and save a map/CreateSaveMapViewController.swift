@@ -37,6 +37,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     private var portal: AGSPortal?
+    var portalFolders = [AGSPortalFolder]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,13 +57,25 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
         let portal = AGSPortal(url: URL(string: "https://www.arcgis.com")!, loginRequired: true)
         self.portal = portal
         portal.load { [weak self] (error) in
+            guard let self = self else { return }
             if let error = error {
                 print(error)
             } else {
+                let group = DispatchGroup()
+                group.enter()
+                // Get the user's array of portal folders.
+                portal.user?.fetchContent { _, folders, _ in
+                    if let portalFolders = folders {
+                        self.portalFolders = portalFolders
+                        group.leave()
+                    }
+                }
                 // Initially show the map creation UI.
-                self?.performSegue(withIdentifier: "CreateNewSegue", sender: self)
-                self?.saveButton.isEnabled = true
+                self.performSegue(withIdentifier: "CreateNewSegue", sender: self)
                 AGSArcGISRuntimeEnvironment.apiKey = apiKey
+                group.notify(queue: .main) { [weak self] in
+                    self?.saveButton.isEnabled = true
+                }
             }
         }
         
@@ -106,6 +119,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
                 createOptionsViewController.delegate = self
             } else if let saveAsViewController = rootController as? SaveAsViewController {
                 saveAsViewController.delegate = self
+                saveAsViewController.portalFolders = portalFolders
             }
         }
     }
@@ -127,7 +141,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     
     // MARK: - SaveAsViewControllerDelegate
     
-    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
+    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String, folder: AGSPortalFolder) {
         UIApplication.shared.showProgressHUD(message: "Saving")
         
         // Set the initial viewpoint from map view.
@@ -142,7 +156,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             // Also to cut on the size.
             let croppedImage: UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
             
-            self.mapView.map?.save(as: title, portal: self.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
+            self.mapView.map?.save(as: title, portal: self.portal!, tags: tags, folder: folder, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
                 // Dismiss progress hud.
                 UIApplication.shared.hideProgressHUD()
                 if let error = error {

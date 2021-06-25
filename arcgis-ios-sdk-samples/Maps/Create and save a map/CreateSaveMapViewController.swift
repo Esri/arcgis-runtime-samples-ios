@@ -49,6 +49,11 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             "SaveAsViewController"
         ]
         
+        // Auth Manager settings
+        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
+        AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
+        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
+        
         // Temporarily unset the API key for this sample.
         // Please see the additional information in the README.
         let apiKey = AGSArcGISRuntimeEnvironment.apiKey
@@ -74,11 +79,6 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
                 self.saveButton.isEnabled = true
             }
         }
-        
-        // Auth Manager settings
-        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
-        AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
-        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
     }
     
     private func showSuccess() {

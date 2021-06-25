@@ -34,7 +34,7 @@ class TilePackagesListViewController: UITableViewController {
     
     func fetchTilePackages() {
         // Fetch URLs for tile packages in the main bundle.
-        if let urls = Bundle.main.urls(forResourcesWithExtension: "tpk", subdirectory: nil) {
+        if let urls = Bundle.main.urls(forResourcesWithExtension: "tpkx", subdirectory: nil) {
             bundleTilePackageURLs = urls
         }
         

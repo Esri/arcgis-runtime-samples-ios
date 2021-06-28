@@ -1187,10 +1187,6 @@
 				<string>EditFeaturesOnline</string>
 				<key>descriptionText</key>
 				<string>View, edit, or add features using a popup.</string>
-				<key>dependency</key>
-				<array>
-					<string>SanDiegoTilePackage</string>
-				</array>
 			</dict>
 			<dict>
 				<key>displayName</key>

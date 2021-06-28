@@ -28,6 +28,10 @@ Zoom to any extent. Then tap the generate button to generate a geodatabase of fe
 * AGSGeodatabase
 * AGSGeodatabaseSyncTask
 
+## Offline data
+
+This sample uses a [San Francisco offline basemap tile package](https://www.arcgis.com/home/item.html?id=e4a398afe9a945f3b0f4dca1e4faccb5).
+
 ## Tags
 
 disconnected, local geodatabase, offline, sync

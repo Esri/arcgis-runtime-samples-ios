@@ -30,9 +30,9 @@
 		</dict>
 		<dict>
 			<key>identifier</key>
-			<string>628e8e3521cf45e9a28a12fe10c02c4d</string>
+			<string>85282f2aaa2844d8935cdb8722e22a93</string>
 			<key>filename</key>
-			<string>naperville_imagery.tpk</string>
+			<string>naperville_imagery.tpkx</string>
 		</dict>
 		<dict>
 			<key>identifier</key>
@@ -117,6 +117,18 @@
 			<string>e1f3a7254cb845b09450f54937c16061</string>
 			<key>filename</key>
 			<string>Yellowstone.mmpk</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>22c3083d4fa74e3e9b25adfc9f8c0496</string>
+			<key>filename</key>
+			<string>streetmap_SD.tpkx</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>e4a398afe9a945f3b0f4dca1e4faccb5</string>
+			<key>filename</key>
+			<string>SanFrancisco.tpkx</string>
 		</dict>
 	</array>
 </dict>

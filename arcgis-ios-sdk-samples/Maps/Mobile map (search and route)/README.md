@@ -33,6 +33,10 @@ A list of maps from a mobile map package will be displayed. If the map contains 
 * AGSRouteTask
 * AGSTransportationNetworkDataset
 
+## Offline data
+
+This sample uses the [San Francisco](https://www.arcgis.com/home/item.html?id=260eb6535c824209964cf281766ebe43) mobile map package and the [Yellowstone](https://www.arcgis.com/home/item.html?id=e1f3a7254cb845b09450f54937c16061) mobile map package. Both are downloaded from ArcGIS Online automatically.  
+
 ## Tags
 
 disconnected, field mobility, geocode, network, network analysis, offline, routing, search, transportation

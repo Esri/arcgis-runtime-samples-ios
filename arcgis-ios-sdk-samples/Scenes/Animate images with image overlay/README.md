@@ -2,7 +2,7 @@
 
 Animate a series of images with an image overlay.
 
-![Image of animate images with image overlay](animate-images-with-image-overlay.png)
+![Image of animate images with image overlay](animate-images-with-image-overlay.gif)
 
 ## Use case
 

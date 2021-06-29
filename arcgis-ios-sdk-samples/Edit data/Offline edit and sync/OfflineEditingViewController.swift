@@ -49,8 +49,7 @@ class OfflineEditingViewController: UIViewController {
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OfflineEditingViewController", "FeatureLayersViewController"]
         
         // Use the San Francisco tile package as the basemap.
-        let tpkURL = Bundle.main.url(forResource: "SanFrancisco", withExtension: "tpk")!
-        let tileCache = AGSTileCache(fileURL: tpkURL)
+        let tileCache = AGSTileCache(name: "SanFrancisco")
         let localTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
         
         let map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))

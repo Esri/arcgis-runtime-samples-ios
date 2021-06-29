@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManagerDelegate {
+class GenerateOfflineMapViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var extentView: UIView!
     @IBOutlet var barButtonItem: UIBarButtonItem!
@@ -30,7 +30,6 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
     private var parameters: AGSGenerateOfflineMapParameters?
     private var offlineMapTask: AGSOfflineMapTask?
     private var generateOfflineMapJob: AGSGenerateOfflineMapJob?
-    private var shouldShowAlert = true
     
     private var jobProgressObservation: NSKeyValueObservation?
     
@@ -39,25 +38,13 @@ class GenerateOfflineMapViewController: UIViewController, AGSAuthenticationManag
         
         // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GenerateOfflineMapViewController"]
-
-        // prepare the authentication manager for user login (required for taking the sample's basemap offline)
-        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
-        AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
-        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        if shouldShowAlert {
-            shouldShowAlert = false
-            showLoginQueryAlert()
-        }
+        addMap()
     }
     
     private func addMap() {
         // portal for the web map
-        let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
+        let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         
         // portal item for web map
         let portalItem = AGSPortalItem(portal: portal, itemID: "acc027394bc84c2fb04d1ed317aac674")

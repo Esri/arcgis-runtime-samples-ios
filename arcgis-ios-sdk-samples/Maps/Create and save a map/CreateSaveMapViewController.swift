@@ -34,7 +34,7 @@ private extension UIImage {
 
 class CreateSaveMapViewController: UIViewController, CreateOptionsViewControllerDelegate, SaveAsViewControllerDelegate {
     @IBOutlet private weak var mapView: AGSMapView!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet private weak var saveButton: UIBarButtonItem!
     
     private var portal: AGSPortal?
     var portalFolders = [AGSPortalFolder]()
@@ -59,7 +59,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
         let apiKey = AGSArcGISRuntimeEnvironment.apiKey
         AGSArcGISRuntimeEnvironment.apiKey = ""
         
-        let portal = AGSPortal(url: URL(string: "https://www.arcgis.com")!, loginRequired: true)
+        let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
         self.portal = portal
         portal.load { [weak self] (error) in
             guard let self = self else { return }

@@ -17,7 +17,7 @@
 import UIKit
 import ArcGIS
 
-class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthenticationManagerDelegate {
+class GenerateOfflineMapOverridesViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
     @IBOutlet weak var extentView: UIView!
     @IBOutlet weak var generateButtonItem: UIBarButtonItem!
@@ -31,7 +31,6 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
     private var parameterOverrides: AGSGenerateOfflineMapParameterOverrides?
     private var offlineMapTask: AGSOfflineMapTask?
     private var generateOfflineMapJob: AGSGenerateOfflineMapJob?
-    private var shouldShowAlert = true
     
     private var progressObservation: NSKeyValueObservation?
     
@@ -40,20 +39,8 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
         
         // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["GenerateOfflineMapOverridesViewController", "OfflineMapParameterOverridesViewController"]
-
-        // prepare the authentication manager for user login (required for taking the sample's basemap offline)
-        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
-        AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
-        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        if shouldShowAlert {
-            shouldShowAlert = false
-            showLoginQueryAlert()
-        }
+        addMap()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,7 +51,7 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
     
     private func addMap() {
         // portal for the web map
-        let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
+        let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         
         // portal item for web map
         let portalItem = AGSPortalItem(portal: portal, itemID: "acc027394bc84c2fb04d1ed317aac674")
@@ -279,20 +266,6 @@ class GenerateOfflineMapOverridesViewController: UIViewController, AGSAuthentica
     }
     
     // MARK: - Helper methods
-    
-    private func showLoginQueryAlert() {
-        let alertController = UIAlertController(title: nil, message: "This sample requires you to login in order to take the map's basemap offline. Would you like to continue?", preferredStyle: .alert)
-        let loginAction = UIAlertAction(title: "Login", style: .default) { [weak self] (_) in
-            self?.addMap()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(loginAction)
-        alertController.preferredAction = loginAction
-        present(alertController, animated: true)
-    }
     
     private func extentViewFrameToEnvelope() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: view)

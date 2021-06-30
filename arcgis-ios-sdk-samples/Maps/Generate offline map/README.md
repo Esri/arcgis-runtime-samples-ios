@@ -10,7 +10,7 @@ Taking a web map offline allows users continued productivity when their network 
 
 ## How to use the sample
 
-When the app starts, you will be prompted to sign in using an organizational ArcGIS Online account. Once the map loads, zoom to the extent you want to take offline. The red border shows the extent that will be downloaded. Tap the "Generate offline map" button to start the offline map job. The progress view will show the job's progress. When complete, the offline map will replace the online map in the map view.
+When the map loads, zoom to the extent you want to take offline. The red border shows the extent that will be downloaded. Tap the "Generate offline map" button to start the offline map job. The progress view will show the job's progress. When complete, the offline map will replace the online map in the map view.
 
 ## How it works
 

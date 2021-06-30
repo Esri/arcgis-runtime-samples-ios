@@ -10,7 +10,7 @@ When taking a web map offline, you may adjust the data (such as layers or tiles)
 
 ## How to use the sample
 
-Sign in with an organizational ArcGIS Online account when prompted for credentials (taking web maps offline requires an account) and modify the overrides parameters:
+Modify the overrides parameters:
 
 * Use the sliders to adjust the the minimum and maximum scale levels and buffer radius to be taken offline for the streets basemap.
 * Toggle the switches for the feature operational layers you want to include in the offline map.

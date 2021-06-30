@@ -35,6 +35,7 @@ private extension UIImage {
 class CreateSaveMapViewController: UIViewController, CreateOptionsViewControllerDelegate, SaveAsViewControllerDelegate {
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var saveButton: UIBarButtonItem!
+    @IBOutlet private weak var newMapButton: UIBarButtonItem!
     
     let apiKey = AGSArcGISRuntimeEnvironment.apiKey
     var oAuthConfiguration: AGSOAuthConfiguration?
@@ -77,6 +78,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
                 }
                 // Initially show the map creation UI.
                 self.performSegue(withIdentifier: "CreateNewSegue", sender: self)
+                self.newMapButton.isEnabled = true
                 self.saveButton.isEnabled = true
             }
         }

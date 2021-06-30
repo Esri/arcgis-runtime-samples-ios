@@ -296,7 +296,7 @@
                     <navigationItem key="navigationItem" title="Save Map" id="B9z-G7-GUf">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qb3-Lf-YRN">
                             <connections>
-                                <action selector="cancelAction:" destination="PWz-uh-CP7" id="7IR-wh-YBP"/>
+                                <action selector="cancelAction" destination="Kr2-KR-2IC" id="frs-Xi-Av1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="ATQ-vp-KaZ">
@@ -313,7 +313,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oS2-z5-Yao" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="PWz-uh-CP7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1950.7246376811595" y="716.57608695652175"/>
         </scene>

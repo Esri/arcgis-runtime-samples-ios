@@ -36,8 +36,22 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     @IBOutlet private weak var mapView: AGSMapView!
     @IBOutlet private weak var saveButton: UIBarButtonItem!
     
+    let apiKey = AGSArcGISRuntimeEnvironment.apiKey
+    var oAuthConfiguration: AGSOAuthConfiguration?
     private var portal: AGSPortal?
     var portalFolders = [AGSPortalFolder]()
+    
+    required init?(coder aDecoder: NSCoder) {
+        // Auth Manager settings
+        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
+        AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
+        oAuthConfiguration = config
+        
+        // Temporarily unset the API key for this sample.
+        // Please see the additional information in the README.
+        AGSArcGISRuntimeEnvironment.apiKey = ""
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,23 +62,12 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             "CreateOptionsViewController",
             "SaveAsViewController"
         ]
-        
-        // Auth Manager settings
-        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
-        AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
-        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
-        
-        // Temporarily unset the API key for this sample.
-        // Please see the additional information in the README.
-        let apiKey = AGSArcGISRuntimeEnvironment.apiKey
-        AGSArcGISRuntimeEnvironment.apiKey = ""
-        
         let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
         self.portal = portal
         portal.load { [weak self] (error) in
             guard let self = self else { return }
             if let error = error {
-                print(error)
+                self.presentAlert(error: error)
             } else {
                 // Get the user's array of portal folders.
                 portal.user?.fetchContent { _, folders, _ in
@@ -74,11 +77,18 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
                 }
                 // Initially show the map creation UI.
                 self.performSegue(withIdentifier: "CreateNewSegue", sender: self)
-                // Reset the API key after successful login.
-                AGSArcGISRuntimeEnvironment.apiKey = apiKey
                 self.saveButton.isEnabled = true
             }
         }
+    }
+    
+    deinit {
+        // Reset the API key after successful login.
+        AGSArcGISRuntimeEnvironment.apiKey = apiKey
+        if let config = oAuthConfiguration {
+            AGSAuthenticationManager.shared().oAuthConfigurations.remove(config)
+        }
+        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
     }
     
     private func showSuccess() {

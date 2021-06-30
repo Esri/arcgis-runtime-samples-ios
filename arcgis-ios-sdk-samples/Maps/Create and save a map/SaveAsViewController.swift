@@ -28,7 +28,7 @@ class SaveAsViewController: UITableViewController {
     /// Indicates whether the reference scale picker is currently hidden.
     var folderPickerHidden = true
     /// The index path of the folder picker view.
-    let folderPicker = IndexPath(row: 4, section: 0)
+    let folderPickerIndexPath = IndexPath(row: 4, section: 0)
     /// The array of folders loaded from the portal.
     var portalFolders = [AGSPortalFolder]()
     /// Folder selected by the user.

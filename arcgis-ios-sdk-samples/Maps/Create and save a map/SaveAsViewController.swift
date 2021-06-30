@@ -64,11 +64,11 @@ class SaveAsViewController: UITableViewController {
         tableView.performBatchUpdates({
         if folderPickerHidden {
             folderLabel.textColor = .accentColor
-            tableView.insertRows(at: [folderPicker], with: .fade)
+            tableView.insertRows(at: [folderPickerIndexPath], with: .fade)
             folderPickerHidden = false
         } else {
             folderLabel.textColor = nil
-            tableView.deleteRows(at: [folderPicker], with: .fade)
+            tableView.deleteRows(at: [folderPickerIndexPath], with: .fade)
             folderPickerHidden = true
         }
         }, completion: nil)

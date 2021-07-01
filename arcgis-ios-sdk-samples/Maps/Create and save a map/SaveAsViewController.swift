@@ -62,15 +62,15 @@ class SaveAsViewController: UITableViewController {
     /// Toggles visisbility of the reference scale picker.
     func toggleFolderPickerVisibility() {
         tableView.performBatchUpdates({
-        if folderPickerHidden {
-            folderLabel.textColor = .accentColor
-            tableView.insertRows(at: [folderPickerIndexPath], with: .fade)
-            folderPickerHidden = false
-        } else {
-            folderLabel.textColor = nil
-            tableView.deleteRows(at: [folderPickerIndexPath], with: .fade)
-            folderPickerHidden = true
-        }
+            if folderPickerHidden {
+                folderLabel.textColor = .accentColor
+                tableView.insertRows(at: [folderPickerIndexPath], with: .fade)
+                folderPickerHidden = false
+            } else {
+                folderLabel.textColor = nil
+                tableView.deleteRows(at: [folderPickerIndexPath], with: .fade)
+                folderPickerHidden = true
+            }
         }, completion: nil)
     }
 }

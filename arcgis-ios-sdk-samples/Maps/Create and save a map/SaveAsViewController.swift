@@ -111,8 +111,9 @@ extension SaveAsViewController: UIPickerViewDelegate {
         let folderIndex = row - 1
         if row == 0 {
             return "No folder"
+        } else {
+            return portalFolders[folderIndex].title
         }
-        return portalFolders[folderIndex].title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

@@ -44,9 +44,8 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     
     required init?(coder aDecoder: NSCoder) {
         // Auth Manager settings
-        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
-        AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
-        oAuthConfiguration = config
+        oAuthConfiguration = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
+        AGSAuthenticationManager.shared().oAuthConfigurations.add(oAuthConfiguration)
         
         // Temporarily unset the API key for this sample.
         // Please see the additional information in the README.
@@ -87,9 +86,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     deinit {
         // Reset the API key after successful login.
         AGSArcGISRuntimeEnvironment.apiKey = apiKey
-        if let config = oAuthConfiguration {
-            AGSAuthenticationManager.shared().oAuthConfigurations.remove(config)
-        }
+        AGSAuthenticationManager.shared().oAuthConfigurations.remove(oAuthConfiguration)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
     }
     

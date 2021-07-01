@@ -38,7 +38,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     @IBOutlet private weak var newMapButton: UIBarButtonItem!
     
     let apiKey = AGSArcGISRuntimeEnvironment.apiKey
-    var oAuthConfiguration: AGSOAuthConfiguration?
+    let oAuthConfiguration: AGSOAuthConfiguration
     private var portal: AGSPortal?
     var portalFolders = [AGSPortalFolder]()
     

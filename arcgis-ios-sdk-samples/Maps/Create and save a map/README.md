@@ -17,8 +17,8 @@ Enter a username and password for an ArcGIS Online named user account (such as y
 
 ## How it works
 
-1. Add an `AGSOAuthConfiguration` to the `AGSAuthenticationManager`'s  `oAuthConfigurations` array and remove all credentials from the `credentialCache`.
-2. Create a new `AGSPortal` and load it to invoke the authentication challenge.
+1. Add an `AGSOAuthConfiguration` to the shared `AGSAuthenticationManager`'s `oAuthConfigurations` array and remove all credentials from the `credentialCache`.
+2. Create a new `AGSPortal` instance and load it to invoke the authentication challenge.
 3. Access the user's portal content by using `AGSPortal.user.fetchContent(completion:)`. Then get the array of `AGSPortalFolder`s.
 4. Create an `AGSMap` with an `AGSBasemapStyle` and a few operational layers.
 5. Save the map by using `AGSMap.save(as:portal:tags:folder:itemDescription:thumbnail:forceSaveToSupportedVersion:completion:)` and a new map is saved with the specified title, tags, and folder.

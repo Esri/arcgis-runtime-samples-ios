@@ -232,57 +232,28 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7hj-SE-DjQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="IE6-TF-mZH" detailTextLabel="6Mm-O7-7a8" style="IBUITableViewCellStyleValue1" id="7hj-SE-DjQ">
                                         <rect key="frame" x="0.0" y="150" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hj-SE-DjQ" id="dtt-1a-s9Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkx-Qj-zeI">
-                                                    <rect key="frame" x="20" y="12" width="48.5" height="20"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Folder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IE6-TF-mZH">
+                                                    <rect key="frame" x="20" y="12" width="48.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" contentMode="left" text="No folder" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E6Z-zw-SNT">
-                                                    <rect key="frame" x="76.5" y="12" width="317.5" height="21"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No folder" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Mm-O7-7a8">
+                                                    <rect key="frame" x="304.5" y="12" width="70.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="fkx-Qj-zeI" firstAttribute="firstBaseline" secondItem="E6Z-zw-SNT" secondAttribute="firstBaseline" id="0uE-ej-vcs"/>
-                                                <constraint firstItem="E6Z-zw-SNT" firstAttribute="leading" secondItem="fkx-Qj-zeI" secondAttribute="trailing" constant="8" id="PhF-cQ-hBk"/>
-                                                <constraint firstItem="fkx-Qj-zeI" firstAttribute="top" secondItem="dtt-1a-s9Q" secondAttribute="top" constant="12" id="haj-f8-Laq"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="E6Z-zw-SNT" secondAttribute="trailing" id="p1D-rI-z5Z"/>
-                                                <constraint firstItem="fkx-Qj-zeI" firstAttribute="leading" secondItem="dtt-1a-s9Q" secondAttribute="leadingMargin" id="uqY-UM-n4f"/>
-                                                <constraint firstAttribute="bottom" secondItem="fkx-Qj-zeI" secondAttribute="bottom" constant="12" id="xDd-DW-hyf"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="G0x-6w-0fd">
-                                        <rect key="frame" x="0.0" y="194" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G0x-6w-0fd" id="ioJ-ni-tzA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xt4-kR-W8Z" userLabel="Folder Picker View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="Kr2-KR-2IC" id="qZR-E6-jgu"/>
-                                                        <outlet property="delegate" destination="Kr2-KR-2IC" id="PKC-07-Iq6"/>
-                                                    </connections>
-                                                </pickerView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Xt4-kR-W8Z" firstAttribute="top" secondItem="ioJ-ni-tzA" secondAttribute="top" id="Sfx-w0-qV2"/>
-                                                <constraint firstItem="Xt4-kR-W8Z" firstAttribute="leading" secondItem="ioJ-ni-tzA" secondAttribute="leading" id="aaj-uv-75h"/>
-                                                <constraint firstAttribute="bottom" secondItem="Xt4-kR-W8Z" secondAttribute="bottom" id="bvX-QU-37l"/>
-                                                <constraint firstAttribute="trailing" secondItem="Xt4-kR-W8Z" secondAttribute="trailing" id="g17-uY-a7H"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -307,7 +278,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="iOp-Pj-P62" id="nvN-s0-ff6"/>
-                        <outlet property="folderLabel" destination="E6Z-zw-SNT" id="sbH-P4-9bL"/>
+                        <outlet property="folderLabel" destination="6Mm-O7-7a8" id="OVP-oS-4VN"/>
                         <outlet property="tagsTextField" destination="l0k-Zg-e33" id="mei-Yn-nuI"/>
                         <outlet property="titleTextField" destination="COp-aF-98Y" id="6T7-iM-mxQ"/>
                     </connections>

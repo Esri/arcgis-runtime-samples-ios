@@ -73,16 +73,22 @@ class SaveAsViewController: UITableViewController {
             }
         }, completion: nil)
     }
-}
-
-extension SaveAsViewController /* UITableViewDataSource */ {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRows = super.tableView(tableView, numberOfRowsInSection: section)
-        if section == 0 && folderPickerHidden {
-            return numberOfRows - 1
-        } else {
-            return numberOfRows
+    
+    func showFolderOptions() {
+        let selectedIndex = portalFolders.firstIndex { $0 == selectedFolder }
+        let optionsViewController = OptionsTableViewController(labels: portalFolders.map { $0.title! }, selectedIndex: selectedIndex) { [weak self] newIndex in
+            guard let self = self else { return }
+            let selectedFolder = self.portalFolders[newIndex]
+            self.selectedFolder = selectedFolder
+            self.folderLabel.text = selectedFolder.title
+            self.navigationController?.popViewController(animated: true)
         }
+        optionsViewController.title = "Attributes"
+        show(optionsViewController, sender: self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }
 
@@ -91,39 +97,7 @@ extension SaveAsViewController /* UITableViewDelegate */ {
         let folderCell = IndexPath(row: 3, section: 0)
         if indexPath == folderCell {
             tableView.deselectRow(at: folderCell, animated: true)
-            toggleFolderPickerVisibility()
-        }
-    }
-}
-
-extension SaveAsViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return portalFolders.count + 1
-    }
-}
-
-extension SaveAsViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let folderIndex = row - 1
-        if row == 0 {
-            return "No folder"
-        } else {
-            return portalFolders[folderIndex].title
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let folderIndex = row - 1
-        if row == 0 {
-            selectedFolder = nil
-            folderLabel.text = "No folder"
-        } else {
-            selectedFolder = portalFolders[folderIndex]
-            folderLabel.text = selectedFolder?.title
+            showFolderOptions()
         }
     }
 }

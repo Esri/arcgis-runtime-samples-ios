@@ -28,7 +28,9 @@ class SaveAsViewController: UITableViewController {
     /// The array of folders loaded from the portal.
     var portalFolders = [AGSPortalFolder]()
     /// Folder selected by the user.
-    var selectedFolder: AGSPortalFolder?
+    var selectedFolderIndex: Int?
+    /// Use selectedFolderIndex to compute the selected folder.
+    var selectedFolder: AGSPortalFolder? { selectedFolderIndex.map { portalFolders[$0] } }
     /// The SaveAsViewController delegate.
     weak var delegate: SaveAsViewControllerDelegate?
     
@@ -58,21 +60,21 @@ class SaveAsViewController: UITableViewController {
     /// Present the list of folders to choose from.
     func showFolderOptions() {
         // Set index for the default option.
-        let selectedIndex = portalFolders.firstIndex { $0 == selectedFolder } ?? portalFolders.count
-        // The titles of the portal folders and a "No folder" option.
-        let folderTitles = portalFolders.map { $0.title! } + ["No folder"]
+        let selectedIndex = selectedFolderIndex ?? portalFolders.count
+        // The titles of the portal folders and a "None" option.
+        let folderTitles = portalFolders.map { $0.title! } + ["None"]
         // Prepare the options table view controller and handle selection.
         let optionsViewController = OptionsTableViewController(labels: folderTitles, selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
-            // If "No folder" was selected, set selectedFolder to nil.
+            // If "None" was selected, set selectedFolder to nil.
             if newIndex == self.portalFolders.count {
-                self.selectedFolder = nil
+                self.selectedFolderIndex = nil
             } else {
                 // Select the appropriate folder.
-                self.selectedFolder = self.portalFolders[newIndex]
+                self.selectedFolderIndex = newIndex
             }
             // Replace the label text with the selected option.
-            self.folderLabel.text = self.selectedFolder?.title ?? "No folder"
+            self.folderLabel.text = self.selectedFolder?.title ?? "None"
             self.navigationController?.popViewController(animated: true)
         }
         optionsViewController.title = "Folders"

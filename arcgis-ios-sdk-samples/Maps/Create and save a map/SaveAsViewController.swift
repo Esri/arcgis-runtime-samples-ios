@@ -78,17 +78,12 @@ class SaveAsViewController: UITableViewController {
         optionsViewController.title = "Folders"
         show(optionsViewController, sender: self)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }
 
 extension SaveAsViewController /* UITableViewDelegate */ {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let folderCell = IndexPath(row: 3, section: 0)
         if indexPath == folderCell {
-            tableView.deselectRow(at: folderCell, animated: true)
             showFolderOptions()
         }
     }

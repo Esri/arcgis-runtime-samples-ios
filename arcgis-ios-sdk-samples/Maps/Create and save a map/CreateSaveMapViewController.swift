@@ -39,8 +39,8 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     
     let apiKey = AGSArcGISRuntimeEnvironment.apiKey
     let oAuthConfiguration: AGSOAuthConfiguration
-    private var portal: AGSPortal?
     var portalFolders = [AGSPortalFolder]()
+    private let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
     
     required init?(coder aDecoder: NSCoder) {
         // Auth Manager settings
@@ -62,15 +62,13 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             "CreateOptionsViewController",
             "SaveAsViewController"
         ]
-        let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
-        self.portal = portal
         portal.load { [weak self] (error) in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {
                 // Get the user's array of portal folders.
-                portal.user?.fetchContent { _, folders, _ in
+                self.portal.user?.fetchContent { _, folders, _ in
                     if let portalFolders = folders {
                         self.portalFolders = portalFolders
                     }
@@ -161,7 +159,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             // Also to cut on the size.
             let croppedImage: UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
             
-            self.mapView.map?.save(as: title, portal: self.portal!, tags: tags, folder: folder, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
+            self.mapView.map?.save(as: title, portal: self.portal, tags: tags, folder: folder, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
                 // Dismiss progress hud.
                 UIApplication.shared.hideProgressHUD()
                 if let error = error {

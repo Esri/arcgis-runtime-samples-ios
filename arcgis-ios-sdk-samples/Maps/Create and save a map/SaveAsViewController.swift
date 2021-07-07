@@ -25,10 +25,6 @@ class SaveAsViewController: UITableViewController {
     @IBOutlet private weak var descriptionTextField: UITextField!
     @IBOutlet private weak var folderLabel: UILabel!
     
-    /// Indicates whether the reference scale picker is currently hidden.
-    var folderPickerHidden = true
-    /// The index path of the folder picker view.
-    let folderPickerIndexPath = IndexPath(row: 4, section: 0)
     /// The array of folders loaded from the portal.
     var portalFolders = [AGSPortalFolder]()
     /// Folder selected by the user.
@@ -59,31 +55,27 @@ class SaveAsViewController: UITableViewController {
         delegate?.saveAsViewController(self, didInitiateSaveWithTitle: title, tags: tags, itemDescription: itemDescription, folder: selectedFolder)
     }
     
-    /// Toggles visisbility of the reference scale picker.
-    func toggleFolderPickerVisibility() {
-        tableView.performBatchUpdates({
-            if folderPickerHidden {
-                folderLabel.textColor = .accentColor
-                tableView.insertRows(at: [folderPickerIndexPath], with: .fade)
-                folderPickerHidden = false
-            } else {
-                folderLabel.textColor = nil
-                tableView.deleteRows(at: [folderPickerIndexPath], with: .fade)
-                folderPickerHidden = true
-            }
-        }, completion: nil)
-    }
-    
+    /// Present the list of folders to choose from.
     func showFolderOptions() {
-        let selectedIndex = portalFolders.firstIndex { $0 == selectedFolder }
-        let optionsViewController = OptionsTableViewController(labels: portalFolders.map { $0.title! }, selectedIndex: selectedIndex) { [weak self] newIndex in
+        // Set index for the default option.
+        let selectedIndex = portalFolders.firstIndex { $0 == selectedFolder } ?? portalFolders.count
+        // The titles of the portal folders and a "No folder" option.
+        let folderTitles = portalFolders.map { $0.title! } + ["No folder"]
+        // Prepare the options table view controller and handle selection.
+        let optionsViewController = OptionsTableViewController(labels: folderTitles, selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
-            let selectedFolder = self.portalFolders[newIndex]
-            self.selectedFolder = selectedFolder
-            self.folderLabel.text = selectedFolder.title
+            // If "No folder" was selected, set selectedFolder to nil.
+            if newIndex == self.portalFolders.count {
+                self.selectedFolder = nil
+            } else {
+                // Select the appropriate folder.
+                self.selectedFolder = self.portalFolders[newIndex]
+            }
+            // Replace the label text with the selected option.
+            self.folderLabel.text = self.selectedFolder?.title ?? "No folder"
             self.navigationController?.popViewController(animated: true)
         }
-        optionsViewController.title = "Attributes"
+        optionsViewController.title = "Folders"
         show(optionsViewController, sender: self)
     }
     

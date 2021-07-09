@@ -20,7 +20,7 @@ The author of a web map can support the use of basemaps which are already on a d
 
 ## How to use the sample
 
-When the sample loads, tap the "Generate Offline Map" button. You will be prompted to choose whether you wish to download the online basemap or use the local "naperville_imagery.tpk" basemap which is already on the device.
+When the sample loads, tap the "Generate Offline Map" button. You will be prompted to choose whether you wish to download the online basemap or use the local "naperville_imagery.tpkx" basemap which is already on the device.
 
 If you choose to download the online basemap, the offline map will be generated with the same (topographic) basemap as the online web map. To download the Esri basemap, you may be prompted to sign in to ArcGIS.com.
 
@@ -33,10 +33,10 @@ Since the application is not exporting online ArcGIS Online basemaps you will no
 1. Create an `AGSPortalItem` object using a web map's ID.
 2. Initialize an `AGSOfflineMapTask` object using the map created with the portal item.
 3. Get the default parameters for the task by calling `AGSOfflineMapTask.defaultGenerateOfflineMapParameters(withAreaOfInterest:completion:)` with the selected extent.
-4. Check the `AGSGenerateOfflineMapParameters.referenceBasemapFilename` property. The author of an online web map can configure this setting to indicate the name of a suitable basemap. In this example, the application checks the app bundle for the suggested "naperville_imagery.tpk" file - and if found, asks the user whether they wish to use this instead of downloading.
-5. Set the `AGSGenerateOfflineMapParameters.referenceBasemapDirectory` to the absolute path of the directory which contains the .tpk file, if the user chooses to use the basemap on the device.
+4. Check the `AGSGenerateOfflineMapParameters.referenceBasemapFilename` property. The author of an online web map can configure this setting to indicate the name of a suitable basemap. In this example, the application checks the app bundle for the suggested "naperville_imagery.tpkx" file - and if found, asks the user whether they wish to use this instead of downloading.
+5. Set the `AGSGenerateOfflineMapParameters.referenceBasemapDirectory` to the absolute path of the directory which contains the .tpkx file, if the user chooses to use the basemap on the device.
 6. Create an `AGSGenerateOfflineMapJob` by calling `AGSOfflineMapTask.generateOfflineMapJob(with:downloadDirectory:)` passing the parameters and the download location for the offline map.
-7. Start the `AGSGenerateOfflineMapJob`. It will check whether `AGSGenerateOfflineMapParameters.referenceBasemapDirectory` has been set. If this property is set, no online basemap will be downloaded and instead, the mobile map will be created with a reference to the .tpk on the device.
+7. Start the `AGSGenerateOfflineMapJob`. It will check whether `AGSGenerateOfflineMapParameters.referenceBasemapDirectory` has been set. If this property is set, no online basemap will be downloaded and instead, the mobile map will be created with a reference to the .tpkx on the device.
 
 ## Relevant API
 
@@ -47,7 +47,7 @@ Since the application is not exporting online ArcGIS Online basemaps you will no
 
 ## Offline data
 
-This sample uses [naperville_imagery.tpk](https://arcgisruntime.maps.arcgis.com/home/item.html?id=628e8e3521cf45e9a28a12fe10c02c4d) TileCache. It is downloaded from ArcGIS Online automatically.
+This sample uses [naperville_imagery.tpkx](https://arcgis.com/home/item.html?id=85282f2aaa2844d8935cdb8722e22a93) TileCache. It is downloaded from ArcGIS Online automatically.
 
 ## Tags
 

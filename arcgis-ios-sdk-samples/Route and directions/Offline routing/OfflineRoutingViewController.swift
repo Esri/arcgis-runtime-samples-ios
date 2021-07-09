@@ -57,8 +57,8 @@ class OfflineRoutingViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         // using a tpk to create a local tiled layer
         // which will be visible in case of no network connection
-        let path = Bundle.main.path(forResource: "streetmap_SD", ofType: "tpk")!
-        let localTiledLayer = AGSArcGISTiledLayer(tileCache: AGSTileCache(fileURL: URL(fileURLWithPath: path)))
+        let tileCache = AGSTileCache(name: "streetmap_SD")
+        let localTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
         
         // initialize the map using the local tiled layer as baselayer
         self.map = AGSMap(basemap: AGSBasemap(baseLayer: localTiledLayer))

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--BrowseOGCAPI Feature Service View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="BrowseOGCAPIFeatureServiceViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6U-yX-17o" userLabel="Map View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jXp-jp-Vzg">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="KnP-M3-jrs"/>
+                                    <barButtonItem enabled="NO" title="Layers" id="7Dh-s3-xHh">
+                                        <connections>
+                                            <action selector="browseLayerInfos:" destination="Y6W-OH-hqX" id="dgP-MK-fTp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="chR-6j-b8p"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="u6U-yX-17o" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="3Aa-FM-h6x"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jXp-jp-Vzg" secondAttribute="bottom" id="F06-Na-UTb"/>
+                            <constraint firstItem="u6U-yX-17o" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="Xa5-gn-tE6"/>
+                            <constraint firstItem="u6U-yX-17o" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Zfx-fb-gsd"/>
+                            <constraint firstItem="jXp-jp-Vzg" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="kR6-mL-4NH"/>
+                            <constraint firstItem="jXp-jp-Vzg" firstAttribute="top" secondItem="u6U-yX-17o" secondAttribute="bottom" id="znU-Hw-trq"/>
+                            <constraint firstItem="jXp-jp-Vzg" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="zoT-MU-M3m"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="layersBarButtonItem" destination="7Dh-s3-xHh" id="FC3-qC-xCu"/>
+                        <outlet property="mapView" destination="u6U-yX-17o" id="ZQW-v3-tGm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

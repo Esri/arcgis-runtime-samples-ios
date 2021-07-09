@@ -16,7 +16,15 @@ import UIKit
 import ArcGIS
 
 class FindPlaceViewController: UIViewController {
-    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            // Create an instance of a map with ESRI topographic basemap.
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.touchDelegate = self
+            // Add the graphics overlay to the map view.
+            mapView.graphicsOverlays.add(graphicsOverlay)
+        }
+    }
     @IBOutlet var tableView: UITableView!
     @IBOutlet var preferredSearchLocationTextField: UITextField!
     @IBOutlet var poiTextField: UITextField!
@@ -25,11 +33,9 @@ class FindPlaceViewController: UIViewController {
     @IBOutlet var overlayView: UIView!
     
     private var textFieldLocationButton: UIButton!
-    
-    private var map: AGSMap!
     private let graphicsOverlay = AGSGraphicsOverlay()
     
-    private var locatorTask: AGSLocatorTask!
+    private let locatorTask = AGSLocatorTask(url: URL(string: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
     private var suggestResults = [AGSSuggestResult]() {
         didSet {
             tableView.reloadData()
@@ -57,27 +63,19 @@ class FindPlaceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // add the source code button item to the right of navigation bar
+        // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FindPlaceViewController"]
         
-        // create an instance of a map with ESRI topographic basemap
-        self.map = AGSMap(basemapStyle: .arcGISTopographic)
-        
-        // assign the map to the map view
-        self.mapView.map = self.map
-        self.mapView.touchDelegate = self
-        
-        // start location display
+        // Start location display.
         self.mapView.locationDisplay.autoPanMode = .recenter
         self.mapView.locationDisplay.start { [weak self] (error: Error?) in
             if error == nil {
-                // if the location display starts, update the preferred search location
-                // textfield's text
+                // If the location display starts, update the preferred search location textfield's text.
                 self?.preferredSearchLocationTextField.text = self!.currentLocationText
             }
         }
         
-        // logic to show the extent search button
+        // Logic to show the extent search button.
         self.mapView.viewpointChangedHandler = { [weak self] in
             DispatchQueue.main.async {
                 if self?.canDoExtentSearch ?? false {
@@ -86,27 +84,21 @@ class FindPlaceViewController: UIViewController {
             }
         }
         
-        // add the graphicsOverlay to the map view
-        self.mapView.graphicsOverlays.add(graphicsOverlay)
-        
-        // initialize locator task
-        self.locatorTask = AGSLocatorTask(url: URL(string: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer")!)
-        
-        // hide suggest result table view by default
+        // Hide suggest result table view by default.
         self.animateTableView(expand: false)
         
-        // hide the overlay view by default
+        // Hide the overlay view by default.
         self.overlayView.isHidden = true
         
-        // register for keyboard notification in order to toggle overlay view on and off
+        // Register for keyboard notification in order to toggle overlay view on and off.
         NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.showOverlayView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(FindPlaceViewController.hideOverlayView), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        // add the left view images for both the textfields
+        // Add the left view images for both the textfields.
         self.setupTextFieldLeftViews()
     }
     
-    // method to show search icon and pin icon for the textfields
+    // Method to show search icon and pin icon for the textfields.
     private func setupTextFieldLeftViews() {
         var leftView = self.textFieldViewWithImage("SearchIcon")
         self.poiTextField.leftView = leftView
@@ -117,8 +109,8 @@ class FindPlaceViewController: UIViewController {
         self.preferredSearchLocationTextField.leftViewMode = .always
     }
     
-    // method returns a UIView with an imageView as the subview
-    // with an image instantiated using the name provided
+    // Method returns a UIView with an imageView as the subview
+    // with an image instantiated using the name provided.
     private func textFieldViewWithImage(_ imageName: String) -> UIView {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 30))
         let imageView = UIImageView(image: UIImage(named: imageName))
@@ -127,7 +119,7 @@ class FindPlaceViewController: UIViewController {
         return view
     }
     
-    // method to toggle the suggestions table view on and off
+    // Method to toggle the suggestions table view on and off.
     private func animateTableView(expand: Bool) {
         if (expand != self.isTableViewVisible) && !self.isTableViewAnimating {
             self.isTableViewAnimating = true
@@ -145,16 +137,15 @@ class FindPlaceViewController: UIViewController {
         }
     }
     
-    // method to clear prefered location information
-    // hide the suggestions table view, empty previously selected
-    // suggest result and previously fetch search location
+    /// Clear preferred location information, hide the suggestions table view, empty previously selected suggest result and
+    /// previously fetch search location.
     private func clearPreferredLocationInfo() {
         self.animateTableView(expand: false)
         self.selectedSuggestResult = nil
         self.preferredSearchLocation = nil
     }
     
-    // method to show callout for a graphic
+    /// Method to show callout for a graphic.
     private func showCalloutForGraphic(_ graphic: AGSGraphic, tapLocation: AGSPoint) {
         let addressType = graphic.attributes["Addr_type"] as! String
         self.mapView.callout.title = graphic.attributes["Match_addr"] as? String ?? ""
@@ -168,7 +159,7 @@ class FindPlaceViewController: UIViewController {
         self.mapView.callout.show(for: graphic, tapLocation: tapLocation, animated: true)
     }
     
-    // method returns a graphic object for the specified point and attributes
+    /// Method returns a graphic object for the specified point and attributes.
     private func graphicForPoint(_ point: AGSPoint, attributes: [String: AnyObject]?) -> AGSGraphic {
         let markerImage = UIImage(named: "RedMarker")!
         let symbol = AGSPictureMarkerSymbol(image: markerImage)
@@ -178,7 +169,7 @@ class FindPlaceViewController: UIViewController {
         return graphic
     }
     
-    // method to zoom to an array of graphics
+    /// Method to zoom to an array of graphics.
     func zoomToGraphics(_ graphics: [AGSGraphic]) {
         if let spatialReference = graphics.first?.geometry?.spatialReference {
             let multipoint = AGSMultipointBuilder(spatialReference: spatialReference)
@@ -199,20 +190,20 @@ class FindPlaceViewController: UIViewController {
     }
     
     private func fetchSuggestions(_ string: String, suggestionType: SuggestionType, textField: UITextField) {
-        // cancel previous requests
+        // Cancel previous requests.
         if self.suggestRequestOperation != nil {
             self.suggestRequestOperation.cancel()
         }
         
-        // initialize suggest parameters
+        // Initialize suggest parameters.
         let suggestParameters = AGSSuggestParameters()
         let flag: Bool = (suggestionType == SuggestionType.poi)
         suggestParameters.categories = flag ? ["POI"] : ["Populated Place"]
         suggestParameters.preferredSearchLocation = flag ? nil : self.mapView.locationDisplay.mapLocation
         
-        // get suggestions
+        // Get suggestions.
         self.suggestRequestOperation = self.locatorTask.suggest(withSearchText: string, parameters: suggestParameters) { [weak self] (suggestResults, error) in
-            // check if the search string has not changed in the meanwhile
+            // Check if the search string has not changed in the meanwhile.
             guard string == textField.text else { return }
             
             if let error = error {
@@ -225,11 +216,11 @@ class FindPlaceViewController: UIViewController {
     }
     
     private func geocodeUsingSuggestResult(_ suggestResult: AGSSuggestResult, completion: @escaping () -> Void) {
-        // create geocode params
+        // Create geocode parameters.
         let params = AGSGeocodeParameters()
         params.outputSpatialReference = self.mapView.spatialReference
         
-        // geocode with selected suggest result
+        // Geocode with selected suggest result.
         self.locatorTask.geocode(with: suggestResult, parameters: params) { [weak self] (result: [AGSGeocodeResult]?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
@@ -243,24 +234,24 @@ class FindPlaceViewController: UIViewController {
     }
     
     private func geocodePOIs(_ poi: String, location: AGSPoint?, extent: AGSGeometry?) {
-        // hide callout if already visible
+        // Hide callout if already visible.
         self.mapView.callout.dismiss()
         
-        // hide extent search button
+        // Hide extent search button.
         self.canDoExtentSearch = false
         self.extentSearchButton.isHidden = true
         
-        // remove all previous graphics
+        // Remove all previous graphics.
         self.graphicsOverlay.graphics.removeAllObjects()
         
-        // parameters for geocoding POIs
+        // Parameters for geocoding POIs.
         let params = AGSGeocodeParameters()
         params.preferredSearchLocation = location
         params.searchArea = extent
         params.outputSpatialReference = self.mapView.spatialReference
         params.resultAttributeNames.append(contentsOf: ["*"])
-            
-        // geocode using the search text and params
+        
+        // Geocode using the search text and parameters.
         self.locatorTask.geocode(withSearchText: poi, parameters: params) { [weak self] (results: [AGSGeocodeResult]?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
@@ -273,27 +264,27 @@ class FindPlaceViewController: UIViewController {
     
     func handleGeocodeResultsForPOIs(_ geocodeResults: [AGSGeocodeResult]?, areExtentBased: Bool) {
         if let results = geocodeResults,
-            !results.isEmpty {
-            // show the graphics on the map
+           !results.isEmpty {
+            // Show the graphics on the map.
             for result in results {
                 let graphic = self.graphicForPoint(result.displayLocation!, attributes: result.attributes as [String: AnyObject]?)
                 
                 self.graphicsOverlay.graphics.add(graphic)
             }
             
-            // extent search button display logic
-            // if search was not based on extent, then zoom to the graphics. On completion
-            // set the canDoExtentSearch flag to true
-            // else if search is based on extent, no need to zoom, simply set the flag to true
+            // Extent search button display logic.
+            // If search was not based on extent, then zoom to the graphics. On completion
+            // set the canDoExtentSearch flag to true.
+            // Otherwise, if search is based on extent, no need to zoom, simply set the flag to true.
             if !areExtentBased {
                 self.zoomToGraphics(self.graphicsOverlay.graphics as AnyObject as! [AGSGraphic])
             } else {
                 self.canDoExtentSearch = true
             }
         } else {
-            // show alert for no results
+            // Show alert for no results.
             print("No results found")
-            // set canDoExtentSearch flag to true, so that if the user pans, the button becomes visible
+            // Set canDoExtentSearch flag to true, so that if the user pans, the button becomes visible.
             self.canDoExtentSearch = true
         }
     }
@@ -301,28 +292,27 @@ class FindPlaceViewController: UIViewController {
     // MARK: - Actions
     
     private func search() {
-        // validation
+        // Ensure that the text field is not empty.
         guard let poi = self.poiTextField.text, !poi.isEmpty else {
             print("Point of interest required")
             return
         }
         
-        // cancel previous requests
+        // Cancel previous requests.
         if self.suggestRequestOperation != nil {
             self.suggestRequestOperation.cancel()
         }
         
-        // hide the table view
+        // Hide the table view.
         self.animateTableView(expand: false)
         
-        // check if a suggestion is present
+        // Check if a suggestion is present.
         if self.selectedSuggestResult != nil {
-            // since a suggestion is selected, check if it was already geocoded to a location
-            // if no, then goecode the suggestion
-            // else use the geocoded location, to find the POIs
+            // Since a suggestion is selected, check if it was already geocoded to a location.
+            // If not, then geocode the suggestion.
+            // otherwise, use the geocoded location to find the POIs.
             if self.preferredSearchLocation == nil {
                 self.geocodeUsingSuggestResult(self.selectedSuggestResult) { [weak self] in
-                    // find the POIs wrt location
                     self?.geocodePOIs(poi, location: self!.preferredSearchLocation, extent: nil)
                 }
             } else {
@@ -413,15 +403,15 @@ extension FindPlaceViewController: UITableViewDelegate {
 
 extension FindPlaceViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // dismiss the callout if already visible
+        // Dismiss the callout if already visible.
         self.mapView.callout.dismiss()
         
-        // identify graphics at the tapped location
+        // Identify graphics at the tapped location.
         self.mapView.identify(self.graphicsOverlay, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { (result: AGSIdentifyGraphicsOverlayResult) in
             if let error = result.error {
                 print(error)
             } else if let graphic = result.graphics.first {
-                // show callout for the first graphic in the array
+                // Show callout for the first graphic in the array.
                 self.showCalloutForGraphic(graphic, tapLocation: mapPoint)
             }
         }

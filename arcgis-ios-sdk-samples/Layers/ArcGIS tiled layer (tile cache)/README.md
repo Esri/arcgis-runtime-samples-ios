@@ -29,7 +29,7 @@ Launch the app to view the "San Francisco offline tile package" as the basemap. 
 
 ## Offline data
 
-This sample uses the [San Francisco offline tile package](https://www.arcgis.com/home/item.html?id=72e703cd01654e7796eb1ae75af1cb53). It is downloaded from ArcGIS Online automatically.
+This sample uses the [San Francisco offline tile package](https://www.arcgis.com/home/item.html?id=e4a398afe9a945f3b0f4dca1e4faccb5). It is downloaded from ArcGIS Online automatically.
 
 ## About the data
 

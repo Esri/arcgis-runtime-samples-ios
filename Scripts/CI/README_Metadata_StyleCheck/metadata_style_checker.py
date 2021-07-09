@@ -138,7 +138,7 @@ class MetadataCreator:
         """
         results = []
         for file in os.listdir(self.folder_path):
-            if os.path.splitext(file)[1].lower() in ['.png']:
+            if os.path.splitext(file)[1].lower() in ['.png', '.gif']:
                 results.append(file)
         if not results:
             raise Exception('Unable to get images paths.')

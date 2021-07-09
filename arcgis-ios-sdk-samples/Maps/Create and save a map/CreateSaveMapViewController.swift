@@ -34,8 +34,24 @@ private extension UIImage {
 
 class CreateSaveMapViewController: UIViewController, CreateOptionsViewControllerDelegate, SaveAsViewControllerDelegate {
     @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var saveButton: UIBarButtonItem!
+    @IBOutlet private weak var newMapButton: UIBarButtonItem!
     
-    private var portal: AGSPortal?
+    let apiKey = AGSArcGISRuntimeEnvironment.apiKey
+    let oAuthConfiguration: AGSOAuthConfiguration
+    var portalFolders = [AGSPortalFolder]()
+    private let portal = AGSPortal.arcGISOnline(withLoginRequired: true)
+    
+    required init?(coder aDecoder: NSCoder) {
+        // Auth Manager settings
+        oAuthConfiguration = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
+        AGSAuthenticationManager.shared().oAuthConfigurations.add(oAuthConfiguration)
+        
+        // Temporarily unset the API key for this sample.
+        // Please see the additional information in the README.
+        AGSArcGISRuntimeEnvironment.apiKey = ""
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,14 +62,30 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             "CreateOptionsViewController",
             "SaveAsViewController"
         ]
-        
-        // Auth Manager settings
-        let config = AGSOAuthConfiguration(portalURL: nil, clientID: "xHx4Nj7q1g19Wh6P", redirectURL: "iOSSamples://auth")
-        AGSAuthenticationManager.shared().oAuthConfigurations.add(config)
+        portal.load { [weak self] (error) in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                // Get the user's array of portal folders.
+                self.portal.user?.fetchContent { _, folders, _ in
+                    if let portalFolders = folders {
+                        self.portalFolders = portalFolders
+                    }
+                }
+                // Initially show the map creation UI.
+                self.performSegue(withIdentifier: "CreateNewSegue", sender: self)
+                self.newMapButton.isEnabled = true
+                self.saveButton.isEnabled = true
+            }
+        }
+    }
+    
+    deinit {
+        // Reset the API key after successful login.
+        AGSArcGISRuntimeEnvironment.apiKey = apiKey
+        AGSAuthenticationManager.shared().oAuthConfigurations.remove(oAuthConfiguration)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
-        
-        // Initially show the map creation UI.
-        performSegue(withIdentifier: "CreateNewSegue", sender: self)
     }
     
     private func showSuccess() {
@@ -78,15 +110,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     // MARK: - Actions
     
     @IBAction func saveAsAction(_ sender: AnyObject) {
-        let portal = AGSPortal(url: URL(string: "https://www.arcgis.com")!, loginRequired: true)
-        self.portal = portal
-        portal.load { [weak self] (error) in
-            if let error = error {
-                print(error)
-            } else {
-                self?.performSegue(withIdentifier: "SaveAsSegue", sender: self)
-            }
-        }
+        self.performSegue(withIdentifier: "SaveAsSegue", sender: self)
     }
     
     // MARK: - Navigation
@@ -98,6 +122,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
                 createOptionsViewController.delegate = self
             } else if let saveAsViewController = rootController as? SaveAsViewController {
                 saveAsViewController.delegate = self
+                saveAsViewController.portalFolders = portalFolders
             }
         }
     }
@@ -119,7 +144,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
     
     // MARK: - SaveAsViewControllerDelegate
     
-    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String) {
+    func saveAsViewController(_ saveAsViewController: SaveAsViewController, didInitiateSaveWithTitle title: String, tags: [String], itemDescription: String, folder: AGSPortalFolder?) {
         UIApplication.shared.showProgressHUD(message: "Saving")
         
         // Set the initial viewpoint from map view.
@@ -134,7 +159,7 @@ class CreateSaveMapViewController: UIViewController, CreateOptionsViewController
             // Also to cut on the size.
             let croppedImage: UIImage? = image?.croppedImage(CGSize(width: 200, height: 200))
             
-            self.mapView.map?.save(as: title, portal: self.portal!, tags: tags, folder: nil, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
+            self.mapView.map?.save(as: title, portal: self.portal, tags: tags, folder: folder, itemDescription: itemDescription, thumbnail: croppedImage, forceSaveToSupportedVersion: true) { [weak self] (error) in
                 // Dismiss progress hud.
                 UIApplication.shared.hideProgressHUD()
                 if let error = error {

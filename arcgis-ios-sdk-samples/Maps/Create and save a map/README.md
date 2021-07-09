@@ -13,13 +13,15 @@ Maps can be created programmatically in code and then serialized and saved as an
 
 ## How to use the sample
 
-Select the basemap and layers you'd like to add to your map. Tap the "Save" button. Sign into an ArcGIS Online account. Provide a title, tags, and description. Save the map.
+Enter a username and password for an ArcGIS Online named user account (such as your ArcGIS for Developers account). Select the basemap and layers to add to the map. Tap the "Save" button. Provide a title, tags, description, and folder. Save the map.
 
 ## How it works
 
-1. An `AGSMap` is created with an `AGSBasemap` and a few operational layers.
-2. An `AGSPortal` object is created and loaded. This will issue an authentication challenge, prompting the user to provide credentials.
-3. Once the user is authenticated, call `AGSMap.save(as:portal:tags:folder:itemDescription:thumbnail:forceSaveToSupportedVersion:completion:)` and a new map is saved with the specified title, tags, and folder.
+1. Add an `AGSOAuthConfiguration` to the shared `AGSAuthenticationManager`'s `oAuthConfigurations` array and remove all credentials from the `credentialCache`.
+2. Create a new `AGSPortal` instance and load it to invoke the authentication challenge.
+3. Access the user's portal content by using `AGSPortalUser.fetchContent(completion:)`. Then get the array of `AGSPortalFolder`s.
+4. Create an `AGSMap` with an `AGSBasemapStyle` and a few operational layers.
+5. Save the map by using `AGSMap.save(as:portal:tags:folder:itemDescription:thumbnail:forceSaveToSupportedVersion:completion:)` and a new map is saved with the specified title, tags, and folder.
 
 ## Relevant API
 

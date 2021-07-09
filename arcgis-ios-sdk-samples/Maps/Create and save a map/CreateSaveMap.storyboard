@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oSL-y7-4lj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oSL-y7-4lj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,14 +23,14 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTS-fi-WLf" userLabel="Saving Toolbar">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="New" id="nTf-dP-Gn9">
+                                    <barButtonItem enabled="NO" title="New" id="nTf-dP-Gn9">
                                         <connections>
                                             <action selector="newAction" destination="oSL-y7-4lj" id="nG7-Sz-O2W"/>
                                             <segue destination="iro-gz-9sV" kind="presentation" identifier="CreateNewSegue" modalPresentationStyle="formSheet" id="16f-LT-pfg"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="fpk-2g-NJf"/>
-                                    <barButtonItem systemItem="save" id="acU-PM-b39">
+                                    <barButtonItem enabled="NO" systemItem="save" id="acU-PM-b39">
                                         <connections>
                                             <action selector="saveAsAction:" destination="oSL-y7-4lj" id="KZP-dP-cr7"/>
                                         </connections>
@@ -60,6 +60,8 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="ULb-Bf-8qz" id="xZ0-Ip-0MS"/>
+                        <outlet property="newMapButton" destination="nTf-dP-Gn9" id="AP5-46-Rfs"/>
+                        <outlet property="saveButton" destination="acU-PM-b39" id="Byo-QY-4mw"/>
                         <segue destination="lP5-Fn-JsW" kind="presentation" identifier="SaveAsSegue" modalPresentationStyle="formSheet" id="IUH-0f-3gl"/>
                     </connections>
                 </viewController>
@@ -100,6 +102,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Create A Map" id="fpE-NA-Y1o">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7am-F4-8G9">
+                            <connections>
+                                <action selector="cancelAction" destination="Mrh-2f-MIb" id="pnz-t2-f22"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="n84-WS-bCX">
                             <connections>
                                 <action selector="doneAction" destination="Mrh-2f-MIb" id="gdm-Vb-3a9"/>
@@ -131,14 +138,14 @@
         <scene sceneID="X1j-wT-O7z">
             <objects>
                 <tableViewController id="Kr2-KR-2IC" customClass="SaveAsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sOL-iP-0Hf">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sOL-iP-0Hf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <sections>
                             <tableViewSection id="WSx-l2-4BU">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="RY5-zo-XK7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="RY5-zo-XK7">
                                         <rect key="frame" x="0.0" y="18" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RY5-zo-XK7" id="63E-fJ-xc9">
@@ -167,7 +174,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3aJ-Bw-lwg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="3aJ-Bw-lwg">
                                         <rect key="frame" x="0.0" y="62" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3aJ-Bw-lwg" id="cXX-1H-Sjh">
@@ -196,7 +203,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jUt-8X-bgO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="jUt-8X-bgO">
                                         <rect key="frame" x="0.0" y="106" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jUt-8X-bgO" id="329-2X-T9Y">
@@ -225,6 +232,30 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="IE6-TF-mZH" detailTextLabel="6Mm-O7-7a8" style="IBUITableViewCellStyleValue1" id="7hj-SE-DjQ">
+                                        <rect key="frame" x="0.0" y="150" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hj-SE-DjQ" id="dtt-1a-s9Q">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Folder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IE6-TF-mZH">
+                                                    <rect key="frame" x="20" y="12" width="48.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Mm-O7-7a8">
+                                                    <rect key="frame" x="334" y="12" width="41" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -236,7 +267,7 @@
                     <navigationItem key="navigationItem" title="Save Map" id="B9z-G7-GUf">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qb3-Lf-YRN">
                             <connections>
-                                <action selector="cancelAction" destination="Kr2-KR-2IC" id="497-Pb-wvU"/>
+                                <action selector="cancelAction" destination="Kr2-KR-2IC" id="frs-Xi-Av1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="ATQ-vp-KaZ">
@@ -247,6 +278,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="iOp-Pj-P62" id="nvN-s0-ff6"/>
+                        <outlet property="folderLabel" destination="6Mm-O7-7a8" id="OVP-oS-4VN"/>
                         <outlet property="tagsTextField" destination="l0k-Zg-e33" id="mei-Yn-nuI"/>
                         <outlet property="titleTextField" destination="COp-aF-98Y" id="6T7-iM-mxQ"/>
                     </connections>

@@ -105,6 +105,11 @@ class CreateOptionsViewController: UITableViewController {
     
     // MARK: - Actions
     
+    @IBAction func cancelAction() {
+        // Dissmiss the view if canceled is tapped.
+        dismiss(animated: true)
+    }
+    
     @IBAction private func doneAction() {
         // Create a basemap with the selected basemap index.
         let basemap = AGSBasemap(style: basemapStyles[selectedBasemapIndex].value)

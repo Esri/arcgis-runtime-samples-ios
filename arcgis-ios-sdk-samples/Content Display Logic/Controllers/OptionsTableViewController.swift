@@ -32,6 +32,7 @@ class OptionsTableViewController: UITableViewController {
     /// selected.
     private var selectedIndex: Int?
     private let onChange: (Int) -> Void
+    var allowsEmptySelection = false
     
     /// Creates a new instance with the options, selected index, and selection
     /// change handler.
@@ -95,6 +96,10 @@ class OptionsTableViewController: UITableViewController {
             }
             tableView.reloadRows(at: indexPathsToReload, with: .automatic)
             onChange(indexPath.row)
+        } else if allowsEmptySelection {
+            tableView.deselectRow(at: indexPath, animated: true)
+            selectedIndex = nil
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
         }

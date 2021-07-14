@@ -70,13 +70,13 @@ class AddStatisticDefinitionsViewController: UITableViewController {
         switch cell {
         case fieldNameCell:
             let controller = OptionsTableViewController(labels: fieldNames, selectedIndex: fieldNameIndex) { (newIndex) in
-                self.fieldNameIndex = newIndex
+                self.fieldNameIndex = newIndex!
             }
             controller.title = "Field Name"
             show(controller, sender: self)
         case statisticTypeCell:
             let controller = OptionsTableViewController(labels: statisticTypes, selectedIndex: statisticType.rawValue) { (newIndex) in
-                self.statisticType = AGSStatisticType(rawValue: newIndex)!
+                self.statisticType = AGSStatisticType(rawValue: newIndex!)!
             }
             controller.title = "Statistic Type"
             show(controller, sender: self)

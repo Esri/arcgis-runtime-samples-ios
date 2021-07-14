@@ -136,7 +136,7 @@ class SpatialOperationsViewController: UIViewController {
         
         let controller = OptionsTableViewController(labels: SpatialOperation.allCases.map { $0.label }, selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
-            let newOperation = SpatialOperation.allCases[newIndex]
+            let newOperation = SpatialOperation.allCases[newIndex!]
             self.selectedOperation = newOperation
             // Perform the new spatial operation.
             self.performOperation(newOperation)

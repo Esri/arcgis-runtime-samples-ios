@@ -74,7 +74,7 @@ class ChangeAtmosphereEffectViewController: UIViewController {
         /// A table view controller allowing selection between the provided options.
         let controller = OptionsTableViewController(labels: atmosphereEffectOptionLabels, selectedIndex: selectedIndex) { [weak self] (selectedIndex) in
             /// The effect for the selected option.
-            let selectedEffect = AGSAtmosphereEffect(rawValue: selectedIndex)!
+            let selectedEffect = AGSAtmosphereEffect(rawValue: selectedIndex!)!
             
             // update the `atmosphereEffect` of the scene view with the selected effect
             self?.sceneView.atmosphereEffect = selectedEffect

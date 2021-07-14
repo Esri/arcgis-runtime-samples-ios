@@ -88,7 +88,7 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
     func showWhereClausePicker() {
         let selectedIndex = sampleWhereClauses.firstIndex { $0 == selectedWhereClause }
         let optionsViewController = OptionsTableViewController(labels: sampleWhereClauses, selectedIndex: selectedIndex) { newIndex in
-            let whereClause = self.sampleWhereClauses[newIndex]
+            let whereClause = self.sampleWhereClauses[newIndex!]
             self.selectedWhereClause = whereClause
             self.whereClauseCell.detailTextLabel?.text = whereClause
             self.navigationController?.popViewController(animated: true)

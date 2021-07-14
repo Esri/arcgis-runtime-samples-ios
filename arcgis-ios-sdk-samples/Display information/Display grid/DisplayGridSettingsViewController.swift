@@ -262,7 +262,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         }
         let selectedIndex = grid.labelPosition.rawValue
         let optionsViewController = OptionsTableViewController(labels: labelPositionLabels, selectedIndex: selectedIndex) { (newIndex) in
-            self.mapView?.grid?.labelPosition = AGSGridLabelPosition(rawValue: newIndex)!
+            self.mapView?.grid?.labelPosition = AGSGridLabelPosition(rawValue: newIndex!)!
         }
         optionsViewController.title = "Position"
         show(optionsViewController, sender: self)
@@ -275,7 +275,7 @@ class DisplayGridSettingsViewController: UITableViewController {
         }
         let optionsViewController = OptionsTableViewController(labels: labelFormatLabels, selectedIndex: selectedIndex) { (newIndex) in
             if let grid = self.mapView?.grid as? AGSLatitudeLongitudeGrid {
-                grid.labelFormat = AGSLatitudeLongitudeGridLabelFormat(rawValue: newIndex)!
+                grid.labelFormat = AGSLatitudeLongitudeGridLabelFormat(rawValue: newIndex!)!
                 self.updateLabelFormatUI()
             }
         }
@@ -290,9 +290,9 @@ class DisplayGridSettingsViewController: UITableViewController {
         }
         let optionsViewController = OptionsTableViewController(labels: labelUnitLabels, selectedIndex: selectedIndex) { (newIndex) in
             if let grid = self.mapView?.grid as? AGSMGRSGrid {
-                grid.labelUnit = AGSMGRSGridLabelUnit(rawValue: newIndex)!
+                grid.labelUnit = AGSMGRSGridLabelUnit(rawValue: newIndex!)!
             } else if let grid = self.mapView?.grid as? AGSUSNGGrid {
-                grid.labelUnit = AGSUSNGGridLabelUnit(rawValue: newIndex)!
+                grid.labelUnit = AGSUSNGGridLabelUnit(rawValue: newIndex!)!
             }
             self.updateLabelUnitUI()
         }
@@ -310,7 +310,7 @@ class DisplayGridSettingsViewController: UITableViewController {
             return type.label
         }
         let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
-            self.changeGrid(to: GridType(rawValue: newIndex)!)
+            self.changeGrid(to: GridType(rawValue: newIndex!)!)
         }
         optionsViewController.title = "Grid Type"
         show(optionsViewController, sender: self)

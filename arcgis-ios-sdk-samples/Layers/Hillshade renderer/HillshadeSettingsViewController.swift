@@ -108,7 +108,7 @@ class HillshadeSettingsViewController: UITableViewController {
         }
         let selectedIndex = slopeTypeOptions.firstIndex(of: slopeType)!
         let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
-            self.slopeType = self.slopeTypeOptions[newIndex]
+            self.slopeType = self.slopeTypeOptions[newIndex!]
             self.hillshadeParametersChanged()
         }
         optionsViewController.title = "Slope Type"

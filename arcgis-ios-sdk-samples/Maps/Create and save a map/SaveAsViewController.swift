@@ -75,8 +75,8 @@ class SaveAsViewController: UITableViewController {
             }
             // Replace the label text with the selected option.
             self.folderLabel.text = self.selectedFolder?.title ?? "None"
-            self.navigationController?.popViewController(animated: true)
         }
+        optionsViewController.allowsEmptySelection = true
         optionsViewController.title = "Folders"
         show(optionsViewController, sender: self)
     }

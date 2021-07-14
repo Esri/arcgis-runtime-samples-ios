@@ -31,7 +31,7 @@ class OptionsTableViewController: UITableViewController {
     /// The index of the currently selected option or `nil` if no option is
     /// selected.
     private var selectedIndex: Int?
-    private let onChange: (Int) -> Void
+    private let onChange: (Int?) -> Void
     var allowsEmptySelection = false
     
     /// Creates a new instance with the options, selected index, and selection
@@ -40,7 +40,7 @@ class OptionsTableViewController: UITableViewController {
     ///   - options: The options displayed by the view controller.
     ///   - selectedIndex: The index of the currently selected option or `nil`.
     ///   - onChange: A closure called when the selected option has changed.
-    init(options: [Option], selectedIndex: Int?, onChange: @escaping (Int) -> Void) {
+    init(options: [Option], selectedIndex: Int?, onChange: @escaping (Int?) -> Void) {
         self.options = options
         self.selectedIndex = selectedIndex
         self.onChange = onChange
@@ -53,7 +53,7 @@ class OptionsTableViewController: UITableViewController {
     ///   - labels: An array of labels for the options.
     ///   - selectedIndex: The index of the currently selected option or `nil`.
     ///   - onChange: A closure called when the selected option has changed.
-    convenience init(labels: [String], selectedIndex: Int?, onChange: @escaping (Int) -> Void) {
+    convenience init(labels: [String], selectedIndex: Int?, onChange: @escaping (Int?) -> Void) {
         let options = labels.map { Option(label: $0) }
         self.init(options: options, selectedIndex: selectedIndex, onChange: onChange)
     }
@@ -100,6 +100,7 @@ class OptionsTableViewController: UITableViewController {
             tableView.deselectRow(at: indexPath, animated: true)
             selectedIndex = nil
             tableView.reloadRows(at: [indexPath], with: .automatic)
+            onChange(nil)
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
         }

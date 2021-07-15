@@ -142,7 +142,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     func showAttributePicker() {
         let selectedIndex = possibleAttributes.firstIndex { $0 == selectedAttribute }
         let optionsViewController = OptionsTableViewController(labels: possibleAttributes.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
-            self.selectedAttribute = self.possibleAttributes[newIndex!!]
+            self.selectedAttribute = self.possibleAttributes[newIndex!]
             self.navigationController?.popViewController(animated: true)
         }
         optionsViewController.title = "Attributes"

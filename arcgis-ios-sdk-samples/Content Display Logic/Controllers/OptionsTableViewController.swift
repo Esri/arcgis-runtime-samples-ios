@@ -97,7 +97,6 @@ class OptionsTableViewController: UITableViewController {
             tableView.reloadRows(at: indexPathsToReload, with: .automatic)
             onChange(indexPath.row)
         } else if allowsEmptySelection {
-            tableView.deselectRow(at: indexPath, animated: true)
             selectedIndex = nil
             tableView.reloadRows(at: [indexPath], with: .automatic)
             onChange(nil)

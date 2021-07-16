@@ -34,11 +34,12 @@ class OptionsTableViewController: UITableViewController {
     private let onChange: (Int?) -> Void
     private var allowsEmptySelection: Bool
     
-    /// Creates a new instance with the options, selected index, and selection
+    /// Creates a new instance with the options, selected index, empty selection bool, and selection
     /// change handler.
     /// - Parameters:
     ///   - options: The options displayed by the view controller.
     ///   - selectedIndex: The index of the currently selected option or `nil`.
+    ///   - allowsEmptySelection: A bool to determine if empty selection is allowed. Defaulted to false.
     ///   - onChange: A closure called when the selected option has changed.
     init(options: [Option], selectedIndex: Int?, allowsEmptySelection: Bool = false, onChange: @escaping (Int?) -> Void) {
         self.options = options
@@ -48,11 +49,12 @@ class OptionsTableViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    /// Creates a new instance with the given labels, selected index, and
+    /// Creates a new instance with the given labels, selected index, empty selection bool, and
     /// selection change handler.
     /// - Parameters:
     ///   - labels: An array of labels for the options.
     ///   - selectedIndex: The index of the currently selected option or `nil`.
+    ///   - allowsEmptySelection: A bool to determine if empty selection is allowed. Defaulted to false.
     ///   - onChange: A closure called when the selected option has changed.
     convenience init(labels: [String], selectedIndex: Int?, allowsEmptySelection: Bool = false, onChange: @escaping (Int?) -> Void) {
         let options = labels.map { Option(label: $0) }

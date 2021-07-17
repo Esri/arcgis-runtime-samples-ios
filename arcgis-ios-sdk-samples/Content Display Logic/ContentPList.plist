@@ -929,7 +929,7 @@
 				<key>displayName</key>
 				<string>Add graphics with renderer</string>
 				<key>storyboardName</key>
-				<string>GORenderers</string>
+				<string>AddGraphicsWithRenderer</string>
 				<key>descriptionText</key>
 				<string>Add graphics with renderer to a map to change the style of all graphics in a graphics overlay by referencing a single symbol style.</string>
 			</dict>

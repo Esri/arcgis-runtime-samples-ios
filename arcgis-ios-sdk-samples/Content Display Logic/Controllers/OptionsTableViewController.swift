@@ -32,7 +32,7 @@ class OptionsTableViewController: UITableViewController {
     /// selected.
     private var selectedIndex: Int?
     private let onChange: (Int?) -> Void
-    private var allowsEmptySelection: Bool
+    private let allowsEmptySelection: Bool
     
     /// Creates a new instance with the options, selected index, empty selection bool, and selection
     /// change handler.

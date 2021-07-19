@@ -10,7 +10,7 @@ A renderer allows you to change the style of all graphics in an overlay by only 
 
 ## How to use the sample
 
-Run the sample and view graphics for points, lines, and polygons, which are stylized using renderers.
+Run the sample and view graphics for points, lines, polygons, and shapes with curved segments which are stylized using renderers.
 
 ## How it works
 
@@ -22,9 +22,14 @@ Run the sample and view graphics for points, lines, and polygons, which are styl
 
 ## Relevant API
 
+* AGSCubicBezierSegment
+* AGSEllipticArcSegment
 * AGSGeometry
 * AGSGraphic
 * AGSGraphicsOverlay
+* AGSMutablePart
+* AGSPolygonBuilder
+* AGSPolylineBuilder
 * AGSSimpleFillSymbol
 * AGSSimpleLineSymbol
 * AGSSimpleMarkerSymbol
@@ -36,4 +41,4 @@ To set unique symbols across a number of graphics (e.g. showing graphics of indi
 
 ## Tags
 
-display, graphics, marker, overlay, renderer, symbol
+arc, bezier, curve, display, graphics, marker, overlay, renderer, segment, symbol, true curve

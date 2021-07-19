@@ -37,7 +37,7 @@ class AddGraphicsWithRendererViewController: UIViewController {
         return pointGraphicsOverlay
     }
     
-    func makeLineGraphicOverlay() -> AGSGraphicsOverlay {
+    func makeLineGraphicsOverlay() -> AGSGraphicsOverlay {
         // Create a simple line symbol.
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .blue, width: 5)
         // Create a graphics overlay for the polylines.
@@ -58,8 +58,8 @@ class AddGraphicsWithRendererViewController: UIViewController {
     }
     
     func makeCurveGraphicsOverlay() -> AGSGraphicsOverlay {
-        // Create a simple fill symbol.
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 3)
+        // Create a simple fill symbol with outline.
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 1)
         let filledSymbolWithCurve = AGSSimpleFillSymbol(style: .solid, color: .red, outline: lineSymbol)
         // Create a graphics overlay for the polygons with curve segments.
         let curveGraphicsOverlay = AGSGraphicsOverlay()
@@ -116,15 +116,15 @@ class AddGraphicsWithRendererViewController: UIViewController {
     
     func addGraphicsOverlays() {
         // Create a graphics overlay for the points.
-        let pointGraphicOverlay = makePointGraphicsOverlay()
+        let pointGraphicsOverlay = makePointGraphicsOverlay()
         // Create a point graphic with `AGSPoint` geometry.
         let pointGeometry = AGSPoint(x: 40e5, y: 40e5, spatialReference: .webMercator())
         let pointGraphic = AGSGraphic(geometry: pointGeometry, symbol: nil)
         // Add the graphic to the overlay.
-        pointGraphicOverlay.graphics.add(pointGraphic)
+        pointGraphicsOverlay.graphics.add(pointGraphic)
         
         // Create a graphics overlay for the polylines.
-        let lineGraphicsOverlay = makeLineGraphicOverlay()
+        let lineGraphicsOverlay = makeLineGraphicsOverlay()
         // Create a line graphic with `AGSPolyline` geometry.
         let lineBuilder = AGSPolylineBuilder(spatialReference: .webMercator())
         lineBuilder.addPointWith(x: -10e5, y: 40e5)
@@ -154,7 +154,7 @@ class AddGraphicsWithRendererViewController: UIViewController {
         curveGraphicsOverlay.graphics.add(heartGraphic)
         
         // Add the overlays to the map view.
-        mapView.graphicsOverlays.addObjects(from: [pointGraphicOverlay, lineGraphicsOverlay, polygonGraphicsOverlay, curveGraphicsOverlay])
+        mapView.graphicsOverlays.addObjects(from: [pointGraphicsOverlay, lineGraphicsOverlay, polygonGraphicsOverlay, curveGraphicsOverlay])
     }
     
     // MARK: UIViewController

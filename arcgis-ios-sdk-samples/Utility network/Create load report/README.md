@@ -16,7 +16,7 @@ Choose phases to be included in the report. Tap "Run" to initiate a downstream t
 
 1. Create and load an `AGSUtilityNetwork` with a feature service URL, then get an asset type, tier, network attributes, and category by their names.
 2. Create an `AGSUtilityElement` from the asset type to use as the starting location for the trace.
-3. Get a base condition from the utility tier's trace configuration.
+3. Get a base condition by calling the utility tier's `AGSUtilityTier.makeDefaultTraceConfiguration()` method.
 4. Create `AGSUtilityTraceParameters` passing in `downstream` trace type and the default starting location. Set its `traceConfiguration` property with the trace configuration above, and set `includeBarriers` to `false`.
 5. Create an `AGSUtilityCategoryComparison` where "ServicePoint" category exists.
 6. Reset the `functions` property of the trace configuration with a new `AGSUtilityTraceFunction` adding a "Service Load" network attribute where this category comparison applies. This will limit the function results.

@@ -161,7 +161,7 @@ class CreateLoadReportViewController: UIViewController {
             .definition
             .domainNetwork(withDomainNetworkName: "ElectricDistribution")?
             .tier(withName: "Medium Voltage Radial")?
-            .traceConfiguration
+            .makeDefaultTraceConfiguration()
     }
     
     // MARK: Actions

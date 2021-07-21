@@ -212,7 +212,7 @@ class PerformValveIsolationTraceViewController: UIViewController {
                 .definition
                 .domainNetwork(withDomainNetworkName: "Pipeline")?
                 .tier(withName: "Pipe Distribution System")?
-                .traceConfiguration
+                .makeDefaultTraceConfiguration()
         else {
             return nil
         }

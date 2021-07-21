@@ -45,7 +45,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         // initialize sketch editor and assign to map view
         self.sketchEditor = AGSSketchEditor()
         self.mapView.sketchEditor = self.sketchEditor
-                
+        
         // hide the sketchToolbar initially
         self.sketchToolbar.isHidden = true
         
@@ -78,7 +78,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         if let lastQuery = self.lastQuery {
             lastQuery.cancel()
         }
-
+        
         self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 10) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
             guard let self = self else { return }
             if let error = identifyLayerResult.error {
@@ -87,6 +87,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
                 let popups = identifyLayerResult.geoElements.map(AGSPopup.init(geoElement:))
                 self.popupsViewController = AGSPopupsViewController(popups: popups, containerStyle: .navigationBar)
                 self.popupsViewController.modalPresentationStyle = .formSheet
+                self.popupsViewController.isModalInPresentation = true
                 self.present(self.popupsViewController, animated: true)
                 self.popupsViewController.delegate = self
             }
@@ -191,8 +192,8 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FeatureTemplateSegue",
-            let navigationController = segue.destination as? UINavigationController,
-            let featureTemplatePickerViewController = navigationController.topViewController as? FeatureTemplatePickerViewController {
+           let navigationController = segue.destination as? UINavigationController,
+           let featureTemplatePickerViewController = navigationController.topViewController as? FeatureTemplatePickerViewController {
             featureTemplatePickerViewController.addTemplatesFromLayer(featureLayer)
             featureTemplatePickerViewController.delegate = self
         }
@@ -211,7 +212,7 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         } else {
             newFeature.geometry = AGSPoint(x: 0, y: 0, spatialReference: self.map.spatialReference)
         }
-
+        
         // initialize a popup definition using the feature layer
         let popupDefinition = AGSPopupDefinition(popupSource: self.featureLayer)
         // create a popup
@@ -224,10 +225,11 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         // Only for iPad, set presentation style to Form sheet
         // We don't want it to cover the entire screen
         self.popupsViewController.modalPresentationStyle = .formSheet
-
+        self.popupsViewController.isModalInPresentation = true
+        
         // First, dismiss the Feature Template Picker
         self.dismiss(animated: false)
-
+        
         // Next, Present the popup view controller
         self.present(self.popupsViewController, animated: true) { [weak self] in
             self?.popupsViewController.startEditingCurrentPopup()

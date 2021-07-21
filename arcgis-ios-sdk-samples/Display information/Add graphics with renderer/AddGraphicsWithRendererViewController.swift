@@ -59,7 +59,7 @@ class AddGraphicsWithRendererViewController: UIViewController {
         // Add the graphic to the overlay.
         polygonGraphicsOverlay.graphics.add(polygonGraphic)
         
-        // Create a graphics overlay for the curve shapes.
+        // Create a graphics overlay for the enclosing shapes with curve segments.
         let curveGraphicsOverlay = makeCurveGraphicsOverlay()
         let origin = AGSPoint(x: 40e5, y: 5e5, spatialReference: .webMercator())
         // Create a heart-shape graphic from `AGSSegment`s.
@@ -104,12 +104,12 @@ class AddGraphicsWithRendererViewController: UIViewController {
     func makeCurveGraphicsOverlay() -> AGSGraphicsOverlay {
         // Create a simple fill symbol with outline.
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 1)
-        let filledSymbolWithCurve = AGSSimpleFillSymbol(style: .solid, color: .red, outline: lineSymbol)
+        let filledSymbol = AGSSimpleFillSymbol(style: .solid, color: .red, outline: lineSymbol)
         // Create a graphics overlay for the polygons with curve segments.
-        let curveGraphicsOverlay = AGSGraphicsOverlay()
+        let graphicsOverlay = AGSGraphicsOverlay()
         // Create and assign a simple renderer to the graphics overlay.
-        curveGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: filledSymbolWithCurve)
-        return curveGraphicsOverlay
+        graphicsOverlay.renderer = AGSSimpleRenderer(symbol: filledSymbol)
+        return graphicsOverlay
     }
     
     /// Create a heart-shape geometry with Bezier and elliptic arc segments.
@@ -120,7 +120,7 @@ class AddGraphicsWithRendererViewController: UIViewController {
     /// - Returns: A heart-shape geometry.
     func makeHeartGeometry(center: AGSPoint, sideLength: Double) -> AGSGeometry? {
         guard sideLength > 0 else { return nil }
-        let sr = center.spatialReference
+        let spatialReference = center.spatialReference
         // The x and y coordinates to simplify the calculation.
         let minX = center.x - 0.5 * sideLength
         let minY = center.y - 0.5 * sideLength
@@ -128,32 +128,32 @@ class AddGraphicsWithRendererViewController: UIViewController {
         let arcRadius = sideLength * 0.25
         
         // Bottom left curve.
-        let leftCurveStart = AGSPoint(x: center.x, y: minY, spatialReference: sr)
-        let leftCurveEnd = AGSPoint(x: minX, y: minY + 0.75 * sideLength, spatialReference: sr)
-        let leftControlPoint1 = AGSPoint(x: center.x, y: minY + 0.25 * sideLength, spatialReference: sr)
-        let leftControlPoint2 = AGSPoint(x: minX, y: center.y, spatialReference: sr)
-        let leftCurve = AGSCubicBezierSegment(start: leftCurveStart, controlPoint1: leftControlPoint1, controlPoint2: leftControlPoint2, end: leftCurveEnd, spatialReference: sr)!
+        let leftCurveStart = AGSPoint(x: center.x, y: minY, spatialReference: spatialReference)
+        let leftCurveEnd = AGSPoint(x: minX, y: minY + 0.75 * sideLength, spatialReference: spatialReference)
+        let leftControlPoint1 = AGSPoint(x: center.x, y: minY + 0.25 * sideLength, spatialReference: spatialReference)
+        let leftControlPoint2 = AGSPoint(x: minX, y: center.y, spatialReference: spatialReference)
+        let leftCurve = AGSCubicBezierSegment(start: leftCurveStart, controlPoint1: leftControlPoint1, controlPoint2: leftControlPoint2, end: leftCurveEnd, spatialReference: spatialReference)!
         
         // Top left arc.
-        let leftArcCenter = AGSPoint(x: minX + 0.25 * sideLength, y: minY + 0.75 * sideLength, spatialReference: sr)
-        let leftArc = AGSEllipticArcSegment.createCircularEllipticArc(withCenter: leftArcCenter, radius: arcRadius, startAngle: .pi, centralAngle: -.pi, spatialReference: sr)!
+        let leftArcCenter = AGSPoint(x: minX + 0.25 * sideLength, y: minY + 0.75 * sideLength, spatialReference: spatialReference)
+        let leftArc = AGSEllipticArcSegment.createCircularEllipticArc(withCenter: leftArcCenter, radius: arcRadius, startAngle: .pi, centralAngle: -.pi, spatialReference: spatialReference)!
         
         // Top right arc.
-        let rightArcCenter = AGSPoint(x: minX + 0.75 * sideLength, y: minY + 0.75 * sideLength, spatialReference: sr)
-        let rightArc = AGSEllipticArcSegment.createCircularEllipticArc(withCenter: rightArcCenter, radius: arcRadius, startAngle: .pi, centralAngle: -.pi, spatialReference: sr)!
+        let rightArcCenter = AGSPoint(x: minX + 0.75 * sideLength, y: minY + 0.75 * sideLength, spatialReference: spatialReference)
+        let rightArc = AGSEllipticArcSegment.createCircularEllipticArc(withCenter: rightArcCenter, radius: arcRadius, startAngle: .pi, centralAngle: -.pi, spatialReference: spatialReference)!
         
         // Bottom right curve.
-        let rightCurveStart = AGSPoint(x: minX + sideLength, y: minY + 0.75 * sideLength, spatialReference: sr)
+        let rightCurveStart = AGSPoint(x: minX + sideLength, y: minY + 0.75 * sideLength, spatialReference: spatialReference)
         let rightCurveEnd = leftCurveStart
-        let rightControlPoint1 = AGSPoint(x: minX + sideLength, y: center.y, spatialReference: sr)
+        let rightControlPoint1 = AGSPoint(x: minX + sideLength, y: center.y, spatialReference: spatialReference)
         let rightControlPoint2 = leftControlPoint1
-        let rightCurve = AGSCubicBezierSegment(start: rightCurveStart, controlPoint1: rightControlPoint1, controlPoint2: rightControlPoint2, end: rightCurveEnd, spatialReference: sr)!
+        let rightCurve = AGSCubicBezierSegment(start: rightCurveStart, controlPoint1: rightControlPoint1, controlPoint2: rightControlPoint2, end: rightCurveEnd, spatialReference: spatialReference)!
         
-        let heart = [leftCurve, leftArc, rightArc, rightCurve].reduce(AGSMutablePart(spatialReference: sr)) { (part: AGSMutablePart, segment: AGSSegment) -> AGSMutablePart in
+        let heart = [leftCurve, leftArc, rightArc, rightCurve].reduce(AGSMutablePart(spatialReference: spatialReference)) { (part: AGSMutablePart, segment: AGSSegment) -> AGSMutablePart in
             part.add(segment)
             return part
         }
-        let heartShape = AGSPolygonBuilder(spatialReference: sr)
+        let heartShape = AGSPolygonBuilder(spatialReference: spatialReference)
         heartShape.parts.add(heart)
         return heartShape.toGeometry()
     }

@@ -113,14 +113,14 @@ class BlendRendererSettingsViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         if cell == slopeTypeCell {
             let optionsViewController = OptionsTableViewController(labels: slopeTypeLabels, selectedIndex: slopeType.rawValue + 1) { (newIndex) in
-                self.slopeType = AGSSlopeType(rawValue: newIndex! - 1)!
+                self.slopeType = AGSSlopeType(rawValue: newIndex - 1)!
                 self.blendRendererParametersChanged()
             }
             optionsViewController.title = "Slope Type"
             show(optionsViewController, sender: self)
         } else if cell == colorRampTypeCell {
             let optionsViewController = OptionsTableViewController(labels: colorRampLabels, selectedIndex: colorRampType.rawValue + 1) { (newIndex) in
-                self.colorRampType = AGSPresetColorRampType(rawValue: newIndex! - 1)!
+                self.colorRampType = AGSPresetColorRampType(rawValue: newIndex - 1)!
                 self.blendRendererParametersChanged()
             }
             optionsViewController.title = "Color Ramp Type"

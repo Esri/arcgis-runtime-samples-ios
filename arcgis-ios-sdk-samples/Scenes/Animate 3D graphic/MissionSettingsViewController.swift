@@ -69,8 +69,8 @@ class MissionSettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.cellForRow(at: indexPath) == missionCell {
             let controller = OptionsTableViewController(labels: missionFileNames, selectedIndex: selectedMissionIndex) { (newIndex) in
-                self.selectedMissionIndex = newIndex!
-                self.delegate?.missionSettingsViewController(self, didSelectMissionAtIndex: newIndex!)
+                self.selectedMissionIndex = newIndex
+                self.delegate?.missionSettingsViewController(self, didSelectMissionAtIndex: newIndex)
             }
             controller.title = "Mission"
             show(controller, sender: self)

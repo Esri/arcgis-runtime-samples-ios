@@ -77,7 +77,7 @@ class VectorTileLayerViewController: UIViewController {
             }
             
             // get the layer ID for the index
-            let itemID = self.vectorTiledLayerItems[newIndex!].itemID
+            let itemID = self.vectorTiledLayerItems[newIndex].itemID
             // get the url for the layer ID
             let url = self.makeArcGISURL(itemID: itemID)
             // create the new vector tiled layer using the url

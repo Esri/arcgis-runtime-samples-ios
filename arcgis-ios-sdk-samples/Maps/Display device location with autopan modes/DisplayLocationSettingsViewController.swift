@@ -131,7 +131,7 @@ class DisplayLocationSettingsViewController: UITableViewController {
 
             let controller = OptionsTableViewController(options: options, selectedIndex: selectedIndex) { (index) in
                 // get the mode for the index
-                let autoPanMode = orderedAutoPanModes[index!]
+                let autoPanMode = orderedAutoPanModes[index]
                 // set the displayed location mode to the selected one
                 self.locationDisplay?.autoPanMode = autoPanMode
             }

@@ -142,7 +142,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
     func showAttributePicker() {
         let selectedIndex = possibleAttributes.firstIndex { $0 == selectedAttribute }
         let optionsViewController = OptionsTableViewController(labels: possibleAttributes.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
-            self.selectedAttribute = self.possibleAttributes[newIndex!]
+            self.selectedAttribute = self.possibleAttributes[newIndex]
             self.navigationController?.popViewController(animated: true)
         }
         optionsViewController.title = "Attributes"
@@ -155,7 +155,7 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         // An array of `AGSUtilityAttributeComparisonOperator`s.
         let attributeComparisonOperators = AGSUtilityAttributeComparisonOperator.allCases
         let optionsViewController = OptionsTableViewController(labels: attributeComparisonOperators.map { $0.title }, selectedIndex: selectedIndex) { newIndex in
-            self.selectedComparison = attributeComparisonOperators[newIndex!]
+            self.selectedComparison = attributeComparisonOperators[newIndex]
             self.navigationController?.popViewController(animated: true)
         }
         optionsViewController.title = "Comparison"
@@ -172,8 +172,8 @@ class ConfigureSubnetworkTraceOptionsViewController: UITableViewController {
         }
         let valueLabels = values.map { $0.name }
         let optionsViewController = OptionsTableViewController(labels: valueLabels, selectedIndex: selectedIndex) { newIndex in
-            self.selectedValue = values[newIndex!]
-            self.valueCell.detailTextLabel?.text = valueLabels[newIndex!]
+            self.selectedValue = values[newIndex]
+            self.valueCell.detailTextLabel?.text = valueLabels[newIndex]
             self.navigationController?.popViewController(animated: true)
         }
         optionsViewController.title = "Value"

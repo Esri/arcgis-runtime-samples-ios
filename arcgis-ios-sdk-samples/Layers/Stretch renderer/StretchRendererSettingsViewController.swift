@@ -124,7 +124,7 @@ class StretchRendererSettingsViewController: UITableViewController {
         let labels = StretchType.allCases.map { $0.label }
         let selectedIndex = stretchType.rawValue
         let optionsViewController = OptionsTableViewController(labels: labels, selectedIndex: selectedIndex) { (newIndex) in
-            self.stretchType = StretchType(rawValue: newIndex!)!
+            self.stretchType = StretchType(rawValue: newIndex)!
             self.tableView.reloadData()
             self.rendererParametersChanged()
         }

@@ -49,15 +49,18 @@ class OptionsTableViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    convenience init(options: [Option], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
+        self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: false, onChange: { onChange($0!) })
+    }
     /// Creates a new instance with the given labels, selected index, empty selection bool, and
     /// selection change handler.
     /// - Parameters:
     ///   - labels: An array of labels for the options.
     ///   - selectedIndex: The index of the currently selected option or `nil`.
     ///   - onChange: A closure called when the selected option has changed.
-    convenience init(labels: [String], selectedIndex: Int, onChange: @escaping (Int?) -> Void) {
+    convenience init(labels: [String], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
         let options = labels.map { Option(label: $0) }
-        self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: false, onChange: onChange)
+        self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: false, onChange: { onChange($0!) })
     }
     
     /// Creates a new instance with the given labels, selected index, empty selection bool, and
@@ -65,7 +68,6 @@ class OptionsTableViewController: UITableViewController {
     /// - Parameters:
     ///   - labels: An array of labels for the options.
     ///   - selectedIndex: The index of the currently selected option or `nil`.
-    ///   - allowsEmptySelection: A bool to determine if empty selection is allowed. Defaulted to false.
     ///   - onChange: A closure called when the selected option has changed.
     convenience init(labels: [String], selectedIndex: Int?, onChange: @escaping (Int?) -> Void) {
         let options = labels.map { Option(label: $0) }

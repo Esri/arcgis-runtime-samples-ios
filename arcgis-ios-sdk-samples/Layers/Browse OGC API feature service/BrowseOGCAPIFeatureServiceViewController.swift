@@ -165,7 +165,7 @@ class BrowseOGCAPIFeatureServiceViewController: UIViewController {
     }
     
     @IBAction func browseLayerInfos(_ sender: UIBarButtonItem) {
-        let selectedIndex = featureCollectionInfos.firstIndex { $0 == selectedInfo }
+        guard let selectedIndex = (featureCollectionInfos.firstIndex { $0 == selectedInfo }) else { return }
         let optionsViewController = OptionsTableViewController(labels: featureCollectionInfos.map(\.title), selectedIndex: selectedIndex) { [self] newIndex in
             let selectedInfo = featureCollectionInfos[newIndex]
             displayLayer(with: selectedInfo)

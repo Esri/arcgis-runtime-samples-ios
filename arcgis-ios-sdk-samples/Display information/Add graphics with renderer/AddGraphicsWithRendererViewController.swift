@@ -48,7 +48,7 @@ class AddGraphicsWithRendererViewController: UIViewController {
         lineGraphicsOverlay.graphics.add(lineGraphic)
         
         // Create a graphics overlay for the polygons.
-        let polygonGraphicsOverlay = makePolygonGraphicsOverlay()
+        let polygonGraphicsOverlay = makeSquarePolygonGraphicsOverlay()
         // Create a polygon graphic with `AGSPolygon` geometry.
         let polygonBuilder = AGSPolygonBuilder(spatialReference: .webMercator())
         polygonBuilder.addPointWith(x: -20e5, y: 20e5)
@@ -59,8 +59,8 @@ class AddGraphicsWithRendererViewController: UIViewController {
         // Add the graphic to the overlay.
         polygonGraphicsOverlay.graphics.add(polygonGraphic)
         
-        // Create a graphics overlay for the enclosing shapes with curve segments.
-        let curveGraphicsOverlay = makeCurveGraphicsOverlay()
+        // Create a graphics overlay for the curve polygons.
+        let curveGraphicsOverlay = makeCurvedPolygonGraphicsOverlay()
         let origin = AGSPoint(x: 40e5, y: 5e5, spatialReference: .webMercator())
         // Create a heart-shape graphic from `AGSSegment`s.
         let heartGeometry = makeHeartGeometry(center: origin, sideLength: 10e5)
@@ -91,25 +91,25 @@ class AddGraphicsWithRendererViewController: UIViewController {
         return lineGraphicsOverlay
     }
     
-    func makePolygonGraphicsOverlay() -> AGSGraphicsOverlay {
+    func makeSquarePolygonGraphicsOverlay() -> AGSGraphicsOverlay {
         // Create a simple fill symbol.
-        let polygonSymbol = AGSSimpleFillSymbol(style: .solid, color: .yellow, outline: nil)
-        // Create a graphics overlay for the polygons.
-        let polygonGraphicsOverlay = AGSGraphicsOverlay()
+        let squareSymbol = AGSSimpleFillSymbol(style: .solid, color: .yellow, outline: nil)
+        // Create a graphics overlay for the square polygons.
+        let squareGraphicsOverlay = AGSGraphicsOverlay()
         // Create and assign a simple renderer to the graphics overlay.
-        polygonGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: polygonSymbol)
-        return polygonGraphicsOverlay
+        squareGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: squareSymbol)
+        return squareGraphicsOverlay
     }
     
-    func makeCurveGraphicsOverlay() -> AGSGraphicsOverlay {
+    func makeCurvedPolygonGraphicsOverlay() -> AGSGraphicsOverlay {
         // Create a simple fill symbol with outline.
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 1)
-        let filledSymbol = AGSSimpleFillSymbol(style: .solid, color: .red, outline: lineSymbol)
+        let curvedLineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 1)
+        let curvedFillSymbol = AGSSimpleFillSymbol(style: .solid, color: .red, outline: curvedLineSymbol)
         // Create a graphics overlay for the polygons with curve segments.
-        let graphicsOverlay = AGSGraphicsOverlay()
+        let curvedGraphicsOverlay = AGSGraphicsOverlay()
         // Create and assign a simple renderer to the graphics overlay.
-        graphicsOverlay.renderer = AGSSimpleRenderer(symbol: filledSymbol)
-        return graphicsOverlay
+        curvedGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: curvedFillSymbol)
+        return curvedGraphicsOverlay
     }
     
     /// Create a heart-shape geometry with Bezier and elliptic arc segments.

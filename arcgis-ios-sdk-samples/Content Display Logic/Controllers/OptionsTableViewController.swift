@@ -49,9 +49,16 @@ class OptionsTableViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    /// Creates a new instance with the options, selected index, empty selection bool, and selection
+    /// change handler.
+    /// - Parameters:
+    ///   - options: The options displayed by the view controller.
+    ///   - selectedIndex: The index of the currently selected option or `nil`.
+    ///   - onChange: A closure called when the selected option has changed.
     convenience init(options: [Option], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
         self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: false, onChange: { onChange($0!) })
     }
+    
     /// Creates a new instance with the given labels, selected index, empty selection bool, and
     /// selection change handler.
     /// - Parameters:
@@ -69,9 +76,21 @@ class OptionsTableViewController: UITableViewController {
     ///   - labels: An array of labels for the options.
     ///   - selectedIndex: The index of the currently selected option or `nil`.
     ///   - onChange: A closure called when the selected option has changed.
-    convenience init(labels: [String], selectedIndex: Int?, onChange: @escaping (Int?) -> Void) {
+    convenience init(labels: [String], selectedIndex: Int?, onChange: @escaping (Int) -> Void) {
         let options = labels.map { Option(label: $0) }
-        self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: true, onChange: onChange)
+        self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: false, onChange: { onChange($0!) })
+    }
+    
+    /// Creates a new instance with the given labels, selected index, empty selection bool, and
+    /// selection change handler.
+    /// - Parameters:
+    ///   - labels: An array of labels for the options.
+    ///   - selectedIndex: The index of the currently selected option or `nil`.
+    ///   - allowsEmptySelection: A bool that determines whether or not empty selection is allowed.
+    ///   - onChange: A closure called when the selected option has changed.
+    convenience init(labels: [String], selectedIndex: Int?, allowsEmptySelection: Bool, onChange: @escaping (Int?) -> Void) {
+        let options = labels.map { Option(label: $0) }
+        self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: allowsEmptySelection, onChange: onChange)
     }
     
     @available(*, unavailable)

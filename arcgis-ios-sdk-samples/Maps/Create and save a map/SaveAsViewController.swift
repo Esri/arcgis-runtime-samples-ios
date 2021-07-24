@@ -64,7 +64,7 @@ class SaveAsViewController: UITableViewController {
         // The titles of the portal folders and a "None" option.
         let folderTitles = portalFolders.map { $0.title ?? "(No Title)" } + ["None"]
         // Prepare the options table view controller and handle selection.
-        let optionsViewController = OptionsTableViewController(labels: folderTitles, selectedIndex: selectedIndex) { [weak self] newIndex in
+        let optionsViewController = OptionsTableViewController(labels: folderTitles, selectedIndex: selectedIndex, allowsEmptySelection: true) { [weak self] newIndex in
             guard let self = self else { return }
             // If "None" was selected, set selectedFolder to nil.
             if newIndex == self.portalFolders.count {

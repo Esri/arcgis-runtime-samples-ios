@@ -14,11 +14,11 @@ Pan and zoom on the map to view graphics for points, lines, polygons (including 
 
 ## How it works
 
-* Create an `AGSGraphicsOverlay` and add it to the `AGSMapView`.
-* Create an `AGSGraphic`, specifying only an `AGSGeometry`.
-* Create a single `AGSSymbol` such as an `AGSSimpleMarkerSymbol`.
-* Create a renderer with `AGSSimpleRenderer(symbol:)`, passing in an `AGSSymbol`.
-* Set the renderer for the `AGSGraphicsOverlay`.
+1. Create an `AGSGraphicsOverlay` and add it to the `AGSMapView`.
+2. Create an `AGSGraphic`, specifying only an `AGSGeometry`.
+3. Create a single `AGSSymbol` such as an `AGSSimpleMarkerSymbol`.
+4. Create a renderer with `AGSSimpleRenderer(symbol:)`, passing in an `AGSSymbol`.
+5. Set the renderer for the `AGSGraphicsOverlay`.
 
 ## Relevant API
 

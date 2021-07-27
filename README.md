@@ -76,8 +76,6 @@ Note: Without licensing or licensing with invalid keys do not throw an exception
 
   > Replace 'your-license-key', 'your-extension-license-key' and 'your-api-key' with your keys.
 
-3. Uncomment the line `application.license()` in `AppDelegate.application(_:didFinishLaunchingWithOptions:)`, and choose the appropriate licensing method for your keys.
-
 Visit the developer's website to learn more about [Licensing your ArcGIS Runtime App](https://developers.arcgis.com/pricing/licensing/) and [Security and authentication](https://developers.arcgis.com/documentation/mapping-apis-and-location-services/security-and-authentication/).
 
 To learn more about `masquerade`, consult the [documentation](https://github.com/Esri/data-collection-ios/tree/main/docs#masquerade) of Esri's Data Collection app.

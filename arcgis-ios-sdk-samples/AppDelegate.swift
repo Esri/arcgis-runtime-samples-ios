@@ -48,8 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Enable/disable touches based on settings.
         self.setTouchPref()
         
-        // Uncomment the following line to set license key.
-        // application.license()
+        // Set license key and/or API key.
+        application.license()
         
         return true
     }
@@ -180,13 +180,16 @@ extension UIApplication {
         do {
             // Don't set extension key if you don't use utility network samples.
             // try AGSArcGISRuntimeEnvironment.setLicenseKey(.licenseKey)
+            if String.licenseKey != nil && String.extensionLicenseKey != nil {
+                // Set both keys for accessing all samples.
+                try AGSArcGISRuntimeEnvironment.setLicenseKey(.licenseKey!, extensions: [.extensionLicenseKey!])
+            }
             
-            // Set both keys for accessing all samples.
-            try AGSArcGISRuntimeEnvironment.setLicenseKey(.licenseKey, extensions: [.extensionLicenseKey])
-            
-            // Authentication with an API key or named user is required to
-            // access basemaps and other location services.
-            AGSArcGISRuntimeEnvironment.apiKey = .apiKey
+            if String.apiKey != nil {
+                // Authentication with an API key or named user is required to
+                // access basemaps and other location services.
+                AGSArcGISRuntimeEnvironment.apiKey = .apiKey!
+            }
         } catch {
             print("Error licensing app: \(error.localizedDescription)")
         }

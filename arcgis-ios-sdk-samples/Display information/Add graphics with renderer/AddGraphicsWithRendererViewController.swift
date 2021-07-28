@@ -22,54 +22,16 @@ class AddGraphicsWithRendererViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.graphicsOverlays.addObjects(from: [
+                makePointGraphicsOverlay(),
+                makeLineGraphicsOverlay(),
+                makeSquarePolygonGraphicsOverlay(),
+                makeCurvedPolygonGraphicsOverlay()
+            ])
         }
     }
     
     // MARK: Methods
-    
-    /// Add graphics overlays with various renderers.
-    func addGraphicsOverlays() {
-        // Create a graphics overlay for the points.
-        let pointGraphicsOverlay = makePointGraphicsOverlay()
-        // Create a point graphic with `AGSPoint` geometry.
-        let pointGeometry = AGSPoint(x: 40e5, y: 40e5, spatialReference: .webMercator())
-        let pointGraphic = AGSGraphic(geometry: pointGeometry, symbol: nil)
-        // Add the graphic to the overlay.
-        pointGraphicsOverlay.graphics.add(pointGraphic)
-        
-        // Create a graphics overlay for the polylines.
-        let lineGraphicsOverlay = makeLineGraphicsOverlay()
-        // Create a line graphic with `AGSPolyline` geometry.
-        let lineBuilder = AGSPolylineBuilder(spatialReference: .webMercator())
-        lineBuilder.addPointWith(x: -10e5, y: 40e5)
-        lineBuilder.addPointWith(x: 20e5, y: 50e5)
-        let lineGraphic = AGSGraphic(geometry: lineBuilder.toGeometry(), symbol: nil)
-        // Add the graphic to the overlay.
-        lineGraphicsOverlay.graphics.add(lineGraphic)
-        
-        // Create a graphics overlay for the polygons.
-        let polygonGraphicsOverlay = makeSquarePolygonGraphicsOverlay()
-        // Create a polygon graphic with `AGSPolygon` geometry.
-        let polygonBuilder = AGSPolygonBuilder(spatialReference: .webMercator())
-        polygonBuilder.addPointWith(x: -20e5, y: 20e5)
-        polygonBuilder.addPointWith(x: 20e5, y: 20e5)
-        polygonBuilder.addPointWith(x: 20e5, y: -20e5)
-        polygonBuilder.addPointWith(x: -20e5, y: -20e5)
-        let polygonGraphic = AGSGraphic(geometry: polygonBuilder.toGeometry(), symbol: nil)
-        // Add the graphic to the overlay.
-        polygonGraphicsOverlay.graphics.add(polygonGraphic)
-        
-        // Create a graphics overlay for the curve polygons.
-        let curveGraphicsOverlay = makeCurvedPolygonGraphicsOverlay()
-        let origin = AGSPoint(x: 40e5, y: 5e5, spatialReference: .webMercator())
-        // Create a heart-shape graphic from `AGSSegment`s.
-        let heartGeometry = makeHeartGeometry(center: origin, sideLength: 10e5)
-        let heartGraphic = AGSGraphic(geometry: heartGeometry, symbol: nil)
-        curveGraphicsOverlay.graphics.add(heartGraphic)
-        
-        // Add the overlays to the map view.
-        mapView.graphicsOverlays.addObjects(from: [pointGraphicsOverlay, lineGraphicsOverlay, polygonGraphicsOverlay, curveGraphicsOverlay])
-    }
     
     func makePointGraphicsOverlay() -> AGSGraphicsOverlay {
         // Create a simple marker symbol.
@@ -78,6 +40,12 @@ class AddGraphicsWithRendererViewController: UIViewController {
         let pointGraphicsOverlay = AGSGraphicsOverlay()
         // Create and assign a simple renderer to the graphics overlay.
         pointGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: pointSymbol)
+        
+        // Create a point graphic with `AGSPoint` geometry.
+        let pointGeometry = AGSPoint(x: 40e5, y: 40e5, spatialReference: .webMercator())
+        let pointGraphic = AGSGraphic(geometry: pointGeometry, symbol: nil)
+        // Add the graphic to the overlay.
+        pointGraphicsOverlay.graphics.add(pointGraphic)
         return pointGraphicsOverlay
     }
     
@@ -88,6 +56,14 @@ class AddGraphicsWithRendererViewController: UIViewController {
         let lineGraphicsOverlay = AGSGraphicsOverlay()
         // Create and assign a simple renderer to the graphics overlay.
         lineGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: lineSymbol)
+        
+        // Create a line graphic with `AGSPolyline` geometry.
+        let lineBuilder = AGSPolylineBuilder(spatialReference: .webMercator())
+        lineBuilder.addPointWith(x: -10e5, y: 40e5)
+        lineBuilder.addPointWith(x: 20e5, y: 50e5)
+        let lineGraphic = AGSGraphic(geometry: lineBuilder.toGeometry(), symbol: nil)
+        // Add the graphic to the overlay.
+        lineGraphicsOverlay.graphics.add(lineGraphic)
         return lineGraphicsOverlay
     }
     
@@ -98,6 +74,16 @@ class AddGraphicsWithRendererViewController: UIViewController {
         let squareGraphicsOverlay = AGSGraphicsOverlay()
         // Create and assign a simple renderer to the graphics overlay.
         squareGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: squareSymbol)
+        
+        // Create a polygon graphic with `AGSPolygon` geometry.
+        let polygonBuilder = AGSPolygonBuilder(spatialReference: .webMercator())
+        polygonBuilder.addPointWith(x: -20e5, y: 20e5)
+        polygonBuilder.addPointWith(x: 20e5, y: 20e5)
+        polygonBuilder.addPointWith(x: 20e5, y: -20e5)
+        polygonBuilder.addPointWith(x: -20e5, y: -20e5)
+        let polygonGraphic = AGSGraphic(geometry: polygonBuilder.toGeometry(), symbol: nil)
+        // Add the graphic to the overlay.
+        squareGraphicsOverlay.graphics.add(polygonGraphic)
         return squareGraphicsOverlay
     }
     
@@ -109,6 +95,12 @@ class AddGraphicsWithRendererViewController: UIViewController {
         let curvedGraphicsOverlay = AGSGraphicsOverlay()
         // Create and assign a simple renderer to the graphics overlay.
         curvedGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: curvedFillSymbol)
+        
+        // Create a heart-shape graphic from `AGSSegment`s.
+        let origin = AGSPoint(x: 40e5, y: 5e5, spatialReference: .webMercator())
+        let heartGeometry = makeHeartGeometry(center: origin, sideLength: 10e5)
+        let heartGraphic = AGSGraphic(geometry: heartGeometry, symbol: nil)
+        curvedGraphicsOverlay.graphics.add(heartGraphic)
         return curvedGraphicsOverlay
     }
     
@@ -149,10 +141,8 @@ class AddGraphicsWithRendererViewController: UIViewController {
         let rightControlPoint2 = leftControlPoint1
         let rightCurve = AGSCubicBezierSegment(start: rightCurveStart, controlPoint1: rightControlPoint1, controlPoint2: rightControlPoint2, end: rightCurveEnd, spatialReference: spatialReference)!
         
-        let heart = [leftCurve, leftArc, rightArc, rightCurve].reduce(AGSMutablePart(spatialReference: spatialReference)) { (part: AGSMutablePart, segment: AGSSegment) -> AGSMutablePart in
-            part.add(segment)
-            return part
-        }
+        let heart = AGSMutablePart(spatialReference: spatialReference)
+        [leftCurve, leftArc, rightArc, rightCurve].forEach { heart.add($0) }
         let heartShape = AGSPolygonBuilder(spatialReference: spatialReference)
         heartShape.parts.add(heart)
         return heartShape.toGeometry()
@@ -164,8 +154,5 @@ class AddGraphicsWithRendererViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["AddGraphicsWithRendererViewController"]
-        
-        // Add the graphics overlays, with graphics added, to the map view.
-        addGraphicsOverlays()
     }
 }

@@ -931,7 +931,7 @@
 				<key>storyboardName</key>
 				<string>AddGraphicsWithRenderer</string>
 				<key>descriptionText</key>
-				<string>Add graphics with renderer to a map to change the style of all graphics in a graphics overlay by referencing a single symbol style.</string>
+				<string>A renderer allows you to change the style of all graphics in a graphics overlay by referencing a single symbol style. A renderer will only affect graphics that do not specify their own symbol style.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

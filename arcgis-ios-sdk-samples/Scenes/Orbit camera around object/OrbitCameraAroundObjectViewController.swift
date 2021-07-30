@@ -1,0 +1,176 @@
+// Copyright 2021 Esri
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+import UIKit
+import ArcGIS
+
+class OrbitCameraAroundObjectViewController: UIViewController {
+    // MARK: Storyboard views
+    
+    /// The scene view managed by the view controller.
+    @IBOutlet weak var sceneView: AGSSceneView! {
+        didSet {
+            sceneView.scene = makeScene()
+            sceneGraphicsOverlay.graphics.add(planeGraphic)
+            sceneView.graphicsOverlays.add(sceneGraphicsOverlay)
+            // Create and set the orbit camera controller to the scene view.
+            sceneView.cameraController = makeOrbitGeoElementCameraController()
+        }
+    }
+    
+    @IBOutlet var cockpitViewBarButtonItem: UIBarButtonItem!
+    @IBOutlet var centerViewBarButtonItem: UIBarButtonItem!
+    @IBOutlet var cameraControllersBarButtonItem: UIBarButtonItem!
+    
+    // MARK: Properties
+    
+    /// A graphics overlay for the scene.
+    let sceneGraphicsOverlay: AGSGraphicsOverlay =  {
+        let graphicsOverlay = AGSGraphicsOverlay()
+        graphicsOverlay.sceneProperties?.surfacePlacement = .relative
+        let renderer = AGSSimpleRenderer()
+        renderer.sceneProperties?.headingExpression = "[HEADING]"
+        renderer.sceneProperties?.pitchExpression = "[PITCH]"
+        graphicsOverlay.renderer = renderer
+        return graphicsOverlay
+    }()
+    
+    /// A graphic of a plane model.
+    let planeGraphic: AGSGraphic = {
+        let planeSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 1)
+        let planePosition = AGSPoint(x: 6.637, y: 45.399, z: 100, spatialReference: .wgs84())
+        let planeGraphic = AGSGraphic(geometry: planePosition, symbol: planeSymbol, attributes: ["HEADING": 45.0])
+        return planeGraphic
+    }()
+    
+    // MARK: Instance methods
+    
+    /// Create a scene.
+    func makeScene() -> AGSScene {
+        let scene = AGSScene(basemap: .imagery())
+        // Create an elevation source from Terrain3D REST service.
+        let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
+        let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
+        let surface = AGSSurface()
+        surface.elevationSources.append(elevationSource)
+        scene.baseSurface = surface
+        return scene
+    }
+    
+    /// Create a controller that allows a scene view's camera to orbit the plane.
+    func makeOrbitGeoElementCameraController() -> AGSOrbitGeoElementCameraController {
+        let cameraController = AGSOrbitGeoElementCameraController(targetGeoElement: planeGraphic, distance: 50)
+        
+        // Restrict the camera's heading to stay behind the plane.
+        cameraController.minCameraHeadingOffset = -45
+        cameraController.maxCameraHeadingOffset = 45
+        
+        // Restrict the camera's pitch so it doesn't collide with the ground.
+        cameraController.minCameraPitchOffset = 10
+        cameraController.maxCameraPitchOffset = 100
+        
+        // Restrict the camera to stay between 10 and 100 meters from the plane.
+        cameraController.minCameraDistance = 10
+        cameraController.maxCameraDistance = 100
+        
+        // Position the plane a third from the bottom of the screen.
+        cameraController.targetVerticalScreenFactor = 0.33
+        
+        // Don't pitch the camera when the plane pitches.
+        cameraController.isAutoPitchEnabled = false
+        return cameraController
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func centerViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        guard let cameraController = sceneView.cameraController as? AGSOrbitGeoElementCameraController else { return }
+        
+        cameraController.isCameraDistanceInteractive = true
+        cameraController.isAutoPitchEnabled = false
+        
+        cameraController.targetOffsetX = 0
+        cameraController.targetOffsetY = 0
+        cameraController.targetOffsetZ = 0
+        
+        cameraController.cameraHeadingOffset = 0
+        
+        cameraController.minCameraPitchOffset = 10
+        cameraController.maxCameraPitchOffset = 100
+        cameraController.cameraPitchOffset = 45
+        
+        cameraController.minCameraDistance = 10
+        cameraController.cameraDistance = 50
+    }
+    
+    @IBAction func cockpitViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        guard let cameraController = sceneView.cameraController as? AGSOrbitGeoElementCameraController else { return }
+        
+        cameraController.isCameraDistanceInteractive = false
+        cameraController.minCameraDistance = 0.1
+        // Unlock the camera pitch for the rotation animation.
+        cameraController.minCameraPitchOffset = -180
+        cameraController.maxCameraPitchOffset = 180
+        
+        // Animate the camera target to the cockpit.
+        cameraController.setTargetOffsetX(0, targetOffsetY: -2, targetOffsetZ: 1.1, duration: 1)  // , completion: nil
+        
+        // If the camera is already tracking the plane's pitch, subtract it from
+        // the delta angle for the animation.
+        let pitchDelta = cameraController.isAutoPitchEnabled ? 0 : 90 - cameraController.cameraPitchOffset + ((planeGraphic.attributes["PITCH"] as? NSNumber)?.doubleValue ?? 0)
+        // Animate the camera so that it is at the target (cockpit), facing
+        // forward (0 deg heading), and aligned with the horizon (90 deg pitch).
+        cameraController.moveCamera(
+            withDistanceDelta: 0.1 - cameraController.cameraDistance,
+            headingDelta: -cameraController.cameraHeadingOffset,
+            pitchDelta: pitchDelta,
+            duration: 1
+        ) { _ in
+            // When the animation finishes, lock the camera pitch.
+            cameraController.minCameraPitchOffset = 90
+            cameraController.maxCameraPitchOffset = 90
+            cameraController.isAutoPitchEnabled = true
+        }
+    }
+    
+    // MARK: UIViewController
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? OrbitCameraSettingsViewController {
+            controller.orbitGeoElementCameraController = sceneView.cameraController as? AGSOrbitGeoElementCameraController
+            controller.planeGraphic = planeGraphic
+            controller.presentationController?.delegate = self
+            controller.preferredContentSize = CGSize(width: 300, height: 210)
+            // Pass through the scene view to allow pan and zoom while the
+            // popover is present.
+            controller.popoverPresentationController?.passthroughViews = [sceneView]
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["OrbitCameraAroundObjectViewController", "OrbitCameraSettingsViewController"]
+        // Enable the buttons.
+        cockpitViewBarButtonItem.isEnabled = true
+        centerViewBarButtonItem.isEnabled = true
+        cameraControllersBarButtonItem.isEnabled = true
+    }
+}
+
+extension OrbitCameraAroundObjectViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+}

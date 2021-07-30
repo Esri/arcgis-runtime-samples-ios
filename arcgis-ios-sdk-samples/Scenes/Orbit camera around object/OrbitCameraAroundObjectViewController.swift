@@ -124,7 +124,7 @@ class OrbitCameraAroundObjectViewController: UIViewController {
         cameraController.maxCameraPitchOffset = 180
         
         // Animate the camera target to the cockpit.
-        cameraController.setTargetOffsetX(0, targetOffsetY: -2, targetOffsetZ: 1.1, duration: 1)  // , completion: nil
+        cameraController.setTargetOffsetX(0, targetOffsetY: -2, targetOffsetZ: 1.1, duration: 1)
         
         // If the camera is already tracking the plane's pitch, subtract it from
         // the delta angle for the animation.

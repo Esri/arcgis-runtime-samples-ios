@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Feature Request Mode View Controller-->
+        <scene sceneID="xqy-uX-9SI">
+            <objects>
+                <viewController id="6uy-c7-HcL" customClass="FeatureRequestModeViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hKY-ke-PWN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWQ-Y6-I3c" userLabel="Map View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiW-4k-5rz">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kTS-ce-5kS"/>
+                                    <barButtonItem title="Feature request mode" id="1SN-5G-yct">
+                                        <connections>
+                                            <action selector="modeButonTapped:" destination="6uy-c7-HcL" id="Nmp-jo-b6H"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3bC-HL-gie"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gJ3-pA-oNW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RWQ-Y6-I3c" secondAttribute="trailing" id="42s-gL-1v8"/>
+                            <constraint firstItem="oiW-4k-5rz" firstAttribute="top" secondItem="RWQ-Y6-I3c" secondAttribute="bottom" id="8cP-jw-Eib"/>
+                            <constraint firstItem="oiW-4k-5rz" firstAttribute="leading" secondItem="hKY-ke-PWN" secondAttribute="leading" id="Piu-Ql-MMT"/>
+                            <constraint firstItem="oiW-4k-5rz" firstAttribute="bottom" secondItem="gJ3-pA-oNW" secondAttribute="bottom" id="RLZ-e1-8e7"/>
+                            <constraint firstItem="RWQ-Y6-I3c" firstAttribute="top" secondItem="gJ3-pA-oNW" secondAttribute="top" id="bgr-gB-S2k"/>
+                            <constraint firstAttribute="trailing" secondItem="oiW-4k-5rz" secondAttribute="trailing" id="c0m-bw-54y"/>
+                            <constraint firstItem="RWQ-Y6-I3c" firstAttribute="leading" secondItem="hKY-ke-PWN" secondAttribute="leading" id="i6W-Yf-wX7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="featureRequestModeButton" destination="1SN-5G-yct" id="dpX-Uz-00M"/>
+                        <outlet property="mapView" destination="RWQ-Y6-I3c" id="Uw6-8E-tah"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="myF-4z-ytg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="255" y="29"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

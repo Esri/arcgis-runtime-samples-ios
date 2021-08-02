@@ -865,6 +865,8 @@
 		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
 		F1BCA98F268102EB0027F5A8 /* naperville_imagery.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
+		F1C4529F26B37008002FDB34 /* FeatureRequestMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C4529E26B37008002FDB34 /* FeatureRequestMode.storyboard */; };
+		F1C452A326B374C4002FDB34 /* FeatureRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C452A226B374C4002FDB34 /* FeatureRequestViewController.swift */; };
 		F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */; };
 		F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
 		F1C81C4822FCED5400229CAA /* GetElevationPointViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */; };
@@ -1809,6 +1811,8 @@
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
 		F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpkx; sourceTree = "<group>"; };
+		F1C4529E26B37008002FDB34 /* FeatureRequestMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeatureRequestMode.storyboard; sourceTree = "<group>"; };
+		F1C452A226B374C4002FDB34 /* FeatureRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureRequestViewController.swift; sourceTree = "<group>"; };
 		F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetElevationPoint.storyboard; sourceTree = "<group>"; };
 		F1C81C4622FCEC3C00229CAA /* GetElevationPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetElevationPointViewController.swift; sourceTree = "<group>"; };
 		F1D1E2C02409AB8A006B2801 /* CreateAndSaveKML.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAndSaveKML.storyboard; sourceTree = "<group>"; };
@@ -3113,6 +3117,7 @@
 		3ED027FE1B8E39DD00ACA70D /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F1C4529D26B36EB0002FDB34 /* Feature request mode */,
 				001ECB58248B002B009AC6C0 /* Feature collection layer (portal item) */,
 				F4E5CD7720704369000A6D35 /* Feature layer rendering mode (map) */,
 				C7FF07D321B9D227000D4055 /* Feature layer rendering mode (scene) */,
@@ -4540,6 +4545,15 @@
 			path = "Find closest facility to an incident (interactive)";
 			sourceTree = "<group>";
 		};
+		F1C4529D26B36EB0002FDB34 /* Feature request mode */ = {
+			isa = PBXGroup;
+			children = (
+				F1C4529E26B37008002FDB34 /* FeatureRequestMode.storyboard */,
+				F1C452A226B374C4002FDB34 /* FeatureRequestViewController.swift */,
+			);
+			path = "Feature request mode";
+			sourceTree = "<group>";
+		};
 		F1C81C4322FCEBD100229CAA /* Get elevation at a point */ = {
 			isa = PBXGroup;
 			children = (
@@ -4929,6 +4943,7 @@
 				C7D0EEDB215EA60800ECDD2C /* DisplayKMLNetworkLinks.storyboard in Resources */,
 				F15694D3265DBE96007AEB61 /* SanDiego_StreetAddress.loc in Resources */,
 				3E1183DE1ECF5A1000180152 /* Hawaii.csv in Resources */,
+				F1C4529F26B37008002FDB34 /* FeatureRequestMode.storyboard in Resources */,
 				F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */,
 				3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */,
 				3EFDE0F51E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard in Resources */,
@@ -5352,6 +5367,7 @@
 				C7E9D7C721C0500300E6C47E /* BufferOptionsViewController.swift in Sources */,
 				1259FB931FD295C90037105E /* WMSLayerUsingURLViewController.swift in Sources */,
 				4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */,
+				F1C452A326B374C4002FDB34 /* FeatureRequestViewController.swift in Sources */,
 				C7237D0E2190F07500A72C76 /* DisplayLocationSettingsViewController.swift in Sources */,
 				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
 				4C1EF2D2221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift in Sources */,

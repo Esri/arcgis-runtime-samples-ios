@@ -454,8 +454,8 @@
 		3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028D91B8E3AA500ACA70D /* ManualCacheViewController.swift */; };
 		3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028DC1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard */; };
 		3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028DD1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift */; };
-		3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028FE1B8E3AB300ACA70D /* GORenderers.storyboard */; };
-		3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* GORenderersViewController.swift */; };
+		3ED029281B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028FE1B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard */; };
+		3ED029291B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */; };
 		3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029031B8E3AB300ACA70D /* GOIdentify.storyboard */; };
 		3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029041B8E3AB300ACA70D /* GOIdentifyViewController.swift */; };
 		3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029091B8E3AB300ACA70D /* Callout.storyboard */; };
@@ -500,7 +500,7 @@
 		3ED029931B8E571700ACA70D /* FLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */; };
 		3ED029941B8E571700ACA70D /* DefinitionExpressionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */; };
 		3ED029951B8E571700ACA70D /* OverrideRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028BE1B8E3AA500ACA70D /* OverrideRendererViewController.swift */; };
-		3ED029961B8E571700ACA70D /* GORenderersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* GORenderersViewController.swift */; };
+		3ED029961B8E571700ACA70D /* AddGraphicsWithRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */; };
 		3ED029971B8E571700ACA70D /* GOIdentifyViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029041B8E3AB300ACA70D /* GOIdentifyViewController.swift */; };
 		3ED029991B8E571700ACA70D /* CalloutViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0290A1B8E3AB300ACA70D /* CalloutViewController.swift */; };
 		3ED0299A1B8E571700ACA70D /* MILLegendTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029111B8E3AB300ACA70D /* MILLegendTableViewController.swift */; };
@@ -1170,7 +1170,7 @@
 				3ED029931B8E571700ACA70D /* FLQueryViewController.swift in CopyFiles */,
 				3ED029941B8E571700ACA70D /* DefinitionExpressionViewController.swift in CopyFiles */,
 				3ED029951B8E571700ACA70D /* OverrideRendererViewController.swift in CopyFiles */,
-				3ED029961B8E571700ACA70D /* GORenderersViewController.swift in CopyFiles */,
+				3ED029961B8E571700ACA70D /* AddGraphicsWithRendererViewController.swift in CopyFiles */,
 				3ED029971B8E571700ACA70D /* GOIdentifyViewController.swift in CopyFiles */,
 				3ED029991B8E571700ACA70D /* CalloutViewController.swift in CopyFiles */,
 				3ED0299A1B8E571700ACA70D /* MILLegendTableViewController.swift in CopyFiles */,
@@ -1543,8 +1543,8 @@
 		3ED028D91B8E3AA500ACA70D /* ManualCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualCacheViewController.swift; sourceTree = "<group>"; };
 		3ED028DC1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnInteractionNoCache.storyboard; sourceTree = "<group>"; };
 		3ED028DD1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnInteractionNoCacheViewController.swift; sourceTree = "<group>"; };
-		3ED028FE1B8E3AB300ACA70D /* GORenderers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GORenderers.storyboard; sourceTree = "<group>"; };
-		3ED028FF1B8E3AB300ACA70D /* GORenderersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GORenderersViewController.swift; sourceTree = "<group>"; };
+		3ED028FE1B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddGraphicsWithRenderer.storyboard; sourceTree = "<group>"; };
+		3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGraphicsWithRendererViewController.swift; sourceTree = "<group>"; };
 		3ED029031B8E3AB300ACA70D /* GOIdentify.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GOIdentify.storyboard; sourceTree = "<group>"; };
 		3ED029041B8E3AB300ACA70D /* GOIdentifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GOIdentifyViewController.swift; sourceTree = "<group>"; };
 		3ED029091B8E3AB300ACA70D /* Callout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Callout.storyboard; sourceTree = "<group>"; };
@@ -3448,8 +3448,8 @@
 		3ED028FD1B8E3AB300ACA70D /* Add graphics with renderer */ = {
 			isa = PBXGroup;
 			children = (
-				3ED028FE1B8E3AB300ACA70D /* GORenderers.storyboard */,
-				3ED028FF1B8E3AB300ACA70D /* GORenderersViewController.swift */,
+				3ED028FE1B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard */,
+				3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */,
 			);
 			path = "Add graphics with renderer";
 			sourceTree = "<group>";
@@ -4969,7 +4969,7 @@
 				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
 				D9EE379820E2CC7700BF8AD1 /* tire_tread.jpeg in Resources */,
 				E47ED0B12343C87E0032440E /* DisplayScenesInTabletopAR.storyboard in Resources */,
-				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
+				3ED029281B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard in Resources */,
 				12D66033226697320005DE8A /* GroupLayersSectionView.xib in Resources */,
 				12D66035226697320005DE8A /* GroupLayers.storyboard in Resources */,
 				E4477CC020EC0CE0004E14F9 /* ListTransformations.storyboard in Resources */,
@@ -5360,7 +5360,7 @@
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererViewController.swift in Sources */,
 				C7D22F8C2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift in Sources */,
 				F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */,
-				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
+				3ED029291B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift in Sources */,
 				E45991A41EF3021D0089E9FD /* WebMapViewController.swift in Sources */,
 				3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */,
 				4C1EF2CD221208DD00F73EAE /* UINavigationController.swift in Sources */,

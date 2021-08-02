@@ -26,11 +26,10 @@ class OrbitCameraSettingsViewController: UITableViewController {
     
     // MARK: Properties
     
-    private var headingObservation: NSKeyValueObservation?
-    private var pitchObservation: NSKeyValueObservation?
-    
     weak var orbitGeoElementCameraController: AGSOrbitGeoElementCameraController?
     weak var planeGraphic: AGSGraphic?
+    
+    private var headingObservation: NSKeyValueObservation?
     
     private let measurementFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
@@ -75,21 +74,15 @@ class OrbitCameraSettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let cameraController = orbitGeoElementCameraController else { return }
         // Apply initial values to controls.
         updateUIForHeading()
         updateUIForPitch()
+        guard let cameraController = orbitGeoElementCameraController else { return }
         distanceInteractionSwitch.isOn = cameraController.isCameraDistanceInteractive
-        // Add observers to the values shown in the UI.
-        headingObservation = cameraController.observe(\.cameraHeadingOffset) { [weak self] (_, _) in
+        // Add an observer to sync the UI for camera heading.
+        headingObservation = cameraController.observe(\.cameraHeadingOffset) { [weak self] _, _ in
             DispatchQueue.main.async {
                 self?.updateUIForHeading()
-            }
-        }
-        pitchObservation = cameraController.observe(\.cameraPitchOffset) { [weak self] (_, _) in
-            DispatchQueue.main.async {
-                self?.updateUIForPitch()
             }
         }
     }

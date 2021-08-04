@@ -29,8 +29,11 @@ class OrbitCameraAroundObjectViewController: UIViewController {
         }
     }
     
-    @IBOutlet var cockpitViewBarButtonItem: UIBarButtonItem!
-    @IBOutlet var centerViewBarButtonItem: UIBarButtonItem!
+    @IBOutlet var changeViewBarButtonItem: UIBarButtonItem! {
+        didSet {
+            changeViewBarButtonItem.possibleTitles = ["Cockpit View", "Center View"]
+        }
+    }
     @IBOutlet var cameraControllersBarButtonItem: UIBarButtonItem!
     
     // MARK: Properties
@@ -94,7 +97,17 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     
     // MARK: Actions
     
-    @IBAction func centerViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
+    @IBAction func changeViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        if sender.title == "Cockpit View" {
+            cockpitViewBarButtonItemTapped(sender)
+            sender.title = "Center View"
+        } else if sender.title == "Center View" {
+            centerViewBarButtonItemTapped(sender)
+            sender.title = "Cockpit View"
+        }
+    }
+    
+    func centerViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
         guard let cameraController = sceneView.cameraController as? AGSOrbitGeoElementCameraController else { return }
         
         cameraController.isCameraDistanceInteractive = true
@@ -114,7 +127,7 @@ class OrbitCameraAroundObjectViewController: UIViewController {
         cameraController.cameraDistance = 50
     }
     
-    @IBAction func cockpitViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
+    func cockpitViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
         guard let cameraController = sceneView.cameraController as? AGSOrbitGeoElementCameraController else { return }
         
         cameraController.isCameraDistanceInteractive = false
@@ -163,8 +176,7 @@ class OrbitCameraAroundObjectViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["OrbitCameraAroundObjectViewController", "OrbitCameraSettingsViewController"]
         // Enable the buttons.
-        cockpitViewBarButtonItem.isEnabled = true
-        centerViewBarButtonItem.isEnabled = true
+        changeViewBarButtonItem.isEnabled = true
         cameraControllersBarButtonItem.isEnabled = true
     }
 }

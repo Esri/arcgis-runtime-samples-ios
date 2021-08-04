@@ -25,17 +25,11 @@
                                 <items>
                                     <barButtonItem enabled="NO" title="Cockpit View" id="G3R-3A-vJ7">
                                         <connections>
-                                            <action selector="cockpitViewBarButtonItemTapped:" destination="Y6W-OH-hqX" id="yOq-ZQ-39e"/>
+                                            <action selector="changeViewBarButtonItemTapped:" destination="Y6W-OH-hqX" id="Ayx-AR-cFK"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="s3i-B3-90G"/>
-                                    <barButtonItem enabled="NO" title="Center View" id="OXs-J5-fVN">
-                                        <connections>
-                                            <action selector="centerViewBarButtonItemTapped:" destination="Y6W-OH-hqX" id="i24-FZ-IEJ"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wQP-Og-9Iq"/>
-                                    <barButtonItem enabled="NO" title="Camera" id="yXS-eB-mrt">
+                                    <barButtonItem enabled="NO" title="Camera Settings" id="yXS-eB-mrt">
                                         <connections>
                                             <segue destination="eTJ-BT-IIt" kind="popoverPresentation" popoverAnchorBarButtonItem="yXS-eB-mrt" id="jUu-Rm-iaj">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -59,8 +53,7 @@
                     </view>
                     <connections>
                         <outlet property="cameraControllersBarButtonItem" destination="yXS-eB-mrt" id="iXo-EV-lgp"/>
-                        <outlet property="centerViewBarButtonItem" destination="OXs-J5-fVN" id="Cxs-Wy-iK3"/>
-                        <outlet property="cockpitViewBarButtonItem" destination="G3R-3A-vJ7" id="Nnk-du-hWs"/>
+                        <outlet property="changeViewBarButtonItem" destination="G3R-3A-vJ7" id="Nnk-du-hWs"/>
                         <outlet property="sceneView" destination="8eT-qU-nyd" id="SP5-07-4R1"/>
                     </connections>
                 </viewController>

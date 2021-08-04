@@ -918,6 +918,14 @@
 				<key>descriptionText</key>
 				<string>Query data using a time extent.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Feature request mode</string>
+				<key>storyboardName</key>
+				<string>FeatureRequestMode</string>
+				<key>descriptionText</key>
+				<string>Set different feature request modes for a feature table.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

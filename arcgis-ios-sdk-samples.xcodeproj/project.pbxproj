@@ -876,6 +876,7 @@
 		F1D5022E245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift */; };
 		F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift */; };
 		F1D7508F230730360018B812 /* ElevationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
+		F1D938FD26BA5555001ECB9A /* FeatureRequestViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C452A226B374C4002FDB34 /* FeatureRequestViewController.swift */; };
 		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
 		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F1E4B10F22D6AF28005FDB4D /* ColormapRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10E22D6AF28005FDB4D /* ColormapRenderer.storyboard */; };
@@ -935,6 +936,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1D938FD26BA5555001ECB9A /* FeatureRequestViewController.swift in CopyFiles */,
 				00FFE6DD26606343001E92ED /* QueryWithCQLFiltersViewController.swift in CopyFiles */,
 				00FFE6DE26606343001E92ED /* QueryWithCQLFiltersSettingsViewController.swift in CopyFiles */,
 				0087A55D265C8FEA00D9601D /* BrowseOGCAPIFeatureServiceViewController.swift in CopyFiles */,

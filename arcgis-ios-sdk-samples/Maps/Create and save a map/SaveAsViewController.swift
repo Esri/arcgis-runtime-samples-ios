@@ -59,20 +59,12 @@ class SaveAsViewController: UITableViewController {
     
     /// Present the list of folders to choose from.
     func showFolderOptions() {
-        // Set index for the default option.
-        let selectedIndex = selectedFolderIndex ?? portalFolders.count
         // The titles of the portal folders and a "None" option.
-        let folderTitles = portalFolders.map { $0.title ?? "(No Title)" } + ["None"]
+        let folderTitles = portalFolders.map { $0.title ?? "(No Title)" }
         // Prepare the options table view controller and handle selection.
-        let optionsViewController = OptionsTableViewController(labels: folderTitles, selectedIndex: selectedIndex, allowsEmptySelection: true) { [weak self] newIndex in
+        let optionsViewController = OptionsTableViewController(labels: folderTitles, selectedIndex: selectedFolderIndex, allowsEmptySelection: true) { [weak self] newIndex in
             guard let self = self else { return }
-            // If "None" was selected, set selectedFolder to nil.
-            if newIndex == self.portalFolders.count {
-                self.selectedFolderIndex = nil
-            } else {
-                // Select the appropriate folder.
-                self.selectedFolderIndex = newIndex
-            }
+            self.selectedFolderIndex = newIndex
             // Replace the label text with the selected option.
             self.folderLabel.text = self.selectedFolder?.title ?? "None"
         }

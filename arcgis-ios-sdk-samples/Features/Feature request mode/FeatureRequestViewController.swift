@@ -18,23 +18,16 @@ import ArcGIS
 class FeatureRequestModeViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-            let extent = AGSEnvelope(
-                xMin: -1.30758164047166E7,
-                yMin: 4014771.46954516,
-                xMax: -1.30730056797177E7,
-                yMax: 4016869.78617381,
-                spatialReference: .webMercator()
-            )
-            mapView.setViewpoint(AGSViewpoint(targetExtent: extent))
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.setViewpoint(AGSViewpoint(latitude: 45.5185, longitude: -122.5965, scale: 6000))
         }
     }
     @IBOutlet weak var featureRequestModeButton: UIBarButtonItem!
     
-    private static let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/PoolPermits/FeatureServer/0"
-    private static let featureServiceSFURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"
+    private static let featureServiceURL = "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Trees_of_Portland/FeatureServer/0"
+//    private static let featureServiceSFURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"
     let featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
-    let featureTableSF = AGSServiceFeatureTable(url: URL(string: featureServiceSFURL)!)
+//    let featureTableSF = AGSServiceFeatureTable(url: URL(string: featureServiceSFURL)!)
     
     private enum FeatureRequestMode: CaseIterable {
         case undefined, cache, noCache, manualCache
@@ -72,14 +65,6 @@ class FeatureRequestModeViewController: UIViewController {
             message: nil,
             preferredStyle: .actionSheet
         )
-//        filterBarrierCategories.forEach { category in
-//            let action = UIAlertAction(title: category.name, style: .default) { [self] _ in
-//                selectedCategory = category
-//                setStatus(message: "\(category.name) selected.")
-//                traceResetBarButtonItem.isEnabled = true
-//            }
-//            alertController.addAction(action)
-//        }
         FeatureRequestMode.allCases.forEach { mode in
             let action = UIAlertAction(title: mode.title, style: .default) { [self] _ in
                 changeFeatureRequestMode(to: mode.mode)
@@ -93,23 +78,8 @@ class FeatureRequestModeViewController: UIViewController {
     }
     
     private func changeFeatureRequestMode(to mode: AGSFeatureRequestMode) {
-        let featureTable: AGSServiceFeatureTable
         if mode == .manualCache {
-            featureTable = featureTableSF
-            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
-            mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: .webMercator()), scale: 500000))
             populateManualCache()
-        } else {
-            featureTable = self.featureTable
-            mapView.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-            let extent = AGSEnvelope(
-                xMin: -1.30758164047166E7,
-                yMin: 4014771.46954516,
-                xMax: -1.30730056797177E7,
-                yMax: 4016869.78617381,
-                spatialReference: .webMercator()
-            )
-            mapView.setViewpoint(AGSViewpoint(targetExtent: extent))
         }
         let map = mapView.map
         map?.operationalLayers.removeAllObjects()
@@ -127,10 +97,10 @@ class FeatureRequestModeViewController: UIViewController {
         // set query parameters
         let params = AGSQueryParameters()
         // for specific request type
-        params.whereClause = "req_Type = 'Tree Maintenance or Damage'"
+        params.whereClause = "Condition = '4'"
         
         // populate features based on query
-        self.featureTableSF.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
+        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
             // check for error
             if let error = error {
                 self?.presentAlert(error: error)

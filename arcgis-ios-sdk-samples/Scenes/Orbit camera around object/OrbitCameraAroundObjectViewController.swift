@@ -165,9 +165,6 @@ class OrbitCameraAroundObjectViewController: UIViewController {
             controller.planeGraphic = planeGraphic
             controller.presentationController?.delegate = self
             controller.preferredContentSize = CGSize(width: 300, height: 210)
-            // Pass through the scene view to allow pan and zoom while the
-            // popover is present.
-            controller.popoverPresentationController?.passthroughViews = [sceneView]
         }
     }
     

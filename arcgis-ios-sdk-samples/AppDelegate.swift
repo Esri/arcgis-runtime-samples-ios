@@ -178,20 +178,19 @@ extension UIApplication {
     ///         license the app, falling back to Developer Mode (which will
     ///         display a watermark on the map view).
     func license() {
-        do {
-            if let licenseKey = String.licenseKey,
-               let extensionLicenseKey = String.extensionLicenseKey {
+        if let licenseKey = String.licenseKey,
+           let extensionLicenseKey = String.extensionLicenseKey {
+            do {
                 // Set both keys to access all samples, including utility network capability.
                 try AGSArcGISRuntimeEnvironment.setLicenseKey(licenseKey, extensions: [extensionLicenseKey])
+            } catch {
+                print("Error licensing app: \(error.localizedDescription)")
             }
-            
-            if let apiKey = String.apiKey {
-                // Authentication with an API key or named user is required to
-                // access basemaps and other location services.
-                AGSArcGISRuntimeEnvironment.apiKey = apiKey
-            }
-        } catch {
-            print("Error licensing app: \(error.localizedDescription)")
+        }
+        if let apiKey = String.apiKey {
+            // Authentication with an API key or named user is required to
+            // access basemaps and other location services.
+            AGSArcGISRuntimeEnvironment.apiKey = apiKey
         }
     }
 }

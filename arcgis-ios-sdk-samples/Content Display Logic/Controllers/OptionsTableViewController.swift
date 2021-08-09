@@ -31,22 +31,46 @@ class OptionsTableViewController: UITableViewController {
     /// The index of the currently selected option or `nil` if no option is
     /// selected.
     private var selectedIndex: Int?
-    private let onChange: (Int) -> Void
+    private let onChange: (Int?) -> Void
+    private let allowsEmptySelection: Bool
     
-    /// Creates a new instance with the options, selected index, and selection
+    /// Creates a new instance with the options, selected index, empty selection bool, and selection
+    /// change handler.
+    /// - Parameters:
+    ///   - options: The options displayed by the view controller.
+    ///   - selectedIndex: The index of the currently selected option or `nil`.
+    ///   - allowsEmptySelection: A bool to determine if empty selection is allowed. Defaulted to false.
+    ///   - onChange: A closure called when the selected option has changed.
+    init(options: [Option], selectedIndex: Int?, allowsEmptySelection: Bool = false, onChange: @escaping (Int?) -> Void) {
+        self.options = options
+        self.selectedIndex = selectedIndex
+        self.allowsEmptySelection = allowsEmptySelection
+        self.onChange = onChange
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    /// Creates a new instance with the options, selected index, empty selection bool, and selection
     /// change handler.
     /// - Parameters:
     ///   - options: The options displayed by the view controller.
     ///   - selectedIndex: The index of the currently selected option or `nil`.
     ///   - onChange: A closure called when the selected option has changed.
-    init(options: [Option], selectedIndex: Int?, onChange: @escaping (Int) -> Void) {
-        self.options = options
-        self.selectedIndex = selectedIndex
-        self.onChange = onChange
-        super.init(nibName: nil, bundle: nil)
+    convenience init(options: [Option], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
+        self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: false, onChange: { onChange($0!) })
     }
     
-    /// Creates a new instance with the given labels, selected index, and
+    /// Creates a new instance with the given labels, selected index, empty selection bool, and
+    /// selection change handler.
+    /// - Parameters:
+    ///   - labels: An array of labels for the options.
+    ///   - selectedIndex: The index of the currently selected option or `nil`.
+    ///   - onChange: A closure called when the selected option has changed.
+    convenience init(labels: [String], selectedIndex: Int, onChange: @escaping (Int) -> Void) {
+        let options = labels.map { Option(label: $0) }
+        self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: false, onChange: { onChange($0!) })
+    }
+    
+    /// Creates a new instance with the given labels, selected index, empty selection bool, and
     /// selection change handler.
     /// - Parameters:
     ///   - labels: An array of labels for the options.
@@ -54,7 +78,19 @@ class OptionsTableViewController: UITableViewController {
     ///   - onChange: A closure called when the selected option has changed.
     convenience init(labels: [String], selectedIndex: Int?, onChange: @escaping (Int) -> Void) {
         let options = labels.map { Option(label: $0) }
-        self.init(options: options, selectedIndex: selectedIndex, onChange: onChange)
+        self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: false, onChange: { onChange($0!) })
+    }
+    
+    /// Creates a new instance with the given labels, selected index, empty selection bool, and
+    /// selection change handler.
+    /// - Parameters:
+    ///   - labels: An array of labels for the options.
+    ///   - selectedIndex: The index of the currently selected option or `nil`.
+    ///   - allowsEmptySelection: A bool that determines whether or not empty selection is allowed.
+    ///   - onChange: A closure called when the selected option has changed.
+    convenience init(labels: [String], selectedIndex: Int?, allowsEmptySelection: Bool, onChange: @escaping (Int?) -> Void) {
+        let options = labels.map { Option(label: $0) }
+        self.init(options: options, selectedIndex: selectedIndex, allowsEmptySelection: allowsEmptySelection, onChange: onChange)
     }
     
     @available(*, unavailable)
@@ -95,6 +131,10 @@ class OptionsTableViewController: UITableViewController {
             }
             tableView.reloadRows(at: indexPathsToReload, with: .automatic)
             onChange(indexPath.row)
+        } else if allowsEmptySelection {
+            selectedIndex = nil
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            onChange(nil)
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
         }

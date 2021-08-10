@@ -29,6 +29,7 @@ class OrbitCameraSettingsViewController: UITableViewController {
     let orbitGeoElementCameraController: AGSOrbitGeoElementCameraController
     let planeGraphic: AGSGraphic
     var headingObservation: NSKeyValueObservation?
+    var isCameraDistanceInteractiveObservation: NSKeyValueObservation?
     
     let measurementFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
@@ -95,6 +96,11 @@ class OrbitCameraSettingsViewController: UITableViewController {
         headingObservation = orbitGeoElementCameraController.observe(\.cameraHeadingOffset) { [weak self] _, _ in
             DispatchQueue.main.async {
                 self?.updateUIForHeading()
+            }
+        }
+        isCameraDistanceInteractiveObservation = orbitGeoElementCameraController.observe(\.isCameraDistanceInteractive) { [weak self] cameraController, _ in
+            DispatchQueue.main.async {
+                self?.distanceInteractionSwitch.isOn = cameraController.isCameraDistanceInteractive
             }
         }
     }

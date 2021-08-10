@@ -65,7 +65,7 @@ class OrbitCameraSettingsViewController: UITableViewController {
     }
     
     func updateUIForPitch() {
-        guard let pitch = planeGraphic.attributes["PITCH"] as? Float else { return }
+        let pitch = planeGraphic.attributes["PITCH"] as! Float
         pitchSlider.value = pitch
         let measurement = Measurement(value: Double(pitch), unit: UnitAngle.degrees)
         pitchLabel.text = measurementFormatter.string(from: measurement)

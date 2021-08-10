@@ -143,7 +143,7 @@ class OrbitCameraAroundObjectViewController: UIViewController {
         
         // If the camera is already tracking the plane's pitch, subtract it from
         // the delta angle for the animation.
-        let pitchDelta = cameraController.isAutoPitchEnabled ? 0 : 90 - cameraController.cameraPitchOffset + (planeGraphic.attributes["PITCH"] as? Double ?? 0)
+        let pitchDelta = cameraController.isAutoPitchEnabled ? 0 : 90 - cameraController.cameraPitchOffset + (planeGraphic.attributes["PITCH"] as! Double)
         // Animate the camera so that it is at the target (cockpit), facing
         // forward (0 deg heading), and aligned with the horizon (90 deg pitch).
         moveCameraAnimationCancelable = cameraController.moveCamera(

@@ -23,13 +23,13 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sqe-bQ-Lz3">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem enabled="NO" title="Cockpit View" id="G3R-3A-vJ7">
+                                    <barButtonItem title="Cockpit View" id="G3R-3A-vJ7">
                                         <connections>
                                             <action selector="changeViewBarButtonItemTapped:" destination="Y6W-OH-hqX" id="Ayx-AR-cFK"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="s3i-B3-90G"/>
-                                    <barButtonItem enabled="NO" title="Camera Settings" id="yXS-eB-mrt">
+                                    <barButtonItem title="Camera Settings" id="yXS-eB-mrt">
                                         <connections>
                                             <segue destination="eTJ-BT-IIt" kind="popoverPresentation" popoverAnchorBarButtonItem="yXS-eB-mrt" id="jUu-Rm-iaj">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -52,7 +52,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cameraControllersBarButtonItem" destination="yXS-eB-mrt" id="iXo-EV-lgp"/>
                         <outlet property="changeViewBarButtonItem" destination="G3R-3A-vJ7" id="Nnk-du-hWs"/>
                         <outlet property="sceneView" destination="8eT-qU-nyd" id="SP5-07-4R1"/>
                     </connections>
@@ -121,7 +120,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plane pitch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8j-GP-UwF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plane Pitch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8j-GP-UwF">
                                                     <rect key="frame" x="20" y="11" width="85" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>

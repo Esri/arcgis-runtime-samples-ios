@@ -31,7 +31,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="s3i-B3-90G"/>
                                     <barButtonItem title="Camera Settings" id="yXS-eB-mrt">
                                         <connections>
-                                            <segue destination="eTJ-BT-IIt" kind="popoverPresentation" popoverAnchorBarButtonItem="yXS-eB-mrt" id="jUu-Rm-iaj">
+                                            <segue destination="eTJ-BT-IIt" kind="popoverPresentation" destinationCreationSelector="makeSettingsViewController:" popoverAnchorBarButtonItem="yXS-eB-mrt" id="jUu-Rm-iaj">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>

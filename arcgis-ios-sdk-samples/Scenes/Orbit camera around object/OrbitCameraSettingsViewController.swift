@@ -18,56 +18,69 @@ import ArcGIS
 class OrbitCameraSettingsViewController: UITableViewController {
     // MARK: Storyboard views
     
-    @IBOutlet private var headingLabel: UILabel!
-    @IBOutlet private var pitchLabel: UILabel!
-    @IBOutlet private var headingSlider: UISlider!
-    @IBOutlet private var pitchSlider: UISlider!
-    @IBOutlet private var distanceInteractionSwitch: UISwitch!
+    @IBOutlet var headingLabel: UILabel!
+    @IBOutlet var pitchLabel: UILabel!
+    @IBOutlet var headingSlider: UISlider!
+    @IBOutlet var pitchSlider: UISlider!
+    @IBOutlet var distanceInteractionSwitch: UISwitch!
     
     // MARK: Properties
     
-    weak var orbitGeoElementCameraController: AGSOrbitGeoElementCameraController?
-    weak var planeGraphic: AGSGraphic?
+    let orbitGeoElementCameraController: AGSOrbitGeoElementCameraController
+    let planeGraphic: AGSGraphic
+    var headingObservation: NSKeyValueObservation?
     
-    private var headingObservation: NSKeyValueObservation?
-    
-    private let measurementFormatter: MeasurementFormatter = {
+    let measurementFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
         formatter.numberFormatter.maximumFractionDigits = 0
         formatter.unitStyle = .short
-        formatter.unitOptions = .providedUnit
         return formatter
     }()
+    
+    // MARK: Initializers
+    
+    init?(
+        coder: NSCoder,
+        cameraController: AGSOrbitGeoElementCameraController,
+        graphic: AGSGraphic
+    ) {
+        orbitGeoElementCameraController = cameraController
+        planeGraphic = graphic
+        super.init(coder: coder)
+    }
+
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: Actions
     
     func updateUIForHeading() {
-        guard let cameraController = orbitGeoElementCameraController else { return }
-        headingSlider.value = Float(cameraController.cameraHeadingOffset)
-        let measurement = Measurement(value: cameraController.cameraHeadingOffset, unit: UnitAngle.degrees)
+        headingSlider.value = Float(orbitGeoElementCameraController.cameraHeadingOffset)
+        let measurement = Measurement(value: orbitGeoElementCameraController.cameraHeadingOffset, unit: UnitAngle.degrees)
         headingLabel.text = measurementFormatter.string(from: measurement)
     }
     
     func updateUIForPitch() {
-        guard let graphic = planeGraphic,
-              let pitch = graphic.attributes["PITCH"] as? NSNumber else { return }
-        pitchSlider.value = pitch.floatValue
-        let measurement = Measurement(value: pitch.doubleValue, unit: UnitAngle.degrees)
+        guard let pitch = planeGraphic.attributes["PITCH"] as? Float else { return }
+        pitchSlider.value = pitch
+        let measurement = Measurement(value: Double(pitch), unit: UnitAngle.degrees)
         pitchLabel.text = measurementFormatter.string(from: measurement)
     }
     
     @IBAction func headingValueChanged(_ sender: UISlider) {
-        orbitGeoElementCameraController?.cameraHeadingOffset = Double(sender.value)
+        orbitGeoElementCameraController.cameraHeadingOffset = Double(sender.value)
         updateUIForHeading()
     }
     
     @IBAction func pitchValueChanged(_ sender: UISlider) {
-        planeGraphic?.attributes["PITCH"] = NSNumber(value: sender.value)
+        planeGraphic.attributes["PITCH"] = sender.value
         updateUIForPitch()
     }
     
     @IBAction func distanceInteractionSwitchValueChanged(_ sender: UISwitch) {
-        orbitGeoElementCameraController?.isCameraDistanceInteractive = sender.isOn
+        orbitGeoElementCameraController.isCameraDistanceInteractive = sender.isOn
     }
     
     // MARK: UIViewController
@@ -77,10 +90,9 @@ class OrbitCameraSettingsViewController: UITableViewController {
         // Apply initial values to controls.
         updateUIForHeading()
         updateUIForPitch()
-        guard let cameraController = orbitGeoElementCameraController else { return }
-        distanceInteractionSwitch.isOn = cameraController.isCameraDistanceInteractive
+        distanceInteractionSwitch.isOn = orbitGeoElementCameraController.isCameraDistanceInteractive
         // Add an observer to sync the UI for camera heading.
-        headingObservation = cameraController.observe(\.cameraHeadingOffset) { [weak self] _, _ in
+        headingObservation = orbitGeoElementCameraController.observe(\.cameraHeadingOffset) { [weak self] _, _ in
             DispatchQueue.main.async {
                 self?.updateUIForHeading()
             }

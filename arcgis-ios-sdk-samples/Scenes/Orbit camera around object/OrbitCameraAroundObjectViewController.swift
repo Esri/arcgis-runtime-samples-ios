@@ -19,11 +19,10 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     // MARK: Storyboard views
     
     /// The scene view managed by the view controller.
-    @IBOutlet weak var sceneView: AGSSceneView! {
+    @IBOutlet var sceneView: AGSSceneView! {
         didSet {
             sceneView.scene = makeScene()
-            sceneGraphicsOverlay.graphics.add(planeGraphic)
-            sceneView.graphicsOverlays.add(sceneGraphicsOverlay)
+            sceneView.graphicsOverlays.add(makeSceneGraphicsOverlay())
             // Create and set the orbit camera controller to the scene view.
             sceneView.cameraController = makeOrbitGeoElementCameraController()
         }
@@ -34,28 +33,18 @@ class OrbitCameraAroundObjectViewController: UIViewController {
             changeViewBarButtonItem.possibleTitles = ["Cockpit View", "Center View"]
         }
     }
-    @IBOutlet var cameraControllersBarButtonItem: UIBarButtonItem!
     
     // MARK: Properties
-    
-    /// A graphics overlay for the scene.
-    let sceneGraphicsOverlay: AGSGraphicsOverlay =  {
-        let graphicsOverlay = AGSGraphicsOverlay()
-        graphicsOverlay.sceneProperties?.surfacePlacement = .relative
-        let renderer = AGSSimpleRenderer()
-        renderer.sceneProperties?.headingExpression = "[HEADING]"
-        renderer.sceneProperties?.pitchExpression = "[PITCH]"
-        graphicsOverlay.renderer = renderer
-        return graphicsOverlay
-    }()
     
     /// A graphic of a plane model.
     let planeGraphic: AGSGraphic = {
         let planeSymbol = AGSModelSceneSymbol(name: "Bristol", extension: "dae", scale: 1)
         let planePosition = AGSPoint(x: 6.637, y: 45.399, z: 100, spatialReference: .wgs84())
-        let planeGraphic = AGSGraphic(geometry: planePosition, symbol: planeSymbol, attributes: ["HEADING": 45.0])
+        let planeGraphic = AGSGraphic(geometry: planePosition, symbol: planeSymbol, attributes: ["HEADING": 45.0, "PITCH": 0])
         return planeGraphic
     }()
+    
+    var moveCameraAnimationCancelable: AGSCancelable?
     
     // MARK: Instance methods
     
@@ -69,6 +58,18 @@ class OrbitCameraAroundObjectViewController: UIViewController {
         surface.elevationSources.append(elevationSource)
         scene.baseSurface = surface
         return scene
+    }
+    
+    /// Create a graphics overlay for the scene.
+    func makeSceneGraphicsOverlay() -> AGSGraphicsOverlay {
+        let graphicsOverlay = AGSGraphicsOverlay()
+        graphicsOverlay.sceneProperties?.surfacePlacement = .relative
+        let renderer = AGSSimpleRenderer()
+        renderer.sceneProperties?.headingExpression = "[HEADING]"
+        renderer.sceneProperties?.pitchExpression = "[PITCH]"
+        graphicsOverlay.renderer = renderer
+        graphicsOverlay.graphics.add(planeGraphic)
+        return graphicsOverlay
     }
     
     /// Create a controller that allows a scene view's camera to orbit the plane.
@@ -98,6 +99,7 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func changeViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        moveCameraAnimationCancelable?.cancel()
         if sender.title == "Cockpit View" {
             cockpitViewBarButtonItemTapped(sender)
             sender.title = "Center View"
@@ -108,7 +110,7 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     }
     
     func centerViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        guard let cameraController = sceneView.cameraController as? AGSOrbitGeoElementCameraController else { return }
+        let cameraController = sceneView.cameraController as! AGSOrbitGeoElementCameraController
         
         cameraController.isCameraDistanceInteractive = true
         cameraController.isAutoPitchEnabled = false
@@ -128,7 +130,7 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     }
     
     func cockpitViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        guard let cameraController = sceneView.cameraController as? AGSOrbitGeoElementCameraController else { return }
+        let cameraController = sceneView.cameraController as! AGSOrbitGeoElementCameraController
         
         cameraController.isCameraDistanceInteractive = false
         cameraController.minCameraDistance = 0.1
@@ -141,15 +143,18 @@ class OrbitCameraAroundObjectViewController: UIViewController {
         
         // If the camera is already tracking the plane's pitch, subtract it from
         // the delta angle for the animation.
-        let pitchDelta = cameraController.isAutoPitchEnabled ? 0 : 90 - cameraController.cameraPitchOffset + ((planeGraphic.attributes["PITCH"] as? NSNumber)?.doubleValue ?? 0)
+        let pitchDelta = cameraController.isAutoPitchEnabled ? 0 : 90 - cameraController.cameraPitchOffset + (planeGraphic.attributes["PITCH"] as? Double ?? 0)
         // Animate the camera so that it is at the target (cockpit), facing
         // forward (0 deg heading), and aligned with the horizon (90 deg pitch).
-        cameraController.moveCamera(
+        moveCameraAnimationCancelable = cameraController.moveCamera(
             withDistanceDelta: 0.1 - cameraController.cameraDistance,
             headingDelta: -cameraController.cameraHeadingOffset,
             pitchDelta: pitchDelta,
             duration: 1
-        ) { _ in
+        ) { [weak self] animationFinished in
+            self?.moveCameraAnimationCancelable = nil
+            // If the animation was interrupted, don't lock the camera pitch.
+            guard animationFinished else { return }
             // When the animation finishes, lock the camera pitch.
             cameraController.minCameraPitchOffset = 90
             cameraController.maxCameraPitchOffset = 90
@@ -159,22 +164,23 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     
     // MARK: UIViewController
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? OrbitCameraSettingsViewController {
-            controller.orbitGeoElementCameraController = sceneView.cameraController as? AGSOrbitGeoElementCameraController
-            controller.planeGraphic = planeGraphic
-            controller.presentationController?.delegate = self
-            controller.preferredContentSize = CGSize(width: 300, height: 210)
-        }
+    @IBSegueAction
+    func makeSettingsViewController(_ coder: NSCoder) -> OrbitCameraSettingsViewController? {
+        let settingsVC = OrbitCameraSettingsViewController(
+            coder: coder,
+            cameraController: sceneView.cameraController as! AGSOrbitGeoElementCameraController,
+            graphic: planeGraphic
+        )
+        settingsVC?.modalPresentationStyle = .popover
+        settingsVC?.presentationController?.delegate = self
+        settingsVC?.preferredContentSize = CGSize(width: 300, height: 210)
+        return settingsVC
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["OrbitCameraAroundObjectViewController", "OrbitCameraSettingsViewController"]
-        // Enable the buttons.
-        changeViewBarButtonItem.isEnabled = true
-        cameraControllersBarButtonItem.isEnabled = true
     }
 }
 

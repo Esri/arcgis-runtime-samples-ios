@@ -30,6 +30,7 @@ class OrbitCameraSettingsViewController: UITableViewController {
     let planeGraphic: AGSGraphic
     var headingObservation: NSKeyValueObservation?
     var isCameraDistanceInteractiveObservation: NSKeyValueObservation?
+    var tableViewContentSizeObservation: NSKeyValueObservation?
     
     let measurementFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
@@ -85,6 +86,18 @@ class OrbitCameraSettingsViewController: UITableViewController {
     }
     
     // MARK: UIViewController
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableViewContentSizeObservation = tableView.observe(\.contentSize) { [unowned self] tableView, _ in
+            self.preferredContentSize = CGSize(width: self.preferredContentSize.width, height: tableView.contentSize.height)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableViewContentSizeObservation = nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

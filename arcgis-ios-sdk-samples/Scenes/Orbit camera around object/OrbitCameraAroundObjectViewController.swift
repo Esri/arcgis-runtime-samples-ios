@@ -166,15 +166,14 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     
     @IBSegueAction
     func makeSettingsViewController(_ coder: NSCoder) -> OrbitCameraSettingsViewController? {
-        let settingsVC = OrbitCameraSettingsViewController(
+        let settingsViewController = OrbitCameraSettingsViewController(
             coder: coder,
             cameraController: sceneView.cameraController as! AGSOrbitGeoElementCameraController,
             graphic: planeGraphic
         )
-        settingsVC?.modalPresentationStyle = .popover
-        settingsVC?.presentationController?.delegate = self
-        settingsVC?.preferredContentSize = CGSize(width: 300, height: 210)
-        return settingsVC
+        settingsViewController?.modalPresentationStyle = .popover
+        settingsViewController?.presentationController?.delegate = self
+        return settingsViewController
     }
     
     override func viewDidLoad() {

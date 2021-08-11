@@ -920,9 +920,9 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Feature request mode</string>
+				<string>Display feature request mode</string>
 				<key>storyboardName</key>
-				<string>FeatureRequestMode</string>
+				<string>DisplayFeatureRequestMode</string>
 				<key>descriptionText</key>
 				<string>Set different feature request modes for a feature table.</string>
 			</dict>

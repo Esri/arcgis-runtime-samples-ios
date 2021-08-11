@@ -15,14 +15,15 @@
 import UIKit
 import ArcGIS
 
-class FeatureRequestModeViewController: UIViewController {
+class DisplayFeatureRequestModeViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             mapView.setViewpoint(AGSViewpoint(latitude: 45.5185, longitude: -122.5965, scale: 6000))
         }
     }
-    @IBOutlet weak var featureRequestModeButton: UIBarButtonItem!
+    @IBOutlet weak var modeBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var populateBarButtonItem: UIBarButtonItem!
     
     private static let featureServiceURL = "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Trees_of_Portland/FeatureServer/0"
 //    private static let featureServiceSFURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"
@@ -73,27 +74,11 @@ class FeatureRequestModeViewController: UIViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
-        alertController.popoverPresentationController?.barButtonItem = featureRequestModeButton
+        alertController.popoverPresentationController?.barButtonItem = modeBarButtonItem
         present(alertController, animated: true)
     }
     
-    private func changeFeatureRequestMode(to mode: AGSFeatureRequestMode) {
-        if mode == .manualCache {
-            populateManualCache()
-        }
-        let map = mapView.map
-        map?.operationalLayers.removeAllObjects()
-        featureTable.clearCache(withKeepLocalEdits: false)
-        // set the request mode
-        featureTable.featureRequestMode = mode
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        // add the feature layer to the map
-        map?.operationalLayers.add(featureLayer)
-        
-        mapView.map = map
-    }
-    
-    func populateManualCache() {
+    @IBAction func populateManualCache(_ button: UIBarButtonItem) {
         // set query parameters
         let params = AGSQueryParameters()
         // for specific request type
@@ -110,6 +95,24 @@ class FeatureRequestModeViewController: UIViewController {
                 print("Populated \(result?.featureEnumerator().allObjects.count ?? 0) features.")
             }
         }
+    }
+    
+    private func changeFeatureRequestMode(to mode: AGSFeatureRequestMode) {
+        if mode == .manualCache {
+            populateBarButtonItem.isEnabled = true
+        } else {
+            populateBarButtonItem.isEnabled = false
+        }
+        let map = mapView.map
+        map?.operationalLayers.removeAllObjects()
+        featureTable.clearCache(withKeepLocalEdits: false)
+        // set the request mode
+        featureTable.featureRequestMode = mode
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        // add the feature layer to the map
+        map?.operationalLayers.add(featureLayer)
+        
+        mapView.map = map
     }
     
     override func viewDidLoad() {

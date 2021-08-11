@@ -38,7 +38,7 @@ Note: The service limits requests to 1000 features.
 
 ## About the data
 
-This sample uses a service showcasing over 300,000 street trees in Portland, OR. Each tree point models the health of the tree (green - better, red - worse) as well as the diameter of its trunk.
+This sample uses the [Trees of Portland]( https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Trees_of_Portland/FeatureServer/0) service showcasing over 300,000 street trees in Portland, OR. Each tree point models the health of the tree (green - better, red - worse) as well as the diameter of its trunk.
 
 ## Tags
 

@@ -1,8 +1,8 @@
 # Display feature request mode
 
-Set different feature request modes for a feature table.
+Display different feature request modes for a feature table.
 
-![Service feature table (no cache) sample](service-feature-table-no-cache.png)
+![Display feature request mode sample](display-feature-request-mode.png)
 
 ## Use case
 Feature tables can be initialized with a feature request mode which controls how frequently features are requested and locally cached in response to panning, zooming, selecting, or querying. The appropriate feature request mode can have implications on performance and should be determined based on considerations such as how often the data is expected to change or how often changes in the data should be reflected to the user.
@@ -16,7 +16,7 @@ Feature tables can be initialized with a feature request mode which controls how
 
 ## How to use the sample
 
-Choose a request mode by tappig the "Mode" button. Pan and zoom to see how the features update at different scales. If you choose `MANUAL_CACHE`, tap the "Populate" button to manually get a cache with a subset of features.
+Choose a request mode by tapping the "Mode" button. Pan and zoom to see how the features update at different scales. If you choose `MANUAL_CACHE`, tap the "Populate" button to manually get a cache with a subset of features.
 
 Note: The service limits requests to 1000 features.
 
@@ -25,14 +25,16 @@ Note: The service limits requests to 1000 features.
 
 1. Create an `AGSServiceFeatureTable` with a feature service URL.
 2. Set the `featureRequestMode` property of the `AGSServiceFeatureTable` to the desired mode (Cache, No cache, or Manual cache) before the table is loaded.
-    * If using `MANUAL_CACHE`, populate the features with serviceFeatureTable.populateFromServiceAsync(queryParams, clearCache, outfields).
+    * If using `MANUAL_CACHE`, populate the features with `AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)`.
 3. Create an `AGSFeatureLayer` with the feature table and add it to a map's operational layers to display it.
 
 ## Relevant API
 
 * AGSFeatureLayer
+* AGSFeatureRequestMode
 * AGSServiceFeatureTable
 * AGSServiceFeatureTable.featureRequestMode
+* AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)
 
 ## About the data
 

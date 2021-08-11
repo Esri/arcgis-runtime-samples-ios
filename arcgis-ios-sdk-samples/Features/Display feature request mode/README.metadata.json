@@ -1,0 +1,32 @@
+{
+    "category": "Features",
+    "description": "Display different feature request modes for a feature table.",
+    "ignore": false,
+    "images": [
+        "display-feature-request-mode.png"
+    ],
+    "keywords": [
+        "cache",
+        "data",
+        "feature",
+        "feature request mode",
+        "performance",
+        "AGSFeatureLayer",
+        "AGSFeatureRequestMode",
+        "AGSServiceFeatureTable",
+        "AGSServiceFeatureTable.featureRequestMode",
+        "AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSFeatureRequestMode",
+        "AGSServiceFeatureTable",
+        "AGSServiceFeatureTable.featureRequestMode",
+        "AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)"
+    ],
+    "snippets": [
+        "DisplayFeatureRequestModeViewController.swift"
+    ],
+    "title": "Display feature request mode"
+}

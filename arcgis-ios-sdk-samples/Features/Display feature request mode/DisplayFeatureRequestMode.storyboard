@@ -21,6 +21,22 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JpY-Iu-b7q">
+                                <rect key="frame" x="0.0" y="44" width="414" height="21"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXL-vJ-wdy">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="LXL-vJ-wdy" firstAttribute="top" secondItem="JpY-Iu-b7q" secondAttribute="top" id="0Pi-Uu-NK5"/>
+                                    <constraint firstAttribute="bottom" secondItem="LXL-vJ-wdy" secondAttribute="bottom" id="Rg6-si-YN9"/>
+                                </constraints>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiW-4k-5rz">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
@@ -43,19 +59,25 @@
                         <viewLayoutGuide key="safeArea" id="gJ3-pA-oNW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="JpY-Iu-b7q" firstAttribute="leading" secondItem="hKY-ke-PWN" secondAttribute="leading" id="2Lu-gf-Hyg"/>
                             <constraint firstAttribute="trailing" secondItem="RWQ-Y6-I3c" secondAttribute="trailing" id="42s-gL-1v8"/>
                             <constraint firstItem="oiW-4k-5rz" firstAttribute="top" secondItem="RWQ-Y6-I3c" secondAttribute="bottom" id="8cP-jw-Eib"/>
+                            <constraint firstItem="LXL-vJ-wdy" firstAttribute="leading" secondItem="gJ3-pA-oNW" secondAttribute="leading" id="GIr-gl-7Vy"/>
                             <constraint firstItem="oiW-4k-5rz" firstAttribute="leading" secondItem="hKY-ke-PWN" secondAttribute="leading" id="Piu-Ql-MMT"/>
                             <constraint firstItem="oiW-4k-5rz" firstAttribute="bottom" secondItem="gJ3-pA-oNW" secondAttribute="bottom" id="RLZ-e1-8e7"/>
                             <constraint firstItem="RWQ-Y6-I3c" firstAttribute="top" secondItem="gJ3-pA-oNW" secondAttribute="top" id="bgr-gB-S2k"/>
                             <constraint firstAttribute="trailing" secondItem="oiW-4k-5rz" secondAttribute="trailing" id="c0m-bw-54y"/>
+                            <constraint firstAttribute="trailing" secondItem="JpY-Iu-b7q" secondAttribute="trailing" id="dYR-Pn-Rvr"/>
                             <constraint firstItem="RWQ-Y6-I3c" firstAttribute="leading" secondItem="hKY-ke-PWN" secondAttribute="leading" id="i6W-Yf-wX7"/>
+                            <constraint firstItem="LXL-vJ-wdy" firstAttribute="trailing" secondItem="gJ3-pA-oNW" secondAttribute="trailing" id="piI-iU-CUU"/>
+                            <constraint firstItem="JpY-Iu-b7q" firstAttribute="top" secondItem="gJ3-pA-oNW" secondAttribute="top" id="v6l-MU-vH5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="RWQ-Y6-I3c" id="Uw6-8E-tah"/>
                         <outlet property="modeBarButtonItem" destination="1SN-5G-yct" id="dpX-Uz-00M"/>
                         <outlet property="populateBarButtonItem" destination="gFJ-YS-5Ei" id="MHB-JD-oKJ"/>
+                        <outlet property="statusLabel" destination="LXL-vJ-wdy" id="hak-K3-cQ4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myF-4z-ytg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

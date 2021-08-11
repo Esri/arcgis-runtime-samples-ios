@@ -24,6 +24,7 @@ class DisplayFeatureRequestModeViewController: UIViewController {
     }
     @IBOutlet weak var modeBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var populateBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var statusLabel: UILabel!
     
     private static let featureServiceURL = "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Trees_of_Portland/FeatureServer/0"
 //    private static let featureServiceSFURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"
@@ -31,12 +32,10 @@ class DisplayFeatureRequestModeViewController: UIViewController {
 //    let featureTableSF = AGSServiceFeatureTable(url: URL(string: featureServiceSFURL)!)
     
     private enum FeatureRequestMode: CaseIterable {
-        case undefined, cache, noCache, manualCache
+        case cache, noCache, manualCache
         
         var title: String {
             switch self {
-            case .undefined:
-                return "Undefined"
             case .cache:
                 return "Cache"
             case .noCache:
@@ -48,8 +47,6 @@ class DisplayFeatureRequestModeViewController: UIViewController {
         
         var mode: AGSFeatureRequestMode {
             switch self {
-            case .undefined:
-                return .undefined
             case .cache:
                 return .onInteractionCache
             case .noCache:
@@ -69,6 +66,8 @@ class DisplayFeatureRequestModeViewController: UIViewController {
         FeatureRequestMode.allCases.forEach { mode in
             let action = UIAlertAction(title: mode.title, style: .default) { [self] _ in
                 changeFeatureRequestMode(to: mode.mode)
+                let message = "\(mode.title) enabled."
+                setStatus(message: message)
             }
             alertController.addAction(action)
         }
@@ -83,18 +82,26 @@ class DisplayFeatureRequestModeViewController: UIViewController {
         let params = AGSQueryParameters()
         // for specific request type
         params.whereClause = "Condition = '4'"
-        
+        UIApplication.shared.showProgressHUD(message: "Populating")
         // populate features based on query
         self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
+            // hide progress hud
+            UIApplication.shared.hideProgressHUD()
             // check for error
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
                 // the resulting features should be displayed on the map
                 // you can print the count of features
-                print("Populated \(result?.featureEnumerator().allObjects.count ?? 0) features.")
+                let message = "Populated \(result?.featureEnumerator().allObjects.count ?? 0) features."
+                self?.setStatus(message: message)
             }
         }
+    }
+    
+    // MARK: UI and Feedback
+    private func setStatus(message: String) {
+        statusLabel.text = message
     }
     
     private func changeFeatureRequestMode(to mode: AGSFeatureRequestMode) {
@@ -117,7 +124,7 @@ class DisplayFeatureRequestModeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setStatus(message: "Select a feature request mode.")
         // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureRequestModeViewController"]
     }

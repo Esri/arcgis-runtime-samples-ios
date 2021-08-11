@@ -129,6 +129,6 @@ class DisplayFeatureRequestModeViewController: UIViewController {
         super.viewDidLoad()
         setStatus(message: "Select a feature request mode.")
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["FeatureRequestModeViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayFeatureRequestModeViewController"]
     }
 }

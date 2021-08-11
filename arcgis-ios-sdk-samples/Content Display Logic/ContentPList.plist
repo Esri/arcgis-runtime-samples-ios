@@ -924,7 +924,7 @@
 				<key>storyboardName</key>
 				<string>DisplayFeatureRequestMode</string>
 				<key>descriptionText</key>
-				<string>Set different feature request modes for a feature table.</string>
+				<string>Display different feature request modes for a feature table.</string>
 			</dict>
 		</array>
 	</dict>

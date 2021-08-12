@@ -73,7 +73,6 @@ class OrbitCameraSettingsViewController: UITableViewController {
     
     @IBAction func headingValueChanged(_ sender: UISlider) {
         orbitGeoElementCameraController.cameraHeadingOffset = Double(sender.value)
-        updateUIForHeading()
     }
     
     @IBAction func pitchValueChanged(_ sender: UISlider) {
@@ -107,14 +106,10 @@ class OrbitCameraSettingsViewController: UITableViewController {
         distanceInteractionSwitch.isOn = orbitGeoElementCameraController.isCameraDistanceInteractive
         // Add an observer to sync the UI for camera heading.
         headingObservation = orbitGeoElementCameraController.observe(\.cameraHeadingOffset) { [weak self] _, _ in
-            DispatchQueue.main.async {
-                self?.updateUIForHeading()
-            }
+            self?.updateUIForHeading()
         }
         isCameraDistanceInteractiveObservation = orbitGeoElementCameraController.observe(\.isCameraDistanceInteractive) { [weak self] cameraController, _ in
-            DispatchQueue.main.async {
-                self?.distanceInteractionSwitch.isOn = cameraController.isCameraDistanceInteractive
-            }
+            self?.distanceInteractionSwitch.isOn = cameraController.isCameraDistanceInteractive
         }
     }
 }

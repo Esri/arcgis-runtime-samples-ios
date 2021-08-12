@@ -101,14 +101,12 @@ class OrbitCameraSettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Apply initial values to controls.
-        updateUIForHeading()
         updateUIForPitch()
-        distanceInteractionSwitch.isOn = orbitGeoElementCameraController.isCameraDistanceInteractive
         // Add an observer to sync the UI for camera heading.
-        headingObservation = orbitGeoElementCameraController.observe(\.cameraHeadingOffset) { [weak self] _, _ in
+        headingObservation = orbitGeoElementCameraController.observe(\.cameraHeadingOffset, options: .initial) { [weak self] _, _ in
             self?.updateUIForHeading()
         }
-        isCameraDistanceInteractiveObservation = orbitGeoElementCameraController.observe(\.isCameraDistanceInteractive) { [weak self] cameraController, _ in
+        isCameraDistanceInteractiveObservation = orbitGeoElementCameraController.observe(\.isCameraDistanceInteractive, options: .initial) { [weak self] cameraController, _ in
             self?.distanceInteractionSwitch.isOn = cameraController.isCameraDistanceInteractive
         }
     }

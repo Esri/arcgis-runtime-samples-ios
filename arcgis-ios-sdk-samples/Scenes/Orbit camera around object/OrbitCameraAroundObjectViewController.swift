@@ -30,7 +30,7 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     
     @IBOutlet var changeViewBarButtonItem: UIBarButtonItem! {
         didSet {
-            changeViewBarButtonItem.possibleTitles = ["Cockpit View", "Center View"]
+            changeViewBarButtonItem.possibleTitles = Set(ChangeViewButtonState.allCases.map(\.title))
         }
     }
     
@@ -45,6 +45,22 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     }()
     
     var moveCameraAnimationCancelable: AGSCancelable?
+    
+    enum ChangeViewButtonState: CaseIterable {
+        case cockpitView
+        case centerView
+        
+        var title: String {
+            switch self {
+            case .cockpitView:
+                return "Cockpit View"
+            case .centerView:
+                return "Center View"
+            }
+        }
+    }
+    
+    var changeViewButtonState: ChangeViewButtonState = .cockpitView
     
     // MARK: Instance methods
     
@@ -100,13 +116,15 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     
     @IBAction func changeViewBarButtonItemTapped(_ sender: UIBarButtonItem) {
         moveCameraAnimationCancelable?.cancel()
-        if sender.title == "Cockpit View" {
+        switch changeViewButtonState {
+        case .cockpitView:
             cockpitViewBarButtonItemTapped(sender)
-            sender.title = "Center View"
-        } else if sender.title == "Center View" {
+            changeViewButtonState = .centerView
+        case .centerView:
             centerViewBarButtonItemTapped(sender)
-            sender.title = "Cockpit View"
+            changeViewButtonState = .cockpitView
         }
+        sender.title = changeViewButtonState.title
     }
     
     func centerViewBarButtonItemTapped(_ sender: UIBarButtonItem) {

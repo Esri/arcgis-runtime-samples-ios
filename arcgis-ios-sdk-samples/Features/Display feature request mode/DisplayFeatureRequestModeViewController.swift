@@ -56,7 +56,7 @@ class DisplayFeatureRequestModeViewController: UIViewController {
     }
     
     /// Prompt mode selection.
-    @IBAction func modeButonTapped(_ button: UIBarButtonItem) {
+    @IBAction func modeButtonTapped(_ button: UIBarButtonItem) {
         // Set up action sheets.
         let alertController = UIAlertController(
             title: "Choose a feature request mode.",
@@ -117,7 +117,6 @@ class DisplayFeatureRequestModeViewController: UIViewController {
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         // Add the feature layer to the map.
         map?.operationalLayers.add(featureLayer)
-        mapView.map = map
     }
     
     /// Set the status.

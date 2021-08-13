@@ -34,7 +34,7 @@ class OpenMapURLViewController: UIViewController {
         }
     }
     
-    private let mapModels: [MapAtURL] = [
+    private let mapOptions: [MapAtURL] = [
         MapAtURL(title: "Terrestrial Ecosystems of the World",
                  thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail1"),
                  portalID: "5be0bc3ee36c4e058f7b3cebc21c74e6"),
@@ -50,7 +50,7 @@ class OpenMapURLViewController: UIViewController {
         super.viewDidLoad()
         
         /// The URL of the first map to show.
-        let initialMapURL = mapModels.first!.url!
+        let initialMapURL = mapOptions.first!.url!
 
         // create the map for the url and add it to the map view
         showMap(at: initialMapURL)
@@ -73,7 +73,7 @@ class OpenMapURLViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? OpenMapURLSettingsViewController {
             controller.initialSelectedID = displayedMapID
-            controller.mapModels = mapModels
+            controller.mapOptions = mapOptions
             controller.onChange = { [weak self] (url) in
                 self?.showMap(at: url)
             }

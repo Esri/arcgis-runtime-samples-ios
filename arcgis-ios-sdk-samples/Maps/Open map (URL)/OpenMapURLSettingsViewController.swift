@@ -16,14 +16,14 @@ import UIKit
 import ArcGIS
 
 class OpenMapURLSettingsViewController: UITableViewController {
-    var mapModels: [OpenMapURLViewController.MapAtURL] = []
+    var mapOptions: [OpenMapURLViewController.MapAtURL] = []
     var initialSelectedID: String?
     var onChange: ((URL) -> Void)?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let selectedMapIndex = mapModels.firstIndex { (mapAtURL) -> Bool in
+        let selectedMapIndex = mapOptions.firstIndex { (mapAtURL) -> Bool in
             mapAtURL.portalID == initialSelectedID
         }
         if let selectedMapIndex = selectedMapIndex {
@@ -36,7 +36,7 @@ class OpenMapURLSettingsViewController: UITableViewController {
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mapModels.count
+        return mapOptions.count
     }
     
     // MARK: - UITableViewDelegate
@@ -44,11 +44,11 @@ class OpenMapURLSettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MapAtURLCell", for: indexPath)
         
-        let mapModel = mapModels[indexPath.row]
+        let mapOption = mapOptions[indexPath.row]
         
-        cell.textLabel?.text = mapModel.title
+        cell.textLabel?.text = mapOption.title
         
-        cell.imageView?.image = mapModel.thumbnailImage
+        cell.imageView?.image = mapOption.thumbnailImage
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         
@@ -56,7 +56,7 @@ class OpenMapURLSettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = mapModels[indexPath.row].url {
+        if let url = mapOptions[indexPath.row].url {
             onChange?(url)
         }
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark

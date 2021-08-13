@@ -3,8 +3,7 @@
     "description": "Display a web map.",
     "ignore": false,
     "images": [
-        "open-map-url-1.png",
-        "open-map-url-2.png"
+        "open-map-url.png"
     ],
     "keywords": [
         "portal item",
@@ -14,9 +13,7 @@
         "AGSPortal",
         "AGSPortalItem"
     ],
-    "redirect_from": [
-        "/ios/latest/swift/sample-code/open-map-url-.htm"
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSMap",
         "AGSMapView",

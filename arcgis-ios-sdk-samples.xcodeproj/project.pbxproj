@@ -52,6 +52,11 @@
 		0069F4BE25F0111D00CA7BD2 /* CreateLoadReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0069F4BD25F0111D00CA7BD2 /* CreateLoadReport.storyboard */; };
 		0069F4C225F0118200CA7BD2 /* CreateLoadReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */; };
 		006A786A262F9F15001D2A5E /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = 006A7869262F9F15001D2A5E /* ArcGISToolkit */; };
+		0075032E26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */; };
+		0075033026B3676400022C7B /* OrbitCameraAroundObject.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0075032F26B3676400022C7B /* OrbitCameraAroundObject.storyboard */; };
+		0075033226B3683900022C7B /* OrbitCameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */; };
+		0075033326B4B85700022C7B /* OrbitCameraAroundObjectViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */; };
+		0075033426B4B85700022C7B /* OrbitCameraSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */; };
 		007FC9482534E8AE00D8D9A1 /* darkmode.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9452534E8AE00D8D9A1 /* darkmode.css */; };
 		007FC9492534E8AE00D8D9A1 /* solarized-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9472534E8AE00D8D9A1 /* solarized-dark.css */; };
 		0083AA192628ED18003A28C8 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0083AA162628ED18003A28C8 /* ProgressViewController.xib */; };
@@ -933,6 +938,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				0075033326B4B85700022C7B /* OrbitCameraAroundObjectViewController.swift in CopyFiles */,
+				0075033426B4B85700022C7B /* OrbitCameraSettingsViewController.swift in CopyFiles */,
 				00FFE6DD26606343001E92ED /* QueryWithCQLFiltersViewController.swift in CopyFiles */,
 				00FFE6DE26606343001E92ED /* QueryWithCQLFiltersSettingsViewController.swift in CopyFiles */,
 				0087A55D265C8FEA00D9601D /* BrowseOGCAPIFeatureServiceViewController.swift in CopyFiles */,
@@ -1248,6 +1255,9 @@
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		0069F4BD25F0111D00CA7BD2 /* CreateLoadReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateLoadReport.storyboard; sourceTree = "<group>"; };
 		0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoadReportViewController.swift; sourceTree = "<group>"; };
+		0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitCameraAroundObjectViewController.swift; sourceTree = "<group>"; };
+		0075032F26B3676400022C7B /* OrbitCameraAroundObject.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrbitCameraAroundObject.storyboard; sourceTree = "<group>"; };
+		0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitCameraSettingsViewController.swift; sourceTree = "<group>"; };
 		007A4250256C7A400025F582 /* AppSecrets.swift.masque */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AppSecrets.swift.masque; path = "arcgis-ios-sdk-samples/AppSecrets.swift.masque"; sourceTree = "<group>"; };
 		007FC9452534E8AE00D8D9A1 /* darkmode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = darkmode.css; sourceTree = "<group>"; };
 		007FC9472534E8AE00D8D9A1 /* solarized-dark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "solarized-dark.css"; sourceTree = "<group>"; };
@@ -1944,6 +1954,16 @@
 				0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */,
 			);
 			path = "Create load report";
+			sourceTree = "<group>";
+		};
+		0075032A26B3673800022C7B /* Orbit camera around object */ = {
+			isa = PBXGroup;
+			children = (
+				0075032F26B3676400022C7B /* OrbitCameraAroundObject.storyboard */,
+				0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */,
+				0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */,
+			);
+			path = "Orbit camera around object";
 			sourceTree = "<group>";
 		};
 		0083AA152628ED18003A28C8 /* Progress View Controller */ = {
@@ -3562,6 +3582,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0075032A26B3673800022C7B /* Orbit camera around object */,
 				F11CED6A256C82A8002A3F56 /* Show labels on layer in 3D */,
 				00166C8524D20E0E00DD317E /* Realistic lighting and shadows */,
 				00ADC3B72464D45B00A3B88D /* Animate images with image overlay */,
@@ -4956,6 +4977,7 @@
 				1218C843225C063F0027F3E2 /* ChooseCameraController.storyboard in Resources */,
 				4C2F90712289C1BE00357824 /* TokenAuthentication.storyboard in Resources */,
 				3EEA06111D21C44000E03774 /* ExtrudeGraphics.storyboard in Resources */,
+				0075033026B3676400022C7B /* OrbitCameraAroundObject.storyboard in Resources */,
 				3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */,
 				4C783F422252DBAC00609B9C /* philadelphia.mspk in Resources */,
 				F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */,
@@ -5277,6 +5299,7 @@
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
 				00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */,
+				0075033226B3683900022C7B /* OrbitCameraSettingsViewController.swift in Sources */,
 				F1D5022E245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift in Sources */,
 				F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
@@ -5429,6 +5452,7 @@
 				F1124F0C24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in Sources */,
 				3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */,
 				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,
+				0075032E26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift in Sources */,
 				3EEB2B981EB9695F00B52513 /* ListRelatedFeaturesViewController.swift in Sources */,
 				4CF6DF1B22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift in Sources */,
 				C7B29EBE218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift in Sources */,

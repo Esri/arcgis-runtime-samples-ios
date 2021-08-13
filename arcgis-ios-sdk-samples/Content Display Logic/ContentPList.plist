@@ -1809,6 +1809,18 @@
 				<key>descriptionText</key>
 				<string>Display custom labels in a 3D scene.</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Orbit camera around object</string>
+				<key>descriptionText</key>
+				<string>Fix the camera to point at and rotate around a target object.</string>
+				<key>storyboardName</key>
+				<string>OrbitCameraAroundObject</string>
+				<key>dependency</key>
+				<array>
+					<string>Bristol3DModel</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>

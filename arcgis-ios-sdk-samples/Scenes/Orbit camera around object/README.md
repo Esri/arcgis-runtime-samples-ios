@@ -8,14 +8,14 @@ Fix the camera to point at and rotate around a target object.
 
 The orbit geoelement camera controller provides control over the following camera behaviors:
 
-* automatically track the target
-* stay near the target by setting a minimum and maximum distance offset
-* restrict where you can rotate around the target
-* automatically rotate the camera when the target's heading and pitch changes
-* disable user interactions for rotating the camera
-* animate camera movement over a specified duration
-* control the vertical positioning of the target on the screen
-* set a target offset (e.g.to orbit around the tail of the plane) instead of defaulting to orbiting the center of the object
+* Automatically track the target
+* Stay near the target by setting a minimum and maximum distance offset
+* Restrict where you can rotate around the target
+* Automatically rotate the camera when the target's heading and pitch changes
+* Disable user interactions for rotating the camera
+* Animate camera movement over a specified duration
+* Control the vertical positioning of the target on the screen
+* Set a target offset (e.g.to orbit around the tail of the plane) instead of defaulting to orbiting the center of the object
 
 ## How to use the sample
 

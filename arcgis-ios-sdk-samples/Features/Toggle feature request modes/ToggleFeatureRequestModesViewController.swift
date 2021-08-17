@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class DisplayFeatureRequestModeViewController: UIViewController {
+class ToggleFeatureRequestModesViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)

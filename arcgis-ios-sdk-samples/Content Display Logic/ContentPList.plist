@@ -922,7 +922,7 @@
 				<key>displayName</key>
 				<string>Display feature request mode</string>
 				<key>storyboardName</key>
-				<string>DisplayFeatureRequestMode</string>
+				<string>ToggleFeatureRequestModes</string>
 				<key>descriptionText</key>
 				<string>Display different feature request modes for a feature table.</string>
 			</dict>

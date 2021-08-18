@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Set Up Location Driven Geotriggers View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="SetUpLocationDrivenGeotriggersViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Di-13-i3D" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qZx-Ub-AID" userLabel="Status View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="41"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gUH-f1-rAl">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fence geotrigger info will be shown here." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqa-4c-Eiy">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearby features will be shown here." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iq7-Ir-4V6">
+                                                <rect key="frame" x="0.0" y="20.5" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="zZg-KN-Iub"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <constraints>
+                                    <constraint firstItem="gUH-f1-rAl" firstAttribute="height" secondItem="qZx-Ub-AID" secondAttribute="height" id="1Ak-AC-aBu"/>
+                                    <constraint firstAttribute="trailing" secondItem="gUH-f1-rAl" secondAttribute="trailing" constant="20" symbolic="YES" id="gGg-E2-GrU"/>
+                                    <constraint firstItem="gUH-f1-rAl" firstAttribute="top" secondItem="zZg-KN-Iub" secondAttribute="top" id="jO2-AH-efI"/>
+                                    <constraint firstItem="gUH-f1-rAl" firstAttribute="leading" secondItem="qZx-Ub-AID" secondAttribute="leading" constant="20" symbolic="YES" id="uFA-lF-2VW"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrg-Xa-ifo">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem enabled="NO" title="Current Section" id="7sN-zH-zzH">
+                                        <connections>
+                                            <action selector="currentSectionButtonTapped:" destination="Y6W-OH-hqX" id="yoD-NH-pgp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="GzY-TQ-a2D"/>
+                                    <barButtonItem enabled="NO" title="Point of Interest" id="tFr-kr-Ron">
+                                        <connections>
+                                            <action selector="pointOfInterestButtonTapped:" destination="Y6W-OH-hqX" id="ASt-mm-aGG"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7Di-13-i3D" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="A1D-SU-qm2"/>
+                            <constraint firstItem="qZx-Ub-AID" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="Afs-9D-Ijg"/>
+                            <constraint firstItem="qZx-Ub-AID" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Ipq-Ws-IGI"/>
+                            <constraint firstItem="rrg-Xa-ifo" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="UJK-xk-Rm7"/>
+                            <constraint firstItem="rrg-Xa-ifo" firstAttribute="top" secondItem="7Di-13-i3D" secondAttribute="bottom" id="Zzo-zT-d6t"/>
+                            <constraint firstItem="7Di-13-i3D" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="c7q-pO-sBe"/>
+                            <constraint firstItem="7Di-13-i3D" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="dfD-Kd-UDo"/>
+                            <constraint firstItem="rrg-Xa-ifo" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="gry-0l-PZL"/>
+                            <constraint firstItem="rrg-Xa-ifo" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="iM0-nq-ppM"/>
+                            <constraint firstItem="qZx-Ub-AID" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="xpj-n8-Akn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="currentSectionBarButtonItem" destination="7sN-zH-zzH" id="bdk-L7-5my"/>
+                        <outlet property="fenceGeotriggerLabel" destination="yqa-4c-Eiy" id="qCL-Zs-wiZ"/>
+                        <outlet property="mapView" destination="7Di-13-i3D" id="NLN-Dk-Daw"/>
+                        <outlet property="nearbyFeaturesLabel" destination="Iq7-Ir-4V6" id="eMC-jR-YvX"/>
+                        <outlet property="pointOfInterestBarButtonItem" destination="tFr-kr-Ron" id="55l-bw-Dst"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="119"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

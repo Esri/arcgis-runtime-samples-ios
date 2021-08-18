@@ -3139,7 +3139,7 @@
 		3ED027FE1B8E39DD00ACA70D /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				F1C4529D26B36EB0002FDB34 /* Toggle feature request modes */,
+				F1C4529D26B36EB0002FDB34 /* Toggle between feature request modes */,
 				001ECB58248B002B009AC6C0 /* Feature collection layer (portal item) */,
 				F4E5CD7720704369000A6D35 /* Feature layer rendering mode (map) */,
 				C7FF07D321B9D227000D4055 /* Feature layer rendering mode (scene) */,
@@ -4568,13 +4568,13 @@
 			path = "Find closest facility to an incident (interactive)";
 			sourceTree = "<group>";
 		};
-		F1C4529D26B36EB0002FDB34 /* Toggle feature request modes */ = {
+		F1C4529D26B36EB0002FDB34 /* Toggle between feature request modes */ = {
 			isa = PBXGroup;
 			children = (
 				F1C4529E26B37008002FDB34 /* ToggleFeatureRequestModes.storyboard */,
 				F1C452A226B374C4002FDB34 /* ToggleFeatureRequestModesViewController.swift */,
 			);
-			path = "Toggle feature request modes";
+			path = "Toggle between feature request modes";
 			sourceTree = "<group>";
 		};
 		F1C81C4322FCEBD100229CAA /* Get elevation at a point */ = {

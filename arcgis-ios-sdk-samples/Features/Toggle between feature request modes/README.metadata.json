@@ -1,6 +1,6 @@
 {
     "category": "Features",
-    "description": "Display different feature request modes for a feature table.",
+    "description": "Use different feature request modes to populate the map from a service feature table.",
     "ignore": false,
     "images": [
         "toggle-feature-request-modes.png"

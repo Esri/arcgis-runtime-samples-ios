@@ -924,7 +924,7 @@
 				<key>storyboardName</key>
 				<string>ToggleFeatureRequestModes</string>
 				<key>descriptionText</key>
-				<string>Display different feature request modes for a feature table.</string>
+				<string>Use different feature request modes to populate the map from a service feature table.</string>
 			</dict>
 		</array>
 	</dict>

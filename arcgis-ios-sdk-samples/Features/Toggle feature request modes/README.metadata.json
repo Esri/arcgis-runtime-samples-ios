@@ -3,7 +3,7 @@
     "description": "Display different feature request modes for a feature table.",
     "ignore": false,
     "images": [
-        "display-feature-request-mode.png"
+        "toggle-feature-request-modes.png"
     ],
     "keywords": [
         "cache",
@@ -26,7 +26,7 @@
         "AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)"
     ],
     "snippets": [
-        "DisplayFeatureRequestModeViewController.swift"
+        "ToggleFeatureRequestModesViewController.swift"
     ],
-    "title": "Display feature request mode"
+    "title": "Toggle between feature request modes"
 }

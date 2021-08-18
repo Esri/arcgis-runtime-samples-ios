@@ -29,8 +29,7 @@ categories = {
 excluded_samples = {
     'Map loaded',
     'Animate 3D graphic',
-    'Densify and generalize',
-    'Add graphics with renderer'
+    'Densify and generalize'
 }
 # endregion
 

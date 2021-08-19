@@ -1,0 +1,51 @@
+{
+    "category": "Display information",
+    "description": "Create a notification every time a given location data source has entered and/or exited a set of features or graphics.",
+    "ignore": false,
+    "images": [
+        "set-up-location-driven-geotriggers-1.png",
+        "set-up-location-driven-geotriggers-2.png"
+    ],
+    "keywords": [
+        "alert",
+        "arcade",
+        "fence",
+        "geofence",
+        "geotrigger",
+        "location",
+        "navigation",
+        "notification",
+        "notify",
+        "routing",
+        "trigger",
+        "AGSArcadeExpression",
+        "AGSFeatureFenceParameters",
+        "AGSFenceGeotrigger",
+        "AGSFenceGeotriggerNotificationInfo",
+        "AGSFenceRuleType",
+        "AGSGeoElement",
+        "AGSGeotriggerMonitor",
+        "AGSGeotriggerNotificationInfoKey",
+        "AGSLocationGeotriggerFeed",
+        "AGSServiceFeatureTable",
+        "AGSSimulatedLocationDataSource"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSArcadeExpression",
+        "AGSFeatureFenceParameters",
+        "AGSFenceGeotrigger",
+        "AGSFenceGeotriggerNotificationInfo",
+        "AGSFenceRuleType",
+        "AGSGeoElement",
+        "AGSGeotriggerMonitor",
+        "AGSGeotriggerNotificationInfoKey",
+        "AGSLocationGeotriggerFeed",
+        "AGSServiceFeatureTable",
+        "AGSSimulatedLocationDataSource"
+    ],
+    "snippets": [
+        "SetUpLocationDrivenGeotriggersViewController.swift"
+    ],
+    "title": "Set up location-driven Geotriggers"
+}

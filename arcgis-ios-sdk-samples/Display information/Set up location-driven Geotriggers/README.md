@@ -17,7 +17,7 @@ Observe a virtual walking tour of the Santa Barbara Botanic Garden. Information 
 
 1. Create an `AGSLocationGeotriggerFeed` with an `AGSSimulatedLocationDataSource`.
 2. Create an `AGSFeatureFenceParameters` from an `AGSServiceFeatureTable`, a buffer distance at which to monitor each feature, an Arcade Expression, and a name for the specific geotrigger.
-3. Create an `AGSFenceGeotrigger` with the geotrigger feed, a `AGSFenceRuleType`, and the fence parameters.
+3. Create an `AGSFenceGeotrigger` with the geotrigger feed, an `AGSFenceRuleType`, and the fence parameters.
 4. Create an `AGSGeotriggerMonitor` with the fence geotrigger and call `start(completion:)` method to begin observing for notifications that meet the `AGSFenceRuleType`.
 5. When a notification is posted, capture the `AGSFenceGeotriggerNotificationInfo`.
 6. For more information about the feature that triggered the notification, access the `fenceGeoElement` property of the `AGSFenceGeotriggerNotificationInfo`.

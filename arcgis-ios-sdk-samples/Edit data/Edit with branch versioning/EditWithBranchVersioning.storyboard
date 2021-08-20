@@ -32,7 +32,7 @@
                                     </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="F8K-HY-PDY"/>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Y0j-pn-QCO" secondAttribute="bottom" id="554-9S-VFn"/>
                                     <constraint firstItem="Y0j-pn-QCO" firstAttribute="leading" secondItem="F8K-HY-PDY" secondAttribute="leading" id="AUQ-fP-qcI"/>
@@ -87,7 +87,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">

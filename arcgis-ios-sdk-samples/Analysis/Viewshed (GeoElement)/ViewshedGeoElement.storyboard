@@ -31,7 +31,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="PF5-we-Wcu" firstAttribute="top" secondItem="cM1-Ws-yO3" secondAttribute="top" constant="8" id="1Qa-Ms-iDL"/>
                                     <constraint firstAttribute="bottom" secondItem="PF5-we-Wcu" secondAttribute="bottom" constant="8" id="TJj-bI-d0C"/>
@@ -62,7 +62,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">

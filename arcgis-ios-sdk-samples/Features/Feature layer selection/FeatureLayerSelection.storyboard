@@ -32,7 +32,7 @@
                                     </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="gTA-cM-d3f"/>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="MSB-XK-96k" secondAttribute="bottom" id="Iyd-zR-VVL"/>
                                     <constraint firstItem="gTA-cM-d3f" firstAttribute="trailing" secondItem="MSB-XK-96k" secondAttribute="trailing" id="f8v-qY-d8G"/>
@@ -70,7 +70,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">

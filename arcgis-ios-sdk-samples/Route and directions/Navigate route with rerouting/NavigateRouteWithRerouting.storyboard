@@ -32,7 +32,7 @@
                                     </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="61W-JK-gvI"/>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="EqP-Cf-t0c" firstAttribute="leading" secondItem="cqm-kL-vVF" secondAttribute="leadingMargin" id="DRs-LJ-eY5"/>
                                     <constraint firstItem="EqP-Cf-t0c" firstAttribute="trailing" secondItem="cqm-kL-vVF" secondAttribute="trailingMargin" id="EbJ-Dy-L7z"/>
@@ -92,7 +92,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">

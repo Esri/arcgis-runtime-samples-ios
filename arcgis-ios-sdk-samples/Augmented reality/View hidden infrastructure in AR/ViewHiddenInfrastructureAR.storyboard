@@ -54,7 +54,7 @@
                                     </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="ZzE-Jj-RjQ"/>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="M90-C2-4nN" firstAttribute="trailing" secondItem="ZzE-Jj-RjQ" secondAttribute="trailing" id="3J0-cn-Mqh"/>
                                     <constraint firstItem="M90-C2-4nN" firstAttribute="top" secondItem="AyR-37-Gl1" secondAttribute="top" id="HkY-HL-vud"/>
@@ -112,7 +112,7 @@
                                     </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="FTa-Ao-hiw"/>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="G54-G0-CA5" firstAttribute="leading" secondItem="FTa-Ao-hiw" secondAttribute="leading" id="5pj-Mt-uwn"/>
                                     <constraint firstItem="G54-G0-CA5" firstAttribute="top" secondItem="p3z-mu-aGJ" secondAttribute="top" id="rac-8x-xzn"/>
@@ -179,7 +179,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">

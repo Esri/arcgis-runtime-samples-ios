@@ -43,7 +43,7 @@
                                     </stackView>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="AxU-Fm-eyW"/>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="tcM-hr-vne" firstAttribute="leading" secondItem="8tL-4E-K67" secondAttribute="leading" constant="20" symbolic="YES" id="fS5-JH-3HX"/>
                                     <constraint firstItem="tcM-hr-vne" firstAttribute="top" secondItem="AxU-Fm-eyW" secondAttribute="top" id="mJK-KP-LEH"/>
@@ -104,7 +104,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">

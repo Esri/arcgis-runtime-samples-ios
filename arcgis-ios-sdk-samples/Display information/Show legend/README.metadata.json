@@ -4,8 +4,7 @@
     "ignore": false,
     "images": [
         "show-legend-1.png",
-        "show-legend-2.png",
-        "show-legend-3.png"
+        "show-legend-2.png"
     ],
     "keywords": [
         "legend",
@@ -15,16 +14,14 @@
         "AGSLayerContent",
         "AGSLegendInfo"
     ],
-    "redirect_from": [
-        "/ios/latest/swift/sample-code/show-legend.htm"
-    ],
+    "redirect_from": [],
     "relevant_apis": [
         "AGSLayerContent",
         "AGSLegendInfo"
     ],
     "snippets": [
-        "MILLegendTableViewController.swift",
-        "MILShowLegendViewController.swift"
+        "MILShowLegendViewController.swift",
+        "MILLegendTableViewController.swift"
     ],
     "title": "Show legend"
 }

@@ -43,7 +43,7 @@
                                     </stackView>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="zZg-KN-Iub"/>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="gUH-f1-rAl" firstAttribute="height" secondItem="qZx-Ub-AID" secondAttribute="height" id="1Ak-AC-aBu"/>
                                     <constraint firstAttribute="trailing" secondItem="gUH-f1-rAl" secondAttribute="trailing" constant="20" symbolic="YES" id="gGg-E2-GrU"/>
@@ -97,7 +97,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemOrangeColor">

@@ -83,7 +83,6 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController, AGSPopupsV
     }
     
     /// Create a geotrigger monitor and observe its notifications.
-    ///
     /// - Parameters:
     ///   - feed: The `AGSGeotriggerFeed` that is monitored for changes.
     ///   - featureTable: The `AGSFeatureTable` that contains the features to use

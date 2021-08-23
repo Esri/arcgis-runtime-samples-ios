@@ -238,8 +238,28 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["SetUpLocationDrivenGeotriggersViewController"]
     }
     
-    deinit {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        geotriggerMonitors.forEach { monitor in
+            if monitor.status == .stopped {
+                monitor.start()
+                // Observe geotrigger notifications.
+                let observer = NotificationCenter.default.addObserver(
+                    forName: .AGSGeotriggerMonitorDidTrigger,
+                    object: monitor,
+                    queue: nil,
+                    using: { [weak self] note in self?.handleGeotriggerNotification(note) }
+                )
+                observers.append(observer)
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        geotriggerMonitors.forEach { $0.stop() }
         observers.forEach(NotificationCenter.default.removeObserver)
+        observers.removeAll()
     }
 }
 

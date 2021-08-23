@@ -19,7 +19,11 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     // MARK: Storyboard views
     
     /// The map view managed by the view controller.
-    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+        }
+    }
     /// The label to display fence geotrigger notification status.
     @IBOutlet var fenceGeotriggerLabel: UILabel!
     /// The label to display names of the currently nearby features.
@@ -65,6 +69,33 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     }
     
     // MARK: Methods
+    
+    /// Create a map.
+    func makeMap() -> AGSMap {
+        // Load a map with predefined tile basemap, feature styles, and labels.
+        let map = AGSMap(item: AGSPortalItem(portal: .arcGISOnline(withLoginRequired: false), itemID: "6ab0e91dc39e478cae4f408e1a36a308"))
+        map.load { [weak self] _ in
+            guard let self = self else { return }
+            
+            // Set up location display with a simulated location data source.
+            let locationDataSource = self.makeDataSource(polylineJSONString: Self.walkingTourPolylineJSON)
+            self.simulatedLocationDataSource = locationDataSource
+            self.setupLocationDisplay(locationDataSource: locationDataSource)
+            
+            // Get the service feature tables from the map's operational layers.
+            if let operationalLayers = map.operationalLayers as? [AGSFeatureLayer],
+               let gardenSectionsLayer = operationalLayers.first(where: { $0.item?.itemID == "1ba816341ea04243832136379b8951d9" }),
+               let gardenPOIsLayer = operationalLayers.first(where: { $0.item?.itemID == "7c6280c290c34ae8aeb6b5c4ec841167" }),
+               let gardenSections = gardenSectionsLayer.featureTable as? AGSServiceFeatureTable,
+               let gardenPOIs = gardenPOIsLayer.featureTable as? AGSServiceFeatureTable {
+                // Create geotriggers for each of the service feature tables.
+                let geotriggerFeed = AGSLocationGeotriggerFeed(locationDataSource: locationDataSource)
+                self.createGeotriggerMonitor(feed: geotriggerFeed, featureTable: gardenSections, bufferDistance: 0.0, fenceGeotriggerName: Self.sectionFenceGeotriggerName)
+                self.createGeotriggerMonitor(feed: geotriggerFeed, featureTable: gardenPOIs, bufferDistance: 10.0, fenceGeotriggerName: Self.poiFenceGeotriggerName)
+            }
+        }
+        return map
+    }
     
     /// Create a simulated location data source from a GeoJSON.
     func makeDataSource(polylineJSONString: String) -> AGSSimulatedLocationDataSource {
@@ -149,32 +180,6 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     
     // MARK: UI
     
-    func setupMapView() {
-        // Load a map with predefined tile basemap, feature styles, and labels.
-        let map = AGSMap(item: AGSPortalItem(portal: .arcGISOnline(withLoginRequired: false), itemID: "6ab0e91dc39e478cae4f408e1a36a308"))
-        map.load { [weak self] _ in
-            guard let self = self else { return }
-            
-            // Set up location display with a simulated location data source.
-            let locationDataSource = self.makeDataSource(polylineJSONString: Self.walkingTourPolylineJSON)
-            self.simulatedLocationDataSource = locationDataSource
-            self.setupLocationDisplay(locationDataSource: locationDataSource)
-            
-            // Get the service feature tables from the map's operational layers.
-            if let operationalLayers = map.operationalLayers as? [AGSFeatureLayer],
-               let gardenSectionsLayer = operationalLayers.first(where: { $0.item?.itemID == "1ba816341ea04243832136379b8951d9" }),
-               let gardenPOIsLayer = operationalLayers.first(where: { $0.item?.itemID == "7c6280c290c34ae8aeb6b5c4ec841167" }),
-               let gardenSections = gardenSectionsLayer.featureTable as? AGSServiceFeatureTable,
-               let gardenPOIs = gardenPOIsLayer.featureTable as? AGSServiceFeatureTable {
-                // Create geotriggers for each of the service feature tables.
-                let geotriggerFeed = AGSLocationGeotriggerFeed(locationDataSource: locationDataSource)
-                self.createGeotriggerMonitor(feed: geotriggerFeed, featureTable: gardenSections, bufferDistance: 0.0, fenceGeotriggerName: Self.sectionFenceGeotriggerName)
-                self.createGeotriggerMonitor(feed: geotriggerFeed, featureTable: gardenPOIs, bufferDistance: 10.0, fenceGeotriggerName: Self.poiFenceGeotriggerName)
-            }
-        }
-        mapView.map = map
-    }
-    
     func setupLocationDisplay(locationDataSource: AGSLocationDataSource) {
         mapView.locationDisplay.dataSource = locationDataSource
         mapView.locationDisplay.autoPanMode = .recenter
@@ -238,8 +243,6 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["SetUpLocationDrivenGeotriggersViewController"]
-        
-        setupMapView()
     }
     
     deinit {

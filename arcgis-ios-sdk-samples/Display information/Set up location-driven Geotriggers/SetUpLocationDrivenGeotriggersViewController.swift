@@ -105,7 +105,7 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController, AGSPopupsV
         
         // Create and start the geotrigger monitor.
         let geotriggerMonitor = AGSGeotriggerMonitor(geotrigger: fenceGeotrigger)
-        geotriggerMonitor.start { _ in }
+        geotriggerMonitor.start()
         geotriggerMonitors.append(geotriggerMonitor)
         
         // Observe geotrigger notifications.

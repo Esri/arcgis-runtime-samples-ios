@@ -237,6 +237,10 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Restart the simulated location updates.
+        if simulatedLocationDataSource != nil {
+            mapView.locationDisplay.start()
+        }
         geotriggerMonitors.forEach { monitor in
             if monitor.status == .stopped {
                 monitor.start()
@@ -254,9 +258,13 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        // Stop location updates when the view disappears.
+        mapView.locationDisplay.stop()
         geotriggerMonitors.forEach { $0.stop() }
         observers.forEach(NotificationCenter.default.removeObserver)
-        observers.removeAll()
+        observers.removeAll(keepingCapacity: true)
+        // Clear all received "entered" notifications.
+        featureNamesInFenceGeotrigger.removeAll(keepingCapacity: true)
     }
 }
 

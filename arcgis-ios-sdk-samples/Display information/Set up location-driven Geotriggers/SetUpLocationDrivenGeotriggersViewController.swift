@@ -80,7 +80,7 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
             // Set up location display with a simulated location data source.
             let locationDataSource = self.makeDataSource(polylineJSONString: Self.walkingTourPolylineJSON)
             self.simulatedLocationDataSource = locationDataSource
-            self.setupLocationDisplay(locationDataSource: locationDataSource)
+            self.startDisplayingLocation(using: locationDataSource)
             
             // Get the service feature tables from the map's operational layers.
             if let operationalLayers = map.operationalLayers as? [AGSFeatureLayer],
@@ -180,7 +180,7 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     
     // MARK: UI
     
-    func setupLocationDisplay(locationDataSource: AGSLocationDataSource) {
+    func startDisplayingLocation(using locationDataSource: AGSLocationDataSource) {
         mapView.locationDisplay.dataSource = locationDataSource
         mapView.locationDisplay.autoPanMode = .recenter
         mapView.locationDisplay.initialZoomScale = 1000

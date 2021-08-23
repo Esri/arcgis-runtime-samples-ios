@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,10 +23,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qZx-Ub-AID" userLabel="Status View">
-                                <rect key="frame" x="0.0" y="44" width="414" height="41"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="49"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gUH-f1-rAl">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="41"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gUH-f1-rAl">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="49"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fence geotrigger info will be shown here." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqa-4c-Eiy">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -34,7 +35,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearby features will be shown here." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iq7-Ir-4V6">
-                                                <rect key="frame" x="0.0" y="20.5" width="374" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="28.5" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                                 <nil key="highlightedColor"/>
@@ -46,9 +47,9 @@
                                 <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="gUH-f1-rAl" firstAttribute="height" secondItem="qZx-Ub-AID" secondAttribute="height" id="1Ak-AC-aBu"/>
-                                    <constraint firstAttribute="trailing" secondItem="gUH-f1-rAl" secondAttribute="trailing" constant="20" symbolic="YES" id="gGg-E2-GrU"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="gUH-f1-rAl" secondAttribute="trailing" id="gGg-E2-GrU"/>
                                     <constraint firstItem="gUH-f1-rAl" firstAttribute="top" secondItem="zZg-KN-Iub" secondAttribute="top" id="jO2-AH-efI"/>
-                                    <constraint firstItem="gUH-f1-rAl" firstAttribute="leading" secondItem="qZx-Ub-AID" secondAttribute="leading" constant="20" symbolic="YES" id="uFA-lF-2VW"/>
+                                    <constraint firstItem="gUH-f1-rAl" firstAttribute="leading" secondItem="qZx-Ub-AID" secondAttribute="leadingMargin" id="uFA-lF-2VW"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrg-Xa-ifo">

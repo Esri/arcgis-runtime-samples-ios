@@ -43,11 +43,8 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     ///   - Value: An array of names of features within the fence.
     var featureNamesInFenceGeotrigger: [String: [String]] = [:] {
         didSet {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.currentSectionBarButtonItem.isEnabled = self.currentSectionName != nil
-                self.pointOfInterestBarButtonItem.isEnabled = !self.nearbyPOINames.isEmpty
-            }
+            currentSectionBarButtonItem.isEnabled = currentSectionName != nil
+            pointOfInterestBarButtonItem.isEnabled = !nearbyPOINames.isEmpty
         }
     }
     
@@ -160,18 +157,21 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
         let fenceFeature = fenceNotificationInfo.fenceGeoElement as! AGSArcGISFeature
         let geotriggerName = fenceNotificationInfo.geotriggerMonitor.geotrigger.name
         
-        switch fenceNotificationInfo.fenceNotificationType {
-        case .entered:
-            // The user enters a geofence: add the feature for future querying.
-            featureNamesInFenceGeotrigger[geotriggerName, default: []].append(featureName)
-            nearbyFeatures[featureName] = fenceFeature
-        case .exited:
-            // The user leaves the geofence: remove the feature from the dicts.
-            if let poppedFeatureName = featureNamesInFenceGeotrigger[geotriggerName]?.popLast() {
-                nearbyFeatures.removeValue(forKey: poppedFeatureName)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            switch fenceNotificationInfo.fenceNotificationType {
+            case .entered:
+                // The user enters a geofence: add the feature for future querying.
+                self.featureNamesInFenceGeotrigger[geotriggerName, default: []].append(featureName)
+                self.nearbyFeatures[featureName] = fenceFeature
+            case .exited:
+                // The user leaves the geofence: remove the feature from the dicts.
+                if let poppedFeatureName = self.featureNamesInFenceGeotrigger[geotriggerName]?.popLast() {
+                    self.nearbyFeatures.removeValue(forKey: poppedFeatureName)
+                }
+            @unknown default:
+                fatalError("Unexpected fence notification type.")
             }
-        @unknown default:
-            fatalError("Unexpected fence notification type.")
         }
         
         // Update status labels.

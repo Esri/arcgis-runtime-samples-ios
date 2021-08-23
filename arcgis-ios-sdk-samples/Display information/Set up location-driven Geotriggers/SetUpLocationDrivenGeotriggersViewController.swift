@@ -219,23 +219,15 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func currentSectionButtonTapped(_ sender: UIBarButtonItem) {
-        if let section = currentSectionName,
-           let sectionFeature = nearbyFeatures[section] {
-            showPopups(for: [sectionFeature])
-        } else {
-            presentAlert(title: "Not in a Garden Section", message: "Currently we are not in a garden section.")
-        }
+        let sectionFeature = nearbyFeatures[currentSectionName!]!
+        showPopups(for: [sectionFeature])
     }
     
     @IBAction func pointOfInterestButtonTapped(_ sender: UIBarButtonItem) {
-        if !nearbyPOINames.isEmpty {
-            let poiFeatures = nearbyPOINames
-                .compactMap { nearbyFeatures[$0] }
-                .sorted { ($0.attributes["name"] as! String) < ($1.attributes["name"] as! String) }
-            showPopups(for: poiFeatures)
-        } else {
-            presentAlert(title: "No Nearby Point-of-interest", message: "There are no nearby places to explore.")
-        }
+        let poiFeatures = nearbyPOINames
+            .compactMap { nearbyFeatures[$0] }
+            .sorted { ($0.attributes["name"] as! String) < ($1.attributes["name"] as! String) }
+        showPopups(for: poiFeatures)
     }
     
     // MARK: UIViewController

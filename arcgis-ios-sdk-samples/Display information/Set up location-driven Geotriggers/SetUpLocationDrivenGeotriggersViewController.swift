@@ -90,8 +90,8 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
                let gardenPOIs = gardenPOIsLayer.featureTable as? AGSServiceFeatureTable {
                 // Create geotriggers for each of the service feature tables.
                 let geotriggerFeed = AGSLocationGeotriggerFeed(locationDataSource: locationDataSource)
-                self.createGeotriggerMonitor(feed: geotriggerFeed, featureTable: gardenSections, bufferDistance: 0.0, fenceGeotriggerName: Self.sectionFenceGeotriggerName)
-                self.createGeotriggerMonitor(feed: geotriggerFeed, featureTable: gardenPOIs, bufferDistance: 10.0, fenceGeotriggerName: Self.poiFenceGeotriggerName)
+                self.startMonitoring(feed: geotriggerFeed, featureTable: gardenSections, bufferDistance: 0.0, fenceGeotriggerName: Self.sectionFenceGeotriggerName)
+                self.startMonitoring(feed: geotriggerFeed, featureTable: gardenPOIs, bufferDistance: 10.0, fenceGeotriggerName: Self.poiFenceGeotriggerName)
             }
         }
         return map
@@ -113,7 +113,7 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
         return simulatedDataSource
     }
     
-    /// Create a geotrigger monitor and observe its notifications.
+    /// Create a geotrigger monitor and start observing its notifications.
     /// - Parameters:
     ///   - feed: The `AGSGeotriggerFeed` that is monitored for changes.
     ///   - featureTable: The `AGSFeatureTable` that contains the features to use
@@ -121,7 +121,7 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     ///   - bufferDistance: A buffer distance in meters to apply to the features
     ///   when checking if an `AGSFenceGeotrigger` condition is met.
     ///   - fenceGeotriggerName: The name for the `AGSFenceGeotrigger`.
-    func createGeotriggerMonitor(feed: AGSGeotriggerFeed, featureTable: AGSServiceFeatureTable, bufferDistance: Double, fenceGeotriggerName: String) {
+    func startMonitoring(feed: AGSGeotriggerFeed, featureTable: AGSServiceFeatureTable, bufferDistance: Double, fenceGeotriggerName: String) {
         let fenceParameters = AGSFeatureFenceParameters(featureTable: featureTable, bufferDistance: bufferDistance)
         // The Arcade expression in the fence geotrigger returns the value for
         // the "name" field of the feature that triggered the monitor.
@@ -230,7 +230,9 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     
     @IBAction func pointOfInterestButtonTapped(_ sender: UIBarButtonItem) {
         if !nearbyPOINames.isEmpty {
-            let poiFeatures = nearbyPOINames.compactMap { nearbyFeatures[$0] }
+            let poiFeatures = nearbyPOINames
+                .compactMap { nearbyFeatures[$0] }
+                .sorted { ($0.attributes["name"] as! String) < ($1.attributes["name"] as! String) }
             showPopups(for: poiFeatures)
         } else {
             presentAlert(title: "No Nearby Point-of-interest", message: "There are no nearby places to explore.")
@@ -262,9 +264,9 @@ extension SetUpLocationDrivenGeotriggersViewController: AGSPopupsViewControllerD
     }
 }
 
+// MARK: - Constants
+
 extension SetUpLocationDrivenGeotriggersViewController {
-    // MARK: Constants
-    
     static let sectionFenceGeotriggerName = "Section Fence Geotrigger"
     static let poiFenceGeotriggerName = "POI Fence Geotrigger"
     

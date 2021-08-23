@@ -171,10 +171,10 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
             @unknown default:
                 fatalError("Unexpected fence notification type.")
             }
+            
+            // Update status labels.
+            self.updateStatusLabels(featureName: featureName, notificationType: fenceNotificationInfo.fenceNotificationType)
         }
-        
-        // Update status labels.
-        updateStatusLabels(featureName: featureName, notificationType: fenceNotificationInfo.fenceNotificationType)
     }
     
     // MARK: UI
@@ -195,11 +195,8 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
         } else {
             nearbyFeaturesText = String(format: "Nearby: %@", ListFormatter.localizedString(byJoining: nearbyFeatures.keys.sorted()))
         }
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.fenceGeotriggerLabel.text = fenceGeotriggerText
-            self.nearbyFeaturesLabel.text = nearbyFeaturesText
-        }
+        fenceGeotriggerLabel.text = fenceGeotriggerText
+        nearbyFeaturesLabel.text = nearbyFeaturesText
     }
     
     func showPopups(for features: [AGSArcGISFeature]) {

@@ -38,9 +38,8 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     var simulatedLocationDataSource: AGSSimulatedLocationDataSource!
     
     /// A dictionary for the feature names in each fence geotrigger.
-    /// - Note:
-    ///   - Key: The name of a fence geotrigger.
-    ///   - Value: An array of names of features within the fence.
+    /// - Key: The name of a fence geotrigger.
+    /// - Value: An array of names of features within the fence.
     var featureNamesInFenceGeotrigger: [String: [String]] = [:] {
         didSet {
             currentSectionBarButtonItem.isEnabled = currentSectionName != nil

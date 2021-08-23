@@ -189,7 +189,7 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
         if nearbyFeatures.keys.isEmpty {
             nearbyFeaturesText = "No nearby features."
         } else {
-            nearbyFeaturesText = String(format: "Nearby: %@", ListFormatter.localizedString(byJoining: Array(nearbyFeatures.keys)))
+            nearbyFeaturesText = String(format: "Nearby: %@", ListFormatter.localizedString(byJoining: nearbyFeatures.keys.sorted()))
         }
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -199,7 +199,7 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     }
     
     func showPopups(for features: [AGSArcGISFeature]) {
-        let popups = features.map { AGSPopup(geoElement: $0) }
+        let popups = features.map(AGSPopup.init)
         let popupsViewController = AGSPopupsViewController(popups: popups)
         popupsViewController.delegate = self
         // Display the view controller as a formsheet - specified for iPads.
@@ -243,8 +243,7 @@ class SetUpLocationDrivenGeotriggersViewController: UIViewController {
     }
     
     deinit {
-        geotriggerMonitors.forEach { $0.stop() }
-        observers.forEach { NotificationCenter.default.removeObserver($0) }
+        observers.forEach(NotificationCenter.default.removeObserver)
     }
 }
 

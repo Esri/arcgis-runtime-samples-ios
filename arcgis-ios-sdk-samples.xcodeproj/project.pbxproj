@@ -1869,13 +1869,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		000FFFB026CB040B00E3CE7E /* Set up location-driven Geotriggers */ = {
+		000FFFB026CB040B00E3CE7E /* Set up location-driven geotriggers */ = {
 			isa = PBXGroup;
 			children = (
 				000FFFB326CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard */,
 				000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */,
 			);
-			path = "Set up location-driven Geotriggers";
+			path = "Set up location-driven geotriggers";
 			sourceTree = "<group>";
 		};
 		00166C8524D20E0E00DD317E /* Realistic lighting and shadows */ = {
@@ -3124,7 +3124,7 @@
 		3ED027FD1B8E392500ACA70D /* Display information */ = {
 			isa = PBXGroup;
 			children = (
-				000FFFB026CB040B00E3CE7E /* Set up location-driven Geotriggers */,
+				000FFFB026CB040B00E3CE7E /* Set up location-driven geotriggers */,
 				009B5FF525E58E0000BB9A77 /* Create symbol styles from web styles */,
 				F1F651A724984742006DF277 /* Show popup */,
 				00DAE5D924213D6B00D51281 /* Custom dictionary style */,

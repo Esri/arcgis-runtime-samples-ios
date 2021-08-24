@@ -33,8 +33,7 @@ exception_proper_nouns = {
     'Network Link Control',
     'Open Street Map',
     'OpenStreetMap',
-    'Play a KML Tour',
-    'Geotriggers'
+    'Play a KML Tour'
 }
 
 # A set of category folder names in current sample viewer.

@@ -238,7 +238,7 @@ class TraceUtilityNetworkViewController: UIViewController, AGSGeoViewTouchDelega
         parameters.barriers.append(contentsOf: traceParameters.barriers)
         
         // Set the trace configuration using the tier from the utility domain network.
-        parameters.traceConfiguration = utilityTier?.traceConfiguration
+        parameters.traceConfiguration = utilityTier?.makeDefaultTraceConfiguration()
         
         utilityNetwork.trace(with: parameters) { [weak self] (traceResult, error) in
             if let error = error {

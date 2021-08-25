@@ -34,13 +34,13 @@ class OpenMapURLViewController: UIViewController {
         }
     }
     
-    private let mapModels: [MapAtURL] = [
-        MapAtURL(title: "Housing with Mortgages",
+    private let mapOptions: [MapAtURL] = [
+        MapAtURL(title: "Terrestrial Ecosystems of the World",
                  thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail1"),
-                 portalID: "2d6fa24b357d427f9c737774e7b0f977"),
-        MapAtURL(title: "USA Tapestry Segmentation",
+                 portalID: "5be0bc3ee36c4e058f7b3cebc21c74e6"),
+        MapAtURL(title: "Recent Hurricanes, Cyclones and Typhoons",
                  thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail2"),
-                 portalID: "01f052c8995e4b9e889d73c3e210ebe3"),
+                 portalID: "064f2e898b094a17b84e4a4cd5e5f549"),
         MapAtURL(title: "Geology of United States",
                  thumbnailImage: #imageLiteral(resourceName: "OpenMapURLThumbnail3"),
                  portalID: "92ad152b9da94dee89b9e387dfe21acd")
@@ -50,7 +50,7 @@ class OpenMapURLViewController: UIViewController {
         super.viewDidLoad()
         
         /// The URL of the first map to show.
-        let initialMapURL = mapModels.first!.url!
+        let initialMapURL = mapOptions.first!.url!
 
         // create the map for the url and add it to the map view
         showMap(at: initialMapURL)
@@ -73,7 +73,7 @@ class OpenMapURLViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? OpenMapURLSettingsViewController {
             controller.initialSelectedID = displayedMapID
-            controller.mapModels = mapModels
+            controller.mapOptions = mapOptions
             controller.onChange = { [weak self] (url) in
                 self?.showMap(at: url)
             }

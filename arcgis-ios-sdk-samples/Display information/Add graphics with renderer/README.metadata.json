@@ -1,39 +1,52 @@
 {
     "category": "Display information",
-    "description": "A renderer allows you to change the style of all graphics in a graphics overlay by referencing a single symbol style.",
+    "description": "A renderer allows you to change the style of all graphics in a graphics overlay by referencing a single symbol style. A renderer will only affect graphics that do not specify their own symbol style.",
     "ignore": false,
     "images": [
         "add-graphics-with-renderer.png"
     ],
     "keywords": [
+        "arc",
+        "bezier",
+        "curve",
         "display",
         "graphics",
         "marker",
         "overlay",
         "renderer",
+        "segment",
         "symbol",
+        "true curve",
+        "AGSCubicBezierSegment",
+        "AGSEllipticArcSegment",
         "AGSGeometry",
         "AGSGraphic",
         "AGSGraphicsOverlay",
+        "AGSMutablePart",
+        "AGSPolygonBuilder",
+        "AGSPolylineBuilder",
         "AGSSimpleFillSymbol",
         "AGSSimpleLineSymbol",
         "AGSSimpleMarkerSymbol",
         "AGSSimpleRenderer"
     ],
-    "redirect_from": [
-        "/ios/latest/swift/sample-code/add-graphics-with-renderer.htm"
-    ],
+    "redirect_from": [],
     "relevant_apis": [
+        "AGSCubicBezierSegment",
+        "AGSEllipticArcSegment",
         "AGSGeometry",
         "AGSGraphic",
         "AGSGraphicsOverlay",
+        "AGSMutablePart",
+        "AGSPolygonBuilder",
+        "AGSPolylineBuilder",
         "AGSSimpleFillSymbol",
         "AGSSimpleLineSymbol",
         "AGSSimpleMarkerSymbol",
         "AGSSimpleRenderer"
     ],
     "snippets": [
-        "GORenderersViewController.swift"
+        "AddGraphicsWithRendererViewController.swift"
     ],
     "title": "Add graphics with renderer"
 }

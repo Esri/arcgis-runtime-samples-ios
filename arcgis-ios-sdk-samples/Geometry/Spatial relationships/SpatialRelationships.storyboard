@@ -23,7 +23,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the map to select the graphic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcu-ZS-x53">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -88,7 +88,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">

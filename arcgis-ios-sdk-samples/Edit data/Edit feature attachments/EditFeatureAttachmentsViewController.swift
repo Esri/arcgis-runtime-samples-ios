@@ -50,13 +50,14 @@ class EditFeatureAttachmentsViewController: UIViewController {
         ))
         mapView.touchDelegate = self
     }
-
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? AttachmentsTableViewController {
+           let controller = navController.viewControllers.first as? AttachmentsTableViewController {
             controller.feature = selectedFeature
+            controller.isModalInPresentation = true
         }
     }
 }
@@ -78,9 +79,9 @@ extension EditFeatureAttachmentsViewController: AGSGeoViewTouchDelegate {
             if let error = identifyLayerResult.error {
                 print(error)
             } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
-                let feature = features.first,
-                // show callout for the first feature
-                let title = feature.attributes["typdamage"] as? String {
+                      let feature = features.first,
+                      // show callout for the first feature
+                      let title = feature.attributes["typdamage"] as? String {
                 // fetch attachment
                 feature.fetchAttachments { (attachments: [AGSAttachment]?, error: Error?) in
                     if let error = error {

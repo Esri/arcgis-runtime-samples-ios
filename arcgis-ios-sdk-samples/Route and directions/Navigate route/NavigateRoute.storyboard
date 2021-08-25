@@ -32,7 +32,7 @@
                                     </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="UbJ-c8-Wwv"/>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="IhO-bQ-arF" firstAttribute="leading" secondItem="kAu-7I-JM1" secondAttribute="leadingMargin" id="3PX-fr-3Id"/>
                                     <constraint firstItem="IhO-bQ-arF" firstAttribute="top" secondItem="kAu-7I-JM1" secondAttribute="top" id="94a-pS-CSb"/>
@@ -92,7 +92,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">

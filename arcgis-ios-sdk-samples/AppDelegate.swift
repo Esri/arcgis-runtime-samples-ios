@@ -48,8 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Enable/disable touches based on settings.
         self.setTouchPref()
         
-        // Uncomment the following line to set license key.
-        // application.license()
+        // Set license key and/or API key.
+        application.license()
         
         return true
     }
@@ -167,28 +167,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 extension UIColor {
     // Also used as global tint/accent color.
     class var accentColor: UIColor { return UIColor(named: "AccentColor")! }
-    // The translucent background color for status labels.
-    class var statusLabelBackgroundColor: UIColor { return UIColor(named: "statusLabelBackgroundColor")! }
 }
 
 extension UIApplication {
     /// License the app with ArcGIS Runtime deployment license keys.
     ///
-    /// - Note: An invalid key does not throw an exception, but simply fails to license the app,
-    ///         falling back to Developer Mode (which will display a watermark on the map view).
+    /// - Note: An invalid key does not throw an exception, but simply fails to
+    ///         license the app, falling back to Developer Mode (which will
+    ///         display a watermark on the map view).
     func license() {
-        do {
-            // Don't set extension key if you don't use utility network samples.
-            // try AGSArcGISRuntimeEnvironment.setLicenseKey(.licenseKey)
-            
-            // Set both keys for accessing all samples.
-            try AGSArcGISRuntimeEnvironment.setLicenseKey(.licenseKey, extensions: [.extensionLicenseKey])
-            
+        if let licenseKey = String.licenseKey,
+           let extensionLicenseKey = String.extensionLicenseKey {
+            do {
+                // Set both keys to access all samples, including utility network capability.
+                try AGSArcGISRuntimeEnvironment.setLicenseKey(licenseKey, extensions: [extensionLicenseKey])
+            } catch {
+                print("Error licensing app: \(error.localizedDescription)")
+            }
+        }
+        if let apiKey = String.apiKey {
             // Authentication with an API key or named user is required to
             // access basemaps and other location services.
-            AGSArcGISRuntimeEnvironment.apiKey = .apiKey
-        } catch {
-            print("Error licensing app: \(error.localizedDescription)")
+            AGSArcGISRuntimeEnvironment.apiKey = apiKey
         }
     }
 }

@@ -164,15 +164,15 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
                 }
                 // Get a default trace configuration from a tier to update the UI.
                 let domainNetwork = self.utilityNetwork.definition.domainNetwork(withDomainNetworkName: domainNetworkName)
-                let utilityTierConfiguration = domainNetwork?.tier(withName: tierName)?.traceConfiguration ?? AGSUtilityTraceConfiguration()
+                let utilityTierConfiguration = domainNetwork?.tier(withName: tierName)?.makeDefaultTraceConfiguration()
                 
                 // Set the traversability.
-                if utilityTierConfiguration.traversability == nil {
-                    utilityTierConfiguration.traversability = AGSUtilityTraversability()
+                if utilityTierConfiguration?.traversability == nil {
+                    utilityTierConfiguration?.traversability = AGSUtilityTraversability()
                 }
                 
                 // Set the default expression (if provided).
-                if let expression = utilityTierConfiguration.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
+                if let expression = utilityTierConfiguration?.traversability?.barriers as? AGSUtilityTraceConditionalExpression {
                     self.initialExpression = expression
                     if !self.traceConditionalExpressions.contains(expression) {
                         self.traceConditionalExpressions.append(expression)
@@ -182,7 +182,7 @@ class ConfigureSubnetworkTraceViewController: UIViewController {
                     self.chainedConditionsLabel.text = self.expressionString
                 }
                 // Set the traversability scope.
-                utilityTierConfiguration.traversability?.scope = .junctions
+                utilityTierConfiguration?.traversability?.scope = .junctions
                 
                 self.configuration = utilityTierConfiguration
             }

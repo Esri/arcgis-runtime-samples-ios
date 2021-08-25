@@ -30,10 +30,6 @@ class MILShowLegendViewController: UIViewController, UIAdaptivePresentationContr
         // initialize the map
         self.map = AGSMap(basemapStyle: .arcGISTopographic)
         
-        // create tiled layer
-        let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/Soil_Survey_Map/MapServer")!)
-        self.map.operationalLayers.add(tiledLayer)
-        
         // create a map image layer using a url
         let mapImageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer")!)
         // add the image layer to the map

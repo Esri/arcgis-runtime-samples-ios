@@ -929,9 +929,9 @@
 				<key>displayName</key>
 				<string>Add graphics with renderer</string>
 				<key>storyboardName</key>
-				<string>GORenderers</string>
+				<string>AddGraphicsWithRenderer</string>
 				<key>descriptionText</key>
-				<string>Add graphics with renderer to a map to change the style of all graphics in a graphics overlay by referencing a single symbol style.</string>
+				<string>A renderer allows you to change the style of all graphics in a graphics overlay by referencing a single symbol style. A renderer will only affect graphics that do not specify their own symbol style.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -1068,6 +1068,14 @@
 				<string>Create symbol styles from a style file hosted on a portal.</string>
 				<key>storyboardName</key>
 				<string>CreateSymbolStylesFromWebStyles</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Set up location-driven geotriggers</string>
+				<key>descriptionText</key>
+				<string>Create a notification every time a given location data source has entered and/or exited a set of features or graphics.</string>
+				<key>storyboardName</key>
+				<string>SetUpLocationDrivenGeotriggers</string>
 			</dict>
 		</array>
 	</dict>
@@ -1808,6 +1816,18 @@
 				<string>ShowLabelsOnLayer3D</string>
 				<key>descriptionText</key>
 				<string>Display custom labels in a 3D scene.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Orbit camera around object</string>
+				<key>descriptionText</key>
+				<string>Fix the camera to point at and rotate around a target object.</string>
+				<key>storyboardName</key>
+				<string>OrbitCameraAroundObject</string>
+				<key>dependency</key>
+				<array>
+					<string>Bristol3DModel</string>
+				</array>
 			</dict>
 		</array>
 	</dict>

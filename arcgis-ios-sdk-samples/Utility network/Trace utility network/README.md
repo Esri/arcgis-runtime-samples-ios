@@ -26,7 +26,7 @@ Tap on one or more features while "Start" or "Barrier" is selected. When a junct
 10. If the type is `edge`, create an `AGSUtilityElement` from the identified feature and compute how far along the edge the user tapped using `class AGSGeometryEngine.fraction(alongLine:to:tolerance:)`.
 11. Add this `AGSUtilityElement` to a collection of starting locations or barriers.
 12. Create `AGSUtilityTraceParameters` with the selected trace type along with the collected starting locations and barriers (if applicable).
-13. Set the `AGSUtilityTraceConfiguration` with the utility tier's `traceConfiguration` property.
+13. Set the `AGSUtilityTraceConfiguration` with the utility tier's `makeDefaultTraceConfiguration` method.
 14. Run `AGSUtilityNetwork.trace(with:completion:)` with the specified starting points and (optionally) barriers.
 15. Group the `AGSUtilityElementTraceResult.elements` by their `networkSource.name`.
 16. For every `AGSFeatureLayer` in this map with trace result elements, select features by converting `AGSUtilityElement`(s) to `AGSArcGISFeature`(s) using `AGSUtilityNetwork.features(for:completion:)`.

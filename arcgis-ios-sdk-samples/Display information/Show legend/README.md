@@ -4,7 +4,6 @@ Show a legend for all the operational layers in the map.
 
 ![Image of Show legend 1](show-legend-1.png)
 ![Image of Show legend 2](show-legend-2.png)
-![Image of Show legend 3](show-legend-3.png)
 
 ## Use case
 

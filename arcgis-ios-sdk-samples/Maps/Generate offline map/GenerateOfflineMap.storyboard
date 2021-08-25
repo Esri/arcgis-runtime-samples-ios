@@ -56,7 +56,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="GNP-kU-lcZ" secondAttribute="bottom" constant="8" id="6re-P4-vBW"/>
                                     <constraint firstItem="T5K-5f-qbx" firstAttribute="leading" secondItem="fxl-cF-qjA" secondAttribute="trailing" constant="8" id="LQy-xl-DWQ"/>
@@ -110,7 +110,7 @@
         <namedColor name="AccentColor">
             <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">

@@ -25,8 +25,8 @@ The ```main``` branch of this repository contains samples configured for the lat
 
 ## Requirements
 
-* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.11.0 (or newer)
-* [ArcGIS Runtime Toolkit for iOS](https://github.com/Esri/arcgis-runtime-toolkit-ios) 100.11.0 (or newer)
+* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.12.0 (or newer)
+* [ArcGIS Runtime Toolkit for iOS](https://github.com/Esri/arcgis-runtime-toolkit-ios) 100.12.0 (or newer)
 * Xcode 12.0 (or newer)
 
 The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meaning that it can run on devices with *iOS 13.0* or newer.
@@ -38,7 +38,7 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meani
     > The project has been configured to use the `arcgis-runtime-toolkit-ios` package, which provides the `ArcGISToolkit` framework as well as the `ArcGIS` framework.
 1. **Run** the `arcgis-ios-sdk-samples` app target
 
-> To add the Swift packages to your own projects, consult the documentation for the [ArcGIS Runtime iOS Toolkit](https://github.com/Esri/arcgis-runtime-toolkit-ios/#swift-package-manager) and [ArcGIS Runtime iOS SDK](https://github.com/Esri/arcgis-runtime-ios#instructions).
+> To add the Swift packages to your own projects, consult the documentation for the [ArcGIS Runtime iOS Toolkit](https://github.com/Esri/arcgis-runtime-toolkit-ios/#swift-package-manager) and [ArcGIS Runtime iOS SDK](https://github.com/Esri/arcgis-runtime-ios/#instructions).
 
 ## Building Samples Using CocoaPods
 
@@ -52,13 +52,9 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meani
 
 Some sample data is too large to store in the repository, so it is automatically downloaded at build time. The first time the app is built, a build script downloads the necessary data to `Portal Data`. The script only downloads data files that do not already exist, so subsequent builds will take significantly less time.
 
-## Configure App Secrets
+## Configure API key
 
-As a best-practices principle, the project conceals app secrets from source code by generating and compiling an `AppSecrets.swift` source code file at build time using a custom build rule.
-
-This build rule looks for a secrets file stored in the project's root directory, `$(SRCROOT)/.secrets`.
-
-Note: Without licensing or licensing with invalid keys do not throw an exception, but simply fail to license the app, falling back to Developer Mode (which will display a watermark on the map and scene views).
+To build this app locally, follow the steps to add an API key to a secrets file stored in the project's root directory, `$(SRCROOT)/.secrets`.
 
 1. Create a hidden secrets file in the project's root directory.
 
@@ -66,21 +62,15 @@ Note: Without licensing or licensing with invalid keys do not throw an exception
   touch .secrets
   ```
 
-2. Add your **License Key** to the secrets file. Licensing the app will remove the 'Licensed for Developer Use Only' watermark. Licensing the app is optional in development but required for production. _Optionally_ add your **Extension License Key** and **API Key** to the secrets file if needed. Acquire license keys from your [dashboard](https://developers.arcgis.com/dashboard).
+2. Add your **API Key** to the secrets file aforementioned. Adding an API key allows you to access a set of ready-to-use services, including basemaps. Acquire the keys from your [dashboard](https://developers.arcgis.com/dashboard). Visit the developer's website to learn more about [API keys](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/api-keys/).
 
   ```bash
-  echo ARCGIS_LICENSE_KEY=your-license-key >> .secrets
-  echo ARCGIS_EXTENSION_LICENSE_KEY=your-extension-license-key >> .secrets
   echo ARCGIS_API_KEY=your-api-key >> .secrets
   ```
 
-  > Replace 'your-license-key', 'your-extension-license-key' and 'your-api-key' with your keys.
+  > Replace 'your-api-key' with your keys.
 
-3. Uncomment the line `application.license()` in `AppDelegate.application(_:didFinishLaunchingWithOptions:)`, and choose the appropriate licensing method for your keys.
-
-Visit the developer's website to learn more about [Licensing your ArcGIS Runtime App](https://developers.arcgis.com/pricing/licensing/) and [Security and authentication](https://developers.arcgis.com/documentation/mapping-apis-and-location-services/security-and-authentication/).
-
-To learn more about `masquerade`, consult the [documentation](https://github.com/Esri/data-collection-ios/tree/main/docs#masquerade) of Esri's Data Collection app.
+Please see [Configure App Secrets](Documentation/ConfigureAppSecrets.md) for adding license key and other details.
 
 ## Additional Resources
 

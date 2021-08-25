@@ -32,7 +32,7 @@
                                     </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="ICA-iz-QNp"/>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="0tx-3F-CSy" firstAttribute="top" secondItem="tAH-tt-W9l" secondAttribute="top" id="6by-Zg-1c7"/>
                                     <constraint firstItem="0tx-3F-CSy" firstAttribute="trailing" secondItem="ICA-iz-QNp" secondAttribute="trailing" id="Rc6-Rk-HC6"/>
@@ -128,7 +128,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">

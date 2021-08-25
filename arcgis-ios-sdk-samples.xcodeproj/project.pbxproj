@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
+		000FFFB426CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000FFFB326CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard */; };
+		000FFFB626CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */; };
+		000FFFB726CDD66B00E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */; };
 		00166C8824D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
 		00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */; };
 		00166C8C24D236A300DD317E /* RealisticLightingAndShadowsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
@@ -52,6 +55,11 @@
 		0069F4BE25F0111D00CA7BD2 /* CreateLoadReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0069F4BD25F0111D00CA7BD2 /* CreateLoadReport.storyboard */; };
 		0069F4C225F0118200CA7BD2 /* CreateLoadReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */; };
 		006A786A262F9F15001D2A5E /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = 006A7869262F9F15001D2A5E /* ArcGISToolkit */; };
+		0075032E26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */; };
+		0075033026B3676400022C7B /* OrbitCameraAroundObject.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0075032F26B3676400022C7B /* OrbitCameraAroundObject.storyboard */; };
+		0075033226B3683900022C7B /* OrbitCameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */; };
+		0075033326B4B85700022C7B /* OrbitCameraAroundObjectViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */; };
+		0075033426B4B85700022C7B /* OrbitCameraSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */; };
 		007FC9482534E8AE00D8D9A1 /* darkmode.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9452534E8AE00D8D9A1 /* darkmode.css */; };
 		007FC9492534E8AE00D8D9A1 /* solarized-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9472534E8AE00D8D9A1 /* solarized-dark.css */; };
 		0083AA192628ED18003A28C8 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0083AA162628ED18003A28C8 /* ProgressViewController.xib */; };
@@ -454,8 +462,8 @@
 		3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028D91B8E3AA500ACA70D /* ManualCacheViewController.swift */; };
 		3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028DC1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard */; };
 		3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028DD1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift */; };
-		3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028FE1B8E3AB300ACA70D /* GORenderers.storyboard */; };
-		3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* GORenderersViewController.swift */; };
+		3ED029281B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028FE1B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard */; };
+		3ED029291B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */; };
 		3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029031B8E3AB300ACA70D /* GOIdentify.storyboard */; };
 		3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED029041B8E3AB300ACA70D /* GOIdentifyViewController.swift */; };
 		3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029091B8E3AB300ACA70D /* Callout.storyboard */; };
@@ -500,7 +508,7 @@
 		3ED029931B8E571700ACA70D /* FLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */; };
 		3ED029941B8E571700ACA70D /* DefinitionExpressionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */; };
 		3ED029951B8E571700ACA70D /* OverrideRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028BE1B8E3AA500ACA70D /* OverrideRendererViewController.swift */; };
-		3ED029961B8E571700ACA70D /* GORenderersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* GORenderersViewController.swift */; };
+		3ED029961B8E571700ACA70D /* AddGraphicsWithRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */; };
 		3ED029971B8E571700ACA70D /* GOIdentifyViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029041B8E3AB300ACA70D /* GOIdentifyViewController.swift */; };
 		3ED029991B8E571700ACA70D /* CalloutViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED0290A1B8E3AB300ACA70D /* CalloutViewController.swift */; };
 		3ED0299A1B8E571700ACA70D /* MILLegendTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029111B8E3AB300ACA70D /* MILLegendTableViewController.swift */; };
@@ -933,6 +941,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				000FFFB726CDD66B00E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in CopyFiles */,
+				0075033326B4B85700022C7B /* OrbitCameraAroundObjectViewController.swift in CopyFiles */,
+				0075033426B4B85700022C7B /* OrbitCameraSettingsViewController.swift in CopyFiles */,
 				00FFE6DD26606343001E92ED /* QueryWithCQLFiltersViewController.swift in CopyFiles */,
 				00FFE6DE26606343001E92ED /* QueryWithCQLFiltersSettingsViewController.swift in CopyFiles */,
 				0087A55D265C8FEA00D9601D /* BrowseOGCAPIFeatureServiceViewController.swift in CopyFiles */,
@@ -1170,7 +1181,7 @@
 				3ED029931B8E571700ACA70D /* FLQueryViewController.swift in CopyFiles */,
 				3ED029941B8E571700ACA70D /* DefinitionExpressionViewController.swift in CopyFiles */,
 				3ED029951B8E571700ACA70D /* OverrideRendererViewController.swift in CopyFiles */,
-				3ED029961B8E571700ACA70D /* GORenderersViewController.swift in CopyFiles */,
+				3ED029961B8E571700ACA70D /* AddGraphicsWithRendererViewController.swift in CopyFiles */,
 				3ED029971B8E571700ACA70D /* GOIdentifyViewController.swift in CopyFiles */,
 				3ED029991B8E571700ACA70D /* CalloutViewController.swift in CopyFiles */,
 				3ED0299A1B8E571700ACA70D /* MILLegendTableViewController.swift in CopyFiles */,
@@ -1219,6 +1230,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		000FFFB326CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetUpLocationDrivenGeotriggers.storyboard; sourceTree = "<group>"; };
+		000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpLocationDrivenGeotriggersViewController.swift; sourceTree = "<group>"; };
 		00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealisticLightingAndShadowsViewController.swift; sourceTree = "<group>"; };
 		00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RealisticLightingAndShadows.storyboard; sourceTree = "<group>"; };
 		00166C9124D3838200DD317E /* BufferListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferListViewController.swift; sourceTree = "<group>"; };
@@ -1248,6 +1261,9 @@
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		0069F4BD25F0111D00CA7BD2 /* CreateLoadReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateLoadReport.storyboard; sourceTree = "<group>"; };
 		0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoadReportViewController.swift; sourceTree = "<group>"; };
+		0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitCameraAroundObjectViewController.swift; sourceTree = "<group>"; };
+		0075032F26B3676400022C7B /* OrbitCameraAroundObject.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrbitCameraAroundObject.storyboard; sourceTree = "<group>"; };
+		0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitCameraSettingsViewController.swift; sourceTree = "<group>"; };
 		007A4250256C7A400025F582 /* AppSecrets.swift.masque */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AppSecrets.swift.masque; path = "arcgis-ios-sdk-samples/AppSecrets.swift.masque"; sourceTree = "<group>"; };
 		007FC9452534E8AE00D8D9A1 /* darkmode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = darkmode.css; sourceTree = "<group>"; };
 		007FC9472534E8AE00D8D9A1 /* solarized-dark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "solarized-dark.css"; sourceTree = "<group>"; };
@@ -1543,8 +1559,8 @@
 		3ED028D91B8E3AA500ACA70D /* ManualCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualCacheViewController.swift; sourceTree = "<group>"; };
 		3ED028DC1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnInteractionNoCache.storyboard; sourceTree = "<group>"; };
 		3ED028DD1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnInteractionNoCacheViewController.swift; sourceTree = "<group>"; };
-		3ED028FE1B8E3AB300ACA70D /* GORenderers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GORenderers.storyboard; sourceTree = "<group>"; };
-		3ED028FF1B8E3AB300ACA70D /* GORenderersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GORenderersViewController.swift; sourceTree = "<group>"; };
+		3ED028FE1B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddGraphicsWithRenderer.storyboard; sourceTree = "<group>"; };
+		3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGraphicsWithRendererViewController.swift; sourceTree = "<group>"; };
 		3ED029031B8E3AB300ACA70D /* GOIdentify.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GOIdentify.storyboard; sourceTree = "<group>"; };
 		3ED029041B8E3AB300ACA70D /* GOIdentifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GOIdentifyViewController.swift; sourceTree = "<group>"; };
 		3ED029091B8E3AB300ACA70D /* Callout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Callout.storyboard; sourceTree = "<group>"; };
@@ -1853,6 +1869,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000FFFB026CB040B00E3CE7E /* Set up location-driven geotriggers */ = {
+			isa = PBXGroup;
+			children = (
+				000FFFB326CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard */,
+				000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */,
+			);
+			path = "Set up location-driven geotriggers";
+			sourceTree = "<group>";
+		};
 		00166C8524D20E0E00DD317E /* Realistic lighting and shadows */ = {
 			isa = PBXGroup;
 			children = (
@@ -1944,6 +1969,16 @@
 				0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */,
 			);
 			path = "Create load report";
+			sourceTree = "<group>";
+		};
+		0075032A26B3673800022C7B /* Orbit camera around object */ = {
+			isa = PBXGroup;
+			children = (
+				0075032F26B3676400022C7B /* OrbitCameraAroundObject.storyboard */,
+				0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */,
+				0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */,
+			);
+			path = "Orbit camera around object";
 			sourceTree = "<group>";
 		};
 		0083AA152628ED18003A28C8 /* Progress View Controller */ = {
@@ -3089,6 +3124,7 @@
 		3ED027FD1B8E392500ACA70D /* Display information */ = {
 			isa = PBXGroup;
 			children = (
+				000FFFB026CB040B00E3CE7E /* Set up location-driven geotriggers */,
 				009B5FF525E58E0000BB9A77 /* Create symbol styles from web styles */,
 				F1F651A724984742006DF277 /* Show popup */,
 				00DAE5D924213D6B00D51281 /* Custom dictionary style */,
@@ -3448,8 +3484,8 @@
 		3ED028FD1B8E3AB300ACA70D /* Add graphics with renderer */ = {
 			isa = PBXGroup;
 			children = (
-				3ED028FE1B8E3AB300ACA70D /* GORenderers.storyboard */,
-				3ED028FF1B8E3AB300ACA70D /* GORenderersViewController.swift */,
+				3ED028FE1B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard */,
+				3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */,
 			);
 			path = "Add graphics with renderer";
 			sourceTree = "<group>";
@@ -3562,6 +3598,7 @@
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0075032A26B3673800022C7B /* Orbit camera around object */,
 				F11CED6A256C82A8002A3F56 /* Show labels on layer in 3D */,
 				00166C8524D20E0E00DD317E /* Realistic lighting and shadows */,
 				00ADC3B72464D45B00A3B88D /* Animate images with image overlay */,
@@ -4956,6 +4993,7 @@
 				1218C843225C063F0027F3E2 /* ChooseCameraController.storyboard in Resources */,
 				4C2F90712289C1BE00357824 /* TokenAuthentication.storyboard in Resources */,
 				3EEA06111D21C44000E03774 /* ExtrudeGraphics.storyboard in Resources */,
+				0075033026B3676400022C7B /* OrbitCameraAroundObject.storyboard in Resources */,
 				3EABC7B01DB17B2C00C161C6 /* Shasta.tif.aux.xml in Resources */,
 				4C783F422252DBAC00609B9C /* philadelphia.mspk in Resources */,
 				F4159C6F20925AAE0016E53D /* OpenScene.storyboard in Resources */,
@@ -4969,7 +5007,7 @@
 				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
 				D9EE379820E2CC7700BF8AD1 /* tire_tread.jpeg in Resources */,
 				E47ED0B12343C87E0032440E /* DisplayScenesInTabletopAR.storyboard in Resources */,
-				3ED029281B8E3AB300ACA70D /* GORenderers.storyboard in Resources */,
+				3ED029281B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard in Resources */,
 				12D66033226697320005DE8A /* GroupLayersSectionView.xib in Resources */,
 				12D66035226697320005DE8A /* GroupLayers.storyboard in Resources */,
 				E4477CC020EC0CE0004E14F9 /* ListTransformations.storyboard in Resources */,
@@ -4999,6 +5037,7 @@
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
 				F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */,
 				F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */,
+				000FFFB426CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard in Resources */,
 				D97B7E591FD9BFE700E1239D /* Subdivisions.shx in Resources */,
 				D97B7E691FD9BFE700E1239D /* Subdivisions.shp.xml in Resources */,
 				00BA068525311B0D0039EF4D /* hydrography in Resources */,
@@ -5277,6 +5316,7 @@
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
 				00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */,
+				0075033226B3683900022C7B /* OrbitCameraSettingsViewController.swift in Sources */,
 				F1D5022E245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift in Sources */,
 				F164997B22E924F40088CA93 /* EditAndSyncFeaturesViewController.swift in Sources */,
 				D9ED2DA61FD758910043BFE1 /* FeatureLayerGPKGViewController.swift in Sources */,
@@ -5360,7 +5400,7 @@
 				3E1E5EE51D9F08ED00F4913C /* HillshadeRendererViewController.swift in Sources */,
 				C7D22F8C2167EF1C00C39D5C /* ListKMLContentsSceneViewController.swift in Sources */,
 				F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */,
-				3ED029291B8E3AB300ACA70D /* GORenderersViewController.swift in Sources */,
+				3ED029291B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift in Sources */,
 				E45991A41EF3021D0089E9FD /* WebMapViewController.swift in Sources */,
 				3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */,
 				4C1EF2CD221208DD00F73EAE /* UINavigationController.swift in Sources */,
@@ -5371,6 +5411,7 @@
 				00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */,
 				3EFDE0F61E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift in Sources */,
 				3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */,
+				000FFFB626CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in Sources */,
 				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,
 				092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */,
 				D930E01122EA47F7006C09A1 /* TraceUtilityNetworkViewController.swift in Sources */,
@@ -5429,6 +5470,7 @@
 				F1124F0C24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in Sources */,
 				3EABC7A11DB1793000C161C6 /* StretchRendererInputCell.swift in Sources */,
 				3E6C77161CCFC4B200E89873 /* IdentifyLayersViewController.swift in Sources */,
+				0075032E26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift in Sources */,
 				3EEB2B981EB9695F00B52513 /* ListRelatedFeaturesViewController.swift in Sources */,
 				4CF6DF1B22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift in Sources */,
 				C7B29EBE218B8FEA004E5DE4 /* OpenMapURLSettingsViewController.swift in Sources */,
@@ -5626,7 +5668,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.11.2;
+				MARKETING_VERSION = 100.12.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5655,7 +5697,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.11.2;
+				MARKETING_VERSION = 100.12.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5762,7 +5804,7 @@
 			repositoryURL = "https://github.com/Esri/arcgis-runtime-toolkit-ios";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 100.11.0;
+				minimumVersion = 100.12.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

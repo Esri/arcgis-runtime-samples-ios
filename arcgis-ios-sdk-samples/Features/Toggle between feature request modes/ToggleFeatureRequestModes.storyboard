@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,8 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWQ-Y6-I3c" userLabel="Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JpY-Iu-b7q">
                                 <rect key="frame" x="0.0" y="44" width="414" height="21"/>
@@ -31,14 +31,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
                                 <constraints>
                                     <constraint firstItem="LXL-vJ-wdy" firstAttribute="top" secondItem="JpY-Iu-b7q" secondAttribute="top" id="0Pi-Uu-NK5"/>
                                     <constraint firstAttribute="bottom" secondItem="LXL-vJ-wdy" secondAttribute="bottom" id="Rg6-si-YN9"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiW-4k-5rz">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kTS-ce-5kS"/>
                                     <barButtonItem title="Mode" id="1SN-5G-yct">
@@ -57,7 +57,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gJ3-pA-oNW"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="JpY-Iu-b7q" firstAttribute="leading" secondItem="hKY-ke-PWN" secondAttribute="leading" id="2Lu-gf-Hyg"/>
                             <constraint firstAttribute="trailing" secondItem="RWQ-Y6-I3c" secondAttribute="trailing" id="42s-gL-1v8"/>
@@ -86,7 +86,10 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <namedColor name="statusLabelBackgroudColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

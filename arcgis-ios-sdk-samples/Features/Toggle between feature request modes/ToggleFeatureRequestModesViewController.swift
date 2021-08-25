@@ -16,15 +16,15 @@ import UIKit
 import ArcGIS
 
 class ToggleFeatureRequestModesViewController: UIViewController {
-    @IBOutlet weak var mapView: AGSMapView! {
+    @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             mapView.setViewpoint(AGSViewpoint(latitude: 45.5266, longitude: -122.6219, scale: 6000))
         }
     }
-    @IBOutlet weak var modeBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var populateBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet var modeBarButtonItem: UIBarButtonItem!
+    @IBOutlet var populateBarButtonItem: UIBarButtonItem!
+    @IBOutlet var statusLabel: UILabel!
     
     private static let featureServiceURL = "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Trees_of_Portland/FeatureServer/0"
     let featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
@@ -88,7 +88,7 @@ class ToggleFeatureRequestModesViewController: UIViewController {
         // Show the progress HUD.
         UIApplication.shared.showProgressHUD(message: "Populating")
         // Populate features based on the query.
-        self.featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
+        featureTable.populateFromService(with: params, clearCache: true, outFields: ["*"]) { [weak self] (result: AGSFeatureQueryResult?, error: Error?) in
             guard let self = self else { return }
             // Hide progress HUD.
             UIApplication.shared.hideProgressHUD()
@@ -110,7 +110,7 @@ class ToggleFeatureRequestModesViewController: UIViewController {
         } else {
             populateBarButtonItem.isEnabled = false
         }
-        let map = mapView.map
+        let map = mapView.map!
         map?.operationalLayers.removeAllObjects()
         // Set the request mode.
         featureTable.featureRequestMode = mode

@@ -453,12 +453,6 @@
 		3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */; };
 		3ED028EE1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028CD1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard */; };
 		3ED028EF1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028CE1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift */; };
-		3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028D41B8E3AA500ACA70D /* OnInteractionCache.storyboard */; };
-		3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028D51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift */; };
-		3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028D81B8E3AA500ACA70D /* ManualCache.storyboard */; };
-		3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028D91B8E3AA500ACA70D /* ManualCacheViewController.swift */; };
-		3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028DC1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard */; };
-		3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028DD1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift */; };
 		3ED029281B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028FE1B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard */; };
 		3ED029291B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */; };
 		3ED0292C1B8E3AB300ACA70D /* GOIdentify.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED029031B8E3AB300ACA70D /* GOIdentify.storyboard */; };
@@ -498,9 +492,6 @@
 		3ED0298C1B8E571700ACA70D /* MILUsingURLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028A21B8E3A9800ACA70D /* MILUsingURLViewController.swift */; };
 		3ED0298D1B8E571700ACA70D /* SublayersTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028AB1B8E3A9800ACA70D /* SublayersTableViewController.swift */; };
 		3ED0298E1B8E571700ACA70D /* SublayerVisibilityViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028AD1B8E3A9800ACA70D /* SublayerVisibilityViewController.swift */; };
-		3ED0298F1B8E571700ACA70D /* OnInteractionCacheViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028D51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift */; };
-		3ED029901B8E571700ACA70D /* OnInteractionNoCacheViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028DD1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift */; };
-		3ED029911B8E571700ACA70D /* ManualCacheViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028D91B8E3AA500ACA70D /* ManualCacheViewController.swift */; };
 		3ED029921B8E571700ACA70D /* FeatureLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028CE1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift */; };
 		3ED029931B8E571700ACA70D /* FLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */; };
 		3ED029941B8E571700ACA70D /* DefinitionExpressionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */; };
@@ -1174,9 +1165,6 @@
 				3ED0298C1B8E571700ACA70D /* MILUsingURLViewController.swift in CopyFiles */,
 				3ED0298D1B8E571700ACA70D /* SublayersTableViewController.swift in CopyFiles */,
 				3ED0298E1B8E571700ACA70D /* SublayerVisibilityViewController.swift in CopyFiles */,
-				3ED0298F1B8E571700ACA70D /* OnInteractionCacheViewController.swift in CopyFiles */,
-				3ED029901B8E571700ACA70D /* OnInteractionNoCacheViewController.swift in CopyFiles */,
-				3ED029911B8E571700ACA70D /* ManualCacheViewController.swift in CopyFiles */,
 				3ED029921B8E571700ACA70D /* FeatureLayerSelectionViewController.swift in CopyFiles */,
 				3ED029931B8E571700ACA70D /* FLQueryViewController.swift in CopyFiles */,
 				3ED029941B8E571700ACA70D /* DefinitionExpressionViewController.swift in CopyFiles */,
@@ -1551,12 +1539,6 @@
 		3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLQueryViewController.swift; sourceTree = "<group>"; };
 		3ED028CD1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerSelection.storyboard; sourceTree = "<group>"; };
 		3ED028CE1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureLayerSelectionViewController.swift; sourceTree = "<group>"; };
-		3ED028D41B8E3AA500ACA70D /* OnInteractionCache.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnInteractionCache.storyboard; sourceTree = "<group>"; };
-		3ED028D51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnInteractionCacheViewController.swift; sourceTree = "<group>"; };
-		3ED028D81B8E3AA500ACA70D /* ManualCache.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManualCache.storyboard; sourceTree = "<group>"; };
-		3ED028D91B8E3AA500ACA70D /* ManualCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualCacheViewController.swift; sourceTree = "<group>"; };
-		3ED028DC1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnInteractionNoCache.storyboard; sourceTree = "<group>"; };
-		3ED028DD1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnInteractionNoCacheViewController.swift; sourceTree = "<group>"; };
 		3ED028FE1B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddGraphicsWithRenderer.storyboard; sourceTree = "<group>"; };
 		3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGraphicsWithRendererViewController.swift; sourceTree = "<group>"; };
 		3ED029031B8E3AB300ACA70D /* GOIdentify.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GOIdentify.storyboard; sourceTree = "<group>"; };
@@ -3147,9 +3129,6 @@
 				3E8A257E1D36B6E300D14F08 /* Feature layer (geodatabase) */,
 				D9ED2DA21FD758010043BFE1 /* Feature layer (geopackage) */,
 				D9E2E75020EEAAEE001D0AE0 /* Feature layer (shapefile) */,
-				3ED028D31B8E3AA500ACA70D /* Service feature table (cache) */,
-				3ED028DB1B8E3AA500ACA70D /* Service feature table (no cache) */,
-				3ED028D71B8E3AA500ACA70D /* Service feature table (manual cache) */,
 				3ED028CC1B8E3AA500ACA70D /* Feature layer selection */,
 				3ED028C61B8E3AA500ACA70D /* Feature layer query */,
 				3ED028C01B8E3AA500ACA70D /* Feature layer definition expression */,
@@ -3443,33 +3422,6 @@
 				3ED028CE1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift */,
 			);
 			path = "Feature layer selection";
-			sourceTree = "<group>";
-		};
-		3ED028D31B8E3AA500ACA70D /* Service feature table (cache) */ = {
-			isa = PBXGroup;
-			children = (
-				3ED028D41B8E3AA500ACA70D /* OnInteractionCache.storyboard */,
-				3ED028D51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift */,
-			);
-			path = "Service feature table (cache)";
-			sourceTree = "<group>";
-		};
-		3ED028D71B8E3AA500ACA70D /* Service feature table (manual cache) */ = {
-			isa = PBXGroup;
-			children = (
-				3ED028D81B8E3AA500ACA70D /* ManualCache.storyboard */,
-				3ED028D91B8E3AA500ACA70D /* ManualCacheViewController.swift */,
-			);
-			path = "Service feature table (manual cache)";
-			sourceTree = "<group>";
-		};
-		3ED028DB1B8E3AA500ACA70D /* Service feature table (no cache) */ = {
-			isa = PBXGroup;
-			children = (
-				3ED028DC1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard */,
-				3ED028DD1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift */,
-			);
-			path = "Service feature table (no cache)";
 			sourceTree = "<group>";
 		};
 		3ED028FD1B8E3AB300ACA70D /* Add graphics with renderer */ = {
@@ -4871,7 +4823,6 @@
 				3E03F09B1B05714A0078EB36 /* default.css in Resources */,
 				007FC9482534E8AE00D8D9A1 /* darkmode.css in Resources */,
 				3E5E094D1EF850BA00FF3454 /* ManageSublayers.storyboard in Resources */,
-				3ED028F71B8E3AA500ACA70D /* ManualCache.storyboard in Resources */,
 				21EBBBFD1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				F1034F9D22D3EE8900B021DA /* Project.storyboard in Resources */,
@@ -4925,13 +4876,11 @@
 				4C4DCA42225EAC3B00832FC5 /* GenerateOfflineMapBasemapByReference.storyboard in Resources */,
 				F1BCA98F268102EB0027F5A8 /* naperville_imagery.tpkx in Resources */,
 				005507FC25E48134003990D3 /* Redlands.nmea in Resources */,
-				3ED028F41B8E3AA500ACA70D /* OnInteractionCache.storyboard in Resources */,
 				F142F7A0267D755700BD608A /* streetmap_SD.tpkx in Resources */,
 				D9E2E76220EEB8FF001D0AE0 /* Public_Art.sbx in Resources */,
 				3E8A05DD1ECE69840032231C /* Bristol.dae in Resources */,
 				3E8D54FB1D53E3F000E628D9 /* ScenePropertiesExpressions.storyboard in Resources */,
 				F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */,
-				3ED028FA1B8E3AA500ACA70D /* OnInteractionNoCache.storyboard in Resources */,
 				D97B7E6E1FD9BFE700E1239D /* Subdivisions.sbx in Resources */,
 				C76F757421827C9C00938D8D /* ColorPicker.storyboard in Resources */,
 				D97B7E621FD9BFE700E1239D /* Subdivisions.sbn in Resources */,
@@ -5376,7 +5325,6 @@
 				127D29F6200EC5FC00DD6CDC /* ViewshedSettingsViewController.swift in Sources */,
 				3EABC7CB1DB1947500C161C6 /* BlendRendererViewController.swift in Sources */,
 				3E0B58511E36BCCD00951767 /* ViewshedGeoprocessingViewController.swift in Sources */,
-				3ED028F51B8E3AA500ACA70D /* OnInteractionCacheViewController.swift in Sources */,
 				3EEE1D6E1E4935FC003263FC /* GroupUserCell.swift in Sources */,
 				3EFCE1C41CF374C600E02F67 /* MapPackagesListViewController.swift in Sources */,
 				3EC39C3F1C9B47C2003F6459 /* OfflineEditingViewController.swift in Sources */,
@@ -5394,7 +5342,6 @@
 				4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */,
 				F1C452A326B374C4002FDB34 /* ToggleFeatureRequestModesViewController.swift in Sources */,
 				C7237D0E2190F07500A72C76 /* DisplayLocationSettingsViewController.swift in Sources */,
-				3ED028F81B8E3AA500ACA70D /* ManualCacheViewController.swift in Sources */,
 				4C1EF2D2221232C500F73EAE /* IntegratedWindowsAuthenticationMapViewController.swift in Sources */,
 				C7760332217FAC9B0092D978 /* OptionsTableViewController.swift in Sources */,
 				4CCA30C1223813BF009D2AEF /* IntegratedWindowsAuthenticationPortalMapBrowserViewController.swift in Sources */,
@@ -5411,7 +5358,6 @@
 				3ED028891B8E3A8500ACA70D /* OpenMapURLViewController.swift in Sources */,
 				00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */,
 				3EFDE0F61E36ABB700CBCD92 /* FeatureCollectionLayerViewController.swift in Sources */,
-				3ED028FB1B8E3AA500ACA70D /* OnInteractionNoCacheViewController.swift in Sources */,
 				3E4BF4421C5AE98300D85919 /* FindAddressViewController.swift in Sources */,
 				092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */,
 				D930E01122EA47F7006C09A1 /* TraceUtilityNetworkViewController.swift in Sources */,

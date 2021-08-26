@@ -42,7 +42,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" name="statusLabelBackgroudColor"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="DOk-3h-gKt" secondAttribute="bottom" constant="8" id="48f-E0-Fb3"/>
                                     <constraint firstItem="DOk-3h-gKt" firstAttribute="top" secondItem="yMh-oN-h6N" secondAttribute="top" constant="8" id="ZTX-Hc-u47"/>
@@ -75,7 +75,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="statusLabelBackgroudColor">
+        <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="tertiarySystemBackgroundColor">

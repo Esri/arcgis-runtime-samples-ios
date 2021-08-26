@@ -1053,6 +1053,14 @@
 				<key>storyboardName</key>
 				<string>CreateSymbolStylesFromWebStyles</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Set up location-driven geotriggers</string>
+				<key>descriptionText</key>
+				<string>Create a notification every time a given location data source has entered and/or exited a set of features or graphics.</string>
+				<key>storyboardName</key>
+				<string>SetUpLocationDrivenGeotriggers</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

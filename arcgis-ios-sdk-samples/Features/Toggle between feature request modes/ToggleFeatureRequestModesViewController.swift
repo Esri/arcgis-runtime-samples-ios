@@ -26,8 +26,8 @@ class ToggleFeatureRequestModesViewController: UIViewController {
     @IBOutlet var populateBarButtonItem: UIBarButtonItem!
     @IBOutlet var statusLabel: UILabel!
     
-    private static let featureServiceURL = "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Trees_of_Portland/FeatureServer/0"
-    let featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
+    private static let featureServiceURL = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Trees_of_Portland/FeatureServer/0")!
+    let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
     
     private enum FeatureRequestMode: CaseIterable {
         case cache, noCache, manualCache

@@ -85,6 +85,7 @@ class ToggleFeatureRequestModesViewController: UIViewController {
         let params = AGSQueryParameters()
         // Query for all tree conditions except "dead" with coded value '4'.
         params.whereClause = "Condition < '4'"
+        params.geometry = mapView.visibleArea?.extent
         // Show the progress HUD.
         UIApplication.shared.showProgressHUD(message: "Populating")
         // Populate features based on the query.

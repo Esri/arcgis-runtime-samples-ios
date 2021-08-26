@@ -111,12 +111,12 @@ class ToggleFeatureRequestModesViewController: UIViewController {
             populateBarButtonItem.isEnabled = false
         }
         let map = mapView.map!
-        map?.operationalLayers.removeAllObjects()
+        map.operationalLayers.removeAllObjects()
         // Set the request mode.
         featureTable.featureRequestMode = mode
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         // Add the feature layer to the map.
-        map?.operationalLayers.add(featureLayer)
+        map.operationalLayers.add(featureLayer)
     }
     
     /// Set the status.

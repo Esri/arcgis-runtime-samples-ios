@@ -804,30 +804,6 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Service feature table (cache)</string>
-				<key>storyboardName</key>
-				<string>OnInteractionCache</string>
-				<key>descriptionText</key>
-				<string>Display a feature layer from a service using the on interaction cache feature request mode.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Service feature table (no cache)</string>
-				<key>storyboardName</key>
-				<string>OnInteractionNoCache</string>
-				<key>descriptionText</key>
-				<string>Display a feature layer from a service using the no cache feature request mode.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Service feature table (manual cache)</string>
-				<key>storyboardName</key>
-				<string>ManualCache</string>
-				<key>descriptionText</key>
-				<string>Display a feature layer from a service using the manual cache feature request mode.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
 				<string>Feature layer selection</string>
 				<key>storyboardName</key>
 				<string>FeatureLayerSelection</string>
@@ -917,6 +893,14 @@
 				<string>TimeBasedQuery</string>
 				<key>descriptionText</key>
 				<string>Query data using a time extent.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Toggle between feature request modes</string>
+				<key>storyboardName</key>
+				<string>ToggleFeatureRequestModes</string>
+				<key>descriptionText</key>
+				<string>Use different feature request modes to populate the map from a service feature table.</string>
 			</dict>
 		</array>
 	</dict>

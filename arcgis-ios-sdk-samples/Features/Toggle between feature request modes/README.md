@@ -17,7 +17,7 @@ Feature tables can be initialized with a feature request mode which controls how
 
 ## How to use the sample
 
-Choose a request mode by tapping the "Mode" button. Pan and zoom to see how the features update at different scales. If you choose `Manual cache`, tap the "Populate" button to manually get a cache with a subset of features (where `Condition \< 4`) within the extent.
+Choose a request mode by tapping the "Mode" button. Pan and zoom to see how the features update at different scales. If you choose `Manual cache`, tap the "Populate" button to manually get a cache with a subset of features (where "Condition < 4") within the extent.
 
 Note: The service limits requests to 1000 features.
 

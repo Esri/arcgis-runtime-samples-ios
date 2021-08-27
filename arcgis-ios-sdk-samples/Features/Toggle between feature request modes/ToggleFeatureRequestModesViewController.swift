@@ -27,7 +27,7 @@ class ToggleFeatureRequestModesViewController: UIViewController {
     @IBOutlet var statusLabel: UILabel!
     
     private static let featureServiceURL = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/Trees_of_Portland/FeatureServer/0")!
-    let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
+    private let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
     
     private enum FeatureRequestMode: CaseIterable {
         case cache, noCache, manualCache
@@ -56,7 +56,7 @@ class ToggleFeatureRequestModesViewController: UIViewController {
     }
     
     /// Prompt mode selection.
-    @IBAction func modeButtonTapped(_ button: UIBarButtonItem) {
+    @IBAction private func modeButtonTapped(_ button: UIBarButtonItem) {
         // Set up action sheets.
         let alertController = UIAlertController(
             title: "Choose a feature request mode.",
@@ -80,7 +80,7 @@ class ToggleFeatureRequestModesViewController: UIViewController {
     }
     
     /// Populate for manual cache mode.
-    @IBAction func populateManualCache(_ button: UIBarButtonItem) {
+    @IBAction private func populateManualCache(_ button: UIBarButtonItem) {
         // Set query parameters.
         let params = AGSQueryParameters()
         // Query for all tree conditions except "dead" with coded value '4'.

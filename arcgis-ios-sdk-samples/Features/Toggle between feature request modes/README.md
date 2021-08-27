@@ -17,7 +17,7 @@ Feature tables can be initialized with a feature request mode which controls how
 
 ## How to use the sample
 
-Choose a request mode by tapping the "Mode" button. Pan and zoom to see how the features update at different scales. If you choose `MANUAL_CACHE`, tap the "Populate" button to manually get a cache with a subset of features (where `Condition < 4`).
+Choose a request mode by tapping the "Mode" button. Pan and zoom to see how the features update at different scales. If you choose `Manual cache`, tap the "Populate" button to manually get a cache with a subset of features (where `Condition < 4`) within the extent.
 
 Note: The service limits requests to 1000 features.
 
@@ -25,7 +25,7 @@ Note: The service limits requests to 1000 features.
 
 1. Create an `AGSServiceFeatureTable` with a feature service URL.
 2. Set the `featureRequestMode` property of the `AGSServiceFeatureTable` to the desired mode (Cache, No cache, or Manual cache) before the table is loaded.
-    * If using `MANUAL_CACHE`, populate the features with `AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)`.
+    * If using `Manual cache`, populate the features with `AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)`.
 3. Create an `AGSFeatureLayer` with the feature table and add it to a map's operational layers to display it.
 
 ## Relevant API

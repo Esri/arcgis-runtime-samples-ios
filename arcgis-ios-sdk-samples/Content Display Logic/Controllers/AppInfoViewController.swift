@@ -33,6 +33,15 @@ class AppInfoViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @IBAction func helpAction() {
+        let esriCommunityURL = URL(string: "https://community.esri.com/t5/arcgis-runtime-sdk-for-ios-questions/bd-p/arcgis-runtime-sdk-for-ios-questions")!
+        UIApplication.shared.open(esriCommunityURL, options: [:])
+    }
+    
+    @IBAction func moreInfoAction() {
+        let developerURL = URL(string: "https://developers.arcgis.com/ios/")!
+        UIApplication.shared.open(developerURL, options: [:])
+    }
     
     @IBAction func closeAction() {
         self.dismiss(animated: true)

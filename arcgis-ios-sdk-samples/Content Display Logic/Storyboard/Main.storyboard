@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dro-WJ-0ka">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dro-WJ-0ka">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54t-nf-ZK2">
-                                <rect key="frame" x="52" y="321" width="310" height="200"/>
+                                <rect key="frame" x="52" y="291" width="310" height="200"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="rjI-Fj-tXd">
                                         <rect key="frame" x="115" y="8" width="80" height="80"/>
@@ -78,13 +78,33 @@
                                     <action selector="closeAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="JSz-9v-XS9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erh-VF-k0q">
+                                <rect key="frame" x="52" y="491" width="155" height="30"/>
+                                <state key="normal" title="Help"/>
+                                <connections>
+                                    <action selector="helpAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="aNe-Yp-5P3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wea-BI-rOz" userLabel="More Info">
+                                <rect key="frame" x="207" y="491" width="155" height="30"/>
+                                <state key="normal" title="More info"/>
+                                <connections>
+                                    <action selector="moreInfoAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="l63-BE-Dbb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a6h-ca-33f"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Wea-BI-rOz" firstAttribute="top" secondItem="54t-nf-ZK2" secondAttribute="bottom" id="3m8-5A-mXA"/>
                             <constraint firstItem="Op6-nR-s0N" firstAttribute="centerX" secondItem="a6h-ca-33f" secondAttribute="centerX" id="7Te-o6-LfY"/>
+                            <constraint firstItem="erh-VF-k0q" firstAttribute="trailing" secondItem="54t-nf-ZK2" secondAttribute="centerX" id="B1z-tO-2jY"/>
+                            <constraint firstItem="erh-VF-k0q" firstAttribute="leading" secondItem="54t-nf-ZK2" secondAttribute="leading" id="C2w-3E-Cnr"/>
+                            <constraint firstItem="Wea-BI-rOz" firstAttribute="leading" secondItem="54t-nf-ZK2" secondAttribute="centerX" id="DLk-Am-bCe"/>
                             <constraint firstItem="54t-nf-ZK2" firstAttribute="centerX" secondItem="a6h-ca-33f" secondAttribute="centerX" id="LwH-pF-D4X"/>
-                            <constraint firstItem="54t-nf-ZK2" firstAttribute="centerY" secondItem="AWt-rk-bdu" secondAttribute="centerY" id="biI-md-HHl"/>
+                            <constraint firstItem="Wea-BI-rOz" firstAttribute="trailing" secondItem="54t-nf-ZK2" secondAttribute="trailing" id="RcJ-uO-uCw"/>
+                            <constraint firstItem="erh-VF-k0q" firstAttribute="top" secondItem="54t-nf-ZK2" secondAttribute="bottom" id="ane-hH-jZC"/>
+                            <constraint firstItem="54t-nf-ZK2" firstAttribute="centerY" secondItem="AWt-rk-bdu" secondAttribute="centerY" constant="-30" id="biI-md-HHl"/>
                             <constraint firstItem="a6h-ca-33f" firstAttribute="bottom" secondItem="Op6-nR-s0N" secondAttribute="bottom" constant="20" id="qig-cv-gQO"/>
                         </constraints>
                     </view>

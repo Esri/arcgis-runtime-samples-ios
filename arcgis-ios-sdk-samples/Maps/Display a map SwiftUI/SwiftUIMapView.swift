@@ -35,6 +35,16 @@ struct SwiftUIMapView: UIViewRepresentable {
     func updateUIView(_ uiView: AGSMapView, context: Context) {
     }
     
+    var onMapViewTapAction: ((CGPoint, AGSPoint) -> Void)?
+    
+    func onMapViewTap(action: @escaping (CGPoint, AGSPoint) -> Void) -> SwiftUIMapView {
+        var newView = self
+        newView.onMapViewTapAction = action
+        return newView
+    }
+}
+
+extension SwiftUIMapView {
     /// You can use this coordinator to implement common Cocoa patterns, such as
     /// delegates, data sources, and responding to user events via target-action.
     class Coordinator: NSObject, AGSGeoViewTouchDelegate {
@@ -48,14 +58,6 @@ struct SwiftUIMapView: UIViewRepresentable {
         func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
             parent.onMapViewTapAction?(screenPoint, mapPoint)
         }
-    }
-    
-    var onMapViewTapAction: ((CGPoint, AGSPoint) -> Void)?
-    
-    func onMapViewTap(action: @escaping (CGPoint, AGSPoint) -> Void) -> SwiftUIMapView {
-        var newView = self
-        newView.onMapViewTapAction = action
-        return newView
     }
 }
 

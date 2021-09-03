@@ -19,7 +19,7 @@ struct DisplayMapSwiftUIView: View {
     /// A boolean that indicates whether the action sheet is presented.
     @State private var showingOptions = false
     /// An object used for setting up a `SwiftUIMapView`.
-    @StateObject private var mapViewContext = MapViewContext()
+    @ObservedObject private var mapViewContext = MapViewContext()
     
     var body: some View {
         VStack {

@@ -27,7 +27,6 @@ struct DisplayMapSwiftUIView: View {
                 .onMapViewTap { _, mapPoint in
                     let graphic = AGSGraphic(geometry: mapPoint, symbol: nil)
                     mapViewContext.graphicsOverlay.graphics.add(graphic)
-                    mapViewContext.graphicsEmpty = false
                 }
                 .edgesIgnoringSafeArea(.all)
             HStack {
@@ -57,7 +56,6 @@ struct DisplayMapSwiftUIView: View {
                 Spacer()
                 Button("Clear Graphics") {
                     mapViewContext.graphicsOverlay.graphics.removeAllObjects()
-                    mapViewContext.graphicsEmpty = true
                 }
                 .disabled(mapViewContext.graphicsEmpty)
             }

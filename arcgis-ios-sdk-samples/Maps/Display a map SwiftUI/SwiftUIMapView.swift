@@ -65,7 +65,9 @@ class MapViewContext: ObservableObject {
     let map: AGSMap
     let mapView: AGSMapView
     
-    @Published var graphicsEmpty: Bool
+    @Published var graphicsEmpty: Bool!
+    
+    private var graphicsObservation: NSKeyValueObservation?
     
     let graphicsOverlay: AGSGraphicsOverlay = {
         let overlay = AGSGraphicsOverlay()
@@ -79,6 +81,8 @@ class MapViewContext: ObservableObject {
         self.map = map
         mapView = AGSMapView(frame: .zero)
         mapView.graphicsOverlays.add(graphicsOverlay)
-        graphicsEmpty = true
+        graphicsObservation = graphicsOverlay.observe(\.graphics, options: [.initial]) { [weak self] overlay, _ in
+            self?.graphicsEmpty = (overlay.graphics as! [AGSGraphic]).isEmpty
+        }
     }
 }

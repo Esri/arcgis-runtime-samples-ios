@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DMe-yp-yH3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DMe-yp-yH3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,23 +23,6 @@
                             <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45u-o5-Qgv">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem id="Mme-ds-Pgy">
-                                        <segmentedControl key="customView" opaque="NO" tag="55" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="X7k-S7-bpe">
-                                            <rect key="frame" x="20" y="11" width="204" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="" image="Point"/>
-                                                <segment title="" image="Polyline"/>
-                                                <segment title="" image="FreehandPolyline"/>
-                                                <segment title="" image="Polygon"/>
-                                                <segment title="" image="FreehandPolygon"/>
-                                            </segments>
-                                            <connections>
-                                                <action selector="geometryValueChanged:" destination="DMe-yp-yH3" eventType="valueChanged" id="UPW-qg-uR6"/>
-                                            </connections>
-                                        </segmentedControl>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="heC-81-cSK"/>
                                     <barButtonItem image="Undo" id="Xfw-dX-zVQ">
                                         <connections>
                                             <action selector="undo" destination="DMe-yp-yH3" id="hpK-dm-9G0"/>
@@ -48,6 +31,12 @@
                                     <barButtonItem image="Redo" id="fQO-v5-LKM">
                                         <connections>
                                             <action selector="redo" destination="DMe-yp-yH3" id="c6W-St-RTy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="32P-6u-mlV"/>
+                                    <barButtonItem systemItem="add" id="h9e-Af-91p">
+                                        <connections>
+                                            <action selector="addGeometry" destination="DMe-yp-yH3" id="X4x-td-uA8"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="L2j-qC-Sng"/>
@@ -78,8 +67,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addBarButtonItem" destination="h9e-Af-91p" id="KCM-ei-wgN"/>
                         <outlet property="clearBBI" destination="szF-EX-1S3" id="c2Q-tw-wNv"/>
-                        <outlet property="geometrySegmentedControl" destination="X7k-S7-bpe" id="Ghg-dn-zEF"/>
                         <outlet property="mapView" destination="UNW-2r-OsJ" id="uFF-uy-zRV"/>
                         <outlet property="redoBBI" destination="fQO-v5-LKM" id="Hg7-Ng-Ykd"/>
                         <outlet property="undoBBI" destination="Xfw-dX-zVQ" id="OiY-3L-LhY"/>
@@ -92,11 +81,6 @@
     </scenes>
     <resources>
         <image name="Discard" width="22" height="22"/>
-        <image name="FreehandPolygon" width="22" height="22"/>
-        <image name="FreehandPolyline" width="22" height="22"/>
-        <image name="Point" width="22" height="22"/>
-        <image name="Polygon" width="22" height="22"/>
-        <image name="Polyline" width="22" height="22"/>
         <image name="Redo" width="22" height="22"/>
         <image name="Undo" width="22" height="22"/>
         <systemColor name="tertiarySystemBackgroundColor">

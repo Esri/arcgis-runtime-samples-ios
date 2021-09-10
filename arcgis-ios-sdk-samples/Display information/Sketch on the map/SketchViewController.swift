@@ -17,7 +17,8 @@ import ArcGIS
 
 class SketchViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView!
-    @IBOutlet private weak var geometrySegmentedControl: UISegmentedControl!
+    @IBOutlet var addBarButtonItem: UIBarButtonItem!
+//    @IBOutlet private weak var geometrySegmentedControl: UISegmentedControl!
     @IBOutlet private weak var undoBBI: UIBarButtonItem!
     @IBOutlet private weak var redoBBI: UIBarButtonItem!
     @IBOutlet private weak var clearBBI: UIBarButtonItem!
@@ -38,45 +39,63 @@ class SketchViewController: UIViewController {
         self.mapView.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
         self.mapView.interactionOptions.isMagnifierEnabled = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: .AGSSketchEditorGeometryDidChange, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(SketchViewController.respondToGeomChanged), name: .AGSSketchEditorGeometryDidChange, object: nil)
         
         // set viewpoint
         self.mapView.setViewpoint(AGSViewpoint(targetExtent: AGSEnvelope(xMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: .webMercator())))
     }
     
-    @objc
-    func respondToGeomChanged() {
-        // Enable/disable UI elements appropriately
-        self.undoBBI.isEnabled = self.sketchEditor.undoManager.canUndo
-        self.redoBBI.isEnabled = self.sketchEditor.undoManager.canRedo
-        self.clearBBI.isEnabled = self.sketchEditor.geometry != nil && !self.sketchEditor.geometry!.isEmpty
-    }
+//    @objc
+//    func respondToGeomChanged() {
+//        // Enable/disable UI elements appropriately
+//        self.undoBBI.isEnabled = self.sketchEditor.undoManager.canUndo
+//        self.redoBBI.isEnabled = self.sketchEditor.undoManager.canRedo
+//        self.clearBBI.isEnabled = self.sketchEditor.geometry != nil && !self.sketchEditor.geometry!.isEmpty
+//    }
     
     // MARK: - Actions
     
-    @IBAction func geometryValueChanged(_ segmentedControl: UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:// point
-            self.sketchEditor.start(with: nil, creationMode: .point)
-            
-        case 1:// polyline
-            self.sketchEditor.start(with: nil, creationMode: .polyline)
-            
-        case 2:// freehand polyline
-            self.sketchEditor.start(with: nil, creationMode: .freehandPolyline)
-            
-        case 3:// polygon
-            self.sketchEditor.start(with: nil, creationMode: .polygon)
-            
-        case 4:// freehand polygon
-            self.sketchEditor.start(with: nil, creationMode: .freehandPolygon)
-            
-        default:
-            break
+    @IBAction func addGeometry() {
+        let alertController = UIAlertController(title: "Select Feature", message: nil, preferredStyle: .actionSheet)
+        let creationModes: KeyValuePairs = ["Arrow": AGSSketchCreationMode.arrow, "Ellipse": .ellipse, "FreehandPolygon": .freehandPolygon, "FreehandPolyline": .freehandPolyline, "Multipoint": .multipoint, "Point": .point, "Polygon": .polygon, "Polyline": .polyline, "Rectangle": .rectangle, "Triangle": .triangle]
+        creationModes.forEach { creationMode in
+            let action = UIAlertAction(title: creationMode.key, style: .default) { (_) in
+                self.sketchEditor.start(with: nil, creationMode: creationMode.value)
+            }
+            alertController.addAction(action)
         }
+        // Add "cancel" item.
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
         
+        alertController.popoverPresentationController?.barButtonItem = addBarButtonItem
+        present(alertController, animated: true)
         self.mapView.sketchEditor = self.sketchEditor
     }
+    
+//    @IBAction func geometryValueChanged(_ segmentedControl: UISegmentedControl) {
+//        switch segmentedControl.selectedSegmentIndex {
+//        case 0:// point
+//            self.sketchEditor.start(with: nil, creationMode: .point)
+//
+//        case 1:// polyline
+//            self.sketchEditor.start(with: nil, creationMode: .polyline)
+//
+//        case 2:// freehand polyline
+//            self.sketchEditor.start(with: nil, creationMode: .freehandPolyline)
+//
+//        case 3:// polygon
+//            self.sketchEditor.start(with: nil, creationMode: .polygon)
+//
+//        case 4:// freehand polygon
+//            self.sketchEditor.start(with: nil, creationMode: .freehandPolygon)
+//
+//        default:
+//            break
+//        }
+//
+//        self.mapView.sketchEditor = self.sketchEditor
+//    }
     
     @IBAction func undo() {
         if self.sketchEditor.undoManager.canUndo { // extra check, just to be sure

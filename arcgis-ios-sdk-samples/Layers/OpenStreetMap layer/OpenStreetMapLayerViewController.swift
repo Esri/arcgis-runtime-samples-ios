@@ -16,18 +16,27 @@ import UIKit
 import ArcGIS
 
 class OpenStreetMapLayerViewController: UIViewController {
-    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            // assign the map to the map view
+            mapView.map = makeMap()
+            mapView.setViewpoint(AGSViewpoint(latitude: 34.056295, longitude: -117.195800, scale: 577790.554289))
+        }
+    }
+    
+    /// Create a map.
+    ///
+    /// - Returns: An `AGSMap` object.
+    func makeMap() -> AGSMap {
+        // Create an OpenStreetMap layer that requests tiles from its servers.
+        let openStreetMapLayer = AGSOpenStreetMapLayer()
+        // Initialize map and set the OpenStreetMap layer as its basemap.
+        let map = AGSMap(basemap: AGSBasemap(baseLayer: openStreetMapLayer))
+        return map
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // initialize map with an OpenStreetMap standard basemap
-        let map = AGSMap(basemapStyle: .osmStandard)
-        
-        // assign the map to the map view
-        mapView.map = map
-        mapView.setViewpoint(AGSViewpoint(latitude: 34.056295, longitude: -117.195800, scale: 577790.554289))
-    
         // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenStreetMapLayerViewController"]
     }

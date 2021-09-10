@@ -10,12 +10,12 @@ You may want to create a map with an [OpenStreetMap](https://www.openstreetmap.o
 
 ## How to use the sample
 
-When the sample opens, it will automatically display the map with the OpenStreetMap basemap. Pan and zoom to observe the basemap.
+When the sample opens, it will automatically display the OpenStreetMap basemap. Pan and zoom to explore the basemap.
 
 ## How it works
 
-1. Create an `AGSMap` with `osmStandard` as the `basemapStyle` and specify the other properties.
-2. Apply the `AGSMap` to the `AGSMapView`.
+1. Create an `AGSOpenStreetMapLayer`, and set it as the `AGSMap`'s basemap.
+2. Set the `AGSMap` to the `AGSMapView`.
 
 ## Relevant API
 

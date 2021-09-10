@@ -25,7 +25,6 @@ class OpenStreetMapLayerViewController: UIViewController {
     }
     
     /// Create a map.
-    ///
     /// - Returns: An `AGSMap` object.
     func makeMap() -> AGSMap {
         // Create an OpenStreetMap layer that requests tiles from its servers.

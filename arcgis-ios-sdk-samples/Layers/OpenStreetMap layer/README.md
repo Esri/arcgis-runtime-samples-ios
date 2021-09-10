@@ -10,7 +10,7 @@ You may want to create a map with an [OpenStreetMap](https://www.openstreetmap.o
 
 ## How to use the sample
 
-When the sample opens, it will automatically display the OpenStreetMap basemap. Pan and zoom to explore the basemap.
+The OpenStreetMap basemap will display upon launch. Pan and zoom to explore the basemap.
 
 ## How it works
 

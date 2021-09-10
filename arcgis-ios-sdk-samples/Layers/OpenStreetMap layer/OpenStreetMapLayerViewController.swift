@@ -18,7 +18,7 @@ import ArcGIS
 class OpenStreetMapLayerViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            // assign the map to the map view
+            // Assign the map to the map view.
             mapView.map = makeMap()
             mapView.setViewpoint(AGSViewpoint(latitude: 34.056295, longitude: -117.195800, scale: 577790.554289))
         }
@@ -30,14 +30,14 @@ class OpenStreetMapLayerViewController: UIViewController {
     func makeMap() -> AGSMap {
         // Create an OpenStreetMap layer that requests tiles from its servers.
         let openStreetMapLayer = AGSOpenStreetMapLayer()
-        // Initialize map and set the OpenStreetMap layer as its basemap.
+        // Initialize a map and set the OpenStreetMap layer as its basemap.
         let map = AGSMap(basemap: AGSBasemap(baseLayer: openStreetMapLayer))
         return map
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["OpenStreetMapLayerViewController"]
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["OpenStreetMapLayerViewController"]
     }
 }

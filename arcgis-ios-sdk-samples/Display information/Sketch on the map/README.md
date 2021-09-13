@@ -11,7 +11,7 @@ A field worker could annotate features of interest on a map (via the GUI) such a
 
 ## How to use the sample
 
-Tap the add button to choose a geometry for the Sketch Editor. Use the toolbar to cancel the sketch, undo, or redo changes made to the sketch and to save the sketch to the graphics overlay. There is also the option to select a saved graphic and edit its geometry using the Sketch Editor. The graphics overlay can be cleared using the clear all button.
+Tap the add button to choose a geometry for the Sketch Editor. Use the toolbar to undo or redo changes made to the sketch on the graphics overlay. The graphics overlay can be cleared using the clear all button.
 
 ## How it works
 

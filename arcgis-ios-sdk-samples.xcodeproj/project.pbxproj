@@ -2053,8 +2053,8 @@
 		00CDA5BC26F1289B00DEE7F4 /* Select ENC features */ = {
 			isa = PBXGroup;
 			children = (
-				00CDA5BE26F1289B00DEE7F4 /* SelectENCFeatures.storyboard */,
 				00CDA5BF26F1289B00DEE7F4 /* SelectENCFeaturesViewController.swift */,
+				00CDA5BE26F1289B00DEE7F4 /* SelectENCFeatures.storyboard */,
 			);
 			path = "Select ENC features";
 			sourceTree = "<group>";

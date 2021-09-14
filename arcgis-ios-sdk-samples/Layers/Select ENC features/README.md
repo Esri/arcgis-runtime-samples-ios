@@ -32,7 +32,7 @@ Tap to select ENC features. Feature acronym and description will be displayed in
 
 This sample downloads the [ENC Exchange Set without updates](https://www.arcgis.com/home/item.html?id=9d2987a825c646468b3ce7512fb76e2d) item from *ArcGIS Online*.
 
-The latest [hydrography package](https://developers.arcgis.com/downloads/data) can be downloaded from *ArcGIS for Developers* (login is required). The *S57DataDictionary.xml* file is contained in it along with many others but a user does not need to know that in order to render ENC data.
+The latest [hydrography package](https://developers.arcgis.com/downloads/data) can be downloaded from *ArcGIS Developer* website (login is required). The *S57DataDictionary.xml* file is contained in it along with many others but a user does not need to know that in order to render ENC data.
 
 ## Additional information
 

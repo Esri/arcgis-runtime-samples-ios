@@ -37,7 +37,7 @@ class SketchViewController: UIViewController {
     @IBOutlet var redoBBI: UIBarButtonItem!
     @IBOutlet var clearBBI: UIBarButtonItem!
     
-    var sketchEditor: AGSSketchEditor!
+    var sketchEditor = AGSSketchEditor()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class SketchViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func addGeometry() {
+    @IBAction func addGeometryButtonTapped(_ sender: UIBarButtonItem) {
         // Create an alert controller for the action sheets.
         let alertController = UIAlertController(title: "Select a creation mode", message: nil, preferredStyle: .actionSheet)
         // Key value pairs containing the creation modes and their titles.
@@ -65,7 +65,7 @@ class SketchViewController: UIViewController {
             "Triangle": .triangle
         ]
         // Create an action for each creation mode and add it to the alert controller.
-        creationModes.forEach { creationMode in
+        creationModes.forEach { name, mode in
             let action = UIAlertAction(title: creationMode.key, style: .default) { (_) in
                 self.sketchEditor.start(with: nil, creationMode: creationMode.value)
             }

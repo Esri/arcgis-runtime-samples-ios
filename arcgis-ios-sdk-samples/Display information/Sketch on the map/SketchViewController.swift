@@ -18,8 +18,7 @@ import ArcGIS
 class SketchViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            // Configure the sketch editor.
-            sketchEditor = AGSSketchEditor()
+            // Add the sketch editor to the map view.
             mapView.sketchEditor = sketchEditor
             
             // Start a default sketch editor with the polyline creation mode.
@@ -33,9 +32,9 @@ class SketchViewController: UIViewController {
         }
     }
     @IBOutlet var addBarButtonItem: UIBarButtonItem!
-    @IBOutlet var undoBBI: UIBarButtonItem!
-    @IBOutlet var redoBBI: UIBarButtonItem!
-    @IBOutlet var clearBBI: UIBarButtonItem!
+    @IBOutlet var undoBarButtonItem: UIBarButtonItem!
+    @IBOutlet var redoBarButtonItem: UIBarButtonItem!
+    @IBOutlet var clearBarButtonItem: UIBarButtonItem!
     
     var sketchEditor = AGSSketchEditor()
 
@@ -66,8 +65,8 @@ class SketchViewController: UIViewController {
         ]
         // Create an action for each creation mode and add it to the alert controller.
         creationModes.forEach { name, mode in
-            let action = UIAlertAction(title: creationMode.key, style: .default) { (_) in
-                self.sketchEditor.start(with: nil, creationMode: creationMode.value)
+            let action = UIAlertAction(title: name, style: .default) { (_) in
+                self.sketchEditor.start(with: nil, creationMode: mode)
             }
             alertController.addAction(action)
         }

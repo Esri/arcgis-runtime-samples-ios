@@ -34,6 +34,7 @@ class SketchViewController: UIViewController {
     @IBOutlet var undoBarButtonItem: UIBarButtonItem!
     @IBOutlet var redoBarButtonItem: UIBarButtonItem!
     @IBOutlet var clearBarButtonItem: UIBarButtonItem!
+    @IBOutlet var statusLabel: UILabel!
     
     var sketchEditor = AGSSketchEditor()
     /// Key value pairs containing the creation modes and their titles.
@@ -78,6 +79,7 @@ class SketchViewController: UIViewController {
         // Create an action for each creation mode and add it to the alert controller.
         creationModes.forEach { name, mode in
             let action = UIAlertAction(title: name, style: .default) { (_) in
+                self.statusLabel.text = "\(name) selected."
                 self.sketchEditor.start(with: nil, creationMode: mode)
             }
             alertController.addAction(action)

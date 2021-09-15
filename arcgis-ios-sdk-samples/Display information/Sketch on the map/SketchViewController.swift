@@ -26,7 +26,6 @@ class SketchViewController: UIViewController {
             
             // Set the map.
             mapView.map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-            mapView.interactionOptions.isMagnifierEnabled = true
             // Set the viewpoint.
             mapView.setViewpoint(AGSViewpoint(targetExtent: AGSEnvelope(xMin: -10049589.670344, yMin: 3480099.843772, xMax: -10010071.251113, yMax: 3512023.489701, spatialReference: .webMercator())))
         }
@@ -37,10 +36,36 @@ class SketchViewController: UIViewController {
     @IBOutlet var clearBarButtonItem: UIBarButtonItem!
     
     var sketchEditor = AGSSketchEditor()
-
+    /// Key value pairs containing the creation modes and their titles.
+    let creationModes: KeyValuePairs = [
+        "Arrow": AGSSketchCreationMode.arrow,
+        "Ellipse": .ellipse,
+        "FreehandPolygon": .freehandPolygon,
+        "FreehandPolyline": .freehandPolyline,
+        "Multipoint": .multipoint,
+        "Point": .point,
+        "Polygon": .polygon,
+        "Polyline": .polyline,
+        "Rectangle": .rectangle,
+        "Triangle": .triangle
+    ]
+    
+    @objc
+    func respondToGeomChanged() {
+        // Enable/disable UI elements appropriately.
+        undoBarButtonItem.isEnabled = sketchEditor.undoManager.canUndo
+        redoBarButtonItem.isEnabled = sketchEditor.undoManager.canRedo
+        clearBarButtonItem.isEnabled = sketchEditor.geometry != nil && !self.sketchEditor.geometry!.isEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(SketchViewController.respondToGeomChanged),
+            name: .AGSSketchEditorGeometryDidChange,
+            object: nil
+        )
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SketchViewController"]
     }
@@ -50,19 +75,6 @@ class SketchViewController: UIViewController {
     @IBAction func addGeometryButtonTapped(_ sender: UIBarButtonItem) {
         // Create an alert controller for the action sheets.
         let alertController = UIAlertController(title: "Select a creation mode", message: nil, preferredStyle: .actionSheet)
-        // Key value pairs containing the creation modes and their titles.
-        let creationModes: KeyValuePairs = [
-            "Arrow": AGSSketchCreationMode.arrow,
-            "Ellipse": .ellipse,
-            "FreehandPolygon": .freehandPolygon,
-            "FreehandPolyline": .freehandPolyline,
-            "Multipoint": .multipoint,
-            "Point": .point,
-            "Polygon": .polygon,
-            "Polyline": .polyline,
-            "Rectangle": .rectangle,
-            "Triangle": .triangle
-        ]
         // Create an action for each creation mode and add it to the alert controller.
         creationModes.forEach { name, mode in
             let action = UIAlertAction(title: name, style: .default) { (_) in
@@ -77,8 +89,6 @@ class SketchViewController: UIViewController {
         // Present the action sheets when the add button is tapped.
         alertController.popoverPresentationController?.barButtonItem = addBarButtonItem
         present(alertController, animated: true)
-        // Reset the sketch editor.
-        self.mapView.sketchEditor = self.sketchEditor
     }
     
     @IBAction func undo() {

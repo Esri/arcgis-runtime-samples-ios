@@ -48,7 +48,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="L2j-qC-Sng"/>
-                                    <barButtonItem image="trash" catalog="system" id="szF-EX-1S3">
+                                    <barButtonItem systemItem="trash" id="szF-EX-1S3">
                                         <connections>
                                             <action selector="clear" destination="DMe-yp-yH3" id="bNL-ch-EUm"/>
                                         </connections>
@@ -92,7 +92,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="trash" catalog="system" width="121" height="128"/>
         <namedColor name="statusLabelBackgroundColor">
             <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

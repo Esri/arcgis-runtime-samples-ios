@@ -85,7 +85,7 @@ class SketchViewController: UIViewController {
             alertController.addAction(action)
         }
         // Add "cancel" item.
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
         
         // Present the action sheets when the add button is tapped.

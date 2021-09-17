@@ -6,7 +6,7 @@ Select features in an ENC layer.
 
 ## Use case
 
-You can use selection to identify a feature and learn more about it. ENC layers often have many overlapping features, and features of mixed geometry, in a single layer, so the sample includes code for identifying the most relevant feature.
+You can use selection to identify a feature and learn more about it. ENC layers often have many overlapping features and features of mixed geometry in a single layer, so the sample includes code for identifying the most relevant feature.
 
 ## How to use the sample
 
@@ -36,7 +36,7 @@ The latest [hydrography package](https://developers.arcgis.com/downloads/data) c
 
 ## Additional information
 
-Read more about [Electronic Navigational Charts](https://developers.arcgis.com/ios/layers/display-electronic-navigational-charts/) and its [deployment](https://developers.arcgis.com/ios/license-and-deployment/deployment/#enc-electronic-navigational-charts-style-directory) on *ArcGIS Developer* website.
+Read more about [Electronic Navigational Charts](https://developers.arcgis.com/ios/layers/display-electronic-navigational-charts/) and its [deployment](https://developers.arcgis.com/ios/license-and-deployment/deployment/#enc-electronic-navigational-charts-style-directory) on the *ArcGIS Developer* website.
 
 ## Tags
 

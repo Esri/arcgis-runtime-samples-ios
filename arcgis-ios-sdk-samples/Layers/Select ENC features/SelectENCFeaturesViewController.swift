@@ -74,7 +74,7 @@ class SelectENCFeaturesViewController: UIViewController {
                 let encLayers = encExchangeSet.datasets.map { AGSENCLayer(cell: AGSENCCell(dataset: $0)) }
                 // Add layers to the map.
                 map.operationalLayers.addObjects(from: encLayers)
-                mapView.setViewpoint(AGSViewpoint(latitude: -32.5, longitude: 60.95, scale: 1e5), completion: nil)
+                mapView.setViewpoint(AGSViewpoint(latitude: -32.5, longitude: 60.95, scale: 1e5))
             }
         }
     }

@@ -813,6 +813,9 @@
 		E4B2E26C1FE3321500E610FF /* ViewshedGeoElementViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = E4B2E2681FE31ED500E610FF /* ViewshedGeoElementViewController.swift */; };
 		E4C4A4481EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */; };
 		E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */; };
+		F1027F4E26F91FAA000FA674 /* ExportVectorTilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1027F4D26F91FAA000FA674 /* ExportVectorTilesViewController.swift */; };
+		F1027F5426F92065000FA674 /* ExportVectorTiles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1027F5326F92065000FA674 /* ExportVectorTiles.storyboard */; };
+		F1027F5926F9258E000FA674 /* ExportVectorTilesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1027F4D26F91FAA000FA674 /* ExportVectorTilesViewController.swift */; };
 		F1034F9C22D3EE8900B021DA /* ProjectStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1034F9922D3EE8900B021DA /* ProjectStackView.swift */; };
 		F1034F9D22D3EE8900B021DA /* Project.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1034F9A22D3EE8900B021DA /* Project.storyboard */; };
 		F1034F9E22D3EE8900B021DA /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */; };
@@ -935,6 +938,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1027F5926F9258E000FA674 /* ExportVectorTilesViewController.swift in CopyFiles */,
 				F1D938FD26BA5555001ECB9A /* ToggleFeatureRequestModesViewController.swift in CopyFiles */,
 				000FFFB726CDD66B00E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in CopyFiles */,
 				0075033326B4B85700022C7B /* OrbitCameraAroundObjectViewController.swift in CopyFiles */,
@@ -1778,6 +1782,8 @@
 		E4B2E26A1FE31EEA00E610FF /* ViewshedGeoElement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewshedGeoElement.storyboard; sourceTree = "<group>"; };
 		E4C4A4471EE9DD790073B6C0 /* DistanceCompositeSymbol.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DistanceCompositeSymbol.storyboard; sourceTree = "<group>"; };
 		E4C4A44A1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCompositeSymbolViewController.swift; sourceTree = "<group>"; };
+		F1027F4D26F91FAA000FA674 /* ExportVectorTilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportVectorTilesViewController.swift; sourceTree = "<group>"; };
+		F1027F5326F92065000FA674 /* ExportVectorTiles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExportVectorTiles.storyboard; sourceTree = "<group>"; };
 		F1034F9922D3EE8900B021DA /* ProjectStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectStackView.swift; sourceTree = "<group>"; };
 		F1034F9A22D3EE8900B021DA /* Project.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
 		F1034F9B22D3EE8900B021DA /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
@@ -3162,6 +3168,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				F1027F4C26F91F55000FA674 /* Export vector tiles */,
 				00FFE6D4265DC76A001E92ED /* Query with CQL filters */,
 				003267B0265C476A00DB4CB5 /* Browse OGC API feature service */,
 				0022768C26570B7700CC7DB9 /* Display OGC API collection */,
@@ -4426,6 +4433,15 @@
 			path = "Distance composite symbol";
 			sourceTree = "<group>";
 		};
+		F1027F4C26F91F55000FA674 /* Export vector tiles */ = {
+			isa = PBXGroup;
+			children = (
+				F1027F4D26F91FAA000FA674 /* ExportVectorTilesViewController.swift */,
+				F1027F5326F92065000FA674 /* ExportVectorTiles.storyboard */,
+			);
+			path = "Export vector tiles";
+			sourceTree = "<group>";
+		};
 		F1034F9822D3EDFE00B021DA /* Project */ = {
 			isa = PBXGroup;
 			children = (
@@ -4839,6 +4855,7 @@
 				3E03F09B1B05714A0078EB36 /* default.css in Resources */,
 				007FC9482534E8AE00D8D9A1 /* darkmode.css in Resources */,
 				3E5E094D1EF850BA00FF3454 /* ManageSublayers.storyboard in Resources */,
+				F1027F5426F92065000FA674 /* ExportVectorTiles.storyboard in Resources */,
 				21EBBBFD1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				F1034F9D22D3EE8900B021DA /* Project.storyboard in Resources */,
@@ -5468,6 +5485,7 @@
 				D9E2E75420EEAC5C001D0AE0 /* FeatureLayerShapefileViewController.swift in Sources */,
 				3E8A05CD1ECE68E80032231C /* CameraSettingsViewController.swift in Sources */,
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,
+				F1027F4E26F91FAA000FA674 /* ExportVectorTilesViewController.swift in Sources */,
 				9DA3CD8C23060687007CB1F3 /* MapSelectionTableViewController.swift in Sources */,
 				3E3B2C1F1BBCA37F00A99C5E /* ContentCollectionViewController.swift in Sources */,
 				F16922B525158B4400A8F36E /* EditKMLGroundOverlayViewController.swift in Sources */,

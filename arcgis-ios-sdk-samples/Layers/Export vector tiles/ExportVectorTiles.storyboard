@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Export Vector Tiles View Controller-->
+        <scene sceneID="PfU-9b-jIe">
+            <objects>
+                <viewController id="2pT-q8-Ydc" userLabel="Export Vector Tiles View Controller" customClass="ExportVectorTilesViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I67-An-xiz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uep-y3-UpB" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJe-Gj-nIT">
+                                <rect key="frame" x="41.5" y="121" width="331" height="615"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Lc-cP-EKo">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ohL-Pq-8hI"/>
+                                    <barButtonItem enabled="NO" title="Export tiles" id="um4-kC-Ovd">
+                                        <connections>
+                                            <action selector="exportTilesBarButtonTapped:" destination="2pT-q8-Ydc" id="EwW-VS-Dbx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dqR-4P-OZU"/>
+                                </items>
+                            </toolbar>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFc-xE-Dbr">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="A53-Cv-X40">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JiR-dQ-Sbs" customClass="AGSMapView">
+                                            <rect key="frame" x="41.5" y="77" width="331" height="615"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBD-gu-aSB">
+                                            <rect key="frame" x="185.5" y="785" width="43" height="33"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <state key="normal" title="Close"/>
+                                            <connections>
+                                                <action selector="closeButtonTapped:" destination="2pT-q8-Ydc" eventType="touchUpInside" id="6tL-1Z-N2I"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tile package" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh4-W1-oON">
+                                            <rect key="frame" x="41.5" y="47" width="331" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <viewLayoutGuide key="safeArea" id="Uja-aU-jzX"/>
+                                    <constraints>
+                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="top" secondItem="bBD-gu-aSB" secondAttribute="bottom" constant="8" id="26a-rK-dQ1"/>
+                                        <constraint firstItem="Uja-aU-jzX" firstAttribute="bottom" secondItem="bBD-gu-aSB" secondAttribute="bottom" id="76e-Xc-lka"/>
+                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="top" secondItem="vh4-W1-oON" secondAttribute="bottom" constant="8" symbolic="YES" id="BrD-VG-ho5"/>
+                                        <constraint firstItem="vh4-W1-oON" firstAttribute="centerX" secondItem="JiR-dQ-Sbs" secondAttribute="centerX" id="MsU-Uv-0Od"/>
+                                        <constraint firstItem="vh4-W1-oON" firstAttribute="top" secondItem="JiR-dQ-Sbs" secondAttribute="bottom" constant="8" id="VXo-6P-QTd"/>
+                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="height" secondItem="A53-Cv-X40" secondAttribute="height" multiplier="0.8" id="X61-78-20P"/>
+                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="width" secondItem="A53-Cv-X40" secondAttribute="width" multiplier="0.8" id="YAP-3P-GE5"/>
+                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="centerX" secondItem="A53-Cv-X40" secondAttribute="centerX" id="ZaK-q3-eLf"/>
+                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="centerY" secondItem="A53-Cv-X40" secondAttribute="centerY" id="mcN-ex-fNq"/>
+                                        <constraint firstItem="bBD-gu-aSB" firstAttribute="trailing" secondItem="JiR-dQ-Sbs" secondAttribute="trailing" id="wQY-tG-dHN"/>
+                                        <constraint firstItem="vh4-W1-oON" firstAttribute="width" secondItem="JiR-dQ-Sbs" secondAttribute="width" id="xKH-wM-g2f"/>
+                                        <constraint firstItem="bBD-gu-aSB" firstAttribute="centerX" secondItem="A53-Cv-X40" secondAttribute="centerX" id="zc8-gm-BhQ"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="VXo-6P-QTd"/>
+                                            <exclude reference="26a-rK-dQ1"/>
+                                            <exclude reference="X61-78-20P"/>
+                                            <exclude reference="YAP-3P-GE5"/>
+                                            <exclude reference="ZaK-q3-eLf"/>
+                                            <exclude reference="mcN-ex-fNq"/>
+                                            <exclude reference="wQY-tG-dHN"/>
+                                        </mask>
+                                    </variation>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lzo-Kb-5Ip"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JiR-dQ-Sbs" firstAttribute="width" secondItem="UJe-Gj-nIT" secondAttribute="width" id="1ON-yI-4fR"/>
+                            <constraint firstItem="Uep-y3-UpB" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="4Wo-yJ-IgW"/>
+                            <constraint firstItem="CFc-xE-Dbr" firstAttribute="top" secondItem="lzo-Kb-5Ip" secondAttribute="top" id="6oZ-yi-VoU"/>
+                            <constraint firstItem="Uep-y3-UpB" firstAttribute="bottom" secondItem="0Lc-cP-EKo" secondAttribute="top" id="CTe-DI-B7X"/>
+                            <constraint firstItem="JiR-dQ-Sbs" firstAttribute="centerX" secondItem="UJe-Gj-nIT" secondAttribute="centerX" id="CWA-zI-Pbx"/>
+                            <constraint firstItem="CFc-xE-Dbr" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="Ceb-Ie-TQR"/>
+                            <constraint firstItem="UJe-Gj-nIT" firstAttribute="centerX" secondItem="Uep-y3-UpB" secondAttribute="centerX" id="Cz5-a6-k4a"/>
+                            <constraint firstItem="UJe-Gj-nIT" firstAttribute="height" secondItem="Uep-y3-UpB" secondAttribute="height" multiplier="0.8" id="Sfr-ia-it1"/>
+                            <constraint firstItem="CFc-xE-Dbr" firstAttribute="bottom" secondItem="I67-An-xiz" secondAttribute="bottom" id="XkI-rw-s9W"/>
+                            <constraint firstItem="Uep-y3-UpB" firstAttribute="top" secondItem="lzo-Kb-5Ip" secondAttribute="top" id="ce6-Ja-z4R"/>
+                            <constraint firstItem="0Lc-cP-EKo" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="d5a-jd-Ndf"/>
+                            <constraint firstItem="Uep-y3-UpB" firstAttribute="trailing" secondItem="I67-An-xiz" secondAttribute="trailing" id="fTY-zJ-Kio"/>
+                            <constraint firstItem="UJe-Gj-nIT" firstAttribute="width" secondItem="Uep-y3-UpB" secondAttribute="width" multiplier="0.8" id="gEA-bW-ZtT"/>
+                            <constraint firstItem="UJe-Gj-nIT" firstAttribute="centerY" secondItem="Uep-y3-UpB" secondAttribute="centerY" id="h7Y-i0-h9j"/>
+                            <constraint firstItem="JiR-dQ-Sbs" firstAttribute="centerY" secondItem="UJe-Gj-nIT" secondAttribute="centerY" id="huF-gt-m47"/>
+                            <constraint firstItem="JiR-dQ-Sbs" firstAttribute="height" secondItem="UJe-Gj-nIT" secondAttribute="height" id="or6-Zv-OuH"/>
+                            <constraint firstItem="CFc-xE-Dbr" firstAttribute="trailing" secondItem="I67-An-xiz" secondAttribute="trailing" id="tMF-H6-hsu"/>
+                            <constraint firstItem="lzo-Kb-5Ip" firstAttribute="bottom" secondItem="0Lc-cP-EKo" secondAttribute="bottom" id="uJ0-8b-1Kw"/>
+                            <constraint firstItem="0Lc-cP-EKo" firstAttribute="trailing" secondItem="I67-An-xiz" secondAttribute="trailing" id="xog-RU-Ecs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="exportVectorTilesButton" destination="um4-kC-Ovd" id="31m-yT-698"/>
+                        <outlet property="extentView" destination="UJe-Gj-nIT" id="05e-No-fX6"/>
+                        <outlet property="mapView" destination="Uep-y3-UpB" id="N6A-Kb-Sqn"/>
+                        <outlet property="previewMapView" destination="JiR-dQ-Sbs" id="vhJ-YO-MMS"/>
+                        <outlet property="visualEffectView" destination="CFc-xE-Dbr" id="tZr-Pn-CWf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zz3-SN-aeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="469" y="562"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

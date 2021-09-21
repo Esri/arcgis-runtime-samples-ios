@@ -16,51 +16,69 @@ import SwiftUI
 import ArcGIS
 
 struct DisplayMapSwiftUIView: View {
+    struct MapOption: Equatable {
+        let title: String
+        let map: AGSMap
+        
+        static let topographic = MapOption(title: "Topographic", map: AGSMap(basemapStyle: .arcGISTopographic))
+        static let oceans = MapOption(title: "Oceans", map: AGSMap(basemapStyle: .arcGISOceans))
+        static let navigation = MapOption(title: "Navigation", map: AGSMap(basemapStyle: .arcGISNavigation))
+        
+        static let allOptions: [MapOption] = [.topographic, .oceans, .navigation]
+    }
+    
+    /// The graphics overlay used to initialize `SwiftUIMapView`.
+    let graphicsOverlay: AGSGraphicsOverlay = {
+        let overlay = AGSGraphicsOverlay()
+        overlay.renderer = AGSSimpleRenderer(
+            symbol: AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
+        )
+        return overlay
+    }()
+    
+    @State private var clearGraphicsButtonDisabled = true
+    @State private var selectedMapOption: MapOption = .topographic
     /// A boolean that indicates whether the action sheet is presented.
     @State private var showingOptions = false
-    /// An object used for setting up a `SwiftUIMapView`.
-    @ObservedObject private var mapViewContext = MapViewContext()
     
     var body: some View {
         VStack {
-            SwiftUIMapView(mapViewContext: mapViewContext)
-                .onMapViewTap { _, mapPoint in
+            SwiftUIMapView(map: selectedMapOption.map, graphicsOverlays: [graphicsOverlay])
+                .onSingleTap { _, mapPoint in
                     let graphic = AGSGraphic(geometry: mapPoint, symbol: nil)
-                    mapViewContext.graphicsOverlay.graphics.add(graphic)
+                    graphicsOverlay.graphics.add(graphic)
+                    updateClearGraphicsButtonState()
                 }
                 .edgesIgnoringSafeArea(.all)
             HStack {
-                Button("Change Basemap") {
-                    showingOptions = true
-                }
-                .actionSheet(isPresented: $showingOptions) {
-                    ActionSheet(
-                        title: Text("Choose a basemap."),
-                        buttons: [
-                            .default(Text("Topographic")) {
-                                let basemap = AGSBasemap(style: .arcGISTopographic)
-                                mapViewContext.map.basemap = basemap
-                            },
-                            .default(Text("Oceans")) {
-                                let basemap = AGSBasemap(style: .arcGISOceans)
-                                mapViewContext.map.basemap = basemap
-                            },
-                            .default(Text("Navigation")) {
-                                let basemap = AGSBasemap(style: .arcGISNavigation)
-                                mapViewContext.map.basemap = basemap
-                            },
-                            .cancel()
-                        ]
-                    )
-                }
+                Button("Choose Map", action: { showingOptions = true })
+                    .actionSheet(isPresented: $showingOptions) {
+                        ActionSheet(
+                            title: Text("Choose a basemap."),
+                            buttons: MapOption.allOptions.map { option in
+                                    .default(Text(option.title), action: {
+                                        guard option != selectedMapOption else { return }
+                                        clearGraphics()
+                                        selectedMapOption = option
+                                    })
+                            } + [.cancel()]
+                        )
+                    }
                 Spacer()
-                Button("Clear Graphics") {
-                    mapViewContext.graphicsOverlay.graphics.removeAllObjects()
-                }
-                .disabled(mapViewContext.graphicsEmpty)
+                Button("Clear Graphics", action: clearGraphics)
+                    .disabled(clearGraphicsButtonDisabled)
             }
             .padding()
         }
+    }
+    
+    func clearGraphics() {
+        graphicsOverlay.graphics.removeAllObjects()
+        updateClearGraphicsButtonState()
+    }
+    
+    func updateClearGraphicsButtonState() {
+        clearGraphicsButtonDisabled = (graphicsOverlay.graphics as! [AGSGraphic]).isEmpty
     }
 }
 

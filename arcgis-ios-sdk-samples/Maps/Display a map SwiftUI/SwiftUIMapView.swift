@@ -15,74 +15,74 @@
 import SwiftUI
 import ArcGIS
 
-struct SwiftUIMapView: UIViewRepresentable {
+struct SwiftUIMapView {
+    let map: AGSMap
+    let graphicsOverlays: [AGSGraphicsOverlay]
+    
+    init(
+        map: AGSMap,
+        graphicsOverlays: [AGSGraphicsOverlay] = []
+    ) {
+        self.map = map
+        self.graphicsOverlays = graphicsOverlays
+    }
+    
+    private var onSingleTapAction: ((CGPoint, AGSPoint) -> Void)?
+}
+
+extension SwiftUIMapView {
+    func onSingleTap(action: @escaping (CGPoint, AGSPoint) -> Void) -> Self {
+        var copy = self
+        copy.onSingleTapAction = action
+        return copy
+    }
+}
+
+extension SwiftUIMapView: UIViewRepresentable {
     typealias UIViewType = AGSMapView
     
-    /// The context for setting up the `SwiftUIMapView`.
-    let mapViewContext: MapViewContext
-    
     func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
+        Coordinator(
+            onSingleTapAction: onSingleTapAction
+        )
     }
     
     func makeUIView(context: Context) -> AGSMapView {
-        let mapView = mapViewContext.mapView
-        mapView.map = mapViewContext.map
-        mapView.touchDelegate = context.coordinator
-        return mapView
+        let uiView = AGSMapView()
+        uiView.map = map
+        uiView.graphicsOverlays.setArray(graphicsOverlays)
+        uiView.touchDelegate = context.coordinator
+        return uiView
     }
     
     func updateUIView(_ uiView: AGSMapView, context: Context) {
-    }
-    
-    var onMapViewTapAction: ((CGPoint, AGSPoint) -> Void)?
-    
-    func onMapViewTap(action: @escaping (CGPoint, AGSPoint) -> Void) -> SwiftUIMapView {
-        var newView = self
-        newView.onMapViewTapAction = action
-        return newView
+        if map != uiView.map {
+            uiView.map = map
+        }
+        if graphicsOverlays != uiView.graphicsOverlays as? [AGSGraphicsOverlay] {
+            uiView.graphicsOverlays.setArray(graphicsOverlays)
+        }
+        context.coordinator.onSingleTapAction = onSingleTapAction
     }
 }
 
 extension SwiftUIMapView {
     /// You can use this coordinator to implement common Cocoa patterns, such as
     /// delegates, data sources, and responding to user events via target-action.
-    class Coordinator: NSObject, AGSGeoViewTouchDelegate {
-        var parent: SwiftUIMapView
+    class Coordinator: NSObject {
+        var onSingleTapAction: ((CGPoint, AGSPoint) -> Void)?
         
-        init(_ parent: SwiftUIMapView) {
-            self.parent = parent
-        }
-        
-        /// Add conformance and implement the required methods.
-        func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-            parent.onMapViewTapAction?(screenPoint, mapPoint)
+        init(
+            onSingleTapAction: ((CGPoint, AGSPoint) -> Void)?
+        ) {
+            self.onSingleTapAction = onSingleTapAction
         }
     }
 }
 
-class MapViewContext: ObservableObject {
-    let map: AGSMap
-    let mapView: AGSMapView
-    
-    @Published var graphicsEmpty: Bool!
-    
-    private var graphicsObservation: NSKeyValueObservation?
-    
-    let graphicsOverlay: AGSGraphicsOverlay = {
-        let overlay = AGSGraphicsOverlay()
-        overlay.renderer = AGSSimpleRenderer(
-            symbol: AGSSimpleMarkerSymbol(style: .circle, color: .red, size: 10)
-        )
-        return overlay
-    }()
-    
-    init(map: AGSMap = .init(basemapStyle: .arcGISTopographic)) {
-        self.map = map
-        mapView = AGSMapView(frame: .zero)
-        mapView.graphicsOverlays.add(graphicsOverlay)
-        graphicsObservation = graphicsOverlay.observe(\.graphics, options: [.initial]) { [weak self] overlay, _ in
-            self?.graphicsEmpty = (overlay.graphics as! [AGSGraphic]).isEmpty
-        }
+extension SwiftUIMapView.Coordinator: AGSGeoViewTouchDelegate {
+    /// Add conformance and implement the required methods.
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        onSingleTapAction?(screenPoint, mapPoint)
     }
 }

@@ -48,13 +48,10 @@ class ExportVectorTilesViewController: UIViewController {
     @IBOutlet var exportVectorTilesButton: UIBarButtonItem!
     
     // MARK: Properties
-    
-    /// The tiled layer created from world street map service.
-    let tiledLayer = AGSArcGISTiledLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer")!)
-    /// The export task to request the tile package with the same URL as the tile layer.
-    let exportTask = AGSExportTileCacheTask(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer")!)
+    var vectorTiledLayer: AGSArcGISVectorTiledLayer?
+    var exportVectorTilesTask: AGSExportVectorTilesTask?
     /// An export job to download the tile package.
-    var job: AGSExportTileCacheJob! {
+    var job: AGSExportVectorTilesJob! {
         didSet {
             exportVectorTilesButton.isEnabled = job == nil ? true : false
         }
@@ -70,23 +67,26 @@ class ExportVectorTilesViewController: UIViewController {
     /// - Parameters:
     ///   - exportTask: An `AGSExportTileCacheTask` to run the export job.
     ///   - downloadFileURL: A URL to where the tile package should be saved.
-    func initiateDownload(exportTask: AGSExportTileCacheTask, downloadFileURL: URL) {
+    func initiateDownload(exportTask: AGSExportVectorTilesTask, downloadFileURL: URL) {
         // Get the parameters by specifying the selected area, map view's
         // current scale as the minScale, and tiled layer's max scale as
         // maxScale.
+        vectorTiledLayer = mapView.map?.basemap.baseLayers[0] as? AGSArcGISVectorTiledLayer
+        guard let vectorTiledLayer = vectorTiledLayer else { return }
+        /// The export task to request the tile package with the same URL as the tile layer.
+        exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayer.url!)
         var minScale = mapView.mapScale
-        let maxScale = tiledLayer.maxScale
+        let maxScale = vectorTiledLayer.maxScale
         if minScale < maxScale {
             minScale = maxScale
         }
-        
         // Get current area of interest marked by the extent view.
         let areaOfInterest = frameToExtent()
         // Get export parameters.
-        exportTask.exportTileCacheParameters(withAreaOfInterest: areaOfInterest, minScale: minScale, maxScale: maxScale) { [weak self, unowned exportTask] (params: AGSExportTileCacheParameters?, error: Error?) in
+        exportVectorTilesTask?.defaultExportVectorTilesParameters(withAreaOfInterest: areaOfInterest, maxScale: maxScale) { [weak self] parameters, error  in
             guard let self = self else { return }
-            if let params = params {
-                self.exportTiles(exportTask: exportTask, parameters: params, downloadFileURL: downloadFileURL)
+            if let params = parameters {
+                self.exportTiles(exportTask: exportVectorTilesTask, parameters: params, downloadFileURL: downloadFileURL)
             } else if let error = error {
                 self.presentAlert(error: error)
             }
@@ -99,9 +99,9 @@ class ExportVectorTilesViewController: UIViewController {
     ///   - exportTask: An `AGSExportTileCacheTask` to run the export job.
     ///   - parameters: The parameters of the export task.
     ///   - downloadFileURL: A URL to where the tile package is saved.
-    func exportTiles(exportTask: AGSExportTileCacheTask, parameters: AGSExportTileCacheParameters, downloadFileURL: URL) {
+    func exportTiles(exportTask: AGSExportVectorTilesTask, parameters: AGSExportTileCacheParameters, downloadFileURL: URL) {
         // Get and run the job.
-        job = exportTask.exportTileCacheJob(with: parameters, downloadFileURL: downloadFileURL)
+        job = exportVectorTilesTask.exportTileCacheJob(with: parameters, downloadFileURL: downloadFileURL)
         job.start(statusHandler: { (status) in
             UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (result, error) in
@@ -153,17 +153,9 @@ class ExportVectorTilesViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
-        if let mapServiceInfo = exportTask.mapServiceInfo, mapServiceInfo.exportTilesAllowed {
+        if let mapServiceInfo = exportVectorTilesTask.mapServiceInfo, mapServiceInfo.exportTilesAllowed {
             // Try to download when exporting tiles is allowed.
-            let tilePackageFormat: TilePackageFormat
-            if mapServiceInfo.exportTileCacheCompactV2Allowed {
-                // Export using the CompactV2 (.tpkx) if it is supported.
-                tilePackageFormat = .tpkx
-            } else {
-                // Otherwise, use the CompactV1 (.tpk) format.
-                tilePackageFormat = .tpk
-            }
-            self.initiateDownload(exportTask: exportTask, downloadFileURL: makeDownloadURL(fileFormat: tilePackageFormat))
+            self.initiateDownload(exportTask: exportVectorTilesTask, downloadFileURL: makeDownloadURL())
         } else {
             presentAlert(title: "Error", message: "Exporting tiles is not supported for the service.")
         }
@@ -185,7 +177,7 @@ class ExportVectorTilesViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportTilesViewController"]
         // Load the export task.
-        exportTask.load { [weak self] error in
+        exportVectorTilesTask.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)

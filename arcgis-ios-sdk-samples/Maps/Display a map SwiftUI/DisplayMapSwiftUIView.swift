@@ -44,7 +44,7 @@ struct DisplayMapSwiftUIView: View {
     var body: some View {
         VStack {
             SwiftUIMapView(map: selectedMapOption.map, graphicsOverlays: [graphicsOverlay])
-                .onSingleTap { _, mapPoint in
+                .onSingleTapGesture { _, mapPoint in
                     let graphic = AGSGraphic(geometry: mapPoint, symbol: nil)
                     graphicsOverlay.graphics.add(graphic)
                     updateClearGraphicsButtonState()

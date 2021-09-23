@@ -735,6 +735,14 @@
 				<key>storyboardName</key>
 				<string>QueryWithCQLFilters</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Export vector tiles</string>
+				<key>descriptionText</key>
+				<string>Export tiles from an online vector tile service.</string>
+				<key>storyboardName</key>
+				<string>ExportVectorTiles</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

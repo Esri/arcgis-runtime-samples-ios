@@ -84,7 +84,10 @@ class ExportVectorTilesViewController: UIViewController {
         let areaOfInterest = frameToExtent()
         // Get export parameters.
         exportVectorTilesTask?.defaultExportVectorTilesParameters(withAreaOfInterest: areaOfInterest, maxScale: maxScale) { [weak self] parameters, error  in
-            guard let self = self else { return }
+            guard
+                let self = self,
+                let exportVectorTilesTask = self.exportVectorTilesTask
+            else { return }
             if let params = parameters {
                 self.exportTiles(exportTask: exportVectorTilesTask, parameters: params, downloadFileURL: downloadFileURL)
             } else if let error = error {
@@ -99,9 +102,9 @@ class ExportVectorTilesViewController: UIViewController {
     ///   - exportTask: An `AGSExportTileCacheTask` to run the export job.
     ///   - parameters: The parameters of the export task.
     ///   - downloadFileURL: A URL to where the tile package is saved.
-    func exportTiles(exportTask: AGSExportVectorTilesTask, parameters: AGSExportTileCacheParameters, downloadFileURL: URL) {
+    func exportTiles(exportTask: AGSExportVectorTilesTask, parameters: AGSExportVectorTilesParameters, downloadFileURL: URL) {
         // Get and run the job.
-        job = exportVectorTilesTask.exportTileCacheJob(with: parameters, downloadFileURL: downloadFileURL)
+        job = exportTask.exportVectorTilesJob(with: parameters, downloadFileURL: downloadFileURL)
         job.start(statusHandler: { (status) in
             UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (result, error) in
@@ -110,10 +113,10 @@ class ExportVectorTilesViewController: UIViewController {
             
             self.job = nil
             
-            if let tileCache = result {
+            if let tileCache = result?.vectorTileCache {
                 self.visualEffectView.isHidden = false
                 
-                let newTiledLayer = AGSArcGISTiledLayer(tileCache: tileCache)
+                let newTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: tileCache)
                 self.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
                 let extent = parameters.areaOfInterest as! AGSEnvelope
                 self.previewMapView.setViewpoint(AGSViewpoint(targetExtent: extent), completion: nil)
@@ -153,7 +156,9 @@ class ExportVectorTilesViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
-        if let mapServiceInfo = exportVectorTilesTask.mapServiceInfo, mapServiceInfo.exportTilesAllowed {
+        if let vectorTileSourceInfo = exportVectorTilesTask?.vectorTileSourceInfo,
+           let exportVectorTilesTask = self.exportVectorTilesTask,
+           vectorTileSourceInfo.exportTilesAllowed {
             // Try to download when exporting tiles is allowed.
             self.initiateDownload(exportTask: exportVectorTilesTask, downloadFileURL: makeDownloadURL())
         } else {
@@ -177,6 +182,7 @@ class ExportVectorTilesViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportTilesViewController"]
         // Load the export task.
+        guard let exportVectorTilesTask = self.exportVectorTilesTask else { return }
         exportVectorTilesTask.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {

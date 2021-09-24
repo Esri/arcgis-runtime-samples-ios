@@ -179,6 +179,16 @@ class ExportVectorTilesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.map?.load { _ in 
+            let baseLayers = self.mapView.map?.basemap.baseLayers as? [AGSLayer]
+            for each in baseLayers! {
+                print("\(each.name)")
+            }
+            self.vectorTiledLayer = self.mapView.map?.basemap.baseLayers[0] as? AGSArcGISVectorTiledLayer
+            guard let vectorTiledLayer = self.vectorTiledLayer else { return }
+            /// The export task to request the tile package with the same URL as the tile layer.
+            self.exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayer.url!)
+        }
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportTilesViewController"]
         // Load the export task.

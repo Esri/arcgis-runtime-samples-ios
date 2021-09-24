@@ -36,7 +36,7 @@ class SketchViewController: UIViewController {
     @IBOutlet var clearBarButtonItem: UIBarButtonItem!
     @IBOutlet var statusLabel: UILabel!
     
-    var sketchEditor = AGSSketchEditor()
+    let sketchEditor = AGSSketchEditor()
     /// Key value pairs containing the creation modes and their titles.
     let creationModes: KeyValuePairs = [
         "Arrow": AGSSketchCreationMode.arrow,
@@ -56,7 +56,7 @@ class SketchViewController: UIViewController {
         // Enable/disable UI elements appropriately.
         undoBarButtonItem.isEnabled = sketchEditor.undoManager.canUndo
         redoBarButtonItem.isEnabled = sketchEditor.undoManager.canRedo
-        clearBarButtonItem.isEnabled = sketchEditor.geometry != nil && !self.sketchEditor.geometry!.isEmpty
+        clearBarButtonItem.isEnabled = sketchEditor.geometry.map { !$0.isEmpty } ?? false
     }
     
     override func viewDidLoad() {
@@ -95,16 +95,14 @@ class SketchViewController: UIViewController {
     
     @IBAction func undo() {
         // Check if there are actions to undo.
-        if self.sketchEditor.undoManager.canUndo {
-            self.sketchEditor.undoManager.undo()
-        }
+        guard sketchEditor.undoManager.canUndo else { return }
+        sketchEditor.undoManager.undo()
     }
     
     @IBAction func redo() {
         // Check if there are actions to redo.
-        if self.sketchEditor.undoManager.canRedo {
-            self.sketchEditor.undoManager.redo()
-        }
+        guard sketchEditor.undoManager.canRedo else { return }
+        sketchEditor.undoManager.redo()
     }
     
     @IBAction func clear() {

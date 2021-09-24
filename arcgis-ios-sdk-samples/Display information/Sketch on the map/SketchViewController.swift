@@ -36,7 +36,10 @@ class SketchViewController: UIViewController {
     @IBOutlet var clearBarButtonItem: UIBarButtonItem!
     @IBOutlet var statusLabel: UILabel!
     
+    /// The sketch editor to use on the map.
     let sketchEditor = AGSSketchEditor()
+    /// An observer for the toolbar items.
+    var barItemObserver: NSObjectProtocol!
     /// Key value pairs containing the creation modes and their titles.
     let creationModes: KeyValuePairs = [
         "Arrow": AGSSketchCreationMode.arrow,
@@ -51,22 +54,15 @@ class SketchViewController: UIViewController {
         "Triangle": .triangle
     ]
     
-    @objc
-    func respondToGeomChanged() {
-        // Enable/disable UI elements appropriately.
-        undoBarButtonItem.isEnabled = sketchEditor.undoManager.canUndo
-        redoBarButtonItem.isEnabled = sketchEditor.undoManager.canRedo
-        clearBarButtonItem.isEnabled = sketchEditor.geometry.map { !$0.isEmpty } ?? false
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(SketchViewController.respondToGeomChanged),
-            name: .AGSSketchEditorGeometryDidChange,
-            object: nil
-        )
+        // Add an observer to udate UI when needed.
+        barItemObserver = NotificationCenter.default.addObserver(forName: .AGSSketchEditorGeometryDidChange, object: nil, queue: .main, using: { _ in
+            // Enable/disable UI elements appropriately.
+            self.undoBarButtonItem.isEnabled = self.sketchEditor.undoManager.canUndo
+            self.redoBarButtonItem.isEnabled = self.sketchEditor.undoManager.canRedo
+            self.clearBarButtonItem.isEnabled = self.sketchEditor.geometry.map { !$0.isEmpty } ?? false
+        })
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SketchViewController"]
     }
@@ -85,7 +81,10 @@ class SketchViewController: UIViewController {
             alertController.addAction(action)
         }
         // Add "cancel" item.
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            // Remove the observer when canceled.
+            NotificationCenter.default.removeObserver(self.barItemObserver!)
+        }
         alertController.addAction(cancelAction)
         
         // Present the action sheets when the add button is tapped.

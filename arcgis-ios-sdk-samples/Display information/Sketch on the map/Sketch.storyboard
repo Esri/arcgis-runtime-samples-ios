@@ -42,7 +42,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="32P-6u-mlV"/>
-                                    <barButtonItem systemItem="add" id="h9e-Af-91p">
+                                    <barButtonItem title="Mode" id="h9e-Af-91p">
                                         <connections>
                                             <action selector="addGeometryButtonTapped:" destination="DMe-yp-yH3" id="kRO-VT-uVd"/>
                                         </connections>

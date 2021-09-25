@@ -669,6 +669,7 @@
 		4CF6DF1B22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */; };
 		4CF6DF1F22F2094F00A3092A /* LothianRiversAnno.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6DF1E22F2094F00A3092A /* LothianRiversAnno.mmpk */; settings = {ASSET_TAGS = (LothianRiversAnnoMMPK, ); }; };
 		4CF6DF2022F2338D00A3092A /* HonorMobileMapPackageExpirationDateViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */; };
+		8E16CB5E26FFCE0D008FB1B4 /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = 8E16CB5D26FFCE0D008FB1B4 /* ArcGISToolkit */; };
 		940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940A73F320E588C200A06C80 /* CutGeometry.storyboard */; };
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
@@ -1676,6 +1677,7 @@
 		4CF6DF1822F2055D00A3092A /* HonorMobileMapPackageExpirationDate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HonorMobileMapPackageExpirationDate.storyboard; sourceTree = "<group>"; };
 		4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonorMobileMapPackageExpirationDateViewController.swift; sourceTree = "<group>"; };
 		4CF6DF1E22F2094F00A3092A /* LothianRiversAnno.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = LothianRiversAnno.mmpk; sourceTree = "<group>"; };
+		8EC3188426FFCD1D00673DCC /* arcgis-runtime-toolkit-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "arcgis-runtime-toolkit-ios"; path = "../arcgis-runtime-toolkit-ios"; sourceTree = "<group>"; };
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
@@ -1842,6 +1844,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E16CB5E26FFCE0D008FB1B4 /* ArcGISToolkit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2406,6 +2409,7 @@
 		3E23A9D71AFC28F6002E2214 = {
 			isa = PBXGroup;
 			children = (
+				8EC3188426FFCD1D00673DCC /* arcgis-runtime-toolkit-ios */,
 				3E23A9E21AFC28F6002E2214 /* arcgis-ios-sdk-samples */,
 				3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */,
 				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
@@ -2414,6 +2418,7 @@
 				4CB506D3224C2DBC006A3471 /* Portal Data */,
 				4CB506D2224C2DA5006A3471 /* Scripts */,
 				3E23A9E11AFC28F6002E2214 /* Products */,
+				8E16CB5C26FFCE0D008FB1B4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4027,6 +4032,13 @@
 			path = "Mobile Map Packages";
 			sourceTree = "<group>";
 		};
+		8E16CB5C26FFCE0D008FB1B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		940A73F220E5889B00A06C80 /* Cut geometry */ = {
 			isa = PBXGroup;
 			children = (
@@ -4666,6 +4678,7 @@
 			);
 			name = "ArcGIS Runtime SDK Samples";
 			packageProductDependencies = (
+				8E16CB5D26FFCE0D008FB1B4 /* ArcGISToolkit */,
 			);
 			productName = "arcgis-ios-sdk-samples";
 			productReference = 3E23A9E01AFC28F6002E2214 /* ArcGIS Runtime SDK Samples.app */;
@@ -5757,6 +5770,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8E16CB5D26FFCE0D008FB1B4 /* ArcGISToolkit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ArcGISToolkit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3E23A9D81AFC28F6002E2214 /* Project object */;
 }

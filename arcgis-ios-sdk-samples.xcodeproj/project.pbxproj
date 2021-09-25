@@ -54,6 +54,7 @@
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		0069F4BE25F0111D00CA7BD2 /* CreateLoadReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0069F4BD25F0111D00CA7BD2 /* CreateLoadReport.storyboard */; };
 		0069F4C225F0118200CA7BD2 /* CreateLoadReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */; };
+		006A786A262F9F15001D2A5E /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = 006A7869262F9F15001D2A5E /* ArcGISToolkit */; };
 		0075032E26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */; };
 		0075033026B3676400022C7B /* OrbitCameraAroundObject.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0075032F26B3676400022C7B /* OrbitCameraAroundObject.storyboard */; };
 		0075033226B3683900022C7B /* OrbitCameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */; };
@@ -669,7 +670,6 @@
 		4CF6DF1B22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */; };
 		4CF6DF1F22F2094F00A3092A /* LothianRiversAnno.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6DF1E22F2094F00A3092A /* LothianRiversAnno.mmpk */; settings = {ASSET_TAGS = (LothianRiversAnnoMMPK, ); }; };
 		4CF6DF2022F2338D00A3092A /* HonorMobileMapPackageExpirationDateViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */; };
-		8E16CB5E26FFCE0D008FB1B4 /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = 8E16CB5D26FFCE0D008FB1B4 /* ArcGISToolkit */; };
 		940A73F420E588C200A06C80 /* CutGeometry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940A73F320E588C200A06C80 /* CutGeometry.storyboard */; };
 		940A73F620E589AB00A06C80 /* CutGeometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
 		940A73F720E6BF3F00A06C80 /* CutGeometryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */; };
@@ -1844,7 +1844,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E16CB5E26FFCE0D008FB1B4 /* ArcGISToolkit in Frameworks */,
+				006A786A262F9F15001D2A5E /* ArcGISToolkit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4678,7 +4678,7 @@
 			);
 			name = "ArcGIS Runtime SDK Samples";
 			packageProductDependencies = (
-				8E16CB5D26FFCE0D008FB1B4 /* ArcGISToolkit */,
+				006A7869262F9F15001D2A5E /* ArcGISToolkit */,
 			);
 			productName = "arcgis-ios-sdk-samples";
 			productReference = 3E23A9E01AFC28F6002E2214 /* ArcGIS Runtime SDK Samples.app */;
@@ -5772,7 +5772,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8E16CB5D26FFCE0D008FB1B4 /* ArcGISToolkit */ = {
+		006A7869262F9F15001D2A5E /* ArcGISToolkit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ArcGISToolkit;
 		};

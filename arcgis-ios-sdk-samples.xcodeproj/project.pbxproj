@@ -2418,7 +2418,6 @@
 				4CB506D3224C2DBC006A3471 /* Portal Data */,
 				4CB506D2224C2DA5006A3471 /* Scripts */,
 				3E23A9E11AFC28F6002E2214 /* Products */,
-				8E16CB5C26FFCE0D008FB1B4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4030,13 +4029,6 @@
 				4CF6DF1E22F2094F00A3092A /* LothianRiversAnno.mmpk */,
 			);
 			path = "Mobile Map Packages";
-			sourceTree = "<group>";
-		};
-		8E16CB5C26FFCE0D008FB1B4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		940A73F220E5889B00A06C80 /* Cut geometry */ = {

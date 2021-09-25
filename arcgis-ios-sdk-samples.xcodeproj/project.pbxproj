@@ -54,7 +54,6 @@
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		0069F4BE25F0111D00CA7BD2 /* CreateLoadReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0069F4BD25F0111D00CA7BD2 /* CreateLoadReport.storyboard */; };
 		0069F4C225F0118200CA7BD2 /* CreateLoadReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */; };
-		006A786A262F9F15001D2A5E /* ArcGISToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = 006A7869262F9F15001D2A5E /* ArcGISToolkit */; };
 		0075032E26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */; };
 		0075033026B3676400022C7B /* OrbitCameraAroundObject.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0075032F26B3676400022C7B /* OrbitCameraAroundObject.storyboard */; };
 		0075033226B3683900022C7B /* OrbitCameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */; };
@@ -1843,7 +1842,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				006A786A262F9F15001D2A5E /* ArcGISToolkit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4668,7 +4666,6 @@
 			);
 			name = "ArcGIS Runtime SDK Samples";
 			packageProductDependencies = (
-				006A7869262F9F15001D2A5E /* ArcGISToolkit */,
 			);
 			productName = "arcgis-ios-sdk-samples";
 			productReference = 3E23A9E01AFC28F6002E2214 /* ArcGIS Runtime SDK Samples.app */;
@@ -4767,7 +4764,6 @@
 			);
 			mainGroup = 3E23A9D71AFC28F6002E2214;
 			packageReferences = (
-				006A7868262F9F15001D2A5E /* XCRemoteSwiftPackageReference "arcgis-runtime-toolkit-ios" */,
 			);
 			productRefGroup = 3E23A9E11AFC28F6002E2214 /* Products */;
 			projectDirPath = "";
@@ -5761,25 +5757,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		006A7868262F9F15001D2A5E /* XCRemoteSwiftPackageReference "arcgis-runtime-toolkit-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Esri/arcgis-runtime-toolkit-ios";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 100.12.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		006A7869262F9F15001D2A5E /* ArcGISToolkit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 006A7868262F9F15001D2A5E /* XCRemoteSwiftPackageReference "arcgis-runtime-toolkit-ios" */;
-			productName = ArcGISToolkit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3E23A9D81AFC28F6002E2214 /* Project object */;
 }

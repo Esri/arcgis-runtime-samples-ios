@@ -89,8 +89,6 @@ class MapReferenceScaleSettingsViewController: UITableViewController {
     
     /// The observer of the reference scale of the map.
     private var referenceScaleObserver: NSObjectProtocol?
-    /// The observer of the scale of the map.
-    private var scaleObserver: NSObjectProtocol?
     
     // MARK: UIViewController
     

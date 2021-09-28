@@ -74,9 +74,9 @@ class SketchViewController: UIViewController {
         let alertController = UIAlertController(title: "Select a creation mode", message: nil, preferredStyle: .actionSheet)
         // Create an action for each creation mode and add it to the alert controller.
         creationModes.forEach { name, mode in
-            let action = UIAlertAction(title: name, style: .default) { (_) in
-                self.statusLabel.text = "\(name) selected."
-                self.sketchEditor.start(with: nil, creationMode: mode)
+            let action = UIAlertAction(title: name, style: .default) { [weak self] in
+                self?.statusLabel.text = "\(name) selected."
+                self?.sketchEditor.start(with: nil, creationMode: mode)
             }
             alertController.addAction(action)
         }

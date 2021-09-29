@@ -188,19 +188,21 @@ class ExportVectorTilesViewController: UIViewController {
             guard let vectorTiledLayer = self.vectorTiledLayer else { return }
             /// The export task to request the tile package with the same URL as the tile layer.
             self.exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayer.url!)
-        }
-        // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportTilesViewController"]
-        // Load the export task.
-        guard let exportVectorTilesTask = self.exportVectorTilesTask else { return }
-        exportVectorTilesTask.load { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                self.exportVectorTilesButton.isEnabled = true
+            guard let exportVectorTilesTask = self.exportVectorTilesTask else { return }
+            exportVectorTilesTask.load { [weak self] error in
+                guard let self = self else { return }
+                if let error = error {
+                    self.presentAlert(error: error)
+                } else {
+                    self.exportVectorTilesButton.isEnabled = true
+                }
             }
         }
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportVectorTilesViewController"]
+        // Load the export task.
+//        guard let exportVectorTilesTask = self.exportVectorTilesTask else { return }
+        
     }
     
     deinit {

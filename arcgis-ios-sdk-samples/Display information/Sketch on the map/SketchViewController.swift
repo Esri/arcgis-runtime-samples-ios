@@ -54,19 +54,6 @@ class SketchViewController: UIViewController {
         "Triangle": .triangle
     ]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Add an observer to udate UI when needed.
-        barItemObserver = NotificationCenter.default.addObserver(forName: .AGSSketchEditorGeometryDidChange, object: nil, queue: .main, using: { _ in
-            // Enable/disable UI elements appropriately.
-            self.undoBarButtonItem.isEnabled = self.sketchEditor.undoManager.canUndo
-            self.redoBarButtonItem.isEnabled = self.sketchEditor.undoManager.canRedo
-            self.clearBarButtonItem.isEnabled = self.sketchEditor.geometry.map { !$0.isEmpty } ?? false
-        })
-        // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SketchViewController"]
-    }
-    
     // MARK: - Actions
     
     @IBAction func addGeometryButtonTapped(_ sender: UIBarButtonItem) {
@@ -74,17 +61,14 @@ class SketchViewController: UIViewController {
         let alertController = UIAlertController(title: "Select a creation mode", message: nil, preferredStyle: .actionSheet)
         // Create an action for each creation mode and add it to the alert controller.
         creationModes.forEach { name, mode in
-            let action = UIAlertAction(title: name, style: .default) { [weak self] in
+            let action = UIAlertAction(title: name, style: .default) { [weak self] _ in
                 self?.statusLabel.text = "\(name) selected."
                 self?.sketchEditor.start(with: nil, creationMode: mode)
             }
             alertController.addAction(action)
         }
         // Add "cancel" item.
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            // Remove the observer when canceled.
-            NotificationCenter.default.removeObserver(self.barItemObserver!)
-        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
         
         // Present the action sheets when the add button is tapped.
@@ -106,5 +90,35 @@ class SketchViewController: UIViewController {
     
     @IBAction func clear() {
         self.sketchEditor.clearGeometry()
+    }
+    
+    // MARK: - Views
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Add an observer to udate UI when needed.
+        barItemObserver = NotificationCenter.default.addObserver(forName: .AGSSketchEditorGeometryDidChange, object: nil, queue: .main, using: { _ in
+            // Enable/disable UI elements appropriately.
+            self.undoBarButtonItem.isEnabled = self.sketchEditor.undoManager.canUndo
+            self.redoBarButtonItem.isEnabled = self.sketchEditor.undoManager.canRedo
+            self.clearBarButtonItem.isEnabled = self.sketchEditor.geometry.map { !$0.isEmpty } ?? false
+        })
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if let observer = barItemObserver {
+            // Remove the observer.
+            NotificationCenter.default.removeObserver(observer)
+            barItemObserver = nil
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SketchViewController"]
     }
 }

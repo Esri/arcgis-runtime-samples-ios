@@ -99,9 +99,9 @@ class SketchViewController: UIViewController {
         // Add an observer to udate UI when needed.
         barItemObserver = NotificationCenter.default.addObserver(forName: .AGSSketchEditorGeometryDidChange, object: sketchEditor, queue: nil, using: { [unowned self] _ in
             // Enable/disable UI elements appropriately.
-            self.undoBarButtonItem.isEnabled = self.sketchEditor.undoManager.canUndo
-            self.redoBarButtonItem.isEnabled = self.sketchEditor.undoManager.canRedo
-            self.clearBarButtonItem.isEnabled = self.sketchEditor.geometry.map { !$0.isEmpty } ?? false
+            undoBarButtonItem.isEnabled = sketchEditor.undoManager.canUndo
+            redoBarButtonItem.isEnabled = sketchEditor.undoManager.canRedo
+            clearBarButtonItem.isEnabled = sketchEditor.geometry.map { !$0.isEmpty } ?? false
         })
     }
     
@@ -111,7 +111,6 @@ class SketchViewController: UIViewController {
         if let observer = barItemObserver {
             // Remove the observer.
             NotificationCenter.default.removeObserver(observer)
-            barItemObserver = nil
         }
     }
     

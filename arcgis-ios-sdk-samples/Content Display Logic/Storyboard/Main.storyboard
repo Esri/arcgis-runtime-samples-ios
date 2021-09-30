@@ -34,6 +34,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAe-U0-Fji">
+                                <rect key="frame" x="52" y="491" width="310" height="33"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erh-VF-k0q">
+                                        <rect key="frame" x="0.0" y="0.0" width="155" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Esri Community"/>
+                                        <connections>
+                                            <action selector="esriCommunityAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="aNe-Yp-5P3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wea-BI-rOz" userLabel="More Info">
+                                        <rect key="frame" x="155" y="0.0" width="155" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="ArcGIS for iOS"/>
+                                        <connections>
+                                            <action selector="arcGISForiOSAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="l63-BE-Dbb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Wea-BI-rOz" secondAttribute="trailing" id="5Ro-b2-2Qk"/>
+                                    <constraint firstItem="Wea-BI-rOz" firstAttribute="leading" secondItem="MAe-U0-Fji" secondAttribute="centerX" id="8Tr-iR-0kh"/>
+                                    <constraint firstItem="erh-VF-k0q" firstAttribute="leading" secondItem="MAe-U0-Fji" secondAttribute="leading" id="Lai-On-dVw"/>
+                                    <constraint firstAttribute="centerX" secondItem="erh-VF-k0q" secondAttribute="trailing" id="Ygo-Ud-F6T"/>
+                                </constraints>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54t-nf-ZK2">
                                 <rect key="frame" x="52" y="291" width="310" height="200"/>
                                 <subviews>
@@ -78,33 +105,17 @@
                                     <action selector="closeAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="JSz-9v-XS9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erh-VF-k0q">
-                                <rect key="frame" x="52" y="491" width="155" height="30"/>
-                                <state key="normal" title="Help"/>
-                                <connections>
-                                    <action selector="helpAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="aNe-Yp-5P3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wea-BI-rOz" userLabel="More Info">
-                                <rect key="frame" x="207" y="491" width="155" height="30"/>
-                                <state key="normal" title="More info"/>
-                                <connections>
-                                    <action selector="moreInfoAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="l63-BE-Dbb"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a6h-ca-33f"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Wea-BI-rOz" firstAttribute="top" secondItem="54t-nf-ZK2" secondAttribute="bottom" id="3m8-5A-mXA"/>
                             <constraint firstItem="Op6-nR-s0N" firstAttribute="centerX" secondItem="a6h-ca-33f" secondAttribute="centerX" id="7Te-o6-LfY"/>
-                            <constraint firstItem="erh-VF-k0q" firstAttribute="trailing" secondItem="54t-nf-ZK2" secondAttribute="centerX" id="B1z-tO-2jY"/>
-                            <constraint firstItem="erh-VF-k0q" firstAttribute="leading" secondItem="54t-nf-ZK2" secondAttribute="leading" id="C2w-3E-Cnr"/>
-                            <constraint firstItem="Wea-BI-rOz" firstAttribute="leading" secondItem="54t-nf-ZK2" secondAttribute="centerX" id="DLk-Am-bCe"/>
                             <constraint firstItem="54t-nf-ZK2" firstAttribute="centerX" secondItem="a6h-ca-33f" secondAttribute="centerX" id="LwH-pF-D4X"/>
-                            <constraint firstItem="Wea-BI-rOz" firstAttribute="trailing" secondItem="54t-nf-ZK2" secondAttribute="trailing" id="RcJ-uO-uCw"/>
-                            <constraint firstItem="erh-VF-k0q" firstAttribute="top" secondItem="54t-nf-ZK2" secondAttribute="bottom" id="ane-hH-jZC"/>
                             <constraint firstItem="54t-nf-ZK2" firstAttribute="centerY" secondItem="AWt-rk-bdu" secondAttribute="centerY" constant="-30" id="biI-md-HHl"/>
+                            <constraint firstItem="MAe-U0-Fji" firstAttribute="centerX" secondItem="54t-nf-ZK2" secondAttribute="centerX" id="kVs-ch-dT0"/>
+                            <constraint firstItem="MAe-U0-Fji" firstAttribute="top" secondItem="54t-nf-ZK2" secondAttribute="bottom" id="kdD-yi-yj5"/>
+                            <constraint firstItem="MAe-U0-Fji" firstAttribute="trailing" secondItem="54t-nf-ZK2" secondAttribute="trailing" id="lxy-JL-FFI"/>
+                            <constraint firstItem="MAe-U0-Fji" firstAttribute="leading" secondItem="54t-nf-ZK2" secondAttribute="leading" id="m2w-30-Atv"/>
                             <constraint firstItem="a6h-ca-33f" firstAttribute="bottom" secondItem="Op6-nR-s0N" secondAttribute="bottom" constant="20" id="qig-cv-gQO"/>
                         </constraints>
                     </view>

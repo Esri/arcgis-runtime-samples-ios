@@ -31,19 +31,23 @@ class AppInfoViewController: UIViewController {
         
         self.preferredContentSize = CGSize(width: 350, height: 350)
     }
-    
+   
     // MARK: - Actions
-    @IBAction func helpAction() {
-        let esriCommunityURL = URL(string: "https://community.esri.com/t5/arcgis-runtime-sdk-for-ios-questions/bd-p/arcgis-runtime-sdk-for-ios-questions")!
-        UIApplication.shared.open(esriCommunityURL, options: [:])
+    
+    @IBAction func esriCommunityAction() {
+        UIApplication.shared.open(.esriCommunity)
     }
     
-    @IBAction func moreInfoAction() {
-        let developerURL = URL(string: "https://developers.arcgis.com/ios/")!
-        UIApplication.shared.open(developerURL, options: [:])
+    @IBAction func arcGISForiOSAction() {
+        UIApplication.shared.open(.developers)
     }
     
     @IBAction func closeAction() {
         self.dismiss(animated: true)
     }
+}
+
+private extension URL {
+    static let developers = URL(string: "https://developers.arcgis.com/ios/")!
+    static let esriCommunity = URL(string: "https://community.esri.com/t5/arcgis-runtime-sdk-for-ios-questions/bd-p/arcgis-runtime-sdk-for-ios-questions")!
 }

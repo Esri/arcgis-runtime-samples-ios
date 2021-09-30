@@ -96,9 +96,8 @@ class SketchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // Add an observer to udate UI when needed.
-        barItemObserver = NotificationCenter.default.addObserver(forName: .AGSSketchEditorGeometryDidChange, object: nil, queue: .main, using: { _ in
+        barItemObserver = NotificationCenter.default.addObserver(forName: .AGSSketchEditorGeometryDidChange, object: sketchEditor, queue: nil, using: { [unowned self] _ in
             // Enable/disable UI elements appropriately.
             self.undoBarButtonItem.isEnabled = self.sketchEditor.undoManager.canUndo
             self.redoBarButtonItem.isEnabled = self.sketchEditor.undoManager.canRedo

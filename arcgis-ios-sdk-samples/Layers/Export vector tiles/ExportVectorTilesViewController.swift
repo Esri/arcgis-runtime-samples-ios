@@ -48,7 +48,9 @@ class ExportVectorTilesViewController: UIViewController {
     @IBOutlet var exportVectorTilesButton: UIBarButtonItem!
     
     // MARK: Properties
+    /// The vector tiled layer that is extracted from the basemap.
     var vectorTiledLayer: AGSArcGISVectorTiledLayer?
+    /// The export task to request the tile package with the same URL as the tile layer.
     var exportVectorTilesTask: AGSExportVectorTilesTask?
     /// An export job to download the tile package.
     var job: AGSExportVectorTilesJob! {
@@ -57,54 +59,53 @@ class ExportVectorTilesViewController: UIViewController {
         }
     }
     
-    /// A URL to the temporary directory to temporarily store the exported tile package.
-    let temporaryDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    /// A URL to the temporary directory to temporarily store the exported vector tile package.
+    let vtpkTemporaryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    /// A URL to the temporary directory to temporarily store the style item resources.
+    let styleTemporaryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
     
     // MARK: Methods
     
-    /// Initiate the `AGSExportTileCacheTask` to download a tile package.
+    /// Initiate the `AGSExportVectorTilesTask` to download a tile package.
     ///
     /// - Parameters:
-    ///   - exportTask: An `AGSExportTileCacheTask` to run the export job.
-    ///   - downloadFileURL: A URL to where the tile package should be saved.
-    func initiateDownload(exportTask: AGSExportVectorTilesTask, downloadFileURL: URL) {
-        // Get the parameters by specifying the selected area, map view's
-        // current scale as the minScale, and tiled layer's max scale as
-        // maxScale.
+    ///   - exportTask: An `AGSExportVectorTilesTask` to run the export job.
+    ///   - vectorTileCacheURL: A URL to where the tile package should be saved.
+    func initiateDownload(exportTask: AGSExportVectorTilesTask, vectorTileCacheURL: URL) {
+        // Get the parameters by specifying the selected area and vector tiled layer's max scale as maxScale.
         vectorTiledLayer = mapView.map?.basemap.baseLayers[0] as? AGSArcGISVectorTiledLayer
         guard let vectorTiledLayer = vectorTiledLayer else { return }
         /// The export task to request the tile package with the same URL as the tile layer.
         exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayer.url!)
-        var minScale = mapView.mapScale
-        let maxScale = vectorTiledLayer.maxScale
-        if minScale < maxScale {
-            minScale = maxScale
-        }
+        // Set the max scale parameter to 10% of the map's scale to limit the
+        // number of tiles exported to within the vector tiled layer's max tile export limit.
+        let maxScale = mapView.mapScale * 0.1
         // Get current area of interest marked by the extent view.
         let areaOfInterest = frameToExtent()
         // Get export parameters.
         exportVectorTilesTask?.defaultExportVectorTilesParameters(withAreaOfInterest: areaOfInterest, maxScale: maxScale) { [weak self] parameters, error  in
-            guard
-                let self = self,
-                let exportVectorTilesTask = self.exportVectorTilesTask
-            else { return }
+            guard let self = self, let exportVectorTilesTask = self.exportVectorTilesTask else { return }
             if let params = parameters {
-                self.exportTiles(exportTask: exportVectorTilesTask, parameters: params, downloadFileURL: downloadFileURL)
+                // Start exporting the tiles with the resulting parameters.
+                self.exportTiles(exportTask: exportVectorTilesTask, parameters: params, vectorTileCacheURL: vectorTileCacheURL)
             } else if let error = error {
                 self.presentAlert(error: error)
             }
         }
     }
     
-    /// Export tiles with the `AGSExportTileCacheJob` from the export task.
+    /// Export vector tiles with the `AGSExportVectorTilesJob` from the export task.
     ///
     /// - Parameters:
-    ///   - exportTask: An `AGSExportTileCacheTask` to run the export job.
+    ///   - exportTask: An `AGSExportVectorTilesTask` to run the export job.
     ///   - parameters: The parameters of the export task.
-    ///   - downloadFileURL: A URL to where the tile package is saved.
-    func exportTiles(exportTask: AGSExportVectorTilesTask, parameters: AGSExportVectorTilesParameters, downloadFileURL: URL) {
-        // Get and run the job.
-        job = exportTask.exportVectorTilesJob(with: parameters, downloadFileURL: downloadFileURL)
+    ///   - vectorTileCacheURL: A URL to where the tile package is saved.
+    func exportTiles(exportTask: AGSExportVectorTilesTask, parameters: AGSExportVectorTilesParameters, vectorTileCacheURL: URL) {
+        // Create a download URL for the item resource cache.
+        let itemResourceURL = makeDownloadURL(isDirectory: true)
+        // Create the job with the parameters and download URLs.
+        job = exportTask.exportVectorTilesJob(with: parameters, vectorTileCacheDownloadFileURL: vectorTileCacheURL, itemResourceCacheDownloadDirectory: itemResourceURL)
+        // Start the job.
         job.start(statusHandler: { (status) in
             UIApplication.shared.showProgressHUD(message: status.statusString())
         }, completion: { [weak self] (result, error) in
@@ -113,11 +114,16 @@ class ExportVectorTilesViewController: UIViewController {
             
             self.job = nil
             
-            if let tileCache = result?.vectorTileCache {
+            if let result = result,
+               let tileCache = result.vectorTileCache,
+               let itemResourceCache = result.itemResourceCache {
+                // Show the visual effect view.
                 self.visualEffectView.isHidden = false
-                
-                let newTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: tileCache)
+                // Create the vector tiled layer with the tile cach and item resource cache.
+                let newTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: tileCache, itemResourceCache: itemResourceCache)
+                // Set the preview to the new vector tiled layer.
                 self.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
+                // Set the viewpoint with the extent.
                 let extent = parameters.areaOfInterest as! AGSEnvelope
                 self.previewMapView.setViewpoint(AGSViewpoint(targetExtent: extent), completion: nil)
             } else if let error = error {
@@ -128,7 +134,7 @@ class ExportVectorTilesViewController: UIViewController {
         })
     }
     
-    /// Get the extent within the extent view for generating a tile package.
+    /// Get the extent within the extent view for generating a vector tile package.
     func frameToExtent() -> AGSEnvelope {
         let frame = mapView.convert(extentView.frame, from: self.view)
         
@@ -138,19 +144,19 @@ class ExportVectorTilesViewController: UIViewController {
         return extent
     }
     
-    /// Make the destination URL for the tile package.
-    private func makeDownloadURL() -> URL {
-        // If the downloadFileURL ends with ".tpk", the tile cache will use
-        // the legacy compact format. If the downloadFileURL ends with ".tpkx",
-        // the tile cache will use the current compact version 2 format.
-        // See more in the doc of
-        // `AGSExportTileCacheTask.exportTileCacheJob(with:downloadFileURL:)`.
-        
+    /// Make a file URL for the vector tile package and a directory URL for the style item resources.
+    private func makeDownloadURL(isDirectory: Bool) -> URL {
         // Create the temp directory if it doesn't exist.
-        try? FileManager.default.createDirectory(at: temporaryDirectoryURL, withIntermediateDirectories: true)
-        return temporaryDirectoryURL
-            .appendingPathComponent("myTileCache", isDirectory: false)
-            .appendingPathExtension("vtpk")
+        if !isDirectory {
+            try? FileManager.default.createDirectory(at: vtpkTemporaryURL, withIntermediateDirectories: true)
+            return vtpkTemporaryURL
+                .appendingPathComponent("myTileCache", isDirectory: isDirectory)
+                .appendingPathExtension("vtpk")
+        } else {
+            try? FileManager.default.createDirectory(at: styleTemporaryURL, withIntermediateDirectories: true)
+            return styleTemporaryURL
+                .appendingPathComponent("styleItemResources", isDirectory: isDirectory)
+        }
     }
     
     // MARK: Actions
@@ -160,7 +166,7 @@ class ExportVectorTilesViewController: UIViewController {
            let exportVectorTilesTask = self.exportVectorTilesTask,
            vectorTileSourceInfo.exportTilesAllowed {
             // Try to download when exporting tiles is allowed.
-            self.initiateDownload(exportTask: exportVectorTilesTask, downloadFileURL: makeDownloadURL())
+            self.initiateDownload(exportTask: exportVectorTilesTask, vectorTileCacheURL: makeDownloadURL(isDirectory: false))
         } else {
             presentAlert(title: "Error", message: "Exporting tiles is not supported for the service.")
         }
@@ -172,24 +178,22 @@ class ExportVectorTilesViewController: UIViewController {
         // Release the map in order to free the tiled layer.
         previewMapView.map = nil
         // Remove the sample-specific temporary directory and all content in it.
-        try? FileManager.default.removeItem(at: temporaryDirectoryURL)
+        try? FileManager.default.removeItem(at: vtpkTemporaryURL)
+        try? FileManager.default.removeItem(at: styleTemporaryURL)
     }
     
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.map?.load { _ in 
-            let baseLayers = self.mapView.map?.basemap.baseLayers as? [AGSLayer]
-            for each in baseLayers! {
-                print("\(each.name)")
-            }
+        mapView.map?.load { [weak self] _ in
+            guard let self = self else { return }
+            // Obtain the vector tiled layer from the base layers.
             self.vectorTiledLayer = self.mapView.map?.basemap.baseLayers[0] as? AGSArcGISVectorTiledLayer
-            guard let vectorTiledLayer = self.vectorTiledLayer else { return }
-            /// The export task to request the tile package with the same URL as the tile layer.
-            self.exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayer.url!)
-            guard let exportVectorTilesTask = self.exportVectorTilesTask else { return }
-            exportVectorTilesTask.load { [weak self] error in
+            guard let vectorTiledLayer = self.vectorTiledLayer,
+                  let vectorTiledLayerURL = vectorTiledLayer.url else { return }
+            self.exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayerURL)
+            self.exportVectorTilesTask?.load { [weak self] error in
                 guard let self = self else { return }
                 if let error = error {
                     self.presentAlert(error: error)
@@ -200,13 +204,11 @@ class ExportVectorTilesViewController: UIViewController {
         }
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportVectorTilesViewController"]
-        // Load the export task.
-//        guard let exportVectorTilesTask = self.exportVectorTilesTask else { return }
-        
     }
     
     deinit {
-        // Remove the temporary directory and all content in it.
-        try? FileManager.default.removeItem(at: temporaryDirectoryURL)
+        // Remove the temporary directories and all content in it.
+        try? FileManager.default.removeItem(at: vtpkTemporaryURL)
+        try? FileManager.default.removeItem(at: styleTemporaryURL)
     }
 }

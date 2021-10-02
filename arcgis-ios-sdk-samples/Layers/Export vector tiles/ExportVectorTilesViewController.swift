@@ -46,6 +46,9 @@ class ExportVectorTilesViewController: UIViewController {
     }
     /// A bar button to initiate the download task.
     @IBOutlet var exportVectorTilesButton: UIBarButtonItem!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var progressParentView: UIView!
     
     // MARK: Properties
     /// The vector tiled layer that is extracted from the basemap.
@@ -63,6 +66,8 @@ class ExportVectorTilesViewController: UIViewController {
     let vtpkTemporaryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
     /// A URL to the temporary directory to temporarily store the style item resources.
     let styleTemporaryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    /// Observation to track the export vector tiles job.
+    private var progressObservation: NSKeyValueObservation?
     
     // MARK: Methods
     
@@ -105,13 +110,12 @@ class ExportVectorTilesViewController: UIViewController {
         let itemResourceURL = makeDownloadURL(isDirectory: true)
         // Create the job with the parameters and download URLs.
         job = exportTask.exportVectorTilesJob(with: parameters, vectorTileCacheDownloadFileURL: vectorTileCacheURL, itemResourceCacheDownloadDirectory: itemResourceURL)
+        updateProgressViewUI()
         // Start the job.
-        job.start(statusHandler: { (status) in
-            UIApplication.shared.showProgressHUD(message: status.statusString())
-        }, completion: { [weak self] (result, error) in
-            UIApplication.shared.hideProgressHUD()
+        job.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else { return }
-            
+            // Remove key-value observation.
+            self.progressObservation = nil
             self.job = nil
             
             if let result = result,
@@ -131,7 +135,7 @@ class ExportVectorTilesViewController: UIViewController {
                     self.presentAlert(error: error)
                 }
             }
-        })
+        }
     }
     
     /// Get the extent within the extent view for generating a vector tile package.
@@ -159,6 +163,27 @@ class ExportVectorTilesViewController: UIViewController {
         }
     }
     
+    func updateProgressViewUI() {
+        if job == nil || job.progress.isFinished {
+            // Close and reset the progress view.
+            progressParentView.isHidden = true
+            progressView.progress = 0
+            progressLabel.text = ""
+        } else {
+            progressObservation = job.progress.observe(\.fractionCompleted, options: .initial) { [weak self] progress, _ in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    // Update the progress label.
+                    self.progressLabel.text = progress.localizedDescription
+                    // Update progress view.
+                    self.progressView.progress = Float(progress.fractionCompleted)
+                }
+            }
+            // Unhide the progress parent view.
+            progressParentView.isHidden = false
+        }
+    }
+    
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -177,9 +202,16 @@ class ExportVectorTilesViewController: UIViewController {
         visualEffectView.isHidden = true
         // Release the map in order to free the tiled layer.
         previewMapView.map = nil
+        updateProgressViewUI()
         // Remove the sample-specific temporary directory and all content in it.
         try? FileManager.default.removeItem(at: vtpkTemporaryURL)
         try? FileManager.default.removeItem(at: styleTemporaryURL)
+    }
+    
+    @IBAction func cancelAction() {
+        // Cancel export vector tiles job and update the UI.
+        job.progress.cancel()
+        updateProgressViewUI()
     }
     
     // MARK: UIViewController

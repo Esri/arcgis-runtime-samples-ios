@@ -18,9 +18,9 @@ When the vector tiled layer loads, zoom in to the extent you want to export. The
 1. Create an `AGSArcGISVectorTiledLayer`, from the map's base layers.
 2. Create an `AGSExportVectorTilesTask` using the vector tiled layer's URL.
 3. Create default `AGSExportVectorTilesParameters` from the task, specifying extent and maximum scale.
-3. Create an `AGSExportVectorTilesJob` from the task using the parameters, specifying a vector tile cache path, and an item resource path. The resource path is required if you want to export the tiles with the style.
-4. Start the job, and once it completes successfully, get the resulting `AGSExportVectorTilesResult`.
-5. Get the `AGSVectorTileCache` and `AGSItemResourceCache` from the result to create an `AGSArcGISVectorTiledLayer` that can be displayed to the map view.
+4. Create an `AGSExportVectorTilesJob` from the task using the parameters, specifying a vector tile cache path, and an item resource path. The resource path is required if you want to export the tiles with the style.
+5. Start the job, and once it completes successfully, get the resulting `AGSExportVectorTilesResult`.
+6. Get the `AGSVectorTileCache` and `AGSItemResourceCache` from the result to create an `AGSArcGISVectorTiledLayer` that can be displayed to the map view.
 
 ## Relevant API
 

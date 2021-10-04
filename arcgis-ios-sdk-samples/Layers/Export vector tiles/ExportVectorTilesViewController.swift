@@ -78,17 +78,17 @@ class ExportVectorTilesViewController: UIViewController {
     ///   - exportTask: An `AGSExportVectorTilesTask` to run the export job.
     ///   - vectorTileCacheURL: A URL to where the tile package should be saved.
     func initiateDownload(exportTask: AGSExportVectorTilesTask, vectorTileCacheURL: URL) {
-        // Get the parameters by specifying the selected area and vector tiled layer's max scale as maxScale.
+        // Get the vector tiled layer from the map's base layers.
         vectorTiledLayer = mapView.map?.basemap.baseLayers[0] as? AGSArcGISVectorTiledLayer
         guard let vectorTiledLayer = vectorTiledLayer else { return }
-        /// The export task to request the tile package with the same URL as the tile layer.
+        // The export task to request the tile package with the same URL as the tile layer.
         exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayer.url!)
         // Set the max scale parameter to 10% of the map's scale to limit the
         // number of tiles exported to within the vector tiled layer's max tile export limit.
         let maxScale = mapView.mapScale * 0.1
         // Get current area of interest marked by the extent view.
         let areaOfInterest = frameToExtent()
-        // Get export parameters.
+        // Get the parameters by specifying the selected area and vector tiled layer's max scale as maxScale.
         exportVectorTilesTask?.defaultExportVectorTilesParameters(withAreaOfInterest: areaOfInterest, maxScale: maxScale) { [weak self] parameters, error  in
             guard let self = self, let exportVectorTilesTask = self.exportVectorTilesTask else { return }
             if let params = parameters {

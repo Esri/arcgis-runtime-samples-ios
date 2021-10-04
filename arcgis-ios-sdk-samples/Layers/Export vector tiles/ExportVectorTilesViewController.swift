@@ -46,9 +46,10 @@ class ExportVectorTilesViewController: UIViewController {
     }
     /// A bar button to initiate the download task.
     @IBOutlet var exportVectorTilesButton: UIBarButtonItem!
-    @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var progressParentView: UIView!
+    @IBOutlet var progressView: UIProgressView!
+    @IBOutlet var progressLabel: UILabel!
+    @IBOutlet var progressParentView: UIView!
+    @IBOutlet var cancelButton: UIButton!
     
     // MARK: Properties
     /// The vector tiled layer that is extracted from the basemap.
@@ -92,7 +93,7 @@ class ExportVectorTilesViewController: UIViewController {
             guard let self = self, let exportVectorTilesTask = self.exportVectorTilesTask else { return }
             if let params = parameters {
                 // Start exporting the tiles with the resulting parameters.
-                self.exportTiles(exportTask: exportVectorTilesTask, parameters: params, vectorTileCacheURL: vectorTileCacheURL)
+                self.exportVectorTiles(exportTask: exportVectorTilesTask, parameters: params, vectorTileCacheURL: vectorTileCacheURL)
             } else if let error = error {
                 self.presentAlert(error: error)
             }
@@ -105,7 +106,7 @@ class ExportVectorTilesViewController: UIViewController {
     ///   - exportTask: An `AGSExportVectorTilesTask` to run the export job.
     ///   - parameters: The parameters of the export task.
     ///   - vectorTileCacheURL: A URL to where the tile package is saved.
-    func exportTiles(exportTask: AGSExportVectorTilesTask, parameters: AGSExportVectorTilesParameters, vectorTileCacheURL: URL) {
+    func exportVectorTiles(exportTask: AGSExportVectorTilesTask, parameters: AGSExportVectorTilesParameters, vectorTileCacheURL: URL) {
         // Create a download URL for the item resource cache.
         let itemResourceURL = makeDownloadURL(isDirectory: true)
         // Create the job with the parameters and download URLs.
@@ -163,8 +164,9 @@ class ExportVectorTilesViewController: UIViewController {
         }
     }
     
+    /// Update the progress view accordingly.
     func updateProgressViewUI() {
-        if job == nil || job.progress.isFinished {
+        if job == nil || job.progress.isCancelled {
             // Close and reset the progress view.
             progressParentView.isHidden = true
             progressView.progress = 0

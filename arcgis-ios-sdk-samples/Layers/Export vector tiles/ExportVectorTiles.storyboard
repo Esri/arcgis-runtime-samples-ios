@@ -37,7 +37,7 @@
                                         <rect key="frame" x="358" y="8" width="48" height="30"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
-                                            <action selector="cancelAction:" destination="2pT-q8-Ydc" eventType="touchUpInside" id="VLD-g9-Tfo"/>
+                                            <action selector="cancelAction" destination="2pT-q8-Ydc" eventType="touchUpInside" id="cET-d8-e2A"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -152,6 +152,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="zN0-XS-Gz0" id="aWr-S6-2F5"/>
                         <outlet property="exportVectorTilesButton" destination="um4-kC-Ovd" id="31m-yT-698"/>
                         <outlet property="extentView" destination="UJe-Gj-nIT" id="05e-No-fX6"/>
                         <outlet property="mapView" destination="Uep-y3-UpB" id="N6A-Kb-Sqn"/>

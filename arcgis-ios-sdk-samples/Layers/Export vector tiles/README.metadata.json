@@ -11,11 +11,13 @@
         "download",
         "offline",
         "vector",
-        "AGSArcGISTiledLayer",
-        "AGSExportTileCacheJob",
-        "AGSExportTileCacheParameters",
-        "AGSExportTileCacheTask",
-        "AGSTileCache"
+        "AGSArcGISVectorTiledLayer",
+        "AGSExportVectorTilesJob",
+        "AGSExportVectorTilesParameters",
+        "AGSExportVectorTilesResult",
+        "AGSExportVectorTilesTask",
+        "AGSItemResourceCache",
+        "AGSVectorTileCache"
     ],
     "redirect_from": [],
     "relevant_apis": [

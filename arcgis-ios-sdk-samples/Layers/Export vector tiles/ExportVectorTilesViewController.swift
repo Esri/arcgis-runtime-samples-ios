@@ -59,7 +59,7 @@ class ExportVectorTilesViewController: UIViewController {
     /// An export job to download the tile package.
     var job: AGSExportVectorTilesJob! {
         didSet {
-            exportVectorTilesButton.isEnabled = job == nil ? true : false
+            exportVectorTilesButton.isEnabled = job == nil
         }
     }
     
@@ -73,7 +73,6 @@ class ExportVectorTilesViewController: UIViewController {
     // MARK: Methods
     
     /// Initiate the `AGSExportVectorTilesTask` to download a tile package.
-    ///
     /// - Parameters:
     ///   - exportTask: An `AGSExportVectorTilesTask` to run the export job.
     ///   - vectorTileCacheURL: A URL to where the tile package should be saved.
@@ -101,7 +100,6 @@ class ExportVectorTilesViewController: UIViewController {
     }
     
     /// Export vector tiles with the `AGSExportVectorTilesJob` from the export task.
-    ///
     /// - Parameters:
     ///   - exportTask: An `AGSExportVectorTilesTask` to run the export job.
     ///   - parameters: The parameters of the export task.
@@ -130,7 +128,7 @@ class ExportVectorTilesViewController: UIViewController {
                 self.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
                 // Set the viewpoint with the extent.
                 let extent = parameters.areaOfInterest as! AGSEnvelope
-                self.previewMapView.setViewpoint(AGSViewpoint(targetExtent: extent), completion: nil)
+                self.previewMapView.setViewpoint(AGSViewpoint(targetExtent: extent))
             } else if let error = error {
                 if (error as NSError).code != NSUserCancelledError {
                     self.presentAlert(error: error)
@@ -181,7 +179,7 @@ class ExportVectorTilesViewController: UIViewController {
                     self.progressView.progress = Float(progress.fractionCompleted)
                 }
             }
-            // Unhide the progress parent view.
+            // Show the progress parent view.
             progressParentView.isHidden = false
         }
     }
@@ -189,8 +187,8 @@ class ExportVectorTilesViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
-        if let vectorTileSourceInfo = exportVectorTilesTask?.vectorTileSourceInfo,
-           let exportVectorTilesTask = self.exportVectorTilesTask,
+        if let exportVectorTilesTask = self.exportVectorTilesTask,
+           let vectorTileSourceInfo = exportVectorTilesTask.vectorTileSourceInfo,
            vectorTileSourceInfo.exportTilesAllowed {
             // Try to download when exporting tiles is allowed.
             self.initiateDownload(exportTask: exportVectorTilesTask, vectorTileCacheURL: makeDownloadURL(isDirectory: false))
@@ -223,7 +221,7 @@ class ExportVectorTilesViewController: UIViewController {
         mapView.map?.load { [weak self] _ in
             guard let self = self else { return }
             // Obtain the vector tiled layer from the base layers.
-            self.vectorTiledLayer = self.mapView.map?.basemap.baseLayers[0] as? AGSArcGISVectorTiledLayer
+            self.vectorTiledLayer = self.mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer
             guard let vectorTiledLayer = self.vectorTiledLayer,
                   let vectorTiledLayerURL = vectorTiledLayer.url else { return }
             self.exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayerURL)

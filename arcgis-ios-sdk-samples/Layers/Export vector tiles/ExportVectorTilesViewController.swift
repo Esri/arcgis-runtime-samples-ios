@@ -50,7 +50,6 @@ class ExportVectorTilesViewController: UIViewController {
     @IBOutlet var progressLabel: UILabel!
     @IBOutlet var progressParentView: UIView!
     @IBOutlet var cancelButton: UIButton!
-    @IBOutlet var progressViewBottomConstraint: NSLayoutConstraint!
     
     // MARK: Properties
     /// The vector tiled layer that is extracted from the basemap.
@@ -163,6 +162,28 @@ class ExportVectorTilesViewController: UIViewController {
         }
     }
     
+    /// Update the progress view accordingly.
+    func updateProgressViewUI() {
+        if job == nil || job.progress.isCancelled {
+            // Close and reset the progress view.
+            progressParentView.isHidden = true
+            progressView.progress = 0
+            progressLabel.text = ""
+        } else {
+            progressObservation = job.progress.observe(\.fractionCompleted, options: .initial) { [weak self] progress, _ in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    // Update the progress label.
+                    self.progressLabel.text = progress.localizedDescription
+                    // Update progress view.
+                    self.progressView.progress = Float(progress.fractionCompleted)
+                }
+            }
+            // Show the progress parent view.
+            progressParentView.isHidden = false
+        }
+    }
+    
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -215,37 +236,6 @@ class ExportVectorTilesViewController: UIViewController {
         }
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportVectorTilesViewController"]
-    }
-    
-    /// Update the progress view accordingly.
-    func updateProgressViewUI() {
-        if job == nil || job.progress.isCancelled {
-            // Close and reset the progress view.
-//            progressParentView.isHidden = true
-            setProgressViewVisibility(isVisible: false)
-            progressView.progress = 0
-            progressLabel.text = ""
-        } else {
-            progressObservation = job.progress.observe(\.fractionCompleted, options: .initial) { [weak self] progress, _ in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.setProgressViewVisibility(isVisible: true)
-                    // Update the progress label.
-                    self.progressLabel.text = progress.localizedDescription
-                    // Update progress view.
-                    self.progressView.progress = Float(progress.fractionCompleted)
-                }
-            }
-            // Show the progress parent view.
-//            progressParentView.isHidden = false
-        }
-    }
-    
-    func setProgressViewVisibility(isVisible: Bool) {
-        progressViewBottomConstraint.constant = isVisible ? 0 : -50
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.view.layoutIfNeeded()
-        }
     }
     
     deinit {

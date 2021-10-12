@@ -27,15 +27,15 @@ struct SwiftUIMapView {
         self.graphicsOverlays = graphicsOverlays
     }
     
-    private var onSingleTapGesture: ((CGPoint, AGSPoint) -> Void)?
+    private var onSingleTapAction: ((CGPoint, AGSPoint) -> Void)?
 }
 
 extension SwiftUIMapView {
     /// Sets a closure to perform when a single tap occurs on the map view.
     /// - Parameter action: The closure to perform upon single tap.
-    func onSingleTapGesture(perform action: @escaping (CGPoint, AGSPoint) -> Void) -> Self {
+    func onSingleTap(perform action: @escaping (CGPoint, AGSPoint) -> Void) -> Self {
         var copy = self
-        copy.onSingleTapGesture = action
+        copy.onSingleTapAction = action
         return copy
     }
 }
@@ -45,7 +45,7 @@ extension SwiftUIMapView: UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
         Coordinator(
-            onSingleTapGesture: onSingleTapGesture
+            onSingleTapAction: onSingleTapAction
         )
     }
     
@@ -64,7 +64,7 @@ extension SwiftUIMapView: UIViewRepresentable {
         if graphicsOverlays != uiView.graphicsOverlays as? [AGSGraphicsOverlay] {
             uiView.graphicsOverlays.setArray(graphicsOverlays)
         }
-        context.coordinator.onSingleTapGesture = onSingleTapGesture
+        context.coordinator.onSingleTapAction = onSingleTapAction
     }
 }
 
@@ -72,12 +72,12 @@ extension SwiftUIMapView {
     /// You can use this coordinator to implement common Cocoa patterns, such as
     /// delegates, data sources, and responding to user events via target-action.
     class Coordinator: NSObject {
-        var onSingleTapGesture: ((CGPoint, AGSPoint) -> Void)?
+        var onSingleTapAction: ((CGPoint, AGSPoint) -> Void)?
         
         init(
-            onSingleTapGesture: ((CGPoint, AGSPoint) -> Void)?
+            onSingleTapAction: ((CGPoint, AGSPoint) -> Void)?
         ) {
-            self.onSingleTapGesture = onSingleTapGesture
+            self.onSingleTapAction = onSingleTapAction
         }
     }
 }
@@ -85,6 +85,6 @@ extension SwiftUIMapView {
 extension SwiftUIMapView.Coordinator: AGSGeoViewTouchDelegate {
     /// Add conformance and implement the required methods.
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        onSingleTapGesture?(screenPoint, mapPoint)
+        onSingleTapAction?(screenPoint, mapPoint)
     }
 }

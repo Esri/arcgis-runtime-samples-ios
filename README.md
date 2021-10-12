@@ -56,7 +56,7 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meani
 1. **Open** the `arcgis-ios-sdk-samples.xcodeproj` **project** file. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Package Dependencies` tab, and **delete** the `arcgis-runtime-toolkit-ios` package
     > This Swift package conflicts with manual installation and is only required when using the Swift Package Manager as described in the previous section.
 1. **Download** the `arcgis-runtime-toolkit-ios` from [here](https://github.com/Esri/arcgis-runtime-toolkit-ios), and follow the [instructions](https://github.com/Esri/arcgis-runtime-toolkit-ios#manual) to add it as a local Swift package
-    > The manual installation method allows you to use a local installation ArcGIS Runtime SDK for iOS by making minor edits to the toolkit's Swift package.
+    > The manual installation method allows you to use a local installation ArcGIS Runtime SDK for iOS by making minor edits to the toolkit's Swift package manifest. Follow the instructions in `Package.swift` to uncomment the lines for `localArcGISPackage` and use it as the package dependency instead of the hosted version.
 1. **Run** the `arcgis-ios-sdk-samples` app target
 
 ## Sample Data

@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import Combine
 import SwiftUI
 import ArcGIS
 
@@ -40,6 +41,8 @@ struct DisplayMapSwiftUIView: View {
     @State private var selectedMapOption: MapOption = .topographic
     /// A boolean that indicates whether the action sheet is presented.
     @State private var showingOptions = false
+    /// A KVO publisher for the observed graphics property of the overlay.
+    @State private var graphicsPublisher: AnyCancellable?
     
     var body: some View {
         VStack {
@@ -47,7 +50,12 @@ struct DisplayMapSwiftUIView: View {
                 .onSingleTap { _, mapPoint in
                     let graphic = AGSGraphic(geometry: mapPoint, symbol: nil)
                     graphicsOverlay.graphics.add(graphic)
-                    updateClearGraphicsButtonState()
+                }
+                .onAppear {
+                    graphicsPublisher = graphicsOverlay.publisher(for: \.graphics, options: [.initial])
+                        .sink { graphics in
+                            clearGraphicsButtonDisabled = (graphics as! [AGSGraphic]).isEmpty
+                        }
                 }
                 .edgesIgnoringSafeArea(.all)
             HStack {
@@ -74,11 +82,6 @@ struct DisplayMapSwiftUIView: View {
     
     func clearGraphics() {
         graphicsOverlay.graphics.removeAllObjects()
-        updateClearGraphicsButtonState()
-    }
-    
-    func updateClearGraphicsButtonState() {
-        clearGraphicsButtonDisabled = (graphicsOverlay.graphics as! [AGSGraphic]).isEmpty
     }
 }
 

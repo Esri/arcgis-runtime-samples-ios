@@ -69,8 +69,6 @@ extension SwiftUIMapView: UIViewRepresentable {
 }
 
 extension SwiftUIMapView {
-    /// You can use this coordinator to implement common Cocoa patterns, such as
-    /// delegates, data sources, and responding to user events via target-action.
     class Coordinator: NSObject {
         var onSingleTapAction: ((CGPoint, AGSPoint) -> Void)?
         

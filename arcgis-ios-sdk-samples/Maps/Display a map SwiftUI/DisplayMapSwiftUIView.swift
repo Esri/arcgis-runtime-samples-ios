@@ -39,7 +39,7 @@ struct DisplayMapSwiftUIView: View {
     
     @State private var clearGraphicsButtonDisabled = true
     @State private var selectedMapOption: MapOption = .topographic
-    /// A boolean that indicates whether the action sheet is presented.
+    /// A Boolean that indicates whether the action sheet is presented.
     @State private var showingOptions = false
     /// A KVO publisher for the observed graphics property of the overlay.
     @State private var graphicsPublisher: AnyCancellable?
@@ -64,11 +64,11 @@ struct DisplayMapSwiftUIView: View {
                         ActionSheet(
                             title: Text("Choose a basemap."),
                             buttons: MapOption.allOptions.map { option in
-                                    .default(Text(option.title), action: {
-                                        guard option != selectedMapOption else { return }
-                                        clearGraphics()
-                                        selectedMapOption = option
-                                    })
+                                .default(Text(option.title), action: {
+                                    guard option != selectedMapOption else { return }
+                                    clearGraphics()
+                                    selectedMapOption = option
+                                })
                             } + [.cancel()]
                         )
                     }

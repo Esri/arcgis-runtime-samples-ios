@@ -83,7 +83,6 @@ extension SwiftUIMapView {
 }
 
 extension SwiftUIMapView.Coordinator: AGSGeoViewTouchDelegate {
-    /// Add conformance and implement the required methods.
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         onSingleTapAction?(screenPoint, mapPoint)
     }

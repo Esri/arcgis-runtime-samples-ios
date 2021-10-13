@@ -31,8 +31,7 @@ Run the sample to view the map. Single tap to add a circle marker to the map. Ta
 This sample demonstrates how to use `AGSMapView` in SwiftUI. It features the following:
 
 * Using SwiftUI together with storyboard via [`UIHostingController`](https://developer.apple.com/documentation/swiftui/uihostingcontroller)
-* Embedding a `UIView` in a SwiftUI view via [`UIViewRepresentable`](https://developer.apple.com/documentation/swiftui/uiviewrepresentable) protocol
-* Using [`Coordinator`](https://developer.apple.com/documentation/swiftui/uiviewrepresentable/coordinator) pattern to translate Cocoa delegate methods into SwiftUI view actions
+* Embedding a `UIView` in a SwiftUI view via [`UIViewRepresentable`](https://developer.apple.com/documentation/swiftui/uiviewrepresentable) protocol, and using `Coordinator` to translate Cocoa delegate methods into SwiftUI view actions
 * Common usecases of a map: adding graphics to a map view; changing the map displayed by a map view; responding to tap events on a map view
 
 ## Tags

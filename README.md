@@ -9,19 +9,19 @@ The ```main``` branch of this repository contains samples configured for the lat
 
 ## Features
 
-* Maps - Open, create, interact with and save maps
-* Layers - Display vector and raster data in maps and scenes
-* Features - Work with feature layers and geodatabases
-* Display Information - Show graphics, popups, callouts, and sketches
-* Search - Find addresses, places, and points of interest
-* Edit Data - Add, delete, and edit features and attachments
-* Geometry - Create geometries and perform geometric operations
-* Route & Directions - Calculate routes between locations and around barriers
-* Analysis - Perform spatial analysis via geoprocessing tasks and services
-* Cloud & Portal - Search for webmaps and list portal group users
-* Scenes - Visualize 3D environments and symbols
-* Utility Network - Work with utility networks, performing traces and exploring network elements
-* Augmented Reality - View data overlaid on the real world through your device's camera
+* [Maps](arcgis-ios-sdk-samples/Maps) - Open, create, interact with and save maps
+* [Layers](arcgis-ios-sdk-samples/Layers) - Display vector and raster data in maps and scenes
+* [Features](arcgis-ios-sdk-samples/Features) - Work with feature layers and geodatabases
+* [Display Information](arcgis-ios-sdk-samples/Display%20information) - Show graphics, popups, callouts, and sketches
+* [Search](arcgis-ios-sdk-samples/Search) - Find addresses, places, and points of interest
+* [Edit Data](arcgis-ios-sdk-samples/Edit%20data) - Add, delete, and edit features and attachments
+* [Geometry](arcgis-ios-sdk-samples/Geometry) - Create geometries and perform geometric operations
+* [Route & Directions](arcgis-ios-sdk-samples/Route%20and%20directions) - Calculate routes between locations and around barriers
+* [Analysis](arcgis-ios-sdk-samples/Analysis) - Perform spatial analysis via geoprocessing tasks and services
+* [Cloud & Portal](arcgis-ios-sdk-samples/Cloud%20and%20portal) - Search for webmaps and list portal group users
+* [Scenes](arcgis-ios-sdk-samples/Scenes) - Visualize 3D environments and symbols
+* [Utility Network](arcgis-ios-sdk-samples/Utility%20network) - Work with utility networks, performing traces and exploring network elements
+* [Augmented Reality](arcgis-ios-sdk-samples/Augmented%20reality) - View data overlaid on the real world through your device's camera
 
 ## Requirements
 

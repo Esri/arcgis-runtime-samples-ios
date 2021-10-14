@@ -57,7 +57,7 @@ class ExportVectorTilesViewController: UIViewController {
     /// The export task to request the tile package with the same URL as the tile layer.
     var exportVectorTilesTask: AGSExportVectorTilesTask?
     /// An export job to download the tile package.
-    var job: AGSExportVectorTilesJob! {
+    var job: AGSExportVectorTilesJob? {
         didSet {
             exportVectorTilesButton.isEnabled = job == nil
         }
@@ -106,7 +106,7 @@ class ExportVectorTilesViewController: UIViewController {
         job = exportTask.exportVectorTilesJob(with: parameters, vectorTileCacheDownloadFileURL: vectorTileCacheURL, itemResourceCacheDownloadDirectory: itemResourceURL)
         updateProgressViewUI()
         // Start the job.
-        job.start(statusHandler: nil) { [weak self] (result, error) in
+        job?.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else { return }
             // Remove key-value observation.
             self.progressObservation = nil
@@ -160,13 +160,13 @@ class ExportVectorTilesViewController: UIViewController {
     
     /// Update the progress view accordingly.
     func updateProgressViewUI() {
-        if job == nil || job.progress.isCancelled {
+        if job == nil || job!.progress.isCancelled {
             // Close and reset the progress view.
             progressParentView.isHidden = true
             progressView.progress = 0
             progressLabel.text = ""
         } else {
-            progressObservation = job.progress.observe(\.fractionCompleted, options: .initial) { [weak self] progress, _ in
+            progressObservation = job?.progress.observe(\.fractionCompleted, options: .initial) { [weak self] progress, _ in
                 guard let self = self else { return }
                 DispatchQueue.main.async {
                     // Update the progress label.
@@ -206,7 +206,7 @@ class ExportVectorTilesViewController: UIViewController {
     
     @IBAction func cancelAction() {
         // Cancel export vector tiles job and update the UI.
-        job.progress.cancel()
+        job?.progress.cancel()
         updateProgressViewUI()
     }
     

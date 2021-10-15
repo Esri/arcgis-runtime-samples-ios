@@ -63,7 +63,7 @@ class SelectENCFeaturesViewController: UIViewController {
         // The SENC data directory is for temporarily storing generated files.
         environmentSettings.sencDataDirectory = temporaryURL
         // Update the display settings to make the chart less cluttered.
-        updateDisplaySettings(displaySettings: environmentSettings.displaySettings)
+        updateDisplaySettings(environmentSettings.displaySettings)
         
         encExchangeSet.load { [weak self] error in
             guard let self = self else { return }
@@ -80,7 +80,7 @@ class SelectENCFeaturesViewController: UIViewController {
     }
     
     /// Update the display settings to make the chart less cluttered.
-    func updateDisplaySettings(displaySettings: AGSENCDisplaySettings) {
+    func updateDisplaySettings(_ displaySettings: AGSENCDisplaySettings) {
         displaySettings.textGroupVisibilitySettings.geographicNames = false
         displaySettings.textGroupVisibilitySettings.natureOfSeabed = false
         displaySettings.viewingGroupSettings.buoysBeaconsAidsToNavigation = false

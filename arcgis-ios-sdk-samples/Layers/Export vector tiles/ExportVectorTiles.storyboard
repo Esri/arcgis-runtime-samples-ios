@@ -61,7 +61,7 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ohL-Pq-8hI"/>
-                                    <barButtonItem enabled="NO" title="Export vector tiles" id="um4-kC-Ovd">
+                                    <barButtonItem enabled="NO" title="Export Vector Tiles" id="um4-kC-Ovd">
                                         <connections>
                                             <action selector="exportTilesBarButtonTapped:" destination="2pT-q8-Ydc" id="EwW-VS-Dbx"/>
                                         </connections>

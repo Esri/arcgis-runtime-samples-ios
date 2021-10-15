@@ -52,6 +52,7 @@ class ExportVectorTilesViewController: UIViewController {
     @IBOutlet var cancelButton: UIButton!
     
     // MARK: Properties
+    
     /// The vector tiled layer that is extracted from the basemap.
     var vectorTiledLayer: AGSArcGISVectorTiledLayer?
     /// The export task to request the tile package with the same URL as the tile layer.
@@ -83,7 +84,7 @@ class ExportVectorTilesViewController: UIViewController {
         // Get current area of interest marked by the extent view.
         let areaOfInterest = frameToExtent()
         // Get the parameters by specifying the selected area and vector tiled layer's max scale as maxScale.
-        exportVectorTilesTask?.defaultExportVectorTilesParameters(withAreaOfInterest: areaOfInterest, maxScale: maxScale) { [weak self] parameters, error  in
+        exportTask.defaultExportVectorTilesParameters(withAreaOfInterest: areaOfInterest, maxScale: maxScale) { [weak self] parameters, error  in
             guard let self = self, let exportVectorTilesTask = self.exportVectorTilesTask else { return }
             if let params = parameters {
                 // Start exporting the tiles with the resulting parameters.
@@ -103,10 +104,11 @@ class ExportVectorTilesViewController: UIViewController {
         // Create a download URL for the item resource cache.
         let itemResourceURL = makeDownloadURL(isDirectory: true)
         // Create the job with the parameters and download URLs.
-        job = exportTask.exportVectorTilesJob(with: parameters, vectorTileCacheDownloadFileURL: vectorTileCacheURL, itemResourceCacheDownloadDirectory: itemResourceURL)
+        let job = exportTask.exportVectorTilesJob(with: parameters, vectorTileCacheDownloadFileURL: vectorTileCacheURL, itemResourceCacheDownloadDirectory: itemResourceURL)
+        self.job = job
         updateProgressViewUI()
         // Start the job.
-        job?.start(statusHandler: nil) { [weak self] (result, error) in
+        job.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else { return }
             // Remove key-value observation.
             self.progressObservation = nil
@@ -148,13 +150,13 @@ class ExportVectorTilesViewController: UIViewController {
         if !isDirectory {
             try? FileManager.default.createDirectory(at: vtpkTemporaryURL, withIntermediateDirectories: true)
             return vtpkTemporaryURL
-                .appendingPathComponent("myTileCache", isDirectory: isDirectory)
+                .appendingPathComponent("myTileCache", isDirectory: false)
                 .appendingPathExtension("vtpk")
         } else {
             // Return a directory URL for the style item resources.
             try? FileManager.default.createDirectory(at: styleTemporaryURL, withIntermediateDirectories: true)
             return styleTemporaryURL
-                .appendingPathComponent("styleItemResources", isDirectory: isDirectory)
+                .appendingPathComponent("styleItemResources", isDirectory: true)
         }
     }
     
@@ -183,11 +185,11 @@ class ExportVectorTilesViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
-        if let exportVectorTilesTask = self.exportVectorTilesTask,
+        if let exportVectorTilesTask = exportVectorTilesTask,
            let vectorTileSourceInfo = exportVectorTilesTask.vectorTileSourceInfo,
            vectorTileSourceInfo.exportTilesAllowed {
             // Try to download when exporting tiles is allowed.
-            self.initiateDownload(exportTask: exportVectorTilesTask, vectorTileCacheURL: makeDownloadURL(isDirectory: false))
+            initiateDownload(exportTask: exportVectorTilesTask, vectorTileCacheURL: makeDownloadURL(isDirectory: false))
         } else {
             presentAlert(title: "Error", message: "Exporting tiles is not supported for the service.")
         }
@@ -217,8 +219,8 @@ class ExportVectorTilesViewController: UIViewController {
         mapView.map?.load { [weak self] _ in
             guard let self = self else { return }
             // Obtain the vector tiled layer from the base layers.
-            self.vectorTiledLayer = self.mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer
-            guard let vectorTiledLayer = self.vectorTiledLayer,
+            let vectorTiledLayer = self.mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer
+            guard let vectorTiledLayer = vectorTiledLayer,
                   let vectorTiledLayerURL = vectorTiledLayer.url else { return }
             // The export task to request the tile package with the same URL as the tile layer.
             self.exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayerURL)

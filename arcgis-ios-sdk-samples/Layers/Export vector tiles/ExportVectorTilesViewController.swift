@@ -53,8 +53,6 @@ class ExportVectorTilesViewController: UIViewController {
     
     // MARK: Properties
     
-    /// The vector tiled layer that is extracted from the basemap.
-    var vectorTiledLayer: AGSArcGISVectorTiledLayer?
     /// The export task to request the tile package with the same URL as the tile layer.
     var exportVectorTilesTask: AGSExportVectorTilesTask?
     /// An export job to download the tile package.
@@ -82,7 +80,7 @@ class ExportVectorTilesViewController: UIViewController {
         // number of tiles exported to within the vector tiled layer's max tile export limit.
         let maxScale = mapView.mapScale * 0.1
         // Get current area of interest marked by the extent view.
-        let areaOfInterest = frameToExtent()
+        let areaOfInterest = envelope(for: self.view)
         // Get the parameters by specifying the selected area and vector tiled layer's max scale as maxScale.
         exportTask.defaultExportVectorTilesParameters(withAreaOfInterest: areaOfInterest, maxScale: maxScale) { [weak self] parameters, error  in
             guard let self = self, let exportVectorTilesTask = self.exportVectorTilesTask else { return }
@@ -135,8 +133,8 @@ class ExportVectorTilesViewController: UIViewController {
     }
     
     /// Get the extent within the extent view for generating a vector tile package.
-    func frameToExtent() -> AGSEnvelope {
-        let frame = mapView.convert(extentView.frame, from: self.view)
+    func envelope(for view: UIView) -> AGSEnvelope {
+        let frame = mapView.convert(extentView.frame, from: view)
         
         let minPoint = mapView.screen(toLocation: CGPoint(x: frame.minX, y: frame.minY))
         let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.maxX, y: frame.maxY))
@@ -218,9 +216,8 @@ class ExportVectorTilesViewController: UIViewController {
         super.viewDidLoad()
         mapView.map?.load { [weak self] _ in
             guard let self = self else { return }
-            // Obtain the vector tiled layer from the base layers.
-            let vectorTiledLayer = self.mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer
-            guard let vectorTiledLayer = vectorTiledLayer,
+            // Obtain the vector tiled layer and its URL from the baselayers.
+            guard let vectorTiledLayer = self.mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer,
                   let vectorTiledLayerURL = vectorTiledLayer.url else { return }
             // The export task to request the tile package with the same URL as the tile layer.
             self.exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayerURL)

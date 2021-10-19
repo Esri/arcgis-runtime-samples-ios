@@ -39,8 +39,7 @@ class SelectENCFeaturesViewController: UIViewController {
     }()
     
     /// Load the ENC dataset and add it to the map view.
-    /// - Parameter mapView: The map view managed by the view controller.
-    func addENCExchangeSet(mapView: AGSMapView) {
+    func addENCExchangeSet() {
         let map = mapView.map!
         // Load catalog file in ENC exchange set from bundle.
         let catalogURL = Bundle.main.url(
@@ -74,7 +73,7 @@ class SelectENCFeaturesViewController: UIViewController {
                 let encLayers = encExchangeSet.datasets.map { AGSENCLayer(cell: AGSENCCell(dataset: $0)) }
                 // Add layers to the map.
                 map.operationalLayers.addObjects(from: encLayers)
-                mapView.setViewpoint(AGSViewpoint(latitude: -32.5, longitude: 60.95, scale: 1e5))
+                self.mapView.setViewpoint(AGSViewpoint(latitude: -32.5, longitude: 60.95, scale: 1e5))
             }
         }
     }
@@ -92,7 +91,7 @@ class SelectENCFeaturesViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["SelectENCFeaturesViewController"]
-        addENCExchangeSet(mapView: mapView)
+        addENCExchangeSet()
     }
     
     deinit {

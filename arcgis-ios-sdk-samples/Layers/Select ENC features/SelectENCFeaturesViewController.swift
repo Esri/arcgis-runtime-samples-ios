@@ -20,6 +20,7 @@ class SelectENCFeaturesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISOceans)
+            mapView.setViewpoint(AGSViewpoint(latitude: -32.5, longitude: 60.95, scale: 1e5))
             mapView.touchDelegate = self
             mapView.callout.isAccessoryButtonHidden = true
         }
@@ -72,7 +73,6 @@ class SelectENCFeaturesViewController: UIViewController {
                 let encLayers = encExchangeSet.datasets.map { AGSENCLayer(cell: AGSENCCell(dataset: $0)) }
                 // Add layers to the map.
                 self.mapView.map?.operationalLayers.addObjects(from: encLayers)
-                self.mapView.setViewpoint(AGSViewpoint(latitude: -32.5, longitude: 60.95, scale: 1e5))
             }
         }
     }

@@ -63,9 +63,26 @@ class ExportVectorTilesViewController: UIViewController {
     }
     
     /// A URL to the temporary directory to temporarily store the exported vector tile package.
-    let vtpkTemporaryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    let vtpkTemporaryURL = makeVTPKDirectory()
+    
+    static func makeVTPKDirectory() -> URL {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+        try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+        return url
+            .appendingPathComponent("myTileCache", isDirectory: false)
+            .appendingPathExtension("vtpk")
+    }
+
     /// A URL to the temporary directory to temporarily store the style item resources.
-    let styleTemporaryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    let styleTemporaryURL = makeStyleDirectory()
+    
+    static func makeStyleDirectory() -> URL {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+        try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: false)
+        return url
+            .appendingPathComponent("styleItemResources", isDirectory: true)
+    }
+
     /// Observation to track the export vector tiles job.
     private var progressObservation: NSKeyValueObservation?
     
@@ -140,22 +157,6 @@ class ExportVectorTilesViewController: UIViewController {
         let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.maxX, y: frame.maxY))
         let extent = AGSEnvelope(min: minPoint, max: maxPoint)
         return extent
-    }
-    
-    /// Make a file URL for the vector tile package or a directory URL for the style item resources.
-    private func makeDownloadURL(isDirectory: Bool) -> URL {
-        // Return a file URL for the vector tile package.
-        if !isDirectory {
-            try? FileManager.default.createDirectory(at: vtpkTemporaryURL, withIntermediateDirectories: true)
-            return vtpkTemporaryURL
-                .appendingPathComponent("myTileCache", isDirectory: false)
-                .appendingPathExtension("vtpk")
-        } else {
-            // Return a directory URL for the style item resources.
-            try? FileManager.default.createDirectory(at: styleTemporaryURL, withIntermediateDirectories: true)
-            return styleTemporaryURL
-                .appendingPathComponent("styleItemResources", isDirectory: true)
-        }
     }
     
     /// Update the progress view accordingly.

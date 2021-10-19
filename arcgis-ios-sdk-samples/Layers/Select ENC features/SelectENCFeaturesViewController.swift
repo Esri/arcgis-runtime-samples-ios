@@ -40,7 +40,6 @@ class SelectENCFeaturesViewController: UIViewController {
     
     /// Load the ENC dataset and add it to the map view.
     func addENCExchangeSet() {
-        let map = mapView.map!
         // Load catalog file in ENC exchange set from bundle.
         let catalogURL = Bundle.main.url(
             forResource: "CATALOG",
@@ -72,7 +71,7 @@ class SelectENCFeaturesViewController: UIViewController {
                 // Create a list of ENC layers from datasets.
                 let encLayers = encExchangeSet.datasets.map { AGSENCLayer(cell: AGSENCCell(dataset: $0)) }
                 // Add layers to the map.
-                map.operationalLayers.addObjects(from: encLayers)
+                self.mapView.map?.operationalLayers.addObjects(from: encLayers)
                 self.mapView.setViewpoint(AGSViewpoint(latitude: -32.5, longitude: 60.95, scale: 1e5))
             }
         }

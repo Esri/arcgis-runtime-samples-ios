@@ -125,7 +125,6 @@ extension SelectENCFeaturesViewController: AGSGeoViewTouchDelegate {
             guard let self = self else { return }
             self.identifyOperation = nil
             guard let results = identifyResults,
-                  !results.isEmpty,
                   let firstResult = results.first(where: { $0.layerContent is AGSENCLayer }),
                   let containingLayer = firstResult.layerContent as? AGSENCLayer,
                   let firstFeature = firstResult.geoElements.first as? AGSENCFeature else {

@@ -47,6 +47,49 @@ class ContentTableViewController: UITableViewController {
         downloadProgressView.delegate = self
         self.downloadProgressView = downloadProgressView
     }
+    
+    // MARK: Sample Selection
+    
+    /// The sample currently displayed
+    private(set) var selectedSample: Sample?
+    
+    /// Selects the specified sample.
+    /// - Parameter sample: The sample to select.
+    func select(_ sample: Sample) {
+        guard sample != selectedSample else {
+            return
+        }
+        
+        selectedSample = sample
+        
+        if !sample.dependencies.isEmpty {
+            // Download on demand resources.
+            let bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
+            bundleResourceRequest.loadingPriority = NSBundleResourceRequestLoadingPriorityUrgent
+            self.bundleResourceRequest = bundleResourceRequest
+            
+            // Conditionally begin accessing to know if we need to show download progress view or not.
+            bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
+                DispatchQueue.main.async {
+                    // If resource is already available then simply show the sample.
+                    if isResourceAvailable {
+                        self?.showSample(sample)
+                    }
+                    // Else download the resource.
+                    else {
+                        self?.downloadResource(for: sample)
+                    }
+                }
+            }
+        } else {
+            if let bundleResourceRequest = bundleResourceRequest {
+                bundleResourceRequest.endAccessingResources()
+                self.bundleResourceRequest = nil
+            }
+            
+            showSample(sample)
+        }
+    }
 
     // MARK: - UITableViewDataSource
 
@@ -71,33 +114,7 @@ class ContentTableViewController: UITableViewController {
         view.endEditing(true)
         
         let sample = displayedSamples[indexPath.row]
-        
-        // download on demand resources
-        if !sample.dependencies.isEmpty {
-            let bundleResourceRequest = NSBundleResourceRequest(tags: Set(sample.dependencies))
-            bundleResourceRequest.loadingPriority = NSBundleResourceRequestLoadingPriorityUrgent
-            self.bundleResourceRequest = bundleResourceRequest
-            
-            // conditionally begin accessing to know if we need to show download progress view or not
-            bundleResourceRequest.conditionallyBeginAccessingResources { [weak self] (isResourceAvailable: Bool) in
-                DispatchQueue.main.async {
-                    // if resource is already available then simply show the sample
-                    if isResourceAvailable {
-                        self?.showSample(sample)
-                    }
-                    // else download the resource
-                    else {
-                        self?.downloadResource(for: sample, at: indexPath)
-                    }
-                }
-            }
-        } else {
-            // clear bundleResourceRequest
-            bundleResourceRequest?.endAccessingResources()
-            
-            // show view controller
-            showSample(sample)
-        }
+        select(sample)
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
@@ -106,7 +123,7 @@ class ContentTableViewController: UITableViewController {
     
     // MARK: - helpers
     
-    private func downloadResource(for sample: Sample, at indexPath: IndexPath) {
+    private func downloadResource(for sample: Sample) {
         guard let bundleResourceRequest = bundleResourceRequest else {
             return
         }

@@ -86,6 +86,9 @@
 		00C024E52475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00C024E72475E54A00E1DA8D /* NavigateAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */; };
 		00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
+		00CDA5C126F1289B00DEE7F4 /* SelectENCFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00CDA5BE26F1289B00DEE7F4 /* SelectENCFeatures.storyboard */; };
+		00CDA5C226F1289B00DEE7F4 /* SelectENCFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDA5BF26F1289B00DEE7F4 /* SelectENCFeaturesViewController.swift */; };
+		00CDA5C326F14B9B00DEE7F4 /* SelectENCFeaturesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00CDA5BF26F1289B00DEE7F4 /* SelectENCFeaturesViewController.swift */; };
 		00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */; };
 		00D4E8E0241AA18E002689DB /* ConvexHullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		00DAE5B82421321300D51281 /* NearestVertex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DAE5B22421321300D51281 /* NearestVertex.storyboard */; };
@@ -935,6 +938,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				00CDA5C326F14B9B00DEE7F4 /* SelectENCFeaturesViewController.swift in CopyFiles */,
 				F1D938FD26BA5555001ECB9A /* ToggleFeatureRequestModesViewController.swift in CopyFiles */,
 				000FFFB726CDD66B00E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in CopyFiles */,
 				0075033326B4B85700022C7B /* OrbitCameraAroundObjectViewController.swift in CopyFiles */,
@@ -1276,6 +1280,8 @@
 		00BA068325311B0D0039EF4D /* hydrography */ = {isa = PBXFileReference; lastKnownFileType = folder; path = hydrography; sourceTree = "<group>"; };
 		00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARRoutePlannerViewController.swift; sourceTree = "<group>"; };
 		00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavigateAR.storyboard; sourceTree = "<group>"; };
+		00CDA5BE26F1289B00DEE7F4 /* SelectENCFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectENCFeatures.storyboard; sourceTree = "<group>"; };
+		00CDA5BF26F1289B00DEE7F4 /* SelectENCFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectENCFeaturesViewController.swift; sourceTree = "<group>"; };
 		00D4E8D9241AA18E002689DB /* ConvexHull.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConvexHull.storyboard; sourceTree = "<group>"; };
 		00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvexHullViewController.swift; sourceTree = "<group>"; };
 		00DAE5B22421321300D51281 /* NearestVertex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearestVertex.storyboard; sourceTree = "<group>"; };
@@ -2042,6 +2048,15 @@
 				00A9CFF525DF3ED7009A483A /* SA_EVI_8Day_03May20 */,
 			);
 			path = Archives;
+			sourceTree = "<group>";
+		};
+		00CDA5BC26F1289B00DEE7F4 /* Select ENC features */ = {
+			isa = PBXGroup;
+			children = (
+				00CDA5BF26F1289B00DEE7F4 /* SelectENCFeaturesViewController.swift */,
+				00CDA5BE26F1289B00DEE7F4 /* SelectENCFeatures.storyboard */,
+			);
+			path = "Select ENC features";
 			sourceTree = "<group>";
 		};
 		00D4E8D8241AA18E002689DB /* Convex hull */ = {
@@ -3162,6 +3177,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				00CDA5BC26F1289B00DEE7F4 /* Select ENC features */,
 				00FFE6D4265DC76A001E92ED /* Query with CQL filters */,
 				003267B0265C476A00DB4CB5 /* Browse OGC API feature service */,
 				0022768C26570B7700CC7DB9 /* Display OGC API collection */,
@@ -4908,6 +4924,7 @@
 				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
 				C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */,
 				00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */,
+				00CDA5C126F1289B00DEE7F4 /* SelectENCFeatures.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,
 				0023F98125E717AC006B574E /* DisplayDeviceLocationWithNMEADataSources.storyboard in Resources */,
 				00255DD025156C24001A71DF /* ViewHiddenInfrastructureAR.storyboard in Resources */,
@@ -5252,6 +5269,7 @@
 				008D175724EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift in Sources */,
 				4C0CBFFF22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in Sources */,
 				1682CAEE22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in Sources */,
+				00CDA5C226F1289B00DEE7F4 /* SelectENCFeaturesViewController.swift in Sources */,
 				3EC39C1B1C9A5928003F6459 /* RouteAroundBarriersViewController.swift in Sources */,
 				218409DB1FE87E220098BC40 /* GroupByFieldsViewController.swift in Sources */,
 				F15CF0C923EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift in Sources */,

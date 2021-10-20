@@ -23,13 +23,16 @@ class DisplayMapSwiftUIViewController: UIHostingController<DisplayMapSwiftUIView
         super.init(coder: coder, rootView: DisplayMapSwiftUIView())
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
-            "SwiftUIMapView",
-            "DisplayMapSwiftUIView",
-            "DisplayMapSwiftUIViewController"
-        ]
+        if let sourceCodeBarButtonItem = navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem,
+           sourceCodeBarButtonItem.filenames.isEmpty {
+            sourceCodeBarButtonItem.filenames = [
+                "SwiftUIMapView",
+                "DisplayMapSwiftUIView",
+                "DisplayMapSwiftUIViewController"
+            ]
+        }
     }
 }

@@ -58,7 +58,19 @@ class ExportVectorTilesViewController: UIViewController {
     /// An export job to download the tile package.
     var job: AGSExportVectorTilesJob? {
         didSet {
+            // Remove key-value observation.
+            progressObservation = nil
             exportVectorTilesButton.isEnabled = job == nil
+            updateProgressViewUI()
+            progressObservation = job?.progress.observe(\.localizedDescription, options: .initial) { [weak self] progress, _ in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    // Update the progress label.
+                    self.progressLabel.text = progress.localizedDescription
+                    // Update progress view.
+                    self.progressView.progress = Float(progress.fractionCompleted)
+                }
+            }
         }
     }
     
@@ -116,19 +128,13 @@ class ExportVectorTilesViewController: UIViewController {
     ///   - parameters: The parameters of the export task.
     ///   - vectorTileCacheURL: A URL to where the tile package is saved.
     func exportVectorTiles(exportTask: AGSExportVectorTilesTask, parameters: AGSExportVectorTilesParameters, vectorTileCacheURL: URL) {
-        // Create a download URL for the item resource cache.
-        let itemResourceURL = makeDownloadURL(isDirectory: true)
         // Create the job with the parameters and download URLs.
-        let job = exportTask.exportVectorTilesJob(with: parameters, vectorTileCacheDownloadFileURL: vectorTileCacheURL, itemResourceCacheDownloadDirectory: itemResourceURL)
+        let job = exportTask.exportVectorTilesJob(with: parameters, vectorTileCacheDownloadFileURL: vtpkTemporaryURL, itemResourceCacheDownloadDirectory: styleTemporaryURL)
         self.job = job
-        updateProgressViewUI()
         // Start the job.
         job.start(statusHandler: nil) { [weak self] (result, error) in
             guard let self = self else { return }
-            // Remove key-value observation.
-            self.progressObservation = nil
             self.job = nil
-            
             if let result = result,
                let tileCache = result.vectorTileCache,
                let itemResourceCache = result.itemResourceCache {
@@ -142,7 +148,8 @@ class ExportVectorTilesViewController: UIViewController {
                 let extent = parameters.areaOfInterest as! AGSEnvelope
                 self.previewMapView.setViewpoint(AGSViewpoint(targetExtent: extent))
             } else if let error = error {
-                if (error as NSError).code != NSUserCancelledError {
+                let nsError = error as NSError
+                if !(nsError.domain == NSCocoaErrorDomain && nsError.code == NSUserCancelledError) {
                     self.presentAlert(error: error)
                 }
             }
@@ -167,18 +174,15 @@ class ExportVectorTilesViewController: UIViewController {
             progressView.progress = 0
             progressLabel.text = ""
         } else {
-            progressObservation = job?.progress.observe(\.fractionCompleted, options: .initial) { [weak self] progress, _ in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    // Update the progress label.
-                    self.progressLabel.text = progress.localizedDescription
-                    // Update progress view.
-                    self.progressView.progress = Float(progress.fractionCompleted)
-                }
-            }
             // Show the progress parent view.
             progressParentView.isHidden = false
         }
+    }
+    
+    func removeDirectories() {
+        // Remove the temporary directories and all content in it.
+        try? FileManager.default.removeItem(at: vtpkTemporaryURL)
+        try? FileManager.default.removeItem(at: styleTemporaryURL)
     }
     
     // MARK: Actions
@@ -188,7 +192,7 @@ class ExportVectorTilesViewController: UIViewController {
            let vectorTileSourceInfo = exportVectorTilesTask.vectorTileSourceInfo,
            vectorTileSourceInfo.exportTilesAllowed {
             // Try to download when exporting tiles is allowed.
-            initiateDownload(exportTask: exportVectorTilesTask, vectorTileCacheURL: makeDownloadURL(isDirectory: false))
+            initiateDownload(exportTask: exportVectorTilesTask, vectorTileCacheURL: vtpkTemporaryURL)
         } else {
             presentAlert(title: "Error", message: "Exporting tiles is not supported for the service.")
         }
@@ -201,8 +205,7 @@ class ExportVectorTilesViewController: UIViewController {
         previewMapView.map = nil
         updateProgressViewUI()
         // Remove the sample-specific temporary directory and all content in it.
-        try? FileManager.default.removeItem(at: vtpkTemporaryURL)
-        try? FileManager.default.removeItem(at: styleTemporaryURL)
+        removeDirectories()
     }
     
     @IBAction func cancelAction() {
@@ -236,8 +239,6 @@ class ExportVectorTilesViewController: UIViewController {
     }
     
     deinit {
-        // Remove the temporary directories and all content in it.
-        try? FileManager.default.removeItem(at: vtpkTemporaryURL)
-        try? FileManager.default.removeItem(at: styleTemporaryURL)
+        removeDirectories()
     }
 }

@@ -46,15 +46,15 @@
                                 </subviews>
                                 <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="X69-XY-rj2" firstAttribute="leading" secondItem="tcI-J9-vsB" secondAttribute="leading" constant="8" id="1jT-m8-zvb"/>
+                                    <constraint firstItem="X69-XY-rj2" firstAttribute="leading" secondItem="tcI-J9-vsB" secondAttribute="leading" constant="20" symbolic="YES" id="1jT-m8-zvb"/>
                                     <constraint firstItem="M6i-HD-GXg" firstAttribute="top" secondItem="X69-XY-rj2" secondAttribute="bottom" constant="5" id="7Uf-HB-hIe"/>
                                     <constraint firstItem="X69-XY-rj2" firstAttribute="top" secondItem="tcI-J9-vsB" secondAttribute="top" constant="8" id="8NJ-Cu-b5X"/>
-                                    <constraint firstAttribute="trailing" secondItem="zN0-XS-Gz0" secondAttribute="trailing" constant="8" id="Rwn-hp-y3P"/>
+                                    <constraint firstAttribute="trailing" secondItem="zN0-XS-Gz0" secondAttribute="trailing" constant="20" symbolic="YES" id="Rwn-hp-y3P"/>
                                     <constraint firstAttribute="bottom" secondItem="M6i-HD-GXg" secondAttribute="bottom" constant="8" id="UPL-00-DGm"/>
-                                    <constraint firstItem="zN0-XS-Gz0" firstAttribute="leading" secondItem="M6i-HD-GXg" secondAttribute="trailing" constant="8" id="c15-vt-Pk2"/>
-                                    <constraint firstItem="zN0-XS-Gz0" firstAttribute="leading" secondItem="X69-XY-rj2" secondAttribute="trailing" constant="8" id="cNi-I1-zw2"/>
+                                    <constraint firstItem="zN0-XS-Gz0" firstAttribute="leading" secondItem="M6i-HD-GXg" secondAttribute="trailing" constant="8" symbolic="YES" id="c15-vt-Pk2"/>
+                                    <constraint firstItem="X69-XY-rj2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="zN0-XS-Gz0" secondAttribute="leading" constant="8" symbolic="YES" id="d95-kW-6vW"/>
                                     <constraint firstItem="zN0-XS-Gz0" firstAttribute="centerY" secondItem="tcI-J9-vsB" secondAttribute="centerY" id="iBb-RI-NCi"/>
-                                    <constraint firstItem="M6i-HD-GXg" firstAttribute="leading" secondItem="tcI-J9-vsB" secondAttribute="leading" constant="8" id="xoR-FN-nMP"/>
+                                    <constraint firstItem="M6i-HD-GXg" firstAttribute="leading" secondItem="tcI-J9-vsB" secondAttribute="leading" constant="20" symbolic="YES" id="xoR-FN-nMP"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Lc-cP-EKo">

@@ -63,13 +63,11 @@ class ExportVectorTilesViewController: UIViewController {
             progressObservation = nil
             exportVectorTilesButton.isEnabled = job == nil
             updateProgressViewUI()
+            progressView.observedProgress = job?.progress
             progressObservation = job?.progress.observe(\.localizedDescription, options: .initial) { [weak self] progress, _ in
-                guard let self = self else { return }
                 DispatchQueue.main.async {
                     // Update the progress label.
-                    self.progressLabel.text = progress.localizedDescription
-                    // Update progress view.
-                    self.progressView.progress = Float(progress.fractionCompleted)
+                    self?.progressLabel.text = progress.localizedDescription
                 }
             }
         }

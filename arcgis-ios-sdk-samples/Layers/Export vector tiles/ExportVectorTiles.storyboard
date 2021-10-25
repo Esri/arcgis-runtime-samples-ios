@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uep-y3-UpB" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="720.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJe-Gj-nIT">
-                                <rect key="frame" x="41.5" y="116" width="331" height="576.5"/>
+                                <rect key="frame" x="41.5" y="121" width="331" height="615"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcI-J9-vsB" userLabel="Progress View">
-                                <rect key="frame" x="0.0" y="764.5" width="414" height="48.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="48.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X69-XY-rj2">
                                         <rect key="frame" x="20" y="8" width="41.5" height="20.5"/>
@@ -76,7 +76,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JiR-dQ-Sbs" customClass="AGSMapView">
-                                            <rect key="frame" x="41.5" y="72" width="331" height="576.5"/>
+                                            <rect key="frame" x="41.5" y="77" width="331" height="615"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBD-gu-aSB">
@@ -88,7 +88,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vector tile package" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh4-W1-oON">
-                                            <rect key="frame" x="41.5" y="42" width="331" height="22"/>
+                                            <rect key="frame" x="41.5" y="47" width="331" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -130,12 +130,12 @@
                             <constraint firstItem="JiR-dQ-Sbs" firstAttribute="width" secondItem="UJe-Gj-nIT" secondAttribute="width" id="1ON-yI-4fR"/>
                             <constraint firstItem="Uep-y3-UpB" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="4Wo-yJ-IgW"/>
                             <constraint firstItem="CFc-xE-Dbr" firstAttribute="top" secondItem="lzo-Kb-5Ip" secondAttribute="top" id="6oZ-yi-VoU"/>
-                            <constraint firstItem="Uep-y3-UpB" firstAttribute="bottom" secondItem="tcI-J9-vsB" secondAttribute="top" id="CTe-DI-B7X"/>
+                            <constraint firstItem="Uep-y3-UpB" firstAttribute="bottom" secondItem="0Lc-cP-EKo" secondAttribute="top" id="CTe-DI-B7X"/>
                             <constraint firstItem="JiR-dQ-Sbs" firstAttribute="centerX" secondItem="UJe-Gj-nIT" secondAttribute="centerX" id="CWA-zI-Pbx"/>
                             <constraint firstItem="CFc-xE-Dbr" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="Ceb-Ie-TQR"/>
                             <constraint firstItem="UJe-Gj-nIT" firstAttribute="centerX" secondItem="Uep-y3-UpB" secondAttribute="centerX" id="Cz5-a6-k4a"/>
-                            <constraint firstItem="0Lc-cP-EKo" firstAttribute="top" secondItem="tcI-J9-vsB" secondAttribute="bottom" id="KBi-u2-Q6A" userLabel="Progress View Bottom Constraint"/>
                             <constraint firstItem="UJe-Gj-nIT" firstAttribute="height" secondItem="Uep-y3-UpB" secondAttribute="height" multiplier="0.8" id="Sfr-ia-it1"/>
+                            <constraint firstItem="tcI-J9-vsB" firstAttribute="top" secondItem="lzo-Kb-5Ip" secondAttribute="top" id="VIe-TZ-2EB"/>
                             <constraint firstItem="CFc-xE-Dbr" firstAttribute="bottom" secondItem="I67-An-xiz" secondAttribute="bottom" id="XkI-rw-s9W"/>
                             <constraint firstItem="tcI-J9-vsB" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="akI-vL-Ghc"/>
                             <constraint firstItem="0Lc-cP-EKo" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="d5a-jd-Ndf"/>
@@ -160,7 +160,6 @@
                         <outlet property="progressLabel" destination="X69-XY-rj2" id="VyY-ZT-qci"/>
                         <outlet property="progressParentView" destination="tcI-J9-vsB" id="34Q-Ih-Gqg"/>
                         <outlet property="progressView" destination="M6i-HD-GXg" id="lsB-4p-cCk"/>
-                        <outlet property="progressViewBottomConstraint" destination="KBi-u2-Q6A" id="uUB-J9-gWJ"/>
                         <outlet property="visualEffectView" destination="CFc-xE-Dbr" id="tZr-Pn-CWf"/>
                     </connections>
                 </viewController>

@@ -50,7 +50,6 @@ class ExportVectorTilesViewController: UIViewController {
     @IBOutlet var progressLabel: UILabel!
     @IBOutlet var progressParentView: UIView!
     @IBOutlet var cancelButton: UIButton!
-    @IBOutlet var progressViewBottomConstraint: NSLayoutConstraint!
     
     // MARK: Properties
     
@@ -170,18 +169,11 @@ class ExportVectorTilesViewController: UIViewController {
         if job == nil || job!.progress.isCancelled {
             // Close and reset the progress view.
             progressParentView.isHidden = true
-            setProgressViewVisibility(isVisible: false)
+//            setProgressViewVisibility(isVisible: false)
         } else {
             // Show the progress parent view.
             progressParentView.isHidden = false
-            self.setProgressViewVisibility(isVisible: true)
-        }
-    }
-    
-    func setProgressViewVisibility(isVisible: Bool) {
-        progressViewBottomConstraint.constant = isVisible ? 0 : -45
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.view.layoutIfNeeded()
+//            self.setProgressViewVisibility(isVisible: true)
         }
     }
     

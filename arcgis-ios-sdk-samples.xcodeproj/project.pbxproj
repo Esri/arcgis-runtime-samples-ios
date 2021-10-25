@@ -871,6 +871,7 @@
 		F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
 		F1BCA98F268102EB0027F5A8 /* naperville_imagery.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
 		F1C092D4272758830000B132 /* VectorTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */; };
+		F1C092D7272774530000B132 /* VectorTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */; };
 		F1C4529F26B37008002FDB34 /* ToggleFeatureRequestModes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C4529E26B37008002FDB34 /* ToggleFeatureRequestModes.storyboard */; };
 		F1C452A326B374C4002FDB34 /* ToggleFeatureRequestModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C452A226B374C4002FDB34 /* ToggleFeatureRequestModesViewController.swift */; };
 		F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */; };
@@ -942,6 +943,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1C092D7272774530000B132 /* VectorTilePackageViewController.swift in CopyFiles */,
 				F1027F5926F9258E000FA674 /* ExportVectorTilesViewController.swift in CopyFiles */,
 				00CDA5C326F14B9B00DEE7F4 /* SelectENCFeaturesViewController.swift in CopyFiles */,
 				F1D938FD26BA5555001ECB9A /* ToggleFeatureRequestModesViewController.swift in CopyFiles */,

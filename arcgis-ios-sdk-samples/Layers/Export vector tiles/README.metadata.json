@@ -30,7 +30,8 @@
         "AGSVectorTileCache"
     ],
     "snippets": [
-        "ExportVectorTilesViewController.swift"
+        "ExportVectorTilesViewController.swift",
+        "VectorTilePackageViewController.swift"
     ],
     "title": "Export vector tiles"
 }

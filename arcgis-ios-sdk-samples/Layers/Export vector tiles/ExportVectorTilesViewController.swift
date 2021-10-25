@@ -230,7 +230,7 @@ class ExportVectorTilesViewController: UIViewController {
             }
         }
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportVectorTilesViewController"]
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ExportVectorTilesViewController", "VectorTilePackageViewController"]
     }
     
     deinit {

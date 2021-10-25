@@ -744,6 +744,7 @@
 				<string>ExportVectorTiles</string>
 			</dict>
 			<dict>
+				<key>displayName</key>
 				<string>Select ENC features</string>
 				<key>descriptionText</key>
 				<string>Select features in an ENC layer.</string>

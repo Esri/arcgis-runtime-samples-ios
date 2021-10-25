@@ -170,8 +170,6 @@ class ExportVectorTilesViewController: UIViewController {
         if job == nil || job!.progress.isCancelled {
             // Close and reset the progress view.
             progressParentView.isHidden = true
-            progressView.progress = 0
-            progressLabel.text = ""
             setProgressViewVisibility(isVisible: false)
         } else {
             // Show the progress parent view.
@@ -181,7 +179,7 @@ class ExportVectorTilesViewController: UIViewController {
     }
     
     func setProgressViewVisibility(isVisible: Bool) {
-        progressViewBottomConstraint.constant = isVisible ? 0 : -25
+        progressViewBottomConstraint.constant = isVisible ? 0 : -45
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.view.layoutIfNeeded()
         }

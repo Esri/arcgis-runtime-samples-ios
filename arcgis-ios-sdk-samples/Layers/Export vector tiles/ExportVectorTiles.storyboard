@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uep-y3-UpB" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="768.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="720.5"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJe-Gj-nIT">
-                                <rect key="frame" x="41.5" y="121" width="331" height="614.5"/>
+                                <rect key="frame" x="41.5" y="116" width="331" height="576.5"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcI-J9-vsB" userLabel="Progress View">
-                                <rect key="frame" x="0.0" y="812.5" width="414" height="45.5"/>
+                                <rect key="frame" x="0.0" y="764.5" width="414" height="48.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X69-XY-rj2">
                                         <rect key="frame" x="20" y="8" width="41.5" height="20.5"/>
@@ -34,10 +34,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="M6i-HD-GXg" userLabel="Progress Bar">
-                                        <rect key="frame" x="20" y="33.5" width="318" height="4"/>
+                                        <rect key="frame" x="20" y="36.5" width="318" height="4"/>
                                     </progressView>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zN0-XS-Gz0">
-                                        <rect key="frame" x="346" y="8" width="48" height="30"/>
+                                        <rect key="frame" x="346" y="9.5" width="48" height="30"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="cancelAction" destination="2pT-q8-Ydc" eventType="touchUpInside" id="cET-d8-e2A"/>
@@ -47,10 +47,10 @@
                                 <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="X69-XY-rj2" firstAttribute="leading" secondItem="tcI-J9-vsB" secondAttribute="leading" constant="20" symbolic="YES" id="1jT-m8-zvb"/>
-                                    <constraint firstItem="M6i-HD-GXg" firstAttribute="top" secondItem="X69-XY-rj2" secondAttribute="bottom" constant="5" id="7Uf-HB-hIe"/>
-                                    <constraint firstItem="X69-XY-rj2" firstAttribute="top" secondItem="tcI-J9-vsB" secondAttribute="top" constant="8" id="8NJ-Cu-b5X"/>
+                                    <constraint firstItem="M6i-HD-GXg" firstAttribute="top" secondItem="X69-XY-rj2" secondAttribute="bottom" constant="8" symbolic="YES" id="7Uf-HB-hIe"/>
+                                    <constraint firstItem="X69-XY-rj2" firstAttribute="top" secondItem="tcI-J9-vsB" secondAttribute="topMargin" id="8NJ-Cu-b5X"/>
                                     <constraint firstAttribute="trailing" secondItem="zN0-XS-Gz0" secondAttribute="trailing" constant="20" symbolic="YES" id="Rwn-hp-y3P"/>
-                                    <constraint firstAttribute="bottom" secondItem="M6i-HD-GXg" secondAttribute="bottom" constant="8" id="UPL-00-DGm"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="M6i-HD-GXg" secondAttribute="bottom" id="UPL-00-DGm"/>
                                     <constraint firstItem="zN0-XS-Gz0" firstAttribute="leading" secondItem="M6i-HD-GXg" secondAttribute="trailing" constant="8" symbolic="YES" id="c15-vt-Pk2"/>
                                     <constraint firstItem="X69-XY-rj2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="zN0-XS-Gz0" secondAttribute="leading" constant="8" symbolic="YES" id="d95-kW-6vW"/>
                                     <constraint firstItem="zN0-XS-Gz0" firstAttribute="centerY" secondItem="tcI-J9-vsB" secondAttribute="centerY" id="iBb-RI-NCi"/>
@@ -76,7 +76,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JiR-dQ-Sbs" customClass="AGSMapView">
-                                            <rect key="frame" x="41.5" y="77" width="331" height="614.5"/>
+                                            <rect key="frame" x="41.5" y="72" width="331" height="576.5"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBD-gu-aSB">
@@ -88,7 +88,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vector tile package" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh4-W1-oON">
-                                            <rect key="frame" x="41.5" y="47" width="331" height="22"/>
+                                            <rect key="frame" x="41.5" y="42" width="331" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -134,7 +134,7 @@
                             <constraint firstItem="JiR-dQ-Sbs" firstAttribute="centerX" secondItem="UJe-Gj-nIT" secondAttribute="centerX" id="CWA-zI-Pbx"/>
                             <constraint firstItem="CFc-xE-Dbr" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="Ceb-Ie-TQR"/>
                             <constraint firstItem="UJe-Gj-nIT" firstAttribute="centerX" secondItem="Uep-y3-UpB" secondAttribute="centerX" id="Cz5-a6-k4a"/>
-                            <constraint firstItem="0Lc-cP-EKo" firstAttribute="top" secondItem="tcI-J9-vsB" secondAttribute="bottom" constant="-45" id="KBi-u2-Q6A" userLabel="Progress View Bottom Constraint"/>
+                            <constraint firstItem="0Lc-cP-EKo" firstAttribute="top" secondItem="tcI-J9-vsB" secondAttribute="bottom" id="KBi-u2-Q6A" userLabel="Progress View Bottom Constraint"/>
                             <constraint firstItem="UJe-Gj-nIT" firstAttribute="height" secondItem="Uep-y3-UpB" secondAttribute="height" multiplier="0.8" id="Sfr-ia-it1"/>
                             <constraint firstItem="CFc-xE-Dbr" firstAttribute="bottom" secondItem="I67-An-xiz" secondAttribute="bottom" id="XkI-rw-s9W"/>
                             <constraint firstItem="tcI-J9-vsB" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="akI-vL-Ghc"/>

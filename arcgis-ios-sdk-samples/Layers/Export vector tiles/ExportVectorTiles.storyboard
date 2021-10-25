@@ -69,84 +69,22 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dqR-4P-OZU"/>
                                 </items>
                             </toolbar>
-                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFc-xE-Dbr">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="A53-Cv-X40">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JiR-dQ-Sbs" customClass="AGSMapView">
-                                            <rect key="frame" x="41.5" y="77" width="331" height="615"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBD-gu-aSB">
-                                            <rect key="frame" x="185.5" y="785" width="43" height="33"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <state key="normal" title="Close"/>
-                                            <connections>
-                                                <action selector="closeButtonTapped:" destination="2pT-q8-Ydc" eventType="touchUpInside" id="6tL-1Z-N2I"/>
-                                            </connections>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vector tile package" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh4-W1-oON">
-                                            <rect key="frame" x="41.5" y="47" width="331" height="22"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <viewLayoutGuide key="safeArea" id="Uja-aU-jzX"/>
-                                    <constraints>
-                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="top" secondItem="bBD-gu-aSB" secondAttribute="bottom" constant="8" id="26a-rK-dQ1"/>
-                                        <constraint firstItem="Uja-aU-jzX" firstAttribute="bottom" secondItem="bBD-gu-aSB" secondAttribute="bottom" id="76e-Xc-lka"/>
-                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="top" secondItem="vh4-W1-oON" secondAttribute="bottom" constant="8" symbolic="YES" id="BrD-VG-ho5"/>
-                                        <constraint firstItem="vh4-W1-oON" firstAttribute="centerX" secondItem="JiR-dQ-Sbs" secondAttribute="centerX" id="MsU-Uv-0Od"/>
-                                        <constraint firstItem="vh4-W1-oON" firstAttribute="top" secondItem="JiR-dQ-Sbs" secondAttribute="bottom" constant="8" id="VXo-6P-QTd"/>
-                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="height" secondItem="A53-Cv-X40" secondAttribute="height" multiplier="0.8" id="X61-78-20P"/>
-                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="width" secondItem="A53-Cv-X40" secondAttribute="width" multiplier="0.8" id="YAP-3P-GE5"/>
-                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="centerX" secondItem="A53-Cv-X40" secondAttribute="centerX" id="ZaK-q3-eLf"/>
-                                        <constraint firstItem="JiR-dQ-Sbs" firstAttribute="centerY" secondItem="A53-Cv-X40" secondAttribute="centerY" id="mcN-ex-fNq"/>
-                                        <constraint firstItem="bBD-gu-aSB" firstAttribute="trailing" secondItem="JiR-dQ-Sbs" secondAttribute="trailing" id="wQY-tG-dHN"/>
-                                        <constraint firstItem="vh4-W1-oON" firstAttribute="width" secondItem="JiR-dQ-Sbs" secondAttribute="width" id="xKH-wM-g2f"/>
-                                        <constraint firstItem="bBD-gu-aSB" firstAttribute="centerX" secondItem="A53-Cv-X40" secondAttribute="centerX" id="zc8-gm-BhQ"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="VXo-6P-QTd"/>
-                                            <exclude reference="26a-rK-dQ1"/>
-                                            <exclude reference="X61-78-20P"/>
-                                            <exclude reference="YAP-3P-GE5"/>
-                                            <exclude reference="ZaK-q3-eLf"/>
-                                            <exclude reference="mcN-ex-fNq"/>
-                                            <exclude reference="wQY-tG-dHN"/>
-                                        </mask>
-                                    </variation>
-                                </view>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lzo-Kb-5Ip"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="JiR-dQ-Sbs" firstAttribute="width" secondItem="UJe-Gj-nIT" secondAttribute="width" id="1ON-yI-4fR"/>
                             <constraint firstItem="Uep-y3-UpB" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="4Wo-yJ-IgW"/>
-                            <constraint firstItem="CFc-xE-Dbr" firstAttribute="top" secondItem="lzo-Kb-5Ip" secondAttribute="top" id="6oZ-yi-VoU"/>
                             <constraint firstItem="Uep-y3-UpB" firstAttribute="bottom" secondItem="0Lc-cP-EKo" secondAttribute="top" id="CTe-DI-B7X"/>
-                            <constraint firstItem="JiR-dQ-Sbs" firstAttribute="centerX" secondItem="UJe-Gj-nIT" secondAttribute="centerX" id="CWA-zI-Pbx"/>
-                            <constraint firstItem="CFc-xE-Dbr" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="Ceb-Ie-TQR"/>
                             <constraint firstItem="UJe-Gj-nIT" firstAttribute="centerX" secondItem="Uep-y3-UpB" secondAttribute="centerX" id="Cz5-a6-k4a"/>
                             <constraint firstItem="UJe-Gj-nIT" firstAttribute="height" secondItem="Uep-y3-UpB" secondAttribute="height" multiplier="0.8" id="Sfr-ia-it1"/>
                             <constraint firstItem="tcI-J9-vsB" firstAttribute="top" secondItem="lzo-Kb-5Ip" secondAttribute="top" id="VIe-TZ-2EB"/>
-                            <constraint firstItem="CFc-xE-Dbr" firstAttribute="bottom" secondItem="I67-An-xiz" secondAttribute="bottom" id="XkI-rw-s9W"/>
                             <constraint firstItem="tcI-J9-vsB" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="akI-vL-Ghc"/>
                             <constraint firstItem="0Lc-cP-EKo" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="d5a-jd-Ndf"/>
                             <constraint firstItem="Uep-y3-UpB" firstAttribute="trailing" secondItem="I67-An-xiz" secondAttribute="trailing" id="fTY-zJ-Kio"/>
                             <constraint firstItem="UJe-Gj-nIT" firstAttribute="width" secondItem="Uep-y3-UpB" secondAttribute="width" multiplier="0.8" id="gEA-bW-ZtT"/>
                             <constraint firstItem="Uep-y3-UpB" firstAttribute="top" secondItem="lzo-Kb-5Ip" secondAttribute="top" id="glv-Rx-HQo"/>
                             <constraint firstItem="UJe-Gj-nIT" firstAttribute="centerY" secondItem="Uep-y3-UpB" secondAttribute="centerY" id="h7Y-i0-h9j"/>
-                            <constraint firstItem="JiR-dQ-Sbs" firstAttribute="centerY" secondItem="UJe-Gj-nIT" secondAttribute="centerY" id="huF-gt-m47"/>
                             <constraint firstAttribute="trailing" secondItem="tcI-J9-vsB" secondAttribute="trailing" id="nKT-PC-tRz"/>
-                            <constraint firstItem="JiR-dQ-Sbs" firstAttribute="height" secondItem="UJe-Gj-nIT" secondAttribute="height" id="or6-Zv-OuH"/>
-                            <constraint firstItem="CFc-xE-Dbr" firstAttribute="trailing" secondItem="I67-An-xiz" secondAttribute="trailing" id="tMF-H6-hsu"/>
                             <constraint firstItem="lzo-Kb-5Ip" firstAttribute="bottom" secondItem="0Lc-cP-EKo" secondAttribute="bottom" id="uJ0-8b-1Kw"/>
                             <constraint firstItem="0Lc-cP-EKo" firstAttribute="trailing" secondItem="I67-An-xiz" secondAttribute="trailing" id="xog-RU-Ecs"/>
                         </constraints>
@@ -156,16 +94,67 @@
                         <outlet property="exportVectorTilesButton" destination="um4-kC-Ovd" id="31m-yT-698"/>
                         <outlet property="extentView" destination="UJe-Gj-nIT" id="05e-No-fX6"/>
                         <outlet property="mapView" destination="Uep-y3-UpB" id="N6A-Kb-Sqn"/>
-                        <outlet property="previewMapView" destination="JiR-dQ-Sbs" id="vhJ-YO-MMS"/>
                         <outlet property="progressLabel" destination="X69-XY-rj2" id="VyY-ZT-qci"/>
                         <outlet property="progressParentView" destination="tcI-J9-vsB" id="34Q-Ih-Gqg"/>
                         <outlet property="progressView" destination="M6i-HD-GXg" id="lsB-4p-cCk"/>
-                        <outlet property="visualEffectView" destination="CFc-xE-Dbr" id="tZr-Pn-CWf"/>
+                        <segue destination="n49-Rd-Km9" kind="presentation" identifier="showResult" id="nUd-qI-yuE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zz3-SN-aeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="469" y="562"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FaD-R8-24N">
+            <objects>
+                <navigationController id="n49-Rd-Km9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mPu-dn-BoW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bil-Kr-boI" kind="relationship" relationship="rootViewController" id="UTI-0E-Qqk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Hb-wE-BGY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="562"/>
+        </scene>
+        <!--Vector tile package-->
+        <scene sceneID="gnO-PE-k39">
+            <objects>
+                <viewController id="bil-Kr-boI" customClass="VectorTilePackageViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wWP-dW-kPu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbX-4o-JFP" userLabel="Result View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bKP-sF-nUz"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fbX-4o-JFP" firstAttribute="bottom" secondItem="bKP-sF-nUz" secondAttribute="bottom" id="5h1-8T-WIA"/>
+                            <constraint firstItem="fbX-4o-JFP" firstAttribute="leading" secondItem="wWP-dW-kPu" secondAttribute="leading" id="TqJ-vh-aEw"/>
+                            <constraint firstAttribute="trailing" secondItem="fbX-4o-JFP" secondAttribute="trailing" id="bfS-4T-BIT"/>
+                            <constraint firstItem="fbX-4o-JFP" firstAttribute="top" secondItem="bKP-sF-nUz" secondAttribute="top" id="ziz-vH-Dc7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Vector tile package" id="Hh1-uO-Map">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="FR5-vp-4y9">
+                            <connections>
+                                <action selector="doneAction:" destination="bil-Kr-boI" id="n64-8l-UcI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="resultView" destination="fbX-4o-JFP" id="kLc-d4-P9q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mp0-mN-ia9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1986" y="562"/>
         </scene>
     </scenes>
     <resources>

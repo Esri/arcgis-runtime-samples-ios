@@ -870,6 +870,7 @@
 		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
 		F1BCA98F268102EB0027F5A8 /* naperville_imagery.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
+		F1C092D4272758830000B132 /* VectorTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */; };
 		F1C4529F26B37008002FDB34 /* ToggleFeatureRequestModes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C4529E26B37008002FDB34 /* ToggleFeatureRequestModes.storyboard */; };
 		F1C452A326B374C4002FDB34 /* ToggleFeatureRequestModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C452A226B374C4002FDB34 /* ToggleFeatureRequestModesViewController.swift */; };
 		F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */; };
@@ -1823,6 +1824,7 @@
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
 		F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpkx; sourceTree = "<group>"; };
+		F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorTilePackageViewController.swift; sourceTree = "<group>"; };
 		F1C4529E26B37008002FDB34 /* ToggleFeatureRequestModes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ToggleFeatureRequestModes.storyboard; sourceTree = "<group>"; };
 		F1C452A226B374C4002FDB34 /* ToggleFeatureRequestModesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleFeatureRequestModesViewController.swift; sourceTree = "<group>"; };
 		F1C81C4422FCEC1C00229CAA /* GetElevationPoint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetElevationPoint.storyboard; sourceTree = "<group>"; };
@@ -4453,6 +4455,7 @@
 			isa = PBXGroup;
 			children = (
 				F1027F4D26F91FAA000FA674 /* ExportVectorTilesViewController.swift */,
+				F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */,
 				F1027F5326F92065000FA674 /* ExportVectorTiles.storyboard */,
 			);
 			path = "Export vector tiles";
@@ -5383,6 +5386,7 @@
 				D9EE378C20E2C03100BF8AD1 /* LineOfSightGeoElementViewController.swift in Sources */,
 				4C5F98C12280A57500414343 /* AuthenticateWithOAuthViewController.swift in Sources */,
 				3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */,
+				F1C092D4272758830000B132 /* VectorTilePackageViewController.swift in Sources */,
 				C74ECB5021C17E9100129D6D /* DensifyAndGeneralizeViewController.swift in Sources */,
 				218409DF1FE9A1E00098BC40 /* AddStatisticDefinitionsViewController.swift in Sources */,
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,

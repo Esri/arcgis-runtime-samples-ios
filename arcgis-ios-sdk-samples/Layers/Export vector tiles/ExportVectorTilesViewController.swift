@@ -34,16 +34,7 @@ class ExportVectorTilesViewController: UIViewController {
             extentView.layer.borderWidth = 2
         }
     }
-    
-    /// A view to provide a dark blurry background to preview the exported tiles.
-    @IBOutlet var visualEffectView: UIVisualEffectView!
-    /// A map view to preview the exported tiles.
-    @IBOutlet var previewMapView: AGSMapView! {
-        didSet {
-            previewMapView.layer.borderColor = UIColor.white.cgColor
-            previewMapView.layer.borderWidth = 8
-        }
-    }
+
     /// A bar button to initiate the download task.
     @IBOutlet var exportVectorTilesButton: UIBarButtonItem!
     @IBOutlet var progressView: UIProgressView!
@@ -53,6 +44,8 @@ class ExportVectorTilesViewController: UIViewController {
     
     // MARK: Properties
     
+    var vectorTiledLayer: AGSArcGISVectorTiledLayer?
+    var extent: AGSEnvelope?
     /// The export task to request the tile package with the same URL as the tile layer.
     var exportVectorTilesTask: AGSExportVectorTilesTask?
     /// An export job to download the tile package.
@@ -136,15 +129,11 @@ class ExportVectorTilesViewController: UIViewController {
             if let result = result,
                let tileCache = result.vectorTileCache,
                let itemResourceCache = result.itemResourceCache {
-                // Show the visual effect view.
-                self.visualEffectView.isHidden = false
                 // Create the vector tiled layer with the tile cache and item resource cache.
-                let newTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: tileCache, itemResourceCache: itemResourceCache)
-                // Set the preview to the new vector tiled layer.
-                self.previewMapView.map = AGSMap(basemap: AGSBasemap(baseLayer: newTiledLayer))
-                // Set the viewpoint with the extent.
-                let extent = parameters.areaOfInterest as! AGSEnvelope
-                self.previewMapView.setViewpoint(AGSViewpoint(targetExtent: extent))
+                self.vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: tileCache, itemResourceCache: itemResourceCache)
+                // Set the extent.
+                self.extent = parameters.areaOfInterest as? AGSEnvelope
+                self.performSegue(withIdentifier: "showResult", sender: nil)
             } else if let error = error {
                 let nsError = error as NSError
                 if !(nsError.domain == NSCocoaErrorDomain && nsError.code == NSUserCancelledError) {
@@ -169,11 +158,9 @@ class ExportVectorTilesViewController: UIViewController {
         if job == nil || job!.progress.isCancelled {
             // Close and reset the progress view.
             progressParentView.isHidden = true
-//            setProgressViewVisibility(isVisible: false)
         } else {
             // Show the progress parent view.
             progressParentView.isHidden = false
-//            self.setProgressViewVisibility(isVisible: true)
         }
     }
     
@@ -212,6 +199,16 @@ class ExportVectorTilesViewController: UIViewController {
         updateProgressViewUI()
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navController = segue.destination as? UINavigationController,
+           let rootController = navController.viewControllers.first as? VectorTilePackageViewController {
+            rootController.tiledLayerResult = vectorTiledLayer
+            rootController.extent = extent
+        }
+    }
+    
     // MARK: UIViewController
     
     override func viewDidLoad() {
@@ -238,5 +235,12 @@ class ExportVectorTilesViewController: UIViewController {
     
     deinit {
         removeDirectories()
+    }
+}
+
+extension ExportVectorTilesViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // Ensure that the settings are shown in a popover on small displays.
+        return .formSheet
     }
 }

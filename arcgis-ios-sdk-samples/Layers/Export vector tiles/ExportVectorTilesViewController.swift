@@ -108,7 +108,7 @@ class ExportVectorTilesViewController: UIViewController {
         // number of tiles exported to within the vector tiled layer's max tile export limit.
         let maxScale = mapView.mapScale * 0.1
         // Get current area of interest marked by the extent view.
-        let areaOfInterest = envelope(for: self.view)
+        let areaOfInterest = envelope(for: extentView)
         // Get the parameters by specifying the selected area and vector tiled layer's max scale as maxScale.
         exportTask.defaultExportVectorTilesParameters(withAreaOfInterest: areaOfInterest, maxScale: maxScale) { [weak self] parameters, error  in
             guard let self = self, let exportVectorTilesTask = self.exportVectorTilesTask else { return }

@@ -169,6 +169,12 @@ class ExportVectorTilesViewController: UIViewController {
         }
     }
     
+    /// Remove temporary files that are created for each job.
+    func removeTemporaryFiles() {
+        try? FileManager.default.removeItem(at: vtpkTemporaryURL)
+        try? FileManager.default.removeItem(at: styleTemporaryURL)
+    }
+    
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -183,8 +189,9 @@ class ExportVectorTilesViewController: UIViewController {
     }
     
     @IBAction func cancelAction() {
-        // Cancel export vector tiles job and update the UI.
+        // Cancel export vector tiles job and remove the temporary files.
         job?.progress.cancel()
+        removeTemporaryFiles()
     }
     
     // MARK: - Navigation
@@ -233,7 +240,6 @@ class ExportVectorTilesViewController: UIViewController {
 extension ExportVectorTilesViewController: VectorTilePackageViewControllerDelegate {
     func vectorTilePackageViewControllerDidFinish(_ controller: VectorTilePackageViewController) {
         // Remove the downloaded vector tile package files after finishing viewing them.
-        try? FileManager.default.removeItem(at: vtpkTemporaryURL)
-        try? FileManager.default.removeItem(at: styleTemporaryURL)
+        removeTemporaryFiles()
     }
 }

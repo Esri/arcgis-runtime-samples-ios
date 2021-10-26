@@ -161,9 +161,13 @@ class ExportVectorTilesViewController: UIViewController {
     /// Update the progress view accordingly.
     func updateProgressViewUI() {
         if job == nil || job!.progress.isCancelled {
+            // Enable map interaction.
+            mapView.interactionOptions.isEnabled = true
             // Close and reset the progress view.
             progressParentView.isHidden = true
         } else {
+            // Disable map interaction while exporting tiles.
+            mapView.interactionOptions.isEnabled = false
             // Show the progress parent view.
             progressParentView.isHidden = false
         }

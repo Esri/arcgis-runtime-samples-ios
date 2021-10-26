@@ -1632,7 +1632,6 @@
 		4C2F90702289C1BD00357824 /* TokenAuthentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TokenAuthentication.storyboard; sourceTree = "<group>"; };
 		4C2F90722289C23500357824 /* TokenAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAuthenticationViewController.swift; sourceTree = "<group>"; };
 		4C41B2ED211A617700EEA81E /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
-		4C41E5F426C58F8B00B9C5A8 /* arcgis-runtime-toolkit-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "arcgis-runtime-toolkit-ios"; path = "../arcgis-runtime-toolkit-ios"; sourceTree = "<group>"; };
 		4C478E49223C7485009F8CDF /* MapReferenceScale.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapReferenceScale.storyboard; sourceTree = "<group>"; };
 		4C478E4B223C7498009F8CDF /* MapReferenceScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleViewController.swift; sourceTree = "<group>"; };
 		4C478E4D223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapReferenceScaleSettingsViewController.swift; sourceTree = "<group>"; };
@@ -2424,7 +2423,6 @@
 		3E23A9D71AFC28F6002E2214 = {
 			isa = PBXGroup;
 			children = (
-				4C41E5F426C58F8B00B9C5A8 /* arcgis-runtime-toolkit-ios */,
 				3E23A9E21AFC28F6002E2214 /* arcgis-ios-sdk-samples */,
 				3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */,
 				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
@@ -5643,7 +5641,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 75Z67E6SV2;
+				DEVELOPMENT_TEAM = "";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "arcgis-ios-sdk-samples/Info.plist";
@@ -5672,7 +5670,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 75Z67E6SV2;
+				DEVELOPMENT_TEAM = "";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "arcgis-ios-sdk-samples/Info.plist";

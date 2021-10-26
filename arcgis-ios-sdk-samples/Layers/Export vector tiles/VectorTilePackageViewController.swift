@@ -31,7 +31,7 @@ class VectorTilePackageViewController: UIViewController {
     weak var delegate: VectorTilePackageViewControllerDelegate?
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
-        delegate?.removeDirectories()
+        delegate?.vectorTilePackageViewControllerDidFinish(self)
         dismiss(animated: true)
     }
     

@@ -129,20 +129,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbX-4o-JFP" userLabel="Result View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bKP-sF-nUz"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fbX-4o-JFP" firstAttribute="bottom" secondItem="bKP-sF-nUz" secondAttribute="bottom" id="5h1-8T-WIA"/>
+                            <constraint firstItem="fbX-4o-JFP" firstAttribute="bottom" secondItem="wWP-dW-kPu" secondAttribute="bottom" id="5h1-8T-WIA"/>
                             <constraint firstItem="fbX-4o-JFP" firstAttribute="leading" secondItem="wWP-dW-kPu" secondAttribute="leading" id="TqJ-vh-aEw"/>
                             <constraint firstAttribute="trailing" secondItem="fbX-4o-JFP" secondAttribute="trailing" id="bfS-4T-BIT"/>
                             <constraint firstItem="fbX-4o-JFP" firstAttribute="top" secondItem="bKP-sF-nUz" secondAttribute="top" id="ziz-vH-Dc7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Vector tile package" id="Hh1-uO-Map">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="FR5-vp-4y9">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="FR5-vp-4y9">
                             <connections>
                                 <action selector="doneAction:" destination="bil-Kr-boI" id="n64-8l-UcI"/>
                             </connections>

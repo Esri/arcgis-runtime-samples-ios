@@ -71,25 +71,20 @@ class ExportVectorTilesViewController: UIViewController {
     }
     
     /// A URL to the temporary directory to temporarily store the exported vector tile package.
-    let vtpkTemporaryURL = makeVTPKDirectory()
-    
-    static func makeVTPKDirectory() -> URL {
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
-        try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
-        return url
+    let vtpkTemporaryURL = temporaryDirectory
             .appendingPathComponent("myTileCache", isDirectory: false)
             .appendingPathExtension("vtpk")
-    }
-    
+        
     /// A URL to the temporary directory to temporarily store the style item resources.
-    let styleTemporaryURL = makeStyleDirectory()
+    let styleTemporaryURL = temporaryDirectory
+        .appendingPathComponent("styleItemResources", isDirectory: true)
     
-    static func makeStyleDirectory() -> URL {
+    /// A directory to temporarily store all items.
+    static let temporaryDirectory: URL = {
         let url = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
         try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: false)
         return url
-            .appendingPathComponent("styleItemResources", isDirectory: true)
-    }
+    }()
     
     /// Observation to track the export vector tiles job.
     private var progressObservation: NSKeyValueObservation?
@@ -134,6 +129,7 @@ class ExportVectorTilesViewController: UIViewController {
             if let result = result,
                let tileCache = result.vectorTileCache,
                let itemResourceCache = result.itemResourceCache {
+                self.updateProgressViewUI()
                 // Create the vector tiled layer with the tile cache and item resource cache.
                 self.vectorTiledLayer = AGSArcGISVectorTiledLayer(vectorTileCache: tileCache, itemResourceCache: itemResourceCache)
                 // Set the extent.
@@ -160,7 +156,7 @@ class ExportVectorTilesViewController: UIViewController {
     
     /// Update the progress view accordingly.
     func updateProgressViewUI() {
-        if job == nil || job!.progress.isCancelled {
+        if job == nil {
             // Enable map interaction.
             mapView.interactionOptions.isEnabled = true
             // Close and reset the progress view.
@@ -189,7 +185,6 @@ class ExportVectorTilesViewController: UIViewController {
     @IBAction func cancelAction() {
         // Cancel export vector tiles job and update the UI.
         job?.progress.cancel()
-        updateProgressViewUI()
     }
     
     // MARK: - Navigation
@@ -197,6 +192,9 @@ class ExportVectorTilesViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
            let rootController = navController.viewControllers.first as? VectorTilePackageViewController {
+            // Display the view controller as a formsheet - specified for iPads.
+            rootController.modalPresentationStyle = .formSheet
+            rootController.isModalInPresentation = true
             rootController.tiledLayerResult = vectorTiledLayer
             rootController.extent = extent
             rootController.delegate = self
@@ -228,20 +226,13 @@ class ExportVectorTilesViewController: UIViewController {
     }
     
     deinit {
-        removeDirectories()
-    }
-}
-
-extension ExportVectorTilesViewController: UIAdaptivePresentationControllerDelegate {
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // Ensure that the settings are shown in a popover on small displays.
-        return .formSheet
+        try? FileManager.default.removeItem(at: Self.temporaryDirectory)
     }
 }
 
 extension ExportVectorTilesViewController: VectorTilePackageViewControllerDelegate {
-    func removeDirectories() {
-        // Remove the temporary directories and all content in it.
+    func vectorTilePackageViewControllerDidFinish(_ controller: VectorTilePackageViewController) {
+        // Remove the downloaded vector tile package files after finishing viewing them.
         try? FileManager.default.removeItem(at: vtpkTemporaryURL)
         try? FileManager.default.removeItem(at: styleTemporaryURL)
     }

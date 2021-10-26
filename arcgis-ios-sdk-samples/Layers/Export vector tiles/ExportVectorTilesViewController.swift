@@ -150,7 +150,7 @@ class ExportVectorTilesViewController: UIViewController {
     
     /// Get the extent within the extent view for generating a vector tile package.
     func envelope(for view: UIView) -> AGSEnvelope {
-        let frame = mapView.convert(extentView.frame, from: view)
+        let frame = mapView.convert(view.frame, from: self.view)
         
         let minPoint = mapView.screen(toLocation: CGPoint(x: frame.minX, y: frame.minY))
         let maxPoint = mapView.screen(toLocation: CGPoint(x: frame.maxX, y: frame.maxY))

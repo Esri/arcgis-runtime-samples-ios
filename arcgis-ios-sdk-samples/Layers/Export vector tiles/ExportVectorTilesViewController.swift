@@ -34,7 +34,7 @@ class ExportVectorTilesViewController: UIViewController {
             extentView.layer.borderWidth = 2
         }
     }
-
+    
     /// A bar button to initiate the download task.
     @IBOutlet var exportVectorTilesButton: UIBarButtonItem!
     @IBOutlet var progressView: UIProgressView!
@@ -72,7 +72,7 @@ class ExportVectorTilesViewController: UIViewController {
     
     /// A URL to the temporary directory to temporarily store the exported vector tile package.
     let vtpkTemporaryURL = makeVTPKDirectory()
-
+    
     static func makeVTPKDirectory() -> URL {
         let url = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
         try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
@@ -80,17 +80,17 @@ class ExportVectorTilesViewController: UIViewController {
             .appendingPathComponent("myTileCache", isDirectory: false)
             .appendingPathExtension("vtpk")
     }
-
+    
     /// A URL to the temporary directory to temporarily store the style item resources.
     let styleTemporaryURL = makeStyleDirectory()
-
+    
     static func makeStyleDirectory() -> URL {
         let url = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
         try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: false)
         return url
             .appendingPathComponent("styleItemResources", isDirectory: true)
     }
-
+    
     /// Observation to track the export vector tiles job.
     private var progressObservation: NSKeyValueObservation?
     
@@ -235,7 +235,7 @@ extension ExportVectorTilesViewController: UIAdaptivePresentationControllerDeleg
 }
 
 extension ExportVectorTilesViewController: VectorTilePackageViewControllerDelegate {
-   func removeDirectories() {
+    func removeDirectories() {
         // Remove the temporary directories and all content in it.
         try? FileManager.default.removeItem(at: vtpkTemporaryURL)
         try? FileManager.default.removeItem(at: styleTemporaryURL)

@@ -171,9 +171,6 @@ class ContentTableViewController: UITableViewController {
                     if self.bundleResourceRequest?.progress.isCancelled == false {
                         // show view controller
                         self.showSample(sample)
-                    } else {
-                        self.bundleResourceRequest = nil
-                        self.selectedSample = nil
                     }
                 }
             }
@@ -225,6 +222,8 @@ extension ContentTableViewController: DownloadProgressViewDelegate {
             return
         }
         bundleResourceRequest.progress.cancel()
+        self.bundleResourceRequest = nil
+        self.selectedSample = nil
     }
 }
 

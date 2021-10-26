@@ -743,6 +743,19 @@
 				<key>storyboardName</key>
 				<string>QueryWithCQLFilters</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Select ENC features</string>
+				<key>descriptionText</key>
+				<string>Select features in an ENC layer.</string>
+				<key>storyboardName</key>
+				<string>SelectENCFeatures</string>
+				<key>dependency</key>
+				<array>
+					<string>ExchangeSetWithoutUpdates</string>
+					<string>Hydrography</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>

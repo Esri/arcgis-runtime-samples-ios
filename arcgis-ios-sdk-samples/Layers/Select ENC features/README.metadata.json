@@ -1,0 +1,32 @@
+{
+    "category": "Layers",
+    "description": "Select features in an ENC layer.",
+    "ignore": false,
+    "images": [
+        "select-enc-features.png"
+    ],
+    "keywords": [
+        "IHO",
+        "S-57",
+        "S57",
+        "chart",
+        "hydrography",
+        "identify",
+        "maritime",
+        "select",
+        "selection",
+        "AGSENCFeature",
+        "AGSENCLayer",
+        "AGSIdentifyLayerResult"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSENCFeature",
+        "AGSENCLayer",
+        "AGSIdentifyLayerResult"
+    ],
+    "snippets": [
+        "SelectENCFeaturesViewController.swift"
+    ],
+    "title": "Select ENC features"
+}

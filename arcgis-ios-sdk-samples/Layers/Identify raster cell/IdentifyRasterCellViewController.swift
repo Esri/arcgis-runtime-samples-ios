@@ -35,7 +35,11 @@ class IdentifyRasterCellViewController: UIViewController {
     // MARK: Properties
     
     /// The raster layer created using local raster file.
-    let rasterLayer = AGSRasterLayer(raster: AGSRaster(name: "SA_EVI_8Day_03May20", extension: "tif"))
+    let rasterLayer = AGSRasterLayer(raster: AGSRaster(fileURL: Bundle.main.url(
+        forResource: "SA_EVI_8Day_03May20",
+        withExtension: "tif",
+        subdirectory: "SA_EVI_8Day_03May20"
+    )!))
     
     /// A formatter for coordinates.
     let formatter: NumberFormatter = {

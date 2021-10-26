@@ -38,7 +38,7 @@ class AppInfoViewController: UIViewController {
         UIApplication.shared.open(.esriCommunity)
     }
     
-    @IBAction func arcGISForiOSAction() {
+    @IBAction func runtimeSDKForiOSAction() {
         UIApplication.shared.open(.developers)
     }
     

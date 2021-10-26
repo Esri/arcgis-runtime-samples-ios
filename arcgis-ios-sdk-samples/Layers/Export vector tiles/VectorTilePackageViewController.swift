@@ -16,7 +16,9 @@ import UIKit
 import ArcGIS
 
 protocol VectorTilePackageViewControllerDelegate: AnyObject {
-    func removeDirectories()
+    /// Tell the delegate that the user finished viewing the vector tile package.
+    /// - Parameter controller: The controller sending the message.
+    func vectorTilePackageViewControllerDidFinish(_ controller: VectorTilePackageViewController)
 }
 
 class VectorTilePackageViewController: UIViewController {

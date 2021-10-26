@@ -107,7 +107,7 @@ class ExportVectorTilesViewController: UIViewController {
         // Get current area of interest marked by the extent view.
         let areaOfInterest = envelope(for: extentView)
         // Get the parameters by specifying the selected area and vector tiled layer's max scale as maxScale.
-        exportTask.defaultExportVectorTilesParameters(withAreaOfInterest: areaOfInterest, maxScale: maxScale) { [weak self] parameters, error  in
+        exportTask.defaultExportVectorTilesParameters(withAreaOfInterest: areaOfInterest, maxScale: maxScale) { [weak self] parameters, error in
             guard let self = self, let exportVectorTilesTask = self.exportVectorTilesTask else { return }
             if let params = parameters {
                 // Start exporting the tiles with the resulting parameters.
@@ -199,6 +199,7 @@ class ExportVectorTilesViewController: UIViewController {
            let rootController = navController.viewControllers.first as? VectorTilePackageViewController {
             rootController.tiledLayerResult = vectorTiledLayer
             rootController.extent = extent
+            rootController.delegate = self
         }
     }
     

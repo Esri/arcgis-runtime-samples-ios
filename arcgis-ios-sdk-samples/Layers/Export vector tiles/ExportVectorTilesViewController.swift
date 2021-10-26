@@ -44,7 +44,9 @@ class ExportVectorTilesViewController: UIViewController {
     
     // MARK: Properties
     
+    /// The resulting vector tiled layer.
     var vectorTiledLayer: AGSArcGISVectorTiledLayer?
+    /// The extent of the map that is to be exported.
     var extent: AGSEnvelope?
     /// The export task to request the tile package with the same URL as the tile layer.
     var exportVectorTilesTask: AGSExportVectorTilesTask?
@@ -54,8 +56,11 @@ class ExportVectorTilesViewController: UIViewController {
             // Remove key-value observation.
             progressObservation = nil
             exportVectorTilesButton.isEnabled = job == nil
+            // Refresh the progress view according to the job status.
             updateProgressViewUI()
+            // Observe the job's progress.
             progressView.observedProgress = job?.progress
+            // Observe the localized description in order to update the text label.
             progressObservation = job?.progress.observe(\.localizedDescription, options: .initial) { [weak self] progress, _ in
                 DispatchQueue.main.async {
                     // Update the progress label.
@@ -67,7 +72,7 @@ class ExportVectorTilesViewController: UIViewController {
     
     /// A URL to the temporary directory to temporarily store the exported vector tile package.
     let vtpkTemporaryURL = makeVTPKDirectory()
-    
+
     static func makeVTPKDirectory() -> URL {
         let url = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
         try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
@@ -78,7 +83,7 @@ class ExportVectorTilesViewController: UIViewController {
 
     /// A URL to the temporary directory to temporarily store the style item resources.
     let styleTemporaryURL = makeStyleDirectory()
-    
+
     static func makeStyleDirectory() -> URL {
         let url = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
         try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: false)
@@ -164,12 +169,6 @@ class ExportVectorTilesViewController: UIViewController {
         }
     }
     
-    func removeDirectories() {
-        // Remove the temporary directories and all content in it.
-        try? FileManager.default.removeItem(at: vtpkTemporaryURL)
-        try? FileManager.default.removeItem(at: styleTemporaryURL)
-    }
-    
     // MARK: Actions
     
     @IBAction func exportTilesBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -181,16 +180,6 @@ class ExportVectorTilesViewController: UIViewController {
         } else {
             presentAlert(title: "Error", message: "Exporting tiles is not supported for the service.")
         }
-    }
-    
-    @IBAction func closeButtonTapped(_ sender: UIButton) {
-        // Hide the preview and background.
-        visualEffectView.isHidden = true
-        // Release the map in order to free the tiled layer.
-        previewMapView.map = nil
-        updateProgressViewUI()
-        // Remove the sample-specific temporary directory and all content in it.
-        removeDirectories()
     }
     
     @IBAction func cancelAction() {
@@ -242,5 +231,13 @@ extension ExportVectorTilesViewController: UIAdaptivePresentationControllerDeleg
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // Ensure that the settings are shown in a popover on small displays.
         return .formSheet
+    }
+}
+
+extension ExportVectorTilesViewController: VectorTilePackageViewControllerDelegate {
+   func removeDirectories() {
+        // Remove the temporary directories and all content in it.
+        try? FileManager.default.removeItem(at: vtpkTemporaryURL)
+        try? FileManager.default.removeItem(at: styleTemporaryURL)
     }
 }

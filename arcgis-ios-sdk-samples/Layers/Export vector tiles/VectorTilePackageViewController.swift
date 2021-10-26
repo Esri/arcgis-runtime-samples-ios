@@ -16,15 +16,20 @@ import UIKit
 import ArcGIS
 
 protocol VectorTilePackageViewControllerDelegate: AnyObject {
-    func optionsViewController(_ controller: ConfigureSubnetworkTraceOptionsViewController, didCreate: AGSUtilityTraceConditionalExpression)
+    func removeDirectories()
 }
 
 class VectorTilePackageViewController: UIViewController {
     @IBOutlet var resultView: AGSMapView!
+    /// The resulting vector tiled layer.
     var tiledLayerResult: AGSArcGISVectorTiledLayer?
+    /// The extent of the vector tiled layer.
     var extent: AGSEnvelope?
+    /// A delegate to notify other view controllers.
+    weak var delegate: VectorTilePackageViewControllerDelegate?
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
+        delegate?.removeDirectories()
         dismiss(animated: true)
     }
     
@@ -34,7 +39,9 @@ class VectorTilePackageViewController: UIViewController {
             let tiledLayerResult = tiledLayerResult,
             let extent = extent
         else { return }
+        // Set the map in the resulting view to the exported vector tile package.
         resultView.map = AGSMap(basemap: AGSBasemap(baseLayer: tiledLayerResult))
+        // Set the viewpoint to be the extent.
         resultView.setViewpoint(AGSViewpoint(targetExtent: extent))
     }
 }

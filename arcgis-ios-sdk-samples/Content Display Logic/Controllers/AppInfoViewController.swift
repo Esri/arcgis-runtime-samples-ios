@@ -31,7 +31,7 @@ class AppInfoViewController: UIViewController {
         
         self.preferredContentSize = CGSize(width: 350, height: 350)
     }
-   
+    
     // MARK: - Actions
     
     @IBAction func esriCommunityAction() {

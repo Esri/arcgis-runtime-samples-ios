@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6uy-c7-HcL">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Toggle Feature Request Modes View Controller-->
+        <scene sceneID="xqy-uX-9SI">
+            <objects>
+                <viewController id="6uy-c7-HcL" customClass="ToggleFeatureRequestModesViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hKY-ke-PWN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWQ-Y6-I3c" userLabel="Map View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JpY-Iu-b7q">
+                                <rect key="frame" x="0.0" y="44" width="414" height="21"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXL-vJ-wdy">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="LXL-vJ-wdy" firstAttribute="top" secondItem="JpY-Iu-b7q" secondAttribute="top" id="0Pi-Uu-NK5"/>
+                                    <constraint firstAttribute="bottom" secondItem="LXL-vJ-wdy" secondAttribute="bottom" id="Rg6-si-YN9"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiW-4k-5rz">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kTS-ce-5kS"/>
+                                    <barButtonItem title="Mode" id="1SN-5G-yct">
+                                        <connections>
+                                            <action selector="modeButtonTapped:" destination="6uy-c7-HcL" id="Nmp-jo-b6H"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3bC-HL-gie"/>
+                                    <barButtonItem enabled="NO" title="Populate" id="gFJ-YS-5Ei">
+                                        <connections>
+                                            <action selector="populateManualCache:" destination="6uy-c7-HcL" id="dW8-hP-cgq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xA6-UX-DYa"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gJ3-pA-oNW"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JpY-Iu-b7q" firstAttribute="leading" secondItem="hKY-ke-PWN" secondAttribute="leading" id="2Lu-gf-Hyg"/>
+                            <constraint firstAttribute="trailing" secondItem="RWQ-Y6-I3c" secondAttribute="trailing" id="42s-gL-1v8"/>
+                            <constraint firstItem="oiW-4k-5rz" firstAttribute="top" secondItem="RWQ-Y6-I3c" secondAttribute="bottom" id="8cP-jw-Eib"/>
+                            <constraint firstItem="LXL-vJ-wdy" firstAttribute="leading" secondItem="gJ3-pA-oNW" secondAttribute="leading" id="GIr-gl-7Vy"/>
+                            <constraint firstItem="oiW-4k-5rz" firstAttribute="leading" secondItem="hKY-ke-PWN" secondAttribute="leading" id="Piu-Ql-MMT"/>
+                            <constraint firstItem="oiW-4k-5rz" firstAttribute="bottom" secondItem="gJ3-pA-oNW" secondAttribute="bottom" id="RLZ-e1-8e7"/>
+                            <constraint firstItem="RWQ-Y6-I3c" firstAttribute="top" secondItem="gJ3-pA-oNW" secondAttribute="top" id="bgr-gB-S2k"/>
+                            <constraint firstAttribute="trailing" secondItem="oiW-4k-5rz" secondAttribute="trailing" id="c0m-bw-54y"/>
+                            <constraint firstAttribute="trailing" secondItem="JpY-Iu-b7q" secondAttribute="trailing" id="dYR-Pn-Rvr"/>
+                            <constraint firstItem="RWQ-Y6-I3c" firstAttribute="leading" secondItem="hKY-ke-PWN" secondAttribute="leading" id="i6W-Yf-wX7"/>
+                            <constraint firstItem="LXL-vJ-wdy" firstAttribute="trailing" secondItem="gJ3-pA-oNW" secondAttribute="trailing" id="piI-iU-CUU"/>
+                            <constraint firstItem="JpY-Iu-b7q" firstAttribute="top" secondItem="gJ3-pA-oNW" secondAttribute="top" id="v6l-MU-vH5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="RWQ-Y6-I3c" id="Uw6-8E-tah"/>
+                        <outlet property="modeBarButtonItem" destination="1SN-5G-yct" id="dpX-Uz-00M"/>
+                        <outlet property="populateBarButtonItem" destination="gFJ-YS-5Ei" id="MHB-JD-oKJ"/>
+                        <outlet property="statusLabel" destination="LXL-vJ-wdy" id="hak-K3-cQ4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="myF-4z-ytg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="255" y="29"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

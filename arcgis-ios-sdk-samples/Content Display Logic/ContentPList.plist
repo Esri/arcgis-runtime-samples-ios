@@ -17,6 +17,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Display a map SwiftUI</string>
+				<key>storyboardName</key>
+				<string>DisplayMapSwiftUI</string>
+				<key>descriptionText</key>
+				<string>Display a map and demonstrate common usecases in SwiftUI.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Change map view background</string>
 				<key>storyboardName</key>
 				<string>ChangeMapViewBackground</string>
@@ -735,6 +743,27 @@
 				<key>storyboardName</key>
 				<string>QueryWithCQLFilters</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Export vector tiles</string>
+				<key>descriptionText</key>
+				<string>Export tiles from an online vector tile service.</string>
+				<key>storyboardName</key>
+				<string>ExportVectorTiles</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Select ENC features</string>
+				<key>descriptionText</key>
+				<string>Select features in an ENC layer.</string>
+				<key>storyboardName</key>
+				<string>SelectENCFeatures</string>
+				<key>dependency</key>
+				<array>
+					<string>ExchangeSetWithoutUpdates</string>
+					<string>Hydrography</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -801,30 +830,6 @@
 				<array>
 					<string>PublicArtShapefile</string>
 				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Service feature table (cache)</string>
-				<key>storyboardName</key>
-				<string>OnInteractionCache</string>
-				<key>descriptionText</key>
-				<string>Display a feature layer from a service using the on interaction cache feature request mode.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Service feature table (no cache)</string>
-				<key>storyboardName</key>
-				<string>OnInteractionNoCache</string>
-				<key>descriptionText</key>
-				<string>Display a feature layer from a service using the no cache feature request mode.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Service feature table (manual cache)</string>
-				<key>storyboardName</key>
-				<string>ManualCache</string>
-				<key>descriptionText</key>
-				<string>Display a feature layer from a service using the manual cache feature request mode.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>
@@ -917,6 +922,14 @@
 				<string>TimeBasedQuery</string>
 				<key>descriptionText</key>
 				<string>Query data using a time extent.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Toggle between feature request modes</string>
+				<key>storyboardName</key>
+				<string>ToggleFeatureRequestModes</string>
+				<key>descriptionText</key>
+				<string>Use different feature request modes to populate the map from a service feature table.</string>
 			</dict>
 		</array>
 	</dict>

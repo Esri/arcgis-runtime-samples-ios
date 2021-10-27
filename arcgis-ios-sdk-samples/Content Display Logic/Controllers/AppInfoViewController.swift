@@ -34,7 +34,20 @@ class AppInfoViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func esriCommunityAction() {
+        UIApplication.shared.open(.esriCommunity)
+    }
+    
+    @IBAction func runtimeSDKForiOSAction() {
+        UIApplication.shared.open(.developers)
+    }
+    
     @IBAction func closeAction() {
         self.dismiss(animated: true)
     }
+}
+
+private extension URL {
+    static let developers = URL(string: "https://developers.arcgis.com/ios/")!
+    static let esriCommunity = URL(string: "https://community.esri.com/t5/arcgis-runtime-sdk-for-ios-questions/bd-p/arcgis-runtime-sdk-for-ios-questions")!
 }

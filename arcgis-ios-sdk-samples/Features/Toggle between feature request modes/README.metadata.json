@@ -1,0 +1,32 @@
+{
+    "category": "Features",
+    "description": "Use different feature request modes to populate the map from a service feature table.",
+    "ignore": false,
+    "images": [
+        "toggle-feature-request-modes.png"
+    ],
+    "keywords": [
+        "cache",
+        "data",
+        "feature",
+        "feature request mode",
+        "performance",
+        "AGSFeatureLayer",
+        "AGSFeatureRequestMode",
+        "AGSServiceFeatureTable",
+        "AGSServiceFeatureTable.featureRequestMode",
+        "AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSFeatureRequestMode",
+        "AGSServiceFeatureTable",
+        "AGSServiceFeatureTable.featureRequestMode",
+        "AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)"
+    ],
+    "snippets": [
+        "ToggleFeatureRequestModesViewController.swift"
+    ],
+    "title": "Toggle between feature request modes"
+}

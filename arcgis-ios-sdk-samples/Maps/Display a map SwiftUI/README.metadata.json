@@ -1,0 +1,30 @@
+{
+    "category": "Maps",
+    "description": "Display a map and demonstrate common usecases in SwiftUI.",
+    "ignore": false,
+    "images": [
+        "display-map-swiftui.png"
+    ],
+    "keywords": [
+        "SwiftUI",
+        "basemap style",
+        "interface",
+        "interoperability",
+        "map",
+        "AGSBasemapStyle",
+        "AGSMap",
+        "AGSMapView"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSBasemapStyle",
+        "AGSMap",
+        "AGSMapView"
+    ],
+    "snippets": [
+        "SwiftUIMapView.swift",
+        "DisplayMapSwiftUIView.swift",
+        "DisplayMapSwiftUIViewController.swift"
+    ],
+    "title": "Display a map SwiftUI"
+}

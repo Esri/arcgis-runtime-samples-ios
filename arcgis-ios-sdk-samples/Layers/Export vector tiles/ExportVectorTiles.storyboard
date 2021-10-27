@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2pT-q8-Ydc">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Export Vector Tiles View Controller-->
+        <scene sceneID="PfU-9b-jIe">
+            <objects>
+                <viewController id="2pT-q8-Ydc" userLabel="Export Vector Tiles View Controller" customClass="ExportVectorTilesViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I67-An-xiz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uep-y3-UpB" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJe-Gj-nIT">
+                                <rect key="frame" x="41.5" y="121" width="331" height="615"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcI-J9-vsB" userLabel="Progress View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="48.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X69-XY-rj2">
+                                        <rect key="frame" x="20" y="8" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="M6i-HD-GXg" userLabel="Progress Bar">
+                                        <rect key="frame" x="20" y="36.5" width="318" height="4"/>
+                                    </progressView>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zN0-XS-Gz0">
+                                        <rect key="frame" x="346" y="9.5" width="48" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelAction" destination="2pT-q8-Ydc" eventType="touchUpInside" id="cET-d8-e2A"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="X69-XY-rj2" firstAttribute="leading" secondItem="tcI-J9-vsB" secondAttribute="leading" constant="20" symbolic="YES" id="1jT-m8-zvb"/>
+                                    <constraint firstItem="M6i-HD-GXg" firstAttribute="top" secondItem="X69-XY-rj2" secondAttribute="bottom" constant="8" symbolic="YES" id="7Uf-HB-hIe"/>
+                                    <constraint firstItem="X69-XY-rj2" firstAttribute="top" secondItem="tcI-J9-vsB" secondAttribute="topMargin" id="8NJ-Cu-b5X"/>
+                                    <constraint firstAttribute="trailing" secondItem="zN0-XS-Gz0" secondAttribute="trailing" constant="20" symbolic="YES" id="Rwn-hp-y3P"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="M6i-HD-GXg" secondAttribute="bottom" id="UPL-00-DGm"/>
+                                    <constraint firstItem="zN0-XS-Gz0" firstAttribute="leading" secondItem="M6i-HD-GXg" secondAttribute="trailing" constant="8" symbolic="YES" id="c15-vt-Pk2"/>
+                                    <constraint firstItem="X69-XY-rj2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="zN0-XS-Gz0" secondAttribute="leading" constant="8" symbolic="YES" id="d95-kW-6vW"/>
+                                    <constraint firstItem="zN0-XS-Gz0" firstAttribute="centerY" secondItem="tcI-J9-vsB" secondAttribute="centerY" id="iBb-RI-NCi"/>
+                                    <constraint firstItem="M6i-HD-GXg" firstAttribute="leading" secondItem="tcI-J9-vsB" secondAttribute="leading" constant="20" symbolic="YES" id="xoR-FN-nMP"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Lc-cP-EKo">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ohL-Pq-8hI"/>
+                                    <barButtonItem enabled="NO" title="Export Vector Tiles" id="um4-kC-Ovd">
+                                        <connections>
+                                            <action selector="exportTilesBarButtonTapped:" destination="2pT-q8-Ydc" id="EwW-VS-Dbx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dqR-4P-OZU"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lzo-Kb-5Ip"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Uep-y3-UpB" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="4Wo-yJ-IgW"/>
+                            <constraint firstItem="Uep-y3-UpB" firstAttribute="bottom" secondItem="0Lc-cP-EKo" secondAttribute="top" id="CTe-DI-B7X"/>
+                            <constraint firstItem="UJe-Gj-nIT" firstAttribute="centerX" secondItem="Uep-y3-UpB" secondAttribute="centerX" id="Cz5-a6-k4a"/>
+                            <constraint firstItem="UJe-Gj-nIT" firstAttribute="height" secondItem="Uep-y3-UpB" secondAttribute="height" multiplier="0.8" id="Sfr-ia-it1"/>
+                            <constraint firstItem="tcI-J9-vsB" firstAttribute="top" secondItem="lzo-Kb-5Ip" secondAttribute="top" id="VIe-TZ-2EB"/>
+                            <constraint firstItem="tcI-J9-vsB" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="akI-vL-Ghc"/>
+                            <constraint firstItem="0Lc-cP-EKo" firstAttribute="leading" secondItem="I67-An-xiz" secondAttribute="leading" id="d5a-jd-Ndf"/>
+                            <constraint firstItem="Uep-y3-UpB" firstAttribute="trailing" secondItem="I67-An-xiz" secondAttribute="trailing" id="fTY-zJ-Kio"/>
+                            <constraint firstItem="UJe-Gj-nIT" firstAttribute="width" secondItem="Uep-y3-UpB" secondAttribute="width" multiplier="0.8" id="gEA-bW-ZtT"/>
+                            <constraint firstItem="Uep-y3-UpB" firstAttribute="top" secondItem="lzo-Kb-5Ip" secondAttribute="top" id="glv-Rx-HQo"/>
+                            <constraint firstItem="UJe-Gj-nIT" firstAttribute="centerY" secondItem="Uep-y3-UpB" secondAttribute="centerY" id="h7Y-i0-h9j"/>
+                            <constraint firstAttribute="trailing" secondItem="tcI-J9-vsB" secondAttribute="trailing" id="nKT-PC-tRz"/>
+                            <constraint firstItem="lzo-Kb-5Ip" firstAttribute="bottom" secondItem="0Lc-cP-EKo" secondAttribute="bottom" id="uJ0-8b-1Kw"/>
+                            <constraint firstItem="0Lc-cP-EKo" firstAttribute="trailing" secondItem="I67-An-xiz" secondAttribute="trailing" id="xog-RU-Ecs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="zN0-XS-Gz0" id="aWr-S6-2F5"/>
+                        <outlet property="exportVectorTilesButton" destination="um4-kC-Ovd" id="31m-yT-698"/>
+                        <outlet property="extentView" destination="UJe-Gj-nIT" id="05e-No-fX6"/>
+                        <outlet property="mapView" destination="Uep-y3-UpB" id="N6A-Kb-Sqn"/>
+                        <outlet property="progressLabel" destination="X69-XY-rj2" id="VyY-ZT-qci"/>
+                        <outlet property="progressParentView" destination="tcI-J9-vsB" id="34Q-Ih-Gqg"/>
+                        <outlet property="progressView" destination="M6i-HD-GXg" id="lsB-4p-cCk"/>
+                        <segue destination="n49-Rd-Km9" kind="presentation" identifier="showResult" id="nUd-qI-yuE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zz3-SN-aeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="469" y="562"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FaD-R8-24N">
+            <objects>
+                <navigationController id="n49-Rd-Km9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mPu-dn-BoW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bil-Kr-boI" kind="relationship" relationship="rootViewController" id="UTI-0E-Qqk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Hb-wE-BGY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="562"/>
+        </scene>
+        <!--Vector tile package-->
+        <scene sceneID="gnO-PE-k39">
+            <objects>
+                <viewController id="bil-Kr-boI" customClass="VectorTilePackageViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wWP-dW-kPu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbX-4o-JFP" userLabel="Result View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bKP-sF-nUz"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fbX-4o-JFP" firstAttribute="bottom" secondItem="wWP-dW-kPu" secondAttribute="bottom" id="5h1-8T-WIA"/>
+                            <constraint firstItem="fbX-4o-JFP" firstAttribute="leading" secondItem="wWP-dW-kPu" secondAttribute="leading" id="TqJ-vh-aEw"/>
+                            <constraint firstAttribute="trailing" secondItem="fbX-4o-JFP" secondAttribute="trailing" id="bfS-4T-BIT"/>
+                            <constraint firstItem="fbX-4o-JFP" firstAttribute="top" secondItem="bKP-sF-nUz" secondAttribute="top" id="ziz-vH-Dc7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Vector tile package" id="Hh1-uO-Map">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="FR5-vp-4y9">
+                            <connections>
+                                <action selector="doneAction:" destination="bil-Kr-boI" id="n64-8l-UcI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="resultView" destination="fbX-4o-JFP" id="kLc-d4-P9q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mp0-mN-ia9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1986" y="562"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

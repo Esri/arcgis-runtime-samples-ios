@@ -9,19 +9,19 @@ The ```main``` branch of this repository contains samples configured for the lat
 
 ## Features
 
-* Maps - Open, create, interact with and save maps
-* Layers - Display vector and raster data in maps and scenes
-* Features - Work with feature layers and geodatabases
-* Display Information - Show graphics, popups, callouts, and sketches
-* Search - Find addresses, places, and points of interest
-* Edit Data - Add, delete, and edit features and attachments
-* Geometry - Create geometries and perform geometric operations
-* Route & Directions - Calculate routes between locations and around barriers
-* Analysis - Perform spatial analysis via geoprocessing tasks and services
-* Cloud & Portal - Search for webmaps and list portal group users
-* Scenes - Visualize 3D environments and symbols
-* Utility Network - Work with utility networks, performing traces and exploring network elements
-* Augmented Reality - View data overlaid on the real world through your device's camera
+* [Maps](arcgis-ios-sdk-samples/Maps) - Open, create, interact with and save maps
+* [Layers](arcgis-ios-sdk-samples/Layers) - Display vector and raster data in maps and scenes
+* [Features](arcgis-ios-sdk-samples/Features) - Work with feature layers and geodatabases
+* [Display Information](arcgis-ios-sdk-samples/Display%20information) - Show graphics, popups, callouts, and sketches
+* [Search](arcgis-ios-sdk-samples/Search) - Find addresses, places, and points of interest
+* [Edit Data](arcgis-ios-sdk-samples/Edit%20data) - Add, delete, and edit features and attachments
+* [Geometry](arcgis-ios-sdk-samples/Geometry) - Create geometries and perform geometric operations
+* [Route & Directions](arcgis-ios-sdk-samples/Route%20and%20directions) - Calculate routes between locations and around barriers
+* [Analysis](arcgis-ios-sdk-samples/Analysis) - Perform spatial analysis via geoprocessing tasks and services
+* [Cloud & Portal](arcgis-ios-sdk-samples/Cloud%20and%20portal) - Search for webmaps and list portal group users
+* [Scenes](arcgis-ios-sdk-samples/Scenes) - Visualize 3D environments and symbols
+* [Utility Network](arcgis-ios-sdk-samples/Utility%20network) - Work with utility networks, performing traces and exploring network elements
+* [Augmented Reality](arcgis-ios-sdk-samples/Augmented%20reality) - View data overlaid on the real world through your device's camera
 
 ## Requirements
 
@@ -45,7 +45,18 @@ The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meani
 1. **Fork** and then **clone** the repository
 1. **Install** the ArcGIS Runtime SDK for iOS by running the `pod install` command in the folder where you cloned this repository
 1. **Open** the `arcgis-ios-sdk-samples.xcworkspace` **workspace** file
-1. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Swift Packages` tab, and **delete** the `arcgis-runtime-toolkit-ios` package. This Swift package conflicts with CocoaPods and is only required when using the Swift Package Manager as described in the previous section.
+1. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Package Dependencies` tab, and **delete** the `arcgis-runtime-toolkit-ios` package
+    > This Swift package conflicts with CocoaPods and is only required when using the Swift Package Manager as described in the previous section.
+1. **Run** the `arcgis-ios-sdk-samples` app target
+
+## Building Samples Using Installed SDK
+
+1. **Fork** and then **clone** the repository
+1. **Install** the ArcGIS Runtime SDK for iOS to a central location on your mac as described [here](https://developers.arcgis.com/ios/install-and-set-up/#manual-download)
+1. **Open** the `arcgis-ios-sdk-samples.xcodeproj` **project** file. **Select** the `arcgis-ios-sdk-samples` project node, go to the `Package Dependencies` tab, and **delete** the `arcgis-runtime-toolkit-ios` package
+    > This Swift package conflicts with manual installation and is only required when using the Swift Package Manager as described in the previous section.
+1. **Download** the `arcgis-runtime-toolkit-ios` from [here](https://github.com/Esri/arcgis-runtime-toolkit-ios), and follow the [instructions](https://github.com/Esri/arcgis-runtime-toolkit-ios#manual) to add it as a local Swift package
+    > The manual installation method allows you to use a local installation ArcGIS Runtime SDK for iOS by making minor edits to the toolkit's Swift package manifest. Follow the instructions in `Package.swift` to uncomment the lines for `localArcGISPackage` and use it as the package dependency instead of the hosted version.
 1. **Run** the `arcgis-ios-sdk-samples` app target
 
 ## Sample Data

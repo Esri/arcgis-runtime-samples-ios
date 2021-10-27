@@ -80,14 +80,15 @@ class ExportVectorTilesViewController: UIViewController {
         .appendingPathComponent("styleItemResources", isDirectory: true)
     
     /// A directory to temporarily store all items.
-    static let temporaryDirectory: URL = {
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
-        try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: false)
-        return url
-    }()
+    static let temporaryDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
     
     /// Observation to track the export vector tiles job.
     private var progressObservation: NSKeyValueObservation?
+    
+    required init?(coder: NSCoder) {
+        try? FileManager.default.createDirectory(at: Self.temporaryDirectory, withIntermediateDirectories: false)
+        super.init(coder: coder)
+    }
     
     // MARK: Methods
     

@@ -71,22 +71,23 @@ class ExportVectorTilesViewController: UIViewController {
     }
     
     /// A URL to the temporary directory to temporarily store the exported vector tile package.
-    let vtpkTemporaryURL = temporaryDirectory
-            .appendingPathComponent("myTileCache", isDirectory: false)
-            .appendingPathExtension("vtpk")
-        
+    let vtpkTemporaryURL: URL
     /// A URL to the temporary directory to temporarily store the style item resources.
-    let styleTemporaryURL = temporaryDirectory
-        .appendingPathComponent("styleItemResources", isDirectory: true)
-    
+    let styleTemporaryURL: URL
     /// A directory to temporarily store all items.
-    static let temporaryDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    let temporaryDirectory: URL
     
     /// Observation to track the export vector tiles job.
     private var progressObservation: NSKeyValueObservation?
     
     required init?(coder: NSCoder) {
-        try? FileManager.default.createDirectory(at: Self.temporaryDirectory, withIntermediateDirectories: false)
+        temporaryDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+        try? FileManager.default.createDirectory(at: temporaryDirectory, withIntermediateDirectories: false)
+        vtpkTemporaryURL = temporaryDirectory
+            .appendingPathComponent("myTileCache", isDirectory: false)
+            .appendingPathExtension("vtpk")
+        styleTemporaryURL = temporaryDirectory
+            .appendingPathComponent("styleItemResources", isDirectory: true)
         super.init(coder: coder)
     }
     
@@ -234,7 +235,7 @@ class ExportVectorTilesViewController: UIViewController {
     }
     
     deinit {
-        try? FileManager.default.removeItem(at: Self.temporaryDirectory)
+        try? FileManager.default.removeItem(at: temporaryDirectory)
     }
 }
 

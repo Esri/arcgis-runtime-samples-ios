@@ -49,6 +49,9 @@
 		003D25702513FBB5007527C2 /* ExchangeSetWithoutUpdates in Resources */ = {isa = PBXBuildFile; fileRef = 003D256F2513FBB5007527C2 /* ExchangeSetWithoutUpdates */; settings = {ASSET_TAGS = (ExchangeSetWithoutUpdates, ); }; };
 		003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */; };
 		005507FC25E48134003990D3 /* Redlands.nmea in Resources */ = {isa = PBXBuildFile; fileRef = 005507FB25E48134003990D3 /* Redlands.nmea */; settings = {ASSET_TAGS = (RedlandsNMEA, ); }; };
+		005C713A26C32ED10003BDC3 /* DisplayMapSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C713926C32ED10003BDC3 /* DisplayMapSwiftUIView.swift */; };
+		005C713C26C331470003BDC3 /* DisplayMapSwiftUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005C713B26C331470003BDC3 /* DisplayMapSwiftUI.storyboard */; };
+		005C713E26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C713D26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift */; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -64,11 +67,15 @@
 		007FC9492534E8AE00D8D9A1 /* solarized-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9472534E8AE00D8D9A1 /* solarized-dark.css */; };
 		0083AA192628ED18003A28C8 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0083AA162628ED18003A28C8 /* ProgressViewController.xib */; };
 		0083AA1A2628ED18003A28C8 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AA172628ED18003A28C8 /* ProgressViewController.swift */; };
+		00874F0126DD8C2A009148CF /* SwiftUIMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00874F0026DD8C2A009148CF /* SwiftUIMapView.swift */; };
 		0087A55D265C8FEA00D9601D /* BrowseOGCAPIFeatureServiceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003267B5265C479200DB4CB5 /* BrowseOGCAPIFeatureServiceViewController.swift */; };
 		008D175224EEEEBD0001BB8F /* loudoun_anno.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */; settings = {ASSET_TAGS = (loudoun_anno, ); }; };
 		008D175724EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
 		008D175924EEF4390001BB8F /* EditWithBranchVersioning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */; };
 		008D175A24EF35800001BB8F /* EditWithBranchVersioningViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
+		008F292A26E0424C00A5BCD3 /* DisplayMapSwiftUIViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 005C713D26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift */; };
+		008F292B26E0424C00A5BCD3 /* DisplayMapSwiftUIView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 005C713926C32ED10003BDC3 /* DisplayMapSwiftUIView.swift */; };
+		008F292C26E0424C00A5BCD3 /* SwiftUIMapView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00874F0026DD8C2A009148CF /* SwiftUIMapView.swift */; };
 		009B5FF825E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B5FF625E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift */; };
 		009B5FFD25E58E5A00BB9A77 /* CreateSymbolStylesFromWebStyles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009B5FFC25E58E5A00BB9A77 /* CreateSymbolStylesFromWebStyles.storyboard */; };
 		009B600325E5DB4700BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 009B5FF625E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift */; };
@@ -945,6 +952,9 @@
 			files = (
 				F1C092D7272774530000B132 /* VectorTilePackageViewController.swift in CopyFiles */,
 				F1027F5926F9258E000FA674 /* ExportVectorTilesViewController.swift in CopyFiles */,
+				008F292A26E0424C00A5BCD3 /* DisplayMapSwiftUIViewController.swift in CopyFiles */,
+				008F292B26E0424C00A5BCD3 /* DisplayMapSwiftUIView.swift in CopyFiles */,
+				008F292C26E0424C00A5BCD3 /* SwiftUIMapView.swift in CopyFiles */,
 				00CDA5C326F14B9B00DEE7F4 /* SelectENCFeaturesViewController.swift in CopyFiles */,
 				F1D938FD26BA5555001ECB9A /* ToggleFeatureRequestModesViewController.swift in CopyFiles */,
 				000FFFB726CDD66B00E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in CopyFiles */,
@@ -1261,6 +1271,9 @@
 		003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddENCExchangeSet.storyboard; sourceTree = "<group>"; };
 		003D256F2513FBB5007527C2 /* ExchangeSetWithoutUpdates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ExchangeSetWithoutUpdates; sourceTree = "<group>"; };
 		005507FB25E48134003990D3 /* Redlands.nmea */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redlands.nmea; sourceTree = "<group>"; };
+		005C713926C32ED10003BDC3 /* DisplayMapSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMapSwiftUIView.swift; sourceTree = "<group>"; };
+		005C713B26C331470003BDC3 /* DisplayMapSwiftUI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayMapSwiftUI.storyboard; sourceTree = "<group>"; };
+		005C713D26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMapSwiftUIViewController.swift; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		0069F4BD25F0111D00CA7BD2 /* CreateLoadReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateLoadReport.storyboard; sourceTree = "<group>"; };
 		0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoadReportViewController.swift; sourceTree = "<group>"; };
@@ -1272,6 +1285,7 @@
 		007FC9472534E8AE00D8D9A1 /* solarized-dark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "solarized-dark.css"; sourceTree = "<group>"; };
 		0083AA162628ED18003A28C8 /* ProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
 		0083AA172628ED18003A28C8 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		00874F0026DD8C2A009148CF /* SwiftUIMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIMapView.swift; sourceTree = "<group>"; };
 		008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWithBranchVersioningViewController.swift; sourceTree = "<group>"; };
 		008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditWithBranchVersioning.storyboard; sourceTree = "<group>"; };
@@ -1964,6 +1978,17 @@
 				003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */,
 			);
 			path = "Add ENC exchange set";
+			sourceTree = "<group>";
+		};
+		005C713626C32E960003BDC3 /* Display a map SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				005C713D26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift */,
+				005C713926C32ED10003BDC3 /* DisplayMapSwiftUIView.swift */,
+				00874F0026DD8C2A009148CF /* SwiftUIMapView.swift */,
+				005C713B26C331470003BDC3 /* DisplayMapSwiftUI.storyboard */,
+			);
+			path = "Display a map SwiftUI";
 			sourceTree = "<group>";
 		};
 		0069F4B825F0110900CA7BD2 /* Create load report */ = {
@@ -3244,6 +3269,7 @@
 			isa = PBXGroup;
 			children = (
 				3E85263B1B90DD3500690EBD /* Display a map */,
+				005C713626C32E960003BDC3 /* Display a map SwiftUI */,
 				3EAF09431D71086E00F8538F /* Change map view background */,
 				3E8A258B1D36B97A00D14F08 /* Map loaded */,
 				3ED028381B8E3A8500ACA70D /* Open map (URL) */,
@@ -4880,6 +4906,7 @@
 				21EBBBFD1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				F1034F9D22D3EE8900B021DA /* Project.storyboard in Resources */,
+				005C713C26C331470003BDC3 /* DisplayMapSwiftUI.storyboard in Resources */,
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
 				3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */,
 				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
@@ -5343,6 +5370,7 @@
 				3ED75D071ED4D913009B1F75 /* ServiceAreaSettingsViewController.swift in Sources */,
 				4CAC91DB2242AB0400663A10 /* LoadWFSWithXMLQueryViewController.swift in Sources */,
 				166E8F9E1EE62E0E00C57C46 /* RasterLayerViewController.swift in Sources */,
+				005C713A26C32ED10003BDC3 /* DisplayMapSwiftUIView.swift in Sources */,
 				C7432D3A2187C450009BF1D8 /* ShowLabelsOnLayersViewController.swift in Sources */,
 				3E8A25921D36B97A00D14F08 /* MapLoadedViewController.swift in Sources */,
 				F1034FA922D3F5DB00B021DA /* CreateTerrainSurfaceFromLocalTilePackageViewController.swift in Sources */,
@@ -5377,6 +5405,7 @@
 				3ED0288E1B8E3A8500ACA70D /* SetInitialMapAreaViewController.swift in Sources */,
 				1218C845225C06AF0027F3E2 /* CameraControllerTableViewController.swift in Sources */,
 				4C783F3E2252D65A00609B9C /* OpenMobileSceneViewController.swift in Sources */,
+				00874F0126DD8C2A009148CF /* SwiftUIMapView.swift in Sources */,
 				2182C9831FDA01A0003E3A0F /* StatisticalQueryViewController.swift in Sources */,
 				3E81C1B91D8A0EF700470AA4 /* VectorTileCustomStyleViewController.swift in Sources */,
 				127D29F6200EC5FC00DD6CDC /* ViewshedSettingsViewController.swift in Sources */,
@@ -5421,6 +5450,7 @@
 				092A1C2A22456D9500C5F230 /* DisplayWFSViewController.swift in Sources */,
 				D930E01122EA47F7006C09A1 /* TraceUtilityNetworkViewController.swift in Sources */,
 				3ED0293A1B8E3AB300ACA70D /* MILShowLegendViewController.swift in Sources */,
+				005C713E26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift in Sources */,
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
 				00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */,
 				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift in Sources */,

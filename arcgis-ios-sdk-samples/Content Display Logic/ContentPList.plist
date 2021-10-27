@@ -17,6 +17,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Display a map SwiftUI</string>
+				<key>storyboardName</key>
+				<string>DisplayMapSwiftUI</string>
+				<key>descriptionText</key>
+				<string>Display a map and demonstrate common usecases in SwiftUI.</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Change map view background</string>
 				<key>storyboardName</key>
 				<string>ChangeMapViewBackground</string>

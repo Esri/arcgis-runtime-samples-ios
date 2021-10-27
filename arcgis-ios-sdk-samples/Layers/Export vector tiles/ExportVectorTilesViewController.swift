@@ -158,17 +158,9 @@ class ExportVectorTilesViewController: UIViewController {
     
     /// Update the progress view accordingly.
     func updateProgressViewUI() {
-        if job == nil {
-            // Enable map interaction.
-            mapView.interactionOptions.isEnabled = true
-            // Close and reset the progress view.
-            progressParentView.isHidden = true
-        } else {
-            // Disable map interaction while exporting tiles.
-            mapView.interactionOptions.isEnabled = false
-            // Show the progress parent view.
-            progressParentView.isHidden = false
-        }
+        let isJobNil = job == nil
+        mapView.interactionOptions.isEnabled = isJobNil
+        progressParentView.isHidden = isJobNil
     }
     
     /// Remove temporary files that are created for each job.
@@ -220,8 +212,9 @@ class ExportVectorTilesViewController: UIViewController {
             guard let vectorTiledLayer = self.mapView.map?.basemap.baseLayers.firstObject as? AGSArcGISVectorTiledLayer,
                   let vectorTiledLayerURL = vectorTiledLayer.url else { return }
             // The export task to request the tile package with the same URL as the tile layer.
-            self.exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayerURL)
-            self.exportVectorTilesTask?.load { [weak self] error in
+            let exportVectorTilesTask = AGSExportVectorTilesTask(url: vectorTiledLayerURL)
+            self.exportVectorTilesTask = exportVectorTilesTask
+            exportVectorTilesTask.load { [weak self] error in
                 guard let self = self else { return }
                 if let error = error {
                     self.presentAlert(error: error)

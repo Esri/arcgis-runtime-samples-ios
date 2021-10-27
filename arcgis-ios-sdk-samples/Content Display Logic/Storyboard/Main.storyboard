@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dro-WJ-0ka">
-    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -14,7 +14,7 @@
             <objects>
                 <navigationController title="Samples" id="yRd-en-sGR" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" largeTitles="YES" id="GpO-dt-EG2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -31,14 +31,14 @@
             <objects>
                 <viewController id="HRz-Eg-7ly" customClass="AppInfoViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AWt-rk-bdu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MAe-U0-Fji">
-                                <rect key="frame" x="5" y="300" width="310" height="33"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MAe-U0-Fji">
+                                <rect key="frame" x="52" y="491" width="310" height="66"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erh-VF-k0q">
-                                        <rect key="frame" x="0.0" y="0.0" width="155" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="310" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Esri Community"/>
                                         <connections>
@@ -46,9 +46,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wea-BI-rOz">
-                                        <rect key="frame" x="155" y="0.0" width="155" height="33"/>
+                                        <rect key="frame" x="0.0" y="33" width="310" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="ArcGIS iOS SDK"/>
+                                        <state key="normal" title="Runtime SDK for iOS"/>
                                         <connections>
                                             <action selector="runtimeSDKForiOSAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="l63-BE-Dbb"/>
                                         </connections>
@@ -56,7 +56,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54t-nf-ZK2">
-                                <rect key="frame" x="5" y="100" width="310" height="200"/>
+                                <rect key="frame" x="52" y="291" width="310" height="200"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="rjI-Fj-tXd">
                                         <rect key="frame" x="115" y="8" width="80" height="80"/>
@@ -93,7 +93,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-nR-s0N">
-                                <rect key="frame" x="140.5" y="410" width="39" height="30"/>
+                                <rect key="frame" x="187.5" y="758" width="39" height="30"/>
                                 <state key="normal" title="Close"/>
                                 <connections>
                                     <action selector="closeAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="JSz-9v-XS9"/>
@@ -126,7 +126,7 @@
             <objects>
                 <collectionViewController definesPresentationContext="YES" id="onD-yF-9Eu" customClass="ContentCollectionViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" id="yuT-nZ-Wrk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="VF4-1P-JDR">
@@ -224,19 +224,19 @@
             <objects>
                 <tableViewController storyboardIdentifier="ContentTableViewController" id="qbY-kB-MCT" customClass="ContentTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="22" sectionFooterHeight="22" id="5VG-Pu-2XV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ContentTableCell" id="UHI-3v-SDe" customClass="ContentTableCell" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="81"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UHI-3v-SDe" id="hjB-p9-kF0">
-                                    <rect key="frame" x="0.0" y="0.0" width="261" height="81"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="351" height="81"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="pVi-Nv-PRP">
-                                            <rect key="frame" x="16" y="19" width="237" height="43"/>
+                                            <rect key="frame" x="20" y="19" width="323" height="43"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open an existing map" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7O-tm-Q24">
                                                     <rect key="frame" x="0.0" y="0.0" width="165" height="20.5"/>
@@ -287,11 +287,11 @@
             <objects>
                 <viewController title="Detail" id="xTO-iT-Uqg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OWg-y6-Kjp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a sample from the list" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99s-uK-gYc">
-                                <rect key="frame" x="53" y="219" width="215" height="21"/>
+                                <rect key="frame" x="100" y="410" width="215" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -316,17 +316,17 @@
             <objects>
                 <viewController storyboardIdentifier="SegmentedViewController" automaticallyAdjustsScrollViewInsets="NO" id="aBz-1T-a42" customClass="SegmentedViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rXs-h5-bEr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5R-Ku-rtU" userLabel="Code Container View">
-                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <connections>
                                     <segue destination="qe9-PB-Pzq" kind="embed" identifier="SourceCodeSegue" id="nmt-TZ-5x3"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-3m-v2G" userLabel="Info Container View">
-                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <connections>
                                     <segue destination="NMd-B8-rJ5" kind="embed" identifier="SampleInfoSegue" id="c6m-uQ-Kz4"/>
                                 </connections>
@@ -348,7 +348,7 @@
                     <navigationItem key="navigationItem" id="Xla-oL-Hlb">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2NF-7S-DQ2">
-                            <rect key="frame" x="10" y="6" width="300" height="32"/>
+                            <rect key="frame" x="57" y="6" width="300" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Info"/>
@@ -376,11 +376,11 @@
             <objects>
                 <viewController id="NMd-B8-rJ5" customClass="SampleInfoViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p2z-Do-b04">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e32-Rc-zGM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
@@ -409,14 +409,14 @@
             <objects>
                 <viewController storyboardIdentifier="SourceCodeViewController" id="qe9-PB-Pzq" customClass="SourceCodeViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PsA-Cm-EhI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rA3-JQ-Mdx" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="392"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="764"/>
                                 <subviews>
                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KE4-Ic-Gt2">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="392"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="764"/>
                                         <wkWebViewConfiguration key="configuration">
                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                             <wkPreferences key="preferences"/>
@@ -431,7 +431,7 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lOs-Xt-37W">
-                                <rect key="frame" x="0.0" y="392" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="764" width="414" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3NS-sD-8rS"/>
                                     <barButtonItem title="source code filenames" id="TDL-II-K65">
@@ -486,7 +486,7 @@
             <objects>
                 <navigationController storyboardIdentifier="DetailNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6mK-5c-4sN" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="V9q-Qo-B83">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -503,19 +503,19 @@
             <objects>
                 <tableViewController id="ZtT-NE-hWv" customClass="ListViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iNp-vT-fBs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="754"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCell" textLabel="hPX-p8-mBC" style="IBUITableViewCellStyleDefault" id="ZUl-1v-KYM">
-                                <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZUl-1v-KYM" id="4hb-ou-79v">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hPX-p8-mBC">
-                                            <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>

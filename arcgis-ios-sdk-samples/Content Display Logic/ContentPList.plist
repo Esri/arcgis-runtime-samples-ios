@@ -745,6 +745,14 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
+				<string>Export vector tiles</string>
+				<key>descriptionText</key>
+				<string>Export tiles from an online vector tile service.</string>
+				<key>storyboardName</key>
+				<string>ExportVectorTiles</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
 				<string>Select ENC features</string>
 				<key>descriptionText</key>
 				<string>Select features in an ENC layer.</string>

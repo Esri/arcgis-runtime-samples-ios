@@ -53,6 +53,11 @@ class ContentTableViewController: UITableViewController {
         self.downloadProgressView = downloadProgressView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectedSample = nil
+    }
+    
     // MARK: Sample Selection
     
     /// The currently selected sample.

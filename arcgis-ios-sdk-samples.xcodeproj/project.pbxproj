@@ -834,9 +834,9 @@
 		F1124F0A24CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */; };
 		F1124F0C24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
-		F11897AA2735F23A00ADC1D4 /* VisualizeTemporalDataTimeSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11897A92735F23A00ADC1D4 /* VisualizeTemporalDataTimeSliderViewController.swift */; };
+		F11897AA2735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */; };
 		F11897AC2735F24600ADC1D4 /* VisualizeTemporalDataTimeSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11897AB2735F24600ADC1D4 /* VisualizeTemporalDataTimeSlider.storyboard */; };
-		F11897AD2736050B00ADC1D4 /* VisualizeTemporalDataTimeSliderViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F11897A92735F23A00ADC1D4 /* VisualizeTemporalDataTimeSliderViewController.swift */; };
+		F11897AD2736050B00ADC1D4 /* FilterByTimeExtentViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */; };
 		F11CED6D256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */; };
 		F11CED73256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */; };
 		F11CED76256C8BD3002A3F56 /* ShowLabelsOnLayer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */; };
@@ -950,7 +950,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				F11897AD2736050B00ADC1D4 /* VisualizeTemporalDataTimeSliderViewController.swift in CopyFiles */,
+				F11897AD2736050B00ADC1D4 /* FilterByTimeExtentViewController.swift in CopyFiles */,
 				F1C092D7272774530000B132 /* VectorTilePackageViewController.swift in CopyFiles */,
 				F1027F5926F9258E000FA674 /* ExportVectorTilesViewController.swift in CopyFiles */,
 				008F292A26E0424C00A5BCD3 /* DisplayMapSwiftUIViewController.swift in CopyFiles */,
@@ -1813,7 +1813,7 @@
 		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpkx; sourceTree = "<group>"; };
 		F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditFeaturesWithFeatureLinkedAnnotation.storyboard; sourceTree = "<group>"; };
 		F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFeaturesWithFeatureLinkedAnnotationViewController.swift; sourceTree = "<group>"; };
-		F11897A92735F23A00ADC1D4 /* VisualizeTemporalDataTimeSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizeTemporalDataTimeSliderViewController.swift; sourceTree = "<group>"; };
+		F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByTimeExtentViewController.swift; sourceTree = "<group>"; };
 		F11897AB2735F24600ADC1D4 /* VisualizeTemporalDataTimeSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VisualizeTemporalDataTimeSlider.storyboard; sourceTree = "<group>"; };
 		F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLabelsOnLayer3DViewController.swift; sourceTree = "<group>"; };
 		F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayer3D.storyboard; sourceTree = "<group>"; };
@@ -3162,7 +3162,7 @@
 		3ED027FD1B8E392500ACA70D /* Display information */ = {
 			isa = PBXGroup;
 			children = (
-				F11897A82735F15100ADC1D4 /* Visualize temporal data using time slider */,
+				F11897A82735F15100ADC1D4 /* Filter by time extent */,
 				000FFFB026CB040B00E3CE7E /* Set up location-driven geotriggers */,
 				009B5FF525E58E0000BB9A77 /* Create symbol styles from web styles */,
 				F1F651A724984742006DF277 /* Show popup */,
@@ -4508,13 +4508,13 @@
 			path = "Edit features with feature-linked annotation";
 			sourceTree = "<group>";
 		};
-		F11897A82735F15100ADC1D4 /* Visualize temporal data using time slider */ = {
+		F11897A82735F15100ADC1D4 /* Filter by time extent */ = {
 			isa = PBXGroup;
 			children = (
-				F11897A92735F23A00ADC1D4 /* VisualizeTemporalDataTimeSliderViewController.swift */,
+				F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */,
 				F11897AB2735F24600ADC1D4 /* VisualizeTemporalDataTimeSlider.storyboard */,
 			);
-			path = "Visualize temporal data using time slider";
+			path = "Filter by time extent";
 			sourceTree = "<group>";
 		};
 		F11CED6A256C82A8002A3F56 /* Show labels on layer in 3D */ = {
@@ -5423,7 +5423,7 @@
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
 				4C478E4E223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift in Sources */,
 				3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */,
-				F11897AA2735F23A00ADC1D4 /* VisualizeTemporalDataTimeSliderViewController.swift in Sources */,
+				F11897AA2735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				C7E9D7C721C0500300E6C47E /* BufferOptionsViewController.swift in Sources */,
 				1259FB931FD295C90037105E /* WMSLayerUsingURLViewController.swift in Sources */,

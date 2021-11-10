@@ -835,7 +835,7 @@
 		F1124F0C24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
 		F11897AA2735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */; };
-		F11897AC2735F24600ADC1D4 /* VisualizeTemporalDataTimeSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11897AB2735F24600ADC1D4 /* VisualizeTemporalDataTimeSlider.storyboard */; };
+		F11897AC2735F24600ADC1D4 /* FilterByTimeExtent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11897AB2735F24600ADC1D4 /* FilterByTimeExtent.storyboard */; };
 		F11897AD2736050B00ADC1D4 /* FilterByTimeExtentViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */; };
 		F11CED6D256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */; };
 		F11CED73256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */; };
@@ -1814,7 +1814,7 @@
 		F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditFeaturesWithFeatureLinkedAnnotation.storyboard; sourceTree = "<group>"; };
 		F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFeaturesWithFeatureLinkedAnnotationViewController.swift; sourceTree = "<group>"; };
 		F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByTimeExtentViewController.swift; sourceTree = "<group>"; };
-		F11897AB2735F24600ADC1D4 /* VisualizeTemporalDataTimeSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VisualizeTemporalDataTimeSlider.storyboard; sourceTree = "<group>"; };
+		F11897AB2735F24600ADC1D4 /* FilterByTimeExtent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilterByTimeExtent.storyboard; sourceTree = "<group>"; };
 		F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLabelsOnLayer3DViewController.swift; sourceTree = "<group>"; };
 		F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayer3D.storyboard; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
@@ -4512,7 +4512,7 @@
 			isa = PBXGroup;
 			children = (
 				F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */,
-				F11897AB2735F24600ADC1D4 /* VisualizeTemporalDataTimeSlider.storyboard */,
+				F11897AB2735F24600ADC1D4 /* FilterByTimeExtent.storyboard */,
 			);
 			path = "Filter by time extent";
 			sourceTree = "<group>";
@@ -5032,7 +5032,7 @@
 				00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */,
 				4CCA30CF22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard in Resources */,
 				3ED75D031ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard in Resources */,
-				F11897AC2735F24600ADC1D4 /* VisualizeTemporalDataTimeSlider.storyboard in Resources */,
+				F11897AC2735F24600ADC1D4 /* FilterByTimeExtent.storyboard in Resources */,
 				3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */,
 				3E1183DF1ECF5A1000180152 /* Pyrenees.csv in Resources */,
 				F1F62C4022E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard in Resources */,

@@ -15,9 +15,9 @@
 
 import UIKit
 import ArcGIS
+import ArcGISToolkit
 
 class FilterByTimeExtentViewController: UIViewController {
-    
     @IBOutlet var mapView: AGSMapView!{
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
@@ -26,6 +26,13 @@ class FilterByTimeExtentViewController: UIViewController {
             let featureLayer = AGSFeatureLayer(featureTable: featureTable)
             mapView.map?.operationalLayers.add(featureLayer)
         }
+    }
+    @IBOutlet var timeSliderView: UIView!
+    
+    func displayTimeSlider() {
+        let timeSlider = TimeSlider()
+        timeSliderView.addSubview(timeSlider)
+        
     }
 
     // MARK: UIViewController

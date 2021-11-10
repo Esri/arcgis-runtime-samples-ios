@@ -18,45 +18,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xT-6d-gMC" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="821"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8To-Py-wYW" userLabel="Time Slider View">
-                                <rect key="frame" x="0.0" y="813" width="414" height="0.0"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="UHp-Vf-IRx"/>
-                                </constraints>
-                            </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkk-Dz-lwY">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MxX-Ye-rpU"/>
-                                    <barButtonItem systemItem="rewind" id="WJS-h2-h6v"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9El-Ev-KOT"/>
-                                    <barButtonItem systemItem="play" id="suN-YV-F6X"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5sQ-rb-r2Q"/>
-                                    <barButtonItem systemItem="fastForward" id="3QI-Ta-QKB"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DcR-Dj-fjT"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="gkk-Dz-lwY" secondAttribute="trailing" id="2kJ-Wb-gvA"/>
                             <constraint firstItem="4xT-6d-gMC" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="6aX-97-lce"/>
-                            <constraint firstItem="gkk-Dz-lwY" firstAttribute="top" secondItem="8To-Py-wYW" secondAttribute="bottom" id="Du0-QR-Kxr"/>
-                            <constraint firstItem="4xT-6d-gMC" firstAttribute="bottom" secondItem="8To-Py-wYW" secondAttribute="top" constant="8" symbolic="YES" id="HSX-gZ-QgG"/>
-                            <constraint firstItem="gkk-Dz-lwY" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="MZr-i3-geO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="4xT-6d-gMC" secondAttribute="bottom" id="MQC-gN-tDP"/>
                             <constraint firstItem="4xT-6d-gMC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="QwE-1a-raV"/>
                             <constraint firstItem="4xT-6d-gMC" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Tq7-MA-xeT"/>
-                            <constraint firstAttribute="trailing" secondItem="8To-Py-wYW" secondAttribute="trailing" id="WiO-40-Snc"/>
-                            <constraint firstItem="8To-Py-wYW" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="bEu-iM-2Jl"/>
-                            <constraint firstItem="gkk-Dz-lwY" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="gnM-88-V6M"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="4xT-6d-gMC" id="7AE-7v-uow"/>
-                        <outlet property="timeSliderView" destination="8To-Py-wYW" id="bfG-7x-rgl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

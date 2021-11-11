@@ -36,9 +36,9 @@ class FilterByTimeExtentViewController: UIViewController {
     /// The data's end date.
     let endTime = formatter.date(from: "2005/12/31 05:00")!
     /// The default date and time for the starting thumb.
-    let currentStartTime = formatter.date(from: "2005/10/01 12:00")
+    let currentStartTime = formatter.date(from: "2005/10/01 05:00")
     /// The default date and time for the ending thumb.
-    let currentEndTime = formatter.date(from: "2005/10/31 12:00")
+    let currentEndTime = formatter.date(from: "2005/10/31 05:00")
     
     /// The feature table URL tracking hurricanes in 2005.
     static let featureTableURL = URL(string: "https://services5.arcgis.com/N82JbI5EYtAkuUKU/ArcGIS/rest/services/Hurricane_time_enabled_layer_2005_1_day/FeatureServer/0")!

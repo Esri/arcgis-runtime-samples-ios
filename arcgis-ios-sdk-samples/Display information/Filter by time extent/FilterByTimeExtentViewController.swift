@@ -63,11 +63,14 @@ class FilterByTimeExtentViewController: UIViewController {
         // Add constraints to position the slider.
         let margin: CGFloat = 10.0
         timeSlider.translatesAutoresizingMaskIntoConstraints = false
-        // Set the time slider on top of the attribution bar in the map view.
-        timeSlider.bottomAnchor.constraint(equalTo: mapView.attributionTopAnchor, constant: -margin).isActive = true
-        // Set the side constraints with padding for the time slider .
-        timeSlider.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: margin).isActive = true
-        timeSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -margin).isActive = true
+        // Assign the constraints.
+        let constraints = [
+            timeSlider.bottomAnchor.constraint(equalTo: mapView.attributionTopAnchor, constant: -margin),
+            timeSlider.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: margin),
+            timeSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -margin)
+        ]
+        // Activate the constraints.
+        NSLayoutConstraint.activate(constraints)
     }
     
     /// Initialize the time slider's steps.

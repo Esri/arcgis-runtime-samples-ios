@@ -75,8 +75,9 @@ class FilterByTimeExtentViewController: UIViewController {
             guard let self = self, error == nil else { return }
             let startTime = self.featureLayer.fullTimeExtent?.startTime
             let endTime = self.featureLayer.fullTimeExtent?.endTime
-            self.timeSlider.initializeTimeSteps(timeStepCount: 100, fullExtent: AGSTimeExtent(startTime: startTime, endTime: endTime)) { _ in
-                // Show the time slider.
+            self.timeSlider.initializeTimeSteps(timeStepCount: 60, fullExtent: AGSTimeExtent(startTime: startTime, endTime: endTime)) { _ in
+                self.timeSlider.playbackInterval = 0.5
+                // Set the current time extent.
                 self.timeSlider.currentExtent = AGSTimeExtent(startTime: self.currentStartTime, endTime: self.currentEndTime)
                 
                 self.mapView.map!.operationalLayers.add(self.featureLayer)

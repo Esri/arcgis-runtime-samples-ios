@@ -31,10 +31,6 @@ class FilterByTimeExtentViewController: UIViewController {
         return formatter
     }()
     
-    /// The data's start date.
-    let startTime = formatter.date(from: "2005/9/1 05:00")!
-    /// The data's end date.
-    let endTime = formatter.date(from: "2005/12/31 05:00")!
     /// The default date and time for the starting thumb.
     let currentStartTime = formatter.date(from: "2005/10/01 05:00")!
     /// The default date and time for the ending thumb.
@@ -73,37 +69,18 @@ class FilterByTimeExtentViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    /// Initialize the time slider's steps.
-    func initializeTimeStepsFromQuery() {
-        featureLayer.load { [unowned self] error in
-            guard error == nil else { return }
-            populateFeaturesWithQuery { _ in
-                timeSlider.initializeTimeSteps(timeStepCount: 200, fullExtent: AGSTimeExtent(startTime: startTime, endTime: endTime)) { _ in
-                    // Show the time slider.
-                    timeSlider.currentExtent = AGSTimeExtent(startTime: currentStartTime, endTime: currentEndTime)
-                    
-                    mapView.map!.operationalLayers.add(featureLayer)
-                }
+    /// Initialize the time steps.
+    func initializeTimeSteps() {
+        featureLayer.load { [weak self] error in
+            guard let self = self, error == nil else { return }
+            let startTime = self.featureLayer.fullTimeExtent?.startTime
+            let endTime = self.featureLayer.fullTimeExtent?.endTime
+            self.timeSlider.initializeTimeSteps(timeStepCount: 100, fullExtent: AGSTimeExtent(startTime: startTime, endTime: endTime)) { _ in
+                // Show the time slider.
+                self.timeSlider.currentExtent = AGSTimeExtent(startTime: self.currentStartTime, endTime: self.currentEndTime)
+                
+                self.mapView.map!.operationalLayers.add(self.featureLayer)
             }
-        }
-    }
-    
-    /// Populate the features using the requested time extent.
-    func populateFeaturesWithQuery(completion: @escaping () -> Void) {
-        let featureTable = featureLayer.featureTable as! AGSServiceFeatureTable
-        // Create query parameters.
-        let queryParams = AGSQueryParameters()
-        // Create a new time extent that covers the desired interval.
-        let timeExtent = AGSTimeExtent(startTime: startTime, endTime: endTime)
-        
-        // Apply the time extent to query parameters to filter features based on time.
-        queryParams.timeExtent = timeExtent
-        // Set the feature request mode to load the features faster.
-        featureTable.featureRequestMode = .manualCache
-        // Populate features based on query parameters.
-        featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { _, error in
-            guard error == nil else { return }
-            completion()
         }
     }
     
@@ -119,7 +96,7 @@ class FilterByTimeExtentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTimeSlider()
-        initializeTimeStepsFromQuery()
+        initializeTimeSteps()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["FilterByTimeExtentViewController"]
     }

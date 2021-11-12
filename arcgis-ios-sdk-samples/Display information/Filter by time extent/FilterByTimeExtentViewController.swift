@@ -36,18 +36,17 @@ class FilterByTimeExtentViewController: UIViewController {
     /// The data's end date.
     let endTime = formatter.date(from: "2005/12/31 05:00")!
     /// The default date and time for the starting thumb.
-    let currentStartTime = formatter.date(from: "2005/10/01 05:00")
+    let currentStartTime = formatter.date(from: "2005/10/01 05:00")!
     /// The default date and time for the ending thumb.
-    let currentEndTime = formatter.date(from: "2005/10/31 05:00")
+    let currentEndTime = formatter.date(from: "2005/10/31 05:00")!
     
-    /// The feature table URL tracking hurricanes in 2005.
-    static let featureTableURL = URL(string: "https://services5.arcgis.com/N82JbI5EYtAkuUKU/ArcGIS/rest/services/Hurricane_time_enabled_layer_2005_1_day/FeatureServer/0")!
-    
-    /// The feature layer made from the feature table.
+    /// The feature layer tracking hurricanes in 2005.
     let featureLayer = AGSFeatureLayer(
-        featureTable: AGSServiceFeatureTable(
-            url: featureTableURL
-        )
+        item: AGSPortalItem(
+            portal: .arcGISOnline(withLoginRequired: false),
+            itemID: "49925d814d7e40fb8fa64864ef62d55e"
+        ),
+        layerID: 0
     )
     
     /// The time slider from the ArcGIS toolkit.
@@ -74,7 +73,7 @@ class FilterByTimeExtentViewController: UIViewController {
     /// Initialize the time slider's steps.
     func initializeTimeStepsFromQuery() {
         featureLayer.load { [unowned self] error in
-            guard error == nil else { fatalError(error!.localizedDescription) }
+            guard error == nil else { return }
             populateFeaturesWithQuery { _ in
                 timeSlider.initializeTimeSteps(timeStepCount: 200, fullExtent: AGSTimeExtent(startTime: startTime, endTime: endTime)) { _ in
                     // Show the time slider.
@@ -87,7 +86,7 @@ class FilterByTimeExtentViewController: UIViewController {
     }
     
     /// Populate the features using the requested time extent.
-    func populateFeaturesWithQuery(completion: @escaping (AGSFeatureQueryResult) -> Void) {
+    func populateFeaturesWithQuery(completion: @escaping () -> Void) {
         let featureTable = featureLayer.featureTable as! AGSServiceFeatureTable
         // Create query parameters.
         let queryParams = AGSQueryParameters()
@@ -99,11 +98,9 @@ class FilterByTimeExtentViewController: UIViewController {
         // Set the feature request mode to load the features faster.
         featureTable.featureRequestMode = .manualCache
         // Populate features based on query parameters.
-        featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { (result: AGSFeatureQueryResult?, error: Error?) in
+        featureTable.populateFromService(with: queryParams, clearCache: true, outFields: ["*"]) { _, error in
             guard error == nil else { return }
-            if let result = result {
-                completion(result)
-            }
+            completion()
         }
     }
     

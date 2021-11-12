@@ -18,7 +18,7 @@ Use the slider at the bottom of the map to customize the date range for which yo
 2. Create an `AGSServiceFeatureTable` from a URL (the feature layer from the URL in this sample includes time-enabled data).
 3. Create a feature layer from the service feature table.
 4. Add the feature layer that includes time-enabled data to the map's list of operational layers.
-5. Create an `AGSTimeSlider` from the ArcGIS Runtime Toolkit to allow users to show data only from the given date range. This sets up all necessary calls to visualize and step through the temporal data.
+5. Create an `TimeSlider` from the ArcGIS Runtime Toolkit to allow users to show data only from the given date range. This sets up all necessary calls to visualize and step through the temporal data.
 
 ## Relevant API
 

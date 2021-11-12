@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Visualize Temporal Data Time Slider View Controller-->
+        <!--Filter By Time Extent View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" userLabel="Visualize Temporal Data Time Slider View Controller" customClass="FilterByTimeExtentViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="FilterByTimeExtentViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

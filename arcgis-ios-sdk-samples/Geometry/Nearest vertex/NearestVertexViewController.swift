@@ -44,7 +44,7 @@ class NearestVertexViewController: UIViewController {
     /// The graphic for the nearest vertex point.
     let nearestVertexGraphic: AGSGraphic
     
-    /// A distance formatter to convert units.
+    /// A distance formatter to format distance measurements and units.
     let distanceFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
         formatter.numberFormatter.maximumFractionDigits = 1
@@ -67,7 +67,7 @@ class NearestVertexViewController: UIViewController {
         
         // The symbol for the tapped point.
         let tappedLocationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .orange, size: 15)
-        // The symbol for the nearest vertex and
+        // The symbol for the nearest vertex.
         let nearestCoordinateSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .red, size: 10)
         // The symbol for the nearest coordinate.
         let nearestVertexSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 15)

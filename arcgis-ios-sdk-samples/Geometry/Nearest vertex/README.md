@@ -31,7 +31,7 @@ Tap anywhere on the map. An orange cross will show at that location. A blue circ
 
 ## Additional information
 
-The `distance` property in `ProximityResult` is planar (Euclidean) distance. Planar distance only works for geometries that have a defined projected coordinate system, which preserves distance and length. The geometries in this demo are defined in Web Mercator, which doesn't preserve distance. Hence we need to use the geodetic distance APIs to get the accurate distances.
+The `distance` property in `AGSProximityResult` is planar (Euclidean) distance. Planar distance only works for geometries that have a defined projected coordinate system, which preserves distance and length. The geometries in this demo are defined in Web Mercator, which doesn't preserve distance. Hence we need to use the geodetic distance APIs to get the accurate distances.
 
 Because the Web Mercator Auxiliary Sphere (WKID 3857) projected coordinate system is so common in web maps and it heavily distorts both area and length measurements, all geodetic measurement APIs were designed to allow geometries with Web Mercator spatial references as input. This allows you to measure geoemtries accurately in Web Mercator without having to project them to a different coordinate system.
 

@@ -22,9 +22,8 @@ class FilterByTimeExtentViewController: UIViewController {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             // Set the map view's viewpoint.
-            let center = AGSPoint(x: -74.495293, y: 29.979774, spatialReference: .webMercator())
-            mapView.setViewpoint(AGSViewpoint(center: center, scale: 159000000))
-            // 146563789
+            let center = AGSPoint(x: -58.495293, y: 29.979774, spatialReference: .wgs84())
+            mapView.setViewpoint(AGSViewpoint(center: center, scale: 147_914_381.897889))
         }
     }
     

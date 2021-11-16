@@ -108,22 +108,6 @@ class FilterByTimeExtentViewController: UIViewController {
             completion(timeExtent)
         }
     }
-
-    /// Initialize the time steps.
-    func initializeTimeSteps() {
-        featureLayer.load { [weak self] error in
-            guard let self = self, error == nil else { return }
-            let startTime = self.featureLayer.fullTimeExtent?.startTime
-            let endTime = self.featureLayer.fullTimeExtent?.endTime
-            self.timeSlider.initializeTimeSteps(timeStepCount: 60, fullExtent: AGSTimeExtent(startTime: startTime, endTime: endTime)) { _ in
-                self.timeSlider.playbackInterval = 0.5
-                // Set the current time extent.
-                self.timeSlider.currentExtent = AGSTimeExtent(startTime: self.currentStartTime, endTime: self.currentEndTime)
-                
-                self.mapView.map!.operationalLayers.add(self.featureLayer)
-            }
-        }
-    }
     
     @objc
     func timeSliderValueChanged(timeSlider: TimeSlider) {
@@ -137,7 +121,7 @@ class FilterByTimeExtentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTimeSlider()
-        initializeTimeSteps()
+        initializeTimeStepsFromQuery()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["FilterByTimeExtentViewController"]
     }

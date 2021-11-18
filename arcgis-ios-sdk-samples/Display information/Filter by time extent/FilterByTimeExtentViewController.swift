@@ -78,13 +78,11 @@ class FilterByTimeExtentViewController: UIViewController {
     /// Initialize the time steps.
     func initializeTimeSteps() {
         featureLayer.load { [weak self] error in
-            guard let self = self, error == nil else { return }
-            let startTime = self.featureLayer.fullTimeExtent?.startTime
-            let endTime = self.featureLayer.fullTimeExtent?.endTime
-            self.timeSlider.initializeTimeSteps(timeStepCount: 60, fullExtent: AGSTimeExtent(startTime: startTime, endTime: endTime)) { _ in
+            guard let self = self, error == nil, let fullTimeExtent = self.featureLayer.fullTimeExtent else { return }
+            self.timeSlider.initializeTimeSteps(timeStepCount: 60, fullExtent: fullTimeExtent) { _ in
                 self.timeSlider.playbackInterval = 0.5
                 // Set the current time extent.
-                self.timeSlider.currentExtent = AGSTimeExtent(startTime: self.currentTimeExtent.startTime, endTime: self.currentTimeExtent.endTime)
+                self.timeSlider.currentExtent = self.currentTimeExtent
             }
         }
     }

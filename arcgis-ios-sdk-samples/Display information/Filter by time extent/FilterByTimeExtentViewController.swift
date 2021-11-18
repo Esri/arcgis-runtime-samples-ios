@@ -20,8 +20,9 @@ class FilterByTimeExtentViewController: UIViewController {
     /// The map view.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
-            mapView.map?.operationalLayers.add(featureLayer)
+            let map = AGSMap(basemapStyle: .arcGISTopographic)
+            map.operationalLayers.add(featureLayer)
+            mapView.map = map
             // Set the map view's viewpoint.
             let center = AGSPoint(x: -58.495293, y: 29.979774, spatialReference: .wgs84())
             mapView.setViewpoint(AGSViewpoint(center: center, scale: 1.5e8))

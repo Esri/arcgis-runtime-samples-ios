@@ -22,27 +22,39 @@ class NearestVertexViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
-            mapView.graphicsOverlays.add(graphicsOverlay)
+            mapView.graphicsOverlays.add(makeGraphicsOverlay())
             mapView.setViewpointCenter(polygon.extent.center, scale: 1e8)
             mapView.touchDelegate = self
             mapView.callout.isAccessoryButtonHidden = true
         }
     }
     
-    /// The graphics overlay for the polygon and point graphics.
-    let graphicsOverlay = AGSGraphicsOverlay()
-    
     /// The example polygon geometry.
-    let polygon: AGSPolygon
-    
-    /// The graphic for the polygon.
-    let polygonGraphic: AGSGraphic
+    let polygon: AGSPolygon = {
+        let polygonBuilder = AGSPolygonBuilder(spatialReference: .webMercator())
+        polygonBuilder.addPointWith(x: -5991501.677830, y: 5599295.131468)
+        polygonBuilder.addPointWith(x: -6928550.398185, y: 2087936.739807)
+        polygonBuilder.addPointWith(x: -3149463.800709, y: 1840803.011362)
+        polygonBuilder.addPointWith(x: -1563689.043184, y: 3714900.452072)
+        polygonBuilder.addPointWith(x: -3180355.516764, y: 5619889.608838)
+        return polygonBuilder.toGeometry()
+    }()
+
     /// The graphic for the tapped location point.
-    let tappedLocationGraphic: AGSGraphic
+    let tappedLocationGraphic: AGSGraphic = {
+        let symbol = AGSSimpleMarkerSymbol(style: .X, color: .orange, size: 15)
+        return AGSGraphic(geometry: nil, symbol: symbol)
+    }()
     /// The graphic for the nearest coordinate point.
-    let nearestCoordinateGraphic: AGSGraphic
+    let nearestCoordinateGraphic: AGSGraphic = {
+        let symbol = AGSSimpleMarkerSymbol(style: .diamond, color: .red, size: 10)
+        return AGSGraphic(geometry: nil, symbol: symbol)
+    }()
     /// The graphic for the nearest vertex point.
-    let nearestVertexGraphic: AGSGraphic
+    let nearestVertexGraphic: AGSGraphic = {
+        let symbol = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 15)
+        return AGSGraphic(geometry: nil, symbol: symbol)
+    }()
     
     /// A distance formatter to format distance measurements and units.
     let distanceFormatter: MeasurementFormatter = {
@@ -54,45 +66,23 @@ class NearestVertexViewController: UIViewController {
     
     // MARK: Methods
     
-    required init?(coder: NSCoder) {
-        // Create a point collection that defines the polygon.
-        let polygonBuilder = AGSPolygonBuilder(spatialReference: .webMercator())
-        polygonBuilder.addPointWith(x: -5991501.677830, y: 5599295.131468)
-        polygonBuilder.addPointWith(x: -6928550.398185, y: 2087936.739807)
-        polygonBuilder.addPointWith(x: -3149463.800709, y: 1840803.011362)
-        polygonBuilder.addPointWith(x: -1563689.043184, y: 3714900.452072)
-        polygonBuilder.addPointWith(x: -3180355.516764, y: 5619889.608838)
-        
-        polygon = polygonBuilder.toGeometry()
-        
-        // The symbol for the tapped point.
-        let tappedLocationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .orange, size: 15)
-        // The symbol for the nearest vertex.
-        let nearestCoordinateSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .red, size: 10)
-        // The symbol for the nearest coordinate.
-        let nearestVertexSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 15)
-        // The symbol for the example polygon area.
+    func makeGraphicsOverlay() -> AGSGraphicsOverlay {
         let polygonFillSymbol = AGSSimpleFillSymbol(
             style: .forwardDiagonal,
             color: .green,
             outline: AGSSimpleLineSymbol(style: .solid, color: .green, width: 2)
         )
+        // The graphic for the polygon.
+        let polygonGraphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
         
-        polygonGraphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
-        tappedLocationGraphic = AGSGraphic(geometry: nil, symbol: tappedLocationSymbol)
-        nearestCoordinateGraphic = AGSGraphic(geometry: nil, symbol: nearestCoordinateSymbol)
-        nearestVertexGraphic = AGSGraphic(geometry: nil, symbol: nearestVertexSymbol)
-        super.init(coder: coder)
-    }
-    
-    /// Add graphics to the graphics overlay.
-    func addGraphicsToOverlay() {
+        let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.graphics.addObjects(from: [
             polygonGraphic,
             nearestCoordinateGraphic,
             tappedLocationGraphic,
             nearestVertexGraphic
         ])
+        return graphicsOverlay
     }
     
     // MARK: UIViewController
@@ -101,7 +91,6 @@ class NearestVertexViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["NearestVertexViewController"]
-        addGraphicsToOverlay()
     }
 }
 

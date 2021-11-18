@@ -23,7 +23,7 @@ class FilterByTimeExtentViewController: UIViewController {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             // Set the map view's viewpoint.
             let center = AGSPoint(x: -58.495293, y: 29.979774, spatialReference: .wgs84())
-            mapView.setViewpoint(AGSViewpoint(center: center, scale: 147_914_381.897889))
+            mapView.setViewpoint(AGSViewpoint(center: center, scale: 1.5e8))
         }
     }
     
@@ -34,10 +34,11 @@ class FilterByTimeExtentViewController: UIViewController {
         return formatter
     }()
     
-    /// The default date and time for the starting thumb.
-    let currentStartTime = formatter.date(from: "2005/10/01 05:00")!
-    /// The default date and time for the ending thumb.
-    let currentEndTime = formatter.date(from: "2005/10/31 05:00")!
+    /// The default date and time for the starting and ending thumb.
+    let currentTimeExtent = AGSTimeExtent(
+        startTime: formatter.date(from: "2005/10/01 05:00")!,
+        endTime: formatter.date(from: "2005/10/31 05:00")!
+    )
     
     /// The feature layer tracking hurricanes in 2005.
     let featureLayer = AGSFeatureLayer(

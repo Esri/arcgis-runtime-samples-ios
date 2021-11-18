@@ -53,13 +53,6 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>buienradar.nl</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
 			<key>noaa.gov</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
@@ -68,13 +61,6 @@
 				<true/>
 			</dict>
 			<key>resources.esri.com</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-			<key>vlieghinder.nl</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>

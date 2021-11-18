@@ -21,6 +21,7 @@ class FilterByTimeExtentViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.map?.operationalLayers.add(featureLayer)
             // Set the map view's viewpoint.
             let center = AGSPoint(x: -58.495293, y: 29.979774, spatialReference: .wgs84())
             mapView.setViewpoint(AGSViewpoint(center: center, scale: 1.5e8))
@@ -83,8 +84,6 @@ class FilterByTimeExtentViewController: UIViewController {
                 self.timeSlider.playbackInterval = 0.5
                 // Set the current time extent.
                 self.timeSlider.currentExtent = AGSTimeExtent(startTime: self.currentTimeExtent.startTime, endTime: self.currentTimeExtent.endTime)
-                
-                self.mapView.map!.operationalLayers.add(self.featureLayer)
             }
         }
     }

@@ -63,13 +63,12 @@ class FilterByTimeExtentViewController: UIViewController {
         view.addSubview(timeSlider)
         
         // Add constraints to position the slider.
-        let margin: CGFloat = 10.0
         timeSlider.translatesAutoresizingMaskIntoConstraints = false
         // Assign the constraints.
         let constraints = [
-            timeSlider.bottomAnchor.constraint(equalTo: mapView.attributionTopAnchor, constant: -margin),
-            timeSlider.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: margin),
-            timeSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -margin)
+            timeSlider.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 1),
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: timeSlider.trailingAnchor, multiplier: 1),
+            mapView.attributionTopAnchor.constraint(equalToSystemSpacingBelow: timeSlider.bottomAnchor, multiplier: 1)
         ]
         // Activate the constraints.
         NSLayoutConstraint.activate(constraints)

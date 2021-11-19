@@ -29,19 +29,6 @@ class FilterByTimeExtentViewController: UIViewController {
         }
     }
     
-    /// The date formatter.
-    static let formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        return formatter
-    }()
-    
-    /// The default date and time for the starting and ending thumb.
-    let currentTimeExtent = AGSTimeExtent(
-        startTime: formatter.date(from: "2005/10/01 05:00")!,
-        endTime: formatter.date(from: "2005/10/31 05:00")!
-    )
-    
     /// The feature layer tracking hurricanes in 2005.
     let featureLayer = AGSFeatureLayer(
         item: AGSPortalItem(
@@ -76,12 +63,22 @@ class FilterByTimeExtentViewController: UIViewController {
     
     /// Initialize the time steps.
     func initializeTimeSteps() {
+        // The default date and time for the starting and ending thumb.
+        let currentTimeExtent: AGSTimeExtent = {
+            // The date formatter.
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd HH:mm"
+            return AGSTimeExtent(
+                startTime: formatter.date(from: "2005/10/01 05:00")!,
+                endTime: formatter.date(from: "2005/10/31 05:00")!
+            )
+        }()
         featureLayer.load { [weak self] error in
             guard let self = self, error == nil, let fullTimeExtent = self.featureLayer.fullTimeExtent else { return }
             self.timeSlider.initializeTimeSteps(timeStepCount: 60, fullExtent: fullTimeExtent) { _ in
                 self.timeSlider.playbackInterval = 0.5
                 // Set the current time extent.
-                self.timeSlider.currentExtent = self.currentTimeExtent
+                self.timeSlider.currentExtent = currentTimeExtent
             }
         }
     }

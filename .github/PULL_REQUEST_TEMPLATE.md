@@ -1,8 +1,8 @@
 ## Description
 
 <!--
-	This PR implements `SAMPLE_NAME` in `SAMPLE_CATEGORY` category.
-	Branch: URL_TO_BRANCH
+    This PR implements `SAMPLE_NAME` in `SAMPLE_CATEGORY` category.
+    Branch: URL_TO_BRANCH
 -->
 
 ## Linked Issue(s)
@@ -15,9 +15,9 @@
 ## Screenshots
 -->
 <!--
-	|Before|After|
-	|:-:|:-:|
-	|||
+    |Before|After|
+    |:-:|:-:|
+    |||
 -->
 
 

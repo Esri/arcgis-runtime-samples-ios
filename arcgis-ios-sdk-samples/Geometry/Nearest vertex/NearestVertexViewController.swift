@@ -21,25 +21,25 @@ class NearestVertexViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.map = makeMap()
             mapView.graphicsOverlays.add(makeGraphicsOverlay())
-            mapView.setViewpointCenter(polygon.extent.center, scale: 1e8)
+            mapView.setViewpointCenter(polygon.extent.center, scale: 8e6)
             mapView.touchDelegate = self
             mapView.callout.isAccessoryButtonHidden = true
         }
     }
     
-    /// The example polygon geometry.
+    /// The example polygon geometry near San Bernardino County, California.
     let polygon: AGSPolygon = {
-        let polygonBuilder = AGSPolygonBuilder(spatialReference: .webMercator())
-        polygonBuilder.addPointWith(x: -5991501.677830, y: 5599295.131468)
-        polygonBuilder.addPointWith(x: -6928550.398185, y: 2087936.739807)
-        polygonBuilder.addPointWith(x: -3149463.800709, y: 1840803.011362)
-        polygonBuilder.addPointWith(x: -1563689.043184, y: 3714900.452072)
-        polygonBuilder.addPointWith(x: -3180355.516764, y: 5619889.608838)
+        let polygonBuilder = AGSPolygonBuilder(spatialReference: AGSSpatialReference(wkid: 2229)!)
+        polygonBuilder.addPointWith(x: 6627416.41469281, y: 1804532.53233782)
+        polygonBuilder.addPointWith(x: 6669147.89779046, y: 2479145.16609522)
+        polygonBuilder.addPointWith(x: 7265673.02678292, y: 2484254.50442408)
+        polygonBuilder.addPointWith(x: 7676192.55880379, y: 2001458.66365744)
+        polygonBuilder.addPointWith(x: 7175695.94143837, y: 1840722.34474458)
         return polygonBuilder.toGeometry()
     }()
-
+    
     /// The graphic for the tapped location point.
     let tappedLocationGraphic: AGSGraphic = {
         let symbol = AGSSimpleMarkerSymbol(style: .X, color: .orange, size: 15)
@@ -65,6 +65,17 @@ class NearestVertexViewController: UIViewController {
     }()
     
     // MARK: Methods
+    
+    /// Create a map.
+    /// - Returns: A new `AGSMap` object.
+    func makeMap() -> AGSMap {
+        // California zone 5 (ftUS) state plane coordinate system.
+        let statePlaneCaliforniaZone5 = AGSSpatialReference(wkid: 2229)!
+        let map = AGSMap(spatialReference: statePlaneCaliforniaZone5)
+        let imageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)
+        map.basemap.baseLayers.add(imageLayer)
+        return map
+    }
     
     func makeGraphicsOverlay() -> AGSGraphicsOverlay {
         let polygonFillSymbol = AGSSimpleFillSymbol(
@@ -107,43 +118,23 @@ extension NearestVertexViewController: AGSGeoViewTouchDelegate {
         nearestVertexGraphic.geometry = nearestVertexResult.point
         nearestCoordinateGraphic.geometry = nearestCoordinateResult.point
         
-        // Get geodetic distances between tapped and resulting points.
-        let nearestVertexGeodeticDistanceResult = AGSGeometryEngine.geodeticDistanceBetweenPoint1(
-            mapPoint,
-            point2: nearestVertexResult.point,
-            distanceUnit: .meters(),
-            azimuthUnit: .degrees(),
-            curveType: .geodesic
-        )!
-        let nearestCoordinateGeodeticDistanceResult = AGSGeometryEngine.geodeticDistanceBetweenPoint1(
-            mapPoint,
-            point2: nearestCoordinateResult.point,
-            distanceUnit: .meters(),
-            azimuthUnit: .degrees(),
-            curveType: .geodesic
-        )!
-        
         // Get the distance to the nearest vertex in the polygon.
-        // Note: use geodetic instead of planar distance
-        // (nearestVertexResult.distance) here. See discussion in README.
-        let distanceOfVertex = Measurement(
-            value: nearestVertexGeodeticDistanceResult.distance,
-            unit: UnitLength.meters
+        let distanceVertex = Measurement(
+            value: nearestVertexResult.distance,
+            unit: UnitLength.feet
         )
         // Get the distance to the nearest coordinate in the polygon.
-        // Note: use geodetic instead of planar distance
-        // (nearestCoordinateResult.distance) here. See discussion in README.
-        let distanceOfCoordinate = Measurement(
-            value: nearestCoordinateGeodeticDistanceResult.distance,
-            unit: UnitLength.meters
+        let distanceCoordinate = Measurement(
+            value: nearestCoordinateResult.distance,
+            unit: UnitLength.feet
         )
         
         // Display the results in a callout at tapped location.
         mapView.callout.title = "Proximity result"
         mapView.callout.detail = String(
             format: "Vertex dist: %@; Point dist: %@",
-            distanceFormatter.string(from: distanceOfVertex),
-            distanceFormatter.string(from: distanceOfCoordinate)
+            distanceFormatter.string(from: distanceVertex),
+            distanceFormatter.string(from: distanceCoordinate)
         )
         mapView.callout.show(for: tappedLocationGraphic, tapLocation: mapPoint, animated: true)
     }

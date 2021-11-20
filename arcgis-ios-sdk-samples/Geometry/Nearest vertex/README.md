@@ -24,16 +24,13 @@ Tap anywhere on the map. An orange cross will show at that location. A blue circ
 
 * AGSGeometry
 * AGSProximityResult
-* class AGSGeometryEngine.geodeticDistanceBetweenPoint1(_:point2:distanceUnit:azimuthUnit:curveType:)
 * class AGSGeometryEngine.nearestCoordinate(in:to:)
 * class AGSGeometryEngine.nearestVertex(in:to:)
 * class AGSGeometryEngine.normalizeCentralMeridian(of:)
 
 ## Additional information
 
-The value of `AGSProximityResult.distance` is planar (Euclidean) distance. Planar distances are only accurate for geometries that have a defined projected coordinate system, which preserves distance and length. The geometries in this sample are defined in Auxiliary Sphere (WKID 3857), which doesn't preserve distance. Hence we need to use the geodetic distance method to measure accurate distances in this example.
-
-Because the Web Mercator projected coordinate system is so common in web maps and it heavily distorts both area and length measurements, all geodetic measurement APIs are designed to allow geometries with Web Mercator spatial references as input. This allows you to measure geometries accurately in Web Mercator without having to project them to a different coordinate system.
+The value of `AGSProximityResult.distance` is planar (Euclidean) distance. Planar distances are only accurate for geometries that have a defined projected coordinate system, which maintain the desired level of accuracy. The example polygon in this sample is defined in California State Plane Coordinate System - Zone 5 (WKID 2229), which maintains accuracy near Southern California. Accuracy declines outside the state plane zone.
 
 ## Tags
 

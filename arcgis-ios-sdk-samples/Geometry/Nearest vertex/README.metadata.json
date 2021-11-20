@@ -14,7 +14,6 @@
         "vertex",
         "AGSGeometry",
         "AGSProximityResult",
-        "class AGSGeometryEngine.geodeticDistanceBetweenPoint1(_:point2:distanceUnit:azimuthUnit:curveType:)",
         "class AGSGeometryEngine.nearestCoordinate(in:to:)",
         "class AGSGeometryEngine.nearestVertex(in:to:)",
         "class AGSGeometryEngine.normalizeCentralMeridian(of:)"
@@ -23,7 +22,6 @@
     "relevant_apis": [
         "AGSGeometry",
         "AGSProximityResult",
-        "class AGSGeometryEngine.geodeticDistanceBetweenPoint1(_:point2:distanceUnit:azimuthUnit:curveType:)",
         "class AGSGeometryEngine.nearestCoordinate(in:to:)",
         "class AGSGeometryEngine.nearestVertex(in:to:)",
         "class AGSGeometryEngine.normalizeCentralMeridian(of:)"

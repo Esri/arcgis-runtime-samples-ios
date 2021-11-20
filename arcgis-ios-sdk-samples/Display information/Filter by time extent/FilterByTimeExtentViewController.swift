@@ -20,8 +20,7 @@ class FilterByTimeExtentViewController: UIViewController {
     /// The map view.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            let map = AGSMap(basemapStyle: .arcGISTopographic)
-            map.operationalLayers.add(featureLayer)
+            let map = makeMap()
             mapView.map = map
             // Set the map view's viewpoint.
             let center = AGSPoint(x: -58.495293, y: 29.979774, spatialReference: .wgs84())
@@ -29,18 +28,49 @@ class FilterByTimeExtentViewController: UIViewController {
         }
     }
     
-    /// The feature layer tracking hurricanes in 2005.
-    let featureLayer = AGSFeatureLayer(
-        item: AGSPortalItem(
-            portal: .arcGISOnline(withLoginRequired: false),
-            itemID: "49925d814d7e40fb8fa64864ef62d55e"
-        ),
-        layerID: 0
-    )
-    
     /// The time slider from the ArcGIS toolkit.
-    let timeSlider = TimeSlider()
+    let timeSlider: TimeSlider = {
+        let timeSlider = TimeSlider()
+        timeSlider.playbackInterval = 0.5
+        return timeSlider
+    }()
     
+    func makeMap() -> AGSMap {
+        let featureLayer = AGSFeatureLayer(
+            item: AGSPortalItem(
+                portal: .arcGISOnline(withLoginRequired: false),
+                itemID: "49925d814d7e40fb8fa64864ef62d55e"
+            ),
+            layerID: 0
+        )
+        initializeTimeSlider(for: featureLayer)
+        
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
+        map.operationalLayers.add(featureLayer)
+        return map
+    }
+    
+    /// Initialize the time steps.
+    func initializeTimeSlider(for featureLayer: AGSFeatureLayer) {
+        // The default date and time for the starting and ending thumb.
+        let currentTimeExtent: AGSTimeExtent = {
+            // The date formatter.
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd HH:mm"
+            return AGSTimeExtent(
+                startTime: formatter.date(from: "2005/10/01 05:00")!,
+                endTime: formatter.date(from: "2005/10/31 05:00")!
+            )
+        }()
+        featureLayer.load { [weak self] error in
+            guard let self = self, error == nil, let fullTimeExtent = featureLayer.fullTimeExtent else { return }
+            self.timeSlider.initializeTimeSteps(timeStepCount: 60, fullExtent: fullTimeExtent) { _ in
+                // Set the current time extent.
+                self.timeSlider.currentExtent = currentTimeExtent
+            }
+        }
+    }
+
     /// Configure the time slider's attributes and position.
     func setupTimeSlider() {
         // Configure time slider.
@@ -61,28 +91,6 @@ class FilterByTimeExtentViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    /// Initialize the time steps.
-    func initializeTimeSteps() {
-        // The default date and time for the starting and ending thumb.
-        let currentTimeExtent: AGSTimeExtent = {
-            // The date formatter.
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm"
-            return AGSTimeExtent(
-                startTime: formatter.date(from: "2005/10/01 05:00")!,
-                endTime: formatter.date(from: "2005/10/31 05:00")!
-            )
-        }()
-        featureLayer.load { [weak self] error in
-            guard let self = self, error == nil, let fullTimeExtent = self.featureLayer.fullTimeExtent else { return }
-            self.timeSlider.initializeTimeSteps(timeStepCount: 60, fullExtent: fullTimeExtent) { _ in
-                self.timeSlider.playbackInterval = 0.5
-                // Set the current time extent.
-                self.timeSlider.currentExtent = currentTimeExtent
-            }
-        }
-    }
-    
     @objc
     func timeSliderValueChanged(timeSlider: TimeSlider) {
         if mapView.timeExtent != timeSlider.currentExtent {
@@ -95,7 +103,6 @@ class FilterByTimeExtentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTimeSlider()
-        initializeTimeSteps()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["FilterByTimeExtentViewController"]
     }

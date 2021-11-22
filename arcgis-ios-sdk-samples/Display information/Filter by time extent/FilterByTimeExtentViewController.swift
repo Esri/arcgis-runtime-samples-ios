@@ -63,10 +63,10 @@ class FilterByTimeExtentViewController: UIViewController {
             )
         }()
         featureLayer.load { [weak self] error in
-            guard let self = self, error == nil, let fullTimeExtent = featureLayer.fullTimeExtent else { return }
-            self.timeSlider.initializeTimeSteps(timeStepCount: 60, fullExtent: fullTimeExtent) { _ in
+            guard error == nil, let fullTimeExtent = featureLayer.fullTimeExtent else { return }
+            self?.timeSlider.initializeTimeSteps(timeStepCount: 60, fullExtent: fullTimeExtent) { _ in
                 // Set the current time extent.
-                self.timeSlider.currentExtent = currentTimeExtent
+                self?.timeSlider.currentExtent = currentTimeExtent
             }
         }
     }

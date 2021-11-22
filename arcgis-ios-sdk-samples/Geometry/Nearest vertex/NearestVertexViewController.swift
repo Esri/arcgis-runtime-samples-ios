@@ -31,7 +31,7 @@ class NearestVertexViewController: UIViewController {
     
     /// The example polygon geometry near San Bernardino County, California.
     let polygon: AGSPolygon = {
-        let polygonBuilder = AGSPolygonBuilder(spatialReference: AGSSpatialReference(wkid: 2229)!)
+        let polygonBuilder = AGSPolygonBuilder(spatialReference: .statePlaneCaliforniaZone5)
         polygonBuilder.addPointWith(x: 6627416.41469281, y: 1804532.53233782)
         polygonBuilder.addPointWith(x: 6669147.89779046, y: 2479145.16609522)
         polygonBuilder.addPointWith(x: 7265673.02678292, y: 2484254.50442408)
@@ -69,9 +69,7 @@ class NearestVertexViewController: UIViewController {
     /// Create a map.
     /// - Returns: A new `AGSMap` object.
     func makeMap() -> AGSMap {
-        // California zone 5 (ftUS) state plane coordinate system.
-        let statePlaneCaliforniaZone5 = AGSSpatialReference(wkid: 2229)!
-        let map = AGSMap(spatialReference: statePlaneCaliforniaZone5)
+        let map = AGSMap(spatialReference: .statePlaneCaliforniaZone5)
         let imageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)
         map.basemap.baseLayers.add(imageLayer)
         return map
@@ -103,6 +101,11 @@ class NearestVertexViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["NearestVertexViewController"]
     }
+}
+
+private extension AGSSpatialReference {
+    /// California zone 5 (ftUS) state plane coordinate system.
+    static let statePlaneCaliforniaZone5 = AGSSpatialReference(wkid: 2229)!
 }
 
 // MARK: - AGSGeoViewTouchDelegate

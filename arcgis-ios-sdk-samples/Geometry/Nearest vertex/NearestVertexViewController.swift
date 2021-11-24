@@ -70,8 +70,13 @@ class NearestVertexViewController: UIViewController {
     /// - Returns: A new `AGSMap` object.
     func makeMap() -> AGSMap {
         let map = AGSMap(spatialReference: .statePlaneCaliforniaZone5)
-        let imageLayer = AGSArcGISMapImageLayer(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer")!)
-        map.basemap.baseLayers.add(imageLayer)
+        let usStatesGeneralizedLayer = AGSFeatureLayer(
+            item: AGSPortalItem(
+                portal: .arcGISOnline(withLoginRequired: false),
+                itemID: "99fd67933e754a1181cc755146be21ca"),
+            layerID: 0
+        )
+        map.basemap.baseLayers.add(usStatesGeneralizedLayer)
         return map
     }
     

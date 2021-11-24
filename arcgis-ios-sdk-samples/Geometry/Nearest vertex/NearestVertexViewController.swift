@@ -16,22 +16,47 @@ import UIKit
 import ArcGIS
 
 class NearestVertexViewController: UIViewController {
-    /// The graphics and symbology for the tapped point, the nearest vertex and the nearest coordinate.
-    let tappedLocationSymbol = AGSSimpleMarkerSymbol(style: .X, color: .orange, size: 15)
-    let nearestCoordinateSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .red, size: 10)
-    let nearestVertexSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 15)
+    // MARK: Properties
     
-    /// The symbology for the example polygon area.
-    let polygonFillSymbol = AGSSimpleFillSymbol(
-        style: .forwardDiagonal,
-        color: .green,
-        outline: AGSSimpleLineSymbol(style: .solid, color: .green, width: 2)
-    )
+    /// The map view managed by the view controller.
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+            mapView.graphicsOverlays.add(makeGraphicsOverlay())
+            mapView.setViewpointCenter(polygon.extent.center, scale: 8e6)
+            mapView.touchDelegate = self
+            mapView.callout.isAccessoryButtonHidden = true
+        }
+    }
     
-    /// The graphics overlay for the polygon and points.
-    let graphicsOverlay = AGSGraphicsOverlay()
+    /// The example polygon geometry near San Bernardino County, California.
+    let polygon: AGSPolygon = {
+        let polygonBuilder = AGSPolygonBuilder(spatialReference: .statePlaneCaliforniaZone5)
+        polygonBuilder.addPointWith(x: 6627416.41469281, y: 1804532.53233782)
+        polygonBuilder.addPointWith(x: 6669147.89779046, y: 2479145.16609522)
+        polygonBuilder.addPointWith(x: 7265673.02678292, y: 2484254.50442408)
+        polygonBuilder.addPointWith(x: 7676192.55880379, y: 2001458.66365744)
+        polygonBuilder.addPointWith(x: 7175695.94143837, y: 1840722.34474458)
+        return polygonBuilder.toGeometry()
+    }()
     
-    /// A formatter to convert units for distance.
+    /// The graphic for the tapped location point.
+    let tappedLocationGraphic: AGSGraphic = {
+        let symbol = AGSSimpleMarkerSymbol(style: .X, color: .orange, size: 15)
+        return AGSGraphic(geometry: nil, symbol: symbol)
+    }()
+    /// The graphic for the nearest coordinate point.
+    let nearestCoordinateGraphic: AGSGraphic = {
+        let symbol = AGSSimpleMarkerSymbol(style: .diamond, color: .red, size: 10)
+        return AGSGraphic(geometry: nil, symbol: symbol)
+    }()
+    /// The graphic for the nearest vertex point.
+    let nearestVertexGraphic: AGSGraphic = {
+        let symbol = AGSSimpleMarkerSymbol(style: .circle, color: .blue, size: 15)
+        return AGSGraphic(geometry: nil, symbol: symbol)
+    }()
+    
+    /// A distance formatter to format distance measurements and units.
     let distanceFormatter: MeasurementFormatter = {
         let formatter = MeasurementFormatter()
         formatter.numberFormatter.maximumFractionDigits = 1
@@ -39,108 +64,97 @@ class NearestVertexViewController: UIViewController {
         return formatter
     }()
     
-    /// The point collection that defines the polygon.
-    let createdPolygon: AGSPolygon = {
-        let polygonBuilder = AGSPolygonBuilder(spatialReference: .webMercator())
-        polygonBuilder.addPointWith(x: -5991501.677830, y: 5599295.131468)
-        polygonBuilder.addPointWith(x: -6928550.398185, y: 2087936.739807)
-        polygonBuilder.addPointWith(x: -3149463.800709, y: 1840803.011362)
-        polygonBuilder.addPointWith(x: -1563689.043184, y: 3714900.452072)
-        polygonBuilder.addPointWith(x: -3180355.516764, y: 5619889.608838)
-        return polygonBuilder.toGeometry()
-    }()
+    // MARK: Methods
     
-    /// The graphic for the polygon, tapped point, nearest coordinate point and nearest vertex point.
-    lazy var polygonGraphic = AGSGraphic(geometry: createdPolygon, symbol: polygonFillSymbol)
-    lazy var tappedLocationGraphic = AGSGraphic(geometry: nil, symbol: tappedLocationSymbol)
-    lazy var nearestCoordinateGraphic = AGSGraphic(geometry: nil, symbol: nearestCoordinateSymbol)
-    lazy var nearestVertexGraphic = AGSGraphic(geometry: nil, symbol: nearestVertexSymbol)
-    
-    /// The map view managed by the view controller.
-    @IBOutlet weak var mapView: AGSMapView! {
-        didSet {
-            mapView.map = makeMap()
-            mapView.graphicsOverlays.add(graphicsOverlay)
-            mapView.setViewpointCenter(
-                AGSPoint(
-                    x: -4487263.495911,
-                    y: 3699176.480377,
-                    spatialReference: .webMercator()
-                ),
-                scale: 1e8
-            )
-            mapView.touchDelegate = self
-        }
-    }
-    
-    /// Creates a map.
-    ///
+    /// Create a map.
     /// - Returns: A new `AGSMap` object.
     func makeMap() -> AGSMap {
-        let map = AGSMap(basemapStyle: .arcGISTopographic)
+        let map = AGSMap(spatialReference: .statePlaneCaliforniaZone5)
+        let usStatesGeneralizedLayer = AGSFeatureLayer(
+            item: AGSPortalItem(
+                portal: .arcGISOnline(withLoginRequired: false),
+                itemID: "99fd67933e754a1181cc755146be21ca"),
+            layerID: 0
+        )
+        map.basemap.baseLayers.add(usStatesGeneralizedLayer)
         return map
     }
     
-    /// Adds the graphics to the graphics overlay.
-    func addGraphicsToOverlay() {
+    func makeGraphicsOverlay() -> AGSGraphicsOverlay {
+        let polygonFillSymbol = AGSSimpleFillSymbol(
+            style: .forwardDiagonal,
+            color: .green,
+            outline: AGSSimpleLineSymbol(style: .solid, color: .green, width: 2)
+        )
+        // The graphic for the polygon.
+        let polygonGraphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
+        
+        let graphicsOverlay = AGSGraphicsOverlay()
         graphicsOverlay.graphics.addObjects(from: [
             polygonGraphic,
             nearestCoordinateGraphic,
             tappedLocationGraphic,
             nearestVertexGraphic
         ])
+        return graphicsOverlay
     }
     
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addGraphicsToOverlay()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["NearestVertexViewController"]
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["NearestVertexViewController"]
     }
+}
+
+private extension AGSSpatialReference {
+    /// California zone 5 (ftUS) state plane coordinate system.
+    static let statePlaneCaliforniaZone5 = AGSSpatialReference(wkid: 2229)!
 }
 
 // MARK: - AGSGeoViewTouchDelegate
 
 extension NearestVertexViewController: AGSGeoViewTouchDelegate {
+    func showCallout(at mapPoint: AGSPoint) {
+        // Get nearest vertex and nearest coordinate results.
+        let nearestVertexResult = AGSGeometryEngine.nearestVertex(in: polygon, to: mapPoint)!
+        let nearestCoordinateResult = AGSGeometryEngine.nearestCoordinate(in: polygon, to: mapPoint)!
+        
+        // Set the geometries for the tapped, nearest coordinate and
+        // nearest vertex point graphics.
+        nearestVertexGraphic.geometry = nearestVertexResult.point
+        nearestCoordinateGraphic.geometry = nearestCoordinateResult.point
+        
+        // Get the distance to the nearest vertex in the polygon.
+        let distanceVertex = Measurement(
+            value: nearestVertexResult.distance,
+            unit: UnitLength.feet
+        )
+        // Get the distance to the nearest coordinate in the polygon.
+        let distanceCoordinate = Measurement(
+            value: nearestCoordinateResult.distance,
+            unit: UnitLength.feet
+        )
+        
+        // Display the results in a callout at tapped location.
+        mapView.callout.title = "Proximity result"
+        mapView.callout.detail = String(
+            format: "Vertex dist: %@; Point dist: %@",
+            distanceFormatter.string(from: distanceVertex),
+            distanceFormatter.string(from: distanceCoordinate)
+        )
+        mapView.callout.show(for: tappedLocationGraphic, tapLocation: mapPoint, animated: true)
+    }
+    
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         if mapView.callout.isHidden {
-            // If the callout is not shown, show the callout with the coordinates of the normalized map point.
-            if let normalizedPoint = AGSGeometryEngine.normalizeCentralMeridian(of: mapPoint) as? AGSPoint,
-                let nearestVertexResult = AGSGeometryEngine.nearestVertex(in: polygonGraphic.geometry!, to: normalizedPoint),
-                let nearestCoordinateResult = AGSGeometryEngine.nearestCoordinate(in: polygonGraphic.geometry!, to: normalizedPoint) {
-                // Set the geometry for the tapped point, nearest coordinate point and nearest vertex point.
-                tappedLocationGraphic.geometry = normalizedPoint
-                nearestVertexGraphic.geometry = nearestVertexResult.point
-                nearestCoordinateGraphic.geometry = nearestCoordinateResult.point
-                // Get the distance to the nearest vertex in the polygon.
-                let distanceVertex = Measurement(
-                    value: nearestVertexResult.distance,
-                    unit: UnitLength.meters
-                )
-                // Get the distance to the nearest coordinate in the polygon.
-                let distanceCoordinate = Measurement(
-                    value: nearestCoordinateResult.distance,
-                    unit: UnitLength.meters
-                )
-                // Display the results on a callout of the tapped point.
-                mapView.callout.title = "Proximity result"
-                mapView.callout.detail = String(
-                    format: "Vertex dist: %@; Point dist: %@",
-                    distanceFormatter.string(from: distanceVertex),
-                    distanceFormatter.string(from: distanceCoordinate)
-                )
-                mapView.callout.isAccessoryButtonHidden = true
-                mapView.callout.show(
-                    at: normalizedPoint,
-                    screenOffset: .zero,
-                    rotateOffsetWithMap: false,
-                    animated: true
-                )
-            }
+            // If the callout is hidden, show it at the normalized map point.
+            guard let normalizedMapPoint = AGSGeometryEngine.normalizeCentralMeridian(of: mapPoint) as? AGSPoint else { return }
+            tappedLocationGraphic.geometry = normalizedMapPoint
+            showCallout(at: normalizedMapPoint)
         } else {
-            // Dismiss the callout and reset geometry for all simple marker graphics.
+            // Dismiss the callout and reset geometries.
             mapView.callout.dismiss()
             tappedLocationGraphic.geometry = nil
             nearestVertexGraphic.geometry = nil

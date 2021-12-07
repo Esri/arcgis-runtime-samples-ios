@@ -130,6 +130,12 @@
 			<key>filename</key>
 			<string>SanFrancisco.tpkx</string>
 		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Esri_campus_cars.mmpk</string>
+			<key>identifier</key>
+			<string>0dd2657ffc024d6ab9f2d33e16982374</string>
+		</dict>
 	</array>
 </dict>
 </plist>

@@ -1241,6 +1241,18 @@
 				<key>descriptionText</key>
 				<string>Create, query, and edit a specific server version using a service geodatabase.</string>
 			</dict>
+			<dict>
+				<key>dependency</key>
+				<array>
+					<string>EsriCarsMMPK</string>
+				</array>
+				<key>displayName</key>
+				<string>Edit attributes with contingent values</string>
+				<key>storyboardName</key>
+				<string>EditAttributesContingentValues</string>
+				<key>descriptionText</key>
+				<string>PLACEHOLDER</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

@@ -24,6 +24,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
     
     /// The mobile map package used by this sample.
     let mobileMapPackage = AGSMobileMapPackage(fileURL: Bundle.main.url(forResource: "Contingent_values_bird_survey", withExtension: "mmpk")!)
+    let mobileMapPackage = AGSMobileMapPackage(fileURL: Bundle.main.url(forResource: "NestingBirdsContingentValues.mmpk", withExtension: "mmpk")!)
     
     /// Initiates loading of the mobile map package.
     func loadMobileMapPackage() {

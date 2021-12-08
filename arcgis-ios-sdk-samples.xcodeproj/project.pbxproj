@@ -846,7 +846,7 @@
 		F13D82FA275EDB4300F7B0C0 /* EditAttributesContingentValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D82F9275EDB4300F7B0C0 /* EditAttributesContingentValuesViewController.swift */; };
 		F13D82FC275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13D82FB275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard */; };
 		F13D82FD275EE9C100F7B0C0 /* EditAttributesContingentValuesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F13D82F9275EDB4300F7B0C0 /* EditAttributesContingentValuesViewController.swift */; };
-		F13D830127602DCC00F7B0C0 /* Contingent_values_bird_survey.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = F13D830027602DCC00F7B0C0 /* Contingent_values_bird_survey.mmpk */; settings = {ASSET_TAGS = (contingentValuesBirdSurvey, ); }; };
+		F13D830327616F4700F7B0C0 /* NestingBirdsContingentValues.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = F13D830227616F4700F7B0C0 /* NestingBirdsContingentValues.mmpk */; settings = {ASSET_TAGS = (nestingBirdsContingentValues, ); }; };
 		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */; };
 		F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
@@ -1824,7 +1824,7 @@
 		F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayer3D.storyboard; sourceTree = "<group>"; };
 		F13D82F9275EDB4300F7B0C0 /* EditAttributesContingentValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAttributesContingentValuesViewController.swift; sourceTree = "<group>"; };
 		F13D82FB275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAttributesContingentValues.storyboard; sourceTree = "<group>"; };
-		F13D830027602DCC00F7B0C0 /* Contingent_values_bird_survey.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = Contingent_values_bird_survey.mmpk; path = ../../../Downloads/Contingent_values_bird_survey.mmpk; sourceTree = "<group>"; };
+		F13D830227616F4700F7B0C0 /* NestingBirdsContingentValues.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = NestingBirdsContingentValues.mmpk; path = ../../../Downloads/NestingBirdsContingentValues.mmpk; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F142F769267C12E400BD608A /* SanFrancisco.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.mmpk; sourceTree = "<group>"; };
@@ -4074,7 +4074,7 @@
 		4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */ = {
 			isa = PBXGroup;
 			children = (
-				F13D830027602DCC00F7B0C0 /* Contingent_values_bird_survey.mmpk */,
+				F13D830227616F4700F7B0C0 /* NestingBirdsContingentValues.mmpk */,
 				F142F76D267C12F800BD608A /* Yellowstone.mmpk */,
 				F142F769267C12E400BD608A /* SanFrancisco.mmpk */,
 				4CE15D4E22F37E8D005F2968 /* GasDeviceAnno.mmpk */,
@@ -4821,6 +4821,7 @@
 					mil2525d,
 					militaryoverlay,
 					naperville_imagery,
+					nestingBirdsContingentValues,
 					philadelphia,
 					"sandiego-north-balboa-pointcloud",
 				);
@@ -4924,7 +4925,6 @@
 				007FC9482534E8AE00D8D9A1 /* darkmode.css in Resources */,
 				3E5E094D1EF850BA00FF3454 /* ManageSublayers.storyboard in Resources */,
 				F1027F5426F92065000FA674 /* ExportVectorTiles.storyboard in Resources */,
-				F13D830127602DCC00F7B0C0 /* Contingent_values_bird_survey.mmpk in Resources */,
 				21EBBBFD1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				F1034F9D22D3EE8900B021DA /* Project.storyboard in Resources */,
@@ -4932,6 +4932,7 @@
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
 				3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */,
 				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
+				F13D830327616F4700F7B0C0 /* NestingBirdsContingentValues.mmpk in Resources */,
 				F15694D2265DBE96007AEB61 /* SanDiego_StreetAddress.loz in Resources */,
 				3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */,
 				0022769226570BBE00CC7DB9 /* DisplayOGCAPICollection.storyboard in Resources */,

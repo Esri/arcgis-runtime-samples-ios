@@ -16,7 +16,24 @@ import UIKit
 import ArcGIS
 
 class EditAttributesContingentValuesViewController: UIViewController {
-    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            loadMobileMapPackage()
+        }
+    }
     
+    /// The mobile map package used by this sample.
+    let mobileMapPackage = AGSMobileMapPackage(fileURL: Bundle.main.url(forResource: "Contingent_values_bird_survey", withExtension: "mmpk")!)
     
+    /// Initiates loading of the mobile map package.
+    func loadMobileMapPackage() {
+        mobileMapPackage.load { [weak self] (error) in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                self.mapView.map = self.mobileMapPackage.maps.first
+            }
+        }
+    }
 }

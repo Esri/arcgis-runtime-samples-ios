@@ -1244,7 +1244,7 @@
 			<dict>
 				<key>dependency</key>
 				<array>
-					<string>EsriCarsMMPK</string>
+					<string>contingentValuesBirdSurvey</string>
 				</array>
 				<key>displayName</key>
 				<string>Edit attributes with contingent values</string>

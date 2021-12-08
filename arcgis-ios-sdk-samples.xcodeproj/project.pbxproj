@@ -846,7 +846,7 @@
 		F13D82FA275EDB4300F7B0C0 /* EditAttributesContingentValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D82F9275EDB4300F7B0C0 /* EditAttributesContingentValuesViewController.swift */; };
 		F13D82FC275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13D82FB275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard */; };
 		F13D82FD275EE9C100F7B0C0 /* EditAttributesContingentValuesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F13D82F9275EDB4300F7B0C0 /* EditAttributesContingentValuesViewController.swift */; };
-		F13D82FF275EFB2100F7B0C0 /* Esri_campus_cars.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = F13D82FE275EFB2100F7B0C0 /* Esri_campus_cars.mmpk */; settings = {ASSET_TAGS = (EsriCarsMMPK, ); }; };
+		F13D830127602DCC00F7B0C0 /* Contingent_values_bird_survey.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = F13D830027602DCC00F7B0C0 /* Contingent_values_bird_survey.mmpk */; settings = {ASSET_TAGS = (contingentValuesBirdSurvey, ); }; };
 		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */; };
 		F140E1EE23F36707008AC44E /* DisplayAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
@@ -1824,7 +1824,7 @@
 		F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayer3D.storyboard; sourceTree = "<group>"; };
 		F13D82F9275EDB4300F7B0C0 /* EditAttributesContingentValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAttributesContingentValuesViewController.swift; sourceTree = "<group>"; };
 		F13D82FB275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAttributesContingentValues.storyboard; sourceTree = "<group>"; };
-		F13D82FE275EFB2100F7B0C0 /* Esri_campus_cars.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = Esri_campus_cars.mmpk; path = ../../../Downloads/Esri_campus_cars.mmpk; sourceTree = "<group>"; };
+		F13D830027602DCC00F7B0C0 /* Contingent_values_bird_survey.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; name = Contingent_values_bird_survey.mmpk; path = ../../../Downloads/Contingent_values_bird_survey.mmpk; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F142F769267C12E400BD608A /* SanFrancisco.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.mmpk; sourceTree = "<group>"; };
@@ -4074,7 +4074,7 @@
 		4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */ = {
 			isa = PBXGroup;
 			children = (
-				F13D82FE275EFB2100F7B0C0 /* Esri_campus_cars.mmpk */,
+				F13D830027602DCC00F7B0C0 /* Contingent_values_bird_survey.mmpk */,
 				F142F76D267C12F800BD608A /* Yellowstone.mmpk */,
 				F142F769267C12E400BD608A /* SanFrancisco.mmpk */,
 				4CE15D4E22F37E8D005F2968 /* GasDeviceAnno.mmpk */,
@@ -4816,6 +4816,7 @@
 					TilePackages,
 					YellowstoneMMPK,
 					canyonlands,
+					contingentValuesBirdSurvey,
 					loudoun_anno,
 					mil2525d,
 					militaryoverlay,
@@ -4923,6 +4924,7 @@
 				007FC9482534E8AE00D8D9A1 /* darkmode.css in Resources */,
 				3E5E094D1EF850BA00FF3454 /* ManageSublayers.storyboard in Resources */,
 				F1027F5426F92065000FA674 /* ExportVectorTiles.storyboard in Resources */,
+				F13D830127602DCC00F7B0C0 /* Contingent_values_bird_survey.mmpk in Resources */,
 				21EBBBFD1FE07B0500567F14 /* StatisticalQueryGroupAndSort.storyboard in Resources */,
 				3ED028641B8E3A8500ACA70D /* GriffithParkJson.txt in Resources */,
 				F1034F9D22D3EE8900B021DA /* Project.storyboard in Resources */,
@@ -5103,7 +5105,6 @@
 				3EABC7AF1DB17B2C00C161C6 /* Shasta.tif in Resources */,
 				3EFDE0F71E36ABB700CBCD92 /* FeatureCollectionLayerQuery.storyboard in Resources */,
 				3E81C1BD1D8A189D00470AA4 /* VectorTileCustomStyle.storyboard in Resources */,
-				F13D82FF275EFB2100F7B0C0 /* Esri_campus_cars.mmpk in Resources */,
 				3E62940B1EAFAF4100084105 /* WebTiledLayer.storyboard in Resources */,
 				E47ED0A72343C4FE0032440E /* ExploreScenesInFlyoverAR.storyboard in Resources */,
 				97DD84671B2B869300184B41 /* xcode.css in Resources */,

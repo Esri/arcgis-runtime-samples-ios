@@ -23,8 +23,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
     }
     
     /// The mobile map package used by this sample.
-    let mobileMapPackage = AGSMobileMapPackage(fileURL: Bundle.main.url(forResource: "Contingent_values_bird_survey", withExtension: "mmpk")!)
-    let mobileMapPackage = AGSMobileMapPackage(fileURL: Bundle.main.url(forResource: "NestingBirdsContingentValues.mmpk", withExtension: "mmpk")!)
+    let mobileMapPackage = AGSMobileMapPackage(fileURL: Bundle.main.url(forResource: "NestingBirdsContingentValues", withExtension: "mmpk")!)
     
     /// Initiates loading of the mobile map package.
     func loadMobileMapPackage() {
@@ -33,8 +32,22 @@ class EditAttributesContingentValuesViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                self.mapView.map = self.mobileMapPackage.maps.first
+//                self.mapView.map
+                let map = self.mobileMapPackage.maps.first
+                if let featureTable = map?.tables.first(where: { $0 is AGSFeatureTable }) as? AGSFeatureTable {
+                    featureTable.load { error in
+                        let contingentValuesDefinition = featureTable.contin
+                        let fieldGroups =
+                }
+                }
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // add the source code button item to the right of navigation bar
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditAttributesContingentValuesViewController"]
     }
 }

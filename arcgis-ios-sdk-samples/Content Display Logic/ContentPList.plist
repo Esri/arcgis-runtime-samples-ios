@@ -304,7 +304,7 @@
 				<key>displayName</key>
 				<string>Browse building floors</string>
 				<key>descriptionText</key>
-				<string>Display and browse through building floors using a floor-aware web map.</string>
+				<string>Display and browse through building floors from a floor-aware web map.</string>
 				<key>storyboardName</key>
 				<string>BrowseBuildingFloors</string>
 			</dict>

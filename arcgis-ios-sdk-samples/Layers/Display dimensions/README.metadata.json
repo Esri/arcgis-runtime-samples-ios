@@ -1,0 +1,30 @@
+{
+    "category": "Layers",
+    "description": "Display dimension features from a mobile map package.",
+    "ignore": false,
+    "images": [
+        "display-dimensions.png"
+    ],
+    "keywords": [
+        "definition expression",
+        "dimension",
+        "distance",
+        "layer",
+        "length",
+        "mmpk",
+        "mobile map package",
+        "utility",
+        "AGSDimensionLayer",
+        "AGSMobileMapPackage"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSDimensionLayer",
+        "AGSMobileMapPackage"
+    ],
+    "snippets": [
+        "DisplayDimensionsViewController.swift",
+        "DisplayDimensionsSettingsViewController.swift"
+    ],
+    "title": "Display dimensions"
+}

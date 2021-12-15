@@ -1,134 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ksh-TO-4T3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I3J-d8-5pB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--About-->
-        <scene sceneID="3fW-92-cdM">
+        <scene sceneID="cXb-WG-6qz">
             <objects>
-                <viewController id="HRz-Eg-7ly" customClass="AppInfoViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AWt-rk-bdu">
+                <tableViewController id="hSX-He-lTK" customClass="AppInfoViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="6BD-3M-Ows">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MAe-U0-Fji">
-                                <rect key="frame" x="52" y="518" width="310" height="33"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erh-VF-k0q">
-                                        <rect key="frame" x="0.0" y="0.0" width="155" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Esri Community"/>
-                                        <connections>
-                                            <action selector="esriCommunityAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="aNe-Yp-5P3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wea-BI-rOz">
-                                        <rect key="frame" x="155" y="0.0" width="155" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="ArcGIS iOS SDK"/>
-                                        <connections>
-                                            <action selector="runtimeSDKForiOSAction" destination="HRz-Eg-7ly" eventType="touchUpInside" id="l63-BE-Dbb"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54t-nf-ZK2">
-                                <rect key="frame" x="52" y="318" width="310" height="200"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="rjI-Fj-tXd">
-                                        <rect key="frame" x="115" y="8" width="80" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="hb9-28-3bk"/>
-                                            <constraint firstAttribute="width" constant="80" id="syS-lf-GKo"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgZ-Nk-kH7">
-                                        <rect key="frame" x="132" y="96" width="46" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="a6E-Hi-XhU"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Built with ArcGIS Runtime SDK for iOS 100.0.0 (1218)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r26-1c-eoY">
-                                        <rect key="frame" x="8" y="136" width="294" height="56"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="sgZ-Nk-kH7" firstAttribute="top" secondItem="rjI-Fj-tXd" secondAttribute="bottom" constant="8" id="6bI-up-J1K"/>
-                                    <constraint firstAttribute="trailing" secondItem="r26-1c-eoY" secondAttribute="trailing" constant="8" id="9Ye-0W-1af"/>
-                                    <constraint firstAttribute="width" constant="310" id="EXI-2x-LTH"/>
-                                    <constraint firstItem="r26-1c-eoY" firstAttribute="top" secondItem="sgZ-Nk-kH7" secondAttribute="bottom" constant="10" id="I8f-Hh-O4l"/>
-                                    <constraint firstItem="sgZ-Nk-kH7" firstAttribute="centerX" secondItem="rjI-Fj-tXd" secondAttribute="centerX" id="PIG-1t-aiQ"/>
-                                    <constraint firstItem="rjI-Fj-tXd" firstAttribute="top" secondItem="54t-nf-ZK2" secondAttribute="top" constant="8" id="WS3-de-wEx"/>
-                                    <constraint firstAttribute="height" constant="200" id="blz-Np-hg1"/>
-                                    <constraint firstItem="rjI-Fj-tXd" firstAttribute="centerX" secondItem="54t-nf-ZK2" secondAttribute="centerX" id="jV8-bi-Sqz"/>
-                                    <constraint firstItem="r26-1c-eoY" firstAttribute="leading" secondItem="54t-nf-ZK2" secondAttribute="leading" constant="8" id="kmO-zZ-JDb"/>
-                                    <constraint firstAttribute="bottom" secondItem="r26-1c-eoY" secondAttribute="bottom" constant="8" id="qAU-fQ-LD2"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="a6h-ca-33f"/>
-                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="54t-nf-ZK2" firstAttribute="centerX" secondItem="a6h-ca-33f" secondAttribute="centerX" id="LwH-pF-D4X"/>
-                            <constraint firstItem="54t-nf-ZK2" firstAttribute="centerY" secondItem="AWt-rk-bdu" secondAttribute="centerY" constant="-30" id="biI-md-HHl"/>
-                            <constraint firstItem="MAe-U0-Fji" firstAttribute="top" secondItem="54t-nf-ZK2" secondAttribute="bottom" id="kdD-yi-yj5"/>
-                            <constraint firstItem="MAe-U0-Fji" firstAttribute="trailing" secondItem="54t-nf-ZK2" secondAttribute="trailing" id="lxy-JL-FFI"/>
-                            <constraint firstItem="MAe-U0-Fji" firstAttribute="leading" secondItem="54t-nf-ZK2" secondAttribute="leading" id="m2w-30-Atv"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="About" id="BTW-AZ-6fr">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="IFR-Zl-syw">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="4R3-Mh-2Qx">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mAg-iF-9Om">
+                                    <rect key="frame" x="152" y="8" width="110.5" height="89"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="IRX-Nl-IGN">
+                                            <rect key="frame" x="23" y="0.0" width="64" height="64"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4a-D0-vkd">
+                                            <rect key="frame" x="0.0" y="72" width="110.5" height="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="mAg-iF-9Om" firstAttribute="top" secondItem="4R3-Mh-2Qx" secondAttribute="top" constant="8" id="odQ-2W-5Qo"/>
+                                <constraint firstItem="mAg-iF-9Om" firstAttribute="centerX" secondItem="4R3-Mh-2Qx" secondAttribute="centerX" id="vDq-ux-XCJ"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RightDetailCell" textLabel="4jo-1W-Hy9" detailTextLabel="7OJ-KH-cQ8" style="IBUITableViewCellStyleValue1" id="eik-xs-PIn">
+                                <rect key="frame" x="20" y="169.5" width="374" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eik-xs-PIn" id="gdv-sU-en6">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Build" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4jo-1W-Hy9">
+                                            <rect key="frame" x="20" y="14" width="32.5" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="build number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7OJ-KH-cQ8">
+                                            <rect key="frame" x="269" y="14" width="85" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LinkCell" textLabel="EZs-FS-a76" style="IBUITableViewCellStyleDefault" id="bfG-ac-HRX">
+                                <rect key="frame" x="20" y="213" width="374" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bfG-ac-HRX" id="FPL-gk-Ujm">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="SDK Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EZs-FS-a76">
+                                            <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" name="AccentColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="hSX-He-lTK" id="iif-VN-o54"/>
+                            <outlet property="delegate" destination="hSX-He-lTK" id="AVO-qq-eP4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="About" id="SZK-5F-cAp">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Nec-Xo-mZK">
                             <connections>
-                                <action selector="doneButtonTapped:" destination="HRz-Eg-7ly" id="vus-yl-OAB"/>
+                                <action selector="doneButtonTapped:" destination="hSX-He-lTK" id="u2h-2O-SD2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="appNameLabel" destination="sgZ-Nk-kH7" id="WRm-0Q-H4P"/>
-                        <outlet property="appVersionLabel" destination="r26-1c-eoY" id="Ily-rV-ugR"/>
+                        <outlet property="appNameLabel" destination="J4a-D0-vkd" id="S0C-ON-E7b"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3gm-Ow-ChR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ck-IN-ErM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1553.6231884057972" y="-1335.2678571428571"/>
+            <point key="canvasLocation" x="719" y="-392"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="IGm-uZ-zno">
+        <scene sceneID="eTK-0r-pVR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ksh-TO-4T3" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I3J-d8-5pB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="968-Ji-2lk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PZG-aK-ITR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="HRz-Eg-7ly" kind="relationship" relationship="rootViewController" id="668-M2-9MY"/>
+                        <segue destination="hSX-He-lTK" kind="relationship" relationship="rootViewController" id="Oow-jb-z2c"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HA9-Ts-ZbR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FET-pG-wlI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="643.47826086956525" y="-1335.2678571428571"/>
+            <point key="canvasLocation" x="-191" y="-392"/>
         </scene>
     </scenes>
     <color key="tintColor" name="AccentColor"/>
     <resources>
-        <image name="AppIcon2" width="80" height="80"/>
+        <image name="AppIcon2" width="64" height="64"/>
         <namedColor name="AccentColor">
             <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="tertiarySystemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

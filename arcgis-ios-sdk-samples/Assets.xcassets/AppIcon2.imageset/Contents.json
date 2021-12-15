@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "square-310-100.png",
+      "filename" : "arcgis-sdk-65.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "square-310-100.png",
+      "filename" : "arcgis-sdk-128.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "square-310-100.png",
+      "filename" : "arcgis-sdk-256.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

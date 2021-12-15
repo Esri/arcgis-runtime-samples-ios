@@ -46,6 +46,10 @@ class GraphicsOverlayDictionaryRenderer3DViewController: UIViewController {
                 } else {
                     let camera = AGSCamera(lookAt: graphicsOverlay.extent.center, distance: 15_000, heading: 0, pitch: 70, roll: 0)
                     self.sceneView.setViewpointCamera(camera)
+                    // Use Ordered Anchor Points for the symbol style draw rule.
+                    if let drawRuleConfiguration = dictionarySymbolStyle.configurations.first(where: { $0.name == "model" }) {
+                        drawRuleConfiguration.value = "ORDERED ANCHOR POINTS"
+                    }
                 }
             }
             graphicsOverlay.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbolStyle)

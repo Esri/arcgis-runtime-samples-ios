@@ -13,14 +13,18 @@
         "proximity",
         "vertex",
         "AGSGeometry",
-        "AGSGeometryEngine",
-        "AGSProximityResult"
+        "AGSProximityResult",
+        "class AGSGeometryEngine.nearestCoordinate(in:to:)",
+        "class AGSGeometryEngine.nearestVertex(in:to:)",
+        "class AGSGeometryEngine.normalizeCentralMeridian(of:)"
     ],
     "redirect_from": [],
     "relevant_apis": [
         "AGSGeometry",
-        "AGSGeometryEngine",
-        "AGSProximityResult"
+        "AGSProximityResult",
+        "class AGSGeometryEngine.nearestCoordinate(in:to:)",
+        "class AGSGeometryEngine.nearestVertex(in:to:)",
+        "class AGSGeometryEngine.normalizeCentralMeridian(of:)"
     ],
     "snippets": [
         "NearestVertexViewController.swift"

@@ -411,14 +411,6 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>ArcGIS vector tiled layer (URL)</string>
-				<key>storyboardName</key>
-				<string>VectorTileLayer</string>
-				<key>descriptionText</key>
-				<string>Load an ArcGIS vector tiled layer from a URL.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
 				<string>ArcGIS vector tiled layer (custom style)</string>
 				<key>storyboardName</key>
 				<string>VectorTileCustomStyle</string>
@@ -1089,6 +1081,14 @@
 				<string>Create a notification every time a given location data source has entered and/or exited a set of features or graphics.</string>
 				<key>storyboardName</key>
 				<string>SetUpLocationDrivenGeotriggers</string>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Filter by time extent</string>
+				<key>descriptionText</key>
+				<string>The time slider provides controls that allow you to visualize temporal data by applying a specific time extent to a map view.</string>
+				<key>storyboardName</key>
+				<string>FilterByTimeExtent</string>
 			</dict>
 		</array>
 	</dict>

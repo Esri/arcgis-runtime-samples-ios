@@ -539,9 +539,6 @@
 		3EE1799C1DE37199005E0759 /* EditFeaturesOnlineViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E39F6D01B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift */; };
 		3EE1799D1DE37199005E0759 /* OfflineEditingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EC39C3E1C9B47C2003F6459 /* OfflineEditingViewController.swift */; };
 		3EE692021B03D22500C167B8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE692011B03D22500C167B8 /* Category.swift */; };
-		3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */; };
-		3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
-		3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */; };
 		3EEA060D1D21C44000E03774 /* SceneSymbols.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEA06021D21C44000E03774 /* SceneSymbols.storyboard */; };
 		3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEA06031D21C44000E03774 /* SceneSymbolsViewController.swift */; };
 		3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EEA06051D21C44000E03774 /* DisplayScene.storyboard */; };
@@ -837,6 +834,9 @@
 		F1124F0A24CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */; };
 		F1124F0C24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
 		F1151CB5230B1B2000E55682 /* ElevationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
+		F11897AA2735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */; };
+		F11897AC2735F24600ADC1D4 /* FilterByTimeExtent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11897AB2735F24600ADC1D4 /* FilterByTimeExtent.storyboard */; };
+		F11897AD2736050B00ADC1D4 /* FilterByTimeExtentViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */; };
 		F11CED6D256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */; };
 		F11CED73256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */; };
 		F11CED76256C8BD3002A3F56 /* ShowLabelsOnLayer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */; };
@@ -950,6 +950,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F11897AD2736050B00ADC1D4 /* FilterByTimeExtentViewController.swift in CopyFiles */,
 				F1C092D7272774530000B132 /* VectorTilePackageViewController.swift in CopyFiles */,
 				F1027F5926F9258E000FA674 /* ExportVectorTilesViewController.swift in CopyFiles */,
 				008F292A26E0424C00A5BCD3 /* DisplayMapSwiftUIViewController.swift in CopyFiles */,
@@ -1145,7 +1146,6 @@
 				3E412B411D0B2CC600349155 /* MobileMapViewController.swift in CopyFiles */,
 				3E6C771D1CCFE5AD00E89873 /* IdentifyLayersViewController.swift in CopyFiles */,
 				3E54D2361CC69E5E00BB9904 /* GraphicDrawOrderViewController.swift in CopyFiles */,
-				3EE8B9591CA0C020003AA705 /* VectorTileLayerViewController.swift in CopyFiles */,
 				3EC39C461C9B515D003F6459 /* ExportTilesViewController.swift in CopyFiles */,
 				3EC39C471C9B515D003F6459 /* GenerateGeodatabaseViewController.swift in CopyFiles */,
 				3EC39C491C9B515D003F6459 /* FeatureLayersViewController.swift in CopyFiles */,
@@ -1602,8 +1602,6 @@
 		3ED7888F1D26E2F700E5F311 /* LocalTiledLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocalTiledLayer.storyboard; sourceTree = "<group>"; };
 		3EE385511DD4FDE600B13E3C /* srtm.tiff.ovr */ = {isa = PBXFileReference; lastKnownFileType = file; path = srtm.tiff.ovr; sourceTree = "<group>"; };
 		3EE692011B03D22500C167B8 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VectorTileLayer.storyboard; sourceTree = "<group>"; };
-		3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorTileLayerViewController.swift; sourceTree = "<group>"; };
 		3EEA06021D21C44000E03774 /* SceneSymbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SceneSymbols.storyboard; sourceTree = "<group>"; };
 		3EEA06031D21C44000E03774 /* SceneSymbolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneSymbolsViewController.swift; sourceTree = "<group>"; };
 		3EEA06051D21C44000E03774 /* DisplayScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DisplayScene.storyboard; sourceTree = "<group>"; };
@@ -1815,6 +1813,8 @@
 		F1034FAB22D3F6C700B021DA /* MontereyElevation.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontereyElevation.tpkx; sourceTree = "<group>"; };
 		F1124F0924CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditFeaturesWithFeatureLinkedAnnotation.storyboard; sourceTree = "<group>"; };
 		F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFeaturesWithFeatureLinkedAnnotationViewController.swift; sourceTree = "<group>"; };
+		F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByTimeExtentViewController.swift; sourceTree = "<group>"; };
+		F11897AB2735F24600ADC1D4 /* FilterByTimeExtent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilterByTimeExtent.storyboard; sourceTree = "<group>"; };
 		F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLabelsOnLayer3DViewController.swift; sourceTree = "<group>"; };
 		F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayer3D.storyboard; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
@@ -3162,6 +3162,7 @@
 		3ED027FD1B8E392500ACA70D /* Display information */ = {
 			isa = PBXGroup;
 			children = (
+				F11897A82735F15100ADC1D4 /* Filter by time extent */,
 				000FFFB026CB040B00E3CE7E /* Set up location-driven geotriggers */,
 				009B5FF525E58E0000BB9A77 /* Create symbol styles from web styles */,
 				F1F651A724984742006DF277 /* Show popup */,
@@ -3233,7 +3234,6 @@
 				3EA15C721ED89EAE00B1F816 /* Change sublayer renderer */,
 				3ED028A71B8E3A9800ACA70D /* Change sublayer visibility */,
 				3E5E09491EF850BA00FF3454 /* Manage sublayers */,
-				3EE8B9511CA08E16003AA705 /* ArcGIS vector tiled layer (URL) */,
 				3E81C1B71D8A0C7400470AA4 /* ArcGIS vector tiled layer (custom style) */,
 				3E6294081EAFAF4100084105 /* Web tiled layer */,
 				2196CAF61FD868EA00512693 /* Raster function (service) */,
@@ -3596,15 +3596,6 @@
 				3E3B2C231BBD9CD300A99C5E /* SampleSearchEngine.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		3EE8B9511CA08E16003AA705 /* ArcGIS vector tiled layer (URL) */ = {
-			isa = PBXGroup;
-			children = (
-				3EE8B9521CA08E54003AA705 /* VectorTileLayer.storyboard */,
-				3EE8B9541CA08E71003AA705 /* VectorTileLayerViewController.swift */,
-			);
-			path = "ArcGIS vector tiled layer (URL)";
 			sourceTree = "<group>";
 		};
 		3EEA06001D21C3E800E03774 /* Scenes */ = {
@@ -4517,6 +4508,15 @@
 			path = "Edit features with feature-linked annotation";
 			sourceTree = "<group>";
 		};
+		F11897A82735F15100ADC1D4 /* Filter by time extent */ = {
+			isa = PBXGroup;
+			children = (
+				F11897A92735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift */,
+				F11897AB2735F24600ADC1D4 /* FilterByTimeExtent.storyboard */,
+			);
+			path = "Filter by time extent";
+			sourceTree = "<group>";
+		};
 		F11CED6A256C82A8002A3F56 /* Show labels on layer in 3D */ = {
 			isa = PBXGroup;
 			children = (
@@ -5002,7 +5002,6 @@
 				3EEA060F1D21C44000E03774 /* DisplayScene.storyboard in Resources */,
 				3EFDE0F51E36ABB700CBCD92 /* FeatureCollectionLayer.storyboard in Resources */,
 				3E1E5EED1D9F0B5600F4913C /* srtm.tiff in Resources */,
-				3EE8B9531CA08E54003AA705 /* VectorTileLayer.storyboard in Resources */,
 				3ED029311B8E3AB300ACA70D /* Callout.storyboard in Resources */,
 				3ED029701B8E3ACD00ACA70D /* EditGeometry.storyboard in Resources */,
 				4CA6F6CF22C6C671004F0F4F /* mil2525d.stylx in Resources */,
@@ -5033,6 +5032,7 @@
 				00D4E8DE241AA18E002689DB /* ConvexHull.storyboard in Resources */,
 				4CCA30CF22399A91009D2AEF /* AddIntegratedMeshLayer.storyboard in Resources */,
 				3ED75D031ED39EDF009B1F75 /* FindServiceAreaInteractive.storyboard in Resources */,
+				F11897AC2735F24600ADC1D4 /* FilterByTimeExtent.storyboard in Resources */,
 				3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */,
 				3E1183DF1ECF5A1000180152 /* Pyrenees.csv in Resources */,
 				F1F62C4022E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard in Resources */,
@@ -5423,6 +5423,7 @@
 				3E4BF4561C5BD66C00D85919 /* OfflineGeocodeViewController.swift in Sources */,
 				4C478E4E223F0198009F8CDF /* MapReferenceScaleSettingsViewController.swift in Sources */,
 				3E0B584E1E36BCCD00951767 /* HotspotSettingsViewController.swift in Sources */,
+				F11897AA2735F23A00ADC1D4 /* FilterByTimeExtentViewController.swift in Sources */,
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				C7E9D7C721C0500300E6C47E /* BufferOptionsViewController.swift in Sources */,
 				1259FB931FD295C90037105E /* WMSLayerUsingURLViewController.swift in Sources */,
@@ -5533,7 +5534,6 @@
 				3E62940C1EAFAF4100084105 /* WebTiledLayerViewController.swift in Sources */,
 				0022769026570BA500CC7DB9 /* DisplayOGCAPICollectionViewController.swift in Sources */,
 				123AC27E20E58CFA0026A7D6 /* GeodesicOperationsViewController.swift in Sources */,
-				3EE8B9551CA08E71003AA705 /* VectorTileLayerViewController.swift in Sources */,
 				009B5FF825E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift in Sources */,
 				3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */,
 				D9E2E75420EEAC5C001D0AE0 /* FeatureLayerShapefileViewController.swift in Sources */,
@@ -5704,7 +5704,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.12.0;
+				MARKETING_VERSION = 100.13.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5733,7 +5733,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.12.0;
+				MARKETING_VERSION = 100.13.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5840,7 +5840,7 @@
 			repositoryURL = "https://github.com/Esri/arcgis-runtime-toolkit-ios";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 100.12.0;
+				minimumVersion = 100.13.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

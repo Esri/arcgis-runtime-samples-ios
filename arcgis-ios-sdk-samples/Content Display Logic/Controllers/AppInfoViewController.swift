@@ -25,6 +25,8 @@ class AppInfoViewController: UITableViewController {
     
     private let appInfos = [
         AppInfo(title: "App Version", detail: Strings.appMarketingVersionNumber),
+        // Comment the following line when upload to App Store.
+        AppInfo(title: "Internal Version", detail: Strings.appInternalVersionString),
         AppInfo(title: "SDK Version", detail: Strings.ArcGISSDKVersionString)
     ]
     
@@ -153,7 +155,8 @@ private extension AppInfoViewController {
         /// An end-user string representation of the ArcGIS Runtime SDK for iOS
         /// version shipped with the app, e.g. "100.13.0 (3355)".
         static let ArcGISSDKVersionString = String(format: "%@ (%@)", sdkVersionNumber, sdkBuildNumber)
-        
+        /// App version string representation for internal usage.
+        static let appInternalVersionString = String(format: "%@ (%@)", appVersionNumber, appbuildNumber)
         /// App version number, e.g. "100.13.0".
         private static let appVersionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
         /// App build number, e.g. "20211214".

@@ -42,8 +42,8 @@ class AppInfoViewController: UIViewController {
         UIApplication.shared.open(.developers)
     }
     
-    @IBAction func closeAction() {
-        self.dismiss(animated: true)
+    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
     }
 }
 

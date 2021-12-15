@@ -52,6 +52,7 @@
 		005C713A26C32ED10003BDC3 /* DisplayMapSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C713926C32ED10003BDC3 /* DisplayMapSwiftUIView.swift */; };
 		005C713C26C331470003BDC3 /* DisplayMapSwiftUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005C713B26C331470003BDC3 /* DisplayMapSwiftUI.storyboard */; };
 		005C713E26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C713D26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift */; };
+		0060DCF027695B6A00CA1238 /* AppInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0060DCEF27695B6A00CA1238 /* AppInfo.storyboard */; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -1274,6 +1275,7 @@
 		005C713926C32ED10003BDC3 /* DisplayMapSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMapSwiftUIView.swift; sourceTree = "<group>"; };
 		005C713B26C331470003BDC3 /* DisplayMapSwiftUI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayMapSwiftUI.storyboard; sourceTree = "<group>"; };
 		005C713D26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMapSwiftUIViewController.swift; sourceTree = "<group>"; };
+		0060DCEF27695B6A00CA1238 /* AppInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppInfo.storyboard; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		0069F4BD25F0111D00CA7BD2 /* CreateLoadReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateLoadReport.storyboard; sourceTree = "<group>"; };
 		0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoadReportViewController.swift; sourceTree = "<group>"; };
@@ -2430,6 +2432,7 @@
 			children = (
 				009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */,
 				3E0D3AD61AFD481900FC60D6 /* Main.storyboard */,
+				0060DCEF27695B6A00CA1238 /* AppInfo.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -4933,6 +4936,7 @@
 				4C5F98BF2280A4EB00414343 /* AuthenticateWithOAuth.storyboard in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				008D175224EEEEBD0001BB8F /* loudoun_anno.geodatabase in Resources */,
+				0060DCF027695B6A00CA1238 /* AppInfo.storyboard in Resources */,
 				D9E2E76020EEB8FF001D0AE0 /* Public_Art.dbf in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				4CCA30C622386413009D2AEF /* ViewPointCloudDataOffline.storyboard in Resources */,

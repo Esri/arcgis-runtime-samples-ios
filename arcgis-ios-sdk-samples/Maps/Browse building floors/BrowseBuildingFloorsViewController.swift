@@ -19,7 +19,11 @@ class BrowseBuildingFloorsViewController: UIViewController {
     // MARK: Storyboard views
     
     /// The map view managed by the view controller.
-    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+        }
+    }
     /// The floor level picker view.
     @IBOutlet var floorLevelPickerView: UIPickerView!
     
@@ -49,16 +53,8 @@ class BrowseBuildingFloorsViewController: UIViewController {
         ])
     }
     
-    // MARK: UIViewController
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["BrowseBuildingFloorsViewController"]
-        
-        // Set the appearance of the floor level picker view.
-        setPickerViewLayout()
-        
+    /// Create a map.
+    func makeMap() -> AGSMap {
         // A floor-aware web map for floors of Esri Building L in Redlands.
         let map = AGSMap(item: AGSPortalItem(
             portal: .arcGISOnline(withLoginRequired: false),
@@ -74,7 +70,6 @@ class BrowseBuildingFloorsViewController: UIViewController {
             floorManager.load { error in
                 guard error == nil, let geometry = floorManager.sites.first?.geometry else { return }
                 // Set the loaded web map to the map view and set its viewpoint.
-                self.mapView.map = map
                 self.mapView.setViewpointGeometry(geometry)
                 
                 // Update floor picker and select the first floor.
@@ -85,6 +80,18 @@ class BrowseBuildingFloorsViewController: UIViewController {
                 self.floorLevelPickerView.selectRow(firstFloorIndex, inComponent: 0, animated: true)
             }
         }
+        return map
+    }
+    
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["BrowseBuildingFloorsViewController"]
+        
+        // Set the appearance of the floor level picker view.
+        setPickerViewLayout()
     }
 }
 

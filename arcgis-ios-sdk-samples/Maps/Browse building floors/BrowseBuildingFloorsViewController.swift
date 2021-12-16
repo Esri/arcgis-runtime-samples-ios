@@ -69,7 +69,6 @@ class BrowseBuildingFloorsViewController: UIViewController {
             
             floorManager.load { error in
                 guard error == nil, let geometry = floorManager.sites.first?.geometry else { return }
-                // Set the loaded web map to the map view and set its viewpoint.
                 self.mapView.setViewpointGeometry(geometry)
                 
                 // Update floor picker and select the first floor.

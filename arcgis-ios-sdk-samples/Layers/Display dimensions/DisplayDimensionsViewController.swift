@@ -21,8 +21,6 @@ class DisplayDimensionsViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            // Set the viewpoint to the southwest of Edinburgh, UK.
-            mapView.setViewpointCenter(AGSPointMakeWGS84(55.908, -3.305))
             loadMobileMapPackage()
         }
     }

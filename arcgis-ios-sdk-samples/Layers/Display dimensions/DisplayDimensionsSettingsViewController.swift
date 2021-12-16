@@ -31,6 +31,7 @@ class DisplayDimensionsSettingsViewController: UITableViewController {
     
     @IBAction func toggleDimensionLayerVisibilityAction(_ sender: UISwitch) {
         dimensionLayer.isVisible.toggle()
+        definitionExpressionSwitch.isEnabled = dimensionLayer.isVisible
     }
     
     @IBAction func toggleDefinitionExpressionAction(_ sender: UISwitch) {
@@ -43,6 +44,7 @@ class DisplayDimensionsSettingsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         dimensionLayerVisibilitySwitch.isOn = dimensionLayer.isVisible
+        definitionExpressionSwitch.isEnabled = dimensionLayer.isVisible
         definitionExpressionSwitch.isOn = !dimensionLayer.definitionExpression.isEmpty
         // Adjust the size of the table view according to its contents.
         tableViewContentSizeObservation = tableView.observe(\.contentSize) { [unowned self] tableView, _ in

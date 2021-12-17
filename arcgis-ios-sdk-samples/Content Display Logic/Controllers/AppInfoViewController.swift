@@ -20,7 +20,7 @@ class AppInfoViewController: UITableViewController {
     private let links = [
         Link(title: "Esri Community", url: URLs.esriCommunity),
         Link(title: "GitHub Repository", url: URLs.githubRepository),
-        Link(title: "Sample Code", url: URLs.sampleCode)
+        Link(title: "Developer Site", url: URLs.developers)
     ]
     
     private let appInfos = [
@@ -28,6 +28,11 @@ class AppInfoViewController: UITableViewController {
         // Comment the following line when upload to App Store.
         AppInfo(title: "Internal Version", detail: Strings.appInternalVersionString),
         AppInfo(title: "SDK Version", detail: Strings.ArcGISSDKVersionString)
+    ]
+    
+    private let poweredBys = [
+        Link(title: "ArcGIS Runtime Toolkit for iOS", url: URLs.toolkit),
+        Link(title: "ArcGIS Runtime SDK for iOS", url: URLs.developers)
     ]
     
     @IBOutlet var appNameLabel: UILabel! {
@@ -76,7 +81,7 @@ extension AppInfoViewController {
         case .links:
             return links.count
         case .poweredBy:
-            return 1
+            return poweredBys.count
         }
     }
     
@@ -89,7 +94,7 @@ extension AppInfoViewController {
         case .links:
             cell.textLabel?.text = links[indexPath.row].title
         case .poweredBy:
-            cell.textLabel?.text = "ArcGIS Runtime SDK for iOS"
+            cell.textLabel?.text = poweredBys[indexPath.row].title
         }
         return cell
     }
@@ -100,7 +105,7 @@ extension AppInfoViewController {
         case .links:
             UIApplication.shared.open(links[indexPath.row].url)
         case .poweredBy:
-            UIApplication.shared.open(URLs.developers)
+            UIApplication.shared.open(poweredBys[indexPath.row].url)
         default:
             return
         }
@@ -171,7 +176,7 @@ private extension AppInfoViewController {
         static let developers = URL(string: "https://developers.arcgis.com/ios/")!
         static let esriCommunity = URL(string: "https://community.esri.com/t5/arcgis-runtime-sdk-for-ios-questions/bd-p/arcgis-runtime-sdk-for-ios-questions")!
         static let githubRepository = URL(string: "https://github.com/Esri/arcgis-runtime-samples-ios")!
-        static let sampleCode = URL(string: "https://developers.arcgis.com/ios/swift/sample-code/")!
+        static let toolkit = URL(string: "https://github.com/Esri/arcgis-runtime-toolkit-ios")!
     }
 }
 

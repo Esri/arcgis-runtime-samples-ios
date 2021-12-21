@@ -1244,6 +1244,7 @@
 			<dict>
 				<key>dependency</key>
 				<array>
+					<string>birdsNestGDB</string>
 					<string>nestingBirdsContingentValues</string>
 				</array>
 				<key>displayName</key>

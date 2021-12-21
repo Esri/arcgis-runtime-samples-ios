@@ -16,31 +16,77 @@ import UIKit
 import ArcGIS
 
 class EditAttributesContingentValuesViewController: UIViewController {
-    @IBOutlet var mapView: AGSMapView! {
-        didSet {
-            loadMobileMapPackage()
+    @IBOutlet var mapView: AGSMapView!
+    // The geodatabase used by this sample.
+    let geodatabase: AGSGeodatabase!
+    required init?(coder: NSCoder) {
+        // Create a URL leading to the resource.
+        let geodatabaseURL = Bundle.main.url(forResource: "ContingentValuesBirdNests", withExtension: "geodatabase")!
+        do {
+            // Create a temporary directory URL.
+            let temporaryDirectoryURL = try FileManager.default.url(
+                for: .itemReplacementDirectory,
+                in: .userDomainMask,
+                appropriateFor: geodatabaseURL,
+                create: true
+            )
+            // Create a temporary URL where the geodatabase URL can be copied to.
+            let temporaryGeodatabaseURL = temporaryDirectoryURL.appendingPathComponent(ProcessInfo.processInfo.globallyUniqueString)
+            try FileManager.default.copyItem(at: geodatabaseURL, to: temporaryGeodatabaseURL)
+            // Create the geodatabase with the URL.
+            geodatabase = AGSGeodatabase(fileURL: temporaryGeodatabaseURL)
+        } catch {
+            print("Error setting up geodatabase: \(error)")
+            geodatabase = nil
+        }
+        
+        super.init(coder: coder)
+        
+        // Load the geodatabase.
+        geodatabase?.load { [weak self] (error) in
+            let result: Result<Void, Error>
+            if let error = error {
+                result = .failure(error)
+            } else {
+                result = .success(())
+            }
+            self?.geodatabaseDidLoad(with: result)
         }
     }
     
-    /// The mobile map package used by this sample.
-    let mobileMapPackage = AGSMobileMapPackage(fileURL: Bundle.main.url(forResource: "NestingBirdsContingentValues", withExtension: "mmpk")!)
+    deinit {
+        if let geodatabase = geodatabase {
+            geodatabase.close()
+            try? FileManager.default.removeItem(at: geodatabase.fileURL)
+        }
+    }
     
-    /// Initiates loading of the mobile map package.
-    func loadMobileMapPackage() {
-        mobileMapPackage.load { [weak self] (error) in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-//                self.mapView.map
-                let map = self.mobileMapPackage.maps.first
-                if let featureTable = map?.tables.first(where: { $0 is AGSFeatureTable }) as? AGSFeatureTable {
-                    featureTable.load { error in
-                        let contingentValuesDefinition = featureTable.contin
-                        let fieldGroups =
-                }
+    // Called in response to the geodatabase load operation completing.
+    func geodatabaseDidLoad(with result: Result<Void, Error>) {
+        switch result {
+        case .success:
+            guard let map = self.mapView.map else { return }
+            if let featureTable = self.geodatabase.geodatabaseFeatureTable(withName: "BirdsNests") as? AGSArcGISFeatureTable {
+                let contingentValuesDefinition = featureTable.contingentValuesDefinition
+                contingentValuesDefinition.load { error in
+                    let fieldGroups = contingentValuesDefinition.fieldGroups
+                    for fieldGroup in fieldGroups {
+                        print("\(fieldGroup.name)")
+                    }
+                    
                 }
             }
+            
+            // Add the feature layers to the map.
+//            map.operationalLayers.addObjects(from: featureLayers)
+//            // Create annotation layers from tables in the geodatabase.
+//            let annotationTableNames = ["ParcelLinesAnno_1", "Loudoun_Address_PointsAnno_1"]
+//            let annotationTables = annotationTableNames.compactMap { self.geodatabase.geodatabaseAnnotationTable(withTableName: $0) }
+//            let annotationLayers = annotationTables.map(AGSAnnotationLayer.init)
+//            // Add the annotation layers to the map.
+//            map.operationalLayers.addObjects(from: annotationLayers)
+        case .failure(let error):
+            self.presentAlert(error: error)
         }
     }
     

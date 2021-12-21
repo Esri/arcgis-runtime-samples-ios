@@ -69,29 +69,31 @@ class BrowseBuildingFloorsViewController: UIViewController {
             itemID: "f133a698536f44c8884ad81f80b6cfc7"
         ))
         map.load { [weak self] error in
-            self?.map(map, didLoadWith: error)
+            if let error = error {
+                self?.presentAlert(error: error)
+            } else {
+                self?.mapDidLoad(map)
+            }
         }
         return map
     }
     
-    func map(_ map: AGSMap, didLoadWith loadError: Error?) {
-        guard loadError == nil else {
-            presentAlert(error: loadError!)
-            return
-        }
+    /// Called after the web map is loaded without error.
+    func mapDidLoad(_ map: AGSMap) {
         // The floor manager of the web map, which exposes the sites,
         // facilities, and levels of the floor-aware data model.
         guard let floorManager = map.floorManager else { return }
         floorManager.load { [weak self] error in
-            self?.floodManager(floorManager, didLoadWith: error)
+            if let error = error {
+                self?.presentAlert(error: error)
+            } else {
+                self?.floodManagerDidLoad(floorManager)
+            }
         }
     }
     
-    func floodManager(_ floorManager: AGSFloorManager, didLoadWith loadError: Error?) {
-        guard loadError == nil else {
-            presentAlert(error: loadError!)
-            return
-        }
+    /// Called after the floor manager of the web map is loaded without error.
+    func floodManagerDidLoad(_ floorManager: AGSFloorManager) {
         guard let geometry = floorManager.sites.first?.geometry,
               let firstFloor = floorManager.levels.first(where: { $0.longName == "Level 1" }) else { return }
         mapView.setViewpointGeometry(geometry)

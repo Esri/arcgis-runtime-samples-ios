@@ -34,7 +34,7 @@ This sample uses a [floor-aware web map](https://arcgis.com/home/item.html?id=f1
 
 ## Additional information
 
-The API also supports browsing different sites and facilities in addition to building floors.
+The `AGSFloorManager` API also supports browsing different sites and facilities in addition to building floors.
 
 ## Tags
 

@@ -10,17 +10,17 @@ Dimensions show specific lengths or distances on a map. A dimension may indicate
 
 ## How to use the sample
 
-When the sample loads, it will automatically display the map containing dimension features from the mobile map package. Control the visibility of the dimension layer, and apply a definition expression to show dimensions greater than or equal to 450m in length using the toggles.
+When the sample loads, it will automatically display the map containing dimension features from the mobile map package. Control the visibility of the dimension layer and apply a definition expression to show dimensions greater than or equal to 450m in length using the toggles.
 
-**Note**: the minimum scale range of the sample is set to 1:40,000 to maintain readability of the dimension features.
+**Note**: The minimum scale range of the sample is set to 1:40,000 to maintain readability of the dimension features.
 
 ## How it works
 
 1. Create an `AGSMobileMapPackage` specifying the path to the .mmpk file.
 2. Load the mobile map package (mmpk).
-3. After the mmpk successfully loads, get the map from the mmpk and add it to the map view.
+3. After the mmpk successfully loads, get the map from the mmpk and assign it to the map view.
 4. Loop through the map's layers to find the `AGSDimensionLayer`.
-5. Control the dimension layer's visibility with `isVisible` property, and set a definition expression on its `definitionExpression` property.
+5. Control the dimension layer's visibility with the `isVisible` property and set a definition expression using the `definitionExpression` property.
 
 ## Relevant API
 

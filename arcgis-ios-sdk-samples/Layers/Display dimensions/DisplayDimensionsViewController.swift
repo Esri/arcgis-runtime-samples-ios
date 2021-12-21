@@ -71,11 +71,15 @@ class DisplayDimensionsViewController: UIViewController {
     
     // MARK: UIViewController
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let settingsViewController = segue.destination as? DisplayDimensionsSettingsViewController {
-            settingsViewController.dimensionLayer = dimensionLayer
-            settingsViewController.popoverPresentationController?.delegate = self
-        }
+    @IBSegueAction
+    func makeSettingsViewController(_ coder: NSCoder) -> DisplayDimensionsSettingsViewController? {
+        let settingsViewController = DisplayDimensionsSettingsViewController(
+            coder: coder,
+            dimensionLayer: dimensionLayer
+        )
+        settingsViewController?.modalPresentationStyle = .popover
+        settingsViewController?.presentationController?.delegate = self
+        return settingsViewController
     }
     
     override func viewDidLoad() {

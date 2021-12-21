@@ -24,8 +24,23 @@ class DisplayDimensionsSettingsViewController: UITableViewController {
     // MARK: Properties
     
     /// The dimension layer passed from parent view controller.
-    var dimensionLayer: AGSDimensionLayer!
+    private let dimensionLayer: AGSDimensionLayer
     private var tableViewContentSizeObservation: NSKeyValueObservation?
+    
+    // MARK: Initializers
+    
+    init?(
+        coder: NSCoder,
+        dimensionLayer: AGSDimensionLayer
+    ) {
+        self.dimensionLayer = dimensionLayer
+        super.init(coder: coder)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: Actions
     

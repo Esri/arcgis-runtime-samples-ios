@@ -143,7 +143,7 @@ private extension AppInfoViewController {
         var cellIdentifier: String {
             switch self {
             case .appInfo:
-                return "RightDetailCell"
+                return "AppInfoCell"
             case .links:
                 return "LinkCell"
             case .poweredBy:

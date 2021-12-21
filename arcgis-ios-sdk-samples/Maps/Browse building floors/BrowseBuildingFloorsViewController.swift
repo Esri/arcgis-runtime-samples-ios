@@ -29,23 +29,31 @@ class BrowseBuildingFloorsViewController: UIViewController {
     
     // MARK: Properties
     
-    /// The levels of the floor-aware web map, with an addition of `nil`.
-    var levels: [AGSFloorLevel?] = [nil]
+    /// The floor levels of the floor-aware web map.
+    var floorLevels: [AGSFloorLevel] = []
     
-    // MARK: Methods
-    
-    /// Set the selected level to visible and all other levels to invisible.
-    /// - Parameter selectedLevel: The `AGSFloorLevel` selected.
-    func setVisibleFloorLevel(_ selectedLevel: AGSFloorLevel?) {
-        levels.forEach { level in
-            level?.isVisible = level == selectedLevel
+    /// The currently selected floor level.
+    var selectedFloorLevel: AGSFloorLevel? {
+        didSet {
+            // Set the selected level to visible and the previous to invisible.
+            oldValue?.isVisible = false
+            selectedFloorLevel?.isVisible = true
+            // Update picker view selection.
+            let row: Int
+            if let selectedFloorLevel = selectedFloorLevel {
+                row = floorLevels.firstIndex(of: selectedFloorLevel)! + 1
+            } else {
+                row = .zero
+            }
+            floorLevelPickerView.selectRow(row, inComponent: 0, animated: true)
         }
     }
     
+    // MARK: Methods
+    
     func setPickerViewLayout() {
         floorLevelPickerView.translatesAutoresizingMaskIntoConstraints = false
-        let margin: CGFloat = 10.0
-        floorLevelPickerView.layer.cornerRadius = margin
+        floorLevelPickerView.layer.cornerRadius = 10.0
         NSLayoutConstraint.activate([
             floorLevelPickerView.widthAnchor.constraint(equalToConstant: 120.0),
             view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: floorLevelPickerView.trailingAnchor, multiplier: 1),
@@ -60,26 +68,37 @@ class BrowseBuildingFloorsViewController: UIViewController {
             portal: .arcGISOnline(withLoginRequired: false),
             itemID: "f133a698536f44c8884ad81f80b6cfc7"
         ))
-        
         map.load { [weak self] error in
-            guard error == nil, let self = self,
-                  // The floor manager of the web map, which exposes the sites,
-                  // facilities, and levels of the floor-aware data model.
-                  let floorManager = map.floorManager else { return }
-            
-            floorManager.load { error in
-                guard error == nil, let geometry = floorManager.sites.first?.geometry else { return }
-                self.mapView.setViewpointGeometry(geometry)
-                
-                // Update floor picker and select the first floor.
-                self.levels += floorManager.levels
-                let firstFloorIndex = self.levels.firstIndex { $0?.longName == "Level 1" }!
-                self.setVisibleFloorLevel(self.levels[firstFloorIndex])
-                self.floorLevelPickerView.reloadAllComponents()
-                self.floorLevelPickerView.selectRow(firstFloorIndex, inComponent: 0, animated: true)
-            }
+            self?.map(map, didLoadWith: error)
         }
         return map
+    }
+    
+    func map(_ map: AGSMap, didLoadWith loadError: Error?) {
+        guard loadError == nil else {
+            presentAlert(error: loadError!)
+            return
+        }
+        // The floor manager of the web map, which exposes the sites,
+        // facilities, and levels of the floor-aware data model.
+        guard let floorManager = map.floorManager else { return }
+        floorManager.load { [weak self] error in
+            self?.floodManager(floorManager, didLoadWith: error)
+        }
+    }
+    
+    func floodManager(_ floorManager: AGSFloorManager, didLoadWith loadError: Error?) {
+        guard loadError == nil else {
+            presentAlert(error: loadError!)
+            return
+        }
+        guard let geometry = floorManager.sites.first?.geometry,
+              let firstFloor = floorManager.levels.first(where: { $0.longName == "Level 1" }) else { return }
+        mapView.setViewpointGeometry(geometry)
+        // Update floor levels and select the first floor.
+        floorLevels = floorManager.levels
+        floorLevelPickerView.reloadAllComponents()
+        selectedFloorLevel = firstFloor
     }
     
     // MARK: UIViewController
@@ -88,28 +107,33 @@ class BrowseBuildingFloorsViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["BrowseBuildingFloorsViewController"]
-        
         // Set the appearance of the floor level picker view.
         setPickerViewLayout()
     }
 }
 
-// MARK: - UIPickerViewDataSource and UIPickerViewDelegate
+// MARK: - UIPickerViewDataSource
 
-extension BrowseBuildingFloorsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+extension BrowseBuildingFloorsViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        levels.count
+        floorLevels.count + 1
     }
-    
+}
+
+// MARK: - UIPickerViewDelegate
+
+extension BrowseBuildingFloorsViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        levels[row]?.shortName ?? "None"
+        let index = row - 1
+        return index >= floorLevels.startIndex ? floorLevels[index].shortName : "None"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        setVisibleFloorLevel(levels[row])
+        let index = row - 1
+        selectedFloorLevel = index >= floorLevels.startIndex ? floorLevels[index] : nil
     }
 }

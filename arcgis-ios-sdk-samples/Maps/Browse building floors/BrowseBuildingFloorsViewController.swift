@@ -48,8 +48,8 @@ class BrowseBuildingFloorsViewController: UIViewController {
         floorLevelPickerView.layer.cornerRadius = margin
         NSLayoutConstraint.activate([
             floorLevelPickerView.widthAnchor.constraint(equalToConstant: 120.0),
-            floorLevelPickerView.bottomAnchor.constraint(equalTo: mapView.attributionTopAnchor, constant: -margin),
-            floorLevelPickerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -margin)
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: floorLevelPickerView.trailingAnchor, multiplier: 1),
+            mapView.attributionTopAnchor.constraint(equalToSystemSpacingBelow: floorLevelPickerView.bottomAnchor, multiplier: 1)
         ])
     }
     

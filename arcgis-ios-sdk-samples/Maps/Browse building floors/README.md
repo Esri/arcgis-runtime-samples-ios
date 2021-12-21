@@ -10,11 +10,11 @@ Having map data to aid indoor navigation in buildings with multiple floors such 
 
 ## How to use the sample
 
-Use the spinner to browse different floor levels in the facility. Only the selected floor will be displayed.
+Use the picker to browse different floor levels in the facility. Only the selected floor will be displayed.
 
 ## How it works
 
-1. Create an `AGSPortalItem` using the `itemID` of a floor-aware web map.
+1. Create an `AGSPortalItem` using the identifier of a floor-aware web map.
 2. Set the `AGSMapView` to display the `AGSPortalItem`.
 3. Wait for the map to load and retrieve the map's `floorManager` property.
 4. Wait for the floor manager to load and retrieve the floor-aware data.

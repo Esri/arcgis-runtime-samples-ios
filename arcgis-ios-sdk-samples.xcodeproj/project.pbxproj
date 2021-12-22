@@ -96,6 +96,9 @@
 		00ADC3D12464DD3600A3B88D /* IdentifyRasterCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
 		00ADC3D22464DDA200A3B88D /* IdentifyRasterCellViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
 		00BA068525311B0D0039EF4D /* hydrography in Resources */ = {isa = PBXBuildFile; fileRef = 00BA068325311B0D0039EF4D /* hydrography */; settings = {ASSET_TAGS = (Hydrography, ); }; };
+		00BE7B3E2764274C0012CE95 /* BrowseBuildingFloors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00BE7B3D2764274C0012CE95 /* BrowseBuildingFloors.storyboard */; };
+		00BE7B402764275D0012CE95 /* BrowseBuildingFloorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BE7B3F2764275D0012CE95 /* BrowseBuildingFloorsViewController.swift */; };
+		00BE7B4127642A6C0012CE95 /* BrowseBuildingFloorsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00BE7B3F2764275D0012CE95 /* BrowseBuildingFloorsViewController.swift */; };
 		00C024E52475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00C024E72475E54A00E1DA8D /* NavigateAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */; };
 		00C94676244509B8000B6C6D /* DisplayLocationSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7237D0D2190F07500A72C76 /* DisplayLocationSettingsViewController.swift */; };
@@ -958,6 +961,7 @@
 			files = (
 				008A018F2768488300A3C637 /* DisplayDimensionsViewController.swift in CopyFiles */,
 				008A01902768488300A3C637 /* DisplayDimensionsSettingsViewController.swift in CopyFiles */,
+				00BE7B4127642A6C0012CE95 /* BrowseBuildingFloorsViewController.swift in CopyFiles */,
 				F11897AD2736050B00ADC1D4 /* FilterByTimeExtentViewController.swift in CopyFiles */,
 				F1C092D7272774530000B132 /* VectorTilePackageViewController.swift in CopyFiles */,
 				F1027F5926F9258E000FA674 /* ExportVectorTilesViewController.swift in CopyFiles */,
@@ -1311,6 +1315,8 @@
 		00ADC3CE2464DD2B00A3B88D /* IdentifyRasterCell.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentifyRasterCell.storyboard; sourceTree = "<group>"; };
 		00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyRasterCellViewController.swift; sourceTree = "<group>"; };
 		00BA068325311B0D0039EF4D /* hydrography */ = {isa = PBXFileReference; lastKnownFileType = folder; path = hydrography; sourceTree = "<group>"; };
+		00BE7B3D2764274C0012CE95 /* BrowseBuildingFloors.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BrowseBuildingFloors.storyboard; sourceTree = "<group>"; };
+		00BE7B3F2764275D0012CE95 /* BrowseBuildingFloorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBuildingFloorsViewController.swift; sourceTree = "<group>"; };
 		00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARRoutePlannerViewController.swift; sourceTree = "<group>"; };
 		00C024E62475E54A00E1DA8D /* NavigateAR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavigateAR.storyboard; sourceTree = "<group>"; };
 		00CDA5BE26F1289B00DEE7F4 /* SelectENCFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectENCFeatures.storyboard; sourceTree = "<group>"; };
@@ -2083,6 +2089,15 @@
 				00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */,
 			);
 			path = "Identify raster cell";
+			sourceTree = "<group>";
+		};
+		00BE7B3A276427070012CE95 /* Browse building floors */ = {
+			isa = PBXGroup;
+			children = (
+				00BE7B3D2764274C0012CE95 /* BrowseBuildingFloors.storyboard */,
+				00BE7B3F2764275D0012CE95 /* BrowseBuildingFloorsViewController.swift */,
+			);
+			path = "Browse building floors";
 			sourceTree = "<group>";
 		};
 		00C024DE2475E49A00E1DA8D /* Navigate in AR */ = {
@@ -3324,6 +3339,7 @@
 				9DF04DBA2304C7F50014C1EE /* Download preplanned map */,
 				4C59D12E238DCF5B00824924 /* Apply scheduled updates to preplanned map area */,
 				0023F97925E717AC006B574E /* Display device location with NMEA data sources */,
+				00BE7B3A276427070012CE95 /* Browse building floors */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -5150,6 +5166,7 @@
 				00E5B7D42458FE8900B11973 /* PerformValveIsolationTrace.storyboard in Resources */,
 				1259FB921FD295C90037105E /* WMSLayerUsingURL.storyboard in Resources */,
 				3E0B585A1E36D8D300951767 /* SpatialOperations.storyboard in Resources */,
+				00BE7B3E2764274C0012CE95 /* BrowseBuildingFloors.storyboard in Resources */,
 				D9E2E75F20EEB8FF001D0AE0 /* Public_Art.prj in Resources */,
 				4C1EF299220F5F5200F73EAE /* IntegratedWindowsAuthentication.storyboard in Resources */,
 				001ECB60248B002B009AC6C0 /* FeatureCollectionLayerFromPortal.storyboard in Resources */,
@@ -5327,6 +5344,7 @@
 				127D29F7200EC5FC00DD6CDC /* ViewshedLocationViewController.swift in Sources */,
 				4C1A7C2121D3FB9000E16E94 /* GraphicsOverlayDictionaryRenderer3DViewController.swift in Sources */,
 				3E8A05CE1ECE68E80032231C /* MissionSettingsViewController.swift in Sources */,
+				00BE7B402764275D0012CE95 /* BrowseBuildingFloorsViewController.swift in Sources */,
 				169CDBCC223C6B8400ABFF0A /* AddPointSceneLayerViewController.swift in Sources */,
 				E4C4A44B1EE9DDDD0073B6C0 /* DistanceCompositeSymbolViewController.swift in Sources */,
 				00DAE5E224213D6B00D51281 /* CustomDictionaryStyleViewController.swift in Sources */,

@@ -65,15 +65,14 @@ class EditAttributesContingentValuesViewController: UIViewController {
     func geodatabaseDidLoad(with result: Result<Void, Error>) {
         switch result {
         case .success:
-            guard let map = self.mapView.map else { return }
-            if let featureTable = self.geodatabase.geodatabaseFeatureTable(withName: "BirdsNests") as? AGSArcGISFeatureTable {
+//            guard let map = self.mapView.map else { return }
+            if let featureTable = self.geodatabase.geodatabaseFeatureTables[0] as? AGSArcGISFeatureTable {
                 let contingentValuesDefinition = featureTable.contingentValuesDefinition
                 contingentValuesDefinition.load { error in
                     let fieldGroups = contingentValuesDefinition.fieldGroups
                     for fieldGroup in fieldGroups {
                         print("\(fieldGroup.name)")
                     }
-                    
                 }
             }
             

@@ -30,9 +30,9 @@ Run the sample and view the military symbols on the map.
 * AGSDictionarySymbolStyle
 * AGSGraphicsOverlay
 
-## Offline data
+## About the data
 
-The sample viewer will download offline data [mil2525d style file](https://www.arcgis.com/home/item.html?id=e34835bf5ec5430da7cf16bb8c0b075c) automatically before loading the sample.
+The sample viewer will load [MIL-STD-2525D symbol dictionary](https://arcgis.com/home/item.html?id=d815f3bdf6e6452bb8fd153b654c94ca) from ArcGIS Online before loading the sample.
 
 ## Tags
 

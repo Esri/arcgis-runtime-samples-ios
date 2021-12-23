@@ -1033,10 +1033,6 @@
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
 				<string>Create graphics using a local mil2525d style file and an XML file with key-value pairs for each graphic, and display the military symbols in 3D.</string>
-				<key>dependency</key>
-				<array>
-					<string>mil2525d</string>
-				</array>
 			</dict>
 			<dict>
 				<key>displayName</key>

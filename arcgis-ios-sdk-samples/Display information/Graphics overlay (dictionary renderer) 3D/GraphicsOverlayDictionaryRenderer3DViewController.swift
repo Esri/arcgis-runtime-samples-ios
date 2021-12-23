@@ -23,36 +23,40 @@ class GraphicsOverlayDictionaryRenderer3DViewController: UIViewController {
     /// The scene view managed by the view controller.
     @IBOutlet weak var sceneView: AGSSceneView! {
         didSet {
-            sceneView.scene = AGSScene(basemapType: .imagery)
+            sceneView.scene = AGSScene(basemapStyle: .arcGISTopographic)
             sceneView.graphicsOverlays.add(makeGraphicsOverlay())
         }
     }
     
+    /// Joint Military Symbology MIL-STD-2525D.
+    let militaryItem = AGSPortalItem(
+        portal: .arcGISOnline(withLoginRequired: false),
+        itemID: "d815f3bdf6e6452bb8fd153b654c94ca"
+    )
+    
     /// Creates a graphics overlay configured to display MIL-STD-2525D
     /// symbology.
-    ///
     /// - Returns: A new `AGSGraphicsOverlay` object.
     func makeGraphicsOverlay() -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
         
-        if let styleURL = Bundle.main.url(forResource: "mil2525d", withExtension: "stylx") {
-            let dictionarySymbolStyle = AGSDictionarySymbolStyle(url: styleURL)
-            dictionarySymbolStyle.load { [weak self, weak graphicsOverlay] error in
-                guard let self = self, let graphicsOverlay = graphicsOverlay else {
-                    return
-                }
-                if let error = error {
-                    print("Error loading dictionary symbol style: \(error)")
-                } else {
-                    let camera = AGSCamera(lookAt: graphicsOverlay.extent.center, distance: 15_000, heading: 0, pitch: 70, roll: 0)
-                    self.sceneView.setViewpointCamera(camera)
-                    // Use Ordered Anchor Points for the symbol style draw rule.
-                    if let drawRuleConfiguration = dictionarySymbolStyle.configurations.first(where: { $0.name == "model" }) {
-                        drawRuleConfiguration.value = "ORDERED ANCHOR POINTS"
-                    }
-                }
+        // Create the style from a portal item.
+        let dictionarySymbolStyle = AGSDictionarySymbolStyle(portalItem: militaryItem)
+        dictionarySymbolStyle.load { [weak self, weak graphicsOverlay] error in
+            guard let self = self, let graphicsOverlay = graphicsOverlay else {
+                return
             }
-            graphicsOverlay.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbolStyle)
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                let camera = AGSCamera(lookAt: graphicsOverlay.extent.center, distance: 15_000, heading: 0, pitch: 70, roll: 0)
+                self.sceneView.setViewpointCamera(camera)
+                // Use Ordered Anchor Points for the symbol style draw rule.
+                if let drawRuleConfiguration = dictionarySymbolStyle.configurations.first(where: { $0.name == "model" }) {
+                    drawRuleConfiguration.value = "ORDERED ANCHOR POINTS"
+                }
+                graphicsOverlay.renderer = AGSDictionaryRenderer(dictionarySymbolStyle: dictionarySymbolStyle)
+            }
         }
         
         // Read the messages and add a graphic to the overlay for each messages.

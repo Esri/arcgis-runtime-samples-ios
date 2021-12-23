@@ -69,6 +69,12 @@
 		0083AA1A2628ED18003A28C8 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AA172628ED18003A28C8 /* ProgressViewController.swift */; };
 		00874F0126DD8C2A009148CF /* SwiftUIMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00874F0026DD8C2A009148CF /* SwiftUIMapView.swift */; };
 		0087A55D265C8FEA00D9601D /* BrowseOGCAPIFeatureServiceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003267B5265C479200DB4CB5 /* BrowseOGCAPIFeatureServiceViewController.swift */; };
+		008A0188276811A900A3C637 /* DisplayDimensions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 008A0187276811A900A3C637 /* DisplayDimensions.storyboard */; };
+		008A018A276811B600A3C637 /* DisplayDimensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008A0189276811B600A3C637 /* DisplayDimensionsViewController.swift */; };
+		008A018C2768167B00A3C637 /* DisplayDimensionsSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008A018B2768167B00A3C637 /* DisplayDimensionsSettingsViewController.swift */; };
+		008A018E27681A0C00A3C637 /* Edinburgh_Pylon_Dimensions.mmpk in Resources */ = {isa = PBXBuildFile; fileRef = 008A018D27681A0C00A3C637 /* Edinburgh_Pylon_Dimensions.mmpk */; settings = {ASSET_TAGS = (EdinburghPylonsDimensionsMMPK, ); }; };
+		008A018F2768488300A3C637 /* DisplayDimensionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 008A0189276811B600A3C637 /* DisplayDimensionsViewController.swift */; };
+		008A01902768488300A3C637 /* DisplayDimensionsSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 008A018B2768167B00A3C637 /* DisplayDimensionsSettingsViewController.swift */; };
 		008D175224EEEEBD0001BB8F /* loudoun_anno.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = 008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */; settings = {ASSET_TAGS = (loudoun_anno, ); }; };
 		008D175724EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */; };
 		008D175924EEF4390001BB8F /* EditWithBranchVersioning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */; };
@@ -953,6 +959,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				008A018F2768488300A3C637 /* DisplayDimensionsViewController.swift in CopyFiles */,
+				008A01902768488300A3C637 /* DisplayDimensionsSettingsViewController.swift in CopyFiles */,
 				00BE7B4127642A6C0012CE95 /* BrowseBuildingFloorsViewController.swift in CopyFiles */,
 				F11897AD2736050B00ADC1D4 /* FilterByTimeExtentViewController.swift in CopyFiles */,
 				F1C092D7272774530000B132 /* VectorTilePackageViewController.swift in CopyFiles */,
@@ -1290,6 +1298,10 @@
 		0083AA162628ED18003A28C8 /* ProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
 		0083AA172628ED18003A28C8 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		00874F0026DD8C2A009148CF /* SwiftUIMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIMapView.swift; sourceTree = "<group>"; };
+		008A0187276811A900A3C637 /* DisplayDimensions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayDimensions.storyboard; sourceTree = "<group>"; };
+		008A0189276811B600A3C637 /* DisplayDimensionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDimensionsViewController.swift; sourceTree = "<group>"; };
+		008A018B2768167B00A3C637 /* DisplayDimensionsSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDimensionsSettingsViewController.swift; sourceTree = "<group>"; };
+		008A018D27681A0C00A3C637 /* Edinburgh_Pylon_Dimensions.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = Edinburgh_Pylon_Dimensions.mmpk; sourceTree = "<group>"; };
 		008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = loudoun_anno.geodatabase; sourceTree = "<group>"; };
 		008D175624EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWithBranchVersioningViewController.swift; sourceTree = "<group>"; };
 		008D175824EEF4390001BB8F /* EditWithBranchVersioning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditWithBranchVersioning.storyboard; sourceTree = "<group>"; };
@@ -2023,6 +2035,16 @@
 				0083AA172628ED18003A28C8 /* ProgressViewController.swift */,
 			);
 			path = "Progress View Controller";
+			sourceTree = "<group>";
+		};
+		008A01842768119100A3C637 /* Display dimensions */ = {
+			isa = PBXGroup;
+			children = (
+				008A0189276811B600A3C637 /* DisplayDimensionsViewController.swift */,
+				008A018B2768167B00A3C637 /* DisplayDimensionsSettingsViewController.swift */,
+				008A0187276811A900A3C637 /* DisplayDimensions.storyboard */,
+			);
+			path = "Display dimensions";
 			sourceTree = "<group>";
 		};
 		008D175024EEEEBD0001BB8F /* Geodatabases */ = {
@@ -3228,6 +3250,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				008A01842768119100A3C637 /* Display dimensions */,
 				F1027F4C26F91F55000FA674 /* Export vector tiles */,
 				00CDA5BC26F1289B00DEE7F4 /* Select ENC features */,
 				00FFE6D4265DC76A001E92ED /* Query with CQL filters */,
@@ -4081,6 +4104,7 @@
 		4CF6DF1D22F2094F00A3092A /* Mobile Map Packages */ = {
 			isa = PBXGroup;
 			children = (
+				008A018D27681A0C00A3C637 /* Edinburgh_Pylon_Dimensions.mmpk */,
 				F142F76D267C12F800BD608A /* Yellowstone.mmpk */,
 				F142F769267C12E400BD608A /* SanFrancisco.mmpk */,
 				4CE15D4E22F37E8D005F2968 /* GasDeviceAnno.mmpk */,
@@ -4784,6 +4808,7 @@
 					Bristol3DModel,
 					DodgeCity,
 					Dolmus3DModel,
+					EdinburghPylonsDimensionsMMPK,
 					ExchangeSetWithoutUpdates,
 					GasDeviceAnnoMMPK,
 					Hydrography,
@@ -4899,6 +4924,7 @@
 				003D25622513D833007527C2 /* ApplyRasterRenderingRule.storyboard in Resources */,
 				3ED028781B8E3A8500ACA70D /* ManageMapLayers.storyboard in Resources */,
 				3ED0294B1B8E3AB300ACA70D /* Sketch.storyboard in Resources */,
+				008A0188276811A900A3C637 /* DisplayDimensions.storyboard in Resources */,
 				C7AF466621B1DCD60050CC49 /* SyncMapAndSceneViews.storyboard in Resources */,
 				F164997922E924C40088CA93 /* EditAndSyncFeatures.storyboard in Resources */,
 				3E1E5EEF1D9F0BAB00F4913C /* HillshadeRenderer.storyboard in Resources */,
@@ -4984,6 +5010,7 @@
 				3ED028691B8E3A8500ACA70D /* SetViewpoint.storyboard in Resources */,
 				F1710AF325EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard in Resources */,
 				3EFCE1BD1CF36BC100E02F67 /* OpenMobileMapPackage.storyboard in Resources */,
+				008A018E27681A0C00A3C637 /* Edinburgh_Pylon_Dimensions.mmpk in Resources */,
 				9DF04DC02304C7F50014C1EE /* DownloadPreplannedMap.storyboard in Resources */,
 				166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */,
 				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
@@ -5474,6 +5501,7 @@
 				00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */,
 				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
+				008A018C2768167B00A3C637 /* DisplayDimensionsSettingsViewController.swift in Sources */,
 				00166C9224D3838200DD317E /* BufferListViewController.swift in Sources */,
 				4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */,
 				3E8526391B90D92700690EBD /* BookmarksViewController.swift in Sources */,
@@ -5483,6 +5511,7 @@
 				4C54BF2D22F4C0940096D23C /* ControlAnnotationSublayerVisibilitySublayerCell.swift in Sources */,
 				3E8D54FC1D53E3F000E628D9 /* ScenePropertiesExpressionsViewController.swift in Sources */,
 				3E6AE3EE1C6D11FD0026E59C /* OfflineRoutingViewController.swift in Sources */,
+				008A018A276811B600A3C637 /* DisplayDimensionsViewController.swift in Sources */,
 				12BF9E461FE9D77000B1E6C4 /* ViewshedCameraViewController.swift in Sources */,
 				3EBA25461D300C1D00AB0703 /* SimpleRendererViewController.swift in Sources */,
 				3EC39C321C9B0DF6003F6459 /* ExportTilesViewController.swift in Sources */,

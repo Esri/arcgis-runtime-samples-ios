@@ -764,6 +764,18 @@
 					<string>Hydrography</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display dimensions</string>
+				<key>descriptionText</key>
+				<string>Display dimension features from a mobile map package.</string>
+				<key>storyboardName</key>
+				<string>DisplayDimensions</string>
+				<key>dependency</key>
+				<array>
+					<string>EdinburghPylonsDimensionsMMPK</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>

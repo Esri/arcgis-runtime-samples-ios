@@ -130,6 +130,12 @@
 			<key>filename</key>
 			<string>SanFrancisco.tpkx</string>
 		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>f5ff6f5556a945bca87ca513b8729a1e</string>
+			<key>filename</key>
+			<string>Edinburgh_Pylon_Dimensions.mmpk</string>
+		</dict>
 	</array>
 </dict>
 </plist>

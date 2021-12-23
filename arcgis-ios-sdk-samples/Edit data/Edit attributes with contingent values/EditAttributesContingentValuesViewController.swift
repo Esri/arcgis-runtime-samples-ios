@@ -70,8 +70,11 @@ class EditAttributesContingentValuesViewController: UIViewController {
                 let contingentValuesDefinition = featureTable.contingentValuesDefinition
                 contingentValuesDefinition.load { error in
                     let fieldGroups = contingentValuesDefinition.fieldGroups
-                    for fieldGroup in fieldGroups {
-                        print("\(fieldGroup.name)")
+                    let nestBuffer = fieldGroups[0]
+                    if !nestBuffer.isEditingRestrictive {
+                        for field in nestBuffer.fields {
+                            print("\(field)")
+                        }
                     }
                 }
             }

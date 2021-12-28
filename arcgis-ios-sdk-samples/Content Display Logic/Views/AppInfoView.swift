@@ -17,8 +17,8 @@ import ArcGIS
 
 struct AppInfoView: View {
     private let links = [
-        Link(title: "Esri Community", url: URLs.esriCommunity),
-        Link(title: "GitHub Repository", url: URLs.githubRepository),
+        Link(title: "Esri Community", url: URLs.esriCommunity, subtitle: "Browse and discuss in the Esri Community"),
+        Link(title: "GitHub Repository", url: URLs.githubRepository, subtitle: "Log an issue in the GitHub Repository"),
         Link(title: "Developer Site", url: URLs.developers)
     ]
     
@@ -39,6 +39,14 @@ struct AppInfoView: View {
         return String(format: "Copyright © 2015-%d Esri. All Rights Reserved.", currentYear)
     }()
     
+    private func header(for link: Link) -> String? {
+        if link == links.first {
+            return "Useful Links"
+        } else {
+            return nil
+        }
+    }
+    
     var body: some View {
         List {
             HStack {
@@ -51,6 +59,7 @@ struct AppInfoView: View {
                 Spacer()
             }
             .listRowBackground(Color.clear)
+            // App info section.
             Section(header: Text("App Info")) {
                 ForEach(appInfos) { appInfo in
                     HStack {
@@ -61,17 +70,25 @@ struct AppInfoView: View {
                     }
                 }
             }
-            
-            Section(header: Text("Useful Links")) {
-                ForEach(links) { link in
-                    Button(action: {
-                        UIApplication.shared.open(link.url)
-                    }, label: {
-                        Text(link.title)
-                    })
+            // Useful links section.
+            ForEach(links) { link in
+                if let footer = link.subtitle {
+                    if let header = header(for: link) {
+                        Section(header: Text(header), footer: Text(footer)) {
+                            LinkRow(link: link)
+                        }
+                    } else {
+                        Section(footer: Text(footer)) {
+                            LinkRow(link: link)
+                        }
+                    }
+                } else {
+                    Section {
+                        LinkRow(link: link)
+                    }
                 }
             }
-            
+            // Powered by links section.
             Section(header: Text("Powered By"), footer: Text(copyrightFooter)) {
                 ForEach(poweredBys) { link in
                     Button(action: {
@@ -86,6 +103,18 @@ struct AppInfoView: View {
 }
 
 private extension AppInfoView {
+    struct LinkRow: View {
+        let link: Link
+        
+        var body: some View {
+            Button(action: {
+                UIApplication.shared.open(link.url)
+            }, label: {
+                Text(link.title)
+            })
+        }
+    }
+    
     struct AppInfo: Identifiable {
         let title: String
         let detail: String
@@ -93,11 +122,18 @@ private extension AppInfoView {
         var id: String { title }
     }
     
-    struct Link: Identifiable {
+    struct Link: Equatable, Identifiable {
         let title: String
         let url: URL
+        let subtitle: String?
         
         var id: String { title }
+        
+        init(title: String, url: URL, subtitle: String? = nil) {
+            self.title = title
+            self.url = url
+            self.subtitle = subtitle
+        }
     }
     
     enum Strings {

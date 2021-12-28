@@ -88,14 +88,10 @@ struct AppInfoView: View {
                     }
                 }
             }
-            // Powered by links section.
+            // Powered-by links section.
             Section(header: Text("Powered By"), footer: Text(copyrightFooter)) {
                 ForEach(poweredBys) { link in
-                    Button(action: {
-                        UIApplication.shared.open(link.url)
-                    }, label: {
-                        Text(link.title)
-                    })
+                    LinkRow(link: link)
                 }
             }
         }

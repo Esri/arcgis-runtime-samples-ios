@@ -15,7 +15,7 @@
                 </hostingController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gko-tS-2sF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143" y="-422"/>
+            <point key="canvasLocation" x="662" y="0.0"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8XS-Bq-Ncf">
@@ -33,13 +33,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtw-ex-3Z8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0" y="0"/>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
     </scenes>
-    <color key="tintColor" name="AccentColor"/>
-    <resources>
-        <namedColor name="AccentColor">
-            <color red="0.51399999856948853" green="0.18400000035762787" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

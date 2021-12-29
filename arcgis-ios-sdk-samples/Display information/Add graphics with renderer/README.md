@@ -24,7 +24,9 @@ Pan and zoom on the map to view graphics for points, lines, and polygons (includ
 
 * AGSCubicBezierSegment
 * AGSEllipticArcSegment
+* AGSGeodesicEllipseParameters
 * AGSGeometry
+* class AGSGeometryEngine.geodesicEllipse(with:)
 * AGSGraphic
 * AGSGraphicsOverlay
 * AGSMutablePart
@@ -41,4 +43,4 @@ To set unique symbols across a number of graphics (e.g. showing graphics of indi
 
 ## Tags
 
-arc, bezier, curve, display, graphics, marker, overlay, renderer, segment, symbol, true curve
+arc, bezier, curve, display, ellipse, graphics, marker, overlay, renderer, segment, symbol, true curve

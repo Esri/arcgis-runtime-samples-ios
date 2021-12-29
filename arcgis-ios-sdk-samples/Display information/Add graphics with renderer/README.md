@@ -26,7 +26,6 @@ Pan and zoom on the map to view graphics for points, lines, and polygons (includ
 * AGSEllipticArcSegment
 * AGSGeodesicEllipseParameters
 * AGSGeometry
-* class AGSGeometryEngine.geodesicEllipse(with:)
 * AGSGraphic
 * AGSGraphicsOverlay
 * AGSMutablePart
@@ -36,6 +35,7 @@ Pan and zoom on the map to view graphics for points, lines, and polygons (includ
 * AGSSimpleLineSymbol
 * AGSSimpleMarkerSymbol
 * AGSSimpleRenderer
+* class AGSGeometryEngine.geodesicEllipse(with:)
 
 ## Additional information
 

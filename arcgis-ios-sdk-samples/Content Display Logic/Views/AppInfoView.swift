@@ -18,14 +18,11 @@ import ArcGIS
 struct AppInfoView: View {
     private let links = [
         Link(title: "Esri Community", url: URLs.esriCommunity, subtitle: "Browse and discuss in the Esri Community"),
-        Link(title: "GitHub Repository", url: URLs.githubRepository, subtitle: "Log an issue in the GitHub Repository"),
-        Link(title: "Developer Site", url: URLs.developers)
+        Link(title: "GitHub Repository", url: URLs.githubRepository, subtitle: "Log an issue in the GitHub Repository")
     ]
     
     private let appInfos = [
         AppInfo(title: "App Version", detail: Strings.appMarketingVersionNumber),
-        // Comment the following line when submit to App Store.
-        AppInfo(title: "Internal Version", detail: Strings.appInternalVersionString),
         AppInfo(title: "SDK Version", detail: Strings.ArcGISSDKVersionString)
     ]
     

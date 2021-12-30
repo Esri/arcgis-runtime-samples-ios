@@ -21,7 +21,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
     let geodatabase: AGSGeodatabase!
     required init?(coder: NSCoder) {
         // Create a URL leading to the resource.
-        let geodatabaseURL = Bundle.main.url(forResource: "ContingentValuesBirdNests", withExtension: "geodatabase")!
+        let geodatabaseURL = Bundle.main.url(forResource: "CodedValuesBirdNests", withExtension: "geodatabase")!
         do {
             // Create a temporary directory URL.
             let temporaryDirectoryURL = try FileManager.default.url(
@@ -69,13 +69,10 @@ class EditAttributesContingentValuesViewController: UIViewController {
             if let featureTable = self.geodatabase.geodatabaseFeatureTables[0] as? AGSArcGISFeatureTable {
                 let contingentValuesDefinition = featureTable.contingentValuesDefinition
                 contingentValuesDefinition.load { error in
-                    let fieldGroups = contingentValuesDefinition.fieldGroups
-                    let nestBuffer = fieldGroups[0]
-                    if !nestBuffer.isEditingRestrictive {
-                        for field in nestBuffer.fields {
-                            print("\(field)")
-                        }
-                    }
+                    let feature = featureTable.createFeature()
+                    let attributes = feature.attributes
+                    attributes.addObject(("Activity", "OCCUPIED"))
+                    
                 }
             }
             

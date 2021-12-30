@@ -885,6 +885,9 @@
 		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
 		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
+		F1B99FDD277D420F0053DB00 /* DisplayFeatureLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B99FDC277D420F0053DB00 /* DisplayFeatureLayersViewController.swift */; };
+		F1B99FDF277D42270053DB00 /* DisplayFeatureLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B99FDE277D42270053DB00 /* DisplayFeatureLayers.storyboard */; };
+		F1B99FE0277D49260053DB00 /* DisplayFeatureLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1B99FDC277D420F0053DB00 /* DisplayFeatureLayersViewController.swift */; };
 		F1BCA98F268102EB0027F5A8 /* naperville_imagery.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
 		F1C092D4272758830000B132 /* VectorTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */; };
 		F1C092D7272774530000B132 /* VectorTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */; };
@@ -959,6 +962,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F1B99FE0277D49260053DB00 /* DisplayFeatureLayersViewController.swift in CopyFiles */,
 				008A018F2768488300A3C637 /* DisplayDimensionsViewController.swift in CopyFiles */,
 				008A01902768488300A3C637 /* DisplayDimensionsSettingsViewController.swift in CopyFiles */,
 				00BE7B4127642A6C0012CE95 /* BrowseBuildingFloorsViewController.swift in CopyFiles */,
@@ -1857,6 +1861,8 @@
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
+		F1B99FDC277D420F0053DB00 /* DisplayFeatureLayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayFeatureLayersViewController.swift; sourceTree = "<group>"; };
+		F1B99FDE277D42270053DB00 /* DisplayFeatureLayers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayFeatureLayers.storyboard; sourceTree = "<group>"; };
 		F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpkx; sourceTree = "<group>"; };
 		F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorTilePackageViewController.swift; sourceTree = "<group>"; };
 		F1C4529E26B37008002FDB34 /* ToggleFeatureRequestModes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ToggleFeatureRequestModes.storyboard; sourceTree = "<group>"; };
@@ -3225,6 +3231,7 @@
 		3ED027FE1B8E39DD00ACA70D /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F1B99FDB277D41BD0053DB00 /* Display feature layers */,
 				F1C4529D26B36EB0002FDB34 /* Toggle between feature request modes */,
 				001ECB58248B002B009AC6C0 /* Feature collection layer (portal item) */,
 				F4E5CD7720704369000A6D35 /* Feature layer rendering mode (map) */,
@@ -4639,6 +4646,15 @@
 			path = "Find closest facility to an incident (interactive)";
 			sourceTree = "<group>";
 		};
+		F1B99FDB277D41BD0053DB00 /* Display feature layers */ = {
+			isa = PBXGroup;
+			children = (
+				F1B99FDC277D420F0053DB00 /* DisplayFeatureLayersViewController.swift */,
+				F1B99FDE277D42270053DB00 /* DisplayFeatureLayers.storyboard */,
+			);
+			path = "Display feature layers";
+			sourceTree = "<group>";
+		};
 		F1C4529D26B36EB0002FDB34 /* Toggle between feature request modes */ = {
 			isa = PBXGroup;
 			children = (
@@ -5109,6 +5125,7 @@
 				F142F79F267D755700BD608A /* SanFrancisco.tpkx in Resources */,
 				4C59D141238DF23E00824924 /* canyonlands in Resources */,
 				3E41DD791B9F609500DA11CC /* DeleteFeatures.storyboard in Resources */,
+				F1B99FDF277D42270053DB00 /* DisplayFeatureLayers.storyboard in Resources */,
 				3E03F0991B056F9C0078EB36 /* highlight.pack.js in Resources */,
 				F1C81C4522FCEC1C00229CAA /* GetElevationPoint.storyboard in Resources */,
 				F4159C6B209257B50016E53D /* FeatureLayerRenderingModeMap.storyboard in Resources */,
@@ -5329,6 +5346,7 @@
 				3E4BF4441C5AEA6500D85919 /* WorldAddressesViewController.swift in Sources */,
 				9DE9FE3422FDB7CA00142DE1 /* LocationHistoryViewController.swift in Sources */,
 				3ED028EF1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift in Sources */,
+				F1B99FDD277D420F0053DB00 /* DisplayFeatureLayersViewController.swift in Sources */,
 				003267B6265C479200DB4CB5 /* BrowseOGCAPIFeatureServiceViewController.swift in Sources */,
 				3E5E09401EF4567A00FF3454 /* RelatedFeaturesViewController.swift in Sources */,
 				D97B7E3C1FD9BE2B00E1239D /* SymbolizeShapefileViewController.swift in Sources */,

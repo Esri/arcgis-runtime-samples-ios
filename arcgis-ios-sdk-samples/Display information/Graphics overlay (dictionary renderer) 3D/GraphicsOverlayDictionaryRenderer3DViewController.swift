@@ -28,20 +28,20 @@ class GraphicsOverlayDictionaryRenderer3DViewController: UIViewController {
         }
     }
     
-    /// Joint Military Symbology MIL-STD-2525D.
-    let militaryItem = AGSPortalItem(
-        portal: .arcGISOnline(withLoginRequired: false),
-        itemID: "d815f3bdf6e6452bb8fd153b654c94ca"
-    )
-    
     /// Creates a graphics overlay configured to display MIL-STD-2525D
     /// symbology.
     /// - Returns: A new `AGSGraphicsOverlay` object.
     func makeGraphicsOverlay() -> AGSGraphicsOverlay {
         let graphicsOverlay = AGSGraphicsOverlay()
         
-        // Create the style from a portal item.
-        let dictionarySymbolStyle = AGSDictionarySymbolStyle(portalItem: militaryItem)
+        // Create the style from Joint Military Symbology MIL-STD-2525D
+        // portal item.
+        let dictionarySymbolStyle = AGSDictionarySymbolStyle(
+            portalItem: AGSPortalItem(
+                portal: .arcGISOnline(withLoginRequired: false),
+                itemID: "d815f3bdf6e6452bb8fd153b654c94ca"
+            )
+        )
         dictionarySymbolStyle.load { [weak self, weak graphicsOverlay] error in
             guard let self = self, let graphicsOverlay = graphicsOverlay else {
                 return

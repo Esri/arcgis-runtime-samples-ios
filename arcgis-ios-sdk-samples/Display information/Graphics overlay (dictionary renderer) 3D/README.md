@@ -14,7 +14,7 @@ Run the sample and view the military symbols on the map.
 
 ## How it works
 
-1. Create a new `AGSDictionarySymbolStyle` object with the "mil2525d" specification type, and set the style's draw rule configuration to "ORDERED ANCHOR POINTS".
+1. Create a new `AGSDictionarySymbolStyle` object with the "mil2525d" specification type and set the style's draw rule configuration to "ORDERED ANCHOR POINTS".
 2. Create a new `AGSDictionaryRenderer` object with the dictionary symbol style.
 3. Create an instance of `AGSGraphicsOverlay`.
 4. Set the dictionary renderer to the graphics overlay.

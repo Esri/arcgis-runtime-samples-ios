@@ -18,7 +18,8 @@ import ArcGIS
 struct AppInfoView: View {
     private let links = [
         Link(title: "Esri Community", url: URLs.esriCommunity, subtitle: "Browse and discuss in the Esri Community"),
-        Link(title: "GitHub Repository", url: URLs.githubRepository, subtitle: "Log an issue in the GitHub Repository")
+        Link(title: "GitHub Repository", url: URLs.githubRepository, subtitle: "Log an issue in the GitHub Repository"),
+        Link(title: "API Reference", url: URLs.apiReference)
     ]
     
     private let appInfos = [
@@ -154,6 +155,7 @@ private extension AppInfoView {
         static let esriCommunity = URL(string: "https://community.esri.com/t5/arcgis-runtime-sdk-for-ios-questions/bd-p/arcgis-runtime-sdk-for-ios-questions")!
         static let githubRepository = URL(string: "https://github.com/Esri/arcgis-runtime-samples-ios")!
         static let toolkit = URL(string: "https://github.com/Esri/arcgis-runtime-toolkit-ios")!
+        static let apiReference = URL(string: "https://developers.arcgis.com/ios/api-reference/")!
     }
 }
 

@@ -30,17 +30,20 @@ struct AboutView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(footer: copyrightText) {
+                Section {
                     VStack {
                         Image("AppIcon2", label: Text("App icon"))
                         Text(Bundle.main.name)
                             .font(.headline)
+                        copyrightText
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
                     }
                     .listRowBackground(Color.clear)
                     .frame(maxWidth: .infinity)
                 }
                 Section {
-                    VersionRow(title: "Version", version: Bundle.main.shortVersion)
+                    VersionRow(title: "Version", version: "100.13.0.1")
                     VersionRow(title: "SDK Version", version: Bundle.arcGIS.shortVersion, build: Bundle.arcGIS.version)
                 }
                 Section(header: Text("Powered By")) {

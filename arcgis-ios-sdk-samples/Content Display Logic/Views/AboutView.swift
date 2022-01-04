@@ -65,8 +65,8 @@ struct AboutView: View {
                     presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Done")
-                        .fontWeight(.semibold)
                         .foregroundColor(.white)
+                        .bold()
                 })
             )
         }

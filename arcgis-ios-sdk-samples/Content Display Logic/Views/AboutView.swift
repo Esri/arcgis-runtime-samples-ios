@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import SwiftUI
-import ArcGIS
 
 struct AboutView: View {
     @Environment(\.presentationMode) private var presentationMode

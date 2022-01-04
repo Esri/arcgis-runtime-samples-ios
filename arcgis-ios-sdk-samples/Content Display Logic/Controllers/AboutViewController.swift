@@ -14,15 +14,8 @@
 
 import SwiftUI
 
-class AppInfoViewController: UIHostingController<AppInfoView> {
+class AboutViewController: UIHostingController<AboutView> {
     required init?(coder: NSCoder) {
-        super.init(coder: coder, rootView: AppInfoView())
-        self.title = "App Info"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped(_:)))
-    }
-    
-    @objc
-    func doneButtonTapped(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
+        super.init(coder: coder, rootView: AboutView())
     }
 }

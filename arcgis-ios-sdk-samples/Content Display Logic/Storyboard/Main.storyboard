@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dro-WJ-0ka">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dro-WJ-0ka">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -112,7 +112,7 @@
                     <navigationItem key="navigationItem" title="Categories" id="jxR-oL-nOK">
                         <barButtonItem key="leftBarButtonItem" image="InfoIcon" id="NGF-Qy-gyk">
                             <connections>
-                                <segue destination="fRp-4J-ZNH" kind="presentation" id="6LO-sS-W7n"/>
+                                <segue destination="bQp-7Y-JB8" kind="presentation" id="ldp-GI-abR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -441,13 +441,15 @@
             </objects>
             <point key="canvasLocation" x="3993" y="-287"/>
         </scene>
-        <!--AppInfo-->
-        <scene sceneID="PpA-6H-mLq">
+        <!--About View Controller-->
+        <scene sceneID="0YU-gx-KdU">
             <objects>
-                <viewControllerPlaceholder storyboardName="AppInfo" id="fRp-4J-ZNH" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="glW-X9-qBN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <hostingController id="bQp-7Y-JB8" customClass="AboutViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qKZ-8v-hFc"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UWG-L3-nty" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1112" y="-1116"/>
+            <point key="canvasLocation" x="1355" y="-1337"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

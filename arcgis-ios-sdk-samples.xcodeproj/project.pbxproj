@@ -52,7 +52,6 @@
 		005C713A26C32ED10003BDC3 /* DisplayMapSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C713926C32ED10003BDC3 /* DisplayMapSwiftUIView.swift */; };
 		005C713C26C331470003BDC3 /* DisplayMapSwiftUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005C713B26C331470003BDC3 /* DisplayMapSwiftUI.storyboard */; };
 		005C713E26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C713D26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift */; };
-		0060DCF027695B6A00CA1238 /* AppInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0060DCEF27695B6A00CA1238 /* AppInfo.storyboard */; };
 		00686FD02480889900EDA705 /* NavigateARNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
 		00686FD52481CF4D00EDA705 /* NavigateARRoutePlannerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00C024E42475E4AB00E1DA8D /* NavigateARRoutePlannerViewController.swift */; };
 		00686FD62481CF4D00EDA705 /* NavigateARNavigatorViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */; };
@@ -64,7 +63,7 @@
 		0075033226B3683900022C7B /* OrbitCameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */; };
 		0075033326B4B85700022C7B /* OrbitCameraAroundObjectViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */; };
 		0075033426B4B85700022C7B /* OrbitCameraSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */; };
-		007C50D9277B9B1300EA6ADC /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007C50D8277B9B1300EA6ADC /* AppInfoView.swift */; };
+		007C50D9277B9B1300EA6ADC /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007C50D8277B9B1300EA6ADC /* AboutView.swift */; };
 		007FC9482534E8AE00D8D9A1 /* darkmode.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9452534E8AE00D8D9A1 /* darkmode.css */; };
 		007FC9492534E8AE00D8D9A1 /* solarized-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9472534E8AE00D8D9A1 /* solarized-dark.css */; };
 		0083AA192628ED18003A28C8 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0083AA162628ED18003A28C8 /* ProgressViewController.xib */; };
@@ -251,7 +250,7 @@
 		3E412B3F1D0B2CC600349155 /* MapPackageCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */; };
 		3E412B401D0B2CC600349155 /* MapPackagesListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */; };
 		3E412B411D0B2CC600349155 /* MobileMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1C11CF374C600E02F67 /* MobileMapViewController.swift */; };
-		3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */; };
+		3E412B431D0B2FAD00349155 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E412B421D0B2FAD00349155 /* AboutViewController.swift */; };
 		3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */; };
 		3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */; };
 		3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */; };
@@ -1276,7 +1275,6 @@
 		005C713926C32ED10003BDC3 /* DisplayMapSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMapSwiftUIView.swift; sourceTree = "<group>"; };
 		005C713B26C331470003BDC3 /* DisplayMapSwiftUI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayMapSwiftUI.storyboard; sourceTree = "<group>"; };
 		005C713D26C331B90003BDC3 /* DisplayMapSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMapSwiftUIViewController.swift; sourceTree = "<group>"; };
-		0060DCEF27695B6A00CA1238 /* AppInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppInfo.storyboard; sourceTree = "<group>"; };
 		00686FCF2480889900EDA705 /* NavigateARNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateARNavigatorViewController.swift; sourceTree = "<group>"; };
 		0069F4BD25F0111D00CA7BD2 /* CreateLoadReport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateLoadReport.storyboard; sourceTree = "<group>"; };
 		0069F4C125F0118200CA7BD2 /* CreateLoadReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoadReportViewController.swift; sourceTree = "<group>"; };
@@ -1284,7 +1282,7 @@
 		0075032F26B3676400022C7B /* OrbitCameraAroundObject.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrbitCameraAroundObject.storyboard; sourceTree = "<group>"; };
 		0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitCameraSettingsViewController.swift; sourceTree = "<group>"; };
 		007A4250256C7A400025F582 /* AppSecrets.swift.masque */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AppSecrets.swift.masque; path = "arcgis-ios-sdk-samples/AppSecrets.swift.masque"; sourceTree = "<group>"; };
-		007C50D8277B9B1300EA6ADC /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
+		007C50D8277B9B1300EA6ADC /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		007FC9452534E8AE00D8D9A1 /* darkmode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = darkmode.css; sourceTree = "<group>"; };
 		007FC9472534E8AE00D8D9A1 /* solarized-dark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "solarized-dark.css"; sourceTree = "<group>"; };
 		0083AA162628ED18003A28C8 /* ProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
@@ -1411,7 +1409,7 @@
 		3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewController.swift; sourceTree = "<group>"; };
 		3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTableCell.swift; sourceTree = "<group>"; };
 		3E3B2C231BBD9CD300A99C5E /* SampleSearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSearchEngine.swift; sourceTree = "<group>"; };
-		3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
+		3E412B421D0B2FAD00349155 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFeaturesViewController.swift; sourceTree = "<group>"; };
 		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddFeatures.storyboard; sourceTree = "<group>"; };
 		3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteFeaturesViewController.swift; sourceTree = "<group>"; };
@@ -1706,6 +1704,7 @@
 		4CF6DF1822F2055D00A3092A /* HonorMobileMapPackageExpirationDate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HonorMobileMapPackageExpirationDate.storyboard; sourceTree = "<group>"; };
 		4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonorMobileMapPackageExpirationDateViewController.swift; sourceTree = "<group>"; };
 		4CF6DF1E22F2094F00A3092A /* LothianRiversAnno.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = LothianRiversAnno.mmpk; sourceTree = "<group>"; };
+		4CF7ED4E272892CE006A9465 /* arcgis-runtime-toolkit-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "arcgis-runtime-toolkit-ios"; path = "../arcgis-runtime-toolkit-ios"; sourceTree = "<group>"; };
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
@@ -2434,7 +2433,6 @@
 			children = (
 				009D8BEE24F9AC8D00FD7E76 /* LaunchScreen.storyboard */,
 				3E0D3AD61AFD481900FC60D6 /* Main.storyboard */,
-				0060DCEF27695B6A00CA1238 /* AppInfo.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -2463,6 +2461,7 @@
 		3E23A9D71AFC28F6002E2214 = {
 			isa = PBXGroup;
 			children = (
+				4CF7ED4E272892CE006A9465 /* arcgis-runtime-toolkit-ios */,
 				3E23A9E21AFC28F6002E2214 /* arcgis-ios-sdk-samples */,
 				3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */,
 				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,
@@ -2529,7 +2528,7 @@
 		3E23AA0B1AFC327F002E2214 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */,
+				3E412B421D0B2FAD00349155 /* AboutViewController.swift */,
 				3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */,
 				3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */,
 				3E2A680D1B0D2A7000A318AA /* ListViewController.swift */,
@@ -2688,7 +2687,7 @@
 			children = (
 				3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */,
 				3ECDD9AF1E8470E100E645AB /* DownloadProgressView.xib */,
-				007C50D8277B9B1300EA6ADC /* AppInfoView.swift */,
+				007C50D8277B9B1300EA6ADC /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4939,7 +4938,6 @@
 				4C5F98BF2280A4EB00414343 /* AuthenticateWithOAuth.storyboard in Resources */,
 				3ED5EB771B752A42009F9B75 /* style.css in Resources */,
 				008D175224EEEEBD0001BB8F /* loudoun_anno.geodatabase in Resources */,
-				0060DCF027695B6A00CA1238 /* AppInfo.storyboard in Resources */,
 				D9E2E76020EEB8FF001D0AE0 /* Public_Art.dbf in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
 				4CCA30C622386413009D2AEF /* ViewPointCloudDataOffline.storyboard in Resources */,
@@ -5462,7 +5460,7 @@
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
 				00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */,
 				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift in Sources */,
-				007C50D9277B9B1300EA6ADC /* AppInfoView.swift in Sources */,
+				007C50D9277B9B1300EA6ADC /* AboutView.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				00166C9224D3838200DD317E /* BufferListViewController.swift in Sources */,
 				4C85044920F4239600E37F43 /* SceneLayerSelectionViewController.swift in Sources */,
@@ -5528,7 +5526,7 @@
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
 				E4477CBE20EC0CCD004E14F9 /* ListTransformationsViewController.swift in Sources */,
 				0083AA1A2628ED18003A28C8 /* ProgressViewController.swift in Sources */,
-				3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */,
+				3E412B431D0B2FAD00349155 /* AboutViewController.swift in Sources */,
 				12D66036226697320005DE8A /* GroupLayersViewController.swift in Sources */,
 				F1E4B11122D6AF5D005FDB4D /* ColormapRendererViewController.swift in Sources */,
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,

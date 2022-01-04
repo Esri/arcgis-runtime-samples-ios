@@ -62,9 +62,13 @@ struct AboutView: View {
             }
             .navigationBarTitle("About", displayMode: .inline)
             .navigationBarItems(
-                trailing: Button("Done") {
+                trailing: Button(action: {
                     presentationMode.wrappedValue.dismiss()
-                }.foregroundColor(.white)
+                }, label: {
+                    Text("Done")
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                })
             )
         }
         .navigationViewStyle(.stack)

@@ -42,7 +42,7 @@ struct AboutView: View {
                     .frame(maxWidth: .infinity)
                 }
                 Section {
-                    VersionRow(title: "Version", version: "100.13.0.1")
+                    VersionRow(title: "Version", version: Bundle.main.shortVersion)
                     VersionRow(title: "SDK Version", version: Bundle.arcGIS.shortVersion, build: Bundle.arcGIS.version)
                 }
                 Section(header: Text("Powered By")) {

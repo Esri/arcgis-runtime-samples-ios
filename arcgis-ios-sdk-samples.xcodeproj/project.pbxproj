@@ -1704,7 +1704,6 @@
 		4CF6DF1822F2055D00A3092A /* HonorMobileMapPackageExpirationDate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HonorMobileMapPackageExpirationDate.storyboard; sourceTree = "<group>"; };
 		4CF6DF1A22F2058300A3092A /* HonorMobileMapPackageExpirationDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonorMobileMapPackageExpirationDateViewController.swift; sourceTree = "<group>"; };
 		4CF6DF1E22F2094F00A3092A /* LothianRiversAnno.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = LothianRiversAnno.mmpk; sourceTree = "<group>"; };
-		4CF7ED4E272892CE006A9465 /* arcgis-runtime-toolkit-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "arcgis-runtime-toolkit-ios"; path = "../arcgis-runtime-toolkit-ios"; sourceTree = "<group>"; };
 		940A73F320E588C200A06C80 /* CutGeometry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CutGeometry.storyboard; sourceTree = "<group>"; };
 		940A73F520E589AB00A06C80 /* CutGeometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutGeometryViewController.swift; sourceTree = "<group>"; };
 		97DD84661B2B869300184B41 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
@@ -2461,7 +2460,6 @@
 		3E23A9D71AFC28F6002E2214 = {
 			isa = PBXGroup;
 			children = (
-				4CF7ED4E272892CE006A9465 /* arcgis-runtime-toolkit-ios */,
 				3E23A9E21AFC28F6002E2214 /* arcgis-ios-sdk-samples */,
 				3E23A9EE1AFC28F6002E2214 /* Assets.xcassets */,
 				3E23A9E51AFC28F6002E2214 /* AppDelegate.swift */,

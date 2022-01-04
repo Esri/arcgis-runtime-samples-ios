@@ -55,7 +55,7 @@ struct AboutView: View {
                 Section(footer: Text("Log an issue in the GitHub repository.")) {
                     Link("GitHub Repository", destination: .githubRepository)
                 }
-                Section {
+                Section(footer: Text("View details about the API.")) {
                     Link("API Reference", destination: .apiReference)
                 }
             }

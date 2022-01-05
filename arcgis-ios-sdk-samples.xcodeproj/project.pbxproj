@@ -63,6 +63,7 @@
 		0075033226B3683900022C7B /* OrbitCameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */; };
 		0075033326B4B85700022C7B /* OrbitCameraAroundObjectViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0075032D26B3675B00022C7B /* OrbitCameraAroundObjectViewController.swift */; };
 		0075033426B4B85700022C7B /* OrbitCameraSettingsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */; };
+		007C50D9277B9B1300EA6ADC /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007C50D8277B9B1300EA6ADC /* AboutView.swift */; };
 		007FC9482534E8AE00D8D9A1 /* darkmode.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9452534E8AE00D8D9A1 /* darkmode.css */; };
 		007FC9492534E8AE00D8D9A1 /* solarized-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 007FC9472534E8AE00D8D9A1 /* solarized-dark.css */; };
 		0083AA192628ED18003A28C8 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0083AA162628ED18003A28C8 /* ProgressViewController.xib */; };
@@ -258,7 +259,7 @@
 		3E412B3F1D0B2CC600349155 /* MapPackageCell.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1BF1CF374C600E02F67 /* MapPackageCell.swift */; };
 		3E412B401D0B2CC600349155 /* MapPackagesListViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1C01CF374C600E02F67 /* MapPackagesListViewController.swift */; };
 		3E412B411D0B2CC600349155 /* MobileMapViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EFCE1C11CF374C600E02F67 /* MobileMapViewController.swift */; };
-		3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */; };
+		3E412B431D0B2FAD00349155 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E412B421D0B2FAD00349155 /* AboutViewController.swift */; };
 		3E41DD721B9A1F4600DA11CC /* AddFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */; };
 		3E41DD741B9A241600DA11CC /* AddFeatures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */; };
 		3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */; };
@@ -1293,6 +1294,7 @@
 		0075032F26B3676400022C7B /* OrbitCameraAroundObject.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrbitCameraAroundObject.storyboard; sourceTree = "<group>"; };
 		0075033126B3683900022C7B /* OrbitCameraSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitCameraSettingsViewController.swift; sourceTree = "<group>"; };
 		007A4250256C7A400025F582 /* AppSecrets.swift.masque */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AppSecrets.swift.masque; path = "arcgis-ios-sdk-samples/AppSecrets.swift.masque"; sourceTree = "<group>"; };
+		007C50D8277B9B1300EA6ADC /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		007FC9452534E8AE00D8D9A1 /* darkmode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = darkmode.css; sourceTree = "<group>"; };
 		007FC9472534E8AE00D8D9A1 /* solarized-dark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "solarized-dark.css"; sourceTree = "<group>"; };
 		0083AA162628ED18003A28C8 /* ProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
@@ -1425,7 +1427,7 @@
 		3E3B2C1E1BBCA37F00A99C5E /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewController.swift; sourceTree = "<group>"; };
 		3E3B2C211BBCADDB00A99C5E /* ContentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTableCell.swift; sourceTree = "<group>"; };
 		3E3B2C231BBD9CD300A99C5E /* SampleSearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSearchEngine.swift; sourceTree = "<group>"; };
-		3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
+		3E412B421D0B2FAD00349155 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3E41DD711B9A1F4600DA11CC /* AddFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFeaturesViewController.swift; sourceTree = "<group>"; };
 		3E41DD731B9A241500DA11CC /* AddFeatures.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddFeatures.storyboard; sourceTree = "<group>"; };
 		3E41DD761B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteFeaturesViewController.swift; sourceTree = "<group>"; };
@@ -2561,7 +2563,7 @@
 		3E23AA0B1AFC327F002E2214 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3E412B421D0B2FAD00349155 /* AppInfoViewController.swift */,
+				3E412B421D0B2FAD00349155 /* AboutViewController.swift */,
 				3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */,
 				3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */,
 				3E2A680D1B0D2A7000A318AA /* ListViewController.swift */,
@@ -2720,6 +2722,7 @@
 			children = (
 				3ECDD9AE1E8470E100E645AB /* DownloadProgressView.swift */,
 				3ECDD9AF1E8470E100E645AB /* DownloadProgressView.xib */,
+				007C50D8277B9B1300EA6ADC /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -5500,6 +5503,7 @@
 				3EEA060E1D21C44000E03774 /* SceneSymbolsViewController.swift in Sources */,
 				00E276302425A205000DBEDD /* NavigateRouteViewController.swift in Sources */,
 				3EA15C761ED89EAE00B1F816 /* ChangeSublayerRendererViewController.swift in Sources */,
+				007C50D9277B9B1300EA6ADC /* AboutView.swift in Sources */,
 				3ED0292D1B8E3AB300ACA70D /* GOIdentifyViewController.swift in Sources */,
 				008A018C2768167B00A3C637 /* DisplayDimensionsSettingsViewController.swift in Sources */,
 				00166C9224D3838200DD317E /* BufferListViewController.swift in Sources */,
@@ -5567,7 +5571,7 @@
 				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
 				E4477CBE20EC0CCD004E14F9 /* ListTransformationsViewController.swift in Sources */,
 				0083AA1A2628ED18003A28C8 /* ProgressViewController.swift in Sources */,
-				3E412B431D0B2FAD00349155 /* AppInfoViewController.swift in Sources */,
+				3E412B431D0B2FAD00349155 /* AboutViewController.swift in Sources */,
 				12D66036226697320005DE8A /* GroupLayersViewController.swift in Sources */,
 				F1E4B11122D6AF5D005FDB4D /* ColormapRendererViewController.swift in Sources */,
 				3E6AE3FB1C73B5480026E59C /* FindRouteViewController.swift in Sources */,

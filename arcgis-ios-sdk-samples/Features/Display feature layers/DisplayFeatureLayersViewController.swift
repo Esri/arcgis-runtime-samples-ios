@@ -21,13 +21,105 @@ class DisplayFeatureLayersViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-//            mapView.map = makeMap()
+            // initialize map with basemap
+            let map = AGSMap(basemapStyle: .arcGISTerrain)
+            
+            // assign map to the map view
+            self.mapView.map = map
+            self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000))
         }
     }
     
-    @IBAction func changeFeatureLayerAction(_ sender: Any) {
+    @IBOutlet var changeFeatureLayerBarButtonItem: UIBarButtonItem!
+    var geodatabase: AGSGeodatabase!
+    var geoPackage: AGSGeoPackage?
+    
+    @IBAction func changeFeatureLayer() {
+        let alertController = UIAlertController(title: "Select Feature Layer Source", message: nil, preferredStyle: .actionSheet)
+        let featureServiceAction = UIAlertAction(title: "Feature service", style: .default) { (_) in
+            self.loadFeatureService()
+        }
+        alertController.addAction(featureServiceAction)
+        let geodatabaseAction = UIAlertAction(title: "Geodatabase", style: .default) { (_) in
+            self.loadGeodatabase()
+        }
+        alertController.addAction(geodatabaseAction)
+        let geopackageAction = UIAlertAction(title: "Geopackage", style: .default) { (_) in
+            self.loadGeopackage()
+        }
+        alertController.addAction(geopackageAction)
+        let shapefileAction = UIAlertAction(title: "Shapefile", style: .default) { (_) in
+//            self.addPolygon()
+        }
+        alertController.addAction(shapefileAction)
         
+        // Add "cancel" item.
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        alertController.popoverPresentationController?.barButtonItem = changeFeatureLayerBarButtonItem
+        present(alertController, animated: true)
     }
+    
+    func loadFeatureService() {
+        // initialize service feature table using url
+        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)
+
+        // create a feature layer
+        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        // add the feature layer to the operational layers
+        mapView.map?.operationalLayers.add(featureLayer)
+    }
+    
+    func loadGeodatabase() {
+        // instantiate map with basemap
+        let map = AGSMap(basemapStyle: .arcGISImagery)
+        
+        // assign map to the map view
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4))
+        
+        // instantiate geodatabase with name
+        self.geodatabase = AGSGeodatabase(name: "LA_Trails")
+        
+        // load the geodatabase for feature tables
+        self.geodatabase.load { [weak self] (error: Error?) in
+            if let error = error {
+                self?.presentAlert(error: error)
+            } else {
+                let featureTable = self!.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
+                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                self?.mapView.map?.operationalLayers.add(featureLayer)
+            }
+        }
+    }
+    
+    func loadGeopackage() {
+        // Instantiate a map.
+        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
+        
+        // Display the map in the map view.
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 577790.554289))
+        
+        // Create a geopackage from a named bundle resource.
+        geoPackage = AGSGeoPackage(name: "AuroraCO")
+        
+        // Load the geopackage.
+        geoPackage?.load { [weak self] error in
+            guard error == nil else {
+                self?.presentAlert(message: "Error opening Geopackage: \(error!.localizedDescription)")
+                return
+            }
+            
+            // Add the first feature layer from the geopackage to the map.
+            if let featureTable = self?.geoPackage?.geoPackageFeatureTables.first {
+                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                map.operationalLayers.add(featureLayer)
+            }
+        }
+    }
+    
     // MARK: UIViewController
     
     override func viewDidLoad() {

@@ -9,30 +9,49 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Display Feature Layers View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="DisplayFeatureLayersViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2UW-47-zMT" userLabel="Map View" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSO-dt-Axr" userLabel="Map View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roo-xa-OAJ">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UhG-da-9nD"/>
+                                    <barButtonItem title="Change Feature Layer Source" id="LFa-nd-VE1">
+                                        <connections>
+                                            <action selector="changeFeatureLayerAction:" destination="UiB-P1-a5r" id="Ne0-H8-U6I"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9kd-ql-NqV"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="2UW-47-zMT" secondAttribute="bottom" id="Fet-bu-98g"/>
-                            <constraint firstAttribute="trailing" secondItem="2UW-47-zMT" secondAttribute="trailing" id="dnz-Pb-pBi"/>
-                            <constraint firstItem="2UW-47-zMT" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="fA8-cD-Er9"/>
-                            <constraint firstItem="2UW-47-zMT" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="wPs-N8-rcF"/>
+                            <constraint firstAttribute="trailing" secondItem="RSO-dt-Axr" secondAttribute="trailing" id="6nr-se-1bZ"/>
+                            <constraint firstItem="RSO-dt-Axr" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="J7K-OA-yoT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="roo-xa-OAJ" secondAttribute="bottom" id="M76-Ns-9mO"/>
+                            <constraint firstItem="RSO-dt-Axr" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="PDl-iw-Y4l"/>
+                            <constraint firstItem="roo-xa-OAJ" firstAttribute="top" secondItem="RSO-dt-Axr" secondAttribute="bottom" id="QZl-1I-Kq7"/>
+                            <constraint firstItem="roo-xa-OAJ" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="gmz-8x-DVS"/>
+                            <constraint firstAttribute="trailing" secondItem="roo-xa-OAJ" secondAttribute="trailing" id="wzD-LC-RQ5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="RSO-dt-Axr" id="kMt-YE-oPv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="UiB-P1-a5r" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="139" y="84"/>
         </scene>

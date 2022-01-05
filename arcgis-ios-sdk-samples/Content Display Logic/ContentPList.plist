@@ -1032,7 +1032,7 @@
 				<key>storyboardName</key>
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
-				<string>Create graphics using a mil2525d style and an XML file with key-value pairs for each graphic, and display the military symbols in 3D.</string>
+				<string>Create graphics from an XML file with key-value pairs for each graphic, and display the military symbols using a MIL-STD-2525D web style in 3D.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

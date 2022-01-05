@@ -35,7 +35,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     var geoPackage: AGSGeoPackage?
     
     @IBAction func changeFeatureLayer() {
-        let alertController = UIAlertController(title: "Select Feature Layer Source", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Select a feature layer source", message: nil, preferredStyle: .actionSheet)
         let featureServiceAction = UIAlertAction(title: "Feature service", style: .default) { (_) in
             self.loadFeatureService()
         }
@@ -49,7 +49,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         }
         alertController.addAction(geopackageAction)
         let shapefileAction = UIAlertAction(title: "Shapefile", style: .default) { (_) in
-//            self.addPolygon()
+            self.loadShapefile()
         }
         alertController.addAction(shapefileAction)
         
@@ -67,8 +67,13 @@ class DisplayFeatureLayersViewController: UIViewController {
 
         // create a feature layer
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        // initialize map with basemap
+        let map = AGSMap(basemapStyle: .arcGISTerrain)
         // add the feature layer to the operational layers
-        mapView.map?.operationalLayers.add(featureLayer)
+        map.operationalLayers.add(featureLayer)
+        // assign map to the map view
+        self.mapView.map = map
+        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000))
     }
     
     func loadGeodatabase() {
@@ -116,6 +121,33 @@ class DisplayFeatureLayersViewController: UIViewController {
             if let featureTable = self?.geoPackage?.geoPackageFeatureTables.first {
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                 map.operationalLayers.add(featureLayer)
+            }
+        }
+    }
+    
+    func loadShapefile() {
+        // Instantiate a map using a basemap.
+        let map = AGSMap(basemapStyle: .arcGISStreets)
+
+        // Create a shapefile feature table from a named bundle resource.
+        let shapefileTable = AGSShapefileFeatureTable(name: "Public_Art")
+
+        // Create a feature layer for the shapefile feature table.
+        let featureLayer = AGSFeatureLayer(featureTable: shapefileTable)
+
+        // Add the layer to the map.
+        map.operationalLayers.add(featureLayer)
+        mapView.map = map
+        // Ensure the feature layer's metadata is loaded.
+        featureLayer.load { error in
+            guard error == nil else {
+                print("Couldn't load the shapefile \(error!.localizedDescription)")
+                return
+            }
+            
+            // Once the layer's metadata has loaded, we can read its full extent.
+            if let initialExtent = featureLayer.fullExtent {
+                self.mapView.setViewpointGeometry(initialExtent)
             }
         }
     }

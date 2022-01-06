@@ -21,10 +21,10 @@ class DisplayFeatureLayersViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            // initialize map with basemap
+            // Initialize map with basemap.
             let map = AGSMap(basemapStyle: .arcGISTerrain)
             
-            // assign map to the map view
+            // Assign map to the map view.
             self.mapView.map = map
             self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000))
         }
@@ -36,10 +36,14 @@ class DisplayFeatureLayersViewController: UIViewController {
     
     @IBAction func changeFeatureLayer() {
         let alertController = UIAlertController(title: "Select a feature layer source", message: nil, preferredStyle: .actionSheet)
-        let featureServiceAction = UIAlertAction(title: "Feature service", style: .default) { (_) in
-            self.loadFeatureService()
+        let featureServiceURLAction = UIAlertAction(title: "Feature service URL", style: .default) { (_) in
+            self.loadFeatureServiceURL()
         }
-        alertController.addAction(featureServiceAction)
+        alertController.addAction(featureServiceURLAction)
+        let portalItemAction = UIAlertAction(title: "Portal item", style: .default) { (_) in
+            self.loadPortalItem()
+        }
+        alertController.addAction(portalItemAction)
         let geodatabaseAction = UIAlertAction(title: "Geodatabase", style: .default) { (_) in
             self.loadGeodatabase()
         }
@@ -61,7 +65,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    func loadFeatureService() {
+    func loadFeatureServiceURL() {
         // initialize service feature table using url
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)
 
@@ -74,6 +78,16 @@ class DisplayFeatureLayersViewController: UIViewController {
         // assign map to the map view
         self.mapView.map = map
         self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000))
+    }
+    
+    func loadPortalItem() {
+        let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
+        let item = AGSPortalItem(portal: portal, itemID: "1759fd3e8a324358a0c58d9a687a8578")
+        let featureLayer = AGSFeatureLayer(item: item, layerID: 0)
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
+        map.operationalLayers.add(featureLayer)
+        self.mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(latitude: 45.5266, longitude: -122.6219, scale: 6000))
     }
     
     func loadGeodatabase() {

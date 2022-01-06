@@ -22,7 +22,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Initialize map with basemap.
-            let map = AGSMap(basemapStyle: .arcGISTerrain)
+            let map = AGSMap(basemapStyle: .arcGISTopographic)
             
             // Assign map to the map view.
             self.mapView.map = map
@@ -71,33 +71,19 @@ class DisplayFeatureLayersViewController: UIViewController {
 
         // create a feature layer
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        // initialize map with basemap
-        let map = AGSMap(basemapStyle: .arcGISTerrain)
-        // add the feature layer to the operational layers
-        map.operationalLayers.add(featureLayer)
-        // assign map to the map view
-        self.mapView.map = map
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000))
+        let viewpoint = AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000)
+        setMap(featureLayer: featureLayer, viewpoint: viewpoint)
     }
     
     func loadPortalItem() {
         let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         let item = AGSPortalItem(portal: portal, itemID: "1759fd3e8a324358a0c58d9a687a8578")
         let featureLayer = AGSFeatureLayer(item: item, layerID: 0)
-        let map = AGSMap(basemapStyle: .arcGISTopographic)
-        map.operationalLayers.add(featureLayer)
-        self.mapView.map = map
-        mapView.setViewpoint(AGSViewpoint(latitude: 45.5266, longitude: -122.6219, scale: 6000))
+        let viewpoint = AGSViewpoint(latitude: 45.5266, longitude: -122.6219, scale: 6000)
+        setMap(featureLayer: featureLayer, viewpoint: viewpoint)
     }
     
     func loadGeodatabase() {
-        // instantiate map with basemap
-        let map = AGSMap(basemapStyle: .arcGISImagery)
-        
-        // assign map to the map view
-        mapView.map = map
-        mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4))
-        
         // instantiate geodatabase with name
         self.geodatabase = AGSGeodatabase(name: "LA_Trails")
         
@@ -108,19 +94,13 @@ class DisplayFeatureLayersViewController: UIViewController {
             } else {
                 let featureTable = self!.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                self?.mapView.map?.operationalLayers.add(featureLayer)
+                let viewpoint = AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4)
+                self?.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
             }
         }
     }
     
     func loadGeopackage() {
-        // Instantiate a map.
-        let map = AGSMap(basemapStyle: .arcGISLightGrayBase)
-        
-        // Display the map in the map view.
-        mapView.map = map
-        mapView.setViewpoint(AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 577790.554289))
-        
         // Create a geopackage from a named bundle resource.
         geoPackage = AGSGeoPackage(name: "AuroraCO")
         
@@ -134,14 +114,16 @@ class DisplayFeatureLayersViewController: UIViewController {
             // Add the first feature layer from the geopackage to the map.
             if let featureTable = self?.geoPackage?.geoPackageFeatureTables.first {
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                map.operationalLayers.add(featureLayer)
+                let viewpoint = AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 577790.554289)
+                self?.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
             }
         }
     }
     
     func loadShapefile() {
         // Instantiate a map using a basemap.
-        let map = AGSMap(basemapStyle: .arcGISStreets)
+//        let map = AGSMap(basemapStyle: .arcGISStreets)
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
 
         // Create a shapefile feature table from a named bundle resource.
         let shapefileTable = AGSShapefileFeatureTable(name: "Public_Art")
@@ -164,6 +146,11 @@ class DisplayFeatureLayersViewController: UIViewController {
                 self.mapView.setViewpointGeometry(initialExtent)
             }
         }
+    }
+    
+    func setMap(featureLayer: AGSFeatureLayer, viewpoint: AGSViewpoint) {
+        mapView.map?.operationalLayers.add(featureLayer)
+        mapView.setViewpoint(viewpoint)
     }
     
     // MARK: UIViewController

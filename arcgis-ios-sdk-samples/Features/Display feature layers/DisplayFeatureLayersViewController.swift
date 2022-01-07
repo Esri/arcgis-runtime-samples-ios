@@ -99,7 +99,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     
     /// Load a feature layer with a local geodatabase.
     func loadGeodatabase() {
-        // Instantiate geodatabase with the file name.
+        // Instantiate the geodatabase with the file name.
         self.geodatabase = AGSGeodatabase(name: "LA_Trails")
         
         // Load the geodatabase for feature tables.
@@ -108,7 +108,7 @@ class DisplayFeatureLayersViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                // Get the feature table with the file name.
+                // Get the feature table with the name.
                 let featureTable = self.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
                 // Create a feature layer with the feature table.
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)

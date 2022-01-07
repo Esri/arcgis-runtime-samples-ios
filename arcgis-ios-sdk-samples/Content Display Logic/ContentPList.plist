@@ -949,7 +949,7 @@
 				<key>storyboardName</key>
 				<string>DisplayFeatureLayers</string>
 				<key>descriptionText</key>
-				<string>Display feature layers from different data sources.</string>
+				<string>Display feature layers from various data sources.</string>
 			</dict>
 		</array>
 	</dict>

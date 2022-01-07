@@ -1,35 +1,36 @@
 {
     "category": "Features",
-    "description": "Create a feature collection layer from a feature collection table and add it to a map.",
+    "description": "Display feature layers from various data sources.",
     "ignore": false,
     "images": [
-        "feature-collection-layer.png"
+        "display-feature-layers.png"
     ],
     "keywords": [
-        "collection",
         "feature",
+        "geodatabase",
+        "geopackage",
         "layers",
         "table",
-        "AGSFeature",
-        "AGSFeatureCollection",
-        "AGSFeatureCollectionLayer",
-        "AGSFeatureCollectionTable",
-        "AGSField",
-        "AGSSimpleRenderer"
+        "service",
+        "shapefile",
+        "AGSFeatureLayer",
+        "AGSGeodatabase",
+        "AGSGeoPackageFeatureTable",
+        "AGSPortalItem",
+        "AGSServiceFeatureTable",
+        "AGSShapefileFeatureTable"
     ],
-    "redirect_from": [
-        "/ios/latest/swift/sample-code/feature-collection-layer.htm"
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "AGSFeature",
-        "AGSFeatureCollection",
-        "AGSFeatureCollectionLayer",
-        "AGSFeatureCollectionTable",
-        "AGSField",
-        "AGSSimpleRenderer"
+        "AGSFeatureLayer",
+        "AGSGeodatabase",
+        "AGSGeoPackageFeatureTable",
+        "AGSPortalItem",
+        "AGSServiceFeatureTable",
+        "AGSShapefileFeatureTable"
     ],
     "snippets": [
-        "FeatureCollectionLayerViewController.swift"
+        "DisplayFeatureLayers.swift"
     ],
-    "title": "Feature collection layer"
+    "title": "Display feature layers"
 }

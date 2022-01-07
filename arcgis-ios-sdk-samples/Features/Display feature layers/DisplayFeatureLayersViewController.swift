@@ -1,4 +1,4 @@
-// Copyright 2021 Esri
+// Copyright 2022 Esri
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -164,6 +164,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     /// featureLayer - The feature layer to display and add to the map.
     /// viewpoint - The viewpoint to change the map to.
     func setMap(featureLayer: AGSFeatureLayer, viewpoint: AGSViewpoint) {
+        mapView.map?.operationalLayers.removeAllObjects()
         mapView.map?.operationalLayers.add(featureLayer)
         mapView.setViewpoint(viewpoint)
     }

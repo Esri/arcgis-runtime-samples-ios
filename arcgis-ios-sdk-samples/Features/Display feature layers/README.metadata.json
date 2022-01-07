@@ -1,0 +1,35 @@
+{
+    "category": "Features",
+    "description": "Create a feature collection layer from a feature collection table and add it to a map.",
+    "ignore": false,
+    "images": [
+        "feature-collection-layer.png"
+    ],
+    "keywords": [
+        "collection",
+        "feature",
+        "layers",
+        "table",
+        "AGSFeature",
+        "AGSFeatureCollection",
+        "AGSFeatureCollectionLayer",
+        "AGSFeatureCollectionTable",
+        "AGSField",
+        "AGSSimpleRenderer"
+    ],
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-collection-layer.htm"
+    ],
+    "relevant_apis": [
+        "AGSFeature",
+        "AGSFeatureCollection",
+        "AGSFeatureCollectionLayer",
+        "AGSFeatureCollectionTable",
+        "AGSField",
+        "AGSSimpleRenderer"
+    ],
+    "snippets": [
+        "FeatureCollectionLayerViewController.swift"
+    ],
+    "title": "Feature collection layer"
+}

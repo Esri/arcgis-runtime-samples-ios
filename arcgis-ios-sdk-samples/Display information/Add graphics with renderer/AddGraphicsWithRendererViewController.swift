@@ -22,6 +22,7 @@ class AddGraphicsWithRendererViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.setViewpointCenter(AGSPointMakeWebMercator(20e5, 20e5), scale: 7e7)
             mapView.graphicsOverlays.addObjects(from: [
                 makePointGraphicsOverlay(),
                 makeLineGraphicsOverlay(),

@@ -22,36 +22,42 @@ class DisplayFeatureLayersViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Initialize map with basemap.
-            let map = AGSMap(basemapStyle: .arcGISTopographic)
-            
-            // Assign map to the map view.
-            self.mapView.map = map
-            self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000))
+            self.mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
         }
     }
     
     @IBOutlet var changeFeatureLayerBarButtonItem: UIBarButtonItem!
+    
+    // MARK: Instance properties
+    
     var geodatabase: AGSGeodatabase!
     var geoPackage: AGSGeoPackage?
     
+    // MARK: Actions
+    
     @IBAction func changeFeatureLayer() {
         let alertController = UIAlertController(title: "Select a feature layer source", message: nil, preferredStyle: .actionSheet)
-        let featureServiceURLAction = UIAlertAction(title: "Feature service URL", style: .default) { (_) in
+        // Add an action to load a feature layer from a URL.
+        let featureServiceURLAction = UIAlertAction(title: "URL", style: .default) { (_) in
             self.loadFeatureServiceURL()
         }
         alertController.addAction(featureServiceURLAction)
+        // Add an action to load a feature layer from a portal item.
         let portalItemAction = UIAlertAction(title: "Portal item", style: .default) { (_) in
             self.loadPortalItem()
         }
         alertController.addAction(portalItemAction)
+        // Add an action to load a feature layer from a geodatabase.
         let geodatabaseAction = UIAlertAction(title: "Geodatabase", style: .default) { (_) in
             self.loadGeodatabase()
         }
         alertController.addAction(geodatabaseAction)
+        // Add an action to load a feature layer from a shapefile.
         let geopackageAction = UIAlertAction(title: "Geopackage", style: .default) { (_) in
             self.loadGeopackage()
         }
         alertController.addAction(geopackageAction)
+        // Add an action to load a feature layer from a shapefile.
         let shapefileAction = UIAlertAction(title: "Shapefile", style: .default) { (_) in
             self.loadShapefile()
         }
@@ -65,89 +71,98 @@ class DisplayFeatureLayersViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+    // MARK: Helper functions
+    
+    /// Load a feature layer with a URL.
     func loadFeatureServiceURL() {
-        // initialize service feature table using url
+        // Initialize the service feature table using a URL.
         let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)
-
-        // create a feature layer
+        // Create a feature layer with the feature table.
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        // Set the viewpoint to the Los Angeles National Forest.
         let viewpoint = AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000)
         setMap(featureLayer: featureLayer, viewpoint: viewpoint)
     }
     
+    /// Load a feature layer with a portal item.
     func loadPortalItem() {
+        // Set the portal.
         let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
+        // Create the portal item with the item ID for the Portland tree service data.
         let item = AGSPortalItem(portal: portal, itemID: "1759fd3e8a324358a0c58d9a687a8578")
+        // Create the feature layer with the item and layer ID.
         let featureLayer = AGSFeatureLayer(item: item, layerID: 0)
+        // Set the viewpoint to Portland, Oregon.
         let viewpoint = AGSViewpoint(latitude: 45.5266, longitude: -122.6219, scale: 6000)
         setMap(featureLayer: featureLayer, viewpoint: viewpoint)
     }
     
+    /// Load a feature layer with a local geodatabase.
     func loadGeodatabase() {
-        // instantiate geodatabase with name
+        // Instantiate geodatabase with the file name.
         self.geodatabase = AGSGeodatabase(name: "LA_Trails")
         
-        // load the geodatabase for feature tables
+        // Load the geodatabase for feature tables.
         self.geodatabase.load { [weak self] (error: Error?) in
+            guard let self = self else { return }
             if let error = error {
-                self?.presentAlert(error: error)
+                self.presentAlert(error: error)
             } else {
-                let featureTable = self!.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
+                // Get the feature table with the file name.
+                let featureTable = self.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
+                // Create a feature layer with the feature table.
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                // Set the viewpoint to Malibu, California.
                 let viewpoint = AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4)
-                self?.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+                self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
             }
         }
     }
     
+    /// Load a feature layer with a local geopackage.
     func loadGeopackage() {
         // Create a geopackage from a named bundle resource.
         geoPackage = AGSGeoPackage(name: "AuroraCO")
         
         // Load the geopackage.
         geoPackage?.load { [weak self] error in
-            guard error == nil else {
-                self?.presentAlert(message: "Error opening Geopackage: \(error!.localizedDescription)")
-                return
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
             }
-            
             // Add the first feature layer from the geopackage to the map.
-            if let featureTable = self?.geoPackage?.geoPackageFeatureTables.first {
+            if let featureTable = self.geoPackage?.geoPackageFeatureTables.first {
+                // Create the feature layer with the feature table.
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                // Set the viewpoint to Aurora, Colorado.
                 let viewpoint = AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 577790.554289)
-                self?.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+                self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
             }
         }
     }
     
+    /// Load a feature layer with a local shapefile.
     func loadShapefile() {
-        // Instantiate a map using a basemap.
-//        let map = AGSMap(basemapStyle: .arcGISStreets)
-        let map = AGSMap(basemapStyle: .arcGISTopographic)
-
         // Create a shapefile feature table from a named bundle resource.
-        let shapefileTable = AGSShapefileFeatureTable(name: "Public_Art")
+        let shapefileTable = AGSShapefileFeatureTable(name: "ScottishWildlifeTrust_ReserveBoundaries_20201102")
 
         // Create a feature layer for the shapefile feature table.
         let featureLayer = AGSFeatureLayer(featureTable: shapefileTable)
-
-        // Add the layer to the map.
-        map.operationalLayers.add(featureLayer)
-        mapView.map = map
         // Ensure the feature layer's metadata is loaded.
-        featureLayer.load { error in
-            guard error == nil else {
-                print("Couldn't load the shapefile \(error!.localizedDescription)")
-                return
+        featureLayer.load { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
             }
-            
-            // Once the layer's metadata has loaded, we can read its full extent.
-            if let initialExtent = featureLayer.fullExtent {
-                self.mapView.setViewpointGeometry(initialExtent)
-            }
+            // Set the viewpoint to Scotland.
+            let viewpoint = AGSViewpoint(latitude: 56.641344, longitude: -3.889066, scale: 6e6)
+            self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
         }
     }
     
+    /// Add the feature layer to the map and set the viewpoint
+    /// featureLayer - The feature layer to display and add to the map.
+    /// viewpoint - The viewpoint to change the map to.
     func setMap(featureLayer: AGSFeatureLayer, viewpoint: AGSViewpoint) {
         mapView.map?.operationalLayers.add(featureLayer)
         mapView.setViewpoint(viewpoint)

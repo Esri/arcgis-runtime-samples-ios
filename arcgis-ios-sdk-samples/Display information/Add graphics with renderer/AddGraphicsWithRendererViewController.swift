@@ -22,10 +22,12 @@ class AddGraphicsWithRendererViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.setViewpointCenter(AGSPointMakeWebMercator(20e5, 20e5), scale: 7e7)
             mapView.graphicsOverlays.addObjects(from: [
                 makePointGraphicsOverlay(),
                 makeLineGraphicsOverlay(),
                 makeSquarePolygonGraphicsOverlay(),
+                makeEllipseGraphicsOverlay(),
                 makeCurvedPolygonGraphicsOverlay()
             ])
         }
@@ -85,6 +87,35 @@ class AddGraphicsWithRendererViewController: UIViewController {
         // Add the graphic to the overlay.
         squareGraphicsOverlay.graphics.add(polygonGraphic)
         return squareGraphicsOverlay
+    }
+    
+    func makeEllipseGraphicsOverlay() -> AGSGraphicsOverlay {
+        // Create a simple fill symbol.
+        let ellipseSymbol = AGSSimpleFillSymbol(style: .solid, color: .purple, outline: nil)
+        // Create a graphics overlay for the ellipse.
+        let ellipseGraphicsOverlay = AGSGraphicsOverlay()
+        // Create and assign a simple renderer to the graphics overlay.
+        ellipseGraphicsOverlay.renderer = AGSSimpleRenderer(symbol: ellipseSymbol)
+        
+        // Create an ellipse graphic.
+        let ellipseCenter = AGSPoint(x: 40e5, y: 25e5, spatialReference: .webMercator())
+        let parameters = AGSGeodesicEllipseParameters(
+            axisDirection: -45,
+            angularUnit: .degrees(),
+            center: ellipseCenter,
+            linearUnit: .kilometers(),
+            maxPointCount: 100,
+            maxSegmentLength: 20,
+            geometryType: .polygon,
+            semiAxis1Length: 200,
+            semiAxis2Length: 400
+        )
+        let ellipseGeometry = AGSGeometryEngine.geodesicEllipse(with: parameters)
+        let ellipseGraphic = AGSGraphic(geometry: ellipseGeometry, symbol: nil)
+        
+        // Add the graphic to the overlay.
+        ellipseGraphicsOverlay.graphics.add(ellipseGraphic)
+        return ellipseGraphicsOverlay
     }
     
     func makeCurvedPolygonGraphicsOverlay() -> AGSGraphicsOverlay {

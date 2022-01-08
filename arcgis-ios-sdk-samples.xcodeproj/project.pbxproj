@@ -879,7 +879,7 @@
 		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
 		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
-		F1B99FDA277BE0BC0053DB00 /* CodedValuesBirdNests.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F1B99FD9277BE0BC0053DB00 /* CodedValuesBirdNests.geodatabase */; settings = {ASSET_TAGS = (contingentBirdsNestGDB, ); }; };
+		F1B99FF72788FE620053DB00 /* BirdNestsMGDB.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F1B99FF62788FE620053DB00 /* BirdNestsMGDB.geodatabase */; settings = {ASSET_TAGS = (contingentBirdsNestGDB, ); }; };
 		F1BCA98F268102EB0027F5A8 /* naperville_imagery.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
 		F1C092D4272758830000B132 /* VectorTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */; };
 		F1C092D7272774530000B132 /* VectorTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */; };
@@ -1846,7 +1846,7 @@
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
-		F1B99FD9277BE0BC0053DB00 /* CodedValuesBirdNests.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = CodedValuesBirdNests.geodatabase; sourceTree = "<group>"; };
+		F1B99FF62788FE620053DB00 /* BirdNestsMGDB.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = BirdNestsMGDB.geodatabase; sourceTree = "<group>"; };
 		F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpkx; sourceTree = "<group>"; };
 		F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorTilePackageViewController.swift; sourceTree = "<group>"; };
 		F1C4529E26B37008002FDB34 /* ToggleFeatureRequestModes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ToggleFeatureRequestModes.storyboard; sourceTree = "<group>"; };
@@ -2030,7 +2030,7 @@
 		008D175024EEEEBD0001BB8F /* Geodatabases */ = {
 			isa = PBXGroup;
 			children = (
-				F1B99FD9277BE0BC0053DB00 /* CodedValuesBirdNests.geodatabase */,
+				F1B99FF62788FE620053DB00 /* BirdNestsMGDB.geodatabase */,
 				008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */,
 			);
 			path = Geodatabases;
@@ -4937,6 +4937,7 @@
 				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
 				F15694D2265DBE96007AEB61 /* SanDiego_StreetAddress.loz in Resources */,
 				3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */,
+				F1B99FF72788FE620053DB00 /* BirdNestsMGDB.geodatabase in Resources */,
 				0022769226570BBE00CC7DB9 /* DisplayOGCAPICollection.storyboard in Resources */,
 				003D25702513FBB5007527C2 /* ExchangeSetWithoutUpdates in Resources */,
 				123AC27D20E58CFA0026A7D6 /* GeodesicOperations.storyboard in Resources */,
@@ -4960,7 +4961,6 @@
 				008D175224EEEEBD0001BB8F /* loudoun_anno.geodatabase in Resources */,
 				D9E2E76020EEB8FF001D0AE0 /* Public_Art.dbf in Resources */,
 				3EC39C211C9A59D5003F6459 /* RouteAroundBarriers.storyboard in Resources */,
-				F1B99FDA277BE0BC0053DB00 /* CodedValuesBirdNests.geodatabase in Resources */,
 				4CCA30C622386413009D2AEF /* ViewPointCloudDataOffline.storyboard in Resources */,
 				3EEB2B971EB9695F00B52513 /* ListRelatedFeatures.storyboard in Resources */,
 				4CE15D4A22F37A0C005F2968 /* ControlAnnotationSublayerVisibility.storyboard in Resources */,

@@ -76,11 +76,11 @@ class DisplayFeatureLayersViewController: UIViewController {
     /// Load a feature layer with a URL.
     func loadFeatureServiceURL() {
         // Initialize the service feature table using a URL.
-        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Energy/Geology/FeatureServer/9")!)
+        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver7.arcgisonline.com/server/rest/services/DamageAssessment/FeatureServer/0")!)
         // Create a feature layer with the feature table.
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         // Set the viewpoint to the Los Angeles National Forest.
-        let viewpoint = AGSViewpoint(center: AGSPoint(x: -13176752, y: 4090404, spatialReference: .webMercator()), scale: 300000)
+        let viewpoint = AGSViewpoint(latitude: 41.773519, longitude: -88.143104, scale: 4513.988705)
         setMap(featureLayer: featureLayer, viewpoint: viewpoint)
     }
     
@@ -173,7 +173,16 @@ class DisplayFeatureLayersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AGSAuthenticationManager.shared().delegate = self
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DisplayFeatureLayersViewController"]
+    }
+}
+
+extension DisplayFeatureLayersViewController: AGSAuthenticationManagerDelegate {
+    func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
+        // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.
+        let credential = AGSCredential(user: "viewer01", password: "I68VGU^nMurF")
+        challenge.continue(with: credential)
     }
 }

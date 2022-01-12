@@ -145,7 +145,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     func loadShapefile() {
         // Create a shapefile feature table from a named bundle resource.
         let shapefileTable = AGSShapefileFeatureTable(name: "ScottishWildlifeTrust_ReserveBoundaries_20201102")
-
+        
         // Create a feature layer for the shapefile feature table.
         let featureLayer = AGSFeatureLayer(featureTable: shapefileTable)
         // Ensure the feature layer's metadata is loaded.

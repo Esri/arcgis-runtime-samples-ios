@@ -14,8 +14,8 @@
         "shapefile",
         "table",
         "AGSFeatureLayer",
-        "AGSGeodatabase",
         "AGSGeoPackageFeatureTable",
+        "AGSGeodatabase",
         "AGSPortalItem",
         "AGSServiceFeatureTable",
         "AGSShapefileFeatureTable"
@@ -23,8 +23,8 @@
     "redirect_from": [],
     "relevant_apis": [
         "AGSFeatureLayer",
-        "AGSGeodatabase",
         "AGSGeoPackageFeatureTable",
+        "AGSGeodatabase",
         "AGSPortalItem",
         "AGSServiceFeatureTable",
         "AGSShapefileFeatureTable"

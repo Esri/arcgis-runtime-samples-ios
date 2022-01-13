@@ -900,6 +900,10 @@
 				<string>Use different feature request modes to populate the map from a service feature table.</string>
 			</dict>
 			<dict>
+				<key>dependency</key>
+				<array>
+					<string>scottishWildlifeTrust</string>
+				</array>
 				<key>displayName</key>
 				<string>Display feature layers</string>
 				<key>storyboardName</key>

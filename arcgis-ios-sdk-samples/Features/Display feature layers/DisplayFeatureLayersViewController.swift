@@ -179,6 +179,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     }
 }
 
+/// Set the credentials to allow access for the Naperville damage assessment feature service.
 extension DisplayFeatureLayersViewController: AGSAuthenticationManagerDelegate {
     func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
         // NOTE: Never hardcode login information in a production application. This is done solely for the sake of the sample.

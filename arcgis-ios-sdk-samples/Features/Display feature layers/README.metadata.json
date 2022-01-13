@@ -30,7 +30,7 @@
         "AGSShapefileFeatureTable"
     ],
     "snippets": [
-        "DisplayFeatureLayers.swift"
+        "DisplayFeatureLayersViewController.swift"
     ],
     "title": "Display feature layers"
 }

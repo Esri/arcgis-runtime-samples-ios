@@ -37,8 +37,8 @@ Tap the button on the toolbar to add feature layers, from different sources, to 
 ## Relevant API
 
 * AGSFeatureLayer
-* AGSGeoPackageFeatureTable
 * AGSGeodatabase
+* AGSGeoPackageFeatureTable
 * AGSPortalItem
 * AGSServiceFeatureTable
 * AGSShapefileFeatureTable

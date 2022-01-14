@@ -890,7 +890,7 @@
 		F1D5022E245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift */; };
 		F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift */; };
 		F1D7508F230730360018B812 /* ElevationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
-		F1D7F6D2278FB5F3004968E3 /* ScottishWildlifeTrust_reserves in Resources */ = {isa = PBXBuildFile; fileRef = F1D7F6D1278FB5F3004968E3 /* ScottishWildlifeTrust_reserves */; settings = {ASSET_TAGS = (scottishWildlifeTrust, ); }; };
+		F1D7F6D42792453D004968E3 /* ScottishWildlifeTrust_reserves in Resources */ = {isa = PBXBuildFile; fileRef = F1D7F6D32792453D004968E3 /* ScottishWildlifeTrust_reserves */; };
 		F1D938FD26BA5555001ECB9A /* ToggleFeatureRequestModesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C452A226B374C4002FDB34 /* ToggleFeatureRequestModesViewController.swift */; };
 		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
 		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
@@ -1851,7 +1851,7 @@
 		F1D5022B245246D300583CFB /* DisplayUtilityAssociations.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayUtilityAssociations.storyboard; sourceTree = "<group>"; };
 		F1D5022D245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUtilityAssociationsViewController.swift; sourceTree = "<group>"; };
 		F1D7508E230730360018B812 /* ElevationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationViewController.swift; sourceTree = "<group>"; };
-		F1D7F6D1278FB5F3004968E3 /* ScottishWildlifeTrust_reserves */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ScottishWildlifeTrust_reserves; sourceTree = "<group>"; };
+		F1D7F6D32792453D004968E3 /* ScottishWildlifeTrust_reserves */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ScottishWildlifeTrust_reserves; sourceTree = "<group>"; };
 		F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateTerrainSurfaceFromLocalRaster.storyboard; sourceTree = "<group>"; };
 		F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTerrainSurfaceFromLocalRasterViewController.swift; sourceTree = "<group>"; };
 		F1E4B10E22D6AF28005FDB4D /* ColormapRenderer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColormapRenderer.storyboard; sourceTree = "<group>"; };
@@ -2098,6 +2098,7 @@
 		00C6D328246CA8FC00C63EAF /* Archives */ = {
 			isa = PBXGroup;
 			children = (
+				F1D7F6D32792453D004968E3 /* ScottishWildlifeTrust_reserves */,
 				00BA068325311B0D0039EF4D /* hydrography */,
 				003D256F2513FBB5007527C2 /* ExchangeSetWithoutUpdates */,
 				00ADC3C22464D59200A3B88D /* PacificSouthWest2 */,
@@ -3975,7 +3976,6 @@
 		4CB506D3224C2DBC006A3471 /* Portal Data */ = {
 			isa = PBXGroup;
 			children = (
-				F1D7F6D0278FB595004968E3 /* Shapefiles */,
 				F1E8F0C6253A6007000B9A0F /* GPS Exchanges */,
 				008D175024EEEEBD0001BB8F /* Geodatabases */,
 				00C6D328246CA8FC00C63EAF /* Archives */,
@@ -4631,14 +4631,6 @@
 			path = "Display utility associations";
 			sourceTree = "<group>";
 		};
-		F1D7F6D0278FB595004968E3 /* Shapefiles */ = {
-			isa = PBXGroup;
-			children = (
-				F1D7F6D1278FB5F3004968E3 /* ScottishWildlifeTrust_reserves */,
-			);
-			path = Shapefiles;
-			sourceTree = "<group>";
-		};
 		F1E4B10822D6604C005FDB4D /* Create terrain surface from a local raster */ = {
 			isa = PBXGroup;
 			children = (
@@ -4915,7 +4907,7 @@
 				3E0D3AD21AFD1C7500FC60D6 /* ContentPList.plist in Resources */,
 				3EABC7B91DB183E600C161C6 /* ShastaBW.tif.ovr in Resources */,
 				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
-				F1D7F6D2278FB5F3004968E3 /* ScottishWildlifeTrust_reserves in Resources */,
+				F1D7F6D42792453D004968E3 /* ScottishWildlifeTrust_reserves in Resources */,
 				F15694D2265DBE96007AEB61 /* SanDiego_StreetAddress.loz in Resources */,
 				3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */,
 				0022769226570BBE00CC7DB9 /* DisplayOGCAPICollection.storyboard in Resources */,

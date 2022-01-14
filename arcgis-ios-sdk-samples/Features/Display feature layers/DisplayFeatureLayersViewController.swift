@@ -22,7 +22,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Initialize map with basemap.
-            self.mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
         }
     }
     
@@ -100,10 +100,10 @@ class DisplayFeatureLayersViewController: UIViewController {
     /// Load a feature layer with a local geodatabase.
     func loadGeodatabase() {
         // Instantiate the geodatabase with the file name.
-        self.geodatabase = AGSGeodatabase(name: "LA_Trails")
+        geodatabase = AGSGeodatabase(name: "LA_Trails")
         
         // Load the geodatabase for feature tables.
-        self.geodatabase.load { [weak self] (error: Error?) in
+        geodatabase.load { [weak self] (error: Error?) in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)

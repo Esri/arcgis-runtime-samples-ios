@@ -16,9 +16,14 @@ import UIKit
 import ArcGIS
 
 class EditAttributesContingentValuesViewController: UIViewController {
-    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+        }
+    }
     // The geodatabase used by this sample.
     let geodatabase: AGSGeodatabase!
+    var graphicsOverlay = AGSGraphicsOverlay()
     
     required init?(coder: NSCoder) {
         // Create a URL leading to the resource.
@@ -68,34 +73,56 @@ class EditAttributesContingentValuesViewController: UIViewController {
         case .success:
 //            guard let map = self.mapView.map else { return }
             if let featureTable = self.geodatabase.geodatabaseFeatureTables[0] as? AGSArcGISFeatureTable {
+                let featureLayer = AGSFeatureLayer(featureTable: self.geodatabase.geodatabaseFeatureTables[0])
+                featureLayer.load { _ in
+                    self.mapView.map?.operationalLayers.add(featureLayer)
+                    let extent = featureLayer.fullExtent
+                    self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent!))
+                    // add graphics overlay to the map view
+                    self.mapView.graphicsOverlays.add(self.graphicsOverlay)
+                }
                 let contingentValuesDefinition = featureTable.contingentValuesDefinition
                 contingentValuesDefinition.load { error in
                     if let feature = featureTable.createFeature() as? AGSArcGISFeature {
                         feature.attributes["Activity"] = "OCCUPIED"
-                        feature.attributes["Protection"] = "ENDANGERED"
-                        feature.attributes["BufferSize"] = 100
-                        let contingentValueResults = featureTable.contingentValues(with: feature, field: "Activity")
+
+//                        feature.attributes["BufferSize"] = 100
+                        let contingentValueResults = featureTable.contingentValues(with: feature, field: "Protection")
+                        let fieldGroupContingentValues = contingentValueResults.contingentValuesByFieldGroup
+                        let protectionContingentValues = fieldGroupContingentValues["ProtectionFieldGroup"] as? [AGSContingentCodedValue]
+                        protectionContingentValues?.forEach { contingentCodedValue in
+                            print("\(contingentCodedValue.codedValue.name)")
+                        }
+                        // USER CHOOSES OPTION
+                        //                        feature.attributes["Protection"] = "NOT_ENDANGERED"
                     }
                 }
             }
-            
-            // Add the feature layers to the map.
-//            map.operationalLayers.addObjects(from: featureLayers)
-//            // Create annotation layers from tables in the geodatabase.
-//            let annotationTableNames = ["ParcelLinesAnno_1", "Loudoun_Address_PointsAnno_1"]
-//            let annotationTables = annotationTableNames.compactMap { self.geodatabase.geodatabaseAnnotationTable(withTableName: $0) }
-//            let annotationLayers = annotationTables.map(AGSAnnotationLayer.init)
-//            // Add the annotation layers to the map.
-//            map.operationalLayers.addObjects(from: annotationLayers)
         case .failure(let error):
             self.presentAlert(error: error)
         }
     }
     
+    func addFeature(at mapPoint: AGSPoint) {
+        let symbol = AGSSimpleMarkerSymbol(style: .circle , color: .black, size: 14)
+        self.graphicsOverlay.graphics.add(AGSGraphic(geometry: mapPoint, symbol: symbol, attributes: nil))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // touch delegate
+        mapView.touchDelegate = self
         
         // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditAttributesContingentValuesViewController"]
+    }
+}
+
+// MARK: - AGSGeoViewTouchDelegate
+
+extension EditAttributesContingentValuesViewController: AGSGeoViewTouchDelegate {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        // Tap to identify a pixel on the raster layer.
+        addFeature(at: mapPoint)
     }
 }

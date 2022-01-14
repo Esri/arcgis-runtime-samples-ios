@@ -104,7 +104,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
     }
     
     func addFeature(at mapPoint: AGSPoint) {
-        let symbol = AGSSimpleMarkerSymbol(style: .circle , color: .black, size: 14)
+        let symbol = AGSSimpleMarkerSymbol(style: .circle , color: .black, size: 11)
         self.graphicsOverlay.graphics.add(AGSGraphic(geometry: mapPoint, symbol: symbol, attributes: nil))
     }
     

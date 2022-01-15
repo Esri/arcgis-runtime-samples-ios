@@ -106,6 +106,8 @@ class EditAttributesContingentValuesViewController: UIViewController {
     func addFeature(at mapPoint: AGSPoint) {
         let symbol = AGSSimpleMarkerSymbol(style: .circle , color: .black, size: 11)
         self.graphicsOverlay.graphics.add(AGSGraphic(geometry: mapPoint, symbol: symbol, attributes: nil))
+        // show the attachments list vc
+        performSegue(withIdentifier: "AddFeature", sender: self)
     }
     
     override func viewDidLoad() {
@@ -115,6 +117,15 @@ class EditAttributesContingentValuesViewController: UIViewController {
         
         // add the source code button item to the right of navigation bar
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditAttributesContingentValuesViewController"]
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navController = segue.destination as? UINavigationController,
+           let controller = navController.viewControllers.first as? AttachmentsTableViewController {
+            controller.isModalInPresentation = true
+        }
     }
 }
 

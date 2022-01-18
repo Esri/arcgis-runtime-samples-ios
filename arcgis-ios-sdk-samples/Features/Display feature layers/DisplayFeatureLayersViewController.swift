@@ -31,7 +31,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     // MARK: Instance properties
     
     var geodatabase: AGSGeodatabase!
-    var geoPackage: AGSGeoPackage?
+    var geoPackage: AGSGeoPackage!
     
     // MARK: Actions
     
@@ -80,7 +80,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         // Create a feature layer with the feature table.
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         // Set the viewpoint to the Los Angeles National Forest.
-        let viewpoint = AGSViewpoint(latitude: 41.773519, longitude: -88.143104, scale: 4513.988705)
+        let viewpoint = AGSViewpoint(latitude: 41.773519, longitude: -88.143104, scale: 4e3)
         setMap(featureLayer: featureLayer, viewpoint: viewpoint)
     }
     
@@ -93,7 +93,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         // Create the feature layer with the item and layer ID.
         let featureLayer = AGSFeatureLayer(item: item, layerID: 0)
         // Set the viewpoint to Portland, Oregon.
-        let viewpoint = AGSViewpoint(latitude: 45.5266, longitude: -122.6219, scale: 6000)
+        let viewpoint = AGSViewpoint(latitude: 45.5266, longitude: -122.6219, scale: 6e3)
         setMap(featureLayer: featureLayer, viewpoint: viewpoint)
     }
     
@@ -112,9 +112,9 @@ class DisplayFeatureLayersViewController: UIViewController {
                 let featureTable = self.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
                 // Create a feature layer with the feature table.
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                // Set the viewpoint to Malibu, California.
-                let viewpoint = AGSViewpoint(center: AGSPoint(x: -13214155, y: 4040194, spatialReference: .webMercator()), scale: 35e4)
-                self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+                // Set the viewpoint to Malibu, California
+                let viewpoint = AGSViewpoint(latitude: 34.0772, longitude: -118.7989, scale: 6e5)
+            self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
             }
         }
     }
@@ -125,7 +125,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         geoPackage = AGSGeoPackage(name: "AuroraCO")
         
         // Load the geopackage.
-        geoPackage?.load { [weak self] error in
+        geoPackage?.load { [weak self] (error: Error?) in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
@@ -135,7 +135,7 @@ class DisplayFeatureLayersViewController: UIViewController {
                 // Create the feature layer with the feature table.
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                 // Set the viewpoint to Aurora, Colorado.
-                let viewpoint = AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 577790.554289)
+                let viewpoint = AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 5e5)
                 self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
             }
         }
@@ -149,7 +149,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         // Create a feature layer for the shapefile feature table.
         let featureLayer = AGSFeatureLayer(featureTable: shapefileTable)
         // Ensure the feature layer's metadata is loaded.
-        featureLayer.load { [weak self] error in
+        featureLayer.load { [weak self] (error: Error?) in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)

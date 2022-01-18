@@ -890,7 +890,7 @@
 		F1D5022E245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift */; };
 		F1D5022F24525E2E00583CFB /* DisplayUtilityAssociationsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D5022D245246EC00583CFB /* DisplayUtilityAssociationsViewController.swift */; };
 		F1D7508F230730360018B812 /* ElevationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D7508E230730360018B812 /* ElevationViewController.swift */; };
-		F1D7F6D42792453D004968E3 /* ScottishWildlifeTrust_reserves in Resources */ = {isa = PBXBuildFile; fileRef = F1D7F6D32792453D004968E3 /* ScottishWildlifeTrust_reserves */; };
+		F1D7F6D42792453D004968E3 /* ScottishWildlifeTrust_reserves in Resources */ = {isa = PBXBuildFile; fileRef = F1D7F6D32792453D004968E3 /* ScottishWildlifeTrust_reserves */; settings = {ASSET_TAGS = (scottishWildlifeTrust, ); }; };
 		F1D938FD26BA5555001ECB9A /* ToggleFeatureRequestModesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C452A226B374C4002FDB34 /* ToggleFeatureRequestModesViewController.swift */; };
 		F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E4B10922D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard */; };
 		F1E4B10C22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };

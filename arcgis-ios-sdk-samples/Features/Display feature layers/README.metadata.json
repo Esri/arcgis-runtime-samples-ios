@@ -20,7 +20,12 @@
         "AGSServiceFeatureTable",
         "AGSShapefileFeatureTable"
     ],
-    "redirect_from": [],
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-layer-feature-service-.htm",
+        "/ios/latest/swift/sample-code/feature-layer-geodatabase-.htm",
+        "/ios/latest/swift/sample-code/feature-layer-geopackage-.htm",
+        "/ios/latest/swift/sample-code/feature-layer-shapefile-.htm"
+    ],
     "relevant_apis": [
         "AGSFeatureLayer",
         "AGSGeoPackageFeatureTable",

@@ -112,9 +112,9 @@ class DisplayFeatureLayersViewController: UIViewController {
                 let featureTable = self.geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
                 // Create a feature layer with the feature table.
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                // Set the viewpoint to Malibu, California
+                // Set the viewpoint to Malibu, California.
                 let viewpoint = AGSViewpoint(latitude: 34.0772, longitude: -118.7989, scale: 6e5)
-            self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+                self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
             }
         }
     }
@@ -129,14 +129,15 @@ class DisplayFeatureLayersViewController: UIViewController {
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
-            }
-            // Add the first feature layer from the geopackage to the map.
-            if let featureTable = self.geoPackage?.geoPackageFeatureTables.first {
-                // Create the feature layer with the feature table.
-                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-                // Set the viewpoint to Aurora, Colorado.
-                let viewpoint = AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 5e5)
-                self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+            } else {
+                // Add the first feature layer from the geopackage to the map.
+                if let featureTable = self.geoPackage?.geoPackageFeatureTables.first {
+                    // Create the feature layer with the feature table.
+                    let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                    // Set the viewpoint to Aurora, Colorado.
+                    let viewpoint = AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 5e5)
+                    self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+                }
             }
         }
     }
@@ -148,16 +149,9 @@ class DisplayFeatureLayersViewController: UIViewController {
         
         // Create a feature layer for the shapefile feature table.
         let featureLayer = AGSFeatureLayer(featureTable: shapefileTable)
-        // Ensure the feature layer's metadata is loaded.
-        featureLayer.load { [weak self] (error: Error?) in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            }
-            // Set the viewpoint to Scotland.
-            let viewpoint = AGSViewpoint(latitude: 56.641344, longitude: -3.889066, scale: 6e6)
-            self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
-        }
+        // Set the viewpoint to Scotland.
+        let viewpoint = AGSViewpoint(latitude: 56.641344, longitude: -3.889066, scale: 6e6)
+        self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
     }
     
     /// Add the feature layer to the map and set the viewpoint.

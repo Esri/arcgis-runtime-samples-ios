@@ -159,8 +159,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     ///   - featureLayer: The `AGSFeatureLayer` to display and add to the map.
     ///   - viewpoint: The `AGSViewpoint` to change the map to.
     func setMap(featureLayer: AGSFeatureLayer, viewpoint: AGSViewpoint) {
-        mapView.map?.operationalLayers.removeAllObjects()
-        mapView.map?.operationalLayers.add(featureLayer)
+        mapView.map?.operationalLayers.setArray([featureLayer])
         mapView.setViewpoint(viewpoint)
     }
     

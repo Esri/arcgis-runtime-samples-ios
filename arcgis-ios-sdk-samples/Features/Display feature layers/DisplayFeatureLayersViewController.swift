@@ -125,7 +125,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         geoPackage = AGSGeoPackage(name: "AuroraCO")
         
         // Load the geopackage.
-        geoPackage?.load { [weak self] (error: Error?) in
+        geoPackage.load { [weak self] (error: Error?) in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)

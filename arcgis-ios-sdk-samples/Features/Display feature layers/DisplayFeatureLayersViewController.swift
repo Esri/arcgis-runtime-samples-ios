@@ -64,7 +64,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         alertController.addAction(shapefileAction)
         
         // Add "cancel" item.
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
         
         alertController.popoverPresentationController?.barButtonItem = changeFeatureLayerBarButtonItem
@@ -160,9 +160,10 @@ class DisplayFeatureLayersViewController: UIViewController {
         }
     }
     
-    /// Add the feature layer to the map and set the viewpoint
-    /// featureLayer - The feature layer to display and add to the map.
-    /// viewpoint - The viewpoint to change the map to.
+    /// Add the feature layer to the map and set the viewpoint.
+    /// - Parameters:
+    ///   - featureLayer: The `AGSFeatureLayer` to display and add to the map.
+    ///   - viewpoint: The `AGSViewpoint` to change the map to.
     func setMap(featureLayer: AGSFeatureLayer, viewpoint: AGSViewpoint) {
         mapView.map?.operationalLayers.removeAllObjects()
         mapView.map?.operationalLayers.add(featureLayer)

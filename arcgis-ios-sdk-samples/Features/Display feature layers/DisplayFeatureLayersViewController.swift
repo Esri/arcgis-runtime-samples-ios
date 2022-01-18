@@ -151,7 +151,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         let featureLayer = AGSFeatureLayer(featureTable: shapefileTable)
         // Set the viewpoint to Scotland.
         let viewpoint = AGSViewpoint(latitude: 56.641344, longitude: -3.889066, scale: 6e6)
-        self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+        setMap(featureLayer: featureLayer, viewpoint: viewpoint)
     }
     
     /// Add the feature layer to the map and set the viewpoint.

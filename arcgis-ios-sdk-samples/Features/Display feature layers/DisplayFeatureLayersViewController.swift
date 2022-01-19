@@ -38,7 +38,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     @IBAction func changeFeatureLayer() {
         let alertController = UIAlertController(title: "Select a feature layer source", message: nil, preferredStyle: .actionSheet)
         // Add an action to load a feature layer from a URL.
-        let featureServiceURLAction = UIAlertAction(title: "URL", style: .default) { (_) in
+        let featureServiceURLAction = UIAlertAction(title: "Service feature table", style: .default) { (_) in
             self.loadFeatureServiceURL()
         }
         alertController.addAction(featureServiceURLAction)

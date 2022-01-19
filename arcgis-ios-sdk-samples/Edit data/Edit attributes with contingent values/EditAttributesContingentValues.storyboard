@@ -145,7 +145,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityCell" destination="6QF-yr-bro" id="Rvw-Bd-IN8"/>
-                        <outlet property="bufferCell" destination="CbM-Zs-5iP" id="7bs-Lz-Deg"/>
+                        <outlet property="bufferSizeCell" destination="CbM-Zs-5iP" id="2RD-8Z-yxY"/>
                         <outlet property="protectionCell" destination="Brg-Ja-fqv" id="fT2-zE-aql"/>
                     </connections>
                 </tableViewController>

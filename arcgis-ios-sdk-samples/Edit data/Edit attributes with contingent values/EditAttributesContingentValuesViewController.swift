@@ -24,6 +24,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
     // The geodatabase used by this sample.
     let geodatabase: AGSGeodatabase!
     var graphicsOverlay = AGSGraphicsOverlay()
+    var featureTable: AGSArcGISFeatureTable?
     
     required init?(coder: NSCoder) {
         // Create a URL leading to the resource.
@@ -81,22 +82,23 @@ class EditAttributesContingentValuesViewController: UIViewController {
                     // add graphics overlay to the map view
                     self.mapView.graphicsOverlays.add(self.graphicsOverlay)
                 }
-                let contingentValuesDefinition = featureTable.contingentValuesDefinition
-                contingentValuesDefinition.load { error in
-                    if let feature = featureTable.createFeature() as? AGSArcGISFeature {
-                        feature.attributes["Activity"] = "OCCUPIED"
-
-//                        feature.attributes["BufferSize"] = 100
-                        let contingentValueResults = featureTable.contingentValues(with: feature, field: "Protection")
-                        let fieldGroupContingentValues = contingentValueResults.contingentValuesByFieldGroup
-                        let protectionContingentValues = fieldGroupContingentValues["ProtectionFieldGroup"] as? [AGSContingentCodedValue]
-                        protectionContingentValues?.forEach { contingentCodedValue in
-                            print("\(contingentCodedValue.codedValue.name)")
-                        }
+                self.featureTable = featureTable
+//                let contingentValuesDefinition = featureTable.contingentValuesDefinition
+//                contingentValuesDefinition.load { error in
+//                    if let feature = featureTable.createFeature() as? AGSArcGISFeature {
+//                        feature.attributes["Activity"] = "OCCUPIED"
+//
+////                        feature.attributes["BufferSize"] = 100
+//                        let contingentValueResults = featureTable.contingentValues(with: feature, field: "Protection")
+//                        let fieldGroupContingentValues = contingentValueResults.contingentValuesByFieldGroup
+//                        let protectionContingentValues = fieldGroupContingentValues["ProtectionFieldGroup"] as? [AGSContingentCodedValue]
+//                        protectionContingentValues?.forEach { contingentCodedValue in
+//                            print("\(contingentCodedValue.codedValue.name)")
+//                        }
                         // USER CHOOSES OPTION
                         //                        feature.attributes["Protection"] = "NOT_ENDANGERED"
-                    }
-                }
+//                    }
+//                }
             }
         case .failure(let error):
             self.presentAlert(error: error)
@@ -123,8 +125,9 @@ class EditAttributesContingentValuesViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navController = segue.destination as? UINavigationController,
-           let controller = navController.viewControllers.first as? AttachmentsTableViewController {
+           let controller = navController.viewControllers.first as? AddContingentValuesViewController {
             controller.isModalInPresentation = true
+            controller.featureTable = featureTable
         }
     }
 }

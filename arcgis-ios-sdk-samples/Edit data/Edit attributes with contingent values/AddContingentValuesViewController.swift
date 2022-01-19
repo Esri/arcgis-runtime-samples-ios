@@ -33,6 +33,8 @@ class AddContingentValuesViewController: UITableViewController {
     
     // MARK: Properties
     
+    var featureTable: AGSArcGISFeatureTable?
+    
     var selectedActivity: AGSContingentCodedValue? {
         didSet {
             if let codedValueName = selectedActivity?.codedValue.name {
@@ -57,10 +59,23 @@ class AddContingentValuesViewController: UITableViewController {
         }
     }
     
-    // MARK: functions
+    // MARK: Functions
     
     func showActivityOptions() {
-        
+        guard let featureTable = featureTable else { return }
+        let contingentValuesDefinition = featureTable.contingentValuesDefinition
+        contingentValuesDefinition.load { error in
+            if let feature = featureTable.createFeature() as? AGSArcGISFeature {
+//                feature.attributes["Activity"] = "OCCUPIED"
+                let activityOptions = featureTable.contingentValues(with: feature, field: "Activity")
+                print(activityOptions)
+                for field in featureTable.fields {
+                    if field.domain is AGSCodedValueDomain {
+                       
+                    }
+                }
+            }
+        }
     }
     
     func showProtectionOptions() {

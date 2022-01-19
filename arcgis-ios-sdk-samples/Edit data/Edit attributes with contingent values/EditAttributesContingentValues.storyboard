@@ -40,16 +40,16 @@
             </objects>
             <point key="canvasLocation" x="141" y="119"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Add Contingent Values View Controller-->
         <scene sceneID="Wil-6s-4eE">
             <objects>
-                <tableViewController id="6wg-Qy-hjV" sceneMemberID="viewController">
+                <tableViewController id="6wg-Qy-hjV" userLabel="Add Contingent Values View Controller" customClass="AddContingentValuesViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="a76-ha-6p4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Set the attributes" id="4MW-RZ-ium">
+                            <tableViewSection headerTitle="Set the attributes" footerTitle="The options will vary depending on which attributes are selected." id="4MW-RZ-ium">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ryu-ON-idX" detailTextLabel="4mQ-PL-PuU" style="IBUITableViewCellStyleValue1" id="6QF-yr-bro">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
@@ -131,10 +131,23 @@
                             <outlet property="delegate" destination="6wg-Qy-hjV" id="2lM-0e-1Fy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="6V3-bd-J8d">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2BB-AR-fG8"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Ncy-Bz-Wis"/>
+                    <navigationItem key="navigationItem" title="Add feature" id="6V3-bd-J8d">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2BB-AR-fG8">
+                            <connections>
+                                <action selector="cancelBarButtonItemTapped:" destination="6wg-Qy-hjV" id="IzF-tE-Bq6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Ncy-Bz-Wis">
+                            <connections>
+                                <action selector="doneBarButtonItemTapped:" destination="6wg-Qy-hjV" id="iTn-3U-tfF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityCell" destination="6QF-yr-bro" id="Rvw-Bd-IN8"/>
+                        <outlet property="bufferCell" destination="CbM-Zs-5iP" id="7bs-Lz-Deg"/>
+                        <outlet property="protectionCell" destination="Brg-Ja-fqv" id="fT2-zE-aql"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbe-pU-LnX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -24,6 +24,7 @@ class AddContingentValuesViewController: UITableViewController {
     // MARK: Actions
     
     @IBAction func cancelBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        graphicsOverlay?.graphics.removeLastObject()
         dismiss(animated: true)
     }
     
@@ -35,11 +36,15 @@ class AddContingentValuesViewController: UITableViewController {
     // MARK: Properties
     
     var featureTable: AGSArcGISFeatureTable?
+    var contingentValuesDefinition: AGSContingentValuesDefinition?
+    var feature: AGSArcGISFeature?
+    var bufferSizes: [Int]?
+    var graphicsOverlay: AGSGraphicsOverlay?
     
     var selectedActivity: AGSCodedValue? {
         didSet {
             if let codedValueName = selectedActivity?.name {
-                editRightDetail(cell: activityCell, codedValueName: codedValueName)
+                editRightDetail(cell: activityCell, rightDetailText: codedValueName)
                 protectionCell.textLabel?.isEnabled = true
             }
         }
@@ -48,16 +53,17 @@ class AddContingentValuesViewController: UITableViewController {
     var selectedProtection: AGSContingentCodedValue? {
         didSet {
             if let codedValueName = selectedProtection?.codedValue.name {
-                editRightDetail(cell: protectionCell, codedValueName: codedValueName)
+                editRightDetail(cell: protectionCell, rightDetailText: codedValueName)
                 bufferSizeCell.textLabel?.isEnabled = true
             }
         }
     }
     
-    var selectedBufferSize: AGSContingentCodedValue? {
+    var selectedBufferSize: Int? {
         didSet {
-            if let codedValueName = selectedBufferSize?.codedValue.name {
-                editRightDetail(cell: bufferSizeCell, codedValueName: codedValueName)
+            if let selectedBufferSize = selectedBufferSize {
+                let bufferSize = String(selectedBufferSize)
+                editRightDetail(cell: bufferSizeCell, rightDetailText: bufferSize)
                 doneBarButtonItem.isEnabled = true
             }
         }
@@ -71,18 +77,13 @@ class AddContingentValuesViewController: UITableViewController {
         let activityField = featureTable.field(forName: "Activity")
         let codedValueDomain = activityField?.domain as! AGSCodedValueDomain
         let activityOptions = codedValueDomain.codedValues
-        let selectedIndex = activityOptions.firstIndex { $0.name == self.selectedActivity?.name} ?? nil
+        let selectedIndex = activityOptions.firstIndex { $0.name == self.selectedActivity?.name } ?? nil
         let optionsViewController = OptionsTableViewController(labels: activityOptions.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
             self.selectedActivity = activityOptions[newIndex]
             self.navigationController?.popViewController(animated: true)
         }
         optionsViewController.title = "Activity"
         self.show(optionsViewController, sender: self)
-//        contingentValuesDefinition.load { [ weak self] error in
-//            guard let self = self else { return}
-//            if let feature = featureTable.createFeature() as? AGSArcGISFeature {
-//            }
-//      }
     }
     
     func showProtectionOptions() {
@@ -98,27 +99,38 @@ class AddContingentValuesViewController: UITableViewController {
 //        self.show(optionsViewController, sender: self)
         featureTable?.load { [weak self] error in
             guard let self = self else { return }
-            let contingentValuesDefinition = self.featureTable?.contingentValuesDefinition
-            contingentValuesDefinition?.load { error in
+            self.contingentValuesDefinition = self.featureTable?.contingentValuesDefinition
+            self.contingentValuesDefinition?.load { error in
                 if let feature = self.featureTable?.createFeature() as? AGSArcGISFeature {
-                    let attributes = feature.attributes
-                    feature.attributes["Activity"] = self.selectedActivity?.name
-                    let contingentValueResult = self.featureTable?.contingentValues(with: feature, field: "Protection")
-                    let protectionGroupContingentValues = contingentValueResult?.contingentValuesByFieldGroup["ProtectionFieldGroup"] as? [AGSContingentCodedValue]
-                    protectionGroupContingentValues?.forEach { each in
-                        print("\(each.codedValue.name)")
+                    feature.attributes["Activity"] = self.selectedActivity?.code
+                    self.feature = feature
+                    let contingentValuesResult = self.featureTable?.contingentValues(with: feature, field: "Protection")
+                    guard let protectionGroupContingentValues = contingentValuesResult?.contingentValuesByFieldGroup["ProtectionFieldGroup"] as? [AGSContingentCodedValue] else { return }
+                    let selectedIndex = protectionGroupContingentValues.firstIndex { $0.codedValue.name == self.selectedProtection?.codedValue.name} ?? nil
+                    let optionsViewController = OptionsTableViewController(labels: protectionGroupContingentValues.map { $0.codedValue.name }, selectedIndex: selectedIndex) { newIndex in
+                        self.selectedProtection = protectionGroupContingentValues[newIndex]
+                        feature.attributes["Protection"] = self.selectedProtection?.codedValue.code
+                        self.navigationController?.popViewController(animated: true)
                     }
+                    optionsViewController.title = "Protection"
+                    self.show(optionsViewController, sender: self)
                 }
             }
         }
     }
     
     func showBufferSizeOptions() {
-        
+        guard let feature = feature else { return }
+        let contingentValueResult = featureTable?.contingentValues(with: feature, field: "BufferSize")
+        guard let bufferSizeGroupContingentValues = contingentValueResult?.contingentValuesByFieldGroup["BufferSizeFieldGroup"] as? [AGSContingentRangeValue] else { return }
+        let minValue = bufferSizeGroupContingentValues[0].minValue as! Int
+        let maxValue = bufferSizeGroupContingentValues[0].maxValue as! Int
+        bufferSizes = Array(minValue...maxValue)
+        feature.attributes["BufferSize"] = self.selectedBufferSize
     }
     
-    func editRightDetail(cell: UITableViewCell, codedValueName: String) {
-        cell.detailTextLabel?.text = codedValueName
+    func editRightDetail(cell: UITableViewCell, rightDetailText: String) {
+        cell.detailTextLabel?.text = rightDetailText
     }
     
     // MARK: UITableViewController
@@ -138,6 +150,34 @@ class AddContingentValuesViewController: UITableViewController {
             showBufferSizeOptions()
         default:
             return
+        }
+    }
+}
+
+// MARK: Pickerview
+
+extension AddContingentValuesViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return bufferSizes!.count
+    }
+}
+
+extension AddContingentValuesViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if let bufferSizes = bufferSizes {
+            let bufferSizeTitle = String(bufferSizes[row])
+            return bufferSizeTitle
+        }
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if let bufferSizes = bufferSizes {
+            selectedBufferSize = bufferSizes[row]
         }
     }
 }

@@ -107,7 +107,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
     
     func addFeature(at mapPoint: AGSPoint) {
         let symbol = AGSSimpleMarkerSymbol(style: .circle , color: .black, size: 11)
-        self.graphicsOverlay.graphics.add(AGSGraphic(geometry: mapPoint, symbol: symbol, attributes: nil))
+        self.graphicsOverlay.graphics.add(AGSGraphic(geometry: mapPoint, symbol: symbol))
         // show the attachments list vc
         performSegue(withIdentifier: "AddFeature", sender: self)
     }
@@ -128,6 +128,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
            let controller = navController.viewControllers.first as? AddContingentValuesViewController {
             controller.isModalInPresentation = true
             controller.featureTable = featureTable
+            controller.graphicsOverlay = self.graphicsOverlay
         }
     }
 }

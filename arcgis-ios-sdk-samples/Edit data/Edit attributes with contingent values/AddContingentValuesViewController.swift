@@ -19,6 +19,7 @@ class AddContingentValuesViewController: UITableViewController {
     @IBOutlet var activityCell: UITableViewCell!
     @IBOutlet var protectionCell: UITableViewCell!
     @IBOutlet var bufferSizeCell: UITableViewCell!
+    @IBOutlet var doneBarButtonItem: UIBarButtonItem!
     
     // MARK: Actions
     
@@ -35,10 +36,11 @@ class AddContingentValuesViewController: UITableViewController {
     
     var featureTable: AGSArcGISFeatureTable?
     
-    var selectedActivity: AGSContingentCodedValue? {
+    var selectedActivity: AGSCodedValue? {
         didSet {
-            if let codedValueName = selectedActivity?.codedValue.name {
+            if let codedValueName = selectedActivity?.name {
                 editRightDetail(cell: activityCell, codedValueName: codedValueName)
+                protectionCell.textLabel?.isEnabled = true
             }
         }
     }
@@ -47,6 +49,7 @@ class AddContingentValuesViewController: UITableViewController {
         didSet {
             if let codedValueName = selectedProtection?.codedValue.name {
                 editRightDetail(cell: protectionCell, codedValueName: codedValueName)
+                bufferSizeCell.textLabel?.isEnabled = true
             }
         }
     }
@@ -55,6 +58,7 @@ class AddContingentValuesViewController: UITableViewController {
         didSet {
             if let codedValueName = selectedBufferSize?.codedValue.name {
                 editRightDetail(cell: bufferSizeCell, codedValueName: codedValueName)
+                doneBarButtonItem.isEnabled = true
             }
         }
     }
@@ -63,23 +67,50 @@ class AddContingentValuesViewController: UITableViewController {
     
     func showActivityOptions() {
         guard let featureTable = featureTable else { return }
-        let contingentValuesDefinition = featureTable.contingentValuesDefinition
-        contingentValuesDefinition.load { error in
-            if let feature = featureTable.createFeature() as? AGSArcGISFeature {
-//                feature.attributes["Activity"] = "OCCUPIED"
-                let activityOptions = featureTable.contingentValues(with: feature, field: "Activity")
-                print(activityOptions)
-                for field in featureTable.fields {
-                    if field.domain is AGSCodedValueDomain {
-                       
+//        let contingentValuesDefinition = featureTable.contingentValuesDefinition
+        let activityField = featureTable.field(forName: "Activity")
+        let codedValueDomain = activityField?.domain as! AGSCodedValueDomain
+        let activityOptions = codedValueDomain.codedValues
+        let selectedIndex = activityOptions.firstIndex { $0.name == self.selectedActivity?.name} ?? nil
+        let optionsViewController = OptionsTableViewController(labels: activityOptions.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
+            self.selectedActivity = activityOptions[newIndex]
+            self.navigationController?.popViewController(animated: true)
+        }
+        optionsViewController.title = "Activity"
+        self.show(optionsViewController, sender: self)
+//        contingentValuesDefinition.load { [ weak self] error in
+//            guard let self = self else { return}
+//            if let feature = featureTable.createFeature() as? AGSArcGISFeature {
+//            }
+//      }
+    }
+    
+    func showProtectionOptions() {
+//        let protectionField = featureTable?.field(forName: "Protection")
+//        let codedValueDomain = protectionField?.domain as! AGSCodedValueDomain
+//        let protectionOptions = codedValueDomain.codedValues
+//        let selectedIndex = protectionOptions.firstIndex { $0.name == self.selectedActivity?.name} ?? nil
+//        let optionsViewController = OptionsTableViewController(labels: protectionOptions.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
+//            self.selectedProtection = protectionOptions[newIndex]
+//            self.navigationController?.popViewController(animated: true)
+//        }
+//        optionsViewController.title = "Activity"
+//        self.show(optionsViewController, sender: self)
+        featureTable?.load { [weak self] error in
+            guard let self = self else { return }
+            let contingentValuesDefinition = self.featureTable?.contingentValuesDefinition
+            contingentValuesDefinition?.load { error in
+                if let feature = self.featureTable?.createFeature() as? AGSArcGISFeature {
+                    let attributes = feature.attributes
+                    feature.attributes["Activity"] = self.selectedActivity?.name
+                    let contingentValueResult = self.featureTable?.contingentValues(with: feature, field: "Protection")
+                    let protectionGroupContingentValues = contingentValueResult?.contingentValuesByFieldGroup["ProtectionFieldGroup"] as? [AGSContingentCodedValue]
+                    protectionGroupContingentValues?.forEach { each in
+                        print("\(each.codedValue.name)")
                     }
                 }
             }
         }
-    }
-    
-    func showProtectionOptions() {
-        
     }
     
     func showBufferSizeOptions() {

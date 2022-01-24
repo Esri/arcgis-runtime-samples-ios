@@ -300,6 +300,14 @@
 					<string>RedlandsNMEA</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Browse building floors</string>
+				<key>descriptionText</key>
+				<string>Display and browse through building floors from a floor-aware web map.</string>
+				<key>storyboardName</key>
+				<string>BrowseBuildingFloors</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -756,6 +764,18 @@
 					<string>Hydrography</string>
 				</array>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Display dimensions</string>
+				<key>descriptionText</key>
+				<string>Display dimension features from a mobile map package.</string>
+				<key>storyboardName</key>
+				<string>DisplayDimensions</string>
+				<key>dependency</key>
+				<array>
+					<string>EdinburghPylonsDimensionsMMPK</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1032,11 +1052,7 @@
 				<key>storyboardName</key>
 				<string>GraphicsOverlayDictionaryRenderer3D</string>
 				<key>descriptionText</key>
-				<string>Create graphics using a local mil2525d style file and an XML file with key-value pairs for each graphic, and display the military symbols in 3D.</string>
-				<key>dependency</key>
-				<array>
-					<string>mil2525d</string>
-				</array>
+				<string>Create graphics from an XML file with key-value pairs for each graphic, and display the military symbols using a MIL-STD-2525D web style in 3D.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

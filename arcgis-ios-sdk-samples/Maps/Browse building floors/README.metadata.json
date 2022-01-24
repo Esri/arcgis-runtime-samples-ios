@@ -1,0 +1,31 @@
+{
+    "category": "Maps",
+    "description": "Display and browse through building floors from a floor-aware web map.",
+    "ignore": false,
+    "images": [
+        "browse-building-floors.png"
+    ],
+    "keywords": [
+        "building",
+        "facility",
+        "floor",
+        "floor-aware",
+        "floors",
+        "ground floor",
+        "indoor",
+        "level",
+        "site",
+        "story",
+        "AGSFloorLevel",
+        "AGSFloorManager"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSFloorLevel",
+        "AGSFloorManager"
+    ],
+    "snippets": [
+        "BrowseBuildingFloorsViewController.swift"
+    ],
+    "title": "Browse building floors"
+}

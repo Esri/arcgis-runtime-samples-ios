@@ -67,7 +67,7 @@ class AddContingentValuesViewController: UITableViewController {
             if let selectedBufferSize = selectedBufferSize {
                 let bufferSize = String(selectedBufferSize)
                 editRightDetail(cell: bufferSizeCell, rightDetailText: bufferSize)
-                doneBarButtonItem.isEnabled = true
+                validateContingency()
             }
         }
     }
@@ -76,7 +76,6 @@ class AddContingentValuesViewController: UITableViewController {
     
     func showActivityOptions() {
         guard let featureTable = featureTable else { return }
-//        let contingentValuesDefinition = featureTable.contingentValuesDefinition
         let activityField = featureTable.field(forName: "Activity")
         let codedValueDomain = activityField?.domain as! AGSCodedValueDomain
         let activityOptions = codedValueDomain.codedValues
@@ -130,6 +129,17 @@ class AddContingentValuesViewController: UITableViewController {
         let maxValue = bufferSizeGroupContingentValues[0].maxValue as! Int
         bufferSizes = Array(minValue...maxValue)
         feature.attributes["BufferSize"] = self.selectedBufferSize
+    }
+    
+    func validateContingency() {
+        guard let featureTable = featureTable, let feature = feature else { return }
+        let contingencyViolations = featureTable.validateContingencyConstraints(with: feature)
+        if contingencyViolations.isEmpty {
+            doneBarButtonItem.isEnabled = true
+        } else {
+            let errorMessage = "Invalid contingent values"
+            presentAlert(error: errorMessage as! Error)
+        }
     }
     
     // MARK: UI Functions

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,15 +45,15 @@
         <scene sceneID="Wil-6s-4eE">
             <objects>
                 <tableViewController id="6wg-Qy-hjV" userLabel="Add Contingent Values View Controller" customClass="AddContingentValuesViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="a76-ha-6p4">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="a76-ha-6p4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Set the attributes" footerTitle="The options will vary depending on which attributes are selected." id="4MW-RZ-ium">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ryu-ON-idX" detailTextLabel="4mQ-PL-PuU" style="IBUITableViewCellStyleValue1" id="6QF-yr-bro">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6QF-yr-bro" id="reF-Wi-lMq">
                                             <rect key="frame" x="0.0" y="0.0" width="385.5" height="43.5"/>
@@ -76,7 +77,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0f3-fn-XXc" detailTextLabel="jOe-Tf-Ang" style="IBUITableViewCellStyleValue1" id="Brg-Ja-fqv">
-                                        <rect key="frame" x="0.0" y="88" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="93" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Brg-Ja-fqv" id="6Pe-lm-NN7">
                                             <rect key="frame" x="0.0" y="0.0" width="385.5" height="43.5"/>
@@ -100,7 +101,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="j0G-iQ-091" detailTextLabel="1pS-14-jtt" style="IBUITableViewCellStyleValue1" id="CbM-Zs-5iP">
-                                        <rect key="frame" x="0.0" y="131.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="136.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CbM-Zs-5iP" id="iPi-0d-YBR">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -124,17 +125,27 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="5px-bt-lVH">
-                                        <rect key="frame" x="0.0" y="175" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="180" width="414" height="216.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5px-bt-lVH" id="FbA-VS-KiA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="216.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vee-x2-sLt">
-                                                    <rect key="frame" x="0.0" y="-60" width="414" height="162"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vee-x2-sLt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                                                    <color key="backgroundColor" name="statusLabelBackgroundColor"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="6wg-Qy-hjV" id="D0A-cw-9zk"/>
+                                                        <outlet property="delegate" destination="6wg-Qy-hjV" id="VhI-1q-ymm"/>
+                                                    </connections>
                                                 </pickerView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="vee-x2-sLt" secondAttribute="bottom" id="Lhl-y8-glL"/>
+                                                <constraint firstItem="vee-x2-sLt" firstAttribute="leading" secondItem="FbA-VS-KiA" secondAttribute="leading" id="dEv-AU-Tga"/>
+                                                <constraint firstAttribute="trailing" secondItem="vee-x2-sLt" secondAttribute="trailing" id="hAH-dF-Cec"/>
+                                                <constraint firstItem="vee-x2-sLt" firstAttribute="top" secondItem="FbA-VS-KiA" secondAttribute="top" id="xEh-PB-qQe"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -159,8 +170,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityCell" destination="6QF-yr-bro" id="Rvw-Bd-IN8"/>
-                        <outlet property="bufferSizeCell" destination="CbM-Zs-5iP" id="2RD-8Z-yxY"/>
-                        <outlet property="bufferSizeLabel" destination="1pS-14-jtt" id="UNW-nR-xAy"/>
+                        <outlet property="bufferSizeCell" destination="CbM-Zs-5iP" id="FbN-YF-JkH"/>
                         <outlet property="bufferSizePickerView" destination="vee-x2-sLt" id="Z4p-au-toh"/>
                         <outlet property="doneBarButtonItem" destination="Ncy-Bz-Wis" id="e9N-Kz-rXg"/>
                         <outlet property="protectionCell" destination="Brg-Ja-fqv" id="fT2-zE-aql"/>
@@ -188,8 +198,14 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="statusLabelBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

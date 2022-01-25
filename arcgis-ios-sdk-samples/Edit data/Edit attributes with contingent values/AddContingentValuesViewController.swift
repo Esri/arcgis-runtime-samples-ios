@@ -20,7 +20,6 @@ class AddContingentValuesViewController: UITableViewController {
     @IBOutlet var protectionCell: UITableViewCell!
     @IBOutlet var bufferSizeCell: UITableViewCell!
     @IBOutlet var doneBarButtonItem: UIBarButtonItem!
-    @IBOutlet var bufferSizeLabel: UILabel!
     @IBOutlet var bufferSizePickerView: UIPickerView!
     
     // MARK: Actions
@@ -142,13 +141,17 @@ class AddContingentValuesViewController: UITableViewController {
     /// Toggles visisbility of the reference scale picker.
     func toggleBufferSizePickerVisibility() {
         let bufferSizePicker = IndexPath(row: 3, section: 0)
+        let bufferSizeLabel = bufferSizeCell.detailTextLabel
         tableView.performBatchUpdates({
             if bufferSizePickerHidden {
-                bufferSizeLabel.textColor = .accentColor
+                if selectedBufferSize == nil, let firstOption = bufferSizes?[0] {
+                    bufferSizeLabel?.text = String(firstOption)
+                }
+                bufferSizeLabel?.textColor = .accentColor
                 tableView.insertRows(at: [bufferSizePicker], with: .fade)
                 bufferSizePickerHidden = false
             } else {
-                bufferSizeLabel.textColor = nil
+                bufferSizeLabel?.textColor = nil
                 tableView.deleteRows(at: [bufferSizePicker], with: .fade)
                 bufferSizePickerHidden = true
             }

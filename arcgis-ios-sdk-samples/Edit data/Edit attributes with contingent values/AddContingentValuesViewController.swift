@@ -20,6 +20,8 @@ class AddContingentValuesViewController: UITableViewController {
     @IBOutlet var protectionCell: UITableViewCell!
     @IBOutlet var bufferSizeCell: UITableViewCell!
     @IBOutlet var doneBarButtonItem: UIBarButtonItem!
+    @IBOutlet var bufferSizeLabel: UILabel!
+    @IBOutlet var bufferSizePickerView: UIPickerView!
     
     // MARK: Actions
     
@@ -40,6 +42,8 @@ class AddContingentValuesViewController: UITableViewController {
     var feature: AGSArcGISFeature?
     var bufferSizes: [Int]?
     var graphicsOverlay: AGSGraphicsOverlay?
+    /// Indicates whether the reference scale picker is currently hidden.
+    var bufferSizePickerHidden = true
     
     var selectedActivity: AGSCodedValue? {
         didSet {
@@ -129,8 +133,26 @@ class AddContingentValuesViewController: UITableViewController {
         feature.attributes["BufferSize"] = self.selectedBufferSize
     }
     
+    // MARK: UI Functions
+    
     func editRightDetail(cell: UITableViewCell, rightDetailText: String) {
         cell.detailTextLabel?.text = rightDetailText
+    }
+    
+    /// Toggles visisbility of the reference scale picker.
+    func toggleBufferSizePickerVisibility() {
+        let bufferSizePicker = IndexPath(row: 3, section: 0)
+        tableView.performBatchUpdates({
+            if bufferSizePickerHidden {
+                bufferSizeLabel.textColor = .accentColor
+                tableView.insertRows(at: [bufferSizePicker], with: .fade)
+                bufferSizePickerHidden = false
+            } else {
+                bufferSizeLabel.textColor = nil
+                tableView.deleteRows(at: [bufferSizePicker], with: .fade)
+                bufferSizePickerHidden = true
+            }
+        }, completion: nil)
     }
     
     // MARK: UITableViewController
@@ -147,9 +169,22 @@ class AddContingentValuesViewController: UITableViewController {
         case protectionCell:
             showProtectionOptions()
         case bufferSizeCell:
+            tableView.deselectRow(at: indexPath, animated: true)
             showBufferSizeOptions()
+            toggleBufferSizePickerVisibility()
         default:
             return
+        }
+    }
+        
+    /* UITableViewDataSource */
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let numberOfRows = super.tableView(tableView, numberOfRowsInSection: section)
+        if bufferSizePickerHidden {
+            return numberOfRows - 1
+        } else {
+            return numberOfRows
         }
     }
 }

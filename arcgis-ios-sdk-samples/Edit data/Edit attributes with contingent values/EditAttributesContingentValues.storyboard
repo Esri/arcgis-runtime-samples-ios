@@ -160,6 +160,8 @@
                     <connections>
                         <outlet property="activityCell" destination="6QF-yr-bro" id="Rvw-Bd-IN8"/>
                         <outlet property="bufferSizeCell" destination="CbM-Zs-5iP" id="2RD-8Z-yxY"/>
+                        <outlet property="bufferSizeLabel" destination="1pS-14-jtt" id="UNW-nR-xAy"/>
+                        <outlet property="bufferSizePickerView" destination="vee-x2-sLt" id="Z4p-au-toh"/>
                         <outlet property="doneBarButtonItem" destination="Ncy-Bz-Wis" id="e9N-Kz-rXg"/>
                         <outlet property="protectionCell" destination="Brg-Ja-fqv" id="fT2-zE-aql"/>
                     </connections>

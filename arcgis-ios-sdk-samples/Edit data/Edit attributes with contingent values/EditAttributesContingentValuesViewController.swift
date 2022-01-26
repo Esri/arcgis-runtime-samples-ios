@@ -81,28 +81,21 @@ class EditAttributesContingentValuesViewController: UIViewController {
                     self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent!))
                     // add graphics overlay to the map view
                     self.mapView.graphicsOverlays.add(self.graphicsOverlay)
+                    self.createBufferGraphics(for: featureLayer)
                 }
                 self.featureTable = featureTable
-//                let contingentValuesDefinition = featureTable.contingentValuesDefinition
-//                contingentValuesDefinition.load { error in
-//                    if let feature = featureTable.createFeature() as? AGSArcGISFeature {
-//                        feature.attributes["Activity"] = "OCCUPIED"
-//
-////                        feature.attributes["BufferSize"] = 100
-//                        let contingentValueResults = featureTable.contingentValues(with: feature, field: "Protection")
-//                        let fieldGroupContingentValues = contingentValueResults.contingentValuesByFieldGroup
-//                        let protectionContingentValues = fieldGroupContingentValues["ProtectionFieldGroup"] as? [AGSContingentCodedValue]
-//                        protectionContingentValues?.forEach { contingentCodedValue in
-//                            print("\(contingentCodedValue.codedValue.name)")
-//                        }
-                        // USER CHOOSES OPTION
-                        //                        feature.attributes["Protection"] = "NOT_ENDANGERED"
-//                    }
-//                }
             }
         case .failure(let error):
             self.presentAlert(error: error)
         }
+    }
+    
+    func createBufferGraphics(for featureLayer: AGSFeatureLayer) {
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
+        let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
+//        featureLayer.renderer = AGSSimpleRenderer(symbol: bufferSymbol)
+        graphicsOverlay.renderer = AGSSimpleRenderer(symbol: bufferSymbol)
+        mapView.graphicsOverlays.add(graphicsOverlay)
     }
     
     func addFeature(at mapPoint: AGSPoint) {

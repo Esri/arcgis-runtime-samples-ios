@@ -48,7 +48,7 @@ class AddContingentValuesViewController: UITableViewController {
         didSet {
             if let codedValueName = selectedActivity?.name {
                 editRightDetail(cell: activityCell, rightDetailText: codedValueName)
-                protectionCell.textLabel?.isEnabled = true
+                resetCellStates(cell: protectionCell)
             }
         }
     }
@@ -57,7 +57,9 @@ class AddContingentValuesViewController: UITableViewController {
         didSet {
             if let codedValueName = selectedProtection?.codedValue.name {
                 editRightDetail(cell: protectionCell, rightDetailText: codedValueName)
-                bufferSizeCell.textLabel?.isEnabled = true
+//                bufferSizeCell.textLabel?.isEnabled = true
+//                bufferSizeCell.isUserInteractionEnabled = true
+                resetCellStates(cell: bufferSizeCell)
             }
         }
     }
@@ -148,6 +150,11 @@ class AddContingentValuesViewController: UITableViewController {
         cell.detailTextLabel?.text = rightDetailText
     }
     
+    func resetCellStates(cell: UITableViewCell) {
+        cell.textLabel?.isEnabled = true
+        cell.isUserInteractionEnabled = true
+    }
+    
     /// Toggles visisbility of the reference scale picker.
     func toggleBufferSizePickerVisibility() {
         let bufferSizePicker = IndexPath(row: 3, section: 0)
@@ -156,6 +163,9 @@ class AddContingentValuesViewController: UITableViewController {
             if bufferSizePickerHidden {
                 if selectedBufferSize == nil, let firstOption = bufferSizes?[0] {
                     bufferSizeLabel?.text = String(firstOption)
+                    if bufferSizes?.count == 1 {
+                        selectedBufferSize = bufferSizes?[0]
+                    }
                 }
                 bufferSizeLabel?.textColor = .accentColor
                 tableView.insertRows(at: [bufferSizePicker], with: .fade)
@@ -184,7 +194,11 @@ class AddContingentValuesViewController: UITableViewController {
         case bufferSizeCell:
             tableView.deselectRow(at: indexPath, animated: true)
             showBufferSizeOptions()
-            toggleBufferSizePickerVisibility()
+            if selectedProtection != nil {
+                toggleBufferSizePickerVisibility()
+            } else {
+                return
+            }
         default:
             return
         }

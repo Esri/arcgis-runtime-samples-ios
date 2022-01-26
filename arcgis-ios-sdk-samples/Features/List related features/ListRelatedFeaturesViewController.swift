@@ -32,7 +32,7 @@ class ListRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelega
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ListRelatedFeaturesViewController", "RelatedFeaturesListViewController"]
         
         // initialize map with a basemap
-        let map = AGSMap(basemap: .nationalGeographic())
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
         
         // add self as the touch delegate for map view
         // we will need to be notified when the user taps with the map

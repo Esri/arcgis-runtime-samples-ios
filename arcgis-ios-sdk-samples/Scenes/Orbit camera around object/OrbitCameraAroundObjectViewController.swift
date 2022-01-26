@@ -66,7 +66,7 @@ class OrbitCameraAroundObjectViewController: UIViewController {
     
     /// Create a scene.
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemap: .imagery())
+        let scene = AGSScene(basemapStyle: .arcGISImagery)
         // Create an elevation source from Terrain3D REST service.
         let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)

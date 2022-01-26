@@ -97,7 +97,7 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
         let surface = AGSSurface()
         surface.elevationSources = [elevationSource]
-        let scene = AGSScene(basemap: AGSBasemap(baseLayer: worldDarkGrayBasemap))
+        let scene = AGSScene(basemapStyle: .arcGISDarkGray)
         scene.baseSurface = surface
         return scene
     }

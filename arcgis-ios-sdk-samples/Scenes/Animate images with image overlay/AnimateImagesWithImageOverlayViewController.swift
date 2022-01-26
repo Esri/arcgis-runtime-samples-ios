@@ -89,15 +89,12 @@ class AnimateImagesWithImageOverlayViewController: UIViewController {
     ///
     /// - Returns: A new `AGSScene` object.
     func makeScene() -> AGSScene {
-        // Create a tiled layer from World Dark Gray Base REST service.
-        let basemapTileURL = URL(string: "https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer")!
-        let worldDarkGrayBasemap = AGSArcGISTiledLayer(url: basemapTileURL)
         // Create an elevation source from Terrain3D REST service.
         let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)
         let surface = AGSSurface()
         surface.elevationSources = [elevationSource]
-        let scene = AGSScene(basemapStyle: .arcGISDarkGray)
+        let scene = AGSScene(basemapStyle: .arcGISDarkGrayBase)
         scene.baseSurface = surface
         return scene
     }

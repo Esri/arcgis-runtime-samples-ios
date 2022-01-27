@@ -29,38 +29,57 @@ class DisplayFeatureLayersViewController: UIViewController {
     @IBOutlet var changeFeatureLayerBarButtonItem: UIBarButtonItem!
     
     // MARK: Instance properties
+    enum FeatureLayerSource {
+        case serviceFeatureTable
+        case portalItem
+        case geodatabase
+        case geopackage
+        case shapefile
+    }
     
+    var selectedFeatureLayerSource: FeatureLayerSource?
     var geodatabase: AGSGeodatabase!
     var geoPackage: AGSGeoPackage!
+    
     
     // MARK: Actions
     
     @IBAction func changeFeatureLayer() {
         let alertController = UIAlertController(title: "Select a feature layer source", message: nil, preferredStyle: .actionSheet)
         // Add an action to load a feature layer from a URL.
-        let featureServiceURLAction = UIAlertAction(title: "Service Feature Table", style: .default) { (_) in
-            self.loadFeatureServiceURL()
+        let featureServiceURLAction = UIAlertAction(title: "Service Feature Table", style: .default) { [weak self] (_) in
+            self?.selectedFeatureLayerSource = .serviceFeatureTable
+            self?.loadFeatureServiceURL()
         }
         alertController.addAction(featureServiceURLAction)
+        featureServiceURLAction.isEnabled = selectedFeatureLayerSource != .serviceFeatureTable
         // Add an action to load a feature layer from a portal item.
-        let portalItemAction = UIAlertAction(title: "Portal Item", style: .default) { (_) in
-            self.loadPortalItem()
+        let portalItemAction = UIAlertAction(title: "Portal Item", style: .default) { [weak self] (_) in
+            self?.selectedFeatureLayerSource = .portalItem
+            self?.loadPortalItem()
         }
+        portalItemAction.isEnabled = selectedFeatureLayerSource != .portalItem
         alertController.addAction(portalItemAction)
         // Add an action to load a feature layer from a geodatabase.
-        let geodatabaseAction = UIAlertAction(title: "Geodatabase", style: .default) { (_) in
-            self.loadGeodatabase()
+        let geodatabaseAction = UIAlertAction(title: "Geodatabase", style: .default) { [weak self] (_) in
+            self?.selectedFeatureLayerSource = .geodatabase
+            self?.loadGeodatabase()
         }
+        geodatabaseAction.isEnabled = selectedFeatureLayerSource != .geodatabase
         alertController.addAction(geodatabaseAction)
         // Add an action to load a feature layer from a shapefile.
-        let geopackageAction = UIAlertAction(title: "Geopackage", style: .default) { (_) in
-            self.loadGeopackage()
+        let geopackageAction = UIAlertAction(title: "Geopackage", style: .default) { [weak self] (_) in
+            self?.selectedFeatureLayerSource = .geopackage
+            self?.loadGeopackage()
         }
+        geopackageAction.isEnabled = selectedFeatureLayerSource != .geopackage
         alertController.addAction(geopackageAction)
         // Add an action to load a feature layer from a shapefile.
-        let shapefileAction = UIAlertAction(title: "Shapefile", style: .default) { (_) in
-            self.loadShapefile()
+        let shapefileAction = UIAlertAction(title: "Shapefile", style: .default) { [weak self] (_) in
+            self?.selectedFeatureLayerSource = .shapefile
+            self?.loadShapefile()
         }
+        shapefileAction.isEnabled = selectedFeatureLayerSource != .shapefile
         alertController.addAction(shapefileAction)
         
         // Add "cancel" item.

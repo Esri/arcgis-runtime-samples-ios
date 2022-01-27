@@ -31,7 +31,7 @@ class ListRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelega
         // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ListRelatedFeaturesViewController", "RelatedFeaturesListViewController"]
         
-        // initialize map with a basemap
+        // Initialize map with a topographic basemap style.
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         
         // add self as the touch delegate for map view

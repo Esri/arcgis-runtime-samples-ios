@@ -18,7 +18,7 @@ import ArcGIS
 class ProjectViewController: UIViewController {
     @IBOutlet private weak var mapView: AGSMapView! {
         didSet {
-            // initialize the map
+            // Initialize map with a topographic basemap style.
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             mapView.touchDelegate = self
             mapView.setViewpointCenter(AGSPoint(x: -1.2e7, y: 5e6, spatialReference: .webMercator()), scale: 4e7)

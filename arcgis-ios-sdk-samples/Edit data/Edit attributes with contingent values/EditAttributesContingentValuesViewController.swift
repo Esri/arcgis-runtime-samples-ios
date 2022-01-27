@@ -91,11 +91,15 @@ class EditAttributesContingentValuesViewController: UIViewController {
     }
     
     func createBufferGraphics(for featureLayer: AGSFeatureLayer) {
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
-        let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
-//        featureLayer.renderer = AGSSimpleRenderer(symbol: bufferSymbol)
-        graphicsOverlay.renderer = AGSSimpleRenderer(symbol: bufferSymbol)
-        mapView.graphicsOverlays.add(graphicsOverlay)
+        let queryParameters = AGSQueryParameters()
+        queryParameters.whereClause = "BufferSize > 0"
+        featureTable?.queryFeatures(with: queryParameters) { [weak self ] result, error in
+            guard let self = self else { return }
+            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
+            let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
+            self.graphicsOverlay.renderer = AGSSimpleRenderer(symbol: bufferSymbol)
+            self.mapView.graphicsOverlays.add(self.graphicsOverlay)
+        }
     }
     
     func addFeature(at mapPoint: AGSPoint) {

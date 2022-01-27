@@ -151,6 +151,7 @@ class AddContingentValuesViewController: UITableViewController {
     }
     
     func resetCellStates(cell: UITableViewCell) {
+        validateContingency()
         cell.textLabel?.isEnabled = true
         cell.isUserInteractionEnabled = true
     }

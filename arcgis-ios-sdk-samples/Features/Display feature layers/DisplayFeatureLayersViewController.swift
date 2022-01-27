@@ -38,12 +38,12 @@ class DisplayFeatureLayersViewController: UIViewController {
     @IBAction func changeFeatureLayer() {
         let alertController = UIAlertController(title: "Select a feature layer source", message: nil, preferredStyle: .actionSheet)
         // Add an action to load a feature layer from a URL.
-        let featureServiceURLAction = UIAlertAction(title: "Service feature table", style: .default) { (_) in
+        let featureServiceURLAction = UIAlertAction(title: "Service Feature Table", style: .default) { (_) in
             self.loadFeatureServiceURL()
         }
         alertController.addAction(featureServiceURLAction)
         // Add an action to load a feature layer from a portal item.
-        let portalItemAction = UIAlertAction(title: "Portal item", style: .default) { (_) in
+        let portalItemAction = UIAlertAction(title: "Portal Item", style: .default) { (_) in
             self.loadPortalItem()
         }
         alertController.addAction(portalItemAction)

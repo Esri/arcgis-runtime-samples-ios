@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UhG-da-9nD"/>
-                                    <barButtonItem title="Change Feature Layer Source" id="LFa-nd-VE1">
+                                    <barButtonItem title="Feature Layer Sources" id="LFa-nd-VE1">
                                         <connections>
                                             <action selector="changeFeatureLayer" destination="Y6W-OH-hqX" id="4cd-Mw-Of2"/>
                                         </connections>

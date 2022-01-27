@@ -48,36 +48,41 @@ class DisplayFeatureLayersViewController: UIViewController {
         let alertController = UIAlertController(title: "Select a feature layer source", message: nil, preferredStyle: .actionSheet)
         // Add an action to load a feature layer from a URL.
         let featureServiceURLAction = UIAlertAction(title: "Service Feature Table", style: .default) { [weak self] (_) in
-            self?.selectedFeatureLayerSource = .serviceFeatureTable
-            self?.loadFeatureServiceURL()
+            guard let self = self else { return }
+            self.selectedFeatureLayerSource = .serviceFeatureTable
+            self.loadFeatureServiceURL()
         }
         alertController.addAction(featureServiceURLAction)
         featureServiceURLAction.isEnabled = selectedFeatureLayerSource != .serviceFeatureTable
         // Add an action to load a feature layer from a portal item.
         let portalItemAction = UIAlertAction(title: "Portal Item", style: .default) { [weak self] (_) in
-            self?.selectedFeatureLayerSource = .portalItem
-            self?.loadPortalItem()
+            guard let self = self else { return }
+            self.selectedFeatureLayerSource = .portalItem
+            self.loadPortalItem()
         }
         portalItemAction.isEnabled = selectedFeatureLayerSource != .portalItem
         alertController.addAction(portalItemAction)
         // Add an action to load a feature layer from a geodatabase.
         let geodatabaseAction = UIAlertAction(title: "Geodatabase", style: .default) { [weak self] (_) in
-            self?.selectedFeatureLayerSource = .geodatabase
-            self?.loadGeodatabase()
+            guard let self = self else { return }
+            self.selectedFeatureLayerSource = .geodatabase
+            self.loadGeodatabase()
         }
         geodatabaseAction.isEnabled = selectedFeatureLayerSource != .geodatabase
         alertController.addAction(geodatabaseAction)
         // Add an action to load a feature layer from a shapefile.
         let geopackageAction = UIAlertAction(title: "Geopackage", style: .default) { [weak self] (_) in
-            self?.selectedFeatureLayerSource = .geopackage
-            self?.loadGeopackage()
+            guard let self = self else { return }
+            self.selectedFeatureLayerSource = .geopackage
+            self.loadGeopackage()
         }
         geopackageAction.isEnabled = selectedFeatureLayerSource != .geopackage
         alertController.addAction(geopackageAction)
         // Add an action to load a feature layer from a shapefile.
         let shapefileAction = UIAlertAction(title: "Shapefile", style: .default) { [weak self] (_) in
-            self?.selectedFeatureLayerSource = .shapefile
-            self?.loadShapefile()
+            guard let self = self else { return }
+            self.selectedFeatureLayerSource = .shapefile
+            self.loadShapefile()
         }
         shapefileAction.isEnabled = selectedFeatureLayerSource != .shapefile
         alertController.addAction(shapefileAction)
@@ -100,7 +105,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         let featureLayer = AGSFeatureLayer(featureTable: featureTable)
         // Set the viewpoint to the Los Angeles National Forest.
         let viewpoint = AGSViewpoint(latitude: 41.773519, longitude: -88.143104, scale: 4e3)
-        setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+        setFeatureLayer(featureLayer, viewpoint: viewpoint)
     }
     
     /// Load a feature layer with a portal item.
@@ -113,7 +118,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         let featureLayer = AGSFeatureLayer(item: item, layerID: 0)
         // Set the viewpoint to Portland, Oregon.
         let viewpoint = AGSViewpoint(latitude: 45.5266, longitude: -122.6219, scale: 6e3)
-        setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+        setFeatureLayer(featureLayer, viewpoint: viewpoint)
     }
     
     /// Load a feature layer with a local geodatabase.
@@ -133,7 +138,7 @@ class DisplayFeatureLayersViewController: UIViewController {
                 let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                 // Set the viewpoint to Malibu, California.
                 let viewpoint = AGSViewpoint(latitude: 34.0772, longitude: -118.7989, scale: 6e5)
-                self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+                self.setFeatureLayer(featureLayer, viewpoint: viewpoint)
             }
         }
     }
@@ -155,7 +160,7 @@ class DisplayFeatureLayersViewController: UIViewController {
                     let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     // Set the viewpoint to Aurora, Colorado.
                     let viewpoint = AGSViewpoint(latitude: 39.7294, longitude: -104.8319, scale: 5e5)
-                    self.setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+                    self.setFeatureLayer(featureLayer, viewpoint: viewpoint)
                 }
             }
         }
@@ -170,14 +175,14 @@ class DisplayFeatureLayersViewController: UIViewController {
         let featureLayer = AGSFeatureLayer(featureTable: shapefileTable)
         // Set the viewpoint to Scotland.
         let viewpoint = AGSViewpoint(latitude: 56.641344, longitude: -3.889066, scale: 6e6)
-        setMap(featureLayer: featureLayer, viewpoint: viewpoint)
+        setFeatureLayer(featureLayer, viewpoint: viewpoint)
     }
     
     /// Add the feature layer to the map and set the viewpoint.
     /// - Parameters:
     ///   - featureLayer: The `AGSFeatureLayer` to display and add to the map.
     ///   - viewpoint: The `AGSViewpoint` to change the map to.
-    func setMap(featureLayer: AGSFeatureLayer, viewpoint: AGSViewpoint) {
+    func setFeatureLayer(_ featureLayer: AGSFeatureLayer, viewpoint: AGSViewpoint) {
         mapView.map?.operationalLayers.setArray([featureLayer])
         mapView.setViewpoint(viewpoint)
     }

@@ -66,7 +66,6 @@ Below is a list of protocol strings for commonly used GNSS external accessories.
 * com.garmin.pvt
 * com.junipersys.geode
 * com.leica-geosystems.zeno.gnss
-* com.leica-geosystems.zeno.gnss
 * com.searanllc.serial
 * com.trimble.correction, com.trimble.command (1)
 

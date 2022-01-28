@@ -51,7 +51,7 @@ Please read Apple's documentation below for further details.
 * [`EAAccessory`](https://developer.apple.com/documentation/externalaccessory)
 * [`UISupportedExternalAccessoryProtocols`](https://developer.apple.com/documentation/bundleresources/information_property_list/uisupportedexternalaccessoryprotocols)
 
-Below is a list of protocol strings for commonly used GNSS external accessories.
+Below is a list of protocol strings for commonly used GNSS external accessories. Please refer to the [ArcGIS Field Maps documentation](https://doc.arcgis.com/en/field-maps/ios/help/high-accuracy-data-collection.htm#ESRI_SECTION2_612D328A655644DCAF5CF0210308C821) for model and firmware requirements.
 
 **Supported by this sample**
 

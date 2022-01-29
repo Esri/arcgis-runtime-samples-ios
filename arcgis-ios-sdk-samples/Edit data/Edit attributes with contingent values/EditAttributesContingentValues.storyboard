@@ -59,8 +59,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="385.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ryu-ON-idX">
-                                                    <rect key="frame" x="20" y="15" width="42.5" height="14.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ryu-ON-idX">
+                                                    <rect key="frame" x="20" y="15" width="36.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
@@ -124,8 +124,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1pS-14-jtt">
-                                                    <rect key="frame" x="361" y="15" width="33" height="14.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1pS-14-jtt">
+                                                    <rect key="frame" x="390.5" y="15" width="3.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
@@ -183,11 +183,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityCell" destination="6QF-yr-bro" id="Rvw-Bd-IN8"/>
                         <outlet property="bufferSizeCell" destination="CbM-Zs-5iP" id="FbN-YF-JkH"/>
                         <outlet property="bufferSizePickerView" destination="vee-x2-sLt" id="Z4p-au-toh"/>
                         <outlet property="doneBarButtonItem" destination="Ncy-Bz-Wis" id="e9N-Kz-rXg"/>
                         <outlet property="protectionCell" destination="Brg-Ja-fqv" id="fT2-zE-aql"/>
+                        <outlet property="statusCell" destination="6QF-yr-bro" id="Rvw-Bd-IN8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbe-pU-LnX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

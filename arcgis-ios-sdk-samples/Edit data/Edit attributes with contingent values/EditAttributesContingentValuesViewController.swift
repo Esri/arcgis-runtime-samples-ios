@@ -28,7 +28,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         // Create a URL leading to the resource.
-        let geodatabaseURL = Bundle.main.url(forResource: "BirdNestsMGDB", withExtension: "geodatabase")!
+        let geodatabaseURL = Bundle.main.url(forResource: "ContingentValuesBirdNests", withExtension: "geodatabase")!
         do {
             // Create a temporary directory URL.
             let temporaryDirectoryURL = try FileManager.default.url(

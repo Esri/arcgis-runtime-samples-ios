@@ -850,6 +850,7 @@
 		F11CED6D256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */; };
 		F11CED73256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */; };
 		F11CED76256C8BD3002A3F56 /* ShowLabelsOnLayer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */; };
+		F122208027A4A7AC00325E1E /* ContingentValuesBirdNests.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F122207F27A4A7AC00325E1E /* ContingentValuesBirdNests.geodatabase */; settings = {ASSET_TAGS = (ContingentValuesBirdNests, ); }; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpkx */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
 		F12C739F250ADDB000C1E3FE /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
 		F12C73A0250ADDB000C1E3FE /* ConfigureSubnetworkTraceOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
@@ -891,7 +892,6 @@
 		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
 		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
-		F1B99FF72788FE620053DB00 /* BirdNestsMGDB.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F1B99FF62788FE620053DB00 /* BirdNestsMGDB.geodatabase */; settings = {ASSET_TAGS = (contingentBirdsNestGDB, ); }; };
 		F1BCA98F268102EB0027F5A8 /* naperville_imagery.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */; settings = {ASSET_TAGS = (naperville_imagery, ); }; };
 		F1C092D4272758830000B132 /* VectorTilePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */; };
 		F1C092D7272774530000B132 /* VectorTilePackageViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */; };
@@ -1845,6 +1845,7 @@
 		F11897AB2735F24600ADC1D4 /* FilterByTimeExtent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilterByTimeExtent.storyboard; sourceTree = "<group>"; };
 		F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLabelsOnLayer3DViewController.swift; sourceTree = "<group>"; };
 		F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayer3D.storyboard; sourceTree = "<group>"; };
+		F122207F27A4A7AC00325E1E /* ContingentValuesBirdNests.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = ContingentValuesBirdNests.geodatabase; sourceTree = "<group>"; };
 		F13D82F9275EDB4300F7B0C0 /* EditAttributesContingentValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAttributesContingentValuesViewController.swift; sourceTree = "<group>"; };
 		F13D82FB275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAttributesContingentValues.storyboard; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
@@ -1870,7 +1871,6 @@
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
-		F1B99FF62788FE620053DB00 /* BirdNestsMGDB.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = BirdNestsMGDB.geodatabase; sourceTree = "<group>"; };
 		F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpkx; sourceTree = "<group>"; };
 		F1C092D3272758830000B132 /* VectorTilePackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorTilePackageViewController.swift; sourceTree = "<group>"; };
 		F1C4529E26B37008002FDB34 /* ToggleFeatureRequestModes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ToggleFeatureRequestModes.storyboard; sourceTree = "<group>"; };
@@ -2064,7 +2064,7 @@
 		008D175024EEEEBD0001BB8F /* Geodatabases */ = {
 			isa = PBXGroup;
 			children = (
-				F1B99FF62788FE620053DB00 /* BirdNestsMGDB.geodatabase */,
+				F122207F27A4A7AC00325E1E /* ContingentValuesBirdNests.geodatabase */,
 				008D175124EEEEBD0001BB8F /* loudoun_anno.geodatabase */,
 			);
 			path = Geodatabases;
@@ -4834,10 +4834,11 @@
 					Bradley3DModel,
 					Bristol,
 					Bristol3DModel,
+					ContingentValuesBirdNests,
 					DodgeCity,
 					Dolmus3DModel,
-					EsriCarsMMPK,
 					EdinburghPylonsDimensionsMMPK,
+					EsriCarsMMPK,
 					ExchangeSetWithoutUpdates,
 					GasDeviceAnnoMMPK,
 					Hydrography,
@@ -4987,7 +4988,6 @@
 				3E5E093E1EF4567A00FF3454 /* AddDeleteRelatedFeatures.storyboard in Resources */,
 				F15694D2265DBE96007AEB61 /* SanDiego_StreetAddress.loz in Resources */,
 				3EEE1D6F1E4935FC003263FC /* GroupUsers.storyboard in Resources */,
-				F1B99FF72788FE620053DB00 /* BirdNestsMGDB.geodatabase in Resources */,
 				0022769226570BBE00CC7DB9 /* DisplayOGCAPICollection.storyboard in Resources */,
 				003D25702513FBB5007527C2 /* ExchangeSetWithoutUpdates in Resources */,
 				123AC27D20E58CFA0026A7D6 /* GeodesicOperations.storyboard in Resources */,
@@ -5020,6 +5020,7 @@
 				3ECDD9B11E8470E100E645AB /* DownloadProgressView.xib in Resources */,
 				3EABC7C11DB191BC00C161C6 /* Shasta_Elevation.tfw in Resources */,
 				215E23D321024715001DE092 /* SpatialRelationships.storyboard in Resources */,
+				F122208027A4A7AC00325E1E /* ContingentValuesBirdNests.geodatabase in Resources */,
 				F15CF0CB23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard in Resources */,
 				3E676DF11B1D0B6000D4029A /* Camera Shutter.caf in Resources */,
 				3EABC7B81DB183E600C161C6 /* ShastaBW.tif.aux.xml in Resources */,

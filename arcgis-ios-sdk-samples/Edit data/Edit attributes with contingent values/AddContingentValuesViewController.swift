@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 class AddContingentValuesViewController: UITableViewController {
-    @IBOutlet var activityCell: UITableViewCell!
+    @IBOutlet var statusCell: UITableViewCell!
     @IBOutlet var protectionCell: UITableViewCell!
     @IBOutlet var bufferSizeCell: UITableViewCell!
     @IBOutlet var doneBarButtonItem: UIBarButtonItem!
@@ -44,11 +44,12 @@ class AddContingentValuesViewController: UITableViewController {
     /// Indicates whether the reference scale picker is currently hidden.
     var bufferSizePickerHidden = true
     
-    var selectedActivity: AGSCodedValue? {
+    var selectedStatus: AGSCodedValue? {
         didSet {
-            if let codedValueName = selectedActivity?.name {
-                editRightDetail(cell: activityCell, rightDetailText: codedValueName)
-                resetCellStates(cell: protectionCell)
+            if let codedValueName = selectedStatus?.name {
+                editRightDetail(cell: statusCell, rightDetailText: codedValueName)
+//                resetCellStates(cell: protectionCell)
+                resetCellStates()
             }
         }
     }
@@ -57,56 +58,61 @@ class AddContingentValuesViewController: UITableViewController {
         didSet {
             if let codedValueName = selectedProtection?.codedValue.name {
                 editRightDetail(cell: protectionCell, rightDetailText: codedValueName)
-//                bufferSizeCell.textLabel?.isEnabled = true
-//                bufferSizeCell.isUserInteractionEnabled = true
-                resetCellStates(cell: bufferSizeCell)
+//                resetCellStates(cell: bufferSizeCell)
+                resetCellStates()
+            } else {
+                editRightDetail(cell: protectionCell, rightDetailText: "")
             }
         }
     }
     
     var selectedBufferSize: Int? {
         didSet {
+            feature?.attributes["BufferSize"] = self.selectedBufferSize
             if let selectedBufferSize = selectedBufferSize {
                 let bufferSize = String(selectedBufferSize)
                 editRightDetail(cell: bufferSizeCell, rightDetailText: bufferSize)
                 validateContingency()
+            } else {
+                editRightDetail(cell: bufferSizeCell, rightDetailText: " ")
+                bufferSizePickerHidden = false
+                toggleBufferSizePickerVisibility()
+//                resetCellStates(cell: bufferSizeCell)
+//                validateContingency()
             }
         }
     }
     
     // MARK: Functions
     
-    func showActivityOptions() {
+    func showStatusOptions() {
+        if selectedProtection != nil {
+            selectedProtection = nil
+            selectedBufferSize = nil
+        }
         guard let featureTable = featureTable else { return }
-        let activityField = featureTable.field(forName: "Activity")
-        let codedValueDomain = activityField?.domain as! AGSCodedValueDomain
-        let activityOptions = codedValueDomain.codedValues
-        let selectedIndex = activityOptions.firstIndex { $0.name == self.selectedActivity?.name } ?? nil
-        let optionsViewController = OptionsTableViewController(labels: activityOptions.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
-            self.selectedActivity = activityOptions[newIndex]
+        let statusField = featureTable.field(forName: "Status")
+        let codedValueDomain = statusField?.domain as! AGSCodedValueDomain
+        let status = codedValueDomain.codedValues
+        let selectedIndex = status.firstIndex { $0.name == self.selectedStatus?.name } ?? nil
+        let optionsViewController = OptionsTableViewController(labels: status.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
+            self.selectedStatus = status[newIndex]
             self.navigationController?.popViewController(animated: true)
         }
-        optionsViewController.title = "Activity"
+        optionsViewController.title = "Status"
         self.show(optionsViewController, sender: self)
     }
     
     func showProtectionOptions() {
-//        let protectionField = featureTable?.field(forName: "Protection")
-//        let codedValueDomain = protectionField?.domain as! AGSCodedValueDomain
-//        let protectionOptions = codedValueDomain.codedValues
-//        let selectedIndex = protectionOptions.firstIndex { $0.name == self.selectedActivity?.name} ?? nil
-//        let optionsViewController = OptionsTableViewController(labels: protectionOptions.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
-//            self.selectedProtection = protectionOptions[newIndex]
-//            self.navigationController?.popViewController(animated: true)
-//        }
-//        optionsViewController.title = "Activity"
-//        self.show(optionsViewController, sender: self)
+        if selectedBufferSize != nil {
+            selectedBufferSize = nil
+        }
         featureTable?.load { [weak self] error in
             guard let self = self else { return }
             self.contingentValuesDefinition = self.featureTable?.contingentValuesDefinition
             self.contingentValuesDefinition?.load { error in
                 if let feature = self.featureTable?.createFeature() as? AGSArcGISFeature {
-                    feature.attributes["Activity"] = self.selectedActivity?.code
+                    feature.attributes["Status"] = self.selectedStatus?.code
                     self.feature = feature
                     let contingentValuesResult = self.featureTable?.contingentValues(with: feature, field: "Protection")
                     guard let protectionGroupContingentValues = contingentValuesResult?.contingentValuesByFieldGroup["ProtectionFieldGroup"] as? [AGSContingentCodedValue] else { return }
@@ -130,7 +136,7 @@ class AddContingentValuesViewController: UITableViewController {
         let minValue = bufferSizeGroupContingentValues[0].minValue as! Int
         let maxValue = bufferSizeGroupContingentValues[0].maxValue as! Int
         bufferSizes = Array(minValue...maxValue)
-        feature.attributes["BufferSize"] = self.selectedBufferSize
+        bufferSizePickerView.reloadAllComponents()
     }
     
     func validateContingency() {
@@ -139,21 +145,36 @@ class AddContingentValuesViewController: UITableViewController {
         if contingencyViolations.isEmpty {
             doneBarButtonItem.isEnabled = true
         } else {
-            let errorMessage = "Invalid contingent values"
-            presentAlert(error: errorMessage as! Error)
+//            let errorMessage = "Invalid contingent values"
+//            presentAlert(error: errorMessage as! Error)
+            presentAlert(title: "", message: "Invalid contingent values")
         }
     }
     
     // MARK: UI Functions
     
-    func editRightDetail(cell: UITableViewCell, rightDetailText: String) {
+    func editRightDetail(cell: UITableViewCell, rightDetailText: String?) {
         cell.detailTextLabel?.text = rightDetailText
     }
     
-    func resetCellStates(cell: UITableViewCell) {
-        validateContingency()
-        cell.textLabel?.isEnabled = true
-        cell.isUserInteractionEnabled = true
+//    func resetCellStates(cell: UITableViewCell) {
+    func resetCellStates() {
+        if selectedStatus == nil {
+            protectionCell.textLabel?.isEnabled = false
+            protectionCell.isUserInteractionEnabled = false
+        } else {
+            protectionCell.textLabel?.isEnabled = true
+            protectionCell.isUserInteractionEnabled = true
+        }
+        if selectedProtection == nil {
+            bufferSizeCell.textLabel?.isEnabled = false
+            bufferSizeCell.isUserInteractionEnabled = false
+        } else {
+            bufferSizeCell.textLabel?.isEnabled = true
+            bufferSizeCell.isUserInteractionEnabled = true
+        }
+//        cell.textLabel?.isEnabled = true
+//        cell.isUserInteractionEnabled = true
     }
     
     /// Toggles visisbility of the reference scale picker.
@@ -162,12 +183,12 @@ class AddContingentValuesViewController: UITableViewController {
         let bufferSizeLabel = bufferSizeCell.detailTextLabel
         tableView.performBatchUpdates({
             if bufferSizePickerHidden {
-                if selectedBufferSize == nil, let firstOption = bufferSizes?[0] {
-                    bufferSizeLabel?.text = String(firstOption)
-                    if bufferSizes?.count == 1 {
-                        selectedBufferSize = bufferSizes?[0]
-                    }
-                }
+//                if selectedBufferSize == nil, let firstOption = bufferSizes?[0] {
+//                    bufferSizeLabel?.text = String(firstOption)
+//                    if bufferSizes?.count == 1 {
+//                        selectedBufferSize = bufferSizes?[0]
+//                    }
+//                }
                 bufferSizeLabel?.textColor = .accentColor
                 tableView.insertRows(at: [bufferSizePicker], with: .fade)
                 bufferSizePickerHidden = false
@@ -188,8 +209,8 @@ class AddContingentValuesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         switch cell {
-        case activityCell:
-            showActivityOptions()
+        case statusCell:
+            showStatusOptions()
         case protectionCell:
             showProtectionOptions()
         case bufferSizeCell:
@@ -241,6 +262,7 @@ extension AddContingentValuesViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if let bufferSizes = bufferSizes {
             selectedBufferSize = bufferSizes[row]
+//            feature?.attributes["BufferSize"] = self.selectedBufferSize
         }
     }
 }

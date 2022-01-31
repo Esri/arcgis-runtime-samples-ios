@@ -41,7 +41,6 @@ class DisplayFeatureLayersViewController: UIViewController {
     var geodatabase: AGSGeodatabase!
     var geoPackage: AGSGeoPackage!
     
-    
     // MARK: Actions
     
     @IBAction func changeFeatureLayer() {

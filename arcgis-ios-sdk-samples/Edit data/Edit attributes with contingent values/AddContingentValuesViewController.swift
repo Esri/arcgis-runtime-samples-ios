@@ -48,7 +48,6 @@ class AddContingentValuesViewController: UITableViewController {
         didSet {
             if let codedValueName = selectedStatus?.name {
                 editRightDetail(cell: statusCell, rightDetailText: codedValueName)
-//                resetCellStates(cell: protectionCell)
                 resetCellStates()
             }
         }
@@ -58,11 +57,10 @@ class AddContingentValuesViewController: UITableViewController {
         didSet {
             if let codedValueName = selectedProtection?.codedValue.name {
                 editRightDetail(cell: protectionCell, rightDetailText: codedValueName)
-//                resetCellStates(cell: bufferSizeCell)
-                resetCellStates()
             } else {
                 editRightDetail(cell: protectionCell, rightDetailText: "")
             }
+            resetCellStates()
         }
     }
     
@@ -77,8 +75,6 @@ class AddContingentValuesViewController: UITableViewController {
                 editRightDetail(cell: bufferSizeCell, rightDetailText: " ")
                 bufferSizePickerHidden = false
                 toggleBufferSizePickerVisibility()
-//                resetCellStates(cell: bufferSizeCell)
-//                validateContingency()
             }
         }
     }
@@ -86,10 +82,7 @@ class AddContingentValuesViewController: UITableViewController {
     // MARK: Functions
     
     func showStatusOptions() {
-        if selectedProtection != nil {
-            selectedProtection = nil
-            selectedBufferSize = nil
-        }
+        let previouslySelectedStatus = selectedStatus
         guard let featureTable = featureTable else { return }
         let statusField = featureTable.field(forName: "Status")
         let codedValueDomain = statusField?.domain as! AGSCodedValueDomain
@@ -97,6 +90,10 @@ class AddContingentValuesViewController: UITableViewController {
         let selectedIndex = status.firstIndex { $0.name == self.selectedStatus?.name } ?? nil
         let optionsViewController = OptionsTableViewController(labels: status.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
             self.selectedStatus = status[newIndex]
+            if self.selectedStatus != previouslySelectedStatus, self.selectedProtection != nil {
+                self.selectedProtection = nil
+                self.selectedBufferSize = nil
+            }
             self.navigationController?.popViewController(animated: true)
         }
         optionsViewController.title = "Status"
@@ -104,9 +101,7 @@ class AddContingentValuesViewController: UITableViewController {
     }
     
     func showProtectionOptions() {
-        if selectedBufferSize != nil {
-            selectedBufferSize = nil
-        }
+        let previouslySelectedProtection = selectedProtection
         featureTable?.load { [weak self] error in
             guard let self = self else { return }
             self.contingentValuesDefinition = self.featureTable?.contingentValuesDefinition
@@ -119,6 +114,9 @@ class AddContingentValuesViewController: UITableViewController {
                     let selectedIndex = protectionGroupContingentValues.firstIndex { $0.codedValue.name == self.selectedProtection?.codedValue.name} ?? nil
                     let optionsViewController = OptionsTableViewController(labels: protectionGroupContingentValues.map { $0.codedValue.name }, selectedIndex: selectedIndex) { newIndex in
                         self.selectedProtection = protectionGroupContingentValues[newIndex]
+                        if self.selectedProtection != previouslySelectedProtection, self.selectedBufferSize != nil {
+                            self.selectedBufferSize = nil
+                        }
                         feature.attributes["Protection"] = self.selectedProtection?.codedValue.code
                         self.navigationController?.popViewController(animated: true)
                     }
@@ -157,7 +155,6 @@ class AddContingentValuesViewController: UITableViewController {
         cell.detailTextLabel?.text = rightDetailText
     }
     
-//    func resetCellStates(cell: UITableViewCell) {
     func resetCellStates() {
         if selectedStatus == nil {
             protectionCell.textLabel?.isEnabled = false
@@ -173,8 +170,6 @@ class AddContingentValuesViewController: UITableViewController {
             bufferSizeCell.textLabel?.isEnabled = true
             bufferSizeCell.isUserInteractionEnabled = true
         }
-//        cell.textLabel?.isEnabled = true
-//        cell.isUserInteractionEnabled = true
     }
     
     /// Toggles visisbility of the reference scale picker.
@@ -183,12 +178,6 @@ class AddContingentValuesViewController: UITableViewController {
         let bufferSizeLabel = bufferSizeCell.detailTextLabel
         tableView.performBatchUpdates({
             if bufferSizePickerHidden {
-//                if selectedBufferSize == nil, let firstOption = bufferSizes?[0] {
-//                    bufferSizeLabel?.text = String(firstOption)
-//                    if bufferSizes?.count == 1 {
-//                        selectedBufferSize = bufferSizes?[0]
-//                    }
-//                }
                 bufferSizeLabel?.textColor = .accentColor
                 tableView.insertRows(at: [bufferSizePicker], with: .fade)
                 bufferSizePickerHidden = false
@@ -262,7 +251,6 @@ extension AddContingentValuesViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if let bufferSizes = bufferSizes {
             selectedBufferSize = bufferSizes[row]
-//            feature?.attributes["BufferSize"] = self.selectedBufferSize
         }
     }
 }

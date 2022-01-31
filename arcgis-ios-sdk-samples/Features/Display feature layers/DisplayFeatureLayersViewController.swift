@@ -124,7 +124,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     /// Load a feature layer with a local geodatabase.
     func loadGeodatabase() {
         if let geodatabase = geodatabase {
-            getFeatureLayer(from: geodatabase)
+            setFeatureLayer(from: geodatabase)
         } else {
             // Instantiate the geodatabase with the file name.
             geodatabase = AGSGeodatabase(name: "LA_Trails")
@@ -135,7 +135,7 @@ class DisplayFeatureLayersViewController: UIViewController {
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {
-                    self.getFeatureLayer(from: self.geodatabase)
+                    self.setFeatureLayer(from: self.geodatabase)
                 }
             }
         }
@@ -144,7 +144,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     /// Load a feature layer with a local geopackage.
     func loadGeopackage() {
         if let geoPackage = geoPackage {
-            getFeatureLayer(from: geoPackage)
+            setFeatureLayer(from: geoPackage)
         } else {
             // Create a geopackage from a named bundle resource.
             geoPackage = AGSGeoPackage(name: "AuroraCO")
@@ -155,7 +155,7 @@ class DisplayFeatureLayersViewController: UIViewController {
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {
-                    self.getFeatureLayer(from: self.geoPackage)
+                    self.setFeatureLayer(from: self.geoPackage)
                 }
             }
         }
@@ -173,7 +173,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         setFeatureLayer(featureLayer, viewpoint: viewpoint)
     }
     
-    func getFeatureLayer(from geodatabase: AGSGeodatabase) {
+    func setFeatureLayer(from geodatabase: AGSGeodatabase) {
         // Get the feature table with the name.
         let featureTable = geodatabase.geodatabaseFeatureTable(withName: "Trailheads")!
         // Create a feature layer with the feature table.
@@ -183,7 +183,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         self.setFeatureLayer(featureLayer, viewpoint: viewpoint)
     }
     
-    func getFeatureLayer(from geoPackage: AGSGeoPackage) {
+    func setFeatureLayer(from geoPackage: AGSGeoPackage) {
         // Add the first feature layer from the geopackage to the map.
         if let featureTable = geoPackage.geoPackageFeatureTables.first {
             // Create the feature layer with the feature table.

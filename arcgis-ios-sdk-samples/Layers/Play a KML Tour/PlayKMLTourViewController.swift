@@ -62,7 +62,7 @@ class PlayKMLTourViewController: UIViewController {
     /// - Parameter kmlDataset: A KML dataset.
     /// - Returns: A new `AGSScene` object.
     func makeScene(kmlDataset: AGSKMLDataset) -> AGSScene {
-        let scene = AGSScene(basemap: .imagery())
+        let scene = AGSScene(basemapStyle: .arcGISImagery)
         
         let elevationServiceURL = URL(string: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer")!
         let elevationSource = AGSArcGISTiledElevationSource(url: elevationServiceURL)

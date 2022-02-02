@@ -801,50 +801,6 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Feature layer (feature service)</string>
-				<key>storyboardName</key>
-				<string>FeatureLayerURL</string>
-				<key>descriptionText</key>
-				<string>Show features from an online feature service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Feature layer (geodatabase)</string>
-				<key>storyboardName</key>
-				<string>FeatureLayerGDB</string>
-				<key>descriptionText</key>
-				<string>Display features from a local geodatabase.</string>
-				<key>dependency</key>
-				<array>
-					<string>LATrailsGeodatabase</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Feature layer (geopackage)</string>
-				<key>storyboardName</key>
-				<string>FeatureLayerGPKG</string>
-				<key>descriptionText</key>
-				<string>Display features from a local GeoPackage.</string>
-				<key>dependency</key>
-				<array>
-					<string>AuroraCOGeopackage</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Feature layer (shapefile)</string>
-				<key>storyboardName</key>
-				<string>FeatureLayerShapefile</string>
-				<key>descriptionText</key>
-				<string>Open a shapefile stored on the device and display it as a feature layer with default symbology.</string>
-				<key>dependency</key>
-				<array>
-					<string>PublicArtShapefile</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
 				<string>Feature layer selection</string>
 				<key>storyboardName</key>
 				<string>FeatureLayerSelection</string>
@@ -942,6 +898,18 @@
 				<string>ToggleFeatureRequestModes</string>
 				<key>descriptionText</key>
 				<string>Use different feature request modes to populate the map from a service feature table.</string>
+			</dict>
+			<dict>
+				<key>dependency</key>
+				<array>
+					<string>scottishWildlifeTrust</string>
+				</array>
+				<key>displayName</key>
+				<string>Display feature layers</string>
+				<key>storyboardName</key>
+				<string>DisplayFeatureLayers</string>
+				<key>descriptionText</key>
+				<string>Display feature layers from various data sources.</string>
 			</dict>
 		</array>
 	</dict>

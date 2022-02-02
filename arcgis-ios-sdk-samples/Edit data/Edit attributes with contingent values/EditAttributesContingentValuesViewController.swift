@@ -19,6 +19,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+//            mapView.graphicsOverlays.add(createBufferGraphics())
         }
     }
     // The geodatabase used by this sample.
@@ -80,8 +81,9 @@ class EditAttributesContingentValuesViewController: UIViewController {
                     let extent = featureLayer.fullExtent
                     self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent!))
                     // add graphics overlay to the map view
-                    self.mapView.graphicsOverlays.add(self.graphicsOverlay)
-                    self.createBufferGraphics(for: featureLayer)
+//                    self.mapView.graphicsOverlays.add(self.graphicsOverlay)
+//                    self.createBufferGraphics(for: featureLayer)
+                    self.createBufferGraphics()
                 }
                 self.featureTable = featureTable
             }
@@ -90,16 +92,44 @@ class EditAttributesContingentValuesViewController: UIViewController {
         }
     }
     
-    func createBufferGraphics(for featureLayer: AGSFeatureLayer) {
+//    func createBufferGraphics(for featureLayer: AGSFeatureLayer) {
+    func createBufferGraphics() {
         let queryParameters = AGSQueryParameters()
         queryParameters.whereClause = "BufferSize > 0"
+        var graphics = [AGSGraphic]()
+        let graphicsOverlay = AGSGraphicsOverlay()
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
+        let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
         featureTable?.queryFeatures(with: queryParameters) { [weak self ] result, error in
             guard let self = self else { return }
-            let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
-            let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
-            self.graphicsOverlay.renderer = AGSSimpleRenderer(symbol: bufferSymbol)
-            self.mapView.graphicsOverlays.add(self.graphicsOverlay)
+            if let result = result {
+                let enumeratedResults = result.featureEnumerator()
+                let allObjects = enumeratedResults.allObjects
+                allObjects.forEach { feature in
+                    let bufferSize = feature.attributes["BufferSize"] as! Double
+                    let polygon = AGSGeometryEngine.bufferGeometry(feature.geometry!, byDistance: bufferSize)
+                    let graphic = AGSGraphic(geometry: polygon, symbol: bufferSymbol, attributes: nil)
+                    graphics.append(graphic)
+                }
+                print("\(graphics.count)")
+//                self.featureQueryDidSucceedWith(result)
+                graphicsOverlay.renderer = AGSSimpleRenderer(symbol: bufferSymbol)
+                graphicsOverlay.graphics.addObjects(from: graphics)
+                self.mapView.graphicsOverlays.add(graphicsOverlay)
+            } else {
+                return
+            }
         }
+    }
+    
+    func featureQueryDidSucceedWith(_ result: AGSFeatureQueryResult) {
+        let graphicsOverlay = AGSGraphicsOverlay()
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
+        let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
+        let graphics: [AGSGraphic] = result.featureEnumerator().map { AGSGraphic(geometry: ($0 as! AGSFeature).geometry, symbol: bufferSymbol, attributes: nil) }
+        graphicsOverlay.renderer = AGSSimpleRenderer(symbol: bufferSymbol)
+        graphicsOverlay.graphics.addObjects(from: graphics)
+        mapView.graphicsOverlays.add(graphicsOverlay)
     }
     
     func addFeature(at mapPoint: AGSPoint) {

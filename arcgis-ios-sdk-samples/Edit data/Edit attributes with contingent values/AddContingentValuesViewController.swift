@@ -134,17 +134,36 @@ class AddContingentValuesViewController: UITableViewController {
         let minValue = bufferSizeGroupContingentValues[0].minValue as! Int
         let maxValue = bufferSizeGroupContingentValues[0].maxValue as! Int
         bufferSizes = Array(minValue...maxValue)
+        if bufferSizes?.count == 1 {
+            selectedBufferSize = bufferSizes?[0]
+        }
         bufferSizePickerView.reloadAllComponents()
     }
     
     func validateContingency() {
         guard let featureTable = featureTable, let feature = feature else { return }
+        if let feature1 = self.featureTable?.createFeature() as? AGSArcGISFeature {
+            feature1.attributes["Status"] = "UNOCCUPIED"
+            feature1.attributes["Protection"] = "NA"
+            feature1.attributes["BufferSize"] = 0
+            let contingencyVio = featureTable.validateContingencyConstraints(with: feature1)
+            if contingencyVio.isEmpty {
+                print("feature1 valid")
+            }
+        }
+//        if let feature2 = self.featureTable?.createFeature() as? AGSArcGISFeature {
+//            feature2.attributes["Status"] = "OCCUPIED"
+//            feature2.attributes["Protection"] = "N/A"
+//            feature2.attributes["Status"] = "5"
+//            let contingencyVio = featureTable.validateContingencyConstraints(with: feature2)
+//            if contingencyVio.isEmpty {
+//                print("feature2 valid")
+//            }
+//        }
         let contingencyViolations = featureTable.validateContingencyConstraints(with: feature)
         if contingencyViolations.isEmpty {
             doneBarButtonItem.isEnabled = true
         } else {
-//            let errorMessage = "Invalid contingent values"
-//            presentAlert(error: errorMessage as! Error)
             presentAlert(title: "", message: "Invalid contingent values")
         }
     }
@@ -178,6 +197,7 @@ class AddContingentValuesViewController: UITableViewController {
         let bufferSizeLabel = bufferSizeCell.detailTextLabel
         tableView.performBatchUpdates({
             if bufferSizePickerHidden {
+                
                 bufferSizeLabel?.textColor = .accentColor
                 tableView.insertRows(at: [bufferSizePicker], with: .fade)
                 bufferSizePickerHidden = false

@@ -1,6 +1,6 @@
 # Add features with contingent values
 
-Add features with multiple, dependent attributes.
+Create and add features whose attribute values satisfy a predefined set of contingencies.
 
 ![Edit and sync features](edit-and-sync-features.png)
 
@@ -8,25 +8,24 @@ Add features with multiple, dependent attributes.
 
 Contingent values, are a data design feature that allows you to make values in one field dependent on values in another field. Your choice for a value on one field further constrain the domain values that can be placed on another field. In this way, contingent values enforce data integrity by applying additional constraints to reduce the number of valid field inputs. 
 
-A survey worker following endangered birds may use this workflow to keep track of the birds' nests. They can log important information such as nest status, protection level, and nest buffer distance. Each list of options is dependent on the previous selection. 
+A field crew working in a sensitive habitat area may be required to stay a certain distance away from occupied bird nests, but the size of that exclusion area differs depending on the bird's level of protection according to presiding laws. Surveyors can add points of bird nests in the work area and their selection of how large the exclusion area is, will be contingent on the values in other attribute fields.
 
 ## How to use the sample
 
-Tap on the map to add a feature symbolizing a bird's nest. Then choose values describing the nest's status, protection, and buffer size. Once the contingent values are validated, tap "Done" to add the feature to the map.
+Tap on the map to add a feature symbolizing a bird's nest. Then choose values describing the nest's status, protection, and buffer size. Notice how different values are available depending on the values of preceeding fields. Once the contingent values are validated, tap "Done" to add the feature to the map.
 
 ## How it works
 
 1. Create and load the `AGSGeodatabase`.
-2. Load the first `AGSFeatureTable` as an `AGSArcGISFeatureTable`.
-3. Load and add the first `AGSFeatureLayer`.
-4. Load the first field object by name, "Status".
-5. Load the `AGSFeatureTable` and use `AGSFeatureTable.createFeature` to create a feature.
-6. Set the feature's first field group value by accessing the feature's array of `attributes` by key.
-7. Get the `AGSContingentValueResult`s by using `contingentValues(with:field:)` with the feature and the next field object, "Protection".
-8. Get the array of `AGSContingentCodedValue`s by getting the  `AGSContingentValuesResult.contingentValuesByFieldGroup` using the key, "ProtectionFieldGroup".
-9. Choose the next value from the array of contingent coded values and set it to the feature's "Protection" attribute.
-10. Continue choosing and getting contingent values for the remaining fields.
-11. Validate the selected values by using `validateContingencyConstraints(with:)` with the feature. If the resulting array is empty, the selected values are valid.
+2. Load the first `AGSGeodatabaseFeatureTable` as an `AGSArcGISFeatureTable`.
+3. Load the `AGSContingentValuesDefinition` from the feature table.
+4. Create a new `AGSFeatureLayer` from the feature table and add it to the map.
+5. Create a new `AGSFeature` using `AGSFeatureTable.createFeature()`
+6. Retrieve the valid contingent values for each field as you select the values for the attributes.
+    i. Get the `AGSContingentValueResult`s by using `contingentValues(with:field:)` with the feature and the target field by name.
+    ii. Get an array of valid `AGSContingentValues` from `AGSContingentValuesResult.contingentValuesByFieldGroup` dictionary with the name of the relevant field group.
+    iii. Iterate through the array of valid contingent values to create an array of `AGSContingentCodedValue` names or the minimum and maximum values of a `AGSContingentRangeValue` depending on the type of `AGSContingentValue` returned.
+7. Validate the feature's contingent values by using `validateContingencyConstraints(with:)` with the current feature. If the resulting array is empty, the selected values are valid.
 
 ## Relevant API
 

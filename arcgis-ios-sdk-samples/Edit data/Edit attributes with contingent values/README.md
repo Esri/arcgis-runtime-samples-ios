@@ -19,22 +19,22 @@ Tap on the map to add a feature symbolizing a bird's nest. Then choose values de
 1. Create and load the `AGSGeodatabase`.
 2. Load the first `AGSFeatureTable` as an `AGSArcGISFeatureTable`.
 3. Load and add the first `AGSFeatureLayer`.
-4. Start the job and get a geodatabase as a result.
-5. Set the sync direction to `.bidirectional`.
-6. To enable editing, load the geodatabase and get its feature tables. Create feature layers from the feature tables and add them to the map's operational layers collection.
-7. Create an `AGSSyncGeodatabaseJob` object using `AGSGeodatabaseSyncTask.syncJob(with:geodatabase:)`, passing in the parameters and geodatabase as arguments.
-8. Start the sync job to synchronize the edits.
+4. Load the first field object by name, "Status".
+5. Load the `AGSFeatureTable` and use `AGSFeatureTable.createFeature` to create a feature.
+6. Set the feature's first field group value by accessing the feature's array of `attributes` by key.
+7. Get the `AGSContingentValueResult`s by using `contingentValues(with:field:)` with the feature and the next field object, "Protection".
+8. Get the array of `AGSContingentCodedValue`s by getting the  `AGSContingentValuesResult.contingentValuesByFieldGroup` using the key, "ProtectionFieldGroup".
+9. Choose the next value from the array of contingent coded values and set it to the feature's "Protection" attribute.
+10. Continue choosing and getting contingent values for the remaining fields.
+11. Validate the selected values by using `validateContingencyConstraints(with:)` with the feature. If the resulting array is empty, the selected values are valid.
 
 ## Relevant API
 
-* AGSFeatureLayer
+* AGSArcGISFeatureTable
+* AGSContingentValueResult
+* AGSContingentCodedValue
+* AGSContingentValuesResult
 * AGSFeatureTable
-* AGSGenerateGeodatabaseJob
-* AGSGenerateGeodatabaseParameters
-* AGSGeodatabaseSyncTask
-* AGSSyncGeodatabaseJob
-* AGSSyncGeodatabaseParameters
-* AGSSyncLayerOption
 
 ## Offline data
 
@@ -46,4 +46,4 @@ The geodatabase contains birds nests in the Filmore area, defined with contingen
 
 ## Tags
 
-feature service, geodatabase, offline, synchronize
+contingent values, contingent coded values, feature table, geodatabase

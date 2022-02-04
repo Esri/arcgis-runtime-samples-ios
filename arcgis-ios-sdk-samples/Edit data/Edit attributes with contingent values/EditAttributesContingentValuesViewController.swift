@@ -19,13 +19,13 @@ class EditAttributesContingentValuesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
-//            mapView.graphicsOverlays.add(createBufferGraphics())
         }
     }
     // The geodatabase used by this sample.
     let geodatabase: AGSGeodatabase!
     var graphicsOverlay = AGSGraphicsOverlay()
     var featureTable: AGSArcGISFeatureTable?
+    var mapPoint: AGSPoint?
     
     required init?(coder: NSCoder) {
         // Create a URL leading to the resource.
@@ -74,62 +74,18 @@ class EditAttributesContingentValuesViewController: UIViewController {
         switch result {
         case .success:
 //            guard let map = self.mapView.map else { return }
-            if let featureTable = self.geodatabase.geodatabaseFeatureTables[0] as? AGSArcGISFeatureTable {
-                let featureLayer = AGSFeatureLayer(featureTable: self.geodatabase.geodatabaseFeatureTables[0])
-                featureLayer.load { _ in
-                    self.mapView.map?.operationalLayers.add(featureLayer)
-                    let extent = featureLayer.fullExtent
-                    self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent!))
-                    // add graphics overlay to the map view
-//                    self.mapView.graphicsOverlays.add(self.graphicsOverlay)
-//                    self.createBufferGraphics(for: featureLayer)
-                    self.createBufferGraphics()
-                }
+            let featureTable = self.geodatabase.geodatabaseFeatureTables[0] as AGSArcGISFeatureTable
+            let featureLayer = AGSFeatureLayer(featureTable: self.geodatabase.geodatabaseFeatureTables[0])
+            featureLayer.load { _ in
+                self.mapView.map?.operationalLayers.add(featureLayer)
+                let extent = featureLayer.fullExtent
+                self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent!))
                 self.featureTable = featureTable
+                self.createBufferGraphics()
             }
         case .failure(let error):
             self.presentAlert(error: error)
         }
-    }
-    
-//    func createBufferGraphics(for featureLayer: AGSFeatureLayer) {
-    func createBufferGraphics() {
-        let queryParameters = AGSQueryParameters()
-        queryParameters.whereClause = "BufferSize > 0"
-        var graphics = [AGSGraphic]()
-        let graphicsOverlay = AGSGraphicsOverlay()
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
-        let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
-        featureTable?.queryFeatures(with: queryParameters) { [weak self ] result, error in
-            guard let self = self else { return }
-            if let result = result {
-                let enumeratedResults = result.featureEnumerator()
-                let allObjects = enumeratedResults.allObjects
-                allObjects.forEach { feature in
-                    let bufferSize = feature.attributes["BufferSize"] as! Double
-                    let polygon = AGSGeometryEngine.bufferGeometry(feature.geometry!, byDistance: bufferSize)
-                    let graphic = AGSGraphic(geometry: polygon, symbol: bufferSymbol, attributes: nil)
-                    graphics.append(graphic)
-                }
-                print("\(graphics.count)")
-//                self.featureQueryDidSucceedWith(result)
-                graphicsOverlay.renderer = AGSSimpleRenderer(symbol: bufferSymbol)
-                graphicsOverlay.graphics.addObjects(from: graphics)
-                self.mapView.graphicsOverlays.add(graphicsOverlay)
-            } else {
-                return
-            }
-        }
-    }
-    
-    func featureQueryDidSucceedWith(_ result: AGSFeatureQueryResult) {
-        let graphicsOverlay = AGSGraphicsOverlay()
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
-        let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
-        let graphics: [AGSGraphic] = result.featureEnumerator().map { AGSGraphic(geometry: ($0 as! AGSFeature).geometry, symbol: bufferSymbol, attributes: nil) }
-        graphicsOverlay.renderer = AGSSimpleRenderer(symbol: bufferSymbol)
-        graphicsOverlay.graphics.addObjects(from: graphics)
-        mapView.graphicsOverlays.add(graphicsOverlay)
     }
     
     func addFeature(at mapPoint: AGSPoint) {
@@ -156,6 +112,35 @@ class EditAttributesContingentValuesViewController: UIViewController {
             controller.isModalInPresentation = true
             controller.featureTable = featureTable
             controller.graphicsOverlay = self.graphicsOverlay
+            controller.mapPoint = mapPoint
+            controller.delegate = self
+        }
+    }
+}
+
+extension EditAttributesContingentValuesViewController: ContingentValuesDelegate {
+    func createBufferGraphics() {
+        let queryParameters = AGSQueryParameters()
+        queryParameters.whereClause = "BufferSize > 0"
+        var graphics = [AGSGraphic]()
+        let graphicsOverlay = AGSGraphicsOverlay()
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
+        let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
+        featureTable?.queryFeatures(with: queryParameters) { [weak self ] result, error in
+            guard let self = self else { return }
+            if let result = result {
+                let features = result.featureEnumerator().allObjects
+                features.forEach { feature in
+                    let bufferSize = feature.attributes["BufferSize"] as! Double
+                    let polygon = AGSGeometryEngine.bufferGeometry(feature.geometry!, byDistance: bufferSize)
+                    let graphic = AGSGraphic(geometry: polygon, symbol: bufferSymbol)
+                    graphics.append(graphic)
+                }
+                graphicsOverlay.graphics.addObjects(from: graphics)
+                self.mapView.graphicsOverlays.add(graphicsOverlay)
+            } else {
+                return
+            }
         }
     }
 }
@@ -165,6 +150,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
 extension EditAttributesContingentValuesViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // Tap to identify a pixel on the raster layer.
+        self.mapPoint = mapPoint
         addFeature(at: mapPoint)
     }
 }

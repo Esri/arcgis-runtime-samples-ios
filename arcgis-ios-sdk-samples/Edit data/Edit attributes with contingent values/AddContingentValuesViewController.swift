@@ -15,6 +15,10 @@
 import UIKit
 import ArcGIS
 
+protocol ContingentValuesDelegate: AnyObject {
+    func createBufferGraphics()
+}
+
 class AddContingentValuesViewController: UITableViewController {
     @IBOutlet var statusCell: UITableViewCell!
     @IBOutlet var protectionCell: UITableViewCell!
@@ -30,8 +34,12 @@ class AddContingentValuesViewController: UITableViewController {
     }
     
     @IBAction func doneBarButtonItemTapped(_ sender: Any) {
-        
-        dismiss(animated: true)
+        guard let feature = feature, let featureTable = featureTable else { return }
+        feature.geometry = mapPoint
+        featureTable.add(feature) { _ in
+            self.delegate?.createBufferGraphics()
+            self.dismiss(animated: true)
+        }
     }
     
     // MARK: Properties
@@ -39,10 +47,12 @@ class AddContingentValuesViewController: UITableViewController {
     var featureTable: AGSArcGISFeatureTable?
     var contingentValuesDefinition: AGSContingentValuesDefinition?
     var feature: AGSArcGISFeature?
+    var mapPoint: AGSPoint?
     var bufferSizes: [Int]?
     var graphicsOverlay: AGSGraphicsOverlay?
     /// Indicates whether the reference scale picker is currently hidden.
     var bufferSizePickerHidden = true
+    weak var delegate: ContingentValuesDelegate?
     
     var selectedStatus: AGSCodedValue? {
         didSet {
@@ -142,30 +152,13 @@ class AddContingentValuesViewController: UITableViewController {
     
     func validateContingency() {
         guard let featureTable = featureTable, let feature = feature else { return }
-        if let feature1 = self.featureTable?.createFeature() as? AGSArcGISFeature {
-            feature1.attributes["Status"] = "UNOCCUPIED"
-            feature1.attributes["Protection"] = "NA"
-            feature1.attributes["BufferSize"] = 0
-            let contingencyVio = featureTable.validateContingencyConstraints(with: feature1)
-            if contingencyVio.isEmpty {
-                print("feature1 valid")
-            }
-        }
-//        if let feature2 = self.featureTable?.createFeature() as? AGSArcGISFeature {
-//            feature2.attributes["Status"] = "OCCUPIED"
-//            feature2.attributes["Protection"] = "N/A"
-//            feature2.attributes["Status"] = "5"
-//            let contingencyVio = featureTable.validateContingencyConstraints(with: feature2)
-//            if contingencyVio.isEmpty {
-//                print("feature2 valid")
-//            }
-//        }
         let contingencyViolations = featureTable.validateContingencyConstraints(with: feature)
         if contingencyViolations.isEmpty {
-            doneBarButtonItem.isEnabled = true
+            self.doneBarButtonItem.isEnabled = true
         } else {
-            presentAlert(title: "", message: "Invalid contingent values")
+            self.presentAlert(title: "", message: "Invalid contingent values")
         }
+        
     }
     
     // MARK: UI Functions

@@ -21,10 +21,13 @@ class EditAttributesContingentValuesViewController: UIViewController {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
         }
     }
-    // The geodatabase used by this sample.
+    /// The geodatabase used by this sample.
     let geodatabase: AGSGeodatabase!
+    /// The graphics overlay to add the feature to.
     var graphicsOverlay = AGSGraphicsOverlay()
+    /// The geodatabase's feature table.
     var featureTable: AGSArcGISFeatureTable?
+    /// The map point to add the feature to.
     var mapPoint: AGSPoint?
     
     required init?(coder: NSCoder) {

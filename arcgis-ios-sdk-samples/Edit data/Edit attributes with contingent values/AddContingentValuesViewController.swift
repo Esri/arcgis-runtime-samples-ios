@@ -29,14 +29,19 @@ class AddContingentValuesViewController: UITableViewController {
     // MARK: Actions
     
     @IBAction func cancelBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        // Remove the last graphic added.
         graphicsOverlay?.graphics.removeLastObject()
+        // Dismiss the table view.
         dismiss(animated: true)
     }
     
     @IBAction func doneBarButtonItemTapped(_ sender: Any) {
         guard let feature = feature, let featureTable = featureTable else { return }
+        // Set the feature's geometry to the map point.
         feature.geometry = mapPoint
+        // Add the feature to the feature table.
         featureTable.add(feature) { _ in
+            // Create buffer graphics for the new feature.
             self.delegate?.createBufferGraphics()
             self.dismiss(animated: true)
         }
@@ -44,21 +49,28 @@ class AddContingentValuesViewController: UITableViewController {
     
     // MARK: Properties
     
+    /// The geodatabase's feature table.
     var featureTable: AGSArcGISFeatureTable?
-    var contingentValuesDefinition: AGSContingentValuesDefinition?
+    /// The feature to add to the feature table.
     var feature: AGSArcGISFeature?
+    /// The point on the map to add the feature to.
     var mapPoint: AGSPoint?
+    /// An array of buffer sizes valid for the feature.
     var bufferSizes: [Int]?
+    /// The graphics overlay to add the features to.
     var graphicsOverlay: AGSGraphicsOverlay?
-    /// Indicates whether the reference scale picker is currently hidden.
+    /// Indicates whether the buffer size picker is currently hidden.
     var bufferSizePickerHidden = true
+    /// The delegate for the table view controller.
     weak var delegate: ContingentValuesDelegate?
     
     /// The selected status value.
     var selectedStatus: AGSCodedValue? {
         didSet {
             if let codedValueName = selectedStatus?.name {
+                // Display the selected value name.
                 editRightDetail(cell: statusCell, rightDetailText: codedValueName)
+                // Reset the cell states accordingly.
                 resetCellStates()
             }
         }
@@ -67,11 +79,9 @@ class AddContingentValuesViewController: UITableViewController {
     /// The selected protection value.
     var selectedProtection: AGSContingentCodedValue? {
         didSet {
-            if let codedValueName = selectedProtection?.codedValue.name {
-                editRightDetail(cell: protectionCell, rightDetailText: codedValueName)
-            } else {
-                editRightDetail(cell: protectionCell, rightDetailText: "")
-            }
+            // Display the value name or empty string.
+            let codedValueName = selectedProtection?.codedValue.name
+            editRightDetail(cell: protectionCell, rightDetailText: codedValueName)
             resetCellStates()
         }
     }
@@ -106,7 +116,9 @@ class AddContingentValuesViewController: UITableViewController {
             self.selectedStatus = status[newIndex]
             if self.selectedStatus != previouslySelectedStatus, self.selectedProtection != nil {
                 self.selectedProtection = nil
-                self.selectedBufferSize = nil
+                if self.selectedBufferSize != nil {
+                    self.selectedBufferSize = nil
+                }
             }
             self.navigationController?.popViewController(animated: true)
         }
@@ -119,8 +131,8 @@ class AddContingentValuesViewController: UITableViewController {
         let previouslySelectedProtection = selectedProtection
         featureTable?.load { [weak self] error in
             guard let self = self else { return }
-            self.contingentValuesDefinition = self.featureTable?.contingentValuesDefinition
-            self.contingentValuesDefinition?.load { error in
+            let contingentValuesDefinition = self.featureTable?.contingentValuesDefinition
+            contingentValuesDefinition?.load { error in
                 if let feature = self.featureTable?.createFeature() as? AGSArcGISFeature {
                     feature.attributes["Status"] = self.selectedStatus?.code
                     self.feature = feature
@@ -199,7 +211,6 @@ class AddContingentValuesViewController: UITableViewController {
         let bufferSizeLabel = bufferSizeCell.detailTextLabel
         tableView.performBatchUpdates({
             if bufferSizePickerHidden {
-                
                 bufferSizeLabel?.textColor = .accentColor
                 tableView.insertRows(at: [bufferSizePicker], with: .fade)
                 bufferSizePickerHidden = false

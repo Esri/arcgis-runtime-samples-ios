@@ -54,6 +54,7 @@ class AddContingentValuesViewController: UITableViewController {
     var bufferSizePickerHidden = true
     weak var delegate: ContingentValuesDelegate?
     
+    /// The selected status value.
     var selectedStatus: AGSCodedValue? {
         didSet {
             if let codedValueName = selectedStatus?.name {
@@ -63,6 +64,7 @@ class AddContingentValuesViewController: UITableViewController {
         }
     }
     
+    /// The selected protection value.
     var selectedProtection: AGSContingentCodedValue? {
         didSet {
             if let codedValueName = selectedProtection?.codedValue.name {
@@ -74,6 +76,7 @@ class AddContingentValuesViewController: UITableViewController {
         }
     }
     
+    /// The selected buffer size.
     var selectedBufferSize: Int? {
         didSet {
             feature?.attributes["BufferSize"] = self.selectedBufferSize
@@ -91,6 +94,7 @@ class AddContingentValuesViewController: UITableViewController {
     
     // MARK: Functions
     
+    /// Show the options for the status field.
     func showStatusOptions() {
         let previouslySelectedStatus = selectedStatus
         guard let featureTable = featureTable else { return }
@@ -110,6 +114,7 @@ class AddContingentValuesViewController: UITableViewController {
         self.show(optionsViewController, sender: self)
     }
     
+    /// Use the contingent values definition to generate the possible values for the protection field.
     func showProtectionOptions() {
         let previouslySelectedProtection = selectedProtection
         featureTable?.load { [weak self] error in
@@ -137,6 +142,7 @@ class AddContingentValuesViewController: UITableViewController {
         }
     }
     
+    /// Get the minimum and maximum values of the possible buffer sizes.
     func showBufferSizeOptions() {
         guard let feature = feature else { return }
         let contingentValueResult = featureTable?.contingentValues(with: feature, field: "BufferSize")
@@ -150,6 +156,7 @@ class AddContingentValuesViewController: UITableViewController {
         bufferSizePickerView.reloadAllComponents()
     }
     
+    /// Ensure that the selected values are a valid combination.
     func validateContingency() {
         guard let featureTable = featureTable, let feature = feature else { return }
         let contingencyViolations = featureTable.validateContingencyConstraints(with: feature)
@@ -163,10 +170,12 @@ class AddContingentValuesViewController: UITableViewController {
     
     // MARK: UI Functions
     
+    /// Update the cell's right detail.
     func editRightDetail(cell: UITableViewCell, rightDetailText: String?) {
         cell.detailTextLabel?.text = rightDetailText
     }
     
+    /// Reset the cell states according to which values have already been selected.
     func resetCellStates() {
         if selectedStatus == nil {
             protectionCell.textLabel?.isEnabled = false
@@ -184,7 +193,7 @@ class AddContingentValuesViewController: UITableViewController {
         }
     }
     
-    /// Toggles visisbility of the reference scale picker.
+    /// Toggles visisbility of the buffer size scale picker.
     func toggleBufferSizePickerVisibility() {
         let bufferSizePicker = IndexPath(row: 3, section: 0)
         let bufferSizeLabel = bufferSizeCell.detailTextLabel
@@ -208,6 +217,7 @@ class AddContingentValuesViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    /// Show the list of options according to the selected row.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         switch cell {
@@ -230,6 +240,7 @@ class AddContingentValuesViewController: UITableViewController {
         
     /* UITableViewDataSource */
     
+    /// Return the number of rows depending on the picker view.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRows = super.tableView(tableView, numberOfRowsInSection: section)
         if bufferSizePickerHidden {

@@ -32,15 +32,17 @@ Tap on the map to add a feature symbolizing a bird's nest. Then choose values de
 
 ## Relevant API
 
-* AGSArcGISFeatureTable
+* AGSContingencyConstraintViolation
 * AGSContingentCodedValue
+* AGSContingentRangeValue
 * AGSContingentValuesDefinition
 * AGSContingentValuesResult
-* AGSFeatureTable
+* AGSGeodatabase
+* AGSGeodatabaseFeatureTable
 
 ## Offline data
 
-This sample uses the [Contingent values birds nests](https://arcgisruntime.maps.arcgis.com/home/item.html?id=e12b54ea799f4606a2712157cf9f6e41).
+This sample uses the [Contingent values birds nests](https://arcgisruntime.maps.arcgis.com/home/item.html?id=e12b54ea799f4606a2712157cf9f6e41). It is downloaded automatically.
 
 ## About the data
 

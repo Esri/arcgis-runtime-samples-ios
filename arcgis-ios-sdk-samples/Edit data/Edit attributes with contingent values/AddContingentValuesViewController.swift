@@ -68,7 +68,7 @@ class AddContingentValuesViewController: UITableViewController {
     var selectedStatus: AGSCodedValue? {
         didSet {
             if let codedValueName = selectedStatus?.name {
-                // Display the selected value name.
+                // Display the selected value.
                 editRightDetail(cell: statusCell, rightDetailText: codedValueName)
                 // Reset the cell states accordingly.
                 resetCellStates()
@@ -79,9 +79,10 @@ class AddContingentValuesViewController: UITableViewController {
     /// The selected protection value.
     var selectedProtection: AGSContingentCodedValue? {
         didSet {
-            // Display the value name or empty string.
             let codedValueName = selectedProtection?.codedValue.name
+            // Display the selected protection.
             editRightDetail(cell: protectionCell, rightDetailText: codedValueName)
+            // Reset the cell states accordingly.
             resetCellStates()
         }
     }
@@ -89,13 +90,18 @@ class AddContingentValuesViewController: UITableViewController {
     /// The selected buffer size.
     var selectedBufferSize: Int? {
         didSet {
-            feature?.attributes["BufferSize"] = self.selectedBufferSize
             if let selectedBufferSize = selectedBufferSize {
+                // Set the the buffer size attribute to the selected integer.
+                feature?.attributes["BufferSize"] = self.selectedBufferSize
                 let bufferSize = String(selectedBufferSize)
+                // Display the selected buffer size.
                 editRightDetail(cell: bufferSizeCell, rightDetailText: bufferSize)
+                // Validate the contingency.
                 validateContingency()
             } else {
+                // If the value is nil, clear the right detail text.
                 editRightDetail(cell: bufferSizeCell, rightDetailText: " ")
+                // Hide the buffer size picker.
                 bufferSizePickerHidden = false
                 toggleBufferSizePickerVisibility()
             }
@@ -106,75 +112,110 @@ class AddContingentValuesViewController: UITableViewController {
     
     /// Show the options for the status field.
     func showStatusOptions() {
+        // Get the previously selected status value.
         let previouslySelectedStatus = selectedStatus
-        guard let featureTable = featureTable else { return }
-        let statusField = featureTable.field(forName: "Status")
+        // Get the first field by name.
+        let statusField = featureTable?.field(forName: "Status")
+        // Get the field's domains as coded value domain.
         let codedValueDomain = statusField?.domain as! AGSCodedValueDomain
-        let status = codedValueDomain.codedValues
-        let selectedIndex = status.firstIndex { $0.name == self.selectedStatus?.name } ?? nil
-        let optionsViewController = OptionsTableViewController(labels: status.map { $0.name }, selectedIndex: selectedIndex) { newIndex in
-            self.selectedStatus = status[newIndex]
+        // Get the coded value domain's coded values.
+        let statusCodedValues = codedValueDomain.codedValues
+        // Get the selected index if applicable.
+        let selectedIndex = statusCodedValues.firstIndex { $0.name == self.selectedStatus?.name } ?? nil
+        // Use the coded value names as labels to show the option table view controller.
+        let optionsViewController = OptionsTableViewController(labels: statusCodedValues.map { $0.name }, selectedIndex: selectedIndex) { [weak self] newIndex in
+            guard let self = self else { return }
+            // Set the selected status.
+            self.selectedStatus = statusCodedValues[newIndex]
+            // Set the attributes to nil if the status value has changed.
             if self.selectedStatus != previouslySelectedStatus, self.selectedProtection != nil {
                 self.selectedProtection = nil
                 if self.selectedBufferSize != nil {
                     self.selectedBufferSize = nil
                 }
             }
+            self.createFeature(with: self.selectedStatus!)
+            // Remove the options view controller after selection.
             self.navigationController?.popViewController(animated: true)
         }
+        // Set the options view controller's title and present it.
         optionsViewController.title = "Status"
         self.show(optionsViewController, sender: self)
     }
     
     /// Use the contingent values definition to generate the possible values for the protection field.
     func showProtectionOptions() {
+        // Get the previously selected protection value.
         let previouslySelectedProtection = selectedProtection
-        featureTable?.load { [weak self] error in
+        guard let feature = feature else { return }
+        // Get the contingent value results with the feature for the protection field.
+        let contingentValuesResult = featureTable?.contingentValues(with: feature, field: "Protection")
+        // Get contingent coded values by field group.
+        guard let protectionGroupContingentValues = contingentValuesResult?.contingentValuesByFieldGroup["ProtectionFieldGroup"] as? [AGSContingentCodedValue] else { return }
+        // Get the selected index if applicable.
+        let selectedIndex = protectionGroupContingentValues.firstIndex { $0.codedValue.name == self.selectedProtection?.codedValue.name} ?? nil
+        // Use the coded value names as labels to show the option table view controller.
+        let optionsViewController = OptionsTableViewController(labels: protectionGroupContingentValues.map { $0.codedValue.name }, selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
-            let contingentValuesDefinition = self.featureTable?.contingentValuesDefinition
-            contingentValuesDefinition?.load { error in
-                if let feature = self.featureTable?.createFeature() as? AGSArcGISFeature {
-                    feature.attributes["Status"] = self.selectedStatus?.code
-                    self.feature = feature
-                    let contingentValuesResult = self.featureTable?.contingentValues(with: feature, field: "Protection")
-                    guard let protectionGroupContingentValues = contingentValuesResult?.contingentValuesByFieldGroup["ProtectionFieldGroup"] as? [AGSContingentCodedValue] else { return }
-                    let selectedIndex = protectionGroupContingentValues.firstIndex { $0.codedValue.name == self.selectedProtection?.codedValue.name} ?? nil
-                    let optionsViewController = OptionsTableViewController(labels: protectionGroupContingentValues.map { $0.codedValue.name }, selectedIndex: selectedIndex) { newIndex in
-                        self.selectedProtection = protectionGroupContingentValues[newIndex]
-                        if self.selectedProtection != previouslySelectedProtection, self.selectedBufferSize != nil {
-                            self.selectedBufferSize = nil
-                        }
-                        feature.attributes["Protection"] = self.selectedProtection?.codedValue.code
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                    optionsViewController.title = "Protection"
-                    self.show(optionsViewController, sender: self)
-                }
+            // Set the selected protection value.
+            self.selectedProtection = protectionGroupContingentValues[newIndex]
+            feature.attributes["Protection"] = self.selectedProtection?.codedValue.code
+            // Set the attributes to nil if the protection value has changed.
+            if self.selectedProtection != previouslySelectedProtection, self.selectedBufferSize != nil {
+                self.selectedBufferSize = nil
             }
+            // Remove the options view controller after selection.
+            self.navigationController?.popViewController(animated: true)
         }
+        // Set the options view controller's title and present it.
+        optionsViewController.title = "Protection"
+        self.show(optionsViewController, sender: self)
     }
     
     /// Get the minimum and maximum values of the possible buffer sizes.
     func showBufferSizeOptions() {
         guard let feature = feature else { return }
+        // Get the contingent value results using the feature and field.
         let contingentValueResult = featureTable?.contingentValues(with: feature, field: "BufferSize")
         guard let bufferSizeGroupContingentValues = contingentValueResult?.contingentValuesByFieldGroup["BufferSizeFieldGroup"] as? [AGSContingentRangeValue] else { return }
+        // Set the minimum and maximum possible buffer sizes.
         let minValue = bufferSizeGroupContingentValues[0].minValue as! Int
         let maxValue = bufferSizeGroupContingentValues[0].maxValue as! Int
         bufferSizes = Array(minValue...maxValue)
+        // Select the buffer size if it is the only option available.
         if bufferSizes?.count == 1 {
             selectedBufferSize = bufferSizes?[0]
         }
+        // Update the picker view.
         bufferSizePickerView.reloadAllComponents()
     }
     
+func createFeature(with status: AGSCodedValue) {
+    // Get the contingent values defintion from the feature table.
+    let contingentValuesDefinition = featureTable?.contingentValuesDefinition
+    // Load the contingent values definition.
+    contingentValuesDefinition?.load { [weak self] error in
+        guard let self = self else { return }
+        if let error = error {
+            self.presentAlert(error: error)
+        } else if let feature = self.featureTable?.createFeature() as? AGSArcGISFeature {
+            // Create a feature from the feature table and set the initial attribute.
+            feature.attributes["Status"] = status.code
+            self.feature = feature
+        }
+    }
+}
+
     /// Ensure that the selected values are a valid combination.
     func validateContingency() {
         guard let featureTable = featureTable, let feature = feature else { return }
+        // Validate the feature's contingencies.
         let contingencyViolations = featureTable.validateContingencyConstraints(with: feature)
         if contingencyViolations.isEmpty {
-            self.doneBarButtonItem.isEnabled = true
+            // If there are no contingency violations in the array, the feature is valid and ready to add to the feature table.
+            doneBarButtonItem.isEnabled = true
         } else {
+            // Present an alert if there are contingency violations.
             self.presentAlert(title: "", message: "Invalid contingent values")
         }
         

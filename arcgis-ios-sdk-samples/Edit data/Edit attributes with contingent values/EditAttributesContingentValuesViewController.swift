@@ -76,19 +76,25 @@ class EditAttributesContingentValuesViewController: UIViewController {
     func geodatabaseDidLoad(with result: Result<Void, Error>) {
         switch result {
         case .success:
-            // Get the first feature table in the geodatabase.
+            // Get and load the first feature table in the geodatabase.
             featureTable = geodatabase.geodatabaseFeatureTables[0] as AGSArcGISFeatureTable
-            // Create and load the feature layer from the feature table.
-            let featureLayer = AGSFeatureLayer(featureTable: featureTable!)
-            featureLayer.load { [weak self] _ in
+            featureTable?.load { [weak self] error in
                 guard let self = self else { return }
-                // Add the feature layer to the map.
-                self.mapView.map?.operationalLayers.add(featureLayer)
-                // Set the map's viewpoint to the feature layer's full extent.
-                let extent = featureLayer.fullExtent
-                self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent!))
-                // Add buffer graphics for the feature layer.
-                self.createBufferGraphics()
+                if let error = error {
+                    self.presentAlert(error: error)
+                } else {
+                    // Create and load the feature layer from the feature table.
+                    let featureLayer = AGSFeatureLayer(featureTable: self.featureTable!)
+                    featureLayer.load { _ in
+                        // Add the feature layer to the map.
+                        self.mapView.map?.operationalLayers.add(featureLayer)
+                        // Set the map's viewpoint to the feature layer's full extent.
+                        let extent = featureLayer.fullExtent
+                        self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent!))
+                        // Add buffer graphics for the feature layer.
+                        self.createBufferGraphics()
+                    }
+                }
             }
         case .failure(let error):
             presentAlert(error: error)

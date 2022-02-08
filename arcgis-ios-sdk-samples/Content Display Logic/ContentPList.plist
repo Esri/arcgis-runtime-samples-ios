@@ -1261,6 +1261,7 @@
 				<key>dependency</key>
 				<array>
 					<string>ContingentValuesBirdNests</string>
+					<string>fillmoreTopographic</string>
 				</array>
 				<key>displayName</key>
 				<string>Edit attributes with contingent values</string>

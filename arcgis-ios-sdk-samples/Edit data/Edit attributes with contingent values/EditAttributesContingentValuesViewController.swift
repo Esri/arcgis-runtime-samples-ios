@@ -18,10 +18,10 @@ import ArcGIS
 class EditAttributesContingentValuesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            mapView.map = makeMap()
         }
     }
-    /// The geodatabase used by this sample.
+    
     let geodatabase: AGSGeodatabase!
     /// The graphics overlay to add the feature to.
     var graphicsOverlay = AGSGraphicsOverlay()
@@ -31,7 +31,6 @@ class EditAttributesContingentValuesViewController: UIViewController {
     var mapPoint: AGSPoint?
     
     required init?(coder: NSCoder) {
-        // Create a URL leading to the resource.
         let geodatabaseURL = Bundle.main.url(forResource: "ContingentValuesBirdNests", withExtension: "geodatabase")!
         do {
             // Create a temporary directory URL.
@@ -99,6 +98,16 @@ class EditAttributesContingentValuesViewController: UIViewController {
         case .failure(let error):
             presentAlert(error: error)
         }
+    }
+    
+    /// Creates a map with a vector tiled layer basemap.
+    func makeMap() -> AGSMap {
+        // Get the vector tiled layer by name.
+        let fillmoreVectorTiledLayer = AGSArcGISVectorTiledLayer(name: "FillmoreTopographicMap")
+        // Use the vector tiled layer as a basemap.
+        let basemap = AGSBasemap(baseLayer: fillmoreVectorTiledLayer)
+        let map = AGSMap(basemap: basemap)
+        return map
     }
     
     /// Add a single feature to the map.

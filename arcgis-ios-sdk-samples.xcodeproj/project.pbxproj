@@ -851,6 +851,7 @@
 		F11CED73256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */; };
 		F11CED76256C8BD3002A3F56 /* ShowLabelsOnLayer3DViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */; };
 		F122208427A8E69C00325E1E /* ContingentValuesBirdNests.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F122208327A8E69C00325E1E /* ContingentValuesBirdNests.geodatabase */; settings = {ASSET_TAGS = (ContingentValuesBirdNests, ); }; };
+		F122208627B1E5A800325E1E /* FillmoreTopographicMap.vtpk in Resources */ = {isa = PBXBuildFile; fileRef = F122208527B1E5A800325E1E /* FillmoreTopographicMap.vtpk */; settings = {ASSET_TAGS = (fillmoreTopographic, ); }; };
 		F127B8E822E0E73200E8EC29 /* MontereyElevation.tpkx in Resources */ = {isa = PBXBuildFile; fileRef = F1034FAB22D3F6C700B021DA /* MontereyElevation.tpkx */; settings = {ASSET_TAGS = (MontereyElevation, ); }; };
 		F12C739F250ADDB000C1E3FE /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
 		F12C73A0250ADDB000C1E3FE /* ConfigureSubnetworkTraceOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
@@ -1846,6 +1847,7 @@
 		F11CED6C256C849A002A3F56 /* ShowLabelsOnLayer3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLabelsOnLayer3DViewController.swift; sourceTree = "<group>"; };
 		F11CED72256C857B002A3F56 /* ShowLabelsOnLayer3D.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLabelsOnLayer3D.storyboard; sourceTree = "<group>"; };
 		F122208327A8E69C00325E1E /* ContingentValuesBirdNests.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = ContingentValuesBirdNests.geodatabase; sourceTree = "<group>"; };
+		F122208527B1E5A800325E1E /* FillmoreTopographicMap.vtpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = FillmoreTopographicMap.vtpk; sourceTree = "<group>"; };
 		F13D82F9275EDB4300F7B0C0 /* EditAttributesContingentValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAttributesContingentValuesViewController.swift; sourceTree = "<group>"; };
 		F13D82FB275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAttributesContingentValues.storyboard; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
@@ -3815,6 +3817,7 @@
 		4C060E652261195C0070C787 /* Tile Packages */ = {
 			isa = PBXGroup;
 			children = (
+				F122208527B1E5A800325E1E /* FillmoreTopographicMap.vtpk */,
 				F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */,
 				F142F79D267D755700BD608A /* SanFrancisco.tpkx */,
 				F142F79E267D755700BD608A /* streetmap_SD.tpkx */,
@@ -4870,6 +4873,7 @@
 					canyonlands,
 					contingentBirdsNestGDB,
 					contingentValuesBirdSurvey,
+					fillmoreTopographic,
 					loudoun_anno,
 					mil2525d,
 					militaryoverlay,
@@ -5051,6 +5055,7 @@
 				166E8F9D1EE62E0E00C57C46 /* RasterLayer.storyboard in Resources */,
 				3E4BF4461C5AED5100D85919 /* FindAddress.storyboard in Resources */,
 				C7432D3B2187C450009BF1D8 /* ShowLabelsOnLayers.storyboard in Resources */,
+				F122208627B1E5A800325E1E /* FillmoreTopographicMap.vtpk in Resources */,
 				00E2762D2425A205000DBEDD /* NavigateRoute.storyboard in Resources */,
 				00CDA5C126F1289B00DEE7F4 /* SelectENCFeatures.storyboard in Resources */,
 				3EC39C431C9B4872003F6459 /* OfflineEditing.storyboard in Resources */,

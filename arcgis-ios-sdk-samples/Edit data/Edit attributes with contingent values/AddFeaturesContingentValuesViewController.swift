@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class EditAttributesContingentValuesViewController: UIViewController {
+class AddFeaturesContingentValuesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
@@ -127,8 +127,8 @@ class EditAttributesContingentValuesViewController: UIViewController {
         
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
-            "EditAttributesContingentValuesViewController",
-            "AddContingentValuesViewController"
+            "AddFeaturesContingentValuesViewController",
+            "ContingentValuesTableViewController"
         ]
     }
     
@@ -138,7 +138,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Set the controller and its properties.
         if let navigationController = segue.destination as? UINavigationController,
-           let controller = navigationController.viewControllers.first as? AddContingentValuesViewController {
+           let controller = navigationController.viewControllers.first as? ContingentValuesTableViewController {
             controller.isModalInPresentation = true
             controller.featureTable = featureTable
             controller.graphicsOverlay = graphicsOverlay
@@ -148,7 +148,7 @@ class EditAttributesContingentValuesViewController: UIViewController {
     }
 }
 
-extension EditAttributesContingentValuesViewController: ContingentValuesDelegate {
+extension AddFeaturesContingentValuesViewController: ContingentValuesDelegate {
     /// Create buffer graphics for the features.
     func createBufferGraphics() {
         // Create the query parameters.
@@ -193,7 +193,7 @@ extension EditAttributesContingentValuesViewController: ContingentValuesDelegate
 
 // MARK: - AGSGeoViewTouchDelegate
 
-extension EditAttributesContingentValuesViewController: AGSGeoViewTouchDelegate {
+extension AddFeaturesContingentValuesViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         // Get the point on the map where the user tapped.
         self.mapPoint = mapPoint

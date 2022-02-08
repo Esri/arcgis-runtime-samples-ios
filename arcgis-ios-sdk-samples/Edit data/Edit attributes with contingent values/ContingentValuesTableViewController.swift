@@ -19,7 +19,7 @@ protocol ContingentValuesDelegate: AnyObject {
     func createBufferGraphics()
 }
 
-class AddContingentValuesViewController: UITableViewController {
+class ContingentValuesTableViewController: UITableViewController {
     @IBOutlet var statusCell: UITableViewCell!
     @IBOutlet var protectionCell: UITableViewCell!
     @IBOutlet var bufferSizeCell: UITableViewCell!
@@ -305,7 +305,7 @@ func createFeature(with status: AGSCodedValue) {
 
 // MARK: Pickerview
 
-extension AddContingentValuesViewController: UIPickerViewDataSource {
+extension ContingentValuesTableViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -315,7 +315,7 @@ extension AddContingentValuesViewController: UIPickerViewDataSource {
     }
 }
 
-extension AddContingentValuesViewController: UIPickerViewDelegate {
+extension ContingentValuesTableViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if let bufferSizes = bufferSizes {
             let bufferSizeTitle = String(bufferSizes[row])

@@ -24,7 +24,7 @@ Tap on the map to add a feature symbolizing a bird's nest. Then choose values de
 6. Get the initial options by getting the first field object by name using `AGSFeatureTable.field(forName:)`.
 7. Then get get the field's `domain` and cast it as an `AGSCodedValueDomain`.
 8. Get the coded value domain's `codedValues` to get an array of `AGSCodedValue`s.
-9. After making the initial selection, retrieve the valid contingent values for each field as you select the values for the attributes.
+9. After making the initial selection, retrieve the valid contingent values for each field as you select the values for the attributes.  
     i. Get the `AGSContingentValueResult`s by using `contingentValues(with:field:)` with the feature and the target field by name.  
     ii. Get an array of valid `AGSContingentValues` from `AGSContingentValuesResult.contingentValuesByFieldGroup` dictionary with the name of the relevant field group.  
     iii. Iterate through the array of valid contingent values to create an array of `AGSContingentCodedValue` names or the minimum and maximum values of a `AGSContingentRangeValue` depending on the type of `AGSContingentValue` returned.  

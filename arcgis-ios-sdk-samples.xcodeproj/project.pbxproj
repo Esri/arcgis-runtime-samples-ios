@@ -3199,7 +3199,7 @@
 		3ED027FC1B8E38F400ACA70D /* Edit data */ = {
 			isa = PBXGroup;
 			children = (
-				F13D82F8275EDA3400F7B0C0 /* Edit attributes with contingent values */,
+				F13D82F8275EDA3400F7B0C0 /* Add features with contingent values */,
 				008D175424EEF3A50001BB8F /* Edit with branch versioning */,
 				F1124F0724CFA87F00E672EC /* Edit features with feature-linked annotation */,
 				F1D1E2BE2409AA8D006B2801 /* Create and save KML file */,
@@ -4586,14 +4586,14 @@
 			path = "Show labels on layer in 3D";
 			sourceTree = "<group>";
 		};
-		F13D82F8275EDA3400F7B0C0 /* Edit attributes with contingent values */ = {
+		F13D82F8275EDA3400F7B0C0 /* Add features with contingent values */ = {
 			isa = PBXGroup;
 			children = (
 				F13D82F9275EDB4300F7B0C0 /* AddFeaturesContingentValuesViewController.swift */,
 				F1950D7A279794590093CE6E /* ContingentValuesTableViewController.swift */,
 				F13D82FB275EDB5900F7B0C0 /* AddFeaturesContingentValues.storyboard */,
 			);
-			path = "Edit attributes with contingent values";
+			path = "Add features with contingent values";
 			sourceTree = "<group>";
 		};
 		F140E1E823F35E61008AC44E /* Display annotation */ = {

@@ -1264,7 +1264,7 @@
 					<string>fillmoreTopographic</string>
 				</array>
 				<key>displayName</key>
-				<string>Edit attributes with contingent values</string>
+				<string>Add features with contingent values</string>
 				<key>storyboardName</key>
 				<string>AddFeaturesContingentValues</string>
 				<key>descriptionText</key>

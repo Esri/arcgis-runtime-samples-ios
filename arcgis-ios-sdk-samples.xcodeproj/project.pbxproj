@@ -856,7 +856,7 @@
 		F12C739F250ADDB000C1E3FE /* ConfigureSubnetworkTraceViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
 		F12C73A0250ADDB000C1E3FE /* ConfigureSubnetworkTraceOptionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
 		F13D82FA275EDB4300F7B0C0 /* AddFeaturesContingentValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D82F9275EDB4300F7B0C0 /* AddFeaturesContingentValuesViewController.swift */; };
-		F13D82FC275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13D82FB275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard */; };
+		F13D82FC275EDB5900F7B0C0 /* AddFeaturesContingentValues.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13D82FB275EDB5900F7B0C0 /* AddFeaturesContingentValues.storyboard */; };
 		F13D82FD275EE9C100F7B0C0 /* AddFeaturesContingentValuesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F13D82F9275EDB4300F7B0C0 /* AddFeaturesContingentValuesViewController.swift */; };
 		F140E1EB23F35E92008AC44E /* DisplayAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */; };
 		F140E1ED23F35EA6008AC44E /* DisplayAnnotation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */; };
@@ -1849,7 +1849,7 @@
 		F122208327A8E69C00325E1E /* ContingentValuesBirdNests.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = ContingentValuesBirdNests.geodatabase; sourceTree = "<group>"; };
 		F122208527B1E5A800325E1E /* FillmoreTopographicMap.vtpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = FillmoreTopographicMap.vtpk; sourceTree = "<group>"; };
 		F13D82F9275EDB4300F7B0C0 /* AddFeaturesContingentValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeaturesContingentValuesViewController.swift; sourceTree = "<group>"; };
-		F13D82FB275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAttributesContingentValues.storyboard; sourceTree = "<group>"; };
+		F13D82FB275EDB5900F7B0C0 /* AddFeaturesContingentValues.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFeaturesContingentValues.storyboard; sourceTree = "<group>"; };
 		F140E1EA23F35E92008AC44E /* DisplayAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnnotationViewController.swift; sourceTree = "<group>"; };
 		F140E1EC23F35EA6008AC44E /* DisplayAnnotation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayAnnotation.storyboard; sourceTree = "<group>"; };
 		F142F769267C12E400BD608A /* SanFrancisco.mmpk */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanFrancisco.mmpk; sourceTree = "<group>"; };
@@ -4591,7 +4591,7 @@
 			children = (
 				F13D82F9275EDB4300F7B0C0 /* AddFeaturesContingentValuesViewController.swift */,
 				F1950D7A279794590093CE6E /* ContingentValuesTableViewController.swift */,
-				F13D82FB275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard */,
+				F13D82FB275EDB5900F7B0C0 /* AddFeaturesContingentValues.storyboard */,
 			);
 			path = "Edit attributes with contingent values";
 			sourceTree = "<group>";
@@ -5045,7 +5045,7 @@
 				F1E4B10A22D66180005FDB4D /* CreateTerrainSurfaceFromLocalRaster.storyboard in Resources */,
 				D97B7E6E1FD9BFE700E1239D /* Subdivisions.sbx in Resources */,
 				C76F757421827C9C00938D8D /* ColorPicker.storyboard in Resources */,
-				F13D82FC275EDB5900F7B0C0 /* EditAttributesContingentValues.storyboard in Resources */,
+				F13D82FC275EDB5900F7B0C0 /* AddFeaturesContingentValues.storyboard in Resources */,
 				D97B7E621FD9BFE700E1239D /* Subdivisions.sbn in Resources */,
 				3ED028691B8E3A8500ACA70D /* SetViewpoint.storyboard in Resources */,
 				F1710AF325EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard in Resources */,

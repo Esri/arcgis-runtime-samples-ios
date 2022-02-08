@@ -1266,9 +1266,9 @@
 				<key>displayName</key>
 				<string>Edit attributes with contingent values</string>
 				<key>storyboardName</key>
-				<string>EditAttributesContingentValues</string>
+				<string>AddFeaturesContingentValues</string>
 				<key>descriptionText</key>
-				<string>PLACEHOLDER</string>
+				<string>Create and add features whose attribute values satisfy a predefined set of contingencies.</string>
 			</dict>
 		</array>
 	</dict>

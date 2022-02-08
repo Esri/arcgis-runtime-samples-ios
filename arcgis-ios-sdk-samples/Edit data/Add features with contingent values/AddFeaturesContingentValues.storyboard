@@ -50,7 +50,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Set the attributes" footerTitle="The options will vary depending on which attributes are selected." id="4MW-RZ-ium">
+                            <tableViewSection headerTitle="Set the attributes" footerTitle="The options will vary depending on which values are selected." id="4MW-RZ-ium">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ryu-ON-idX" detailTextLabel="4mQ-PL-PuU" style="IBUITableViewCellStyleValue1" id="6QF-yr-bro">
                                         <rect key="frame" x="0.0" y="49.5" width="414" height="43.5"/>

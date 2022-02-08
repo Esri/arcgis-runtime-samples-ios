@@ -17,7 +17,11 @@
         "AGSServiceFeatureTable.featureRequestMode",
         "AGSServiceFeatureTable.populateFromService(with:clearCache:outFields:completion:)"
     ],
-    "redirect_from": [],
+    "redirect_from": [
+        "/ios/swift/sample-code/service-feature-table-cache/",
+        "/ios/swift/sample-code/service-feature-table-manual-cache/",
+        "/ios/swift/sample-code/service-feature-table-no-cache/"
+    ],
     "relevant_apis": [
         "AGSFeatureLayer",
         "AGSFeatureRequestMode",

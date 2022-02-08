@@ -2,7 +2,8 @@
 
 Create and add features whose attribute values satisfy a predefined set of contingencies.
 
-![Add features with contingent values](add-features-contingent-values.png)
+![Add features with contingent values map](add-features-contingent-values-1.png)
+![Select contingent values](add-features-contingent-values-2.png)
 
 ## Use case
 

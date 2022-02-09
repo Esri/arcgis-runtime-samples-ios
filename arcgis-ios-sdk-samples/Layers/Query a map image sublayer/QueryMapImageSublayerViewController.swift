@@ -171,19 +171,6 @@ class QueryMapImageSublayerViewController: UIViewController {
     }
     
     /// Called when a feature query of a feature table is unsuccessful.
-    /// // Meet with feature team to show them the sample.
-    /// // Update buffer size terminology to be more descriptive.
-    /// // Change to feature layer renderer for graphics. (Reach out to symbology team) preeti, ryan
-    /// // Recreate the options table view controller.
-    /// // Books, articles, about view controllers. Add to goals (iOS/Esri technicality) and put into action with demo or project
-    /// // Master table view collection views.
-    /// // SwiftUI middle of the year.
-    /// // Next couple of months learn table, collection views. (get better with UIKit)
-    /// // Esri technicality, we'll wait and see.
-    /// // Look for specific geodatabase courses. Add to goals.
-    /// // Write more iOS samples. Transfer to new goals.
-    /// // Add another goal, Esri Community blogposts. (Using SFSymbols on maps) at least 2
-    /// // Passion gaugue: curiousity and consequences/actions of that curiosity
     ///
     /// - Parameters:
     ///   - featureTable: The feature table that was queried.

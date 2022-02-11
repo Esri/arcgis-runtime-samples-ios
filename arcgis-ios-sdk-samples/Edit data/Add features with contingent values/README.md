@@ -7,13 +7,13 @@ Create and add features whose attribute values satisfy a predefined set of conti
 
 ## Use case
 
-Contingent values, are a data design feature that allows you to make values in one field dependent on values in another field. Your choice for a value on one field further constrain the domain values that can be placed on another field. In this way, contingent values enforce data integrity by applying additional constraints to reduce the number of valid field inputs. 
+Contingent values are a data design feature that allow you to make values in one field dependent on values in another field. Your choice for a value on one field further constrains the domain values that can be placed on another field. In this way, contingent values enforce data integrity by applying additional constraints to reduce the number of valid field inputs. 
 
-A field crew working in a sensitive habitat area may be required to stay a certain distance away from occupied bird nests, but the size of that exclusion area differs depending on the bird's level of protection according to presiding laws. Surveyors can add points of bird nests in the work area and their selection of how large the exclusion area is, will be contingent on the values in other attribute fields.
+For example, a field crew working in a sensitive habitat area may be required to stay a certain distance away from occupied bird nests, but the size of that exclusion area differs depending on the bird's level of protection according to presiding laws. Surveyors can add points of bird nests in the work area and their selection of the size of the exclusion area will be contingent on the values in other attribute fields.
 
 ## How to use the sample
 
-Tap on the map to add a feature symbolizing a bird's nest. Then choose values describing the nest's status, protection, and buffer size. Notice how different values are available depending on the values of preceeding fields. Once the contingent values are validated, tap "Done" to add the feature to the map.
+Tap on the map to add a feature symbolizing a bird's nest. Then choose values describing the nest's status, protection, and buffer size. Notice how different values are available depending on the values of preceding fields. Once the contingent values are validated, tap "Done" to add the feature to the map.
 
 ## How it works
 
@@ -23,7 +23,7 @@ Tap on the map to add a feature symbolizing a bird's nest. Then choose values de
 4. Create a new `AGSFeatureLayer` from the feature table and add it to the map.
 5. Create a new `AGSFeature` using `AGSFeatureTable.createFeature()`
 6. Get the initial options by getting the first field object by name using `AGSFeatureTable.field(forName:)`.
-7. Then get get the field's `domain` and cast it as an `AGSCodedValueDomain`.
+7. Then get the field's `domain` and cast it as an `AGSCodedValueDomain`.
 8. Get the coded value domain's `codedValues` to get an array of `AGSCodedValue`s.
 9. After making the initial selection, retrieve the valid contingent values for each field as you select the values for the attributes.  
     i. Get the `AGSContingentValueResult`s by using `contingentValues(with:field:)` with the feature and the target field by name.  
@@ -43,12 +43,16 @@ Tap on the map to add a feature symbolizing a bird's nest. Then choose values de
 
 ## Offline data
 
-This sample uses the [Contingent values birds nests](https://arcgisruntime.maps.arcgis.com/home/item.html?id=e12b54ea799f4606a2712157cf9f6e41). It is downloaded automatically.
+This sample uses the [Contingent values birds nests](https://arcgis.com/home/item.html?id=e12b54ea799f4606a2712157cf9f6e41) mobile geodatabase and the [Fillmore topographic map](https://arcgis.com/home/item.html?id=b5106355f1634b8996e634c04b6a930a) vector tile package for the basemap. Both are downloaded automatically.
 
 ## About the data
 
-The geodatabase contains birds nests in the Filmore area, defined with contingent values. Each feature contains information about its status, protection, and buffer size.
+The mobile geodatabase contains birds nests in the Fillmore area, defined with contingent values. Each feature contains information about its status, protection, and buffer size.
+
+## Additional information
+
+Learn more about contingent values and how to utilize them on the [ArcGIS Pro documentation](https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/overview/contingent-values.htm).
 
 ## Tags
 
-contingent values, contingent coded values, feature table, geodatabase
+contingent coded values, contingent values, feature table, geodatabase

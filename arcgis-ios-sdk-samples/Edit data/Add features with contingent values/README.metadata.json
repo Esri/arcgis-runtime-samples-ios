@@ -1,0 +1,37 @@
+{
+    "category": "Edit data",
+    "description": "Create and add features whose attribute values satisfy a predefined set of contingencies.",
+    "ignore": false,
+    "images": [
+        "add-features-contingent-values-1.png",
+        "add-features-contingent-values-2.png"
+    ],
+    "keywords": [
+        "contingent coded values",
+        "contingent values",
+        "feature table",
+        "geodatabase","
+        "AGSContingencyConstraintViolation",
+        "AGSContingentCodedValue",
+        "AGSContingentRangeValue",
+        "AGSContingentValuesDefinition",
+        "AGSContingentValuesResult",
+        "AGSGeodatabase",
+        "AGSGeodatabaseFeatureTable"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSContingencyConstraintViolation",
+        "AGSContingentCodedValue",
+        "AGSContingentRangeValue",
+        "AGSContingentValuesDefinition",
+        "AGSContingentValuesResult",
+        "AGSGeodatabase",
+        "AGSGeodatabaseFeatureTable"
+    ],
+    "snippets": [
+        "AddFeaturesContingentValuesViewController",
+        "ContingentValuesTableViewController"
+    ],
+    "title": "Add features with contingent values"
+}

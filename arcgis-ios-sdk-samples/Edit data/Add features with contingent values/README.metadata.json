@@ -30,8 +30,8 @@
         "AGSGeodatabaseFeatureTable"
     ],
     "snippets": [
-        "AddFeaturesContingentValuesViewController",
-        "ContingentValuesTableViewController"
+        "AddFeaturesContingentValuesViewController.swift",
+        "ContingentValuesTableViewController.swift"
     ],
     "title": "Add features with contingent values"
 }

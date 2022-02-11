@@ -1,0 +1,41 @@
+{
+    "category": "Features",
+    "description": "Display feature layers from various data sources.",
+    "ignore": false,
+    "images": [
+        "display-feature-layers.png"
+    ],
+    "keywords": [
+        "feature",
+        "geodatabase",
+        "geopackage",
+        "layers",
+        "service",
+        "shapefile",
+        "table",
+        "AGSFeatureLayer",
+        "AGSGeoPackageFeatureTable",
+        "AGSGeodatabase",
+        "AGSPortalItem",
+        "AGSServiceFeatureTable",
+        "AGSShapefileFeatureTable"
+    ],
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-layer-feature-service-.htm",
+        "/ios/latest/swift/sample-code/feature-layer-geodatabase-.htm",
+        "/ios/latest/swift/sample-code/feature-layer-geopackage-.htm",
+        "/ios/latest/swift/sample-code/feature-layer-shapefile-.htm"
+    ],
+    "relevant_apis": [
+        "AGSFeatureLayer",
+        "AGSGeoPackageFeatureTable",
+        "AGSGeodatabase",
+        "AGSPortalItem",
+        "AGSServiceFeatureTable",
+        "AGSShapefileFeatureTable"
+    ],
+    "snippets": [
+        "DisplayFeatureLayersViewController.swift"
+    ],
+    "title": "Display feature layers"
+}

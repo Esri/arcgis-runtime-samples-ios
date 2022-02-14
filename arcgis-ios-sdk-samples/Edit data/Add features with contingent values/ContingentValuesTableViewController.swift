@@ -191,7 +191,7 @@ class ContingentValuesTableViewController: UITableViewController {
     }
     
 func createFeature(with status: AGSCodedValue) {
-    // Get the contingent values defintion from the feature table.
+    // Get the contingent values definition from the feature table.
     let contingentValuesDefinition = featureTable?.contingentValuesDefinition
     // Load the contingent values definition.
     contingentValuesDefinition?.load { [weak self] error in
@@ -246,7 +246,7 @@ func createFeature(with status: AGSCodedValue) {
         }
     }
     
-    /// Toggles visisbility of the buffer size scale picker.
+    /// Toggles visibility of the buffer size scale picker.
     func toggleBufferSizePickerVisibility() {
         let bufferSizePicker = IndexPath(row: 3, section: 0)
         let bufferSizeLabel = bufferSizeCell.detailTextLabel
@@ -321,7 +321,6 @@ extension ContingentValuesTableViewController: UIPickerViewDelegate {
             let bufferSizeTitle = String(bufferSizes[row])
             return bufferSizeTitle
         }
-        return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

@@ -1,6 +1,6 @@
 {
     "category": "Features",
-    "description": "Limit the features displayed on a map with a definition expression.",
+    "description": "Filter features displayed on a map using a definition expression or a display filter.",
     "ignore": false,
     "images": [
         "feature-layer-expression-1.png",
@@ -29,5 +29,5 @@
     "snippets": [
         "DefinitionExpressionViewController.swift"
     ],
-    "title": "Feature layer definition expression"
+    "title": "Filter by definition expression or display filter"
 }

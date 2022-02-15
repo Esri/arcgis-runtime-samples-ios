@@ -29,7 +29,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bXI-m7-7gd"/>
-                                    <barButtonItem title="Filter" id="WgY-oq-QbY"/>
+                                    <barButtonItem title="Filter" id="WgY-oq-QbY">
+                                        <connections>
+                                            <action selector="applyFilter:" destination="gQq-Ov-i0h" id="gXk-fa-elm"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uvl-zK-jeB"/>
                                     <barButtonItem title="Reset" id="7eh-OZ-kvP">
                                         <connections>

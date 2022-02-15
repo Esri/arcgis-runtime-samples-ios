@@ -16,13 +16,17 @@ import UIKit
 import ArcGIS
 
 class DefinitionExpressionViewController: UIViewController {
-    @IBOutlet private weak var mapView: AGSMapView! {
-        mapView.map = makeMap()
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+        }
     }
     
     static let featureServiceURL = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/SF_311_Incidents/FeatureServer/0")
     let featureLayer = AGSFeatureLayer(featureTable: AGSServiceFeatureTable(url: featureServiceURL!))
     var manualDisplayFilterDefinition: AGSManualDisplayFilterDefinition?
+    var displayFilterDefinition: AGSDisplayFilterDefinition?
+    var definitionExpression: String?
     
     func makeMap() -> AGSMap {
         let map = AGSMap(basemapStyle: .arcGISTopographic)
@@ -66,11 +70,18 @@ class DefinitionExpressionViewController: UIViewController {
     
     @IBAction func applyDefinitionExpression() {
         // adding definition expression to show specific features only
-        self.featureLayer.definitionExpression = "req_Type = 'Tree Maintenance or Damage'"
+        displayFilterDefinition = nil
+        definitionExpression = "req_Type = 'Tree Maintenance or Damage'"
+    }
+    
+    @IBAction func applyFilter() {
+        definitionExpression = ""
+        displayFilterDefinition = manualDisplayFilterDefinition
     }
     
     @IBAction func resetDefinitionExpression() {
         // reset definition expression
-        self.featureLayer.definitionExpression = ""
+        definitionExpression = ""
+        displayFilterDefinition = nil
     }
 }

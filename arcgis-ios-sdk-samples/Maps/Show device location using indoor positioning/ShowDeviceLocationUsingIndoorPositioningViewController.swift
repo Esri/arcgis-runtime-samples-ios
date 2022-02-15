@@ -120,7 +120,10 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
                 return
             }
             
-            let pathwaysTable = (map.operationalLayers as! [AGSFeatureLayer]).first(where: { $0.name == "Pathways" })?.featureTable as? AGSArcGISFeatureTable
+            #warning("discuss with Shubham to see if keep it visible")
+            let pathwaysLayer = (map.operationalLayers as! [AGSFeatureLayer]).first(where: { $0.name == "Pathways" })
+            pathwaysLayer?.isVisible = false
+            let pathwaysTable = pathwaysLayer?.featureTable as? AGSArcGISFeatureTable
             
             // Setting up `indoorsLocationDataSource` with positioning, pathways
             // tables and positioning ID.

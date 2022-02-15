@@ -171,7 +171,6 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
         }
     }
     
-    
     /// Display features on a certain floor level using definition expression.
     /// - Parameter floor: The floor level of the features to be displayed.
     func displayFeatures(floor: NSNumber) {

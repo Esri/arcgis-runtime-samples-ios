@@ -58,6 +58,8 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
         
         // The portal that hosts the IPS-enabled map.
         let portal = AGSPortal(url: URL(string: "https://viennardc.maps.arcgis.com")!, loginRequired: true)
+        // WARNING: Never hardcode login information in a production application.
+        // This is done solely for the sake of the sample.
         let credential = AGSCredential(user: "tester_viennardc", password: "password.testing12345")
         portal.credential = credential
         // A floor-aware, IPS enabled web map for floors of Esri Building L in Redlands.

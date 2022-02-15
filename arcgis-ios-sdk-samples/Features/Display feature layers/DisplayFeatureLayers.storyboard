@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Display Feature Layers View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="DisplayFeatureLayersViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSO-dt-Axr" userLabel="Map View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roo-xa-OAJ">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UhG-da-9nD"/>
+                                    <barButtonItem title="Feature Layer Sources" id="LFa-nd-VE1">
+                                        <connections>
+                                            <action selector="changeFeatureLayer" destination="Y6W-OH-hqX" id="4cd-Mw-Of2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9kd-ql-NqV"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RSO-dt-Axr" secondAttribute="trailing" id="6nr-se-1bZ"/>
+                            <constraint firstItem="RSO-dt-Axr" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="J7K-OA-yoT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="roo-xa-OAJ" secondAttribute="bottom" id="M76-Ns-9mO"/>
+                            <constraint firstItem="RSO-dt-Axr" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="PDl-iw-Y4l"/>
+                            <constraint firstItem="roo-xa-OAJ" firstAttribute="top" secondItem="RSO-dt-Axr" secondAttribute="bottom" id="QZl-1I-Kq7"/>
+                            <constraint firstItem="roo-xa-OAJ" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="gmz-8x-DVS"/>
+                            <constraint firstAttribute="trailing" secondItem="roo-xa-OAJ" secondAttribute="trailing" id="wzD-LC-RQ5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="changeFeatureLayerBarButtonItem" destination="LFa-nd-VE1" id="bQP-Qb-p1n"/>
+                        <outlet property="mapView" destination="RSO-dt-Axr" id="kMt-YE-oPv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="84"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -63,7 +63,7 @@ class EditKMLGroundOverlayViewController: UIViewController {
     
     func makeScene(groundOverlay: AGSKMLGroundOverlay) -> AGSScene {
         // Create a scene for the scene view.
-        let scene = AGSScene(basemap: .imagery())
+        let scene = AGSScene(basemapStyle: .arcGISImagery)
         // Create a KML dataset with the ground overlay as the root node.
         let dataset = AGSKMLDataset(rootNode: groundOverlay)
         // Create a KML layer for the scene view.

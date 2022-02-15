@@ -67,13 +67,13 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
         self.getDefaultParameters()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         // hide directions list
         self.setRouteDetailsVisibility(visible: generatedRoute != nil, animated: false)
     }
-
+    
     // MARK: - Route logic
     
     func getDefaultParameters() {
@@ -133,10 +133,12 @@ class RouteAroundBarriersViewController: UIViewController, AGSGeoViewTouchDelega
             if let error = error {
                 self.presentAlert(error: error)
             } else if let routeResult = routeResult,
-                let route = routeResult.routes.first {
-                let routeGraphic = AGSGraphic(geometry: route.routeGeometry, symbol: self.routeSymbol(), attributes: nil)
+                      let route = routeResult.routes.first,
+                      let geometry = route.routeGeometry {
+                let routeGraphic = AGSGraphic(geometry: geometry, symbol: self.routeSymbol(), attributes: nil)
                 self.routeGraphicsOverlay.graphics.add(routeGraphic)
                 self.generatedRoute = route
+                self.mapView.setViewpointGeometry(geometry, padding: 30)
             }
         }
     }

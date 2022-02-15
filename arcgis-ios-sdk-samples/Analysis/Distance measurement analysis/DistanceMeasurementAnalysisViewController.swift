@@ -31,7 +31,7 @@ class DistanceMeasurementAnalysisViewController: UIViewController, AGSGeoViewTou
     
     required init?(coder: NSCoder) {
         // Create the scene.
-        scene = AGSScene(basemap: .topographic())
+        scene = AGSScene(basemapStyle: .arcGISTopographic)
         
         // The elevation image service URL.
         let elevationServiceURL = URL(string: "https://scene.arcgis.com/arcgis/rest/services/BREST_DTM_1M/ImageServer")!

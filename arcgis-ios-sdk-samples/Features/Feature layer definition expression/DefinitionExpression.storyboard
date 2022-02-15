@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gQq-Ov-i0h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gQq-Ov-i0h">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,20 +18,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSj-1P-Z69" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZQ-70-c5r">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Reset" id="7eh-OZ-kvP">
+                                    <barButtonItem title="Expression" id="qEd-bD-k3D">
                                         <connections>
-                                            <action selector="resetDefinitionExpression" destination="gQq-Ov-i0h" id="BoI-I1-Css"/>
+                                            <action selector="applyDefinitionExpression" destination="gQq-Ov-i0h" id="5R7-xQ-g6y"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bXI-m7-7gd"/>
-                                    <barButtonItem title="Apply expression" id="qEd-bD-k3D">
+                                    <barButtonItem title="Filter" id="WgY-oq-QbY"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uvl-zK-jeB"/>
+                                    <barButtonItem title="Reset" id="7eh-OZ-kvP">
                                         <connections>
-                                            <action selector="applyDefinitionExpression" destination="gQq-Ov-i0h" id="5R7-xQ-g6y"/>
+                                            <action selector="resetDefinitionExpression" destination="gQq-Ov-i0h" id="BoI-I1-Css"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

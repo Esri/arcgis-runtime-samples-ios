@@ -16,9 +16,30 @@ import UIKit
 import ArcGIS
 
 class DefinitionExpressionViewController: UIViewController {
-    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet private weak var mapView: AGSMapView! {
+        mapView.map = makeMap()
+    }
     
-    private var featureLayer: AGSFeatureLayer!
+    static let featureServiceURL = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/SF_311_Incidents/FeatureServer/0")
+    let featureLayer = AGSFeatureLayer(featureTable: AGSServiceFeatureTable(url: featureServiceURL!))
+    var manualDisplayFilterDefinition: AGSManualDisplayFilterDefinition?
+    
+    func makeMap() -> AGSMap {
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
+        let viewpoint = AGSViewpoint(latitude: -122.44014487516885, longitude: 37.772296660953138, scale: 100_000)
+        map.initialViewpoint = viewpoint
+        map.operationalLayers.add(featureLayer)
+        map.load { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                guard let damagedTrees = AGSDisplayFilter(name: "Damaged Trees", whereClause: "req_type LIKE '%Tree Maintenance%'") else { return }
+                self.manualDisplayFilterDefinition = AGSManualDisplayFilterDefinition(activeFilter: damagedTrees, availableFilters: [damagedTrees])
+            }
+        }
+        return map
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +62,6 @@ class DefinitionExpressionViewController: UIViewController {
         // add the feature layer to the map
         map.operationalLayers.add(featureLayer)
         
-        // store the feature layer for later use
-        self.featureLayer = featureLayer
     }
     
     @IBAction func applyDefinitionExpression() {

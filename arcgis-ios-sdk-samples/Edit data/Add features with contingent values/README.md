@@ -7,7 +7,7 @@ Create and add features whose attribute values satisfy a predefined set of conti
 
 ## Use case
 
-Contingent values are a data design feature that allow you to make values in one field dependent on values in another field. Your choice for a value on one field further constrains the domain values that can be placed on another field. In this way, contingent values enforce data integrity by applying additional constraints to reduce the number of valid field inputs.
+Contingent values are a data design feature that allow you to make values in one field dependent on values in another field. Your choice for a value on one field further constrains the domain values that can be placed on another field. In this way, contingent values enforce data integrity by applying additional constraints to reduce the number of valid field inputs. 
 
 For example, a field crew working in a sensitive habitat area may be required to stay a certain distance away from occupied bird nests, but the size of that exclusion area differs depending on the bird's level of protection according to presiding laws. Surveyors can add points of bird nests in the work area and their selection of the size of the exclusion area will be contingent on the values in other attribute fields.
 
@@ -22,8 +22,8 @@ Tap on the map to add a feature symbolizing a bird's nest. Then choose values de
 3. Load the `AGSContingentValuesDefinition` from the feature table.
 4. Create a new `AGSFeatureLayer` from the feature table and add it to the map.
 5. Create a new `AGSFeature` using `AGSFeatureTable.createFeature()`
-6. Get the initial options by getting the first field object by name using `AGSFeatureTable.field(forName:)`.
-7. Then get the field's `domain` and cast it as an `AGSCodedValueDomain`.
+6. Get the first field group by name using `AGSFeatureTable.field(forName:)`.
+7. Then get the field's `domain` as an `AGSCodedValueDomain`.
 8. Get the coded value domain's `codedValues` to get an array of `AGSCodedValue`s.
 9. After making the initial selection, retrieve the valid contingent values for each field as you select the values for the attributes.  
     i. Get the `AGSContingentValueResult`s by using `contingentValues(with:field:)` with the feature and the target field by name.  
@@ -43,7 +43,7 @@ Tap on the map to add a feature symbolizing a bird's nest. Then choose values de
 
 ## Offline data
 
-This sample uses the [Contingent values birds nests](https://arcgis.com/home/item.html?id=e12b54ea799f4606a2712157cf9f6e41) mobile geodatabase and the [Fillmore topographic map](https://arcgis.com/home/item.html?id=b5106355f1634b8996e634c04b6a930a) vector tile package for the basemap. Both are downloaded automatically.
+This sample uses the [Contingent values birds nests](https://arcgis.com/home/item.html?id=e12b54ea799f4606a2712157cf9f6e41) mobile geodatabase and the [Fillmore topographic map](https://arcgis.com/home/item.html?id=b5106355f1634b8996e634c04b6a930a) vector tile package for the basemap.
 
 ## About the data
 

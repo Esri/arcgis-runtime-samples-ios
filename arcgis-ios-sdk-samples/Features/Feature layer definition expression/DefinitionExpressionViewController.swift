@@ -18,6 +18,7 @@ import ArcGIS
 class DefinitionExpressionViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
+            // Assign the map to the map view's map.
             mapView.map = makeMap()
         }
     }
@@ -28,21 +29,65 @@ class DefinitionExpressionViewController: UIViewController {
     var displayFilterDefinition: AGSDisplayFilterDefinition?
     var definitionExpression: String?
     
+    @IBAction func applyDefinitionExpression() {
+        // adding definition expression to show specific features only
+        displayFilterDefinition = nil
+        definitionExpression = "req_Type = 'Tree Maintenance or Damage'"
+        countFeatures()
+    }
+    
+    @IBAction func applyFilter() {
+        definitionExpression = ""
+        displayFilterDefinition = manualDisplayFilterDefinition
+        countFeatures()
+        // expression should cut trees and filter should have a different count after trees are reduced
+        // update buttons (apply definition expression, apply display filter)
+    }
+    
+    @IBAction func resetDefinitionExpression() {
+        // reset definition expression
+        definitionExpression = ""
+        displayFilterDefinition = nil
+        countFeatures()
+    }
+    
     func makeMap() -> AGSMap {
+        // Initialize the map with the topographic basemap style.
         let map = AGSMap(basemapStyle: .arcGISTopographic)
-        let viewpoint = AGSViewpoint(latitude: -122.44014487516885, longitude: 37.772296660953138, scale: 100_000)
+        // Set the initial viewpoint.
+        let viewpoint = AGSViewpoint(latitude: 37.772296660953138, longitude: -122.44014487516885, scale: 100000)
         map.initialViewpoint = viewpoint
+        // Add the feature layer to the map's operational layers.
         map.operationalLayers.add(featureLayer)
+        // Load the map.
         map.load { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {
+                // Create a display filter with a name and an SQL expression.
                 guard let damagedTrees = AGSDisplayFilter(name: "Damaged Trees", whereClause: "req_type LIKE '%Tree Maintenance%'") else { return }
+                // Set the manual display filter definition using the display filter.
                 self.manualDisplayFilterDefinition = AGSManualDisplayFilterDefinition(activeFilter: damagedTrees, availableFilters: [damagedTrees])
             }
         }
         return map
+    }
+    
+    func countFeatures() {
+        let extent = mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry.extent
+        
+        let queryParameters = AGSQueryParameters()
+        queryParameters.geometry = extent
+        
+        featureLayer.featureTable?.queryFeatureCount(with: queryParameters) { [weak self] count, error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                self.presentAlert(title: "Current feature count", message: "\(count) features")
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -50,38 +95,5 @@ class DefinitionExpressionViewController: UIViewController {
         
         // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DefinitionExpressionViewController"]
-        
-        // initialize map using topographic basemap
-        let map = AGSMap(basemapStyle: .arcGISTopographic)
-        
-        // assign map to the map view's map
-        mapView.map = map
-        mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13630484, y: 4545415, spatialReference: .webMercator()), scale: 90000))
-        
-        // create feature table using a url to feature server's layer
-        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0")!)
-        // create feature layer using this feature table
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        
-        // add the feature layer to the map
-        map.operationalLayers.add(featureLayer)
-        
-    }
-    
-    @IBAction func applyDefinitionExpression() {
-        // adding definition expression to show specific features only
-        displayFilterDefinition = nil
-        definitionExpression = "req_Type = 'Tree Maintenance or Damage'"
-    }
-    
-    @IBAction func applyFilter() {
-        definitionExpression = ""
-        displayFilterDefinition = manualDisplayFilterDefinition
-    }
-    
-    @IBAction func resetDefinitionExpression() {
-        // reset definition expression
-        definitionExpression = ""
-        displayFilterDefinition = nil
     }
 }

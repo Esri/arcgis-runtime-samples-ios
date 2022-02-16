@@ -31,7 +31,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bXI-m7-7gd"/>
                                     <barButtonItem title="Filter" id="WgY-oq-QbY">
                                         <connections>
-                                            <action selector="applyFilter:" destination="gQq-Ov-i0h" id="gXk-fa-elm"/>
+                                            <action selector="applyFilter" destination="gQq-Ov-i0h" id="Ii4-iA-H2W"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uvl-zK-jeB"/>

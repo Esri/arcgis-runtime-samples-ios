@@ -81,12 +81,12 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
             guard let self = self else { return }
             switch result {
             case .failure:
-                self.presentAlert(message: "Failed to load feature table.")
+                self.presentAlert(error: SetupError.failedToLoadFeatureTables)
             case .success:
                 if let featureTable = tables.first(where: { $0.tableName == "ips_positioning" }) {
                     self.setupIndoorsLocationDataSource(positioningTable: featureTable)
                 } else {
-                    self.presentAlert(message: "Feature table not found")
+                    self.presentAlert(error: SetupError.positioningTableNotFound)
                 }
             }
         }
@@ -267,18 +267,22 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
     }
     
     private enum SetupError: LocalizedError {
-        case dateCreatedFieldNotFound, failedToLoadIPS, mapDoesNotSupportIPS, noIPSDataFound
+        case dateCreatedFieldNotFound, failedToLoadFeatureTables, failedToLoadIPS, mapDoesNotSupportIPS, noIPSDataFound, positioningTableNotFound
         
         var errorDescription: String? {
             switch self {
             case .dateCreatedFieldNotFound:
-                return "DateCreated filed is either missing or has a wrong name"
+                return "DateCreated filed is either missing or has a wrong name."
+            case .failedToLoadFeatureTables:
+                return "Failed to load feature tables."
             case .failedToLoadIPS:
                 return "Failed to load IPS."
             case .mapDoesNotSupportIPS:
                 return "Map does not support IPS."
             case .noIPSDataFound:
                 return "No IPS data found."
+            case .positioningTableNotFound:
+                return "Positioning table not found."
             }
         }
     }

@@ -92,11 +92,15 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
         }
     }
     
-    func setupIndoorsLocationDataSource(positioningTable: AGSFeatureTable) {
+    func setupIndoorsLocationDataSource(positioningTable: AGSServiceFeatureTable) {
         guard let map = mapView.map else { return }
         
         let queryParameters = AGSQueryParameters()
-        queryParameters.orderByFields = [AGSOrderBy(fieldName: "DateCreated", sortOrder: .descending)]
+        guard let dateCreatedFieldName = positioningTable.fields.first(where: { $0.name.caseInsensitiveCompare("DateCreated") == .orderedSame || $0.name.caseInsensitiveCompare("Date_Created") == .orderedSame })?.name else {
+            self.presentAlert(error: SetupError.dateCreatedFieldNotFound)
+            return
+        }
+        queryParameters.orderByFields = [AGSOrderBy(fieldName: dateCreatedFieldName, sortOrder: .descending)]
         queryParameters.maxFeatures = 1
         #warning("test to see if this is required")
         queryParameters.whereClause = "1 = 1"
@@ -105,20 +109,20 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
             guard let self = self else { return }
             
             guard let result = result, error == nil else {
-                self.presentAlert(error: IPSError.failedToLoadIPS)
+                self.presentAlert(error: SetupError.failedToLoadIPS)
                 return
             }
             
             guard let feature = result.featureEnumerator().nextObject() else {
-                self.presentAlert(error: IPSError.noIPSDataFound)
+                self.presentAlert(error: SetupError.noIPSDataFound)
                 return
             }
             
             // The ID that identifies a row in the positioning table. It is
             // possible to initialize ILDS without positioningID, in which case
             // the first row of the positioning table will be used.
-            guard let globalID = feature.attributes["GlobalID"] as? UUID else {
-                self.presentAlert(error: IPSError.mapDoesNotSupportIPS)
+            guard let globalID = feature.attributes[positioningTable.globalIDField] as? UUID else {
+                self.presentAlert(error: SetupError.mapDoesNotSupportIPS)
                 return
             }
             
@@ -129,13 +133,13 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
             
             // Setting up `indoorsLocationDataSource` with positioning, pathways
             // tables and positioning ID.
-            // positioningTable - the "ips_positioning" feature table from an
+            // - positioningTable: the "ips_positioning" feature table from an
             // IPS-enabled map.
-            // pathwaysTable - an `ArcGISFeatureTable` that contains pathways
+            // - pathwaysTable: an `ArcGISFeatureTable` that contains pathways
             // as per the ArcGIS Indoors Information Model. Setting this
             // property enables path snapping of locations provided by the
             // `indoorsLocationDataSource`.
-            // positioningID - an ID which identifies a specific row in the
+            // - positioningID: an ID which identifies a specific row in the
             // positioningTable that should be used for setting up IPS.
             let locationDataSource = AGSIndoorsLocationDataSource(positioningTable: positioningTable, pathwaysTable: pathwaysTable, positioningID: globalID)
             // The delegate which will receive location and status updates
@@ -183,7 +187,7 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
         for layer in layers {
             if layer.name == "Details" || layer.name == "Units" || layer.name == "Levels" {
                 if let featureLayer = layer as? AGSFeatureLayer {
-                    featureLayer.definitionExpression = "VERTICAL_ORDER = \(floor)"
+                    featureLayer.definitionExpression = "LEVEL_ID = \(floor)"
                 }
             }
         }
@@ -215,8 +219,9 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
         // warning: The floor property is not working in Esri building L, so not included in the UI.
         #warning("test to see if this is valid")
         let floor = location.additionalSourceProperties[.floor] as? NSNumber ?? NSNumber(value: Double.nan)
-        let positionSource = location.additionalSourceProperties[AGSLocationSourcePropertyKey.positionSource] as? String ?? "NA"
+        let positionSource = location.additionalSourceProperties[.positionSource] as? String ?? "NA"
         let transmitterCount = location.additionalSourceProperties[AGSLocationSourcePropertyKey(rawValue: "transmitterCount")] ?? "NA"
+        let satelliteCount = location.additionalSourceProperties[.satelliteCount] ?? "NA"
         let horizontalAccuracy = numberFormatter.string(from: NSNumber(value: location.horizontalAccuracy)) ?? "NA"
         
         // Vertical accuracy is always zero in our test, so we don't need to include it.
@@ -233,14 +238,41 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
             self.beaconStatusLabel.text = beaconText
         }
         // warning: Only for debugging.
-        print(floor, positionSource, transmitterCount, horizontalAccuracy, verticalAccuracy)
+        print(floor, positionSource, transmitterCount, satelliteCount, horizontalAccuracy, verticalAccuracy)
     }
     
-    private enum IPSError: LocalizedError {
-        case failedToLoadIPS, mapDoesNotSupportIPS, noIPSDataFound
+    func locationDataSource(_ locationDataSource: AGSLocationDataSource, statusDidChange status: AGSLocationDataSourceStatus) {
+        switch status {
+        case .starting, .started, .stopped:
+            // - starting: it happens immediately after user starts the location
+            // data source. It takes a while to completely start the ILDS.
+            // - started: it happens once ILDS successfully started.
+            // - stopped: ILDS may stop due to internal error, e.g. user revoked
+            // the location permission in system settings. We don't handle these
+            // error here.
+            break
+        case .failedToStart:
+            // - failedToStart: This happens if user provides a wrong UUID, or
+            // the positioning table has no entries, etc.
+            DispatchQueue.main.async { [weak self] in
+                if let error = locationDataSource.error {
+                    self?.presentAlert(error: error)
+                } else {
+                    self?.presentAlert(title: "Fail to start ILDS", message: "ILDS failed to start due to an unknown error.")
+                }
+            }
+        @unknown default:
+            fatalError("Unknown location data source status.")
+        }
+    }
+    
+    private enum SetupError: LocalizedError {
+        case dateCreatedFieldNotFound, failedToLoadIPS, mapDoesNotSupportIPS, noIPSDataFound
         
         var errorDescription: String? {
             switch self {
+            case .dateCreatedFieldNotFound:
+                return "DateCreated filed is either missing or has a wrong name"
             case .failedToLoadIPS:
                 return "Failed to load IPS."
             case .mapDoesNotSupportIPS:

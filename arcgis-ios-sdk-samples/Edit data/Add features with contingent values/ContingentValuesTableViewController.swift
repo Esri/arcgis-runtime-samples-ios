@@ -1,4 +1,4 @@
-// Copyright 2021 Esri
+// Copyright 2022 Esri
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ class ContingentValuesTableViewController: UITableViewController {
         // Set the feature's geometry to the map point.
         feature.geometry = mapPoint
         // Add the feature to the feature table.
-        featureTable.add(feature) { _ in
+        featureTable.add(feature) { [unowned self] _ in
             // Create buffer graphics for the new feature.
             self.delegate?.createBufferGraphics()
             self.dismiss(animated: true)
@@ -92,7 +92,7 @@ class ContingentValuesTableViewController: UITableViewController {
         didSet {
             if let selectedBufferSize = selectedBufferSize {
                 // Set the the buffer size attribute to the selected integer.
-                feature?.attributes["BufferSize"] = self.selectedBufferSize
+                feature?.attributes["BufferSize"] = selectedBufferSize
                 let bufferSize = String(selectedBufferSize)
                 // Display the selected buffer size.
                 editRightDetail(cell: bufferSizeCell, rightDetailText: bufferSize)
@@ -121,7 +121,7 @@ class ContingentValuesTableViewController: UITableViewController {
         // Get the coded value domain's coded values.
         let statusCodedValues = codedValueDomain.codedValues
         // Get the selected index if applicable.
-        let selectedIndex = statusCodedValues.firstIndex { $0.name == self.selectedStatus?.name } ?? nil
+        let selectedIndex = statusCodedValues.firstIndex { $0.name == self.selectedStatus?.name }
         // Use the coded value names as labels to show the option table view controller.
         let optionsViewController = OptionsTableViewController(labels: statusCodedValues.map { $0.name }, selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
@@ -153,7 +153,7 @@ class ContingentValuesTableViewController: UITableViewController {
         // Get contingent coded values by field group.
         guard let protectionGroupContingentValues = contingentValuesResult?.contingentValuesByFieldGroup["ProtectionFieldGroup"] as? [AGSContingentCodedValue] else { return }
         // Get the selected index if applicable.
-        let selectedIndex = protectionGroupContingentValues.firstIndex { $0.codedValue.name == self.selectedProtection?.codedValue.name} ?? nil
+        let selectedIndex = protectionGroupContingentValues.firstIndex { $0.codedValue.name == self.selectedProtection?.codedValue.name }
         // Use the coded value names as labels to show the option table view controller.
         let optionsViewController = OptionsTableViewController(labels: protectionGroupContingentValues.map { $0.codedValue.name }, selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
@@ -218,7 +218,6 @@ func createFeature(with status: AGSCodedValue) {
             // Present an alert if there are contingency violations.
             self.presentAlert(title: "", message: "Invalid contingent values")
         }
-        
     }
     
     // MARK: UI Functions
@@ -290,7 +289,6 @@ func createFeature(with status: AGSCodedValue) {
         }
     }
         
-    /* UITableViewDataSource */
     
     /// Return the number of rows depending on the picker view.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -320,6 +318,8 @@ extension ContingentValuesTableViewController: UIPickerViewDelegate {
         if let bufferSizes = bufferSizes {
             let bufferSizeTitle = String(bufferSizes[row])
             return bufferSizeTitle
+        } else {
+            return nil
         }
     }
     

@@ -84,15 +84,13 @@ class AddFeaturesContingentValuesViewController: UIViewController {
                 } else {
                     // Create and load the feature layer from the feature table.
                     let featureLayer = AGSFeatureLayer(featureTable: self.featureTable!)
-                    featureLayer.load { _ in
-                        // Add the feature layer to the map.
-                        self.mapView.map?.operationalLayers.add(featureLayer)
-                        // Set the map's viewpoint to the feature layer's full extent.
-                        let extent = featureLayer.fullExtent
-                        self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent!))
-                        // Add buffer graphics for the feature layer.
-                        self.createBufferGraphics()
-                    }
+                    // Add the feature layer to the map.
+                    self.mapView.map?.operationalLayers.add(featureLayer)
+                    // Set the map's viewpoint to the feature layer's full extent.
+                    let extent = featureLayer.fullExtent
+                    self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent!))
+                    // Add buffer graphics for the feature layer.
+                    self.createBufferGraphics()
                 }
             }
         case .failure(let error):

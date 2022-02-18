@@ -103,7 +103,6 @@ class ContingentValuesTableViewController: UITableViewController {
                 // If the value is nil, clear the right detail text.
                 editRightDetail(cell: bufferSizeCell, rightDetailText: " ")
                 // Hide the buffer size picker.
-                bufferSizePickerHidden = false
                 toggleBufferSizePickerVisibility()
             }
         }
@@ -249,14 +248,11 @@ func createFeature(with status: AGSCodedValue) {
     /// Toggles visibility of the buffer size scale picker.
     func toggleBufferSizePickerVisibility() {
         let bufferSizePicker = IndexPath(row: 3, section: 0)
-        let bufferSizeLabel = bufferSizeCell.detailTextLabel
         tableView.performBatchUpdates({
             if bufferSizePickerHidden {
-                bufferSizeLabel?.textColor = .accentColor
                 tableView.insertRows(at: [bufferSizePicker], with: .fade)
                 bufferSizePickerHidden = false
             } else {
-                bufferSizeLabel?.textColor = nil
                 tableView.deleteRows(at: [bufferSizePicker], with: .fade)
                 bufferSizePickerHidden = true
             }
@@ -280,11 +276,7 @@ func createFeature(with status: AGSCodedValue) {
         case bufferSizeCell:
             tableView.deselectRow(at: indexPath, animated: true)
             showBufferSizeOptions()
-            if selectedProtection != nil {
-                toggleBufferSizePickerVisibility()
-            } else {
-                return
-            }
+            toggleBufferSizePickerVisibility()
         default:
             return
         }

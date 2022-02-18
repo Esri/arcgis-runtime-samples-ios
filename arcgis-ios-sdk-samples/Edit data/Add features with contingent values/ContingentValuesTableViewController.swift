@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 protocol ContingentValuesDelegate: AnyObject {
-    func createBufferGraphics()
+    func createGraphics(for feature: AGSFeature) -> AGSGraphic
 }
 
 class ContingentValuesTableViewController: UITableViewController {
@@ -42,7 +42,8 @@ class ContingentValuesTableViewController: UITableViewController {
         // Add the feature to the feature table.
         featureTable.add(feature) { [unowned self] _ in
             // Create buffer graphics for the new feature.
-            self.delegate?.createBufferGraphics()
+            let graphic = self.delegate?.createGraphics(for: feature)
+            graphicsOverlay?.graphics.add(graphic)
             self.dismiss(animated: true)
         }
     }

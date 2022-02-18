@@ -90,7 +90,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
                     let extent = featureLayer.fullExtent
                     self.mapView.setViewpoint(AGSViewpoint(targetExtent: extent!))
                     // Add buffer graphics for the feature layer.
-                    self.createBufferGraphics()
+                    self.queryFeatures()
                 }
             }
         case .failure(let error):
@@ -108,12 +108,42 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         return map
     }
     
+    /// Create buffer graphics for the features.
+    func queryFeatures() {
+        // Create the query parameters.
+        let queryParameters = AGSQueryParameters()
+        // Set the where clause to filter for buffer sizes greater than 0.
+        queryParameters.whereClause = "BufferSize > 0"
+        // Create an array of graphics to add to the graphics overlay.
+        var graphics = [AGSGraphic]()
+        // Query the features with the query parameters.
+        featureTable?.queryFeatures(with: queryParameters) { [weak self ] result, error in
+            guard let self = self else { return }
+            if let error = error {
+                // Present an alert if there is an error while querying the features.
+                self.presentAlert(error: error)
+            } else if let result = result {
+                // Get the array of features from the query result.
+                let features = result.featureEnumerator().allObjects
+                // For each feature, add the buffer symbol according to its buffer size.
+                features.forEach { feature in
+                    let graphic = self.createGraphics(for: feature)
+                    graphics.append(graphic)
+                }
+                // Add the graphics to the graphics overlay.
+                self.graphicsOverlay.graphics.addObjects(from: graphics)
+                // Add the graphics overlay to the map view.
+                self.mapView.graphicsOverlays.add(self.graphicsOverlay)
+            }
+        }
+    }
+    
     /// Add a single feature to the map.
     func addFeature(at mapPoint: AGSPoint) {
         // Create a symbol to represent a bird's nest.
         let symbol = AGSSimpleMarkerSymbol(style: .circle, color: .black, size: 11)
         // Add the graphic to the graphics overlay.
-        self.graphicsOverlay.graphics.add(AGSGraphic(geometry: mapPoint, symbol: symbol))
+        graphicsOverlay.graphics.add(AGSGraphic(geometry: mapPoint, symbol: symbol))
         // Show the attributes table view.
         performSegue(withIdentifier: "AddFeature", sender: self)
     }
@@ -147,45 +177,18 @@ class AddFeaturesContingentValuesViewController: UIViewController {
 }
 
 extension AddFeaturesContingentValuesViewController: ContingentValuesDelegate {
-    /// Create buffer graphics for the features.
-    func createBufferGraphics() {
-        // Create the query parameters.
-        let queryParameters = AGSQueryParameters()
-        // Set the where clause to filter for buffer sizes greater than 0.
-        queryParameters.whereClause = "BufferSize > 0"
-        // Create an array of graphics to add to the graphics overlay.
-        var graphics = [AGSGraphic]()
-        // Create a graphics overlay.
-        let graphicsOverlay = AGSGraphicsOverlay()
+    func createGraphics(for feature: AGSFeature) -> AGSGraphic {
+        // Get the feature's buffer size.
+        let bufferSize = feature.attributes["BufferSize"] as! Double
+        // Get a polygon using the feature's buffer size and geometry.
+        let polygon = AGSGeometryEngine.bufferGeometry(feature.geometry!, byDistance: bufferSize)
         // Create the outline for the buffers.
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
         // Create the buffer symbol.
         let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
-        // Query the features with the query parameters.
-        featureTable?.queryFeatures(with: queryParameters) { [weak self ] result, error in
-            guard let self = self else { return }
-            if let error = error {
-                // Present an alert if there is an error while querying the features.
-                self.presentAlert(error: error)
-            } else if let result = result {
-                // Get the array of features from the query result.
-                let features = result.featureEnumerator().allObjects
-                // For each feature, add the buffer symbol according to its buffer size.
-                features.forEach { feature in
-                    // Get the feature's buffer size.
-                    let bufferSize = feature.attributes["BufferSize"] as! Double
-                    // Get a polygon using the feature's buffer size and geometry.
-                    let polygon = AGSGeometryEngine.bufferGeometry(feature.geometry!, byDistance: bufferSize)
-                    // Create an a graphic and add it to the array.
-                    let graphic = AGSGraphic(geometry: polygon, symbol: bufferSymbol)
-                    graphics.append(graphic)
-                }
-                // Add the graphics to the graphics overlay.
-                graphicsOverlay.graphics.addObjects(from: graphics)
-                // Add the graphics overlay to the map view.
-                self.mapView.graphicsOverlays.add(graphicsOverlay)
-            }
-        }
+        // Create an a graphic and add it to the array.
+        let graphic = AGSGraphic(geometry: polygon, symbol: bufferSymbol)
+        return graphic
     }
 }
 

@@ -26,30 +26,35 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
     }
     /// The label to display location data source info.
     @IBOutlet var sourceStatusLabel: UILabel!
-    /// The label to display beacons info.
-    @IBOutlet var beaconStatusLabel: UILabel!
+    /// The label to display sensors info.
+    @IBOutlet var sensorStatusLabel: UILabel!
     
-    /// The number formatter for status label.
-    let numberFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
+    // MARK: Properties
+    
+    /// The measurement formatter for sensor accuracy.
+    let measurementFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.unitStyle = .short
+        formatter.unitOptions = .providedUnit
         return formatter
     }()
     
     /// The app-wide API key.
     let apiKey = AGSArcGISRuntimeEnvironment.apiKey
-    /// A location data source based on sensor data (radio, GPS, motion sensors).
+    /// A indoors location data source based on sensor data, including but not
+    /// limited to radio, GPS, motion sensors.
     var indoorsLocationDataSource: AGSIndoorsLocationDataSource?
     
     /// The current floor level reported by the indoors location data source.
-    var currentFloor: NSNumber! {
+    var currentFloor: Int! {
         willSet(newValue) {
             if newValue != currentFloor {
                 displayFeatures(floor: newValue)
             }
         }
     }
+    
+    // MARK: Methods
     
     /// Load an IPS-enabled web map from a portal.
     func makeMap() -> AGSMap {
@@ -62,7 +67,7 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
         // This is done solely for the sake of the sample.
         let credential = AGSCredential(user: "tester_viennardc", password: "password.testing12345")
         portal.credential = credential
-        // A floor-aware, IPS enabled web map for floors of Esri Building L in Redlands.
+        // A floor-aware, IPS-enabled web map for floors of Esri Building L in Redlands.
         let map = AGSMap(item: AGSPortalItem(portal: portal, itemID: "89f88764c29b48218366855d7717d266"))
         map.load { [weak self] error in
             if let error = error {
@@ -92,27 +97,31 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
         }
     }
     
+    /// Set up indoors location data source using IPS positioning table.
     func setupIndoorsLocationDataSource(positioningTable: AGSServiceFeatureTable) {
         guard let map = mapView.map else { return }
         
         let queryParameters = AGSQueryParameters()
-        guard let dateCreatedFieldName = positioningTable.fields.first(where: { $0.name.caseInsensitiveCompare("DateCreated") == .orderedSame || $0.name.caseInsensitiveCompare("Date_Created") == .orderedSame })?.name else {
+        // Find the table field name that matches "date created" pattern.
+        let matchesDateCreatedFieldNamePattern: (String) -> Bool = {
+            $0.caseInsensitiveCompare("DateCreated") == .orderedSame ||
+            $0.caseInsensitiveCompare("DATE_CREATED") == .orderedSame
+        }
+        guard let dateCreatedFieldName = positioningTable.fields.first(where: { matchesDateCreatedFieldNamePattern($0.name) })?.name else {
             self.presentAlert(error: SetupError.dateCreatedFieldNotFound)
             return
         }
         queryParameters.orderByFields = [AGSOrderBy(fieldName: dateCreatedFieldName, sortOrder: .descending)]
         queryParameters.maxFeatures = 1
-        #warning("test to see if this is required")
-        queryParameters.whereClause = "1 = 1"
+        // 1=1 will give all the features from the table.
+        queryParameters.whereClause = "1=1"
         
         positioningTable.queryFeatures(with: queryParameters) { [weak self] result, error in
             guard let self = self else { return }
-            
             guard let result = result, error == nil else {
                 self.presentAlert(error: SetupError.failedToLoadIPS)
                 return
             }
-            
             guard let feature = result.featureEnumerator().nextObject() else {
                 self.presentAlert(error: SetupError.noIPSDataFound)
                 return
@@ -126,7 +135,6 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
                 return
             }
             
-            #warning("discuss with Shubham to see if keep it visible")
             let pathwaysLayer = (map.operationalLayers as! [AGSFeatureLayer]).first(where: { $0.name == "Pathways" })
             pathwaysLayer?.isVisible = false
             let pathwaysTable = pathwaysLayer?.featureTable as? AGSArcGISFeatureTable
@@ -151,7 +159,7 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
                 self.mapView.setViewpointGeometry(extent)
             }
             self.mapView.locationDisplay.dataSource = locationDataSource
-            self.mapView.locationDisplay.autoPanMode = .compassNavigation
+            self.mapView.locationDisplay.autoPanMode = .navigation
             // Asynchronously start of the location display, which will in-turn
             // start `indoorsLocationDataSource` to receive IPS updates.
             self.mapView.locationDisplay.start { [weak self] (error) in
@@ -182,16 +190,18 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
     
     /// Display features on a certain floor level using definition expression.
     /// - Parameter floor: The floor level of the features to be displayed.
-    func displayFeatures(floor: NSNumber) {
+    func displayFeatures(floor: Int) {
         guard let layers = mapView.map?.operationalLayers as? [AGSLayer] else { return }
         for layer in layers {
             if layer.name == "Details" || layer.name == "Units" || layer.name == "Levels" {
                 if let featureLayer = layer as? AGSFeatureLayer {
-                    featureLayer.definitionExpression = "LEVEL_ID = \(floor)"
+                    featureLayer.definitionExpression = "VERTICAL_ORDER = \(floor)"
                 }
             }
         }
     }
+    
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -210,35 +220,44 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
     }
 }
 
+// MARK: - AGSLocationChangeHandlerDelegate
+
 extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationChangeHandlerDelegate {
     /// The delegate method to receive location updates from the data source.
     /// - Parameters:
     ///   - locationDataSource: The indoors location data source.
     ///   - location: The indoors location.
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
-        // warning: The floor property is not working in Esri building L, so not included in the UI.
-        #warning("test to see if this is valid")
-        let floor = location.additionalSourceProperties[.floor] as? NSNumber ?? NSNumber(value: Double.nan)
+        // The floor level provided by the indoors beacons.
+        let floorText: String
+        if let floor = location.additionalSourceProperties[.floor] as? Int {
+            currentFloor = floor
+            floorText = String(format: "Floor level: %d", floor)
+        } else {
+            floorText = "Floor not available"
+        }
+        
+        // The horizontal accuracy of the positioning signal from the sensors.
+        let horizontalAccuracy = measurementFormatter.string(from: Measurement(value: Double(location.horizontalAccuracy), unit: UnitLength.meters))
+        
+        // Possible sources: GNSS, AppleIPS, BLE, WIFI, CELL, IP.
         let positionSource = location.additionalSourceProperties[.positionSource] as? String ?? "NA"
-        let transmitterCount = location.additionalSourceProperties[AGSLocationSourcePropertyKey(rawValue: "transmitterCount")] ?? "NA"
-        let satelliteCount = location.additionalSourceProperties[.satelliteCount] ?? "NA"
-        let horizontalAccuracy = numberFormatter.string(from: NSNumber(value: location.horizontalAccuracy)) ?? "NA"
-        
-        // Vertical accuracy is always zero in our test, so we don't need to include it.
-        let verticalAccuracy = numberFormatter.string(from: NSNumber(value: location.verticalAccuracy))
-        
-        currentFloor = floor
-        
-        let accuracyText = "Floor: \(floor), Position source: \(positionSource)"
-        let beaconText = "\(transmitterCount) beacons, Horizontal accuracy: \(horizontalAccuracy)"
+        let transmitterCount = location.additionalSourceProperties[AGSLocationSourcePropertyKey(rawValue: "transmitterCount")] as? Int ?? 0
+        let satelliteCount = location.additionalSourceProperties[.satelliteCount] as? Int ?? 0
+        let sensorCount: String = {
+            switch positionSource {
+            case "GNSS":
+                return String(format: "%d satellite(s)", satelliteCount)
+            default:
+                return String(format: "%d beacon(s)", transmitterCount)
+            }
+        }()
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.sourceStatusLabel.text = accuracyText
-            self.beaconStatusLabel.text = beaconText
+            self.sourceStatusLabel.text = String(format: "%@, Position source: %@", floorText, positionSource)
+            self.sensorStatusLabel.text = String(format: "%@, Horizontal accuracy: %@", sensorCount, horizontalAccuracy)
         }
-        // warning: Only for debugging.
-        print(floor, positionSource, transmitterCount, satelliteCount, horizontalAccuracy, verticalAccuracy)
     }
     
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, statusDidChange status: AGSLocationDataSourceStatus) {
@@ -265,7 +284,11 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
             fatalError("Unknown location data source status.")
         }
     }
-    
+}
+
+// MARK: - SetupError
+
+extension ShowDeviceLocationUsingIndoorPositioningViewController {
     private enum SetupError: LocalizedError {
         case dateCreatedFieldNotFound, failedToLoadFeatureTables, failedToLoadIPS, mapDoesNotSupportIPS, noIPSDataFound, positioningTableNotFound
         

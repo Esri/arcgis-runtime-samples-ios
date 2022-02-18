@@ -190,21 +190,21 @@ class ContingentValuesTableViewController: UITableViewController {
         bufferSizePickerView.reloadAllComponents()
     }
     
-func createFeature(with status: AGSCodedValue) {
-    // Get the contingent values definition from the feature table.
-    let contingentValuesDefinition = featureTable?.contingentValuesDefinition
-    // Load the contingent values definition.
-    contingentValuesDefinition?.load { [weak self] error in
-        guard let self = self else { return }
-        if let error = error {
-            self.presentAlert(error: error)
-        } else if let feature = self.featureTable?.createFeature() as? AGSArcGISFeature {
-            // Create a feature from the feature table and set the initial attribute.
-            feature.attributes["Status"] = status.code
-            self.feature = feature
+    func createFeature(with status: AGSCodedValue) {
+        // Get the contingent values definition from the feature table.
+        let contingentValuesDefinition = featureTable?.contingentValuesDefinition
+        // Load the contingent values definition.
+        contingentValuesDefinition?.load { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else if let feature = self.featureTable?.createFeature() as? AGSArcGISFeature {
+                // Create a feature from the feature table and set the initial attribute.
+                feature.attributes["Status"] = status.code
+                self.feature = feature
+            }
         }
     }
-}
 
     /// Ensure that the selected values are a valid combination.
     func validateContingency() {

@@ -33,15 +33,12 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     required init?(coder: NSCoder) {
         let geodatabaseURL = Bundle.main.url(forResource: "ContingentValuesBirdNests", withExtension: "geodatabase")!
         do {
-            // Create a temporary directory URL.
-            let temporaryDirectoryURL = try FileManager.default.url(
-                for: .itemReplacementDirectory,
-                in: .userDomainMask,
-                appropriateFor: geodatabaseURL,
-                create: true
-            )
+            // Create a temporary directory URL with subdirectories.
+            let temporaryDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+            try? FileManager.default.createDirectory(at: temporaryDirectoryURL, withIntermediateDirectories: true)
             // Create a temporary URL where the geodatabase URL can be copied to.
-            let temporaryGeodatabaseURL = temporaryDirectoryURL.appendingPathComponent(ProcessInfo.processInfo.globallyUniqueString)
+            let temporaryGeodatabaseURL = temporaryDirectoryURL.appendingPathComponent("birdsNestGDB", isDirectory: false).appendingPathExtension("geodatabase")
+            // Copy the item to the temporary URL.
             try FileManager.default.copyItem(at: geodatabaseURL, to: temporaryGeodatabaseURL)
             // Create the geodatabase with the URL.
             geodatabase = AGSGeodatabase(fileURL: temporaryGeodatabaseURL)

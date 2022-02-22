@@ -24,7 +24,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     
     let geodatabase: AGSGeodatabase!
     /// The graphics overlay to add the feature to.
-    var graphicsOverlay = AGSGraphicsOverlay()
+    let graphicsOverlay = AGSGraphicsOverlay()
     /// The geodatabase's feature table.
     var featureTable: AGSArcGISFeatureTable?
     /// The map point to add the feature to.
@@ -73,14 +73,15 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         switch result {
         case .success:
             // Get and load the first feature table in the geodatabase.
-            featureTable = geodatabase.geodatabaseFeatureTables[0] as AGSArcGISFeatureTable
-            featureTable?.load { [weak self] error in
+            let featureTable = geodatabase.geodatabaseFeatureTables[0] as AGSArcGISFeatureTable
+            self.featureTable = featureTable
+            featureTable.load { [weak self] error in
                 guard let self = self else { return }
                 if let error = error {
                     self.presentAlert(error: error)
                 } else {
                     // Create and load the feature layer from the feature table.
-                    let featureLayer = AGSFeatureLayer(featureTable: self.featureTable!)
+                    let featureLayer = AGSFeatureLayer(featureTable: featureTable)
                     // Add the feature layer to the map.
                     self.mapView.map?.operationalLayers.add(featureLayer)
                     // Set the map's viewpoint to the feature layer's full extent.
@@ -95,7 +96,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         }
     }
     
-    /// Creates a map with a vector tiled layer basemap.
+    /// Create a map with a vector tiled layer basemap.
     func makeMap() -> AGSMap {
         // Get the vector tiled layer by name.
         let fillmoreVectorTiledLayer = AGSArcGISVectorTiledLayer(name: "FillmoreTopographicMap")
@@ -107,6 +108,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     
     /// Create buffer graphics for the features.
     func queryFeatures() {
+        guard let featureTable = featureTable else { return }
         // Create the query parameters.
         let queryParameters = AGSQueryParameters()
         // Set the where clause to filter for buffer sizes greater than 0.
@@ -114,7 +116,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         // Create an array of graphics to add to the graphics overlay.
         var graphics = [AGSGraphic]()
         // Query the features with the query parameters.
-        featureTable?.queryFeatures(with: queryParameters) { [weak self ] result, error in
+        featureTable.queryFeatures(with: queryParameters) { [weak self] result, error in
             guard let self = self else { return }
             if let error = error {
                 // Present an alert if there is an error while querying the features.
@@ -151,13 +153,13 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         mapView.touchDelegate = self
         
         // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "AddFeaturesContingentValuesViewController",
             "ContingentValuesTableViewController"
         ]
     }
     
-    // MARK: - Navigation
+    // MARK: Navigation
     
     /// Prepare for the segue.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

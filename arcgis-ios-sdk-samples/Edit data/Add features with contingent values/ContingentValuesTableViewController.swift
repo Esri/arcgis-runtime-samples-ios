@@ -282,7 +282,6 @@ class ContingentValuesTableViewController: UITableViewController {
         }
     }
         
-    
     /// Return the number of rows depending on the picker view.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRows = super.tableView(tableView, numberOfRowsInSection: section)

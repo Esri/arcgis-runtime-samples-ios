@@ -41,7 +41,7 @@ This sample uses an [IPS-enabled web map](https://viennardc.maps.arcgis.com/home
 ## Additional information
 
 * Location and Bluetooth permissions are required for this sample.
-* To learn more about IPS, read the [Indoor positioning](https://developers.arcgis.com/ios/device-location/indoor-positioning/) article on ArcGIS Developer website.
+* To learn more about IPS, read the [Indoor positioning](https://developers.arcgis.com/ios/device-location/indoor-positioning/) article on the ArcGIS Developer website.
 * To learn more about how to deploy the indoor positioning system, read the [Deploy ArcGIS IPS](https://doc.arcgis.com/en/ips/latest/get-started/introduction-to-the-deployment-of-arcgis-ips.htm) article.
 
 ## Tags

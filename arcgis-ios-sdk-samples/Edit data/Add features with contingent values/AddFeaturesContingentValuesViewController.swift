@@ -70,6 +70,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     deinit {
         if let geodatabase = geodatabase {
             geodatabase.close()
+            // Remove all of the temporary files.
             try? FileManager.default.removeItem(at: geodatabase.fileURL)
             try? FileManager.default.removeItem(at: temporaryGeodatabaseURL!)
         }

@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 protocol ContingentValuesDelegate: AnyObject {
-    func createGraphic(for feature: AGSFeature) -> AGSGraphic
+    func contingentValuesTableViewController(_ controller: ContingentValuesTableViewController, didFinishWith feature: AGSFeature)
 }
 
 class ContingentValuesTableViewController: UITableViewController {
@@ -36,16 +36,8 @@ class ContingentValuesTableViewController: UITableViewController {
     }
     
     @IBAction func doneBarButtonItemTapped(_ sender: Any) {
-        guard let feature = feature, let featureTable = featureTable else { return }
-        // Set the feature's geometry to the map point.
-        feature.geometry = mapPoint
-        // Add the feature to the feature table.
-        featureTable.add(feature) { [unowned self] _ in
-            // Create buffer graphics for the new feature.
-            let graphic = self.delegate?.createGraphic(for: feature)
-            graphicsOverlay?.graphics.add(graphic)
-            self.dismiss(animated: true)
-        }
+        delegate?.contingentValuesTableViewController(self, didFinishWith: feature)
+        self.dismiss(animated: true)
     }
     
     // MARK: Properties
@@ -54,8 +46,6 @@ class ContingentValuesTableViewController: UITableViewController {
     var featureTable: AGSArcGISFeatureTable!
     /// The feature to add to the feature table.
     var feature: AGSArcGISFeature!
-    /// The point on the map to add the feature to.
-    var mapPoint: AGSPoint!
     /// An array of buffer sizes valid for the feature.
     var bufferSizes: [Int]!
     /// The graphics overlay to add the features to.

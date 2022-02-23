@@ -154,6 +154,21 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         performSegue(withIdentifier: "AddFeature", sender: self)
     }
     
+    /// Create a graphic for the given feature.
+    func createGraphic(for feature: AGSFeature) -> AGSGraphic {
+        // Get the feature's buffer size.
+        let bufferSize = feature.attributes["BufferSize"] as! Double
+        // Get a polygon using the feature's buffer size and geometry.
+        let polygon = AGSGeometryEngine.bufferGeometry(feature.geometry!, byDistance: bufferSize)
+        // Create the outline for the buffers.
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
+        // Create the buffer symbol.
+        let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
+        // Create an a graphic and add it to the array.
+        let graphic = AGSGraphic(geometry: polygon, symbol: bufferSymbol)
+        return graphic
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -174,25 +189,20 @@ class AddFeaturesContingentValuesViewController: UIViewController {
             controller.isModalInPresentation = true
             controller.featureTable = featureTable
             controller.graphicsOverlay = graphicsOverlay
-            controller.mapPoint = mapPoint
             controller.delegate = self
         }
     }
 }
 
 extension AddFeaturesContingentValuesViewController: ContingentValuesDelegate {
-    func createGraphic(for feature: AGSFeature) -> AGSGraphic {
-        // Get the feature's buffer size.
-        let bufferSize = feature.attributes["BufferSize"] as! Double
-        // Get a polygon using the feature's buffer size and geometry.
-        let polygon = AGSGeometryEngine.bufferGeometry(feature.geometry!, byDistance: bufferSize)
-        // Create the outline for the buffers.
-        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: .black, width: 2)
-        // Create the buffer symbol.
-        let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
-        // Create an a graphic and add it to the array.
-        let graphic = AGSGraphic(geometry: polygon, symbol: bufferSymbol)
-        return graphic
+    func contingentValuesTableViewController(_ controller: ContingentValuesTableViewController, didFinishWith feature: AGSFeature) {
+        feature.geometry = mapPoint
+        let graphic = createGraphic(for: feature)
+        // Add the feature to the feature table.
+        featureTable?.add(feature) { [weak self] _ in
+            // Add the graphic to the graphics overlay.
+            self?.graphicsOverlay.graphics.add(graphic)
+        }
     }
 }
 

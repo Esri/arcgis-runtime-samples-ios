@@ -115,7 +115,7 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
         queryParameters.maxFeatures = 1
         // 1=1 will give all the features from the table.
         queryParameters.whereClause = "1=1"
-        
+        // Query features from the table to ensure they support IPS.
         positioningTable.queryFeatures(with: queryParameters) { [weak self] result, error in
             guard let self = self else { return }
             guard let result = result, error == nil else {

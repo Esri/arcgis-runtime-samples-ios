@@ -19,10 +19,16 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
+            // Add the graphics overlay to the map view.
+            mapView.graphicsOverlays.add(graphicsOverlay)
+            // Set the map view's touch delegate.
+            mapView.touchDelegate = self
         }
     }
     
     let geodatabase: AGSGeodatabase!
+    /// The temporary directory containing the geodatabase.
+    var temporaryGeodatabaseURL: URL?
     /// The graphics overlay to add the feature to.
     let graphicsOverlay = AGSGraphicsOverlay()
     /// The geodatabase's feature table.
@@ -37,11 +43,11 @@ class AddFeaturesContingentValuesViewController: UIViewController {
             let temporaryDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
             try? FileManager.default.createDirectory(at: temporaryDirectoryURL, withIntermediateDirectories: true)
             // Create a temporary URL where the geodatabase URL can be copied to.
-            let temporaryGeodatabaseURL = temporaryDirectoryURL.appendingPathComponent("birdsNestGDB", isDirectory: false).appendingPathExtension("geodatabase")
+            temporaryGeodatabaseURL = temporaryDirectoryURL.appendingPathComponent("birdsNestGDB", isDirectory: false).appendingPathExtension("geodatabase")
             // Copy the item to the temporary URL.
-            try FileManager.default.copyItem(at: geodatabaseURL, to: temporaryGeodatabaseURL)
+            try FileManager.default.copyItem(at: geodatabaseURL, to: temporaryGeodatabaseURL!)
             // Create the geodatabase with the URL.
-            geodatabase = AGSGeodatabase(fileURL: temporaryGeodatabaseURL)
+            geodatabase = AGSGeodatabase(fileURL: temporaryGeodatabaseURL!)
         } catch {
             print("Error setting up geodatabase: \(error)")
             geodatabase = nil
@@ -65,6 +71,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         if let geodatabase = geodatabase {
             geodatabase.close()
             try? FileManager.default.removeItem(at: geodatabase.fileURL)
+            try? FileManager.default.removeItem(at: temporaryGeodatabaseURL!)
         }
     }
     
@@ -122,17 +129,17 @@ class AddFeaturesContingentValuesViewController: UIViewController {
                 // Present an alert if there is an error while querying the features.
                 self.presentAlert(error: error)
             } else if let result = result {
+                // Clear the existing graphics.
+                self.graphicsOverlay.graphics.removeAllObjects()
                 // Get the array of features from the query result.
                 let features = result.featureEnumerator().allObjects
                 // For each feature, add the buffer symbol according to its buffer size.
                 features.forEach { feature in
-                    let graphic = self.createGraphics(for: feature)
+                    let graphic = self.createGraphic(for: feature)
                     graphics.append(graphic)
                 }
                 // Add the graphics to the graphics overlay.
                 self.graphicsOverlay.graphics.addObjects(from: graphics)
-                // Add the graphics overlay to the map view.
-                self.mapView.graphicsOverlays.add(self.graphicsOverlay)
             }
         }
     }
@@ -149,8 +156,6 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Set the map view's touch delegate.
-        mapView.touchDelegate = self
         
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
@@ -176,7 +181,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
 }
 
 extension AddFeaturesContingentValuesViewController: ContingentValuesDelegate {
-    func createGraphics(for feature: AGSFeature) -> AGSGraphic {
+    func createGraphic(for feature: AGSFeature) -> AGSGraphic {
         // Get the feature's buffer size.
         let bufferSize = feature.attributes["BufferSize"] as! Double
         // Get a polygon using the feature's buffer size and geometry.

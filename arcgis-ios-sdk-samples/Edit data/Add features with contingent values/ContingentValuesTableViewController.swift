@@ -51,15 +51,15 @@ class ContingentValuesTableViewController: UITableViewController {
     // MARK: Properties
     
     /// The geodatabase's feature table.
-    var featureTable: AGSArcGISFeatureTable?
+    var featureTable: AGSArcGISFeatureTable!
     /// The feature to add to the feature table.
-    var feature: AGSArcGISFeature?
+    var feature: AGSArcGISFeature!
     /// The point on the map to add the feature to.
-    var mapPoint: AGSPoint?
+    var mapPoint: AGSPoint!
     /// An array of buffer sizes valid for the feature.
-    var bufferSizes: [Int]?
+    var bufferSizes: [Int]!
     /// The graphics overlay to add the features to.
-    var graphicsOverlay: AGSGraphicsOverlay?
+    var graphicsOverlay: AGSGraphicsOverlay!
     /// Indicates whether the buffer size picker is currently hidden.
     var bufferSizePickerHidden = true
     /// The delegate for the table view controller.

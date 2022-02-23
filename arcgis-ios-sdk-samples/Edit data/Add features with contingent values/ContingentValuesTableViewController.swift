@@ -37,7 +37,7 @@ class ContingentValuesTableViewController: UITableViewController {
     
     @IBAction func doneBarButtonItemTapped(_ sender: Any) {
         delegate?.contingentValuesTableViewController(self, didFinishWith: feature)
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     // MARK: Properties
@@ -47,7 +47,7 @@ class ContingentValuesTableViewController: UITableViewController {
     /// The feature to add to the feature table.
     var feature: AGSArcGISFeature!
     /// An array of buffer sizes valid for the feature.
-    var bufferSizes: [Int]!
+    var bufferSizes = [Int]()
     /// The graphics overlay to add the features to.
     var graphicsOverlay: AGSGraphicsOverlay!
     /// Indicates whether the buffer size picker is currently hidden.
@@ -111,7 +111,7 @@ class ContingentValuesTableViewController: UITableViewController {
         // Get the coded value domain's coded values.
         let statusCodedValues = codedValueDomain.codedValues
         // Get the selected index if applicable.
-        let selectedIndex = statusCodedValues.firstIndex { $0.name == self.selectedStatus?.name }
+        let selectedIndex = statusCodedValues.firstIndex { $0.name == selectedStatus?.name }
         // Use the coded value names as labels to show the option table view controller.
         let optionsViewController = OptionsTableViewController(labels: statusCodedValues.map { $0.name }, selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
@@ -130,7 +130,7 @@ class ContingentValuesTableViewController: UITableViewController {
         }
         // Set the options view controller's title and present it.
         optionsViewController.title = "Status"
-        self.show(optionsViewController, sender: self)
+        show(optionsViewController, sender: self)
     }
     
     /// Use the contingent values definition to generate the possible values for the protection field.
@@ -143,7 +143,7 @@ class ContingentValuesTableViewController: UITableViewController {
         // Get contingent coded values by field group.
         guard let protectionGroupContingentValues = contingentValuesResult?.contingentValuesByFieldGroup["ProtectionFieldGroup"] as? [AGSContingentCodedValue] else { return }
         // Get the selected index if applicable.
-        let selectedIndex = protectionGroupContingentValues.firstIndex { $0.codedValue.name == self.selectedProtection?.codedValue.name }
+        let selectedIndex = protectionGroupContingentValues.firstIndex { $0.codedValue.name == selectedProtection?.codedValue.name }
         // Use the coded value names as labels to show the option table view controller.
         let optionsViewController = OptionsTableViewController(labels: protectionGroupContingentValues.map { $0.codedValue.name }, selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
@@ -159,7 +159,7 @@ class ContingentValuesTableViewController: UITableViewController {
         }
         // Set the options view controller's title and present it.
         optionsViewController.title = "Protection"
-        self.show(optionsViewController, sender: self)
+        show(optionsViewController, sender: self)
     }
     
     /// Get the minimum and maximum values of the possible buffer sizes.
@@ -173,8 +173,8 @@ class ContingentValuesTableViewController: UITableViewController {
         let maxValue = bufferSizeGroupContingentValues[0].maxValue as! Int
         bufferSizes = Array(minValue...maxValue)
         // Select the buffer size if it is the only option available.
-        if bufferSizes?.count == 1 {
-            selectedBufferSize = bufferSizes?[0]
+        if bufferSizes.count == 1 {
+            selectedBufferSize = bufferSizes[0]
         }
         // Update the picker view.
         bufferSizePickerView.reloadAllComponents()
@@ -206,7 +206,7 @@ class ContingentValuesTableViewController: UITableViewController {
             doneBarButtonItem.isEnabled = true
         } else {
             // Present an alert if there are contingency violations.
-            self.presentAlert(title: "", message: "Invalid contingent values")
+            presentAlert(title: "", message: "Invalid contingent values")
         }
     }
     
@@ -251,10 +251,6 @@ class ContingentValuesTableViewController: UITableViewController {
     
     // MARK: UITableViewController
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     /// Show the list of options according to the selected row.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
@@ -291,7 +287,7 @@ extension ContingentValuesTableViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return bufferSizes!.count
+        return bufferSizes.count
     }
 }
 

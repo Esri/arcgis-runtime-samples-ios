@@ -23,13 +23,13 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZQ-70-c5r">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Expression" id="qEd-bD-k3D">
+                                    <barButtonItem title="Definition expression" id="qEd-bD-k3D">
                                         <connections>
                                             <action selector="applyDefinitionExpression" destination="gQq-Ov-i0h" id="5R7-xQ-g6y"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bXI-m7-7gd"/>
-                                    <barButtonItem title="Filter" id="WgY-oq-QbY">
+                                    <barButtonItem title="Display filter" id="WgY-oq-QbY">
                                         <connections>
                                             <action selector="applyFilter" destination="gQq-Ov-i0h" id="Ii4-iA-H2W"/>
                                         </connections>

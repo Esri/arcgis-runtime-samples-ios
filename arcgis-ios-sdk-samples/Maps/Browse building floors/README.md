@@ -14,14 +14,11 @@ Use the picker to browse different floor levels in the facility. Only the select
 
 ## How it works
 
-1. Create an `AGSPortalItem` using the identifier of a floor-aware web map.
-2. Create a map using the portal item.
-3. Create a map view and assign the map to it.
-4. Wait for the map to load and retrieve the map's `floorManager` property.
-5. Wait for the floor manager to load and retrieve the floor-aware data.
-6. Set all floors to not visible.
-7. Set only the selected `AGSFloorLevel` to visible using the `isVisible` property of the floor level.
-* **Note:** Manually set the default floor level to the first floor.
+1. Create and load a floor-aware web map using the identifier of a `AGSPortalItem`.
+2. Load the map and retrieve the map's `floorManager` property. Check that the map has a `floorManager` or `floorDefinition` property to ensure the map is floor-aware.
+3. Load the floor manager and retrieve the floor-aware data.
+4. Set the current visible floor to the first floor by finding it with `verticalOrder` equals zero.
+5. When a `AGSFloorLevel` is selected, set only the selected floor level to visible using the `isVisible` property.
 
 ## Relevant API
 
@@ -35,6 +32,8 @@ This sample uses a [floor-aware web map](https://arcgis.com/home/item.html?id=f1
 ## Additional information
 
 The `AGSFloorManager` API also supports browsing different sites and facilities in addition to building floors.
+
+Floor-awareness APIs support both maps and scenes. To learn more about floor-aware maps, read the [Configure floor-aware maps](https://pro.arcgis.com/en/pro-app/latest/help/data/indoors/configure-floor-aware-maps.htm) article.
 
 ## Tags
 

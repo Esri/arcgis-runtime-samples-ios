@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,26 +15,26 @@
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="ShowDeviceLocationUsingIndoorPositioningViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Alg-P3-s4j" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </view>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qsl-Ei-BAa" userLabel="Status View">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="41"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="41"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0nw-hp-v4a">
-                                        <rect key="frame" x="20" y="0.0" width="560" height="41"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0nw-hp-v4a">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location info will be shown here." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPY-5n-i0P">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transmitter info will be shown here." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rI-gP-uHy">
-                                                <rect key="frame" x="0.0" y="20.5" width="560" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="20.5" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -43,8 +45,8 @@
                                 <viewLayoutGuide key="safeArea" id="3n2-oF-hrI"/>
                                 <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="0nw-hp-v4a" secondAttribute="trailing" constant="20" symbolic="YES" id="Cea-ld-jRc"/>
-                                    <constraint firstItem="0nw-hp-v4a" firstAttribute="leading" secondItem="Qsl-Ei-BAa" secondAttribute="leading" constant="20" symbolic="YES" id="I6K-3l-m43"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="0nw-hp-v4a" secondAttribute="trailing" id="Cea-ld-jRc"/>
+                                    <constraint firstItem="0nw-hp-v4a" firstAttribute="leading" secondItem="Qsl-Ei-BAa" secondAttribute="leadingMargin" id="I6K-3l-m43"/>
                                     <constraint firstItem="0nw-hp-v4a" firstAttribute="height" secondItem="Qsl-Ei-BAa" secondAttribute="height" id="dWe-jP-dIi"/>
                                     <constraint firstItem="0nw-hp-v4a" firstAttribute="top" secondItem="3n2-oF-hrI" secondAttribute="top" id="jwm-76-CSV"/>
                                 </constraints>

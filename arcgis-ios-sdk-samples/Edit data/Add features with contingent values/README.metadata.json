@@ -11,23 +11,25 @@
         "contingent values",
         "feature table",
         "geodatabase",
+        "AGSArcGISFeatureTable",
+        "AGSCodedValue",
+        "AGSCodedValueDomain",
         "AGSContingencyConstraintViolation",
         "AGSContingentCodedValue",
         "AGSContingentRangeValue",
         "AGSContingentValuesDefinition",
-        "AGSContingentValuesResult",
-        "AGSGeodatabase",
-        "AGSGeodatabaseFeatureTable"
+        "AGSContingentValuesResult"
     ],
     "redirect_from": [],
     "relevant_apis": [
+        "AGSArcGISFeatureTable",
+        "AGSCodedValue",
+        "AGSCodedValueDomain",
         "AGSContingencyConstraintViolation",
         "AGSContingentCodedValue",
         "AGSContingentRangeValue",
         "AGSContingentValuesDefinition",
-        "AGSContingentValuesResult",
-        "AGSGeodatabase",
-        "AGSGeodatabaseFeatureTable"
+        "AGSContingentValuesResult"
     ],
     "snippets": [
         "AddFeaturesContingentValuesViewController.swift",

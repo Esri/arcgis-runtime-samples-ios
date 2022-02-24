@@ -17,10 +17,10 @@ When there is no IPS beacons nearby, or other errors occur while initializing th
 ## How it works
 
 1. Load an IPS-enabled map. This can be a web map hosted as a portal item in ArcGIS Online, an Enterprise Portal, or a mobile map package (.mmpk) created with ArcGIS Pro.
-2. Create an `AGSIndoorsLocationDataSource` with the positioning feature table (stored with the map) and the pathways feature table after both tables are loaded.
+2. Create an `AGSIndoorsLocationDataSource` object with the positioning feature table (stored with the map) and the pathways feature table after both tables are loaded.
 3. Handle location change events to respond to floor changes or read other metadata for locations.
-4. Assign the `AGSIndoorsLocationDataSource` to the map view's location display.
-5. Enable and disable the map view's location display using `start()` and `stop()`. Device location will appear on the display as a blue dot and update as the user moves throughout the space.
+4. Assign the `AGSIndoorsLocationDataSource` object to the map view's location display.
+5. Enable and disable the map view's location display using `start(completion:)` and `stop()`. Device location will appear on the display as a blue dot and update as the user moves throughout the space.
 6. Use the `autoPanMode` property to change how the map behaves when location updates are received.
 
 ## Relevant API

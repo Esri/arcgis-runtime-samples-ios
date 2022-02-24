@@ -14,11 +14,11 @@ Use the picker to browse different floor levels in the facility. Only the select
 
 ## How it works
 
-1. Create and load a floor-aware web map using the identifier of a `AGSPortalItem`.
+1. Create and load a floor-aware web map using the identifier of an `AGSPortalItem`.
 2. Load the map and retrieve the map's `floorManager` property. Check that the map has a `floorManager` or `floorDefinition` property to ensure the map is floor-aware.
 3. Load the floor manager and retrieve the floor-aware data.
 4. Set the current visible floor to the first floor by finding it with `verticalOrder` equals zero.
-5. When a `AGSFloorLevel` is selected, set only the selected floor level to visible using the `isVisible` property.
+5. When an `AGSFloorLevel` is selected, set only the selected floor level to visible using the `isVisible` property.
 
 ## Relevant API
 

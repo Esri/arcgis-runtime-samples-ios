@@ -35,7 +35,7 @@ class ContingentValuesTableViewController: UITableViewController {
         dismiss(animated: true)
     }
     
-    @IBAction func doneBarButtonItemTapped(_ sender: Any) {
+    @IBAction func doneBarButtonItemTapped(_ sender: UIBarButtonItem) {
         delegate?.contingentValuesTableViewController(self, didFinishWith: feature)
         dismiss(animated: true)
     }
@@ -293,17 +293,11 @@ extension ContingentValuesTableViewController: UIPickerViewDataSource {
 
 extension ContingentValuesTableViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if let bufferSizes = bufferSizes {
-            let bufferSizeTitle = String(bufferSizes[row])
-            return bufferSizeTitle
-        } else {
-            return nil
-        }
+        let bufferSizeTitle = String(bufferSizes[row])
+        return bufferSizeTitle
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if let bufferSizes = bufferSizes {
-            selectedBufferSize = bufferSizes[row]
-        }
+        selectedBufferSize = bufferSizes[row]
     }
 }

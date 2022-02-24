@@ -47,9 +47,9 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
     
     /// The current floor level reported by the indoors location data source.
     var currentFloor: Int! {
-        willSet(newValue) {
-            if newValue != currentFloor {
-                displayFeatures(floor: newValue)
+        willSet(newFloor) {
+            if newFloor != currentFloor {
+                displayFeatures(onFloor: newFloor)
             }
         }
     }
@@ -82,7 +82,7 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
     /// Find the IPS positioning table to set up the location data source.
     func findPositioningTable(map: AGSMap) {
         let tables = map.tables as! [AGSServiceFeatureTable]
-        loadTables(tables: tables) { [weak self] result in
+        loadTables(tables) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure:
@@ -99,73 +99,74 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
     
     /// Set up indoors location data source using IPS positioning table.
     func setupIndoorsLocationDataSource(positioningTable: AGSServiceFeatureTable) {
-        guard let map = mapView.map else { return }
-        
-        let queryParameters = AGSQueryParameters()
         // Find the table field name that matches "date created" pattern.
-        let matchesDateCreatedFieldNamePattern: (String) -> Bool = {
-            $0.caseInsensitiveCompare("DateCreated") == .orderedSame ||
-            $0.caseInsensitiveCompare("DATE_CREATED") == .orderedSame
+        func isDateCreated(field: AGSField) -> Bool {
+            let name = field.name
+            return name.caseInsensitiveCompare("DateCreated") == .orderedSame || name.caseInsensitiveCompare("DATE_CREATED") == .orderedSame
         }
-        guard let dateCreatedFieldName = positioningTable.fields.first(where: { matchesDateCreatedFieldNamePattern($0.name) })?.name else {
-            self.presentAlert(error: SetupError.dateCreatedFieldNotFound)
-            return
+
+        if let dateCreatedFieldName = positioningTable.fields.first(where: isDateCreated(field:))?.name {
+            // Create the query parameters.
+            let queryParameters = AGSQueryParameters()
+            queryParameters.orderByFields = [AGSOrderBy(fieldName: dateCreatedFieldName, sortOrder: .descending)]
+            queryParameters.maxFeatures = 1
+            // "1=1" will give all the features from the table.
+            queryParameters.whereClause = "1=1"
+            
+            // Query features from the table to ensure they support IPS.
+            positioningTable.queryFeatures(with: queryParameters) { [weak self] result, error in
+                guard let self = self else { return }
+                if let result = result {
+                    if let feature = result.featureEnumerator().nextObject(),
+                       // The ID that identifies a row in the positioning table.
+                       // It is possible to initialize ILDS without globalID,
+                       // in which case the first row of the positioning table
+                       // will be used.
+                       let globalID = feature.attributes[positioningTable.globalIDField] as? UUID,
+                       // The network pathways for routing between locations on
+                       // the same level.
+                       let pathwaysLayer = (self.mapView.map?.operationalLayers as? [AGSFeatureLayer])?.first(where: { $0.name == "Pathways" }),
+                       let pathwaysTable = pathwaysLayer.featureTable as? AGSArcGISFeatureTable {
+                        pathwaysLayer.isVisible = false
+                        self.queryFeaturesDidFinish(positioningTable: positioningTable, pathwaysTable: pathwaysTable, globalID: globalID)
+                    } else {
+                        self.presentAlert(error: SetupError.mapDoesNotSupportIPS)
+                    }
+                } else if error != nil {
+                    self.presentAlert(error: SetupError.failedToLoadIPS)
+                }
+            }
+        } else {
+            presentAlert(error: SetupError.dateCreatedFieldNotFound)
         }
-        queryParameters.orderByFields = [AGSOrderBy(fieldName: dateCreatedFieldName, sortOrder: .descending)]
-        queryParameters.maxFeatures = 1
-        // 1=1 will give all the features from the table.
-        queryParameters.whereClause = "1=1"
-        // Query features from the table to ensure they support IPS.
-        positioningTable.queryFeatures(with: queryParameters) { [weak self] result, error in
-            guard let self = self else { return }
-            guard let result = result, error == nil else {
-                self.presentAlert(error: SetupError.failedToLoadIPS)
-                return
-            }
-            guard let feature = result.featureEnumerator().nextObject() else {
-                self.presentAlert(error: SetupError.noIPSDataFound)
-                return
-            }
-            
-            // The ID that identifies a row in the positioning table. It is
-            // possible to initialize ILDS without positioningID, in which case
-            // the first row of the positioning table will be used.
-            guard let globalID = feature.attributes[positioningTable.globalIDField] as? UUID else {
-                self.presentAlert(error: SetupError.mapDoesNotSupportIPS)
-                return
-            }
-            
-            let pathwaysLayer = (map.operationalLayers as! [AGSFeatureLayer]).first(where: { $0.name == "Pathways" })
-            pathwaysLayer?.isVisible = false
-            let pathwaysTable = pathwaysLayer?.featureTable as? AGSArcGISFeatureTable
-            
-            // Setting up `indoorsLocationDataSource` with positioning, pathways
-            // tables and positioning ID.
-            // - positioningTable: the "ips_positioning" feature table from an
-            // IPS-enabled map.
-            // - pathwaysTable: an `ArcGISFeatureTable` that contains pathways
-            // as per the ArcGIS Indoors Information Model. Setting this
-            // property enables path snapping of locations provided by the
-            // `indoorsLocationDataSource`.
-            // - positioningID: an ID which identifies a specific row in the
-            // positioningTable that should be used for setting up IPS.
-            let locationDataSource = AGSIndoorsLocationDataSource(positioningTable: positioningTable, pathwaysTable: pathwaysTable, positioningID: globalID)
-            // The delegate which will receive location and status updates
-            // from the data source.
-            locationDataSource.locationChangeHandlerDelegate = self
-            self.indoorsLocationDataSource = locationDataSource
-            
-            if let extent = pathwaysTable?.extent {
-                self.mapView.setViewpointGeometry(extent)
-            }
-            self.mapView.locationDisplay.dataSource = locationDataSource
-            self.mapView.locationDisplay.autoPanMode = .navigation
-            // Asynchronously start of the location display, which will in-turn
-            // start `indoorsLocationDataSource` to receive IPS updates.
-            self.mapView.locationDisplay.start { [weak self] (error) in
-                guard let self = self, let error = error else { return }
-                self.presentAlert(error: error)
-            }
+    }
+    
+    /// Setting up `indoorsLocationDataSource` with positioning, pathways and
+    /// positioning ID.
+    /// - Parameters:
+    ///   - positioningTable: The "ips\_positioning" `AGSServiceFeatureTable`
+    ///   from an IPS-enabled map.
+    ///   - pathwaysTable: An `ArcGISFeatureTable` that contains pathways as
+    ///   per the ArcGIS Indoors Information Model. Setting this property
+    ///   enables path snapping of locations provided by the location data source.
+    ///   - globalID: An `UUID` which identifies a specific row in the
+    ///   positioningTable that should be used for setting up IPS.
+    func queryFeaturesDidFinish(positioningTable: AGSServiceFeatureTable, pathwaysTable: AGSArcGISFeatureTable, globalID: UUID) {
+        let locationDataSource = AGSIndoorsLocationDataSource(positioningTable: positioningTable, pathwaysTable: pathwaysTable, positioningID: globalID)
+        // The delegate which will receive location and status updates
+        // from the data source.
+        locationDataSource.locationChangeHandlerDelegate = self
+        self.indoorsLocationDataSource = locationDataSource
+        if let extent = pathwaysTable.extent {
+            mapView.setViewpointGeometry(extent)
+        }
+        mapView.locationDisplay.dataSource = locationDataSource
+        mapView.locationDisplay.autoPanMode = .navigation
+        // Asynchronously start of the location display, which will in-turn
+        // start `indoorsLocationDataSource` to receive IPS updates.
+        mapView.locationDisplay.start { [weak self] (error) in
+            guard let self = self, let error = error else { return }
+            self.presentAlert(error: error)
         }
     }
     
@@ -174,7 +175,7 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
     /// - Parameters:
     ///   - tables: The feature tables to load.
     ///   - completion: The load result for a table.
-    func loadTables(tables: [AGSFeatureTable], completion: @escaping (Result<Void, Error>) -> Void) {
+    func loadTables<C>(_ tables: C, completion: @escaping (Result<Void, Error>) -> Void) where C: RandomAccessCollection, C.Element == AGSFeatureTable {
         guard let table = tables.last else {
             completion(.success(()))
             return
@@ -183,16 +184,15 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
             if let error = error {
                 completion(.failure(error))
             } else {
-                self?.loadTables(tables: tables.dropLast(), completion: completion)
+                self?.loadTables(tables.dropLast(), completion: completion)
             }
         }
     }
     
     /// Display features on a certain floor level using definition expression.
     /// - Parameter floor: The floor level of the features to be displayed.
-    func displayFeatures(floor: Int) {
-        guard let layers = mapView.map?.operationalLayers as? [AGSLayer] else { return }
-        for layer in layers {
+    func displayFeatures(onFloor floor: Int) {
+        (mapView.map!.operationalLayers as! [AGSLayer]).forEach { layer in
             if layer.name == "Details" || layer.name == "Units" || layer.name == "Levels" {
                 if let featureLayer = layer as? AGSFeatureLayer {
                     featureLayer.definitionExpression = "VERTICAL_ORDER = \(floor)"
@@ -223,10 +223,6 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
 // MARK: - AGSLocationChangeHandlerDelegate
 
 extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationChangeHandlerDelegate {
-    /// The delegate method to receive location updates from the data source.
-    /// - Parameters:
-    ///   - locationDataSource: The indoors location data source.
-    ///   - location: The indoors location.
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, locationDidChange location: AGSLocation) {
         // The floor level provided by the indoors beacons.
         let floorText: String
@@ -242,13 +238,13 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
         
         // Possible sources: GNSS, AppleIPS, BLE, WIFI, CELL, IP.
         let positionSource = location.additionalSourceProperties[.positionSource] as? String ?? "NA"
-        let transmitterCount = location.additionalSourceProperties[AGSLocationSourcePropertyKey(rawValue: "transmitterCount")] as? Int ?? 0
-        let satelliteCount = location.additionalSourceProperties[.satelliteCount] as? Int ?? 0
         let sensorCount: String = {
             switch positionSource {
             case "GNSS":
+                let satelliteCount = location.additionalSourceProperties[.satelliteCount] as? Int ?? 0
                 return String(format: "%d satellite(s)", satelliteCount)
             default:
+                let transmitterCount = location.additionalSourceProperties[AGSLocationSourcePropertyKey("transmitterCount")] as? Int ?? 0
                 return String(format: "%d beacon(s)", transmitterCount)
             }
         }()
@@ -290,7 +286,7 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
 
 extension ShowDeviceLocationUsingIndoorPositioningViewController {
     private enum SetupError: LocalizedError {
-        case dateCreatedFieldNotFound, failedToLoadFeatureTables, failedToLoadIPS, mapDoesNotSupportIPS, noIPSDataFound, positioningTableNotFound
+        case dateCreatedFieldNotFound, failedToLoadFeatureTables, failedToLoadIPS, mapDoesNotSupportIPS, positioningTableNotFound
         
         var errorDescription: String? {
             switch self {
@@ -302,8 +298,6 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController {
                 return "Failed to load IPS."
             case .mapDoesNotSupportIPS:
                 return "Map does not support IPS."
-            case .noIPSDataFound:
-                return "No IPS data found."
             case .positioningTableNotFound:
                 return "Positioning table not found."
             }

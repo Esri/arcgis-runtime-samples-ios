@@ -3,12 +3,13 @@
     "description": "Filter features displayed on a map using a definition expression or a display filter.",
     "ignore": false,
     "images": [
-        "feature-layer-expression-1.png",
-        "feature-layer-expression-2.png"
+        "definition-expression-display-filter-1.png",
+        "definition-expression-display-filter-2.png"
     ],
     "keywords": [
         "SQL",
         "definition expression",
+        "display filter",
         "filter",
         "limit data",
         "query",
@@ -27,7 +28,7 @@
         "AGSServiceFeatureTable"
     ],
     "snippets": [
-        "DefinitionExpressionViewController.swift"
+        "DefinitionExpressionDisplayFilterViewController.swift"
     ],
     "title": "Filter by definition expression or display filter"
 }

@@ -128,7 +128,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
                 self.presentAlert(error: error)
             } else if let result = result {
                 // Creates buffer symbol for each feature according to its buffer size.
-                let newGraphics = result.featureEnumerator().allObjects.map(self.createGraphic(for:))
+                let newGraphics = result.featureEnumerator().allObjects.map(self.makeGraphic(feature:))
                 // Replace existing graphics with the new graphics.
                 self.graphicsOverlay.graphics.setArray(newGraphics)
             }
@@ -146,7 +146,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     }
     
     /// Create a graphic for the given feature.
-    func createGraphic(for feature: AGSFeature) -> AGSGraphic {
+    func makeGraphic(feature: AGSFeature) -> AGSGraphic {
         // Get the feature's buffer size.
         let bufferSize = feature.attributes["BufferSize"] as! Double
         // Get a polygon using the feature's buffer size and geometry.
@@ -190,7 +190,7 @@ extension AddFeaturesContingentValuesViewController: ContingentValuesDelegate {
         // Add the feature to the feature table.
         featureTable?.add(feature) { [weak self] _ in
             guard let self = self else { return }
-            let graphic = self.createGraphic(for: feature)
+            let graphic = self.makeGraphic(feature: feature)
             // Add the graphic to the graphics overlay.
             self.graphicsOverlay.graphics.add(graphic)
         }

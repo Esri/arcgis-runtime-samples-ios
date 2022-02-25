@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class DefinitionExpressionViewController: UIViewController {
+class DefinitionExpressionDisplayFilterViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Assign the map to the map view's map.
@@ -103,6 +103,6 @@ class DefinitionExpressionViewController: UIViewController {
         super.viewDidLoad()
         
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DefinitionExpressionViewController"]
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DefinitionExpressionDisplayFilterViewController"]
     }
 }

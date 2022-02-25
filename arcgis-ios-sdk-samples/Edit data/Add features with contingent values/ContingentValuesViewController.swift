@@ -19,7 +19,7 @@ import ArcGIS
 protocol ContingentValuesViewControllerDelegate: AnyObject {
     /// Tell the delegate that a feature has been created.
     func contingentValuesViewController(_ controller: ContingentValuesViewController, didCreate feature: AGSFeature)
-    /// Tells the delegate that the user has canceled out of the view controller.
+    /// Tells the delegate to handle a cancellation.
     func contingentValuesViewControllerDidCancel(_ controller: ContingentValuesViewController)
 }
 
@@ -56,25 +56,18 @@ class ContingentValuesViewController: UITableViewController {
     weak var delegate: ContingentValuesViewControllerDelegate?
     
     /// The selected status value.
-    var selectedStatus: AGSCodedValue? {
+    private var selectedStatus: AGSCodedValue? {
         didSet {
-            if let codedValueName = selectedStatus?.name {
-                // Display the selected value.
-                editRightDetail(cell: statusCell, rightDetailText: codedValueName)
-                // Reset the cell states accordingly.
-                resetCellStates()
-            }
+            // Display the selected value.
+            statusCell.detailTextLabel?.text = selectedStatus?.name
         }
     }
     
     /// The selected protection value.
-    var selectedProtection: AGSContingentCodedValue? {
+    private var selectedProtection: AGSContingentCodedValue? {
         didSet {
-            let codedValueName = selectedProtection?.codedValue.name
             // Display the selected protection.
-            editRightDetail(cell: protectionCell, rightDetailText: codedValueName)
-            // Reset the cell states accordingly.
-            resetCellStates()
+            protectionCell.detailTextLabel?.text = selectedProtection?.codedValue.name
         }
     }
     
@@ -90,7 +83,7 @@ class ContingentValuesViewController: UITableViewController {
                 validateContingency()
             } else {
                 // If the value is nil, clear the right detail text.
-                editRightDetail(cell: bufferSizeCell, rightDetailText: " ")
+                bufferSizeCell.detailTextLabel?.text = " "
                 // Hide the buffer size picker.
                 toggleBufferSizePickerVisibility()
             }
@@ -211,12 +204,7 @@ class ContingentValuesViewController: UITableViewController {
     
     // MARK: UI Functions
     
-    /// Update the cell's right detail.
-    func editRightDetail(cell: UITableViewCell, rightDetailText: String?) {
-        cell.detailTextLabel?.text = rightDetailText
-    }
-    
-    /// Reset the cell states according to which values have already been selected.
+   /// Reset the cell states according to which values have already been selected.
     func resetCellStates() {
         if selectedStatus == nil {
             protectionCell.textLabel?.isEnabled = false
@@ -248,18 +236,23 @@ class ContingentValuesViewController: UITableViewController {
         }, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resetCellStates()
+    }
+    
     // MARK: UITableViewController
     
     /// Show the list of options according to the selected row.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
         switch cell {
         case statusCell:
             showStatusOptions()
         case protectionCell:
             showProtectionOptions()
         case bufferSizeCell:
-            tableView.deselectRow(at: indexPath, animated: true)
             showBufferSizeOptions()
             toggleBufferSizePickerVisibility()
         default:

@@ -54,6 +54,8 @@ class ContingentValuesViewController: UITableViewController {
     var bufferSizePickerHidden = true
     /// The delegate for the table view controller.
     weak var delegate: ContingentValuesViewControllerDelegate?
+    /// The number formatter.
+    private let numberFormatter = NumberFormatter()
     
     /// The selected status value.
     private var selectedStatus: AGSCodedValue? {
@@ -285,7 +287,8 @@ extension ContingentValuesViewController: UIPickerViewDataSource {
 
 extension ContingentValuesViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let bufferSizeTitle = String(bufferSizes[row])
+        let bufferSizeNumber = NSNumber(value: bufferSizes[row])
+        let bufferSizeTitle = numberFormatter.string(from: bufferSizeNumber)
         return bufferSizeTitle
     }
     

@@ -47,7 +47,7 @@ class ContingentValuesTableViewController: UITableViewController {
     /// The feature to add to the feature table.
     var feature: AGSArcGISFeature!
     /// An array of buffer sizes valid for the feature.
-    var bufferSizes = [Int]()
+    var bufferSizes: [Int] = []
     /// The graphics overlay to add the features to.
     var graphicsOverlay: AGSGraphicsOverlay!
     /// Indicates whether the buffer size picker is currently hidden.
@@ -84,9 +84,8 @@ class ContingentValuesTableViewController: UITableViewController {
             if let selectedBufferSize = selectedBufferSize {
                 // Set the the buffer size attribute to the selected integer.
                 feature?.attributes["BufferSize"] = selectedBufferSize
-                let bufferSize = String(selectedBufferSize)
                 // Display the selected buffer size.
-                editRightDetail(cell: bufferSizeCell, rightDetailText: bufferSize)
+                bufferSizeCell.detailTextLabel?.text = String(selectedBufferSize)
                 // Validate the contingency.
                 validateContingency()
             } else {
@@ -111,9 +110,9 @@ class ContingentValuesTableViewController: UITableViewController {
         // Get the coded value domain's coded values.
         let statusCodedValues = codedValueDomain.codedValues
         // Get the selected index if applicable.
-        let selectedIndex = statusCodedValues.firstIndex { $0.name == selectedStatus?.name }
+        let selectedIndex = statusCodedValues.firstIndex(where: { $0.name == selectedStatus?.name })
         // Use the coded value names as labels to show the option table view controller.
-        let optionsViewController = OptionsTableViewController(labels: statusCodedValues.map { $0.name }, selectedIndex: selectedIndex) { [weak self] newIndex in
+        let optionsViewController = OptionsTableViewController(labels: statusCodedValues.map(\.name), selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
             // Set the selected status.
             self.selectedStatus = statusCodedValues[newIndex]
@@ -126,7 +125,7 @@ class ContingentValuesTableViewController: UITableViewController {
             }
             self.createFeature(with: self.selectedStatus!)
             // Remove the options view controller after selection.
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popToViewController(self, animated: true)
         }
         // Set the options view controller's title and present it.
         optionsViewController.title = "Status"
@@ -143,9 +142,9 @@ class ContingentValuesTableViewController: UITableViewController {
         // Get contingent coded values by field group.
         guard let protectionGroupContingentValues = contingentValuesResult?.contingentValuesByFieldGroup["ProtectionFieldGroup"] as? [AGSContingentCodedValue] else { return }
         // Get the selected index if applicable.
-        let selectedIndex = protectionGroupContingentValues.firstIndex { $0.codedValue.name == selectedProtection?.codedValue.name }
+        let selectedIndex = protectionGroupContingentValues.firstIndex(where: { $0.codedValue.name == selectedProtection?.codedValue.name })
         // Use the coded value names as labels to show the option table view controller.
-        let optionsViewController = OptionsTableViewController(labels: protectionGroupContingentValues.map { $0.codedValue.name }, selectedIndex: selectedIndex) { [weak self] newIndex in
+        let optionsViewController = OptionsTableViewController(labels: protectionGroupContingentValues.map(\.codedValue.name), selectedIndex: selectedIndex) { [weak self] newIndex in
             guard let self = self else { return }
             // Set the selected protection value.
             self.selectedProtection = protectionGroupContingentValues[newIndex]
@@ -155,7 +154,7 @@ class ContingentValuesTableViewController: UITableViewController {
                 self.selectedBufferSize = nil
             }
             // Remove the options view controller after selection.
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popToViewController(self, animated: true)
         }
         // Set the options view controller's title and present it.
         optionsViewController.title = "Protection"

@@ -39,9 +39,8 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     required init?(coder: NSCoder) {
         let geodatabaseURL = Bundle.main.url(forResource: "ContingentValuesBirdNests", withExtension: "geodatabase")!
         do {
-            // Create a temporary directory URL with subdirectories.
-            let temporaryDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
-            try? FileManager.default.createDirectory(at: temporaryDirectoryURL, withIntermediateDirectories: true)
+            // Create a temporary directory.
+            let temporaryDirectoryURL = try FileManager.default.url(for: .itemReplacementDirectory, in: .userDomainMask, appropriateFor: geodatabaseURL, create: true)
             // Create a temporary URL where the geodatabase URL can be copied to.
             temporaryGeodatabaseURL = temporaryDirectoryURL.appendingPathComponent("birdsNestGDB", isDirectory: false).appendingPathExtension("geodatabase")
             // Copy the item to the temporary URL.
@@ -123,8 +122,6 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         let queryParameters = AGSQueryParameters()
         // Set the where clause to filter for buffer sizes greater than 0.
         queryParameters.whereClause = "BufferSize > 0"
-        // Create an array of graphics to add to the graphics overlay.
-        var graphics = [AGSGraphic]()
         // Query the features with the query parameters.
         featureTable.queryFeatures(with: queryParameters) { [weak self] result, error in
             guard let self = self else { return }
@@ -132,17 +129,10 @@ class AddFeaturesContingentValuesViewController: UIViewController {
                 // Present an alert if there is an error while querying the features.
                 self.presentAlert(error: error)
             } else if let result = result {
-                // Clear the existing graphics.
-                self.graphicsOverlay.graphics.removeAllObjects()
-                // Get the array of features from the query result.
-                let features = result.featureEnumerator().allObjects
-                // For each feature, add the buffer symbol according to its buffer size.
-                features.forEach { feature in
-                    let graphic = self.createGraphic(for: feature)
-                    graphics.append(graphic)
-                }
-                // Add the graphics to the graphics overlay.
-                self.graphicsOverlay.graphics.addObjects(from: graphics)
+                // Creates buffer symbol for each feature according to its buffer size.
+                let newGraphics = result.featureEnumerator().allObjects.map(self.createGraphic(for:))
+                // Replace existing graphics with the new graphics.
+                self.graphicsOverlay.graphics.setArray(newGraphics)
             }
         }
     }
@@ -168,8 +158,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         // Create the buffer symbol.
         let bufferSymbol = AGSSimpleFillSymbol(style: .forwardDiagonal, color: .red, outline: lineSymbol)
         // Create an a graphic and add it to the array.
-        let graphic = AGSGraphic(geometry: polygon, symbol: bufferSymbol)
-        return graphic
+        return AGSGraphic(geometry: polygon, symbol: bufferSymbol)
     }
     
     override func viewDidLoad() {
@@ -200,11 +189,12 @@ class AddFeaturesContingentValuesViewController: UIViewController {
 extension AddFeaturesContingentValuesViewController: ContingentValuesDelegate {
     func contingentValuesTableViewController(_ controller: ContingentValuesTableViewController, didFinishWith feature: AGSFeature) {
         feature.geometry = mapPoint
-        let graphic = createGraphic(for: feature)
         // Add the feature to the feature table.
         featureTable?.add(feature) { [weak self] _ in
+            guard let self = self else { return }
+            let graphic = self.createGraphic(for: feature)
             // Add the graphic to the graphics overlay.
-            self?.graphicsOverlay.graphics.add(graphic)
+            self.graphicsOverlay.graphics.add(graphic)
         }
     }
 }

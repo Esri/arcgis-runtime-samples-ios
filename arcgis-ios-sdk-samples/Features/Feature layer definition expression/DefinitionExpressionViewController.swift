@@ -23,35 +23,43 @@ class DefinitionExpressionViewController: UIViewController {
         }
     }
     
+    /// The URL to the feature service, tracking incidents in San Francisco.
     static let featureServiceURL = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/SF_311_Incidents/FeatureServer/0")
+    /// The feature layer made with the feature service URL.
     let featureLayer = AGSFeatureLayer(featureTable: AGSServiceFeatureTable(url: featureServiceURL!))
+    /// The display filter definition to apply to the feature layer.
     var displayFilterDefinition: AGSDisplayFilterDefinition?
+    /// The definition expression to apply to the feature layer.
     var definitionExpression: String?
     
+    /// Applies the definition expression.
     @IBAction func applyDefinitionExpression() {
-        // adding definition expression to show specific features only
+        // Set the definition expression.
         displayFilterDefinition = nil
         definitionExpression = "req_Type = 'Tree Maintenance or Damage'"
         countFeatures()
     }
     
+    /// Applies the display filter
     @IBAction func applyFilter() {
         definitionExpression = ""
         // Create a display filter with a name and an SQL expression.
         guard let damagedTrees = AGSDisplayFilter(name: "Damaged Trees", whereClause: "req_type LIKE '%Tree Maintenance%'") else { return }
         // Set the manual display filter definition using the display filter.
         let manualDisplayFilterDefinition = AGSManualDisplayFilterDefinition(activeFilter: damagedTrees, availableFilters: [damagedTrees])
+        // Apply the display filter definition.
         displayFilterDefinition = manualDisplayFilterDefinition
         countFeatures()
     }
     
+    /// Reset the definition expression.
     @IBAction func resetDefinitionExpression() {
-        // reset definition expression
         definitionExpression = ""
         displayFilterDefinition = nil
         countFeatures()
     }
     
+    /// Create a map and set its attributes.
     func makeMap() -> AGSMap {
         // Initialize the map with the topographic basemap style.
         let map = AGSMap(basemapStyle: .arcGISTopographic)
@@ -69,18 +77,23 @@ class DefinitionExpressionViewController: UIViewController {
         return map
     }
     
+    /// Count the features according to the applied expressions.
     func countFeatures() {
+        // Set the extent to the current view.
         let extent = mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry.extent
-        
+        // Create the query parameters and set its geometry.
         let queryParameters = AGSQueryParameters()
         queryParameters.geometry = extent
+        // Apply the expressions to the feature layer.
         featureLayer.displayFilterDefinition = displayFilterDefinition
         featureLayer.definitionExpression = definitionExpression!
+        // Query the feature count using the parameters.
         featureLayer.featureTable?.queryFeatureCount(with: queryParameters) { [weak self] count, error in
             guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {
+                // Present the current feature count.
                 self.presentAlert(title: "Current feature count", message: "\(count) features")
             }
         }
@@ -89,7 +102,7 @@ class DefinitionExpressionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DefinitionExpressionViewController"]
+        // Add the source code button item to the right of navigation bar.
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DefinitionExpressionViewController"]
     }
 }

@@ -33,7 +33,7 @@
     ],
     "snippets": [
         "AddFeaturesContingentValuesViewController.swift",
-        "ContingentValuesTableViewController.swift"
+        "ContingentValuesViewController.swift"
     ],
     "title": "Add features with contingent values"
 }

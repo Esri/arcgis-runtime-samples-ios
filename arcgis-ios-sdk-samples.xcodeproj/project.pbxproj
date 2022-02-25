@@ -3202,7 +3202,7 @@
 				C7FF07D321B9D227000D4055 /* Feature layer rendering mode (scene) */,
 				3ED028CC1B8E3AA500ACA70D /* Feature layer selection */,
 				3ED028C61B8E3AA500ACA70D /* Feature layer query */,
-				3ED028C01B8E3AA500ACA70D /* Feature layer definition expression */,
+				3ED028C01B8E3AA500ACA70D /* Filter by definition expression or display filter */,
 				3ED028BA1B8E3AA500ACA70D /* Change feature layer renderer */,
 				3EC39C381C9B2136003F6459 /* Generate geodatabase */,
 				3EFDE0EF1E36ABB700CBCD92 /* Feature collection layer */,
@@ -3472,13 +3472,13 @@
 			path = "Change feature layer renderer";
 			sourceTree = "<group>";
 		};
-		3ED028C01B8E3AA500ACA70D /* Feature layer definition expression */ = {
+		3ED028C01B8E3AA500ACA70D /* Filter by definition expression or display filter */ = {
 			isa = PBXGroup;
 			children = (
 				3ED028C11B8E3AA500ACA70D /* DefinitionExpressionDisplayFilter.storyboard */,
 				3ED028C21B8E3AA500ACA70D /* DefinitionExpressionDisplayFilterViewController.swift */,
 			);
-			path = "Feature layer definition expression";
+			path = "Filter by definition expression or display filter";
 			sourceTree = "<group>";
 		};
 		3ED028C61B8E3AA500ACA70D /* Feature layer query */ = {

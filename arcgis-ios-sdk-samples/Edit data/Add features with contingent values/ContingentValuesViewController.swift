@@ -15,8 +15,12 @@
 import UIKit
 import ArcGIS
 
+/// The delegate of a `ContingentValuesViewController`.
 protocol ContingentValuesViewControllerDelegate: AnyObject {
+    /// Tell the delegate that a feature has been created.
     func contingentValuesViewController(_ controller: ContingentValuesViewController, didCreate feature: AGSFeature)
+    /// Tells the delegate that the user has canceled out of the view controller.
+    func contingentValuesViewControllerDidCancel(_ controller: ContingentValuesViewController)
 }
 
 class ContingentValuesViewController: UITableViewController {
@@ -29,8 +33,6 @@ class ContingentValuesViewController: UITableViewController {
     // MARK: Actions
     
     @IBAction func cancelBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        // Remove the last graphic added.
-        graphicsOverlay?.graphics.removeLastObject()
         // Dismiss the table view.
         dismiss(animated: true)
     }
@@ -48,8 +50,6 @@ class ContingentValuesViewController: UITableViewController {
     var feature: AGSArcGISFeature!
     /// An array of buffer sizes valid for the feature.
     var bufferSizes: [Int] = []
-    /// The graphics overlay to add the features to.
-    var graphicsOverlay: AGSGraphicsOverlay!
     /// Indicates whether the buffer size picker is currently hidden.
     var bufferSizePickerHidden = true
     /// The delegate for the table view controller.

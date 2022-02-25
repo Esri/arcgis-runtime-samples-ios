@@ -178,7 +178,6 @@ class AddFeaturesContingentValuesViewController: UIViewController {
            let controller = navigationController.viewControllers.first as? ContingentValuesViewController {
             controller.isModalInPresentation = true
             controller.featureTable = featureTable
-            controller.graphicsOverlay = graphicsOverlay
             controller.delegate = self
         }
     }
@@ -194,6 +193,11 @@ extension AddFeaturesContingentValuesViewController: ContingentValuesViewControl
             // Add the graphic to the graphics overlay.
             self.graphicsOverlay.graphics.add(graphic)
         }
+    }
+    
+    func contingentValuesViewControllerDidCancel(_ controller: ContingentValuesViewController) {
+        // Remove the last graphic added.
+        graphicsOverlay.graphics.removeLastObject()
     }
 }
 

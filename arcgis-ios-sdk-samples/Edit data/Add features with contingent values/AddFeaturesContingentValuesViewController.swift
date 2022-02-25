@@ -27,8 +27,6 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     }
     
     let geodatabase: AGSGeodatabase!
-    /// The temporary directory containing the geodatabase.
-    var temporaryGeodatabaseURL: URL?
     /// The graphics overlay to add the feature to.
     let graphicsOverlay = AGSGraphicsOverlay()
     /// The geodatabase's feature table.
@@ -42,11 +40,11 @@ class AddFeaturesContingentValuesViewController: UIViewController {
             // Create a temporary directory.
             let temporaryDirectoryURL = try FileManager.default.url(for: .itemReplacementDirectory, in: .userDomainMask, appropriateFor: geodatabaseURL, create: true)
             // Create a temporary URL where the geodatabase URL can be copied to.
-            temporaryGeodatabaseURL = temporaryDirectoryURL.appendingPathComponent("birdsNestGDB", isDirectory: false).appendingPathExtension("geodatabase")
+            let temporaryGeodatabaseURL = temporaryDirectoryURL.appendingPathComponent("birdsNestGDB", isDirectory: false).appendingPathExtension("geodatabase")
             // Copy the item to the temporary URL.
-            try FileManager.default.copyItem(at: geodatabaseURL, to: temporaryGeodatabaseURL!)
+            try FileManager.default.copyItem(at: geodatabaseURL, to: temporaryGeodatabaseURL)
             // Create the geodatabase with the URL.
-            geodatabase = AGSGeodatabase(fileURL: temporaryGeodatabaseURL!)
+            geodatabase = AGSGeodatabase(fileURL: temporaryGeodatabaseURL)
         } catch {
             print("Error setting up geodatabase: \(error)")
             geodatabase = nil
@@ -71,8 +69,8 @@ class AddFeaturesContingentValuesViewController: UIViewController {
             geodatabase.close()
             // Remove all of the temporary files.
             try? FileManager.default.removeItem(at: geodatabase.fileURL)
-        }
-        if let temporaryGeodatabaseURL = temporaryGeodatabaseURL {
+            // Remove the temporary directory.
+            let temporaryGeodatabaseURL = geodatabase.fileURL.deletingLastPathComponent()
             try? FileManager.default.removeItem(at: temporaryGeodatabaseURL)
         }
     }

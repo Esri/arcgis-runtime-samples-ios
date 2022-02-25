@@ -817,11 +817,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Feature layer definition expression</string>
+				<string>Filter by definition expression or display filter</string>
 				<key>storyboardName</key>
-				<string>DefinitionExpression</string>
+				<string>DefinitionExpressionDisplayFilter</string>
 				<key>descriptionText</key>
-				<string>Limit the features displayed on a map with a definition expression.</string>
+				<string>Filter features displayed on a map using a definition expression or a display filter.</string>
 			</dict>
 			<dict>
 				<key>displayName</key>

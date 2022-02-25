@@ -2,8 +2,7 @@
 
 Filter features displayed on a map using a definition expression or a display filter.
 
-![Map with features](feature-layer-expression-1.png)
-![Map after applied expression](feature-layer-expression-2.png)
+![Map after applied expression](definition-expression-display-filter-1.png)
 
 ## Use case
 

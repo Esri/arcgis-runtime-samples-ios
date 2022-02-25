@@ -3,8 +3,7 @@
     "description": "Filter features displayed on a map using a definition expression or a display filter.",
     "ignore": false,
     "images": [
-        "definition-expression-display-filter-1.png",
-        "definition-expression-display-filter-2.png"
+        "definition-expression-display-filter-1.png"
     ],
     "keywords": [
         "SQL",

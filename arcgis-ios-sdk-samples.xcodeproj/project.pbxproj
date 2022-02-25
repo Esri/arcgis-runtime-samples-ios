@@ -874,8 +874,8 @@
 		F1710AF325EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1710AF225EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard */; };
 		F1710AF525EEF4C000900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */; };
 		F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
-		F1950D7B279794590093CE6E /* ContingentValuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1950D7A279794590093CE6E /* ContingentValuesTableViewController.swift */; };
-		F1950D7C279794920093CE6E /* ContingentValuesTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1950D7A279794590093CE6E /* ContingentValuesTableViewController.swift */; };
+		F1950D7B279794590093CE6E /* ContingentValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */; };
+		F1950D7C279794920093CE6E /* ContingentValuesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987CFF23F7321400DF41CC /* FindClosestFacilityInteractiveViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
 		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
@@ -959,7 +959,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				F1950D7C279794920093CE6E /* ContingentValuesTableViewController.swift in CopyFiles */,
+				F1950D7C279794920093CE6E /* ContingentValuesViewController.swift in CopyFiles */,
 				F13D82FD275EE9C100F7B0C0 /* AddFeaturesContingentValuesViewController.swift in CopyFiles */,
 				F1B99FE0277D49260053DB00 /* DisplayFeatureLayersViewController.swift in CopyFiles */,
 				008A018F2768488300A3C637 /* DisplayDimensionsViewController.swift in CopyFiles */,
@@ -1850,7 +1850,7 @@
 		F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditKMLGroundOverlayViewController.swift; sourceTree = "<group>"; };
 		F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayContentUtilityNetworkContainerViewController.swift; path = "arcgis-ios-sdk-samples/Utility Network/Display content of utility network container/DisplayContentUtilityNetworkContainerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F1710AF225EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = DisplayContentUtilityNetworkContainer.storyboard; path = "arcgis-ios-sdk-samples/Utility Network/Display content of utility network container/DisplayContentUtilityNetworkContainer.storyboard"; sourceTree = SOURCE_ROOT; };
-		F1950D7A279794590093CE6E /* ContingentValuesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContingentValuesTableViewController.swift; sourceTree = "<group>"; };
+		F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContingentValuesViewController.swift; sourceTree = "<group>"; };
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
@@ -4536,7 +4536,7 @@
 			isa = PBXGroup;
 			children = (
 				F13D82F9275EDB4300F7B0C0 /* AddFeaturesContingentValuesViewController.swift */,
-				F1950D7A279794590093CE6E /* ContingentValuesTableViewController.swift */,
+				F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */,
 				F13D82FB275EDB5900F7B0C0 /* AddFeaturesContingentValues.storyboard */,
 			);
 			path = "Add features with contingent values";
@@ -5378,7 +5378,7 @@
 				E45991A11EF3021D0089E9FD /* SearchForWebmapByKeywordViewController.swift in Sources */,
 				3ED028581B8E3A8500ACA70D /* CreateSaveMapViewController.swift in Sources */,
 				0023F98025E717AC006B574E /* SimulatedNMEADataSource.swift in Sources */,
-				F1950D7B279794590093CE6E /* ContingentValuesTableViewController.swift in Sources */,
+				F1950D7B279794590093CE6E /* ContingentValuesViewController.swift in Sources */,
 				127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */,
 				4CE15D4C22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,

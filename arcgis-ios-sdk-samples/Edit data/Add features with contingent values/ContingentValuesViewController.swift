@@ -15,11 +15,11 @@
 import UIKit
 import ArcGIS
 
-protocol ContingentValuesDelegate: AnyObject {
-    func contingentValuesTableViewController(_ controller: ContingentValuesTableViewController, didFinishWith feature: AGSFeature)
+protocol ContingentValuesViewControllerDelegate: AnyObject {
+    func contingentValuesViewController(_ controller: ContingentValuesViewController, didCreate feature: AGSFeature)
 }
 
-class ContingentValuesTableViewController: UITableViewController {
+class ContingentValuesViewController: UITableViewController {
     @IBOutlet var statusCell: UITableViewCell!
     @IBOutlet var protectionCell: UITableViewCell!
     @IBOutlet var bufferSizeCell: UITableViewCell!
@@ -36,7 +36,7 @@ class ContingentValuesTableViewController: UITableViewController {
     }
     
     @IBAction func doneBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        delegate?.contingentValuesTableViewController(self, didFinishWith: feature)
+        delegate?.contingentValuesViewController(self, didCreate: feature)
         dismiss(animated: true)
     }
     
@@ -53,7 +53,7 @@ class ContingentValuesTableViewController: UITableViewController {
     /// Indicates whether the buffer size picker is currently hidden.
     var bufferSizePickerHidden = true
     /// The delegate for the table view controller.
-    weak var delegate: ContingentValuesDelegate?
+    weak var delegate: ContingentValuesViewControllerDelegate?
     
     /// The selected status value.
     var selectedStatus: AGSCodedValue? {
@@ -280,7 +280,7 @@ class ContingentValuesTableViewController: UITableViewController {
 
 // MARK: Pickerview
 
-extension ContingentValuesTableViewController: UIPickerViewDataSource {
+extension ContingentValuesViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -290,7 +290,7 @@ extension ContingentValuesTableViewController: UIPickerViewDataSource {
     }
 }
 
-extension ContingentValuesTableViewController: UIPickerViewDelegate {
+extension ContingentValuesViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let bufferSizeTitle = String(bufferSizes[row])
         return bufferSizeTitle

@@ -165,7 +165,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "AddFeaturesContingentValuesViewController",
-            "ContingentValuesTableViewController"
+            "ContingentValuesViewController"
         ]
     }
     
@@ -175,7 +175,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Set the controller and its properties.
         if let navigationController = segue.destination as? UINavigationController,
-           let controller = navigationController.viewControllers.first as? ContingentValuesTableViewController {
+           let controller = navigationController.viewControllers.first as? ContingentValuesViewController {
             controller.isModalInPresentation = true
             controller.featureTable = featureTable
             controller.graphicsOverlay = graphicsOverlay
@@ -184,8 +184,8 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     }
 }
 
-extension AddFeaturesContingentValuesViewController: ContingentValuesDelegate {
-    func contingentValuesTableViewController(_ controller: ContingentValuesTableViewController, didFinishWith feature: AGSFeature) {
+extension AddFeaturesContingentValuesViewController: ContingentValuesViewControllerDelegate {
+    func contingentValuesViewController(_ controller: ContingentValuesViewController, didCreate feature: AGSFeature) {
         feature.geometry = mapPoint
         // Add the feature to the feature table.
         featureTable?.add(feature) { [weak self] _ in

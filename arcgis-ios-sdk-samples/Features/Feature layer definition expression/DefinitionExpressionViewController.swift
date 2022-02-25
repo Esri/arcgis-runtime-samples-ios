@@ -25,7 +25,6 @@ class DefinitionExpressionViewController: UIViewController {
     
     static let featureServiceURL = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/SF_311_Incidents/FeatureServer/0")
     let featureLayer = AGSFeatureLayer(featureTable: AGSServiceFeatureTable(url: featureServiceURL!))
-    var manualDisplayFilterDefinition: AGSManualDisplayFilterDefinition?
     var displayFilterDefinition: AGSDisplayFilterDefinition?
     var definitionExpression: String?
     
@@ -38,10 +37,12 @@ class DefinitionExpressionViewController: UIViewController {
     
     @IBAction func applyFilter() {
         definitionExpression = ""
+        // Create a display filter with a name and an SQL expression.
+        guard let damagedTrees = AGSDisplayFilter(name: "Damaged Trees", whereClause: "req_type LIKE '%Tree Maintenance%'") else { return }
+        // Set the manual display filter definition using the display filter.
+        let manualDisplayFilterDefinition = AGSManualDisplayFilterDefinition(activeFilter: damagedTrees, availableFilters: [damagedTrees])
         displayFilterDefinition = manualDisplayFilterDefinition
         countFeatures()
-        // expression should cut trees and filter should have a different count after trees are reduced
-        // update buttons (apply definition expression, apply display filter)
     }
     
     @IBAction func resetDefinitionExpression() {
@@ -61,14 +62,8 @@ class DefinitionExpressionViewController: UIViewController {
         map.operationalLayers.add(featureLayer)
         // Load the map.
         map.load { [weak self] error in
-            guard let self = self else { return }
             if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                // Create a display filter with a name and an SQL expression.
-                guard let damagedTrees = AGSDisplayFilter(name: "Damaged Trees", whereClause: "req_type LIKE '%Tree Maintenance%'") else { return }
-                // Set the manual display filter definition using the display filter.
-                self.manualDisplayFilterDefinition = AGSManualDisplayFilterDefinition(activeFilter: damagedTrees, availableFilters: [damagedTrees])
+                self?.presentAlert(error: error)
             }
         }
         return map
@@ -79,7 +74,8 @@ class DefinitionExpressionViewController: UIViewController {
         
         let queryParameters = AGSQueryParameters()
         queryParameters.geometry = extent
-        
+        featureLayer.displayFilterDefinition = displayFilterDefinition
+        featureLayer.definitionExpression = definitionExpression!
         featureLayer.featureTable?.queryFeatureCount(with: queryParameters) { [weak self] count, error in
             guard let self = self else { return }
             if let error = error {

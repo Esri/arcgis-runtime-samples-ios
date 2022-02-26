@@ -95,7 +95,11 @@ class BrowseBuildingFloorsViewController: UIViewController {
     /// Called after the floor manager of the web map is loaded without error.
     func floodManagerDidLoad(_ floorManager: AGSFloorManager) {
         guard let geometry = floorManager.sites.first?.geometry,
-              let firstFloor = floorManager.levels.first(where: { $0.longName == "Level 1" }) else { return }
+              // Select the ground floor using `verticalOrder`.
+              // In the case of buildings with basements, they can have negative
+              // vertical orders; ground floor is expected to be 0.
+              // You can also use level ID, number or name to locate a floor.
+              let firstFloor = floorManager.levels.first(where: { $0.verticalOrder == 0 }) else { return }
         mapView.setViewpointGeometry(geometry)
         // Update floor levels and select the first floor.
         floorLevels = floorManager.levels

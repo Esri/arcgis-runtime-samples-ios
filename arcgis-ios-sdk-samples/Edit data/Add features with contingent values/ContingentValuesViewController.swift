@@ -34,10 +34,12 @@ class ContingentValuesViewController: UITableViewController {
     
     @IBAction func cancelBarButtonItemTapped(_ sender: UIBarButtonItem) {
         // Dismiss the table view.
+        delegate?.contingentValuesViewControllerDidCancel(self)
         dismiss(animated: true)
     }
     
     @IBAction func doneBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        // Dismiss the table view.
         delegate?.contingentValuesViewController(self, didCreate: feature)
         dismiss(animated: true)
     }

@@ -18,7 +18,7 @@ Tap on the map to add a feature symbolizing a bird's nest. Then choose values de
 ## How it works
 
 1. Create and load the `AGSGeodatabase` from the mobile geodatabase location on file.
-2. Load the first `AGSGeodatabaseFeatureTable` as an `AGSArcGISFeatureTable`.
+2. Load the first `AGSGeodatabaseFeatureTable`.
 3. Load the `AGSContingentValuesDefinition` from the feature table.
 4. Create a new `AGSFeatureLayer` from the feature table and add it to the map.
 5. Create a new `AGSFeature` using `AGSFeatureTable.createFeature()`

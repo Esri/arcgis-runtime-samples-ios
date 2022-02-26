@@ -80,7 +80,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
         switch result {
         case .success:
             // Get and load the first feature table in the geodatabase.
-            let featureTable = geodatabase.geodatabaseFeatureTables[0] as AGSArcGISFeatureTable
+            let featureTable = geodatabase.geodatabaseFeatureTables[0]
             self.featureTable = featureTable
             featureTable.load { [weak self] error in
                 guard let self = self else { return }

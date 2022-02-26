@@ -24,13 +24,13 @@ class DefinitionExpressionDisplayFilterViewController: UIViewController {
     }
     
     /// The URL to the feature service, tracking incidents in San Francisco.
-    static let featureServiceURL = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/SF_311_Incidents/FeatureServer/0")
+    static let featureServiceURL = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/arcgis/rest/services/SF_311_Incidents/FeatureServer/0")!
     /// The feature layer made with the feature service URL.
-    let featureLayer = AGSFeatureLayer(featureTable: AGSServiceFeatureTable(url: featureServiceURL!))
+    let featureLayer = AGSFeatureLayer(featureTable: AGSServiceFeatureTable(url: featureServiceURL))
     /// The display filter definition to apply to the feature layer.
     var displayFilterDefinition: AGSDisplayFilterDefinition?
     /// The definition expression to apply to the feature layer.
-    var definitionExpression: String?
+    var definitionExpression: String = ""
     
     /// Applies the definition expression.
     @IBAction func applyDefinitionExpression() {
@@ -64,7 +64,7 @@ class DefinitionExpressionDisplayFilterViewController: UIViewController {
         // Initialize the map with the topographic basemap style.
         let map = AGSMap(basemapStyle: .arcGISTopographic)
         // Set the initial viewpoint.
-        let viewpoint = AGSViewpoint(latitude: 37.772296660953138, longitude: -122.44014487516885, scale: 100000)
+        let viewpoint = AGSViewpoint(latitude: 37.772296660953138, longitude: -122.44014487516885, scale: 100_000)
         map.initialViewpoint = viewpoint
         // Add the feature layer to the map's operational layers.
         map.operationalLayers.add(featureLayer)
@@ -80,7 +80,7 @@ class DefinitionExpressionDisplayFilterViewController: UIViewController {
         queryParameters.geometry = extent
         // Apply the expressions to the feature layer.
         featureLayer.displayFilterDefinition = displayFilterDefinition
-        featureLayer.definitionExpression = definitionExpression!
+        featureLayer.definitionExpression = definitionExpression
         // Query the feature count using the parameters.
         featureLayer.featureTable?.queryFeatureCount(with: queryParameters) { [weak self] count, error in
             guard let self = self else { return }

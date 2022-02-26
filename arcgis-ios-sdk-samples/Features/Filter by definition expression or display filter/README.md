@@ -10,7 +10,7 @@ Definition queries allow you to define a subset of features to work with in a la
 
 Alternatively, display filters limit which features are drawn, but retain all features in queries and when processing. Definition queries and display filters can be used together on a layer, but definition queries limit the features available in the layer, while display filters only limit which features are displayed.
 
-In this sample you can filter a dataset of tree quality selecting for only those trees which require maintenance or are damaged.
+In this sample you can filter a dataset of tree quality selecting only those trees which require maintenance or are damaged.
 
 ## How to use the sample
 
@@ -33,7 +33,7 @@ The feature count value shows the current number of features in the current map 
 
 ## About the data
 
-The [feature service](https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0) in this sample displays point features related to crime incidents such as grafitti and tree damage that have been reported by city residents.
+The [feature service](https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0) in this sample displays point features related to crime incidents such as graffiti and tree damage that have been reported by city residents.
 
 ## Tags
 

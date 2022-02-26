@@ -1,4 +1,4 @@
-// Copyright 2016 Esri.
+// Copyright 2022 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -68,12 +68,6 @@ class DefinitionExpressionDisplayFilterViewController: UIViewController {
         map.initialViewpoint = viewpoint
         // Add the feature layer to the map's operational layers.
         map.operationalLayers.add(featureLayer)
-        // Load the map.
-        map.load { [weak self] error in
-            if let error = error {
-                self?.presentAlert(error: error)
-            }
-        }
         return map
     }
     

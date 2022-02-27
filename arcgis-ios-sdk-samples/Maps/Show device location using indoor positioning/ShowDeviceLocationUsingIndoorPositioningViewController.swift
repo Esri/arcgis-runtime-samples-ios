@@ -231,7 +231,7 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
         }
         
         // The horizontal accuracy of the positioning signal from the sensors.
-        let horizontalAccuracy = measurementFormatter.string(from: Measurement(value: Double(location.horizontalAccuracy), unit: UnitLength.meters))
+        let horizontalAccuracy = measurementFormatter.string(from: Measurement(value: location.horizontalAccuracy, unit: UnitLength.meters))
         
         // Possible sources: GNSS, AppleIPS, BLE, WIFI, CELL, IP.
         let positionSource = location.additionalSourceProperties[.positionSource] as? String ?? "NA"

@@ -212,9 +212,6 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
     deinit {
         // Stop location display, which in turn stop the data source.
         mapView.locationDisplay.stop()
-        // Reset indoors location data source.
-        indoorsLocationDataSource?.locationChangeHandlerDelegate = nil
-        indoorsLocationDataSource = nil
         // Reset the API key.
         AGSArcGISRuntimeEnvironment.apiKey = apiKey
     }

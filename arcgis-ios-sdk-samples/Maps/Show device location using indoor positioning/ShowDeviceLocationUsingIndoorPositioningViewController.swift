@@ -97,7 +97,8 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
         }
     }
     
-    /// Set up indoors location data source using IPS positioning table.
+    /// Set up indoors location data source by first querying the
+    /// IPS positioning table.
     func setupIndoorsLocationDataSource(positioningTable: AGSServiceFeatureTable) {
         // Find the table field name that matches "date created" pattern.
         func isDateCreated(field: AGSField) -> Bool {
@@ -209,9 +210,25 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ShowDeviceLocationUsingIndoorPositioningViewController"]
     }
     
-    deinit {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Start location display when the indoors location data source exists,
+        // and it isn't started when the view appears.
+        if indoorsLocationDataSource != nil && !mapView.locationDisplay.started {
+            mapView.locationDisplay.start { [weak self] (error) in
+                guard let self = self, let error = error else { return }
+                self.presentAlert(error: error)
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         // Stop location display, which in turn stop the data source.
         mapView.locationDisplay.stop()
+    }
+    
+    deinit {
         // Reset the API key.
         AGSArcGISRuntimeEnvironment.apiKey = apiKey
     }

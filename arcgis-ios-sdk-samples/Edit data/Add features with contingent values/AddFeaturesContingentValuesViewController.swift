@@ -33,6 +33,8 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     var featureTable: AGSArcGISFeatureTable?
     /// The map point to add the feature to.
     var mapPoint: AGSPoint?
+    /// The vector tiled layer to use as a basemap.
+    var fillmoreVectorTiledLayer: AGSArcGISVectorTiledLayer?
     
     required init?(coder: NSCoder) {
         let geodatabaseURL = Bundle.main.url(forResource: "ContingentValuesBirdNests", withExtension: "geodatabase")!
@@ -107,6 +109,7 @@ class AddFeaturesContingentValuesViewController: UIViewController {
     func makeMap() -> AGSMap {
         // Get the vector tiled layer by name.
         let fillmoreVectorTiledLayer = AGSArcGISVectorTiledLayer(name: "FillmoreTopographicMap")
+        self.fillmoreVectorTiledLayer = fillmoreVectorTiledLayer
         // Use the vector tiled layer as a basemap.
         let basemap = AGSBasemap(baseLayer: fillmoreVectorTiledLayer)
         let map = AGSMap(basemap: basemap)
@@ -205,8 +208,14 @@ extension AddFeaturesContingentValuesViewController: ContingentValuesViewControl
 
 extension AddFeaturesContingentValuesViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        // Get the point on the map where the user tapped.
-        self.mapPoint = mapPoint
-        addFeature(at: mapPoint)
+        guard let mapExtent = fillmoreVectorTiledLayer?.fullExtent else { return }
+        // Ensure that the map point is within the extent.
+        if AGSGeometryEngine.geometry(mapPoint, within: mapExtent) {
+            // Get the point on the map where the user tapped.
+            self.mapPoint = mapPoint
+            addFeature(at: mapPoint)
+        } else {
+            presentAlert(title: nil, message: "Please select a point within the layer's extent.")
+        }
     }
 }

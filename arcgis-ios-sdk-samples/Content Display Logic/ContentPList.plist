@@ -1233,6 +1233,19 @@
 				<key>descriptionText</key>
 				<string>Create, query, and edit a specific server version using a service geodatabase.</string>
 			</dict>
+			<dict>
+				<key>dependency</key>
+				<array>
+					<string>ContingentValuesBirdNests</string>
+					<string>fillmoreTopographic</string>
+				</array>
+				<key>displayName</key>
+				<string>Add features with contingent values</string>
+				<key>storyboardName</key>
+				<string>AddFeaturesContingentValues</string>
+				<key>descriptionText</key>
+				<string>Create and add features whose attribute values satisfy a predefined set of contingencies.</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

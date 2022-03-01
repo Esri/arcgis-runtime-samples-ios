@@ -131,6 +131,18 @@
 			<string>SanFrancisco.tpkx</string>
 		</dict>
 		<dict>
+			<key>filename</key>
+			<string>BirdNestsMGDB</string>
+			<key>identifier</key>
+			<string>e12b54ea799f4606a2712157cf9f6e41</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>FillmoreTopographicMap</string>
+			<key>identifier</key>
+			<string>b5106355f1634b8996e634c04b6a930a</string>
+		</dict>
+		<dict>
 			<key>identifier</key>
 			<string>f5ff6f5556a945bca87ca513b8729a1e</string>
 			<key>filename</key>

@@ -308,6 +308,14 @@
 				<key>storyboardName</key>
 				<string>BrowseBuildingFloors</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Show device location using indoor positioning</string>
+				<key>descriptionText</key>
+				<string>Show your device's real-time location while inside a building by using signals from indoor positioning beacons.</string>
+				<key>storyboardName</key>
+				<string>ShowDeviceLocationUsingIndoorPositioning</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

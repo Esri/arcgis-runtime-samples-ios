@@ -1,0 +1,48 @@
+{
+    "category": "Maps",
+    "description": "Show your device's real-time location while inside a building by using signals from indoor positioning beacons.",
+    "ignore": false,
+    "images": [
+        "show-device-location-using-indoor-positioning.png"
+    ],
+    "keywords": [
+        "BLE",
+        "Bluetooth",
+        "GPS",
+        "IPS",
+        "beacon",
+        "blue dot",
+        "building",
+        "facility",
+        "indoor",
+        "location",
+        "map",
+        "mobile",
+        "navigation",
+        "site",
+        "transmitter",
+        "AGSArcGISFeatureTable",
+        "AGSFeatureTable",
+        "AGSIndoorsLocationDataSource",
+        "AGSLocationChangeHandlerDelegate",
+        "AGSLocationDisplay",
+        "AGSLocationDisplayAutoPanMode",
+        "AGSMap",
+        "AGSMapView"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSArcGISFeatureTable",
+        "AGSFeatureTable",
+        "AGSIndoorsLocationDataSource",
+        "AGSLocationChangeHandlerDelegate",
+        "AGSLocationDisplay",
+        "AGSLocationDisplayAutoPanMode",
+        "AGSMap",
+        "AGSMapView"
+    ],
+    "snippets": [
+        "ShowDeviceLocationUsingIndoorPositioningViewController.swift"
+    ],
+    "title": "Show device location using indoor positioning"
+}

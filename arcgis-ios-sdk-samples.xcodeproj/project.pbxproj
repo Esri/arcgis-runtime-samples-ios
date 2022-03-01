@@ -11,6 +11,8 @@
 		000FFFB426CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000FFFB326CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard */; };
 		000FFFB626CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */; };
 		000FFFB726CDD66B00E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */; };
+		00132101279B704200E89DD4 /* ShowDeviceLocationUsingIndoorPositioning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00132100279B704200E89DD4 /* ShowDeviceLocationUsingIndoorPositioning.storyboard */; };
+		00132103279B705700E89DD4 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00132102279B705700E89DD4 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift */; };
 		00166C8824D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
 		00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */; };
 		00166C8C24D236A300DD317E /* RealisticLightingAndShadowsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */; };
@@ -39,6 +41,7 @@
 		00255DD225156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00255DD125156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift */; };
 		003267B4265C478600DB4CB5 /* BrowseOGCAPIFeatureService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003267B3265C478600DB4CB5 /* BrowseOGCAPIFeatureService.storyboard */; };
 		003267B6265C479200DB4CB5 /* BrowseOGCAPIFeatureServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003267B5265C479200DB4CB5 /* BrowseOGCAPIFeatureServiceViewController.swift */; };
+		0036B33E27BC64D1005C0958 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00132102279B705700E89DD4 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift */; };
 		003BC30F24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC30E24E5E44E00F65746 /* ConfigureSubnetworkTraceOptionsViewController.swift */; };
 		003BC31224E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC31124E5E53200F65746 /* ConfigureSubnetworkTraceViewController.swift */; };
 		003D25622513D833007527C2 /* ApplyRasterRenderingRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D25612513D833007527C2 /* ApplyRasterRenderingRule.storyboard */; };
@@ -959,6 +962,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				0036B33E27BC64D1005C0958 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift in CopyFiles */,
 				F1950D7C279794920093CE6E /* ContingentValuesViewController.swift in CopyFiles */,
 				F13D82FD275EE9C100F7B0C0 /* AddFeaturesContingentValuesViewController.swift in CopyFiles */,
 				F1B99FE0277D49260053DB00 /* DisplayFeatureLayersViewController.swift in CopyFiles */,
@@ -1256,6 +1260,8 @@
 /* Begin PBXFileReference section */
 		000FFFB326CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetUpLocationDrivenGeotriggers.storyboard; sourceTree = "<group>"; };
 		000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpLocationDrivenGeotriggersViewController.swift; sourceTree = "<group>"; };
+		00132100279B704200E89DD4 /* ShowDeviceLocationUsingIndoorPositioning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowDeviceLocationUsingIndoorPositioning.storyboard; sourceTree = "<group>"; };
+		00132102279B705700E89DD4 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDeviceLocationUsingIndoorPositioningViewController.swift; sourceTree = "<group>"; };
 		00166C8724D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealisticLightingAndShadowsViewController.swift; sourceTree = "<group>"; };
 		00166C8924D20E6E00DD317E /* RealisticLightingAndShadows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RealisticLightingAndShadows.storyboard; sourceTree = "<group>"; };
 		00166C9124D3838200DD317E /* BufferListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferListViewController.swift; sourceTree = "<group>"; };
@@ -1912,6 +1918,15 @@
 				000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */,
 			);
 			path = "Set up location-driven geotriggers";
+			sourceTree = "<group>";
+		};
+		001320FD279B6E9300E89DD4 /* Show device location using indoor positioning */ = {
+			isa = PBXGroup;
+			children = (
+				00132100279B704200E89DD4 /* ShowDeviceLocationUsingIndoorPositioning.storyboard */,
+				00132102279B705700E89DD4 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift */,
+			);
+			path = "Show device location using indoor positioning";
 			sourceTree = "<group>";
 		};
 		00166C8524D20E0E00DD317E /* Realistic lighting and shadows */ = {
@@ -3323,6 +3338,7 @@
 				4C59D12E238DCF5B00824924 /* Apply scheduled updates to preplanned map area */,
 				0023F97925E717AC006B574E /* Display device location with NMEA data sources */,
 				00BE7B3A276427070012CE95 /* Browse building floors */,
+				001320FD279B6E9300E89DD4 /* Show device location using indoor positioning */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -5073,6 +5089,7 @@
 				D9EE379820E2CC7700BF8AD1 /* tire_tread.jpeg in Resources */,
 				E47ED0B12343C87E0032440E /* DisplayScenesInTabletopAR.storyboard in Resources */,
 				3ED029281B8E3AB300ACA70D /* AddGraphicsWithRenderer.storyboard in Resources */,
+				00132101279B704200E89DD4 /* ShowDeviceLocationUsingIndoorPositioning.storyboard in Resources */,
 				12D66033226697320005DE8A /* GroupLayersSectionView.xib in Resources */,
 				12D66035226697320005DE8A /* GroupLayers.storyboard in Resources */,
 				E4477CC020EC0CE0004E14F9 /* ListTransformations.storyboard in Resources */,
@@ -5517,6 +5534,7 @@
 				F4159C7120925B710016E53D /* OpenSceneViewController.swift in Sources */,
 				001ECB042486DD8B009AC6C0 /* NavigateARCalibrationViewController.swift in Sources */,
 				00255DD225156C2F001A71DF /* ViewHiddenInfrastructureARPipePlacingViewController.swift in Sources */,
+				00132103279B705700E89DD4 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift in Sources */,
 				00E5B7D22458FE7900B11973 /* PerformValveIsolationTraceViewController.swift in Sources */,
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundViewController.swift in Sources */,
 				3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */,

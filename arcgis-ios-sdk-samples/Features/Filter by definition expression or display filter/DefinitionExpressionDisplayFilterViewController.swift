@@ -37,7 +37,7 @@ class DefinitionExpressionDisplayFilterViewController: UIViewController {
         // Set the definition expression.
         displayFilterDefinition = nil
         definitionExpression = "req_Type = 'Tree Maintenance or Damage'"
-        countFeatures()
+        showFeatureCount()
     }
     
     /// Applies the display filter
@@ -49,14 +49,14 @@ class DefinitionExpressionDisplayFilterViewController: UIViewController {
         let manualDisplayFilterDefinition = AGSManualDisplayFilterDefinition(activeFilter: damagedTrees, availableFilters: [damagedTrees])
         // Apply the display filter definition.
         displayFilterDefinition = manualDisplayFilterDefinition
-        countFeatures()
+        showFeatureCount()
     }
     
     /// Reset the definition expression.
     @IBAction func resetDefinitionExpression() {
         definitionExpression = ""
         displayFilterDefinition = nil
-        countFeatures()
+        showFeatureCount()
     }
     
     /// Create a map and set its attributes.
@@ -72,7 +72,7 @@ class DefinitionExpressionDisplayFilterViewController: UIViewController {
     }
     
     /// Count the features according to the applied expressions.
-    func countFeatures() {
+    func showFeatureCount() {
         // Set the extent to the current view.
         let extent = mapView.currentViewpoint(with: .boundingGeometry)?.targetGeometry.extent
         // Create the query parameters and set its geometry.

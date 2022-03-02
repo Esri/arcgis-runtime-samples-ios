@@ -468,8 +468,8 @@
 		3ED028B91B8E3A9800ACA70D /* SublayerVisibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028AD1B8E3A9800ACA70D /* SublayerVisibilityViewController.swift */; };
 		3ED028E11B8E3AA500ACA70D /* OverrideRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028BD1B8E3AA500ACA70D /* OverrideRenderer.storyboard */; };
 		3ED028E21B8E3AA500ACA70D /* OverrideRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028BE1B8E3AA500ACA70D /* OverrideRendererViewController.swift */; };
-		3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028C11B8E3AA500ACA70D /* DefinitionExpression.storyboard */; };
-		3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */; };
+		3ED028E41B8E3AA500ACA70D /* DefinitionExpressionDisplayFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028C11B8E3AA500ACA70D /* DefinitionExpressionDisplayFilter.storyboard */; };
+		3ED028E51B8E3AA500ACA70D /* DefinitionExpressionDisplayFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028C21B8E3AA500ACA70D /* DefinitionExpressionDisplayFilterViewController.swift */; };
 		3ED028E91B8E3AA500ACA70D /* FLQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028C71B8E3AA500ACA70D /* FLQuery.storyboard */; };
 		3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */; };
 		3ED028EE1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED028CD1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard */; };
@@ -515,7 +515,7 @@
 		3ED0298E1B8E571700ACA70D /* SublayerVisibilityViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028AD1B8E3A9800ACA70D /* SublayerVisibilityViewController.swift */; };
 		3ED029921B8E571700ACA70D /* FeatureLayerSelectionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028CE1B8E3AA500ACA70D /* FeatureLayerSelectionViewController.swift */; };
 		3ED029931B8E571700ACA70D /* FLQueryViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */; };
-		3ED029941B8E571700ACA70D /* DefinitionExpressionViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */; };
+		3ED029941B8E571700ACA70D /* DefinitionExpressionDisplayFilterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028C21B8E3AA500ACA70D /* DefinitionExpressionDisplayFilterViewController.swift */; };
 		3ED029951B8E571700ACA70D /* OverrideRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028BE1B8E3AA500ACA70D /* OverrideRendererViewController.swift */; };
 		3ED029961B8E571700ACA70D /* AddGraphicsWithRendererViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED028FF1B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift */; };
 		3ED029971B8E571700ACA70D /* GOIdentifyViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED029041B8E3AB300ACA70D /* GOIdentifyViewController.swift */; };
@@ -1208,7 +1208,7 @@
 				3ED0298E1B8E571700ACA70D /* SublayerVisibilityViewController.swift in CopyFiles */,
 				3ED029921B8E571700ACA70D /* FeatureLayerSelectionViewController.swift in CopyFiles */,
 				3ED029931B8E571700ACA70D /* FLQueryViewController.swift in CopyFiles */,
-				3ED029941B8E571700ACA70D /* DefinitionExpressionViewController.swift in CopyFiles */,
+				3ED029941B8E571700ACA70D /* DefinitionExpressionDisplayFilterViewController.swift in CopyFiles */,
 				3ED029951B8E571700ACA70D /* OverrideRendererViewController.swift in CopyFiles */,
 				3ED029961B8E571700ACA70D /* AddGraphicsWithRendererViewController.swift in CopyFiles */,
 				3ED029971B8E571700ACA70D /* GOIdentifyViewController.swift in CopyFiles */,
@@ -1587,8 +1587,8 @@
 		3ED028AD1B8E3A9800ACA70D /* SublayerVisibilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SublayerVisibilityViewController.swift; sourceTree = "<group>"; };
 		3ED028BD1B8E3AA500ACA70D /* OverrideRenderer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OverrideRenderer.storyboard; sourceTree = "<group>"; };
 		3ED028BE1B8E3AA500ACA70D /* OverrideRendererViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverrideRendererViewController.swift; sourceTree = "<group>"; };
-		3ED028C11B8E3AA500ACA70D /* DefinitionExpression.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DefinitionExpression.storyboard; sourceTree = "<group>"; };
-		3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefinitionExpressionViewController.swift; sourceTree = "<group>"; };
+		3ED028C11B8E3AA500ACA70D /* DefinitionExpressionDisplayFilter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DefinitionExpressionDisplayFilter.storyboard; sourceTree = "<group>"; };
+		3ED028C21B8E3AA500ACA70D /* DefinitionExpressionDisplayFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefinitionExpressionDisplayFilterViewController.swift; sourceTree = "<group>"; };
 		3ED028C71B8E3AA500ACA70D /* FLQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FLQuery.storyboard; sourceTree = "<group>"; };
 		3ED028C81B8E3AA500ACA70D /* FLQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLQueryViewController.swift; sourceTree = "<group>"; };
 		3ED028CD1B8E3AA500ACA70D /* FeatureLayerSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeatureLayerSelection.storyboard; sourceTree = "<group>"; };
@@ -3235,7 +3235,7 @@
 				C7FF07D321B9D227000D4055 /* Feature layer rendering mode (scene) */,
 				3ED028CC1B8E3AA500ACA70D /* Feature layer selection */,
 				3ED028C61B8E3AA500ACA70D /* Feature layer query */,
-				3ED028C01B8E3AA500ACA70D /* Feature layer definition expression */,
+				3ED028C01B8E3AA500ACA70D /* Filter by definition expression or display filter */,
 				3ED028BA1B8E3AA500ACA70D /* Change feature layer renderer */,
 				3EC39C381C9B2136003F6459 /* Generate geodatabase */,
 				3EFDE0EF1E36ABB700CBCD92 /* Feature collection layer */,
@@ -3506,13 +3506,13 @@
 			path = "Change feature layer renderer";
 			sourceTree = "<group>";
 		};
-		3ED028C01B8E3AA500ACA70D /* Feature layer definition expression */ = {
+		3ED028C01B8E3AA500ACA70D /* Filter by definition expression or display filter */ = {
 			isa = PBXGroup;
 			children = (
-				3ED028C11B8E3AA500ACA70D /* DefinitionExpression.storyboard */,
-				3ED028C21B8E3AA500ACA70D /* DefinitionExpressionViewController.swift */,
+				3ED028C11B8E3AA500ACA70D /* DefinitionExpressionDisplayFilter.storyboard */,
+				3ED028C21B8E3AA500ACA70D /* DefinitionExpressionDisplayFilterViewController.swift */,
 			);
-			path = "Feature layer definition expression";
+			path = "Filter by definition expression or display filter";
 			sourceTree = "<group>";
 		};
 		3ED028C61B8E3AA500ACA70D /* Feature layer query */ = {
@@ -4918,7 +4918,7 @@
 				C7FF07D721B9D258000D4055 /* FeatureLayerRenderingModeScene.storyboard in Resources */,
 				00166C8A24D20E6E00DD317E /* RealisticLightingAndShadows.storyboard in Resources */,
 				C793B5E221667B15000A7A10 /* esri_test_data.kmz in Resources */,
-				3ED028E41B8E3AA500ACA70D /* DefinitionExpression.storyboard in Resources */,
+				3ED028E41B8E3AA500ACA70D /* DefinitionExpressionDisplayFilter.storyboard in Resources */,
 				D9E2E76320EEB8FF001D0AE0 /* Public_Art.sbn in Resources */,
 				092A1C2722456D9500C5F230 /* DisplayWFS.storyboard in Resources */,
 				F1F62C4422E65E0900EFD599 /* militaryoverlay.geodatabase in Resources */,
@@ -5577,7 +5577,7 @@
 				3E4BF4581C5BD6C400D85919 /* SanDiegoAddressesViewController.swift in Sources */,
 				3ECCFE3C1BD0401A00CE256D /* LayerStatusViewController.swift in Sources */,
 				3EE692021B03D22500C167B8 /* Category.swift in Sources */,
-				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionViewController.swift in Sources */,
+				3ED028E51B8E3AA500ACA70D /* DefinitionExpressionDisplayFilterViewController.swift in Sources */,
 				E4477CBE20EC0CCD004E14F9 /* ListTransformationsViewController.swift in Sources */,
 				0083AA1A2628ED18003A28C8 /* ProgressViewController.swift in Sources */,
 				3E412B431D0B2FAD00349155 /* AboutViewController.swift in Sources */,

@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import UIKit
+import Firebase
 
 class ContentCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet private var collectionViewFlowLayout: UICollectionViewFlowLayout!
@@ -96,6 +97,12 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         controller.allSamples = category.samples
         controller.title = category.name
+        
+        // Google Analytics select category event.
+        Analytics.logEvent("select_category", parameters: [
+            AnalyticsParameterContentType: category.name
+        ])
+        
         show(controller, sender: self)
     }
     

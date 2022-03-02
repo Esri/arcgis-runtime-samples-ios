@@ -10,6 +10,7 @@
         "bezier",
         "curve",
         "display",
+        "ellipse",
         "graphics",
         "marker",
         "overlay",
@@ -19,6 +20,7 @@
         "true curve",
         "AGSCubicBezierSegment",
         "AGSEllipticArcSegment",
+        "AGSGeodesicEllipseParameters",
         "AGSGeometry",
         "AGSGraphic",
         "AGSGraphicsOverlay",
@@ -28,12 +30,14 @@
         "AGSSimpleFillSymbol",
         "AGSSimpleLineSymbol",
         "AGSSimpleMarkerSymbol",
-        "AGSSimpleRenderer"
+        "AGSSimpleRenderer",
+        "class AGSGeometryEngine.geodesicEllipse(with:)"
     ],
     "redirect_from": [],
     "relevant_apis": [
         "AGSCubicBezierSegment",
         "AGSEllipticArcSegment",
+        "AGSGeodesicEllipseParameters",
         "AGSGeometry",
         "AGSGraphic",
         "AGSGraphicsOverlay",
@@ -43,7 +47,8 @@
         "AGSSimpleFillSymbol",
         "AGSSimpleLineSymbol",
         "AGSSimpleMarkerSymbol",
-        "AGSSimpleRenderer"
+        "AGSSimpleRenderer",
+        "class AGSGeometryEngine.geodesicEllipse(with:)"
     ],
     "snippets": [
         "AddGraphicsWithRendererViewController.swift"

@@ -21,7 +21,7 @@ class ExportVectorTilesViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemap: AGSBasemap(style: .arcGISStreetsNight))
+            mapView.map = AGSMap(basemapStyle: .arcGISStreetsNight)
             // Set the viewpoint.
             mapView.setViewpoint(AGSViewpoint(latitude: 34.049, longitude: -117.181, scale: 1e4))
         }

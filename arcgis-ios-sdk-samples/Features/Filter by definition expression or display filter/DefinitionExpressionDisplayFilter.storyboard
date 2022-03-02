@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gQq-Ov-i0h">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Definition Expression Display Filter View Controller-->
+        <scene sceneID="7Kc-Su-yJa">
+            <objects>
+                <viewController id="gQq-Ov-i0h" customClass="DefinitionExpressionDisplayFilterViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uDF-pp-vPG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSj-1P-Z69" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZQ-70-c5r">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Definition expression" id="qEd-bD-k3D">
+                                        <connections>
+                                            <action selector="applyDefinitionExpression" destination="gQq-Ov-i0h" id="5R7-xQ-g6y"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="bXI-m7-7gd"/>
+                                    <barButtonItem title="Display filter" id="WgY-oq-QbY">
+                                        <connections>
+                                            <action selector="applyFilter" destination="gQq-Ov-i0h" id="Ii4-iA-H2W"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uvl-zK-jeB"/>
+                                    <barButtonItem title="Reset" id="7eh-OZ-kvP">
+                                        <connections>
+                                            <action selector="resetDefinitionExpression" destination="gQq-Ov-i0h" id="BoI-I1-Css"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="a7M-w3-qEf"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oSj-1P-Z69" firstAttribute="top" secondItem="uDF-pp-vPG" secondAttribute="top" id="IKC-Dj-zZA"/>
+                            <constraint firstItem="oSj-1P-Z69" firstAttribute="leading" secondItem="uDF-pp-vPG" secondAttribute="leading" id="Tcd-y9-uYd"/>
+                            <constraint firstItem="oSj-1P-Z69" firstAttribute="bottom" secondItem="XZQ-70-c5r" secondAttribute="top" id="ZG2-Zt-dM3"/>
+                            <constraint firstItem="XZQ-70-c5r" firstAttribute="trailing" secondItem="uDF-pp-vPG" secondAttribute="trailing" id="dJ3-ae-aLw"/>
+                            <constraint firstItem="a7M-w3-qEf" firstAttribute="bottom" secondItem="oSj-1P-Z69" secondAttribute="bottom" id="gmd-CC-D2P"/>
+                            <constraint firstAttribute="trailing" secondItem="oSj-1P-Z69" secondAttribute="trailing" id="hkT-91-k6U"/>
+                            <constraint firstItem="oSj-1P-Z69" firstAttribute="top" secondItem="a7M-w3-qEf" secondAttribute="top" id="qd3-I6-Kyk"/>
+                            <constraint firstItem="a7M-w3-qEf" firstAttribute="bottom" secondItem="XZQ-70-c5r" secondAttribute="bottom" id="qzK-sh-ftl"/>
+                            <constraint firstItem="XZQ-70-c5r" firstAttribute="leading" secondItem="uDF-pp-vPG" secondAttribute="leading" id="snD-g0-EbW"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gmd-CC-D2P"/>
+                                <exclude reference="IKC-Dj-zZA"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="oSj-1P-Z69" id="FcO-nr-Emw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Xc-CL-TF7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="580" y="390"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

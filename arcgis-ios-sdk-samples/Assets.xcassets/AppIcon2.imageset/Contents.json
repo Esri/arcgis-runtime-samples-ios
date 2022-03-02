@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "arcgis-sdk-65.png",
       "idiom" : "universal",
-      "filename" : "iOS_80.png",
       "scale" : "1x"
     },
     {
+      "filename" : "arcgis-sdk-128.png",
       "idiom" : "universal",
-      "filename" : "iOS_160.png",
       "scale" : "2x"
     },
     {
+      "filename" : "arcgis-sdk-256.png",
       "idiom" : "universal",
-      "filename" : "iOS_240.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

@@ -63,9 +63,9 @@ class ChooseCameraControllerViewController: UIViewController {
         }
     }
 
-    /// Returns a scene with imagery basemap and elevation data.
+    /// Returns a scene with imagery basemap style and elevation data.
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemap: .imagery())
+        let scene = AGSScene(basemapStyle: .arcGISImagery)
 
         // Add base surface to the scene for elevation data.
         let surface = AGSSurface()

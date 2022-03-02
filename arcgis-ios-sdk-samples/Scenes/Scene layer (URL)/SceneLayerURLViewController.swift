@@ -26,8 +26,8 @@ class SceneLayerURLViewController: UIViewController {
         // add the source code button item to the right of navigation bar
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["SceneLayerURLViewController"]
         
-        // initialize scene with topographic basemap
-        let scene = AGSScene(basemap: .topographic())
+        // Initialize scene with topographic basemap style.
+        let scene = AGSScene(basemapStyle: .arcGISTopographic)
         
         // assign scene to the scene view
         self.sceneView.scene = scene

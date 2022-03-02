@@ -1,0 +1,33 @@
+{
+    "category": "Features",
+    "description": "Filter features displayed on a map using a definition expression or a display filter.",
+    "ignore": false,
+    "images": [
+        "definition-expression-display-filter-1.png"
+    ],
+    "keywords": [
+        "SQL",
+        "definition expression",
+        "display filter",
+        "filter",
+        "limit data",
+        "query",
+        "restrict data",
+        "where clause",
+        "AGSDefinitionExpression",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable"
+    ],
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/feature-layer-definition-expression.htm"
+    ],
+    "relevant_apis": [
+        "AGSDefinitionExpression",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable"
+    ],
+    "snippets": [
+        "DefinitionExpressionDisplayFilterViewController.swift"
+    ],
+    "title": "Filter by definition expression or display filter"
+}

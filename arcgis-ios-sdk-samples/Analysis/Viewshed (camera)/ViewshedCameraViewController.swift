@@ -26,8 +26,8 @@ class ViewshedCameraViewController: UIViewController {
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ViewshedCameraViewController"]
         
-        // Initialize the scene with an imagery basemap.
-        let scene = AGSScene(basemap: .imagery())
+        // Initialize the scene with an imagery basemap style.
+        let scene = AGSScene(basemapStyle: .arcGISImagery)
         
         // Assign the scene to the scene view.
         sceneView.scene = scene

@@ -51,6 +51,26 @@ Please read Apple's documentation below for further details.
 * [`EAAccessory`](https://developer.apple.com/documentation/externalaccessory)
 * [`UISupportedExternalAccessoryProtocols`](https://developer.apple.com/documentation/bundleresources/information_property_list/uisupportedexternalaccessoryprotocols)
 
+Below is a list of protocol strings for commonly used GNSS external accessories. Please refer to the [ArcGIS Field Maps documentation](https://doc.arcgis.com/en/field-maps/ios/help/high-accuracy-data-collection.htm#ESRI_SECTION2_612D328A655644DCAF5CF0210308C821) for model and firmware requirements.
+
+### Supported by this sample
+
+* com.bad-elf.gps
+* com.eos-gnss.positioningsource
+* com.geneq.sxbluegpssource
+
+### Others
+
+* com.amanenterprises.nmeasource
+* com.dualav.xgps150
+* com.garmin.pvt
+* com.junipersys.geode
+* com.leica-geosystems.zeno.gnss
+* com.searanllc.serial
+* com.trimble.correction, com.trimble.command (1)
+
+(1) Some Trimble models require a proprietary SDK for NMEA output.
+
 ## Tags
 
 accessory, Bluetooth, GNSS, GPS, history, navigation, NMEA, real-time, trace

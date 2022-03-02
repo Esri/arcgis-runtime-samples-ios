@@ -308,6 +308,14 @@
 				<key>storyboardName</key>
 				<string>BrowseBuildingFloors</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Show device location using indoor positioning</string>
+				<key>descriptionText</key>
+				<string>Show your device's real-time location while inside a building by using signals from indoor positioning beacons.</string>
+				<key>storyboardName</key>
+				<string>ShowDeviceLocationUsingIndoorPositioning</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -1224,6 +1232,19 @@
 				<string>EditWithBranchVersioning</string>
 				<key>descriptionText</key>
 				<string>Create, query, and edit a specific server version using a service geodatabase.</string>
+			</dict>
+			<dict>
+				<key>dependency</key>
+				<array>
+					<string>ContingentValuesBirdNests</string>
+					<string>fillmoreTopographic</string>
+				</array>
+				<key>displayName</key>
+				<string>Add features with contingent values</string>
+				<key>storyboardName</key>
+				<string>AddFeaturesContingentValues</string>
+				<key>descriptionText</key>
+				<string>Create and add features whose attribute values satisfy a predefined set of contingencies.</string>
 			</dict>
 		</array>
 	</dict>

@@ -73,7 +73,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         // Create a new feature.
         let feature = featureTable.createFeature(attributes: featureAttributes, geometry: normalizedGeometry)
         
-        UIApplication.shared.showProgressHUD(message: "Adding..")
+        UIApplication.shared.showProgressHUD(message: "Adding…")
         // Add the feature to the feature table.
         featureTable.add(feature) { [weak self] (error: Error?) in
             UIApplication.shared.hideProgressHUD()
@@ -94,7 +94,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         if serviceGeodatabase.hasLocalEdits() {
             serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
                 if let error = error {
-                    self?.presentAlert(message: "Error while applying edits:\(error.localizedDescription)")
+                    self?.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
                 } else {
                     if let featureTableEditResults = featureTableEditResults,
                        featureTableEditResults.first?.editResults.first?.completedWithErrors == false {

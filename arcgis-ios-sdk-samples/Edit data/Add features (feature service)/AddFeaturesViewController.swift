@@ -91,18 +91,16 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     func applyEdits() {
         if serviceGeodatabase.hasLocalEdits() {
             serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
-                if let error = error {
+                if let featureTableEditResults = featureTableEditResults,
+                   featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
+                    self?.presentAlert(message: "Edits applied successfully")
+                } else if let error = error {
                     self?.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
-                } else {
-                    if let featureTableEditResults = featureTableEditResults,
-                       featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
-                        self?.presentAlert(message: "Edits applied successfully")
-                    }
                 }
             }
         }
     }
-  
+    
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {

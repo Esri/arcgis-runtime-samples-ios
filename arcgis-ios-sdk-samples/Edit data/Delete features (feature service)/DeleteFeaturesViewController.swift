@@ -16,66 +16,84 @@ import UIKit
 import ArcGIS
 
 class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
-    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = AGSMap(basemapStyle: .arcGISStreets)
+            // Set touch delegate on map view as self.
+            mapView.touchDelegate = self
+            mapView.callout.delegate = self
+        }
+    }
     
-    private var featureTable: AGSServiceFeatureTable!
-    private var featureLayer: AGSFeatureLayer!
-    private var lastQuery: AGSCancelable!
-    private var selectedFeature: AGSFeature!
+    /// The feature table to delete features from.
+    var featureTable: AGSServiceFeatureTable!
+    /// The service geodatabase that contains damaged property features.
+    var serviceGeodatabase: AGSServiceGeodatabase!
+    /// The feature layer created from the feature table.
+    var featureLayer: AGSFeatureLayer!
+    /// Last identify operation.
+    var lastQuery: AGSCancelable!
+    /// The currently selected feature.
+    var selectedFeature: AGSFeature!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["DeleteFeaturesViewController"]
         
-        // add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DeleteFeaturesViewController"]
-        
-        // instantiate map with a basemap
-        let map = AGSMap(basemapStyle: .arcGISStreets)
-        
-        // assign the map to the map view
-        self.mapView.map = map
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
-        // set touch delegate on map view as self
-        self.mapView.touchDelegate = self
-        
-        // instantiate service feature table using the url to the service
-        featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
-        // create a feature layer using the service feature table
-        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
-        
-        // add the feature layer to the operational layers on map
-        map.operationalLayers.add(featureLayer)
-        
-        // store the feature layer for later use
-        self.featureLayer = featureLayer
+        // Load the service geodatabase.
+        let damageFeatureService = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
+        loadServiceGeodatabase(from: damageFeatureService)
+    }
+    
+    /// Load and set a service geodatabase from a feature service URL.
+    /// - Parameter serviceURL: The URL to the feature service.
+    func loadServiceGeodatabase(from serviceURL: URL) {
+        let serviceGeodatabase = AGSServiceGeodatabase(url: serviceURL)
+        serviceGeodatabase.load { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                let featureTable = serviceGeodatabase.table(withLayerID: 0)!
+                self.featureTable = featureTable
+                self.serviceGeodatabase = serviceGeodatabase
+                // Add the feature layer to the operational layers on map.
+                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                self.featureLayer = featureLayer
+                self.mapView.map?.operationalLayers.add(featureLayer)
+                self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
+            }
+        }
     }
     
     func showCallout(for feature: AGSFeature, at tapLocation: AGSPoint) {
         let title = feature.attributes["typdamage"] as! String
-        self.mapView.callout.title = title
-        self.mapView.callout.delegate = self
-        self.mapView.callout.accessoryButtonImage = UIImage(named: "Discard")
-        self.mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
+        mapView.callout.title = title
+        mapView.callout.accessoryButtonImage = UIImage(named: "Discard")
+        mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
     }
     
+    /// Delete a feature from the feature table.
     func deleteFeature(_ feature: AGSFeature) {
-        self.featureTable.delete(feature) { [weak self] (error: Error?) in
+        featureTable.delete(feature) { [weak self] (error: Error?) in
             if let error = error {
-                print("Error while deleting feature : \(error.localizedDescription)")
+                print("Error while deleting feature: \(error.localizedDescription)")
             } else {
                 self?.applyEdits()
             }
         }
     }
     
+    /// Apply local edits to the geodatabase.
     func applyEdits() {
-        self.featureTable.applyEdits { (featureEditResults: [AGSFeatureEditResult]?, error: Error?) in
-            if let error = error {
-                self.presentAlert(message: "Error while applying edits :: \(error.localizedDescription)")
-            } else {
-                if let featureEditResults = featureEditResults,
-                    featureEditResults.first?.completedWithErrors == false {
-                    self.presentAlert(message: "Edits applied successfully")
+        if serviceGeodatabase.hasLocalEdits() {
+            serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
+                if let featureTableEditResults = featureTableEditResults,
+                   featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
+                    self?.presentAlert(message: "Edits applied successfully")
+                } else if let error = error {
+                    self?.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
                 }
             }
         }
@@ -84,22 +102,20 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let lastQuery = self.lastQuery {
-            lastQuery.cancel()
-        }
+        if let query = lastQuery { query.cancel() }
+        // Hide the callout.
+        mapView.callout.dismiss()
         
-        // hide the callout
-        self.mapView.callout.dismiss()
-        
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
-            if let error = identifyLayerResult.error {
-                print(error)
-            } else if let features = identifyLayerResult.geoElements as? [AGSFeature],
-                let feature = features.first {
-                // show callout for the first feature
-                self?.showCallout(for: feature, at: mapPoint)
-                // update selected feature
-                self?.selectedFeature = feature
+        lastQuery = mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
+            guard let self = self else { return }
+            self.lastQuery = nil
+            if let feature = identifyLayerResult.geoElements.first as? AGSFeature {
+                // Show callout for the feature.
+                self.showCallout(for: feature, at: mapPoint)
+                // Update selected feature.
+                self.selectedFeature = feature
+            } else if let error = identifyLayerResult.error {
+                self.presentAlert(error: error)
             }
         }
     }
@@ -107,22 +123,15 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
-        // hide the callout
-        self.mapView.callout.dismiss()
-        
-        // confirmation
-        let alertController = UIAlertController(title: "Are you sure you want to delete the feature", message: nil, preferredStyle: .alert)
-        // action for Yes
-        let alertAction = UIAlertAction(title: "Yes", style: .default) { [weak self] (_) in
-            self?.deleteFeature(self!.selectedFeature)
+        mapView.callout.dismiss()
+        let alertController = UIAlertController(title: "Are you sure you want to delete the feature?", message: nil, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Yes", style: .default) { [unowned self] _ in
+            deleteFeature(selectedFeature)
         }
         alertController.addAction(alertAction)
-        
-        // action for cancel
         let cancelAlertAction = UIAlertAction(title: "No", style: .cancel)
         alertController.addAction(cancelAlertAction)
-        
-        // present alert controller
-        self.present(alertController, animated: true)
+        alertController.preferredAction = cancelAlertAction
+        present(alertController, animated: true)
     }
 }

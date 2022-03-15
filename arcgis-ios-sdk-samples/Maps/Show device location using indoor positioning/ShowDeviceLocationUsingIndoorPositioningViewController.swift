@@ -272,7 +272,7 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
     
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, statusDidChange status: AGSLocationDataSourceStatus) {
         switch status {
-        case .starting, .started, .stopped:
+        case .starting, .started, .stopping, .stopped:
             // - starting: it happens immediately after user starts the location
             // data source. It takes a while to completely start the ILDS.
             // - started: it happens once ILDS successfully started.

@@ -16,64 +16,82 @@ import UIKit
 import ArcGIS
 
 class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate, AGSCalloutDelegate {
-    @IBOutlet private weak var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = AGSMap(basemapStyle: .arcGISOceans)
+            // Set touch delegate on map view as self.
+            mapView.touchDelegate = self
+            mapView.callout.delegate = self
+        }
+    }
     
-    private var map: AGSMap!
-    private var featureTable: AGSServiceFeatureTable!
-    private var featureLayer: AGSFeatureLayer!
-    private var lastQuery: AGSCancelable!
+    /// The feature table to delete features from.
+    var featureTable: AGSServiceFeatureTable!
+    /// The service geodatabase that contains damaged property features.
+    var serviceGeodatabase: AGSServiceGeodatabase!
+    /// The feature layer created from the feature table.
+    var featureLayer: AGSFeatureLayer!
+    /// Last identify operation.
+    var lastQuery: AGSCancelable!
+    /// The currently selected feature.
+    var selectedFeature: AGSFeature!
     
-    private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
-    private var selectedFeature: AGSArcGISFeature!
-    private let optionsSegueName = "OptionsSegue"
-    
-    private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    let damageTypes = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
+    let optionsSegueName = "OptionsSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = [
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "UpdateAttributesViewController",
             "UpdateAttributesOptionsViewController"
         ]
         
-        self.map = AGSMap(basemapStyle: .arcGISOceans)
-        self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
-        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
-        
-        self.map.operationalLayers.add(featureLayer)
-        
-        self.mapView.map = self.map
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
-        self.mapView.touchDelegate = self
-        
-        // store the feature layer for later use
-        self.featureLayer = featureLayer
+        // Load the service geodatabase.
+        let damageFeatureService = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
+        loadServiceGeodatabase(from: damageFeatureService)
     }
     
-    func showCallout(_ feature: AGSFeature, tapLocation: AGSPoint?) {
-        let title = feature.attributes["typdamage"] as! String
-        self.mapView.callout.title = title
-        self.mapView.callout.delegate = self
-        self.mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
-    }
-    
-    func applyEdits() {
-        UIApplication.shared.showProgressHUD(message: "Applying edits")
-        
-        featureTable.applyEdits { [weak self] (_, error) in
-            UIApplication.shared.hideProgressHUD()
-            
-            guard let self = self else {
-                return
-            }
-            
+    /// Load and set a service geodatabase from a feature service URL.
+    /// - Parameter serviceURL: The URL to the feature service.
+    func loadServiceGeodatabase(from serviceURL: URL) {
+        let serviceGeodatabase = AGSServiceGeodatabase(url: serviceURL)
+        serviceGeodatabase.load { [weak self] error in
+            guard let self = self else { return }
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                self.presentAlert(message: "Edits applied successfully")
-                self.showCallout(self.selectedFeature, tapLocation: nil)
+                let featureTable = serviceGeodatabase.table(withLayerID: 0)!
+                self.featureTable = featureTable
+                self.serviceGeodatabase = serviceGeodatabase
+                // Add the feature layer to the operational layers on map.
+                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                self.featureLayer = featureLayer
+                self.mapView.map?.operationalLayers.add(featureLayer)
+                self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: 544871.19, y: 6806138.66, spatialReference: .webMercator()), scale: 2e6))
+            }
+        }
+    }
+    
+    func showCallout(for feature: AGSFeature, at tapLocation: AGSPoint?) {
+        let title = feature.attributes["typdamage"] as! String
+        mapView.callout.title = title
+        mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
+    }
+    
+    /// Apply local edits to the geodatabase.
+    func applyEdits() {
+        if serviceGeodatabase.hasLocalEdits() {
+            serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
+                guard let self = self else { return }
+                if let featureTableEditResults = featureTableEditResults,
+                   featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
+                    self.presentAlert(message: "Edits applied successfully")
+                    self.showCallout(for: self.selectedFeature, at: nil)
+                } else if let error = error {
+                    self.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
+                }
             }
         }
     }
@@ -81,22 +99,20 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let lastQuery = self.lastQuery {
-            lastQuery.cancel()
-        }
+        if let query = lastQuery { query.cancel() }
+        // Hide the callout.
+        mapView.callout.dismiss()
         
-        // hide the callout
-        self.mapView.callout.dismiss()
-        
-        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
-            if let error = identifyLayerResult.error {
-                print(error)
-            } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
-                let feature = features.first {
-                // show callout for the first feature
-                self?.showCallout(feature, tapLocation: mapPoint)
-                // update selected feature
-                self?.selectedFeature = feature
+        lastQuery = mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
+            guard let self = self else { return }
+            self.lastQuery = nil
+            if let feature = identifyLayerResult.geoElements.first as? AGSFeature {
+                // Show callout for the feature.
+                self.showCallout(for: feature, at: mapPoint)
+                // Update selected feature.
+                self.selectedFeature = feature
+            } else if let error = identifyLayerResult.error {
+                self.presentAlert(error: error)
             }
         }
     }
@@ -104,19 +120,19 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
     // MARK: - AGSCalloutDelegate
     
     func didTapAccessoryButton(for callout: AGSCallout) {
-        // hide the callout
-        self.mapView.callout.dismiss()
-        // show editing options
-        self.performSegue(withIdentifier: self.optionsSegueName, sender: self)
+        // Hide the callout.
+        mapView.callout.dismiss()
+        // Show editing options.
+        performSegue(withIdentifier: optionsSegueName, sender: self)
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == self.optionsSegueName,
-            let navController = segue.destination as? UINavigationController,
-            let controller = navController.viewControllers.first as? UpdateAttributesOptionsViewController {
-            controller.options = self.types
+        if segue.identifier == optionsSegueName,
+           let navController = segue.destination as? UINavigationController,
+           let controller = navController.viewControllers.first as? UpdateAttributesOptionsViewController {
+            controller.options = damageTypes
             controller.delegate = self
         }
     }
@@ -124,13 +140,10 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
 
 extension UpdateAttributesViewController: UpdateAttributesOptionsViewControllerDelegate {
     func optionsViewController(_ optionsViewController: UpdateAttributesOptionsViewController, didSelectOptionAtIndex index: Int) {
-        self.dismiss(animated: true)
-        UIApplication.shared.showProgressHUD(message: "Updating")
-        
-        selectedFeature.attributes["typdamage"] = types[index]
+        dismiss(animated: true)
+        // Update the feature with new damage type.
+        selectedFeature.attributes["typdamage"] = damageTypes[index]
         featureTable.update(selectedFeature) { [weak self] (error: Error?) in
-            UIApplication.shared.hideProgressHUD()
-            
             if let error = error {
                 self?.presentAlert(error: error)
             } else {
@@ -139,7 +152,7 @@ extension UpdateAttributesViewController: UpdateAttributesOptionsViewControllerD
         }
     }
     
-    func optionsViewControllerDidCancell(_ optionsViewController: UpdateAttributesOptionsViewController) {
+    func optionsViewControllerDidCancel(_ optionsViewController: UpdateAttributesOptionsViewController) {
         dismiss(animated: true)
     }
 }

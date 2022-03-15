@@ -78,7 +78,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func deleteFeature(_ feature: AGSFeature) {
         featureTable.delete(feature) { [weak self] (error: Error?) in
             if let error = error {
-                print("Error while deleting feature: \(error.localizedDescription)")
+                self?.presentAlert(message: "Error while deleting feature: \(error.localizedDescription)")
             } else {
                 self?.applyEdits()
             }

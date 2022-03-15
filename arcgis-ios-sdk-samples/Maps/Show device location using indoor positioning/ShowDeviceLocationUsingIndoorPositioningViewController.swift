@@ -276,9 +276,9 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
             // - starting: it happens immediately after user starts the location
             // data source. It takes a while to completely start the ILDS.
             // - started: it happens once ILDS successfully started.
-            // - stopped: ILDS may stop due to internal error, e.g. user revoked
-            // the location permission in system settings. We don't handle these
-            // error here.
+            // - stopping, stopped: ILDS may stop due to internal error, e.g.
+            // user revoked the location permission in system settings. We don't
+            // handle these error here.
             break
         case .failedToStart:
             // - failedToStart: This happens if user provides a wrong UUID, or

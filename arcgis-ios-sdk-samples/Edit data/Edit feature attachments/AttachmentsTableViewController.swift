@@ -16,20 +16,23 @@ import UIKit
 import ArcGIS
 
 class AttachmentsTableViewController: UITableViewController {
-    weak var feature: AGSArcGISFeature? {
+    var feature: AGSArcGISFeature! {
         didSet {
             loadAttachments()
         }
     }
     
+    /// The service geodatabase that contains damaged property features.
+    var serviceGeodatabase: AGSServiceGeodatabase!
+    
     private var attachments: [AGSAttachment] = []
     
     private func loadAttachments() {
-        // show progress hud
+        // Show progress HUD.
         UIApplication.shared.showProgressHUD(message: "Loading attachments")
         
         feature?.fetchAttachments { [weak self] (attachments: [AGSAttachment]?, error: Error?) in
-            // dismiss progress hud
+            // Dismiss progress HUD.
             UIApplication.shared.hideProgressHUD()
             
             guard let self = self else {
@@ -37,7 +40,6 @@ class AttachmentsTableViewController: UITableViewController {
             }
             
             if let error = error {
-                // show the error
                 self.presentAlert(error: error)
             } else if let attachments = attachments {
                 self.attachments = attachments
@@ -129,20 +131,18 @@ class AttachmentsTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func doneAction() {
-        if let table = feature?.featureTable as? AGSServiceFeatureTable {
-            // show progress hud
+        if serviceGeodatabase.hasLocalEdits() {
+            // Show progress HUD.
             UIApplication.shared.showProgressHUD(message: "Applying edits")
-            
-            table.applyEdits { [weak self] (_, error) in
-                // dismiss progress hud
+            serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
+                // Dismiss progress HUD.
                 UIApplication.shared.hideProgressHUD()
-                
-                guard let self = self else {
-                    return
-                }
-                
-                if let error = error {
-                    self.presentAlert(error: error)
+                guard let self = self else { return }
+                if let featureTableEditResults = featureTableEditResults,
+                   featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
+                    self.presentAlert(message: "Saved successfully!")
+                } else if let error = error {
+                    self.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
                 }
                 self.dismiss(animated: true)
             }
@@ -155,25 +155,19 @@ class AttachmentsTableViewController: UITableViewController {
         guard let pngData = UIImage(named: "LocationDisplayOffIcon")?.pngData() else {
             return
         }
-        
-        // show progress hud
         UIApplication.shared.showProgressHUD(message: "Adding attachment")
-        
         feature?.addAttachment(withName: "Attachment.png", contentType: "png", data: pngData) { [weak self] (attachment: AGSAttachment?, error: Error?) in
             UIApplication.shared.hideProgressHUD()
-            
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
             
             if let error = error {
                 self.presentAlert(error: error)
             } else if let attachment = attachment {
-                // new attachments are added to the end
+                // New attachments are added to the end.
                 let indexPath = IndexPath(row: self.attachments.count, section: 0)
-                // update the model
+                // Update the model.
                 self.attachments.append(attachment)
-                // update the table
+                // Update the table.
                 self.tableView.insertRows(at: [indexPath], with: .automatic)
             }
         }

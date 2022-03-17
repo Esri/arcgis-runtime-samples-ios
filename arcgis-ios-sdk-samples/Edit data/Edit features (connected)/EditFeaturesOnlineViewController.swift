@@ -16,58 +16,79 @@ import UIKit
 import ArcGIS
 
 class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegate, AGSPopupsViewControllerDelegate, FeatureTemplatePickerDelegate {
-    @IBOutlet private weak var mapView: AGSMapView!
-    @IBOutlet private weak var sketchToolbar: UIToolbar!
-    @IBOutlet private weak var doneBBI: UIBarButtonItem!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            // Set touch delegate on map view as self.
+            mapView.touchDelegate = self
+            // Assign the sketch editor to map view.
+            mapView.sketchEditor = sketchEditor
+        }
+    }
+    @IBOutlet var sketchToolbar: UIToolbar!
+    @IBOutlet var doneBarButtonItem: UIBarButtonItem!
     
-    private var map: AGSMap!
-    private var sketchEditor: AGSSketchEditor!
-    private var featureLayer: AGSFeatureLayer!
-    private var popupsViewController: AGSPopupsViewController!
-    
-    private var lastQuery: AGSCancelable!
+    /// The service geodatabase that contains damaged property features.
+    var serviceGeodatabase: AGSServiceGeodatabase!
+    /// The feature layer created from the service geodatabase.
+    var featureLayer: AGSFeatureLayer!
+    /// The feature table to edit features.
+    var featureTable: AGSServiceFeatureTable!
+    /// The sketch editor on the map view for editing the feature.
+    var sketchEditor = AGSSketchEditor()
+    /// The popup view controller to view and edit feature attributes.
+    var popupsViewController: AGSPopupsViewController!
+    /// Last identify operation.
+    var lastQuery: AGSCancelable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // add the source code button item to the right of navigation bar
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["EditFeaturesOnlineViewController", "FeatureTemplatePickerViewController"]
-        
-        self.map = AGSMap(basemapStyle: .arcGISTopographic)
-        self.mapView.map = self.map
-        self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -9184518.55, y: 3240636.90, spatialReference: .webMercator()), scale: 7e5))
-        self.mapView.touchDelegate = self
-        
-        let featureTable = AGSServiceFeatureTable(url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0")!)
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
-        self.map.operationalLayers.add(featureLayer)
-        
-        // initialize sketch editor and assign to map view
-        self.sketchEditor = AGSSketchEditor()
-        self.mapView.sketchEditor = self.sketchEditor
-        
-        // hide the sketchToolbar initially
-        self.sketchToolbar.isHidden = true
-        
-        // store the feature layer for later use
-        self.featureLayer = featureLayer
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["EditFeaturesOnlineViewController", "FeatureTemplatePickerViewController"]
+        // Hide the sketchToolbar initially.
+        sketchToolbar.isHidden = true
+        // Load the service geodatabase.
+        let damageFeatureService = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
+        loadServiceGeodatabase(from: damageFeatureService)
+    }
+    
+    /// Load and set a service geodatabase from a feature service URL.
+    /// - Parameter serviceURL: The URL to the feature service.
+    func loadServiceGeodatabase(from serviceURL: URL) {
+        let serviceGeodatabase = AGSServiceGeodatabase(url: serviceURL)
+        serviceGeodatabase.load { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                let featureTable = serviceGeodatabase.table(withLayerID: 0)!
+                self.featureTable = featureTable
+                self.serviceGeodatabase = serviceGeodatabase
+                // Add the feature layer to the operational layers on map.
+                let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+                // Store the feature layer for later use.
+                self.featureLayer = featureLayer
+                self.mapView.map?.operationalLayers.add(featureLayer)
+                self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -9184518.55, y: 3240636.90, spatialReference: .webMercator()), scale: 7e5))
+            }
+        }
     }
     
     private func dismissFeatureTemplatePickerViewController() {
         self.dismiss(animated: true)
     }
     
+    /// Apply local edits to the geodatabase.
     func applyEdits() {
-        // show progress hud
-        UIApplication.shared.showProgressHUD(message: "Applying edits")
-        
-        (featureLayer.featureTable as! AGSServiceFeatureTable).applyEdits { [weak self] (_, error) in
-            UIApplication.shared.hideProgressHUD()
-            
-            if let error = error {
-                self?.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
-            } else {
-                self?.presentAlert(message: "Edits applied successfully!")
+        if serviceGeodatabase.hasLocalEdits() {
+            serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
+                guard let self = self else { return }
+                if let featureTableEditResults = featureTableEditResults,
+                   featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
+                    self.presentAlert(message: "Edits applied successfully!")
+                } else if let error = error {
+                    self.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
+                }
             }
         }
     }
@@ -98,10 +119,10 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, sketchEditorFor popup: AGSPopup) -> AGSSketchEditor? {
         if let geometry = popup.geoElement.geometry {
-            // start sketch editing
+            // Start sketch editing.
             self.mapView.sketchEditor?.start(with: geometry)
             
-            // zoom to the existing feature's geometry
+            // Zoom to the existing feature's geometry.
             self.mapView.setViewpointGeometry(geometry.extent, padding: 10, completion: nil)
         }
         
@@ -109,51 +130,51 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, readyToEditGeometryWith sketchEditor: AGSSketchEditor?, for popup: AGSPopup) {
-        // Dismiss the popup view controller
+        // Dismiss the popup view controller.
         self.dismiss(animated: true)
         
-        // Prepare the current view controller for sketch mode
+        // Prepare the current view controller for sketch mode.
         self.mapView.callout.isHidden = true
         
-        // hide the back button
+        // Hide the back button.
         self.navigationItem.hidesBackButton = true
         
-        // disable the code button
+        // Disable the code button.
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         
-        // unhide the sketchToolbar
+        // Unhide the sketchToolbar.
         self.sketchToolbar.isHidden = false
         
-        // disable the done button until any geometry changes
-        self.doneBBI.isEnabled = false
+        // Disable the done button until any geometry changes.
+        self.doneBarButtonItem.isEnabled = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(EditFeaturesOnlineViewController.sketchChanged(_:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, didCancelEditingFor popup: AGSPopup) {
-        // stop sketch editor
+        // Stop sketch editor.
         self.disableSketchEditor()
     }
     
     func popupsViewController(_ popupsViewController: AGSPopupsViewController, didFinishEditingFor popup: AGSPopup) {
-        // stop sketch editor
+        // Stop sketch editor.
         self.disableSketchEditor()
         
         let feature = popup.geoElement as! AGSFeature
         
-        // simplify the geometry, this will take care of self intersecting polygons and
+        // Simplify the geometry, which will take care of self intersecting
+        // polygons and normalize the geometry, which will take care of
+        // geometries that extend beyone the dateline (if wraparound was enabled
+        // on the map)
         feature.geometry = AGSGeometryEngine.simplifyGeometry(feature.geometry!)
-        
-        // normalize the geometry, this will take care of geometries that extend beyone the dateline
-        // (ifwraparound was enabled on the map)
         feature.geometry = AGSGeometryEngine.normalizeCentralMeridian(of: feature.geometry!)
         
-        // apply edits
+        // Apply edits.
         self.applyEdits()
     }
     
     func popupsViewControllerDidFinishViewingPopups(_ popupsViewController: AGSPopupsViewController) {
-        // dismiss the popups view controller
+        // Dismiss the popups view controller.
         self.dismiss(animated: true)
         
         self.popupsViewController = nil
@@ -162,29 +183,29 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     @objc
     func sketchChanged(_ notification: Notification) {
         // Check if the sketch geometry is valid to decide whether to enable
-        // the sketchCompleteButton
+        // the sketchCompleteButton.
         if let geometry = self.mapView.sketchEditor?.geometry, !geometry.isEmpty {
-            self.doneBBI.isEnabled = true
+            self.doneBarButtonItem.isEnabled = true
         }
     }
     
     @IBAction func sketchDoneAction() {
-        // enable or unhide navigation bar button
+        // Enable or unhide navigation bar button.
         self.navigationItem.hidesBackButton = false
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         
-        // present the popups view controller again
+        // Present the popups view controller again.
         self.present(self.popupsViewController, animated: true)
         
-        // remove self as observer for notifications
+        // Remove self as observer for notifications.
         NotificationCenter.default.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
     }
     
     private func disableSketchEditor() {
-        // stop sketch editor
+        // Stop sketch editor.
         self.mapView.sketchEditor?.stop()
         
-        // hide sketch toolbar
+        // Hide sketch toolbar.
         self.sketchToolbar.isHidden = true
     }
     
@@ -202,35 +223,34 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
     // MARK: - FeatureTemplatePickerDelegate
     
     func featureTemplatePickerViewController(_ controller: FeatureTemplatePickerViewController, didSelectFeatureTemplate template: AGSFeatureTemplate, forFeatureLayer featureLayer: AGSFeatureLayer) {
-        let featureTable = self.featureLayer.featureTable as! AGSArcGISFeatureTable
-        // create a new feature based on the template
+        // Create a new feature based on the template.
         let newFeature = featureTable.createFeature(with: template)!
         
-        // set the geometry as the center of the screen
+        // Set the geometry as the center of the screen.
         if let visibleArea = self.mapView.visibleArea {
             newFeature.geometry = visibleArea.extent.center
         } else {
-            newFeature.geometry = AGSPoint(x: 0, y: 0, spatialReference: self.map.spatialReference)
+            newFeature.geometry = AGSPoint(x: 0, y: 0, spatialReference: .webMercator())
         }
         
-        // initialize a popup definition using the feature layer
+        // Initialize a popup definition using the feature layer.
         let popupDefinition = AGSPopupDefinition(popupSource: self.featureLayer)
-        // create a popup
+        // Create a popup.
         let popup = AGSPopup(geoElement: newFeature, popupDefinition: popupDefinition)
         
-        // initialize popups view controller
+        // Initialize popups view controller.
         self.popupsViewController = AGSPopupsViewController(popups: [popup], containerStyle: .navigationBar)
         self.popupsViewController.delegate = self
         
-        // Only for iPad, set presentation style to Form sheet
-        // We don't want it to cover the entire screen
+        // Only for iPad, set presentation style to Form sheet.
+        // We don't want it to cover the entire screen.
         self.popupsViewController.modalPresentationStyle = .formSheet
         self.popupsViewController.isModalInPresentation = true
         
-        // First, dismiss the Feature Template Picker
+        // First, dismiss the Feature Template Picker.
         self.dismiss(animated: false)
         
-        // Next, Present the popup view controller
+        // Next, Present the popup view controller.
         self.present(self.popupsViewController, animated: true) { [weak self] in
             self?.popupsViewController.startEditingCurrentPopup()
         }

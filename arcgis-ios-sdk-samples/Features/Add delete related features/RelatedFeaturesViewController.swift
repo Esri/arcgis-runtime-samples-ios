@@ -20,7 +20,6 @@ import ArcGIS
 class RelatedFeaturesViewController: UITableViewController {
     var originFeature: AGSArcGISFeature!
     var originFeatureTable: AGSServiceFeatureTable!
-    var serviceGeodatabase: AGSServiceGeodatabase!
     
     private var relationshipInfo: AGSRelationshipInfo!
     private var relatedFeatures = [AGSFeature]()
@@ -123,20 +122,27 @@ class RelatedFeaturesViewController: UITableViewController {
     }
     
     private func applyEdits() {
+        // get the related table using the relationshipInfo
+        guard let relatedTable = originFeatureTable.relatedTables(with: relationshipInfo)?.first as? AGSServiceFeatureTable else {
+            return
+        }
+        
         // show progress hud
         UIApplication.shared.showProgressHUD(message: "Applying edits")
         
-        if serviceGeodatabase.hasLocalEdits() {
-            serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
-                UIApplication.shared.hideProgressHUD()
-                guard let self = self else { return }
-                if let featureTableEditResults = featureTableEditResults,
-                   featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
-                    // Query to update features in the table.
-                    self.queryRelatedFeatures()
-                } else if let error = error {
-                    self.presentAlert(error: error)
+        relatedTable.applyEdits { [weak self] (results, error) in
+            UIApplication.shared.hideProgressHUD()
+            guard let self = self else { return }
+            if let results = results {
+                if let firstResult = results.first,
+                   firstResult.completedWithErrors {
+                    // The edit fails with error.
+                    self.presentAlert(error: firstResult.error!)
                 }
+                // Query to update features in the table.
+                self.queryRelatedFeatures()
+            } else if let error = error {
+                self.presentAlert(error: error)
             }
         }
     }

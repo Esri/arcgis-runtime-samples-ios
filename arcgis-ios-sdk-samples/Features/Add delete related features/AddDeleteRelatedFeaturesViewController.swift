@@ -18,87 +18,73 @@ import UIKit
 import ArcGIS
 
 class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
-    @IBOutlet var mapView: AGSMapView! {
-        didSet {
-            mapView.map = AGSMap(basemapStyle: .arcGISStreets)
-            // Set touch delegate on map view as self.
-            mapView.touchDelegate = self
-        }
-    }
+    @IBOutlet var mapView: AGSMapView!
     
-    /// The feature table that contains national park geometries.
-    var parksFeatureTable: AGSServiceFeatureTable!
-    /// The feature layer created from the feature table.
-    var parksFeatureLayer: AGSFeatureLayer!
-    /// The service geodatabase for national park species.
-    var serviceGeodatabase: AGSServiceGeodatabase!
-    /// The currently selected park feature.
-    var selectedPark: AGSArcGISFeature!
-    /// Last identify operation.
-    var lastQuery: AGSCancelable!
+    private var parksFeatureTable: AGSServiceFeatureTable!
+    private var parksFeatureLayer: AGSFeatureLayer!
+    
+    private var selectedPark: AGSFeature!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Add the source code button item to the right of navigation bar.
-        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["AddDeleteRelatedFeaturesViewController", "RelatedFeaturesViewController"]
         
-        // Load the service geodatabase.
-        let alaskaNationalParksSpeciesFeatureService = URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/ArcGIS/rest/services/AlaskaNationalParksSpecies_Add_Delete/FeatureServer")!
-        loadServiceGeodatabase(from: alaskaNationalParksSpeciesFeatureService)
-    }
-    
-    /// Load and set a service geodatabase from a feature service URL.
-    /// - Parameter serviceURL: The URL to the feature service.
-    func loadServiceGeodatabase(from serviceURL: URL) {
-        let serviceGeodatabase = AGSServiceGeodatabase(url: serviceURL)
-        serviceGeodatabase.load { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
-                let parksFeatureTable = serviceGeodatabase.table(withLayerID: 0)!
-                // Species feature table (destination feature table) which
-                // relates to the parks feature table in a 1..M relationship.
-                let speciesFeatureTable = serviceGeodatabase.table(withLayerID: 1)!
-                self.parksFeatureTable = parksFeatureTable
-                self.serviceGeodatabase = serviceGeodatabase
-                
-                let featureLayer = AGSFeatureLayer(featureTable: parksFeatureTable)
-                // Store the feature layer for later use.
-                self.parksFeatureLayer = featureLayer
-                // Add the park feature layer to the operational layers on map.
-                self.mapView.map?.operationalLayers.add(featureLayer)
-                
-                // Add table to the map. To make the related query work,
-                // the related table needs to be present in the map.
-                self.mapView.map?.tables.add(speciesFeatureTable)
-                self.mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: .webMercator()), scale: 36764077))
-            }
-        }
+        // add the source code button item to the right of navigation bar
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["AddDeleteRelatedFeaturesViewController", "RelatedFeaturesViewController"]
+
+        // initialize map with basemap
+        let map = AGSMap(basemapStyle: .arcGISStreets)
+        
+        // initial viewpoint
+        let point = AGSPoint(x: -16507762.575543, y: 9058828.127243, spatialReference: .webMercator())
+        
+        // parks feature table
+        self.parksFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/ArcGIS/rest/services/AlaskaNationalParksSpecies_Add_Delete/FeatureServer/0")!)
+        
+        // parks feature layer
+        let parksFeatureLayer = AGSFeatureLayer(featureTable: self.parksFeatureTable)
+        
+        // add feature layer to the map
+        map.operationalLayers.add(parksFeatureLayer)
+        
+        // species feature table (destination feature table)
+        // related to the parks feature layer in a 1..M relationship
+        let speciesFeatureTable = AGSServiceFeatureTable(url: URL(string: "https://services2.arcgis.com/ZQgQTuoyBrtmoGdP/ArcGIS/rest/services/AlaskaNationalParksSpecies_Add_Delete/FeatureServer/1")!)
+        
+        // add table to the map
+        // for the related query to work, the related table should be present in the map
+        map.tables.add(speciesFeatureTable)
+        
+        // assign map to map view
+        mapView.map = map
+        mapView.setViewpoint(AGSViewpoint(center: point, scale: 36764077))
+        
+        // set touch delegate
+        mapView.touchDelegate = self
+        
+        // store the feature layer for later use
+        self.parksFeatureLayer = parksFeatureLayer
     }
     
     // MARK: - AGSGeoViewTouchDelegate
     
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        if let query = lastQuery { query.cancel() }
-        // Show progress hud for identify.
+        // show progress hud for identify
         UIApplication.shared.showProgressHUD(message: "Identifying feature")
         
-        // Identify features at tapped location.
-        lastQuery = mapView.identifyLayer(parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
-            // Hide progress HUD.
+        // identify features at tapped location
+        self.mapView.identifyLayer(self.parksFeatureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (result) in
+            // hide progress hud
             UIApplication.shared.hideProgressHUD()
-            guard let self = self else { return }
-            self.lastQuery = nil
             
-            if let feature = identifyLayerResult.geoElements.first as? AGSArcGISFeature {
-                // Select the first feature.
-                self.selectedPark = feature
-                // Show related features view controller.
-                self.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
-            } else if let error = identifyLayerResult.error {
+            if let error = result.error {
                 // show error to user
-                self.presentAlert(error: error)
+                self?.presentAlert(error: error)
+            } else if let feature = result.geoElements.first as? AGSFeature {
+                // select the first feature
+                self?.selectedPark = feature
+                
+                // show related features view controller
+                self?.performSegue(withIdentifier: "RelatedFeaturesSegue", sender: self)
             }
         }
     }
@@ -107,11 +93,13 @@ class AddDeleteRelatedFeaturesViewController: UIViewController, AGSGeoViewTouchD
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RelatedFeaturesSegue",
-           let navigationController = segue.destination as? UINavigationController,
-           let controller = navigationController.viewControllers.first as? RelatedFeaturesViewController {
-            controller.originFeature = selectedPark
-            controller.originFeatureTable = parksFeatureTable
-            controller.serviceGeodatabase = serviceGeodatabase
+            let navigationController = segue.destination as? UINavigationController,
+            let controller = navigationController.viewControllers.first as? RelatedFeaturesViewController {
+            // share selected park
+            controller.originFeature = self.selectedPark as? AGSArcGISFeature
+            
+            // share parks feature table as origin feature table
+            controller.originFeatureTable = self.parksFeatureTable
         }
     }
 }

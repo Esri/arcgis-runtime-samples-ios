@@ -3247,7 +3247,6 @@
 				3EEB2B931EB9695F00B52513 /* List related features */,
 				3E5E093A1EF4567A00FF3454 /* Add delete related features */,
 				09607F7C1FDB60EC00FA43B6 /* Time based query */,
-				F1EF67DB27E2AE200049FA9A /* Map image layer tables */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -3304,6 +3303,7 @@
 				4CAC91D72242AAB700663A10 /* Load WFS with XML query */,
 				12D6602B226697040005DE8A /* Group layers */,
 				4CE15D4822F37968005F2968 /* Control annotation sublayer visibility */,
+				F1EF67DB27E2AE200049FA9A /* Map image layer tables */,
 			);
 			path = Layers;
 			sourceTree = "<group>";

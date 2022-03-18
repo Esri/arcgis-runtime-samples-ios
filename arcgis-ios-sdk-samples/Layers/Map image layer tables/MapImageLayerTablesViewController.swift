@@ -18,4 +18,17 @@ import ArcGIS
 
 class MapImageLayerTablesViewController: UIViewController {
     
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = AGSMap(basemapStyle: .arcGISStreets)
+        }
+    }
+    
+    static let serviceRequestURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer")!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [ "MapImageLayerTablesViewController"]
+    }
 }

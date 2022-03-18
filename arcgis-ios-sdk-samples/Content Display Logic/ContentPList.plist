@@ -312,7 +312,7 @@
 				<key>displayName</key>
 				<string>Show device location using indoor positioning</string>
 				<key>descriptionText</key>
-				<string>Show your device's real-time location while inside a building by using signals from indoor positioning beacons.</string>
+				<string>Show your device&apos;s real-time location while inside a building by using signals from indoor positioning beacons.</string>
 				<key>storyboardName</key>
 				<string>ShowDeviceLocationUsingIndoorPositioning</string>
 			</dict>
@@ -783,6 +783,14 @@
 				<array>
 					<string>EdinburghPylonsDimensionsMMPK</string>
 				</array>
+			</dict>
+			<dict>
+				<key>storyboardName</key>
+				<string>MapImageLayerTables</string>
+				<key>descriptionText</key>
+				<string>Find features in a spatial table related to features in a non-spatial table.</string>
+				<key>displayName</key>
+				<string>Map image layer tables</string>
 			</dict>
 		</array>
 	</dict>

@@ -99,7 +99,7 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
             preferredStyle: .actionSheet
         )
         // Add real data source to the options.
-        let realDataSourceAction = UIAlertAction(title: "Device", style: .default) { [self] _ in
+        let realDataSourceAction = UIAlertAction(title: "Device", style: .default) { [unowned self] _ in
             if let (accessory, protocolString) = firstSupportedAccessoryWithProtocol() {
                 // Use the supported accessory directly if it's already connected.
                 accessoryDidConnect(connectedAccessory: accessory, protocolString: protocolString)
@@ -110,24 +110,24 @@ class DisplayDeviceLocationWithNMEADataSourcesViewController: UIViewController {
                        error.code != .alreadyConnected {
                         switch error.code {
                         case .resultNotFound:
-                            presentAlert(message: "The specified accessory could not be found, perhaps because it was turned off prior to connection.")
+                            self.presentAlert(message: "The specified accessory could not be found, perhaps because it was turned off prior to connection.")
                         case .resultCancelled:
                             // Don't show error message when the picker is cancelled.
                             return
                         default:
-                            presentAlert(message: "Selecting an accessory failed for an unknown reason.")
+                            self.presentAlert(message: "Selecting an accessory failed for an unknown reason.")
                         }
-                    } else if let (accessory, protocolString) = firstSupportedAccessoryWithProtocol() {
+                    } else if let (accessory, protocolString) = self.firstSupportedAccessoryWithProtocol() {
                         // Proceed with supported and connected accessory, and
                         // ignore other accessories that aren't supported.
-                        accessoryDidConnect(connectedAccessory: accessory, protocolString: protocolString)
+                        self.accessoryDidConnect(connectedAccessory: accessory, protocolString: protocolString)
                     }
                 }
             }
         }
         alertController.addAction(realDataSourceAction)
         // Add mock data source to the options.
-        let mockDataSourceAction = UIAlertAction(title: "Mock Data", style: .default) { [self] _ in
+        let mockDataSourceAction = UIAlertAction(title: "Mock Data", style: .default) { [unowned self] _ in
             nmeaLocationDataSource = AGSNMEALocationDataSource(receiverSpatialReference: .wgs84())
             nmeaLocationDataSource.locationChangeHandlerDelegate = self
             mockNMEADataSource.delegate = self

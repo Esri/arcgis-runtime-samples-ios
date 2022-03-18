@@ -19,7 +19,7 @@ final class GroupLayersSectionView: UITableViewHeaderFooterView {
     @IBOutlet var layerVisibilitySwitch: UISwitch?
     weak var delegate: GroupLayersSectionViewDelegate?
     
-    static let reuseIdentifier = String(describing: GroupLayersSectionView.self)
+    static let reuseIdentifier = "\(GroupLayersSectionView.self)"
     
     static var nib: UINib {
         return UINib(nibName: String(describing: self), bundle: nil)

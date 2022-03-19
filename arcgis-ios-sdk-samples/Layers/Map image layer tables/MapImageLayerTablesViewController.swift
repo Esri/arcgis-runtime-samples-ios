@@ -17,14 +17,37 @@ import UIKit
 import ArcGIS
 
 class MapImageLayerTablesViewController: UIViewController {
-    
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            mapView.map = AGSMap(basemapStyle: .arcGISStreets)
+            mapView.map = makeMap()
         }
     }
     
     static let serviceRequestURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer")!
+    let serviceRequestsMapImageLayer = AGSArcGISMapImageLayer(url: serviceRequestURL)
+    let selectedFeaturesOverlay = AGSGraphicsOverlay()
+    
+    func makeMap() -> AGSMap{
+        let map = AGSMap(basemapStyle: .arcGISStreets)
+        let requestsExtent = serviceRequestsMapImageLayer.fullExtent!
+        map.initialViewpoint = AGSViewpoint(targetExtent: requestsExtent)
+        map.operationalLayers.add(serviceRequestsMapImageLayer)
+        return map
+    }
+    
+    func queryFeatures() {
+        let commentsTable = serviceRequestsMapImageLayer.tables.first
+        let nullCommentsParameters = AGSQueryParameters()
+        nullCommentsParameters.whereClause = "requestid <> '' AND comments <> ''"
+        
+        let commentQueryResult = commentsTable?.queryFeatures(with: nullCommentsParameters, queryFeatureFields: .loadAll) { result, error in
+            // Show the records from the service request comments table in the list view control.
+            
+            // Create a graphics overlay to show selected features and add it to the map view.
+            
+            // Assign the map to the MapView.
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

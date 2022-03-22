@@ -45,8 +45,6 @@ class EditFeaturesOnlineViewController: UIViewController, AGSGeoViewTouchDelegat
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["EditFeaturesOnlineViewController", "FeatureTemplatePickerViewController"]
-        // Hide the sketchToolbar initially.
-        sketchToolbar.isHidden = true
         // Load the service geodatabase.
         let damageFeatureService = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer")!
         loadServiceGeodatabase(from: damageFeatureService)

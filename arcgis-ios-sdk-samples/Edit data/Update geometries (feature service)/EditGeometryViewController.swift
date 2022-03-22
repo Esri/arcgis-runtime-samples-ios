@@ -97,16 +97,14 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     
     /// Apply local edits to the geodatabase.
     func applyEdits() {
-        if serviceGeodatabase.hasLocalEdits() {
-            serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
-                guard let self = self else { return }
-                if let featureTableEditResults = featureTableEditResults,
-                   featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
-                    self.featureLayer.setFeature(self.selectedFeature, visible: true)
-                    self.presentAlert(message: "Saved successfully!")
-                } else if let error = error {
-                    self.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
-                }
+        guard serviceGeodatabase.hasLocalEdits() else { return }
+        serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
+            guard let self = self else { return }
+            if let featureTableEditResults = featureTableEditResults,
+               featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
+                self.featureLayer.setFeature(self.selectedFeature, visible: true)
+            } else if let error = error {
+                self.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
             }
         }
     }

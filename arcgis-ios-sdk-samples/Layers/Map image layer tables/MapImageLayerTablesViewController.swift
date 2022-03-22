@@ -20,11 +20,31 @@ class MapImageLayerTablesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
+            // Assign the map to the MapView.
+            mapView.graphicsOverlays.add(selectedFeaturesOverlay)
         }
+    }
+    
+    @IBAction func queryFeaturesActions(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Related Service Requests", message: "Select a comment to view related spatial features on the map.", preferredStyle: .actionSheet)
+        itemsSource.forEach { feature in
+            let commentsTitle = feature.attributes["comments"] as! String
+            let action = UIAlertAction(title: commentsTitle, style: .default) { (_) in
+                let serviceRequestsMapImageLayer = self.mapView.map?.operationalLayers.firstObject as? AGSArcGISMapImageLayer
+                let commentsTable = serviceRequestsMapImageLayer?.tables.first
+                let commentsRelationshipInfo = commentsTable?.layerInfo?.relationshipInfos.first
+                self.relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: commentsRelationshipInfo!)
+                self.queryCommentsTable(feature: feature, commentsTable: commentsTable!)
+            }
+            alertController.addAction(action)
+        }
+        
     }
     
     static let serviceRequestURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer")!
     let serviceRequestsMapImageLayer = AGSArcGISMapImageLayer(url: serviceRequestURL)
+    var itemsSource = [AGSFeature]()
+    var relatedQueryParameters: AGSRelatedQueryParameters?
     let selectedFeaturesOverlay = AGSGraphicsOverlay()
     
     func makeMap() -> AGSMap{
@@ -40,12 +60,27 @@ class MapImageLayerTablesViewController: UIViewController {
         let nullCommentsParameters = AGSQueryParameters()
         nullCommentsParameters.whereClause = "requestid <> '' AND comments <> ''"
         
-        let commentQueryResult = commentsTable?.queryFeatures(with: nullCommentsParameters, queryFeatureFields: .loadAll) { result, error in
+        commentsTable?.queryFeatures(with: nullCommentsParameters, queryFeatureFields: .loadAll) { result, error in
             // Show the records from the service request comments table in the list view control.
-            
+            self.itemsSource = (result?.featureEnumerator().allObjects)!
             // Create a graphics overlay to show selected features and add it to the map view.
-            
-            // Assign the map to the MapView.
+        }
+    }
+    
+    func queryCommentsTable(feature: AGSFeature, commentsTable: AGSServiceFeatureTable) {
+        let comment = feature as! AGSArcGISFeature
+        commentsTable.queryRelatedFeatures(for: comment, parameters: relatedQueryParameters!) { result, error in
+            if let serviceRequestFeature = result?.first as? AGSArcGISFeature {
+                serviceRequestFeature.load { error in
+                    let serviceRequestPoint = serviceRequestFeature.geometry as? AGSPoint
+                    let selectedRequestSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .cyan, size: 14)
+                    let requestGraphic = AGSGraphic(geometry: serviceRequestPoint, symbol: selectedRequestSymbol)
+                    self.selectedFeaturesOverlay.graphics.add(requestGraphic)
+                    self.mapView.setViewpointCenter(serviceRequestPoint!)
+                }
+            } else {
+                self.presentAlert(title: "Related feature not found. No Feature", message: nil)
+            }
         }
     }
     

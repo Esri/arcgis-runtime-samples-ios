@@ -75,14 +75,15 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
         
         // Add the feature to the feature table.
         featureTable.add(feature) { [weak self] (error: Error?) in
+            guard let self = self else { return }
             // Enable interaction with map view.
-            self?.mapView.isUserInteractionEnabled = true
+            self.mapView.isUserInteractionEnabled = true
             
             if let error = error {
-                self?.presentAlert(message: "Error while adding feature: \(error.localizedDescription)")
+                self.presentAlert(message: "Error while adding feature: \(error.localizedDescription)")
             } else {
                 // Applied edits on success.
-                self?.applyEdits()
+                self.applyEdits()
             }
         }
     }

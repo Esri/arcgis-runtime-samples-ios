@@ -25,7 +25,9 @@ class MapImageLayerTablesViewController: UIViewController {
         }
     }
     
-    @IBAction func queryFeaturesActions(_ sender: UIBarButtonItem) {
+    @IBOutlet var queryButton: UIBarButtonItem!
+    
+    @IBAction func queryFeaturesActions() {
         let alertController = UIAlertController(title: "Related Service Requests", message: "Select a comment to view related spatial features on the map.", preferredStyle: .actionSheet)
         itemsSource.forEach { feature in
             let commentsTitle = feature.attributes["comments"] as! String
@@ -34,11 +36,17 @@ class MapImageLayerTablesViewController: UIViewController {
                 let commentsTable = serviceRequestsMapImageLayer?.tables.first
                 let commentsRelationshipInfo = commentsTable?.layerInfo?.relationshipInfos.first
                 self.relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: commentsRelationshipInfo!)
+                self.relatedQueryParameters?.returnGeometry = true
                 self.queryCommentsTable(feature: feature, commentsTable: commentsTable!)
             }
             alertController.addAction(action)
         }
+        // Add "cancel" item.
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
         
+        alertController.popoverPresentationController?.barButtonItem = queryButton
+        present(alertController, animated: true)
     }
     
     static let serviceRequestURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer")!
@@ -47,11 +55,14 @@ class MapImageLayerTablesViewController: UIViewController {
     var relatedQueryParameters: AGSRelatedQueryParameters?
     let selectedFeaturesOverlay = AGSGraphicsOverlay()
     
-    func makeMap() -> AGSMap{
+    func makeMap() -> AGSMap {
         let map = AGSMap(basemapStyle: .arcGISStreets)
-        let requestsExtent = serviceRequestsMapImageLayer.fullExtent!
-        map.initialViewpoint = AGSViewpoint(targetExtent: requestsExtent)
-        map.operationalLayers.add(serviceRequestsMapImageLayer)
+        serviceRequestsMapImageLayer.loadTablesAndLayers { _ in
+            let requestsExtent = self.serviceRequestsMapImageLayer.fullExtent!
+            map.initialViewpoint = AGSViewpoint(targetExtent: requestsExtent)
+            map.operationalLayers.add(self.serviceRequestsMapImageLayer)
+            self.queryFeatures()
+        }
         return map
     }
     
@@ -61,22 +72,34 @@ class MapImageLayerTablesViewController: UIViewController {
         nullCommentsParameters.whereClause = "requestid <> '' AND comments <> ''"
         
         commentsTable?.queryFeatures(with: nullCommentsParameters, queryFeatureFields: .loadAll) { result, error in
-            // Show the records from the service request comments table in the list view control.
-            self.itemsSource = (result?.featureEnumerator().allObjects)!
-            // Create a graphics overlay to show selected features and add it to the map view.
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                // Show the records from the service request comments table in the list view control.
+                self.itemsSource = (result?.featureEnumerator().allObjects)!
+                self.queryButton.isEnabled = true
+                // Create a graphics overlay to show selected features and add it to the map view.
+            }
         }
     }
     
     func queryCommentsTable(feature: AGSFeature, commentsTable: AGSServiceFeatureTable) {
         let comment = feature as! AGSArcGISFeature
         commentsTable.queryRelatedFeatures(for: comment, parameters: relatedQueryParameters!) { result, error in
-            if let serviceRequestFeature = result?.first as? AGSArcGISFeature {
+            if let serviceRequestFeature = result?.first?.feature as? AGSArcGISFeature {
                 serviceRequestFeature.load { error in
-                    let serviceRequestPoint = serviceRequestFeature.geometry as? AGSPoint
-                    let selectedRequestSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .cyan, size: 14)
-                    let requestGraphic = AGSGraphic(geometry: serviceRequestPoint, symbol: selectedRequestSymbol)
-                    self.selectedFeaturesOverlay.graphics.add(requestGraphic)
-                    self.mapView.setViewpointCenter(serviceRequestPoint!)
+                    if let error = error {
+                        self.presentAlert(error: error)
+                    } else {
+                        if serviceRequestFeature.loadStatus == .loaded {
+                            let serviceRequestPoint = serviceRequestFeature.geometry as? AGSPoint
+                            let selectedRequestSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .cyan, size: 14)
+                            let requestGraphic = AGSGraphic(geometry: serviceRequestPoint, symbol: selectedRequestSymbol)
+                            self.selectedFeaturesOverlay.graphics.add(requestGraphic)
+                            self.mapView.setViewpointCenter(serviceRequestPoint!)
+                        }
+                        
+                    }
                 }
             } else {
                 self.presentAlert(title: "Related feature not found. No Feature", message: nil)
@@ -86,7 +109,6 @@ class MapImageLayerTablesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [ "MapImageLayerTablesViewController"]
     }
 }

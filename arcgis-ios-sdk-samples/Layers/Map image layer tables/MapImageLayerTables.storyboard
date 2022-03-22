@@ -25,9 +25,9 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tPQ-Po-91y"/>
-                                    <barButtonItem title="Query related spatial features" id="NZ4-Ky-Fcl">
+                                    <barButtonItem enabled="NO" title="Query related spatial features" id="NZ4-Ky-Fcl">
                                         <connections>
-                                            <action selector="actionSheets:" destination="Y6W-OH-hqX" id="nfL-8i-WON"/>
+                                            <action selector="queryFeaturesActions" destination="Y6W-OH-hqX" id="c1X-dV-P2E"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2YM-Up-BGL"/>
@@ -48,6 +48,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="wGx-yp-QOz" id="VDV-wE-ONk"/>
+                        <outlet property="queryButton" destination="NZ4-Ky-Fcl" id="jh4-Ma-ixn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

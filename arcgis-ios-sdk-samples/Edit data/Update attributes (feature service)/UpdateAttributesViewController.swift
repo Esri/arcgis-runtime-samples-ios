@@ -82,16 +82,14 @@ class UpdateAttributesViewController: UIViewController, AGSGeoViewTouchDelegate,
     
     /// Apply local edits to the geodatabase.
     func applyEdits() {
-        if serviceGeodatabase.hasLocalEdits() {
-            serviceGeodatabase.applyEdits { [weak self] featureTableEditResults, error in
-                guard let self = self else { return }
-                if let featureTableEditResults = featureTableEditResults,
-                   featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
-                    self.presentAlert(message: "Edits applied successfully")
-                    self.showCallout(for: self.selectedFeature, at: nil)
-                } else if let error = error {
-                    self.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
-                }
+        guard serviceGeodatabase.hasLocalEdits() else { return }
+        serviceGeodatabase.applyEdits { [weak self] featureTableEditResults, error in
+            guard let self = self else { return }
+            if let featureTableEditResults = featureTableEditResults,
+               featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
+                self.showCallout(for: self.selectedFeature, at: nil)
+            } else if let error = error {
+                self.presentAlert(message: "Error while applying edits: \(error.localizedDescription)")
             }
         }
     }

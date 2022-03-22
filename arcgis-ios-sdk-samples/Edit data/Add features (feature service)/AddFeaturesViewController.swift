@@ -90,7 +90,7 @@ class AddFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate {
     /// Apply local edits to the geodatabase.
     func applyEdits() {
         if serviceGeodatabase.hasLocalEdits() {
-            serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
+            serviceGeodatabase.applyEdits { [weak self] featureTableEditResults, error in
                 if let featureTableEditResults = featureTableEditResults,
                    featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
                     self?.presentAlert(message: "Edits applied successfully")

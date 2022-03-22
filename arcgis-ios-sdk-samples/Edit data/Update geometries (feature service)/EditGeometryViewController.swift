@@ -124,7 +124,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         // Hide the callout.
         mapView.callout.dismiss()
         
-        lastQuery = mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
+        lastQuery = mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] identifyLayerResult in
             guard let self = self else { return }
             self.lastQuery = nil
             if let feature = identifyLayerResult.geoElements.first as? AGSFeature {
@@ -162,7 +162,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     @IBAction func doneAction() {
         if let newGeometry = mapView.sketchEditor?.geometry {
             selectedFeature.geometry = newGeometry
-            featureTable.update(selectedFeature) { [weak self] (error: Error?) in
+            featureTable.update(selectedFeature) { [weak self] error in
                 guard let self = self else { return }
                 if let error = error {
                     self.presentAlert(error: error)

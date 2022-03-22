@@ -76,7 +76,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     
     /// Delete a feature from the feature table.
     func deleteFeature(_ feature: AGSFeature) {
-        featureTable.delete(feature) { [weak self] (error: Error?) in
+        featureTable.delete(feature) { [weak self] error in
             if let error = error {
                 self?.presentAlert(message: "Error while deleting feature: \(error.localizedDescription)")
             } else {
@@ -88,7 +88,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     /// Apply local edits to the geodatabase.
     func applyEdits() {
         if serviceGeodatabase.hasLocalEdits() {
-            serviceGeodatabase.applyEdits { [weak self] (featureTableEditResults: [AGSFeatureTableEditResult]?, error: Error?) in
+            serviceGeodatabase.applyEdits { [weak self] featureTableEditResults, error in
                 if let featureTableEditResults = featureTableEditResults,
                    featureTableEditResults.first?.editResults.first?.completedWithErrors == false {
                     self?.presentAlert(message: "Edits applied successfully")
@@ -106,7 +106,7 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
         // Hide the callout.
         mapView.callout.dismiss()
         
-        lastQuery = mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
+        lastQuery = mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] identifyLayerResult in
             guard let self = self else { return }
             self.lastQuery = nil
             if let feature = identifyLayerResult.geoElements.first as? AGSFeature {
@@ -125,11 +125,11 @@ class DeleteFeaturesViewController: UIViewController, AGSGeoViewTouchDelegate, A
     func didTapAccessoryButton(for callout: AGSCallout) {
         mapView.callout.dismiss()
         let alertController = UIAlertController(title: "Are you sure you want to delete the feature?", message: nil, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Yes", style: .default) { [unowned self] _ in
+        let alertAction = UIAlertAction(title: "Delete", style: .destructive) { [unowned self] _ in
             deleteFeature(selectedFeature)
         }
         alertController.addAction(alertAction)
-        let cancelAlertAction = UIAlertAction(title: "No", style: .cancel)
+        let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAlertAction)
         alertController.preferredAction = cancelAlertAction
         present(alertController, animated: true)

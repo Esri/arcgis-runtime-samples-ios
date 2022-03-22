@@ -272,13 +272,13 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
     
     func locationDataSource(_ locationDataSource: AGSLocationDataSource, statusDidChange status: AGSLocationDataSourceStatus) {
         switch status {
-        case .starting, .started, .stopped:
+        case .starting, .started, .stopping, .stopped:
             // - starting: it happens immediately after user starts the location
             // data source. It takes a while to completely start the ILDS.
             // - started: it happens once ILDS successfully started.
-            // - stopped: ILDS may stop due to internal error, e.g. user revoked
-            // the location permission in system settings. We don't handle these
-            // error here.
+            // - stopping, stopped: ILDS may stop due to internal error, e.g.
+            // user revoked the location permission in system settings. We don't
+            // handle these error here.
             break
         case .failedToStart:
             // - failedToStart: This happens if user provides a wrong UUID, or

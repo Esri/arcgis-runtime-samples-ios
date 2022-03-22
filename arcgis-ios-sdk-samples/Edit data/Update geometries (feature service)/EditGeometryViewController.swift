@@ -19,6 +19,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISOceans)
+            mapView.sketchEditor = sketchEditor
             // Set touch delegate on map view as self.
             mapView.touchDelegate = self
             mapView.callout.delegate = self
@@ -38,6 +39,8 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     var lastQuery: AGSCancelable!
     /// The currently selected feature.
     var selectedFeature: AGSFeature!
+    /// The sketch editor on the map view.
+    let sketchEditor = AGSSketchEditor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +60,11 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let sketchEditor = mapView.sketchEditor, sketchEditor.isStarted, let feature = selectedFeature {
+        if sketchEditor.isStarted, let feature = selectedFeature {
             // Make the feature visible when sketch editor is started.
             featureLayer.setFeature(feature, visible: true)
             // Stop sketch editor.
-            mapView.sketchEditor?.stop()
+            sketchEditor.stop()
         }
         setToolbarVisibility(visible: false)
     }
@@ -143,10 +146,8 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         // Hide the callout.
         mapView.callout.dismiss()
         
-        // Instantiate sketch editor with selected feature's geometry, and
-        // enable the sketch editor to start tracking user gesture.
-        let sketchEditor = AGSSketchEditor()
-        mapView.sketchEditor = sketchEditor
+        // Start the sketch editor with selected feature's geometry to start
+        // tracking user gesture.
         sketchEditor.start(with: point)
         
         // Show the toolbar.
@@ -158,7 +159,7 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
     // MARK: - Actions
     
     @IBAction func doneAction() {
-        if let newGeometry = mapView.sketchEditor?.geometry {
+        if let newGeometry = sketchEditor.geometry {
             selectedFeature.geometry = newGeometry
             featureTable.update(selectedFeature) { [weak self] error in
                 guard let self = self else { return }
@@ -175,7 +176,6 @@ class EditGeometryViewController: UIViewController, AGSGeoViewTouchDelegate, AGS
         // Hide toolbar.
         setToolbarVisibility(visible: false)
         // Stop and clear sketch editor.
-        mapView.sketchEditor?.stop()
-        mapView.sketchEditor = nil
+        sketchEditor.stop()
     }
 }

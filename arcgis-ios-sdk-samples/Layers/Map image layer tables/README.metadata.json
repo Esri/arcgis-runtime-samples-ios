@@ -1,0 +1,28 @@
+{
+    "category": "Layers",
+    "description": "Add, remove, or rearrange existing sublayers in a map image layer.",
+    "ignore": false,
+    "images": [
+        "manage-sublayers-1.png",
+        "manage-sublayers-2.png"
+    ],
+    "keywords": [
+        "layer",
+        "sublayer",
+        "visibility",
+        "AGSArcGISMapImageLayer",
+        "AGSArcGISMapImageSublayer"
+    ],
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/manage-sublayers.htm"
+    ],
+    "relevant_apis": [
+        "AGSArcGISMapImageLayer",
+        "AGSArcGISMapImageSublayer"
+    ],
+    "snippets": [
+        "ManageSublayersViewController.swift",
+        "MapImageSublayersViewController.swift"
+    ],
+    "title": "Manage sublayers"
+}

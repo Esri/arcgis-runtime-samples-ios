@@ -28,13 +28,18 @@ class MapImageLayerTablesViewController: UIViewController {
     @IBOutlet var queryButton: UIBarButtonItem!
     
     @IBAction func queryFeaturesActions() {
+        selectedFeaturesOverlay.graphics.removeAllObjects()
         let alertController = UIAlertController(title: "Related Service Requests", message: "Select a comment to view related spatial features on the map.", preferredStyle: .actionSheet)
         itemsSource.forEach { feature in
             let commentsTitle = feature.attributes["comments"] as! String
             let action = UIAlertAction(title: commentsTitle, style: .default) { (_) in
+                // Get the map image layer that contains the service request sublayer and the service request comments table.
                 let serviceRequestsMapImageLayer = self.mapView.map?.operationalLayers.firstObject as? AGSArcGISMapImageLayer
+                // Get the (non-spatial) table that contains the service request comments.
                 let commentsTable = serviceRequestsMapImageLayer?.tables.first
+                // Get the relationship that defines related service request features for features in the comments table (this is the first and only relationship).
                 let commentsRelationshipInfo = commentsTable?.layerInfo?.relationshipInfos.first
+                // Create query parameters to get the related service request for features in the comments table.
                 self.relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: commentsRelationshipInfo!)
                 self.relatedQueryParameters?.returnGeometry = true
                 self.queryCommentsTable(feature: feature, commentsTable: commentsTable!)
@@ -84,21 +89,19 @@ class MapImageLayerTablesViewController: UIViewController {
     }
     
     func queryCommentsTable(feature: AGSFeature, commentsTable: AGSServiceFeatureTable) {
-        let comment = feature as! AGSArcGISFeature
-        commentsTable.queryRelatedFeatures(for: comment, parameters: relatedQueryParameters!) { result, error in
-            if let serviceRequestFeature = result?.first?.feature as? AGSArcGISFeature {
-                serviceRequestFeature.load { error in
+        let selectedComment = feature as! AGSArcGISFeature
+        commentsTable.queryRelatedFeatures(for: selectedComment, parameters: relatedQueryParameters!) { results, error in
+            let relatedResult = results?.first
+            if let relatedFeature = relatedResult?.featureEnumerator().nextObject() as? AGSArcGISFeature {
+                relatedFeature.load { error in
                     if let error = error {
                         self.presentAlert(error: error)
                     } else {
-                        if serviceRequestFeature.loadStatus == .loaded {
-                            let serviceRequestPoint = serviceRequestFeature.geometry as? AGSPoint
-                            let selectedRequestSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .cyan, size: 14)
-                            let requestGraphic = AGSGraphic(geometry: serviceRequestPoint, symbol: selectedRequestSymbol)
-                            self.selectedFeaturesOverlay.graphics.add(requestGraphic)
-                            self.mapView.setViewpointCenter(serviceRequestPoint!)
-                        }
-                        
+                        let serviceRequestPoint = relatedFeature.geometry as? AGSPoint
+                        let selectedRequestSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .cyan, size: 14)
+                        let requestGraphic = AGSGraphic(geometry: serviceRequestPoint, symbol: selectedRequestSymbol)
+                        self.selectedFeaturesOverlay.graphics.add(requestGraphic)
+                        self.mapView.setViewpointCenter(serviceRequestPoint!, scale: 150_000)
                     }
                 }
             } else {

@@ -48,7 +48,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="wGx-yp-QOz" id="VDV-wE-ONk"/>
-                        <outlet property="queryButton" destination="NZ4-Ky-Fcl" id="jh4-Ma-ixn"/>
+                        <outlet property="queryBarButtonItem" destination="NZ4-Ky-Fcl" id="jh4-Ma-ixn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

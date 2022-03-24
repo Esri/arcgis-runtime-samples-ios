@@ -27,7 +27,7 @@ class MapImageLayerTablesViewController: UIViewController {
         }
     }
     
-    @IBOutlet var queryButton: UIBarButtonItem!
+    @IBOutlet var queryBarButtonItem: UIBarButtonItem!
     
     @IBAction func queryFeaturesActions() {
         // Create an action sheet to display the various comments to choose from.
@@ -50,6 +50,8 @@ class MapImageLayerTablesViewController: UIViewController {
                 // Create query parameters to get the related service request for features in the comments table.
                 let relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: commentsRelationshipInfo!)
                 relatedQueryParameters.returnGeometry = true
+                // Disable the query button while the feature loads.
+                self.queryBarButtonItem.isEnabled = false
                 self.queryCommentsTable(feature: feature, commentsTable: commentsTable, relatedQueryParameters: relatedQueryParameters)
             }
             // Add the action to the controller.
@@ -59,7 +61,7 @@ class MapImageLayerTablesViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         // Present the controller.
-        alertController.popoverPresentationController?.barButtonItem = queryButton
+        alertController.popoverPresentationController?.barButtonItem = queryBarButtonItem
         present(alertController, animated: true)
     }
     
@@ -100,7 +102,7 @@ class MapImageLayerTablesViewController: UIViewController {
                 // Show the records from the service request comments table in the list view control.
                 self.commentsArray = (result?.featureEnumerator().allObjects)!
                 // Enable the button after the map and features have been loaded.
-                self.queryButton.isEnabled = true
+                self.queryBarButtonItem.isEnabled = true
             }
         }
     }
@@ -129,6 +131,8 @@ class MapImageLayerTablesViewController: UIViewController {
                         self.selectedFeaturesOverlay.graphics.add(requestGraphic)
                         // Set the viewpoint to the the related feature.
                         self.mapView.setViewpointCenter(serviceRequestPoint, scale: 150_000)
+                        // Enable the button after the feature has finished loading.
+                        self.queryBarButtonItem.isEnabled = true
                     }
                 }
             } else {

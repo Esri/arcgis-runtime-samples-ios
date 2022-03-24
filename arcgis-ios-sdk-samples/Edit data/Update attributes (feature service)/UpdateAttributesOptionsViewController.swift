@@ -16,7 +16,7 @@ import UIKit
 
 protocol UpdateAttributesOptionsViewControllerDelegate: AnyObject {
     func optionsViewController(_ optionsViewController: UpdateAttributesOptionsViewController, didSelectOptionAtIndex index: Int)
-    func optionsViewControllerDidCancell(_ optionsViewController: UpdateAttributesOptionsViewController)
+    func optionsViewControllerDidCancel(_ optionsViewController: UpdateAttributesOptionsViewController)
 }
 
 class UpdateAttributesOptionsViewController: UITableViewController {
@@ -50,6 +50,6 @@ class UpdateAttributesOptionsViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func cancel() {
-        delegate?.optionsViewControllerDidCancell(self)
+        delegate?.optionsViewControllerDidCancel(self)
     }
 }

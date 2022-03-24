@@ -1,28 +1,39 @@
 {
     "category": "Layers",
-    "description": "Add, remove, or rearrange existing sublayers in a map image layer.",
+    "description": "Find features in a spatial table related to features in a non-spatial table.",
     "ignore": false,
     "images": [
-        "manage-sublayers-1.png",
-        "manage-sublayers-2.png"
+        "map-image-layer-tables-1.png"
     ],
     "keywords": [
-        "layer",
-        "sublayer",
-        "visibility",
+        "features",
+        "query",
+        "related features",
+        "search",
+        "AGSArcGISFeature",
         "AGSArcGISMapImageLayer",
-        "AGSArcGISMapImageSublayer"
+        "AGSFeature",
+        "AGSFeatureQueryResult",
+        "AGSQueryParameters",
+        "AGSRelatedFeatureQueryResult",
+        "AGSRelatedQueryParameters",
+        "AGSRelationshipInfo",
+        "AGSServiceFeatureTable"
     ],
-    "redirect_from": [
-        "/ios/latest/swift/sample-code/manage-sublayers.htm"
-    ],
+    "redirect_from": [],
     "relevant_apis": [
+        "AGSArcGISFeature",
         "AGSArcGISMapImageLayer",
-        "AGSArcGISMapImageSublayer"
+        "AGSFeature",
+        "AGSFeatureQueryResult",
+        "AGSQueryParameters",
+        "AGSRelatedFeatureQueryResult",
+        "AGSRelatedQueryParameters",
+        "AGSRelationshipInfo",
+        "AGSServiceFeatureTable"
     ],
     "snippets": [
-        "ManageSublayersViewController.swift",
-        "MapImageSublayersViewController.swift"
+        "MapImageLayerTablesViewController.swift"
     ],
-    "title": "Manage sublayers"
+    "title": "Map image layer tables"
 }

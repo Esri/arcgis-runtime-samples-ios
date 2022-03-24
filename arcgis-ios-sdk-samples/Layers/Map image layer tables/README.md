@@ -2,7 +2,7 @@
 
 Find features in a spatial table related to features in a non-spatial table.
 
-![Image of map image layer tables](MapImageLayerTables.jpg)
+![Map image layer tables](map-image-layer-tables-1.png)
 
 ## Use case
 
@@ -10,34 +10,30 @@ The non-spatial tables contained by a map service may contain additional informa
 
 ## How to use the sample
 
-Once the map image layer loads, a list view will be populated with comment data from non-spatial features. Click on one of the comments to query related spatial features and display the first result on the map.
+Tap the toolbar button to prompt a list of comment data from non-spatial features. Tap on one of the comments to query related spatial features and display the first result on the map.
 
 ## How it works
 
-1. Create an `ArcGISMapImageLayer` with the URL of a map image service.
-2. Load the layer and get one of its tables with `imageLayer.Tables[index]`.
-3. To query the table, create a `QueryParameters` object.You can set `queryParameters.WhereClause` to filter the request features.
-4. Use `table.QueryFeaturesAsync(parameters)` to get a `FeatureQueryResult` object.
-5. The `FeatureQueryResult` is an iterable, so simply loop through it to get each result `Feature`.
-6. To query for related features, get the table's relationship info with `table.LayerInfo.RelationshipInfos`. This returns a list of `RelationshipInfo` objects. Choose which one to base your query on.
-7. Now create `RelatedQueryParameters` passing in the `RelationshipInfo`. To query related features, use `table.QueryRelatedFeaturesAsync(feature, relatedQueryParameters)`.
-8. This returns a list of `RelatedFeatureQueryResult` objects, each containing a set of related features.
+1. Create an `AGSArcGISMapImageLayer` with the URL of a map image service.
+2. Load the tables and layers using `loadTablesAndLayers(completion:)` and get one its first table.
+3. To query the table, create`AGSQueryParameters`. Set its `whereClause` to filter the request features.
+4. Use `queryFeatures(with:queryFeatureFields:completion:)` to get the `AGSFeatureQueryResult`.
+5. Make `AGSFeatureQueryResult` iterable using `featureEnumerator()`and loop through to get each `AGSFeature`.
+6. To query for related features, get the table's relationship info with `AGSServiceFeatureTable.layerInfo.relationshipInfos`. This returns an array of `AGSRelationshipInfo`s. 
+7. Now create `AGSRelatedQueryParameters` passing in the `AGSRelationshipInfo`. To query related features, use `AGSServiceFeatureTable.queryRelatedFeatures(for:parameters:completion:)`.
+8. This returns an array of `AGSRelatedFeatureQueryResult`s, each containing a set of related features.
 
 ## Relevant API
 
-* ArcGISFeature
-* ArcGISMapImageLayer
-* Feature
-* FeatureQueryResult
-* QueryParameters
-* RelatedFeatureQueryResult
-* RelatedQueryParameters
-* RelationshipInfo
-* ServiceFeatureTable
-
-## Additional information
-
-You can use `arcGISMapImageLayer.LoadTablesAndLayersAsync()` to recursively load all sublayers and tables associated with a map image layer.
+* AGSArcGISFeature
+* AGSArcGISMapImageLayer
+* AGSFeature
+* AGSFeatureQueryResult
+* AGSQueryParameters
+* AGSRelatedFeatureQueryResult
+* AGSRelatedQueryParameters
+* AGSRelationshipInfo
+* AGSServiceFeatureTable
 
 ## Tags
 

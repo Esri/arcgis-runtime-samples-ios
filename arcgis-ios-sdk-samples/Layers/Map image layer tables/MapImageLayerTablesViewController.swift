@@ -11,7 +11,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 
 import UIKit
 import ArcGIS
@@ -87,7 +86,7 @@ class MapImageLayerTablesViewController: UIViewController {
     
     /// Query features on the first table in the map image layer.
     func queryFeatures() {
-        // Create query parameters and set its where clafisuse.
+        // Create query parameters and set its where clause.
         let nullCommentsParameters = AGSQueryParameters()
         nullCommentsParameters.whereClause = "requestid <> '' AND comments <> ''"
         // Get the first table from the map image layer.

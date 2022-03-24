@@ -19,7 +19,7 @@ Tap the toolbar button to prompt a list of comment data from non-spatial feature
 3. To query the table, create`AGSQueryParameters`. Set its `whereClause` to filter the request features.
 4. Use `queryFeatures(with:queryFeatureFields:completion:)` to get the `AGSFeatureQueryResult`.
 5. Make `AGSFeatureQueryResult` iterable using `featureEnumerator()`and loop through to get each `AGSFeature`.
-6. To query for related features, get the table's relationship info with `AGSServiceFeatureTable.layerInfo.relationshipInfos`. This returns an array of `AGSRelationshipInfo`s. 
+6. To query for related features, get the table's relationship info with `AGSServiceFeatureTable.layerInfo.relationshipInfos`. This returns an array of `AGSRelationshipInfo`s.
 7. Now create `AGSRelatedQueryParameters` passing in the `AGSRelationshipInfo`. To query related features, use `AGSServiceFeatureTable.queryRelatedFeatures(for:parameters:completion:)`.
 8. This returns an array of `AGSRelatedFeatureQueryResult`s, each containing a set of related features.
 

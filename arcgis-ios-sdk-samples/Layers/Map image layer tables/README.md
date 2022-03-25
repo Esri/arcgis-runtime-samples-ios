@@ -16,7 +16,7 @@ Tap the toolbar button to prompt a list of comment data from non-spatial feature
 
 1. Create an `AGSArcGISMapImageLayer` with the URL of a map image service.
 2. Load the tables and layers using `loadTablesAndLayers(completion:)` and get one its first table.
-3. To query the table, create`AGSQueryParameters`. Set its `whereClause` to filter the request features.
+3. To query the table, create `AGSQueryParameters`. Set its `whereClause` to filter the request features.
 4. Use `queryFeatures(with:queryFeatureFields:completion:)` to get the `AGSFeatureQueryResult`.
 5. Make `AGSFeatureQueryResult` iterable using `featureEnumerator()`and loop through to get each `AGSFeature`.
 6. To query for related features, get the table's relationship info with `AGSServiceFeatureTable.layerInfo.relationshipInfos`. This returns an array of `AGSRelationshipInfo`s.

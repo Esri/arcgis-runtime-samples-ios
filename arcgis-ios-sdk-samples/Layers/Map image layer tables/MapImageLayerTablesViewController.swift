@@ -70,18 +70,18 @@ class MapImageLayerTablesViewController: UIViewController {
     /// The map image layer that uses the service URL.
     let serviceRequestsMapImageLayer = AGSArcGISMapImageLayer(url: serviceRequestURL)
     /// The array to store the possible comments.
-    var commentsArray = [AGSFeature]()
+    var commentsArray: [AGSFeature] = []
     /// The graphics overlay to add graphics to.
     let selectedFeaturesOverlay = AGSGraphicsOverlay()
     
     func makeMap() -> AGSMap {
         // Create a map with the ArcGIS streets basemap style.
         let map = AGSMap(basemapStyle: .arcGISStreets)
+        // Add the layer to the map.
+        map.operationalLayers.add(serviceRequestsMapImageLayer)
         // Load the map image layer's tables and layers.
-        serviceRequestsMapImageLayer.loadTablesAndLayers { _ in
-            // Add the layer to the map.
-            map.operationalLayers.add(self.serviceRequestsMapImageLayer)
-            self.queryFeatures()
+        serviceRequestsMapImageLayer.loadTablesAndLayers { [weak self] _ in
+            self?.queryFeatures()
         }
         return map
     }
@@ -145,6 +145,6 @@ class MapImageLayerTablesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [ "MapImageLayerTablesViewController"]
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["MapImageLayerTablesViewController"]
     }
 }

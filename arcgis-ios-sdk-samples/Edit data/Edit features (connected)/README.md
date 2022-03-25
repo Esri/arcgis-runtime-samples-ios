@@ -22,7 +22,7 @@ Pan and zoom to explore various features. Tap on an existing feature to view or 
 4. Select features using `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)` and `AGSIdentifyLayerResult`.
 5. Create an `AGSPopup` to display data and allow editing.
 6. Create a new feature with a specific template using `AGSArcGISFeatureTable.createFeature(with:)`.
-6. Update the data on the server using `AGSServiceGeodatabase.applyEdits(completion:)` on the `AGSServiceGeodatabase`, which apply the changes on the online service.
+7. Update the data on the server using `AGSServiceGeodatabase.applyEdits(completion:)` on the `AGSServiceGeodatabase`, which apply the changes on the online service.
 
 ## Relevant API
 

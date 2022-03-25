@@ -19,7 +19,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGx-yp-QOz" customClass="AGSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1B-6G-Emv">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
@@ -35,7 +34,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="f1B-6G-Emv" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="50V-3Q-7D4"/>
                             <constraint firstItem="wGx-yp-QOz" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="59w-oX-lfX"/>
@@ -57,7 +56,7 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

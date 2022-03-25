@@ -26,7 +26,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tPQ-Po-91y"/>
                                     <barButtonItem enabled="NO" title="Query related spatial features" id="NZ4-Ky-Fcl">
                                         <connections>
-                                            <action selector="queryFeaturesActions" destination="Y6W-OH-hqX" id="c1X-dV-P2E"/>
+                                            <action selector="queryFeaturesActions:" destination="Y6W-OH-hqX" id="ZrW-7o-gyv"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2YM-Up-BGL"/>

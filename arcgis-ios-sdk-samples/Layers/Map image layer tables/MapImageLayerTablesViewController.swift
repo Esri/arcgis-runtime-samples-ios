@@ -22,14 +22,24 @@ class MapImageLayerTablesViewController: UIViewController {
             mapView.map = makeMap()
             // Set the viewpoint.
             mapView.setViewpoint(AGSViewpoint(latitude: 41.734152, longitude: -88.163718, scale: 2e5))
-            // Create a graphics overlay to show selected features and add it to the map view.
+            // Add a graphics overlay to show selected features and add it to the map view.
+            selectedFeaturesOverlay.renderer = makeRenderer()
             mapView.graphicsOverlays.add(selectedFeaturesOverlay)
         }
     }
     
     @IBOutlet var queryBarButtonItem: UIBarButtonItem!
     
-    @IBAction func queryFeaturesActions() {
+    /// The service request URL.
+    static let serviceRequestURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer")!
+    /// The map image layer that uses the service URL.
+    let serviceRequestsMapImageLayer = AGSArcGISMapImageLayer(url: serviceRequestURL)
+    /// The array to store the possible comments.
+    var commentsArray: [AGSFeature] = []
+    /// The graphics overlay to add graphics to.
+    let selectedFeaturesOverlay = AGSGraphicsOverlay()
+    
+    @IBAction func queryFeaturesActions(_ sender: UIBarButtonItem) {
         // Create an action sheet to display the various comments to choose from.
         let alertController = UIAlertController(title: "Related Service Requests", message: "Select a comment to view related spatial features on the map.", preferredStyle: .actionSheet)
         // Create an action for each comment.
@@ -65,15 +75,6 @@ class MapImageLayerTablesViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    /// The service request URL.
-    static let serviceRequestURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer")!
-    /// The map image layer that uses the service URL.
-    let serviceRequestsMapImageLayer = AGSArcGISMapImageLayer(url: serviceRequestURL)
-    /// The array to store the possible comments.
-    var commentsArray: [AGSFeature] = []
-    /// The graphics overlay to add graphics to.
-    let selectedFeaturesOverlay = AGSGraphicsOverlay()
-    
     func makeMap() -> AGSMap {
         // Create a map with the ArcGIS streets basemap style.
         let map = AGSMap(basemapStyle: .arcGISStreets)
@@ -86,6 +87,15 @@ class MapImageLayerTablesViewController: UIViewController {
         return map
     }
     
+    func makeRenderer () -> AGSSimpleRenderer {
+        let renderer = AGSSimpleRenderer()
+        // Create a symbol for the feature.
+        let selectedRequestSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .cyan, size: 14)
+        // Set the renderer's symbol.
+        renderer.symbol = selectedRequestSymbol
+        return renderer
+    }
+    
     /// Query features on the first table in the map image layer.
     func queryFeatures() {
         // Create query parameters and set its where clause.
@@ -96,13 +106,13 @@ class MapImageLayerTablesViewController: UIViewController {
         // Query features on the feature table with the query parameters and all feature fields.
         commentsTable.queryFeatures(with: nullCommentsParameters, queryFeatureFields: .loadAll) { [weak self] result, error in
             guard let self = self else { return }
-            if let error = error {
-                self.presentAlert(error: error)
-            } else {
+            if let comments = result?.featureEnumerator().allObjects {
                 // Show the records from the service request comments table in the list view control.
-                self.commentsArray = (result?.featureEnumerator().allObjects)!
+                self.commentsArray = comments
                 // Enable the button after the map and features have been loaded.
                 self.queryBarButtonItem.isEnabled = true
+            } else if let error = error {
+                self.presentAlert(error: error)
             }
         }
     }
@@ -112,7 +122,8 @@ class MapImageLayerTablesViewController: UIViewController {
         // Get the feature as an ArcGIS feature.
         guard let selectedComment = feature as? AGSArcGISFeature else { return }
         // Query related features for the selected comment and its related query parameters.
-        commentsTable.queryRelatedFeatures(for: selectedComment, parameters: relatedQueryParameters) { results, error in
+        commentsTable.queryRelatedFeatures(for: selectedComment, parameters: relatedQueryParameters) { [weak self] results, error in
+            guard let self = self else { return }
             let relatedResult = results?.first
             // Get the first related feature.
             if let relatedFeature = relatedResult?.featureEnumerator().nextObject() as? AGSArcGISFeature {
@@ -123,12 +134,10 @@ class MapImageLayerTablesViewController: UIViewController {
                     } else {
                         // Get the feature's geometry.
                         guard let serviceRequestPoint = relatedFeature.geometry as? AGSPoint else { return }
-                        // Create a symbol for the feature.
-                        let selectedRequestSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .cyan, size: 14)
-                        // Create a graphic with the geometry and symbol.
-                        let requestGraphic = AGSGraphic(geometry: serviceRequestPoint, symbol: selectedRequestSymbol)
-                        // Add the graphic to the graphics overlay.
-                        self.selectedFeaturesOverlay.graphics.add(requestGraphic)
+                        // Create a graphic to add to the graphics overlay.
+                        let graphic = AGSGraphic()
+                        graphic.geometry = serviceRequestPoint
+                        self.selectedFeaturesOverlay.graphics.add(graphic)
                         // Set the viewpoint to the the related feature.
                         self.mapView.setViewpointCenter(serviceRequestPoint, scale: 150_000)
                         // Enable the button after the feature has finished loading.

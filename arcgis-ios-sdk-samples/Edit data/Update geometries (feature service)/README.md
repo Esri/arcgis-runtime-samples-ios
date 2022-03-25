@@ -20,7 +20,7 @@ Tap a feature to select it. Tap the icon in the callout to begin updating the ge
 1. Create and load an `AGSServiceGeodatabase` with a feature service URL.
 2. Get the `AGSServiceFeatureTable` from the service geodatabase.
 3. Create an `AGSFeatureLayer` from the service feature table.
-4. Find the layer of the selected feature using  `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)`, which returns an `AGSIdentifyLayerResult` used to get the selected feature.
+4. Find the layer of the selected feature using `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)`, which returns an `AGSIdentifyLayerResult` used to get the selected feature.
 5. Change the selected feature's `AGSFeature.geometry` to change its location.
 6. Apply edits to the `AGSServiceGeodatabase` by calling `AGSServiceGeodatabase.applyEdits(completion:)`, which will update the feature's geometry on the online service.
 

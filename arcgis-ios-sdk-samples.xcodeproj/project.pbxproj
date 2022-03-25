@@ -3254,6 +3254,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				F1EF67DB27E2AE200049FA9A /* Map image layer tables */,
 				008A01842768119100A3C637 /* Display dimensions */,
 				F1027F4C26F91F55000FA674 /* Export vector tiles */,
 				00CDA5BC26F1289B00DEE7F4 /* Select ENC features */,
@@ -3303,7 +3304,6 @@
 				4CAC91D72242AAB700663A10 /* Load WFS with XML query */,
 				12D6602B226697040005DE8A /* Group layers */,
 				4CE15D4822F37968005F2968 /* Control annotation sublayer visibility */,
-				F1EF67DB27E2AE200049FA9A /* Map image layer tables */,
 			);
 			path = Layers;
 			sourceTree = "<group>";

@@ -17,7 +17,8 @@
         "updating",
         "AGSFeature",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable"
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
     ],
     "redirect_from": [
         "/ios/latest/swift/sample-code/update-geometries-feature-service-.htm"
@@ -25,7 +26,8 @@
     "relevant_apis": [
         "AGSFeature",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable"
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
     ],
     "snippets": [
         "EditGeometryViewController.swift"

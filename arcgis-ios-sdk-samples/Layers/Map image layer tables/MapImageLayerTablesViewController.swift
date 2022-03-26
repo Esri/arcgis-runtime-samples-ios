@@ -70,6 +70,7 @@ class MapImageLayerTablesViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+    /// Make a map for the map view.
     func makeMap() -> AGSMap {
         // Create a map with the ArcGIS streets basemap style.
         let map = AGSMap(basemapStyle: .arcGISStreets)
@@ -82,6 +83,7 @@ class MapImageLayerTablesViewController: UIViewController {
         return map
     }
     
+    /// Make a renderer for the graphics overlay.
     func makeRenderer () -> AGSSimpleRenderer {
         let renderer = AGSSimpleRenderer()
         // Create a symbol for the feature.

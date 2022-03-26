@@ -34,6 +34,8 @@ class MapImageLayerTablesViewController: UIViewController {
     static let serviceRequestURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer")!
     /// The map image layer that uses the service URL.
     let serviceRequestsMapImageLayer = AGSArcGISMapImageLayer(url: serviceRequestURL)
+    /// The (non-spatial) table that contains the service request comments.
+    var commentsTable: AGSServiceFeatureTable?
     /// The array to store the possible comments.
     var commentsArray: [AGSFeature] = []
     /// The graphics overlay to add graphics to.
@@ -51,18 +53,11 @@ class MapImageLayerTablesViewController: UIViewController {
                 guard let self = self else { return }
                 // Clear the former graphics.
                 self.selectedFeaturesOverlay.graphics.removeAllObjects()
-                // Get the map image layer that contains the service request sublayer and the service request comments table.
-                let serviceRequestsMapImageLayer = self.mapView.map?.operationalLayers.firstObject as? AGSArcGISMapImageLayer
-                // Get the (non-spatial) table that contains the service request comments.
-                guard let commentsTable = serviceRequestsMapImageLayer?.tables.first else { return }
-                // Get the relationship that defines related service request features for features in the comments table (this is the first and only relationship).
-                let commentsRelationshipInfo = commentsTable.layerInfo?.relationshipInfos.first
-                // Create query parameters to get the related service request for features in the comments table.
-                let relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: commentsRelationshipInfo!)
-                relatedQueryParameters.returnGeometry = true
                 // Disable the query button while the feature loads.
                 self.queryBarButtonItem.isEnabled = false
-                self.queryCommentsTable(feature: feature, commentsTable: commentsTable, relatedQueryParameters: relatedQueryParameters)
+                // Cast the selected feature as an AGSArcGISFeature.
+                guard let selectedFeature = feature as? AGSArcGISFeature else { return }
+                self.queryCommentsTable(feature: selectedFeature)
             }
             // Add the action to the controller.
             alertController.addAction(action)
@@ -101,10 +96,10 @@ class MapImageLayerTablesViewController: UIViewController {
         // Create query parameters and set its where clause.
         let nullCommentsParameters = AGSQueryParameters()
         nullCommentsParameters.whereClause = "requestid <> '' AND comments <> ''"
-        // Get the first table from the map image layer.
-        guard let commentsTable = serviceRequestsMapImageLayer.tables.first else { return }
+        // Set the first table from the map image layer.
+        commentsTable = serviceRequestsMapImageLayer.tables.first
         // Query features on the feature table with the query parameters and all feature fields.
-        commentsTable.queryFeatures(with: nullCommentsParameters, queryFeatureFields: .loadAll) { [weak self] result, error in
+        commentsTable?.queryFeatures(with: nullCommentsParameters, queryFeatureFields: .loadAll) { [weak self] result, error in
             guard let self = self else { return }
             if let comments = result?.featureEnumerator().allObjects {
                 // Show the records from the service request comments table in the list view control.
@@ -118,15 +113,17 @@ class MapImageLayerTablesViewController: UIViewController {
     }
     
     /// Query related features for the selected feature.
-    func queryCommentsTable(feature: AGSFeature, commentsTable: AGSServiceFeatureTable, relatedQueryParameters: AGSRelatedQueryParameters) {
-        // Get the feature as an ArcGIS feature.
-        guard let selectedComment = feature as? AGSArcGISFeature else { return }
+    func queryCommentsTable(feature: AGSArcGISFeature) {
+        // Get the relationship that defines related service request features for features in the comments table (this is the first and only relationship).
+        let commentsRelationshipInfo = commentsTable?.layerInfo?.relationshipInfos.first
+        // Create query parameters to get the related service request for features in the comments table.
+        let relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: commentsRelationshipInfo!)
+        relatedQueryParameters.returnGeometry = true
         // Query related features for the selected comment and its related query parameters.
-        commentsTable.queryRelatedFeatures(for: selectedComment, parameters: relatedQueryParameters) { [weak self] results, error in
+        commentsTable?.queryRelatedFeatures(for: feature, parameters: relatedQueryParameters) { [weak self] results, error in
             guard let self = self else { return }
-            let relatedResult = results?.first
             // Get the first related feature.
-            if let relatedFeature = relatedResult?.featureEnumerator().nextObject() as? AGSArcGISFeature {
+            if let relatedFeature = results?.first?.featureEnumerator().nextObject() as? AGSArcGISFeature {
                 // Load the feature and get its geometry to show as a graphic on the map.
                 relatedFeature.load { error in
                     if let error = error {

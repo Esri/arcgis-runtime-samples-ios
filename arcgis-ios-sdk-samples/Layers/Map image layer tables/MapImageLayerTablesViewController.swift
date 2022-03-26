@@ -18,7 +18,7 @@ import ArcGIS
 class MapImageLayerTablesViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
-            // Assign the map to the MapView.
+            // Assign the map to the map view.
             mapView.map = makeMap()
             // Set the viewpoint.
             mapView.setViewpoint(AGSViewpoint(latitude: 41.734152, longitude: -88.163718, scale: 2e5))

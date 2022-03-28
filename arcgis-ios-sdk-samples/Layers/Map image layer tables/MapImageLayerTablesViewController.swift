@@ -117,9 +117,9 @@ class MapImageLayerTablesViewController: UIViewController {
     /// Query related features for the selected feature.
     func queryCommentsTable(feature: AGSArcGISFeature) {
         // Get the relationship that defines related service request features for features in the comments table (this is the first and only relationship).
-        let commentsRelationshipInfo = commentsTable?.layerInfo?.relationshipInfos.first
+        guard let commentsRelationshipInfo = commentsTable?.layerInfo?.relationshipInfos.first else { return }
         // Create query parameters to get the related service request for features in the comments table.
-        let relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: commentsRelationshipInfo!)
+        let relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: commentsRelationshipInfo)
         relatedQueryParameters.returnGeometry = true
         // Query related features for the selected comment and its related query parameters.
         commentsTable?.queryRelatedFeatures(for: feature, parameters: relatedQueryParameters) { [weak self] results, error in
@@ -134,8 +134,7 @@ class MapImageLayerTablesViewController: UIViewController {
                         // Get the feature's geometry.
                         guard let serviceRequestPoint = relatedFeature.geometry as? AGSPoint else { return }
                         // Create a graphic to add to the graphics overlay.
-                        let graphic = AGSGraphic()
-                        graphic.geometry = serviceRequestPoint
+                        let graphic = AGSGraphic(geometry: serviceRequestPoint, symbol: nil)
                         self.selectedFeaturesOverlay.graphics.add(graphic)
                         // Set the viewpoint to the the related feature.
                         self.mapView.setViewpointCenter(serviceRequestPoint, scale: 150_000)

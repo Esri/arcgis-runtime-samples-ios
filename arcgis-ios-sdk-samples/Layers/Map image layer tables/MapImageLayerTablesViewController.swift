@@ -122,12 +122,12 @@ class MapImageLayerTablesViewController: UIViewController {
         let relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: commentsRelationshipInfo)
         relatedQueryParameters.returnGeometry = true
         // Query related features for the selected comment and its related query parameters.
-        commentsTable?.queryRelatedFeatures(for: feature, parameters: relatedQueryParameters) { [weak self] results, error in
-            guard let self = self else { return }
+        commentsTable?.queryRelatedFeatures(for: feature, parameters: relatedQueryParameters) { results, error in
             // Get the first related feature.
             if let relatedFeature = results?.first?.featureEnumerator().nextObject() as? AGSArcGISFeature {
                 // Load the feature and get its geometry to show as a graphic on the map.
-                relatedFeature.load { error in
+                relatedFeature.load { [weak self] error in
+                    guard let self = self else { return }
                     if let error = error {
                         self.presentAlert(error: error)
                     } else {

@@ -215,6 +215,6 @@ extension ViewHiddenInfrastructureARPipePlacingViewController: AGSLocationChange
         setStatus(message: "Tap add button to add pipes.")
         sketchBarButtonItem.isEnabled = true
         locationDataSource.locationChangeHandlerDelegate = nil
-        locationDataSource.stop()
+        locationDataSource.stop(completion: nil)
     }
 }

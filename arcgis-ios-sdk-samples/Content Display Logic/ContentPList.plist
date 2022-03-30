@@ -786,11 +786,11 @@
 			</dict>
 			<dict>
 				<key>storyboardName</key>
-				<string>MapImageLayerTables</string>
+				<string>QueryRelatedFeaturesNonSpatialTable</string>
 				<key>descriptionText</key>
 				<string>Find features in a spatial table related to features in a non-spatial table.</string>
 				<key>displayName</key>
-				<string>Map image layer tables</string>
+				<string>Query related features from non-spatial table</string>
 			</dict>
 		</array>
 	</dict>

@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class QueryRelatedFeaturesNonSpatialTable: UIViewController {
+class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Assign the map to the map view.
@@ -152,6 +152,6 @@ class QueryRelatedFeaturesNonSpatialTable: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["QueryRelatedFeaturesNonSpatialTable"]
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["QueryRelatedFeaturesNonSpatialTableViewController"]
     }
 }

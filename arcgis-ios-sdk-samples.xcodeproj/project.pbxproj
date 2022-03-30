@@ -911,9 +911,9 @@
 		F1E8F0B12537D6DD000B9A0F /* NavigateRouteWithRerouting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E8F0B02537D6DD000B9A0F /* NavigateRouteWithRerouting.storyboard */; };
 		F1E8F0B32537D704000B9A0F /* NavigateRouteWithReroutingViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E8F0AD2537D6C4000B9A0F /* NavigateRouteWithReroutingViewController.swift */; };
 		F1E8F0C9253A601C000B9A0F /* navigate_a_route_detour.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F1E8F0C8253A601C000B9A0F /* navigate_a_route_detour.gpx */; settings = {ASSET_TAGS = (SanDiegoDetour, ); }; };
-		F1EF67DD27E2AE480049FA9A /* MapImageLayerTables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1EF67DC27E2AE480049FA9A /* MapImageLayerTables.storyboard */; };
-		F1EF67DF27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EF67DE27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTable.swift */; };
-		F1EF67E027E2AED50049FA9A /* QueryRelatedFeaturesNonSpatialTable.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1EF67DE27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTable.swift */; };
+		F1EF67DD27E2AE480049FA9A /* QueryRelatedFeaturesNonSpatialTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1EF67DC27E2AE480049FA9A /* QueryRelatedFeaturesNonSpatialTable.storyboard */; };
+		F1EF67DF27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EF67DE27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift */; };
+		F1EF67E027E2AED50049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1EF67DE27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift */; };
 		F1F62C4022E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1F62C3F22E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard */; };
 		F1F62C4222E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F62C4122E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift */; };
 		F1F62C4422E65E0900EFD599 /* militaryoverlay.geodatabase in Resources */ = {isa = PBXBuildFile; fileRef = F1F62C4322E65E0900EFD599 /* militaryoverlay.geodatabase */; settings = {ASSET_TAGS = (militaryoverlay, ); }; };
@@ -965,7 +965,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				F1EF67E027E2AED50049FA9A /* QueryRelatedFeaturesNonSpatialTable.swift in CopyFiles */,
+				F1EF67E027E2AED50049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift in CopyFiles */,
 				0036B33E27BC64D1005C0958 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift in CopyFiles */,
 				F1950D7C279794920093CE6E /* ContingentValuesViewController.swift in CopyFiles */,
 				F13D82FD275EE9C100F7B0C0 /* AddFeaturesContingentValuesViewController.swift in CopyFiles */,
@@ -1885,8 +1885,8 @@
 		F1E8F0AD2537D6C4000B9A0F /* NavigateRouteWithReroutingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateRouteWithReroutingViewController.swift; sourceTree = "<group>"; };
 		F1E8F0B02537D6DD000B9A0F /* NavigateRouteWithRerouting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavigateRouteWithRerouting.storyboard; sourceTree = "<group>"; };
 		F1E8F0C8253A601C000B9A0F /* navigate_a_route_detour.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = navigate_a_route_detour.gpx; sourceTree = "<group>"; };
-		F1EF67DC27E2AE480049FA9A /* MapImageLayerTables.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapImageLayerTables.storyboard; sourceTree = "<group>"; };
-		F1EF67DE27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryRelatedFeaturesNonSpatialTable.swift; sourceTree = "<group>"; };
+		F1EF67DC27E2AE480049FA9A /* QueryRelatedFeaturesNonSpatialTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QueryRelatedFeaturesNonSpatialTable.storyboard; sourceTree = "<group>"; };
+		F1EF67DE27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryRelatedFeaturesNonSpatialTableViewController.swift; sourceTree = "<group>"; };
 		F1F62C3F22E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeatureLayerDictionaryRenderer.storyboard; sourceTree = "<group>"; };
 		F1F62C4122E6560C00EFD599 /* FeatureLayerDictionaryRendererViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureLayerDictionaryRendererViewController.swift; sourceTree = "<group>"; };
 		F1F62C4322E65E0900EFD599 /* militaryoverlay.geodatabase */ = {isa = PBXFileReference; lastKnownFileType = file; path = militaryoverlay.geodatabase; sourceTree = "<group>"; };
@@ -4723,8 +4723,8 @@
 		F1EF67DB27E2AE200049FA9A /* Query related features from non-spatial table */ = {
 			isa = PBXGroup;
 			children = (
-				F1EF67DC27E2AE480049FA9A /* MapImageLayerTables.storyboard */,
-				F1EF67DE27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTable.swift */,
+				F1EF67DC27E2AE480049FA9A /* QueryRelatedFeaturesNonSpatialTable.storyboard */,
+				F1EF67DE27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift */,
 			);
 			path = "Query related features from non-spatial table";
 			sourceTree = "<group>";
@@ -4937,7 +4937,7 @@
 				3EBA254A1D300FB500AB0703 /* SimpleRenderer.storyboard in Resources */,
 				0083AA192628ED18003A28C8 /* ProgressViewController.xib in Resources */,
 				D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */,
-				F1EF67DD27E2AE480049FA9A /* MapImageLayerTables.storyboard in Resources */,
+				F1EF67DD27E2AE480049FA9A /* QueryRelatedFeaturesNonSpatialTable.storyboard in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
 				3E8A05BA1ECD07DD0032231C /* SceneLayerURL.storyboard in Resources */,
 				F142F76A267C12E400BD608A /* SanFrancisco.mmpk in Resources */,
@@ -5556,7 +5556,7 @@
 				3EAF09451D7108DC00F8538F /* ChangeMapViewBackgroundViewController.swift in Sources */,
 				3EEE1D701E4935FC003263FC /* GroupUsersViewController.swift in Sources */,
 				F1F651AA24984850006DF277 /* ShowPopupViewController.swift in Sources */,
-				F1EF67DF27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTable.swift in Sources */,
+				F1EF67DF27E2AE560049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift in Sources */,
 				3ED028591B8E3A8500ACA70D /* CreateOptionsViewController.swift in Sources */,
 				C7AF466521B1DCD60050CC49 /* SyncMapAndSceneViewsViewController.swift in Sources */,
 				F1C81C4722FCEC3C00229CAA /* GetElevationPointViewController.swift in Sources */,

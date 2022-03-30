@@ -3254,7 +3254,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				F1EF67DB27E2AE200049FA9A /* Map image layer tables */,
+				F1EF67DB27E2AE200049FA9A /* Query related features from non-spatial table */,
 				008A01842768119100A3C637 /* Display dimensions */,
 				F1027F4C26F91F55000FA674 /* Export vector tiles */,
 				00CDA5BC26F1289B00DEE7F4 /* Select ENC features */,
@@ -4720,13 +4720,13 @@
 			path = "GPS Exchanges";
 			sourceTree = "<group>";
 		};
-		F1EF67DB27E2AE200049FA9A /* Map image layer tables */ = {
+		F1EF67DB27E2AE200049FA9A /* Query related features from non-spatial table */ = {
 			isa = PBXGroup;
 			children = (
 				F1EF67DC27E2AE480049FA9A /* MapImageLayerTables.storyboard */,
 				F1EF67DE27E2AE560049FA9A /* MapImageLayerTablesViewController.swift */,
 			);
-			path = "Map image layer tables";
+			path = "Query related features from non-spatial table";
 			sourceTree = "<group>";
 		};
 		F1F62C3E22E6401500EFD599 /* Dictionary renderer with feature layer */ = {

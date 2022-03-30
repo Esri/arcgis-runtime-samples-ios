@@ -3,7 +3,7 @@
     "description": "Find features in a spatial table related to features in a non-spatial table.",
     "ignore": false,
     "images": [
-        "map-image-layer-tables-1.png"
+        "query-related-features-non-spatial-table-1.png"
     ],
     "keywords": [
         "features",
@@ -35,5 +35,5 @@
     "snippets": [
         "MapImageLayerTablesViewController.swift"
     ],
-    "title": "Map image layer tables"
+    "title": "Query related features from non-spatial table"
 }

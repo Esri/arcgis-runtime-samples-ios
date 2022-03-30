@@ -1,8 +1,8 @@
-# Map image layer tables
+# Query related features from non-spatial table
 
 Find features in a spatial table related to features in a non-spatial table.
 
-![Map image layer tables](map-image-layer-tables-1.png)
+![Query related features from non-spatial table](query-related-features-non-spatial-table-1.png)
 
 ## Use case
 
@@ -14,8 +14,8 @@ Tap the toolbar button to prompt a list of comment data from non-spatial feature
 
 ## How it works
 
-1. Create an `AGSArcGISMapImageLayer` with the URL of a map image service.
-2. Load the tables and layers using `loadTablesAndLayers(completion:)` and get one its first table.
+1. Create an `AGSArcGISMapImageLayer` with the URL of a map service.
+2. Load the tables and layers using `loadTablesAndLayers(completion:)` and get its first table.
 3. To query the table, create `AGSQueryParameters`. Set its `whereClause` to filter the request features.
 4. Use `queryFeatures(with:queryFeatureFields:completion:)` to get the `AGSFeatureQueryResult`.
 5. Make `AGSFeatureQueryResult` iterable using `featureEnumerator()`and loop through to get each `AGSFeature`.
@@ -34,6 +34,10 @@ Tap the toolbar button to prompt a list of comment data from non-spatial feature
 * AGSRelatedQueryParameters
 * AGSRelationshipInfo
 * AGSServiceFeatureTable
+
+## About the data
+
+This sample uses the [Naperville map server](https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer) service. This feature service is used to collect non-emergency requests for service from the general public.
 
 ## Tags
 

@@ -33,7 +33,7 @@
         "AGSServiceFeatureTable"
     ],
     "snippets": [
-        "MapImageLayerTablesViewController.swift"
+        "QueryRelatedFeaturesNonSpatialTableViewController.swift"
     ],
     "title": "Query related features from non-spatial table"
 }

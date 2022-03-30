@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class MapImageLayerTablesViewController: UIViewController {
+class QueryRelatedFeaturesNonSpatialTable: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             // Assign the map to the map view.
@@ -152,6 +152,6 @@ class MapImageLayerTablesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["MapImageLayerTablesViewController"]
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["QueryRelatedFeaturesNonSpatialTable"]
     }
 }

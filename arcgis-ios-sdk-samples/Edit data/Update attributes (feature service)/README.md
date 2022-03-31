@@ -17,18 +17,20 @@ To change the feature's damage property, tap the feature to select it, tap the i
 
 ## How it works
 
-1. Create an `AGSServiceFeatureTable` object from a URL.
-2. Create an `AGSFeatureLayer` object from the `AGSServiceFeatureTable`.
-3. Select features from the `AGSFeatureLayer`.
-4. Change the selected feature's attributes.
-5. Update the table with `AGSFeatureTable.update(_:completion:)`.
-6. After a change, apply the changes on the server using `AGSServiceFeatureTable.applyEdits(completion:)`.
+1. Create and load an `AGSServiceGeodatabase` with a feature service URL.
+2. Get the `AGSServiceFeatureTable` from the service geodatabase.
+3. Create an `AGSFeatureLayer` from the service feature table.
+4. Select features from the `AGSFeatureLayer`.
+5. Change the selected feature's attributes.
+6. Update the table with `AGSFeatureTable.update(_:completion:)`.
+7. Apply edits to the `AGSServiceGeodatabase` by calling `AGSServiceGeodatabase.applyEdits(completion:)`, which will update the feature on the online service.
 
 ## Relevant API
 
 * AGSArcGISFeature
 * AGSFeatureLayer
 * AGSServiceFeatureTable
+* AGSServiceGeodatabase
 
 ## Tags
 

@@ -16,12 +16,13 @@ Pan and zoom to explore various features. Tap on an existing feature to view or 
 
 ## How it works
 
-1. Create an `AGSServiceFeatureTable` object from a URL.
-2. Create an `AGSFeatureLayer` object from the `AGSServiceFeatureTable`.
-3. Select features using `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)` and `AGSIdentifyLayerResult`.
-4. Create an `AGSPopup` to display data and allow editing.
-5. Create a new feature with a specific template using `AGSArcGISFeatureTable.createFeature(with:)`.
-6. Apply the changes with `AGSServiceFeatureTable.applyEdits(completion:)`.
+1. Create and load an `AGSServiceGeodatabase` with a feature service URL.
+2. Get the `AGSServiceFeatureTable` from the service geodatabase.
+3. Create an `AGSFeatureLayer` from the service feature table.
+4. Select features using `AGSGeoView.identifyLayer(_:screenPoint:tolerance:returnPopupsOnly:maximumResults:completion:)` and `AGSIdentifyLayerResult`.
+5. Create an `AGSPopup` to display data and allow editing.
+6. Create a new feature with a specific template using `AGSArcGISFeatureTable.createFeature(with:)`.
+7. Update the data on the server using `AGSServiceGeodatabase.applyEdits(completion:)` on the `AGSServiceGeodatabase`, which apply the changes on the online service.
 
 ## Relevant API
 
@@ -29,6 +30,7 @@ Pan and zoom to explore various features. Tap on an existing feature to view or 
 * AGSFeatureTemplate
 * AGSPopup
 * AGSServiceFeatureTable
+* AGSServiceGeodatabase
 
 ## Tags
 

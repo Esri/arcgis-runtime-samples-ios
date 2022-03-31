@@ -37,7 +37,7 @@ Tap the toolbar button to prompt a list of comment data from non-spatial feature
 
 ## About the data
 
-This sample uses the [Naperville map server](https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer) service. This feature service is used to collect non-emergency requests for service from the general public.
+This sample uses the [Naperville map service](https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer), which is used to collect non-emergency requests for service from the general public.
 
 ## Tags
 

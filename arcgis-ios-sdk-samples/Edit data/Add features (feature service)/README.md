@@ -16,7 +16,7 @@ Tap on a location on the map to add a feature at that location.
 
 An `AGSFeature` instance is added to an `AGSServiceFeatureTable`. Apply edits on the `ServiceGeodatabase` which contains the feature table to push the edits to the server.
 
-1. Create and load an `AGSServiceFeatureTable`  with a feature service URL.
+1. Create and load an `AGSServiceFeatureTable` with a feature service URL.
 2. Get the `AGSServiceFeatureTable` from the service geodatabase.
 3. Create an `AGSFeatureLayer` from the service feature table.
 4. Create an `AGSFeature` with attributes and a location using the `AGSServiceFeatureTable`.

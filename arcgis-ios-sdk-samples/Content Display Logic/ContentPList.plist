@@ -312,7 +312,7 @@
 				<key>displayName</key>
 				<string>Show device location using indoor positioning</string>
 				<key>descriptionText</key>
-				<string>Show your device's real-time location while inside a building by using signals from indoor positioning beacons.</string>
+				<string>Show your device&apos;s real-time location while inside a building by using signals from indoor positioning beacons.</string>
 				<key>storyboardName</key>
 				<string>ShowDeviceLocationUsingIndoorPositioning</string>
 			</dict>
@@ -1954,6 +1954,12 @@
 				<string>ViewHiddenInfrastructureAR</string>
 			</dict>
 		</array>
+	</dict>
+	<dict>
+		<key>displayName</key>
+		<string>Favorites</string>
+		<key>children</key>
+		<array/>
 	</dict>
 </array>
 </plist>

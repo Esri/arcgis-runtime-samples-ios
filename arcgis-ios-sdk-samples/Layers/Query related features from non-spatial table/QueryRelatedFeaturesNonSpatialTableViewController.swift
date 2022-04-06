@@ -30,16 +30,22 @@ class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
     
     @IBOutlet var queryBarButtonItem: UIBarButtonItem!
     
-    /// The service request URL.
-    static let serviceRequestURL = URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer")!
     /// The map image layer that uses the service URL.
-    let serviceRequestsMapImageLayer = AGSArcGISMapImageLayer(url: serviceRequestURL)
+    let serviceRequestsMapImageLayer = AGSArcGISMapImageLayer(
+        url: URL(string: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/ServiceRequest/MapServer")!
+    )
     /// The (non-spatial) table that contains the service request comments.
     var commentsTable: AGSServiceFeatureTable?
     /// The array to store the possible comments.
     var commentsArray: [AGSFeature] = []
     /// The graphics overlay to add graphics to.
-    let selectedFeaturesOverlay = AGSGraphicsOverlay()
+    let selectedFeaturesOverlay: AGSGraphicsOverlay = {
+        let overlay = AGSGraphicsOverlay()
+        overlay.renderer = AGSSimpleRenderer(
+            symbol: AGSSimpleMarkerSymbol(style: .circle, color: .cyan, size: 14)
+        )
+        return overlay
+    }()
     
     @IBAction func queryFeaturesActions(_ sender: UIBarButtonItem) {
         // Create an action sheet to display the various comments to choose from.
@@ -47,10 +53,9 @@ class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
         // Create an action for each comment.
         commentsArray.forEach { feature in
             // Extract the "comments" attribute as a string.
-            let commentsTitle = feature.attributes["comments"] as! String
+            let title = feature.attributes["comments"] as! String
             // Create an action with the comments title.
-            let action = UIAlertAction(title: commentsTitle, style: .default) { [weak self] (_) in
-                guard let self = self else { return }
+            let action = UIAlertAction(title: title, style: .default) { _ in
                 // Clear the former graphics.
                 self.selectedFeaturesOverlay.graphics.removeAllObjects()
                 // Disable the query button while the feature loads.
@@ -63,7 +68,7 @@ class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
             alertController.addAction(action)
         }
         // Add "cancel" item.
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
         // Present the controller.
         alertController.popoverPresentationController?.barButtonItem = queryBarButtonItem
@@ -117,22 +122,20 @@ class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
     /// Query related features for the selected feature.
     func queryCommentsTable(feature: AGSArcGISFeature) {
         // Get the relationship that defines related service request features for features in the comments table (this is the first and only relationship).
-        guard let commentsRelationshipInfo = commentsTable?.layerInfo?.relationshipInfos.first else { return }
+        guard let relationshipInfo = commentsTable?.layerInfo?.relationshipInfos.first else { return }
         // Create query parameters to get the related service request for features in the comments table.
-        let relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: commentsRelationshipInfo)
+        let relatedQueryParameters = AGSRelatedQueryParameters(relationshipInfo: relationshipInfo)
         relatedQueryParameters.returnGeometry = true
         // Query related features for the selected comment and its related query parameters.
-        commentsTable?.queryRelatedFeatures(for: feature, parameters: relatedQueryParameters) { results, error in
+        commentsTable?.queryRelatedFeatures(for: feature, parameters: relatedQueryParameters) { [weak self] results, error in
             // Get the first related feature.
             if let relatedFeature = results?.first?.featureEnumerator().nextObject() as? AGSArcGISFeature {
                 // Load the feature and get its geometry to show as a graphic on the map.
-                relatedFeature.load { [weak self] error in
+                relatedFeature.load { error in
                     guard let self = self else { return }
                     if let error = error {
                         self.presentAlert(error: error)
-                    } else {
-                        // Get the feature's geometry.
-                        guard let serviceRequestPoint = relatedFeature.geometry as? AGSPoint else { return }
+                    } else if let serviceRequestPoint = relatedFeature.geometry as? AGSPoint {
                         // Create a graphic to add to the graphics overlay.
                         let graphic = AGSGraphic(geometry: serviceRequestPoint, symbol: nil)
                         self.selectedFeaturesOverlay.graphics.add(graphic)
@@ -144,7 +147,7 @@ class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
                 }
             } else {
                 // Present an error message is the related feature is not found.
-                self.presentAlert(title: "Related feature not found. No Feature", message: nil)
+                self?.presentAlert(title: "Related feature not found. No Feature", message: nil)
             }
         }
     }

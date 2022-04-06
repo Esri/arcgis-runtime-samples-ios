@@ -23,7 +23,6 @@ class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
             // Set the viewpoint.
             mapView.setViewpoint(AGSViewpoint(latitude: 41.734152, longitude: -88.163718, scale: 2e5))
             // Add a graphics overlay to show selected features and add it to the map view.
-            selectedFeaturesOverlay.renderer = makeRenderer()
             mapView.graphicsOverlays.add(selectedFeaturesOverlay)
         }
     }
@@ -86,16 +85,6 @@ class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
             self?.queryFeatures()
         }
         return map
-    }
-    
-    /// Make a renderer for the graphics overlay.
-    func makeRenderer () -> AGSSimpleRenderer {
-        let renderer = AGSSimpleRenderer()
-        // Create a symbol for the feature.
-        let selectedRequestSymbol = AGSSimpleMarkerSymbol(style: .circle, color: .cyan, size: 14)
-        // Set the renderer's symbol.
-        renderer.symbol = selectedRequestSymbol
-        return renderer
     }
     
     /// Query features on the first table in the map image layer.

@@ -1,4 +1,4 @@
-// Copyright 2016 Esri.
+// Copyright 2022 Esri.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,23 +14,21 @@
 
 import UIKit
 
-class SourceCodeBarButtonItem: UIBarButtonItem {
-    var filenames = [String]()
-    weak var navController: UINavigationController?
-    var readmeURL: URL?
-    
+class FavoritesBarButtonItem: UIBarButtonItem {
+    // Set icon
     override init() {
         super.init()
-        self.image = UIImage(systemName: "Star")
+        self.image = UIImage(named: "InfoIcon")
         self.target = self
         self.action = #selector(SourceCodeBarButtonItem.showSegmentedViewController)
     }
-
+    
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Add to favorites. Change sample favorites property
     @objc
     func showSegmentedViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)

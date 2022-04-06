@@ -884,6 +884,7 @@
 		F1987D0023F7325300DF41CC /* FindClosestFacilityInteractive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */; };
 		F1987D0323F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */; };
 		F1A355272411B35E000BA240 /* CreateAndSaveKMLViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D1E2C22409AB9F006B2801 /* CreateAndSaveKMLViewController.swift */; };
+		F1A870CC27FE38890027A996 /* FavoritesBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A870CB27FE38890027A996 /* FavoritesBarButtonItem.swift */; };
 		F1B99FDD277D420F0053DB00 /* DisplayFeatureLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B99FDC277D420F0053DB00 /* DisplayFeatureLayersViewController.swift */; };
 		F1B99FDF277D42270053DB00 /* DisplayFeatureLayers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B99FDE277D42270053DB00 /* DisplayFeatureLayers.storyboard */; };
 		F1B99FE0277D49260053DB00 /* DisplayFeatureLayersViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1B99FDC277D420F0053DB00 /* DisplayFeatureLayersViewController.swift */; };
@@ -1860,6 +1861,7 @@
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
 		F1987D0223F7677E00DF41CC /* DisplaySubtypeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeSettingsViewController.swift; sourceTree = "<group>"; };
+		F1A870CB27FE38890027A996 /* FavoritesBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesBarButtonItem.swift; sourceTree = "<group>"; };
 		F1B99FDC277D420F0053DB00 /* DisplayFeatureLayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayFeatureLayersViewController.swift; sourceTree = "<group>"; };
 		F1B99FDE277D42270053DB00 /* DisplayFeatureLayers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayFeatureLayers.storyboard; sourceTree = "<group>"; };
 		F1BCA98E268102EB0027F5A8 /* naperville_imagery.tpkx */ = {isa = PBXFileReference; lastKnownFileType = file; path = naperville_imagery.tpkx; sourceTree = "<group>"; };
@@ -2596,6 +2598,7 @@
 			isa = PBXGroup;
 			children = (
 				3E2A68171B153CDE00A318AA /* SourceCodeBarButtonItem.swift */,
+				F1A870CB27FE38890027A996 /* FavoritesBarButtonItem.swift */,
 			);
 			path = "Custom BarButtonItem";
 			sourceTree = "<group>";
@@ -5447,6 +5450,7 @@
 				3EFCE1C51CF374C600E02F67 /* MobileMapViewController.swift in Sources */,
 				098049A82253FC3F009C685D /* BrowseWFSLayersViewController.swift in Sources */,
 				3ED028B31B8E3A9800ACA70D /* TLUsingURLViewController.swift in Sources */,
+				F1A870CC27FE38890027A996 /* FavoritesBarButtonItem.swift in Sources */,
 				1230046C1FE2F70300303AC2 /* LineOfSightLocationViewController.swift in Sources */,
 				3ED028EA1B8E3AA500ACA70D /* FLQueryViewController.swift in Sources */,
 				C793B5DF21667194000A7A10 /* ListKMLContentsViewController.swift in Sources */,

@@ -37,7 +37,7 @@ class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
     /// The (non-spatial) table that contains the service request comments.
     var commentsTable: AGSServiceFeatureTable?
     /// The array to store the possible comments.
-    var commentsArray: [AGSFeature] = []
+    var comments: [AGSFeature] = []
     /// The graphics overlay to add graphics to.
     let selectedFeaturesOverlay: AGSGraphicsOverlay = {
         let overlay = AGSGraphicsOverlay()
@@ -51,7 +51,7 @@ class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
         // Create an action sheet to display the various comments to choose from.
         let alertController = UIAlertController(title: "Related Service Requests", message: "Select a comment to view related spatial features on the map.", preferredStyle: .actionSheet)
         // Create an action for each comment.
-        commentsArray.forEach { feature in
+        comments.forEach { feature in
             // Extract the "comments" attribute as a string.
             let title = feature.attributes["comments"] as! String
             // Create an action with the comments title.
@@ -110,7 +110,7 @@ class QueryRelatedFeaturesNonSpatialTableViewController: UIViewController {
             guard let self = self else { return }
             if let comments = result?.featureEnumerator().allObjects {
                 // Show the records from the service request comments table in the list view control.
-                self.commentsArray = comments
+                self.comments = comments
                 // Enable the button after the map and features have been loaded.
                 self.queryBarButtonItem.isEnabled = true
             } else if let error = error {

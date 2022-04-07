@@ -207,8 +207,8 @@ class ContentTableViewController: UITableViewController {
         infoBBI.readmeURL = sample.readmeURL
         infoBBI.navController = navController
         // create and setup the favorites button
-        let favoritesBarButtonItem = 
-        controller.navigationItem.rightBarButtonItem = infoBBI
+        let favoritesBarButtonItem = FavoritesBarButtonItem()
+        controller.navigationItem.rightBarButtonItems = [infoBBI, favoritesBarButtonItem]
     }
     
     private func toggleExpansion(at indexPath: IndexPath) {

@@ -21,7 +21,7 @@ class SourceCodeBarButtonItem: UIBarButtonItem {
     
     override init() {
         super.init()
-        self.image = UIImage(systemName: "Star")
+        self.image = UIImage(named: "InfoIcon")
         self.target = self
         self.action = #selector(SourceCodeBarButtonItem.showSegmentedViewController)
     }

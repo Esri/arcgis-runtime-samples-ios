@@ -18,9 +18,9 @@ class FavoritesBarButtonItem: UIBarButtonItem {
     // Set icon
     override init() {
         super.init()
-        self.image = UIImage(named: "InfoIcon")
+        self.image = UIImage(systemName: "star")
         self.target = self
-        self.action = #selector(SourceCodeBarButtonItem.showSegmentedViewController)
+        self.action = #selector(FavoritesBarButtonItem.addToFavorites)
     }
     
     @available(*, unavailable)
@@ -30,11 +30,9 @@ class FavoritesBarButtonItem: UIBarButtonItem {
     
     // Add to favorites. Change sample favorites property
     @objc
-    func showSegmentedViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let controller = storyboard.instantiateViewController(withIdentifier: "SegmentedViewController") as! SegmentedViewController
-        controller.filenames = filenames
-        controller.readmeURL = readmeURL
-        self.navController?.show(controller, sender: self)
+    func addToFavorites() {
+        // Add to favorites category in content plist
+        // change button to fill star
+        self.image = UIImage(systemName: "star.fill")
     }
 }

@@ -21,6 +21,7 @@ struct Sample: Hashable {
     var description: String
     var storyboardName: String
     var dependencies: [String]
+    var isFavorite: Bool
 }
 
 extension Sample: Decodable {
@@ -29,6 +30,7 @@ extension Sample: Decodable {
         case description = "descriptionText"
         case storyboardName = "storyboardName"
         case dependencies = "dependency"
+        case isFavorite = "isFavorite"
     }
     
     init(from decoder: Decoder) throws {
@@ -37,6 +39,7 @@ extension Sample: Decodable {
         description = try values.decode(String.self, forKey: .description)
         storyboardName = try values.decode(String.self, forKey: .storyboardName)
         dependencies = try values.decodeIfPresent([String].self, forKey: .dependencies) ?? []
+        isFavorite = try values.decode(Bool.self, forKey: .isFavorite)
     }
 }
 

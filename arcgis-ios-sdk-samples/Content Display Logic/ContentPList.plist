@@ -1,1965 +1,2383 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<array>
-	<dict>
-		<key>displayName</key>
-		<string>Maps</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Display a map</string>
-				<key>storyboardName</key>
-				<string>DisplayMap</string>
-				<key>descriptionText</key>
-				<string>Display a map with an imagery basemap.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display a map SwiftUI</string>
-				<key>storyboardName</key>
-				<string>DisplayMapSwiftUI</string>
-				<key>descriptionText</key>
-				<string>Display a map and demonstrate common usecases in SwiftUI.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Change map view background</string>
-				<key>storyboardName</key>
-				<string>ChangeMapViewBackground</string>
-				<key>descriptionText</key>
-				<string>Customize map view&apos;s background by changing its grid properties.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Map loaded</string>
-				<key>storyboardName</key>
-				<string>MapLoaded</string>
-				<key>descriptionText</key>
-				<string>Determine the map&apos;s load status.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Open map (URL)</string>
-				<key>storyboardName</key>
-				<string>OpenMapURL</string>
-				<key>descriptionText</key>
-				<string>Display a web map.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Change basemap</string>
-				<key>storyboardName</key>
-				<string>SwitchBasemap</string>
-				<key>descriptionText</key>
-				<string>Change a map&apos;s basemap.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Set initial map area</string>
-				<key>storyboardName</key>
-				<string>SetInitialMapArea</string>
-				<key>descriptionText</key>
-				<string>Display the map at an initial viewpoint representing a bounding geometry.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Set initial map location</string>
-				<key>storyboardName</key>
-				<string>SetInitialMapLocation</string>
-				<key>descriptionText</key>
-				<string>Display a basemap centered at an initial location and scale.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Set map spatial reference</string>
-				<key>storyboardName</key>
-				<string>SetMapsSpatialReference</string>
-				<key>descriptionText</key>
-				<string>Specify a map&apos;s spatial reference.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Manage operational layers</string>
-				<key>storyboardName</key>
-				<string>ManageMapLayers</string>
-				<key>descriptionText</key>
-				<string>Add, remove, and reorder operational layers in a map.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Manage bookmarks</string>
-				<key>storyboardName</key>
-				<string>Bookmarks</string>
-				<key>descriptionText</key>
-				<string>Access and create bookmarks on a map.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display drawing status</string>
-				<key>storyboardName</key>
-				<string>MapViewDrawStatus</string>
-				<key>descriptionText</key>
-				<string>Get the draw status of your map view or scene view to know when all layers in the map or scene have finished drawing.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display layer view state</string>
-				<key>storyboardName</key>
-				<string>LayerStatus</string>
-				<key>descriptionText</key>
-				<string>Determine whether a layer is currently visible.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Change viewpoint</string>
-				<key>storyboardName</key>
-				<string>SetViewpoint</string>
-				<key>descriptionText</key>
-				<string>Set the map view to a new viewpoint.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Map rotation</string>
-				<key>storyboardName</key>
-				<string>MapRotation</string>
-				<key>descriptionText</key>
-				<string>Rotate a map.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Show magnifier</string>
-				<key>storyboardName</key>
-				<string>ShowMagnifier</string>
-				<key>descriptionText</key>
-				<string>Tap and hold on a map to show a magnifier.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display device location with autopan modes</string>
-				<key>storyboardName</key>
-				<string>DisplayLocation</string>
-				<key>descriptionText</key>
-				<string>Display your current position on the map, as well as switch between different types of auto-pan modes.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Take screenshot</string>
-				<key>storyboardName</key>
-				<string>MapViewScreenshot</string>
-				<key>descriptionText</key>
-				<string>Take a screenshot of the map.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Create and save a map</string>
-				<key>storyboardName</key>
-				<string>CreateSaveMap</string>
-				<key>descriptionText</key>
-				<string>Create and save a map as a portal item (i.e. web map).</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Identify layers</string>
-				<key>storyboardName</key>
-				<string>IdentifyLayers</string>
-				<key>descriptionText</key>
-				<string>Identify features in all layers in a map.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Open mobile map (map package)</string>
-				<key>storyboardName</key>
-				<string>OpenMobileMapPackage</string>
-				<key>descriptionText</key>
-				<string>Display a map from a mobile map package.</string>
-				<key>dependency</key>
-				<array>
-					<string>YellowstoneMMPK</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Mobile map (search and route)</string>
-				<key>storyboardName</key>
-				<string>MobileMapSearchRoute</string>
-				<key>descriptionText</key>
-				<string>Display maps and use locators to enable search and routing offline using a mobile map package.</string>
-				<key>dependency</key>
-				<array>
-					<string>YellowstoneMMPK</string>
-					<string>SanFranciscoMMPK</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Honor mobile map package expiration date</string>
-				<key>descriptionText</key>
-				<string>Access the expiration information of an expired mobile map package.</string>
-				<key>storyboardName</key>
-				<string>HonorMobileMapPackageExpirationDate</string>
-				<key>dependency</key>
-				<array>
-					<string>LothianRiversAnnoMMPK</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Generate offline map</string>
-				<key>storyboardName</key>
-				<string>GenerateOfflineMap</string>
-				<key>descriptionText</key>
-				<string>Take a web map offline.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Generate offline map (overrides)</string>
-				<key>storyboardName</key>
-				<string>GenerateOfflineMapOverrides</string>
-				<key>descriptionText</key>
-				<string>Take a web map offline with additional options for each layer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Generate offline map (basemap by reference)</string>
-				<key>descriptionText</key>
-				<string>Take a web map offline, but instead of downloading an online basemap, use one which is already on the device.</string>
-				<key>storyboardName</key>
-				<string>GenerateOfflineMapBasemapByReference</string>
-				<key>dependency</key>
-				<array>
-					<string>naperville_imagery</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Read a geopackage</string>
-				<key>storyboardName</key>
-				<string>ReadGeopackage</string>
-				<key>descriptionText</key>
-				<string>Add rasters and feature tables from a geopackage to a map.</string>
-				<key>dependency</key>
-				<array>
-					<string>AuroraCOGeopackage</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Set min-max scale</string>
-				<key>storyboardName</key>
-				<string>SetMinMaxScale</string>
-				<key>descriptionText</key>
-				<string>Restrict zooming between specific scale ranges.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Map reference scale</string>
-				<key>descriptionText</key>
-				<string>Set the map&apos;s reference scale and which feature layers should honor the reference scale.</string>
-				<key>storyboardName</key>
-				<string>MapReferenceScale</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Show location history</string>
-				<key>descriptionText</key>
-				<string>Display your location history on the map.</string>
-				<key>storyboardName</key>
-				<string>LocationHistory</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Download preplanned map</string>
-				<key>descriptionText</key>
-				<string>Take a map offline using a preplanned map area.</string>
-				<key>storyboardName</key>
-				<string>DownloadPreplannedMap</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Apply scheduled updates to preplanned map area</string>
-				<key>descriptionText</key>
-				<string>Apply scheduled updates to a downloaded preplanned map area.</string>
-				<key>storyboardName</key>
-				<string>ApplyScheduledUpdatesToPreplannedMapArea</string>
-				<key>dependency</key>
-				<array>
-					<string>canyonlands</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display device location with NMEA data sources</string>
-				<key>descriptionText</key>
-				<string>Parse NMEA sentences and use the results to show device location on the map.</string>
-				<key>storyboardName</key>
-				<string>DisplayDeviceLocationWithNMEADataSources</string>
-				<key>dependency</key>
-				<array>
-					<string>RedlandsNMEA</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Browse building floors</string>
-				<key>descriptionText</key>
-				<string>Display and browse through building floors from a floor-aware web map.</string>
-				<key>storyboardName</key>
-				<string>BrowseBuildingFloors</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Show device location using indoor positioning</string>
-				<key>descriptionText</key>
-				<string>Show your device&apos;s real-time location while inside a building by using signals from indoor positioning beacons.</string>
-				<key>storyboardName</key>
-				<string>ShowDeviceLocationUsingIndoorPositioning</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Layers</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Display subtype feature layer</string>
-				<key>storyboardName</key>
-				<string>DisplaySubtypeFeatureLayer</string>
-				<key>descriptionText</key>
-				<string>Display a composite layer of all the subtype values in a feature class.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display annotation</string>
-				<key>storyboardName</key>
-				<string>DisplayAnnotation</string>
-				<key>descriptionText</key>
-				<string>Display annotation from a feature service URL.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Dictionary renderer with feature layer</string>
-				<key>storyboardName</key>
-				<string>FeatureLayerDictionaryRenderer</string>
-				<key>descriptionText</key>
-				<string>Convert features into graphics to show them with mil2525d symbols.</string>
-				<key>dependency</key>
-				<array>
-					<string>mil2525d</string>
-					<string>militaryoverlay</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Colormap renderer</string>
-				<key>storyboardName</key>
-				<string>ColormapRenderer</string>
-				<key>descriptionText</key>
-				<string>Apply a colormap renderer to a raster.</string>
-				<key>dependency</key>
-				<array>
-					<string>ShastaBWRaster</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>ArcGIS tiled layer (URL)</string>
-				<key>storyboardName</key>
-				<string>TLUsingURL</string>
-				<key>descriptionText</key>
-				<string>Load a tiled layer from a map server with a URL.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>ArcGIS tiled layer (tile cache)</string>
-				<key>storyboardName</key>
-				<string>LocalTiledLayer</string>
-				<key>descriptionText</key>
-				<string>Load an offline copy of a tiled map service as a basemap.</string>
-				<key>dependency</key>
-				<array>
-					<string>SanFranciscoTilePackage</string>
-					<string>SanDiegoTilePackage</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Export tiles</string>
-				<key>storyboardName</key>
-				<string>ExportTiles</string>
-				<key>descriptionText</key>
-				<string>Download tiles to a local tile cache file stored on the device.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>ArcGIS map image layer (URL)</string>
-				<key>storyboardName</key>
-				<string>MILUsingURL</string>
-				<key>descriptionText</key>
-				<string>Display a layer from an ArcGIS map image layer service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Change sublayer renderer</string>
-				<key>storyboardName</key>
-				<string>ChangeSublayerRenderer</string>
-				<key>descriptionText</key>
-				<string>Apply a renderer to a sublayer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Change sublayer visibility</string>
-				<key>storyboardName</key>
-				<string>SublayerVisibility</string>
-				<key>descriptionText</key>
-				<string>Change the visibility of sublayers.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Manage sublayers</string>
-				<key>storyboardName</key>
-				<string>ManageSublayers</string>
-				<key>descriptionText</key>
-				<string>Add, remove, or rearrange existing sublayers in a map image layer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>ArcGIS vector tiled layer (custom style)</string>
-				<key>storyboardName</key>
-				<string>VectorTileCustomStyle</string>
-				<key>descriptionText</key>
-				<string>Load ArcGIS vector tiled layers using custom styles.</string>
-				<key>dependency</key>
-				<array>
-					<string>DodgeCity</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Web tiled layer</string>
-				<key>storyboardName</key>
-				<string>WebTiledLayer</string>
-				<key>descriptionText</key>
-				<string>Display a tiled web layer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Raster function (service)</string>
-				<key>storyboardName</key>
-				<string>RasterFunctionService</string>
-				<key>descriptionText</key>
-				<string>Load a raster from a service, then apply a function to it.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Raster layer (file)</string>
-				<key>storyboardName</key>
-				<string>RasterLayer</string>
-				<key>descriptionText</key>
-				<string>Create and use a raster layer made from a local raster file.</string>
-				<key>dependency</key>
-				<array>
-					<string>ShastaRaster</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Raster layer (geopackage)</string>
-				<key>storyboardName</key>
-				<string>RasterLayerGPKG</string>
-				<key>descriptionText</key>
-				<string>Display a raster contained in a GeoPackage.</string>
-				<key>dependency</key>
-				<array>
-					<string>AuroraCOGeopackage</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Raster layer (service)</string>
-				<key>storyboardName</key>
-				<string>RasterLayerUsingService</string>
-				<key>descriptionText</key>
-				<string>Create a raster layer from a raster image service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Hillshade renderer</string>
-				<key>storyboardName</key>
-				<string>HillshadeRenderer</string>
-				<key>descriptionText</key>
-				<string>Apply a hillshade renderer to a raster.</string>
-				<key>dependency</key>
-				<array>
-					<string>SRTMRaster</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Blend renderer</string>
-				<key>storyboardName</key>
-				<string>BlendRenderer</string>
-				<key>descriptionText</key>
-				<string>Blend a hillshade with a raster by specifying the elevation data.</string>
-				<key>dependency</key>
-				<array>
-					<string>ShastaElevationRaster</string>
-					<string>ShastaRaster</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>RGB renderer</string>
-				<key>storyboardName</key>
-				<string>RGBRenderer</string>
-				<key>descriptionText</key>
-				<string>Apply an RGB renderer to a raster layer to enhance feature visibility.</string>
-				<key>dependency</key>
-				<array>
-					<string>ShastaRaster</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Stretch renderer</string>
-				<key>storyboardName</key>
-				<string>StretchRenderer</string>
-				<key>descriptionText</key>
-				<string>Use a stretch renderer to enhance the visual contrast of raster data for analysis.</string>
-				<key>dependency</key>
-				<array>
-					<string>ShastaBWRaster</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Show labels on layers</string>
-				<key>storyboardName</key>
-				<string>ShowLabelsOnLayers</string>
-				<key>descriptionText</key>
-				<string>Display custom labels on a feature layer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>WMTS layer</string>
-				<key>storyboardName</key>
-				<string>WMTSLayer</string>
-				<key>descriptionText</key>
-				<string>Display a layer from a Web Map Tile Service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>WMS layer (URL)</string>
-				<key>storyboardName</key>
-				<string>WMSLayerUsingURL</string>
-				<key>descriptionText</key>
-				<string>Display a WMS layer using a WMS service URL.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Style WMS layers</string>
-				<key>storyboardName</key>
-				<string>StyleWebMapServiceLayer</string>
-				<key>descriptionText</key>
-				<string>Change the style of a Web Map Service (WMS) layer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Query a map image sublayer</string>
-				<key>storyboardName</key>
-				<string>QueryMapImageSublayer</string>
-				<key>descriptionText</key>
-				<string>Find features in a sublayer based on attributes and location.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Symbolize shapefile</string>
-				<key>storyboardName</key>
-				<string>SymbolizeShapefile</string>
-				<key>descriptionText</key>
-				<string>Display a shapefile with custom symbology.</string>
-				<key>dependency</key>
-				<array>
-					<string>SubdivisionsShapefile</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display KML</string>
-				<key>storyboardName</key>
-				<string>DisplayKML</string>
-				<key>descriptionText</key>
-				<string>Display KML from a URL, portal item, or local KML file.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>List KML contents</string>
-				<key>storyboardName</key>
-				<string>ListKMLContents</string>
-				<key>descriptionText</key>
-				<string>List the contents of a KML file.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Identify KML features</string>
-				<key>storyboardName</key>
-				<string>IdentifyKMLFeatures</string>
-				<key>descriptionText</key>
-				<string>Show a callout with formatted content for a KML feature.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display KML network links</string>
-				<key>storyboardName</key>
-				<string>DisplayKMLNetworkLinks</string>
-				<key>descriptionText</key>
-				<string>Display a file with a KML network link, including displaying any network link control messages at launch.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Play a KML Tour</string>
-				<key>descriptionText</key>
-				<string>Play tours in KML files.</string>
-				<key>storyboardName</key>
-				<string>PlayKMLTour</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>OpenStreetMap layer</string>
-				<key>storyboardName</key>
-				<string>OpenStreetMapLayer</string>
-				<key>descriptionText</key>
-				<string>Add OpenStreetMap as a basemap layer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display a WFS layer</string>
-				<key>storyboardName</key>
-				<string>DisplayWFS</string>
-				<key>descriptionText</key>
-				<string>Display a layer from a WFS service, requesting only features for the current extent.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Load WFS with XML query</string>
-				<key>descriptionText</key>
-				<string>Load a WFS feature table using an XML query.</string>
-				<key>storyboardName</key>
-				<string>LoadWFSWithXMLQuery</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Browse WFS layers</string>
-				<key>descriptionText</key>
-				<string>Browse a WFS service for layers and add them to the map.</string>
-				<key>storyboardName</key>
-				<string>BrowseWFSLayers</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Group layers</string>
-				<key>descriptionText</key>
-				<string>Group a collection of layers together and toggle their visibility as a group.</string>
-				<key>storyboardName</key>
-				<string>GroupLayers</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Control annotation sublayer visibility</string>
-				<key>descriptionText</key>
-				<string>Use annotation sublayers to gain finer control of annotation layer subtypes.</string>
-				<key>storyboardName</key>
-				<string>ControlAnnotationSublayerVisibility</string>
-				<key>dependency</key>
-				<array>
-					<string>GasDeviceAnnoMMPK</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Identify raster cell</string>
-				<key>descriptionText</key>
-				<string>Get the cell value of a local raster at the tapped location and display the result in a callout.</string>
-				<key>storyboardName</key>
-				<string>IdentifyRasterCell</string>
-				<key>dependency</key>
-				<array>
-					<string>NDVIRaster</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Add ENC exchange set</string>
-				<key>descriptionText</key>
-				<string>Display nautical charts per the ENC specification.</string>
-				<key>storyboardName</key>
-				<string>AddENCExchangeSet</string>
-				<key>dependency</key>
-				<array>
-					<string>ExchangeSetWithoutUpdates</string>
-					<string>Hydrography</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Apply mosaic rule to rasters</string>
-				<key>descriptionText</key>
-				<string>Apply a mosaic rule to a mosaic dataset of rasters.</string>
-				<key>storyboardName</key>
-				<string>ApplyMosaicRuleToRasters</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Apply raster rendering rule</string>
-				<key>descriptionText</key>
-				<string>Display a raster on a map and apply different rendering rules to that raster.</string>
-				<key>storyboardName</key>
-				<string>ApplyRasterRenderingRule</string>
-			</dict>
-			<dict>
-				<key>descriptionText</key>
-				<string>Edit the values of a KML ground overlay.</string>
-				<key>storyboardName</key>
-				<string>EditKMLGroundOverlay</string>
-				<key>displayName</key>
-				<string>Edit KML ground overlay</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display OGC API collection</string>
-				<key>descriptionText</key>
-				<string>Display an OGC API feature collection and query features while navigating the map view.</string>
-				<key>storyboardName</key>
-				<string>DisplayOGCAPICollection</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Browse OGC API feature service</string>
-				<key>descriptionText</key>
-				<string>Browse an OGC API feature service for layers and add them to the map.</string>
-				<key>storyboardName</key>
-				<string>BrowseOGCAPIFeatureService</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Query with CQL filters</string>
-				<key>descriptionText</key>
-				<string>Query data from an OGC API feature service using CQL filters.</string>
-				<key>storyboardName</key>
-				<string>QueryWithCQLFilters</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Export vector tiles</string>
-				<key>descriptionText</key>
-				<string>Export tiles from an online vector tile service.</string>
-				<key>storyboardName</key>
-				<string>ExportVectorTiles</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Select ENC features</string>
-				<key>descriptionText</key>
-				<string>Select features in an ENC layer.</string>
-				<key>storyboardName</key>
-				<string>SelectENCFeatures</string>
-				<key>dependency</key>
-				<array>
-					<string>ExchangeSetWithoutUpdates</string>
-					<string>Hydrography</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display dimensions</string>
-				<key>descriptionText</key>
-				<string>Display dimension features from a mobile map package.</string>
-				<key>storyboardName</key>
-				<string>DisplayDimensions</string>
-				<key>dependency</key>
-				<array>
-					<string>EdinburghPylonsDimensionsMMPK</string>
-				</array>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Features</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Feature layer rendering mode (map)</string>
-				<key>storyboardName</key>
-				<string>FeatureLayerRenderingModeMap</string>
-				<key>descriptionText</key>
-				<string>Render features statically or dynamically by setting the feature layer rendering mode.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Feature layer rendering mode (scene)</string>
-				<key>storyboardName</key>
-				<string>FeatureLayerRenderingModeScene</string>
-				<key>descriptionText</key>
-				<string>Render features in a scene statically or dynamically by setting the feature layer rendering mode.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Feature layer selection</string>
-				<key>storyboardName</key>
-				<string>FeatureLayerSelection</string>
-				<key>descriptionText</key>
-				<string>Select features in a feature layer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Feature layer query</string>
-				<key>storyboardName</key>
-				<string>FLQuery</string>
-				<key>descriptionText</key>
-				<string>Find features in a feature table which match an SQL query.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Filter by definition expression or display filter</string>
-				<key>storyboardName</key>
-				<string>DefinitionExpressionDisplayFilter</string>
-				<key>descriptionText</key>
-				<string>Filter features displayed on a map using a definition expression or a display filter.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Change feature layer renderer</string>
-				<key>storyboardName</key>
-				<string>OverrideRenderer</string>
-				<key>descriptionText</key>
-				<string>Change the appearance of a feature layer with a renderer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Generate geodatabase</string>
-				<key>storyboardName</key>
-				<string>GenerateGeodatabase</string>
-				<key>descriptionText</key>
-				<string>Generate a local geodatabase from an online feature service.</string>
-				<key>dependency</key>
-				<array>
-					<string>SanFranciscoTilePackage</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Feature collection layer</string>
-				<key>storyboardName</key>
-				<string>FeatureCollectionLayer</string>
-				<key>descriptionText</key>
-				<string>Create a feature collection layer from a feature collection table and add it to a map.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Feature collection layer (portal item)</string>
-				<key>descriptionText</key>
-				<string>Create a feature collection layer from a portal item.</string>
-				<key>storyboardName</key>
-				<string>FeatureCollectionLayerFromPortal</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Feature collection layer (query)</string>
-				<key>storyboardName</key>
-				<string>FeatureCollectionLayerQuery</string>
-				<key>descriptionText</key>
-				<string>Create a feature collection layer to show a query result from a service feature table.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>List related features</string>
-				<key>storyboardName</key>
-				<string>ListRelatedFeatures</string>
-				<key>descriptionText</key>
-				<string>List features related to the selected feature.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Add delete related features</string>
-				<key>storyboardName</key>
-				<string>AddDeleteRelatedFeatures</string>
-				<key>descriptionText</key>
-				<string>Add or delete related features on an origin feature.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Time based query</string>
-				<key>storyboardName</key>
-				<string>TimeBasedQuery</string>
-				<key>descriptionText</key>
-				<string>Query data using a time extent.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Toggle between feature request modes</string>
-				<key>storyboardName</key>
-				<string>ToggleFeatureRequestModes</string>
-				<key>descriptionText</key>
-				<string>Use different feature request modes to populate the map from a service feature table.</string>
-			</dict>
-			<dict>
-				<key>dependency</key>
-				<array>
-					<string>scottishWildlifeTrust</string>
-				</array>
-				<key>displayName</key>
-				<string>Display feature layers</string>
-				<key>storyboardName</key>
-				<string>DisplayFeatureLayers</string>
-				<key>descriptionText</key>
-				<string>Display feature layers from various data sources.</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Display Information</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Add graphics with renderer</string>
-				<key>storyboardName</key>
-				<string>AddGraphicsWithRenderer</string>
-				<key>descriptionText</key>
-				<string>A renderer allows you to change the style of all graphics in a graphics overlay by referencing a single symbol style. A renderer will only affect graphics that do not specify their own symbol style.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Add graphics with symbols</string>
-				<key>storyboardName</key>
-				<string>GraphicsWithSymbols</string>
-				<key>descriptionText</key>
-				<string>Use a symbol style to display a graphic on a graphics overlay.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Identify graphics</string>
-				<key>storyboardName</key>
-				<string>GOIdentify</string>
-				<key>descriptionText</key>
-				<string>Display an alert message when a graphic is tapped.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Control graphic draw order</string>
-				<key>storyboardName</key>
-				<string>GraphicDrawOrder</string>
-				<key>descriptionText</key>
-				<string>Change the drawing order for a graphic.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Sketch on the map</string>
-				<key>storyboardName</key>
-				<string>Sketch</string>
-				<key>descriptionText</key>
-				<string>Use the Sketch Editor to edit or sketch a new point, line, or polygon geometry on a map.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Show callout</string>
-				<key>storyboardName</key>
-				<string>Callout</string>
-				<key>descriptionText</key>
-				<string>Show a callout with the latitude and longitude of user-tapped points.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Show legend</string>
-				<key>storyboardName</key>
-				<string>MILShowLegend</string>
-				<key>descriptionText</key>
-				<string>Show a legend for all the operational layers in the map.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Simple marker symbol</string>
-				<key>storyboardName</key>
-				<string>SimpleMarkerSymbol</string>
-				<key>descriptionText</key>
-				<string>Show a simple marker symbol on a map.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Picture marker symbols</string>
-				<key>storyboardName</key>
-				<string>PictureMarkerSymbols</string>
-				<key>descriptionText</key>
-				<string>Use pictures for markers.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Simple renderer</string>
-				<key>storyboardName</key>
-				<string>SimpleRenderer</string>
-				<key>descriptionText</key>
-				<string>Display common symbols for all graphics in a graphics overlay with a renderer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Unique value renderer</string>
-				<key>storyboardName</key>
-				<string>UniqueValueRenderer</string>
-				<key>descriptionText</key>
-				<string>Render features in a layer using a distinct symbol for each unique attribute value.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display grid</string>
-				<key>storyboardName</key>
-				<string>DisplayGrid</string>
-				<key>descriptionText</key>
-				<string>Display coordinate system grids including Latitude-Longitude, MGRS, UTM and USNG on a map view.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Graphics overlay (dictionary renderer) 3D</string>
-				<key>storyboardName</key>
-				<string>GraphicsOverlayDictionaryRenderer3D</string>
-				<key>descriptionText</key>
-				<string>Create graphics from an XML file with key-value pairs for each graphic, and display the military symbols using a MIL-STD-2525D web style in 3D.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Read symbols from a mobile style</string>
-				<key>descriptionText</key>
-				<string>Combine multiple symbols from a mobile style file into a single symbol.</string>
-				<key>storyboardName</key>
-				<string>ReadSymbolsFromMobileStyle</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Custom dictionary style</string>
-				<key>descriptionText</key>
-				<string>Use a custom dictionary style created from a web style or style file to symbolize features using a variety of attribute values.</string>
-				<key>storyboardName</key>
-				<string>CustomDictionaryStyle</string>
-				<key>dependency</key>
-				<array>
-					<string>Restaurant</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Show popup</string>
-				<key>descriptionText</key>
-				<string>Show a predefined popup from a web map.</string>
-				<key>storyboardName</key>
-				<string>ShowPopup</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Create symbol styles from web styles</string>
-				<key>descriptionText</key>
-				<string>Create symbol styles from a style file hosted on a portal.</string>
-				<key>storyboardName</key>
-				<string>CreateSymbolStylesFromWebStyles</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Set up location-driven geotriggers</string>
-				<key>descriptionText</key>
-				<string>Create a notification every time a given location data source has entered and/or exited a set of features or graphics.</string>
-				<key>storyboardName</key>
-				<string>SetUpLocationDrivenGeotriggers</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Filter by time extent</string>
-				<key>descriptionText</key>
-				<string>The time slider provides controls that allow you to visualize temporal data by applying a specific time extent to a map view.</string>
-				<key>storyboardName</key>
-				<string>FilterByTimeExtent</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Search</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Find address</string>
-				<key>storyboardName</key>
-				<string>FindAddress</string>
-				<key>descriptionText</key>
-				<string>Find the location for an address.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Reverse geocode</string>
-				<key>storyboardName</key>
-				<string>ReverseGeocode</string>
-				<key>descriptionText</key>
-				<string>Use an online service to find the address for a tapped point.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Find place</string>
-				<key>storyboardName</key>
-				<string>FindPlace</string>
-				<key>descriptionText</key>
-				<string>Find places of interest near a location or within a specific area.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Offline geocode</string>
-				<key>storyboardName</key>
-				<string>OfflineGeocode</string>
-				<key>descriptionText</key>
-				<string>Geocode addresses to locations and reverse geocode locations to addresses offline.</string>
-				<key>dependency</key>
-				<array>
-					<string>SanDiegoLocator</string>
-					<string>SanDiegoTilePackage</string>
-				</array>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Edit Data</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Create and save KML file</string>
-				<key>storyboardName</key>
-				<string>CreateAndSaveKML</string>
-				<key>descriptionText</key>
-				<string>Construct a KML document and save it as a KMZ file.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Edit and sync features</string>
-				<key>storyboardName</key>
-				<string>EditAndSyncFeatures</string>
-				<key>descriptionText</key>
-				<string>Synchronize offline edits with a feature service.</string>
-				<key>dependency</key>
-				<array>
-					<string>SanFranciscoTilePackage</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Add features (feature service)</string>
-				<key>storyboardName</key>
-				<string>AddFeatures</string>
-				<key>descriptionText</key>
-				<string>Add features to a feature layer.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Delete features (feature service)</string>
-				<key>storyboardName</key>
-				<string>DeleteFeatures</string>
-				<key>descriptionText</key>
-				<string>Delete features from an online feature service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Update attributes (feature service)</string>
-				<key>storyboardName</key>
-				<string>UpdateAttributes</string>
-				<key>descriptionText</key>
-				<string>Update feature attributes in an online feature service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Update geometries (feature service)</string>
-				<key>storyboardName</key>
-				<string>EditGeometry</string>
-				<key>descriptionText</key>
-				<string>Update a feature&apos;s location in an online feature service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Edit feature attachments</string>
-				<key>storyboardName</key>
-				<string>EditFeatureAttachments</string>
-				<key>descriptionText</key>
-				<string>Add, delete, and download attachments for features from a service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Edit features (connected)</string>
-				<key>storyboardName</key>
-				<string>EditFeaturesOnline</string>
-				<key>descriptionText</key>
-				<string>View, edit, or add features using a popup.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Offline edit and sync</string>
-				<key>storyboardName</key>
-				<string>OfflineEditing</string>
-				<key>descriptionText</key>
-				<string>Synchronize offline edits with a feature service using a popup.</string>
-				<key>dependency</key>
-				<array>
-					<string>SanFranciscoTilePackage</string>
-				</array>
-			</dict>
-			<dict>
-				<key>dependency</key>
-				<array>
-					<string>loudoun_anno</string>
-				</array>
-				<key>displayName</key>
-				<string>Edit features with feature-linked annotation</string>
-				<key>storyboardName</key>
-				<string>EditFeaturesWithFeatureLinkedAnnotation</string>
-				<key>descriptionText</key>
-				<string>Edit feature attributes which are linked to annotations through an expression.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Edit with branch versioning</string>
-				<key>storyboardName</key>
-				<string>EditWithBranchVersioning</string>
-				<key>descriptionText</key>
-				<string>Create, query, and edit a specific server version using a service geodatabase.</string>
-			</dict>
-			<dict>
-				<key>dependency</key>
-				<array>
-					<string>ContingentValuesBirdNests</string>
-					<string>fillmoreTopographic</string>
-				</array>
-				<key>displayName</key>
-				<string>Add features with contingent values</string>
-				<key>storyboardName</key>
-				<string>AddFeaturesContingentValues</string>
-				<key>descriptionText</key>
-				<string>Create and add features whose attribute values satisfy a predefined set of contingencies.</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Geometry</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Project</string>
-				<key>storyboardName</key>
-				<string>Project</string>
-				<key>descriptionText</key>
-				<string>Project a point to another spatial reference.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Create geometries</string>
-				<key>storyboardName</key>
-				<string>CreateGeometries</string>
-				<key>descriptionText</key>
-				<string>Create simple geometry types.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Spatial operations</string>
-				<key>storyboardName</key>
-				<string>SpatialOperations</string>
-				<key>descriptionText</key>
-				<string>Find the union, intersection, or difference of two geometries.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Format coordinates</string>
-				<key>storyboardName</key>
-				<string>FormatCoordinates</string>
-				<key>descriptionText</key>
-				<string>Format coordinates in a variety of common notations.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>List transformations</string>
-				<key>storyboardName</key>
-				<string>ListTransformations</string>
-				<key>descriptionText</key>
-				<string>Get a list of suitable transformations for projecting a geometry between two spatial references with different horizontal datums.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Geodesic operations</string>
-				<key>storyboardName</key>
-				<string>GeodesicOperations</string>
-				<key>descriptionText</key>
-				<string>Calculate a geodesic path between two points and measure its distance.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Cut geometry</string>
-				<key>storyboardName</key>
-				<string>CutGeometry</string>
-				<key>descriptionText</key>
-				<string>Cut a geometry along a polyline.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Clip geometry</string>
-				<key>storyboardName</key>
-				<string>ClipGeometry</string>
-				<key>descriptionText</key>
-				<string>Clip a geometry with another geometry.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Spatial relationships</string>
-				<key>storyboardName</key>
-				<string>SpatialRelationships</string>
-				<key>descriptionText</key>
-				<string>Determine spatial relationships between two geometries.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Densify and generalize</string>
-				<key>storyboardName</key>
-				<string>DensifyAndGeneralize</string>
-				<key>descriptionText</key>
-				<string>Apply densify and generalize functions to multipart geometry.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Buffer</string>
-				<key>storyboardName</key>
-				<string>Buffer</string>
-				<key>descriptionText</key>
-				<string>Create a buffer around a map point and display the results as a graphic.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Convex hull</string>
-				<key>storyboardName</key>
-				<string>ConvexHull</string>
-				<key>descriptionText</key>
-				<string>Create a convex hull for a given set of points.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Nearest vertex</string>
-				<key>storyboardName</key>
-				<string>NearestVertex</string>
-				<key>descriptionText</key>
-				<string>Find the closest vertex and coordinate of a geometry to a point.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Buffer list</string>
-				<key>storyboardName</key>
-				<string>BufferList</string>
-				<key>descriptionText</key>
-				<string>Generate multiple individual buffers or a single unioned buffer around multiple points.</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Route &amp; Directions</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Find closest facility to an incident (interactive)</string>
-				<key>storyboardName</key>
-				<string>FindClosestFacilityInteractive</string>
-				<key>descriptionText</key>
-				<string>Find a route to the closest facility from a location.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Find route</string>
-				<key>storyboardName</key>
-				<string>FindRoute</string>
-				<key>descriptionText</key>
-				<string>Display directions for a route between two points.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Route around barriers</string>
-				<key>storyboardName</key>
-				<string>RouteAroundBarriers</string>
-				<key>descriptionText</key>
-				<string>Find a route that reaches all stops without crossing any barriers.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Offline routing</string>
-				<key>storyboardName</key>
-				<string>OfflineRouting</string>
-				<key>descriptionText</key>
-				<string>Solve a route on-the-fly using offline data.</string>
-				<key>dependency</key>
-				<array>
-					<string>SanDiegoNetworkData</string>
-					<string>SanDiegoTilePackage</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Find service area interactive</string>
-				<key>storyboardName</key>
-				<string>FindServiceAreaInteractive</string>
-				<key>descriptionText</key>
-				<string>Find the service area within a network from a given point.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Find closest facility to multiple incidents (service)</string>
-				<key>descriptionText</key>
-				<string>Find routes from several locations to the respective closest facility.</string>
-				<key>storyboardName</key>
-				<string>FindClosestFacilityMultipleIncidentsService</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Navigate route</string>
-				<key>descriptionText</key>
-				<string>Use a routing service to navigate between two points.</string>
-				<key>storyboardName</key>
-				<string>NavigateRoute</string>
-			</dict>
-			<dict>
-				<key>storyboardName</key>
-				<string>NavigateRouteWithRerouting</string>
-				<key>descriptionText</key>
-				<string>Navigate between two points and dynamically recalculate an alternate route when the original route is unavailable.</string>
-				<key>displayName</key>
-				<string>Navigate route with rerouting</string>
-				<key>dependency</key>
-				<array>
-					<string>SanDiegoDetour</string>
-				</array>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Analysis</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Analyze hotspots</string>
-				<key>storyboardName</key>
-				<string>AnalyzeHotspots</string>
-				<key>descriptionText</key>
-				<string>Use a geoprocessing service and a set of features to identify statistically significant hot spots and cold spots.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Statistical query</string>
-				<key>storyboardName</key>
-				<string>StatisticalQuery</string>
-				<key>descriptionText</key>
-				<string>Query a table to get aggregated statistics back for a specific field.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Statistical query (group and sort)</string>
-				<key>storyboardName</key>
-				<string>StatisticalQueryGroupAndSort</string>
-				<key>descriptionText</key>
-				<string>Query a feature table for statistics, grouping and sorting by different fields.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Viewshed (geoprocessing)</string>
-				<key>storyboardName</key>
-				<string>ViewshedGeoprocessing</string>
-				<key>descriptionText</key>
-				<string>Calculate a viewshed using a geoprocessing service, in this case showing what parts of a landscape are visible from points on mountainous terrain.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Viewshed (camera)</string>
-				<key>storyboardName</key>
-				<string>ViewshedCamera</string>
-				<key>descriptionText</key>
-				<string>Analyze the viewshed for a camera. A viewshed shows the visible and obstructed areas from an observer&apos;s vantage point.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Viewshed (location)</string>
-				<key>storyboardName</key>
-				<string>ViewshedLocation</string>
-				<key>descriptionText</key>
-				<string>Perform a viewshed analysis from a defined vantage point.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Viewshed (GeoElement)</string>
-				<key>storyboardName</key>
-				<string>ViewshedGeoElement</string>
-				<key>descriptionText</key>
-				<string>Analyze the viewshed for an object (geo element) in a scene.</string>
-				<key>dependency</key>
-				<array>
-					<string>Bradley3DModel</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Line of sight (location)</string>
-				<key>storyboardName</key>
-				<string>LineOfSightLocation</string>
-				<key>descriptionText</key>
-				<string>Perform a line of sight analysis between two points in real time.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Line of sight (geoelement)</string>
-				<key>storyboardName</key>
-				<string>LineOfSightGeoElement</string>
-				<key>descriptionText</key>
-				<string>Show a line of sight between two moving objects.</string>
-				<key>dependency</key>
-				<array>
-					<string>Dolmus3DModel</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Distance measurement analysis</string>
-				<key>storyboardName</key>
-				<string>DistanceMeasurementAnalysis</string>
-				<key>descriptionText</key>
-				<string>Measure distances between two points in 3D.</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Cloud &amp; Portal</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>List portal group users</string>
-				<key>storyboardName</key>
-				<string>GroupUsers</string>
-				<key>descriptionText</key>
-				<string>Shows a list of users in a portal group.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Search for webmap by keyword</string>
-				<key>storyboardName</key>
-				<string>SearchForWebmapByKeyword</string>
-				<key>descriptionText</key>
-				<string>Find webmap portal items by using a search term.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Integrated Windows Authentication</string>
-				<key>storyboardName</key>
-				<string>IntegratedWindowsAuthentication</string>
-				<key>descriptionText</key>
-				<string>Connect to an IWA secured Portal and search for maps.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Authenticate with OAuth</string>
-				<key>descriptionText</key>
-				<string>Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers).</string>
-				<key>storyboardName</key>
-				<string>AuthenticateWithOAuth</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Token authentication</string>
-				<key>descriptionText</key>
-				<string>Access a web map that is secured with ArcGIS token-based authentication.</string>
-				<key>storyboardName</key>
-				<string>TokenAuthentication</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Scenes</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>descriptionText</key>
-				<string>Get the elevation for a given point on a surface in a scene.</string>
-				<key>displayName</key>
-				<string>Get elevation at a point</string>
-				<key>storyboardName</key>
-				<string>GetElevationPoint</string>
-			</dict>
-			<dict>
-				<key>descriptionText</key>
-				<string>Set the terrain surface with elevation described by a raster file.</string>
-				<key>storyboardName</key>
-				<string>CreateTerrainSurfaceFromLocalRaster</string>
-				<key>displayName</key>
-				<string>Create terrain surface from a local raster</string>
-				<key>dependency</key>
-				<array>
-					<string>MontereyElevationRaster</string>
-				</array>
-			</dict>
-			<dict>
-				<key>descriptionText</key>
-				<string>Set the terrain surface with elevation described by a local tile package.</string>
-				<key>storyboardName</key>
-				<string>CreateTerrainSurfaceFromLocalTilePackage</string>
-				<key>displayName</key>
-				<string>Create terrain surface from a local tile package</string>
-				<key>dependency</key>
-				<array>
-					<string>MontereyElevation</string>
-				</array>
-			</dict>
-			<dict>
-				<key>descriptionText</key>
-				<string>Open a web scene from a portal item.</string>
-				<key>storyboardName</key>
-				<string>OpenScene</string>
-				<key>displayName</key>
-				<string>Open a scene (portal item)</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display a scene</string>
-				<key>storyboardName</key>
-				<string>DisplayScene</string>
-				<key>descriptionText</key>
-				<string>Display a scene with a terrain surface and some imagery.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Extrude graphics</string>
-				<key>storyboardName</key>
-				<string>ExtrudeGraphics</string>
-				<key>descriptionText</key>
-				<string>Extrude graphics based on an attribute value.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Scene symbols</string>
-				<key>storyboardName</key>
-				<string>SceneSymbols</string>
-				<key>descriptionText</key>
-				<string>Show various kinds of 3D symbols in a scene.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Surface placements</string>
-				<key>storyboardName</key>
-				<string>SurfacePlacements</string>
-				<key>descriptionText</key>
-				<string>Position graphics relative to a surface using different surface placement modes.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Scene layer (URL)</string>
-				<key>storyboardName</key>
-				<string>SceneLayerURL</string>
-				<key>descriptionText</key>
-				<string>Display an ArcGIS scene layer from a URL.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Scene properties expressions</string>
-				<key>storyboardName</key>
-				<string>ScenePropertiesExpressions</string>
-				<key>descriptionText</key>
-				<string>Update the orientation of a graphic using expressions based on its attributes.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Animate 3D graphic</string>
-				<key>storyboardName</key>
-				<string>Animate3DGraphic</string>
-				<key>descriptionText</key>
-				<string>A controller follows a graphic while the graphic&apos;s position and rotation are animated.</string>
-				<key>dependency</key>
-				<array>
-					<string>MissionFiles</string>
-					<string>Bristol3DModel</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Distance composite symbol</string>
-				<key>storyboardName</key>
-				<string>DistanceCompositeSymbol</string>
-				<key>descriptionText</key>
-				<string>Change a graphic&apos;s symbol based on the camera&apos;s proximity to it.</string>
-				<key>dependency</key>
-				<array>
-					<string>Bristol3DModel</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Terrain exaggeration</string>
-				<key>storyboardName</key>
-				<string>TerrainExaggeration</string>
-				<key>descriptionText</key>
-				<string>Vertically exaggerate terrain in a scene.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Feature layer extrusion</string>
-				<key>storyboardName</key>
-				<string>FeatureLayerExtrusion</string>
-				<key>descriptionText</key>
-				<string>Extrude features based on their attributes.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Scene layer selection</string>
-				<key>storyboardName</key>
-				<string>SceneLayerSelection</string>
-				<key>descriptionText</key>
-				<string>Identify features in a scene to select.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Sync map and scene views</string>
-				<key>storyboardName</key>
-				<string>SyncMapAndSceneViews</string>
-				<key>descriptionText</key>
-				<string>Keep the view points of two views (e.g. map view and scene view) synchronized with each other.</string>
-			</dict>
-			<dict>
-				<key>descriptionText</key>
-				<string>Change the appearance of the atmosphere in a scene.</string>
-				<key>storyboardName</key>
-				<string>ChangeAtmosphereEffect</string>
-				<key>displayName</key>
-				<string>Change atmosphere effect</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Add an integrated mesh layer</string>
-				<key>descriptionText</key>
-				<string>View an integrated mesh layer from a scene service.</string>
-				<key>storyboardName</key>
-				<string>AddIntegratedMeshLayer</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>View content beneath the terrain surface</string>
-				<key>descriptionText</key>
-				<string>See through terrain in a scene and move the camera underground.</string>
-				<key>storyboardName</key>
-				<string>ViewContentBeneathTerrainSurface</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Add a point scene layer</string>
-				<key>storyboardName</key>
-				<string>AddPointSceneLayer</string>
-				<key>descriptionText</key>
-				<string>View a point scene layer from a scene service.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>View point cloud data offline</string>
-				<key>descriptionText</key>
-				<string>Display local 3D point cloud data.</string>
-				<key>storyboardName</key>
-				<string>ViewPointCloudDataOffline</string>
-				<key>dependency</key>
-				<array>
-					<string>sandiego-north-balboa-pointcloud</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Open mobile scene (scene package)</string>
-				<key>descriptionText</key>
-				<string>Opens and displays a scene from a mobile scene package (.mspk).</string>
-				<key>storyboardName</key>
-				<string>OpenMobileScene</string>
-				<key>dependency</key>
-				<array>
-					<string>philadelphia</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Choose camera controller</string>
-				<key>storyboardName</key>
-				<string>ChooseCameraController</string>
-				<key>descriptionText</key>
-				<string>Control the behavior of the camera in a scene.</string>
-				<key>dependency</key>
-				<array>
-					<string>Bristol3DModel</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Animate images with image overlay</string>
-				<key>storyboardName</key>
-				<string>AnimateImagesWithImageOverlay</string>
-				<key>descriptionText</key>
-				<string>Animate a series of images with an image overlay.</string>
-				<key>dependency</key>
-				<array>
-					<string>PacificSouthWest</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Realistic lighting and shadows</string>
-				<key>storyboardName</key>
-				<string>RealisticLightingAndShadows</string>
-				<key>descriptionText</key>
-				<string>Show realistic lighting and shadows for a given time of day.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Show labels on layer in 3D</string>
-				<key>storyboardName</key>
-				<string>ShowLabelsOnLayer3D</string>
-				<key>descriptionText</key>
-				<string>Display custom labels in a 3D scene.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Orbit camera around object</string>
-				<key>descriptionText</key>
-				<string>Fix the camera to point at and rotate around a target object.</string>
-				<key>storyboardName</key>
-				<string>OrbitCameraAroundObject</string>
-				<key>dependency</key>
-				<array>
-					<string>Bristol3DModel</string>
-				</array>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Utility Network</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>descriptionText</key>
-				<string>Discover connected features in a utility network using connected, subnetwork, upstream, and downstream traces.</string>
-				<key>storyboardName</key>
-				<string>TraceUtilityNetwork</string>
-				<key>displayName</key>
-				<string>Trace utility network</string>
-			</dict>
-			<dict>
-				<key>descriptionText</key>
-				<string>Create graphics for utility associations in a utility network.</string>
-				<key>storyboardName</key>
-				<string>DisplayUtilityAssociations</string>
-				<key>displayName</key>
-				<string>Display utility associations</string>
-			</dict>
-			<dict>
-				<key>descriptionText</key>
-				<string>Run a filtered trace to locate operable features that will isolate an area from the flow of network resources.</string>
-				<key>storyboardName</key>
-				<string>PerformValveIsolationTrace</string>
-				<key>displayName</key>
-				<string>Perform valve isolation trace</string>
-			</dict>
-			<dict>
-				<key>descriptionText</key>
-				<string>Get a server-defined trace configuration for a given tier and modify its traversability scope, add new condition barriers, and control what is included in the subnetwork trace result.</string>
-				<key>storyboardName</key>
-				<string>ConfigureSubnetworkTrace</string>
-				<key>displayName</key>
-				<string>Configure subnetwork trace</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Create load report</string>
-				<key>descriptionText</key>
-				<string>Create a simple electric distribution report that displays the count of customers and total load per phase by tracing downstream from a given point.</string>
-				<key>storyboardName</key>
-				<string>CreateLoadReport</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display content of utility network container</string>
-				<key>storyboardName</key>
-				<string>DisplayContentUtilityNetworkContainer</string>
-				<key>descriptionText</key>
-				<string>A utility network container allows a dense collection of features to be represented by a single feature, which can be used to reduce map clutter.</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Augmented Reality</string>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>displayName</key>
-				<string>Collect data in AR</string>
-				<key>storyboardName</key>
-				<string>CollectDataAR</string>
-				<key>descriptionText</key>
-				<string>Tap on real-world objects to collect data.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Display scenes in tabletop AR</string>
-				<key>storyboardName</key>
-				<string>DisplayScenesInTabletopAR</string>
-				<key>descriptionText</key>
-				<string>Use augmented reality (AR) to pin a scene to a table or desk for easy exploration.</string>
-				<key>dependency</key>
-				<array>
-					<string>philadelphia</string>
-				</array>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Explore scenes in flyover AR</string>
-				<key>storyboardName</key>
-				<string>ExploreScenesInFlyoverAR</string>
-				<key>descriptionText</key>
-				<string>Use augmented reality (AR) to quickly explore a scene more naturally than you could with a touch or mouse interface.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>Navigate in AR</string>
-				<key>storyboardName</key>
-				<string>NavigateAR</string>
-				<key>descriptionText</key>
-				<string>Use a route displayed in the real world to navigate.</string>
-			</dict>
-			<dict>
-				<key>displayName</key>
-				<string>View hidden infrastructure in AR</string>
-				<key>descriptionText</key>
-				<string>Visualize hidden infrastructure in its real-world location using augmented reality.</string>
-				<key>storyboardName</key>
-				<string>ViewHiddenInfrastructureAR</string>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>displayName</key>
-		<string>Favorites</string>
-		<key>children</key>
-		<array/>
-	</dict>
-</array>
+    <array>
+        <dict>
+            <key>displayName</key>
+            <string>Maps</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display a map</string>
+                    <key>storyboardName</key>
+                    <string>DisplayMap</string>
+                    <key>descriptionText</key>
+                    <string>Display a map with an imagery basemap.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display a map SwiftUI</string>
+                    <key>storyboardName</key>
+                    <string>DisplayMapSwiftUI</string>
+                    <key>descriptionText</key>
+                    <string>Display a map and demonstrate common usecases in SwiftUI.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Change map view background</string>
+                    <key>storyboardName</key>
+                    <string>ChangeMapViewBackground</string>
+                    <key>descriptionText</key>
+                    <string>Customize map view&apos;s background by changing its grid properties.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Map loaded</string>
+                    <key>storyboardName</key>
+                    <string>MapLoaded</string>
+                    <key>descriptionText</key>
+                    <string>Determine the map&apos;s load status.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Open map (URL)</string>
+                    <key>storyboardName</key>
+                    <string>OpenMapURL</string>
+                    <key>descriptionText</key>
+                    <string>Display a web map.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Change basemap</string>
+                    <key>storyboardName</key>
+                    <string>SwitchBasemap</string>
+                    <key>descriptionText</key>
+                    <string>Change a map&apos;s basemap.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Set initial map area</string>
+                    <key>storyboardName</key>
+                    <string>SetInitialMapArea</string>
+                    <key>descriptionText</key>
+                    <string>Display the map at an initial viewpoint representing a bounding geometry.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Set initial map location</string>
+                    <key>storyboardName</key>
+                    <string>SetInitialMapLocation</string>
+                    <key>descriptionText</key>
+                    <string>Display a basemap centered at an initial location and scale.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Set map spatial reference</string>
+                    <key>storyboardName</key>
+                    <string>SetMapsSpatialReference</string>
+                    <key>descriptionText</key>
+                    <string>Specify a map&apos;s spatial reference.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Manage operational layers</string>
+                    <key>storyboardName</key>
+                    <string>ManageMapLayers</string>
+                    <key>descriptionText</key>
+                    <string>Add, remove, and reorder operational layers in a map.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Manage bookmarks</string>
+                    <key>storyboardName</key>
+                    <string>Bookmarks</string>
+                    <key>descriptionText</key>
+                    <string>Access and create bookmarks on a map.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display drawing status</string>
+                    <key>storyboardName</key>
+                    <string>MapViewDrawStatus</string>
+                    <key>descriptionText</key>
+                    <string>Get the draw status of your map view or scene view to know when all layers in the map or scene have finished drawing.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display layer view state</string>
+                    <key>storyboardName</key>
+                    <string>LayerStatus</string>
+                    <key>descriptionText</key>
+                    <string>Determine whether a layer is currently visible.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Change viewpoint</string>
+                    <key>storyboardName</key>
+                    <string>SetViewpoint</string>
+                    <key>descriptionText</key>
+                    <string>Set the map view to a new viewpoint.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Map rotation</string>
+                    <key>storyboardName</key>
+                    <string>MapRotation</string>
+                    <key>descriptionText</key>
+                    <string>Rotate a map.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Show magnifier</string>
+                    <key>storyboardName</key>
+                    <string>ShowMagnifier</string>
+                    <key>descriptionText</key>
+                    <string>Tap and hold on a map to show a magnifier.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display device location with autopan modes</string>
+                    <key>storyboardName</key>
+                    <string>DisplayLocation</string>
+                    <key>descriptionText</key>
+                    <string>Display your current position on the map, as well as switch between different types of auto-pan modes.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Take screenshot</string>
+                    <key>storyboardName</key>
+                    <string>MapViewScreenshot</string>
+                    <key>descriptionText</key>
+                    <string>Take a screenshot of the map.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Create and save a map</string>
+                    <key>storyboardName</key>
+                    <string>CreateSaveMap</string>
+                    <key>descriptionText</key>
+                    <string>Create and save a map as a portal item (i.e. web map).</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Identify layers</string>
+                    <key>storyboardName</key>
+                    <string>IdentifyLayers</string>
+                    <key>descriptionText</key>
+                    <string>Identify features in all layers in a map.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Open mobile map (map package)</string>
+                    <key>storyboardName</key>
+                    <string>OpenMobileMapPackage</string>
+                    <key>descriptionText</key>
+                    <string>Display a map from a mobile map package.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>YellowstoneMMPK</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Mobile map (search and route)</string>
+                    <key>storyboardName</key>
+                    <string>MobileMapSearchRoute</string>
+                    <key>descriptionText</key>
+                    <string>Display maps and use locators to enable search and routing offline using a mobile map package.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>YellowstoneMMPK</string>
+                        <string>SanFranciscoMMPK</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Honor mobile map package expiration date</string>
+                    <key>descriptionText</key>
+                    <string>Access the expiration information of an expired mobile map package.</string>
+                    <key>storyboardName</key>
+                    <string>HonorMobileMapPackageExpirationDate</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>LothianRiversAnnoMMPK</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Generate offline map</string>
+                    <key>storyboardName</key>
+                    <string>GenerateOfflineMap</string>
+                    <key>descriptionText</key>
+                    <string>Take a web map offline.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Generate offline map (overrides)</string>
+                    <key>storyboardName</key>
+                    <string>GenerateOfflineMapOverrides</string>
+                    <key>descriptionText</key>
+                    <string>Take a web map offline with additional options for each layer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Generate offline map (basemap by reference)</string>
+                    <key>descriptionText</key>
+                    <string>Take a web map offline, but instead of downloading an online basemap, use one which is already on the device.</string>
+                    <key>storyboardName</key>
+                    <string>GenerateOfflineMapBasemapByReference</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>naperville_imagery</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Read a geopackage</string>
+                    <key>storyboardName</key>
+                    <string>ReadGeopackage</string>
+                    <key>descriptionText</key>
+                    <string>Add rasters and feature tables from a geopackage to a map.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>AuroraCOGeopackage</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Set min-max scale</string>
+                    <key>storyboardName</key>
+                    <string>SetMinMaxScale</string>
+                    <key>descriptionText</key>
+                    <string>Restrict zooming between specific scale ranges.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Map reference scale</string>
+                    <key>descriptionText</key>
+                    <string>Set the map&apos;s reference scale and which feature layers should honor the reference scale.</string>
+                    <key>storyboardName</key>
+                    <string>MapReferenceScale</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Show location history</string>
+                    <key>descriptionText</key>
+                    <string>Display your location history on the map.</string>
+                    <key>storyboardName</key>
+                    <string>LocationHistory</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Download preplanned map</string>
+                    <key>descriptionText</key>
+                    <string>Take a map offline using a preplanned map area.</string>
+                    <key>storyboardName</key>
+                    <string>DownloadPreplannedMap</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Apply scheduled updates to preplanned map area</string>
+                    <key>descriptionText</key>
+                    <string>Apply scheduled updates to a downloaded preplanned map area.</string>
+                    <key>storyboardName</key>
+                    <string>ApplyScheduledUpdatesToPreplannedMapArea</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>canyonlands</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display device location with NMEA data sources</string>
+                    <key>descriptionText</key>
+                    <string>Parse NMEA sentences and use the results to show device location on the map.</string>
+                    <key>storyboardName</key>
+                    <string>DisplayDeviceLocationWithNMEADataSources</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>RedlandsNMEA</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Browse building floors</string>
+                    <key>descriptionText</key>
+                    <string>Display and browse through building floors from a floor-aware web map.</string>
+                    <key>storyboardName</key>
+                    <string>BrowseBuildingFloors</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Show device location using indoor positioning</string>
+                    <key>descriptionText</key>
+                    <string>Show your device&apos;s real-time location while inside a building by using signals from indoor positioning beacons.</string>
+                    <key>storyboardName</key>
+                    <string>ShowDeviceLocationUsingIndoorPositioning</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Layers</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display subtype feature layer</string>
+                    <key>storyboardName</key>
+                    <string>DisplaySubtypeFeatureLayer</string>
+                    <key>descriptionText</key>
+                    <string>Display a composite layer of all the subtype values in a feature class.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display annotation</string>
+                    <key>storyboardName</key>
+                    <string>DisplayAnnotation</string>
+                    <key>descriptionText</key>
+                    <string>Display annotation from a feature service URL.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Dictionary renderer with feature layer</string>
+                    <key>storyboardName</key>
+                    <string>FeatureLayerDictionaryRenderer</string>
+                    <key>descriptionText</key>
+                    <string>Convert features into graphics to show them with mil2525d symbols.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>mil2525d</string>
+                        <string>militaryoverlay</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Colormap renderer</string>
+                    <key>storyboardName</key>
+                    <string>ColormapRenderer</string>
+                    <key>descriptionText</key>
+                    <string>Apply a colormap renderer to a raster.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ShastaBWRaster</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>ArcGIS tiled layer (URL)</string>
+                    <key>storyboardName</key>
+                    <string>TLUsingURL</string>
+                    <key>descriptionText</key>
+                    <string>Load a tiled layer from a map server with a URL.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>ArcGIS tiled layer (tile cache)</string>
+                    <key>storyboardName</key>
+                    <string>LocalTiledLayer</string>
+                    <key>descriptionText</key>
+                    <string>Load an offline copy of a tiled map service as a basemap.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanFranciscoTilePackage</string>
+                        <string>SanDiegoTilePackage</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Export tiles</string>
+                    <key>storyboardName</key>
+                    <string>ExportTiles</string>
+                    <key>descriptionText</key>
+                    <string>Download tiles to a local tile cache file stored on the device.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>ArcGIS map image layer (URL)</string>
+                    <key>storyboardName</key>
+                    <string>MILUsingURL</string>
+                    <key>descriptionText</key>
+                    <string>Display a layer from an ArcGIS map image layer service.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Change sublayer renderer</string>
+                    <key>storyboardName</key>
+                    <string>ChangeSublayerRenderer</string>
+                    <key>descriptionText</key>
+                    <string>Apply a renderer to a sublayer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Change sublayer visibility</string>
+                    <key>storyboardName</key>
+                    <string>SublayerVisibility</string>
+                    <key>descriptionText</key>
+                    <string>Change the visibility of sublayers.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Manage sublayers</string>
+                    <key>storyboardName</key>
+                    <string>ManageSublayers</string>
+                    <key>descriptionText</key>
+                    <string>Add, remove, or rearrange existing sublayers in a map image layer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>ArcGIS vector tiled layer (custom style)</string>
+                    <key>storyboardName</key>
+                    <string>VectorTileCustomStyle</string>
+                    <key>descriptionText</key>
+                    <string>Load ArcGIS vector tiled layers using custom styles.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>DodgeCity</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Web tiled layer</string>
+                    <key>storyboardName</key>
+                    <string>WebTiledLayer</string>
+                    <key>descriptionText</key>
+                    <string>Display a tiled web layer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Raster function (service)</string>
+                    <key>storyboardName</key>
+                    <string>RasterFunctionService</string>
+                    <key>descriptionText</key>
+                    <string>Load a raster from a service, then apply a function to it.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Raster layer (file)</string>
+                    <key>storyboardName</key>
+                    <string>RasterLayer</string>
+                    <key>descriptionText</key>
+                    <string>Create and use a raster layer made from a local raster file.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ShastaRaster</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Raster layer (geopackage)</string>
+                    <key>storyboardName</key>
+                    <string>RasterLayerGPKG</string>
+                    <key>descriptionText</key>
+                    <string>Display a raster contained in a GeoPackage.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>AuroraCOGeopackage</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Raster layer (service)</string>
+                    <key>storyboardName</key>
+                    <string>RasterLayerUsingService</string>
+                    <key>descriptionText</key>
+                    <string>Create a raster layer from a raster image service.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Hillshade renderer</string>
+                    <key>storyboardName</key>
+                    <string>HillshadeRenderer</string>
+                    <key>descriptionText</key>
+                    <string>Apply a hillshade renderer to a raster.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SRTMRaster</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Blend renderer</string>
+                    <key>storyboardName</key>
+                    <string>BlendRenderer</string>
+                    <key>descriptionText</key>
+                    <string>Blend a hillshade with a raster by specifying the elevation data.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ShastaElevationRaster</string>
+                        <string>ShastaRaster</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>RGB renderer</string>
+                    <key>storyboardName</key>
+                    <string>RGBRenderer</string>
+                    <key>descriptionText</key>
+                    <string>Apply an RGB renderer to a raster layer to enhance feature visibility.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ShastaRaster</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Stretch renderer</string>
+                    <key>storyboardName</key>
+                    <string>StretchRenderer</string>
+                    <key>descriptionText</key>
+                    <string>Use a stretch renderer to enhance the visual contrast of raster data for analysis.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ShastaBWRaster</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Show labels on layers</string>
+                    <key>storyboardName</key>
+                    <string>ShowLabelsOnLayers</string>
+                    <key>descriptionText</key>
+                    <string>Display custom labels on a feature layer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>WMTS layer</string>
+                    <key>storyboardName</key>
+                    <string>WMTSLayer</string>
+                    <key>descriptionText</key>
+                    <string>Display a layer from a Web Map Tile Service.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>WMS layer (URL)</string>
+                    <key>storyboardName</key>
+                    <string>WMSLayerUsingURL</string>
+                    <key>descriptionText</key>
+                    <string>Display a WMS layer using a WMS service URL.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Style WMS layers</string>
+                    <key>storyboardName</key>
+                    <string>StyleWebMapServiceLayer</string>
+                    <key>descriptionText</key>
+                    <string>Change the style of a Web Map Service (WMS) layer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Query a map image sublayer</string>
+                    <key>storyboardName</key>
+                    <string>QueryMapImageSublayer</string>
+                    <key>descriptionText</key>
+                    <string>Find features in a sublayer based on attributes and location.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Symbolize shapefile</string>
+                    <key>storyboardName</key>
+                    <string>SymbolizeShapefile</string>
+                    <key>descriptionText</key>
+                    <string>Display a shapefile with custom symbology.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SubdivisionsShapefile</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display KML</string>
+                    <key>storyboardName</key>
+                    <string>DisplayKML</string>
+                    <key>descriptionText</key>
+                    <string>Display KML from a URL, portal item, or local KML file.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>List KML contents</string>
+                    <key>storyboardName</key>
+                    <string>ListKMLContents</string>
+                    <key>descriptionText</key>
+                    <string>List the contents of a KML file.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Identify KML features</string>
+                    <key>storyboardName</key>
+                    <string>IdentifyKMLFeatures</string>
+                    <key>descriptionText</key>
+                    <string>Show a callout with formatted content for a KML feature.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display KML network links</string>
+                    <key>storyboardName</key>
+                    <string>DisplayKMLNetworkLinks</string>
+                    <key>descriptionText</key>
+                    <string>Display a file with a KML network link, including displaying any network link control messages at launch.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Play a KML Tour</string>
+                    <key>descriptionText</key>
+                    <string>Play tours in KML files.</string>
+                    <key>storyboardName</key>
+                    <string>PlayKMLTour</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>OpenStreetMap layer</string>
+                    <key>storyboardName</key>
+                    <string>OpenStreetMapLayer</string>
+                    <key>descriptionText</key>
+                    <string>Add OpenStreetMap as a basemap layer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display a WFS layer</string>
+                    <key>storyboardName</key>
+                    <string>DisplayWFS</string>
+                    <key>descriptionText</key>
+                    <string>Display a layer from a WFS service, requesting only features for the current extent.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Load WFS with XML query</string>
+                    <key>descriptionText</key>
+                    <string>Load a WFS feature table using an XML query.</string>
+                    <key>storyboardName</key>
+                    <string>LoadWFSWithXMLQuery</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Browse WFS layers</string>
+                    <key>descriptionText</key>
+                    <string>Browse a WFS service for layers and add them to the map.</string>
+                    <key>storyboardName</key>
+                    <string>BrowseWFSLayers</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Group layers</string>
+                    <key>descriptionText</key>
+                    <string>Group a collection of layers together and toggle their visibility as a group.</string>
+                    <key>storyboardName</key>
+                    <string>GroupLayers</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Control annotation sublayer visibility</string>
+                    <key>descriptionText</key>
+                    <string>Use annotation sublayers to gain finer control of annotation layer subtypes.</string>
+                    <key>storyboardName</key>
+                    <string>ControlAnnotationSublayerVisibility</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>GasDeviceAnnoMMPK</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Identify raster cell</string>
+                    <key>descriptionText</key>
+                    <string>Get the cell value of a local raster at the tapped location and display the result in a callout.</string>
+                    <key>storyboardName</key>
+                    <string>IdentifyRasterCell</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>NDVIRaster</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Add ENC exchange set</string>
+                    <key>descriptionText</key>
+                    <string>Display nautical charts per the ENC specification.</string>
+                    <key>storyboardName</key>
+                    <string>AddENCExchangeSet</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ExchangeSetWithoutUpdates</string>
+                        <string>Hydrography</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Apply mosaic rule to rasters</string>
+                    <key>descriptionText</key>
+                    <string>Apply a mosaic rule to a mosaic dataset of rasters.</string>
+                    <key>storyboardName</key>
+                    <string>ApplyMosaicRuleToRasters</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Apply raster rendering rule</string>
+                    <key>descriptionText</key>
+                    <string>Display a raster on a map and apply different rendering rules to that raster.</string>
+                    <key>storyboardName</key>
+                    <string>ApplyRasterRenderingRule</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>descriptionText</key>
+                    <string>Edit the values of a KML ground overlay.</string>
+                    <key>storyboardName</key>
+                    <string>EditKMLGroundOverlay</string>
+                    <key>displayName</key>
+                    <string>Edit KML ground overlay</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display OGC API collection</string>
+                    <key>descriptionText</key>
+                    <string>Display an OGC API feature collection and query features while navigating the map view.</string>
+                    <key>storyboardName</key>
+                    <string>DisplayOGCAPICollection</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Browse OGC API feature service</string>
+                    <key>descriptionText</key>
+                    <string>Browse an OGC API feature service for layers and add them to the map.</string>
+                    <key>storyboardName</key>
+                    <string>BrowseOGCAPIFeatureService</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Query with CQL filters</string>
+                    <key>descriptionText</key>
+                    <string>Query data from an OGC API feature service using CQL filters.</string>
+                    <key>storyboardName</key>
+                    <string>QueryWithCQLFilters</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Export vector tiles</string>
+                    <key>descriptionText</key>
+                    <string>Export tiles from an online vector tile service.</string>
+                    <key>storyboardName</key>
+                    <string>ExportVectorTiles</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Select ENC features</string>
+                    <key>descriptionText</key>
+                    <string>Select features in an ENC layer.</string>
+                    <key>storyboardName</key>
+                    <string>SelectENCFeatures</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>ExchangeSetWithoutUpdates</string>
+                        <string>Hydrography</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display dimensions</string>
+                    <key>descriptionText</key>
+                    <string>Display dimension features from a mobile map package.</string>
+                    <key>storyboardName</key>
+                    <string>DisplayDimensions</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>EdinburghPylonsDimensionsMMPK</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Features</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature layer rendering mode (map)</string>
+                    <key>storyboardName</key>
+                    <string>FeatureLayerRenderingModeMap</string>
+                    <key>descriptionText</key>
+                    <string>Render features statically or dynamically by setting the feature layer rendering mode.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature layer rendering mode (scene)</string>
+                    <key>storyboardName</key>
+                    <string>FeatureLayerRenderingModeScene</string>
+                    <key>descriptionText</key>
+                    <string>Render features in a scene statically or dynamically by setting the feature layer rendering mode.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature layer selection</string>
+                    <key>storyboardName</key>
+                    <string>FeatureLayerSelection</string>
+                    <key>descriptionText</key>
+                    <string>Select features in a feature layer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature layer query</string>
+                    <key>storyboardName</key>
+                    <string>FLQuery</string>
+                    <key>descriptionText</key>
+                    <string>Find features in a feature table which match an SQL query.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Filter by definition expression or display filter</string>
+                    <key>storyboardName</key>
+                    <string>DefinitionExpressionDisplayFilter</string>
+                    <key>descriptionText</key>
+                    <string>Filter features displayed on a map using a definition expression or a display filter.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Change feature layer renderer</string>
+                    <key>storyboardName</key>
+                    <string>OverrideRenderer</string>
+                    <key>descriptionText</key>
+                    <string>Change the appearance of a feature layer with a renderer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Generate geodatabase</string>
+                    <key>storyboardName</key>
+                    <string>GenerateGeodatabase</string>
+                    <key>descriptionText</key>
+                    <string>Generate a local geodatabase from an online feature service.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanFranciscoTilePackage</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature collection layer</string>
+                    <key>storyboardName</key>
+                    <string>FeatureCollectionLayer</string>
+                    <key>descriptionText</key>
+                    <string>Create a feature collection layer from a feature collection table and add it to a map.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature collection layer (portal item)</string>
+                    <key>descriptionText</key>
+                    <string>Create a feature collection layer from a portal item.</string>
+                    <key>storyboardName</key>
+                    <string>FeatureCollectionLayerFromPortal</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature collection layer (query)</string>
+                    <key>storyboardName</key>
+                    <string>FeatureCollectionLayerQuery</string>
+                    <key>descriptionText</key>
+                    <string>Create a feature collection layer to show a query result from a service feature table.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>List related features</string>
+                    <key>storyboardName</key>
+                    <string>ListRelatedFeatures</string>
+                    <key>descriptionText</key>
+                    <string>List features related to the selected feature.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Add delete related features</string>
+                    <key>storyboardName</key>
+                    <string>AddDeleteRelatedFeatures</string>
+                    <key>descriptionText</key>
+                    <string>Add or delete related features on an origin feature.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Time based query</string>
+                    <key>storyboardName</key>
+                    <string>TimeBasedQuery</string>
+                    <key>descriptionText</key>
+                    <string>Query data using a time extent.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Toggle between feature request modes</string>
+                    <key>storyboardName</key>
+                    <string>ToggleFeatureRequestModes</string>
+                    <key>descriptionText</key>
+                    <string>Use different feature request modes to populate the map from a service feature table.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>dependency</key>
+                    <array>
+                        <string>scottishWildlifeTrust</string>
+                    </array>
+                    <key>displayName</key>
+                    <string>Display feature layers</string>
+                    <key>storyboardName</key>
+                    <string>DisplayFeatureLayers</string>
+                    <key>descriptionText</key>
+                    <string>Display feature layers from various data sources.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Display Information</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Add graphics with renderer</string>
+                    <key>storyboardName</key>
+                    <string>AddGraphicsWithRenderer</string>
+                    <key>descriptionText</key>
+                    <string>A renderer allows you to change the style of all graphics in a graphics overlay by referencing a single symbol style. A renderer will only affect graphics that do not specify their own symbol style.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Add graphics with symbols</string>
+                    <key>storyboardName</key>
+                    <string>GraphicsWithSymbols</string>
+                    <key>descriptionText</key>
+                    <string>Use a symbol style to display a graphic on a graphics overlay.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Identify graphics</string>
+                    <key>storyboardName</key>
+                    <string>GOIdentify</string>
+                    <key>descriptionText</key>
+                    <string>Display an alert message when a graphic is tapped.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Control graphic draw order</string>
+                    <key>storyboardName</key>
+                    <string>GraphicDrawOrder</string>
+                    <key>descriptionText</key>
+                    <string>Change the drawing order for a graphic.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Sketch on the map</string>
+                    <key>storyboardName</key>
+                    <string>Sketch</string>
+                    <key>descriptionText</key>
+                    <string>Use the Sketch Editor to edit or sketch a new point, line, or polygon geometry on a map.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Show callout</string>
+                    <key>storyboardName</key>
+                    <string>Callout</string>
+                    <key>descriptionText</key>
+                    <string>Show a callout with the latitude and longitude of user-tapped points.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Show legend</string>
+                    <key>storyboardName</key>
+                    <string>MILShowLegend</string>
+                    <key>descriptionText</key>
+                    <string>Show a legend for all the operational layers in the map.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Simple marker symbol</string>
+                    <key>storyboardName</key>
+                    <string>SimpleMarkerSymbol</string>
+                    <key>descriptionText</key>
+                    <string>Show a simple marker symbol on a map.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Picture marker symbols</string>
+                    <key>storyboardName</key>
+                    <string>PictureMarkerSymbols</string>
+                    <key>descriptionText</key>
+                    <string>Use pictures for markers.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Simple renderer</string>
+                    <key>storyboardName</key>
+                    <string>SimpleRenderer</string>
+                    <key>descriptionText</key>
+                    <string>Display common symbols for all graphics in a graphics overlay with a renderer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Unique value renderer</string>
+                    <key>storyboardName</key>
+                    <string>UniqueValueRenderer</string>
+                    <key>descriptionText</key>
+                    <string>Render features in a layer using a distinct symbol for each unique attribute value.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display grid</string>
+                    <key>storyboardName</key>
+                    <string>DisplayGrid</string>
+                    <key>descriptionText</key>
+                    <string>Display coordinate system grids including Latitude-Longitude, MGRS, UTM and USNG on a map view.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Graphics overlay (dictionary renderer) 3D</string>
+                    <key>storyboardName</key>
+                    <string>GraphicsOverlayDictionaryRenderer3D</string>
+                    <key>descriptionText</key>
+                    <string>Create graphics from an XML file with key-value pairs for each graphic, and display the military symbols using a MIL-STD-2525D web style in 3D.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Read symbols from a mobile style</string>
+                    <key>descriptionText</key>
+                    <string>Combine multiple symbols from a mobile style file into a single symbol.</string>
+                    <key>storyboardName</key>
+                    <string>ReadSymbolsFromMobileStyle</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Custom dictionary style</string>
+                    <key>descriptionText</key>
+                    <string>Use a custom dictionary style created from a web style or style file to symbolize features using a variety of attribute values.</string>
+                    <key>storyboardName</key>
+                    <string>CustomDictionaryStyle</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>Restaurant</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Show popup</string>
+                    <key>descriptionText</key>
+                    <string>Show a predefined popup from a web map.</string>
+                    <key>storyboardName</key>
+                    <string>ShowPopup</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Create symbol styles from web styles</string>
+                    <key>descriptionText</key>
+                    <string>Create symbol styles from a style file hosted on a portal.</string>
+                    <key>storyboardName</key>
+                    <string>CreateSymbolStylesFromWebStyles</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Set up location-driven geotriggers</string>
+                    <key>descriptionText</key>
+                    <string>Create a notification every time a given location data source has entered and/or exited a set of features or graphics.</string>
+                    <key>storyboardName</key>
+                    <string>SetUpLocationDrivenGeotriggers</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Filter by time extent</string>
+                    <key>descriptionText</key>
+                    <string>The time slider provides controls that allow you to visualize temporal data by applying a specific time extent to a map view.</string>
+                    <key>storyboardName</key>
+                    <string>FilterByTimeExtent</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Search</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find address</string>
+                    <key>storyboardName</key>
+                    <string>FindAddress</string>
+                    <key>descriptionText</key>
+                    <string>Find the location for an address.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Reverse geocode</string>
+                    <key>storyboardName</key>
+                    <string>ReverseGeocode</string>
+                    <key>descriptionText</key>
+                    <string>Use an online service to find the address for a tapped point.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find place</string>
+                    <key>storyboardName</key>
+                    <string>FindPlace</string>
+                    <key>descriptionText</key>
+                    <string>Find places of interest near a location or within a specific area.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Offline geocode</string>
+                    <key>storyboardName</key>
+                    <string>OfflineGeocode</string>
+                    <key>descriptionText</key>
+                    <string>Geocode addresses to locations and reverse geocode locations to addresses offline.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanDiegoLocator</string>
+                        <string>SanDiegoTilePackage</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Edit Data</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Create and save KML file</string>
+                    <key>storyboardName</key>
+                    <string>CreateAndSaveKML</string>
+                    <key>descriptionText</key>
+                    <string>Construct a KML document and save it as a KMZ file.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Edit and sync features</string>
+                    <key>storyboardName</key>
+                    <string>EditAndSyncFeatures</string>
+                    <key>descriptionText</key>
+                    <string>Synchronize offline edits with a feature service.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanFranciscoTilePackage</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Add features (feature service)</string>
+                    <key>storyboardName</key>
+                    <string>AddFeatures</string>
+                    <key>descriptionText</key>
+                    <string>Add features to a feature layer.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Delete features (feature service)</string>
+                    <key>storyboardName</key>
+                    <string>DeleteFeatures</string>
+                    <key>descriptionText</key>
+                    <string>Delete features from an online feature service.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Update attributes (feature service)</string>
+                    <key>storyboardName</key>
+                    <string>UpdateAttributes</string>
+                    <key>descriptionText</key>
+                    <string>Update feature attributes in an online feature service.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Update geometries (feature service)</string>
+                    <key>storyboardName</key>
+                    <string>EditGeometry</string>
+                    <key>descriptionText</key>
+                    <string>Update a feature&apos;s location in an online feature service.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Edit feature attachments</string>
+                    <key>storyboardName</key>
+                    <string>EditFeatureAttachments</string>
+                    <key>descriptionText</key>
+                    <string>Add, delete, and download attachments for features from a service.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Edit features (connected)</string>
+                    <key>storyboardName</key>
+                    <string>EditFeaturesOnline</string>
+                    <key>descriptionText</key>
+                    <string>View, edit, or add features using a popup.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Offline edit and sync</string>
+                    <key>storyboardName</key>
+                    <string>OfflineEditing</string>
+                    <key>descriptionText</key>
+                    <string>Synchronize offline edits with a feature service using a popup.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanFranciscoTilePackage</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>dependency</key>
+                    <array>
+                        <string>loudoun_anno</string>
+                    </array>
+                    <key>displayName</key>
+                    <string>Edit features with feature-linked annotation</string>
+                    <key>storyboardName</key>
+                    <string>EditFeaturesWithFeatureLinkedAnnotation</string>
+                    <key>descriptionText</key>
+                    <string>Edit feature attributes which are linked to annotations through an expression.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Edit with branch versioning</string>
+                    <key>storyboardName</key>
+                    <string>EditWithBranchVersioning</string>
+                    <key>descriptionText</key>
+                    <string>Create, query, and edit a specific server version using a service geodatabase.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>dependency</key>
+                    <array>
+                        <string>ContingentValuesBirdNests</string>
+                        <string>fillmoreTopographic</string>
+                    </array>
+                    <key>displayName</key>
+                    <string>Add features with contingent values</string>
+                    <key>storyboardName</key>
+                    <string>AddFeaturesContingentValues</string>
+                    <key>descriptionText</key>
+                    <string>Create and add features whose attribute values satisfy a predefined set of contingencies.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Geometry</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Project</string>
+                    <key>storyboardName</key>
+                    <string>Project</string>
+                    <key>descriptionText</key>
+                    <string>Project a point to another spatial reference.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Create geometries</string>
+                    <key>storyboardName</key>
+                    <string>CreateGeometries</string>
+                    <key>descriptionText</key>
+                    <string>Create simple geometry types.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Spatial operations</string>
+                    <key>storyboardName</key>
+                    <string>SpatialOperations</string>
+                    <key>descriptionText</key>
+                    <string>Find the union, intersection, or difference of two geometries.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Format coordinates</string>
+                    <key>storyboardName</key>
+                    <string>FormatCoordinates</string>
+                    <key>descriptionText</key>
+                    <string>Format coordinates in a variety of common notations.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>List transformations</string>
+                    <key>storyboardName</key>
+                    <string>ListTransformations</string>
+                    <key>descriptionText</key>
+                    <string>Get a list of suitable transformations for projecting a geometry between two spatial references with different horizontal datums.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Geodesic operations</string>
+                    <key>storyboardName</key>
+                    <string>GeodesicOperations</string>
+                    <key>descriptionText</key>
+                    <string>Calculate a geodesic path between two points and measure its distance.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Cut geometry</string>
+                    <key>storyboardName</key>
+                    <string>CutGeometry</string>
+                    <key>descriptionText</key>
+                    <string>Cut a geometry along a polyline.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Clip geometry</string>
+                    <key>storyboardName</key>
+                    <string>ClipGeometry</string>
+                    <key>descriptionText</key>
+                    <string>Clip a geometry with another geometry.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Spatial relationships</string>
+                    <key>storyboardName</key>
+                    <string>SpatialRelationships</string>
+                    <key>descriptionText</key>
+                    <string>Determine spatial relationships between two geometries.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Densify and generalize</string>
+                    <key>storyboardName</key>
+                    <string>DensifyAndGeneralize</string>
+                    <key>descriptionText</key>
+                    <string>Apply densify and generalize functions to multipart geometry.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Buffer</string>
+                    <key>storyboardName</key>
+                    <string>Buffer</string>
+                    <key>descriptionText</key>
+                    <string>Create a buffer around a map point and display the results as a graphic.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Convex hull</string>
+                    <key>storyboardName</key>
+                    <string>ConvexHull</string>
+                    <key>descriptionText</key>
+                    <string>Create a convex hull for a given set of points.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Nearest vertex</string>
+                    <key>storyboardName</key>
+                    <string>NearestVertex</string>
+                    <key>descriptionText</key>
+                    <string>Find the closest vertex and coordinate of a geometry to a point.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Buffer list</string>
+                    <key>storyboardName</key>
+                    <string>BufferList</string>
+                    <key>descriptionText</key>
+                    <string>Generate multiple individual buffers or a single unioned buffer around multiple points.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Route &amp; Directions</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find closest facility to an incident (interactive)</string>
+                    <key>storyboardName</key>
+                    <string>FindClosestFacilityInteractive</string>
+                    <key>descriptionText</key>
+                    <string>Find a route to the closest facility from a location.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find route</string>
+                    <key>storyboardName</key>
+                    <string>FindRoute</string>
+                    <key>descriptionText</key>
+                    <string>Display directions for a route between two points.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Route around barriers</string>
+                    <key>storyboardName</key>
+                    <string>RouteAroundBarriers</string>
+                    <key>descriptionText</key>
+                    <string>Find a route that reaches all stops without crossing any barriers.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Offline routing</string>
+                    <key>storyboardName</key>
+                    <string>OfflineRouting</string>
+                    <key>descriptionText</key>
+                    <string>Solve a route on-the-fly using offline data.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanDiegoNetworkData</string>
+                        <string>SanDiegoTilePackage</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find service area interactive</string>
+                    <key>storyboardName</key>
+                    <string>FindServiceAreaInteractive</string>
+                    <key>descriptionText</key>
+                    <string>Find the service area within a network from a given point.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Find closest facility to multiple incidents (service)</string>
+                    <key>descriptionText</key>
+                    <string>Find routes from several locations to the respective closest facility.</string>
+                    <key>storyboardName</key>
+                    <string>FindClosestFacilityMultipleIncidentsService</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Navigate route</string>
+                    <key>descriptionText</key>
+                    <string>Use a routing service to navigate between two points.</string>
+                    <key>storyboardName</key>
+                    <string>NavigateRoute</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>storyboardName</key>
+                    <string>NavigateRouteWithRerouting</string>
+                    <key>descriptionText</key>
+                    <string>Navigate between two points and dynamically recalculate an alternate route when the original route is unavailable.</string>
+                    <key>displayName</key>
+                    <string>Navigate route with rerouting</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>SanDiegoDetour</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Analysis</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Analyze hotspots</string>
+                    <key>storyboardName</key>
+                    <string>AnalyzeHotspots</string>
+                    <key>descriptionText</key>
+                    <string>Use a geoprocessing service and a set of features to identify statistically significant hot spots and cold spots.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Statistical query</string>
+                    <key>storyboardName</key>
+                    <string>StatisticalQuery</string>
+                    <key>descriptionText</key>
+                    <string>Query a table to get aggregated statistics back for a specific field.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Statistical query (group and sort)</string>
+                    <key>storyboardName</key>
+                    <string>StatisticalQueryGroupAndSort</string>
+                    <key>descriptionText</key>
+                    <string>Query a feature table for statistics, grouping and sorting by different fields.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Viewshed (geoprocessing)</string>
+                    <key>storyboardName</key>
+                    <string>ViewshedGeoprocessing</string>
+                    <key>descriptionText</key>
+                    <string>Calculate a viewshed using a geoprocessing service, in this case showing what parts of a landscape are visible from points on mountainous terrain.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Viewshed (camera)</string>
+                    <key>storyboardName</key>
+                    <string>ViewshedCamera</string>
+                    <key>descriptionText</key>
+                    <string>Analyze the viewshed for a camera. A viewshed shows the visible and obstructed areas from an observer&apos;s vantage point.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Viewshed (location)</string>
+                    <key>storyboardName</key>
+                    <string>ViewshedLocation</string>
+                    <key>descriptionText</key>
+                    <string>Perform a viewshed analysis from a defined vantage point.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Viewshed (GeoElement)</string>
+                    <key>storyboardName</key>
+                    <string>ViewshedGeoElement</string>
+                    <key>descriptionText</key>
+                    <string>Analyze the viewshed for an object (geo element) in a scene.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>Bradley3DModel</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Line of sight (location)</string>
+                    <key>storyboardName</key>
+                    <string>LineOfSightLocation</string>
+                    <key>descriptionText</key>
+                    <string>Perform a line of sight analysis between two points in real time.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Line of sight (geoelement)</string>
+                    <key>storyboardName</key>
+                    <string>LineOfSightGeoElement</string>
+                    <key>descriptionText</key>
+                    <string>Show a line of sight between two moving objects.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>Dolmus3DModel</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Distance measurement analysis</string>
+                    <key>storyboardName</key>
+                    <string>DistanceMeasurementAnalysis</string>
+                    <key>descriptionText</key>
+                    <string>Measure distances between two points in 3D.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Cloud &amp; Portal</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>List portal group users</string>
+                    <key>storyboardName</key>
+                    <string>GroupUsers</string>
+                    <key>descriptionText</key>
+                    <string>Shows a list of users in a portal group.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Search for webmap by keyword</string>
+                    <key>storyboardName</key>
+                    <string>SearchForWebmapByKeyword</string>
+                    <key>descriptionText</key>
+                    <string>Find webmap portal items by using a search term.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Integrated Windows Authentication</string>
+                    <key>storyboardName</key>
+                    <string>IntegratedWindowsAuthentication</string>
+                    <key>descriptionText</key>
+                    <string>Connect to an IWA secured Portal and search for maps.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Authenticate with OAuth</string>
+                    <key>descriptionText</key>
+                    <string>Authenticate with ArcGIS Online (or your own portal) using OAuth2 to access secured resources (such as private web maps or layers).</string>
+                    <key>storyboardName</key>
+                    <string>AuthenticateWithOAuth</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Token authentication</string>
+                    <key>descriptionText</key>
+                    <string>Access a web map that is secured with ArcGIS token-based authentication.</string>
+                    <key>storyboardName</key>
+                    <string>TokenAuthentication</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Scenes</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>descriptionText</key>
+                    <string>Get the elevation for a given point on a surface in a scene.</string>
+                    <key>displayName</key>
+                    <string>Get elevation at a point</string>
+                    <key>storyboardName</key>
+                    <string>GetElevationPoint</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>descriptionText</key>
+                    <string>Set the terrain surface with elevation described by a raster file.</string>
+                    <key>storyboardName</key>
+                    <string>CreateTerrainSurfaceFromLocalRaster</string>
+                    <key>displayName</key>
+                    <string>Create terrain surface from a local raster</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>MontereyElevationRaster</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>descriptionText</key>
+                    <string>Set the terrain surface with elevation described by a local tile package.</string>
+                    <key>storyboardName</key>
+                    <string>CreateTerrainSurfaceFromLocalTilePackage</string>
+                    <key>displayName</key>
+                    <string>Create terrain surface from a local tile package</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>MontereyElevation</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>descriptionText</key>
+                    <string>Open a web scene from a portal item.</string>
+                    <key>storyboardName</key>
+                    <string>OpenScene</string>
+                    <key>displayName</key>
+                    <string>Open a scene (portal item)</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display a scene</string>
+                    <key>storyboardName</key>
+                    <string>DisplayScene</string>
+                    <key>descriptionText</key>
+                    <string>Display a scene with a terrain surface and some imagery.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Extrude graphics</string>
+                    <key>storyboardName</key>
+                    <string>ExtrudeGraphics</string>
+                    <key>descriptionText</key>
+                    <string>Extrude graphics based on an attribute value.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Scene symbols</string>
+                    <key>storyboardName</key>
+                    <string>SceneSymbols</string>
+                    <key>descriptionText</key>
+                    <string>Show various kinds of 3D symbols in a scene.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Surface placements</string>
+                    <key>storyboardName</key>
+                    <string>SurfacePlacements</string>
+                    <key>descriptionText</key>
+                    <string>Position graphics relative to a surface using different surface placement modes.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Scene layer (URL)</string>
+                    <key>storyboardName</key>
+                    <string>SceneLayerURL</string>
+                    <key>descriptionText</key>
+                    <string>Display an ArcGIS scene layer from a URL.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Scene properties expressions</string>
+                    <key>storyboardName</key>
+                    <string>ScenePropertiesExpressions</string>
+                    <key>descriptionText</key>
+                    <string>Update the orientation of a graphic using expressions based on its attributes.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Animate 3D graphic</string>
+                    <key>storyboardName</key>
+                    <string>Animate3DGraphic</string>
+                    <key>descriptionText</key>
+                    <string>A controller follows a graphic while the graphic&apos;s position and rotation are animated.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>MissionFiles</string>
+                        <string>Bristol3DModel</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Distance composite symbol</string>
+                    <key>storyboardName</key>
+                    <string>DistanceCompositeSymbol</string>
+                    <key>descriptionText</key>
+                    <string>Change a graphic&apos;s symbol based on the camera&apos;s proximity to it.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>Bristol3DModel</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Terrain exaggeration</string>
+                    <key>storyboardName</key>
+                    <string>TerrainExaggeration</string>
+                    <key>descriptionText</key>
+                    <string>Vertically exaggerate terrain in a scene.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Feature layer extrusion</string>
+                    <key>storyboardName</key>
+                    <string>FeatureLayerExtrusion</string>
+                    <key>descriptionText</key>
+                    <string>Extrude features based on their attributes.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Scene layer selection</string>
+                    <key>storyboardName</key>
+                    <string>SceneLayerSelection</string>
+                    <key>descriptionText</key>
+                    <string>Identify features in a scene to select.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Sync map and scene views</string>
+                    <key>storyboardName</key>
+                    <string>SyncMapAndSceneViews</string>
+                    <key>descriptionText</key>
+                    <string>Keep the view points of two views (e.g. map view and scene view) synchronized with each other.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>descriptionText</key>
+                    <string>Change the appearance of the atmosphere in a scene.</string>
+                    <key>storyboardName</key>
+                    <string>ChangeAtmosphereEffect</string>
+                    <key>displayName</key>
+                    <string>Change atmosphere effect</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Add an integrated mesh layer</string>
+                    <key>descriptionText</key>
+                    <string>View an integrated mesh layer from a scene service.</string>
+                    <key>storyboardName</key>
+                    <string>AddIntegratedMeshLayer</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>View content beneath the terrain surface</string>
+                    <key>descriptionText</key>
+                    <string>See through terrain in a scene and move the camera underground.</string>
+                    <key>storyboardName</key>
+                    <string>ViewContentBeneathTerrainSurface</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Add a point scene layer</string>
+                    <key>storyboardName</key>
+                    <string>AddPointSceneLayer</string>
+                    <key>descriptionText</key>
+                    <string>View a point scene layer from a scene service.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>View point cloud data offline</string>
+                    <key>descriptionText</key>
+                    <string>Display local 3D point cloud data.</string>
+                    <key>storyboardName</key>
+                    <string>ViewPointCloudDataOffline</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>sandiego-north-balboa-pointcloud</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Open mobile scene (scene package)</string>
+                    <key>descriptionText</key>
+                    <string>Opens and displays a scene from a mobile scene package (.mspk).</string>
+                    <key>storyboardName</key>
+                    <string>OpenMobileScene</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>philadelphia</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Choose camera controller</string>
+                    <key>storyboardName</key>
+                    <string>ChooseCameraController</string>
+                    <key>descriptionText</key>
+                    <string>Control the behavior of the camera in a scene.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>Bristol3DModel</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Animate images with image overlay</string>
+                    <key>storyboardName</key>
+                    <string>AnimateImagesWithImageOverlay</string>
+                    <key>descriptionText</key>
+                    <string>Animate a series of images with an image overlay.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>PacificSouthWest</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Realistic lighting and shadows</string>
+                    <key>storyboardName</key>
+                    <string>RealisticLightingAndShadows</string>
+                    <key>descriptionText</key>
+                    <string>Show realistic lighting and shadows for a given time of day.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Show labels on layer in 3D</string>
+                    <key>storyboardName</key>
+                    <string>ShowLabelsOnLayer3D</string>
+                    <key>descriptionText</key>
+                    <string>Display custom labels in a 3D scene.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Orbit camera around object</string>
+                    <key>descriptionText</key>
+                    <string>Fix the camera to point at and rotate around a target object.</string>
+                    <key>storyboardName</key>
+                    <string>OrbitCameraAroundObject</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>Bristol3DModel</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Utility Network</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>descriptionText</key>
+                    <string>Discover connected features in a utility network using connected, subnetwork, upstream, and downstream traces.</string>
+                    <key>storyboardName</key>
+                    <string>TraceUtilityNetwork</string>
+                    <key>displayName</key>
+                    <string>Trace utility network</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>descriptionText</key>
+                    <string>Create graphics for utility associations in a utility network.</string>
+                    <key>storyboardName</key>
+                    <string>DisplayUtilityAssociations</string>
+                    <key>displayName</key>
+                    <string>Display utility associations</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>descriptionText</key>
+                    <string>Run a filtered trace to locate operable features that will isolate an area from the flow of network resources.</string>
+                    <key>storyboardName</key>
+                    <string>PerformValveIsolationTrace</string>
+                    <key>displayName</key>
+                    <string>Perform valve isolation trace</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>descriptionText</key>
+                    <string>Get a server-defined trace configuration for a given tier and modify its traversability scope, add new condition barriers, and control what is included in the subnetwork trace result.</string>
+                    <key>storyboardName</key>
+                    <string>ConfigureSubnetworkTrace</string>
+                    <key>displayName</key>
+                    <string>Configure subnetwork trace</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Create load report</string>
+                    <key>descriptionText</key>
+                    <string>Create a simple electric distribution report that displays the count of customers and total load per phase by tracing downstream from a given point.</string>
+                    <key>storyboardName</key>
+                    <string>CreateLoadReport</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display content of utility network container</string>
+                    <key>storyboardName</key>
+                    <string>DisplayContentUtilityNetworkContainer</string>
+                    <key>descriptionText</key>
+                    <string>A utility network container allows a dense collection of features to be represented by a single feature, which can be used to reduce map clutter.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Augmented Reality</string>
+            <key>children</key>
+            <array>
+                <dict>
+                    <key>displayName</key>
+                    <string>Collect data in AR</string>
+                    <key>storyboardName</key>
+                    <string>CollectDataAR</string>
+                    <key>descriptionText</key>
+                    <string>Tap on real-world objects to collect data.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Display scenes in tabletop AR</string>
+                    <key>storyboardName</key>
+                    <string>DisplayScenesInTabletopAR</string>
+                    <key>descriptionText</key>
+                    <string>Use augmented reality (AR) to pin a scene to a table or desk for easy exploration.</string>
+                    <key>dependency</key>
+                    <array>
+                        <string>philadelphia</string>
+                    </array>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Explore scenes in flyover AR</string>
+                    <key>storyboardName</key>
+                    <string>ExploreScenesInFlyoverAR</string>
+                    <key>descriptionText</key>
+                    <string>Use augmented reality (AR) to quickly explore a scene more naturally than you could with a touch or mouse interface.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>Navigate in AR</string>
+                    <key>storyboardName</key>
+                    <string>NavigateAR</string>
+                    <key>descriptionText</key>
+                    <string>Use a route displayed in the real world to navigate.</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+                <dict>
+                    <key>displayName</key>
+                    <string>View hidden infrastructure in AR</string>
+                    <key>descriptionText</key>
+                    <string>Visualize hidden infrastructure in its real-world location using augmented reality.</string>
+                    <key>storyboardName</key>
+                    <string>ViewHiddenInfrastructureAR</string>
+                    <key>isFavorite</key>
+                    <false/>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>displayName</key>
+            <string>Favorites</string>
+            <key>children</key>
+            <array/>
+        </dict>
+    </array>
 </plist>

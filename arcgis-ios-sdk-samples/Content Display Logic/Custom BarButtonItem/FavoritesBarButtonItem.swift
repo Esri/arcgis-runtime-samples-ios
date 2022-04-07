@@ -15,6 +15,7 @@
 import UIKit
 
 class FavoritesBarButtonItem: UIBarButtonItem {
+    var isFavorite = false
     // Set icon
     override init() {
         super.init()
@@ -32,7 +33,6 @@ class FavoritesBarButtonItem: UIBarButtonItem {
     @objc
     func addToFavorites() {
         // Add to favorites category in content plist
-        // change button to fill star
         self.image = UIImage(systemName: "star.fill")
     }
 }

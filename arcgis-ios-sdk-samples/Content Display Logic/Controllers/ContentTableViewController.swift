@@ -208,6 +208,7 @@ class ContentTableViewController: UITableViewController {
         infoBBI.navController = navController
         // create and setup the favorites button
         let favoritesBarButtonItem = FavoritesBarButtonItem()
+        favoritesBarButtonItem.isFavorite = sample.isFavorite
         controller.navigationItem.rightBarButtonItems = [infoBBI, favoritesBarButtonItem]
     }
     

@@ -46,7 +46,7 @@ class GetElevationPointViewController: UIViewController {
     /// - Returns: A new `AGSScene` object with a base surface configured with
     /// an elevation source.
     private func makeScene() -> AGSScene {
-        let scene = AGSScene(basemapStyle: .arcGISImageryLabels)
+        let scene = AGSScene(basemapStyle: .arcGISImagery)
         
         let surface = AGSSurface()
         // Create an elevation source.

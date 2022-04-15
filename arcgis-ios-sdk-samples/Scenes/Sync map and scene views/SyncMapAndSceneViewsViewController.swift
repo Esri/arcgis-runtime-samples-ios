@@ -32,7 +32,7 @@ class SyncMapAndSceneViewsViewController: UIViewController {
         // add a map with labeled imagery to the map view
         mapView.map = AGSMap(basemapStyle: .arcGISImagery)
         // add a scene with labeled imagery to the scene view
-        sceneView.scene = AGSScene(basemapType: .imageryWithLabels)
+        sceneView.scene = AGSScene(basemapStyle: .arcGISImageryLabels)
         
         // add handlers to each view to receive viewpoint change events
         mapView.viewpointChangedHandler = { [weak self] in

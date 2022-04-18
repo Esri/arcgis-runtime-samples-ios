@@ -33,9 +33,9 @@ class ShowLabelsOnLayer3DViewController: UIViewController {
         // Load the scene.
         scene.load { [weak self] error in
             guard let self = self else { return }
-            // Get the feature layer.
-            if let operationalLayers = scene.operationalLayers as? [AGSGroupLayer],
-               let groupLayer = operationalLayers.first(where: { $0.name == "Gas" }),
+            // Get the "Gas Main" feature layer.
+            let operationalLayers = scene.operationalLayers as [AnyObject]
+            if let groupLayer = operationalLayers.first(where: { $0.name == "Gas" }) as? AGSGroupLayer,
                let layers = groupLayer.layers as? [AGSLayer],
                let gasFeatureLayer = layers.first(where: { $0.name == "Gas Main" }) as? AGSFeatureLayer {
                 let labelDefinition = self.makeLabelDefinition()

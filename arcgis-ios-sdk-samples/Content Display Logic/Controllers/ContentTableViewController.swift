@@ -44,6 +44,12 @@ class ContentTableViewController: UITableViewController {
         IndexPath(row: displayedSamples.firstIndex(of: sample)!, section: 0)
     }
     
+    @objc
+    func userDefaultsDidChange() {
+        allSamples = allSamples.filter { $0.isFavorite }
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +62,13 @@ class ContentTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         selectedSample = nil
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange), name: UserDefaults.didChangeNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UserDefaults.didChangeNotification, object: nil)
     }
     
     // MARK: Sample Selection

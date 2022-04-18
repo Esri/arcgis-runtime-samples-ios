@@ -51,6 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Set license key and/or API key.
         application.license()
         
+        // Create user defaults favorites array.
+        makeFavoritesArray()
+        
         return true
     }
     
@@ -141,6 +144,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         }
         return nil
+    }
+    
+    // MARK: - User data
+    func makeFavoritesArray() {
+        if let userFavorites = UserDefaults.standard.dictionary(forKey: "favorites") {
+            print("userFavorites found")
+        } else {
+            let allCategories = decodeCategories(at: contentPlistURL)
+            let allSamples = allCategories.flatMap { $0.samples }
+            let favoritesDictionary = Dictionary.init(uniqueKeysWithValues: allSamples.map { ($0.name, false) })
+            UserDefaults.standard.set(favoritesDictionary, forKey: "favorites")
+            print("dictionary created")
+        }
     }
     
     // MARK: - Sample import

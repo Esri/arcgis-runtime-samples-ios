@@ -15,13 +15,14 @@
 import UIKit
 
 class FavoritesBarButtonItem: UIBarButtonItem {
-    var isFavorite = false
-    // Set icon
-    override init() {
+    var sample: Sample
+    
+    init(sample: Sample) {
+        self.sample = sample
         super.init()
-        self.image = UIImage(systemName: "star")
+        self.image = updateImage(isFavorite: sample.isFavorite)
         self.target = self
-        self.action = #selector(FavoritesBarButtonItem.addToFavorites)
+        self.action = #selector(FavoritesBarButtonItem.toggleIsFavorite)
     }
     
     @available(*, unavailable)
@@ -31,8 +32,18 @@ class FavoritesBarButtonItem: UIBarButtonItem {
     
     // Add to favorites. Change sample favorites property
     @objc
-    func addToFavorites() {
+    func toggleIsFavorite() {
         // Add to favorites category in content plist
-        self.image = UIImage(systemName: "star.fill")
+        sample.isFavorite.toggle()
+        self.image = updateImage(isFavorite: sample.isFavorite)
+    }
+    
+    func updateImage(isFavorite: Bool) -> UIImage {
+        switch isFavorite {
+        case true:
+            return UIImage(systemName: "star.fill")!
+        case false:
+            return UIImage(systemName: "star")!
+        }
     }
 }

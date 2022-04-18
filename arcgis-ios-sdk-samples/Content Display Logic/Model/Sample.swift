@@ -21,7 +21,23 @@ struct Sample: Hashable {
     var description: String
     var storyboardName: String
     var dependencies: [String]
-    var isFavorite: Bool
+    var isFavorite: Bool {
+        get {
+            let favoritesDictionary = UserDefaults.standard.dictionary(forKey: "favorites")!
+            if let isFavorite = favoritesDictionary[name] as? Bool {
+                return isFavorite
+            } else {
+                print("defaulted")
+                return false
+            }
+        }
+        set {
+            var favoritesDictionary = UserDefaults.standard.dictionary(forKey: "favorites")!
+            favoritesDictionary[name] = newValue
+            UserDefaults.standard.set(favoritesDictionary, forKey: "favorites")
+            print("changed bool")
+        }
+    }
 }
 
 extension Sample: Decodable {
@@ -39,7 +55,6 @@ extension Sample: Decodable {
         description = try values.decode(String.self, forKey: .description)
         storyboardName = try values.decode(String.self, forKey: .storyboardName)
         dependencies = try values.decodeIfPresent([String].self, forKey: .dependencies) ?? []
-        isFavorite = try values.decode(Bool.self, forKey: .isFavorite)
     }
 }
 

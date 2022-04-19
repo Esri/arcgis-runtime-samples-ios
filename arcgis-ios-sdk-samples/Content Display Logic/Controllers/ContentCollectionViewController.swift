@@ -99,7 +99,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
             let allFavorites = allSamples.filter { $0.isFavorite }
             controller.allSamples = allFavorites
         } else {
-            //Otherwise, show all samples.
+            // Otherwise, show all samples.
             controller.allSamples = category.samples
         }
         controller.title = category.name

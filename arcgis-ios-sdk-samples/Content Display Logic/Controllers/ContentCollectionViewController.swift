@@ -89,15 +89,17 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
     // MARK: - UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // hide keyboard if visible
+        // Hide keyboard if visible.
         view.endEditing(true)
         let category = categories[indexPath.item]
         let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
+        // Filter and display the favorited samples.
         if category.name == "Favorites" {
             let allSamples = categories.flatMap { $0.samples }
             let allFavorites = allSamples.filter { $0.isFavorite }
             controller.allSamples = allFavorites
         } else {
+            //Otherwise, show all samples.
             controller.allSamples = category.samples
         }
         controller.title = category.name

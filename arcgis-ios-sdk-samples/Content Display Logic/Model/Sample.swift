@@ -46,7 +46,6 @@ extension Sample: Decodable {
         case description = "descriptionText"
         case storyboardName = "storyboardName"
         case dependencies = "dependency"
-        case isFavorite = "isFavorite"
     }
     
     init(from decoder: Decoder) throws {

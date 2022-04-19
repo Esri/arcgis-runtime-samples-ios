@@ -53,7 +53,7 @@ class ContentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // initialize download progress view
+        // Initialize download progress view.
         let downloadProgressView = DownloadProgressView()
         downloadProgressView.delegate = self
         self.downloadProgressView = downloadProgressView
@@ -141,7 +141,7 @@ class ContentTableViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // hide keyboard if visible
+        // Hide keyboard if visible.
         view.endEditing(true)
         
         selectedSample = displayedSamples[indexPath.row]
@@ -158,25 +158,25 @@ class ContentTableViewController: UITableViewController {
             return
         }
         
-        // show download progress view
+        // Show download progress view.
         downloadProgressView?.show(withStatus: "Just a moment while we download data for this sample...", progress: 0)
         
-        // add an observer to update the progress in download progress view
+        // Add an observer to update the progress in download progress view.
         downloadProgressObservation = bundleResourceRequest.progress.observe(\.fractionCompleted) { [weak self] (progress, _) in
             DispatchQueue.main.async {
                 self?.downloadProgressView?.updateProgress(progress: CGFloat(progress.fractionCompleted), animated: true)
             }
         }
         
-        // begin
+        // Begin
         bundleResourceRequest.beginAccessingResources { [weak self] (error: Error?) in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 
-                // remove observation
+                // Remove observation.
                 self.downloadProgressObservation = nil
                 
-                // dismiss download progress view
+                // Dismiss download progress view.
                 self.downloadProgressView?.dismiss()
                 
                 if let error = error {
@@ -187,7 +187,7 @@ class ContentTableViewController: UITableViewController {
                     }
                 } else {
                     if self.bundleResourceRequest?.progress.isCancelled == false {
-                        // show view controller
+                        // Show view controller.
                         self.showSample(sample)
                     }
                 }
@@ -200,36 +200,37 @@ class ContentTableViewController: UITableViewController {
         let controller = storyboard.instantiateInitialViewController()!
         controller.title = sample.name
         
-        // must use the presenting controller when opening from search results or else splitViewController will be nil
+        // Must use the presenting controller when opening from search results or else splitViewController will be nil.
         let presentingController: UIViewController? = searchEngine != nil ? presentingViewController : self
             
         let navController = UINavigationController(rootViewController: controller)
         
-        // don't use large titles on samples
+        // Don't use large titles on samples.
         controller.navigationItem.largeTitleDisplayMode = .never
         
-        // add the button on the left on the detail view controller
+        // Add the button on the left on the detail view controller.
         controller.navigationItem.leftBarButtonItem = presentingController?.splitViewController?.displayModeButtonItem
         controller.navigationItem.leftItemsSupplementBackButton = true
         
-        // present the sample view controller
+        // Present the sample view controller.
         presentingController?.showDetailViewController(navController, sender: self)
         
-        // create and setup the info button
+        // Create and setup the info button.
         let infoBBI = SourceCodeBarButtonItem()
         infoBBI.readmeURL = sample.readmeURL
         infoBBI.navController = navController
         infoBBI.sample = sample
+        // Create and setup the favorite button.
         let favoritesBarButtonItem = FavoritesBarButtonItem(sample: sample)
         controller.navigationItem.rightBarButtonItems = [infoBBI, favoritesBarButtonItem]
     }
     
     private func toggleExpansion(at indexPath: IndexPath) {
-        // if same row selected then hide the detail view
+        // If same row selected then hide the detail view.
         if expandedRowIndexPaths.contains(indexPath) {
             expandedRowIndexPaths.remove(indexPath)
         } else {
-            // get the two cells and update
+            // Get the two cells and update.
             expandedRowIndexPaths.update(with: indexPath)
         }
         tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -253,7 +254,7 @@ extension ContentTableViewController: UISearchResultsUpdating {
             return
         }
         
-        // do not preserve cell expansion when loading new results
+        // Do not preserve cell expansion when loading new results.
         expandedRowIndexPaths.removeAll()
         
         if searchController.isActive,

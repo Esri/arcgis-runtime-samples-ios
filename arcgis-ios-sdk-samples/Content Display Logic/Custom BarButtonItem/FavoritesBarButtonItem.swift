@@ -30,14 +30,16 @@ class FavoritesBarButtonItem: UIBarButtonItem {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Add to favorites. Change sample favorites property
+    /// Toggle the isFavorite boolean.
     @objc
     func toggleIsFavorite() {
-        // Add to favorites category in content plist
+        // Update the bool.
         sample.isFavorite.toggle()
+        // Update the image.
         self.image = updateImage(isFavorite: sample.isFavorite)
     }
     
+    /// Update the image to indicate if the sample is favorited.
     func updateImage(isFavorite: Bool) -> UIImage {
         switch isFavorite {
         case true:

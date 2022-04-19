@@ -24,18 +24,18 @@ struct Sample: Hashable {
     var isFavorite: Bool {
         get {
             let favoritesDictionary = UserDefaults.standard.dictionary(forKey: "favorites")!
+            // Return the sample's bool.
             if let isFavorite = favoritesDictionary[name] as? Bool {
                 return isFavorite
             } else {
-                print("defaulted")
                 return false
             }
         }
         set {
+            // Update the user's dictionary of favorited samples.
             var favoritesDictionary = UserDefaults.standard.dictionary(forKey: "favorites")!
             favoritesDictionary[name] = newValue
             UserDefaults.standard.set(favoritesDictionary, forKey: "favorites")
-            print("changed bool")
         }
     }
 }

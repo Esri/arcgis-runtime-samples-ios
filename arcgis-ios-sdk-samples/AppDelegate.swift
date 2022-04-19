@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         application.license()
         
         // Create user defaults favorites array.
-        makeFavoritesArray()
+        createUserDefaults()
         
         return true
     }
@@ -147,15 +147,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
     
     // MARK: - User data
-    func makeFavoritesArray() {
-        if let userFavorites = UserDefaults.standard.dictionary(forKey: "favorites") {
-            print("userFavorites found")
-        } else {
+    
+    /// Creates a dictionary to store the user's favorited samples.
+    func createUserDefaults() {
+        if UserDefaults.standard.dictionary(forKey: "favorites") == nil {
             let allCategories = decodeCategories(at: contentPlistURL)
             let allSamples = allCategories.flatMap { $0.samples }
-            let favoritesDictionary = Dictionary.init(uniqueKeysWithValues: allSamples.map { ($0.name, false) })
+            let favoritesDictionary = Dictionary(uniqueKeysWithValues: allSamples.map { ($0.name, false) })
             UserDefaults.standard.set(favoritesDictionary, forKey: "favorites")
-            print("dictionary created")
         }
     }
     

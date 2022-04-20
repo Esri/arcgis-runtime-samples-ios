@@ -28,7 +28,7 @@ class CreateTerrainSurfaceFromLocalTilePackageViewController: UIViewController {
     }
     
     func makeScene() -> AGSScene {
-        let scene = AGSScene(basemapType: .imageryWithLabels)
+        let scene = AGSScene(basemapStyle: .arcGISImagery)
         
         // Create an elevation source using the path to the tile package.
         let surface = AGSSurface()

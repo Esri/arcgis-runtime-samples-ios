@@ -784,6 +784,14 @@
 					<string>EdinburghPylonsDimensionsMMPK</string>
 				</array>
 			</dict>
+			<dict>
+				<key>storyboardName</key>
+				<string>QueryRelatedFeaturesNonSpatialTable</string>
+				<key>descriptionText</key>
+				<string>Find features in a spatial table related to features in a non-spatial table.</string>
+				<key>displayName</key>
+				<string>Query related features from non-spatial table</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -911,6 +919,8 @@
 				<key>dependency</key>
 				<array>
 					<string>scottishWildlifeTrust</string>
+					<string>AuroraCOGeopackage</string>
+					<string>LATrailsGeodatabase</string>
 				</array>
 				<key>displayName</key>
 				<string>Display feature layers</string>

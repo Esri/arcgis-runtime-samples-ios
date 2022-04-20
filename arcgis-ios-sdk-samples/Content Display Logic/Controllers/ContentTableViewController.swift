@@ -215,13 +215,12 @@ class ContentTableViewController: UITableViewController {
         presentingController?.showDetailViewController(navController, sender: self)
         
         // Create and setup the info button.
-        let infoBBI = SourceCodeBarButtonItem()
-        infoBBI.readmeURL = sample.readmeURL
-        infoBBI.navController = navController
-        infoBBI.sample = sample
+        let sourceCodeBarButtonItem = SourceCodeBarButtonItem()
+        sourceCodeBarButtonItem.readmeURL = sample.readmeURL
+        sourceCodeBarButtonItem.navController = navController
         // Create and setup the favorite button.
         let favoritesBarButtonItem = FavoritesBarButtonItem(sample: sample)
-        controller.navigationItem.rightBarButtonItems = [infoBBI, favoritesBarButtonItem]
+        controller.navigationItem.rightBarButtonItems = [sourceCodeBarButtonItem, favoritesBarButtonItem]
     }
     
     private func toggleExpansion(at indexPath: IndexPath) {

@@ -31,6 +31,8 @@ class ContentTableViewController: UITableViewController {
     }
 
     var searchEngine: SampleSearchEngine?
+    /// Tracks whether or not it is the favorites category.
+    var isFavoritesCategory = false
     
     private var expandedRowIndexPaths: Set<IndexPath> = []
     
@@ -46,6 +48,7 @@ class ContentTableViewController: UITableViewController {
     
     @objc
     func userDefaultsDidChange() {
+        guard isViewLoaded && isFavoritesCategory else { return }
         allSamples = allSamples.filter { $0.isFavorite }
         tableView.reloadData()
     }
@@ -62,12 +65,16 @@ class ContentTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         selectedSample = nil
-        NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange), name: UserDefaults.didChangeNotification, object: nil)
+        if isFavoritesCategory {
+            NotificationCenter.default.removeObserver(self, name: UserDefaults.didChangeNotification, object: nil)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: UserDefaults.didChangeNotification, object: nil)
+        if isFavoritesCategory {
+            NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange), name: UserDefaults.didChangeNotification, object: nil)
+        }
     }
     
     // MARK: Sample Selection

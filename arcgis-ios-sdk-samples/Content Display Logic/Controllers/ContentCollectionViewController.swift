@@ -98,6 +98,7 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
             let allSamples = categories.flatMap { $0.samples }
             let allFavorites = allSamples.filter { $0.isFavorite }
             controller.allSamples = allFavorites
+            controller.isFavoritesCategory = true
         } else {
             // Otherwise, show all samples.
             controller.allSamples = category.samples

@@ -151,9 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     /// Creates a dictionary to store the user's favorited samples.
     func createUserDefaults() {
         if UserDefaults.standard.dictionary(forKey: "favorites") == nil {
-            let allCategories = decodeCategories(at: contentPlistURL)
-            let allSamples = allCategories.flatMap { $0.samples }
-            let favoritesDictionary = Dictionary(uniqueKeysWithValues: allSamples.map { ($0.name, false) })
+            let favoritesDictionary: [String: Bool] = Dictionary()
             UserDefaults.standard.set(favoritesDictionary, forKey: "favorites")
         }
     }

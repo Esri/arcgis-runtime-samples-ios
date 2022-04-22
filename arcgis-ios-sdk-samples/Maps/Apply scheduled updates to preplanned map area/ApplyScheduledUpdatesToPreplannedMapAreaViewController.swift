@@ -24,11 +24,13 @@ class ApplyScheduledUpdatesToPreplannedMapAreaViewController: UIViewController {
     @IBOutlet weak var mapView: AGSMapView!
     
     /// The mobile map package used by this sample.
-    let mobileMapPackage: AGSMobileMapPackage!
+    var mobileMapPackage: AGSMobileMapPackage!
     /// The sync task used to check for scheduled updates.
     var offlineMapSyncTask: AGSOfflineMapSyncTask!
     /// The sync job used to apply updates to the offline map.
     var offlineMapSyncJob: AGSOfflineMapSyncJob!
+    /// The temporary URL to store the mobile map package.
+    var temporaryMobileMapPackageURL: URL!
     
     required init?(coder: NSCoder) {
         let mobileMapPackageURL = Bundle.main.url(forResource: "canyonlands", withExtension: nil)!
@@ -39,7 +41,7 @@ class ApplyScheduledUpdatesToPreplannedMapAreaViewController: UIViewController {
                 appropriateFor: mobileMapPackageURL,
                 create: true
             )
-            let temporaryMobileMapPackageURL = temporaryDirectoryURL.appendingPathComponent(ProcessInfo.processInfo.globallyUniqueString)
+            temporaryMobileMapPackageURL = temporaryDirectoryURL.appendingPathComponent(ProcessInfo.processInfo.globallyUniqueString)
             try FileManager.default.copyItem(at: mobileMapPackageURL, to: temporaryMobileMapPackageURL)
             mobileMapPackage = AGSMobileMapPackage(fileURL: temporaryMobileMapPackageURL)
         } catch {
@@ -159,7 +161,9 @@ class ApplyScheduledUpdatesToPreplannedMapAreaViewController: UIViewController {
                 break
             }
             mobileMapPackage.close()
-            mobileMapPackage.load { [weak self] (error) in
+            // Create a new instance of the updated mobile map package and load.
+            let updatedMobileMapPackage = AGSMobileMapPackage(fileURL: temporaryMobileMapPackageURL)
+            updatedMobileMapPackage.load { [weak self] (error) in
                 guard let self = self else { return }
                 if let error = error {
                     self.presentAlert(error: error)
@@ -167,6 +171,7 @@ class ApplyScheduledUpdatesToPreplannedMapAreaViewController: UIViewController {
                     self.mapView.map = self.mobileMapPackage.maps.first
                 }
             }
+            mobileMapPackage = updatedMobileMapPackage
         case .failure(let error):
             presentAlert(error: error)
         }

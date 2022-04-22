@@ -46,13 +46,6 @@ class ContentTableViewController: UITableViewController {
         IndexPath(row: displayedSamples.firstIndex(of: sample)!, section: 0)
     }
     
-    @objc
-    func userDefaultsDidChange() {
-        guard isViewLoaded && isFavoritesCategory else { return }
-        allSamples = allSamples.filter { $0.isFavorite }
-        tableView.reloadData()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,14 +59,8 @@ class ContentTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         selectedSample = nil
         if isFavoritesCategory {
-            NotificationCenter.default.removeObserver(self, name: UserDefaults.didChangeNotification, object: nil)
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        if isFavoritesCategory {
-            NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange), name: UserDefaults.didChangeNotification, object: nil)
+            allSamples = allSamples.filter { $0.isFavorite }
+            tableView.reloadData()
         }
     }
     

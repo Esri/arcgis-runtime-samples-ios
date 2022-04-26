@@ -150,9 +150,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     /// Creates a dictionary to store the user's favorited samples.
     func createUserDefaults() {
-        if UserDefaults.standard.dictionary(forKey: "favorites") == nil {
+        if UserDefaults.standard.dictionary(forKey: String.favoritesKey) == nil {
             let favoritesDictionary: [String: Bool] = Dictionary()
-            UserDefaults.standard.set(favoritesDictionary, forKey: "favorites")
+            UserDefaults.standard.set(favoritesDictionary, forKey: String.favoritesKey)
         }
     }
     
@@ -175,6 +175,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             fatalError("Error decoding categories at \(url): \(error)")
         }
     }
+}
+
+extension String {
+    static let favoritesKey = "favorites"
 }
 
 extension UIColor {

@@ -34,7 +34,7 @@ class RasterLayerUsingServiceViewController: UIViewController {
         mapView.setViewpointCenter(center, scale: 100000)
         
         /// The URL of an image service containing a bathymetric attributed grid.
-        let imageServiceURL = URL(string: "https://gis.ngdc.noaa.gov/arcgis/rest/services/bag_hillshades/ImageServer")!
+        let imageServiceURL = URL(string: "https://gis.ngdc.noaa.gov/arcgis/rest/services/bag_hillshades_subsets/ImageServer")!
         // create an image service raster from an online raster service
         let imageServiceRaster = AGSImageServiceRaster(url: imageServiceURL)
         // create a raster layer

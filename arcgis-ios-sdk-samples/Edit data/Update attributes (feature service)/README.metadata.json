@@ -18,7 +18,8 @@
         "value",
         "AGSArcGISFeature",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable"
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
     ],
     "redirect_from": [
         "/ios/latest/swift/sample-code/update-attributes-feature-service-.htm"
@@ -26,7 +27,8 @@
     "relevant_apis": [
         "AGSArcGISFeature",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable"
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
     ],
     "snippets": [
         "UpdateAttributesOptionsViewController.swift",

@@ -1,0 +1,39 @@
+{
+    "category": "Layers",
+    "description": "Find features in a spatial table related to features in a non-spatial table.",
+    "ignore": false,
+    "images": [
+        "query-related-features-non-spatial-table-1.png"
+    ],
+    "keywords": [
+        "features",
+        "query",
+        "related features",
+        "search",
+        "AGSArcGISFeature",
+        "AGSArcGISMapImageLayer",
+        "AGSFeature",
+        "AGSFeatureQueryResult",
+        "AGSQueryParameters",
+        "AGSRelatedFeatureQueryResult",
+        "AGSRelatedQueryParameters",
+        "AGSRelationshipInfo",
+        "AGSServiceFeatureTable"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSArcGISFeature",
+        "AGSArcGISMapImageLayer",
+        "AGSFeature",
+        "AGSFeatureQueryResult",
+        "AGSQueryParameters",
+        "AGSRelatedFeatureQueryResult",
+        "AGSRelatedQueryParameters",
+        "AGSRelationshipInfo",
+        "AGSServiceFeatureTable"
+    ],
+    "snippets": [
+        "QueryRelatedFeaturesNonSpatialTableViewController.swift"
+    ],
+    "title": "Query related features from non-spatial table"
+}

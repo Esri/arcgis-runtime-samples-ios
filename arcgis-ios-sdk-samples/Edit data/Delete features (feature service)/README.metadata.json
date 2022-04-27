@@ -14,7 +14,8 @@
         "table",
         "AGSFeature",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable"
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
     ],
     "redirect_from": [
         "/ios/latest/swift/sample-code/delete-features-feature-service-.htm"
@@ -22,7 +23,8 @@
     "relevant_apis": [
         "AGSFeature",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable"
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
     ],
     "snippets": [
         "DeleteFeaturesViewController.swift"

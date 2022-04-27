@@ -19,7 +19,8 @@
         "AGSFeatureLayer",
         "AGSFeatureTemplate",
         "AGSPopup",
-        "AGSServiceFeatureTable"
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
     ],
     "redirect_from": [
         "/ios/latest/swift/sample-code/edit-features-connected-.htm"
@@ -28,7 +29,8 @@
         "AGSFeatureLayer",
         "AGSFeatureTemplate",
         "AGSPopup",
-        "AGSServiceFeatureTable"
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
     ],
     "snippets": [
         "EditFeaturesOnlineViewController.swift",

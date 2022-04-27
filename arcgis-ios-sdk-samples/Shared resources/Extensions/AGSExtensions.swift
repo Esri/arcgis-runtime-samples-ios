@@ -23,6 +23,8 @@ extension AGSJobStatus {
             return "Started"
         case .paused:
             return "Paused"
+        case .canceling:
+            return "Canceling"
         case .notStarted:
             return "Not started"
         case .succeeded:

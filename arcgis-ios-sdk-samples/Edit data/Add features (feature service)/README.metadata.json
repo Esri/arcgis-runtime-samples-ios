@@ -12,7 +12,8 @@
         "AGSFeature",
         "AGSFeatureEditResult",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable"
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
     ],
     "redirect_from": [
         "/ios/latest/swift/sample-code/add-features-feature-service-.htm"
@@ -21,7 +22,8 @@
         "AGSFeature",
         "AGSFeatureEditResult",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable"
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
     ],
     "snippets": [
         "AddFeaturesViewController.swift"

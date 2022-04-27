@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0005580F2819C75700224BC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0005580E2819C75600224BC6 /* GoogleService-Info.plist */; };
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		000FFFB426CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000FFFB326CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard */; };
 		000FFFB626CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */; };
@@ -1255,6 +1256,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0005580E2819C75600224BC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		000FFFB326CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetUpLocationDrivenGeotriggers.storyboard; sourceTree = "<group>"; };
 		000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpLocationDrivenGeotriggersViewController.swift; sourceTree = "<group>"; };
 		00132100279B704200E89DD4 /* ShowDeviceLocationUsingIndoorPositioning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowDeviceLocationUsingIndoorPositioning.storyboard; sourceTree = "<group>"; };
@@ -2544,6 +2546,7 @@
 				C7E86C8E21751CFE001C65C3 /* Extensions */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
 				3E23A9E41AFC28F6002E2214 /* Info.plist */,
+				0005580E2819C75600224BC6 /* GoogleService-Info.plist */,
 			);
 			path = "arcgis-ios-sdk-samples";
 			sourceTree = "<group>";
@@ -4907,6 +4910,7 @@
 				F1F62C4422E65E0900EFD599 /* militaryoverlay.geodatabase in Resources */,
 				3EBA254A1D300FB500AB0703 /* SimpleRenderer.storyboard in Resources */,
 				0083AA192628ED18003A28C8 /* ProgressViewController.xib in Resources */,
+				0005580F2819C75700224BC6 /* GoogleService-Info.plist in Resources */,
 				D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */,
 				F1EF67DD27E2AE480049FA9A /* QueryRelatedFeaturesNonSpatialTable.storyboard in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,

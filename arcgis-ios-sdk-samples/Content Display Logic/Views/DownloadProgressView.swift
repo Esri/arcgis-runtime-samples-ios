@@ -71,18 +71,23 @@ class DownloadProgressView: UIView {
     }
     
     private func commonInit() {
-        self.backgroundColor = .clear
+        backgroundColor = .clear
+        // Load the `DownloadProgressView` from an xib file.
+        nibView = loadViewFromNib()
         
-        self.nibView = self.loadViewFromNib()
-        
-        self.nibView.frame = self.bounds
-        nibView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        self.addSubview(self.nibView)
-        
-        self.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        self.setupProgressView()
+        addSubview(nibView)
+        // Add constraints to position the download view.
+        nibView.translatesAutoresizingMaskIntoConstraints = false
+        // Activate the constraints.
+        NSLayoutConstraint.activate([
+            nibView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: nibView.trailingAnchor),
+            nibView.topAnchor.constraint(equalTo: topAnchor),
+            safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: nibView.bottomAnchor)
+        ])
+        // Set the root view's autoresizing mask.
+        autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        setupProgressView()
     }
     
     private func loadViewFromNib() -> UIView {

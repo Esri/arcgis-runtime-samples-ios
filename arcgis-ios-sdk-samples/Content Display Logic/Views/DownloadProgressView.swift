@@ -132,8 +132,6 @@ class DownloadProgressView: UIView {
     }
     
     private func show() {
-        self.frame = UIScreen.main.bounds
-        
         if let newWindow = UIApplication.shared.windows.first(where: \.isKeyWindow) {
             newWindow.addSubview(self)
         }

@@ -58,7 +58,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="iFg-Wi-a9E" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="1tO-r2-r8a"/>
                             <constraint firstItem="Jih-jH-qjM" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="3DU-K0-ZKK"/>
@@ -79,7 +79,7 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

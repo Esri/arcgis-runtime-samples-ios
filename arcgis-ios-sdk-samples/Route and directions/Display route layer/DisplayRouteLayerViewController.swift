@@ -9,21 +9,36 @@
 import UIKit
 import ArcGIS
 
-class DisplayRouteLayer: UIViewController {
-    @IBOutlet var mapView: AGSMap! {
+class DisplayRouteLayerViewController: UIViewController {
+    @IBOutlet var mapView: AGSMapView! {
         didSet {
-            // Assign the map to the map view.
-//            mapView.map = makeMap()
+            // Initialize map with basemap.
+            mapView.map = makeMap()
         }
     }
     
-    func makeMap() {
-        
+    func makeMap() -> AGSMap {
+        // Set the basemap.
+        let map = AGSMap(basemapStyle: .arcGISTopographic)
+        // Set the portal.
+        let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
+        // Create the portal item with the item ID for route data in Portland, OR.
+        let item = AGSPortalItem(portal: portal, itemID: "0e3c8e86b4544274b45ecb61c9f41336")
+        // Create a collection of features using the item.
+        let featureCollection = AGSFeatureCollection(item: item)
+        // Create a feature collection layer uisng the feature collection.
+        let featureCollectionLayer = AGSFeatureCollectionLayer(featureCollection: featureCollection)
+        // Set the feature collection layere to the map's operational layers.
+        map.operationalLayers.setArray([featureCollectionLayer])
+        // Set the viewpoint.
+        let viewpoint = AGSViewpoint(latitude: 45.2281, longitude: -122.8309, scale: 57e4)
+        map.initialViewpoint = viewpoint
+        return map
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayMapViewController"]
+        (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayRouteLayerViewController"]
     }
 }

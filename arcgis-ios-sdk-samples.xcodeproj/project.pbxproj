@@ -855,6 +855,9 @@
 		F151AB8D22D7B24D00055E45 /* CreateTerrainSurfaceFromLocalRasterViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1E4B10B22D6659D005FDB4D /* CreateTerrainSurfaceFromLocalRasterViewController.swift */; };
 		F15694D2265DBE96007AEB61 /* SanDiego_StreetAddress.loz in Resources */ = {isa = PBXBuildFile; fileRef = F15694D0265DBE96007AEB61 /* SanDiego_StreetAddress.loz */; settings = {ASSET_TAGS = (SanDiegoLocator, ); }; };
 		F15694D3265DBE96007AEB61 /* SanDiego_StreetAddress.loc in Resources */ = {isa = PBXBuildFile; fileRef = F15694D1265DBE96007AEB61 /* SanDiego_StreetAddress.loc */; settings = {ASSET_TAGS = (SanDiegoLocator, ); }; };
+		F1576689281C97A900C08069 /* DisplayRouteLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1576688281C97A900C08069 /* DisplayRouteLayerViewController.swift */; };
+		F157668B281C97B700C08069 /* DisplayRouteLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F157668A281C97B700C08069 /* DisplayRouteLayer.storyboard */; };
+		F157668C2821DE0600C08069 /* DisplayRouteLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1576688281C97A900C08069 /* DisplayRouteLayerViewController.swift */; };
 		F15CF0C923EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */; };
 		F15CF0CB23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */; };
 		F15CF0CC23EE31A70038F052 /* DisplaySubtypeFeatureLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */; };
@@ -957,6 +960,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F157668C2821DE0600C08069 /* DisplayRouteLayerViewController.swift in CopyFiles */,
 				F1EF67E027E2AED50049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift in CopyFiles */,
 				0036B33E27BC64D1005C0958 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift in CopyFiles */,
 				F1950D7C279794920093CE6E /* ContingentValuesViewController.swift in CopyFiles */,
@@ -1836,6 +1840,8 @@
 		F151AB8B22D7B0CA00055E45 /* MontereyElevation.dt2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MontereyElevation.dt2; sourceTree = "<group>"; };
 		F15694D0265DBE96007AEB61 /* SanDiego_StreetAddress.loz */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanDiego_StreetAddress.loz; sourceTree = "<group>"; };
 		F15694D1265DBE96007AEB61 /* SanDiego_StreetAddress.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SanDiego_StreetAddress.loc; sourceTree = "<group>"; };
+		F1576688281C97A900C08069 /* DisplayRouteLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayRouteLayerViewController.swift; sourceTree = "<group>"; };
+		F157668A281C97B700C08069 /* DisplayRouteLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayRouteLayer.storyboard; sourceTree = "<group>"; };
 		F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeFeatureLayerViewController.swift; sourceTree = "<group>"; };
 		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
@@ -2790,6 +2796,7 @@
 		3E6AE3E91C6D10DA0026E59C /* Route and directions */ = {
 			isa = PBXGroup;
 			children = (
+				F1576687281C975B00C08069 /* Display route layer */,
 				F1E8F0AB2537D677000B9A0F /* Navigate route with rerouting */,
 				00E276252425A205000DBEDD /* Navigate route */,
 				F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */,
@@ -4552,6 +4559,15 @@
 			path = "Configure subnetwork trace";
 			sourceTree = "<group>";
 		};
+		F1576687281C975B00C08069 /* Display route layer */ = {
+			isa = PBXGroup;
+			children = (
+				F1576688281C97A900C08069 /* DisplayRouteLayerViewController.swift */,
+				F157668A281C97B700C08069 /* DisplayRouteLayer.storyboard */,
+			);
+			path = "Display route layer";
+			sourceTree = "<group>";
+		};
 		F15CF0C723EE26CB0038F052 /* Display subtype feature layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -4879,6 +4895,7 @@
 				F127B8E822E0E73200E8EC29 /* MontereyElevation.tpkx in Resources */,
 				3E8526371B90D92700690EBD /* Bookmarks.storyboard in Resources */,
 				3E85263F1B90E06F00690EBD /* DisplayMap.storyboard in Resources */,
+				F157668B281C97B700C08069 /* DisplayRouteLayer.storyboard in Resources */,
 				3ED028991B8E3A8500ACA70D /* ShowMagnifier.storyboard in Resources */,
 				F1124F0A24CFA95F00E672EC /* EditFeaturesWithFeatureLinkedAnnotation.storyboard in Resources */,
 				098049AB2253FC3F009C685D /* BrowseWFSLayers.storyboard in Resources */,
@@ -5466,6 +5483,7 @@
 				F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */,
 				3ED029291B8E3AB300ACA70D /* AddGraphicsWithRendererViewController.swift in Sources */,
 				E45991A41EF3021D0089E9FD /* WebMapViewController.swift in Sources */,
+				F1576689281C97A900C08069 /* DisplayRouteLayerViewController.swift in Sources */,
 				3E0B585B1E36D8D300951767 /* SpatialOperationsViewController.swift in Sources */,
 				4C1EF2CD221208DD00F73EAE /* UINavigationController.swift in Sources */,
 				3ED0287A1B8E3A8500ACA70D /* MMLLayersViewController.swift in Sources */,

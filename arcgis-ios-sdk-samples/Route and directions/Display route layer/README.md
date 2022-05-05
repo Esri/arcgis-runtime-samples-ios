@@ -1,8 +1,8 @@
-# Display a map
+# Display route layer
 
-Display a map with an imagery basemap.
+Display a route layer uisng feature collection.
 
-![Image of display map](display-map.png)
+![Display route layer](display-route-layer.png)
 
 ## Use case
 
@@ -10,7 +10,7 @@ The map is the fundamental building block of any GIS application and is used to 
 
 ## How to use the sample
 
-Run the sample to view the map. Pan and zoom to navigate the map.
+Pan and zoom to view the route displayed by the feature collection layer.
 
 ## How it works
 

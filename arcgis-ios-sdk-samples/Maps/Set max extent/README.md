@@ -16,7 +16,7 @@ The application loads with a map whose maximum extent has been set to the border
 
 1. Create an `AGSMap` object.
 2. Create an envelop of the extent.
-3. Set the maximum extent of the map with `map.maxExtent = envelope`.
+3. Set the envelope to the map's `maxExtent` property.
 4. Set the map to a `AGSMapView` object.
 5. Set `maxExtent` to `nil` to disable the maximum extent of the map.
 

@@ -22,7 +22,12 @@ class SetMaxExtentViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = makeMap()
-            graphicsOverlay.graphics.add(AGSGraphic(geometry: extentEnvelope, symbol: nil))
+            // The graphics overlay used to show the extent envelope graphic.
+            let graphicsOverlay = AGSGraphicsOverlay()
+            graphicsOverlay.graphics.add(AGSGraphic(
+                geometry: extentEnvelope,
+                symbol: AGSSimpleLineSymbol(style: .dash, color: .red, width: 5)
+            ))
             mapView.graphicsOverlays.add(graphicsOverlay)
         }
     }
@@ -34,13 +39,6 @@ class SetMaxExtentViewController: UIViewController {
         let northwestPoint = AGSPointMakeWebMercator(-12139393.2109, 5012444.0468)
         let southeastPoint = AGSPointMakeWebMercator(-11359277.5124, 4438148.7816)
         return AGSEnvelope(min: northwestPoint, max: southeastPoint)
-    }()
-    
-    /// The graphics overlay used to show the extent envelope graphic.
-    let graphicsOverlay: AGSGraphicsOverlay = {
-        let overlay = AGSGraphicsOverlay()
-        overlay.renderer = AGSSimpleRenderer(symbol: AGSSimpleLineSymbol(style: .dash, color: .red, width: 5))
-        return overlay
     }()
     
     // MARK: Methods

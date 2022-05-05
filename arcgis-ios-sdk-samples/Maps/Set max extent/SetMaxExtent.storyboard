@@ -23,9 +23,10 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFg-Wi-a9E">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2gY-GW-Arb"/>
                                     <barButtonItem style="plain" id="SEW-Fn-uOg">
                                         <view key="customView" contentMode="scaleToFill" id="nE9-CM-P0H">
-                                            <rect key="frame" x="20" y="9" width="160" height="36"/>
+                                            <rect key="frame" x="97.5" y="9" width="160" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max extent enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKc-Tr-gv8">
@@ -46,7 +47,7 @@
                                     <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="e9a-VM-7rX"/>
                                     <barButtonItem style="plain" id="h9a-i2-aqI">
                                         <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="QpI-ut-eXj">
-                                            <rect key="frame" x="188" y="11.5" width="51" height="31"/>
+                                            <rect key="frame" x="265.5" y="11.5" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="extentSwitchValueChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="vCn-M2-z3a"/>

@@ -1459,7 +1459,7 @@
 				<key>storyboardName</key>
 				<string>DisplayRouteLayer</string>
 				<key>descriptionText</key>
-				<string>Display a route layer uisng feature collection.l</string>
+				<string>Display a route layer uisng feature collection.</string>
 				<key>displayName</key>
 				<string>Display route layer</string>
 			</dict>

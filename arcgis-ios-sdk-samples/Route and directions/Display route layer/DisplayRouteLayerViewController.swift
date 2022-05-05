@@ -28,6 +28,17 @@ class DisplayRouteLayerViewController: UIViewController {
         let featureCollection = AGSFeatureCollection(item: item)
         // Create a feature collection layer uisng the feature collection.
         let featureCollectionLayer = AGSFeatureCollectionLayer(featureCollection: featureCollection)
+        featureCollection.load { error in
+            let tables = featureCollection.tables as! [AGSFeatureCollectionTable]
+            for table in tables {
+                let featureEnumerator = table.featureEnumerator()
+                let features = featureEnumerator.allObjects
+                features.forEach { feature in
+                    let attributes = feature.attributes
+                    
+                }
+            }
+        }
         // Set the feature collection layere to the map's operational layers.
         map.operationalLayers.setArray([featureCollectionLayer])
         // Set the viewpoint.

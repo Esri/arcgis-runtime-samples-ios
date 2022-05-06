@@ -1,38 +1,27 @@
 {
     "category": "Route and directions",
-    "description": "Find a route to the closest facility from a location.",
+    "description": "Display a route layer and its directions using feature collection.",
     "ignore": false,
     "images": [
-        "find-closest-facility-to-an-incident-interactive.png"
+        "display-route-layer.png"
     ],
     "keywords": [
-        "incident",
-        "network analysis",
-        "route",
-        "routing & directions",
-        "search",
-        "AGSClosestFacilityParameters",
-        "AGSClosestFacilityResult",
-        "AGSClosestFacilityRoute",
-        "AGSClosestFacilityTask",
-        "AGSFacility",
-        "AGSGraphic",
-        "AGSGraphicsOverlay",
-        "AGSIncident"
+        "directions",
+        "feature collection",
+        "route layer",
+        "AGSFeatureCollection",
+        "AGSFeatureCollectionLayer",
+        "AGSFeatureCollectionTable"
     ],
     "redirect_from": [],
     "relevant_apis": [
-        "AGSClosestFacilityParameters",
-        "AGSClosestFacilityResult",
-        "AGSClosestFacilityRoute",
-        "AGSClosestFacilityTask",
-        "AGSFacility",
-        "AGSGraphic",
-        "AGSGraphicsOverlay",
-        "AGSIncident"
+        "AGSFeatureCollection",
+        "AGSFeatureCollectionLayer",
+        "AGSFeatureCollectionTable"
     ],
     "snippets": [
-        "FindClosestFacilityInteractiveViewController.swift"
+        "DisplayDirectionsViewController.swift",
+        "DisplayRouteLayerViewController.swift"
     ],
-    "title": "Find closest facility to an incident (interactive)"
+    "title": "Display route layer"
 }

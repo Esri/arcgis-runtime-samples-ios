@@ -36,10 +36,10 @@ class DisplayRouteLayerViewController: UIViewController {
         let item = AGSPortalItem(portal: portal, itemID: "0e3c8e86b4544274b45ecb61c9f41336")
         // Create a collection of features using the item.
         let featureCollection = AGSFeatureCollection(item: item)
-        // Create a feature collection layer uisng the feature collection.
-        let featureCollectionLayer = AGSFeatureCollectionLayer(featureCollection: featureCollection)
         // Load the feature collection.
         loadFeatureCollection(featureCollection)
+        // Create a feature collection layer uisng the feature collection.
+        let featureCollectionLayer = AGSFeatureCollectionLayer(featureCollection: featureCollection)
         // Set the feature collection layers to the map's operational layers.
         map.operationalLayers.setArray([featureCollectionLayer])
         // Set the viewpoint.

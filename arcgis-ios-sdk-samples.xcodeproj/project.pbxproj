@@ -858,6 +858,8 @@
 		F1576689281C97A900C08069 /* DisplayRouteLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1576688281C97A900C08069 /* DisplayRouteLayerViewController.swift */; };
 		F157668B281C97B700C08069 /* DisplayRouteLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F157668A281C97B700C08069 /* DisplayRouteLayer.storyboard */; };
 		F157668C2821DE0600C08069 /* DisplayRouteLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1576688281C97A900C08069 /* DisplayRouteLayerViewController.swift */; };
+		F157668E2824A50B00C08069 /* DisplayDirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F157668D2824A50B00C08069 /* DisplayDirectionsViewController.swift */; };
+		F157668F2824AD9600C08069 /* DisplayDirectionsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F157668D2824A50B00C08069 /* DisplayDirectionsViewController.swift */; };
 		F15CF0C923EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */; };
 		F15CF0CB23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */; };
 		F15CF0CC23EE31A70038F052 /* DisplaySubtypeFeatureLayerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */; };
@@ -960,6 +962,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F157668F2824AD9600C08069 /* DisplayDirectionsViewController.swift in CopyFiles */,
 				F157668C2821DE0600C08069 /* DisplayRouteLayerViewController.swift in CopyFiles */,
 				F1EF67E027E2AED50049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift in CopyFiles */,
 				0036B33E27BC64D1005C0958 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift in CopyFiles */,
@@ -1842,6 +1845,7 @@
 		F15694D1265DBE96007AEB61 /* SanDiego_StreetAddress.loc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SanDiego_StreetAddress.loc; sourceTree = "<group>"; };
 		F1576688281C97A900C08069 /* DisplayRouteLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayRouteLayerViewController.swift; sourceTree = "<group>"; };
 		F157668A281C97B700C08069 /* DisplayRouteLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayRouteLayer.storyboard; sourceTree = "<group>"; };
+		F157668D2824A50B00C08069 /* DisplayDirectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDirectionsViewController.swift; sourceTree = "<group>"; };
 		F15CF0C823EE273A0038F052 /* DisplaySubtypeFeatureLayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySubtypeFeatureLayerViewController.swift; sourceTree = "<group>"; };
 		F15CF0CA23EE27F00038F052 /* DisplaySubtypeFeatureLayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplaySubtypeFeatureLayer.storyboard; sourceTree = "<group>"; };
 		F164997822E924C40088CA93 /* EditAndSyncFeatures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditAndSyncFeatures.storyboard; sourceTree = "<group>"; };
@@ -4562,8 +4566,9 @@
 		F1576687281C975B00C08069 /* Display route layer */ = {
 			isa = PBXGroup;
 			children = (
-				F1576688281C97A900C08069 /* DisplayRouteLayerViewController.swift */,
 				F157668A281C97B700C08069 /* DisplayRouteLayer.storyboard */,
+				F1576688281C97A900C08069 /* DisplayRouteLayerViewController.swift */,
+				F157668D2824A50B00C08069 /* DisplayDirectionsViewController.swift */,
 			);
 			path = "Display route layer";
 			sourceTree = "<group>";
@@ -5393,6 +5398,7 @@
 				127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */,
 				4CE15D4C22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
+				F157668E2824A50B00C08069 /* DisplayDirectionsViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,
 				00ADC3BF2464D45C00A3B88D /* AnimateImagesWithImageOverlayViewController.swift in Sources */,
 				0075033226B3683900022C7B /* OrbitCameraSettingsViewController.swift in Sources */,

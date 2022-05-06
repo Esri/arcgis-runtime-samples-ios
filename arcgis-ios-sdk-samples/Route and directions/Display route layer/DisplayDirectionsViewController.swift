@@ -26,7 +26,7 @@ class DisplayDirectionsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DirectionsCell", for: indexPath)
-        
+        // Set the cell's text to the corresponding direction.
         cell.textLabel?.text = directions[indexPath.row]
         
         return cell

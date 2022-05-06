@@ -17,6 +17,8 @@ class DisplayRouteLayerViewController: UIViewController {
         }
     }
     
+    var directions = [String]()
+    
     func makeMap() -> AGSMap {
         // Set the basemap.
         let map = AGSMap(basemapStyle: .arcGISTopographic)
@@ -30,14 +32,10 @@ class DisplayRouteLayerViewController: UIViewController {
         let featureCollectionLayer = AGSFeatureCollectionLayer(featureCollection: featureCollection)
         featureCollection.load { error in
             let tables = featureCollection.tables as! [AGSFeatureCollectionTable]
-            for table in tables {
-                let featureEnumerator = table.featureEnumerator()
-                let features = featureEnumerator.allObjects
-                features.forEach { feature in
-                    let attributes = feature.attributes
-                    
-                }
-            }
+            let directionsTable = tables.first(where: { $0.tableName == "DirectionPoints"})
+            let features = directionsTable?.featureEnumerator().allObjects
+            self.directions = features?.compactMap { $0.attributes["DisplayText"] } as! [String]
+            
         }
         // Set the feature collection layere to the map's operational layers.
         map.operationalLayers.setArray([featureCollectionLayer])
@@ -51,5 +49,13 @@ class DisplayRouteLayerViewController: UIViewController {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayRouteLayerViewController"]
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? DisplayDirectionsViewController {
+            controller.directions = directions
+        }
     }
 }

@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kJL-xp-BBO"/>
-                                    <barButtonItem title="Item" image="DirectionsList" id="65F-7g-wNV">
+                                    <barButtonItem enabled="NO" title="Item" image="DirectionsList" id="65F-7g-wNV">
                                         <connections>
                                             <segue destination="Shx-Rl-xgK" kind="show" id="C56-EF-zmM"/>
                                         </connections>
@@ -47,6 +47,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="directionsBarButtonItem" destination="65F-7g-wNV" id="tPV-OW-VgX"/>
                         <outlet property="mapView" destination="etS-o9-hpR" id="hbp-fI-IlH"/>
                     </connections>
                 </viewController>
@@ -54,11 +55,11 @@
             </objects>
             <point key="canvasLocation" x="139" y="54"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Display Directions View Controller-->
         <scene sceneID="Iqd-Rc-dQG">
             <objects>
-                <tableViewController id="Shx-Rl-xgK" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bzd-j8-nNX">
+                <tableViewController id="Shx-Rl-xgK" customClass="DisplayDirectionsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bzd-j8-nNX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

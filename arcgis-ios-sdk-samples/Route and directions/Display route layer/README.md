@@ -18,7 +18,7 @@ Pan and zoom to view the route displayed by the feature collection layer. Tap th
 2. Create and load an `AGSFeatureCollection` with the item.
 3. After loading, get the specified `AGSFeatureCollectionTable` by name.
 4. Create an array of `AGSFeature`s.
-5. Specify the attribute to create an array of each feature's text, describing the direction.
+5. Get the direction text from the attributes of each feature in the array.
 6. Create an `AGSFeatureCollectionLayer` with the feature collection and set it to the map's `operationalLayers`.
 
 ## Relevant API

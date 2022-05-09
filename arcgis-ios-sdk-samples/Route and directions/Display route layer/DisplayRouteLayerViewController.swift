@@ -38,7 +38,7 @@ class DisplayRouteLayerViewController: UIViewController {
         let featureCollection = AGSFeatureCollection(item: item)
         // Load the feature collection.
         loadFeatureCollection(featureCollection)
-        // Create a feature collection layer uisng the feature collection.
+        // Create a feature collection layer using the feature collection.
         let featureCollectionLayer = AGSFeatureCollectionLayer(featureCollection: featureCollection)
         // Set the feature collection layers to the map's operational layers.
         map.operationalLayers.setArray([featureCollectionLayer])

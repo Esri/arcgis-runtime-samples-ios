@@ -14,7 +14,7 @@
 
 import UIKit
 
-class FavoritesBarButtonItem: UIBarButtonItem {
+final class FavoritesBarButtonItem: UIBarButtonItem {
     var sample: Sample
     
     init(sample: Sample) {
@@ -22,7 +22,7 @@ class FavoritesBarButtonItem: UIBarButtonItem {
         super.init()
         self.image = updateImage(isFavorite: sample.isFavorite)
         self.target = self
-        self.action = #selector(FavoritesBarButtonItem.toggleIsFavorite)
+            action: #selector(toggleIsFavorite)
     }
     
     @available(*, unavailable)
@@ -41,11 +41,7 @@ class FavoritesBarButtonItem: UIBarButtonItem {
     
     /// Update the image to indicate if the sample is favorited.
     func updateImage(isFavorite: Bool) -> UIImage {
-        switch isFavorite {
-        case true:
-            return UIImage(systemName: "star.fill")!
-        case false:
-            return UIImage(systemName: "star")!
-        }
+        let systemName = isFavorite ? "star.fill" : "star"
+        return UIImage(systemName: systemName)!
     }
 }

@@ -95,9 +95,8 @@ class ContentCollectionViewController: UICollectionViewController, UICollectionV
         let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         // Filter and display the favorited samples.
         if category.name == "Favorites" {
-            let allSamples = categories.flatMap { $0.samples }
-            let allFavorites = allSamples.filter { $0.isFavorite }
-            controller.allSamples = allFavorites
+            controller.allSamples = categories
+                .flatMap { $0.samples.filter(\.isFavorite) }
             controller.isFavoritesCategory = true
         } else {
             // Otherwise, show all samples.

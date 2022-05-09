@@ -1,7 +1,7 @@
-ArcGIS Runtime SDK for iOS Samples [![](https://user-images.githubusercontent.com/2257493/54144188-6fe0fc00-43e8-11e9-8cf5-229af80f604a.png)](https://itunes.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771)
+ArcGIS Runtime SDK for iOS Samples [![](https://user-images.githubusercontent.com/2257493/54144188-6fe0fc00-43e8-11e9-8cf5-229af80f604a.png)](https://apps.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771)
 ==========================
 
-This repository contains Swift sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) and how to use them in your own app. The project can be opened in Xcode and run on a simulator or a device. Or you can [download the app from the App Store](https://itunes.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771) on your iOS device.
+This repository contains Swift sample code demonstrating the capabilities of [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) and how to use them in your own app. The project can be opened in Xcode and run on a simulator or a device. Or you can [download the app from the App Store](https://apps.apple.com/us/app/arcgis-runtime-sdk-for-ios/id1180714771) on your iOS device.
 
 ![Samples app](SamplesApp.png)
 
@@ -25,8 +25,8 @@ The ```main``` branch of this repository contains samples configured for the lat
 
 ## Requirements
 
-* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.13.0 (or newer)
-* [ArcGIS Runtime Toolkit for iOS](https://github.com/Esri/arcgis-runtime-toolkit-ios) 100.13.0 (or newer)
+* [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/) 100.14.0 (or newer)
+* [ArcGIS Runtime Toolkit for iOS](https://github.com/Esri/arcgis-runtime-toolkit-ios) 100.14.0 (or newer)
 * Xcode 13.0 (or newer)
 
 The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meaning that it can run on devices with *iOS 13.0* or newer.
@@ -99,7 +99,7 @@ Esri welcomes contributions from anyone and everyone. Please see our [guidelines
 
 ## Licensing
 
-Copyright 2021 Esri
+Copyright 2022 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

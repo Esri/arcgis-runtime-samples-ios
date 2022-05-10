@@ -35,11 +35,13 @@ class SetMaxExtentViewController: UIViewController {
     // MARK: Properties
     
     /// The envelope that represents the max extent.
-    let extentEnvelope: AGSEnvelope = {
-        let northwestPoint = AGSPointMakeWebMercator(-12139393.2109, 5012444.0468)
-        let southeastPoint = AGSPointMakeWebMercator(-11359277.5124, 4438148.7816)
-        return AGSEnvelope(min: northwestPoint, max: southeastPoint)
-    }()
+    let extentEnvelope = AGSEnvelope(
+        xMin: -12139393.2109,
+        yMin: 4438148.7816,
+        xMax: -11359277.5124,
+        yMax: 5012444.0468,
+        spatialReference: .webMercator()
+    )
     
     // MARK: Methods
     

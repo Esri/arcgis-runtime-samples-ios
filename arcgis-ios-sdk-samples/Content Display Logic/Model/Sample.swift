@@ -27,7 +27,7 @@ struct Sample: Hashable {
             // Return the sample's bool.
             return favoritesDictionary[name] != nil
         }
-        set {
+        nonmutating set {
             // Update the user's dictionary of favorited samples.
             var favoritesDictionary = UserDefaults.standard.dictionary(forKey: "favorites")!
             if newValue {

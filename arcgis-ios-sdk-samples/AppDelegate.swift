@@ -150,9 +150,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     /// Creates a dictionary to store the user's favorited samples.
     func createUserDefaults() {
-        if UserDefaults.standard.dictionary(forKey: String.favoritesKey) == nil {
+        if UserDefaults.standard.dictionary(forKey: UserDefaults.favoriteSamplesKey) == nil {
             let favoritesDictionary: [String: Bool] = Dictionary()
-            UserDefaults.standard.set(favoritesDictionary, forKey: String.favoritesKey)
+            UserDefaults.standard.register(defaults: favoritesDictionary)
         }
     }
     
@@ -177,8 +177,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 }
 
-extension String {
-    static let favoritesKey = "favorites"
+extension UserDefaults {
+    static let favoriteSamplesKey = "favoriteSamples"
 }
 
 extension UIColor {

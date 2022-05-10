@@ -15,12 +15,12 @@
 import UIKit
 
 final class FavoritesBarButtonItem: UIBarButtonItem {
-    var sample: Sample
+    let sample: Sample
     
     init(sample: Sample) {
         self.sample = sample
         super.init()
-        self.image = updateImage(isFavorite: sample.isFavorite)
+        self.image = makeImage(isFavorite: sample.isFavorite)
         self.target = self
             action: #selector(toggleIsFavorite)
     }
@@ -36,11 +36,11 @@ final class FavoritesBarButtonItem: UIBarButtonItem {
         // Update the bool.
         sample.isFavorite.toggle()
         // Update the image.
-        self.image = updateImage(isFavorite: sample.isFavorite)
+        self.image = makeImage(isFavorite: sample.isFavorite)
     }
     
     /// Update the image to indicate if the sample is favorited.
-    func updateImage(isFavorite: Bool) -> UIImage {
+    func makeImage(isFavorite: Bool) -> UIImage {
         let systemName = isFavorite ? "star.fill" : "star"
         return UIImage(systemName: systemName)!
     }

@@ -51,6 +51,9 @@
 		003D256E2513F4B6007527C2 /* AddENCExchangeSet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */; };
 		003D25702513FBB5007527C2 /* ExchangeSetWithoutUpdates in Resources */ = {isa = PBXBuildFile; fileRef = 003D256F2513FBB5007527C2 /* ExchangeSetWithoutUpdates */; settings = {ASSET_TAGS = (ExchangeSetWithoutUpdates, ); }; };
 		003D25712513FC61007527C2 /* AddENCExchangeSetViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */; };
+		003D7C1B282187FC009DDFD2 /* SetMaxExtentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003D7C1A282187FC009DDFD2 /* SetMaxExtentViewController.swift */; };
+		003D7C1D28218809009DDFD2 /* SetMaxExtent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003D7C1C28218809009DDFD2 /* SetMaxExtent.storyboard */; };
+		003D7C1E28219111009DDFD2 /* SetMaxExtentViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003D7C1A282187FC009DDFD2 /* SetMaxExtentViewController.swift */; };
 		005507FC25E48134003990D3 /* Redlands.nmea in Resources */ = {isa = PBXBuildFile; fileRef = 005507FB25E48134003990D3 /* Redlands.nmea */; settings = {ASSET_TAGS = (RedlandsNMEA, ); }; };
 		005C713A26C32ED10003BDC3 /* DisplayMapSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005C713926C32ED10003BDC3 /* DisplayMapSwiftUIView.swift */; };
 		005C713C26C331470003BDC3 /* DisplayMapSwiftUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005C713B26C331470003BDC3 /* DisplayMapSwiftUI.storyboard */; };
@@ -957,6 +960,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				003D7C1E28219111009DDFD2 /* SetMaxExtentViewController.swift in CopyFiles */,
 				F1EF67E027E2AED50049FA9A /* QueryRelatedFeaturesNonSpatialTableViewController.swift in CopyFiles */,
 				0036B33E27BC64D1005C0958 /* ShowDeviceLocationUsingIndoorPositioningViewController.swift in CopyFiles */,
 				F1950D7C279794920093CE6E /* ContingentValuesViewController.swift in CopyFiles */,
@@ -1283,6 +1287,8 @@
 		003D256B2513F4A6007527C2 /* AddENCExchangeSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddENCExchangeSetViewController.swift; sourceTree = "<group>"; };
 		003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddENCExchangeSet.storyboard; sourceTree = "<group>"; };
 		003D256F2513FBB5007527C2 /* ExchangeSetWithoutUpdates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ExchangeSetWithoutUpdates; sourceTree = "<group>"; };
+		003D7C1A282187FC009DDFD2 /* SetMaxExtentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMaxExtentViewController.swift; sourceTree = "<group>"; };
+		003D7C1C28218809009DDFD2 /* SetMaxExtent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetMaxExtent.storyboard; sourceTree = "<group>"; };
 		005507FB25E48134003990D3 /* Redlands.nmea */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redlands.nmea; sourceTree = "<group>"; };
 		005C713926C32ED10003BDC3 /* DisplayMapSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMapSwiftUIView.swift; sourceTree = "<group>"; };
 		005C713B26C331470003BDC3 /* DisplayMapSwiftUI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayMapSwiftUI.storyboard; sourceTree = "<group>"; };
@@ -2001,6 +2007,15 @@
 				003D256D2513F4B6007527C2 /* AddENCExchangeSet.storyboard */,
 			);
 			path = "Add ENC exchange set";
+			sourceTree = "<group>";
+		};
+		003D7C17282187E8009DDFD2 /* Set max extent */ = {
+			isa = PBXGroup;
+			children = (
+				003D7C1A282187FC009DDFD2 /* SetMaxExtentViewController.swift */,
+				003D7C1C28218809009DDFD2 /* SetMaxExtent.storyboard */,
+			);
+			path = "Set max extent";
 			sourceTree = "<group>";
 		};
 		005C713626C32E960003BDC3 /* Display a map SwiftUI */ = {
@@ -3330,6 +3345,7 @@
 				0023F97925E717AC006B574E /* Display device location with NMEA data sources */,
 				00BE7B3A276427070012CE95 /* Browse building floors */,
 				001320FD279B6E9300E89DD4 /* Show device location using indoor positioning */,
+				003D7C17282187E8009DDFD2 /* Set max extent */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -5066,6 +5082,7 @@
 				F11897AC2735F24600ADC1D4 /* FilterByTimeExtent.storyboard in Resources */,
 				3EABC7C21DB191BC00C161C6 /* Shasta_Elevation.tif in Resources */,
 				3E1183DF1ECF5A1000180152 /* Pyrenees.csv in Resources */,
+				003D7C1D28218809009DDFD2 /* SetMaxExtent.storyboard in Resources */,
 				F1F62C4022E64FFF00EFD599 /* FeatureLayerDictionaryRenderer.storyboard in Resources */,
 				3EABC78F1DB1772000C161C6 /* RGBRenderer.storyboard in Resources */,
 				D9EE379820E2CC7700BF8AD1 /* tire_tread.jpeg in Resources */,
@@ -5455,6 +5472,7 @@
 				3E41DD771B9F5C6C00DA11CC /* DeleteFeaturesViewController.swift in Sources */,
 				C7E9D7C721C0500300E6C47E /* BufferOptionsViewController.swift in Sources */,
 				1259FB931FD295C90037105E /* WMSLayerUsingURLViewController.swift in Sources */,
+				003D7C1B282187FC009DDFD2 /* SetMaxExtentViewController.swift in Sources */,
 				4C66AAF92107C50B00EE6346 /* QueryMapImageSublayerViewController.swift in Sources */,
 				F1C452A326B374C4002FDB34 /* ToggleFeatureRequestModesViewController.swift in Sources */,
 				C7237D0E2190F07500A72C76 /* DisplayLocationSettingsViewController.swift in Sources */,

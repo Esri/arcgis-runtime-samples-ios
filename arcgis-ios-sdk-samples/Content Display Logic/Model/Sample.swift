@@ -21,23 +21,6 @@ struct Sample: Hashable {
     var description: String
     var storyboardName: String
     var dependencies: [String]
-    var isFavorite: Bool {
-        get {
-            let favoritesDictionary = UserDefaults.standard.dictionary(forKey: "favorites")!
-            // Return the sample's bool.
-            return favoritesDictionary[name] != nil
-        }
-        nonmutating set {
-            // Update the user's dictionary of favorited samples.
-            var favoritesDictionary = UserDefaults.standard.dictionary(forKey: "favorites")!
-            if newValue {
-                favoritesDictionary.updateValue(true, forKey: name)
-            } else {
-                favoritesDictionary.removeValue(forKey: name)
-            }
-            UserDefaults.standard.set(favoritesDictionary, forKey: "favorites")
-        }
-    }
 }
 
 extension Sample: Decodable {
@@ -60,5 +43,17 @@ extension Sample: Decodable {
 extension Sample {
     var readmeURL: URL? {
         return Bundle.main.url(forResource: "README", withExtension: "md", subdirectory: name)
+    }
+    var isFavorite: Bool {
+        get {
+            UserDefaults.standard.favoriteSamples.contains(name)
+        }
+        nonmutating set {
+            if newValue {
+                UserDefaults.standard.favoriteSamples.insert(name)
+            } else {
+                UserDefaults.standard.favoriteSamples.remove(name)
+            }
+        }
     }
 }

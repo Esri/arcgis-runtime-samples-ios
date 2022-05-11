@@ -22,7 +22,7 @@ final class FavoritesBarButtonItem: UIBarButtonItem {
         super.init()
         self.image = makeImage(isFavorite: sample.isFavorite)
         self.target = self
-            action: #selector(toggleIsFavorite)
+        self.action = #selector(toggleIsFavorite)
     }
     
     @available(*, unavailable)

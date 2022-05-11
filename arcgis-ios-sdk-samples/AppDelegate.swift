@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var splitViewController: UISplitViewController {
         return window!.rootViewController as! UISplitViewController
     }
-    var categoryBrowserViewController: ContentCollectionViewController {
-        return (splitViewController.viewControllers.first as! UINavigationController).viewControllers.first as! ContentCollectionViewController
+    var categoryBrowserViewController: CategoryViewController {
+        return (splitViewController.viewControllers.first as! UINavigationController).viewControllers.first as! CategoryViewController
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
@@ -136,7 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
         if let navigationController = primaryViewController as? UINavigationController {
-            if navigationController.topViewController! is ContentCollectionViewController || navigationController.topViewController is ContentTableViewController {
+            if navigationController.topViewController! is CategoryViewController || navigationController.topViewController is ContentTableViewController {
                 let controller = splitViewController.storyboard!.instantiateViewController(withIdentifier: "DetailNavigationController") as! UINavigationController
                 controller.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
                 controller.topViewController!.navigationItem.leftItemsSupplementBackButton = true

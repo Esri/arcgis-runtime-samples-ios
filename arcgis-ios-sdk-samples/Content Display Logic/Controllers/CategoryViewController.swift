@@ -14,7 +14,7 @@
 
 import UIKit
 
-class ContentCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CategoryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet private var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     /// The categories to display in the collection view.

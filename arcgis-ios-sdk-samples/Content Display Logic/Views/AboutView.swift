@@ -80,25 +80,6 @@ struct AppInfoView_Previews: PreviewProvider {
     }
 }
 
-@available(iOS, obsoleted: 14.0)
-private struct Link<Label>: View where Label: View {
-    private var destination: URL
-    private var label: () -> Label
-    
-    var body: some View {
-        Button(
-            action: { UIApplication.shared.open(destination) },
-            label: label
-        )
-    }
-}
-
-extension Link where Label == Text {
-    init<S>(_ title: S, destination: URL) where S: StringProtocol {
-        self.init(destination: destination, label: { .init(title) })
-    }
-}
-
 private struct VersionRow: View {
     let title: String
     let version: String

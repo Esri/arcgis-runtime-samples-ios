@@ -108,17 +108,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         UISwitch.appearance().onTintColor = .accentColor
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .accentColor
-        
-        if #available(iOS 14.0, *) {
-            // Nothing to do! iOS 14 handles global tint with accent color.
-        } else {
-            // Override tint color for `UIControl`s.
-            UIToolbar.appearance().tintColor = .accentColor
-            UISlider.appearance().tintColor = .accentColor
-            UITableViewCell.appearance().tintColor = .accentColor
-            UIProgressView.appearance().tintColor = .accentColor
-            UIButton.appearance(whenContainedInInstancesOf: [AGSCallout.self]).tintColor = .accentColor
-        }
     }
     
     // MARK: - Split view

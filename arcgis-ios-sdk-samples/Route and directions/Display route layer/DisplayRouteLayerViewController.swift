@@ -56,31 +56,35 @@ class DisplayRouteLayerViewController: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else {
+                guard
                 // Make an array of all the feature collection tables.
-                let tables = featureCollection.tables as! [AGSFeatureCollectionTable]
+                let tables = featureCollection.tables as? [AGSFeatureCollectionTable],
                 // Get the table that contains the turn by turn directions.
                 let directionsTable = tables.first(where: { $0.tableName == "DirectionPoints" })
+                else { return }
                 // Create an array of all the features in the table.
-                let features = directionsTable?.featureEnumerator().allObjects
+                let features = directionsTable.featureEnumerator().allObjects
                 // Set the array of directions.
-                self.directions = features?.compactMap { $0.attributes["DisplayText"] } as! [String]
+                self.directions = features.compactMap { $0.attributes["DisplayText"] } as! [String]
                 // Enable the directions bar button item.
                 self.directionsBarButtonItem.isEnabled = true
             }
         }
     }
     
+    @IBSegueAction
+    func makeDirectionsViewController(_ coder: NSCoder) -> DisplayDirectionsViewController? {
+        let directionsViewController = DisplayDirectionsViewController(
+            coder: coder,
+            directions: directions
+        )
+        
+        return directionsViewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["DisplayRouteLayerViewController", "DisplayDirectionsViewController"]
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? DisplayDirectionsViewController {
-            controller.directions = directions
-        }
     }
 }

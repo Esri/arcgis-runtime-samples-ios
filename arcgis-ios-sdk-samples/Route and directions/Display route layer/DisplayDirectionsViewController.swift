@@ -18,6 +18,21 @@ import ArcGIS
 class DisplayDirectionsViewController: UITableViewController {
     var directions = [String]()
     
+    // MARK: Initializers
+    
+    init?(
+        coder: NSCoder,
+        directions: [String]
+    ) {
+        self.directions = directions
+        super.init(coder: coder)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -20,8 +20,8 @@
         "AGSFeatureCollectionTable"
     ],
     "snippets": [
-        "DisplayDirectionsViewController.swift",
-        "DisplayRouteLayerViewController.swift"
+        "DisplayRouteLayerViewController.swift",
+        "DisplayDirectionsViewController.swift"
     ],
     "title": "Display route layer"
 }

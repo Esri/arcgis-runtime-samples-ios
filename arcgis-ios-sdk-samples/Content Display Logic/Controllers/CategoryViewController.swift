@@ -92,18 +92,18 @@ class CategoryViewController: UICollectionViewController, UICollectionViewDelega
         // Hide keyboard if visible.
         view.endEditing(true)
         let category = categories[indexPath.item]
-        let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
         // Filter and display the favorited samples.
         if category.name == "Favorites" {
-            controller.allSamples = categories
-                .flatMap { $0.samples.filter(\.isFavorite) }
-            controller.isFavoritesCategory = true
+            let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! FavoritesCategoryViewController
+            controller.title = category.name
+            show(controller, sender: self)
         } else {
+            let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
             // Otherwise, show all samples.
             controller.allSamples = category.samples
+            controller.title = category.name
+            show(controller, sender: self)
         }
-        controller.title = category.name
-        show(controller, sender: self)
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout

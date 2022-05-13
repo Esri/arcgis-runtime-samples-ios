@@ -29,7 +29,7 @@ The ```main``` branch of this repository contains samples configured for the lat
 * [ArcGIS Runtime Toolkit for iOS](https://github.com/Esri/arcgis-runtime-toolkit-ios) 100.14.0 (or newer)
 * Xcode 13.0 (or newer)
 
-The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *13.0*, meaning that it can run on devices with *iOS 13.0* or newer.
+The *ArcGIS Runtime SDK Samples app* has a *Target SDK* version of *14.0*, meaning that it can run on devices with *iOS 14.0* or newer.
 
 ## Building Samples Using Swift Package Manager
 

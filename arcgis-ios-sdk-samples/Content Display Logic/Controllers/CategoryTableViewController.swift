@@ -14,7 +14,7 @@
 
 import UIKit
 
-class ContentTableViewController: UITableViewController {
+class CategoryTableViewController: UITableViewController {
     /// The samples to display in the table. Searching adjusts this value
     var displayedSamples = [Sample]() {
         didSet {
@@ -236,7 +236,7 @@ class ContentTableViewController: UITableViewController {
     }
 }
 
-extension ContentTableViewController: DownloadProgressViewDelegate {
+extension CategoryTableViewController: DownloadProgressViewDelegate {
     func downloadProgressViewDidCancel(_ downloadProgressView: DownloadProgressView) {
         guard let bundleResourceRequest = bundleResourceRequest else {
             return
@@ -247,7 +247,7 @@ extension ContentTableViewController: DownloadProgressViewDelegate {
     }
 }
 
-extension ContentTableViewController: UISearchResultsUpdating {
+extension CategoryTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchEngine = searchEngine else {
             return

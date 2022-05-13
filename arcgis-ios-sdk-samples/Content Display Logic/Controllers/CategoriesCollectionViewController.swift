@@ -14,7 +14,7 @@
 
 import UIKit
 
-class CategoryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CategoriesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet private var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     /// The categories to display in the collection view.
@@ -27,7 +27,7 @@ class CategoryViewController: UICollectionViewController, UICollectionViewDelega
     
     private func addSearchController() {
         // create the view controller for displaying the search results
-        let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
+        let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "CategoryTableViewController") as! CategoryTableViewController
         let allSamples = categories.flatMap { $0.samples }
         searchResultsController.allSamples = allSamples
         searchResultsController.searchEngine = SampleSearchEngine(samples: allSamples)
@@ -96,7 +96,7 @@ class CategoryViewController: UICollectionViewController, UICollectionViewDelega
         // Hide keyboard if visible.
         view.endEditing(true)
         let category = categories[indexPath.item]
-        let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
+        let controller = storyboard!.instantiateViewController(withIdentifier: "CategoryTableViewController") as! CategoryTableViewController
         controller.title = category.name
         // Filter and display the favorited samples.
         if category.name == "Favorites" {

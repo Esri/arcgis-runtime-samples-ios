@@ -16,7 +16,7 @@ import UIKit
 import ArcGIS
 
 class DisplayDirectionsViewController: UITableViewController {
-    var directions = [String]()
+    let directions: [String]
     
     // MARK: Initializers
     

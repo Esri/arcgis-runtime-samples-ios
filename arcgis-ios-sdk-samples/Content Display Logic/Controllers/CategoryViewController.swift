@@ -94,8 +94,9 @@ class CategoryViewController: UICollectionViewController, UICollectionViewDelega
         let category = categories[indexPath.item]
         // Filter and display the favorited samples.
         if category.name == "Favorites" {
-            let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! FavoritesCategoryViewController
-            controller.title = category.name
+//            let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! FavoritesCategoryViewController
+//            controller.title = category.name
+            
             show(controller, sender: self)
         } else {
             let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController

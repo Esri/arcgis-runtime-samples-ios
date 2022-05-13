@@ -866,6 +866,8 @@
 		F16922B525158B4400A8F36E /* EditKMLGroundOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */; };
 		F16922B7251590E200A8F36E /* EditKMLGroundOverlayViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */; };
 		F169E4B1282C7D85003613F3 /* FavoritesCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169E4B0282C7D85003613F3 /* FavoritesCategoryViewController.swift */; };
+		F169E4B3282DD73A003613F3 /* SamplesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169E4B2282DD73A003613F3 /* SamplesTableDataSource.swift */; };
+		F169E4B5282DD96C003613F3 /* FavoritesTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169E4B4282DD96C003613F3 /* FavoritesTableDataSource.swift */; };
 		F1710AF025EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */; };
 		F1710AF325EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1710AF225EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard */; };
 		F1710AF525EEF4C000900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */; };
@@ -1845,6 +1847,8 @@
 		F16922B125158B1E00A8F36E /* EditKMLGroundOverlay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditKMLGroundOverlay.storyboard; sourceTree = "<group>"; };
 		F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditKMLGroundOverlayViewController.swift; sourceTree = "<group>"; };
 		F169E4B0282C7D85003613F3 /* FavoritesCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCategoryViewController.swift; sourceTree = "<group>"; };
+		F169E4B2282DD73A003613F3 /* SamplesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplesTableDataSource.swift; sourceTree = "<group>"; };
+		F169E4B4282DD96C003613F3 /* FavoritesTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableDataSource.swift; sourceTree = "<group>"; };
 		F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayContentUtilityNetworkContainerViewController.swift; path = "arcgis-ios-sdk-samples/Utility Network/Display content of utility network container/DisplayContentUtilityNetworkContainerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F1710AF225EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = DisplayContentUtilityNetworkContainer.storyboard; path = "arcgis-ios-sdk-samples/Utility Network/Display content of utility network container/DisplayContentUtilityNetworkContainer.storyboard"; sourceTree = SOURCE_ROOT; };
 		F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContingentValuesViewController.swift; sourceTree = "<group>"; };
@@ -2572,6 +2576,8 @@
 		3E23AA0B1AFC327F002E2214 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F169E4B2282DD73A003613F3 /* SamplesTableDataSource.swift */,
+				F169E4B4282DD96C003613F3 /* FavoritesTableDataSource.swift */,
 				3E412B421D0B2FAD00349155 /* AboutViewController.swift */,
 				3E0D3AD31AFD1FF600FC60D6 /* ContentTableViewController.swift */,
 				3E03F0921B0561FA0078EB36 /* SourceCodeViewController.swift */,
@@ -5349,6 +5355,7 @@
 				C7E9D7C621C0500300E6C47E /* BufferViewController.swift in Sources */,
 				00166C8824D20E3C00DD317E /* RealisticLightingAndShadowsViewController.swift in Sources */,
 				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
+				F169E4B5282DD96C003613F3 /* FavoritesTableDataSource.swift in Sources */,
 				F1034F9C22D3EE8900B021DA /* ProjectStackView.swift in Sources */,
 				008D175724EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift in Sources */,
 				4C0CBFFF22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in Sources */,
@@ -5380,6 +5387,7 @@
 				0023F98025E717AC006B574E /* SimulatedNMEADataSource.swift in Sources */,
 				F1950D7B279794590093CE6E /* ContingentValuesViewController.swift in Sources */,
 				127E11D81FD0C3F8002CBD12 /* WMTSLayerViewController.swift in Sources */,
+				F169E4B3282DD73A003613F3 /* SamplesTableDataSource.swift in Sources */,
 				4CE15D4C22F37A2D005F2968 /* ControlAnnotationSublayerVisibilityViewController.swift in Sources */,
 				3ED029641B8E3ACD00ACA70D /* AttachmentsTableViewController.swift in Sources */,
 				3ED0285F1B8E3A8500ACA70D /* SaveAsViewController.swift in Sources */,

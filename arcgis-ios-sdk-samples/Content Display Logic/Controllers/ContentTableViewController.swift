@@ -53,6 +53,12 @@ class ContentTableViewController: UITableViewController {
         let downloadProgressView = DownloadProgressView()
         downloadProgressView.delegate = self
         self.downloadProgressView = downloadProgressView
+        
+        if isFavoritesCategory {
+//            tableView.dataSource = FavoritesTableDataSource(tableView: , cellProvider: <#UITableViewDiffableDataSource<Int, Int>.CellProvider#>)
+        } else {
+            tableView.dataSource = SamplesTableDataSource()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,19 +123,19 @@ class ContentTableViewController: UITableViewController {
 
     // MARK: - UITableViewDataSource
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayedSamples.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sample = displayedSamples[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableCell", for: indexPath) as! ContentTableCell
-        cell.titleLabel.text = sample.name
-        cell.detailLabel.text = sample.description
-        cell.isExpanded = expandedRowIndexPaths.contains(indexPath)
-        return cell
-    }
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return displayedSamples.count
+//    }
+//
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let sample = displayedSamples[indexPath.row]
+//        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableCell", for: indexPath) as! ContentTableCell
+//        cell.titleLabel.text = sample.name
+//        cell.detailLabel.text = sample.description
+//        cell.isExpanded = expandedRowIndexPaths.contains(indexPath)
+//        return cell
+//    }
     
     // MARK: - UITableViewDelegate
     

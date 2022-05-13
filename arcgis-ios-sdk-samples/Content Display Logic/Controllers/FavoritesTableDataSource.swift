@@ -1,0 +1,29 @@
+//
+//  FavoritesTableDataSource.swift
+//  ArcGIS Runtime SDK Samples
+//
+//  Created by Vivian Quach on 5/12/22.
+//  Copyright © 2022 Esri. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class FavoritesTableDataSource: UITableViewDiffableDataSource<Int, Int> {
+    var displayedSamples = [Sample]()
+    private var expandedRowIndexPaths: Set<IndexPath> = []
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return displayedSamples.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let sample = displayedSamples[indexPath.row]
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableCell", for: indexPath) as! ContentTableCell
+        cell.titleLabel.text = sample.name
+        cell.detailLabel.text = sample.description
+        cell.isExpanded = expandedRowIndexPaths.contains(indexPath)
+        return cell
+    }
+}

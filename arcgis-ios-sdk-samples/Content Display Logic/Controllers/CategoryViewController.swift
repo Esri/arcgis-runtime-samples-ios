@@ -72,8 +72,12 @@ class CategoryViewController: UICollectionViewController, UICollectionViewDelega
         cell.nameLabel.text = category.name.uppercased()
         
         // icon
-        let image = UIImage(named: "\(category.name)_icon")
-        cell.iconImageView.image = image
+        if indexPath == IndexPath(row: 0, section: 0) {
+            cell.iconImageView.image = UIImage(systemName: "star.fill")
+        } else {
+            let image = UIImage(named: "\(category.name)_icon")
+            cell.iconImageView.image = image
+        }
         
         // background image
         let bgImage = UIImage(named: "\(category.name)_bg")
@@ -92,19 +96,18 @@ class CategoryViewController: UICollectionViewController, UICollectionViewDelega
         // Hide keyboard if visible.
         view.endEditing(true)
         let category = categories[indexPath.item]
+        let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
+        controller.title = category.name
         // Filter and display the favorited samples.
         if category.name == "Favorites" {
-//            let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! FavoritesCategoryViewController
-//            controller.title = category.name
-            
-            show(controller, sender: self)
+            controller.allSamples = categories
+                .flatMap { $0.samples.filter(\.isFavorite) }
+            controller.isFavoritesCategory = true
         } else {
-            let controller = storyboard!.instantiateViewController(withIdentifier: "ContentTableViewController") as! ContentTableViewController
             // Otherwise, show all samples.
             controller.allSamples = category.samples
-            controller.title = category.name
-            show(controller, sender: self)
         }
+        show(controller, sender: self)
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout

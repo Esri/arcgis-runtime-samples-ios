@@ -19,7 +19,7 @@ class ContentTableViewController: UITableViewController {
     var displayedSamples = [Sample]() {
         didSet {
             guard isViewLoaded else { return }
-            tableView.reloadData()
+            updateDataSource()
         }
     }
     
@@ -33,6 +33,9 @@ class ContentTableViewController: UITableViewController {
     var searchEngine: SampleSearchEngine?
     /// Tracks whether or not it is the favorites category.
     var isFavoritesCategory = false
+    
+    /// The dynamic data source.
+    private var dataSource: UITableViewDiffableDataSource<Int, String>!
     
     private var expandedRowIndexPaths: Set<IndexPath> = []
     
@@ -54,19 +57,23 @@ class ContentTableViewController: UITableViewController {
         downloadProgressView.delegate = self
         self.downloadProgressView = downloadProgressView
         
-        if isFavoritesCategory {
-//            tableView.dataSource = FavoritesTableDataSource(tableView: , cellProvider: <#UITableViewDiffableDataSource<Int, Int>.CellProvider#>)
-        } else {
-            tableView.dataSource = SamplesTableDataSource()
-        }
+        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { [unowned self] tableView, indexPath, _ in
+            let sample = self.displayedSamples[indexPath.row]
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableCell", for: indexPath) as! ContentTableCell
+            cell.titleLabel.text = sample.name
+            cell.detailLabel.text = sample.description
+            cell.isExpanded = expandedRowIndexPaths.contains(indexPath)
+            return cell
+        })
+        updateDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         selectedSample = nil
         if isFavoritesCategory {
-            allSamples = allSamples.filter { $0.isFavorite }
-            tableView.reloadData()
+            displayedSamples = displayedSamples.filter(\.isFavorite)
         }
     }
     
@@ -120,22 +127,6 @@ class ContentTableViewController: UITableViewController {
             }
         }
     }
-
-    // MARK: - UITableViewDataSource
-
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return displayedSamples.count
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let sample = displayedSamples[indexPath.row]
-//        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableCell", for: indexPath) as! ContentTableCell
-//        cell.titleLabel.text = sample.name
-//        cell.detailLabel.text = sample.description
-//        cell.isExpanded = expandedRowIndexPaths.contains(indexPath)
-//        return cell
-//    }
     
     // MARK: - UITableViewDelegate
     
@@ -151,6 +142,16 @@ class ContentTableViewController: UITableViewController {
     }
     
     // MARK: - helpers
+    
+    /// Update the data source if the table has changed.
+    private func updateDataSource() {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+        snapshot.appendSections([.zero])
+        let items = displayedSamples
+            .map(\.name)
+        snapshot.appendItems(items)
+        dataSource.apply(snapshot)
+    }
     
     private func downloadResource(for sample: Sample) {
         guard let bundleResourceRequest = bundleResourceRequest else {

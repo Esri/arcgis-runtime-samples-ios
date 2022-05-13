@@ -148,12 +148,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     // MARK: - User data
     
-    /// Creates a dictionary to store the user's favorited samples.
+    /// Stores the user's favorited samples.
     func createUserDefaults() {
-        if UserDefaults.standard.dictionary(forKey: UserDefaults.favoriteSamplesKey) == nil {
-            let favoritesArray = [String]()
-            UserDefaults.standard.set(favoritesArray, forKey: UserDefaults.favoriteSamplesKey)
-        }
+        UserDefaults.standard.register(defaults: [
+            UserDefaults.favoriteSamplesKey: [String]()
+        ])
     }
     
     // MARK: - Sample import

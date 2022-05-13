@@ -65,7 +65,7 @@ class DisplayRouteLayerViewController: UIViewController {
                 // Create an array of all the features in the table.
                 let features = directionsTable.featureEnumerator().allObjects
                 // Set the array of directions.
-                self.directions = features.compactMap { $0.attributes["DisplayText"] } as! [String]
+                self.directions = features.compactMap { $0.attributes["DisplayText"] as? String }
                 // Enable the directions bar button item.
                 self.directionsBarButtonItem.isEnabled = true
             }

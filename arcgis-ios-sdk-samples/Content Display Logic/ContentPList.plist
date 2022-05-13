@@ -316,6 +316,14 @@
 				<key>storyboardName</key>
 				<string>ShowDeviceLocationUsingIndoorPositioning</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Set max extent</string>
+				<key>descriptionText</key>
+				<string>Limit the view of a map to a particular area.</string>
+				<key>storyboardName</key>
+				<string>SetMaxExtent</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

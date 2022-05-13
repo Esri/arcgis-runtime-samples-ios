@@ -20,6 +20,9 @@ class DisplayRouteLayerViewController: UIViewController {
         didSet {
             // Initialize map with basemap.
             mapView.map = makeMap()
+            // Set the viewpoint.
+            let viewpoint = AGSViewpoint(latitude: 45.2281, longitude: -122.8309, scale: 6e5)
+            mapView.setViewpoint(viewpoint)
         }
     }
     
@@ -42,9 +45,6 @@ class DisplayRouteLayerViewController: UIViewController {
         let featureCollectionLayer = AGSFeatureCollectionLayer(featureCollection: featureCollection)
         // Set the feature collection layers to the map's operational layers.
         map.operationalLayers.setArray([featureCollectionLayer])
-        // Set the viewpoint.
-        let viewpoint = AGSViewpoint(latitude: 45.2281, longitude: -122.8309, scale: 57e4)
-        map.initialViewpoint = viewpoint
         return map
     }
     
@@ -57,10 +57,10 @@ class DisplayRouteLayerViewController: UIViewController {
                 self.presentAlert(error: error)
             } else {
                 guard
-                // Make an array of all the feature collection tables.
-                let tables = featureCollection.tables as? [AGSFeatureCollectionTable],
-                // Get the table that contains the turn by turn directions.
-                let directionsTable = tables.first(where: { $0.tableName == "DirectionPoints" })
+                    // Make an array of all the feature collection tables.
+                    let tables = featureCollection.tables as? [AGSFeatureCollectionTable],
+                    // Get the table that contains the turn by turn directions.
+                    let directionsTable = tables.first(where: { $0.tableName == "DirectionPoints" })
                 else { return }
                 // Create an array of all the features in the table.
                 let features = directionsTable.featureEnumerator().allObjects

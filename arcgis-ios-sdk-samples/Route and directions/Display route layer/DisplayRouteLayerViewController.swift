@@ -74,12 +74,10 @@ class DisplayRouteLayerViewController: UIViewController {
     
     @IBSegueAction
     func makeDirectionsViewController(_ coder: NSCoder) -> DisplayDirectionsViewController? {
-        let directionsViewController = DisplayDirectionsViewController(
+        DisplayDirectionsViewController(
             coder: coder,
             directions: directions
         )
-        
-        return directionsViewController
     }
     
     override func viewDidLoad() {

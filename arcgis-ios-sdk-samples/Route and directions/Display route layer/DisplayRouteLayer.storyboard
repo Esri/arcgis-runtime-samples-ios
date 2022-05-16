@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Display Route Layer View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="DisplayRouteLayerViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etS-o9-hpR" userLabel="Map View" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WUb-UN-MJ9">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kJL-xp-BBO"/>
+                                    <barButtonItem enabled="NO" title="Item" image="DirectionsList" id="65F-7g-wNV">
+                                        <connections>
+                                            <segue destination="Shx-Rl-xgK" kind="show" destinationCreationSelector="makeDirectionsViewController:" id="C56-EF-zmM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ehi-oX-iRS"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WUb-UN-MJ9" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="AfZ-ta-JlV"/>
+                            <constraint firstItem="etS-o9-hpR" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Fc6-1q-ayj"/>
+                            <constraint firstItem="WUb-UN-MJ9" firstAttribute="top" secondItem="etS-o9-hpR" secondAttribute="bottom" id="Zlv-NN-hfp"/>
+                            <constraint firstAttribute="trailing" secondItem="WUb-UN-MJ9" secondAttribute="trailing" id="kUl-U2-DqK"/>
+                            <constraint firstItem="etS-o9-hpR" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="mBu-AT-wK5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="WUb-UN-MJ9" secondAttribute="bottom" id="mbX-DF-UWa"/>
+                            <constraint firstAttribute="trailing" secondItem="etS-o9-hpR" secondAttribute="trailing" id="vLn-84-qaX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="directionsBarButtonItem" destination="65F-7g-wNV" id="tPV-OW-VgX"/>
+                        <outlet property="mapView" destination="etS-o9-hpR" id="hbp-fI-IlH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="54"/>
+        </scene>
+        <!--Display Directions View Controller-->
+        <scene sceneID="Iqd-Rc-dQG">
+            <objects>
+                <tableViewController id="Shx-Rl-xgK" customClass="DisplayDirectionsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bzd-j8-nNX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirectionsCell" textLabel="kGw-Ie-zAi" style="IBUITableViewCellStyleDefault" id="njd-w9-Ll4">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="njd-w9-Ll4" id="FWN-Di-WeM">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kGw-Ie-zAi">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Shx-Rl-xgK" id="rSZ-u5-u9g"/>
+                            <outlet property="delegate" destination="Shx-Rl-xgK" id="qK0-9u-EnZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fZO-G6-gxZ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbv-0y-Q2k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="893" y="54"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="DirectionsList" width="22" height="22"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

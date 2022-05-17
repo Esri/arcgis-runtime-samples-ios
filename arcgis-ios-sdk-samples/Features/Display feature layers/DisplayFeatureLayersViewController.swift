@@ -53,7 +53,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         }
         alertController.addAction(featureServiceURLAction)
         featureServiceURLAction.isEnabled = selectedFeatureLayerSource != .serviceFeatureTable
-        // Add an action to load a feature layer from a portal item with layer ID.
+        // Add an action to load a feature layer from a portal item.
         let portalItemAction = UIAlertAction(title: "Portal Item", style: .default) { [weak self] (_) in
             guard let self = self else { return }
             self.selectedFeatureLayerSource = .portalItem

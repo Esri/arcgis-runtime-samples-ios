@@ -32,7 +32,6 @@ class DisplayFeatureLayersViewController: UIViewController {
     enum FeatureLayerSource {
         case serviceFeatureTable
         case portalItem
-        case portalItemLayerID
         case geodatabase
         case geopackage
         case shapefile
@@ -62,14 +61,6 @@ class DisplayFeatureLayersViewController: UIViewController {
         }
         portalItemAction.isEnabled = selectedFeatureLayerSource != .portalItem
         alertController.addAction(portalItemAction)
-        // Add an action to load a feature layer from a portal item with layer ID.
-        let portalItemLayerIDAction = UIAlertAction(title: "Portal Item with Layer ID", style: .default) { [weak self] (_) in
-            guard let self = self else { return }
-            self.selectedFeatureLayerSource = .portalItemLayerID
-            self.loadPortalItemLayerID()
-        }
-        portalItemLayerIDAction.isEnabled = selectedFeatureLayerSource != .portalItemLayerID
-        alertController.addAction(portalItemLayerIDAction)
         // Add an action to load a feature layer from a geodatabase.
         let geodatabaseAction = UIAlertAction(title: "Geodatabase", style: .default) { [weak self] (_) in
             guard let self = self else { return }
@@ -120,23 +111,10 @@ class DisplayFeatureLayersViewController: UIViewController {
     func loadPortalItem() {
         // Set the portal.
         let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
-        // Create the portal item with the item ID for the thermal activity data.
-        let portalItem = AGSPortalItem(portal: portal, itemID: "b8f4033069f141729ffb298b7418b653")
-        // Create the feature layer with the item.
-        let featureLayer = AGSFeatureLayer(item: portalItem)
-        // Set the viewpoint to the United States.
-        let viewpoint = AGSViewpoint(latitude: 38.018486, longitude: -92.150015, scale: 2e7)
-        setFeatureLayer(featureLayer, viewpoint: viewpoint)
-    }
-    
-    /// Load a feature layer with a portal item.
-    func loadPortalItemLayerID() {
-        // Set the portal.
-        let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         // Create the portal item with the item ID for the Portland tree service data.
         let item = AGSPortalItem(portal: portal, itemID: "1759fd3e8a324358a0c58d9a687a8578")
         // Create the feature layer with the item and layer ID.
-        let featureLayer = AGSFeatureLayer(item: item, layerID: 0)
+        let featureLayer = AGSFeatureLayer(item: item)
         // Set the viewpoint to Portland, Oregon.
         let viewpoint = AGSViewpoint(latitude: 45.5266, longitude: -122.6219, scale: 6e3)
         setFeatureLayer(featureLayer, viewpoint: viewpoint)

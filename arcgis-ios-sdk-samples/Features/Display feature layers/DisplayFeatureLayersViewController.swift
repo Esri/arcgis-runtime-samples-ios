@@ -32,6 +32,7 @@ class DisplayFeatureLayersViewController: UIViewController {
     enum FeatureLayerSource {
         case serviceFeatureTable
         case portalItem
+        case portalItemLayerID
         case geodatabase
         case geopackage
         case shapefile
@@ -53,7 +54,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         }
         alertController.addAction(featureServiceURLAction)
         featureServiceURLAction.isEnabled = selectedFeatureLayerSource != .serviceFeatureTable
-        // Add an action to load a feature layer from a portal item.
+        // Add an action to load a feature layer from a portal item with layer ID.
         let portalItemAction = UIAlertAction(title: "Portal Item", style: .default) { [weak self] (_) in
             guard let self = self else { return }
             self.selectedFeatureLayerSource = .portalItem
@@ -61,6 +62,14 @@ class DisplayFeatureLayersViewController: UIViewController {
         }
         portalItemAction.isEnabled = selectedFeatureLayerSource != .portalItem
         alertController.addAction(portalItemAction)
+        // Add an action to load a feature layer from a portal item with layer ID.
+        let portalItemLayerIDAction = UIAlertAction(title: "Portal Item with Layer ID", style: .default) { [weak self] (_) in
+            guard let self = self else { return }
+            self.selectedFeatureLayerSource = .portalItem
+            self.loadPortalItemLayerID()
+        }
+        portalItemLayerIDAction.isEnabled = selectedFeatureLayerSource != .portalItemLayerID
+        alertController.addAction(portalItemLayerIDAction)
         // Add an action to load a feature layer from a geodatabase.
         let geodatabaseAction = UIAlertAction(title: "Geodatabase", style: .default) { [weak self] (_) in
             guard let self = self else { return }
@@ -109,6 +118,19 @@ class DisplayFeatureLayersViewController: UIViewController {
     
     /// Load a feature layer with a portal item.
     func loadPortalItem() {
+        // Set the portal.
+        let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
+        // Create the portal item with the item ID for the thermal activity data.
+        let portalItem = AGSPortalItem(portal: portal, itemID: "b8f4033069f141729ffb298b7418b653")
+        // Create the feature layer with the item.
+        let featureLayer = AGSFeatureLayer(item: portalItem)
+        // Set the viewpoint to the United States.
+        let viewpoint = AGSViewpoint(latitude: 38.018486, longitude: -92.150015, scale: 2e7)
+        setFeatureLayer(featureLayer, viewpoint: viewpoint)
+    }
+    
+    /// Load a feature layer with a portal item.
+    func loadPortalItemLayerID() {
         // Set the portal.
         let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
         // Create the portal item with the item ID for the Portland tree service data.

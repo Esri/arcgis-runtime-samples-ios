@@ -65,7 +65,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         // Add an action to load a feature layer from a portal item with layer ID.
         let portalItemLayerIDAction = UIAlertAction(title: "Portal Item with Layer ID", style: .default) { [weak self] (_) in
             guard let self = self else { return }
-            self.selectedFeatureLayerSource = .portalItem
+            self.selectedFeatureLayerSource = .portalItemLayerID
             self.loadPortalItemLayerID()
         }
         portalItemLayerIDAction.isEnabled = selectedFeatureLayerSource != .portalItemLayerID

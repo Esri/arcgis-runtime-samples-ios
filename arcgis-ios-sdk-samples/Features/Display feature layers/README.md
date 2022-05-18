@@ -22,7 +22,7 @@ Tap the button on the toolbar to add feature layers, from different sources, to 
     ii. Create an `AGSFeatureLayer` with the feature table.  
 3. Load a feature layer with a portal item.  
     i. Create an `AGSPortalItem` with the portal and item ID.  
-    ii. Create an `AGSFeatureLayer` with the portal item and layer ID.  
+    ii. Create an `AGSFeatureLayer` with the portal item and with or without the layer ID.  
 4. Load a feature layer with a geodatabase.  
     i. Instantiate and load an `AGSGeodatabase` using the file name.  
     ii. Get the feature table from the geodatabase with the feature table's name.  

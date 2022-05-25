@@ -1,0 +1,27 @@
+{
+    "category": "Route and directions",
+    "description": "Display a route layer and its directions using feature collection.",
+    "ignore": false,
+    "images": [
+        "display-route-layer.png"
+    ],
+    "keywords": [
+        "directions",
+        "feature collection",
+        "route layer",
+        "AGSFeatureCollection",
+        "AGSFeatureCollectionLayer",
+        "AGSFeatureCollectionTable"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSFeatureCollection",
+        "AGSFeatureCollectionLayer",
+        "AGSFeatureCollectionTable"
+    ],
+    "snippets": [
+        "DisplayRouteLayerViewController.swift",
+        "DisplayDirectionsViewController.swift"
+    ],
+    "title": "Display route layer"
+}

@@ -23,15 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var splitViewController: UISplitViewController {
         return window!.rootViewController as! UISplitViewController
     }
-    var categoryBrowserViewController: ContentCollectionViewController {
-        return (splitViewController.viewControllers.first as! UINavigationController).viewControllers.first as! ContentCollectionViewController
+    var categoryBrowserViewController: CategoriesCollectionViewController {
+        return (splitViewController.viewControllers.first as! UINavigationController).viewControllers.first as! CategoriesCollectionViewController
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.presentsWithGesture = false
-        splitViewController.preferredDisplayMode = .allVisible
+        splitViewController.preferredDisplayMode = .oneBesideSecondary
         let navigationController = splitViewController.viewControllers.last as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         navigationController.topViewController!.navigationItem.leftItemsSupplementBackButton = true
@@ -54,6 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         // Set license key and/or API key.
         application.license()
+        
+        // Create user defaults favorites array.
+        createUserDefaults()
         
         return true
     }
@@ -122,17 +125,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         UISwitch.appearance().onTintColor = .accentColor
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .accentColor
-        
-        if #available(iOS 14.0, *) {
-            // Nothing to do! iOS 14 handles global tint with accent color.
-        } else {
-            // Override tint color for `UIControl`s.
-            UIToolbar.appearance().tintColor = .accentColor
-            UISlider.appearance().tintColor = .accentColor
-            UITableViewCell.appearance().tintColor = .accentColor
-            UIProgressView.appearance().tintColor = .accentColor
-            UIButton.appearance(whenContainedInInstancesOf: [AGSCallout.self]).tintColor = .accentColor
-        }
     }
     
     // MARK: - Split view
@@ -147,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
         if let navigationController = primaryViewController as? UINavigationController {
-            if navigationController.topViewController! is ContentCollectionViewController || navigationController.topViewController is ContentTableViewController {
+            if navigationController.topViewController! is CategoriesCollectionViewController || navigationController.topViewController is CategoryTableViewController {
                 let controller = splitViewController.storyboard!.instantiateViewController(withIdentifier: "DetailNavigationController") as! UINavigationController
                 controller.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
                 controller.topViewController!.navigationItem.leftItemsSupplementBackButton = true
@@ -155,6 +147,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         }
         return nil
+    }
+    
+    // MARK: - User data
+    
+    /// Stores the user's favorited samples.
+    func createUserDefaults() {
+        UserDefaults.standard.register(defaults: [
+            UserDefaults.favoriteSamplesKey: [String]()
+        ])
     }
     
     // MARK: - Sample import
@@ -174,6 +175,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             return try PropertyListDecoder().decode([Category].self, from: data)
         } catch {
             fatalError("Error decoding categories at \(url): \(error)")
+        }
+    }
+}
+
+extension UserDefaults {
+    static let favoriteSamplesKey = "favoriteSamples"
+    var favoriteSamples: Set<String> {
+        get {
+            Set(stringArray(forKey: Self.favoriteSamplesKey)!)
+        }
+        set {
+            set(newValue.sorted(), forKey: Self.favoriteSamplesKey)
         }
     }
 }

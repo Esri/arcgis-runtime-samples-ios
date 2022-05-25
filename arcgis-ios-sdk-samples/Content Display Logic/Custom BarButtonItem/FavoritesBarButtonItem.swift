@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import UIKit
+import Firebase
 
 final class FavoritesBarButtonItem: UIBarButtonItem {
     let sample: Sample
@@ -35,6 +36,12 @@ final class FavoritesBarButtonItem: UIBarButtonItem {
     func toggleIsFavorite() {
         // Update the bool.
         sample.isFavorite.toggle()
+        if sample.isFavorite {
+            // Google Analytics set favorite event.
+            Analytics.logEvent("set_favorite", parameters: [
+                AnalyticsParameterContentType: sample.name
+            ])
+        }
         // Update the image.
         self.image = makeImage(isFavorite: sample.isFavorite)
     }

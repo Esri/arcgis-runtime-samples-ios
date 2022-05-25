@@ -4,6 +4,12 @@
 <array>
 	<dict>
 		<key>displayName</key>
+		<string>Favorites</string>
+		<key>children</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>displayName</key>
 		<string>Maps</string>
 		<key>children</key>
 		<array>

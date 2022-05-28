@@ -291,6 +291,9 @@ class Animate3DGraphicViewController: UIViewController {
     @IBAction func playAction(sender: UIBarButtonItem) {
         if isAnimating {
             animationTimer?.invalidate()
+            let frame = frames[currentFrameIndex]
+            // update stats
+            planeStatsViewController?.frame = frame
         } else {
             startAnimation()
         }

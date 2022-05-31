@@ -322,7 +322,6 @@ class Animate3DGraphicViewController: UIViewController {
             let frame = frames[currentFrameIndex]
             // Update stats.
             planeStatsViewController.frame = frame
-            print("Overwrite frame")
             // pop over settings
             planeStatsViewController.presentationController?.delegate = self
         } else if let navController = segue.destination as? UINavigationController,

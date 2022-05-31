@@ -61,7 +61,7 @@ class ExploreScenesInFlyoverAR: UIViewController {
             if let error = error {
                 self.presentAlert(error: error)
             } else {
-                let location = AGSPoint(x: 2.8259, y: 41.9906, z: 200.0, spatialReference: .wgs84())
+                let location = AGSPoint(x: 2.8262, y: 41.9857, z: 200.0, spatialReference: .wgs84())
                 let camera = AGSCamera(location: location, heading: 190, pitch: 90, roll: 0)
                 self.arView.originCamera = camera
             }

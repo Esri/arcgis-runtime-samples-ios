@@ -319,7 +319,9 @@ class Animate3DGraphicViewController: UIViewController {
             }
         } else if let planeStatsViewController = segue.destination as? PlaneStatsViewController {
             self.planeStatsViewController = planeStatsViewController
-            
+            let frame = frames[currentFrameIndex]
+            // Update stats.
+            planeStatsViewController.frame = frame
             // pop over settings
             planeStatsViewController.presentationController?.delegate = self
         } else if let navController = segue.destination as? UINavigationController,

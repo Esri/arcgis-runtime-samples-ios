@@ -291,9 +291,6 @@ class Animate3DGraphicViewController: UIViewController {
     @IBAction func playAction(sender: UIBarButtonItem) {
         if isAnimating {
             animationTimer?.invalidate()
-            let frame = frames[currentFrameIndex]
-            // update stats
-            planeStatsViewController?.frame = frame
         } else {
             startAnimation()
         }
@@ -322,7 +319,10 @@ class Animate3DGraphicViewController: UIViewController {
             }
         } else if let planeStatsViewController = segue.destination as? PlaneStatsViewController {
             self.planeStatsViewController = planeStatsViewController
-            
+            let frame = frames[currentFrameIndex]
+            // Update stats.
+            planeStatsViewController.frame = frame
+            print("Overwrite frame")
             // pop over settings
             planeStatsViewController.presentationController?.delegate = self
         } else if let navController = segue.destination as? UINavigationController,

@@ -58,7 +58,8 @@ class AuthenticateWithOAuthViewController: UIViewController {
         AGSAuthenticationManager.shared().oAuthConfigurations.add(oAuthConfiguration)
     }
     
-    deinit {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         AGSAuthenticationManager.shared().oAuthConfigurations.remove(oAuthConfiguration)
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
     }

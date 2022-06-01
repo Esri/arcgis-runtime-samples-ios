@@ -34,12 +34,6 @@ class TokenAuthenticationViewController: UIViewController {
         return AGSMap(item: portalItem)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
-    }
-    
     // MARK: UIViewController
     
     override func viewDidLoad() {
@@ -48,5 +42,10 @@ class TokenAuthenticationViewController: UIViewController {
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "TokenAuthenticationViewController"
         ]
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
     }
 }

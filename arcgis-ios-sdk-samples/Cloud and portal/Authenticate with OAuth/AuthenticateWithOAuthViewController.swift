@@ -58,12 +58,6 @@ class AuthenticateWithOAuthViewController: UIViewController {
         AGSAuthenticationManager.shared().oAuthConfigurations.add(oAuthConfiguration)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        AGSAuthenticationManager.shared().oAuthConfigurations.remove(oAuthConfiguration)
-        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
-    }
-    
     // MARK: UIViewController
     
     override func viewDidLoad() {
@@ -72,6 +66,13 @@ class AuthenticateWithOAuthViewController: UIViewController {
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "AuthenticateWithOAuthViewController"
         ]
+    }
+    
+    // Clear the credential cache upon exiting the sample.
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        AGSAuthenticationManager.shared().oAuthConfigurations.remove(oAuthConfiguration)
+        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
     }
 }
 

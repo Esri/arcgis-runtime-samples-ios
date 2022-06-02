@@ -68,7 +68,7 @@ class AuthenticateWithOAuthViewController: UIViewController {
         ]
     }
     
-    // Clear the credential cache upon exiting the sample.
+    // Clearing the credential cache so sample go through authentication every time.
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         AGSAuthenticationManager.shared().oAuthConfigurations.remove(oAuthConfiguration)

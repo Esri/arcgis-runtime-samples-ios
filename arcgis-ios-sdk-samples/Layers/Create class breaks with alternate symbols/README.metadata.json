@@ -1,0 +1,30 @@
+{
+    "category": "Layers",
+    "description": "Use annotation sublayers to gain finer control of annotation layer subtypes.",
+    "ignore": false,
+    "images": [
+        "control-annotation-sublayer.png"
+    ],
+    "keywords": [
+        "annotation",
+        "scale",
+        "text",
+        "utilities",
+        "visualization",
+        "AGSAnnotationLayer",
+        "AGSAnnotationSublayer",
+        "AGSLayerContent"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSAnnotationLayer",
+        "AGSAnnotationSublayer",
+        "AGSLayerContent"
+    ],
+    "snippets": [
+        "ControlAnnotationSublayerVisibilitySublayerCell.swift",
+        "ControlAnnotationSublayerVisibilitySublayersViewController.swift",
+        "ControlAnnotationSublayerVisibilityViewController.swift"
+    ],
+    "title": "Control annotation sublayer visibility"
+}

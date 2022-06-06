@@ -34,30 +34,30 @@ class CreateClassBreaksViewController: UIViewController {
     func createClassBreaksRenderer() {
         // Create class breaks renderer using a default symbol and the alternate symbols list.
         let alternateSymbols = createAlternateSymbols()
+        let minScale = 5000
+        let maxScale = 0
         let symbol1 = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 30)
         let multiLayerSymbol1 = symbol1.toMultilayerSymbol()
         multiLayerSymbol1.referenceProperties = AGSSymbolReferenceProperties(minScale: 5000, maxScale: 0)
         
-        // Create a classbreak with alternate symbols.
-        let classBreak = AGSClassBreak(description: "classbreak", label: "classbreak", minValue: 0, maxValue: 1, symbol: multiLayerSymbol1, alternateSymbols: alternateSymbols)
+        // Create a unique value with alternate symbols.
+        let uniqueValue = AGSUniqueValue(description: "unique values based on request type", label: "unique value", symbol: multiLayerSymbol1, values: ["Damaged Property"], alternateSymbols: alternateSymbols)
         // Create a class breaks renderer.
-        let classBreaksRenderer = AGSClassBreaksRenderer()
+        let uniqueValueRenderer = AGSUniqueValueRenderer()
         // Create and append class breaks.
-        classBreaksRenderer.classBreaks.append(classBreak)
-        classBreaksRenderer.fieldName = "status"
-        let defaultSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .purple, size: 30)
-        let defaultMultiSymbol = defaultSymbol.toMultilayerSymbol()
-        
-        classBreaksRenderer.defaultSymbol = defaultMultiSymbol
-        classBreaksRenderer.minValue = 0
+        uniqueValueRenderer.uniqueValues.append(uniqueValue)
+        uniqueValueRenderer.fieldNames = ["req_type"]
+        let defaultSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .purple, size: 15)
+        uniqueValueRenderer.defaultSymbol = defaultSymbol.toMultilayerSymbol()
         
         // Set the class breaks renderer on the feature layer.
-        featureLayer.renderer = classBreaksRenderer
+        featureLayer.renderer = uniqueValueRenderer
     }
     
     func createAlternateSymbols() {
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.

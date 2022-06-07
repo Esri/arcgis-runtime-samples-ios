@@ -34,8 +34,6 @@ class CreateClassBreaksViewController: UIViewController {
     func createClassBreaksRenderer() {
         // Create class breaks renderer using a default symbol and the alternate symbols list.
         let alternateSymbols = createAlternateSymbols()
-        let minScale = 5000
-        let maxScale = 0
         let symbol1 = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 30)
         let multiLayerSymbol1 = symbol1.toMultilayerSymbol()
         multiLayerSymbol1.referenceProperties = AGSSymbolReferenceProperties(minScale: 5000, maxScale: 0)
@@ -54,8 +52,16 @@ class CreateClassBreaksViewController: UIViewController {
         featureLayer.renderer = uniqueValueRenderer
     }
     
-    func createAlternateSymbols() {
+    func createAlternateSymbols() -> [AGSMultilayerPointSymbol]{
+        let alternateSymbol = AGSSimpleMarkerSymbol(style: .square, color: .blue, size: 30)
+        let alternateSymbolMultilayer1 = alternateSymbol.toMultilayerSymbol()
+        alternateSymbolMultilayer1.referenceProperties = AGSSymbolReferenceProperties(minScale: 10000, maxScale: 5000)
         
+        let alternateSymbol2 = AGSSimpleMarkerSymbol(style: .diamond, color: .yellow, size: 30)
+        let alternateSymbolMultilayer2 = alternateSymbol2.toMultilayerSymbol()
+        alternateSymbolMultilayer2.referenceProperties = AGSSymbolReferenceProperties(minScale: 20000, maxScale: 10000)
+        
+        return [alternateSymbolMultilayer1, alternateSymbolMultilayer2]
     }
     
     override func viewDidLoad() {

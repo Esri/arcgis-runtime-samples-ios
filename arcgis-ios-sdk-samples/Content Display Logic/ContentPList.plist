@@ -811,8 +811,8 @@
 				<string>CreateClassBreaks</string>
 				<key>descriptionText</key>
 				<string>Create a class break with alternate symbols at different scales.</string>
-				<key>displayText</key>
-				<string>Create class breaks with alternate symbols</string>
+				<key>displayName</key>
+				<string>Apply unique values with alternate symbols</string>
 			</dict>
 		</array>
 	</dict>

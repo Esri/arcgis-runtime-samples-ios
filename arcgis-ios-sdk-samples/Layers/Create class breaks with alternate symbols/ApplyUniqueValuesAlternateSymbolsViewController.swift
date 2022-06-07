@@ -15,7 +15,7 @@
 import UIKit
 import ArcGIS
 
-class CreateClassBreaksViewController: UIViewController {
+class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
@@ -67,6 +67,6 @@ class CreateClassBreaksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add the source code button item to the right of navigation bar.
-        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["CreateClassBreaksViewController"]
+        (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ApplyUniqueValuesAlternateSymbolsViewController"]
     }
 }

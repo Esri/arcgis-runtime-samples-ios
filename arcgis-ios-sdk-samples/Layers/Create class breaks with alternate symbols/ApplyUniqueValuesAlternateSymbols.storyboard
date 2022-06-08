@@ -25,16 +25,20 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BmD-PA-QQw"/>
-                                    <barButtonItem title="2500" id="gXV-5Q-d6U"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tbe-3F-BMr"/>
-                                    <barButtonItem style="plain" id="gWt-oN-JCx">
-                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7500" minValue="2500" maxValue="15000" id="vW5-e6-ISE">
-                                            <rect key="frame" x="28" y="10" width="358" height="34"/>
+                                    <barButtonItem style="plain" id="5Aa-TI-4zN">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="VUZ-z9-P5e">
+                                            <rect key="frame" x="108.5" y="10.5" width="197" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </slider>
+                                            <segments>
+                                                <segment title="2500"/>
+                                                <segment title="7500"/>
+                                                <segment title="15000"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="scaleValueChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="iKR-lR-zwN"/>
+                                            </connections>
+                                        </segmentedControl>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9ZZ-kR-VF9"/>
-                                    <barButtonItem title="15000" id="z5S-o8-DRU"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dBL-6W-6bM"/>
                                 </items>
                             </toolbar>
@@ -53,6 +57,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="cIZ-q4-ABN" id="pcI-Zs-1gQ"/>
+                        <outlet property="scaleSegmentedControl" destination="VUZ-z9-P5e" id="Oo5-2z-Zwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

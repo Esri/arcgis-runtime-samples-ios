@@ -26,6 +26,21 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
     static let featureServiceURL = URL(string: String("https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"))!
     let featureLayer = AGSFeatureLayer(featureTable: AGSServiceFeatureTable(url: featureServiceURL))
     
+    @IBOutlet var scaleSegmentedControl: UISegmentedControl!
+    
+    @IBAction func scaleValueChanged(_ control: UISegmentedControl) {
+        switch control.selectedSegmentIndex {
+        case 0:
+            mapView.setViewpointScale(2500)
+        case 1:
+            mapView.setViewpointScale(7500)
+        case 2:
+            mapView.setViewpointScale(15000)
+        default:
+            break
+        }
+    }
+    
     func makeMap() {
         createClassBreaksRenderer()
         mapView.map?.operationalLayers.add(featureLayer)
@@ -52,7 +67,7 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
         featureLayer.renderer = uniqueValueRenderer
     }
     
-    func createAlternateSymbols() -> [AGSMultilayerPointSymbol]{
+    func createAlternateSymbols() -> [AGSMultilayerPointSymbol] {
         let alternateSymbol = AGSSimpleMarkerSymbol(style: .square, color: .blue, size: 30)
         let alternateSymbolMultilayer1 = alternateSymbol.toMultilayerSymbol()
         alternateSymbolMultilayer1.referenceProperties = AGSSymbolReferenceProperties(minScale: 10000, maxScale: 5000)
@@ -66,6 +81,8 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createClassBreaksRenderer()
+        mapView.map?.operationalLayers.add(featureLayer)
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ApplyUniqueValuesAlternateSymbolsViewController"]
     }

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,46 +19,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIZ-q4-ABN" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwj-Gl-d1e" userLabel="Status View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current scale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnX-90-hxZ">
+                                        <rect key="frame" x="8" y="0.0" width="414" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="jnX-90-hxZ" secondAttribute="bottom" id="7Uk-SJ-mXn"/>
+                                    <constraint firstItem="jnX-90-hxZ" firstAttribute="top" secondItem="lwj-Gl-d1e" secondAttribute="top" id="Cav-t6-qZm"/>
+                                    <constraint firstItem="jnX-90-hxZ" firstAttribute="leading" secondItem="lwj-Gl-d1e" secondAttribute="leadingMargin" id="aNk-Ad-s7X"/>
+                                    <constraint firstAttribute="trailing" secondItem="jnX-90-hxZ" secondAttribute="trailingMargin" id="sXZ-4e-SVs"/>
+                                </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZ8-fG-nQR">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BmD-PA-QQw"/>
-                                    <barButtonItem style="plain" id="5Aa-TI-4zN">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="VUZ-z9-P5e">
-                                            <rect key="frame" x="108.5" y="10.5" width="197" height="33"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="2500"/>
-                                                <segment title="7500"/>
-                                                <segment title="15000"/>
-                                            </segments>
-                                            <connections>
-                                                <action selector="scaleValueChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="iKR-lR-zwN"/>
-                                            </connections>
-                                        </segmentedControl>
+                                    <barButtonItem title="Reset viewpoint" id="Nzt-em-Tnw">
+                                        <connections>
+                                            <action selector="resetViewpointTapped:" destination="Y6W-OH-hqX" id="9yD-kB-jst"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dBL-6W-6bM"/>
                                 </items>
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cIZ-q4-ABN" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="00d-sZ-pWL"/>
+                            <constraint firstItem="lwj-Gl-d1e" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="5TY-9P-4zR"/>
+                            <constraint firstItem="lwj-Gl-d1e" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="8Hz-Sy-ULA"/>
                             <constraint firstItem="JZ8-fG-nQR" firstAttribute="top" secondItem="cIZ-q4-ABN" secondAttribute="bottom" id="ChC-dq-as4"/>
-                            <constraint firstItem="cIZ-q4-ABN" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="DJP-dG-4BI"/>
+                            <constraint firstItem="cIZ-q4-ABN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="DJP-dG-4BI"/>
                             <constraint firstAttribute="trailing" secondItem="JZ8-fG-nQR" secondAttribute="trailing" id="FVU-BA-nSn"/>
+                            <constraint firstAttribute="trailing" secondItem="lwj-Gl-d1e" secondAttribute="trailing" id="Gwh-oZ-9N8"/>
                             <constraint firstItem="JZ8-fG-nQR" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="OaW-yY-igR"/>
                             <constraint firstItem="JZ8-fG-nQR" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="fRY-7G-ybL"/>
                             <constraint firstAttribute="trailing" secondItem="cIZ-q4-ABN" secondAttribute="trailing" id="sXM-dC-Z6u"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentScaleLabel" destination="jnX-90-hxZ" id="fEP-BT-4I4"/>
                         <outlet property="mapView" destination="cIZ-q4-ABN" id="pcI-Zs-1gQ"/>
-                        <outlet property="scaleSegmentedControl" destination="VUZ-z9-P5e" id="Oo5-2z-Zwc"/>
+                        <outlet property="resetViewpointBarButtonItem" destination="Nzt-em-Tnw" id="7cI-4n-yjS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -66,7 +80,13 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="statusLabelBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

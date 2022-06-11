@@ -18,70 +18,99 @@ import ArcGIS
 class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView! {
         didSet {
+            // Set the map and its initial viewpoint.
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
-            mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13632095.660131, y: 4545009.846004, spatialReference: .webMercator()), scale: 50000))
+            mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13632095.660131, y: 4545009.846004, spatialReference: .webMercator()), scale: 2500))
         }
     }
     
+    @IBOutlet var currentScaleLabel: UILabel!
+    @IBOutlet var resetViewpointBarButtonItem: UIBarButtonItem!
+    
+    /// Response to the bar button item being tapped.
+    @IBAction func resetViewpointTapped(_ button: UIBarButtonItem) {
+        // Create the initial viewpoint.
+        let viewpoint = AGSViewpoint(center: AGSPoint(x: -13631205.660131, y: 4546829.846004, spatialReference: .webMercator()), scale: 7500)
+        // Set the viewpoint with animation.
+        mapView.setViewpoint(viewpoint, duration: 5, curve: AGSAnimationCurve.easeInOutSine) { (finishedWithoutInterruption) in
+            if finishedWithoutInterruption {
+                self.mapView.setViewpoint(viewpoint, duration: 5, curve: .easeInOutSine)
+            }
+        }
+    }
+    
+    /// The feature service URL.
     static let featureServiceURL = URL(string: String("https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"))!
+    /// The feature layer set in San Francisco, CA.
     let featureLayer = AGSFeatureLayer(featureTable: AGSServiceFeatureTable(url: featureServiceURL))
     
-    @IBOutlet var scaleSegmentedControl: UISegmentedControl!
+    /// The formatter used to generate strings from scale values.
+    private let scaleFormatter: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 0
+        return numberFormatter
+    }()
     
-    @IBAction func scaleValueChanged(_ control: UISegmentedControl) {
-        switch control.selectedSegmentIndex {
-        case 0:
-            mapView.setViewpointScale(2500)
-        case 1:
-            mapView.setViewpointScale(7500)
-        case 2:
-            mapView.setViewpointScale(15000)
-        default:
-            break
-        }
-    }
-    
-    func makeMap() {
-        createClassBreaksRenderer()
-        mapView.map?.operationalLayers.add(featureLayer)
-    }
-    
-    func createClassBreaksRenderer() {
-        // Create class breaks renderer using a default symbol and the alternate symbols list.
+    /// Creates the unique values renderer for the feature layer.
+    func createUniqueValuesRenderer() {
+        // Create the default symbol.
+        let symbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 30)
+        // Convert the symbol to a multi layer symbol.
+        let multiLayerSymbol = symbol.toMultilayerSymbol()
+        multiLayerSymbol.referenceProperties = AGSSymbolReferenceProperties(minScale: 5000, maxScale: 0)
+        // Create alternate symbols for the unique value.
         let alternateSymbols = createAlternateSymbols()
-        let symbol1 = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 30)
-        let multiLayerSymbol1 = symbol1.toMultilayerSymbol()
-        multiLayerSymbol1.referenceProperties = AGSSymbolReferenceProperties(minScale: 5000, maxScale: 0)
-        
         // Create a unique value with alternate symbols.
-        let uniqueValue = AGSUniqueValue(description: "unique values based on request type", label: "unique value", symbol: multiLayerSymbol1, values: ["Damaged Property"], alternateSymbols: alternateSymbols)
-        // Create a class breaks renderer.
+        let uniqueValue = AGSUniqueValue(description: "unique values based on request type", label: "unique value", symbol: multiLayerSymbol, values: ["Damaged Property"], alternateSymbols: alternateSymbols)
+        // Create a unique values renderer.
         let uniqueValueRenderer = AGSUniqueValueRenderer()
-        // Create and append class breaks.
+        // Create and append the unique value.
         uniqueValueRenderer.uniqueValues.append(uniqueValue)
+        // Set the field name.
         uniqueValueRenderer.fieldNames = ["req_type"]
+        // Create and set the default symbol.
         let defaultSymbol = AGSSimpleMarkerSymbol(style: .diamond, color: .purple, size: 15)
         uniqueValueRenderer.defaultSymbol = defaultSymbol.toMultilayerSymbol()
         
-        // Set the class breaks renderer on the feature layer.
+        // Set the unique value renderer on the feature layer.
         featureLayer.renderer = uniqueValueRenderer
     }
     
+    /// Create alternate symbols for the unique value renderer.
     func createAlternateSymbols() -> [AGSMultilayerPointSymbol] {
+        // Create the alternate symbol for the mid range scale.
         let alternateSymbol = AGSSimpleMarkerSymbol(style: .square, color: .blue, size: 30)
+        // Convert the symbol to a multilayer symbol.
         let alternateSymbolMultilayer1 = alternateSymbol.toMultilayerSymbol()
+        // Set the reference properties.
         alternateSymbolMultilayer1.referenceProperties = AGSSymbolReferenceProperties(minScale: 10000, maxScale: 5000)
         
+        // Create the alternate symbol for the high range scale.
         let alternateSymbol2 = AGSSimpleMarkerSymbol(style: .diamond, color: .yellow, size: 30)
+        // Convert the symbol to a multilayer symbol.
         let alternateSymbolMultilayer2 = alternateSymbol2.toMultilayerSymbol()
+        // Set the reference properties.
         alternateSymbolMultilayer2.referenceProperties = AGSSymbolReferenceProperties(minScale: 20000, maxScale: 10000)
-        
+        // Return both alternate symbols.
         return [alternateSymbolMultilayer1, alternateSymbolMultilayer2]
+    }
+    
+    /// Update the label to display the current scale.
+    func changeScaleLabel() {
+        let mapScale = scaleFormatter.string(from: mapView.mapScale as NSNumber)!
+        currentScaleLabel.text = "Current scale: 1:\(mapScale)"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createClassBreaksRenderer()
+        // Add a handler to update the current label.
+        mapView.viewpointChangedHandler = { [weak self] in
+            DispatchQueue.main.async {
+                self?.changeScaleLabel()
+            }
+        }
+        createUniqueValuesRenderer()
         mapView.map?.operationalLayers.add(featureLayer)
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ApplyUniqueValuesAlternateSymbolsViewController"]

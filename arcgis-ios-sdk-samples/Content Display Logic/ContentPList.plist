@@ -810,7 +810,7 @@
 				<key>storyboardName</key>
 				<string>ApplyUniqueValuesAlternateSymbols</string>
 				<key>descriptionText</key>
-				<string>Create a class break with alternate symbols at different scales.</string>
+				<string>Apply a unique value with alternate symbols at different scales.</string>
 				<key>displayName</key>
 				<string>Apply unique values with alternate symbols</string>
 			</dict>

@@ -3273,7 +3273,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				F18C2B24284979DB009355BD /* Create class breaks with alternate symbols */,
+				F18C2B24284979DB009355BD /* Apply unique values with alternate symbols */,
 				F1EF67DB27E2AE200049FA9A /* Query related features from non-spatial table */,
 				008A01842768119100A3C637 /* Display dimensions */,
 				F1027F4C26F91F55000FA674 /* Export vector tiles */,
@@ -4644,13 +4644,13 @@
 			path = "Display content of utility network container";
 			sourceTree = "<group>";
 		};
-		F18C2B24284979DB009355BD /* Create class breaks with alternate symbols */ = {
+		F18C2B24284979DB009355BD /* Apply unique values with alternate symbols */ = {
 			isa = PBXGroup;
 			children = (
 				F18C2B2528497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift */,
 				F18C2B2728497A4F009355BD /* ApplyUniqueValuesAlternateSymbols.storyboard */,
 			);
-			path = "Create class breaks with alternate symbols";
+			path = "Apply unique values with alternate symbols";
 			sourceTree = "<group>";
 		};
 		F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */ = {

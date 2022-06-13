@@ -1,30 +1,31 @@
 {
     "category": "Layers",
-    "description": "Use annotation sublayers to gain finer control of annotation layer subtypes.",
+    "description": "Apply a unique value with alternate symbols at different scales.",
     "ignore": false,
     "images": [
-        "control-annotation-sublayer.png"
+        "apply-unique-values-alternate-symbols.png"
     ],
     "keywords": [
-        "annotation",
-        "scale",
-        "text",
-        "utilities",
-        "visualization",
-        "AGSAnnotationLayer",
-        "AGSAnnotationSublayer",
-        "AGSLayerContent"
+        "alternate symbols",
+        "scale based rendering",
+        "symbology",
+        "unique value",
+        "unique value renderer",
+        "AGSMultilayerSymbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSSymbolReferenceProperties",
+        "AGSUniqueValue",
+        "AGSUniqueValueRenderer"
     ],
     "redirect_from": [],
     "relevant_apis": [
-        "AGSAnnotationLayer",
-        "AGSAnnotationSublayer",
-        "AGSLayerContent"
+        "AGSMultilayerSymbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSSymbolReferenceProperties",
+        "AGSUniqueValue",
+        "AGSUniqueValueRenderer"
     ],
     "snippets": [
-        "ControlAnnotationSublayerVisibilitySublayerCell.swift",
-        "ControlAnnotationSublayerVisibilitySublayersViewController.swift",
-        "ControlAnnotationSublayerVisibilityViewController.swift"
-    ],
-    "title": "Control annotation sublayer visibility"
+        "ApplyUniqueValuesAlternateSymbolsViewController.swift"],
+    "title": "Apply unique values with alternate symbols"
 }

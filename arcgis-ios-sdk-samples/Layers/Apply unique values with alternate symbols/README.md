@@ -17,14 +17,10 @@ Zoom in and out of the map to see alternate symbols at each scale. The symbology
 ## How it works
 
 1. Create an `AGSFeatureLayer` using the service url and add it to the map's list of operational layers.
-2. Create two alternate symbols (a blue square and a yellow diamond) to be used as alternate symbols. To create an alternate symbol:
-
-    i. Create a symbol using `AGSSimpleMarkerSymbol`.
-    
-    ii. Convert the simple marker symbol to an 'AGSMultilayerSymbol` using `AGSSimpleMarkerSymbol.toMultilayerSymbol`.
-    
-    iii. Set the multilayer symbol's `referenceProperties' to the valid scale ranges with the blue square and yellow diamond.
-    
+2. Create two alternate symbols (a blue square and a yellow diamond) to be used as alternate symbols. To create an alternate symbol:  
+    i. Create a symbol using `AGSSimpleMarkerSymbol`.  
+    ii. Convert the simple marker symbol to an `AGSMultilayerSymbol` using `AGSSimpleMarkerSymbol.toMultilayerSymbol`.  
+    iii. Set the multilayer symbol's `referenceProperties' to the valid scale ranges with the blue square and yellow diamond.  
 3. Create a third multilayer symbol to be used to create an `AGSUniqueValue` class.
 4. Create a unique value using the red triangle from step 3 and the list of alternate symbols from step 2.
 5. Create an `AGSUniqueValueRenderer` and add the unique value from step 4 to it.

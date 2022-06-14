@@ -12,15 +12,15 @@ Once scale ranges are applied to unique values, you can further refine the appea
 
 ## How to use the sample
 
-Zoom in and out of the map to see alternate symbols at each scale. The symbology changes according to the following scale ranges: 0-5000, 5000-10000, 10000-20000. To go back to the initial viewpoint, tap "Reset viewpoint".
+Zoom in and out of the map to see alternate symbols at each scale. The symbology changes according to the following scale ranges: 0-5,000, 5,000-10,000, 10,000-20,000. To go back to the initial viewpoint, tap "Reset viewpoint".
 
 ## How it works
 
-1. Create an `AGSFeatureLayer` using the service url and add it to the map's list of operational layers.
+1. Create an `AGSFeatureLayer` using the service URL and add it to the map's list of operational layers.
 2. Create two alternate symbols (a blue square and a yellow diamond) to be used as alternate symbols. To create an alternate symbol:  
     i. Create a symbol using `AGSSimpleMarkerSymbol`.  
     ii. Convert the simple marker symbol to an `AGSMultilayerSymbol` using `AGSSimpleMarkerSymbol.toMultilayerSymbol`.  
-    iii. Set the multilayer symbol's `referenceProperties' to the valid scale ranges with the blue square and yellow diamond.  
+    iii. Set the multilayer symbol's `referenceProperties` to the valid scale ranges with the blue square and yellow diamond.  
 3. Create a third multilayer symbol to be used to create an `AGSUniqueValue` class.
 4. Create a unique value using the red triangle from step 3 and the list of alternate symbols from step 2.
 5. Create an `AGSUniqueValueRenderer` and add the unique value from step 4 to it.
@@ -39,7 +39,7 @@ Zoom in and out of the map to see alternate symbols at each scale. The symbology
 
 ## About the data
 
-The [San Francisco 311 incidents layer](https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0) in this sample displays point features related to crime incidents such as grafitti and tree damage that have been reported by city residents.
+The [San Francisco 311 incidents layer](https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0) in this sample displays point features related to crime incidents such as graffiti and tree damage that have been reported by city residents.
 
 ## Tags
 

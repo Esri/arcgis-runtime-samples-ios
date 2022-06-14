@@ -20,7 +20,7 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
         didSet {
             // Set the map and its initial viewpoint.
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
-            mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13632095.660131, y: 4545009.846004, spatialReference: .webMercator()), scale: 7500))
+            mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13632095.660131, y: 4545009.846004, spatialReference: .webMercator()), scale: 7_500))
         }
     }
     

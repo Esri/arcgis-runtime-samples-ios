@@ -25,7 +25,6 @@
         "AGSUniqueValue",
         "AGSUniqueValueRenderer"
     ],
-    "snippets": [
-        "ApplyUniqueValuesAlternateSymbolsViewController.swift"],
+    "snippets": ["ApplyUniqueValuesAlternateSymbolsViewController.swift"],
     "title": "Apply unique values with alternate symbols"
 }

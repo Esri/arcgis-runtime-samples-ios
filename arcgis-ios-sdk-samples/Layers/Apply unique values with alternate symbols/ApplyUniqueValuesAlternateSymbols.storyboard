@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnX-90-hxZ">
-                                        <rect key="frame" x="8" y="0.0" width="414" height="0.0"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -35,8 +35,8 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="jnX-90-hxZ" secondAttribute="bottom" id="7Uk-SJ-mXn"/>
                                     <constraint firstItem="jnX-90-hxZ" firstAttribute="top" secondItem="lwj-Gl-d1e" secondAttribute="top" id="Cav-t6-qZm"/>
-                                    <constraint firstItem="jnX-90-hxZ" firstAttribute="leading" secondItem="lwj-Gl-d1e" secondAttribute="leadingMargin" id="aNk-Ad-s7X"/>
-                                    <constraint firstAttribute="trailing" secondItem="jnX-90-hxZ" secondAttribute="trailingMargin" id="sXZ-4e-SVs"/>
+                                    <constraint firstItem="jnX-90-hxZ" firstAttribute="leading" secondItem="lwj-Gl-d1e" secondAttribute="leading" constant="20" symbolic="YES" id="aNk-Ad-s7X"/>
+                                    <constraint firstAttribute="trailing" secondItem="jnX-90-hxZ" secondAttribute="trailing" constant="20" symbolic="YES" id="sXZ-4e-SVs"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZ8-fG-nQR">

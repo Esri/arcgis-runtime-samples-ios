@@ -20,7 +20,14 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
         didSet {
             // Set the map and its initial viewpoint.
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
-            mapView.setViewpoint(AGSViewpoint(center: AGSPoint(x: -13632095.660131, y: 4545009.846004, spatialReference: .webMercator()), scale: 7_500))
+            mapView.map?.operationalLayers.add(featureLayer)
+            mapView.setViewpoint(viewpoint)
+            // Add a handler to update the current label.
+            mapView.viewpointChangedHandler = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.changeScaleLabel()
+                }
+            }
         }
     }
     
@@ -29,20 +36,15 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
     
     /// Response to the bar button item being tapped.
     @IBAction func resetViewpointTapped(_ button: UIBarButtonItem) {
-        // Create the initial viewpoint.
-        let viewpoint = AGSViewpoint(center: AGSPoint(x: -13631205.660131, y: 4546829.846004, spatialReference: .webMercator()), scale: 7500)
         // Set the viewpoint with animation.
-        mapView.setViewpoint(viewpoint, duration: 5, curve: AGSAnimationCurve.easeInOutSine) { (finishedWithoutInterruption) in
-            if finishedWithoutInterruption {
-                self.mapView.setViewpoint(viewpoint, duration: 5, curve: .easeInOutSine)
-            }
-        }
+        mapView.setViewpoint(viewpoint, duration: 5, curve: .easeInOutSine)
     }
     
     /// The feature service URL.
     static let featureServiceURL = URL(string: String("https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"))!
     /// The feature layer set in San Francisco, CA.
     let featureLayer = AGSFeatureLayer(featureTable: AGSServiceFeatureTable(url: featureServiceURL))
+    let viewpoint = AGSViewpoint(center: AGSPoint(x: -13632095.660131, y: 4545009.846004, spatialReference: .webMercator()), scale: 7_500)
     
     /// The formatter used to generate strings from scale values.
     private let scaleFormatter: NumberFormatter = {
@@ -58,7 +60,7 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
         let symbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 30)
         // Convert the symbol to a multi layer symbol.
         let multiLayerSymbol = symbol.toMultilayerSymbol()
-        multiLayerSymbol.referenceProperties = AGSSymbolReferenceProperties(minScale: 5000, maxScale: 0)
+        multiLayerSymbol.referenceProperties = AGSSymbolReferenceProperties(minScale: 5_000, maxScale: 0)
         // Create alternate symbols for the unique value.
         let alternateSymbols = createAlternateSymbols()
         // Create a unique value with alternate symbols.
@@ -84,14 +86,14 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
         // Convert the symbol to a multilayer symbol.
         let alternateSymbolMultilayer1 = alternateSymbol.toMultilayerSymbol()
         // Set the reference properties.
-        alternateSymbolMultilayer1.referenceProperties = AGSSymbolReferenceProperties(minScale: 10000, maxScale: 5000)
+        alternateSymbolMultilayer1.referenceProperties = AGSSymbolReferenceProperties(minScale: 10_000, maxScale: 5_000)
         
         // Create the alternate symbol for the high range scale.
         let alternateSymbol2 = AGSSimpleMarkerSymbol(style: .diamond, color: .yellow, size: 30)
         // Convert the symbol to a multilayer symbol.
         let alternateSymbolMultilayer2 = alternateSymbol2.toMultilayerSymbol()
         // Set the reference properties.
-        alternateSymbolMultilayer2.referenceProperties = AGSSymbolReferenceProperties(minScale: 20000, maxScale: 10000)
+        alternateSymbolMultilayer2.referenceProperties = AGSSymbolReferenceProperties(minScale: 20_000, maxScale: 10_000)
         // Return both alternate symbols.
         return [alternateSymbolMultilayer1, alternateSymbolMultilayer2]
     }
@@ -104,14 +106,7 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Add a handler to update the current label.
-        mapView.viewpointChangedHandler = { [weak self] in
-            DispatchQueue.main.async {
-                self?.changeScaleLabel()
-            }
-        }
         createUniqueValuesRenderer()
-        mapView.map?.operationalLayers.add(featureLayer)
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ApplyUniqueValuesAlternateSymbolsViewController"]
     }

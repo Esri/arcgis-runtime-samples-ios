@@ -34,7 +34,7 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
     @IBOutlet var currentScaleLabel: UILabel!
     @IBOutlet var resetViewpointBarButtonItem: UIBarButtonItem!
     
-    /// Response to the bar button item being tapped.
+    /// Respond to the bar button item being tapped.
     @IBAction func resetViewpointTapped(_ button: UIBarButtonItem) {
         // Set the viewpoint with animation.
         mapView.setViewpoint(viewpoint, duration: 5, curve: .easeInOutSine)

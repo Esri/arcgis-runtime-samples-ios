@@ -20,6 +20,7 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
         didSet {
             // Set the map and its initial viewpoint.
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            featureLayer.renderer = makeUniqueValueRenderer()
             mapView.map?.operationalLayers.add(featureLayer)
             mapView.setViewpoint(viewpoint)
             // Add a handler to update the current label.
@@ -44,7 +45,7 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
     static let featureServiceURL = URL(string: String("https://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"))!
     /// The feature layer set in San Francisco, CA.
     let featureLayer = AGSFeatureLayer(featureTable: AGSServiceFeatureTable(url: featureServiceURL))
-    let viewpoint = AGSViewpoint(center: AGSPoint(x: -13632095.660131, y: 4545009.846004, spatialReference: .webMercator()), scale: 7_500)
+    let viewpoint = AGSViewpoint(center: AGSPoint(x: -13631205.660131, y: 4546829.846004, spatialReference: .webMercator()), scale: 7_500)
     
     /// The formatter used to generate strings from scale values.
     private let scaleFormatter: NumberFormatter = {
@@ -54,8 +55,8 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
         return numberFormatter
     }()
     
-    /// Creates the unique values renderer for the feature layer.
-    func createUniqueValuesRenderer() {
+    /// Create the unique values renderer for the feature layer.
+    func makeUniqueValueRenderer() -> AGSUniqueValueRenderer {
         // Create the default symbol.
         let symbol = AGSSimpleMarkerSymbol(style: .triangle, color: .red, size: 30)
         // Convert the symbol to a multi layer symbol.
@@ -76,7 +77,7 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
         uniqueValueRenderer.defaultSymbol = defaultSymbol.toMultilayerSymbol()
         
         // Set the unique value renderer on the feature layer.
-        featureLayer.renderer = uniqueValueRenderer
+        return uniqueValueRenderer
     }
     
     /// Create alternate symbols for the unique value renderer.
@@ -106,7 +107,6 @@ class ApplyUniqueValuesAlternateSymbolsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createUniqueValuesRenderer()
         // Add the source code button item to the right of navigation bar.
         (self.navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = ["ApplyUniqueValuesAlternateSymbolsViewController"]
     }

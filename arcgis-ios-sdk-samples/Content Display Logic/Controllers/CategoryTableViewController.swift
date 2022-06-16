@@ -232,7 +232,11 @@ class CategoryTableViewController: UITableViewController {
             // Get the two cells and update.
             expandedRowIndexPaths.update(with: indexPath)
         }
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        // Reload the corresponding row.
+        let identifier = dataSource.itemIdentifier(for: indexPath)!
+        var snapshot = dataSource.snapshot()
+        snapshot.reloadItems([identifier])
+        dataSource.apply(snapshot)
     }
 }
 

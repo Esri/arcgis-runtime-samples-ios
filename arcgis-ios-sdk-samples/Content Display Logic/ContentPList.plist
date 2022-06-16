@@ -806,6 +806,14 @@
 				<key>displayName</key>
 				<string>Query related features from non-spatial table</string>
 			</dict>
+			<dict>
+				<key>storyboardName</key>
+				<string>ApplyUniqueValuesAlternateSymbols</string>
+				<key>descriptionText</key>
+				<string>Apply a unique value with alternate symbols at different scales.</string>
+				<key>displayName</key>
+				<string>Apply unique values with alternate symbols</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

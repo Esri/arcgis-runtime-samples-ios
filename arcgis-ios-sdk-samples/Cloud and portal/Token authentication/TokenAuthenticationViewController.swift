@@ -43,4 +43,10 @@ class TokenAuthenticationViewController: UIViewController {
             "TokenAuthenticationViewController"
         ]
     }
+    
+    // Clearing the credential cache so sample go through authentication every time.
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
+    }
 }

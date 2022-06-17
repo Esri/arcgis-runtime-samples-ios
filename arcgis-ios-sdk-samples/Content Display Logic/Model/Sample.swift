@@ -44,4 +44,16 @@ extension Sample {
     var readmeURL: URL? {
         return Bundle.main.url(forResource: "README", withExtension: "md", subdirectory: name)
     }
+    var isFavorite: Bool {
+        get {
+            UserDefaults.standard.favoriteSamples.contains(name)
+        }
+        nonmutating set {
+            if newValue {
+                UserDefaults.standard.favoriteSamples.insert(name)
+            } else {
+                UserDefaults.standard.favoriteSamples.remove(name)
+            }
+        }
+    }
 }

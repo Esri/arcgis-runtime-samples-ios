@@ -114,7 +114,7 @@ class DisplayFeatureLayersViewController: UIViewController {
         // Create the portal item with the item ID for the Portland tree service data.
         let item = AGSPortalItem(portal: portal, itemID: "1759fd3e8a324358a0c58d9a687a8578")
         // Create the feature layer with the item and layer ID.
-        let featureLayer = AGSFeatureLayer(item: item, layerID: 0)
+        let featureLayer = AGSFeatureLayer(item: item)
         // Set the viewpoint to Portland, Oregon.
         let viewpoint = AGSViewpoint(latitude: 45.5266, longitude: -122.6219, scale: 6e3)
         setFeatureLayer(featureLayer, viewpoint: viewpoint)

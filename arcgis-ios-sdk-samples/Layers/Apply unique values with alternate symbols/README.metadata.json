@@ -1,0 +1,30 @@
+{
+    "category": "Layers",
+    "description": "Apply a unique value with alternate symbols at different scales.",
+    "ignore": false,
+    "images": [
+        "apply-unique-values-alternate-symbols.png"
+    ],
+    "keywords": [
+        "alternate symbols",
+        "scale based rendering",
+        "symbology",
+        "unique value",
+        "unique value renderer",
+        "AGSMultilayerSymbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSSymbolReferenceProperties",
+        "AGSUniqueValue",
+        "AGSUniqueValueRenderer"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSMultilayerSymbol",
+        "AGSSimpleMarkerSymbol",
+        "AGSSymbolReferenceProperties",
+        "AGSUniqueValue",
+        "AGSUniqueValueRenderer"
+    ],
+    "snippets": ["ApplyUniqueValuesAlternateSymbolsViewController.swift"],
+    "title": "Apply unique values with alternate symbols"
+}

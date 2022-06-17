@@ -879,6 +879,9 @@
 		F1710AF325EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1710AF225EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard */; };
 		F1710AF525EEF4C000900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */; };
 		F17961A124DA3A27006FE7C1 /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1124F0B24CFA97000E672EC /* EditFeaturesWithFeatureLinkedAnnotationViewController.swift */; };
+		F18C2B2628497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18C2B2528497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift */; };
+		F18C2B2828497A4F009355BD /* ApplyUniqueValuesAlternateSymbols.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F18C2B2728497A4F009355BD /* ApplyUniqueValuesAlternateSymbols.storyboard */; };
+		F18C2B2928497E09009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F18C2B2528497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift */; };
 		F1950D7B279794590093CE6E /* ContingentValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */; };
 		F1950D7C279794920093CE6E /* ContingentValuesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
@@ -968,6 +971,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F18C2B2928497E09009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift in CopyFiles */,
 				F157668F2824AD9600C08069 /* DisplayDirectionsViewController.swift in CopyFiles */,
 				F157668C2821DE0600C08069 /* DisplayRouteLayerViewController.swift in CopyFiles */,
 				003D7C1E28219111009DDFD2 /* SetMaxExtentViewController.swift in CopyFiles */,
@@ -1864,6 +1868,8 @@
 		F16922B425158B4400A8F36E /* EditKMLGroundOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditKMLGroundOverlayViewController.swift; sourceTree = "<group>"; };
 		F1710AEF25EECFDD00900FF2 /* DisplayContentUtilityNetworkContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayContentUtilityNetworkContainerViewController.swift; path = "arcgis-ios-sdk-samples/Utility Network/Display content of utility network container/DisplayContentUtilityNetworkContainerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F1710AF225EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = DisplayContentUtilityNetworkContainer.storyboard; path = "arcgis-ios-sdk-samples/Utility Network/Display content of utility network container/DisplayContentUtilityNetworkContainer.storyboard"; sourceTree = SOURCE_ROOT; };
+		F18C2B2528497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyUniqueValuesAlternateSymbolsViewController.swift; sourceTree = "<group>"; };
+		F18C2B2728497A4F009355BD /* ApplyUniqueValuesAlternateSymbols.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApplyUniqueValuesAlternateSymbols.storyboard; sourceTree = "<group>"; };
 		F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContingentValuesViewController.swift; sourceTree = "<group>"; };
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
@@ -3272,6 +3278,7 @@
 		3ED027FF1B8E39EE00ACA70D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				F18C2B24284979DB009355BD /* Apply unique values with alternate symbols */,
 				F1EF67DB27E2AE200049FA9A /* Query related features from non-spatial table */,
 				008A01842768119100A3C637 /* Display dimensions */,
 				F1027F4C26F91F55000FA674 /* Export vector tiles */,
@@ -4642,6 +4649,15 @@
 			path = "Display content of utility network container";
 			sourceTree = "<group>";
 		};
+		F18C2B24284979DB009355BD /* Apply unique values with alternate symbols */ = {
+			isa = PBXGroup;
+			children = (
+				F18C2B2528497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift */,
+				F18C2B2728497A4F009355BD /* ApplyUniqueValuesAlternateSymbols.storyboard */,
+			);
+			path = "Apply unique values with alternate symbols";
+			sourceTree = "<group>";
+		};
 		F1A94D0F23F46FBF003E17B8 /* Find closest facility to an incident (interactive) */ = {
 			isa = PBXGroup;
 			children = (
@@ -5137,6 +5153,7 @@
 				10961CA61EF2FFD4008A7CEC /* TerrainExaggeration.storyboard in Resources */,
 				3E39F6D21B9790A9000DEC6C /* EditFeaturesOnline.storyboard in Resources */,
 				1682CAEC22404F330039C3E1 /* ViewContentBeneathTerrainSurface.storyboard in Resources */,
+				F18C2B2828497A4F009355BD /* ApplyUniqueValuesAlternateSymbols.storyboard in Resources */,
 				3E4BF4481C5AEF3D00D85919 /* ReverseGeocode.storyboard in Resources */,
 				3E8A05DE1ECE69840032231C /* Bristol.png in Resources */,
 				D9EE379920E2CC7700BF8AD1 /* dolmus.3ds in Resources */,
@@ -5622,6 +5639,7 @@
 				0022769026570BA500CC7DB9 /* DisplayOGCAPICollectionViewController.swift in Sources */,
 				123AC27E20E58CFA0026A7D6 /* GeodesicOperationsViewController.swift in Sources */,
 				009B5FF825E58E0000BB9A77 /* CreateSymbolStylesFromWebStylesViewController.swift in Sources */,
+				F18C2B2628497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift in Sources */,
 				3E39F6D31B9790A9000DEC6C /* EditFeaturesOnlineViewController.swift in Sources */,
 				3E8A05CD1ECE68E80032231C /* CameraSettingsViewController.swift in Sources */,
 				3EC39C371C9B1ADA003F6459 /* AGSExtensions.swift in Sources */,

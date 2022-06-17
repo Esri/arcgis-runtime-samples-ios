@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Apply Unique Values Alternate Symbols View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ApplyUniqueValuesAlternateSymbolsViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIZ-q4-ABN" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwj-Gl-d1e" userLabel="Status View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnX-90-hxZ">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="jnX-90-hxZ" secondAttribute="bottom" id="7Uk-SJ-mXn"/>
+                                    <constraint firstItem="jnX-90-hxZ" firstAttribute="top" secondItem="lwj-Gl-d1e" secondAttribute="top" id="Cav-t6-qZm"/>
+                                    <constraint firstItem="jnX-90-hxZ" firstAttribute="leading" secondItem="lwj-Gl-d1e" secondAttribute="leading" constant="20" symbolic="YES" id="aNk-Ad-s7X"/>
+                                    <constraint firstAttribute="trailing" secondItem="jnX-90-hxZ" secondAttribute="trailing" constant="20" symbolic="YES" id="sXZ-4e-SVs"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZ8-fG-nQR">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BmD-PA-QQw"/>
+                                    <barButtonItem title="Reset viewpoint" id="Nzt-em-Tnw">
+                                        <connections>
+                                            <action selector="resetViewpointTapped:" destination="Y6W-OH-hqX" id="9yD-kB-jst"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dBL-6W-6bM"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cIZ-q4-ABN" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="00d-sZ-pWL"/>
+                            <constraint firstItem="lwj-Gl-d1e" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="5TY-9P-4zR"/>
+                            <constraint firstItem="lwj-Gl-d1e" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="8Hz-Sy-ULA"/>
+                            <constraint firstItem="JZ8-fG-nQR" firstAttribute="top" secondItem="cIZ-q4-ABN" secondAttribute="bottom" id="ChC-dq-as4"/>
+                            <constraint firstItem="cIZ-q4-ABN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="DJP-dG-4BI"/>
+                            <constraint firstAttribute="trailing" secondItem="JZ8-fG-nQR" secondAttribute="trailing" id="FVU-BA-nSn"/>
+                            <constraint firstAttribute="trailing" secondItem="lwj-Gl-d1e" secondAttribute="trailing" id="Gwh-oZ-9N8"/>
+                            <constraint firstItem="JZ8-fG-nQR" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="OaW-yY-igR"/>
+                            <constraint firstItem="JZ8-fG-nQR" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="fRY-7G-ybL"/>
+                            <constraint firstAttribute="trailing" secondItem="cIZ-q4-ABN" secondAttribute="trailing" id="sXM-dC-Z6u"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="currentScaleLabel" destination="jnX-90-hxZ" id="fEP-BT-4I4"/>
+                        <outlet property="mapView" destination="cIZ-q4-ABN" id="pcI-Zs-1gQ"/>
+                        <outlet property="resetViewpointBarButtonItem" destination="Nzt-em-Tnw" id="7cI-4n-yjS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="60"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="statusLabelBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

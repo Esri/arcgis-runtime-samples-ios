@@ -168,10 +168,10 @@ class GenerateOfflineMapViewController: UIViewController {
             UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }
             if let parameters = parameters {
-                // will need the parameters for creating the job later
+                // The parameters for creating a job of offline maps generation.
                 self.parameters = parameters
                 
-                // take map offline
+                // Take map offline.
                 self.takeMapOffline()
             } else if let error = error {
                 self.presentAlert(error: error)

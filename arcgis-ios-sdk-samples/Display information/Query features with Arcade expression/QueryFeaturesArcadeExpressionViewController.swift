@@ -18,5 +18,27 @@ import ArcGIS
 class QueryFeaturesArcadeExpressionViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     
+    func makeMap() -> AGSMap {
+        let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
+        let portalItem = AGSPortalItem(portal: portal, itemID: "14562fced3474190b52d315bc19127f6")
+        let map = AGSMap(item: portalItem)
+        map.load() { error in
+            map.operationalLayers.forEach { layer in
+                let currentLayer = layer as? AGSLayer
+                if currentLayer?.name == "Crime in the last 60 days" || currentLayer?.name == "Police Stations" {
+                    currentLayer?.isVisible = false
+                }
+            }
+        }
+    }
     
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
+            "QueryFeaturesArcadeExpressionViewController"
+        ]
+    }
 }

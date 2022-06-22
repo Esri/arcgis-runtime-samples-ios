@@ -175,7 +175,6 @@ class GenerateOfflineMapViewController: UIViewController {
                 self.takeMapOffline()
             } else if let error = error {
                 self.presentAlert(error: error)
-                return
             }
         }
     }

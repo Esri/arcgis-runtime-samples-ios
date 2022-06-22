@@ -16,7 +16,13 @@ import UIKit
 import ArcGIS
 
 class QueryFeaturesArcadeExpressionViewController: UIViewController {
-    @IBOutlet var mapView: AGSMapView!
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            mapView.map = makeMap()
+            mapView.touchDelegate = self
+            
+        }
+    }
     
     func makeMap() -> AGSMap {
         let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
@@ -30,6 +36,11 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
                 }
             }
         }
+        return map
+    }
+    
+    func queryFeaturesWithArcadeExpression() {
+        
     }
     
     // MARK: UIViewController
@@ -40,5 +51,28 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "QueryFeaturesArcadeExpressionViewController"
         ]
+    }
+}
+
+// MARK: - AGSGeoViewTouchDelegate
+
+extension QueryFeaturesArcadeExpressionViewController: AGSGeoViewTouchDelegate {
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        // Dismiss any presenting callout.
+        mapView.callout.dismiss()
+        // Identify features at the tapped location.
+        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { results, error in
+            if results?.isEmpty {
+                return
+            } else if let elements = results?.first?.geoElements {
+                let firstElement = elements.first as? AGSArcGISFeature
+                
+            }
+        }
+        mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12.0, returnPopupsOnly: false, maximumResults: 10) { [weak self] result in
+            guard let self = self else { return }
+            self.mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
+            let elementList =
+        }
     }
 }

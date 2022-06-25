@@ -20,9 +20,11 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         didSet {
             mapView.map = makeMap()
             mapView.touchDelegate = self
-            
         }
     }
+    
+    var previousFeature: AGSArcGISFeature?
+    var detail: String?
     
     func makeMap() -> AGSMap {
         let portal = AGSPortal.arcGISOnline(withLoginRequired: false)
@@ -39,8 +41,23 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         return map
     }
     
-    func queryFeaturesWithArcadeExpression() {
-        
+    func evaluateArcadeInCallout(for feature: AGSArcGISFeature, at mapPoint: AGSPoint) {
+        if self.previousFeature == nil {
+            let expressionValue = "var crimes = FeatureSetByName($map, 'Crime in the last 60 days');\n" + "return Count(Intersects($feature, crimes));"
+            let expression = AGSArcadeExpression(expression: expressionValue)
+            let evaluator = AGSArcadeEvaluator(expression: expression, profile: .formCalculation)
+            guard let map = mapView.map else { return }
+            let profileVariables = ["$feature": feature, "$map": map]
+            evaluator.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
+                guard let self = self else { return }
+                if let result = result, let crimeCount = result.cast(to: .string) as? String {
+                    self.detail = "Crimes in the last 60 days: \(crimeCount)"
+                    self.previousFeature = feature
+                } else if let error = error {
+                    self.presentAlert(error: error)
+                }
+            }
+        }
     }
     
     // MARK: UIViewController
@@ -61,18 +78,17 @@ extension QueryFeaturesArcadeExpressionViewController: AGSGeoViewTouchDelegate {
         // Dismiss any presenting callout.
         mapView.callout.dismiss()
         // Identify features at the tapped location.
-        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { results, error in
-            if results?.isEmpty {
-                return
-            } else if let elements = results?.first?.geoElements {
-                let firstElement = elements.first as? AGSArcGISFeature
-                
+        mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] results, error in
+            guard let results = results, let self = self else { return }
+            if let elements = results.first?.geoElements {
+                guard let identifiedFeature = elements.first as? AGSArcGISFeature else { return }
+                self.evaluateArcadeInCallout(for: identifiedFeature, at: mapPoint)
+                self.mapView.callout.isAccessoryButtonHidden = true
+                self.mapView.callout.detail = self.detail
+                self.mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
+            } else if let error = error {
+                self.presentAlert(error: error)
             }
-        }
-        mapView.identifyLayer(featureLayer, screenPoint: screenPoint, tolerance: 12.0, returnPopupsOnly: false, maximumResults: 10) { [weak self] result in
-            guard let self = self else { return }
-            self.mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
-            let elementList =
         }
     }
 }

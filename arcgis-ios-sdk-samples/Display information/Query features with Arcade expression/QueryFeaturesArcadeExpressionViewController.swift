@@ -48,8 +48,6 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
     
     /// Evaluate the arcade expression for the selected feature at the map point.
     func evaluateArcadeInCallout(for feature: AGSArcGISFeature, at mapPoint: AGSPoint) {
-        // Show progress hud.
-        UIApplication.shared.showProgressHUD(message: "Evaluating")
         // Instantiate a string containing the arcade expression.
         let expressionValue = "var crimes = FeatureSetByName($map, 'Crime in the last 60 days');\n" + "return Count(Intersects($feature, crimes));"
         // Create an arcade expression using the string.
@@ -100,6 +98,8 @@ extension QueryFeaturesArcadeExpressionViewController: AGSGeoViewTouchDelegate {
             if let elements = results.first?.geoElements {
                 // Get the selected feature.
                 guard let identifiedFeature = elements.first as? AGSArcGISFeature else { return }
+                // Show progress hud.
+                UIApplication.shared.showProgressHUD(message: "Evaluating")
                 // Evaluate the arcade for the given feature.
                 self.evaluateArcadeInCallout(for: identifiedFeature, at: mapPoint)
             } else if let error = error {

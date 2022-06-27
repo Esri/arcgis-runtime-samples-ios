@@ -2,7 +2,7 @@
 
 Query features on a map using an Arcade expression.
 
-![QueryFeaturesWithArcadeExpression](image.PNG)
+![Query features with Arcade expression](query-features-arcade-expression.png)
 
 ## Use case
 
@@ -10,41 +10,40 @@ Arcade is a portable, lightweight, and secure expression language used to create
 
 ## How to use the sample
 
-Click on any neighborhood to see the number of crimes in the last 60 days in a callout.
+Tap on any neighborhood to see the number of crimes in the last 60 days in a callout.
 
 ## How it works
 
-1. Create a `PortalItem` using the URL and ID.
-2. Create a `Map` using the portal item.
+1. Create an `AGSPortalItem` using the portal and ID.
+2. Create an `AGSMap` using the portal item.
 3. Set the visibility of all the layers to false, except for the layer named "RPD Beats  - City_Beats_Border_1128-4500".
-4. Set up a lambda or a listener for clicks on the map.
-5. Identify the visible layer where it is tapped or clicked on and get the feature.
-6. Create the following `ArcadeExpression`:
+4. Set the `AGSGeoViewTouchDelegate` to the map.
+5. Identify the layers tapped on the map view with `AGSGeoView.identifyLayers(atScreenPoint:tolerance:returnPopupsOnly:completion:)`.
+6. Create the following `AGSArcadeExpression`:
 
-	 ```c++		
+	 ```swift		
 	 expressionValue = "var crimes = FeatureSetByName($map, 'Crime in the last 60 days');\n"
      				   "return Count(Intersects($feature, crimes));"
      ```
             
-7. Create an `ArcadeEvaluator` using the Arcade expression and `ArcadeProfile.FORM_CALCULATION`.
-8. Create a map of profile variables with the following key-value pairs. This will be passed to `ArcadeEvaluator::evaluate()` in the next step:
+7. Create an `AGSArcadeEvaluator` using the Arcade expression and `ArcadeProfile.FORM_CALCULATION`.
+8. Create a dictionary of profile variables with the following pairs:
 
 	 `{"$feature", identifiedFeature}`
 	 
 	 `{"$map", map}`
 	 
-9. Call `ArcadeEvaluator::evaluate()` on the Arcade evaluator object and pass the profile variables map.
-10. Call `ArcadeEvaluationResult::result()` to get the result from `ArcadeEvaluator::ArcadeEvaluationResult`.
-11. Convert the result to a numerical value (integer) and populate the callout with the crime count.
+9. Use `AGSArcadeEvaluator.evaluate(withProfileVariables:completion:)` with the profile variables to evaluate the Arcade expression.
+10. Convert the result to a `String` to display the crime count in a callout.
 
 ## Relevant API
 
-* ArcadeEvaluationResult
-* ArcadeEvaluator
-* ArcadeExpression
-* ArcadeProfile
-* Portal
-* PortalItem
+* AGSArcadeEvaluationResult
+* AGSArcadeEvaluator
+* AGSArcadeExpression
+* AGSArcadeProfile
+* AGSPortal
+* AGSPortalItem
 
 ## About the data
 

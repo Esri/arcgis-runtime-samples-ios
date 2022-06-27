@@ -1,26 +1,35 @@
 {
     "category": "Display information",
-    "description": "Use pictures for markers.",
+    "description": "Query features on a map using an Arcade expression.",
     "ignore": false,
     "images": [
-        "picture-marker-symbol.png"
+        "query-features-arcade-expression.png"
     ],
     "keywords": [
-        "graphics",
-        "marker",
-        "picture",
-        "symbol",
-        "visualization",
-        "AGSPictureMarkerSymbol"
+        "Arcade evaluator",
+        "Arcade expression",
+        "identify layers",
+        "portal",
+        "portal item",
+        "query",
+        "AGSArcadeEvaluationResult",
+        "AGSArcadeEvaluator",
+        "AGSArcadeExpression",
+        "AGSArcadeProfile",
+        "AGSPortal",
+        "AGSPortalItem"
     ],
-    "redirect_from": [
-        "/ios/latest/swift/sample-code/picture-marker-symbols.htm"
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "AGSPictureMarkerSymbol"
+        "AGSArcadeEvaluationResult",
+        "AGSArcadeEvaluator",
+        "AGSArcadeExpression",
+        "AGSArcadeProfile",
+        "AGSPortal",
+        "AGSPortalItem"
     ],
     "snippets": [
-        "PictureMarkerSymbolsViewController.swift"
+        "QueryFeaturesArcadeExpressionViewController.swift"
     ],
-    "title": "Picture marker symbols"
+    "title": "Query features with Arcade expression"
 }

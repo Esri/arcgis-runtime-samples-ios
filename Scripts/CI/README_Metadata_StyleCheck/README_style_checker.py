@@ -34,7 +34,7 @@ exception_proper_nouns = {
     'Open Street Map',
     'OpenStreetMap',
     'Play a KML Tour',
-    'SwiftUI'
+    'SwiftUI',
     'Arcade'
 }
 

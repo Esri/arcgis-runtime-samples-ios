@@ -34,7 +34,8 @@ exception_proper_nouns = {
     'Open Street Map',
     'OpenStreetMap',
     'Play a KML Tour',
-    'SwiftUI'
+    'SwiftUI',
+    'Arcade'
 }
 
 # A set of category folder names in current sample viewer.

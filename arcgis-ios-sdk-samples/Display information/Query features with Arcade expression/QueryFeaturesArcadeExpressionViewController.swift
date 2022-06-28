@@ -34,7 +34,7 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         // Make a map with the portal item.
         let map = AGSMap(item: portalItem)
         // Load the map.
-        map.load() { _ in
+        map.load { _ in
             // Set the visibility of all but the RDT Beats layer to false.
             map.operationalLayers.forEach { layer in
                 let currentLayer = layer as? AGSLayer
@@ -49,7 +49,11 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
     /// Evaluate the arcade expression for the selected feature at the map point.
     func evaluateArcadeInCallout(for feature: AGSArcGISFeature, at mapPoint: AGSPoint) {
         // Instantiate a string containing the arcade expression.
-        let expressionValue = "var crimes = FeatureSetByName($map, 'Crime in the last 60 days');\n" + "return Count(Intersects($feature, crimes));"
+        let expressionValue =
+        """
+        var crimes = FeatureSetByName($map, 'Crime in the last 60 days');
+        return Count(Intersects($feature, crimes));
+        """
         // Create an arcade expression using the string.
         let expression = AGSArcadeExpression(expression: expressionValue)
         // Create an arcade evaluator with the arcade expression and an arcade profile.
@@ -58,16 +62,16 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         let profileVariables = ["$feature": feature, "$map": map]
         // Get the arcade evaluation result given the previously set profile variables.
         evaluateOperation = evaluator.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
+            // Dismiss progress hud.
+            UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }
             if let result = result, let crimeCount = result.cast(to: .string) as? String {
-                // Dismiss progress hud.
-                UIApplication.shared.hideProgressHUD()
                 // Hide the accessory button.
                 self.mapView.callout.isAccessoryButtonHidden = true
                 // Set the detail text.
                 self.mapView.callout.detail = "Crimes in the last 60 days: \(crimeCount)"
                 // Prompt the callout at the map point.
-                self.mapView.callout.show(at: mapPoint, screenOffset: .zero, rotateOffsetWithMap: false, animated: true)
+                self.mapView.callout.show(for: feature, tapLocation: mapPoint, animated: true)
             } else if let error = error {
                 // Present an error if needed.
                 self.presentAlert(error: error)

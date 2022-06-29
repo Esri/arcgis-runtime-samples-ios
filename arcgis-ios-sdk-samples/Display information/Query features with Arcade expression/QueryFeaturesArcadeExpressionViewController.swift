@@ -35,11 +35,10 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         let map = AGSMap(item: portalItem)
         // Load the map.
         map.load { _ in
-            // Set the visibility of all but the RDT Beats layer to false.
+            // Set the visibility of all but the RPD Beats layer to false.
             map.operationalLayers.forEach { layer in
-                let currentLayer = layer as? AGSLayer
-                if currentLayer?.name == "Crime in the last 60 days" || currentLayer?.name == "Police Stations" {
-                    currentLayer?.isVisible = false
+                if let currentLayer = layer as? AGSLayer {
+                    currentLayer.isVisible = currentLayer.name.contains("RPD Beats")
                 }
             }
         }
@@ -48,6 +47,8 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
     
     /// Evaluate the arcade expression for the selected feature at the map point.
     func evaluateArcadeInCallout(for feature: AGSArcGISFeature, at mapPoint: AGSPoint) {
+        // Show progress hud.
+        UIApplication.shared.showProgressHUD(message: "Evaluating")
         // Instantiate a string containing the arcade expression.
         let expressionValue =
         """
@@ -61,6 +62,9 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         guard let map = mapView.map else { return }
         let profileVariables = ["$feature": feature, "$map": map]
         // Get the arcade evaluation result given the previously set profile variables.
+        if evaluateOperation != nil {
+            evaluateOperation?.cancel()
+        }
         evaluateOperation = evaluator.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
             // Dismiss progress hud.
             UIApplication.shared.hideProgressHUD()
@@ -69,7 +73,7 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
                 // Hide the accessory button.
                 self.mapView.callout.isAccessoryButtonHidden = true
                 // Set the detail text.
-                self.mapView.callout.detail = "Crimes in the last 60 days: \(crimeCount)"
+                self.mapView.callout.detail = String(format: "Crimes in the last 60 days: %@", crimeCount)
                 // Prompt the callout at the map point.
                 self.mapView.callout.show(for: feature, tapLocation: mapPoint, animated: true)
             } else if let error = error {
@@ -99,11 +103,8 @@ extension QueryFeaturesArcadeExpressionViewController: AGSGeoViewTouchDelegate {
         // Identify features at the tapped location.
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] results, error in
             guard let results = results, let self = self else { return }
-            if let elements = results.first?.geoElements {
-                // Get the selected feature.
-                guard let identifiedFeature = elements.first as? AGSArcGISFeature else { return }
-                // Show progress hud.
-                UIApplication.shared.showProgressHUD(message: "Evaluating")
+            // Get the selected feature.
+            if let elements = results.first?.geoElements, let identifiedFeature = elements.first as? AGSArcGISFeature {
                 // Evaluate the arcade for the given feature.
                 self.evaluateArcadeInCallout(for: identifiedFeature, at: mapPoint)
             } else if let error = error {

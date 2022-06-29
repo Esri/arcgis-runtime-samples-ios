@@ -23,16 +23,16 @@ Tap on any neighborhood to see the number of crimes in the last 60 days in a cal
 
     ```swift		
         expressionValue = "var crimes = FeatureSetByName($map, 'Crime in the last 60 days');\n"
-     				   "return Count(Intersects($feature, crimes));"
+        "return Count(Intersects($feature, crimes));"
     ```
-            
+
 7. Create an `AGSArcadeEvaluator` using the Arcade expression and `ArcadeProfile.FORM_CALCULATION`.
 8. Create a dictionary of profile variables with the following pairs:
 
     `{"$feature", identifiedFeature}`
-	 
+
     `{"$map", map}`
-	 
+
 9. Use `AGSArcadeEvaluator.evaluate(withProfileVariables:completion:)` with the profile variables to evaluate the Arcade expression.
 10. Convert the result to a `String` to display the crime count in a callout.
 

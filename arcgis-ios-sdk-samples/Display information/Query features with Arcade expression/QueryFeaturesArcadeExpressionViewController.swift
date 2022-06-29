@@ -70,6 +70,7 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
             UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }
             if let result = result, let crimeCount = result.cast(to: .string) as? String {
+                self.mapView.setViewpointCenter(mapPoint)
                 // Hide the accessory button.
                 self.mapView.callout.isAccessoryButtonHidden = true
                 // Set the detail text.

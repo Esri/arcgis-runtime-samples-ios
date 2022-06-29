@@ -21,7 +21,7 @@ Tap on any neighborhood to see the number of crimes in the last 60 days in a cal
 5. Identify the layers tapped on the map view with `AGSGeoView.identifyLayers(atScreenPoint:tolerance:returnPopupsOnly:completion:)`.
 6. Create the following `AGSArcadeExpression`:
 
-    ```swift		
+    ```swift	
         expressionValue = "var crimes = FeatureSetByName($map, 'Crime in the last 60 days');\n"
         "return Count(Intersects($feature, crimes));"
     ```

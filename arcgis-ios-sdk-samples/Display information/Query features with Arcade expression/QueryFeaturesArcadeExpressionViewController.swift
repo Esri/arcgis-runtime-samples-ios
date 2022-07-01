@@ -47,8 +47,6 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
     
     /// Evaluate the arcade expression for the selected feature at the map point.
     func evaluateArcadeInCallout(for feature: AGSArcGISFeature, at mapPoint: AGSPoint) {
-        // Show progress hud.
-        UIApplication.shared.showProgressHUD(message: "Evaluating")
         // Instantiate a string containing the arcade expression.
         let expressionValue =
         """
@@ -61,12 +59,12 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         let evaluator = AGSArcadeEvaluator(expression: expression, profile: .formCalculation)
         guard let map = mapView.map else { return }
         let profileVariables = ["$feature": feature, "$map": map]
-        // Get the arcade evaluation result given the previously set profile variables.
-        if evaluateOperation != nil {
-            evaluateOperation?.cancel()
+        // Show progress hud.
+        UIApplication.shared.showProgressHUD(message: "Evaluating")
         if let evaluateOperation = evaluateOperation {
             evaluateOperation.cancel()
         }
+        // Get the arcade evaluation result given the previously set profile variables.
         evaluateOperation = evaluator.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
             // Dismiss progress hud.
             UIApplication.shared.hideProgressHUD()

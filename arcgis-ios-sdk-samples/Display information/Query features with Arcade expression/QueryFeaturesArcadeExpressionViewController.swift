@@ -64,6 +64,8 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         // Get the arcade evaluation result given the previously set profile variables.
         if evaluateOperation != nil {
             evaluateOperation?.cancel()
+        if let evaluateOperation = evaluateOperation {
+            evaluateOperation.cancel()
         }
         evaluateOperation = evaluator.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
             // Dismiss progress hud.

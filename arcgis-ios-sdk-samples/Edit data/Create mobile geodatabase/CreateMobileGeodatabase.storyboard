@@ -1,25 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Create Mobile Geodatabase View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="CreateMobileGeodatabaseViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oeh-eJ-XTv" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUg-M8-Zip">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="View table" id="C1e-u4-8wu"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ztQ-eo-chJ"/>
+                                    <barButtonItem title="Create new GDB" id="pR6-ZL-iSr"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8q6-D2-zXZ"/>
+                                    <barButtonItem title="Close and share" id="gsN-Nb-kxV"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SUg-M8-Zip" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="15B-B2-oJQ"/>
+                            <constraint firstItem="Oeh-eJ-XTv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="6af-jM-nhC"/>
+                            <constraint firstAttribute="trailing" secondItem="SUg-M8-Zip" secondAttribute="trailing" id="T5W-uT-sev"/>
+                            <constraint firstItem="Oeh-eJ-XTv" firstAttribute="bottom" secondItem="SUg-M8-Zip" secondAttribute="top" symbolic="YES" id="Xfr-ia-biN"/>
+                            <constraint firstItem="Oeh-eJ-XTv" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="ct5-nD-vx0"/>
+                            <constraint firstAttribute="trailing" secondItem="Oeh-eJ-XTv" secondAttribute="trailing" id="d0C-SB-9hG"/>
+                            <constraint firstItem="SUg-M8-Zip" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="hun-Ec-Une"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="closeShareBarButtonItem" destination="gsN-Nb-kxV" id="amr-0c-9kX"/>
+                        <outlet property="createGeodatabaseBarButtonItem" destination="pR6-ZL-iSr" id="GCI-Ek-M6k"/>
+                        <outlet property="mapView" destination="Oeh-eJ-XTv" id="fn9-Ei-j8X"/>
+                        <outlet property="viewTableBarButtonItem" destination="C1e-u4-8wu" id="EeE-XY-bKv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="64"/>
         </scene>
     </scenes>
     <resources>

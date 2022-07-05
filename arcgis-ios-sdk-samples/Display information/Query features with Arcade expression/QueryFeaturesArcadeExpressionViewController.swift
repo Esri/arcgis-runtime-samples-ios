@@ -70,6 +70,8 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
             UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }
             if let result = result, let crimeCount = result.cast(to: .string) as? String {
+                // Enable user interaction.
+                self.mapView.isUserInteractionEnabled = true
                 self.mapView.setViewpointCenter(mapPoint)
                 // Hide the accessory button.
                 self.mapView.callout.isAccessoryButtonHidden = true
@@ -106,6 +108,8 @@ extension QueryFeaturesArcadeExpressionViewController: AGSGeoViewTouchDelegate {
             guard let results = results, let self = self else { return }
             // Get the selected feature.
             if let elements = results.first?.geoElements, let identifiedFeature = elements.first as? AGSArcGISFeature {
+                // Disable user interaction after a feature has been identified.
+                self.mapView.isUserInteractionEnabled = false
                 // Evaluate the arcade for the given feature.
                 self.evaluateArcadeInCallout(for: identifiedFeature, at: mapPoint)
             } else if let error = error {

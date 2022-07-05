@@ -21,6 +21,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of features added: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZY-hj-rfa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUg-M8-Zip">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
@@ -36,17 +42,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SUg-M8-Zip" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="15B-B2-oJQ"/>
+                            <constraint firstItem="wZY-hj-rfa" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="1YA-Xa-RmF"/>
                             <constraint firstItem="Oeh-eJ-XTv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="6af-jM-nhC"/>
+                            <constraint firstItem="wZY-hj-rfa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="SC0-C6-CvW"/>
                             <constraint firstAttribute="trailing" secondItem="SUg-M8-Zip" secondAttribute="trailing" id="T5W-uT-sev"/>
                             <constraint firstItem="Oeh-eJ-XTv" firstAttribute="bottom" secondItem="SUg-M8-Zip" secondAttribute="top" symbolic="YES" id="Xfr-ia-biN"/>
                             <constraint firstItem="Oeh-eJ-XTv" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="ct5-nD-vx0"/>
                             <constraint firstAttribute="trailing" secondItem="Oeh-eJ-XTv" secondAttribute="trailing" id="d0C-SB-9hG"/>
                             <constraint firstItem="SUg-M8-Zip" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="hun-Ec-Une"/>
+                            <constraint firstAttribute="trailing" secondItem="wZY-hj-rfa" secondAttribute="trailing" id="un0-Kv-pXb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="closeShareBarButtonItem" destination="gsN-Nb-kxV" id="amr-0c-9kX"/>
                         <outlet property="createGeodatabaseBarButtonItem" destination="pR6-ZL-iSr" id="GCI-Ek-M6k"/>
+                        <outlet property="featureCountLabel" destination="wZY-hj-rfa" id="8vl-FO-9jI"/>
                         <outlet property="mapView" destination="Oeh-eJ-XTv" id="fn9-Ei-j8X"/>
                         <outlet property="viewTableBarButtonItem" destination="C1e-u4-8wu" id="EeE-XY-bKv"/>
                     </connections>

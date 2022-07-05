@@ -27,55 +27,38 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     @IBOutlet var viewTableBarButtonItem: UIBarButtonItem!
     @IBOutlet var createGeodatabaseBarButtonItem: UIBarButtonItem!
     @IBOutlet var closeShareBarButtonItem: UIBarButtonItem!
+    @IBOutlet var featureCountLabel: UILabel!
     
     /// A URL to the temporary directory to store the exported tile packages.
-    let temporaryDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    let temporaryGeodatabaseURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    var geodatabase: AGSGeodatabase?
     var featureTable: AGSGeodatabaseFeatureTable?
     
     // MARK: Methods
     
-    /// Get the URL to a portal item specific temporary directory.
-    ///
-    /// - Parameter itemID: The portal item ID.
-    /// - Returns: A URL to the temporary directory.
-    func getDownloadDirectoryURL(itemID: String) -> URL {
-        let directoryURL = temporaryDirectoryURL.appendingPathComponent(itemID)
-        // Create and return the full, unique URL to the temporary directory.
-        try? FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
-        return directoryURL
-    }
-    
-//    required init?(coder: NSCoder) {
-//        temporaryDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
-//        try? FileManager.default.createDirectory(at: temporaryDirectory, withIntermediateDirectories: false)
-//        vtpkTemporaryURL = temporaryDirectory
-//            .appendingPathComponent("myTileCache", isDirectory: false)
-//            .appendingPathExtension("vtpk")
-//        styleTemporaryURL = temporaryDirectory
-//            .appendingPathComponent("styleItemResources", isDirectory: true)
-//        super.init(coder: coder)
-//    }
-    
     func closeGeodatabaseTapped() {
-        
+        if let geodatabase = geodatabase {
+            closeShareBarButtonItem.isEnabled = false
+            geodatabase.close()
+        }
     }
     
     func createGeodatabase() {
         // Create the geodatabase file.
-        let gdbPath = temporaryDirectoryURL.appendingPathComponent("LocationHistory.geodatabase")
-        // Delete exisiting file if present from previous instance.
-        if gdbPath.isFileURL {
-            
-        }
-        AGSGeodatabase.create(withFileURL: gdbPath) { geodatabase, error in
+        let gdbPath = temporaryGeodatabaseURL.appendingPathComponent("LocationHistory.geodatabase")
+        
+        AGSGeodatabase.create(withFileURL: gdbPath) { [weak self] result, error in
+            guard let self = self else { return }
+            self.geodatabase = result
             let tableDescription = AGSTableDescription(name: "LocationHistory", spatialReference: .wgs84(), geometryType: .point)
             tableDescription.hasAttachments = false
             tableDescription.hasM = false
             tableDescription.hasZ = false
             tableDescription.fieldDescriptions.add(AGSFieldDescription(name: "oid", fieldType: .OID))
             tableDescription.fieldDescriptions.add(AGSFieldDescription(name: "collection_timestamp", fieldType: .date))
-            geodatabase?.createTable(with: tableDescription) { table, error in
+            self.geodatabase?.createTable(with: tableDescription) { table, error in
                 // Update UI with new table //////////
+                self.queryfeatures()
                 guard let table = table else { return }
                 let featureLayer = AGSFeatureLayer(featureTable: table)
                 self.mapView.map?.operationalLayers.add(featureLayer)
@@ -90,16 +73,23 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         let attributes = ["collectionTimeStamp": formatter.string(from: Date())]
         if let feature = featureTable?.createFeature(attributes: attributes, geometry: mapPoint) {
             featureTable?.add(feature)
-            // UPDATE TABLE////////
-            // UPDATE FEATURES LABEL ///////
+            queryfeatures()
         }
     }
     
-    func updateTable() {
+    func queryfeatures() {
         // Query all of the features in the feature table.
-        featureTable?.queryFeatures(with: AGSQueryParameters()) { result, error in
-            // Update the list of items with the results.
+        featureTable?.queryFeatures(with: AGSQueryParameters()) { [weak self] result, error in
+            if let result = result {
+                let featureCount = result.featureEnumerator().allObjects.count
+                // Update the list of items with the results.
+                self?.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
+            }
         }
+    }
+    
+    deinit {
+        try? FileManager.default.removeItem(at: temporaryGeodatabaseURL)
     }
     
     // MARK: UIViewController
@@ -117,6 +107,6 @@ class CreateMobileGeodatabaseViewController: UIViewController {
 
 extension CreateMobileGeodatabaseViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-        
+        addFeature(at: mapPoint)
     }
 }

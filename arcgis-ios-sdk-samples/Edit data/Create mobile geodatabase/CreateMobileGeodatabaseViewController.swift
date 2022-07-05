@@ -43,7 +43,7 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         }
     }
     
-    func createGeodatabase() {
+    @IBAction func createGeodatabase(_ sender: UIBarButtonItem) {
         // Create the geodatabase file.
         let gdbPath = temporaryGeodatabaseURL.appendingPathComponent("LocationHistory.geodatabase")
         

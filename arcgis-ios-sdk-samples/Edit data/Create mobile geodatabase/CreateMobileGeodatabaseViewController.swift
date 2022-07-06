@@ -30,24 +30,48 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     @IBOutlet var featureCountLabel: UILabel!
     
     /// A URL to the temporary directory to store the exported tile packages.
-    let temporaryGeodatabaseURL = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    let temporaryGeodatabaseURL: URL
+//    FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+    /// A directory to temporarily store all items.
+    let temporaryDirectory: URL
     var geodatabase: AGSGeodatabase?
     var featureTable: AGSGeodatabaseFeatureTable?
     
+    required init?(coder: NSCoder) {
+        temporaryDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
+        try? FileManager.default.createDirectory(at: temporaryDirectory, withIntermediateDirectories: false)
+        temporaryGeodatabaseURL = temporaryDirectory
+            .appendingPathComponent("LocationHistory", isDirectory: false)
+            .appendingPathExtension("geodatabase")
+        super.init(coder: coder)
+    }
+    
     // MARK: Methods
     
-    func closeGeodatabaseTapped() {
-        if let geodatabase = geodatabase {
-            closeShareBarButtonItem.isEnabled = false
-            geodatabase.close()
+    @IBAction func closeAndShare(_ sender: UIBarButtonItem) {
+//        if let geodatabase = geodatabase {
+//            closeShareBarButtonItem.isEnabled = false
+//            geodatabase.close()
+//        }
+        guard let geodatabase = geodatabase else { return }
+
+        let activityViewController = UIActivityViewController(activityItems: [geodatabase], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.barButtonItem = sender
+        present(activityViewController, animated: true)
+        activityViewController.completionWithItemsHandler = { _, completed, _, activityError in
+            if completed {
+                geodatabase.close()
+            } else if let error = activityError {
+                self.presentAlert(error: error)
+            }
         }
     }
     
     @IBAction func createGeodatabase(_ sender: UIBarButtonItem) {
         // Create the geodatabase file.
-        let gdbPath = temporaryGeodatabaseURL.appendingPathComponent("LocationHistory.geodatabase")
+//        let gdbPath = temporaryGeodatabaseURL.appendingPathComponent("LocationHistory.geodatabase")
         
-        AGSGeodatabase.create(withFileURL: gdbPath) { [weak self] result, error in
+        AGSGeodatabase.create(withFileURL: temporaryGeodatabaseURL) { [weak self] result, error in
             guard let self = self else { return }
             self.geodatabase = result
             let tableDescription = AGSTableDescription(name: "LocationHistory", spatialReference: .wgs84(), geometryType: .point)
@@ -57,7 +81,7 @@ class CreateMobileGeodatabaseViewController: UIViewController {
             tableDescription.fieldDescriptions.add(AGSFieldDescription(name: "oid", fieldType: .OID))
             tableDescription.fieldDescriptions.add(AGSFieldDescription(name: "collection_timestamp", fieldType: .date))
             self.geodatabase?.createTable(with: tableDescription) { table, error in
-                // Update UI with new table //////////
+                print("create table success")
                 self.queryfeatures()
                 guard let table = table else { return }
                 let featureLayer = AGSFeatureLayer(featureTable: table)
@@ -84,19 +108,21 @@ class CreateMobileGeodatabaseViewController: UIViewController {
                 let featureCount = result.featureEnumerator().allObjects.count
                 // Update the list of items with the results.
                 self?.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
+            } else if let error = error {
+                self?.presentAlert(error: error)
             }
         }
     }
     
     deinit {
-        try? FileManager.default.removeItem(at: temporaryGeodatabaseURL)
+        try? FileManager.default.removeItem(at: temporaryDirectory)
     }
     
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createGeodatabase()
+//        createGeodatabase()
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "AuthenticateWithOAuthViewController"
         ]

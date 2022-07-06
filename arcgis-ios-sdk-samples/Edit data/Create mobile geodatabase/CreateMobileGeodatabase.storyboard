@@ -38,7 +38,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8q6-D2-zXZ"/>
-                                    <barButtonItem title="Close and share" id="gsN-Nb-kxV"/>
+                                    <barButtonItem title="Close and share" id="gsN-Nb-kxV">
+                                        <connections>
+                                            <action selector="closeAndShare:" destination="Y6W-OH-hqX" id="Gbj-jV-GNT"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

@@ -66,12 +66,12 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         }
         // Get the arcade evaluation result given the previously set profile variables.
         evaluateOperation = evaluator.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
+            guard let self = self else { return }
             // Dismiss progress hud.
             UIApplication.shared.hideProgressHUD()
-            guard let self = self else { return }
+            // Enable user interaction.
+            self.mapView.isUserInteractionEnabled = true
             if let result = result, let crimeCount = result.cast(to: .string) as? String {
-                // Enable user interaction.
-                self.mapView.isUserInteractionEnabled = true
                 self.mapView.setViewpointCenter(mapPoint)
                 // Hide the accessory button.
                 self.mapView.callout.isAccessoryButtonHidden = true

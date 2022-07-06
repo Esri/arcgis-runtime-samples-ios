@@ -105,9 +105,9 @@ extension QueryFeaturesArcadeExpressionViewController: AGSGeoViewTouchDelegate {
         mapView.callout.dismiss()
         // Identify features at the tapped location.
         mapView.identifyLayers(atScreenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false) { [weak self] results, error in
-            guard let results = results, let self = self else { return }
+            guard let self = self else { return }
             // Get the selected feature.
-            if let elements = results.first?.geoElements, let identifiedFeature = elements.first as? AGSArcGISFeature {
+            if let elements = results?.first?.geoElements, let identifiedFeature = elements.first as? AGSArcGISFeature {
                 // Disable user interaction after a feature has been identified.
                 self.mapView.isUserInteractionEnabled = false
                 // Evaluate the arcade for the given feature.

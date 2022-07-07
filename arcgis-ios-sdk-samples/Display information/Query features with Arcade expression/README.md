@@ -46,7 +46,7 @@ Tap on any neighborhood to see the number of crimes in the last 60 days in a cal
 
 ## About the data
 
-This sample uses the [Crimes in Police Beats Sample](https://www.arcgis.com/home/item.html?id=14562fced3474190b52d315bc19127f6) ArcGIS Online Web Map which contains 3 layers for police stations, city beats borders, and crimes in the last 60 days as recorded by the Rochester, NY police department.
+This sample uses the [Crimes in Police Beats Sample](https://www.arcgis.com/home/item.html?id=539d93de54c7422f88f69bfac2aebf7d) ArcGIS Online Web Map which contains 2 layers for city beats borders and crimes in the last 60 days as recorded by the Rochester, NY police department.
 
 ## Additional information
 

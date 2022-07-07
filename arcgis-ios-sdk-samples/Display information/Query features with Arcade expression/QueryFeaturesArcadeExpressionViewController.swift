@@ -30,18 +30,9 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
     /// Make and load a map.
     func makeMap() -> AGSMap {
         // Create a portal item with the portal and item ID.
-        let portalItem = AGSPortalItem(portal: .arcGISOnline(withLoginRequired: false), itemID: "14562fced3474190b52d315bc19127f6")
+        let portalItem = AGSPortalItem(portal: .arcGISOnline(withLoginRequired: false), itemID: "539d93de54c7422f88f69bfac2aebf7d")
         // Make a map with the portal item.
         let map = AGSMap(item: portalItem)
-        // Load the map.
-        map.load { _ in
-            // Set the visibility of all but the RPD Beats layer to false.
-            map.operationalLayers.forEach { layer in
-                if let currentLayer = layer as? AGSLayer {
-                    currentLayer.isVisible = currentLayer.name.contains("RPD Beats")
-                }
-            }
-        }
         return map
     }
     

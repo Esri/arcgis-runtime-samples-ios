@@ -880,6 +880,8 @@
 		F18C2B2628497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18C2B2528497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift */; };
 		F18C2B2828497A4F009355BD /* ApplyUniqueValuesAlternateSymbols.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F18C2B2728497A4F009355BD /* ApplyUniqueValuesAlternateSymbols.storyboard */; };
 		F18C2B2928497E09009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F18C2B2528497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift */; };
+		F18E4C2D2876AAEA00509C26 /* MobileGeodatabaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E4C2C2876AAEA00509C26 /* MobileGeodatabaseTableViewController.swift */; };
+		F18E4C2E2876AD4400509C26 /* MobileGeodatabaseTableViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F18E4C2C2876AAEA00509C26 /* MobileGeodatabaseTableViewController.swift */; };
 		F1950D7B279794590093CE6E /* ContingentValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */; };
 		F1950D7C279794920093CE6E /* ContingentValuesViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */; };
 		F1987CFD23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */; };
@@ -972,6 +974,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				F18E4C2E2876AD4400509C26 /* MobileGeodatabaseTableViewController.swift in CopyFiles */,
 				F1EA20FF286A870C000135E7 /* CreateMobileGeodatabaseViewController.swift in CopyFiles */,
 				F18C2B2928497E09009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift in CopyFiles */,
 				F157668F2824AD9600C08069 /* DisplayDirectionsViewController.swift in CopyFiles */,
@@ -1871,6 +1874,7 @@
 		F1710AF225EED01600900FF2 /* DisplayContentUtilityNetworkContainer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = DisplayContentUtilityNetworkContainer.storyboard; path = "arcgis-ios-sdk-samples/Utility Network/Display content of utility network container/DisplayContentUtilityNetworkContainer.storyboard"; sourceTree = SOURCE_ROOT; };
 		F18C2B2528497A3C009355BD /* ApplyUniqueValuesAlternateSymbolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyUniqueValuesAlternateSymbolsViewController.swift; sourceTree = "<group>"; };
 		F18C2B2728497A4F009355BD /* ApplyUniqueValuesAlternateSymbols.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApplyUniqueValuesAlternateSymbols.storyboard; sourceTree = "<group>"; };
+		F18E4C2C2876AAEA00509C26 /* MobileGeodatabaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileGeodatabaseTableViewController.swift; sourceTree = "<group>"; };
 		F1950D7A279794590093CE6E /* ContingentValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContingentValuesViewController.swift; sourceTree = "<group>"; };
 		F1987CFC23F7313E00DF41CC /* FindClosestFacilityInteractiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindClosestFacilityInteractiveViewController.swift; sourceTree = "<group>"; };
 		F1987CFE23F7314000DF41CC /* FindClosestFacilityInteractive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindClosestFacilityInteractive.storyboard; sourceTree = "<group>"; };
@@ -4755,6 +4759,7 @@
 			isa = PBXGroup;
 			children = (
 				F1EA20FB286A800F000135E7 /* CreateMobileGeodatabaseViewController.swift */,
+				F18E4C2C2876AAEA00509C26 /* MobileGeodatabaseTableViewController.swift */,
 				F1EA20FD286A8020000135E7 /* CreateMobileGeodatabase.storyboard */,
 			);
 			path = "Create mobile geodatabase";
@@ -5422,6 +5427,7 @@
 				4C41B2EE211A617700EEA81E /* Sample.swift in Sources */,
 				F1034F9C22D3EE8900B021DA /* ProjectStackView.swift in Sources */,
 				008D175724EEF3FE0001BB8F /* EditWithBranchVersioningViewController.swift in Sources */,
+				F18E4C2D2876AAEA00509C26 /* MobileGeodatabaseTableViewController.swift in Sources */,
 				4C0CBFFF22F9D38800D3F1DB /* FindClosestFacilityMultipleIncidentsServiceViewController.swift in Sources */,
 				1682CAEE22404F480039C3E1 /* ViewContentBeneathTerrainSurfaceViewController.swift in Sources */,
 				00CDA5C226F1289B00DEE7F4 /* SelectENCFeaturesViewController.swift in Sources */,

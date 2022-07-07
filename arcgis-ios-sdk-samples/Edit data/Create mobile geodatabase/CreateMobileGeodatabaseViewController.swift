@@ -47,14 +47,24 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     }
     
     // MARK: Methods
-    
+    func displayTable() {
+        featureTable?.queryFeatures(with: AGSQueryParameters()) { results, error in
+            var oidArray = [String]()
+            if let results = results {
+                results.featureEnumerator().forEach { feature in
+                    let feature = feature as? AGSFeature
+                    oidArray.append(feature?.attributes["oid"])
+                }
+            }
+        }
+    }
     @IBAction func closeAndShare(_ sender: UIBarButtonItem) {
 //        if let geodatabase = geodatabase {
 //            closeShareBarButtonItem.isEnabled = false
 //            geodatabase.close()
 //        }
         guard let geodatabase = geodatabase else { return }
-
+        let geodatabaseProvider = GeodatabaseProvider(geodatabase: geodatabase)
         let activityViewController = UIActivityViewController(activityItems: [geodatabase], applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = sender
         present(activityViewController, animated: true)
@@ -122,10 +132,45 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        createGeodatabase()
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
-            "AuthenticateWithOAuthViewController"
+            "CreateMobileGeodatabaseViewController"
         ]
+    }
+}
+
+// Handles saving a KMZ file.
+private class GeodatabaseProvider: UIActivityItemProvider {
+    private let geodatabase: AGSGeodatabase
+    private var temporaryDirectoryURL: URL?
+    
+    init(geodatabase: AGSGeodatabase) {
+        self.geodatabase = geodatabase
+        if geodatabase.name.isEmpty {
+            geodatabase.name = "Untitled"
+        }
+        super.init(placeholderItem: URL(fileURLWithPath: "\(document.name).kmz"))
+    }
+    
+    override var item: Any {
+        temporaryDirectoryURL = try? FileManager.default.url(
+            for: .itemReplacementDirectory,
+            in: .userDomainMask,
+            appropriateFor: Bundle.main.bundleURL,
+            create: true
+        )
+        let documentURL = temporaryDirectoryURL?.appendingPathComponent("\(document.name).kmz")
+        let semaphore = DispatchSemaphore(value: 0)
+        document.save(toFileURL: documentURL!) { _ in
+            semaphore.signal()
+        }
+        semaphore.wait()
+        return documentURL!
+    }
+    
+    // Deletes the temporary directory.
+    func deleteKMZ() {
+        guard let url = temporaryDirectoryURL else { return }
+        try? FileManager.default.removeItem(at: url)
     }
 }
 

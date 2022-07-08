@@ -36,6 +36,8 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     let temporaryDirectory: URL
     var geodatabase: AGSGeodatabase?
     var featureTable: AGSGeodatabaseFeatureTable?
+    var oidArray = [String]()
+    var collectionTimeStamps = [String]()
     
     required init?(coder: NSCoder) {
         temporaryDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
@@ -47,17 +49,7 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     }
     
     // MARK: Methods
-    func displayTable() {
-        featureTable?.queryFeatures(with: AGSQueryParameters()) { results, error in
-            var oidArray = [String]()
-            if let results = results {
-                results.featureEnumerator().forEach { feature in
-                    let feature = feature as? AGSFeature
-                    oidArray.append(feature?.attributes["oid"])
-                }
-            }
-        }
-    }
+    
     @IBAction func closeAndShare(_ sender: UIBarButtonItem) {
 //        if let geodatabase = geodatabase {
 //            closeShareBarButtonItem.isEnabled = false
@@ -104,25 +96,32 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     func addFeature(at mapPoint: AGSPoint) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        let attributes = ["collectionTimeStamp": formatter.string(from: Date())]
+        var attributes = [String: Any]()
+        attributes["collectionTimeStamp"] = formatter.string(from: Date())
+//        = ["collectionTimeStamp": formatter.string(from: Date())]
         if let feature = featureTable?.createFeature(attributes: attributes, geometry: mapPoint) {
-            featureTable?.add(feature)
-            queryfeatures()
-        }
-    }
-    
-    func queryfeatures() {
-        // Query all of the features in the feature table.
-        featureTable?.queryFeatures(with: AGSQueryParameters()) { [weak self] result, error in
-            if let result = result {
-                let featureCount = result.featureEnumerator().allObjects.count
-                // Update the list of items with the results.
-                self?.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
-            } else if let error = error {
-                self?.presentAlert(error: error)
+            featureTable?.add(feature) { [weak self] error in
+                guard let self = self else { return }
+                if let featureCount = self?.featureTable?.numberOfFeatures {
+                    self.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
+                    self.viewTableBarButtonItem.isEnabled = true
+                } else if let error = error {
+                    self.presentAlert(error: error)
+                }
             }
         }
     }
+    
+//    func queryfeatures() {
+//        // Query all of the features in the feature table.
+//        featureTable?.queryFeatures(with: AGSQueryParameters()) { [weak self] result, error in
+//            if let result = result {
+//                let featureCount = result.featureEnumerator().allObjects.count
+//                // Update the list of items with the results.
+//                self?.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
+//            }
+//        }
+//    }
     
     deinit {
         try? FileManager.default.removeItem(at: temporaryDirectory)

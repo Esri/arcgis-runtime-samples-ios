@@ -130,10 +130,32 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     
     // MARK: UIViewController
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navigationController = segue.destination as? UINavigationController,
+           let controller = navigationController.topViewController as? MobileGeodatabaseTableViewController {
+            featureTable?.queryFeatures(with: AGSQueryParameters()) { [weak self] results, error in
+                guard let self = self else { return }
+                if let results = results {
+                    results.featureEnumerator().forEach { feature in
+                        let feature = feature as? AGSFeature
+                        guard let oid = feature?.attributes["oid"] as? String else { print("query oid fail") }
+                        controller.oidArray.append(oid)
+                        guard let collectionTimeStamp = feature?.attributes["collection_timestamp"] as? String else { print("query collectionTimeStamp fail") }
+                        controller.collectionTimeStamps.append(collectionTimeStamp)
+                    }
+                } else if let error = error {
+                    self.presentAlert(error: error)
+                }
+            }
+//            controller.delegate = self
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
-            "CreateMobileGeodatabaseViewController"
+            "CreateMobileGeodatabaseViewController",
+            "MobileGeodatabaseTableViewController",
         ]
     }
 }

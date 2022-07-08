@@ -16,9 +16,17 @@ import UIKit
 import ArcGIS
 
 class MobileGeodatabaseTableViewController: UITableViewController {
-
-    func addFeature(oid: String, timeStamp: String) {
-        
+    var oidArray = [String]()
+    var collectionTimeStamps = [String]()
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return oidArray.count
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "featureCell", for: indexPath)
+        cell.textLabel?.text = oidArray[indexPath.row]
+        cell.detailTextLabel?.text = collectionTimeStamps[indexPath.row]
+        return cell
+    }
 }

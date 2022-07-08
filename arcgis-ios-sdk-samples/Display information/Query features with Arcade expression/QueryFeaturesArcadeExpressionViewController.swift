@@ -24,7 +24,7 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         }
     }
     
-    /// The arcade expression evaluation operation.
+    /// The Arcade expression evaluation operation.
     var evaluateOperation: AGSCancelable?
     
     /// Make and load a map.
@@ -36,17 +36,17 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         return map
     }
     
-    /// Evaluate the arcade expression for the selected feature at the map point.
+    /// Evaluate the Arcade expression for the selected feature at the map point.
     func evaluateArcadeInCallout(for feature: AGSArcGISFeature, at mapPoint: AGSPoint) {
-        // Instantiate a string containing the arcade expression.
+        // Instantiate a string containing the Arcade expression.
         let expressionValue =
         """
         var crimes = FeatureSetByName($map, 'Crime in the last 60 days');
         return Count(Intersects($feature, crimes));
         """
-        // Create an arcade expression using the string.
+        // Create an Arcade expression using the string.
         let expression = AGSArcadeExpression(expression: expressionValue)
-        // Create an arcade evaluator with the arcade expression and an arcade profile.
+        // Create an Arcade evaluator with the Arcade expression and an Arcade profile.
         let evaluator = AGSArcadeEvaluator(expression: expression, profile: .formCalculation)
         guard let map = mapView.map else { return }
         let profileVariables = ["$feature": feature, "$map": map]
@@ -55,7 +55,7 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         if let evaluateOperation = evaluateOperation {
             evaluateOperation.cancel()
         }
-        // Get the arcade evaluation result given the previously set profile variables.
+        // Get the Arcade evaluation result given the previously set profile variables.
         evaluateOperation = evaluator.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
             guard let self = self else { return }
             // Dismiss progress hud.
@@ -101,7 +101,7 @@ extension QueryFeaturesArcadeExpressionViewController: AGSGeoViewTouchDelegate {
             if let elements = results?.first?.geoElements, let identifiedFeature = elements.first as? AGSArcGISFeature {
                 // Disable user interaction after a feature has been identified.
                 self.mapView.isUserInteractionEnabled = false
-                // Evaluate the arcade for the given feature.
+                // Evaluate the Arcade for the given feature.
                 self.evaluateArcadeInCallout(for: identifiedFeature, at: mapPoint)
             } else if let error = error {
                 // Present an error alert if needed.

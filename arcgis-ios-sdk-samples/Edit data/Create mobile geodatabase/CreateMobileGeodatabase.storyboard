@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,6 +24,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of features added: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZY-hj-rfa">
                                 <rect key="frame" x="0.0" y="44" width="414" height="21"/>
+                                <color key="backgroundColor" name="statusLabelBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -30,25 +32,21 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUg-M8-Zip">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="View table" id="C1e-u4-8wu">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="KS2-SB-uqN"/>
+                                    <barButtonItem enabled="NO" title="View table" style="plain" id="C1e-u4-8wu">
                                         <connections>
                                             <segue destination="O8q-YG-sIH" kind="popoverPresentation" popoverAnchorBarButtonItem="C1e-u4-8wu" id="yMR-wl-p3h">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ztQ-eo-chJ"/>
-                                    <barButtonItem title="Create new GDB" id="pR6-ZL-iSr">
-                                        <connections>
-                                            <action selector="createGeodatabase:" destination="Y6W-OH-hqX" id="Vhi-Rk-m9G"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8q6-D2-zXZ"/>
-                                    <barButtonItem title="Close and share" id="gsN-Nb-kxV">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="puA-i6-0My"/>
+                                    <barButtonItem title="Create and share" style="plain" id="gsN-Nb-kxV">
                                         <connections>
                                             <action selector="closeAndShare:" destination="Y6W-OH-hqX" id="Gbj-jV-GNT"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ztQ-eo-chJ"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -69,7 +67,6 @@
                     </view>
                     <connections>
                         <outlet property="closeShareBarButtonItem" destination="gsN-Nb-kxV" id="amr-0c-9kX"/>
-                        <outlet property="createGeodatabaseBarButtonItem" destination="pR6-ZL-iSr" id="GCI-Ek-M6k"/>
                         <outlet property="featureCountLabel" destination="wZY-hj-rfa" id="8vl-FO-9jI"/>
                         <outlet property="mapView" destination="Oeh-eJ-XTv" id="fn9-Ei-j8X"/>
                         <outlet property="viewTableBarButtonItem" destination="C1e-u4-8wu" id="EeE-XY-bKv"/>
@@ -95,7 +92,7 @@
             </objects>
             <point key="canvasLocation" x="899" y="64"/>
         </scene>
-        <!--Mobile Geodatabase Table View Controller-->
+        <!--Feature table-->
         <scene sceneID="ptX-u7-R4X">
             <objects>
                 <tableViewController id="6E4-bY-fgh" customClass="MobileGeodatabaseTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,7 +131,11 @@
                             <outlet property="delegate" destination="6E4-bY-fgh" id="x8B-AF-e8U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hKP-PB-Zlr"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Feature table" id="hKP-PB-Zlr">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="PjE-yk-UdO"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAo-Or-bKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,6 +143,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="statusLabelBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

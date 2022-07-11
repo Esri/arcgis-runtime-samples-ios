@@ -133,7 +133,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Feature table" id="hKP-PB-Zlr">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="PjE-yk-UdO"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="PjE-yk-UdO">
+                            <connections>
+                                <action selector="doneAction:" destination="6E4-bY-fgh" id="lNJ-MB-C7a"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

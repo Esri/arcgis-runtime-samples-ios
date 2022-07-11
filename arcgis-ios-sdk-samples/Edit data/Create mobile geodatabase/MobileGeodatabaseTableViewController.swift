@@ -16,17 +16,20 @@ import UIKit
 import ArcGIS
 
 class MobileGeodatabaseTableViewController: UITableViewController {
-    var oidArray = [String]()
-    var collectionTimeStamps = [String]()
+    var oidArray = [Int]()
+    var collectionTimeStamps = [Date]()
     
+    @IBAction func doneAction(_ sender: UIBarButtonItem) {
+            dismiss(animated: true)
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return oidArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "featureCell", for: indexPath)
-        cell.textLabel?.text = oidArray[indexPath.row]
-        cell.detailTextLabel?.text = collectionTimeStamps[indexPath.row]
+        cell.textLabel?.text = String(oidArray[indexPath.row])
+        cell.detailTextLabel?.text = collectionTimeStamps[indexPath.row] as? String
         return cell
     }
 }

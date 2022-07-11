@@ -52,9 +52,7 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         let profileVariables = ["$feature": feature, "$map": map]
         // Show progress hud.
         UIApplication.shared.showProgressHUD(message: "Evaluating")
-        if let evaluateOperation = evaluateOperation {
-            evaluateOperation.cancel()
-        }
+        evaluateOperation?.cancel()
         // Get the Arcade evaluation result given the previously set profile variables.
         evaluateOperation = evaluator.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
             guard let self = self else { return }

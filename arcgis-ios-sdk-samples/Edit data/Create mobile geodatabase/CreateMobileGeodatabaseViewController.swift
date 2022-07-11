@@ -89,9 +89,7 @@ class CreateMobileGeodatabaseViewController: UIViewController {
                 if let table = table {
                     let featureLayer = AGSFeatureLayer(featureTable: table)
                     self.mapView.map?.operationalLayers.add(featureLayer)
-                    self.featureTable = table
-                    let featureCount = self.featureTable?.numberOfFeatures ?? 0
-                    self.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
+                    self.featureCountLabel.text = "Number of features added: 0"
                     } else if let error = error {
                     self.presentAlert(error: error)
                 }
@@ -100,23 +98,26 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     }
     
     func addFeature(at mapPoint: AGSPoint) {
+        let currentDate = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE MMM d HH:mm:ss zzz yyyy"
         var attributes = [String: Any]()
-        attributes["collection_timestamp"] = formatter.string(from: Date())
+        attributes["collection_timestamp"] = currentDate
+//        formatter.date(from:)
         if let feature = featureTable?.createFeature(attributes: attributes, geometry: mapPoint) {
-            featureTable?.add(feature)
-            queryFeatures()
-//            featureTable?.add(feature) { [weak self] error in
-//                guard let self = self else { return }
-////                let featureCount = self.featureTable?.numberOfFeatures ?? 0
-////                self.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
-////                self.queryFeatures()
-//                self.viewTableBarButtonItem.isEnabled = true
-//                if let error = error {
-//                    self.presentAlert(error: error)
-//                }
-//            }
+//            featureTable?.add(feature)
+//            queryFeatures()
+            featureTable?.add(feature) { [weak self] error in
+                guard let self = self else { return }
+                let numberOfFeatures = self.featureTable?.numberOfFeatures ?? 0
+                let featureCount = String(numberOfFeatures)
+                self.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
+//                self.queryFeatures()
+                self.viewTableBarButtonItem.isEnabled = true
+                if let error = error {
+                    self.presentAlert(error: error)
+                }
+            }
         } else {
             print("could not create feature")
         }
@@ -157,15 +158,11 @@ class CreateMobileGeodatabaseViewController: UIViewController {
             featureTable?.queryFeatures(with: AGSQueryParameters()) { [weak self] results, error in
                 guard let self = self else { return }
                 if let results = results {
-                    results.featureEnumerator().forEach { feature in
-                        let feature = feature as? AGSFeature
-                        guard let oid = feature?.attributes["oid"] as? String else { print("query oid fail")
-                            return }
-                        controller.oidArray.append(oid)
-                        guard let collectionTimeStamp = feature?.attributes["collection_timestamp"] as? String else { print("query collectionTimeStamp fail")
-                            return }
-                        controller.collectionTimeStamps.append(collectionTimeStamp)
-                    }
+                    let features = results.featureEnumerator().allObjects
+                    let oidArray = features.compactMap { $0.attributes["oid"] as? Int }
+                    controller.oidArray = oidArray
+                    let timeStampArray = features.compactMap{ $0.attributes["collection_timestamp"] as? Date }
+                    controller.collectionTimeStamps = timeStampArray
                 } else if let error = error {
                     self.presentAlert(error: error)
                 }

@@ -25,7 +25,6 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     }
     
     @IBOutlet var viewTableBarButtonItem: UIBarButtonItem!
-    @IBOutlet var createGeodatabaseBarButtonItem: UIBarButtonItem!
     @IBOutlet var closeShareBarButtonItem: UIBarButtonItem!
     @IBOutlet var featureCountLabel: UILabel!
     
@@ -56,7 +55,7 @@ class CreateMobileGeodatabaseViewController: UIViewController {
 //            geodatabase.close()
 //        }
         guard let geodatabase = geodatabase else { return }
-        let geodatabaseProvider = GeodatabaseProvider(geodatabase: geodatabase)
+//        let geodatabaseProvider = GeodatabaseProvider(geodatabase: geodatabase)
         let activityViewController = UIActivityViewController(activityItems: [geodatabase], applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = sender
         present(activityViewController, animated: true)
@@ -69,7 +68,7 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         }
     }
     
-    @IBAction func createGeodatabase(_ sender: UIBarButtonItem) {
+    func createGeodatabase() {
         // Create the geodatabase file.
 //        let gdbPath = temporaryGeodatabaseURL.appendingPathComponent("LocationHistory.geodatabase")
         
@@ -77,51 +76,74 @@ class CreateMobileGeodatabaseViewController: UIViewController {
             guard let self = self else { return }
             self.geodatabase = result
             let tableDescription = AGSTableDescription(name: "LocationHistory", spatialReference: .wgs84(), geometryType: .point)
+            let fieldDescriptions = [
+                AGSFieldDescription(name: "oid", fieldType: .OID),
+                AGSFieldDescription(name: "collection_timestamp", fieldType: .date)
+            ]
+            tableDescription.fieldDescriptions.addObjects(from: fieldDescriptions)
             tableDescription.hasAttachments = false
             tableDescription.hasM = false
             tableDescription.hasZ = false
-            tableDescription.fieldDescriptions.add(AGSFieldDescription(name: "oid", fieldType: .OID))
-            tableDescription.fieldDescriptions.add(AGSFieldDescription(name: "collection_timestamp", fieldType: .date))
             self.geodatabase?.createTable(with: tableDescription) { table, error in
                 print("create table success")
-                self.queryfeatures()
-                guard let table = table else { return }
-                let featureLayer = AGSFeatureLayer(featureTable: table)
-                self.mapView.map?.operationalLayers.add(featureLayer)
-                self.featureTable = table
-            }
-        }
-    }
-    
-    func addFeature(at mapPoint: AGSPoint) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        var attributes = [String: Any]()
-        attributes["collectionTimeStamp"] = formatter.string(from: Date())
-//        = ["collectionTimeStamp": formatter.string(from: Date())]
-        if let feature = featureTable?.createFeature(attributes: attributes, geometry: mapPoint) {
-            featureTable?.add(feature) { [weak self] error in
-                guard let self = self else { return }
-                if let featureCount = self?.featureTable?.numberOfFeatures {
+                if let table = table {
+                    let featureLayer = AGSFeatureLayer(featureTable: table)
+                    self.mapView.map?.operationalLayers.add(featureLayer)
+                    self.featureTable = table
+                    let featureCount = self.featureTable?.numberOfFeatures ?? 0
                     self.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
-                    self.viewTableBarButtonItem.isEnabled = true
-                } else if let error = error {
+                    } else if let error = error {
                     self.presentAlert(error: error)
                 }
             }
         }
     }
     
-//    func queryfeatures() {
-//        // Query all of the features in the feature table.
-//        featureTable?.queryFeatures(with: AGSQueryParameters()) { [weak self] result, error in
-//            if let result = result {
-//                let featureCount = result.featureEnumerator().allObjects.count
-//                // Update the list of items with the results.
-//                self?.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
+    func addFeature(at mapPoint: AGSPoint) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE MMM d HH:mm:ss zzz yyyy"
+        var attributes = [String: Any]()
+        attributes["collection_timestamp"] = formatter.string(from: Date())
+        if let feature = featureTable?.createFeature(attributes: attributes, geometry: mapPoint) {
+            featureTable?.add(feature)
+            queryFeatures()
+//            featureTable?.add(feature) { [weak self] error in
+//                guard let self = self else { return }
+////                let featureCount = self.featureTable?.numberOfFeatures ?? 0
+////                self.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
+////                self.queryFeatures()
+//                self.viewTableBarButtonItem.isEnabled = true
+//                if let error = error {
+//                    self.presentAlert(error: error)
+//                }
 //            }
-//        }
-//    }
+        } else {
+            print("could not create feature")
+        }
+    }
+    
+    func queryFeatures() {
+        // Query all of the features in the feature table.
+        featureTable?.queryFeatures(with: AGSQueryParameters()) { [weak self] result, error in
+            if let result = result {
+                let featureCount = result.featureEnumerator().allObjects.count
+                // Update the list of items with the results.
+                self?.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
+            } else if let error = error {
+                self?.presentAlert(error: error)
+            }
+        }
+    }
+    
+    func resetMap() {
+        if mapView.map?.loadStatus == .loaded {
+            mapView.map?.operationalLayers.removeAllObjects()
+            viewTableBarButtonItem.isEnabled = false
+            createGeodatabase()
+        } else if let error = mapView.map?.loadError {
+            presentAlert(error: error)
+        }
+    }
     
     deinit {
         try? FileManager.default.removeItem(at: temporaryDirectory)
@@ -137,9 +159,11 @@ class CreateMobileGeodatabaseViewController: UIViewController {
                 if let results = results {
                     results.featureEnumerator().forEach { feature in
                         let feature = feature as? AGSFeature
-                        guard let oid = feature?.attributes["oid"] as? String else { print("query oid fail") }
+                        guard let oid = feature?.attributes["oid"] as? String else { print("query oid fail")
+                            return }
                         controller.oidArray.append(oid)
-                        guard let collectionTimeStamp = feature?.attributes["collection_timestamp"] as? String else { print("query collectionTimeStamp fail") }
+                        guard let collectionTimeStamp = feature?.attributes["collection_timestamp"] as? String else { print("query collectionTimeStamp fail")
+                            return }
                         controller.collectionTimeStamps.append(collectionTimeStamp)
                     }
                 } else if let error = error {
@@ -152,48 +176,46 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createGeodatabase()
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "CreateMobileGeodatabaseViewController",
-            "MobileGeodatabaseTableViewController",
+            "MobileGeodatabaseTableViewController"
         ]
     }
 }
 
 // Handles saving a KMZ file.
-private class GeodatabaseProvider: UIActivityItemProvider {
-    private let geodatabase: AGSGeodatabase
-    private var temporaryDirectoryURL: URL?
-    
-    init(geodatabase: AGSGeodatabase) {
-        self.geodatabase = geodatabase
-        if geodatabase.name.isEmpty {
-            geodatabase.name = "Untitled"
-        }
-        super.init(placeholderItem: URL(fileURLWithPath: "\(document.name).kmz"))
-    }
-    
-    override var item: Any {
-        temporaryDirectoryURL = try? FileManager.default.url(
-            for: .itemReplacementDirectory,
-            in: .userDomainMask,
-            appropriateFor: Bundle.main.bundleURL,
-            create: true
-        )
-        let documentURL = temporaryDirectoryURL?.appendingPathComponent("\(document.name).kmz")
-        let semaphore = DispatchSemaphore(value: 0)
-        document.save(toFileURL: documentURL!) { _ in
-            semaphore.signal()
-        }
-        semaphore.wait()
-        return documentURL!
-    }
-    
-    // Deletes the temporary directory.
-    func deleteKMZ() {
-        guard let url = temporaryDirectoryURL else { return }
-        try? FileManager.default.removeItem(at: url)
-    }
-}
+//private class GeodatabaseProvider: UIActivityItemProvider {
+//    private let geodatabase: AGSGeodatabase
+//    private var temporaryDirectoryURL: URL?
+//
+//    init(geodatabase: AGSGeodatabase) {
+//        self.geodatabase = geodatabase
+//        super.init(placeholderItem: URL(fileURLWithPath: "\(document.name).geodatabase"))
+//    }
+//
+//    override var item: Any {
+//        temporaryDirectoryURL = try? FileManager.default.url(
+//            for: .itemReplacementDirectory,
+//            in: .userDomainMask,
+//            appropriateFor: Bundle.main.bundleURL,
+//            create: true
+//        )
+//        let documentURL = temporaryDirectoryURL?.appendingPathComponent("\(document.name).kmz")
+//        let semaphore = DispatchSemaphore(value: 0)
+//        document.save(toFileURL: documentURL!) { _ in
+//            semaphore.signal()
+//        }
+//        semaphore.wait()
+//        return documentURL!
+//    }
+//
+//    // Deletes the temporary directory.
+//    func deleteKMZ() {
+//        guard let url = temporaryDirectoryURL else { return }
+//        try? FileManager.default.removeItem(at: url)
+//    }
+//}
 
 // MARK: - AGSGeoViewTouchDelegate
 

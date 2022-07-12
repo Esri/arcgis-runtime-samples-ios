@@ -50,14 +50,15 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         let evaluator = AGSArcadeEvaluator(expression: expression, profile: .formCalculation)
         guard let map = mapView.map else { return }
         let profileVariables = ["$feature": feature, "$map": map]
+        evaluateOperation?.cancel()
         // Show progress hud.
         UIApplication.shared.showProgressHUD(message: "Evaluating")
-        evaluateOperation?.cancel()
         // Get the Arcade evaluation result given the previously set profile variables.
         evaluateOperation = evaluator.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
-            guard let self = self else { return }
             // Dismiss progress hud.
             UIApplication.shared.hideProgressHUD()
+            guard let self = self else { return }
+            self.evaluateOperation = nil
             if let result = result, let crimeCount = result.cast(to: .string) as? String {
                 self.mapView.setViewpointCenter(mapPoint)
                 // Hide the accessory button.

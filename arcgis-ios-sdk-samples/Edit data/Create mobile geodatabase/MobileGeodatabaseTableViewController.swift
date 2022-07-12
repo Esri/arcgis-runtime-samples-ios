@@ -22,6 +22,15 @@ class MobileGeodatabaseTableViewController: UITableViewController {
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
             dismiss(animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "OID and Collection Timestamp"
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return oidArray.count
     }
@@ -29,7 +38,10 @@ class MobileGeodatabaseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "featureCell", for: indexPath)
         cell.textLabel?.text = String(oidArray[indexPath.row])
-        cell.detailTextLabel?.text = collectionTimeStamps[indexPath.row] as? String
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE MMM d HH:mm:ss zzz yyyy"
+        let timeStamp = formatter.string(from: collectionTimeStamps[indexPath.row])
+        cell.detailTextLabel?.text = timeStamp
         return cell
     }
 }

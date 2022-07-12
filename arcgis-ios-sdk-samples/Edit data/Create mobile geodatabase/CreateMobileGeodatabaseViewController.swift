@@ -87,10 +87,13 @@ class CreateMobileGeodatabaseViewController: UIViewController {
             self.geodatabase?.createTable(with: tableDescription) { table, error in
                 print("create table success")
                 if let table = table {
-                    let featureLayer = AGSFeatureLayer(featureTable: table)
-                    self.mapView.map?.operationalLayers.add(featureLayer)
-                    self.featureCountLabel.text = "Number of features added: 0"
-                    } else if let error = error {
+                    table.load() { _ in
+                        self.featureTable = table
+                        let featureLayer = AGSFeatureLayer(featureTable: table)
+                        self.mapView.map?.operationalLayers.add(featureLayer)
+                        self.featureCountLabel.text = "Number of features added: 0"
+                    }
+                } else if let error = error {
                     self.presentAlert(error: error)
                 }
             }
@@ -99,20 +102,14 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     
     func addFeature(at mapPoint: AGSPoint) {
         let currentDate = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE MMM d HH:mm:ss zzz yyyy"
-        var attributes = [String: Any]()
+        var attributes = [String: Date]()
         attributes["collection_timestamp"] = currentDate
-//        formatter.date(from:)
         if let feature = featureTable?.createFeature(attributes: attributes, geometry: mapPoint) {
-//            featureTable?.add(feature)
-//            queryFeatures()
             featureTable?.add(feature) { [weak self] error in
                 guard let self = self else { return }
                 let numberOfFeatures = self.featureTable?.numberOfFeatures ?? 0
                 let featureCount = String(numberOfFeatures)
                 self.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
-//                self.queryFeatures()
                 self.viewTableBarButtonItem.isEnabled = true
                 if let error = error {
                     self.presentAlert(error: error)
@@ -161,13 +158,12 @@ class CreateMobileGeodatabaseViewController: UIViewController {
                     let features = results.featureEnumerator().allObjects
                     let oidArray = features.compactMap { $0.attributes["oid"] as? Int }
                     controller.oidArray = oidArray
-                    let timeStampArray = features.compactMap{ $0.attributes["collection_timestamp"] as? Date }
+                    let timeStampArray = features.compactMap { $0.attributes["collection_timestamp"] as? Date }
                     controller.collectionTimeStamps = timeStampArray
                 } else if let error = error {
                     self.presentAlert(error: error)
                 }
             }
-//            controller.delegate = self
         }
     }
     

@@ -249,7 +249,7 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
                 let satelliteCount = location.additionalSourceProperties[.satelliteCount] as? Int ?? 0
                 return String(format: "%d satellite(s)", satelliteCount)
             default:
-                let transmitterCount = location.additionalSourceProperties[AGSLocationSourcePropertyKey("transmitterCount")] as? Int ?? 0
+                let transmitterCount = location.additionalSourceProperties[.transmitterCount] as? Int ?? 0
                 return String(format: "%d beacon(s)", transmitterCount)
             }
         }()

@@ -25,12 +25,11 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     }
     
     @IBOutlet var viewTableBarButtonItem: UIBarButtonItem!
-    @IBOutlet var closeShareBarButtonItem: UIBarButtonItem!
+    @IBOutlet var createShareBarButtonItem: UIBarButtonItem!
     @IBOutlet var featureCountLabel: UILabel!
     
     /// A URL to the temporary directory to store the exported tile packages.
     let temporaryGeodatabaseURL: URL
-//    FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
     /// A directory to temporarily store all items.
     let temporaryDirectory: URL
     var geodatabase: AGSGeodatabase?
@@ -50,28 +49,15 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     // MARK: Methods
     
     @IBAction func closeAndShare(_ sender: UIBarButtonItem) {
-//        if let geodatabase = geodatabase {
-//            closeShareBarButtonItem.isEnabled = false
-//            geodatabase.close()
-//        }
-        guard let geodatabase = geodatabase else { return }
-//        let geodatabaseProvider = GeodatabaseProvider(geodatabase: geodatabase)
-        let activityViewController = UIActivityViewController(activityItems: [geodatabase], applicationActivities: nil)
+        if let geodatabase = geodatabase {
+            geodatabase.close()
+        }
+        let activityViewController = UIActivityViewController(activityItems: [temporaryGeodatabaseURL], applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = sender
         present(activityViewController, animated: true)
-        activityViewController.completionWithItemsHandler = { _, completed, _, activityError in
-            if completed {
-                geodatabase.close()
-            } else if let error = activityError {
-                self.presentAlert(error: error)
-            }
-        }
     }
     
     func createGeodatabase() {
-        // Create the geodatabase file.
-//        let gdbPath = temporaryGeodatabaseURL.appendingPathComponent("LocationHistory.geodatabase")
-        
         AGSGeodatabase.create(withFileURL: temporaryGeodatabaseURL) { [weak self] result, error in
             guard let self = self else { return }
             self.geodatabase = result
@@ -167,6 +153,11 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        createGeodatabase()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createGeodatabase()
@@ -176,39 +167,6 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         ]
     }
 }
-
-// Handles saving a KMZ file.
-//private class GeodatabaseProvider: UIActivityItemProvider {
-//    private let geodatabase: AGSGeodatabase
-//    private var temporaryDirectoryURL: URL?
-//
-//    init(geodatabase: AGSGeodatabase) {
-//        self.geodatabase = geodatabase
-//        super.init(placeholderItem: URL(fileURLWithPath: "\(document.name).geodatabase"))
-//    }
-//
-//    override var item: Any {
-//        temporaryDirectoryURL = try? FileManager.default.url(
-//            for: .itemReplacementDirectory,
-//            in: .userDomainMask,
-//            appropriateFor: Bundle.main.bundleURL,
-//            create: true
-//        )
-//        let documentURL = temporaryDirectoryURL?.appendingPathComponent("\(document.name).kmz")
-//        let semaphore = DispatchSemaphore(value: 0)
-//        document.save(toFileURL: documentURL!) { _ in
-//            semaphore.signal()
-//        }
-//        semaphore.wait()
-//        return documentURL!
-//    }
-//
-//    // Deletes the temporary directory.
-//    func deleteKMZ() {
-//        guard let url = temporaryDirectoryURL else { return }
-//        try? FileManager.default.removeItem(at: url)
-//    }
-//}
 
 // MARK: - AGSGeoViewTouchDelegate
 

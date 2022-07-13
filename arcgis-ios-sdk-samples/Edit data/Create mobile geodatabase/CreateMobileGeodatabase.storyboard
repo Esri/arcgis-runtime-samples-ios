@@ -66,7 +66,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="closeShareBarButtonItem" destination="gsN-Nb-kxV" id="amr-0c-9kX"/>
+                        <outlet property="createShareBarButtonItem" destination="gsN-Nb-kxV" id="amr-0c-9kX"/>
                         <outlet property="featureCountLabel" destination="wZY-hj-rfa" id="8vl-FO-9jI"/>
                         <outlet property="mapView" destination="Oeh-eJ-XTv" id="fn9-Ei-j8X"/>
                         <outlet property="viewTableBarButtonItem" destination="C1e-u4-8wu" id="EeE-XY-bKv"/>

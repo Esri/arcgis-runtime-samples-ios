@@ -28,18 +28,20 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     @IBOutlet var createShareBarButtonItem: UIBarButtonItem!
     @IBOutlet var featureCountLabel: UILabel!
     
-    /// A URL to the temporary directory to store the exported tile packages.
+    /// A URL to the temporary geodatabase.
     let temporaryGeodatabaseURL: URL
-    /// A directory to temporarily store all items.
+    /// A directory to temporarily store the geodatabase.
     let temporaryDirectory: URL
+    /// The mobile geodatabase.
     var geodatabase: AGSGeodatabase?
+    /// The feature table created along with the geodatabase.
     var featureTable: AGSGeodatabaseFeatureTable?
-    var oidArray = [String]()
-    var collectionTimeStamps = [String]()
     
     required init?(coder: NSCoder) {
+        // Create the temporary directory.
         temporaryDirectory = FileManager.default.temporaryDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)
         try? FileManager.default.createDirectory(at: temporaryDirectory, withIntermediateDirectories: false)
+        // Create the geodatabase path.
         temporaryGeodatabaseURL = temporaryDirectory
             .appendingPathComponent("LocationHistory", isDirectory: false)
             .appendingPathExtension("geodatabase")
@@ -55,9 +57,25 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: [temporaryGeodatabaseURL], applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = sender
         present(activityViewController, animated: true)
+        activityViewController.completionWithItemsHandler = { guess, completed, what, activityError in
+            self.createGeodatabase()
+//            if completed {
+//                self.createGeodatabase()
+//            } else if let error = activityError {
+//                self.presentAlert(error: error)
+//            }
+        }
     }
     
     func createGeodatabase() {
+        resetMap()
+        if FileManager.default.fileExists(atPath: temporaryGeodatabaseURL.path) {
+            do {
+                try FileManager.default.removeItem(at: temporaryGeodatabaseURL)
+            } catch {
+                presentAlert(title: "File already exists")
+            }
+        }
         AGSGeodatabase.create(withFileURL: temporaryGeodatabaseURL) { [weak self] result, error in
             guard let self = self else { return }
             self.geodatabase = result
@@ -90,7 +108,7 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         let currentDate = Date()
         var attributes = [String: Date]()
         attributes["collection_timestamp"] = currentDate
-        if let feature = featureTable?.createFeature(attributes: attributes, geometry: mapPoint) {
+        guard let feature = featureTable?.createFeature(attributes: attributes, geometry: mapPoint) else { return }
             featureTable?.add(feature) { [weak self] error in
                 guard let self = self else { return }
                 let numberOfFeatures = self.featureTable?.numberOfFeatures ?? 0
@@ -101,22 +119,6 @@ class CreateMobileGeodatabaseViewController: UIViewController {
                     self.presentAlert(error: error)
                 }
             }
-        } else {
-            print("could not create feature")
-        }
-    }
-    
-    func queryFeatures() {
-        // Query all of the features in the feature table.
-        featureTable?.queryFeatures(with: AGSQueryParameters()) { [weak self] result, error in
-            if let result = result {
-                let featureCount = result.featureEnumerator().allObjects.count
-                // Update the list of items with the results.
-                self?.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
-            } else if let error = error {
-                self?.presentAlert(error: error)
-            }
-        }
     }
     
     func resetMap() {
@@ -151,11 +153,6 @@ class CreateMobileGeodatabaseViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        createGeodatabase()
     }
     
     override func viewDidLoad() {

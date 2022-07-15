@@ -7,27 +7,34 @@
         "create-mobile-geodatabase-2.png"
     ],
     "keywords": [
-        "Service",
-        "deletion",
+        "arcgis pro",
+        "database",
         "feature",
-        "online",
-        "table",
-        "AGSFeature",
+        "feature table",
+        "geodatabase",
+        "mobile geodatabase",
+        "sqlite",
+        "AGSArcGISFeature",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable",
-        "AGSServiceGeodatabase"
+        "AGSFeatureTable",
+        "AGSFieldDescription",
+        "AGSGeodatabase",
+        "AGSGeodatabaseFeatureTable",
+        "AGSTableDescription"
     ],
-    "redirect_from": [
-        "/ios/latest/swift/sample-code/delete-features-feature-service-.htm"
-    ],
+    "redirect_from": [],
     "relevant_apis": [
-        "AGSFeature",
+        "AGSArcGISFeature",
         "AGSFeatureLayer",
-        "AGSServiceFeatureTable",
-        "AGSServiceGeodatabase"
+        "AGSFeatureTable",
+        "AGSFieldDescription",
+        "AGSGeodatabase",
+        "AGSGeodatabaseFeatureTable",
+        "AGSTableDescription"
     ],
     "snippets": [
-        "DeleteFeaturesViewController.swift"
+        "CreateMobileGeodatabaseViewController.swift",
+        "MobileGeodatabaseTableViewController.swift"
     ],
-    "title": "Delete features (feature service)"
+    "title": "Create mobile geodatabase"
 }

@@ -16,7 +16,9 @@ import UIKit
 import ArcGIS
 
 class MobileGeodatabaseTableViewController: UITableViewController {
+    // An array to hold all the features' OIDs.
     var oidArray = [Int]()
+    // An array to store all the features' time stamps.
     var collectionTimeStamps = [Date]()
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
@@ -27,20 +29,20 @@ class MobileGeodatabaseTableViewController: UITableViewController {
         return "OID and Collection Timestamp"
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return oidArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "featureCell", for: indexPath)
+        // Set the cell's text to the feature's OID.
         cell.textLabel?.text = String(oidArray[indexPath.row])
+        // Create a formatter for the date.
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE MMM d HH:mm:ss zzz yyyy"
+        // Convert the current date to a string.
         let timeStamp = formatter.string(from: collectionTimeStamps[indexPath.row])
+        // Set the cell's detail text to the time stamp.
         cell.detailTextLabel?.text = timeStamp
         return cell
     }

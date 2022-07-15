@@ -1,0 +1,33 @@
+{
+    "category": "Edit data",
+    "description": "Create and share a mobile geodatabase.",
+    "ignore": false,
+    "images": [
+        "create-mobile-geodatabase-1.png",
+        "create-mobile-geodatabase-2.png"
+    ],
+    "keywords": [
+        "Service",
+        "deletion",
+        "feature",
+        "online",
+        "table",
+        "AGSFeature",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
+    ],
+    "redirect_from": [
+        "/ios/latest/swift/sample-code/delete-features-feature-service-.htm"
+    ],
+    "relevant_apis": [
+        "AGSFeature",
+        "AGSFeatureLayer",
+        "AGSServiceFeatureTable",
+        "AGSServiceGeodatabase"
+    ],
+    "snippets": [
+        "DeleteFeaturesViewController.swift"
+    ],
+    "title": "Delete features (feature service)"
+}

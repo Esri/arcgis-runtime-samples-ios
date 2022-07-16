@@ -13,27 +13,27 @@ For example, a user would like to track the location of their device at various 
 
 ## How to use the sample
 
-Tap on the map to add a feature symbolizing the user's location. Tap "View table" to view the contents of the geodatabase feature table. Once you have added the location points to the map, click on "Create and share mobile geodatabase" to retrieve the `.geodatabase` file which can then be imported into ArcGIS Pro or opened in an ArcGIS Runtime application.
+Tap on the map to add a feature symbolizing the user's location. Tap "View table" to view the contents of the geodatabase feature table. Once you have added the location points to the map, tap on "Create and share" to retrieve the `.geodatabase` file which can then be imported into ArcGIS Pro or opened in an ArcGIS Runtime application.
 
 ## How it works
 
-1. Create the `Geodatabase` from the mobile geodatabase location on file.
-2. Create a new `TableDescription` and add the list of `FieldDescription`s to the table description.
-3. Create a `GeodatabaseFeatureTable` in the geodatabase from the `TableDescription` using `Geodatabase.createTableAsync()`.
-4. Create a feature on the selected map point using `GeodatabaseFeatureTable.createFeature(featureAttributes, mapPoint)`.
-5. Add the feature to the table using `GeodatabaseFeatureTable.addFeatureAsync(feature)`.
-6. Each feature added to the `GeodatabaseFeatureTable` is committed to the mobile geodatabase file.
-7. Close the mobile geodatabase to safely share the ".geodatabase" file using `Geodatabase.close()`
+1. Create the `AGSGeodatabase` from the mobile geodatabase location on file.
+2. Create a new `AGSTableDescription` and add the list of `AGSFieldDescription`s to the table description.
+3. Create a `AGSGeodatabaseFeatureTable` in the geodatabase from the `AGSTableDescription` using `AGSGeodatabase.createTable(with:completion:)`.
+4. Create a feature on the selected map point using `AGSGeodatabaseFeatureTable.createFeature(attributes:geometry:)`.
+5. Add the feature to the table using `AGSGeodatabaseFeatureTable.add(_:completion:)`.
+6. Each feature added to the `AGSGeodatabaseFeatureTable` is committed to the mobile geodatabase file.
+7. Close the mobile geodatabase to safely share the `.geodatabase` file using `AGSGeodatabase.close()`
 
 ## Relevant API
 
-* ArcGISFeature
-* FeatureLayer
-* FeatureTable
-* FieldDescription
-* Geodatabase
-* GeodatabaseFeatureTable
-* TableDescription
+* AGSArcGISFeature
+* AGSFeatureLayer
+* AGSFeatureTable
+* AGSFieldDescription
+* AGSGeodatabase
+* AGSGeodatabaseFeatureTable
+* AGSTableDescription
 
 ## Additional information
 

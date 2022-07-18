@@ -21,7 +21,7 @@ class CreateMobileGeodatabaseViewController: UIViewController {
             // Create a map with the topographic basemap.
             mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
             // Set the viewpoint.
-            mapView.setViewpoint(AGSViewpoint(latitude: 39.323845, longitude: -77.733201, scale: 10000))
+            mapView.setViewpoint(AGSViewpoint(latitude: 39.323845, longitude: -77.733201, scale: 10_000))
             // Set the touch delegate.
             mapView.touchDelegate = self
         }
@@ -81,7 +81,7 @@ class CreateMobileGeodatabaseViewController: UIViewController {
                 presentAlert(title: "File already exists")
             }
         }
-        // Create the mobile geoatabase at the given URL.
+        // Create the mobile geodatabase at the given URL.
         AGSGeodatabase.create(withFileURL: temporaryGeodatabaseURL) { [weak self] result, error in
             guard let self = self else { return }
             self.geodatabase = result
@@ -104,7 +104,7 @@ class CreateMobileGeodatabaseViewController: UIViewController {
             self.geodatabase?.createTable(with: tableDescription) { table, error in
                 if let table = table {
                     // Load the table.
-                    table.load() { _ in
+                    table.load { _ in
                         self.featureTable = table
                         // Create a feature layer using the table.
                         let featureLayer = AGSFeatureLayer(featureTable: table)

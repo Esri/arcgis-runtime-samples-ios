@@ -48,6 +48,8 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         temporaryGeodatabaseURL = temporaryDirectory
             .appendingPathComponent("LocationHistory", isDirectory: false)
             .appendingPathExtension("geodatabase")
+        // Create the initial geodatabase.
+        createGeodatabase()
         super.init(coder: coder)
     }
     
@@ -62,11 +64,11 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         // Present the activity view controller.
         present(activityViewController, animated: true)
         // Reset the map's state once the geodatabase has been shared.
-        activityViewController.completionWithItemsHandler = { _, completed, _, activityError in
+        activityViewController.completionWithItemsHandler = { [weak self] _, completed, _, activityError in
             if completed {
-                self.resetMap()
+                self?.resetMap()
             } else if let error = activityError {
-                self.presentAlert(error: error)
+                self?.presentAlert(error: error)
             }
         }
     }
@@ -121,29 +123,29 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     
     /// Add a feature at the provided map point.
     func addFeature(at mapPoint: AGSPoint) {
-        // A dictionary to store the custom attribute.
-        var attributes = [String: Date]()
         // Create an attribute with the current date.
-        attributes["collection_timestamp"] = Date()
+        let attributes = ["collection_timestamp": Date()]
+        guard let featureTable = featureTable else { return }
         // Create a feature with the created attribute and geometry.
-        guard let feature = featureTable?.createFeature(attributes: attributes, geometry: mapPoint) else { return }
+        let feature = featureTable.createFeature(attributes: attributes, geometry: mapPoint)
         // Add the feature to the feature table.
-            featureTable?.add(feature) { [weak self] error in
-                guard let self = self, let numberOfFeatures = self.featureTable?.numberOfFeatures else { return }
-                let featureCount = String(numberOfFeatures)
+        featureTable.add(feature) { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.presentAlert(error: error)
+            } else {
+                let featureCount = String(featureTable.numberOfFeatures)
                 // Update the label's text to display the current number of features.
                 self.featureCountLabel.text = String(format: "Number of features added: %@", featureCount)
                 // Enable the view table bar button item.
                 self.viewTableBarButtonItem.isEnabled = true
-                if let error = error {
-                    self.presentAlert(error: error)
-                }
             }
+        }
     }
     
     /// Remove existing operational layers and close the geodatabase.
     func resetMap() {
-        if mapView.map?.loadStatus == .loaded, let geodatabase = geodatabase {
+        if let geodatabase = geodatabase {
             // Close the geodatabase to cease all adjustments.
             geodatabase.close()
             // Remove the current feature layers.
@@ -152,8 +154,6 @@ class CreateMobileGeodatabaseViewController: UIViewController {
             viewTableBarButtonItem.isEnabled = false
             // Create a new mobile geodatabase.
             createGeodatabase()
-        } else if let error = mapView.map?.loadError {
-            presentAlert(error: error)
         }
     }
     
@@ -162,7 +162,6 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     }
     
     // MARK: UIViewController
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navigationController = segue.destination as? UINavigationController,
            let controller = navigationController.topViewController as? MobileGeodatabaseTableViewController {
@@ -184,8 +183,6 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Create the initial geodatabase.
-        createGeodatabase()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "CreateMobileGeodatabaseViewController",

@@ -20,9 +20,15 @@ class MobileGeodatabaseTableViewController: UITableViewController {
     var oidArray = [Int]()
     // An array to store all the features' time stamps.
     var collectionTimeStamps = [Date]()
+    // Create a formatter for the date.
+    private let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE MMM d HH:mm:ss zzz yyyy"
+        return dateFormatter
+    }()
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
-            dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -32,16 +38,13 @@ class MobileGeodatabaseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return oidArray.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "featureCell", for: indexPath)
         // Set the cell's text to the feature's OID.
         cell.textLabel?.text = String(oidArray[indexPath.row])
-        // Create a formatter for the date.
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE MMM d HH:mm:ss zzz yyyy"
         // Convert the current date to a string.
-        let timeStamp = formatter.string(from: collectionTimeStamps[indexPath.row])
+        let timeStamp = dateFormatter.string(from: collectionTimeStamps[indexPath.row])
         // Set the cell's detail text to the time stamp.
         cell.detailTextLabel?.text = timeStamp
         return cell
